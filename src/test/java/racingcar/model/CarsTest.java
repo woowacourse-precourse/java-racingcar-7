@@ -16,7 +16,7 @@ public class CarsTest {
 
     @BeforeEach
     void setUp() {
-        String[] carNames = {"pobi", "woni", "jun"};
+        String[] carNames = {"pobi", " woni", "jun "};
         cars = Cars.from(carNames);
 
         pobi = cars.getCars()
@@ -53,6 +53,13 @@ public class CarsTest {
         // then
         assertThat(winners).hasSize(2)
                            .containsExactly(woni, jun);
+    }
+
+    @Test
+    void 자동차_이름_양_옆의_공백을_제거한다() {
+        assertThat(pobi.getName()).isEqualTo("pobi");
+        assertThat(woni.getName()).isEqualTo("woni");
+        assertThat(jun.getName()).isEqualTo("jun");
     }
 
     @Test
