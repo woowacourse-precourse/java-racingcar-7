@@ -94,4 +94,22 @@ class RacingTrackTest {
         assertThat(racingTrack.getWinnerNames())
                 .isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("단계 진행 테스트")
+    void stepProcessTest() {
+        //given
+        RacingTrack racingTrack = new RacingTrack();
+        final List<String> carNames = List.of("pobi", "crong");
+        racingTrack.addCar(carNames);
+
+        final List<String> expected = List.of("pobi : ", "crong : ");
+        //when
+        var stepResult = racingTrack.step();
+
+        //then
+        for (int index = 0; index < carNames.size(); index++) {
+            assertThat(stepResult.get(index)).contains(expected.get(index));
+        }
+    }
 }
