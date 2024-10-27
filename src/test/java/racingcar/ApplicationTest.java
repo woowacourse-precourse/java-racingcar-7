@@ -5,6 +5,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -56,5 +57,20 @@ class ApplicationTest extends NsTest {
         assertEquals(car, notMovedCar);
         assertEquals(car.getPosition(), notMovedCar.getPosition());
         assertEquals(car.getPosition().getValue(), notMovedCar.getPosition().getValue());
+    }
+
+    @Test
+    void 자동차의_난수_전략이_4_이상을_생성하면_전진한다() {
+        // given
+        Name name = Name.from("A");
+        Position position = Position.from(0);
+        RandomStrategy move = RandomStrategy.from(MOVING_FORWARD);
+        // when
+        Car car = Car.of(name, position, move);
+        Vehicle movedCar = car.moveForwardRandomly();
+        // then
+        assertNotEquals(car, movedCar);
+        assertNotEquals(car.getPosition(), movedCar.getPosition());
+        assertEquals(car.getPosition().getValue(), movedCar.getPosition().getValue() - 1);
     }
 }
