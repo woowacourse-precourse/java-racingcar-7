@@ -27,6 +27,7 @@ public class Application {
 
             raceCars(tryCount);
             carPosition();
+            raceWinner();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -91,6 +92,19 @@ public class Application {
             System.out.println(carName + "자동차가 전진하지 않습니다.");
         }
         return move;
+    }
+
+    private static void raceWinner(){
+        int maxPosition = carPositions.stream().max(Integer::compareTo).orElse(0);
+        List <String> winners = new ArrayList<>();
+
+        for(int i = 0; i < carPositions.size(); i++){
+            if(carPositions.get(i) == maxPosition){
+                winners.add(carNames.get(i));
+            }
+        }
+
+        System.out.println("우승자는" + String.join(",", winners) + "입니다.");
     }
 
 }
