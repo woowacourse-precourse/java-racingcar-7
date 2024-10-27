@@ -24,5 +24,7 @@ public class Race {
             cars.get().forEach(outputView::printResult);
             outputView.printNewLine();
         }
+        final List<String> winners = cars.getWinners();
+        outputView.printWinners(winners);
     }
 }
