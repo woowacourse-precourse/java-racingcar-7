@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.domain.Attept;
+import racingcar.domain.Attempt;
 import racingcar.domain.CarNames;
 import racingcar.view.InputView;
 import racingcar.view.OutputMessage;
@@ -17,7 +17,7 @@ public class RacingController {
 
 	public void run() {
 		CarNames carNames = inputCarName();
-		Attept attept = inputAttept();
+		Attempt attept = inputAttempt();
 	}
 
 	private CarNames inputCarName() {
@@ -26,9 +26,9 @@ public class RacingController {
 		return CarNames.from(input);
 	}
 
-	private Attept inputAttept() {
+	private Attempt inputAttempt() {
 		outputView.print(OutputMessage.INSERT_ATTEMPT);
 		String input = inputView.readLine();
-		return new Attept(input);
+		return Attempt.from(input);
 	}
 }

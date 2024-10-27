@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import racingcar.common.exception.CarErrorMessages;
+import racingcar.common.exception.ErrorMessages;
 
 public class CarNames {
 	private final List<CarName> carNames;
@@ -29,14 +29,14 @@ public class CarNames {
 
 	private static void validateNotBlank(String input) {
 		if (input == null || input.isBlank() || input.endsWith(",")) {
-			throw new IllegalArgumentException(CarErrorMessages.BLANK_NOT_ALLOWE.getMessage());
+			throw new IllegalArgumentException(ErrorMessages.BLANK_NOT_ALLOWE.getMessage());
 		}
 	}
 
 	private static void validateNoDuplicates(List<CarName> carNames) {
 		Set<CarName> uniqueNames = new HashSet<>(carNames);
 		if (uniqueNames.size() != carNames.size()) {
-			throw new IllegalArgumentException(CarErrorMessages.DUPLICATE_NAME.getMessage());
+			throw new IllegalArgumentException(ErrorMessages.DUPLICATED.getMessage());
 		}
 	}
 }

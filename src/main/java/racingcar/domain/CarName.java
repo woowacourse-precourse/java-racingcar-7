@@ -2,10 +2,10 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-import racingcar.common.constant.Constant;
-import racingcar.common.exception.CarErrorMessages;
+import racingcar.common.exception.ErrorMessages;
 
 public class CarName {
+	private static final int MAX_NAME_LENGTH = 5;
 	private final String value;
 
 	public CarName(String value) {
@@ -14,8 +14,8 @@ public class CarName {
 	}
 
 	private void validate(String value) {
-		if (value.length() > Constant.CAR_NAME_MAX_LENGTH) {
-			throw new IllegalArgumentException(CarErrorMessages.OVER_MAX_LENGTH.getMessage());
+		if (value.length() > MAX_NAME_LENGTH) {
+			throw new IllegalArgumentException(ErrorMessages.OVER_MAX_LENGTH.getMessage());
 		}
 	}
 
