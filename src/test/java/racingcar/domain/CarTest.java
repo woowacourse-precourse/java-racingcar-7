@@ -1,42 +1,43 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class CarTest {
+public class CarTest extends NsTest {
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
 
     @Test
-    void 유효한_이름으로_Car_객체_생성() {
-        String validName = "pobi";
-        Car car = new Car(validName);
-        assertNotNull(car);
+    @DisplayName("랜덤 값에 따라 이동 조건을 만족할 때 위치가 증가한다")
+    void carMovesWhenConditionMet() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    Car car = new Car("poby");
+                    car.move();
+                    assertEquals(1, car.getPosition());
+                },
+                MOVING_FORWARD
+        );
     }
 
     @Test
-    void 유효한_이름으로_예외없이_Car_객체_생성() {
-        assertDoesNotThrow(() -> new Car("pobi"));
+    @DisplayName("랜덤 값에 따라 이동 조건을 만족하지 않을 때 위치가 유지된다")
+    void carDoesNotMoveWhenConditionNotMet() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    Car car = new Car("poby");
+                    car.move();
+                    assertEquals(0, car.getPosition());
+                },
+                STOP
+        );
     }
 
-    @Test
-    void 유효하지_않은_이름으로_예외없이_Car_객체_생성() {
-        String validName = "pobijk";
-        assertThrows(IllegalArgumentException.class, () -> new Car(validName));
+    @Override
+    public void runMain() {
     }
-
-//    @Test
-//    void 전진조건_만족시_위치가_증가한다() {
-//        Car car = new Car("pobi");
-//        car.move(4);
-//        assertEquals(1, car.getPosition());
-//    }
-//
-//    @Test
-//    void 전진조건_불만족시_위치가_변하지_않는다() {
-//        Car car = new Car("pobi");
-//        car.move(3);
-//        assertEquals(0, car.getPosition());
-//    }
-
 }
-
