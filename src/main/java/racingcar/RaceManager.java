@@ -4,13 +4,23 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class RaceManager {  // raceCount만큼 반복
+public class RaceManager {
     private static final String MOVING_MARKER = "-";
     private final LinkedHashMap<String, StringBuilder> carMovementRecords = new LinkedHashMap<>();
+    private final RaceOutput raceOutput;
 
-    public RaceManager(List<String> racingCarNames) {
+    public RaceManager(List<String> racingCarNames, RaceOutput raceOutput) {
+        this.raceOutput = raceOutput;
         for (String racingCarName : racingCarNames) {
             carMovementRecords.put(racingCarName, new StringBuilder());
+        }
+    }
+
+    public void startRace(int raceCount) {
+        raceOutput.printRaceStartMessage(); // RaceOutput으로
+        for (int i = 0; i < raceCount; i++) {
+            moveCarsForward();
+            raceOutput.printRaceStatus(carMovementRecords);
         }
     }
 
