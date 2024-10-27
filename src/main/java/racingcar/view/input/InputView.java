@@ -23,7 +23,7 @@ public class InputView {
                 throw new IllegalArgumentException("시도 횟수로는 음이 아닌 정수를 입력해주세요");
             }
             return new InputValue(carNames, attemptCount);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수로는 음이 아닌 정수를 입력해주세요");
         }
     }

@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestIntegerGenerator implements IntegerGenerator{
+public class TestIntegerGenerator implements IntegerGenerator {
 
-    private List<Integer> randomNumberList;
-    private int carCount;
+    private final List<Integer> randomNumberList;
+    private final int carCount;
     private int currentIndex;
 
     public TestIntegerGenerator(int carCount) {
@@ -32,7 +32,7 @@ public class TestIntegerGenerator implements IntegerGenerator{
 
     private List<Integer> createRandomNumberList() {
         List<Integer> randomNumberList = new ArrayList<>();
-        for (int i = 0; i < carCount; i ++) {
+        for (int i = 0; i < carCount; i++) {
             randomNumberList.add(Randoms.pickNumberInRange(0, 9));
         }
         return randomNumberList;
