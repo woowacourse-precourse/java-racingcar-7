@@ -22,12 +22,7 @@ public class RacingCarController {
 
         Map<String, String> racingResult = racingCarService.initializeCarPositions(splitCarNames);
 
-        System.out.println("실행 결과");
-        for (int i = 0; i < tryNumber; i++) {
-            List<String> canMoveCarList = racingCarService.getListCanMoveCarNames(splitCarNames);
-            racingResult = racingCarService.updateCarPositions(racingResult, canMoveCarList);
-            racingCarViewer.showRacingResult(racingResult);
-        }
+        repeatRacingResult(tryNumber, splitCarNames, racingResult);
 
         String maxMove = racingCarService.findMaxMove(racingResult);
         List<String> winners = racingCarService.getListRacingWinners(racingResult, maxMove);
@@ -54,5 +49,16 @@ public class RacingCarController {
         tryNumberValidator.validateTryNumber(tryNumber);
 
         return Integer.parseInt(tryNumber);
+    }
+
+    private void repeatRacingResult(int tryNumber, List<String> splitCarNames, Map<String, String> racingResult) {
+
+        racingCarViewer.showRepeatRacingResult();
+
+        for (int i = 0; i < tryNumber; i++) {
+            List<String> canMoveCarList = racingCarService.getListCanMoveCarNames(splitCarNames);
+            racingResult = racingCarService.updateCarPositions(racingResult, canMoveCarList);
+            racingCarViewer.showFinalRacingResult(racingResult);
+        }
     }
 }

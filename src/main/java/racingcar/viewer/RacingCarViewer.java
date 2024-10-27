@@ -24,8 +24,12 @@ public class RacingCarViewer {
         System.out.println("최종 우승자 : " + result);
     }
 
-    public void showRacingResult(Map<String, String> racingResult) {
+    public void showFinalRacingResult(Map<String, String> racingResult) {
         racingResult.forEach((k, v) -> System.out.println(k + " : " + v));
         System.out.println();
+    }
+
+    public void showRepeatRacingResult() {
+        System.out.println("실행 결과");
     }
 }
