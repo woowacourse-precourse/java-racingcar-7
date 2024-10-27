@@ -10,20 +10,11 @@ public class InputView {
 
     public static String inputCarNames() {
         System.out.println(CAR_NAMES_MESSAGE);
-        String input = Console.readLine().trim();
-
-        InputValidator.validateEmpty(input);
-        InputValidator.validateCharacter(input);
-
-        return input;
+        return Console.readLine().trim();
     }
 
-    public static int inputTryNumber() {
+    public static String inputTryNumber() {
         System.out.println(TRY_NUMBER_MESSAGE);
-        String tryNumber = Console.readLine().trim();
-
-        InputValidator.validateInteger(tryNumber);
-
-        return Integer.parseInt(tryNumber);
+        return Console.readLine().trim();
     }
 }

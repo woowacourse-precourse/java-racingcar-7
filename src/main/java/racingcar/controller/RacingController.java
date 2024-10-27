@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.service.RacingService;
 import racingcar.utils.Utils;
+import racingcar.validator.CarNameValidator;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -15,24 +16,32 @@ public class RacingController {
     private final List<Car> cars = new ArrayList<>();
 
     public void run() {
-        cars.addAll(inputCarName());
-        int tryNumber = InputView.inputTryNumber();
+        String carNames = inputCarNames();
+        int tryNumber = inputTryNumber();
 
+        cars.addAll(initializeCars(carNames));
         racingService.startRace(cars, tryNumber);
 
         List<String> winners = racingService.getWinners(cars);
         OutputView.printWinner(winners);
     }
 
-    private List<Car> inputCarName() {
-        String input = InputView.inputCarNames();
-        List<String> carList = Utils.splitDelimiterCars(input);
-        return initializeCars(carList);
+    private String inputCarNames() {
+        String carNames = InputView.inputCarNames();
+        InputValidator.validateEmpty(carNames);
+        return carNames;
     }
 
-    private List<Car> initializeCars(List<String> carList) {
+    private int inputTryNumber() {
+        String tryNumber = InputView.inputTryNumber();
+        InputValidator.validateInteger(tryNumber);
+        return Integer.parseInt(tryNumber);
+    }
+
+    private List<Car> initializeCars(String carNames) {
+        List<String> carList = Utils.splitByDelimiter(carNames);
         return carList.stream()
-                .peek(InputValidator::validateNameLength)
+                .peek(CarNameValidator::validateCarName)
                 .map(Car::new)
                 .toList();
     }
