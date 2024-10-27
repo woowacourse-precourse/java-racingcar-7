@@ -2,23 +2,11 @@ package racingcar.request;
 
 import java.util.List;
 
-public class RaceCreateRequest {
-    private final List<String> names;
-    private final int tryCount;
+public record RaceCreateRequest(List<String> names, int tryCount) {
 
-    public RaceCreateRequest(List<String> names, int tryCount) {
+    public RaceCreateRequest {
         validateName(names);
         validateTryCount(tryCount);
-        this.names = names;
-        this.tryCount = tryCount;
-    }
-
-    public List<String>  getNames() {
-        return names;
-    }
-
-    public int getTryCount() {
-        return tryCount;
     }
 
     private void validateTryCount(int tryCount) {
@@ -27,7 +15,7 @@ public class RaceCreateRequest {
         }
     }
 
-    private void validateName(List<String>  names) {
+    private void validateName(List<String> names) {
         if (names == null || names.isEmpty()) {
             throw new IllegalArgumentException();
         }

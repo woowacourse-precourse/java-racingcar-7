@@ -15,7 +15,7 @@ public class RaceController {
     }
 
     public void createRace(RaceCreateRequest request) {
-        service.createRace(request.getNames(), request.getTryCount());
+        service.createRace(request.names(), request.tryCount());
     }
 
     public RoundResponse playRound() {
