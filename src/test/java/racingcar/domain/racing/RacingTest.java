@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,5 +52,32 @@ class RacingTest {
 
         //then
         assertThatThrownBy(racing::playRound).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("현재 라운트 상태 조회 - 라운드를 진행하지 않은 경우")
+    void getCurrentPosition() {
+        //given
+        Map<String, Long> expected = new LinkedHashMap<>(Map.of("test1", 0L, "test2", 0L, "test3", 0L));
+
+        //when
+        Map<String, Long> actual = racing.getCurrentPosition();
+
+        //then
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("현재 라운트 상태 조회 - 라운드를 진행한 경우")
+    void getCurrentPositionAfterPlayRound() {
+        //given
+        Map<String, Long> expected = new LinkedHashMap<>(Map.of("test1", 1L, "test2", 1L, "test3", 1L));
+
+        //when
+        racing.playRound();
+        Map<String, Long> actual = racing.getCurrentPosition();
+
+        //then
+        assertThat(actual).isEqualTo(expected);
     }
 }
