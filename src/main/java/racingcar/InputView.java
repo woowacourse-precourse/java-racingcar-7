@@ -10,11 +10,16 @@ public class InputView {
     }
     public static int inputNumberOfAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int numberOfAttempts = Integer.parseInt(Console.readLine());
-        if(numberOfAttempts <= 0 )
-            throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
-
-        return numberOfAttempts;
+        try {
+            int numberOfAttempts = Integer.parseInt(Console.readLine());
+            validatePositiveNumber(numberOfAttempts);
+            return numberOfAttempts;
+        }catch (RuntimeException e) {
+            throw new IllegalArgumentException("올바른 숫자 형식이 아닙니다.");
+        }
     }
-
+    private static void validatePositiveNumber(int number) {
+        if(number <= 0 )
+            throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
+    }
 }
