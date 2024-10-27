@@ -80,7 +80,7 @@ public class Application {
             }
         }
 
-        System.out.println("최종 우승자: " + String.join(", ", winners));
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
 
     }
 }
