@@ -1,26 +1,46 @@
 package racingcar.controller;
 
+import racingcar.model.Car;
 import racingcar.model.RacingGame;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingGameController {
-    private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
     private RacingGame racingGame;
+    private OutputView outputView;
+
+    public RacingGameController() {
+        outputView = new OutputView();
+    }
 
     public void start() {
-        String carNames = inputView.inputCarNames(); // 자동차 이름을 입력받음
-        String[] carNameArray = carNames.split(","); // 입력된 이름을 쉼표로 분리
-        InputValidator.validateCarNames(carNameArray); // 입력 검증
+        List<Car> cars = inputCarNames();
+        int trialCount = inputTrialCount();
 
-        int trialCount = inputView.inputTrialCount();
+        racingGame = new RacingGame(cars, trialCount);
+        playGame();
+    }
+
+    private List<Car> inputCarNames() {
+        String carNames = InputView.inputCarNames();
+        InputValidator.validateCarNames(carNames); // 자동차 이름 검증
+        String[] names = carNames.split(",");
+
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(new Car(name.trim())); // 공백 제거 후 추가
+        }
+        return cars;
+    }
+
+    private int inputTrialCount() {
+        int trialCount = InputView.inputTrialCount();
         InputValidator.validateTrialCount(trialCount); // 시도 횟수 검증
-
-        racingGame = new RacingGame(carNameArray, trialCount); // RacingGame 초기화
-        playGame(); // 게임 진행
-        printWinners(); // 우승자 출력
+        return trialCount;
     }
 
     private void playGame() {
@@ -28,9 +48,6 @@ public class RacingGameController {
             racingGame.playRound();
             outputView.printRoundResult(racingGame.getCars());
         }
-    }
-
-    private void printWinners() {
         outputView.printWinners(racingGame.getWinners());
     }
 }
