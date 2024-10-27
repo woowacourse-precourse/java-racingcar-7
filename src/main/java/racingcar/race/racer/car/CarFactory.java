@@ -1,7 +1,7 @@
-package racingcar.racer.car;
+package racingcar.race.racer.car;
 
 import racingcar.io.CarInputHandler;
-import racingcar.racer.RacerFactory;
+import racingcar.race.racer.RacerFactory;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package racingcar.racer.car;
+package racingcar.race.racer.car;
 
-import racingcar.racer.RacerUtils;
+import racingcar.race.racer.RacerUtils;
 
 // Car 객체에만 할당돼야 하는 기능 추가 (확장성 고려)
 // 하나의 인스턴스를 공유하기 위해 싱글톤 패턴 적용

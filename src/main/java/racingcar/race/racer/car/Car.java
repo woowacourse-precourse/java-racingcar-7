@@ -1,6 +1,6 @@
-package racingcar.racer.car;
+package racingcar.race.racer.car;
 
-import racingcar.racer.Racer;
+import racingcar.race.racer.Racer;
 
 public class Car extends Racer {
     private final CarUtils carUtils = CarUtils.getInstance();

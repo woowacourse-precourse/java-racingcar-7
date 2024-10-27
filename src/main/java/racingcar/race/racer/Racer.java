@@ -1,4 +1,4 @@
-package racingcar.racer;
+package racingcar.race.racer;
 
 public abstract class Racer {
     private final String name;

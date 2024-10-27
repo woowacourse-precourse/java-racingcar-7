@@ -1,6 +1,6 @@
 package racingcar.race;
 
-import racingcar.racer.car.Car;
+import racingcar.race.racer.car.Car;
 
 import java.util.ArrayList;
 import java.util.Collections;

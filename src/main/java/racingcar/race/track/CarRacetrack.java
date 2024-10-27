@@ -1,11 +1,12 @@
-package racingcar.race;
+package racingcar.race.track;
 
 import java.util.List;
 
 import racingcar.io.CarInputHandler;
 import racingcar.io.CarOutputHandler;
-import racingcar.racer.car.Car;
-import racingcar.racer.car.CarFactory;
+import racingcar.race.RaceController;
+import racingcar.race.racer.car.Car;
+import racingcar.race.racer.car.CarFactory;
 
 public class CarRacetrack implements Racetrack {
     CarInputHandler inputHandler = new CarInputHandler();
