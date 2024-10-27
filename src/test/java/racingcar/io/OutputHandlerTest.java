@@ -16,18 +16,11 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 class OutputHandlerTest {
     private final OutputHandler outputHandler = new OutputHandler();
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    private final PrintStream standardOut = System.out;
 
     @BeforeEach
     void setUpOutputStreams() {
         System.setOut(new PrintStream(outputStream));
     }
-
-//    @AfterEach
-//    void restoreOutputStreams() {
-//        System.setOut(standardOut);
-//        outputStream.reset();
-//    }
 
     protected String getOutputStream() {
         return outputStream.toString().trim();
@@ -38,7 +31,10 @@ class OutputHandlerTest {
     void test1() {
         assertSimpleTest(() -> {
             // given
-            List<Car> carList = createCarList();
+            Car car1 = new Car("pobi", 1);
+            Car car2 = new Car("woni", 3);
+            Car car3 = new Car("john", 2);
+            List<Car> carList = List.of(car1, car2, car3);
 
             GameData gameData = new GameData();
             gameData.save(carList);
@@ -53,11 +49,23 @@ class OutputHandlerTest {
         });
     }
 
-    private List<Car> createCarList() {
-        Car car1 = new Car("pobi", 1);
-        Car car2 = new Car("woni", 3);
-        Car car3 = new Car("john", 2);
-        return List.of(car1, car2, car3);
+    @DisplayName("최종 우승자를 출력한다.")
+    @Test
+    void test2() {
+        assertSimpleTest(() -> {
+            // given
+            Car car1 = new Car("pobi");
+            Car car2 = new Car("woni");
+            List<Car> carList = List.of(car1, car2);
+
+            String winnerString = "최종 우승자 : pobi, woni";
+
+            // when
+            outputHandler.printWinner(carList);
+
+            // then
+            Assertions.assertThat(getOutputStream()).isEqualTo(winnerString);
+        });
     }
 
 }
