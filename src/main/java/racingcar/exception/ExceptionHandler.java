@@ -1,7 +1,7 @@
 package racingcar.exception;
 
 public class ExceptionHandler {
-    public static void handleIllegalArgumentExeption(IllegalArgumentException e) {
+    public static void handleIllegalArgumentException(IllegalArgumentException e) {
         System.out.println(e.getMessage());
     }
 }

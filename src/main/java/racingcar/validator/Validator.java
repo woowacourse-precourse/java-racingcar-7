@@ -22,13 +22,13 @@ public class Validator {
     }
 
     public static void validateIsNumeric(String input) {
-        if (input == null || !input.matches("\\d+"))  {
+        if (input == null || !input.matches("\\d+")) {
             throw new IllegalArgumentException("Rounds 수에는 숫자만 허용됩니다.");
         }
     }
 
     public static void validateTryRounds(Integer input) {
-        if (input < 1)  {
+        if (input < 1) {
             throw new IllegalArgumentException("Rounds 수는 1 이상이여야 합니다.");
         }
     }

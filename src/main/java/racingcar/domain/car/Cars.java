@@ -23,7 +23,7 @@ public class Cars {
         return cars;
     }
 
-    public  List<Car> getWinners() {
+    public List<Car> getWinners() {
         int maxMoveCount = getMaxMoveCount();
         List<Car> winners = new ArrayList<>();
 
