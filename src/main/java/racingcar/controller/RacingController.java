@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.domain.Attempt;
 import racingcar.domain.Car.Car;
 import racingcar.domain.Car.CarNames;
+import racingcar.domain.Race;
 import racingcar.view.InputView;
 import racingcar.view.OutputMessage;
 import racingcar.view.OutputView;
@@ -22,7 +23,7 @@ public class RacingController {
 		CarNames carNames = inputCarName();
 		Attempt attempt = inputAttempt();
 		List<Car> cars = registerCars(carNames);
-
+		Race race = Race.from(attempt, cars);
 	}
 
 	private CarNames inputCarName() {
