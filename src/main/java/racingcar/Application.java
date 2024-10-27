@@ -1,5 +1,6 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     Car[] cars;
@@ -28,10 +29,26 @@ public class Application {
         System.out.println();
     }
 
+    void playRacing(){
+        System.out.println("실행 결과");
+        for(int j=0;j<attempt;j++){
+            actionPerAttempt();
+        }
+    }
+
+    void actionPerAttempt() {
+        for (int j=0; j<carCount; j++) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            if (randomValue >= 4) {
+                cars[j].go += 1;
+            }
+        }
+    }
 
     public void start(){
         inputCar();
         inputNum();
+        playRacing();
     }
 
     public static void main(String[] args) {
