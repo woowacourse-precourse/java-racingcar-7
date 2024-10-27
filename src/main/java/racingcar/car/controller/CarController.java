@@ -22,7 +22,9 @@ public class CarController {
 
         List<Car> cars = carService.getCars();
 
-        displayResults(tryCount, cars);
+        moveCars(tryCount, cars);
+
+        displayResult(cars);
     }
 
     private void initializeCars() {
@@ -37,12 +39,14 @@ public class CarController {
         return tryCount;
     }
 
-    private void displayResults(int tryCount, List<Car> cars) {
+    private void moveCars(int tryCount, List<Car> cars) {
         for (int i = 0; i < tryCount; i++) {
             carService.move(cars);
             OutputView.printResult(cars);
         }
+    }
 
+    private void displayResult(List<Car> cars) {
         OutputView.printWinner(cars);
     }
 

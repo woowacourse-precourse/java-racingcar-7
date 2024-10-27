@@ -19,7 +19,7 @@ public class CarService {
     }
 
     public void create(String carInput) {
-        String[] split = getCarNames(carInput);
+        String[] split = parseCarNames(carInput);
         for (String s : split) {
             cars.add(new Car(s.trim()));
         }
@@ -36,7 +36,7 @@ public class CarService {
         }
     }
 
-    private static String[] getCarNames(String carInput) {
+    private static String[] parseCarNames(String carInput) {
         return carInput.split(",");
     }
 
