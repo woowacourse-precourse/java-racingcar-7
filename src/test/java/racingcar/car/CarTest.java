@@ -22,7 +22,7 @@ class CarTest {
                 .hasMessage(EMPTY_STRING_NAME_ERROR_MESSAGE);
     }
 
-    @DisplayName("차의 이름은 5글자 이하만 가능핟.")
+    @DisplayName("차의 이름은 5글자 이하만 가능하다.")
     @Test
     void nameSizeOverFive() {
         //given
@@ -39,10 +39,10 @@ class CarTest {
         //given
         String name = "car1";
         Car car = new Car(name);
-        List<Integer> randomValues = List.of(4, 3, 5 ,1);
+        List<Integer> randomValues = List.of(4, 3, 5, 1);
         int attemptCount = 3;
 
-        for(int i = 0 ; i < attemptCount; i++) {
+        for (int i = 0; i < attemptCount; i++) {
             car.attemptMoving(randomValues.get(i));
         }
 

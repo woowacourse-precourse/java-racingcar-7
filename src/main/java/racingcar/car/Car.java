@@ -64,7 +64,7 @@ public class Car {
         }
     }
 
-    private  boolean isMoveableNumber(int randomNumber) {
+    private boolean isMoveableNumber(int randomNumber) {
         return randomNumber >= MOVEABLE_MIN_NUMBER;
     }
 
