@@ -8,8 +8,8 @@ import racingcar.validator.CarNameValidator;
 import racingcar.validator.TryNumbersValidator;
 
 public class InputView {
-    private TryNumbersValidator tryNumbersValidator;
-    private CarNameValidator carNameValidator;
+    private final TryNumbersValidator tryNumbersValidator;
+    private final CarNameValidator carNameValidator;
 
     public InputView() {
         this.tryNumbersValidator = new TryNumbersValidator();
