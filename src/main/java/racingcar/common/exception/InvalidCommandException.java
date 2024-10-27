@@ -1,4 +1,4 @@
-package racingcar.exception;
+package racingcar.common.exception;
 
 import racingcar.common.constant.MessageConstants;
 
