@@ -14,4 +14,8 @@ public final class GameView {
 
         return Console.readLine().trim();
     }
+
+    public void displayGameStart() {
+        System.out.println("실행 결과");
+    }
 }
