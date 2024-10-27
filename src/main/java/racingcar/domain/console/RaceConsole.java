@@ -23,12 +23,10 @@ public class RaceConsole {
         final Race race = controller.createRace(carNames, rounds);
 
         ConsoleWriter.write(RESULT_MESSAGE);
-        while (!controller.isRaceFinished(race)) {
-            controller.moveAllCars(race);
-            printRaceStatus(race);
-        }
 
-        printWinners(race);
+        controller.runRace(race);
+
+        printRaceResults(race);
     }
 
     private List<String> inputCarNames() {
@@ -41,14 +39,11 @@ public class RaceConsole {
         return Integer.parseInt(ConsoleReader.read());
     }
 
-    private void printRaceStatus(Race race) {
+    private void printRaceResults(Race race) {
         for (String status : controller.getRaceStatus(race)) {
             ConsoleWriter.write(status);
         }
         ConsoleWriter.write("");
-    }
-
-    private void printWinners(Race race) {
         ConsoleWriter.write(WINNER_MESSAGE + String.join(", ", controller.getWinners(race)));
     }
 }

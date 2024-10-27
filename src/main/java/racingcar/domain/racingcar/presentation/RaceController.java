@@ -5,7 +5,6 @@ import racingcar.domain.racingcar.domain.Race;
 import java.util.List;
 
 public class RaceController {
-
     private static RaceController instance;
     private final RaceService raceService;
 
@@ -24,19 +23,17 @@ public class RaceController {
         return raceService.createRace(carNames, rounds);
     }
 
-    public void moveAllCars(Race race) {
-        raceService.moveAllCars(race);
-    }
-
-    public boolean isRaceFinished(Race race) {
-        return race.isRaceFinished();
-    }
-
-    public List<String> getWinners(Race race) {
-        return raceService.getWinnerNames(race);
+    public void runRace(Race race) {
+        while (!race.isRaceFinished()) {
+            raceService.moveAllCars(race);
+        }
     }
 
     public List<String> getRaceStatus(Race race) {
         return raceService.getRaceStatus(race);
+    }
+
+    public List<String> getWinners(Race race) {
+        return raceService.getWinnerNames(race);
     }
 }
