@@ -52,7 +52,7 @@ public class RacingGame {
 
     public Integer changeTryTimesNumber() {
 
-        if (!Pattern.matches(REGEX_PATTERN,tryNumber)){
+        if (!Pattern.matches(REGEX_PATTERN,tryNumber) || tryNumber.isEmpty()){
             throw new IllegalArgumentException(TRY_NUMBER_ERROR_MESSAGE);
         }
         return Integer.parseInt(tryNumber);
