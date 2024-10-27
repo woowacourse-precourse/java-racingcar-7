@@ -1,10 +1,13 @@
 package racingcar;
 
+import static racingcar.Winner.winners;
+
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.io.ConsoleInputHandler;
 import racingcar.io.ConsoleOutputHandler;
 import racingcar.util.Separator;
+import racingcar.vehicle.Car;
 
 public class RacingCar {
 
@@ -36,7 +39,7 @@ public class RacingCar {
             System.out.println();
         }
 
-        List<Car> winners = winner.determineWinners(cars);
+        winners = winner.determineWinners(cars);
 
         consoleOutputHandler.printWinner(winners);
     }

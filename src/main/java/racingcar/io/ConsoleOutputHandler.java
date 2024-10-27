@@ -2,8 +2,7 @@ package racingcar.io;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.Car;
-import racingcar.Winner;
+import racingcar.vehicle.Car;
 
 public class ConsoleOutputHandler {
 
