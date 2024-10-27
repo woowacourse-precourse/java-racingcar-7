@@ -8,7 +8,7 @@
     * carNameValidation : 참가하는 자동차 이름이 5글자가 넘는지 확인
     * printCarPosition : 현재 자동차들의 진행 상태를 출력
     * play : 시도 횟수(attemptCount) 만큼 자동차 경주를 진행
-    * randomNumberTriggerAndStoreList : 난수 생성 후 4이상일 경우 carList의 position + 1
+    * updatePosition : 난수 생성 후 4이상일 경우 carList의 position + 1
 
 3. Car.java : 자동차 경주를 진행하는 자동차의 이름과 현재 위치를 담는 객체
 
