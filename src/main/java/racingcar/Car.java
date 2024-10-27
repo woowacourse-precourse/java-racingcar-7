@@ -19,4 +19,16 @@ public class Car {
     public void showDistance() {
         ConsoleOutputHandler.showCarDistance(carName, distance);
     }
+
+    public boolean isFurtherThan(Car leadingCar) {
+        return this.distance > leadingCar.distance;
+    }
+
+    public boolean hasSameDistanceAs(Car leadingCar) {
+        return this.distance == leadingCar.distance;
+    }
+
+    public String getCarName() {
+        return this.carName;
+    }
 }

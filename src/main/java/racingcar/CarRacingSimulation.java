@@ -17,16 +17,13 @@ public class CarRacingSimulation {
     public void run() {
         consoleOutputHandler.racingCarNamingMessage(); // "자동차 이름 입력 안내" 메세지 출력
         String userInputCarNameString = consoleInputHandler.getUserInputCarNameString(); // 유저 입력 받기 (자동차 이름 문자열)
-        List<String> carNameList = UserInputStringConverter.toList(userInputCarNameString); // 입력 문자열 자동치 이름 리스트로 변환
+        List<String> carNameList = UserInputStringConverter.toList(userInputCarNameString); // 입력 문자열 자동치 이름 리스트 로 변환
         CarNameListValidator.integratedValidation(carNameList); // 자동차 이름들 유효성 검사
         List<Car> carList = createCarList(carNameList); // 자동차 객체 리스트 생성
         consoleOutputHandler.attemptCountMessage(); // "시도 횟수 입력 안내" 메세지 출력
         int attemptCount = consoleInputHandler.getUserInputAttemptCount(); // 유저 입력 받기 (시도 횟수)
-        racingStart(carList,attemptCount);
-
-        //TODO 우승자(가장 많이 전진한 자동차) 찾아서 List<String> 으로 이름 받기
-        List<String> winnerList = new ArrayList<>(Arrays.asList("John","Mike")); // winnerList 목업 데이터로 선언
-
+        racingStart(carList,attemptCount); // 시도 횟수 만큼 자동차 전진 또는 정지
+        List<String> winnerList = findWinners(carList); // 우승자 찾아서 리스트 로 받아옴
         consoleOutputHandler.finalWinnerMessage(winnerList); // 최종 우승자 출력
     }
 
@@ -46,5 +43,23 @@ public class CarRacingSimulation {
             }
             System.out.println();
         }
+    }
+
+    private List<String> findWinners(List<Car> carList) {
+        Car leadingCar = null;
+        List<String> winnerList = new ArrayList<>();
+
+        for(Car car : carList) {
+            if(leadingCar == null || car.isFurtherThan(leadingCar)){
+                winnerList.clear();
+                leadingCar = car;
+                winnerList.add(car.getCarName());
+            }
+            else if(car.hasSameDistanceAs(leadingCar)){
+                winnerList.add(car.getCarName());
+            }
+        }
+
+        return winnerList;
     }
 }
