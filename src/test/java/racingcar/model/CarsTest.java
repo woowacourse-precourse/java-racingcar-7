@@ -22,6 +22,12 @@ class CarsTest {
     }
 
     @Test
+    void 쉼표를_기준으로_자른_이름이_중복_될_경우_예외_발생(){
+        String input = "pobi,woni,woni";
+        assertThrows(IllegalArgumentException.class, () -> Cars.getInstance(input));
+    }
+
+    @Test
     @DisplayName("랜덥값은 4이상일 때 전진한다.")
     void 랜덤값들에_따라_자동차들이_움직일수있다(){
         List<Integer> randomNumbers = List.of(5, 6, 7);

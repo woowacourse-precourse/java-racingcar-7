@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -11,7 +13,16 @@ public class Cars {
 
     private Cars(List<String> names) {
         List<Car> cars = names.stream().map(Car::getInstance).toList();
+        validateDuplicateName(cars);
         this.cars = cars;
+    }
+
+    private void validateDuplicateName(List<Car> cars) {
+        List<String> carNames = cars.stream().map(car -> car.getName()).toList();
+        Set<String> distinctCarNames = cars.stream().map(car -> car.getName()).collect(Collectors.toSet());
+        if(!Objects.equals(carNames.size(), distinctCarNames.size())){
+            throw new IllegalArgumentException();
+        }
     }
 
     public static Cars getInstance(String input) {
