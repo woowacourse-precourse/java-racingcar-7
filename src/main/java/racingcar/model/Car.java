@@ -17,6 +17,9 @@ public class Car {
     }
 
     private void validateNameLength(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException(ErrorType.NOT_ALLOWED_EMPTY_CAR_NAME.getMessage());
+        }
         if (name.length() > MAXIMUM_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorType.EXCEEDED_MAXIMUM_CAR_NAME_LENGTH.getMessage());
         }
