@@ -30,13 +30,24 @@ public class OutputView {
         List<String> winners = new ArrayList<>();
         for (String name : carPositionLog.keySet()) {
             List<BigInteger> resultPositions = carPositionLog.get(name);
-            BigInteger resultPosition = resultPositions.getLast();
+            BigInteger resultPosition;
+            resultPosition = getResultPosition(resultPositions);
             if (totalMaxPosition.compareTo(resultPosition) == 0) {
                 winners.add(name);
             }
         }
         printResult.append("최종 우승자 : ");
         printResult.append(String.join(", ", winners));
+    }
+
+    private BigInteger getResultPosition(List<BigInteger> resultPositions) {
+        BigInteger resultPosition;
+        if (resultPositions.isEmpty()) {
+            resultPosition = BigInteger.ZERO;
+        } else {
+            resultPosition = resultPositions.getLast();
+        }
+        return resultPosition;
     }
 
     public String getPrintResult() {
