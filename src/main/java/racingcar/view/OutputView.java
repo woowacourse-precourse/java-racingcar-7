@@ -12,12 +12,12 @@ public class OutputView {
         listToStringConverter = new ListToStringConverter();
     }
 
-    public void printRoundOutput(HashMap<Car, Long> carToRacingProgress) {
+    public void printRoundOutput(HashMap<Car, Long> racingProgress) {
         StringBuilder sb = new StringBuilder();
-        for (Car car : carToRacingProgress.keySet()) {
+        for (Car car : racingProgress.keySet()) {
             sb.append(car.getName())
                     .append(" : ")
-                    .append(listToStringConverter.changeNumberToProgressString(carToRacingProgress.get(car)))
+                    .append(listToStringConverter.changeNumberToProgressString(racingProgress.get(car)))
                     .append("\n");
         }
         System.out.println(sb);

@@ -23,7 +23,7 @@ public class RacingServiceTest {
 
         racingService = new RacingService(carNameList);
         testCarList = racingService.getCarList();
-        testProgress = racingService.getCarToRacingProgress();
+        testProgress = racingService.getRacingProgress();
     }
 
     @Test

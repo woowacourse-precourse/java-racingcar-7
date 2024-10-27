@@ -24,7 +24,7 @@ public class RacingController {
 
         while (tryNumber > 0) {
             racingService.moveForward();
-            outputView.printRoundOutput(racingService.getCarToRacingProgress());
+            outputView.printRoundOutput(racingService.getRacingProgress());
             tryNumber--;
         }
 

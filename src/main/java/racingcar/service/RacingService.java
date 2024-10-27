@@ -9,13 +9,13 @@ import racingcar.exception.Validator;
 
 public class RacingService {
     private final List<Car> carList = new ArrayList<>();
-    private final HashMap<Car, Long> carToRacingProgress = new HashMap<>();
+    private final HashMap<Car, Long> racingProgress = new HashMap<>();
 
     public RacingService(List<String> carNameList) {
         for (String carName : carNameList) {
             Car car = new Car(carName);
             carList.add(car);
-            carToRacingProgress.put(car, 0L);
+            racingProgress.put(car, 0L);
         }
     }
 
@@ -24,26 +24,26 @@ public class RacingService {
             car.setRandomNumber();
 
             if (Validator.isFourOrMore(car.getRandomNumber())) {
-                carToRacingProgress.put(car, carToRacingProgress.get(car) + 1);
+                racingProgress.put(car, racingProgress.get(car) + 1);
             }
         }
     }
 
     public List<String> getWinner() {
-        long maxProgress = carToRacingProgress.values()
+        long maxProgress = racingProgress.values()
                 .stream()
                 .max(Long::compare)
                 .orElse(0L);
 
-        return carToRacingProgress.entrySet()
+        return racingProgress.entrySet()
                 .stream()
                 .filter(entry -> entry.getValue() == maxProgress)
                 .map(entry -> entry.getKey().getName())
                 .collect(Collectors.toList());
     }
 
-    public HashMap<Car, Long> getCarToRacingProgress() {
-        return carToRacingProgress;
+    public HashMap<Car, Long> getRacingProgress() {
+        return racingProgress;
     }
 
     public List<Car> getCarList() {

@@ -7,7 +7,7 @@ public class StringToListConverter {
     private final String input;
 
     public StringToListConverter(String input) {
-        this.input = escapeSpecialRegexChars(input);
+        this.input = input;
     }
 
     public List<String> parsingCarName() {
@@ -16,9 +16,5 @@ public class StringToListConverter {
         Validator.isDuplicatedCarName(inputList);
         Validator.overFiveCharsInCarName(inputList);
         return inputList;
-    }
-
-    private String escapeSpecialRegexChars(String input) {
-        return input.replaceAll("([\\\\.\\^\\$\\*\\+\\?\\(\\)\\[\\]\\{\\}\\|])", "\\\\$1");
     }
 }
