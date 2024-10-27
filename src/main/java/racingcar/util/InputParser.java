@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class InputParser {
 
-    public static List<Car> getCarList(UserInputDTO userInputDTO) {
+    public static List<Car> getCarList(final UserInputDTO userInputDTO) {
         List<String> carNames = getCarNames(userInputDTO.names());
         return carNames.stream()
                 .map(carName -> {
@@ -20,7 +20,7 @@ public class InputParser {
                 .collect(Collectors.toList());
     }
 
-    private static List<String> getCarNames(String names) {
+    private static List<String> getCarNames(final String names) {
         List<String> carNames = Arrays.stream(names.split(","))
                 .map(String::trim)
                 .filter(name -> !name.isEmpty())

@@ -10,7 +10,7 @@ public class OutputView {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String WINNER_MESSAGE = "최종 우승자 : ";
 
-    public static void showResult(RaceService raceService) {
+    public static void showResult(final RaceService raceService) {
         System.out.println(RESULT_MESSAGE);
         for (long i = 0; i < raceService.getNumOfStages(); i++)
             showResultInStage(i, raceService.getCarList());

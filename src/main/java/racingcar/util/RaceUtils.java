@@ -8,7 +8,7 @@ import java.util.List;
 
 public class RaceUtils {
 
-    public static String getWinners(List<Car> carList) {
+    public static String getWinners(final List<Car> carList) {
         List<String> winnerList = new ArrayList<>();
 
         Collections.sort(carList);

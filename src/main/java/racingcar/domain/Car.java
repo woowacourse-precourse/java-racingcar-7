@@ -23,24 +23,26 @@ public class Car implements Comparable<Car> {
         return this.name;
     }
 
-    public String getMoveHistoryAtStage(long stage) {
+    public String getMoveHistoryAtStage(final long stage) {
         return this.moveHistory.get(stage);
     }
 
-    public void move(long stage) {
+    public void move(final long stage) {
         if (stage == 0)
             this.moveHistory.put(stage, "-");
-        this.moveHistory.put(stage, this.getMoveHistoryAtStage(stage - 1) + "-");
+        else
+            this.moveHistory.put(stage, this.getMoveHistoryAtStage(stage - 1) + "-");
     }
 
-    public void stop(long stage) {
+    public void stop(final long stage) {
         if (stage == 0)
             this.moveHistory.put(stage, "");
-        this.moveHistory.put(stage, this.getMoveHistoryAtStage(stage - 1));
+        else
+            this.moveHistory.put(stage, this.getMoveHistoryAtStage(stage - 1));
     }
 
     @Override
-    public int compareTo(Car c) {
+    public int compareTo(final Car c) {
         return Long.compare(c.getTotalMoves(), this.getTotalMoves());
     }
 }

@@ -25,7 +25,7 @@ public class RaceService {
         raceOver();
     }
 
-    private void race(long stage) {
+    private void race(final long stage) {
         for (Car car : carList) {
             if (canMove())
                 car.move(stage);
