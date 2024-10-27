@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static racingcar.TestConstants.CAR_NAME_5;
 import static racingcar.TestConstants.CAR_NAME_BLANK;
@@ -7,10 +8,17 @@ import static racingcar.TestConstants.CAR_NAME_JUN;
 import static racingcar.TestConstants.CAR_NAME_POBI;
 import static racingcar.TestConstants.CAR_NAME_UP_5;
 import static racingcar.TestConstants.CAR_NAME_WONI;
+import static racingcar.TestConstants.GAME_COUNT_NEGATIVE;
+import static racingcar.TestConstants.GAME_COUNT_NON_INTEGER;
+import static racingcar.TestConstants.GAME_COUNT_NON_NUMERIC;
+import static racingcar.TestConstants.GAME_COUNT_POSITIVE;
+import static racingcar.TestConstants.GAME_COUNT_ZERO;
 import static racingcar.common.Constants.DUPLICATED_CAR_NAMES;
 import static racingcar.common.Constants.INVALID_CAR_NAME;
+import static racingcar.common.Constants.INVALID_GAME_COUNT;
 import static racingcar.service.ValidationService.validateCarName;
 import static racingcar.service.ValidationService.validateCarNameDuplicate;
+import static racingcar.service.ValidationService.validateGameCount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,5 +95,72 @@ class ValidationServiceTest {
         });
 
         assertEquals(INVALID_CAR_NAME, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("게임 횟수에 양수가 입력된 경우, 오류가 나지 않는다.")
+    void gameCountIsPositive () {
+        // given
+        String rawGameCount = GAME_COUNT_POSITIVE;
+
+        // when
+        validateGameCount(rawGameCount);
+
+    }
+
+    @Test
+    @DisplayName("게임 횟수는 숫자가 입력되어야 한다.")
+    void gameCountIsNumeric () {
+        // given
+        String rawGameCount = GAME_COUNT_NON_NUMERIC;
+
+        // when & then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            validateGameCount(rawGameCount);
+        });
+
+        assertEquals(INVALID_GAME_COUNT, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("게임 횟수는 정수가 입력되어야 한다.")
+    void gameCountIsInteger () {
+        // given
+        String rawGameCount = GAME_COUNT_NON_INTEGER;
+
+        // when & then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            validateGameCount(rawGameCount);
+        });
+
+        assertEquals(INVALID_GAME_COUNT, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("게임 횟수는 양수가 입력되어야 한다.")
+    void gameCountIsNotNegative () {
+        // given
+        String rawGameCount = GAME_COUNT_NEGATIVE;
+
+        // when & then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            validateGameCount(rawGameCount);
+        });
+
+        assertEquals(INVALID_GAME_COUNT, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("게임 횟수는 0이 입력되면 안된다.")
+    void gameCountIsNotZero () {
+        // given
+        String rawGameCount = GAME_COUNT_ZERO;
+
+        // when & then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            validateGameCount(rawGameCount);
+        });
+
+        assertEquals(INVALID_GAME_COUNT, exception.getMessage());
     }
 }

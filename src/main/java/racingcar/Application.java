@@ -6,11 +6,9 @@ import racingcar.view.InputView;
 
 public class Application {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        CarService carService = new CarService();
 
-        Racing racing = new Racing(inputView, carService);
+        Racing racing = new Racing();
 
-        racing.ready();
+        racing.playGame();
     }
 }
