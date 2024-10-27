@@ -10,8 +10,8 @@ import racingcar.exception.RoundCountTypeException;
 public class InputValidator {
     private static final String NUMBER_REGEX = "^[1-9][0-9]*$";
 
-    public static void validateRoundCount(String roundCountInput) {
-        if (!Pattern.matches(NUMBER_REGEX, roundCountInput)) {
+    public static void validateNumber(String input) {
+        if (!Pattern.matches(NUMBER_REGEX, input)) {
             throw new RoundCountTypeException(INPUT_ROUND_COUNT_TYPE_MESSAGE.getMessage());
         }
     }

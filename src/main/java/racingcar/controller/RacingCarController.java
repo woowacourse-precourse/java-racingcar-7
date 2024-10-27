@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import static racingcar.utils.InputValidator.validateNullOrEmpty;
-import static racingcar.utils.InputValidator.validateRoundCount;
+import static racingcar.utils.InputValidator.validateNumber;
 import static racingcar.utils.StringSeparator.separate;
 import static racingcar.view.InputView.getCarNameInput;
 import static racingcar.view.InputView.getRoundCountInput;
@@ -33,7 +33,7 @@ public class RacingCarController {
 
         String roundCountInput = getRoundCountInput();
         validateNullOrEmpty(roundCountInput);
-        validateRoundCount(roundCountInput);
+        validateNumber(roundCountInput);
         RoundCount roundCount = getRoundCount(roundCountInput);
 
         printStartMessage();

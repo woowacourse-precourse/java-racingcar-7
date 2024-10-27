@@ -1,7 +1,7 @@
 package racingcar;
 
 import static racingcar.utils.InputValidator.validateNullOrEmpty;
-import static racingcar.utils.InputValidator.validateRoundCount;
+import static racingcar.utils.InputValidator.validateNumber;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -63,6 +63,6 @@ public class ValidationTest {
     @ParameterizedTest
     @ValueSource(strings = {"01", "number", "0.1", "-1"})
     void 시도횟수_양의_정수가_아닌값_예외_테스트(String input) {
-        Assertions.assertThatThrownBy(() -> validateRoundCount(input)).isInstanceOf(RoundCountTypeException.class);
+        Assertions.assertThatThrownBy(() -> validateNumber(input)).isInstanceOf(RoundCountTypeException.class);
     }
 }
