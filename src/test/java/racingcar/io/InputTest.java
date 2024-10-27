@@ -56,6 +56,22 @@ public class InputTest extends NsTest {
         );
     }
 
+    @Test
+    void 레이스횟수가문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "A"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 레이스횟수가문자열(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "ABC"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
