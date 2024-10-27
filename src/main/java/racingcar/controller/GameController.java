@@ -40,7 +40,7 @@ public class GameController {
         List<Car> carList = carNames.stream()
                 .map(Car::of)
                 .toList();
-        return new Cars(carList);
+        return Cars.getInstance(carList);
     }
 
     private int setTryCount() {

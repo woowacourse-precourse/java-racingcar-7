@@ -7,10 +7,18 @@ import java.util.stream.Collectors;
 import racingcar.util.RandomNumberGenerator;
 
 public class Cars {
+    private static Cars instance;
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public static Cars getInstance(List<Car> cars) {
+        if (instance == null) {
+            instance = new Cars(cars);
+        }
+        return instance;
     }
 
     public void moveCars(RandomNumberGenerator randomNumberGenerator) {
@@ -21,7 +29,6 @@ public class Cars {
         return cars.stream()
                 .collect(Collectors.toMap(Car::getName, Car::getPosition));
     }
-
 
     public Set<String> getWinners() {
         int maxPosition = findMaxPosition();
