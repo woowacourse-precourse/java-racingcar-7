@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +16,10 @@ public class WinnerStatus {
                 .mapToInt(CarStatus::getPosition)
                 .max()
                 .orElse(0);
+
+        if(maxPosition == 0) {
+            return Collections.emptyList();
+        }
 
         return carStatusList.stream()
                 .filter(carStatus -> carStatus.getPosition() == maxPosition)

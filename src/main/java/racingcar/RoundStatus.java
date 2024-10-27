@@ -10,14 +10,8 @@ public class RoundStatus {
             int round,
             List<CarStatus> carStatusList
     ) {
-
         this.round = round;
         this.carStatusList = carStatusList;
-
-        var testRecord = new CarStatusRecord("a", 5, 1);
-        testRecord.name();
-        testRecord.round();
-        testRecord.position();
     }
 
     public int getRound() {
