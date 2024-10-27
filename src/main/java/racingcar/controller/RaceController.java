@@ -24,6 +24,7 @@ public class RaceController {
     }
 
     private void startRace(Race race) {
+        outputView.printResultMessage();
         for (int i = 0; i < race.getCount(); i++) {
             race.moveCars();
             outputView.printRace(race);
