@@ -24,10 +24,21 @@ public class Application {
         System.out.println("몇 번의 이동을 할 것인가요?");
         String moveInput = Console.readLine();
 
+        int tryCount;
+        try {
+            tryCount = Integer.parseInt(moveInput);
+            if (tryCount <= 0) {
+                throw new IllegalArgumentException("이동 횟수는 1회 이상이어야 합니다.");
+            }
+        }catch (NumberFormatException e) {
+                throw new IllegalArgumentException("올바른 숫자를 입력해주세요.");
+            }
+        }
+
 
         List<String> carNameList = Arrays.asList(splitName);
-        Racing racing = new Racing(carNameList);
 
+        Racing racing = new Racing(carNameList, tryCount);
         racing.startRace();
     }
 }
