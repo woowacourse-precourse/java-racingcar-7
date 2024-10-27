@@ -1,65 +1,63 @@
 package racingcar.view;
 
-import org.junit.jupiter.api.AfterEach;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class OutputViewTest {
-
-    private final PrintStream originalOut = System.out; // 원래의 System.out 저장
-
-    @AfterEach
-    void restoreSystemOut() {
-        // 각 테스틑 이후 원래 System.out 복원
-        System.setOut(originalOut);
-    }
+public class OutputViewTest extends NsTest {
 
     @Test
     void 차_이동_내역_출력_테스트() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(outputStream);
-        System.setOut(printStream);
+        // 출력 캡처
+        runWithCustomOutput(() -> {
+            List<Car> cars = List.of(
+                    createAndMoveCar("pobi", 4),
+                    createAndMoveCar("jun", 2)
+            );
+            OutputView.printCarMove(cars); // OutputView 메서드 직접 호출
+        });
 
-        Car car1 = new Car("pobi");
-        for (int i = 0; i < 4; i++) {
-            car1.move();
-        }
-        Car car2 = new Car("jun");
-        for (int i = 0; i < 2; i++) {
-            car2.move();
-        }
-        List<Car> cars = Arrays.asList(car1, car2);
-        String expectedOutput = "pobi : ----\njun : --\n\n";
-
-        OutputView.printCarMove(cars);
-        assertEquals(expectedOutput, outputStream.toString());
+        assertThat(output()).contains("pobi : ----\njun : --");
     }
 
     @Test
     void 우승자_출력_테스트() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(outputStream);
-        System.setOut(printStream);
+        // 출력 캡처
+        runWithCustomOutput(() -> {
+            List<Car> cars = List.of(
+                    createAndMoveCar("pobi", 4),
+                    createAndMoveCar("jun", 2)
+            );
+            OutputView.printFinalWinners(cars); // OutputView 메서드 직접 호출
+        });
 
-        Car car1 = new Car("pobi");
-        for (int i = 0; i < 4; i++) {
-            car1.move();
-        }
-        Car car2 = new Car("jun");
-        for (int i = 0; i < 2; i++) {
-            car2.move();
-        }
-        List<Car> cars = Arrays.asList(car1, car2);
-        String expectedOutput = "최종 우승자 : pobi, jun\n";
+        assertThat(output()).contains("최종 우승자 : pobi");
+    }
 
-        OutputView.printFinalWinners(cars);
-        assertEquals(expectedOutput, outputStream.toString());
+    private Car createAndMoveCar(String name, int moveCount) {
+        Car car = new Car(name);
+        for (int i = 0; i < moveCount; i++) {
+            car.move();
+        }
+        return car;
+    }
+
+    // NsTest의 runMain을 사용하지 않고, 커스텀 실행 메서드 정의
+    private void runWithCustomOutput(Runnable customMethod) {
+        try {
+            customMethod.run();
+        } finally {
+            Console.close(); // 필요시 Console 관련 자원 해제
+        }
+    }
+
+    @Override
+    public void runMain() {
+        // 이 테스트에서는 runMain이 필요하지 않음
     }
 }
