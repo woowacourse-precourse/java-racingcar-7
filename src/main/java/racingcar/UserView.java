@@ -37,7 +37,13 @@ public class UserView {
 
     public static void printWinner(ArrayList<String> winners){
         System.out.print("최종 우승자 : ");
+        boolean coChampions = false;
         for (String winner: winners){
+            if (coChampions){
+                System.out.print(", ");
+            }
+            else coChampions = true;
+
             System.out.print(winner);
         }
     }
