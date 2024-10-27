@@ -25,10 +25,8 @@ public class Application {
         // 2.2 시도할 횟수가 형식에 맞게 입력되었는지 확인하여 정수 타입으로 변환하는 기능
         int tryCount = getTryCount(tryCountInputString);
 
-        // 3.1 0에서 9 사이의 무작위 수를 생성하여 자동차를 전진하거나 정지하게 하는 기능
-        proceedTurn(carList);
-        // 3.2 차수별 실행 결과를 출력하는 기능
-        printTurnResult(carList);
+        // 3.3 시도할 횟수만큼 차례를 진행하는 기능
+        proceedGame(tryCount, carList);
     }
 
     public static String getCarNamesInputString() {
@@ -102,5 +100,14 @@ public class Application {
             System.out.println(car.toString());
         }
         System.out.println();
+    }
+
+    public static void proceedGame(int tryCount, ArrayList<Car> carList) {
+        for (int turn = 0; turn < tryCount; turn++) {
+            // 3.1 0에서 9 사이의 무작위 수를 생성하여 자동차를 전진하거나 정지하게 하는 기능
+            proceedTurn(carList);
+            // 3.2 차수별 실행 결과를 출력하는 기능
+            printTurnResult(carList);
+        }
     }
 }
