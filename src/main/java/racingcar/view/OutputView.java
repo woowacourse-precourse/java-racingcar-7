@@ -7,6 +7,6 @@ public class OutputView {
     }
 
     public void displayResult(StringBuilder sb) {
-        System.out.println("최종 우승자 : " + sb);
+        System.out.println("최종 우승자 : " + sb.toString());
     }
 }
