@@ -56,5 +56,22 @@ public class Application {
         System.out.println();
     }
 
+    public static List<String> getWinner(List<Car> cars) {
+        int maxPosition = 0;
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
+
 
 }
