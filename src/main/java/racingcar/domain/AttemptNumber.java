@@ -11,16 +11,22 @@ public class AttemptNumber {
     }
 
     public static AttemptNumber from(String input) {
-        int attemptNumber = Integer.parseInt(input);
+        int attemptNumber = stringToInt(input);
+        validate(attemptNumber);
         return new AttemptNumber(attemptNumber);
     }
 
-    private static int StringToInt(String input) {
+    private static int stringToInt(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_NOT_INTEGER);
         }
+    }
+
+    private static void validate(int attemptNumber) {
+        validateNegativeNumber(attemptNumber);
+        validateZeroAttempt(attemptNumber);
     }
 
     private static void validateNegativeNumber(int attemptNumber) {
