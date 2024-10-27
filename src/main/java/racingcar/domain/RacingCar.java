@@ -29,5 +29,9 @@ public class RacingCar implements Comparable<RacingCar> {
     public int compareTo(RacingCar comparedRacingCar) {
         return this.location.location() - comparedRacingCar.location.location();
     }
+
+    public boolean isSameLocation(RacingCar competeCar) {
+        return this.location.location() == competeCar.location.location();
+    }
 }
 
