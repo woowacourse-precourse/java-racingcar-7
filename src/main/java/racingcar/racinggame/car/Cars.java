@@ -12,7 +12,6 @@ public class Cars {
 	private final List<Car> cars;
 
 	private Cars(List<String> carNames) {
-
 		validateDuplicateCarName(carNames);
 
 		this.cars = carNames.stream()
@@ -33,7 +32,6 @@ public class Cars {
 	}
 
 	public void moveAll(List<Integer> randomValues) {
-
 		validateRandomValuesCount(randomValues);
 
 		for (int carSequence = 0; carSequence < cars.size(); carSequence++) {

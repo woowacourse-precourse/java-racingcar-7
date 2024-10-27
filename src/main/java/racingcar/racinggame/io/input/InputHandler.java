@@ -18,7 +18,6 @@ public class InputHandler {
 
 	public List<String> getCarNames(){
 		String inputCarNames = Console.readLine();
-
 		userInputValidation.validateInputCarNames(inputCarNames, CAR_NAME_DELIMITER);
 
 		return Arrays.asList(inputCarNames.split(CAR_NAME_DELIMITER));
@@ -26,7 +25,6 @@ public class InputHandler {
 
 	public int getTryCount() {
 		String inputTryCount = Console.readLine();
-
 		userInputValidation.validateTryCount(inputTryCount);
 
 		return Integer.parseInt(inputTryCount);

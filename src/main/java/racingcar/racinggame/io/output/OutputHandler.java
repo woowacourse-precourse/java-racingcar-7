@@ -45,7 +45,6 @@ public class OutputHandler {
 
 	public void showWinner(List<String> carNames) {
 		StringJoiner stringJoiner = new StringJoiner(WINNER_NAME_DELIMITER_SIGN);
-
 		for (String carName : carNames) {
 			stringJoiner.add(carName);
 		}

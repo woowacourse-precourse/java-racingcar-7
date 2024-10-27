@@ -5,19 +5,18 @@ import java.util.List;
 public class Car {
 
 	private static final int CAR_NAME_MAX_LENGTH = 5;
-	private static final String OVER_FLOW_CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5자 이하만 가능합니다.";
-	private static final String BLANK_CAR_NAME_ERROR_MESSAGE = "자동차 이름이 존재해야 합니다.";
 	private static final int INITIAL_MOVE_DISTANCE = 0;
 	private static final int MOVE_CONDITION = 4;
 	private static final int MIN_RANDOM_VALUE = 0;
 	private static final int MAX_RANDOM_VALUE = 9;
+	private static final String OVER_FLOW_CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5자 이하만 가능합니다.";
+	private static final String BLANK_CAR_NAME_ERROR_MESSAGE = "자동차 이름이 존재해야 합니다.";
 	private static final String OVER_FLOW_RANDOM_VALUE_RANGE_ERROR_MESSAGE = "무작위 값의 범위는 0~9 사이입니다.";
 
 	private final String name;
 	private int moveDistance;
 
 	private Car(String name, int moveDistance) {
-
 		validateName(name);
 
 		this.name = name;
@@ -50,7 +49,6 @@ public class Car {
 	}
 
 	public void move(int randomValue) {
-
 		validateRandomValueRange(randomValue);
 
 		if (isPossibleToMove(randomValue)) {

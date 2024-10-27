@@ -11,7 +11,6 @@ public class RandomNumberGenerator {
 	}
 
 	public static List<Integer> generateBy(int min, int max, int numberCount) {
-
 		List<Integer> numbers = new ArrayList<>(numberCount);
 
 		for (int i = 0; i < numberCount; i++) {

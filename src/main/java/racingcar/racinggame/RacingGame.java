@@ -52,7 +52,8 @@ public class RacingGame {
 		List<Integer> randomNumbers = RandomNumberGenerator.generateBy(
 			MIN_RANDOM_NUMBER,
 			MAX_RANDOM_NUMBER,
-			carCount);
+			carCount
+		);
 
 		cars.moveAll(randomNumbers);
 		outputHandler.showEachRound(cars);
