@@ -1,6 +1,7 @@
 package racingcar.domain.player;
 
 import racingcar.domain.car.Car;
+import racingcar.domain.car.Distance;
 
 public class Player {
     private final Long id;
@@ -16,6 +17,10 @@ public class Player {
                 id,
                 Car.of(name)
         );
+    }
+
+    public Player move(Distance newDistance) {
+        return new Player(id, car.move(newDistance));
     }
 
 
