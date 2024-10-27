@@ -1,5 +1,6 @@
 package racingcar.application.service;
 
+import racingcar.application.dto.RacingGameResponse;
 import racingcar.infrastructure.constant.Boundary;
 import racingcar.application.dto.RacingGameRequest;
 import racingcar.application.port.inbound.GameUseCase;
@@ -16,7 +17,7 @@ public class GameService implements GameUseCase {
     }
 
     @Override
-    public void execute(RacingGameRequest request) {
+    public RacingGameResponse execute(RacingGameRequest request) {
         carRacingManager = CarRacingManager.from(request.cars());
 
         validateRepeatNumber(request.repeat());
@@ -27,16 +28,11 @@ public class GameService implements GameUseCase {
             carRacingManager.moveAllCar();
             writeAllCar();
         }
-        writeResult();
+        return new RacingGameResponse(carRacingManager.getWinners());
     }
 
     private void writeStart() {
         outputPort.writeMessage("\n실행 결과");
-    }
-
-    private void writeResult() {
-        final String winners = carRacingManager.getWinners();
-        outputPort.writeMessage(String.format("최종 우승자 : %s", winners));
     }
 
     private void writeAllCar() {

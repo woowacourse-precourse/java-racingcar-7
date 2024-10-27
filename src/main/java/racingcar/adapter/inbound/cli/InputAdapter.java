@@ -1,6 +1,7 @@
 package racingcar.adapter.inbound.cli;
 
 import racingcar.application.dto.RacingGameRequest;
+import racingcar.application.dto.Response;
 import racingcar.application.port.inbound.GameUseCase;
 import racingcar.application.port.inbound.InputPort;
 import racingcar.application.port.outbound.OutputPort;
@@ -24,6 +25,7 @@ public class InputAdapter {
 
         final RacingGameRequest request = new RacingGameRequest(cars, repeat);
 
-        gameUseCase.execute(request);
+        final Response response = gameUseCase.execute(request);
+        outputPort.writeMessage(String.format("최종 우승자 : %s", response.getValue()));
     }
 }
