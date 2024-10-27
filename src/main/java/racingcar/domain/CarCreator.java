@@ -10,6 +10,7 @@ public class CarCreator {
 
     public static List<Car> createCars(List<String> carNames) {
         return carNames.stream()
+                .map(String::trim)
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
