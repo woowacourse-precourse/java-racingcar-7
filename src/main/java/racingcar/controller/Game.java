@@ -19,4 +19,15 @@ public class Game {
         String attemptNumberString = InputView.askAttemptNumber();
         return AttemptNumber.from(attemptNumberString);
     }
+
+    private void play(GameBoard gameBoard, AttemptNumber attemptNumber) {
+        int tryCount = 0;
+        while(canPlay(tryCount, attemptNumber)) {
+            tryCount++;
+        }
+    }
+
+    private boolean canPlay(int tryCount, AttemptNumber attemptNumber) {
+        return tryCount == attemptNumber.getAttemptNumber();
+    }
 }
