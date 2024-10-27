@@ -28,4 +28,8 @@ public class CarManager {
         remainingAttempts = attempts;
     }
 
+    public int getRemainingAttempts() {
+        return remainingAttempts;
+    }
+
 }
