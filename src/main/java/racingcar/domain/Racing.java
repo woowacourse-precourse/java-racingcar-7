@@ -12,7 +12,7 @@ public class Racing {
     private final OutputHandler outputHandler;
 
     private final Cars cars;
-    private Round round;
+    private final Round round;
 
     public Racing(InputHandler inputHandler, OutputHandler outputHandler, Cars cars, Round round) {
         this.inputHandler = inputHandler;
