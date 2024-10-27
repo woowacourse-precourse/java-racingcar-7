@@ -33,12 +33,9 @@ class RoundCountTest {
     @ParameterizedTest
     @DisplayName("양수가 아닌 수를 입력하면 예외가 발생한다.")
     @ValueSource(strings = {"-1", "0"})
-    void createRoundCountWithNegativeOrZero() {
-        // given
-        String negativeInput = "-1";
-        String zeroInput = "0";
+    void createRoundCountWithNegativeOrZero(String input) {
         // when, then
-        Assertions.assertThatThrownBy(() -> new RoundCount(zeroInput))
+        Assertions.assertThatThrownBy(() -> new RoundCount(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.ROUND_COUNT_OUT_OF_RANGE.getMessage());
     }
