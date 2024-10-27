@@ -2,15 +2,15 @@ package racingcar.model;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int pos;
 
-    private Car(String name, int pos) {
+    private Car(final String name, int pos) {
         this.name = name;
         this.pos = pos;
     }
 
-    public static Car of(String name) {
+    public static Car of(final String name) {
         return new Car(name, 0);
     }
 
