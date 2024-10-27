@@ -2,8 +2,9 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.StringTokenizer;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import racingcar.domain.Car;
@@ -34,6 +35,10 @@ public class RaceView {
             }
         }
 
+        if (existDuplicateString(carNames)) {
+            throw new IllegalArgumentException("중복되는 자동차 이름이 존재합니다.");
+        }
+
         return carNames;
     }
 
@@ -48,7 +53,12 @@ public class RaceView {
         return matcher.matches();
     }
 
-    public int inputTryTime() {
+    private boolean existDuplicateString(ArrayList<String> list) {
+        Set<String> carSet = new HashSet<>(list);
+        return carSet.size() != list.size();
+    }
+
+    public int inputTryTime(String... testInput) {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int N;
         String input;
