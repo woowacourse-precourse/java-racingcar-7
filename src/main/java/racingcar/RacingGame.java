@@ -9,18 +9,30 @@ public class RacingGame {
         this.outputView = outputView;
     }
 
-    public void play() {
+    private CompeteCars makeCompeteCars() {
         String carNamesInput = inputView.getCarNamesInput();
-        CompeteCars competeCars = new CompeteCars(carNamesInput);
+        return new CompeteCars(carNamesInput);
+    }
 
+    private Round setRound(CompeteCars competeCars) {
         Integer moveCount = inputView.getMoveCount();
-        Round round = new Round(moveCount, competeCars);
+        return new Round(moveCount, competeCars);
+    }
+
+    private boolean isMoveCountLeft(Round round) {
+        return round.getMoveCount() > 0;
+    }
+
+    public void play() {
+        CompeteCars competeCars = makeCompeteCars();
+        Round round = setRound(competeCars);
 
         outputView.printResultString();
-        while (round.getMoveCount() > 0) {
+        while (isMoveCountLeft(round)) {
             round.progress();
             outputView.printRoundResult(round.getResult());
         }
+
         outputView.printWinners(round.getWinners());
     }
 }
