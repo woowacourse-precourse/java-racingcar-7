@@ -12,7 +12,7 @@ public class Car {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LESS_THAN_FIVE.getMessage());
         }
         if (name.isEmpty() || name.isBlank()) {
-            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_CAN_NOT_BLANK_OR_EMPTY.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_NOT_BLANK_OR_EMPTY.getMessage());
         }
 
         this.name = name;
