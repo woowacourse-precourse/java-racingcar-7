@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -24,5 +25,16 @@ public class RacingServiceTest {
 
         carInputs.forEach(car ->
                 Assertions.assertEquals(car, iterator.next().getName()));
+    }
+
+    @Test
+    @DisplayName("중복으로 입력한 이름은 삭제하고 저장한다")
+    void save_after_delete_duplication() {
+        String input = "해적왕, 소방차, 해적왕, 소방차";
+        List<String> carInputs = Arrays.asList("해적왕", "소방차");
+
+        Set<Car> cars = racingService.createCars(input);
+
+        Assertions.assertEquals(cars.size(), carInputs.size());
     }
 }
