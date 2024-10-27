@@ -7,12 +7,12 @@ public class TotalRounds {
     private final int totalRounds;
 
     public TotalRounds(int totalRounds) {
-        validate(totalRounds);
+        validateRoundsInRange(totalRounds);
 
         this.totalRounds = totalRounds;
     }
 
-    private void validate(int totalRounds) {
+    private void validateRoundsInRange(int totalRounds) {
         if (totalRounds < MIN_TOTAL_ROUNDS) {
             throw new IllegalArgumentException("총 라운드 수는 2회 이상이어야 합니다.");
         }

@@ -18,7 +18,7 @@ public class Game {
     private int currentRound;
 
     public Game(Cars cars, TotalRounds totalRounds, NumberPicker numberPicker, Referee referee) {
-        validate(cars);
+        validateQualification(cars);
 
         this.cars = cars;
         this.totalRounds = totalRounds;
@@ -27,7 +27,7 @@ public class Game {
         this.referee = referee;
     }
 
-    private void validate(Cars cars) {
+    private void validateQualification(Cars cars) {
         if (cars.hasFewerNumberOfCarsThan(MINIMUM_NUMBER_OF_CARS)) {
             throw new IllegalArgumentException("최소 2대 이상 출전해야 합니다.");
         }
