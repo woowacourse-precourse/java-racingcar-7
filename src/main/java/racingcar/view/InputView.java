@@ -13,26 +13,16 @@ public class InputView {
     }
 
     public List<String> getCarNames() {
-        try {
-            String input = Console.readLine();
-            List<String> parsedCarNames = inputParser.parseCarNames(input);
-            GameValidation.validateCarNames(parsedCarNames);
-            return parsedCarNames;
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return getCarNames();
-        }
+        String input = Console.readLine();
+        List<String> parsedCarNames = inputParser.parseCarNames(input);
+        GameValidation.validateCarNames(parsedCarNames);
+        return parsedCarNames;
     }
 
     public int getTryCount() {
-        try {
-            String input = Console.readLine();
-            GameValidation.validateTryCount(input);
-            return inputParser.parseTryCount(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return getTryCount();
-        }
+        String input = Console.readLine();
+        GameValidation.validateTryCount(input);
+        return inputParser.parseTryCount(input);
     }
 
 }
