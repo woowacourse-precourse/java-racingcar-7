@@ -28,10 +28,16 @@ public class CarRaceSimulator {
     }
 
     public void printOneTimeResult() {
-        
+        for(int i = 0; i < carNames.size(); i++) {
+            System.out.println(carNames.get(i) + " : ");
+            for(int j = 0; j < carMoves.get(i); j++) { //자동차가 움직인 만큼 "-" 출력
+                System.out.print(j + "-");
+            }
+            System.out.println();
+        }
     }
 
     public void printWinner() {
-
+        
     }
 }

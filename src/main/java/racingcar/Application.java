@@ -23,7 +23,7 @@ public class Application {
 
     public static List<String> nameSpliter(String inputNames) {
         String[] splittedNames = inputNames.split(",");
-        List<String> carNames = Arrays.stream(splittedNames).collect(Collectors.toList()); // array를 list로 변환
+        List<String> carNames = Arrays.stream(splittedNames).collect(Collectors.toList()); //array를 list로 변환
         for (String name : carNames) {
             if(name.length() > 5) {
                 throw new IllegalArgumentException();
