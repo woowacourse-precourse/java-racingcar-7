@@ -34,6 +34,7 @@ public class RaceService {
 
         // 모든 라운드가 끝난 후 우승자 찾기
         List<String> winners = getWinners(carList);
+        printWinners(winners);
     }
 
     private void raceRound(List<Car> carList) {
@@ -61,6 +62,10 @@ public class RaceService {
         }
         // 라운드 간 간격을 위한 빈 줄 출력
         System.out.println();
+    }
+
+    private void printWinners(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     private String[] parseCarNames(String inputCarList) {
