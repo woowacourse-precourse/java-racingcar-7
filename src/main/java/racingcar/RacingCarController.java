@@ -30,6 +30,7 @@ public class RacingCarController {
     public void initGame(){
         setPlayersInfo();
 
+        System.out.println("\n실행 결과");
         for(int i = 0; i < times; i++){
             startGame();
             view.currentState(players);
@@ -40,7 +41,7 @@ public class RacingCarController {
     public void setPlayersInfo(){
         String carName = view.getUserName();
 
-        this.players = new HashMap<String, Integer>();
+        this.players = new LinkedHashMap<>();
 
         for (String n : carName.split(",")) {
             isValidName(n);
