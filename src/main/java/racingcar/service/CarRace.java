@@ -3,13 +3,13 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
-import racingcar.domain.Race;
+import racingcar.domain.CarConstants;
 
 import java.util.List;
 
 public class CarRace {
-    private final static int tryNumRange = 100;
-    private final static int fowardRange = 4;
+
+    private static final CarConstants carconstants = new CarConstants();
 
     public List<Car> carRace(List<Car> carList){
         System.out.println("시도할 횟수는 몇 회인가요?");
@@ -35,7 +35,7 @@ public class CarRace {
     private void carPositionRandom(List<Car> carList) {
         for(int i=0; i<carList.size(); i++){
             int random = Randoms.pickNumberInRange(0, 9);
-            if(random >= fowardRange){
+            if(random >= carconstants.fowardRange){
                 int position = carList.get(i).getPosition();
                 carList.get(i).setPosition(++position);
             }
@@ -50,7 +50,7 @@ public class CarRace {
     }
 
     private void validateTryNumRange(int tryNum) {
-        if(tryNum > tryNumRange)
+        if(tryNum > carconstants.tryNumRange)
             throw new IllegalArgumentException("error: 시도횟수 범위를 초과했습니다");
     }
 
