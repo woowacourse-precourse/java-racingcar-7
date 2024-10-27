@@ -8,7 +8,7 @@ import java.util.List;
 
 public class RaceService {
 
-    private int numOfStages;
+    private long numOfStages;
     private List<Car> carList;
 
     public void raceStart() {
@@ -23,7 +23,7 @@ public class RaceService {
         this.carList = InputParser.getCarList(userInputDTO);
     }
 
-    public int getNumOfStages() {
+    public long getNumOfStages() {
         return this.numOfStages;
     }
 

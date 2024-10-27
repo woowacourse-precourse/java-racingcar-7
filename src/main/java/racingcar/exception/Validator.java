@@ -14,7 +14,13 @@ public class Validator {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_COUNT);
     }
 
-    public static void isPositiveNumber(int number) {
-
+    public static void isRightNumber(String number) {
+        if (!number.matches("\\d+"))
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_POSITIVE_NUMBER);
+        try {
+            Long.parseLong(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.IS_OVER_RANGE);
+        }
     }
 }

@@ -10,16 +10,16 @@ public class OutputView {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String WINNER_MESSAGE = "최종 우승자 : ";
 
-    public static void showResult(final int numOfStages, final List<Car> carList) {
+    public static void showResult(final long numOfStages, final List<Car> carList) {
         System.out.println(RESULT_MESSAGE);
-        for (int i = 0; i < numOfStages; i++)
+        for (long i = 0; i < numOfStages; i++)
             showResultInStage(i, carList);
         showWinner(carList);
     }
 
-    private static void showResultInStage(final int numOfStages, final List<Car> carList) {
+    private static void showResultInStage(final long stage, final List<Car> carList) {
         for (Car car : carList)
-            System.out.println(car.getName() + " : " + car.getMoveHistory().get(numOfStages));
+            System.out.println(car.getName() + " : " + car.getMoveAtStage(stage));
         System.out.println();
     }
 
