@@ -45,7 +45,7 @@
 
 - [ ] 테스트 코드 작성
     - [x] judge 테스트 코드 작성
-    - [ ] getWinnerName 테스트 코드 작성
+    - [x] getWinnerName 테스트 코드 작성
 - [x] judge 메소드 구현
 - [ ] show 메소드 구현
 - [ ] getWinnerName 메소드 구현

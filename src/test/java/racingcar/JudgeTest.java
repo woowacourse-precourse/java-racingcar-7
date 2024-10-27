@@ -49,4 +49,48 @@ public class JudgeTest {
         result = judge.judge(cars2);
         assertEquals(List.of(cars2[1]), result);
     }
+
+    @Test
+    @DisplayName("경기 결과 화면 테스트1")
+    public void testShowJudgeResult1() {
+        Car[] cars1 = {new Car("test1"), new Car("test2"), new Car("test3")};
+
+        //distance result is 2.
+        cars1[0].increaseDistance();
+        cars1[0].increaseDistance();
+
+        //distance result is 3.
+        cars1[1].increaseDistance();
+        cars1[1].increaseDistance();
+        cars1[1].increaseDistance();
+
+        //distance result is 2.
+        cars1[2].increaseDistance();
+        cars1[2].increaseDistance();
+        cars1[2].increaseDistance();
+
+        judge.judge(cars1);
+        assertEquals("test2, test3", judge.getWinnerNames());
+    }
+
+    @Test
+    @DisplayName("경기 결과 화면 테스트2")
+    public void testShowJudgeResult2() {
+        Car[] cars1 = {new Car("test1"), new Car("test2"), new Car("test3")};
+
+        //distance result is 2.
+        cars1[0].increaseDistance();
+        cars1[0].increaseDistance();
+
+        //distance result is 3.
+        cars1[1].increaseDistance();
+        cars1[1].increaseDistance();
+        cars1[1].increaseDistance();
+
+        //distance result is 1.
+        cars1[2].increaseDistance();
+
+        judge.judge(cars1);
+        assertEquals("test2", judge.getWinnerNames());
+    }
 }
