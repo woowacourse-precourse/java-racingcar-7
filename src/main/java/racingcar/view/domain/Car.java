@@ -6,12 +6,12 @@ public class Car {
     private static int NAME_MAX_LENGTH = 5;
     private String name;
 
-    public Car(String str) {
-        Validator.validString(str);
-        if (str.length() > NAME_MAX_LENGTH) {
+    public Car(String name) {
+        Validator.validString(name);
+        if (name.length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException();
         }
-        this.name = str;
+        this.name = name;
     }
 
     public String getName() {
