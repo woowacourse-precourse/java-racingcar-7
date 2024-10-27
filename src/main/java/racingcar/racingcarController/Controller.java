@@ -18,7 +18,7 @@ public class Controller {
         this.exceptionModel = exceptionModel;
     }
 
-    public void run() {
+    public void  run() {
         carView.printNameInputMessage();
         String nameInput = carView.readInput();
         carView.printTryInputMessage();
@@ -37,11 +37,9 @@ public class Controller {
         });
 
         int tryInput = Integer.parseInt(beforeTryInput);
-
         LinkedHashMap<String, Integer> carInfo = carModel.initializeCarInfo(nameInput);
 
         carView.printStartResults();
-
         for (int i = 0; i < tryInput; i++) {
             for (Map.Entry<String, Integer> entry : carInfo.entrySet()) {
                 carInfo.put(entry.getKey(), carModel.isForward(entry.getValue()));
@@ -50,8 +48,7 @@ public class Controller {
             System.out.println();
         }
 
-        int maxValue = carModel.maxValue(carInfo);
-        String winner = carModel.winnerCar(carInfo, maxValue);
+        String winner = carModel.winnerCar(carInfo, carModel.maxValue(carInfo));
         carView.printWinners(winner);
 
 
