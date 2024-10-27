@@ -28,7 +28,14 @@ public class Application {
 		return carName;
 	}
 
+	public static String[] extractCarNames(String carName) {
+		String[] names = carName.split(",");
+		for (String name : names) {
+			validateCarName(name);
+		}
+		return names;
 
+	}
 
 
 
