@@ -9,9 +9,9 @@ ___
 
 > "경주할 자동차 이름"
 
-- [ ] `class UserName`
-    - [ ] `void checkMaximumLength()`
-    - [ ] `void hasOnlyCharacters()`
+- [x] `class UserName`
+    - [x] `void checkMaximumLength()`
+    - [x] `void hasOnlyCharacters()`
 
 > "전진"
 
