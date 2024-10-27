@@ -1,10 +1,11 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -102,6 +103,23 @@ class ApplicationTest extends NsTest {
         assertThat(carList.get(0).getName()).isEqualTo("a");
         assertThat(carList.get(1).getName()).isEqualTo("b");
         assertThat(carList.get(2).getName()).isEqualTo("c");
+    }
+
+    @Test
+    void 테스트_2_1_시도할_횟수_입력() {
+        String simulatedInput = "10\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream);
+
+        String tryCountInputString = Application.getTryCountInputString();
+
+        assertThat(output()).contains("시도할 횟수는 몇 회인가요?");
+        assertThat(tryCountInputString).isEqualTo("10");
+    }
+
+    @AfterEach
+    void closeConsole() {
+        Console.close();
     }
 
     @Override
