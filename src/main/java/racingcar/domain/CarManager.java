@@ -1,15 +1,20 @@
 package racingcar.domain;
 
 import racingcar.util.RandomUtil;
+import racingcar.util.ValidationUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static racingcar.constant.ErrorMessages.CAR_COUNT_ERROR_MESSAGE;
+import static racingcar.constant.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
+
 public class CarManager {
     private List<Car> cars;
 
     public CarManager(List<Car> cars) {
+        validateCars(cars);
         this.cars = cars;
     }
 
@@ -34,5 +39,11 @@ public class CarManager {
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
+    }
+
+    private void validateCars(List<Car> cars){
+        if(ValidationUtil.isDuplicate(cars)){
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR_MESSAGE);
+        }
     }
 }

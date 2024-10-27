@@ -20,7 +20,7 @@ public class ValidationUtil {
         return Integer.parseInt(input) > 0;
     }
 
-    public static boolean isDuplicate(List<String> inputs) {
-        return inputs.stream().distinct().count() != inputs.size();
+    public static boolean isDuplicate(List<?> items) {
+        return items.stream().distinct().count() != items.size();
     }
 }
