@@ -20,5 +20,9 @@ public class Car {
     public int getPosition() {
         return position;
     }
-
+    public boolean canMove(){
+        long currentTime = System.currentTimeMillis();
+        int number = (int)(currentTime%10);
+        return number>=4;
+    }
 }
