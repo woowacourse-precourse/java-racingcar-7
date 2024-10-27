@@ -3,14 +3,17 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.validator.InputValidator;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class InputView {
     public static final String COMMA = ",";
 
     private InputView() {}
 
-    public static String[] responseForCarNames() {
+    public static List<String> responseForCarNames() {
         String input = InputReader.inputMessage();
-        String[] inputCarNames = input.split(COMMA);
+        List<String> inputCarNames = Arrays.stream(input.split(COMMA)).toList();
 
         InputValidator.validateCarNames(input);
 

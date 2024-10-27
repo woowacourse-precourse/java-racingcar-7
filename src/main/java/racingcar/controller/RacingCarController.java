@@ -20,13 +20,13 @@ public class RacingCarController {
 
     public Cars getCars() {
         OutputView.requestForCarNames();
-        String[] inputCarNames = InputView.responseForCarNames();
+        List<String> inputCarNames = InputView.responseForCarNames();
         return createCars(inputCarNames);
     } // getCars
 
-    public Cars createCars(String[] inputCarNames) {
+    public Cars createCars(List<String> inputCarNames) {
         List<Car> cars = new ArrayList<>();
-        Arrays.stream(inputCarNames).forEach(name -> {
+        inputCarNames.forEach(name -> {
             Car car = new Car(name);
             cars.add(car);
         });
