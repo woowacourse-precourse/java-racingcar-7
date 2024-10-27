@@ -32,20 +32,20 @@ public class Cars {
 
     public static Cars from(List<String> names, MovementStrategy movementStrategy) {
         List<CarName> carNames = CarName.listOf(names);
-        validateDuplicatedName(names, carNames);
-        List<Car> cars = createCars(movementStrategy, carNames);
+        validateDuplicatedName(carNames);
+        List<Car> cars = createCars(carNames, movementStrategy);
 
         return new Cars(cars);
     }
 
-    private static void validateDuplicatedName(List<String> names, List<CarName> carNames) {
+    private static void validateDuplicatedName(List<CarName> carNames) {
         Set<CarName> uniqueCarNames = new HashSet<>(carNames);
-        if (names.size() != uniqueCarNames.size()) {
+        if (carNames.size() != uniqueCarNames.size()) {
             throw new IllegalArgumentException(DUPLICATED_CAR_NAME_MESSAGE);
         }
     }
 
-    private static List<Car> createCars(MovementStrategy movementStrategy, List<CarName> carNames) {
+    private static List<Car> createCars(List<CarName> carNames, MovementStrategy movementStrategy) {
         return carNames.stream()
                 .map(carName -> new Car(carName, movementStrategy))
                 .toList();

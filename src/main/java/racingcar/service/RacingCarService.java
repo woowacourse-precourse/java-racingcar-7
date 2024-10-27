@@ -2,7 +2,6 @@ package racingcar.service;
 
 import java.util.List;
 import racingcar.domain.car.Car;
-import racingcar.domain.car.CarName;
 import racingcar.domain.car.Cars;
 import racingcar.domain.car.MovementStrategy;
 import racingcar.domain.race.Race;
@@ -19,11 +18,5 @@ public class RacingCarService {
         List<RaceLog> raceLogs = race.getRaceLogs();
         List<Car> victoryCars = race.getVictoryCars();
         return new RaceResult(raceLogs, victoryCars);
-    }
-
-    private static List<CarName> createCarNames(List<String> names) {
-        return names.stream()
-                .map(CarName::new)
-                .toList();
     }
 }
