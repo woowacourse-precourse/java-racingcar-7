@@ -7,6 +7,15 @@ import java.util.stream.Stream;
 public class InputValidator {
 
     /**
+     * 자동차 이름의 유효성 검사
+     */
+    public static List<String> isValidCarName(String input) {
+        List<String> cars = splitCarName(input);
+        checkValidLength(cars);
+        return cars;
+    }
+
+    /**
      * 문자열을 쉼표(,)를 구분자로 하여 분리
      */
     public static List<String> splitCarName(String input) {
