@@ -35,7 +35,10 @@
   - findAll(): 저장된 모든 자동차를 반환한다.
 
 * Service : CarService 구현
-    
+  - joinCar(): 주어진 자동차를 등록한다.
+  - validateDuplicateCar(): 주어진 자동차가 이미 저장된 자동차와 이름이 중복되는지를 확인한다.
+  - moveCar() : 각 자동차의 전진 여부를 결정 후, 전진 횟수를 증가시킨다.
+  - findWinners(): 전진횟수를 비교하여 우승자를 찾는다.
 
 * Controller : CarController 구현
     
