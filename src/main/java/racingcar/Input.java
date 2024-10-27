@@ -8,8 +8,15 @@ public class Input {
     public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String text = Console.readLine().replaceAll("\\s", "");
+        List<String> carNames = List.of(text.split(","));
 
-        return List.of(text.split(","));
+        for (String carName : carNames) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하여야합니다.");
+            }
+        }
+
+        return carNames;
     }
 
     public static int getRunLimit() {
