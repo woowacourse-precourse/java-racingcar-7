@@ -1,6 +1,8 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.Map;
 
 public class GameService {
 
@@ -22,4 +24,18 @@ public class GameService {
         gameRepository.setRound(round);
 
     }
+    
+
+    public int movingForwards() {
+
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) {
+            return 1;
+        } else {
+            return 0;
+        }
+
+    }
+
+
 }
