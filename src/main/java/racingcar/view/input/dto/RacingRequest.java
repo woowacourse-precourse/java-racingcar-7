@@ -13,7 +13,14 @@ public record RacingRequest(
     int roundCount
 ) {
 
+  private static boolean hasWhiteSpace(String text){
+    return text.chars().anyMatch(Character::isWhitespace);
+  }
+
   private static int validateRoundCount(String roundCount) {
+    if (hasWhiteSpace(roundCount)){
+      throw new InputException(ExceptionEnum.INVALID_WHITESPACE);
+    }
     if (roundCount == null || roundCount.trim().isEmpty()){
       throw new InputException(ExceptionEnum.INVALID_ROUND_COUNT);
     }
@@ -32,6 +39,9 @@ public record RacingRequest(
   }
 
   private static void validateCarNames(String carNames) {
+    if (hasWhiteSpace(carNames)){
+      throw new InputException(ExceptionEnum.INVALID_WHITESPACE);
+    }
     if (carNames == null || carNames.trim().isEmpty()){
       throw new InputException(ExceptionEnum.INVALID_CARNAME);
     }

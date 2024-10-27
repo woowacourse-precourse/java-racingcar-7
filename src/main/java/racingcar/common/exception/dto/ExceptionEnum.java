@@ -10,6 +10,7 @@ public enum ExceptionEnum {
   //InputView
   INVALID_CARNAME("자동차 이름은 null이거나 빈 문자열일 수 없습니다."),
   INVALID_ROUND_COUNT("시도할 횟수는 null이거나 빈 문자열일 수 없습니다."),
+  INVALID_WHITESPACE("입력에 공백은 허용되지 않습니다."),
   ROUND_COUNT_NEGATIVE_NUMBER_NOT_AVAILABLE("시도할 횟수는 음수일 수 없습니다."),
   ROUND_COUNT_DECIMAL_NUMBER_NOT_AVAILABLE("시도할 횟수는 소수일 수 없습니다."),
   ROUND_COUNT_OUT_OF_INTEGER_RANGE("시도할 횟수가 Integer의 범위를 벗어납니다"),
