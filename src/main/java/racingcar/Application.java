@@ -2,6 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class Application {
 
     public static final int NAME_HANDLING_CRITERIA = 5;
@@ -19,5 +22,15 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputCount = Console.readLine();
         int count = Integer.parseInt(inputCount);
+
+        // 자동차 이름(String[]) => LinkedHashMap에 저장 (value 디폴트 0)
+        // 이름 5글자 이내 검수
+        Map<String, Integer> carNamesMap = new LinkedHashMap<>();
+        for (String carName : carNames) {
+            if (carName.length() > NAME_HANDLING_CRITERIA) {
+                throw new IllegalArgumentException("자동차 이름은 5글자 이내로 입력해주세요!");
+            }
+            carNamesMap.put(carName, 0);
+        }
     }
 }
