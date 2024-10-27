@@ -43,8 +43,7 @@ public class Application {
 
     private static int getCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String input = Console.readLine().trim();
-        return RaceValidator.validateCount(input);
+        return RaceValidator.validateCount(Console.readLine().trim());
     }
 
     private static void runRace(int count, List<String> carNames, List<Integer> carMoves) {

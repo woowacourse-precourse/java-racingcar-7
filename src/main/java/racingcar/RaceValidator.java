@@ -27,7 +27,7 @@ public class RaceValidator {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해주세요.", e);
+            throw new IllegalArgumentException("정수만 입력해주세요.", e);
         }
     }
 
