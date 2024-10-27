@@ -64,4 +64,10 @@ public class RacingCar {
             resultLog = resultLog + "-";
         }
     }
+
+    public void makeResultString(String key) {
+        raceResult = key;
+        raceResult = raceResult + " : " + resultLog;
+        resultLog = "";
+    }
 }
