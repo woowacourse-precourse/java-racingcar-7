@@ -1,9 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.model.Cars;
 import racingcar.model.Racing;
-import racingcar.model.RacingCount;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,6 +9,7 @@ public class RacingController {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private Racing racing;
 
     public RacingController() {
         this.inputView = new InputView();
@@ -18,30 +17,29 @@ public class RacingController {
     }
 
     public void start() {
-        Racing racing = creatRacing();
-        runRacing(racing);
-        disPlayWinner(racing);
+        creatRacing();
+        runRacing();
+        disPlayWinner();
     }
 
-    private Racing creatRacing() {
-        Cars cars = readyCars();
-        RacingCount racingCount = readyRacingCount();
-        return Racing.of(cars, racingCount);
+    private void creatRacing() {
+        List<String> cars = readyCars();
+        int racingCount = readyRacingCount();
+        this.racing = Racing.of(cars, racingCount);
     }
 
-    private Cars readyCars() {
+    private List<String> readyCars() {
         outputView.printInputCarNames();
-        List<String> carNames = inputView.inputCarNames();
-        return Cars.fromNames(carNames);
+        return inputView.inputCarNames();
     }
 
-    private RacingCount readyRacingCount() {
+    private int readyRacingCount() {
         outputView.printInputRacingCount();
-        int tryCount = inputView.inputTryCount();
-        return RacingCount.from(tryCount);
+        return inputView.inputTryCount();
+
     }
 
-    private void runRacing(Racing racing) {
+    private void runRacing() {
         outputView.printRacingResultMessage();
         while (racing.can()) {
             racing.run();
@@ -50,7 +48,7 @@ public class RacingController {
         }
     }
 
-    private void disPlayWinner(Racing racing) {
+    private void disPlayWinner() {
         List<String> winners = racing.getWinners();
         outputView.printWinner(winners);
     }

@@ -9,13 +9,13 @@ public class Racing {
     private final Cars cars;
     private final RacingCount racingCount;
 
-    private Racing(Cars cars, RacingCount racingCount) {
-        this.cars = cars;
-        this.racingCount = racingCount;
+    private Racing(List<String> cars, int tryCount) {
+        this.cars = Cars.fromNames(cars);
+        this.racingCount = RacingCount.from(tryCount);
     }
 
-    public static Racing of(Cars cars, RacingCount racingCount) {
-        return new Racing(cars, racingCount);
+    public static Racing of(List<String> cars, int tryCount) {
+        return new Racing(cars, tryCount);
     }
 
     public void run() {
