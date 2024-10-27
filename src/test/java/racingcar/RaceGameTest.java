@@ -151,4 +151,18 @@ public class RaceGameTest {
         assertDoesNotThrow(() -> raceGame.getTotalRounds(userInput));
         assertEquals(raceGame.totalRounds, a);
     }
+
+    @Test
+    @DisplayName("자동차 등록하기 테스트")
+    void registerCarTest(){
+        RaceGame raceGame = new RaceGame();
+        String[] carNamesList = {"pobi", "woni", "jun"};
+        int totalCars = 3;
+
+        RacingCar[] carList = raceGame.registerCar(carNamesList, totalCars);
+
+        assertEquals(carList[0].carName, carNamesList[0]);
+        assertEquals(carList[1].carName, carNamesList[1]);
+        assertEquals(carList[2].carName, carNamesList[2]);
+    }
 }
