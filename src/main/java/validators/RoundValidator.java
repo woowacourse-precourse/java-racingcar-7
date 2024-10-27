@@ -1,18 +1,42 @@
 package validators;
 
+import static constant.ErrorValidators.COUNT_EMPTY_MESSAGE;
+import static constant.ErrorValidators.COUNT_ERROR_MESSAGE;
+import static constant.ErrorValidators.COUNT_INPUT_STRING_ERROR_MESSAGE;
+
 import java.util.List;
-import java.util.Set;
 
-public class RoundsValidator {
+public class RoundValidator {
 
-    private static final int Empty = 0;
-
-    // 횟수 입력 값이 0이거나 0보다 작을 때 오류 메세지 터트리기
     public static void countValidate(List<Integer> counts) {
-        for (Integer count : counts) {
-            if (count == Empty || count <= Empty) {
-                throw new IllegalArgumentException("횟수는 0 이상이어야 합니다.");
+        counts.stream()
+                .filter(count -> count <= 0)
+                .findAny()
+                .ifPresent(c -> {
+                    throw new IllegalArgumentException(COUNT_ERROR_MESSAGE.getMessage());
+                });
+    }
+
+    public static void StringValidate(List<String> inputs) {
+        for (String input : inputs) {
+            if (input == null || input.isEmpty()) {
+                throw new IllegalArgumentException(COUNT_EMPTY_MESSAGE.getMessage());
             }
+            if (!isNumeric(input)) {
+                throw new IllegalArgumentException(COUNT_INPUT_STRING_ERROR_MESSAGE.getMessage());
+            }
+        }
+    }
+
+    private static boolean isNumeric(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 }
