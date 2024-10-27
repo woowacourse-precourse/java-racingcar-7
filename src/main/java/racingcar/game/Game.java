@@ -16,8 +16,8 @@ public class Game {
     }
 
     public void start(int loopCnt) {
-        System.out.println("실행 결과");
-        
+        System.out.println("\n실행 결과");
+
         racingStart(loopCnt);
         findWinner();
         printWinner();
