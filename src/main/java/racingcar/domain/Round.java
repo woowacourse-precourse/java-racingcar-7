@@ -5,7 +5,7 @@ import racingcar.exceptions.InvalidRoundValueException;
 public class Round {
 
     private static final int INITIAL_ROUND = 0;
-    private static final int MINIMUM_ROUND = 1; // 최소 라운드 수
+    private static final int MINIMUM_ROUND = 1;
     private int round;
 
     public Round() {
@@ -22,7 +22,7 @@ public class Round {
             throw new InvalidRoundValueException("라운드 수는 1 이상이여야 합니다.");
         }
     }
-    
+
     public int getRound() {
         return round;
     }
