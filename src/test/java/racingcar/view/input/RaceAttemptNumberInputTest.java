@@ -30,6 +30,17 @@ public class RaceAttemptNumberInputTest {
     }
 
     @Test
+    @DisplayName("입력된 시도 횟수가 8일 경우 예외 발생 테스트")
+    void 입력된_시도_횟수가_0일_경우_예외_발생() {
+        // given
+        String input = "0";
+
+        // when, then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new RaceAttemptNumberInput().process(input));
+        assertEquals(RaceAttemptNumberValidatorErrorMessages.NUMBER_TOO_LOW.getMessage(), exception.getMessage());
+    }
+
+    @Test
     @DisplayName("입력된 시도 횟수가 숫자가 아닐 경우 예외 발생 테스트")
     void 입력된_시도_횟수가_숫자가_아닐_경우_예외_발생() {
         // given

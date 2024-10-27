@@ -105,8 +105,8 @@ class CarNameInputTest {
     }
 
     @Test
-    @DisplayName("마지막에 빈 문자열이 입력되면 예외 발생 테스트")
-    void 마지막에_빈_문자열이_입력되면_예외_발생() {
+    @DisplayName("문자열이 쉼표로 끝나면 예외 발생 테스트")
+    void 문자열이_쉼표로_끝나면_예외_발생() {
         // given
         String carName = "kim,jung,";  // 쉼표 뒤에 빈 문자열
 
