@@ -1,19 +1,28 @@
 package racingcar;
 
-import java.util.Arrays;
-
+import java.util.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static camp.nextstep.edu.missionutils.Randoms.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        HashMap<String, Integer> cars = new HashMap<>();
+
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNameList = readLine().split(",");
+        for(String carName : carNameList) {
+            cars.put(carName, 0);
+        }
+
         validateCarNames(carNameList);
+
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = Integer.parseInt(readLine());
 
-        System.out.println(Arrays.toString(carNameList) + " " + count);
+        for(int i=0; i < count; i++) {
+            printRoundResults(cars);
+            System.out.println();
+        }
+
     }
     public static void validateCarNames(String[] carNames) {
         for(String carName : carNames) {
@@ -22,4 +31,15 @@ public class Application {
             }
         }
     }
+    public static void printRoundResults(HashMap<String, Integer> cars ) {
+
+        for(String carName : cars.keySet()) {
+            String travelDistance = "";
+            for(int i=0; i < cars.get(carName); i++) {
+                travelDistance += "- ";
+            }
+            System.out.println(carName + " : " + travelDistance );
+        }
+    }
+
 }
