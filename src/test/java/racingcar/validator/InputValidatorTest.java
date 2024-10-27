@@ -1,6 +1,8 @@
 package racingcar.validator;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
 class InputValidatorTest {
@@ -11,7 +13,7 @@ class InputValidatorTest {
 
         boolean hasNoInput = inputValidator.checkNameIsEmpty("");
 
-        Assertions.assertThat(hasNoInput).isTrue();
+        assertThat(hasNoInput).isTrue();
     }
 
     @Test
@@ -22,9 +24,9 @@ class InputValidatorTest {
         boolean length5 = inputValidator.checkNameIsLongerThanFive("pobii,woni,jun");//5자인 경우
         boolean length6 = inputValidator.checkNameIsLongerThanFive("pobiii,wondi,jun");//6자인 경우
 
-        Assertions.assertThat(length4).isTrue();
-        Assertions.assertThat(length5).isTrue();
-        Assertions.assertThat(length6).isFalse();
+        assertThat(length4).isTrue();
+        assertThat(length5).isTrue();
+        assertThat(length6).isFalse();
     }
 
     @Test
@@ -35,9 +37,9 @@ class InputValidatorTest {
         boolean hasNumber = inputValidator.checkNameIncludeNumber("pobi,woni,1");//이름이 숫자인 경우
         boolean includeNumber = inputValidator.checkNameIncludeNumber("pobi,wondi,jun1");//숫자가 포함된 경우
 
-        Assertions.assertThat(noNumber).isFalse();
-        Assertions.assertThat(hasNumber).isTrue();
-        Assertions.assertThat(includeNumber).isTrue();
+        assertThat(noNumber).isFalse();
+        assertThat(hasNumber).isTrue();
+        assertThat(includeNumber).isTrue();
     }
 
     @Test
@@ -46,14 +48,13 @@ class InputValidatorTest {
 
         boolean normalInput = inputValidator.checkNameHasNameBehindComma("pobi,woni,jun"); //정상적인 입력
         boolean NoNameBehindCommaInput = inputValidator.checkNameHasNameBehindComma("pobi,woni,");//쉼표 뒤 이름이 없는 경우
-        boolean NoNameBetweenCommaInput = inputValidator.checkNameHasNameBehindComma(
-                "pobi,woni,,jun");//쉼표 사이 이름이 없는 경우
+        boolean NoNameBetweenCommaInput = inputValidator.checkNameHasNameBehindComma("pobi,woni,,jun");//쉼표 사이 이름이 없는 경우
         boolean OnlyCommaInput = inputValidator.checkNameHasNameBehindComma(",,,");//쉼표 사이 이름이 없는 경우
 
-        Assertions.assertThat(normalInput).isFalse();
-        Assertions.assertThat(NoNameBehindCommaInput).isTrue();
-        Assertions.assertThat(NoNameBetweenCommaInput).isTrue();
-        Assertions.assertThat(OnlyCommaInput).isTrue();
+        assertThat(normalInput).isFalse();
+        assertThat(NoNameBehindCommaInput).isTrue();
+        assertThat(NoNameBetweenCommaInput).isTrue();
+        assertThat(OnlyCommaInput).isTrue();
 
     }
 
@@ -64,8 +65,8 @@ class InputValidatorTest {
         boolean normalInput = inputValidator.checkTryNumberIsNotNumber("5"); //정상적인 입력
         boolean stringInput = inputValidator.checkTryNumberIsNotNumber("A");//숫자가 아닌 문자인 경우
 
-        Assertions.assertThat(normalInput).isFalse();
-        Assertions.assertThat(stringInput).isTrue();
+        assertThat(normalInput).isFalse();
+        assertThat(stringInput).isTrue();
     }
 
     @Test
@@ -76,10 +77,23 @@ class InputValidatorTest {
         boolean zeroInput = inputValidator.checkTryNumberIsNotInteger("0");
         boolean minusInput = inputValidator.checkTryNumberIsNotInteger("-1");
 
-        Assertions.assertThat(normalInput).isFalse();
-        Assertions.assertThat(zeroInput).isTrue();
-        Assertions.assertThat(minusInput).isTrue();
+        assertThat(normalInput).isFalse();
+        assertThat(zeroInput).isTrue();
+        assertThat(minusInput).isTrue();
     }
 
+    @Test
+    public void 입력_통합_검증시_예외발생_테스트() {
+        InputValidator inputValidator = new InputValidator();
+        assertThrows(IllegalArgumentException.class, () -> {
+            inputValidator.validate("pobi,woni,jun", "5");
+            inputValidator.validate("pobi,woni,123jun", "5");
+            inputValidator.validate("pobi,woni,jun", "-1");
+            inputValidator.validate("pobiiii,woni,jun", "5");
+            inputValidator.validate("pobiiii,woni,jun", "ABC");
+            inputValidator.validate("pobiiii,,jun", "5");
+            inputValidator.validate("pobiiii,jun,", "5");
+        });
 
+    }
 }
