@@ -15,9 +15,23 @@ public class Application {
         String tmp = Console.readLine();
         List<String> carNames = Arrays.asList(tmp.split(","));
 
+        for (String name : carNames) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException();
+            }
+        }
+
         System.out.println("시도할 횟수는 몇 회인가요?");
         tmp = Console.readLine();
         int attemptCount = Integer.parseInt(tmp);
+
+        // 시도 횟수 유효성 검사
+        if (attemptCount <= 0) {
+            throw new IllegalArgumentException();
+        }
 
         String winnerNames = racingGameController.RacingGame(carNames, attemptCount);
 
