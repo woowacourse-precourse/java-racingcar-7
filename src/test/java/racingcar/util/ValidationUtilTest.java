@@ -33,4 +33,10 @@ class ValidationUtilTest {
         List<String> carNames = Arrays.asList("a","b","a");
         assertThat(isDuplicate(carNames)).isEqualTo(true);
     }
+
+    @Test
+    public void 자동차의_수는_2대_이상이여야_한다_1대인_경우(){
+        List<String> carNames = Arrays.asList("a");
+        assertThat(isMoreThanOne(carNames)).isEqualTo(false);
+    }
 }

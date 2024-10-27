@@ -42,6 +42,10 @@ public class CarManager {
     }
 
     private void validateCars(List<Car> cars){
+        if(ValidationUtil.isMoreThanOne(cars)){
+            throw new IllegalArgumentException(CAR_COUNT_ERROR_MESSAGE);
+        }
+
         if(ValidationUtil.isDuplicate(cars)){
             throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR_MESSAGE);
         }

@@ -23,4 +23,8 @@ public class ValidationUtil {
     public static boolean isDuplicate(List<?> items) {
         return items.stream().distinct().count() != items.size();
     }
+
+    public static boolean isMoreThanOne(List<?> items) {
+        return items.size() > 1;
+    }
 }
