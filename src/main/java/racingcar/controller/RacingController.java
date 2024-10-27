@@ -11,4 +11,14 @@ public class RacingController {
 		this.inputView = inputView;
 		this.outputView = outputView;
 	}
+
+	public void run() {
+		String carNameInput = readCarNameInput();
+	}
+
+	private String readCarNameInput() {
+		outputView.promptCarName();
+
+		return inputView.readCarNameInput();
+	}
 }
