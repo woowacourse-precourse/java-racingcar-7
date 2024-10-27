@@ -17,10 +17,10 @@ public class Message extends Output {
         return new Message(WINNER_RESULT + result);
     }
 
-    public static Message allStatus(CarList carList) {
-        String allStatus = carList.generateAllStatus();
+    public static Message statusAll(CarList carList) {
+        String statusAll = carList.statusAll();
 
-        return new Message(allStatus);
+        return new Message(statusAll);
     }
 
     public static Message result(Winners winners) {

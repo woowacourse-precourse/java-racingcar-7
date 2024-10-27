@@ -26,7 +26,7 @@ public class CarServiceImpl implements CarService {
         // 입력된 횟수만큼 반복하도록 돌아가는 메소드
         while (tryCount.canTry()) {
             carList.moveAll();
-            Message allStatus = Message.allStatus(carList);
+            Message allStatus = Message.statusAll(carList);
             output.append(allStatus);
         }
 

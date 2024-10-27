@@ -23,7 +23,7 @@ class CarTest {
         Car car = Car.create(name, 5);
 
         // when
-        String result = car.generateStatus();
+        String result = car.status();
 
         // then
         assertThat(result).isEqualTo(name + COLON_SEPARATOR + "-----");
@@ -37,7 +37,7 @@ class CarTest {
         Car car = Car.create(name, 0);
 
         // when
-        String result = car.generateStatus();
+        String result = car.status();
 
         // then
         assertThat(result).isEqualTo(name + COLON_SEPARATOR);
@@ -51,7 +51,7 @@ class CarTest {
         Car car = Car.create(name);
 
         // when
-        String result = car.generateStatus();
+        String result = car.status();
 
         // then
         assertThat(result).isEqualTo(name + COLON_SEPARATOR);
@@ -71,7 +71,7 @@ class CarTest {
         while (!memoryExceeded) {
             try {
                 Car car = Car.create(name, tryCount);
-                String result = car.generateStatus();
+                String result = car.status();
                 assertThat(result).isEqualTo(name + COLON_SEPARATOR + MOVING.repeat(tryCount));
                 tryCount += increase;
             } catch (OutOfMemoryError e) {
@@ -96,7 +96,7 @@ class CarTest {
     void test5() {
         String name = "12345";
         Car car = Car.create(name);
-        assertThat(car.generateStatus()).isEqualTo(name + COLON_SEPARATOR + MOVING.repeat(0));
+        assertThat(car.status()).isEqualTo(name + COLON_SEPARATOR + MOVING.repeat(0));
     }
 
 

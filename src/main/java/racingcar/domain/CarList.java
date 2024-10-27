@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 public class CarList {
 
@@ -37,32 +38,24 @@ public class CarList {
 
     public void add(String name) {
         Car car = Car.create(name);
-        this.cars.add(car);
+        cars.add(car);
     }
 
     public void moveAll() {
-        for (Car car : this.cars) {
-            Integer moveCnt = car.move();
-            changeMaxMoveCnt(moveCnt);
-        }
+        cars.stream()
+                .map(Car::move)
+                .forEach(this::changeMaxMoveCnt);
     }
 
     // 모든 자동차들의 현황을 출력합니다.
-    public String generateAllStatus() {
-        StringJoiner stringJoiner = new StringJoiner(ENTER);
-
-        for (Car car : this.cars) {
-            String status = car.generateStatus();
-            stringJoiner.add(status);
-        }
-
-        stringJoiner.add(ENTER);
-
-        return stringJoiner.toString();
+    public String statusAll() {
+        return cars.stream()
+                .map(Car::status)
+                .collect(Collectors.joining(ENTER, "", ENTER));
     }
 
     protected List<Car> toWinners() {
-        return this.cars.stream()
+        return cars.stream()
                 .filter(car -> car.isMaxMove(this.maxMoveCnt))
                 .toList();
     }

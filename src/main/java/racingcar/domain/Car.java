@@ -41,7 +41,7 @@ public class Car {
     }
 
     // 현재 현황을 스트링으로 표현하는 기능
-    protected String generateStatus() {
+    protected String status() {
         String repeatStr = MOVING.repeat(this.cnt);
 
         return this.name + COLON_SEPARATOR + repeatStr;
