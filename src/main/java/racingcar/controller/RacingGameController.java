@@ -21,6 +21,8 @@ public class RacingGameController {
         TrialCount trialCount = getTrialCount();
 
         racing(racingCars, trialCount);
+
+        outputView.printRacingCarWinnerResult(racingCars);
     }
 
     private RacingCars createRacingCars() {
