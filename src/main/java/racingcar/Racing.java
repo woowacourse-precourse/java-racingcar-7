@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.NumberGenerator;
 import racingcar.domain.Race;
+import racingcar.domain.Rounds;
 import racingcar.view.Input;
 
 public class Racing {
@@ -22,10 +23,10 @@ public class Racing {
     }
 
     private void start(Race race) {
-        int lap = 5;
-        for (int i = 0; i < lap; i++) {
-            race.moveAll();
-        }
+        String rawCount = input.readCount();
+        Rounds rounds = new Rounds(rawCount);
+
+        rounds.repeat(race::moveAll);
 
         finish(race);
     }
