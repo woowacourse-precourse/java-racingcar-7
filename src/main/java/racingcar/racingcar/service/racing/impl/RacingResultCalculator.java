@@ -1,4 +1,4 @@
-package racingcar.service.racing.impl;
+package racingcar.racingcar.service.racing.impl;
 
 import racingcar.constant.errormessage.ErrorMessage;
 import racingcar.racingcar.domain.RacingCar;
