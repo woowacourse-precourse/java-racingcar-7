@@ -31,6 +31,8 @@ public class Racing {
         System.out.println("실행 결과");
 
         for (int i = 0; i < tryCount; i++) {
+            System.out.println();
+
             for (int j = 0; j < carNames.size(); j++) {
                 System.out.print(carNames.get(j).trim() + " : ");
                 int randomNumber = randomNumber();
@@ -41,6 +43,7 @@ public class Racing {
                 }
 
                 advance(carPositions[j]);
+
                 System.out.println();
             }
         }
