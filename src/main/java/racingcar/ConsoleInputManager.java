@@ -21,7 +21,11 @@ public class ConsoleInputManager implements InputManager{
         String [] classifiedName = readName.split(",");
 
         for(String name : classifiedName){
-            nameList.add(name);
+            if(name.length() <= 5){
+                nameList.add(name);
+            } else {
+                throw new IllegalArgumentException("이름은 5자 이하로 입력하세요.");
+            }
         }
 
         return nameList;

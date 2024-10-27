@@ -46,6 +46,21 @@ class ApplicationTest extends NsTest {
         assertEquals(comparisonValue, classifiedName, "결과는 {pobi,woni}여야 합니다.");
     }
 
+    @Test
+    void 이름이_5자_이상_입력되어_에러_발생_테스트(){
+        //given
+        InputManager inputManager = new ConsoleInputManager();
+        String input = "Alice,Bob,Charles";
+
+        //when
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputManager.splitName(input);
+        });
+
+        //then
+        assertEquals(exception.getMessage(), "이름은 5자 이하로 입력하세요.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
