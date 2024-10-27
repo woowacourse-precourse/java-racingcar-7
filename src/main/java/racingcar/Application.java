@@ -99,15 +99,8 @@ public class Application {
     private static void printRacingOutput(List<Integer> scores) {
         for (int i = 0; i < scores.size(); i++) {
             System.out.print(carNameList.get(i) + " : ");
-            printScoreOutput(scores.get(i));
+            System.out.println("-".repeat(Math.max(0, scores.get(i))));
         }
-    }
-
-    private static void printScoreOutput(int score) {
-        for (int i = 0; i < score; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
     }
 
     private static void recordWinners(List<Integer> scores, int max) {
