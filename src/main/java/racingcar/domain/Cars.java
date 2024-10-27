@@ -38,6 +38,13 @@ public class Cars {
         }
     }
 
+    public void doRace() {
+        for (int i = 0; i < cars.size(); i++) {
+            Car racer = cars.get(i);
+            racer.randomGo();
+        }
+    }
+
     public List<String> decideWinner() {
         int winnersProgress = this.findWinnersProgress();
         List<String> winners = new ArrayList<>();

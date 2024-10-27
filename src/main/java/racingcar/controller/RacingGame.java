@@ -17,7 +17,7 @@ public class RacingGame {
         Rounds rounds = new Rounds(inputView.askNumberOfRounds());
         outputView.startRacePhase();
         for (int i = 0; i < rounds.rounds(); i++) {
-            doRace(cars);
+            cars.doRace();
             updateProgress(cars);
         }
         List<String> winners = cars.decideWinner();
@@ -30,14 +30,8 @@ public class RacingGame {
         return cars;
     }
 
-    public void doRace(Cars cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            Car racer = cars.getCar(i);
-            racer.randomGo();
-        }
-    }
 
-    public void updateProgress(Cars cars) {
+    private void updateProgress(Cars cars) {
         for (int i = 0; i < cars.size(); i++) {
             Car racer = cars.getCar(i);
             outputView.printProgress(racer.name(), racer.progress());

@@ -12,8 +12,6 @@ class RaceTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
-    RacingGame racingGame = new RacingGame();
-
     @Test
     void 랜덤_경주_테스트() {
         List<String> carNames = List.of("pobi", "minju");
@@ -22,8 +20,8 @@ class RaceTest {
 
         assertRandomNumberInRangeTest(
                 () -> {
-                    racingGame.doRace(testCars);
-                    for(int i = 0; i< testCars.size(); i++) {
+                    testCars.doRace();
+                    for (int i = 0; i < testCars.size(); i++) {
                         Assertions.assertEquals(testCars.getCar(i).progress(), expectedProgress.get(i));
                     }
                 },
