@@ -9,6 +9,8 @@ public class Game {
     public void run() {
         GameBoard gameBoard = initializeGameBoard();
         AttemptNumber attemptNumber = initializeAttemptNumber();
+        play(gameBoard, attemptNumber);
+        printWinners(gameBoard);
     }
 
     private GameBoard initializeGameBoard() {
@@ -32,5 +34,9 @@ public class Game {
 
     private boolean canPlay(int tryCount, AttemptNumber attemptNumber) {
         return tryCount == attemptNumber.getAttemptNumber();
+    }
+
+    private void printWinners(GameBoard gameBoard) {
+        OutputView.printEndResult(gameBoard.makeEndResult());
     }
 }
