@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -11,6 +10,5 @@ public interface Cars {
   List<Car> findCarsByPosition(int position);
   int findMaxPosition();
   List<Car> getWinners ();
-
   RacingRoundResult moveOrStayAll();
 }

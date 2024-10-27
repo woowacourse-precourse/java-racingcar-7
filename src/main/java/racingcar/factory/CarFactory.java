@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.function.Function;
 import racingcar.common.constant.CarsType;
 import racingcar.model.Car;
+import racingcar.model.CarNameMap;
 import racingcar.model.Cars;
 
 /**
@@ -17,9 +18,11 @@ public interface CarFactory{
 
   public void validateNames(String[] carNames);
   public String[] splitCarNames(String rawCarNames);
+  public List<String> createCarNames(String rawCarNames);
 
   public List<Car> getListFromRawCarNames(String rawCarNames);
 
+  CarNameMap createCarNameMap(List<Car> cars);
   Car createCar(String carName);
   Cars createCars(String rawCarNames, CarsType carsType);
   Cars createDefaultCars(String rawCarNames);
