@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
 
 public class RaicingController {
@@ -10,7 +12,8 @@ public class RaicingController {
         //입력
         List<Car> cars = inputCars();
         //실행
-        
+        race(cars);
+
 
     }
 
@@ -23,8 +26,21 @@ public class RaicingController {
         return cars;
     }
 
-    public void execute() {
+    public void race(List<Car> cars) {
 
+        int maxRound = inputView.inputMaxRound();
+
+        for (int round = 0; round <= maxRound; round++) {
+            for (Car car : cars) {
+                int num = Randoms.pickNumberInRange(0, 9);
+                if (num >= 4) {
+                    car.move();
+                }
+
+
+            }
+
+        }
     }
 
     public void output() {
