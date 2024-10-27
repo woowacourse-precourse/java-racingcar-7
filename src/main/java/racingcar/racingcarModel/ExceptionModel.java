@@ -60,5 +60,14 @@ public class ExceptionModel {
         }
     }
 
+    // 입력된 값이 숫자가 아닐 경우
+    public void isNumberTryInput(String tryInput) {
+        try {
+            int tryCount = Integer.parseInt(tryInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 
 }
