@@ -17,7 +17,10 @@ public enum ErrorMessage {
     ATTEMPT_COUNT_OUT_OF_RANGE("시도할 횟수는 1 이상 20 이하의 정수를 입력하셔야 합니다."),
 
     RACE_PROGRESS_MANAGER_CAR_NOT_FOUND("해당 자동차를 찾을 수 없습니다."),
-    RACE_PROGRESS_MANAGER_DUPLICATE_CAR_NAME("자동차 이름은 중복될 수 없습니다.")
+    RACE_PROGRESS_MANAGER_DUPLICATE_CAR_NAME("자동차 이름은 중복될 수 없습니다."),
+
+    MOVEMENT_POLICY_NULL("MovementPolicy는 null이 아닌 유효한 객체여야 합니다."),
+    RACE_PROGRESS_MANAGER_NULL("RaceProgressManager는 null이 아닌 유효한 객체여야 합니다.")
     ;
 
     private final String message;
