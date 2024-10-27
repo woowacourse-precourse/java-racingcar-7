@@ -66,6 +66,9 @@
 - 우승자가 여러 명일 경우 쉼표(,)를 이용하여 이름을 구분하고 출력한다.
 
 ## 업데이트 노트
+### v.1.3.0 Racing 클래스에 대한 단위 테스트 추가
+- RacingTest: start 및 determineWinner 메서드 테스트 추가
+
 ### v.1.2.0 Car 클래스에 대한 단위 테스트 추가
 - CarTest: move, printCurrentPosition, getDistance, getName 메서드 테스트 추가
 
