@@ -13,4 +13,22 @@ public class GameManager {
             }
         }
     }
+
+    public ArrayList<Car> getWinner(ArrayList<Car> cars){
+        ArrayList<Car> winners = new ArrayList<>();
+        int max = -1;
+        for (Car car : cars){
+            if(max < car.getDistance()){
+                winners.clear();
+                max = car.getDistance();
+                winners.add(car);
+                continue;
+            }
+            if(max == car.getDistance()){
+                winners.add(car);
+            }
+        }
+
+        return winners;
+    }
 }

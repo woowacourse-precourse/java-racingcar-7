@@ -23,7 +23,13 @@ public class OutputView {
         System.out.println(output);
     }
 
-    public void printFinalWinner(String s){
-        System.out.println("최종 우승자 : "+ s);
+    public void printFinalWinner(ArrayList<Car> cars){
+        StringBuilder output = new StringBuilder();
+        output.append("최종 우승자 : ");
+        for (Car car : cars){
+            output.append(car.getName()).append(", ");
+        }
+        output.append("\n");
+        System.out.println(output);
     }
 }
