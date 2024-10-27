@@ -6,9 +6,9 @@ import static racingcar.constant.RacingCarError.INVALID_INPUT_ERR;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
 import racingcar.dto.InputDTO;
+import racingcar.dto.StatusDTO;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class RacingCarIO {
 
@@ -51,5 +51,15 @@ public class RacingCarIO {
         }
 
         return new InputDTO( cars, tryCnt );
+    }
+
+    /**
+     * 문제형식을 준수하여 최종 경주결과를 출력합니다.
+     * @param statusDTO 마지막 경주상태정보를 담고있는 객체
+     */
+    public static void printResult( StatusDTO statusDTO ) {
+        List<String> winners = statusDTO.getFirstPlace().winners();
+        String winners_print = winners.toString().replaceAll("[\\[\\]]", "");
+        System.out.println( String.format( OUTPUT_MSG_B, winners_print ) );
     }
 }
