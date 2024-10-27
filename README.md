@@ -9,11 +9,11 @@
 
 ### 2) 사용자 문자열 입력 및 검증 기능
 
-- [ ] 사용자 자동차 이름 입력
-  - [ ] 사용자가 입력한 문자열이 비어 있는지 검증
-    - [ ] 예외인 경우 IllegalArgumentException 발생
-  - [ ] 사용자가 입력한 문자열에 구분자(,)가 포함된 문자열인지 검증
-    - [ ] 예외인 경우 IllegalArgumentException 발생
+- [x] 사용자 자동차 이름 입력
+  - [x] 사용자가 입력한 문자열이 비어 있는지 검증
+    - [x] 예외인 경우 IllegalArgumentException 발생
+  - [x] 사용자가 입력한 문자열에 구분자(,)가 포함된 문자열인지 검증
+    - [x] 예외인 경우 IllegalArgumentException 발생
 - [ ] 사용자 시도 횟수 입력
   - [ ] 사용자가 입력한 문자열이 비어 있는지 검증
     - [ ] 예외인 경우 IllegalArgumentException 발생
