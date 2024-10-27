@@ -10,8 +10,12 @@ import java.util.ArrayList;
 
 public class CarController {
     private final InputView inputView = new InputView();
-    private final CarService carService = new CarService();
     private final Validator validator = new Validator();
+    private final CarService carService;
+
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
 
     public void createCars() {
         String input = inputView.inputCarNames();
