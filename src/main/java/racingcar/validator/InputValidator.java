@@ -2,6 +2,17 @@ package racingcar.validator;
 
 public class InputValidator {
 
+    public void validate(String name, String tryNumber) {
+        if (checkNameIsEmpty(name) ||
+                !checkNameIsLongerThanFive(name) ||
+                checkNameIncludeNumber(name) ||
+                checkNameHasNameBehindComma(name) ||
+                checkTryNumberIsNotNumber(tryNumber) ||
+                checkTryNumberIsNotInteger(tryNumber)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public boolean checkNameIsEmpty(String name) {
         return hasNoInput(name);
     }
