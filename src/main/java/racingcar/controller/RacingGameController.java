@@ -21,6 +21,7 @@ public class RacingGameController {
         view.trialCountInputMessage();
         trialCount = view.getTrialCount();
         startRace(cars, trialCount);
+        view.showFinalWinner(cars);
     }
 
     private void createCarInstances(){

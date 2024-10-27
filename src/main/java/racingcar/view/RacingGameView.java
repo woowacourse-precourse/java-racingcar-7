@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
@@ -33,5 +34,22 @@ public class RacingGameView {
             System.out.println("-".repeat(car.getAdvance()));
         }
         System.out.println();
+    }
+
+    public void showFinalWinner(List<Car> cars){
+        List<String> winners = new ArrayList<>();
+        int maxAdvance = 0;
+        for(Car car: cars){
+            if(car.getAdvance()>maxAdvance){
+                maxAdvance = car.getAdvance();
+            }
+        }
+        for(Car car: cars){
+            if(car.getAdvance()==maxAdvance){
+                winners.add(car.getName());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
