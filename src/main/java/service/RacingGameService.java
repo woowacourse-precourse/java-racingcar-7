@@ -2,17 +2,17 @@ package service;
 
 import model.Car;
 import model.Cars;
-import util.randomnumber.RandomNumberHandler;
+import util.randomnumber.RandomNumberHandlerImpl;
 import view.OutputView;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGameService {
-    private final RandomNumberHandler randomNumberHandler;
+    private final RandomNumberHandlerImpl randomNumberHandler;
     private final OutputView outputView;
 
-    public RacingGameService(RandomNumberHandler randomNumberHandler, OutputView outputView) {
+    public RacingGameService(RandomNumberHandlerImpl randomNumberHandler, OutputView outputView) {
         this.randomNumberHandler = randomNumberHandler;
         this.outputView = outputView;
     }
