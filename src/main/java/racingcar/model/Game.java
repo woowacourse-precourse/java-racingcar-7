@@ -7,6 +7,7 @@ public class Game {
     private int round;
 
     private Game(List<String> carNames, int round) {
+        validateDuplicatedCarName(carNames);
         this.cars = carNames.stream()
                 .map(Car::create)
                 .toList();
@@ -15,6 +16,12 @@ public class Game {
 
     public static Game start(List<String> carNames, int round) {
         return new Game(carNames, round);
+    }
+
+    private void validateDuplicatedCarName(List<String> carNames) {
+        if (carNames.size() != carNames.stream().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void play() {

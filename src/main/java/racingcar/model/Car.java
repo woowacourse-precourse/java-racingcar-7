@@ -7,12 +7,26 @@ public class Car {
     private int location;
 
     private Car(String name) {
+        validateCarNameLength(name);
+        validateCarNameEmpty(name);
         this.name = name;
         this.location = 0;
     }
 
     public static Car create(String name) {
         return new Car(name);
+    }
+
+    private void validateCarNameEmpty(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateCarNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void moveForward() {

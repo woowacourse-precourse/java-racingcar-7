@@ -25,7 +25,6 @@ public class Controller {
 
     public void gameStart() {
         List<String> carNames = splitCarNames(inputCarNames());
-        validateCarNames(carNames);
         int round = Convertor.convertStringToInt(inputRound());
         validateRound(round);
 
@@ -66,31 +65,5 @@ public class Controller {
     private List<String> splitCarNames(String carName) {
         return Arrays.stream(carName.split(","))
                 .collect(Collectors.toList());
-    }
-
-    private void validateCarNames(List<String> carNames) {
-        validateDuplicatedCarName(carNames);
-        for (String carName : carNames) {
-            validateCarNameLength(carName);
-            validateCarNameEmpty(carName);
-        }
-    }
-
-    private static void validateCarNameEmpty(String carName) {
-        if (carName.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void validateCarNameLength(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void validateDuplicatedCarName(List<String> carNames) {
-        if (carNames.size() != carNames.stream().distinct().count()) {
-            throw new IllegalArgumentException();
-        }
     }
 }
