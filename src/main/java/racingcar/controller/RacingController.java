@@ -38,6 +38,7 @@ public class RacingController {
     private String getTryingCount() {
         String tryCounts = inputView.getTryCounts();
         racingInputValidateService.validateTryCount(tryCounts);
+
         return tryCounts;
     }
 

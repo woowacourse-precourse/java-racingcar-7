@@ -22,7 +22,6 @@ public class RacingInputValidateService {
     }
 
     public void validateCarName(List<String> carNames) {
-
         if (!validateNameNotNull(carNames)) {
             throw new NameError(NAME_BLANK_EXCEPION);
         }
@@ -31,6 +30,12 @@ public class RacingInputValidateService {
         }
         if (!validateNameLength(carNames)) {
             throw new NameError(NAME_LENGTH_EXCEPION);
+        }
+    }
+
+    public void validateTryCount(String count) {
+        if (!validatePositiveIntegerCount(count)) {
+            throw new TryCountError(TRY_COUNT_EXCEPION);
         }
     }
 
@@ -44,15 +49,7 @@ public class RacingInputValidateService {
         return false;
     }
 
-    public void validateTryCount(String count) {
-
-        if (!validatePositiveIntegerCount(count)) {
-            throw new TryCountError(TRY_COUNT_EXCEPION);
-        }
-    }
-
     private boolean validateNameNotNull(List<String> carNames) {
-
         return carNames.stream().allMatch(name -> name != null && !name.isEmpty());
     }
 
@@ -66,5 +63,4 @@ public class RacingInputValidateService {
         }
         return false;
     }
-
 }

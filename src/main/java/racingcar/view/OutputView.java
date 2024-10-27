@@ -28,8 +28,8 @@ public class OutputView {
     }
 
     public void go(String tryCounts, List<MoveForwardRecord> moveForwardRecords) {
-
         printMoveForwardResult();
+
         for (int i = 0; i < Integer.parseInt(tryCounts); i++) {
             moveForwardRecords.stream()
                     .forEach(moveForwardRecord -> moveForwardRecord.updateGoCount(pickNumberInRange(0, 9)));
