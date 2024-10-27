@@ -1,12 +1,11 @@
  package racingcar.io;
 
 import static racingcar.constant.RacingCarConstant.*;
-import static racingcar.constant.RacingCarError.INVALID_INPUT_ERR;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.domain.Car;
 import racingcar.dto.InputDTO;
 import racingcar.dto.StatusDTO;
+import racingcar.validation.Validator;
 
 import java.util.*;
 
@@ -24,6 +23,7 @@ public class RacingCarIO {
 
         List<String> carNames = Arrays.stream( carNamesInput.split( "," ) )
                 .map( String::trim )
+                .map( Validator::checkCarName )
                 .toList();
 
         System.out.println( INPUT_MSG_B );
@@ -33,8 +33,7 @@ public class RacingCarIO {
             tryCnt = Integer.parseInt( Console.readLine() );
         } catch( Error ignored ) {}
         finally {
-            if ( tryCnt < 1 )
-                throw new IllegalArgumentException( INVALID_INPUT_ERR );
+            Validator.checkTryCnt( tryCnt );
         }
 
         return new InputDTO( carNames, tryCnt );

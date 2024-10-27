@@ -8,7 +8,6 @@ import racingcar.io.RacingCarIO;
 import java.util.*;
 
 import static racingcar.constant.RacingCarConstant.OUTPUT_MSG_A;
-import static racingcar.constant.RacingCarError.INVALID_INPUT_ERR;
 
 public class Race {
     private List<Car> participants;
@@ -17,18 +16,11 @@ public class Race {
 
     public Race( InputDTO inputs ) {
         this.participants = inputs.carNames().stream()
-                .map( this::createCar )
+                .map( Car::new )
                 .toList();
 
         this.tryCnt = inputs.tryCnt();
         this.currentStatus = new HashMap<>();
-    }
-
-    private Car createCar( String name ) {
-        if ( name.isEmpty() )
-            throw new IllegalArgumentException( INVALID_INPUT_ERR );
-
-        return new Car( name );
     }
 
     public void start() {
