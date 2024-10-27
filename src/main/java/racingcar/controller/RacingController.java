@@ -1,9 +1,11 @@
 package racingcar.controller;
 
 import java.util.HashMap;
+import racingcar.message.RunMessage;
 import racingcar.service.CarService;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
+import racingcar.view.OutView;
 
 public class RacingController {
 
@@ -26,11 +28,13 @@ public class RacingController {
 
         int attemptCount = racingService.parseAttemptCount(inputAttemptCount);
 
+        System.out.print(RunMessage.RESULT.getMessage());
         for (int i = 0; i < attemptCount; i++) {
             for (String carName : cars.keySet()) {
                 boolean isForward = racingService.canMove();
                 carService.updateCarLocation(cars, carName, isForward);
             }
+            OutView.printRacingResult(cars);
         }
     }
 }
