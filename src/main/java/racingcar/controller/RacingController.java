@@ -26,6 +26,8 @@ public class RacingController {
         outputView.printInputMoveCount();
         int moveCount = inputView.getMoveCount();
 
+        outputView.printResult();
         List<Car> winners = carService.playRounds(playersName,moveCount);
+        outputView.printWinner();
     }
 }
