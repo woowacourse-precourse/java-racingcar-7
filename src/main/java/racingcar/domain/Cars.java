@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import racingcar.dto.RaceResultResponse;
 import racingcar.util.RandomNumberPicker;
 
 public class Cars {
@@ -15,6 +16,12 @@ public class Cars {
 
 	public void moveEachCars() {
 		cars.forEach(car -> car.move(RandomNumberPicker.pickNumber()));
+	}
+
+	public List<RaceResultResponse> findRaceStatus() {
+		return cars.stream()
+			.map(RaceResultResponse::new)
+			.toList();
 	}
 
 	public Set<Car> selectWinners() {
