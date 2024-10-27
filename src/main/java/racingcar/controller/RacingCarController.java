@@ -4,11 +4,15 @@ import racingcar.domain.CarsFactory;
 import racingcar.domain.MoveNumberFactory;
 import racingcar.domain.Cars;
 import racingcar.domain.MoveNumber;
+import racingcar.view.CarsIntermediateView;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingCarController {
-    protected RacingCarController() {
+    private final CarsIntermediateView carsIntermediateView;
+
+    protected RacingCarController(CarsIntermediateView carsIntermediateView) {
+        this.carsIntermediateView = carsIntermediateView;
     }
 
     public void run() {
@@ -27,7 +31,7 @@ public class RacingCarController {
 
     private void outputRaceResult(Cars cars, MoveNumber moveNumber) {
         OutputView.outputRaceStartLine();
-        cars.registerObserver(ControllerFactory.createCarsOutputView());
+        cars.registerObserver(carsIntermediateView);
         cars.moveCars(moveNumber.getMoveNumber());
         OutputView.outputRaceFinalResult(cars.findWinnerNames());
     }

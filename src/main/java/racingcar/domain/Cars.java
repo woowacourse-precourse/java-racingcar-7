@@ -8,7 +8,7 @@ import racingcar.view.Observer;
 
 public class Cars {
     private final List<Car> cars;
-    private List<Observer> observers;
+    private final List<Observer> observers;
 
     protected Cars(List<Car> cars) {
         this.cars = cars;

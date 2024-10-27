@@ -1,13 +1,11 @@
 package racingcar.controller;
 
-import racingcar.view.CarsOutputView;
+import racingcar.view.CarsIntermediateView;
 
 public class ControllerFactory {
     public static RacingCarController createController() {
-        return new RacingCarController();
-    }
-
-    public static CarsOutputView createCarsOutputView() {
-        return new CarsOutputView();
+        return new RacingCarController(
+                new CarsIntermediateView()
+        );
     }
 }
