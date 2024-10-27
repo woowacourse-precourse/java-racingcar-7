@@ -4,6 +4,7 @@ public class Car {
     private final String name;
     private int distance;
     private static final int CRITERIA = 4;
+    private static final int MAX_NAME_LENGTH = 5;
 
     public Car(String name) {
         validateName(name);
@@ -41,7 +42,7 @@ public class Car {
     }
 
     private void checkLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("이름은 5글자보다 클 수 없습니다.");
         }
     }
