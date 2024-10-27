@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -13,7 +14,9 @@ public class Application {
         String inputCarName = Console.readLine();
 
         // 입력된 자동차 이름 저장 후 검증
-        String[] names = inputCarName.split(",");
+        List<String> names = Arrays.stream(inputCarName.split(","))
+                .map(String::trim)
+                .toList();
         for (String name : names) {
             if (name.isEmpty() || name.length() > 5) {
                 throw new IllegalArgumentException(Message.ILLEGAL_NAME_LENGTH.getMessage());
