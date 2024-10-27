@@ -20,14 +20,13 @@ public class IOHandler {
 
     public static int setRaceCycle() {
         System.out.println(INPUT_CYCLE_MESSAGE);
-        String cycleInput = Console.readLine();
-        return Validator.validateCycle(cycleInput);
+        return Validator.validateCycle(Console.readLine());
     }
 
     public static void printRacer(RacingCar racingCar) {
         System.out.println(racingCar.toString());
     }
-    
+
     public static void printRacer(String winner) {
         System.out.println(WINNER_MESSAGE + winner);
     }
