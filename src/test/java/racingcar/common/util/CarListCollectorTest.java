@@ -1,4 +1,4 @@
-package racingcar.collector;
+package racingcar.common.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcar.common.util.CarListCollector;
 import racingcar.model.CarList;
 import racingcar.model.Drivable;
 import racingcar.model.RacingCar;
@@ -20,6 +19,13 @@ class CarListCollectorTest {
     static Stream<List<Drivable>> singleCarProvider() {
         return Stream.of(
                 List.of(new RacingCar("Car1"))
+        );
+    }
+
+    static Stream<List<Drivable>> multipleCarProvider() {
+        return Stream.of(
+                List.of(new RacingCar("Car1"), new RacingCar("Car2")),
+                List.of(new RacingCar("CarA"), new RacingCar("CarB"))
         );
     }
 
@@ -35,13 +41,6 @@ class CarListCollectorTest {
         assertNotNull(carList);
         assertEquals(1, carList.getAllCars().size());
         assertEquals("Car1", carList.getAllCars().get(0).getName());
-    }
-
-    static Stream<List<Drivable>> multipleCarProvider() {
-        return Stream.of(
-                List.of(new RacingCar("Car1"), new RacingCar("Car2")),
-                List.of(new RacingCar("CarA"), new RacingCar("CarB"))
-        );
     }
 
     @DisplayName("다수 차량 수집기 테스트")
