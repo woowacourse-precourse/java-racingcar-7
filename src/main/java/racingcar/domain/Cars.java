@@ -39,7 +39,7 @@ public class Cars {
 
     private void validateNoDuplicates(List<String> carNames) {
         if (carNames.size() != carNames.stream().distinct().count()) {
-            throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
     }
 

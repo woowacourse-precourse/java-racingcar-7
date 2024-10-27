@@ -47,7 +47,7 @@ class CarsTest {
     void 중복된_자동차_이름_예외(String carNamesInput) {
         assertThatThrownBy(() -> new Cars(carNamesInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복된 자동차 이름이 있습니다.");
+                .hasMessage("자동차 이름은 중복될 수 없습니다.");
     }
 
     @ParameterizedTest
