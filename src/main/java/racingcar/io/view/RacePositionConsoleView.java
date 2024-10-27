@@ -7,6 +7,7 @@ public class RacePositionConsoleView implements RacePositionView {
     private static final RacePositionConsoleView INSTANCE = new RacePositionConsoleView();
     private static final String DISTANT_UNIT_DISPLAY = "-";
     private static final String COLON = " : ";
+    private static final String LINE_BREAK = "\n";
 
     private RacePositionConsoleView() {
     }
@@ -16,14 +17,20 @@ public class RacePositionConsoleView implements RacePositionView {
     }
 
     public void showRacePosition(CarsDto racePositionDto) {
-        racePositionDto.carDtoList().forEach(carDto ->
-                System.out.println(generateDisplayStringFrom(carDto)));
+        System.out.print(generatePositionString(racePositionDto));
     }
 
-    private String generateDisplayStringFrom(CarDto car) {
+    private String generatePositionString(CarsDto carDto) {
+        StringBuilder positionString = new StringBuilder(LINE_BREAK);
+        carDto.carDtoList()
+                .forEach(car -> positionString.append(generateSinglePositionString(car)));
+        return positionString.toString();
+    }
+
+    private String generateSinglePositionString(CarDto car) {
         String nameString = car.name();
         String distanceString = generateDistanceString(car.position());
-        return  nameString + COLON + distanceString;
+        return nameString + COLON + distanceString + LINE_BREAK;
     }
 
     private String generateDistanceString(int distance) {

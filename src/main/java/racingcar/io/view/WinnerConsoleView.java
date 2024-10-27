@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class WinnerConsoleView implements WinnerView {
     private static final String PREFIX = "최종 우승자 : ";
     private static final String DELIMITER = ", ";
+    private static final String LINE_BREAK = "\n";
     private static final WinnerConsoleView INSTANCE = new WinnerConsoleView();
 
     private WinnerConsoleView() {
@@ -23,7 +24,7 @@ public class WinnerConsoleView implements WinnerView {
     }
 
     private String generateWinningMessage(CarsDto cars) {
-        return PREFIX + generateCarNames(cars);
+        return LINE_BREAK + PREFIX + generateCarNames(cars);
     }
 
     private String generateCarNames(CarsDto cars) {
