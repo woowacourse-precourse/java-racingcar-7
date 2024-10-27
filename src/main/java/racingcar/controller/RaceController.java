@@ -27,22 +27,11 @@ public class RaceController {
 
         output.writeWhiteLine();
 
-        RacingCars racingCars = createRacingCars(names);
+        RacingCars racingCars = RacingCars.from(names);
         runGame(roundCount, racingCars.getRacingCars());
 
         List<String> winners = findWinnersName(racingCars);
         output.writeWinners(winners);
-    }
-
-    private RacingCars createRacingCars(List<String> names) {
-        RacingCars racingCars = new RacingCars();
-
-        for (String name : names) {
-            RacingCar racingCar = new RacingCar(name);
-            racingCars.addRacingCar(racingCar);
-        }
-
-        return racingCars;
     }
 
     private void runGame(int roundCount, List<RacingCar> racingCarList) {

@@ -8,15 +8,20 @@ public class RacingCars {
 
     private final List<RacingCar> racingCars;
 
-    public RacingCars() {
-        this.racingCars = new ArrayList<>();
-    }
-
     public RacingCars(List<RacingCar> racingCars) {
         if (racingCars == null) {
             throw new IllegalArgumentException("자동차 리스트는 null 일 수 없습니다.");
         }
         this.racingCars = racingCars;
+    }
+
+    public static RacingCars from(List<String> names) {
+        List<RacingCar> cars = new ArrayList<>();
+        for (String name : names) {
+            RacingCar racingCar = new RacingCar(name);
+            cars.add(racingCar);
+        }
+        return new RacingCars(cars);
     }
 
     public void addRacingCar(RacingCar racingCar) {
