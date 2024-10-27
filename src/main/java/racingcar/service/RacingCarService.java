@@ -44,7 +44,7 @@ public class RacingCarService {
         outputView.printWinner(formatWinners(winnerList));
     }
 
-    private List<String> findWinner(Cars cars) {
+    public List<String> findWinner(Cars cars) {
         Integer maxDistance = findMaxDistance(cars);
         return filterCarsByDistance(cars, maxDistance);
     }
