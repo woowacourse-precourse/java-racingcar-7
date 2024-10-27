@@ -2,10 +2,15 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Console;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class RacingGame {
+
+    private static final int MIN_RANDOM_DIGIT = 0;
+    private static final int MAX_RANDOM_DIGIT = 9;
+
     private final CarNameParser carNameParser;
     private final AttemptCountParser attemptCountParser;
     private int attemptCount;
@@ -25,6 +30,34 @@ public class RacingGame {
         for(String carName : validatedCarNames){
             cars.add(new Car(carName));
         }
+    }
+
+
+
+    /**
+     * 경주에 참가한 자동차들(RacingGame의 cars) 전진 메서드
+     *  - 랜덤 값이 4이상일때만
+     */
+    public void moveCars(int randomNumber){
+        for(Car car : cars){
+            car.move(randomNumber);
+        }
+    }
+
+    /**
+     * 사용자가 입력한 시도횟수만큼 전진을 반복하는 메서드
+     * */
+    public void raceByAttemptCount(int attemptCount, int randomNumber){
+        for(int i = 0; i<attemptCount; i++){
+            moveCars(randomNumber);
+        }
+    }
+
+    /**
+     * @return 0~9 사이 무작위 값 리턴
+     * */
+    public int getRandomNumber(){
+        return Randoms.pickNumberInRange(MIN_RANDOM_DIGIT, MAX_RANDOM_DIGIT);
     }
 
 
