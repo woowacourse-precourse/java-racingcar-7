@@ -1,6 +1,7 @@
 package racingcar.model.primitive;
 
 import java.util.Objects;
+import racingcar.exception.ErrorMessage;
 
 public class Position {
 
@@ -20,7 +21,7 @@ public class Position {
 
     private void validate(int position) {
         if (isNegative(position)) {
-            throw new IllegalArgumentException("위치값은 음수가 될 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_POSITION.getMessage());
         }
     }
 
