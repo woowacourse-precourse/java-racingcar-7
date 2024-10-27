@@ -90,7 +90,8 @@ jun : -----
 
 - `Validate` 클래스 : 입력값 검증
     - `name`이 5자 이하인지 검증
-    - `name` 리스트와 `시도횟수`가 제대로 입력되는지 검증
+    - `name` 리스트가 `쉼표(,)로 구분되는 지 검증
+    - `시도횟수`가 숫자인지 검증
 
 - `Racing` 클래스 : 랜덤으로 레이싱을 굴려 우승자를 가려내는 클래스
     - `random` 함수 : `camp.nextstep.edu.missionutils.Randoms`에서 제공하는 `pickNumberInRange()`로 랜덤값 하나 반환

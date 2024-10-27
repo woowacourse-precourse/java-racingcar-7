@@ -4,9 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
-        String str = Console.readLine();  // 사용자가 콘솔에 입력한 값 읽기
-        //Validate.check(str); // 입력 값 검증
+        String racingName = Console.readLine();  // 레이싱 카 이름 목록
+        String tryNum = Console.readLine(); // 시도 횟수
+
+        //Validate.check(racingName, tryNum); // 입력 값 검증
+        //Racing race = new Racing(racingName) // 레이싱 카 생성
+        //race.run(tryNum) // 레이싱 카 게임 시작
     }
 }
