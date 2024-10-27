@@ -13,6 +13,7 @@ public class Application {
         int moves = getMovementCounts();
 
         startRace(cars, moves);
+        endRace(cars);
 
     }
 
@@ -70,5 +71,15 @@ public class Application {
             }
             System.out.println();
         }
+    }
+
+    public static void endRace(List<Car> cars) {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
