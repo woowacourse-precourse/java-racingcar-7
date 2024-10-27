@@ -5,7 +5,7 @@ import racingcar.exception.ErrorMessage;
 
 public class Position {
 
-    private static final int ONE_MOVE = 1;
+    private static final int ONE_POSITION_INCREASE = 1;
     private static final int MIN_POSITION = 0;
 
     private int position;
@@ -19,18 +19,8 @@ public class Position {
         return new Position(position);
     }
 
-    private void validate(int position) {
-        if (isNegative(position)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_POSITION.getMessage());
-        }
-    }
-
-    private boolean isNegative(int position) {
-        return position < MIN_POSITION;
-    }
-
     public void move() {
-        position = position + ONE_MOVE;
+        position = position + ONE_POSITION_INCREASE;
     }
 
     public int calculateMaxPosition(int maxPosition) {
@@ -41,8 +31,14 @@ public class Position {
         return this.position == maxPosition;
     }
 
-    public int getPosition() {
-        return position;
+    private void validate(int position) {
+        if (isNegative(position)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_POSITION.getMessage());
+        }
+    }
+
+    private boolean isNegative(int position) {
+        return position < MIN_POSITION;
     }
 
     @Override
@@ -60,5 +56,9 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hashCode(position);
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
