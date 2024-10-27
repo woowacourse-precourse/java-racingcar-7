@@ -1,7 +1,9 @@
 package racingcar.domain.racing;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import racingcar.domain.car.Car;
 
 public class Racing {
@@ -23,6 +25,13 @@ public class Racing {
         validatePlayableRound();
         cars.forEach(Car::move);
         currentRounds++;
+    }
+
+    public Map<String, Long> getCurrentPosition() {
+        Map<String, Long> currentPosition = new LinkedHashMap<>();
+        cars.forEach(car -> currentPosition.put(car.getName(), car.getPosition()));
+
+        return currentPosition;
     }
 
     private void validatePlayableRound() {
