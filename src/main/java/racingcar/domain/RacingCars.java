@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.RandomGenerator;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -32,5 +34,11 @@ private static final int MINIMUM_CAR_COUNT = 2;
 
     public List<RacingCar> getRacingCars() {
         return racingCars;
+    }
+
+    public void moveAll(final RandomGenerator randomGenerator){
+        for (RacingCar racingCar : racingCars) {
+            racingCar.move(randomGenerator.generateRandom());
+        }
     }
 }
