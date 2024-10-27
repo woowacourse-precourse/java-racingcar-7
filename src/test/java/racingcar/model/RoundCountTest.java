@@ -53,4 +53,13 @@ class RoundCountTest {
 
     }
 
+    @Test
+    @DisplayName("남은 라운드가 없으면 true를 반환한다.")
+    void hasNoRemainingRound() {
+        // given
+        RoundCount round = new RoundCount("1");
+        round.decrease();
+        // when, then
+        Assertions.assertThat(round.hasNoRemainingRound()).isTrue();
+    }
 }
