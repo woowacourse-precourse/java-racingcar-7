@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 import racingcar.domain.Cars;
 import racingcar.domain.power.PowerGenerator;
 import racingcar.domain.power.RandomPowerGenerator;
@@ -29,12 +30,17 @@ public class RacingCarController {
         Cars cars = new Cars(names);
 
         outputView.printRunResultMessage();
-        for (int i = 0; i < Integer.parseInt(inputTryCount); i++) {
-            cars.move(powerGenerator);
-            outputView.printForwardStatuses(cars.getForwardStatuses() + "\n");
-        }
-
+        runRaceRounds(cars, Integer.parseInt(inputTryCount), powerGenerator);
         outputView.printWinningNames(cars.getWinnerNames());
+    }
+
+    private void runRaceRounds(Cars cars, int tryCount, PowerGenerator powerGenerator) {
+        IntStream.range(0, tryCount).forEach(i -> executeRound(cars, powerGenerator));
+    }
+
+    private void executeRound(Cars cars, PowerGenerator powerGenerator) {
+        cars.move(powerGenerator);
+        outputView.printForwardStatuses(cars.getForwardStatuses() + "\n");
     }
 
 }
