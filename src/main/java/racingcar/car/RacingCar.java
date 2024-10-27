@@ -6,7 +6,7 @@ public class RacingCar extends Car {
     }
 
     @Override
-    protected void moveCar() {
+    public void moveCar() {
         super.moveDistance++;
     }
 }

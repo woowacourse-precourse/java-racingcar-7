@@ -21,5 +21,5 @@ public abstract class Car {
         }
     }
 
-    abstract protected void moveCar();
+    abstract public void moveCar();
 }
