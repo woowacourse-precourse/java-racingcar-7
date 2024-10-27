@@ -29,7 +29,7 @@ public class Car {
     }
 
     public Car decideMove(int random) {
-        if (random > MOVE_STANDARD) {
+        if (random >= MOVE_STANDARD) {
             position = position.increase();
             return new Car(name, position);
         }
