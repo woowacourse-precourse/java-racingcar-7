@@ -74,6 +74,20 @@ public class GameUtil {
         return winnerPrintValue;
     }
 
+    public static int getGameTurnNumber(String gameTurnInput) {
+        String replaceNumber = gameTurnInput.replace(" ", "");
+        Integer parseNumber;
+        try {
+            parseNumber = Integer.valueOf(replaceNumber);
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException("숫자만 입력해야합니다!");
+        }
+
+        return parseNumber;
+    }
+
+
+
 
 
 
