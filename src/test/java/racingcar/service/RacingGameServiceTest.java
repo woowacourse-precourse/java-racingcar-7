@@ -9,6 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.constant.ErrorMessages.CAR_COUNT_ERROR_MESSAGE;
 import static racingcar.constant.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
 
 class RacingGameServiceTest {
@@ -30,4 +31,12 @@ class RacingGameServiceTest {
                 .hasMessage(CAR_NAME_DUPLICATE_ERROR_MESSAGE);
     }
 
+    @Test
+    public void 자동차_수는_최소_2대_이상이어야_한다_2대_미만인_경우(){
+        final var racingGameService = new RacingGameService();
+        String input = "";
+        assertThatThrownBy(()->racingGameService.createCarsWithUniqueName(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CAR_COUNT_ERROR_MESSAGE);
+    }
 }
