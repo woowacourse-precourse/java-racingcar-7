@@ -10,7 +10,7 @@ public class Application {
         InputView input = new InputView();
         OutputView output = new OutputView();
 
-        RacingCarController racingCarController = new RacingCarController(input,output);
+        RacingCarController racingCarController = new RacingCarController(input, output);
         racingCarController.run();
     }
 }

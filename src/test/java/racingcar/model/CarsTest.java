@@ -16,7 +16,7 @@ public class CarsTest {
     }
 
     @Test
-    void 자동차_등록_실패(){
+    void 자동차_등록_실패() {
         List<String> carNames = Arrays.asList("CarA", "CarB", "CarCDE");
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -25,7 +25,7 @@ public class CarsTest {
     }
 
     @Test
-    void 자동차_등록_실패2(){
+    void 자동차_등록_실패2() {
         List<String> carNames = Arrays.asList("");
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -34,16 +34,16 @@ public class CarsTest {
     }
 
     @Test
-    void 자동차_등록_성공(){
+    void 자동차_등록_성공() {
         List<String> carNames = Arrays.asList("CarA", "CarB", "CarC");
 
-        assertDoesNotThrow(()->{
+        assertDoesNotThrow(() -> {
             Cars.register(carNames);
         });
     }
 
     @Test
-    void 자동차_전진_성공(){
+    void 자동차_전진_성공() {
         List<String> carNames = Arrays.asList("CarA", "CarB");
         Cars.register(carNames);
 
@@ -56,7 +56,7 @@ public class CarsTest {
     }
 
     @Test
-    void 우승자_한명(){
+    void 우승자_한명() {
         Cars.cars.put("CarA", "---");
         Cars.cars.put("CarB", "--");
         Cars.cars.put("CarC", "-----");
@@ -68,7 +68,7 @@ public class CarsTest {
     }
 
     @Test
-    void 우승자_여러명(){
+    void 우승자_여러명() {
         Cars.cars.put("CarA", "---");
         Cars.cars.put("CarB", "---");
         Cars.cars.put("CarC", "-");
