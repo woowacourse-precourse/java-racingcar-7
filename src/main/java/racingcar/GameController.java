@@ -34,7 +34,9 @@ public class GameController {
         return maxNumber;
     }
 
-    public List<String> maxCarName(List<Car> cars) {
+    public void maxCarName(List<Car> cars) {
+        PrintResult printResult = new PrintResult();
+
         int maxWinNumber = maxWinNumber(cars);
 
         List<String> maxCarName = new ArrayList<>();
@@ -43,6 +45,6 @@ public class GameController {
                 maxCarName.add(car.getCarName());
             }
         }
-        return maxCarName;
+        printResult.printWinner(maxCarName);
     }
 }
