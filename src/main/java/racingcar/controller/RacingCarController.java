@@ -16,12 +16,12 @@ public class RacingCarController {
     public void startRace() {
         // 자동차 이름 입력
         view.printCarInputString();
-        String carInputString = Console.readLine();
+        String carInputString = view.readInput();
         carGroup = new CarGroup(carInputString.split(","));
 
         // 시도 횟수 입력
         view.printTryInputString();
-        String tryInputString = Console.readLine();
+        String tryInputString = view.readInput();
         checkTryNumLength(tryInputString.trim());
         tryNum = Integer.parseInt(tryInputString);
 
@@ -30,7 +30,7 @@ public class RacingCarController {
 
         // 결과
         carGroup.calculateMaxScore();
-        view.getOutputString(getWinnerString());
+        view.printOutputString(getWinnerString());
     }
 
     private void checkTryNumLength(String tryNum) {
