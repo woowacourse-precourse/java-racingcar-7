@@ -1,12 +1,11 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 import racingcar.model.Car;
 import racingcar.util.UserInputUtil;
 import racingcar.util.Validator;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class InputView {
 
@@ -15,9 +14,9 @@ public class InputView {
         String names = Console.readLine();
 
         List<String> nameList = UserInputUtil.splitCarNames(names);
+        Validator.validateCarNames(nameList, names);
 
-        for(String name: nameList) {
-            Validator.validateCarName(name);
+        for (String name : nameList) {
             cars.add(new Car(name));
         }
         return cars;
@@ -25,10 +24,9 @@ public class InputView {
 
     public int getTrialNumber() {
         String trialNum = Console.readLine();
-        //TODO: 숫자가 제대로 들어오는지 검증 로직
+        Validator.validateTrialNumber(trialNum);
         return Integer.parseInt(trialNum);
     }
-
 }
 
 

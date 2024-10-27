@@ -1,11 +1,11 @@
 package racingcar.model;
+
 public class Car {
     private final String name;
     private int position;
 
     public Car(String name) {
         this.name = name;
-        //TODO: 이름 예외처리
         this.position = 0;
     }
 
@@ -18,8 +18,8 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        if (randomNumber >= 4)
+        if (randomNumber >= 4) {
             position++;
+        }
     }
-
 }

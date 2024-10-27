@@ -1,12 +1,11 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.domain.RaceResult;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
 import racingcar.model.Car;
 import racingcar.util.RandomNumberGenerator;
-
-import java.util.List;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
     private final InputView inputView = new InputView();
@@ -21,7 +20,7 @@ public class RacingCarController {
         int numberOfTries = inputView.getTrialNumber();
 
         //TODO: 시도 횟수만큼 레이스 반복
-        for(int i = 0; i< numberOfTries; i++) {
+        for (int i = 0; i < numberOfTries; i++) {
             race(racingCars);
             outputView.showRaceStatus(racingCars);
         }
@@ -29,11 +28,10 @@ public class RacingCarController {
         //TODO: 최종 우승자 선정 및 출력
         List<Car> winners = RaceResult.getWinners(racingCars);
         outputView.finalWinnerMessage(winners);
-
     }
-    
+
     public void race(List<Car> racingCars) {
-        for(Car car: racingCars) {
+        for (Car car : racingCars) {
             int randomValue = randomNumberGenerator.generateRandomNumber();
             car.move(randomValue);
         }

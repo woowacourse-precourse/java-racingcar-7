@@ -1,10 +1,9 @@
 package racingcar.util;
 
-import racingcar.config.GameConfig;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import racingcar.config.GameConfig;
 
 public class Validator {
     private Validator() {
@@ -22,7 +21,8 @@ public class Validator {
             throw new IllegalArgumentException(ValidationError.CAR_NAME_NOT_EMPTY.getMessage());
         }
         if (name.length() > GameConfig.MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(ValidationError.CAR_NAME_TOO_LONG.getMessage(GameConfig.MAX_NAME_LENGTH));
+            throw new IllegalArgumentException(
+                    ValidationError.CAR_NAME_TOO_LONG.getMessage(GameConfig.MAX_NAME_LENGTH));
         }
     }
 
