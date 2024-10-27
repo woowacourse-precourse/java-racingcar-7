@@ -8,6 +8,7 @@ public class Constants {
     public static String PER_ROUND_PROMPT = "";
     public static String RESULT_PROMPT = "최종 우승자 : ";
 
+    public static String ONLY_ALPHABET = "^[a-zA-Z]+$";
     public static String ONLY_POSITIVE = "^[1-9]\\d*$";
     public static String MOVE = "-";
     public static String DELIMITER = ",";

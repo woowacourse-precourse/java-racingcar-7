@@ -4,6 +4,7 @@ import static racingcar.common.Constants.DUPLICATED_CAR_NAMES;
 import static racingcar.common.Constants.INVALID_CAR_NAME;
 import static racingcar.common.Constants.INVALID_GAME_COUNT;
 import static racingcar.common.Constants.MAX_NAME_LENGTH;
+import static racingcar.common.Constants.ONLY_ALPHABET;
 import static racingcar.common.Constants.ONLY_POSITIVE;
 
 import java.util.HashSet;
@@ -21,7 +22,7 @@ public class ValidationService {
     }
 
     public static void validateCarName (String name) {
-        if (name.isBlank() || name.length() > MAX_NAME_LENGTH) {
+        if (name.isBlank() || name.length() > MAX_NAME_LENGTH || !name.matches(ONLY_ALPHABET)) {
             throw new IllegalArgumentException(INVALID_CAR_NAME);
         }
     }
