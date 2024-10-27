@@ -4,8 +4,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.Constants.*;
 
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,6 +32,25 @@ class GameLogicTest {
                     assertThat(result.get("test3").toString()).isEqualTo(MOVE_INDICATOR);
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 가장_많이_전진한_최종_우승자를_구한다() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    // 이 부분은 인터페이스를 통해 모킹하여 사용하는 게 좋을 것 같다.
+                    for (int i = 1; i <= 3; i++) {
+                        gameLogic.moveCarsIfQualified();
+                    }
+
+                    List<String> winners = gameLogic.getWinners();
+                    assertThat(winners).hasSize(1);
+                    assertThat(winners.getFirst()).isEqualTo("test1");
+                },
+                MOVING_FORWARD, STOP, STOP,
+                STOP, MOVING_FORWARD, STOP,
+                MOVING_FORWARD, STOP, STOP
         );
     }
 }
