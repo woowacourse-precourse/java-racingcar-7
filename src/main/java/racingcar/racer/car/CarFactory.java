@@ -1,0 +1,20 @@
+package racingcar.racer.car;
+
+import racingcar.io.CarInputHandler;
+import racingcar.racer.RacerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CarFactory implements RacerFactory<Car> {
+
+    @Override
+    public List<Car> createRacers() {
+        String[] names = new CarInputHandler().inputRacerNames();
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
+        return cars;
+    }
+}
