@@ -45,11 +45,8 @@ public class RaceView {
 
     // (,) 기준으로 분리된 자동차 이름 토큰의 형식을 검증
     private boolean validateNameToken(String input) {
-        // 양 쪽 공백 제거
-        input = input.trim();
-
-        // 검증 기준 : 영어, 한글만 허용, 공백 포함 특수문자 불허
-        Pattern pattern = Pattern.compile("^[a-zA-Z가-힣]+$");
+        // 검증 기준 : 숫자, 영어, 한글만 허용, 공백 포함 특수문자 불허
+        Pattern pattern = Pattern.compile("^[0-9a-zA-Z가-힣]+$");
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
     }
@@ -80,7 +77,6 @@ public class RaceView {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력해주세요");
         }
-
     }
 
     public void printRace(List<Car> cars) {
