@@ -10,7 +10,7 @@ public class Cars {
 
     public Cars(String[] players) {
         cars = Arrays.stream(players)
-                .map(Car::new)
+                .map(player -> new Car(player.trim()))
                 .toList();
     }
 
