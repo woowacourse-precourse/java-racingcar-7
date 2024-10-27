@@ -15,7 +15,7 @@ public class Car{
     }
 
     public void carMove(){
-        if(randomGenerate.generateRandomNumber() > carCanMove)
+        if(randomGenerate.generateRandomNumber() >= carCanMove)
             this.position++;
     }
 
