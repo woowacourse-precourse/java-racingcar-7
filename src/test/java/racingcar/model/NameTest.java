@@ -5,6 +5,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class NameTest {
+
+    @Test
+    @DisplayName("이름이 5자 이하인 경우 객체를 생성한다.")
+    void createName() {
+        // given, when
+        Name name = new Name("우테코");
+
+        //then
+        Assertions.assertThat(name).isNotNull();
+    }
+
     @Test
     @DisplayName("이름이 5자 이상인 경우 예외를 발생한다.")
     void validateName() {
