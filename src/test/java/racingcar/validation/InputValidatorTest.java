@@ -27,4 +27,13 @@ class InputValidatorTest {
                 .hasMessageContaining("이름 입력이 공백일 수 없습니다.");
     }
 
+    @Test
+    @DisplayName("시도 횟수가 음수일 경우 예외를 발생시킨다")
+    void validateTime() {
+        int negativeTime = -1;
+
+        assertThatThrownBy(() -> InputValidator.validateTime(negativeTime))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 0 이상의 정수여야 합니다.");
+    }
 }
