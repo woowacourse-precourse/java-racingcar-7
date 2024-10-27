@@ -5,9 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.util.comparable.IntegerComparable;
-import racingcar.util.comparable.NumberComparable;
-import racingcar.util.random.RandomNumberGenerator;
+import racingcar.support.comparable.IntegerComparable;
+import racingcar.support.comparable.NumberComparable;
+import racingcar.support.random.RandomNumberGenerator;
 
 @DisplayName("자동차 경주 이동 전략 테스트")
 class RacingCarMovingStrategyTest {

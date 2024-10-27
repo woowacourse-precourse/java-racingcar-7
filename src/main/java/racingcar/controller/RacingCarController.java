@@ -9,8 +9,8 @@ import racingcar.model.car.Cars;
 import racingcar.model.position.History;
 import racingcar.model.position.Positions;
 import racingcar.strategy.MovingStrategy;
-import racingcar.util.StringRepeater;
-import racingcar.util.splitter.Splitter;
+import racingcar.support.repeater.StringRepeater;
+import racingcar.support.splitter.Splitter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

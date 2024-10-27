@@ -1,4 +1,4 @@
-package racingcar.util.comparable;
+package racingcar.support.comparable;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

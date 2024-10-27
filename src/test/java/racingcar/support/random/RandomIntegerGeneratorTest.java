@@ -1,4 +1,4 @@
-package racingcar.util.random;
+package racingcar.support.random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

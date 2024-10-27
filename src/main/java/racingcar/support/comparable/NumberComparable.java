@@ -1,4 +1,4 @@
-package racingcar.util.comparable;
+package racingcar.support.comparable;
 
 @FunctionalInterface
 public interface NumberComparable<T extends Number> {

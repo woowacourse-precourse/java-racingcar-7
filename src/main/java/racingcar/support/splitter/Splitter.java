@@ -1,4 +1,4 @@
-package racingcar.util.splitter;
+package racingcar.support.splitter;
 
 public class Splitter {
 

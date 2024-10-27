@@ -3,7 +3,7 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.model.position.Positions;
-import racingcar.util.StringRepeater;
+import racingcar.support.repeater.StringRepeater;
 
 public class ConsoleOutputView implements OutputView {
 

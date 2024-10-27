@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.support.repeater;
 
 public class StringRepeater {
 
@@ -9,9 +9,7 @@ public class StringRepeater {
     }
 
     public String repeat(long count) {
-        if (count < 0) {
-            throw new IllegalArgumentException("count는 음수일 수 없습니다.");
-        }
+        validate(count);
         if (count == 1) {
             return value;
         }
@@ -21,5 +19,11 @@ public class StringRepeater {
             repeatedValue.append(value);
         }
         return repeatedValue.toString();
+    }
+
+    private void validate(final long count) {
+        if (count < 0) {
+            throw new IllegalArgumentException("count는 음수일 수 없습니다.");
+        }
     }
 }

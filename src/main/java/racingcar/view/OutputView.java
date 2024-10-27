@@ -2,7 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.model.position.Positions;
-import racingcar.util.StringRepeater;
+import racingcar.support.repeater.StringRepeater;
 
 public interface OutputView {
     void showCommentForCarNames();
