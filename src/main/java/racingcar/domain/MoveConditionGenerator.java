@@ -2,14 +2,14 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-class RandomGenerator {
+class MoveConditionGenerator {
     private static final int MAX_VALUE = 9;
     private static final int MIN_VALUE = 0;
 
-    RandomResult getRandomValue() {
+    MoveCondition getCondition() {
         final int result = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
         validateRange(result);
-        return new RandomResult(result);
+        return new MoveCondition(result);
     }
 
     private void validateRange(final int result) {
