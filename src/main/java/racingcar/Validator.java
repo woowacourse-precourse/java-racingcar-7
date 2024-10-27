@@ -11,13 +11,13 @@ public class Validator {
 
 	public static void validateCarName(String name) {
 		if (name.isEmpty() || name.length() > 5) {
-			throw new IllegalArgumentException("Invalid name length");
+			throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_LENGTH);
 		}
 	}
 
 	public static void validatePositiveNumber(long number) {
 		if (number <= 0) {
-			throw new IllegalArgumentException("Non-positive numbers cannot be entered");
+			throw new IllegalArgumentException(ErrorMessage.NON_POSITIVE_NUMBER);
 		}
 	}
 }

@@ -17,7 +17,7 @@ public class StringParser {
 		try {
 			number = Long.parseLong(input);
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException("Invalid number input");
+			throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_INPUT);
 		}
 
 		Validator.validatePositiveNumber(number);

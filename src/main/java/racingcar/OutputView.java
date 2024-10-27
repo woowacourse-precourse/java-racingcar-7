@@ -31,7 +31,7 @@ public class OutputView {
 				int repeatCount = Math.toIntExact(carPosition.get(i));
 				System.out.printf(CAR_POSITION_FORMAT, carNames.get(i), CAR_POSITION_MARKER.repeat(repeatCount));
 			} catch (ArithmeticException e) {
-				throw new IllegalArgumentException("The input value exceeds the maximum value for an int");
+				throw new IllegalArgumentException(ErrorMessage.EXCEED_INT_RANGE);
 			}
 		}
 
