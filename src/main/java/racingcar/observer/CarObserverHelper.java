@@ -4,12 +4,21 @@ import racingcar.car.Car;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class CarObserverHelper {
     private CarObserverHelper() {
     }
 
     public static <T extends CarObserver> void addObserverToCar(Car car, Class<T> observerClass, Object... dependencies) {
+        if (car == null || observerClass == null) {
+            throw new IllegalArgumentException("Car와 observerClass는 null이 될 수 없습니다.");
+        }
+        if (dependencies == null || Arrays.stream(dependencies).anyMatch(Objects::isNull)) {
+            throw new IllegalArgumentException("dependencies 배열에 null 값이 포함될 수 없습니다.");
+        }
+
         try {
             // 생성자 매개변수를 기반으로 인스턴스를 생성
             Constructor<T> constructor = findMatchingConstructor(observerClass, dependencies);
