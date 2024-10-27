@@ -11,23 +11,26 @@ public class WinnerCalculator {
 
     public static List<String> calculateWinners(List<Car> lastRacingRecord) {
         List<String> winnerNames = new ArrayList<>();
-
         for (Car currentCar : lastRacingRecord) {
-            compareOtherCars(lastRacingRecord, winnerNames, currentCar);
+            compareOtherCars(lastRacingRecord, currentCar);
+            addIfWinner(lastRacingRecord, winnerNames, currentCar);
         }
 
         return winnerNames;
     }
 
-    private static void compareOtherCars(List<Car> lastRacingRecord, List<String> winnerNames, Car currentCar) {
+    private static boolean compareOtherCars(List<Car> lastRacingRecord, Car currentCar) {
         for (Car otherCar : lastRacingRecord) {
-            addWinner(winnerNames, currentCar, otherCar);
+            boolean isNotWinner = currentCar != otherCar && !(currentCar.isAheadOrEqual(otherCar));
+            if (isNotWinner) {
+                return false;
+            }
         }
+        return true;
     }
 
-    private static void addWinner(List<String> winnerNames, Car currentCar, Car otherCar) {
-        boolean isWinner = currentCar != otherCar && currentCar.isAheadOrEqual(otherCar);
-        if (isWinner) {
+    private static void addIfWinner(List<Car> lastRacingRecord, List<String> winnerNames, Car currentCar) {
+        if (compareOtherCars(lastRacingRecord, currentCar)) {
             List<String> winnerDetails = Arrays.stream(currentCar.toCustomFormatString("-").split(" : "))
                     .toList();
 

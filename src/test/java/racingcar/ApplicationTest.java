@@ -23,6 +23,30 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 다섯번_기능_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "3");
+                    assertThat(output()).contains("pobi : -", "woni : ---", "jun : -", "최종 우승자 : woni")
+                            .doesNotContain("최종 우승자 : woni, jun");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 다섯번_기능_공동우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "3");
+                    assertThat(output()).contains("pobi : -", "woni : ---", "jun : ---", "최종 우승자 : woni")
+                            .doesNotContain("최종 우승자 : pobi, woni, jun");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
     void 공동_우승자_기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
