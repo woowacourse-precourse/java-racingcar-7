@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Validator {
     private static final String EMPTY_INPUT_ERROR_MESSAGE = "%s은(는) 비어있을 수 없습니다.";
-    public static final String ILLEGAL_OPERATOR_MESSAGE = "구분자는 차 이름 사이에 위치할 수 있습니다.";
-    public static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 기준을 넘길 수 없습니다.";
-    public static final String REPEAT_COUNT_RANGE_ERROR = "양수만 입력 가능합니다.";
-    public static final String INVALID_INPUT_COUNT_NUMBER = "숫자만 입력 가능합니다.";
+    private static final String ILLEGAL_OPERATOR_MESSAGE = "구분자는 차 이름 사이에 위치할 수 있습니다.";
+    private static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 기준을 넘길 수 없습니다.";
+    private static final String REPEAT_COUNT_RANGE_ERROR = "양수만 입력 가능합니다.";
+    private static final String INVALID_INPUT_COUNT_NUMBER = "숫자만 입력 가능합니다.";
 
     public void validateCarNamesInput(String inputStr) {
         if (inputStr.isEmpty()) {
