@@ -12,4 +12,10 @@ public class InputView {
         InputValidator.validateInput(CarNames);
         return CarNames;
     }
+
+    public static int getInputNumberOfAttempts(){
+        System.out.println(INPUT_NUMBER_OF_ATTEMPTS);
+        String numberOfAttempts = Console.readLine();
+        return Integer.parseInt(numberOfAttempts);
+    }
 }
