@@ -5,7 +5,6 @@ import racingcar.constant.Constant;
 import racingcar.model.RoundRecord;
 
 public class OutputView {
-
     private ArrayList<RoundRecord> gameResult = new ArrayList<>();
     private ArrayList<String> gameWinner = new ArrayList<>();
     private int gameRound;
@@ -25,9 +24,9 @@ public class OutputView {
     public void printGameResult() {
         System.out.println(Constant.OUTPUT_PROMPT);
 
-        for(int i=0; i<gameRound; i++) {
+        for (int i = 0; i < gameRound; i++) {
             gameResult.get(i).getRoundResult();
-            System.out.println();;
+            System.out.println();
         }
 
         System.out.print(Constant.WINNER_PROMPT);

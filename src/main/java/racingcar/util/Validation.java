@@ -12,7 +12,7 @@ public class Validation {
     }
 
     public void isPlayerCountValid(int playerCount) {
-        if(playerCount < 2) {
+        if (playerCount < Constant.MIN_PLAYERS_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE2);
         }
     }
@@ -24,35 +24,34 @@ public class Validation {
     }
 
     public void isPlayerInputNull(String inputStr) {
-        if(inputStr==null) {
+        if (inputStr == null) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE4);
         }
     }
 
     public void isPlayerInputDelimiterWrong(String inputStr) {
-        if(!inputStr.contains(Constant.DELIMITER)) {
+        if (!inputStr.contains(Constant.DELIMITER)) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE5);
         }
     }
 
     public void isTrialInputValid(String inputStr) {
-        if(inputStr.matches("[0-9]+")) {
+        if (inputStr.matches(Constant.TRIAL_REGEX)) {
             return;
         }
         throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE6);
     }
 
     public void isTrialInputNegative(String inputStr) {
-        if(Integer.parseInt(inputStr) > 0) {
+        if (Integer.parseInt(inputStr) > 0) {
             return;
         }
         throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE7);
     }
 
     public void isTrialInputDouble(String inputStr) {
-        if(inputStr.contains(".")) {
+        if (inputStr.contains(Constant.DOUBLE_DOT)) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE8);
         }
     }
-
 }

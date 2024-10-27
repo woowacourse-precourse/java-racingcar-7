@@ -33,25 +33,28 @@ public class InputView {
         trial = Integer.parseInt(inputTrial);
     }
 
-    private ArrayList<String> parseCarNames(String inputStr){
-        if(inputStr == null) {
+    private ArrayList<String> parseCarNames(String inputStr) {
+        if (inputStr == null) {
             return null;
         }
+
         ArrayList<String> nameArray = new ArrayList<String>(List.of(inputStr.split(Constant.DELIMITER)));
         int count = 0;
+
         for (String name : nameArray) {
             validation.isNameLengthValid(name);
             count++;
         }
         validation.isPlayerCountValid(count);
+
         return nameArray;
     }
 
-    public ArrayList<String> getPlayersList(){
+    public ArrayList<String> getPlayersList() {
         return parseCarNames(players);
     }
 
-    public int getTrial(){
+    public int getTrial() {
         return trial;
     }
 }

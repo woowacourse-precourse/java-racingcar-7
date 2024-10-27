@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import racingcar.constant.Constant;
 
-
 public class CarPlayer {
     private String name;
     private String steps = "";
@@ -19,10 +18,8 @@ public class CarPlayer {
     }
 
     private boolean canMove() {
-        if (Randoms.pickNumberInRange(Constant.RANDOM_RANGE_MIN, Constant.RANDOM_RANGE_MAX) >= Constant.RANDOM_NUMBER_FOR_MOVE) {
-            return true;
-        }
-        return false;
+        return Randoms.pickNumberInRange(Constant.RANDOM_RANGE_MIN, Constant.RANDOM_RANGE_MAX)
+                >= Constant.RANDOM_NUMBER_FOR_MOVE;
     }
 
     public void setName(String name) {
@@ -40,5 +37,4 @@ public class CarPlayer {
     public int getStepCount() {
         return stepCount;
     }
-
 }

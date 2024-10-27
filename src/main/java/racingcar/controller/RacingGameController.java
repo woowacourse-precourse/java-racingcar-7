@@ -21,14 +21,14 @@ public class RacingGameController {
     }
 
     private void setVariables() {
-        if(inputView.getPlayersList() != null) {
+        if (inputView.getPlayersList() != null) {
             playerCount = inputView.getPlayersList().size();
         }
         roundCount = inputView.getTrial();
     }
 
     private void setCarPlayersList() {
-        for(int i=0; i<playerCount; i++) {
+        for (int i = 0; i < playerCount; i++) {
             CarPlayer carPlayer = new CarPlayer();
             carPlayer.setName(inputView.getPlayersList().get(i));
             carPlayers.add(carPlayer);
@@ -36,15 +36,15 @@ public class RacingGameController {
     }
 
     private void setRoundRecordsList() {
-        for(int i=0; i<roundCount; i++) {
+        for (int i = 0; i < roundCount; i++) {
             RoundRecord roundRecord = new RoundRecord();
             roundRecords.add(roundRecord);
         }
     }
 
     private void moveCarPlayers() {
-        for(int i=0; i<roundCount; i++) {
-            for(int j=0; j<playerCount; j++) {
+        for (int i = 0; i < roundCount; i++) {
+            for (int j = 0; j < playerCount; j++) {
                 carPlayers.get(j).move();
                 roundRecords.get(i).saveRoundRecord(carPlayers.get(j));
             }
@@ -53,14 +53,15 @@ public class RacingGameController {
 
     private void selectWinner() {
         int max = 0;
-        for(int i=0; i<playerCount; i++) {
+        for (int i = 0; i < playerCount; i++) {
             int stepCount = carPlayers.get(i).getStepCount();
             if (stepCount > max) {
                 max = stepCount;
             }
         }
-        for(int i=0; i<playerCount; i++) {
-            if(carPlayers.get(i).getStepCount()==max) {
+
+        for (int i = 0; i < playerCount; i++) {
+            if (carPlayers.get(i).getStepCount() == max) {
                 winnerList.add(carPlayers.get(i).getName());
             }
         }
@@ -68,15 +69,16 @@ public class RacingGameController {
 
     public void start() {
         inputView.inputGameInfo();
+
         setVariables();
         setCarPlayersList();
         setRoundRecordsList();
         moveCarPlayers();
         selectWinner();
+
         outputView.setGameResult(roundRecords);
         outputView.setGameRound(roundCount);
         outputView.setGameWinner(winnerList);
         outputView.printGameResult();
     }
-
 }
