@@ -1,35 +1,34 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.model.Car;
-import racingcar.model.CarName;
-import racingcar.model.Cars;
 import racingcar.model.RacingGame;
-import racingcar.utils.StringSplitter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
     public void run() {
+        RacingConfig racingConfig = getUserInput();
+        RacingGame racingGame = executeRacing(racingConfig);
+        printResult(racingGame);
+    }
+
+    private RacingConfig getUserInput() {
         OutputView.printInsertRacersName();
         String rawUserInput = InputView.getInputRacersName();
         OutputView.printInsertTryCount();
         String rawTryCount = InputView.getInputTryNumber();
 
-        List<String> splittedRacersName = StringSplitter.splitByDelimiter(rawUserInput);
-        List<CarName> rawCarNames = splittedRacersName.stream()
-                .map(CarName::new)
-                .toList();
+        return new RacingConfig(rawUserInput, rawTryCount);
+    }
 
-        List<Car> rawCars = rawCarNames.stream().
-                map(Car::new)
-                .toList();
-
-        Cars cars = new Cars(rawCars);
-
-        RacingGame racingGame = new RacingGame(cars, rawTryCount);
+    private RacingGame executeRacing(RacingConfig racingConfig) {
+        RacingGame racingGame = racingConfig.readyRacingGame();
         racingGame.runAllCycle();
 
+        return racingGame;
+    }
+
+    private void printResult(RacingGame racingGame) {
         String racingResult = racingGame.getRacingResult();
 
         OutputView.printGameResultMessage();
