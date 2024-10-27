@@ -2,7 +2,9 @@ package racingcar.view;
 
 import static org.assertj.core.api.Assertions.*;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +16,11 @@ class InputViewTest {
     @BeforeEach
     void beforeEach() {
         inputView = new InputView();
+    }
+
+    @AfterEach
+    void afterEach() {
+        Console.close();
     }
 
     @Test
@@ -28,5 +35,19 @@ class InputViewTest {
 
         // then
         assertThat(carNamesInput).isEqualTo(input);
+    }
+
+    @Test
+    @DisplayName("시도 횟수 입력을 받아 반환하는지 확인하는 테스트")
+    void getAttemptCountInput() {
+        // given
+        String input = "5";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        // when
+        String attemptCountInput = inputView.getAttemptCountInput();
+
+        // then
+        assertThat(attemptCountInput).isEqualTo(input);
     }
 }
