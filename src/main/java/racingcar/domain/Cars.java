@@ -10,8 +10,8 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        validCars(cars);
         this.cars = cars;
+        validCars();
     }
 
     public void playSingleRound() {
@@ -32,7 +32,7 @@ public class Cars {
         return cars.stream().filter(it -> it.getMoveCount() == maxMoveCount).toList();
     }
 
-    private void validCars(List<Car> cars) {
+    private void validCars() {
         if (hasDuplicateCarNames(cars)) {
             throw CustomException.of(ErrorMessage.DUPLICATE_CAR_NAME_ERROR);
         }
