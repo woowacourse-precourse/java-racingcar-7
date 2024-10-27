@@ -24,7 +24,9 @@ public class Car implements Comparable<Car> {
     }
 
     public void move() {
-        this.distance += Randoms.pickNumberInRange(0, 9);
+        if (canMoveForward()) { //값이 4 이상일 때만 +1 이동
+            this.distance += 1;
+        }
     }
 
     @Override
@@ -52,5 +54,9 @@ public class Car implements Comparable<Car> {
 
     public static List<Car> to(List<String> carNames) {
         return carNames.stream().map(Car::new).toList();
+    }
+
+    private boolean canMoveForward() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 }
