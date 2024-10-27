@@ -12,22 +12,28 @@ public class InputView {
     public String requestCarsName() {
         ConsoleWriter.printlnMessage(REQUEST_CARS_MESSAGE);
         String input = ConsoleReader.enterMessage();
-        if (isEmptyOrBlank(input)) {
-            throw CustomException.of(ErrorMessage.BLANK_INPUT_ERROR);
-        }
+        checkStringFormat(input);
         return input;
     }
 
     public int requestRoundCount() {
         ConsoleWriter.printlnMessage(REQUEST_ROUND_COUNT_MESSAGE);
         String input = ConsoleReader.enterMessage();
-        if (isEmptyOrBlank(input)) {
+        checkStringFormat(input);
+        checkNumberFormat(input);
+        return Integer.parseInt(input);
+    }
+
+    private void checkStringFormat(String str) {
+        if (isEmptyOrBlank(str)) {
             throw CustomException.of(ErrorMessage.BLANK_INPUT_ERROR);
         }
-        if (isNotPositiveInteger(input)) {
+    }
+
+    private void checkNumberFormat(String str) {
+        if (isNotPositiveInteger(str)) {
             throw CustomException.of(ErrorMessage.INVALID_ROUND_COUNT_ERROR);
         }
-        return Integer.parseInt(input);
     }
 
     private boolean isEmptyOrBlank(String str) {
