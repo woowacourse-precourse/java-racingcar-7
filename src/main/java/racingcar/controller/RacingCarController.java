@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.domain.Cars;
+import racingcar.domain.TryCount;
 import racingcar.domain.power.PowerGenerator;
 import racingcar.domain.power.RandomPowerGenerator;
 import racingcar.view.InputView;
@@ -43,7 +44,7 @@ public class RacingCarController {
 
     private int getTryCount() {
         String inputTryCount = inputView.inputTryCount();
-        return Integer.parseInt(inputTryCount);
+        return new TryCount(inputTryCount).getValue();
     }
 
     private void race(Cars cars, int tryCount) {
