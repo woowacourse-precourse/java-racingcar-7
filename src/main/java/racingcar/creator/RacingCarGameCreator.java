@@ -6,7 +6,7 @@ import racingcar.domain.RacingCar;
 
 public class RacingCarGameCreator {
 
-    public static final String DELIMITERS_OF_CAR_ID = ",";
+    private static final String DELIMITERS_OF_CAR_ID = ",";
 
     private final String cars;
     private final int totalRound;

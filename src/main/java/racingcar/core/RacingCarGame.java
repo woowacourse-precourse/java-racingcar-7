@@ -22,7 +22,7 @@ public class RacingCarGame {
         while (round++ < totalRound) {
             raceOneRound();
         }
-        printWinner();
+        printWinners();
     }
 
     private void raceOneRound() {
@@ -36,24 +36,24 @@ public class RacingCarGame {
         if (isMovable()) {
             car.moveForward();
         }
-        out.add(car);
+        out.writeln(car);
     }
 
     private boolean isMovable() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    private void printWinner() {
-        out.add("최종 우승자 : ");
-        for (RacingCar racingCar : carList) {
-            determineWinner(racingCar);
+    private void printWinners() {
+        out.write("최종 우승자 : ");
+        for (RacingCar car : carList) {
+            writeIfWinner(car);
         }
-        out.print();
+        out.printWinner();
     }
 
-    private void determineWinner(RacingCar car) {
+    private void writeIfWinner(RacingCar car) {
         if (car.isWinner()) {
-            out.addWinner(car);
+            out.writeWinner(car);
         }
     }
 }

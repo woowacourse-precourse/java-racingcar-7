@@ -25,19 +25,19 @@ class OutputTest {
         // given
         Output out = new Output();
         // when
-        out.add(new RacingCar("id"));
+        out.writeln(new RacingCar("id"));
         // then
         assertEquals("id : \n", out.get());
     }
 
     @DisplayName("[정상] 최종 우승 자동차 이름 더하기")
     @Test
-    void addWinner() {
+    void writeLnWinner() {
         // given
         Output out = new Output();
         // when
-        out.addWinner(new RacingCar("goo"));
-        out.addWinner(new RacingCar("jin"));
+        out.writeWinner(new RacingCar("goo"));
+        out.writeWinner(new RacingCar("jin"));
         // then
         assertEquals("goo, jin, ", out.get());
     }
@@ -47,8 +47,8 @@ class OutputTest {
     void winnerCars() {
         // given
         Output out = new Output();
-        out.addWinner(new RacingCar("goo"));
-        out.addWinner(new RacingCar("jin"));
+        out.writeWinner(new RacingCar("goo"));
+        out.writeWinner(new RacingCar("jin"));
         // when
         out.deleteLastDelimiters();
         // then

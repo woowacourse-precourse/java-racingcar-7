@@ -2,7 +2,7 @@ package racingcar.domain;
 
 public class RacingCar {
 
-    public static final int ID_MIN_LENGTH = 5;
+    private static final int ID_MIN_LENGTH = 5;
     private static int winnerDistance = 0;
 
     private final String id;

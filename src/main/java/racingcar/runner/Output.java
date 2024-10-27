@@ -9,37 +9,44 @@ public class Output {
     private final StringBuilder out;
 
     public Output() {
-        this.out = new StringBuilder("");
+        this.out = new StringBuilder();
     }
 
     public void newLine() {
         out.append('\n');
     }
 
-    public void add(RacingCar car) {
+    public void writeln(RacingCar car) {
         out.append(car);
         newLine();
     }
 
-    public void add(String str) {
+    public void write(String str) {
         out.append(str);
     }
 
-    public void addWinner(RacingCar car) {
+    public void writeWinner(RacingCar car) {
         out.append(car.getId());
         out.append(DELIMITERS_OF_CAR_ID);
     }
 
+    public void printWinner() {
+        deleteLastDelimiters();
+        println();
+    }
+
     protected void deleteLastDelimiters() {
-        out.delete(out.lastIndexOf(DELIMITERS_OF_CAR_ID), out.length());
+        int lastDelimiterIdx = out.lastIndexOf(DELIMITERS_OF_CAR_ID);
+        if (lastDelimiterIdx != -1) {
+            out.delete(lastDelimiterIdx, out.length());
+        }
+    }
+
+    private void println() {
+        System.out.println(out);
     }
 
     protected String get() {
         return out.toString();
-    }
-
-    public void print() {
-        deleteLastDelimiters();
-        System.out.println(out);
     }
 }
