@@ -2,6 +2,8 @@ package racingcar.io;
 
 import racingcar.RaceCars;
 
+import java.util.List;
+
 public class RacingCarIOHandler {
 
     private final InputHandler inputHandler = new InputHandler();
@@ -21,7 +23,7 @@ public class RacingCarIOHandler {
         ouputHandler.showExecutionResult(raceCount, raceCars);
     }
 
-    public void showFinalWinner(RaceCars raceCars) {
-        ouputHandler.showFinalWinner(raceCars);
+    public void showFinalWinner(List<String> finalWinners) {
+        ouputHandler.showFinalWinner(finalWinners);
     }
 }
