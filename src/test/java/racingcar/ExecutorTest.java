@@ -28,7 +28,7 @@ class ExecutorTest extends NsTest {
         testCar1 = new Car("test1");
         testCar2 = new Car("test2");
         testCar3 = new Car("test3");
-        testCars = new ArrayList<>(List.of(testCar1, testCar2, testCar3));
+        testCars = List.of(testCar1, testCar2, testCar3);
     }
 
     @Test
