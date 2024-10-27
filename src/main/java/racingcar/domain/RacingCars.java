@@ -15,4 +15,15 @@ public class RacingCars {
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
+
+    public List<RacingCar> getFinalWinners() {
+        int maxMoveDistance = racingCars.stream()
+                .mapToInt(RacingCar::getMoveDistance)
+                .max()
+                .orElse(0);
+
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.getMoveDistance() == maxMoveDistance)
+                .toList();
+    }
 }

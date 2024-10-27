@@ -46,6 +46,6 @@ public class RacingCar {
     // -- toString -- //
     @Override
     public String toString() {
-        return String.format("%s : %s%n", name, "-".repeat(moveDistance));
+        return String.format("%s : %s", name, "-".repeat(moveDistance));
     }
 }
