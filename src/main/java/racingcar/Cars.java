@@ -27,13 +27,13 @@ public class Cars {
         }
     }
 
-    public void findWinners() {
+    public List<Car> findWinners() {
         int maxDistance = cars.stream()
                 .mapToInt(Car::getDistance)
                 .max()
                 .orElse(0);
 
-        List<Car> winners = cars.stream()
+        return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .toList();
     }

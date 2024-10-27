@@ -1,5 +1,7 @@
 package racingcar;
 
+
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,5 +17,16 @@ class CarsTest {
 
         Assertions.assertThat(cars.getCars().get(0).getName()).isEqualTo("pobi");
         Assertions.assertThat(cars.getCars().get(1).getName()).isEqualTo("woni");
+    }
+
+    @DisplayName("우승자 판별 성공")
+    @Test
+    void findWinnersTest() {
+        Cars cars = new Cars("pobi,woni");
+
+        cars.getCars().get(0).move();
+        List<Car> winners = cars.findWinners();
+
+        Assertions.assertThat(winners.get(0).getName()).isEqualTo("pobi");
     }
 }
