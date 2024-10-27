@@ -17,23 +17,26 @@ public class Application {
         String inputCarName = Console.readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputLoopCount = Console.readLine();
+        System.out.println();
 
         StringParserFactory stringParserFactory = new StringParserFactory();
+
         List<String> carNameList = stringParserFactory.parseCarName(inputCarName);
         int loopCount = stringParserFactory.parseLoopCount(inputLoopCount);
 
         Racing racing = new Racing();
+
         HashMap<String, Integer> racingLog = new HashMap<>();
         initRacingLog(racingLog, carNameList);
-
+        System.out.println("실행 결과");
         for (int i = 0; i < loopCount; i++) {
             racing.start(racingLog, carNameList);
             printRacingResult(racingLog, carNameList);
         }
 
         WinnerDeterminer winnerDeterminer = new WinnerDeterminer();
-        List<String> winner = winnerDeterminer.determineWinner(racingLog, carNameList);
 
+        List<String> winner = winnerDeterminer.determineWinner(racingLog, carNameList);
         printWinner(winner);
     }
 
