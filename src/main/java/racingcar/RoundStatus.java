@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 
 public class RoundStatus {
+
     private int round;
     private List<CarStatus> carStatusList;
 

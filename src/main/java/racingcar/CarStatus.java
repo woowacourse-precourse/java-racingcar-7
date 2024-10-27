@@ -1,9 +1,9 @@
 package racingcar;
 
 public class CarStatus {
+
     private final String name;
     private final int position;
-
 
 
     public CarStatus(

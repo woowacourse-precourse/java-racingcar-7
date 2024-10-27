@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinnerChoicer {
+
     private final List<CarStatus> carStatusList;
 
     public WinnerChoicer(List<CarStatus> carStatusList) {

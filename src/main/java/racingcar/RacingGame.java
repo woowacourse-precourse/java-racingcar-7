@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 
 class RacingGame {
+
     private final List<Car> cars;
     private int round = 0;
 

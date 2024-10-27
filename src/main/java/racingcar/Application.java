@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 
 public class Application {
+
     public static void main(String[] args) {
         // scanner
         Input input = new Input();
