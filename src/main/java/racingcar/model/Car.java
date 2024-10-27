@@ -1,15 +1,16 @@
 package racingcar.model;
 
+import static racingcar.global.constants.RaceConfigValues.MAX_CAR_NAME_LENGTH_NUMBER;
+
 import racingcar.global.message.ErrorMessage;
 import racingcar.global.utils.RaceRandomUtils;
-
 
 public class Car {
     private String name;
     private int position;
 
     public Car(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_CAR_NAME_LENGTH_NUMBER.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_TOO_LONG.getMessage() + ": " + name);
         }
         if (!isValidCarName(name)) {
