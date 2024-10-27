@@ -1,5 +1,7 @@
 package racingcar.factory;
 
+import static racingcar.config.GameConfig.CAR_NAMES_DELIMITER;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,10 +11,8 @@ import racingcar.domain.game.GameRound;
 
 public abstract class GameInitializer {
 
-    private static final String DELIMITER = ",";
-
     public static CarGroup createCars(String carNames) {
-        List<Car> carList = Arrays.stream(carNames.split(DELIMITER))
+        List<Car> carList = Arrays.stream(carNames.split(CAR_NAMES_DELIMITER))
                 .map(String::trim)
                 .map(Car::new)
                 .collect(Collectors.toList());

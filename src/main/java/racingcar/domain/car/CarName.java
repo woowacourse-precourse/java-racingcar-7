@@ -1,11 +1,11 @@
 package racingcar.domain.car;
 
+import static racingcar.config.GameConfig.MAX_NAME_LENGTH;
 import static racingcar.utils.ExceptionConstants.CAR_NAME_TOO_LONG;
 
 import java.util.Objects;
 
 public class CarName {
-    private static final int MAX_NAME_LENGTH = 5;
     private final String name;
 
     public CarName(String name) {

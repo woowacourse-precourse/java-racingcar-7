@@ -1,5 +1,6 @@
 package racingcar.domain.car;
 
+import static racingcar.config.GameConfig.MAX_CARS_ALLOWED;
 import static racingcar.utils.ExceptionConstants.DUPLICATE_CAR_NAME;
 import static racingcar.utils.ExceptionConstants.EXCEEDS_MAX_CAR_LIMIT;
 
@@ -10,8 +11,6 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 public class CarGroup {
-
-    private final int MAX_CARS_ALLOWED = 20;
     private final List<Car> cars;
 
     public CarGroup(List<Car> cars) {
