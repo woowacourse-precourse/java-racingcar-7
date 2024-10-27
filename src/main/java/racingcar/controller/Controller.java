@@ -56,4 +56,11 @@ public class Controller {
         }
         outputView.print("");
     }
+
+    private void showGameResult(List<Car> cars) {
+        final Car maxCar = cars.stream()
+                .max(Comparator.comparing(Car::getMileage)).get();
+        List<Car> winner = cars.stream().filter(car -> car.isSameMileage(maxCar)).toList();
+        outputView.printWinner(winner.stream().map(Car::getName).toList());
+    }
 }

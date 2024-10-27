@@ -17,4 +17,13 @@ public class OutputView {
                         .toString()
         );
     }
+
+    public void printWinner(List<String> winner) {
+        StringBuilder sb = new StringBuilder();
+        print(
+                sb.append("최종 우승자 : ")
+                        .append(String.join(", ", winner))
+                        .toString()
+        );
+    }
 }
