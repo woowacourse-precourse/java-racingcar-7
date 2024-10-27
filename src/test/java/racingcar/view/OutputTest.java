@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.CarService;
 
 public class OutputTest extends NsTest {
     @Test
@@ -23,6 +24,21 @@ public class OutputTest extends NsTest {
         String expectedOutput = "김종경 : -\n";
         assert expectedOutput.trim().equals(outputStream.toString().trim()) : "출력 값이 예상과 다릅니다!";
 
+    }
+
+    @Test
+    void 자동차_경주_게임을_완료한_후_누가_우승했는지를_알려준다() {
+        Car car1 = new Car("김종경");
+        car1.move();
+        List<Car> carList = new ArrayList<>();
+        carList.add(car1);
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        new Output().printWinner(new CarService().getWinners(carList));
+
+        String expectedOutput = "최종 우승자 : 김종경\n";
+        assert expectedOutput.trim().equals(outputStream.toString().trim()) : "출력 값이 예상과 다릅니다!";
     }
 
     @Override
