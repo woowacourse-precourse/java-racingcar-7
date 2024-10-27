@@ -1,8 +1,6 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
-import racingcar.validation.CarNameValidation;
-import racingcar.validation.CountValidation;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,6 +11,6 @@ public class Application {
 
         RacingGameController racingGameController = new RacingGameController(inputView, outputView);
 
-        racingGameController.runGame();
+        racingGameController.run();
     }
 }

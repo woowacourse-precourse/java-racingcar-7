@@ -15,7 +15,7 @@ public class RacingGameController {
         this.outputView = outputView;
     }
 
-    public void runGame() {
+    public void run() {
         Cars cars = Cars.setCars(inputView.enterCarNames());
         int count = inputView.enterCount();
 
