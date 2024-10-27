@@ -1,4 +1,8 @@
 package racingcar.exception;
 
-public class InvalidInputException {
+public class InvalidInputException extends IllegalArgumentException {
+
+    public InvalidInputException(String message) {
+        super(message);
+    }
 }
