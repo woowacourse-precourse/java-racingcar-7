@@ -112,4 +112,9 @@ public class RacingCar {
         }
         winners = String.join(", ", winnerList);
     }
+
+    public void printWinner() {
+        checkWinner();
+        System.out.println("최종 우승자 : " + winners);
+    }
 }
