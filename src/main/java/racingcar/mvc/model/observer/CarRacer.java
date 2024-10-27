@@ -3,21 +3,13 @@ package racingcar.mvc.model.observer;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.math.BigInteger;
 
-public class Car implements CarObserver {
-    private static final String UNIT_OF_DISTANCE = "-";
-    private String name;
-    private BigInteger distance = BigInteger.ZERO;
+public class CarRacer extends Racer {
+    private static final int MOVING_THRESHOLD = 4;
+    private static final int RANDOM_START_NUMBER = 0;
+    private static final int RANDOM_END_NUMBER = 4;
 
-    public Car(String name) {
-        this.name = name;
-    }
-
-    public BigInteger getDistance() {
-        return distance;
-    }
-
-    public String getName() {
-        return name;
+    public CarRacer(String name) {
+        super(name);
     }
 
     @Override
@@ -25,17 +17,14 @@ public class Car implements CarObserver {
         if (goOrStop()) {
             distance = distance.add(BigInteger.ONE);
         }
-
-        //여기를 뷰로 내보내고 싶은데...
-        System.out.println(this);
     }
 
     private boolean goOrStop() {
-        return makeRandomNumber() >= 4;
+        return makeRandomNumber() >= MOVING_THRESHOLD;
     }
 
     private int makeRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(RANDOM_START_NUMBER, RANDOM_END_NUMBER);
     }
 
     @Override

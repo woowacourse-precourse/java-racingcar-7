@@ -1,12 +1,9 @@
 package racingcar.mvc.model.subject;
 
-import java.util.List;
-import racingcar.mvc.model.observer.CarObserver;
+import racingcar.mvc.model.observer.Observer;
 
 public interface Subject {
-    void registerObserver(CarObserver observer);
+    void registerObserver(Observer observer);
 
     void notifyObservers();
-
-    List<CarObserver> findWinnerObservers();
 }
