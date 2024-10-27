@@ -1,8 +1,8 @@
-# 프리코스 미션2 자동차 경주
+# **프리코스 미션2 자동차 경주**
 
-## 기능 요구 사항
+## **기능 요구 사항**
 
-### 입력한 문자열에서 숫자를 추출하여 더하는 계산기 구현
+### **입력한 문자열에서 숫자를 추출하여 더하는 계산기 구현**
 
 초간단 자동차 경주 게임을 구현한다.
 
@@ -15,14 +15,17 @@
 - 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
-## 문제에 주어지지 않은 조건 확인
+## **문제에 주어지지 않은 조건 확인**
 
 - 시행횟수에 대한 조건이 X
     - 시행 횟수는 최소 1이상인 정수라는 전제로 진행
-- 이름에 공백이 포함 조건 X
-    - 이름에 공백이 포함되면 안된다는 전제로 진행
+- 자동차 이름에 공백이 포함 조건 X
+    - 자동차 이름에 공백이 포함되면 안된다는 전제로 진행
+- 자동차의 최소 개수에 대한 조건 X
+    - 자동차의 최소 개수는 2개여야 한다는 전제로 진행
+        - 자동차의 개수가 1개라면 경주를 할 수 없음
 
-## 구현 기능 목록
+## **구현 기능 목록**
 
 - 사용자 입력 기능
     - 자동차 이름 입력
@@ -46,15 +49,15 @@
         - 시행 횟수는 숫자로만 이루어져야 한다
         - 시행 횟수는 0보다 큰 정수여야 한다
 
-## 플로우 차트
+## **플로우 차트**
 
-## 클래스 설계
+## **클래스 설계**
 
-### View
+### **View**
 
 - InputView
-    - readline() → `camp.nextstep.edu.missionutils.Console.readLine()`을 사용하여 사용자의 입력을 받음
-    - close() → `camp.nextstep.edu.missionutils.Console.close()` 사용하여 자원을 해제함
+    - readline() →`camp.nextstep.edu.missionutils.Console.readLine()`을 사용하여 사용자의 입력을 받음
+    - close() →`camp.nextstep.edu.missionutils.Console.close()`사용하여 자원을 해제함
 - OutputView
     - printCarNameInputMessage() → 자동차 이름을 입력받기 전 안내 메시지 출력
     - printTrialCountInputMessage() → 시도할 횟수를 입력받기 전 안내 메시지 출력
@@ -62,7 +65,7 @@
     - printRaceStatus() → 각 시행횟수마다 CarDTO 리스트에서 자동차 이름, 위치 출력
     - printWinner(String output) → 최종 승자 출력
 
-### Domain
+### **Domain**
 
 - Car
     - 변수
@@ -74,40 +77,41 @@
         - stop() → moveCount - 1
         - validateTrialCount() →
 
-### DTO
+### **DTO**
 
 - CarDTO(record) → 자동차의 이름과 위치정보를 갖는 DTO
-- RaceResultDTO(record) → 레이스의 승자 리스트와 각 시행횟수마다의 자동차의 이름, 위치 상태를 포함한 `Map`을 갖는 DTO
+- RaceResultDTO(record) → 레이스의 승자 리스트와 각 시행횟수마다의 자동차의 이름, 위치 상태를 포함한`Map`을 갖는 DTO
 
-### Controller
+### **Controller**
 
 - RacingController
     - run() → 입력값 검증, 자동차 경기에 관련된 비즈니스 로직 호출
     - getCarsName(String input) → 입력값을 ‘,’ 기준으로 분리한 문자열 리스트 반환
 
-### Service
+### **Service**
 
 - RacingService
     - startRace() → 자동차 경주 핵심 로직
     - createCars() → Car 객체 리스트 생성
     - getRaceWinners() → 우승자 리스트 반환
     - createCarDTOs() → Car 객체 리스트를 받아 CarDTO 리스트로 변환하여 반환
-    - isMovingForward() → `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`을 이용하여 0 ~ 9 사이의 랜덤값을 뽑아, 그
-      랜덤값이
-      4 이상이면 `true`, 이외의 경우에는 `false`를 반환
+    - isMovingForward() →`camp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()`을 이용하여 0 ~ 9 사이의 랜덤값을 뽑아, 그 랜덤값이
+      4 이상이면`true`, 이외의 경우에는`false`를 반환
     - runRace(int trialCount) → 시행 횟수만큼 자동차 경기 진행 및 출력
 
-### Validator
+### **Validator**
 
 - InputValidator
     - validateCarName() → 자동차 이름 입력값에 대한 검증
-    - validateTrialCount() → 시행 횟수 입력값에 대한 검증
     - validateCarNameLength() → 자동차 이름 길이에 대한 검증
     - validateCarNameContainsNotAllowedCharacter() → 자동차 이름에 허용되지 않는 문자가 포함되었는지 검증
+    - validateCarNameCount() → 입력된 자동차 이름의 개수가 2개 이상인지 검증
+    - validateCarNameDuplication() → 자동차 이름 리스트에 중복이 있는지 검증
+    - validateTrialCount() → 시행 횟수 입력값에 대한 검증
     - validateTrialCountInputType() → 시행 횟수 입력값이 숫자로 입력되었는지 검증
     - validateTrialCountRange() → 시행 횟수가 1 이상의 값으로 입력되었는지 검증
 
-### Validator
+### **Validator**
 
 - InputValidator
     - 입력값을 검증하는 클래스
