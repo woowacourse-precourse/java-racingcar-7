@@ -13,5 +13,9 @@ public class Application {
         Race race = new Race(racingCars, raceCount);
 
         List<RacingCar> winners = race.race();
+
+        ResultOutput resultOutput = new ResultOutput();
+
+        resultOutput.print(winners);
     }
 }
