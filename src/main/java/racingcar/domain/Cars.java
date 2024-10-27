@@ -17,6 +17,10 @@ public class Cars {
         return new Cars(cars);
     }
 
+    public void moveEachCar() {
+        cars.forEach(Car::move);
+    }
+
     private static void validateNumberOfCars(List<Car> cars) {
         if (cars.size() < MINIMUM_NUMBER_OF_CARS) {
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_NUMBER_OF_CARS);
