@@ -10,7 +10,15 @@ public class RacingGame {
     private final int allRound;
     private final List<Car> participants;
 
-    public RacingGame(int allRound, List<Car> cars) {
+    public static RacingGame of(int allRound, List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return new RacingGame(allRound, cars);
+    }
+
+    RacingGame(int allRound, List<Car> cars) {
         this.allRound = allRound;
         this.participants = cars;
     }
