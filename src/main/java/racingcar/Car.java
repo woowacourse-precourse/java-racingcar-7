@@ -9,6 +9,12 @@ public class Car {
         this.name = name;
     }
 
+    // 테스트용 생성자
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
     public void move(){
         if (isMovable()) position++;
     }
