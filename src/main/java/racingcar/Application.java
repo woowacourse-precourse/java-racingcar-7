@@ -15,7 +15,6 @@ public class Application {
                 new RacingService(),
                 new StringSplitter(),
                 new NumberParser()
-
         );
 
         racingController.run();

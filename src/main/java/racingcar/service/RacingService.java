@@ -5,17 +5,17 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Race;
 import racingcar.domain.RoundProgress;
-import racingcar.dto.RaceResult;
+import racingcar.dto.RaceResultDto;
 import racingcar.strategy.RandomMovingStrategy;
 import racingcar.vo.Name;
 import racingcar.vo.Round;
 
 public class RacingService {
-    public RaceResult createAndExecute(List<String> carNames, int roundCount) {
+    public RaceResultDto createAndExecute(List<String> carNames, int roundCount) {
         Race race = createRace(carNames, roundCount);
         executeRace(race);
 
-        return RaceResult.of(
+        return RaceResultDto.of(
                 race.getEntireHistory(),
                 race.getWinners()
         );

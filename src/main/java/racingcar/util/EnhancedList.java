@@ -12,9 +12,12 @@ import java.util.NoSuchElementException;
  *
  * @param <E> 리스트에 저장될 요소의 타입. Comparable 인터페이스를 구현해야 합니다.
  */
-
 public class EnhancedList<E extends Comparable<? super E>> implements List<E> {
     private final List<E> delegate;
+
+    // 상수 선언
+    private static final String NULL_DELEGATE_ERROR = "Delegate list 는  null 일 수 없습니다.";
+    private static final String EMPTY_LIST_ERROR = "List 는 비어있습니다.";
 
     /**
      * 주어진 List를 감싸는 새로운 EnhancedList를 생성합니다.
@@ -24,8 +27,9 @@ public class EnhancedList<E extends Comparable<? super E>> implements List<E> {
      */
     public EnhancedList(List<E> delegate) {
         if (delegate == null) {
-            throw new NullPointerException("Delegate list cannot be null");
+            throw new NullPointerException(NULL_DELEGATE_ERROR);
         }
+
         this.delegate = delegate;
     }
 
@@ -37,11 +41,11 @@ public class EnhancedList<E extends Comparable<? super E>> implements List<E> {
      */
     public List<E> maxAll() {
         if (delegate.isEmpty()) {
-            throw new NoSuchElementException("List is empty");
+            throw new NoSuchElementException(EMPTY_LIST_ERROR);
         }
 
         List<E> maxElements = new ArrayList<>();
-        E max = delegate.get(0);
+        E max = delegate.getFirst();
         maxElements.add(max);
 
         for (int i = 1; i < delegate.size(); i++) {
