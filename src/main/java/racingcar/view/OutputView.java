@@ -1,11 +1,11 @@
 package racingcar.view;
 
+import java.util.List;
+import racingcar.model.car.Car;
+
 import static racingcar.constant.InputOutputConstants.SEPARATOR;
 import static racingcar.constant.InputOutputConstants.PROGRESS_BAR;
 import static racingcar.constant.InputOutputConstants.RESULT_MESSAGE;
-
-import java.util.List;
-import racingcar.model.car.Car;
 
 public class OutputView {
 

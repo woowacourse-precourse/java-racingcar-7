@@ -1,8 +1,5 @@
 package racingcar;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Test;
 import racingcar.model.car.Car;
@@ -10,6 +7,9 @@ import racingcar.util.StringProcessor;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.TrialValidator;
 import racingcar.validator.Validator;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CustomUnitTest {
 
