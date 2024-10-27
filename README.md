@@ -11,11 +11,11 @@
   
 ### model package
 - GameLogicTransform class
-    + [] view가 받은 경주할 자동차 이름을 map으로 전환 - getMapByCarName
-    + [] 경기 결과에 따른 map value 수정 - updateMapByResult
+    + [0] view가 받은 경주할 자동차 이름을 map으로 전환 - mapByCarName
+    + [0] 경기 결과에 따른 map value 수정 - updateMapByResult
+    + [0] 0부터 9사이의 무작위 값 중 4이상 값이 나오는지 판단하는 기능 isNumberMoreFour
   
 - GameLogicValidation class
-    + [] 0부터 9사이의 무작위 값 중 4이상 값이 나오는지 판단하는 기능 isNumberMoreFour
     + [] 최종 우승자를 판단하는 기능 validateRacingWinner
   
 ### service package
