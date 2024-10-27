@@ -67,4 +67,18 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(expectedMessage);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"Ahn, ", " ,Seong", " , "})
+    @DisplayName("이름을 1자 이상으로 작성하지 않았으면 예외 발생")
+    void inputMoreThenOneCharacter_NotInputtedMoreThenOneCharacter_ExceptionThrown(String carNames){
+        //given
+        final String expectedMessage = "이름을 1자 이상으로 입력해주세요";
+        final CarNameValidator carNameValidator = new CarNameValidator();
+
+        //when & then
+        assertThatThrownBy(() -> carNameValidator.inputMoreThenOneCharacter(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(expectedMessage);
+    }
 }
