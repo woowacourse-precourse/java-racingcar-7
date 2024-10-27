@@ -41,7 +41,7 @@ public class CarNameValidatorTest extends NsTest {
     }
 
     @Test
-    void 자동차의_이름이_6자_이상인_경우_예외_발생() {
+    void 자동차의_이름이_5자를_넘기는_경우_예외_발생() {
         assertSimpleTest(
                 () -> assertIllegalArgumentException("kimyechan, kimminsoo", ErrorMessage.CAR_NAME_IS_TOO_LONG));
     }
