@@ -1,15 +1,15 @@
 package racingcar.parser;
 
 import java.util.Arrays;
-import java.util.Set;
+import java.util.List;
 
 public class CarNameInputParser {
-	public Set<String> parseInput(String input) {
+	public List<String> parseInput(String input) {
 		String[] carNames = input.split(",");
 		validateParticipantCount(carNames);
 		validateUniqueName(carNames);
 
-		return Set.of(carNames);
+		return List.of(carNames);
 	}
 
 	private void validateParticipantCount(String[] carNames) {

@@ -1,16 +1,15 @@
 package racingcar.domain;
 
 import java.util.List;
-import java.util.Set;
 
 import racingcar.dto.RaceResultResponse;
 import racingcar.dto.WinnerResponse;
 import racingcar.util.RandomNumberPicker;
 
 public class Cars {
-	private final Set<Car> cars;
+	private final List<Car> cars;
 
-	public Cars(Set<Car> cars) {
+	public Cars(List<Car> cars) {
 		this.cars = cars;
 	}
 
