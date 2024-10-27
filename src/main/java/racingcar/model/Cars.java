@@ -15,7 +15,7 @@ public class Cars {
         }
     }
 
-    public void updateCarPosition(final String carName) {
+    public void updatePosition(final String carName) {
         for (Car car : cars) {
             if (car.getName().equals(carName)) {
                 car.moveForward();
@@ -24,7 +24,7 @@ public class Cars {
         }
     }
 
-    public Map<String, Integer> getCarPositions() {
+    public Map<String, Integer> getPositions() {
         Map<String, Integer> positions = new HashMap<>();
 
         for (Car car : cars) {

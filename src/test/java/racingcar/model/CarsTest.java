@@ -19,10 +19,10 @@ class CarsTest {
 
     @Test
     @DisplayName("자동차의 위치가 정상적으로 업데이트 된다.")
-    void updateCarPosition() {
-        cars.updateCarPosition("pobi");
+    void updatePosition() {
+        cars.updatePosition("pobi");
 
-        Map<String, Integer> positions = cars.getCarPositions();
+        Map<String, Integer> positions = cars.getPositions();
         assertEquals(1, positions.get("pobi"));
         assertEquals(0, positions.get("jun"));
         assertEquals(0, positions.get("kiki"));
@@ -30,11 +30,11 @@ class CarsTest {
 
     @Test
     @DisplayName("여러 자동차의 위치가 정상적으로 업데이트 된다.")
-    void multipleUpdateCarPosition() {
-        cars.updateCarPosition("pobi");
-        cars.updateCarPosition("kiki");
+    void multipleUpdatePosition() {
+        cars.updatePosition("pobi");
+        cars.updatePosition("kiki");
 
-        Map<String, Integer> positions = cars.getCarPositions();
+        Map<String, Integer> positions = cars.getPositions();
         assertEquals(1, positions.get("pobi"));
         assertEquals(0, positions.get("jun"));
         assertEquals(1, positions.get("kiki"));

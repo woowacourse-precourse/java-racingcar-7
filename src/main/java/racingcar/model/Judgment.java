@@ -20,7 +20,7 @@ public class Judgment {
     }
 
     private Map<String, Integer> getFinalRound() {
-        List<Map<String, Integer>> records = movementRecord.getRoundRecords();
+        List<Map<String, Integer>> records = movementRecord.getRounds();
 
         return records.getLast();
     }

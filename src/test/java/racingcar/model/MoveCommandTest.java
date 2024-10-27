@@ -27,7 +27,7 @@ class MoveCommandTest {
     void moveCars() {
         moveCommand.command(cars);
 
-        Map<String, Integer> positions = cars.getCarPositions();
+        Map<String, Integer> positions = cars.getPositions();
 
         assertEquals(1, positions.get("pobi"));
         assertEquals(1, positions.get("jun"));
@@ -42,7 +42,7 @@ class MoveCommandTest {
 
         moveCommand.command(cars);
 
-        Map<String, Integer> positions = cars.getCarPositions();
+        Map<String, Integer> positions = cars.getPositions();
 
         assertEquals(0, positions.get("pobi"));
         assertEquals(0, positions.get("jun"));

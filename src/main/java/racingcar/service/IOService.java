@@ -16,7 +16,7 @@ public class IOService {
     }
 
     public List<String> readCarNames() {
-        String carNamesInput = InputView.readCarName();
+        String carNamesInput = InputView.readCarNames();
 
         List<String> carNames = Arrays.stream(carNamesInput.split(","))
                 .map(String::trim)

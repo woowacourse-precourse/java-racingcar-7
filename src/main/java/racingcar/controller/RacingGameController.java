@@ -19,9 +19,9 @@ public class RacingGameController {
         int tryCount = ioService.readTryCount();
 
         RacingService racingService = new RacingService(carNames, new RandomMoveStrategy());
-        racingService.playGame(tryCount);
+        racingService.play(tryCount);
 
-        ioService.printProcess(racingService.getRoundRecords());
+        ioService.printProcess(racingService.getRounds());
         ioService.printWinners(racingService.getWinners());
     }
 

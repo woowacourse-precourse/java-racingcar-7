@@ -14,8 +14,8 @@ class CarTest {
 
         Car car = new Car(name);
 
-        assertEquals(car.getName(),name);
-        assertEquals(car.getPosition(),0);
+        assertEquals(car.getName(), name);
+        assertEquals(car.getPosition(), 0);
     }
 
     @Test

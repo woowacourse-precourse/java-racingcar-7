@@ -18,11 +18,11 @@ class ApplicationTest extends NsTest {
     @DisplayName("자동차 경주 게임이 정상적으로 시작되어 결과가 반환된다.(우승자가 한명일 때)")
     void racingGameAndWinner() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 

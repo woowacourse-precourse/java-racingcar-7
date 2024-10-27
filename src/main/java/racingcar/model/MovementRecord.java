@@ -10,10 +10,10 @@ public class MovementRecord {
     private final List<Map<String, Integer>> roundRecords = new ArrayList<>();
 
     public void recordRound(final Cars cars) {
-        roundRecords.add(new LinkedHashMap<>(cars.getCarPositions()));
+        roundRecords.add(new LinkedHashMap<>(cars.getPositions()));
     }
 
-    public List<Map<String, Integer>> getRoundRecords() {
+    public List<Map<String, Integer>> getRounds() {
         return roundRecords;
     }
 

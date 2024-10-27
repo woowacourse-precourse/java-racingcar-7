@@ -21,13 +21,13 @@ public class RacingService {
         this.judgment = new Judgment(movementRecord);
     }
 
-    public void playGame(int rounds) {
+    public void play(int rounds) {
         for (int i = 0; i < rounds; i++) {
             playRound();
         }
     }
 
-    public MovementRecord getRoundRecords() {
+    public MovementRecord getRounds() {
         return movementRecord;
     }
 

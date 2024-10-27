@@ -9,14 +9,14 @@ public class MoveCommand {
     }
 
     public void command(final Cars cars) {
-        for (String carName : cars.getCarPositions().keySet()) {
+        for (String carName : cars.getPositions().keySet()) {
             checkedAndMoveCar(cars, carName);
         }
     }
 
     private void checkedAndMoveCar(final Cars cars, final String carName) {
         if (moveStrategy.canMove()) {
-            cars.updateCarPosition(carName);
+            cars.updatePosition(carName);
         }
     }
 

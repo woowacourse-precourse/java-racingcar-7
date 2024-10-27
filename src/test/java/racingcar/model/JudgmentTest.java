@@ -22,7 +22,7 @@ class JudgmentTest {
     @DisplayName("최종 우승자가 한 명일 경우 반환한다.")
     void getWinner() {
         Cars cars = new Cars(List.of("pobi", "kiki", "jun"));
-        cars.updateCarPosition("pobi");
+        cars.updatePosition("pobi");
         movementRecord.recordRound(cars);
 
         List<String> winners = judgment.getWinners();
@@ -33,8 +33,8 @@ class JudgmentTest {
     @DisplayName("최종 우승자가 여러 명일 경우 반환한다.")
     void getWinners() {
         Cars cars = new Cars(List.of("pobi", "kiki", "jun"));
-        cars.updateCarPosition("pobi");
-        cars.updateCarPosition("kiki");
+        cars.updatePosition("pobi");
+        cars.updatePosition("kiki");
         movementRecord.recordRound(cars);
 
         List<String> winners = judgment.getWinners();

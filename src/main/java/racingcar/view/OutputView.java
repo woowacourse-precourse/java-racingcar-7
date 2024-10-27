@@ -15,11 +15,17 @@ public class OutputView {
     public static void printProcess(MovementRecord movementRecord) {
         System.out.println(PROCESS_RESULT);
 
-        for (Map<String, Integer> round : movementRecord.getRoundRecords()) {
+        for (Map<String, Integer> round : movementRecord.getRounds()) {
             printRoundResult(round);
 
             System.out.println();
         }
+    }
+
+    public static void printWinners(List<String> winners) {
+        String winnerNames = String.join(WINNER_DELIMITER, winners);
+
+        System.out.println(WINNER_ANNOUNCEMENT + winnerNames);
     }
 
     private static void printRoundResult(Map<String, Integer> round) {
@@ -32,12 +38,6 @@ public class OutputView {
 
             System.out.println(result);
         }
-    }
-
-    public static void printWinners(List<String> winners) {
-        String winnerNames = String.join(WINNER_DELIMITER, winners);
-
-        System.out.println(WINNER_ANNOUNCEMENT + winnerNames);
     }
 
 }
