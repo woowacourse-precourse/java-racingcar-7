@@ -48,4 +48,14 @@ public class RacingCarTest {
         assertThat(racingCar.getPosition()).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("자동차는 4 미만의 숫자를 받으면 움직이지 않는다.")
+    public void stopWhenGiveNumberLessThan4() {
+        RacingCar racingCar = new RacingCar("자동차");
+
+        racingCar.move(3);
+
+        assertThat(racingCar.getPosition()).isEqualTo(0);
+    }
+
 }
