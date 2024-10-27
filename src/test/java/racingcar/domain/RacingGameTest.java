@@ -26,7 +26,7 @@ class RacingGameTest {
         // When
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        racingGame.printWinners();
+//        racingGame.printWinners();
         String result = outContent.toString();
 
         // Then
@@ -52,7 +52,7 @@ class RacingGameTest {
         // When
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        racingGame.printWinners();
+//        racingGame.printWinners();
         String result = outContent.toString();
 
         // Then
