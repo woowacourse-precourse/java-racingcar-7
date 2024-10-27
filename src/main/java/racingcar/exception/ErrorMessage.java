@@ -8,7 +8,7 @@ public enum ErrorMessage {
     LONG_CAR_NAME("이름은 5자 이하만 가능합니다."),
 
     EMPTY_TRY_NUMBER("시도 횟수를 입력해주세요."),
-    WRONG_NUMBER_FORMAT("잘못된 입력입니다.");
+    WRONG_NUMBER_FORMAT("잘못된 입력입니다. 숫자를 입력해주세요.");
 
 
     private final String message;
