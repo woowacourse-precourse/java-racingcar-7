@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashSet;
 
 public class Car {
     public final Name name;
@@ -13,13 +12,13 @@ public class Car {
     }
 
     public void incrementPosition() {
-        position+=1;
+        position += 1;
     }
 
     public void moveForward() {
-        int randomValue = Randoms.pickNumberInRange(0,9);
+        int randomValue = Randoms.pickNumberInRange(0, 9);
 
-        if(randomValue >= 4) {
+        if (randomValue >= 4) {
             incrementPosition();
         }
     }
