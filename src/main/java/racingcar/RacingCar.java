@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 public class RacingCar {
     String carNames;
@@ -19,6 +20,7 @@ public class RacingCar {
     String resultLog = "";
     List<Integer> moveCountResult = new ArrayList<>();
     int max;
+    List<String> winnerList = new ArrayList<String>();
 
     public void getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -93,6 +95,12 @@ public class RacingCar {
         getMoveResult();
         for (int number : moveCountResult) {
             max = Math.max(max, number);
+        }
+    }
+
+    public void makeWinnerList(Entry entry) {
+        if (entry.getValue().equals(max)) {
+            winnerList.add((String) entry.getKey());
         }
     }
 }
