@@ -15,6 +15,8 @@ public class Cars {
 
     public void registerCars(String carNames) {
         List<String> names = splitNames(carNames);
+        validateNameIsDuplicate(names);
+        validateNames(names);
         addCars(names);
     }
 
@@ -30,15 +32,20 @@ public class Cars {
 
     private void addCars(List<String> names) {
         for (String name : names) {
-            validateName(name);
             Car car = new Car(name);
             cars.add(car);
         }
     }
 
-    private void validateName(String name) {
-        validateInputName(name);
-        validateNameLength(name);
+    private void validateNameIsDuplicate(List<String> names) {
+        Validator.validateNameIsDuplicate(names);
+    }
+
+    private void validateNames(List<String> names) {
+        for (String name : names) {
+            validateInputName(name);
+            validateNameLength(name);
+        }
     }
 
     private void validateInputName(String name) {
