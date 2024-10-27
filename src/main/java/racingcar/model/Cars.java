@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.exception.ErrorCode;
 
 public class Cars {
@@ -42,33 +43,17 @@ public class Cars {
 
         sortByMoveCount();
 
-        List<String> result = new ArrayList<>();
+        int topMoveCount = cars.get(0).getMoveCount();
 
-        cars.forEach(car -> makeRankResult(result, car));
+        return cars.stream()
+                .filter(car -> car.getMoveCount() == topMoveCount)
+                .map(Car::getName)
+                .collect(Collectors.toList());
 
-        return result;
-
-    }
-
-    private void makeRankResult(final List<String> result, final Car car) {
-
-        if(result.size()==0){
-            result.add(car.getName());
-        }
-        else{
-            if(car.getMoveCount()==cars.get(0).getMoveCount()){
-                result.add(car.getName());
-            }
-        }
     }
 
     private void sortByMoveCount() {
-        Collections.sort(cars, new Comparator<Car>() {
-            @Override
-            public int compare(Car o1, Car o2) {
-                return o2.getMoveCount()-o1.getMoveCount();
-            }
-        });
+        cars.sort((o1, o2) -> Integer.compare(o2.getMoveCount(), o1.getMoveCount()));
     }
 
 
