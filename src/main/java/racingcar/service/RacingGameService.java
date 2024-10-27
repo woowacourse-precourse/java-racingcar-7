@@ -3,6 +3,7 @@ package racingcar.service;
 import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
 import racingcar.domain.CarNameParser;
+import racingcar.util.RandomUtil;
 import racingcar.util.ValidUtil;
 
 import java.util.List;
@@ -17,6 +18,14 @@ public class RacingGameService {
         validateCarCount(carNames);
         validateUniqueCarNames(carNames);
         return CarFactory.generateCars(carNames);
+    }
+
+    public List<Car> moveCars(List<Car> cars){
+        for(Car car : cars){
+            int randomNumber = RandomUtil.generateRandomNumber();
+            car.move(randomNumber);
+        }
+        return cars;
     }
 
     private void validateCarCount(List <String> carNames){
