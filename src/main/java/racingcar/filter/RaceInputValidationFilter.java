@@ -10,14 +10,14 @@ public class RaceInputValidationFilter implements Filter<RaceRequest, RaceRespon
     private static final String COMMAND_REGEX = "^(?!,)([^,]+)(,(?!$)[^,]+)*$";
 
     @Override
-    public void doFilter(RaceRequest request, RaceResponse response, RaceFilterChain chain) {
+    public RaceResponse doFilter(RaceRequest request, RaceFilterChain chain) {
         validateRequest(request);
-        chain.doFilter(request, response);
+        return chain.doFilter(request);
     }
 
     private void validateRequest(RaceRequest request) {
-        validateCommand(request.getCommand());
-        validateIterations(request.getIterations());
+        validateCommand(request.command());
+        validateIterations(request.iterations());
     }
 
     private void validateCommand(String command) {
