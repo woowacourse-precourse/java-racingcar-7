@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
+
+    public static void printDistance(List<Car> carList) {
+        System.out.println(carList.toString());
+    }
+
     public static void printWinner(List<Car> winnerList) {
         String result = winnerList.stream()
                 .map(Car::getName)

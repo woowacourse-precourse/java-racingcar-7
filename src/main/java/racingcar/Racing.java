@@ -19,8 +19,7 @@ public class Racing {
             for (Car car : carList) {
                 car.move();
             }
-            System.out.println(this);
-            System.out.println();
+            OutputView.printDistance(carList);
         }
         List<Car> winner = getWinner();
         OutputView.printWinner(winner);
