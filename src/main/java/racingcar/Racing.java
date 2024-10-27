@@ -7,7 +7,7 @@ import java.util.List;
 public class Racing {
 
     public void run() {
-        List<String> carNames = List.of("pobi", "woni");
+        List<String> carNames = List.of("pobi", "woniiii");
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));

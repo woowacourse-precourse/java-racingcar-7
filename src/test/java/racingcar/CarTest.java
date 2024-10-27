@@ -16,6 +16,16 @@ class CarTest {
         Assertions.assertThat(car.getName()).isEqualTo(carName);
     }
 
+    @DisplayName("자동차 생성 실패 : 6자 이상 이름")
+    @Test
+    void validateNameTest() {
+        String carName = "javaji";
+
+        Assertions.assertThatThrownBy(() -> new Car(carName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5자 이하여야 합니다.");
+    }
+
     @DisplayName("자동차 전진 성공")
     @Test
     void moveTest() {
