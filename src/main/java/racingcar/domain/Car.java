@@ -18,4 +18,8 @@ public class Car {
 	public boolean isMovable(int randomNumber) {
 		return randomNumber >= 4;
 	}
+
+	public int getDistance() {
+		return distance;
+	}
 }
