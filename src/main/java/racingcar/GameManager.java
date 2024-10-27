@@ -2,12 +2,15 @@ package racingcar;
 
 import racingcar.car.Cars;
 import racingcar.io.InputView;
+import racingcar.io.OutputView;
 
 public class GameManager {
     private final InputView inputView;
+    private final OutputView outputView;
 
     public GameManager() {
-        this.inputView = new InputView();
+        inputView = new InputView();
+        outputView = new OutputView();
     }
 
     public void start() {
@@ -29,6 +32,7 @@ public class GameManager {
     }
 
     private String[] readCarName() {
+        outputView.printReadCarNameMessage();
         return inputView.readCarName();
     }
 
