@@ -13,7 +13,7 @@ public class RacingCar {
     private final Separator separator = new Separator();
     private final Winner winner = new Winner();
 
-    public void run(){
+    public void run() {
         consoleOutputHandler.printCarNameInstruction();
         String carListInput = consoleInputHandler.getCarListInput();
         consoleOutputHandler.printTryCountInstruction();
@@ -24,12 +24,12 @@ public class RacingCar {
         System.out.println();
         System.out.println("실행 결과");
 
-        for(int i=0;i<carList.size();i++){
-            cars.add(new Car(carList.get(i),tryCount));
+        for (int i = 0; i < carList.size(); i++) {
+            cars.add(new Car(carList.get(i), tryCount));
         }
 
-        for(int i=0;i<tryCount;i++){
-            cars.forEach(car->{
+        for (int i = 0; i < tryCount; i++) {
+            cars.forEach(car -> {
                 car.moveForward();
                 consoleOutputHandler.printExecumentInstruction(car);
             });
