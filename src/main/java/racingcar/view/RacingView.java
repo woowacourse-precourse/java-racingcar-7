@@ -14,6 +14,10 @@ public class RacingView {
     public String[] getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표로 구분)");
         String[] carName = Console.readLine().trim().split(",");
+        if (carName.length == 1) {
+            System.out.println("자동차 " + carName[0] + "가 우승하였습니다!");
+            return carName;  // 우승 메시지를 출력하고 반환
+        }
         validateCarNames(carName);
         return carName;
     }
