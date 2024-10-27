@@ -17,10 +17,9 @@ public class UserInterface {
     /**
      * 사용자로부터 시도 횟수 입력 받기
      */
-    public int getTotalRoundInput() {
+    public String getTotalRoundInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        // TODO 예외처리 - 숫자 중간에 공백 있는 경우 invalid 처리
-        return Integer.parseInt(Console.readLine().trim());
+        return Console.readLine().trim();
     }
 
     /**
