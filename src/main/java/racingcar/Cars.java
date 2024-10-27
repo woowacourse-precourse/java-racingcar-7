@@ -37,4 +37,8 @@ public class Cars {
                 .filter(car -> car.getDistance() == maxDistance)
                 .toList();
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
