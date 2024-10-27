@@ -2,6 +2,8 @@ package racingcar.domain;
 
 public class Car {
 
+    private static final String STATUS_CHARACTER = "-";
+
     private final CarName name;
     private final CarPosition carPosition;
 
@@ -24,6 +26,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return name.getName() + " : " + "-".repeat(carPosition.getPosition());
+        return String.format("%s : %s", name.getName(), STATUS_CHARACTER.repeat(carPosition.getPosition()));
     }
 }
