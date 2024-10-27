@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class RacingGameService {
     private static final String CAR_NAMES_PROMPT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String ATTEMPT_COUNT_PROMPT = "시도할 횟수는 몇 회인가요?";
 
     public List<Car> createCars() {
         System.out.println(CAR_NAMES_PROMPT);
@@ -17,5 +18,11 @@ public class RacingGameService {
         return carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
+
+    public int getAttemptCount() {
+        System.out.println(ATTEMPT_COUNT_PROMPT);
+        String input = Console.readLine();
+        return AttemptValidator.validateAttempt(input);
     }
 }
