@@ -33,7 +33,7 @@ public class Game {
 
     private void printCurrent() {
         racingCars.forEach(car -> {
-            System.out.println(car + " : " + car.getCurrentLocation());
+            System.out.println(car + " : " + car.getLocationString());
         });
         System.out.println();
     }

@@ -15,10 +15,10 @@ public class Car {
         this.location++;
     }
 
-    public String getCurrentLocation() {
+    public String getLocationString() {
         return "-".repeat(this.location);
     }
-    
+
     @Override
     public String toString() {
         return this.name;
