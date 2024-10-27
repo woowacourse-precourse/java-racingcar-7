@@ -12,6 +12,21 @@ class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
+
+    @Test // 이름이 5자를 초과하면 IllegalArgumentException 발생
+    void carNameValidation() {
+        assertThatThrownBy(() -> new Car("abcdef"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.");
+    }
+
+    @Test // 랜덤 값이 4 이상일 경우 자동차가 전진
+    void carMove() {
+        Car car = new Car("test");
+        car.move(4);
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
