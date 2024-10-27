@@ -27,5 +27,9 @@ public class Application {
 
         System.out.println("시도할 회수는 몇회인가요?");
         String tryCountString = readLine();
+        if (!tryCountString.matches("^[0-9]\\d*$")) {
+            throw new IllegalArgumentException("시도 횟수는 0 이상의 정수만 가능");
+        }
+        int tryCount = Integer.parseInt(tryCountString);
     }
 }
