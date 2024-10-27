@@ -13,13 +13,13 @@ public class OutputView {
 
     public void printRaceProcess(Map<String, Integer> raceResult) {
         raceResult.forEach((name, position) ->
-                System.out.println(name + " : " + "-".repeat(position))
+                System.out.println(String.format(OutputMessage.MOVEMENT_STATE_FORMAT, name, "-".repeat(position)))
         );
         printNewLine();
     }
 
     public void printWinners(List<String> winners) {
-        System.out.println(OutputMessage.WINNERS_ANNOUNCEMENT + String.join(", ", winners));
+        System.out.println(OutputMessage.WINNERS_ANNOUNCEMENT + String.join(OutputMessage.WINNER_DELIMITER, winners));
     }
 
     private void printNewLine() {
