@@ -30,8 +30,16 @@ public class ValidatorTest {
     @DisplayName("자동차의 이름이 중복될 경우 예외가 발생한다")
     @ParameterizedTest
     @MethodSource("provideDuplicateCarNames")
-    void validateDuplicate(List<String> inputs){
+    void validate_Duplicate(List<String> inputs){
         assertThatThrownBy(() -> Validator.containDuplicate(inputs))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("음수를 입력하면 예외가 발생한다")
+    void check_tryCount_nonNumeric(){
+        String tryCount = "nonNumeric";
+        assertThatThrownBy(() -> Validator.validateNumericInput(tryCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -42,6 +50,8 @@ public class ValidatorTest {
                 Arrays.asList("john", "doe", "john")
         );
     }
+
+
 
 
 }
