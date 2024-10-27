@@ -34,7 +34,6 @@ public class Controller {
         Game game = Game.start(carNames, round);
         while (!game.isGameEnd()) {
             game.play();
-//            printStatus(game.getCarStatus());
             printStatus(game.getStatus());
         }
         printWinner(game.findWinners());

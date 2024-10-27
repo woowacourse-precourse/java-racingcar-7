@@ -1,29 +1,43 @@
 package racingcar.model;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Game {
-    private final Cars cars;
+    private final List<Car> cars;
     private int round;
 
-    private Game(Cars cars, int round) {
-        this.cars = cars;
+    private Game(List<String> carNames, int round) {
+        this.cars = carNames.stream()
+                .map(Car::create)
+                .toList();
         this.round = round;
     }
 
     public static Game start(List<String> carNames, int round) {
-        return new Game(Cars.apply(carNames), round);
+        return new Game(carNames, round);
     }
 
     public void play() {
-        cars.playRound();
+        for (Car car : cars) {
+            if (car.pickRandomNumber() >= 4) {
+                car.moveForward();
+            }
+        }
         round--;
     }
 
     public List<String> findWinners() {
-        return cars.findWinner();
+        return cars.stream()
+                .filter(car -> car.getLocation() == findWinnerLocation())
+                .map(Car::getName)
+                .toList();
+    }
+
+    private int findWinnerLocation() {
+        return cars.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .orElse(0);
     }
 
     public boolean isGameEnd() {
@@ -38,6 +52,8 @@ public class Game {
     }
 
     public List<String> getStatus() {
-        return cars.getStatus();
+        return cars.stream()
+                .map(Car::getStatus)
+                .toList();
     }
 }
