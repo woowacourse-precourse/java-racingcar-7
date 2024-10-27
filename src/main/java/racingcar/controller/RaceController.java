@@ -1,48 +1,40 @@
-package racingcar;
+package racingcar.controller;
 
-import racingcar.view.InputView;
+import racingcar.model.Car;
+import racingcar.service.RaceService;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Race {
+public class RaceController {
 
-    private final InputView inputView;
     private final OutputView outputView;
-    private final CarFactory carFactory;
+    private final RaceService raceService;
 
-    public Race() {
-        this.inputView = new InputView();
-        this.carFactory = new CarFactory();
+    public RaceController(RaceService raceService) {
         this.outputView = new OutputView();
+        this.raceService = raceService;
     }
 
-    public void startRace() {
-        List<String> carNames = inputView.getCars();
-        int attemptNum = inputView.getAttemptNum();
-        List<Car> cars = carFactory.createCars(carNames);
+    public int findAttemptNum(String attemptNum) {
+        return raceService.findAttemptNum(attemptNum);
+    }
+
+    public void startRace(List<Car> raceCars, int attemptNum) {
 
         outputView.startOutput();
-
         for (int i = 0; i < attemptNum; i++) {
-            for (Car car : cars) {
+            for (Car car : raceCars) {
                 car.occurRandomNum();
-                checkAdvance(car);
+                raceService.checkAdvance(car);
                 outputView.racingProgress(car);
             }
             outputView.blankLine();
         }
-
-        racingResult(cars);
-
+        racingResult(raceCars);
     }
 
-    private void checkAdvance(Car car) {
-        if(car.getRandomNum() >= 4) {
-            car.increaseCountAdvance();
-        }
-    }
 
 
     public void racingResult(List<Car> cars) {
@@ -64,6 +56,5 @@ public class Race {
         outputView.racingResult(winners);
 
     }
-
 
 }

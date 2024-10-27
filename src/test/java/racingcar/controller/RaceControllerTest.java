@@ -1,9 +1,11 @@
-package racingcar;
+package racingcar.controller;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
+import racingcar.service.RaceService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -11,9 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
-public class RaceTest {
+public class RaceControllerTest {
 
-    private final Race race = new Race();
+    private final RaceService raceService = new RaceService();
+    private final RaceController raceController = new RaceController(raceService);
     private final List<Car> cars = new ArrayList<>();
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final PrintStream originalOut = new PrintStream(outputStream);
@@ -40,7 +43,7 @@ public class RaceTest {
 
         String jointWinnerResult = "최종 우승자 : car4, car5\n";
 
-        race.racingResult(cars);
+        raceController.racingResult(cars);
         assertThat(outputStream.toString()).isEqualTo(jointWinnerResult);
 
     }
