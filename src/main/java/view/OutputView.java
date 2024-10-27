@@ -15,7 +15,7 @@ public class OutputView {
 
     public void printRaceStatus(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getPositionStatus());
+            System.out.println((getPositionStatus(car)));
         }
         System.out.println();
     }
@@ -23,5 +23,10 @@ public class OutputView {
     public void printFinalWinner(List<String> finalWinners) {
         String result = String.join(", ", finalWinners);
         System.out.println("최종 우승자 : " + result);
+    }
+
+    // 자동차의 상태를 문자열로 변환
+    public static String getPositionStatus(Car car) {
+        return car.getName() + " : " + "-".repeat(car.getPosition());
     }
 }
