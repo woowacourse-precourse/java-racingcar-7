@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import racingcar.domain.CarName;
-import racingcar.domain.TrialCount;
 import racingcar.dto.request.CarsRequest;
 import racingcar.dto.request.TrialCountRequest;
 import racingcar.io.input.Reader;
