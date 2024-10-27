@@ -9,6 +9,7 @@ import java.util.List;
 public class InMemoryRacingHistoryRepository implements RacingHistoryRepository {
     private static final InMemoryRacingHistoryRepository instacne = new InMemoryRacingHistoryRepository();
     private final List<RacingHistory> racingHistorys;
+    private int maxDistance = 0;
 
     private InMemoryRacingHistoryRepository() {
         this.racingHistorys = new ArrayList<>();
@@ -20,6 +21,7 @@ public class InMemoryRacingHistoryRepository implements RacingHistoryRepository 
 
     // TODO : 레이싱 결과 저장
     public void saveRacingHistory(RacingHistory racingHistory) {
+        maxDistance = Math.max(racingHistory.getDistance(),maxDistance);
         racingHistorys.add(racingHistory);
     }
 
