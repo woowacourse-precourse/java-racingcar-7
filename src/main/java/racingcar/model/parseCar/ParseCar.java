@@ -5,11 +5,11 @@ import java.util.List;
 
 public class ParseCar {
 
-  public final static String DELIMITER = ",";
+    public final static String DELIMITER = ",";
 
-  public static List<String> parseCarName(String carString){
-    return Arrays.stream(carString.split(DELIMITER)).toList();
-  }
+    public static List<String> parseCarName(String carString) {
+        return Arrays.stream(carString.split(DELIMITER)).toList();
+    }
 
 
 }
