@@ -20,7 +20,9 @@ public enum ErrorMessage {
     RACE_PROGRESS_MANAGER_DUPLICATE_CAR_NAME("자동차 이름은 중복될 수 없습니다."),
 
     MOVEMENT_POLICY_NULL("MovementPolicy는 null이 아닌 유효한 객체여야 합니다."),
-    RACE_PROGRESS_MANAGER_NULL("RaceProgressManager는 null이 아닌 유효한 객체여야 합니다.")
+    RACE_PROGRESS_MANAGER_NULL("RaceProgressManager는 null이 아닌 유효한 객체여야 합니다."),
+
+    RACE_RESULT_EMPTY("경주 결과에 진행 상황이 없어 우승자를 결정할 수 없습니다.")
     ;
 
     private final String message;
