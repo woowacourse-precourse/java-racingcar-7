@@ -10,6 +10,14 @@ public class UserObject {
         this.scoreNum++;
     }
 
+    public int getUserScore() {
+        return scoreNum;
+    }
+
+    public String getUserName() {
+        return name;
+    }
+
     public UserObject(String name) {
         this.name = name;
         this.score = "";
