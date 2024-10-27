@@ -7,8 +7,8 @@ public class Car {
     private final CarName carName;
     private final CarPosition currentCarPosition;
 
-    public Car(String name) {
-        this.carName = new CarName(name);
+    public Car(String carName) {
+        this.carName = new CarName(carName);
         this.currentCarPosition = new CarPosition();
     }
 
@@ -22,18 +22,12 @@ public class Car {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) {
-            return true;
-        }
-        if (object == null || getClass() != object.getClass()) {
-            return false;
-        }
-        Car car = (Car) object;
-        return Objects.equals(carName, car.carName);
+        return this == object || (object instanceof Car && Objects.equals(carName, ((Car) object).carName));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(carName);
+        return Objects.hash(carName);
     }
+
 }

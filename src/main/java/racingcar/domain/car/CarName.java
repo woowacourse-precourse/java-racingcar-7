@@ -25,18 +25,12 @@ public class CarName {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) {
-            return true;
-        }
-        if (object == null || getClass() != object.getClass()) {
-            return false;
-        }
-        CarName carName1 = (CarName) object;
-        return Objects.equals(getName(), carName1.getName());
+        return this == object || (object instanceof CarName && Objects.equals(getName(), ((CarName) object).getName()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getName());
+        return Objects.hash(getName());
     }
+
 }
