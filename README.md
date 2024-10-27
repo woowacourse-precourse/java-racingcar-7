@@ -44,7 +44,7 @@
 ## Judge Class
 
 - [ ] 테스트 코드 작성
-    - [ ] judge 테스트 코드 작성
+    - [x] judge 테스트 코드 작성
     - [ ] show 테스트 코드 작성
 - [ ] judge 메소드 구현
 - [ ] show 메소드 구현
