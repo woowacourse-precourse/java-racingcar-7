@@ -16,7 +16,7 @@ public final class GameController {
 
     public void run() {
         Game game = gameSetup();
-
+        doRace();
     }
 
     public Game gameSetup() {
@@ -35,6 +35,14 @@ public final class GameController {
         return game;
     }
 
+    public void doRace() {
+        gameView.displayGameStart();
+
+        for (int i = 0; i < game.getTotalRound(); i++) {
+            game.playRound();
+            displayCarsPositions();
+        }
+    }
 
     public List<String> parseCarNames(String carNamesInput) {
         List<String> carNameList;
@@ -42,5 +50,11 @@ public final class GameController {
         carNameList = Arrays.asList(carNamesInput.split(","));
 
         return carNameList;
+    }
+
+    public void displayCarsPositions() {
+        for (Car car : game.getCarList()) {
+            gameView.displayCarPosition(car.toString());
+        }
     }
 }
