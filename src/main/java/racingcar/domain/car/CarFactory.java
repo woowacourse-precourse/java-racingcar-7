@@ -8,7 +8,7 @@ public class CarFactory {
       Cars cars = new Cars();
       for(String carName : carNames) {
           Car car = makeCar(carName);
-          cars.addCar(car);
+          cars.registerCar(car);
       }
       return cars;
     }

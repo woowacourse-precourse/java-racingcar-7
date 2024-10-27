@@ -2,7 +2,6 @@ package racingcar.domain.racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
@@ -15,9 +14,9 @@ class RacingServiceTest {
     @Test
     void racingTest() {
         Cars cars = new Cars();
-        cars.addCar(new Car("car1"));
-        cars.addCar(new Car("car2"));
-        cars.addCar(new Car("car3"));
+        cars.registerCar(new Car("car1"));
+        cars.registerCar(new Car("car2"));
+        cars.registerCar(new Car("car3"));
         FakeRacingStrategy fakeRacingStrategy = new FakeRacingStrategy();
         RacingService racingService = new RacingService(fakeRacingStrategy);
         racingService.race(cars);

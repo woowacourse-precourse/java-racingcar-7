@@ -12,7 +12,7 @@ public class Cars {
         cars = new ArrayList<>();
     }
 
-    public void addCar(Car car) {
+    public void registerCar(Car car) {
         if(cars.contains(car)) {
             throw new CarDuplicateException(car.getCarName());
         }
