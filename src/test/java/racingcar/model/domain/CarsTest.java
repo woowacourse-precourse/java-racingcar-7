@@ -41,4 +41,19 @@ class CarsTest {
         assertThat(carsReadOnly.get(0).getCurrentDistance()).isBetween(0, 1);
         assertThat(carsReadOnly.get(1).getCurrentDistance()).isBetween(0, 1);
     }
+
+    @Test
+    @DisplayName("우승자 이름 리스트가 올바르게 반환되는지 확인하는 테스트")
+    void determineWinners() {
+        // given
+        List<String> carNames = Arrays.asList("pobi", "woni", "jun");
+        Cars cars = new Cars(carNames);
+        cars.raceOnce();
+
+        // when
+        List<String> winners = cars.determineWinners();
+
+        // then
+        assertThat(winners).isNotEmpty();
+    }
 }
