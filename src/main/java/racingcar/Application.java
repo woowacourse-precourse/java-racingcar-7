@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.car.RacingCar;
+import racingcar.domain.RaceStarter;
 import racingcar.validator.InputValidator;
 
 import java.util.ArrayList;
@@ -16,32 +17,22 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameListInput = Console.readLine();
 
-        List<String> carNameList = Arrays.stream(carNameListInput.split(","))
-                .collect(Collectors.toList());
-        for(String carName : carNameList) {
-            InputValidator.isStringOnly(carName);
-        }
+        InputValidator.isStringOnly(carNameListInput);
 
         List<RacingCar> racingCarList = new ArrayList<>();
-        for(String carName : carNameList) {
+        for(String carName : carNameListInput.split(",")) {
             racingCarList.add(new RacingCar(carName));
         }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String tryCountInput = Console.readLine();
+        String tryMoveCountInput = Console.readLine();
 
-        InputValidator.isNumberOnly(tryCountInput);
+        InputValidator.isNumberOnly(tryMoveCountInput);
 
-        int tryCount = Integer.parseInt(tryCountInput);
+        int tryMoveCount = Integer.parseInt(tryMoveCountInput);
 
         System.out.println("실행 결과");
-        for(int i=0; i<tryCount; i++) {
-            for(RacingCar racingCar : racingCarList) {
-                racingCar.move();
-                racingCar.showRacingStatus();
-                System.out.println();
-            }
-        }
+        RaceStarter.startRace(racingCarList, tryMoveCount);
 
         // find max record of race
         String maxMoveRecord = "";
