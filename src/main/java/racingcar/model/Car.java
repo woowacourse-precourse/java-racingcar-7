@@ -6,7 +6,14 @@ public class Car {
     private static final int MOVE_CRITERIA_VALUE = 4;
 
     public Car(String name) {
-        this.name = name;
+        validateName(name.strip());
+        this.name = name.strip();
+    }
+
+    private void validateName(String name) {
+        if (name == null || name.isBlank() || name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름을 1자에서 5자 이하로 입력하지 않았습니다.: " + name);
+        }
     }
 
     public void move(int randomValue) {
