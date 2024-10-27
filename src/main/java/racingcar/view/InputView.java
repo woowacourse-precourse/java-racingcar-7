@@ -2,8 +2,8 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.InputDTO;
 import racingcar.InputMessage;
+import racingcar.dto.InputDTO;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.TryNumbersValidator;
 
