@@ -16,13 +16,11 @@ import static racingcar.common.constant.BusinessConst.*;
 public class GameController {
 
     private final CarRacingGame game;
-    private final GameResult model;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public GameController(CarRacingGame game, GameResult model, InputView inputView, OutputView outputView) {
+    public GameController(CarRacingGame game, InputView inputView, OutputView outputView) {
         this.game = game;
-        this.model = model;
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -30,16 +28,17 @@ public class GameController {
     public void run() {
         UserDto.Input userInput = inputView.getInput();
 
+        GameResult model = new GameResult();
         CarList carList = convertUserInputToCarList(userInput.getCarName());
+        int numberOfRounds = userInput.getCount();
 
-        game.play(carList, model, userInput.getCount());
-        game.determineWinner(carList, model);
+        game.play(model, carList, numberOfRounds);
+        game.determineWinner(model, carList);
 
-        outputView.noticeResult();
         outputView.printResult(model);
     }
 
-    public CarList convertUserInputToCarList(final String cars) {
+    private CarList convertUserInputToCarList(final String cars) {
         List<Car> carList = Arrays.stream(cars.split(DEFAULT_DELIMITER))
                 .map(Car::of)
                 .toList();

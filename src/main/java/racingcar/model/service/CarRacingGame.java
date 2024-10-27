@@ -1,7 +1,6 @@
 package racingcar.model.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.common.constant.BusinessConst;
 import racingcar.model.domain.Car;
 import racingcar.model.domain.CarList;
 import racingcar.model.dto.GameResult;
@@ -10,24 +9,26 @@ import racingcar.model.dto.RoundResult;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racingcar.common.constant.BusinessConst.*;
+
 public class CarRacingGame {
 
-    public void play(CarList carList, GameResult gameResult, int count) {
-        if (count == 0) return;
+    public void play(GameResult gameResult, CarList carList, int count) {
+        if (count <= 0) return;
 
         playRound(carList);
         saveRoundResult(carList, gameResult);
 
-        this.play(carList, gameResult, count - 1);
+        this.play(gameResult, carList, count - 1);
     }
 
-    public void determineWinner(CarList carList, GameResult result) {
+    public void determineWinner(GameResult result, CarList carList) {
         int mostFurtherCarPosition = carList.getFurthestPosition();
         String winners = carList.getCarList()
                 .stream()
                 .filter(car -> car.getPosition() == mostFurtherCarPosition)
                 .map(Car::getName)
-                .collect(Collectors.joining(BusinessConst.DEFAULT_JOIN_DELIMITER));
+                .collect(Collectors.joining(DEFAULT_JOIN_DELIMITER));
 
         result.saveWinner(winners);
     }
@@ -38,7 +39,7 @@ public class CarRacingGame {
     }
 
     private void drawAndMove(Car car) {
-        if (Randoms.pickNumberInRange(0, 9) >= BusinessConst.WIN_CONDITION) {
+        if (Randoms.pickNumberInRange(0, 9) >= WIN_CONDITION) {
             car.move();
         }
     }

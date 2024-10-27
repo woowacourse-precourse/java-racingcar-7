@@ -45,7 +45,7 @@ class CarRacingGameTest extends NsTest {
         int size = 3;
         assertRandomNumberInRangeTest(
                 () -> {
-                    game.play(testCarList, gameResult, size);
+                    game.play(gameResult, testCarList, size);
                     assertThat(gameResult.getRoundResult().get(size - 1).getResultList().getFirst()).contains("테스트카0 : --\n");
                     assertThat(gameResult.getRoundResult().size()).isEqualTo(size);
                 },
@@ -59,8 +59,8 @@ class CarRacingGameTest extends NsTest {
         int size = 3;
         assertRandomNumberInRangeTest(
                 () -> {
-                    game.play(testCarList, gameResult, size);
-                    game.determineWinner(testCarList, gameResult);
+                    game.play(gameResult, testCarList, size);
+                    game.determineWinner(gameResult, testCarList);
                     assertThat(gameResult.getWinner()).contains("테스트카1, 테스트카2");
                 },
                 MOVING_FORWARD, STOP
