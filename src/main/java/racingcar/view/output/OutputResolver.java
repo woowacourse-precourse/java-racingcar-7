@@ -13,6 +13,7 @@ final class OutputResolver {
 
     private OutputResolver() {
     }
+
     static String resolveRacingResult(RacingResponseDTO response) {
         String roundResults = response.roundResultDTOs().stream()
                 .map(OutputResolver::formatRoundResult)
