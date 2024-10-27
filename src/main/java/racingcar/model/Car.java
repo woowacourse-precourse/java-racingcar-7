@@ -1,11 +1,23 @@
 package racingcar.model;
 
 public class Car {
-    // TODO: 자동차를 생성한다.
+    private final RandomIntGenerator randomIntGenerator;
+    private final String carName;
+    private int position;
 
-    // TODO: 자동차 이름을 조회한다.
+    public Car(String carName, RandomIntGenerator randomIntGenerator) {
+        this.randomIntGenerator = randomIntGenerator;
+        this.carName = carName;
+        this.position = 0;
+    }
 
-    // TODO: 현재 자동차 위치를 조회한다.
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 
     // TODO: 이동 가능 여부에 따라 이동한다.
 
