@@ -15,12 +15,12 @@ public class RacingCarController {
 
     public void startRace() {
         // 자동차 이름 입력
-        view.getCarInputString();
+        view.printCarInputString();
         String carInputString = Console.readLine();
         carGroup = new CarGroup(carInputString.split(","));
 
         // 시도 횟수 입력
-        view.getTryInputString();
+        view.printTryInputString();
         String tryInputString = Console.readLine();
         checkTryNumLength(tryInputString.trim());
         tryNum = Integer.parseInt(tryInputString);

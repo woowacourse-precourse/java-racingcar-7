@@ -5,11 +5,11 @@ public class RacingCarView {
     private static final String TRY_INPUT_STRING = "시도할 횟수는 몇 회인가요?";
     private static final String OUTPUT_STRING = "최종 우승자 : ";
 
-    public void getCarInputString() {
+    public void printCarInputString() {
         System.out.println(CAR_INPUT_STRING);
     }
 
-    public void getTryInputString() {
+    public void printTryInputString() {
         System.out.println(TRY_INPUT_STRING);
     }
 
