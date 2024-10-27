@@ -14,7 +14,7 @@ public class CarManager {
     }
 
     public static CarManager getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new CarManager();
         }
         return instance;

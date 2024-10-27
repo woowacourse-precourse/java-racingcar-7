@@ -8,7 +8,7 @@ import java.util.List;
 public class InputValidator {
     public static List<String> convertInputToCarNames(String input) {
         List<String> carNames = new ArrayList<>();
-        for(String carName : input.split(",")) {
+        for (String carName : input.split(",")) {
             String name = carName.trim();
             checkNameLength(name);
             carNames.add(carName.trim());
@@ -17,14 +17,14 @@ public class InputValidator {
     }
 
     public static void checkNameLength(String name) {
-        if(name.length() > 5) {
+        if (name.length() > 5) {
             throw new IllegalArgumentException();
         }
     }
 
     public static int convertInputToInteger(String input) throws IllegalArgumentException {
         int totalAttempt = Integer.parseInt(input);
-        if(!isPositive(totalAttempt)) {
+        if (!isPositive(totalAttempt)) {
             throw new IllegalArgumentException();
         }
         return totalAttempt;

@@ -16,29 +16,30 @@ public class CarController {
     public void start() {
         OutputView.printCarNameInputMessage();
         CarManager carManager = CarManager.getInstance();
-        for(String carName : InputView.readCarNames()) {
+        for (String carName : InputView.readCarNames()) {
             carManager.addCar(new Car(carName));
         }
         OutputView.printTotalAttemptInputMessage();
         carManager.setRemainingAttempts(InputView.readTotalAttempt());
         OutputView.printResultMessage();
-        while(carManager.getRemainingAttempts() > 0) {
+        while (carManager.getRemainingAttempts() > 0) {
             carManager.decrementRemainingAttempts();
             race(carManager.getCars());
             OutputView.printCarState(carManager.getCars());
         }
         OutputView.printWinner(getWinner(carManager.getCars(), getMostMovedCar(carManager.getCars())));
     }
+
     public boolean canMove() {
-        if(Randoms.pickNumberInRange(0,9) >= MOVEMENT_STANDARD) {
+        if (Randoms.pickNumberInRange(0, 9) >= MOVEMENT_STANDARD) {
             return true;
         }
         return false;
     }
 
     public void race(List<Car> cars) {
-        for(Car car : cars) {
-            if(canMove()) {
+        for (Car car : cars) {
+            if (canMove()) {
                 car.move();
             }
         }
@@ -46,8 +47,8 @@ public class CarController {
 
     public int getMostMovedCar(List<Car> cars) {
         int max = Integer.MIN_VALUE;
-        for(Car car : cars) {
-            if(max < car.getMovedDistance()) {
+        for (Car car : cars) {
+            if (max < car.getMovedDistance()) {
                 max = car.getMovedDistance();
             }
         }
@@ -56,8 +57,8 @@ public class CarController {
 
     public List<String> getWinner(List<Car> cars, int max) {
         List<String> winners = new ArrayList<>();
-        for(Car car : cars) {
-            if(car.getMovedDistance() >= max) {
+        for (Car car : cars) {
+            if (car.getMovedDistance() >= max) {
                 winners.add(car.getName());
             }
         }

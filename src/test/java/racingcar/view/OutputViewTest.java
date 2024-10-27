@@ -17,6 +17,6 @@ class OutputViewTest {
         winners.add("jun");
 
         String expect = "pobi, woni, jun";
-        assertEquals(String.join(", ",winners), expect);
+        assertEquals(String.join(", ", winners), expect);
     }
 }

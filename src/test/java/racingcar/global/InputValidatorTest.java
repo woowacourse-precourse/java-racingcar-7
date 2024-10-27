@@ -22,7 +22,7 @@ class InputValidatorTest {
         expect.add("wo-ni");
         expect.add("j u n");
 
-        for(String input : inputs) {
+        for (String input : inputs) {
             assertEquals(InputValidator.convertInputToCarNames(input), expect);
         }
     }
