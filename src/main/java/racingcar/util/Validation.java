@@ -49,21 +49,9 @@ public class Validation {
         throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE7);
     }
 
-    public void isTrialInputBlank(String inputStr) {
-        if(inputStr.isBlank()) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE8);
-        }
-    }
-
-    public void isTrialInputNull(String inputStr) {
-        if(inputStr==null) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE9);
-        }
-    }
-
     public void isTrialInputDouble(String inputStr) {
         if(inputStr.contains(".")) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE10);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE8);
         }
     }
 

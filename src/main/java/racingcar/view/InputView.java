@@ -26,7 +26,9 @@ public class InputView {
         System.out.println(Constant.INPUT_TRIAL_PROMPT);
         String inputTrial = Console.readLine();
 
-        validation.isTrialInputNumber(inputTrial);
+        validation.isTrialInputValid(inputTrial);
+        validation.isTrialInputDouble(inputTrial);
+        validation.isTrialInputNegative(inputTrial);
 
         trial = Integer.parseInt(inputTrial);
     }
