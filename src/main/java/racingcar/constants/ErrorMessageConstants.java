@@ -1,6 +1,6 @@
 package racingcar.constants;
 
-public class ErrorMessages {
+public class ErrorMessageConstants {
     public static final String ERROR_EMPTY_CAR_NAME = "자동차 이름을 입력해야 합니다.";
     public static final String ERROR_CAR_NAME_CONTAINS_BLANK = "자동차 이름에는 공백이 포함될 수 없습니다.";
     public static final String ERROR_CAR_NAME_TOO_LONG = "자동차 이름은 5자 이하만 가능합니다.";

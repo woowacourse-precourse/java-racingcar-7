@@ -2,7 +2,8 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
-import racingcar.validation.InputValidator;
+import racingcar.validation.CarNameValidator;
+import racingcar.validation.MoveCountValidator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ public class RacingGameService {
     }
 
     public int parseMoveCount(String moveCountInput) {
-        InputValidator.validateMoveCount(moveCountInput);
+        MoveCountValidator.validateMoveCount(moveCountInput);
         return Integer.parseInt(moveCountInput);
     }
 
@@ -43,7 +44,7 @@ public class RacingGameService {
 
     private List<String> parseAndValidateCarNames(String input) {
         List<String> carNames = Arrays.asList(input.split(","));
-        InputValidator.validateCarNames(carNames);
+        CarNameValidator.validateCarNames(carNames);
         return carNames;
     }
 }
