@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.car.RacingCar;
 import racingcar.strategy.MoveStrategy;
@@ -35,6 +36,7 @@ class RacingCarServiceTest {
     }
 
     @Test
+    @DisplayName("레이싱 게임 우승자 반환 함수 테스트")
     void testWinnerCars() {
         // Given & When
         List<RacingCar> winnerRacingCars = racingCarService.getWinnerRacingCars(racingCarList);
@@ -45,6 +47,7 @@ class RacingCarServiceTest {
     }
 
     @Test
+    @DisplayName("자동차 이름 인자 전달 시 RacingCar 도메인 리스트 생성 함수 테스트")
     void testGenerateRacingCarList() {
         // Given
         String[] carNames = {"CarA", "CarB", "CarC", "CarD"};
