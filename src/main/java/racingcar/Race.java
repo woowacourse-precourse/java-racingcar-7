@@ -20,23 +20,30 @@ public class Race {
 
     public void racing(List<Car> carList, int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
-            for (Car car : carList) {
-                car.move(attemptCount - i);
-            }
+            moveCars(carList, attemptCount - i);
             System.out.println();
         }
     }
 
+    public void moveCars(List<Car> carList, int remainingCount) {
+        for (Car car : carList) {
+            car.move(remainingCount);
+        }
+    }
+
     public void findWinner(List<Car> carList) {
-        winnerList.add(carList.get(0));
+        winnerList.add(carList.getFirst());
         for (int i = 1; i < carList.size(); i++) {
-            Car currentCar = carList.get(i);
-            if (currentCar.getProgress() > winnerList.get(0).getProgress()) {
-                winnerList.clear();
-                winnerList.add(currentCar);
-            } else if (currentCar.getProgress() == winnerList.get(0).getProgress()) {
-                winnerList.add(currentCar);
-            }
+            addWinner(carList.get(i));
+        }
+    }
+
+    public void addWinner(Car currentCar) {
+        if (currentCar.getProgress() > winnerList.getFirst().getProgress()) {
+            winnerList.clear();
+            winnerList.add(currentCar);
+        } else if (currentCar.getProgress() == winnerList.getFirst().getProgress()) {
+            winnerList.add(currentCar);
         }
     }
 

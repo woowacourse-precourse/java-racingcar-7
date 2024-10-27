@@ -46,13 +46,13 @@ public class Car {
 
         if (isMoving) {
             progress++;
-            for (int i = 0; i < progress; i++) {
-                System.out.print("-");
-            }
-        } else {
-            for (int i = 0; i < progress; i++) {
-                System.out.print("-");
-            }
+        }
+        printProgress();
+    }
+
+    public void printProgress() {
+        for (int i = 0; i < progress; i++) {
+            System.out.print("-");
         }
         System.out.println();
     }
