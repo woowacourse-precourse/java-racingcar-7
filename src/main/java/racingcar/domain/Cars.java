@@ -26,6 +26,7 @@ public class Cars {
     public void roundStatus() {
         OutputView outputView = OutputView.getInstance();
         StringBuilder roundResult = new StringBuilder();
+
         for (Car car : cars) {
             roundResult.append(car.getCurrentStatus());
         }

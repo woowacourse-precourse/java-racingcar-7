@@ -16,7 +16,6 @@ public class RaceService {
             cars.roundProcess(randNumGenerator);
             cars.roundStatus();
         }
-
         return cars.findWinners();
     }
 

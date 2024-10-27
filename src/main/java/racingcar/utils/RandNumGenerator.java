@@ -9,7 +9,6 @@ public class RandNumGenerator {
 
     public boolean isRandNumGreaterThanOrEqualToCriterion() {
         int randNum = Randoms.pickNumberInRange(RAND_MIN, RAND_MAX);
-
         return randNum >= MIN_NUM_FOR_MOVE;
     }
 }
