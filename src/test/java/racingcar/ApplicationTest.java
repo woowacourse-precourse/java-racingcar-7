@@ -31,8 +31,61 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름_길이_초과_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javajava", "1")) // "javajava"는 6자 이상
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_등록_테스트() {
+        assertSimpleTest(() -> {
+            run("car1,car2,car3", "2");
+            assertThat(output()).contains("car1 : ", "car2 : ", "car3 : ");
+        });
+    }
+
+    @Test
+    void 경주_진행_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("car1,car2", "5");
+                    assertThat(output()).contains("car1 : ", "car2 : ");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+//    @Test
+//    void 여러_우승자_테스트() {
+//        assertRandomNumberInRangeTest(
+//                () -> {
+//                    run("car1,car2", "3");
+//                    assertThat(output()).contains("최종 우승자 : car1, car2");
+//                },
+//                MOVING_FORWARD, STOP
+//        );
+//    }
+
+    @Test
+    void 단독_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("car1,car2", "3");
+                    assertThat(output()).contains("최종 우승자 : car1");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
     @Override
     public void runMain() {
-        Application.main(new String[]{});
+        try {
+            Application.main(new String[]{});
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 }
