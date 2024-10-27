@@ -23,6 +23,14 @@ public class CarTest {
         assertThrows(IllegalArgumentException.class, () -> {
             Car car = new Car(carName);
         });
+    }
 
+    @Test
+    @DisplayName("자동차를_한_번_앞으로_전진시킨다")
+    public void 자동차를_한_번_앞으로_전진시킨다() {
+        Car car = new Car("car");
+        assertEquals(car.moveForward(), 1);
+        assertEquals(car.moveForward(), 2);
+        assertEquals(car.moveForward(), 3);
     }
 }
