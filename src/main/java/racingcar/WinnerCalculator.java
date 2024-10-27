@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class WinnerCalculator {
@@ -9,22 +10,28 @@ public class WinnerCalculator {
     }
 
     public static List<String> calculateWinners(List<Car> lastRacingRecord) {
-        List<String> winners = new ArrayList<>();
+        List<String> winnerNames = new ArrayList<>();
 
-        int max = calculateMaxPosition(lastRacingRecord);
-        for (Car car : lastRacingRecord) {
-            winners.addAll(car.addIfWinner(max));
+        for (Car currentCar : lastRacingRecord) {
+            compareOtherCars(lastRacingRecord, winnerNames, currentCar);
         }
 
-        return winners;
+        return winnerNames;
     }
 
-    public static int calculateMaxPosition(List<Car> lastRacingRecord) {
-        int max = Integer.MIN_VALUE;
-        for (Car lastRacingRecordCar : lastRacingRecord) {
-            max = lastRacingRecordCar.calculateMaxPosition(max);
+    private static void compareOtherCars(List<Car> lastRacingRecord, List<String> winnerNames, Car currentCar) {
+        for (Car otherCar : lastRacingRecord) {
+            addWinner(winnerNames, currentCar, otherCar);
         }
+    }
 
-        return max;
+    private static void addWinner(List<String> winnerNames, Car currentCar, Car otherCar) {
+        boolean isWinner = currentCar != otherCar && currentCar.calculateMaxPosition(otherCar);
+        if (isWinner) {
+            List<String> winnerDetails = Arrays.stream(currentCar.toString().split(" : "))
+                    .toList();
+
+            winnerNames.add(winnerDetails.get(0));
+        }
     }
 }

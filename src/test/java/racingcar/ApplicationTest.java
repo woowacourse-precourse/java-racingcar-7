@@ -13,7 +13,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.Application.createCarNames;
-import static racingcar.WinnerCalculator.calculateMaxPosition;
 import static racingcar.WinnerCalculator.calculateWinners;
 
 class ApplicationTest extends NsTest {
@@ -29,7 +28,9 @@ class ApplicationTest extends NsTest {
                 },
                 MOVING_FORWARD, STOP
         );
-    } @Test
+    }
+
+    @Test
     void 공동_우승자_기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -141,21 +142,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 최대_우선_반환_테스트() {
-        assertRandomNumberInRangeTest(() -> {
-            List<String> carNames = Arrays.asList("pobi", "woni");
-            Cars cars = new Cars(carNames);
-            int raceTime = 1;
-
-            List<List<Car>> racingRecords = cars.race(raceTime);
-            List<Car> lastRacingRecord = racingRecords.getLast();
-            int expectedMax = 1;
-
-            assertThat(calculateMaxPosition(lastRacingRecord)).isEqualTo(expectedMax);
-        }, MOVING_FORWARD, STOP);
-    }
-
-    @Test
     void 단독_우승자_계산_기능_테스트() {
         assertRandomNumberInRangeTest(() -> {
             List<String> carNames = Arrays.asList("pobi", "woni");
@@ -165,7 +151,7 @@ class ApplicationTest extends NsTest {
             List<List<Car>> racingRecords = cars.race(raceTime);
             List<Car> lastRacingRecord = racingRecords.getLast();
 
-            List<String> expectedWinners = Arrays.asList("pobi");
+            List<String> expectedWinners = List.of("pobi");
 
             assertThat(calculateWinners(lastRacingRecord)).isEqualTo(expectedWinners);
         }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP);

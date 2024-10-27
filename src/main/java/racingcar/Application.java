@@ -23,9 +23,8 @@ public class Application {
         }
 
         List<Car> lastRacingRecord = raceRecords.getLast();
-        List<String> winners = calculateWinners(lastRacingRecord);
-
-        String winnerRecord = String.join(", ", winners);
+        List<String> winnerNames = calculateWinners(lastRacingRecord);
+        String winnerRecord = String.join(", ", winnerNames);
         System.out.println("최종 우승자 : " + winnerRecord);
     }
 

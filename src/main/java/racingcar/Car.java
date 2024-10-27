@@ -1,59 +1,39 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.List;
-
 public class Car {
     private final String name;
 
-    private int currentPosition = 0;
+    private final CarPosition carPosition;
 
     public Car(String name) {
         this.name = name;
+        this.carPosition = new CarPosition(0);
     }
 
-    public Car(String name, int currentPosition) {
+    private Car(String name, CarPosition carPosition) {
         this.name = name;
-        this.currentPosition = currentPosition;
+        this.carPosition = carPosition;
     }
 
     public Car move() {
-        return new Car(this.name, this.currentPosition + updateCurrentPosition());
+        return new Car(this.name, this.carPosition.updateCurrentPosition());
     }
 
-    public int updateCurrentPosition() {
-        int forwardDistance = Randoms.pickNumberInRange(0, 9) - 3;
-
-        return Math.max(0, forwardDistance);
+    public boolean calculateMaxPosition(Car otherCar) {
+        return this.carPosition.isAheadOrEqual(otherCar.carPosition);
     }
 
-    public int calculateMaxPosition(int max) {
-        if (this.currentPosition > max) {
-            max = this.currentPosition;
-        }
-
-        return max;
-    }
-
-    public List<String> addIfWinner(int max) {
-        if (this.currentPosition == max) {
-            return List.of(this.name);
-        }
-
-        return List.of();
-    }
 
     public boolean isName(String givenName) {
         return name.equals(givenName);
     }
 
     public boolean isPosition(int givenPosition) {
-        return this.currentPosition == givenPosition;
+        return this.carPosition.isPosition(givenPosition);
     }
 
     @Override
     public String toString() {
-        return this.name + " : " + "-".repeat(this.currentPosition);
+        return this.name + " : " + carPosition.toString();
     }
 }
