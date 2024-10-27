@@ -18,7 +18,8 @@ public class InputView {
     }
 
     private List<String> parseCarNames(String carNames) {
-        return Arrays.stream(carNames.split(","))
+        // limit=-1 마지막 콤마 뒤 공백 포함
+        return Arrays.stream(carNames.split(",", -1))
                 .toList();
     }
 
