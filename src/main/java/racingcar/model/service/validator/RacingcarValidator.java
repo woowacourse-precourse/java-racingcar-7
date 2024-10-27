@@ -12,8 +12,10 @@ public class RacingcarValidator {
     }
 
     public void validateCarNameLength(String carName) {
-        if (carName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다: " + carName);
+        if (carName == null || carName.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+        } else if (carName.length() > MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
         }
     }
 

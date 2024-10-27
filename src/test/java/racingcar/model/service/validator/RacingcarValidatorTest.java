@@ -21,14 +21,25 @@ class RacingcarValidatorTest {
     }
 
     @Test
-    void 자동차_이름_길이_예외_테스트() {
+    void 길이_5_초과_자동차_이름_예외_테스트() {
         // given
         String carName = "pobi123";
 
         // when & then
         assertThatThrownBy(() -> validator.validateCarNameLength(carName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 5자 이하이어야 합니다");
+                .hasMessageContaining("자동차 이름은 5자 이하이어야 합니다.");
+    }
+
+    @Test
+    void 공백_자동차_이름_예외_테스트() {
+        // given
+        String carName = "";
+
+        // when & then
+        assertThatThrownBy(() -> validator.validateCarNameLength(carName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 공백일 수 없습니다.");
     }
 
     @Test

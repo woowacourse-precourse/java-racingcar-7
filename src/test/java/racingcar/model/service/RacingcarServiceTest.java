@@ -62,8 +62,20 @@ class RacingcarServiceTest {
         // when & then
         assertThatThrownBy(() -> racingcarService.saveCars(carNamesInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 5자 이하이어야 합니다");
+                .hasMessageContaining("자동차 이름은 5자 이하이어야 합니다.");
     }
+
+    @Test
+    void 자동차_이름_공백_포함_실패_테스트() {
+        // given
+        String carNamesInput = "pobi,,crong,honux";
+
+        // when & then
+        assertThatThrownBy(() -> racingcarService.saveCars(carNamesInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 공백일 수 없습니다.");
+    }
+
 
     @Test
     void 시도횟수_숫자_변환_실패_테스트() {
