@@ -6,11 +6,17 @@ import java.util.Map;
 
 public class RacingCarController {
 
+
     public void run() {
+        RacingCarService racingCarService = new RacingCarService();
+
         Map<String, Integer> carInfo = getCarInfo();
         int attemptCount = getAttemptCount();
-        System.out.println(carInfo.toString());
-        System.out.println(attemptCount);
+
+        for (int i = 0; i < attemptCount; i++) {
+            racingCarService.process(carInfo);
+            printCurrentStatus(carInfo);
+        }
     }
 
     public Map<String, Integer> getCarInfo() {
@@ -29,6 +35,7 @@ public class RacingCarController {
     }
 
     public int getAttemptCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
         int attemptCount = 0;
         try {
             attemptCount = Integer.parseInt(Console.readLine());
@@ -36,5 +43,12 @@ public class RacingCarController {
             throw new IllegalArgumentException();
         }
         return attemptCount;
+    }
+
+    public void printCurrentStatus(Map<String, Integer> carInfo) {
+        for (String carName : carInfo.keySet()) {
+            System.out.println(carName + " : " + "-".repeat(carInfo.get(carName)));
+        }
+        System.out.println();
     }
 }
