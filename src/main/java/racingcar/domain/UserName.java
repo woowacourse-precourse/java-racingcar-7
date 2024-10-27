@@ -10,6 +10,10 @@ public class UserName {
         this.userName = userName;
     }
 
+    public String getUserName() {
+        return this.userName;
+    }
+
     private void hasOnlyCharacters(String userName) {
         for (char each : userName.toCharArray()) {
             if (!Character.isLetter(each)) { // isLetter는 한글 자음 모음이 분리될 경우 false를 리턴한다
