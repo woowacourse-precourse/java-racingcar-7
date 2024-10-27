@@ -12,26 +12,26 @@ public class Racing {
     private OutputView outputView;
     private RacingManager racingManager;
 
-    public Racing(InputView inputView, OutputView outputView, RacingManager racingManager){
+    public Racing(InputView inputView, OutputView outputView, RacingManager racingManager) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.racingManager = racingManager;
     }
 
-    public void start(){
+    public void start() {
         outputView.requestCarNameMessage();
         String carNames = inputView.getCarNames();
         outputView.requestNumberOfRoundsMessage();
         int numberOfRounds = inputView.getNumberOfRounds();
-        List<Car>carList = racingManager.parseCarNamesToCar(carNames);
+        List<Car> carList = racingManager.parseCarNamesToCar(carNames);
         outputView.raceStartMessage();
 
-        for(int x=0; x<numberOfRounds; x++){
+        for (int x = 0; x < numberOfRounds; x++) {
             racingManager.moveOrStop(carList);
             outputView.displayRaceProgress(carList);
         }
-
-
+        List<Car> winnerList = racingManager.getWinners(carList);
+        outputView.displayWinners(winnerList);
     }
 
 
