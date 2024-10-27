@@ -5,13 +5,19 @@ import java.util.Set;
 
 public class ExceptionModel {
 
+    //
+    public void executeExceptionalHandling(Runnable runnable) {
+        try{
+            runnable.run();
+        } catch (IllegalArgumentException e){
+            throw e;
+        }
+    }
+
     //자동차 이름 배열 형태로 분리
     private String[] carNames(String nameInput) {
         return nameInput.split(",");
     }
-
-
-
 
 
     //자동차 입력 공백 확인
