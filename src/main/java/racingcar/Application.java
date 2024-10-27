@@ -2,6 +2,7 @@ package racingcar;
 
 import static racingcar.RacingHelper.checkCarNamesValidate;
 import static racingcar.RacingHelper.checkRacingTimeValidate;
+import static racingcar.RacingHelper.getWinningCarListOfRacing;
 import static racingcar.RacingHelper.printRacingCourse;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -23,6 +24,8 @@ public class Application {
         for (int i = 1; i <= racingTime; i++) {
             printRacingCourse(carNames, carRunningCountList);
         }
+
+        System.out.println("최종 우승자 : " + String.join(", ", getWinningCarListOfRacing(carNames, carRunningCountList)));
     }
 
 }

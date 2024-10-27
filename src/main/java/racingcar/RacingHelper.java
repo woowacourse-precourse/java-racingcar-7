@@ -1,8 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class RacingHelper {
@@ -14,7 +16,7 @@ public class RacingHelper {
         checkCarNameIsBlank(carNames);
         checkCarNameContainsOnlyCharAndNum(carNames);
 
-        List<String> carNameList = List.of(carNames.split(","));
+        List<String> carNameList =  List.of(carNames.split(","));
         checkCarNameDuplicated(carNameList);
         checkCarNameIsEqualOrLessThanFive(carNameList);
 
@@ -33,7 +35,7 @@ public class RacingHelper {
         }
     }
 
-    private static void checkCarNameDuplicated(List<String> carNameList) {
+    private static void checkCarNameDuplicated(List<String> carNameList){
         Set<String> set = new HashSet<>();
         for (String carName : carNameList) {
             if (!set.add(carName)) { // 추가할 수 없다면 중복
@@ -42,9 +44,9 @@ public class RacingHelper {
         }
     }
 
-    private static void checkCarNameIsEqualOrLessThanFive(List<String> carNameList) {
-        for (String carName : carNameList) {
-            if (carName.length() > 5) {
+    private static void checkCarNameIsEqualOrLessThanFive(List<String> carNameList){
+        for(String carName: carNameList){
+            if(carName.length() > 5){
                 throw new IllegalArgumentException("자동차 이름은 5자 초과로 입력할 수 없습니다.");
             }
         }
@@ -57,7 +59,7 @@ public class RacingHelper {
         checkRacingTimeIsBlank(racingTime);
         checkRacingTimeContainsOnlyPlusNum(racingTime);
 
-        int parsedRacingTime = Integer.parseInt(racingTime);
+        int parsedRacingTime =  Integer.parseInt(racingTime);
         checkRacingTimeIsZero(parsedRacingTime);
 
         return parsedRacingTime;
@@ -103,4 +105,27 @@ public class RacingHelper {
         int randomNum = Randoms.pickNumberInRange(0, 9);
         return randomNum >= 4;
     }
+
+    /**
+     * 이긴 횟수 기반 우승자 리스트 계산
+     */
+    public static List<String> getWinningCarListOfRacing(List<String> carNameList, List<Integer> carRunningCountList) {
+        List<String> winningCarList = new ArrayList<>();
+
+        // 가장 높은 점수
+        int higherRacingScore = carRunningCountList.getFirst();
+
+        for (int i = 0; i < carRunningCountList.size(); i++) {
+            if (higherRacingScore < carRunningCountList.get(i)) {
+                winningCarList.clear();
+                winningCarList.add(carNameList.get(i));
+                higherRacingScore = carRunningCountList.get(i);
+            } else if (Objects.equals(higherRacingScore, carRunningCountList.get(i))) {
+                winningCarList.add(carNameList.get(i));
+            }
+        }
+
+        return winningCarList;
+    }
+
 }
