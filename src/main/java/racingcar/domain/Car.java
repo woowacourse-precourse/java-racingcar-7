@@ -1,7 +1,7 @@
-package racingcar.view.domain;
+package racingcar.domain;
 
-import racingcar.view.global.exception.CustomException;
-import racingcar.view.global.exception.ErrorMessage;
+import racingcar.global.exception.CustomException;
+import racingcar.global.exception.ErrorMessage;
 
 public class Car {
     private static int NAME_MAX_LENGTH = 5;

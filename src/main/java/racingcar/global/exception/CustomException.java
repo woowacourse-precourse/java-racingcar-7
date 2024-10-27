@@ -1,4 +1,4 @@
-package racingcar.view.global.exception;
+package racingcar.global.exception;
 
 public class CustomException extends IllegalArgumentException {
     private CustomException(ErrorMessage errorMessage) {

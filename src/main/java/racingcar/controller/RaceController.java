@@ -1,10 +1,9 @@
-package racingcar.view.controller;
+package racingcar.controller;
 
 import java.util.Arrays;
-import java.util.List;
 import racingcar.view.InputView;
-import racingcar.view.domain.Car;
-import racingcar.view.domain.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class RaceController {
 

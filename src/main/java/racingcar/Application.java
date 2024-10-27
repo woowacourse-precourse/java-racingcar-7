@@ -1,7 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.view.controller.RaceController;
+import racingcar.controller.RaceController;
 
 public class Application {
     public static void main(String[] args) {

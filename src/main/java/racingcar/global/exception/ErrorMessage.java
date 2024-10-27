@@ -1,4 +1,4 @@
-package racingcar.view.global.exception;
+package racingcar.global.exception;
 
 public enum ErrorMessage {
     BLANK_INPUT_ERROR("빈 문자열이 입력되었습니다."),

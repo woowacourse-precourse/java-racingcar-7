@@ -1,10 +1,10 @@
-package racingcar.view.domain;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import racingcar.view.global.exception.CustomException;
-import racingcar.view.global.exception.ErrorMessage;
+import racingcar.global.exception.CustomException;
+import racingcar.global.exception.ErrorMessage;
 
 public class Cars {
     private final List<Car> cars;
