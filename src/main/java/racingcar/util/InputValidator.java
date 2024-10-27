@@ -47,7 +47,7 @@ public class InputValidator {
         Set<String> set = new HashSet<>();
         for (String name : names) {
             if (!set.add(name)) {
-                throw new IllegalArgumentException("중복된 이름은 사용할 수 없습니다.");
+                throw new IllegalArgumentException("중복되지 않은 이름을 작성해야 합니다.");
             }
         }
     }
