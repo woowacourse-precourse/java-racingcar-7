@@ -14,10 +14,13 @@ public class RacingGame {
         CompeteCars competeCars = new CompeteCars(carNamesInput);
 
         Integer moveCount = inputView.getMoveCount();
-        Round round = new Round(moveCount, competeCars.getAll());
-        round.progress(competeCars.getAll());
+        Round round = new Round(moveCount, competeCars);
 
-        outputView.printRoundResult(round);
-        outputView.finalWinners(round);
+        outputView.printResultString();
+        while (round.getMoveCount() > 0) {
+            round.progress();
+            outputView.printRoundResult(round.getResult());
+        }
+        outputView.printWinners(round.getWinners());
     }
 }

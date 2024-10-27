@@ -1,51 +1,43 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Round {
-    private final Map<Car, Integer> roundResult = new HashMap<>();
-    private final Integer moveCount;
+    private static final String MOVE_COUNT_NOT_IN_RANGE_ERROR = "횟수는 1 이상 80 이하의 숫자만 가능합니다.";
+    private final CompeteCars cars;
+    private Integer moveCount;
 
     private void validateMoveCountInRange(Integer moveCount) {
         if (moveCount <= 0 || moveCount > 80) {
-            throw new IllegalArgumentException("횟수는 1 이상 80 이하의 숫자만 가능합니다.");
+            throw new IllegalArgumentException(MOVE_COUNT_NOT_IN_RANGE_ERROR);
         }
     }
 
-    private boolean canMove() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
-    }
-
-    public Round(Integer moveCount, List<Car> cars) {
+    public Round(Integer moveCount, CompeteCars cars) {
         validateMoveCountInRange(moveCount);
         this.moveCount = moveCount;
-        for (Car car : cars) {
-            roundResult.put(car, 0);
-        }
-    }
-
-    public void moveCars(List<Car> cars) {
-        for (Car car : cars) {
-            if (canMove()) {
-                roundResult.put(car, roundResult.get(car) + 1);
-            }
-        }
-    }
-
-    public void progress(List<Car> cars) {
-        for (int i = 0; i < moveCount; i++) {
-            moveCars(cars);
-        }
-    }
-
-    public Map<Car, Integer> getRoundResult() {
-        return roundResult;
+        this.cars = cars;
     }
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    public void progress() {
+        for (Car car : cars.getAll()) {
+            car.move();
+        }
+        moveCount--;
+    }
+
+    public String getResult() {
+        return cars.getAll().stream().map(car -> car.getName() + " : " + "-".repeat(car.getPosition()))
+            .collect(Collectors.joining("\n"));
+    }
+
+    public List<String> getWinners() {
+        int maxPosition = cars.getAll().stream().mapToInt(Car::getPosition).max().orElse(0);
+        return cars.getAll().stream().filter(car -> car.getPosition() == maxPosition).map(Car::getName).toList();
     }
 }
