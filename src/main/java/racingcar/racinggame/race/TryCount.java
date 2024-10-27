@@ -1,5 +1,7 @@
 package racingcar.racinggame.race;
 
+import java.util.Objects;
+
 public class TryCount {
 
 	private static final int MIN_TRY_COUNT = 1;
@@ -26,5 +28,20 @@ public class TryCount {
 
 	public int getCount() {
 		return count;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		TryCount tryCount = (TryCount)o;
+		return count == tryCount.count;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(count);
 	}
 }
