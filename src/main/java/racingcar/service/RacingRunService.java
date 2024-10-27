@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
-public class RacingRunSercie {
+public class RacingRunService {
 
     public static void doRacing(Cars cars){
         for (Car car: cars.getRacingCars()) {

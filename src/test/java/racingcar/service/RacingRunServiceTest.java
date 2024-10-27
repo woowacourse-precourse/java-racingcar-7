@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 
-class RacingRunSercieTest {
+class RacingRunServiceTest {
 
     @DisplayName("랜덥값이 4이상일 시 전진에 성공합니다")
     @Test
@@ -14,7 +14,7 @@ class RacingRunSercieTest {
         int randomValue = 5;
         Car car = new Car("car");
         // when
-        RacingRunSercie.moveCar(car, RacingRunSercie.isMove(randomValue));
+        RacingRunService.moveCar(car, RacingRunService.isMove(randomValue));
         // then
         Assertions.assertThat(car.getPosition()).isEqualTo("-");
     }
@@ -26,7 +26,7 @@ class RacingRunSercieTest {
         int randomValue = 3;
         Car car = new Car("car");
         //when
-        RacingRunSercie.moveCar(car, RacingRunSercie.isMove(randomValue));
+        RacingRunService.moveCar(car, RacingRunService.isMove(randomValue));
         //then
         Assertions.assertThat(car.getPosition()).isEqualTo("");
     }
