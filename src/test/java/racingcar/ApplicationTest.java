@@ -40,7 +40,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 자동차_공백_이름_불가() {
+    void 자동차_이름은_1글자_이상() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("      ", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -51,6 +51,15 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 자동차_이름_중복_x() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("민주,민주", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {

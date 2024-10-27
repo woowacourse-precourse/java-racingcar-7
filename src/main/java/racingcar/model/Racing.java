@@ -1,14 +1,30 @@
 package racingcar.model;
 
+import racingcar.message.ExceptionCode;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Racing {
 
     List<Car> carList;
 
-    public Racing(List<Car> carList) {
-        this.carList = new ArrayList<>(carList);
+    public Racing(final List<Car> carList) {
+        this.carList = new ArrayList<>(validate(carList));
+    }
+
+    private List<Car> validate(final List<Car> carList) {
+        Set<String> uniqueCarNames = new HashSet<>();
+
+        for (Car car : carList) {
+            if (!uniqueCarNames.add(car.getName())) {
+                throw new IllegalArgumentException(ExceptionCode.DUPLICATE_CAR_NAME.getDescription());
+            }
+        }
+
+        return carList;
     }
 
     public void runRacingTurn() {
