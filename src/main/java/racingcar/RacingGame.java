@@ -76,4 +76,9 @@ public class RacingGame {
         printRoundResults();
     }
 
+    private void printRoundResults() {
+        cars.forEach(car -> System.out.printf("%s : %s%n", car.getName(), "-".repeat(car.getPosition())));
+        System.out.println();
+    }
+
 }
