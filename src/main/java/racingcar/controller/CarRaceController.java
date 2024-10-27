@@ -9,14 +9,14 @@ import racingcar.view.OutputView;
 
 public class CarRaceController {
 
-    private final CarRaceService carRaceService;
     private final InputView inputView;
     private final OutputView outputView;
+    private final CarRaceService carRaceService;
 
     public CarRaceController(InputView inputView, OutputView outputView, MoveStrategy moveStrategy) {
-        this.carRaceService = new CarRaceService(moveStrategy);
         this.inputView = inputView;
         this.outputView = outputView;
+        this.carRaceService = new CarRaceService(moveStrategy);
     }
 
     public void run() {

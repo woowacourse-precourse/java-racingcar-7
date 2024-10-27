@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.service.CarRaceService;
+import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -29,9 +30,9 @@ class CarRaceControllerTest {
     @BeforeEach
     void setUp() {
         carRaceController = new CarRaceController(
-                new CarRaceService(),
                 new InputView(),
-                new OutputView()
+                new OutputView(),
+                new RandomMoveStrategy()
         );
     }
 
