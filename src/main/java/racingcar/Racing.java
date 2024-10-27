@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.domain.Cars;
+import racingcar.view.Input;
+
 public class Racing {
 
     private final Input input;

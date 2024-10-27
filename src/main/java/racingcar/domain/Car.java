@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
     private static final String ERROR_CAR_NAME_TOO_LONG = "자동차 이름은 5자 이하여야 합니다.";
-    
+
     private final String name;
     private int distance = 0;
 
