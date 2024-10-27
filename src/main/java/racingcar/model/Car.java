@@ -11,11 +11,11 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getForwardCount() {
-        return forwardCount;
+        return this.forwardCount;
     }
 
     public void forward() {
