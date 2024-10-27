@@ -18,5 +18,7 @@ public class RacingCarController {
         }
 
         int tryNum = Integer.parseInt(view.inputTryNumber());
+
+        RacingGame racingGame = new RacingGame(racingCars, tryNum);
     }
 }
