@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.model.Game;
 import racingcar.view.GameView;
@@ -17,6 +18,7 @@ public final class GameController {
     public void run() {
         Game game = gameSetup();
         doRace();
+        showResult();
     }
 
     public Game gameSetup() {
@@ -42,6 +44,14 @@ public final class GameController {
             game.playRound();
             displayCarsPositions();
         }
+    }
+
+    public void showResult() {
+        String winnerString = game.getWinners().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+
+        gameView.displayWinners(winnerString);
     }
 
     public List<String> parseCarNames(String carNamesInput) {
