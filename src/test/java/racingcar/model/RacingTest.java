@@ -63,7 +63,7 @@ class RacingTest {
     void deductTryCountByRun() {
         //given
         Cars cars = createCars();
-        RacingCount racingCount = RacingCount.from(1);
+        RacingCount racingCount = RacingCount.from(2);
 
         Racing racing = Racing.of(cars, racingCount);
 
@@ -73,7 +73,7 @@ class RacingTest {
         racing.deductTryCount();
 
         //then
-        assertThat(racingCount.getTryCount()).isEqualTo(0);
+        assertThat(racingCount).isEqualTo(RacingCount.from(1));
     }
 
     @DisplayName("경주 결과를 반환한다.")
