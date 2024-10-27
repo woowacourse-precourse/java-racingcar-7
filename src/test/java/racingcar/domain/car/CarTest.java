@@ -1,91 +1,95 @@
 package racingcar.domain.car;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
-    private static final int MOVING_FORWARD = 4;
+    private static final int FORWARD = 4;
     private static final int STOP = 3;
 
-    @Test
-    @DisplayName("차의 이름이 5보다 클 때, 예외 발생")
-    void testCarNameTooLong() {
-        // Given
-        String longName = "pobi Maguire";
+    private Car car;
 
-        // When & Then
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> new Car(longName));
-        assertEquals("Car name has to be 5 or under 5.", exception.getMessage());
+    @BeforeEach
+    void setUp() {
+        car = new Car("pobi");
     }
 
     @Test
-    @DisplayName("차 이름이 올바를 때, 차 이름 가져오기")
-    void testCarNameValid() {
-        // Given
-        String validName = "pobi";
-
-        // When
-        Car car = new Car(validName);
-
-        // Then
-        assertEquals(validName, car.getName());
+    @DisplayName("자동차 이름이 5자 이하일 때 객체가 정상적으로 생성된다")
+    void createCarWithValidName() {
+        assertThat(car.getName()).isEqualTo("pobi");
     }
 
     @Test
-    @DisplayName("차가 움직일 조건일 때, 앞으로 가는지 확인")
-    void testMoveIfPossibleMovesCar() {
-        // Given
-        Car car = new Car("pobi", () -> MOVING_FORWARD);
+    @DisplayName("자동차 이름이 6자 이상일 때 예외가 발생한다")
+    void throwExceptionWhenCarNameIsTooLong() {
+        assertThatThrownBy(() -> new Car("pobiMacquire"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Car name has to be 5 or under 5.");
+    }
 
-        // When
-        car.moveIfPossible();
+    @Test
+    @DisplayName("자동차가 이동 조건을 만족할 때 position이 증가한다")
+    void moveCarWhenConditionIsMet() {
+        // given
+        Car car = new Car("pobi", () -> FORWARD);
+
+        // when
         car.moveIfPossible();
 
-        // Then
-        assertEquals("pobi : --", car.toString());
+        // then
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("차가 움직이지 않는 조건일 때, 움직이지 않는지 확인")
-    void testMoveIfPossibleDoesNotMoveCar() {
-        // Given
+    @DisplayName("자동차가 이동 조건을 만족하지 않을 때 position이 증가하지 않는다")
+    void doNotMoveCarWhenConditionIsNotMet() {
+        // given
         Car car = new Car("pobi", () -> STOP);
 
-        // When
-        car.moveIfPossible();
+        // when
         car.moveIfPossible();
 
-        // Then
-        assertEquals("pobi : ", car.toString());
+        // then
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("toString() 함수가 제대로 동작하는지 확인")
-    void testToString() {
-        // Given
-        Car car = new Car("pobi", () -> MOVING_FORWARD);
+    @DisplayName("자동차의 상태를 문자열로 반환할 수 있다")
+    void returnCarStatusAsString() {
+        // given
+        Car car = new Car("pobi", () -> FORWARD);
 
-        // When
-        car.moveIfPossible();
-        car.moveIfPossible();
+        // when
         car.moveIfPossible();
 
-        // Then
-        assertEquals("pobi : ---", car.toString());
+        // then
+        assertThat(car.toString()).isEqualTo("pobi : -");
     }
 
     @Test
-    @DisplayName("아무 움직임이 없을 때, 제대로 출력하는지 확인")
-    void testToStringWithZeroPosition() {
-        // Given
-        Car car = new Car("pobi", () -> STOP);
+    @DisplayName("자동차의 이름이 동일한 경우 equals 메서드가 true를 반환한다")
+    void carsWithSameNameAreEqual() {
+        // given
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("pobi");
 
-        // When
-        // 아무 움직임이 없을 때
+        // when & then
+        assertThat(car1).isEqualTo(car2);
+    }
 
-        // Then
-        assertEquals("pobi : ", car.toString());
+    @Test
+    @DisplayName("자동차의 이름이 다를 경우 equals 메서드가 false를 반환한다")
+    void carsWithDifferentNamesAreNotEqual() {
+        // given
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("woni");
+
+        // when & then
+        assertThat(car1).isNotEqualTo(car2);
     }
 }
