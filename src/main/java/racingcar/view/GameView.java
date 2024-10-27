@@ -8,4 +8,10 @@ public final class GameView {
 
         return Console.readLine().trim();
     }
+
+    public String getTotalRoundInput() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+
+        return Console.readLine().trim();
+    }
 }
