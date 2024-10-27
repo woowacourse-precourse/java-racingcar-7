@@ -5,13 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -45,5 +40,22 @@ class InputViewTest {
         // Then
         assertThat(carNames).containsExactly(expectedCarNames);
         assertThat(carNames).hasSize(expectedCarNames.length);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "'abc,123,kkk'",        // 이름 아닌 숫자 구성 예외 케이스
+            "'abcde,qwerty,pokk'",  // 이름 5글자 초과 예외 케이스
+            "'a, b, c'",            // 공백 포함 예외 케이스
+            "'a , b'"
+    })
+    void testGetCarNamesException(String input) {
+        // Given
+        this.command(input);
+
+        // When & Then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                InputView::getCarNames);
+        assertThat(exception.getMessage()).isEqualTo("자동차 이름 입력이 올바르지 않습니다.");
     }
 }
