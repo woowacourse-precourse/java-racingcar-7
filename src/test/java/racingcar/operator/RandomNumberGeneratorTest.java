@@ -1,2 +1,4 @@
-package racingcar.operator;public class RandomNumberGeneratorTest {
+package racingcar.operator;
+
+public class RandomNumberGeneratorTest {
 }

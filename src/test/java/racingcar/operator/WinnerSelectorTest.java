@@ -1,2 +1,4 @@
-package racingcar.operator;public class WinnerSelectorTest {
+package racingcar.operator;
+
+public class WinnerSelectorTest {
 }

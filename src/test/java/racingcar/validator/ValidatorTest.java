@@ -1,2 +1,5 @@
-package racingcar.validator;public class ValidatorTest {
+package racingcar.validator;
+
+public class ValidatorTest {
+
 }

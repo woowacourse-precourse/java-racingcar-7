@@ -1,2 +1,4 @@
-package racingcar.controller;public class GameControllerTest {
+package racingcar.controller;
+
+public class GameControllerTest {
 }
