@@ -1,16 +1,19 @@
 package validator;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class carNameValidator {
-    // 정규식 패턴 객체를 상수로 정의
-    private static final Pattern VALID_NAME_PATTERN = Pattern.compile("^[a-zA-Z가-힣].*");
-
+    // 정규식 패턴 객체를 상수로 정의, 영문자/한글/숫자만 허용하고 특수문자는 제외
+    private static final Pattern VALID_NAME_PATTERN = Pattern.compile("^[a-zA-Z가-힣0-9]+$");
+    
     public static void isValid(List<String> carNames) {
         for (String name : carNames) {
-            validateSingleCarName(name);
+            checkSingleCarName(name);
         }
+
+        checkDuplicateNames(carNames);
 
     }
 
@@ -26,11 +29,11 @@ public class carNameValidator {
         }
     }
 
-    public static void validateSingleCarName(String input) {
+    public static void checkSingleCarName(String input) {
         checkEmpty(input);
         checkCarNameLength(input);
         isBlank(input);
-        startsWithValidCharacter(input);
+        checkspecialCharacters(input);
     }
 
     public static void checkCarNameLength(String input) {
@@ -39,13 +42,18 @@ public class carNameValidator {
         }
     }
 
-    public static void startsWithValidCharacter(String input) {
-        // 첫 글자가 영문자(a-zA-Z) 또는 한글(가-힣)로 시작하는지 확인
+    public static void checkspecialCharacters(String input) {
         if (!VALID_NAME_PATTERN.matcher(input).matches()) {
-            throw new IllegalArgumentException("자동차 이름의 첫 글자는 영문자 또는 한글이어야 합니다.");
+            throw new IllegalArgumentException("특수문자는 포함시킬 수 없습니다.");
         }
 
     }
 
+    //대소문자는 구별하지 않는다.
+    public static void checkDuplicateNames(List<String> carNames) {
+        if (carNames.size() != new HashSet<>(carNames).size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
+    }
 
 }
