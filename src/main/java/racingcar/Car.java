@@ -16,4 +16,9 @@ public class Car {
     public int getLocation() {
         return location;
     }
+
+    public void isMove(boolean move) {
+        if (move)
+            location++;
+    }
 }
