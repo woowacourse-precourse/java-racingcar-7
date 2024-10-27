@@ -1,5 +1,7 @@
 package racingcar.application.controller;
 
+import java.util.List;
+import racingcar.application.model.Car;
 import racingcar.application.service.RacingService;
 import racingcar.application.view.input.InputView;
 import racingcar.application.view.output.OutputView;
@@ -25,5 +27,15 @@ public class RacingController {
     int inputAttemptCount = inputView.readInputAttemptCount();
 
     racingService.setup(inputCarNames, inputAttemptCount);
+  }
+
+  public void startRace() {
+
+    outputView.printStartMessage();
+
+    for (int i = 0; i < racingService.getAttemptCount(); i++) {
+      List<Car> currentRaceState = racingService.playRound();
+      outputView.printRaceState(currentRaceState);
+    }
   }
 }
