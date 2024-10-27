@@ -12,12 +12,12 @@ public class Application {
     private static final Pattern TRY_COUNT_REGEX_PATTERN = Pattern.compile("^[1-9][0-9]*$");
 
     public static void main(String[] args) {
-        // TODO 1. 경주할 자동차 이름 입력 받고, 유효성 검증
+        // 경주할 자동차 이름 입력 받고, 유효성 검증
         String racingCarNameInput = inputString("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> racingCars = Arrays.asList(racingCarNameInput.split(","));
         validateRacingCars(racingCars);
 
-        // TODO 2. 시도 횟수를 문자열로 입력 받고, 유효성 검증 이후 정수로 변환
+        // 시도 횟수를 문자열로 입력 받고, 유효성 검증 이후 정수로 변환
         String tryCountInput = inputString("시도할 횟수는 몇 회인가요?");
         validateTryCount(tryCountInput);
         int tryCount = Integer.parseInt(tryCountInput);
