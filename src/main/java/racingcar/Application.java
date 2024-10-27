@@ -17,8 +17,11 @@ public class Application {
 
         // 자동차 경주 진행
         List<Integer> racePositions = initializePositions(nameList.size());
+
+        System.out.println("실행 결과");
         for (int i = 0; i < times; i++) {
             moveCars(racePositions);
+            printRaceStatus(nameList, racePositions);
         }
     }
 
@@ -57,5 +60,13 @@ public class Application {
                 positions.set(i, positions.get(i) + 1);
             }
         }
+    }
+
+    private static void printRaceStatus(List<String> nameList, List<Integer> positions) {
+        for (int i = 0; i < nameList.size(); i++) {
+            System.out.print(nameList.get(i) + " : ");
+            System.out.println("-".repeat(positions.get(i)));
+        }
+        System.out.println();
     }
 }
