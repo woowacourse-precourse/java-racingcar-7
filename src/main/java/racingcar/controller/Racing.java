@@ -49,6 +49,7 @@ public class Racing {
     private List<Car> initializeRace() {
         outputView.requestCarNameMessage();
         String carNames = inputView.getCarNames();
+        validator.isValidCarNames(carNames);
         return racingManager.parseCarNamesToCar(carNames);
     }
 }
