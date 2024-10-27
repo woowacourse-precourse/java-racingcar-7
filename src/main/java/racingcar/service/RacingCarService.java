@@ -9,10 +9,10 @@ import racingcar.view.OutputView;
 import java.util.List;
 
 public class RacingCarService {
-
     private final RacingCarModel racingCarModel;
     private String carNameString;
     private int racingAttemptCount;
+    private String winnerResultString;
 
 
     public RacingCarService(RacingCarModel racingCarModel){
@@ -27,6 +27,11 @@ public class RacingCarService {
 
     public void inputRacingAttemptsCount(){
         String racingAttemptCountString = InputView.inputRacingAttempts();
+        setRacingAttemptCount(racingAttemptCountString);
+    }
+
+
+    private void setRacingAttemptCount(String racingAttemptCountString){
         racingAttemptCount = RacingCarValidator.validateRacingAttemptCount(racingAttemptCountString);
     }
 
@@ -53,14 +58,14 @@ public class RacingCarService {
 
 
     public void printWinnerResult(){
-        String winnerResult = setWinnerResult();
-        OutputView.printWinner(winnerResult);
+        setWinnerResultString();
+        OutputView.printWinner(winnerResultString);
     }
 
 
-    public String setWinnerResult(){
+    public void setWinnerResultString(){
         List<String> winnerList = racingCarModel.getWinnerList();
-        return String.join(", ", winnerList);
+        winnerResultString = String.join(", ", winnerList);
     }
 
 
