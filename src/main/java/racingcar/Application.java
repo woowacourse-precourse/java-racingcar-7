@@ -11,17 +11,13 @@ import racingcar.view.OutputView;
 //애플리케이션을 Spring에서 컨트롤러 앞단으로 취급
 public class Application {
     public static void main(String[] args) {
-        try {
             String carNames = inputCarNames();
             int roundCount = inputGameCount();
 
             GameResult responseDto = GameController.playRacingGame(roundCount, carNames);
             OutputView.printResult(responseDto);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
+
             Console.close();
-        }
     }
 
     private static String inputCarNames() {
