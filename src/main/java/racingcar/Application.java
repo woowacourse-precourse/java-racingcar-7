@@ -15,9 +15,7 @@ public class Application {
         CarRacingEnroll carRacingEnroll = new CarRacingEnroll();
 
         enrollPrompt.print(promptModel);
-
-        CarRacing carRacing = carRacingEnroll.lineUp(promptModel);
-        PromptModel result = carRacing.race();
-        resultPrompt.print(result);
+        promptModel.add(carRacingEnroll.lineUp(promptModel).race());
+        resultPrompt.print(promptModel);
     }
 }

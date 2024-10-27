@@ -13,6 +13,10 @@ public class PromptModel {
         writeData.add(value);
     }
 
+    public void add(List<String> values) {
+        writeData.addAll(values);
+    }
+
     public void add(String key, String value) {
         readData.put(key, value);
     }

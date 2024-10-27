@@ -24,7 +24,7 @@ class CarRacingTest {
         //When, Then
         assertRandomNumberInRangeTest(
                 () -> {
-                    Iterator<String> actual = carRacing.race().get();
+                    Iterator<String> actual = carRacing.race().iterator();
                     for (String expectedItem : expected) {
                         Assertions.assertThat(actual.hasNext()).isTrue();
                         Assertions.assertThat(actual.next()).isEqualTo(expectedItem);

@@ -1,6 +1,7 @@
 package racingcar;
 
-import racingcar.prompt.PromptModel;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarRacing {
 
@@ -12,7 +13,7 @@ public class CarRacing {
         this.attempt = attempt;
     }
 
-    public int getattempt() {
+    public int getAttempt() {
         return attempt;
     }
 
@@ -20,19 +21,25 @@ public class CarRacing {
         return carGroup;
     }
 
-    public PromptModel race() {
-        PromptModel result = new PromptModel();
+    private List<String> getCarRacingRecords() {
+        List<String> carRacingRecords = new ArrayList<>();
 
-        /*
-         * 별도의 메서드로 분리한다.
-         * */
         for (int i = 0; i < attempt; i++) {
             carGroup.accelerateAll();
-            result.add(carGroup.getDrivingRecords());
+            carRacingRecords.add(carGroup.getDrivingRecords());
         }
-        CarRacingWinner winner = new CarRacingWinner(carGroup);
-        result.add(winner.getWinners());
+        return carRacingRecords;
+    }
 
-        return result;
+    private String getCarRacingResult() {
+        CarRacingWinner winner = new CarRacingWinner(carGroup);
+        return winner.getWinners();
+    }
+
+    public List<String> race() {
+        List<String> raceResult = new ArrayList<>();
+        raceResult.addAll(getCarRacingRecords());
+        raceResult.add(getCarRacingResult());
+        return raceResult;
     }
 }
