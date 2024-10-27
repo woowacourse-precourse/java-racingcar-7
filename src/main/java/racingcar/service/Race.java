@@ -20,4 +20,24 @@ public class Race {
         this.tryCnt = inputs.tryCnt();
         this.currentStatus = new HashMap<>();
     }
+
+    public void start() {
+        System.out.println( OUTPUT_MSG_A );
+
+        for ( int stage = 0; stage < tryCnt; stage++ ) {
+            currentStatus.clear();
+            this.getCarLocs( currentStatus );
+            RacingCarIO.printStatus( new StatusDTO( currentStatus ) );
+        }
+    }
+
+    private void getCarLocs( Map<String, Integer> stageStatus ) {
+        for ( Car car: this.participants ) {
+            stageStatus.put( car.getName(), car.run() );
+        }
+    }
+
+    public void end() {
+        RacingCarIO.printResult( new StatusDTO( this.currentStatus ) );
+    }
 }

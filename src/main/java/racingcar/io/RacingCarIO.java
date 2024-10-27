@@ -18,7 +18,7 @@ public class RacingCarIO {
      * @return name을 Car의 이름으로 하는 Car 객체
      * @throws IllegalArgumentException 이름이 비어있는경우
      */
-    private static Car createCar( String name ) {
+    public static Car createCar( String name ) {
         if ( name.isEmpty() )
             throw new IllegalArgumentException( INVALID_INPUT_ERR );
 
