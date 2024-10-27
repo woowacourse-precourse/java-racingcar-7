@@ -5,19 +5,22 @@ import racingcar.validator.CarNameValidator;
 import racingcar.validator.TrialCountValidator;
 
 public class InputView {
-
-    private InputView(){
+    private final CarNameValidator carNameValidator;
+    private final TrialCountValidator trialCountValidator;
+    public InputView(CarNameValidator carNameValidator, TrialCountValidator trialCountValidator){
+        this.carNameValidator = carNameValidator;
+        this.trialCountValidator = trialCountValidator;
     }
 
-    public static String inputCarName(){
+    public String inputCarName(){
         String input = Console.readLine();
-        CarNameValidator.validateCarNames(input);
+        carNameValidator.validateCarNames(input);
         return input;
     }
 
-    public static String inputTrialCount(){
+    public  String inputTrialCount(){
         String input = Console.readLine();
-        TrialCountValidator.validateTrialCount(input);
+        trialCountValidator.validateTrialCount(input);
         return input;
     }
 
