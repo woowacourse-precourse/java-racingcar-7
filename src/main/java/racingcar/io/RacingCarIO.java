@@ -72,7 +72,19 @@ public class RacingCarIO {
      * @param statusDTO 마지막 경주상태정보를 담고있는 객체
      */
     public static void printResult( StatusDTO statusDTO ) {
-        List<String> winners = statusDTO.getFirstPlace().winners();
+        Map<String, Integer> status = statusDTO.status();
+        List<String> winners = new ArrayList<>( status.size() );
+        int max_dist = -1;
+        for ( String key: status.keySet() ) {
+            Integer value = status.get(key);
+            if ( value.compareTo( max_dist ) < 0 ) continue;
+            if ( value.compareTo( max_dist ) > 0 ) {
+                max_dist = value;
+                winners.clear();
+            }
+            winners.add( key );
+        }
+
         String winners_print = winners.toString().replaceAll("[\\[\\]]", "");
         System.out.println( String.format( OUTPUT_MSG_B, winners_print ) );
     }
