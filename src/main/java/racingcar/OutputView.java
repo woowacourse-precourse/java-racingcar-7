@@ -5,6 +5,10 @@ import java.util.stream.Collectors;
 
 public class OutputView {
 
+    public static void printRunMessage() {
+        System.out.println("실행 결과");
+    }
+
     public static void printDistance(List<Car> carList) {
         System.out.println(carList.toString());
     }

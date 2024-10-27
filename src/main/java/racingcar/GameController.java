@@ -10,7 +10,7 @@ public class GameController {
     }
 
     public void run(int round) {
-        System.out.println("실행 결과");
+        OutputView.printRunMessage();
         while (round-- > 0) {
             racing.runRound();
             OutputView.printDistance(racing.getCarList());
