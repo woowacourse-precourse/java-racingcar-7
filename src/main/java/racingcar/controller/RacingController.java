@@ -25,7 +25,7 @@ public class RacingController {
         outputView.printWinners();
     }
 
-    private Cars initializeCars(List<String> carNames) {
+    protected Cars initializeCars(List<String> carNames) {
         return new Cars(carNames.stream()
                 .map(Car::new)
                 .toList());
