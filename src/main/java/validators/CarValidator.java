@@ -20,4 +20,5 @@ public class CarValidator {
             throw new IllegalArgumentException(NAME_OVERLAP.getMessage() + name);
         }
     }
+
 }
