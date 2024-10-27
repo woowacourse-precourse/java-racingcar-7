@@ -102,9 +102,9 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_너무많은_시도() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("qwer", "1000001"))
+                assertThatThrownBy(() -> runException("qwer", "101"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("시도 횟수는 100000번 이하로 가능합니다.")
+                        .hasMessageContaining("시도 횟수는 100번 이하로 가능합니다.")
         );
     }
 
