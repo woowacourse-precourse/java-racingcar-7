@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.global.exception.CustomException;
 import racingcar.global.exception.ErrorMessage;
 
@@ -15,6 +16,10 @@ public class Car {
             throw CustomException.of(ErrorMessage.CAR_NAME_TOO_LONG_ERROR);
         }
         this.name = name;
+    }
+
+    public boolean canMove() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
     public String getName() {

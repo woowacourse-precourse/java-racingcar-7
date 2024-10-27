@@ -23,7 +23,7 @@ public class RaceController {
 
     private void play(Cars cars, int roundCount) {
         for (int round = 1; round <= roundCount; round++) {
-
+            cars.playSingleRound();
         }
     }
 

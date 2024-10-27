@@ -16,6 +16,14 @@ public class Cars {
         this.cars = cars;
     }
 
+    public void playSingleRound() {
+        for (Car car : cars) {
+            if (car.canMove()) {
+
+            }
+        }
+    }
+
     private boolean hasDuplicateCarNames(List<Car> cars) {
         Set<String> carUniqueNames = cars.stream().map(Car::getName).collect(Collectors.toSet());
         return carUniqueNames.size() != cars.size();
