@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,5 +30,18 @@ class CarTest {
             car.move();
         }
         assertThat(car.getMoveCount()).isEqualTo(5);
+    }
+
+    @Test
+    void 입력받은_이름_리스트로_자동차_생성() {
+        List<Car> cars = List.of(
+            new Car("test1"),
+            new Car("test2"));
+
+        List<Car> result = Car.createCarsByName(List.of("test1", "test2"));
+
+        assertThat(result)
+            .usingRecursiveComparison()
+            .isEqualTo(cars);
     }
 }
