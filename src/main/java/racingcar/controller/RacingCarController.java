@@ -1,16 +1,19 @@
 package racingcar.controller;
 
 import java.util.Set;
+import racingcar.service.GameRunner;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 
 public class RacingCarController {
     private final InputView inputView;
     private final RacingCarService racingCarService;
+    private final GameRunner gameRunner;
 
-    public RacingCarController(InputView inputView, RacingCarService racingCarService) {
+    public RacingCarController(InputView inputView, RacingCarService racingCarService, GameRunner gameRunner) {
         this.inputView = inputView;
         this.racingCarService = racingCarService;
+        this.gameRunner = gameRunner;
     }
 
     public void initializeGame() {
@@ -30,7 +33,7 @@ public class RacingCarController {
     }
 
     public void startGame(Set<String> carNames, int attemptCount){
-
+        gameRunner.runGame(carNames, attemptCount);
     }
 
 }
