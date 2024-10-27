@@ -29,10 +29,11 @@ public class RacingCar {
         return carName + " : " + "-".repeat(distance);
     }
 
-    public int compareTo(int value){
-        if(distance > value) {return 1;}
-        if(distance == value){ return 0;}
-        return -1;
+    public boolean isNewWinner(int previousHighestDistance){
+        return distance>previousHighestDistance;
     }
 
+    public boolean isSameDistance(int highestDistance){
+        return distance == highestDistance;
+    }
 }
