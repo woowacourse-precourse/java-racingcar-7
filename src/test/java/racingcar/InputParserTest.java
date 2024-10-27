@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ValidatorTest {
+class InputParserTest {
     private InputParser inputParser;
 
     @BeforeEach
@@ -13,8 +13,6 @@ class ValidatorTest {
         inputParser = new InputParser();
     }
 
-    // 테스트 메서드 이름은 "클래스 메서드 이름_예외 상황 설명식"으로 짓고 시나리오는 @DisplayName으로?
-    // 특정 메서드를 테스트한단 걸 더 잘 알 수 있게!!
     @Test
     void 자동차_이름은_null이어서는_안_된다() {
         assertThatThrownBy(() -> inputParser.executeCarNames(null))
