@@ -17,6 +17,9 @@ public class Application {
         int repeat;
         try {
             repeat = Integer.parseInt(readLine());
+            if (repeat <= 0){
+                throw new IllegalArgumentException();
+            }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
