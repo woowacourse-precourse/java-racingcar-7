@@ -1,10 +1,13 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AfterRacing {
+
+    public static final Map<String, Integer> moveCountMap = new HashMap<>();
 
     public static String getRaceResult(Map<Integer, List<CarDto>> mapCar){
         Map<String, StringBuilder> preResult = new HashMap<>();
@@ -39,7 +42,27 @@ public class AfterRacing {
 
         if (isMoving) {
             stringBuilder.append("-");
+            moveCountMap.put(carName, moveCountMap.getOrDefault(carName, 0) + 1);
         }
     }
+
+    public static List<String> getWinner(){
+
+        int maxFrequency = 0;
+        List<String> winnerList = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : moveCountMap.entrySet()) {
+            int frequency = entry.getValue();
+            if(frequency > maxFrequency){
+              maxFrequency = frequency;
+              winnerList.clear();
+              winnerList.add(entry.getKey());
+            }else if (entry.getValue() == maxFrequency){
+              winnerList.add(entry.getKey());
+            }
+      }
+        return winnerList;
+    }
+
 }
 
