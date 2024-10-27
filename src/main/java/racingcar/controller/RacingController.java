@@ -18,18 +18,18 @@ import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class MainController {
+public class RacingController {
     private final static String CAR_NAME_SPLIT_REGEX = ",";
     private final static int TRAIL_NUMBER_MIN = 0;
     private final static int CAR_POSITION_MIN = 0;
     private final RaceService raceService;
 
-    private MainController(final RaceService raceService) {
+    private RacingController(final RaceService raceService) {
         this.raceService = raceService;
     }
 
-    public static MainController create() {
-        return new MainController(createThresholdScoreMoveRule());
+    public static RacingController create() {
+        return new RacingController(createThresholdScoreMoveRule());
     }
 
     public static ThresholdScoreRaceService createThresholdScoreMoveRule() {
