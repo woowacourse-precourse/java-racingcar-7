@@ -55,5 +55,13 @@ public class Application {
             }
             System.out.println();
         }
+        
+        // 우승자 출력을 위한 비교값 세팅
+        int maxCount = 0;
+        for (Map.Entry<String, Integer> carName : carNameSet) {
+            if (carName.getValue() > maxCount) {
+                maxCount = carName.getValue();
+            }
+        }
     }
 }
