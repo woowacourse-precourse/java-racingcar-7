@@ -44,7 +44,7 @@ public class RaceController {
         output.writeResultTitle();
         for (int i = 0; i < roundCount; i++) {
             startOneRace(racingCarList);
-            outputRoundResult(racingCarList);
+            output.outputRoundResult(racingCarList);
         }
     }
 
@@ -53,13 +53,6 @@ public class RaceController {
             int number = Randoms.pickNumberInRange(0, 10);
             racingCar.move(number);
         }
-    }
-
-    private void outputRoundResult(List<RacingCar> racingCarList) {
-        for (RacingCar racingCar : racingCarList) {
-            output.writeRacingCarPosition(racingCar);
-        }
-        output.writeWhiteLine();
     }
 
     private List<String> findWinnersName(RacingCars racingCars) {

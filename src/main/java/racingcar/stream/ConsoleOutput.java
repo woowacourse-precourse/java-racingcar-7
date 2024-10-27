@@ -22,13 +22,21 @@ public class ConsoleOutput {
         System.out.println("실행 결과");
     }
 
-    public void writeRacingCarPosition(RacingCar racingCar) {
+    public void writeWinners(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    public void outputRoundResult(List<RacingCar> racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
+            writeRacingCarPosition(racingCar);
+        }
+        writeWhiteLine();
+    }
+
+    private void writeRacingCarPosition(RacingCar racingCar) {
         String positionMark = "-";
         String repeatedMark = positionMark.repeat(racingCar.getPosition());
         System.out.println(racingCar.getName() + " : " + repeatedMark);
     }
 
-    public void writeWinners(List<String> winners) {
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
-    }
 }
