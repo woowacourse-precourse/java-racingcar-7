@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 
 class NameCollectTest {
@@ -29,11 +30,10 @@ class NameCollectTest {
         assertThat(result).isEqualTo(expect);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {",woni,jun", "pobi,woni,"})
     @DisplayName("에러 올바른 값과 빈값")
-    void test2() {
-        String s = ",woni,jun";
-
+    void test2(String s) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             NameCollect.create(s);
         });
@@ -41,11 +41,14 @@ class NameCollectTest {
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
 
+
+
+
     @Test
     @DisplayName("에러 : 5자 초과")
     void test3() {
         String s = "pooobi,woni,jun";
-        NameCollect nameCollect =NameCollect.create(s);
+        NameCollect nameCollect = NameCollect.create(s);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             CarList.from(nameCollect);
@@ -60,7 +63,7 @@ class NameCollectTest {
         String s = ",,";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-           NameCollect.create(s);
+            NameCollect.create(s);
         });
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
@@ -72,9 +75,12 @@ class NameCollectTest {
     void test5(String s) {
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () ->NameCollect.create(s));
+                () -> NameCollect.create(s));
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
+
+
+
 
 }

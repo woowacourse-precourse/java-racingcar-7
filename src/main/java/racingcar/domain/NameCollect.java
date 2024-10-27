@@ -38,8 +38,8 @@ public class NameCollect {
             throw new IllegalArgumentException(INVALID_INPUT.getMessage());
         }
 
-        boolean isStartComma = input.startsWith(",");
-        boolean isEndComma = input.endsWith(",");
+        boolean isStartComma = input.startsWith(COMMA_SEPARATOR);
+        boolean isEndComma = input.endsWith(COMMA_SEPARATOR);
 
         if (isStartComma || isEndComma) {
             throw new IllegalArgumentException(INVALID_INPUT.getMessage());
@@ -47,6 +47,7 @@ public class NameCollect {
 
         return input;
     }
+
 
     protected String[] split() {
         String[] splitInput = value.split(COMMA_SEPARATOR);
