@@ -24,33 +24,44 @@ public class RacingCarService {
         System.out.println("실행 결과");
         for (int i = 0; i < attempt; i++) {
             moveCars();
-            print();
+            printIntermediateResults();
         }
     }
 
     private void moveCars() {
-        for (Map.Entry<String, Integer> entry : cars.entrySet()) {
-            int pickedNumber = Randoms.pickNumberInRange(0, 9);
-            if (pickedNumber >= 4) {
-                entry.setValue(entry.getValue() + 1);
-            }
+        for (String carName : cars.keySet()) {
+            moveCar(carName);
         }
     }
 
-    private void print() {
+    private void moveCar(String carName) {
+        if (getPickedNumber() >= 4) {
+            cars.put(carName, cars.get(carName) + 1);
+        }
+    }
+
+    private int getPickedNumber() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private void printIntermediateResults() {
         for (Map.Entry<String, Integer> entry : cars.entrySet()) {
-            String result = convertToString(entry.getValue());
-            System.out.println(entry.getKey() + " : " + result);
+            String result = convertToDashString(entry.getValue());
+            printCarRacingResult(entry.getKey(), result);
         }
         System.out.println();
     }
 
-    private String convertToString(Integer runAttempt) {
+    private String convertToDashString(Integer runAttempt) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < runAttempt; i++) {
             sb.append("-");
         }
         return String.valueOf(sb);
+    }
+
+    private void printCarRacingResult(String carName, String result) {
+        System.out.println(carName + " : " + result);
     }
 
 
