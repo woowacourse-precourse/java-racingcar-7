@@ -1,5 +1,8 @@
 package racingcar.util.parser;
 
+
+import racingcar.model.CarNames;
+
 public interface InputParser {
-    String[] parse(String input);
+    CarNames parse(String input);
 }

@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.CarNames;
 import racingcar.model.Cars;
 import racingcar.util.generator.Generator;
 import racingcar.util.movement.MoveStrategy;
@@ -32,8 +33,8 @@ public class CarController {
 
         Cars cars = new Cars();
 
-        String[] carNames = inputParser.parse(carNamesInput);
-        for (String carName : carNames) {
+        CarNames carNames = inputParser.parse(carNamesInput);
+        for (String carName : carNames.getNames()) {
             cars.addCar(new Car(carName.trim()));
         }
 
