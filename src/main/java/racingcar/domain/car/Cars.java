@@ -20,12 +20,6 @@ public class Cars {
         this.cars = cars;
     }
 
-    private void validateCarLength(List<Car> cars) {
-        if (cars.size() < MIN_CAR_LENGTH || cars.size() > MAX_CAR_LENGTH) {
-            throw new IllegalArgumentException(CAR_LENGTH_ERROR_MESSAGE);
-        }
-    }
-
     public static Cars from(List<Car> cars) {
         return new Cars(cars);
     }
@@ -36,6 +30,12 @@ public class Cars {
         List<Car> cars = createCars(carNames, movementStrategy);
 
         return new Cars(cars);
+    }
+
+    private void validateCarLength(List<Car> cars) {
+        if (cars.size() < MIN_CAR_LENGTH || cars.size() > MAX_CAR_LENGTH) {
+            throw new IllegalArgumentException(CAR_LENGTH_ERROR_MESSAGE);
+        }
     }
 
     private static void validateDuplicatedName(List<CarName> carNames) {

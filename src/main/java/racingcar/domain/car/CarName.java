@@ -21,7 +21,7 @@ public record CarName(String name) {
                 .toList();
     }
 
-    private static void validateNullName(String name) {
+    private void validateNullName(String name) {
         if (name == null) {
             throw new IllegalArgumentException(REQUIRE_NAME_MESSAGE);
         }

@@ -38,7 +38,7 @@ public class OutputView {
         carStatuses.forEach(carStatus -> System.out.println(createCarStatusOutput(carStatus)));
     }
 
-    private static String createCarStatusOutput(CarStatus carStatus) {
+    private String createCarStatusOutput(CarStatus carStatus) {
         return String.format(CAR_STATUS_OUTPUT_FORMAT, carStatus.name(), CAR_POSITION_BAR.repeat(carStatus.position()));
     }
 
@@ -47,7 +47,7 @@ public class OutputView {
         System.out.printf(RACE_RESULT_FORMAT, result);
     }
 
-    private static String createVictoryCarsOutput(List<Car> victoryCars) {
+    private String createVictoryCarsOutput(List<Car> victoryCars) {
         return victoryCars.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(VICTOR_DELIMITER));
