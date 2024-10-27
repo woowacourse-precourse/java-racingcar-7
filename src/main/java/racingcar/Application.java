@@ -78,6 +78,11 @@ public class Application {
         }
     }
 
+    public static void displayWinners() {
+        String result = String.join(", ", winners);
+        System.out.println("최종 우승자 : " + result);
+    }
+
     //- 자동차 경주 게임을 완료한 후 누가 우승했는지를 출력한다.
     //    - 우승자는 여러 명일 수 있다.
     //    - 우승자가 여러 명일 경우, 쉼표를 이용하여 구분한다.
@@ -91,6 +96,7 @@ public class Application {
             playNumber--;
         }
         calculateFinal();
+        displayWinners();
     }
 
     public static void main(String[] args) {
