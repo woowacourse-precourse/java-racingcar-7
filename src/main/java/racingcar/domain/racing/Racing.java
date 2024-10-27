@@ -16,7 +16,7 @@ public class Racing {
     private List<RacingCar> winners = new ArrayList<>();
     private int tryCnt;
 
-    public void setRacingCars(String inputTextForRacingCars) {
+    public void setRacingCarsFromText(String inputTextForRacingCars) {
         if (isInvalidInputTextForRacingCars(inputTextForRacingCars)) {
             throw new IllegalArgumentException(RacingErrorMessage.INVALID_INPUT_TEXT);
         }
@@ -32,7 +32,7 @@ public class Racing {
         }
     }
 
-    public void setTryCount(String inputTextForTryCount) {
+    public void setTryCountFromText(String inputTextForTryCount) {
         try {
             tryCnt = Integer.parseInt(inputTextForTryCount);
         } catch (Exception e) {

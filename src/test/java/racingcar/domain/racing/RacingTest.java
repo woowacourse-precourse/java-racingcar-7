@@ -29,7 +29,7 @@ class RacingTest extends NsTest {
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.setRacingCars(inputText);
+                    racing.setRacingCarsFromText(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -46,7 +46,7 @@ class RacingTest extends NsTest {
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.setRacingCars(inputText);
+                    racing.setRacingCarsFromText(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -60,7 +60,7 @@ class RacingTest extends NsTest {
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.setRacingCars(inputText);
+                    racing.setRacingCarsFromText(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -74,7 +74,7 @@ class RacingTest extends NsTest {
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.setRacingCars(inputText);
+                    racing.setRacingCarsFromText(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -88,7 +88,7 @@ class RacingTest extends NsTest {
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.setRacingCars(inputText);
+                    racing.setRacingCarsFromText(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -104,7 +104,7 @@ class RacingTest extends NsTest {
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.setRacingCars(inputText);
+                    racing.setRacingCarsFromText(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -114,8 +114,8 @@ class RacingTest extends NsTest {
     void 우승자_계산_테스트() {
         //given
         Racing racing = new Racing();
-        racing.setRacingCars("aaaaa,bbbbb");
-        racing.setTryCount("1");
+        racing.setRacingCarsFromText("aaaaa,bbbbb");
+        racing.setTryCountFromText("1");
 
         //when //then
         assertRandomNumberInRangeTest(

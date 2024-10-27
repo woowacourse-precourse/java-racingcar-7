@@ -11,8 +11,8 @@ public class Application {
         RacingOutputView racingOutputView = new RacingOutputView();
         Racing racing = new Racing();
 
-        racing.setRacingCars(racingInputView.readRacingCarNames());
-        racing.setTryCount(racingInputView.readTryCount());
+        racing.setRacingCarsFromText(racingInputView.readRacingCarNames());
+        racing.setTryCountFromText(racingInputView.readTryCount());
 
         racing.iterateRace();
         racing.calculateWinner();
