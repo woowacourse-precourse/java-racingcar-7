@@ -3,7 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Reader {
 
@@ -34,6 +36,11 @@ public class Reader {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다.");
             }
+        }
+
+        Set<String> carNameSet = new HashSet<>(carNames);
+        if (carNameSet.size() != carNames.size()) {
+            throw new IllegalArgumentException("자동차의 이름은 서로 중복될 수 없습니다");
         }
     }
 
