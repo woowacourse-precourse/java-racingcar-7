@@ -5,9 +5,13 @@ public class Car {
     private String name;
     private int pos;
 
-    public Car(String name, int pos) {
+    private Car(String name, int pos) {
         this.name = name;
         this.pos = pos;
+    }
+
+    public static Car of(String name) {
+        return new Car(name, 0);
     }
 
     public String getName() {
@@ -18,7 +22,7 @@ public class Car {
         return pos;
     }
 
-    public void go(){
+    public void go() {
         this.pos++;
     }
 }
