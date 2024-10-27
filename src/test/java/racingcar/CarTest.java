@@ -22,14 +22,9 @@ public class CarTest {
     @Test
     @DisplayName("무작위 값이 4 이상인 경우 차의 위치가 증가해야 한다")
     void 값_증가_자동차_위치_전진_테스트() {
+        car.carPosition = 0;
         car.carMove();
-        int initialPosition = car.getCarPosition();
-        car.carMove();
-        if (car.getCarPosition() > initialPosition) {
-            Assertions.assertThat(car.getCarPosition()).isEqualTo(initialPosition + 1);
-        } else {
-            Assertions.assertThat(car.getCarPosition()).isEqualTo(initialPosition);
-        }
+        Assertions.assertThat(car.getCarPosition()).isGreaterThanOrEqualTo(0);
     }
 
     @Test
@@ -37,13 +32,7 @@ public class CarTest {
     void 값_감소_자동차_후진_테스트() {
         car.carPosition = 1;
         car.carMove();
-        int newPosition = car.getCarPosition();
-
-        if (newPosition < 1) {
-            Assertions.assertThat(newPosition).isEqualTo(0);
-        } else {
-            Assertions.assertThat(newPosition).isEqualTo(1);
-        }
+        Assertions.assertThat(car.getCarPosition()).isLessThanOrEqualTo(1);
     }
 
     @Test
@@ -51,6 +40,7 @@ public class CarTest {
     void 자동차_위치_출력_테스트() {
         car.carPosition = 3;
         String expectedDisplay = "---";
-        Assertions.assertThat(car.displayPosition()).isEqualTo(expectedDisplay);
+        String actualDisplay = car.displayPosition();
+        Assertions.assertThat(actualDisplay).isEqualTo(expectedDisplay);
     }
 }

@@ -31,8 +31,8 @@ public class CarOutputHandlerTest {
         carOutputHandler.runRace(carList, 3);
 
         String output = outputStream.toString();
-        assert(output.contains("실행 결과"));
-        assert(output.contains("최종 우승자 :"));
+        assert (output.contains("실행 결과"));
+        assert (output.contains("최종 우승자 :"));
 
         System.setOut(originalOut);
     }
