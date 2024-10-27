@@ -5,4 +5,5 @@ public class Constants {
     public static final String EMPTY_INPUT_ERROR_MESSAGE = "입력값은 비어있을 수 없습니다.";
     public static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5자 이하만 가능합니다.";
     public static final String DUPLICATE_CAR_NAME_ERROR_MESSAGE = "자동차 이름으로 동일한 값이 사용될 수 없습니다.";
+    public static final String CAR_NAME_CONTAIN_SPACE_ERROR_MESSAGE = "자동차 이름에 공백이 들어갈 수 없습니다.";
 }
