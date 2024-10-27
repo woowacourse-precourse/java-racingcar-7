@@ -1,9 +1,9 @@
 package racingcar.model;
 
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.IntStream;
+import racingcar.common.RandomNumberGenerator;
 
 public class Referee {
 
@@ -37,6 +37,6 @@ public class Referee {
     }
 
     private int getRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
+        return RandomNumberGenerator.generate();
     }
 }
