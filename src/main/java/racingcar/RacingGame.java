@@ -19,7 +19,6 @@ public class RacingGame {
 
     /// 레이싱게임 입력부분
     private void setGame() {
-        //Todo: 한 가지 기능을 하는 함수로 나누기
 
         String[] carNameArray = inputCarName(); // 자동차 이름 입력받아서 배열에 저장
         validateCarName(carNameArray); // 자동차 입력부분 예외처리
@@ -30,9 +29,30 @@ public class RacingGame {
             checkDuplicateCar(carName); // 자동차 이름 중복 예외처리
             cars.add(new Car(carName));
         }
-        //Todo: 사용자로부터 maxTurn 입력받기
-        inputMaxTurn();
+
+        String maxTurnString = inputMaxTurn(); // 이동횟수 입력받아서 문자열에 저장
+        validateMaxTurn(maxTurnString); // 이동횟수 입력부분 예외처리
+        maxTurn = Integer.parseInt(maxTurnString);
+
     }
+
+    private void playGame() {
+
+        System.out.println("실행결과");
+
+        for(int i = 0; i< maxTurn; i++){
+            moveCar(); // 배열에 저장된 자동차 중 무작위 수가 4이상인 자동차를 움직임
+            printGamePlay(); // 배열에 저장된 자동차의 이름과 이동거리 표시
+        }
+    }
+
+    private void afterGame() {
+        //Todo: 각 자동차별 최종 거리를 이용하여, 1등 거리 구하기
+        //Todo: 1등 거리에 해당하는 자동차 이름을 winners 배열에 저장
+        //Todo: winners 배열을 통해 우승자 출력하기
+        //Todo: 한 가지 기능을 하는 함수로 나누기
+    }
+
 
     /// 자동차 이름을 입력받아 문자열 배열을 리턴
     private String[] inputCarName() {
@@ -85,24 +105,57 @@ public class RacingGame {
     }
 
     private String inputMaxTurn() {
+
         String maxTrunString = Console.readLine();
         maxTrunString = maxTrunString.trim();
 
         return maxTrunString;
     }
 
+    private void validateMaxTurn(String maxTurnString){
 
-    private void playGame() {
-        //Todo: maxTurn번 반복하기
-        //Todo: 무작위 수를 이용하여 자동차 움직이기
-        //Todo: 한 가지 기능을 하는 함수로 나누기
+        int turn = 0;
+
+        try {
+            turn = Integer.parseInt(maxTurnString);
+
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("이동횟수는 숫자만 입력 가능합니다.");
+        }
+
+        if(turn < 1){
+            throw new IllegalArgumentException("이동횟수는 최소 1 이상입니다.");
+        }
+
+        if(turn > 20) {
+            throw new IllegalArgumentException("이동횟수는 최대 20 이하입니다.");
+        }
+
     }
 
-    private void afterGame() {
-        //Todo: 각 자동차별 최종 거리를 이용하여, 1등 거리 구하기
-        //Todo: 1등 거리에 해당하는 자동차 이름을 winners 배열에 저장
-        //Todo: winners 배열을 통해 우승자 출력하기
-        //Todo: 한 가지 기능을 하는 함수로 나누기
+    /// 자동차 이동
+    private void moveCar(){
+        for(Car car : cars){
+            car.takeTurn();
+        }
     }
 
+    /// 자동차 이동거리 표시
+    private void printGamePlay(){
+        for(Car car : cars){
+            printMoveCar(car);
+        }
+        System.out.println();
+    }
+
+    /// 자동차 이름과 이동거리를 출력
+    private void printMoveCar(Car car){
+        System.out.print(car.getCarName()+" : ");
+
+        for(int i = 0; i< car.getDistance(); i++){
+            System.out.print("-");
+        }
+
+        System.out.println();
+    }
 }
