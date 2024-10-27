@@ -105,5 +105,5 @@
 - [X]  Car 클래스
 - [X]  자동차 게임 진행 관리 클래스(RacingCarGame)
 - [X]  자동차 그룹 관리 클래스(RacingCarsGroup)
-- [ ]  자동차 이름 유효성 검증 클래스(CarNameValidation)
+- [X]  자동차 이름 유효성 검증 클래스(CarNameValidation)
 - [ ]  시도할 횟수 값 유효성 검증 클래스(InputNumberValidation)
