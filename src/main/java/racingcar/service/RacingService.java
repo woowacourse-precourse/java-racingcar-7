@@ -3,12 +3,13 @@ package racingcar.service;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import racingcar.domain.Car;
 import racingcar.util.Parser;
 
 public class RacingService {
 
-    public LinkedHashSet<Car> createCars(String input) {
+    public Set<Car> createCars(String input) {
         List<Car> extractedCars = extractCarsFromInput(input);
 
         return new LinkedHashSet<>(extractedCars);

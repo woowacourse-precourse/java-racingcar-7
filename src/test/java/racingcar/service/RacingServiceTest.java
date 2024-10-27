@@ -2,8 +2,8 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ public class RacingServiceTest {
         String input = "해적왕, 소방차, 요리사";
         List<String> carInputs = new ArrayList<>(List.of("해적왕", "소방차", "요리사"));
 
-        LinkedHashSet<Car> cars = racingService.createCars(input);
+        Set<Car> cars = racingService.createCars(input);
         Iterator<Car> iterator = cars.iterator();
 
         carInputs.forEach(car ->

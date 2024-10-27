@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import java.util.LinkedHashSet;
+import java.util.Set;
 import racingcar.domain.Car;
 import racingcar.service.RacingService;
 import racingcar.view.RacingView;
@@ -18,6 +18,6 @@ public class RacingController {
     public void run() {
         String namesInput = racingView.requestNamesInput();
 
-        LinkedHashSet<Car> cars = racingService.createCars(namesInput);
+        Set<Car> cars = racingService.createCars(namesInput);
     }
 }
