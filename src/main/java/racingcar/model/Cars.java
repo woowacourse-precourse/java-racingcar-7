@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -21,6 +22,19 @@ public class Cars {
                       .map(Car::from)
                       .toList()
         );
+    }
+
+    public void advanceCarsRandomly() {
+        for (Car car : cars) {
+            int number = Randoms.pickNumberInRange(0, 9);
+            car.advance(number);
+        }
+    }
+
+    public List<Car> findWinners(int maxMarkerCount) {
+        return cars.stream()
+                   .filter(car -> car.getAdvanceMarkerCount() == maxMarkerCount)
+                   .toList();
     }
 
     public int getMaxAdvanceMarkerCount() {

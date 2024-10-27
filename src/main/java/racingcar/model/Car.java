@@ -18,6 +18,12 @@ public class Car {
         return new Car(name.strip());
     }
 
+    public void advance(int number) {
+        if (number > 3) {
+            advanceMarkers.add("-");
+        }
+    }
+
     public void addAdvanceMarker() {
         advanceMarkers.add("-");
     }

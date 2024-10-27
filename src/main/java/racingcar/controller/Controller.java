@@ -3,11 +3,9 @@ package racingcar.controller;
 import static java.lang.Integer.parseInt;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.model.Racing;
 import racingcar.model.TextFormatter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -16,13 +14,11 @@ public class Controller {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final Racing racing;
     private final TextFormatter textFormatter;
 
-    public Controller(InputView inputView, OutputView outputView, Racing racing, TextFormatter textFormatter) {
+    public Controller(InputView inputView, OutputView outputView, TextFormatter textFormatter) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.racing = racing;
         this.textFormatter = textFormatter;
     }
 
@@ -49,8 +45,7 @@ public class Controller {
 
         outputView.printRaceResultMessage();
         for (int round = 0; round < totalRounds; round++) {
-            int number = Randoms.pickNumberInRange(0, 9);
-            racing.advance(cars, number);
+            cars.advanceCarsRandomly();
             showRoundResults(cars);
         }
     }
@@ -64,10 +59,8 @@ public class Controller {
     }
 
     private void announceOfWinners(Cars cars) {
-        List<Car> allCars = cars.getCars();
         int maxAdvanceMarkersCount = cars.getMaxAdvanceMarkerCount();
-
-        List<Car> winners = racing.findWinners(allCars, maxAdvanceMarkersCount);
+        List<Car> winners = cars.findWinners(maxAdvanceMarkersCount);
         String winnerNames = textFormatter.getWinnerNames(winners);
         outputView.printWinners(winnerNames);
     }
