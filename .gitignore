@@ -33,3 +33,11 @@ out/
 
 ### Mac OS ###
 .DS_Store
+
+### 빌드 도구 파일 ###
+target/
+out/
+build/
+
+# Java 클래스 파일
+*.class
