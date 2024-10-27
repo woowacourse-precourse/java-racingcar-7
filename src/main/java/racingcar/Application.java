@@ -50,7 +50,12 @@ public class Application {
 		}
 	}
 
+	public static void checkAndMoveCar(int randomValue, String[] count, int i) {
+		if (randomValue > 3) {
+			count[i] += "-";
+		}
 
+	}
 
 
 
