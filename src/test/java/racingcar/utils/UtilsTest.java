@@ -4,9 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import racingcar.global.message.ErrorMessage;
 import racingcar.global.utils.ParseStringUtils;
+import racingcar.global.utils.RaceRandomUtils;
 
 class UtilsTest {
 
@@ -42,6 +44,12 @@ class UtilsTest {
         List<String> carNames = ParseStringUtils.splitCarNames(carNamesInput);
 
         assertThat(carNames).containsExactly("pobi", "woni", "jun");
+    }
+
+    @RepeatedTest(100)
+    void 랜덤_숫자_생성_테스트() {
+        int randomNumber = RaceRandomUtils.generateRandomNumber();
+        assertThat(randomNumber).isBetween(0, 9);
     }
 }
 
