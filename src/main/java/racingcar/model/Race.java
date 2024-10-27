@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
+import racingcar.utils.RandomNumberGenerator;
 
 public class Race {
 
