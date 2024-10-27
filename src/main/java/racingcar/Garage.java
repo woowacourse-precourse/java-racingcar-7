@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,12 @@ public class Garage {
             combinedMap.putAll(car.tellDecision());
         }
         return combinedMap;
+    }
+
+    public void requestAllCarDecision() {
+        for (Car car : carList) {
+            car.decideMoving(Randoms.pickNumberInRange(0, 9));
+        }
     }
 
     private void nameCars(List<String> carNames) {
