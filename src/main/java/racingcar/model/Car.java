@@ -49,6 +49,6 @@ public class Car {
     }
 
     private String getString(StringBuilder sb) {
-        return sb.append(name.getValue()).append(" : ") + "-".repeat(position.getPosition());
+        return sb.append(name.getValue()).append(" : ") + "-".repeat(position.getValue());
     }
 }

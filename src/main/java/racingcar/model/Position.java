@@ -4,26 +4,26 @@ public class Position {
     private static final int DEFAULT_POSITION = 0;
     private static final int DEFAULT_MOVEMENT_AMOUNT = 1;
 
-    private final int position;
+    private final int value;
 
     public Position() {
-        this.position = DEFAULT_POSITION;
+        this.value = DEFAULT_POSITION;
     }
 
-    public Position(final int position) {
-        this.position = position;
+    public Position(final int value) {
+        this.value = value;
     }
 
     public Position move() {
-        return new Position(position + DEFAULT_MOVEMENT_AMOUNT);
+        return new Position(value + DEFAULT_MOVEMENT_AMOUNT);
     }
 
     public boolean isBiggerOrEqualTo(final Position position) {
-        return this.position >= position.position;
+        return this.value >= position.value;
     }
 
-    public int getPosition() {
-        return position;
+    public int getValue() {
+        return value;
     }
 
     @Override
@@ -35,11 +35,11 @@ public class Position {
             return false;
         }
         Position position = (Position) object;
-        return this.position == position.position;
+        return this.value == position.value;
     }
 
     @Override
     public int hashCode() {
-        return Integer.hashCode(position);
+        return Integer.hashCode(value);
     }
 }
