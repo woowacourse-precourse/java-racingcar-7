@@ -144,5 +144,12 @@ public class RacingCar {
         return output;
     }
 
+    public static boolean winnerOrNot(Car car, int maxTrial) {
+        if (car.getGo() == maxTrial) {
+            return true;
+        }
+        return false;
+    }
+
 
 }
