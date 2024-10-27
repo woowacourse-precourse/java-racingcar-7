@@ -1,8 +1,6 @@
 package racingcar.controller;
 
 
-import java.util.List;
-import racingcar.domain.Car;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -43,8 +41,7 @@ public class RacingController {
 
     private void printRacingStatus(int userIntegerInput) {
         for (int i=0; i<userIntegerInput; i++){
-            List<Car> cars = racingService.onceRacing();
-            outputView.printRacingResult(cars);
+            outputView.printRacingResult(racingService.onceRacing());
         }
     }
 
