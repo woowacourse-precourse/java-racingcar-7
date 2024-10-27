@@ -16,7 +16,7 @@ public class ContentParser {
     }
 
     private static ArrayList<String> splitting(String targetContent){
-        return new ArrayList<String>(Arrays.stream(targetContent.split(Constants.CONTENT_PASRE_DELIMITER)).toList());
+        return new ArrayList<String>(Arrays.stream(targetContent.split(Constants.CONTENT_DELIMITER)).toList());
     }
 
 
