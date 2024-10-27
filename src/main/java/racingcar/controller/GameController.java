@@ -1,4 +1,4 @@
-package racingcar.Controller;
+package racingcar.controller;
 
 import racingcar.operator.GameEngine;
 import racingcar.user.SettingGameUser;
