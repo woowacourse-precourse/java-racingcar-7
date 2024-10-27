@@ -26,7 +26,6 @@ public class RacingCarManager {
         return RandomNumberGenerator.generateNumber() >= 4;
     }
 
-
     public List<RacingCar> getRacingCarList() {
         return racingCarList;
     }

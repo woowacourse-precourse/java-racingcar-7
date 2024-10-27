@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RacingCarNameInput {
     String userInput;
@@ -10,16 +11,23 @@ public class RacingCarNameInput {
 
     public RacingCarNameInput(String userInput) {
         this.userInput = userInput;
+        nameList = parsingInput(userInput);
         validate();
     }
 
+    private List<String> parsingInput(String input) {
+
+        return List.of(input.split(","))
+                .stream()
+                .filter(name -> !name.isEmpty())
+                .collect(Collectors.toList());
+    }
+
     private void validate() {
-        nameList = List.of(userInput.split(","));
         validateMinimumPlayer();
         validateNameRange();
         validateNameNothing();
         validateSameName();
-
     }
 
     private void validateMinimumPlayer() {
