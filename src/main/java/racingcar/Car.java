@@ -1,9 +1,13 @@
 package racingcar;
 
+import java.util.Collections;
+import java.util.Map;
+
 public class Car {
 
     private static int CAR_NAME_MIN = 1;
     private static int CAR_NAME_MAX = 5;
+    private static int CAR_MOVE_RULE = 4;
 
     private String name;
     private int position;
@@ -13,6 +17,16 @@ public class Car {
         checkCarNameOverRule(name);
         checkCarNameBlank(name);
         this.name = name;
+    }
+
+    public void decideMoving(int number) {
+        if (number >= CAR_MOVE_RULE) {
+            this.position++;
+        }
+    }
+
+    public Map<String, Integer> tellDecision() {
+        return Collections.singletonMap(name, position);
     }
 
     private void checkCarNameUnderRule(String name) {
