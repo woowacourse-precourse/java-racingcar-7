@@ -13,6 +13,10 @@ public class Position {
         return new Position(position + DEFAULT_MOVEMENT_AMOUNT);
     }
 
+    public boolean isBiggerOrEqualTo(final Position position) {
+        return this.position >= position.position;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {

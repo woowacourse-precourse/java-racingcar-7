@@ -25,4 +25,15 @@ class PositionTest {
         // when, then
         Assertions.assertThat(position1).isEqualTo(position2);
     }
+
+    @Test
+    @DisplayName("Position 객체 간의 크기를 비교할 수 있다.")
+    void comparePosition() {
+        // given
+        Position position1 = new Position(1);
+        Position position2 = new Position(2);
+
+        // when, then
+        Assertions.assertThat(position2.isBiggerOrEqualTo(position1)).isTrue();
+    }
 }
