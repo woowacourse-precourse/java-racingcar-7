@@ -10,6 +10,7 @@ public class InputView {
         System.out.println(RACING_CAR_NAME_MSG);
         return Console.readLine();
     }
+
     public static String readLine_round() {
         System.out.println(TRIAL_MSG);
         return Console.readLine();

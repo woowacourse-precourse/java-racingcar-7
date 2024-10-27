@@ -2,7 +2,6 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import racingcar.model.Car;
 
 public class OutputView {
@@ -18,19 +17,14 @@ public class OutputView {
 
     public static void printRoundResult(List<Car> racingCars) {
         String result = racingCars.stream().map(racingCar -> {
-            String progressBar = Stream.generate(
-                            () -> RACING_CAR_PROGRESS_BAR)
-                    .limit(racingCar.getProgressCount())
-                    .collect(Collectors.joining());
-            return racingCar.getName() + " : " + progressBar + "\n";
+            return racingCar.getName() + " : " + RACING_CAR_PROGRESS_BAR.repeat(racingCar.getProgressCount()) + "\n";
         }).collect(Collectors.joining());
 
         System.out.println(result);
     }
 
     public static void printWinnerResult(List<String> winnerNames) {
-        String result = WINNER_RESULT_HEADER
-                + winnerNames.stream().collect(Collectors.joining(WINNER_DELIMITER));
+        String result = WINNER_RESULT_HEADER + String.join(WINNER_DELIMITER, winnerNames);
         System.out.print(result);
 
     }
