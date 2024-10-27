@@ -39,7 +39,7 @@ public class RacingProgram {
     }
 
     int parseStringToNumber(String num){
-        int resultNum;
+        int resultNum; //String 타입의 변수
 
         try {
             resultNum = Integer.parseInt(num);
@@ -50,6 +50,15 @@ public class RacingProgram {
         }
         return resultNum;
     }
+
+    void gameStart(){
+        System.out.println("실행 결과");
+        for(int i = 0; i < attempts; i++){
+            moveCars();
+            System.out.println();
+        }
+    }
+
 
     private void validateCarName(String name) {
         if (name == null || name.isEmpty() || name.isBlank()) {
@@ -75,6 +84,12 @@ public class RacingProgram {
         //우승자는 한 명 이상일 수 있다
         if(resultNum <= 0){
             throw new IllegalArgumentException("게임 횟수는 0이하가 될 수 없습니다.");
+        }
+    }
+
+    private void moveCars() {
+        for (Car car : cars) {
+            car.playCar();
         }
     }
 
