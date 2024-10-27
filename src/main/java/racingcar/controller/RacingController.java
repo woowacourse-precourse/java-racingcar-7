@@ -21,6 +21,8 @@ public class RacingController {
 		String carNameInput = readCarNameInput();
 		List<String> carNames = parseCarNameInput(carNameInput);
 		Cars cars = createCars(carNames);
+
+		int attemptCount = readAttemptCountInput();
 	}
 
 	private String readCarNameInput() {
@@ -41,5 +43,11 @@ public class RacingController {
 			.toList();
 
 		return new Cars(cars);
+	}
+
+	private int readAttemptCountInput() {
+		outputView.promptAttemptCount();
+
+		return inputView.readAttemptCountInput();
 	}
 }
