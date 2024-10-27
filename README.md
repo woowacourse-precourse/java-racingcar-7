@@ -95,12 +95,12 @@ jun : -----
 
 
 ### 구현할 기능 목록
-- [ ]  main() : controller() 호출
-- [ ]  input() : 경주할 자동차 이름(여러 대면 쉼표로 구분), 시도 횟수
-- [ ]  output() : 차수 별 실행 결과, 우승자 안내 문구(단독 or 공동)
-- [ ]  random() : 무작위의 수를 구해, 4 이상이면 전진할 수 있도록 함.
+- [x]  main() : controller() 호출
+- [x]  input() : 경주할 자동차 이름(여러 대면 쉼표로 구분), 시도 횟수
+- [x]  output() : 차수 별 실행 결과, 우승자 안내 문구(단독 or 공동)
+- [x]  random() : 무작위의 수를 구해, 4 이상이면 전진할 수 있도록 함.
 - [ ]  race() : 전진 및 멈춤 구현
-- [ ]  contoroller() : input → random() + race() → output() 흐름으로 제어.    
+- [x]  contoroller() : input → random() + race() → output() 흐름으로 제어.    
 
 race()는 car를 담은 hashMap과 이동 횟수를 받아, random()을 호출하며 경주하고, 결과를 winner() 메소드를 통해 얻는다.
 
