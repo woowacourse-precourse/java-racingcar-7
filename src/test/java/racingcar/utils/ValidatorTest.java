@@ -9,6 +9,7 @@ public class ValidatorTest {
     void 자동차_이름_입력_검증_테스트() {
         String validInput = "povi,hhj,java";
         String invalidInput = "povi,hhj.java";
+        String invalidInput2 = "hohoho.hhj.java";
 
         // 유효한 입력
         Assertions.assertThatCode(() -> InputValidator.nameValidator(validInput))
@@ -17,7 +18,12 @@ public class ValidatorTest {
         // 잘못된 구분자 사용
         Assertions.assertThatThrownBy(() -> InputValidator.nameValidator(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름 입력이 잘못되었습니다.");
+                .hasMessage("구분자를 확인해주세요.");
+
+        // 5자 이상의 이름
+        Assertions.assertThatThrownBy(() -> InputValidator.nameValidator(invalidInput2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름은 5자 이하만 가능합니다.");
     }
 
     @Test
