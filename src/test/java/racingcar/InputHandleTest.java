@@ -24,6 +24,18 @@ class InputHandleTest {
         }
     }
 
+    @DisplayName("입력받은 이름 앞과 뒤에 공백들이 섞여 있다면, 이를 제거한다. 이름사이의 공백은 제거하지 않는다.")
+    @ParameterizedTest
+    @ValueSource(strings = {" pobi,jav  ,  ja ,ja me"})
+    void 자동차_라인업_만들기_공백처리_테스트(String input) {
+        Cars cars = racingGame.makeCars(input);
+        List<String> expected = List.of("pobi", "jav", "ja", "ja me");
+
+        for (int i = 0; i < cars.size(); i++) {
+            Assertions.assertEquals(expected.get(i), cars.getCar(i).name());
+        }
+    }
+
     @DisplayName("입력받은 경주 횟수를 저장한다.")
     @ParameterizedTest
     @ValueSource(strings = {"1", "2", "3"})
