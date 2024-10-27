@@ -4,12 +4,16 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.Input.MoveCountInput;
+import racingcar.Input.NameInput;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -45,6 +49,7 @@ class ApplicationTest extends NsTest {
     @BeforeEach
     void setUp() {
         moveCountInput = new MoveCountInput();
+        nameInput = new NameInput();
     }
 
     @Test
@@ -56,5 +61,24 @@ class ApplicationTest extends NsTest {
         assertEquals(testMoveCount, moveCountInput.getMoveCount(),
             "The move count should match the input value.");
     }
+
+    private NameInput nameInput;
+
+    @Test
+    void 유효한_이름_정상_입력_테스트() {
+        String input = "pobi,woni,crong";
+
+        assertTrue(nameInput.validateInput(input),
+            "모든 입력이 정상 입력");
+    }
+
+    @Test
+    void 하나_이상의_이름이_5글자_초과_예외() {
+        String input = "pobi,woni,crongname";
+
+        assertFalse(nameInput.validateInput(input),
+            "글자 하나 이상이 5글자 초과");
+    }
+
 
 }
