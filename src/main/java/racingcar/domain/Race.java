@@ -15,8 +15,6 @@ public class Race {
     }
 
     public List<Car> proceed() {
-        // TODO: 중복호출방지
-
         moveAllCars();
 
         if (round.hasNext()) {
