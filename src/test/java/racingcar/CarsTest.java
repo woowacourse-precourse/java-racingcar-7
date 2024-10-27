@@ -2,6 +2,7 @@ package racingcar;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -69,6 +70,17 @@ public class CarsTest {
         assertThat(winners).containsExactly("bob");
     }
 
+    @Test
+    @DisplayName("중복된 자동차 이름으로 Cars 객체를 생성하려 하면 예외가 발생한다")
+    void createCarsWithDuplicateNames() {
+        List<Car> carList = Arrays.asList(
+                Car.from(CarName.from("kiri")),
+                Car.from(CarName.from("kiri")),
+                Car.from(CarName.from("alice"))
+        );
 
+        assertThatThrownBy(() -> Cars.from(carList))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
