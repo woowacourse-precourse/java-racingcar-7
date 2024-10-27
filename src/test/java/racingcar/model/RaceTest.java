@@ -24,7 +24,7 @@ class RaceTest {
     }
 
     @Test
-    @DisplayName("차량 전원이 움직이는 경우")
+    @DisplayName("차량 움직이는 경우")
     void startRound_AllCarsMove() {
         moveDecider = new MoveDecider(new TestRandomNumberGenerator(4));
         race = new Race(cars, moveDecider);
