@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private static Cars instance;
     private final List<Car> cars;
 
     public Cars() {
