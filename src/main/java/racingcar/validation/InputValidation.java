@@ -7,6 +7,11 @@ public class InputValidation {
         return inputValue;
     }
 
+    public String nameLengthValidation(String inputValue){
+        if(inputValue.length() > 5) throw new IllegalArgumentException("이름의 길이가 5초과 합니다.");
+        return inputValue;
+    }
+
 
     public int checkCountValidation(String countValue){
         int count = parseValidation(blankValidation(countValue));

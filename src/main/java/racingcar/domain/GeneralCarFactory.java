@@ -26,6 +26,7 @@ public class GeneralCarFactory implements CarFactory {
     public List<Car> createCars(List<String> carNames) {
         return carNames.stream()
                 .map(validation::blankValidation)
+                .map(validation::nameLengthValidation)
                 .map(this::createCar)
                 .toList();
     }
