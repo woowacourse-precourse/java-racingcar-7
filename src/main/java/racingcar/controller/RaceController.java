@@ -13,20 +13,19 @@ public class RaceController {
     private final ConsoleOutput output = new ConsoleOutput();
 
     public void doRace() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        output.writeCarNameGuide();
         List<String> names = inputNames();
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        output.writeRoundCountGuide();
         int roundCount = inputRoundCount();
 
-        System.out.println();
+        output.writeWhiteLine();
 
         RacingCars racingCars = createRacingCars(names);
         runGame(roundCount, racingCars.getRacingCars());
 
         List<String> winners = findWinnersName(racingCars);
-
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+        output.writeWinners(winners);
     }
 
     private List<String> inputNames() {
@@ -51,11 +50,10 @@ public class RaceController {
     }
 
     private void runGame(int roundCount, List<RacingCar> racingCarList) {
-        System.out.println("실행 결과");
+        output.writeResultTitle();
         for (int i = 0; i < roundCount; i++) {
             startOneRace(racingCarList);
             outputRoundResult(racingCarList);
-            System.out.println();
         }
     }
 
@@ -68,10 +66,9 @@ public class RaceController {
 
     private void outputRoundResult(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
-            String positionMark = "-";
-            String repeatedMark = positionMark.repeat(racingCar.getPosition());
-            System.out.println(racingCar.getName() + " : " + repeatedMark);
+            output.writeRacingCarPosition(racingCar);
         }
+        output.writeWhiteLine();
     }
 
     private List<String> findWinnersName(RacingCars racingCars) {
