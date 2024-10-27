@@ -14,7 +14,7 @@ class ApplicationTest extends NsTest {
 
 //    기능_테스트
     @Test
-    void test() {
+    void 전진_정지() {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
@@ -26,7 +26,7 @@ class ApplicationTest extends NsTest {
 
 //    예외_테스트
     @Test
-    void test2() {
+    void 이름에_대한_예외_처리() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
