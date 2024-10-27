@@ -10,12 +10,27 @@ public class ValidatorTest {
         String validInput = "povi,hhj,java";
         String invalidInput = "povi,hhj.java";
 
-        // 유효한 입력에 대해 예외가 발생하지 않는지 확인
+        // 유효한 입력
         Assertions.assertThatCode(() -> InputValidator.nameValidator(validInput))
                 .doesNotThrowAnyException();
 
-        // 유효하지 않은 입력에 대해 IllegalArgumentException 이 발생하는지 확인
+        // 잘못된 구분자 사용
         Assertions.assertThatThrownBy(() -> InputValidator.nameValidator(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름 입력이 잘못되었습니다.");    }
+                .hasMessage("자동차 이름 입력이 잘못되었습니다.");
+    }
+
+    @Test
+    void 시도할_횟수_입력_검증_테스트() {
+        String validInput = "12";
+        String invalidInput = "12a";
+
+        // 유효한 입력에 대해 예외가 발생하지 않는지 확인
+        Assertions.assertThatCode(() -> InputValidator.numberValidator(validInput))
+                .doesNotThrowAnyException();
+
+        Assertions.assertThatThrownBy(() -> InputValidator.numberValidator(invalidInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("횟수 입력이 잘못되었습니다.");
+    }
 }
