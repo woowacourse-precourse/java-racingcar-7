@@ -9,7 +9,14 @@ public class GameManager {
 
     //우승자 반환
     public String[] StartGame(String[] car_list, int count){
-        return null;
+        SetCars(car_list);
+        SetTryCount(count);
+
+        for(int i = 0; i < count; i++){
+            Game();
+        }
+
+        return car_list;
     }
 
     private void SetCars(String[] car_list) {
@@ -18,6 +25,12 @@ public class GameManager {
 
     private void SetTryCount(int count) {
 
+    }
+
+    private void Game(){
+        for (Car car : cars) {
+            car.Move();
+        }
     }
 
     private void PrintGame(){
