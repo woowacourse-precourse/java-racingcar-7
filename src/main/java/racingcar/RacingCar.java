@@ -39,5 +39,14 @@ public class RacingCar {
             }
             System.out.println();
         }
+
+        int winValue = Collections.max(carList.values());
+        List<String> findWinner = carList.entrySet().stream()
+                .filter(e -> e.getValue() == winValue)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        System.out.println("최종 우승자 : " + String.join(",", findWinner));
     }
 }
+

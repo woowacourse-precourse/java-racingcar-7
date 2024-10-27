@@ -48,6 +48,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 유효한_입력이면_라운드별_결과를_출력한다() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    RacingCar.run("pobi,woni", "3");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
