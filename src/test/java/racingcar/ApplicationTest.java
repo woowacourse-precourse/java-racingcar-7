@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.lang.reflect.Method;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -9,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
@@ -30,6 +32,64 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void inputStringTest() {
+        InputString inputString = new InputString("pobi,woni");
+        assertSimpleTest(
+            () -> assertThat(inputString.getInputString()).isEqualTo("pobi,woni")
+        );
+    }
+
+    @Test
+    void emptyStringTest() {
+        assertSimpleTest(
+            () -> assertThatThrownBy(
+                () -> new InputString("")
+            ).isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void nullStringTest() {
+        assertSimpleTest(
+            () -> assertThatThrownBy(
+                () -> new InputString(null)
+            ).isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_생성_확인() {
+        InputString inputString = new InputString("pobi,woni");
+        CarCollection carCollection1 = inputString.getCarCollection();
+
+        CarCollection carCollection2 = new CarCollection();
+        carCollection2.add("pobi");
+        carCollection2.add("woni");
+
+        assertThat(carCollection1.getCarNames()).isEqualTo(carCollection2.getCarNames());
+    }
+
+    @Test
+    void 자동차_생성_예외_테스트() {
+        InputString inputString = new InputString("pobi,woniii");
+        assertThatThrownBy(
+            () -> inputString.getCarCollection()
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 자동차_전진_테스트() {
+        InputString inputString = new InputString("pobi");
+        CarCollection carCollection = inputString.getCarCollection();
+
+        carCollection.moveCar(0);
+        int moveCount = carCollection.getCarMoveCount().get(0);
+
+        assertThat(moveCount == 1).isTrue();
+    }
+
 
     @Override
     public void runMain() {
