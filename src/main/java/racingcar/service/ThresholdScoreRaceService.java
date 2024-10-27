@@ -1,8 +1,9 @@
 package racingcar.service;
 
+import racingcar.domain.Racing;
 import racingcar.util.NumberGenerator;
 
-public final class ThresholdScoreMoveService implements MoveService {
+public final class ThresholdScoreRaceService implements RaceService {
     private static final int MIN_MOVE_NUMBER = 4;
     private static final int FORWARD = 1;
     private static final int STOP = 0;
@@ -10,11 +11,15 @@ public final class ThresholdScoreMoveService implements MoveService {
     private static final int MAX_NUM = 9;
     private final NumberGenerator numberGenerator;
 
-    public ThresholdScoreMoveService(final NumberGenerator randomNumberGenerator) {
+    public ThresholdScoreRaceService(final NumberGenerator randomNumberGenerator) {
         this.numberGenerator = randomNumberGenerator;
     }
-
+    
     @Override
+    public void performRace(Racing racing) {
+        racing.getCars().forEach(car -> car.move(tryMove()));
+    }
+
     public int tryMove() {
         int number = generateNumber();
         if (number >= MIN_MOVE_NUMBER) {

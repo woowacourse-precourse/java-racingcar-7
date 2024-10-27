@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.service.MoveService;
 
 public class Racing {
     private final List<Car> cars;
@@ -13,12 +12,6 @@ public class Racing {
 
     public List<Car> getCars() {
         return cars;
-    }
-
-    public void performRace(final MoveService moveService) {
-        for (Car car : cars) {
-            car.move(moveService.tryMove());
-        }
     }
 
     public List<String> findWinners() {
