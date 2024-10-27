@@ -18,6 +18,7 @@ public class OutputView {
     // 차량별 중간 결과 출력
     public static void printCarRunResult(Car car) {
         System.out.print(car.getName() + " : "+"-".repeat(car.getMove()));
+        System.out.println();
     }
 
     // 우승자 출력
