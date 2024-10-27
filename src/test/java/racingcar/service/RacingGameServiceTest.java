@@ -27,11 +27,11 @@ public class RacingGameServiceTest {
     @Test
     @DisplayName("각 라운드에서 0부터 9까지의 숫자가 무작위로 생성되는지 테스트")
     void test_CarMovesForward() {
-        //given
+
         int roundCount = 3;
         List<Car> cars = Arrays.asList(new Car("Car1",0), new Car("Car2",0));
 
-        //when & then
+
         for (int i = 0; i < roundCount; i++) {
             racingGameService.playRound(cars);
             System.out.println("<ROUND " + i +">");
@@ -46,7 +46,7 @@ public class RacingGameServiceTest {
     @DisplayName("생성된 숫자가 4 이상일 경우 자동차가 전진하는지 확인하는 테스트")
     void testCarMoveWhenRandomValueOVER4() {
         Car car = new Car("testCar", 0);
-        //given
+
         int randomValue = Randoms.pickNumberInRange(4, 9);
         if (randomValue >= 4) {
             car.move();
@@ -58,7 +58,7 @@ public class RacingGameServiceTest {
     @DisplayName("생성된 숫자가 4 미만일 경우 자동차가 전진하는지 확인하는 테스트")
     void testCarMoveWhenRandomValueLess4() {
         Car car = new Car("testCar", 0);
-        //given
+
         int randomValue = Randoms.pickNumberInRange(0, 3);
         if (randomValue >= 4) {
             car.move();
@@ -69,7 +69,7 @@ public class RacingGameServiceTest {
     @Test
     @DisplayName("자동차 이름과 -로 표시된 전진 결과가 올바르게 출력되는지 테스트")
     void testPrintResult() {
-        // given
+
         int attemptCount = 5;
         List<Car> cars = Arrays.asList(new Car("SONATA", 0), new Car("ABANTE", 0));
 
@@ -77,9 +77,9 @@ public class RacingGameServiceTest {
         System.setOut(new PrintStream(outputStreamCaptor));
 
         try {
-            // when
+
             racingGameService.raceGame(cars, attemptCount);
-            // then
+
             String output = outputStreamCaptor.toString();
             System.out.println("출력내용 " + outputStreamCaptor);
 
@@ -92,5 +92,32 @@ public class RacingGameServiceTest {
         } finally {
             System.setOut( System.out);
         }
+    }
+
+    @Test
+    @DisplayName("가장 많이 전진한 자동차가 하나인 경우")
+    void testFindSingleWinner() {
+        Car car1 = new Car("Car1",5);
+        Car car2 = new Car("Car2",4);
+        Car car3 = new Car("Car3",3);
+
+        List<Car> cars = Arrays.asList(car1,car2,car3);
+        List<String> winner = racingGameService.findWinners(cars);
+
+        assertTrue(winner.contains("Car1"));
+    }
+
+    @Test
+    @DisplayName("가장 많이 전진한 자동차가 여러대인 경우")
+    void testFindMultipleWinner() {
+        Car car1 = new Car("Car1",5);
+        Car car2 = new Car("Car2",5);
+        Car car3 = new Car("Car3",5);
+
+        List<Car> cars = Arrays.asList(car1,car2,car3);
+        List<String> winners = racingGameService.findWinners(cars);
+
+        assertEquals(3,winners.size());
+        assertTrue(winners.containsAll(Arrays.asList("Car1","Car2","Car3")));
     }
 }
