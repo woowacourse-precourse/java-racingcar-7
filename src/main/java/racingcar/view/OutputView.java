@@ -19,15 +19,15 @@ public class OutputView {
     }
 
     public static void printWinners(List<String> carNames ) {
-        System.out.println("최종 우승자 :");
-        System.out.println(carNames.get(0));
+        System.out.print("최종 우승자 :");
+        System.out.print(carNames.get(0));
         if (checkSoloWin(carNames)) {
             System.out.println();
             return;
         }
         for (int i = 1; i < carNames.size(); i++) {
-            System.out.println(", ");
-            System.out.println(carNames.get(i));
+            System.out.print(", ");
+            System.out.print(carNames.get(i));
         }
         System.out.println();
     }
@@ -37,14 +37,14 @@ public class OutputView {
     }
 
     private static void printCarScore(Car car) {
-        System.out.println(car.getName() + " : ");
+        System.out.print(car.getName() + " : ");
         printPosition(car);
         System.out.println();
     }
 
     private static void printPosition(Car car) {
         for (int i = 0; i < car.getCurrentPosition(); i++) {
-            System.out.println("-");
+            System.out.print("-");
         }
     }
 

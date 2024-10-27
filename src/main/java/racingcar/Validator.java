@@ -4,9 +4,9 @@ package racingcar;
 import java.util.List;
 
 public class Validator {
-    private static final int CAR_NAME_NIN_NAME= 1;
-    private static final int CAR_NAME_MAX_NAME = 5;
-    private static final String SPACE = "";
+    private static final int CAR_NAME_NIN_NAME=1;
+    private static final int CAR_NAME_MAX_NAME =5;
+    private static final String SPACE = " ";
     private final Parser parser = new Parser();
 
     public void checkCarNamesInput(String input) throws IllegalArgumentException {
@@ -52,7 +52,7 @@ public class Validator {
     }
 
     private void checkEqualAndThrowException(String carName1, String carName2){
-        if (!carName1.equals(carName2)) {
+        if (carName1.equals(carName2)) {
             throw new IllegalArgumentException("[ERROR] 같은 이름을 가진 자동차가 있습니다.");
         }
     }
