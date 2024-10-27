@@ -12,7 +12,6 @@ public class Car {
     private int position; // 자동차의 현재 위치 저장
 
     public Car(String name) {
-        CarNameValidator.validate(name);
         this.name = name;
         this.position = 0;
     }
