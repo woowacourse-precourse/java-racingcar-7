@@ -61,13 +61,13 @@ public class RaceService {
         }
     }
 
-    private static void validateCarListLessThenMaxLength(List<Car> cars) {
+    private void validateCarListLessThenMaxLength(List<Car> cars) {
         if (cars.size() > CAR_MAX_SCOPE) {
             throw new IllegalArgumentException("자동차는 최대 " + CAR_MAX_SCOPE + "개까지 입력 가능합니다.");
         }
     }
 
-    private static void validateExistCarInList(List<Car> cars) {
+    private void validateExistCarInList(List<Car> cars) {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException("자동차가 없습니다.");
         }

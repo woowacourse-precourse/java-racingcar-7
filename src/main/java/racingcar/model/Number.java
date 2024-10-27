@@ -14,7 +14,7 @@ public class Number {
         validateValueLessThenMaxValue();
     }
 
-    private static void validateValueIsNotEmpty(String value) {
+    private void validateValueIsNotEmpty(String value) {
         if (value == null || value.isBlank()) {
             throw new IllegalArgumentException("시도 횟수를 입력하세요.");
         }
