@@ -16,10 +16,7 @@ public class GameController {
 
 	public void run() {
 		String carNamesInput = getCarNamesInput();
-		List<String> carNames = TextSeparator.separateCarNames(carNamesInput);
-		List<Car> cars = carNames.stream()
-				.map(Car::new)
-				.toList();
+		List<Car> cars = generateCars(carNamesInput);
 		int trialCount = getTrialCountInput();
 		executeRaceGame(cars, trialCount);
 		printWinnerResultMessage(cars);
@@ -28,6 +25,13 @@ public class GameController {
 	private String getCarNamesInput() {
 		OutputView.printCarNamesInputMessage();
 		return InputView.getCarNamesInput();
+	}
+
+	private List<Car> generateCars(String carNamesInput) {
+		List<String> carNames = TextSeparator.separateCarNames(carNamesInput);
+		return carNames.stream()
+				.map(Car::new)
+				.toList();
 	}
 
 	private int getTrialCountInput() {
