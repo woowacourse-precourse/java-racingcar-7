@@ -37,6 +37,5 @@ public class Application {
         }
         System.out.println(messagePrinter.totalRandomResultMessage());
 
-
     }
 }

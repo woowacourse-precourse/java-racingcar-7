@@ -19,4 +19,9 @@ public class MapBuilder {
     public void mapSingleRandomRoundResult(int i) {
 //        이 부분은 어떻게 할지 아직 모르겠다.
     }
+
+    public String getTotalRandomResultFromMap(){
+//        이 부분은 어떻게 할지 아직 모르겠다.
+        return "";
+    }
 }
