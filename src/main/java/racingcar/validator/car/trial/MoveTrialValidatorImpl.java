@@ -6,7 +6,7 @@ public class MoveTrialValidatorImpl implements MoveTrialValidator {
 
     @Override
     public void valdate(String trialInputString) {
-        if (trialInputString.matches(NUMBER_REGEX))
+        if (!trialInputString.matches(NUMBER_REGEX))
             throw new IllegalArgumentException("잘못된 시도 횟수 입력");
     }
 }
