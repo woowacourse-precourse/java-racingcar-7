@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.Output.OutputHandler;
 
 public class Cars {
     private final List<Car> cars;
@@ -32,20 +33,15 @@ public class Cars {
         for (Car car : cars) {
             car.moveForward();
         }
-        printRacingProgress();
-
     }
 
-    private void printRacingProgress() {
+    public void printRacingProgress(OutputHandler outputHandler) {
         for (Car car : cars) {
-            System.out.print(car.getName() + " : ");
-            for (int j = 0; j < car.getPosition(); j++) {
-                System.out.print("-");
-            }
-            System.out.println();
+            outputHandler.printCarProgress(car.getName(), car.getPosition());
         }
-        System.out.println();
+        outputHandler.printNewLine();
     }
+
 
     public List<Car> getWinners() {
         List<Car> winners = new ArrayList<>();

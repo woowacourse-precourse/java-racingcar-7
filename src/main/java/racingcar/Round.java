@@ -10,18 +10,13 @@ public class Round {
 
     }
 
+    public int getRound() {
+        return round;
+    }
 
     private void validateInteger() {
         if (round < 1) {
             throw new IllegalArgumentException("a");
         }
     }
-
-    public void process(Cars cars) {
-        for (int i = 0; i < round; i++) {
-            cars.moveForward();
-        }
-    }
-
-
 }

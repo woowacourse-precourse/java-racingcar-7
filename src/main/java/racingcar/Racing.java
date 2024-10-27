@@ -2,17 +2,21 @@ package racingcar;
 
 import java.util.List;
 import racingcar.Input.InputHandler;
+import racingcar.Output.OutputHandler;
 
 public class Racing {
 
     private final InputHandler inputHandler;
+    private final OutputHandler outputHandler;
 
-    public Racing(InputHandler inputHandler) {
+    public Racing(InputHandler inputHandler, OutputHandler outputHandler) {
         this.inputHandler = inputHandler;
+        this.outputHandler = outputHandler;
     }
 
     public void start() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+
+        outputHandler.printCarNameRequest();
 
         String input = inputHandler.inputCarNameList();
 
@@ -22,20 +26,17 @@ public class Racing {
 
         cars.addCar(carNameList);
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        outputHandler.printRoundRequest();
 
         Round round = new Round(inputHandler.inputRoundNumber());
 
-        round.process(cars);
+        for (int i = 0; i < round.getRound(); i++) {
+            cars.moveForward();
+            cars.printRacingProgress(outputHandler);
+        }
 
         List<Car> winners = cars.getWinners();
 
-        System.out.print("최종 우승자 : ");
-        for (int i = 0; i < winners.size(); i++) {
-            System.out.print(winners.get(i).getName());
-            if (i < winners.size() - 1) {
-                System.out.print(", ");
-            }
-        }
+        outputHandler.printWinners(winners);
     }
 }
