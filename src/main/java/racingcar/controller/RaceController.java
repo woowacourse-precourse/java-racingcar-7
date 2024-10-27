@@ -21,6 +21,7 @@ public class RaceController {
     }
 
     public void play (RequestRaceDto requestRaceDto) {
+        OutputView.printExecutionMessage();
         for (int index = 0; index < requestRaceDto.getTryNumber(); index++) {
             raceService.race(requestRaceDto.getCarList());
             for (Car car : requestRaceDto.getCarList()) {
