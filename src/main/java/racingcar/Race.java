@@ -7,12 +7,10 @@ import java.util.List;
 public class Race {
 
     private List<RacingCar> racingCarList;
-    private List<String> winnerList;
     private int maxRoundValue;
 
     public Race(List<RacingCar> racingCarList, int maxRoundValue) {
         this.racingCarList = racingCarList;
-        this.winnerList = new ArrayList<>();
         this.maxRoundValue = maxRoundValue;
     }
 
@@ -21,8 +19,6 @@ public class Race {
         for (int i = 0; i < maxRoundValue; i++) {
             executeRound();
         }
-        findWinner();
-        displayWinner();
     }
 
     private void executeRound() {
@@ -34,19 +30,16 @@ public class Race {
         System.out.println();
     }
 
-    private void displayWinner() {
-        String winner = String.join(", ", winnerList);
-        System.out.println("최종 우승자 : " + winner);
-    }
-
-    private void findWinner() {
+    List<String> findWinner() {
         int maxForwardCount = findMaxForwardCount();
+        List<String> winnerList = new ArrayList<>();
         for (RacingCar racingCar : racingCarList) {
             if (racingCar.isWinner(maxForwardCount)) {
                 String winnerCarName = racingCar.getName();
                 winnerList.add(winnerCarName);
             }
         }
+        return winnerList;
     }
 
     private int findMaxForwardCount() {
