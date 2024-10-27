@@ -1,6 +1,7 @@
 package racingcar.validator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
@@ -10,69 +11,63 @@ class InputValidatorTest {
 
     private InputValidator inputValidator = new InputValidator();
 
-    @DisplayName("공백이 아닌 문자열을 입력할 때 결과 값은 False다.")
+    @DisplayName("공백이 아닌 문자열을 입력할 때 예외가 발생하지 않는다.")
     @Test
-    void resultIsTrueWhenInputIsNotBlank() {
+    void doesNotThrowExceptionWhenInputIsNotBlank() {
         // given
         String inputCarNames = "pobi";
 
-        // when
-        boolean result = inputValidator.isInputEmpty(inputCarNames);
-
-        // then
-        assertThat(result).isFalse();
+        // when     // then
+        assertDoesNotThrow(() -> inputValidator.isInputEmpty(inputCarNames));
     }
 
-    @DisplayName("공백 문자열을 입력할 때 결과 값은 True다.")
+    @DisplayName("공백 문자열을 입력할 때 예외가 발생한다.")
     @Test
-    void resultIsTrueWhenInputIsBlank() {
+    void throwExceptionWhenInputIsBlank() {
         // given
         String inputCarNames = " ";
 
-        // when
-        boolean result = inputValidator.isInputEmpty(inputCarNames);
+        // when     // then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> inputValidator.isInputEmpty(inputCarNames));
 
-        // then
-        assertThat(result).isTrue();
+        assertThat(exception.getMessage()).isEqualTo("경주할 자동차 이름을 입력해주세요.");
     }
 
-    @DisplayName("입력 값이 Null일 때 결과 값은 True다.")
+    @DisplayName("입력 값이 Null일 때 예외가 발생한다.")
     @Test
-    void resultIsTrueWhenInputIsNull() {
+    void throwExceptionWhenInputIsNull() {
         // given
         String inputCarNames = null;
 
-        // when
-        boolean result = inputValidator.isInputEmpty(inputCarNames);
+        // when     // then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> inputValidator.isInputEmpty(inputCarNames));
 
-        // then
-        assertThat(result).isTrue();
+        assertThat(exception.getMessage()).isEqualTo("경주할 자동차 이름을 입력해주세요.");
     }
 
-    @DisplayName("모든 이름의 글자 수가 5자 이하일 때 결과 값은 True다.")
+    @DisplayName("모든 이름의 글자 수가 5자 이하일 때 예외가 발생하지 않는다.")
     @Test
-    void resultIsTrueWhenAllInputLenIsFiveOrLess() {
+    void doesNotThrowExceptionWhenAllInputLenIsFiveOrLess() {
         // given
         String[] names = new String[]{"pobi", "alis", "bamin"};
 
-        // when
-        boolean result = inputValidator.validCarNameLength(names);
-
-        // then
-        assertThat(result).isTrue();
+        // when     // then
+        assertDoesNotThrow(() -> inputValidator.validCarNameLength(names));
     }
 
-    @DisplayName("모든 이름 중 하나의 이름이 5자 초과일 때 결과 값은 False다.")
+    @DisplayName("모든 이름 중 하나의 이름이 5자 초과일 때 예외가 발생한다.")
     @Test
-    void resultIsFalseWhenAnyInputNameExceedFive() {
+    void throwExceptionWhenAnyInputNameExceedFive() {
         // given
         String[] names = new String[]{"pobi", "alis", "youngtae"};
 
-        // when
-        boolean result = inputValidator.validCarNameLength(names);
+        // when     // then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> inputValidator.validCarNameLength(names));
 
-        // then
-        assertThat(result).isFalse();
+        assertThat(exception.getMessage()).isEqualTo("자동차 이름은 최대 5글자 입니다.");
     }
 
     @DisplayName("정상적인 양수 문자를 입력할 때 정수형 값으로 변환된다.")
@@ -86,6 +81,7 @@ class InputValidatorTest {
 
         // then
         assertThat(validatedNumber).isInstanceOf(Integer.class);
+        assertThat(validatedNumber).isEqualTo(123);
     }
 
     @DisplayName("숫자로 변환 불가능한 문자를 입력할 때 에외가 발생한다..")
@@ -95,8 +91,10 @@ class InputValidatorTest {
         String input = "abc";
 
         // when  // then
-        assertThrows(IllegalArgumentException.class,
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> inputValidator.getValidatedRacingAttempt(input));
+
+        assertThat(exception.getMessage()).isEqualTo("1이상의 양수를 입력해주세요.");
     }
 
     @DisplayName("음수를 입력할 때 에외가 발생한다.")
@@ -106,7 +104,9 @@ class InputValidatorTest {
         String input = "-5";
 
         // when  // then
-        assertThrows(IllegalArgumentException.class,
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> inputValidator.getValidatedRacingAttempt(input));
+
+        assertThat(exception.getMessage()).isEqualTo("1이상의 양수를 입력해주세요.");
     }
 }
