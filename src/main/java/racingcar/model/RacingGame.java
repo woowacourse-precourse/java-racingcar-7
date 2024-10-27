@@ -1,14 +1,10 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private static final int START_INCLUSIVE = 0;
-    private static final int END_INCLUSIVE = 9;
-    private static final int MOVE_THRESHOLD = 4;
     private static final int FIRST_ROUND = 1;
     private static final int ERROR_POSITION = -1;
 
@@ -38,7 +34,7 @@ public class RacingGame {
 
     public void play() {
         for (RacingCar player : players) {
-            if (canMove()) {
+            if (player.canMove()) {
                 player.move();
             }
         }
@@ -46,10 +42,6 @@ public class RacingGame {
 
     public void incrementRound() {
         currentRound += 1;
-    }
-
-    private boolean canMove() {
-        return Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE) >= MOVE_THRESHOLD;
     }
 
     public boolean isNotFinished() {
