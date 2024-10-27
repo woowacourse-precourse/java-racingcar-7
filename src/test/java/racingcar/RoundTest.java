@@ -19,7 +19,6 @@ class RoundTest extends NsTest {
                 RoundValidator.countValidate(Collections.singletonList(0))
         );
         assert(exception.getMessage().equals("횟수는 0 이상이어야 합니다."));
-
     }
 
     @Test
