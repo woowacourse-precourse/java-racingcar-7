@@ -26,21 +26,24 @@ public class RoundRepository {
 
     public void save(Round round) {
         round.setId(id);
-
-        for (Car car : round.getCarList()) {
-            car.addRound(round);
-            carRepository.update(car);
-        }
-
         rounds.put(id, round);
+        checkCarReference(round);
         id++;
     }
 
     public void update(Round round) {
         rounds.replace(round.getId(), round);
+        checkCarReference(round);
     }
 
     public Round findByRoundId(int id) {
         return rounds.get(id);
+    }
+
+    private void checkCarReference(Round round) {
+        for (Car car : round.getCarList()) {
+            car.addRound(round);
+            carRepository.update(car);
+        }
     }
 }
