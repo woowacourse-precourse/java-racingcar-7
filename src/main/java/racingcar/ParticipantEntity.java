@@ -1,11 +1,12 @@
 package racingcar;
 
 public class ParticipantEntity {
-    String name;
-    String distance;
+    private String name;
+    private String distance;
 
     public ParticipantEntity(String name) {
         this.name = name;
+        this.distance = "";
     }
 
     public String getName() {

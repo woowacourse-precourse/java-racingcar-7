@@ -1,11 +1,13 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.dto.RacingGameInitializationRequest;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class RacingCarGameModel {
-    ArrayList<ParticipantEntity> participantEntities = new ArrayList<>();
+    private final ArrayList<ParticipantEntity> participantEntities = new ArrayList<>();
     private int time = 0;
 
     public void initializationGame(RacingGameInitializationRequest request) {
@@ -16,6 +18,29 @@ public class RacingCarGameModel {
         }
 
         time = timeValidation(request.time());
+    }
+
+    public String startGame() {
+        return java.util.stream.IntStream.range(0, time)
+                .mapToObj(turn -> forwardCar())
+                .collect(Collectors.joining("\n"));
+    }
+
+    private String forwardCar() {
+        return participantEntities.stream()
+                .peek(entity -> {
+                    int randomNumber = Randoms.pickNumberInRange(0, 9);
+
+                    if (randomNumber >= 4) {
+                        successForward(entity);
+                    }
+                })
+                .map(entity -> entity.getName() + " : " + entity.getDistance())
+                .collect(Collectors.joining("\n"));
+    }
+
+    private void successForward(ParticipantEntity participantEntity) {
+        participantEntity.forward();
     }
 
     private String nameValidation(String name) {
