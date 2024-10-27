@@ -3,19 +3,28 @@ package racingcar;
 import static racingcar.Parser.parseAttempts;
 import static racingcar.Parser.parseCarNames;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.Optional;
+import racingcar.prompt.CarRacingEnrollPrompt;
+import racingcar.prompt.CarRacingResultPrompt;
+import racingcar.prompt.Prompt;
+import racingcar.prompt.PromptModel;
 
 public class Application {
 
     public static void main(String[] args) {
 
-        ConsoleIO consoleIO = new ConsoleIO();
+        Prompt enrollPrompt = new CarRacingEnrollPrompt();
+        Prompt resultPrompt = new CarRacingResultPrompt();
 
-        HashMap<String, String> inputData = consoleIO.input();
-        CarRacing carRacing = new CarRacing(parseCarNames(inputData.get("carNames")),
-                parseAttempts(inputData.get("attempts")));
-        List<String> outputData = carRacing.race();
-        consoleIO.output(outputData);
+        Optional<PromptModel> enrollWrapper = enrollPrompt.print(null);
+        PromptModel enroll = null;
+        if (enrollWrapper.isPresent()) {
+            enroll = enrollWrapper.get();
+        }
+
+        CarRacing carRacing = new CarRacing(parseCarNames(enroll.get("carNames")),
+                parseAttempts(enroll.get("attempts")));
+        PromptModel result = carRacing.race();
+        resultPrompt.print(result);
     }
 }
