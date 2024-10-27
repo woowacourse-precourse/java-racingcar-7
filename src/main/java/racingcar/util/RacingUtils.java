@@ -16,7 +16,7 @@ public class RacingUtils {
             input = replaceWhitespaceAroundComma(input);
         }
 
-        List<String> list = Arrays.stream(input.split(",")).toList();
+        List<String> list = Arrays.stream(input.split(",")).toList();// ,로 나눠 리스트에 나눠담음
 
         RacingException.throwIllegalArgumentException("잘못된 입력입니다.", hasDuplicates(list) || hasAnyStringExceedingLength(list));
 
@@ -28,7 +28,7 @@ public class RacingUtils {
     }
 
     public static String replaceWhitespaceAroundComma(String input) {
-        input = input.replace(" ,", ",");
+        input = input.replace(" ,", ",");// `, `나 ` ,`일 경우 띄어쓰기를 제거
         input = input.replace(", ", ",");
 
         return input;
@@ -51,6 +51,10 @@ public class RacingUtils {
         }
 
         return result;
+    }
+
+    public static String joinWithCommaAndWhiteSpace(List<String> names) {
+        return String.join(", ", names);
     }
 
     public static boolean isNotPositive(int number) {

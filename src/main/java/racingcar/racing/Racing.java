@@ -14,7 +14,7 @@ public class Racing {
 
     public List<String> race() {
         return cars.stream().map(car -> {
-            car.moveCar();
+            car.move();
             return car.toString();
         }).toList();
     }
@@ -23,12 +23,12 @@ public class Racing {
         int max = findMaxDistance();
 
         return cars.stream()
-                .filter(car -> car.getDistance() == max)
-                .map(Car::getName)
+                .filter(car -> car.getDistance() == max) // distance가 max와 일치할 경우
+                .map(Car::getName) // car의 이름을 리스트에 담아 반환
                 .toList();
     }
 
     private int findMaxDistance() {
-        return cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+        return cars.stream().mapToInt(Car::getDistance).max().orElse(0); // distance의 max값 찾기
     }
 }

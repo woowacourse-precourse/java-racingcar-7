@@ -23,7 +23,7 @@ public class Car implements Comparable<Car> {
         return distance;
     }
 
-    public void moveCar() {
+    public void move() {
         this.distance += Randoms.pickNumberInRange(0, 9);
     }
 
