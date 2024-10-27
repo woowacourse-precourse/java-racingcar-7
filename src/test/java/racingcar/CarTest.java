@@ -20,6 +20,31 @@ class CarTest {
     }
 
     @Test
+    void getPosition_0_테스트() {
+        // given
+        Car car = new Car("dong");
+
+        // when
+        int position = car.getPosition();
+
+        // then
+        assertEquals(position, 0);
+    }
+
+    @Test
+    void getPosition_1_테스트() {
+        // given
+        Car car = new Car("dong");
+        car.moveIfPossible(4);
+
+        // when
+        int position = car.getPosition();
+
+        // then
+        assertEquals(position, 1);
+    }
+
+    @Test
     void getStatus_위치0_테스트() {
         // given
         Car car = new Car("dong");
