@@ -16,6 +16,8 @@ public class Game {
     }
 
     public void start(int loopCnt) {
+        System.out.println("실행 결과");
+        
         racingStart(loopCnt);
         findWinner();
         printWinner();
@@ -25,9 +27,6 @@ public class Game {
         for (int i = 0; i < loopCnt; i++) {
             racing();
         }
-
-        System.out.println("실행 결과");
-        printCurrent();
     }
 
     private void racing() {
@@ -36,6 +35,8 @@ public class Game {
                 car.forwardOne();
             }
         });
+
+        printCurrent();
     }
 
     private void printCurrent() {
