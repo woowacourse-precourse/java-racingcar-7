@@ -25,10 +25,16 @@ public class RaceGameController {
     public void run() {
         String racerNames = requestInputStringRacerName();
         List<Car> cars = raceGameService.enrollRacer(racerNames, new InputStringParser());
+        final int trialCount = requestInputTrialCount();
     }
 
     private String requestInputStringRacerName() {
         outputView.printAskInputRacerName();
         return inputView.read();
+    }
+
+    private int requestInputTrialCount(){
+        outputView.printAskInputTrialCount();
+        return Integer.parseInt(inputView.read());
     }
 }
