@@ -14,6 +14,7 @@ public class RacingManager {
     }
 
     public void playRounds() {
+        System.out.println();
         for (int i = 0; i < tryCount; i++) {
             moveCars();
             displayPositions();
