@@ -31,14 +31,8 @@ public class RacingCarController {
 
     private List<String> getUserInputAndValidate() {
         String carNames = inputView.getCarNames();
-        inputValidator.carNamesParser(carNames);
-        return splitUserInput(carNames);
-    }
-
-    private List<String> splitUserInput(String carNames) {
-        List<String> nameList = Arrays.asList(carNames.split(","));
-        inputValidator.hasDuplications(nameList);
-        return nameList;
+        inputValidator.validateCarNames(carNames);
+        return Arrays.asList(carNames.split(","));
     }
 
     private int getUserEpoch() {
