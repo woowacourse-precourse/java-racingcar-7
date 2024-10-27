@@ -10,17 +10,17 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.TryCount;
-import racingcar.domain.TryCountDto;
+import racingcar.model.Car;
+import racingcar.model.Players;
+import racingcar.model.TryCount;
+import racingcar.model.TryCountDto;
 
 class RacingGameControllerTest {
-    private Cars cars;
+    private Players players;
 
     @BeforeEach
     void beforeEach() {
-        cars = new Cars();
+        players = new Players();
     }
 
     @DisplayName("자동차 이름이 영어가 아니면 예외가 발생한다")
@@ -44,7 +44,7 @@ class RacingGameControllerTest {
     void 자동차_이름_중복_테스트() {
         List<String> names = List.of("Hippo","Hippo","B","C");
 
-        assertThatThrownBy(() -> cars.registerAll(names)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> players.registerAll(names)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 이름이 10개를 초과하는 경우 예외가 발생한다")
@@ -52,14 +52,14 @@ class RacingGameControllerTest {
     void 자동차_이름_최대_개수_테스트() {
         List<String> names = List.of("A","B","C","D","E","F","G","H","I","J","K");
 
-        assertThatThrownBy(() -> cars.registerAll(names)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> players.registerAll(names)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 이름이 1개인 경우 예외가 발생한다")
     @Test
     void 자동차_이름_최소_개수_테스트() {
         List<String> names = List.of("A");
-        assertThatThrownBy(() -> cars.registerAll(names)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> players.registerAll(names)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력 받은 시도 횟수가 숫자가 아닌 경우 예외가 발생한다")

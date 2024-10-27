@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.model;
 
 public class TryCount {
     private final int count;

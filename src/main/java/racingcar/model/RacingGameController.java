@@ -1,21 +1,16 @@
-package racingcar.controller;
+package racingcar.model;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.RacingGame;
-import racingcar.domain.TryCount;
-import racingcar.domain.TryCountDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class RacingGameManager {
+public class RacingGameController {
 
     private final InputView inputView;
     private final OutputView outputView;
 
-    public RacingGameManager(InputView inputView, OutputView outputView) {
+    public RacingGameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -23,32 +18,32 @@ public class RacingGameManager {
     public void run() {
         String inputCarNames = inputView.inputCarNames();
 
-        Cars cars = registerCar(inputCarNames);
+        Players players = registerCar(inputCarNames);
 
         String inputTryCount = inputView.inputTryCount();
 
         TryCount tryCount = registerTryCount(inputTryCount);
 
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(players);
 
         outputView.printRoundHeader();
         for (int i = 0; i < tryCount.getCount(); i++) {
             racingGame.round();
-            outputView.printRoundResult(cars.getCars());
+            outputView.printRoundResult(players.getPlayers());
         }
 
         List<Car> winners = racingGame.checkWinner();
         outputView.printWinner(winners);
     }
 
-    public Cars registerCar(String input) {
-        Cars cars = new Cars();
+    public Players registerCar(String input) {
+        Players players = new Players();
 
         List<String> names = Arrays.stream(splitInput(input)).toList();
 
-        cars.registerAll(names);
+        players.registerAll(names);
 
-        return cars;
+        return players;
     }
 
     public TryCount registerTryCount(String input) {

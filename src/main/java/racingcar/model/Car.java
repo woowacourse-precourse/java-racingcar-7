@@ -1,27 +1,28 @@
-package racingcar.domain;
+package racingcar.model;
 
 import java.util.Objects;
 
 public class Car {
 
     private final String name;
-    private int position = 0;
+    private final Location location;
 
-    private Car(String name) {
+    private Car(String name, Location location) {
         validate(name);
         this.name = name;
+        this.location = location;
     }
 
     public static Car from(String name) {
-        return new Car(name);
+        return new Car(name, new Location());
     }
 
     public void move() {
-        position++;
+        location.move();
     }
 
-    public int getPosition() {
-        return position;
+    public int getCurrentLocation() {
+        return location.getLocation();
     }
 
     public String getName() {
@@ -30,7 +31,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "name: " + name +", position : " + position;
+        return "name: " + name +", position : " + location;
     }
 
     @Override

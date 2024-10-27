@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.domain.Car;
+import racingcar.model.Car;
 
 public class OutputView {
 
@@ -18,7 +18,7 @@ public class OutputView {
         cars.forEach(car -> {
             stringBuilder.append(car.getName());
             stringBuilder.append(" : ");
-            stringBuilder.append("-".repeat(Math.max(0, car.getPosition())));
+            stringBuilder.append("-".repeat(Math.max(0, car.getCurrentLocation())));
             stringBuilder.append("\n");
         });
 
