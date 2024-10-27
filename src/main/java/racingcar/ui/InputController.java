@@ -9,7 +9,7 @@ public class InputController {
     }
 
     public InputCarNames getInputCarNames() {
-        return new InputCarNames(inputConsole.readLine());
+        return InputCarNames.of(inputConsole.readLine());
     }
 
     public InputGameRoundCount getInputRoundCount() {
