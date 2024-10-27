@@ -27,11 +27,19 @@ public class RacingTrack {
         }
     }
 
-    public void step() {
+    public List<String> step() {
         for (Car car : cars) {
             var seed = Randoms.pickNumberInRange(0, 9);
             car.move(seed);
         }
+
+        return getCarPositions();
+    }
+
+    public List<String> getCarPositions() {
+        return cars.stream()
+                .map(Car::getPositionInfo)
+                .toList();
     }
 
     public List<String> getWinnerNames() {
