@@ -2,6 +2,7 @@ package racingcar.model.car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import racingcar.exception.InvalidNameException;
 
 public class Cars {
@@ -46,5 +47,22 @@ public class Cars {
 
     public Car car(final int index) {
         return values.get(index);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Cars cars = (Cars) o;
+        return Objects.equals(values, cars.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(values);
     }
 }
