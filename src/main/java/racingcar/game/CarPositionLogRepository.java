@@ -13,8 +13,13 @@ public class CarPositionLogRepository {
         BigInteger currentPosition = car.getCurrentPosition();
         String name = car.getName();
 
-        carMovementLog.computeIfAbsent(name, k -> new ArrayList<>());
         carMovementLog.get(name).add(currentPosition);
+    }
+
+    public void saveCarNames(List<String> carNames) {
+        carNames.forEach(carName -> {
+            carMovementLog.computeIfAbsent(carName, k -> new ArrayList<>());
+        });
     }
 
     public Map<String, List<BigInteger>> getCarPositionLog() {

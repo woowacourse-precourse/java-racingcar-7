@@ -22,6 +22,7 @@ public class RacingCarGame {
         int attemptCount = inputValue.getAttemptCount();
 
         carManager.createCars(carNames);
+        carPositionLogRepository.saveCarNames(carNames);
 
         this.attemptCount = attemptCount;
         this.integerGenerator = integerGenerator;
