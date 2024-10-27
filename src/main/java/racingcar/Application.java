@@ -12,7 +12,8 @@ public class Application {
         RacingCar.checkInputCarNames(carNames);
         Car cars[] = new Car[carNames.length];
         RacingCar.saveCars(carNames, cars);
-        RacingCar.OutputEachTrial(inputTrial, cars);
+        RacingCar.outputEachTrial(inputTrial, cars);
+        RacingCar.outputWinners(cars);
 
 
     }

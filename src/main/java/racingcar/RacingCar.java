@@ -68,7 +68,7 @@ public class RacingCar {
         }
 
     }
-    public static void OutputEachTrial(int trial, Car cars[]) {
+    public static void outputEachTrial(int trial, Car cars[]) {
 
         for (int i = 0; i < trial; i++) {
             saveCarsActions(cars);
@@ -109,6 +109,14 @@ public class RacingCar {
             goString = goString + "-";
         }
         return goString;
+    }
+
+    public static void outputWinners(Car cars[]) {
+
+        int maxTrial = getMaxTrial(cars);
+        String winnerString = makeWinnerString(cars, maxTrial);
+        System.out.println("최종 우승자 :" + winnerString);
+
     }
 
 
