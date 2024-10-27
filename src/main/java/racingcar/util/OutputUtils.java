@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 
 public class OutputUtils {
-
     public static void printPosition(List<Car> carList){
         for(Car car: carList){
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
