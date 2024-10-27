@@ -37,6 +37,8 @@ public class Application {
 
         int trial = 0;
         int randomNum = 0;
+
+        outputController.printResultSentence();
         while (trial < attempts) {
             trial++;
             moveController(cars, carMoveMap);

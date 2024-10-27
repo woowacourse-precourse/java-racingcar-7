@@ -6,12 +6,17 @@ import java.util.Map.Entry;
 
 public class outputController {
 
+    public void printResultSentence() {
+        System.out.println("실행 결과");
+    }
+
     public void printPerAttempt(Map<String, String> carMoveMap) {
         for (Entry<String, String> items : carMoveMap.entrySet()) {
             String car = items.getKey();
             String move = items.getValue();
             System.out.println(car + " : " + move);
         }
+        System.out.println();
     }
 
     public void printWinner(ArrayList<String> winners) {
