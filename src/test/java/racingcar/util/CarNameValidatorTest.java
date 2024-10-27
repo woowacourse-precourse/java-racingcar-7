@@ -4,8 +4,8 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.common.ErrorMessage;
-import racingcar.common.RacingCarException;
+import racingcar.exception.ErrorMessage;
+import racingcar.exception.RacingCarException;
 
 @DisplayName("사용자 입력 자동차 이름 목록에 대한 유효성 검사")
 class CarNameValidatorTest {

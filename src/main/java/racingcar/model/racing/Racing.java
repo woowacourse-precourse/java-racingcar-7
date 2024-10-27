@@ -1,6 +1,7 @@
-package racingcar.model;
+package racingcar.model.racing;
 
 import java.util.List;
+import racingcar.model.car.Car;
 
 public class Racing {
     private final Participants participants;
@@ -15,7 +16,7 @@ public class Racing {
 
 
     public void executeRound() {
-        participants.moveCarsRandomly();
+        participants.moveCars();
         currentRound++;
     }
 
@@ -33,8 +34,8 @@ public class Racing {
                 .findCarsWithMovedDistance(maxDistance);
     }
 
-    public static Racing from(List<String> carNames, int totalRounds) {
-        Participants participants = Participants.from(carNames);
+    public static Racing from(List<Car> cars, int totalRounds) {
+        Participants participants = new Participants(cars);
         return new Racing(participants, totalRounds);
     }
 }

@@ -3,8 +3,8 @@ package racingcar.util;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import racingcar.common.ErrorMessage;
-import racingcar.common.RacingCarException;
+import racingcar.exception.ErrorMessage;
+import racingcar.exception.RacingCarException;
 
 public class CarNameValidator {
     private static final int MAX_CAR_NAME_LENGTH = 5;

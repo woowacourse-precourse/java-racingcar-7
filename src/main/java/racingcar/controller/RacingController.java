@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.dto.RacingRequestDto;
 import racingcar.dto.RacingResponseDto;
-import racingcar.model.Car;
-import racingcar.model.Racing;
-import racingcar.model.RoundResult;
+import racingcar.model.car.Car;
+import racingcar.model.car.RandomMovingCar;
+import racingcar.model.racing.Racing;
+import racingcar.model.result.RoundResult;
 import racingcar.util.CarNameParser;
 import racingcar.util.CarNameValidator;
 import racingcar.util.RaceRoundValidator;
@@ -38,8 +39,12 @@ public class RacingController {
 
     private Racing initRacing(RacingRequestDto racingRequest) {
         List<String> carNames = getValidatedCarNames(racingRequest.rawCarNames());
+        List<Car> cars = carNames.stream()
+                .map(RandomMovingCar::new)
+                .map(car -> (Car) car)
+                .toList();
         int raceRound = getValidatedRaceRound(racingRequest.rawRoundsToRace());
-        return Racing.from(carNames, raceRound);
+        return Racing.from(cars, raceRound);
     }
 
     private List<RoundResult> runRacing(Racing racing) {

@@ -1,7 +1,7 @@
 package racingcar.util;
 
-import racingcar.common.ErrorMessage;
-import racingcar.common.RacingCarException;
+import racingcar.exception.ErrorMessage;
+import racingcar.exception.RacingCarException;
 
 public class RaceRoundValidator {
     private static final int MAX_RACE_ROUND = 100;

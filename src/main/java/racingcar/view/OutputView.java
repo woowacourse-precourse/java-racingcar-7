@@ -2,8 +2,8 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.dto.RacingResponseDto;
-import racingcar.model.Car;
-import racingcar.model.RoundResult;
+import racingcar.model.result.CarRecord;
+import racingcar.model.result.RoundResult;
 
 public class OutputView {
     private static final String ROUND_RESULT_START_MESSAGE = "실행 결과";
@@ -30,8 +30,8 @@ public class OutputView {
     }
 
     private void appendRoundResult(RoundResult roundResult) {
-        for (Car car : roundResult.getRoundResult()) {
-            appendCarResult(car);
+        for (CarRecord record : roundResult.getRoundResult()) {
+            appendCarResult(record);
         }
         stringBuilder.append("\n");
     }
@@ -42,10 +42,10 @@ public class OutputView {
                 .append("\n");
     }
 
-    private void appendCarResult(Car car) {
-        stringBuilder.append(car.getName())
+    private void appendCarResult(CarRecord record) {
+        stringBuilder.append(record.getCarName())
                 .append(" : ")
-                .append(buildDistanceGraph(car.getMovedDistance()))
+                .append(buildDistanceGraph(record.getMovedDistance()))
                 .append("\n");
     }
 

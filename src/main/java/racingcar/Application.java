@@ -1,7 +1,7 @@
 package racingcar;
 
-import racingcar.common.RacingCarException;
 import racingcar.controller.RacingController;
+import racingcar.exception.RacingCarException;
 import racingcar.view.ErrorView;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

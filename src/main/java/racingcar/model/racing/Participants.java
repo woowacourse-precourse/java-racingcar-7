@@ -1,7 +1,7 @@
-package racingcar.model;
+package racingcar.model.racing;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import racingcar.model.car.Car;
 
 public class Participants {
     private final List<Car> participants;
@@ -11,12 +11,8 @@ public class Participants {
     }
 
 
-    public void moveCarsRandomly() {
-        participants.forEach(car -> {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                car.move();
-            }
-        });
+    public void moveCars() {
+        participants.forEach(Car::move);
     }
 
     public List<Car> getParticipants() {
@@ -34,10 +30,5 @@ public class Participants {
                 .mapToInt(Car::getMovedDistance)
                 .max()
                 .orElse(0);
-    }
-
-    public static Participants from(List<String> carNames) {
-        List<Car> cars = carNames.stream().map(Car::new).toList();
-        return new Participants(cars);
     }
 }
