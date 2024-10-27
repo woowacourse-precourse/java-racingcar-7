@@ -24,7 +24,7 @@ public class CarNameParser {
      * @return 쉼표를 기준으로 분리한 자동차 이름 배열
      */
     public String[] splitCarNamesByComma(String carNames){
-        return carNames.split(",");
+        return carNames.split(DELIMITER);
     }
 
     /**
@@ -39,7 +39,7 @@ public class CarNameParser {
             throw new IllegalArgumentException("자동차 이름이 빈 문자열 입니다.");
         }
 
-        if(carName.length() > 5){
+        if(carName.length() > MAX_CAR_NAME_LENGTH){
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
     }
