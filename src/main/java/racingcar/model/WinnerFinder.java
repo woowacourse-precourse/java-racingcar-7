@@ -13,7 +13,7 @@ public class WinnerFinder {
     public String getWinner() {
         int maxScore = findMaxScore(racingCarManager.getRacingCarList());
         List<String> winners = addWinners(racingCarManager.getRacingCarList(), maxScore);
-        return String.join(",", winners);
+        return String.join(", ", winners);
     }
 
     private int findMaxScore(List<RacingCar> cars) {
