@@ -18,12 +18,24 @@ public class Game {
     }
 
     public void play() {
-        for (Car car : cars) {
-            if (car.pickRandomNumber() >= 4) {
-                car.moveForward();
-            }
-        }
+        playARound();
         round--;
+    }
+
+    private void playARound() {
+        for (Car car : cars) {
+            move(car);
+        }
+    }
+
+    private static void move(Car car) {
+        if (CanMoveForward(car)) {
+            car.moveForward();
+        }
+    }
+
+    private static boolean CanMoveForward(Car car) {
+        return car.pickRandomNumber() >= 4;
     }
 
     public List<String> findWinners() {
