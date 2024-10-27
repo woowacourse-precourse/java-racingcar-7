@@ -11,7 +11,7 @@ public class TryNumbersValidator {
     public void validateNumeric(String tryNums) {
         for (char num : tryNums.toCharArray()) {
             if (!Character.isDigit(num)) {
-                throw new IllegalArgumentException("숫자가 아닌 값은 올 수 없습니다.");
+                throw new IllegalArgumentException("시도 횟수는 0-9 사이의 정수만 허용됩니다.");
             }
         }
     }
