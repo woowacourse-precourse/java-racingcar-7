@@ -31,12 +31,14 @@ public class RacingCar {
         return winners;
     }
 
-    public static void readInputs(String[] names, int[] counts, Integer times){
+    public static void readInputs(String input_names, String input_times){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input_names = readLine();
+        input_names = readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String input_times = readLine();
+        input_times = readLine();
+    }
 
+    public static void processInputs(String[] names, int[] counts, Integer times, String input_names, String input_times){
         names = input_names.split(",");
         counts = new int[names.length];
         times = Integer.parseInt(input_times);
@@ -48,4 +50,6 @@ public class RacingCar {
         String[] winners = getWinners(names, distances);
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
+
+
 }

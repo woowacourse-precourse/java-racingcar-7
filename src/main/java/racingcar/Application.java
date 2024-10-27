@@ -13,8 +13,10 @@ public class Application {
         String[] names = {};
         int[] distances = {};
         Integer times = 0;
-        RacingCar.readInputs(names,distances,times);
+        String input_names = "";
+        String input_times = "";
+        RacingCar.readInputs(input_names, input_times);
+        RacingCar.processInputs(names, distances, times, input_names, input_times);
         RacingCar.printOutputs(names,distances,times);
-
     }
 }
