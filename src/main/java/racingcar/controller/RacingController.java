@@ -24,8 +24,8 @@ public class RacingController {
 
     private void creatRacing() {
         List<String> cars = readyCars();
-        int racingCount = readyRacingCount();
-        this.racing = Racing.of(cars, racingCount);
+        int tryCount = readyTryCount();
+        this.racing = Racing.of(cars, tryCount);
     }
 
     private List<String> readyCars() {
@@ -33,7 +33,7 @@ public class RacingController {
         return inputView.inputCarNames();
     }
 
-    private int readyRacingCount() {
+    private int readyTryCount() {
         outputView.printInputRacingCount();
         return inputView.inputTryCount();
 
