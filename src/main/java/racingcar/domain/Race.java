@@ -4,16 +4,19 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Race {
-    private final List<Car> cars;
 
-    public Race(String rawCarNames) {
+    private final List<Car> cars;
+    private final NumberGenerator numberGenerator;
+
+    public Race(String rawCarNames, NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
         this.cars = parseCarNames(rawCarNames);
     }
 
     private List<Car> parseCarNames(String rawCarNames) {
         return Stream.of(rawCarNames.split(","))
                 .map(String::trim)
-                .map(Car::new)
+                .map(carName -> new Car(carName, numberGenerator))
                 .toList();
     }
 
