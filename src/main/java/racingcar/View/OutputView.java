@@ -1,6 +1,7 @@
 package racingcar.View;
 
 import java.util.HashMap;
+import racingcar.DTO.RaceFinalWinnerDTO;
 import racingcar.DTO.RaceResultDTO;
 import racingcar.Util.Message.IOMessage;
 
@@ -30,5 +31,10 @@ public class OutputView {
         }
 
         return raceBar.toString();
+    }
+
+    public void printFinalWinners(RaceFinalWinnerDTO raceFinalWinnerDTO) {
+        String finalWinners = String.join(", ", raceFinalWinnerDTO.getFinalWinner());
+        System.out.print(IOMessage.RESULT_MESSAGE.getMessage() + finalWinners);
     }
 }
