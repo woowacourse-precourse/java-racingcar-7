@@ -4,14 +4,12 @@ public class Car {
     private static final int MAX_NAME_LENGTH = 5;
 
     private final String name;
+    private int position;
 
     public Car(String name) {
         validateName(name);
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
+        this.position = 0;
     }
 
     private void validateName(String name) {
@@ -22,5 +20,16 @@ public class Car {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }
+    }
+
+    public void moveCar(int number){
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition(){
+        return position;
     }
 }
