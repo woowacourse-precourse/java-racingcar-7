@@ -6,12 +6,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
+    public static class Car{
+        String carName;
+        int pos = 0;
+    }
 
-
-    List<String>getCarNames(String cars){
-        return Arrays.stream(cars.split(","))
-                .map(String::trim).toList();
-    };
 
 
 /*    initializeCars(List<String> carNames)
@@ -26,6 +25,11 @@ public class Application {
     validateAttemptCount(String attemptCount)*/
 
     public static void main(String[] args) {
-        String input = Console.readLine();
+        // InputHandler 인스턴스 생성
+        InputHandler inputHandler = new InputHandler();
+
+        // 메서드 호출
+        List<String> carNames = inputHandler.getCarNames();
+        int attemptCount = inputHandler.getRaceAttemptCount();
     }
 }
