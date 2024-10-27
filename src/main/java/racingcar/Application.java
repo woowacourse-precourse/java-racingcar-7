@@ -3,9 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Application {
 
@@ -55,12 +53,20 @@ public class Application {
             }
             System.out.println();
         }
-        
+
         // 우승자 출력을 위한 비교값 세팅
         int maxCount = 0;
         for (Map.Entry<String, Integer> carName : carNameSet) {
             if (carName.getValue() > maxCount) {
                 maxCount = carName.getValue();
+            }
+        }
+
+        // 우승자 목록 ArrayList에 담기
+        List<String> winnerList = new ArrayList<>();
+        for (Map.Entry<String, Integer> carName : carNameSet) {
+            if (carName.getValue() == maxCount) {
+                winnerList.add(carName.getKey());
             }
         }
     }
