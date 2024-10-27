@@ -17,10 +17,10 @@ public class Application {
 
         System.out.println();
 
-        List<RacingCar> racingCarList = createRacingCars(names);
-        runGame(roundCount, racingCarList);
+        RacingCars racingCars = createRacingCars(names);
+        runGame(roundCount, racingCars.getRacingCars());
 
-        List<String> winners = findWinnersName(racingCarList);
+        List<String> winners = findWinnersName(racingCars);
 
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
@@ -35,7 +35,7 @@ public class Application {
         return Integer.parseInt(count);
     }
 
-    private static List<RacingCar> createRacingCars(List<String> names) {
+    private static RacingCars createRacingCars(List<String> names) {
         RacingCars racingCars = new RacingCars();
 
         for (String name : names) {
@@ -43,7 +43,7 @@ public class Application {
             racingCars.addRacingCar(racingCar);
         }
 
-        return racingCars.getRacingCars();
+        return racingCars;
     }
 
     private static void runGame(int roundCount, List<RacingCar> racingCarList) {
@@ -70,20 +70,14 @@ public class Application {
         }
     }
 
-    private static List<String> findWinnersName(List<RacingCar> racingCarList) {
-        RacingCar firstWinner = findFirstWinner(racingCarList);
-        return findCoWinnersName(racingCarList, firstWinner);
+    private static List<String> findWinnersName(RacingCars racingCars) {
+        int position = racingCars.findWinnerPosition();
+        return findCoWinnersName(racingCars.getRacingCars(), position);
     }
 
-    private static RacingCar findFirstWinner(List<RacingCar> racingCarList) {
+    private static List<String> findCoWinnersName(List<RacingCar> racingCarList, int winnerPosition) {
         return racingCarList.stream()
-                .max(Comparator.comparingInt(RacingCar::getPosition))
-                .orElseThrow(() -> new RuntimeException("Racing car does not exist"));
-    }
-
-    private static List<String> findCoWinnersName(List<RacingCar> racingCarList, RacingCar firstWinner) {
-        return racingCarList.stream()
-                .filter((racingCar) -> racingCar.getPosition() == firstWinner.getPosition())
+                .filter((racingCar) -> racingCar.getPosition() == winnerPosition)
                 .map(RacingCar::getName)
                 .toList();
     }

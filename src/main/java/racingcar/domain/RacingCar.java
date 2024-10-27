@@ -10,6 +10,11 @@ public class RacingCar {
         this.position = 0;
     }
 
+    public RacingCar(String name, int startPosition) {
+        this.name = name;
+        this.position = startPosition;
+    }
+
     private void validateName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 필수입니다.");

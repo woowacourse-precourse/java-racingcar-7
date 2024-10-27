@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class RacingCars {
@@ -36,5 +37,12 @@ public class RacingCars {
 
     public List<RacingCar> getRacingCars() {
         return this.racingCars;
+    }
+
+    public int findWinnerPosition() {
+        return racingCars.stream()
+                .max(Comparator.comparingInt(RacingCar::getPosition))
+                .orElseThrow(RuntimeException::new)
+                .getPosition();
     }
 }

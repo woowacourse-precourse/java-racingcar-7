@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -47,6 +48,20 @@ class RacingCarsTest {
         RacingCar racingCar = new RacingCar("new");
 
         assertDoesNotThrow(() -> racingCars.addRacingCar(racingCar));
+    }
+
+    @Test
+    @DisplayName("우승자의 위치를 알아낼 수 있다.")
+    public void findWinnerPosition() {
+        List<RacingCar> createdCars = new ArrayList<>(List.of(
+                new RacingCar("A", 1),
+                new RacingCar("B", 2),
+                new RacingCar("C", 3)
+        ));
+        RacingCars racingCars = new RacingCars(createdCars);
+
+        int position = racingCars.findWinnerPosition();
+        assertThat(position).isEqualTo(3);
     }
 
 }
