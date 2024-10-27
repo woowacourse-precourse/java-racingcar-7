@@ -16,4 +16,11 @@ public class RacingCarService {
         String[] carsNames = racingCar.splitCarsName(inputCarsName);
         this.racingCars = racingCar.createRacingCarsBySplitCarsName(carsNames);
     }
+
+    public void advanceRacingCarByRandomOrZero() {
+        for (RacingCar racingCar : racingCars) {
+            int randomOrZero = racingCar.getRandomOrZero();
+            racingCar.addRandomAdvanceResult(randomOrZero);
+        }
+    }
 }
