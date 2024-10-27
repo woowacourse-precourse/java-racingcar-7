@@ -1,8 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.List;
 
 public class InputManager {
 
@@ -10,42 +8,25 @@ public class InputManager {
     private static final String RACING_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String GAME_ROUND_IS_EMPTY_MESSAGE = "게임 횟수가 입력되지 않았습니다.";
     private static final String GAME_ROUND_UNDER_ONE_MESSAGE = "게임 횟수는 1 이상이어야 합니다.";
-    private static final String GAME_ROUND_RANGE_UNDER_INTEGER_MESSAGE = "게임 횟수는 정수 범위 안 이어야 합니다.";
-    private static final String GAME_ROUND_IS_NOT_NUMERIC_MESSAGE = "게임 횟수 입력값이 숫자가 아닙니다.";
+    private static final String GAME_ROUND_RANGE_IS_NOT_UNDER_INTEGER_NUMERIC_MESSAGE = "게임 횟수는 숫자이며, 정수 범위 안이어야 합니다.";
 
-    public static List<Name> getInput() {
-        getInputMessage();
+    public static String readInput() {
+        printInputMessage();
 
-        String input = Console.readLine();
-
-        Names names = new Names(input);
-
-        return names.getNames();
+        return Console.readLine();
     }
 
-    //game class 에서 처리
-    public static int getGameRound() {
-        getCountMessage();
+    public static int readGameRound() {
+        printCountMessage();
 
         String counts = Console.readLine();
-
         int rounds;
-        if (counts.isEmpty() || counts.equals(" ")) {
+
+        if (counts.isBlank()) {
             throw new IllegalArgumentException(GAME_ROUND_IS_EMPTY_MESSAGE);
         }
-        for (int i = 0; i < counts.length(); i++) {
-            if (!Character.isDigit(counts.charAt(i))) {
-                throw new IllegalArgumentException(GAME_ROUND_IS_NOT_NUMERIC_MESSAGE);
-            }
-        }
-        try {
-            rounds = Integer.parseInt(counts);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(GAME_ROUND_RANGE_UNDER_INTEGER_MESSAGE);
-        }
-        if (rounds <= 0) {
-            throw new IllegalArgumentException(GAME_ROUND_UNDER_ONE_MESSAGE);
-        }
+
+        rounds = parseGameRound(counts);
         return rounds;
     }
 
@@ -53,11 +34,27 @@ public class InputManager {
         Console.close();
     }
 
-    private static void getInputMessage() {
+    private static void printInputMessage() {
         System.out.println(INPUT_MESSAGE);
     }
 
-    private static void getCountMessage() {
+    private static void printCountMessage() {
         System.out.println(RACING_COUNT_MESSAGE);
+    }
+
+    private static int parseGameRound(String counts) {
+        int rounds;
+
+        try {
+            rounds = Integer.parseInt(counts);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(GAME_ROUND_RANGE_IS_NOT_UNDER_INTEGER_NUMERIC_MESSAGE);
+        }
+
+        if (rounds <= 0) {
+            throw new IllegalArgumentException(GAME_ROUND_UNDER_ONE_MESSAGE);
+        }
+
+        return rounds;
     }
 }
