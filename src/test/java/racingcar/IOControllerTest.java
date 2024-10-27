@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class IOControllerTest extends NsTest{
+class IOControllerTest extends NsTest {
     IOController ioController = new IOController();
     Car testCar1, testCar2, testCar3;
     List<Car> testCarList;
