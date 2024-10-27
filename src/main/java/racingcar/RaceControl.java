@@ -82,4 +82,34 @@ public class RaceControl {
 
     }
 
+    /**
+     * 우승자를 출력합니다.
+     */
+    public void selectWinner() {
+        int maxValue = Integer.MIN_VALUE;
+        ArrayList<Car> winners = new ArrayList<>();
+
+        for(Car car : this.carList) {
+            if (car.getLocation() >= maxValue) {
+                maxValue = car.getLocation();
+            }
+        }
+
+        for(Car car : this.carList) {
+            if (car.getLocation() == maxValue) {
+                winners.add(car);
+            }
+        }
+
+        System.out.print("최종 우승자 : ");
+
+        List<String> winnerNames = new ArrayList<>();
+
+        for (Car car : winners) {
+            winnerNames.add(car.getName()); // 각 우승자의 이름을 리스트에 추가
+        }
+
+        System.out.print(String.join(", ", winnerNames));
+    }
+
 }

@@ -9,6 +9,8 @@ public class Application {
         raceControl.decideRound();
 
         raceControl.race();
+
+        raceControl.selectWinner();
     }
 
 }
