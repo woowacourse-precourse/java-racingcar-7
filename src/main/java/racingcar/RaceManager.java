@@ -63,4 +63,14 @@ public class RaceManager {
         }
     }
 
+    public void doRacing() {
+        for (Car car : cars) {
+            if (car.isForward()) {
+                car.forward();
+            }
+        }
+        showProgressOfGame();
+        System.out.println();
+    }
+
 }

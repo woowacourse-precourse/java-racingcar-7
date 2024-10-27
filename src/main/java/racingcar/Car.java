@@ -19,7 +19,7 @@ public class Car {
         return this.name;
     }
 
-    public int getForwardLevel(){
+    public int getForwardLevel() {
         return this.forwardLevel;
     }
 
