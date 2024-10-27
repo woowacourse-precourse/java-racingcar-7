@@ -1,7 +1,9 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class RacingCars {
 
@@ -11,6 +13,7 @@ public class RacingCars {
         for (String name : names) {
             cars.add(new Car(name, 0));
         }
+        isDuplicate(cars, names);
     }
 
     public void moveAll(MoveCondition moveCondition) {
@@ -30,6 +33,11 @@ public class RacingCars {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();
+    }
+
+    private boolean isDuplicate(final List<Car> cars, final List<String> carNames) {
+        final Set<String> uniqueNames = new HashSet<>(carNames);
+        return cars.size() != uniqueNames.size();
     }
 
     private int getMaxPosition() {
