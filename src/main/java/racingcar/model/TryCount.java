@@ -10,4 +10,8 @@ public class TryCount {
     private int convertStringToInt(String input) {
         return Integer.parseInt(input);
     }
+
+    public boolean isNotSame(int tryCount) {
+        return this.tryCount != tryCount;
+    }
 }
