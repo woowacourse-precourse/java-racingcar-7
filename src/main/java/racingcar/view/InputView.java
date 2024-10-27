@@ -12,4 +12,12 @@ public class InputView {
         Validator.validateCarNames(carNames);
         return carNames;
     }
+
+    public static int getRounds() {
+        OutputView.printRoundInputPrompt();
+        String input = Console.readLine();
+        Validator.validateRound(input);
+        int rounds = Integer.parseInt(input);
+        return rounds;
+    }
 }
