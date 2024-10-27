@@ -41,6 +41,7 @@ public class GameManager {
     }
 
     private void moveCar(Cars cars, int movementNumber) {
+        outputView.printMovementResultMessage();
         NumberGenerator numberGenerator = new RandomNumberGenerator();
         for (int i = 0; i < movementNumber; i++) {
             printCarState(cars);

@@ -1,5 +1,6 @@
 package racingcar.io;
 
+import static racingcar.global.constant.Message.MOVEMENT_RESULT_MESSAGE;
 import static racingcar.global.constant.Message.READ_CAR_NAME_MESSAGE;
 import static racingcar.global.constant.Message.READ_MOVEMENT_NUMBER_MESSAGE;
 
@@ -24,6 +25,9 @@ public class OutputView {
     }
 
     public void println(String string) {
+    public void printMovementResultMessage() {
+        println(MOVEMENT_RESULT_MESSAGE);
+    }
         System.out.println(string);
     }
 
