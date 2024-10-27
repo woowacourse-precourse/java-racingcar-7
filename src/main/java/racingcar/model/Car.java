@@ -1,5 +1,9 @@
 package racingcar.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Car implements Comparable {
 
     public static final int CAR_NAME_LENGTH_LIMIT = 5;
@@ -29,6 +33,23 @@ public class Car implements Comparable {
 
     public void forward() {
         mileage += 1;
+    }
+
+
+    public List<String> getStatus() {
+        return new ArrayList<>(Arrays.asList(this.name, this.mileage.toString()));
+    }
+
+    public boolean isSameMileage(Car car) {
+        return this.mileage.equals(car.mileage);
+    }
+
+    public Long getMileage() {
+        return mileage;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
