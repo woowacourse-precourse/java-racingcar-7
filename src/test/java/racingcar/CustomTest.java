@@ -69,4 +69,20 @@ public class CustomTest {
                 .hasMessage("음수는 입력할 수 없습니다.");
     }
 
+    @Test
+    @DisplayName("자동차 이동 시 이동 거리가 정상적으로 증가")
+    void testMove() {
+        Map<String, Integer> race = new HashMap<>();
+        race.put("pobi", 0);
+
+        Map.Entry<String, Integer> entry = race.entrySet().iterator().next();
+        Application.move(entry, true);
+
+        assertThat(entry.getValue()).isEqualTo(1);
+
+        Application.move(entry, false);
+
+        assertThat(entry.getValue()).isEqualTo(1);  // 이동하지 않음
+    }
+
 }
