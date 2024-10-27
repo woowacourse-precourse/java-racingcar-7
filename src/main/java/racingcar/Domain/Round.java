@@ -12,7 +12,8 @@ public class Round {
 
     private void validateCountRange(){
         if(remainCount < 1){
-            throw new IllegalArgumentException("라운드 수가 적절하지 않습니다.");
+            throw new IllegalArgumentException
+                    ("라운드 수가 적절하지 않습니다.");
         }
     }
 
