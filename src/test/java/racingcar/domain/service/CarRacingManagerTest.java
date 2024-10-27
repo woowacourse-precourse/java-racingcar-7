@@ -3,6 +3,7 @@ package racingcar.domain.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.model.car.Car;
+import racingcar.domain.model.constant.CarConstants;
 
 import java.util.Optional;
 
@@ -52,6 +53,6 @@ class CarRacingManagerTest {
         final String winners = carRacingManager.getWinners();
 
         // then
-        assertThat(winners).contains("우승자1", "우승자2");
+        assertThat(winners.split(CarConstants.JOIN_DELIMITER)).containsExactly("우승자1", "우승자2");
     }
 }
