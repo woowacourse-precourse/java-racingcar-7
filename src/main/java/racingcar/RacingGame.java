@@ -2,34 +2,35 @@ package racingcar;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class RacingGame {
     final static String RACING_RESULT_LINE = " : ";
     final static String RACING_RESULT_FORWARD = "-";
     final static Integer MINIMUM_NUMBER_FORWARD = 3;
-    private String[] carNames;
+    final static String REGEX_PATTERN = "^[0-9]*$";
 
-    CarNameValidator carNameValidator;
+    private String[] cars;
+    private String tryNumber;
+
     final private LinkedHashMap<String, Integer> groupedCars = new LinkedHashMap<>();
 
-    public RacingGame(CarNameValidator carNameValidator) {
-        this.carNameValidator = carNameValidator;
+    public RacingGame(String[] cars, String tryNumber) {
+        this.cars = cars;
+        this.tryNumber = tryNumber;
     }
 
     public LinkedHashMap<String, Integer> getCarNumber() {
-        String[] cars = carNameValidator.separateCarNames();
-
         groupCars(cars);
-        carNameValidator.validate(cars);
+        //Validator.validate(cars);
         printMovingCars();
         return groupedCars;
     }
 
     public void printMovingCars() {
-        int tryNumbers = carNameValidator.changeTryTimesNumber();
-        for (int i=0; i<tryNumbers; i++) {
+        for (int i=0; i<changeTryTimesNumber(); i++) {
             isCarMove();
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -46,5 +47,13 @@ public class RacingGame {
             }
             System.out.println(entry.getKey()+ RACING_RESULT_LINE + RACING_RESULT_FORWARD.repeat(entry.getValue()));
         }
+    }
+
+    public Integer changeTryTimesNumber() {
+
+        if (!Pattern.matches(REGEX_PATTERN,tryNumber)){
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(tryNumber);
     }
 }

@@ -4,9 +4,10 @@ public class GameController {
 
     public static void gameStart() {
         InputController inputController = new InputController();
-        CarNameValidator carNameValidator = new CarNameValidator(inputController);
-        RacingGame racingGame = new RacingGame(carNameValidator);
-        WinnerValidator winnerValidator = new WinnerValidator(racingGame);
+        Validator validator = new Validator(inputController.printCarNamesInput());
+        validator.validate();
+        RacingGame racingGame = new RacingGame(validator.separateCarNames(), inputController.printTryTimesInput());
+        WinnerValidator winnerValidator = new WinnerValidator(racingGame.getCarNumber());
         winnerValidator.outputWinners(winnerValidator.findRacingWinners());
     }
 }

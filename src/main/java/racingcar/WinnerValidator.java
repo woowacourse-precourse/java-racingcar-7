@@ -7,16 +7,17 @@ import java.util.Map;
 public class WinnerValidator {
     final static String OUTPUT_MESSAGE = "최종 우승자 : ";
     Integer winnersNumber;
-    LinkedHashMap<String,Integer> cars = new LinkedHashMap<>();
+    //LinkedHashMap<String,Integer> cars = new LinkedHashMap<>();
     RacingGame racingGame;
 
-    public WinnerValidator(RacingGame racingGame) {
-        this.racingGame = racingGame;
+    LinkedHashMap<String, Integer> cars;
+
+    public WinnerValidator(LinkedHashMap<String, Integer> cars) {
+        this.cars = cars;
     }
 
     public ArrayList<String> findRacingWinners() {
         ArrayList<String> winnersCars = new ArrayList<>();
-        cars = racingGame.getCarNumber();
         winnersNumber = cars.values().stream().max(Integer::compare).orElse(0);
 
         for (Map.Entry<String, Integer> entry : cars.entrySet()) {
@@ -27,9 +28,9 @@ public class WinnerValidator {
         return winnersCars;
     }
 
-    public void outputWinners(ArrayList<String> cars) {
+    public void outputWinners(ArrayList<String> winnerCars) {
         output();
-        System.out.println(String.join(", ", cars));
+        System.out.println(String.join(", ", winnerCars));
     }
     public void output() {
         System.out.print(OUTPUT_MESSAGE);
