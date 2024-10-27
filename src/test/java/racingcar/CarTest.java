@@ -34,7 +34,7 @@ class CarTest {
     }
 
     @Test
-    public void toString_테스트() throws Exception {
+    public void 자동차_주행정보_출력_테스트() throws Exception {
         //Given
         String carName = "pobi";
 
