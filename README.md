@@ -14,11 +14,11 @@
     - [x] 예외인 경우 IllegalArgumentException 발생
   - [x] 사용자가 입력한 문자열에 구분자(,)가 포함된 문자열인지 검증
     - [x] 예외인 경우 IllegalArgumentException 발생
-- [ ] 사용자 시도 횟수 입력
-  - [ ] 사용자가 입력한 문자열이 비어 있는지 검증
-    - [ ] 예외인 경우 IllegalArgumentException 발생
-  - [ ] 사용자가 입력한 문자열이 숫자인지 검증
-    - [ ] 예외인 경우 IllegalArgumentException 발생
+- [x] 사용자 시도 횟수 입력
+  - [x] 사용자가 입력한 문자열이 비어 있는지 검증
+    - [x] 예외인 경우 IllegalArgumentException 발생
+  - [x] 사용자가 입력한 문자열이 숫자인지 검증
+    - [x] 예외인 경우 IllegalArgumentException 발생
 
 ### 3) 자동차 생성 및 검증 기능
 
