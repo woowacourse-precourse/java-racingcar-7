@@ -5,6 +5,7 @@ import racingcar.domain.Car;
 import racingcar.domain.CarRacingGame;
 import racingcar.domain.Cars;
 import racingcar.domain.RandomNumberGenerator;
+import racingcar.dto.CarDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -38,8 +39,12 @@ public class CarRacingController {
         outputView.printResult();
         while (carRacingGame.canPlay()) {
             List<Car> cars = carRacingGame.start();
-            outputView.printCurrentPosition(cars);
+            outputView.printCurrentPosition(convertCarToDto(cars));
         }
+    }
+
+    private List<CarDto> convertCarToDto(List<Car> cars) {
+        return cars.stream().map(CarDto::from).toList();
     }
 
     private void showWinners(CarRacingGame carRacingGame) {

@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.domain.Car;
+import racingcar.dto.CarDto;
 
 public class OutputView {
     public static final String RESULT_MESSAGE = "\n실행 결과";
@@ -13,16 +13,16 @@ public class OutputView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public void printCurrentPosition(List<Car> cars) {
-        cars.forEach(car -> {
-            String output = getCurrentPosition(car);
+    public void printCurrentPosition(List<CarDto> carDtos) {
+        carDtos.forEach(carDto -> {
+            String output = getCurrentPosition(carDto);
             System.out.println(output);
         });
         System.out.println();
     }
 
-    private String getCurrentPosition(Car car) {
-        return car.getName() + " : " + POSITION_MESSAGE_DELIMITER.repeat(car.getPosition());
+    private String getCurrentPosition(CarDto carDto) {
+        return carDto.name() + " : " + POSITION_MESSAGE_DELIMITER.repeat(carDto.position());
     }
 
     public void printWinners(List<String> winners) {
