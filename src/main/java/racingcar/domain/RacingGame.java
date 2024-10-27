@@ -27,7 +27,7 @@ public class RacingGame {
     private List<Car> splitCars(String input) {
         String[] carNames = input.split(",");
         return Arrays.stream(carNames)
-                .map(String::trim)
+                .peek(GameValidator::validateCarName)
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
