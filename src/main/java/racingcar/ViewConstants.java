@@ -1,6 +1,7 @@
 package racingcar;
 
 import static racingcar.RacingConstants.MAX_LENGTH_OF_CAR_NAME;
+import static racingcar.RacingConstants.MIN_NUMBER_OF_ATTEMPTS;
 import static racingcar.RacingConstants.MIN_NUMBER_OF_PLAYERS;
 
 public class ViewConstants {
@@ -21,4 +22,6 @@ public class ViewConstants {
             = String.format("자동차 이름은 %s자 이하만 가능합니다.", MAX_LENGTH_OF_CAR_NAME);
 
     public static final String NUMBER_ONLY_ERROR_MESSAGE = "시도 횟수는 숫자만 입력해 주세요.";
+    public static final String LESS_THAN_MIN_ATTEMPTS_ERROR_MESSAGE
+            = String.format("시도 횟수는 %s회 이상이어야 합니다.", MIN_NUMBER_OF_ATTEMPTS);
 }

@@ -28,6 +28,7 @@ public class Application {
         String inputAttempts = inputView.requestTotalAttempts();
         inputValidator.checkHasNumberOnly(inputAttempts);
         totalAttempts = Integer.parseInt(inputAttempts);
+        inputValidator.checkIsGreaterThanZero(totalAttempts);
         move = new Move(cars, numberValidator, numberGenerator);
         racing = new Racing(cars, totalAttempts, move, outputView);
         racing.race();
