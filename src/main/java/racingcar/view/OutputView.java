@@ -25,6 +25,7 @@ public class OutputView {
             }
             System.out.println(result);
         }
+        System.out.println();
     }
 
     /**
