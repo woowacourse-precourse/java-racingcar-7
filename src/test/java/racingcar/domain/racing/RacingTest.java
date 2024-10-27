@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -76,6 +77,19 @@ class RacingTest {
         //when
         racing.playRound();
         Map<String, Long> actual = racing.getCurrentPosition();
+
+        //then
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("현재 1등 목록 조회")
+    void getFirstPlaceCar() {
+        //given
+        List<String> expected = List.of("test1", "test2", "test3");
+
+        //when
+        List<String> actual = racing.getFirstPlaceCar();
 
         //then
         assertThat(actual).isEqualTo(expected);
