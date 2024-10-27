@@ -28,7 +28,7 @@ class RaceControllerTest extends NsTest {
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         cars.add(car2);
-        assertThat( raceController.selectWinners(cars)).isEqualTo(List.of("jun"));
+        assertThat(raceController.selectWinners(cars)).isEqualTo(List.of("jun"));
     }
 
     @Test
@@ -39,7 +39,7 @@ class RaceControllerTest extends NsTest {
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         cars.add(car2);
-        assertThat( raceController.selectWinners(cars)).isEqualTo(List.of("pobi", "jun"));
+        assertThat(raceController.selectWinners(cars)).isEqualTo(List.of("pobi", "jun"));
     }
 
     @Override

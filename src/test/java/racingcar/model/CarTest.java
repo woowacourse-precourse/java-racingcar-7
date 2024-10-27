@@ -33,8 +33,9 @@ class CarTest {
     void carNameWithValidLength(String carName) {
         assertThatCode(() -> new Car(carName)).doesNotThrowAnyException();
     }
+
     @ParameterizedTest
-    @ValueSource(strings = {"플레이어","pl@y"})
+    @ValueSource(strings = {"플레이어", "pl@y"})
     @DisplayName("자동차 이름이 영문과 숫자 이외의 문자를 포함하면 예외 발생")
     void carNameFormatError(String carName) {
         assertThatThrownBy(() -> new Car(carName))

@@ -13,11 +13,11 @@ public class OutputView {
         this.io = new CommonIo();
     }
 
-    public void printGetCarNames(){
+    public void printGetCarNames() {
         io.printMessage(Message.RECEIVE_CAR_NAMES.getSentence());
     }
 
-    public void printGetPlayCount(){
+    public void printGetPlayCount() {
         io.printMessage(Message.RECEIVE_PLAY_COUNT.getSentence());
     }
 
@@ -27,7 +27,7 @@ public class OutputView {
     }
 
     public void printWinners(List<String> winner) {
-        String finalWinner = String.join(Message.COMMA.getSentence()+Message.WHITE_SPACE.getSentence(),winner);
+        String finalWinner = String.join(Message.COMMA.getSentence() + Message.WHITE_SPACE.getSentence(), winner);
 
         io.printMessage(Message.FINAL_WINNER.getSentence()
                 + Message.COLON_WITH_SPACE.getSentence()

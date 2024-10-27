@@ -5,7 +5,7 @@ import racingcar.util.CommonIo;
 public class InputView {
     private final CommonIo io;
 
-    public InputView(){
+    public InputView() {
         this.io = new CommonIo();
     }
 

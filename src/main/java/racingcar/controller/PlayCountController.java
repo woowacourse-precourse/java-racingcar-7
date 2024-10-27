@@ -14,7 +14,7 @@ public class PlayCountController {
         this.io = new CommonIo();
     }
 
-    public int validatePlayCount(){
+    public int validatePlayCount() {
         String playCountInput = inputView.receivePlayCount();
         int playCount = convertPlayCount(playCountInput);
         checkPlayCountLimit(playCount);
