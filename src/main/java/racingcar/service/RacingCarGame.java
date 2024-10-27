@@ -68,12 +68,8 @@ public class RacingCarGame {
     }
 
     private String recordRacingCarState(List<RacingCar> racingCars) {
-        StringBuilder racingCarState = new StringBuilder();
-
-        for (RacingCar racingCar : racingCars) {
-            racingCarState.append(racingCar.getState()).append("\n");
-        }
-
-        return racingCarState.toString();
+        return racingCars.stream()
+                .map(racingCar -> racingCar.getState())
+                .collect(Collectors.joining("\n"));
     }
 }
