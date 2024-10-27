@@ -29,11 +29,7 @@ public class GameContext {
         for (int i = 0; i < numTries; i++) {
             playRound();
         }
-
-        List<Car> winners = getWinners();
-        System.out.printf("최종 우승자 : " + winners.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", ")));
+        displayWinners();
     }
 
     private void playRound() {
@@ -51,14 +47,24 @@ public class GameContext {
     }
 
     private boolean shouldMove() {
-        int randNum = moveDecisionSupplier.get();
-        return randNum >= 4;
+        return moveDecisionSupplier.get() >= 4;
+    }
+
+    private void displayWinners() {
+        List<Car> winners = getWinners();
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : " + winnerNames);
     }
 
     private List<Car> getWinners() {
-        List<Car> winners = new ArrayList<>();
-        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
 
+        List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
                 winners.add(car);
