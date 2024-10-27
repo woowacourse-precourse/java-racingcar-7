@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -20,6 +21,23 @@ class ApplicationTest extends NsTest {
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
             },
             MOVING_FORWARD, STOP
+        );
+    }
+
+    @DisplayName("공동 우승자 검증 테스트")
+    @Test
+    void 기능_테스트2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,seo,you,jin", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "seo : ",
+                            "최종 우승자 : pobi, woni");
+
+                    run("pobi,woni,seo,you,jin", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "seo : -",
+                            "최종 우승자 : pobi, woni, seo");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
