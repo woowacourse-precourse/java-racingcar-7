@@ -9,11 +9,18 @@ public class Car {
     private int score;
 
     public Car(String name) {
-        if (name.length() > 5) {
-            RacingCarExceptionHandler.getException(RacingCarExceptionMessage.CAR_NAME_CANNOT_EXCEED_FIVE);
-        }
+        validateCarName(name);
         this.name = name;
         this.score = 0;
+    }
+
+    private void validateCarName(String carName) {
+        if (carName.isEmpty()) {
+            RacingCarExceptionHandler.getException(RacingCarExceptionMessage.CAR_NAME_LENGTH_CANNOT_BE_ZERO);
+        }
+        if (carName.length() > 5) {
+            RacingCarExceptionHandler.getException(RacingCarExceptionMessage.CAR_NAME_CANNOT_EXCEED_FIVE);
+        }
     }
 
     public String getName() {
@@ -24,7 +31,7 @@ public class Car {
         return this.score;
     }
 
-    public void addScore() {
+    private void addScore() {
         this.score += 1;
     }
 

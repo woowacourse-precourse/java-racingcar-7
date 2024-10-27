@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.exceptions.RacingCarExceptionHandler;
 import racingcar.exceptions.RacingCarExceptionMessage;
 
 public class CarGroup {
@@ -13,17 +14,10 @@ public class CarGroup {
         }
         List<Car> carGroup = new ArrayList<>();
         for (String carName : carList) {
-            validateCarName(carName);
             Car car = new Car(carName);
             carGroup.add(car);
         }
         this.racingCarList = List.copyOf(carGroup);
-    }
-
-    private void validateCarName(String carName) {
-        if (carName.length() == 0) {
-            throw new IllegalArgumentException(RacingCarExceptionMessage.CAR_NAME_LENGTH_CANNOT_BE_ZERO.getText());
-        }
     }
 
     public List<Car> getCarList() {
