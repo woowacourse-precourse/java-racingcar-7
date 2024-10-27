@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.model.Car;
 import racingcar.model.Race;
 import racingcar.utils.Utils;
 import racingcar.view.InputView;
@@ -24,5 +25,7 @@ public class RaceController {
         Race race = new Race(carNameList);
         outputView.printResultPrompt(); // "실행 결과" 출력
         race.runRace(attemptCount);
+        List<Car> winners = race.getWinners();
+        outputView.showWinners(winners);
     }
 }
