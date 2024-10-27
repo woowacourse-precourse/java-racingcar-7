@@ -16,8 +16,15 @@ public class RaceController {
     public void start() {
         String inputCarsString = inputView.requestCarsName();
         Cars cars = new Cars(Arrays.stream(inputCarsString.split(",")).map(Car::new).toList());
-
         int roundCount = inputView.requestRoundCount();
+
+        play(cars, roundCount);
+    }
+
+    private void play(Cars cars, int roundCount) {
+        for (int round = 1; round <= roundCount; round++) {
+
+        }
     }
 
 }
