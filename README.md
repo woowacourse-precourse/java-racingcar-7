@@ -19,7 +19,7 @@
     - RacingCar 리스트
     - 현재까지 시도 횟수
     - 시도 횟수
--[ ] RacingCars 1회 진행
+-[X] RacingCars 1회 진행
 -[ ] 우승자 결정
 
 ### RacingCarsValidator

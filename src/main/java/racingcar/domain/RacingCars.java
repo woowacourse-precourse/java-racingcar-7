@@ -15,11 +15,22 @@ public class RacingCars {
         this.totalAttempts = totalAttempts;
     }
 
+    private List<RacingCar> getCars() {
+        return cars;
+    }
+
     public static RacingCars createRacingCars(List<String> carNames, Integer totalAttempts) {
         RacingCars racingCars = new RacingCars(totalAttempts);
         for (String carName : carNames) {
             racingCars.cars.add(new RacingCar(carName));
         }
         return racingCars;
+    }
+
+    public List<RacingCar> attempt() {
+        for (RacingCar car : cars) {
+            car.tryToAdvance();
+        }
+        return getCars();
     }
 }
