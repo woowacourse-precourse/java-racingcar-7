@@ -3,9 +3,9 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
-    private static final String START_POSITION = "";
+    private static final int START_POSITION = 0;
     private final String name;
-    private String position;
+    private int position;
 
     public Car(String name) {
         this.name = name;
@@ -16,18 +16,18 @@ public class Car {
         return name;
     }
 
-    public String getPosition() {
+    public int getPosition() {
         return position;
     }
 
     public void attemptMoveForward() {
         int random = Randoms.pickNumberInRange(0, 9);
         if (random >= 4) {
-            position = position + "-";
+            position++;
         }
     }
 
     public void displayPosition() {
-        System.out.println(getName() + " : " + getPosition());
+        System.out.println(getName() + " : " + "-".repeat(position));
     }
 }

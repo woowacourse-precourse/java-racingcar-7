@@ -22,6 +22,14 @@ public class InputParser {
         tryCount = parseTryCount(tryCountInput);
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public int getTryCount() {
+        return tryCount;
+    }
+
     private void parseCarNames(String carNamesInput) {
         validateCarNamesNotEmpty(carNamesInput);
         Set<String> uniqueCarNames = new HashSet<>();
@@ -65,13 +73,5 @@ public class InputParser {
         if (parseIntValue <= 0) {
             throw new IllegalArgumentException(ERROR_INVALID_TRY_COUNT);
         }
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public int getTryCount() {
-        return tryCount;
     }
 }
