@@ -117,6 +117,28 @@ class ApplicationTest extends NsTest {
         assertThat(tryCountInputString).isEqualTo("10");
     }
 
+    @Test
+    void 테스트_2_2_유효한_시도할_횟수() {
+        String tryCountInputString = "10";
+
+        assertThatNoException().isThrownBy(() -> Application.getTryCount(tryCountInputString));
+        assertThat(Application.getTryCount(tryCountInputString)).isEqualTo(10);
+    }
+    @Test
+    void 테스트_2_2_정수로_변환할_수_없는_입력() {
+        String tryCountInputString = "abcd";
+
+        assertThatThrownBy(() -> Application.getTryCount(tryCountInputString))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void 테스트_2_2_양의_정수가_아닌_입력() {
+        String tryCountInputString = "-10";
+
+        assertThatThrownBy(() -> Application.getTryCount(tryCountInputString))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @AfterEach
     void closeConsole() {
         Console.close();
