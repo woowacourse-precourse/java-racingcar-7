@@ -5,11 +5,12 @@ import racingcar.car.Car;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static racingcar.message.ExceptionMessage.*;
+import static racingcar.message.ExceptionMessage.DUPLICATED_CAR_NAME;
 
 public final class CarFactory {
 
-    private CarFactory() {}
+    private CarFactory() {
+    }
 
     public static Set<Car> createCars(String input) {
         String[] names = input.split(",");
@@ -25,7 +26,7 @@ public final class CarFactory {
     }
 
     private static void checkDuplicated(String[] names, Set<Car> cars) {
-        if(names.length != cars.size()){
+        if (names.length != cars.size()) {
             throw new IllegalArgumentException(DUPLICATED_CAR_NAME.getMessage());
         }
     }

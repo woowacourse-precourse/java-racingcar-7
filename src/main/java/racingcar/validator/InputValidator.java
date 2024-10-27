@@ -16,9 +16,9 @@ public class InputValidator {
     }
 
     public int isParseInt(String input) {
-        try{
+        try {
             return Integer.parseInt(input);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NOT_CONVERTED_STRING.getMessage());
         }
     }

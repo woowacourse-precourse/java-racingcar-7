@@ -1,6 +1,7 @@
 package racingcar.validator;
 
-import static racingcar.message.ExceptionMessage.*;
+import static racingcar.message.ExceptionMessage.CAR_NAME_NOT_BLANK;
+import static racingcar.message.ExceptionMessage.CAR_NAME_OVER_FIVE_LENGTH;
 
 public class CarNameValidator {
 

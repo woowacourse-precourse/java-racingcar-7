@@ -1,17 +1,15 @@
 package racingcar.car;
 
-import racingcar.message.ExceptionMessage;
 import racingcar.validator.CarNameValidator;
 
 import java.util.Objects;
 
-import static racingcar.message.ExceptionMessage.*;
+import static racingcar.message.ExceptionMessage.POSITION_UNDER_ZERO;
 
 public class Car {
+    private final static String STICK = "-";
     private final String name;
     private int position;
-
-    private final static String STICK = "-";
 
     public Car(String name) {
         CarNameValidator.validate(name);
@@ -19,8 +17,8 @@ public class Car {
         this.position = 0;
     }
 
-    public void move(int randomNumber){
-        if(randomNumber >= 4) position++;
+    public void move(int randomNumber) {
+        if (randomNumber >= 4) position++;
     }
 
     public String getName() {
@@ -32,16 +30,16 @@ public class Car {
     }
 
     // 테스트시 tearDown을 위한 메서드
-    public void clearPosition(){
+    public void clearPosition() {
         this.position = 0;
     }
 
     @Override
     public String toString() {
-        if(position < 0) throw new IllegalArgumentException(POSITION_UNDER_ZERO.getMessage());
+        if (position < 0) throw new IllegalArgumentException(POSITION_UNDER_ZERO.getMessage());
 
         String progress = STICK.repeat(position);
-        return name + " : " + progress;
+        return name.trim() + " : " + progress;
     }
 
     @Override
