@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Score {
+public class GameOfScore {
     public Map<String, String> initializeScore(List<String> participateCarList) {
         Map<String, String> initialScore = new HashMap<>();
 
