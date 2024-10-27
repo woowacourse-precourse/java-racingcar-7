@@ -15,9 +15,17 @@
 - 우승자는 한 명 이상일 수 있고, 그럴 경우 쉼표로 구분하기
 
 **5. 사용자의 잘못된 값에 대한 예외 처리**
-- 이용자가 잘못된 값을 입력한 경우, IllegalArgument Exception을 발생시키기
+- 이용자가 잘못된 값을 입력한 경우, IllegalArgumentException을 발생시키기
 - 잘못된 값의 예시 
    - 이름이 5자를 초괴하는 경우
    - 시도 횟수가 0 or 음수인 경우
    - 시도 횟수 혹은 이름에 아무것도 입력하지 않은 경우
    - 시도에 숫자가 아닌 값을 입력한 경우
+
+**6. 테스트 케이스 작성**
+1. "song,yang,choi", "0" --> (시도 횟수에 0을 입력) IllegalArgumentException error
+2. "", "3" --> (자동차 이름에 빈 값 입력) IllegalArgumentException error
+3. "kevin,princ,sawn", "q" --> (시도 횟수가 숫자가 아닌 값 입력) IllegalArgumentException error
+4. "nels,kawt,mac", " " --> (시도 횟수에 빈 값 입력) IllegalArgumentException error
+5. "efe,fyke", "-2" --> (시도 횟수에 음수 입력) IllegalArgumentException error
+6. 여러 기능 테스트들
