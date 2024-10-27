@@ -13,18 +13,9 @@ public class Application {
         String[] nameList = CarList.carList(CarInput);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String racingNum = camp.nextstep.edu.missionutils.Console.readLine();
-        public static int numValid (String racingNum){
-            try {
-                int racingNumber = Integer.parseInt(racingNum);
-                if (racingNumber <= 0) {
-                    throw new IllegalArgumentException("시도할 횟수는 0보다 큰 정수이어야 합니다.");
-                }
-                return racingNumber;
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("시도할 횟수는 정수로 입력되어야 합니다.");
-            }
-        }
+        String inputNumber = camp.nextstep.edu.missionutils.Console.readLine();
+
+        int racingNumber = RacingNum.numValid(inputNumber);
 
         //횟수만큼 결과 반영 및 출력 반복
         int carNumber = nameList.length;
