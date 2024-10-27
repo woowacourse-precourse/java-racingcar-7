@@ -4,6 +4,11 @@ import java.util.List;
 
 public class OutputView {
     private final String dash = "-";
+    private final RaceWinner raceWinner;
+
+    public OutputView(RaceWinner raceWinner) {
+        this.raceWinner = raceWinner;
+    }
 
     public void startGame(List<Car> carList, int tryCount) {
         System.out.println();
@@ -16,6 +21,14 @@ public class OutputView {
             printMovingCar(carList);
         }
 
+        endGame(carList);
+    }
+
+    private void endGame(List<Car> carList) {
+        List<String> carNames = raceWinner.findCarNames(carList);
+
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(", ", carNames));
     }
 
     private void printMovingCar(List<Car> carList) {
@@ -28,7 +41,7 @@ public class OutputView {
     private String printDash(Car car) {
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < car.getMoveCount(); i++) {
+        for (int i = 0; i < car.getPosition(); i++) {
             result.append(dash);
         }
 

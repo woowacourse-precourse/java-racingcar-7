@@ -11,7 +11,8 @@ public class Application {
 
         List<Car> carList = new ArrayList<>(); // Car 객체를 입력 받는 List
         InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
+        RaceWinner raceWinner = new RaceWinner();
+        OutputView outputView = new OutputView(raceWinner);
 
         carNameList = inputView.createCars();
 
