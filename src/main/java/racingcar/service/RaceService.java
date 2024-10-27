@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 
 public class RaceService {
@@ -22,5 +23,25 @@ public class RaceService {
                 car.increaseLocation();
             }
         }
+    }
+
+    public int checkMaxLocation (List<Car> carList) {
+        int maxLocation = 0;
+        for (Car car : carList) {
+            if (car.getLocation() >= maxLocation) {
+                maxLocation = car.getLocation();
+            }
+        }
+        return maxLocation;
+    }
+
+    public String checkWinner (List<Car> carList, int maxLocation) {
+        StringJoiner winners = new StringJoiner(",");
+        for (Car car : carList) {
+            if (car.getLocation() == maxLocation) {
+                winners.add(car.getCarName());
+            }
+        }
+        return winners.toString();
     }
 }

@@ -28,4 +28,11 @@ public class RaceController {
             OutputView.printNewLine();
         }
     }
+
+    public void declareWinners (RequestRaceDto requestRaceDto) {
+        OutputView.printWinner(
+                raceService.checkWinner(
+                        requestRaceDto.getCarList(),
+                        raceService.checkMaxLocation(requestRaceDto.getCarList())));
+    }
 }
