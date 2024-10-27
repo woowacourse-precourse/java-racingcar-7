@@ -1,4 +1,3 @@
-// RacingGameController.java
 package racingcar.controller;
 
 import racingcar.model.MoveStrategy;
@@ -13,7 +12,7 @@ public class RacingGameController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public RacingGameController(MoveStrategy moveStrategy,InputView inputView, OutputView outputView) {
+    public RacingGameController(MoveStrategy moveStrategy, InputView inputView, OutputView outputView) {
         this.moveStrategy = moveStrategy;
         this.inputView = inputView;
         this.outputView = outputView;

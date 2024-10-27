@@ -59,8 +59,9 @@ public class CarTest {
         void carMoveOnePoint() {
             //when
             assertRandomNumberInRangeTest(() -> {
-                car.move(moveStrategy);;
-            },MOVING_FORWARD);
+                car.move(moveStrategy);
+                ;
+            }, MOVING_FORWARD);
             //then
             assertThat(car.getPosition()).isEqualTo(1);
         }
@@ -70,8 +71,9 @@ public class CarTest {
         void carMoveZeroPoint() {
             //when
             assertRandomNumberInRangeTest(() -> {
-                car.move(moveStrategy);;
-            },STOP);
+                car.move(moveStrategy);
+                ;
+            }, STOP);
             //then
             assertThat(car.getPosition()).isEqualTo(0);
         }

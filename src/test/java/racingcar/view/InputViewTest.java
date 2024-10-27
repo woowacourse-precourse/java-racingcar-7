@@ -22,7 +22,7 @@ class InputViewTest {
     }
 
     @AfterEach
-    void closeConsole(){
+    void closeConsole() {
         Console.close();
     }
 
@@ -43,7 +43,6 @@ class InputViewTest {
     }
 
     @Test
-    @Order(1)
     @DisplayName("시도 횟수를 숫자로 입력했을 때, 올바르게 반환")
     void testGetRaceCountSuccess() {
         // Given
@@ -68,6 +67,7 @@ class InputViewTest {
         assertThatThrownBy(() -> inputView.validateRaceCount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
     @ParameterizedTest
     @ValueSource(strings = {" ", "", "a"})
     @DisplayName("시도 횟수를 숫자가 아닌 문자나 공백을 입력했을때 예외처리")

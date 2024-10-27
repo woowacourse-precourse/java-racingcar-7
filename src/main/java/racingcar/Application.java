@@ -11,7 +11,7 @@ public class Application {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
         MoveStrategy moveStrategy = new RandomMoveStrategy();
-        RacingGameController controller = new RacingGameController(moveStrategy,inputView, outputView);
+        RacingGameController controller = new RacingGameController(moveStrategy, inputView, outputView);
         controller.run();
     }
 }

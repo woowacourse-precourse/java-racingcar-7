@@ -18,8 +18,8 @@ public class RacingGame {
         return cars;
     }
 
-    public void playRound(MoveStrategy moveStrategy){
-        for (Car car : cars){
+    public void playRound(MoveStrategy moveStrategy) {
+        for (Car car : cars) {
             car.move(moveStrategy);
         }
     }
