@@ -14,10 +14,13 @@ public class GameController {
     }
 
     public void moveCars(List<Car> cars, int attemptNumber) {
+        PrintResult printResult = new PrintResult();
         for (int i = 0; i < attemptNumber; i++) {
             for (Car car : cars) {
                 car.move();
+                printResult.printCar(car);
             }
+            System.out.println();
         }
     }
 }

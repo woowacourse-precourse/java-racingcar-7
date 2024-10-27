@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.List;
 
-public class printResult {
+public class PrintResult {
 
     public void printCar(Car car) {
         System.out.print(car.getCarName() + " : ");
@@ -12,7 +12,6 @@ public class printResult {
     }
 
     public void printCars(List<Car> cars, int attemptNumber) {
-        System.out.println("실행 결과");
 
         for (int i = 0; i < attemptNumber; i++) {
             for (Car car : cars) {
