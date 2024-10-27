@@ -26,5 +26,7 @@ public class RacingGame {
         outputHandler.printCarsRacingResult(gameData);
 
         List<Car> car = winnerDecider.decideWinner(gameData);
+
+        outputHandler.printWinner(car);
     }
 }

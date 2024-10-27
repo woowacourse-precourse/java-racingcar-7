@@ -2,6 +2,11 @@ package racingcar.io;
 
 import racingcar.data.GameData;
 import racingcar.data.RoundData;
+import racingcar.dto.Car;
+
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class OutputHandler {
 
@@ -26,5 +31,16 @@ public class OutputHandler {
             System.out.println(result.getCarName() + " : " + moveVisualization);
         });
         System.out.println();
+    }
+
+    public void printWinner(List<Car> cars) {
+        System.out.print("최종 우승자 : " );
+
+        List<String> resultList = cars.stream()
+                .map(Car::getCarName)
+                .collect(toList());
+
+        String result = String.join(", ", resultList);
+        System.out.println(result);
     }
 }
