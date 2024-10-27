@@ -29,18 +29,17 @@ public class InputTest {
 
     @Test
     void 입력_테스트() {
-        System.setIn(new ByteArrayInputStream("pobi,woni,jun\n".getBytes()));
+        System.setIn(new ByteArrayInputStream("pobi,woni,jun".getBytes()));
         String[] carNames = inputHandler.inputCarNamesProcess();
-        Assertions.assertThat(carNames).containsExactly("pobi", "woni", "jun");
+        Assertions.assertThat(carNames)
+                .containsExactly("pobi", "woni", "jun");
     }
 
     @Test
     void 입력값_파싱_테스트() {
         String inputString = "pobi,woni,jun";
-//        provideInput(inputString);
-//        Assertions.assertArrayEquals(new String[]{"pobi", "woni", "jun"}, inputParser.parseCarNames(inputString));
-        Assertions.assertThat(inputParser.parseCarNames(inputString)).containsExactly("pobi", "woni", "jun");
-//        Assertions.assertThat(inputHandler.inputCarNamesProcess()).containsExactly("pobi", "woni", "jun");
+        Assertions.assertThat(inputParser.parseCarNames(inputString))
+                .containsExactly("pobi", "woni", "jun");
     }
 
     @ParameterizedTest
