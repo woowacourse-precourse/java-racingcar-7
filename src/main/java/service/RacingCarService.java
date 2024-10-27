@@ -9,7 +9,7 @@ public class RacingCarService {
 
     // 한 라운드를 실행
     public void playRound(List<Car> cars) {
-        cars.forEach(car -> car.move(Randoms.pickNumberInRange(0, 9)));
+        moveOrStop(cars);
     }
 
     // 우승자 찾기
@@ -35,4 +35,19 @@ public class RacingCarService {
         }
         return winners;
     }
+
+    public void moveOrStop(List<Car> cars) {
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+
+        // 4 이상일 때 전진
+        if (randomValue >= 4) {
+            cars.forEach(Car::move);
+        }
+
+        // 4 미만일 때 멈춤
+        if (randomValue < 4) {
+            cars.forEach(Car::stop);
+        }
+    }
+
 }
