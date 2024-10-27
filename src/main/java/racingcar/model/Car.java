@@ -11,6 +11,16 @@ public class Car {
         this.position = new Position();
     }
 
+    public void move(boolean isAbleToMove) {
+        if (isAbleToMove) {
+            position = position.move();
+        }
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {

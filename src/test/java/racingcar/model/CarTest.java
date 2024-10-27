@@ -29,4 +29,17 @@ class CarTest {
         Assertions.assertThat(car1).isEqualTo(car2);
     }
 
+    @Test
+    @DisplayName("자동차 객체를 이동시킨다.")
+    void moveCar() {
+        // given
+        Name name = new Name("우테코");
+        Car car = new Car(name);
+
+        // when
+        car.move(true);
+
+        // then
+        Assertions.assertThat(car.getPosition()).isEqualTo(new Position(1));
+    }
 }
