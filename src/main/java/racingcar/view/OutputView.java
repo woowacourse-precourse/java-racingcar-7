@@ -9,7 +9,7 @@ import racingcar.domain.RacingGame;
 public class OutputView {
 
     public static void resultMessage(){
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     public static String positionToDash(int position){

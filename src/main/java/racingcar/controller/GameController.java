@@ -8,6 +8,7 @@ import racingcar.domain.GameRule;
 import racingcar.domain.RacingGame;
 import racingcar.service.GameService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class GameController {
     private Validator validator = new Validator();
@@ -41,6 +42,7 @@ public class GameController {
 
     public void gameStart() {
         RacingGame racingGame = gameService.readyRacingGame(createCars(), setGameCount());
+        OutputView.resultMessage();
         gameService.play(racingGame);
     }
 
