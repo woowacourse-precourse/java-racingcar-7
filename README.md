@@ -20,3 +20,11 @@
 - [ ] 우승자를 계산하는 WinnerCalculator 객체
 
 - [ ] 차의 이름을 검증하는 CarNameValidator
+
+- [ ] 거리를 더할 때나 초기화할 때 사용하는 Length Enum
+
+- [ ] Test 코드
+  - CarNameValidatorTest
+  - RoadPrinterTest
+  - WinnerCalculatorTest
+  - WinnerPrinterTest
