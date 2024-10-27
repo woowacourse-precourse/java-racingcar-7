@@ -1,24 +1,13 @@
 package racingcar.iohandler;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.Car;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static racingcar.Car.createCar;
 
 public class InputHandler {
 
-    public List<Car> getCarNamesFromUser() {
+    public String[] getCarNamesFromUser() {
         String input = Console.readLine();
         String[] names = input.split(",");
-        List<Car> cars = new ArrayList<>();
-        for (String name : names) {
-            Car car = createCar(name);
-            cars.add(car);
-        }
-        return cars;
+        return names;
     }
 
     public int getMoveCountFromUser() {
