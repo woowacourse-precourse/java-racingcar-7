@@ -124,12 +124,24 @@ public class Application {
         System.out.println();
     }
 
+    private static void printWinner(LinkedHashMap<String,Integer> cars){
+        System.out.print("최종 우승자 : " );
+        int maxValue = Collections.max(cars.values());
+
+        for (Map.Entry<String, Integer> entry : cars.entrySet()) {
+            if (entry.getValue() == maxValue) {
+                System.out.print(entry.getKey() + " ");
+            }
+        }
+    }
+
     private static void playGame(LinkedHashMap<String,Integer> cars, int times){
         ArrayList<Integer> randomNumbers = new ArrayList<>();
         for(int i=0; i<times; i++){
             randomNumbers = getRandomNumbers(cars.size());
             updateResult(cars, randomNumbers);
         }
+        printWinner(cars);
     }
 
     public static void main(String[] args) {
