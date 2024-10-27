@@ -38,4 +38,8 @@ public class CarStatus {
     public List<String> getWinners() {
         return winnerFinder.findWinners(cars);
     }
+
+    public void playRound() {
+        moveCars();
+    }
 }

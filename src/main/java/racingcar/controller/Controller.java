@@ -23,7 +23,7 @@ public class Controller {
 
         outputView.showResultMessage();
         for (int i = 0; i < numberOfRounds; i++) {
-            carStatus.moveCars();
+            carStatus.playRound();
             outputView.printCarPositions(carStatus.getCarNames(), carStatus.getCarPositions());
         }
         outputView.printWinners(carStatus.getWinners());
