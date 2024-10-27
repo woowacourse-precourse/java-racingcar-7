@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.domain.RacingCarManager;
+import racingcar.domain.Cars;
 import racingcar.util.CarNameParser;
 import racingcar.util.RandomUtil;
 
@@ -12,17 +12,17 @@ import static racingcar.view.OutputView.*;
 
 public class RacingGameController {
     public void run(){
-        RacingCarManager racingCarManager = initializeCarsFromUserInput();
+        Cars cars = initializeCarsFromUserInput();
         int trialCount = getTrialCountFromUser();
-        executeRace(trialCount, racingCarManager);
-        displayWinners(racingCarManager.findWinners());
+        executeRace(trialCount, cars);
+        displayWinners(cars.findWinners());
     }
 
-    private static RacingCarManager initializeCarsFromUserInput() {
+    private static Cars initializeCarsFromUserInput() {
         promptCarNameInput();
         String carNameStr = readConsoleInput();
         List<String> racingCarNames = CarNameParser.parse(carNameStr);
-        return new RacingCarManager(racingCarNames);
+        return new Cars(racingCarNames);
     }
 
     private static int getTrialCountFromUser() {
@@ -32,12 +32,12 @@ public class RacingGameController {
         return Integer.parseInt(trialStr);
     }
 
-    private static void executeRace(int trial, RacingCarManager racingCarManager) {
+    private static void executeRace(int trial, Cars cars) {
         displayResultHeader();
         for(int i = 0; i< trial; i++){
-            List<Integer> randomNumbers = RandomUtil.generateRandomNumberForCars(racingCarManager.getCars().size());
-            racingCarManager.moveCars(randomNumbers);
-            displayRoundResult(racingCarManager.getCars());
+            List<Integer> randomNumbers = RandomUtil.generateRandomNumberForCars(cars.getCars().size());
+            cars.moveCars(randomNumbers);
+            displayRoundResult(cars.getCars());
         }
     }
 }
