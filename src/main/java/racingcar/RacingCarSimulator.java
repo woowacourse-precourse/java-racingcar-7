@@ -40,7 +40,7 @@ public class RacingCarSimulator {
 	}
 
 	private void initCarPosition() {
-		carPosition = carNames.stream().map(name -> 0L).toList();
+		carPosition = new ArrayList<>(carNames.stream().map(name -> 0L).toList());
 	}
 
 	private void simulate() {
