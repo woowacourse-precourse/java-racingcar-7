@@ -8,23 +8,6 @@ import java.util.Map;
 
 public class StartApp {
 
-    // 시도 횟수 입력
-    public static int InsertTimes() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String times = "";
-
-        // 시도 횟수가 입력되지 않았을 경우 예외 처리
-        try {
-            times = Console.readLine();
-        } catch (NoSuchElementException e) {
-            System.out.println("시도 횟수가 입력되지 않았습니다.");
-        }
-
-        int time = Integer.parseInt(times.trim());
-
-        return time;
-    }
-
     // 자동차 이름 입력 (UserInput)
     // 자동차 이름 배열 반환
     public static String[] InsertCars() {
@@ -32,12 +15,10 @@ public class StartApp {
         String UserInput = "";
 
         // 자동차 이름이 입력되지 않았을 경우 예외 처리
-        try {
-            UserInput = Console.readLine();
-        } catch (NoSuchElementException e) {
-            System.out.println("자동차 이름이 입력되지 않았습니다.");
+        UserInput = Console.readLine();
+        if (UserInput == null || UserInput.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
         }
-
         String[] cars = Refiner(UserInput);
         return cars;
     }
@@ -67,4 +48,23 @@ public class StartApp {
         }
         return carMap;
     }
+
+    // 시도 횟수 입력
+    public static int InsertTimes() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String UserInput = "";
+
+        // 시도 횟수가 입력되지 않았을 경우 예외 처리
+
+        try {
+            UserInput = Console.readLine();
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("시도 횟수가 입력되지 않았습니다.");
+        }
+
+        int time = Integer.parseInt(UserInput.trim());
+
+        return time;
+    }
+
 }

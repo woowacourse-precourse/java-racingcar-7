@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 
 import racingcar.StartApp;
 import racingcar.Racing;
+import racingcar.Racing;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,5 +23,7 @@ public class Application {
         for(int i=0; i<time; i++) {
             Racing.Racing(carMap, cars);
         }
+
+        Racing.Winner(carMap, cars);
     }
 }

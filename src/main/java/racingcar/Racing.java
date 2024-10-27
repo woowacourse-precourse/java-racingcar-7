@@ -6,6 +6,9 @@ import java.util.NoSuchElementException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Racing {
     // 랜덤 숫자 생성
@@ -13,7 +16,6 @@ public class Racing {
     public static Boolean RandomNum() {
         int Random = Randoms.pickNumberInRange(0, 9);
 
-        System.out.println(Random);
         if (Random >= 4) {
             return true;
         }
@@ -43,5 +45,17 @@ public class Racing {
         }
 
         System.out.println();
+    }
+
+    public static void Winner(Map<String, Integer> carMap, String[] cars) {
+        int max = Collections.max(carMap.values());
+        List<String> winners = new ArrayList<>();
+
+        for (String car : cars) {
+            if (carMap.get(car) == max) {
+                winners.add(car);
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
