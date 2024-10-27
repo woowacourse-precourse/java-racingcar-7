@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,12 +28,9 @@ public class Application {
         String move = Console.readLine();
         System.out.println(move + "회");
 
-        int ramdomNumber = Racing.randomNumber(Integer.parseInt(move));
-        // Racing 클래스의 randomNumber 메서드를 호출하여 move 값(문자열)을 정수로 변환
-
         List<String> carNameList = Arrays.asList(splitName);
         Racing racing = new Racing(carNameList);
 
-        racing.printCarNames();
+        racing.startRace();
     }
 }
