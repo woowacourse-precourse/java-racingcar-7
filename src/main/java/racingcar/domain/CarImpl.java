@@ -28,4 +28,8 @@ public class CarImpl implements Car{
     public String toScoreSymbol() {
         return "-".repeat(this.getScore());
     }
+
+    public boolean checkScore(int bestScore) {
+        return this.score == bestScore;
+    }
 }
