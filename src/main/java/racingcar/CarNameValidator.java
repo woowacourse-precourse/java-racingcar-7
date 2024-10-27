@@ -13,12 +13,21 @@ public class CarNameValidator {
         }
     }
 
+    public void inputMoreThenOneCharacter(String carNames) {
+        String[] carNameArray = split(carNames);
+        for (String carName : carNameArray) {
+            if(carName == null || carName.trim().isEmpty()) {
+                throw new IllegalArgumentException("이름을 1자 이상으로 입력해주세요");
+            }
+        }
+    }
+
     private boolean isCommaSeparated(String carNames) {
         return carNames.matches("^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$");
     }
 
-    private boolean isMoreThanTwo(String[] carNames) {
-        return carNames.length > 2;
+    private boolean isMoreThanTwo(String[] carNameArray) {
+        return carNameArray.length > 2;
     }
 
     private String[] split(String carNames) {
