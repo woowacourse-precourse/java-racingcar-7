@@ -3,7 +3,9 @@ package racingcar.validation;
 import racingcar.constants.ErrorMessages;
 import racingcar.constants.ValidationConstants;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InputValidator {
     public static void validateCarNames(List<String> carNames) {
@@ -12,6 +14,7 @@ public class InputValidator {
             validateNameContainsBlank(name);
             validateNameLength(name);
         }
+        validateUniqueCarNames(carNames);
     }
 
     public static void validateMoveCount(String moveCountInput) {
@@ -34,6 +37,13 @@ public class InputValidator {
     private static void validateNameLength(String name) {
         if (name.length() > ValidationConstants.MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessages.ERROR_CAR_NAME_TOO_LONG);
+        }
+    }
+
+    private static void validateUniqueCarNames(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>(carNames);
+        if (uniqueNames.size() != carNames.size()) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_CAR_NAME_DUPLICATE);
         }
     }
 
