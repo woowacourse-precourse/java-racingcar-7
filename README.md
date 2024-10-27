@@ -102,4 +102,4 @@ jun : ---
 
 📊 클래스 다이어그램
 ---
-![java-racingcar-7](https://github.com/user-attachments/assets/ad743c01-185f-4857-82b4-0b98eefdbc9b)
+![Class Diagram.png](img/racingcar_classdiagram.png)
