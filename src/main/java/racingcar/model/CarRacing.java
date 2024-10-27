@@ -34,7 +34,8 @@ public class CarRacing {
             int carDistance = car.getTotalDistance();
             if (carDistance == maxDistance) {
                 winners.add(car);
-            } else if (carDistance > maxDistance) {
+            }
+            if (carDistance > maxDistance) {
                 maxDistance = carDistance;
                 winners.clear();
                 winners.add(car);

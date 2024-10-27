@@ -1,33 +1,12 @@
 package racingcar.model;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racingcar.Application;
 
-class CarRacingTest extends NsTest {
-
-//    @Test
-//    public void 랜덤값에_따라_전진_결정_성공() {
-//        // Given
-//        Car car1 = new Car("Car1");
-//        Car car2 = new Car("Car2");
-//        List<Car> racingCars = Arrays.asList(car1, car2);
-//        CarRacing carRacing = new CarRacing(racingCars);
-//
-//        int initialDistanceCar1 = car1.getTotalDistance();
-//        int initialDistanceCar2 = car2.getTotalDistance();
-//
-//        assertRandomNumberInRangeTest(
-//                () -> {
-//                    carRacing.moverCarsForwardRandomly();
-//                }
-//        );
-//    }
+class CarRacingTest {
 
     @Test
     void 단독우승_결정_성공() {
@@ -87,8 +66,4 @@ class CarRacingTest extends NsTest {
         assertThat(winners).contains(car4);
     }
 
-    @Override
-    protected void runMain() {
-        Application.main(new String[]{});
-    }
 }
