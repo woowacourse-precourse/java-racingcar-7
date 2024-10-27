@@ -38,7 +38,7 @@ public class RacingCar {
     public void pickAWinner() {
         int longest = getLongestDistance();
 
-        StringBuilder resultOutput = new StringBuilder("최종 우승자: ");
+        StringBuilder resultOutput = new StringBuilder("최종 우승자 : ");
         for(Entry<String, StringBuilder> entry : status.entrySet()) {
             if (longest == entry.getValue().length()) {
                 resultOutput.append(entry.getKey()).append(", ");
