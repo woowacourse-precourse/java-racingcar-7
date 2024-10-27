@@ -32,4 +32,24 @@ public class Racing {
         OutputView.printWinners(winners);
     }
 
+    private static List<String> getWinners(List<Car> cars) {
+        int maxPosition = 0;
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            int position = car.getPosition();
+            if (position > maxPosition) {
+                maxPosition = position;
+            }
+        }
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getCarName());
+            }
+        }
+
+        return winners;
+    }
+
 }
