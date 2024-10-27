@@ -6,14 +6,14 @@ import java.util.List;
 
 public class OutputView {
     public void printRaceProgress(List<Car> cars) {
+        StringBuilder output = new StringBuilder();
         for (Car car : cars) {
-            System.out.print(car.getName() + " : ");
-            for (int i = 0; i < car.getPosition(); i++) {
-                System.out.print("-");
-            }
-            System.out.println();
+            output.append(car.getName()).append(" : ");
+            output.append("-".repeat(Math.max(0, car.getPosition())));
+            output.append("\n");
         }
-        System.out.println();
+        output.append("\n");
+        System.out.print(output);
     }
     public void printWinners(List<String> winners) {
         String winnersString = String.join(", ", winners);
