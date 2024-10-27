@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.constant.ErrorMessages.NAME_LENGTH_ERROR_MESSAGE;
+import static racingcar.exception.ErrorMessages.NAME_LENGTH_ERROR_MESSAGE;
 
 class CarTest {
     @Test

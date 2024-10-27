@@ -1,11 +1,11 @@
 package racingcar.domain;
 
-import static racingcar.constant.DomainConstants.MOVE_THRESHOLD;
-import static racingcar.constant.ErrorMessages.NAME_LENGTH_ERROR_MESSAGE;
+import static racingcar.exception.ErrorMessages.NAME_LENGTH_ERROR_MESSAGE;
 
 public class Car {
     private int position = 0;
     private String name;
+    public static int MOVE_THRESHOLD = 4;
 
     public Car(String name) {
         validateName(name);

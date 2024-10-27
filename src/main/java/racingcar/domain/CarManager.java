@@ -1,17 +1,17 @@
 package racingcar.domain;
 
-import racingcar.util.RandomUtil;
 import racingcar.util.ValidationUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static racingcar.constant.ErrorMessages.CAR_COUNT_ERROR_MESSAGE;
-import static racingcar.constant.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
+import static racingcar.exception.ErrorMessages.CAR_COUNT_ERROR_MESSAGE;
+import static racingcar.exception.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
 
 public class CarManager {
     private List<Car> cars;
+    public static int MIN_CAR_COUNT = 2;
 
     public CarManager(List<Car> cars) {
         validateCars(cars);
