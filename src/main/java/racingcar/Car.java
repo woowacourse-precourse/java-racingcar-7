@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.List;
-
 public class Car {
 
     private final String name;
@@ -26,21 +24,16 @@ public class Car {
     }
 
     public void showRaceRecordsByRound(int round) {
-        List<String> raceRecordsByRound = raceRecords.getByRound(round);
-
-        System.out.print(getName() + " : ");
-        for (String raceRecord : raceRecordsByRound) {
-            System.out.print(raceRecord);
-        }
-        System.out.println();
+        String raceRecordsByRound = raceRecords.getByRound(round);
+        System.out.println(getName() + " : " + raceRecordsByRound);
     }
 
     public String getName() {
         return name;
     }
 
-    public int getLastRaceRecord() {
-        return raceRecords.getLastRaceRecord();
+    public RaceRecords getRaceRecords() {
+        return raceRecords;
     }
 
     private void validateCarName(String name) {

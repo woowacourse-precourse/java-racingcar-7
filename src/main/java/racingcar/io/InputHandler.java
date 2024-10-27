@@ -68,5 +68,4 @@ public class InputHandler {
             throw new IllegalArgumentException("경주 횟수는 0이상을 입력해야 합니다.");
         }
     }
-
 }
