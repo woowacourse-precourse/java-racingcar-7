@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +15,8 @@ public class UserInput {
 
         inputValidator.checkCarCount(racingCarNames);
         inputValidator.checkNameLength(racingCarNames);
-        inputValidator.checkForWhitespace(racingCarNames);
-        inputValidator.checkForDuplicates(racingCarNames);
+        inputValidator.checkWhitespace(racingCarNames);
+        inputValidator.checkDuplicates(racingCarNames);
 
         return racingCarNames;
     }

@@ -16,23 +16,35 @@ public class InputValidator {
 
     public void checkNameLength(List<String> racingCarNames) {
         for (String racingCarName : racingCarNames) {
-            if (racingCarName.length() < MIN_NAME_LENGTH || racingCarName.length() > MAX_NAME_LENGTH) {
-                throw new IllegalArgumentException();
-            }
+            checkIndividualNameLength(racingCarName);
         }
     }
 
-    public void checkForWhitespace(List<String> racingCarNames) {
+    private void checkIndividualNameLength(String racingCarName) {
+        if (racingCarName.length() < MIN_NAME_LENGTH || racingCarName.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void checkWhitespace(List<String> racingCarNames) {
         for (String racingCarName : racingCarNames) {
-            if (racingCarName.contains(" ")) {
-                throw new IllegalArgumentException();
-            }
+            checkContainsWhitespace(racingCarName);
         }
     }
 
-    public void checkForDuplicates(List<String> racingCarNames) {
+    private void checkContainsWhitespace(String racingCarName) {
+        if (racingCarName.contains(" ")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void checkDuplicates(List<String> racingCarNames) {
         Set<String> distinctCarNames = new HashSet<>(racingCarNames);
-        if (distinctCarNames.size() < racingCarNames.size()) {
+        checkDuplicatesNames(distinctCarNames, racingCarNames.size());
+    }
+
+    private void checkDuplicatesNames(Set<String> distinctCarNames, int totalCarCount) {
+        if (distinctCarNames.size() < totalCarCount) {
             throw new IllegalArgumentException();
         }
     }

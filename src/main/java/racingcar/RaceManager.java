@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -29,9 +30,13 @@ public class RaceManager {
 
     public void moveCarsForward() {
         for (String racingCarName : carMovementRecords.keySet()) {
-            if (isCarMoving()) {
-                carMovementRecords.get(racingCarName).append(MOVING_MARKER);
-            }
+            moveCarIfMoving(racingCarName);
+        }
+    }
+
+    private void moveCarIfMoving(String racingCarName) {
+        if (isCarMoving()) {
+            carMovementRecords.get(racingCarName).append(MOVING_MARKER);
         }
     }
 
@@ -48,16 +53,19 @@ public class RaceManager {
         List<String> winners = new ArrayList<>();
 
         for (String racingCarName : carMovementRecords.keySet()) {
-            int currentmoves = carMovementRecords.get(racingCarName).length();
-
-            if (currentmoves > maxMoves) {
-                maxMoves = currentmoves;
-                winners.clear();
-                winners.add(racingCarName);
-            } else if (currentmoves == maxMoves) {
-                winners.add(racingCarName);
-            }
+            checkAndUpdateWinners(racingCarName, winners, maxMoves);
         }
         return winners;
+    }
+
+    private void checkAndUpdateWinners(String racingCarName, List<String> winners, int maxMoves) {
+        int currentMoves = carMovementRecords.get(racingCarName).length();
+        if (currentMoves > maxMoves) {
+            maxMoves = currentMoves;
+            winners.clear();
+            winners.add(racingCarName);
+        } else if (currentMoves == maxMoves) {
+            winners.add(racingCarName);
+        }
     }
 }
