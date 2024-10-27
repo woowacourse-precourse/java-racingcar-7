@@ -1,7 +1,8 @@
-#### 2024-10-25
+#### 2024-10-27
 
 ##### Documentation Changes
 
+*  create CHANGELOG.md (20ef3336)
 *  update README.md (71029c46)
 
 ##### New Features
@@ -19,18 +20,27 @@
 
 ##### Bug Fixes
 
+*  입력받은 라운드 수가 1보다 작을 때 예외처리 (eb2dc164)
 *  goForward 메서드 접근 제어자 수정 (b99bdab1)
 
 ##### Refactors
 
+*  service가 인터페이스에 의존하도록 수정 (7140db66)
+*  random number generator 클래스와 인터페이스 생성 (8bc33ccc)
+*  기존 For문 Stream 구문으로 변경 (8307cbb9)
+*  createCars 메서드 리팩터링 (6bcc76a3)
+*  moveCars 메서드 리팩터링 (05f0e172)
 *  불필요한 enum 타입 삭제 (c46b9aa6)
 
 ##### Code Style Changes
 
+*  NumberGenerator 인터페이스 패키지 변경 (e99f0aeb)
+*  Stream구문 포맷팅 (01e665a9)
 *  Intellij IDEA 자동 포맷팅 (9cb11412)
 
 ##### Tests
 
+*  차량 전진, 차량 정지 메서드 테스트 코드 구현 (395e1611)
 *  CarService 클래스 테스트 코드 구현 (e2e8eebf)
 *  Car 엔티티 테스트 코드 작성 (2db41bb5)
 
