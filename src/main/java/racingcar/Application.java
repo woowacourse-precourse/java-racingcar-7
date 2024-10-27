@@ -56,5 +56,17 @@ public class Application {
             }
             System.out.println();
         }
+
+        int maxPosition = Collections.max(carPositions.values());
+        List<String> winners = new ArrayList<>();
+
+        for (String car : racingCarNames) {
+            if (carPositions.get(car) == maxPosition) {
+                winners.add(car);
+            }
+        }
+
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(", ", winners));
     }
 }
