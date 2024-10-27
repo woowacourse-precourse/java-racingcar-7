@@ -24,6 +24,7 @@ public class Racing {
 
     private void splitCarsName(String cars) {
         String[] carNames = cars.split(DELIMITERS);
+        validateCars(carNames);
         makeCarsDict(carNames);
     }
 
@@ -32,6 +33,25 @@ public class Racing {
 
         for (String name : carNames) {
             racingCars.put(name, "");
+        }
+    }
+
+    private void validateCars(String[] carNames) {
+        validateCarsCnt(carNames);
+        validateCarNameLength(carNames);
+    }
+
+    private void validateCarsCnt(String[] carNames) {
+        if (carNames.length <= 1) {
+            throw new IllegalArgumentException("경기는 최소 2명부터 참여 가능합니다.");
+        }
+    }
+
+    private void validateCarNameLength(String[] carNames) {
+        for (String name : carNames) {
+            if (name.length() > 6) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하로만 작성 가능합니다.");
+            }
         }
     }
 }
