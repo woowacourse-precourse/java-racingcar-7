@@ -2,6 +2,7 @@ package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.domain.Car;
 
 public class InputOutputHandler {
 
@@ -21,5 +22,20 @@ public class InputOutputHandler {
         System.out.println("시도할 회수는 몇 회인가요?");
         String input = Console.readLine();
         return inputParser.parseRound(input);
+    }
+
+    public void printRunResult() {
+        System.out.println("실행 결과");
+    }
+
+    public void printCarsStatus(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+    }
+
+    public void printWinners(List<Car> winners) {
+        System.out.println(
+                "최종 우승자 : " + String.join(", ", winners.stream().map(Car::getName).toList()));
     }
 }
