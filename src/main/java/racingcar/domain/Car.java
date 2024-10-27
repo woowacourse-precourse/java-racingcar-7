@@ -35,7 +35,7 @@ public class Car {
 
 	private void validateLength(String name) {
 		if (name.length() > 5) {
-			throw new IllegalArgumentException("[ERROR] 입력값의 길이가 유효하지 않습니다.");
+			throw new IllegalArgumentException("[ERROR] 자동차 이름은 최대 5자를 넘을 수 없습니다.");
 		}
 	}
 
