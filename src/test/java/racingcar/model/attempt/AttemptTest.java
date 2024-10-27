@@ -12,7 +12,7 @@ import racingcar.exception.InvalidAttemptException;
 class AttemptTest {
 
     @Nested
-    @DisplayName("시도 횟수 생성 시,")
+    @DisplayName("생성 테스트")
     class createTest {
 
         @Test

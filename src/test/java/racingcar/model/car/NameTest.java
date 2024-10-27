@@ -12,7 +12,7 @@ import racingcar.exception.InvalidNameException;
 class NameTest {
 
     @Nested
-    @DisplayName("이름 생성 시")
+    @DisplayName("생성 테스트")
     class createTest {
         @Test
         @DisplayName("5글자 이하이면 성공한다")
@@ -27,7 +27,7 @@ class NameTest {
         }
 
         @Test
-        @DisplayName("5글자를 초과하면 예외를 발생한다")
+        @DisplayName("5글자를 초과하면 예외가 발생한다")
         void 실패_이름생성_5글자초과() {
             // Given
             String name = "mintyy";
@@ -40,7 +40,7 @@ class NameTest {
         }
 
         @Test
-        @DisplayName("빈 문자열이면 예외를 발생한다")
+        @DisplayName("빈 문자열이면 예외가 발생한다")
         void 실패_이름생성_빈문자열() {
             // Given
             String name = "";
@@ -53,7 +53,7 @@ class NameTest {
         }
 
         @Test
-        @DisplayName("공백이면 예외를 발생한다")
+        @DisplayName("공백이면 예외가 발생한다")
         void 실패_이름생성_공백() {
             // Given
             String name = " ";
@@ -66,7 +66,7 @@ class NameTest {
         }
 
         @Test
-        @DisplayName("null이면 예외를 발생한다")
+        @DisplayName("null이면 예외가 발생한다")
         void 실패_이름생성_null() {
             // Given
             String name = null;

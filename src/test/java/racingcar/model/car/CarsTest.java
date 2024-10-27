@@ -27,7 +27,7 @@ class CarsTest {
 
     @Test
     @DisplayName("자동차 집합의 이동여부를 얻는다")
-    void 성공_이동여부() {
+    void 성공_이동여부조회() {
         // Given
         Cars cars = new Cars(List.of(new Car("mint", () -> true)));
 
@@ -40,7 +40,7 @@ class CarsTest {
 
     @Test
     @DisplayName("자동차 집합의 이름 집합을 얻는다")
-    void 성공_이름집합() {
+    void 성공_이름집합조회() {
         // Given
         Cars cars = new Cars(List.of(new Car("mint", () -> true), new Car("dobby", () -> true)));
 
@@ -53,7 +53,7 @@ class CarsTest {
 
     @Test
     @DisplayName("자동차 집합의 크기를 얻는다")
-    void 성공_집합크기() {
+    void 성공_집합크기조회() {
         // Given
         Cars cars = new Cars(List.of(new Car("mint", () -> true)));
 
@@ -66,7 +66,7 @@ class CarsTest {
 
     @Test
     @DisplayName("인덱스에 위치한 자동차를 조회한다")
-    void 성공_자동차조회_인덱스() {
+    void 성공_자동차조회() {
         // Given
         Car car = new Car("mint", () -> true);
         Cars cars = new Cars(List.of(car));
