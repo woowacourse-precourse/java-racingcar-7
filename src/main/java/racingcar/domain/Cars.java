@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -9,8 +10,8 @@ import racingcar.global.exception.ErrorMessage;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(String input) {
+        this.cars = parseString(input);
         validCars();
     }
 
@@ -30,6 +31,10 @@ public class Cars {
     public List<Car> getWinners() {
         int maxMoveCount = getMaxMoveCount();
         return cars.stream().filter(it -> it.getMoveCount() == maxMoveCount).toList();
+    }
+
+    private List<Car> parseString(String input) {
+        return Arrays.stream(input.split(",")).map(Car::new).toList();
     }
 
     private void validCars() {
