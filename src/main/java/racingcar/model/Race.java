@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.Set;
 import racingcar.view.OutputView;
 
@@ -96,12 +95,12 @@ public class Race {
     }
 
     public List<String> getWinnerNames() {
-        OptionalInt maxScore = racingCars.stream().mapToInt(Car::getProgressCount).max();
+        int maxScore = racingCars.stream().mapToInt(Car::getProgressCount).max()
+                .orElseThrow(IllegalArgumentException::new);
         return racingCars.stream().filter(
-                        racingCar -> racingCar.getProgressCount() == maxScore.getAsInt())
+                        racingCar -> racingCar.getProgressCount() == maxScore)
                 .map(Car::getName).toList();
 
-        // TODO. OptionalInt empty check. empty일 때 예외처리.
     }
 
     public List<Car> getRacingCars() {
