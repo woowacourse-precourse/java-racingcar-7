@@ -1,7 +1,10 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.SystemView.*;
+import static racingcar.SystemView.printSystemInputTrialMessage;
+import static racingcar.SystemView.printSystemNameInputMessage;
+import static racingcar.SystemView.printSystemRaceStartMessage;
+import static racingcar.SystemView.printSystemWinneMessage;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

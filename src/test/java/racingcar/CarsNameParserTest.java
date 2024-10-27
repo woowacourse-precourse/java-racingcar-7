@@ -1,6 +1,7 @@
 package racingcar;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static racingcar.CarsNameParser.parse;
 
 import java.util.Set;
@@ -14,7 +15,7 @@ class CarsNameParserTest {
     @DisplayName("자동차 목록 문자열을 \",\" 기준으로 구분한다: 기능 목록 1번")
     void 이름을_컴마_기준_분리() {
         //given
-        String input ="pobi,ddot,teddy";
+        String input = "pobi,ddot,teddy";
         //when
         Set<String> carsName = parse(input);
         //then
@@ -25,7 +26,7 @@ class CarsNameParserTest {
     @DisplayName("이름이 중복되면 하나로 여긴다.")
     void 이름_중복시_하나만() {
         //given
-        String input ="pobi,ddot,pobi";
+        String input = "pobi,ddot,pobi";
         //when
         Set<String> carsName = parse(input);
         //then
@@ -38,10 +39,10 @@ class CarsNameParserTest {
 
     @Test
     @DisplayName("빈 값이 아니고 공백이 포함되지 않은 5자 미만은 유효하다")
-    void 이런_이름도_가능 () {
-        testNameParsing(Set.of("귀엽다","이쁘다"),"귀엽다,이쁘다");
-        testNameParsing(Set.of("213","2134"),"213,2134");
-        testNameParsing(Set.of("!!",";\\\""),"!!,;\\\"");
+    void 이런_이름도_가능() {
+        testNameParsing(Set.of("귀엽다", "이쁘다"), "귀엽다,이쁘다");
+        testNameParsing(Set.of("213", "2134"), "213,2134");
+        testNameParsing(Set.of("!!", ";\\\""), "!!,;\\\"");
     }
 
     @Test
@@ -63,23 +64,18 @@ class CarsNameParserTest {
 
     @Test
     @DisplayName("이름이 5자가 넘으면 예외")
-    void 이름_5자_이상 () {
+    void 이름_5자_이상() {
         testNameParsingThrow("ddotzy,pobi");
     }
 
 
-
-
-    void testNameParsing( Set<String> carsName, String input) {
+    void testNameParsing(Set<String> carsName, String input) {
         assertEquals(carsName, parse(input));
     }
 
     void testNameParsingThrow(String input) {
         assertThrows(IllegalArgumentException.class, () -> parse(input));
     }
-
-
-
 
 
 }

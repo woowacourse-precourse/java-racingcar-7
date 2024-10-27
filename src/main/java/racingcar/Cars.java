@@ -6,10 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-public class Cars extends HashMap<String, Integer> {
+public class Cars extends HashMap<String, Integer> implements Subject {
     Cars(Set<String> carNames) {
         addCars(carNames);
     }
+
+    private List<Observer> observers = new ArrayList<>();
 
     public void addCars(Set<String> carsName) {
         for (String carName : carsName) {
@@ -23,11 +25,11 @@ public class Cars extends HashMap<String, Integer> {
         for (String name : this.keySet()) {
             isWinner(winnerScore, name, winnerNames);
         }
-        return String.join(",",winnerNames);
+        return String.join(",", winnerNames);
     }
 
     private void isWinner(int winnerScore, String name, List<String> winnerNames) {
-        if(this.get(name) == winnerScore) {
+        if (this.get(name) == winnerScore) {
             winnerNames.add(name);
         }
     }
@@ -46,11 +48,11 @@ public class Cars extends HashMap<String, Integer> {
     public void go() {
         for (String name : this.keySet()) {
             int referenceNumber = Randoms.pickNumberInRange(0, 9);
-            if(referenceNumber >3) {
-                this.put(name, this.get(name)+1);
+            if (referenceNumber > 3) {
+                this.put(name, this.get(name) + 1);
             }
-
         }
+        notifyObservers();
     }
 
     public void repeatGo(int attempts) {
@@ -60,5 +62,27 @@ public class Cars extends HashMap<String, Integer> {
     }
 
 
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
 
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.updateGoTrial(this);
+        }
+    }
+
+    @Override
+    public void notifyObserversWinner() {
+        for (Observer observer : observers) {
+            observer.updateWinner(this);
+        }
+    }
 }
