@@ -53,6 +53,9 @@ public class RacingGame {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
             }
+            if (name.trim().isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름에 공백이 들어갈 수 없습니다.");
+            }
             if (name.matches(".*\\d.*")) {
                 throw new IllegalArgumentException("자동차 이름에는 숫자를 포함할 수 없습니다.");
             }
