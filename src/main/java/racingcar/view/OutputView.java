@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import static racingcar.view.OutputViewMessage.*;
+
 import java.util.stream.Collectors;
 import racingcar.car.Car;
 
@@ -7,15 +9,15 @@ import java.util.List;
 
 public class OutputView {
     public static void carNameOutView() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(PLEASE_INPUT_CAR_NAME);
     }
 
     public static void tryNumberOutView() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(PLEASE_INPUT_TRY_NUMBER);
     }
 
     public static void excuteResult() {
-        System.out.println("\n실행 결과");
+        System.out.println(EXCUTE_RESULT_PRINT);
     }
 
     public static void resultPerTry(List<Car> racingCar) {
@@ -26,7 +28,7 @@ public class OutputView {
     }
 
     public static void outputWinner(List<Car> winners) {
-        String winnerResult = "최종 우승자 : " +
+        String winnerResult = GAME_WINNER_PREFIX +
                 winners.stream()
                         .map(Car::getCarName)
                         .collect(Collectors.joining(", "));
