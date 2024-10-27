@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.utils.Parser;
-import racingcar.validator.Validator;
+import racingcar.validator.CountValidator;
 
 public final class View {
     private static final String NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -25,7 +25,7 @@ public final class View {
     public static int getCount() {
         System.out.println(COUNT_INPUT_MESSAGE);
         String count = Console.readLine().trim();
-        Validator.countValidate(count);
+        CountValidator.countValidate(count);
         System.out.println();
         return Integer.parseInt(count);
     }
