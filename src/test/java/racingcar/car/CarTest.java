@@ -3,6 +3,8 @@ package racingcar.car;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -29,14 +31,28 @@ class CarTest {
     }
 
     @DisplayName("숫자가 4 이상일 경우 전진한다.")
-    @Test
-    void move() {
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 7, 8, 9})
+    void moveOver4Number(int value) {
         // given
-        List<Integer> integers = List.of(1, 4, 5, 7, 3, 8);
-        int expectedPosition = 4;
+        int expectedPosition = 1;
 
         // when
-        for(int number:integers) testCar.move(number);
+        testCar.move(value);
+
+        // then
+        assertThat(testCar.getPosition()).isEqualTo(expectedPosition);
+    }
+
+    @DisplayName("숫자가 4 미만일 경우 전진하지 않는다.")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 0})
+    void moveUnder4Number(int value) {
+        // given
+        int expectedPosition = 0;
+
+        // when
+        testCar.move(value);
 
         // then
         assertThat(testCar.getPosition()).isEqualTo(expectedPosition);

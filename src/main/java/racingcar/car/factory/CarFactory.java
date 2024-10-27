@@ -25,6 +25,8 @@ public final class CarFactory {
     }
 
     private static void checkDuplicated(String[] names, Set<Car> cars) {
-        if(names.length != cars.size()) throw new IllegalArgumentException(DUPLICATED_CAR_NAME.getMessage());
+        if(names.length != cars.size()){
+            throw new IllegalArgumentException(DUPLICATED_CAR_NAME.getMessage());
+        }
     }
 }
