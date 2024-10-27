@@ -39,6 +39,15 @@ public class Game {
     }
 
     private void printWinner() {
+        System.out.print("최종 우승자 : ");
+        System.out.println(joinCarNames());
+
+    }
+
+    private String joinCarNames() {
+        String[] carNameArray = winnerCars.stream().map(Car::toString).toArray(String[]::new);
+
+        return String.join(",", carNameArray);
     }
 
     private void findWinner() {
