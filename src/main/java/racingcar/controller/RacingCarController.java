@@ -1,9 +1,7 @@
 package racingcar.controller;
 
 import racingcar.service.RacingCarService;
-import racingcar.service.RandomService;
 import racingcar.validator.InputValidator;
-import racingcar.validator.RandomValidator;
 import racingcar.view.RacingCarView;
 
 import java.util.List;
