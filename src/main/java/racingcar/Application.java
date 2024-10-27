@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.io.CarInputHandler;
-import racingcar.race.track.CarRacetrack;
+import racingcar.race.track.cartrack.CarRacetrack;
 
 public class Application {
     public static void main(String[] args) {
