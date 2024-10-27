@@ -1,7 +1,19 @@
+/*
+ * Application
+ *
+ * ver1
+ *
+ * 2024-10-24
+ *
+ * 저작권 주의
+ */
 package racingcar;
+
+import racingcar.controller.RacingCarController;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingCarController racingCarController = new RacingCarController();
+        racingCarController.start();
     }
 }
