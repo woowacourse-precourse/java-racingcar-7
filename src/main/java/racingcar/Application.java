@@ -9,7 +9,6 @@ public class Application {
     private static final int MIN_VALUE = 0;
     private static final int MAX_VALUE = 9;
     private static final int FORWARD_CRITERIA = 4;
-    private static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5자 이하이어야 합니다.";
     private static int[] carPositions;
 
     private static String[] getCarNames() {
@@ -19,20 +18,12 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         carNames = Console.readLine();
         splitCarNames = splitCarNamesByDelimiter(carNames);
-        validateCarNames(splitCarNames);
+        Validator.validateCarNames(splitCarNames);
         return splitCarNames;
     }
 
     private static String[] splitCarNamesByDelimiter(String carNames) {
         return carNames.split(",");
-    }
-    
-    private static void validateCarNames(String[] carNames) {
-        for (String name : carNames) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR_MESSAGE);
-            }
-        }
     }
 
     private static int getGameCount() {
