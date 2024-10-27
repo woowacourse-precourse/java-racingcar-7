@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.service.MoveRule;
+import racingcar.service.MoveService;
 
 public class Racing {
     private final List<Car> cars;
@@ -15,9 +15,9 @@ public class Racing {
         return cars;
     }
 
-    public void performRace(final MoveRule moveRule) {
+    public void performRace(final MoveService moveService) {
         for (Car car : cars) {
-            car.move(moveRule.tryMove());
+            car.move(moveService.tryMove());
         }
     }
 

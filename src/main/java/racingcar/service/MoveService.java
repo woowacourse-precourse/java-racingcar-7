@@ -1,7 +1,7 @@
 package racingcar.service;
 
-public interface MoveRule {
+public interface MoveService {
     int tryMove();
-    
+
 }
 

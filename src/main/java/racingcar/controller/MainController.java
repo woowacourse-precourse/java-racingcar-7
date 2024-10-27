@@ -11,8 +11,8 @@ import java.util.Set;
 import racingcar.domain.Car;
 import racingcar.domain.Racing;
 import racingcar.dto.WinnerResponseDto;
-import racingcar.service.MoveRule;
-import racingcar.service.ThresholdScoreMoveRule;
+import racingcar.service.MoveService;
+import racingcar.service.ThresholdScoreMoveService;
 import racingcar.util.NumberGenerator;
 import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
@@ -22,18 +22,18 @@ public class MainController {
     private final static String CAR_NAME_SPLIT_REGEX = ",";
     private final static int TRAIL_NUMBER_MIN = 0;
     private final static int CAR_POSITION_MIN = 0;
-    private final MoveRule moveRule;
+    private final MoveService moveService;
 
-    private MainController(final MoveRule moveRule) {
-        this.moveRule = moveRule;
+    private MainController(final MoveService moveService) {
+        this.moveService = moveService;
     }
 
     public static MainController create() {
         return new MainController(createThresholdScoreMoveRule());
     }
 
-    public static ThresholdScoreMoveRule createThresholdScoreMoveRule() {
-        return new ThresholdScoreMoveRule(createNumberGenerator());
+    public static ThresholdScoreMoveService createThresholdScoreMoveRule() {
+        return new ThresholdScoreMoveService(createNumberGenerator());
     }
 
     public static NumberGenerator createNumberGenerator() {
@@ -90,7 +90,7 @@ public class MainController {
 
     private void racingGameTrials(final Racing racing, int trialNumber) {
         for (int i = 0; i < trialNumber; i++) {
-            racing.performRace(moveRule);
+            racing.performRace(moveService);
             List<WinnerResponseDto> result = convertToResultDtos(racing);
             OutputView.printRacingOutput(result);
         }

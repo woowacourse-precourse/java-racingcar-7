@@ -2,7 +2,7 @@ package racingcar.service;
 
 import racingcar.util.NumberGenerator;
 
-public final class ThresholdScoreMoveRule implements MoveRule {
+public final class ThresholdScoreMoveService implements MoveService {
     private static final int MIN_MOVE_NUMBER = 4;
     private static final int FORWARD = 1;
     private static final int STOP = 0;
@@ -10,7 +10,7 @@ public final class ThresholdScoreMoveRule implements MoveRule {
     private static final int MAX_NUM = 9;
     private final NumberGenerator numberGenerator;
 
-    public ThresholdScoreMoveRule(final NumberGenerator randomNumberGenerator) {
+    public ThresholdScoreMoveService(final NumberGenerator randomNumberGenerator) {
         this.numberGenerator = randomNumberGenerator;
     }
 
