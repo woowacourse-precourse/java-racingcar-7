@@ -16,7 +16,7 @@ public class RacingCarGame {
     private final RacingCarGameValidator racingCarGameValidator;
     private final RacingCarGenerator racingCarGenerator;
     private final RacingCarTransporter racingCarTransporter;
-    private final RacingCarGameWinnerSelector racingCarWinnerGenerator;
+    private final RacingCarGameWinnerSelector racingCarGameWinnerSelector;
     private final RacingCarGameRandomGenerator racingCarRandomGenerator;
     private static final String WINNER_NAME_DELIMITER = ", ";
 
@@ -25,14 +25,14 @@ public class RacingCarGame {
             RacingCarGameValidator racingCarGameValidator,
             RacingCarGenerator racingCarGenerator,
             RacingCarTransporter racingCarTransporter,
-            RacingCarGameWinnerSelector racingCarWinnerGenerator,
+            RacingCarGameWinnerSelector racingCarGameWinnerSelector,
             RacingCarGameRandomGenerator racingCarRandomGenerator
     ) {
         this.racingCarNameParser = racingCarNameParser;
         this.racingCarGameValidator = racingCarGameValidator;
         this.racingCarGenerator = racingCarGenerator;
         this.racingCarTransporter = racingCarTransporter;
-        this.racingCarWinnerGenerator = racingCarWinnerGenerator;
+        this.racingCarGameWinnerSelector = racingCarGameWinnerSelector;
         this.racingCarRandomGenerator = racingCarRandomGenerator;
     }
 
@@ -43,7 +43,7 @@ public class RacingCarGame {
         List<RacingCar> racingCars = racingCarGenerator.generateCar(racingCarNames);
         String gameResult = startRacingGame(racingCars, moveCount);
 
-        List<RacingCar> gameWinners = racingCarWinnerGenerator.generateWinner(racingCars);
+        List<RacingCar> gameWinners = racingCarGameWinnerSelector.generateWinner(racingCars);
         String gameWinnerNames = getGameWinnersToWinnerNames(gameWinners);
 
         return new RacingCarGameResult(gameResult, gameWinnerNames);

@@ -58,7 +58,6 @@ public class InputRacingCarViewTest {
     }
 
 
-
     @Test
     public void 자동차_이동횟수_입력_테스트() {
         assertSimpleTest(() -> {
@@ -75,7 +74,7 @@ public class InputRacingCarViewTest {
     }
 
     @Test
-    public void 자동차_숫자가아닌_이동횟수_입력_테스트(){
+    public void 자동차_숫자가아닌_이동횟수_입력_테스트() {
         assertSimpleTest(() -> {
             // given
             String input = "xxx";

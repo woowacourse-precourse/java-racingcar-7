@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 
 public class BasicRacingCarGameValidatorTest {
 
-    private final BasicRacingCarGameValidator basicRacingCarValidator;
+    private final BasicRacingCarGameValidator basicRacingCarGameValidator;
 
     public BasicRacingCarGameValidatorTest() {
-        this.basicRacingCarValidator = new BasicRacingCarGameValidator();
+        this.basicRacingCarGameValidator = new BasicRacingCarGameValidator();
     }
 
     @Test
@@ -22,7 +22,7 @@ public class BasicRacingCarGameValidatorTest {
             List<String> names = List.of("");
 
             // when
-            assertThatThrownBy(() -> basicRacingCarValidator.validateCarNames(names))
+            assertThatThrownBy(() -> basicRacingCarGameValidator.validateCarNames(names))
                     // then
                     .isInstanceOf(IllegalArgumentException.class);
         });
@@ -36,7 +36,7 @@ public class BasicRacingCarGameValidatorTest {
             List<String> names = List.of("5자초과이름");
 
             // when
-            assertThatThrownBy(() -> basicRacingCarValidator.validateCarNames(names))
+            assertThatThrownBy(() -> basicRacingCarGameValidator.validateCarNames(names))
                     // then
                     .isInstanceOf(IllegalArgumentException.class);
         });
@@ -49,7 +49,7 @@ public class BasicRacingCarGameValidatorTest {
             int moveCount = 0;
 
             // when
-            assertThatThrownBy(() -> basicRacingCarValidator.validateMoveCount(moveCount))
+            assertThatThrownBy(() -> basicRacingCarGameValidator.validateMoveCount(moveCount))
                     // then
                     .isInstanceOf(IllegalArgumentException.class);
         });
@@ -62,20 +62,20 @@ public class BasicRacingCarGameValidatorTest {
             List<String> names = new ArrayList<>();
 
             // when
-            assertThatThrownBy(() -> basicRacingCarValidator.validateCarNames(names))
+            assertThatThrownBy(() -> basicRacingCarGameValidator.validateCarNames(names))
                     // then
                     .isInstanceOf(IllegalArgumentException.class);
         });
     }
 
     @Test
-    public void 경주_자동차_이름_중복_테스트(){
+    public void 경주_자동차_이름_중복_테스트() {
         assertSimpleTest(() -> {
             // given
             List<String> names = List.of("창의", "창의");
 
             // when
-            assertThatThrownBy(() -> basicRacingCarValidator.validateCarNames(names))
+            assertThatThrownBy(() -> basicRacingCarGameValidator.validateCarNames(names))
                     // then
                     .isInstanceOf(IllegalArgumentException.class);
         });
@@ -88,7 +88,7 @@ public class BasicRacingCarGameValidatorTest {
             List<String> names = List.of("창의", "민규", "상현");
 
             // when
-            basicRacingCarValidator.validateCarNames(names);
+            basicRacingCarGameValidator.validateCarNames(names);
 
             // then
             // 예외가 발생하지 않는다.
@@ -103,7 +103,7 @@ public class BasicRacingCarGameValidatorTest {
             int moveCount = 1;
 
             // when
-            basicRacingCarValidator.validateMoveCount(moveCount);
+            basicRacingCarGameValidator.validateMoveCount(moveCount);
 
             // then
             // 예외가 발생하지 않는다.

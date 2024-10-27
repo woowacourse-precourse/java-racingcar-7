@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
 
 public class BasicRacingCarGameWinnerSelectorTest {
-    private final BasicRacingCarGameWinnerSelector basicRacingCarWinnerGenerator;
+    private final BasicRacingCarGameWinnerSelector basicRacingCarGameWinnerSelector;
 
     public BasicRacingCarGameWinnerSelectorTest() {
-        this.basicRacingCarWinnerGenerator = new BasicRacingCarGameWinnerSelector();
+        this.basicRacingCarGameWinnerSelector = new BasicRacingCarGameWinnerSelector();
     }
 
     @Test
@@ -21,7 +21,7 @@ public class BasicRacingCarGameWinnerSelectorTest {
             List<RacingCar> cars = List.of(new RacingCar("창의"));
 
             // when
-            List<RacingCar> winners = basicRacingCarWinnerGenerator.generateWinner(cars);
+            List<RacingCar> winners = basicRacingCarGameWinnerSelector.generateWinner(cars);
 
             // then
             assertThat(winners)
@@ -37,7 +37,7 @@ public class BasicRacingCarGameWinnerSelectorTest {
             List<RacingCar> cars = List.of(new RacingCar("창의"), new RacingCar("상현"));
 
             // when
-            List<RacingCar> winners = basicRacingCarWinnerGenerator.generateWinner(cars);
+            List<RacingCar> winners = basicRacingCarGameWinnerSelector.generateWinner(cars);
 
             // then
             assertThat(winners)
