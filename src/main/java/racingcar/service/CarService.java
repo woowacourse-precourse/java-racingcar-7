@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
 
 import java.util.ArrayList;
@@ -15,5 +16,12 @@ public class CarService {
         cars.addAll(newCars);
     }
 
-
+    public void moveCars() {
+        for (Car car : cars) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            if (randomValue >= 4) {
+                car.move();
+            }
+        }
+    }
 }
