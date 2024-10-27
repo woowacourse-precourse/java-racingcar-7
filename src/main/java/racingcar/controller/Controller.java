@@ -7,10 +7,11 @@ public class Controller {
     public void start(){
         String s= InputView.getInput();
         Seperator seperator=new Seperator(s);
-        Valid valid=new Valid(s);
+        Valid valid=new Valid();
         for (String name : seperator.getNames()) {
-
+            valid.valid(name);
         }
+
 
     }
 
