@@ -12,8 +12,11 @@ public class CarValidator {
         }
     }
 
-    public static void validateAttempts(int attempts){
-        if (attempts <= 0) {
+    public static void validateAttempts(String attempts){
+        if (!attempts.matches("\\d+")) {
+            throw new IllegalArgumentException("이동 횟수는 숫자여야 합니다.");
+        }
+        if (Integer.parseInt(attempts) <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
     }

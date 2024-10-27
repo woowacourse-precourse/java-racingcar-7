@@ -12,10 +12,9 @@ import java.util.List;
 public class RacingGameController {
     public void startGame() {
         String[] carNames = InputView.getCarNames();
-        int attempts = InputView.getRaceAttempts();
-
-        // Validate attempts
+        String attempts = InputView.getRaceAttempts();
         CarValidator.validateAttempts(attempts);
+        int attemptCount = Integer.parseInt(attempts);
 
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
@@ -26,7 +25,7 @@ public class RacingGameController {
 
         RacingGame game = new RacingGame(cars);
 
-        for (int i = 0; i < attempts; i++) {
+        for (int i = 0; i < attemptCount; i++) {
             game.playRound();
             OutputView.printRoundResult(game);
         }
