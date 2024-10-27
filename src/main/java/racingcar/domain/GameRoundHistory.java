@@ -34,4 +34,8 @@ public class GameRoundHistory {
         }
     }
 
+    public String getEachRoundResult() {
+        return eachRoundResult.toString();
+    }
+
 }
