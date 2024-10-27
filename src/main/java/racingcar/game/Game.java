@@ -25,7 +25,8 @@ public class Game {
         for (int i = 0; i < loopCnt; i++) {
             racing();
         }
-        
+
+        System.out.println("실행 결과");
         printCurrent();
     }
 
