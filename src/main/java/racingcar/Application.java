@@ -1,10 +1,14 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Application {
     private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final int MIN_RANDOM_VALUE = 0;
+    private static final int MAX_RANDOM_VALUE = 9;
+    private static final int FORWARD_STOP_THRESHOLD = 4;
 
     public static void main(String[] args) {
         // 1.1 경주할 자동차 목록을 입력받는 기능
@@ -20,6 +24,9 @@ public class Application {
         String tryCountInputString = getTryCountInputString();
         // 2.2 시도할 횟수가 형식에 맞게 입력되었는지 확인하여 정수 타입으로 변환하는 기능
         int tryCount = getTryCount(tryCountInputString);
+
+        // 3.1 0에서 9 사이의 무작위 수를 생성하여 자동차를 전진하거나 정지하게 하는 기능
+        proceedTurn(carList);
     }
 
     public static String getCarNamesInputString() {
@@ -77,5 +84,14 @@ public class Application {
 
     public static boolean isPositiveNumber(int number) {
         return number > 0;
+    }
+
+    public static void proceedTurn(ArrayList<Car> carList) {
+        for (Car car : carList) {
+            int randomValue = Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+            if (randomValue >= FORWARD_STOP_THRESHOLD) {
+                car.goForward();
+            }
+        }
     }
 }
