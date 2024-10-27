@@ -57,4 +57,5 @@ public class CarsTest {
 
         assertThat(cars.getWinnerNames()).isEqualTo("aaa, bbb, ccc");
     }
+    
 }
