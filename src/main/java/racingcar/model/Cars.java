@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cars {
     private static final int SPLIT_ALL = -1;
@@ -15,16 +16,10 @@ public class Cars {
         }
     }
 
-    public int count() {
-        return cars.size();
-    }
-
-    public String nameAt(int index) {
-        return cars.get(index).getName();
-    }
-
-    public int countMoveAt(int index) {
-        return cars.get(index).countMove();
+    public List<Car> toList() {
+        return cars.stream()
+                .map(Car::clone)
+                .toList();
     }
 
     public void move() {
@@ -33,15 +28,13 @@ public class Cars {
         }
     }
 
-    public ArrayList<String> getWinnerNames() {
+    public List<String> getWinnerNames() {
         int maxMoveCount = findMaxMovedCount();
 
-        return new ArrayList<>(
-                cars.stream()
-                        .filter(car -> car.countMove() == maxMoveCount)
-                        .map(Car::getName)
-                        .toList()
-        );
+        return cars.stream()
+                .filter(car -> car.countMove() == maxMoveCount)
+                .map(Car::getName)
+                .toList();
     }
 
     private int findMaxMovedCount() {

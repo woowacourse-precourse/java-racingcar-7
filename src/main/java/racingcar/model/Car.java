@@ -49,4 +49,12 @@ public class Car {
     public int countMove() {
         return this.moveCount;
     }
+
+    @Override
+    public Car clone() {
+        Car newCar = new Car(this.name);
+
+        newCar.moveCount = this.moveCount;
+        return newCar;
+    }
 }

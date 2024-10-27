@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.model.Car;
 import racingcar.model.Cars;
 
 public class RaceOutput {
@@ -22,11 +23,11 @@ public class RaceOutput {
     }
 
     public static void printProgress(Cars cars) {
-        for (int i = 0; i < cars.count(); i++) {
+        for (Car car : cars.toList()) {
             String progressMessage = String.format(
                     PROGRESS_FORMAT,
-                    cars.nameAt(i),
-                    PROGRESS.repeat(cars.countMoveAt(i))
+                    car.getName(),
+                    PROGRESS.repeat(car.countMove())
             );
 
             println(progressMessage);
