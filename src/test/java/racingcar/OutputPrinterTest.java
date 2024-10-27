@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.LinkedHashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -35,5 +36,18 @@ public class OutputPrinterTest {
         var runner = new OutputPrinter();
         runner.promptAttemptCount();
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("시도할 횟수는 몇 회인가요?");
+    }
+
+    @Test
+    void 레이스_진행_상황_출력() {
+        var runner = new OutputPrinter();
+        LinkedHashMap<Car, Integer> cars = new LinkedHashMap<>();
+        cars.put(new Car("tayo"), 1);
+        cars.put(new Car("lani"), 2);
+        cars.put(new Car("rogi"), 3);
+
+        runner.showRace(cars);
+
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("tayo : -\nlani : --\nrogi : ---");
     }
 }
