@@ -46,6 +46,6 @@ public class RaceServiceImpl implements RaceService{
 
     @Override
     public List<Car> generateWinners() {
-        return null;
+        return carRepository.findWinners();
     }
 }
