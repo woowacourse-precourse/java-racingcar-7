@@ -15,14 +15,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int roundCount = inputRoundCount();
 
-        RacingCars racingCars = new RacingCars(new ArrayList<>());
-
-        for (String name : names) {
-            RacingCar racingCar = new RacingCar(name);
-            racingCars.addRacingCar(racingCar);
-        }
-
-        List<RacingCar> racingCarList = racingCars.getRacingCars();
+        List<RacingCar> racingCarList = createRacingCars(names);
 
         for (int i = 0; i < roundCount; i++) {
             for (RacingCar racingCar : racingCarList) {
@@ -47,6 +40,17 @@ public class Application {
                 .toList();
 
         System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static List<RacingCar> createRacingCars(List<String> names) {
+        RacingCars racingCars = new RacingCars();
+
+        for (String name : names) {
+            RacingCar racingCar = new RacingCar(name);
+            racingCars.addRacingCar(racingCar);
+        }
+
+        return racingCars.getRacingCars();
     }
 
     private static int inputRoundCount() {

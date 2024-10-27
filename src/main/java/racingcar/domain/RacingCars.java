@@ -1,10 +1,15 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
 
     private final List<RacingCar> racingCars;
+
+    public RacingCars() {
+        this.racingCars = new ArrayList<>();
+    }
 
     public RacingCars(List<RacingCar> racingCars) {
         if (racingCars == null) {
