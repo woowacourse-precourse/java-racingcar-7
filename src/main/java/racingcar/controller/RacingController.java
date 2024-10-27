@@ -10,18 +10,18 @@ import racingcar.view.OutputView;
 
 public class RacingController {
 
-    private InputView inputView;
-    private OutputView outputView;
-    private InputValidationService inputValidationService;
-    private InputDecodeService inputDecodeService;
-    private RacingService racingService;
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final InputValidationService inputValidationService;
+    private final InputDecodeService inputDecodeService;
+    private final RacingService racingService;
 
-    public RacingController(InputView inputView, OutputView outputView) {
-        this.inputView = inputView;
-        this.outputView = outputView;
-        this.inputValidationService = new InputValidationService();
-        this.inputDecodeService = new InputDecodeService();
-        this.racingService = new RacingService();
+    public RacingController() {
+        inputView = new InputView();
+        outputView = new OutputView();
+        inputValidationService = new InputValidationService();
+        inputDecodeService = new InputDecodeService();
+        racingService = new RacingService();
     }
 
     public void startRacing() {
