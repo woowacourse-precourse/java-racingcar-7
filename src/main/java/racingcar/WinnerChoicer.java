@@ -4,10 +4,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WinnerStatus {
-    private List<CarStatus> carStatusList;
+public class WinnerChoicer {
+    private final List<CarStatus> carStatusList;
 
-    public WinnerStatus(List<CarStatus> carStatusList) {
+    public WinnerChoicer(List<CarStatus> carStatusList) {
         this.carStatusList = carStatusList;
     }
 
@@ -17,7 +17,7 @@ public class WinnerStatus {
                 .max()
                 .orElse(0);
 
-        if(maxPosition == 0) {
+        if (maxPosition == 0) {
             return Collections.emptyList();
         }
 

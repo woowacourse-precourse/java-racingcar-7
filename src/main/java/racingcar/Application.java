@@ -18,7 +18,7 @@ public class Application {
             Output.showRound(roundStatus);
         }
 
-        WinnerStatus winnerStatus = new WinnerStatus(racingGame.getRoundStatus().getCarStatusList());
-        Output.showWinner(winnerStatus);
+        WinnerChoicer winnerChoicer = new WinnerChoicer(racingGame.getRoundStatus().getCarStatusList());
+        Output.showWinner(winnerChoicer);
     }
 }
