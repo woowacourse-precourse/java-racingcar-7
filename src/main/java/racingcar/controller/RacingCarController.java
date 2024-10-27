@@ -14,6 +14,7 @@ public class RacingCarController {
         inputView.printInputCarNameMessage();
 
         String carNames = inputView.getInput();
-        System.out.println(carNames);
+
+        inputView.printInputTryCountMessage();
     }
 }
