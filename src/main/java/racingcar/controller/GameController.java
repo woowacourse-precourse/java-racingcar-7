@@ -22,9 +22,7 @@ public class GameController {
 				.toList();
 		int trialCount = getTrialCountInput();
 		executeRaceGame(cars, trialCount);
-		List<String> winners = WinnerDeterminer.determineWinner(cars);
-		String winnerResult = WinnerResultGenerator.generateWinnerResult(winners);
-		OutputView.printWinnerResultMessage(winnerResult);
+		printWinnerResultMessage(cars);
 	}
 
 	private String getCarNamesInput() {
@@ -54,5 +52,11 @@ public class GameController {
 	private void moveCar(Car car) {
 		int randomNumber = RandomNumberGenerator.generateRandomNumber();
 		car.move(randomNumber);
+	}
+
+	private void printWinnerResultMessage(List<Car> cars) {
+		List<String> winners = WinnerDeterminer.determineWinner(cars);
+		String winnerResult = WinnerResultGenerator.generateWinnerResult(winners);
+		OutputView.printWinnerResultMessage(winnerResult);
 	}
 }
