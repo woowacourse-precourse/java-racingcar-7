@@ -10,8 +10,10 @@ public class RacingGame {
     final static Integer MINIMUM_NUMBER_FORWARD = 3;
     final static String REGEX_PATTERN = "^[0-9]*$";
 
-    private String[] cars;
-    private String tryNumber;
+    public static String TRY_NUMBER_ERROR_MESSAGE = "0이상의 정수를 입력해주세요.";
+
+    final private String[] cars;
+    final private String tryNumber;
 
     final private LinkedHashMap<String, Integer> groupedCars = new LinkedHashMap<>();
 
@@ -22,7 +24,6 @@ public class RacingGame {
 
     public LinkedHashMap<String, Integer> getCarNumber() {
         groupCars(cars);
-        //Validator.validate(cars);
         printMovingCars();
         return groupedCars;
     }
@@ -52,7 +53,7 @@ public class RacingGame {
     public Integer changeTryTimesNumber() {
 
         if (!Pattern.matches(REGEX_PATTERN,tryNumber)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(TRY_NUMBER_ERROR_MESSAGE);
         }
         return Integer.parseInt(tryNumber);
     }
