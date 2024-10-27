@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 class CarGroupTest {
 
+    private final int EXCEEDING_CAR_LIMIT = 21;
+
     @Test
     public void 자동차의_이름이_중복_되지_않으면_예외가_발생하지_않는다() {
         //given
@@ -54,5 +56,18 @@ class CarGroupTest {
         // then
         carGroup.getCarInfos()
                 .forEach(carInfo -> assertEquals(1, carInfo.getCurrentPosition()));
+    }
+
+    @Test
+    public void 최대_허용_자동차_수를_초과하면_예외를_발생한다() {
+        //given
+        List<Car> participatingCars = new ArrayList<>();
+        for (int carNumber = 1; carNumber <= EXCEEDING_CAR_LIMIT; carNumber++) {
+            participatingCars.add(new Car(String.valueOf(carNumber)));
+        }
+
+        // then when
+        Assertions.assertThatThrownBy(() -> new CarGroup(participatingCars))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

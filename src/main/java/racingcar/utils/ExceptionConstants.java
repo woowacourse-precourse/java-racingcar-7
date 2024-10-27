@@ -9,7 +9,8 @@ public enum ExceptionConstants {
     INVALID_ROUND_NUMBER("라운드 수는 숫자로 입력 해주세요."),
     NO_PARTICIPANTS("참가자가 없습니다."),
     EMPTY_INPUT("입력은 비어 있을 수 없습니다."),
-    DUPLICATE_CAR_NAME("자동차의 이름은 중복될 수 없습니다.");;
+    DUPLICATE_CAR_NAME("자동차의 이름은 중복될 수 없습니다."),
+    EXCEEDS_MAX_CAR_LIMIT("자동차는 최대 20대 출전할 수 있습니다.");
 
     private final String errorMessage;
 

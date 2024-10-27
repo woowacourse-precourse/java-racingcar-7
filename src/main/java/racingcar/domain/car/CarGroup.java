@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import static racingcar.utils.ExceptionConstants.DUPLICATE_CAR_NAME;
+import static racingcar.utils.ExceptionConstants.EXCEEDS_MAX_CAR_LIMIT;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,10 +10,13 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 public class CarGroup {
+
+    private final int MAX_CARS_ALLOWED = 20;
     private final List<Car> cars;
 
     public CarGroup(List<Car> cars) {
         validateDuplicateCarName(cars);
+        validateCarLimitExceeded(cars);
         this.cars = new ArrayList<>(cars);
     }
 
@@ -34,6 +38,12 @@ public class CarGroup {
         Set<Car> setCar = new HashSet<>(cars);
         if (setCar.size() != cars.size()) {
             throw new IllegalArgumentException(DUPLICATE_CAR_NAME.getErrorMessage());
+        }
+    }
+
+    private void validateCarLimitExceeded(List<Car> cars) {
+        if (cars.size() > MAX_CARS_ALLOWED) {
+            throw new IllegalArgumentException(EXCEEDS_MAX_CAR_LIMIT.getErrorMessage());
         }
     }
 }
