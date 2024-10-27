@@ -17,28 +17,26 @@ public class GameController {
 
     public void run() {
         Cars cars = initCars();
-        startGame(cars);
-
-        Winner winner = winnerPlayers(cars);
-        endGame(winner);
+        executeRounds(cars);
+        displayWinners(cars);
     }
 
-    private void endGame(Winner winner) {
-        String info = winner.winnerInfo();
-        outputView.printFinalWinners(info);
+    private void displayWinners(Cars cars) {
+        Winner winner = determineWinners(cars);
+        outputView.printFinalWinners(winner.toString());
     }
 
-    private Winner winnerPlayers(Cars cars) {
-        Car manyMoveCar = cars.getFurthestCar();
-        return new Winner(cars, manyMoveCar);
+    private Winner determineWinners(Cars cars) {
+        Car furthestCar = cars.getFurthestCar();
+        return new Winner(cars, furthestCar);
     }
 
     private Cars initCars() {
-        String inputCarNames = inputView.inputCarNames();
-        return new Cars(inputCarNames);
+        String CarNames = inputView.inputCarNames();
+        return new Cars(CarNames);
     }
 
-    private void startGame(Cars cars) {
+    private void executeRounds(Cars cars) {
         int totalRoundCount = inputView.inputTryCount();
 
         outputView.printRunResult();
