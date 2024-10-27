@@ -64,6 +64,15 @@ public class Application {
 		System.out.println();
 	}
 
+	public static int getMaxAdvanceCount(String[] count) {
+		int max = 0;
+		for (int i = 0; i < count.length; i++) {
+			if (max < count[i].length())
+				max = count[i].length();
+		}
+		return max;
+
+	}
 
 
 
