@@ -34,9 +34,11 @@ public class InputReader {
     private List<String> parseCarNames(String input) {
         List<String> carNames = Arrays.asList(input.split(","));
         if (carNames.size() <= 1) {
-            throw new IllegalArgumentException("2대 이상의 차량을 입력해야 합니다.");
+            throw new IllegalArgumentException("2대 이상의 차량을 다시 입력해 주세요.");
         }
-
+        if (input.charAt(input.length() - 1) == ',') {
+            throw new IllegalArgumentException("자동차 이름은 쉼표(,)로 끝날 수 없습니다.");
+        }
         carNames.forEach(this::validateCarName);
         return carNames;
     }
