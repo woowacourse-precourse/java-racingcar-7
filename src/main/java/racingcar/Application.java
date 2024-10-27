@@ -33,6 +33,7 @@ public class Application {
         // 입력된 라운드 횟수만큼 랜덤라운드 1회를 반복
         for(int i = 0; i < totalRounds; i++){
             randomPicker.runSingleRandomRound(carNames);
+            mapBuilder.mapSingleRandomRoundResult(i);
         }
     }
 }
