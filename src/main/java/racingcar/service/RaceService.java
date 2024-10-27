@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.domain.Car;
 import racingcar.dto.UserInputDTO;
+import racingcar.util.InputParser;
 
 import java.util.List;
 
@@ -17,9 +18,9 @@ public class RaceService {
         }
     }
 
-    public void initialize(int numOfStages, List<Car> carList) {
-        this.numOfStages = numOfStages;
-        this.carList = carList;
+    public void initialize(UserInputDTO userInputDTO) {
+        this.numOfStages = userInputDTO.numOfStages();
+        this.carList = InputParser.getCarList(userInputDTO);
     }
 
     public int getNumOfStages() {

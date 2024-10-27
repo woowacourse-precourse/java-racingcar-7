@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import racingcar.dto.UserInputDTO;
 import racingcar.service.RaceService;
-import racingcar.util.InputParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,7 +15,7 @@ public class RaceController {
 
     public void raceStart() {
         UserInputDTO userInputDTO = InputView.getUserInput();
-        raceService.initialize(userInputDTO.numOfStages(), InputParser.getCarList(userInputDTO));
+        raceService.initialize(userInputDTO);
         raceService.raceStart();
         OutputView.showResult(this.raceService.getNumOfStages(), this.raceService.getCarList());
     }

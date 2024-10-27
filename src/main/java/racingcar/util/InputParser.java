@@ -21,10 +21,13 @@ public class InputParser {
     }
 
     private static List<String> getCarNames(String names) {
-        return Arrays.stream(names.split(","))
+        List<String> carNames = Arrays.stream(names.split(","))
                 .map(String::trim)
                 .filter(name -> !name.isEmpty())
                 .collect(Collectors.toList());
+
+        Validator.checkCarCount(carNames);
+        return carNames;
     }
 }
 
