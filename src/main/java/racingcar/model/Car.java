@@ -9,6 +9,7 @@ public class Car {
     private final List<String> advanceMarkers;
 
     private Car(String name) {
+        validateCarNameLength(name);
         this.name = name;
         this.advanceMarkers = new ArrayList<>();
     }
@@ -31,5 +32,11 @@ public class Car {
 
     public List<String> getAdvanceMarkers() {
         return advanceMarkers;
+    }
+
+    public void validateCarNameLength(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다. 초과된 자동차 이름 : " + name);
+        }
     }
 }
