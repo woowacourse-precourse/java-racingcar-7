@@ -25,9 +25,7 @@ public class Game {
 
         Validator.validateCarNames(carNames);
 
-        for (final String carName : carNames) {
-            cars.add(new Car(carName));
-        }
+        addToCarList(carNames);
     }
 
     private void inputAttempts() {
@@ -71,5 +69,11 @@ public class Game {
                 .max(Comparator.comparingInt(Car::getPosition))
                 .orElseThrow(() -> new IllegalArgumentException("경주에 참가한 자동차가 없습니다."))
                 .getPosition();
+    }
+
+    private void addToCarList(String[] carNames) {
+        for (final String carName : carNames) {
+            cars.add(new Car(carName));
+        }
     }
 }
