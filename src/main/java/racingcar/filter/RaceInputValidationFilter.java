@@ -6,8 +6,7 @@ import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
 
 public class RaceInputValidationFilter implements Filter<RaceRequest, RaceResponse> {
-
-    private static final String COMMAND_REGEX = "^(?!,)([^,]+)(,(?!$)[^,]+)*$";
+    private static final String COMMAND_REGEX = "^(?!\\s*$)([^,]+)(,(?!$)[^,]+)*$";
 
     @Override
     public RaceResponse doFilter(RaceRequest request, RaceFilterChain chain) {
