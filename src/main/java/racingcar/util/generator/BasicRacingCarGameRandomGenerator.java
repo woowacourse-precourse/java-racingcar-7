@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasicRacingCarRandomGenerator implements RacingCarRandomGenerator {
+public class BasicRacingCarGameRandomGenerator implements RacingCarGameRandomGenerator {
     @Override
     public List<Integer> generateRandomNumbers(int racingCarCount) {
         List<Integer> randomNumbers = new ArrayList<>();

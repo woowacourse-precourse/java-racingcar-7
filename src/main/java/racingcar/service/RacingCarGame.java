@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCarGameResult;
 import racingcar.util.generator.RacingCarGenerator;
-import racingcar.util.generator.RacingCarRandomGenerator;
+import racingcar.util.generator.RacingCarGameRandomGenerator;
 import racingcar.util.generator.RacingCarWinnerGenerator;
 import racingcar.util.parser.RacingCarNameParser;
 import racingcar.util.transporter.RacingCarTransporter;
@@ -16,7 +16,7 @@ public class RacingCarGame {
     private final RacingCarGenerator racingCarGenerator;
     private final RacingCarTransporter racingCarTransporter;
     private final RacingCarWinnerGenerator racingCarWinnerGenerator;
-    private final RacingCarRandomGenerator racingCarRandomGenerator;
+    private final RacingCarGameRandomGenerator racingCarRandomGenerator;
     private static final String WINNER_NAME_DELIMITER = ", ";
 
     public RacingCarGame(
@@ -25,7 +25,7 @@ public class RacingCarGame {
             RacingCarGenerator racingCarGenerator,
             RacingCarTransporter racingCarTransporter,
             RacingCarWinnerGenerator racingCarWinnerGenerator,
-            RacingCarRandomGenerator racingCarRandomGenerator
+            RacingCarGameRandomGenerator racingCarRandomGenerator
     ) {
         this.racingCarNameParser = racingCarNameParser;
         this.racingCarGameValidator = racingCarGameValidator;
