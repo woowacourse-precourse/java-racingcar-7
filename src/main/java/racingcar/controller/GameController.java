@@ -10,12 +10,14 @@ public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
     private final GameService gameService;
+    private int totalRounds;
 
     public GameController(InputView inputView, OutputView outputView, GameService gameService) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.gameService = gameService;
     }
+
     public void run() {
         initializeGame();
         playGame();
@@ -25,14 +27,18 @@ public class GameController {
     public void initializeGame() {
         String carsString = inputView.getUserInput();
         List<String> carNames = List.of(carsString.split(","));
-        int totalRounds = inputView.getUserInputAsInt();
+        this.totalRounds = inputView.getUserInputAsInt();
 
-        gameService.initializeGame(carNames, totalRounds);
+        gameService.initializeGame(carNames);
     }
+
     private void playGame() {
-        List<Car> roundResults = gameService.gameStart();
-        displayRoundResult(roundResults);
+        for (int i = 0; i < totalRounds; i++) {
+            List<Car> roundResults = gameService.gameStart();
+            displayRoundResult(roundResults);
+        }
     }
+
     private void displayRoundResult(List<Car> cars) {
         outputView.printRoundResult(cars);
     }

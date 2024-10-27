@@ -8,22 +8,18 @@ import java.util.List;
 public class GameService {
     private final GameBoard gameBoard;
     private final RaceJudge raceJudge;
-    private int totalRounds;
 
     public GameService(GameBoard gameBoard, RaceJudge raceJudge) {
         this.gameBoard = gameBoard;
         this.raceJudge = raceJudge;
     }
 
-    public void initializeGame(List<String> carNames, int totalRounds) {
-        this.totalRounds = totalRounds;
+    public void initializeGame(List<String> carNames) {
         gameBoard.setupCars(carNames);
     }
 
     public List<Car> gameStart() {
-        for (int i = 0; i < totalRounds; i++) {
-            gameBoard.playRound();
-        }
+        gameBoard.playRound();
         return gameBoard.getCars();
     }
 
