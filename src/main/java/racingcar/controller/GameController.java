@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import static racingcar.view.OutputView.displayGameStart;
+import static racingcar.view.OutputView.printAnnounceWinner;
 import static racingcar.view.OutputView.printGameStart;
 import static racingcar.view.OutputView.printTryCount;
 
@@ -30,6 +31,7 @@ public class GameController {
             cars.moveCars(new DefaultRandomGenerator());
             OutputView.displayGameResult(cars.getResult());
         }
+        printAnnounceWinner(cars.getWinners());
     }
 
     private Cars setCars() {
