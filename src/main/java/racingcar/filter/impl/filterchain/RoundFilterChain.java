@@ -10,8 +10,12 @@ public class RoundFilterChain extends DefaultFilterChain {
     @Override
     protected void internalDoFilter(String input) {
         if (position < filterListLength) {
-            Filter filter = filters.get(position++);
-            filter.doFilter(input, this);
+            try {
+                Filter filter = filters.get(position++);
+                filter.doFilter(input, this);
+            } finally {
+                this.position = 0;
+            }
         }
     }
 }
