@@ -13,8 +13,6 @@ public class WinnerSorter {
         String winner = forwardCounter.lastKey();
         Integer winnerValue = forwardCounter.get(winner);
 
-        winnerList.add(winner);
-
         for (Map.Entry<String, Integer> entry : forwardCounter.entrySet()) {
             String carName = entry.getKey();
             Integer forwardCount = entry.getValue();
