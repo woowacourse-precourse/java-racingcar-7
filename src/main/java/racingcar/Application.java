@@ -36,8 +36,9 @@ public class Application {
     }
 
     private static List<String> parseCarList(String input) {
-        List<String> carNames = new ArrayList<String>(Arrays.asList(input.split(",", -1)));
-        return carNames;
+        return Arrays.stream(input.split(",", -1))
+                .map(String::trim)
+                .collect(Collectors.toList());
     }
 
     private static int getCount() {
