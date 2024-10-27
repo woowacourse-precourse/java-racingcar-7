@@ -21,4 +21,8 @@ public class Car {
     public long getPosition() {
         return position;
     }
+
+    public void move() {
+        position = moveStrategy.move(position);
+    }
 }
