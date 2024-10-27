@@ -35,4 +35,16 @@ public class RaceManager {
         RaceCountValidator.validateRaceCount(raceCount);
         this.raceCount = Integer.parseInt(raceCount);
     }
+
+    public Cars playOnce() {
+        List<Vehicle> values = cars.getValues().stream()
+                .map(Vehicle::moveForwardRandomly)
+                .collect(Collectors.toList());
+        cars = Cars.from(values);
+        return cars;
+    }
+
+    public int getRaceCount() {
+        return raceCount;
+    }
 }
