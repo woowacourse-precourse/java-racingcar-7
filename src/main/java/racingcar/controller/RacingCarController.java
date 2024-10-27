@@ -33,6 +33,7 @@ public class RacingCarController {
     }
 
     private void startRace(int roundCount, Race race) {
+        racingView.printRaceBegin();
         for (int i = 0; i < roundCount; i++) {
             race.runSingleRound(this.randomNumberGenerator);
 
@@ -42,6 +43,7 @@ public class RacingCarController {
             }
             racingView.printRoundResult(roundState);
         }
+        racingView.viewClose();
     }
 
     private List<Car> createCars(List<String> carNames) {

@@ -29,6 +29,11 @@ public class RacingView {
         return this.readline();
     }
 
+    public void printRaceBegin() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
     public void printRoundResult(Map<String, Integer> carPositions) {
         carPositions.forEach((name, position) ->
                 System.out.println(name + " : " + "-".repeat(position))
