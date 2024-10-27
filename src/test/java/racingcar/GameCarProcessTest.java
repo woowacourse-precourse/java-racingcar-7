@@ -32,7 +32,7 @@ class GameCarProcessTest {
     }
 
     @Test
-    @DisplayName("생성자는 이름으로 구성된 gameCar를 반환합니다.")
+    @DisplayName("생성자는 이름으로 구성된 gameCar를 반환한다.")
     void 생성자는_이름으로_구성된_gameCar_반환_테스트() {
         // given
         String name = "yi";
