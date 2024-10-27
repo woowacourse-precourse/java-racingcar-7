@@ -6,6 +6,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAME;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -13,12 +15,16 @@ import racingcar.domain.car.Car;
 import racingcar.domain.car.Name;
 import racingcar.domain.car.Position;
 import racingcar.domain.car.Vehicle;
+import racingcar.domain.race.RaceManager;
 import racingcar.domain.strategy.RandomStrategy;
+import racingcar.service.exception.CarNamesException;
 
 class ApplicationTest extends NsTest {
 
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+
+    private final RaceManager raceManager = new RaceManager();
 
     @Test
     void 기능_테스트() {
@@ -72,5 +78,14 @@ class ApplicationTest extends NsTest {
         assertNotEquals(car, movedCar);
         assertNotEquals(car.getPosition(), movedCar.getPosition());
         assertEquals(car.getPosition().getValue(), movedCar.getPosition().getValue() - 1);
+    }
+
+    @Test
+    void 자동차_이름이_빈_문자열이라면_예외발생() {
+        // given
+        String carNames = "a,,c";
+        // when & then
+        CarNamesException e = assertThrows(CarNamesException.class, () -> raceManager.setCars(carNames));
+        assertEquals(e.getMessage(), INVALID_CAR_NAME.message());
     }
 }
