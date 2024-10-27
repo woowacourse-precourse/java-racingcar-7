@@ -14,4 +14,15 @@ class PositionTest {
         // then
         Assertions.assertThat(position).isNotNull();
     }
+
+    @Test
+    @DisplayName("같은 값을 가지는 position 객체는 동등성을 보장받는다.")
+    void equalsPosition() {
+        // given
+        Position position1 = new Position(1);
+        Position position2 = new Position(1);
+
+        // when, then
+        Assertions.assertThat(position1).isEqualTo(position2);
+    }
 }
