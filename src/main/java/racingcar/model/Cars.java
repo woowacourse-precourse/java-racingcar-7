@@ -5,8 +5,10 @@ import static racingcar.message.ErrorMessages.UNPROVIDED_NAMES;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 import racingcar.exception.InvalidInputException;
 
@@ -21,11 +23,13 @@ public class Cars {
         String inputNames = Objects.requireNonNullElse(inputCarNames, "").trim();
         validateUnprovidedNames(inputNames);
 
-        String[] nameArray = inputNames.split(NAME_DELIMITER);
-        validateDuplicatedNames(nameArray);
+        List<String> names = Arrays.stream(inputNames.split(NAME_DELIMITER))
+                .map(String::trim)
+                .collect(Collectors.toList());
+        validateDuplicatedNames(names);
 
-        this.cars = Arrays.stream(nameArray)
-                .map(name -> new Car(name.trim()))
+        this.cars = names.stream()
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 
@@ -52,8 +56,9 @@ public class Cars {
         }
     }
 
-    private void validateDuplicatedNames(String[] names) {
-        if (Arrays.stream(names).distinct().count() != names.length) {
+    private void validateDuplicatedNames(List<String> names) {
+        Set<String> nameSet = new HashSet<>(names);
+        if (nameSet.size() != names.size()) {
             throw new InvalidInputException(DUPLICATED_NAMES);
         }
     }
