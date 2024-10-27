@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -47,7 +48,9 @@ public class RacingCar {
         Map<String, Object> processed_input = new HashMap<>();
         String[] name_arr = input_names.split(",");
         processed_input.put("names",Arrays.asList(name_arr));
-        processed_input.put("distances", Collections.nCopies(name_arr.length, 0));
+        processed_input.put("distances", Stream.generate(()->0)
+                                                .limit(name_arr.length)
+                                                .collect(Collectors.toList()));// 0으로 채운 리스트
         processed_input.put("times", Integer.parseInt(input_times));
         return processed_input;
     }
