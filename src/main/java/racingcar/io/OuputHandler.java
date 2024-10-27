@@ -1,5 +1,8 @@
 package racingcar.io;
 
+import racingcar.Car;
+import racingcar.RaceCars;
+
 public class OuputHandler {
 
     public void askRaceCarsNames() {
@@ -8,5 +11,24 @@ public class OuputHandler {
 
     public void askRaceCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
+    public void showExecutionResult(int raceCount, RaceCars raceCars) {
+        System.out.println("실행 결과");
+        showExecutionResultByRound(raceCars, raceCount);
+    }
+
+    private void showExecutionResultByRound(RaceCars raceCars, int raceCount) {
+        for (int round = 0; round < raceCount; round++) {
+            showRaceRecordsByCars(raceCars, round);
+            System.out.println();
+        }
+    }
+
+    private void showRaceRecordsByCars(RaceCars raceCars, int round) {
+        for (int index = 0; index < raceCars.size(); index++) {
+            Car car = raceCars.getCarByIndex(index);
+            car.showRaceRecordsByRound(round);
+        }
     }
 }

@@ -17,6 +17,8 @@ public class RacingCarGame {
         for (int i = 0; i < raceCount; i++) {
             race(raceCars, i);
         }
+
+        racingCarIOHandler.showExecutionResult(raceCount, raceCars);
     }
 
     private void race(RaceCars raceCars, int round) {

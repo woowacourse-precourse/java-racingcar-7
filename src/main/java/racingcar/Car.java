@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class Car {
 
     private final String name;
@@ -23,13 +25,23 @@ public class Car {
         raceRecords.recordRaceByRound(round);
     }
 
+    public void showRaceRecordsByRound(int round) {
+        List<String> raceRecordsByRound = raceRecords.getByRound(round);
+
+        System.out.print(getName() + " : ");
+        for (String raceRecord : raceRecordsByRound) {
+            System.out.print(raceRecord);
+        }
+        System.out.println();
+    }
+
     private void validateCarName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
         }
     }
 
-    public String getName() {
+    private String getName() {
         return name;
     }
 }

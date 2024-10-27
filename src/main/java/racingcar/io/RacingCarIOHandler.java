@@ -16,4 +16,8 @@ public class RacingCarIOHandler {
         ouputHandler.askRaceCount();
         return inputHandler.getRaceCount();
     }
+
+    public void showExecutionResult(int raceCount, RaceCars raceCars) {
+        ouputHandler.showExecutionResult(raceCount, raceCars);
+    }
 }
