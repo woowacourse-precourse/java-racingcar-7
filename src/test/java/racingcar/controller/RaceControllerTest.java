@@ -19,8 +19,9 @@ class RaceControllerTest extends NsTest {
     @Test
     @DisplayName("단독 우승자를 선정한다")
     void selectSingleWinner() {
-        Car car = new Car("pobi", 0);
-        Car car2 = new Car("jun", 1);
+        Car car = new Car("pobi");
+        Car car2 = new Car("jun");
+        car2.setPosition(1);
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         cars.add(car2);
@@ -30,8 +31,8 @@ class RaceControllerTest extends NsTest {
     @Test
     @DisplayName("공동 우승자를 출력한다")
     void selectMultiWinners() {
-        Car car = new Car("pobi", 1);
-        Car car2 = new Car("jun", 1);
+        Car car = new Car("pobi");
+        Car car2 = new Car("jun");
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         cars.add(car2);

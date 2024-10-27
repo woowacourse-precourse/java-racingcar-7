@@ -24,7 +24,7 @@ public class CarController {
     }
 
     public Car createSingleCar(String carName) {
-        Car car = new Car(carName, 0);
+        Car car = new Car(carName);
         return car;
     }
 
