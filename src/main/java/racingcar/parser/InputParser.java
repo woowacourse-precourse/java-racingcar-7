@@ -1,11 +1,11 @@
 package racingcar.parser;
 
+import racingcar.constant.GamePolicy;
+
 public class InputParser {
 
-    private final String INPUT_SEPARATOR = ",";
-
     public String[] splitInput(String input) {
-        return input.split(INPUT_SEPARATOR);
+        return input.split(GamePolicy.INPUT_SEPARATOR);
     }
 
     public int parseInt(String stringNumber) {

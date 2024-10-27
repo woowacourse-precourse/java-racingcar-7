@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.constant.ExceptionMessage;
+import racingcar.constant.GamePolicy;
 import racingcar.constant.Message;
 import racingcar.entity.RacingCar;
 
@@ -27,7 +28,7 @@ public class RacingCarModel {
         validateRandomsSize(randoms);
 
         for (int i = 0; i < randoms.size(); i++) {
-            if (randoms.get(i) >= 4) {
+            if (randoms.get(i) >= GamePolicy.FORWARD_CONDITION_NUMBER) {
                 racingCars.get(i).increaseDistance();
             }
         }

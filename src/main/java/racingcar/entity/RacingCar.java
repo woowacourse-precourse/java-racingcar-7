@@ -1,6 +1,7 @@
 package racingcar.entity;
 
 import racingcar.constant.ExceptionMessage;
+import racingcar.constant.GamePolicy;
 
 public class RacingCar {
 
@@ -30,7 +31,7 @@ public class RacingCar {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.NAME_EMPTY);
         }
-        if (name.length() > 5) {
+        if (name.length() > GamePolicy.NAME_LENGTH_MAXIMUM) {
             throw new IllegalArgumentException(ExceptionMessage.NAME_LENGTH_EXCEED);
         }
     }
