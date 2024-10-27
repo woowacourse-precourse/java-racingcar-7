@@ -3,7 +3,7 @@ package racingcar;
 import static racingcar.Constants.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +11,7 @@ public class GameLogic {
     private final Map<String, StringBuilder> result;
 
     public GameLogic() {
-        this.result = new HashMap<>();
+        this.result = new LinkedHashMap<>();
     }
 
     public void initialize(String[] carNames) {
