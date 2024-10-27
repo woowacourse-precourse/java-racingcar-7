@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import java.util.stream.IntStream;
-import racingcar.model.Car;
+import racingcar.dto.CarsDto;
 import racingcar.service.CarService;
 import racingcar.utils.Utils;
 import racingcar.view.View;
@@ -32,8 +32,9 @@ public class Controller {
 
     private void playGame() {
         int times = view.inputTimes();
-        List<List<Car>> raceResults = IntStream.range(Utils.ZERO, times)
+        List<CarsDto> raceResults = IntStream.range(Utils.ZERO, times)
                 .mapToObj(i -> carService.moveAllCars())
+                .map(CarsDto::new)
                 .toList();
         view.outputRaceResults(raceResults);
     }
