@@ -31,9 +31,13 @@ public class RacingCars {
 
     private void checkDuplication(RacingCar racingCar) {
         for (RacingCar existingRacingCar : racingCars) {
-            if (existingRacingCar.isSameName(racingCar)) {
-                throw new IllegalArgumentException("중복된 자동차 이름은 사용할 수 없습니다.");
-            }
+            checkNameDuplication(racingCar, existingRacingCar);
+        }
+    }
+
+    private void checkNameDuplication(RacingCar racingCar, RacingCar existingRacingCar) {
+        if (existingRacingCar.isSameName(racingCar)) {
+            throw new IllegalArgumentException("중복된 자동차 이름은 사용할 수 없습니다.");
         }
     }
 
