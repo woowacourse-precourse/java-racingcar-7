@@ -14,11 +14,14 @@ public class CarNameValidator {
     }
 
     public void inputMoreThenOneCharacter(String carNames) {
-        String[] carNameArray = split(carNames);
-        for (String carName : carNameArray) {
-            if(carName == null || carName.trim().isEmpty()) {
-                throw new IllegalArgumentException("이름을 1자 이상으로 입력해주세요");
-            }
+        for (String carName : split(carNames)) {
+            checkMoreThenOneCharacter(carName);
+        }
+    }
+
+    private void checkMoreThenOneCharacter(String carName) {
+        if(isBlank(carName)) {
+            throw new IllegalArgumentException("이름을 1자 이상으로 입력해주세요");
         }
     }
 
@@ -28,6 +31,10 @@ public class CarNameValidator {
 
     private boolean isMoreThanTwo(String[] carNameArray) {
         return carNameArray.length > 2;
+    }
+
+    private boolean isBlank(String carName) {
+        return carName == null || carName.trim().isEmpty();
     }
 
     private String[] split(String carNames) {
