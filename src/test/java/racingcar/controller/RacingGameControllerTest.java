@@ -25,7 +25,7 @@ class RacingGameControllerTest {
     }
 
     @Test
-    void 차량_설정_테스트() {
+    void 자동차_설정_테스트() {
         List<String> inputNames = Arrays.asList("pobi", "java");
 
         List<Car> cars = racingGameController.setCars(inputNames);
