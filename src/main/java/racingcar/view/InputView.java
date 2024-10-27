@@ -35,4 +35,17 @@ public class InputView {
         return Arrays.stream(reader.read().split(NAME_DELIMITER))
                 .toList();
     }
+
+    public int inputRoundCount() {
+        writer.writeLine("시도할 횟수는 몇 회인가요?");
+        return toInt(reader.read());
+    }
+
+    private int toInt(String numberText) {
+        try {
+            return Integer.parseInt(numberText);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자이어야 합니다");
+        }
+    }
 }
