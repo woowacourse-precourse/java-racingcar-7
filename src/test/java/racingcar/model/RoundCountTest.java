@@ -59,6 +59,6 @@ class RoundCountTest {
         RoundCount round = new RoundCount("1");
         round.decrease();
         // when, then
-        Assertions.assertThat(round.hasNoRemainingRound()).isTrue();
+        Assertions.assertThat(round.hasRemainingRound()).isFalse();
     }
 }

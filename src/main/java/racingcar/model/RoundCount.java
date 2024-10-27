@@ -19,8 +19,8 @@ public class RoundCount {
         roundCount--;
     }
 
-    public boolean hasNoRemainingRound() {
-        return roundCount <= 0;
+    public boolean hasRemainingRound() {
+        return roundCount > 0;
     }
 
     private void validateRoundCount(String input) {
