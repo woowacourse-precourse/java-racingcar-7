@@ -8,14 +8,14 @@ public class RacingManager {
 
     private final List<Car> cars;
     private final int stageCount;
-    private final List<StageResult> results;
+    private final List<StageResult> stageResults;
 
     public RacingManager(List<String> carNames, int stageCount) {
         this.stageCount = stageCount;
         this.cars = carNames.stream()
                 .map(Car::new)
                 .toList();
-        this.results = new ArrayList<>(stageCount);
+        this.stageResults = new ArrayList<>(stageCount);
     }
 
     public List<Car> getCars() {
@@ -32,15 +32,27 @@ public class RacingManager {
                 int number = Randoms.pickNumberInRange(0, 9);
                 car.attemptMove(number);
             });
-            results.add(new StageResult(cars));
+            stageResults.add(new StageResult(cars));
         }
-        return results;
+        return stageResults;
     }
 
     public void printResult() {
-        for (StageResult result : results) {
+        for (StageResult result : stageResults) {
             result.print();
         }
         System.out.println();
+        System.out.println("최종 우승자 : " + String.join(", ", winners()));
+    }
+
+    public List<String> winners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(IllegalAccessError::new);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
     }
 }

@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -37,5 +38,13 @@ public class RacingManagerTest {
         List<StageResult> result = manager.startRace();
 
         assertThat(result.size()).isEqualTo(stageCount);
+    }
+
+    @Test
+    void 가장_많이_전진한_자동차가_우승() {
+        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), 1);
+        manager.getCars().getFirst().attemptMove(4);
+
+        assertThat(manager.winners()).containsExactly("pobi");
     }
 }
