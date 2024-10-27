@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import java.util.ArrayList;
 import java.util.*;
 import racingcar.global.io.Condition;
 import racingcar.model.Car;
