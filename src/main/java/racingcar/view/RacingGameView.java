@@ -19,4 +19,8 @@ public class RacingGameView {
     public int getTrialCount(){
         return Integer.parseInt(Console.readLine());
     }
+
+    public void showTrialResultsMessage(){
+        System.out.println("\n실행 결과\n");
+    }
 }
