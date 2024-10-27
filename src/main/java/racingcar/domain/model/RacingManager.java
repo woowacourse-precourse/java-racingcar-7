@@ -2,17 +2,17 @@ package racingcar.domain.model;
 
 import java.util.List;
 
-public class RacingParticipants {
+public class RacingManager {
     private static final String FIND_MAX_FAILURE_MESSAGE = "Move Count의 최대값을 찾을 수 없습니다.";
 
     private final List<Car> cars;
 
-    private RacingParticipants(List<Car> cars) {
+    private RacingManager(List<Car> cars) {
         this.cars = cars;
     }
 
-    public static RacingParticipants from(List<String> names) {
-        return new RacingParticipants(
+    public static RacingManager createWithCars(List<String> names) {
+        return new RacingManager(
                 names.stream()
                         .map(Car::of)
                         .toList()
