@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -40,6 +39,22 @@ public class ReaderTest {
     void 널_입력_분리_테스트() {
 
         assertThatThrownBy(() -> Reader.splitNameInput(null))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1", "5", "1000"})
+    void 올바른_시도횟수_입력_변환_테스트(String input) {
+
+        assertThat(Reader.convertStringToNaturalNumber(input))
+                .isEqualTo(Integer.parseInt(input));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0", "-5", "1.0", "''", "' '", "string"})
+    void 잘못된_시도횟수_입력_변환_테스트(String input) {
+
+        assertThatThrownBy(() -> Reader.convertStringToNaturalNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
