@@ -6,15 +6,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
-    // 랜덤 테스트
+    // ----------------------------------------- 랜덤 테스트 -------------------------------------------------//
     @Test
     void 성공_기능_테스트() {
         assertRandomNumberInRangeTest(
@@ -26,19 +29,19 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    // 이름 테스트
+    // ----------------------------------------- 자동차 이름 테스트 -------------------------------------------//
 
     @Test
     void 성공_기능_테스트_특수문자포함된이름() {
         assertSimpleTest(() ->
-                run("\\ansd,#$%#$", "1")
+                run("\\^&(),#$%#$", "1")
         );
     }
 
     @Test
     void 예외_테스트_5자_넘는이름() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji"))
+                assertThatThrownBy(() -> runException("pobi,javaji","1"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.")
         );
@@ -58,16 +61,17 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("qwer,qwer", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("중복된 이름은 사용할 수 없습니다.")
+                        .hasMessageContaining("중복되지 않은 이름을 작성해야 합니다.")
         );
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi;jav", "pobi  woni, qwer#asdf"})
-    void 예외_이상한_구분자(String input) {
+    @MethodSource("strangeDelimiters")
+    void 예외_이상한_구분자(String input,String errorMessage) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(errorMessage)
         );
     }
 
@@ -81,12 +85,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    // 시도 횟수 테스트
+    // ----------------------------------------- 시도 횟수 테스트 -------------------------------------------//
+
     @Test
-    void 예외_반복횟수_숫자가아님() {
+    void 예외_반복횟수_정수가아님() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("s,v", "a"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("숫자를 입력해야 합니다.")
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("s,v","1.25"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("숫자를 입력해야 합니다.")
         );
     }
 
@@ -113,4 +125,11 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
+    //
+    private static Stream<Arguments> strangeDelimiters() {
+        return Stream.of(
+                Arguments.of("pobi;jav","자동차 이름은 5자 이하만 가능합니다."),
+                Arguments.of("pobi  woni, qwer#asdf","공백은 이름에 포함될 수 없습니다.")
+        );
+    }
 }
