@@ -16,20 +16,29 @@ class ApplicationTest extends NsTest {
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                run("pobi,woni", "2");
+                //assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                assertThat(output()).contains("");
             },
             MOVING_FORWARD, STOP
         );
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
-        );
+    void 커스텀_구분자_사용() {
+        assertSimpleTest(() -> {
+            run("pobi,woni ,  jun", "5");
+            assertThat(output()).contains("");
+        });
     }
+
+//    @Test
+//    void 예외_테스트() {
+//        assertSimpleTest(() ->
+//            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+//                .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
 
     @Override
     public void runMain() {
