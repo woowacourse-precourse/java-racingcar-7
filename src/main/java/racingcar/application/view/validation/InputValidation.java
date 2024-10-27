@@ -43,15 +43,22 @@ public class InputValidation {
 
   public static void validateInputAttemptCount(String inputAttemptCount) {
 
-    int parsedAttemptCount;
+    int parsedAttemptCount = parseAttemptCount(inputAttemptCount);
+    checkAttemptCount(parsedAttemptCount);
+  }
+
+  private static int parseAttemptCount(String inputAttemptCount) {
 
     try {
-      parsedAttemptCount = Integer.parseInt(inputAttemptCount);
+      return Integer.parseInt(inputAttemptCount);
     } catch (Exception e) {
       throw new IllegalArgumentException(INVALID_ATTEMPT_COUNT_ERROR);
     }
+  }
 
-    if (parsedAttemptCount < 0) {
+  private static void checkAttemptCount(int attemptCount) {
+
+    if (attemptCount < 0) {
       throw new IllegalArgumentException(INVALID_ATTEMPT_COUNT_ERROR);
     }
   }
