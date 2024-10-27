@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
@@ -10,6 +11,7 @@ public class Application {
         // TODO: 프로그램 구현
         String racingCarNameInput = inputString("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> racingCars = Arrays.asList(racingCarNameInput.split(","));
+        validateRacingCars(racingCars);
     }
 
     private static String inputString() {
@@ -22,5 +24,11 @@ public class Application {
         }
         System.out.println(message);
         return Console.readLine();
+    }
+
+    private static void validateRacingCars(List<String> racingCars) {
+        if (racingCars.size() != new HashSet<>(racingCars).size()) {
+            throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다.");
+        }
     }
 }
