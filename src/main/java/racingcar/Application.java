@@ -21,10 +21,14 @@ public class Application {
         List<Vehicle> vehicles = createUniqueVehicles(inputVehicles);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
+        String raceRoundsInput = Console.readLine();
 
+        raceStart(vehicles, parseRaceRounds(raceRoundsInput));
+    }
+
+    private static int parseRaceRounds(String raceRoundsInput) {
         try {
-            int raceRounds = Integer.parseInt(Console.readLine());
-            raceStart(vehicles, raceRounds);
+            return Integer.parseInt(raceRoundsInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(RACE_ROUND_ONLY_CAN_NUMBER);
         }
