@@ -59,13 +59,16 @@ public class RacingGameService {
     private String[] processCarName(String carNames) {
 
         String[] parseCarName = carNames.split(",");
+        normalizeCarNames(parseCarName);
+        return parseCarName;
+    }
 
+    private void normalizeCarNames(String[] parseCarName) {
         // 이름에서 공백 제거
         for (int i = 0; i < parseCarName.length; i++) {
             checkNameIsBlankOrEmpty(parseCarName, i);
             parseCarName[i] = parseCarName[i].trim();
         }
-        return parseCarName;
     }
 
     /* -------------------------------------- 시도 횟수 검증 로직 ----------------------------------------------*/
