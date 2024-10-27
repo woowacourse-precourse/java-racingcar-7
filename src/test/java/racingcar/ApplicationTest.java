@@ -174,6 +174,27 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 테스트_3_3_게임_진행_확인() {
+        int tryCount = 2;
+        ArrayList<Car> carList = new ArrayList<>();
+        carList.add(new Car("a"));
+        carList.add(new Car("b"));
+        carList.add(new Car("c"));
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    Application.proceedGame(tryCount, carList);
+                    assertThat(output()).contains("a : -", "b : ", "c : -");
+                    assertThat(output()).contains("a : -", "b : -", "c : --");
+                    assertThat(carList.get(0).getDistance()).isEqualTo(1);
+                    assertThat(carList.get(1).getDistance()).isEqualTo(1);
+                    assertThat(carList.get(2).getDistance()).isEqualTo(2);
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
     @AfterEach
     void closeConsole() {
         Console.close();
