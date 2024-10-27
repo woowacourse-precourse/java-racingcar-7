@@ -15,11 +15,11 @@ public class MainController {
     public void run() {
         Cars cars = createCars();
         AttemptCounter attemptManager = createAttemptManager();
-        raceService = createRacingCarScoreMachine(cars, attemptManager);
+        raceService = createRaceService(attemptManager, cars);
 
         Output.printExecutionResultsMessage();
         runRace();
-        printWinningCarResult(raceService);
+        printWinningCarResult();
     }
 
     private void runRace() {
@@ -30,9 +30,9 @@ public class MainController {
     }
 
 
-    private RaceService createRacingCarScoreMachine(Cars cars, AttemptCounter attemptManager) {
+    private RaceService createRaceService(AttemptCounter attemptManager, Cars cars) {
         NumberMaker numberMaker = new RandomNumberMaker();
-        return new RaceService(cars, attemptManager, numberMaker);
+        return new RaceService(attemptManager, cars, numberMaker);
     }
 
     private Cars createCars() {
@@ -44,13 +44,13 @@ public class MainController {
         return new AttemptCounter(Input.inputAttemptNumber());
     }
 
-    
+
     private void printCarsMiddleDistance() {
         Output.printIntermediateScore(raceService.getCarsNameAndDistance());
     }
 
-    private void printWinningCarResult(RaceService racingCarScoreMachine) {
-        Output.printWinningCars(racingCarScoreMachine.getWinningCarsNames());
+    private void printWinningCarResult() {
+        Output.printWinningCars(raceService.getWinningCarsNames());
     }
 
 }

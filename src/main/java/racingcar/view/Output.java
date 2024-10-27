@@ -8,6 +8,10 @@ public class Output {
     private final static String DISTANCE_SIGN = "-";
     private final static String WINNER_DELIMITER = "," + " ";
 
+    public static void printExecutionResultsMessage() {
+        System.out.println("실행 결과");
+    }
+
     public static void printIntermediateScore(Set<Car> cars) {
         for (Car car : cars) {
             String name = car.getName();
@@ -17,10 +21,6 @@ public class Output {
             System.out.printf("%s : %s\n", name, repeatedDashes);
         }
         System.out.println();
-    }
-
-    public static void printExecutionResultsMessage() {
-        System.out.println("실행 결과");
     }
 
     public static void printWinningCars(List<String> winningCars) {
