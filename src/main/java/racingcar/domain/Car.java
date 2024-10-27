@@ -41,6 +41,14 @@ public class Car {
         return command.execute(this, new CarMoveCommandExecutor());
     }
 
+    public String name() {
+        return this.name;
+    }
+
+    public int position() {
+        return position.value();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

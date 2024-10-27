@@ -1,11 +1,12 @@
 package racingcar.domain;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import racingcar.commander.MovementCommander;
 
-public class Cars {
+public class Cars implements Iterable<Car> {
 
     private final List<Car> cars;
 
@@ -31,6 +32,11 @@ public class Cars {
 
     private List<Car> moveAll(MovementCommander movementCommander) {
         return this.cars.stream().map(car -> car.move(movementCommander)).toList();
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return cars.iterator();
     }
 
     @Override
