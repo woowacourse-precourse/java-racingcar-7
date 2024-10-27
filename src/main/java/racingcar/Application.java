@@ -48,6 +48,7 @@ public class Application {
         List<String> racingCarListStr = new ArrayList<>(Arrays.asList(input.split(SPLITTER)));
         List<RacingCar> racingCarList = new ArrayList<>();
         racingCarListStr.stream()
+                .filter(name -> checkCarName(name))
                 .forEach(name -> racingCarList.add(new RacingCar(name.trim())));
 
         Set<String> hashCars = new HashSet<>(racingCarListStr);
@@ -58,10 +59,11 @@ public class Application {
         return racingCarList;
     }
 
-    public static void checkCarName(String carName) {
+    public static boolean checkCarName(String carName) {
         if (carName.isEmpty() || carName == null || carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 4자 이하로 입력해주세요.");
         }
+        return true;
     }
 
     public static Integer parseTrial(String trialStr) {
