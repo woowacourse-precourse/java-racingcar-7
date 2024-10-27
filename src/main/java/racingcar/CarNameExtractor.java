@@ -2,8 +2,6 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CarNameExtractor {
 
@@ -11,10 +9,9 @@ public class CarNameExtractor {
 
     public List<String> extractCarNames(String rawString) {
         List<String> extractedCarNames = new ArrayList<>();
-        Matcher matcher = Pattern.compile(NAME_DELIMITER).matcher(rawString);
 
-        while (matcher.find()) {
-            extractedCarNames.add(matcher.group());
+        for (String name : rawString.split(NAME_DELIMITER)) {
+            extractedCarNames.add(name);
         }
         return extractedCarNames;
     }
