@@ -12,22 +12,6 @@ public class Cars {
         this.cars = createCars(carNames);
     }
 
-    private List<Car> createCars(List<String> carNames) {
-        return carNames.stream()
-                .map(Car::new)
-                .toList();
-    }
-
-    private List<Car> moveCars(List<Car> cars) {
-        List<Car> movingCars = new ArrayList<>();
-
-        for (Car car : cars) {
-            movingCars.add(car.move());
-        }
-
-        return movingCars;
-    }
-
     public List<List<Car>> race(int raceTime) {
         List<List<Car>> racingRecords = new ArrayList<>();
         racingRecords.add(this.cars);
@@ -53,5 +37,21 @@ public class Cars {
         }
 
         return carNamesMatchResult;
+    }
+
+    private List<Car> createCars(List<String> carNames) {
+        return carNames.stream()
+                .map(Car::new)
+                .toList();
+    }
+
+    private List<Car> moveCars(List<Car> cars) {
+        List<Car> movingCars = new ArrayList<>();
+
+        for (Car car : cars) {
+            movingCars.add(car.move());
+        }
+
+        return movingCars;
     }
 }
