@@ -1,31 +1,42 @@
 package racingcar.domain.strategy;
 
-import static racingcar.domain.strategy.Movement.MOVE;
-import static racingcar.domain.strategy.Movement.RANDOM;
-import static racingcar.domain.strategy.Movement.STOP;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomStrategy implements Strategy {
 
-    private Movement movement;
+    private static final int LOWER_BOUND = 0;
+    private static final int MIN_MOVABLE_NUMBER = 4;
+    private static final int UPPER_BOUND = 9;
+
+    private Integer fixedMoveNumber;
 
     @Override
     public int generate() {
-        switch (movement) {
-            case STOP:
-                return STOP.value;
-            case MOVE:
-                return MOVE.value;
-            default:
-                RANDOM:
-                return RANDOM.value;
+        if (fixedMoveNumber != null && fixedMoveNumber < MIN_MOVABLE_NUMBER) {
+            return fixedMoveNumber;
         }
+        if (fixedMoveNumber != null && fixedMoveNumber >= MIN_MOVABLE_NUMBER) {
+            return fixedMoveNumber;
+        }
+        if (fixedMoveNumber == null && fixedMoveNumber == null) {
+            return Randoms.pickNumberInRange(LOWER_BOUND, UPPER_BOUND);
+        }
+        return Randoms.pickNumberInRange(LOWER_BOUND, UPPER_BOUND);
     }
 
-    private RandomStrategy(Movement movement) {
-        this.movement = movement;
+    private RandomStrategy() {
+        this.fixedMoveNumber = null;
     }
 
-    public static RandomStrategy from(Movement movement) {
-        return new RandomStrategy(movement);
+    private RandomStrategy(Integer fixedMoveNumber) {
+        this.fixedMoveNumber = fixedMoveNumber;
+    }
+
+    public static RandomStrategy from() {
+        return new RandomStrategy();
+    }
+
+    public static RandomStrategy from(Integer fixedMoveNumber) {
+        return new RandomStrategy(fixedMoveNumber);
     }
 }
