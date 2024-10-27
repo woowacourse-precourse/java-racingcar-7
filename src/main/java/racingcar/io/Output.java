@@ -14,4 +14,8 @@ public class Output {
     public void printCarNameInputPrompt() {
         System.out.println(Constants.CAR_NAME_INPUT_PROMPT);
     }
+
+    public void printCountInputPrompt() {
+        System.out.println(Constants.COUNT_INPUT_PROMPT);
+    }
 }

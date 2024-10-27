@@ -9,4 +9,6 @@ public class Constants {
     public static final String CAR_NAME_CHARACTER_ERROR_MESSAGE = "이름에 알파벳, 또는 한글 이외의 값이 들어갈 수 없습니다.";
 
     public static final String CAR_NAME_REGEX = "^[a-zA-Z가-힣]+$";
+
+    public static final String COUNT_INPUT_PROMPT = "시도할 횟수는 몇 회인가요?";
 }
