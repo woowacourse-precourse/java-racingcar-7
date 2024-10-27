@@ -8,14 +8,19 @@ import java.util.List;
 public class InputValidator {
     public static void validateCarNames(List<String> carNames) {
         for (String name : carNames) {
-            validateEmptyOrBlank(name);
+            validateNullOrEmptyCarName(name);
             validateNameContainsBlank(name);
             validateNameLength(name);
         }
     }
 
-    private static void validateEmptyOrBlank(String name) {
-        if (name.trim().isEmpty()) {
+    public static void validateMoveCount(String moveCountInput) {
+        validateNullOrEmptyMoveCount(moveCountInput);
+        validateNumericAndPositive(moveCountInput);
+    }
+
+    private static void validateNullOrEmptyCarName(String name) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(ErrorMessages.ERROR_EMPTY_CAR_NAME);
         }
     }
@@ -32,15 +37,24 @@ public class InputValidator {
         }
     }
 
-    public static int validateMoveCount(String moveCountInput) {
+    private static void validateNullOrEmptyMoveCount(String moveCountInput) {
+        if (moveCountInput == null || moveCountInput.trim().isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_EMPTY_MOVE_COUNT);
+        }
+    }
+
+    private static void validateNumericAndPositive(String moveCountInput) {
         try {
             int moveCount = Integer.parseInt(moveCountInput);
-            if (moveCount < ValidationConstants.MIN_MOVE_COUNT) {
-                throw new IllegalArgumentException(ErrorMessages.ERROR_MOVE_COUNT_NEGATIVE);
-            }
-            return moveCount;
+            validatePositiveMoveCount(moveCount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessages.ERROR_MOVE_COUNT_NOT_NUMBER);
+        }
+    }
+
+    private static void validatePositiveMoveCount(int moveCount) {
+        if (moveCount < ValidationConstants.MIN_MOVE_COUNT) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_MOVE_COUNT_NEGATIVE);
         }
     }
 }

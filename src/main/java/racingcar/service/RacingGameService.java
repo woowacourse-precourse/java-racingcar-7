@@ -17,7 +17,8 @@ public class RacingGameService {
     }
 
     public int parseMoveCount(String moveCountInput) {
-        return InputValidator.validateMoveCount(moveCountInput);
+        InputValidator.validateMoveCount(moveCountInput);
+        return Integer.parseInt(moveCountInput);
     }
 
     public void raceOneRound(List<Car> cars) {
