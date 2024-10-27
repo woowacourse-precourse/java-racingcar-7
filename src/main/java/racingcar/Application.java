@@ -2,6 +2,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -12,6 +13,7 @@ public class Application {
 
             RacingGame racingGame = new RacingGame(cars, moveCount);
             racingGame.play();
+            racingGame.printWinners();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -49,17 +51,21 @@ class Car {
         this.name = name;
         this.position = 0;
     }
+
     public String getName() {
         return name;
     }
+
     public int getPosition() {
         return position;
     }
+
     public void move() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             position++;
         }
     }
+
     public void printPosition() {
         System.out.print(name + " : ");
         for (int i = 0; i < position; i++) {
@@ -91,5 +97,19 @@ class RacingGame {
             car.printPosition();
         }
         System.out.println();
+    }
+
+    public void printWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow();
+
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
