@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public abstract class Car {
     protected String carName;

@@ -5,6 +5,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
+import racingcar.input.CheckValidInput;
+import racingcar.input.InputDTO;
+
 import java.util.List;
 
 class ApplicationTest extends NsTest {

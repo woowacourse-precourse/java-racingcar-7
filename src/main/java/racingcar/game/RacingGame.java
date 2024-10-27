@@ -1,6 +1,11 @@
-package racingcar;
+package racingcar.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.input.InputDTO;
+import racingcar.domain.Car;
+import racingcar.domain.CarDTO;
+import racingcar.domain.RacingCar;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
