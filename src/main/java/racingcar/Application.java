@@ -33,31 +33,49 @@ public class Application {
         System.out.println("\n실행 결과");
 
         for (int i = 0; i < attemptCount; i++) {
-            for (Car car : cars) {
-                int random = Randoms.pickNumberInRange(0, 9);
-                if (random >= 4) {
-                    car.forward();
-                }
-            }
-
-            for (Car car : cars) {
-                System.out.println(car.getName() + " : " + car.getProgress());
-            }
-            System.out.println();
+            moveCars(cars);
+            printCarsProgress(cars);
         }
 
-        int max = 0;
+        int maxDistance = getMaxDistance(cars);
+        List<String> winners = getWinners(cars, maxDistance);
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+    static void moveCars(List<Car> cars) {
         for (Car car : cars) {
-            max = Math.max(car.getProgress().length(), max);
+            if (canMove()) {
+                car.forward();
+            }
         }
+    }
 
+    static boolean canMove() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
+    static void printCarsProgress(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + car.getProgress());
+        }
+        System.out.println();
+    }
+
+    static int getMaxDistance(List<Car> cars) {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            maxDistance = Math.max(car.getProgress().length(), maxDistance);
+        }
+        return maxDistance;
+    }
+
+    static List<String> getWinners(List<Car> cars, int maxDistance) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (max == car.getProgress().length()) {
+            if (maxDistance == car.getProgress().length()) {
                 winners.add(car.getName());
             }
         }
-
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+        return winners;
     }
 }
