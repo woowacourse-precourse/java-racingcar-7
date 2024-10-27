@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+
 public class RacingManager {
     public List<Car>parseCarNamesToCar(String carNames){
         return Arrays.stream(carNames.split(","))
@@ -11,4 +13,11 @@ public class RacingManager {
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
+
+    public void moveOrStop(List<Car>carList){
+        for(Car car : carList){
+            car.moveOrStop();
+        }
+    }
+
 }
