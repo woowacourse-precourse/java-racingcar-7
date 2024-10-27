@@ -7,7 +7,7 @@
         - [X] 각 자동차들은 쉼표(,)를 기준으로 구분된다.
         - [X] 자동차들의 이름은 중복될 수 없다.
           - [X] 자동차 이름이 중복 될 경우 IllegalArgumentException을 발생시킨다.
-        - [X] 쉼표(,)는 처음과 긑에 올 수 없다.
+        - [X] 쉼표(,)는 처음과 끝에 올 수 없다.
           - [X] 쉼표(,)가 처음과 끝에 올 경우 IllegalArgumentException을 발생시킨다.
         - [X] 자동차 이름은 5자 이하만 가능하다.
             - [X] 자동차 이름이 5자를 초과한다면 IllegalArgumentException을 발생시킨다.
