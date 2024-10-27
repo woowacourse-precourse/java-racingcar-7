@@ -1,12 +1,16 @@
 package racingcar.model.car;
 
 import racingcar.strategy.Strategy;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
+    private static final String CARS_ERROR_MESSAGE = "자동차 이름은 적어도 두 개 입력해야 합니다.";
+    private static final int MIN_CARS_SIZE = 2;
+
     private final List<Car> cars;
 
     public Cars(String names) {
@@ -26,7 +30,16 @@ public class Cars {
     }
 
     private static List<Car> parse(String[] names) {
-        return Arrays.stream(names).map(Car::new).collect(Collectors.toList());
+        return isValid(Arrays.stream(names)
+                .map(Car::new)
+                .collect(Collectors.toList()));
+    }
+
+    private static List<Car> isValid(List<Car> cars) {
+        if (cars.size() < MIN_CARS_SIZE) {
+            throw new IllegalArgumentException(CARS_ERROR_MESSAGE);
+        }
+        return cars;
     }
 
     public void moves(Strategy strategy) {
