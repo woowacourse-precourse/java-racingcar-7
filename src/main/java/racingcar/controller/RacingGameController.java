@@ -1,7 +1,5 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
@@ -29,7 +27,6 @@ public class RacingGameController {
 
     private static List<Car> getWinner(Cars cars) {
         List<Car> carList = cars.getCarList();
-        List<Car> winner = new ArrayList<>();
 
         int max = carList.stream()
                 .mapToInt(Car::getPosition)
@@ -53,9 +50,16 @@ public class RacingGameController {
     }
 
     private static void validateName(List<String> carNames) {
+        checkCarCount(carNames);
         checkDuplicateNames(carNames);
         carNames.forEach(RacingGameController::checkNameFormat);
         carNames.forEach(RacingGameController::checkNameLength);
+    }
+
+    private static void checkCarCount(List<String> carNames) {
+        if (carNames.size() < 2) {
+            throw new IllegalArgumentException("자동차는 2개 이상부터 경기가 가능합니다.");
+        }
     }
 
     private static void checkDuplicateNames(List<String> carNames) {
