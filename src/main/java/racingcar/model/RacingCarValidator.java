@@ -9,7 +9,7 @@ public class RacingCarValidator {
     private static final int NAME_LENGTH_LIMIT = 5;
 
     public static void validate(String name) {
-        if (name == null || name.isBlank() || isLongerThanLimit(name)) {
+        if (name == null || name.isBlank() || exceedsLengthLimit(name)) {
             throw new IllegalArgumentException(INVALID_CAR_NAME_ERROR_MESSAGE);
         }
     }
@@ -20,7 +20,7 @@ public class RacingCarValidator {
         }
     }
 
-    private static boolean isLongerThanLimit(String name) {
+    private static boolean exceedsLengthLimit(String name) {
         return name.length() > NAME_LENGTH_LIMIT;
     }
 }
