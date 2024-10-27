@@ -1,9 +1,6 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
-
 
 public class Application {
     public static void main(String[] args) {
@@ -15,5 +12,9 @@ public class Application {
 
         CarRace carRace = new CarRace();
         Map<String, Integer> carPositions = carRace.initializeCarPositions(carNames);
+        for (int i = 0; i < attemptCount; i++) {
+            System.out.println(i + 1 + "번째 시도");
+            carRace.moveCars(carPositions);
+        }
     }
 }
