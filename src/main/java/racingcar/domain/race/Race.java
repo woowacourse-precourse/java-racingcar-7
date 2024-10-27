@@ -1,6 +1,8 @@
 package racingcar.domain.race;
 
 import racingcar.domain.car.Car;
+import racingcar.view.OutputView;
+
 import java.util.List;
 
 public class Race {
@@ -12,13 +14,7 @@ public class Race {
 		this.raceCount = raceCount;
 	}
 
-	public void start() {
-		for (int i = 0; i < raceCount; i++) {
-			moveCars();
-		}
-	}
-
-	private void moveCars() {
+	public void moveCars() {
 		for (Car car : cars) {
 			car.move();
 		}

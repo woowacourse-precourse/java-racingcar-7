@@ -25,10 +25,12 @@ public class RaceController {
 		List<Car> cars = createCars(carNames);
 
 		Race race = new Race(cars, raceCount);
-		race.start();
+		for (int i = 0; i < raceCount; i++) {
+			race.moveCars();
+			outputView.printCurrentPositions(cars);
+		}
 
 		RaceResult raceResult = new RaceResult(cars);
-		outputView.printCurrentPositions(cars);
 
 		List<Car> winners = raceResult.getWinners();
 		outputView.printWinners(winners);
