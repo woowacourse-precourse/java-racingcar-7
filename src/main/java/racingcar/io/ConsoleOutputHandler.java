@@ -1,6 +1,7 @@
 package racingcar.io;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.Car;
 import racingcar.Winner;
 
@@ -28,6 +29,16 @@ public class ConsoleOutputHandler {
     }
 
     public void printWinner(List<Car> winners) {
+        String winnerMembers;
+        if (winners.size() > 1) {
+            winnerMembers = String.join(", ", winners.stream()
+                    .map(Car::getCarName)
+                    .collect(Collectors.toList()));
+        }
+        if (winners.size() == 1) {
+            winnerMembers = winners.getFirst().getCarName();
+        }
+
         System.out.print("최종 우승자 : ");
         for (int i = 0; i < winners.size(); i++) {
             if (i < winners.size() - 1) {
