@@ -16,6 +16,7 @@ public class OutputView {
         for (String name : names) {
             System.out.println(name + " : " + printForwardCount(input.get(name)));
         }
+        System.out.println();
     }
 
     public static void printWinner(List<String> input) {
@@ -28,6 +29,7 @@ public class OutputView {
                 sb.append(", ");
             }
         }
+        System.out.println(sb);
     }
 
     private static String printForwardCount(int input) {
