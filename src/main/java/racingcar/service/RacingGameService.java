@@ -24,9 +24,9 @@ public class RacingGameService {
     public List<Map<String, Integer>> runRace(RacingGame racingGame) {
         List<Map<String, Integer>> raceHistory = new ArrayList<>();
 
-        for (int i = 0; i < racingGame.getAttempts(); i++) {
-            raceRound(racingGame.getCars());
-            raceHistory.add(getCurrentLocations(racingGame.getCars()));
+        for (int i = 0; i < racingGame.attempts(); i++) {
+            raceRound(racingGame.cars());
+            raceHistory.add(getCurrentLocations(racingGame.cars()));
         }
         return raceHistory;
     }

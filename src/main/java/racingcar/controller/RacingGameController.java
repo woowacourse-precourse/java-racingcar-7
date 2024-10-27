@@ -32,7 +32,7 @@ public class RacingGameController {
         raceHistory.forEach(outputView::printRaceProcess);
 
         // 최종 우승자 출력
-        List<String> winners = racingGameService.getWinners(racingGame.getCars());
+        List<String> winners = racingGameService.getWinners(racingGame.cars());
         outputView.printWinners(winners);
     }
 }
