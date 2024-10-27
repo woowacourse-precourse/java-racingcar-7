@@ -4,6 +4,7 @@ import org.junit.platform.commons.util.StringUtils;
 
 public class Car {
 
+    public static final int INCREMENT_VALUE = 1;
     private final int NAME_MAX_LENGTH = 5;
     private final String name;
     private int position = 0;
@@ -31,5 +32,9 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public void increasePosition() {
+        position += INCREMENT_VALUE;
     }
 }
