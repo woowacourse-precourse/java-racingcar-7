@@ -4,6 +4,8 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarService;
 import racingcar.util.RandomUtil;
 import racingcar.util.RandomUtilTest;
 
@@ -14,9 +16,10 @@ class CarServiceTest {
     void getCars() {
         // given
         List<String> carNames = List.of("pobi", "woni", "jun");
+        CarService carService = new CarService(new RandomUtil());
 
         // when
-        List<Car> cars = CarService.getCars(carNames);
+        List<Car> cars = carService.getCars(carNames);
 
         // then
         Assertions.assertEquals(carNames.size(), cars.size());

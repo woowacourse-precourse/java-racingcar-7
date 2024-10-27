@@ -16,7 +16,11 @@ public abstract class Output {
 
     public static void playerResult(String name, int range) {
         String dash = repeatDash(range);
-        System.out.printf(OutputMessage.USER_PROGRESS.getMessage(), name, dash);
+        System.out.printf(OutputMessage.USER_PROGRESS.getMessage() + "\n", name, dash);
+    }
+
+    public static void winner(String name) {
+        System.out.printf(OutputMessage.WINNER.getMessage(), name);
     }
 
     private static String repeatDash(int range) {
