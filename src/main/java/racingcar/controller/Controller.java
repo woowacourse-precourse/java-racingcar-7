@@ -1,8 +1,74 @@
 package racingcar.controller;
 
+import java.util.List;
+import racingcar.model.Cars;
+import racingcar.model.Racing;
+import racingcar.model.RacingResult;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+
+
 public class Controller {
-    // TODO: 경주 환경을 준비한다.
-    // TODO: 경주를 각 단계(횟수)에 따라 실행한다.
-    // TODO: 경주의 흐름 및 상태를 정리한다.
-    // TODO: 경기 진행 및 종료 여부에 따라 경주를 진행한다.
+    private final InputView inputView;
+    private final OutputView outputView;
+    private Cars cars;
+    private Racing racing;
+    private RacingResult racingResult;
+
+    public Controller(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
+
+    public void run() {
+        initializeCars(getCarNames());
+        initializeRacing(getTryCount());
+        startCarRacing();
+        runRacingStages();
+        concludeRacing();
+    }
+
+    private List<String> getCarNames() {
+        return inputView.getInputCarNames();
+    }
+
+    private int getTryCount() {
+        return inputView.getInputTryCount();
+    }
+
+    private void initializeCars(List<String> carNames) {
+        cars = new Cars(carNames);
+    }
+
+    private void initializeRacing(int tryCount) {
+        racing = new Racing();
+        racing.saveTryCount(tryCount);
+    }
+
+    private void startCarRacing() {
+        outputView.printRacingStart();
+    }
+
+    private void runRacingStages() {
+        while (isEndRacingStage()) {
+            executeRacingStage();
+        }
+    }
+
+    private void executeRacingStage() {
+        cars.requestCarMove();
+        racing.minusTryCount();
+        outputView.printStageResult(cars);
+    }
+
+    private boolean isEndRacingStage() {
+        return racing.isProgress();
+    }
+
+    private void concludeRacing() {
+        racingResult = new RacingResult();
+        List<String> winnersName = racingResult.getWinnerNames(cars);
+        outputView.printWinners(winnersName);
+    }
+
 }
