@@ -3,6 +3,7 @@ package racingcar.model.position;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class History {
 
@@ -18,5 +19,22 @@ public class History {
 
     public List<Positions> values() {
         return Collections.unmodifiableList(values);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        History history = (History) o;
+        return Objects.equals(values, history.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(values);
     }
 }

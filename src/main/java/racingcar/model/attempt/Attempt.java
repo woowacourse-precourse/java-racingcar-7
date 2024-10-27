@@ -1,5 +1,6 @@
 package racingcar.model.attempt;
 
+import java.util.Objects;
 import racingcar.exception.InvalidAttemptException;
 
 public class Attempt {
@@ -19,5 +20,22 @@ public class Attempt {
 
     public long value() {
         return value;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Attempt attempt = (Attempt) o;
+        return value == attempt.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

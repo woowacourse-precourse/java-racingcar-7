@@ -1,5 +1,6 @@
 package racingcar.model.car;
 
+import java.util.Objects;
 import racingcar.strategy.MovingStrategy;
 
 public class Car {
@@ -18,5 +19,22 @@ public class Car {
 
     public String name() {
         return name.value();
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(movingStrategy, car.movingStrategy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, movingStrategy);
     }
 }

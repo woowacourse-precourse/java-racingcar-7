@@ -2,6 +2,7 @@ package racingcar.model.position;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Positions {
@@ -58,5 +59,22 @@ public class Positions {
 
     public long longValue(final int index) {
         return value(index).value();
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Positions positions = (Positions) o;
+        return Objects.equals(values, positions.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(values);
     }
 }
