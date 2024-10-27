@@ -12,7 +12,7 @@ public class OutputView {
     private static final String WINNER_HEADER = "최종 우승자 : ";
     private static Boolean check = false;
 
-    public  void displayPrompt(int num) {
+    public void displayPrompt(int num) {
         if (num == 1) {
             System.out.println(PROMPT1);
         } else {
@@ -20,7 +20,7 @@ public class OutputView {
         }
     }
 
-    public  void displayRacing(List<Car> cars) {
+    public void displayRacing(List<Car> cars) {
         String result = "";
 
         if (!check) {
@@ -35,7 +35,7 @@ public class OutputView {
         System.out.println(result);
     }
 
-    public  void displayWinners(List<Car> winners) {
+    public void displayWinners(List<Car> winners) {
         String result = "";
         result += WINNER_HEADER;
 

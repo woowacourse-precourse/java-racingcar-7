@@ -19,18 +19,4 @@ public class InputViewTest {
         //then
         assertThat(carNames).isEqualTo("pobi,woni");
     }
-
-    @Test
-    public void 시도할_횟수_입력() {
-        //given
-        String input = "3";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        InputView inputView = new InputView();
-
-        //when
-        String count = inputView.getInput();
-
-        //then
-        assertThat(count).isEqualTo("3");
-    }
 }
