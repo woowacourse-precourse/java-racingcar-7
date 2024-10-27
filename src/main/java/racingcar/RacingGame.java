@@ -71,4 +71,9 @@ public class RacingGame {
         }
     }
 
+    private void raceRound() {
+        cars.forEach(Car::move);
+        printRoundResults();
+    }
+
 }
