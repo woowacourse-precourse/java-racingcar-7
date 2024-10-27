@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
+import racingcar.model.dto.FinalResultDto;
 import racingcar.model.dto.RoundResultDto;
 
 public class RaceGame {
@@ -19,6 +20,13 @@ public class RaceGame {
     public RoundResultDto getRoundResult() {
         List<Car> cars = raceCars.getCars();
         return new RoundResultDto(cars.stream().map(Car::toString).toList());
+    }
+
+    public FinalResultDto getWinner() {
+        int maxPosition = raceCars.getMaximumPosition();
+        List<String> winners = raceCars.getWinners(maxPosition);
+        return new FinalResultDto(winners);
+
     }
 
     public RaceCars getRaceCars() {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.dto.FinalResultDto;
 import racingcar.model.dto.RoundResultDto;
 
 class RaceGameTest {
@@ -68,5 +69,28 @@ class RaceGameTest {
 
         //then
         Assertions.assertThat(convertedResult).containsExactly("우테코 : --", "박재연 : -");
+    }
+
+    @Test
+    @DisplayName("우승자를 반환할 수 있다.")
+    void getWinner() {
+        // given
+        Name name1 = new Name("우테코");
+        Name name2 = new Name("박재연");
+        Car car1 = new Car(name1);
+        Car car2 = new Car(name2);
+        car1.move(true);
+        car1.move(true);
+        car2.move(true);
+        car2.move(true);
+        List<Car> cars = Arrays.asList(car1, car2);
+        RaceCars raceCars = new RaceCars(cars);
+        RaceGame raceGame = new RaceGame(raceCars, new RandomMovement());
+
+        //when
+        FinalResultDto winner = raceGame.getWinner();
+
+        //then
+        Assertions.assertThat(winner.winners()).containsExactly("우테코", "박재연");
     }
 }

@@ -22,6 +22,20 @@ public class RaceCars {
         return cars;
     }
 
+    public int getMaximumPosition() {
+        return cars.stream()
+                .mapToInt(car -> car.getPosition().getValue())
+                .max()
+                .orElse(0);
+    }
+
+    public List<String> getWinners(int maxPosition) {
+        return cars.stream()
+                .filter(car -> car.getPosition().getValue() == maxPosition)
+                .map(car -> car.getName().getValue())
+                .toList();
+    }
+
     private boolean hasInappropriateNumberOfCars(List<Car> cars) {
         return cars.size() < 2;
     }
