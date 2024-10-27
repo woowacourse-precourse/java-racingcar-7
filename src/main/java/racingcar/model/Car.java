@@ -3,7 +3,7 @@ package racingcar.model;
 import java.util.Objects;
 
 public class Car {
-    private Name name;
+    private final Name name;
     private Position position;
 
     public Car(final Name name) {
