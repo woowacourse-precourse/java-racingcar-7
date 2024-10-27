@@ -1,8 +1,8 @@
 package racingcar.domain.racing;
 
-import java.util.List;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+import racingcar.interfaces.car.CarsResponse;
 
 public class RacingService {
 
@@ -12,10 +12,11 @@ public class RacingService {
         this.racingStrategy = racingStrategy;
     }
 
-    public void race(Cars cars){
+    public CarsResponse race(Cars cars){
         for(Car car : cars.getCars()) {
             attemptToForwardCar(car);
         }
+        return CarsResponse.from(cars);
     }
 
     private void attemptToForwardCar(Car car){
