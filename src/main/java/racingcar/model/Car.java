@@ -16,6 +16,12 @@ public class Car {
         this.currentLocation = currentLocation;
     }
 
+    public void move() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            currentLocation++;
+        }
+    }
+
     public String getName() {
         return name;
     }
