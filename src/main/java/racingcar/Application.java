@@ -15,6 +15,12 @@ public class Application {
     public static final int MAX_RANDOM_VALUE = 9;
     public static final int ADVANCE_THRESHOLD = 4;
 
+    public static final String EMPTY_CAR_NAME_MESSAGE = "경주할 자동차 이름 입력 필요함.";
+    public static final String CAR_NAME_LENGTH_MESSAGE = "자동차의 이름은 5글자를 넘길 수 없습니다.";
+    public static final String INVALID_NUMBER_MESSAGE = "유효한 숫자를 입력해야 합니다.";
+
+    public static final String DELIMITER = ",";
+
     public static void main(String[] args) {
         String carName = carNameInput();
         List<String> carNameList = splitCarNamesByComma(carName);
@@ -38,18 +44,18 @@ public class Application {
 
     private static void isEmptyCarName(String carName) {
         if (carName == null || carName.isEmpty()){
-            throw new IllegalArgumentException("경주할 자동차 이름 입력 필요함.");
+            throw new IllegalArgumentException(EMPTY_CAR_NAME_MESSAGE);
         }
     }
 
     private static List<String> splitCarNamesByComma(String carName) {
-        return Arrays.asList(carName.split(","));
+        return Arrays.asList(carName.split(DELIMITER));
     }
 
     private static void validateCarNames(List<String> carNameList) {
         for (String carName : carNameList) {
             if (carName.length() > MAX_CAR_NAME_LENGTH) {
-                throw new IllegalArgumentException("자동차의 이름은 5글자를 넘길 수 없습니다.");
+                throw new IllegalArgumentException(CAR_NAME_LENGTH_MESSAGE);
             }
         }
     }
@@ -65,7 +71,7 @@ public class Application {
         try {
             return Integer.parseInt(tryCountInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효한 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException(INVALID_NUMBER_MESSAGE);
         }
     }
 
@@ -83,6 +89,7 @@ public class Application {
             System.out.println();
         }
     }
+
     private static void raceRound(List<Car> cars) {
         for (Car car : cars) {
             if (shouldAdvance()) {
