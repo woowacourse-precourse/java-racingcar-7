@@ -65,4 +65,8 @@ public class Race {
     public int getCurrentRound() {
         return currentRound;
     }
+
+    public int getTotalRounds() {
+        return totalRounds;
+    }
 }
