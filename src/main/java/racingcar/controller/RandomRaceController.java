@@ -19,14 +19,18 @@ public class RandomRaceController {
 
     public List<RacingCar> start(List<RacingCar> racingCars, Long tryNums) {
         for (int i = 0; i < tryNums; i++) {
-            for (RacingCar racingCar : racingCars) {
-                if (isAdvance()) {
-                    racingCar.race();
-                }
-            }
+            startRaceForEachCar(racingCars);
             raceProgressView.displayRoundProgress(racingCars);
         }
         return racingCars;
+    }
+
+    private void startRaceForEachCar(List<RacingCar> racingCars) {
+        for (RacingCar racingCar : racingCars) {
+            if (isAdvance()) {
+                racingCar.race();
+            }
+        }
     }
 
 }
