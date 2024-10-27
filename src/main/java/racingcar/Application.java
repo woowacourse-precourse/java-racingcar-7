@@ -66,5 +66,17 @@ public class Application {
                 carPositions.put(carName, 0);
             }
         }
+
+        // 7. 시도할 횟수 입력받기
+        // 입력받은 시도할 횟수가 정수 형태가 아닐 경우
+        // NumberFormatException가 발생하는 것을 이용해
+        // 이에 해당할 경우 IllegalArgumentException를 발생시킴
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryNumber;
+        try {
+            tryNumber = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
