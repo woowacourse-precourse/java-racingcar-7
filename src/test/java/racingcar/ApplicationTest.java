@@ -57,7 +57,7 @@ class ApplicationTest extends NsTest {
     @ValueSource(strings = {"0", " ", "   ", "\n"})
     void 경주_횟수를_잘못_입력하면_예외가_발생한다(String input) {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji", input))
+                assertThatThrownBy(() -> runException("pobi,java", input))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

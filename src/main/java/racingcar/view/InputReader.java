@@ -3,6 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import org.assertj.core.util.Arrays;
+import racingcar.racing.RacingCount;
 
 public class InputReader {
 
@@ -13,9 +14,9 @@ public class InputReader {
         return List.of(Arrays.array(names));
     }
 
-    public int readTryCount() {
+    public RacingCount readRacingCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         final String input = Console.readLine();
-        return Integer.parseInt(input);
+        return new RacingCount(input);
     }
 }

@@ -2,7 +2,8 @@ package racingcar;
 
 import java.util.List;
 import racingcar.car.Cars;
-import racingcar.car.RacingCarService;
+import racingcar.racing.RacingCarService;
+import racingcar.racing.RacingCount;
 import racingcar.view.InputReader;
 import racingcar.view.ResultWriter;
 
@@ -13,11 +14,12 @@ public class Application {
 
         final List<String> carNames = reader.readCarNames();
         Cars cars = new Cars(carNames);
-        RacingCarService service = new RacingCarService(cars);
 
-        final int tryCount = reader.readTryCount();
+        RacingCarService service = new RacingCarService(cars);
+        final RacingCount racingCount = reader.readRacingCount();
+
         writer.writeResultStart();
-        for (int i = 0; i < tryCount; i++) {
+        for (int i = 0; i < racingCount.getValue(); i++) {
             final Cars racedCars = service.race();
             writer.writeResult(racedCars);
         }
