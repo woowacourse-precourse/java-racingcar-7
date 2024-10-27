@@ -22,7 +22,7 @@ public class Car {
         return status;
     }
 
-    public void move() {
+    public void shellMove() {
         move(getRandomNum());
     }
 
