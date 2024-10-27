@@ -22,7 +22,6 @@ public class Car {
         System.out.println(name + " : " + "-".repeat(advanceNum));
     }
 
-    // 테스트용
     public int getAdvanceNum() {
         return advanceNum;
     }

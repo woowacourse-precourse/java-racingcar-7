@@ -30,4 +30,21 @@ public class Cars {
     public Car getCar(int carNumber) {
         return cars.get(carNumber);
     }
+
+    public Winners determineWinner() {
+        int maxAdvanceNum = getMaxAdvanceNum();
+        Winners winners = createWinners(maxAdvanceNum);
+        return winners;
+    }
+
+    private int getMaxAdvanceNum() {
+        return cars.stream()
+                .mapToInt(Car::getAdvanceNum)
+                .max()
+                .orElse(0);
+    }
+
+    private Winners createWinners(int maxAdvanceNum) {
+        return null;
+    }
 }
