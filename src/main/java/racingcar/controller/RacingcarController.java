@@ -27,6 +27,7 @@ public class RacingcarController {
         List<Racingcar> racingcars = createRacingcars(carNameList);
 
         output.printCountInputPrompt();
+        String countString = input.inputString();
     }
 
     private List<String> validateCarName(String carName) {
