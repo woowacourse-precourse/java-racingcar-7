@@ -71,6 +71,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    //시행 횟수 음수 오류 테스트
+    @Test
+    void 예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("AAAA,bb", "-3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
 
     @Override
