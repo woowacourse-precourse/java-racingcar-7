@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.PriorityBlockingQueue;
+import java.util.stream.Collectors;
 
 /**
  * @author : jiffyin7@gmail.com
@@ -45,5 +46,16 @@ public class CarsPriorityBlockingQueue implements Cars{
   @Override
   public List<Car> getWinners() {
     return findCarsByPosition(findMaxPosition());
+  }
+
+  @Override
+  public RacingRoundResult moveOrStayAll() {
+    List<Car> movedCars = cars.stream()
+        .filter(car ->{
+          HasCarMoved result = car.moveOrStay();
+          return result.moved();
+        })
+        .collect(Collectors.toList());
+    return RacingRoundResult.from(movedCars);
   }
 }
