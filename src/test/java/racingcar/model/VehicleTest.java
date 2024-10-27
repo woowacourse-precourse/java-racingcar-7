@@ -9,7 +9,7 @@ import static racingcar.constant.ErrorMessage.VEHICLE_NAME_CANNOT_BE_EMPTY;
 import static racingcar.constant.ErrorMessage.VEHICLE_NAME_CANNOT_BE_MORE_FIVE;
 
 class VehicleTest {
-
+    static final char MOVE_SYMBOL = '-';
     @Test
     @DisplayName("자동차 이름 등록")
     void 자동차_이름_등록() {
@@ -69,7 +69,7 @@ class VehicleTest {
         //given
         Vehicle vehicle = new Vehicle("pobi");
         long distanceToSymbolCount = vehicle.getCurrentDistanceToSymbol().chars()
-                .filter(ch -> ch == '-')
+                .filter(ch -> ch == MOVE_SYMBOL)
                 .count();
 
         //when
@@ -77,7 +77,7 @@ class VehicleTest {
         vehicle.moveOrStay(2);
         vehicle.moveOrStay(3);
         long currentDistanceToSymbolCount = vehicle.getCurrentDistanceToSymbol().chars()
-                .filter(ch -> ch == '-')
+                .filter(ch -> ch == MOVE_SYMBOL)
                 .count();
 
         //then
@@ -102,7 +102,7 @@ class VehicleTest {
         //given
         Vehicle vehicle = new Vehicle("pobi");
         long distanceToSymbolCount = vehicle.getCurrentDistanceToSymbol().chars()
-                .filter(ch -> ch == '-')
+                .filter(ch -> ch == MOVE_SYMBOL)
                 .count();
 
         //when
@@ -110,7 +110,7 @@ class VehicleTest {
         vehicle.moveOrStay(5);
         vehicle.moveOrStay(6);
         long currentDistanceToSymbolCount = vehicle.getCurrentDistanceToSymbol().chars()
-                .filter(ch -> ch == '-')
+                .filter(ch -> ch == MOVE_SYMBOL)
                 .count();
 
         //then
