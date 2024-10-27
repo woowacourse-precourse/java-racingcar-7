@@ -51,4 +51,5 @@ public class Car implements Comparable<Car>{
   public int compareTo(Car o) {
     return Integer.compare(this.position, o.position);
   }
+
 }
