@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.car.Car;
 import racingcar.decider.Decider;
 
 import java.util.List;
