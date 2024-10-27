@@ -7,8 +7,10 @@ public class OutputView {
     public void printRoundResult(List<Car> cars) {
         System.out.println("실행 결과");
         for (Car car : cars) {
-            System.out.println(car.getName() + ":" + "-".repeat(car.getPosition()));
+            String displayRoundResult = car.getName() + " : " + "-".repeat(car.getPosition());
+            System.out.println(displayRoundResult);
         }
+        System.out.println();
     }
 
     public void printFinalWinners(List<String> winners) {
