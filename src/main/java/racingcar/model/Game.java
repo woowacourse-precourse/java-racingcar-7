@@ -7,5 +7,7 @@ public interface Game {
 
     void progress();
 
-    List<String> getWinner();
+    List<Player> getPlayers();
+
+    List<Player> getWinner();
 }
