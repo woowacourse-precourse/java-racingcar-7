@@ -9,32 +9,38 @@ public class RacingGame {
     private InputHandler inputHandler = new InputHandler();
 
     public void run() {
-        String[] cars = inputHandler.getCarNames();
+        String[] carNames = inputHandler.getCarNames();
         int tryCount = inputHandler.getTryCount();
 
-        List<Car> carList = new ArrayList<>();
-
-        for(String car : cars) {
-            carList.add(new Car(car));
-        }
+        List<Car> carList = createCars(carNames);
 
         System.out.println();
         System.out.println("실행 결과");
 
+        playRounds(tryCount,carList);
+        printWinner(carList);
+    }
+
+    private List<Car> createCars(String[] carNames) {
+        List<Car> carList = new ArrayList<>();
+        for (String name : carNames) {
+            carList.add(new Car(name));
+        }
+        return carList;
+    }
+
+    private void playRounds(int tryCount, List<Car> carList) {
         for(int i=0; i<tryCount; i++) {
             for (Car car : carList) {
-                if(Randoms.pickNumberInRange(0, 9) >= 4) {
-                    car.count ++;
-                }
-                System.out.print(car.name + " : ");
-                for(int j=0;j<car.count;j++){
-                    System.out.print("-");
-                }
+                car.move();
+                car.printCount();
                 System.out.println();
             }
             System.out.println();
         }
+    }
 
+    private void printWinner(List<Car> carList) {
         int max=0;
         for(Car car : carList) {
             if(car.count > max) {
