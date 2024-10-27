@@ -29,7 +29,7 @@ public class CarNameValidator {
     }
 
     private void validateCarNameLength(String carName) {
-        if (carName.length() > 6) {
+        if (carName.length() > 5) {
             throw new IllegalArgumentException(ExceptionCode.INVALID_CAR_NAME_LENGTH.getMessage());
         }
     }
