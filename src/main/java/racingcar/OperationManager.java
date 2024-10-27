@@ -1,20 +1,20 @@
 package racingcar;
 
 public class OperationManager {
-    private IO io = new IO();
-    private Race race = new Race();
+    private final IO io = new IO();
+    private final Race race = new Race();
     private String carNames;
-    private int number;
+    private int attemptsNumber;
 
     public void initProgram() {
         carNames = io.readCarNames();
-        number = io.readNumber();
+        attemptsNumber = io.readAttemptsNumber();
         System.out.println();
     }
 
     public void execute() {
         race.init(carNames);
-        race.start(number);
+        race.start(attemptsNumber);
         race.result();
     }
 }

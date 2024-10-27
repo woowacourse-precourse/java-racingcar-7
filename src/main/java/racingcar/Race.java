@@ -8,28 +8,27 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Race {
     private static final int FORWARD_CRITERION = 4;
-    private IO io = new IO();
-    private CarFactory carFactory = new CarFactory();
+    private final IO io = new IO();
+    private final CarFactory carFactory = new CarFactory();
     List<Car> cars;
 
     public void init(String carNames) {
-        StringTokenizer carName = new StringTokenizer(carNames, ",");
-        cars = carFactory.createCars(carName);
+        StringTokenizer carNameToken = new StringTokenizer(carNames, ",");
+        cars = carFactory.createCar(carNameToken);
     }
 
-    public void start(int number) {
+    public void start(int attemptsNumber) {
         System.out.println("실행 결과");
-        for (int i = 0; i < number; i++) {
+        for (int i = 0; i < attemptsNumber; i++) {
             randomMovement();
             carPosition();
-            System.out.println();
         }
     }
 
     public void result() {
         cars.sort(Comparator.reverseOrder());
-        String winners = String.join(",", findWinner());
-        io.printWinner(winners);
+        String winners = String.join(",", findWinners());
+        io.printWinners(winners);
     }
 
     public void randomMovement() {
@@ -44,11 +43,12 @@ public class Race {
             car.printPosition();
             System.out.println();
         }
+        System.out.println();
     }
 
-    public List<String> findWinner() {
+    public List<String> findWinners() {
         List<String> winners = new ArrayList<>();
-        int max = cars.get(0).getPosition();
+        int max = cars.getFirst().getPosition();
         for (Car car : cars) {
             int position = car.getPosition();
             if (position == max) winners.add(car.getName());
