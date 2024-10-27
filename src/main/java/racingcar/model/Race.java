@@ -9,8 +9,9 @@ import racingcar.view.OutputView;
 
 
 public class Race {
-    private static final String CAR_NAME_LENGTH_EXP_MSG = "자동차 이름은 5자 이하만 가능합니다.";
+    private static final String CAR_NAME_LENGTH_OVER_EXCEPTION_MSG = "자동차 이름은 5자 이하만 가능합니다.";
     private static final String NUMBER_FORMAT_EXCEPTION_MSG = "정수를 입력해주세요.";
+    private static final String SAME_CAR_EXCEPTION_MSG = "중복된 자동차 이름이 존재합니다.";
     private static final int NAME_LENGTH_LIMIT = 5;
     private static final String STRING_DELIMITER = ",";
 
@@ -26,7 +27,7 @@ public class Race {
 
 
     private void validateRacingCarNames(String racingCarNames) {
-        String[] racingCarNameTokens = racingCarNames.split(",");
+        String[] racingCarNameTokens = racingCarNames.split(STRING_DELIMITER);
 
         try {
             validateNoEmptyName(racingCarNameTokens);
@@ -47,8 +48,8 @@ public class Race {
 
     private void validateNoNameOver5Characters(String[] racingCarNameTokens) {
         Arrays.stream(racingCarNameTokens).forEach(carName -> {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException();
+            if (carName.length() > NAME_LENGTH_LIMIT) {
+                throw new IllegalArgumentException(CAR_NAME_LENGTH_OVER_EXCEPTION_MSG);
             }
         });
     }
@@ -56,7 +57,7 @@ public class Race {
     private void validateNoSameName(String[] racingCarNameTokens) {
         Set<String> racingCarNameSet = new HashSet<>(List.of(racingCarNameTokens));
         if (racingCarNameSet.size() != List.of(racingCarNameTokens).size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(SAME_CAR_EXCEPTION_MSG);
         }
     }
 
@@ -65,10 +66,10 @@ public class Race {
         try {
             round = Integer.valueOf(roundInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION_MSG);
         }
         if (round <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION_MSG);
         }
     }
 
