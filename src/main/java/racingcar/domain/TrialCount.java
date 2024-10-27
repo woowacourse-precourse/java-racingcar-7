@@ -17,7 +17,7 @@ public class TrialCount {
 
     private void validateIsNumber(final String str) {
         try {
-            Integer.parseInt(str); // 또는 Double.parseDouble(str)
+            Integer.parseInt(str);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
         }

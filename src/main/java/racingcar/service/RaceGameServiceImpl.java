@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 import racingcar.domain.Car;
 import racingcar.domain.Referee;
-import racingcar.util.generator.RandomNumberGenerator;
 import racingcar.util.parser.StringParser;
 
 public class RaceGameServiceImpl implements RaceGameService{
@@ -33,7 +32,7 @@ public class RaceGameServiceImpl implements RaceGameService{
     public List<Car> findWinner(List<Car> cars) {
         List<Car> winner = new ArrayList<>();
         int maxMoveCount = cars.stream()
-                .mapToInt(Car::getMoveCount) // 각 Car의 moveCount를 가져옴
+                .mapToInt(Car::getMoveCount)
                 .max()
                 .orElse(0);
         for (Car car : cars){

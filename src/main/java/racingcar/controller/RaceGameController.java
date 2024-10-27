@@ -33,6 +33,7 @@ public class RaceGameController {
         progressGame(trialCount.getAmount(), cars);
 
         List<Car> winner = raceGameService.findWinner(cars);
+        outputView.printWinner(winner);
     }
 
     private void progressGame(final int trialCount, List<Car> cars) {
