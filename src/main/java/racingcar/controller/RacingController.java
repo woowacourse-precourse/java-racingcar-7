@@ -1,9 +1,12 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.dto.RacingRequestDto;
+import racingcar.dto.RacingResponseDto;
 import racingcar.model.Car;
 import racingcar.model.Racing;
+import racingcar.model.RoundResult;
 import racingcar.util.CarNameParser;
 import racingcar.util.CarNameValidator;
 import racingcar.util.RaceRoundValidator;
@@ -23,9 +26,14 @@ public class RacingController {
     public void run() {
         RacingRequestDto racingRequest = inputView.getRacingRequest();
         Racing racing = initRacing(racingRequest);
-        outputView.initPrintRoundResult();
-        runRacing(racing);
-        printWinners(racing);
+
+        List<RoundResult> roundResults = runRacing(racing);
+        List<String> winners = racing.getWinners()
+                .stream()
+                .map(Car::getName)
+                .toList();
+
+        outputView.printRacingResponse(new RacingResponseDto(roundResults, winners));
     }
 
     private Racing initRacing(RacingRequestDto racingRequest) {
@@ -34,16 +42,13 @@ public class RacingController {
         return Racing.from(carNames, raceRound);
     }
 
-    private void runRacing(Racing racing) {
+    private List<RoundResult> runRacing(Racing racing) {
+        List<RoundResult> roundResults = new ArrayList<>();
         while (racing.hasNextRound()) {
             racing.executeRound();
-            outputView.printRoundResult(racing.getParticipants());
+            roundResults.add(RoundResult.from(racing.getParticipants().getParticipants()));
         }
-    }
-
-    private void printWinners(Racing racing) {
-        List<Car> winners = racing.getWinners();
-        outputView.printWinners(winners);
+        return roundResults;
     }
 
     private List<String> getValidatedCarNames(String rawCarNames) {

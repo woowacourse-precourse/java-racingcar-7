@@ -1,47 +1,65 @@
 package racingcar.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import racingcar.dto.RacingResponseDto;
 import racingcar.model.Car;
-import racingcar.model.Participants;
+import racingcar.model.RoundResult;
 
 public class OutputView {
     private static final String ROUND_RESULT_START_MESSAGE = "실행 결과";
 
     private final StringBuilder stringBuilder = new StringBuilder();
 
-    public void initPrintRoundResult() {
-        System.out.println(ROUND_RESULT_START_MESSAGE);
+    public void printRacingResponse(RacingResponseDto racingResponseDto) {
+        clearStringBuilder();
+        appendRoundResultStartMessage();
+        appendAllRoundResults(racingResponseDto.roundResults());
+        appendWinners(racingResponseDto.winners());
+        System.out.println(stringBuilder.toString());
+        clearStringBuilder();
     }
 
-    public void printWinners(List<Car> winners) {
-        String winCarNames = winners.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-        System.out.println(winCarNames);
+    private void appendRoundResultStartMessage() {
+        stringBuilder.append(ROUND_RESULT_START_MESSAGE).append("\n");
     }
 
-    public void printRoundResult(Participants participants) {
-        List<Car> cars = participants.getParticipants();
-        for (Car car : cars) {
-            String distanceGraph = buildDistanceGraph(car.getMovedDistance());
-            System.out.printf("%s : %s\n", car.getName(), distanceGraph);
+    private void appendAllRoundResults(List<RoundResult> roundResults) {
+        for (RoundResult roundResult : roundResults) {
+            appendRoundResult(roundResult);
         }
-        System.out.println();
+    }
+
+    private void appendRoundResult(RoundResult roundResult) {
+        for (Car car : roundResult.getRoundResult()) {
+            appendCarResult(car);
+        }
+        stringBuilder.append("\n");
+    }
+
+    private void appendWinners(List<String> winners) {
+        stringBuilder.append("최종 우승자 : ")
+                .append(joinWinners(winners))
+                .append("\n");
+    }
+
+    private void appendCarResult(Car car) {
+        stringBuilder.append(car.getName())
+                .append(" : ")
+                .append(buildDistanceGraph(car.getMovedDistance()))
+                .append("\n");
+    }
+
+    private String joinWinners(List<String> winners) {
+        return String.join(", ", winners);
     }
 
     private String buildDistanceGraph(int distance) {
-        clearStringBuilder();
-        while (distance > 0) {
-            stringBuilder.append("-");
-            distance--;
-        }
-        return stringBuilder.toString();
+        return "-".repeat(distance);
     }
 
     private void clearStringBuilder() {
         if (!stringBuilder.isEmpty()) {
-            stringBuilder.delete(0, stringBuilder.length());
+            stringBuilder.setLength(0);
         }
     }
 }
