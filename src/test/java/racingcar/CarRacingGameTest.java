@@ -57,6 +57,9 @@ class CarRacingGameTest {
                 new Object[]{"alex^jhon"},
                 new Object[]{""},
                 new Object[]{" "},
-                new Object[]{"alex ,hello"});
+                new Object[]{"alex ,hello"},
+                new Object[]{",alex,car"},
+                new Object[]{"jhon, alex"},
+                new Object[]{",asdf,dsaf,a"});
     }
 }
