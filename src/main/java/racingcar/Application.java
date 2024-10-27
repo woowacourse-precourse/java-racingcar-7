@@ -87,14 +87,14 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        String text = inputText();
+        String inputText = inputText();
 
         List<Car> carList = new ArrayList<>();
-        carList = createCarList(text);
+        carList = createCarList(inputText);
 
-        int tc = inputTestCaseNum();
+        int trialCount = inputTestCaseNum();
 
-        racingCar(tc, carList);
+        racingCar(trialCount, carList);
 
         System.out.println();
         int mx = findMax(carList);

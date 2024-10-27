@@ -14,7 +14,7 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    @DisplayName("")
+    @DisplayName("자동차는 랜덤 숫자에 따라 전진/멈춤을 결정하고 최종 우승자를 판별한다")
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -24,7 +24,7 @@ class ApplicationTest extends NsTest {
                 MOVING_FORWARD, STOP
         );
     }
-
+    
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
