@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Racing {
 
@@ -19,7 +20,7 @@ public class Racing {
 
     public void race(int count) {
         for (int i = 0; i < count; i++) {
-
+            singleRound();
         }
     }
 
@@ -27,5 +28,16 @@ public class Racing {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
+    private void forward(String name) {
+        if(checkCondition()) {
+            raceStatus.replace(name, raceStatus.get(name) + 1);
+        }
+    }
 
+    private void singleRound() {
+        Set<String> names = raceStatus.keySet();
+        for (String name : names) {
+            forward(name);
+        }
+    }
 }
