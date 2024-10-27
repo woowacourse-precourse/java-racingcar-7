@@ -36,11 +36,4 @@ class CarTest {
 
         assertThat(car).extracting("position").isEqualTo(expectedPosition);
     } // moveCar
-
-
-    @Test
-    @DisplayName("전진하는 경우 - 출력되는지")
-    void test() {
-
-    }
 } // class
