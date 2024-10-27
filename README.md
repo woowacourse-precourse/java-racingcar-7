@@ -24,7 +24,6 @@ Randoms, Console API 사용해서 구현할 것.
 [ 자동차 ]
 
 - 전진 (moveForward)
-- 멈춤 (stop)
 - 이름 부여 (giveCarName)
 
 [ 검증 및 예외처리 ]
