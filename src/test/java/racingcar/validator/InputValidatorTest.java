@@ -9,14 +9,14 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
-public class InitialInputValidatorTest {
-  private InitialInputValidator initialInputValidator;
+public class InputValidatorTest {
+  private InputValidator inputValidator;
   @BeforeEach
   void  setUp() {
-    initialInputValidator = new InitialInputValidator();
+    inputValidator = new InputValidator();
   }
   @Test
-  void  초기_자동차이름_비정상입력_테스트() {
+  void  자동차이름_비정상입력_테스트() {
     List<String> carNameInputs = new ArrayList<>();
 
     carNameInputs.add(null);
@@ -30,12 +30,12 @@ public class InitialInputValidatorTest {
     carNameInputs.forEach((carName) -> {
       assertSimpleTest(() ->
               assertThatThrownBy(() ->
-                      initialInputValidator.validateCarNameInput(carName))
+                      inputValidator.validateCarNameInput(carName))
                               .isInstanceOf(IllegalArgumentException.class));
     });
   }
   @Test
-  void  초기_시도횟수_비정상입력_테스트() {
+  void  시도횟수_비정상입력_테스트() {
     List<String> attemptsInputs = new ArrayList<>();
 
     attemptsInputs.add(null);
@@ -46,7 +46,7 @@ public class InitialInputValidatorTest {
     attemptsInputs.forEach((attemptsInput) -> {
       assertSimpleTest(() ->
               assertThatThrownBy(() ->
-                      initialInputValidator.validateAttemptsInput(attemptsInput))
+                      inputValidator.validateAttemptsInput(attemptsInput))
                       .isInstanceOf(IllegalArgumentException.class));
     });
   }
