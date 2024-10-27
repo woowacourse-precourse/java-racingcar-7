@@ -1,14 +1,18 @@
 package racingcar.game.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import racingcar.game.error.ErrorMessage;
 import racingcar.game.util.RandomNumberGenerator;
 
 public class RacingCars {
     private static final int MOVE_THRESHOLD = 4;
-    private final List<Car> cars;
+    private final List<Car> cars = new ArrayList<>();
 
     public RacingCars(List<Car> cars) {
-        this.cars = cars;
+        cars.stream()
+                .peek(this::checkAlreadyParticipant)
+                .forEach(this::participate);
     }
 
     public void race() {
@@ -31,6 +35,20 @@ public class RacingCars {
                 .toList();
 
         return new Winners(winners);
+    }
+
+    private void checkAlreadyParticipant(Car car) {
+        if (alreadyParticipate(car)) {
+            throw new IllegalArgumentException(ErrorMessage.CANNOT_PARTICIPATE_DUPLICATE_CAR.getDescription());
+        }
+    }
+
+    private boolean alreadyParticipate(Car car) {
+        return this.cars.contains(car);
+    }
+
+    private void participate(Car car) {
+        this.cars.add(car);
     }
 
     private int findMaxMoveCount() {

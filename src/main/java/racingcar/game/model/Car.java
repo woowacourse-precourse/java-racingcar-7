@@ -1,5 +1,6 @@
 package racingcar.game.model;
 
+import java.util.Objects;
 import racingcar.game.error.ErrorMessage;
 
 public class Car {
@@ -19,6 +20,22 @@ public class Car {
 
     public boolean hasMoveCount(int count) {
         return counter.matchesCount(count);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Car car)) {
+            return false;
+        }
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 
     public String getName() {
