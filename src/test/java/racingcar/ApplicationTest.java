@@ -50,6 +50,19 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("하이픈(-)이 포함된 입력)")
+    @Test
+    void 기능_테스트4() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("P-1,P-911", "1");
+                    assertThat(output()).contains("P-1 : -", "P-911 : -",
+                            "최종 우승자 : P-1, P-911");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -63,6 +76,15 @@ class ApplicationTest extends NsTest {
     void 예외_테스트2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,seo", "n"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("특수문자가 포함된 입력 예외 테스트(하이픈(-) 제외)")
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("po[],seo", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
