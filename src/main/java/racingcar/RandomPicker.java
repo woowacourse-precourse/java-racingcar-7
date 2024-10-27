@@ -13,4 +13,8 @@ public class RandomPicker {
         }
     }
 
+    private static boolean validateRandomResult(int rundRandom) {
+        validateRandomRange(rundRandom);
+        return rundRandom >= 4;
+    }
 }
