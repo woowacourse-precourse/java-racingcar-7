@@ -14,6 +14,7 @@ public class InputValidator {
             validateNullOrEmptyCarName(name);
             validateNameContainsBlank(name);
             validateNameLength(name);
+            validateNameHasInvalidCharacters(name);
         }
         validateUniqueCarNames(carNames);
     }
@@ -44,6 +45,12 @@ public class InputValidator {
     private static void validateNameLength(String name) {
         if (name.length() > ValidationConstants.MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessages.ERROR_CAR_NAME_TOO_LONG);
+        }
+    }
+
+    private static void validateNameHasInvalidCharacters(String name) {
+        if (!name.matches("[a-zA-z0-9]+")) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_CAR_NAME_INVALID_CHARACTERS);
         }
     }
 
