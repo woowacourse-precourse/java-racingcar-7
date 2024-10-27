@@ -60,5 +60,5 @@
 - [ ] moveCar 메소드 구현
 - [x] setup 메소드 구현
 - [ ] show 메소드 구현
-- [ ] getCars 메소드 구현
+- [x] getCars 메소드 구현
 - [x] separateInputCars 메소드 구현
