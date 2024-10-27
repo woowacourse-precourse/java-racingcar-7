@@ -5,6 +5,7 @@
 ## Car class
 
 - abstract car in assignment requirement
+- have only responsibility saving field and method of car.  
 
 ## Main Logic
 

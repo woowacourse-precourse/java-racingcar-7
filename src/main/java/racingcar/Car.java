@@ -6,48 +6,24 @@ import java.util.List;
 
 public class Car {
 
-    String name;
-    int moveCnt = 0;
-    String moveChart = "";
+    protected String name;
+    protected int moveCnt = 0;
 
-    Car(String name){
-
-        validateName(name);
+    public Car(String name){
         this.name = name;
     }
 
-    void validateName(String input){
-        int maxSize = 5;
-        if(input.length() > maxSize  ){
-            throw new IllegalArgumentException(" length of name is over Max length " + maxSize + " .");
-        }
-
+    public String getName(){
+       return this.name;
     }
 
-
-    int moveForward(){
-
-       if(isMoveSuccess()){
-           this.moveCnt++;
-           this.moveChart +="-";
-       }
-
-
-       System.out.println(this.name+ " : " + this.moveChart);
-
-       return moveCnt;
+    public int getMove(){
+        return this.moveCnt;
     }
 
-    boolean isMoveSuccess(){
+    public int setMove(int move){
+        this.moveCnt = move;
 
-        int val = Randoms.pickNumberInRange(0,9);
-
-        if(val>=4){
-            return true;
-        }
-
-        return false;
-
-
+        return move;
     }
 }
