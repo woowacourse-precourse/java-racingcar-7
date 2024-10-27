@@ -6,32 +6,33 @@
     + [0] 최종 우승자를 출력하는 기능 - printFinalWinner
   
 - input class
-    + [0] 경주할 자동차 이름을 입력받는 기능 - getCarName
-    + [0] 경주 시도 횟수를 입력받는 기능 - getTryCount
+    + [] 경주할 자동차 이름을 입력받는 기능 - getCarName
+    + [] 경주 시도 횟수를 입력받는 기능 - getTryCount
   
 ### model package
 - GameLogicTransform class
-    + [0] view가 받은 경주할 자동차 이름을 map으로 전환 - getMapByCarName
-    + [0] 경기 결과에 따른 map value 수정 - updateMapByResult
+    + [] view가 받은 경주할 자동차 이름을 map으로 전환 - getMapByCarName
+    + [] 경기 결과에 따른 map value 수정 - updateMapByResult
   
 - GameLogicValidation class
-    + [0] 0부터 9사이의 무작위 값 중 4이상 값이 나오는지 판단하는 기능 isNumberMoreFour
-    + [0] 최종 우승자를 판단하는 기능 getRacingWinner
+    + [] 0부터 9사이의 무작위 값 중 4이상 값이 나오는지 판단하는 기능 isNumberMoreFour
+    + [] 최종 우승자를 판단하는 기능 validateRacingWinner
   
 ### service package
 - racingCarGameService class : model 기능을 통해 게임 로직 구현, map 저장 위치
-    + [0] 게임 1회 시도 후 변경된 map 반환  getOneTryResult
-    + [0] 경기 결과 정보 반환 - getRacingResult
+    + [] 게임 1회 시도 후 변경된 map 반환  getOneTryResult
+    + [] 경기 결과 정보 반환 - getRacingResult
+    + [] 최종 우승자 반환 - getFinalWinner
 
 ### controller package
 - racingCarGameManager class
-    + [0] 게임 진행 기능 - runGame
+    + [] 게임 진행 기능 - runGame
   
 ### validation package
 - validateException class
-    + [0] 자동차 이름이 5자 이하인지 검증 - isCarNameValid
-    + [0] 경주 횟수가 0이상인지 검증 - isTryCountValid
-    + [0] 경주 횟수가 숫자인지 검증 - isTryCountNumber
+    + [] 자동차 이름이 5자 이하인지 검증 - isCarNameValid
+    + [] 경주 횟수가 0이상인지 검증 - isTryCountValid
+    + [] 경주 횟수가 숫자인지 검증 - isTryCountNumber
   
 ## 구현 규칙
 - indent(들여쓰기) depth를 2단계로 제한한다.
