@@ -1,5 +1,6 @@
 package racingcar.validator;
 
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -42,6 +43,18 @@ class InputValidatorTest {
     }
 
     @Test
+    @DisplayName("자동차 이름의 입력이 100개 초과인 경우")
+    void 자동차_이름의_입력이_100개_초과인_경우() {
+        String[] carNames = IntStream.range(0, 101)
+                .mapToObj(i -> "car" + i)
+                .toArray(String[]::new);
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> inputValidator.validateCarName(carNames),
+                "자동차 이름의 입력이 100개 초과일 경우 예외가 발생해야 합니다.");
+    }
+
+    @Test
     @DisplayName("자동차 이름에 중복이 존재하는 경우")
     void 자동차_이름에_중복이_존재하는_경우() {
         String[] carNames = {"abcde", "abcde"};
@@ -66,5 +79,14 @@ class InputValidatorTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> inputValidator.validateTrialCount(trialCount),
                 "시행 횟수가 1 미만의 숫자이면 예외가 발생해야 합니다.");
+    }
+
+    @Test
+    @DisplayName("시행 횟수가 10000 초과로 입력된 경우")
+    void 시행_횟수가_10000_초과로_입력된_경우() {
+        String trialCount = "10001";
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> inputValidator.validateTrialCount(trialCount),
+                "시행 횟수가 10000 초과의 숫자이면 예외가 발생해야 합니다.");
     }
 }
