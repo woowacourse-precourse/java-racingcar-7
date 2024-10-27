@@ -5,7 +5,6 @@ import java.util.List;
 import racingcar.model.Car;
 
 public class InMemoryCarRepository implements CarRepository{
-    private static InMemoryCarRepository instance;
     private final List<Car> carStore;
 
     private InMemoryCarRepository() {
@@ -28,10 +27,5 @@ public class InMemoryCarRepository implements CarRepository{
     @Override
     public List<Car> findAll() {
         return carStore;
-    }
-
-    @Override
-    public List<Car> findWinners() {
-        return null;
     }
 }
