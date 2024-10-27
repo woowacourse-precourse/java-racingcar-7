@@ -4,10 +4,8 @@ import java.util.List;
 import racingcar.domain.Car;
 
 public class Output {
-    public void printIntermediateResult(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + getPositionOutPut(car.getPosition()));
-        }
+    public void printIntermediateResult(StringBuilder stringBuilder) {
+        System.out.print(stringBuilder);
     }
 
     public void printMessage() {
@@ -16,15 +14,7 @@ public class Output {
     }
 
     public void printWinner(List<Car> winners) {
-        System.out.print("최종 우승자 : " + joinNames(winners));
-    }
-
-    private String getPositionOutPut(int carPosition) {
-        String positionOutPut = "";
-        for (int i = 0; i < carPosition; i++) {
-            positionOutPut += "-";
-        }
-        return positionOutPut;
+        System.out.println("최종 우승자 : " + joinNames(winners));
     }
 
     private String joinNames(List<Car> winnerList) {

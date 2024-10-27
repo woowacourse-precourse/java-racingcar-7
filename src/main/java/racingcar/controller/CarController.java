@@ -11,17 +11,20 @@ public class CarController {
     private Output output = new Output();
     private CarService carService = new CarService();
 
+    public void startGame() {
+        List<Car> cars = makeCars();
+        progressGame(cars);
+        endGame(cars);
+    }
+
     public List<Car> makeCars() {
         return carService.makeCars(input.readCarName());
     }
 
     public List<Car> progressGame(List<Car> cars) {
-        int tryNumber = input.readTryNumber();
+        carService.progressGame(cars, input.readTryNumber());
         output.printMessage();
-        while (tryNumber-- > 0) {
-            carService.moveCarsIfConditionMet(cars);
-            output.printIntermediateResult(cars);
-        }
+        output.printIntermediateResult(carService.getIntermediateResult());
         return cars;
     }
 

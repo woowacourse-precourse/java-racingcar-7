@@ -16,10 +16,11 @@ public class OutputTest extends NsTest {
         car1.move();
         List<Car> carList = new ArrayList<>();
         carList.add(car1);
+        new CarService().updateIntermediateResult(carList);
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
-        new Output().printIntermediateResult(carList);
+        new Output().printIntermediateResult(new CarService().getIntermediateResult());
 
         String expectedOutput = "김종경 : -\n";
         assert expectedOutput.trim().equals(outputStream.toString().trim()) : "출력 값이 예상과 다릅니다!";
