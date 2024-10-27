@@ -9,4 +9,11 @@ public class InputView {
         String[] carNames = Console.readLine().split(",");
         return carNames;
     }
+
+    public static int getNumberOfRounds() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int rounds = Integer.parseInt(Console.readLine());
+        return rounds;
+    }
+
 }
