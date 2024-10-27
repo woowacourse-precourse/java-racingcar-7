@@ -17,7 +17,8 @@ class ExecutorTest extends NsTest {
     IOController ioController = new IOController();
     Parser parser = new Parser();
     Validator validator = new Validator();
-    Executor executor = new Executor(ioController, parser, validator);
+    Racing racing = new Racing();
+    Executor executor = new Executor(ioController, parser, validator, racing);
 
     Car testCar1, testCar2, testCar3;
     List<Car> testCars;
