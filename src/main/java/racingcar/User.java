@@ -17,7 +17,7 @@ public class User {
         String userCarNamesInput = Console.readLine();
 
         // 분리된 문자열 (,) 앞 뒤 공백만 제거하는 정규표현식 사용
-        Set<String> carNamesSet = Set.of(userCarNamesInput.split("\\s*,\\s*"));
+        List<String> carNamesSet = List.of(userCarNamesInput.split("\\s*,\\s*"));
         return new ArrayList<>(carNamesSet);
     }
 
