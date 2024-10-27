@@ -48,4 +48,4 @@
 - 컨트롤러의 GameTryCount 생성자 제거
 - 중복된 코드 제거
 - print 기능은 OutPutView 클래스로 이동
-- [ ] OutPutView 의 printCurrentCarPosition 메서드 수정 (라운드 별 결과는 move 클래스에 저장하고 출력)
+- GameTryCount 클래스는 객체를 만들 필요가 없기 때문에 private 생성자 선언

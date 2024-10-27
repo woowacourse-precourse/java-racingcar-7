@@ -4,8 +4,10 @@ public class GameTryCount {
 
     private static int tryCount;
 
-    public GameTryCount(int tryCount) {
-        this.tryCount = tryCount;
+    private GameTryCount() {}
+
+    public static void set(int tryCount) {
+        GameTryCount.tryCount = tryCount;
     }
 
     public static int get() {

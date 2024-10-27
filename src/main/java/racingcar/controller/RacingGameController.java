@@ -30,7 +30,7 @@ public class RacingGameController {
 
     public void initTryCount() {
         String inputTryCount = inputView.inputTryCount();
-        new GameTryCount(inputView.convertStringToInt(inputTryCount));
+        GameTryCount.set(inputView.convertStringToInt(inputTryCount));
     }
 
     public void startGame() {
