@@ -6,6 +6,7 @@ import racingcar.request.RaceCreateRequest;
 import racingcar.response.RoundResponse;
 import racingcar.response.WinnerResponse;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Application {
 
@@ -18,16 +19,16 @@ public class Application {
         RaceCreateRequest request = new RaceCreateRequest(names, tryCount);
         controller.createRace(request);
 
+        OutputView.printStart();
         while (true) {
             RoundResponse roundResult = controller.playRound();
-            outputView.printRoundResult(roundResult);
+            OutputView.printRoundResult(roundResult);
 
             if (roundResult.gameEnd()) {
                 WinnerResponse winners = controller.getWinner();
-                outputView.printWinners(winners);
+                OutputView.printWinners(winners);
                 break;
             }
         }
     }
-}
 }
