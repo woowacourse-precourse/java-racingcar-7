@@ -18,7 +18,7 @@ public class MovementDeciderTest {
     class validateDecision{
 
         @Test
-        @DisplayName("전진 조건에 부합하는 숫자가 들어오면 true를 리턴한다")
+        @DisplayName("전진 조건에 부합하는 숫자가 생성되면 true를 리턴한다")
         void Given_MovableCondition_When_validateMovement_Then_ReturnTrue() {
             assertRandomNumberInRangeTest(
                     ()->{
@@ -30,7 +30,7 @@ public class MovementDeciderTest {
         }
 
         @Test
-        @DisplayName("전진 조건에 부합하지 않는 숫자가 들어오면 false를 리턴한다")
+        @DisplayName("전진 조건에 부합하지 않는 숫자가 생성되면 false를 리턴한다")
         void Given_StopCondition_When_validateMovement_Then_ReturnFalse() {
             assertRandomNumberInRangeTest(
                     ()->{
