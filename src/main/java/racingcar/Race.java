@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 
 public class Race {
     private final List<Car> cars;
-    private final int moveCount;
+    private final int tryCount;
 
-    public Race(List<String> cars, int moveCount) {
-        ExceptionHandler.validateMoveCount(moveCount);
+    public Race(List<String> cars, int tryCount) {
+        ExceptionHandler.validateMoveCount(tryCount);
 
         this.cars = createCars(cars);
-        this.moveCount = moveCount;
+        this.tryCount = tryCount;
     }
 
     private List<Car> createCars(List<String> carsName) {
@@ -28,7 +28,7 @@ public class Race {
     }
 
     public void playRacing() {
-        for (int i = 0; i < moveCount; i++) {
+        for (int i = 0; i < tryCount; i++) {
             carsMove();
             OutputView.printRacingResult(cars);
         }

@@ -11,7 +11,7 @@ public class UserInput {
                 .toList();
     }
 
-    public static int inputNumberOfExecutions() {
+    public static int inputTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputNumber = Console.readLine();
         return ExceptionHandler.parseIntOrThrow(inputNumber);
