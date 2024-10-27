@@ -4,6 +4,7 @@ import static racingcar.global.constant.Config.MOVE_CONTROL_NUMBER;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.number.generator.NumberGenerator;
 
 public class Cars {
@@ -30,6 +31,13 @@ public class Cars {
             return;
         }
         car.move();
+    }
+
+    @Override
+    public String toString() {
+        return cars.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining("\n"));
     }
 
     public Car get(int index) {

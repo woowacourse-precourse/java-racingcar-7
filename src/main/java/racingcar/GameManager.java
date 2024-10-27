@@ -3,6 +3,8 @@ package racingcar;
 import racingcar.car.Cars;
 import racingcar.io.InputView;
 import racingcar.io.OutputView;
+import racingcar.number.generator.NumberGenerator;
+import racingcar.number.generator.RandomNumberGenerator;
 
 public class GameManager {
     private final InputView inputView;
@@ -17,6 +19,7 @@ public class GameManager {
         String[] carName = readCarName();
         Cars cars = putCars(carName);
         int movementNumber = readMovementNumber();
+        moveCar(cars, movementNumber);
     }
 
     private int readMovementNumber() {
@@ -35,6 +38,18 @@ public class GameManager {
     private String[] readCarName() {
         outputView.printCarNameMessage();
         return inputView.readCarName();
+    }
+
+    private void moveCar(Cars cars, int movementNumber) {
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        for (int i = 0; i < movementNumber; i++) {
+            printCarState(cars);
+            cars.move(numberGenerator);
+        }
+    }
+
+    private void printCarState(Cars cars) {
+        outputView.printCarStatement(cars);
     }
 
 }
