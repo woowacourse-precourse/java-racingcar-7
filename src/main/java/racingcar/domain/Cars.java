@@ -1,24 +1,27 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static List<Car> winner;
+    private final List<Car> carList;
 
     public Cars() {
-        this.winner = new ArrayList<>();
+        this.carList = new ArrayList<>();
     }
 
-    public List<Car> getWinnerList(List<Car> carArray){
-        setWinnerList(carArray);
-        return winner;
+    public void setCarList(String inpuString) {
+        List<String> carName = Arrays.asList(inpuString.split(","));
+        for (String name : carName) {
+            this.carList.add(new Car(name));
+        }
     }
 
-    public void setWinnerList(List<Car> carArray) {
-        int maxDistance = getMaxDistance(carArray);
-        this.winner = carArray.stream()
+    public List<Car> getWinnerList() {
+        int maxDistance = getMaxDistance(carList);
+        return carList.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .collect(Collectors.toList());
     }
@@ -29,4 +32,9 @@ public class Cars {
                 .max(Integer::compare) // getDistance는 int를 반환하지만 map Integer로 변환시킴
                 .orElse(0);
     }
+
+    public List<Car> getCarList() {
+        return List.copyOf(carList);
+    }
+
 }
