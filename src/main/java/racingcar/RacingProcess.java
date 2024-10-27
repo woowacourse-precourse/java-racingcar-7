@@ -11,8 +11,8 @@ public class RacingProcess {
         int[] processNum = new int[carNumber];
         Arrays.fill(processNum, -1);
 
-        for (int i : processNum) {
-            i = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
+        for (int i = 0; i < carNumber; i++) {
+            processNum[i] = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
         }
 
         for (int i = 0; i < carNumber; i++) {

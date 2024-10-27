@@ -1,8 +1,10 @@
 package racingcar;
 
 import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
+
+import static racingcar.RacingProcess.*;
+import static racingcar.ResultPrint.*;
+import static racingcar.WinnerPrint.*;
 
 public class Application {
 
@@ -25,35 +27,20 @@ public class Application {
 
         //횟수만큼 결과 반영 및 출력 반복
 
-        processResult = new String[RacingProcess.carNumber];
+        processResult = new String[carNumber];
         Arrays.fill(processResult, "");
 
-        resultNum = new int[RacingProcess.carNumber];
+        resultNum = new int[carNumber];
         Arrays.fill(resultNum, 0);
 
+        System.out.println("실행 결과");
+
         for (int i = 0; i < racingNumber; i++) {
-            RacingProcess.racingProcess();
-            ResultPrint.resultPrint();
+            racingProcess();
+            resultPrint();
         }
 
+        winnerPrint();
 
-
-
-        public static void winnerPrint() {
-            int maxNumber = resultNum[0];
-            for (int i : resultNum) {
-                if (i > maxNumber) {
-                    maxNumber = i;
-                }
-            }
-            List<String> result = new ArrayList<>();
-            for (int i : resultNum) {
-                if (i == maxNumber) {
-                    result.add(nameList[i]);
-                }
-            }
-
-            System.out.println("최종 우승자 : " + String.join(",",result));
-        }
     }
 }
