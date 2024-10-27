@@ -15,4 +15,14 @@ class CarTest {
 
         Assertions.assertThat(car.getName()).isEqualTo(carName);
     }
+
+    @DisplayName("자동차 전진 성공")
+    @Test
+    void moveTest() {
+        Car car = new Car("pobi");
+
+        car.move();
+
+        Assertions.assertThat(car.getDistance()).isEqualTo(1);
+    }
 }
