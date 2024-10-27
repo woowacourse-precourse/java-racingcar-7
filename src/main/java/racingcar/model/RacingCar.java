@@ -15,6 +15,11 @@ public class RacingCar implements Drivable {
         this.distance = INITIAL_DISTANCE;
     }
 
+    public RacingCar(String name, int distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
     @Override
     public int getDistance() {
         return distance;
