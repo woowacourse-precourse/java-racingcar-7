@@ -1,10 +1,11 @@
 package racingcar.observer;
 
-import racingcar.CarGame;
 import racingcar.car.Car;
 import racingcar.car.CarView;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.List;
 
@@ -33,5 +34,10 @@ public class GameResultObserver implements Observer{
         } catch (IOException exception) {
             System.err.println(exception.getMessage());
         }
+    }
+
+    public static Observer stdOut(List<Car> cars) {
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+        return new GameResultObserver(cars, writer);
     }
 }
