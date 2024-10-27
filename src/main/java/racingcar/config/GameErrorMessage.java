@@ -2,7 +2,7 @@ package racingcar.config;
 
 public class GameErrorMessage {
     private GameErrorMessage() {
-        throw new IllegalStateException("Congig Class");
+        throw new IllegalStateException("Config Class");
     }
 
     public static final String DUPLICATE_CAR_NAME_MESSAGE = "같은 이름을 가진 자동차가 있습니다.";
