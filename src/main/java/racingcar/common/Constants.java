@@ -4,9 +4,12 @@ public class Constants {
     public static String GET_CAR_NAMES_PROMPT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     public static String GET_GAME_COUNT_PROMPT = "시도할 횟수는 몇 회인가요?";
 
-    public static Long START_LOCATION = 0L;
+    public static Integer START_LOCATION = 0;
     public static Integer MAX_NAME_LENGTH = 5;
     public static String ONLY_POSITIVE = "^[1-9]\\d*$";
+    public static Integer MIN_RANDOM_NUMBER = 0;
+    public static Integer MAX_RANDOM_NUMBER = 9;
+    public static Integer MOVE_NUMBER = 4;
 
 
     public static String DUPLICATED_CAR_NAMES = "차 이름은 중복이 될 수 없습니다.";

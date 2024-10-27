@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.TestConstants.CAR_MOVE_COUNT;
 import static racingcar.TestConstants.CAR_NAME_POBI;
 import static racingcar.TestConstants.START_LOCATION;
 
@@ -20,5 +21,18 @@ class CarTest {
         // then
         assertThat(car.compareCarName(carName)).isTrue();
         assertThat(car.compareCarGoCnt(START_LOCATION)).isTrue();
+    }
+
+    @Test
+    @DisplayName("차가 잘 움직인다.")
+    void moveCar () {
+        // given
+        Car car = new Car(CAR_NAME_POBI);
+
+        // when
+        car.move();
+
+        // then
+        assertThat(car.compareCarGoCnt(CAR_MOVE_COUNT)).isTrue();
     }
 }

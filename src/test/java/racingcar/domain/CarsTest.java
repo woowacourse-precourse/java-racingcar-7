@@ -1,10 +1,13 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.TestConstants.CAR_MOVE_COUNT;
 import static racingcar.TestConstants.CAR_NAME_JUN;
 import static racingcar.TestConstants.CAR_NAME_POBI;
 import static racingcar.TestConstants.CAR_NAME_WONI;
+import static racingcar.TestConstants.MOVED_CAR_INDEX;
+import static racingcar.TestConstants.START_LOCATION;
+import static racingcar.TestConstants.STOP_CAR_INDEX;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,5 +29,41 @@ class CarsTest {
 
         // then
         assertThat(cars.size()).isEqualTo(carNames.size());
+    }
+
+    @Test
+    @DisplayName("움직이도록 요청한 차가 잘 움직인다.")
+    void moveCar () {
+        // given
+        List<String> carNames = new ArrayList<>();
+        carNames.add(CAR_NAME_POBI);
+        carNames.add(CAR_NAME_WONI);
+        carNames.add(CAR_NAME_JUN);
+
+        Cars cars = new Cars(carNames);
+
+        // when
+        cars.carMove(MOVED_CAR_INDEX);
+
+        // then
+        assertThat(cars.checkCarMove(MOVED_CAR_INDEX, CAR_MOVE_COUNT)).isTrue();
+    }
+
+    @Test
+    @DisplayName("움직이도록 요청하지 않은 차는 움직이지 않는다.")
+    void dontMoveCar () {
+        // given
+        List<String> carNames = new ArrayList<>();
+        carNames.add(CAR_NAME_POBI);
+        carNames.add(CAR_NAME_WONI);
+        carNames.add(CAR_NAME_JUN);
+
+        Cars cars = new Cars(carNames);
+
+        // when
+        cars.carMove(MOVED_CAR_INDEX);
+
+        // then
+        assertThat(cars.checkCarMove(STOP_CAR_INDEX, START_LOCATION)).isTrue();
     }
 }

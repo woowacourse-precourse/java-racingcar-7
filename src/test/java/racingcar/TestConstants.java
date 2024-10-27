@@ -14,5 +14,12 @@ public class TestConstants {
     public static String GAME_COUNT_NEGATIVE = "-1";
     public static String GAME_COUNT_ZERO = "0";
 
-    public static Long START_LOCATION = 0L;
+    public static Integer START_LOCATION = 0;
+    public static Integer CAR_COUNT = 3;
+    public static Integer CAR_MOVE_COUNT = 1;
+    public static Integer MOVED_CAR_INDEX = 1;
+    public static Integer STOP_CAR_INDEX = 0;
+
+    public static Integer STOP_NUMBER = 3;
+    public static Integer MOVE_NUMBER = 4;
 }

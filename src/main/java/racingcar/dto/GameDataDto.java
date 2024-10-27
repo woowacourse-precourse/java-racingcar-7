@@ -10,4 +10,12 @@ public class GameDataDto {
         this.cars = cars;
         this.gameCount = gameCount;
     }
+
+    public Cars getCars() {
+        return cars;
+    }
+
+    public Integer getGameCount() {
+        return gameCount;
+    }
 }

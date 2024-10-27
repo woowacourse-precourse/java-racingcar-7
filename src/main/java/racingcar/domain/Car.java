@@ -5,7 +5,7 @@ import static racingcar.service.ValidationService.validateCarName;
 
 public class Car {
     private final String name;
-    private final Long goCnt;
+    private Integer goCnt;
 
     public Car(String name) {
         validateCarName(name);
@@ -18,7 +18,11 @@ public class Car {
         return name.equals(expectedCarName);
     }
 
-    public boolean compareCarGoCnt(Long expectedGoCnt) {
-        return goCnt == expectedGoCnt;
+    public boolean compareCarGoCnt(Integer expectedGoCnt) {
+        return goCnt.equals(expectedGoCnt);
+    }
+
+    public void move() {
+        goCnt ++;
     }
 }
