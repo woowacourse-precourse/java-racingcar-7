@@ -23,4 +23,18 @@ public class InputTest {
                 .hasMessageContaining("쉼표는 구분자로만 사용해야 합니다.");
     }
 
+    @Test
+    @DisplayName("잘못된 이동횟수 입력 테스트")
+    void input_test_3() {
+        Assertions.assertThatThrownBy(() -> Input.parseNumberOfMoves("3.1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자 외의 문자를 입력하지 마세요.");
+        Assertions.assertThatThrownBy(() -> Input.parseNumberOfMoves("-5"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자 외의 문자를 입력하지 마세요.");
+        Assertions.assertThatThrownBy(() -> Input.parseNumberOfMoves("0"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("이동 횟수는 양수여야 합니다.");
+    }
+
 }
