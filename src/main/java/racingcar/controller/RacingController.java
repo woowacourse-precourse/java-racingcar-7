@@ -25,6 +25,7 @@ public class RacingController {
 		int attemptCount = readAttemptCountInput();
 
 		printRaceResult(attemptCount, cars);
+		printWinners(cars);
 	}
 
 	private String readCarNameInput() {
@@ -61,5 +62,9 @@ public class RacingController {
 			outputView.printRaceStatus(cars.findRaceStatus());
 			outputView.printNewLine();
 		}
+	}
+
+	private void printWinners(Cars cars) {
+		outputView.printWinners(cars.selectWinners());
 	}
 }
