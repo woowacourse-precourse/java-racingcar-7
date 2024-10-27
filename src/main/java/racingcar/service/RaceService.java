@@ -6,8 +6,6 @@ import racingcar.domain.Car;
 
 public class RaceService {
 
-
-
     public String[] splitCarNames(String carNames) {
         String[] splitNames = carNames.split(",");
         return splitNames;
