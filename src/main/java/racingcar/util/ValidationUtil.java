@@ -2,7 +2,15 @@ package racingcar.util;
 
 import java.util.List;
 
+import static racingcar.exception.ErrorMessages.TRIAL_COUNT_ERROR_MESSAGE;
+
 public class ValidationUtil {
+    public static void validateTrial(String trial){
+        if(isEmpty(trial) || !isInteger(trial) || !isPositive(trial)){
+            throw new IllegalArgumentException(TRIAL_COUNT_ERROR_MESSAGE);
+        }
+    }
+
     public static boolean isInteger(String input) {
         try {
             Integer.parseInt(input);
