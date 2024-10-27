@@ -65,4 +65,10 @@ public class Validator {
         }
         return countInt;
     }
+
+    public void validateCountPositiveIntegerAboveOne(int count) {
+        if (count < 1) {
+            throw new IllegalArgumentException(Constants.COUNT_ZERO_LESS_INTEGER_ERROR_MESSAGE);
+        }
+    }
 }

@@ -13,4 +13,5 @@ public class Constants {
     public static final String COUNT_INPUT_PROMPT = "시도할 횟수는 몇 회인가요?";
     public static final String COUNT_CONTAIN_SPACE_ERROR_MESSAGE = "시도할 횟수에 공백이 들어갈 수 없습니다.";
     public static final String COUNT_NON_NUMBER_ERROR_MESSAGE = "시도할 횟수는 정수 값으로 입력되어야 합니다.";
+    public static final String COUNT_ZERO_LESS_INTEGER_ERROR_MESSAGE = "시도할 횟수는 1 이상 양수 값으로 입력되어야 합니다.";
 }
