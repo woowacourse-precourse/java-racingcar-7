@@ -26,7 +26,10 @@ public class InputUtils {
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException(NAME_NO_INPUT_ERROR);
         }
-        if (input.contains(",,") || input.startsWith(NAME_SEPARATOR) || input.endsWith(NAME_SEPARATOR)) {
+
+        boolean isInvalidCommaUsage = input.contains(",,") || input.startsWith(NAME_SEPARATOR) || input.endsWith(NAME_SEPARATOR);
+
+        if (isInvalidCommaUsage) {
             throw new IllegalArgumentException(NAME_INPUT_INVALID_COMMA);
         }
     }
