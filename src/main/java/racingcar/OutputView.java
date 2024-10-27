@@ -1,11 +1,16 @@
 package racingcar;
 
+import static racingcar.GameMessages.OUTPUT_RESULT_GUIDE_MESSAGE;
 import static racingcar.GameMessages.OUTPUT_SCORE_CHARACTER;
 import static racingcar.GameMessages.OUTPUT_WINNER_GUIDE_MESSAGE;
 
 import java.util.List;
 
 public class OutputView {
+    void printResultGuideMessage() {
+        System.out.println(OUTPUT_RESULT_GUIDE_MESSAGE);
+    }
+
     void resultMessageLoop(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             printResultMessage(racingCar.getName(), racingCar.getScore());

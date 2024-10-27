@@ -44,6 +44,7 @@ public class GameController {
     }
 
     public void playRounds(Integer round) {
+        outputView.printResultGuideMessage();
         for (int i = 0; i < round; i++) {
             List<RacingCar> result = gameService.executeLogic();
             outputView.resultMessageLoop(result);
