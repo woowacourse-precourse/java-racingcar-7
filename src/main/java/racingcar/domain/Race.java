@@ -6,11 +6,12 @@ import racingcar.dto.RoundResult;
 import racingcar.dto.Winners;
 
 public class Race {
-    private List<Car> cars;
-    private MovementDecider movementDecider = new RandomMovementDecider();
+    private final List<Car> cars;
+    private final MovementDecider movementDecider;
 
-    public Race(List<Car> cars) {
+    public Race(List<Car> cars, MovementDecider movementDecider) {
         this.cars = cars;
+        this.movementDecider = movementDecider;
     }
 
     public RoundResult getRoundResult() {

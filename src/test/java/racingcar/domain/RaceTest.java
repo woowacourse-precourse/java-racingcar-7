@@ -34,7 +34,7 @@ class RaceTest {
     @Test
     void getRoundResult_initialPositions_success() {
         //given
-        race = new Race(cars);
+        race = new Race(cars,new RandomMovementDecider());
 
         //when
         List<CarDto> roundResult = race.getRoundResult().getCarDtoList();
@@ -49,7 +49,7 @@ class RaceTest {
     void startRace_positionsUpdated_success() {
         assertRandomNumberInRangeTest(() -> {
             //given
-            race = new Race(cars);
+            race = new Race(cars,new RandomMovementDecider());
 
             //when
             race.start();
@@ -68,7 +68,7 @@ class RaceTest {
     @MethodSource("provideRaceData")
     void calculateWinners_success(int[] car1Numbers, int[] car2Numbers, int[] car3Numbers) {
         //given
-        race = new Race(cars);
+        race = new Race(cars,new RandomMovementDecider());
 
         //when
         List<String> expectedWinners = Arrays.asList("car1", "car3");
