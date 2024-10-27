@@ -56,7 +56,7 @@
     - [x] setup 테스트 코드 작성
     - [x] separateInputCars 테스트 코드 작성
 - [ ] run 메소드 구현
-- [ ] startGame 메소드 구현
+- [x] startGame 메소드 구현
 - [x] moveCar 메소드 구현
 - [x] setup 메소드 구현
 - [x] show 메소드 구현

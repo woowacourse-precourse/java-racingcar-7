@@ -39,4 +39,12 @@ public class Race {
             show(car.getName(), car.getDistance());
         }
     }
+
+    public void startGame(String inputCount) {
+        int count = Integer.parseInt(inputCount);
+        while (count != 0) {
+            moveCar();
+            count--;
+        }
+    }
 }
