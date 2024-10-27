@@ -27,6 +27,10 @@ public class Application {
 
         // 3.3 시도할 횟수만큼 차례를 진행하는 기능
         proceedGame(tryCount, carList);
+
+        // 4.1 게임 완료 후 우승자를 출력하는 기능
+        ArrayList<String> winnerList = getWinnerList(carList);
+        printWinners(winnerList);
     }
 
     public static String getCarNamesInputString() {
@@ -109,5 +113,26 @@ public class Application {
             // 3.2 차수별 실행 결과를 출력하는 기능
             printTurnResult(carList);
         }
+    }
+
+    public static ArrayList<String> getWinnerList(ArrayList<Car> carList) {
+        ArrayList<String> winnerList = new ArrayList<>();
+        int maxDistance = 0;
+        for (Car car : carList) {
+            int distance = car.getDistance();
+            if (distance > maxDistance) {
+                maxDistance = distance;
+                winnerList.clear();
+            }
+            if (distance >= maxDistance) {
+                winnerList.add(car.getName());
+            }
+        }
+        return winnerList;
+    }
+
+    public static void printWinners(ArrayList<String> winnerList) {
+        String winnersString = String.join(", ", winnerList);
+        System.out.println("최종 우승자 : " + winnersString);
     }
 }
