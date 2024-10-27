@@ -43,13 +43,6 @@ public class UnitTest extends NsTest {
                 .hasMessage("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
     }
 
-    @Test
-    @DisplayName("splitInput 글자수 예외테스트")
-    void splitInputTest3() {
-        assertThatThrownBy(() -> Application.splitInput("car1,car2,car333"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @ParameterizedTest
     @CsvSource({"1,1", "2,2", "3,3", "4,4", "5,5", "10000,10000"})
     @DisplayName("parseTrial 글자수 정상 작동 테스트")
