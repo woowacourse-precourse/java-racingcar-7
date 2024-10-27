@@ -22,4 +22,29 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public  List<Car> getWinners() {
+        int maxMoveCount = getMaxMoveCount();
+        List<Car> winners = new ArrayList<>();
+
+        findWinners(maxMoveCount, winners);
+
+        return winners;
+    }
+
+    private int getMaxMoveCount() {
+        return cars.stream().mapToInt(Car::getMoveCount).max().orElse(0);
+    }
+
+    private void findWinners(int maxMoveCount, List<Car> winners) {
+        for (Car car : cars) {
+            checkCount(maxMoveCount, winners, car);
+        }
+    }
+
+    private static void checkCount(int maxMoveCount, List<Car> winners, Car car) {
+        if (car.getMoveCount() == maxMoveCount) {
+            winners.add(car);
+        }
+    }
 }
