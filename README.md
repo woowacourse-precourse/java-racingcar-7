@@ -45,7 +45,10 @@
 - [x] **전역**
   - [x] Application.main에서 객체 생성의 책임을 지는 게 맞을 지, 따로 AppConfig를 빼야할지
   - [x] 각 클래스(객체)의 역할과 책임이 과중되진 않았는지, 객체지향적인 설계가 맞는지 검토
-  - [ ] Application.main의 역할이 너무 많음. 각 역할에 맞게 작동할 수 있게 리팩토링
+  - [x] Application.main의 역할이 너무 많음. 각 역할에 맞게 작동할 수 있게 리팩토링
+
+## 최종 클래스 다이어그램
+<img width="1171" alt="racingcar_diagram" src="https://github.com/user-attachments/assets/cd8bcda2-c515-4915-818e-74a7b1b94ff5"/>
 
 ## 최적화
 
@@ -119,9 +122,29 @@ Extreme Case - Many cars and rounds
 Average Execution time over 2000 runs: 30.82 ms
 ```
 
+### 2차 리팩토링 후 측정
+- 기본 케이스
+```text
+Case: pobi,woni, Rounds: 1
+Average Execution time over 2000 runs: 0.58 ms
+
+Case: pobi,woni,jun, Rounds: 3
+Average Execution time over 2000 runs: 0.99 ms
+
+Case: car1,car2,car3,car4, Rounds: 5
+Average Execution time over 2000 runs: 1.90 ms
+```
+
+- 극단적인 케이스
+```text
+Extreme Case - Many cars and rounds
+Average Execution time over 2000 runs: 30.91 ms
+```
 
 ### 결과
 - 기본적인 경우는 큰 성능 향상은 없음 
 - 현재 컴퓨터의 메모리 상황에 따라 달라질 수 있음을 확인. 최대한 비슷한 상황에서 실행할 수 있게 함
 - 극단적인 경우에는 0.42ms만큼의 성능 향상이 있었음. 하지만 이것도 컴퓨터의 상황에 따라 달라질 여지가 있어 정확하진 않음
 - 하지만, 기존 경우에 예외처리 로직을 하나 더 추가했는데도 성능 향상이 있는걸 확인. 리팩토링이 어느정도는 유효함을 볼 수 있음
+- 2차 리팩토링 이후, 기본 케이스에서 성능 하락이 0.01ms에서 0.09ms정도 있음
+- 하지만 극단적인 케이스에서는 여전히 가장 처음 측정한것보다는 시간이 덜 걸림
