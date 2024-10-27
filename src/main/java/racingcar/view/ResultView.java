@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
+import racingcar.constants.Constants;
 import racingcar.domain.Cars;
 
 public class ResultView {
@@ -8,7 +9,7 @@ public class ResultView {
     private static final String WINNERS_SEPARATOR = ", ";
 
     public static void promptExecutionResult() {
-        System.out.println("\n실행 결과");
+        System.out.println(Constants.EXECUTION_RESULT_PROMPT);
     }
 
     public static void showTurnResult(Cars cars) {
@@ -16,7 +17,7 @@ public class ResultView {
     }
 
     public static void showWinners(List<String> winners) {
-        System.out.println("최종 우승자 : " + joinWinnerNames(winners));
+        System.out.println(Constants.FINAL_WINNERS_PROMPT + joinWinnerNames(winners));
     }
 
     private static String joinWinnerNames(List<String> winners) {

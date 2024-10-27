@@ -6,7 +6,7 @@ public class Position {
 
     private static final String FORWARD_SIGN = "-";
 
-    private int number;
+    private final int number;
 
     public Position(int number) {
         this.number = number;

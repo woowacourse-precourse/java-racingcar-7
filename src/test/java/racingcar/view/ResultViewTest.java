@@ -7,6 +7,7 @@ import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.constants.Constants;
 
 public class ResultViewTest {
 
@@ -27,7 +28,7 @@ public class ResultViewTest {
     void 실행_결과_문구_출력() {
         ResultView.promptExecutionResult();
 
-        assertThat(outputStream.toString().trim()).isEqualTo("실행 결과");
+        assertThat(outputStream.toString().trim()).isEqualTo(Constants.EXECUTION_RESULT_PROMPT.trim());
     }
 
     @Test
@@ -35,6 +36,6 @@ public class ResultViewTest {
         List<String> winners = List.of("pobi", "nana");
         ResultView.showWinners(winners);
 
-        assertThat(outputStream.toString().trim()).isEqualTo("최종 우승자 : pobi, nana");
+        assertThat(outputStream.toString().trim()).isEqualTo(Constants.FINAL_WINNERS_PROMPT + "pobi, nana");
     }
 }

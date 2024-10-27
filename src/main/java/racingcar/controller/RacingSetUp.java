@@ -6,6 +6,9 @@ import racingcar.domain.Cars;
 import racingcar.view.InputView;
 
 public class RacingSetUp {
+
+    private static final String TRY_COUNT_NOT_NUMBER = "시도 횟수는 아라비아 숫자로 입력해야 합니다";
+
     private final String carNames;
     private final Long tryCount;
     private final Cars cars;
@@ -31,7 +34,7 @@ public class RacingSetUp {
         try {
             tryCount = Long.parseLong(textTryCount);
         } catch (NumberFormatException numberFormatException) {
-            throw new IllegalArgumentException("시도 횟수는 아라비아 숫자로 입력해야 합니다");
+            throw new IllegalArgumentException(TRY_COUNT_NOT_NUMBER);
         } finally {
             Console.close();
         }

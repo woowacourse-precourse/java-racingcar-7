@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.Objects;
+import racingcar.constants.Constants;
 
 public class Name {
 
@@ -15,7 +16,7 @@ public class Name {
 
     private void validateNameLength(String text) {
         if (isEmpty(text) || isOverValidLength(text)) {
-            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다");
+            throw new IllegalArgumentException(Constants.INVALID_NAME_LENGTH);
         }
     }
 

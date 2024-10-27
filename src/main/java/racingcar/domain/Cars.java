@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+import racingcar.constants.Constants;
 import racingcar.util.RandomUtil;
 
 public class Cars {
@@ -18,7 +19,7 @@ public class Cars {
 
     private void checkDuplicateCarName(List<Car> carList) {
         if (hasDuplicateName(carList)) {
-            throw new IllegalArgumentException("중복되는 자동차 이름은 사용할 수 없습니다");
+            throw new IllegalArgumentException(Constants.DUPLICATE_CAR_NAMES);
         }
     }
 

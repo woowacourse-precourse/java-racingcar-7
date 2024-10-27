@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.constants.Constants;
 
 public class CarFactory {
 
@@ -34,7 +35,7 @@ public class CarFactory {
 
     private void checkDividedComma(String inputCarNames) {
         if (isNotDividedComma(inputCarNames)) {
-            throw new IllegalArgumentException("자동차 이름은 콤마로 구분해야 합니다");
+            throw new IllegalArgumentException(Constants.NOT_CAR_NAMES_DIVIDED_COMMA);
         }
     }
 

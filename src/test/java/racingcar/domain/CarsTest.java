@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import racingcar.constants.Constants;
 
 public class CarsTest {
 
@@ -24,7 +25,7 @@ public class CarsTest {
         List<Car> carList = List.of(CAR_POBI, CAR_POBI);
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Cars(carList))
-                .withMessageMatching("중복되는 자동차 이름은 사용할 수 없습니다");
+                .withMessageMatching(Constants.DUPLICATE_CAR_NAMES);
     }
 
     @Test

@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.constants.Constants;
 
 public class CarFactoryTest {
 
@@ -42,6 +43,6 @@ public class CarFactoryTest {
     void 콤마로_자동차_이름_split_못함() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> carFactory.createCars("pobi:nana,jun"))
-                .withMessageMatching("자동차 이름은 콤마로 구분해야 합니다");
+                .withMessageMatching(Constants.NOT_CAR_NAMES_DIVIDED_COMMA);
     }
 }
