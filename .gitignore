@@ -33,6 +33,8 @@ out/
 
 ### Mac OS ###
 .DS_Store
+.AppleDouble
+.LSOverride
 
 ### Eclipse ###
 .metadata
@@ -46,9 +48,3 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-
-### macOS ###
-# General
-.DS_Store
-.AppleDouble
-.LSOverride
