@@ -8,6 +8,8 @@ import java.util.Set;
 
 public class Application {
 
+    public static final int CAR_NAME_LENGTH = 5;
+
     public static String inputText() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String text = Console.readLine();
@@ -19,22 +21,47 @@ public class Application {
         Set<String> carSet = new HashSet<>();
 
         for (String carName : text.split(",")) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException();
-            }
-
-            if (!carSet.add(carName)) {
-                throw new IllegalArgumentException();
-            }
-
-            if (carName == null || carName.isBlank()) {
-                throw new IllegalArgumentException();
-            }
+            validateName(carName);
 
             carList.add(new Car(carName));
         }
 
+        detectDuplication(text);
+
         return carList;
+    }
+
+    public static void detectDuplication(String text) {
+        Set<String> carSet = new HashSet<>();
+        for (String car : text.split(",")) {
+            if (!carSet.add(car)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public static void validateName(String name) {
+        validateLength(name);
+        validateNotNull(name);
+        validateNotBlank(name);
+    }
+
+    public static void validateLength(String carName) {
+        if (carName.length() > CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateNotNull(String carName) {
+        if (carName == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateNotBlank(String carName) {
+        if (carName.isBlank()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static int inputTestCaseNum() {
