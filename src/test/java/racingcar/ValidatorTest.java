@@ -4,6 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -21,6 +22,13 @@ class ValidatorTest {
     @DisplayName("쉼표 이전, 이후로 이름이 존재해야만 유효")
     void 자동차_이름_입력_검증_예외_테스트(String carNames) {
         assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("중복되는 이름이 있다면 예외 처리")
+    void 자동차_이름_입력_검증_예외_테스트() {
+        assertThatThrownBy(() -> Validator.validateCarNames("1, pobi, jun, pobi"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
