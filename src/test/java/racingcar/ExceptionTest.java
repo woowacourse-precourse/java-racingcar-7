@@ -15,4 +15,13 @@ public class ExceptionTest {
             racingService.startRaceGame();
         });
     }
+
+    @Test
+    @DisplayName("자동차 이름이 중복된 경우 에러 발생")
+    void 자동차_이름_중복_테스트() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            racingService = new RacingService("a,a,b,c,d", "4");
+            racingService.startRaceGame();
+        });
+    }
 }
