@@ -11,10 +11,12 @@ public class RunManager {
 
     private final InputManager inputManager;
     private final RacingManager racingManager;
+    private final WinnerManager winnerManager;
 
-    public RunManager(InputManager inputManager, RacingManager racingManager) {
+    public RunManager(InputManager inputManager, RacingManager racingManager, WinnerManager winnerManager) {
         this.inputManager = inputManager;
         this.racingManager = racingManager;
+        this.winnerManager = winnerManager;
     }
 
     public void run(){
