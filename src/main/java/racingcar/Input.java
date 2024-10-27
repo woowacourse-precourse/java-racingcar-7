@@ -13,7 +13,7 @@ public class Input {
 		return separateNames(Console.readLine());
 	}
 
-	private static CarList separateNames(String namesStr) {
+	public static CarList separateNames(String namesStr) {
 		String[] names = namesStr.split(",");
 
 		return new CarList(names);
