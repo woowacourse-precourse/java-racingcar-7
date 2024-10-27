@@ -31,6 +31,24 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_게임횟수_양수인지_확인_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("1 이상의 정수를 입력해주세요.")
+        );
+    }
+
+    @Test
+    void 예외_게임횟수_숫자문자열인지_확인_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("숫자로 변환할 수 없습니다.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
