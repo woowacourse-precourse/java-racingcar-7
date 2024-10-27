@@ -2,7 +2,7 @@ package racingcar.validator;
 
 public class Validator {
     public static void validateCarName(String name){
-        if(name.length()>5){
+        if(name.length() > 5){
             throw new IllegalArgumentException("이름은 5자 이하입니다.");
         }
         if(name.isEmpty()){

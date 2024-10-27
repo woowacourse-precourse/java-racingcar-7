@@ -20,6 +20,7 @@ public class RacingCarController {
             proceed();
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
