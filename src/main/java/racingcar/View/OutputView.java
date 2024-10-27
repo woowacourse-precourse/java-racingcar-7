@@ -6,4 +6,8 @@ public class OutputView {
     public void printMessage(OutputMessage Message) {
         System.out.println(Message.getMessage());
     }
+
+    public void printResult(String result) {
+        System.out.println(result);
+    }
 }
