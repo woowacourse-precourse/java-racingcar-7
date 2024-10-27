@@ -9,6 +9,7 @@ public class PrintResult {
         for (int i = 1; i <= car.getForwardCount(); i++) {
             System.out.print("-");
         }
+        System.out.println();
     }
 
     public void printCars(List<Car> cars, int attemptNumber) {

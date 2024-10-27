@@ -15,7 +15,7 @@ public class Application {
         String inputAttemptNumber = inputHandler.inputAttemptNumber();
         int attemptNumber = inputParser.parseAttemptNumber(inputAttemptNumber);
 
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
         gameController.moveCars(car, attemptNumber);
     }
 }
