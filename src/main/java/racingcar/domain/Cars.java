@@ -15,7 +15,15 @@ public class Cars {
 		cars.forEach(car -> car.move(RandomNumberPicker.pickNumber()));
 	}
 
-	private int getMaxDistance() {
+	public List<Car> selectWinners() {
+		int maxDistance = findMaxDistance();
+
+		return cars.stream()
+			.filter(car -> car.getDistance() == maxDistance)
+			.toList();
+	}
+
+	private int findMaxDistance() {
 		return cars.stream()
 			.mapToInt(Car::getDistance)
 			.max()
