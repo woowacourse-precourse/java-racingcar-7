@@ -1,16 +1,15 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
 public class Application {
     public static void main(String[] args) {
-        String input = Console.readLine();
-        int repeat = Integer.parseInt(Console.readLine());
+        String cars = InputView.readCars();
+        int trials = Integer.parseInt(InputView.readTrials());
         Racing racing = new Racing();
-        Arrays.stream(input.split(","))
+        Arrays.stream(cars.split(","))
                 .map(Car::new)
                 .forEach(racing::addCar);
-        System.out.println(racing.race(repeat));
+        System.out.println(racing.race(trials));
     }
 }
