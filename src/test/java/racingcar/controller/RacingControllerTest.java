@@ -24,7 +24,6 @@ class RacingControllerTest {
     private Racingcars racingcars;
     private RacingcarNameValidate racingcarNameValidate;
     private RacingcarAttemptValidate racingcarAttemptValidate;
-    private StringBuilder middleResult;
 
     @BeforeEach
     void setUp() {
@@ -34,7 +33,6 @@ class RacingControllerTest {
         this.racingService = new RacingService(racingcars);
         this.racingcarNameValidate = new RacingcarNameValidate();
         this.racingcarAttemptValidate = new RacingcarAttemptValidate();
-        this.middleResult = new StringBuilder();
     }
 
     @Test
