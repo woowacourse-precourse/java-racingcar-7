@@ -1,4 +1,4 @@
-package racingcar.racinggame.car;
+package racingcar.racinggame.race.car;
 
 import static java.util.Arrays.*;
 import static org.assertj.core.api.Assertions.*;

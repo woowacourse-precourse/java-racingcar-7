@@ -2,9 +2,9 @@ package racingcar.racinggame;
 
 import java.util.List;
 
-import racingcar.racinggame.car.Cars;
 import racingcar.racinggame.io.input.InputHandler;
 import racingcar.racinggame.io.output.OutputHandler;
+import racingcar.racinggame.race.car.Cars;
 import racingcar.util.RandomNumberGenerator;
 
 public class RacingGame {

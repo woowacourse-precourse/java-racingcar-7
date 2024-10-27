@@ -3,8 +3,8 @@ package racingcar.racinggame.io.output;
 import java.util.List;
 import java.util.StringJoiner;
 
-import racingcar.racinggame.car.Car;
-import racingcar.racinggame.car.Cars;
+import racingcar.racinggame.race.car.Car;
+import racingcar.racinggame.race.car.Cars;
 
 public class OutputHandler {
 
