@@ -54,13 +54,13 @@ public class Cars {
 
     private void validateEmpty(List<Car> cars) {
         if (cars.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessages.INVALID_RACER_NAME_BLANK.getMessage());
+            throw new IllegalArgumentException(ErrorMessages.INVALID_CAR_NAME_BLANK.getMessage());
         }
     }
 
     private void validateDuplication(List<Car> cars) {
         if (isDuplicated(cars)) {
-            throw new IllegalArgumentException(ErrorMessages.INVALID_RACER_NAME_DUPLICATED.getMessage());
+            throw new IllegalArgumentException(ErrorMessages.INVALID_CAR_NAME_DUPLICATED.getMessage());
         }
     }
 

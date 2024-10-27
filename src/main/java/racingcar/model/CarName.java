@@ -1,8 +1,8 @@
 package racingcar.model;
 
 import static racingcar.constants.Constants.MAX_NAME_LENGTH;
-import static racingcar.constants.ErrorMessages.INVALID_RACER_NAME_BLANK;
-import static racingcar.constants.ErrorMessages.INVALID_RACER_NAME_RANGE;
+import static racingcar.constants.ErrorMessages.INVALID_CAR_NAME_BLANK;
+import static racingcar.constants.ErrorMessages.INVALID_CAR_NAME_RANGE;
 
 import java.util.Objects;
 
@@ -42,13 +42,13 @@ public class CarName {
 
     private void validateBlank(String name) {
         if (name.isBlank()) {
-            throw new IllegalArgumentException(INVALID_RACER_NAME_BLANK.getMessage());
+            throw new IllegalArgumentException(INVALID_CAR_NAME_BLANK.getMessage());
         }
     }
 
     private void validateLength(String name) {
         if (!isProperLength(name)) {
-            throw new IllegalArgumentException(INVALID_RACER_NAME_RANGE.getMessage());
+            throw new IllegalArgumentException(INVALID_CAR_NAME_RANGE.getMessage());
         }
     }
 
