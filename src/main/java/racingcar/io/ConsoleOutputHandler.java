@@ -35,20 +35,12 @@ public class ConsoleOutputHandler {
                     .map(Car::getCarName)
                     .collect(Collectors.toList()));
         }
-        if (winners.size() == 1) {
+        else  {
             winnerMembers = winners.getFirst().getCarName();
         }
 
         System.out.print("최종 우승자 : ");
-        for (int i = 0; i < winners.size(); i++) {
-            if (i < winners.size() - 1) {
-                System.out.print(winners.get(i).getCarName() + ", ");
-                continue;
-            }
+        System.out.println(winnerMembers);
 
-            System.out.println(winners.get(i).getCarName());
-            System.out.println();
-        }
     }
-
 }
