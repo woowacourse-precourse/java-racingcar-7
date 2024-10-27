@@ -44,4 +44,15 @@ class NameTest {
         // then
         Assertions.assertThat(result).isEqualTo("우테코");
     }
+
+    @Test
+    @DisplayName("같은 값을 가지는 Name 객체는 동등성을 보장받는다.")
+    void equalsName() {
+        // given
+        Name name1 = new Name("우테코");
+        Name name2 = new Name("우테코");
+
+        // when, then
+        Assertions.assertThat(name1).isEqualTo(name2);
+    }
 }
