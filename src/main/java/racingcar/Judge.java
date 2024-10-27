@@ -17,7 +17,7 @@ public class Judge {
         return currentCars.stream()
                 .filter(car -> findMaxPosition().equals(car.position()))
                 .map(CurrentCar::carName)
-                .collect(Collectors.joining());
+                .collect(Collectors.joining(", "));
     }
 
     private Integer findMaxPosition() {
