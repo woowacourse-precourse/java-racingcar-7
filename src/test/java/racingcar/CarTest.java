@@ -12,7 +12,7 @@ public class CarTest {
     @Test
     void testCarCreationWithValidName() {
 
-        // given & When
+        // given & when
         Car car = new Car(new Name("pobi"));
 
         // then
