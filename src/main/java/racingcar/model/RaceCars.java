@@ -7,8 +7,7 @@ import java.util.stream.Collectors;
 import racingcar.utils.NumberGenerator;
 import racingcar.validator.RaceCarsValidator;
 
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toUnmodifiableList;
+import static java.util.stream.Collectors.*;
 
 public class RaceCars {
     private final List<RaceCar> raceCars;
@@ -19,18 +18,16 @@ public class RaceCars {
 
     public static RaceCars fromNames(List<String> names) {
         RaceCarsValidator.validate(names);
-        List<RaceCar> carList = names.stream()
+        return names.stream()
                 .map(RaceCar::fromName)
-                .collect(toList());
-        return new RaceCars(carList);
+                .collect(collectingAndThen(toList(), RaceCars::new));
     }
 
     public List<String> findWinnerNames() {
-        int winPosition = findWinPosition();
         return raceCars.stream()
-                .filter(car -> car.isWinner(winPosition))
+                .filter(car -> car.isWinner(findWinPosition()))
                 .map(RaceCar::getName)
-                .collect(toUnmodifiableList());
+                .toList();
     }
 
     private int findWinPosition() {
