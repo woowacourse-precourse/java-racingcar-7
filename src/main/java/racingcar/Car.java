@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class Car {
 
-    private static int CAR_NAME_MIN = 1;
-    private static int CAR_NAME_MAX = 5;
-    private static int CAR_MOVE_RULE = 4;
+    private static final int CAR_NAME_MIN = 1;
+    private static final int CAR_NAME_MAX = 5;
+    private static final int CAR_MOVE_RULE = 4;
 
     private String name;
     private int position;
