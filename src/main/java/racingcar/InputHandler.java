@@ -14,7 +14,7 @@ public class InputHandler {
     public void validCarNames(String[] carNames) {
         for (String name : carNames) {
             if (name.length() > MAX_CAR_NAME_LENGTH) throw new IllegalArgumentException();
-            if (name.contains("")) throw new IllegalArgumentException();
+            if (name.equals("")) throw new IllegalArgumentException();
         }
     }
     public void validMoveCnt(int moveCount) {
