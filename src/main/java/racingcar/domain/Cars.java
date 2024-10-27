@@ -34,6 +34,18 @@ public class Cars implements Iterable<Car> {
         return this.cars.stream().map(car -> car.move(movementCommander)).toList();
     }
 
+    public List<Car> winner() {
+        return findWinner(max());
+    }
+
+    private int max() {
+        return this.cars.stream().mapToInt(Car::position).max().orElse(0);
+    }
+
+    private List<Car> findWinner(int maxPosition) {
+        return this.cars.stream().filter(car -> car.samePosition(maxPosition)).toList();
+    }
+
     @Override
     public Iterator<Car> iterator() {
         return cars.iterator();

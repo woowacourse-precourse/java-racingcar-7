@@ -49,6 +49,10 @@ public class Car {
         return position.value();
     }
 
+    public boolean samePosition(int position) {
+        return this.position.equalsTo(position);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -27,6 +27,10 @@ public class Position {
         return position;
     }
 
+    public boolean equalsTo(int position) {
+        return this.position == position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
