@@ -21,7 +21,7 @@ public class OutputView {
         String winnerNames = winners.stream()
                 .map(Car::getName) // Car 객체에서 이름만 추출
                 .collect(Collectors.joining(", ")); // 쉼표로 이름을 연결
-        System.out.println("최종 우승자 : " + winnerNames);
+        System.out.println(OUTPUT_WINNER + winnerNames);
     }
 
 }
