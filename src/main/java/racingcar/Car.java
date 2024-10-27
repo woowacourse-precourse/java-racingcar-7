@@ -32,7 +32,4 @@ public class Car {
     String getStatus() {
         return getCarName() + " : " + "-".repeat(getDistance());
     }
-
-
-
 }
