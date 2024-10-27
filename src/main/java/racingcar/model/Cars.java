@@ -55,10 +55,10 @@ public class Cars {
     }
 
     public void race() {
-        cars.forEach(this::moveCar);
+        cars.forEach(this::tryForward);
     }
 
-    private void moveCar(Car car) {
+    private void tryForward(Car car) {
         int randomValue = Randoms.pickNumberInRange(MIN_DISTANCE, MAX_DISTANCE);
         car.move(randomValue);
     }
