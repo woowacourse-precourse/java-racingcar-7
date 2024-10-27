@@ -8,6 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
+import racingcar.car.Cars;
+import racingcar.provider.LinearIncrementalNumberProvider;
+import racingcar.provider.NumberProvider;
 
 class RacingGameTest {
 
@@ -40,6 +43,48 @@ class RacingGameTest {
                         + System.lineSeparator() + System.lineSeparator()
         );
 
+        System.setOut(System.out);
+    }
+
+    @Test
+    @DisplayName("최종 우승자를 출력한다")
+    void showSingleWinnerName() {
+        // given
+        RacingGame racingGame = new RacingGame();
+
+        Cars cars = Cars.of("test1", "test2", "test3");
+        NumberProvider numberProvider = new LinearIncrementalNumberProvider(1, 2);
+        cars.tryMoveForward(numberProvider);
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+
+        // when
+        racingGame.showWinners(cars);
+
+        // then
+        assertThat(byteArrayOutputStream.toString()).isEqualTo("최종 우승자 : test3" + System.lineSeparator());
+        System.setOut(System.out);
+    }
+
+    @Test
+    @DisplayName("두 명 이상의 최종 우승자를 출력한다")
+    void showWinneNames() {
+        // given
+        RacingGame racingGame = new RacingGame();
+
+        Cars cars = Cars.of("test1", "test2", "test3");
+        NumberProvider numberProvider = new LinearIncrementalNumberProvider(3, 2);
+        cars.tryMoveForward(numberProvider);
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+
+        // when
+        racingGame.showWinners(cars);
+
+        // then
+        assertThat(byteArrayOutputStream.toString()).isEqualTo("최종 우승자 : test2,test3" + System.lineSeparator());
         System.setOut(System.out);
     }
 
