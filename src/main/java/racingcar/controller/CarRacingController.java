@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import racingcar.model.Car;
 import racingcar.model.CarRacing;
 import racingcar.view.UserInterface;
@@ -60,12 +62,16 @@ public class CarRacingController {
         }
 
         List<String> carNames = Arrays.stream(trimmedCarNameInput.split(",")).toList();
+        Set<String> nameSet = new HashSet<>();
         if (carNames.size() == 1 || carNames.contains(EMPTY_STRING)) {
             throw new IllegalArgumentException("자동차 이름은 2개 이상 입력해야합니다.");
         }
         for (String name : carNames) {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다: " + name);
+            }
+            if (!nameSet.add(name)) {
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
             }
         }
         return carNames;

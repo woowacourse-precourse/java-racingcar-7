@@ -97,4 +97,21 @@ class CarRacingControllerTest {
 
     }
 
+    @Test
+    void 자동차이름_중복되면_예외처리() {
+        // given
+        String carNameInput1 = "pobi, pobi";
+        String carNameInput2 = "po bi, p o b i";
+        CarRacingController carRacingController = new CarRacingController();
+
+        // when, then
+        assertThatThrownBy(() -> carRacingController.validateCarNameInput(carNameInput1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
+        assertThatThrownBy(() -> carRacingController.validateCarNameInput(carNameInput2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
+
+    }
+
 }
