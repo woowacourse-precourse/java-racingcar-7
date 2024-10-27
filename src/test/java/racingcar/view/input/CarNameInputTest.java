@@ -2,7 +2,7 @@ package racingcar.view.input;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.view.CarNameInputErrorMessage;
+import racingcar.exception.view.CarNameInputErrorMessages;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,7 +31,7 @@ class CarNameInputTest {
 
         // then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
-        assertEquals(CarNameInputErrorMessage.CAR_NAME_IS_EMPTY.getMessage(), exception.getMessage());
+        assertEquals(CarNameInputErrorMessages.CAR_NAME_IS_EMPTY.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -45,7 +45,7 @@ class CarNameInputTest {
 
         // then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
-        assertEquals(CarNameInputErrorMessage.CAR_NAME_TOO_LONG.getMessage(), exception.getMessage());
+        assertEquals(CarNameInputErrorMessages.CAR_NAME_TOO_LONG.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -59,7 +59,7 @@ class CarNameInputTest {
 
         // then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
-        assertEquals(CarNameInputErrorMessage.CAR_NAME_NOT_LOWERCASE.getMessage(), exception.getMessage());
+        assertEquals(CarNameInputErrorMessages.CAR_NAME_NOT_LOWERCASE.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -73,7 +73,7 @@ class CarNameInputTest {
 
         // then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
-        assertEquals(CarNameInputErrorMessage.CAR_NAME_CONTAINS_WHITESPACE.getMessage(), exception.getMessage());
+        assertEquals(CarNameInputErrorMessages.CAR_NAME_CONTAINS_WHITESPACE.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -87,7 +87,7 @@ class CarNameInputTest {
 
         // then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
-        assertEquals(CarNameInputErrorMessage.CAR_NAME_DUPLICATE.getMessage(), exception.getMessage());
+        assertEquals(CarNameInputErrorMessages.CAR_NAME_DUPLICATE.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -101,6 +101,6 @@ class CarNameInputTest {
 
         // then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
-        assertEquals(CarNameInputErrorMessage.INVALID_DELIMITER.getMessage(), exception.getMessage());
+        assertEquals(CarNameInputErrorMessages.INVALID_DELIMITER.getMessage(), exception.getMessage());
     }
 }

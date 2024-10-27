@@ -8,9 +8,10 @@ public class RaceOutput {
         StringBuilder output = new StringBuilder();
 
         for (Car car : race.getCars()) {
-            output.append(car.getName()).append(" : ");
-            output.append("-".repeat(car.getPosition()));
-            output.append("\n");
+            output.append(car.getName())
+                    .append(OutputMessages.CAR_PROGRESS_SEPARATOR)
+                    .append(OutputMessages.CAR_POSITION_MARKER.repeat(car.getPosition()))
+                    .append(OutputMessages.NEW_LINE);
         }
 
         return output.toString();

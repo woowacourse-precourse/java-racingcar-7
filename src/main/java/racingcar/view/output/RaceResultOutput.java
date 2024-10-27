@@ -11,6 +11,6 @@ public class RaceResultOutput {
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
 
-        return "최종 우승자 : " + winnerNames;
+        return OutputMessages.WINNER_ANNOUNCEMENT + winnerNames;
     }
 }

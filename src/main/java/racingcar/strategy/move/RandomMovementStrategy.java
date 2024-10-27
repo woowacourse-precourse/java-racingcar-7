@@ -6,7 +6,6 @@ public class RandomMovementStrategy implements MovementStrategy {
 
     @Override
     public boolean shouldMove() {
-        int rand = Randoms.pickNumberInRange(0, 9);
-        return rand >= 4;
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 }

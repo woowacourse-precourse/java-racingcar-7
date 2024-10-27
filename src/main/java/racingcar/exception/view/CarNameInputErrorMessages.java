@@ -1,6 +1,6 @@
 package racingcar.exception.view;
 
-public enum CarNameInputErrorMessage {
+public enum CarNameInputErrorMessages {
     CAR_NAME_IS_EMPTY("자동차 이름 입력을 빈 문자열로 입력할 수 없습니다."),
     CAR_NAME_TOO_LONG("자동차 이름은 1자 이상, 5자 이하이어야 합니다."),
     CAR_NAME_NOT_LOWERCASE("자동차 이름은 소문자 영어로만 이루어져야 합니다."),
@@ -10,7 +10,7 @@ public enum CarNameInputErrorMessage {
 
     private final String message;
 
-    CarNameInputErrorMessage(String message) {
+    CarNameInputErrorMessages(String message) {
         this.message = message;
     }
 

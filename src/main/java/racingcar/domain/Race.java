@@ -1,8 +1,9 @@
 package racingcar.domain;
 
-import racingcar.exception.domain.RaceErrorMessage;
+import racingcar.exception.domain.RaceErrorMessages;
 import racingcar.strategy.move.MovementStrategy;
 import racingcar.strategy.winner.WinnerStrategy;
+import racingcar.view.output.OutputMessages;
 import racingcar.view.output.RaceOutput;
 
 import java.util.ArrayList;
@@ -32,15 +33,13 @@ public class Race {
 
 
     public void start() {
-        System.out.println();
-        System.out.println("실행 결과");
+        System.out.println(OutputMessages.RACE_START);
         for (int i = 0; i < attemptCount; i++) {
             for (Car car : cars) {
                 System.out.println(car.getName());
                 car.move(movementStrategy.shouldMove());
             }
-            System.out.print(RaceOutput.getProgress(this));
-            System.out.println();
+            System.out.print(RaceOutput.getProgress(this) + '\n');
         }
     }
 
@@ -58,7 +57,7 @@ public class Race {
                 return car.getPosition();
             }
         }
-        throw new IllegalArgumentException(RaceErrorMessage.CAR_NOT_FOUND.getMessage());
+        throw new IllegalArgumentException(RaceErrorMessages.CAR_NOT_FOUND.getMessage());
     }
 
     public List<Car> getWinners() {

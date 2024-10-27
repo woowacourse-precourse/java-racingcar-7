@@ -2,7 +2,7 @@ package racingcar.view.input;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.util.RaceAttemptNumberValidatorErrorMessage;
+import racingcar.exception.util.RaceAttemptNumberValidatorErrorMessages;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,7 +26,7 @@ public class RaceAttemptNumberInputTest {
 
         // when, then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new RaceAttemptNumberInput().process(input));
-        assertEquals(RaceAttemptNumberValidatorErrorMessage.NUMBER_TOO_LOW.getMessage(), exception.getMessage());
+        assertEquals(RaceAttemptNumberValidatorErrorMessages.NUMBER_TOO_LOW.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -37,6 +37,6 @@ public class RaceAttemptNumberInputTest {
 
         // when, then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new RaceAttemptNumberInput().process(input));
-        assertEquals(RaceAttemptNumberValidatorErrorMessage.INVALID_NUMBER_FORMAT.getMessage(), exception.getMessage());
+        assertEquals(RaceAttemptNumberValidatorErrorMessages.INVALID_NUMBER_FORMAT.getMessage(), exception.getMessage());
     }
 }
