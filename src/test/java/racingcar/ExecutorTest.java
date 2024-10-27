@@ -18,7 +18,8 @@ class ExecutorTest extends NsTest {
     Parser parser = new Parser();
     Validator validator = new Validator();
     Racing racing = new Racing();
-    Executor executor = new Executor(ioController, parser, validator, racing);
+    Judge judge = new Judge();
+    Executor executor = new Executor(ioController, parser, validator, racing, judge);
 
     Car testCar1, testCar2, testCar3;
     List<Car> testCars;
@@ -29,15 +30,6 @@ class ExecutorTest extends NsTest {
         testCar2 = new Car("test2");
         testCar3 = new Car("test3");
         testCars = List.of(testCar1, testCar2, testCar3);
-    }
-
-    @Test
-    void 우승자_반환() {
-        testCar1.move();
-        assertThat(executor.getWinners(testCars)).isEqualTo(List.of(testCar1));
-
-        testCar2.move();
-        assertThat(executor.getWinners(testCars)).isEqualTo(List.of(testCar1, testCar2));
     }
 
     @Test
