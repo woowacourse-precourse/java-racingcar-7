@@ -9,11 +9,11 @@ import java.util.stream.IntStream;
 import static racingcar.exception.ErrorMessages.CAR_COUNT_ERROR_MESSAGE;
 import static racingcar.exception.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
 
-public class CarManager {
+public class RacingCarManager {
     private List<Car> cars;
     public static int MIN_CAR_COUNT = 2;
 
-    public CarManager(List<Car> cars) {
+    public RacingCarManager(List<Car> cars) {
         validateCars(cars);
         this.cars = cars;
     }
