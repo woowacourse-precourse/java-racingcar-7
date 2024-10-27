@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -24,6 +25,11 @@ public class Application {
         }
 
         for(Car car : cars) {
+            int randomNumber = Randoms.pickNumberInRange(0,9);
+            System.out.println(randomNumber);
+            if (randomNumber >= 4) {
+                car.move();
+            }
             System.out.println(car);
         }
         System.out.println(attempts);
