@@ -8,6 +8,8 @@ import java.util.List;
 public class Executor {
     private static final int NAME_LENGTH_LIMIT = 5;
     private static final int MOVE_STANDARD = 4;
+    private static final int startInclusive = 0;
+    private static final int endInclusive = 9;
 
     private long repeatCount;
     private List<Car> cars = new ArrayList<>();
@@ -58,7 +60,7 @@ public class Executor {
     }
 
     public void moveCar(Car car) {
-        int randomVal = Randoms.pickNumberInRange(0, 9);
+        int randomVal = Randoms.pickNumberInRange(startInclusive, endInclusive);
         if (MOVE_STANDARD <= randomVal) {
             car.move();
         }
