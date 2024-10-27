@@ -45,6 +45,9 @@ public class Car {
         if (carName.contains(" ")) {
             throw new IllegalArgumentException("공백을 포함하면 안됩니다.");
         }
+        if (cars.containsKey(carName)) {
+            throw new IllegalArgumentException("자동차 이름은 중복되면 안됩니다.");
+        }
     }
 
     private void validateTryNumber(String checkTryNumber) {

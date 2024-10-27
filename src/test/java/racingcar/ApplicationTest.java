@@ -77,6 +77,15 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("공백을 포함하면 안됩니다.");
     }
 
+    @Test
+    @DisplayName("자동차 이름이 중복될 경우")
+    void 자동차_이름_중복() {
+        assertThatThrownBy(() -> {
+            run("poby,woni,poby", "3");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 중복되면 안됩니다.");
+    }
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
