@@ -1,5 +1,6 @@
 package racingcar.racing;
 
+import static racingcar.config.RandomNumberConfig.getMoveStandNumber;
 import static racingcar.io.OutputUtil.println;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class RaceSimulator {
 
     private static void tryMoveCars(List<Car> cars) {
         for (Car car : cars) {
-            if (RandomNumberGenerator.getRandomNumber() >= 4) {
+            if (RandomNumberGenerator.getRandomNumber() >= getMoveStandNumber()) {
                 car.moveCar();
             }
         }
