@@ -28,4 +28,18 @@ public class Racing {
             displayRaceStatus();
         }
     }
+
+    private void displayRaceStatus() {
+        if (isFirstRound) {
+            System.out.println("실행 결과");
+            isFirstRound = false;
+        }
+
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
+
+
 }
