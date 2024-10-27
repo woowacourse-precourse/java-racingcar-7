@@ -11,6 +11,7 @@ public class CarNameValidator implements Validator {
         checkRestrictedLength(carName);
         checkEmptyCarName(carName);
     }
+
     private void checkRestrictedLength(String carName) {
         if (carName.length() > RESTRICTED_CAR_LENGTH) {
             throw new IllegalArgumentException(RESTRICTED_CAR_NAME_LENGTH_ERROR);
@@ -18,7 +19,7 @@ public class CarNameValidator implements Validator {
     }
 
     private void checkEmptyCarName(String carName) {
-        if (carName == null || carName.contains(" ")) {
+        if (carName == null || carName.contains(" ") || carName.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_CAR_NAME_ERROR);
         }
     }
