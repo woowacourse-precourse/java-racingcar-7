@@ -29,5 +29,20 @@ public class RaceGameServiceImpl implements RaceGameService{
         }
     }
 
+    @Override
+    public List<Car> findWinner(List<Car> cars) {
+        List<Car> winner = new ArrayList<>();
+        int maxMoveCount = cars.stream()
+                .mapToInt(Car::getMoveCount) // 각 Car의 moveCount를 가져옴
+                .max()
+                .orElse(0);
+        for (Car car : cars){
+            if(car.getMoveCount() == maxMoveCount){
+                winner.add(car);
+            }
+        }
+        return winner;
+    }
+
 
 }

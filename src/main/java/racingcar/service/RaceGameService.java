@@ -9,4 +9,6 @@ public interface RaceGameService {
     List<Car> enrollRacer(String racerNames, StringParser stringParser);
 
     void progressRound(List<Car> cars, Referee referee);
+
+    List<Car> findWinner(List<Car> cars);
 }

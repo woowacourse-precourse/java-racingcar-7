@@ -32,6 +32,10 @@ public class Car implements Raceable {
         return this.name;
     }
 
+    public int getMoveCount(){
+        return this.moveCount;
+    }
+
     private void validateNameLength(String name){
         if(name.length() > NAME_MAX_LEGNTH) {
             throw new IllegalArgumentException("이름은 5글자 이하만 가능합니다.");

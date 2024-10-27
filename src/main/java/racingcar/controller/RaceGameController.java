@@ -28,13 +28,16 @@ public class RaceGameController {
     public void run() {
         String racerNames = requestInputStringRacerName();
         List<Car> cars = raceGameService.enrollRacer(racerNames, new InputStringParser());
+
         final TrialCount trialCount = requestInputTrialCount();
         progressGame(trialCount.getAmount(), cars);
+
+        List<Car> winner = raceGameService.findWinner(cars);
     }
 
     private void progressGame(final int trialCount, List<Car> cars) {
         outputView.printRoundResultStart();
-        for (int i = 0; i < trialCount; i++){
+        for (int i = 0; i < trialCount; i++) {
             raceGameService.progressRound(cars, new Referee(new RandomNumberGenerator()));
             outputView.printRoundResultDetail(cars);
         }
@@ -45,7 +48,7 @@ public class RaceGameController {
         return inputView.read();
     }
 
-    private TrialCount requestInputTrialCount(){
+    private TrialCount requestInputTrialCount() {
         outputView.printAskInputTrialCount();
         return new TrialCount(inputView.read());
     }
