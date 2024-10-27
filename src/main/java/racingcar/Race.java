@@ -32,4 +32,11 @@ public class Race {
     public void show(String name, String distance) {
         System.out.println(name + " : " + distance);
     }
+
+    public void moveCar() {
+        for (Car car : carList) {
+            car.isMovable();
+            show(car.getName(), car.getDistance());
+        }
+    }
 }
