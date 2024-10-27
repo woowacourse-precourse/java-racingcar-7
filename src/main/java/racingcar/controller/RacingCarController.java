@@ -27,6 +27,9 @@ public class RacingCarController {
             inputView.printInputTryCountMessage();
             String tryCountInput = inputView.getInput();
             racingCarService.racingStart(tryCountInput);
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
+            throw e;
         } catch (Exception e) {
             outputView.printErrorMessage(e.getClass().toString() + Message.ERROR_SEPARATOR + e.getMessage());
             throw new IllegalArgumentException(ExceptionMessage.UNHANDLED_EXCEPTION_OCCURRED);
