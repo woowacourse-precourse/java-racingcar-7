@@ -1,5 +1,7 @@
 package racingcar.manager;
 
+import static racingcar.util.RandomNumberGenerator.generateRandomNumber;
+
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.entity.Car;
@@ -22,5 +24,11 @@ public class CarManager {
 
     public List<Car> getCarList() {
         return carList;
+    }
+
+    public void moveCars() {
+        for (Car car : carList) {
+            car.moveCar(generateRandomNumber());
+        }
     }
 }
