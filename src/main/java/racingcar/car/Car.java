@@ -3,10 +3,10 @@ package racingcar.car;
 public class Car {
 
     private final String name;
-    private final int location;
+    private int location;
 
-    public Car(String name, int location) {
+    public Car(String name) {
         this.name = name;
-        this.location = location;
+        this.location = 0;
     }
 }
