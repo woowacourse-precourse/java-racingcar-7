@@ -12,4 +12,12 @@ public class Racingcar {
     public void move() {
         this.distance++;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
 }

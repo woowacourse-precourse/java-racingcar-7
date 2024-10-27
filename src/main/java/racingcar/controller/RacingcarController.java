@@ -38,6 +38,7 @@ public class RacingcarController {
 
         for (int i = 0; i < count; i++) {
             racingcarService.startRaceByCount(racingcars);
+            output.printResultsByCount(racingcars);
         }
     }
 
