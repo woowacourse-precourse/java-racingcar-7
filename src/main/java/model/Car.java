@@ -1,15 +1,23 @@
 package model;
 
-import java.util.List;
+public class Car {
 
-public class MoveCount {
+    private int value = 0;
+    private final String name;
 
-    private List<Integer> MoveCount;
+    public Car(String name) {
+        this.name = name;
+    }
 
-    private final int VALUE = 0;
+    public String getName() {
+        return name;
+    }
 
-    public Integer sumMoveCount() {
-        return MoveCount.stream()
-                .reduce(VALUE, Integer::sum);
+    public int getValue() {
+        return value;
+    }
+
+    public void move(int distance) {
+        value += distance;
     }
 }
