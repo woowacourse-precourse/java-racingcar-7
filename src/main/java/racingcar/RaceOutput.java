@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,14 +19,23 @@ public class RaceOutput {
 
     private static void displayCarMovement(Car car, int attempt) {
         System.out.print(car.getName() + " : ");
-        String movementLog = getMovementLog(car, attempt);
-        System.out.println(movementLog);
+        System.out.println(getMovementLog(car, attempt));
     }
 
     private static String getMovementLog(Car car, int attempt) {
-        return car.getMovementLog(attempt).stream()
-                .map(status -> status == CarMovementState.MOVE ? "-" : "")
-                .collect(Collectors.joining());
+        List<String> movements = new ArrayList<>();
+
+        List<CarMovementState> movementStates = car.getMovementLog(attempt);
+
+        for (CarMovementState status : movementStates) {
+            if (status == CarMovementState.MOVE) {
+                movements.add("-");
+            } else {
+                movements.add("");
+            }
+        }
+
+        return String.join("", movements);
     }
 
     public static void displayWinners(List<Car> cars) {
