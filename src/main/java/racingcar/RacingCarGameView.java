@@ -9,8 +9,15 @@ public class RacingCarGameView {
         String participant = Console.readLine();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int time = Integer.parseInt(Console.readLine());
+        String time = Console.readLine();
 
         return new RacingGameInitializationRequest(participant, time);
+    }
+
+    public void racingGameCurrentSituationPrint (String racingResult, String winnerParticipants) {
+        System.out.println("실행결과");
+        System.out.println(racingResult);
+
+        System.out.println("최종 우승자 : " + winnerParticipants);
     }
 }
