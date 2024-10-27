@@ -1,18 +1,28 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Cars {
     private static final String CAR_NAME_DELIMITER = ",";
     private final List<Car> racingCars;
+    private final Set<String> uniqueCarNames;
 
     public Cars(String carNames) {
         racingCars = new ArrayList<>();
+        uniqueCarNames = new HashSet<>();
 
         for (String carName : carNames.split(CAR_NAME_DELIMITER)) {
+            validateNoDuplicateCarName(carName);
             racingCars.add(new Car(carName));
         }
+    }
+
+    private void validateNoDuplicateCarName(String carName) {
+        if (uniqueCarNames.contains(carName)) throw new IllegalArgumentException("차 이름이 중복됩니다.");
+        uniqueCarNames.add(carName);
     }
 
     public String racing() {
