@@ -4,15 +4,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         // 사용자 입력 받기
-        String carNames = Console.readLine();
-        int rounds = Integer.parseInt(Console.readLine());
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
 
-        //자동차 게임 시작
+        String carNames = inputView.getCarNames();
+        int rounds = inputView.getRounds();
+
         // 입력받은 이름 파싱
         String[] names = carNames.split(",");
         List<Car> cars = new ArrayList<>();
@@ -23,42 +27,25 @@ public class Application {
             }
             cars.add(new Car(name));
         }
-        // 실행
+
+        //자동차 게임 시작
         for (int i = 0; i < rounds; i++) {
             for (Car car : cars) {
                 car.move();
             }
-            printRoundResults(cars);
+            outputView.displayRoundResults(cars);
         }
         // 결과 출력
-        printWinners(cars);
+        outputView.displayWinners(getWinners(cars));
     }
-
-    // 차수별 실행결과 출력 함수
-    private static void printRoundResults(List<Car> cars) {
-        for (Car car : cars) {
-            String position = "-".repeat(car.getPosition());
-            System.out.println(car.getName() + " : " + position);
-        }
-        System.out.println();
-    }
-    // 결과 출력 함수
-    private static void printWinners(List<Car> cars) {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
-
+    private static List<String> getWinners(List<Car> cars) {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
                 winners.add(car.getName());
             }
         }
-        if (winners.size() == 1) {
-            System.out.println("최종 우승자 : " + winners.get(0));
-        } else {
-            System.out.println("최종 우승자 : " + String.join(", ", winners));
-        }
+        return winners;
     }
 }
