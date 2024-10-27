@@ -24,6 +24,9 @@ public class Application {
     private static List<String> getcarNames() {
         String input = getString();
         List<String> carNames = parseCarList(input);
+
+        RaceValidator.validateCarNamesLength(carNames);
+
         return carNames;
     }
 
