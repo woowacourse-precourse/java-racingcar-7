@@ -7,7 +7,6 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private final InputView inputView;
@@ -15,6 +14,7 @@ public class RacingCarGame {
     private final Number number;
     private final Cars cars;
     private String inputString;
+    private int tryCount;
 
     public RacingCarGame(InputView inputView, OutputView outputView, Number number, Cars cars) { //의존성 주입 다시 공부하기
         this.inputView = inputView;
@@ -22,27 +22,25 @@ public class RacingCarGame {
         this.number = number;
         this.cars = cars;
         this.inputString = "";
+        this.tryCount = 0;
     }
 
-    public void startRacingGame() {
+    public void initGame() {
         outputView.printStartMessage();
         this.inputString = inputView.getInput();
         outputView.printTryCountMessage();
-        int tryCount = Integer.parseInt(inputView.getInput());
-
+        this.tryCount = Integer.parseInt(inputView.getInput());
         cars.setCarList(inputString);
+    }
 
+    public void startRacingGame() {
         outputView.printResultMessage();
-        while (tryCount > 0) {
+        while (tryCount-- > 0) {
             playOneRound();
-            tryCount--;
         }
 
-        List<Car> winnerList = cars.getWinnerList();
-        List<String> winnerNameList = winnerList.stream()
-                .map(Car::getName)
-                .collect(Collectors.toList());
-        outputView.printWinner(winnerNameList); //car을 넘겨주지 않고 car의 이름을 넘겨주는게 맞는지
+        List<String> winnerList = cars.getWinnerList();
+        outputView.printWinner(winnerList); //car을 넘겨주면 안되기 떄문에 이렇게 따로 리스트를 만들었는데 다른 방법은 없는지, DTO??
     }
 
     private void playOneRound() {
