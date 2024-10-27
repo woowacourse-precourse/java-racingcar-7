@@ -1,6 +1,8 @@
 package racingcar.service;
 
 import java.util.List;
+import racingcar.exception.CustomException;
+import racingcar.exception.ErrorCode;
 
 public class StringHandler {
 
@@ -20,7 +22,7 @@ public class StringHandler {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new CustomException(ErrorCode.TRY_COUNT_NOT_NUMBER);
         }
     }
 }
