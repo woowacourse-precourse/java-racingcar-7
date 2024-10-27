@@ -12,10 +12,15 @@ public class RaceControllerFactory {
     public static RaceController createRaceController() {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
-        RaceSetupFacade initializer = new RaceSetupFacade(inputView, outputView);
+        RaceSetupFacade initializer = new RaceSetupFacade();
 
-        List<RacingCar> cars = initializer.initializeCars();
-        int attempts = initializer.initializeAttemptCount();
+        outputView.printCarNameInputPrompt();
+        List<String> carNames = inputView.readRacingCarNames().carNames();
+
+        outputView.printNumberOfAttemptCountMessage();
+        int attempts = inputView.readNumberOfAttemptCount().value();
+
+        List<RacingCar> cars = initializer.initializeCars(carNames);
 
         return new RaceController(
                 cars,
@@ -28,5 +33,3 @@ public class RaceControllerFactory {
         );
     }
 }
-
-
