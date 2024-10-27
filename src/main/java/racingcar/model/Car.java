@@ -39,7 +39,7 @@ public class Car {
 
         for (Map.Entry<String, Integer> entry : cars.entrySet()) {
             if (Objects.equals(entry.getValue(), maxDistance.get())) {
-                winnerCars.add(entry.getKey());  // 우승한 자동차 이름 추가
+                winnerCars.add(entry.getKey());
             }
         }
         return winnerCars;
