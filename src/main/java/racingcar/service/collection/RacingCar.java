@@ -2,18 +2,27 @@ package racingcar.service.collection;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import racingcar.Exception.ErrorMessage;
 
 public class RacingCar {
 
-    private final Map<String, Integer> racingCar = new HashMap<>();
+    private final Map<String, Long> racingCar = new HashMap<>();
 
-    RacingCar(String CarNames) {
+    public RacingCar(String CarNames) {
         String[] splitCarName = splitCarName(CarNames);
 
         for (String eachCarName : splitCarName) {
-            racingCar.put(eachCarName, 0);
+            racingCar.put(eachCarName, 0L);
         }
+    }
+
+    public Set<String> getAllRacingCarName() {
+        return racingCar.keySet();
+    }
+
+    public Long getRacingCarPosition(String carNames) {
+        return racingCar.get(carNames);
     }
 
     public void moveForward(String carName) {
