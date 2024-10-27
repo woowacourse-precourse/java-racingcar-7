@@ -2,6 +2,8 @@ package racingcar.Service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.Model.Car;
+import racingcar.View.InputView;
+import racingcar.View.OutputView;
 
 import java.util.ArrayList;
 
@@ -9,6 +11,7 @@ public class CarService {
     public void Racing_Car(ArrayList<Car> cars,int Count) {
         for(int i=0;i<Count;i++){
             Move(cars);
+            OutputView.Print_Race(cars);
         }
     }
     private int Generate_RandomValue(){

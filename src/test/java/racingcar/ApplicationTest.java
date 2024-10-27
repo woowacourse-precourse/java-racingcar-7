@@ -87,6 +87,7 @@ class ApplicationTest extends NsTest {
             InputView.Car_names();
         });
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
