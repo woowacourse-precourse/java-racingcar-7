@@ -12,9 +12,11 @@ public class Car {
         carList.add(this);
     }
 
-    ArrayList<String> move(){
-        if(RandomNumber.getRandomNum() >= 4){
-            moveList.add("-");
+    ArrayList<String> move(InputView inputView){
+        for (int i = 0; i < inputView.inputRounds() ; i++) {
+            if(RandomNumber.getRandomNum() >= 4){
+                moveList.add("-");
+            }
         }
         return moveList;
     }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class OutputView {
 
+
     void outputWinnerList(ArrayList<String> winnerList){
         System.out.print("최종 우승자 : ");
         System.out.print(winnerList.get(0));
