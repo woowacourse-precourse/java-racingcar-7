@@ -24,6 +24,14 @@ public class Cars {
         return Arrays.stream(names).map(Car::new).toList();
     }
 
+    public Cars move(MovementCommander movementCommander) {
+        return new Cars(moveAll(movementCommander));
+    }
+
+    private List<Car> moveAll(MovementCommander movementCommander) {
+        return this.cars.stream().map(car -> car.move(movementCommander)).toList();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
