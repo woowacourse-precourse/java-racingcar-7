@@ -36,4 +36,32 @@ class CarsTest {
         // then
         assertThat(cars.getCars().get(0).getLocation()).isEqualTo(0);
     }
+
+    @Test
+    void 경주가_끝난_후_가장_멀리_간_사람이_우승자이다() {
+        // given
+        TestNumberGenerator testNumberGenerator = new TestNumberGenerator(List.of(5, 5, 3, 5, 3, 3, 5, 3, 5));
+        Cars cars = new Cars("aa, bb, cc");
+        int count = 3;
+        // when
+        for (int i = 0; i < count; i++) {
+            cars.race(testNumberGenerator);
+        }
+        // then
+        assertThat(cars.findWinners()).isEqualTo(List.of(cars.getCars().get(0)));
+    }
+
+    @Test
+    void 우승자는_여러_명일_수_있다() {
+        // given
+        TestNumberGenerator testNumberGenerator = new TestNumberGenerator(List.of(5, 5, 3, 5, 5, 3, 5, 5, 5));
+        Cars cars = new Cars("aa, bb, cc");
+        int count = 3;
+        // when
+        for (int i = 0; i < count; i++) {
+            cars.race(testNumberGenerator);
+        }
+        // then
+        assertThat(cars.findWinners()).isEqualTo(List.of(cars.getCars().get(0), cars.getCars().get(1)));
+    }
 }

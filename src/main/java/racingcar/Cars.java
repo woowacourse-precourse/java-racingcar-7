@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -27,6 +28,27 @@ public class Cars {
             car.moveForward(generator.generate());
             car.printState();
         }
+    }
+
+
+    public List<Car> findWinners() {
+        int maxLocation = findMaxLocation();
+        List<Car> winners = this.cars
+                .stream()
+                .filter(car -> car.getLocation() == maxLocation)
+                .collect(Collectors.toList());
+
+        return winners;
+    }
+
+    private int findMaxLocation() {
+        int maxLocation = this.cars
+                .stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .getAsInt();
+
+        return maxLocation;
     }
 
     public List<Car> getCars() {
