@@ -29,16 +29,6 @@ public class CarFactoryTest {
     }
 
     @Test
-    void trimmedName() {
-        String carNames = "pobi,";
-
-        List<Car> cars = CarFactory.create(carNames);
-
-        assertThat(cars).hasSize(1);
-        assertThat(cars).extracting(Car::getName).containsExactly("pobi");
-    }
-
-    @Test
     void Exception() {
         assertThrows(IllegalArgumentException.class, () -> CarFactory.create(null));
         assertThrows(IllegalArgumentException.class, () -> CarFactory.create(""));

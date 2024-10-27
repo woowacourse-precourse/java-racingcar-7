@@ -44,9 +44,9 @@ public class RaceTest {
 
     @Test
     public void raceFlow() {
-        List<Car> cars = race.startRace();
+        List<Car> cars = race.start();
 
-        race.endRace(cars);
+        race.end(cars);
 
         assertEquals(3, cars.size(), "자동차 수는 3이어야 합니다.");
         assertTrue(cars.stream().anyMatch(car -> car.getName().equals("pobi")), "pobi가 포함되어야 합니다.");

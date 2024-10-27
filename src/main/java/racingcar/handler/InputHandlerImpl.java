@@ -9,24 +9,22 @@ import java.util.List;
 public class InputHandlerImpl implements InputHandler {
     public List<Car> carList() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNames = Console.readLine();
-        return CarFactory.create(carNames);
+        return CarFactory.create(Console.readLine());
     }
 
     public int tryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String input = Console.readLine();
-        validateInput(input);
-        return parseInteger(input);
+        return parseInteger(validateInput(Console.readLine()));
     }
 
-    private void validateInput(String input) {
+    private String validateInput(String input) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException("입력값은 null 또는 빈 문자열일 수 없습니다.");
         }
-        if (!input.matches("\\d+")) { // 숫자 형식 검증
+        if (!input.matches("\\d+")) {
             throw new IllegalArgumentException("유효한 정수가 아닙니다.");
         }
+        return input;
     }
 
     private int parseInteger(String input) {
