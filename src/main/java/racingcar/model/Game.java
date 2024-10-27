@@ -40,7 +40,7 @@ public class Game {
 
     public List<String> findWinners() {
         return cars.stream()
-                .filter(car -> car.getLocation() == findWinnerLocation())
+                .filter(car -> car.isSameLocation(findWinnerLocation()))
                 .map(Car::getName)
                 .toList();
     }
@@ -65,7 +65,7 @@ public class Game {
 
     public List<String> getStatus() {
         return cars.stream()
-                .map(Car::getStatus)
+                .map(Car::makeStatusResult)
                 .toList();
     }
 }

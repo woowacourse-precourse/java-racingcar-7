@@ -23,8 +23,12 @@ public class Car {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public String getStatus() {
+    public String makeStatusResult() {
         return name + " : " + "-".repeat(location);
+    }
+
+    public boolean isSameLocation(int winnerLocation) {
+        return location == winnerLocation;
     }
 
     public String getName() {
