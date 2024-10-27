@@ -22,6 +22,10 @@ public abstract class Car {
         return distance;
     }
 
+    public String getName(){
+        return name;
+    }
+
     public void addDistance() {
         this.distance++;
     }
