@@ -1,10 +1,6 @@
 # java-racingcar-precourse
 
-# 요구사항 분석 및 설계
-
 요구사항에 명시 되지 않은 부분은 🔺표시
-
----
 
 ## Input
 
