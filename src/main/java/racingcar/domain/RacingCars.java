@@ -37,6 +37,11 @@ public class RacingCars {
         for (RacingCar car : cars) {
             car.tryToAdvance();
         }
+        increaseCurrentAttempts();
         return getCars();
+    }
+
+    private void increaseCurrentAttempts() {
+        currentAttempts++;
     }
 }
