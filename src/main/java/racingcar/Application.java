@@ -25,12 +25,23 @@ public class Application {
         return carList;
     }
 
+    public static int inputTestCaseNum() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+        int testCase = Integer.parseInt(input);
+        return testCase;
+    }
+
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String text = inputText();
 
         List<Car> carList = new ArrayList<>();
         carList = createCarList(text);
+
+        int tc = inputTestCaseNum();
+
         
     }
 }
