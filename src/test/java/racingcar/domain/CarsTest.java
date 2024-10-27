@@ -17,7 +17,6 @@ class CarsTest {
                 .hasMessageContaining(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
     }
 
-
     @Test
     void 연속된_구분자_입력_예외() {
         assertThatThrownBy(() -> Cars.createCarList("pobi,,woni"))
@@ -31,6 +30,4 @@ class CarsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.EMPTY_CAR_NAME.getMessage());
     }
-
-
 }

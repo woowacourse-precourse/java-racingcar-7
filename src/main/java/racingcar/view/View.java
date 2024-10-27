@@ -3,18 +3,19 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.global.message.ErrorMessage;
+import racingcar.global.message.ViewMessage;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 
 public class View {
     public static String displayCarNameInputPrompt() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(ViewMessage.CAR_NAME_INPUT_PROMPT.getMessage());
         String carNamesInput = Console.readLine().trim();
         return carNamesInput;
     }
 
     public static int displayTryCountInputPrompt() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(ViewMessage.TRY_COUNT_INPUT_PROMPT.getMessage());
         String tryCountInput = Console.readLine().trim();
 
         try {
@@ -33,7 +34,7 @@ public class View {
     }
 
     public static void printlnRaceResult() {
-        System.out.println("\n실행 결과");
+        System.out.println(ViewMessage.RACE_RESULT_HEADER.getMessage());
     }
 
     public static void printMoveResult(Cars cars) {
@@ -52,7 +53,7 @@ public class View {
             appendCommaIfNeeded(winnerNames, i, winners.size());
         }
 
-        System.out.println("최종 우승자 : " + winnerNames.toString());
+        System.out.println(ViewMessage.FINAL_WINNER.getMessage() + winnerNames.toString());
     }
 
     private static void appendCommaIfNeeded(StringBuilder winnerNames, int index, int size) {

@@ -8,7 +8,6 @@ import racingcar.global.message.ErrorMessage;
 import racingcar.model.Car;
 
 class CarTest {
-
     @Test
     void 자동차_이름_길이_초과_예외() {
         assertThatThrownBy(() -> new Car("javajava"))
