@@ -76,7 +76,7 @@ public class TotalRoundsValidatorTest {
             //given
             final String validPositiveInteger = "1";
 
-            //when & theb
+            //when & then
             assertDoesNotThrow(() -> TotalRoundsValidator.validate(validPositiveInteger));
         }
 
