@@ -13,7 +13,9 @@ public class InputView {
 
     public static String Car_names(){
         System.out.println(INPUT_CAR_NAMES);
-        return Console.readLine();
+        String CarNames = Console.readLine();
+        CheckCarName(CarNames);
+        return CarNames;
     }
     public static int Game_count(){
         System.out.println(INPUT_GAME_COUNT);
@@ -23,5 +25,8 @@ public class InputView {
     }
     private static void CheckCount(int count){
         if(count<0) throw new IllegalArgumentException("Error: 실행 횟수는 음수가 아닌 양수여야합니다.");
+    }
+    private static void CheckCarName(String CarNames){
+        if(CarNames.length()>5) throw new IllegalArgumentException("Eroor: 자동차 이름은 5자 이하만 가능합니다.");
     }
 }
