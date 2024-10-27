@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,14 +21,15 @@ public class MessagePrinter {
 
     public String getSingleRoundResultMessage(List<String> carNames, int roundNum) {
         List<Map.Entry<String, String>> entry = mapBuilder.getSingleRoundResult(carNames, roundNum);
-        String singleRoundResultMessage = "";
+        List<String> singleRoundResultMessages = new ArrayList<>();
 
         for (int i = 0; i < entry.size(); i++) {
             String carName = entry.get(i).getKey();
             String line = entry.get(i).getValue();
-            singleRoundResultMessage = carName + " : " + line;
+            singleRoundResultMessages.add(carName + " : " + line);
         }
 
+        String singleRoundResultMessage = String.join("\n", singleRoundResultMessages);
         return singleRoundResultMessage;
     }
 
