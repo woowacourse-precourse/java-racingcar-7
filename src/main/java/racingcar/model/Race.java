@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.Util.Utils;
+import java.util.stream.IntStream;
 import racingcar.constants.NumberConstants;
 import racingcar.constants.RegexConstants;
 
@@ -29,8 +29,14 @@ public class Race {
         cars.forEach(car
                 -> roundResult.add(car.getName()
                 + " " + RegexConstants.COLON + " "
-                + Utils.getTotalMoveDistance(car.getMoveDistance())));
+                + getTotalMoveDistance(car.getMoveDistance())));
         return roundResult;
+    }
+
+    private StringBuilder getTotalMoveDistance(int moveDistance) {
+        StringBuilder total = new StringBuilder();
+        IntStream.range(0, moveDistance).forEach(i -> total.append("-"));
+        return total;
     }
 
     public List<Car> getCars() {

@@ -1,8 +1,7 @@
 package racingcar.view;
 
-import static racingcar.Util.Utils.splitNamesByComma;
-import static racingcar.validate.Validator.validateCarNames;
-import static racingcar.validate.Validator.validateRepeatCount;
+import static racingcar.validate.Validator.getValidatedCarNames;
+import static racingcar.validate.Validator.getValidatedRepeatCount;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -12,15 +11,13 @@ public class InputView {
     public static ArrayList<String> readCarNames() throws IllegalArgumentException {
         Message.INPUT_CAR_NAME.display();
         String carNames = Console.readLine();
-        validateCarNames(carNames);
-        return splitNamesByComma(carNames);
+        return getValidatedCarNames(carNames);
     }
 
-    public static int readRepeatCount() {
+    public static int readRepeatCount() throws IllegalArgumentException {
         Message.INPUT_REPEAT_COUNT.display();
         String repeatCount = Console.readLine();
-        validateRepeatCount(repeatCount);
-        return Integer.parseInt(repeatCount);
+        return getValidatedRepeatCount(repeatCount);
     }
 
     private enum Message {
