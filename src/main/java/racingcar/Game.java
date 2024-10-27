@@ -18,4 +18,8 @@ public class Game {
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
+
+    public Integer getRound() {
+        return round;
+    }
 }
