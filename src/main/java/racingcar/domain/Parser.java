@@ -20,7 +20,7 @@ public class Parser {
     }
 
     public int parseInt(String input) {
-        return inputValidator.checkInteger(input);
+        return inputValidator.checkValue(input);
     }
 
 }
