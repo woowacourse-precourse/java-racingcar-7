@@ -14,6 +14,8 @@ public class Application {
     static List<String> participantList = new ArrayList<>();
     static Map<String, Integer> participantScore = new HashMap<>();
 
+    static List<String> winners = new ArrayList<>();
+
     public static boolean isValidName(String name) {
 
         return true;
@@ -59,7 +61,23 @@ public class Application {
         }
     }
 
-    //주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
+    public static int getBestScore() {
+        int maxScore = 0;
+        for (final int score : participantScore.values()) {
+            maxScore = Math.max(maxScore, score);
+        }
+        return maxScore;
+    }
+
+    public static void calculateFinal() {
+        int maxScore = getBestScore();
+        for (final String name : participantList) {
+            if (maxScore == participantScore.get(name)) {
+                winners.add(name);
+            }
+        }
+    }
+
     //- 자동차 경주 게임을 완료한 후 누가 우승했는지를 출력한다.
     //    - 우승자는 여러 명일 수 있다.
     //    - 우승자가 여러 명일 경우, 쉼표를 이용하여 구분한다.
@@ -72,7 +90,7 @@ public class Application {
             System.out.println();
             playNumber--;
         }
-
+        calculateFinal();
     }
 
     public static void main(String[] args) {
