@@ -10,15 +10,18 @@ import java.util.stream.Collectors;
 
 public class Race {
     public void runRace() {
-        String racingCarsName = inputCarName(); // 자동차 이름 문자열을 입력받는다.
-        int raceRound = inputRaceRound(); // 자동차 race round를 입력받는다.
+        String racingCarsName = inputCarName();
+        validateCarEmpty(racingCarsName);
 
-        List<Car> racingCars = createCarClassList(racingCarsName); // Car클래스 리스트를 생성한다.
+        int raceRound = inputRaceRound();
+        validateRaceRound(raceRound);
 
-        startRaceRound(racingCars, raceRound); // race round를 진행한다.
+        List<Car> racingCars = createCarClassList(racingCarsName);
 
-        int maxScore = findMaxScore(racingCars); // 가장 높은 score를 확인한다.
-        printWinner(racingCars, maxScore); // 우승자를 출력한다.
+        startRaceRound(racingCars, raceRound);
+
+        int maxScore = findMaxScore(racingCars);
+        printWinner(racingCars, maxScore);
     }
 
     public String inputCarName() {
@@ -36,16 +39,10 @@ public class Race {
 
         List<Car> racingCars = new ArrayList<>();
         for (String name : carsList) {
-            validate(name);  // 자동차 이름에 대한 유효성을 검사한다.
+            validateNameLength(name);
             racingCars.add(new Car(name));
         }
         return racingCars;
-    }
-
-    public void validate(String name) {
-        if (name.length() > 5 ) {
-            throw new IllegalArgumentException("wrong input");
-        }
     }
 
     public void startRaceRound(List<Car> racingCars, int raceRound) {
@@ -85,5 +82,23 @@ public class Race {
                 .collect(Collectors.toList());
 
         System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    public void validateCarEmpty(String str) {
+        if (str == null || str.isEmpty()) {
+            throw new IllegalArgumentException("input nothing");
+        }
+    }
+
+    public void validateRaceRound(Integer num) {
+        if (num <= 0) {
+            throw new IllegalArgumentException("wrong input");
+        }
+    }
+
+    public void validateNameLength(String name) {
+        if (name.length() > 5 ) {
+            throw new IllegalArgumentException("wrong input");
+        }
     }
 }
