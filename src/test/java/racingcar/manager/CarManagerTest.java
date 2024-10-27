@@ -18,8 +18,7 @@ class CarManagerTest {
     @Test
     void 경주_자동차_리스트_생성() {
         String[] carNames = {"car1", "car2", "car3"};
-        carManager.setParticipateCars(carNames);
-        List<Car> carList = carManager.getCarList();
+        List<Car> carList = carManager.carNamesToCarList(carNames);
 
         assertThat(carList).isNotEmpty();
         for (int i = 0; i < carList.size(); i++) {

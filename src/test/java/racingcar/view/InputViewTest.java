@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.Console.close;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static racingcar.config.GameConstant.CAR_NAME_DELIMITER;
-import static racingcar.config.GameErrorMessage.EMPTY_NAME_MESSAGE;
+import static racingcar.validator.CarNameValidator.EMPTY_NAME_MESSAGE;
 import static racingcar.view.InputView.getCarNames;
 
 import java.io.ByteArrayInputStream;

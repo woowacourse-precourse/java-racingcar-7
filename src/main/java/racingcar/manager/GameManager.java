@@ -53,21 +53,25 @@ public class GameManager {
         return winnerString.toString();
     }
 
+    private void simulate(int attempts, List<Car> carList) {
+        for (int i = 0; i < attempts; i++) {
+            carManager.moveCars(carList);
+            printCarPosition(carList);
+        }
+    }
+
     public void gameStart() {
         printGameStartMessage();
         String[] carNames = getCarNames();
-        carManager.setParticipateCars(carNames);
+        List<Car> carList = carManager.carNamesToCarList(carNames);
 
         printRequestAttemptMessage();
         int attempts = getAttempts();
 
         printRacingResultMessage();
-        for (int i = 0; i < attempts; i++) {
-            carManager.moveCars();
-            printCarPosition(carManager.getCarList());
-        }
+        simulate(attempts, carList);
 
-        List<Car> winners = judgeWinner(carManager.getCarList());
+        List<Car> winners = judgeWinner(carList);
         String winnerMessage = getWinnerMessage(winners);
         printWinnerMessage(winnerMessage);
     }
