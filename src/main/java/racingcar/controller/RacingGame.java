@@ -21,6 +21,7 @@ public class RacingGame{
     }
 
     public void play() {
+
         System.out.println("실행 결과");
 
         for (int count = 0; count < racingCount; count++) {

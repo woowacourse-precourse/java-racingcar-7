@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import java.util.InputMismatchException;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView{
@@ -11,7 +9,7 @@ public class InputView{
         return readLine();
     }
 
-    public static String getRacingCount(){
+    public static String getRacingCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return readLine();
     }

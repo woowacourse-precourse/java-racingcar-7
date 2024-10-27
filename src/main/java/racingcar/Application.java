@@ -8,7 +8,7 @@ import racingcar.view.InputView;
 
 import static racingcar.domain.ValueExtractor.getDelimitedValue;
 
-public class Application {
+public class Application{
     public static void main(String[] args) {
 
         // 1. 자동차 이름 입력받고 검증하기
@@ -27,6 +27,5 @@ public class Application {
         RacingGame racingGame = new RacingGame(delimitedValue, numericValue);
         racingGame.play();
 
-        // 4. 결과값 출력
     }
 }

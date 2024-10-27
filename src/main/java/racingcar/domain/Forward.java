@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.validator.NumberValidator;
 
 public class Forward{
+
     public static void move(int[] forwardDistance) {
 
         for (int index = 0; index < forwardDistance.length; index++) {
