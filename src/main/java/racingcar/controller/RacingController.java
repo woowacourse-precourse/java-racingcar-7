@@ -25,8 +25,7 @@ public class RacingController {
     }
 
     private Integer validate(String totalRacingRound) {
-        TotalRacingRoundException.racingRoundTypeException(totalRacingRound);
-        Integer racingRound = Integer.parseInt(totalRacingRound);
+        Integer racingRound = TotalRacingRoundException.changeRoundTypeException(totalRacingRound);
         TotalRacingRoundException.racingRoundNumberRangeException(racingRound);
         return racingRound;
     }
