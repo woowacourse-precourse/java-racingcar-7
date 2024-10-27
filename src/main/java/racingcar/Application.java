@@ -26,6 +26,9 @@ public class Application {
             printCurrentStatus(cars);
         }
 
+        List<String> winners = getWinner(cars);
+        System.out.println("최종 우승자 : " + String.join(",", winners));
+
     }
 
     public static List<Car> getCars(String names){
