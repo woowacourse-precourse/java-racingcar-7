@@ -1,18 +1,17 @@
 package racingcar.view.output.service.impl;
 
+import racingcar.racingcar.service.racing.dto.RacingResult;
 import racingcar.view.output.service.ResultOutputService;
 
-import java.util.stream.Stream;
-
-public class ResultOutputView implements ResultOutputService {
+public class ResultOutputViewProcess implements ResultOutputService {
     @Override
-    public void executionResults(Stream<String> executionResult) {
+    public void executionResults(RacingResult racingResult) {
         System.out.println("실행 결과");
-        executionResult.forEach(System.out::println);
+        System.out.print(racingResult);
     }
 
     @Override
-    public void winningCarsInfo(String winningCars) {
+    public void winningCarsStatistic(String winningCars) {
         System.out.printf("최종 우승자 : %s", winningCars);
     }
 }
