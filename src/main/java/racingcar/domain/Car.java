@@ -9,8 +9,8 @@ public class Car {
 		this.distance = distance;
 	}
 
-	public void move(boolean isMovable) {
-		if (isMovable) {
+	public void move(int randomNumber) {
+		if (isMovable(randomNumber)) {
 			distance += 1;
 		}
 	}
