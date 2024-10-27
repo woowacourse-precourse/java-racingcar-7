@@ -6,6 +6,7 @@ import java.util.Map;
 public class RacingGame {
     final static String RACING_RESULT_LINE = " : ";
     final static String RACING_RESULT_FORWARD = "-";
+    final static Integer MINIMUM_NUMBER_FORWARD = 3;
     private String[] carNames;
 
     CarNameValidator carNameValidator;
@@ -40,7 +41,7 @@ public class RacingGame {
 
     private void isCarMove() {
         for (Map.Entry<String, Integer> entry : groupedCars.entrySet()) {
-            if (RandomNumbersPicker.pickRandomNumbers() > 3 ) {
+            if (RandomNumbersPicker.pickRandomNumbers() > MINIMUM_NUMBER_FORWARD ) {
                 groupedCars.put(entry.getKey(), entry.getValue()+1);
             }
             System.out.println(entry.getKey()+ RACING_RESULT_LINE + RACING_RESULT_FORWARD.repeat(entry.getValue()));

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class CarNameValidator {
+    final static String CAR_NAME_SEPARATOR = ",";
     final private InputController inputController;
 
     public CarNameValidator(InputController inputController) {
@@ -19,7 +20,7 @@ public class CarNameValidator {
 
 
     public String[] separateCarNames() {
-        return inputController.printCarNamesInput().split(",");
+        return inputController.printCarNamesInput().split(CAR_NAME_SEPARATOR);
     }
 
     public void checkLengthCarNames(String[] cars) {

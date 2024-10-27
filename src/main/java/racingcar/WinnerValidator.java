@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class WinnerValidator {
+    final static String OUTPUT_MESSAGE = "최종 우승자 : ";
     Integer winnersNumber;
     LinkedHashMap<String,Integer> cars = new LinkedHashMap<>();
     RacingGame racingGame;
@@ -15,7 +16,6 @@ public class WinnerValidator {
 
     public ArrayList<String> findRacingWinners() {
         ArrayList<String> winnersCars = new ArrayList<>();
-
         cars = racingGame.getCarNumber();
         winnersNumber = cars.values().stream().max(Integer::compare).orElse(0);
 
@@ -32,6 +32,6 @@ public class WinnerValidator {
         System.out.println(String.join(", ", cars));
     }
     public void output() {
-        System.out.print("최종 우승자 : ");
+        System.out.print(OUTPUT_MESSAGE);
     }
 }
