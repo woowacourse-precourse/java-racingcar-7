@@ -12,7 +12,7 @@ public class InputView {
         this.inputParser = new InputParser();
     }
 
-    public List<String> getValidatedCarNames() {
+    public List<String> getCarNames() {
         try {
             String input = Console.readLine();
             List<String> parsedCarNames = inputParser.parseCarNames(input);
@@ -20,7 +20,7 @@ public class InputView {
             return parsedCarNames;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return getValidatedCarNames();
+            return getCarNames();
         }
     }
 }

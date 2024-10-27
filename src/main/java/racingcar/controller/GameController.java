@@ -20,7 +20,7 @@ public class GameController {
 
     private Cars setCars() {
         printGameStart();
-        List<String> carNames = inputView.getValidatedCarNames();
+        List<String> carNames = inputView.getCarNames();
         List<Car> carList = carNames.stream()
                 .map(Car::of)
                 .toList();
