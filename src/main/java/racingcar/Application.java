@@ -2,11 +2,9 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        InputHandler inputHandler = new InputHandler();
-        Participants participants = new Participants(inputHandler.getInput());
-        int raceTimes = Integer.parseInt(inputHandler.getInput());
+        Participants participants = new Participants(InputHandler.getNameOfCars());
+        int raceTimes = InputHandler.getRaceTimes();
         participants.raceManyTimes(raceTimes);
         participants.printWinner();
     }
-
 }

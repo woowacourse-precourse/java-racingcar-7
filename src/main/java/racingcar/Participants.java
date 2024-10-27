@@ -1,5 +1,8 @@
 package racingcar;
 
+import static racingcar.OutputHandler.changeLine;
+import static racingcar.OutputHandler.printFinalWinner;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,7 +43,12 @@ public class Participants {
     }
 
     public void printWinner() {
-        List<String> winnerList = getMaxCount().map(
+        List<String> winnerList = findWinner();
+        printFinalWinner(winnerList);
+    }
+
+    private List<String> findWinner() {
+        return getMaxCount().map(
                         maxMoveValue -> participantList
                                 .stream()
                                 .filter(value -> value
@@ -49,7 +57,6 @@ public class Participants {
                                 .toList())
                 .orElse(Collections
                         .emptyList());
-        System.out.println("최종 우승자 : " + String.join(",", winnerList));
     }
 
 
@@ -69,6 +76,7 @@ public class Participants {
         for (Participant participant : participantList) {
             participant.printStatus();
         }
-        System.out.println();
+        changeLine();
     }
+
 }

@@ -13,10 +13,9 @@ class InputHandlerTest {
     void getInput() {
         String given = "pobi,woni,jun";
         String expected = "pobi,woni,jun";
-        InputHandler inputHandler = new InputHandler();
         System.setIn(new ByteArrayInputStream(given.getBytes()));
 
-        String result = inputHandler.getInput();
+        String result = InputHandler.getNameOfCars();
 
         assertEquals(expected, result);
     }

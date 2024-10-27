@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.OutputHandler.printMoveCountAndName;
+
 public class Participant {
     private static final int MAX_NAME_LENGTH = 5;
     private static final int MOVE_STANDARD = 4;
@@ -31,16 +33,12 @@ public class Participant {
         if (count >= MOVE_STANDARD) {
             this.moveCount++;
         }
-
     }
 
     public void printStatus() {
-        System.out.print(this.name + " : ");
-        for (int i = 0; i < this.moveCount; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
+        printMoveCountAndName(name, moveCount);
     }
+
 
     public int getMoveCount() {
         return this.moveCount;
