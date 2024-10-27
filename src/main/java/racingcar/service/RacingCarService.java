@@ -11,6 +11,7 @@ public class RacingCarService implements CarService {
     private static final RacingCarService instance = new RacingCarService();
 
     public static RacingCarService getInstance() {
+
         return instance;
     }
 
@@ -19,11 +20,13 @@ public class RacingCarService implements CarService {
 
     @Override
     public void register(Car car) {
+
         carRepository.save(car);
     }
 
     @Override
     public List<Car> getAllCars() {
+
         return carRepository.findAll();
     }
 }

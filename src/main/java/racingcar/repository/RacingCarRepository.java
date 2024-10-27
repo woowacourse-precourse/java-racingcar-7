@@ -12,6 +12,7 @@ public class RacingCarRepository implements CarRepository {
     private static final RacingCarRepository instance = new RacingCarRepository();
 
     public static RacingCarRepository getInstance() {
+
         return instance;
     }
 
@@ -20,16 +21,19 @@ public class RacingCarRepository implements CarRepository {
 
     @Override
     public void save(Car car) {
+
         repository.put(car.getName(), car);
     }
 
     @Override
     public List<Car> findAll() {
+
         return new ArrayList<>(repository.values());
     }
 
     @Override
     public void clear() {
+
         repository.clear();
     }
 }

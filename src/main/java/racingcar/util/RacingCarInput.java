@@ -26,9 +26,11 @@ public class RacingCarInput {
 
         System.out.println("시도할 횟수");
         String tryCount = Console.readLine();
+
         if (!TryCountValidator.isPositiveNumber(tryCount)) {
             throw new IllegalArgumentException("시도 횟수는 양의 정수여야 합니다.");
         }
+
         return Integer.parseInt(tryCount);
     }
 }
