@@ -14,7 +14,6 @@ public class InputReader {
     }
 
     public String inputRacingCarNames() {
-
         outputWriter.printCarNamesInputMessage();
         String racingCarNames = Console.readLine().trim();
 
@@ -24,7 +23,6 @@ public class InputReader {
     }
 
     public Integer inputRacingCount() {
-
         outputWriter.printRaceCountInputMessage();
         String racingCount = Console.readLine().trim();
 

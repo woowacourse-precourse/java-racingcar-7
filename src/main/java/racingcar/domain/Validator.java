@@ -40,6 +40,7 @@ public class Validator {
 
     public void validateDuplicateRacingCarNames(List<String> racingCarNamesList) {
         Set<String> racingCarNameSet = new HashSet<>();
+
         for (String racingCarName : racingCarNamesList) {
             validateDuplicateName(racingCarNameSet, racingCarName);
         }

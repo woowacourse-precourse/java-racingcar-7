@@ -8,7 +8,6 @@ import racingcar.view.OutputWriter;
 
 public class Application {
     public static void main(String[] args) {
-
         Validator validator = new Validator();
         OutputWriter outputWriter = new OutputWriter();
         Racing racing = new Racing(validator, outputWriter);
