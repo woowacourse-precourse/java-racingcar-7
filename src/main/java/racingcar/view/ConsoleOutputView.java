@@ -3,10 +3,10 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.model.position.Positions;
+import racingcar.util.StringRepeater;
 
 public class ConsoleOutputView implements OutputView {
 
-    private static final String HYPHEN = "-";
     public static final String COLON = " : ";
 
     @Override
@@ -25,9 +25,10 @@ public class ConsoleOutputView implements OutputView {
     }
 
     @Override
-    public void showCarPosition(final List<String> names, final Positions positions) {
+    public void showCarPosition(final List<String> names, final Positions positions,
+                                final StringRepeater stringRepeater) {
         IntStream.range(0, names.size())
-                .mapToObj(number -> names.get(number) + COLON + repeatHyphen(positions.longValue(number)))
+                .mapToObj(number -> names.get(number) + COLON + stringRepeater.repeat(positions.longValue(number)))
                 .forEach(System.out::println);
         System.out.println();
     }
@@ -35,19 +36,5 @@ public class ConsoleOutputView implements OutputView {
     @Override
     public void showWinners(final String winners) {
         System.out.println("최종 우승자 : " + winners);
-    }
-
-    private String repeatHyphen(long count) {
-        if (count < 0) {
-            throw new IllegalArgumentException("count is negative: " + count);
-        }
-        if (count == 1) {
-            return HYPHEN;
-        }
-        StringBuilder repeatedValue = new StringBuilder();
-        for (long i = 0; i < count; i++) {
-            repeatedValue.append(HYPHEN);
-        }
-        return repeatedValue.toString();
     }
 }

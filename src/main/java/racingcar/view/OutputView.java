@@ -2,6 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.model.position.Positions;
+import racingcar.util.StringRepeater;
 
 public interface OutputView {
     void showCommentForCarNames();
@@ -10,7 +11,7 @@ public interface OutputView {
 
     void showCommentForResult();
 
-    void showCarPosition(List<String> names, Positions positions);
+    void showCarPosition(List<String> names, Positions positions, StringRepeater stringRepeater);
 
     void showWinners(String winners);
 }

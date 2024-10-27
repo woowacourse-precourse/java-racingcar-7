@@ -9,6 +9,7 @@ import racingcar.model.car.Cars;
 import racingcar.model.position.History;
 import racingcar.model.position.Positions;
 import racingcar.strategy.MovingStrategy;
+import racingcar.util.StringRepeater;
 import racingcar.util.splitter.Splitter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -19,14 +20,16 @@ public class RacingCarController {
     private final OutputView outputView;
     private final Splitter splitter;
     private final MovingStrategy movingStrategy;
+    private final StringRepeater stringRepeater;
 
-    public RacingCarController(final InputView inputView, final OutputView outputView,
-                               final Splitter splitter,
-                               final MovingStrategy movingStrategy) {
+    public RacingCarController(final InputView inputView, final OutputView outputView, final Splitter splitter,
+                               final MovingStrategy movingStrategy,
+                               final StringRepeater stringRepeater) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.splitter = splitter;
         this.movingStrategy = movingStrategy;
+        this.stringRepeater = stringRepeater;
     }
 
     public void process() {
@@ -35,7 +38,7 @@ public class RacingCarController {
         Attempt attempt = readAttempt(outputView, inputView);
 
         RacingCar racingCar = new RacingCar(cars, attempt);
-        showRacingResult(outputView, racingCar);
+        showRacingResult(outputView, racingCar, stringRepeater);
         showWinners(racingCar);
     }
 
@@ -66,13 +69,14 @@ public class RacingCarController {
         }
     }
 
-    private void showRacingResult(OutputView outputView, final RacingCar racingCar) {
+    private void showRacingResult(OutputView outputView, final RacingCar racingCar,
+                                  final StringRepeater stringRepeater) {
         outputView.showCommentForResult();
         racingCar.start();
         Cars cars = racingCar.getCars();
         History history = racingCar.getHistory();
         for (Positions positions : history.values()) {
-            outputView.showCarPosition(cars.names(), positions);
+            outputView.showCarPosition(cars.names(), positions, stringRepeater);
         }
     }
 
