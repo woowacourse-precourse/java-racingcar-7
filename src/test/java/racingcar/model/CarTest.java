@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.CarException;
 
 class CarTest {
@@ -87,4 +89,23 @@ class CarTest {
         //then
         assertThat(car.getPosition()).isEqualTo(0);
     }
+
+    @ParameterizedTest(name = "차량 진행상황 반환 테스트 - position이 {0}일 경우")
+    @DisplayName("차량 진행상황 반환 테스트 - position이 n일 경우")
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5})
+    void getPositionInfoTestWhenPositionIsN(int position) {
+        //given
+        final String carName = "car";
+        final Car car = new Car(carName);
+        for (int i = 0; i < position; i++) {
+            car.move(4);
+        }
+
+        //when
+        final String positionInfo = car.getPositionInfo();
+
+        //then
+        assertThat(positionInfo).isEqualTo("car : " + "-".repeat(position));
+    }
+
 }
