@@ -1,7 +1,11 @@
-package racingcar;
+package racingcar.controller;
 
 
 import java.util.ArrayList;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+import racingcar.model.Car;
+import racingcar.model.Judge;
 
 public class RoundController {
     private final InputView inputView;
@@ -12,7 +16,7 @@ public class RoundController {
         this.outputView = outputView;
     }
 
-    void gameStart(){
+    public void gameStart(){
         ArrayList<String> carNameList = InputHandler.handleCarNames(inputView);
         Judge judge = new Judge();
         int roundNumber = inputView.inputRounds();

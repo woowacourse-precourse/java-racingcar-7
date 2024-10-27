@@ -1,8 +1,9 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import racingcar.view.InputView;
 
 public class InputHandler {
     private static ArrayList<String> carNameList;

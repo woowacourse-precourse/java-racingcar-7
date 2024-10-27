@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ public class Judge {
     private static ArrayList<String> winnerList = new ArrayList<>();
     private static int maxMoveLength;
 
-    int judgeMaxLength(ArrayList<Car> carList){
+    public int judgeMaxLength(ArrayList<Car> carList){
         for (Car car : carList) {
             if (car.getMoveList().size() > maxMoveLength) {
                 maxMoveLength = car.getMoveList().size();
@@ -15,7 +15,7 @@ public class Judge {
         return maxMoveLength;
     }
 
-    ArrayList<String> judgeWinner (ArrayList<Car> carList){
+    public ArrayList<String> judgeWinner(ArrayList<Car> carList){
         for (Car car : carList) {
             if (car.getMoveList().size() == maxMoveLength) {
                 winnerList.add(car.getName());

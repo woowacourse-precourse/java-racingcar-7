@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ public class Car {
         carList.add(this);
     }
 
-    ArrayList<String> move(int roundNumber){
+    public ArrayList<String> move(int roundNumber){
         for (int i = 0; i < roundNumber ; i++) {
             RandomNumber.randomNumber();
             if(RandomNumber.getRandomNum() >= 4){
