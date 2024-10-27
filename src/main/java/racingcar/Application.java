@@ -74,6 +74,19 @@ public class Application {
 
 	}
 
+	private static String findFinalWinners(int max, String[] count, String[] carName) {
+		String finalWinner = "최종 우승자 : ";
+		for (int i = 0; i < count.length; i++) {
+			if (max == count[i].length())
+				finalWinner += carName[i] + ", ";
+
+		}
+		if (finalWinner.endsWith(", ")) {
+			finalWinner = finalWinner.substring(0, finalWinner.length() - 2);
+		}
+		return finalWinner;
+
+	}
 
 
 
