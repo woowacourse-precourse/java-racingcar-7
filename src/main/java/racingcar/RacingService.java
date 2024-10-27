@@ -7,62 +7,63 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class RacingService {
-    private final LinkedHashMap<String, Integer> CAR_MAP = new LinkedHashMap<>();
-    private final String CAR_INPUT_DELIMITER = ",";
-    private final int MOVE_COUNT;
-    private final int INITIAL_POSITION = 0;
-    private final int FORWARD_STEP = 1;
-    private final int STOP_STEP = 0;
-    private final LinkedList<LinkedHashMap<String, Integer>> TURN_RESULTS = new LinkedList<>();
-    public int executionCount = 0;
+    private final LinkedHashMap<String, Integer> carPositions = new LinkedHashMap<>();
+    private static final String CAR_INPUT_DELIMITER = ",";
+    private static final int INITIAL_POSITION = 0;
+    private static final int RANDOM_MIN = 0;
+    private static final int RANDOM_MAX = 9;
+    private static final int MOVE_THRESHOLD = 4;
+    private static final int MOVE_STEP = 1;
+    private static final int STOP_STEP = 0;
 
-    public RacingService(String carNameInput, String moveCountInput) {
-        initializeCarMapFromInput(carNameInput);
-        Exception.validateIsNumber(moveCountInput);
-        this.MOVE_COUNT = Integer.parseInt(moveCountInput);
+    private final LinkedList<LinkedHashMap<String, Integer>> raceResult = new LinkedList<>();
+    private final int maxTurn;
+    public int currentTurn = 0;
+
+    public RacingService(String carNameInput, String maxTurnInput) {
+        initializeCars(carNameInput);
+        Validator.validateMaxTurn(maxTurnInput);
+        this.maxTurn = Integer.parseInt(maxTurnInput);
     }
 
-    public void setCarNameInput(String carNameInput) {
-        CAR_MAP.clear();
-        initializeCarMapFromInput(carNameInput);
-    }
-
-    public LinkedHashMap<String, Integer> getCarMap() {
-        return CAR_MAP;
-    }
-
-    private void initializeCarMapFromInput(String carNameInput) {
+    private void initializeCars(String carNameInput) {
         for (String carName : carNameInput.split(CAR_INPUT_DELIMITER, -1)) {
-            Exception.validateNotNull(carName);
-            Exception.validateLength(carName);
-            Exception.validateUnique(getCarMap(), carName);
-            CAR_MAP.put(carName, INITIAL_POSITION);
+            Validator.validateCarName(carPositions, carName);
+            carPositions.put(carName, INITIAL_POSITION);
         }
     }
 
-    public int createRandomValue() {
-        return Randoms.pickNumberInRange(0, 9);
+    public void setCarNameInput(String carNameInput) {
+        carPositions.clear();
+        initializeCars(carNameInput);
     }
 
-    public int decideMovement(int randomValue) {
-        if (randomValue >= 4) {
-            return FORWARD_STEP;
+    public LinkedHashMap<String, Integer> getCarPositions() {
+        return new LinkedHashMap<>(carPositions);
+    }
+
+    public int createRandomValue() {
+        return Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
+    }
+
+    public int calculateMoveDistance(int randomValue) {
+        if (randomValue >= MOVE_THRESHOLD) {
+            return MOVE_STEP;
         }
         return STOP_STEP;
     }
 
-    public void updateMovement(String carName, int randomValue) {
-        int movement = decideMovement(randomValue);
-        int carPosition = CAR_MAP.get(carName);
-        CAR_MAP.replace(carName, carPosition + movement);
+    public void moveCar(String carName, int randomValue) {
+        int moveDistance = calculateMoveDistance(randomValue);
+        carPositions.put(carName, carPositions.get(carName) + moveDistance);
     }
 
     public String[] getWinners() {
-        int maxPosition = getMaxPosition();
+        int maxDistance = getMaxPosition();
 
         LinkedList<String> winners = new LinkedList<>();
-        for (Map.Entry<String, Integer> entry : CAR_MAP.entrySet()) {
-            if (entry.getValue() == maxPosition) {
+        for (Map.Entry<String, Integer> entry : carPositions.entrySet()) {
+            if (entry.getValue() == maxDistance) {
                 winners.add(entry.getKey());
             }
         }
@@ -72,7 +73,7 @@ public class RacingService {
     private int getMaxPosition() {
         int maxPosition = INITIAL_POSITION;
 
-        for (Integer curPosition : CAR_MAP.values()) {
+        for (Integer curPosition : carPositions.values()) {
             if (curPosition > maxPosition) {
                 maxPosition = curPosition;
             }
@@ -81,21 +82,21 @@ public class RacingService {
     }
 
     private LinkedHashMap<String, Integer> executeTurn() {
-        for (Map.Entry<String, Integer> entry : CAR_MAP.entrySet()) {
+        for (String carName : carPositions.keySet()) {
             int randomValue = createRandomValue();
-            updateMovement(entry.getKey(), randomValue);
+            moveCar(carName, randomValue);
         }
-        return new LinkedHashMap<>(CAR_MAP);
+        return new LinkedHashMap<>(carPositions);
     }
 
-    public void startRaceGame() {
-        while (executionCount < MOVE_COUNT) {
-            TURN_RESULTS.add(executeTurn());
-            executionCount++;
+    public void startRace() {
+        while (currentTurn < maxTurn) {
+            raceResult.add(executeTurn());
+            currentTurn++;
         }
     }
 
-    public LinkedList<LinkedHashMap<String, Integer>> getTurnResult() {
-        return TURN_RESULTS;
+    public LinkedList<LinkedHashMap<String, Integer>> getRaceResult() {
+        return new LinkedList<>(raceResult);
     }
 }
