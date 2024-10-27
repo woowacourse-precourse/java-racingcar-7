@@ -28,18 +28,15 @@ public class RacingCarService {
     }
 
     private List<RacingCar> convertRacingCarListFromNameList(List<String> carNameList){
-        List<RacingCar> carList = new ArrayList<>();
-
-        for (String s : carNameList) {
-            carList.add(new RacingCar(s,""));
-        }
-        return carList;
+        return carNameList.stream().
+                map(name -> new RacingCar(name, ""))
+                .toList();
     }
 
 
     public void increasingCurrentMovingPoint(RacingCar racingCar, int randomNum) {
         if (moveOrStop(randomNum)) {
-            racingCar.currentMovingPoint += "-";
+            racingCar.plusCurrentMovingPoint();
         }
     }
 }

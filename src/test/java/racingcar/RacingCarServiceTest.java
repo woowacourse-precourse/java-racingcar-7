@@ -36,7 +36,7 @@ public class RacingCarServiceTest {
         List<RacingCar> resultList = racingCarService.getCarListFromInput(input);
         Set<String> resultSet = new HashSet<>();
         for (RacingCar car : resultList) {
-            resultSet.add(car.name);
+            resultSet.add(car.getName());
         }
         Set<String> expectSet = new HashSet<>();
         expectSet.add("qw");
@@ -51,8 +51,8 @@ public class RacingCarServiceTest {
         int input = 6;
         RacingCar racingCar = new RacingCar("pobi", "");
         racingCarService.increasingCurrentMovingPoint(racingCar, input);
-        assertEquals("-", racingCar.currentMovingPoint);
+        assertEquals("-", racingCar.getCurrentMovingPoint());
         racingCarService.increasingCurrentMovingPoint(racingCar, input);
-        assertEquals("--", racingCar.currentMovingPoint);
+        assertEquals("--", racingCar.getCurrentMovingPoint());
     }
 }

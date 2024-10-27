@@ -5,7 +5,7 @@ import java.util.List;
 
 public class OutputService {
 
-    int winnerCarMovingPoint = 0;
+    private int winnerCarMovingPoint = 0;
 
     private final RacingCarService racingCarService;
 
@@ -13,9 +13,6 @@ public class OutputService {
         this.racingCarService = racingCarService;
     }
 
-    public String getRaceOutcomeForCarInRound(RacingCar racingCar) {
-        return racingCar.name + " : " + racingCar.currentMovingPoint;
-    }
 
     public String getWinnerRacingCar(List<RacingCar> racingCarList) {
         List<RacingCar> winnerRacingCarList = new ArrayList<>();
@@ -27,26 +24,22 @@ public class OutputService {
     }
 
     private void winningCarDecisionProcess(RacingCar racingCar, List<RacingCar> winnerRacingCarList) {
-        if (racingCar.currentMovingPoint.length() == winnerCarMovingPoint) {
+        if (racingCar.getCurrentMovingPointInteger() == winnerCarMovingPoint) {
             winnerRacingCarList.add(racingCar);
         }
 
-        if (racingCar.currentMovingPoint.length() > winnerCarMovingPoint) {
+        if (racingCar.getCurrentMovingPointInteger() > winnerCarMovingPoint) {
             winnerRacingCarList.clear();
             winnerRacingCarList.add(racingCar);
-            winnerCarMovingPoint = racingCar.currentMovingPoint.length();
+            winnerCarMovingPoint = racingCar.getCurrentMovingPointInteger();
         }
     }
 
     private String buildFinalWinnerAnnouncement(List<RacingCar> winnerRacingCarList) {
-        StringBuilder result = new StringBuilder();
-        for (RacingCar racingCar : winnerRacingCarList) {
-            result.append(" ");
-            result.append(racingCar.name);
-            result.append(",");
-        }
-        result = new StringBuilder(result.substring(0, result.length() - 1));
-        return "최종 우승자 :" + result;
+        String result = String.join(", ", winnerRacingCarList.stream()
+                .map(RacingCar::getName)
+                .toList());
+        return "최종 우승자 : " + result;
     }
 
     public void run(String carList, int count) {
@@ -62,7 +55,7 @@ public class OutputService {
         for (RacingCar racingCar : racingCarList) {
             int stopOrMoveNumber = racingCarService.randomNumberCreate();
             racingCarService.increasingCurrentMovingPoint(racingCar, stopOrMoveNumber);
-            System.out.println(getRaceOutcomeForCarInRound(racingCar));
+            System.out.println(racingCar.getRaceOutcomeForCarInRound(racingCar));
         }
         System.out.println();
     }

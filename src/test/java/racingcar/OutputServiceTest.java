@@ -13,7 +13,7 @@ public class OutputServiceTest {
     void a자동차_n회차_실행_결과_출력() {
         String expect = "a : -";
         RacingCar racingCar = new RacingCar("a", "-");
-        String actual = outputService.getRaceOutcomeForCarInRound(racingCar);
+        String actual = racingCar.getRaceOutcomeForCarInRound(racingCar);
         assertEquals(expect, actual);
     }
 
