@@ -19,7 +19,7 @@ public class InputController {
         this.inputTurnCountView = inputTurnCountView;
     }
 
-    public InputDTO getInput() {
+    public InputDTO getInputView() {
         List<Car> carList = convertToCarList(inputCarNamesView.getCarNames());
         int inputTurnCount = turnCountToInt(inputTurnCountView.getTurnCount());
 

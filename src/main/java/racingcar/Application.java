@@ -1,10 +1,12 @@
 package racingcar;
 
 import racingcar.controller.InputController;
+import racingcar.controller.OutputController;
 import racingcar.controller.RacingController;
 import racingcar.view.InputCarNamesView;
 import racingcar.view.InputTurnCountView;
-import racingcar.view.OutputView;
+import racingcar.view.ResultView;
+import racingcar.view.WinnerView;
 
 public class Application {
 
@@ -14,9 +16,11 @@ public class Application {
         InputTurnCountView inputTurnCountView = new InputTurnCountView();
         InputController inputController = new InputController(inputCarNamesView, inputTurnCountView);
 
-        OutputView outputView = new OutputView();
+        ResultView resultView = new ResultView();
+        WinnerView winnerView = new WinnerView();
+        OutputController outputController = new OutputController(resultView, winnerView);
 
-        RacingController racingController = new RacingController(inputController, outputView);
+        RacingController racingController = new RacingController(inputController, outputController);
         racingController.run();
     }
 }
