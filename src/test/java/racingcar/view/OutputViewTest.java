@@ -25,6 +25,26 @@ class OutputViewTest {
 
         outputView.outputRoundResult(roundResult);
 
-        assertThat(writer.getOutputText()).isEqualTo(expected);
+        assertThat(writer.getOutputText()).contains(expected);
+    }
+
+    @Test
+    void outputWinnerTest_whenWinAlone() {
+        List<String> winners = List.of("pobi");
+        String expected = "최종 우승자 : pobi";
+
+        outputView.outputWinners(winners);
+
+        assertThat(writer.getOutputText()).contains(expected);
+    }
+
+    @Test
+    void outputWinnerTest_whenWinTogether() {
+        List<String> winners = List.of("pobi", "jun");
+        String expected = "최종 우승자 : pobi, jun";
+
+        outputView.outputWinners(winners);
+
+        assertThat(writer.getOutputText()).contains(expected);
     }
 }
