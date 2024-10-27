@@ -12,7 +12,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.Application.createCarNames;
+import static racingcar.CarNames.createCarNames;
 import static racingcar.WinnerCalculator.calculateWinners;
 
 class ApplicationTest extends NsTest {
