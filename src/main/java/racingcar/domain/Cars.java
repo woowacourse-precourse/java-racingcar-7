@@ -14,11 +14,17 @@ public class Cars {
     }
 
     public static Cars from(List<Car> cars) {
+        validate(cars);
         return new Cars(cars);
     }
 
     public void moveEachCar() {
         cars.forEach(Car::move);
+    }
+
+    private static void validate(List<Car> cars) {
+        validateNumberOfCars(cars);
+        validateDuplicatedCar(cars);
     }
 
     private static void validateNumberOfCars(List<Car> cars) {
