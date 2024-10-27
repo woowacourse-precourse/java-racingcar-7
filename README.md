@@ -26,17 +26,17 @@ ___
 
 > "무작위 값을 구한 후"
 
-- [ ] `interface NumberGenerator { int generateNumber() }`
-- [ ] `class WoowaRandomNumberGenerator`
-    - [ ] `int generateNumber()`
+- [x] `interface NumberGenerator { int generateNumber() }`
+- [x] `class WoowaRandomNumberGenerator`
+    - [x] `int generateNumber()`
 
 > "자동차"
 
-- [ ] `class Car`
+- [x] `class Car`
   `Score score, UserName userName`
-    - [ ] `int compareTo(Car o)`
-    - [ ] `String getUserName()`
-    - [ ] `int getScore()`
+    - [x] `int compareTo(Car o)`
+    - [x] `String getUserName()`
+    - [x] `int getScore()`
 
 > 자동차들
 
