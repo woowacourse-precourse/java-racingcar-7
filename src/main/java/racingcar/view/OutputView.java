@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.List;
+
 import static racingcar.global.constant.GameMessage.*;
 
 public class OutputView {
@@ -19,7 +21,8 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printGameWinner(String winner) {
-        System.out.println(OUTPUT_GAME_WINNER_MESSAGE + winner);
+    public void printGameWinner(List<String> winners) {
+        String result = String.join(", ", winners);
+        System.out.println(OUTPUT_GAME_WINNER_MESSAGE + result);
     }
 }
