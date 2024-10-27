@@ -25,9 +25,7 @@ public class Round {
     }
 
     public void progress() {
-        for (Car car : cars.getAll()) {
-            car.move();
-        }
+        cars.getAll().forEach(Car::move);
         moveCount--;
     }
 
