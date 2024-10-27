@@ -13,7 +13,6 @@ public class InputView {
         return InputParser.parseCarNames(Console.readLine());
     }
 
-
     public static int inputTryCount() {
         System.out.println(INPUT_TRY_COUNT_MESSAGE);
         return InputParser.parseTryCount(Console.readLine());

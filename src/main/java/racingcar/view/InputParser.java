@@ -10,7 +10,7 @@ public class InputParser {
     private static final String ERROR_INVALID_TRY_COUNT_MESSAGE = "시도 횟수는 양수여야 합니다.";
     private static final int MIN_TRY_COUNT = 1;
 
-    public static List<String> parseCarNames(String carNames){
+    public static List<String> parseCarNames(String carNames) {
         validateCarNames(carNames);
         return Arrays.stream(carNames.split(DELIMITER)).toList();
     }

@@ -11,6 +11,7 @@ import racingcar.model.CarGroup;
 import racingcar.view.OutputView;
 
 public class GameController {
+
     public void run() {
         List<String> carNames = inputCarNames();
         CarGroup carGroup = new CarGroup(carNames);
