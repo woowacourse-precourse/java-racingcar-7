@@ -15,6 +15,14 @@
 - [Flow](#-flow)
     - [실행 결과 예시](#실행-결과-예시)
 - [용어 정의](#-용어-정의)
+    - [Model](#model)
+    - [Strategy](#strategy)
+    - [Service](#service)
+    - [Controller](#controller)
+    - [Util](#util)
+    - [Validation](#validation)
+    - [View](#view)
+    - [Exception](#exception)
 - [구현 리스트](#-구현-리스트)
     - [기능 구현 리스트](#기능-구현-리스트)
     - [입출력 구현 리스트](#입출력-구현-리스트)
@@ -116,11 +124,15 @@ More : [Commit Message convention](https://gist.github.com/9941e89d80e2bc58a153.
 - (1) 사용자로부터 자동차 이름을 입력받는다.
 - (2) 입력받은 문자열을 쉼표(,)를 기준으로 구분한다.
 - (3) 이름의 양쪽 공백을 제거한다.
-- (4) 자동차 객체(전략)에 이름을 저장하고, 움직임 수를 0으로 초기화한다.
-- (5) 사용자로부터 시도할 횟수를 입력받는다.
-- (6) 시도할 횟수만큼 자동차를 움직인다(또는 움직이지 않는다).
-- (7) 횟수 한 번마다 각 자동차의 움직인 결과를 출력한다.
-- (8) 시도할 횟수만큼 움직인 후 가장 많이 움직인 자동차(또는 자동차들)를 출력한다.
+- (4) 자동차 객체에 이름을 저장한다.
+- (5) 자동차 객체의 모드(전략)를 선택한다.
+    - 자동차 모드를 입력받지 않으므로 main에서 RacingCar로 설정한다.
+- (6) 사용자로부터 시도할 횟수를 입력받는다.
+- (7) 시도할 횟수만큼 자동차를 움직인다(또는 움직이지 않는다).
+- (8) 횟수 한 번마다 각 자동차의 움직인 결과를 출력한다.
+- (9) 시도할 횟수만큼 움직인 후 가장 많이 움직인 자동차(또는 자동차들)를 계산해 출력한다.
+
+![FlowDiagram](https://github.com/user-attachments/assets/ca8cf2a7-a570-4d52-befe-b6a255a1f518)
 
 ### 실행 결과 예시
 
@@ -161,11 +173,67 @@ jun : -----
 ---
 
 - 자동차 `Car` : 자동차 객체(전략), 움직이는 대상이다.
-- 자동차 경주 `CarRace` : 각 자동차가 이동 시도 횟수만큼 동작하는 모든 과정을 의미한다.
-- 자동차 경주 라운드 `CarRaceRound` : 각 자동차가 이동 시도하는 과정 하나를 의미한다.
-- 자동차 이동 `CarMovement` : 자동차가 한 라운드에 이동하는 것을 의미한다.
+- 자동차 경주 `Racing` : 각 자동차가 이동 시도 횟수만큼 동작하는 모든 과정을 의미한다.
+- 자동차 경주 라운드 `RacingRound` : 각 자동차가 이동 시도하는 과정 하나를 의미한다.
+- 자동차 이동 `TryMoving` : 자동차가 한 라운드에 이동하는 것을 의미한다.
 - 자동차 이름 분리 `SplitCarName` : 문자열에서 쉼표(,)를 기준으로 자동차 이름을 분리하는 것을 의미한다.
-- 자동차 이동 계산 `CalculateCarMovement` : 라운드에서 자동차가 움직일 지, 움직이지 않을 지 판단하는 것을 의미한다.
+- 자동차 이동 판단 `IsNotRandomNumberLessThanCriterion` : 라운드에서 자동차가 움직일 지, 움직이지 않을 지 판단하는 것을 의미한다.
+- 자동차 이동 `Go` : 자동차가 이동해도 된다고 판단되었을 때, 한 칸 전진하는 것을 의미한다.
+- 자동차 모드 `Mode` : 자동차의 모드(전략)를 의미한다.
+
+![MethodDiagram](https://github.com/user-attachments/assets/50a16521-85a6-4aa1-ab3f-8eacd7808776)
+
+### Model
+
+- `Car` : 전략을 가지는 객체, 자동차 모드 설정, 자동차 이동
+
+### Strategy
+
+- `Mode` : 전략을 정의한 인터페이스
+- `ModeType` : 전략 목록, 사용자의 전략 선택에 따른 전략 생성
+- `PracticeCar` : 사용자가 전략을 선택하지 않을 경우 설정되는 기본 전략, 무작위 값이 8이상일 때 전진
+- `RacingCar` : 전략, 무작위 값이 4이상일 때 전진
+- `SportCar` : 전략, 무작위 값이 6이상일 때 전진
+
+### Service
+
+- `Racing` : 자동차 경주 로직 수행(자동차 생성, 모드 설정, 이동, 결과 계산)
+
+### Controller
+
+- `RacingController` : 자동차 경주 수행, 자동차 모드 설정, 자동차 경주 결과 반환
+
+### Util
+
+- `CarNameSeparator` : 자동차 이름을 분리해 양 옆 공백을 제거한 문자열 배열 생성
+- `CarsCreator` : 문자열 배열을 자동차 객체 배열로 변환
+- `RacingResultCalculator` : 자동차 경주 우승자 기록 계산, 자동차 경주 우승자 배열 생성
+
+### Validation
+
+- `CarNameValidation` : 자동차 이름 길이 검증
+- `CarValidation` : 자동차 이름 구분자 검증, 자동차 이름 중복 검증, 존재하지 않는 자동차 이름 검증
+- `RacingRoundValidation` : 자동차 이동 시도 횟수가 1이상인지, 숫자인지 검증
+
+### View
+
+- `InputView` : 사용자 입력 정의
+- `OutputView` : 출력 정의
+- `PrintMessage` : 출력 메시지 정의
+
+### Exception
+
+- `IllegalArgumentException` 클래스 상속받아 예외 메시지 정의
+    - `CarNameDuplicationException` : 자동차 이름이 중복되었을 경우 예외
+    - `CarNameEmptyException` : 자동차 이름이 존재하지 않을 경우 예외
+    - `CarNameLengthException` : 자동차 이름이 5자 초과일 경우 예외
+    - `CarNameSeparatorException` : 자동차 이름 구분자가 쉼표가 아닐 경우 예외
+    - `RoundNumberRangeException` : 입력이 1 미만일 경우의 예외
+    - `RoundTypeException` : 입력이 숫자가 아닐 경우의 예외
+- `CarException` : 자동차 이름 길이 예외 처리
+- `RacingException` : 자동차 이름 분리자, 존재하지 않는 이름, 이름 중복 예외 처리
+- `TotalRacingRoundException` : 자동차 이동 시도 횟수가 1이상 양수가 아닐 경우 예외 처리
+- `ExceptionMessage` : 예외 메시지 정의
 
 <br>
 
