@@ -7,9 +7,10 @@ import racingcar.dto.RacingRegisterForm;
 public class RacingRegisterFormFactory {
 
     private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final String POSSIBLE_NAME_REGEX = "[a-zA-Z0-9]+";
     private static final String SEPARATOR = ",";
     private static final String ONLY_DIGITS_REGEX = "\\d+";
-    private static final String POSSIBLE_NAME_REGEX = "[a-zA-Z0-9]+";
+    private static final int MIN_RACE_ROUND_COUNT = 1;
 
     public static RacingRegisterForm create(String inputCarNames, String inputRaceRoundCount) {
         List<String> carNames = parseAndValidateCarNames(inputCarNames);
@@ -54,7 +55,7 @@ public class RacingRegisterFormFactory {
         }
 
         int raceRoundCount = parseInteger(inputRaceRoundCount);
-        if (raceRoundCount < 1) {
+        if (raceRoundCount < MIN_RACE_ROUND_COUNT) {
             throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 해요.");
         }
         return raceRoundCount;

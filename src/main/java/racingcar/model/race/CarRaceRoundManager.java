@@ -6,9 +6,6 @@ public class CarRaceRoundManager {
     private int currentRoundCount = 0;
 
     public CarRaceRoundManager(int totalRoundCount) {
-        if (totalRoundCount < 1) {
-            throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 해요.");
-        }
         this.totalRoundCount = totalRoundCount;
     }
 
