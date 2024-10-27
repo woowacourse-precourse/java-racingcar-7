@@ -3,10 +3,10 @@ package racingcar.dto;
 import java.util.Arrays;
 import java.util.List;
 
-public class RacingCarNameDTO {
+public class RacingCarNamesDTO {
     private List<String> carNames;
 
-    public RacingCarNameDTO(String carNamesInput){
+    public RacingCarNamesDTO(String carNamesInput){
         validateCarNamesInputString(carNamesInput);
         this.carNames = Arrays.asList(carNamesInput.split(","));
         validateNonEmptyCarNames();
