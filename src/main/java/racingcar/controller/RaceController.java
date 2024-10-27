@@ -9,6 +9,7 @@ import racingcar.view.OutputView;
 
 public class RaceController {
     private final RaceService raceService = new RaceService();
+
     public RequestRaceDto parseInput() {
         OutputView.requestCarName();
         String carNames = InputView.inputCarName();

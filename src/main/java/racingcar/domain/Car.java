@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 public class Car {
-
     private final String carName;
     private int location;
 
@@ -13,9 +12,11 @@ public class Car {
     public String getCarName () {
         return carName;
     }
+
     public int getLocation () {
         return location;
     }
+
     public void increaseLocation () {
         this.location++;
     }

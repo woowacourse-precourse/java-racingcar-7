@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
-
 public class RaceService {
-
     public List<Car> makeCarList (String[] carNamesList) {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNamesList) {

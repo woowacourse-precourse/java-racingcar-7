@@ -1,10 +1,8 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RequestRaceDto {
-
     private final List<Car> carList;
     private final int tryNumber;
 

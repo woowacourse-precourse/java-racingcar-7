@@ -1,7 +1,6 @@
 package racingcar.service;
 
 public class Validate {
-
     public static String[] validateCarNames (String carNames) {
         if (carNames.isEmpty()) {
             throw new IllegalArgumentException("이름을 입력해주세요.");
@@ -25,5 +24,4 @@ public class Validate {
             throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
     }
-
 }
