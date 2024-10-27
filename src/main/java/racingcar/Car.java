@@ -3,7 +3,14 @@ package racingcar;
 import java.util.ArrayList;
 
 public class Car {
+    private static String name;
     private static ArrayList<String> moveList;
+    private static ArrayList<Car> carList;
+
+    public Car(String name) {
+        this.name = name;
+        carList.add(this);
+    }
 
     ArrayList<String> move(){
         if(RandomNumber.getRandomNum() >= 4){
@@ -14,5 +21,13 @@ public class Car {
 
     public static ArrayList<String> getMoveList() {
         return moveList;
+    }
+
+    public static String getName() {
+        return name;
+    }
+
+    public static ArrayList<Car> getCarList() {
+        return carList;
     }
 }
