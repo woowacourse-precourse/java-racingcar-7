@@ -20,7 +20,12 @@ public class CarInputHandler {
         if (userInput == null || userInput.trim().isEmpty()) {
             throw new IllegalArgumentException("횟수가 입력 되지 않았습니다 입력을 해야 합니다.");
         }
-        int numberOfMoves = Integer.parseInt(userInput);
+        int numberOfMoves;
+        try {
+            numberOfMoves = Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("횟수는 1부터 2,147,483,,647까지 입력할 수 있습니다");
+        }
         if (numberOfMoves <= 0) {
             throw new IllegalArgumentException("한번도 안 움직일수는 없습니다 횟수는 1 이상의 정수여야 합니다.");
         }
