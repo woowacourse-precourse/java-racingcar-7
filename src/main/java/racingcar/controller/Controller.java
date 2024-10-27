@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.CarFactory;
 import racingcar.util.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -25,7 +26,7 @@ public class Controller {
         List<String> carNames = Arrays.asList(rawInputCarNames.split(","));
         Validator.validateCarNames(carNames);
 
-        List<Car> carList = createCarByName(carNames);
+        List<Car> carList = CarFactory.createCarByName(carNames);
 
         String rawRoundInput = inputView.inputRoundNumber();
         Validator.validateRoundCount(rawRoundInput);
@@ -52,13 +53,6 @@ public class Controller {
         }
     }
 
-    private List<Car> createCarByName(List<String> carNames) {
-        List<Car> carList = new ArrayList<>();
-        for (String name : carNames) {
-            carList.add(new Car(name.trim()));
-        }
-        return carList;
-    }
 
     private int createRandomValue() {
         return Randoms.pickNumberInRange(0, 9);
