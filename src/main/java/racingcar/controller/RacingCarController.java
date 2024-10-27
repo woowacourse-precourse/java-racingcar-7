@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingCarController {
     private final RacingCarView view;
@@ -22,8 +23,21 @@ public class RacingCarController {
 
             int tryCount = view.getTryCountInput();
 
+            for (int i = 0; i < tryCount; i++) {
+                takeTurnOnce(carList);
+            }
+
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
+        }
+    }
+
+    private void takeTurnOnce(List<Car> carList) {
+        for(Car car : carList) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            if(randomValue >= 4) {
+                car.move();
+            }
         }
     }
 
