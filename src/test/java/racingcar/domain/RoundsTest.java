@@ -15,4 +15,15 @@ class RoundsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도할 횟수로 숫자를 입력해주세요.");
     }
+
+    @DisplayName("라운드 반복 성공")
+    @Test
+    void repeatTest() {
+        Race race = new Race("pobi", () -> 4);
+        Rounds rounds = new Rounds("3");
+
+        rounds.repeat(race::moveAll);
+
+        Assertions.assertThat(race.getCars().get(0).getDistance()).isEqualTo(3);
+    }
 }
