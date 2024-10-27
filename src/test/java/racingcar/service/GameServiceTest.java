@@ -3,10 +3,7 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,37 +13,24 @@ public class GameServiceTest {
 
     @BeforeEach
     public void setUp() {
-        Map<String, Integer> cars = new HashMap<>();
-        cars.put("pobi", 0);
-        cars.put("woni", 0);
-        cars.put("jun", 0);
-        game = new GameService(GAMECOUNT, cars);
+        List<String> carNames = new ArrayList<>(List.of("pobi", "woni", "jun"));
+        game = new GameService(GAMECOUNT, carNames);
     }
 
     @Test
     public void moveTest() {
         game.move("pobi", 3);
         game.move("woni", 4);
-        Map<String, Integer> cars =  game.getCars();
+        Map<String, Integer> carMap =  game.getCars();
 
-        assertEquals(0, cars.get("pobi"));
-        assertEquals(1, cars.get("woni"));
-    }
-
-    @Test
-    public void generateRandomInRangeTest(){
-        int randomNumber = game.generateRandomInRange(0, 9);
-
-        assertTrue(randomNumber >= 0 && randomNumber <= 9);
+        assertEquals(0, carMap.get("pobi"));
+        assertEquals(1, carMap.get("woni"));
     }
 
     @Test
     public void getWinnerTest() {
-        Map<String, Integer> cars = new HashMap<>();
-        cars.put("pobi", 3);
-        cars.put("woni", 3);
-        cars.put("jun", 1);
-        game = new GameService(GAMECOUNT, cars);
+        game.move("pobi", 4);
+        game.move("woni", 4);
 
         List<String> winners = game.getWinners();
 

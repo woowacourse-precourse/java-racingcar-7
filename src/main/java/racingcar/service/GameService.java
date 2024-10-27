@@ -9,17 +9,25 @@ public class GameService {
     private static final int RANDOM_MAX = 9;
 
     private final int gameCount;
-    private final Map<String, Integer> cars;
+    private final Map<String, Integer> carMap;
     private List<Map<String, Integer>> record;
 
-    public GameService(int gameCount, Map<String, Integer> cars) {
+    public GameService(int gameCount, List<String> carNames) {
         this.gameCount = gameCount;
-        this.cars = cars;
+        this.carMap = generateCarMap(carNames);
 
     }
 
+    private Map<String, Integer> generateCarMap(List<String> carNames) {
+        Map<String, Integer> carMap = new LinkedHashMap<>();
+        for (String carName: carNames) {
+            carMap.put(carName, 0);
+        }
+        return carMap;
+    }
+
     public Map<String, Integer> getCars() {
-        return new HashMap<>(cars);
+        return new LinkedHashMap<>(carMap);
     }
 
     public List<Map<String, Integer>> getRecord() {
@@ -28,14 +36,14 @@ public class GameService {
 
     public List<String> getWinners() {
         int maxValue = 0;
-        for (int value: cars.values()) {
+        for (int value: carMap.values()) {
             if (value > maxValue) {
                 maxValue = value;
             }
         }
 
         List<String> winners = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry: cars.entrySet()) {
+        for (Map.Entry<String, Integer> entry: carMap.entrySet()) {
             if (entry.getValue() == maxValue) {
                 winners.add(entry.getKey());
             }
@@ -46,22 +54,22 @@ public class GameService {
 
     public void move(String car, int num) {
         if (num >= 4) {
-            cars.merge(car, 1, Integer::sum); // 현재 키 값에 1을 더함.
+            carMap.merge(car, 1, Integer::sum); // 현재 키 값에 1을 더함.
         }
     }
 
-    public int generateRandomInRange(int min, int max) {
-        return Randoms.pickNumberInRange(min, max);
+    private int generateRandomInRange() {
+        return Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
     }
 
     public void runGame() {
-        cars.replaceAll((key, value) -> 0); // 게임 시작시 모든 자동차 출발선(0)으로 초기화
+        carMap.replaceAll((key, value) -> 0); // 게임 시작시 모든 자동차 출발선(0)으로 초기화
         record = new ArrayList<>();
 
         int randomNumber;
         for (int cnt = 0; cnt < gameCount; cnt++) {
-            for (String car: cars.keySet()) {
-                randomNumber = generateRandomInRange(RANDOM_MIN, RANDOM_MAX);
+            for (String car: carMap.keySet()) {
+                randomNumber = generateRandomInRange();
                 move(car, randomNumber);
             }
             record.add(getCars()); // 게임 판마다 진행상황 저장
