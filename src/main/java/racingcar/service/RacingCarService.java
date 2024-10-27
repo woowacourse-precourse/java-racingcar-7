@@ -21,8 +21,8 @@ public class RacingCarService {
         IntStream.range(0, moveCount).forEach(i -> {
             racingCars.forEach(racingCar -> racingCar.moveForwardOneStep(moveStrategy));
             racingCars.forEach(RacingCar::printMoveStatus);
+            System.out.println();
         });
-        System.out.println();
     }
 
 
