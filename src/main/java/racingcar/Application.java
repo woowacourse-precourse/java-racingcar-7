@@ -67,7 +67,7 @@ class Racing {
 
     public List<String> winners() {
         int maxPlacement = getMaxPlacement();
-        return getwinners(maxPlacement);
+        return getWinners(maxPlacement);
     }
 
     private int getMaxPlacement() {
@@ -77,14 +77,15 @@ class Racing {
                 .orElse(0);
     }
 
-    private List<String> getwinners(int maxPlacement) {
+    private List<String> getWinners(int maxPlacement) {
         List<String> winners = new ArrayList<>();
-
-        for (Car car : cars) {
-            if (car.getPlacement() == maxPlacement) { winners.add(car.getName()); }
-        }
+        for (Car car: cars) { addWinnerIfMaxPlacement(winners, car, maxPlacement); }
 
         return winners;
+    }
+
+    private void addWinnerIfMaxPlacement(List<String> winners, Car car, int maxPlacement) {
+        if (car.getPlacement() == maxPlacement) { winners.add(car.getName()); }
     }
 }
 
@@ -115,9 +116,11 @@ public class Application {
 
     private static void checkCarName(List<String> carNames) {
         if (carNames.isEmpty()) { throw new IllegalArgumentException(); }
-        for (String name : carNames) {
-            if (name.isBlank()) { throw new IllegalArgumentException(); }
-        }
+        carNames.forEach(Application::checkSingleCarName);
+    }
+
+    private static void checkSingleCarName(String name) {
+        if (name.isBlank()) { throw new IllegalArgumentException(); }
     }
 
     //경주 시도 횟수 기능
