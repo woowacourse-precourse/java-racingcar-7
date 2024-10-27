@@ -12,6 +12,24 @@ import java.util.List;
 
 public class CarController {
     private final int MOVEMENT_STANDARD = 4;
+
+    public void start() {
+        OutputView.printCarNameInputMessage();
+        CarManager carManager = CarManager.getInstance();
+        for(String carName : InputView.readCarNames()) {
+            carManager.addCar(new Car(carName));
+        }
+        OutputView.printTotalAttemptInputMessage();
+        carManager.setRemainingAttempts(InputView.readTotalAttempt());
+        OutputView.printResultMessage();
+        while(carManager.getRemainingAttempts() > 0) {
+            carManager.decrementRemainingAttempts();
+            race(carManager.getCars());
+
+            OutputView.printCarState(carManager.getCars());
+
+        }
+    }
     public boolean canMove() {
         if(Randoms.pickNumberInRange(0,9) >= MOVEMENT_STANDARD) {
             return true;
