@@ -38,15 +38,12 @@ public class Application {
             }
 
         }
-        // 우승자 출력(단독 우승자)
-//        private void displayWinner(List<Car> winner) {
-//            System.out.println("최종 우승자 : "+ winner.getFirst().name);
-//        }
 
         // 우승자 출력(공동 우승자)
         private void displayWinners(List<Car> winners) {
             if (winners.size() == 1) {
                 System.out.println(winners.getFirst().name);
+                System.out.println("최종 우승자 : " + winners.getFirst().name);
             } else {
                 String winnerNames = winners.stream()
                         .map(winner -> winner.name)
@@ -169,8 +166,4 @@ public class Application {
         }
     }
 
-    public static class business {
-        // 전진하는 로직 구현(랜덤으로 0~9까지 숫자 뽑아서 4 이상이면 60%의 확률로 전진)
-        // 우승자를 정함
-    }
 }
