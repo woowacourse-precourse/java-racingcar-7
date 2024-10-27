@@ -125,7 +125,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("Plyaers를 입력받으면 plyaer를 가지는 객체를 반환한다.")
     void cratePlayerListTest() {
         // give
-        String players = "pobi,woni";
+        String players = "pobi, woni";
 
         // when
         List<Player> playerList = PlayerMaker.createPlayer(players);

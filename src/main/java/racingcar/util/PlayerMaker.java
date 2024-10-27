@@ -14,7 +14,8 @@ public class PlayerMaker {
 
         // 입력: poib, java
         for (String player : players.split(DELIMITER)) {
-            playerList.add(new Player(player, SET_SCORE));
+            // 이름에 공백이 있을 수 있기 때문에 제거해준다.
+            playerList.add(new Player(player.trim(), SET_SCORE));
         }
         return playerList;
     }
