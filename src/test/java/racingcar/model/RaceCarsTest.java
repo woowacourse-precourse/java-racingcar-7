@@ -22,4 +22,15 @@ class RaceCarsTest {
         Assertions.assertThat(raceCars).isNotNull();
     }
 
+    @Test
+    @DisplayName("2대 미만의 자동차로 RaceCars 객체 생성시 예외가 발생한다.")
+    void createRaceCarsWithLessThanTwoCars() {
+        //given
+        Name name = new Name("우테코");
+        Car car = new Car(name);
+        List<Car> cars = Arrays.asList(car);
+        //when, then
+        Assertions.assertThatThrownBy(() -> new RaceCars(cars)).isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
