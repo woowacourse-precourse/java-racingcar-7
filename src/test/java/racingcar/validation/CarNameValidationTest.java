@@ -12,14 +12,14 @@ class CarNameValidationTest {
     private CarNameValidation carNameValidation;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         carNameValidation = new CarNameValidation();
     }
 
     @Test
     void 예외발생_중복_이름_테스트() {
         // Arrange
-        List<String> carNames = Arrays.asList("pobi","woni","pobi");
+        List<String> carNames = Arrays.asList("pobi", "woni", "pobi");
 
         // Act & Assert
         assertThatThrownBy(() -> carNameValidation.isNotDuplicate(carNames))
