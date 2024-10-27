@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-public class RacingCars {
+public final class RacingCars {
 
     private final LinkedHashSet<Car> cars;
 
