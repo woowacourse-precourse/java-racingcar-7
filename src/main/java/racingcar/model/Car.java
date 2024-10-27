@@ -15,6 +15,11 @@ public class Car {
         }
     }
 
+    //현재 상태를 표시(ex. pobi : ---)
+    public String displayState() {
+        return name + " : " + "-".repeat(position);
+    }
+
     public String getName() {
         return name;
     }
