@@ -6,6 +6,7 @@ import racingcar.racingCarManger.RacingCarManagerImpl;
 
 import java.util.List;
 
+import static racingcar.utils.InputSplitter.inputSplit;
 import static racingcar.utils.InputValidator.inputCarsNameValidation;
 import static racingcar.utils.InputValidator.tryNumberValidation;
 import static racingcar.utils.RandomNumberGenerator.generateRandomNumbersForSize;
@@ -46,7 +47,8 @@ public class RacingGameController {
         carNameOutView();
         String userInput = inputCarsName();
         inputCarsNameValidation(userInput);
-        RacingCarManager racingCarManager = new RacingCarManagerImpl(userInput);
+        List<String> carsNames = inputSplit(userInput);
+        RacingCarManager racingCarManager = new RacingCarManagerImpl(carsNames);
         return racingCarManager;
     }
 }

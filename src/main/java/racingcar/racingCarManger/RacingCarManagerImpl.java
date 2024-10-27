@@ -16,9 +16,7 @@ import static racingcar.utils.InputSplitter.inputSplit;
 public class RacingCarManagerImpl implements RacingCarManager {
     private final List<Car> racingCars = new ArrayList<>();
 
-    public RacingCarManagerImpl(String inputRacingCarsName) {
-        List<String> carsName = inputSplit(inputRacingCarsName);
-
+    public RacingCarManagerImpl(List<String> carsName) {
         for (String carName : carsName) {
             checkDuplicationCarName(carName);
             racingCars.add(new CarImpl(carName));
