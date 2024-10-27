@@ -32,11 +32,15 @@ public class RoundHistory {
 
     private RoundSnapshot getRoundSnapShot(int round) {
         RoundSnapshot roundSnapshot = this.roundHistories.get(round);
+        validateNullCheck(roundSnapshot);
+
+        return roundSnapshot;
+    }
+
+    private static void validateNullCheck(RoundSnapshot roundSnapshot) {
         if (roundSnapshot == null) {
             throw new IllegalArgumentException();
         }
-
-        return roundSnapshot;
     }
 
 }

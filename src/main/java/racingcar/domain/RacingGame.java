@@ -39,11 +39,14 @@ public class RacingGame {
     }
 
     public List<String> getFinalWinners() {
+        validateFinalRoundCheck();
+        return this.roundHistory.getWinnersByRound(this.round.nowRound());
+    }
+
+    private void validateFinalRoundCheck() {
         if (this.isNotGameOver()) {
             throw new IllegalArgumentException();
         }
-
-        return this.roundHistory.getWinnersByRound(this.round.nowRound());
     }
 
     private List<Racer> getRacers() {
