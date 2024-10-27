@@ -7,6 +7,21 @@ public class InputValidator {
     private static final Pattern CONTINUOUS_COMMA_REGEX = Pattern.compile(",{2,}");
     private static final Pattern ONLY_NUMBER_REGEX = Pattern.compile("[0-9]+");
 
+    public void validateInputCarNames(final String inputCarNames) {
+        noNull(inputCarNames);
+        noBlank(inputCarNames);
+        containsOnlyEnglishAndComma(inputCarNames);
+        noStartWithComma(inputCarNames);
+        noEndWithComma(inputCarNames);
+        hasNoContinuousComma(inputCarNames);
+    }
+
+    public void validateInputAttemptCount(final String inputAttemptCount) {
+        noNull(inputAttemptCount);
+        onlyInputNumber(inputAttemptCount);
+    }
+
+
     public void noNull(final String inputCarNames) {
         if (inputCarNames == null) {
             throw new IllegalArgumentException("null 이 입력되서는 안됩니다.");
