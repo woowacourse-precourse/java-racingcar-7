@@ -40,6 +40,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 시도_횟수_0_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, woni", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("0보다 큰 정수를 입력해주세요.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
