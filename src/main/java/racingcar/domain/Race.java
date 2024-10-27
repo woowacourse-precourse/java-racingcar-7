@@ -28,7 +28,14 @@ public class Race {
 
     private void runAllRounds(StringBuilder result) {
         for (int i = 0; i < forwardCount; i++) {
+            forwardCars();
             recordRoundResults(result);
+        }
+    }
+
+    private void forwardCars() {
+        for (String carName : carPositions.keySet()) {
+            moveCar(carName);
         }
     }
 
@@ -40,6 +47,13 @@ public class Race {
                     .append("\n");
         }
         result.append("\n");
+    }
+
+    private void moveCar(String carName) {
+        int randomPosition = RandomForwardGenerator.randomSingleDigitNumber();
+        if (randomPosition >= 4) {
+            carPositions.put(carName, carPositions.get(carName) + 1);
+        }
     }
 
     private void setInitialPositions(Car car) {
