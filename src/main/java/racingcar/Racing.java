@@ -1,33 +1,32 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.List;
+import racingcar.Input.InputHandler;
 
 public class Racing {
 
+    private final InputHandler inputHandler;
+
+    public Racing(InputHandler inputHandler) {
+        this.inputHandler = inputHandler;
+    }
 
     public void start() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
-        String input = Console.readLine();
+        String input = inputHandler.inputCarNameList();
 
         String[] carNameList = input.split(",", -1);
 
-        List<Car> carList = new ArrayList<>();
+        Cars cars = new Cars();
 
-        for (String currentCarName : carNameList) {
-            Car currentCar = new Car(new Name(currentCarName));
-            carList.add(currentCar);
-        }
-
-        Cars cars = new Cars(carList);
+        cars.addCar(carNameList);
 
         int roundNumber = 0;
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         try {
-            roundNumber = Integer.parseInt(Console.readLine());
+            roundNumber = inputHandler.inputRoundNumber();
 
             if (roundNumber < 1) {
                 throw new IllegalArgumentException();

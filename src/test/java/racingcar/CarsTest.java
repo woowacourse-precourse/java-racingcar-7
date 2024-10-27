@@ -2,7 +2,6 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,16 +11,18 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = new Cars(List.of(new Car(new Name("pobi")), new Car(new Name("woni")), new Car(new Name("crong"))));
+        cars = new Cars();
+        String[] initialCars = {"pobi", "woni", "crong"};
+        cars.addCar(initialCars);
     }
 
     @Test
     void testValidateDuplicateName() {
-        //given
-        List<Car> duplicateCars = List.of(new Car(new Name("pobi")), new Car(new Name("pobi")));
+        // given
+        String[] duplicateNames = {"pobi", "pobi"};
 
-        //then
-        assertThatThrownBy(() -> new Cars(duplicateCars))
+        // when & then
+        assertThatThrownBy(() -> cars.addCar(duplicateNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

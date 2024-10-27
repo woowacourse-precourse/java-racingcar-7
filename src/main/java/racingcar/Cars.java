@@ -1,44 +1,42 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Cars {
-
     private final List<Car> cars;
-    private final Set<String> nameSet;
 
-    public Cars(List<Car> cars) {
-        this.nameSet = new HashSet<>();
-        validateDuplicateName(cars);
-        this.cars = cars;
+    public Cars() {
+        this.cars = new ArrayList<>();
     }
 
-    public void validateDuplicateName(List<Car> cars) {
+    public void addCar(String[] carNameList) {
 
+        for (String carName : carNameList) {
+            validateDuplicateName(carName);
+            Car car = new Car(new Name(carName));
+            cars.add(car);
+        }
+
+    }
+
+    private void validateDuplicateName(String carName) {
         for (Car car : cars) {
-            String name = car.getName();
-            if (nameSet.contains(name)) {
+            if (car.getName().equals(carName)) {
                 throw new IllegalArgumentException();
             }
-            nameSet.add(name);
         }
     }
 
     public void moveForward() {
-
         for (Car car : cars) {
             car.moveForward();
         }
     }
 
     public void printRacingProgress() {
-
         for (Car car : cars) {
             System.out.print(car.getName() + " : ");
-
             for (int j = 0; j < car.getPosition(); j++) {
                 System.out.print("-");
             }
@@ -48,23 +46,17 @@ public class Cars {
     }
 
     public List<Car> getWinners() {
-
         List<Car> winners = new ArrayList<>();
-
-        int maxPosition = Integer.MIN_VALUE;
-
-        for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-            }
-        }
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
 
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
                 winners.add(car);
             }
         }
-
         return winners;
     }
 }
