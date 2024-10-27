@@ -7,7 +7,7 @@ public enum Message {
     TRY_COUNT("시도할 횟수는 몇 회인가요?"),
     TRY_COUNT_NUMBER_ONLY("[ERROR] 시도 횟수는 숫자여야 합니다."),
     RESULT("\n실행 결과"),
-    WINNER("\n최종 우승자 : ");
+    WINNER("최종 우승자 : ");
 
     private final String message;
 
