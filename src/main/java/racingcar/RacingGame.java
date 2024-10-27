@@ -8,9 +8,9 @@ public class RacingGame {
     private final List<Car> participatingCars = new ArrayList<>();
     private final int attempts;
 
-    public RacingGame(List<Car> carNames, int attempts) {
-        for (Car name : carNames) {
-            participatingCars.add(name);
+    public RacingGame(List<String> carNames, int attempts) {
+        for (String name : carNames) {
+            participatingCars.add(new Car(name));
         }
         this.attempts = attempts;
     }
