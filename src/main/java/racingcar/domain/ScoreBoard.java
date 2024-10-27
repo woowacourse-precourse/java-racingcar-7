@@ -4,6 +4,7 @@ import static racingcar.View.constant.OutputMessage.FINAL_WINNER;
 
 import java.util.Comparator;
 import java.util.List;
+import racingcar.dto.RoundResultDto;
 
 public class ScoreBoard {
     private final List<Car> carList;
@@ -16,15 +17,11 @@ public class ScoreBoard {
         return new ScoreBoard(carList);
     }
 
-    public List<String> returnRoundResult() {
+    public List<RoundResultDto> returnRoundResult() {
         return carList.stream()
                 .map(car -> (CarImpl) car)
-                .map(this::createRoundResultForm)
+                .map(RoundResultDto::from)
                 .toList();
-    }
-
-    private String createRoundResultForm(CarImpl car) {
-        return car.getName() + " : " + car.toScoreSymbol();
     }
 
     public String returnFinalResult() {
