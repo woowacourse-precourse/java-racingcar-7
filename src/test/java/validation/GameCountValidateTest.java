@@ -4,8 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
-import racingcar.GameService;
-import racingcar.Validation;
+import racingcar.validation.Validation;
 
 public class GameCountValidateTest {
     @Test
