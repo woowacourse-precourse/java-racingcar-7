@@ -10,6 +10,15 @@ public class Winners {
     }
 
     public static Winners from(Cars cars) {
+        return new Winners(findWinners(cars));
+    }
+
+    private static List<Car> findWinners(Cars cars) {
+        int maxDistance = findMaxDistance(cars);
+        return cars.getCars()
+                .stream()
+                .filter(car -> car.getPosition() == maxDistance)
+                .toList();
     }
 
     private static int findMaxDistance(Cars cars) {
