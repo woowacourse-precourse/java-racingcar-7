@@ -4,16 +4,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class CarPosition {
-    private final int currentPosition;
+    private int currentPosition;
 
     public CarPosition(int currentPosition) {
         this.currentPosition = currentPosition;
     }
 
-    public CarPosition updateCurrentPosition() {
+    public void updateCurrentPosition() {
         int forwardDistance = Randoms.pickNumberInRange(0, 9) - 3;
 
-        return new CarPosition(currentPosition + Math.max(0, forwardDistance));
+        this.currentPosition += Math.max(0, forwardDistance);
     }
 
     public boolean isAheadOrEqual(CarPosition carPosition) {

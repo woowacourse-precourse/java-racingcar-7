@@ -3,10 +3,14 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.Application.race;
 import static racingcar.MovingUnit.MOVING_FORWARD;
 import static racingcar.MovingUnit.STOP;
 
@@ -63,6 +67,19 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 자동차_경주게임_기능_테스트() {
+        assertRandomNumberInRangeTest(() -> {
+            List<String> carNames = Arrays.asList("pobi", "woni");
+            Cars cars = new Cars(carNames);
+            int raceTime = 3;
+
+            race(raceTime, cars);
+
+            assertThat(output()).contains("pobi : -", "woni : ", "pobi : --", "woni : -", "pobi : ---", "woni : -");
+        }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP);
     }
 
     @Override

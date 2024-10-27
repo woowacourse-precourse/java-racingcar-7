@@ -12,16 +12,14 @@ public class Cars {
         this.cars = createCars(carNames);
     }
 
-    public List<List<Car>> race(int raceTime) {
-        List<List<Car>> racingRecords = new ArrayList<>();
-        racingRecords.add(this.cars);
+    public List<Car> moveCars() {
+        List<Car> movingCars = new ArrayList<>();
 
-        for (int i = 0; i < raceTime; i++) {
-            List<Car> racingCars = moveCars(racingRecords.get(i));
-            racingRecords.add(racingCars);
+        for (Car car : this.cars) {
+            movingCars.add(car.move());
         }
 
-        return racingRecords.subList(1, racingRecords.size());
+        return movingCars;
     }
 
     public Map<String, Boolean> matchCarNames(List<String> carNames) {
@@ -39,15 +37,5 @@ public class Cars {
         return carNames.stream()
                 .map(Car::new)
                 .toList();
-    }
-
-    private List<Car> moveCars(List<Car> cars) {
-        List<Car> movingCars = new ArrayList<>();
-
-        for (Car car : cars) {
-            movingCars.add(car.move());
-        }
-
-        return movingCars;
     }
 }

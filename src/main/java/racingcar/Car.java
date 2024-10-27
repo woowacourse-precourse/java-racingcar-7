@@ -16,7 +16,9 @@ public class Car {
     }
 
     public Car move() {
-        return new Car(this.name, this.carPosition.updateCurrentPosition());
+        this.carPosition.updateCurrentPosition();
+
+        return new Car(this.name, this.carPosition);
     }
 
     public boolean isAheadOrEqual(Car otherCar) {
@@ -33,6 +35,6 @@ public class Car {
     }
 
     public String toCustomFormatString(String customString) {
-        return this.name + " : " + carPosition.toCustomFormatString(customString);
+        return this.name +  " : " + this.carPosition.toCustomFormatString(customString);
     }
 }
