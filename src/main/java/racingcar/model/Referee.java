@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static racingcar.util.validator.CarNameValidator.checkEmpty;
+import static racingcar.util.validator.MoveCountValidator.validateMoveCount;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +11,7 @@ public class Referee {
     private final String roundNumber;
 
     public Referee(String roundNumber) {
-        checkEmpty(roundNumber);
+        validateMoveCount(roundNumber);
 
         this.roundNumber = roundNumber;
     }

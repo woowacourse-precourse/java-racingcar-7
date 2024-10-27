@@ -15,9 +15,6 @@ public class InputView {
     public String getNumberOfRound() {
         System.out.println("시도할 회수는 몇 회인가요?");
 
-        String input = Console.readLine();
-        validateMoveCount(input);
-
-        return input;
+        return Console.readLine();
     }
 }
