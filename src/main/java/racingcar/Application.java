@@ -13,5 +13,16 @@ public class Application {
 
     }
 
-
+    public static List<Car> getCars(String names){
+        List<String> carNames = Arrays.asList(names.split(","));
+        List<Car> cars = new ArrayList<>();
+        try{
+            for (String carName : carNames) {
+                cars.add(new Car(carName));
+            }
+        } catch (Exception e){
+            throw e;
+        }
+        return cars;
+    }
 }
