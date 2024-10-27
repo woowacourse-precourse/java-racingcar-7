@@ -1,8 +1,11 @@
 package racingcar.view;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.car.Cars;
 import racingcar.domain.car.Name;
 import racingcar.domain.car.Position;
+import racingcar.domain.car.Vehicle;
 
 public class OutputView {
 
@@ -13,6 +16,9 @@ public class OutputView {
     private static final String NEW_LINE = "\n";
     private static final String RACE_RESULT_FORMAT = "%s : %s";
     private static final String POSITION_VALUE = "-";
+
+    private static final String WINNER_SEPARATOR = ", ";
+    private static final String WINNER_MESSAGE = "최종 우승자 : ";
 
     public static void printCarNamesMessage() {
         System.out.println(CAR_NAMES_MESSAGE);
@@ -37,5 +43,12 @@ public class OutputView {
                 name.getValue(),
                 POSITION_VALUE.repeat(position.getValue())
         );
+    }
+
+    public static void printWinners(List<Vehicle> winners) {
+        String winnerz = winners.stream()
+                .map(winner -> winner.getName().getValue())
+                .collect(Collectors.joining(WINNER_SEPARATOR));
+        System.out.println(WINNER_MESSAGE + winnerz);
     }
 }
