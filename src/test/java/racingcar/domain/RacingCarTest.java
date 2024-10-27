@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -24,6 +26,14 @@ public class RacingCarTest {
     public void racingCarCannotHaveNameOver5Length() {
         String name = "여섯자리이름";
 
+        assertThatThrownBy(() -> new RacingCar(name))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("자동차 이름은 NULL 이거나 Empty일 수 없다.")
+    public void racingCarCannotHaveEmptyName(String name) {
         assertThatThrownBy(() -> new RacingCar(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
