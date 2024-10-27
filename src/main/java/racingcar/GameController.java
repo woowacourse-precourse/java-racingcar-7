@@ -23,4 +23,26 @@ public class GameController {
             System.out.println();
         }
     }
+
+    public int maxWinNumber(List<Car> cars) {
+        int maxNumber = cars.get(0).getForwardCount();
+        for (Car car : cars) {
+            if (car.getForwardCount() > maxNumber) {
+                maxNumber = car.getForwardCount();
+            }
+        }
+        return maxNumber;
+    }
+
+    public List<String> maxCarName(List<Car> cars) {
+        int maxWinNumber = maxWinNumber(cars);
+
+        List<String> maxCarName = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getForwardCount() == maxWinNumber) {
+                maxCarName.add(car.getCarName());
+            }
+        }
+        return maxCarName;
+    }
 }
