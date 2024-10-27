@@ -3,8 +3,8 @@ package racingcar.controller;
 import racingcar.model.CarStatus;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-import racingcar.util.validator.RoundNumberValidator;
-import racingcar.util.validator.CarNameValidator;
+import racingcar.validation.RoundNumberValidator;
+import racingcar.validation.CarNameValidator;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ public class Controller {
     }
 
     public void playGame() {
-        List<String> carNames = CarNameValidator.getSplitCarName(InputView.readCarNames());
-        int numberOfRounds = RoundNumberValidator.parseToInt(InputView.readCountOfRounds());
+        List<String> carNames = CarNameValidator.splitAndValidateCarNames(InputView.readCarNames());
+        int numberOfRounds = RoundNumberValidator.validateRoundNumber(InputView.readCountOfRounds());
 
         CarStatus carStatus = new CarStatus(carNames);
 

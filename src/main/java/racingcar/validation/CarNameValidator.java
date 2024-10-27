@@ -1,6 +1,6 @@
-package racingcar.util.validator;
+package racingcar.validation;
 
-import java.util.Arrays;
+import racingcar.util.Parser;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,18 +14,23 @@ public class CarNameValidator {
     private static final String SPLIT_DELIMITER = ",";
     private static final int MAX_NAME_LENGTH = 5;
 
-    public static List<String> getSplitCarName(String carName) {
-        isFinishComma(carName);
-        isCarZero(carName);
-        List<String> carNames = Arrays.asList(carName.split(SPLIT_DELIMITER));
+    public static List<String> splitAndValidateCarNames(String carName) {
+        validateBeforeSplit(carName);
+
+        List<String> carNames = Parser.splitCarNames(carName, SPLIT_DELIMITER);
         Set<String> uniqueNames = new HashSet<>();
 
-        validateCarName(carNames, uniqueNames);
+        validateAfterSplit(carNames, uniqueNames);
         return carNames;
     }
 
-    private static void validateCarName(List<String> carNames, Set<String> uniqueNames) {
-        for (String name: carNames) {
+    private static void validateBeforeSplit(String carName) {
+        isFinishComma(carName);
+        isCarZero(carName);
+    }
+
+    private static void validateAfterSplit(List<String> carNames, Set<String> uniqueNames) {
+        for (String name : carNames) {
             isCarEmpty(name);
             isLengthValid(name);
             isDuplicate(uniqueNames, name);

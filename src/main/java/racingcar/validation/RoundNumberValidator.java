@@ -1,21 +1,16 @@
-package racingcar.util.validator;
+package racingcar.validation;
 
-import static racingcar.util.ExceptionMessage.DO_NOT_OVER_MAX;
+import racingcar.util.Parser;
 import static racingcar.util.ExceptionMessage.MUST_BE_INT;
 
 public class RoundNumberValidator {
     private static final String DIGIT_REGEX = "\\d+";
 
-    public static int parseToInt(String value) {
+    public static int validateRoundNumber(String value) {
         validateInput(value);
-        int rounds;
-        try {
-            rounds = Integer.parseInt(value);
-            isPositiveRound(rounds);
-            return rounds;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(DO_NOT_OVER_MAX.format());
-        }
+        int rounds = Parser.toInt(value);
+        isPositiveRound(rounds);
+        return rounds;
     }
 
     private static boolean isNumeric(String value) {
