@@ -18,6 +18,7 @@ public class RacingService {
 
     public RacingService(String carNameInput, String moveCountInput) {
         initializeCarMapFromInput(carNameInput);
+        Exception.validateIsNumber(moveCountInput);
         this.MOVE_COUNT = Integer.parseInt(moveCountInput);
     }
 
