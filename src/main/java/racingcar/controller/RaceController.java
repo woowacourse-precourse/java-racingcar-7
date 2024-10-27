@@ -30,7 +30,7 @@ public class RaceController {
 
     public void run() {
         raceService.setRaceCars(inputView.inputCarNames());
-        List<RaceLog> raceLogs = raceService.runRaceRounds(Integer.parseInt(inputView.inputTryCount()));
-        outputView.printRaceLogs(raceLogs);
+        outputView.printRaceLogs(raceService.runRaceRounds(Integer.parseInt(inputView.inputTryCount())));
+        outputView.printRaceWinners(raceService.generateWinners());
     }
 }
