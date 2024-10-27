@@ -2,7 +2,7 @@ package racingcar.domain.fake;
 
 import racingcar.domain.racing.RacingStrategy;
 
-public class FakeRandomNumberGenerator implements RacingStrategy {
+public class FakeRacingStrategy implements RacingStrategy {
 
     private static final int MIN_RANDOM_NUMBER_TO_MOVE_CAR = 4;
 
