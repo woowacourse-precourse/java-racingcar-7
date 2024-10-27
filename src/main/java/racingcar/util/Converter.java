@@ -1,8 +1,5 @@
 package racingcar.util;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Converter {
 
     public String[] parseCarList(String input) {
