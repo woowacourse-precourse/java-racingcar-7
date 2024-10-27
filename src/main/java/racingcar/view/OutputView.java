@@ -12,7 +12,7 @@ public class OutputView {
             for (Car car : Car.getCarList()) {
                 System.out.println(car.getName() + " : ");
                 List<String> processList = car.getMoveList();
-                System.out.print(String.join(", " ,processList.subList(0,i+1)));
+                System.out.print(String.join("" ,processList.subList(0,i+1)));
             }
         }
         System.out.println();
