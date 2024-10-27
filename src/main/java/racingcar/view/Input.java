@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.exception.ErrorType;
 
 public class Input {
 
@@ -14,11 +15,11 @@ public class Input {
         try {
             int count = Integer.parseInt(Console.readLine());
             if (count > MAXIMUM_COUNT) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorType.EXCEEDED_MAXIMUM_COUNT.getMessage());
             }
             return count;
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorType.INVALIDED_COUNT_TYPE.getMessage());
         }
     }
 }

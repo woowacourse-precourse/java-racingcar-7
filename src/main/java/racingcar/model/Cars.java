@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import racingcar.exception.ErrorType;
 
 public class Cars {
 
@@ -19,7 +20,7 @@ public class Cars {
                 .map(car -> car.getName())
                 .collect(Collectors.toSet());
         if (cars.size() != carNames.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.DUPLICATE_CAR_NAME.getMessage());
         }
     }
 
