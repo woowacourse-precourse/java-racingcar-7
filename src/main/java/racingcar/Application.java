@@ -23,7 +23,7 @@ public class Application {
             List<CarVO> afterGameCarVOList = GameUtil.oneGamePrintAndUpdate(carObjectList, turnNumber);
             System.out.println(GameUtil.getWinnerName(afterGameCarVOList));
         } catch (NoSuchElementException noSuchElementException) {
-            new IllegalArgumentException("시스템에 값이 입력되지 않았습니다!");
+            throw new IllegalArgumentException("시스템에 값이 입력되지 않았습니다!");
         }
     }
 }
