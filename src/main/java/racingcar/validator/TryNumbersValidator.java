@@ -1,5 +1,7 @@
 package racingcar.validator;
 
+import racingcar.message.ErrorMessage;
+
 public class TryNumbersValidator {
 
     public Long validate(String tryNums) {
@@ -11,14 +13,14 @@ public class TryNumbersValidator {
     public void validateNumeric(String tryNums) {
         for (char num : tryNums.toCharArray()) {
             if (!Character.isDigit(num)) {
-                throw new IllegalArgumentException("시도 횟수는 0-9 사이의 정수만 허용됩니다.");
+                throw new IllegalArgumentException(ErrorMessage.TRY_NUM_NOT_NUMERIC_ERROR.getMessage());
             }
         }
     }
 
     public void validateBlank(String tryNums) {
         if (tryNums.isBlank()) {
-            throw new IllegalArgumentException("공백 값은 허용하지 않습니다.");
+            throw new IllegalArgumentException(ErrorMessage.COMMON_INPUT_BLANK_ERROR.getMessage());
         }
     }
 
