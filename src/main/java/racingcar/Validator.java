@@ -1,13 +1,25 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Validator {
 
     static void validateCarNames(String carNames) {
         checkNameExist(carNames);
+        List<String> carNameList = new ArrayList<>();
         for (String carName : carNames.split(",", -1)) {
             String stripCarName = carName.strip();
             checkEmptyName(stripCarName);
             checkCarNameLength(stripCarName);
+            checkDuplicateName(stripCarName, carNameList);
+            carNameList.add(stripCarName);
+        }
+    }
+
+    static void checkDuplicateName(String carName, List<String> carNameList) {
+        if (carNameList.contains(carName)) {
+            throw new IllegalArgumentException("자동차 이름을 중복해서 사용할 수 없습니다");
         }
     }
 
