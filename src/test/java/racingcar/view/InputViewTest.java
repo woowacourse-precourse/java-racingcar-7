@@ -54,6 +54,20 @@ public class InputViewTest {
     }
 
     @Test
+    void 자동차_이름_공백_포함_불가() {
+        setInput("po bi,woni,jun\n");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> inputView.receiveCarNames());
+        assertEquals("자동차 이름에는 공백이 포함될 수 없습니다.", exception.getMessage());
+    }
+
+    @Test
+    void 자동차_이름_구분자_쉼표만_허용() {
+        setInput("pobi.woni,jun\n");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> inputView.receiveCarNames());
+        assertEquals("자동차 이름 구분자는 쉼표(,)만 가능합니다.", exception.getMessage());
+    }
+
+    @Test
     void 경주_횟수_공백_불가() {
         setInput("pobi,woni,jun\n");
         setInput("\n");
