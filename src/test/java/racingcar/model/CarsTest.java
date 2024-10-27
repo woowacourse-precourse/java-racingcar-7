@@ -9,7 +9,7 @@ import racingcar.utils.Constants;
 
 public class CarsTest {
     private final static String NAMES = "hana,min,aria";
-    private final static int COUNT = 3;
+    private final static int CAR_NUMBER = 3;
 
     private Cars cars;
 
@@ -24,7 +24,7 @@ public class CarsTest {
                 .forEach(name -> cars.addCar(name));
 
         assertThat(cars.getRaceInfos().size())
-                .isEqualTo(COUNT);
+                .isEqualTo(CAR_NUMBER);
     }
 
     @Test
