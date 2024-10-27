@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,4 +27,14 @@ public class RacingGameUtility {
 
         return Arrays.stream(list).collect(Collectors.toList());
     }
+
+    public static List<RacingCar> generateRacingCar(List<String> nameList) {
+        List<RacingCar> carList = new ArrayList<>();
+        nameList.forEach(str -> {
+            carList.add(new RacingCar(str));
+        });
+
+        return carList;
+    }
+
 }
