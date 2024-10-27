@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
 
-    private final Name name2;
+    private final Name name;
     private Position position;
 
     public Car(String name) {
@@ -18,7 +18,7 @@ public class Car {
     }
 
     public Car(Name name, Position position) {
-        this.name2 = name;
+        this.name = name;
         this.position = position;
     }
 
@@ -33,7 +33,7 @@ public class Car {
     }
 
     public String getName() {
-        return name2.getValue();
+        return name.getValue();
     }
 
     public Position getPosition() {
