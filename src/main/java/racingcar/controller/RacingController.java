@@ -3,12 +3,16 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import racingcar.model.Car;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingController {
 
     final InputView inputView = new InputView();
+    final OutputView outputView = new OutputView();
     int attempts;
     List<Car> cars = new ArrayList<>();
 
@@ -18,7 +22,18 @@ public class RacingController {
     public void run() {
         setCars(inputView.getCarNamesInput());
         setAttempts(inputView.getAttempts());
+
+        outputView.printStartMessage();
+        IntStream.range(0, attempts).forEach(i -> playOneRace());
     }
+    }
+
+    public void playOneRace() {
+        for (Car car : cars) {
+            car.move();
+            outputView.printCurrentLocationOf(car);
+        }
+        outputView.printEndOfOneRace();
     }
 
     public void setCars(String input) {
