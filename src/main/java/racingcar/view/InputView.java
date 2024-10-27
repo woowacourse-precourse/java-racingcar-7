@@ -14,7 +14,7 @@ public class InputView {
     private String readCarNames() {
         System.out.println(INPUT_NAME_MESSAGE);
         String carNames = Console.readLine();
-        checkCarNameIsNull(carNames);
+        checkRacingInfoIsNull(carNames);
 
         return carNames;
     }
@@ -23,13 +23,13 @@ public class InputView {
         System.out.println(INPUT_TRY_COUNT_MESSAGE);
         String tryCount = Console.readLine();
 
-        checkCarNameIsNull(tryCount);
+        checkRacingInfoIsNull(tryCount);
         return Integer.parseInt(tryCount);
     }
 
-    private void checkCarNameIsNull(String carNames) {
+    private void checkRacingInfoIsNull(String carNames) {
         if (carNames == null || carNames.isBlank()) {
-            throw new IllegalArgumentException("경주할 자동차 이름을 입력해주세요.");
+            throw new IllegalArgumentException("자동차 이름 또는 경기횟수를 입력해주세요.");
         }
     }
 }
