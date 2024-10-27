@@ -37,7 +37,7 @@ public class CarService {
     }
 
     public void startRace(List<Car> cars, int count) {
-        System.out.println(OutputMessage.RESULT.getMessage());
+        outputView.racingResult();
 
         for (int i = 0; i < count; i++) {
             cars.forEach(car -> car.move(RandomNumberGenerator.move()));

@@ -7,12 +7,13 @@ import java.util.List;
 
 public class OutputView {
 
+    public void racingResult(){
+        System.out.println(OutputMessage.RESULT.getMessage());
+    }
+
     public void racingView(List<Car> cars){
-        for(Car car : cars){
-            StringBuilder positionMark = new StringBuilder();
-            for(int i=0; i<car.getPosition(); i++){
-                positionMark.append("-");
-            }
+        for (Car car : cars) {
+            String positionMark = "-".repeat(car.getPosition());
             System.out.println(car.getName() + " : " + positionMark);
         }
         System.out.println();
