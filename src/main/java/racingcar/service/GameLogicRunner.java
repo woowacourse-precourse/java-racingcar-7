@@ -22,5 +22,4 @@ public class GameLogicRunner {
     public String getFinalWinner() {
         return gameLogicValidation.findRacingWinner();
     }
-
 }
