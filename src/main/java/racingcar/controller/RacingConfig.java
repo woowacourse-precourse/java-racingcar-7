@@ -17,8 +17,8 @@ public class RacingConfig {
     }
 
     public RacingGame readyRacingGame() {
-        List<String> splittedRacersName = StringSplitter.splitByDelimiter(rawUserInput);
-        List<CarName> rawCarNames = splittedRacersName.stream()
+        List<String> splittedCarsName = StringSplitter.splitByDelimiter(rawUserInput);
+        List<CarName> rawCarNames = splittedCarsName.stream()
                 .map(CarName::new)
                 .toList();
 
