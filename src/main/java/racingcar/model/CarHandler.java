@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class CarHandler {
 
     private static final String COMMA = ",";
-    private static final String HYPHEN = "-";
 
     private final List<Car> cars = new ArrayList<>();
     private final Validation validation = new Validation();
@@ -42,10 +41,9 @@ public class CarHandler {
         for (Car car : cars) {
             car.moveCar();
             int carMoveCount = car.getMoveCount();
-            System.out.println(car.getName() + " : " + HYPHEN.repeat(carMoveCount));
+            OutputMessage.resultHyphenMessage(car.getName(), carMoveCount);
         }
         System.out.println();
-
     }
 
     public List<Car> getWinnerList() {
