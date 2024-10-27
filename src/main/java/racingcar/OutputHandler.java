@@ -4,7 +4,7 @@ import java.util.List;
 
 public class OutputHandler {
 
-    public static void outputStartInfo(){
+    public static void outputStartMessage(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     }
 
@@ -31,4 +31,8 @@ public class OutputHandler {
         System.out.println(winner);
     }
 
+    public static void outputEndMessage() {
+        System.out.println();
+        System.out.println("실행결과");
+    }
 }
