@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 /**
@@ -35,7 +34,7 @@ public class CarRacing {
     }
 
     private boolean isMovable() {
-        int randomValue = Randoms.pickNumberInRange(0, 9);
+        int randomValue = RandomNumberGenerator.pickNumberInRange(0, 9);
         return randomValue >= 4;
     }
 }
