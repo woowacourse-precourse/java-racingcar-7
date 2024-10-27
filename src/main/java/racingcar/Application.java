@@ -2,6 +2,8 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
+
+
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String CarInput = camp.nextstep.edu.missionutils.Console.readLine();
         public static String[] carList(String input){
@@ -18,10 +20,19 @@ public class Application {
             return nameList;
         }
 
-
-//### 2. 이동 횟수 입력 구현
-//            - 사용자는 몇 번의 이동을 할 것인지 입력
-//            - 입력 메서드와 예외처리는 1번과 동일
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String racingNum = camp.nextstep.edu.missionutils.Console.readLine();
+        public static int numValid(String racingNum){
+            try {
+                int racingNumber = Integer.parseInt(racingNum);
+                if (racingNumber <= 0) {
+                    throw new IllegalArgumentException("시도할 횟수는 0보다 큰 정수이어야 합니다.");
+                }
+                return racingNumber;
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("시도할 횟수는 정수로 입력되어야 합니다.");
+            }
+        }
 
     }
 }
