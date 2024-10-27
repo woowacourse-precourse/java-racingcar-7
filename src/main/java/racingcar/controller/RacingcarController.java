@@ -37,7 +37,22 @@ public class RacingcarController {
 
     }
 
-    public List<String> findWinner(List<Racingcar> racingcarList) {
+    private List<Racingcar> createRacingcars(String racingcarNames) {
+        String[] racingcars = racingcarNames.split(",");
+        List<Racingcar> racingcarsList = new ArrayList<>();
+
+        for(String racingcarName : racingcars) {
+            racingcarName = racingcarName.trim();
+            if (racingcarName.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+            racingcarsList.add(new Racingcar(racingcarName));
+        }
+        return racingcarsList;
+    }
+
+
+    private List<String> findWinner(List<Racingcar> racingcarList) {
         List<String> winners = new ArrayList<>();
         int maxLocation = Integer.MIN_VALUE;
         for (Racingcar racingcar : racingcarList) {
@@ -54,17 +69,4 @@ public class RacingcarController {
 
 
 
-    public List<Racingcar> createRacingcars(String racingcarNames) {
-        String[] racingcars = racingcarNames.split(",");
-        List<Racingcar> racingcarsList = new ArrayList<>();
-
-        for(String racingcarName : racingcars) {
-            racingcarName = racingcarName.trim();
-            if (racingcarName.length() > 5) {
-                throw new IllegalArgumentException();
-            }
-            racingcarsList.add(new Racingcar(racingcarName));
-        }
-        return racingcarsList;
-    }
 }
