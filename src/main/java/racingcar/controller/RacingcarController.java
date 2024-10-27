@@ -35,4 +35,8 @@ public class RacingcarController {
     private boolean shouldMoveForward() {
         return Randoms.pickNumberInRange(0, 9) >= MOVE_THRESHOLD;
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
