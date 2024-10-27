@@ -16,7 +16,7 @@ public final class GameController {
     }
 
     public void run() {
-        Game game = gameSetup();
+        game = gameSetup();
         doRace();
         showResult();
     }
@@ -43,6 +43,7 @@ public final class GameController {
         for (int i = 0; i < game.getTotalRound(); i++) {
             game.playRound();
             displayCarsPositions();
+            gameView.displayNewLine();
         }
     }
 
