@@ -18,6 +18,12 @@ public class BeanConfig {
 
     private static final Set<Class<?>> currentRegisterLog = new HashSet<>(); // 순환 참조 검사를 위한 Set 객체
 
+    public static void clear() {
+        interfaceImplementationMap.clear();
+        beanContainer.clear();
+        currentRegisterLog.clear();
+    }
+
 
     public static void registerBeanContainer(Set<Class<?>> classesToBeBeans) {
         classesToBeBeans.forEach(clazz -> {
