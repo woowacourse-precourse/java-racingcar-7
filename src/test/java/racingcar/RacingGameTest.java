@@ -12,7 +12,7 @@ class RacingGameTest {
     @DisplayName("주어진 횟수 동안 n대의 자동차를 모두 전진시키는 규칙을 적용하면 각 포지션은 1씩 증가함을 테스트하라")
     @Test
     void test1() {
-        Cars cars = Cars.withNames(List.of("A", "B", "C"));
+        Cars cars = new Cars(List.of(new Car("A"), new Car("B"), new Car("C")));
         RacingGame game = new RacingGame(cars, () -> true); // 전진시키는 규칙 적용
 
         game.raceRound();
@@ -26,7 +26,7 @@ class RacingGameTest {
     @DisplayName("주어진 횟수 동안 n대의 자동차를 모두 정지시키는 규칙을 적용하면 각 포지션은 그래도인 것을 테스트하라")
     @Test
     void test2() {
-        Cars cars = Cars.withNames(List.of("A", "B", "C"));
+        Cars cars = new Cars(List.of(new Car("A"), new Car("B"), new Car("C")));
         RacingGame game = new RacingGame(cars, () -> false); // 정지시키는 규칙 적용
 
         game.raceRound();

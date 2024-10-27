@@ -7,17 +7,18 @@ public class Cars {
 
     private final List<Car> cars;
 
-    // Todo: init 을 RacingGame 에서 해야하는건지 다시 보기 
-    public static Cars withNames(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return new Cars(cars);
+    public Cars() {
+        this.cars = new ArrayList<>();
     }
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public void init(String[] carNames) {
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
     }
 
     public void move(MoveCondition moveCondition) {

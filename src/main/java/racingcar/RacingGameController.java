@@ -27,14 +27,17 @@ public class RacingGameController {
     }
 
     private Cars createRacingCars() {
-        List<String> carNames = input.readCarNames();
+        String carNamesString = input.readCarNames();
+        Cars cars = new Cars();
         Set<String> distinctNames = new HashSet<>();
-        for (String name : carNames) {
-            if (isDuplicate(name, distinctNames)) {
-                throw new IllegalArgumentException(String.format("(%s)은 중복된 참가자입니다. 다시 입력해주세요.", name));
+        String[] carNames= carNamesString.split(",");
+        for (String carName : carNames) {
+            if (isDuplicate(carName, distinctNames)) {
+                throw new IllegalArgumentException(String.format("중복된 참가자(%s)가 존재합니다.", carName));
             }
         }
-        return Cars.withNames(carNames);
+        cars.init(carNames);
+        return cars;
     }
 
     private boolean isDuplicate(String name, Set<String> distinctNames) {
