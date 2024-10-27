@@ -12,8 +12,6 @@ public class Application {
         List<String> carNameList = new ArrayList<>(Arrays.asList(separatedCarNames));
 
         int howManyTimesMove = carInputHandler.userInputHowManyTimes();
-        // 출력 TEST 출력 메서드 따로 생성후 삭제 예정
-        System.out.println(howManyTimesMove);
 
 
     }
