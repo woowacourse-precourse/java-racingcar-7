@@ -6,19 +6,19 @@ import java.util.List;
 public class Car implements Comparable<Car> {
 
     private final String name;
-    private int totalMoves;
+    private long totalMoves;
     private List<String> moveHistory;
 
-    public Car(String name, int numberOfStages) {
+    public Car(String name, long numberOfStages) {
         this.name = name;
-        this.moveHistory = new ArrayList<>(numberOfStages);
+        this.moveHistory = new ArrayList<>((int) numberOfStages);
     }
 
     public void setTotalMoves(int totalMoves) {
         this.totalMoves = totalMoves;
     }
 
-    public int getTotalMoves() {
+    public long getTotalMoves() {
         return this.totalMoves;
     }
 
@@ -32,6 +32,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car c) {
-        return c.totalMoves - this.totalMoves;
+        return Long.compare(c.totalMoves, this.totalMoves);
     }
 }

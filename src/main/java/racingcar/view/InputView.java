@@ -21,9 +21,9 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    private static int getNumStagesInput() {
+    private static long getNumStagesInput() {
         System.out.println(NUMSTAGES_INPUT_MESSAGE);
-//        return Integer.parseInt(Console.readLine());
-        return Integer.parseInt(scanner.nextLine());
+//        return Long.parseLong(Console.readLine());
+        return Long.parseLong(scanner.nextLine());
     }
 }

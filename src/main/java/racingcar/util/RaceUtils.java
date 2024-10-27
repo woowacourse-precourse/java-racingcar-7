@@ -12,7 +12,7 @@ public class RaceUtils {
         List<String> winnerList = new ArrayList<>();
 
         Collections.sort(carList);
-        int maxMoves = carList.get(0).getTotalMoves();
+        long maxMoves = carList.get(0).getTotalMoves();
 
         for (int i = 1; i < carList.size(); i++) {
             if (carList.get(i).getTotalMoves() < maxMoves)

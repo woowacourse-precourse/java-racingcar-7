@@ -13,4 +13,8 @@ public class Validator {
         if (carNames.isEmpty())
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_COUNT);
     }
+
+    public static void isPositiveNumber(int number) {
+
+    }
 }
