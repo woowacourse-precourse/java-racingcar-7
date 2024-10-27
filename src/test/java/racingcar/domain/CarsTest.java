@@ -17,8 +17,13 @@ public class CarsTest {
     @DisplayName("n번 이동한 후 자동차의 상태는 0이상 n이하 여야 한다")
     @Test
     void validateCarsMovesNumber() {
+        // given
         int moveNumber = 43;
+
+        // when
         cars.racing(moveNumber);
+
+        // then
         for (int i = 0; i < 3; i++) {
             new IntegerAssert(cars.getCar(i).getAdvanceNum()).isBetween(0, moveNumber);
         }

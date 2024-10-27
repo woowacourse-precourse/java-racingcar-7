@@ -30,8 +30,7 @@ public class NumberRequestHandlerTest {
         // given
         String inputString = "123d12";
 
-        // when
-        // then
+        // when, then
         Assertions.assertThatThrownBy(() -> numberRequestHandler.convertToInteger(inputString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_NUMBER_ERROR.getMessage());
@@ -43,8 +42,7 @@ public class NumberRequestHandlerTest {
         // given
         String inputString = "";
 
-        // when
-        // then
+        // when, then
         Assertions.assertThatThrownBy(() -> numberRequestHandler.convertToInteger(inputString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_NUMBER_ERROR.getMessage());
@@ -56,8 +54,7 @@ public class NumberRequestHandlerTest {
         // given
         int inputString = -1236465908;
 
-        // when
-        // then
+        // when, then
         Assertions.assertThatThrownBy(() -> numberRequestHandler.validateNegative(inputString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(NEGATIVE_NUMBER_ERROR.getMessage());

@@ -15,6 +15,7 @@ class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
+    @DisplayName("통합 기능 테스트")
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
