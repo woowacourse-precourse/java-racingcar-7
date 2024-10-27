@@ -8,4 +8,8 @@ public class Record {
         this.name = car.getName();
         this.moveCount = car.getMoveCount();
     }
+
+    public long getMoveCount() {
+        return moveCount;
+    }
 }

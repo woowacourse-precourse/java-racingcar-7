@@ -15,7 +15,7 @@ public class RacingGame {
         long attemptNumber = inputReceiver.readAttemptNumber();
 
         Racing racing = new Racing(createCars(carNames), attemptNumber);
-        racing.race();
+        List<String> winners = racing.race();
     }
 
     private List<Car> createCars(List<String> carNames) {
