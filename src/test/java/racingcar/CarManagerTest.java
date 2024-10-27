@@ -4,6 +4,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -51,5 +53,52 @@ class CarManagerTest {
 
     @Test
     void 거리를_가장_많이_이동한_자동차를_찾는다() {
+        CarManager carManager = new CarManager();
+        List<Car> cars = new ArrayList<>();
+        Car car1 = new Car("first");
+        setDistance(car1,5);
+
+        Car car2 = new Car("two");
+        setDistance(car2,2);
+
+        Car car3 = new Car("third");
+        setDistance(car3,15);
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+
+        List<Car> actual = carManager.findWinner(cars);
+        assertThat(actual.size()).isEqualTo(1);
+        assertThat(actual.get(0)).isEqualTo(car3);
+    }
+
+    @Test
+    void 공동_우승() {
+        CarManager carManager = new CarManager();
+        List<Car> cars = new ArrayList<>();
+        Car car1 = new Car("first");
+        setDistance(car1,5);
+
+        Car car2 = new Car("two");
+        setDistance(car2,15);
+
+        Car car3 = new Car("third");
+        setDistance(car3,15);
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+
+        List<Car> actual = carManager.findWinner(cars);
+        assertThat(actual.size()).isEqualTo(2);
+    }
+
+    private void setDistance(Object object,Object distance) {
+        try {
+            Field field = object.getClass().getDeclaredField("distance");
+            field.setAccessible(true);
+            field.set(object,distance);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
