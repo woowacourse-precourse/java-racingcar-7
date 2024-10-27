@@ -139,6 +139,24 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 테스트_3_1_난수값에_따라_전진_정지_확인() {
+        ArrayList<Car> carList = new ArrayList<>();
+        carList.add(new Car("a"));
+        carList.add(new Car("b"));
+        carList.add(new Car("c"));
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    Application.proceedTurn(carList);
+                    assertThat(carList.get(0).getDistance()).isEqualTo(1);
+                    assertThat(carList.get(1).getDistance()).isEqualTo(0);
+                    assertThat(carList.get(2).getDistance()).isEqualTo(0);
+                },
+                MOVING_FORWARD, STOP, STOP
+        );
+    }
+
     @AfterEach
     void closeConsole() {
         Console.close();
