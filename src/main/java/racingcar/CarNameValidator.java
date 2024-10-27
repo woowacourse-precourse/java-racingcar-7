@@ -7,6 +7,13 @@ public class CarNameValidator {
         }
     }
 
+    public void inputMoreThanTwo(String carNames){
+        String[] carNameList = carNames.split(",");
+        if(carNameList.length < 2) {
+            throw new IllegalArgumentException("자동차 이름을 두 개 이상으로 입력해주세요");
+        }
+    }
+
     private boolean isCommaSeparated(String carNames){
         return carNames.matches("^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$");
     }
