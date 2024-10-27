@@ -13,6 +13,24 @@
 
 ## 📁 디렉토리 구조
 ```
+├── Application.java
+├── constant
+│   └── ErrorMessage.java : 범용 에러메시지 상수
+├── controller
+│   └── RacingCarController.java : 프로그램 흐름 제어
+├── model
+│   ├── Car.java : 이동, 경주별 위치 반환
+│   ├── Cars.java : 자동차 리스트, 우승자 판단
+│   └── RaceCount.java : 경주 횟수
+├── validator
+│   ├── CarValidator.java : Car 생성 유효성 검증
+│   ├── CarsValidator.java : Cars 생성 유효성 검증
+│   └── InputValidator.java : 사용자 입력값 유효성 검증
+└── view
+    ├── InputReader.java : 사용자 입력 수신
+    ├── InputView.java : 사용자 입력 뷰
+    ├── OutputView.java : 출력 뷰
+    └── OutputWriter.java : 메시지 출력
 ```
 
 ## 💻 프로그램 진행 순서
