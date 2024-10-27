@@ -19,10 +19,9 @@
     + [0] 최종 우승자를 판단하는 기능 findRacingWinner
   
 ### service package
-- racingCarGameService class : model 기능을 통해 게임 로직 구현, map 저장 위치
-    + [] 게임 1회 시도 후 변경된 map 반환  getOneTryResult
-    + [] 경기 결과 정보 반환 - getRacingResult
-    + [] 최종 우승자 반환 - getFinalWinner
+- racingCarGameRunner class : model 기능을 통해 게임 로직 구현, map 저장 위치
+    + [0] 게임 1회 시도 후 변경된 map 반환  getOneTryResult
+    + [0] 최종 우승자 반환 - getFinalWinner
 
 ### controller package
 - racingCarGameManager class
