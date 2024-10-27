@@ -9,10 +9,13 @@ public class Application {
 
     public static final String SPLITTER = ",";
     public static final String GO = "-";
+    public static final String FINAL_WINNER = "최종 우승자 : ";
 
     public static void main(String[] args) {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = readInput();
         List<RacingCar> cars = splitInput(input);
+        System.out.println("시도할 횟수는 몇 회인가요?");
         String trialStr = readInput();
         Integer trial = parseTrial(trialStr);
 
@@ -112,7 +115,7 @@ public class Application {
     }
 
     public static void printWinners(List<String> winnerList) {
-        String notice = "최종 우승자 : " + String.join(SPLITTER + " ", winnerList);
+        String notice = FINAL_WINNER + String.join(SPLITTER + " ", winnerList);
         System.out.println(notice);
     }
 }
