@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -29,6 +28,11 @@ public class RaceSystem {
             result.append('\n');
         }
 
+        List<String> winners = findWinners();
+        String raceResult = String.join(", ", winners);
+        result.append("최종 우승자 : ");
+        result.append(raceResult);
+
         return result.toString();
     }
 
@@ -37,7 +41,7 @@ public class RaceSystem {
 
         for (Car car: cars) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
-            if(randomNumber >= MIN_MOVE_CONDITION) {
+            if (randomNumber >= MIN_MOVE_CONDITION) {
                 car.move();
                 String distance = "-".repeat(car.getDistance());
                 result.append(car.getName());
@@ -47,6 +51,31 @@ public class RaceSystem {
             }
         }
 
+        String tmp = "s";
+
         return result;
+    }
+
+    private List<String> findWinners() {
+        List<String> winners = new ArrayList<>();
+        int maxDistance = findMaxDistance();
+
+        for (Car car: cars) {
+            if(car.getDistance() == maxDistance) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
+
+    private int findMaxDistance() {
+        int maxDistance = Integer.MIN_VALUE;
+
+        for (Car car: cars) {
+            maxDistance = Integer.max(maxDistance, car.getDistance());
+        }
+
+        return maxDistance;
     }
 }
