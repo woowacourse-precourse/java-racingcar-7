@@ -36,8 +36,7 @@ public class InputView {
     private static void validateCars(String[] cars) {
         Set<String> cheakUnique = new HashSet<>();
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+$");
-        if (cars.length == 0 || (cars.length == 1 && cars[0].trim().isEmpty()))
-            throw new IllegalArgumentException("자동차 이름을 최소 1개 이상 입력해야 합니다.");
+        if (cars.length <2 ) throw new IllegalArgumentException("자동차는 최소 2대 이상 입력해야 합니다.");
         for (String name : cars) {
             if (name.isEmpty())
                 throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
