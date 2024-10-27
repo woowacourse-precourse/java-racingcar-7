@@ -8,8 +8,17 @@ public class CarName {
         this.carName = carName;
     }
 
-    public Car createCar(){
+    public Car createCar() {
         return new Car(this.carName);
+    }
+
+    public boolean isName(String givenName) {
+        return this.carName.equals(givenName);
+    }
+
+    @Override
+    public String toString() {
+        return carName;
     }
 
     private static void isNameLongerThanFive(String name) {
