@@ -21,7 +21,7 @@ public class Round {
 
     private void validateInteger() {
         if (round < MINIMUM_ROUND) {
-            throw new IllegalArgumentException("a");
+            throw new IllegalArgumentException();
         }
     }
 }
