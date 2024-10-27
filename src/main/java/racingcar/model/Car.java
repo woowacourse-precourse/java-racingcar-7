@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static racingcar.global.constants.RaceConfigValues.MAX_CAR_NAME_LENGTH_NUMBER;
+import static racingcar.global.constants.RaceConfigValues.MIN_FORWARD_NUMBER;
 
 import racingcar.global.message.ErrorMessage;
 import racingcar.global.utils.RaceRandomUtils;
@@ -24,7 +25,7 @@ public class Car {
     }
 
     public void move() {
-        if (RaceRandomUtils.generateRandomNumber() >= 4) {
+        if (RaceRandomUtils.generateRandomNumber() >= MIN_FORWARD_NUMBER.getValue()) {
             this.position++;
         }
     }
