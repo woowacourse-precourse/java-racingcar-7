@@ -135,7 +135,6 @@ public class RacingCar {
         for (String carNameForCheck : carNameList) {
             checkCarNameLength(carNameForCheck);
             checkIfCarNameBlank(carNameForCheck);
-            checkIfCarNameSame(carNameForCheck);
         }
     }
 
