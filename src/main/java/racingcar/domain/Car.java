@@ -19,6 +19,10 @@ public class Car {
 		return randomNumber >= 4;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public int getDistance() {
 		return distance;
 	}
