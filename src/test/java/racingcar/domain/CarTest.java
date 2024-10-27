@@ -20,7 +20,6 @@ public class CarTest {
         int randomNumber = 4;
         //when
         car.judgeMove(randomNumber);
-
         //then
         assertThat(car.getPosition()).isEqualTo(1);
     }
