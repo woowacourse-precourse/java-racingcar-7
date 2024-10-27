@@ -2,12 +2,12 @@ package racingcar.service;
 
 import racingcar.config.GameConfig;
 import racingcar.model.Car;
+import racingcar.validation.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarService {
 
@@ -21,9 +21,15 @@ public class CarService {
 
     public GameConfig initializeGame() {
         String inputCarName = inputView.inputCarName();
-        List<Car> cars = Arrays.stream(inputCarName.split(","))
+
+        List<String> carNames = Arrays.asList(inputCarName.split(","));
+
+        Validator.checkDuplicateNames(carNames);
+
+        List<Car> cars = carNames.stream()
                 .map(Car::new)
-                .collect(Collectors.toList());
+                .toList();
+
         int attemptCount = inputView.getAttemptCount();
         return new GameConfig(cars, attemptCount);
     }
