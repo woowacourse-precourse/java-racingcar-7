@@ -14,7 +14,7 @@ public class ValidationService {
         if (input.endsWith(",")) {
             throw new IllegalArgumentException(ErrorMessage.UNEXPECTED_COMMA.getMessage());
         }
-        if (input.contains(",,")){
+        if (input.contains(",,")) {
             throw new IllegalArgumentException(ErrorMessage.MISSING_CAR_NAME.getMessage());
         }
     }
