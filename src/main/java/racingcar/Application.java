@@ -12,7 +12,7 @@ public class Application {
 
         String[] carNames = parseCars(input);
         Car[] cars = new Car[carNames.length];
-        for(int i = 0; i < carNames.length; i++) {
+        for (int i = 0; i < carNames.length; i++) {
             cars[i] = new Car(carNames[i]);
         }
 
@@ -24,9 +24,10 @@ public class Application {
             printAttempts(cars);
             System.out.println();
         }
+        printWinners(cars);
     }
 
-    public static class Car{
+    public static class Car {
         private String name;
         private int position;
 
@@ -44,7 +45,7 @@ public class Application {
         }
 
         public void move() {
-            if(Randoms.pickNumberInRange(0, 9) >= 4){
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 position++;
             }
         }
@@ -54,14 +55,34 @@ public class Application {
         return input.split(",");
     }
 
-    private static void printAttempts(Car[] cars){
-        for(Car car : cars){
+    private static void printAttempts(Car[] cars) {
+        for (Car car : cars) {
             car.move();
             System.out.print(car.getName() + " : ");
-            for(int i = 0; i < car.getPosition(); i++){
+            for (int i = 0; i < car.getPosition(); i++) {
                 System.out.print("-");
             }
             System.out.println();
         }
+    }
+
+    private static void printWinners(Car[] cars) {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+
+        StringBuilder winners = new StringBuilder();
+        for(Car car : cars) {
+            if(car.getPosition() == maxPosition) {
+                if (winners.length() > 0){
+                    winners.append(", ");
+                }
+                winners.append(car.getName());
+            }
+        }
+        System.out.println("최종 우승자 : " + winners.toString());
     }
 }
