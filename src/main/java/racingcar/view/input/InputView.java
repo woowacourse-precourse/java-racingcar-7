@@ -17,9 +17,15 @@ public class InputView {
     public InputValue readInput() {
         String delimitedCarNames = readCarName();
         List<String> carNames = inputValidator.validateDelimitedCarNames(delimitedCarNames);
-        int attemptCount = readAttemptCount();
-
-        return new InputValue(carNames, attemptCount);
+        try {
+            int attemptCount = readAttemptCount();
+            if (attemptCount < 0) {
+                throw new IllegalArgumentException("시도 횟수로는 음이 아닌 정수를 입력해주세요");
+            }
+            return new InputValue(carNames, attemptCount);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수로는 음이 아닌 정수를 입력해주세요");
+        }
     }
 
     private String readCarName() {
