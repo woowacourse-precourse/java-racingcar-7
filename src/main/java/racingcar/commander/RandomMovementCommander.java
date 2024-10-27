@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.commander;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.MoveCommand;
 
 public class RandomMovementCommander implements MovementCommander {
     @Override

@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
+import racingcar.commander.MovementCommander;
 
 public class Car {
 
