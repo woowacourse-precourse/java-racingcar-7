@@ -24,15 +24,14 @@ public class RacingCar {
     }
 
     private List<String> getWinners() {
-        this.startRace();
-
+        this.start();
         return cars.stream()
             .filter(car -> car.getMovementStatus() == this.getMaxMovement())
             .map(CarDto::getCarName)
             .toList();
     }
 
-    private void startRace() {
+    private void start() {
         System.out.println("실행 결과");
         for (int i = 0; i < rounds; i++) {
             for (CarDto car : cars) {
