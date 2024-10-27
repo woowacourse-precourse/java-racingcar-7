@@ -3,6 +3,7 @@ package Service;
 import VO.CarVO;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -44,6 +45,7 @@ public class RaceService {
                 winners.add(car.getCarName());
             }
         }
+        Collections.sort(winners);
         return winners;
     }
 
