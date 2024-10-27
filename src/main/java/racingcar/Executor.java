@@ -18,12 +18,13 @@ public class Executor {
     private final IOController ioController;
     private final Parser parser;
     private final Validator validator;
+    private final Racing racing;
 
-
-    Executor(IOController ioController, Parser parser, Validator validator) {
+    Executor(IOController ioController, Parser parser, Validator validator, Racing racing) {
         this.ioController = ioController;
         this.parser = parser;
         this.validator = validator;
+        this.racing = racing;
     }
 
     public void run() {
@@ -40,7 +41,10 @@ public class Executor {
         validator.validateRepeatCount(inputRepeatCountStr);
         repeatCount = parser.parseRepeatCount(inputRepeatCountStr);
 
-        executeForCount(cars, repeatCount);
+        for (int i = 0; i < repeatCount; i++) {
+            racing.moveCars(cars);
+            ioController.printResults(cars);
+        }
 
         winners = getWinners(cars);
         ioController.printWinners(winners);
