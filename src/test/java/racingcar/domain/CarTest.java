@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class CarTest {
 
@@ -26,25 +28,39 @@ class CarTest {
                 .hasMessage("경주할 자동차 이름을 입력해주세요.");
     }
 
-    @Test
-    @DisplayName("기준값이 4이상이면 차량의 위치가 +1 된다.")
-    void carMoveTest() {
+    @ParameterizedTest(name = "입력:{0} -> 위치:{1}")
+    @CsvSource(value = {"4,1", "3,0"})
+    @DisplayName("기준값이 4이상이면 차량의 위치가 +1 되고, 3이하이면 멈춘다.")
+    void carMoveTest(int value, int position) {
         // given
         Car car = new Car("pobi");
         // when
-        car.move(4);
+        car.move(value);
         // then
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(position);
     }
 
     @Test
-    @DisplayName("기준값이 4미만이면 차량의 위치는 이동하지 않는다.")
-    void carNotMoveTest() {
+    @DisplayName("차량에 위치가 같다면 ture가 반환된다.")
+    void isSamePositionTrueTest() {
         // given
         Car car = new Car("pobi");
+        car.move(0);
         // when
-        car.move(3);
+        boolean result = car.isSamePosition(new Car("woni"));
         // then
-        assertThat(car.getPosition()).isZero();
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    @DisplayName("차량에 위치가 다르다면 False가 반환된다.")
+    void isSamePositionFalseTest() {
+        // given
+        Car car = new Car("pobi");
+        car.move(4);
+        // when
+        boolean result = car.isSamePosition(new Car("woni"));
+        // then
+        assertThat(result).isFalse();
     }
 }
