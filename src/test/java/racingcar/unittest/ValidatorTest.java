@@ -102,7 +102,7 @@ class ValidatorTest extends NsTest {
         // When & Then
         assertThatThrownBy(() -> Validator.validateAttempts(attempts))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("시도 횟수는 양의 정수여야 합니다");
+                .hasMessageContaining("시도 횟수는 한 개의 양의 정수여야 합니다:");
     }
 
     @Override

@@ -34,7 +34,7 @@ public final class Validator {
 
     public static void validateAttempts(final int attempts) {
         if (attempts <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 양의 정수여야 합니다: " + attempts);
+            throw new IllegalArgumentException("시도 횟수는 한 개의 양의 정수여야 합니다: " + attempts);
         }
     }
 }

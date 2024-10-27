@@ -40,7 +40,7 @@ class GameTest extends NsTest {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi,crong,honux", "-1"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("시도 횟수는 양의 정수여야 합니다");
+                    .hasMessageContaining("시도 횟수는 한 개의 양의 정수여야 합니다:");
             assertThat(output()).contains(
                     "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)",
                     "시도할 횟수는 몇 회인가요?"
