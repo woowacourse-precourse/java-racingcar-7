@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.List;
+import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
@@ -27,15 +27,13 @@ class RacingGameTest {
         t2.tryMoveForward(4, 1);
         t3.tryMoveForward(4, 1);
 
-        List<Car> cars = List.of(
-                t1, t2, t3
-        );
+        Cars cars = Cars.from(Arrays.asList(t1, t2, t3));
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
 
         // when
-        racingGame.showCarsStatusForEachTrial(cars);
+        racingGame.showCarsPositionalStatusForEachTrial(cars);
 
         // then
         assertThat(byteArrayOutputStream.toString()).isEqualTo(

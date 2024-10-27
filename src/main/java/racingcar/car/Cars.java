@@ -3,6 +3,7 @@ package racingcar.car;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.StringJoiner;
 import racingcar.provider.NumberProvider;
 
 public class Cars {
@@ -35,6 +36,20 @@ public class Cars {
         }
     }
 
+    public String changeCurrentTotalPositionalStatusToVisual(String positionalCarStatusSymbol) {
+        StringJoiner stringJoiner = new StringJoiner(System.lineSeparator());
+
+        for (Car car : cars) {
+            String currentPositionalVisualStatus = car.changeCurrentPositionalStatusToVisual(
+                    positionalCarStatusSymbol);
+
+            stringJoiner.add(currentPositionalVisualStatus);
+        }
+
+        return stringJoiner.toString();
+
+    }
+
     public List<Car> findWinnerList() {
         Car winnerCar = Collections.max(cars);
 
@@ -42,4 +57,6 @@ public class Cars {
                 .filter(car -> car.isSamePosition(winnerCar))
                 .toList();
     }
+
+
 }
