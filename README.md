@@ -21,3 +21,4 @@
 - [x] 경주하는 메소드 구현
 - [x] 경주 상태 출력하는 메소드 구현
 - [x] 우승자 출력하는 메소드 구현
+- [x] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현
