@@ -5,6 +5,8 @@ import java.util.List;
 
 public class RandomPicker {
 
+    MapBuilder mapBuilder = new MapBuilder();
+
     public void runSingleRandomRound(List<String> carNames){
         for (int i = 0; i < carNames.size(); i++) {
             String carName = carNames.get(i);
@@ -25,6 +27,12 @@ public class RandomPicker {
     private static void validateRandomRange(int runRandom) {
         if (runRandom > 9 || runRandom < 0) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void mapCarIfForward(String carName, boolean isCarGoForward) {
+        if(isCarGoForward == true) {
+            mapBuilder.mapSingleCarForwardResult(carName);
         }
     }
 }
