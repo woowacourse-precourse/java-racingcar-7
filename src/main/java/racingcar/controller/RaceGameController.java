@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.TrialCount;
 import racingcar.service.RaceGameService;
 import racingcar.util.parser.InputStringParser;
 import racingcar.view.InputView;
@@ -25,7 +26,7 @@ public class RaceGameController {
     public void run() {
         String racerNames = requestInputStringRacerName();
         List<Car> cars = raceGameService.enrollRacer(racerNames, new InputStringParser());
-        final int trialCount = requestInputTrialCount();
+        final TrialCount trialCount = new TrialCount(requestInputTrialCount());
     }
 
     private String requestInputStringRacerName() {
@@ -33,8 +34,8 @@ public class RaceGameController {
         return inputView.read();
     }
 
-    private int requestInputTrialCount(){
+    private String requestInputTrialCount(){
         outputView.printAskInputTrialCount();
-        return Integer.parseInt(inputView.read());
+        return inputView.read();
     }
 }
