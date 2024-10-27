@@ -36,7 +36,7 @@ public class Validator {
         try {
             return Integer.parseInt(attemptString);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자가 아닌 다른 문자입니다.");
         }
     }
 }
