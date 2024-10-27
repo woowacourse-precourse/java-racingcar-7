@@ -15,11 +15,8 @@ public class Race {
     }
 
     public List<Car> proceed() {
+        round.next();
         moveAllCars();
-
-        if (round.hasNext()) {
-            round.next();
-        }
 
         return cars;
     }

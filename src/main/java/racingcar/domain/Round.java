@@ -11,7 +11,7 @@ public class Round implements Iterator<Integer> {
     public Round(int total) {
         validateTotalRound(total);
         this.total = total;
-        this.current = 1;
+        this.current = 0;
     }
 
     public int getCurrent() {
