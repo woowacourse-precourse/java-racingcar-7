@@ -7,7 +7,7 @@
 ![Java](https://img.shields.io/badge/Java-17-orange)
 
 # 🥇 2주차 미션 목표
-1. 클래스를 분리하며 개발하기
+1. 클래스가 하나의 책임을 갖도록 분리하기
 2. stream 사용하기
 
 &nbsp;
@@ -53,7 +53,7 @@ jun : -----
 
 # 🔧 구현할 기능 목록
 
-### 1. 입력
+### 1. 사용자 입력
 - [x] 자동차 이름이 쉼표 기준으로 모두 포함된 문자열을 입력받는다. (예외 처리: `IllegalArgumentException`
    발생 시킨 후 종료)
   - [x] [예외] 자동차 이름이 1글자 미만 5글자 초과일 경우
@@ -67,6 +67,7 @@ jun : -----
 - [x] 입력받은 자동차 이름과 시도 횟수를 domain 으로 전달한다.
 - [x] 무작위 값에 의해 각 자동차의 전진 혹은 멈춤을 판단한다.
 - [x] 게임 실행 과정을 출력한다.
+### 3. 결과
 - [x] 최종 우승자를 모두 출력한다.
 
 
@@ -97,8 +98,8 @@ jun : -----
   * readCountOfRounds() - 사용자로부터 정수 입력
 - OutputView
   * showResultMessage() - 실행 결과 문구 출력
-  * printCarPositions() - 실행 과정 출력
-  * printWinners() - 우승자 명단 출력
+  * printGameProgress() - 게임 진행 과정 출력
+  * showWinners() - 우승자 명단 출력
 
 ### **model**
 - Car
@@ -112,13 +113,19 @@ jun : -----
   * getCarNames() - 모든 자동차들의 이름이 담긴 리스트 반환
   * getCarPositions() - 모든 자동차들의 위치가 인덱스 값으로 담긴 리스트 반환
   * getWinners() - 최종 우승자 명단 반환
+  * PlayOneRound() - 한 라운드의 동작 처리
 - WinnerFinder
   * findWinners() - 최종 우승자가 담긴 리스트 생성
 
 #### **util**
-- CarNameValidator
-- RoundNumberValidator
-- ExceptionMessage
+- ExceptionMessage - 에러메세지를 enum 클래스로 관리
+- Parser
+  * toInt() - 형 변환
+  * splitCarNames() - 쉼표를 기준으로 입력받은 문자열 split
+
+#### **validation**
+- CarNameValidator - 자동차 이름에 대해 검증하고 잘못된 입력 발생 시 처리
+- RoundNumberValidator - 게임 진행 횟수에 대해 검증하고 잘못된 입력 발생 시 처리
 
 ### **controller**
 - Controller
