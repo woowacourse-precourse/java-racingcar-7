@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.dto.UserInputDTO;
 import racingcar.exception.Validator;
 
@@ -24,6 +25,7 @@ public class InputView {
     private static long getNumStagesInput() {
         System.out.println(NUMSTAGES_INPUT_MESSAGE);
 //        String numStages = Console.readLine();
+//        Validator.isRightNumber(numStages);
 //        return Long.parseLong(numStages);
         String numStages = scanner.nextLine();
         Validator.isRightNumber(numStages);

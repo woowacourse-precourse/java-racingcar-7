@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.dto.UserInputDTO;
 import racingcar.util.InputParser;
@@ -25,21 +24,21 @@ public class RaceService {
         raceOver();
     }
 
-    private void race(final long stage) {
+    public void race(final long stage) {
         for (Car car : carList) {
-            if (canMove())
+            if (canMove(car))
                 car.move(stage);
             else
                 car.stop(stage);
         }
     }
 
-    private void raceOver() {
+    public void raceOver() {
         this.winnerList = RaceUtils.getWinners(carList);
     }
 
-    private boolean canMove() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+    public boolean canMove(final Car car) {
+        return car.getRandomNumber() >= 4;
     }
 
     public long getNumOfStages() {
