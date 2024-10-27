@@ -2,8 +2,12 @@ package racingcar.controller;
 
 import racingcar.dto.InputDTO;
 import racingcar.message.ExceptionCode;
+import racingcar.model.Car;
 import racingcar.view.InputCarNamesView;
 import racingcar.view.InputTurnCountView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputController {
 
@@ -16,23 +20,33 @@ public class InputController {
     }
 
     public InputDTO getInput() {
-        String[] carList = getCarNameList();
-        int inputTurnCount = getTurnCount();
+        List<Car> carList = convertToCarList(inputCarNamesView.getCarNames());
+        int inputTurnCount = turnCountToInt(inputTurnCountView.getTurnCount());
 
         System.out.println();
 
         return new InputDTO(carList, inputTurnCount);
     }
 
-    private String[] getCarNameList() {
-        String inputCarNameList = inputCarNamesView.getCarNames();
-
-        return inputCarNameList.split(",");
+    private List<Car> convertToCarList(final String inputCarNames) {
+        String[] inputCarNameList = inputCarNames.split(",");
+        return carNameListToCarList(inputCarNameList);
     }
 
-    private int getTurnCount() {
+    private List<Car> carNameListToCarList(final String[] inputCarNameList) {
+        List<Car> carList = new ArrayList<>();
+
+        for (final String name : inputCarNameList) {
+            Car car = new Car(name);
+            carList.add(car);
+        }
+
+        return carList;
+    }
+
+    private int turnCountToInt(final String inputTurnCount) {
         try {
-            return Integer.parseInt(inputTurnCountView.getTurnCount());
+            return Integer.parseInt(inputTurnCount);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(ExceptionCode.INVALID_TURN.getDescription());
         }

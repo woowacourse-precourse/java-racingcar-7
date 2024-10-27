@@ -5,7 +5,6 @@ import racingcar.model.Car;
 import racingcar.model.Racing;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingController {
@@ -21,14 +20,8 @@ public class RacingController {
     public void run() {
 
         InputDTO inputDTO = inputController.getInput();
-        String[] carNameList = inputDTO.getCarNameList();
+        List<Car> carList = inputDTO.getCarList();
         int inputTurns = inputDTO.getTurnCount();
-
-        List<Car> carList = new ArrayList<>();
-        for (final String name : carNameList) {
-            Car car = new Car(name);
-            carList.add(car);
-        }
 
         Racing racing = new Racing(carList);
 

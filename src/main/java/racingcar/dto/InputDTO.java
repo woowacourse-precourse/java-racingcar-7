@@ -1,17 +1,21 @@
 package racingcar.dto;
 
+import racingcar.model.Car;
+
+import java.util.List;
+
 public class InputDTO {
-    
-    private final String[] carNameList;
+
+    private final List<Car> carList;
     private final int turnCount;
 
-    public InputDTO(String[] carNameList, int turnCount) {
-        this.carNameList = carNameList;
+    public InputDTO(List<Car> carList, int turnCount) {
+        this.carList = carList;
         this.turnCount = turnCount;
     }
 
-    public String[] getCarNameList() {
-        return carNameList;
+    public List<Car> getCarList() {
+        return carList;
     }
 
     public int getTurnCount() {
