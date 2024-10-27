@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import racingcar.view.OutputView;
 
 public class Racing {
 
@@ -21,6 +22,7 @@ public class Racing {
     public void race(int count) {
         for (int i = 0; i < count; i++) {
             singleRound();
+            OutputView.printRace(raceStatus);
         }
     }
 
