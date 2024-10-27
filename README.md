@@ -68,7 +68,7 @@
 
 ### `RacingController`
 
-- [ ] `InputView`에 `경주할 자동차 이름 입력`을 요청한다.
+- [x] `InputView`에 `경주할 자동차 이름 입력`을 요청한다.
 - [ ] `자동차 이름` 값을 담아 `Cars` 객체를 생성한다.
 - [ ] `InputView`에 `시도할 횟수 입력`을 요청한다.
 - [ ] `AttemptCount`에 `시도할 횟수` 값을 담는다.
