@@ -1,10 +1,10 @@
-package racingcar.util;
+package racingcar.utils;
 
 import java.util.List;
 
-public class CarNameUtils {
+public class CarNameParser {
 
-    private CarNameUtils() {
+    private CarNameParser() {
     }
 
     // 쉼표로 구분된 문자열을 리스트로 변환
