@@ -19,6 +19,12 @@ public class CarNameValidator {
         }
     }
 
+    public void inputNotMoreThanFiveCharacter(String carName) {
+        if(carName.length() > 5) {
+            throw new IllegalArgumentException("이름을 5자 이하로 입력해주세요");
+        }
+    }
+
     private boolean isCommaSeparated(String carNames) {
         return carNames.matches("^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$");
     }
