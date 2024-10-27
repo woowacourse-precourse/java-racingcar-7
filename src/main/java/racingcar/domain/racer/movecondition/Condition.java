@@ -1,4 +1,4 @@
-package racingcar.domain.racer.utils;
+package racingcar.domain.racer.movecondition;
 
 public class Condition {
 

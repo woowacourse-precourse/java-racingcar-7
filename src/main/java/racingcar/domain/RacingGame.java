@@ -47,7 +47,7 @@ public class RacingGame {
     }
 
     private List<Racer> getRacers() {
-        return this.racers.getRacers();
+        return this.racers.racers();
     }
 
 }

@@ -15,7 +15,7 @@ class CarNameTest {
         String name = "";
 
         // when & then
-        assertThatThrownBy(() -> new CarName(name))
+        assertThatThrownBy(() -> CarName.from(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -26,7 +26,7 @@ class CarNameTest {
         String name = null;
 
         // when & then
-        assertThatThrownBy(() -> new CarName(name))
+        assertThatThrownBy(() -> CarName.from(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -37,7 +37,7 @@ class CarNameTest {
         String name = "a".repeat(6);
 
         // when & then
-        assertThatThrownBy(() -> new CarName(name))
+        assertThatThrownBy(() -> CarName.from(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -48,7 +48,7 @@ class CarNameTest {
         String name = "a".repeat(5);
 
         // when
-        CarName car = new CarName(name);
+        CarName car = CarName.from(name);
 
         // then
         assertThat(car.value()).isEqualTo(name);

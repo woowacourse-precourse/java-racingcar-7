@@ -15,7 +15,7 @@ class RoundTest {
         int roundInfo = 0;
 
         // when & then
-        assertThatThrownBy(() -> new Round(roundInfo))
+        assertThatThrownBy(() -> Round.from(roundInfo))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -26,7 +26,7 @@ class RoundTest {
         int roundInfo = 1;
 
         // when
-        Round round = new Round(roundInfo);
+        Round round = Round.from(roundInfo);
 
         // then
         assertThat(round.isNotFinalRound()).isTrue();
@@ -37,7 +37,7 @@ class RoundTest {
     void givenOneRoundInfoWithCreated_whenNextGame_thenIsGameOver() {
         // given
         int roundInfo = 1;
-        Round round = new Round(roundInfo);
+        Round round = Round.from(roundInfo);
 
         // when
         round.nextRound();

@@ -1,8 +1,8 @@
 package racingcar.domain.racer;
 
 import racingcar.domain.common.IncrementNumber;
-import racingcar.domain.racer.utils.Condition;
-import racingcar.domain.racer.utils.NumberGenerator;
+import racingcar.domain.racer.movecondition.Condition;
+import racingcar.domain.racer.movecondition.NumberGenerator;
 import racingcar.domain.round.RoundResult;
 
 public class Racer {
@@ -11,24 +11,24 @@ public class Racer {
     private final Condition condition;
     private final IncrementNumber position;
 
-    public Racer(String name, Condition condition) {
-        this.name = new CarName(name);
-        this.condition = condition;
+    private Racer(String name, NumberGenerator numberGenerator) {
+        this.name = CarName.from(name);
+        this.condition = new Condition(numberGenerator);
         this.position = new IncrementNumber();
     }
 
     public static Racer of(String name, NumberGenerator numberGenerator) {
-        return new Racer(name, new Condition(numberGenerator));
+        return new Racer(name, numberGenerator);
     }
 
     public void forward() {
-        if (condition.canMoveForward()) {
+        if (this.condition.canMoveForward()) {
             this.position.increment();
         }
     }
 
     public int getPosition() {
-        return position.getValue();
+        return this.position.getValue();
     }
 
     public String getName() {

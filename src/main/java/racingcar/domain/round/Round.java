@@ -9,13 +9,17 @@ public class Round {
     private final IncrementNumber round;
     private final int finalRound;
 
-    public Round(int finalRound) {
-        validateMinimumFinalRound(finalRound);
+    private Round(int finalRound) {
         this.round = new IncrementNumber();
         this.finalRound = finalRound;
     }
 
-    private void validateMinimumFinalRound(int finalRound) {
+    public static Round from(int finalRound) {
+        validateMinimumFinalRound(finalRound);
+        return new Round(finalRound);
+    }
+
+    private static void validateMinimumFinalRound(int finalRound) {
         if (finalRound < MINIMUM_FINAL_ROUND) {
             throw new IllegalArgumentException();
         }

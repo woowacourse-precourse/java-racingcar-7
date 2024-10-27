@@ -1,27 +1,20 @@
 package racingcar.domain.racer;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import racingcar.domain.racer.movecondition.NumberGenerator;
 
-public class Racers {
+public record Racers(List<Racer> racers) {
 
-    private final List<Racer> racers;
+    public static Racers of(List<String> carNames, NumberGenerator numberGenerator) {
+        List<Racer> racers = carNames.stream()
+                .map(carName -> Racer.of(carName, numberGenerator))
+                .toList();
 
-    public Racers() {
-        this.racers = new ArrayList<>();
-    }
-
-    public void add(Racer racer) {
-        this.racers.add(racer);
+        return new Racers(racers);
     }
 
     public void moveCars() {
         this.racers.forEach(Racer::forward);
-    }
-
-    public List<Racer> getRacers() {
-        return Collections.unmodifiableList(this.racers);
     }
 
 }

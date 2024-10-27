@@ -2,11 +2,12 @@ package racingcar.domain.racer;
 
 public record CarName(String value) {
 
-    public CarName {
+    public static CarName from(String value) {
         validate(value);
+        return new CarName(value);
     }
 
-    private void validate(String value) {
+    private static void validate(String value) {
         if (value == null || value.isEmpty()) {
             throw new IllegalArgumentException();
         }

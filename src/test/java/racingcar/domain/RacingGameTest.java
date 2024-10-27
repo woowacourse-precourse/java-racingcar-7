@@ -135,11 +135,12 @@ class RacingGameTest {
     }
 
     private RacingGame createRacingGame(int movement1, int movement2, int round) {
-        Racers racers = new Racers();
-        racers.add(Racer.of("car1", () -> movement1));
-        racers.add(Racer.of("car2", () -> movement2));
+        Racers racers = new Racers(List.of(
+                Racer.of("car1", () -> movement1),
+                Racer.of("car2", () -> movement2))
+        );
 
-        return new RacingGame(racers, new Round(round));
+        return new RacingGame(racers, Round.from(round));
     }
 
 }
