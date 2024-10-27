@@ -11,6 +11,7 @@ public class RacingGame {
 
     public void run() {
         inputView.inputCarNameGuide();
+        inputView.inputRound();
     }
 
 }
