@@ -6,13 +6,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RaceController {
+public class RaceUtils {
 
-    public List<Car> moveAll(List<Car> cars) {
+    public void moveAll(List<Car> cars) {
         for (Car car : cars) {
             car.tryMove();
         }
-        return cars;
     }
 
     public List<String> findWinner(List<Car> cars) {

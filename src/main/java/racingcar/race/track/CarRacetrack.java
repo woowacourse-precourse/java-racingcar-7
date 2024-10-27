@@ -2,26 +2,30 @@ package racingcar.race.track;
 
 import java.util.List;
 
-import racingcar.io.CarInputHandler;
 import racingcar.io.CarOutputHandler;
-import racingcar.race.RaceController;
+import racingcar.race.RaceUtils;
 import racingcar.race.racer.car.Car;
 import racingcar.race.racer.car.CarFactory;
 
 public class CarRacetrack implements Racetrack {
-    CarInputHandler inputHandler = new CarInputHandler();
     CarOutputHandler outputHandler = new CarOutputHandler();
-    RaceController raceController = new RaceController();
+    RaceUtils raceUtils = new RaceUtils();
+
+    private final List<Car> cars;
+    private final int repeat;
+
+    public CarRacetrack(String[] names, int repeat) {
+        this.cars =  new CarFactory().createRacers(names);
+        this.repeat = repeat;
+    }
 
     public void raceStart() {
-        List<Car> cars = new CarFactory().createRacers();
-        int repeat = inputHandler.inputRepeatNum();
         outputHandler.print("실행 결과");
         for (int i = 0; i < repeat; i++) {
-            List<Car> moveResult = raceController.moveAll(cars);
-            outputHandler.printRaceResult(moveResult);
+            raceUtils.moveAll(cars);
+            outputHandler.printRaceResult(cars);
         }
-        List<String> winners = raceController.findWinner(cars);
+        List<String> winners = raceUtils.findWinner(cars);
         outputHandler.printWinner(winners);
     }
 }
