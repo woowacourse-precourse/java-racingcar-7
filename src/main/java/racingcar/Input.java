@@ -14,6 +14,10 @@ public class Input {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야합니다.");
             }
+
+            if (carName.isBlank()) {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
         }
 
         return carNames;
@@ -21,6 +25,13 @@ public class Input {
 
     public static int getRunLimit() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+
+        try {
+            int runLimit = Integer.parseInt(input);
+            return runLimit;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
     }
 }
