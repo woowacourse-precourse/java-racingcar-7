@@ -24,4 +24,18 @@ public class Judge {
 
         return winners;
     }
+
+    public String getWinnerNames() {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < winners.size(); i++) {
+            result.append(winners.get(i).getName());
+            if (i < winners.size() - 1) {
+                result.append(", ");
+            }
+        }
+
+        return result.toString();
+    }
+
 }
