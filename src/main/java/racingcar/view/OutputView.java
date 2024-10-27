@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 public class OutputView {
 
-	private static final String POSITION_SEPARATOR = " : ";
 	private static final String POSITION_MARKER = "-";
+	private static final String SEPARATOR = " : ";
 	private static final String RESULT_PREFIX = "실행 결과";
 	private static final String WINNER_PREFIX = "최종 우승자";
 	private static final String COMMA = ", ";
@@ -20,7 +20,7 @@ public class OutputView {
 		StringBuilder positions = new StringBuilder();
 		for (Car car : cars) {
 			positions.append(car.getName())
-				.append(POSITION_SEPARATOR)
+				.append(SEPARATOR)
 				.append(POSITION_MARKER.repeat(car.getPosition()))
 				.append('\n');
 		}
@@ -28,9 +28,15 @@ public class OutputView {
 	}
 
 	public void printWinners(List<Car> winners) {
+		StringBuilder winnersBuilder = new StringBuilder();
+
 		String winnerNames = winners.stream()
 			.map(Car::getName)
 			.collect(Collectors.joining(COMMA));
-		System.out.println(WINNER_PREFIX + winnerNames);
+
+		winnersBuilder.append(WINNER_PREFIX)
+			.append(SEPARATOR)
+			.append(winnerNames);
+		System.out.print(winnersBuilder);
 	}
 }
