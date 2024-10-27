@@ -28,6 +28,6 @@ public class WinnerPrint {
             }
         }
 
-        System.out.println("최종 우승자 : " + String.join(",",result));
+        System.out.println("최종 우승자 : " + String.join(", ",result));
     }
 }
