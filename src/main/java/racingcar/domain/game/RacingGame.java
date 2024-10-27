@@ -23,6 +23,9 @@ public class RacingGame {
             executeCarActions();
             OutputView.printRoundResult(cars);
         }
+
+        List<Car> winners = cars.getWinners();
+        OutputView.printWinners(winners);
     }
 
     private void executeCarActions() {
