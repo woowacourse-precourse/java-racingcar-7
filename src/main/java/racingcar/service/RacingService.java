@@ -30,6 +30,7 @@ public class RacingService {
     }
 
     public void runTotalRoundRacing(final HashSet<Car> cars, final int tryCountNumber) {
+        outputView.printRacingResultGuideMessage();
         for (int i = 0; i < tryCountNumber; i++) {
             runOneRoundRacing(cars);
         }

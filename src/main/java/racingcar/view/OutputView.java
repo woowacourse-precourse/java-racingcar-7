@@ -14,6 +14,11 @@ public class OutputView {
         System.out.println(carName + " : " + moveDistance);
     }
 
+    public void printRacingResultGuideMessage() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
     public void printFinalWinners(final String delimitedWinners){
         System.out.println("최종 우승자 : " + delimitedWinners);
     }
