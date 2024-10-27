@@ -19,6 +19,9 @@ public class GameController {
                 runRound();
                 OutputView.printRoundResults(cars);
             }
+            List<String> winners = determineWinners();
+            OutputView.printWinners(winners);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
