@@ -6,7 +6,9 @@ public enum ErrorMessage {
     DUPLICATE_CAR("중복된 자동차를 등록할 수 없습니다."),
     CAR_NAME_EMPTY("자동차 이름이 비어 있어서는 안됩니다."),
     CAR_NAME_LENGTH_OVER_FIVE("자동차 이름이 5글자를 넘어서는 안됩니다."),
-    CARS_EMPTY("자동차 리스트가 비어있습니다.")
+    CARS_EMPTY("자동차 리스트가 비어있습니다."),
+    INVALID_RACE_COUNT_INPUT("잘못된 경주 횟수입니다."),
+    INVALID_CAR_NAMES("자동차 이름 입력값은 비어 있어서는 안됩니다.")
     ;
 
     private final String description;

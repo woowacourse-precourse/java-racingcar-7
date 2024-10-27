@@ -7,46 +7,54 @@ import racingcar.domain.racing.RacingService;
 import racingcar.domain.car.CarService;
 import racingcar.interfaces.car.CarResponse;
 import racingcar.interfaces.car.CarsResponse;
-import racingcar.interfaces.output.OutputView;
+import racingcar.interfaces.input.InputHandler;
+import racingcar.interfaces.output.OutputHandler;
 import racingcar.interfaces.winner.WinnerResponse;
 
 public class RacingController {
 
+    private final InputHandler inputHandler;
+    private final OutputHandler outputHandler;
     private final CarService carService;
     private final RacingService racingService;
-    private final OutputView outputView;
     private final JudgeService judgeService;
 
-    public RacingController(CarService carService, RacingService racingService, OutputView outputView,
+    public RacingController(CarService carService, RacingService racingService, InputHandler inputHandler,
+                            OutputHandler outputHandler,
                             JudgeService judgeService) {
         this.carService = carService;
         this.racingService = racingService;
-        this.outputView = outputView;
+        this.inputHandler = inputHandler;
+        this.outputHandler = outputHandler;
         this.judgeService = judgeService;
     }
 
-    public void startRace(List<String> carNames, int raceCount) {
+    public void processRace() {
+        List<String> carNames = inputHandler.getCarNames();
+        int raceCount = inputHandler.getRaceCount();
+
         Cars cars = carService.makeCars(carNames);
-        raceEachRound(cars, raceCount);
+        outputHandler.printResultHeader();
+        startRace(cars, raceCount);
         printWinner(judgeService.judgeWinner(cars));
     }
 
-    private void raceEachRound(Cars cars, int raceCount) {
+    private void startRace(Cars cars, int raceCount) {
         for (int i = 0; i < raceCount; i++) {
             CarsResponse carsResponse = racingService.race(cars);
             printCarsResponse(carsResponse);
-            outputView.println();
+            outputHandler.println();
         }
     }
 
     private void printCarsResponse(CarsResponse carsResponse) {
         for (CarResponse carResponse : carsResponse.carResponses()) {
-            outputView.print(carResponse.carStatus());
+            outputHandler.print(carResponse.carStatus());
         }
     }
 
     private void printWinner(WinnerResponse winnerResponse) {
-        outputView.print(winnerResponse.winnerList());
+        outputHandler.print(winnerResponse.winnerList());
     }
 }
 
