@@ -96,5 +96,8 @@ jun : -----
 
 - `Racing` 클래스 : 랜덤으로 레이싱을 굴려 우승자를 가려내는 클래스
     - `random` 함수 : `camp.nextstep.edu.missionutils.Randoms`에서 제공하는 `pickNumberInRange()`로 랜덤값 하나 반환
-    - `goStop` 함수 : `random` 함수를 이용해서 `전진` or `멈춤` 수행하는 함수
-    - `racing_car` 함수 : 시도횟수만큼 랜덤으로 게임을 수행하는 함수.
+    - `goStop` 함수 : 레이싱 카 번호를 받아서 `random` 함수를 이용해서 `전진` or `멈춤` 수행하는 함수
+    - `run` 함수 : 시도횟수만큼 랜덤으로 게임을 수행하는 함수.
+    - `findMaxProgress` 함수 : 가장 많이 전진(`go`)한 횟수 탐색
+    - `win` 함수 : 우승자(`winner`) 탐색 후 출력
+    - `nowProgress` : 현재 진행 상태 `ProgressBar`를 출력
