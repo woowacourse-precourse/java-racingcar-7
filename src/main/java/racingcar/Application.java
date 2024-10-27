@@ -18,16 +18,27 @@ public class Application {
         List<RacingCar> racingCarList = createRacingCars(names);
         runGame(roundCount, racingCarList);
 
-        RacingCar winner = racingCarList.stream()
-                .max(Comparator.comparingInt(RacingCar::getPosition))
-                .orElseThrow(() -> new RuntimeException("Racing car does not exist"));
-
-        List<String> winners = racingCarList.stream()
-                .filter((racingCar) -> racingCar.getPosition() == winner.getPosition())
-                .map(RacingCar::getName)
-                .toList();
+        List<String> winners = findWinnersName(racingCarList);
 
         System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static List<String> findWinnersName(List<RacingCar> racingCarList) {
+        RacingCar firstWinner = findFirstWinner(racingCarList);
+        return findCoWinnersName(racingCarList, firstWinner);
+    }
+
+    private static List<String> findCoWinnersName(List<RacingCar> racingCarList, RacingCar firstWinner) {
+        return racingCarList.stream()
+                .filter((racingCar) -> racingCar.getPosition() == firstWinner.getPosition())
+                .map(RacingCar::getName)
+                .toList();
+    }
+
+    private static RacingCar findFirstWinner(List<RacingCar> racingCarList) {
+        return racingCarList.stream()
+                .max(Comparator.comparingInt(RacingCar::getPosition))
+                .orElseThrow(() -> new RuntimeException("Racing car does not exist"));
     }
 
     private static void runGame(int roundCount, List<RacingCar> racingCarList) {
