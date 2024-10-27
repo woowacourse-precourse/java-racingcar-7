@@ -65,7 +65,7 @@ public class Application {
         }
 
         int maxDistance = 0;
-        List<String> winnnrs = new ArrayList<>();
+        List<String> winners = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entry : carDistances.entrySet()) {
             String car = entry.getKey();
@@ -73,12 +73,14 @@ public class Application {
 
             if (distance > maxDistance) {
                 maxDistance = distance; // 최대 거리 갱신
-                winnnrs.clear();        // 이전 우승자 록록 초기화
-                winnnrs.add(car);       // 새로운 우승자 추가
+                winners.clear();        // 이전 우승자 록록 초기화
+                winners.add(car);       // 새로운 우승자 추가
             } else if (distance == maxDistance) {
-                winnnrs.add(car);       // 공동 우승자 추가
+                winners.add(car);       // 공동 우승자 추가
             }
         }
+
+        System.out.println("최종 우승자: " + String.join(", ", winners));
 
     }
 }
