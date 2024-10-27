@@ -89,5 +89,15 @@ public class GameServiceTest {
         });
     }
 
+    @Test
+    void 이름_5글자_이상_예외처리() {
+        //given
+        String invalidInput = "tokki,tokiiiiii";
+
+        //when & then
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameService.setCarsNames(invalidInput);
+        });
+    }
 
 }
