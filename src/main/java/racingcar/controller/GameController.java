@@ -3,7 +3,7 @@ package racingcar.controller;
 import java.util.List;
 
 import racingcar.model.car.Car;
-import racingcar.model.NumberValidator;
+import racingcar.model.input.NumberValidator;
 import racingcar.model.ProgressResultGenerator;
 import racingcar.model.RandomNumberGenerator;
 import racingcar.model.input.TextSeparator;
