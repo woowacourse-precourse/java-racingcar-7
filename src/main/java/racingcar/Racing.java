@@ -18,7 +18,7 @@ public class Racing {
 
             // 0에서 3일 경우는 멈춤, 4에서 9일 경우 전진
             if (randomNumber >= 4) {
-                printProgress(1);  // 전진일 때 '-' 출력
+                advance(1);  // 전진일 때 '-' 출력
             }
 
             System.out.println();
@@ -31,9 +31,10 @@ public class Racing {
     }
 
     // 전진 시 '-' 출력
-    public void printProgress(int count) {
+    public void advance(int count) {
         for (int i = 0; i < count; i++) {
             System.out.print("-");
         }
     }
+
 }
