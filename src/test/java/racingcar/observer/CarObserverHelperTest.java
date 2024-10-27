@@ -60,6 +60,21 @@ class CarObserverHelperTest {
         }
 
         @Test
+        @DisplayName("올바른 매개변수와 함께 잘못된 매개변수를 제공했을 때, IllegalStateException이 발생한다.")
+        void addObserverToCar_InvalidParameters3() {
+            // given
+            Car car = new Car(CAR_NAME);
+            OutputHandler outputHandler = new OutputHandler();
+            InputHandler inputHandler = new InputHandler(outputHandler); // observer에 대한 잘못된 의존성
+            Class<CarMovePrinter> observerClass = CarMovePrinter.class;
+
+            // when & then
+            assertThrows(IllegalStateException.class,
+                    () -> CarObserverHelper.addObserverToCar(car, observerClass, outputHandler, inputHandler),
+                    "잘못된 매개변수로 인해 IllegalStateException이 발생해야 합니다.");
+        }
+
+        @Test
         @DisplayName("null을 매개변수로 제공했을 때, IllegalArgumentException이 발생한다.")
         void addObserverToCar_NullParameters() {
             // given
