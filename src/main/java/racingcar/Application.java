@@ -39,7 +39,6 @@ public class Application {
         // 자동차 경주 게임의 라운드를 시도 횟수만큼 수행
         for (int i = 0; i < tryCount; i++) {
             playRacingCarRound(racingCars, racingCarsDistance);
-            // TODO: 자동차 경주 게임의 각 라운드의 결과를 출력
         }
     }
 
@@ -50,6 +49,7 @@ public class Application {
                 racingCarsDistance.put(racingCar, updatedScore);
             }
         }
+        // TODO: 자동차 경주 게임의 각 라운드의 결과를 출력
     }
 
     private static boolean canMoveForward() {
