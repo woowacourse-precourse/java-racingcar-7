@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Race;
 import racingcar.io.InputReader;
 
@@ -11,10 +10,11 @@ public class Application {
         try {
             String[] carNames = inputReader.readLine1();
             int num = inputReader.readLine2();
+
             Race race = new Race(carNames, num);
             race.start();
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            throw e;
         } finally {
             inputReader.close();
         }
