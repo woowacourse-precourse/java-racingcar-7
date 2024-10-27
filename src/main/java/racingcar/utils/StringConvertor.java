@@ -1,7 +1,10 @@
 package racingcar.utils;
 
+import racingcar.model.Car;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringConvertor {
     private StringConvertor(){
@@ -11,8 +14,9 @@ public class StringConvertor {
         return Integer.parseInt(input);
     }
 
-    public static List<String> toList(String input) {
-        return Arrays.asList(input.split(","));
+    public static List<Car> toCarList(String input) {
+        String[] split = input.split(",");
+        return Arrays.stream(split).map(Car::new).toList();
     }
 }
 
