@@ -6,13 +6,9 @@ import java.util.List;
 public class Cars {
     private List<Car> carList;
 
-    public Cars(List<Car> carList) {
-        this.carList = carList;
-    }
-
     public void createCars(String carNames) {
         List<String> names = Arrays.asList(carNames.split(","));
-        this.carList = names.stream()
+        carList = names.stream()
                 .map(name -> new Car(name.trim()))
                 .toList();
     }
@@ -31,6 +27,12 @@ public class Cars {
     public List<Car> findWinner(int maxPosition) {
         return carList.stream()
                 .filter(car -> car.getPosition() == maxPosition)
+                .toList();
+    }
+
+    public List<String> collectAllStatuses() {
+        return carList.stream()
+                .map(Car::displayStatus)
                 .toList();
     }
 }
