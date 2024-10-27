@@ -28,8 +28,10 @@ public class RacingCarGame {
     public void initGame() {
         outputView.printStartMessage();
         this.inputString = inputView.getInput();
+
         outputView.printTryCountMessage();
         this.tryCount = Integer.parseInt(inputView.getInput());
+
         cars.setCarList(inputString);
     }
 
