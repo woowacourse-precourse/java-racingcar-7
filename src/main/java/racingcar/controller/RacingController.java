@@ -8,13 +8,13 @@ import racingcar.view.OutputView;
 
 public class RacingController {
     private final InputParser parser;
-    private final RacingModel racingModel;
+    private final RacingModel model;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public RacingController(InputParser parser, RacingModel racingModel, InputView inputView, OutputView outputView) {
+    public RacingController(InputParser parser, RacingModel model, InputView inputView, OutputView outputView) {
         this.parser = parser;
-        this.racingModel = racingModel;
+        this.model = model;
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -25,10 +25,10 @@ public class RacingController {
 
         outputView.printStart();
         for (int round = 0; round < rounds; round++) {
-            cars = racingModel.moveCars(cars);
+            cars = model.moveCars(cars);
             outputView.printRound(cars);
         }
 
-        outputView.printWinners(racingModel.getWinners(cars));
+        outputView.printWinners(model.getWinners(cars));
     }
 }
