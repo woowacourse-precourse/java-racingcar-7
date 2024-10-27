@@ -7,8 +7,8 @@
 ---
 
 ![Generic badge](https://img.shields.io/badge/precourse-week2-green.svg)
-![Generic badge](https://img.shields.io/badge/test-2_passed-blue.svg)
-![Generic badge](https://img.shields.io/badge/version-1.0.1-brightgreen.svg)
+![Generic badge](https://img.shields.io/badge/test-3_passed-blue.svg)
+![Generic badge](https://img.shields.io/badge/version-1.0.5-brightgreen.svg)
 
 > 우아한테크코스 7기 프리코스 2주차 미션, 자동차 경주를 구현한 저장소입니다.
 
@@ -45,7 +45,8 @@
 
 ## 자체 구현 사항
 
-- #### 
+- #### 자동차 이름 또는 Lap 이 Empty or Blank 이면 오류메시지 출력
+- #### 자동차 이름이 중복되면 오류메시지 출력
 
 ---
 
@@ -135,7 +136,6 @@
 - **출력 형식**: `최종 우승자 : 자동차 이름(들)`
 
 
-
 - **메서드**: displayResultsByLap()
 - **출력 형식**: `자동차 이름 : - * 전진횟수` 자동차 개수만큼 줄바꿈
 
@@ -152,7 +152,6 @@
     - **케이스 2**: `"55555,,22" => 오류메시지 출력`
     - **케이스 3**: `"55555, ,22" => 오류메시지 출력`
     - **케이스 4**: `"55555,22,22" => 오류메시지 출력`
-    - **케이스 5**: `"55555,22,22" => 오류메시지 출력`
   
   - **횟수 입력 케이스**
     - **케이스 1**: `"-1" => 오류메시지 출력`
