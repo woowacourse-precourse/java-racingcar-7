@@ -8,17 +8,17 @@ import java.util.stream.Collectors;
 public class WinnerEvaluatorEmb implements WinnerEvaluator {
     @Override
     public List<RacingCar> determineWinners(List<RacingCar> cars) {
-        Long maxDistance = findMaxDistance(cars);
+        int maxDistance = findMaxDistance(cars);
         return collectWinners(cars, maxDistance);
     }
 
     @Override
-    public Long findMaxDistance(List<RacingCar> cars) {
-        return cars.stream().mapToLong(RacingCar::getDistance).max().orElse(-1L);
+    public int findMaxDistance(List<RacingCar> cars) {
+        return cars.stream().map(RacingCar::getDistance).max(Integer::compare).orElse(-1);
     }
 
     @Override
-    public List<RacingCar> collectWinners(List<RacingCar> cars,Long maxDistance) {
-        return cars.stream().filter(car -> car.getDistance().equals(maxDistance)).collect(Collectors.toList());
+    public List<RacingCar> collectWinners(List<RacingCar> cars,int maxDistance) {
+        return cars.stream().filter(car -> car.getDistance()==maxDistance).collect(Collectors.toList());
     }
 }

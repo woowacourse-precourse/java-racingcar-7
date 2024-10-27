@@ -11,9 +11,7 @@ public class Application {
         RaceController raceController = raceControllerFactory.createRaceController();
 
         raceController.readyForRace();
-        while (!raceController.isFinished()) {
-            raceController.advanceCars();
-        }
+        raceController.broadcastRace();
         raceController.announceWinner();
     }
 }

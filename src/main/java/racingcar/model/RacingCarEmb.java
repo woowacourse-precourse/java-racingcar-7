@@ -2,7 +2,7 @@ package racingcar.model;
 
 public class RacingCarEmb implements RacingCar {
     private final String name;
-    private Long distance = 0L;
+    private int distance = 0;
 
     public RacingCarEmb(String name) {
         this.name = name;
@@ -14,7 +14,7 @@ public class RacingCarEmb implements RacingCar {
     }
 
     @Override
-    public Long getDistance() {
+    public int getDistance() {
         return distance;
     }
 
