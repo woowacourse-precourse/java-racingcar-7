@@ -16,13 +16,14 @@ public class Car {
 
     private void checkValidateName(final String name) {
 
+        if(name==null || name.isBlank()){
+            throw new IllegalArgumentException(ErrorCode.CANT_CONVERT_CAR_NAME_WITH_NULL_OR_BLANK.getMessage());
+        }
+
         if(name.length()>5){
             throw new IllegalArgumentException(ErrorCode.CANT_CAR_NAME_LENGTH_EXCEED_FIVE.getMessage());
         }
 
-        if(name==null || name.isBlank()){
-            throw new IllegalArgumentException(ErrorCode.CANT_CONVERT_CAR_NAME_WITH_NULL_OR_BLANK.getMessage());
-        }
     }
 
     public void moveForward(){
