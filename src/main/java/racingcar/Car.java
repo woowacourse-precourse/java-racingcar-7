@@ -9,11 +9,11 @@ public class Car {
         distance = 0;
     }
 
-    public void Move(){
+    public void move(){
         distance++;
     }
 
-    public void PrintCurrentDistance(){
+    public void printCurrentDistance(){
         System.out.print(name + " : ");
         for(int i = 0; i < distance; i++){
             System.out.print('-');

@@ -8,29 +8,29 @@ public class GameManager {
     int count;
 
     //우승자 반환
-    public String[] StartGame(String[] car_list, int count){
-        SetCars(car_list);
-        SetTryCount(count);
+    public String[] startGame(String[] car_list, int count){
+        setCarList(car_list);
+        setTryCount(count);
 
         for(int i = 0; i < count; i++){
-            Game();
+            game();
         }
 
         return car_list;
     }
 
-    private void SetCars(String[] car_list) {
+    private void setCarList(String[] car_list) {
 
     }
 
-    private void SetTryCount(int count) {
+    private void setTryCount(int count) {
 
     }
 
-    private void Game(){
+    private void game(){
         for (Car car : cars) {
-            car.Move();
-            car.PrintCurrentDistance();
+            car.move();
+            car.printCurrentDistance();
         }
     }
 }
