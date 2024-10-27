@@ -17,8 +17,8 @@ class CarsTest {
         Cars cars = new Cars(carNames);
 
         // then
-        assertThat(cars.getCars().size()).isEqualTo(3);
-        assertThat(cars.getCars().get(0).getName()).isEqualTo("jang");
+        assertThat(cars.getCarsSize()).isEqualTo(3);
+        assertThat(cars.getCarNames().get(0)).isEqualTo("jang");
     }
 
     @Test
@@ -31,9 +31,9 @@ class CarsTest {
         cars.moveCars(Arrays.asList(5, 1, 5));
 
         // then
-        assertThat(cars.getCars().get(0).getPosition()).isEqualTo(1);
-        assertThat(cars.getCars().get(1).getPosition()).isEqualTo(0);
-        assertThat(cars.getCars().get(2).getPosition()).isEqualTo(1);
+        assertThat(cars.getCarPositions().get(0)).isEqualTo(1);
+        assertThat(cars.getCarPositions().get(1)).isEqualTo(0);
+        assertThat(cars.getCarPositions().get(2)).isEqualTo(1);
     }
 
     @Test

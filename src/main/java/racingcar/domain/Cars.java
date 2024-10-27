@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.util.ValidationUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,6 +7,7 @@ import java.util.stream.IntStream;
 
 import static racingcar.exception.ErrorMessages.CAR_COUNT_ERROR_MESSAGE;
 import static racingcar.exception.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
+import static racingcar.util.ValidationUtil.isDuplicate;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
@@ -21,8 +20,21 @@ public class Cars {
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<String> getCarNames() {
+        return cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> getCarPositions(){
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .boxed()
+                .collect(Collectors.toList());
+    }
+
+    public int getCarsSize(){
+        return cars.size();
     }
 
     public void moveCars(List<Integer> randomNumbers) {
@@ -45,11 +57,11 @@ public class Cars {
     }
 
     private void validateCarNames(List<String> carNames){
-        if(!ValidationUtil.isMoreThanOne(carNames)){
+        if(carNames.size() < MIN_CAR_COUNT){
             throw new IllegalArgumentException(CAR_COUNT_ERROR_MESSAGE);
         }
 
-        if(ValidationUtil.isDuplicate(carNames)){
+        if(isDuplicate(carNames)){
             throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR_MESSAGE);
         }
     }

@@ -17,10 +17,10 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public static void displayRoundResult(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.print(car.getName() + " : ");
-            System.out.println("-".repeat(car.getPosition()));
+    public static void displayRoundResult(List<String> carNames, List<Integer> carPositions) {
+        for (int i=0;i<carNames.size();i++) {
+            System.out.print(carNames.get(i) + " : ");
+            System.out.println("-".repeat(carPositions.get(i)));
         }
         System.out.println();
     }

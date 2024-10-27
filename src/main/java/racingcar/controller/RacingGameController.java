@@ -11,7 +11,7 @@ import static racingcar.view.InputView.readConsoleInput;
 import static racingcar.view.OutputView.*;
 
 public class RacingGameController {
-    public void run(){
+    public void run() {
         Cars cars = initializeCarsFromUserInput();
         int trialCount = getTrialCountFromUser();
         executeRace(trialCount, cars);
@@ -34,10 +34,10 @@ public class RacingGameController {
 
     private static void executeRace(int trial, Cars cars) {
         displayResultHeader();
-        for(int i = 0; i< trial; i++){
-            List<Integer> randomNumbers = RandomUtil.generateRandomNumberForCars(cars.getCars().size());
+        for (int i = 0; i < trial; i++) {
+            List<Integer> randomNumbers = RandomUtil.generateRandomNumberForCars(cars.getCarsSize());
             cars.moveCars(randomNumbers);
-            displayRoundResult(cars.getCars());
+            displayRoundResult(cars.getCarNames(), cars.getCarPositions());
         }
     }
 }
