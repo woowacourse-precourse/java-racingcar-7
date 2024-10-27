@@ -3,6 +3,7 @@ package racingcar.validation;
 import static racingcar.message.ExceptionMessage.CAR_NAME_DUPLICATE;
 import static racingcar.message.ExceptionMessage.CAR_NAME_EMPTY;
 import static racingcar.message.ExceptionMessage.CAR_NAME_TOO_LONG;
+import static racingcar.message.ExceptionMessage.INVALID_ROUND;
 import static racingcar.message.ExceptionMessage.NOT_A_NUMBER;
 import static racingcar.message.ExceptionMessage.NOT_EXCEED_MINIMUM_AMOUNT;
 import static racingcar.message.ExceptionMessage.NUMBER_PARSE_ERROR;
@@ -14,6 +15,7 @@ import java.util.Set;
 public class GameValidation {
     private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final int MIN_CAR_PLAYER = 2;
+    private static final int MIN_TRY_COUNT = 1;
 
     public static void validateCarNames(List<String> carNames) {
         Set<String> uniqueCarNames = new HashSet<>();
@@ -28,6 +30,7 @@ public class GameValidation {
     public static void validateTryCount(String input) {
         validateTryCountIsNumber(input);
         validateTryCountParse(input);
+        validateTryCountRound(input);
     }
 
     private static void validateCarNameLength(String carName) {
@@ -65,6 +68,13 @@ public class GameValidation {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMBER_PARSE_ERROR.getMessage());
+        }
+    }
+
+    private static void validateTryCountRound(String input) {
+        int num = Integer.parseInt(input);
+        if (num < MIN_TRY_COUNT) {
+            throw new IllegalArgumentException(INVALID_ROUND.getMessage());
         }
     }
 }

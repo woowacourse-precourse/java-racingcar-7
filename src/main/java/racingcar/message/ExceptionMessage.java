@@ -7,6 +7,7 @@ public enum ExceptionMessage implements MessageProvider {
     NOT_EXCEED_MINIMUM_AMOUNT("플레이어가 2명 이상이어야 합니다."),
     NOT_A_NUMBER("숫자를 입력해주세요"),
     NUMBER_PARSE_ERROR("표현 범위를 벗어났습니다."),
+    INVALID_ROUND("시도할 횟수는 1이상입니다."),
     ;
 
     private final String message;
