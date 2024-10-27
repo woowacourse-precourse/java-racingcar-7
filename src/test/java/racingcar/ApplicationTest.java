@@ -31,6 +31,57 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 경주_횟수가_음수일_경우_예외() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 경주_횟수가_0일_경우_예외() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 경주_횟수가_숫자가_아닌_경우_예외() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "three"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 단일_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "3");
+                    assertThat(output()).contains("pobi : --", "woni : ", "jun : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, STOP,
+                MOVING_FORWARD, STOP, STOP,
+                STOP, STOP, STOP
+        );
+    }
+
+    @Test
+    void 공동_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "3");
+                    // 예상되는 출력 값에 맞추어 검증
+                    assertThat(output()).contains("pobi : --", "woni : --", "jun : ", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, STOP,
+                MOVING_FORWARD, MOVING_FORWARD, STOP,
+                STOP, STOP, STOP
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
