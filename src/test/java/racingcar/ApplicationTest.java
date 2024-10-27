@@ -1,8 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -28,6 +29,16 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("pobi,pobi", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("자동차 이름은 중복될 수 없습니다.")
+        );
+    }
+
+    @ParameterizedTest(name = "이동 횟수 유효성 예외 테스트: {0}")
+    @ValueSource(strings = {"0", "-1", "-100"})
+    void 이동_횟수_유효성_예외_테스트(String moveCount) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", moveCount))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1 이상의 양수만 입력 가능합니다.")
         );
     }
 
