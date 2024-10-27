@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.car.RacingCar;
 import racingcar.domain.RaceStarter;
+import racingcar.domain.RacingCarGenerator;
 import racingcar.validator.InputValidator;
 
 import java.util.ArrayList;
@@ -19,20 +20,15 @@ public class Application {
 
         InputValidator.isStringOnly(carNameListInput);
 
-        List<RacingCar> racingCarList = new ArrayList<>();
-        for(String carName : carNameListInput.split(",")) {
-            racingCarList.add(new RacingCar(carName));
-        }
-
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryMoveCountInput = Console.readLine();
 
         InputValidator.isNumberOnly(tryMoveCountInput);
 
-        int tryMoveCount = Integer.parseInt(tryMoveCountInput);
+        List<RacingCar> racingCarList = RacingCarGenerator.generateRacingCarList(carNameListInput);
 
         System.out.println("실행 결과");
-        RaceStarter.startRace(racingCarList, tryMoveCount);
+        RaceStarter.startRace(racingCarList, Integer.parseInt(tryMoveCountInput));
 
         // find max record of race
         String maxMoveRecord = "";
