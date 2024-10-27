@@ -21,4 +21,7 @@ public class Car {
         }
     }
 
+    public String getSymbol() {
+        return SYMBOL.repeat(distance);
+    }
 }
