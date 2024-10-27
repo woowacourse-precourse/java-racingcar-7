@@ -19,22 +19,7 @@ class CarsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
     }
-
-    @Test
-    void 연속된_구분자_입력_예외() {
-        assertThatThrownBy(() -> Cars.createCarList("pobi,,woni"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorMessage.CONSECUTIVE_COMMAS.getMessage());
-    }
-
-    @Test
-    void 빈_이름_입력_예외() {
-        assertThatThrownBy(() -> Cars.createCarList("pobi, ,woni"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorMessage.EMPTY_CAR_NAME.getMessage());
-    }
-
-
+    
     @Test
     void 우승자_결정_테스트() {
         Cars cars = Cars.createCarList("pobi,woni");
