@@ -25,6 +25,18 @@ class RaceTest extends NsTest {
     }
 
     @Test
+    void create_race_when_1_cars_should_be_fail() {
+        // given
+        List<Vehicle> vehicles = new ArrayList<>();
+        vehicles.add(new Car("car_1"));
+        int round = 10;
+        // when
+        // then
+        Exception ex = Assertions.assertThrows(IllegalArgumentException.class, () -> new Race(vehicles, round));
+        Assertions.assertEquals("자동차는 최소 2대가 필요합니다.", ex.getMessage());
+    }
+
+    @Test
     void create_race_when_11_cars_should_be_fail() {
         // given
         List<Vehicle> vehicles = new ArrayList<>();

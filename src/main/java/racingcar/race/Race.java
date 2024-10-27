@@ -33,6 +33,9 @@ public class Race {
     }
 
     private static void validateVehicleSize(List<? extends Vehicle> vehicles) {
+        if (vehicles.size() < 2) {
+            throw new IllegalArgumentException("자동차는 최소 2대가 필요합니다.");
+        }
         if (vehicles.size() > 10) {
             throw new IllegalArgumentException("자동차는 최대 10대까지 생성할 수 있습니다.");
         }
