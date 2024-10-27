@@ -47,10 +47,20 @@
   - raceOver(): 레이스 종료 후 우승자를 발표한다.
 
 * View : Input 및 Output 구현
-    
+  + Input
+    - cars(): 사용자로부터 자동차 이름을 입력받는다.
+    - counts(): 사용자로부터 이동 횟수를 입력받는다.
+  + OutPut
+    - roundResult(): 각 라운드 결과를 출력한다.
+    - raceWinner(): 최종 우승자를 출력한다.  
 
 * Validator 클래스 구현
-    
+  - checkName() : 자동차 이름을 검증하고 유효한 이름들을 리스트로 반환한다.
+  - checkCount() : 경기 횟수를 검증하고, int 형태로 반환한다.
+  - isNull() : 입력값이 비어있는지 확인하여, 빈 문자열일 경우 IllegalArgumentException을 발생시킨다.
+  - endsWithComma() : 입력값이 쉼표로 끝나는지 확인하여, 끝에 쉼표가 있을 경우 IllegalArgumentException을 발생시킨다.
+  - nameLength() : 각 자동차 이름의 길이를 검사하여, 5자를 초과하는 경우 IllegalArgumentException을 발생시킨다.
+  - isNumber() : 입력값이 숫자로 구성되어 있는지 확인하여, 숫자가 아닐 경우 IllegalArgumentException을 발생시킨다.
 
 ---------
 ### 3. 예외 처리
@@ -58,7 +68,7 @@
 * 멤버가 중복인 경우  
   ``` ex) "pobi, pobi" -> IllegalArgumentException("중복된 회원 존재") ```
 * 입력이 공백인 경우  
-  ``` ex) "" -> IllegalArgumentException("빈 문자열") ```
+  ``` ex) "" -> IllegalArgumentException("빈 문자를 입력했습니다.") ```
 * 입력의 마지막이 구분자(,)인 경우  
   ``` ex) "pobi,woni," -> IllegalArgumentException("마지막 입력이 구분자입니다.") ```
 * 자동차 이름이 5글자를 초과하는 경우  
