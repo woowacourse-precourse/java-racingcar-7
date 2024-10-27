@@ -6,6 +6,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RacingCarNameInput {
+    private static final String Delimiter = ",";
+    private static final String MINIMUM_PLAYER_ERROR_MESSAGE = "최소 플레이어는 2명입니다.";
+    private static final int MINIMUM_PLAYER = 2;
+    private static final String NAME_DUPLICATED_ERROR_MESSAGE = "중복된 이름이 존재합니다";
+    private static final String NAME_LENGTH_ERROR_MESSAGE = "이름은 5글자를 넘길 수 없습니다.";
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final String NAME_ONLY_SPACE_ERROR_MESSAGE = "공백만 포함된 이름은 설정할 수 없습니다.";
     String userInput;
     List<String> nameList;
 
@@ -17,8 +24,7 @@ public class RacingCarNameInput {
 
     private List<String> parsingInput(String input) {
 
-        return List.of(input.split(","))
-                .stream()
+        return List.of(input.split(Delimiter)).stream()
                 .filter(name -> !name.isEmpty())
                 .collect(Collectors.toList());
     }
@@ -31,15 +37,15 @@ public class RacingCarNameInput {
     }
 
     private void validateMinimumPlayer() {
-        if (nameList.size() <= 1) {
-            throw new IllegalArgumentException("최소 플레이어는 2명입니다.");
+        if (nameList.size() < MINIMUM_PLAYER) {
+            throw new IllegalArgumentException(MINIMUM_PLAYER_ERROR_MESSAGE);
         }
     }
 
     private void validateNameRange() {
         for (String name : nameList) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("이름은 5글자를 넘길 수 없습니다.");
+            if (name.length() > MAX_NAME_LENGTH) {
+                throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
             }
         }
     }
@@ -47,14 +53,14 @@ public class RacingCarNameInput {
     private void validateSameName() {
         Set<String> set = new HashSet<>(nameList);
         if (nameList.size() != set.size()) {
-            throw new IllegalArgumentException("중복된 이름이 존재합니다");
+            throw new IllegalArgumentException(NAME_DUPLICATED_ERROR_MESSAGE);
         }
     }
 
     private void validateNameNothing() {
         for (String name : nameList) {
             if (name.trim().isEmpty()) {
-                throw new IllegalArgumentException("공백만 포함된 이름은 설정할 수 없습니다.");
+                throw new IllegalArgumentException(NAME_ONLY_SPACE_ERROR_MESSAGE);
             }
         }
     }

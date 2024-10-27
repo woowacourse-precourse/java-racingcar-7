@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarManager {
+    private static final int MINIMUM_RANDOM_NUMBER_TO_MOVE = 4;
     public List<RacingCar> racingCarList;
 
     public RacingCarManager() {
@@ -23,7 +24,7 @@ public class RacingCarManager {
     }
 
     private boolean canMove() {
-        return RandomNumberGenerator.generateNumber() >= 4;
+        return RandomNumberGenerator.generateNumber() >= MINIMUM_RANDOM_NUMBER_TO_MOVE;
     }
 
     public List<RacingCar> getRacingCarList() {
