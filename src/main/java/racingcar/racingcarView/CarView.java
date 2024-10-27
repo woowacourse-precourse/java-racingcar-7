@@ -22,10 +22,14 @@ public class CarView {
         System.out.println();
     }
 
+    public void printResults() {
+        System.out.println();
+    }
+
+
+
     public void printWinners(String winner) {
         System.out.println("최종 우승자 : " + winner);
-
-
     }
 
 }

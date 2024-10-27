@@ -55,10 +55,6 @@ public class ExceptionModel {
         }
     }
 
-    // 경기 시행 횟수 검증 메서드
-//    public void validateTryCount(String tryInput) {
-//
-
     // 경기 시행 횟수가 입력되지 않은 경우
     public void emptyTryInput(String tryInput) {
         if (tryInput == null || tryInput.isEmpty()) {

@@ -31,7 +31,8 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    void 단일_테스트(){
+    @Test
+    void 단일_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("AB", "3");
@@ -40,6 +41,14 @@ class ApplicationTest extends NsTest {
 
                 },
                 MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("AAAAAA", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 

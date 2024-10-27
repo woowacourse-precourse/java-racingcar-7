@@ -10,8 +10,6 @@ import java.util.HashMap;
 
 public class CarModel {
 
-
-
     // 자동차 이름을 구분하는 메서드
     public LinkedHashMap<String, Integer> initializeCarInfo(String carNames) {
         StringTokenizer st = new StringTokenizer(carNames, ",");
@@ -22,7 +20,6 @@ public class CarModel {
         }
         return carInfo;
     }
-
 
     // 랜덤값에 따라 전진 여부를 결정하는 메서드
     public int isForward (int currentValue) {
@@ -67,6 +64,7 @@ public class CarModel {
         }
         winner.append(key);
     }
+
 }
 
 
