@@ -2,11 +2,10 @@ package racingcar.input;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputData {
+public class DataInput {
     protected static String input;
 
-    private InputData() {
-    }
+    private DataInput() {}
 
     public static String getInput() {
         System.out.println("플레이어들을 쉼표로 구분해서 입력해주세요 : ");

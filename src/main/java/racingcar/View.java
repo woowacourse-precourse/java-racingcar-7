@@ -1,14 +1,15 @@
 package racingcar;
 
-import static racingcar.input.InputData.getInput;
-
-import racingcar.input.InputData;
+import racingcar.input.DataInput;
+import racingcar.input.MatchInput;
 
 public class View {
     private View(){}
 
     public static void integrateView(){
-        String input = getInput();
-        System.out.println(input);
+        String playerinput = DataInput.getInput();
+        System.out.println(playerinput);
+        Integer matchinput = MatchInput.getMatches();
+        System.out.println(matchinput);
     }
 }
