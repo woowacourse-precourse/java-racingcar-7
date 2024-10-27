@@ -24,6 +24,16 @@ public class Application {
         for (int i = 0; i < attemptCount; i++) {
             carMove(dictionary);
         }
+
+        int maxValue = Collections.max(dictionary.values());
+        List<String> maxKeys = new ArrayList<>();
+        for (String name : dictionary.keySet()) {
+            if (dictionary.get(name) == maxValue) {
+                maxKeys.add(name);
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(",", maxKeys));
     }
 
     private static void carMove(Map<String, Integer> dictionary) {
