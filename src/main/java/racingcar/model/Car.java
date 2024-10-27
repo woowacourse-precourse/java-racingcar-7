@@ -17,13 +17,13 @@ public class Car {
 
     private void validateNameLength(String name) {
         if (name.length() > NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("이름의 길이는 5자를 넘을 수 없습니다.");
         }
     }
 
     private void validateNameValue(String name) {
         if (StringUtils.isBlank(name)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("이름은 비어있을 수 없습니다.");
         }
     }
     public String getName() {
