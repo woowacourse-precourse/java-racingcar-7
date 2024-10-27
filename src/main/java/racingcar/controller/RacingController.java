@@ -25,13 +25,13 @@ public class RacingController {
     }
 
     public void startRacing() {
-        List<Car> cars = prepareRacingCar();
+        List<Car> cars = prepareCar();
         int roundCount = prepareRoundCount();
         processRacing(cars, roundCount);
         printWinners(cars);
     }
 
-    private List<Car> prepareRacingCar() {
+    private List<Car> prepareCar() {
         String rawCarNames = inputView.inputCarNames();
         inputValidationService.validateRawCarNames(rawCarNames);
         return inputDecodeService.decodeRawCarNames(rawCarNames);
