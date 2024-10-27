@@ -1,5 +1,7 @@
-package racingcar;
+package racingcar.controller;
 
+import racingcar.view.View;
+;
 public class GameController {
     private final View view;
 
@@ -8,5 +10,7 @@ public class GameController {
     }
 
     public void run() {
+        view.Message();
+        String userInput = view.userInput();
     }
 }
