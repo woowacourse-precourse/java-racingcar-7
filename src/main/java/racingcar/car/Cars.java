@@ -27,10 +27,9 @@ public class Cars {
     }
 
     private void moveCar(Car car, int controlNumber) {
-        if (controlNumber < MOVE_CONTROL_NUMBER) {
-            return;
+        if (controlNumber >= MOVE_CONTROL_NUMBER) {
+            car.move();
         }
-        car.move();
     }
 
     @Override
