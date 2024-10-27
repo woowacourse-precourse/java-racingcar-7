@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Racing {
-    private List<Car> carList;
+    private final List<Car> carList;
 
     public Racing(String cars) {
         carList = Arrays.stream(cars.split(","))
@@ -13,14 +13,8 @@ public class Racing {
                 .toList();
     }
 
-    public void race(int repeat) {
-        System.out.println("실행 결과");
-        for (int i = 0; i < repeat; i++) {
-            runRound();
-            OutputView.printDistance(carList);
-        }
-        List<Car> winner = getWinner();
-        OutputView.printWinner(winner);
+    public List<Car> getCarList() {
+        return carList;
     }
 
     public void runRound() {
