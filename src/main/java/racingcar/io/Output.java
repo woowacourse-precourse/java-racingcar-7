@@ -4,6 +4,7 @@ import racingcar.model.Racingcar;
 import racingcar.util.Constants;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Output {
     private static final Output instance = new Output();
@@ -41,5 +42,12 @@ public class Output {
 
     public void printWinnerPrompt() {
         System.out.print(Constants.WINNER_PROMPT);
+    }
+
+    public void printWinner(List<Racingcar> winners) {
+        String winnersName = winners.stream()
+                .map(Racingcar::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println(winnersName);
     }
 }
