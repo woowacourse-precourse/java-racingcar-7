@@ -4,14 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+    public static final String DUPLICATE_CAR_NAME_MASSAGE = "자동차 이름은 중복될 수 없습니다.";
+
     private final List<Car> carList;
 
     public Cars(List<Car> cars) {
         this.carList = cars;
     }
 
-    public static Cars from(List<Car> cars) {
+    public static Cars from(List<String> carNames) {
+        validate(carNames);
+        List<Car> cars = getCarList(carNames);
         return new Cars(cars);
+    }
+
+    private static List<Car> getCarList(List<String> carNames) {
+        return carNames.stream().map(Car::new).toList();
+    }
+
+    private static void validate(List<String> carNames) {
+        if (isDuplicate(carNames)) {
+            throw new IllegalArgumentException(DUPLICATE_CAR_NAME_MASSAGE);
+        }
+    }
+
+    private static boolean isDuplicate(List<String> carNames) {
+        return carNames.stream().distinct().count() != carNames.size();
     }
 
     public void move(NumberGenerator numberGenerator) {
@@ -36,7 +54,9 @@ public class Cars {
     }
 
     private Car getWinner() {
-        return carList.stream().max(Car::compareTo).get();
+        return carList.stream()
+                .max(Car::compareTo)
+                .get();
     }
 
     private List<String> getWinners(Car winner) {

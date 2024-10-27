@@ -24,14 +24,14 @@ public class CarRacingController {
     }
 
     private CarRacingGame gameInit() {
-        List<Car> carList = initCars();
+        Cars cars = initCars();
         int rounds = inputView.readGameRounds();
-        return new CarRacingGame(Cars.from(carList), new RandomNumberGenerator(), rounds);
+        return new CarRacingGame(cars, new RandomNumberGenerator(), rounds);
     }
 
-    private List<Car> initCars() {
+    private Cars initCars() {
         List<String> carNames = inputView.readCarNames();
-        return carNames.stream().map(Car::new).toList();
+        return Cars.from(carNames);
     }
 
     private void gameStart(final CarRacingGame carRacingGame) {
