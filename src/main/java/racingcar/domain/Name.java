@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Name {
 
-    private static final int MAXIMUM_NAME_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
 
     private final String text;
 
@@ -14,21 +14,17 @@ public class Name {
     }
 
     private void validateNameLength(String text) {
-        if (isUnderValidNameLength(text) || isOverValidNameLength(text)) {
+        if (isEmpty(text) || isOverValidLength(text)) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다");
         }
     }
 
-    private boolean isUnderValidNameLength(String text) {
+    private boolean isEmpty(String text) {
         return text.isEmpty();
     }
 
-    private boolean isOverValidNameLength(String text) {
-        return text.length() > MAXIMUM_NAME_LENGTH;
-    }
-
-    private String getName() {
-        return text;
+    private boolean isOverValidLength(String text) {
+        return text.length() > MAX_NAME_LENGTH;
     }
 
     @Override

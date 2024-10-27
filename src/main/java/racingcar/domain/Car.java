@@ -29,19 +29,19 @@ public class Car {
     }
 
     public Car decideMove(int random) {
-        if (random >= MOVE_STANDARD) {
-            position = position.move();
+        if (random > MOVE_STANDARD) {
+            position = position.increase();
             return new Car(name, position);
         }
         return this;
     }
 
-    public int getLargerMove(int move) {
-        return position.getLargerPosition(move);
+    public int getMaxMove(int move) {
+        return position.getMax(move);
     }
 
     public boolean isSameMaxMove(int maxMove) {
-        return position.isSamePosition(maxMove);
+        return position.isSame(maxMove);
     }
 
     public String getName() {
@@ -66,10 +66,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return name.toString()
-                + NAME_POSITION_SEPARATOR
-                + position.signCount()
-                + LINE_CHANGE;
+        return name.toString() + NAME_POSITION_SEPARATOR + position.currentState() + LINE_CHANGE;
     }
 
 }

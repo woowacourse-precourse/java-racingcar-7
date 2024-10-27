@@ -12,19 +12,19 @@ public class Position {
         this.number = number;
     }
 
-    public int getLargerPosition(int position) {
+    public int getMax(int position) {
         return Math.max(number, position);
     }
 
-    public boolean isSamePosition(int position) {
+    public boolean isSame(int position) {
         return number == position;
     }
 
-    public Position move() {
+    public Position increase() {
         return new Position(number + 1);
     }
 
-    public String signCount() {
+    public String currentState() {
         return POSITION_SIGN.repeat(number);
     }
 

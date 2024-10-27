@@ -27,7 +27,7 @@ public class CarTest {
     @Test
     void 더_큰_위치값_구하기() {
         int position = 4;
-        assertThat(CAR_MARU.getLargerMove(position)).isEqualTo(4);
+        assertThat(CAR_MARU.getMaxMove(position)).isEqualTo(4);
     }
 
     @Test

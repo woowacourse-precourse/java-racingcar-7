@@ -17,10 +17,14 @@ public class Cars {
     }
 
     private void checkDuplicateCarName(List<Car> carList) {
-        Set<Car> carSet = new HashSet<>(carList);
-        if (carSet.size() < carList.size()) {
+        if (hasDuplicateName(carList)) {
             throw new IllegalArgumentException("중복되는 자동차 이름은 사용할 수 없습니다");
         }
+    }
+
+    private boolean hasDuplicateName(List<Car> carList) {
+        Set<Car> carSet = new HashSet<>(carList);
+        return carSet.size() < carList.size();
     }
 
     public void takeTurn() {
@@ -28,18 +32,18 @@ public class Cars {
     }
 
     public List<String> findWinners() {
-        int maxMove = calculateMaxMove();
+        int maxMove = calculateMaxMoves();
         return carList.stream()
                 .filter(car -> car.isSameMaxMove(maxMove))
                 .map(Car::getName)
                 .toList();
     }
 
-    private int calculateMaxMove() {
+    private int calculateMaxMoves() {
         int maxMove = 0;
 
         for (Car car : carList) {
-            maxMove = car.getLargerMove(maxMove);
+            maxMove = car.getMaxMove(maxMove);
         }
 
         return maxMove;
