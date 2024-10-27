@@ -20,4 +20,16 @@ public class RandomMovementStrategyTest {
         assertThat(randomMovementStrategy.moveable()).isTrue();
     }
 
+    @Test
+    @DisplayName("RandomMovementStrategy 는 4 이상일 때 이동 가능하다")
+    void notMoveableWhenRandomNumberBelowFour(){
+        RandomMovementStrategy randomMovementStrategy =new RandomMovementStrategy(){
+            @Override
+            protected int makeRandomNumber() {
+                return 3;
+            }
+        };
+        assertThat(randomMovementStrategy.moveable()).isTrue();
+    }
+
 }
