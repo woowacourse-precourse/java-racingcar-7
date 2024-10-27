@@ -1,7 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RacingCarController {
@@ -17,13 +19,15 @@ public class RacingCarController {
             racingCarService.process(carInfo);
             printCurrentStatus(carInfo);
         }
+
+        printWinner(carInfo);
     }
 
     public Map<String, Integer> getCarInfo() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNames = Console.readLine();
         String[] cars = carNames.split(",");
-        Map<String, Integer> carInfo = new HashMap<>();
+        Map<String, Integer> carInfo = new LinkedHashMap<>();
         for (String car : cars) {
             if (car.length() > 5) {
                 throw new IllegalArgumentException();
@@ -50,5 +54,16 @@ public class RacingCarController {
             System.out.println(carName + " : " + "-".repeat(carInfo.get(carName)));
         }
         System.out.println();
+    }
+
+    private void printWinner(Map<String, Integer> carInfo) {
+        int maxCount = carInfo.values().stream().max(Integer::compareTo).get();
+        List<String> winner = new ArrayList<>();
+        for (String carName : carInfo.keySet()) {
+            if (carInfo.get(carName) == maxCount) {
+                winner.add(carName);
+            }
+        }
+        System.out.println("최종우승자 : " + String.join(", ", winner));
     }
 }
