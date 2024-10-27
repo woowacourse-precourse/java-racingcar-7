@@ -10,4 +10,3 @@ public interface InputHandler {
 
     String readLine();
 }
-

@@ -23,14 +23,12 @@ public class InputHandlerImpl implements InputHandler {
                 .toList();
     }
 
-
     @Override
     public int getRaceCount() {
         System.out.println(RACE_COUNT_INPUT_MESSAGE);
         String raceCountInput = readLine();
         return validateRaceCountInput(raceCountInput);
     }
-
 
     @Override
     public String readLine() {
@@ -52,6 +50,4 @@ public class InputHandlerImpl implements InputHandler {
         }
         return raceCount;
     }
-
-
 }

@@ -5,7 +5,6 @@ import racingcar.domain.car.Car;
 public record CarResponse(
         String carStatus
 ) {
-
     private final static String CAR_POSITION_INDEX = "-";
     private final static String CAR_NAME_AND_POSITION_SEPARATOR = " : ";
 

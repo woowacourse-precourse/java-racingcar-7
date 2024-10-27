@@ -57,4 +57,3 @@ public class RacingController {
         outputHandler.print(winnerResponse.winnerList());
     }
 }
-

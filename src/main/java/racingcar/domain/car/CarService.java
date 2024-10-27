@@ -13,5 +13,4 @@ public class CarService {
     public Cars makeCars(List<String> carNames) {
         return carFactory.makeCars(carNames);
     }
-
 }
