@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class Car {
     public final Name name;
-    public  int position;
+    public int position;
 
     public Car(Name carName) {
         this.name = carName;
