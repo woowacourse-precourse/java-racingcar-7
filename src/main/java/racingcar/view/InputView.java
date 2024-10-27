@@ -33,8 +33,8 @@ public class InputView {
         );
     }
 
-    public int getLapCount() {
+    public String getLapCount() {
         System.out.println(Message.INPUT_LAP_COUNT);
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 }

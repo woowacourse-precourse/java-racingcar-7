@@ -32,11 +32,11 @@ public class RaceService {
     }
     //------------------------//
 
-    public Race createRace(int lap) {
+    public Race createRace(String lap) {
         List<Car> carList = carService.findAll();
         Cars cars = new Cars(carList);
 
-        return new Race(cars, lap);
+        return new Race(cars, Integer.parseInt(lap));
     }
 
     public void save(Race race) {
@@ -47,7 +47,7 @@ public class RaceService {
         return raceRepository.findById(id);
     }
 
-    public void isLapValid(int lap) {
+    public void isLapValid(String lap) {
         LapValidator.run(lap);
     }
 
