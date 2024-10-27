@@ -33,8 +33,8 @@ public class RacingController {
 
         OutputView.printGameResultMessage();
         OutputView.printRacingResult(racingResult);
-
         List<String> FinalWinners = racingGame.getFinalWinner();
+
         OutputView.printFinalWinner(FinalWinners);
     }
 }
