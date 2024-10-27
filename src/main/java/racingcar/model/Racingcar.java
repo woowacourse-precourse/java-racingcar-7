@@ -8,4 +8,8 @@ public class Racingcar {
         this.name = name;
         this.distance = 0;
     }
+
+    public void move() {
+        this.distance++;
+    }
 }
