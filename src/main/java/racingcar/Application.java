@@ -43,7 +43,12 @@ public class Application {
 		return Integer.parseInt(roundCount);
 	}
 
-
+	public static void getAdvanceRandomNumber(String[] count) {
+		for (int i = 0; i < count.length; i++) {
+			int randomValue = Randoms.pickNumberInRange(0, 9);
+			checkAndMoveCar(randomValue, count, i);
+		}
+	}
 
 
 
