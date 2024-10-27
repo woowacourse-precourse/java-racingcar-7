@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class OutputView {
 
@@ -16,6 +17,10 @@ public class OutputView {
 
     public static void printResultMessage() {
         System.out.println("\n실행 결과");
+    }
+
+    public static void printCarsPosition(Cars cars) {
+        System.out.print(cars.toStringCarsPosition() + "\n");
     }
 
     public static void printWinner(List<Car> winners) {

@@ -20,6 +20,7 @@ public class CarController {
         OutputView.printResultMessage();
         for (int i = 0; i < attemptCount; i++) {
             attemptRound(cars);
+            OutputView.printCarsPosition(cars);
         }
 
         OutputView.printWinner(cars.findWinners());
@@ -28,9 +29,7 @@ public class CarController {
     private void attemptRound(Cars cars) {
         for (Car car : cars.getCars()) {
             car.moveForward();
-            System.out.print(car.toStringCarPosition(car));
         }
-        System.out.println();
     }
 
     private Cars makeCars(String carNames) {
