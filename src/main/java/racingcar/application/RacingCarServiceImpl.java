@@ -8,7 +8,7 @@ import racingcar.model.RaceCount;
 import racingcar.model.RacingCarList;
 import racingcar.model.RawInput;
 
-import java.util.Set;
+import java.util.List;
 
 public class RacingCarServiceImpl implements RacingCarService {
 
@@ -22,7 +22,7 @@ public class RacingCarServiceImpl implements RacingCarService {
         Console.close();
 
         //parsing
-        Set<CarName> carNameSet = parser.getParsedCarNameList(rawInput);
+        List<CarName> carNameSet = parser.getParsedCarNameList(rawInput);
 
         //racing
         RacingCarList racingCarList = RacingCarList.of(carNameSet);

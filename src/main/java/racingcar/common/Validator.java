@@ -2,7 +2,7 @@ package racingcar.common;
 
 import racingcar.model.CarName;
 
-import java.util.Set;
+import java.util.List;
 
 import static racingcar.common.ErrorMessage.*;
 
@@ -14,7 +14,7 @@ public class Validator {
         }
     }
 
-    public static void validateCarNameListLength(Set<CarName> carNameList) {
+    public static void validateCarNameListLength(List<CarName> carNameList) {
         if (carNameList.isEmpty()) {
             throw new IllegalArgumentException(NO_CAR_NAME.getMessage());
         }

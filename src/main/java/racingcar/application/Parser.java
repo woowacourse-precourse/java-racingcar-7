@@ -3,8 +3,8 @@ package racingcar.application;
 import racingcar.model.CarName;
 import racingcar.model.RawInput;
 
-import java.util.Set;
+import java.util.List;
 
 public interface Parser {
-    Set<CarName> getParsedCarNameList(RawInput carNameString);
+    List<CarName> getParsedCarNameList(RawInput carNameString);
 }

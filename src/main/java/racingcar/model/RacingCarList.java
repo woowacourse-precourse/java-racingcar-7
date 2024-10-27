@@ -3,19 +3,18 @@ package racingcar.model;
 import racingcar.common.OutputController;
 
 import java.util.List;
-import java.util.Set;
 
 public class RacingCarList {
 
     private final List<RacingCar> racingCars;
 
-    private RacingCarList(Set<CarName> carNameSet) {
+    private RacingCarList(List<CarName> carNameSet) {
         racingCars = carNameSet.stream()
                 .map(RacingCar::of)
                 .toList();
     }
 
-    public static RacingCarList of(Set<CarName> carNameSet) {
+    public static RacingCarList of(List<CarName> carNameSet) {
         return new RacingCarList(carNameSet);
     }
 
