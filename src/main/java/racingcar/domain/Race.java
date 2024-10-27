@@ -10,9 +10,11 @@ public class Race {
 
     private final List<Car> cars;
     private final int tryCount;
+    private final static int VALIDATE_NEGATIVE_NUMBER = 0;
 
 
     public Race(List<Car> cars, int tryCount) {
+        validateTryCount(tryCount);
         this.cars = cars;
         this.tryCount = tryCount;
     }
@@ -47,5 +49,12 @@ public class Race {
         Car winner = Collections.max(cars, Comparator.comparingInt(car -> car.getPosition()));
         int winnerPosition = winner.getPosition();
         return winnerPosition;
+    }
+
+    private boolean validateTryCount(int tryCount) {
+        if (tryCount < VALIDATE_NEGATIVE_NUMBER) {
+            return false;
+        }
+        return true;
     }
 }
