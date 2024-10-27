@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.ExceptionHandler.validateNaturalNum;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -19,17 +21,7 @@ public final class Utils {
     public static int enterRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String text = Console.readLine();
-
-        try {
-            int round = Integer.parseInt(text);
-            if (round < 0) {
-                throw new IllegalArgumentException(
-                        "양의 정수를 입력해주세요.");
-            }
-            return round;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자형 문자를 입력해주세요.");
-        }
+        return validateNaturalNum(text);
     }
 
     public static void printResult(List<RacingCar> racingCarList) {
