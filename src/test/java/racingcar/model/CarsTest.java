@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.List;
@@ -35,6 +36,26 @@ class CarsTest {
     void 랜덥값들의_개수와_자동차들의_개수가_다르면_예외_발생(){
         List<Integer> randomNumbers = List.of(5, 6);
         assertThrows(IllegalArgumentException.class, () -> getCars().moveAll(randomNumbers));
+    }
+
+    @Test
+    void 가장_많이_이동한_자동차_이름을_반환한다(){
+        List<Integer> randomNumbers = List.of(1, 2, 7);
+        Cars cars = getCars();
+        cars.moveAll(randomNumbers);
+        List<String> names = cars.getCarNameWithLongestDistance();
+        assertEquals(1, names.size());
+        assertEquals("jun", names.getFirst());
+    }
+
+    @Test
+    void 가장_많이_이동한_자동차_이름들을_반환한다(){
+        List<Integer> randomNumbers = List.of(1, 6, 7);
+        Cars cars = getCars();
+        cars.moveAll(randomNumbers);
+        List<String> names = cars.getCarNameWithLongestDistance();
+        assertEquals(2, names.size());
+        assertTrue(names.containsAll(List.of("woni", "jun")));
     }
 
     private Cars getCars() {

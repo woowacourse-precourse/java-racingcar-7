@@ -40,4 +40,10 @@ public class Cars {
     private void print() {
         System.out.println();
     }
+    public List<String> getCarNameWithLongestDistance(){
+        List<Car> cars = this.cars.stream().sorted().toList();
+        Integer maxDistance = cars.get(0).getDistance();
+        return this.cars.stream().filter(car -> Objects.equals(maxDistance, car.getDistance()))
+                .map(car -> car.getName()).toList();
+    }
 }

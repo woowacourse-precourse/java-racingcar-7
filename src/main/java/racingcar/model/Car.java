@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.stream.IntStream;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private final Name name;
     private Distance distance;
     private static final int LIMIT = 4;
@@ -41,5 +41,10 @@ public class Car {
         IntStream.range(0, this.getDistance())
                 .forEach((i) -> stringBuilder.append("-"));
         System.out.println(stringBuilder);
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return car.getDistance() - this.getDistance();
     }
 }
