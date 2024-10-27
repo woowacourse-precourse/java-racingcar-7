@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.controller.GameController;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -11,5 +12,8 @@ public class Application {
                 new InputView()
         );
         gameController.run();
+
+        Console.close();
     }
+
 }
