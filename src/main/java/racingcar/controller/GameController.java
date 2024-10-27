@@ -23,7 +23,8 @@ public class GameController {
 
     public void startGame() {
         int rounds = validator.validateAttemptCount(inputView.inputAttemptCount());
-        ArrayList<Car> cars = carService.getCars();
+        ArrayList<Car> cars = gameService.getCars();
+        outputView.printExecutionResult();
         runRace(rounds, cars);
         printWinners();
     }
