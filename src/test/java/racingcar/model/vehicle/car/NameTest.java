@@ -32,4 +32,13 @@ public class NameTest {
         //when, then
         assertThatThrownBy(()-> new Name(name)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("이름 길이 5자 초과 테스트")
+    void nameLengthTest() {
+        //given
+        String name = "여섯글자다다";
+        //when, then
+        assertThatThrownBy(()-> new Name(name)).isInstanceOf(IllegalArgumentException.class);
+    }
 }

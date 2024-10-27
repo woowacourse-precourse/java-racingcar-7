@@ -10,7 +10,7 @@ import racingcar.modle.vehicle.Vehicles;
 
 public class VehiclesTest {
 
-    Vehicles vehicles;
+    private Vehicles vehicles;
 
     @BeforeEach
     public void setUp() {
@@ -29,10 +29,11 @@ public class VehiclesTest {
     }
 
     @Test
-    @DisplayName("자동차들의 현재 위치 확인 테스트")
-    public void checkCarPositionTest(){
+    @DisplayName("자동차들의 시작 위치 확인 테스트")
+    public void startPositionTest(){
         // given
-        // when
-        // then
+        List<Integer> carPositions = vehicles.getPositions();
+        // when, then
+        Assertions.assertThat(carPositions).containsOnly(0,0,0);
     }
 }

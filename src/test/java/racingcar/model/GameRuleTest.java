@@ -12,9 +12,9 @@ import racingcar.modle.vehicle.car.CarFactory;
 
 public class GameRuleTest {
 
-    CarFactory carFactory;
-    Movable car;
-    GameRule gameRule;
+    private CarFactory carFactory;
+    Movable car;  // 이거 접근제어자 추후 수정해야함
+    GameRule gameRule; // 이거 접근제어자 추후 수정해야함
 
     @BeforeEach
     public void setUp() {
