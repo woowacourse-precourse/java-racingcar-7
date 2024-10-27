@@ -19,13 +19,13 @@ public class UserInputService {
 
     public Cars createCar() {
         Names names = createNames();
+
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < names.size(); i++) {
             Name name = names.getNames().get(i);
             Car car = new Car(name);
             cars.add(car);
         }
-
         return new Cars(cars);
     }
 
@@ -39,7 +39,6 @@ public class UserInputService {
         for (String carName : carNames) {
             nameList.add(new Name(carName));
         }
-
         return new Names(nameList);
     }
 
@@ -48,7 +47,6 @@ public class UserInputService {
 
         String userInput = Console.readLine();
         repeatValidate(userInput);
-
         return Integer.parseInt(userInput);
     }
 
@@ -61,5 +59,4 @@ public class UserInputService {
             throw new IllegalArgumentException("입력 값이 10만 미만이어야합니다.");
         }
     }
-
 }

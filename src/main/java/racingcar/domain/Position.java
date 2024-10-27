@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class Position {
+
     private String value;
 
     public Position() {
@@ -16,10 +17,6 @@ public class Position {
     @Override
     public String toString() {
         return this.value;
-    }
-
-    public int getLength() {
-        return this.value.length();
     }
 
     public boolean isMoreFar(Position position) {

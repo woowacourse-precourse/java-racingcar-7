@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Names {
+
     private final List<Name> names;
 
     public Names(List<Name> names) {

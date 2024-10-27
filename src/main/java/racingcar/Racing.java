@@ -5,6 +5,9 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
 public class Racing {
+
+    private final int MINIMUM_MOVEABLE_VALUE = 4;
+
     private final Cars cars;
     private final int repeat;
 
@@ -30,7 +33,7 @@ public class Racing {
 
     private int canMove() {
         int number = Randoms.pickNumberInRange(0, 9);
-        if (number >= 4) {
+        if (number >= MINIMUM_MOVEABLE_VALUE) {
             return 1;
         }
         return 0;
@@ -43,5 +46,4 @@ public class Racing {
     public Cars getWinners() {
         return this.cars.findFarthestCars();
     }
-
 }
