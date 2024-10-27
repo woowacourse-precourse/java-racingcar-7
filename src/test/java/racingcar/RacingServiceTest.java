@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingServiceTest {
-
-
     private RacingService racingService;
 
     @BeforeEach
@@ -21,7 +18,7 @@ class RacingServiceTest {
     @DisplayName("입력받은 여러 자동차를 구분자(,) 기준으로 추출하여 HashMap 으로 생성")
     void 자동차_추출_테스트1() {
         String input = "aa,bb,cc";
-        racingService.setCarInput(input);
+        racingService.setCarNameInput(input);
         assertThat(racingService.getCarMap()).hasSize(3);
         assertThat(racingService.getCarMap().keySet()).contains("cc");
     }
@@ -30,7 +27,7 @@ class RacingServiceTest {
     @DisplayName("입력받은 자동차가 한 대일 경우 추출하여 HashMap 으로 생성")
     void 자동차_추출_테스트2() {
         String input = "aa";
-        racingService.setCarInput(input);
+        racingService.setCarNameInput(input);
         assertThat(racingService.getCarMap()).hasSize(1);
         assertThat(racingService.getCarMap().keySet()).contains("aa");
     }
@@ -74,7 +71,7 @@ class RacingServiceTest {
         racingService.updateMovement("b", 2);
         racingService.updateMovement("c", 1);
 
-        String[] result = racingService.getWinner();
+        String[] result = racingService.getWinners();
         assertThat(result).containsExactly("a");
     }
 
@@ -89,7 +86,7 @@ class RacingServiceTest {
 
         racingService.updateMovement("c", 1);
 
-        String[] result = racingService.getWinner();
+        String[] result = racingService.getWinners();
         assertThat(result).contains("a");
         assertThat(result).contains("b");
     }
