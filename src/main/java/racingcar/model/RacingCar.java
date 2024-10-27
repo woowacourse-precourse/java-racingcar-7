@@ -29,4 +29,9 @@ public class RacingCar {
         return cars.stream().mapToInt(Car::getPosition)
                 .max().orElse(0);
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
 }
