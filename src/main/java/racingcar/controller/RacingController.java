@@ -1,12 +1,28 @@
 package racingcar.controller;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import racingcar.model.Car;
 import racingcar.view.InputView;
+
 public class RacingController {
 
     final InputView inputView = new InputView();
+    List<Car> cars = new ArrayList<>();
+
     public RacingController() {
     }
 
     public void run() {
+        setCars(inputView.getCarNamesInput());
+    }
+
+    public void setCars(String input) {
+        List<String> carNames = getDuplicationCheckedCarNamesFrom(input);
+        for (String carName : carNames) {
+            this.cars.add(new Car(getValidated(carName)));
+        }
     }
 
     public List<String> getDuplicationCheckedCarNamesFrom(String input) {
