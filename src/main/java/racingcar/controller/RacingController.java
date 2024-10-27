@@ -19,5 +19,7 @@ public class RacingController {
         String carNames = inputView.inputCarNames();
 
         ArrayList<Car> carList = carFactory.createCar(carNames);
+
+        Long movingCount = inputView.inputMovingCount();
     }
 }
