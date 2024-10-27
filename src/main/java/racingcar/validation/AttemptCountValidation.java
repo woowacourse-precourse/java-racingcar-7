@@ -1,5 +1,9 @@
 package racingcar.validation;
 
+import static racingcar.constant.ErrorMessage.ATTEMPT_COUNT_CANNOT_BE_NULL_OR_EMPTY;
+import static racingcar.constant.ErrorMessage.ATTEMPT_COUNT_IS_NOT_AN_INTEGER;
+import static racingcar.constant.ErrorMessage.ATTEMPT_COUNT_IS_NOT_POSITIVE_INTEGER;
+
 public class AttemptCountValidation {
     private final static int MINIMUM_ATTEMPT_COUNT = 1;
 
@@ -11,7 +15,7 @@ public class AttemptCountValidation {
 
     private static void validateNotNullOrEmpty(String input) {
         if (input == null || input.trim().isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ATTEMPT_COUNT_CANNOT_BE_NULL_OR_EMPTY.getMessage());
         }
     }
 
@@ -19,13 +23,13 @@ public class AttemptCountValidation {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ATTEMPT_COUNT_IS_NOT_AN_INTEGER.getMessage());
         }
     }
 
     private static void validatePositiveNumber(String input) {
         if (Integer.parseInt(input) < MINIMUM_ATTEMPT_COUNT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ATTEMPT_COUNT_IS_NOT_POSITIVE_INTEGER.getMessage());
         }
     }
 }
