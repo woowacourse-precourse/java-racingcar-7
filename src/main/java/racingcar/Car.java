@@ -5,6 +5,7 @@ import java.util.HashMap;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Car {
+
     private final HashMap<String, Integer> cars = new HashMap<String, Integer>();
     private int tryNumber;
 
