@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.model.Cars;
 import racingcar.model.Race;
+import racingcar.model.Winners;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
 
@@ -20,6 +21,6 @@ public class RacingController {
         Race race = inputView.receiveRacingNumber();
 
         Cars cars = racingService.enterCars(carNames);
-        racingService.startRace(cars, race);
+        Winners winners = racingService.startRace(cars, race);
     }
 }
