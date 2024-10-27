@@ -42,6 +42,10 @@ public class Car {
         if (carName.isBlank() || carName.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException("유효하지 않은 자동차 이름입니다.");
         }
+
+        if (carName.contains(" ")) {
+            throw new IllegalArgumentException("이름에 공백을 제외시켜주세요.");
+        }
     }
 
     private boolean isForwardable() {
