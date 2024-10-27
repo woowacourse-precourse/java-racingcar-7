@@ -1,8 +1,8 @@
 package racingcar;
 
-public record RacingCar(
-        String name
-) {
+public class RacingCar extends Racer {
+
+    private String name;
 
     public RacingCar(String name) {
         this.name = name;

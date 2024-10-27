@@ -13,11 +13,15 @@ public class GameConfig {
     }
 
     public Game racingCarGame() {
-        return new RacingCarGame(applicationView(), converter());
+        return new RacingCarGame(applicationView(), racingManager(), converter());
     }
 
     private ApplicationView applicationView() {
         return new ApplicationConsoleView();
+    }
+
+    private RacingManager<RacingCar> racingManager() {
+        return new RacingCarManager(CarRaceParticipants.getInstance());
     }
 
     private Converter<RacingCar> converter() {
