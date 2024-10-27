@@ -11,10 +11,12 @@ public class Race {
     }
 
     public void startRacing(int inputMoves) {
+        System.out.println("실행 결과");
         for (int i = 0; i < inputMoves; i++) {
             for (RacingCar racingCar : racingCars) {
                 racingCar.move();
             }
+            OutputHandler.printCars(racingCars);
         }
     }
 
