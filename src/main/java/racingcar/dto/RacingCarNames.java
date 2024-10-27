@@ -5,11 +5,12 @@ import static racingcar.exception.ErrorMessage.*;
 import racingcar.exception.RacingCarException;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public record RacingCarNames(List<String> carNames) {
 
     public static RacingCarNames from(String input) {
-        List<String> carNames = List.of(input.split(",")).stream()
+        List<String> carNames = Stream.of(input.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
         validateInput(carNames);
