@@ -3,11 +3,11 @@ package racingcar.util;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
-public class InputOutputUtils {
+public class InputOutputHandler {
 
     private final InputParser inputParser;
 
-    public InputOutputUtils() {
+    public InputOutputHandler() {
         this.inputParser = new InputParser();
     }
 
