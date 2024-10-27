@@ -8,7 +8,6 @@ public class CarMover {
         if(randomValue >=4){
             car.move(randomValue);
         }
-
     }
 
     private int generateRandomNumber(){
