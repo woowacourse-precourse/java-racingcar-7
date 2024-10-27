@@ -31,6 +31,7 @@ public class RacingCarController {
             System.out.println(cars.getForwardStatuses() + "\n");
         }
 
+        System.out.println("최종 우승자 : " + cars.getWinnerNames());
     }
 
 }

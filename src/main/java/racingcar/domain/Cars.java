@@ -23,4 +23,17 @@ public class Cars {
                 .collect(Collectors.joining("\n"));
     }
 
+    public String getWinnerNames() {
+        return cars.stream()
+                .filter(car -> car.isMaxPosition(getMaxPosition()))
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .reduce(0, Integer::max);
+    }
+
 }

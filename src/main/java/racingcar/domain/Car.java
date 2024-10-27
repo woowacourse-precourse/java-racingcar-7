@@ -19,6 +19,11 @@ public class Car {
         return String.format("%s : " + "-".repeat(Math.max(0, position)), name);
     }
 
+
+    public boolean isMaxPosition(int maxPosition) {
+        return position >= maxPosition;
+    }
+
     public String getName() {
         return name;
     }
