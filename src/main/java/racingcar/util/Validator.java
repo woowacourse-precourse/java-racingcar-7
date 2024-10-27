@@ -52,9 +52,13 @@ public class Validator {
 
     public void validateNameCharacters(List<String> carNamesList) {
         for (String carName: carNamesList) {
-            if (!carName.matches(Constants.CAR_NAME_REGEX)) {
-                throw new IllegalArgumentException(Constants.CAR_NAME_CHARACTER_ERROR_MESSAGE);
-            }
+            validateMatchesRegex(carName);
+        }
+    }
+
+    private void validateMatchesRegex(String carName) {
+        if (!carName.matches(Constants.CAR_NAME_REGEX)) {
+            throw new IllegalArgumentException(Constants.CAR_NAME_CHARACTER_ERROR_MESSAGE);
         }
     }
 
