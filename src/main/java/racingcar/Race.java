@@ -14,9 +14,9 @@ public class Race {
         cars = carFactory.createCars(carName);
     }
 
-    public void start(long number) {
+    public void start(int number) {
         System.out.println("실행 결과");
-        for (long i = 0; i < number; i++) {
+        for (int i = 0; i < number; i++) {
             randomMovement();
             carPosition();
             System.out.println();

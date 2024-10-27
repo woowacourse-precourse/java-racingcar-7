@@ -18,4 +18,8 @@ public class Car {
             System.out.print("-");
         }
     }
+
+    public int getPosition() {
+        return position;
+    }
 }

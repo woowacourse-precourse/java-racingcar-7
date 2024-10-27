@@ -8,8 +8,8 @@ public class IO {
         return Console.readLine();
     }
 
-    public Long readNumber() {
+    public int readNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Long.parseLong(Console.readLine());
+        return Integer.parseInt(Console.readLine());
     }
 }

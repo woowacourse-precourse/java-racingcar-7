@@ -4,7 +4,7 @@ public class OperationManager {
     private IO io = new IO();
     private Race race = new Race();
     private String carNames;
-    private Long number;
+    private int number;
 
     public void initProgram() {
         carNames = io.readCarNames();
