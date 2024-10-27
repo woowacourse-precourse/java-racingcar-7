@@ -1,6 +1,7 @@
 package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -69,5 +70,13 @@ public class RacingCar {
         raceResult = key;
         raceResult = raceResult + " : " + resultLog;
         resultLog = "";
+    }
+
+    public void startRace() {
+        System.out.println("\n" + "실행 결과");
+        for (int i = 0; i < tryCount; i++) {
+            updateRaceStatus();
+            System.out.println();
+        }
     }
 }
