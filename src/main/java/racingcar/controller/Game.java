@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import racingcar.domain.Cars;
 import racingcar.domain.Parser;
 import racingcar.validator.CarNamesValidator;
-import racingcar.validator.TrialNumberValidator;
+import racingcar.validator.TotalRoundsValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,18 +16,18 @@ public class Game {
         CarNamesValidator.validate(carNames);
         Cars cars = new Cars(carNames);
 
-        String rawNumberOfTrials = InputView.requestNumberOfTrials();
-        TrialNumberValidator.validate(rawNumberOfTrials);
-        int numberOfTrials = Integer.parseInt(rawNumberOfTrials);
+        String rawTotalRounds = InputView.requestTotalRounds();
+        TotalRoundsValidator.validate(rawTotalRounds);
+        int totalRounds = Integer.parseInt(rawTotalRounds);
 
-        proceedRacing(cars, numberOfTrials);
+        proceedRacing(cars, totalRounds);
         OutputView.printWinner(cars.getWinner());
     }
 
-    public void proceedRacing(Cars cars , int numberOfTrials ) {
+    public void proceedRacing(Cars cars , int totalRounds ) {
         OutputView.printProcessResult();
 
-        for (int i = 0; i < numberOfTrials; i++) {
+        for (int i = 0; i < totalRounds; i++) {
             cars.proceedOneRound();
             ArrayList<String> currentStates = cars.getCurrentStates();
             OutputView.printRoundResult(currentStates);
