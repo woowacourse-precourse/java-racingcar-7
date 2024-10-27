@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.model.valuegenerator.RandomValueGenerator;
+import racingcar.model.valuegenerator.ValueGenerator;
 
 public class Cars {
     private final List<Car> cars;
@@ -20,9 +20,9 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public void move() {
+    public void move(ValueGenerator valueGenerator) {
         cars.stream()
-                .filter(car -> randomValueGenerator.getValue() >= 4)
+                .filter(car -> valueGenerator.getValue() >= 4)
                 .forEach(Car::increasePosition);
     }
 }
