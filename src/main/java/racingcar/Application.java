@@ -2,8 +2,11 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -123,6 +126,34 @@ public class Application {
         }
 
     }
+
+    public static class WinnerDeterminer {
+        private final RaceManager raceManager;
+
+        public WinnerDeterminer(RaceManager raceManager) {
+            this.raceManager = raceManager;
+        }
+
+        //determineWinner()
+        private List<Car> determineWinner() {
+            int maxPosition = getMaxPositionInCars();
+            return getCarsAtMaxPosition(maxPosition);
+        }
+
+        private List<Car> getCarsAtMaxPosition(int maxPosition) {
+            return raceManager.cars.stream()
+                    .filter(car -> car.position == maxPosition)
+                    .toList();
+        }
+
+        private int getMaxPositionInCars() {
+            return raceManager.cars.stream()
+                    .mapToInt(car -> car.position)
+                    .max()
+                    .orElseThrow(IllegalArgumentException::new);
+        }
+    }
+
     public static class business {
         // 전진하는 로직 구현(랜덤으로 0~9까지 숫자 뽑아서 4 이상이면 60%의 확률로 전진)
         // 우승자를 정함
