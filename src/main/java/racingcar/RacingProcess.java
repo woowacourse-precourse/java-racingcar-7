@@ -8,14 +8,7 @@ public class RacingProcess {
 
     public static void racingProcess() {
 
-        int[] processNum = new int[carNumber];
-        Arrays.fill(processNum, -1);
-
-        for (int i = 0; i < carNumber; i++) {
-
-            processNum[i] = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
-
-        }
+        int[] processNum = generateRandomNumbers(carNumber);
 
         for (int i = 0; i < carNumber; i++) {
 
@@ -26,5 +19,18 @@ public class RacingProcess {
 
             }
         }
+    }
+
+    protected static int[] generateRandomNumbers(int num) {
+        int[] randomIntArray = new int[num];
+        Arrays.fill(randomIntArray, -1);
+
+        for (int i = 0; i < carNumber; i++) {
+
+            randomIntArray[i] = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
+
+        }
+
+        return randomIntArray;
     }
 }
