@@ -127,25 +127,25 @@ OutputManager
 ```text
 InputManager
 
-    -  사용자의 입력을 받는 역할
+   - 사용자의 입력을 받는 역할
 
 Car
    
-   -  자동차를 나타내는 클래스
+   - 자동차를 나타내는 클래스
 
 CarManager
 
-    - 입력받은 문자열을 통해 Car class 의 인스턴스로 이루어진 List 를 만드는 역할
+   - 입력받은 문자열을 통해 Car class 의 인스턴스로 이루어진 List 를 만드는 역할
 
 
 Game
 
-    - 자동차들을 통해 게임을 진행하는 역할
+   - 자동차들을 통해 게임을 진행하는 역할
     
     
 OutputManager
 
-    - 결과를 출력하는 역할
+   - 결과를 출력하는 역할
 ```
 
 - todo
