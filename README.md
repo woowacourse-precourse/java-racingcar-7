@@ -103,7 +103,7 @@
 ### 테스트 코드 작성
 
 - [X]  Car 클래스
-- [ ]  자동차 게임 진행 관리 클래스(RacingCarGame)
+- [X]  자동차 게임 진행 관리 클래스(RacingCarGame)
 - [ ]  자동차 그룹 관리 클래스(RacingCarsGroup)
 - [ ]  자동차 이름 유효성 검증 클래스(CarNameValidation)
 - [ ]  시도할 횟수 값 유효성 검증 클래스(InputNumberValidation)

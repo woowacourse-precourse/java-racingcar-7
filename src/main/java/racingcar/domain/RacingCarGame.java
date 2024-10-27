@@ -10,6 +10,9 @@ public class RacingCarGame {
 
     List<Car> cars = new ArrayList<>();
 
+    public RacingCarGame() {
+    }
+
     public RacingCarGame(List<String> carNames) {
         CarNameValidation.validateName(carNames);
         for (String carName : carNames) {
