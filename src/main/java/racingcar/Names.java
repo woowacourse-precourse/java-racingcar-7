@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Names {
 
+    private static final String COMMA = ",";
+    private static final String CONSECUTIVE_COMMAS = ",,";
     private static final String INPUT_IS_EMPTY_MESSAGE = "문자열이 입력되지 않았습니다.";
     private static final String CAN_BE_NO_CONSECUTIVE_COMMAS_MESSAGE = "연속된 쉼표(,)는 입력될 수 없습니다.";
     private static final String SINGLE_NAME_ERROR_MESSAGE = "하나의 이름만 들어갈 수는 없습니다.";
@@ -15,17 +17,17 @@ public class Names {
     private final List<Name> names;
 
     public Names(String input) {
-        this.names = parse(input);
+        this.names = initializeNames(input);
     }
 
     public List<Name> getNames() {
         return Collections.unmodifiableList(names);
     }
 
-    public List<Name> parse(String input) {
+    public List<Name> initializeNames(String input) {
         validate(input);
 
-        List<String> splitNameList = Arrays.asList(input.split(","));
+        List<String> splitNameList = List.of(input.split(COMMA));
         List<Name> nameList = new ArrayList<>();
 
         for (String nameString : splitNameList) {
@@ -38,14 +40,11 @@ public class Names {
     }
 
     private static void validate(String input) {
-        if (input.isEmpty() || input.equals(" ")) {
+        if (input.isBlank()) {
             throw new IllegalArgumentException(INPUT_IS_EMPTY_MESSAGE);
         }
-        if (input.contains(",,")) {
+        if (input.contains(CONSECUTIVE_COMMAS)) {
             throw new IllegalArgumentException(CAN_BE_NO_CONSECUTIVE_COMMAS_MESSAGE);
-        }
-        if (!input.contains(",")) {
-            throw new IllegalArgumentException(SINGLE_NAME_ERROR_MESSAGE);
         }
     }
 
