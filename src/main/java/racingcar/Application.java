@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.car.Cars;
 import racingcar.validator.InputValidator;
 
 public class Application {
@@ -13,5 +14,16 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String strRound = Console.readLine();
         InputValidator.validateRound(strRound);
+        int round = Integer.parseInt(strRound);
+
+        Cars cars = new Cars(strPlayer.split(","));
+
+        System.out.println("\n실행 결과");
+        while (round > 0) {
+            cars.run();
+            System.out.println();
+
+            round--;
+        }
     }
 }
