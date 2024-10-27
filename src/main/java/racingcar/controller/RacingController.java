@@ -1,16 +1,23 @@
 package racingcar.controller;
 
+import java.util.LinkedHashSet;
+import racingcar.domain.Car;
+import racingcar.service.RacingService;
 import racingcar.view.RacingView;
 
 public class RacingController {
 
-    private final RacingView view;
+    private final RacingService racingService;
+    private final RacingView racingView;
 
-    public RacingController(RacingView view) {
-        this.view = view;
+    public RacingController(RacingService racingService, RacingView racingView) {
+        this.racingService = racingService;
+        this.racingView = racingView;
     }
 
     public void run() {
-        String namesInput = view.requestNamesInput();
+        String namesInput = racingView.requestNamesInput();
+
+        LinkedHashSet<Car> cars = racingService.createCars(namesInput);
     }
 }
