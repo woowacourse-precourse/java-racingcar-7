@@ -41,4 +41,12 @@ public class Application {
             car.moveCar(randNumber);
         }
     }
+
+    public static void printCurrentStatus(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : ");
+            System.out.println("-".repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
 }
