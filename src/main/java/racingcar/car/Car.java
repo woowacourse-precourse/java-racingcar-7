@@ -19,6 +19,10 @@ public class Car {
         return "-".repeat(this.location);
     }
 
+    public int getLocation() {
+        return this.location;
+    }
+
     @Override
     public String toString() {
         return this.name;
