@@ -74,6 +74,7 @@ class RacingGame {
             moveCars();
             printCarPositions();
         }
+        announceWinner();
     }
 
     private void moveCars() {
@@ -94,5 +95,19 @@ class RacingGame {
             System.out.println(carName + " : " + position);
         }
     }
+
+    private void announceWinner() {
+        int maxDistance = carDistances.values().stream().mapToInt(Integer::intValue).max().orElse(0);
+        List<String> winners = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : carDistances.entrySet()) {
+            if (entry.getValue() == maxDistance) {
+                winners.add(entry.getKey());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
 
 }
