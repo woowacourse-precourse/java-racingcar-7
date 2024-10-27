@@ -7,10 +7,13 @@ public class Car {
 
     public Car(String name) {
         validateName(name);
-        this.name = name;
+        this.name = name.trim();
     }
 
     private void validateName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 필수입니다.");
+        }
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
