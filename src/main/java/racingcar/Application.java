@@ -61,5 +61,35 @@ public class Application {
 
         return sb.toString();
     }
+
+    public static void announceWinners(List<String> carNames, List<Integer> positions) {
+        int maxPosition = findMaxPosition(positions);
+        List<String> winners = findWinners(carNames, positions, maxPosition);
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    public static int findMaxPosition(List<Integer> positions) {
+        int max = 0;
+
+        for (int position : positions) {
+            if (position > max) {
+                max = position;
+            }
+        }
+
+        return max;
+    }
+
+    public static List<String> findWinners(List<String> carNames, List<Integer> positions, int maxPosition) {
+        List<String> winners = new ArrayList<>();
+
+        for (int i = 0; i < carNames.size(); i++) {
+            if (positions.get(i) == maxPosition) {
+                winners.add(carNames.get(i));
+            }
+        }
+
+        return winners;
     }
 }
