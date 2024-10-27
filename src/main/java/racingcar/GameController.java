@@ -45,7 +45,8 @@ public class GameController {
     }
 
     private void finish() {
-
+       List<Car> winnerList =  race.getWinnerList();
+       outputView.printResult(winnerList);
     }
 
 }
