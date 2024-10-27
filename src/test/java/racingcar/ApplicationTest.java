@@ -109,7 +109,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void a() {
+    public void displayRoundScoresTest() {
 
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("포르쉐", 4));

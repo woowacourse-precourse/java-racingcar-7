@@ -17,6 +17,11 @@ public class CarValueAssigner {
             car.setRandomValue(randomValue);// 자동차에 랜덤 값 할당
 
             updateScoreBasedOnComparison(car, randomValue);
+
+            int score = car.getScore();
+            String name = car.getName();
+
+            System.out.println(name + " : " + generateScoreDisplay(score));
         }
 
     }
@@ -24,6 +29,14 @@ public class CarValueAssigner {
     public void updateScoreBasedOnComparison(Car car, int randomValue) {
         if (randomValue >= 4 && randomValue <= 10) {
             car.setScore(car.getScore() + 1); // 조건을 만족하면 점수 증가
+        }
+    }
+
+    public String generateScoreDisplay(int score) {
+        if (score <= 0) {
+            return "";
+        } else {
+            return "-".repeat(score); // 점수만큼 "-" 반복
         }
     }
 

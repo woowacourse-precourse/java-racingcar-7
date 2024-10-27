@@ -27,12 +27,13 @@ public class Application {
 
         int raceCount = inputRaceCount();
 
-        for(int i=0; i<=raceCount; i++) {
+        for(int i=0; i<raceCount; i++) {
             carValueAssigner.assignRandomValue(cars);
-
         }
 
     }
+
+
 
     public static int inputRaceCount() {
 
