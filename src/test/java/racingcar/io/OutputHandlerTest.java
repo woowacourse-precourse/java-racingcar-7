@@ -43,7 +43,7 @@ class OutputHandlerTest {
         List<Car> cars = List.of(car1, car2);
         outputHandler.printStatus(cars);
 
-        String expectedOutput = "실행 결과\nCar1 : \nCar2 : -----\n";
+        String expectedOutput = "Car1 : \nCar2 : -----\n\n";
         Assertions.assertThat(outputStream.toString()).isEqualTo(expectedOutput);
     }
 }
