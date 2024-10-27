@@ -52,14 +52,16 @@
 
 ### 2. 자동차 클래스 생성 - Car 클래스
 * 필드
-    * 자동차 이름, 현재 위치(진행한 거리) 
+    * `carName` : 자동차 이름
+    * `currentDistance` : 현재 위치(진행한 거리) 
 
 * 생성자
     * `Car(String name)` : 자동차 이름을 초기화  
 
 * 메서드 
+    * `boolean canMove()` : 무작위 값에 따라 4 이상이면 true 반환
     * `void move()` : 자동자가 전진할지 멈출지를 결정하는 메서드
-        * 무작위 값에 따라 4 이상이면 전진. 
+        *  `canMove()`가 참이라면 전진 
     * `String getStatus()` : 자동차 이름과 현재위치를 문자열로 반환
     * `int getPosition()` : 현재 자동차의 위치 반환
 
