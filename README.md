@@ -47,3 +47,7 @@
 - [x] 자동차들의 총 이동 횟수를 비교하며 최대 이동 횟수를 찾는다.
 - [x] 최대 이동 횟수만큼 이동한 자동차들을 winner로 추가한다.
 - [x] `String.join()`메서드를 사용해서 우승자 목록을 쉼표로 구분하여 출력한다.
+
+# 자동차 경주 게임 architecture
+
+![racingcar_architecture](racingcar_architecture.png)
