@@ -18,7 +18,7 @@ public class UserInputService {
         Console.close();
     }
 
-    public Cars createCar() {
+    public Cars createCars() {
         Names names = createNames();
 
         List<Car> cars = new ArrayList<>();

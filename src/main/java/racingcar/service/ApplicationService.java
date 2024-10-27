@@ -15,7 +15,7 @@ public class ApplicationService {
     }
 
     public void run() {
-        Cars cars = this.userInputService.createCar();
+        Cars cars = this.userInputService.createCars();
         RepeatCount repeat = this.userInputService.createRepeat();
         this.userInputService.close();
 
