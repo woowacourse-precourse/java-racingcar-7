@@ -29,7 +29,7 @@ public class Race {
     }
 
     private static Car createCar(String carName) {
-        return new Car(carName, 0);
+        return new Car(carName);
     }
 
     public void doRace() {
