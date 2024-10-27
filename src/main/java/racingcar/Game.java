@@ -22,7 +22,7 @@ public class Game {
             for (int i = 0; i < carList.size(); i++) {
                 randomNumberTriggerAndStoreList(i);
             }
-            printCarState();
+            printCarPosition();
         }
     }
 
@@ -32,7 +32,7 @@ public class Game {
         }
     }
 
-    public void inputLane() {
+    public void addArrayToList() {
         for (int i = 0; i < carNameArray.length; i++) {
             if (carNameArray[i].length() > 5) {
                 throw new IllegalArgumentException();
@@ -42,7 +42,7 @@ public class Game {
         }
     }
 
-    private void printCarState() {
+    private void printCarPosition() {
         for (int i = 0; i < carList.size(); i++) {
             System.out.print(carList.get(i).getName() + " : ");
 

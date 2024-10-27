@@ -7,7 +7,7 @@ public class Application {
         input.inputNameAndAttemptCount();
 
         Game game = new Game(input.getCarNameString().split(","), input.getAttemptCount());
-        game.inputLane();
+        game.addArrayToList();
         game.play();
 
         Output output = new Output(game.carList);
