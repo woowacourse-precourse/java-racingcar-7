@@ -19,7 +19,7 @@ public class Winner {
         }
     }
 
-    public int findMaxValue(int[] racingResult) {
+    private int findMaxValue(int[] racingResult) {
         int maxValue = -1;
         for (int i = 0; i < racingResult.length; i++) {
             if (maxValue < racingResult[i]){
