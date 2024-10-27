@@ -11,8 +11,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class CarManagerTest {
-    //TODO
-    // 3. 승자 찾기
 
     @Test
     void 사용자의_입력으로부터_자동차_리스트_생성() {
