@@ -1,5 +1,6 @@
 package view;
 
+import static camp.nextstep.edu.missionutils.Console.close;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
@@ -14,6 +15,10 @@ public class InputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         return readLine();
+    }
+
+    public void closeScanner() {
+        close();
     }
 
 }

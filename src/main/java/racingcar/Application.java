@@ -14,6 +14,7 @@ public class Application {
         InputView inputView = new InputView();
         String inputCarNames = inputView.getCarNames();
         String inputMoveCount = inputView.getMoveCount();
+        inputView.closeScanner();
 
         // 2. 구분 및 에러 처리
         InputHandler inputHandler = new InputHandler();
@@ -37,8 +38,8 @@ public class Application {
 
         // 6. 우승자 판단
         List<Car> winners = carsHandler.getWinners();
-        outputView.showWinners(winners);
 
-        // TODO: 전체 코드 개선
+        // 7. 우승자 출력
+        outputView.showWinners(winners);
     }
 }
