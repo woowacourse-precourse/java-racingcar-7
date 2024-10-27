@@ -2,7 +2,9 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 사용자 입력으로부터 Car를 생성한다.
@@ -11,7 +13,6 @@ import java.util.List;
 public class CarManager {
     private static final String SPLITTER = ",";
 
-    //TODO 중복 요소 확인시 문제가 되는 요소가 무엇인지 에러메시지에 적을 수 있도록 로직 개선
     public List<Car> createCarsFromInput(String input) {
         List<String> carNames = Arrays.stream(input.split(SPLITTER)).toList();
 
@@ -27,8 +28,11 @@ public class CarManager {
     }
 
     private void validateDuplicate(List<String> carNames) {
-        if (carNames.stream().distinct().count() != carNames.size()) {
-            throw new IllegalArgumentException("중복된 이름은 작성할 수 없습니다.");
+        Set<String> set = new HashSet<>();
+        for (String name : carNames) {
+            if (!set.add(name)) {
+                throw new IllegalArgumentException("중복된 이름은 허용하지 않습니다. 중복 이름 : " + name);
+            }
         }
     }
 
