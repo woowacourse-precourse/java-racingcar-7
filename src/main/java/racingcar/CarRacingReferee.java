@@ -23,4 +23,23 @@ public class CarRacingReferee implements Referee {
         }
         return car;
     }
+
+    @Override
+    public List<Car> judgeWinner(List<Car> carList) {
+        List<Car> winners = new ArrayList<>();
+        int max = 0;
+
+        for(Car car : carList){
+            int distance = car.getDistance();
+            if(distance > max) {
+                max = distance;
+                winners = new ArrayList<>();
+                winners.add(car);
+            } else if(distance == max) {
+                winners.add(car);
+            }
+        }
+
+        return winners;
+    }
 }
