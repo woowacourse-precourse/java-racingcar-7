@@ -27,17 +27,17 @@ class OutputManagerTest {
         System.setOut(standardOut);
     }
 
-    @DisplayName("출력 테스트")
+    @DisplayName("올바른 출력 메시지를 출력한다.")
     @Test
-    void test() {
+    void Given_When_RoundThen_Success() {
         // Given
-        String input = "asd";
+        OutputManager.printStartMessage();
+
         // When
-        System.out.println(input);
-        String result = getOutput();
+        String message = getOutput();
 
         // Then
-        assertThat(result).isEqualTo(input);
+        assertThat(message).isEqualTo("실행 결과");
     }
 
     private String getOutput() {
