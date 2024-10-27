@@ -1,56 +1,45 @@
 package racingcar;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Collections;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import validators.RoundValidator;
 
 
-class WinnerTest extends NsTest {
+class RoundTest extends NsTest {
 
-    private static final int MOVING_FORWARD = 4;
-    private static final int STOP = 3;
-
-    // 정상 출력 되는데 안 됨
     @Test
-    @DisplayName("사용자가 경주할 자동차 이름을 작성 안 했을 때")
-    void 자동차_이름_미입력() {
-        assertSimpleTest(() -> {
-            run(" "); // 빈 문자열 입력
-            assertThat(output()).contains("자동차 이름은 비어 있을 수 없습니다."); // 출력 메시지 수정
-        });
-    }
-
-    // 정상 출력 되는데 안 됨
-    @Test
-    @DisplayName("사용자가 경주할 자동차 이름을 중복 작성 했을 때")
-    void 자동차_이름_중복입력() {
-        assertSimpleTest(() -> {
-            run("pobi,pobi");
-            assertThat(output()).contains("자동차 이름은 중복될 수 없습니다 : pobi");
-        });
+    @DisplayName("사용자가 횟수를 1회 미만으로 적었을 때")
+    void INPUT_IS_LESS_THEN_1() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                RoundValidator.countValidate(Collections.singletonList(0))
+        );
+        assert(exception.getMessage().equals("횟수는 0 이상이어야 합니다."));
     }
 
     @Test
-    @DisplayName("자동차 이름 구분자가 쉼표가 아닌 다른 문자열이 들어왔을 때")
-    void 자동차_이름_구분자_오류() {
-        assertSimpleTest(() -> {
-            run("pobi;woni", "1");
-            assertThat(output()).contains("자동차 이름은 쉼표로 구분해야 합니다."); // 출력 메시지 수정
-        });
+    @DisplayName("사용자가 게임 횟수를 안 적었을 때")
+    void ROUND_WITH_EMPTY_INPUT() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                RoundValidator.StringValidate(Collections.singletonList(""))
+        );
+        assertEquals("입력이 필요합니다.", exception.getMessage());
     }
 
     @Test
-    @DisplayName("자동차 이름 입력에 숫자가 들어왔을 때")
-    void 자동차_이름_문자입력_오류() {
-        assertSimpleTest(() -> {
-            run("pobi,1234", "1");
-            assertThat(output()).contains("자동차 이름은 문자여야 합니다."); // 출력 메시지 수정
-        });
+    @DisplayName("시도할 횟수에서 문자열이 들어왔을 때")
+    void INCORRECT_INPUT_WITH_STRING() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                RoundValidator.StringValidate(Collections.singletonList("a"))
+        );
+
+        assertEquals("숫자를 입력해주세요.", exception.getMessage());
     }
+
 
     @Override
     protected void runMain() {
