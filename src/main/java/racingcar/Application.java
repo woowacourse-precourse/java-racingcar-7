@@ -11,10 +11,14 @@ import org.junit.platform.commons.util.StringUtils;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<String> carNames = getCarNames();
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = getInput();
+        List<String> carNames = getCarNames(input);
         List<Car> cars = createCars(carNames);
 
-        Integer movementCount = getMovementCount();
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        input = getInput();
+        Integer movementCount = getMovementCount(input);
 
         System.out.println("\n실행 결과");
 
@@ -38,11 +42,11 @@ public class Application {
         System.out.println("최종 우승자 : " + winners);
     }
 
-    public static List<String> getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    public static String getInput() {
+        return Console.readLine();
+    }
 
-        String input = Console.readLine();
-
+    public static List<String> getCarNames(String input) {
         String[] inputArray = input.split(",");
 
         for (String car : inputArray) {
@@ -55,11 +59,7 @@ public class Application {
         return cars;
     }
 
-    public static Integer getMovementCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-
-        String input = Console.readLine();
-
+    public static Integer getMovementCount(String input) {
         if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException();
         }
