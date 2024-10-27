@@ -41,12 +41,14 @@ public class RacingCarModel {
     }
 
     private void appendResult(StringBuilder sb, RacingCar racingCar) {
+        if (!sb.isEmpty()) {
+            sb.append(Message.NEW_LINE);
+        }
         sb.append(racingCar.getName())
                 .append(Message.RUN_RESULT_SEPARATOR);
         for (int i = 0; i < racingCar.getDistance(); i++) {
             sb.append(Message.RUN_RESULT_DISTANCE);
         }
-        sb.append(Message.NEW_LINE);
     }
 
     public List<String> getWinner() {
