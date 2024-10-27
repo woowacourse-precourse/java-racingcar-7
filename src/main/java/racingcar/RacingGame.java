@@ -24,6 +24,13 @@ public class RacingGame {
     }
 
     /**
+     * 실행결과 출력 기능
+     * */
+    public void outputRaceResult(Car car){
+        System.out.println(car.getName() + " : "+ "-".repeat(car.getMoveCount()));
+    }
+
+    /**
      * 자동차 객체들을 생성하고 자동차 리스트에 추가하는 객체
      * */
     public void addCars(List<String> validatedCarNames){
@@ -32,22 +39,24 @@ public class RacingGame {
         }
     }
 
-
-
     /**
      * 경주에 참가한 자동차들(RacingGame의 cars) 전진 메서드
      *  - 랜덤 값이 4이상일때만
+     *    매 전진 시 실행 결과 출력
      */
     public void moveCars(int randomNumber){
         for(Car car : cars){
             car.move(randomNumber);
+            outputRaceResult(car);
         }
+        System.out.println();
     }
 
     /**
      * 사용자가 입력한 시도횟수만큼 전진을 반복하는 메서드
      * */
     public void raceByAttemptCount(int attemptCount, int randomNumber){
+        System.out.println("실행 결과");
         for(int i = 0; i<attemptCount; i++){
             moveCars(randomNumber);
         }
