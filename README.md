@@ -98,13 +98,13 @@ jun : -----
 - [x] 자동차 이름 목록을 문자열 리스트로 저장하기
     - [x] 이름의 길이가 0일경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
     - [x] 자동차 이름의 길이가 5자가 넘는경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
-    - [ ] 자동차의 이름이 중복일경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
+    - [x] 자동차의 이름이 중복일경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
 - [x] "시도할 횟수는 몇 회인가요?" 출력
 
 - [x] 시도 횟수 받기
-    - [ ] 시도 횟수가 음수일경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
-    - [ ] 시도 횟수가 숫자가 아닌경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
+    - [x] 시도 횟수가 음수일경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
+    - [x] 시도 횟수가 숫자가 아닌경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
 - [x] 자동차 생성
     - [x] 자동차 이름 생성하기
