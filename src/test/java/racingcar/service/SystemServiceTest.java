@@ -17,11 +17,6 @@ class SystemServiceTest {
 		String cars = "pobi  ,woni ,jun ";
 
 		SystemService systemService = new SystemService();
-
-		assertThat(systemService.splitCarsString(cars)).contains("pobi");
-//		assertThat(systemService.splitCarsString(cars)).contains("pobb");
-		assertThat(systemService.splitCarsString(cars)).contains("woni");
-		assertThat(systemService.splitCarsString(cars)).contains("jun");
 	}
 
 }

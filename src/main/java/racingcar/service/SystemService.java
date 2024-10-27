@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import racingcar.controller.CarController;
 import racingcar.domain.Car;
 
 import java.util.Arrays;
@@ -9,10 +8,21 @@ import java.util.stream.Collectors;
 
 public class SystemService {
 
-	public List<String> splitCarsString(String cars) {
-		return Arrays.stream(cars.split(","))
+	private final JudgmentCarName judgment = new JudgmentCarName();
+
+	public List<Car> splitCarsString(String carsName) {
+		return Arrays.stream(carsName.split(","))
 				.map(String::trim)
+				.map(this::generateCar)
 				.collect(Collectors.toList());
+	}
+
+	private Car generateCar(String carName) {
+		if(judgment.judgmentCarNameLength(carName)) {
+			return new Car(carName);
+		}
+
+		throw new IllegalArgumentException();
 	}
 
 	public void printCarMovement(Car car) {
@@ -25,11 +35,9 @@ public class SystemService {
 		System.out.println();
 	}
 
-	public List<Car> getWinner(List<Car> cars) {
-		int maxMovement = findMaxMovement(cars);
-
+	private List<Car> getWinner(List<Car> cars) {
 		return cars.stream()
-				.filter(car -> car.getMovement() == maxMovement)
+				.filter(car -> car.getMovement() == findMaxMovement(cars))
 				.collect(Collectors.toList());
 	}
 
@@ -38,6 +46,14 @@ public class SystemService {
 				.mapToInt(Car::getMovement)
 				.max()
 				.orElse(0);
+	}
+
+	public void printWinner(List<Car> cars) {
+		String winner = getWinner(cars).stream()
+				.map(Car::getCarName)
+				.collect(Collectors.joining(", "));
+
+		System.out.print("최종 우승자 : " + winner);
 	}
 
 }

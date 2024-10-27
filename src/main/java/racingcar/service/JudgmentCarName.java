@@ -9,7 +9,7 @@ public class JudgmentCarName {
 	}
 
 	public boolean judgmentCarNameLength(String carName) {
-		return carName.length() < 6;
+		return carName.length() < 6 && !carName.isEmpty();
 	}
 
 }

@@ -30,7 +30,7 @@ class CarControllerTest {
 		cars.add(car1);
 		cars.add(car2);
 
-		controller.carsMovement(cars, 5);
+		controller.carMovementProcess(cars, 5);
 
 		String output = outputStream.toString().trim();
 
