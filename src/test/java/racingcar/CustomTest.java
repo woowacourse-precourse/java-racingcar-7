@@ -52,4 +52,14 @@ public class CustomTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 5자 이하만 가능합니다.");
     }
+
+    @Test
+    @DisplayName("이동 횟수가 숫자가 아닐 때 예외 발생")
+    void testParseNumberFormatException() {
+        assertThatThrownBy(() -> Application.parseNumber("three"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자 형식이 아닙니다.");
+    }
+
+
 }
