@@ -5,6 +5,14 @@ import java.util.List;
 import java.util.Set;
 
 public class Validator {
+    private static final Validator instance = new Validator();
+
+    private Validator() {}
+
+    public static Validator getInstance() {
+        return instance;
+    }
+
     public void validateEmptyString(String input) {
         if (input == null || input.equals("")) {
             throw new IllegalArgumentException(Constants.EMPTY_INPUT_ERROR_MESSAGE);
