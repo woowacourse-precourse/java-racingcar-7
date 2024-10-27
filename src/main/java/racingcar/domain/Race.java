@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.utils.RandomForwardGenerator;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +18,28 @@ public class Race {
 
     public static Race of(Car car, int forwardCount) {
         return new Race(car, forwardCount);
+    }
+
+    public String startRace() {
+        StringBuilder result = new StringBuilder("\n실행 결과\n");
+        runAllRounds(result);
+        return result.toString();
+    }
+
+    private void runAllRounds(StringBuilder result) {
+        for (int i = 0; i < forwardCount; i++) {
+            recordRoundResults(result);
+        }
+    }
+
+    private void recordRoundResults(StringBuilder result) {
+        for (String carName : carPositions.keySet()) {
+            result.append(carName)
+                    .append(" : ")
+                    .append("-".repeat(carPositions.get(carName)))
+                    .append("\n");
+        }
+        result.append("\n");
     }
 
     private void setInitialPositions(Car car) {
