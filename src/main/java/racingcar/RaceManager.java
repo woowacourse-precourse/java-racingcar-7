@@ -9,8 +9,13 @@ public class RaceManager implements RaceManagerInterface{
     private final List<List<String>> raceLog = new ArrayList<>();
 
     public RaceManager(List<String> participantNames) {
-        Register register = new Register(); //do i really need Register class?
-        participants = register.registerParticipants(participantNames);
+        participants = registerParticipants(participantNames);
+    }
+
+    private Car[] registerParticipants(List<String> names) {
+        return names.stream()
+                .map(Car::new)
+                .toArray(Car[]::new);
     }
 
     @Override
