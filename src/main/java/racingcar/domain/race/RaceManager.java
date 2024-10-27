@@ -12,6 +12,7 @@ import racingcar.domain.car.Position;
 import racingcar.domain.car.Vehicle;
 import racingcar.domain.strategy.RandomStrategy;
 import racingcar.domain.strategy.Strategy;
+import racingcar.validation.RaceCountValidator;
 
 public class RaceManager {
 
@@ -28,5 +29,10 @@ public class RaceManager {
                 .map(carName -> Car.of(Name.from(carName), INITIAL_POSITION, INITIAL_STRATEGY))
                 .collect(Collectors.toList());
         this.cars = Cars.from(values);
+    }
+
+    public void setRaceCount(String raceCount) {
+        RaceCountValidator.validateRaceCount(raceCount);
+        this.raceCount = Integer.parseInt(raceCount);
     }
 }
