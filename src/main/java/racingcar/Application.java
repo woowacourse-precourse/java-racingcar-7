@@ -65,6 +65,11 @@ public class Application {
         return winners;
     }
 
+    public static void printWinner(List<String> winnerList) {
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(",", winnerList));
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String text = inputText();
@@ -81,5 +86,7 @@ public class Application {
 
         List<String> winnerList = new ArrayList<>();
         winnerList = createWinnerList(carList, mx);
+
+        printWinner(winnerList);
     }
 }
