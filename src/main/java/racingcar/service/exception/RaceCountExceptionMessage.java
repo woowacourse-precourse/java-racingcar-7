@@ -8,6 +8,7 @@ public enum RaceCountExceptionMessage implements ExceptionMessage {
     RACE_COUNT_MUST_DIGIT("게임 횟수는 숫자이어야 합니다."),
     RACE_COUNT_OVERFLOW("게임 횟수 오버플로우입니다."),
     RACE_COUNT_UNDERFLOW("게임 횟수를 언더플로우입니다."),
+    RACE_COUNT_MUST_POSITIVE_INTEGER("게임 횟수는 양의 정수이어야 합니다."),
     ;
 
     private final String message;
