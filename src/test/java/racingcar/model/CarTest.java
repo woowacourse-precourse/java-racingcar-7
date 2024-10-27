@@ -9,11 +9,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarTest {
-
     @DisplayName("car 객체 생성")
     @Nested
     class CarNameTest {
@@ -21,7 +21,6 @@ public class CarTest {
         @ParameterizedTest
         @ValueSource(strings = {"name", "pobi", "1"})
         void carNameSuccess(String input) {
-            //given
             //when
             Car car = new Car(input);
             //Then
@@ -34,7 +33,6 @@ public class CarTest {
         @NullSource
         @ValueSource(strings = {"longName", "", "  "})
         void carNameException(String input) {
-            //given
             //when && then
             assertThrows(IllegalArgumentException.class, () -> {
                 new Car(input);
@@ -45,20 +43,24 @@ public class CarTest {
     @DisplayName("car move 로직")
     @Nested
     class CarMoveTest {
+        private static final int MOVING_FORWARD = 4;
+        private static final int STOP = 3;
         Car car;
+        MoveStrategy moveStrategy;
 
         @BeforeEach
         void initCarMoveTest() {
             car = new Car("test");
+            moveStrategy = new RandomMoveStrategy();
         }
 
         @DisplayName("car 이동 조건 만족")
         @Test
         void carMoveOnePoint() {
-            //given
-            MoveStrategy moveStrategy = () -> true;
             //when
-            car.move(moveStrategy);
+            assertRandomNumberInRangeTest(() -> {
+                car.move(moveStrategy);;
+            },MOVING_FORWARD);
             //then
             assertThat(car.getPosition()).isEqualTo(1);
         }
@@ -66,10 +68,10 @@ public class CarTest {
         @DisplayName("car 이동 조건 만족x")
         @Test
         void carMoveZeroPoint() {
-            //given
-            MoveStrategy moveStrategy = () -> false;
             //when
-            car.move(moveStrategy);
+            assertRandomNumberInRangeTest(() -> {
+                car.move(moveStrategy);;
+            },STOP);
             //then
             assertThat(car.getPosition()).isEqualTo(0);
         }
