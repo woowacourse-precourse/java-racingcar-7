@@ -25,9 +25,6 @@ public class Car {
     }
 
     public boolean isMove() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
-            return true;
-        }
-        return false;
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 }
