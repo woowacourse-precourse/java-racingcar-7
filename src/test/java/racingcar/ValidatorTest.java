@@ -51,6 +51,14 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("시도횟수에 0를 입력하면 예외가 발생한다")
+    void check_tryCount_zero(){
+        int tryCount = 0;
+        assertThatThrownBy(() -> Validator.isZero(tryCount))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     private static Stream<List<String>> provideDuplicateCarNames() {
         return Stream.of(
                 Arrays.asList("pobi", "pobi", "kiriko"),

@@ -19,6 +19,7 @@ public class RacingService {
         Validator.validateNumericInput(input);
         int attemptCount = Integer.parseInt(input);
         Validator.isNegative(attemptCount);
+        Validator.isZero(attemptCount);
         return attemptCount;
     }
 
