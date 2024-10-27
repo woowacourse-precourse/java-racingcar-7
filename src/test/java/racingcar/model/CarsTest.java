@@ -1,8 +1,10 @@
 package racingcar.model;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static racingcar.common.ErrorMessage.NOT_SAME_CARS_SIZE_AND_NUMBER_SIZE;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,7 +43,9 @@ class CarsTest {
     @Test
     void 랜덥값들의_개수와_자동차들의_개수가_다르면_예외_발생(){
         List<Integer> randomNumbers = List.of(5, 6);
-        assertThrows(IllegalArgumentException.class, () -> getCars().moveAll(randomNumbers));
+        assertThatThrownBy(() -> getCars().moveAll(randomNumbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_SAME_CARS_SIZE_AND_NUMBER_SIZE.getMessage());
     }
 
     @Test
