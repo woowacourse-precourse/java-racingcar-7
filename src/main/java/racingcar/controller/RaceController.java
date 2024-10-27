@@ -12,6 +12,7 @@ public class RaceController {
 
     private final InputView inputView;
     private static final String PLAY_START_MESSAGE = "실행 결과";
+    private static final String RESULT_MESSAGE = "최종 우승자 : %s";
 
     public RaceController() {
         inputView = new InputView();
@@ -37,6 +38,8 @@ public class RaceController {
 
     private void finish(Cars cars) {
         List<Car> winners = cars.getWinners();
+        String winnerNames = winners.stream().map(Car::getName).collect(Collectors.joining(", "));
+        ConsoleWriter.printlnMessage(String.format(RESULT_MESSAGE, winnerNames));
     }
 
 }
