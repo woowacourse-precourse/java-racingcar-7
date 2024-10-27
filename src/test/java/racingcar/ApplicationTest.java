@@ -25,9 +25,15 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
+        // 자동차 이름이 5글자 이상이면 오류
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+        // 시도 횟수를 잘 못 입력했을 때
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javi", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 

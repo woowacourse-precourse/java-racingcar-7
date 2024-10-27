@@ -5,22 +5,26 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        // 입력값 확인
         // 자동차들의 이름
         String inputStr = Console.readLine();
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) " + inputStr);
 
         // 사용자는 몇번의 이동을 할 것인지를 입력할 수 있어야 한다.
         String repeatRaceNum = Console.readLine();
+        String[] carNames = splitCarsName(inputStr);
+
+        // Check Error
+        checkError(carNames, repeatRaceNum);
+
+        // Check Error 후 시도 횟수 출력
         int repeatRaceIntNum = Integer.parseInt(repeatRaceNum);
         System.out.println("시도할 횟수는 몇 회인가요? : " + repeatRaceIntNum);
-        String[] carNames = splitCarsName(inputStr);
-        // Check Error
-        checkCarNameError(carNames);
 
         int[] carProgressArr = new int[carNames.length];
         for (int i = 0; i < repeatRaceIntNum; i++) {
@@ -39,6 +43,20 @@ public class Application {
         String winners = getWinners(carNames, carProgressArr);
         System.out.println("최종 우승자 : " + winners);
 
+    }
+
+    public static void checkError(String[] carNameArr, String repeatNum) {
+        checkCarNameError(carNameArr);
+        checkRepeatNumError(repeatNum);
+    }
+
+    public static void checkRepeatNumError(String repeatNum) {
+        Pattern pattern = Pattern.compile("^[0-9]+$");
+        Matcher matcher = pattern.matcher(repeatNum);
+
+        if (!matcher.find()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void checkCarNameError(String[] carNameArr) {
@@ -80,7 +98,7 @@ public class Application {
     }
 
     public static String getWinners(String[] carNames, int[] progressArr) {
-        ArrayList<String>winners = new ArrayList<String>();
+        ArrayList<String> winners = new ArrayList<String>();
 
         int largeProgressNum = getLargestProgress(progressArr);
         for (int i = 0; i < carNames.length; i++) {
