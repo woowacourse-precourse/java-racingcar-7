@@ -117,3 +117,20 @@
 ### 2. RacingResponseDTO
 
 - 레이싱 결과를 총합한 문자열을 담는 DTO
+
+## `View`
+
+### 1. InputView
+
+- 이름들과 시도 횟수를 입력받는다.
+
+### 2. OutputView
+
+- 레이싱 결과를 출력한다.
+
+## `Config`
+
+### 1. DependencyConfig
+
+- 의존성 주입기이다.
+
