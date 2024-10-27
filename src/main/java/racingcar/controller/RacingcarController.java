@@ -28,6 +28,8 @@ public class RacingcarController {
 
         output.printCountInputPrompt();
         String countString = input.inputString();
+
+        final int count = validateCount(countString);
     }
 
     private List<String> validateCarName(String carName) {
@@ -47,5 +49,14 @@ public class RacingcarController {
         return carNameList.stream()
                 .map(Racingcar::new)
                 .collect(Collectors.toList());
+    }
+
+    private int validateCount(String countString) {
+        validator.validateEmptyString(countString);
+        validator.validateCountContainsSpace(countString);
+        int countInt = validator.validateCountNonInteger(countString);
+        validator.validateCountPositiveIntegerAboveOne(countInt);
+
+        return countInt;
     }
 }
