@@ -13,7 +13,6 @@ public class InputView {
 
     public int getAttemptCount(){
         System.out.println(InputMessage.INPUT_COUNT.getMessage());
-        String count = Console.readLine();
-        return Validator.checkIfNumber(count);
+        return Validator.checkIfNumber(Console.readLine());
     }
 }
