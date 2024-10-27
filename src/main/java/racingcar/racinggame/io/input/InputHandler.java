@@ -28,6 +28,9 @@ public class InputHandler {
 		String inputTryCount = Console.readLine();
 		userInputValidation.validateTryCount(inputTryCount);
 
-		return Integer.parseInt(inputTryCount);
+		int tryCount = Integer.parseInt(inputTryCount);
+		userInputValidation.validateTryCountRange(tryCount);
+
+		return tryCount;
 	}
 }
