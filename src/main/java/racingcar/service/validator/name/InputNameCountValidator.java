@@ -14,8 +14,12 @@ public class InputNameCountValidator implements InputNameValidator {
     }
 
     private void checkInputNames(long inputNamesCount) {
-        if (inputNamesCount > 100) {
+        if (isInvalidNameCount(inputNamesCount)) {
             throw new IllegalArgumentException("차의 이름들은 최대 99개까지 가능합니다.");
         }
+    }
+
+    private boolean isInvalidNameCount(long inputNamesCount) {
+        return inputNamesCount >= 100;
     }
 }
