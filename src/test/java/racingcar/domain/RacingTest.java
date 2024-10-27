@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.fake.ForwardNumberGenerator;
 import racingcar.fake.StopNumberGenerator;
-import racingcar.fake.fakeStringValidator;
+import racingcar.fake.FakeStringValidator;
 import racingcar.util.generator.NumberGenerator;
 import racingcar.util.validator.StringValidator;
 
@@ -23,7 +23,7 @@ class RacingTest {
     void setUp() {
         forwardNumberGenerator = new ForwardNumberGenerator();
         stopNumberGenerator = new StopNumberGenerator();
-        fakeStringValidator = new fakeStringValidator();
+        fakeStringValidator = new FakeStringValidator();
     }
 
     @Test

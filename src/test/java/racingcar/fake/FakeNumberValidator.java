@@ -2,7 +2,7 @@ package racingcar.fake;
 
 import racingcar.util.validator.NumberValidator;
 
-public class fakeNumberValidator implements NumberValidator<Integer> {
+public class FakeNumberValidator implements NumberValidator<Integer> {
 
     @Override
     public void validateFormat(final String value) {
