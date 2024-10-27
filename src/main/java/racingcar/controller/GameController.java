@@ -28,17 +28,14 @@ public class GameController {
     }
 
     private void extractCarNames() {
-        InputMessage.inputCarNames();
-        final String input = Console.readLine();
+        final String input = InputMessage.inputCarNames();
         validation.isInvalidInput(input);
         carHandler.createCar(input);
     }
 
     private void attemptGame() {
-        InputMessage.inputGamesAttempts();
-        final int num = Integer.parseInt(Console.readLine());
+        final int num = InputMessage.inputGamesAttempts();
         validation.isInvalidGameTryCount(num);
-        OutputMessage.resultMessage();
         carHandler.executeRounds(num);
     }
 

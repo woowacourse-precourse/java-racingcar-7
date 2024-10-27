@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import racingcar.validate.Validation;
+import racingcar.view.OutputMessage;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,6 +32,7 @@ public class CarHandler {
     }
 
     public void executeRounds(int num) {
+        OutputMessage.resultMessage();
         for (int i = 0; i < num; i++) {
             proceedCar();
         }
@@ -43,6 +45,7 @@ public class CarHandler {
             System.out.println(car.getName() + " : " + HYPHEN.repeat(carMoveCount));
         }
         System.out.println();
+
     }
 
     public List<Car> getWinnerList() {
