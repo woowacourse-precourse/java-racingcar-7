@@ -2,8 +2,8 @@ package racingcar.domain;
 
 import racingcar.view.InputForm;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
     private List<Car> cars;
@@ -15,10 +15,9 @@ public class Race {
     }
 
     public static Race create(InputForm inputForm) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : inputForm.getNames()) {
-            cars.add(new Car(name));
-        }
+        List<Car> cars = inputForm.getNames().stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
 
         return new Race(cars, inputForm.getRoundCount());
     }
