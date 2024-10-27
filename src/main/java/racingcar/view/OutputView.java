@@ -23,7 +23,6 @@ public class OutputView {
         printName(name);
         printSeparator();
         convertDistanceToHyphen(movedDistance);
-        printEmptyLine();
     }
 
     public void printWinner(String winner) {

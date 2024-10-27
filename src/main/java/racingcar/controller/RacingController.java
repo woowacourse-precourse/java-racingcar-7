@@ -36,9 +36,14 @@ public class RacingController {
     private void racingStart() {
         int userIntegerInput = racingService.getValidateIntegerInput(
                 InputView.getInputRepeatCount());
+        outputView.printEmptyLine();
         outputView.printGameResultMessage();
-        List<List<Car>> racingResult = racingService.fullRacing(userIntegerInput);
-        for (List<Car> cars : racingResult) {
+        printRacingStatus(userIntegerInput);
+    }
+
+    private void printRacingStatus(int userIntegerInput) {
+        for (int i=0; i<userIntegerInput; i++){
+            List<Car> cars = racingService.onceRacing();
             outputView.printRacingResult(cars);
         }
     }

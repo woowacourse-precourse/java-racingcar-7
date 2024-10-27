@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
@@ -30,16 +29,8 @@ public class RacingService {
                 CarCreator.createCars(InputParser.parserCarNames(userInput)));
     }
 
-    public List<List<Car>> fullRacing(int count) {
+    public List<Car> onceRacing() {
         List<Car> cars = carManager.getCars();
-        List<List<Car>> raceResults = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            raceResults.add(onceRacing(cars));
-        }
-        return raceResults;
-    }
-
-    private List<Car> onceRacing(List<Car> cars) {
         return cars.stream()
                 .peek(car -> car.move(randomNumber.generate()))
                 .collect(Collectors.toList());
