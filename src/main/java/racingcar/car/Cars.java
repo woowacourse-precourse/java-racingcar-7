@@ -3,6 +3,7 @@ package racingcar.car;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import racingcar.provider.NumberProvider;
 
 public class Cars {
     private static final int MOVING_DISTANCE_EACH_TRIAL = 1;
@@ -25,6 +26,13 @@ public class Cars {
         }
 
         return Cars.from(carList);
+    }
+
+    public void tryMoveForward(NumberProvider provider) {
+        for (Car car : cars) {
+            int value = provider.getNumber();
+            car.tryMoveForward(value, MOVING_DISTANCE_EACH_TRIAL);
+        }
     }
 
     public List<Car> findWinnerList() {
