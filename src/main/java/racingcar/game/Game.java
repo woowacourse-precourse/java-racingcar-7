@@ -15,20 +15,26 @@ public class Game {
         createCars(carNames);
     }
 
-    public void start() {
-        racingStart();
+    public void start(int loopCnt) {
+        racingStart(loopCnt);
         findWinner();
         printWinner();
     }
 
-    private void racingStart() {
+    private void racingStart(int loopCnt) {
+        for (int i = 0; i < loopCnt; i++) {
+            racing();
+        }
+        
+        printCurrent();
+    }
+
+    private void racing() {
         racingCars.forEach(car -> {
             if (randomNumber() >= 4) {
                 car.forwardOne();
             }
         });
-
-        printCurrent();
     }
 
     private void printCurrent() {
