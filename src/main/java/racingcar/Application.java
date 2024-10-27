@@ -43,7 +43,7 @@ public class Application {
         }
     }
 
-    // 레이스 횟수 입력 및 한 자리 수 이상인지 유효성 검사
+    // 레이스 횟수 입력 및 유효성 검사
     private static int getRaceRounds(Scanner scanner) {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int raceRounds = scanner.nextInt();
@@ -56,28 +56,39 @@ public class Application {
     // 차 배열 초기화
     private static List<Car> initializeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++ ){
-            cars.add(new Car(carNames[i].trim()));
+        for (String carName : carNames) {
+            cars.add(new Car(carName.trim()));
         }
         return cars;
     }
 
     // 경주 시작 후 차 이동 및 결과 출력
     private static void startRace(List<Car> cars, int raceRounds){
-        Random random = new Random();
         System.out.println("실행 결과");
-
         for (int i = 0; i < raceRounds; i++) { // 지정된 시도 횟수만큼 반복
-            for (Car car : cars) {
-                if (random.nextInt(10) >= 4) {
-                    car.moveForward();
-                }
-            }
-            for (Car car : cars) {
-                System.out.println(car);
-            }
-            System.out.println();
+             // 차 이동
+             moveCars(cars);
+             // 현재 위치
+             raceStatus(cars);
         }
+    }
+
+    // 랜덤 값에 따라 이동
+    private static void moveCars(List<Car> cars) {
+        Random random = new Random();
+        for (Car car : cars) {
+            if (random.nextInt(10) >= 4) {
+                car.moveForward();
+            }
+        }
+    }
+
+    // 해당 레이스 위치 출력
+    private static void raceStatus(List<Car> cars) {
+        for(Car car: cars){
+            System.out.println(car);
+        }
+        System.out.println();
     }
 
     // 우승자 결정 및 출력
@@ -122,6 +133,7 @@ class Car {
         return location;
     }
 
+    @Override
     public String toString(){
         return name + " : " + "-".repeat(location);
     }
