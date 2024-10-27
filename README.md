@@ -80,4 +80,26 @@
             *  [AssertJ User Guide](https://assertj.github.io/doc)
             *  [AssertJ Exception Assertions](https://www.baeldung.com/assertj-exception-assertion)
             *  [Guide to JUnit 5 Parameterized Tests](https://www.baeldung.com/parameterized-tests-junit-5)
-    
+
+## 📄 Directory Tree
+```declarative
+main
+└── java
+    └── racingcar
+        ├── domain
+        │   ├── Car
+        │   └── Race
+        ├── io
+        │   ├── InputReader
+        │   └── OutputWriter
+        ├── strategy
+        │   ├── MoveStrategy
+        │   └── RandomMoveStrategy1
+        ├── validation
+        │   └── InputValidator
+        └── Application
+test
+└── java
+    └── racingcar
+        └── ApplicationTest
+```
