@@ -15,10 +15,7 @@ public class Car {
 
     // 자동자 전진함수
     public void moveForward(){
-        int movingNum = Randoms.pickNumberInRange(MIN_RANDOM,MAX_RANDOM);
-        if (movingNum >= STANDARD_FOR_MOVING){
-            position++;
-        }
+        if (Randoms.pickNumberInRange(MIN_RANDOM,MAX_RANDOM) >= STANDARD_FOR_MOVING) position++;
     }
 
     public String getName() {

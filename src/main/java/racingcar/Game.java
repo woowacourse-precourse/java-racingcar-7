@@ -17,14 +17,10 @@ public class Game {
 
     public void start(int attempt){
         System.out.println(PRINT_RESULT_MESSAGE);
-        while(attempt>0){
-            for (Car car : carList){
-                car.moveForward();
-            }
-            attempt--;
+        for (int i = 0; i < attempt; i++){
+            carList.forEach(Car::moveForward);
             OutputUtils.printPosition(carList);
         }
         OutputUtils.printEnding(carList);
     }
-
 }
