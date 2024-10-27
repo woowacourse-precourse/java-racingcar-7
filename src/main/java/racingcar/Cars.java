@@ -17,14 +17,15 @@ public class Cars {
         carList.forEach(Car::move);
     }
 
-    public int findMaxPosition() {
+    private int findMaxPosition() {
         return carList.stream()
                 .map(Car::getPosition)
                 .max(Integer::compareTo)
                 .orElse(0);
     }
 
-    public List<Car> findWinner(int maxPosition) {
+    public List<Car> findWinner() {
+        int maxPosition = findMaxPosition();
         return carList.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();

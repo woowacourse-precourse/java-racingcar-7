@@ -17,8 +17,7 @@ public class RaceController {
             OutputView.printCarStatus(cars);
         }
 
-        int maxPosition = cars.findMaxPosition();
-        List<Car> winner = cars.findWinner(maxPosition);
+        List<Car> winner = cars.findWinner();
         OutputView.printWinner(winner);
     }
 }
