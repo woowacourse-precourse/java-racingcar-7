@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
+import racingcar.exceptions.InvalidNameException;
 
 public class CarTest {
 
@@ -21,10 +22,10 @@ public class CarTest {
     void 이름_예외_테스트() {
         // when & then
         assertThatThrownBy(() -> new Car(new Name("")))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(InvalidNameException.class);
 
         assertThatThrownBy(() -> new Car(new Name("cheche903")))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(InvalidNameException.class);
     }
 
     @Test

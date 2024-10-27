@@ -2,6 +2,7 @@ package racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.exceptions.DuplicateNameException;
 import racingcar.io.Output.OutputHandler;
 
 public class Cars {
@@ -30,7 +31,7 @@ public class Cars {
 
     private void isDuplicateName(Car car, String carName) {
         if (car.getName().equals(carName)) {
-            throw new IllegalArgumentException();
+            throw new DuplicateNameException("중복된 이름이 존재합니다.");
         }
     }
 

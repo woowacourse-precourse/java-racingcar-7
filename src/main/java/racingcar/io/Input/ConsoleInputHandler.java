@@ -1,6 +1,7 @@
 package racingcar.io.Input;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.exceptions.InvalidRoundValueException;
 
 public class ConsoleInputHandler implements InputHandler {
 
@@ -14,7 +15,7 @@ public class ConsoleInputHandler implements InputHandler {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new InvalidRoundValueException("라운드 수가 올바르게 입력되지 않았습니다.");
         }
     }
 }

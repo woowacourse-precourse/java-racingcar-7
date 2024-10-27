@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.Test;
+import racingcar.exceptions.InvalidRoundValueException;
 
 public class RoundTest {
 
@@ -37,7 +38,7 @@ public class RoundTest {
         Round round = new Round();
 
         // when & then
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(InvalidRoundValueException.class)
                 .isThrownBy(() -> round.updateRound(0));
     }
 }

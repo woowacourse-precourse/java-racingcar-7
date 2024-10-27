@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exceptions.InvalidRoundValueException;
+
 public class Round {
 
     private static final int INITIAL_ROUND = 0;
@@ -17,7 +19,7 @@ public class Round {
 
     private void validateInteger() {
         if (round < MINIMUM_ROUND) {
-            throw new IllegalArgumentException();
+            throw new InvalidRoundValueException("라운드 수는 1 이상이여야 합니다.");
         }
     }
     

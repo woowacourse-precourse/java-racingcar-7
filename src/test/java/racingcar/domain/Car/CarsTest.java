@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.exceptions.DuplicateNameException;
 
 class CarsTest {
 
@@ -25,7 +26,7 @@ class CarsTest {
 
         // when & then
         assertThatThrownBy(() -> cars.addCar(duplicateNames))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(DuplicateNameException.class);
     }
 
     @Test

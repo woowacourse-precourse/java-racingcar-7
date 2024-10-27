@@ -7,6 +7,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.exceptions.DuplicateNameException;
+import racingcar.exceptions.InvalidNameException;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -38,15 +40,15 @@ class ApplicationTest extends NsTest {
     void 자동차_이름_1자_미만_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,,,", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
+                        .isInstanceOf(InvalidNameException.class)
         );
     }
 
     @Test
-    void 자동차_이름_5자_이상_예외_테스트() {
+    void 자동차_이름_5자_초과_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
+                        .isInstanceOf(InvalidNameException.class)
         );
     }
 
@@ -54,7 +56,7 @@ class ApplicationTest extends NsTest {
     void 자동차_이름_중복_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,pobi,pobi", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
+                        .isInstanceOf(DuplicateNameException.class)
         );
     }
 
