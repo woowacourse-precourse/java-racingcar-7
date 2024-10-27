@@ -16,6 +16,12 @@ public class CarNameInputParser {
 		}
 	}
 
+	private void validateUniqueName(String[] carNames) {
+		if (hasDuplicateNames(carNames)) {
+			throw new IllegalArgumentException("[ERROR] 차량 이름은 중복되지 않아야 합니다.");
+		}
+	}
+
 	private boolean hasDuplicateNames(String[] carNames) {
 		return Arrays.stream(carNames)
 			.distinct()
