@@ -7,19 +7,19 @@ import java.util.List;
 
 public class OutputView {
 
-    public void resultText(){
+    public void resultText() {
         System.out.println();
         System.out.println("실행 결과");
     }
 
-    public void resultPerOneCircle(List<Car> carList){
-        for (Car car : carList){
+    public void resultPerOneCircle(List<Car> carList) {
+        for (Car car : carList) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
         }
         System.out.println();
     }
 
-    public void winners(List<Car> carList){
+    public void winners(List<Car> carList) {
         int maxDistance = getMaxDistance(carList);
 
         List<String> winnerList = carList.stream()
@@ -33,7 +33,7 @@ public class OutputView {
     }
 
 
-    public int getMaxDistance(List<Car> carList){
+    public int getMaxDistance(List<Car> carList) {
         return carList.stream()
                 .max(Comparator.comparingInt(Car::getDistance))
                 .get().getDistance();
