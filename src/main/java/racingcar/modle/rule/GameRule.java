@@ -9,6 +9,4 @@ public class GameRule implements Rulable {
         }
         return false;
     }
-
-
 }

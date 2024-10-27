@@ -17,12 +17,12 @@ public class Vehicles {
     public List<String> getNames() {
         return vehicles.stream()
                 .map(Movable::getName)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public List<Integer> getPositions() {
         return vehicles.stream()
                 .map(Movable::getPosition)
-                .toList();
+                .collect(Collectors.toList());
     }
 }
