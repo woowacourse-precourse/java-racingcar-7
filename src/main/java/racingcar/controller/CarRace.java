@@ -11,9 +11,9 @@ public class CarRace {
     private final List<Car> carList;
     private int remainNum;
 
-    public CarRace(String cars, int num) {
+    public CarRace(String cars, String num) {
         carList = Parser.parseCarList(cars);
-        remainNum = num;
+        remainNum = Parser.parseNum(num);
     }
 
     public void startRace() {

@@ -18,6 +18,22 @@ public class Parser {
         return carList;
     }
 
+    public static int parseNum(String num) {
+        try {
+            int result = Integer.parseInt(num);
+            validatePositive(result);
+            return result;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("1부터 int 범위의 최대값까지만 입력할 수 있습니다.");
+        }
+    }
+
+    private static void validatePositive(int result) {
+        if (result <= 0) {
+            throw new IllegalArgumentException("0 이하의 값을 입력할 수 없습니다.");
+        }
+    }
+
     private static void validateCarName(String car) {
         if (car.length() > 5) {
             throw new IllegalArgumentException("자동차 이름의 길이는 5자 이하만 가능합니다.");

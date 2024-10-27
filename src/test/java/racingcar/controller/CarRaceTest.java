@@ -14,7 +14,7 @@ class CarRaceTest extends NsTest {
     void startRace_SingleWinner() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    CarRace carRace = new CarRace("pobi,woni", 1);
+                    CarRace carRace = new CarRace("pobi,woni", "1");
                     carRace.startRace();
 
                     assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
@@ -28,7 +28,7 @@ class CarRaceTest extends NsTest {
     void startRace_MultipleWinner() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    CarRace carRace = new CarRace("pobi,woni,jun", 1);
+                    CarRace carRace = new CarRace("pobi,woni,jun", "1");
                     carRace.startRace();
 
                     assertThat(output()).contains("최종 우승자 : pobi, woni");
