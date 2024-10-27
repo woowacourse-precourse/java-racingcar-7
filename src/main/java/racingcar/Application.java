@@ -20,12 +20,34 @@ public class Application {
     		validateCarname(name, carNames);
     		carNames.add(name);
     	}
+    	
     	return carNames;
     }
     
     public static int inputTryCount() {
     	System.out.println(INPUT_TRY_COUNT_MESSAGE);
-    	return Integer.parseInt(Console.readLine());
+    	
+    	String input = Console.readLine();
+    	validateNumericInput(input);
+    	
+    	int tryCount = Integer.parseInt(input);
+    	validatePositiveTryCount(tryCount);
+    	
+    	return tryCount;
+    }
+    
+    private static void validatePositiveTryCount(int tryCount) {
+    	if(tryCount <= 0) {
+    		throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
+    	}
+    }
+    
+    private static void validateNumericInput(String input) {
+    	try {
+    		Integer.parseInt(input);
+    	} catch (NumberFormatException e) {
+    		throw new IllegalArgumentException("시도 횟수는 숫자로 입력해야 합니다.");
+    	}
     }
     
     public static void validateCarname(String name, List<String> carNames) {
@@ -62,6 +84,5 @@ public class Application {
     public static void main(String[] args) {
     	List<String> carNames = inputCarNames();
     	int tryCount = inputTryCount();
-        
     }
 }
