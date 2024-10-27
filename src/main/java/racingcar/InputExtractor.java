@@ -15,9 +15,16 @@ public class InputExtractor {
     public static int extractRound(String userInputRound) {
         try{
             int totalRounds = Integer.parseInt(userInputRound);
+            validateRoundsPositive(totalRounds);
             return totalRounds;
         } catch (IllegalArgumentException e) {
             throw e;
+        }
+    }
+
+    private static void validateRoundsPositive(int totalRounds) {
+        if(totalRounds <= 0) {
+            throw new IllegalArgumentException();
         }
     }
 }
