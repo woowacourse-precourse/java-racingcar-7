@@ -8,16 +8,24 @@ import java.util.Set;
 
 public class DataParser {
     public static List<RacingCar> parseName(String input) {
+        endWith(input);
+
         List<String> list = Arrays.asList(input.split(","));
 
         for (int i = 0; i < list.size(); i++) {
             isNonEmpty(list.get(i));
             list.set(i, list.get(i).trim());
-            checkLenght(list.get(i));
+            checkLength(list.get(i));
             isAlphaNumeric(list.get(i));
         }
         isSame(list);
         return createRacingCar(list);
+    }
+
+    private static void endWith(String input) {
+        if (input.charAt(input.length() - 1) == ',') {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void isNonEmpty(String input) {
@@ -26,10 +34,10 @@ public class DataParser {
         }
     }
 
-    private static void checkLenght(String input) {
-        final int MAX_LENGHT = 5;
+    private static void checkLength(String input) {
+        final int MAX_LENGTH = 5;
 
-        if (input.length() > MAX_LENGHT) {
+        if (input.length() > MAX_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
