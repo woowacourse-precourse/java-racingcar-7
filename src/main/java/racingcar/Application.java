@@ -1,14 +1,24 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<String> cars = readCars();
+        List<Integer> positions = cars.stream()
+                .map(car -> 0)
+                .toList();
+        System.out.println();
+        int times = readTimes();
+        positions = runRound(times, cars, positions);
+
     }
 
     /**
@@ -52,6 +62,66 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
         }
+    }
+
+    /**
+     * 0 또는 1을 반환하여 전진 또는 정지를 결정하는 함수
+     *
+     * @return 1: 전진, 0: 정지
+     */
+    private static int goToForward() {
+        int rand = Randoms.pickNumberInRange(0, 9);
+        if (rand >= 4) return 1;
+        return 0;
+    }
+
+    /**
+     * 자동차 위치를 업데이트하여 반환하는 함수
+     *
+     * @param carPositions 자동차 위치 리스트
+     * @param updater      위치를 업데이트하는 함수
+     * @return 업데이트된 자동차 위치 리스트
+     */
+    private static List<Integer> updatePositions(List<Integer> carPositions,
+                                                 Function<Integer, Integer> updater) {
+        return carPositions.stream()
+                .map(updater)
+                .toList();
+    }
+
+    /**
+     * 자동차들의 현재 위치를 출력하는 함수
+     *
+     * @param carNames     자동차 이름 리스트
+     * @param carPositions 자동차 위치 리스트
+     */
+    private static void printCars(List<String> carNames, List<Integer> carPositions) {
+        IntStream.range(0, carNames.size())
+                .forEach(i -> System.out.printf("%s : %s\n", carNames.get(i), "-".repeat(carPositions.get(i))));
+        System.out.println();
+    }
+
+    /**
+     * 시도 횟수만큼 라운드를 실행하는 함수
+     *
+     * @param times        시도 횟수
+     * @param carNames     자동차 이름 리스트
+     * @param carPositions 자동차 위치 리스트
+     * @return 최종 라운드 자동차 위치 리스트
+     */
+    private static List<Integer> runRound(int times,
+                                          List<String> carNames,
+                                          List<Integer> carPositions) {
+        System.out.println("실행 결과");
+
+        List<Integer> updatedCarPositions = carPositions;
+        for (int i = 0; i < times; i++) {
+            updatedCarPositions = updatePositions(updatedCarPositions,
+                    position -> position + goToForward());
+            printCars(carNames, updatedCarPositions);
+        }
+
+        return updatedCarPositions;
     }
 
 }
