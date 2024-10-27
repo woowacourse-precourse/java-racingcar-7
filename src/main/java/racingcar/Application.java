@@ -40,10 +40,12 @@ public class Application {
 
     private static void goOrStop(String[] carNames) {
         int randomNumber;
+        boolean canGo;
 
         for (int i = 0; i < carNames.length; i++) {
             randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
-            if (randomNumber >= FORWARD_CRITERIA) {
+            canGo = randomNumber >= FORWARD_CRITERIA;
+            if (canGo) {
                 carPositions[i] += 1;
             }
         }
