@@ -2,6 +2,7 @@ package racingcar.validation;
 
 import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_CANNOT_BLANK;
 import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_MUST_DIGIT;
+import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_OVERFLOW;
 
 import racingcar.service.exception.RaceCountException;
 
@@ -26,4 +27,11 @@ public class RaceCountValidator {
             throw new RaceCountException(RACE_COUNT_MUST_DIGIT);
         }
     }
+
+    private static void validateRaceCountOverFlow(String raceCount) {
+        if (Long.parseLong(raceCount) > Integer.MAX_VALUE) {
+            throw new RaceCountException(RACE_COUNT_OVERFLOW);
+        }
+    }
+
 }
