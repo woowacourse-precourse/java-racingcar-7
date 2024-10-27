@@ -12,4 +12,12 @@ public class RacingCarView {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Console.readLine().trim();
     }
+
+    public static void printGame() {
+        System.out.println("실행 결과");
+    }
+
+    public static void printRoundResult(String result) {
+        System.out.println(result);
+    }
 }
