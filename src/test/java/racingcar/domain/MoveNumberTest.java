@@ -13,7 +13,7 @@ public class MoveNumberTest {
         String testNumber = "5";
         MoveNumber moveNumber = MoveNumberFactory.createMoveNumber(testNumber);
 
-        assertThat(moveNumber.getMoveNumber()).isEqualTo(Integer.parseInt(testNumber));
+        assertThat(moveNumber.moveNumber()).isEqualTo(Integer.parseInt(testNumber));
     }
 
     @ParameterizedTest

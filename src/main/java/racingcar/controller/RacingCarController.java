@@ -32,7 +32,7 @@ public class RacingCarController {
     private void outputRaceResult(Cars cars, MoveNumber moveNumber) {
         OutputView.outputRaceStartLine();
         cars.registerObserver(carsIntermediateView);
-        cars.moveCars(moveNumber.getMoveNumber());
+        cars.moveCars(moveNumber.moveNumber());
         OutputView.outputRaceFinalResult(cars.findWinnerNames());
     }
 
