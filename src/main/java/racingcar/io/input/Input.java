@@ -9,6 +9,9 @@ import racingcar.validate.RepetitionCountValidator;
 
 public class Input {
 
+    private Input() {
+    }
+
     public static int inputRepetition() {
         String input = Console.readLine();
 

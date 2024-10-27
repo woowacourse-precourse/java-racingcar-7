@@ -4,10 +4,13 @@ import java.util.List;
 import racingcar.ErrorMessage;
 import racingcar.domain.delimiter.Delimiter;
 
-public abstract class CarNameValidator {
+public class CarNameValidator {
 
     private static final int NAME_RANGE_CONDITION = 5;
     private static final int MINIMUM_CAR_SIZE = 2;
+
+    private CarNameValidator() {
+    }
 
     private static void validateNoEdgeComma(String names) {
         if (names.startsWith(Delimiter.COMMA) || names.endsWith(Delimiter.COMMA)) {

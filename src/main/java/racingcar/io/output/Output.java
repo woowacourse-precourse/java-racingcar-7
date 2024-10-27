@@ -2,7 +2,10 @@ package racingcar.io.output;
 
 import racingcar.domain.delimiter.Delimiter;
 
-public abstract class Output {
+public class Output {
+
+    private Output() {
+    }
 
     public static void playGameInit() {
         System.out.println(OutputMessage.PLAY_GAME_DESCRIPTION.getMessage());

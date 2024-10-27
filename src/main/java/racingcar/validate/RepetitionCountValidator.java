@@ -2,7 +2,10 @@ package racingcar.validate;
 
 import racingcar.ErrorMessage;
 
-public abstract class RepetitionCountValidator {
+public class RepetitionCountValidator {
+
+    private RepetitionCountValidator() {
+    }
 
     private static void validateIsNumber(String count) {
         if (!count.matches("^[0-9]+$")) {
