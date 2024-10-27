@@ -25,6 +25,7 @@ public class RaceController {
 		List<Car> cars = createCars(carNames);
 
 		Race race = new Race(cars, raceCount);
+		outputView.printResult();
 		for (int i = 0; i < raceCount; i++) {
 			race.moveCars();
 			outputView.printCurrentPositions(cars);

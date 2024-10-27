@@ -8,8 +8,13 @@ public class OutputView {
 
 	private static final String POSITION_SEPARATOR = " : ";
 	private static final String POSITION_MARKER = "-";
+	private static final String RESULT_PREFIX = "실행 결과";
 	private static final String WINNER_PREFIX = "최종 우승자";
 	private static final String COMMA = ", ";
+
+	public void printResult() {
+		System.out.println(RESULT_PREFIX);
+	}
 
 	public void printCurrentPositions(List<Car> cars) {
 		StringBuilder positions = new StringBuilder();
