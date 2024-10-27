@@ -25,4 +25,8 @@ public class Car {
     public int getAdvanceNum() {
         return advanceNum;
     }
+
+    public String getName() {
+        return name;
+    }
 }
