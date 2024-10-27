@@ -13,7 +13,7 @@ public class Output {
     }
 
     public void printRacingResult() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     public void printRaceProcess(List<String> process) {

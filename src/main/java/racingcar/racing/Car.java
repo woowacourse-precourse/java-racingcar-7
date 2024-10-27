@@ -1,7 +1,9 @@
 package racingcar.racing;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Objects;
 
 
 public class Car implements Comparable<Car> {
@@ -26,12 +28,29 @@ public class Car implements Comparable<Car> {
     }
 
     @Override
-    public int compareTo(@NotNull Car o) {
+    public int compareTo(Car o) {
         return this.distance - o.distance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 
     @Override
     public String toString() {
         return String.join(" : ", this.name, "-".repeat(this.distance));
+    }
+
+    public static List<Car> to(List<String> carNames) {
+        return carNames.stream().map(Car::new).toList();
     }
 }
