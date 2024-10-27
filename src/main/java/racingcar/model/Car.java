@@ -21,7 +21,7 @@ public class Car {
     }
 
     public void move() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+        if (Randoms.pickNumberInRange(Constants.RANDOM_MIN, Constants.RANDOM_MAX) >= Constants.MOVE_REFERENCE_VALUE) {
             distance++;
         }
     }
@@ -29,8 +29,8 @@ public class Car {
     public String getRaceInfo() {
         StringBuilder raceInfo = new StringBuilder();
         raceInfo.append(name);
-        raceInfo.append(Constants.RESULT_COLON);
-        raceInfo.append(Constants.DISTANCE_DASH.repeat(distance));
+        raceInfo.append(Constants.COLON);
+        raceInfo.append(Constants.DASH.repeat(distance));
         return raceInfo.toString();
     }
 }
