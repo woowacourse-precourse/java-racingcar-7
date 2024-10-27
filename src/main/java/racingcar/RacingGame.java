@@ -12,8 +12,13 @@ public class RacingGame {
 
     // Todo: 생성자로 초기하는게 좋은 것인가?
     private final CarService carService = RacingCarService.getInstance();
-    private final static RacingCarInput racingCarInput = new RacingCarInput();
-    private final static RacingCarOutput racingCarOutput = new RacingCarOutput();
+    private final RacingCarInput racingCarInput;
+    private final RacingCarOutput racingCarOutput;
+
+    public RacingGame(RacingCarInput racingCarInput, RacingCarOutput racingCarOutput) {
+        this.racingCarInput = racingCarInput;
+        this.racingCarOutput = racingCarOutput;
+    }
 
     public void start() {
 
