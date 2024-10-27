@@ -6,6 +6,21 @@ import racingcar.domain.Car;
 import racingcar.domain.Round;
 
 public class RoundRepository {
+
+    private static RoundRepository instance;
+    private final CarRepository carRepository;
+
+    private RoundRepository(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
+
+    public static RoundRepository getInstance(CarRepository carRepository) {
+        if (instance == null) {
+            instance = new RoundRepository(carRepository);
+        }
+        return instance;
+    }
+
     private int id = 0;
     private Map<Integer, Round> rounds = new HashMap<>();
 
@@ -14,6 +29,7 @@ public class RoundRepository {
 
         for (Car car : round.getCarList()) {
             car.addRound(round);
+            carRepository.update(car);
         }
 
         rounds.put(id, round);

@@ -1,19 +1,23 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Round {
 
     private int id;
-    private List<Car> carList;
+    private List<Car> carList = new ArrayList<>();
     private int thisRound;
     private Game belongTo;
 
     private Round(Builder builder) {
         this.id = builder.id;
-        this.carList = builder.carList;
         this.thisRound = builder.thisRound;
         this.belongTo = builder.belongTo;
+
+        if (!(builder.carList == null)) {
+            this.carList = builder.carList;
+        }
     }
 
     public int getId() {
@@ -34,6 +38,12 @@ public class Round {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void addCar(Car car) {
+        if (!carList.contains(car)) {
+            carList.add(car);
+        }
     }
 
     public void setThisRound(int thisRound) {
@@ -61,7 +71,7 @@ public class Round {
             return this;
         }
 
-        public Builder setBelongTo(Game belongTo) {
+        public Builder belongTo(Game belongTo) {
             this.belongTo = belongTo;
             return this;
         }
