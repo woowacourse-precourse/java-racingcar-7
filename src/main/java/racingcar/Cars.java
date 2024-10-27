@@ -7,8 +7,9 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Name> cars) {
-        this.cars = getCars(cars);
+    public Cars(Names names) {
+        List<Name> nameList = names.getNames();
+        this.cars = getCars(nameList);
     }
 
     public List<Car> getCars(List<Name> names) {
@@ -43,16 +44,20 @@ public class Cars {
         return maxMovement;
     }
 
-    public List<Car> checkWinner(){
+    public List<Car> getWinner(){
         List<Car> winners = new ArrayList<>();
         int winnerMovement = checkMaxMovement();
 
         for (Car car : cars) {
-            if (car.getStatus() == winnerMovement){
+            if (isWinner(car, winnerMovement)){
                 winners.add(car);
             }
         }
 
         return winners;
+    }
+
+    private static boolean isWinner(Car car, int winnerMovement) {
+        return car.getStatus() == winnerMovement;
     }
 }
