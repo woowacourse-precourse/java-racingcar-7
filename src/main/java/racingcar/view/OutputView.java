@@ -9,4 +9,8 @@ public class OutputView {
         System.out.println(result);
     }
 
+    public static void gameResult(String winner){
+        System.out.println("최종 우승자 : " + winner);
+    }
+
 }

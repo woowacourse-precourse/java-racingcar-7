@@ -33,14 +33,22 @@ public class RacingGameController {
         }
     }
 
-    public void roundStart(Cars cars, RaceRound rounds){
+    private void roundStart(Cars cars, RaceRound rounds){
         RacingGame racingGame = new RacingGame(cars, rounds);
         OutputView.gameStart();
 
-        racingGame.RoundsStart();
+        racingGame.gameRoundStart();
+        List<RaceRound> gameResult = racingGame.getEachRoundResult();
 
-        //TODO : 게임 완료 후 진행상황 및 결과 출력
-        List<RaceRound> gameResult = racingGame.getGameResult();
         gameResult.forEach(round -> OutputView.roundResult(round.toStringRoundResult()));
+
+        endGame(racingGame);
     }
+
+    private void endGame(RacingGame racingGame){
+        //TODO: 최종 결과 출력
+        Cars finalCars = racingGame.getFinalRoundCarsStatus();
+        OutputView.gameResult(finalCars.getWinner());
+    }
+
 }

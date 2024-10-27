@@ -15,6 +15,10 @@ public class RaceRound {
         return this.rounds;
     }
 
+    public Cars getThisRoundCars() {
+        return thisRoundCarList;
+    }
+
     public String toStringRoundResult() {
         List<Car> cars = thisRoundCarList.getCarList();
         StringBuilder result = new StringBuilder();

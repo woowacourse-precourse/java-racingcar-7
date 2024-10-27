@@ -4,10 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> carList;
+    private final List<Car> carList;
 
     public Cars() {
         this.carList = new ArrayList<>();
+    }
+
+    public List<Car> getCarList() {
+        return this.carList;
+    }
+
+    public String getWinner(){
+        StringBuffer winner = new StringBuffer();
+        carList.forEach(car -> {
+            winner.append(car.getName());
+        });
+        return winner.toString();
     }
 
     public void addCar(Car target){
@@ -21,14 +33,6 @@ public class Cars {
             Car car = new Car(names[i].trim(), i);
             addCar(car);
         }
-    }
-
-    public void removeCar(Car target){
-        carList.remove(target);
-    }
-
-    public List<Car> getCarList() {
-        return this.carList;
     }
 
 }
