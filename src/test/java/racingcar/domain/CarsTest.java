@@ -11,7 +11,7 @@ public class CarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = new Cars(new String[]{"test1", "test2", "test3"});
+        cars = Cars.from(new String[]{"test1", "test2", "test3"});
     }
 
     @DisplayName("n번 이동한 후 자동차의 상태는 0이상 n이하 여야 한다")

@@ -1,20 +1,24 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Cars {
-    private final List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
 
-    public Cars(String[] cars) {
-        Arrays.stream(cars)
+    private Cars(String[] names) {
+        cars = Arrays.stream(names)
                 .map(Car::new)
-                .forEach(this.cars::add);
+                .toList();
+    }
+
+    public static Cars from(String[] names) {
+        return new Cars(names);
     }
 
     public void racing(int moveNum) {
+        System.out.println("\n실행결과");
         IntStream.range(0, moveNum)
                 .forEach(i -> {
                     cars.forEach(Car::moveOrStop);
@@ -27,6 +31,11 @@ public class Cars {
         System.out.println();
     }
 
+    /**
+     * 테스트 전용 메서드
+     * @param carNumber
+     * @return Car
+     */
     public Car getCar(int carNumber) {
         return cars.get(carNumber);
     }
