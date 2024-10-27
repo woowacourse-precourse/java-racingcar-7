@@ -36,6 +36,19 @@ public class ExceptionModel {
         }
     }
 
+    // 중복된 자동차 이름이 있을 경우
+    public void uniqueCarNames(String nameInput){
+        Set<String> uniqueNames = new HashSet<>();
+        for (String name : carNames(nameInput)) {
+            if (!uniqueNames.add(name)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+
+
+
 
 
 }
