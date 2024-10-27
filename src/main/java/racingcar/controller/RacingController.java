@@ -9,6 +9,7 @@ import racingcar.view.InputView;
 public class RacingController {
 
     final InputView inputView = new InputView();
+    int attempts;
     List<Car> cars = new ArrayList<>();
 
     public RacingController() {
@@ -16,6 +17,8 @@ public class RacingController {
 
     public void run() {
         setCars(inputView.getCarNamesInput());
+        setAttempts(inputView.getAttempts());
+    }
     }
 
     public void setCars(String input) {
@@ -43,5 +46,13 @@ public class RacingController {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다. ");
         }
         return name;
+    }
+
+    public void setAttempts(String input) {
+        try {
+            this.attempts = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 숫자만 입력 가능합니다. ");
+        }
     }
 }
