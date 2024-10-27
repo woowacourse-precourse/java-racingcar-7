@@ -14,7 +14,7 @@ public class ReaderHelper {
         return Arrays.asList(input.split(DELIMITER));
     }
 
-    public int readPlayTime() throws NumberFormatException {
+    public int readPlayTime() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
         return Integer.parseInt(input);
