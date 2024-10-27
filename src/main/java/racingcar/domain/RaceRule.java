@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.HashSet;
 import java.util.List;
-import racingcar.domain.Car;
+
 import racingcar.utils.generator.NumberGenerator;
 
 public class RaceRule {
@@ -16,6 +16,7 @@ public class RaceRule {
     public RaceRule(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
     }
+
     // 이동 규칙
     public boolean canMove() {
         int generated = numberGenerator.generate();
@@ -46,13 +47,11 @@ public class RaceRule {
     }
 
     private static void validateGeneratedNumber(int number) {
-        if (MIN_NUMBER <= number && number <= MAX_NUMBER) {
-            return;
-        }
+        if (MIN_NUMBER > number || number > MAX_NUMBER) {
+            String message = String.format("생성된 숫자는 %d에서 %d 사이여야 합니다.", MIN_NUMBER, MAX_NUMBER);
 
-        throw new IllegalArgumentException(
-                String.format("생성된 숫자는 %d에서 %d 사이여야 합니다.", MIN_NUMBER, MAX_NUMBER)
-        );
+            throw new IllegalArgumentException(message);
+        }
     }
 
     private static int getMaxMovement(List<Car> cars) {
