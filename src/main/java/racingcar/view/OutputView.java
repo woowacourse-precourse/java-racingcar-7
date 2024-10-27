@@ -19,7 +19,6 @@ public class OutputView {
 				.append(POSITION_MARKER.repeat(car.getPosition()))
 				.append('\n');
 		}
-		positions.append('\n');
 		System.out.println(positions);
 	}
 
