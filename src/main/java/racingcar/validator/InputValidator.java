@@ -2,13 +2,38 @@ package racingcar.validator;
 
 public class InputValidator {
 
-    public boolean hasNoInput(String input) {
+    public boolean checkNameIsEmpty(String name) {
+        return hasNoInput(name);
+    }
+
+    public boolean checkNameIsLongerThanFive(String name) {
+        return checkInputLength(name);
+    }
+
+    public boolean checkNameIncludeNumber(String name) {
+        return includeNumber(name);
+    }
+
+    public boolean checkNameHasNameBehindComma(String name) {
+        return NoNameBehindComma(name);
+    }
+
+    public boolean checkTryNumberIsNotNumber(String tryNumber) {
+        return isNotNumber(tryNumber);
+    }
+
+    public boolean checkTryNumberIsNotInteger(String tryNumber) {
+        return isNotInteger(tryNumber);
+    }
+
+
+    private boolean hasNoInput(String input) {
         //문자열이 비어있으면 true, 아니면 false
         return input.isEmpty();
     }
 
     //문자열 길이가 5이하면 true, 5보다 크면 false
-    public boolean checkInputLength(String input) {
+    private boolean checkInputLength(String input) {
         String[] splitInput = input.split(",");
         for (String name : splitInput) {
             if (name.length() > 5) {
@@ -19,7 +44,7 @@ public class InputValidator {
     }
 
     //숫자가 있는 이름이 있으면 true, 없으면 false
-    public boolean includeNumber(String input) {
+    private boolean includeNumber(String input) {
         String[] splitInput = input.split(",");
         for (String name : splitInput) {
             if (checkHasNumber(name)) {
@@ -40,7 +65,7 @@ public class InputValidator {
     }
 
     //쉼표뒤에 이름이 없으면 true, 있으면 false
-    public boolean NoNameBehindComma(String input) {
+    private boolean NoNameBehindComma(String input) {
         int commaCount = countComma(input);
         String[] splitInput = input.split(",");
         //쉼표 갯수가 이름 갯수보다 많으면 쉼표뒤에 이름이 없음
@@ -72,7 +97,7 @@ public class InputValidator {
     }
 
     //시도 횟수가 숫자가 아니면 true, 숫자면 false
-    public boolean isNotNumber(String number) {
+    private boolean isNotNumber(String number) {
         char tryNumber = number.charAt(0);
         if (Character.isDigit(tryNumber)) {
             return false;
@@ -81,7 +106,7 @@ public class InputValidator {
     }
 
     //시도 횟수가 1이상의 정수가 아니면 true, 숫자면 false
-    public boolean isNotInteger(String number) {
+    private boolean isNotInteger(String number) {
         if (Integer.parseInt(number) >= 1) {
             return false;
         }
