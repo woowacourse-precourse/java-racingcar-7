@@ -17,14 +17,16 @@ public class RacingCar {
         Vector<User> winnerList = new Vector<>();
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-        input = input.replaceAll(" ","");
-        String usernameArray[] = input.split(",");
+        String inputName = Console.readLine();
+        inputName = inputName.replaceAll(" ","");
+        String usernameArray[] = inputName.split(",");
         setUserList(usernameArray);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         try {
-            round = Integer.valueOf(Console.readLine());
+            String inputRound = Console.readLine();
+            inputRound = inputRound.replaceAll(" ","");
+            round = Integer.valueOf(inputRound);
             checkRoundError(round);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
