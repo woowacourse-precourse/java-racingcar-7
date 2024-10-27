@@ -13,6 +13,10 @@ public class Car {
         return name;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public String getStatus() {
         return name + " : " + "-".repeat(position);
     }
