@@ -15,12 +15,7 @@ public class Cars {
     }
 
     public void moveAll() {
-        cars.forEach(car -> {
-            car.generateSpeed();
-            if (car.isMoveable()) {
-                car.move();
-            }
-        });
+        cars.forEach(Car::attemptMove);
     }
 
     public List<Car> getCars() {

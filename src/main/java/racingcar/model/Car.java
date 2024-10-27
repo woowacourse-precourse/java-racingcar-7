@@ -19,7 +19,14 @@ public class Car {
         return new Car(name);
     }
 
-    public void generateSpeed() {
+    public void attemptMove() {
+        generateSpeed();
+        if (isMoveable()) {
+            move();
+        }
+    }
+
+    private void generateSpeed() {
         int speed = Randoms.pickNumberInRange(0, 9);
         if (speed >= MIN_SPEED) {
             this.status = Status.MOVE;
@@ -28,11 +35,11 @@ public class Car {
         }
     }
 
-    public boolean isMoveable() {
+    private boolean isMoveable() {
         return status == Status.MOVE;
     }
 
-    public void move() {
+    private void move() {
         distance++;
     }
 
