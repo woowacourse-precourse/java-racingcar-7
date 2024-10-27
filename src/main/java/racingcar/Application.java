@@ -21,7 +21,10 @@ public class Application {
         while (tokenizer.hasMoreTokens()) {
             String name = tokenizer.nextToken().trim(); // 공백 제거
             cars.add(new Car(name));
-            System.out.println(name);
+        }
+
+        for(Car car : cars) {
+            System.out.println(car);
         }
         System.out.println(attempts);
 
