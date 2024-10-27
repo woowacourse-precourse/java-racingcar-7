@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ public class Application {
 
     public static void main(String[] args) {
         List<String> cars = getCarNames();
+        int rounds = getRounds();
     }
 
     // 자동차 이름 입력
@@ -21,5 +24,12 @@ public class Application {
             cars.add(name.trim());
         }
         return cars;
+    }
+
+    private static int getRounds(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+
+        return Integer.parseInt(input);
     }
 }
