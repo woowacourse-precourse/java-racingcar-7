@@ -35,5 +35,26 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 자동차_입력_6글자_이상_예외_테스트(){
+        String input = "Car1,Car2,Car119";
+        assertThatThrownBy(()->validator.isValidCarNames(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 자동차_입력_2대_미만_예외_테스트(){
+        String input = "Car1";
+        assertThatThrownBy(()->validator.isValidCarNames(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 자동차_입력_중복값_예외_테스트(){
+        String input = "Car1,Car1,Car2";
+        assertThatThrownBy(()->validator.isValidCarNames(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }
