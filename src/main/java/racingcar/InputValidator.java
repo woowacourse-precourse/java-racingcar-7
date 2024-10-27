@@ -20,6 +20,8 @@ public class InputValidator {
     public void attemptCountValidator() {
         if (isBlankInput()) {
             throw new IllegalArgumentException("시도 횟수를 입력하세요.");
+        } else if (isPositiveInteger()) {
+            throw new IllegalArgumentException("시도 횟수는 양의 정수만 입력 가능합니다.");
         }
     }
 
@@ -36,6 +38,17 @@ public class InputValidator {
             if (car.getCarName().length() > 5) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    private boolean isPositiveInteger() {
+        try {
+            if (Integer.parseInt(inputText) < 0) {
+                return true;
+            }
+        } catch (NumberFormatException e) {
+            return true;
         }
         return false;
     }
