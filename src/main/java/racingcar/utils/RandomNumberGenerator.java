@@ -6,6 +6,10 @@ import static racingcar.constants.Constants.MIN_RANDOM_NUMBER;
 
 public class RandomNumberGenerator {
 
+    private RandomNumberGenerator() {
+
+    }
+
     public static int getRandomNumber() {
         return pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
     }
