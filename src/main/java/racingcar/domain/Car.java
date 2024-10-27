@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    private String name;
+    private final String name;
     private int position; // 자동차의 현재 위치
 
     public Car(String name) {
