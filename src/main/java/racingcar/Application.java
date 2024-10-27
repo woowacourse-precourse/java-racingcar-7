@@ -33,6 +33,8 @@ public class Application {
     }
 
     private static void gameStart(List<Car> cars, int tryCount) {
+        System.out.println("실행 결과");
+
         for (int i = 0; i < tryCount; i++) {
             for (Car car : cars) {
                 car.move();
