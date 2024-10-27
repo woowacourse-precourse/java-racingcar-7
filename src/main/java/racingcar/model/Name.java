@@ -35,6 +35,11 @@ public class Name {
         return Objects.hash(value);
     }
 
+    @Override
+    public String toString() {
+        return value;
+    }
+
     private void validateNameLength(final String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH_OUT_OF_RANGE.getMessage());
