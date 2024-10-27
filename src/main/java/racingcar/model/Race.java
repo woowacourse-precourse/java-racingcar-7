@@ -5,7 +5,6 @@ import static racingcar.view.OutputView.printRaceStatus;
 import static racingcar.view.OutputView.printWinners;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Race {
     private List<Car> cars;
@@ -18,7 +17,7 @@ public class Race {
 
     public void operate() {
         for (int i = 0; i < attemptCount; i++) {
-            cars.stream().forEach(this::moveRandomly);
+            cars.forEach(this::moveRandomly);
             printRaceStatus(cars);
         }
         printWinners(findWinners(cars));
@@ -31,9 +30,9 @@ public class Race {
     }
 
     private List<String> findWinners(List<Car> cars) {
-        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
-        List<String> winners = cars.stream().filter(car -> car.getDistance() == maxDistance).map(Car::getName)
-                .collect(Collectors.toList());
+        int maxDistance = cars.stream().mapToInt(Car::getDistance).max()
+                .orElseThrow(() -> new IllegalStateException("비어있는 차량 목록"));
+        List<String> winners = cars.stream().filter(car -> car.getDistance() == maxDistance).map(Car::getName).toList();
         return winners;
     }
 }
