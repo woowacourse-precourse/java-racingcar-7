@@ -17,6 +17,7 @@ public class Controller {
     public void run() {
         HashMap<String, Integer> car = inputView.getCar();
         Integer number = inputView.getNumber();
+        race.race(car, number);
         String result = race.winner(car, number);
         outputView.print(result);
 
