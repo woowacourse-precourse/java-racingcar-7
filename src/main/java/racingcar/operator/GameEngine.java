@@ -24,8 +24,16 @@ public class GameEngine {
 
     private void playUserTurn(UserObject user) {
         int randomNum = RandomNumberGenerator.generateRandomNumber();
-        if (randomNum >= 4) {
+        if (checkScoreEligibility(randomNum)) {
             user.updateUserScore();
+        }
+    }
+
+    private boolean checkScoreEligibility(int randomNum) {
+        if (randomNum >= 4) {
+            return true;
+        } else {
+            return false;
         }
     }
 
