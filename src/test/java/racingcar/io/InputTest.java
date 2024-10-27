@@ -14,12 +14,12 @@ public class InputTest extends NsTest {
     @Test
     void emptyInputTest() {
         assertAll(
-                () -> assertThatThrownBy(() -> run(""))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("잘못된 입력입니다."),
-                () -> assertThatThrownBy(() -> run("\n"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("잘못된 입력입니다.")
+            () -> assertThatThrownBy(() -> run(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("잘못된 입력입니다."),
+            () -> assertThatThrownBy(() -> run("\n"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("잘못된 입력입니다.")
         );
     }
 
@@ -29,8 +29,8 @@ public class InputTest extends NsTest {
         System.setIn(new ByteArrayInputStream(answer.getBytes()));
 
         assertThatThrownBy(() -> run(" "))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("잘못된 입력입니다.");
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("잘못된 입력입니다.");
     }
 
     @Override

@@ -23,9 +23,9 @@ public class Racing {
         int max = findMaxDistance();
 
         return cars.stream()
-                .filter(car -> isDistanceMax(car, max)) // distance가 max와 일치할 경우
-                .map(Car::getName) // car의 이름을 리스트에 담아 반환
-                .toList();
+            .filter(car -> isDistanceMax(car, max)) // distance가 max와 일치할 경우
+            .map(Car::getName) // car의 이름을 리스트에 담아 반환
+            .toList();
     }
 
     private int findMaxDistance() {
