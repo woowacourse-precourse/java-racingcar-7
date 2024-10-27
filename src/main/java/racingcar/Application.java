@@ -12,5 +12,8 @@ public class Application {
         System.out.println("========== 자동차 경주 게임 ==========");
         List<String> carNames = inputHandler.getCarNames();
         int attemptCount = inputHandler.getAttempCount();
+
+        CarRace carRace = new CarRace();
+        Map<String, Integer> carPositions = carRace.initializeCarPositions(carNames);
     }
 }

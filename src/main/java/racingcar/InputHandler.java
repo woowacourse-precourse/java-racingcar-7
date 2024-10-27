@@ -2,14 +2,16 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InputHandler {
     public List<String> getCarNames(){
         List<String> carNames = new ArrayList<>();
         String inputCarNames;
 
-        while (true){
+        while (true) {
             System.out.print("경주할 자동차 이름을 입력하세요.(완료: 0) : ");
             inputCarNames = Console.readLine().trim();
 
@@ -18,10 +20,11 @@ public class InputHandler {
             }
 
             String[] names = inputCarNames.split(",");
-            for (String name: names){
+            for (String name : names) {
                 carNames.add(name.trim());
             }
-        }System.out.println(carNames);
+        }
+        System.out.println("입력된 자동차 이름: " + carNames);
         return carNames;
     }
 
