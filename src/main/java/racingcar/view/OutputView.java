@@ -3,11 +3,19 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.model.Car;
+import racingcar.model.Validation;
 
 public class OutputView {
+    private final Validation validation;
+
+    public OutputView(Validation validation) {
+        this.validation = validation;
+    }
+
     public void printWinner(List<String> winners) {
-        String winnerNames = String.join(", ", winners);
-        System.out.println("최종 우승자 : " + winnerNames);
+        String output = "최종 우승자 : " + String.join(", ", winners);
+        validation.validateOutputFormat(output, winners);
+        System.out.println(output);
     }
 
     public void printEachTime(List<Car> carList) {
