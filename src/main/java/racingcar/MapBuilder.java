@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -22,8 +21,16 @@ public class MapBuilder {
         }
     }
 
-    public void mapSingleCarForwardResult(String carNames) {
+    public void mapSingleCarForwardResult(String carName) {
+        // forwardCounter에 전진횟수 추가
+        int forwardCount = forwardCounter.get(carName);
+        forwardCount += 1;
+        forwardCounter.put(carName, forwardCount);
 
+        // lineCounter에 라인 추가
+        String forwardLine = lineCounter.get(carName);
+        forwardLine = forwardLine + "-";
+        lineCounter.put(carName, forwardLine);
     }
 
     public void mapSingleRandomRoundResult(int i) {
