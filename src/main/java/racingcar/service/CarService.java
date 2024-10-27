@@ -32,7 +32,7 @@ public class CarService {
         }
     }
 
-    private boolean isAdvance(){
+    protected boolean isAdvance(){
         int num = Randoms.pickNumberInRange(0, 9);
         if (num >= 4){
             return true;
