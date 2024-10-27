@@ -18,8 +18,9 @@ public class RaceController {
 
     private RaceManager initializeGame() {
         String[] names = inputView.inputNames();
-        InputValidator.validateName(names);
         int totalTimes = inputView.inputTimes();
+
+        validateInput(names, totalTimes);
 
         outputView.printResultMessage();
         return new RaceManager(names, totalTimes);
@@ -39,5 +40,11 @@ public class RaceController {
 
     private void displayWinners() {
         outputView.printWinners(raceManager.getWinners());
+    }
+
+    private void validateInput(String[] names, int totalTimes) {
+        InputValidator.validateNameLength(names);
+        InputValidator.validateNameEmpty(names);
+        InputValidator.validateTime(totalTimes);
     }
 }
