@@ -36,5 +36,4 @@ public class CarNameInputValidator {
         }
         return validNames;
     }
-
 }

@@ -5,6 +5,7 @@ import racingcar.model.CarMover;
 import racingcar.model.WinnerDeterminer;
 import racingcar.view.CarNameInputValidator;
 import racingcar.view.MoveCountInputValidator;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,11 @@ public class RacingCarController {
 
         int moveCount = moveCountInputValidator.getMoveCount();
 
+        System.out.println();
+
         for (int i = 0; i < moveCount; i++) {
-            moveCars();
+            int[] moveCounts = generateRandomMoveCounts();
+            moveCars(moveCounts);
             printResults();
         }
 
@@ -44,10 +48,10 @@ public class RacingCarController {
         }
     }
 
-    public void moveCars() {
-        for (Car car : cars) {
-            if (carMover.canMove()) {
-                car.move();
+    public void moveCars(int[] moveCounts) {
+        for (int i = 0; i < cars.size(); i++) {
+            if (moveCounts[i] >= 4) {
+                carMover.move(cars.get(i), moveCounts[i]);
             }
         }
     }
@@ -68,5 +72,17 @@ public class RacingCarController {
         WinnerDeterminer winnerDeterminer = new WinnerDeterminer(cars);
         List<String> winners = winnerDeterminer.determineWinners();
         System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private int[] generateRandomMoveCounts() {
+        int[] moveCounts = new int[cars.size()];
+        for (int i = 0; i < cars.size(); i++) {
+            moveCounts[i] = Randoms.pickNumberInRange(0, 9);
+        }
+        return moveCounts;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

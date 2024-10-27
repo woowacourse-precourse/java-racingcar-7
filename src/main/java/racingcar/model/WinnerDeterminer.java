@@ -15,7 +15,7 @@ public class WinnerDeterminer {
         List<String> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            if (car.getDistance() == maxDistance) {
+            if (car.getPosition() == maxDistance) {
                 winners.add(car.getName());
             }
         }
@@ -26,8 +26,8 @@ public class WinnerDeterminer {
     private int getMaxDistance() {
         int maxDistance = 0;
         for (Car car : cars) {
-            if (car.getDistance() > maxDistance) {
-                maxDistance = car.getDistance();
+            if (car.getPosition() > maxDistance) {
+                maxDistance = car.getPosition();
             }
         }
         return maxDistance;
