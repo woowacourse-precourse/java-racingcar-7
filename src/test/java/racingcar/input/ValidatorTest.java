@@ -1,9 +1,7 @@
-package racingcar;
+package racingcar.input;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.input.UserInput;
-import racingcar.input.Validator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

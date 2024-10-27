@@ -1,8 +1,7 @@
-package racingcar;
+package racingcar.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.util.StringSplitter;
 
 import java.util.List;
 

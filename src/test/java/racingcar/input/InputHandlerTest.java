@@ -1,9 +1,7 @@
-package racingcar;
+package racingcar.input;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.input.InputHandler;
-import racingcar.input.UserInput;
 import racingcar.output.OutputHandler;
 
 import java.io.ByteArrayInputStream;
