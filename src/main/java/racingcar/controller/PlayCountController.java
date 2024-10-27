@@ -4,11 +4,15 @@ import racingcar.util.CommonIo;
 import racingcar.util.ErrorMessage;
 import racingcar.util.Limit;
 import racingcar.view.InputView;
-import racingcar.view.OutputView;
 
 public class PlayCountController {
-    private InputView inputView = new InputView();
-    private CommonIo io = new CommonIo();
+    private final InputView inputView;
+    private final CommonIo io;
+
+    public PlayCountController() {
+        this.inputView = new InputView();
+        this.io = new CommonIo();
+    }
 
     public int validatePlayCount(){
         String playCountInput = inputView.receivePlayCount();
