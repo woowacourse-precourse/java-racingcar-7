@@ -31,8 +31,4 @@ public class Race {
         }
         return winners;
     }
-
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
-    }
 }
