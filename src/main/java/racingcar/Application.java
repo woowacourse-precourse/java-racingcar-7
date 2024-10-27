@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -42,6 +43,9 @@ public class Application {
         for (int i = 0; i < tryCount; i++) {
             playRacingCarRound(racingCars, racingCarsDistance);
         }
+
+        // 자동차 경주 게임의 우승자를 선정
+        List<String> winners = findWinners(racingCars, racingCarsDistance);
     }
 
     private static void playRacingCarRound(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
@@ -52,6 +56,29 @@ public class Application {
             }
         }
         showRoundResult(racingCars, racingCarsDistance);
+    }
+
+    private static List<String> findWinners(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
+        List<String> winners = new ArrayList<>();
+        int max = findMaxDistance(racingCars, racingCarsDistance);
+
+        for (String racingCar : racingCars) {
+            if (max == racingCarsDistance.get(racingCar)) {
+                winners.add(racingCar);
+            }
+        }
+        return winners;
+    }
+
+    private static int findMaxDistance(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
+        int max = -1;
+
+        for (String racingCar : racingCars) {
+            if (max < racingCarsDistance.get(racingCar)) {
+                max = racingCarsDistance.get(racingCar);
+            }
+        }
+        return max;
     }
 
     private static void showRoundResult(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
