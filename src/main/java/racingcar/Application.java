@@ -20,6 +20,27 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int attemptCount = Integer.parseInt(Console.readLine());
-    
+
+        for (int i = 0; i < attemptCount; i++) {
+            carMove(dictionary);
+        }
+    }
+
+    private static void carMove(Map<String, Integer> dictionary) {
+        for (String name : dictionary.keySet()) {
+            int number = Randoms.pickNumberInRange(0, 9);
+            if (number >= 4) {
+                dictionary.put(name, dictionary.get(name) + 1);
+            }
+        }
+        printDictionary(dictionary);
+    }
+
+    public static void printDictionary(Map<String, Integer> dictionary) {
+        for (String name : dictionary.keySet()) {
+            System.out.println(name + " : " + "-".repeat(dictionary.get(name)));
+        }
+        System.out.println();
     }
 }
+
