@@ -2,17 +2,17 @@ package racingcar.domain;
 
 public class Score {
 
-    private long value;
+    private int value;
 
-    public Score(final long value) {
+    public Score(final int value) {
         this.value = value;
     }
 
-    public void addValue(final long value) {
+    public void addValue(final int value) {
         this.value += value;
     }
 
-    public long getValue() {
+    public int getValue() {
         return value;
     }
 }

@@ -35,7 +35,6 @@ public class RacingCarController {
 
     private void responseWinner(final RacingCarWinner racingCarWinner) {
         outputView.printWinner(racingCarWinner);
-
     }
 
     private void responseResults(final List<RacingCarResult> results) {

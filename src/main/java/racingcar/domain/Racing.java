@@ -20,14 +20,14 @@ public class Racing {
     }
 
     public List<Car> getWinners() {
-        final long maxScore = getMaxScore();
+        final int maxScore = getMaxScore();
         return cars.stream()
                 .filter(car -> car.isWinner(maxScore))
                 .toList();
     }
 
-    private long getMaxScore() {
-        return cars.stream()
+    private int getMaxScore() {
+        return (int) cars.stream()
                 .mapToLong(Car::getScore)
                 .max()
                 .orElse(0L);

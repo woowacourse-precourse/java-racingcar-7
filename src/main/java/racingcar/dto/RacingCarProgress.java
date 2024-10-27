@@ -4,7 +4,7 @@ import racingcar.domain.Car;
 
 public record RacingCarProgress(
         String carName,
-        long score
+        int score
 ) {
     public static RacingCarProgress of(final Car car) {
         return new RacingCarProgress(

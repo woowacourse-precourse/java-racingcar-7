@@ -51,8 +51,8 @@ public class OutputView {
         final List<RacingCarProgress> progresses = result.progresses();
         for (RacingCarProgress progress : progresses) {
             final String carName = progress.carName();
-            final long score = progress.score();
-            final String message = String.format(PROGRESS, carName, HYPHEN.repeat((int) score));
+            final int score = progress.score();
+            final String message = String.format(PROGRESS, carName, HYPHEN.repeat(score));
             sb.append(message);
             sb.append(LINE_SEPARATOR);
         }

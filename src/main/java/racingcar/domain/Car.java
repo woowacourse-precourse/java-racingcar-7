@@ -21,7 +21,7 @@ public class Car {
         return this.name.getValue();
     }
 
-    public long getScore() {
+    public int getScore() {
         return this.score.getValue();
     }
 
@@ -32,7 +32,7 @@ public class Car {
         }
     }
 
-    public boolean isWinner(final long maxScore) {
+    public boolean isWinner(final int maxScore) {
         return getScore() == maxScore;
     }
 
