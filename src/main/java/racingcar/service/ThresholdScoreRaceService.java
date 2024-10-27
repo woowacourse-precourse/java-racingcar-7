@@ -14,13 +14,13 @@ public final class ThresholdScoreRaceService implements RaceService {
     public ThresholdScoreRaceService(final NumberGenerator randomNumberGenerator) {
         this.numberGenerator = randomNumberGenerator;
     }
-    
+
     @Override
     public void performRace(Racing racing) {
-        racing.getCars().forEach(car -> car.move(tryMove()));
+        racing.getCars().forEach(car -> car.move(determineMove()));
     }
 
-    public int tryMove() {
+    public int determineMove() {
         int number = generateNumber();
         if (number >= MIN_MOVE_NUMBER) {
             return FORWARD;

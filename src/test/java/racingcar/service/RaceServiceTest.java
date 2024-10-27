@@ -13,14 +13,14 @@ public class RaceServiceTest {
     @Test
     void 전진_테스트() {
         moveRule = new ThresholdScoreRaceService(new FixedNumberGenerator(4));
-        int result = moveRule.tryMove();
+        int result = moveRule.determineMove();
         assertThat(result).isEqualTo(FORWARD);
     }
 
     @Test
     void 멈춤_테스트() {
         moveRule = new ThresholdScoreRaceService(new FixedNumberGenerator(3));
-        int result = moveRule.tryMove();
+        int result = moveRule.determineMove();
         assertThat(result).isEqualTo(STOP);
     }
 }
