@@ -19,5 +19,8 @@ public class Parser {
         return result;
     }
 
-
+    public int parseCount(String input) {
+        InputValidator.validateIsNumber(input);
+        return Integer.parseInt(input);
+    }
 }
