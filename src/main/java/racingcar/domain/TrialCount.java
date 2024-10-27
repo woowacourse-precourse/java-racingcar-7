@@ -17,10 +17,7 @@ public class TrialCount {
     private void validateRange(int count) {
         if (count < START_TRY_COUNT || count > END_TRY_COUNT) {
             throw new IllegalArgumentException(
-                    TRY_COUNT_OUT_OF_RANGE.formatMessage("최소 %d번, 최대 %d번까지 시도 가능합니다."
-                            , START_TRY_COUNT
-                            , END_TRY_COUNT
-                    )
+                    TRY_COUNT_OUT_OF_RANGE.formatMessage(START_TRY_COUNT, END_TRY_COUNT)
             );
         }
     }
