@@ -36,6 +36,11 @@ public class RacingCar {
     public void extractCarNames() {
         this.carNameList = Arrays.asList(carNames.split(","));
         carNamesSize = carNameList.size();
+        try {
+            catchError();
+        } catch (IllegalArgumentException illegalArgumentException) {
+            throw illegalArgumentException;
+        }
     }
 
     public void getTryCount() {
@@ -116,5 +121,18 @@ public class RacingCar {
     public void printWinner() {
         checkWinner();
         System.out.println("최종 우승자 : " + winners);
+    }
+
+    public void catchError() {
+        for (String carNameForCheck : carNameList) {
+            checkCarNameLength(carNameForCheck);
+        }
+    }
+
+    public void checkCarNameLength(String carNameForCheck) {
+        int maxLength = 5;
+        if (carNameForCheck.length() > maxLength) {
+            throw new IllegalArgumentException();
+        }
     }
 }
