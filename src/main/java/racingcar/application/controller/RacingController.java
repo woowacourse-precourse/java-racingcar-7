@@ -15,4 +15,15 @@ public class RacingController {
     this.inputView = inputView;
     this.outputView = outputView;
   }
+
+  public void initialize() {
+
+    outputView.printCarNamesInputPrompt();
+    String inputCarNames = inputView.readInputCarNames();
+
+    outputView.printAttemptCountInputPrompt();
+    int inputAttemptCount = inputView.readInputAttemptCount();
+
+    racingService.setup(inputCarNames, inputAttemptCount);
+  }
 }
