@@ -93,6 +93,7 @@
 - RacingService
     - startRace() → 자동차 경주 핵심 로직
     - createCars() → Car 객체 리스트 생성
+    - getRaceProcedure() -> 각 시행 횟수 별 경기 정보 반환
     - getRaceWinners() → 우승자 리스트 반환
     - createCarDTOs() → Car 객체 리스트를 받아 CarDTO 리스트로 변환하여 반환
     - isMovingForward() →`camp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()`을 이용하여 0 ~ 9 사이의 랜덤값을 뽑아, 그 랜덤값이
