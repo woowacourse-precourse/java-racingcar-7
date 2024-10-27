@@ -4,6 +4,7 @@ import static racingcar.message.ExceptionMessage.CAR_NAME_DUPLICATE;
 import static racingcar.message.ExceptionMessage.CAR_NAME_EMPTY;
 import static racingcar.message.ExceptionMessage.CAR_NAME_TOO_LONG;
 import static racingcar.message.ExceptionMessage.NOT_A_NUMBER;
+import static racingcar.message.ExceptionMessage.NOT_EXCEED_MINIMUM_AMOUNT;
 import static racingcar.message.ExceptionMessage.NUMBER_PARSE_ERROR;
 
 import java.util.HashSet;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 public class GameValidation {
     private static final int CAR_NAME_MAX_LENGTH = 5;
+    private static final int MIN_CAR_PLAYER = 2;
 
     public static void validateCarNames(List<String> carNames) {
         Set<String> uniqueCarNames = new HashSet<>();
@@ -20,6 +22,7 @@ public class GameValidation {
             validateCarNameLength(carName);
             validateCarNameUniqueness(uniqueCarNames, carName);
         }
+        validateMinimumCarCount(uniqueCarNames);
     }
 
     public static void validateTryCount(String input) {
@@ -40,8 +43,14 @@ public class GameValidation {
     }
 
     private static void validateCarNameNotEmpty(String carName) {
-        if (carName.isEmpty()) {
+        if (carName.isEmpty() || carName.isBlank()) {
             throw new IllegalArgumentException(CAR_NAME_EMPTY.getMessage());
+        }
+    }
+
+    private static void validateMinimumCarCount(Set<String> uniqueCarNames) {
+        if (uniqueCarNames.size() < MIN_CAR_PLAYER) {
+            throw new IllegalArgumentException(NOT_EXCEED_MINIMUM_AMOUNT.getMessage());
         }
     }
 
