@@ -32,15 +32,15 @@ public class Cars {
     } // getPower
 
     public Cars judgeWinnerCars() {
-        descendingByPosition();
-        Car maxPositionCar = cars.getFirst();
+        Car maxPositionCar = findMaxPositionCar();
         cars.removeIf(car -> car.compareTo(maxPositionCar) != SAME_POSITION);
         return new Cars(cars);
     } // judgeWinnerCars
 
-    private void descendingByPosition() {
+    private Car findMaxPositionCar() {
         Collections.sort(cars);
-    } // sortCars
+        return cars.getFirst();
+    } // findMaxPositionCar
 
     public String getWinnersName() {
         StringBuilder winnersName = new StringBuilder();

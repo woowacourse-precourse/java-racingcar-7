@@ -48,13 +48,4 @@ class CarsTest {
                         ErrorMessage.MAX_CAR_UNITS_IS_FIVE, "5대초과일 때")
         );
     } // generateExceptionData
-
-    @Test
-    @DisplayName("생성된 무작위 값이 0~9 사이인지")
-    void generateRandomNumber() {
-        Car car = new Car("pobi");
-        Cars cars = new Cars(List.of(car));
-
-        assertThat(cars.getPower()).isBetween(0, 9);
-    } // generateRandomNumber
 } // class

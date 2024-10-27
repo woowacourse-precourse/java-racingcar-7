@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -35,4 +36,11 @@ class CarTest {
 
         assertThat(car).extracting("position").isEqualTo(expectedPosition);
     } // moveCar
+
+
+    @Test
+    @DisplayName("전진하는 경우 - 출력되는지")
+    void test() {
+
+    }
 } // class
