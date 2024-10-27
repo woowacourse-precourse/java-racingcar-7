@@ -1,7 +1,7 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
 import racingcar.message.OutputMessage;
-import racingcar.model.Car;
 
 import java.util.List;
 
