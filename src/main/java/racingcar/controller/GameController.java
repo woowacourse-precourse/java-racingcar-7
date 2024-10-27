@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
 import racingcar.model.Game;
 import racingcar.service.SplitService;
 import racingcar.valid.NumberValid;
@@ -23,18 +22,33 @@ public class GameController {
         }
         return instance;
     }
+    public void startGame(){
+        String names = promptName();
+        String count = promptCount();
+        validGameCount(count);
+        setGame(splitService.splitNames(names), count);
+        gameProgress();
+        gameResult();
+    }
 
-    public void gameInput(){
+    public String promptName(){
         OutputView.requestCarNames();
-        String names = InputView.inputCarsNames();
-        List<String> splitNames = splitService.splitNames(names);
+        return InputView.inputCarsNames();
+    }
+
+    public String promptCount(){
         OutputView.requestAttemptCount();
-        String times = InputView.inputGameTimes();
+        return InputView.inputGameTimes();
+    }
+
+    public void validGameCount(String times){
         NumberValid.checkNumberType(times);
         NumberValid.checkNumber(Integer.parseInt(times));
+    }
 
+    public void setGame(List<String> names, String times){
         game = new Game(Integer.parseInt(times));
-        for(String name: splitNames){
+        for(String name: names){
             game.addCar(name);
         }
     }
