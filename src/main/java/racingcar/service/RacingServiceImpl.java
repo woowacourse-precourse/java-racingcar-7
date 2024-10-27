@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.model.Car;
@@ -15,11 +16,22 @@ public class RacingServiceImpl implements RacingService {
     public RacingResponseDTO race(RacingRequestDTO racingRequestDTO) {
         RacingManager racingManager = initializeParticipants(racingRequestDTO.carNames());
         int moveCount = racingRequestDTO.moveCount();
+
+        List<RoundResultDTO> roundResultDTOs = performRaceMoves(racingManager, moveCount);
+
         return null;
     }
 
     private RacingManager initializeParticipants(List<String> carNames) {
         return RacingManager.createWithCars(carNames);
+    }
+
+    private List<RoundResultDTO> performRaceMoves(RacingManager racingManager, int moveCount) {
+        List<RoundResultDTO> roundResults = new ArrayList<>();
+        for (int i = 0; i < moveCount; i++) {
+            roundResults.add(executeMove(racingManager));
+        }
+        return roundResults;
     }
 
     private RoundResultDTO executeMove(RacingManager racingManager) {
