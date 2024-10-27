@@ -1,14 +1,8 @@
 package racingcar.model;
 
-import static racingcar.constant.ExceptionMessage.CAR_NAME_DELIMITER_ERROR;
-import static racingcar.constant.ExceptionMessage.CAR_NAME_EMPTY;
-import static racingcar.constant.ExceptionMessage.CAR_NAME_LENGTH_EXCEEDED;
-import static racingcar.constant.ExceptionMessage.CAR_NAME_NO_INPUT;
-import static racingcar.constant.ExceptionMessage.NOT_INTEGER;
-import static racingcar.constant.ExceptionMessage.NOT_POSITIVE;
-import static racingcar.constant.ExceptionMessage.WRONG_FORMAT;
-
 import java.util.List;
+
+import static racingcar.constant.ExceptionMessage.*;
 
 public class Validation {
     public void validCarNameDelimiter(String rawCarNames) {

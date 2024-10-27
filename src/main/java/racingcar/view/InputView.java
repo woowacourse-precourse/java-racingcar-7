@@ -1,8 +1,8 @@
 package racingcar.view;
 
-import static camp.nextstep.edu.missionutils.Console.*;
-
 import racingcar.model.Validation;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
     private final Validation validation;

@@ -12,7 +12,7 @@ public class StringParser {
 
     public List<String> findCarNames(String rawNames) {
         List<String> carNames = Arrays.stream(rawNames.split(","))
-                .map(String::trim).toList();
+            .map(String::trim).toList();
         validation.validateCarNameLength(carNames);
         validation.checkEmptyName(carNames);
         return carNames;

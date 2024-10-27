@@ -15,6 +15,4 @@ public class Car {
     public Integer getTotalMovement() {
         return totalMovement;
     }
-
-
 }

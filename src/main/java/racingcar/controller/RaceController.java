@@ -1,12 +1,13 @@
 package racingcar.controller;
 
-import java.util.List;
-import java.util.stream.IntStream;
 import racingcar.model.Car;
 import racingcar.model.CarService;
 import racingcar.model.StringParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class RaceController {
     private final StringParser stringParser;

@@ -1,9 +1,10 @@
 package racingcar.view;
 
-import java.util.List;
-import java.util.stream.IntStream;
 import racingcar.model.Car;
 import racingcar.model.Validation;
+
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class OutputView {
     private final Validation validation;
