@@ -4,7 +4,10 @@ public class MoveCountInput{
 
   private int moveCount;
 
-  public void setInput(int moveCount){
+  public MoveCountInput() {
+  }
+
+  public void setMoveCount(int moveCount){
     this.moveCount = moveCount;
   }
 

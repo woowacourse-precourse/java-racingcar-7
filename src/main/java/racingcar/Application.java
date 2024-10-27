@@ -6,7 +6,11 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.GameController.GameController;
 
 public class Application {
-public static void main(String[] args){}
+  public static void main(String[] args){
+    GameController gameController = new GameController();
+
+  }
 }

@@ -15,7 +15,7 @@ public class NameInput {
         .allMatch(name -> name.length() <= 5);
   }
 
-  private void setInput(String input){
+  public void setName(String input){
     this.name = input.split(",");
   }
 
@@ -23,6 +23,4 @@ public class NameInput {
   {
     return name;
   }
-
-
 }

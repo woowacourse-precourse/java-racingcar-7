@@ -16,8 +16,20 @@ public class Car implements Vehicle {
     this.move += 1;
   }
 
+
   @Override
   public void printStatus() {
-    System.out.printf("%s : %s" , this.name , "-".repeat(this.move));
+    System.out.printf("%s : %s\n" , this.name , "-".repeat(this.move));
   }
+
+  public int getMove()
+  {
+    return this.move;
+  }
+
+  public String getName()
+  {
+    return this.name;
+  }
+
 }
