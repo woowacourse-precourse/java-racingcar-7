@@ -14,17 +14,16 @@ public class OutputView {
         }
     }
 
-    public void printWinners(RacingCar winningCar) {
-        final List<String> allWinningCarName = winningCar.getAllRacingCarName();
-        String result = allWinningCarName.get(0);
+    public void printWinners(List<String> winningCars) {
+        String result = winningCars.get(0);
 
-        if (allWinningCarName.size() == 1) {
+        if (winningCars.size() == 1) {
             System.out.println("최종 우승자 : " + result);
             return;
         }
 
-        for (int i = 1; i < allWinningCarName.size(); i++) {
-            result += ", " + allWinningCarName.get(i);
+        for (int i = 1; i < winningCars.size(); i++) {
+            result += ", " + winningCars.get(i);
         }
         System.out.println("최종 우승자 : " + result);
     }
