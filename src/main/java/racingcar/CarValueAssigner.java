@@ -15,10 +15,11 @@ public class CarValueAssigner {
 
             car.setRandomValue(randomValue);// 자동차에 랜덤 값 할당
 
+
         }
 
-
     }
+
 
 
 }

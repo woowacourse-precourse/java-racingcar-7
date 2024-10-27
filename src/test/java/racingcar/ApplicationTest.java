@@ -84,6 +84,32 @@ class ApplicationTest extends NsTest {
             }
         }
 
+    }
+
+    @Test
+    public void updateScoreBasedOnComparisonTest() {
+
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("포르쉐", 4));
+        cars.add(new Car("페라리", 5));
+        cars.add(new Car("람보르기니", 3));
+
+        int raceCount = 3;
+        CarValueAssigner carValueAssigner = new CarValueAssigner();
+
+            for (Car car : cars) {
+                int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
+                if (randomValue >= 4 && randomValue <= 10) {
+                    int Score = car.getScore();
+                    car.setScore(Score +1);
+                }
+            }
+
+        assertEquals(1, cars.get(0).getScore());
+        assertEquals(1, cars.get(0).getScore());
+        assertEquals(0, cars.get(0).getScore());
+
+
 
     }
 
