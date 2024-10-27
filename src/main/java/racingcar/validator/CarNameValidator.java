@@ -64,5 +64,4 @@ public class CarNameValidator {
             throw new IllegalArgumentException("자동차의 이름은 빈 값일 수 없습니다.");
         }
     }
-
 }

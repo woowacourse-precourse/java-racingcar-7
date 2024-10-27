@@ -23,5 +23,4 @@ public class InputView {
         trialCountValidator.validateTrialCount(input);
         return input;
     }
-
 }
