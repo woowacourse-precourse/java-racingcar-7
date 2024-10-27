@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.domain.AttemptNumber;
 import racingcar.domain.GameBoard;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Game {
     public void run() {
@@ -22,7 +23,9 @@ public class Game {
 
     private void play(GameBoard gameBoard, AttemptNumber attemptNumber) {
         int tryCount = 0;
+        OutputView.printGameResultHeader();
         while(canPlay(tryCount, attemptNumber)) {
+            OutputView.printEachGameResult(gameBoard.makeCarPositions());
             tryCount++;
         }
     }
