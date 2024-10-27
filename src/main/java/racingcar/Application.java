@@ -25,6 +25,8 @@ public class Application {
             List<Car> cars = initializeCars(carNames);
             startRace(cars, tryCount);
 
+            // 우승자 출력
+            printWinners(cars);
 
         } catch (IllegalArgumentException e) {
             System.out.println("입력 오류: " + e.getMessage());
@@ -62,4 +64,15 @@ public class Application {
         }
     }
 
+    private static void printWinners(List<Car> cars) {
+        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getDistance() == maxDistance) {
+                winners.add(car.getName());
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }
