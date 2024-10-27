@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Race;
@@ -12,19 +13,23 @@ public class RacingCarService {
 
     public String raceStart(Race race) {
 
-        StringBuilder raceResult = new StringBuilder();
+        StringBuilder roundResult = new StringBuilder();
 
         Integer round = race.getRound();
         List<Car> cars = race.getCars();
 
         for (int i = 0; i < round; i++) {
-            raceResult.append(moveCars(cars));
+            roundResult.append(moveCars(cars));
+            if (i != round - 1) {
+                roundResult.append("\n");
+            }
         }
 
-        return raceResult.toString();
+        return roundResult.toString();
     }
 
     public String moveCars(List<Car> cars) {
+
         StringBuilder roundResult = new StringBuilder();
 
         for (Car car : cars) {
@@ -35,6 +40,32 @@ public class RacingCarService {
         }
 
         return roundResult.toString();
+    }
+
+    public String findWinner(Race race) {
+
+        List<Car> cars = race.getCars();
+        int maxPosition = getMaxPosition(cars);
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        return String.join(", ", winners);
+    }
+
+    public Integer getMaxPosition(List<Car> cars) {
+
+        int maxPosition = 0;
+
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+
+        return maxPosition;
     }
 
     public Boolean isMove() {

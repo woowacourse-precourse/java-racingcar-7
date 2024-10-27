@@ -26,7 +26,12 @@ public class RacingCarController {
         String roundInput = racingCarView.inputRound();
         validator.validateRound(roundInput);
 
-        racingCarService.raceStart(setUpGame(carInput, roundInput));
+        Race race = setUpGame(carInput, roundInput);
+
+        // TODO 결과 출력 view로 이동
+        String roundResult = racingCarService.raceStart(race);
+        String raceResult = racingCarService.findWinner(race);
+        printResult(roundResult, raceResult);
     }
 
     private Race setUpGame(String carInput, String roundInput) {
@@ -41,7 +46,9 @@ public class RacingCarController {
         return new Race(cars, round);
     }
 
-    public void printResult() {
+    private void printResult(String roundResult, String raceResult) {
         System.out.println("실행 결과");
+        System.out.println(roundResult);
+        System.out.println("최종 우승자 : " + raceResult);
     }
 }
