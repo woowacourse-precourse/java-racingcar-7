@@ -5,7 +5,6 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.service.CarService;
 import racingcar.service.RacingCarService;
-import racingcar.util.CarNameValidator;
 import racingcar.util.RacingCarInput;
 import racingcar.util.RacingCarOutput;
 
@@ -20,17 +19,10 @@ public class RacingGame {
 
         // 입력
         String[] cars = racingCarInput.inputCarNames();
-        if (cars.length == 0) {
-            throw new IllegalArgumentException("자동차 이름이 없습니다.");
-        }
         int tryCount = racingCarInput.inputTryCount();
 
         // 등록
         for (String car : cars) {
-            // Todo: 검증을 Validator 안에서 하는게 좋은지
-            if (CarNameValidator.isValid(car)) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
-            }
             carService.register(new Car(car));
         }
 
