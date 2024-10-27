@@ -34,13 +34,15 @@
  ├── 📂 domain
  │     ├── 📂 car
  │     │     ├── Car
- │     │     └── MoveStrategy
+ │     │     ├── MoveStrategy
+ │     │     └── RandomMoveStrategy
  │     └── 📂 race
  │           ├── Race
  │           └── RaceResult
  ├── 📂 error
  │     └── ErrorMessage
  ├── 📂 util
+ │     ├── Parser
  │     └── Validator
  ├── 📂 view
  │     ├── InputView
