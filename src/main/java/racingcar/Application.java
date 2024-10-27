@@ -19,17 +19,7 @@ public class Application {
 
         runRace(racingCarNames, tryCount, carPositions);
 
-        int maxPosition = Collections.max(carPositions.values());
-        List<String> winners = new ArrayList<>();
-
-        for (String car : racingCarNames) {
-            if (carPositions.get(car) == maxPosition) {
-                winners.add(car);
-            }
-        }
-
-        System.out.print("최종 우승자 : ");
-        System.out.println(String.join(", ", winners));
+        declareWinners(carPositions);
     }
 
     private static List<String> getRacingCarNames() {
@@ -106,5 +96,23 @@ public class Application {
             System.out.println();
         }
         System.out.println();
+    }
+
+    private static void declareWinners(Map<String, Integer> carPositions) {
+        int maxPosition = Collections.max(carPositions.values());
+        List<String> winners = getWinners(carPositions, maxPosition);
+
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(", ", winners));
+    }
+
+    private static List<String> getWinners(Map<String, Integer> carPositions, int maxPosition) {
+        List<String> winners = new ArrayList<>();
+        for (String car : carPositions.keySet()) {
+            if (carPositions.get(car) == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
     }
 }
