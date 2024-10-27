@@ -15,10 +15,8 @@ public class ApplicationController {
 
     public void run(){
         List<String> carNames = viewInput.receiveCarNames();
+        int winStandardNumber = viewInput.receiverNumberOfWin();
 
-        for(String carName : carNames) {
-            System.out.println(carName.trim());
-        }
 
     }
 
