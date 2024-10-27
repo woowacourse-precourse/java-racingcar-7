@@ -19,14 +19,17 @@ public class RacingService {
     }
 
     public RaceResultDTO runAllRaces(RaceRequestDTO raceRequestDTO) {
-        List<String> names = raceRequestDTO.getNames();
-        Race race = new Race(carFactory.getCarList(names));
-        List<Race> races = new ArrayList<>(List.of(race));
+        List<String> carNames = raceRequestDTO.getNames();
+        long raceTimes = raceRequestDTO.getTimes();
+        List<Race> races = new ArrayList<>();
 
-        for (long l = 0; l < raceRequestDTO.getTimes(); l++) {
-            races.add(raceEngine.performRace(races.getLast()));
+        Race race = new Race(carFactory.getCarList(carNames));
+        for (long l = 0; l < raceTimes; l++) {
+            race = raceEngine.performRace(race);
+            races.add(race);
         }
+
         RaceResult raceResult = new RaceResult(races);
-        return new RaceResultDTO(raceResult.getRaces(), raceResult.getRaceWinnerList());
+        return new RaceResultDTO(raceResult);
     }
 }
