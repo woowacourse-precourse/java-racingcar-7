@@ -5,13 +5,28 @@ public class Application {
     public static void main(String[] args) {
         String carNames = getCarNames();
         int count = getCount();
+
+
     }
 
     private static int getCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String tryCountInputValue = Console.readLine();
-        //입력값 검증
-        //return count;
+        String CountInputValue = Console.readLine();
+        int count = validateCountInputValue(CountInputValue);
+        return count;
+    }
+
+    //count 숫자 검증 메서드
+    private static int validateCountInputValue(String CountInputValue) {
+        try {
+            int count = Integer.parseInt(CountInputValue);
+            if (count <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상이여야 합니다.");
+            }
+            return count;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 문자열이 아닌 숫자여야 합니다.");
+        }
     }
 
     private static String getCarNames() {
