@@ -1,6 +1,6 @@
 package racingcar.exception;
 
-import racingcar.constant.MessageConstants;
+import racingcar.common.constant.MessageConstants;
 
 public class InvalidCarNameException extends IllegalArgumentException {
     public InvalidCarNameException() {

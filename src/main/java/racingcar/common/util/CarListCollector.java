@@ -1,4 +1,4 @@
-package racingcar.collector;
+package racingcar.common.util;
 
 import java.util.stream.Collector;
 import racingcar.model.CarList;

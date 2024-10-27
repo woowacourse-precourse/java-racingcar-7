@@ -1,7 +1,7 @@
-package racingcar.config;
+package racingcar.common.config;
 
 import racingcar.controller.RaceController;
-import racingcar.executor.RaceExecutor;
+import racingcar.filter.executor.RaceExecutor;
 import racingcar.filter.CarListParsingFilter;
 import racingcar.filter.RaceExecutionFilter;
 import racingcar.filter.RaceFilterChain;

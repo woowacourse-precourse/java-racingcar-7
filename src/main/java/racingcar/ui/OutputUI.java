@@ -1,6 +1,6 @@
-package racingcar.view;
+package racingcar.ui;
 
-public class OutputView {
+public class OutputUI {
 
     /**
      * 우승자 목록을 출력합니다.

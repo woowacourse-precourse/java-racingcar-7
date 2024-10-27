@@ -1,4 +1,4 @@
-package racingcar.executor;
+package racingcar.filter.executor;
 
 import racingcar.model.CarList;
 
