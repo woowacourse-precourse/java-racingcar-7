@@ -13,6 +13,14 @@ public class GameConfig {
     }
 
     public Game racingCarGame() {
-        return new RacingCarGame(new ApplicationConsoleView());
+        return new RacingCarGame(applicationView(), converter());
+    }
+
+    private ApplicationView applicationView() {
+        return new ApplicationConsoleView();
+    }
+
+    private Converter<RacingCar> converter() {
+        return new RacingCarConverter();
     }
 }
