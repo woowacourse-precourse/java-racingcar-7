@@ -1,2 +1,7 @@
-package racingcar.Vehicle;public interface Vehicle {
+package racingcar.Vehicle;
+
+public interface Vehicle {
+  void updateMove();
+  void printStatus();
+
 }
