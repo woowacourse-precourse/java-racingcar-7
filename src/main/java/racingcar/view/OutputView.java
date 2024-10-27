@@ -15,10 +15,14 @@ public class OutputView {
 
     public void printCurrentPosition(List<Car> cars) {
         cars.forEach(car -> {
-            String output = car.getName() + POSITION_MESSAGE_DELIMITER.repeat(car.getPosition());
+            String output = getCurrentPosition(car);
             System.out.println(output);
         });
         System.out.println();
+    }
+
+    private String getCurrentPosition(Car car) {
+        return car.getName() + " : " + POSITION_MESSAGE_DELIMITER.repeat(car.getPosition());
     }
 
     public void printWinners(List<String> winners) {
