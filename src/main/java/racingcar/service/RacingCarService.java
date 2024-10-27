@@ -24,7 +24,7 @@ public class RacingCarService {
     }
 
     public void play(OutputView outputView) {
-        NumberOfAttemptsDTO numberOfAttemptsDTO = numberOfAttempts.getNumberOfAttempts();
+        NumberOfAttemptsDTO numberOfAttemptsDTO = numberOfAttempts.getNumberOfAttemptsDTO();
         int number = numberOfAttemptsDTO.getNumber();
         for (int i = 0; i < number; i++) {
             racingCars.move();

@@ -10,6 +10,7 @@
 package racingcar.domain;
 
 import racingcar.dto.CarDTO;
+import racingcar.service.RandomNumber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class RacingCars {
     private final RandomNumber randomNumber;
     private final List<Car> carList;
 
-    public RacingCars(String readLine) {
+    public RacingCars(String readLine) {//todo 이름 중복
         List<Car> tmpList = new ArrayList<>();
         String[] nameArray = readLine.split(",");
         for (String name : nameArray) {
@@ -57,15 +58,8 @@ public class RacingCars {
     }
 
     public String getWinners() {
-        StringBuilder stringBuilder = new StringBuilder();
         List<String> winnerList = getWinnerList();
-        String comma = ", ";
-        for (String winner : winnerList) {
-            stringBuilder.append(winner);
-            stringBuilder.append(comma);
-        }
-        stringBuilder.delete(stringBuilder.length() - comma.length(), stringBuilder.length());
-        return stringBuilder.toString();
+        return String.join(", ", winnerList);
     }
 
     private List<String> getWinnerList() {

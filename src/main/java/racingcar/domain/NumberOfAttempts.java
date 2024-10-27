@@ -40,7 +40,7 @@ public class NumberOfAttempts {
         }
     }
 
-    public NumberOfAttemptsDTO getNumberOfAttempts() {
+    public NumberOfAttemptsDTO getNumberOfAttemptsDTO() {
         return new NumberOfAttemptsDTO(numberOfAttempts);
     }
 

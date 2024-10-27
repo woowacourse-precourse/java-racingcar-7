@@ -28,7 +28,7 @@ class NumberOfAttemptsTest {
         String testString1 = "1";
         NumberOfAttempts numberOfAttempts = new NumberOfAttempts(testString1);
         //when
-        NumberOfAttemptsDTO numberOfAttemptsDTO = numberOfAttempts.getNumberOfAttempts();
+        NumberOfAttemptsDTO numberOfAttemptsDTO = numberOfAttempts.getNumberOfAttemptsDTO();
         int number = numberOfAttemptsDTO.getNumber();
         //then
         assertEquals(number, 1);

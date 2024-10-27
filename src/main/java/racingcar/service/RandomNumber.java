@@ -7,7 +7,7 @@
  *
  * 저작권 주의
  */
-package racingcar.domain;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
