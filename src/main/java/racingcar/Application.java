@@ -7,7 +7,8 @@ public class Application {
 
         System.out.println();
 
-        racingGame game = new racingGame();
+        ConditionConfig condConfig = new ConditionConfig(0, 9, 4);
+        racingGame game = new racingGame(condConfig);
         game.run(inputResult);
     }
 }
