@@ -44,6 +44,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // 5글자 초과 오류 테스트
     @Test
     void 예외_테스트1() {
         assertSimpleTest(() ->
@@ -51,6 +52,17 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    //시행 횟수 문자 오류 테스트
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("AAAA,BBB", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
 
     @Override
     public void runMain() {
