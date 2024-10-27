@@ -21,7 +21,10 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
         if (existingNames.contains(name)) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다. ");
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
+        if (name.contains(" ")) {
+            throw new IllegalArgumentException("자동차 이름에는 공백이 포함될 수 없습니다.");
         }
     }
 
