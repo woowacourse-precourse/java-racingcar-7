@@ -69,18 +69,18 @@ public class Game {
         //TODO: 최종 결과
         //map 안의 value 체크
         //value가 제일 높은거 저장, 출력
-        List<String> winners=new ArrayList<>();
+        Set<String> winners=new HashSet<>();
         playerScoreBoard.forEach((player,score)->{
             int maxScore=0;
+            //최고점 동일
+            if(score==maxScore){
+                winners.add(player);
+            }
             //최고점 갱신
             if(score>maxScore){
                 winners.clear();
                 winners.add(player);
                 maxScore=score;
-            }
-            //최고점 동일
-            if(score==maxScore){
-                winners.add(player);
             }
         });
 
