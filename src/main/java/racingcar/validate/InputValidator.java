@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class InputValidator {
     private static final Pattern ALPHABET_AND_COMMA_REGEX = Pattern.compile("[a-zA-Z,]+");
     private static final Pattern CONTINUOUS_COMMA_REGEX = Pattern.compile(",{2,}");
-    private static final Pattern ONLY_NUMBER_REGEX = Pattern.compile("[0-9]");
+    private static final Pattern ONLY_NUMBER_REGEX = Pattern.compile("[0-9]+");
 
     public void noNull(final String inputCarNames) {
         if (inputCarNames == null) {
