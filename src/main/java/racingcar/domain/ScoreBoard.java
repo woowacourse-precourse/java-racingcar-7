@@ -1,9 +1,8 @@
 package racingcar.domain;
 
-import static racingcar.View.constant.OutputMessage.FINAL_WINNER;
-
 import java.util.Comparator;
 import java.util.List;
+import racingcar.dto.FinalResultDto;
 import racingcar.dto.RoundResultDto;
 
 public class ScoreBoard {
@@ -24,15 +23,10 @@ public class ScoreBoard {
                 .toList();
     }
 
-    public String returnFinalResult() {
+    public FinalResultDto returnFinalResult() {
         int topScore = getTopScore();
         List<String> winnerList = getWinner(topScore);
-        return createFinalForm(winnerList);
-    }
-
-    private String createFinalForm(List<String> winnerList) {
-        String finalWinner = String.join(", ", winnerList);
-        return FINAL_WINNER.getMessage() + finalWinner;
+        return FinalResultDto.from(winnerList);
     }
 
     private List<String> getWinner(int bestScore) {
