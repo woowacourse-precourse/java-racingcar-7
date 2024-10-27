@@ -13,7 +13,7 @@ public class InputView {
         return Arrays.stream(input.split(",")).map(String::trim).map(Car::new).collect(Collectors.toList());
     }
 
-    public static int getAttemps() {
+    public static int getAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Integer.parseInt(Console.readLine());
     }
