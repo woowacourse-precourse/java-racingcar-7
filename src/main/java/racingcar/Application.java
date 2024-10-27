@@ -7,5 +7,9 @@ public class Application {
 
         String[] racingCars = userInput.racingCarNameInput();
         Integer raceCount = userInput.raceCountInput();
+
+        Race race = new Race(racingCars, raceCount);
+
+        race.race();
     }
 }
