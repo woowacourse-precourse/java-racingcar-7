@@ -21,17 +21,11 @@ public class RoundController {
             Car car = new Car(carName);
             car.move(roundNumber);
         }
+
+        judge.judgeMaxLength(Car.getCarList());
         judge.judgeWinner(Car.getCarList());
 
         outputView.outputWinnerList(Judge.getWinnerList());
     }
 
-    public static void main(String[] args) {
-        InputView inputView1 = new InputView();
-        OutputView outputView1 = new OutputView();
-
-        RoundController controller = new RoundController(inputView1, outputView1);
-        controller.gameStart();
-
-    }
 }
