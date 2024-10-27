@@ -47,7 +47,7 @@ public class Cars {
         return createWinners(maxAdvanceNum);
     }
 
-    private int getMaxAdvanceNum() {
+    public int getMaxAdvanceNum() {
         return cars.stream()
                 .mapToInt(Car::getAdvanceNum)
                 .max()

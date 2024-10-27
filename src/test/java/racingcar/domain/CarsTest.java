@@ -23,4 +23,33 @@ public class CarsTest {
             new IntegerAssert(cars.getCar(i).getAdvanceNum()).isBetween(0, moveNumber);
         }
     }
+
+    @DisplayName("n번 이동한 후 자동차의 최대 이동 횟수는 0이상 n이하 여야 한다")
+    @Test
+    void validateMaxAdvanceNumber() {
+        // given
+        int moveNumber = 234;
+
+        // when
+        cars.racing(moveNumber);
+        int maxAdvanceNum = cars.getMaxAdvanceNum();
+
+        // then
+        new IntegerAssert(maxAdvanceNum).isBetween(0, moveNumber);
+    }
+
+    @DisplayName("우승자는 한명 이상이어야 한다.")
+    @Test
+    void validateWinners() {
+        // given
+        int moveNumber = 63;
+
+        // when
+        cars.racing(moveNumber);
+        Winners winners = cars.determineWinner();
+        int winnersNum = winners.getWinnersCount();
+
+        // then
+        new IntegerAssert(winnersNum).isGreaterThan(0);
+    }
 }

@@ -15,4 +15,8 @@ public class Winners {
                 .map(Car::getName)
                 .collect(Collectors.joining(","));
     }
+
+    public int getWinnersCount() {
+        return winners.size();
+    }
 }
