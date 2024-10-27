@@ -7,16 +7,26 @@ import racingcar.config.GameConfig;
 
 public class Validator {
     private Validator() {
-        // 인스턴스화 방지
     }
 
-    private static void validateCarNameFormat(String name) {
+    private static void validateCarNameWhitespace(String name) {
         if (name.startsWith(" ") || name.endsWith(" ")) {
             throw new IllegalArgumentException(ValidationError.CAR_NAME_NOT_CONTAINS_SPACE.getMessage());
         }
     }
 
-    public static void validateCarName(String name) {
+    private static void validateCarNamesInputFormat(String input) {
+        if (input.trim().isEmpty()) {
+            throw new IllegalArgumentException(ValidationError.CAR_NAME_NOT_EMPTY.getMessage());
+        }
+
+        String[] splitNames = input.split(",");
+        for (String name : splitNames) {
+            validateCarNameWhitespace(name);
+        }
+    }
+
+    public static void validateCarNameLengthAndEmpty(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException(ValidationError.CAR_NAME_NOT_EMPTY.getMessage());
         }
@@ -26,19 +36,7 @@ public class Validator {
         }
     }
 
-    private static void validateCarNamesFormat(String input) {
-        if (input.trim().isEmpty()) {
-            throw new IllegalArgumentException(ValidationError.CAR_NAME_NOT_EMPTY.getMessage());
-        }
-
-        String[] splitNames = input.split(",");
-        for (String name : splitNames) {
-            validateCarNameFormat(name);
-        }
-    }
-
     public static void validateCarNames(List<String> carNames, String input) {
-        // 자동차가 한 대일 때 쉼표 검증
         if (carNames.size() == 1 && input.contains(",")) {
             throw new IllegalArgumentException(ValidationError.SINGLE_CAR_WITH_COMMA.getMessage());
         }
@@ -49,9 +47,9 @@ public class Validator {
         }
 
         for (String name : carNames) {
-            validateCarName(name);
+            validateCarNameLengthAndEmpty(name);
         }
-        validateCarNamesFormat(input);
+        validateCarNamesInputFormat(input);
     }
 
     public static void validateTrialNumber(String trialNumber) {
