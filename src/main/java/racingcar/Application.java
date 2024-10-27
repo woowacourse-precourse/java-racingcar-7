@@ -1,13 +1,13 @@
 package racingcar;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         // scanner
-        List<String> carNames = Input.inputCarNames();
-        int round = Input.inputRound();
+        Input input = new Input();
+        List<String> carNames = input.inputCarNames();
+        int round = input.inputRound();
 
         RacingGame racingGame = new RacingGame(carNames);
 
