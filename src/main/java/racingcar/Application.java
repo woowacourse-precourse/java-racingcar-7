@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,5 +26,36 @@ public class Application {
 
             cars.put(carName, 0);
         }
+    }
+
+    public static final String MOVE_SYMBOL = "-";
+
+    public static int race(final int round, HashMap<String, Integer> cars) {
+        if (round == 0) {
+            return 0;
+        }
+
+        boolean movedCarFound = false;
+
+        for (String car : cars.keySet()) {
+            int distance = cars.get(car);
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+
+            if (randomNumber >= 4) {
+                distance++;
+                cars.put(car, distance);
+                movedCarFound = true;
+            }
+
+            if (movedCarFound == false) {
+                return race(round, cars);
+            }
+
+            System.out.println(java.lang.String.join(" : ", car, MOVE_SYMBOL.repeat(cars.get(car))));
+        }
+
+        System.out.println();
+
+        return race(round - 1, cars);
     }
 }
