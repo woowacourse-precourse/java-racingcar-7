@@ -5,10 +5,9 @@ public class Car {
     private int position;
 
     public Car(String name, int position) {
-        if (name != null) {
-            this.name = name.trim();
-        }
+        this.name = name;
         this.position = position;
+
         validate();
     }
 
