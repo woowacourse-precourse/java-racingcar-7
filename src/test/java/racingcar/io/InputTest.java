@@ -48,6 +48,14 @@ public class InputTest extends NsTest {
         );
     }
 
+    @Test
+    void 이름이중복되는경우(){
+        assertSimpleTest(()->
+                assertThatThrownBy(() -> runException("pobi,pobi","3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
