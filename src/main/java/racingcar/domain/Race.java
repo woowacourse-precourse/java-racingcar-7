@@ -38,8 +38,7 @@ public class Race {
 
     private void playOneRound(List<Car> cars) {
         for (Car car : cars) {
-            int randomNumber = RandomNumber.generateRandomNumber();
-            if (RandomNumber.isMoreFour(randomNumber)) {
+            if (canMove()) {
                 car.move();
             }
         }
@@ -55,5 +54,10 @@ public class Race {
         if (tryCount < VALIDATE_NEGATIVE_NUMBER) {
             throw new IllegalArgumentException("시도할 횟수는 0 이상이어야 합니다.");
         }
+    }
+
+    private boolean canMove() {
+        int randomNumber = RandomNumber.generateRandomNumber();
+        return RandomNumber.isMoreFour(randomNumber);
     }
 }
