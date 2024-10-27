@@ -24,7 +24,7 @@ public class RacingGame {
 
         cars = splitCars(inputCars);
         playRounds(inputRounds);
-//        printWinners();
+        printWinners();
     }
 
     private List<Car> splitCars(String input) {
@@ -49,24 +49,24 @@ public class RacingGame {
         }
     }
 
-    private void printCarPosition() {
+    public void printCarPosition() {
         for (Car car : cars) {
-            System.out.println(car.getName() + ": " + "-".repeat(car.getPosition()));
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println();
     }
-//
-//    private void printWinners() {
-//        int maxPosition = cars.stream()
-//                .mapToInt(Car::getPosition)
-//                .max()
-//                .orElse(0);
-//
-//        List<String> winners = cars.stream()
-//                .filter(car -> car.getPosition() == maxPosition)
-//                .map(Car::getName)
-//                .collect(Collectors.toList());
-//
-//        System.out.println("최종 우승자: " + String.join(", ", winners));
-//    }
+
+    private void printWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }

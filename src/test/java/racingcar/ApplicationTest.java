@@ -25,30 +25,28 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    //이름이 5자 넘어가면 예외 발
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1자 이상 5자 이하로 입력해야 합니다.")
         );
     }
 
     @Test
-    void 이름에_공백이_포함된_경우_예외_테스트() {
+    void 이름에_공백이_포함되면_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> GameValidator.validateCarName("po bi"))
+                assertThatThrownBy(() -> runException("po bi", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("자동차 이름에 공백이 포함될 수 없습니다.")
         );
     }
 
-    @Test
-    void 이름이_5글자_초과하는_경우_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> GameValidator.validateCarName("javajava"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("1자 이상 5자 이하로 입력해야 합니다.")
-        );
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 
     @Test
@@ -59,11 +57,6 @@ class ApplicationTest extends NsTest {
         car.move(5);
 
         assertThat(car.getPosition()).isEqualTo(2);
-    }
-
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
     }
 
     @Test
