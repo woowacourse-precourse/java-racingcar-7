@@ -3,9 +3,9 @@ package racingcar.domain;
 import static racingcar.validation.ErrorMessage.NOT_PERMIT_SAME_CAR;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class CarManager {
 
@@ -21,10 +21,9 @@ public class CarManager {
     }
 
     private void verifyDuplicateCar(List<Car> cars) {
-        Set<String> carNames = new HashSet<>();
-        for (Car car : cars) {
-            carNames.add(car.getName());
-        }
+        Set<String> carNames = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toSet());
         if (cars.size() != carNames.size()) {
             throw new IllegalArgumentException(NOT_PERMIT_SAME_CAR.getMessage());
         }

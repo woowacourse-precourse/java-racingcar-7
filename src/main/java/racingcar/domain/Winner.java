@@ -17,13 +17,10 @@ public class Winner {
     }
 
     private int findMaxMovedDistance(List<Car> cars) {
-        int maxMovedDistance = BASIC_DISTANCE;
-        for (Car car : cars) {
-            if (car.getMovedDistance() > maxMovedDistance) {
-                maxMovedDistance = car.getMovedDistance();
-            }
-        }
-        return maxMovedDistance;
+        return cars.stream()
+                .mapToInt(Car::getMovedDistance)
+                .max()
+                .orElse(BASIC_DISTANCE);
     }
 
 }

@@ -15,9 +15,7 @@ public class OutputView {
     }
 
     public void printRacingResult(List<Car> cars) {
-        for (Car car : cars) {
-            printCarInfo(car.getName(), car.getMovedDistance());
-        }
+        cars.forEach(car -> printCarInfo(car.getName(), car.getMovedDistance()));
         printEmptyLine();
     }
 
@@ -50,8 +48,6 @@ public class OutputView {
     }
 
     private void convertDistanceToHyphen(int movedDistance) {
-        for (int i = 0; i < movedDistance; i++) {
-            System.out.print(HYPHEN);
-        }
+        System.out.println(HYPHEN.repeat(movedDistance));
     }
 }

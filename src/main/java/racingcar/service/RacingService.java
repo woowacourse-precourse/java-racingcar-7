@@ -2,6 +2,7 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.CarCreator;
 import racingcar.domain.CarManager;
@@ -39,10 +40,9 @@ public class RacingService {
     }
 
     private List<Car> onceRacing(List<Car> cars) {
-        for (Car car : cars) {
-            car.move(randomNumber.generate());
-        }
-        return new ArrayList<>(cars);
+        return cars.stream()
+                .peek(car -> car.move(randomNumber.generate()))
+                .collect(Collectors.toList());
     }
 
     public String getWinners() {
