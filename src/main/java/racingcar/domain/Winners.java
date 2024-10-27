@@ -16,7 +16,4 @@ public class Winners {
                 .collect(Collectors.joining(","));
     }
 
-    public int getWinnersCount() {
-        return winners.size();
-    }
 }
