@@ -17,6 +17,7 @@ public class CarHandler {
     public void createCar(String input) {
         String[] carNames = input.split(COMMA);
         for (String car : carNames) {
+            car = car.trim();
             validation.isInvalidInput(car);
             validation.isInvalidNameLength(car);
             this.cars.add(new Car(car));
