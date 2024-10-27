@@ -2,10 +2,13 @@ package racingcar.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.model.Car;
+import racingcar.model.Game;
 import racingcar.view.GameView;
 
 public final class GameController {
     private final GameView gameView;
+    private Game game;
 
     public GameController(GameView gameView) {
         this.gameView = gameView;
@@ -18,6 +21,13 @@ public final class GameController {
 
         // 입력값 정수인지 validate하기
         int totalRound = Integer.parseInt(gameView.getTotalRoundInput());
+
+        game = new Game(totalRound);
+        for (String carName : carNameList) {
+            game.addCar(new Car(carName));
+        }
+
+        
     }
 
     private List<String> parseCarNames(String carNamesInput) {
