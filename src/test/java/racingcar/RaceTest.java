@@ -20,16 +20,15 @@ public class RaceTest {
     @Test
     @DisplayName("자동차 객체 생성 테스트")
     public void testSetup() {
-        List<Car> expectedCars = new ArrayList<>();
-        expectedCars.add(new Car("test1"));
-        expectedCars.add(new Car("test2"));
-        expectedCars.add(new Car("test3"));
+        List<Car> expected = new ArrayList<>();
+        expected.add(new Car("test1"));
+        expected.add(new Car("test2"));
+        expected.add(new Car("test3"));
 
-        // setup 메소드 실행
         race.setup("test1,test2,test3");
 
         assertThat(race.getCarList())
                 .usingElementComparatorOnFields("name")
-                .containsExactlyElementsOf(expectedCars);
+                .containsExactlyElementsOf(expected);
     }
 }
