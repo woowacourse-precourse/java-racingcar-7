@@ -15,19 +15,75 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 한_대_이하의_이름_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름_5자초과() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abcdef,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름중복() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름_빈값으로_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 횟수입력_1미만_숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java,rob","0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 횟수입력_1미만_숫자2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java,rob","-2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 횟수입력_숫자외의_문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java,rob","a"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
