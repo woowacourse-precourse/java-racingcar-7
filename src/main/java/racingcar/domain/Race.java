@@ -39,7 +39,7 @@ public class Race {
         return result.toString();
     }
 
-    private void extractPosition(StringBuilder result) {
+    private void extractPosition(final StringBuilder result) {
         for (Car car : cars) {
             car.move();
             result.append(car.displayPosition());

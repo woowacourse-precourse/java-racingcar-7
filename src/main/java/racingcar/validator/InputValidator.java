@@ -22,7 +22,7 @@ public class InputValidator {
         }
     }
 
-    private static boolean isDuplicated(List<String> names) {
+    private static boolean isDuplicated(final List<String> names) {
         return names.size() != names.stream()
                 .distinct()
                 .count();

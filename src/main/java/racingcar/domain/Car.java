@@ -12,7 +12,7 @@ public class Car {
     private final String name;
     private Integer position;
 
-    private Car(final String name, int position) {
+    private Car(final String name, final int position) {
         this.name = name;
         this.position = position;
     }
