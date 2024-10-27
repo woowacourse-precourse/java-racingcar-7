@@ -15,7 +15,6 @@ public class CarNameSplitter {
     public List<String> splitCarNames(String input) {
         InputValidator inputValidator = new InputValidator();
         inputValidator.inputValidate(input);
-        List<String> carNames = new ArrayList<>(Arrays.asList(input.split(",")));
-        return carNames;
+        return new ArrayList<String>(Arrays.asList(input.split(",")));
     }
 }
