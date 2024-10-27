@@ -11,8 +11,8 @@ public class Input {
         return Console.readLine();
     }
 
-    public int inputTryCount() {
+    public String inputTryCount() {
         System.out.println(INPUT_TRY_COUNT);
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 }
