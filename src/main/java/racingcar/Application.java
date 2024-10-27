@@ -32,6 +32,14 @@ public class Application {
         String inputGameCount = Console.readLine();
         int gameCount = convertStrToInt(inputGameCount);
 
+        Cars cars = new Cars(carNames);
+
+        for (int i = 0; i < gameCount; i++) {
+            for (Car car : cars.getCars()) {
+                int randomNumber = RandomIntCreate();
+                car.move(randomNumber);
+            }
+        }
     }
 
     public static List<String> splitCarNames(String inputCarNames){
