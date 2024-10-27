@@ -32,4 +32,7 @@ public class CarManager {
         return remainingAttempts;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
 }
