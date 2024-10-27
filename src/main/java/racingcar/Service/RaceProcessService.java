@@ -1,6 +1,7 @@
 package racingcar.Service;
 
 import racingcar.Controller.RaceViewController;
+import racingcar.DTO.RaceFinalWinnerDTO;
 import racingcar.DTO.RaceInfoDTO;
 import racingcar.DTO.RaceResultDTO;
 import racingcar.Domain.CarInfo;
@@ -36,6 +37,8 @@ public class RaceProcessService {
     }
 
     public void startRace() {
+        RaceResultDTO raceResultDTO = new RaceResultDTO(carInfo.exportCarList());
+
         raceViewController.printRaceResult();
 
         while (trialCount > 0) {
@@ -44,8 +47,17 @@ public class RaceProcessService {
                 carInfo.moveForward(carName, number);
             }
             trialCount--;
-            RaceResultDTO raceResultDTO = new RaceResultDTO(carInfo.exportCarList());
+            raceResultDTO.updateResults(carInfo.exportCarList());
             raceViewController.gatherRaceResult(raceResultDTO);
         }
+
+        endRace(raceResultDTO);
+    }
+
+    public void endRace(RaceResultDTO raceResultDTO) {
+        raceResultEvaluator.evaluateFinalWinners(raceResultDTO);
+        RaceFinalWinnerDTO raceFinalWinnerDTO = new RaceFinalWinnerDTO(raceResultEvaluator.getWinners());
+
+        raceViewController.printFinalWinners(raceFinalWinnerDTO);
     }
 }
