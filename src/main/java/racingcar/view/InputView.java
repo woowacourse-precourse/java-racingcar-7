@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class InputView {
 
-    private static final Pattern VALID_CAR_INPUT_PATTERN = Pattern.compile("[a-zA-Z]{1,4}(,[a-zA-z]{1,4})*");
+    private static final Pattern VALID_CAR_INPUT_PATTERN = Pattern.compile("[a-zA-Z]{1,5}(,[a-zA-z]{1,5})*");
     private static final Pattern VALID_MOVE_COUNT_INPUT_PATTERN = Pattern.compile("^(0|[1-9][0-9]*)$");
 
     public static String readLine() {
