@@ -9,17 +9,19 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class CarTest {
+    private final static int CAR_POSITION_MIN = 0;
+
     @MethodSource("testData")
     @ParameterizedTest
     void 차_생성_성공(String input, String output) {
-        Car car = new Car(input, 0);
+        Car car = new Car(input, CAR_POSITION_MIN);
         assertThat(car.getName()).isEqualTo(output);
     }
 
     @MethodSource("errorTestData")
     @ParameterizedTest
     void 차_생성_실패(String input, Exception e) {
-        assertThatThrownBy(() -> new Car(input, 0)).isInstanceOf(e.getClass());
+        assertThatThrownBy(() -> new Car(input, CAR_POSITION_MIN)).isInstanceOf(e.getClass());
     }
 
     static Stream<Arguments> testData() {
