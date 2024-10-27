@@ -9,10 +9,12 @@ public class RacingGame {
     private final AttemptCountParser attemptCountParser;
     private int attemptCount;
 
+
     public RacingGame(CarNameParser carNameParser, AttemptCountParser attemptCountParser){
         this.carNameParser = carNameParser;
         this.attemptCountParser = attemptCountParser;
     }
+
 
     /**
      * 사용자가 시도할 횟수를 입력받는 메서드
@@ -24,7 +26,7 @@ public class RacingGame {
     /**
      * 입력받은 자동차 이름 리스트를 반환하는 메서드
      * */
-    public List<String> validatedCarName(){
+    public List<String> getValidatedCarNames(){
         String input = carNameParser.inputCarNames();
         String[] splitCarName = carNameParser.splitCarNamesByComma(input);
 
