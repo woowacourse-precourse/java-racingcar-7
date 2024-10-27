@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.*;
 
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -10,20 +11,28 @@ public class Application {
     public static final String SPLITTER = ",";
     public static final String GO = "-";
     public static final String FINAL_WINNER = "최종 우승자 : ";
-
+    public static final String BLANK = "";
+    public static final String EXECUTE_OUTPUT = "실행 결과";
+    public static final String SPACE = " ";
+    public static final String COLON = " : ";
+    public static final String TRIAL_INPUT = "시도할 횟수는 몇 회인가요?";
+    public static final String CARNAME_INPUT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    
     public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(CARNAME_INPUT);
         String input = readInput();
         List<RacingCar> cars = splitInput(input);
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(TRIAL_INPUT);
         String trialStr = readInput();
         Integer trial = parseTrial(trialStr);
 
+        System.out.println(BLANK);
+        System.out.println(EXECUTE_OUTPUT);
         for (int i = 0; i < trial; i++) {
             assignRandomNumber(cars);
             checkRandomNumber(cars);
             printCarInfo(cars);
-            System.out.println("");
+            System.out.println(BLANK);
         }
 
         int winPosition = getWinPosition(cars);
@@ -55,7 +64,7 @@ public class Application {
 
     public static void checkCarName(String carName) {
         if (carName.isEmpty() || carName == null || carName.length() > 5) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("자동차 이름은 4자 이하로 입력해주세요.");
         }
     }
 
@@ -64,7 +73,7 @@ public class Application {
             Integer trial = Integer.parseInt(trialStr);
             return trial;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자를 잘못 입력하신 것 같아요!");
         }
     }
 
@@ -91,7 +100,7 @@ public class Application {
         for (RacingCar racingCar : racingCarList) {
             StringBuilder carInfo = new StringBuilder();
             carInfo.append(racingCar.name)
-                    .append(" : ")
+                    .append(COLON)
                     .append(GO.repeat(racingCar.position));
             System.out.println(carInfo);
         }
@@ -115,7 +124,7 @@ public class Application {
     }
 
     public static void printWinners(List<String> winnerList) {
-        String notice = FINAL_WINNER + String.join(SPLITTER + " ", winnerList);
+        String notice = FINAL_WINNER + String.join(SPLITTER + SPACE, winnerList);
         System.out.println(notice);
     }
 }
