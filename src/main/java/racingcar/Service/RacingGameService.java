@@ -1,5 +1,6 @@
 package racingcar.Service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.Entity.Car;
 
 import java.util.ArrayList;
@@ -19,6 +20,10 @@ public class RacingGameService {
 
     public List<Car> getCars() {
         return new ArrayList<>(cars);
+    }
+
+    public int getAttemptCount() {
+        return attemptCount;
     }
 
 }
