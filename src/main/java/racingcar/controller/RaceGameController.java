@@ -1,6 +1,9 @@
 package racingcar.controller;
 
+import java.util.List;
 import java.util.Set;
+import racingcar.domain.Car;
+import racingcar.service.RaceGameService;
 import racingcar.util.parser.InputStringParser;
 import racingcar.util.parser.StringParser;
 import racingcar.view.InputView;
@@ -9,21 +12,21 @@ import racingcar.view.OutputView;
 public class RaceGameController {
     private final InputView inputView;
     private final OutputView outputView;
-    private final StringParser stringParser;
+    private final RaceGameService raceGameService;
 
     public RaceGameController(
-        final InputView inputView,
-        final OutputView outputView,
-        final StringParser stringParser
-    ){
+            final InputView inputView,
+            final OutputView outputView,
+            final RaceGameService raceGameService
+    ) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.stringParser = stringParser;
+        this.raceGameService = raceGameService;
     }
 
     public void run() {
         String racerNames = requestInputStringRacerName();
-        Set<String> parsedRacerNames = stringParser.extractTokens(racerNames);
+        List<Car> cars = raceGameService.enrollRacer(racerNames, new StringParser());
     }
 
     private String requestInputStringRacerName() {
