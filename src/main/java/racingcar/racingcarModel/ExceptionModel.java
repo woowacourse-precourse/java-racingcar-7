@@ -27,6 +27,15 @@ public class ExceptionModel {
         }
     }
 
+    // 자동차 이름이 공백 포함 5글자를 초과할 경우
+    public void overFiveCarNames(String nameInput) {
+        for (String name : carNames(nameInput)) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
 
 
 }
