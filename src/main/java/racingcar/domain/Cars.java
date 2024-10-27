@@ -2,9 +2,9 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import racingcar.dto.RaceResultResponse;
+import racingcar.dto.WinnerResponse;
 import racingcar.util.RandomNumberPicker;
 
 public class Cars {
@@ -24,12 +24,13 @@ public class Cars {
 			.toList();
 	}
 
-	public Set<Car> selectWinners() {
+	public List<WinnerResponse> selectWinners() {
 		int maxDistance = findMaxDistance();
 
 		return cars.stream()
 			.filter(car -> car.getDistance() == maxDistance)
-			.collect(Collectors.toUnmodifiableSet());
+			.map(WinnerResponse::new)
+			.toList();
 	}
 
 	private int findMaxDistance() {
