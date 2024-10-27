@@ -13,9 +13,9 @@ public class RaceController {
         String carsNames = inputView.inputCarName();
         String repeatTimes = inputView.inputRepeatTimes();
 
-        outputView.roundResultHeader();
         RaceService raceService = new RaceService();
         List<String> finalWinners = raceService.startRacing(carsNames, repeatTimes);
+        outputView.roundResultHeader();
         outputView.printRoundResult(raceService.getAllRoundStatus());
         outputView.printFinalResult(finalWinners);
     }
