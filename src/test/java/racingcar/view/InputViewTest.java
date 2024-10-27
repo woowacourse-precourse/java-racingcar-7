@@ -36,7 +36,7 @@ class InputViewTest {
     @Test
     @DisplayName("자동차 이름 5자 초과")
     public void lengthCarNameTest() {
-        String cars = "wooaahancorse";
+        String cars = "wooaah,wooaah,wooaah";
         String[] splitCars = cars.split(",");
         Assertions.assertThatThrownBy(() -> InputView.testValidateCars(splitCars))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -88,5 +88,17 @@ class InputViewTest {
         Assertions.assertThatThrownBy(() -> InputView.validateAttempts(Integer.parseInt(attempts)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("시도할 횟수는 양수를 입력해주세요");
+    }
+
+    @Test
+    @DisplayName("앞뒤 쉼표 제거 테스트")
+    public void trimLeadingAndTrailingCommasTest() {
+        String input = ",pobi,woni,as,";
+        String[] splitCars = input.replaceAll("^,|,$", "").split(",");
+
+        Assertions.assertThat(splitCars).containsExactly("pobi", "woni", "as");
+
+        Assertions.assertThatCode(() -> InputView.testValidateCars(splitCars))
+                .doesNotThrowAnyException();
     }
 }
