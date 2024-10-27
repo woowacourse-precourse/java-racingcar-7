@@ -19,10 +19,42 @@ public class Application {
         try {
             Input();
             gameStart();
+            finalOutput();
         } catch (IllegalArgumentException e) {
             System.out.println("잘못된 입력입니다: " + e.getMessage());
             throw e;
         }
+    }
+
+    private static void finalOutput() {
+        List<String> finalPlayers = calculrator();
+        finalPlayerPrint(finalPlayers);
+    }
+
+    private static void finalPlayerPrint(List<String> finalPlayers) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("최종 우승자 : ");
+        for (String player : finalPlayers) {
+            sb.append(player + ", ");
+        }
+        sb.setLength(sb.length() - 2);
+        System.out.println(sb.toString());
+    }
+
+    private static List<String> calculrator() {
+        int max = -1;
+        List<String> winPlayers = null;
+        for (String player : players) {
+            int distance = playerDistanceMap.get(player);
+            if (max < distance) {
+                max = distance;
+                winPlayers = new ArrayList<>();
+                winPlayers.add(player);
+            } else if (max == distance) {
+                winPlayers.add(player);
+            }
+        }
+        return winPlayers;
     }
 
     private static void gameStart() {
