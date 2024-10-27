@@ -169,6 +169,12 @@ public class InputViewTest {
                 .hasMessage(ErrorMessage.REGEX_ERROR);
     }
     @Test
+    @DisplayName("0으로 끝나는 경우")
+    void isEndZeroTest() {
+        String testSentence = "10";
+        new InputHandler(new TryNumberInputTest(testSentence));
+    }
+    @Test
     @DisplayName("음수가 올 경우")
     void isNegativeInteger() {
         String testSentence = "-1";
