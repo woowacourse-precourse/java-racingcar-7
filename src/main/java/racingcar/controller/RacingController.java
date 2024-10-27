@@ -32,10 +32,13 @@ public class RacingController {
     private void progress(String countInput, Set<Car> cars) {
         int count = Parser.parseInt(countInput);
 
+        outputView.showGuide();
         for (int i = 0; i < count; i++) {
             cars.forEach(car -> {
                 car.move(RandomNumberPicker.pick());
+                outputView.showProgressResult(car.getName(), car.getDistance());
             });
+            outputView.enter();
         }
     }
 }
