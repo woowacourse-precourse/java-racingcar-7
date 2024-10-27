@@ -10,10 +10,58 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+
+    @Test
+    void 입력값이_양의_정수가_아닌_경우_예외발생() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Application.validateCount("0");
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Application.validateCount("-1");
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Application.validateCount("abc");
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Application.validateCount(null);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Application.validateCount(" ");
+        });
+    }
+
+    @Test
+    void 유효한_양의_정수_입력() {
+        Application.validateCount("5");
+    }
+
+    @Test
+    void 입력값이_null인_경우_예외발생() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Application.validateCar(null);
+        });
+    }
+
+    @Test
+    void 입력값이_빈_문자열인_경우_예외발생() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Application.validateCar(" ");
+        });
+    }
+
+    @Test
+    void 유효한_입력_테스트() {
+        Application.validateCar("validName");
+    }
 
     @Test
     void 우승자_여러명_테스트(){
