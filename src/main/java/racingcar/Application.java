@@ -2,7 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
 
@@ -14,11 +16,17 @@ public class Application {
 
     public static List<Car> createCarList(String text) {
         List<Car> carList = new ArrayList<>();
+        Set<String> carSet = new HashSet<>();
 
         for (String carName : text.split(",")) {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException();
             }
+
+            if (!carSet.add(carName)) {
+                throw new IllegalArgumentException();
+            }
+            
             carList.add(new Car(carName));
         }
 
