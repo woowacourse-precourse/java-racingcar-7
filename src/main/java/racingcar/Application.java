@@ -16,7 +16,7 @@ public class Application {
             System.out.println(carNames);
 
             System.out.println("시도할 횟수는 몇번인가요?");
-            Integer turnNumber = Integer.valueOf(Console.readLine());
+            Integer turnNumber = GameUtil.getGameTurnNumber(Console.readLine());
             System.out.println(turnNumber);
 
             List<CarVO> carObjectList = CarUtil.getCarNameAndGoCountList(carNames);
