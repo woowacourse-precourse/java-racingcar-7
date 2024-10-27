@@ -25,6 +25,10 @@ public class Game {
         display.winners(winners);
     }
 
+    public List<Car> getWinners() {
+        return winners;
+    }
+
     private List<Car> determineWinnersIn(List<Car> cars) {
         int highestPosition = cars.stream()
             .mapToInt(Car::getPosition)

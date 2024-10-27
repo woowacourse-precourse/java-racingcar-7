@@ -14,43 +14,34 @@ class GameTest {
     public void 가장많이_움직인_자동차가_우승한다() throws Exception {
         //given
         List<Car> cars = List.of(new Car("A"), new Car("B"), new Car("C"));
-        MockDisplay display = new MockDisplay(cars);
-        Game game = Game.of(cars, display);
+        Game game = Game.of(cars, new MockDisplay());
 
         //when
         game.start(50, new RandomForwardPolicy());
-
-        Integer highestPosition = display.getPositionMap()
-            .values()
-            .stream()
-            .max((o1, o2) -> o1 - o2)
+        List<Car> winners = game.getWinners();
+        int highestPosition = winners.stream()
+            .mapToInt(Car::getPosition)
+            .max()
             .orElse(0);
 
-        List<Car> winnersFromProgress = display.getPositionMap()
-            .keySet()
-            .stream()
-            .filter(car -> car.getPosition() == highestPosition)
-            .toList();
-
-        List<Car> winners = display.getWinners();
-
         //then
-        assertThat(winners).isEqualTo(winnersFromProgress);
+        assertThat(winners).map(Car::getPosition)
+            .allMatch(position -> position == highestPosition);
     }
 
     @Test
     public void 모두가_똑같이_움직이면_모두가_우승한다() throws Exception {
         //given
         List<Car> cars = List.of(new Car("A"), new Car("B"), new Car("C"));
-        MockDisplay display = new MockDisplay(cars);
-        Game game = Game.of(cars, display);
+        Game game = Game.of(cars, new MockDisplay());
 
         //when
         game.start(50, () -> true);
+        List<Car> winners = game.getWinners();
 
         //then
-        assertThat(display.getWinners()).isEqualTo(cars);
-        assertThat(display.getPositionMap().values())
+        assertThat(winners).isEqualTo(cars);
+        assertThat(winners).map(Car::getPosition)
             .allMatch(position -> position == 50);
     }
 
@@ -58,17 +49,15 @@ class GameTest {
     public void 단_하나의_자동차라도_움직이지_않으면_모두가_우승한다() throws Exception {
         //given
         List<Car> cars = List.of(new Car("A"), new Car("B"), new Car("C"));
-        MockDisplay display = new MockDisplay(cars);
-        Game game = Game.of(cars, display);
+        Game game = Game.of(cars, new MockDisplay());
 
         //when
         game.start(50, () -> false);
+        List<Car> winners = game.getWinners();
 
         //then
-        assertThat(display.getWinners()).isEqualTo(cars);
-        assertThat(display.getPositionMap().values())
+        assertThat(winners).isEqualTo(cars);
+        assertThat(winners).map(Car::getPosition)
             .allMatch(position -> position == 0);
     }
-
-
 }
