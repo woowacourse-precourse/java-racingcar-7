@@ -32,6 +32,24 @@ class GameServiceTest {
             assertThat(gameService.getGame().getRound()).isEqualTo(ROUND);
             assertThat(gameService.getGame().getRacingCars().size()).isEqualTo(racingCarsName.size());
         }
+
+        @Test
+        void 차를_초기화합니다() {
+            // given
+            GameService gameService = new GameService();
+            racingCarsName.add("woodz");
+            racingCarsName.add("dean");
+            racingCarsName.add("yuze");
+
+            // when
+            List<RacingCar> racingCars = gameService.initCars(racingCarsName);
+
+            // then
+            for (int i = 0; i < racingCars.size(); i++) {
+                assertThat(racingCars.get(i).getScore()).isEqualTo(0);
+                assertThat(racingCars.get(i).getName()).isEqualTo(racingCarsName.get(i));
+            }
+        }
     }
 
     @Nested
