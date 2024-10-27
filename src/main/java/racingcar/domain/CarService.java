@@ -15,14 +15,6 @@ public class CarService {
         }
     }
 
-    private void moveCarsIfConditionMet(List<Car> cars) {
-        for (Car car : cars) {
-            if (RandomNumber.getRandomNumber() >= CAR_MOVE_CONDITION) {
-                car.move();
-            }
-        }
-    }
-
     public StringBuilder getIntermediateResult() {
         return stringBuilder;
     }
@@ -32,14 +24,6 @@ public class CarService {
             stringBuilder.append(car.getName() + " : " + getPositionOutPut(car.getPosition()) + "\n");
         }
         stringBuilder.append("\n");
-    }
-
-    private String getPositionOutPut(int carPosition) {
-        String positionOutPut = "";
-        for (int i = 0; i < carPosition; i++) {
-            positionOutPut += "-";
-        }
-        return positionOutPut;
     }
 
     public List<Car> makeCars(List<String> carNames) {
@@ -62,4 +46,19 @@ public class CarService {
                 .toList();
     }
 
+    private String getPositionOutPut(int carPosition) {
+        String positionOutPut = "";
+        for (int i = 0; i < carPosition; i++) {
+            positionOutPut += "-";
+        }
+        return positionOutPut;
+    }
+
+    private void moveCarsIfConditionMet(List<Car> cars) {
+        for (Car car : cars) {
+            if (RandomNumber.getRandomNumber() >= CAR_MOVE_CONDITION) {
+                car.move();
+            }
+        }
+    }
 }
