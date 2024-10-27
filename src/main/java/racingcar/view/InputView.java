@@ -18,8 +18,9 @@ public class InputView {
         return Arrays.asList(Util.removeSpace(input).split(","));
     }
 
-    public String readAttemptCount() {
+    public int readTrialsCount() {
         System.out.println(INPUT_TRIAL_COUNT_MESSAGE);
-        return Console.readLine();
+        String input = Console.readLine();
+        return Integer.parseInt(input);
     }
 }
