@@ -3,59 +3,65 @@ ___
 
 ## 협력
 ___
-- 숫자를 통해 우열을 가리는 게임
-  - 반드시 무작위 숫자를 통한 게임일 것
-  - 반드시 유저명을 기입할 수 있을 것
 
 ### domain
 ___
-- [ ] `interface Moveable`
-  - [ ] `isSatisfiedBy(Rule rule)`
-    - [ ] `class DistanceMove implements Moveable`
 
+> "경주할 자동차 이름"
+- [ ] `class UserName`
+  - [ ] `void checkMaximumLength()`
+  - [ ] `void hasOnlyCharacters()`
 
-- [ ] `interface Roundable`
-  - [ ] `isSatisfiedBy(Rule rule);`
-    - [ ] `class RoundNumber implements Roundable`
+> "전진"
+- [ ] `class Score`
+  - [ ] `void moveForward()`
+  - [ ] `int getScore()`
 
+> "몇 번의 이동을 할 것인지"
+- [ ] `class RoundNumber`
+  - [ ] `void checkMinimumValue()`
 
-- [ ] `abstract class RacingMachine`
-  - [ ] `Name name`
-    - [ ] `MoveAmount number`
+> "무작위 값을 구한 후"
+- [ ] `interface NumberGenerator { int generateNumber() }`
+- [ ] `class WoowaRandomNumberGenerator`
+  - [ ] `int generateNumber()`
 
+> "자동차"
+- [ ] `class Car`
+`Score score, UserName userName`
+  - [ ] `int compareTo(Car o)`
+  - [ ] `String getUserName()`
+  - [ ] `int getScore()`
 
-- [ ] `interface Name`
-  - [ ] `isSatisfiedBy(Rule rule)`
-    - [ ] `class MachineName implements Name`
+> 자동차들
+- [ ] `class PlayersCars`
+`List<Car> playersCars`
+  - [ ] `void moveCar()`
+  - [ ] `List<String> findMaximumScoreCars`
 
-
-- [ ] `class RuleManager`
-  - [ ] `RuleManager()`
-    - [ ] `rule = woowaracingrule`
-
-
-[//]: # (- [ ] `interface Rule`)
-
-[//]: # (  - [ ] )
-
-[//]: # (  - )
-
-[//]: # (    - `WoowaRacingRule`)
-
-[//]: # (      - [ ] `MAXIMUM_NAME_LENGTH`)
-
-[//]: # (      - [ ] `CUTOFF`)
-
-[//]: # (        - [ ] `isAbove`)
-
-## 확장
+### io
 ___
-- Rule
-  - 규칙 자체가 바뀌는 경우
-  - 값이 바뀌는 경우
+- [ ] `interface UserInputHandler { String makeUserInputString, int makeUserInputInt }`
+- [ ] `class WoowaUserInput`
+  - [ ] `String makeUserInputString()`
+  - [ ] `int makeUserInput()`
 
-- RacingMachine
-  - 값이 추가된 다양한 구현체
+- [ ] `class ParserUserInput`
+  - [ ] `void hasOnlyCharacters()`
+  - [ ] `void split()`
+
+- [ ] `class Printer`
+  - [ ] `void printRoundResult()`
+  - [ ] `void printFinalResult()`
+
+### controller
+___
+- [ ] `class Controller`
+  - [ ] `void run()`
+    - [ ] `void playRound(RoundNumber)`
+      - [ ] `void playersCars.moveCar`
+      - [ ] `void printRoundResult()`
+    - [ ] `void printFinalResult()`
 
 ## 구현
 ___
