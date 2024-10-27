@@ -116,5 +116,15 @@ public class Application {
                 winners.add(carName);
             }
         }
+
+        // 11. 최종 우승자의 수에 따라 예시에 맞게 출력
+        String result = "최종 우승자 : ";
+        if (winners.size() == 1) {
+            result += winners.get(0);
+        } else {
+            result += String.join(", ", winners);
+        }
+
+        System.out.println(result);
     }
 }
