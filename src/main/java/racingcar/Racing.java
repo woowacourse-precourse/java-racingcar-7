@@ -13,7 +13,7 @@ public class Racing {
         return racingResult;
     }
 
-    public int countMovements(int number) {
+    private int countMovements(int number) {
         int count = 0;
         for (int i = 0; i < number; i++) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
@@ -23,7 +23,7 @@ public class Racing {
         return count;
     }
 
-    public void printRacingResult(String carName, int racingResult) {
+    private void printRacingResult(String carName, int racingResult) {
         System.out.print(carName + " : ");
         System.out.println("-".repeat(racingResult));
     }
