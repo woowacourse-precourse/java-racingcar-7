@@ -35,9 +35,7 @@ public class RacingCars {
     }
 
     public List<RacingCar> attempt() {
-        for (RacingCar car : cars) {
-            car.tryToAdvance();
-        }
+        cars.forEach(RacingCar::tryToAdvance);
         increaseCurrentAttempts();
         return getCars();
     }
