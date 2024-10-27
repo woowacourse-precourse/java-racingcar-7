@@ -8,19 +8,19 @@ public class CarName {
 
     private final String name;
 
-    public CarName(final String value) {
+    public CarName(String value) {
         validateBlank(value);
         validateLength(value);
         this.name = value;
     }
 
-    private void validateLength(final String value) {
+    private void validateLength(String value) {
         if (value.length() > MAX_LENGTH_OF_CAR_NAME) {
             throw new IllegalArgumentException("자동차 이름은 최대 5자입니다.");
         }
     }
 
-    private void validateBlank(final String value) {
+    private void validateBlank(String value) {
         if (value == null) {
             throw new NullPointerException("자동차 이름에 null이 올 수 없습니다.");
         }
@@ -34,7 +34,7 @@ public class CarName {
     }
 
     @Override
-    public boolean equals(final Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }

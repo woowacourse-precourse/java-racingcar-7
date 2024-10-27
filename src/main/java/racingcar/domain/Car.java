@@ -3,12 +3,11 @@ package racingcar.domain;
 public class Car {
 
     private static final int INITIAL_POSITION = 0;
-    private final String name;
+    private final CarName name;
     private int position;
 
     public Car(String name) {
-        validateLength(name);
-        this.name = name;
+        this.name = new CarName(name);
         position = INITIAL_POSITION;
     }
 
@@ -23,16 +22,10 @@ public class Car {
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getCarName();
     }
 
     public int getPosition() {
         return position;
-    }
-
-    private void validateLength(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
-        }
     }
 }
