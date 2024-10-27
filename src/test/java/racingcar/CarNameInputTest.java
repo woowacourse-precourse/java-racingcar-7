@@ -1,7 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
-
+import java.io.ByteArrayInputStream;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -40,11 +40,11 @@ class CarNameInputTest {
 
         assertThatThrownBy(() -> CarNameInput.settingCarName())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 1~5글자 이하로 입력해야 합니다. 다시 시도해주세요");
+                .hasMessage("자동차 이름은 1~5글자 이하로 입력해야 합니다. 다시 시도해주세요.");
     }
 
     // 입력을 설정하는 메소드
     private void setInput(String input) {
-        System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
     }
 }
