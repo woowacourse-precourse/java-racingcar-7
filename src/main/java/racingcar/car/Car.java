@@ -6,7 +6,6 @@ public class Car {
     private final Rule rule;
     private final Position position;
     private final String name;
-//    private int position;
 
     public Car(String name) {
         this.name = name;

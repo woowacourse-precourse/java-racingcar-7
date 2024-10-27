@@ -8,25 +8,19 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputHandler {
     private final InputValidator inputValidator = new InputValidator();
     private final InputParser inputParser = new InputParser();
-    private String input;
-    private String[] carNames;
-    private String numberOfRoundInput;
-    private int numberOfRound;
 
-    public String[] processCarNamesInput() {
+    public String[] inputCarNamesProcess() {
         Output.printMessage(INPUT_CAR_NAMES.getMessages());
-        input = readInput();
-        carNames = inputParser.parseCarNames(input);
+        String[] carNames = inputParser.parseCarNames(readInput());
         inputValidator.validateCarNames(carNames);
         return carNames;
     }
 
-    public int processNumberOfRoundInput() {
+    public int inputNumberOfRoundProcess() {
         Output.printMessage(INPUT_NUMBER_OF_ROUNDS.getMessages());
-        numberOfRoundInput = readInput();
+        String numberOfRoundInput = readInput();
         inputValidator.validateNumberOfRound(numberOfRoundInput);
-        numberOfRound = Integer.parseInt(numberOfRoundInput); // TODO
-        return numberOfRound;
+        return Integer.parseInt(numberOfRoundInput);
     }
 
     private String readInput() {
