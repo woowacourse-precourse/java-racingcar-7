@@ -4,7 +4,7 @@ public class Position {
     private static final String ONE_STEP = "-";
     private final StringBuilder distance;
 
-    protected Position() {
+    Position() {
         this.distance = new StringBuilder();
     }
 

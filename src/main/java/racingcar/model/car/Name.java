@@ -9,7 +9,7 @@ public class Name {
     private static final Pattern VALID_NAME_PATTERN = Pattern.compile("^[a-zA-Z0-9]+$");
     private final String name;
 
-    public Name(final String name) {
+    Name(final String name) {
         validateName(name);
         this.name = name;
     }
