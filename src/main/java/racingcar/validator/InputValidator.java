@@ -30,8 +30,12 @@ public class InputValidator {
     public static void validateRound(String strRound) {
         try {
             int round = Integer.parseInt(strRound);
+
+            if (round < 0) {
+                throw new IllegalArgumentException("음수는 허용되지 않습니다.");
+            }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("라운드는 자연수만 가능합니다.");
+            throw new IllegalArgumentException("라운드는 숫자를 입력해주세요.");
         }
     }
 }
