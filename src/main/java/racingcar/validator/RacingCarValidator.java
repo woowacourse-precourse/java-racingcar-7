@@ -1,10 +1,12 @@
 package racingcar.validator;
 
+import racingcar.util.ExceptionMessage;
+
 public class RacingCarValidator {
 
     public static void isValidCarName(String carName){
         if (carName.length() > 5 || carName.isEmpty()){
-            throw new IllegalArgumentException("자동차의 이름을 잘못 입력");
+            throw new IllegalArgumentException(ExceptionMessage.CARNAGE_EXCEPTION.getExceptionMessage());
         }
     }
 
@@ -14,11 +16,12 @@ public class RacingCarValidator {
     }
 
 
-    public static int canStringToInt(String racingAttemptCountString){
-        try{
-            return Integer.parseInt(racingAttemptCountString);
-        } catch (Exception e){
-            throw new IllegalArgumentException("잘못된 경주 횟수 입력");
+    public static int validateRacingAttemptCount(String racingAttemptCountString) {
+        int racingAttemptCount = Integer.parseInt(racingAttemptCountString);
+        if (racingAttemptCount <= 0) {
+            throw new IllegalArgumentException(ExceptionMessage.RACING_ATTEMPT_EXCEPTION.getExceptionMessage());
         }
+        return racingAttemptCount;
     }
+
 }
