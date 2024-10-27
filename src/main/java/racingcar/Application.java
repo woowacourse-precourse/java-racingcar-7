@@ -21,6 +21,8 @@ public class Application {
             });
             printCurrentStage(cars);
         }
+
+        System.out.printf("최종 우승자 : %s", getWinners(cars));
     }
 
     public static List<Car> makeCars(String input) {
@@ -58,6 +60,22 @@ public class Application {
             System.out.printf("%s : %s\n", car.getName(), "-".repeat(car.getStep()));
         });
         System.out.println();
+    }
+
+    public static String getWinners(List<Car> cars) {
+        int maxStep = cars.stream()
+                .mapToInt(Car::getStep)
+                .max()
+                .orElse(0);
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getStep() == maxStep) {
+                winners.add(car.getName());
+            }
+        }
+
+        return String.join(", ", winners);
     }
 }
 

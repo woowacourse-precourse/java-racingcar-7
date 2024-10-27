@@ -5,6 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -87,6 +90,47 @@ class ApplicationTest extends NsTest {
         assertThat(initialStep).isEqualTo(car.getStep());
     }
 
+    @Test
+    @DisplayName("전진횟수가 가장 많은 자동차의 이름을 반환해야 한다.")
+    void should_ReturnWinners_When_CarsHaveDifferentSteps() {
+        Car car1 = new Car("pobi");
+        car1.move(4);
+        car1.move(3); // 전진 횟수 1
+
+        Car car2 = new Car("woni");
+        car2.move(4);
+        car2.move(4); // 전진 횟수 2
+
+        Car car3 = new Car("jun");
+        car3.move(3); // 전진 횟수 0
+
+        List<Car> cars = Arrays.asList(car1, car2, car3);
+
+        String winners = Application.getWinners(cars);
+
+        assertThat(winners).isEqualTo("woni");
+    }
+
+    @Test
+    @DisplayName("전진횟수가 가장 많은 자동차가 여러개라면 각각의 이름을 쉼표로 구분하여 반환해야 한다.")
+    void should_ReturnWinners_When_MultipleCarsHaveMaxSteps() {
+        Car car1 = new Car("pobi");
+        car1.move(4);
+        car1.move(4); // 전진 횟수 2
+
+        Car car2 = new Car("woni");
+        car2.move(4);
+        car2.move(4); // 전진 횟수 2
+
+        Car car3 = new Car("jun");
+        car3.move(3); // 전진 횟수 0
+
+        List<Car> cars = Arrays.asList(car1, car2, car3);
+
+        String winners = Application.getWinners(cars);
+
+        assertThat(winners).isEqualTo("pobi, woni");
+    }
 
     @Override
     public void runMain() {
