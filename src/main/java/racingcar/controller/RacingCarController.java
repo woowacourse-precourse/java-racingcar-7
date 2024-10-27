@@ -13,8 +13,8 @@ public class RacingCarController {
   }
   public void run() {
     String carNameInput = inputView.askForCarName();
-    inputValidator.validateCarNameInput(carNameInput.trim());
+    inputValidator.validateCarNameInput(carNameInput);
     String attemptsInput = inputView.askForAttempts();
-    inputValidator.validateAttemptsInput(attemptsInput.trim());
+    inputValidator.validateAttemptsInput(attemptsInput);
   }
 }

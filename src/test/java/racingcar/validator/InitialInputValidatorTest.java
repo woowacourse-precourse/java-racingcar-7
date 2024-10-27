@@ -16,22 +16,38 @@ public class InitialInputValidatorTest {
     initialInputValidator = new InitialInputValidator();
   }
   @Test
-  void  초기_비정상입력_테스트() {
-    List<String> inputs = new ArrayList<>();
+  void  초기_자동차이름_비정상입력_테스트() {
+    List<String> carNameInputs = new ArrayList<>();
 
-    inputs.add(null);
-    inputs.add("");
-    inputs.add("  ");
-    inputs.add("pobi , woni , jun");
-    inputs.add("pobi;woni;jun");
-    inputs.add(",,,,");
-    inputs.add(",;,;");
+    carNameInputs.add(null);
+    carNameInputs.add("");
+    carNameInputs.add("  ");
+    carNameInputs.add("pobi , woni , jun");
+    carNameInputs.add("pobi;woni;jun");
+    carNameInputs.add(",,,,");
+    carNameInputs.add(",;,;");
 
-    inputs.forEach((input) -> {
+    carNameInputs.forEach((carName) -> {
       assertSimpleTest(() ->
               assertThatThrownBy(() ->
-                      initialInputValidator.validateCarNameInput(input))
+                      initialInputValidator.validateCarNameInput(carName))
                               .isInstanceOf(IllegalArgumentException.class));
+    });
+  }
+  @Test
+  void  초기_시도횟수_비정상입력_테스트() {
+    List<String> attemptsInputs = new ArrayList<>();
+
+    attemptsInputs.add(null);
+    attemptsInputs.add("");
+    attemptsInputs.add("1 2");
+    attemptsInputs.add(" 1 2 3 4 ");
+
+    attemptsInputs.forEach((attemptsInput) -> {
+      assertSimpleTest(() ->
+              assertThatThrownBy(() ->
+                      initialInputValidator.validateAttemptsInput(attemptsInput))
+                      .isInstanceOf(IllegalArgumentException.class));
     });
   }
 }

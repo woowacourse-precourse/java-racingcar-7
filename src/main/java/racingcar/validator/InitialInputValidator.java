@@ -3,6 +3,11 @@ package racingcar.validator;
 import racingcar.constants.ErrorMessage;
 
 public class InitialInputValidator {
+  private void validateNotNull(String input) {
+    if (input == null) {
+      throw new IllegalArgumentException(ErrorMessage.NULL);
+    }
+  }
   private void validateNotEmpty(String input) {
     if (input == null || input.isEmpty()) {
       throw new IllegalArgumentException(ErrorMessage.EMPTY_INPUT);
@@ -24,12 +29,17 @@ public class InitialInputValidator {
     }
   }
   public void validateCarNameInput(String carNameInput) {
-    validateNotEmpty(carNameInput);
-    validateNoSpaces(carNameInput);
-    validateDelimiter(carNameInput);
-    validateNotOnlyCommas(carNameInput);
+    validateNotNull(carNameInput);
+    String trimmedCarNameInput = carNameInput.trim();
+    validateNotEmpty(trimmedCarNameInput);
+    validateNoSpaces(trimmedCarNameInput);
+    validateDelimiter(trimmedCarNameInput);
+    validateNotOnlyCommas(trimmedCarNameInput);
   }
   public void validateAttemptsInput(String attemptsInput) {
-    validateNotEmpty(attemptsInput);
+    validateNotNull(attemptsInput);
+    String trimmedAttemptsInput = attemptsInput.trim();
+    validateNotEmpty(trimmedAttemptsInput);
+    validateNoSpaces(trimmedAttemptsInput);
   }
 }
