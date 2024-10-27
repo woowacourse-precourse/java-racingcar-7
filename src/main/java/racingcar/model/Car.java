@@ -21,4 +21,8 @@ public class Car {
         return forwardCount;
     }
 
+    public void setForwardCount(int forwardCount) {
+        this.forwardCount = forwardCount;
+    }
+
 }
