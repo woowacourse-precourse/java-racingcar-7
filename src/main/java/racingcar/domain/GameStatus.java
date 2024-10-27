@@ -1,11 +1,11 @@
 package racingcar.domain;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class GameStatus {
 
-    private Set<Car> cars = new HashSet<>();
+    private Set<Car> cars = new LinkedHashSet<>();
 
     public void addCar(Car car) {
         cars.add(car);
