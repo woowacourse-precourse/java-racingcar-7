@@ -25,6 +25,8 @@ public class RacingController {
         AttemptCount attemptCount = new AttemptCount(count);
 
         repeatMovesUntilAttemptExhausted(attemptCount, cars);
+
+        List<String> totalResult = getTotalResult(cars);
     }
 
     private List<String> getCarNames() {
@@ -47,5 +49,9 @@ public class RacingController {
         cars.move(randomValueGenerator);
         outputView.printExecutionResult(cars.getExecutionResult());
         repeatMovesUntilAttemptExhausted(attemptCount, cars);
+    }
+
+    private static List<String> getTotalResult(Cars cars) {
+        return cars.getTotalResult();
     }
 }
