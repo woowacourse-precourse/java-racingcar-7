@@ -24,5 +24,7 @@ public class GameController {
         boolean move = DuringRacing.move(moveValue);
         return new CarDto(carName, move);
     }
-
+    public static void raceResultRecord(Map<Integer, List<CarDto>> mapCar  ,int tryCount ,List<CarDto> carDto) {
+        mapCar.put(tryCount, carDto);
+    }
 }
