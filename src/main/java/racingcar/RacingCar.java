@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 
-
 public class RacingCar {
 
 
@@ -14,6 +13,16 @@ public class RacingCar {
         return Console.readLine();
     }
 
+    public static int inputTrial() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        try {
+            return Integer.parseInt(Console.readLine());
+
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+    }
 
 
 }
