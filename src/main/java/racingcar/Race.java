@@ -14,6 +14,8 @@ public class Race {
         this.trial = trial;
     }
     public void start() {
+        System.out.println();
+        System.out.println("실행 결과");
         for (int i = 0; i < trial; i++) {
             play();
             System.out.println();
