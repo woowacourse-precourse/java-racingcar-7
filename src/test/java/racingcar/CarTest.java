@@ -51,7 +51,7 @@ class CarTest {
 
     @DisplayName("자동차의 이름과 위치를 함께 가진다")
     @RepeatedTest(value = 5, name = RepeatedTest.SHORT_DISPLAY_NAME)
-    public void when(RepetitionInfo repetitionInfo) {
+    public void whenCarMoves_thenReturnsCarNameWithCorrectPosition(RepetitionInfo repetitionInfo) {
         //given
         String carName = "pobi";
         int position = repetitionInfo.getCurrentRepetition();
