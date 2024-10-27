@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -26,6 +27,17 @@ public class Game {
             System.out.println("-".repeat(carPositions.get(i)));
         }
         System.out.println();
+    }
+
+    public List<String> findWinners() {
+        int winnerPosition = Collections.max(carPositions);
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < carList.size(); i++) {
+            if (carPositions.get(i) == winnerPosition) {
+                winners.add(carList.get(i));
+            }
+        }
+        return winners;
     }
 
     public List<Integer> getCarPositions() {
