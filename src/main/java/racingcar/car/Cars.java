@@ -29,7 +29,6 @@ public class Cars {
     public void attemptMovingAllCars() {
         for (Car car : cars) {
             car.attemptMoving();
-            car.showStatus();
         }
     }
 
@@ -40,8 +39,13 @@ public class Cars {
         for (Car car : cars) {
             int randomNumber = randomNumbers.get(index);
             car.attemptMoving(randomNumber);
-            car.showStatus();
             index++;
+        }
+    }
+
+    public void showAllCarsStatus() {
+        for (Car car : cars) {
+            car.showStatus();
         }
     }
 

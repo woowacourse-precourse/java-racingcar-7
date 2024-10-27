@@ -32,6 +32,7 @@ public class Game {
 
         for (int i = 0; i < attemptCount; i++) {
             cars.attemptMovingAllCars();
+            cars.showAllCarsStatus();
             printNewLine();
         }
     }

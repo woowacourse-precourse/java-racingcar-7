@@ -76,6 +76,7 @@ class CarsTest {
         String winner = "woowa";
         List<Integer> randomNumbers = List.of(3, 4, 1);
         cars.attemptMovingAllCars(randomNumbers);
+        cars.showAllCarsStatus();
 
         //when
         cars.showWinner();
@@ -96,6 +97,7 @@ class CarsTest {
         String winner2 = "kakao";
         List<Integer> randomNumbers = List.of(3, 4, 4);
         cars.attemptMovingAllCars(randomNumbers);
+        cars.showAllCarsStatus();
 
         //when
         cars.showWinner();
