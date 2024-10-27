@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -23,6 +24,10 @@ public class Application {
             moveCars(racePositions);
             printRaceStatus(nameList, racePositions);
         }
+
+        // 우승자 결정 및 출력
+        List<String> winners = findWinners(nameList, racePositions);
+        printWinners(winners);
     }
 
     private static List<String> inputCarNames() {
@@ -68,5 +73,20 @@ public class Application {
             System.out.println("-".repeat(positions.get(i)));
         }
         System.out.println();
+    }
+
+    private static List<String> findWinners(List<String> nameList, List<Integer> positions) {
+        int maxPosition = positions.stream().max(Integer::compareTo).orElse(0);
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < positions.size(); i++) {
+            if (positions.get(i) == maxPosition) {
+                winners.add(nameList.get(i));
+            }
+        }
+        return winners;
+    }
+
+    private static void printWinners(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(",", winners));
     }
 }
