@@ -16,9 +16,9 @@ public class Cars {
     private final List<Car> cars;
     private final MoveStrategy moveStrategy;
 
-    public Cars(String carName) {
+    public Cars(String carName, MoveStrategy moveStrategy) {
         this.cars = createCars(carName);
-        this.moveStrategy = new RandomMoveStrategy();
+        this.moveStrategy = moveStrategy;
         validateDuplicateCarNames();
     }
 
