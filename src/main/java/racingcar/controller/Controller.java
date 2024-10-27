@@ -1,10 +1,8 @@
 package racingcar.controller;
 
-import racingcar.service.RaceService;
+import racingcar.model.RaceService;
 import racingcar.util.Converter;
 import racingcar.view.InputView;
-
-import java.util.List;
 
 public class Controller {
 
@@ -15,11 +13,11 @@ public class Controller {
     public void run() {
         String inputCarList = inputView.inputCarList();
         String inputTryCnt = inputView.inputTryCnt();
-        List<String> carList = converter.parseCarList(inputCarList);
+        String[] carNameList = converter.parseCarList(inputCarList);
         int tryCnt = converter.convertTryCnt(inputTryCnt);
 
         // 테스트용
-        for (String car : carList) {
+        for (String car : carNameList) {
             System.out.println(car);
         }
 
