@@ -19,15 +19,18 @@ public final class CarNamesValidator {
 
     public static final String CAR_NAME_DELIMITER = ",";
 
+    // ^[0-9a-zA-Z가-힣]{1,5}(,[0-9a-zA-Z가-힣]{1,5})*$
+    public static final String CAR_NAMES_FORMAT = "^" +
+            ONLY_DIGIT_ALPHABET_KOREAN +
+            CAR_NAME_LENGTH_MIN_BETWEEN_MAX +
+            "(" + CAR_NAME_DELIMITER +
+            ONLY_DIGIT_ALPHABET_KOREAN +
+            CAR_NAME_LENGTH_MIN_BETWEEN_MAX +
+            ")*$";
+
     // 자동차 이름 문자열 형식 검증 패턴
     public static final Pattern carNamePattern =
-            Pattern.compile("^" +
-                    ONLY_DIGIT_ALPHABET_KOREAN +
-                    CAR_NAME_LENGTH_MIN_BETWEEN_MAX +
-                    "(" + CAR_NAME_DELIMITER +
-                    ONLY_DIGIT_ALPHABET_KOREAN +
-                    CAR_NAME_LENGTH_MIN_BETWEEN_MAX +
-                    ")*$");
+            Pattern.compile(CAR_NAMES_FORMAT);
 
     private CarNamesValidator() {}
 
