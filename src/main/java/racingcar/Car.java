@@ -12,22 +12,22 @@ public class Car {
         this.moveNum = "";
     }
 
-    public void show(){
+    public void show() {
         System.out.println(carName + " : " + moveNum);
     }
 
-    public void randomMove(){
-        if(Randoms.pickNumberInRange(0,9)>=4){
+    public void randomMove() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
             moveNum += "-";
             moveCount++;
-        };
+        }
     }
 
-    public int getMoveCount(){
+    public int getMoveCount() {
         return moveCount;
     }
 
-    public String getCarName(){
+    public String getCarName() {
         return carName;
     }
 }

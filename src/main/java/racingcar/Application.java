@@ -9,7 +9,7 @@ public class Application {
         String cars = Console.readLine();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        Integer num = Integer.parseInt( Console.readLine());
+        Integer num = Integer.parseInt(Console.readLine());
 
         RacingCar racingCar = new RacingCar(cars, num);
         racingCar.run();
