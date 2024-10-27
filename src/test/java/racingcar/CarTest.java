@@ -21,4 +21,17 @@ public class CarTest {
         assertEquals(car.getPosition(), 1);
     }
 
+    @Test
+    @DisplayName("canMove() 값이 거짓일 경우, 차가 움직이지 않는다")
+    void moveTest2() {
+        Car car = new Car("testcar") {
+            @Override
+            boolean canMove() {
+                return false;
+            }
+        };
+        car.move();
+        assertEquals(car.getPosition(), 0);
+    }
+
 }
