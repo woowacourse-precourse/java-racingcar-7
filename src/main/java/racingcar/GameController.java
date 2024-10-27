@@ -4,14 +4,16 @@ import java.util.List;
 
 public class GameController {
     private final Racing racing;
+    private final int round;
 
-    public GameController(Racing racing) {
+    public GameController(Racing racing, int round) {
         this.racing = racing;
+        this.round = round;
     }
 
-    public void run(int round) {
+    public void run() {
         OutputView.printRunMessage();
-        while (round-- > 0) {
+        for (int i = 0; i < round; i++) {
             racing.runRound();
             OutputView.printDistance(racing.getCarList());
         }
