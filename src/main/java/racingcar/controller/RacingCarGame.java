@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.Number;
-import racingcar.domain.Winner;
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -15,15 +15,15 @@ public class RacingCarGame {
     private final InputView inputView;
     private final OutputView outputView;
     private final Number number;
-    private final Winner winner;
+    private final Cars cars;
     private String inputString;
     private final List<Car> carList; // 자동차 리스트를 컨트롤러에서 갖나?
 
-    public RacingCarGame(InputView inputView, OutputView outputView, Number number, Winner winner) { //의존성 주입 다시 공부하기
+    public RacingCarGame(InputView inputView, OutputView outputView, Number number, Cars cars) { //의존성 주입 다시 공부하기
         this.inputView = inputView;
         this.outputView = outputView;
         this.number = number;
-        this.winner = winner;
+        this.cars = cars;
         this.inputString = "";
         this.carList = new ArrayList<>();
     }
@@ -42,7 +42,7 @@ public class RacingCarGame {
             tryCount--;
         }
 
-        List<Car> winnerList = winner.getWinnerList(carList);
+        List<Car> winnerList = cars.getWinnerList(carList);
         List<String> winnerNameList = winnerList.stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
@@ -61,6 +61,6 @@ public class RacingCarGame {
             car.setDistance(number.getRandomNumber());
             outputView.printCarDistance(car.getName(), car.getDistance());
         }
-        System.out.println();
+        outputView.printEmptyLine();
     }
 }
