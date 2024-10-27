@@ -44,6 +44,17 @@ public class Game {
     private void findWinner() {
     }
 
+    private int findMaxLocation() {
+        return racingCars.stream()
+                .map(Car::getLocation)
+                .reduce(0, (identity, location) -> {
+                    if (identity < location) {
+                        return location;
+                    }
+                    return identity;
+                });
+    }
+
     private int randomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
