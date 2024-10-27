@@ -5,21 +5,21 @@ import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.util.generator.Generator;
 import racingcar.util.movement.MoveStrategy;
-import racingcar.util.parser.InputSplitter;
+import racingcar.util.parser.InputParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class CarController {
     private final MoveStrategy moveStrategy;
-    private final InputSplitter inputSplitter;
+    private final InputParser inputParser;
     private final Generator<Integer> generator;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public CarController(MoveStrategy moveStrategy, InputSplitter inputSplitter,
+    public CarController(MoveStrategy moveStrategy, InputParser inputParser,
                          Generator<Integer> generator) {
         this.moveStrategy = moveStrategy;
-        this.inputSplitter = inputSplitter;
+        this.inputParser = inputParser;
         this.generator = generator;
         this.inputView = InputView.getInstance();
         this.outputView = OutputView.getInstance();
@@ -32,7 +32,7 @@ public class CarController {
 
         Cars cars = new Cars();
 
-        String[] carNames = inputSplitter.getCarNmaes(carNamesInput);
+        String[] carNames = inputParser.parse(carNamesInput);
         for (String carName : carNames) {
             cars.addCar(new Car(carName.trim()));
         }

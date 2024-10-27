@@ -1,9 +1,10 @@
 package racingcar.util.parser;
 
-public class InputSplitter {
+public class InputSplitter implements InputParser {
     private static final String DELIMETER = ",";
 
-    public String[] getCarNmaes(String input) {
+    @Override
+    public String[] parse(String input) {
         return input.split(DELIMETER);
     }
 }
