@@ -51,29 +51,4 @@ public class Executor {
         winners = judge.getWinners(cars);
         ioController.printWinners(winners);
     }
-
-    public void executeForCount(List<Car> cars, long repeatCount) {
-        for (int i = 0; i < repeatCount; i++) {
-            moveCars(cars);
-            ioController.printResults(cars);
-        }
-    }
-
-    public void moveCars(List<Car> cars) {
-        for (Car car : cars) {
-            moveCar(car);
-        }
-    }
-
-    public void moveCar(Car car) {
-        int randomVal = Randoms.pickNumberInRange(startInclusive, endInclusive);
-        if (MOVE_STANDARD <= randomVal) {
-            car.move();
-        }
-    }
-
-    public List<Car> getWinners(List<Car> cars) {
-        final long maxMoveCount = cars.stream()
-            .mapToLong(Car::getMoveCount).max().orElse(0);
-
 }
