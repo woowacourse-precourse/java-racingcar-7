@@ -28,6 +28,6 @@ public class RacingController {
 
         outputView.printResult();
         List<Car> winners = carService.playRounds(playersName,moveCount);
-        outputView.printWinner();
+        outputView.printWinners(winners);
     }
 }

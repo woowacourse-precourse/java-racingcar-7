@@ -22,7 +22,7 @@ public class CarService {
         List<Car> cars = carGenerator(names);
         raceStart(cars,moveCount);
 
-        return cars;
+        return getWinners(cars);
     }
 
     public List<String> splitByComma(String input) {
@@ -50,6 +50,7 @@ public class CarService {
             tryMoveForward(car);
         }
     }
+
     private void printCarsPositionStatus(List<Car> cars) {
         for(Car car : cars){
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
@@ -57,12 +58,40 @@ public class CarService {
         System.out.println();
     }
 
-
     private void tryMoveForward(Car car){
         if(canMove())
             car.moveForward();
     }
+
     private boolean canMove(){
         return Randoms.pickNumberInRange(0,9) >=4;
     }
+
+    private List<Car> getWinners(List<Car> cars) {
+        int maxPosition = getMaxPosition(cars);
+        return winnerListAdd(cars,maxPosition);
+    }
+
+    private int getMaxPosition(List<Car> cars) {
+        int maxPosition = 0;
+        for(Car car : cars){
+            maxPosition = Math.max(maxPosition,car.getPosition());
+        }
+        return maxPosition;
+    }
+
+    private List<Car> winnerListAdd(List<Car> cars, int maxPosition) {
+        List<Car> winners = new ArrayList<>();
+        for(Car car : cars){
+            isMaxPosition(winners,car,maxPosition);
+            }
+        return winners;
+        }
+
+    private void isMaxPosition(List<Car> winners,Car car, int maxPosition) {
+        if(car.getPosition() == maxPosition){
+            winners.add(car);
+        }
+    }
+
 }
