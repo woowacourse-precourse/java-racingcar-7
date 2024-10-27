@@ -85,6 +85,15 @@ public class RacingCar {
             }
         }
     }
+    public static boolean stopOrGo(Car car) {
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+        if (randomValue >= 4) {
+            return true;
+        }
+
+        return false;
+    }
+
 
 
 }
