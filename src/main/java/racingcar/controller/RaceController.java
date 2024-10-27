@@ -3,15 +3,20 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
-import racingcar.stream.ConsoleInput;
-import racingcar.stream.ConsoleOutput;
+import racingcar.stream.Input;
+import racingcar.stream.Output;
 
 import java.util.List;
 
 public class RaceController {
 
-    private final ConsoleOutput output = new ConsoleOutput();
-    private final ConsoleInput input = new ConsoleInput();
+    private final Output output;
+    private final Input input;
+
+    public RaceController(Output output, Input input) {
+        this.output = output;
+        this.input = input;
+    }
 
     public void doRace() {
         output.writeCarNameGuide();

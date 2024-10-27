@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class ConsoleInput {
+public class ConsoleInput implements Input {
 
+    @Override
     public List<String> inputNames() {
         String input = Console.readLine();
         validateNamesInput(input);
@@ -18,6 +19,7 @@ public class ConsoleInput {
         }
     }
 
+    @Override
     public int inputRoundCount() {
         String count = Console.readLine();
         validateCountInput(count);
