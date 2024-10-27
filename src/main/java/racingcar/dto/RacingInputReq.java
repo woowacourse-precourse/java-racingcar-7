@@ -1,10 +1,10 @@
 package racingcar.dto;
 
-public class RacingReq {
+public class RacingInputReq {
     private String carNames;
     private String raceRounds;
 
-    public RacingReq(String carNames, String raceRounds) {
+    public RacingInputReq(String carNames, String raceRounds) {
         this.carNames = carNames;
         this.raceRounds = raceRounds;
     }
