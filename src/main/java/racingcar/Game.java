@@ -28,4 +28,7 @@ public class Game {
         System.out.println();
     }
 
+    public List<Integer> getCarPositions() {
+        return carPositions;
+    }
 }
