@@ -18,7 +18,7 @@ public class OutputView {
     }
 
     public static void displayRoundResult(List<String> carNames, List<Integer> carPositions) {
-        for (int i=0;i<carNames.size();i++) {
+        for (int i = 0; i < carNames.size(); i++) {
             System.out.print(carNames.get(i) + " : ");
             System.out.println("-".repeat(carPositions.get(i)));
         }

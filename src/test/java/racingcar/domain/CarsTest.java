@@ -11,7 +11,7 @@ class CarsTest {
     @Test
     void 자동차를_생성한다() {
         // given
-        List<String> carNames= Arrays.asList("jang", "jin", "young");
+        List<String> carNames = Arrays.asList("jang", "jin", "young");
 
         // when
         Cars cars = new Cars(carNames);
@@ -24,7 +24,7 @@ class CarsTest {
     @Test
     void 자동차들을_이동시킨다() {
         // given
-        List<String> carNames= Arrays.asList("jang", "jin", "young");
+        List<String> carNames = Arrays.asList("jang", "jin", "young");
         Cars cars = new Cars(carNames);
 
         // when
@@ -37,9 +37,9 @@ class CarsTest {
     }
 
     @Test
-    void 가장_많이_이동한_자동차를_뽑는다(){
+    void 가장_많이_이동한_자동차를_뽑는다() {
         // given
-        List<String> carNames= Arrays.asList("jang", "jin", "young");
+        List<String> carNames = Arrays.asList("jang", "jin", "young");
         Cars cars = new Cars(carNames);
         cars.moveCars(Arrays.asList(5, 1, 5));
 

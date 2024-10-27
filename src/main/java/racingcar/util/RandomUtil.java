@@ -11,8 +11,8 @@ public class RandomUtil {
     public static final int RANDOM_NUMBER_MAX = 9;
 
     public static List<Integer> generateRandomNumberForCars(int carSize) {
-        return IntStream.range(0,carSize)
-                .map(i->pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX))
+        return IntStream.range(0, carSize)
+                .map(i -> pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX))
                 .boxed()
                 .collect(Collectors.toList());
     }
