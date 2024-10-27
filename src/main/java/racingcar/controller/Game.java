@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
+import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.Parser;
 import racingcar.validator.CarNamesValidator;
@@ -13,7 +13,7 @@ public class Game {
 
     public void run(){
         String rawCarNames = InputView.requestCarNames();
-        ArrayList<String> carNames = Parser.parse(rawCarNames);
+        List<String> carNames = Parser.parse(rawCarNames);
         CarNamesValidator.validate(carNames);
         Cars cars = new Cars(carNames);
 
@@ -32,7 +32,7 @@ public class Game {
 
         for (int i = 0; i < totalRounds; i++) {
             cars.proceedOneRound();
-            ArrayList<String> currentStates = cars.getCurrentStates();
+            List<String> currentStates = cars.getCurrentStates();
             OutputView.printRoundResult(currentStates);
         }
     }
