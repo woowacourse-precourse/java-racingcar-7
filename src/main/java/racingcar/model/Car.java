@@ -8,8 +8,8 @@ public class Car {
         this.name = name;
     }
 
-    public boolean canMoveUsing(int randomNum) {
-        return (randomNum >= 4);
+    public boolean canMoveUsing(int randomNumber) {
+        return (randomNumber >= 4);
     }
 
     public String getName() {
