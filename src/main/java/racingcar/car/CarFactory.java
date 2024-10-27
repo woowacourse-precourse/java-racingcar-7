@@ -1,4 +1,4 @@
-package racingcar.Cars;
+package racingcar.car;
 
 abstract class CarFactory {
     public final Car createOperation(String carName) {

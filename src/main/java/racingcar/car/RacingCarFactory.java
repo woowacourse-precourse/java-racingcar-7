@@ -1,4 +1,4 @@
-package racingcar.Cars;
+package racingcar.car;
 
 public class RacingCarFactory extends CarFactory {
     @Override
