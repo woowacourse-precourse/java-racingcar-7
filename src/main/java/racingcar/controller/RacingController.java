@@ -13,18 +13,13 @@ public class RacingController {
     private RacingInputValidateService racingInputValidateService;
     private MoveForwardService moveForwardService;
     private WinnerService winnerService;
-    private InputView inputView;
-    private OutputView outputView;
 
     public RacingController(RacingInputValidateService racingInputValidateService,
                             MoveForwardService moveForwardService,
-                            WinnerService winnerService,
-                            InputView inputView, OutputView outputView) {
+                            WinnerService winnerService) {
         this.racingInputValidateService = racingInputValidateService;
         this.moveForwardService = moveForwardService;
         this.winnerService = winnerService;
-        this.inputView = inputView;
-        this.outputView = outputView;
     }
 
     public void run() {
@@ -36,14 +31,14 @@ public class RacingController {
     }
 
     private String getTryingCount() {
-        String tryCounts = inputView.getTryCounts();
+        String tryCounts = InputView.getTryCounts();
         racingInputValidateService.validateTryCount(tryCounts);
 
         return tryCounts;
     }
 
     private List<String> getCarName() {
-        String carName = inputView.getCarName();
+        String carName = InputView.getCarName();
         List<String> splittedCarNames = racingInputValidateService.splitCarName(carName);
         racingInputValidateService.validateCarName(splittedCarNames);
 
@@ -52,14 +47,15 @@ public class RacingController {
 
     private void go(List<String> input, String tryCounts) {
         moveForwardService.setMoveForwardRecord(input);
-        List<MoveForwardRecord> moveForwardRecords = moveForwardService.getMoveForwardRecords();
-        outputView.go(tryCounts, moveForwardRecords);
+        moveForwardService.printMovingForwardProcess(tryCounts);
     }
 
     private void printWinner() {
         List<MoveForwardRecord> moveForwardRecords = moveForwardService.getMoveForwardRecords();
+
         winnerService.countSortReverse(moveForwardRecords);
+
         List<String> winners = winnerService.getWinners(moveForwardRecords);
-        outputView.printWinner(winners);
+        OutputView.printWinner(winners);
     }
 }

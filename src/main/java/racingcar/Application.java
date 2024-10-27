@@ -12,7 +12,7 @@ public class Application {
         // TODO: 프로그램 구현
 
         RacingController racingController = new RacingController(new RacingInputValidateService(),
-                new MoveForwardService(), new WinnerService(), new InputView(), new OutputView());
+                new MoveForwardService(), new WinnerService());
         racingController.run();
     }
 }
