@@ -33,6 +33,10 @@ public class RacingCarService {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상, 5자 이하만 가능합니다.");
             }
 
+            if (!CustomValidator.validateDuplicate(carList, carName)) {
+                throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다.");
+            }
+
             carList.add(new RacingCar.Builder()
                     .name(carName)
                     .position(0)
