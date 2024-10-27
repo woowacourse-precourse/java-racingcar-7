@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class RacingGameView {
 
     public void carNameInputMessage() {
@@ -8,5 +10,9 @@ public class RacingGameView {
 
     public void trialCountInputMessage() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
+    public String getCarNames(){
+        return Console.readLine();
     }
 }
