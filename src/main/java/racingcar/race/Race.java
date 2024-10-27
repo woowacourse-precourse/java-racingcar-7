@@ -12,8 +12,7 @@ public class Race {
 
     public Race() {
         racers = new ArrayList<>();
-        lap = 0;
-        bestRecord = 0;
+        reset();
     }
 
     public Race(String[] racerNames) {
@@ -36,8 +35,7 @@ public class Race {
             throw new IllegalArgumentException("선수가 없어 레이스를 진행할 수 없습니다.");
         }
 
-        lap = 0;
-        bestRecord = 0;
+        reset();
         
         if(times<=0){
             throw new IllegalArgumentException(times + "만큼 진행할 수 없습니다.");
@@ -78,6 +76,11 @@ public class Race {
         }
 
         return winners;
+    }
+
+    private void reset(){
+        lap = 0;
+        bestRecord = 0;
     }
 
 }
