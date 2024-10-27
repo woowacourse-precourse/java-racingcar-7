@@ -33,4 +33,13 @@ class OutputViewTest {
         assertThat(outputStream.toString()).isEqualTo(expectedResult);
     }
 
+    @Test
+    void 우승자_출력_테스트() {
+        List<String> winnerList = List.of("pobi", "woni");
+        outputView.printWinner(winnerList);
+
+        String expectedResult = "최종 우승자 : pobi, woni\n";
+        assertThat(outputStream.toString()).isEqualTo(expectedResult);
+    }
+
 }
