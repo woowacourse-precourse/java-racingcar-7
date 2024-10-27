@@ -14,6 +14,12 @@ public class Cars {
         List<Name> nameList = names.getNames();
         this.cars = getCars(nameList);
     }
+    
+    public void moveCars() {
+        for (Car car : cars) {
+            car.shellMove();
+        }
+    }
 
     public void printCurrentStatus() {
         for (Car car : cars) {
@@ -44,9 +50,10 @@ public class Cars {
         return winners;
     }
 
-    public int getCarsSize() {
+    public int carsSize() {
         return cars.size();
     }
+
     private List<Car> getCars(List<Name> names) {
         List<Car> carList = new ArrayList<>();
 
