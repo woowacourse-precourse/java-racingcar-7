@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import racingcar.converter.ListToStringConverter;
 import racingcar.domain.Car;
@@ -12,7 +12,7 @@ public class OutputView {
         listToStringConverter = new ListToStringConverter();
     }
 
-    public void printRoundOutput(HashMap<Car, Long> racingProgress) {
+    public void printRoundOutput(LinkedHashMap<Car, Long> racingProgress) {
         StringBuilder sb = new StringBuilder();
         for (Car car : racingProgress.keySet()) {
             sb.append(car.getName())

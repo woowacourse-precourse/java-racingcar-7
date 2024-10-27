@@ -3,7 +3,7 @@ package racingcar;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +13,7 @@ import racingcar.view.OutputView;
 
 public class OutputViewTest {
     private final OutputView outputView = new OutputView();
-    private final HashMap<Car, Long> carToProgress = new HashMap<>();
+    private final LinkedHashMap<Car, Long> carToProgress = new LinkedHashMap<>();
     private Car car1;
     private Car car2;
     private Car car3;

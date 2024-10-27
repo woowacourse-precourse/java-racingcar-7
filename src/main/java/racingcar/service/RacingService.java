@@ -1,7 +1,7 @@
 package racingcar.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
@@ -9,7 +9,7 @@ import racingcar.exception.Validator;
 
 public class RacingService {
     private final List<Car> carList = new ArrayList<>();
-    private final HashMap<Car, Long> racingProgress = new HashMap<>();
+    private final LinkedHashMap<Car, Long> racingProgress = new LinkedHashMap<>();
 
     public RacingService(List<String> carNameList) {
         for (String carName : carNameList) {
@@ -42,7 +42,7 @@ public class RacingService {
                 .collect(Collectors.toList());
     }
 
-    public HashMap<Car, Long> getRacingProgress() {
+    public LinkedHashMap<Car, Long> getRacingProgress() {
         return racingProgress;
     }
 
