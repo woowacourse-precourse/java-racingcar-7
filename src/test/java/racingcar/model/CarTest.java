@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 import racingcar.exception.CarNameLengthException;
+import racingcar.exception.ExceptionMessage;
 import racingcar.strategy.ModeType;
 
 public class CarTest {
@@ -31,6 +32,6 @@ public class CarTest {
         assertThatThrownBy(() -> {
             Car result = new Car("poooobi");
         }).isInstanceOf(CarNameLengthException.class)
-                .hasMessageContaining("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+                .hasMessageContaining(ExceptionMessage.CAR_NAME_LENGTH_EXCEPTION_MESSAGE.getMessage());
     }
 }

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.exception.CarNameDuplicationException;
 import racingcar.exception.CarNameEmptyException;
 import racingcar.exception.CarNameSeparatorException;
+import racingcar.exception.ExceptionMessage;
 import racingcar.strategy.ModeType;
 
 public class RacingTest {
@@ -25,7 +26,7 @@ public class RacingTest {
             String input = "pobiwoni";
             Racing racing = new Racing(input);
         }).isInstanceOf(CarNameSeparatorException.class)
-                .hasMessageContaining("[ERROR] 자동차 이름은 쉼표(,)로 구분되어야 합니다. 자동차 경주는 두 대 이상 가능합니다.");
+                .hasMessageContaining(ExceptionMessage.CAR_NAME_SEPARATOR_EXCEPTION_MESSAGE.getMessage());
     }
 
     @Test
@@ -34,7 +35,7 @@ public class RacingTest {
             String input = ",woni";
             Racing racing = new Racing(input);
         }).isInstanceOf(CarNameEmptyException.class)
-                .hasMessageContaining("[ERROR] 자동차 이름이 존재하지 않습니다. 자동차 경주는 두 대 이상 가능합니다.");
+                .hasMessageContaining(ExceptionMessage.CAR_NAME_EMPTY_EXCEPTION_MESSAGE.getMessage());
     }
 
     @Test
@@ -43,7 +44,7 @@ public class RacingTest {
             String input = "woni,woni";
             Racing racing = new Racing(input);
         }).isInstanceOf(CarNameDuplicationException.class)
-                .hasMessageContaining("[ERROR] 자동차 이름은 중복되지 않아야 합니다.");
+                .hasMessageContaining(ExceptionMessage.CAR_NAME_DUPLICATION_EXCEPTION_MESSAGE.getMessage());
     }
 
     @Test
