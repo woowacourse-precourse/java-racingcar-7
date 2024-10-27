@@ -22,8 +22,16 @@ public class Cars {
         this.cars = cars;
     }
 
+    public int getCarCount() {
+        return cars.size();
+    }
+
     public List<Car> getCars() {
         return cars;
+    }
+
+    public Car getCar(int idx) {
+        return cars.get(idx);
     }
 
 }

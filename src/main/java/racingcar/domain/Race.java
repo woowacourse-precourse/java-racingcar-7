@@ -3,8 +3,19 @@ package racingcar.domain;
 import static racingcar.constants.CarConstants.FORWARD_THRESHOLD;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.List;
 import racingcar.enums.CarMovement;
+
+/**
+ * packageName    : racingcar.domain
+ * fileName       : Race
+ * author         : ehgur
+ * date           : 2024-10-26
+ * description    : 자동차들과 lap 정보를 관리하기 위한 객체 생성
+ * ===========================================================
+ * DATE              AUTHOR             NOTE
+ * -----------------------------------------------------------
+ * 2024-10-26        ehgur             최초 생성
+ */
 
 public class Race {
 
@@ -17,25 +28,21 @@ public class Race {
     }
 
     public void updateCarDataByLap() {
-        int len = cars.getCars().size();
+        int len = cars.getCarCount();
         for (int i = 0; i < len; i++) {
             if (getRandom() >= FORWARD_THRESHOLD) {
-                cars.getCars().get(i).addMoveCount();
-                cars.getCars().get(i).updateMovementStatus(CarMovement.FORWARD);
+                cars.getCar(i).addMoveCount();
+                cars.getCar(i).updateMovementStatus(CarMovement.FORWARD);
             }
         }
     }
 
-    public List<Car> getCars() {
-        return cars.getCars();
+    public Cars getCars() {
+        return cars;
     }
 
     public int getLap() {
         return lap;
-    }
-
-    public int getCarsCount() {
-        return cars.getCars().size();
     }
 
     private int getRandom() {
