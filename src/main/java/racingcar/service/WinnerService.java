@@ -3,8 +3,6 @@ package racingcar.service;
 import racingcar.dto.RacingInfoDTO;
 import racingcar.model.Car;
 import racingcar.model.Winner;
-import racingcar.view.OutputView;
-
 import java.math.BigInteger;
 import java.util.List;
 

@@ -4,7 +4,6 @@ import racingcar.dto.RacingInputReq;
 import racingcar.message.ErrorMessage;
 import racingcar.model.Car;
 import racingcar.dto.RacingInfoDTO;
-
 import java.math.BigInteger;
 import java.util.List;
 
