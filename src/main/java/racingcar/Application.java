@@ -11,28 +11,24 @@ public class Application {
     public static String[] nameList;
     public static int racingNumber;
     public static String[] processResult;
-    public static int[] resultNum;
+    public static int[] moveCount;
 
     public static void main(String[] args) {
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String CarInput = camp.nextstep.edu.missionutils.Console.readLine();
+        String carInput = InputSetting.nameSet();
+        nameList = CarList.carList(carInput);
 
-        nameList = CarList.carList(CarInput);
+        String numberInput = InputSetting.numberSet();
+        racingNumber = RacingNum.numValid(numberInput);
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String inputNumber = camp.nextstep.edu.missionutils.Console.readLine();
-
-        racingNumber = RacingNum.numValid(inputNumber);
-
-        //횟수만큼 결과 반영 및 출력 반복
-
-        processResult = new String[carNumber];
+        //경기 결과 저장 배열 초기화
+        processResult= new String[carNumber];
         Arrays.fill(processResult, "");
 
-        resultNum = new int[carNumber];
-        Arrays.fill(resultNum, 0);
+        moveCount = new int[carNumber];
+        Arrays.fill(moveCount, 0);
 
+        //횟수만큼 결과 출력 반복
         System.out.println("실행 결과");
 
         for (int i = 0; i < racingNumber; i++) {
@@ -41,6 +37,5 @@ public class Application {
         }
 
         winnerPrint();
-
     }
 }
