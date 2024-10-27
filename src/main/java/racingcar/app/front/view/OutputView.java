@@ -15,12 +15,12 @@ public class OutputView {
         return OutputViewHolder.INSTANCE;
     }
 
-    public void printWithNewLineUpper(final String value) {
+    public void printWithNewLineBefore(final String value) {
         newLine();
         simplePrint(value);
     }
 
-    public void printWithNewLineLower(final String value) {
+    public void printWithNewLineAfter(final String value) {
         simplePrint(value);
         newLine();
     }

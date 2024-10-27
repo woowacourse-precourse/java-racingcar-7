@@ -1,4 +1,4 @@
-package racingcar.app.front.preprocessor.car;
+package racingcar.app.front.preprocessor.input;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,5 +14,4 @@ public class CarNamePreprocessor {
                 .map(val -> val.replaceAll("\\s", ""))
                 .toList();
     }
-
 }

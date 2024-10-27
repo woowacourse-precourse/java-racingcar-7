@@ -1,6 +1,6 @@
 package racingcar.app.front.validator.car;
 
-import static racingcar.app.front.preprocessor.car.CarNamePreprocessor.stringToStringList;
+import static racingcar.app.front.preprocessor.input.CarNamePreprocessor.stringToStringList;
 import static racingcar.app.server.model.car.Car.CAR_NAME_MIN_LENGTH;
 
 import java.util.List;

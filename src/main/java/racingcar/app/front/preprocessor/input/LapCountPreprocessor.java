@@ -1,4 +1,4 @@
-package racingcar.app.front.preprocessor.lap;
+package racingcar.app.front.preprocessor.input;
 
 public class LapCountPreprocessor {
 

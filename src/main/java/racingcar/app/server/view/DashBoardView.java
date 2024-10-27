@@ -1,28 +1,29 @@
 package racingcar.app.server.view;
 
+import java.util.List;
 import racingcar.app.server.model.dashboard.DashBoard;
 
 public class DashBoardView {
 
-    private final String lapCharts;
-    private final String winners;
+    private final List<String> lapCharts;
+    private final List<String> winners;
 
-    private DashBoardView(final String lapCharts, final String winners) {
+    private DashBoardView(final List<String> lapCharts, final List<String> winners) {
         this.lapCharts = lapCharts;
         this.winners = winners;
     }
 
-    public static DashBoardView from(DashBoard dashBoard) {
-        String offeredLapCharts = dashBoard.offerLapCharts();
-        String offeredLWinners = dashBoard.offerLWinners();
+    public static DashBoardView from(final DashBoard dashBoard) {
+        List<String> offeredLapCharts = dashBoard.offerAllLapCharts();
+        List<String> offeredLWinners = dashBoard.offerLWinners();
         return new DashBoardView(offeredLapCharts, offeredLWinners);
     }
 
-    public String getLapCharts() {
+    public List<String> getLapCharts() {
         return lapCharts;
     }
 
-    public String getWinners() {
+    public List<String> getWinners() {
         return winners;
     }
 }

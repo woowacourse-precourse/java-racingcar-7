@@ -1,6 +1,10 @@
 package racingcar.app.front.model;
 
+import java.util.List;
+import racingcar.app.front.preprocessor.output.LapChartPreprocessor;
+import racingcar.app.front.preprocessor.output.WinnerPreprocessor;
 import racingcar.app.front.view.OutputView;
+import racingcar.app.middleware.dto.OutputDTO;
 
 public class OutputManager {
 
@@ -19,25 +23,31 @@ public class OutputManager {
         return OutputManagerHolder.INSTANCE;
     }
 
-    public void showLapCharts(final String lapCharts) {
-        OutputView instance = OutputView.getInstance();
-        instance.printWithNewLineUpper(LAP_CHART_RESULT);
-        instance.printWithNewLineLower(lapCharts);
+    public void showRaceResult(OutputDTO outputs) {
+        OutputView outputView = OutputView.getInstance();
+        showLapCharts(outputView, outputs.lapCharts());
+        showWinners(outputView, outputs.winners());
     }
 
-    public void showWinners(final String winners) {
-        OutputView instance = OutputView.getInstance();
-        String resultMessage = String.format(RACE_WINNERS, NO_WINNER);
+    private void showLapCharts(final OutputView outputView, final List<String> source) {
+        String responseMessage = LapChartPreprocessor.stringListToString(source);
 
-        if (winnerExistOn(winners)) {
-            resultMessage = String.format(RACE_WINNERS, winners);
+        outputView.printWithNewLineBefore(LAP_CHART_RESULT);
+        outputView.printWithNewLineAfter(responseMessage);
+    }
+
+    private void showWinners(final OutputView outputView, final List<String> source) {
+        String winners = WinnerPreprocessor.stringListToString(source);
+        String responseMessage = generateWinnerMessageBy(winners);
+
+        outputView.simplePrint(responseMessage);
+        outputView.closeConsole();
+    }
+
+    private String generateWinnerMessageBy(final String winners) {
+        if (winners.isEmpty()) {
+            return String.format(RACE_WINNERS, NO_WINNER);
         }
-
-        instance.simplePrint(resultMessage);
-        instance.closeConsole();
-    }
-
-    private boolean winnerExistOn(final String offeredLWinners) {
-        return !offeredLWinners.isBlank();
+        return String.format(RACE_WINNERS, winners);
     }
 }

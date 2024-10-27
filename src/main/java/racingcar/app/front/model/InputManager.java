@@ -1,7 +1,7 @@
 package racingcar.app.front.model;
 
-import static racingcar.app.front.preprocessor.car.CarNamePreprocessor.stringToStringList;
-import static racingcar.app.front.preprocessor.lap.LapCountPreprocessor.replaceAllUnNecessaryChar;
+import static racingcar.app.front.preprocessor.input.CarNamePreprocessor.stringToStringList;
+import static racingcar.app.front.preprocessor.input.LapCountPreprocessor.replaceAllUnNecessaryChar;
 import static racingcar.app.front.validator.car.CarNameFacadeValidator.validateCarNames;
 import static racingcar.app.front.validator.lap.LapCountFacadeValidator.validateLapCount;
 

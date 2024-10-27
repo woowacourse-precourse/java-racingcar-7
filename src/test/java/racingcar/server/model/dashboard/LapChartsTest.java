@@ -2,6 +2,7 @@ package racingcar.server.model.dashboard;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.app.server.model.dashboard.LapCharts;
@@ -13,26 +14,19 @@ public class LapChartsTest {
     void checkLapCharts() {
         // given
         LapCharts lapCharts = LapCharts.initiate();
-        lapCharts.offer("a : \nb : --\nc : ---");
-        lapCharts.offer("a : -\nb : --\nc : ----");
-        lapCharts.offer("a : --\nb : ---\nc : -----");
+
+        String firstLapChart = "a : \nb : --\nc : ---";
+        String secondLapChart = "a : -\nb : --\nc : ----";
+        String thirdLapChart = "a : --\nb : ---\nc : -----";
+
+        lapCharts.offer(firstLapChart);
+        lapCharts.offer(secondLapChart);
+        lapCharts.offer(thirdLapChart);
 
         // when
-        String actual = lapCharts.toString();
+        List<String> actual = lapCharts.offerLapCharts();
 
         // then
-        String expected = """
-                a :\s
-                b : --
-                c : ---
-                
-                a : -
-                b : --
-                c : ----
-                
-                a : --
-                b : ---
-                c : -----""";
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).contains(firstLapChart, secondLapChart, thirdLapChart);
     }
 }

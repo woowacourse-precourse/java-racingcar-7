@@ -1,6 +1,6 @@
 package racingcar.app.front.validator.lap;
 
-import static racingcar.app.front.preprocessor.lap.LapCountPreprocessor.replaceAllUnNecessaryChar;
+import static racingcar.app.front.preprocessor.input.LapCountPreprocessor.replaceAllUnNecessaryChar;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

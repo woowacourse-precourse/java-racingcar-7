@@ -28,15 +28,14 @@ public class DashBoard {
         lapCharts.offer(summary);
     }
 
-    public String offerLapCharts() {
-        return lapCharts.toString();
+    public List<String> offerAllLapCharts() {
+        return lapCharts.offerLapCharts();
     }
 
-    public String offerLWinners() {
-        List<String> winners = cars.filterCompletedAllLap()
+    public List<String> offerLWinners() {
+        return cars.filterCompletedAllLap()
                 .stream()
                 .map(Car::toString)
                 .toList();
-        return String.join(", ", winners);
     }
 }

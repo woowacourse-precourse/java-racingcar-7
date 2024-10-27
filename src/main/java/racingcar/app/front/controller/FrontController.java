@@ -17,7 +17,6 @@ public class FrontController {
 
     public void writeOutputs(final OutputDTO outputs) {
         OutputManager outputManager = OutputManager.getInstance();
-        outputManager.showLapCharts(outputs.lapCharts());
-        outputManager.showWinners(outputs.winners());
+        outputManager.showRaceResult(outputs);
     }
 }

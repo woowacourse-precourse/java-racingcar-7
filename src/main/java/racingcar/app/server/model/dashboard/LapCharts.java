@@ -19,12 +19,10 @@ public class LapCharts {
         lapCharts.add(LapChart.from(lapChart));
     }
 
-    @Override
-    public String toString() {
-        List<String> summaries = lapCharts
+    public List<String> offerLapCharts() {
+        return lapCharts
                 .stream()
                 .map(LapChart::toString)
                 .toList();
-        return String.join("\n\n", summaries);
     }
 }

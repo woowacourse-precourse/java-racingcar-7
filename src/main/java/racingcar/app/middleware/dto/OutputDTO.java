@@ -1,24 +1,25 @@
 package racingcar.app.middleware.dto;
 
+import java.util.List;
 import racingcar.app.server.view.DashBoardView;
 
 public record OutputDTO(
-        String lapCharts,
-        String winners
+        List<String> lapCharts,
+        List<String> winners
 ) {
     public static OutputDTO from(DashBoardView dashBoardView) {
-        String lapCharts = dashBoardView.getLapCharts();
-        String winners = dashBoardView.getWinners();
+        List<String> lapCharts = dashBoardView.getLapCharts();
+        List<String> winners = dashBoardView.getWinners();
         return new OutputDTO(lapCharts, winners);
     }
 
     @Override
-    public String lapCharts() {
+    public List<String> lapCharts() {
         return lapCharts;
     }
 
     @Override
-    public String winners() {
+    public List<String> winners() {
         return winners;
     }
 }

@@ -5,6 +5,7 @@ import static racingcar.server.helper.CarsHelper.mocNoWinner;
 import static racingcar.server.helper.CarsHelper.mockMultiWinners;
 import static racingcar.server.helper.CarsHelper.mockSingleWinner;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.app.server.model.car.Cars;
@@ -20,10 +21,10 @@ public class DashBoardTest {
         DashBoard sut = DashBoard.from(mockCars);
 
         // when
-        String actual = sut.offerLWinners();
+        List<String> actual = sut.offerLWinners();
 
         // then
-        assertThat(actual.isBlank()).isTrue();
+        assertThat(actual.isEmpty()).isTrue();
     }
 
 
@@ -35,10 +36,10 @@ public class DashBoardTest {
         DashBoard sut = DashBoard.from(mockCars);
 
         // when
-        String actual = sut.offerLWinners();
+        List<String> actual = sut.offerLWinners();
 
         // then
-        assertThat(actual).isEqualTo("Ruby");
+        assertThat(actual).contains("Ruby");
     }
 
     @Test
@@ -49,10 +50,10 @@ public class DashBoardTest {
         DashBoard sut = DashBoard.from(mockCars);
 
         // when
-        String actual = sut.offerLWinners();
+        List<String> actual = sut.offerLWinners();
 
         // then
-        assertThat(actual).isEqualTo("Rust, Ruby");
+        assertThat(actual).contains("Rust", "Ruby");
     }
 
 }

@@ -1,7 +1,7 @@
 package racingcar.app.front.validator.lap;
 
 import static java.math.BigInteger.ZERO;
-import static racingcar.app.front.preprocessor.lap.LapCountPreprocessor.replaceAllUnNecessaryChar;
+import static racingcar.app.front.preprocessor.input.LapCountPreprocessor.replaceAllUnNecessaryChar;
 
 import java.math.BigInteger;
 import racingcar.app.front.exception.LoeZeroException;
