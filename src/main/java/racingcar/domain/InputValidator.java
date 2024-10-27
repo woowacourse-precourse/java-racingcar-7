@@ -10,6 +10,7 @@ public class InputValidator {
      * 자동차 이름의 유효성 검사
      */
     public static List<String> isValidCarName(String input) {
+        checkEmptyOrBlank(input);
         List<String> cars = splitCarName(input);
         checkValidLength(cars);
         return cars;
@@ -38,6 +39,7 @@ public class InputValidator {
      * 시도 횟수의 유효성 검사
      */
     public static int isValidAttemptNumber(String input) {
+        checkEmptyOrBlank(input);
         int attemptNumber = isIntegerNumber(input);
         return attemptNumber;
     }
@@ -49,6 +51,15 @@ public class InputValidator {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 문자열이 빈값이거나 공백인지 검사
+     */
+    public static void checkEmptyOrBlank(String input) {
+        if (input.isEmpty() || input.isBlank()) {
             throw new IllegalArgumentException();
         }
     }
