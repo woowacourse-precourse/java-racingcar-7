@@ -47,14 +47,47 @@ class CarsTest {
 		// given
 		List<String> carNames = asList("aaa", "aaa", "bbb");
 
-		// when
+		// when // then
 		assertThatThrownBy(() -> Cars.create(carNames))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("중복된 자동차 이름이 존재합니다.");
 	}
 
+	@DisplayName("자동차 목록의 차량을 이동시킬 수 있다.")
 	@Test
 	void moveAll() {
+		// given
+		List<String> carNames = asList("aaa", "bbb", "ccc");
+		Cars cars = Cars.create(carNames);
+
+		List<Integer> randomValues = List.of(3, 4, 9);
+
+		// when
+		cars.moveAll(randomValues);
+
+		// then
+		assertThat(cars.getCars()).hasSize(3)
+			.extracting("name", "moveDistance")
+			.containsExactly(
+				tuple("aaa", 0),
+				tuple("bbb", 1),
+				tuple("ccc", 1)
+			);
+	}
+
+	@DisplayName("자동차의 개수와 무작위 값의 개수가 일치해야 이동시킬 수 있다.")
+	@Test
+	void moveAllWithoutEqualsCount() {
+		// given
+		List<String> carNames = asList("aaa", "bbb", "ccc");
+		Cars cars = Cars.create(carNames);
+
+		List<Integer> randomValues = List.of(3, 4);
+
+		// when // then
+		assertThatThrownBy(() -> cars.moveAll(randomValues))
+			.isInstanceOf(IllegalStateException.class)
+			.hasMessage("랜덤 값과 자동차의 개수가 일치하지 않습니다.");
 	}
 
 	@Test
