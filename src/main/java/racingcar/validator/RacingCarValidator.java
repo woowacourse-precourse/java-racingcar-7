@@ -1,9 +1,13 @@
 package racingcar.validator;
 
+import java.util.HashSet;
+import java.util.Set;
 import racingcar.enums.Constants;
 import racingcar.enums.ErrorMessage;
 
 public class RacingCarValidator {
+
+    private final Set<String> uniqueCarNames = new HashSet<>();
 
     public void validateInputString(String inputString) {
         if (inputString == null || inputString.isBlank()) {
@@ -28,5 +32,9 @@ public class RacingCarValidator {
         if (carName.length() > Constants.NAME_LENGTH_LIMIT.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LENGTH.getMessage());
         }
+        if (uniqueCarNames.contains(carName)) {
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_UNIQUE.getMessage());
+        }
+        uniqueCarNames.add(carName);
     }
 }
