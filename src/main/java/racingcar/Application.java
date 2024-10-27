@@ -15,6 +15,8 @@ public class Application {
         List<Car> cars = getCarNames(br);
         int moves = getMovementCounts(br);
 
+        startRace(cars, moves);
+
     }
 
     public static List<Car> getCarNames(BufferedReader br) {
@@ -65,6 +67,17 @@ public class Application {
             throw new IllegalArgumentException("입력 오류: 잘못된 입력입니다.");
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력 오류: 정수를 입력하세요.");
+        }
+    }
+
+    public static void startRace(List<Car> cars, int moves) {
+        System.out.println("실행 결과");
+        for (int i = 0; i < moves; i++) {
+            for(Car car : cars){
+                car.move();
+                car.printPosition();
+            }
+            System.out.println();
         }
     }
 }
