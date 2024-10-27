@@ -19,7 +19,7 @@ public class Winner {
 
         for (int i = 1; i < cars.size(); i++) {
             if (cars.get(i).getDistance() > max) {
-                sb.setLength(i);
+                sb.setLength(0);
                 sb.append(cars.get(i).getName());
                 max = cars.get(i).getDistance();
             } else if (cars.get(i).getDistance() == max) {
