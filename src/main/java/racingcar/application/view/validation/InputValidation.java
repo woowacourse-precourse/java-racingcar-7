@@ -29,6 +29,10 @@ public class InputValidation {
         .map(String::trim)
         .toList();
 
+    if (carNameList.isEmpty()) {
+      throw new IllegalArgumentException(EMPTY_INPUT_ERROR);
+    }
+
     for (String carName : carNameList) {
       checkCarNameLength(carName);
     }
