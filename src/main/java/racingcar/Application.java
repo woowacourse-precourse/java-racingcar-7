@@ -14,7 +14,7 @@ public class Application {
         //3. 자동차 로직
         runRace(cars, tryCount);
         //4. 우승자 로직
-        Winners(cars);
+        winners(cars);
     }
 
     private static List<Car> createCars() {
@@ -61,7 +61,7 @@ public class Application {
         }
     }
     //4.우승자 찾는 메소드
-    private static void Winners(List<Car> cars) {
+    private static void winners(List<Car> cars) {
         //cars의 mapToInt를 통해 객체를 정수값으로 변환하고 최대값 찾는 것. 만약 메서드값 X -> 0으로 반환
         int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
         List<String> winners = new ArrayList<>();
