@@ -17,6 +17,14 @@ public class RacingCar {
         this.round = round;
     }
 
+    public List<String> getCars() {
+        return status.keySet().stream().toList();
+    }
+
+    public List<StringBuilder> getStatus() {
+        return status.values().stream().toList();
+    }
+
     public void race() {
         System.out.println("\n실행결과");
         for(int i = 0; i < this.round; i++) {
@@ -27,7 +35,7 @@ public class RacingCar {
         pickAWinner();
     }
 
-    private void pickAWinner() {
+    public void pickAWinner() {
         int longest = getLongestDistance();
 
         StringBuilder resultOutput = new StringBuilder("최종 우승자: ");
@@ -40,14 +48,14 @@ public class RacingCar {
         System.out.println(resultOutput.substring(0, resultOutput.length()-2));
     }
 
-    private void go() {
+    public void go() {
         for (String key: status.keySet()) {
             if (Randoms.pickNumberInRange(0, 9) >= 4)
                 status.get(key).append("-");
         }
     }
 
-    private void show() {
+    public void show() {
         StringBuilder statusOutput = new StringBuilder();
         for (String key: status.keySet()) {
             statusOutput.append(key).append(" : ").append(status.get(key)).append("\n");
@@ -56,7 +64,7 @@ public class RacingCar {
         System.out.println(statusOutput);
     }
 
-    private int getLongestDistance() {
+    public int getLongestDistance() {
         return status.values().stream()
                 .mapToInt(StringBuilder::length)
                 .max()
