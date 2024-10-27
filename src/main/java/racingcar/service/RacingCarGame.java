@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCarGameResult;
 import racingcar.util.generator.RacingCarGenerator;
@@ -49,10 +50,9 @@ public class RacingCarGame {
     }
 
     private String getGameWinnersToWinnerNames(List<RacingCar> gameWinners) {
-        String[] winners = gameWinners.stream()
+        return gameWinners.stream()
                 .map(winner -> winner.getName())
-                .toArray(String[]::new);
-        return String.join(WINNER_NAME_DELIMITER, winners);
+                .collect(Collectors.joining(WINNER_NAME_DELIMITER));
     }
 
     private String startRacingGame(List<RacingCar> racingCars, int moveCount) {
