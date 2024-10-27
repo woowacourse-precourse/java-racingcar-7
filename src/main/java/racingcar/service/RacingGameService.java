@@ -20,7 +20,13 @@ public class RacingGameService {
         return CarFactory.generateCars(carNames);
     }
 
-    public List<Car> moveCars(List<Car> cars){
+    public void playRounds(int rounds, List<Car> cars){
+        for(int i=0; i<rounds; i++){
+            moveCars(cars);
+        }
+    }
+
+    private List<Car> moveCars(List<Car> cars){
         for(Car car : cars){
             int randomNumber = RandomUtil.generateRandomNumber();
             car.move(randomNumber);
