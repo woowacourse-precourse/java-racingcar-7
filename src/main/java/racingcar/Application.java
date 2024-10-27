@@ -29,6 +29,12 @@ public class Application {
         }
 
         // 자동차들의 이동 상황(차수별 실행 결과)에 대한 출력
+        private void displayRoundResults(RaceManager raceManager) {
+            for (Car car : raceManager.cars) {
+                System.out.println(car.name + " :" + "-".repeat(car.position));
+            }
+
+        }
         // 우승자 출력(단독 우승자)
         // 우승자 출력(공동 우승자)
     }
