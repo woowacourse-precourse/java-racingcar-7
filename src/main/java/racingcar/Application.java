@@ -2,7 +2,13 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Application {
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 9;
+    private static final int FORWARD_CRITERIA = 4;
+    private static int[] carPositions;
 
     private static String[] getCarNames() {
         String carNames;
@@ -22,6 +28,18 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         count = Console.readLine();
         return Integer.parseInt(count);
+    }
+
+    private static void goOrStop(String[] carNames) {
+        int randomNumber;
+
+        for (int i = 0; i < carNames.length; i++) {
+            randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+
+            if (randomNumber >= FORWARD_CRITERIA) {
+                carPositions[i] += 1;
+            }
+        }
     }
 
     public static void main(String[] args) {
