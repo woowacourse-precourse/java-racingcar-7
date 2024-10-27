@@ -19,9 +19,11 @@ public class InputReceiver {
         return inputParser.splitToCars(input);
     }
 
-    public void readAttemptNumber() {
+    public long readAttemptNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = readInput();
+
+        return inputParser.parseAttemptNumber(input);
     }
 
     private String readInput() {
