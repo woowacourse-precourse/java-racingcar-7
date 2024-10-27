@@ -13,6 +13,33 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
+    void 입력_테스트(){
+        assertSimpleTest(
+                () -> {
+                    run("a,b,c", "5");
+                }
+        );
+    }
+
+    @Test
+    void 입력_테스트_2(){
+        assertSimpleTest(
+                () -> {
+                    run("pobi,java,con", "7");
+                }
+        );
+    }
+
+    @Test
+    void 입력_테스트_3(){
+        assertSimpleTest(
+                () -> {
+                    run("a, ,c", "5");
+                }
+        );
+    }
+
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
@@ -28,6 +55,16 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+
+        );
+    }
+
+    @Test
+    void 예외_테스트_2(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",,,,,234,,,,ㅇㄹ,,ㅁㄴㅇ,,ㅇㅇㄴ,,ㅇㄴ,ㅁㄴㅇㄹ,,,","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+
         );
     }
 
