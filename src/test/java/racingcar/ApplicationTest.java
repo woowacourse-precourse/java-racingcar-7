@@ -24,11 +24,73 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 기능_테스트_특수문자() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("$jun$,&woni", "1");
+                    assertThat(output()).contains("$jun$ : -", "&woni : ", "최종 우승자 : $jun$");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트_공백포함() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("Top G, H R ", "1");
+                    assertThat(output()).contains("Top G : -", " H R  : ", "최종 우승자 : Top G");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 여러_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,crong", "3");
+                    assertThat(output()).contains("pobi : --", "woni : --", "crong : --")
+                            .contains("최종 우승자 : pobi, woni, crong");
+                },
+                4, 4, 4, 4, 4, 4, 4, 4, 4
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 예외_테스트_공백() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("Top P,   ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트_숫자가_아닌_값() {
+        assertThatThrownBy(() -> run("pobi,woni", "abc"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력 형식입니다. 숫자만 입력해주세요.");
+    }
+
+    @Test
+    void 예외_테스트_음수() {
+        assertThatThrownBy(() -> run("pobi,woni", "-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력 형식입니다. 양수를 입력해주세요.");
+    }
+
+    @Test
+    void 예외_테스트_중복() {
+        assertThatThrownBy(() -> run("pobi,pobi", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력 형식입니다. 자동차 이름이 중복됩니다.");
     }
 
     @Override
