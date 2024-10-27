@@ -5,23 +5,25 @@ import racingcar.constants.ViewMessage;
 import racingcar.domain.Car;
 import racingcar.domain.ForwardCount;
 import racingcar.domain.Input;
+import racingcar.domain.Race;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
 
     public void run() {
-        inputCarNames();
-        inputForwardCount();
+        Race race = Race.of(inputCarNames(), inputForwardCount());
+        OutputView.println(race.startRace());
     }
 
-    private void inputCarNames() {
+    private Car inputCarNames() {
         InputView.showInputPrompt(ViewMessage.CAR_NAME_INPUT_PROMPT);
-        Car.from(Input.from(read()).getNames());
+        return Car.from(Input.from(read()).getNames());
     }
 
-    private void inputForwardCount() {
+    private int inputForwardCount() {
         InputView.showInputPrompt(ViewMessage.FORWARD_COUNT_INPUT_PROMPT);
-        ForwardCount.from(read());
+        return ForwardCount.from(read()).getForwardCount();
     }
 
     public static String read() {
