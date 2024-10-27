@@ -1,9 +1,14 @@
 package racingcar.model;
 
 public class Position {
+    private static final int DEFAULT_POSITION = 0;
     private static final int DEFAULT_MOVEMENT_AMOUNT = 1;
 
     private final int position;
+
+    public Position() {
+        this.position = DEFAULT_POSITION;
+    }
 
     public Position(final int position) {
         this.position = position;
