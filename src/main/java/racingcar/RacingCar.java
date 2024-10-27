@@ -14,8 +14,10 @@ public class RacingCar{
         this.carName = carName;
         record = 0;
     }
-    public void race(){
-
+    public void race() {
+        int randomNumber = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
+        if(randomNumber < 4)
+            return;
+        ++record;
     }
-
 }
