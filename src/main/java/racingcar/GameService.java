@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class GameService {
 
@@ -18,13 +19,35 @@ public class GameService {
 
     }
 
+
     public void setNumberOfRounds(String input) {
 
         int round = Integer.parseInt(input);
         gameRepository.setRound(round);
 
     }
-    
+
+
+    public Map<String, Integer> setCarPositionOnTheLine() {
+
+        return gameRepository.getAllNames().stream()
+                .collect(Collectors.toMap(name -> name, name -> 0));
+    }
+
+    public void roundOnRound(Map<String, Integer> cars) {
+
+        String gauge = "-";
+        for (String car : cars.keySet()) {
+            int currentPosition = cars.get(car);
+            int progress = movingForwards();
+            currentPosition += progress;
+            cars.put(car, currentPosition);
+            System.out.println(car + " : " + gauge.repeat(currentPosition));
+        }
+
+        System.out.println();
+
+    }
 
     public int movingForwards() {
 
