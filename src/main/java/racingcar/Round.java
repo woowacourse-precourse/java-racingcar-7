@@ -7,20 +7,11 @@ import java.util.Map;
 
 public class Round {
     private final Map<Car, Integer> roundResult = new HashMap<>();
-    private final int moveCount;
+    private final Integer moveCount;
 
-    private static boolean isNumeric(String str) {
-        return str.matches("-?\\d+(\\.\\d+)?");
-    }
-
-    private void validate(String Input) {
-        if (!isNumeric(Input)) {
-            throw new IllegalArgumentException("횟수는 숫자만 가능합니다.");
-        } else {
-            int parsedInput = Integer.parseInt(Input);
-            if (parsedInput <= 0 || parsedInput > 80) {
-                throw new IllegalArgumentException("횟수는 1 이상 80 이하의 숫자만 가능합니다.");
-            }
+    private void validateMoveCountInRange(Integer moveCount) {
+        if (moveCount <= 0 || moveCount > 80) {
+            throw new IllegalArgumentException("횟수는 1 이상 80 이하의 숫자만 가능합니다.");
         }
     }
 
@@ -28,9 +19,9 @@ public class Round {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    public Round(String moveCountInput, List<Car> cars) {
-        validate(moveCountInput);
-        moveCount = Integer.parseInt(moveCountInput);
+    public Round(Integer moveCount, List<Car> cars) {
+        validateMoveCountInRange(moveCount);
+        this.moveCount = moveCount;
         for (Car car : cars) {
             roundResult.put(car, 0);
         }

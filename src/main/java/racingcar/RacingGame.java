@@ -13,7 +13,7 @@ public class RacingGame {
         String carNamesInput = inputView.getCarNamesInput();
         CompeteCars competeCars = new CompeteCars(carNamesInput);
 
-        String moveCount = inputView.getMoveCount();
+        Integer moveCount = inputView.getMoveCount();
         Round round = new Round(moveCount, competeCars.getAll());
         round.progress(competeCars.getAll());
 
