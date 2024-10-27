@@ -2,6 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Racing {
 
     String[] cars; // car들의 이름 저장
@@ -68,20 +71,15 @@ public class Racing {
         int max = findMaxProgress();
 
         // 우승자 찾기
-        StringBuilder whoWin = new StringBuilder();
+        List<String> winners = new ArrayList<>();
 
-        for (int i=0; i< cars.length; i++) {
-            if(loc[i] == max) {
-                whoWin.append(cars[i]).append(", ");
+        for (int i = 0; i < loc.length; i++) {
+            if (loc[i] == max) {
+                winners.add(cars[i]);
             }
         }
 
-        // 마지막에 추가된 ", " 제거
-        if (!whoWin.isEmpty()) {
-            whoWin.setLength(whoWin.length() - 2); // ", "의 길이인 2를 빼줌
-        }
-
-        String winner = whoWin.toString(); // 최종 문자열로 변환
+        String winner = String.join(",", winners);
         System.out.println("최종 우승자 : "+ winner);
     }
 

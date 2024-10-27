@@ -3,6 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,7 +16,7 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트() {
+    void testRaceWithOneTry() {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
@@ -24,7 +27,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트1() {
+    void testExceptionForInvalidCarLength() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -32,7 +35,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트2() {
+    void testExceptionForInvalidCarNames() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,java;;", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -40,7 +43,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트3() {
+    void testExceptionForNonNumeric() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,java", "hh"))
                         .isInstanceOf(IllegalArgumentException.class)
