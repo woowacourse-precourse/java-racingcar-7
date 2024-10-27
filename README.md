@@ -30,7 +30,9 @@
     - toString(): 자동차의 이름과 전진 횟수를 문자열로 반환한다.
 
 * Repository : CarRepository 인터페이스 및 CarRepositoryImpl 구현
-    
+  - save(): 주어진 자동차 객체를 저장한다.
+  - findByName(): 이름으로 자동차를 찾는다.
+  - findAll(): 저장된 모든 자동차를 반환한다.
 
 * Service : CarService 구현
     
