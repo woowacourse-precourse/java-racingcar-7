@@ -11,6 +11,10 @@ public class ConsoleInputHandler implements InputHandler {
 
     @Override
     public int inputRoundNumber() {
-        return Integer.parseInt(Console.readLine());
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }

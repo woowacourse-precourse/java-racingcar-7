@@ -32,9 +32,11 @@ public class Cars {
         for (Car car : cars) {
             car.moveForward();
         }
+        printRacingProgress();
+
     }
 
-    public void printRacingProgress() {
+    private void printRacingProgress() {
         for (Car car : cars) {
             System.out.print(car.getName() + " : ");
             for (int j = 0; j < car.getPosition(); j++) {

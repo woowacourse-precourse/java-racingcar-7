@@ -22,25 +22,11 @@ public class Racing {
 
         cars.addCar(carNameList);
 
-        int roundNumber = 0;
         System.out.println("시도할 횟수는 몇 회인가요?");
 
-        try {
-            roundNumber = inputHandler.inputRoundNumber();
+        Round round = new Round(inputHandler.inputRoundNumber());
 
-            if (roundNumber < 1) {
-                throw new IllegalArgumentException();
-            }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-
-        for (int i = 0; i < roundNumber; i++) {
-
-            cars.moveForward();
-
-            cars.printRacingProgress();
-        }
+        round.process(cars);
 
         List<Car> winners = cars.getWinners();
 
