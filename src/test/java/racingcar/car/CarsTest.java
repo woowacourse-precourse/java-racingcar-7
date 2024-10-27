@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.name.Name;
+import racingcar.name.Names;
 
 class CarsTest {
 

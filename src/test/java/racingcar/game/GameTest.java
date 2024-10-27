@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.game;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -7,6 +7,10 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.name.Name;
+import racingcar.name.Names;
+import racingcar.car.Car;
+import racingcar.car.Cars;
 
 class GameTest {
 
@@ -14,7 +18,8 @@ class GameTest {
 
     @BeforeEach
     void setUp(){
-        List<Name> names = Arrays.asList(new Name("a"), new Name("bb"), new Name("ccc"));
+        Names names = new Names("a,bb,ccc");
+        //List<Name> names = Arrays.asList(new Name("a"), new Name("bb"), new Name("ccc"));
         cars = new Cars(names);
     }
 

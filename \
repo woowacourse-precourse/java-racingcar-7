@@ -1,0 +1,22 @@
+feat: equals,hashCode,toString 오버라이드 추가
+
+equals : name 필드 비교하여 같은 값인지 확인
+hashCode : 동일한 해시코드 가지도록 보장
+toString : 문자열로 반환되도록 함
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch ghkgus
+# Changes to be committed:
+#	modified:   src/main/java/racingcar/Name.java
+#
+# Changes not staged for commit:
+#	modified:   README.md
+#	modified:   src/main/java/racingcar/Application.java
+#	modified:   src/main/java/racingcar/Car.java
+#	modified:   src/main/java/racingcar/Cars.java
+#	modified:   src/main/java/racingcar/InputManager.java
+#	modified:   src/main/java/racingcar/Names.java
+#	modified:   src/test/java/racingcar/NameTest.java
+#	modified:   src/test/java/racingcar/NamesTest.java
+#

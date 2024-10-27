@@ -1,7 +1,10 @@
-package racingcar;
+package racingcar.car;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.name.Name;
+import racingcar.name.Names;
+import racingcar.io.OutputManager;
 
 public class Cars {
 

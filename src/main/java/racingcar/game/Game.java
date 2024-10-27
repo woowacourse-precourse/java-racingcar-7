@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.game;
 
 import java.util.List;
+import racingcar.car.Car;
+import racingcar.car.Cars;
+import racingcar.io.OutputManager;
 
 public class Game {
 
