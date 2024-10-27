@@ -1,5 +1,12 @@
 package racingcar.controller;
 
+import static racingcar.controller.ExceptionMessages.Default.CAR_NAME_ENDS_WITH_DELIMITER;
+import static racingcar.controller.ExceptionMessages.Default.CAR_NAME_ONLY_DELIMITER;
+import static racingcar.controller.ExceptionMessages.Default.EMPTY_CAR_NAME;
+import static racingcar.controller.ExceptionMessages.Default.EMPTY_TOTAL_ROUNDS;
+import static racingcar.controller.ExceptionMessages.Default.INVALID_CAR_NAME_CHARACTERS;
+import static racingcar.controller.ExceptionMessages.Default.TOTAL_ROUNDS_NOT_INTEGER;
+
 public class DefaultGameInputValidator implements GameInputValidator {
 
     private static DefaultGameInputValidator instance;
@@ -23,30 +30,30 @@ public class DefaultGameInputValidator implements GameInputValidator {
     @Override
     public void validateNameOfCars(String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException("자동차의 이름은 빈 문자열이어서는 안됩니다.");
+            throw new IllegalArgumentException(EMPTY_CAR_NAME);
         }
 
         if (containsOnlyDelimiter(input)) {
-            throw new IllegalArgumentException("자동차의 이름은 구분자인 쉼표(,)로만 이루어질 수 없습니다.");
+            throw new IllegalArgumentException(CAR_NAME_ONLY_DELIMITER);
         }
 
         if (input.endsWith(DELIMITER)) {
-            throw new IllegalArgumentException("자동차의 이름은 구분자인 쉼표(,)로 끝나서는 안됩니다.");
+            throw new IllegalArgumentException(CAR_NAME_ENDS_WITH_DELIMITER);
         }
 
         if (containsInvalidCharactersForNameOfCars(input)) {
-            throw new IllegalArgumentException("자동차의 이름은 숫자, 알파벳, 한글만 가능합니다.");
+            throw new IllegalArgumentException(INVALID_CAR_NAME_CHARACTERS);
         }
     }
 
     @Override
     public void validateTotalRounds(String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException("총 라운드는 빈 값을 입력하실 수 없습니다.");
+            throw new IllegalArgumentException(EMPTY_TOTAL_ROUNDS);
         }
 
         if (!isInteger(input)) {
-            throw new IllegalArgumentException("총 라운드는 정수 형태로 입력하셔야 합니다.");
+            throw new IllegalArgumentException(TOTAL_ROUNDS_NOT_INTEGER);
         }
     }
 
