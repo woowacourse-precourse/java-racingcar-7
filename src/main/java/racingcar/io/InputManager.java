@@ -22,9 +22,7 @@ public class InputManager {
         String counts = Console.readLine();
         int rounds;
 
-        if (counts.isBlank()) {
-            throw new IllegalArgumentException(GAME_ROUND_IS_EMPTY_MESSAGE);
-        }
+        validateEmpty(counts);
 
         rounds = parseGameRound(counts);
         return rounds;
@@ -42,6 +40,12 @@ public class InputManager {
         System.out.println(RACING_COUNT_MESSAGE);
     }
 
+    private static void validateEmpty(String counts) {
+        if (counts.isBlank()) {
+            throw new IllegalArgumentException(GAME_ROUND_IS_EMPTY_MESSAGE);
+        }
+    }
+
     private static int parseGameRound(String counts) {
         int rounds;
 
@@ -51,10 +55,14 @@ public class InputManager {
             throw new IllegalArgumentException(GAME_ROUND_RANGE_IS_NOT_UNDER_INTEGER_NUMERIC_MESSAGE);
         }
 
+        validateRoundCount(rounds);
+
+        return rounds;
+    }
+
+    private static void validateRoundCount(int rounds) {
         if (rounds <= 0) {
             throw new IllegalArgumentException(GAME_ROUND_UNDER_ONE_MESSAGE);
         }
-
-        return rounds;
     }
 }
