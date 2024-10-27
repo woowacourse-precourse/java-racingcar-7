@@ -21,6 +21,13 @@ class CarTest {
     }
 
     @Test
+    void 자동차_전진_기능_테스트() {
+        Car car = new Car("pobi");
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
     void move() {
     }
 }
