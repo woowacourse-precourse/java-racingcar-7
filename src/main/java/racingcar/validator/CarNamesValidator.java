@@ -6,12 +6,14 @@ import static racingcar.exception.ErrorMessage.EMPTY_INPUT;
 import static racingcar.exception.ErrorMessage.EMPTY_CAR_NAME;
 import static racingcar.exception.ErrorMessage.TOO_LONG_NAME;
 import static racingcar.exception.ErrorMessage.DUPLICATION;
+import static racingcar.exception.ErrorMessage.SPACES_NOT_ALLOWED;
 
 public class CarNamesValidator {
 
     public static void validate(List<String> carNames) {
         validateNotEmptyInput(carNames);
         validateCarNameNotEmpty(carNames);
+        validateCarNameNoSpace(carNames);
         validateLength(carNames);
         validateDuplication(carNames);
     }
@@ -41,6 +43,14 @@ public class CarNamesValidator {
     private static void validateDuplication(List<String> carNames) {
         if(carNames.size() != carNames.stream().distinct().count()){
             throw new IllegalArgumentException(DUPLICATION.getMessage());
+        }
+    }
+
+    private static void validateCarNameNoSpace(List<String> carNames) {
+        for( String carName : carNames ){
+            if (carName.contains(" ")) {
+                throw new IllegalArgumentException(SPACES_NOT_ALLOWED.getMessage());
+            }
         }
     }
 
