@@ -9,19 +9,8 @@ public class Application {
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String CarInput = camp.nextstep.edu.missionutils.Console.readLine();
-        public static String[] carList (String input){
-            final String[] nameList = input.trim().split("\\s+,\\s+");
-            for (String i : nameList) {
-                if (i == null || i.isEmpty()) {
-                    throw new IllegalArgumentException("자동차 이름 중 공백이 존재합니다.");
-                }
 
-                if (i.length() > 5) {
-                    throw new IllegalArgumentException("자동차 이름의 길이는 5를 넘길 수 없습니다.");
-                }
-            }
-            return nameList;
-        }
+        String[] nameList = CarList.carList(CarInput);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String racingNum = camp.nextstep.edu.missionutils.Console.readLine();
