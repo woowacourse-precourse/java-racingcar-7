@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,6 +12,9 @@ import java.util.regex.Pattern;
 public class Application {
     private static final Pattern RACING_CAR_NAME_REGEX_PATTERN = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]{0,4}$");
     private static final Pattern TRY_COUNT_REGEX_PATTERN = Pattern.compile("^[1-9][0-9]*$");
+    private static final int MOVE_FORWARD_THRESHOLD = 4;
+    private static final int RANDOM_LOWER_BOUND = 0;
+    private static final int RANDOM_UPPER_BOUND = 9;
 
     public static void main(String[] args) {
         // 경주할 자동차 이름 입력 받고, 유효성 검증
@@ -41,8 +45,17 @@ public class Application {
 
     private static void playRacingCarRound(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
         for (String racingCar : racingCars) {
-            // TODO: 해당 자동차가 전진 가능하면, 이동 거리를 1 증가
+            if (canMoveForward()) {
+                int updatedScore = racingCarsDistance.get(racingCar) + 1;
+                racingCarsDistance.put(racingCar, updatedScore);
+            }
         }
+    }
+
+    private static boolean canMoveForward() {
+        int randomValue = Randoms.pickNumberInRange(RANDOM_LOWER_BOUND, RANDOM_UPPER_BOUND);
+
+        return randomValue >= MOVE_FORWARD_THRESHOLD;
     }
 
     private static String inputString() {
