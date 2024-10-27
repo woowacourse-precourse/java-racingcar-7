@@ -2,6 +2,7 @@ package racingcar.domain;
 
 public class RacingCar {
     private final String name;
+    private int position;
 
     public RacingCar(String name) {
         validateName(name);
@@ -20,5 +21,15 @@ public class RacingCar {
 
     public String getName() {
         return name;
+    }
+
+    public void move(int number) {
+        if (number >= 4) {
+            position += 1;
+        }
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

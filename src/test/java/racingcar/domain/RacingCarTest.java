@@ -38,4 +38,14 @@ public class RacingCarTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("자동차는 4 이상의 숫자를 받으면 1 이동한다.")
+    public void moveWhenGiveNumberOver4() {
+        RacingCar racingCar = new RacingCar("자동차");
+
+        racingCar.move(4);
+
+        assertThat(racingCar.getPosition()).isEqualTo(1);
+    }
+
 }
