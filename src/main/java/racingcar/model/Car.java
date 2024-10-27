@@ -1,13 +1,10 @@
 package racingcar.model;
 
-import java.util.List;
 
 public class Car {
+    private final String name;
 
-    private static final int INVALID_NAME_LENGTH= 5;
-
-
-
-
-
+    public Car(String name) {
+        this.name = name;
+    }
 }
