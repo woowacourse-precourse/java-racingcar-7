@@ -42,4 +42,9 @@ public class RacingIO {
             System.out.println(carName + " : " + "-".repeat(carPosition));
         }
     }
+
+    public static void promptWinner(String[] winners) {
+        String joinedWinners = String.join(WINNER_DELIMITER, winners);
+        System.out.println(WINNER_PROMPT + joinedWinners);
+    }
 }
