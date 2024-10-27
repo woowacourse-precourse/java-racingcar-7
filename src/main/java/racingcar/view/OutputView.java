@@ -22,7 +22,7 @@ public class OutputView {
     }
 
     public void printProgress() {
-        System.out.println(generateProgress());
+        System.out.println(generateProgress() + "\n");
     }
 
     public String generateWinners() {
