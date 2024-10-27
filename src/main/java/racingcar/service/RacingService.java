@@ -24,9 +24,10 @@ public class RacingService {
         this.validation = validation;
     }
 
-    public void initCars(String userInput) {
+    public List<Car> initCars(String userInput) {
         this.carManager = new CarManager(
                 CarCreator.createCars(InputParser.parserCarNames(userInput)));
+        return carManager.getCars();
     }
 
     public List<Car> onceRacing() {
