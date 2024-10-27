@@ -25,7 +25,7 @@ public class GameController {
 
     private void endGame(Winner winner) {
         String info = winner.winnerInfo();
-        outputView.printWinnerPlayers(info);
+        outputView.printFinalWinners(info);
     }
 
     private Winner winnerPlayers(Cars cars) {
