@@ -26,6 +26,17 @@ public class Cars {
         }
     }
 
+    public List<Car> findWinners() {
+        List<Car> winners = new ArrayList<>();
+        int maximum = findMaxPosition(cars);
+        for (Car car : cars) {
+            if (car.isSamePosition(maximum)) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
     public int findMaxPosition(List<Car> cars) {
         int maximum = 0;
         for (Car car : cars) {
