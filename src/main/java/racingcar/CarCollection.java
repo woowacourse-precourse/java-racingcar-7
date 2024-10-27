@@ -12,7 +12,7 @@ class CarCollection {
         this.carList = new ArrayList<>();
     }
 
-    public void add(String carName){
+    public void add(String carName) {
         Car newCar = new Car(carName);
         carList.add(newCar);
     }

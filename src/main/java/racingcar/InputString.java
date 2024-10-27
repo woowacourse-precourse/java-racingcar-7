@@ -3,10 +3,11 @@ package racingcar;
 public class InputString {
 
     private String inputString;
-    private final String DELIMITER=",";
-    private final String NULL_ERROR_MESSAGE="[error] 자동차의 이름이 입력되지 않았습니다.";
-    private final String OVERSIZE_NAME_ERROR_MESSAGE="[error] 자동차의 이름은 최대 5글자입니다.";
+    private final String DELIMITER = ",";
+    private final String NULL_ERROR_MESSAGE = "[error] 자동차의 이름이 입력되지 않았습니다.";
+    private final String OVERSIZE_NAME_ERROR_MESSAGE = "[error] 자동차의 이름은 최대 5글자입니다.";
     private final int MAX_CAR_NAME_LEN = 5;
+
     InputString(String string) {
         if (string == null || string.isBlank()) {
             throw new IllegalArgumentException(NULL_ERROR_MESSAGE);
