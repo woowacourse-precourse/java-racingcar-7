@@ -15,7 +15,7 @@ public class CarTest {
         // given & When
         Car car = new Car(new Name("pobi"));
 
-        // Then
+        // then
         assertThat(car.getName()).isEqualTo("pobi");
         assertThat(car.getPosition()).isEqualTo(0);
     }
