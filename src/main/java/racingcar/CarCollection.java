@@ -6,7 +6,6 @@ import java.util.List;
 class CarCollection {
 
     private List<Car> carList;
-    private final int MOVE_CRITERIA = 4;
 
     public CarCollection() {
         this.carList = new ArrayList<>();
@@ -25,11 +24,9 @@ class CarCollection {
         return carNames;
     }
 
-    public void moveCar(int index, int randomNum) {
-        if (randomNum >= MOVE_CRITERIA) {
-            Car car = carList.get(index);
-            car.move();
-        }
+    public void moveCar(int index) {
+        Car car = carList.get(index);
+        car.move();
     }
 
     public int carCount() {

@@ -1,7 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.util.List;
+import java.lang.reflect.Method;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -84,22 +84,12 @@ class ApplicationTest extends NsTest {
         InputString inputString = new InputString("pobi");
         CarCollection carCollection = inputString.getCarCollection();
 
-        carCollection.moveCar(0, 4);
+        carCollection.moveCar(0);
         int moveCount = carCollection.getCarMoveCount().get(0);
 
         assertThat(moveCount == 1).isTrue();
     }
 
-    @Test
-    void 자동차_정지_테스트() {
-        InputString inputString = new InputString("pobi");
-        CarCollection carCollection = inputString.getCarCollection();
-
-        carCollection.moveCar(0, 3);
-        int moveCount = carCollection.getCarMoveCount().get(0);
-
-        assertThat(moveCount == 0).isTrue();
-    }
 
     @Override
     public void runMain() {

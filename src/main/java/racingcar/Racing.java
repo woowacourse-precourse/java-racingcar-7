@@ -9,6 +9,7 @@ class Racing {
     CarCollection carCollection;
     private final int RANDOM_NUMBER_START = 0;
     private final int RANDOM_NUMBER_END = 9;
+    private final int MOVE_CRITERIA = 4;
 
     Racing(InputString inputString) {
         this.inputString = inputString;
@@ -18,7 +19,7 @@ class Racing {
     public void start(int tryCount) {
         System.out.println("\n실행 결과");
         while (tryCount-- > 0) {
-            moveCars();
+            moveOrStop();
             printCars();
         }
         printResult();
@@ -36,10 +37,12 @@ class Racing {
     }
 
 
-    private void moveCars() {
+    private void moveOrStop() {
         for (int i = 0; i < carCollection.carCount(); i++) {
             int randomNum = Randoms.pickNumberInRange(RANDOM_NUMBER_START, RANDOM_NUMBER_END);
-            carCollection.moveCar(i, randomNum);
+            if (randomNum >= MOVE_CRITERIA) {
+                carCollection.moveCar(i);
+            }
         }
     }
 
