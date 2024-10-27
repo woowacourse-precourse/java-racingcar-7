@@ -8,14 +8,14 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
 import racingcar.model.Game;
+import racingcar.model.RacingCar;
 
 class OutputViewTest {
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-    private List<Car> players;
+    private List<RacingCar> players;
     private Game game;
     private OutputView outputView;
 
@@ -23,7 +23,7 @@ class OutputViewTest {
     @BeforeEach
     void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
-        players = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
+        players = List.of(new RacingCar("pobi"), new RacingCar("woni"), new RacingCar("jun"));
         game = new Game(players, "3");
         outputView = new OutputView();
     }

@@ -2,12 +2,12 @@ package racingcar.model;
 
 import java.util.Objects;
 
-public class Car {
+public class RacingCar {
     private final String name;
     private int position;
 
-    public Car(String name) {
-        CarValidator.validate(name);
+    public RacingCar(String name) {
+        RacingCarValidator.validate(name);
         this.name = name;
         this.position = 0;
     }
@@ -28,8 +28,8 @@ public class Car {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Car car = (Car) o;
-        return position == car.position && Objects.equals(name, car.name);
+        RacingCar racingCar = (RacingCar) o;
+        return position == racingCar.position && Objects.equals(name, racingCar.name);
     }
 
     @Override
@@ -38,6 +38,6 @@ public class Car {
     }
 
     public void move() {
-        this.position += 1;
+        position += 1;
     }
 }

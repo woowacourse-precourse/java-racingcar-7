@@ -9,11 +9,11 @@ public class Game {
     private static final int MOVE_THRESHOLD = 4;
     private static final int FIRST_ROUND = 1;
 
-    private final List<Car> players;
+    private final List<RacingCar> players;
     private final int totalRound;
     private int currentRound;
 
-    public Game(List<Car> players, String totalRound) {
+    public Game(List<RacingCar> players, String totalRound) {
         GameValidator.validate(totalRound);
 
         this.players = players;
@@ -21,7 +21,7 @@ public class Game {
         this.currentRound = FIRST_ROUND;
     }
 
-    public List<Car> getPlayers() {
+    public List<RacingCar> getPlayers() {
         return players;
     }
 
@@ -34,7 +34,7 @@ public class Game {
     }
 
     public void play() {
-        for (Car player : players) {
+        for (RacingCar player : players) {
             if (canMove()) {
                 player.move();
             }

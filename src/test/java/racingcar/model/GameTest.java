@@ -11,12 +11,12 @@ import org.junit.jupiter.api.Test;
 class GameTest {
 
     private Game game;
-    private List<Car> players;
+    private List<RacingCar> players;
     private static final String TOTAL_ROUND = "6";
 
     @BeforeEach
     void setUp() {
-        players = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
+        players = List.of(new RacingCar("pobi"), new RacingCar("woni"), new RacingCar("jun"));
         game = new Game(players, TOTAL_ROUND);
     }
 
@@ -34,7 +34,7 @@ class GameTest {
         }
         assertFalse(game.isNotFinished());
     }
-    
+
     @Test
     void 라운드가_미종료시_게임_진행_가능() {
         game.play();

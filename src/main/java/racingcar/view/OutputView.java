@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.model.Car;
 import racingcar.model.Game;
+import racingcar.model.RacingCar;
 
 public class OutputView {
 
@@ -16,8 +16,8 @@ public class OutputView {
             System.out.printf(HEADER);
         }
 
-        List<Car> players = game.getPlayers();
-        for (Car player : players) {
+        List<RacingCar> players = game.getPlayers();
+        for (RacingCar player : players) {
             System.out.printf(PLAYER_POSITION_TEMPLATE, player.getName(), printPosition(player.getPosition()));
         }
 

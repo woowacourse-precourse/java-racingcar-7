@@ -5,7 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
+import racingcar.model.RacingCar;
 
 class PlayerServiceTest {
 
@@ -15,24 +15,24 @@ class PlayerServiceTest {
     void 유효한_차_이름_입력시_테스트() {
         String carNames = "pobi,woni,jun";
 
-        List<Car> carList = playerService.registerPlayers(carNames);
+        List<RacingCar> racingCarList = playerService.registerPlayers(carNames);
 
-        assertThat(carList).hasSize(3);
-        assertThat(carList.getFirst().getName()).isEqualTo("pobi");
-        assertThat(carList.get(1).getName()).isEqualTo("woni");
-        assertThat(carList.get(2).getName()).isEqualTo("jun");
+        assertThat(racingCarList).hasSize(3);
+        assertThat(racingCarList.getFirst().getName()).isEqualTo("pobi");
+        assertThat(racingCarList.get(1).getName()).isEqualTo("woni");
+        assertThat(racingCarList.get(2).getName()).isEqualTo("jun");
     }
 
     @Test
     void 전처리_필요한_차_이름_입력시_테스트() {
         String carNames = "  pobi,    woni, jun ";
 
-        List<Car> carList = playerService.registerPlayers(carNames);
+        List<RacingCar> racingCarList = playerService.registerPlayers(carNames);
 
-        assertThat(carList).hasSize(3);
-        assertThat(carList.getFirst().getName()).isEqualTo("pobi");
-        assertThat(carList.get(1).getName()).isEqualTo("woni");
-        assertThat(carList.get(2).getName()).isEqualTo("jun");
+        assertThat(racingCarList).hasSize(3);
+        assertThat(racingCarList.getFirst().getName()).isEqualTo("pobi");
+        assertThat(racingCarList.get(1).getName()).isEqualTo("woni");
+        assertThat(racingCarList.get(2).getName()).isEqualTo("jun");
     }
 
     @Test
