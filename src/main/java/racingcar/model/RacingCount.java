@@ -5,8 +5,9 @@ import racingcar.exception.ErrorMessage;
 
 public class RacingCount {
 
-    private static final int MIN_TRY_COUNT = 1;
+    private static final int ONE_COUNT = 1;
     private static final int END_TRY_COUNT = 0;
+    private static final int MIN_TRY_COUNT = 1;
 
     private int tryCount;
 
@@ -20,7 +21,7 @@ public class RacingCount {
     }
 
     public void deduct() {
-        this.tryCount -= 1;
+        this.tryCount -= ONE_COUNT;
     }
 
     public boolean isTry() {
