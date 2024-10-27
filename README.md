@@ -85,3 +85,34 @@ jun : -----
 | 게임 중 자동차 무작위 전진/멈춤 |     경주게임 시작 이후 회차마다 각 자동차마다 0~9 사이의 무작위 값이 4 이상이 나온 자동차는 전진합니다.      |                                                -                                                |                                         -                                          |
 | 게임 중 이동 회차당 현황 출력  |                경주게임 시작 이후 회차마다 자동차가 이동한 결과를 모두 출력합니다.                |                                   - 자동차가 전진을 할 경우 `-`가 추가됩니다.                                   |                                         -                                          |
 |   게임 종료 이후 결과 출력   |         사용자가 입력한 이동횟수만큼 회차가 진행된 이후 경주의 최종 우승 자동차 이름을 출력합니다.          |                - 최종 우승자는 한 명 이상이 될 수 있습니다. <br> - 우승자가 여러 명일 경우 `,`를 이용하여 구분합니다.                |                                         -                                          |
+
+## 패키지 구조
+```text
+.
+└── racingcar
+    ├── Application.java
+    ├── io
+    │   ├── page
+    │   │   ├── AbstractSimpleTextPage.java
+    │   │   ├── IntegerReaderPage.java
+    │   │   ├── Page.java
+    │   │   ├── ReaderPage.java
+    │   │   ├── SimpleTextPage.java
+    │   │   └── SimpleTextReaderPage.java
+    │   └── read
+    │       ├── AbstractReader.java
+    │       ├── IntegerReader.java
+    │       ├── Reader.java
+    │       └── StringReader.java
+    ├── parser
+    │   ├── CarNamesParser.java
+    │   └── Parser.java
+    └── race
+        ├── Car.java
+        ├── Race.java
+        └── Vehicle.java
+```
+`io.page` : 콘솔에 텍스트를 출력하는 인터페이스 및 클래스를 관리하는 패키지입니다.  
+`io.read` : 콘솔에 텍스트를 입력받는 인터페이스 및 클래스를 관리하는 패키지입니다.  
+`parser` : 특정 input 값을 특정 output 타입으로 파싱하여 변환하는 인터페이스 및 클래스를 관리하는 패키지입니다.  
+`race` : 자동차 경주 게임 기능을 수행하는 인터페이스 및 클래스를 관리하는 패키지입니다.
