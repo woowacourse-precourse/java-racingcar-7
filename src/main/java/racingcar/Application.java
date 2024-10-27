@@ -20,6 +20,9 @@ public class Application {
         List<Car> cars = createCars(carNamesList);
 
         runRace(cars, numberOfAttempts);
+
+        RaceOutput.displayRaceResults(cars, numberOfAttempts);
+        RaceOutput.displayWinners(cars);
     }
 
     public static RaceInput getInput() {
