@@ -73,7 +73,7 @@
 
 # GameInitializer
 
-- [ ]  자동차 경주의 초기화를 담당한다.
+- [x]  자동차 경주의 초기화를 담당한다.
 
 # Controller
 
