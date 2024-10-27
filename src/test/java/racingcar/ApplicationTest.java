@@ -53,10 +53,9 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_다른_구분자() {
+    void 예외_테스트_콜론_미포함() {
         assertSimpleTest(() -> assertThatThrownBy(() -> runException("povi.siyun", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
-
         );
     }
 
