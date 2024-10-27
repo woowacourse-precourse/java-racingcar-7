@@ -1,10 +1,10 @@
 package racingcar.domain;
 
-public class DTO {
+public class Car {
     private final String carName;
     private int forwardCount;
 
-    public DTO(String carName, int forWardCount) {
+    public Car(String carName, int forWardCount) {
         this.carName = carName;
         this.forwardCount = forWardCount;
     }

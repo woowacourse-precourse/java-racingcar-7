@@ -6,7 +6,7 @@ import static racingcar.service.GameStart.race;
 import static racingcar.validation.Validation.validateGameCount;
 
 import java.util.ArrayList;
-import racingcar.domain.DTO;
+import racingcar.domain.Car;
 import racingcar.view.*;
 
 public class racingGameController {
@@ -15,15 +15,15 @@ public class racingGameController {
         int max = 0;
         String carNameBuffer = input.carNameInput();
         ArrayList<String> carNameArray = splitCarName(carNameBuffer);
-        DTO[] dto = registerCarParticipants(carNameArray);
+        Car[] cars = registerCarParticipants(carNameArray);
 
         String gameCountBuffer = input.GameCountInput();
         int gameCount = validateGameCount(gameCountBuffer);
 
         for (int i = 0; i < gameCount; i++) {
-            max = race(dto);
-            Output.gameResult(dto);
+            max = race(cars);
+            Output.gameResult(cars);
         }
-        Output.gameWinners(max, dto);
+        Output.gameWinners(max, cars);
     }
 }

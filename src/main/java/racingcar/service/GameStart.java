@@ -1,24 +1,24 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.domain.DTO;
+import racingcar.domain.Car;
 
 public class GameStart {
     private static int max;
 
-    public static int race(DTO[] player) {
+    public static int race(Car[] player) {
 
-        for (DTO dto : player) {
+        for (Car car : player) {
             int forward = Randoms.pickNumberInRange(0, 9);
             if (forward >= 4) {
-                dto.setForwardCount(dto.getForwardCount() + 1);
+                car.setForwardCount(car.getForwardCount() + 1);
             }
-            maxForward(dto);
+            maxForward(car);
         }
         return max;
     }
 
-    public static void maxForward(DTO player) {
+    public static void maxForward(Car player) {
 
         if(player.getForwardCount() > max) {
             max = player.getForwardCount();

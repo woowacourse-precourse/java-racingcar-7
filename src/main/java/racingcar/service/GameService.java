@@ -4,7 +4,7 @@ import static racingcar.validation.Validation.validateName;
 import static racingcar.validation.Validation.validateSameName;
 
 import java.util.ArrayList;
-import racingcar.domain.DTO;
+import racingcar.domain.Car;
 
 public class GameService {
 
@@ -18,11 +18,11 @@ public class GameService {
         return carNameArray;
     }
 
-    public static DTO[] registerCarParticipants(ArrayList<String> carNameArray) {
-        DTO[] dtoArray = new DTO[carNameArray.size()];
-        for (int i = 0; i < dtoArray.length; i++) {
-            dtoArray[i] = new DTO(carNameArray.get(i), 0);
+    public static Car[] registerCarParticipants(ArrayList<String> carNameArray) {
+        Car[] cars = new Car[carNameArray.size()];
+        for (int i = 0; i < cars.length; i++) {
+            cars[i] = new Car(carNameArray.get(i), 0);
         }
-        return dtoArray;
+        return cars;
     }
 }
