@@ -18,13 +18,13 @@ public class Application {
             List<Integer> checkWinner = checkWinner(individualCarMovements);
             printWinner(checkWinner, names);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            throw e;
         }
     }
 
     public static void individualRandoms(String[] individualCarMovements, String[] names) { // 1회 이동 메서드
         for (int i = 0; i < names.length; i++) {
-            if (Randoms.pickNumberInRange(0, 9) > 4) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 individualCarMovements[i] += "-";
             }
         }
@@ -58,7 +58,7 @@ public class Application {
     }
 
     public static void printWinner(List<Integer> checkWinner, String[] names) {
-        System.out.print("최종 우승자는 : ");
+        System.out.print("최종 우승자 : ");
 
         for (int i = 0; i < checkWinner.size(); i++) {
             System.out.print(names[checkWinner.get(i)]);
