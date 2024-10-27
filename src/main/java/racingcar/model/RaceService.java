@@ -3,6 +3,7 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.util.Converter;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +13,7 @@ public class RaceService {
 
     private final Converter converter = new Converter();
     private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
     public List<Car> createCarList() {
         String inputCarList = inputView.inputCarList();
@@ -28,13 +30,12 @@ public class RaceService {
         System.out.println("실행 결과");
         for (int i = 0; i < tryCnt; i++) {
             raceRound(carList);
-            printRaceResult(carList);
+            outputView.printRaceResult(carList);
         }
-        System.out.println();
 
         // 모든 라운드가 끝난 후 우승자 찾기
         List<String> winners = getWinners(carList);
-        printWinners(winners);
+        outputView.printWinners(winners);
     }
 
     private void raceRound(List<Car> carList) {
@@ -54,18 +55,6 @@ public class RaceService {
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName)
                 .collect(Collectors.toList());
-    }
-
-    private void printRaceResult(List<Car> carList) {
-        for (Car car : carList) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
-        }
-        // 라운드 간 간격을 위한 빈 줄 출력
-        System.out.println();
-    }
-
-    private void printWinners(List<String> winners) {
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     private String[] parseCarNames(String inputCarList) {
