@@ -14,4 +14,5 @@ public class ConstantMessage {
 
     static public final String NAME_LENGTH_EXCEPTION = "name is too long.";
     static public final String INVALID_RANGE_EXCEPTION = "Invalid boundary value."; // 예외가 발생할 일이 없지만 확장성을 위해 남겨둠.
+    static public final String DUPLICATED_NAME_EXCEPTION = "Duplicated name exist.";
 }
