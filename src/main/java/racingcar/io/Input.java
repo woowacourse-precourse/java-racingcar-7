@@ -2,6 +2,9 @@ package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Input {
     private static final Input instance = new Input();
 
@@ -13,5 +16,9 @@ public class Input {
 
     public String inputString() {
         return Console.readLine();
+    }
+
+    public List<String> splitInput(String input) {
+        return Arrays.asList(input.split(","));
     }
 }
