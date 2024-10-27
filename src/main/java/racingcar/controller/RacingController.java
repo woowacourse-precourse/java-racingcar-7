@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.model.RacingGame;
 import racingcar.service.RacingService;
+import racingcar.util.Validatior;
 import racingcar.view.RacingCarView;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class RacingController {
         String[] carNames = racingCarView.readCarName();
         List<Car> cars = racingService.generateCars(carNames);
         int num = racingCarView.readNum();
+        Validatior.isInteger(num);
         racingService.initGame(cars, num);
     }
 
