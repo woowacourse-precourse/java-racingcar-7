@@ -38,7 +38,7 @@ class OutputViewTest extends NsTest {
         testCarList = TestCarList.getTestCarList(carList);
         gameFactory = new GameFactory();
 
-        gameResult = gameFactory.gameResult();
+        gameResult = new GameResult();
         outputView = gameFactory.outputView();
         game = gameFactory.carRacingGame();
     }
@@ -49,12 +49,13 @@ class OutputViewTest extends NsTest {
         int size = 3;
         assertRandomNumberInRangeTest(
                 () -> {
-                    game.play(testCarList, gameResult, size);
-                    game.determineWinner(testCarList, gameResult);
+                    game.play(gameResult, testCarList, size);
+                    game.determineWinner(gameResult, testCarList);
 
                     run();
                     assertThat(output())
-                            .isEqualTo("테스트카0 : \n" +
+                            .isEqualTo("실행 결과\n" +
+                                    "테스트카0 : \n" +
                                     "테스트카1 : -\n" +
                                     "테스트카2 : -\n" +
                                     "\n" +

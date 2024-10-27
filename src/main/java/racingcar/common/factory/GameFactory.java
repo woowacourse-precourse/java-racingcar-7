@@ -1,7 +1,6 @@
 package racingcar.common.factory;
 
 import racingcar.controller.GameController;
-import racingcar.model.dto.GameResult;
 import racingcar.model.service.CarRacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -12,15 +11,11 @@ import racingcar.view.OutputView;
 public class GameFactory {
 
     public GameController gameController() {
-        return new GameController(carRacingGame(), gameResult(), inputView(), outputView());
-    };
+        return new GameController(carRacingGame(), inputView(), outputView());
+    }
 
     public CarRacingGame carRacingGame() {
         return new CarRacingGame();
-    }
-
-    public GameResult gameResult() {
-        return new GameResult();
     }
 
     public InputView inputView() {
