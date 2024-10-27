@@ -6,16 +6,17 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        String[] carNames = inputCarNames();
+        List<String> carNames = inputCarNames();
         int totalMoves = inputTotalMoves();
 
         List<Car> winners = new RacingGame().run(carNames, totalMoves);
         printWinners(winners);
     }
 
-    private static String[] inputCarNames() {
+    private static List<String> inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return input().split(",");
+        String[] carNames = input().split(",");
+        return List.of(carNames);
     }
 
     private static int inputTotalMoves() {

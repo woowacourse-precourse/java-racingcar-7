@@ -9,28 +9,22 @@ import java.util.stream.Collectors;
 public class RacingGame {
     private Set<Car> cars = new HashSet<>();
 
-    public List<Car> run(final String[] carNames, final int totalMoves) {
+    public List<Car> run(final List<String> carNames, final int totalMoves) {
+        registerCars(carNames);
         validateTotalMovesRange(totalMoves);
-
-        for (String name : carNames) {
-            registerCar(new Car(name));
-        }
 
         for (int i = 0; i < totalMoves; i++) {
             moveCars();
             printCarStatus();
         }
 
-        int winningDistance = cars.stream()
-                .mapToInt(car -> car.getDistanceMovedForward())
-                .max()
-                .getAsInt();
+        return getWinners();
+    }
 
-        List<Car> winners = cars.stream()
-                .filter(car -> car.getDistanceMovedForward() == winningDistance)
-                .collect(Collectors.toList());
-
-        return winners;
+    private void registerCars(List<String> carNames) {
+        carNames.stream()
+                .map(Car::new)
+                .forEach(this::registerCar);
     }
 
     private void validateTotalMovesRange(int totalMoves) {
@@ -63,5 +57,18 @@ public class RacingGame {
     private void printCarStatus() {
         cars.forEach(System.out::println);
         System.out.println();
+    }
+
+    private List<Car> getWinners() {
+        return cars.stream()
+                .filter(car -> car.getDistanceMovedForward() == getWinningDistance())
+                .collect(Collectors.toList());
+    }
+
+    private int getWinningDistance() {
+        return cars.stream()
+                .mapToInt(car -> car.getDistanceMovedForward())
+                .max()
+                .getAsInt();
     }
 }

@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,9 +13,7 @@ class RacingGameTest {
     public void should_ThrowException_When_CarNameDuplicated() {
         //given
         RacingGame racingGame = new RacingGame();
-        String[] carNames = new String[]{
-                "abc", "abc", "d"
-        };
+        List<String> carNames = List.of("abc", "abc", "d");
 
         //when
         //then
