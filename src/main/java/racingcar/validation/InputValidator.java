@@ -15,7 +15,7 @@ public class InputValidator {
 
     public void validateCarNames(List<String> names) {
         if (isCheckedDuplicate(names)) {
-            throw new IllegalArgumentException("중복된 이름은 사용할 수 없습니다: ");
+            throw new IllegalArgumentException("중복된 이름은 사용할 수 없습니다.");
         }
 
         for (String name : names) {
