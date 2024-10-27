@@ -3,8 +3,8 @@ package racingcar;
 import java.util.List;
 
 public class RacingGame {
-    private List<Car> cars;
-    private int moveCount;
+    private final List<Car> cars;
+    private final int moveCount;
 
     public RacingGame(List<Car> cars, int moveCount) {
         this.cars = cars;
