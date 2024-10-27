@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RacingNumTest {
+class RacingNumTest {
 
     private static final String NEGATIVE_NUMBER_ERROR = "시도할 횟수는 0보다 큰 정수이어야 합니다.";
     private static final String NON_INTEGER_ERROR = "시도할 횟수는 정수로 입력되어야 합니다.";
