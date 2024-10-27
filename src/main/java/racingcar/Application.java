@@ -1,8 +1,9 @@
 package racingcar;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         try {
             startRacingGame();
         } catch (IllegalArgumentException e) {
@@ -10,5 +11,10 @@ public class Application {
         }
     }
 
+    private static void startRacingGame() {
+        List<Car> cars = RacingGame.initializeCars();
+        int rounds = RacingGame.initializeRounds();
+        RacingGame game = new RacingGame(cars, rounds);
+        game.startRace();
     }
 }
