@@ -41,6 +41,13 @@ public class InputValidatorTest {
     }
 
     @Test
+    void 중복된_자동차_이름이_있다면_에러가_발생한다() {
+        assertThatThrownBy(() -> inputValidator.validateCarNames("aa,aa,bbb"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Constant.CAR_NAME_DUPLICATE_ERROR_MESSAGE);
+    }
+
+    @Test
     void 시도_횟수는_정수로_파싱되어야한다() {
         int attemptCount = inputValidator.validateAttemptCount("10");
 
