@@ -49,6 +49,12 @@ public class CarsPriorityBlockingQueue implements Cars{
   }
 
   @Override
+  public List<Car> getList() {
+    return cars.stream()
+        .toList();
+  }
+
+  @Override
   public RacingRoundResult moveOrStayAll() {
     List<Car> movedCars = cars.stream()
         .filter(car ->{

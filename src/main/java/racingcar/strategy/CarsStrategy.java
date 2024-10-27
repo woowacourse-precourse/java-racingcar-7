@@ -28,6 +28,6 @@ public class CarsStrategy {
   }
 
   public Function<List<Car>, Cars> getDefaultCollection() {
-    return carStrategy.get(CarsType.PRIORITY_BLOCKING_QUEUE);
+    return carStrategy.get(CarsType.LIST);
   }
 }

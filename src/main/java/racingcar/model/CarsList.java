@@ -40,6 +40,11 @@ public class CarsList implements Cars{
   }
 
   @Override
+  public List<Car> getList() {
+    return cars;
+  }
+
+  @Override
   public RacingRoundResult moveOrStayAll() {
     List<Car> movedCars = cars.stream()
         .filter(car ->{
