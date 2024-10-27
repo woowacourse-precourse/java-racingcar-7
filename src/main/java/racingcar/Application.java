@@ -15,5 +15,9 @@ public class Application {
         String input = Console.readLine();
         String[] carNames = input.replaceAll(" ", "").split(",");
 
+        // 시도할 횟수 입력 받기
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputCount = Console.readLine();
+        int count = Integer.parseInt(inputCount);
     }
 }
