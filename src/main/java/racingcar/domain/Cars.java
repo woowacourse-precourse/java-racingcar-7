@@ -1,5 +1,7 @@
 package racingcar.domain;
 
-public class Cars {
+import java.util.List;
 
+public class Cars {
+	private final List<Car> cars;
 }
