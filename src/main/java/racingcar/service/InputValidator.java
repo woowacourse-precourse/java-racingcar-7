@@ -3,7 +3,7 @@ package racingcar.service;
 public class InputValidator {
 
     private static final int MINIMUM_CAR_NAME_SIZE = 1;
-    private static final int MINIMUM_CAR_NAME_LENGTH = 5;
+    private static final int MAX_CAR_NAME_LENGTH = 5;
     private static final int MINIMUM_TRY_COUNT = 1;
 
     public void validateCarNames(String[] carNames) {
@@ -19,7 +19,7 @@ public class InputValidator {
             if (carName.isBlank()) {
                 throw new IllegalArgumentException();
             }
-            if (lengthWithoutBlank < MINIMUM_CAR_NAME_LENGTH) {
+            if (lengthWithoutBlank > MAX_CAR_NAME_LENGTH) {
                 throw new IllegalArgumentException();
             }
         }
