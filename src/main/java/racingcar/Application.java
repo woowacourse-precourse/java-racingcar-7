@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.controller.RacingController;
 import racingcar.repository.CarRepository;
 import racingcar.repository.impl.CarRepositoryImpl;
@@ -46,5 +47,7 @@ public class Application {
 
         // 실행
         racingController.run();
+
+        Console.close();
     }
 }
