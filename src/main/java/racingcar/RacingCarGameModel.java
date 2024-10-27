@@ -13,6 +13,8 @@ public class RacingCarGameModel {
     public void initializationGame(RacingGameInitializationRequest request) {
         String[] participants = request.participants().split(",");
 
+        participantNumberCount(participants);
+
         for (String participant : participants) {
             participantEntities.add(new ParticipantEntity(nameValidation(participant)));
         }
@@ -53,6 +55,12 @@ public class RacingCarGameModel {
 
     private void successForward(ParticipantEntity participantEntity) {
         participantEntity.forward();
+    }
+
+    private void participantNumberCount(String[] participants) {
+        if (participants.length < 2) {
+            throw new IllegalArgumentException("참가자는 2명이상 가능합니다.");
+        }
     }
 
     private String nameValidation(String name) {
