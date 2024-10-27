@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.RacingCar;
 import racingcar.service.RacingCarService;
 import racingcar.service.ValidateService;
+import racingcar.util.RandomGenerator;
 import racingcar.view.InstructionView;
 import racingcar.view.ResultView;
 import racingcar.view.RoundView;
@@ -18,13 +19,15 @@ public class RacingCarController {
     RacingCarService racingCarService;
     RoundView roundView;
     ResultView resultView;
+    RandomGenerator randomGenerator;
 
-    public RacingCarController(InstructionView instructionView, ValidateService validateService, RacingCarService racingCarService, RoundView roundView, ResultView resultView) {
+    public RacingCarController(InstructionView instructionView, ValidateService validateService, RacingCarService racingCarService, RoundView roundView, ResultView resultView, RandomGenerator randomGenerator) {
         this.instructionView = instructionView;
         this.validateService = validateService;
         this.racingCarService = racingCarService;
         this.roundView = roundView;
         this.resultView = resultView;
+        this.randomGenerator = randomGenerator;
     }
 
     public void run() {
@@ -35,7 +38,7 @@ public class RacingCarController {
         String raceCount = Console.readLine();
         validateService.validateRaceCount(raceCount);
 
-        racingCarService.setupRaceCars(validateService.getValidatedNames());
+        racingCarService.setupRaceCars(validateService.getValidatedNames(), randomGenerator);
 
         roundView.setRacingCars(racingCarService.getRacingCars());
 

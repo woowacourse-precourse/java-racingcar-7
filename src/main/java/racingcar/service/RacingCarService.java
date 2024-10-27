@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.domain.RacingCar;
+import racingcar.util.RandomGenerator;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ public class RacingCarService {
     public RacingCarService() {
     }
 
-    public void setupRaceCars(List<String> racingCarNames) {
-        racingCars = racingCarNames.stream().map(RacingCar::new).toList();
+    public void setupRaceCars(List<String> racingCarNames, RandomGenerator randomGenerator) {
+        racingCars = racingCarNames.stream().map((String name) -> new RacingCar(name, randomGenerator)).toList();
     }
 
     public void runRound() {
