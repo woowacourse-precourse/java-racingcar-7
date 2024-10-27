@@ -55,7 +55,7 @@ public class Application {
     }
 
     private static void validatecarNameListAndAddToList(List<String> carNameListInput) {
-        String patternStr = "^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]*$";
+        final String patternStr = "^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]*$";
 
         for (String carNameInput : carNameListInput) {
             if (Pattern.matches(patternStr, carNameInput) &&
