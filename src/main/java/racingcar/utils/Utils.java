@@ -2,10 +2,12 @@ package racingcar.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+
 public class Utils {
 
-    public static String[] splitDelimiterCars(String input) {
-        return input.split(",");
+    public static List<String> splitDelimiterCars(String input) {
+        return List.of(input.split(","));
     }
 
     public static boolean advanceConditions() {
