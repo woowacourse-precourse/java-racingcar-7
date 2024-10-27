@@ -13,14 +13,10 @@ public class UserInputValidator {
     private static final int MAX_NAME_LENGTH = 5;
 
     public Integer validateRoundCount(String rawInput) {
-        int roundCountInt = parseRoundCount(rawInput);
-        validateNumberUnderZero(roundCountInt);
-        return roundCountInt;
-    }
-
-    private int parseRoundCount(String rawInput) {
         try {
-            return Integer.parseInt(rawInput);
+            int roundCountInt = Integer.parseInt(rawInput);
+            validateNumberUnderZero(roundCountInt);
+            return roundCountInt;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NOT_A_NUMBER_ERROR);
         }
@@ -28,11 +24,12 @@ public class UserInputValidator {
 
     public List<String> validateCarNames(String rawInput) {
         List<String> carNames = Arrays.stream(rawInput.split(","))
-                .map(String::trim)
+                .map(String::trim) // 공백 제거
                 .toList();
 
         validateCarNamesFormat(rawInput, carNames);
         validateCarNamesLength(carNames);
+
         return carNames;
     }
 
@@ -46,28 +43,22 @@ public class UserInputValidator {
         if (carNames.isEmpty()) {
             throw new IllegalArgumentException(NOT_A_VALID_NAME_ERROR);
         }
-        validateSplitterCount(rawInput, carNames);
-        validateEmptyNames(carNames);
-    }
 
-    private void validateSplitterCount(String rawInput, List<String> carNames) {
         int splitterCount = rawInput.length() - rawInput.replace(",", "").length();
         if (carNames.size() != splitterCount + 1) {
             throw new IllegalArgumentException(INVALID_SPLITTER_ERROR);
         }
-    }
 
-    private void validateEmptyNames(List<String> carNames) {
         if (carNames.contains("")) {
             throw new IllegalArgumentException(EMPTY_NAME_ERROR);
         }
     }
 
     private void validateCarNamesLength(List<String> carNames) {
-        for (String carName : carNames) {
+        carNames.forEach(carName -> {
             if (carName.length() > MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException(NAME_LENGTH_ERROR);
             }
-        }
+        });
     }
 }

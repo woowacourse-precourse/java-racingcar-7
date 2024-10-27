@@ -32,23 +32,23 @@ public class RaceController {
         outputView.printSeparator();
 
         while (!gameService.isGameOver(roundInfo)) {
-            executeRound();
+            RoundResult roundResult = gameService.executeRound(roundInfo, carInfos);
+            outputView.printRoundResult(roundResult);
         }
 
-        announceWinners();
+        Winners winners = gameService.findWinners(carInfos);
+        outputView.printWinner(winners);
     }
 
     private void initializeGame() {
         List<String> carNames = getCarNames();
         Integer roundCount = getRoundCount();
-        initializeCarInfos(carNames);
-        this.roundInfo = new RoundInfo(roundCount);
-    }
 
-    private void initializeCarInfos(List<String> carNames) {
         this.carInfos = carNames.stream()
                 .map(CarInfo::new)
                 .toList();
+
+        this.roundInfo = new RoundInfo(roundCount);
     }
 
     private Integer getRoundCount() {
@@ -57,15 +57,5 @@ public class RaceController {
 
     private List<String> getCarNames() {
         return userInputValidator.validateCarNames(inputView.getCarNames());
-    }
-
-    private void executeRound() {
-        RoundResult roundResult = gameService.executeRound(roundInfo, carInfos);
-        outputView.printRoundResult(roundResult);
-    }
-
-    private void announceWinners() {
-        Winners winners = gameService.findWinners(carInfos);
-        outputView.printWinner(winners);
     }
 }
