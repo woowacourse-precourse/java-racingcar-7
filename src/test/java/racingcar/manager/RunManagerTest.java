@@ -1,5 +1,6 @@
 package racingcar.manager;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,14 +11,19 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RunManagerTest {
+    private RunManager rm;
+    private ByteArrayOutputStream outputStreamCaptor;
+
+    @BeforeEach
+    void setUp() {
+        rm = new RunManager(null, null, null);
+        outputStreamCaptor = new ByteArrayOutputStream();
+    }
 
     @DisplayName("우승자가 한명인 리스트가 주어지면 이름을 출력한다.")
     @Test
     void printSingleWinner() {
         // given
-        RunManager rm = new RunManager(null, null, null);
-        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-
         List<String> winnerList = List.of("pobi");
         String expectedOutput = "최종 우승자 : pobi";
 
@@ -33,9 +39,6 @@ class RunManagerTest {
     @Test
     void printMultipleWinners() {
         // given
-        RunManager rm = new RunManager(null, null, null);
-        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-
         List<String> winnerList = List.of("pobi", "crong");
         String expectedOutput = "최종 우승자 : pobi, crong";
 
