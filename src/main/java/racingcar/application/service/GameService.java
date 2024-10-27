@@ -1,58 +1,35 @@
 package racingcar.application.service;
 
-import racingcar.application.constant.InputNumberBoundary;
-import racingcar.application.constant.MoveConditionBoundary;
-import racingcar.application.constant.RandomNumberBoundary;
+import racingcar.infrastructure.constant.Boundary;
+import racingcar.application.dto.RacingGameRequest;
 import racingcar.application.port.inbound.GameUseCase;
-import racingcar.application.port.inbound.InputPort;
 import racingcar.application.port.outbound.OutputPort;
-import racingcar.infrastructure.exception.EmptyInputException;
 import racingcar.infrastructure.exception.InvalidNumberFormatException;
 import racingcar.infrastructure.exception.NegativeNumberException;
 import racingcar.domain.service.CarRacingManager;
-import racingcar.domain.util.RandomNumberGenerator;
 import racingcar.infrastructure.exception.OutOfBoundNumberException;
 
-import java.util.List;
-
 public class GameService implements GameUseCase {
-    private final InputPort inputPort;
     private final OutputPort outputPort;
-    private final RandomNumberGenerator randomNumberGenerator;
     private CarRacingManager carRacingManager;
 
-    public GameService(InputPort inputPort, OutputPort outputPort) {
-        this.inputPort = inputPort;
+    public GameService(OutputPort outputPort) {
         this.outputPort = outputPort;
-        this.randomNumberGenerator = new RandomNumberGenerator(RandomNumberBoundary.MIN, RandomNumberBoundary.MAX);
     }
 
     @Override
-    public void execute() {
-        final String carInput = readCarInput();
-        validateCarInput(carInput);
-        final String repeat = readRepeatInput();
-        validateRepeatNumber(repeat);
+    public void execute(RacingGameRequest request) {
+        carRacingManager = CarRacingManager.from(request.cars());
 
-        carRacingManager = CarRacingManager.from(carInput);
-        final int count = Integer.parseInt(repeat);
+        validateRepeatNumber(request.repeat());
+        final int count = Integer.parseInt(request.repeat());
 
         writeStart();
         for (int turn = 0; turn < count; turn++) {
-            moveAllCar();
+            carRacingManager.moveAllCar();
             writeAllCar();
         }
         writeResult();
-    }
-
-    private String readCarInput() {
-        outputPort.writeMessage("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return inputPort.get();
-    }
-
-    private String readRepeatInput() {
-        outputPort.writeMessage("시도할 횟수는 몇 회인가요?");
-        return inputPort.get();
     }
 
     private void writeStart() {
@@ -75,40 +52,17 @@ public class GameService implements GameUseCase {
         outputPort.writeMessage(stringBuilder.toString());
     }
 
-    private void validateCarInput(String input) {
-        if (input.trim().isEmpty()) {
-            throw new EmptyInputException();
-        }
-    }
-
     private void validateRepeatNumber(String input) {
         try {
             final int repeat = Integer.parseInt(input);
             if (repeat < 1) {
                 throw new NegativeNumberException();
             }
-            if (repeat > InputNumberBoundary.REPEAT_MAX) {
+            if (repeat > Boundary.REPEAT_MAX) {
                 throw new OutOfBoundNumberException();
             }
         } catch (NumberFormatException e) {
             throw new InvalidNumberFormatException();
         }
-    }
-
-    private void moveAllCar() {
-        List<String> names = carRacingManager.getNames();
-        names.forEach(name -> {
-            if (canMove(randomNumberGenerator.pick())) {
-                moveCar(name);
-            }
-        });
-    }
-
-    private boolean canMove(final int num) {
-        return num >= MoveConditionBoundary.MORE_THAN_EQUAL;
-    }
-
-    private void moveCar(final String name) {
-        carRacingManager.moveForward(name);
     }
 }

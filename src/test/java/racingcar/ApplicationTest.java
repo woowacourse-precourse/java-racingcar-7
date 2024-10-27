@@ -3,7 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.application.constant.InputNumberBoundary;
+import racingcar.infrastructure.constant.Boundary;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -50,7 +50,7 @@ class ApplicationTest extends NsTest {
     void 실행_가능_범위_초과를_확인할_수_있다() {
         // given
         final String input = "pobi, java";
-        final String exceed = String.valueOf(InputNumberBoundary.REPEAT_MAX + 1);
+        final String exceed = String.valueOf(Boundary.REPEAT_MAX + 1);
 
         // when & then
         assertThatThrownBy(() -> runException(input, exceed))

@@ -1,4 +1,4 @@
-package racingcar.domain.model.constant;
+package racingcar.infrastructure.constant;
 
 import java.util.Arrays;
 import java.util.List;

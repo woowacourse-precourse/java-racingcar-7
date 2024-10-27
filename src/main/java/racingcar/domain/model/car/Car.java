@@ -2,7 +2,7 @@ package racingcar.domain.model.car;
 
 import racingcar.infrastructure.exception.EmptyNameException;
 import racingcar.infrastructure.exception.InvalidNameLengthException;
-import racingcar.domain.model.constant.CarConstants;
+import racingcar.infrastructure.constant.CarConstants;
 
 public class Car {
     private int distance;

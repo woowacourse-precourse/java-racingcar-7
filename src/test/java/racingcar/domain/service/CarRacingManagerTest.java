@@ -3,9 +3,7 @@ package racingcar.domain.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.model.car.Car;
-import racingcar.domain.model.constant.CarConstants;
-
-import java.util.Optional;
+import racingcar.infrastructure.constant.CarConstants;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

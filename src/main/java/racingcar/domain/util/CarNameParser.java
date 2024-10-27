@@ -2,7 +2,7 @@ package racingcar.domain.util;
 
 import racingcar.infrastructure.exception.DuplicateNameException;
 import racingcar.infrastructure.exception.EmptyInputException;
-import racingcar.domain.model.constant.CarNameDelimiter;
+import racingcar.infrastructure.constant.CarNameDelimiter;
 
 import java.util.*;
 

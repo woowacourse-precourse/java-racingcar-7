@@ -1,8 +1,11 @@
 package racingcar.domain.service;
 
+import racingcar.infrastructure.constant.Boundary;
 import racingcar.domain.model.car.Car;
-import racingcar.domain.model.constant.CarConstants;
+import racingcar.infrastructure.constant.CarConstants;
 import racingcar.domain.util.CarNameParser;
+import racingcar.domain.util.RandomNumberGenerator;
+import racingcar.infrastructure.exception.EmptyInputException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,14 +14,17 @@ import java.util.stream.Collectors;
 
 public class CarRacingManager {
     private final Map<String, Car> cars = new HashMap<>();
+    private final RandomNumberGenerator randomNumberGenerator;
 
     private CarRacingManager(List<Car> carList) {
         carList.forEach(car -> {
             cars.put(car.getName(), car);
         });
+        randomNumberGenerator = new RandomNumberGenerator(Boundary.RANDOM_MIN, Boundary.RANDOM_MAX);
     }
 
     public static CarRacingManager from(final String input) {
+        validateInput(input);
         List<String> parsed = CarNameParser.parse(input);
         List<Car> carList = parsed.stream()
                 .map(Car::from)
@@ -26,14 +32,30 @@ public class CarRacingManager {
         return new CarRacingManager(carList);
     }
 
-    public List<String> getNames() {
-        return cars.keySet().stream().toList();
+    private static void validateInput(final String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new EmptyInputException();
+        }
+    }
+
+    public void moveAllCar() {
+        cars.keySet().forEach(name -> {
+            if (canMove(randomNumberGenerator.pick())) {
+                cars.get(name).moveForward();
+            }
+        });
+    }
+
+    private boolean canMove(final int number) {
+        return number >= Boundary.MOVE_CONDITION_MIN;
     }
 
     public List<Car> getList() {
         return List.copyOf(cars.values());
     }
 
+    // [삭제 예정] Test 코드에서만 사용
+    // TODO: 해당 메소드 없이 테스트 구현하기
     public void moveForward(final String name) {
         cars.get(name).moveForward();
     }
