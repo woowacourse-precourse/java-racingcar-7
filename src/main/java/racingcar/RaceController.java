@@ -5,11 +5,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RaicingController {
+public class RaceController {
 
-    private InputView inputView;
+    private final InputView inputView;
 
-    private OutputView outputView;
+    private final OutputView outputView;
+
+    public RaceController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
 
     public void start() {
         //입력
