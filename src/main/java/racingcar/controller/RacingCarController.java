@@ -6,15 +6,18 @@ import racingcar.domain.Cars;
 import racingcar.domain.power.PowerGenerator;
 import racingcar.domain.power.RandomPowerGenerator;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
 
     private final PowerGenerator powerGenerator;
     private final InputView inputView;
+    private final OutputView outputView;
 
     public RacingCarController() {
         this.powerGenerator = new RandomPowerGenerator();
         this.inputView = new InputView();
+        this.outputView = new OutputView();
     }
 
     public void start() {
@@ -25,13 +28,13 @@ public class RacingCarController {
         List<String> names = Arrays.asList(inputCarNames.split(","));
         Cars cars = new Cars(names);
 
-        System.out.println("실행 결과");
+        outputView.printRunResultMessage();
         for (int i = 0; i < Integer.parseInt(inputTryCount); i++) {
             cars.move(powerGenerator);
-            System.out.println(cars.getForwardStatuses() + "\n");
+            outputView.printForwardStatuses(cars.getForwardStatuses() + "\n");
         }
 
-        System.out.println("최종 우승자 : " + cars.getWinnerNames());
+        outputView.printWinningNames(cars.getWinnerNames());
     }
 
 }
