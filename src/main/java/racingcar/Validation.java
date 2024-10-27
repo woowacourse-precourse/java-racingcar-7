@@ -2,7 +2,7 @@ package racingcar;
 
 public class Validation {
     boolean isRightInputName(String inputName) {
-        String regexInputName = "[^,]{1,5}(,[^,]{1,5})+";
+        String regexInputName = "[^,]{1,5}(,[^,]{1,5})*";
         return (inputName.matches(regexInputName) && !inputName.isEmpty());
     }
 

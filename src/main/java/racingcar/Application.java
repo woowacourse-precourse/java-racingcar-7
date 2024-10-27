@@ -12,5 +12,7 @@ public class Application {
 
         CarRacing carRacing = new CarRacing(inputString, inputCount);
         carRacing.startRacing();
+
+        carRacing.getRacingResult();
     }
 }

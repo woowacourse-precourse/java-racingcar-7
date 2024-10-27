@@ -12,6 +12,7 @@ public class CarRacing {
     private final Validation validation = new Validation();
     private final List<Player> players = new ArrayList<>();
     private List<String> records = new ArrayList<>();
+    private String result;
 
     public CarRacing(String inputCarName, String inputCount) {
         this.inputCarName = inputCarName;
@@ -21,6 +22,13 @@ public class CarRacing {
     void startRacing() {
         getPlayers();
         recordRacer();
+    }
+
+    void getRacingResult() {
+        for(String lab: records) {
+            System.out.println(lab);
+        }
+        System.out.println(this.result);
     }
 
     private void recordRacer() {
@@ -40,7 +48,7 @@ public class CarRacing {
     private void resultRace() {
         int max = players.stream().mapToInt(i -> i.count).max().orElse(0);
         String result = players.stream().filter(i -> i.count == max).map(i -> i.name).collect(Collectors.joining(", "));
-        System.out.println("최종 우승자 : " + result);
+        this.result = "최종 우승자 : " + result;
     }
 
     private void setRecordLap() {
@@ -48,8 +56,6 @@ public class CarRacing {
         for (Player player : players) {
             sb.append(player.name).append(" : ").append("-".repeat(player.count)).append("\n");
         }
-        sb.append("\n");
-        System.out.print(sb);
         records.add(sb.toString());
     }
 
@@ -66,5 +72,13 @@ public class CarRacing {
         for (String name : inputCarName.split(",")) {
             players.add(new Player(name.trim(), 0));
         }
+    }
+
+    List<String> getRecords() {
+        return this.records;
+    }
+
+    String getResult() {
+        return this.result;
     }
 }
