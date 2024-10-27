@@ -18,7 +18,7 @@ public class CarList {
         this.maxMoveCnt = 0;
     }
 
-    public CarList(List<Car> cars) {
+    protected CarList(List<Car> cars) {
         this.cars = cars;
         this.maxMoveCnt = 0;
     }
@@ -40,7 +40,7 @@ public class CarList {
     }
 
     public void moveAll() {
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             Integer moveCnt = car.move();
             changeMaxMoveCnt(moveCnt);
         }
@@ -50,9 +50,11 @@ public class CarList {
     public Message generateAllStatus() {
         StringJoiner stringJoiner = new StringJoiner(ENTER);
 
-        for (Car car : cars) {
-            stringJoiner.add(car.generateStatus());
+        for (Car car : this.cars) {
+            String status = car.generateStatus();
+            stringJoiner.add(status);
         }
+
         stringJoiner.add(ENTER);
         String allStatus = stringJoiner.toString();
 
@@ -60,7 +62,7 @@ public class CarList {
     }
 
     protected List<Car> toWinners() {
-        return cars.stream()
+        return this.cars.stream()
                 .filter(car -> car.isMaxMove(this.maxMoveCnt))
                 .toList();
     }
@@ -75,7 +77,7 @@ public class CarList {
     public String toString() {
         StringJoiner stringJoiner = new StringJoiner(COMMA_SEPARATOR + " ");
 
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             stringJoiner.add(car.toString());
         }
 
