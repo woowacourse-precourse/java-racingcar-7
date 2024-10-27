@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class WinnerCalculatorTest {
+class GameUtilTest {
 
     @Test
     @DisplayName("우승자가 한명인 경우")
@@ -22,7 +22,7 @@ class WinnerCalculatorTest {
         cars.get(1).move(0);
         cars.get(2).move(0);
 
-        List<String> winners = WinnerCalculator.calculateWinners(cars);
+        List<String> winners = GameUtil.calculateWinners(cars);
         assertThat(List.of("car1")).isEqualTo(winners);
     }
 
@@ -38,7 +38,7 @@ class WinnerCalculatorTest {
         cars.get(1).move(5);
         cars.get(2).move(0);
 
-        List<String> winners = WinnerCalculator.calculateWinners(cars);
+        List<String> winners = GameUtil.calculateWinners(cars);
         assertThat(List.of("car1", "car2")).isEqualTo(winners);
     }
 

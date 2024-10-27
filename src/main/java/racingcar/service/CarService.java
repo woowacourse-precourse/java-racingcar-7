@@ -1,15 +1,12 @@
 package racingcar.service;
 
 import racingcar.config.GameConfig;
-import racingcar.message.OutputMessage;
-import racingcar.model.Car;
+import racingcar.domain.Car;
+import racingcar.util.GameUtil;
 import racingcar.util.RandomNumberGenerator;
-import racingcar.util.WinnerCalculator;
-import racingcar.validation.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class CarService {
@@ -25,8 +22,7 @@ public class CarService {
     public GameConfig initializeGame() {
         String inputCarName = inputView.inputCarName();
 
-        List<String> carNames = Arrays.asList(inputCarName.split(",", -1));
-        Validator.checkDuplicateNames(carNames);
+        List<String> carNames = GameUtil.prepareCarNames(inputCarName);
 
         List<Car> cars = carNames.stream()
                 .map(Car::new)
@@ -46,7 +42,7 @@ public class CarService {
     }
 
     public void showResults(List<Car> cars){
-        List<String> winnerCarList = WinnerCalculator.calculateWinners(cars);
+        List<String> winnerCarList = GameUtil.calculateWinners(cars);
         outputView.resultView(winnerCarList);
     }
 
