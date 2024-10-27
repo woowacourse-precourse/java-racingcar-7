@@ -16,5 +16,8 @@ public class Application {
 
         ArrayList<HashMap<String, Integer>> turnResults = racingService.getTurnResult();
         RacingIO.promptTurnResult(turnResults);
+
+        String[] winners = racingService.getWinners();
+        RacingIO.promptWinner(winners);
     }
 }
