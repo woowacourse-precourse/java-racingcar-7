@@ -8,4 +8,10 @@ public class Car {
 		this.name = name;
 		this.distance = distance;
 	}
+
+	public void move(boolean isMovable) {
+		if (isMovable) {
+			distance += 1;
+		}
+	}
 }
