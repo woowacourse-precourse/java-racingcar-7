@@ -22,21 +22,21 @@ public class RacingGame {
     public List<RoundResult> determineRoundResult() {
         List<RoundResult> results = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
-            List<Integer> positions = raceRound();
-            results.add(new RoundResult(positions));
+            raceRound();
+            results.add(new RoundResult(cars.getPositions()));
         }
         return results;
     }
 
-    public List<Integer> raceRound() {
-        return cars.move(moveCondition);
+    public void raceRound() {
+        cars.move(moveCondition);
     }
 
-    public List<String> determineWinners(List<Integer> positions) {
+    public List<String> determineWinners(List<Position> positions) {
         return cars.findWinners(positions);
     }
 
-    public List<Integer> getPositions() {
+    public List<Position> getPositions() {
         return cars.getPositions();
     }
 }

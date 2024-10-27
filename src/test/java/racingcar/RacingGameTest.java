@@ -15,13 +15,12 @@ class RacingGameTest {
         Cars cars = Cars.withNames(List.of("A", "B", "C"));
         RacingGame game = new RacingGame(cars, () -> true); // 전진시키는 규칙 적용
 
-        List<Integer> positions = game.raceRound();
-        List<Integer> positions2 = game.raceRound();
-        List<Integer> positions3 = game.raceRound();
+        game.raceRound();
+        game.raceRound();
+        game.raceRound();
 
-        assertThat(positions).isEqualTo(List.of(1, 1, 1));
-        assertThat(positions2).isEqualTo(List.of(2, 2, 2));
-        assertThat(positions3).isEqualTo(List.of(3, 3, 3));
+        Position three = PositionFixture.position(3);
+        assertThat(cars.getPositions()).isEqualTo(List.of(three, three, three));
     }
 
     @DisplayName("주어진 횟수 동안 n대의 자동차를 모두 정지시키는 규칙을 적용하면 각 포지션은 그래도인 것을 테스트하라")
@@ -30,12 +29,11 @@ class RacingGameTest {
         Cars cars = Cars.withNames(List.of("A", "B", "C"));
         RacingGame game = new RacingGame(cars, () -> false); // 정지시키는 규칙 적용
 
-        List<Integer> positions = game.raceRound();
-        List<Integer> positions2 = game.raceRound();
-        List<Integer> positions3 = game.raceRound();
+        game.raceRound();
+        game.raceRound();
+        game.raceRound();
 
-        assertThat(positions).isEqualTo(List.of(0, 0, 0));
-        assertThat(positions2).isEqualTo(List.of(0, 0, 0));
-        assertThat(positions3).isEqualTo(List.of(0, 0, 0));
+        Position zero = PositionFixture.position(0);
+        assertThat(cars.getPositions()).isEqualTo(List.of(zero, zero, zero));
     }
 }

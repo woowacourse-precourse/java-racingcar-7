@@ -42,13 +42,11 @@ class CarTest {
     void test3() {
         Car car1 = new Car("car1");
 
-        int distance1 = car1.move(() -> true);
-        int distance2 = car1.move(() -> true);
-        int distance3 = car1.move(() -> true);
+        car1.move(() -> true);
+        car1.move(() -> true);
+        car1.move(() -> true);
 
-        assertThat(distance1).isEqualTo(1);
-        assertThat(distance2).isEqualTo(2);
-        assertThat(distance3).isEqualTo(3);
+        assertThat(car1.getPosition()).isEqualTo(PositionFixture.position(3));
     }
 
     @DisplayName("차가 정지하는 경우 포지션이 그대로인 것을 테스트하라")
@@ -56,13 +54,11 @@ class CarTest {
     void test4() {
         Car car1 = new Car("car1");
 
-        int distance1 = car1.move(() -> false);
-        int distance2 = car1.move(() -> false);
-        int distance3 = car1.move(() -> false);
+        car1.move(() -> false);
+        car1.move(() -> false);
+        car1.move(() -> false);
 
-        assertThat(distance1).isEqualTo(0);
-        assertThat(distance2).isEqualTo(0);
-        assertThat(distance3).isEqualTo(0);
+        assertThat(car1.getPosition()).isEqualTo(PositionFixture.position(0));
     }
 
     @DisplayName("차가 2번 전진, 1번 정지하는 경우 포지션이 2인 것을 테스트하라")
@@ -70,14 +66,12 @@ class CarTest {
     void test5() {
         Car car1 = new Car("car1");
 
-        int distance1 = car1.move(() -> true);
-        int distance2 = car1.move(() -> true);
+        car1.move(() -> true);
+        car1.move(() -> true);
 
-        int distance3 = car1.move(() -> false);
+        car1.move(() -> false);
 
-        assertThat(distance1).isEqualTo(1);
-        assertThat(distance2).isEqualTo(2);
-        assertThat(distance3).isEqualTo(2);
+        assertThat(car1.getPosition()).isEqualTo(PositionFixture.position(2));
     }
 
     @DisplayName("차가 1번 전진, 2번 정지하는 경우 포지션이 1인 것을 테스트하라")
@@ -85,13 +79,11 @@ class CarTest {
     void test6() {
         Car car1 = new Car("car1");
 
-        int distance1 = car1.move(() -> true);
+        car1.move(() -> true);
 
-        int distance2 = car1.move(() -> false);
-        int distance3 = car1.move(() -> false);
+        car1.move(() -> false);
+        car1.move(() -> false);
 
-        assertThat(distance1).isEqualTo(1);
-        assertThat(distance2).isEqualTo(1);
-        assertThat(distance3).isEqualTo(1);
+        assertThat(car1.getPosition()).isEqualTo(PositionFixture.position(1));
     }
 }

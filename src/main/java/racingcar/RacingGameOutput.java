@@ -18,7 +18,8 @@ public class RacingGameOutput {
     public void printRacingProgress(RacingGame game, Cars cars) {
         List<RoundResult> roundResults = game.determineRoundResult();
         for (RoundResult roundResult : roundResults) {
-            printRoundProgress(cars, roundResult.positions());
+            List<Integer> results = roundResult.extractResults();
+            printRoundProgress(cars, results);
             printRoundEnd();
         }
     }

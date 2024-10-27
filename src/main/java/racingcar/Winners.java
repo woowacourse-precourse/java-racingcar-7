@@ -10,7 +10,7 @@ public class Winners {
         this.cars = cars;
     }
 
-    public List<String> findWinners(List<Integer> positions) {
+    public List<String> findWinners(List<Position> positions) {
         return findWinners(cars, determineWinnerPosition(positions));
     }
 
@@ -21,10 +21,10 @@ public class Winners {
                 .toList();
     }
 
-    private static int determineWinnerPosition(List<Integer> positions) {
+    private static int determineWinnerPosition(List<Position> positions) {
         return positions.stream()
-                .mapToInt(Integer::intValue)
-                .max()
+                .map(Position::getPosition)
+                .max(Integer::compareTo)
                 .orElse(0);
     }
 }

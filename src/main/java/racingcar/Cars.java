@@ -20,18 +20,18 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Integer> move(MoveCondition moveCondition) {
-        return cars.stream()
-                .map(car -> car.move(moveCondition))
-                .toList();
+    public void move(MoveCondition moveCondition) {
+        for (Car car : cars) {
+            car.move(moveCondition);
+        }
     }
 
-    public List<String> findWinners(List<Integer> positions) {
+    public List<String> findWinners(List<Position> positions) {
         Winners winners = new Winners(cars);
         return winners.findWinners(positions);
     }
 
-    public List<Integer> getPositions() {
+    public List<Position> getPositions() {
         return cars.stream()
                 .map(Car::getPosition)
                 .toList();

@@ -14,13 +14,12 @@ class CarsTest {
     void test1() {
         Cars cars = Cars.withNames(List.of("A", "B", "C"));
 
-        List<Integer> positions1 = cars.move(() -> true);
-        List<Integer> positions2 = cars.move(() -> true);
-        List<Integer> positions3 = cars.move(() -> true);
+        cars.move(() -> true);
+        cars.move(() -> true);
+        cars.move(() -> true);
 
-        assertThat(positions1).isEqualTo(List.of(1, 1, 1));
-        assertThat(positions2).isEqualTo(List.of(2, 2, 2));
-        assertThat(positions3).isEqualTo(List.of(3, 3, 3));
+        Position three = PositionFixture.position(3);
+        assertThat(cars.getPositions()).isEqualTo(List.of(three, three, three));
     }
 
     @DisplayName("n대의 차들이 모두 정지함에 따라 포지션이 그대로인 로직을 테스트하라")
@@ -28,13 +27,12 @@ class CarsTest {
     void test2() {
         Cars cars = Cars.withNames(List.of("A", "B", "C"));
 
-        List<Integer> positions1 = cars.move(() -> true);
-        List<Integer> positions2 = cars.move(() -> true);
-        List<Integer> positions3 = cars.move(() -> true);
+        cars.move(() -> true);
+        cars.move(() -> true);
+        cars.move(() -> true);
 
-        assertThat(positions1).isEqualTo(List.of(1, 1, 1));
-        assertThat(positions2).isEqualTo(List.of(2, 2, 2));
-        assertThat(positions3).isEqualTo(List.of(3, 3, 3));
+        Position three = PositionFixture.position(3);
+        assertThat(cars.getPositions()).isEqualTo(List.of(three, three, three));
     }
 
     @DisplayName("n대의 차들이 2번 정지, 1번 전진에 따라 포지션이 바뀌는 로직을 테스트하라")
@@ -42,14 +40,13 @@ class CarsTest {
     void test3() {
         Cars cars = Cars.withNames(List.of("A", "B", "C"));
 
-        List<Integer> positions1 = cars.move(() -> false);
-        List<Integer> positions2 = cars.move(() -> false);
+        cars.move(() -> false);
+        cars.move(() -> false);
 
-        List<Integer> positions3 = cars.move(() -> true);
+        cars.move(() -> true);
 
-        assertThat(positions1).isEqualTo(List.of(0, 0, 0));
-        assertThat(positions2).isEqualTo(List.of(0, 0, 0));
-        assertThat(positions3).isEqualTo(List.of(1, 1, 1));
+        Position one = PositionFixture.position(1);
+        assertThat(cars.getPositions()).isEqualTo(List.of(one, one, one));
     }
 
     @DisplayName("n대의 차들이 1번 정지, 2번 전진에 따라 포지션이 바뀌는 로직을 테스트하라")
@@ -57,13 +54,12 @@ class CarsTest {
     void test4() {
         Cars cars = Cars.withNames(List.of("A", "B", "C"));
 
-        List<Integer> positions1 = cars.move(() -> false);
+        cars.move(() -> false);
 
-        List<Integer> positions2 = cars.move(() -> true);
-        List<Integer> positions3 = cars.move(() -> true);
+        cars.move(() -> true);
+        cars.move(() -> true);
 
-        assertThat(positions1).isEqualTo(List.of(0, 0, 0));
-        assertThat(positions2).isEqualTo(List.of(1, 1, 1));
-        assertThat(positions3).isEqualTo(List.of(2, 2, 2));
+        Position two = PositionFixture.position(2);
+        assertThat(cars.getPositions()).isEqualTo(List.of(two, two, two));
     }
 }
