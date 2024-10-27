@@ -15,6 +15,7 @@ public class Application {
     private static final int MOVE_FORWARD_THRESHOLD = 4;
     private static final int RANDOM_LOWER_BOUND = 0;
     private static final int RANDOM_UPPER_BOUND = 9;
+    private static final String MOVE_MARK = "-";
 
     public static void main(String[] args) {
         // 경주할 자동차 이름 입력 받고, 유효성 검증
@@ -37,6 +38,7 @@ public class Application {
         racingCars.forEach(racingCar -> racingCarsDistance.put(racingCar, 0));
 
         // 자동차 경주 게임의 라운드를 시도 횟수만큼 수행
+        System.out.println("\n실행 결과");
         for (int i = 0; i < tryCount; i++) {
             playRacingCarRound(racingCars, racingCarsDistance);
         }
@@ -49,7 +51,15 @@ public class Application {
                 racingCarsDistance.put(racingCar, updatedScore);
             }
         }
-        // TODO: 자동차 경주 게임의 각 라운드의 결과를 출력
+        showRoundResult(racingCars, racingCarsDistance);
+    }
+
+    private static void showRoundResult(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
+        for (String racingCar : racingCars) {
+            String track = MOVE_MARK.repeat(racingCarsDistance.get(racingCar));
+            System.out.printf("%s : %s\n", racingCar, track);
+        }
+        System.out.println();
     }
 
     private static boolean canMoveForward() {
