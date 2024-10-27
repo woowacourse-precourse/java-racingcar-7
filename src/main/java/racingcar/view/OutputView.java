@@ -19,6 +19,7 @@ public class OutputView {
         for (RacingCar car : cars) {
             System.out.println(getAttemptResult(car));
         }
+        System.out.println();
     }
 
     private String getAttemptResult(RacingCar car) {
