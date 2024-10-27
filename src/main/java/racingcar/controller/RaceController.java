@@ -1,13 +1,11 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
+import racingcar.model.Winner;
 import racingcar.util.CommonIo;
-import racingcar.util.ErrorMessage;
-import racingcar.util.Limit;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RaceController {
@@ -16,6 +14,7 @@ public class RaceController {
     private CarController carController = new CarController();
     private MoveController moveController = new MoveController();
     private PlayCountController playCountController = new PlayCountController();
+    private CommonIo io = new CommonIo();
 
     public void run() {
         finishGame(playGame(prepareGame()));
@@ -51,6 +50,7 @@ public class RaceController {
             performSingleMove(car);
             outputView.printSingleResult(car);
         }
+        io.printNewLine();
     }
 
     private void performSingleMove(Car car) {
@@ -61,19 +61,12 @@ public class RaceController {
     }
 
     public List<String> selectWinners(List<Car> cars) {
-        int maxPosition = Limit.MIN_POSITION.getValue();
-        List<String> winner = new ArrayList<>();
+        Winner winner = new Winner();
 
         for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                winner.clear();
-                winner.add(car.getName());
-                maxPosition = car.getPosition();
-            } else if (car.getPosition() == maxPosition) {
-                winner.add(car.getName());
-            }
+            winner.comparePosition(car);
         }
 
-        return winner;
+        return winner.getWinners();
     }
 }

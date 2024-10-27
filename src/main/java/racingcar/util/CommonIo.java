@@ -7,6 +7,10 @@ public class CommonIo {
         System.out.println(message);
     }
 
+    public void printNewLine() {
+        System.out.println();
+    }
+
     public String receiveInput() {
         return Console.readLine();
     }
