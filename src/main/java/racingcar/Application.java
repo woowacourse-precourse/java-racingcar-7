@@ -1,12 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -74,6 +71,7 @@ public class Application {
     }
 
     public static void runGame(String[] carName, int gameCount) {
+        OutputView outputView = new OutputView();
         System.out.println();
         System.out.println("실행 결과");
         for (int i = 0; i < gameCount; i++) {
@@ -81,27 +79,9 @@ public class Application {
                 int randomNumber = makeRandomNumber();
                 moveOrStop(carName[j], randomNumber);
             }
-            printExecutionResult(carName);
+            outputView.printExecutionResult(car, carName);
         }
-        printWinner();
-    }
-
-    public static void printExecutionResult(String[] carName) {
-        for (int i = 0; i < carName.length; i++) {
-            System.out.println(carName[i] + " : " + "-".repeat(car.get(carName[i])));
-        }
-        System.out.println();
-    }
-
-    public static void printWinner() {
-        List<String> winnerList = new ArrayList<>();
-        int winnerScore = Collections.max(car.values());
-        for (String key : car.keySet()) {
-            if (car.get(key) == winnerScore) {
-                winnerList.add(key);
-            }
-        }
-        System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+        outputView.printWinner(car);
     }
 
     public static void main(String[] args) {
