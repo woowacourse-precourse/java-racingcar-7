@@ -10,14 +10,14 @@ public class CarNameValidator {
     private static final String NAME_TOO_LONG_ERROR_MESSAGE = "자동차 이름은 5글자를 초과할 수 없습니다.";
     private static final String DUPLICATE_NAME_ERROR_MESSAGE = "자동차 이름이 중복되었습니다 : ";
     public List<Car> validate(String carName) {
-        if(!isEmpty(carName)) {
+        if(!isBlank(carName)) {
             throw new IllegalArgumentException(EMPTY_INPUT_ERROR_MESSAGE);
         }
 
         return convert(carName);
     }
 
-    private boolean isEmpty(String inputString) {
+    private boolean isBlank(String inputString) {
         return !Objects.isNull(inputString) && !inputString.isBlank();
     }
 
