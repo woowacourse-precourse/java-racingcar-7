@@ -13,11 +13,17 @@ public class InputHandler {
         String input = Console.readLine();
         String[] names = input.split(",");
 
+
+        // 각 이름의 유효성 검사
+        for (String name : names) {
+            validateCarName(name);
+        }
+
         return List.of(names);
     }
 
     public int getRaceAttemptCount() {
-        System.out.println("시도할 횟수를 입력하세요.");
+        System.out.println("시도할 횟수는 몇 회인가요?");
         String attempt = Console.readLine();
         return Integer.parseInt(attempt); // String을 int로 변환
     }
@@ -26,13 +32,18 @@ public class InputHandler {
         List<Car> cars = new ArrayList<>();
 
         for (String name : carNames){
-            //TODO 유효성 검사 필요
-
             cars.add(new Car(name));
 
         }
 
         return cars;
+    }
+
+    // 자동차 이름 유효성 검사 메서드
+    private void validateCarName(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다: " + carName);
+        }
     }
 
 }
