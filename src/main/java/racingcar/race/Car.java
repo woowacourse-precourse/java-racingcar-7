@@ -9,19 +9,19 @@ public class Car implements Vehicle {
     private Car() {}
 
     public Car(String name) {
-        this.checkNameIsNullOrBlank(name);
-        this.checkNameLength(name);
+        this.validateNameIsNullOrBlank(name);
+        this.validateNameLength(name);
 
         this.name = name;
     }
 
-    private void checkNameIsNullOrBlank(String name) {
+    private void validateNameIsNullOrBlank(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 필수입니다.");
         }
     }
 
-    private void checkNameLength(String name) {
+    private void validateNameLength(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5 글자를 초과할 수 없습니다.");
         }
