@@ -51,13 +51,6 @@ public class RaceService {
                 maxKeys.add(car);
             }
         }
-
-        // 결과 출력
-        System.out.println("가장 큰 값: " + maxValue);
-        System.out.println("가장 큰 값을 가지는 키들:");
-        for (String key : maxKeys) {
-            System.out.println("- " + key);
-        }
         return maxKeys;
     }
 }

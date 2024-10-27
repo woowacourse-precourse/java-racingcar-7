@@ -2,6 +2,7 @@ package racingcar.race.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import racingcar.race.domain.RaceMessage;
 import racingcar.race.service.RaceService;
 
@@ -25,10 +26,7 @@ public class RaceController {
     public void raceWinnerCheck(Map<String, String> cars) {
         RaceService raceService = new RaceService();
         List<String> winners = raceService.finalRoundWinnerCheck(cars);
-        String win = "";
-        for (String winner : winners) {
-            win = String.join(", ", winner);
-        }
-        System.out.println("최종 우승자 : " + win);
+        String winnerMessage = String.join(", ", winners);
+        System.out.println("최종 우승자 : " + winnerMessage);
     }
 }
