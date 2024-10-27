@@ -47,7 +47,7 @@ class RacingGameTest {
 
         // then
         assertEquals(1, game.getWinner().size());
-        assertEquals("one", game.getWinner().get(0));
+        assertEquals("one", game.getWinner().get(0).getName());
     }
 
     @Test
@@ -69,8 +69,8 @@ class RacingGameTest {
 
         // then
         assertEquals(2, game.getWinner().size());
-        assertEquals("one", game.getWinner().get(0));
-        assertEquals("three", game.getWinner().get(1));
+        assertEquals("one", game.getWinner().get(0).getName());
+        assertEquals("three", game.getWinner().get(1).getName());
     }
 
     @Test
@@ -96,7 +96,7 @@ class RacingGameTest {
 
         // then
         assertEquals(1, game.getWinner().size());
-        assertEquals("two", game.getWinner().get(0));
+        assertEquals("two", game.getWinner().get(0).getName());
     }
 
     @Test
@@ -122,8 +122,8 @@ class RacingGameTest {
 
         // then
         assertEquals(2, game.getWinner().size());
-        assertEquals("two", game.getWinner().get(0));
-        assertEquals("three", game.getWinner().get(1));
+        assertEquals("two", game.getWinner().get(0).getName());
+        assertEquals("three", game.getWinner().get(1).getName());
     }
 
     @Test
@@ -153,8 +153,8 @@ class RacingGameTest {
 
         // then
         assertEquals(3, game.getWinner().size());
-        assertEquals("one", game.getWinner().get(0));
-        assertEquals("two", game.getWinner().get(1));
-        assertEquals("three", game.getWinner().get(2));
+        assertEquals("one", game.getWinner().get(0).getName());
+        assertEquals("two", game.getWinner().get(1).getName());
+        assertEquals("three", game.getWinner().get(2).getName());
     }
 }

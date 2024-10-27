@@ -23,8 +23,13 @@ public class RacingGame implements Game {
     }
 
     @Override
-    public List<String> getWinner() {
-        List<String> winnerList = new ArrayList<>();
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    @Override
+    public List<Player> getWinner() {
+        List<Player> winnerList = new ArrayList<>();
 
         int maxScore = 0;
         for (Player player : players) {
@@ -33,7 +38,7 @@ public class RacingGame implements Game {
                 winnerList.clear();
             }
             if (player.getScore() >= maxScore) {
-                winnerList.add(player.getName());
+                winnerList.add(player);
             }
         }
 
