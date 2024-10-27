@@ -1,5 +1,12 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class RandomIntGenerator {
-    // TODO: 0-9사이의 숫자를 생성한다.
+    private static final int MIN_RANDOM_NUMBER = 0;
+    private static final int MAX_RANDOM_NUMBER = 9;
+
+    public int getRandomNumber() {
+        return Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+    }
 }
