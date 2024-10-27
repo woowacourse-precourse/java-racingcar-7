@@ -19,7 +19,7 @@ public class Race {
 
         } catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
-            return;
+            throw e;
         }
     }
 }
