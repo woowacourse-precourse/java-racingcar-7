@@ -21,4 +21,8 @@ public class Race {
     public List<Car> getCarList() {
         return this.carList;
     }
+
+    public void show(String name, String distance) {
+        System.out.println(name + " : " + distance);
+    }
 }

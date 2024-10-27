@@ -59,6 +59,6 @@
 - [ ] startGame 메소드 구현
 - [ ] moveCar 메소드 구현
 - [x] setup 메소드 구현
-- [ ] show 메소드 구현
+- [x] show 메소드 구현
 - [x] getCars 메소드 구현
 - [x] separateInputCars 메소드 구현
