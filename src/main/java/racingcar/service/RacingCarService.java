@@ -27,7 +27,7 @@ public class RacingCarService {
 
         List<RacingCar> carList = new ArrayList<>();
         while (st.hasMoreTokens()) {
-            String carName = st.nextToken();
+            String carName = st.nextToken().trim();
 
             if (!CustomValidator.validateLength(carName)) {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상, 5자 이하만 가능합니다.");
