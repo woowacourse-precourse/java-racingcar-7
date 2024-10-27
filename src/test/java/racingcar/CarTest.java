@@ -4,15 +4,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
 
-    Car car;
+    Car car, anotherCar;
 
     @BeforeEach
     void beforeEach() {
-        car = new Car("Jihyun");
+        List<Car> cars = Car.createInstances("Jihyun, Jihye");
+        car = cars.get(0);
+        anotherCar = cars.get(1);
     }
 
     @Test
@@ -40,7 +44,6 @@ class CarTest {
     @Test
     @DisplayName("이동 거리가 더 긴 Car가 우선순위 높음")
     void compareDistance() {
-        Car anotherCar = new Car("Jihye");
         car.execute(4);
         car.execute(4);
         anotherCar.execute(4);
@@ -53,7 +56,6 @@ class CarTest {
     @Test
     @DisplayName("이동 거리가 같으면 Car 이름 사전식 비교")
     void compareName() {
-        Car anotherCar = new Car("Jihye");
         car.execute(4);
         anotherCar.execute(4);
         assertThat(car.getDistance()).isEqualTo(1); // car은 이동 거리가 1
