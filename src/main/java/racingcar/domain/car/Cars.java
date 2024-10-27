@@ -20,22 +20,22 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars from(List<String> names, MovementStrategy movementStrategy) {
-        List<CarName> carNames = names.stream().map(CarName::new).toList();
-        validateDuplicatedName(names, carNames);
-        List<Car> cars = carNames.stream().map(carName -> new Car(carName, movementStrategy)).toList();
-
-        return new Cars(cars);
+    private void validateCarLength(List<Car> cars) {
+        if (cars.size() < MIN_CAR_LENGTH || cars.size() > MAX_CAR_LENGTH) {
+            throw new IllegalArgumentException(CAR_LENGTH_ERROR_MESSAGE);
+        }
     }
 
     public static Cars from(List<Car> cars) {
         return new Cars(cars);
     }
 
-    private void validateCarLength(List<Car> cars) {
-        if (cars.size() < MIN_CAR_LENGTH || cars.size() > MAX_CAR_LENGTH) {
-            throw new IllegalArgumentException(CAR_LENGTH_ERROR_MESSAGE);
-        }
+    public static Cars from(List<String> names, MovementStrategy movementStrategy) {
+        List<CarName> carNames = CarName.listOf(names);
+        validateDuplicatedName(names, carNames);
+        List<Car> cars = createCars(movementStrategy, carNames);
+
+        return new Cars(cars);
     }
 
     private static void validateDuplicatedName(List<String> names, List<CarName> carNames) {
@@ -43,6 +43,12 @@ public class Cars {
         if (names.size() != uniqueCarNames.size()) {
             throw new IllegalArgumentException(DUPLICATED_CAR_NAME_MESSAGE);
         }
+    }
+
+    private static List<Car> createCars(MovementStrategy movementStrategy, List<CarName> carNames) {
+        return carNames.stream()
+                .map(carName -> new Car(carName, movementStrategy))
+                .toList();
     }
 
     public void moveAll() {

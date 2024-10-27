@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import java.util.List;
+
 public record CarName(String name) {
 
     private static final int MAX_NAME_LENGTH = 5;
@@ -11,6 +13,12 @@ public record CarName(String name) {
         String trimName = name.trim();
         validateName(trimName);
         this.name = trimName;
+    }
+
+    public static List<CarName> listOf(List<String> carNames) {
+        return carNames.stream()
+                .map(CarName::new)
+                .toList();
     }
 
     private static void validateNullName(String name) {
