@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import org.junit.platform.commons.util.StringUtils;
 
 public class Application {
     public static void main(String[] args) {
@@ -59,13 +60,15 @@ public class Application {
 
         String input = Console.readLine();
 
-        if (!input.chars().allMatch(Character::isDigit))
+        if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException();
+        }
 
         Integer movemmetCount = Integer.parseInt(input);
 
-        if (movemmetCount <= 0)
+        if (movemmetCount <= 0) {
             throw new IllegalArgumentException();
+        }
 
         return movemmetCount;
     }
@@ -92,7 +95,6 @@ public class Application {
     public static String getWinners(List<Car> cars) {
         String winners = "";
         List<String> winnerNames = new ArrayList<>();
-
         List<Integer> carDistances = new ArrayList<>();
 
         for (Car car : cars) {
@@ -101,7 +103,7 @@ public class Application {
 
         Integer maxDistance = Collections.max(carDistances);
         for (Car car : cars) {
-            if (car.getDistance() == maxDistance) {
+            if (car.getDistance().equals(maxDistance)) {
                 winnerNames.add(car.getName());
             }
         }
