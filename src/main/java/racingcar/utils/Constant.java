@@ -7,6 +7,7 @@ public class Constant {
 
     public static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차의 이름은 5자 이하만 가능합니다.";
     public static final String CAR_NAME_EMPTY_ERROR_MESSAGE = "한 개 이상의 자동차 이름을 입력해야 합니다.";
+    public static final String CAR_NAME_DUPLICATE_ERROR_MESSAGE = "자동차 이름은 중복될 수 없습니다.";
     public static final String ATTEMPT_COUNT_NUMBER_ERROR_MESSAGE = "시도할 횟수는 1 이상의 정수이어야 합니다.";
 
     public static final int CAR_NAME_MAX_LENGTH_VALUE = 5;
