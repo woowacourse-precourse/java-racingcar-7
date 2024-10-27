@@ -2,7 +2,9 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class DataParser {
     public static List<RacingCar> parseName(String input) {
@@ -14,6 +16,7 @@ public class DataParser {
             checkLenght(list.get(i));
             isAlphaNumeric(list.get(i));
         }
+        isSame(list);
         return createRacingCar(list);
     }
 
@@ -35,11 +38,10 @@ public class DataParser {
         isLetterOrDigit(input);
     }
 
-    private static void isLetterOrDigit(String input) {
-        for (char c : input.toCharArray()) {
-            if (!(Character.isLetter(c) || Character.isDigit(c))) {
-                throw new IllegalArgumentException();
-            }
+    private static void isSame(List<String> list) {
+        Set<String> set = new HashSet<>(list);
+        if (set.size() < list.size()) {
+            throw new IllegalArgumentException("중복 작성");
         }
     }
 
@@ -59,5 +61,13 @@ public class DataParser {
             }
         }
         return Integer.parseInt(tryCount);
+    }
+
+    private static void isLetterOrDigit(String input) {
+        for (char c : input.toCharArray()) {
+            if (!(Character.isLetter(c) || Character.isDigit(c))) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
