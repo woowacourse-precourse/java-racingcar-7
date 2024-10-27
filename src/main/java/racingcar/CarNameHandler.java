@@ -7,16 +7,22 @@ import java.util.stream.Collectors;
 public class CarNameHandler {
 
     private List<String> splitCarNames(String input) {
-        return Arrays.stream(input.split(","))
+        List<String> carNames = Arrays.stream(input.split(","))
                 .map(String::trim)
-                .filter(name -> name.length() <= 5)
+                .filter(name -> !name.isEmpty())
                 .collect(Collectors.toList());
+
+        if (carNames.isEmpty() || carNames.stream().anyMatch(name -> name.length() > 5)) {
+            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하이어야 합니다.");
+        }
+
+        return carNames;
     }
 
     public RacingCars storeCar(String input) {
         List<String> carNames = splitCarNames(input);
         RacingCars racingCars = new RacingCars();
-        racingCars.addCars(carNames); // 자동차 이름을 통해 Car 객체 생성 및 추가
+        racingCars.addCars(carNames);
         return racingCars;
     }
 
