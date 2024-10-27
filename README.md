@@ -72,3 +72,12 @@
 
 - RandomNumbers를 생성한다.
 - Randoms API를 사용
+
+### 2. RacingService
+
+- Cars를 준비
+- for문을 통해 모든 라운드를 record 요청
+
+### 3. RacingRound
+
+- 한 라운드를 record
