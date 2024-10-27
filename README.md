@@ -20,7 +20,10 @@
 
 ---
 - [x] 자동차 이름들을 입력받는다.
+  - 입력이 null이거나 빈 문자열인 경우 IllegalArgumentException을 발생시킨다. 
 - [x] 시도할 횟수를 입력받는다.
+  - 입력이 null이거나 빈 문자열인 경우 IllegalArgumentException을 발생시킨다.
+  - 입력이 정수형이 아닌 경우 IllegalArgumentException을을 발생시킨다.
 - [x] 자동차 이름을 생성한다.
   - 자동차 이름이 5자보다 크다면 IllegalArgumentException을 발생시킨다.
 - [x] 자동차를 생성한다.
