@@ -26,13 +26,10 @@ public class RacingcarServiceImpl implements RacingcarService {
     @Override
     public List<Racingcar> determineWinner(List<Racingcar> racingcars) {
         List<Racingcar> winners = new ArrayList<>();
-
         int maxDistance = getMaxDistance(racingcars);
 
-        for (Racingcar racingcar: racingcars) {
-            if (racingcar.getDistance() == maxDistance) {
-                winners.add(racingcar);
-            }
+        for (Racingcar racingcar : racingcars) {
+            addWinnerIfMaxDistance(winners, racingcar, maxDistance);
         }
 
         return winners;
@@ -56,5 +53,11 @@ public class RacingcarServiceImpl implements RacingcarService {
 
         Optional<Integer> maxDistance = distances.stream().max(Integer::compareTo);
         return maxDistance.orElse(0);
+    }
+
+    private void addWinnerIfMaxDistance(List<Racingcar> winners, Racingcar racingcar, int maxDistance) {
+        if (racingcar.getDistance() == maxDistance) {
+            winners.add(racingcar);
+        }
     }
 }
