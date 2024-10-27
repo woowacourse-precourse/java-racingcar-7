@@ -18,15 +18,15 @@ class CarRegistryTest {
 
         // When
         CarFactory carFactory = new CarFactory();
-        CarRegistry carRegistry = new CarRegistry(carFactory.createCars(input));
+        Set<Car> actualCars = carFactory.createCars(input);
         Set<Car> expectedCars = new HashSet<>();
         expectedCars.add(new Car("pobi"));
         expectedCars.add(new Car("woni"));
         expectedCars.add(new Car("jun"));
 
         // Then
-        assertEquals(expectedCars.size(), carRegistry.getCars().size());
-        assertTrue(carRegistry.getCars().containsAll(expectedCars));
+        assertEquals(expectedCars.size(), actualCars.size());
+        assertTrue(actualCars.containsAll(expectedCars));
     }
 
     @Test
@@ -37,14 +37,14 @@ class CarRegistryTest {
 
         // When
         CarFactory carFactory = new CarFactory();
-        CarRegistry carRegistry = new CarRegistry(carFactory.createCars(input));
+        Set<Car> actualCars = carFactory.createCars(input);
         Set<Car> expectedCars = new HashSet<>();
         expectedCars.add(new Car("pobi"));
         expectedCars.add(new Car("woni"));
 
         // Then
-        assertEquals(expectedCars.size(), carRegistry.getCars().size());
-        assertTrue(carRegistry.getCars().containsAll(expectedCars));
+        assertEquals(expectedCars.size(), actualCars.size());
+        assertTrue(actualCars.containsAll(expectedCars));
     }
 
     @Test
