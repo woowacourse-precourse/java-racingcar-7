@@ -17,7 +17,7 @@ public class Game {
 
         for (int round = 0; round < rounds; round++){
             cars.moveCars();
-            cars.currentStatus();
+            cars.printCurrentStatus();
             printNextLine();
         }
 
