@@ -46,7 +46,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 시도_횟수가_숫자인지_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> Application.getTryCountInput("abc"))
+                assertThatThrownBy(() -> runException("abc"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
