@@ -17,7 +17,7 @@ public class Validator {
                 throw new IllegalArgumentException("자동차 이름은 5글자 이하로 입력해 주세요.");
             }
             if(!uniqueNames.add(name)) { // 중복된 이름일 경우
-                throw new IllegalArgumentException("중복되는 이름을 가진 자동차가 있습니다. 다시 입력해 주세요.");
+                throw new IllegalArgumentException("중복되는 이름을 가진 자동차가 있습니다.");
             }
         }
     }
