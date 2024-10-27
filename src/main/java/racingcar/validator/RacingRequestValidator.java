@@ -10,7 +10,7 @@ public class RacingRequestValidator {
     }
 
     private static void validateCarNames(List<String> carNames) {
-        if (carNames.stream().anyMatch(String::isEmpty)) {
+        if (carNames.stream().anyMatch(String::isBlank)) {
             throw new IllegalArgumentException("차 이름은 비어 있을 수 없습니다.");
         }
         if (carNames.stream().anyMatch(carName -> carName.length() > 5)) {

@@ -1,7 +1,7 @@
 package racingcar.domain.model;
 
 public class Car {
-    private final static String EMPTY_CAR_NAME_MESSAGE = "자동차 이름이 비어있습니다.";
+    private final static String BLANK_CAR_NAME_MESSAGE = "자동차 이름이 비어있습니다.";
     private final static String CAR_NAME_TOO_LONG_MESSAGE = "자동차 이름 %d자 초과 되었습니다.";
     private final static Integer MAX_CAR_NAME_LENGTH = 5;
 
@@ -19,13 +19,13 @@ public class Car {
     }
 
     private static void validateName(String name) {
-        validateEmptyName(name);
+        validateBlankName(name);
         validateNameLength(name);
     }
 
-    private static void validateEmptyName(String name) {
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException(EMPTY_CAR_NAME_MESSAGE);
+    private static void validateBlankName(String name) {
+        if (name.isBlank()) {
+            throw new IllegalArgumentException(BLANK_CAR_NAME_MESSAGE);
         }
     }
 
