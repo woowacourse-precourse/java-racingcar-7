@@ -36,7 +36,7 @@ public class Racing {
             System.out.print("-");
         }
         for (int i = 0; count == 0; ) {
-            System.out.println(" ");
+            System.out.println("");
         }
     }
 
