@@ -2,6 +2,7 @@ package racingcar.io;
 
 import static racingcar.messages.ExceptionMessages.EMPTY_NAME;
 import static racingcar.messages.ExceptionMessages.INVALID_CAR_NAME_FORMAT;
+import static racingcar.messages.ExceptionMessages.INVALID_INTEGER_RANGE;
 import static racingcar.messages.ExceptionMessages.INVALID_ROUNDS_INPUT;
 import static racingcar.messages.ExceptionMessages.NAME_TOO_LONG;
 
@@ -20,9 +21,21 @@ public class InputValidator {
         }
     }
 
-    public void validateNumberOfRound(int numberOfRounds) {
+    public void validateNumberOfRound(String numberOfRounds) {
+        if (!isIntegerRange(numberOfRounds)) {
+            throw new IllegalArgumentException(INVALID_INTEGER_RANGE.getMessage());
+        }
         if (!isPositiveRoundNumber(numberOfRounds)) {
             throw new IllegalArgumentException(INVALID_ROUNDS_INPUT.getMessage());
+        }
+    }
+
+    private boolean isIntegerRange(String numberOfRounds) {
+        try {
+            Integer.parseInt(numberOfRounds);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 
@@ -34,8 +47,8 @@ public class InputValidator {
         return carName.contains(" ");
     }
 
-    private boolean isPositiveRoundNumber(int roundLength) {
-        return roundLength > 0;
+    private boolean isPositiveRoundNumber(String roundLength) {
+        return Integer.parseInt(roundLength) > 0;
     }
 
     private boolean isEmptyName(String carName) {
