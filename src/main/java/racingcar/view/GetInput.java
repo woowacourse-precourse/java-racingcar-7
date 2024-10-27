@@ -18,12 +18,19 @@ public class GetInput {
 
         String[] checkedname = nameset.split(",");
 
+        validateNameLength(checkedname);
+        
         for (String carname : checkedname) {
             cars.add(new Car(carname.trim(),0,""));
         }
     }
 
+    public static void validateNameLength(String[] checkedname){
+        for (String name : checkedname) {
+            if(name.length()>5){throw new IllegalArgumentException();}
+        }
 
+    }
 
 
 
