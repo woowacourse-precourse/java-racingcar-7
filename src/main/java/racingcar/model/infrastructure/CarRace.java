@@ -12,7 +12,7 @@ import static racingcar.view.enumerate.OutputConstant.PRINT_RUNNING_RESULT_SENTE
 public class CarRace implements RaceFind {
     private final int tryTimes;
     private final List<Vehicle> cars;
-
+    private final static Integer CAR_INIT_DISTANCE = 0;
     public CarRace(int tryTimes, List<Car> cars) {
         this.tryTimes = tryTimes;
         this.cars = new ArrayList<>(cars);
@@ -20,7 +20,7 @@ public class CarRace implements RaceFind {
 
     public static CarRace init(List<String> carNames, int tryTimes) {
         List<Car> newCarInRace = carNames.stream()
-                .map(name -> new Car(name, CarMoveDecider.getInstance()))
+                .map(name -> new Car(name, CAR_INIT_DISTANCE,CarMoveDecider.getInstance()))
                 .toList();
         return new CarRace(tryTimes, newCarInRace);
     }
