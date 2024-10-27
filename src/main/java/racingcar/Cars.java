@@ -30,6 +30,12 @@ public class Cars {
         }
     }
 
+    public void printWinners() {
+        System.out.println(findWinners()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", ", "최종 우승자 : ", "")));
+    }
 
     public List<Car> findWinners() {
         int maxLocation = findMaxLocation();

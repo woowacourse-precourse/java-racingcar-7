@@ -13,6 +13,8 @@ public class Application {
             cars.race(randomNumberGenerator);
             System.out.println("\n");
         }
+
+        cars.printWinners();
     }
 
     private static Cars inputCars() {
