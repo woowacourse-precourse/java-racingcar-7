@@ -37,6 +37,12 @@ public class Reader {
 
     public static int readNumber() {
         String input = Console.readLine();
+
+        return convertStringToNaturalNumber(input);
+    }
+
+    public static int convertStringToNaturalNumber(String input) {
+
         int number;
 
         try {
