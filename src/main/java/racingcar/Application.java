@@ -11,14 +11,25 @@ public class Application {
 
         String[] cars = readed.split(",");
 
-        int count = Integer.getInteger(Console.readLine());
+        int count = Integer.parseInt(Console.readLine());
 
         int[] result = new int[cars.length];
+        int max = 0;
 
         for (int i = 0; i < count; i++) {
-            int number = Randoms.pickNumberInRange(0, 9);
-            if (number >= 4) { result[i] += number; }
-            
+            for (int j = 0; j < result.length; j++) {
+                int number = Randoms.pickNumberInRange(0, 9);
+                if (number >= 4) { result[j] += number; }
+                max = Math.max(max, result[j]);
+            }
         }
+
+        for (int j : result) {
+            if (j == max) {
+                System.out.printf("최종 우승자 : %s%n", String.join(",", cars));
+            }
+        }
+
+
     }
 }
