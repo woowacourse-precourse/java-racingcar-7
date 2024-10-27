@@ -13,8 +13,8 @@ public class Car {
         return name;
     }
 
-    public void setForwardCount(int forwardCount) {
-        this.forwardCount = forwardCount;
+    public void moveOneStep() {
+        forwardCount++;
     }
 
     public int getForwardCount() {

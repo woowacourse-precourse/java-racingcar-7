@@ -11,7 +11,7 @@ public class RacingGameService {
     public void moveCars(List<Car> cars) {
         for (Car car : cars) {
             if (RandomGenerator.createRandomValue() >= MIN_MOVE_CONDITION) {
-                car.setForwardCount(car.getForwardCount() + 1);
+                car.moveOneStep();
             }
         }
     }
