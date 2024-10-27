@@ -3,9 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.regex.Pattern;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -53,25 +51,31 @@ public class Application {
         }
     }
 
-    private static LinkedHashMap<String, Integer> checkDuplicateName(ArrayList<String> carNames){
-        LinkedHashMap<String, Integer> carNamesMap = new LinkedHashMap<>();
-        for (String carname: carNames){
-            carNamesMap.put(carname, 0);
+    private static Car[] checkDuplicateName(ArrayList<String> carNames){
+        ArrayList<Car> carList = new ArrayList<>();
+        for(String carName:carNames){
+            if(!carList.contains(carName)){
+                carList.add(new Car(carName));
+            }
         }
-        if (carNamesMap.size() != carNames.size()){
+
+        if (carList.size() != carNames.size()){
             throw new IllegalArgumentException("중복된 자동차 이름은 사용할 수 없습니다.(대문자와 소문자는 동일하게 인식됩니다.)");
         }
-        return carNamesMap;
+
+        Car[] cars = new Car[carList.size()];
+        carList.toArray(cars);
+        return cars;
     }
 
-    private static LinkedHashMap<String,Integer> getCarNames(){
+    private static Car[] getCarNames(){
         System.out.println(START_TEXT);
         String inputString = getInput();
         ArrayList<String> carNames = splitCarNames(inputString);
         validCarCount(carNames);
         validCarNames(carNames);
-        LinkedHashMap<String,Integer> carNamesMap = checkDuplicateName(carNames);
-        return carNamesMap;
+        Car[] cars = checkDuplicateName(carNames);
+        return cars;
     }
 
     private static void isValidTimes(final int times){
@@ -101,52 +105,71 @@ public class Application {
         return randomNumbers;
     }
 
-    private static void printResult(LinkedHashMap<String,Integer> cars, String carName){
-        int curCarLocation = cars.get(carName);
+    private static void printResult(Car curCar, String carName){
+        int curCarLocation = curCar.currentLocation;
         System.out.print(carName + " : ");
-        for(int count = 0; count < curCarLocation + 1; count++){
+        for(int count = 0; count < curCarLocation; count++){
             System.out.print("-");
         }
         System.out.println();
     }
 
-    private static void updateResult(LinkedHashMap<String,Integer> cars, ArrayList<Integer> randomNumbers){
-        ArrayList<String> carNames = new ArrayList<>(cars.keySet());
-        for(int numIndex = 0; numIndex< cars.size(); numIndex++){
-            String curCarNames = carNames.get(numIndex);
-            int curCarLocation = cars.get(curCarNames);
-            if (randomNumbers.get(numIndex) > 3){
-                curCarLocation++;
-                cars.put(curCarNames, curCarLocation);
+    private static void updateResult(Car[] cars, ArrayList<Integer> randomNumbers){
+        for(int carIndex = 0; carIndex < cars.length; carIndex++){
+            String curCarName = cars[carIndex].name;
+
+            if(randomNumbers.get(carIndex) > 3){
+                cars[carIndex].move();
             }
-            printResult(cars,curCarNames);
+            printResult(cars[carIndex], curCarName);
         }
         System.out.println();
     }
 
-    private static void printWinner(LinkedHashMap<String,Integer> cars){
-        System.out.print("최종 우승자 : " );
-        int maxValue = Collections.max(cars.values());
+    private static List<String> findWinner(Car[] cars){
+        List<String> winnerList = new ArrayList<>();
+        int maxLocationNum = cars[0].currentLocation;
+        winnerList.add(cars[0].name);
 
-        for (Map.Entry<String, Integer> entry : cars.entrySet()) {
-            if (entry.getValue() == maxValue) {
-                System.out.print(entry.getKey() + " ");
+        for(int i =1; i<cars.length; i++){
+            Car curCar = cars[i];
+            if (curCar.currentLocation > maxLocationNum){
+                maxLocationNum = curCar.currentLocation;
+                winnerList.clear();
+                winnerList.add(curCar.name);
+                continue;
+            }
+            if(curCar.currentLocation == maxLocationNum){
+                winnerList.add(curCar.name);
             }
         }
+        return winnerList;
     }
 
-    private static void playGame(LinkedHashMap<String,Integer> cars, int times){
-        ArrayList<Integer> randomNumbers = new ArrayList<>();
+    private static void printWinner(Car[] cars){
+        System.out.print("최종 우승자 : " );
+        List<String> winnerList = findWinner(cars);
+        for(int i=0; i < winnerList.size(); i++){
+            System.out.print(winnerList.get(i));
+            if(i != winnerList.size() - 1){
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
+
+    private static void playGame(Car[] cars, int times){
+        ArrayList<Integer> randomNumbers;
         for(int i=0; i<times; i++){
-            randomNumbers = getRandomNumbers(cars.size());
+            randomNumbers = getRandomNumbers(cars.length);
             updateResult(cars, randomNumbers);
         }
         printWinner(cars);
     }
 
     public static void main(String[] args) {
-        LinkedHashMap<String, Integer> carNames = getCarNames();
+        Car[] cars = getCarNames();
         int gameTimes = getGameTimes();
-        playGame(carNames, gameTimes);
+        playGame(cars, gameTimes);
     }
 }
