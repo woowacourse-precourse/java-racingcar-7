@@ -2,6 +2,9 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        String[] carNames = InputView.getCarNamesInput();
+        int tryCount = InputView.getTryCountInput();
+        RacingGame game = new RacingGame(carNames, tryCount);
+        game.start();
     }
 }
