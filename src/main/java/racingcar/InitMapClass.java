@@ -1,10 +1,10 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class InitMapClass {
     private static final String DELIMITER = ",";
@@ -17,7 +17,9 @@ public class InitMapClass {
      * @return 구분한 이름들에 대한 List입니다.
      */
     List<String> splitCarNameString(String inputString) {
-        return new ArrayList<>(Arrays.asList(inputString.strip().split(DELIMITER)));
+        return Arrays.stream(inputString.split(DELIMITER))
+                .map(String::strip)
+                .collect(Collectors.toList());
     }
 
     /**
