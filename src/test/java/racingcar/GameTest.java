@@ -3,13 +3,20 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class GameTest {
+class GameTest extends NsTest {
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
 
     private void setConsoleInput(String str) {
         System.setIn(new ByteArrayInputStream(str.getBytes()));
@@ -29,9 +36,7 @@ class GameTest {
 
     @Test
     void 빈_문자열을_입력받으면_예외발생() {
-        Validator validator = new Validator();
-
-        assertThatThrownBy(() -> validator.inputSting(""))
+        assertThatThrownBy(() -> Validator.inputSting(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름을 입력해주세요.");
     }
@@ -76,5 +81,15 @@ class GameTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 숫자와 문자만 가능해요.");
     }
+
+    @Test
+    void 자동차이름_중복되면_예외발생() {
+        InputParser inputParser = new InputParser();
+
+        assertThatThrownBy(() -> inputParser.stringToCarList("pobi,pobi"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("dd");
+    }
+
 
 }
