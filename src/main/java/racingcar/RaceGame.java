@@ -12,9 +12,11 @@ import java.util.List;
 public class RaceGame {
 
     List<Car> carList = new ArrayList<>();
+    int roundCount = 0;
 
     void start() {
         inputCarNames();
+        inputRoundCount();
     }
 
     @Test
@@ -30,6 +32,17 @@ public class RaceGame {
             }
             carList.add(new Car(carName));
         }
+    }
+
+    @Test
+    @DisplayName("라운드 횟수를 입력하는 메서드")
+    void inputRoundCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int inputCount = Integer.parseInt(Console.readLine());
+        if(inputCount < 1) {
+            throw new RuntimeException();
+        }
+        this.roundCount = inputCount;
     }
 
 }
