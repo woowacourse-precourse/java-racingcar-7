@@ -34,7 +34,7 @@ class CarTest {
                 assertThatThrownBy(() -> {
                     new Car("abcdefghi");
                 }).isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("이름은 5글자 이상이 될 수 없습니다.")
+                        .hasMessage("이름은 5글자보다 클 수 없습니다.")
         );
     }
 

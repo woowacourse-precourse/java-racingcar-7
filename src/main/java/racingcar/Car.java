@@ -41,7 +41,7 @@ public class Car {
     }
 
     private void checkLength(String name) {
-        if (name.length() > 6) {
+        if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5글자보다 클 수 없습니다.");
         }
     }
