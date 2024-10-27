@@ -1,9 +1,9 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
+import racingcar.stream.ConsoleInput;
 import racingcar.stream.ConsoleOutput;
 
 import java.util.List;
@@ -11,13 +11,14 @@ import java.util.List;
 public class RaceController {
 
     private final ConsoleOutput output = new ConsoleOutput();
+    private final ConsoleInput input = new ConsoleInput();
 
     public void doRace() {
         output.writeCarNameGuide();
-        List<String> names = inputNames();
+        List<String> names = input.inputNames();
 
         output.writeRoundCountGuide();
-        int roundCount = inputRoundCount();
+        int roundCount = input.inputRoundCount();
 
         output.writeWhiteLine();
 
@@ -26,16 +27,6 @@ public class RaceController {
 
         List<String> winners = findWinnersName(racingCars);
         output.writeWinners(winners);
-    }
-
-    private List<String> inputNames() {
-        String input = Console.readLine();
-        return List.of(input.split(","));
-    }
-
-    private int inputRoundCount() {
-        String count = Console.readLine();
-        return Integer.parseInt(count);
     }
 
     private RacingCars createRacingCars(List<String> names) {
