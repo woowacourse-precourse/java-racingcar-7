@@ -1,7 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 import static racingcar.WinnerCalculator.calculateWinners;
@@ -17,9 +15,7 @@ public class Application {
         System.out.println("실행 결과");
         List<Car> racingCars = race(raceTime, cars);
 
-        List<String> winnerNames = calculateWinners(racingCars);
-        String winnerRecord = String.join(", ", winnerNames);
-        System.out.println("최종 우승자 : " + winnerRecord);
+        System.out.println("최종 우승자 : " + String.join(", ", calculateWinners(racingCars)));
     }
 
     public static List<Car> race(int raceTime, Cars cars) {
