@@ -86,24 +86,16 @@ public class RacingGame {
 
     private void printCarDistances(Map<String, Integer> carDistanceMap) {
         for (String carName : carDistanceMap.keySet()) {
-                System.out.println(carName + " : " + "-".repeat(carDistanceMap.get(carName)));
+            System.out.println(carName + " : " + "-".repeat(carDistanceMap.get(carName)));
         }
     }
 
     private List<String> getWinner(Map<String, Integer> carDistanceMap) {
-        int maxDistance = 0;
-        List<String> winners = new ArrayList<>();
-        for (String carName : carDistanceMap.keySet()) {
-            if (maxDistance > carDistanceMap.get(carName)) {
-                continue;
-            }
-            if(maxDistance < carDistanceMap.get(carName)) {
-                maxDistance = carDistanceMap.get(carName);
-                winners.clear();
-            }
-            winners.add(carName);
-        }
-        return winners;
+        int maxDistance = carDistanceMap.values().stream().max(Integer::compareTo).orElseThrow();
+        return carDistanceMap.entrySet().stream()
+                .filter(entry -> entry.getValue() == maxDistance)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 
     private void printWinners(List<String> winners) {
