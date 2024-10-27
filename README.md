@@ -56,8 +56,13 @@
 
 - 차들의 갯수만큼 랜덤 숫자를 저장한다.
 
+### 4. OutputFormat
+
+- 각종 출력 형식을 저장
+
 ## Service
 
 ### 1. RandomNumberGenerator
 
 - RandomNumbers를 생성한다.
+- Randoms API를 사용
