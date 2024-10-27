@@ -23,37 +23,37 @@
 
 ## ✏️ 구현할 기능 목록
 ### 1. 사용자 입력 처리
-- [ ] 경주할 자동차 이름을 입력받는다.
-    - [ ] 빈 문자열이나 null을 발생시킬 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
-- [ ] 쉼표(,)로 구분된 이름들을 리스트로 변환한다.
-- [ ] 경주할 횟수를 입력받아 정수로 변환한다. 
-    - [ ] 숫자가 아닌 문자를 입력할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
-    - [ ] 사용자가 1보다 작은 정수를 입력할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+- [x] 경주할 자동차 이름을 입력받는다.
+    - [x] 빈 문자열이나 null을 발생시킬 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+- [x] 쉼표(,)로 구분된 이름들을 리스트로 변환한다.
+- [x] 경주할 횟수를 입력받아 정수로 변환한다. 
+    - [x] 숫자가 아닌 문자를 입력할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+    - [x] 사용자가 1보다 작은 정수를 입력할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
 ---
 ### 2. 자동차 이름 유효성 검증
-- [ ] 입력된 이름이 null이거나 공백만 포함하는 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
-- [ ] 이름이 1자 미만이거나 5자를 초과하는 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
-- [ ] 이름 내부에 공백이 포함될 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
-- [ ] 중복된 이름이 존재할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+- [x] 입력된 이름이 null이거나 공백만 포함하는 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+- [x] 이름이 1자 미만이거나 5자를 초과하는 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+- [x] 이름 내부에 공백이 포함될 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+- [x] 중복된 이름이 존재할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
 ---
 ### 3. 자동차 전진 조건 설정
-- [ ] 0에서 9 사이의 무작위 값을 생성한다.
-- [ ] 해당 값이 4 이상일 경우 자동차가 전진한다.
-    - [ ] 무작위 값이 0에서 9 사이가 아닌 값이 들어올 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+- [x] 0에서 9 사이의 무작위 값을 생성한다.
+- [x] 해당 값이 4 이상일 경우 자동차가 전진한다.
+    - [x] 무작위 값이 0에서 9 사이가 아닌 값이 들어올 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
 ---
 ### 4. 게임 진행 및 결과 출력
-- [ ] 경주할 총 라운드 수를 기준으로 게임을 진행한다. 
-- [ ] 각 라운드별로 각 자동차의 전진 결과를 출력한다.
-- [ ] 매 라운드마다 자동차의 이름과 현재 위치를 출력한다.
+- [x] 경주할 총 라운드 수를 기준으로 게임을 진행한다. 
+- [x] 각 라운드별로 각 자동차의 전진 결과를 출력한다.
+- [x] 매 라운드마다 자동차의 이름과 현재 위치를 출력한다.
 ---
 ### 5. 우승자 판별 및 출력
-- [ ] 모든 라운드가 끝난 후, 가장 멀리 전진한 자동차를 우승자로 설정한다.
-- [ ] 우승자가 여러 명일 경우 쉼표(,)로 구분하여 출력한다.
+- [x] 모든 라운드가 끝난 후, 가장 멀리 전진한 자동차를 우승자로 설정한다.
+- [x] 우승자가 여러 명일 경우 쉼표(,)로 구분하여 출력한다.
 ---
 ### 6. 예외 처리
-- [ ] 모든 사용자 입력에서 IllegalArgumentException을 발생시키는 상황에 대해 예외 메시지를 출력한다.
-    - [ ] 자동차 이름: `자동차 이름을 입력해야 합니다.`, `자동차 이름은 1자 이상 5자 이하로 입력해야 합니다.`, `자동차 이름에 내부 공백이 포함될 수 없습니다.`
-    - [ ] 시도 횟수: `시도 횟수는 1 이상의 정수로 입력해야 합니다.`, `시도 횟수는 숫자 형식으로 입력해야 합니다.`
+- [x] 모든 사용자 입력에서 IllegalArgumentException을 발생시키는 상황에 대해 예외 메시지를 출력한다.
+    - [x] 자동차 이름: `자동차 이름을 입력해야 합니다.`, `자동차 이름은 1자 이상 5자 이하로 입력해야 합니다.`, `자동차 이름에 내부 공백이 포함될 수 없습니다.`
+    - [x] 시도 횟수: `시도 횟수는 1 이상의 정수로 입력해야 합니다.`, `시도 횟수는 숫자 형식으로 입력해야 합니다.`
 ---
 <br/>
 
@@ -83,25 +83,21 @@
 ---
 
 ## ✅ 과제 진행 요구 사항
-- [ ] 저장소 Fork 및 Clone: 자동차 경주 게임 저장소를 Fork하고 Clone하여 시작
-- [ ] README.md 기능 목록 추가: 구현할 기능 목록을 작성하여 추가
-- [ ] Commit 및 PR: 기능 단위로 커밋하고, 최종 Pull Request를 제출 
+- [x] 저장소 Fork 및 Clone: 자동차 경주 게임 저장소를 Fork하고 Clone하여 시작
+- [x] README.md 기능 목록 추가: 구현할 기능 목록을 작성하여 추가
+- [x] Commit 및 PR: 기능 단위로 커밋하고, 최종 Pull Request를 제출 
 ---
 ## ✅ 프로그래밍 요구 사항
 ### 제출 전 확인 리스트
-- [ ] `JDK 21`을 사용하여 프로그램이 실행되는지 확인한다.
-- [ ] 프로그램 시작점은 `Application`의 main() 메서드이다.
-- [ ] `build.gradle` 파일을 수정하지 않으며, 제공된 라이브러리 외 추가 라이브러리를 사용하지 않는다.
-- [ ] 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
-- [ ] 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다.
+- [x] `JDK 21`을 사용하여 프로그램이 실행되는지 확인한다.
+- [x] 프로그램 시작점은 `Application`의 main() 메서드이다.
+- [x] `build.gradle` 파일을 수정하지 않으며, 제공된 라이브러리 외 추가 라이브러리를 사용하지 않는다.
+- [x] 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
+- [x] 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다.
 ### 라이브러리 요구 사항
-- [ ] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console API`를 사용하여 구현해야 한다.
-  - [ ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
-  - [ ] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-
-
-
-
+- [x] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console API`를 사용하여 구현해야 한다.
+  - [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+  - [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 
 
