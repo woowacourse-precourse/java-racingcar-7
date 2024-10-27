@@ -22,7 +22,7 @@ public class CarRacing {
         }
     }
 
-    // 우승자 결정
+    // 경주 우승자 결정
     public List<Car> getWinners() {
         List<Car> winners = new ArrayList<>();
         winners.add(racingCars.getFirst());
