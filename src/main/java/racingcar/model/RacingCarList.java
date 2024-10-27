@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class RacingCarList {
 
-    private static ArrayList<RacingCar> racingCarList = new ArrayList<>();
+    private static final ArrayList<RacingCar> racingCarList = new ArrayList<>();
 
-    public void add(RacingCar racingCar) {
+    private RacingCarList() {}
+
+    public static void add(RacingCar racingCar) {
         racingCarList.add(racingCar);
     }
 

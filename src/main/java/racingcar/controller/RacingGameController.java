@@ -21,10 +21,9 @@ public class RacingGameController {
     public void initCarName() {
         String inputCarName = inputView.inputCarName();
         RacingCarName racingCarName = new RacingCarName(inputView.splitCarName(inputCarName));
-        RacingCarList racingCarList = new RacingCarList();
 
         for (String name : racingCarName.getList()) {
-            racingCarList.add(new RacingCar(name));
+            RacingCarList.add(new RacingCar(name));
         }
     }
 

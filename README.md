@@ -50,3 +50,5 @@
 - print 기능은 OutPutView 클래스로 이동
 - GameTryCount 클래스는 객체를 만들 필요가 없기 때문에 private 생성자 선언
 - 미사용 import 제거
+- RacingCarList 클래스는 객체를 만들 필요가 없기 때문에 private 생성자 선언
+- RacingCarMove 클래스 메서드 static 키워드 제거
