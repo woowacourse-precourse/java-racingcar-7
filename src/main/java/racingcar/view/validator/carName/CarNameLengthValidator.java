@@ -1,8 +1,8 @@
-package racingcar.view.validator;
+package racingcar.view.validator.carName;
 
 import java.util.List;
 
-public class CarNameLengthValidator implements CarNameValidator{
+public class CarNameLengthValidator extends CarNameValidator{
 
     private static final int CAR_MAX_LENGTH = 5;
 

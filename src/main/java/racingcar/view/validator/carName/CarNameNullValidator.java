@@ -1,8 +1,8 @@
-package racingcar.view.validator;
+package racingcar.view.validator.carName;
 
 import java.util.List;
 
-public class CarNameNullValidator implements CarNameValidator{
+public class CarNameNullValidator extends CarNameValidator{
 
     @Override
     public void validate(List<String> carNames) {

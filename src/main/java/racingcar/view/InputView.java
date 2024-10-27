@@ -5,16 +5,18 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Race;
-import racingcar.view.validator.CarNameDuplicateValidator;
-import racingcar.view.validator.CarNameLengthValidator;
-import racingcar.view.validator.CarNameNullValidator;
-import racingcar.view.validator.CarNameNumberValidator;
-import racingcar.view.validator.CarNameValidator;
-import racingcar.view.validator.RacingNumberFormatValidator;
-import racingcar.view.validator.RacingNumberNullValidator;
-import racingcar.view.validator.RacingNumberValidator;
+import racingcar.view.validator.carName.CarNameValidatorFacade;
+import racingcar.view.validator.racingNumber.RacingNumberValidatorFacade;
 
 public class InputView {
+
+    private final CarNameValidatorFacade carNameValidatorFacade;
+    private final RacingNumberValidatorFacade racingNumberValidatorFacade;
+
+    public InputView() {
+        this.carNameValidatorFacade = new CarNameValidatorFacade();
+        this.racingNumberValidatorFacade = new RacingNumberValidatorFacade();
+    }
 
     public List<String> receiveCarNames() {
         System.out.println(Message.RECEIVE_CAR_NAMES);
@@ -22,14 +24,7 @@ public class InputView {
         String input = getInput();
         List<String> carNames = stringToList(input);
 
-        CarNameValidator carNameNumberValidator = new CarNameNumberValidator();
-        CarNameValidator carNameNullValidator = new CarNameNullValidator();
-        CarNameValidator carNameLengthValidator = new CarNameLengthValidator();
-        CarNameValidator carNameDuplicateValidator = new CarNameDuplicateValidator();
-        carNameNumberValidator.validate(carNames);
-        carNameNullValidator.validate(carNames);
-        carNameLengthValidator.validate(carNames);
-        carNameDuplicateValidator.validate(carNames);
+        carNameValidatorFacade.validateAll(carNames);
 
         return carNames;
     }
@@ -39,11 +34,7 @@ public class InputView {
 
         String input = getInput();
 
-        RacingNumberValidator racingNumberNullValidator = new RacingNumberNullValidator();
-        RacingNumberValidator racingNumberFormatValidator = new RacingNumberFormatValidator();
-
-        racingNumberNullValidator.validate(input);
-        racingNumberFormatValidator.validate(input);
+        racingNumberValidatorFacade.validateAll(input);
 
         long raceNumber = Long.parseLong(input);
 

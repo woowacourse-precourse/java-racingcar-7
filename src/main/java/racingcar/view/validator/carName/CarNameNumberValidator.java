@@ -1,8 +1,8 @@
-package racingcar.view.validator;
+package racingcar.view.validator.carName;
 
 import java.util.List;
 
-public class CarNameNumberValidator implements CarNameValidator {
+public class CarNameNumberValidator extends CarNameValidator {
 
     private static final int CAR_MIN_NUMBER = 2;
 

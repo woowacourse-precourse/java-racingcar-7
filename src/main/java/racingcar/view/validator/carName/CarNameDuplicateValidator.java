@@ -1,10 +1,10 @@
-package racingcar.view.validator;
+package racingcar.view.validator.carName;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class CarNameDuplicateValidator implements CarNameValidator{
+public class CarNameDuplicateValidator extends CarNameValidator{
 
     @Override
     public void validate(List<String> carNames) {

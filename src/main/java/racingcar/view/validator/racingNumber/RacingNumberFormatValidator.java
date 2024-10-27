@@ -1,6 +1,6 @@
-package racingcar.view.validator;
+package racingcar.view.validator.racingNumber;
 
-public class RacingNumberFormatValidator implements RacingNumberValidator{
+public class RacingNumberFormatValidator extends RacingNumberValidator{
 
     @Override
     public void validate(String input) {
