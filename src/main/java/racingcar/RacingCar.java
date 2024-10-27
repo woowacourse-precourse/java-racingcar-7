@@ -118,6 +118,15 @@ public class RacingCar {
         System.out.println("최종 우승자 :" + winnerString);
 
     }
+    public static int getMaxTrial(Car cars[]) {
+        int maxTrial = cars[0].getGo();
+        for (int i = 0; i < cars.length; i++) {
+            if (cars[i].getGo() > maxTrial) {
+                maxTrial = cars[i].getGo();
+            }
+        }
+        return maxTrial;
+    }
 
 
 }
