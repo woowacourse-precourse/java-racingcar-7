@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.List;
-
 public class Racing {
 
     private final Input input;
@@ -23,17 +21,10 @@ public class Racing {
             cars.moveAll();
         }
 
-        
+        finish(cars);
     }
 
-    private void finish(List<Car> cars) {
-        int maxDistance = cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .orElse(0);
-
-        List<Car> winners = cars.stream()
-                .filter(car -> car.getDistance() == maxDistance)
-                .toList();
+    private void finish(Cars cars) {
+        cars.findWinners();
     }
 }
