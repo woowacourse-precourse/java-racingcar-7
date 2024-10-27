@@ -9,7 +9,7 @@ public class RandomNumberTest {
     void 범위내_숫자_생성() {
         //given
         int randomStartNumber = 0;
-        int randomLastNumber = 10;
+        int randomLastNumber = 9;
 
         //when
         int generatedNumber = RandomNumber.getRandomNumber();
