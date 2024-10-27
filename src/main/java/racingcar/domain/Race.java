@@ -23,6 +23,7 @@ public class Race {
     public void start() throws IllegalArgumentException {
         List<Car> cars = makeRoster();
 
+        outputWriter.printResultStart();
         for (int i = 0; i < num; i++) {
             raceService.race(cars);
             outputWriter.printIntermediateResult(cars);
