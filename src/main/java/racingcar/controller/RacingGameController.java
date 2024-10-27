@@ -1,9 +1,9 @@
 package racingcar.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import racingcar.service.RacingGameService;
+import racingcar.utils.CarNameParser;
+import racingcar.utils.TryCountParser;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.TryCountValidator;
 import racingcar.view.InputView;
@@ -40,15 +40,13 @@ public class RacingGameController {
     private List<String> getCarNames() {
         String carNamesInput = inputView.inputCarNames();
         carNameValidator.validate(carNamesInput);
-        return Stream.of(carNamesInput.split(","))
-                .map(String::trim)
-                .collect(Collectors.toList());
+        return CarNameParser.splitCarNames(carNamesInput);
     }
 
     private int getTryCount() {
         String tryCountInput = inputView.inputTryCount();
         tryCountValidator.validate(tryCountInput);
-        return Integer.parseInt(tryCountInput);
+        return TryCountParser.parseToInt(tryCountInput);
     }
 
     private void initializeGame(List<String> carNames) {
