@@ -15,17 +15,6 @@ public class Car {
         validateNameLength(name);
     }
 
-    private void validateNameLength(String name) {
-        if (name.length() > NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException("이름의 길이는 5자를 넘을 수 없습니다.");
-        }
-    }
-
-    private void validateNameValue(String name) {
-        if (StringUtils.isBlank(name)) {
-            throw new IllegalArgumentException("이름은 비어있을 수 없습니다.");
-        }
-    }
     public String getName() {
         return name;
     }
@@ -36,5 +25,16 @@ public class Car {
 
     public void increasePosition() {
         position += INCREMENT_VALUE;
+    }
+
+    private void validateNameLength(String name) {
+        if (name.length() > NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException("이름의 길이는 5자를 넘을 수 없습니다.");
+        }
+    }
+    private void validateNameValue(String name) {
+        if (StringUtils.isBlank(name)) {
+            throw new IllegalArgumentException("이름은 비어있을 수 없습니다.");
+        }
     }
 }
