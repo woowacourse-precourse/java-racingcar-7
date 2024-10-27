@@ -18,7 +18,7 @@ public class InputValidator {
     // 문자열에 문자가 아닌 값에 대한 검증
     public static void validateCharacter(String input) {
         if (!input.matches("[a-zA-Z,]+")) {
-            throw new IllegalArgumentException(NON_ALPHA_MESSAGE);
+            throw new IllegalArgumentException(ErrorMessage.NON_ALPHA_MESSAGE);
         }
     }
 
@@ -26,7 +26,7 @@ public class InputValidator {
     // 차량 이름 길이가 5를 넘는지 검증
     public static void validateNameLength(String input){
         if(input.length() > NAME_LENGTH){
-            throw new IllegalArgumentException(INVALID_CAR_NAME_MESSAGE);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_MESSAGE);
         }
     }
 
