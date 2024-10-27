@@ -2,6 +2,7 @@ package racingcar.model;
 
 import racingcar.exception.CarException;
 import racingcar.strategy.Mode;
+import racingcar.strategy.PracticeCar;
 import racingcar.view.OutputView;
 
 public class Car {
@@ -11,6 +12,7 @@ public class Car {
     public Car(String carName) {
         validate(carName);
         this.carName = carName;
+        this.mode = new PracticeCar();
     }
 
     private void validate(String carName) {
