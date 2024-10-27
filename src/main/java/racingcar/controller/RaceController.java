@@ -17,6 +17,6 @@ public class RaceController {
         UserInputDTO userInputDTO = InputView.getUserInput();
         raceService.initialize(userInputDTO);
         raceService.raceStart();
-//        OutputView.showResult(this.raceService.getNumOfStages(), this.raceService.getCarList());
+        OutputView.showResult(raceService);
     }
 }

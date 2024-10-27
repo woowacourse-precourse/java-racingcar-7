@@ -1,8 +1,10 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.dto.UserInputDTO;
 import racingcar.util.InputParser;
+import racingcar.util.RaceUtils;
 
 import java.util.List;
 
@@ -10,17 +12,34 @@ public class RaceService {
 
     private long numOfStages;
     private List<Car> carList;
+    private String winnerList;
+
+    public void initialize(final UserInputDTO userInputDTO) {
+        this.numOfStages = userInputDTO.numOfStages();
+        this.carList = InputParser.getCarList(userInputDTO);
+    }
 
     public void raceStart() {
-        System.out.println(numOfStages);
+        for (long i = 0; i < numOfStages; i++)
+            race(i);
+        raceOver();
+    }
+
+    private void race(long stage) {
         for (Car car : carList) {
-            System.out.println(car.getName());
+            if (canMove())
+                car.move(stage);
+            else
+                car.stop(stage);
         }
     }
 
-    public void initialize(UserInputDTO userInputDTO) {
-        this.numOfStages = userInputDTO.numOfStages();
-        this.carList = InputParser.getCarList(userInputDTO);
+    private void raceOver() {
+        this.winnerList = RaceUtils.getWinners(carList);
+    }
+
+    private boolean canMove() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
     public long getNumOfStages() {
@@ -31,7 +50,7 @@ public class RaceService {
         return this.carList;
     }
 
-    public List<Car> getCarList(UserInputDTO userInputDTO) {
-        return this.carList;
+    public String getWinnerList() {
+        return this.winnerList;
     }
 }
