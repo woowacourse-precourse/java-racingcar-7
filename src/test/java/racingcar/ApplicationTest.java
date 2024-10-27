@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.*;
 import org.junit.jupiter.api.Test;
 
@@ -101,13 +103,13 @@ class ApplicationTest extends NsTest {
     void 주행거리_판단_테스트_전진(){
         //given
         Referee referee = new CarRacingReferee();
-        TestCar testCar = new TestCar("siwu", 5);
+        Car testCar = new TestCar("siwu", 5);
 
         //when
         Car car = referee.judgeMovement(testCar);
 
         //then
-        assertEquals(1, car.getDistance(), "주행 거리 판단이 잘못되었습니다.");
+        assertEquals(1, car.getDistance(), "주행 거리 판단 결과 전진이 아닙니다.");
         assertEquals(testCar, car);
     }
 
@@ -115,14 +117,37 @@ class ApplicationTest extends NsTest {
     void 주행거리_판단_테스트_멈춤(){
         //given
         Referee referee = new CarRacingReferee();
-        TestCar testCar = new TestCar("siwu", 2);
+        Car testCar = new TestCar("siwu", 2);
 
         //when
         Car car = referee.judgeMovement(testCar);
 
         //then
-        assertEquals(0, car.getDistance());
+        assertEquals(0, car.getDistance(), "주행 거리 판단 결과 멈춤이 아닙니다.");
         assertEquals(car, testCar);
+    }
+
+    @Test
+    void 최종_우승자_출력_테스트() {
+        // given
+        OutputManager outputManager = new ConsoleOutputManager();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        List<Car> winnerCars = Arrays.asList(
+                new RacingCar("pobi"),
+                new RacingCar("edi"),
+                new RacingCar("rupi")
+        );
+
+        // when
+        outputManager.printWinner(winnerCars);
+
+        // then
+        String expectedOutput = "최종 우승자 : pobi, edi, rupi" + System.lineSeparator();
+        String actualOutput = outputStream.toString();
+        System.out.println("Actual Output: " + actualOutput);
+        assertEquals(expectedOutput, actualOutput, "우승자 출력이 잘못되었습니다.");
     }
 
     @Override
