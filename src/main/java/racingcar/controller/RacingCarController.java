@@ -7,6 +7,7 @@ import static racingcar.view.OutputView.printCarNamesInputMessage;
 import static racingcar.view.OutputView.printExecutionResult;
 import static racingcar.view.OutputView.printFinalWinner;
 
+import java.util.List;
 import racingcar.domain.CarGenerator;
 import racingcar.domain.Cars;
 import racingcar.validation.AttemptCountValidation;
@@ -44,7 +45,9 @@ public class RacingCarController {
     }
 
     private void showWinner(Cars cars) {
-        cars.calculateFinalWinner();
         printFinalWinner();
+        List<String> winnerNames = cars.calculateFinalWinner();
+        String result = String.join(", ", winnerNames);
+        System.out.println(result);
     }
 }
