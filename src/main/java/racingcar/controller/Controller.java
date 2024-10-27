@@ -10,7 +10,7 @@ import racingcar.View.OutputView;
 import racingcar.domain.Car;
 import racingcar.domain.CarImpl;
 import racingcar.domain.Parser;
-import racingcar.domain.RuleChecker;
+import racingcar.domain.Player;
 import racingcar.domain.ScoreBoard;
 
 public class Controller {
@@ -26,29 +26,22 @@ public class Controller {
         int tryCount = getTryCount();
 
         List<Car> carList = getCarList(carNames);
+        Player player = Player.from(carList);
         ScoreBoard scoreBoard = ScoreBoard.from(carList);
         outputView.printBlank();
 
-        startRound(carList, scoreBoard, tryCount);
+        startRound(player, scoreBoard, tryCount);
         outputView.printResult(scoreBoard.returnFinalResult());
     }
 
-    private void startRound(List<Car> carList, ScoreBoard scoreBoard, int tryCount) {
+    private void startRound(Player player, ScoreBoard scoreBoard, int tryCount) {
         outputView.printMessage(ROUND_START_MESSAGE);
+
         for (int i = 0; i < tryCount; i++) {
-            play(carList, scoreBoard);
+            player.play();
+            scoreBoard.returnRoundResult().forEach(outputView::printResult);
+            outputView.printBlank();
         }
-    }
-
-    private void play(List<Car> carList, ScoreBoard scoreBoard) {
-        carList.stream()
-                .filter(car -> RuleChecker.canMove())
-                .forEach(Car::run);
-
-        scoreBoard.returnRoundResult().stream()
-                .forEach(outputView::printResult);
-
-        outputView.printBlank();
     }
 
     public List<String> getCarNames() {
