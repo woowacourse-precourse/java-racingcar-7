@@ -14,7 +14,7 @@
 
 Application.java
 - 프로그램의 시작
-- InputHandler를 호출해서 안내문을 출력하고 입력값을 받아서 List<Car>, int값으로 변환
+- InputHandler를 호출해서 안내문을 출력하고, List<Car>, int값으로 변환된 입력값을 받음
 - 변환받은 입력값을 RacingGame으로 넘김
 
 InputHandler.java
@@ -26,8 +26,14 @@ InputHandler.java
 
 RacingGame.java
 - 게임을 진행하는 클래스
-- 입력된 게임 횟수만큼 무작위 값을 받아서 각 라운드 결과를 출력
-- 모든 게임이 종료되었을 때 최종 승자(들)를 출력
+- 입력된 게임 횟수만큼 무작위 값을 받아서 각 라운드 결과 결정
+  - 각 라운드 결과를 ResultPrinter로 출력
+- 모든 게임이 종료되었을 때 최종 승자(들)를 결정
+  - 최종 승자를 ResultPrinter로 출력
+
+ResultPrinter
+- 결과를 출력하는 클래스
+  - 각 라운드의 결과와 최종 승자(들)를 출력
 
 Car.java
 - 자동차 이름과 전진 횟수를 변수로 가진 클래스
