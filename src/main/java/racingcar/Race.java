@@ -13,6 +13,16 @@ public class Race {
         this.judge = new Judge();
     }
 
+    public void run(String inputCars, String inputCount) {
+        validator.validate(inputCars, inputCount);
+
+        setup(inputCars);
+        startGame(inputCount);
+
+        judge.judge(carList);
+        judge.show();
+    }
+
     public void setup(String inputCars) {
         String[] strCars = separateInputCars(inputCars);
 
