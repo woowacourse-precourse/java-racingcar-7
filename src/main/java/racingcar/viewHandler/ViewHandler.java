@@ -56,6 +56,8 @@ public class ViewHandler {
             output.viewOneRound(api);
         } else if(api.getData() instanceof String) {
             output.viewResult(api);
+        } else {
+            output.viewException(api);
         }
     }
 }

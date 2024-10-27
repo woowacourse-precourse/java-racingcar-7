@@ -41,4 +41,10 @@ public class Validator {
             throw new ExceptionMessageImpl(라운드_양수_입력_에러);
         }
     }
+
+    public List<String> removeFirstWhitespace(List<String> carnames) {
+        return carnames.stream()
+                .map(String::stripLeading)
+                .toList();
+    }
 }

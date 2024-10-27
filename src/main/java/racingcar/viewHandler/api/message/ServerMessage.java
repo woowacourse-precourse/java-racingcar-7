@@ -1,7 +1,8 @@
 package racingcar.viewHandler.api.message;
 
 public enum ServerMessage implements ApiMessage {
-    서버_성공(new ExceptionMessageImpl("success", 200)),
+    서버_성공(new ExceptionMessageImpl("success server communicate", 200)),
+    클라이언트_성공(new ExceptionMessageImpl("success client communicate", 200))
     ;
 
     private final ApiMessage message;

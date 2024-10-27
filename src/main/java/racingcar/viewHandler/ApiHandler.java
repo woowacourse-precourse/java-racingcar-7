@@ -24,14 +24,14 @@ public class ApiHandler {
 
     public Api<InputDto> transformInputDto(List<String> carnames, Integer totalRound) {
         InputDto inputDto = new InputDto(carnames, totalRound);
-        return new Api<>(ServerMessage.서버_성공, inputDto);
+        return new Api<>(ServerMessage.클라이언트_성공, inputDto);
     }
 
     public List<String> splitCarnames(String inputData) {
         List<String> carnames = List.of(inputData.split(COMMA));
         validator.validateMinCarCount(carnames);
         validator.validateCarNameLength(carnames);
-        return carnames;
+        return validator.removeFirstWhitespace(carnames);
     }
 
     public Integer parserTotalRound(String inputData) {
