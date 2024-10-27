@@ -11,18 +11,17 @@ import java.util.stream.IntStream;
 
 public class RacingService {
     private final RacingRecord racingRecord;
+    private List<Car> cars;
 
     public RacingService(RacingRecord racingRecord){
         this.racingRecord = racingRecord;
     }
 
-    private List<Car> cars;
-
     public RacingResult racing(RacingInput racingInput) {
 
         cars = new ArrayList<>();
 
-        splitCarName(racingInput.getCarNames());
+        addCars(racingInput.getCarNames());
         runRaces(racingInput.getTryCount());
 
         return new RacingResult(getRacingRecord(),getWinnerNames());
@@ -36,7 +35,7 @@ public class RacingService {
     }
 
     //한 라운드의 레이싱 결과 반환
-    public String recordSingleRace() {
+    private String recordSingleRace() {
         StringBuilder roundRecord = new StringBuilder();
         for (Car racingCar : cars) {
             roundRecord.append(racingCar.forwardBar()).append("\n");
@@ -45,12 +44,10 @@ public class RacingService {
         return roundRecord.toString();
     }
 
-    // (,)기준으로 자르기
-    private void splitCarName(String CarNames){
-        String[] CarArr = CarNames.split(",");
-
-        for(String carName :CarArr){
-            cars.add(new Car(carName));
+    // Car 객체로 추가하는 메서드
+    private void addCars(List<String> carArr) {
+        for (String carName : carArr) {
+            cars.add(new Car(carName.trim()));
         }
     }
     private String getWinnerNames(){
@@ -67,7 +64,9 @@ public class RacingService {
         return String.join("," + " ", winners); // 여러 명이면 쉼표로 연결되고, 1명이면 쉼표 없이 이름만 출력됨
     }
 
-    public String getRacingRecord(){
+    private String getRacingRecord(){
         return racingRecord.getRacingRecord();
     }
+
+
 }

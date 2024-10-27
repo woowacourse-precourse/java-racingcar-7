@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.dto.RacingInput;
 import racingcar.dto.RacingResult;
 import racingcar.service.RacingService;
+import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -22,6 +23,11 @@ public class RacingController {
     public void run(){
 
         RacingInput racingInput = inputView.readRacingInput();
+
+        InputValidator.validateCarNames(racingInput.getCarNames());
+        InputValidator.validateTryCounts(racingInput.getTryCount());
+        InputValidator.checkDuplicateNames(racingInput.getCarNames());
+
         RacingResult racingResult = racingService.racing(racingInput);
 
         printRacingResult(racingResult);

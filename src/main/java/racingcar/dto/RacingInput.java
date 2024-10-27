@@ -1,15 +1,17 @@
 package racingcar.dto;
 
+import java.util.List;
+
 public class RacingInput {
-    private String carNames;
+    private List<String> carNames;
     private int tryCount;
 
-    public RacingInput(String InputCars, int tryCount) {
+    public RacingInput(List<String> InputCars, int tryCount) {
         this.carNames =InputCars;
         this.tryCount = tryCount;
     }
 
-    public String getCarNames() {
+    public List<String>  getCarNames() {
         return this.carNames;
     }
 
