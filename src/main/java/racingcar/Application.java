@@ -11,12 +11,8 @@ import racingcar.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-        SeparatorParser separatorParser = new SeparatorParser();
-        InputValidator inputValidator = new InputValidator();
-        RacingCarService racingCarService = new RacingCarService(separatorParser, inputValidator);
-        RacingController racingController = new RacingController(inputView, outputView, racingCarService);
+        RacingCarService racingCarService = new RacingCarService(new SeparatorParser(), new InputValidator());
+        RacingController racingController = new RacingController(new InputView(), new OutputView(), racingCarService);
 
         HashMap<String, String> inputInformation = racingController.input();
         racingController.init(inputInformation);
