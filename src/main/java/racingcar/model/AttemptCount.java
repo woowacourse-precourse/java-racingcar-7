@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 public class AttemptCount {
     public static final BigInteger ZERO = BigInteger.ZERO;
+    public static final BigInteger DECREMENT_VALUE = BigInteger.ONE;
     private BigInteger count;
 
     public AttemptCount(String count) {
@@ -12,6 +13,10 @@ public class AttemptCount {
 
     public boolean isCountZero() {
         return count.equals(ZERO);
+    }
+
+    public void decreaseCount() {
+        count = count.subtract(DECREMENT_VALUE);
     }
 
     private BigInteger convertToBigInteger(String count) {
