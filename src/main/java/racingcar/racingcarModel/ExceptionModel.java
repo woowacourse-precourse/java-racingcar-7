@@ -62,6 +62,18 @@ public class ExceptionModel {
         }
     }
 
+    //Int값 초과 입력된 경우
+    public void overIntTryInput(String tryInput) {
+        try {
+            long input = Long.parseLong(tryInput);
+            if (input > Integer.MAX_VALUE) {
+                throw new IllegalArgumentException();
+
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
     // 입력된 값이 숫자가 아닐 경우
     public void isNumberTryInput(String tryInput) {
         try {

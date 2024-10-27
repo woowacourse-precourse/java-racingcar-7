@@ -21,7 +21,7 @@ public class Controller {
         carView.printNameInputMessage();
         String nameInput = carView.readInput();
         carView.printTryInputMessage();
-        String beforetryinput = carView.readInput();
+        String beforeTryInput = carView.readInput();
 
         //예외 검사
         exceptionModel.executeExceptionalHandling(() -> {
@@ -29,12 +29,13 @@ public class Controller {
             exceptionModel.emptyCarNames(nameInput);
             exceptionModel.overFiveCarNames(nameInput);
             exceptionModel.uniqueCarNames(nameInput);
-            exceptionModel.emptyTryInput(beforetryinput);
-            exceptionModel.isNumberTryInput(beforetryinput);
-            exceptionModel.isPositiveNumberTryInput(beforetryinput);
+            exceptionModel.emptyTryInput(beforeTryInput);
+            exceptionModel.overIntTryInput(beforeTryInput);
+            exceptionModel.isNumberTryInput(beforeTryInput);
+            exceptionModel.isPositiveNumberTryInput(beforeTryInput);
         });
 
-        int tryInput = Integer.parseInt(beforetryinput);
+        int tryInput = Integer.parseInt(beforeTryInput);
 
         LinkedHashMap<String, Integer> carInfo = carModel.initializeCarInfo(nameInput);
 
