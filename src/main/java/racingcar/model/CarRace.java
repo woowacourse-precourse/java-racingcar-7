@@ -3,7 +3,6 @@ package racingcar.model;
 import java.util.List;
 import racingcar.dto.RoundRaceRecord;
 import racingcar.model.move.MoveStrategy;
-import racingcar.model.move.RandomMoveStrategy;
 
 public class CarRace {
 
@@ -11,9 +10,9 @@ public class CarRace {
     private final MoveStrategy moveStrategy;
     private final CarRaceRecorder raceRecorder;
 
-    public CarRace(Cars cars) {
+    public CarRace(Cars cars, MoveStrategy moveStrategy) {
         this.cars = cars;
-        this.moveStrategy = new RandomMoveStrategy();
+        this.moveStrategy = moveStrategy;
         this.raceRecorder = new CarRaceRecorder();
     }
 
@@ -35,16 +34,6 @@ public class CarRace {
     }
 
     public List<String> getWinnerCarNames() {
-        List<Car> allCars = cars.getCars();
-
-        int maxPosition = allCars.stream()
-                .map(Car::getPosition)
-                .max(Integer::compareTo)
-                .orElseThrow(() -> new IllegalStateException("자동차가 존재하지 않습니다."));
-
-        return allCars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .toList();
+        return raceRecorder.getWinnerCarNames(cars.getCars());
     }
 }

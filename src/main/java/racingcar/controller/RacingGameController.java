@@ -8,6 +8,7 @@ import racingcar.model.CarRace;
 import racingcar.model.CarRaceRoundManager;
 import racingcar.model.RacingRegisterFormFactory;
 import racingcar.model.RegistrarClerk;
+import racingcar.model.move.MoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -15,13 +16,15 @@ public class RacingGameController {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final MoveStrategy moveStrategy;
 
-    public RacingGameController() {
+    public RacingGameController(MoveStrategy moveStrategy) {
         inputView = new InputView();
         outputView = new OutputView();
+        this.moveStrategy = moveStrategy;
     }
 
-    public void startRace() {
+    public void start() {
         RacingRegisterForm registerForm = getRacingRegisterForm();
         CarRace carRace = createCarRace(registerForm);
         CarRaceRoundManager roundManager = createCarRaceRoundManager(registerForm);
@@ -31,6 +34,7 @@ public class RacingGameController {
             executeRaceRound(carRace, roundManager);
         }
         displayWinners(carRace);
+
         releaseResources();
     }
 
@@ -41,7 +45,8 @@ public class RacingGameController {
     }
 
     private CarRace createCarRace(RacingRegisterForm registerForm) {
-        return new RegistrarClerk().register(registerForm);
+        RegistrarClerk registrarClerk = new RegistrarClerk();
+        return registrarClerk.register(registerForm, moveStrategy);
     }
 
     private CarRaceRoundManager createCarRaceRoundManager(RacingRegisterForm registerForm) {
