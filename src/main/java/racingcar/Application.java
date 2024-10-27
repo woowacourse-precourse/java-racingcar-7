@@ -46,7 +46,7 @@ public class Application {
         String[] inputArray = input.split(",");
 
         for (String car : inputArray) {
-            if (car.length() > 5)
+            if (car.length() > 5 || StringUtils.isBlank(car))
                 throw new IllegalArgumentException();
         }
 
