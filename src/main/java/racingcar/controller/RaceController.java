@@ -49,5 +49,4 @@ public class RaceController {
         outputView.printWinners(cars);
     }
 
-
 }
