@@ -38,7 +38,7 @@ public class Car {
         return name + " : " + printCnt();
     }
 
-    public String printCnt() {
+    private String printCnt() {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < cnt; i++) {
             builder.append("-");

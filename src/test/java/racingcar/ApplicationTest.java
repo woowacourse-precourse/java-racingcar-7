@@ -111,17 +111,6 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("자동차_여러대_전진_출력_테스트")
     @Test
-    void goCarsTest() {
-        ArrayList<Car> cars = new ArrayList<>();
-        cars.add(new Car("pobi"));
-        cars.add(new Car("woni"));
-        cars.add(new Car("jun"));
-        int randomNum = Randoms.pickNumberInRange(0, 9);
-        cars.forEach(car -> car.run(randomNum));
-    }
-
-    @DisplayName("우승자_중복_테스트")
-    @Test
     void winnerTest() {
         ArrayList<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi"));
@@ -130,6 +119,7 @@ class ApplicationTest extends NsTest {
         Game game = new Game();
         int randomNum = Randoms.pickNumberInRange(5, 9);
         cars.forEach(car -> car.run(randomNum));
+        assertThat(true).isEqualTo(cars.stream().allMatch((car) -> car.getCnt()==1));
     }
 
     @DisplayName("assertRandomNumberInRangeTest 테스트")
@@ -147,15 +137,6 @@ class ApplicationTest extends NsTest {
         HashMap<String, Car> cars = new HashMap<>();
         Game game = new Game();
         Assertions.assertThrows(DuplicateCarException.class, () -> game.assignPlayer("pobi,woni,jun,jun"));
-//
-//        for (String carName : cars.keySet()) {
-//            Car car = cars.get(carName);
-//            car.run(4);
-//        }
-//
-//        int max = cars.values().stream().mapToInt(Car::getCnt).max().orElseThrow();
-//        List<String> result =  cars.values().stream().filter((car) -> car.getCnt() == max).map(Car::getName).toList();
-//        OutputManager.getInstance().print("최종 우승자 : " + String.join(", ", result));
     }
 
     @DisplayName("HashMap game start 테스트")
@@ -166,13 +147,6 @@ class ApplicationTest extends NsTest {
         assertThat(3).isEqualTo(result.size());
     }
 
-    @DisplayName("HashMap game winner 테스트")
-    @Test
-    void HashMapGameWinnerTest() {
-        Game game = new Game();
-        HashMap<String, Car> result = game.gameStart("pobi,woni,jun", "1");
-        game.winnerPlayer(result);
-    }
 
     @DisplayName("HashMap 실행 테스트")
     @Test
@@ -186,10 +160,5 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @DisplayName("HashMap 자동차 이름 출력 테스트")
-    @Test
-    void HashMapPrintCarNameTest() {
-        Game game = new Game();
-        game.gameStart("pobi,woni,jun,buk,abc", "10");
-    }
+
 }
