@@ -9,13 +9,13 @@ public class UI {
 
     public UI() {}
 
-    public static String[] getRacerName() {
+    public static String[] inputRacerName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉰표(,) 기준으로 구분)");
 
         return Extractor.extract(Console.readLine());
     }
 
-    public static int getRacingTimes(){
+    public static int inputRacingTimes(){
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         int times;

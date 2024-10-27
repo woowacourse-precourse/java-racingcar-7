@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +22,7 @@ public class UiTest {
         InputStream readLine = new ByteArrayInputStream("pobi,woni,jun".getBytes());
         System.setIn(readLine);
 
-        String[] string = UI.getRacerName();
+        String[] string = UI.inputRacerName();
 
         assertThat(new String[]{"pobi", "woni", "jun"}).isEqualTo(string);
     }
@@ -33,7 +32,7 @@ public class UiTest {
         InputStream readLine = new ByteArrayInputStream("5".getBytes());
         System.setIn(readLine);
 
-        int times = UI.getRacingTimes();
+        int times = UI.inputRacingTimes();
 
         assertThat(5).isEqualTo(times);
     }
@@ -43,7 +42,7 @@ public class UiTest {
         InputStream readLine = new ByteArrayInputStream("ten".getBytes());
         System.setIn(readLine);
 
-        assertThatThrownBy(UI::getRacingTimes)
+        assertThatThrownBy(UI::inputRacingTimes)
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

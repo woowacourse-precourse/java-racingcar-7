@@ -7,11 +7,13 @@ import racingcar.ui.UI;
 
 public class Race {
     private List<Racer> racers;
-    private int lap = 0;
-    private int bestRecord = 0;
+    private int lap;
+    private int bestRecord;
 
     public Race() {
         racers = new ArrayList<>();
+        lap = 0;
+        bestRecord = 0;
     }
 
     public Race(String[] racerNames) {
@@ -33,6 +35,9 @@ public class Race {
         if(racers.isEmpty()){
             throw new IllegalArgumentException("선수가 없어 레이스를 진행할 수 없습니다.");
         }
+
+        lap = 0;
+        bestRecord = 0;
         
         if(times<=0){
             throw new IllegalArgumentException(times + "만큼 진행할 수 없습니다.");
