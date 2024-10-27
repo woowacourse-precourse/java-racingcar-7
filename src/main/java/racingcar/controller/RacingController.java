@@ -20,6 +20,8 @@ public class RacingController {
 
     public void run(){
         List<Car> carList = makeCarList(inputView.names());
+        int repeat = stringToInt(inputView.repeat());
+        raceStart(carList,repeat);
     }
 
     List<Car> makeCarList(String names){
@@ -31,6 +33,24 @@ public class RacingController {
         }
 
         return carList;
+    }
+
+    public void raceStart(List<Car> carList,int repeat){
+        outputView.resultText();
+        while (repeat-- != 0){
+            raceOneCircle(carList);
+            outputView.resultPerOneCircle(carList);
+        }
+    }
+
+    void raceOneCircle(List<Car> carList){
+        for (Car car : carList){
+            car.race();
+        }
+    }
+
+    int stringToInt(String string){
+        return Integer.parseInt(string);
     }
 
 }
