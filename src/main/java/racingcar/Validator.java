@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class Validator {
-    private final int LENGTH_LIMIT = 5;
+    private final int CAR_NAME_LENGTH_LIMIT = 5;
 
     public void carNamesValidation(String carNames) {
         isInputEmpty(carNames);
@@ -37,7 +37,7 @@ public class Validator {
     public void isLengthExceeded(String carNames) {
         StringTokenizer carNameToken = new StringTokenizer(carNames, ",");
         while (carNameToken.hasMoreTokens()) {
-            if (carNameToken.nextToken().length() > LENGTH_LIMIT) {
+            if (carNameToken.nextToken().length() > CAR_NAME_LENGTH_LIMIT) {
                 throw new IllegalArgumentException("자동치 이름은 5자 이하만 가능합니다.");
             }
         }
