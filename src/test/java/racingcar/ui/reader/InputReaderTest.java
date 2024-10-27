@@ -1,9 +1,9 @@
 package racingcar.ui.reader;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.ui.UserInputRequester;
 import racingcar.ui.mock.DummyStringPrinter;
 import racingcar.ui.mock.StubStringReader;
 
@@ -17,12 +17,14 @@ public class InputReaderTest {
     private InputReader reader;
     private StubStringReader stubReader;
     private DummyStringPrinter dummyPrinter;
+    private UserInputRequester userInputRequester;
 
     @BeforeEach
     void beforeEach() {
         stubReader = new StubStringReader();
         dummyPrinter = new DummyStringPrinter();
-        reader = new InputReader(stubReader, dummyPrinter);
+        userInputRequester = new UserInputRequester(stubReader, dummyPrinter);
+        reader = new InputReader(userInputRequester);
     }
 
 

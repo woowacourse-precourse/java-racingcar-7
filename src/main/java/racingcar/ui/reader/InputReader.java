@@ -1,42 +1,33 @@
 package racingcar.ui.reader;
 
-import racingcar.ui.StringReader;
-import racingcar.ui.StringPrinter;
+import racingcar.ui.UserInputRequester;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class InputReader {
-    private final StringReader reader;
-    private final StringPrinter printer;
+    private final UserInputRequester userInput;
 
     private final int  MAX_NAME_LENGTH = 5;
     private final String NAME_DELIMITER = ",";
-    private final String CAR_NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    private final String MOVEMENT_ATTEMPT_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private final String CAR_NAME_PROMPT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private final String MOVEMENT_ATTEMPT_PROMPT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 
-    public InputReader(StringReader reader, StringPrinter printer) {
-        this.reader = reader;
-        this.printer = printer;
+    public InputReader(UserInputRequester userInputRequester) {
+        userInput = userInputRequester;
     }
 
     public List<String> readNames() {
-        printer.print(CAR_NAME_INPUT_MESSAGE);
-        String namesLine = reader.readLine();
-
-        List<String> result = splitNames(namesLine);
+        List<String> result = splitNames(userInput.request(CAR_NAME_PROMPT));
         if(hasInvalidName(result))
             throw new IllegalArgumentException("이름 최대 길이를 초과함");
         return result;
     }
 
     public int readMovementAttempts() {
-        printer.print(MOVEMENT_ATTEMPT_INPUT_MESSAGE);
-        String attemptsLine = reader.readLine();
-
         try {
-            return Integer.parseInt(attemptsLine);
+            return Integer.parseInt(userInput.request(MOVEMENT_ATTEMPT_PROMPT));
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 숫자 입력");
         }
