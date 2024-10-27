@@ -21,6 +21,6 @@ class CarsTest {
         Cars cars = new Cars(names);
 
         // Then
-        assertThat(cars.getCars(input).size()).isEqualTo(input.size());
+        assertThat(cars.carsSize()).isEqualTo(input.size());
     }
 }

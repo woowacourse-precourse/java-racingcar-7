@@ -14,23 +14,7 @@ public class Cars {
         List<Name> nameList = names.getNames();
         this.cars = getCars(nameList);
     }
-
-    public List<Car> getCars(List<Name> names) {
-        List<Car> carList = new ArrayList<>();
-
-        for (Name name : names) {
-            carList.add(new Car(name));
-        }
-        
-        return carList;
-    }
-
-    public void moveCars() {
-        for (Car car : cars) {
-            car.shellMove();
-        }
-    }
-
+    
     public void printCurrentStatus() {
         for (Car car : cars) {
             OutputManager.printCurrent(car);
@@ -58,6 +42,19 @@ public class Cars {
         }
 
         return winners;
+    }
+
+    public int carsSize() {
+        return cars.size();
+    }
+    private List<Car> getCars(List<Name> names) {
+        List<Car> carList = new ArrayList<>();
+
+        for (Name name : names) {
+            carList.add(new Car(name));
+        }
+
+        return carList;
     }
 
     private static boolean isWinner(Car car, int winnerMovement) {
