@@ -1,4 +1,4 @@
-package racingcar.common;
+package racingcar.exception;
 
 public class RacingCarException extends IllegalArgumentException {
 
