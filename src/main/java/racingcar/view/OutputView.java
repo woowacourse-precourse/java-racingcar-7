@@ -38,8 +38,7 @@ public class OutputView {
     }
 
     private static void renderCurrentPosition(int position) {
-        for (int i = 0; i < position; i++)
-            System.out.print(POSITION_COUNT_PREFIX);
+        System.out.print(POSITION_COUNT_PREFIX.repeat(position));
     }
 
     public static void renderWinners(List<Car> cars) {
