@@ -8,4 +8,7 @@ public class RandomGenerator {
         return Randoms.pickNumberInRange(0, 9);
     }
 
+    public Boolean canMoveForward(int randomNumber) {
+        return randomNumber >= 4;
+    }
 }
