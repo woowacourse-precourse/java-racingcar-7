@@ -20,4 +20,12 @@ public class RacingCar{
             return;
         ++record;
     }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getRecord() {
+        return record;
+    }
 }
