@@ -165,4 +165,13 @@ class ApplicationTest extends NsTest {
         RaceCountException e = assertThrows(RaceCountException.class, () -> raceManager.setRaceCount(raceCount));
         assertEquals(e.getMessage(), RACE_COUNT_CANNOT_BLANK.message());
     }
+
+    @Test
+    void 경주_횟수가_공백문자라면_예외발생() {
+        // given
+        String raceCount = "";
+        // when & then
+        RaceCountException e = assertThrows(RaceCountException.class, () -> raceManager.setRaceCount(raceCount));
+        assertEquals(e.getMessage(), RACE_COUNT_CANNOT_BLANK.message());
+    }
 }
