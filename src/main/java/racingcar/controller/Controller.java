@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import static racingcar.View.constant.OutputMessage.ROUND_START_MESSAGE;
 import static racingcar.View.constant.OutputMessage.START_COUNT;
 import static racingcar.View.constant.OutputMessage.START_MESSAGE;
 
@@ -9,6 +10,7 @@ import racingcar.View.OutputView;
 import racingcar.domain.Car;
 import racingcar.domain.CarImpl;
 import racingcar.domain.Parser;
+import racingcar.domain.RuleChecker;
 import racingcar.domain.ScoreBoard;
 
 public class Controller {
@@ -25,6 +27,28 @@ public class Controller {
 
         List<Car> carList = getCarList(carNames);
         ScoreBoard scoreBoard = ScoreBoard.from(carList);
+        outputView.printBlank();
+
+        startRound(carList, scoreBoard, tryCount);
+        outputView.printResult(scoreBoard.returnFinalResult());
+    }
+
+    private void startRound(List<Car> carList, ScoreBoard scoreBoard, int tryCount) {
+        outputView.printMessage(ROUND_START_MESSAGE);
+        for (int i = 0; i < tryCount; i++) {
+            play(carList, scoreBoard);
+        }
+    }
+
+    private void play(List<Car> carList, ScoreBoard scoreBoard) {
+        carList.stream()
+                .filter(car -> RuleChecker.canMove())
+                .forEach(Car::run);
+
+        scoreBoard.returnRoundResult().stream()
+                .forEach(outputView::printResult);
+
+        outputView.printBlank();
     }
 
     public List<String> getCarNames() {
