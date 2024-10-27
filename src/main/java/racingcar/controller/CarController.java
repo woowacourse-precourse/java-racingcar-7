@@ -14,10 +14,10 @@ public class CarController {
     private final InputView inputView;
     private final CarService carService;
 
-    public CarController() {
-        this.outputView = new OutputView();
-        this.inputView = new InputView();
-        this.carService = new CarService();
+    public CarController(OutputView outputView, InputView inputView, CarService carService) {
+        this.outputView = outputView;
+        this.inputView = inputView;
+        this.carService = carService;
     }
 
     public void run() {
@@ -36,7 +36,7 @@ public class CarController {
         outputView.printWinners(winners);
     }
 
-    private void startGame(int attempts) {
+    public void startGame(int attempts) {
         outputView.printResultMessage();
 
         List<Car> participants = carService.getParticipants();

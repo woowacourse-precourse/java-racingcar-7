@@ -58,4 +58,8 @@ public class CarService {
     public List<Car> getParticipants(){
         return carGame.getParticipants();
     }
+
+    public List<String> getParticipantsName(){
+        return carGame.getParticipants().stream().map(w -> w.getCarName()).toList();
+    }
 }

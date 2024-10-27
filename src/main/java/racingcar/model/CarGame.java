@@ -5,8 +5,6 @@ import java.util.List;
 
 public class CarGame {
 
-    private Boolean isFinished = false;
-
     private List<Car> participants;
     private List<Car> winners;
     private int maxDistance;

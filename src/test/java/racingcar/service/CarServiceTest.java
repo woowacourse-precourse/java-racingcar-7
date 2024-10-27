@@ -19,11 +19,10 @@ public class CarServiceTest {
     void setUp() {
         carService = new CarService(){
             @Override
-            protected boolean isAdvance() {
+            public boolean isAdvance(){
                 return true;
             }
         };
-
         carService.addParticipant("Car1");
         carService.addParticipant("Car2");
     }
