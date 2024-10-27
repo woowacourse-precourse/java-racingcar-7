@@ -80,6 +80,23 @@ class ApplicationTest extends NsTest {
 			() -> Application.validateNumber(m));
 	}
 
+	@Test
+	void 최대_이동횟수_찾기() {
+		assertRandomNumberInRangeTest(
+			() -> {
+				// Given
+				Car[] cars = {new Car("pobi"), new Car("woni")};
+
+				// When
+				int maxMoveCounter = Application.findMaxCounter(cars);
+
+				// Then
+				Assertions.assertEquals(1, maxMoveCounter);
+			},
+			MOVING_FORWARD, STOP
+		);
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
