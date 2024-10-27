@@ -3,7 +3,6 @@ package racingcar.domain;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.utils.RandNumGenerator;
-import racingcar.view.OutputView;
 
 public class Cars {
     private static final String INPUT_DELIM = ",";
@@ -23,14 +22,13 @@ public class Cars {
         }
     }
 
-    public void roundStatus() {
-        OutputView outputView = OutputView.getInstance();
-        StringBuilder roundResult = new StringBuilder();
+    public String roundStatus() {
+        StringBuilder roundStatus = new StringBuilder();
 
         for (Car car : cars) {
-            roundResult.append(car.getCurrentStatus());
+            roundStatus.append(car.getCurrentStatus());
         }
-        outputView.printRoundResult(roundResult.toString());
+        return roundStatus.toString();
     }
 
     public List<String> findWinners() {

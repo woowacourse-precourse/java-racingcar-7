@@ -24,8 +24,8 @@ public class OutputView {
         System.out.println(IOMessages.ROUND_RESULT_HEADER.getMsg());
     }
 
-    public void printRoundResult(String currentStatus) {
-        System.out.println(currentStatus);
+    public void printRoundResult(String allRoundStatus) {
+        System.out.println(allRoundStatus);
     }
 
     public void printFinalResult(List<String> result) {

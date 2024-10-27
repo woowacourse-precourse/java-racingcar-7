@@ -6,6 +6,8 @@ import racingcar.exception.InputValidator;
 import racingcar.utils.RandNumGenerator;
 
 public class RaceService {
+    StringBuilder allRoundStatus = new StringBuilder();
+
     public List<String> startRacing(String carsNames, String repeatTimes) {
         validateInputs(carsNames, repeatTimes);
 
@@ -14,9 +16,13 @@ public class RaceService {
 
         for (int i = 0; i < Integer.parseInt(repeatTimes); i++) {
             cars.roundProcess(randNumGenerator);
-            cars.roundStatus();
+            allRoundStatus.append(cars.roundStatus());
         }
         return cars.findWinners();
+    }
+
+    public String getAllRoundStatus() {
+        return allRoundStatus.toString();
     }
 
     private static void validateInputs(String carsNames, String repeatTimes) {
