@@ -24,4 +24,14 @@ public class CarTest {
 
         assertThatIllegalArgumentException().isThrownBy(() -> new Car(input));
     }
+
+    @Test
+    void 자동차는_전진할_수_있다() {
+        boolean canMove = true;
+        Car car = new Car("hwan");
+
+        car.move(canMove);
+
+        assertEquals(1, car.getPosition());
+    }
 }
