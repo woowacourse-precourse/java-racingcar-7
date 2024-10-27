@@ -5,6 +5,13 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         InputCarNameHandler inputCarNameHandler = new InputCarNameHandler();
+        try {
+            inputCarNameHandler.getCarNames();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
         InputAttemptHandler inputAttemptHandler = new InputAttemptHandler();
 
         System.out.println("========== 자동차 경주 게임 ==========");
