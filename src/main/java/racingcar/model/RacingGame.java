@@ -9,19 +9,18 @@ public class RacingGame {
 
     private final List<Car> cars;
 
+    // 쉼표(,)를 기준으로 자동차 이름을 분리
     public RacingGame(String carNames) {
         cars = new ArrayList<>();
 
-        String[] names = carNames.split(",");
-        for (String name : names) {
+        for (String name : carNames.split(",")) {
             cars.add(new Car(name.trim()));
         }
     }
 
     public void moveCars() {
         for (Car car : cars) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
-            car.move(randomNumber);
+            car.move(Randoms.pickNumberInRange(0, 9));
         }
     }
 
@@ -31,10 +30,9 @@ public class RacingGame {
 
     public List<String> getWinners() {
         List<String> winners = new ArrayList<>();
-        int maxPosition = findWinner();
 
         for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
+            if (car.getPosition() == findMaxPosition()) {
                 winners.add(car.getName());
             }
         }
@@ -42,7 +40,7 @@ public class RacingGame {
         return winners;
     }
 
-    private int findWinner() {
+    private int findMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
