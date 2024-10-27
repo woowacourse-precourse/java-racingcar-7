@@ -13,18 +13,6 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 자동차_이름_입력_테스트() {
-        // Given
-        String inputCarName = "pobi,java";
-
-        // When
-        String[] carNames = inputCarName.split(",");
-
-        // Then
-        assertThat(carNames).contains("pobi", "java");
-    }
-
-    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
