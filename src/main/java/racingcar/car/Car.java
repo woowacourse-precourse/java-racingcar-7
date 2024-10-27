@@ -4,7 +4,7 @@ import static racingcar.car.ConditionChecker.canMove;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private final String name;
     private int position = 0;
 
@@ -26,6 +26,16 @@ public class Car {
     public String changeCurrentPositionalStatusToVisual(String symbol) {
         String positionalAppearance = symbol.repeat(position);
         return name + " : " + positionalAppearance;
+    }
+
+    public boolean isSamePosition(Car winnerCar) {
+        return position == winnerCar.position;
+    }
+
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(position, o.position);
     }
 
     @Override
