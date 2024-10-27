@@ -25,4 +25,21 @@ class CarControllerTest {
 
         assertEquals(carController.getMostMovedCar(cars), expect);
     }
+
+    @Test
+    void getWinner() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("pobi"));
+        cars.add(new Car("woni"));
+        cars.add(new Car("jun"));
+
+        cars.get(0).move();
+        cars.get(0).move();
+        cars.get(1).move();
+
+        List<Car> winners = new ArrayList<>();
+        winners.add(cars.get(0));
+        CarController carController = new CarController();
+        assertEquals(carController.getWinner(cars, carController.getMostMovedCar(cars)), winners);
+    }
 }

@@ -6,6 +6,7 @@ import racingcar.model.CarManager;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,5 +35,15 @@ public class CarController {
             }
         }
         return max;
+    }
+
+    public List<Car> getWinner(List<Car> cars, int max) {
+        List<Car> winners = new ArrayList<>();
+        for(Car car : cars) {
+            if(car.getMovedDistance() >= max) {
+                winners.add(car);
+            }
+        }
+        return winners;
     }
 }
