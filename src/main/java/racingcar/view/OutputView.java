@@ -16,11 +16,15 @@ public class OutputView {
     private static void printRoundResults(RoundResults roundResults) {
         System.out.println();
         for (List<Car> cars : roundResults.getResult()) {
-            for (Car car : cars) {
-                System.out.println(car.getCarName() +" : "+"-".repeat(car.getPosition()));
-            }
-            System.out.println();
+            printSingleCarRoundResult(cars);
         }
+    }
+
+    private static void printSingleCarRoundResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getCarName() +" : "+"-".repeat(car.getPosition()));
+        }
+        System.out.println();
     }
 
     private static void printWinners(List<String> winnerNames) {
