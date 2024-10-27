@@ -3,7 +3,7 @@ package racingcar.model;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 
 public class RacingManager {
@@ -16,7 +16,7 @@ public class RacingManager {
 
     public void moveOrStop(List<Car>carList){
         for(Car car : carList){
-            car.moveOrStop();
+            car.move(pickNumberInRange(0,9));
         }
     }
 
