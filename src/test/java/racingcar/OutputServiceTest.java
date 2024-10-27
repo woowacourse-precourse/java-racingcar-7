@@ -16,7 +16,7 @@ public class OutputServiceTest {
     }
 
     @Test
-    void 기능_작동_테스트(){
+    void 기능_작동_테스트() {
         String carList = "pobi,woni,jun";
         int count = 4;
         outputService.run(carList, count);

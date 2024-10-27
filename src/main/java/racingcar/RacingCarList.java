@@ -13,7 +13,7 @@ public class RacingCarList {
     }
 
     public List<String> getCarNameList(String input) {
-        if (input == null || input.isEmpty()){
+        if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("경주에 참가할 자동차를 입력해주세요");
         }
         return List.of(input.split(","));
