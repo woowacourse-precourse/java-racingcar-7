@@ -8,8 +8,30 @@ import model.Car;
 public class RacingCarService {
 
     // 한 라운드를 실행
-    public void playRound(List<Car> cars) {
-        moveOrStop(cars);
+    public void playSingleRound(List<Car> cars) {
+        processCarMovements(cars);
+    }
+
+    public void processCarMovements(List<Car> cars) {
+        for (Car car : cars) {
+            int randomValue = generateRandomValue();
+            applyMovement(car, randomValue);
+        }
+    }
+
+    // 랜덤 값 생성 함수
+    private int generateRandomValue() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    // 조건에 따라 자동차의 동작을 결정하는 함수
+    private void applyMovement(Car car, int randomValue) {
+        if (randomValue >= 4) {
+            car.move();  // 전진
+        }
+        if (randomValue < 4) {
+            car.stop();  // 멈춤
+        }
     }
 
     // 우승자 찾기
@@ -29,25 +51,22 @@ public class RacingCarService {
     private List<String> extractWinners(List<Car> cars, int maxPosition) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
-                winners.add(car.getName());
+            if (isWinner(car, maxPosition)) {
+                addWinner(winners, car);
             }
         }
         return winners;
     }
 
-    public void moveOrStop(List<Car> cars) {
-        int randomValue = Randoms.pickNumberInRange(0, 9);
-
-        // 4 이상일 때 전진
-        if (randomValue >= 4) {
-            cars.forEach(Car::move);
-        }
-
-        // 4 미만일 때 멈춤
-        if (randomValue < 4) {
-            cars.forEach(Car::stop);
-        }
+    // 자동차가 우승자인지 확인하는 함수
+    private boolean isWinner(Car car, int maxPosition) {
+        return car.getPosition() == maxPosition;
     }
+
+    // 우승자의 이름을 리스트에 추가하는 함수
+    private void addWinner(List<String> winners, Car car) {
+        winners.add(car.getName());
+    }
+
 
 }
