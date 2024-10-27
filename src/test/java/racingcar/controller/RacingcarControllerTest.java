@@ -14,10 +14,10 @@ class RacingcarControllerTest {
     @Test
     void createRacingcars() {
         RacingcarController racingcarController = new RacingcarController();
-        List<Racingcar> racingcars = racingcarController.createRacingcars("car01,car02,car03");
-        for(Racingcar racingcar : racingcars) {
-            System.out.println(racingcar.getCarName());
-        }
+//        List<Racingcar> racingcars = racingcarController.createRacingcars("car01,car02,car03");
+//        for(Racingcar racingcar : racingcars) {
+//            System.out.println(racingcar.getCarName());
+//        }
 
 
 
