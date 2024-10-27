@@ -1,7 +1,9 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static final String INPUT_CAR_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -34,7 +36,9 @@ public class InputView {
     }
 
     private List<String> parseCarNames(String carNamePart) {
-        return List.of(carNamePart.split(DELIMITER));
+        return Arrays.stream(carNamePart.split(DELIMITER))
+                .map(String::trim)
+                .toList();
     }
 
     private void validateCarName(List<String> carNames) {
@@ -50,6 +54,9 @@ public class InputView {
             if (!Character.isDigit(digit)) {
                 throw new IllegalArgumentException();
             }
+        }
+        if (parseTurn(rawTurn) <= 0) {
+            throw new IllegalArgumentException();
         }
     }
 
