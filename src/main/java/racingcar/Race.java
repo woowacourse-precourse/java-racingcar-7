@@ -15,7 +15,7 @@ public class Race {
 
         findWinner(carList);
 
-        getWinnerList();
+        showWinnerList();
     }
 
     public void racing(List<Car> carList, int attemptCount) {
@@ -40,7 +40,7 @@ public class Race {
         }
     }
 
-    public void getWinnerList() {
+    public void showWinnerList() {
         StringBuilder winnerNames = new StringBuilder();
         for (int i = 0; i < winnerList.size(); i++) {
             winnerNames.append(winnerList.get(i).getName());
