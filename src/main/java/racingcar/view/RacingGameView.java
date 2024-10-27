@@ -1,6 +1,9 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
+import racingcar.model.Car;
 
 public class RacingGameView {
 
@@ -21,6 +24,14 @@ public class RacingGameView {
     }
 
     public void showTrialResultsMessage(){
-        System.out.println("\n실행 결과\n");
+        System.out.println("\n실행 결과");
+    }
+
+    public void showRoundResult(List<Car> cars){
+        for(Car car : cars){
+            System.out.printf("%s : ", car.getName());
+            System.out.println("-".repeat(car.getAdvance()));
+        }
+        System.out.println();
     }
 }

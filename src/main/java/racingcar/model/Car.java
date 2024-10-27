@@ -9,8 +9,8 @@ public class Car {
         this.advance = 0;
     }
 
-    public void setAdvance(int advance) {
-        this.advance = advance;
+    public void go(){
+        this.advance = this.advance + 1;
     }
 
     public String getName() {
