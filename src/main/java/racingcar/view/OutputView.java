@@ -1,9 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
 import racingcar.domain.Race;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class OutputView {
@@ -41,18 +39,9 @@ public class OutputView {
         System.out.print(POSITION_COUNT_PREFIX.repeat(position));
     }
 
-    public static void renderWinners(List<Car> cars) {
+    public static void renderWinners(List<String> winners) {
         System.out.print(WINNER_OUTPUT);
-        Iterator<Car> carIterator = cars.iterator();
-        while (carIterator.hasNext()) {
-            System.out.print(carIterator.next().getName());
-            checkIfHasNext(carIterator);
-        }
-    }
-
-    public static void checkIfHasNext(Iterator<Car> carIterator) {
-        if (carIterator.hasNext())
-            System.out.print(WINNER_DELIMITER);
+        System.out.print(String.join(WINNER_DELIMITER, winners));
     }
 
 }
