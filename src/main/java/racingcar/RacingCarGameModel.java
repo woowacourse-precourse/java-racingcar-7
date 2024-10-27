@@ -25,7 +25,7 @@ public class RacingCarGameModel {
     public String startGame() {
         return java.util.stream.IntStream.range(0, time)
                 .mapToObj(turn -> forwardCar())
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("\n\n"));
     }
 
     public String winnerParticipants() {
@@ -79,7 +79,7 @@ public class RacingCarGameModel {
         try {
             validationTime = Integer.parseInt(time.trim());
         } catch (Exception e) {
-            throw new IllegalArgumentException("시행횟수는 숫자만 가능합니다. 숫자만 입력해주세요.");
+            throw new IllegalArgumentException("시행횟수는 숫자만 가능합니다.");
         }
 
         return validationTime;

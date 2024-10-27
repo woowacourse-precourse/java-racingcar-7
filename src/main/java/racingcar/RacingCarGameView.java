@@ -15,9 +15,9 @@ public class RacingCarGameView {
     }
 
     public void racingGameCurrentSituationPrint (String racingResult, String winnerParticipants) {
-        System.out.println("실행결과");
+        System.out.println("\n실행결과");
         System.out.println(racingResult);
 
-        System.out.println("최종 우승자 : " + winnerParticipants);
+        System.out.println("\n최종 우승자 : " + winnerParticipants);
     }
 }
