@@ -7,13 +7,13 @@ public class RandomNumberHandler {
     private static final int START_INCLUSIVE = 0;
     private static final int END_INCLUSIVE = 9;
 
-    public int getRandomNumber() {
+    private int getRandomNumber() {
         int randomnumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
         return randomnumber;
     }
 
     public boolean canMove() {
-        int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+        int randomNumber = getRandomNumber();
         return randomNumber >= MINIMUM_MOVEMENT_VALUE;
     }
 }
