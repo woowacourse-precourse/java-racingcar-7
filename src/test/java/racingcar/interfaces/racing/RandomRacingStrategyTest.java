@@ -14,5 +14,4 @@ class RandomRacingStrategyTest {
         FakeRacingStrategy fakeRacingStrategy = new FakeRacingStrategy();
         assertThat(fakeRacingStrategy.determineCarToForward()).isEqualTo(true);
     }
-
 }

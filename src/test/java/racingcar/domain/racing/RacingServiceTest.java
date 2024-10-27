@@ -24,6 +24,4 @@ class RacingServiceTest {
             assertThat(car.getCarPosition()).isEqualTo(1);
         }
     }
-
-
 }

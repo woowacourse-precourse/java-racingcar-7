@@ -33,5 +33,4 @@ class JudgeServiceTest {
         WinnerResponse winnerResponse = judgeService.judgeWinner(cars);
         assertThat(winnerResponse.winnerList()).isEqualTo("최종 우승자 : honda, ford");
     }
-
 }

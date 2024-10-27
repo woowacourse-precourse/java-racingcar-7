@@ -11,5 +11,4 @@ public record CarsResponse(
                 .map(CarResponse::from)
                 .toList());
     }
-
 }

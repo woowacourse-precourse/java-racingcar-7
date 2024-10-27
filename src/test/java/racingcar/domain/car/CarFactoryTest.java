@@ -31,5 +31,4 @@ class CarFactoryTest {
         assertThatThrownBy(() -> carFactory.makeCars(carNames))
                 .isInstanceOf(CarDuplicateException.class);
     }
-
 }
