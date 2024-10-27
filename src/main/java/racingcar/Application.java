@@ -44,15 +44,32 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Map<String, Integer> cars = new LinkedHashMap<>();
+        int tryCount;
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String nameInput = Console.readLine();
 
+        if (nameInput.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름에 아무런 입력을 하지 않았습니다!");
+        }
+
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryCount = Integer.parseInt(Console.readLine());
+        try {
+            tryCount = Integer.parseInt(Console.readLine());
+            if (tryCount <= 0) {
+                throw new IllegalArgumentException("시도 횟수에 0 또는 음수 값을 입력했습니다!");
+            }
+        }
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수에 잘못된 값을 입력했습니다!");
+        }
+
 
         // set initial value for each car name as 0
         for(String name : nameInput.split(",")) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("이름이 5글자를 초과합니다!");
+            }
             cars.put(name, 0);
         }
 
