@@ -11,7 +11,7 @@ class RacingServiceTest {
 
     @BeforeEach
     void setUp() {
-        racingService = new RacingService("a,b,c", 4);
+        racingService = new RacingService("a,b,c", "4");
     }
 
     @Test

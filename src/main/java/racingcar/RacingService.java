@@ -1,19 +1,19 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class RacingService {
-    private final HashMap<String, Integer> CAR_MAP = new HashMap<>();
+    private final LinkedHashMap<String, Integer> CAR_MAP = new LinkedHashMap<>();
     private final String CAR_INPUT_DELIMITER = ",";
     private final int MOVE_COUNT;
     private final int INITIAL_POSITION = 0;
     private final int FORWARD_STEP = 1;
     private final int STOP_STEP = 0;
-    private final ArrayList<HashMap<String, Integer>> TURN_RESULTS = new ArrayList<>();
+    private final LinkedList<LinkedHashMap<String, Integer>> TURN_RESULTS = new LinkedList<>();
     public int executionCount = 0;
 
     public RacingService(String carNameInput, String moveCountInput) {
@@ -27,7 +27,7 @@ public class RacingService {
         initializeCarMapFromInput(carNameInput);
     }
 
-    public HashMap<String, Integer> getCarMap() {
+    public LinkedHashMap<String, Integer> getCarMap() {
         return CAR_MAP;
     }
 
@@ -60,7 +60,7 @@ public class RacingService {
     public String[] getWinners() {
         int maxPosition = getMaxPosition();
 
-        HashSet<String> winners = new HashSet<>();
+        LinkedList<String> winners = new LinkedList<>();
         for (Map.Entry<String, Integer> entry : CAR_MAP.entrySet()) {
             if (entry.getValue() == maxPosition) {
                 winners.add(entry.getKey());
@@ -80,12 +80,12 @@ public class RacingService {
         return maxPosition;
     }
 
-    private HashMap<String, Integer> executeTurn() {
-        for (HashMap.Entry<String, Integer> entry : CAR_MAP.entrySet()) {
+    private LinkedHashMap<String, Integer> executeTurn() {
+        for (Map.Entry<String, Integer> entry : CAR_MAP.entrySet()) {
             int randomValue = createRandomValue();
             updateMovement(entry.getKey(), randomValue);
         }
-        return new HashMap<>(CAR_MAP);
+        return new LinkedHashMap<>(CAR_MAP);
     }
 
     public void startRaceGame() {
@@ -95,7 +95,7 @@ public class RacingService {
         }
     }
 
-    public ArrayList<HashMap<String, Integer>> getTurnResult() {
+    public LinkedList<LinkedHashMap<String, Integer>> getTurnResult() {
         return TURN_RESULTS;
     }
 }

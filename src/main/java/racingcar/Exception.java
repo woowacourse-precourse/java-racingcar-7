@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 
 public class Exception {
@@ -10,7 +10,7 @@ public class Exception {
     private static final String MUST_BE_NUMBER= "시도할 횟수가 숫자여야 합니다";
     private static final int MAX_LENGTH = 5;
 
-    public static void validateUnique(HashMap<String, Integer> carMap, String carName) {
+    public static void validateUnique(LinkedHashMap<String, Integer> carMap, String carName) {
         if (carMap.containsKey(carName)) {
             throw new IllegalArgumentException(MUST_BE_UNIQUE);
         }
