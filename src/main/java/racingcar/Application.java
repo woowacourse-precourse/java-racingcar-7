@@ -3,6 +3,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void decideCarMove(Map<String, Integer> cars) {
@@ -18,6 +20,25 @@ public class Application {
             System.out.println(car + " : " + "-".repeat(cars.get(car)));
         }
         System.out.println();
+    }
+
+    public static void findWinner(Map<String, Integer> cars) {
+        int maxValue = 0;
+        List<String> winners = new ArrayList<>();
+
+        for (int value : cars.values()) {
+            if (value > maxValue) {
+                maxValue = value;
+            }
+        }
+
+        for (String car : cars.keySet()) {
+            if (cars.get(car) == maxValue) {
+                winners.add(car);
+            }
+        }
+
+        System.out.println(String.join(", ", winners));
     }
 
     public static void main(String[] args) {
@@ -36,10 +57,13 @@ public class Application {
         }
 
         System.out.println("\n실행 결과");
+
         for (int i = 0; i < tryCount; i++) {
             decideCarMove(cars);
             printRacingStatus(cars);
         }
 
+        System.out.print("최종 우승자 : ");
+        findWinner(cars);
     }
 }
