@@ -12,15 +12,18 @@ public class InputView {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
 
-        List<String> carNames = Arrays.stream(input.split(","))
+        validateInput(input, "자동차 이름을 입력해야 합니다.");
+
+        return Arrays.stream(input.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
-        return carNames;
     }
 
     public static int getTrialCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
+
+        validateInput(input, "시도 횟수를 입력해야 합니다.");
 
         try {
             int trialCount = Integer.parseInt(input);
@@ -28,6 +31,12 @@ public class InputView {
             return trialCount;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
+    }
+
+    private static void validateInput(String input, String errorMessage) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
