@@ -1,8 +1,10 @@
 package racingcar.domain.model;
 
-import racingcar.domain.application.RaceService;
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.model.value.Distance;
 import racingcar.domain.model.value.Name;
+
+import static racingcar.Const.*;
 
 public class Car {
 
@@ -18,8 +20,10 @@ public class Car {
         return new Car(new Name(carName), new Distance());
     }
 
-    public void go(RaceService raceService) {
-        if (raceService.canGo()) {
+    public void go() {
+        int randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+
+        if (randomNumber >= CRITERIA) {
             this.distance = distance.forward();
         }
     }
