@@ -45,4 +45,14 @@ public class CarRacing {
 
         return carList;
     }
+
+    public List<String> getCarNamesAtLocation(List<Car> carList, int location){
+        List<String> carNames = new ArrayList<>();
+        for (Car car : carList) {
+            if (car.getLocation() == location) {
+                carNames.add(car.getName());
+            }
+        }
+        return carNames;
+    }
 }

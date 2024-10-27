@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -20,12 +19,8 @@ public class Application {
 
         int maxLocation = carRacing.racing(carList, numberOfMoves);
 
-        List<String> winners = new ArrayList<>();
-        for (Car car : carList) {
-            if (car.getLocation() == maxLocation) {
-                winners.add(car.getName());
-            }
-        }
+        List<String> winners = carRacing.getCarNamesAtLocation(carList, maxLocation);
+
         String result = String.join(",", winners);
 
         System.out.println("최종 우승자 : " + result);
