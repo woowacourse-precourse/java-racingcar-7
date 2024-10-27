@@ -19,10 +19,17 @@ class CarsTest {
 
 
     @Test
-    void 빈_이름_및_연속된_구분자_입력_예외() {
+    void 연속된_구분자_입력_예외() {
         assertThatThrownBy(() -> Cars.createCarList("pobi,,woni"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.CONSECUTIVE_COMMAS.getMessage());
+    }
+
+    @Test
+    void 빈_이름_입력_예외() {
+        assertThatThrownBy(() -> Cars.createCarList("pobi, ,woni"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.EMPTY_CAR_NAME.getMessage());
     }
 
 
