@@ -19,12 +19,7 @@ class CarsTest {
 
             List<Car> racingCars = cars.moveCars();
 
-            SoftAssertions.assertSoftly((softly) -> {
-                softly.assertThat(racingCars.get(0).isPosition(1))
-                        .isTrue();
-                softly.assertThat(racingCars.get(1).isPosition(0))
-                        .isTrue();
-            });
+            assertCarsAtPositions(racingCars, 1, 0);
         }, MOVING_FORWARD, STOP);
     }
 
@@ -39,12 +34,16 @@ class CarsTest {
             cars.moveCars();
             List<Car> racingCars = cars.moveCars();
 
-            SoftAssertions.assertSoftly((softly) -> {
-                softly.assertThat(racingCars.get(0).isPosition(3))
-                        .isTrue();
-                softly.assertThat(racingCars.get(1).isPosition(1))
-                        .isTrue();
-            });
+            assertCarsAtPositions(racingCars, 3, 1);
         }, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD);
+    }
+
+    private void assertCarsAtPositions(List<Car> racingCars, int firstCarGivenPosition, int secondCarGivenPosition) {
+        SoftAssertions.assertSoftly((softly) -> {
+            softly.assertThat(racingCars.get(0).isPosition(firstCarGivenPosition))
+                    .isTrue();
+            softly.assertThat(racingCars.get(1).isPosition(secondCarGivenPosition))
+                    .isTrue();
+        });
     }
 }
