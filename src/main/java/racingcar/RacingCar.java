@@ -18,6 +18,7 @@ public class RacingCar {
     int moveCount;
     String resultLog = "";
     List<Integer> moveCountResult = new ArrayList<>();
+    int max;
 
     public void getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -85,6 +86,13 @@ public class RacingCar {
     public void getMoveResult() {
         for (String key : carNameList) {
             moveCountResult.add(raceStatus.get(key));
+        }
+    }
+
+    public void checkMaxMoveCount() {
+        getMoveResult();
+        for (int number : moveCountResult) {
+            max = Math.max(max, number);
         }
     }
 }
