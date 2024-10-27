@@ -4,17 +4,21 @@ import racingcar.util.RandomUtil;
 
 public class Position {
 
-    private static final int INIT_POSITION = 0;
+    private static final int DEFAULT_POSITION = 0;
     private static final int MOVE_STANDARD = 4;
     private static final int DEFAULT_MOVE_DISTANCE = 1;
 
     private int position;
+    private final RandomUtil randomUtil;
 
-    public Position() {
-        position = INIT_POSITION;
+    public Position(RandomUtil randomUtil) {
+        this(randomUtil, DEFAULT_POSITION);
+        // this.randomUtil = randomUtil;
+        // position = DEFAULT_POSITION;
     }
 
-    public Position(int position) {
+    public Position(RandomUtil randomUtil, int position) {
+        this.randomUtil = randomUtil;
         this.position = position;
     }
 
@@ -23,11 +27,7 @@ public class Position {
     }
 
     public void playRound() {
-        move(RandomUtil.pickCarNumber());
-    }
-
-    protected void move(int carNumber) {
-        if (carNumber >= MOVE_STANDARD) {
+        if (randomUtil.pickCarNumber() >= MOVE_STANDARD) {
             position += DEFAULT_MOVE_DISTANCE;
         }
     }
