@@ -37,4 +37,16 @@ public class RacingGameUtility {
         return carList;
     }
 
+    public static String getResultMessage(List<RacingCar> carList) {
+        int max = carList.stream().mapToInt(RacingCar::getMoveCount).filter(count -> count >= 0).max().orElse(0);
+        List<RacingCar> winner = carList.stream().filter(racingCar -> racingCar.getMoveCount() == max).toList();
+
+        String result = winner.stream().map(RacingCar::getName).collect(Collectors.joining(", "));
+
+        return "최종 우승자 : " + result.trim();
+    }
+
+    public static void printMessage(String message) {
+        System.out.println(message);
+    }
 }
