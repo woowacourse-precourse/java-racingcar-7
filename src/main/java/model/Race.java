@@ -12,6 +12,10 @@ public class Race {
     private final List<String> winners;
     private final MoveStrategy moveStrategy;
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public Race(List<String> carNames, int attempts, MoveStrategy moveStrategy) {
         if (attempts < 0) {
             throw new IllegalArgumentException("attempts can't be less than 0");
