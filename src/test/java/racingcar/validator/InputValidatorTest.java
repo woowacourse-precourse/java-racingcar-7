@@ -40,7 +40,7 @@ public class InputValidatorTest {
     @Test
     void 자동차_이름을_입력하지_않은_경우() {
         ValidationMode carCount = ValidationMode.CAR_COUNT;
-        String input= "";
+        String input = "";
 
         assertThatThrownBy(() -> InputValidator.validate(carCount, input)).isInstanceOf(
                 IllegalArgumentException.class).hasMessage(emptyCarName());
@@ -100,7 +100,7 @@ public class InputValidatorTest {
     @Test
     void 실행_횟수가_최소로_등록해야_하는_수_미만인_경우() {
         ValidationMode gameRound = ValidationMode.GAME_ROUND;
-        String input = String.valueOf(gameRound.getMin()-1);
+        String input = String.valueOf(gameRound.getMin() - 1);
         int minRound = gameRound.getMin();
         int maxRound = gameRound.getMax();
 
@@ -111,7 +111,7 @@ public class InputValidatorTest {
     @Test
     void 실행_횟수가_최대로_등록_가능한_수를_초과한_경우() {
         ValidationMode gameRound = ValidationMode.GAME_ROUND;
-        String input = String.valueOf(gameRound.getMax()+1);
+        String input = String.valueOf(gameRound.getMax() + 1);
         int minRound = gameRound.getMin();
         int maxRound = gameRound.getMax();
 
