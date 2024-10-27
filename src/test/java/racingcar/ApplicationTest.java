@@ -4,13 +4,12 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
-
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -65,20 +64,20 @@ class ApplicationTest extends NsTest {
     @Test
     public void 자동차_이름에_공백이_있는_경우_테스트() {
         String carNames = "  pobi ,  woni ,  jun  ";
-        String[] result = Application.splitCarNames(carNames);
-        assertArrayEquals(new String[]{"pobi", "woni", "jun"}, result);
+        List<String> result = Application.splitCarNames(carNames);
+        assertThat(result).containsExactly("pobi", "woni", "jun");
     }
 
     @Test
     public void 자동차_이름에_쉼표가_있는_경우_테스트() {
         String carNames = ",pobi,woni,,, ";
-        String[] result = Application.splitCarNames(carNames);
-        assertArrayEquals(new String[]{"", "pobi", "woni", "", "", ""}, result);
+        List<String> result = Application.splitCarNames(carNames);
+        assertThat(result).containsExactly("", "pobi", "woni", "", "", "");
     }
 
     @Test
     public void 자동차_이름이_5자_초과인_경우_테스트() {
-        String[] carNamesList = {"pobiii", "", "jun"};
+        List<String> carNamesList = List.of("pobiii", "", "jun");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             Application.validateCarNamesList(carNamesList);
         });
@@ -87,7 +86,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     public void 자동차_이름이_공백인_경우_테스트() {
-        String[] carNamesList = {"pobi", "", "jun"};
+        List<String> carNamesList = List.of("pobi", "", "jun");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             Application.validateCarNamesList(carNamesList);
         });

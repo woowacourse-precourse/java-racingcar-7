@@ -10,7 +10,7 @@ public class Application {
         String carNames = input.getCarNames();
         int totalAttempts = input.getTotalAttempts();
 
-        String[] carNamesList = splitCarNames(carNames);
+        List<String> carNamesList = splitCarNames(carNames);
 
         validateCarNamesList(carNamesList);
 
@@ -22,17 +22,17 @@ public class Application {
         RaceOutput.displayWinners(cars);
     }
 
-    public static String[] splitCarNames(String carNames) {
-        String[] carNamesList = carNames.split(",");
+    public static List<String> splitCarNames(String carNames) {
+        List<String> carNamesList = new ArrayList<>(List.of(carNames.split(",")));
 
-        for (int i = 0; i < carNamesList.length; i++) {
-            carNamesList[i] = carNamesList[i].trim();
+        for (int i = 0; i < carNamesList.size(); i++) {
+            carNamesList.set(i, carNamesList.get(i).trim());
         }
 
         return carNamesList;
     }
 
-    public static void validateCarNamesList(String[] carNamesList) {
+    public static void validateCarNamesList(List<String> carNamesList) {
         final int MAX_LENGTH = 5;
 
         for (String carName : carNamesList) {
@@ -45,7 +45,7 @@ public class Application {
         }
     }
 
-    public static List<Car> createCars(String[] carNamesList) {
+    public static List<Car> createCars(List<String> carNamesList) {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNamesList) {
