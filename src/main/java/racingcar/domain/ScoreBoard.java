@@ -47,12 +47,10 @@ public class ScoreBoard {
     }
 
     private int getTopScore() {
-        int bestScore = carList.stream()
+        return carList.stream()
                 .map(car -> (CarImpl) car)
                 .max(Comparator.comparingInt(CarImpl::getScore))
                 .map(CarImpl::getScore)
                 .get();
-
-        return bestScore;
     }
 }
