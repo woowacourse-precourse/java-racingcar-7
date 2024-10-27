@@ -15,9 +15,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
+//    public List<Car> getCars() {
+//        return cars;
+//    }
 
     public void move() {
         for (Car car : cars) {
