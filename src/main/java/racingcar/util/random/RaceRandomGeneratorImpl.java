@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.util.random;
 
 public class RaceRandomGeneratorImpl implements RaceRandomGenerator {
 
