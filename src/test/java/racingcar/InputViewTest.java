@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputViewTest {
 
@@ -25,6 +26,20 @@ class InputViewTest {
 
         assertThat(cars).hasSize(3);
         assertThat(cars.get(0).getName()).isEqualTo("pobi");
+    }
+
+    @Test
+    @DisplayName("잘못된 이동 횟수 입력시 예외 발생")
+    void inputAttempts_ShouldThrowExceptionForInvalidInput() {
+        // Mocking the input using ByteArrayInputStream
+        String input = "abc\n"; // Non-integer input
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        InputView inputView = new InputView();
+        assertThatThrownBy(inputView::inputAttempts)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 숫자를 입력하세요.");
     }
 
 }
