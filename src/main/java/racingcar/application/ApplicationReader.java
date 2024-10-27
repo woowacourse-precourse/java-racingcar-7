@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.application;
 
 import racingcar.config.RaceConfig;
-import racingcar.io.Input;
-import racingcar.io.View;
+import racingcar.presentation.io.Input;
+import racingcar.presentation.io.View;
 
 public class ApplicationReader {
     private static ApplicationReader INSTANCE;

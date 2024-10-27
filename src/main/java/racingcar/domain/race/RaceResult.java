@@ -1,6 +1,6 @@
-package racingcar.race;
+package racingcar.domain.race;
 
-import racingcar.car.CarRegistry;
+import racingcar.domain.car.CarRegistry;
 
 import java.util.Set;
 

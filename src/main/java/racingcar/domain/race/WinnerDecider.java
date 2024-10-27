@@ -1,6 +1,6 @@
-package racingcar.race;
+package racingcar.domain.race;
 
-import racingcar.car.Car;
+import racingcar.domain.car.Car;
 
 import java.util.Set;
 import java.util.stream.Collectors;

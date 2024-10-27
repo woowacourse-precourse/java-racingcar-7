@@ -1,12 +1,12 @@
-package racingcar;
+package racingcar.application;
 
 import racingcar.config.AppConfig;
 import racingcar.config.RaceConfig;
-import racingcar.car.CarFactory;
-import racingcar.car.CarRegistry;
-import racingcar.race.RaceResult;
-import racingcar.race.Stadium;
-import racingcar.io.View;
+import racingcar.domain.car.CarFactory;
+import racingcar.domain.car.CarRegistry;
+import racingcar.domain.race.RaceResult;
+import racingcar.domain.race.Stadium;
+import racingcar.presentation.io.View;
 
 public class RaceManager {
     private final AppConfig appConfig;

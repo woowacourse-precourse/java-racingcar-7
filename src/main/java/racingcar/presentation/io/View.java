@@ -1,4 +1,4 @@
-package racingcar.io;
+package racingcar.presentation.io;
 
 public class View {
 

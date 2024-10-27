@@ -2,6 +2,7 @@ package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.*;
+import racingcar.presentation.io.Input;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

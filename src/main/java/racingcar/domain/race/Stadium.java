@@ -1,9 +1,9 @@
-package racingcar.race;
+package racingcar.domain.race;
 
 
-import racingcar.car.Car;
-import racingcar.car.CarRegistry;
-import racingcar.car.CarStatusFormatter;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarRegistry;
+import racingcar.presentation.CarStatusFormatter;
 
 public class Stadium {
     private final CarRegistry carRegistry;

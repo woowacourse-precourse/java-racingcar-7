@@ -1,12 +1,12 @@
 package racingcar.config;
 
-import racingcar.car.Car;
-import racingcar.car.CarFactory;
-import racingcar.car.CarRegistry;
-import racingcar.io.Input;
-import racingcar.io.View;
-import racingcar.race.RaceResult;
-import racingcar.race.Stadium;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarFactory;
+import racingcar.domain.car.CarRegistry;
+import racingcar.presentation.io.Input;
+import racingcar.presentation.io.View;
+import racingcar.domain.race.RaceResult;
+import racingcar.domain.race.Stadium;
 
 import java.util.Set;
 
