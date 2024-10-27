@@ -1,5 +1,6 @@
 package racingcar.domain.racing;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.car.Car;
@@ -15,6 +16,14 @@ public class RacingConfig {
     public RacingConfig(String cars, String rounds, CarType cartype) {
         this.cars = registerCar(cars, cartype);
         this.rounds = Long.parseLong(rounds);
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
+    }
+
+    public long getRounds() {
+        return rounds;
     }
 
     private List<Car> registerCar(String cars, CarType cartype) {
