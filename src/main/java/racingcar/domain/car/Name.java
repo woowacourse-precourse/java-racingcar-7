@@ -12,6 +12,9 @@ public class Name {
     }
 
     private void validate(String value) {
+        if (value == null || value.isEmpty()) {
+            throw new IllegalArgumentException("이름은 빈 문자열일 수 없습니다.");
+        }
         if (value.length() > MAX_LENGTH) {
             throw new IllegalArgumentException("이름은 " + MAX_LENGTH + "자를 넘을 수 없습니다.");
         }
