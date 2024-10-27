@@ -21,6 +21,7 @@ public class Application {
         Move move;
         Racing racing;
 
+        inputView.requestCarNames();
         totalAttempts = Integer.parseInt(inputView.requestTotalAttempts());
         move = new Move(cars, numberValidator, numberGenerator);
         racing = new Racing(cars, totalAttempts, move, outputView);
