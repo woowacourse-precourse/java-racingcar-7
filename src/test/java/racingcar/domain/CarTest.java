@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
@@ -18,7 +17,6 @@ public class CarTest {
     @Test
     void 자동차_이동_테스트() {
         Car car = new Car("hhj",0);
-
         car.move();
         assertThat(1).isEqualTo(car.getLocation());
         car.move();
