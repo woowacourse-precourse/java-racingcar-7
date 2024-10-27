@@ -30,16 +30,16 @@ public class Controller {
         ScoreBoard scoreBoard = ScoreBoard.from(carList);
         outputView.printBlank();
 
-        startRound(player, scoreBoard, tryCount);
+        startGame(player, scoreBoard, tryCount);
         outputView.printResult(scoreBoard.returnFinalResult());
     }
 
-    private void startRound(Player player, ScoreBoard scoreBoard, int tryCount) {
+    private void startGame(Player player, ScoreBoard scoreBoard, int tryCount) {
         outputView.printMessage(ROUND_START_MESSAGE);
 
         for (int i = 0; i < tryCount; i++) {
             player.play();
-            scoreBoard.returnRoundResult().forEach(outputView::printResult);
+            scoreBoard.returnRoundResult().forEach(dto -> outputView.printResult(dto.getResult()));
             outputView.printBlank();
         }
     }
