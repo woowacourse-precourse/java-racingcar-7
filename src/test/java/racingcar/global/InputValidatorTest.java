@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputValidatorTest {
 
@@ -24,5 +25,12 @@ class InputValidatorTest {
         for(String input : inputs) {
             assertEquals(InputValidator.convertInputToCarNames(input), expect);
         }
+    }
+
+    @Test
+    void convertInputToInteger() {
+        String input = "3";
+        int expect = 3;
+        assertEquals(InputValidator.convertInputToInteger(input), expect);
     }
 }

@@ -13,4 +13,16 @@ public class InputValidator {
         }
         return carNames;
     }
+
+    public static int convertInputToInteger(String input) throws IllegalArgumentException {
+        int totalAttempt = Integer.parseInt(input);
+        if(!isPositive(totalAttempt)) {
+            throw new IllegalArgumentException();
+        }
+        return totalAttempt;
+    }
+
+    public static boolean isPositive(int value) {
+        return value > 0;
+    }
 }
