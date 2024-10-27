@@ -6,6 +6,7 @@ import static racingcar.constant.ExceptionMessage.CAR_NAME_LENGTH_EXCEEDED;
 import static racingcar.constant.ExceptionMessage.CAR_NAME_NO_INPUT;
 import static racingcar.constant.ExceptionMessage.NOT_INTEGER;
 import static racingcar.constant.ExceptionMessage.NOT_POSITIVE;
+import static racingcar.constant.ExceptionMessage.WRONG_FORMAT;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class Validation {
     }
 
     public void validateAttemptCount(String attemptCount) {
-        Integer attempt;
+        int attempt;
         try {
             attempt = Integer.parseInt(attemptCount);
         } catch (NumberFormatException e) {
@@ -46,9 +47,11 @@ public class Validation {
         }
     }
 
-    public boolean isValidOutputFormat(String output, List<String> winners) {
+    public void validateOutputFormat(String output, List<String> winners) {
         String expectedOutput = "최종 우승자 : " + String.join(", ", winners);
-        return output.equals(expectedOutput);
+        if (!output.equals(expectedOutput)) {
+            throw new IllegalArgumentException(WRONG_FORMAT.getMessage());
+        }
     }
 
 }
