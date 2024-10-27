@@ -1,8 +1,5 @@
 # java-racingcar-precourse
 
-### 소개
-차수별 실행 결과는 저장 후 출력한다.
-
 ### 기능 구현 목록
 
 1. Car domain 구현
