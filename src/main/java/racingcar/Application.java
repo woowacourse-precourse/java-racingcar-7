@@ -16,7 +16,8 @@ public class Application {
         // 시도 횟수 입력 메소드 호출 후 반환값 저장
         int trialNum = TrialNumInput.settingTrialNum();
 
-        // 시도 횟수 만큼 게임 메소드 반복 호출
+        // 시도 횟수 만큼 게임 실행
+        System.out.println("실행 결과");
         for (int gameTrial=0; gameTrial < trialNum; gameTrial++) {
             Play.play(cars);
         }
