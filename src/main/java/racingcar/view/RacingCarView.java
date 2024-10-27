@@ -2,6 +2,9 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.stream.Collectors;
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 
 public class RacingCarView {
 
@@ -20,6 +23,20 @@ public class RacingCarView {
 
     public static void responseResultHeader() {
         System.out.println("실행 결과");
+    }
+
+    public static void responseRacingCarsResult(RacingCars racingCars) {
+        racingCars.getRacingCars()
+                .forEach(System.out::println);
+        System.out.println();
+    }
+
+    public static void responseWinnerRacingCars(List<RacingCar> winners) {
+        String winnerNames = winners.stream()
+                .map(RacingCar::getName)
+                .collect(Collectors.joining(", "));
+
+        System.out.printf("최종 우승자 : %s%n", winnerNames);
     }
 
     private static int validateAndParseAttempts(String input) {
