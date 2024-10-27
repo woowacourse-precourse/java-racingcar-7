@@ -12,13 +12,18 @@ public class Race {
         this.turn = new RaceTurn(turn);
     }
 
+    public boolean isAvailableRace() {
+        return this.turn.getTurn() > 0;
+    }
+
     public void join(Car car) {
         this.carList.add(car);
     }
 
     public HashMap<String, Integer> playOneTurn() {
-        HashMap<String, Integer> allCarsNameAndPosition = new HashMap<>();
+        this.turn.minusOneTurn();
 
+        HashMap<String, Integer> allCarsNameAndPosition = new HashMap<>();
         carList.stream()
                 .map(Car::randomlyMoveForward)
                 .forEach(map -> allCarsNameAndPosition.putAll(map));

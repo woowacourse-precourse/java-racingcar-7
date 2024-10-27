@@ -21,7 +21,7 @@ public class RaceController {
                 .forEach(race::join);
 
         Output.printExcecutionResult();
-        for (int i=0; i<turn; i++) {
+        while (race.isAvailableRace()) {
             Output.printEachTurnResult(race.playOneTurn());
         }
 

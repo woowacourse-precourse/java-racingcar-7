@@ -18,4 +18,12 @@ public class RaceTurn {
             throw new IllegalArgumentException(OVER_SIX_NUMBER_ERROR_MESSAGE);
         }
     }
+
+    public int getTurn() {
+        return this.turn;
+    }
+
+    public void minusOneTurn() {
+        this.turn--;
+    }
 }
