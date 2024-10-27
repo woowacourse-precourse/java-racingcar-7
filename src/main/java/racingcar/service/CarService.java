@@ -25,7 +25,7 @@ public class CarService {
     public GameConfig initializeGame() {
         String inputCarName = inputView.inputCarName();
 
-        List<String> carNames = Arrays.asList(inputCarName.split(","));
+        List<String> carNames = Arrays.asList(inputCarName.split(",", -1));
         Validator.checkDuplicateNames(carNames);
 
         List<Car> cars = carNames.stream()
