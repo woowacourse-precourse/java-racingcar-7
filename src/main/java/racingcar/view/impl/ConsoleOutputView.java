@@ -11,7 +11,8 @@ import racingcar.view.OutputView;
 public class ConsoleOutputView implements OutputView {
     private static ConsoleOutputView INSTANCE;
 
-    private ConsoleOutputView() {}
+    private ConsoleOutputView() {
+    }
 
     public static synchronized ConsoleOutputView getInstance() {
         if (INSTANCE == null) {

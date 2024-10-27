@@ -8,7 +8,8 @@ public class RaceServiceImpl implements RaceService {
 
     private static RaceServiceImpl INSTANCE;
 
-    private RaceServiceImpl() {}
+    private RaceServiceImpl() {
+    }
 
     public static synchronized RaceServiceImpl getInstance() {
         if (INSTANCE == null) {

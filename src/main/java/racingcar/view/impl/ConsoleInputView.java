@@ -12,7 +12,8 @@ public class ConsoleInputView implements InputView {
 
     private final FilterConfig filterConfig = FilterConfig.getInstance();
 
-    private ConsoleInputView() {}
+    private ConsoleInputView() {
+    }
 
     public static synchronized ConsoleInputView getInstance() {
         if (INSTANCE == null) {
