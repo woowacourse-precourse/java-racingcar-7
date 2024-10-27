@@ -101,6 +101,15 @@ public class Application {
         return randomNumbers;
     }
 
+    private static void printResult(LinkedHashMap<String,Integer> cars, String carName){
+        int curCarLocation = cars.get(carName);
+        System.out.print(carName + " : ");
+        for(int count = 0; count < curCarLocation + 1; count++){
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
     private static void updateResult(LinkedHashMap<String,Integer> cars, ArrayList<Integer> randomNumbers){
         ArrayList<String> carNames = new ArrayList<>(cars.keySet());
         for(int numIndex = 0; numIndex< cars.size(); numIndex++){
@@ -110,6 +119,7 @@ public class Application {
                 curCarLocation++;
                 cars.put(curCarNames, curCarLocation);
             }
+            printResult(cars,curCarNames);
         }
         System.out.println();
     }
