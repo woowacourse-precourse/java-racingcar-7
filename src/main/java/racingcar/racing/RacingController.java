@@ -29,7 +29,13 @@ public class RacingController {
 
     private void inputTryCount() {
         String tryCountString = Request.inputTryCount();
+        validateTryCount(tryCountString);
         tryCount = Integer.parseInt(tryCountString);
+    }
+
+    private void validateTryCount(String tryCountString) {
+        RacingValidator.tryCountEmpty(tryCountString);
+        RacingValidator.tryCountParseInteger(tryCountString);
     }
 
     private void race() {

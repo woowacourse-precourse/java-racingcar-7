@@ -20,7 +20,8 @@ public class RacingCarController {
 
     private void validateCarsName(List<String> carNameList) {
         for (String name : carNameList) {
-            CarValidator.validateCarNameLength(name);
+            CarValidator.carNameEmpty(name);
+            CarValidator.carNameLength(name);
         }
     }
 
