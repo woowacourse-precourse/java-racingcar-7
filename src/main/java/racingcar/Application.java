@@ -12,6 +12,10 @@ public class Application {
         return splitCarNameByDelimiter(carNames);
     }
 
+    private static String[] splitCarNameByDelimiter(String carNames) {
+        return carNames.split(",");
+    }
+
     private static int getGameCount() {
         String count;
 
