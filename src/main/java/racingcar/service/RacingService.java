@@ -10,12 +10,14 @@ import racingcar.exception.Validator;
 public class RacingService {
     private final List<Car> carList = new ArrayList<>();
     private final LinkedHashMap<Car, Long> racingProgress = new LinkedHashMap<>();
+    private static final int PROGRESS_STRIDE = 1;
+    private static final long PROGRESS_DEFAULT = 0;
 
     public RacingService(List<String> carNameList) {
         for (String carName : carNameList) {
             Car car = new Car(carName);
             carList.add(car);
-            racingProgress.put(car, 0L);
+            racingProgress.put(car, PROGRESS_DEFAULT);
         }
     }
 
@@ -24,7 +26,7 @@ public class RacingService {
             car.setRandomNumber();
 
             if (Validator.isFourOrMore(car.getRandomNumber())) {
-                racingProgress.put(car, racingProgress.get(car) + 1);
+                racingProgress.put(car, racingProgress.get(car) + PROGRESS_STRIDE);
             }
         }
     }
@@ -33,7 +35,7 @@ public class RacingService {
         long maxProgress = racingProgress.values()
                 .stream()
                 .max(Long::compare)
-                .orElse(0L);
+                .orElse(PROGRESS_DEFAULT);
 
         return racingProgress.entrySet()
                 .stream()

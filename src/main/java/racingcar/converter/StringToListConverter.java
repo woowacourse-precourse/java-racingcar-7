@@ -5,6 +5,7 @@ import racingcar.exception.Validator;
 
 public class StringToListConverter {
     private final String input;
+    private static final String DELIMITER = ",";
 
     public StringToListConverter(String input) {
         this.input = input;
@@ -12,7 +13,7 @@ public class StringToListConverter {
 
     public List<String> parsingCarName() {
         Validator.isNotBLANK(input);
-        List<String> inputList = List.of(input.split(","));
+        List<String> inputList = List.of(input.split(DELIMITER));
         Validator.isDuplicatedCarName(inputList);
         Validator.overFiveCharsInCarName(inputList);
         return inputList;
