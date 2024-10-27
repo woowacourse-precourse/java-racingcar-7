@@ -12,6 +12,7 @@ public class InputView {
 
 	public int readAttemptCountInput() {
 		String input = Console.readLine();
+		validateBlank(input);
 
 		return Integer.parseInt(input);
 	}
