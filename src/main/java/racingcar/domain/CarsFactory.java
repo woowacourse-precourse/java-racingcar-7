@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import racingcar.validation.CarsValidator;
 import racingcar.validation.Validator;
 
-public class CarsFactory{
+public class CarsFactory {
     private static final String CAR_NAMES_DELIMITER = ",";
     private static final int SPLIT_NO_LIMIT = -1;
     private static final Validator<List<Car>> validator = new CarsValidator();

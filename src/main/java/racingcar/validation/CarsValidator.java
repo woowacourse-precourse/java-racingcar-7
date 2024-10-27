@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 import racingcar.domain.Car;
 
-public class CarsValidator implements Validator<List<Car>>{
+public class CarsValidator implements Validator<List<Car>> {
     private static final int MIN_CARS_AMOUNT = 2;
 
     @Override

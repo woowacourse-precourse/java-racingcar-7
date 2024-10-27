@@ -17,7 +17,7 @@ public class Car {
 
     public void move() {
         if (Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER) >= MINIMUM_MOVE_THRESHOLD) {
-            moveDistance ++;
+            moveDistance++;
         }
     }
 

@@ -3,7 +3,7 @@ package racingcar.validation;
 import static racingcar.validation.Exceptions.BLANK_CAR_NAME;
 import static racingcar.validation.Exceptions.INSUFFICIENT_CAR_NAME_LENGTH;
 
-public class CarValidator implements Validator<String>{
+public class CarValidator implements Validator<String> {
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
     @Override

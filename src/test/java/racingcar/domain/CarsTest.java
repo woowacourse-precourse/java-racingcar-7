@@ -83,7 +83,8 @@ public class CarsTest {
                             new ArrayList<>(Arrays.asList(testWinnerName1, testWinnerName2, testWinnerName3))
                     );
                 },
-                testRandomNumberForWinner, testRandomNumberForWinner, testRandomNumberForWinner, testRandomNumberForLoser
+                testRandomNumberForWinner, testRandomNumberForWinner, testRandomNumberForWinner,
+                testRandomNumberForLoser
         );
     }
 }

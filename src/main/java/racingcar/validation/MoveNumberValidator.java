@@ -2,7 +2,7 @@ package racingcar.validation;
 
 import static racingcar.validation.Exceptions.INSUFFICIENT_MOVE_NUMBER;
 
-public class MoveNumberValidator implements Validator<Integer>{
+public class MoveNumberValidator implements Validator<Integer> {
     private static final int MIN_MOVE_NUMBER = 1;
 
     @Override
