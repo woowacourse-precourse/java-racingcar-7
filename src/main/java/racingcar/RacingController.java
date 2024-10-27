@@ -15,7 +15,6 @@ public class RacingController {
         race = new Race(racingCars);
         race.startRacing(numberOfAttempts);
 
-        OutputHandler.printCars(race.getRacingCars());
         OutputHandler.printWinners(race.getWinners());
     }
 
