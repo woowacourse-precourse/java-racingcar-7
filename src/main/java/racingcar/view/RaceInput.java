@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.view;
 
-import static racingcar.ErrorMessage.NO_INPUT;
+import static racingcar.constant.ErrorMessage.NO_INPUT;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
@@ -13,12 +13,12 @@ public class RaceInput {
     }
 
     public static String getNames() {
-        System.out.println(NAMES_PROMPT);
+        RaceOutput.println(NAMES_PROMPT);
         return getLine();
     }
 
     public static String getRaceTime() {
-        System.out.println(RACE_TIME_PROMPT);
+        RaceOutput.println(RACE_TIME_PROMPT);
         return getLine();
     }
 

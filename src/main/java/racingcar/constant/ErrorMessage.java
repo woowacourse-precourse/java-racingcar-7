@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.constant;
 
 public enum ErrorMessage {
     NO_INPUT("입력값을 넣어 경주를 시작해주세요."),

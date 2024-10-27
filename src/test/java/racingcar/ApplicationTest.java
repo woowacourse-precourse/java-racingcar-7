@@ -4,12 +4,12 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.ErrorMessage.EMPTY_NAME;
-import static racingcar.ErrorMessage.INVALID_CAR_NAME;
-import static racingcar.ErrorMessage.INVALID_RACE_TIME;
-import static racingcar.ErrorMessage.NEGATIVE_RACE_TIME;
-import static racingcar.ErrorMessage.NO_INPUT;
-import static racingcar.ErrorMessage.TOO_LONG_CAR_NAME;
+import static racingcar.constant.ErrorMessage.EMPTY_NAME;
+import static racingcar.constant.ErrorMessage.INVALID_CAR_NAME;
+import static racingcar.constant.ErrorMessage.INVALID_RACE_TIME;
+import static racingcar.constant.ErrorMessage.NEGATIVE_RACE_TIME;
+import static racingcar.constant.ErrorMessage.NO_INPUT;
+import static racingcar.constant.ErrorMessage.TOO_LONG_CAR_NAME;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
@@ -86,7 +86,7 @@ class ApplicationTest extends NsTest {
         }
 
         @ParameterizedTest
-        @DisplayName("단독_우승")
+        @DisplayName("단독 우승")
         @CsvSource(value = {"씨비스킷,제독#1#씨비스킷", "맥퀸,킹,힉스#2#맥퀸"}, delimiter = '#')
         void 단독_우승(String names, String raceTime, String winners) {
             assertRandomNumberInRangeTest(
@@ -125,7 +125,7 @@ class ApplicationTest extends NsTest {
 
         @ParameterizedTest
         @DisplayName("이름 없음")
-        @ValueSource(strings = {",", "woni,,pobi", "포비,우니,"})
+        @ValueSource(strings = {"\n", ",", "woni,,pobi", "포비,우니,"})
         void 이름_없음(String names) {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException(names))
@@ -135,7 +135,7 @@ class ApplicationTest extends NsTest {
         }
 
         @ParameterizedTest
-        @DisplayName("잘못된 이름 (이름은 영어와 한글로만 이루어져야 한다.)")
+        @DisplayName("잘못된 이름 (이름은 영어와 한글로만)")
         @ValueSource(strings = {"🚗,차차차!", "hi hi, 차 선생", "...,&&,-+", "車,茶,$차", "   "})
         void 잘못된_이름(String names) {
             assertSimpleTest(() ->

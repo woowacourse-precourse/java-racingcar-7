@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.model;
 
-import static racingcar.ErrorMessage.EMPTY_NAME;
-import static racingcar.ErrorMessage.INVALID_CAR_NAME;
-import static racingcar.ErrorMessage.TOO_LONG_CAR_NAME;
+import static racingcar.constant.ErrorMessage.EMPTY_NAME;
+import static racingcar.constant.ErrorMessage.INVALID_CAR_NAME;
+import static racingcar.constant.ErrorMessage.TOO_LONG_CAR_NAME;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -14,7 +14,7 @@ public class Car {
     private static final String VALID_NAME_REGEX = "[a-zA-Zㄱ-ㅣ가-힣]+";
 
     private final String name;
-    private int movedCount;
+    private int moveCount;
 
     public Car(String name) {
         validateName(name);
@@ -38,7 +38,7 @@ public class Car {
     public void move() {
         int fate = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
         if (fate >= MOVING_FORWARD) {
-            this.movedCount++;
+            this.moveCount++;
         }
     }
 
@@ -47,6 +47,6 @@ public class Car {
     }
 
     public int countMove() {
-        return this.movedCount;
+        return this.moveCount;
     }
 }

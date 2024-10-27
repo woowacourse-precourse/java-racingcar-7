@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.model;
 
-import static racingcar.ErrorMessage.INVALID_RACE_TIME;
-import static racingcar.ErrorMessage.NEGATIVE_RACE_TIME;
+import static racingcar.constant.ErrorMessage.INVALID_RACE_TIME;
+import static racingcar.constant.ErrorMessage.NEGATIVE_RACE_TIME;
 
 public class RaceTime {
     private int remainingTime;
