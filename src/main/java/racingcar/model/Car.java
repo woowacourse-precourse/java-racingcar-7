@@ -28,6 +28,10 @@ public class Car {
         }
     }
 
+    public static void resetNames() {
+        existingNames.clear();
+    }
+
     public String getName() {
         return name;
     }
