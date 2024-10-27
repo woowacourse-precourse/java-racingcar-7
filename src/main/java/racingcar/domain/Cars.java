@@ -29,4 +29,22 @@ public class Cars {
         }
         outputView.printRoundResult(roundResult.toString());
     }
+
+    public List<String> findWinners() {
+        Car frontLineCar = findFrontLineCar();
+        return findCoWinner(frontLineCar);
+    }
+
+    private Car findFrontLineCar() {
+        return cars.stream()
+                .max(Car::compareTo)
+                .orElse(null);
+    }
+
+    private List<String> findCoWinner(Car frontLineCar) {
+        return cars.stream()
+                .filter(frontLineCar::isCarSamePosition)
+                .map(Car::getName)
+                .toList();
+    }
 }
