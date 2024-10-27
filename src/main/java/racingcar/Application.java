@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final String DELIMITER = ",";
+    private static final int RANGE_MIN = 0;
+    private static final int RANGE_MAX = 9;
+    private static final int MOVE_THRESHOLD = 4;
+
     public static void main(String[] args) {
         List<String> carNames = inputCarNames();
         int attempts = inputAttempts();
@@ -20,14 +25,17 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
         validateCarNames(input);
-        String[] names = input.split(",");
+        String[] names = input.split(DELIMITER);
         return List.of(names);
     }
 
     private static void validateCarNames(String input) {
-        for (String name : input.split(",")) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
+        if (input.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+        }
+        for (String name : input.split(DELIMITER)) {
+            if (name.isBlank() || name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다.");
             }
         }
     }
@@ -52,13 +60,23 @@ public class Application {
 
     private static void race(List<Car> cars, int attempts) {
         for (int i = 0; i < attempts; i++) {
-            for (Car car : cars) {
-                if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                    car.move();
-                }
-                System.out.println(car);
-            }
+            moveCars(cars);
+            printRaceStatus(cars);
             System.out.println();
+        }
+    }
+
+    private static void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            if (Randoms.pickNumberInRange(RANGE_MIN, RANGE_MAX) >= MOVE_THRESHOLD) {
+                car.move();
+            }
+        }
+    }
+
+    private static void printRaceStatus(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car);
         }
     }
 
