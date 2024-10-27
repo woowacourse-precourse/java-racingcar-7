@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import racingcar.exception.InputValidator;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final int FIRST_POSITION = 0;
     private static final String POSITION_INDICATOR = "-";
 
@@ -29,5 +29,10 @@ public class Car {
 
     private String convertDigitPositionToVisualizedPosition() {
         return POSITION_INDICATOR.repeat(position);
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.position - o.position;
     }
 }
