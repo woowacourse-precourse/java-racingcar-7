@@ -5,7 +5,6 @@ import racingcar.service.RacingCarService;
 import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.util.RandomPicker;
-import racingcar.view.InputView;
 
 public class Application {
     public static void main(String[] args) {
