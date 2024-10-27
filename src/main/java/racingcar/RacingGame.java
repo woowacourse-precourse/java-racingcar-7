@@ -33,4 +33,8 @@ public class RacingGame {
         });
     }
 
+    private static List<Car> createCarList(List<String> carNames) {
+        return carNames.stream().map(Car::new).collect(Collectors.toList());
+    }
+
 }
