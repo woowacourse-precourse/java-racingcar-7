@@ -17,11 +17,21 @@ public class RacingCarValidator {
 
 
     public static int validateRacingAttemptCount(String racingAttemptCountString) {
-        int racingAttemptCount = Integer.parseInt(racingAttemptCountString);
-        if (racingAttemptCount <= 0) {
+        try{
+            int racingAttemptCount = Integer.parseInt(racingAttemptCountString);
+            validatePositiveNumber(racingAttemptCount);
+            return racingAttemptCount;
+        } catch (Exception e){
             throw new IllegalArgumentException(ExceptionMessage.RACING_ATTEMPT_EXCEPTION.getExceptionMessage());
         }
-        return racingAttemptCount;
     }
+
+
+    private static void validatePositiveNumber(int number){
+        if (number <= 0)
+            throw new IllegalArgumentException(ExceptionMessage.RACING_ATTEMPT_EXCEPTION.getExceptionMessage());
+    }
+
+
 
 }
