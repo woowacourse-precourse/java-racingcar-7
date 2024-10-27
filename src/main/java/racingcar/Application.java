@@ -2,8 +2,13 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Application {
 
@@ -22,14 +27,14 @@ public class Application {
         String carsInput = Console.readLine();
         validateCarNames(carsInput);
 
-        String[] carNames = carsInput.split(",");
-        for (String name : carNames) {
-            carPositions.put(name.trim(), 0);
-        }
+        List<String> carNames = Stream.of(carsInput.split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
+        carNames.forEach(name -> carPositions.put(name, 0));
 
         System.out.println("시도할 횟수를 입력하세요.");
         String tryCountInput = Console.readLine();
-        Integer tryCount = validateTryCount(tryCountInput);
+        int tryCount = validateTryCount(tryCountInput);
 
         for (int i = 0; i < tryCount; i++) {
             moveCars(carPositions);
@@ -40,20 +45,31 @@ public class Application {
             }
             System.out.println();
         }
+
+        List<String> winners = findWinners(carPositions);
     }
 
-    // 경주 이동 로직
-    public static void moveCars(Map<String, Integer> carPositions) {
-        for (Map.Entry<String, Integer> car : carPositions.entrySet()) {
-            int randomNum = Randoms.pickNumberInRange(0, 9);
+    private static void moveCars(Map<String, Integer> carPositions) {
+        carPositions.forEach((name, position) -> {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                carPositions.put(name, position + 1);
+            }
+        });
+    }
 
-            if (randomNum >= 4) {
-                car.setValue(car.getValue() + 1); // 점수 증가
+    private static List<String> findWinners(Map<String, Integer> cars) {
+        int maxScore = Collections.max(cars.values());
+        List<String> winners = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> car : cars.entrySet()) {
+            if (car.getValue() == maxScore) {
+                winners.add(car.getKey());
             }
         }
+
+        return winners;
     }
 
-    // 자동차 이름 값 유효성 검증
     public static void validateCarNames(String carsInput) {
         if (carsInput == null || carsInput.trim().isEmpty()) {
             throw new IllegalArgumentException(EMPTY_INPUT_MESSAGE);
@@ -80,7 +96,6 @@ public class Application {
         }
     }
 
-    // 시도할 횟수 입력 값 유효성 검증
     public static Integer validateTryCount(String tryCountInput) {
         try {
             int tryCount = Integer.parseInt(tryCountInput);
