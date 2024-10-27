@@ -64,7 +64,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 랜덤값_경계값_입력_판단_테스트(){
         //given
-        Car car = new Car("soyoon");
+        Car car = new RacingCar("siwu");
 
         //when
         boolean judge = car.judge(4);
@@ -76,7 +76,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 랜덤값_true_입력_판단_테스트(){
         //given
-        Car car = new Car("soyoon");
+        Car car = new RacingCar("siwu");
 
         //when
         boolean judge = car.judge(9);
@@ -88,13 +88,41 @@ class ApplicationTest extends NsTest {
     @Test
     void 랜덤값_false_입력_판단_테스트(){
         //given
-        Car car = new Car("soyoon");
+        Car car = new RacingCar("siwu");
 
         //when
         boolean judge = car.judge(2);
 
         //then
         assertEquals(judge, false, "2가 들어올 경우 false가 반환되어야 합니다.");
+    }
+
+    @Test
+    void 주행거리_판단_테스트_전진(){
+        //given
+        Referee referee = new CarRacingReferee();
+        TestCar testCar = new TestCar("siwu", 5);
+
+        //when
+        Car car = referee.judgeMovement(testCar);
+
+        //then
+        assertEquals(1, car.getDistance(), "주행 거리 판단이 잘못되었습니다.");
+        assertEquals(testCar, car);
+    }
+
+    @Test
+    void 주행거리_판단_테스트_멈춤(){
+        //given
+        Referee referee = new CarRacingReferee();
+        TestCar testCar = new TestCar("siwu", 2);
+
+        //when
+        Car car = referee.judgeMovement(testCar);
+
+        //then
+        assertEquals(0, car.getDistance());
+        assertEquals(car, testCar);
     }
 
     @Override
