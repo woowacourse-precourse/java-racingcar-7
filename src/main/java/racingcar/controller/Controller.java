@@ -40,4 +40,18 @@ public class Controller {
         outputView.print("");
         return times;
     }
+
+    private List<Car> playGame(List<Car> cars, Long times) {
+        LongStream.range(0L, times)
+                .forEach(n -> playSet(cars));
+        return cars;
+    }
+
+    private void playSet(List<Car> cars) {
+        for (Car car : cars) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                car.forward();
+            }
+        }
+    }
 }
