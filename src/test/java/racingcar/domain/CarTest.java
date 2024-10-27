@@ -38,4 +38,14 @@ class CarTest {
 
         Assertions.assertThat(car.getDistance()).isEqualTo(1);
     }
+
+    @DisplayName("자동차 전진 실패")
+    @Test
+    void stopTest() {
+        Car car = new Car("pobi", stopGenerator);
+
+        car.move();
+
+        Assertions.assertThat(car.getDistance()).isEqualTo(0);
+    }
 }
