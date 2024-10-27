@@ -89,7 +89,7 @@ public class RacingController {
     }
 
     private void racingGameTrials(final Racing racing, int trialNumber) {
-        for (int i = 0; i < trialNumber; i++) {
+        for (int count = 0; count < trialNumber; count++) {
             raceService.performRace(racing);
             List<WinnerResponseDto> result = convertToResultDtos(racing);
             OutputView.printRacingOutput(result);
