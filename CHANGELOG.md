@@ -53,17 +53,27 @@
 
 ##### Refactors
 
+* **$ OutputView:**
+  *  변수명 변경 (c34f242f)
+  *  에러 메시지 수정 (3495ff6a)
+  *  미사용 메서드 삭제 (68646067)
+* **$ OutputMessages:**
+  *  변수명 변경 (83a564df)
+  *  상수명 변경 (c51dacdf)
+  *  상수 이름 변경 (e3b3e719)
+* **$ InputView, OutputView, RacingController:**  메서드명 변경 (7bca7582)
+* **$ RacingConfig:**  변수명 변경 (e62aed9f)
+* **$ CarName, Cars:**  에러 메시지 수정 (fe14c44a)
+* **$ ErrorMessages:**  에러 메시지 변경 (5c0a5914)
 * **$ RacingController:**
   *  컨틀롤러 기능 분리 (f04b6ca5)
   *  컨틀롤러 기능 분리 (be07f268)
 * **$ Car, CarName, OutputView, RacingGame, RandomNumberGenerator:**  매직넘버 상수화 (8d28702a)
 * **$ RacingGame:**  출력 사양 준수 (45d72476)
-* **$ OutputView:**  미사용 메서드 삭제 (68646067)
 * **$ CarName:**
   *  메서드 이름 변경 (71fb0b3d)
   *  자동차 이름 클래스 이름 리팩터링 (b21a8352)
 * **$ Cars:**  중복 검사 코드 리펙터링 (4c1ae75d)
-* **$ OutputMessages:**  상수 이름 변경 (e3b3e719)
 
 ##### Code Style Changes
 
