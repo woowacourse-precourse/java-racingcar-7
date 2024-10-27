@@ -1,6 +1,7 @@
 package racingcar;
 
 public class Car {
+    private static final int MOVE_THRESHOLD = 4;
     private final String name;
     private int position;
 
@@ -10,7 +11,7 @@ public class Car {
     }
 
     public void moveForward(int number) {
-        if (number >= 4) {
+        if (number >= MOVE_THRESHOLD) {
             this.position++;
         }
     }
