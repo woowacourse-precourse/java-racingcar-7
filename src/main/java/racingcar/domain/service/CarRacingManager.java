@@ -54,12 +54,6 @@ public class CarRacingManager {
         return List.copyOf(cars.values());
     }
 
-    // [삭제 예정] Test 코드에서만 사용
-    // TODO: 해당 메소드 없이 테스트 구현하기
-    public void moveForward(final String name) {
-        cars.get(name).moveForward();
-    }
-
     public String getWinners() {
         return getFirstPrizeCarList().stream()
                 .map(Car::getName)
