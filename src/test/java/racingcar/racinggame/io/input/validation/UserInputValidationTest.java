@@ -31,7 +31,7 @@ class UserInputValidationTest {
 			.hasMessage("빈 문자열은 입력할 수 없습니다.");
 	}
 
-	@DisplayName("사용자는 자동차 이름을 구분자로 구분해 입력해야 한다")
+	@DisplayName("사용자는 구분자를 사용하지 않으면 자동차 이름을 입력할 수 없다")
 	@Test
 	void validateInputCarNamesWithoutDelimiter() {
 		// given
@@ -67,7 +67,7 @@ class UserInputValidationTest {
 			.hasMessage("빈 문자열은 입력할 수 없습니다.");
 	}
 
-	@DisplayName("사용자는 시도 횟수로 자연수만 입력할 수 없다")
+	@DisplayName("사용자는 시도 횟수로 자연수만 입력할 수 있다")
 	@ValueSource(strings = {"a", "-1", "0"})
 	@ParameterizedTest(name = "{0}은 입력할 수 없습니다")
 	void validateTryCountAsNotNumber(String inputTryCount) {
