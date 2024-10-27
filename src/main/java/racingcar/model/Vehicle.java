@@ -1,5 +1,8 @@
 package racingcar.model;
 
+import static racingcar.constant.ErrorMessage.VEHICLE_NAME_CANNOT_BE_EMPTY;
+import static racingcar.constant.ErrorMessage.VEHICLE_NAME_CANNOT_BE_MORE_FIVE;
+
 public class Vehicle {
     private static final int MAX_NAME_LENGTH = 5;
     private static final int MIN_RANDOM_FOR_MOVE = 4;
@@ -12,10 +15,10 @@ public class Vehicle {
 
     public Vehicle(String vehicleName) {
         if (vehicleName == null || vehicleName.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
+            throw new IllegalArgumentException(VEHICLE_NAME_CANNOT_BE_EMPTY);
         }
         if (vehicleName.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(VEHICLE_NAME_CANNOT_BE_MORE_FIVE);
         }
         this.vehicleName = vehicleName;
     }

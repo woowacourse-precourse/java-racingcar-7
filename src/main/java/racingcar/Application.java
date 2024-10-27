@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static racingcar.constant.ErrorMessage.RACE_ROUND_ONLY_CAN_NUMBER;
+import static racingcar.constant.ErrorMessage.VEHICLE_NAME_CANNOT_BE_DUPLICATE;
+
 public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -22,7 +25,7 @@ public class Application {
             int raceRounds = Integer.parseInt(Console.readLine());
             raceStart(vehicles, raceRounds);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("경주 횟수는 숫자여야 합니다. 올바른 값을 입력해주세요.");
+            throw new IllegalArgumentException(RACE_ROUND_ONLY_CAN_NUMBER);
         }
     }
 
@@ -35,7 +38,7 @@ public class Application {
 
         Set<String> uniqueNames = Set.copyOf(vehicles);
         if (uniqueNames.size() < vehicles.size()) {
-            throw new IllegalArgumentException("중복된 이름이 있습니다.");
+            throw new IllegalArgumentException(VEHICLE_NAME_CANNOT_BE_DUPLICATE);
         }
 
         return vehicles.stream()

@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.constant.ErrorMessage.VEHICLE_NAME_CANNOT_BE_EMPTY;
+import static racingcar.constant.ErrorMessage.VEHICLE_NAME_CANNOT_BE_MORE_FIVE;
 
 class VehicleTest {
 
@@ -20,7 +22,7 @@ class VehicleTest {
     void 자동차_이름_길이_0_등록() {
         assertThatThrownBy(() -> new Vehicle(""))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 비어있을 수 없습니다.");
+                .hasMessage(VEHICLE_NAME_CANNOT_BE_EMPTY);
     }
 
     @Test
@@ -28,7 +30,7 @@ class VehicleTest {
     void 자동차_이름_null_등록() {
         assertThatThrownBy(() -> new Vehicle(null))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 비어있을 수 없습니다.");
+                .hasMessage(VEHICLE_NAME_CANNOT_BE_EMPTY);
     }
 
     @Test
@@ -36,7 +38,7 @@ class VehicleTest {
     void 자동차_이름_공백_등록() {
         assertThatThrownBy(() -> new Vehicle(" "))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 비어있을 수 없습니다.");
+                .hasMessage(VEHICLE_NAME_CANNOT_BE_EMPTY);
     }
 
     @Test
@@ -44,7 +46,7 @@ class VehicleTest {
     void 자동차_이름_사이_공백_5자_초과_등록() {
         assertThatThrownBy(() -> new Vehicle("12 456"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 5글자를 초과할 수 없습니다.");
+                .hasMessage(VEHICLE_NAME_CANNOT_BE_MORE_FIVE);
     }
 
     @Test
