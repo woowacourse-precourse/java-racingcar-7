@@ -16,16 +16,20 @@ public class InputView {
     public static List<String> inputCarNames() {
         System.out.println(CAR_NAME_PROMPT);
         String input = Console.readLine();
-        return Arrays.stream(input.split(","))
-                .map(String::trim)
-                .peek(InputView::validateCarName)
-                .collect(Collectors.toList());
+        return parseCarNames(input);
     }
 
     public static int inputRounds() {
         System.out.println(RACE_ROUND_PROMPT);
         String input = Console.readLine();
-        return validateRoundInput(input);
+        return parseRounds(input);
+    }
+
+    private static List<String> parseCarNames(String input) {
+        return Arrays.stream(input.split(","))
+                .map(String::trim)
+                .peek(InputView::validateCarName)
+                .collect(Collectors.toList());
     }
 
     private static void validateCarName(String name) {
@@ -37,13 +41,21 @@ public class InputView {
         }
     }
 
-    private static int validateRoundInput(String input) {
+    private static int parseRounds(String input) {
+        int rounds = parseInteger(input);
+        validateRounds(rounds);
+        return rounds;
+    }
+
+    private static void validateRounds(int rounds) {
+        if (rounds <= 0) {
+            throw new IllegalArgumentException(INVALID_ROUND_INPUT);
+        }
+    }
+
+    private static int parseInteger(String input) {
         try {
-            int rounds = Integer.parseInt(input);
-            if (rounds <= 0) {
-                throw new IllegalArgumentException(INVALID_ROUND_INPUT);
-            }
-            return rounds;
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INVALID_ROUND_INPUT, e);
         }
