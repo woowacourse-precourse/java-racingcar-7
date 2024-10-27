@@ -22,12 +22,20 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         input = Console.readLine();
 
-        int attempts = Integer.parseInt(input);
+        int attempts;
+        try {
+            attempts = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 정수만 가능합니다 : " + input);
+        }
+
         validateAttempts(attempts);
+
         for (int i = 0; i < attempts; i++) {
             printAttempts(cars);
             System.out.println();
         }
+
         printWinners(cars);
     }
 
@@ -106,8 +114,8 @@ public class Application {
     }
 
     private static void validateAttempts(int attempts) {
-        if(attempts < 1) {
-            throw new IllegalArgumentException("시도할 횟수는 1 이상의 정수만 가능합니다 : " + attempts);
+        if (attempts < 1) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상의 정수만 가능합니다 : " + attempts);
         }
     }
 }
