@@ -77,20 +77,18 @@ class ApplicationTest extends NsTest {
 
     @Test
     public void 자동차_이름이_5자_초과인_경우_테스트() {
-        List<String> carNamesList = List.of("pobiii", "", "jun");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            Application.validateCarNamesList(carNamesList);
+            List<Car> cars = List.of(new Car("pobiii"), new Car(""), new Car("jun"));
         });
         assertEquals("자동차 이름은 5자 이하이어야 합니다.", exception.getMessage());
     }
 
     @Test
     public void 자동차_이름이_공백인_경우_테스트() {
-        List<String> carNamesList = List.of("pobi", "", "jun");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            Application.validateCarNamesList(carNamesList);
+            List<Car> cars = List.of(new Car("pobi"), new Car(""), new Car("jun"));
         });
-        assertEquals("자동차 이름이 유효하지 않습니다.", exception.getMessage());
+        assertEquals("자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
     }
 
     @Override
