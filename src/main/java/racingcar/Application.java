@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import net.bytebuddy.pool.TypePool;
 
 public class Application {
     public static void main(String[] args) {
@@ -11,6 +12,8 @@ public class Application {
         String input = Console.readLine();
 
         String[] carNames = parseCars(input);
+        validateCarNames(carNames);
+
         Car[] cars = new Car[carNames.length];
         for (int i = 0; i < carNames.length; i++) {
             cars[i] = new Car(carNames[i]);
@@ -87,6 +90,17 @@ public class Application {
                 winners.append(", ");
             }
             winners.append(car.getName());
+        }
+    }
+
+    private static void validateCarNames(String[] carNames){
+        for(String name : carNames){
+            if(name.length() > 5){
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다 : " + name);
+            }
+            if (name.contains(" ")) {
+                throw new IllegalArgumentException("자동차 이름은 공백을 포함할 수 없습니다 : " + name);
+            }
         }
     }
 }
