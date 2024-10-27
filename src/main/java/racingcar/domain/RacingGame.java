@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import racingcar.dto.RoundResult;
@@ -10,7 +11,7 @@ public class RacingGame {
     private final List<Player> players;
     private final int roundCount;
     private final CustomNumberGenerator customNumberGenerator;
-    private List<RoundResult> roundResults;
+    private final List<RoundResult> roundResults = new ArrayList<>();
 
     public RacingGame(List<Player> players, int roundCount) {
         this.players = players;
