@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.Round;
 import racingcar.service.RegisterService;
 import racingcar.view.InputView;
 
@@ -14,11 +15,12 @@ public class RacingGameController {
         String carNames = InputView.carNames();
         registerService.registerCars(carNames);
 
-        setupRound();
+        Round round = setupRound();
     }
 
-    private void setupRound() {
-        String attemptCount = InputView.attemptCount();
+    private Round setupRound() {
+        String attemptCountInput = InputView.attemptCount();
+        return new Round(attemptCountInput);
     }
 
 }
