@@ -10,8 +10,7 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingGameController {
-    private Cars cars = new Cars();
-    private RacingGame racingGame;
+    private final Cars cars = new Cars();
 
 
     public void startGame(){
@@ -35,15 +34,13 @@ public class RacingGameController {
     }
 
     public void roundStart(Cars cars, RaceRound rounds){
-        racingGame = new RacingGame(cars, rounds);
+        RacingGame racingGame = new RacingGame(cars, rounds);
         OutputView.gameStart();
 
         racingGame.RoundsStart();
 
         //TODO : 게임 완료 후 진행상황 및 결과 출력
         List<RaceRound> gameResult = racingGame.getGameResult();
-        gameResult.forEach(round -> {
-            OutputView.roundResult(round.toStringRoundResult());
-        });
+        gameResult.forEach(round -> OutputView.roundResult(round.toStringRoundResult()));
     }
 }
