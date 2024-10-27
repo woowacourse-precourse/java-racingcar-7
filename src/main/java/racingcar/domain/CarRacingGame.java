@@ -20,10 +20,7 @@ public class CarRacingGame {
     }
 
     public boolean canPlay() {
-        if (cars.isEmpty()) {
-            return false;
-        }
-        return rounds != 0;
+        return rounds > 0;
     }
 
     public List<String> getWinners() {

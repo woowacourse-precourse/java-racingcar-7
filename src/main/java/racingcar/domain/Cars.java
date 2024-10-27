@@ -24,10 +24,6 @@ public class Cars {
         }
     }
 
-    public boolean isEmpty() {
-        return carList.isEmpty();
-    }
-
     public List<Integer> getPositions() {
         return carList.stream()
                 .map(Car::getPosition)
