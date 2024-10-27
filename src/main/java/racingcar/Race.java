@@ -21,6 +21,7 @@ public class Race {
             //레이스 마다 구분을 위해 띄어쓰기
             System.out.println();
         }
+        Winner.FindWinner(CarList);
     }
 
     // 0 ~ 9의 랜덤한 숫자 중 4 이상일 때 1칸 전진
