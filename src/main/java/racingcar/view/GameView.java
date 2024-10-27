@@ -22,4 +22,8 @@ public final class GameView {
     public void displayCarPosition(String carPosition) {
         System.out.println(carPosition);
     }
+
+    public void displayNewLine() {
+        System.out.println();
+    }
 }
