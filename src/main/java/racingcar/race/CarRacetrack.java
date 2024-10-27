@@ -7,7 +7,7 @@ import racingcar.io.CarOutputHandler;
 import racingcar.racer.car.Car;
 import racingcar.racer.car.CarFactory;
 
-public class CarRacetrack implements Racetrack{
+public class CarRacetrack implements Racetrack {
     CarInputHandler inputHandler = new CarInputHandler();
     CarOutputHandler outputHandler = new CarOutputHandler();
     RaceController raceController = new RaceController();

@@ -2,14 +2,14 @@ package racingcar.racer;
 
 public abstract class Racer {
     private final String name;
-    private String distance = ""    ;
+    private String distance = "";
 
     public Racer(String name) {
         this.name = name;
     }
 
     public void tryMove() {
-        if(canMove()){
+        if (canMove()) {
             distance += "-";
         }
     }

@@ -8,7 +8,8 @@ public class CarUtils extends RacerUtils {
     private static CarUtils instance;
 
     // 외부에서 생성자로 객체 생성 불가
-    private CarUtils() {}
+    private CarUtils() {
+    }
 
     public static CarUtils getInstance() {
         if (instance == null) {
