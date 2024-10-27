@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import org.junit.jupiter.api.Test;
-import racingcar.Message;
+import racingcar.global.Message;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
