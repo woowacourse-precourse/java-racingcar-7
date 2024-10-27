@@ -19,7 +19,6 @@ public class OutputView {
     }
 
     public void printWinners(int maxPosition, final List<Car> cars) {
-        // 최대 전진 자동차의 포지션(전진 횟수)을 통해 그외의 최대 전진 자동차 전부 찾기, 출력
         List<String> winners = cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
