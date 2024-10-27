@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
@@ -10,8 +12,25 @@ public class Application {
         return text;
     }
 
+    public static List<Car> createCarList(String text) {
+        List<Car> carList = new ArrayList<>();
+
+        for (String carName : text.split(",")) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+            carList.add(new Car(carName));
+        }
+
+        return carList;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String text = inputText();
+
+        List<Car> carList = new ArrayList<>();
+        carList = createCarList(text);
+        
     }
 }
