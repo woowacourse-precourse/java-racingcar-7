@@ -12,8 +12,14 @@
 
 #### 기능 목록
 - 입력, 출력
+    - Request, Response
 - Car 생성
+    - RacingCarController
 - Car 검증
+    - CarValidator
 - 경주 진행
+    - RacingController
 - 시도할 횟수 검증
+    - RacingValidator
 - 우승자 선정
+    - RacingController
