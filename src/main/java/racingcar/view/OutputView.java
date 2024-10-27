@@ -21,7 +21,7 @@ public class OutputView {
 
 	public void printRaceStatus(List<RaceResultResponse> raceResultResponses) {
 		raceResultResponses.forEach(raceResultResponse -> {
-			String result = raceResultResponse.name() + " : " + raceResultResponse.distance();
+			String result = raceResultResponse.name() + " : " + "-".repeat(raceResultResponse.distance());
 			System.out.println(result);
 		});
 	}
