@@ -14,12 +14,12 @@ public class Winner {
 
     public List<Car> determineWinners(List<Car> cars) {
         int topForwardCount = cars.stream()
-                .mapToInt(car -> car.forwardCount)
+                .mapToInt(car -> car.getForwardCount())
                 .max()
                 .orElse(0);
 
         return cars.stream()
-                .filter(car -> car.forwardCount == topForwardCount)
+                .filter(car -> car.getForwardCount() == topForwardCount)
                 .collect(Collectors.toList());
     }
 
