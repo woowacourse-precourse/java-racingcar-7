@@ -9,7 +9,7 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
-        moveCount = 0;
+        this.moveCount = 0;
     }
 
     public long getMoveCount() {
