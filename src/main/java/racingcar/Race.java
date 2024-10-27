@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 import java.util.Arrays;
@@ -12,6 +13,8 @@ public class Race {
         int raceRound = inputRaceRound(); // 자동차 race round를 입력받는다.
 
         List<Car> racingCars = createCarClassList(racingCarsName); // Car클래스 리스트를 생성한다.
+
+        startRaceRound(racingCars, raceRound); // race round를 진행한다.
     }
 
     public String inputCarName() {
@@ -39,5 +42,27 @@ public class Race {
         if (name.length() > 5 ) {
             throw new IllegalArgumentException("wrong input");
         }
+    }
+
+    public void startRaceRound(List<Car> racingCars, int raceRound) {
+        System.out.println("\n실행 결과");
+        for(int i = 0; i < raceRound; i++) {
+            playRace (racingCars);
+        }
+    }
+
+    public void playRace(List<Car> racingCars) {
+        for(Car car : racingCars) {
+            getRandomNumberPrintResult(car);
+        }
+        System.out.println();
+    }
+
+    public void getRandomNumberPrintResult(Car car) {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) {
+            car.score ++;
+        }
+        System.out.println(car.name+" : " + "-".repeat(car.score));
     }
 }
