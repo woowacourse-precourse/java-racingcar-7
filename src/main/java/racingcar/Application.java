@@ -1,6 +1,8 @@
 package racingcar;
 
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -37,8 +39,13 @@ public class Application {
 
         //횟수만큼 결과 반영 및 출력 반복
         int carNumber = nameList.length;
+
         String[] processResult = new String[carNumber];
         Arrays.fill(processResult, "");
+
+        int[] resultNum = new int[carNumber];
+        Arrays.fill(resultNum,0);
+
         public static int[] racingProcess () {
 
             int[] processNum = new int[carNumber];
@@ -51,6 +58,7 @@ public class Application {
             for (int i = 0; i < carNumber; i++) {
                 if (processNum[i] >= 4) {
                     processResult[i] += " -";
+                    resultNum[i]++;
                 }
             }
         }
@@ -63,5 +71,21 @@ public class Application {
             System.out.println();
         }
 
+        public static void winnerPrint() {
+            int maxNumber = resultNum[0];
+            for (int i : resultNum) {
+                if (i > maxNumber) {
+                    maxNumber = i;
+                }
+            }
+            List<String> result = new ArrayList<>();
+            for (int i : resultNum) {
+                if (i == maxNumber) {
+                    result.add(nameList[i]);
+                }
+            }
+
+            System.out.println("최종 우승자 : " + String.join(",",result));
+        }
     }
 }
