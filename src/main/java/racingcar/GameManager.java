@@ -30,10 +30,12 @@ public class GameManager {
     }
 
     private void game(){
+        System.out.println("실행 결과");
         for (Car car : cars) {
             if(canMove())
                 car.move();
             car.printCurrentDistance();
+            System.out.println();
         }
     }
 
