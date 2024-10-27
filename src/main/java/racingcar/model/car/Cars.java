@@ -31,7 +31,7 @@ public class Cars {
     }
 
     private void validateDuplicatedName(final List<Car> cars) {
-        Set<Car> expectedCarsList = new HashSet<>(cars);
+        final Set<Car> expectedCarsList = new HashSet<>(cars);
         if (expectedCarsList.size() != cars.size()) {
             throw new IllegalArgumentException(ErrorMessage.CONFLICT_ERROR.getMessage());
         }
