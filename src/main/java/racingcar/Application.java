@@ -58,5 +58,12 @@ public class Application {
             }
             System.out.println();
         }
+
+        // 최대로 전진되어 있는 자동차의 포지션(전진 횟수) 찾기
+        System.out.print(Message.WINNER.getMessage());
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
     }
 }
