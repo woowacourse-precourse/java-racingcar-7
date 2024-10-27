@@ -18,6 +18,10 @@ public class RaceCars {
         cars.forEach(car -> car.move(movement.isAbleToMove()));
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     private boolean hasInappropriateNumberOfCars(List<Car> cars) {
         return cars.size() < 2;
     }

@@ -51,4 +51,24 @@ class RaceCarsTest {
                 .hasMessageContaining(ErrorMessage.DUPLICATED_RACINGCAR.getMessage());
     }
 
+    @Test
+    @DisplayName("모든 자동차를 이동시킬 수 있다.")
+    void moveAllCars() {
+        //given
+        Name name1 = new Name("우테코");
+        Name name2 = new Name("박재연");
+        Car car = new Car(name1);
+        Car car2 = new Car(name2);
+        List<Car> cars = Arrays.asList(car, car2);
+        RaceCars raceCars = new RaceCars(cars);
+        List<Car> beforeMovement = raceCars.getCars();
+        Movement alwaysTrueMovement = () -> true;
+        //when
+        raceCars.moveAllCars(alwaysTrueMovement);
+        List<Car> afterMovement = raceCars.getCars();
+        //then
+        for (int i = 0; i < cars.size(); i++) {
+            Assertions.assertThat(afterMovement.get(i).hasBiggerPositionThan(beforeMovement.get(i))).isTrue();
+        }
+    }
 }
