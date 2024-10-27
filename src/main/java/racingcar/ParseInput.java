@@ -13,6 +13,10 @@ public class ParseInput {
             throw new IllegalArgumentException("데이터를 입력해주세요");
         }
 
+        if(raceMember.length >5) {
+            throw new IllegalArgumentException("대회 참여자는 5명까지만 받습니다");
+        }
+
         //이름 길이 검사
         for(String car : raceMember) {
             if(car.length() >5) {
