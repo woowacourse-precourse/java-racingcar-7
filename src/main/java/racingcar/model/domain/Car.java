@@ -39,8 +39,8 @@ public class Car {
         return this;
     }
 
-    private boolean canMove(int radomNumber) {
-        if (radomNumber < MINIMUM_MOVABLE_NUMBER) {
+    private boolean canMove(int number) {
+        if (number < MINIMUM_MOVABLE_NUMBER) {
             return false;
         }
         return true;

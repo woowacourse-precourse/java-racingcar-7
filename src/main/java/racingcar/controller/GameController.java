@@ -8,7 +8,7 @@ public class GameController {
     private GameController() {
     }
 
-    public static GameResult playRacingGame(int roundCnt, String carNames) {
-      return GameService.play(roundCnt,carNames);
+    public static GameResult playRacingGame(int roundCount, String carNames) {
+      return GameService.play(roundCount,carNames);
     }
 }

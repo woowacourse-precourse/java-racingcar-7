@@ -12,7 +12,7 @@ public class RoundResult {
     }
 
     public static RoundResult from(Cars cars) {
-        Map<String, Integer> carPositionsAtName = cars.getCarPositionsAtName();
+        Map<String, Integer> carPositionsAtName = cars.mapNamesToPositions();
         return new RoundResult(carPositionsAtName);
     }
 

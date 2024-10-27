@@ -68,7 +68,7 @@ public class Cars {
                 .orElse(0);
     }
 
-    public Map<String, Integer> getCarPositionsAtName() {
+    public Map<String, Integer> mapNamesToPositions() {
         return cars.stream()
                 .collect(Collectors.toMap(
                         Car::getName,

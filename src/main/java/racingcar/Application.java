@@ -13,10 +13,10 @@ public class Application {
     public static void main(String[] args) {
         try {
             String carNames = inputCarNames();
-            int gameCount = inputGameCount();
+            int roundCount = inputGameCount();
 
-            GameResult response = GameController.playRacingGame(gameCount, carNames);
-            OutputView.printResult(response);
+            GameResult responseDto = GameController.playRacingGame(roundCount, carNames);
+            OutputView.printResult(responseDto);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
