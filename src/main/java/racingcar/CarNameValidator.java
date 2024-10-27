@@ -17,12 +17,9 @@ public class CarNameValidator {
     }
 
     public void inputSameName(String carNames) {
-        String[] carNameArray = split(carNames);
         Set<String> set = new HashSet<>();
-        for (String carName : carNameArray) {
-            if(!set.add(carName)) {
-                throw new IllegalArgumentException("중복되지 않는 이름을 입력해주세요");
-            }
+        for (String carName : split(carNames)) {
+            checkSameName(carName, set);
         }
     }
 
@@ -38,12 +35,22 @@ public class CarNameValidator {
         }
     }
 
+    private void checkSameName(String carName, Set<String> set) {
+        if(isSameName(carName, set)) {
+            throw new IllegalArgumentException("중복되지 않는 이름을 입력해주세요");
+        }
+    }
+
     private boolean isCommaSeparated(String carNames) {
         return carNames.matches("^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$");
     }
 
     private boolean isMoreThanTwo(String[] carNameArray) {
         return carNameArray.length > 2;
+    }
+
+    private boolean isSameName(String carName, Set<String> set) {
+        return !set.add(carName);
     }
 
     private boolean isOverFiveCharacter(String carName) {
