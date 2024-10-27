@@ -16,7 +16,9 @@ public class InputService {
         String[] cars = input.split(",");
 
         for (String car : cars) {
-            if (car.length() > 5) throw new IllegalArgumentException("이름의 길이가 5자 초과입니다.");
+            if (car.length() > 5) {
+                throw new IllegalArgumentException("이름의 길이가 5자 초과입니다.");
+            }
         }
 
         return true;

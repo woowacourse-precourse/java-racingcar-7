@@ -25,7 +25,9 @@ public class GameService {
         String[] names = strings.split(",");
 
         for (String name : names) {
-            if (game.getCars().containsKey(name)) throw new IllegalArgumentException("중복된 이름입니다.");
+            if (game.getCars().containsKey(name)) {
+                throw new IllegalArgumentException("중복된 이름입니다.");
+            }
             game.getCars().put(name, 0);
         }
     }
