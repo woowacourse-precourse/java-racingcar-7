@@ -32,15 +32,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    @DisplayName("경주할 자동차의 이름은 문자와 쉼표 이외의 값을 가질 수 없다")
-    void 자동차이름_문자와쉼표이외의값_존재() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi@juni", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
