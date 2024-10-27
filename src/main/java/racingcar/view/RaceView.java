@@ -10,8 +10,7 @@ import java.util.regex.Pattern;
 import racingcar.domain.Car;
 
 public class RaceView {
-
-    public ArrayList<String> inputCarsName() {
+    public ArrayList<String> inputCarsName(String... testInput) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         // 테스트 코드 작동을 위해 가변인자 testInput 사용
@@ -25,9 +24,11 @@ public class RaceView {
 
         ArrayList<String> carNames = new ArrayList<>();
 
-        StringTokenizer st = new StringTokenizer(input, ",");
-        while (st.hasMoreTokens()) {
-            String token = st.nextToken();
+        String[] tokens = input.split(",", -1);
+
+        for (String token : tokens) {
+            token = token.trim();
+
             if (!token.isEmpty() && token.length() <= 5 && validateNameToken(token)) {
                 carNames.add(token);
             } else {
