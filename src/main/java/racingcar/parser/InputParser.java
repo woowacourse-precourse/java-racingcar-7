@@ -20,6 +20,7 @@ public class InputParser {
     }
 
     public static TryNumberRequest parseTryNumber(String tryNumber) {
+        InputValidator.isTryNumberNull(tryNumber);
 
         return TryNumberRequest.of(InputValidator.isTryNumberNotInt(tryNumber));
     }

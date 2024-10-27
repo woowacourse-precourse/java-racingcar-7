@@ -21,12 +21,17 @@ public class InputValidator {
         });
     }
 
+    public static void isTryNumberNull(String tryNumber) {
+        if(tryNumber.isBlank()) {
+            throw new TryNumberException(ErrorMessage.TRY_NUMBER_IS_NULL_ERROR.getMessage());
+        }
+    }
+
     public static int isTryNumberNotInt(String tryNumber) {
         try{
             return Integer.parseInt(tryNumber);
         } catch (NumberFormatException e) {
-            throw new TryNumberException(ErrorMessage.TRY_NUMBER_IS_NOT_INT.getMessage());
+            throw new TryNumberException(ErrorMessage.TRY_NUMBER_IS_NOT_INT_ERROR.getMessage());
         }
     }
-
 }
