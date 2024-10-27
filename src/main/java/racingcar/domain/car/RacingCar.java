@@ -9,6 +9,6 @@ public class RacingCar {
 
     // TODO : 이름 반환
     public String getName() {
-        return null;
+        return name;
     }
 }
