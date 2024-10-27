@@ -5,19 +5,31 @@ import racingcar.car.Car;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class WinnerManager {
 
     public List<String> whoWin(Set<Car> cars) {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
+        List<String> winners = new ArrayList<>();
+        int maxPosition = 0;
 
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .collect(Collectors.toList());
+        for (Car car : cars) {
+            maxPosition = updateWinners(car, winners, maxPosition);
+        }
+
+        return winners;
+    }
+
+    private int updateWinners(Car car, List<String> winners, int maxPosition) {
+        if (car.getPosition() > maxPosition) {
+            winners.clear();
+            winners.add(car.getName());
+            return car.getPosition();
+        }
+
+        if (car.getPosition() == maxPosition) {
+            winners.add(car.getName());
+        }
+
+        return maxPosition;
     }
 }
