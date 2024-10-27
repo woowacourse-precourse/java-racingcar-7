@@ -1,6 +1,5 @@
 package racingcar.dto.response;
 
-import org.junit.platform.commons.util.StringUtils;
 import racingcar.domain.Car;
 import racingcar.domain.CarName;
 
