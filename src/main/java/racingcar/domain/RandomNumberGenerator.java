@@ -7,11 +7,15 @@ public class RandomNumberGenerator implements NumberGenerator{
 
     private static RandomNumberGenerator randomGenerator;
 
-    public static RandomNumberGenerator RandomNumberGenerator() {
+    public static RandomNumberGenerator randomNumberGenerator() {
         if (randomGenerator == null) {
             randomGenerator = new RandomNumberGenerator();
         }
         return randomGenerator;
+    }
+
+    private RandomNumberGenerator() {
+
     }
 
     @Override

@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,5 +18,11 @@ public class Cars {
         return cars.size();
     }
 
+    public Set<Car> getCars() {
+        return new HashSet<>(cars);
+    }
 
+    public void tryMove(NumberGenerator numberGenerator) {
+        cars.forEach(car -> car.move(numberGenerator.generateNumber()));
+    }
 }
