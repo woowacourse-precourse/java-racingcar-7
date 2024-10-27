@@ -29,7 +29,7 @@ public class OutputView {
     }
 
     public void printFinalResult(List<String> result) {
-        System.out.print(IOMessages.RESULT_HEADER.getMsg());
+        System.out.print(IOMessages.PRE_RESULT.getMsg());
         String finalWinners = result.toString();
         System.out.println(removeBracket(finalWinners));
     }
