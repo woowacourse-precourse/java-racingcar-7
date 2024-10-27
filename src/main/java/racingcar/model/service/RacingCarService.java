@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.model.service;
 
 public class RacingCarService {
 }
