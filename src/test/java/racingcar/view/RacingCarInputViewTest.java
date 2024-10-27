@@ -40,6 +40,17 @@ class RacingCarInputViewTest extends InputTest {
     }
 
     @Test
+    @DisplayName("inputCarNames는 중복된 이름이 있는 입력에 대해 IllegalArgumentException을 던진다.")
+    void inputCarNames_WhenInputDuplicatedName_ThrowIllegalArgumentException() {
+        // given
+        presetInput("a,bbb,ccccc,bbb");
+
+        // when & then
+        Assertions.assertThatThrownBy(RacingCarInputView::inputCarNames)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("inputTryCount는 Integer형으로 변환할 수 없는 수를 입력하면 IllegalArgumentException을 던진다.")
     void inputTryCount_WhenInputCantParseInteger_ThrowIllegalArgumentException() {
         // given

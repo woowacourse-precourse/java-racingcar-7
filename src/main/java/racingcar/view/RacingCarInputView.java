@@ -2,7 +2,9 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import racingcar.exception.DuplicatedElementException;
 import racingcar.exception.NonPositiveNumberException;
 
 public class RacingCarInputView {
@@ -14,6 +16,11 @@ public class RacingCarInputView {
         String input = Console.readLine();
 
         carNames = Arrays.stream(input.split(",")).toList();
+        try {
+            Validator.validateDuplicated(carNames);
+        } catch (DuplicatedElementException e) {
+            throw new IllegalArgumentException("중복되지 않은 이름으로 입력해주세요.");
+        }
 
         return carNames;
     }
@@ -35,6 +42,12 @@ public class RacingCarInputView {
     }
 
     private static class Validator {
+
+        private static void validateDuplicated(List<String> list) {
+            if (list.size() != new HashSet<>(list).size()) {
+                throw new DuplicatedElementException();
+            }
+        }
 
         private static void validatePositiveNumber(int number) {
             if (number <= 0) {
