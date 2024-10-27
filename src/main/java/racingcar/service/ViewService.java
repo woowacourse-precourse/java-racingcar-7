@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import racingcar.controller.ViewController;
 import racingcar.util.Utils;
 
 public class ViewService {
@@ -23,6 +22,9 @@ public class ViewService {
 
     public int countValidation(String count){
         int countNum = Integer.parseInt(count);
+        if(countNum < 1){
+            throw new IllegalArgumentException();
+        }
         return countNum;
     }
 }
