@@ -23,7 +23,7 @@ public class RacingGameController {
         this.raceService = raceService;
     }
 
-    public void startGame() {
+    public void run() {
         String inputNames = inputView.getCarName();
         List<String> carNames = carNameSplitter.splitCarNames(inputNames);
 

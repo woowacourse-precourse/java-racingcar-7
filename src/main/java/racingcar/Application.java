@@ -12,6 +12,11 @@ import util.validator.CarNameValidatorImpl;
 import util.validator.RaceCountValidatorImpl;
 
 public class Application {
+    private RacingGameController racingGameController;
+    public Application(RacingGameController racingGameController) {
+        this.racingGameController = racingGameController;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         CarNameValidator carNameValidator = new CarNameValidatorImpl();
@@ -22,6 +27,6 @@ public class Application {
         RandomNumberHandler randomNumberHandler = new RandomNumberHandler();
         RacingGameService raceService = new RacingGameService(randomNumberHandler, outputView);
         RacingGameController controller = new RacingGameController(inputView, outputView, carNameSplitter, raceService);
-        controller.startGame();
+        controller.run();
     }
 }
