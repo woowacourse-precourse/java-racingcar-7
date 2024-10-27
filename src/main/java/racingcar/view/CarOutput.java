@@ -24,7 +24,7 @@ public class CarOutput {
 
     public static void outputWinnersName(List<Car> winners) {
         final String winnersString = joinWinners(winners);
-        System.out.println(winnersString);
+        System.out.println("최종 우승자 : " + winnersString);
     }
 
     private static String visualizePosition(int position) {
