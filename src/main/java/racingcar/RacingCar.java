@@ -63,9 +63,9 @@ public class RacingCar {
     }
 
     public static void checkInputException(String input_names, String input_times) {
-        // input_names 스트링을 반점 기준으로 나눴을때 빈 스트링이 없는지 체크
-        if(input_names == null || !Arrays.stream(input_names.split(","))
-                                        .allMatch(name -> name.length() > 0 && name.length() <= 5)){
+        // input_names 스트링을 반점 기준으로 나눴을때 빈 스트링이 없는지, 스트링 길이가 5 이하인지 체크
+        if(input_names == null || !Arrays.stream(input_names.split(",",-1))
+                                        .allMatch(name -> !name.isEmpty() && name.length() <= 5)){
             throw new IllegalArgumentException();
         }
         // input_times 스트링이 양의 정수로 변환가능한지 체크
