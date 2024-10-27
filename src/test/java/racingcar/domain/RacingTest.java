@@ -13,7 +13,7 @@ class RacingTest {
 
     private static final NumberSupplier ALWAYS_MOVE_NUMBER_SUPPLIER = () -> 9;
     private static final List<Car> ALWAYS_MOVING_CARS =
-            List.of(new Car("one", ALWAYS_MOVE_NUMBER_SUPPLIER), new Car("two", ALWAYS_MOVE_NUMBER_SUPPLIER));
+            List.of(new Car(ALWAYS_MOVE_NUMBER_SUPPLIER, "one"), new Car(ALWAYS_MOVE_NUMBER_SUPPLIER, "two"));
 
     @Test
     void validateTest_whenCarNotExist_throwException() {
@@ -37,7 +37,7 @@ class RacingTest {
 
     @Test
     void findWinnerTest_whenHasSingleWinner() {
-        Racing racing = new Racing(List.of(createMovedCar("one", 1), createMovedCar("two", 2)));
+        Racing racing = new Racing(List.of(new Car("one", 1), new Car("two", 2)));
         List<String> expected = List.of("two");
 
         List<String> actual = racing.findWinner();
@@ -47,20 +47,11 @@ class RacingTest {
 
     @Test
     void findWinnerTest_whenHasMultiWinner() {
-        Racing racing = new Racing(List.of(
-                createMovedCar("one", 1), createMovedCar("two1", 2), createMovedCar("two2", 2)));
+        Racing racing = new Racing(List.of(new Car("one", 1), new Car("two1", 2), new Car("two2", 2)));
         List<String> expected = List.of("two1", "two2");
 
         List<String> actual = racing.findWinner();
 
         assertThat(actual).isEqualTo(expected);
-    }
-
-    private Car createMovedCar(String name, int position) {
-        Car car = new Car(name, ALWAYS_MOVE_NUMBER_SUPPLIER);
-        for (int i = 0; i < position; i++) {
-            car.move();
-        }
-        return car;
     }
 }

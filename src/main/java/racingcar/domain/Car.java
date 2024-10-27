@@ -3,6 +3,7 @@ package racingcar.domain;
 
 public class Car {
 
+    private static final RandomNumberSupplier DEFAULT_NUMBER_SUPPLIER = new RandomNumberSupplier();
     private static final int INITIAL_POSITION = 0;
     private static final int MOVE_FORWARD_BOUND = 4;
 
@@ -10,16 +11,24 @@ public class Car {
     private final String name;
     private int position;
 
-    public Car(String name, NumberSupplier numberSupplier) {
+    private Car(NumberSupplier numberSupplier, String name, int position) {
         validate(name);
 
         this.numberSupplier = numberSupplier;
         this.name = name;
-        this.position = INITIAL_POSITION;
+        this.position = position;
     }
 
     public Car(String name) {
-        this(name, new RandomNumberSupplier());
+        this(DEFAULT_NUMBER_SUPPLIER, name, INITIAL_POSITION);
+    }
+
+    public Car(NumberSupplier numberSupplier, String name) {
+        this(numberSupplier, name, INITIAL_POSITION);
+    }
+
+    public Car(String name, int position) {
+        this(DEFAULT_NUMBER_SUPPLIER, name, position);
     }
 
     private void validate(String name) {

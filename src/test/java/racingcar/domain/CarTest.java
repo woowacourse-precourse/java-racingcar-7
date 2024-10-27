@@ -32,7 +32,7 @@ class CarTest {
     @ValueSource(ints = {4, 9})
     void moveTest_whenSuppliedNumberIsOverBound_moveForward(int overBoundNumber) {
         NumberSupplier overBoundSupplier = () -> overBoundNumber;
-        Car car = new Car(DEFAULT_NAME, overBoundSupplier);
+        Car car = new Car(overBoundSupplier, DEFAULT_NAME);
         int expectedPosition = car.getPosition() + 1;
 
         car.move();
@@ -43,8 +43,8 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 3})
     void moveTest_whenSuppliedNumberIsUnderBound_stop(int underBoundNumber) {
-        NumberSupplier overBoundSupplier = () -> underBoundNumber;
-        Car car = new Car(DEFAULT_NAME, overBoundSupplier);
+        NumberSupplier underBoundSupplier = () -> underBoundNumber;
+        Car car = new Car(underBoundSupplier, DEFAULT_NAME);
         int expectedPosition = car.getPosition();
 
         car.move();
