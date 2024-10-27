@@ -3,6 +3,8 @@ package racingcar.model;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import racingcar.model.car.Car;
+
 public class ProgressResultGenerator {
 
 	private static final String CAR_MOVEMENT_SYMBOL = "-";

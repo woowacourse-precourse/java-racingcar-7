@@ -2,6 +2,8 @@ package racingcar.model;
 
 import java.util.List;
 
+import racingcar.model.car.Car;
+
 public class WinnerDeterminer {
 
 	private static final int MIN_MOVEMENT_VALUE = 0;
