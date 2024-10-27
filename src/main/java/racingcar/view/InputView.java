@@ -11,6 +11,8 @@ public class InputView {
         System.out.println(OutputMessage.ENTER_CAR_NAMES);
         String input = Console.readLine();
 
+        ValidationService.validateCarNamesInput(input);
+
         List<String> carNames = Arrays.stream(input.split(","))
                 .map(String::trim)
                 .toList();
