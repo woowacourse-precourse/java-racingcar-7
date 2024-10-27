@@ -29,18 +29,18 @@ public class GameController {
 
     private void extractCarNames() {
         final String input = InputMessage.inputCarNames();
-        validation.isInvalidInput(input);
-        carHandler.createCar(input);
+        validation.validateInput(input);
+        carHandler.createCars(input);
     }
 
     private void attemptGame() {
-        final int num = InputMessage.inputGamesAttempts();
-        validation.isInvalidGameTryCount(num);
+        final int num = InputMessage.inputGameAttempts();
+        validation.validateGameTryCount(num);
         carHandler.executeRounds(num);
     }
 
     private void resultWinnerList() {
-        final String carNames = carHandler.resultWinnerList();
+        final String carNames = carHandler.getWinnerNames();
         OutputMessage.executeResultMessage(carNames);
     }
 

@@ -16,15 +16,15 @@ public class CarHandler {
     private final List<Car> cars = new ArrayList<>();
     private final Validation validation = new Validation();
 
-    public void createCar(String input) {
+    public void createCars(String input) {
         Set<String> distinctCarsName = new HashSet<>();
         String[] carNames = input.split(COMMA);
 
         for (String car : carNames) {
             car = car.trim();
-            validation.isInvalidInput(car);
-            validation.isInvalidNameLength(car);
-            validation.isDuplicateCarName(car, distinctCarsName);
+            validation.validateInput(car);
+            validation.validateNameLength(car);
+            validation.validateDuplicateCarName(car, distinctCarsName);
 
             this.cars.add(new Car(car));
         }
@@ -41,12 +41,12 @@ public class CarHandler {
         for (Car car : cars) {
             car.moveCar();
             int carMoveCount = car.getMoveCount();
-            OutputMessage.resultHyphenMessage(car.getName(), carMoveCount);
+            OutputMessage.printHyphenMessage(car.getName(), carMoveCount);
         }
         System.out.println();
     }
 
-    public String resultWinnerList() { // 이동된 메서드
+    public String getWinnerNames() { // 이동된 메서드
         return getWinnerList().stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(COMMA));
@@ -54,7 +54,7 @@ public class CarHandler {
 
     private List<Car> getWinnerList() {
         return cars.stream()
-                .filter(car -> car.isSameMoveCount(getWinnerMoveCount()))
+                .filter(car -> car.hasSameMoveCount(getWinnerMoveCount()))
                 .collect(Collectors.toList());
     }
 

@@ -9,7 +9,7 @@ public class InputMessage {
         return Console.readLine();
     }
 
-    public static int inputGamesAttempts() {
+    public static int inputGameAttempts() {
         System.out.println(MessageType.REQUEST_INPUT_TRY_GAME_NUM.getMessage());
         return Integer.parseInt(Console.readLine());
     }

@@ -22,7 +22,7 @@ public class Car {
         }
     }
 
-    public boolean isSameMoveCount(int moveCount) {
+    public boolean hasSameMoveCount(int moveCount) {
         return this.getMoveCount() == moveCount;
     }
 

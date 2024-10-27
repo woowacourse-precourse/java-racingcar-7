@@ -12,7 +12,7 @@ public class OutputMessage {
         System.out.println(MessageType.RESPONSE_RESULT.getMessage());
     }
 
-    public static void resultHyphenMessage(String carName, int carMoveCount) {
+    public static void printHyphenMessage(String carName, int carMoveCount) {
         System.out.println(carName + " : " + HYPHEN.repeat(carMoveCount));
     }
 }
