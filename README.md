@@ -59,3 +59,4 @@
 - [ ] moveCar 메소드 구현
 - [ ] setup 메소드 구현
 - [ ] show 메소드 구현
+- [ ] getCars 메소드 구현
