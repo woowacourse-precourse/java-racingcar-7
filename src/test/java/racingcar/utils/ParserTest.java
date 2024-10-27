@@ -28,4 +28,20 @@ class ParserTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void parseCarList_empty_carList_exception() {
+        String cars = "";
+
+        assertThatThrownBy(() -> Parser.parseCarList(cars))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void parseCarList_single_carList_exception() {
+        String cars = "pobi";
+
+        assertThatThrownBy(() -> Parser.parseCarList(cars))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
