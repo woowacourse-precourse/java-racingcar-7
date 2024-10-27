@@ -10,44 +10,39 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RaceController {
-    private final CarNameValidator carNameValidator = new CarNameValidator();
-    private final TrialCountsValidator trialCountsValidator = new TrialCountsValidator();
-    private final OutputView outputView;
-
-    public RaceController(OutputView outputView) {
-        this.outputView = outputView;
-    }
 
     public void start() {
-        Cars cars = initializeCars();
-        TrialCounts trialCounts = initializeTrialCounts();
-        Race race = new Race(cars, trialCounts);
-        Winner winner = runRace(cars, race);
+        final Cars cars = initializeCars();
+        final TrialCounts trialCounts = initializeTrialCounts();
+        final Race race = new Race(cars, trialCounts);
+        final Winner winner = runRace(cars, race);
 
         endRace(winner);
     }
 
     private Cars initializeCars() {
         String carNames = InputView.inputCarNames();
+        final CarNameValidator carNameValidator = new CarNameValidator();
         return new Cars(carNames, carNameValidator);
     }
 
     private TrialCounts initializeTrialCounts() {
         String counts = InputView.inputTrialCounts();
+        final TrialCountsValidator trialCountsValidator = new TrialCountsValidator();
         return new TrialCounts(counts, trialCountsValidator);
     }
 
     private Winner runRace(Cars cars, Race race) {
-        outputView.executionResultMessage();
+        OutputView.executionResultMessage();
         while (race.getRaceStatus()) {
             race.startRace();
-            outputView.currentStatusMessage(cars);
+            OutputView.currentStatusMessage(cars);
         }
         return new Winner(cars);
     }
 
     private void endRace(Winner winner) {
-        outputView.finalWinnerMessage(winner.getWinners());
+        OutputView.finalWinnerMessage(winner.getWinners());
     }
 }
 
