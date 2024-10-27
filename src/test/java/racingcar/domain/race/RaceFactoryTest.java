@@ -25,5 +25,4 @@ class RaceFactoryTest {
         //then
         Assertions.assertThat(result).isNotNull();
     }
-
 }

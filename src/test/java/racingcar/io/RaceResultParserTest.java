@@ -9,33 +9,6 @@ import racingcar.dto.RaceResult;
 
 class RaceResultParserTest {
 
-    private static RaceResult getRaceResult() {
-        List<CarStatus> lap1Status = List.of(
-                CarStatus.of("a", 1),
-                CarStatus.of("b", 0),
-                CarStatus.of("c", 1)
-        );
-        List<CarStatus> lap2Status = List.of(
-                CarStatus.of("a", 2),
-                CarStatus.of("b", 1),
-                CarStatus.of("c", 1)
-        );
-        List<CarStatus> lap3Status = List.of(
-                CarStatus.of("a", 3),
-                CarStatus.of("b", 2),
-                CarStatus.of("c", 1)
-        );
-        List<CarStatus> winners = List.of(
-                CarStatus.of("a", 3)
-        );
-        List<LapResult> lapResults = List.of(
-                LapResult.fromCarStatuses(1, lap1Status),
-                LapResult.fromCarStatuses(2, lap2Status),
-                LapResult.fromCarStatuses(3, lap3Status)
-        );
-        return RaceResult.of(lapResults, winners);
-    }
-
     @Test
     void RaceResult객체를_문자열로_파싱한다() {
         //given
@@ -63,5 +36,32 @@ class RaceResultParserTest {
                         c : -
                         
                         최종 우승자 : a""");
+    }
+
+    private static RaceResult getRaceResult() {
+        List<CarStatus> lap1Status = List.of(
+                CarStatus.of("a", 1),
+                CarStatus.of("b", 0),
+                CarStatus.of("c", 1)
+        );
+        List<CarStatus> lap2Status = List.of(
+                CarStatus.of("a", 2),
+                CarStatus.of("b", 1),
+                CarStatus.of("c", 1)
+        );
+        List<CarStatus> lap3Status = List.of(
+                CarStatus.of("a", 3),
+                CarStatus.of("b", 2),
+                CarStatus.of("c", 1)
+        );
+        List<CarStatus> winners = List.of(
+                CarStatus.of("a", 3)
+        );
+        List<LapResult> lapResults = List.of(
+                LapResult.fromCarStatuses(1, lap1Status),
+                LapResult.fromCarStatuses(2, lap2Status),
+                LapResult.fromCarStatuses(3, lap3Status)
+        );
+        return RaceResult.of(lapResults, winners);
     }
 }

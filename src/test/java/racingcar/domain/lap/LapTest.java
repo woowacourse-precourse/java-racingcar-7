@@ -32,5 +32,4 @@ class LapTest {
                 CarStatus.of("자동차 3", 1)
         );
     }
-
 }
