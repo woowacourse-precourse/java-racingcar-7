@@ -22,7 +22,7 @@ public class GameController {
         List<Car> cars = carNames.stream().map(Car::new).toList();
         int roundCount = inputView.readRoundCount();
 
-        System.out.println("/n실행 결과");
+        System.out.println("\n실행 결과");
         for(int round = 0; round < roundCount; round++) {
             playRound(cars);
             System.out.println();
