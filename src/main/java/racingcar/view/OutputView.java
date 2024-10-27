@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.List;
 import racingcar.model.Car;
 
 public class OutputView {
@@ -15,5 +16,9 @@ public class OutputView {
 
     public void printEndOfOneRace() {
         System.out.println();
+    }
+
+    public void printWinnerNames(List<String> winnerNames) {
+        System.out.print("최종 우승자 : " + String.join(", ", winnerNames));
     }
 }
