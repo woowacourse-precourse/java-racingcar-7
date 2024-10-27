@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import utils.RandomNumber;
+import racingcar.utils.RandomNumber;
 
 import java.util.List;
 import java.util.stream.Collectors;

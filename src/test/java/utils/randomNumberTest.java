@@ -1,8 +1,8 @@
 package utils;
 
 
-import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.*;
+import racingcar.utils.RandomNumber;
 
 class randomNumberTest {
     @DisplayName("랜덤한 숫자를 벗어나는지 체크")
