@@ -5,14 +5,10 @@ import racingcar.util.ExceptionMessage;
 
 public abstract class Validator {
     private static final Pattern NUMBER_REGEX = Pattern.compile("^[0-9]*$");
-    private static final int MIN_RANGE = 3;
-    private static final int MAX_RANGE = 20;
+    private static final int MIN_TRIAL_RANGE = 3;
+    private static final int MAX_TRIAL_RANGE = 20;
 
     abstract void validate(String input) throws IllegalArgumentException;
-
-    static String removeSpace(String input) {
-        return input.replace(" ", "");
-    }
 
     void validateNumeric(String input) {
         if (!NUMBER_REGEX.matcher(input).matches()) {
@@ -33,7 +29,7 @@ public abstract class Validator {
 
     void validateNumberRange(String input) {
         int number = Integer.parseInt(input);
-        if (number < MIN_RANGE || number > MAX_RANGE) {
+        if (number < MIN_TRIAL_RANGE || number > MAX_TRIAL_RANGE) {
             throw new IllegalArgumentException();
         }
     }

@@ -42,7 +42,7 @@ class CarNameValidatorTest {
     @Nested
     class validInputTest {
         @ParameterizedTest
-        @ValueSource(strings = {"버피,버핑,우테코"})
+        @ValueSource(strings = {"버피     ,버핑     ,우테코"})
         void 정상_입력(String input) {
             assertThatCode(() -> validator.validate(input))
                     .doesNotThrowAnyException();
