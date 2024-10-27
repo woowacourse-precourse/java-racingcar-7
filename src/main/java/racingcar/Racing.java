@@ -16,13 +16,15 @@ public class Racing {
     public void race(int repeat) {
         System.out.println("실행 결과");
         for (int i = 0; i < repeat; i++) {
-            for (Car car : carList) {
-                car.move();
-            }
+            runRound();
             OutputView.printDistance(carList);
         }
         List<Car> winner = getWinner();
         OutputView.printWinner(winner);
+    }
+
+    public void runRound() {
+        carList.forEach(Car::move);
     }
 
     public int calcMaxDistance() {
