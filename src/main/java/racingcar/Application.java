@@ -7,6 +7,7 @@ public class Application {
         // TODO: 프로그램 구현
         try {
             List<Car> cars = initializeCars();
+            int moveCount = initializeMoveCount();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -25,6 +26,14 @@ public class Application {
             cars.add(new Car(name.trim()));
         }
         return cars;
+    }
+    private static int initializeMoveCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
+        }
     }
 }
 
