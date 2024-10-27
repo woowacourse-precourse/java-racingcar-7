@@ -23,7 +23,6 @@ class CarRacingControllerTest {
         assertThat(carNames1).contains("pobi", "woni", "jun");
         assertThat(carNames2.size()).isEqualTo(3);
         assertThat(carNames2).contains("pobi", "woni", "jun.");
-
     }
 
     @Test
@@ -94,7 +93,6 @@ class CarRacingControllerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 5자 이하이어야 합니다: ohmygod")
                 .hasMessageNotContaining("woni");
-
     }
 
     @Test
@@ -111,7 +109,49 @@ class CarRacingControllerTest {
         assertThatThrownBy(() -> carRacingController.validateCarNameInput(carNameInput2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
-
     }
 
+    @Test
+    void 시도횟수_입력이_공백이면_예외처리() {
+        // given
+        String roundInput1 = " ";
+        String roundInput2 = "";
+        CarRacingController carRacingController = new CarRacingController();
+
+        // when, then
+        assertThatThrownBy(() -> carRacingController.validateTotalRoundInput(roundInput1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수를 공백 없이 자연수로 입력해주세요.");
+        assertThatThrownBy(() -> carRacingController.validateTotalRoundInput(roundInput2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수를 공백 없이 자연수로 입력해주세요.");
+    }
+
+    @Test
+    void 시도횟수_숫자사이에_공백_포함하면_예외처리() {
+        // given
+        String roundInput = "1 0 5";
+        CarRacingController carRacingController = new CarRacingController();
+
+        // when
+        assertThatThrownBy(() -> carRacingController.validateTotalRoundInput(roundInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 공백 없는 하나의 자연수만 가능합니다.");
+    }
+
+    @Test
+    void 시도횟수가_0이거나_음수이면_예외처리() {
+        // given
+        String roundInput1 = "0";
+        String roundInput2 = "-2";
+        CarRacingController carRacingController = new CarRacingController();
+
+        // when, then
+        assertThatThrownBy(() -> carRacingController.validateTotalRoundInput(roundInput1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 0보다 큰 자연수만 가능합니다.");
+        assertThatThrownBy(() -> carRacingController.validateTotalRoundInput(roundInput2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 0보다 큰 자연수만 가능합니다.");
+    }
 }
