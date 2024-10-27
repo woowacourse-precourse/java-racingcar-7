@@ -20,8 +20,9 @@ public class Race {
                 .toList();
     }
 
-    public void moveAll() {
+    public List<Car> moveAll() {
         cars.forEach(Car::move);
+        return cars;
     }
 
     public List<Car> findWinners() {
