@@ -34,6 +34,22 @@ class UserTest {
     }
 
     @Test
+    void 유저_중복_자동차이름_입력() {
+        String input = "test1, test2, test3, test3";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        List<String> ansResult = new ArrayList<>();
+        ansResult.add("test1");
+        ansResult.add("test2");
+        ansResult.add("test3");
+
+        List<String> result = User.inputCarNames();
+
+        Assertions.assertThat(result).isEqualTo(ansResult);
+    }
+
+    @Test
     void 유저_게임횟수_입력() {
         String input = "5";
 
