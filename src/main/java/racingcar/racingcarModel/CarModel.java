@@ -22,7 +22,7 @@ public class CarModel {
     }
 
     // 랜덤값에 따라 전진 여부를 결정하는 메서드
-    public int isForward (int currentValue) {
+    public int isForward(int currentValue) {
 
         int i = Randoms.pickNumberInRange(0, 9);
 
@@ -33,7 +33,7 @@ public class CarModel {
     }
 
     // 맵 내 최대 value를 구하는 메서드
-    public int maxValue (LinkedHashMap<String, Integer> carInfo) {
+    public int maxValue(LinkedHashMap<String, Integer> carInfo) {
         int maxValue = 0;
 
         for (HashMap.Entry<String, Integer> entry : carInfo.entrySet()) {
@@ -45,7 +45,7 @@ public class CarModel {
     }
 
     // 맵 내 최대 value를 지닌 값의 key를 구해서 String으로 합하는 메서드
-    public String winnerCar (LinkedHashMap<String, Integer> carInfo, int maxValue) {
+    public String winnerCar(LinkedHashMap<String, Integer> carInfo, int maxValue) {
         StringBuilder winner = new StringBuilder();
 
         for (HashMap.Entry<String, Integer> entry : carInfo.entrySet()) {
@@ -58,7 +58,7 @@ public class CarModel {
     }
 
     // 승자가 두 명 이상이면 사이에 콤마를 붙여주는 메서드
-    public void appendWinner (StringBuilder winner, String key) {
+    public void appendWinner(StringBuilder winner, String key) {
         if (winner.length() > 0) {
             winner.append(", ");
         }

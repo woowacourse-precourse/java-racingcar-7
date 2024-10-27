@@ -1,6 +1,5 @@
 package racingcar.racingcarView;
 
-
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Map.Entry;
 
@@ -24,9 +23,8 @@ public class CarView {
     }
 
     public void printResults(Entry<String, Integer> entry) {
-        System.out.println(entry.getKey()+ " : " + "-".repeat(entry.getValue()) );
+        System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
     }
-
 
 
     public void printWinners(String winner) {

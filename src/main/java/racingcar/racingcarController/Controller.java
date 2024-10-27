@@ -2,6 +2,7 @@ package racingcar.racingcarController;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 import racingcar.racingcarModel.CarModel;
 import racingcar.racingcarModel.ExceptionModel;
 import racingcar.racingcarView.CarView;
@@ -50,13 +51,11 @@ public class Controller {
         }
 
         int maxValue = carModel.maxValue(carInfo);
-        String winner = carModel.winnerCar(carInfo,maxValue);
+        String winner = carModel.winnerCar(carInfo, maxValue);
         carView.printWinners(winner);
 
 
-
     }
-
 
 
 }

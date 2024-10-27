@@ -7,9 +7,9 @@ public class ExceptionModel {
 
     //
     public void executeExceptionalHandling(Runnable runnable) {
-        try{
+        try {
             runnable.run();
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw e;
         }
     }
@@ -22,7 +22,7 @@ public class ExceptionModel {
 
     //자동차 입력 공백 확인
     public void emptyCarName(String nameInput) {
-        if (nameInput == null || nameInput.isEmpty()||nameInput.isBlank()) {
+        if (nameInput == null || nameInput.isEmpty() || nameInput.isBlank()) {
             throw new IllegalArgumentException();
         }
     }
@@ -30,7 +30,7 @@ public class ExceptionModel {
     //자동차 입력 배열 내 공백 확인
     public void emptyCarNames(String nameInput) {
         for (String carName : carNames(nameInput)) {
-            if (carName == null || carName.isEmpty()||carName.isBlank()) {
+            if (carName == null || carName.isEmpty() || carName.isBlank()) {
                 throw new IllegalArgumentException();
             }
         }
@@ -46,7 +46,7 @@ public class ExceptionModel {
     }
 
     // 중복된 자동차 이름이 있을 경우
-    public void uniqueCarNames(String nameInput){
+    public void uniqueCarNames(String nameInput) {
         Set<String> uniqueNames = new HashSet<>();
         for (String name : carNames(nameInput)) {
             if (!uniqueNames.add(name)) {
@@ -57,7 +57,7 @@ public class ExceptionModel {
 
     // 경기 시행 횟수가 입력되지 않은 경우
     public void emptyTryInput(String tryInput) {
-        if (tryInput == null || tryInput.isEmpty()||tryInput.isBlank()) {
+        if (tryInput == null || tryInput.isEmpty() || tryInput.isBlank()) {
             throw new IllegalArgumentException();
         }
     }
@@ -74,6 +74,7 @@ public class ExceptionModel {
             throw new IllegalArgumentException();
         }
     }
+
     // 입력된 값이 숫자가 아닐 경우
     public void isNumberTryInput(String tryInput) {
         try {
