@@ -49,14 +49,16 @@ public class CarHandler {
     }
 
     public List<Car> getWinnerList() {
-        int winnerMoveCount = cars.stream()
+        return cars.stream()
+                .filter(car -> car.isSameMoveCount(getWinnerMoveCount()))
+                .collect(Collectors.toList());
+    }
+
+    private int getWinnerMoveCount() {
+        return cars.stream()
                 .mapToInt(Car::getMoveCount)
                 .max()
                 .orElse(0);
-
-        return cars.stream()
-                .filter(car -> car.isSameMoveCount(winnerMoveCount))
-                .collect(Collectors.toList());
     }
 
 }
