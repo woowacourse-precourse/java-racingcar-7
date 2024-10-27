@@ -8,7 +8,7 @@ public class InputView {
 
     }
 
-    public static String getInputRacersName() {
+    public static String getInputCarsName() {
         String userInput = Console.readLine();
         validateUserInput(userInput);
         return userInput;

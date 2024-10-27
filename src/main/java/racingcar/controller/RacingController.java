@@ -13,8 +13,8 @@ public class RacingController {
     }
 
     private RacingConfig getUserInput() {
-        OutputView.printInsertRacersName();
-        String rawUserInput = InputView.getInputRacersName();
+        OutputView.printInsertCarsName();
+        String rawUserInput = InputView.getInputCarsName();
         OutputView.printInsertTryCount();
         String rawTryCount = InputView.getInputTryNumber();
 

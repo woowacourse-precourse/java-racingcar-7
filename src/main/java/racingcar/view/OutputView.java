@@ -12,7 +12,7 @@ public class OutputView {
 
     }
 
-    public static void printInsertRacersName() {
+    public static void printInsertCarsName() {
         System.out.println(OutputMessages.INSERT_CARS_NAME);
     }
 
