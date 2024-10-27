@@ -31,6 +31,7 @@ public class RacingGameController {
             OutputView.printRoundResult(game);
         }
         List<String> winners = determineWinners(game.getCars());
+        OutputView.printFinalWinners(winners);
     }
 
     private List<String> determineWinners(List<Car> cars) {
