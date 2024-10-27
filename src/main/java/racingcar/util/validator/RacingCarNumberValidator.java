@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.util.validator;
 
 import java.util.regex.Pattern;
 import racingcar.constant.ErrorType;

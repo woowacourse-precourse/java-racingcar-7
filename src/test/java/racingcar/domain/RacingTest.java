@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import racingcar.fake.ForwardNumberGenerator;
 import racingcar.fake.StopNumberGenerator;
 import racingcar.fake.fakeStringValidator;
-import racingcar.util.NumberGenerator;
-import racingcar.util.StringValidator;
+import racingcar.util.generator.NumberGenerator;
+import racingcar.util.validator.StringValidator;
 
 class RacingTest {
 

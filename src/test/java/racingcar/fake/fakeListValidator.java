@@ -2,7 +2,7 @@ package racingcar.fake;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.util.ListValidator;
+import racingcar.util.validator.ListValidator;
 
 public class fakeListValidator implements ListValidator<Car> {
 

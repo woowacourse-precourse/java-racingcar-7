@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 import racingcar.constant.Rule;
-import racingcar.util.NumberGenerator;
+import racingcar.util.generator.NumberGenerator;
 
 public class Car {
 

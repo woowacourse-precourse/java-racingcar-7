@@ -1,6 +1,6 @@
 package racingcar.fake;
 
-import racingcar.util.NumberValidator;
+import racingcar.util.validator.NumberValidator;
 
 public class fakeNumberValidator implements NumberValidator<Integer> {
 

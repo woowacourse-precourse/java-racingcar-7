@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.util.generator;
 
 import static racingcar.constant.Rule.*;
 

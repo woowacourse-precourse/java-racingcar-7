@@ -1,6 +1,6 @@
 package racingcar.fake;
 
-import racingcar.util.StringValidator;
+import racingcar.util.validator.StringValidator;
 
 public class fakeStringValidator implements StringValidator {
 

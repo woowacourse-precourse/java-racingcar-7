@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 import racingcar.constant.Rule;
-import racingcar.util.NumberValidator;
+import racingcar.util.validator.NumberValidator;
 
 public class Count {
 
