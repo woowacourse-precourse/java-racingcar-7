@@ -2,19 +2,14 @@ package racingcar;
 import java.util.*;
 
 public class Application {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         try {
-            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-            String[] carNames = scanner.nextLine().split(",");
-            checkCarNames(carNames); // 5자 이하
-
-            System.out.println("시도할 횟수는 몇 회인가요?");
-            int raceRounds = scanner.nextInt();
-            scanner.nextLine();
-            if (raceRounds < 1) {
-                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
-            }
+            // 차명 입력
+            String[] carNames = getCarNames(scanner);
+            // 레이스 횟수 입력
+            int raceRounds = getRaceRounds(scanner);
             // 차 객체 생성
             List<Car> cars = initializeCars(carNames);
             // 레이스 시작
@@ -29,6 +24,16 @@ public class Application {
         }
     }
 
+    // 차 이름 입력
+    private static String[] getCarNames(Scanner scanner) {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String[] carNames = scanner.nextLine().split(",");
+        // 이름 유효성 검사
+        checkCarNames(carNames);
+        return carNames;
+    }
+
+    // 차 이름 유효성 검사
     public static void checkCarNames(String[] carNames) {
         for (String carName : carNames) {
             carName = carName.trim();
@@ -36,6 +41,16 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
             }
         }
+    }
+
+    // 레이스 횟수 입력 및 한 자리 수 이상인지 유효성 검사
+    private static int getRaceRounds(Scanner scanner) {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int raceRounds = scanner.nextInt();
+        if(raceRounds < 1){
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
+        return raceRounds;
     }
 
     // 차 배열 초기화
@@ -85,6 +100,7 @@ public class Application {
     }
 }
 
+// 차 객체 생성
 class Car {
     private final String name;
     private int location;
