@@ -44,9 +44,9 @@ public class InputValidator {
 
         try {
             if (Integer.parseInt(input) < MIN_ROUND_COUNT) {
-                throw new IllegalArgumentException("시도할 횟수는 " + MIN_ROUND_COUNT + " 이상이어야 합니다.");
+                throw new IllegalArgumentException("시도할 횟수로 " + MIN_ROUND_COUNT + " 이상의 값을 입력해주세요.");
             } else if (Integer.parseInt(input) > MAX_ROUND_COUNT) {
-                throw new IllegalArgumentException("시도할 횟수는 " + MAX_ROUND_COUNT + " 이하여야 합니다.");
+                throw new IllegalArgumentException("시도할 횟수가 너무 큽니다. " + MAX_ROUND_COUNT + " 이하의 값을 입력해주세요.");
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효하지 않은 숫자입니다.");
