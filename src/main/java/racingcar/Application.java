@@ -1,6 +1,6 @@
 package racingcar;
 
-import controller.CarController;
+import controller.CarSetupController;
 import controller.GameController;
 import controller.MainController;
 import factory.CarFactory;
@@ -17,9 +17,9 @@ public class Application {
         CarFactory carFactory = new CarFactory();
         RacingCarService racingCarService = new RacingCarService();
 
-        CarController carController = new CarController(inputView, carFactory);
+        CarSetupController carSetupController = new CarSetupController(inputView, carFactory);
         GameController gameController = new GameController(racingCarService, outputView);
-        MainController mainController = new MainController(carController, gameController);
+        MainController mainController = new MainController(carSetupController, gameController);
 
         mainController.run();
 

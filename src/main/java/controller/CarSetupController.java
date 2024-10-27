@@ -8,11 +8,11 @@ import validator.attemptNumberValidator;
 import validator.carNameValidator;
 import view.InputView;
 
-public class CarController {
+public class CarSetupController {
     private final InputView inputView;
     private final CarFactory carFactory;
 
-    public CarController(InputView inputView, CarFactory carFactory) {
+    public CarSetupController(InputView inputView, CarFactory carFactory) {
         this.inputView = inputView;
         this.carFactory = carFactory;
     }
