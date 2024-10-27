@@ -24,6 +24,14 @@ public class Car {
 		this.moveDistance = moveDistance;
 	}
 
+	public static Car create(String name) {
+		return new Car(name, INITIAL_MOVE_DISTANCE);
+	}
+
+	private static boolean isPossibleToMove(int randomValue) {
+		return randomValue >= MOVE_CONDITION;
+	}
+
 	private void validateName(String name) {
 		validateBlankName(name);
 		validateNameLength(name);
@@ -41,10 +49,6 @@ public class Car {
 		}
 	}
 
-	public static Car create(String name) {
-		return new Car(name, INITIAL_MOVE_DISTANCE);
-	}
-
 	public void move(int randomValue) {
 
 		validateRandomValueRange(randomValue);
@@ -60,10 +64,6 @@ public class Car {
 		}
 	}
 
-	private static boolean isPossibleToMove(int randomValue) {
-		return randomValue >= MOVE_CONDITION;
-	}
-
 	public boolean isFurthestIn(List<Car> others) {
 		return others.stream()
 			.filter(car -> car.isFurtherThan(this))
@@ -75,4 +75,11 @@ public class Car {
 		return moveDistance > other.moveDistance;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public int getMoveDistance() {
+		return moveDistance;
+	}
 }

@@ -48,10 +48,18 @@ public class Cars {
 		}
 	}
 
-	public List<Car> getWinners() {
+	public List<String> getWinners() {
 		return cars.stream()
 			.filter(car -> car.isFurthestIn(cars))
+			.map(Car::getName)
 			.toList();
 	}
 
+	public int getCarCount() {
+		return cars.size();
+	}
+
+	public List<Car> getCars() {
+		return cars;
+	}
 }
