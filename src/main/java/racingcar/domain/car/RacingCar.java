@@ -10,7 +10,7 @@ public class RacingCar {
         this.forwardCount = 0;
     }
 
-    public void forwardCar(int score) {
+    public void moveForward(int score) {
         if (score >= 4) {
             this.forwardCount++;
         }

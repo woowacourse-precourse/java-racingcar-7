@@ -72,7 +72,7 @@ public class Racing {
 
         for (int i = 0; i < tryCnt; i++) {
             for (RacingCar racingCar : racingCars) {
-                racingCar.forwardCar(Randoms.pickNumberInRange(0, 9));
+                racingCar.moveForward(Randoms.pickNumberInRange(0, 9));
                 String currentResultMessage = racingCar.getCurrentResultMessage();
                 racingOutputView.printMessage(currentResultMessage);
             }

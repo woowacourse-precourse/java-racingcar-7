@@ -10,7 +10,7 @@ public class RacingCarTest {
     void 전진_성공_테스트() {
         RacingCar racingCar = new RacingCar("aaaaa");
         int prevForwardCount = racingCar.getForwardCount();
-        racingCar.forwardCar(4);
+        racingCar.moveForward(4);
         Assertions.assertThat(racingCar.getForwardCount()).isEqualTo(prevForwardCount + 1);
     }
 
@@ -19,7 +19,7 @@ public class RacingCarTest {
     void 전진_실패_테스트() {
         RacingCar racingCar = new RacingCar("aaaaa");
         int prevForwardCount = racingCar.getForwardCount();
-        racingCar.forwardCar(3);
+        racingCar.moveForward(3);
         Assertions.assertThat(racingCar.getForwardCount()).isEqualTo(prevForwardCount);
     }
 }
