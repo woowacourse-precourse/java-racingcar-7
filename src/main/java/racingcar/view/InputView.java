@@ -34,13 +34,13 @@ public class InputView {
             throw new CarNameException("자동차 이름을 입력해주세요.");
         }
 
-        String[] names = carNames.split(COMMA_DELIMITER);
-        for (String name : names) {
-            checkNameLength(name);
-        }
-
         if (!carNames.contains(COMMA_DELIMITER)) {
             throw new CarNameException("자동차 이름은 쉼표(,)를 기준으로 구분하여야합니다.");
+        }
+
+        String[] names = carNames.split(COMMA_DELIMITER);
+        for (String name : names) {
+            checkNameLength(name.trim());
         }
     }
 
