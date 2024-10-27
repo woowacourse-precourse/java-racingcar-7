@@ -70,3 +70,11 @@
 - [x] 3항 연산자를 사용하지 않았는가?
 - [x] 메서드가 한 가지 일만을 담당하고 있는가?
 - [x] 정리 및 구현한 기능 목록들을 테스트 코드를 통해 검증했는가?
+
+## 테스트 코드
+
+#### 실행 결과
+
+![peformedTestCode](./docs-resources/peformedTestCode-Terminal.png)
+
+![peformedTestCode-IntelliJ](./docs-resources/peformedTestCode-IntelliJ.png)
