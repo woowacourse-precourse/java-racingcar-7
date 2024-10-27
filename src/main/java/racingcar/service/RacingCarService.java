@@ -22,4 +22,15 @@ public class RacingCarService {
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
+
+    public List<RacingCar> findBestDriver() {
+        long maxMoveCount = racingCars.stream()
+                .mapToLong(RacingCar::getMoveCount)
+                .max()
+                .orElseThrow();
+
+        return racingCars.stream()
+                .filter(car -> car.getMoveCount() == maxMoveCount)
+                .toList();
+    }
 }

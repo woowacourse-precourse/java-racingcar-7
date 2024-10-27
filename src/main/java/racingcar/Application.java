@@ -4,6 +4,7 @@ import racingcar.controller.RacingCarController;
 import racingcar.service.RacingCarService;
 import racingcar.service.ValidateService;
 import racingcar.view.InstructionView;
+import racingcar.view.ResultView;
 import racingcar.view.RoundView;
 
 public class Application {
@@ -13,7 +14,8 @@ public class Application {
         ValidateService validateService = new ValidateService();
         RacingCarService racingCarService = new RacingCarService();
         RoundView roundView = new RoundView();
-        RacingCarController controller = new RacingCarController(instructionView, validateService, racingCarService, roundView);
+        ResultView resultView = new ResultView();
+        RacingCarController controller = new RacingCarController(instructionView, validateService, racingCarService, roundView, resultView);
         controller.run();
     }
 }

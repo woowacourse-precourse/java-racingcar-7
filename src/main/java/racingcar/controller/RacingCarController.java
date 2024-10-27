@@ -5,6 +5,7 @@ import racingcar.domain.RacingCar;
 import racingcar.service.RacingCarService;
 import racingcar.service.ValidateService;
 import racingcar.view.InstructionView;
+import racingcar.view.ResultView;
 import racingcar.view.RoundView;
 
 import java.util.stream.IntStream;
@@ -16,12 +17,14 @@ public class RacingCarController {
     ValidateService validateService;
     RacingCarService racingCarService;
     RoundView roundView;
+    ResultView resultView;
 
-    public RacingCarController(InstructionView instructionView, ValidateService validateService, RacingCarService racingCarService, RoundView roundView) {
+    public RacingCarController(InstructionView instructionView, ValidateService validateService, RacingCarService racingCarService, RoundView roundView, ResultView resultView) {
         this.instructionView = instructionView;
         this.validateService = validateService;
         this.racingCarService = racingCarService;
         this.roundView = roundView;
+        this.resultView = resultView;
     }
 
     public void run() {
@@ -40,6 +43,8 @@ public class RacingCarController {
             racingCarService.getRacingCars().forEach(RacingCar::move);
             roundView.showRoundResults();
         });
+
+        resultView.printResult(racingCarService.findBestDriver());
 
     }
 
