@@ -29,7 +29,6 @@ public class RaceController {
             playRound();
             printProgress();
         }
-
         printWinners();
     }
 

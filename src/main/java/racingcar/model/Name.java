@@ -3,7 +3,9 @@ package racingcar.model;
 import org.junit.platform.commons.util.StringUtils;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Name {
@@ -23,14 +25,23 @@ public class Name {
         return name;
     }
 
-    public static List<Name> createNames (String input) {
+    public static List<Name> createNames(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
         }
 
-        return Arrays.stream(input.split(","))
+        List<String> nameList = Arrays.stream(input.split(","))
                 .map(String::trim)
+                .collect(Collectors.toList());
+
+        Set<String> uniqueNames = new HashSet<>(nameList);
+        if (uniqueNames.size() < nameList.size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
+
+        return nameList.stream()
                 .map(Name::new)
                 .collect(Collectors.toList());
+
     }
 }
