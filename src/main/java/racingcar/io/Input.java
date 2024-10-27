@@ -14,6 +14,6 @@ public class Input {
     }
 
     public boolean isBlank(String input) {
-        return input != null && input.trim().isEmpty();
+        return input == null || input.trim().isEmpty();
     }
 }

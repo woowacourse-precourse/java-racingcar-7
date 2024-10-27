@@ -9,13 +9,16 @@ import java.util.Set;
 
 public class RacingUtils {
 
+    private static final int LENGTH = 5;
+
     public static List<String> divideComma(String input) {
         if (hasWhitespaceAroundComma(input)) {
             input = replaceWhitespaceAroundComma(input);
         }
 
         List<String> list = Arrays.stream(input.split(",")).toList();
-        RacingException.throwIllegalArgumentException("잘못된 입력입니다.", hasDuplicates(list));
+
+        RacingException.throwIllegalArgumentException("잘못된 입력입니다.", hasDuplicates(list) || hasAnyStringExceedingLength(list));
 
         return list;
     }
@@ -52,6 +55,14 @@ public class RacingUtils {
 
     public static boolean isNotPositive(int number) {
         return number <= 0;
+    }
+
+    private static boolean hasAnyStringExceedingLength(List<String> list) {
+        return list.stream().anyMatch(RacingUtils::hasStringExceedingLength);
+    }
+
+    private static boolean hasStringExceedingLength(String string) {
+        return string.length() > LENGTH;
     }
 
 }
