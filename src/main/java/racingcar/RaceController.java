@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class RaceController {
     private final int attemptCount;
@@ -20,6 +23,19 @@ public class RaceController {
             forward();
             printer.showRace(cars);
         }
+    }
+
+    public List<String> findWinner() {
+        Integer max = Collections.max(cars.values());
+        List<String> winners = new ArrayList<>();
+        Iterator<Car> carIterator = cars.keySet().iterator();
+        while (carIterator.hasNext()) {
+            Car car = carIterator.next();
+            if (cars.get(car) == max) {
+                winners.add(car.getCarName());
+            }
+        }
+        return winners;
     }
 
     private void forward() {
