@@ -9,11 +9,10 @@ public class Application {
         Application ap = new Application();
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        try{
-            member = Console.readLine().split(",");
-        }catch (IllegalArgumentException e){
-            System.out.print("invalid error");
-        }
+        String input = Console.readLine();
+        ap.check(input);
+        member = input.split(",");
+        ap.mem_trim();
         ap.mem_trim();
         list = ap.initial(member);
         System.out.println("시도할 횟수는 몇 회인가요?");
@@ -32,6 +31,11 @@ public class Application {
             ap.print_result();
         }
         ap.print_winner(ap.winner_score());
+    }
+    public void check(String input){
+        if(input.endsWith(",")) {
+            throw new IllegalArgumentException("invalid error");
+        }
     }
     public void mem_trim() {
         for(String str : member) {
