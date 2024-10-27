@@ -14,4 +14,8 @@ public class Car {
 			distance += 1;
 		}
 	}
+
+	public boolean isMovable(int randomNumber) {
+		return randomNumber >= 4;
+	}
 }
