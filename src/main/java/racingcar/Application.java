@@ -28,5 +28,43 @@ public class Application {
 
         // 3-2. 쉼표가 있다면 쉼표를 기준으로 경주할 자동차 이름을 분리
         List<String> carNames = List.of(words.split(","));
+
+        // 4. 자동차 이름 시작과 끝이 공백인지 확인
+        // 그렇다면 잘못된 값이므로 IllegalArgumentException를 발생시킴
+        for (String carName : carNames) {
+            if (carName.startsWith(" ") | carName.endsWith(" ")) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        // 5. 자동차 이름의 길이가 1 이상 5 이하이며
+        // 한글 또는 영어대소문자 또는 숫자로 이루어져 있는지 확인
+        // 아니라면 잘못된 값이므로 IllegalArgumentException를 발생시킴
+        for (String carName : carNames) {
+            if (!carName.matches("^[A-Za-z0-9가-힣]{1,5}$")) {
+                System.out.println(carName);
+                throw new IllegalArgumentException();
+            }
+        }
+
+        // 6. 자동차 이름을 key, 전진한 거리를 value로 가지는 맵을 만듦
+        // key는 중복을 허용하지 않으므로 이와 같은 특성을 활용해
+        // 같은 이름이 2개 이상 존재하는지 확인
+        HashMap<String, Integer> carPositions = new HashMap<>();
+
+        for (String carName : carNames) {
+
+            // 6-1. 만약 해당 자동차 이름을 key로 가진
+            // value가 존재한다면 이전에 나왔던 이름이라는 것이므로
+            // IllegalArgumentException를 발생시킴
+            if (carPositions.containsKey(carName)) {
+                throw new IllegalArgumentException();
+
+            // 6-2. 아니라면 전진한 거리를 파악할 수 있도록
+            // 전진한 거리를 0으로 초기값을 설정해 저장
+            } else {
+                carPositions.put(carName, 0);
+            }
+        }
     }
 }
