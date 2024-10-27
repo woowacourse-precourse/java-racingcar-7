@@ -10,13 +10,22 @@ public class Application {
         //Todo 프로그램 구현
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String inputNames = scanner.nextLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int moves = Integer.parseInt(scanner.nextLine());
+        try {
+            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+            String inputNames = scanner.nextLine();
+            List<String> carNames = validateCarNames(inputNames);
 
-        Racing racing = new Racing(validateCarNames(inputNames));
-        racing.startRace(moves);
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            int moves = Integer.parseInt(scanner.nextLine());
+
+            Racing racing = new Racing(carNames);
+            racing.startRace(moves);
+            List<String> winners = racing.getWinners();
+            System.out.println("최종 우승자 : " + String.join(", ", winners));
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static List<String> validateCarNames(String inputNames) {
