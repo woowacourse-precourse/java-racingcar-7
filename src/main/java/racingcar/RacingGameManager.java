@@ -22,9 +22,13 @@ public class RacingGameManager {
         List<Car> cars = carManager.createCarsFromInput(input);
         int count = Integer.parseInt(console.getCountInput());
         validateInputCount(count);
+        console.printResultMessage();
         for (int i = 0; i < count; i++) {
             playGame(cars);
         }
+        //승자찾고 출력
+        List<Car> winner = carManager.findWinner(cars);
+        console.printWinner(winner.stream().map(Car::getName).toList());
     }
 
     private void playGame(List<Car> cars) {
@@ -34,7 +38,7 @@ public class RacingGameManager {
                 car.moveForward();   //이걸 RacingGameManager에서 하는게 맞나?
             }
         }
-        //TODO 결과 출력
+        console.printEachResult(cars);
     }
 
     private boolean isMovable(int randomNumber) {

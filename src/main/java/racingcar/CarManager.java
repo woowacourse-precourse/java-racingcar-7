@@ -9,7 +9,6 @@ import java.util.List;
  * 자동차와 관련된 기능을 수행한다.
  */
 public class CarManager {
-    //TODO 승자를 판별한다
     private static final String SPLITTER = ",";
 
     //TODO 유효성 검사 메서드 분리
@@ -31,5 +30,18 @@ public class CarManager {
         }
 
         return cars;
+    }
+
+    public List<Car> findWinner(List<Car> cars) {
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 결과입니다."));
+
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .toList();
+
+        return winners;
     }
 }
