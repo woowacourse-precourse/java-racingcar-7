@@ -49,8 +49,10 @@
     │          │      ExceptionMessage.java
     │          │
     │          ├─model
-    │          │      Car.java
-    │          │      Game.java
+    │          │  │  Game.java
+    │          │  │
+    │          │  └─component
+    │          │          Car.java
     │          │
     │          ├─service
     │          │      SplitService.java
