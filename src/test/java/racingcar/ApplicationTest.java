@@ -24,20 +24,29 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @DisplayName("공동 우승자 검증 테스트")
+    @DisplayName("공동 우승자 검증 테스트1")
     @Test
     void 기능_테스트2() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("pobi,woni,seo,you,jin", "1");
+                    run("pobi,woni,seo", "1");
                     assertThat(output()).contains("pobi : -", "woni : -", "seo : ",
                             "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, STOP
+        );
+    }
 
-                    run("pobi,woni,seo,you,jin", "1");
+    @DisplayName("공동 우승자 검증 테스트2")
+    @Test
+    void 기능_테스트3() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,seo", "1");
                     assertThat(output()).contains("pobi : -", "woni : -", "seo : -",
                             "최종 우승자 : pobi, woni, seo");
                 },
-                MOVING_FORWARD, STOP
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
         );
     }
 
