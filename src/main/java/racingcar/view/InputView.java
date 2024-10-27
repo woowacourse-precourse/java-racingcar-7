@@ -19,11 +19,23 @@ public class InputView {
 		this.parser = parser;
 	}
 
+	private String readLine() {
+		return Console.readLine();
+	}
+
 	public ArrayList<String> getCarNames() {
 		System.out.println(CAR_NAMES_INPUT_MESSAGE);
-		String input = Console.readLine();
+		String input = readLine();
 		ArrayList<String> carNames = parser.stringToList(input);
 		validator.checkCarNames(carNames);
 		return carNames;
+	}
+
+	public int getRaceCount() {
+		System.out.println(RACE_COUNT_INPUT_MESSAGE);
+		String input = readLine();
+		int raceCount = parser.stringToInt(input);
+		validator.checkRaceCount(raceCount);
+		return raceCount;
 	}
 }

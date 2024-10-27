@@ -18,7 +18,7 @@ public class Validator {
 	}
 
 	public void checkRaceCount(int raceCount) {
-		if (raceCount <= 0) {
+		if (raceCount <= 0 || 100 < raceCount) {
 			throw new IllegalArgumentException(ErrorMessage.INVALID_RACE_COUNT.getMessage());
 		}
 	}
