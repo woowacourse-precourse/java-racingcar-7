@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Cars {
+
     private final List<Car> cars;
 
     private Cars(String[] names) {
@@ -26,11 +27,6 @@ public class Cars {
                     cars.forEach(Car::moveOrStop);
                     StatusView.printStatus(cars);
                 });
-    }
-
-    // 테스트 전용 메서드
-    public Car getCar(int carNumber) {
-        return cars.get(carNumber);
     }
 
     public List<Car> determineWinner() {

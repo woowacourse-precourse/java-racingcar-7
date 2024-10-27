@@ -8,12 +8,13 @@ import static racingcar.message.ErrorMessage.NEGATIVE_NUMBER_ERROR;
 import static racingcar.utils.ExceptionUtils.throwException;
 
 public class NumberRequestHandler {
+
     public int getNumber() {
         RequestView.requestMoveNumber();
         String inputString = Console.readLine();
-        int rawNumber = convertToInteger(inputString);
-        validateNegative(rawNumber);
-        return rawNumber;
+        int number = convertToInteger(inputString);
+        validateNegative(number);
+        return number;
     }
 
     public int convertToInteger(String rawNumber) {

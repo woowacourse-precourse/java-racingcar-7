@@ -27,7 +27,7 @@ public class CarsTest {
 
         // then
         for (int i = 0; i < 3; i++) {
-            new IntegerAssert(cars.getCar(i).getAdvanceNum()).isBetween(0, moveNumber);
+            new IntegerAssert(cars.getMaxAdvanceNum()).isBetween(0, moveNumber);
         }
     }
 
