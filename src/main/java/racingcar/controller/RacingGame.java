@@ -3,7 +3,6 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.CarFactory;
 import racingcar.domain.Cars;
-import racingcar.domain.Name;
 import racingcar.util.CarNamesCreator;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
@@ -52,7 +51,7 @@ public class RacingGame {
     }
 
     private void announceWinners() {
-        List<Name> winners = cars.findWinners();
+        List<String> winners = cars.findWinners();
         ResultView.showWinners(winners);
     }
 

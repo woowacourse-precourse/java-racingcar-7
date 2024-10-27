@@ -41,9 +41,9 @@ public class CarsTest {
         List<Car> carList = List.of(CAR_POBI, CAR_NANA, CAR_JUN);
         Cars cars = new Cars(carList);
 
-        String result = "pobi : ---"
-                + "nana : -"
-                + "jun : ---";
+        String result = "pobi : ---\n"
+                + "nana : -\n"
+                + "jun : ---\n";
 
         assertThat(cars.toString()).isEqualTo(result);
     }

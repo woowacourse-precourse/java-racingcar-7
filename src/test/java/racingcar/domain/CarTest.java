@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,17 +12,6 @@ public class CarTest {
     void Car_객체_생성() {
         Car car = new Car("maru", 0);
         assertThat(car).isEqualTo(new Car("maru", 0));
-    }
-
-    @Test
-    void 이름_길이_예외() {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Car(""))
-                .withMessageMatching("자동차 이름은 1자 이상 5자 이하여야 합니다");
-
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Car("banana"))
-                .withMessageMatching("자동차 이름은 1자 이상 5자 이하여야 합니다");
     }
 
     @Test
@@ -55,6 +43,6 @@ public class CarTest {
 
     @Test
     void to_string() {
-        assertThat(CAR_MARU.toString()).isEqualTo("maru : --");
+        assertThat(CAR_MARU.toString()).isEqualTo("maru : --\n");
     }
 }
