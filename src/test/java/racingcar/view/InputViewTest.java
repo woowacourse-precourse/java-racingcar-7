@@ -65,9 +65,9 @@ class InputViewTest {
             "100",
             "425"
     })
-    void testGetMoveCount(int moveCount) {
+    void testGetMoveCount(String moveCount) {
         // Given
-        this.command(String.valueOf(moveCount));
+        this.command(moveCount);
 
         // When
         int moveCountResult = InputView.getMoveCount();
