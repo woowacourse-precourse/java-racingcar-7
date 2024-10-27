@@ -29,18 +29,28 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
-        );
+                    .hasMessage("이름이 5글자를 초과했습니다."));
     }
 
     @Test
     @DisplayName("게임 횟수가 0 인 경우")
     void zeroTokenTest() {
-        assertRandomNumberInRangeTest(
+        assertSimpleTest(
                 () -> {
                     run("pobi,woni", "0");
                     assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi,woni");
+                });
+    }
+
+    @Test
+    @DisplayName("공동 우승 case")
+    void multipleWinners() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi,woni");
                 },
-                MOVING_FORWARD, STOP
+                MOVING_FORWARD, MOVING_FORWARD
         );
     }
 
