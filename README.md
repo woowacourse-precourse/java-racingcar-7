@@ -67,6 +67,9 @@ pobi,pobi
     │      ├─controller
     │      │      RaceController.java
     │      │
+    │      ├─exception
+    │      │      GameException.java
+    │      │
     │      ├─model
     │      │      Car.java
     │      │      Race.java
