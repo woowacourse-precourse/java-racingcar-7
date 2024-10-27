@@ -1,6 +1,6 @@
 package racingcar.dto;
 
-import static racingcar.util.ConstantRacingData.OUTPUT_DELIMITER;
+import static racingcar.util.Constants.OUTPUT_DELIMITER;
 
 import java.util.List;
 import racingcar.model.RacingCar;
