@@ -36,7 +36,7 @@ public class RacingController {
         // 주요 모델 생성
         CarNames names = CarNames.getAfterValidateFormat(inputView.getCarNames());
         RacingChance chance =
-                RacingChance.getAfterValidateForm(inputView.getChanceToMove());
+                RacingChance.getAfterValidateFormat(inputView.getChanceToMove());
         Cars cars = Cars.getInstance(names);
         StrategiesAtCarNames strategies =
                 StrategiesAtCarNames.getAllRandomMove(names, chance);

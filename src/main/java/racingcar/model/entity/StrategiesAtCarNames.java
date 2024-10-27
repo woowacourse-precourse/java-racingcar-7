@@ -13,6 +13,7 @@ public record StrategiesAtCarNames(Map<String, List<Supplier<Integer>>> strategi
 
     public static StrategiesAtCarNames getAllRandomMove(CarNames names,
                                                         RacingChance chance) {
+
         Map<String, List<Supplier<Integer>>> strategiesAtCarName =
                 new HashMap<>();
 

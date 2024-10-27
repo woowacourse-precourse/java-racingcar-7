@@ -14,7 +14,7 @@ public class RacingChanceFormatValidationTest {
     @ValueSource(strings = {"마음껏달려봐", "111111111111111111111", "0", "\n"})
     @DisplayName("시도할 횟수 검증 예외 테스트")
     void chanceInputStringExceptionTest(String chanceNumberToValidate) {
-        assertThatThrownBy(() -> RacingChance.getAfterValidateForm(chanceNumberToValidate)).
+        assertThatThrownBy(() -> RacingChance.getAfterValidateFormat(chanceNumberToValidate)).
                 isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -23,6 +23,6 @@ public class RacingChanceFormatValidationTest {
     @DisplayName("시도할 횟수 검증 테스트")
     void chanceInputStringValidateTest(String chanceNumberToValidate) {
         assertDoesNotThrow(()
-                -> RacingChance.getAfterValidateForm(chanceNumberToValidate));
+                -> RacingChance.getAfterValidateFormat(chanceNumberToValidate));
     }
 }

@@ -14,7 +14,7 @@ public class ExceptionMessageTest {
     void chanceInputStringExceptionTest1() {
         String zeroChance = "0";
         try {
-            RacingChance chance = RacingChance.getAfterValidateForm(zeroChance);
+            RacingChance chance = RacingChance.getAfterValidateFormat(zeroChance);
         } catch (IllegalArgumentException e) {
             assertEquals("[ERROR] 시도할 횟수는 0 이상이어야 합니다.",
                     e.getMessage());
@@ -26,7 +26,7 @@ public class ExceptionMessageTest {
     void chanceInputStringExceptionTest2() {
         String outOfBound = "111111111111111111111";
         try {
-            RacingChance chance = RacingChance.getAfterValidateForm(outOfBound);
+            RacingChance chance = RacingChance.getAfterValidateFormat(outOfBound);
         } catch (IllegalArgumentException e) {
             assertEquals("[ERROR] 숫자가 아니거나 int 범위를 벗어납니다.",
                     e.getMessage());
@@ -38,7 +38,7 @@ public class ExceptionMessageTest {
     void chanceInputStringExceptionTest3() {
         String noDigits = "마음껏달려";
         try {
-            RacingChance chance = RacingChance.getAfterValidateForm(noDigits);
+            RacingChance chance = RacingChance.getAfterValidateFormat(noDigits);
         } catch (IllegalArgumentException e) {
             assertEquals("[ERROR] 숫자가 아니거나 int 범위를 벗어납니다.",
                     e.getMessage());
@@ -50,7 +50,7 @@ public class ExceptionMessageTest {
     void chanceInputStringExceptionTest4() {
         String justEnter = "";
         try {
-            RacingChance chance = RacingChance.getAfterValidateForm(justEnter);
+            RacingChance chance = RacingChance.getAfterValidateFormat(justEnter);
         } catch (IllegalArgumentException e) {
             assertEquals("[ERROR] 문자열이 공백입니다. 숫자를 입력하세요.",
                     e.getMessage());

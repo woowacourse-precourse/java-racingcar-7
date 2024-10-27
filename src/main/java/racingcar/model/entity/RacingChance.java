@@ -15,7 +15,7 @@ public record RacingChance(int chance) {
      * @throws 콘솔에서 입력된 문자열이 int 범위를 벗어나거나 숫자가 아닌 문자열이거나
      *              0이면 IllegalArgumentException 발생
      */
-    public static RacingChance getAfterValidateForm(String chanceToValidate) {
+    public static RacingChance getAfterValidateFormat(String chanceToValidate) {
         validateBlank(chanceToValidate);
         validateInteger(chanceToValidate);
         validateZero(chanceToValidate);
