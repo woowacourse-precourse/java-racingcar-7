@@ -17,14 +17,15 @@ public class RacingGame {
     }
 
     public void play() {
-        settingRacingCars();
+
+        initializeRacingCars();
         int gameCoin = getGameCoin();
-        playingRounds(gameCoin);
+        playRounds(gameCoin);
         showWinner();
     }
 
-    private void settingRacingCars() {
-        OutputView.startingMessage();
+    private void initializeRacingCars() {
+        OutputView.printCarNameInputMessage();
         RacingCarNameInput racingCarNameInput = new RacingCarNameInput(InputView.readLine());
         List<String> nameList = racingCarNameInput.getRacingCarNameList();
         for (String name : nameList) {
@@ -33,33 +34,41 @@ public class RacingGame {
     }
 
     private int getGameCoin() {
-        OutputView.insertCoinMessage();
+        OutputView.printCoinInsertMessage();
         GameCoinInput gameCoinInput = new GameCoinInput(InputView.readLine());
         return gameCoinInput.getGameCoin();
     }
 
-    private void playingRounds(int coins) {
-        OutputView.middlePrintMessage();
+    private void playRounds(int coins) {
+        OutputView.printExecuteResultMessage();
 
         while (coins > 0) {
-            racingCarManager.playRound();
-            showRoundResult();
-            OutputView.emptyLine();
+            playRound();
+            OutputView.printEmptyLine();
             coins -= 1;
         }
     }
 
+    private void playRound() {
+        racingCarManager.playRound();
+        showRoundResult();
+    }
+
     private void showRoundResult() {
         for (RacingCar racingCar : racingCarManager.getRacingCarList()) {
-            OutputView.middleResultMessage(racingCar.getCarName(), racingCar.getLocation());
+            OutputView.printRoundResultMessage(racingCar.getCarName(), racingCar.getLocation());
         }
-
     }
 
     private void showWinner() {
+        String winner = findWinner();
+        OutputView.printWinner(winner);
+    }
+
+    private String findWinner() {
         WinnerFinder winnerFinder = new WinnerFinder(racingCarManager);
         String winner = winnerFinder.getWinner();
-        OutputView.printWinner(winner);
+        return winner;
     }
 
 }
