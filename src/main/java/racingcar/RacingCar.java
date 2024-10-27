@@ -8,6 +8,7 @@ public class RacingCar {
 
     public void run(){
         String carListInput = consoleInputHandler.getCarListInput();
+        int tryCount = consoleInputHandler.getMoveTryCount();
     }
 
 }

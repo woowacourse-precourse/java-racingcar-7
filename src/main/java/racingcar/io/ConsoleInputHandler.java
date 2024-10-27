@@ -10,4 +10,10 @@ public class ConsoleInputHandler {
         return carListInput;
     }
 
+    public int getMoveTryCount(){
+        String moveTryCount = Console.readLine();
+
+        return Integer.valueOf(moveTryCount);
+    }
+
 }
