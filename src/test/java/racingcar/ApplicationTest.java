@@ -110,6 +110,24 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // [오류] 정수 허용 범위 이상의 수가 이동 횟수로 입력되었을 때
+    @Test
+    void Error_more_than_integer() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, java, jane", "2147483648"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    // [오류] 빈 문자열을 입력하였을 때
+    @Test
+    void Error_input_blank_in_name_list() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
