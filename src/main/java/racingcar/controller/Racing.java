@@ -3,7 +3,7 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.domain.Cars;
-import racingcar.domain.Parser;
+import racingcar.parser.Parser;
 import racingcar.dto.CarsPositions;
 import racingcar.dto.Winners;
 import racingcar.validator.CarNamesValidator;
