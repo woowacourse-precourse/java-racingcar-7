@@ -24,4 +24,8 @@ public class CarManager {
         cars.add(car);
     }
 
+    public void setRemainingAttempts(int attempts) {
+        remainingAttempts = attempts;
+    }
+
 }
