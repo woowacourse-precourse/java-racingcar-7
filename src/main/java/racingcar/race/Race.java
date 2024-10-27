@@ -84,7 +84,7 @@ public class Race {
             content.append(vehicle.getName());
             content.append(" : ");
             int position = this.positions.get(vehicle);
-            content.append("-".repeat(Math.max(0, position)));
+            content.append("-".repeat(position));
             content.append("\n");
         }
         roundPage.render(content.toString());
