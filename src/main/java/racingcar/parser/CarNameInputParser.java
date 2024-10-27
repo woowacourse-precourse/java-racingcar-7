@@ -1,5 +1,6 @@
 package racingcar.parser;
 
+import java.util.Arrays;
 import java.util.Set;
 
 public class CarNameInputParser {
@@ -13,5 +14,11 @@ public class CarNameInputParser {
 		if (carNames.length < 2) {
 			throw new IllegalArgumentException("[ERROR] 참가자는 2명 이상이어야 합니다.");
 		}
+	}
+
+	private boolean hasDuplicateNames(String[] carNames) {
+		return Arrays.stream(carNames)
+			.distinct()
+			.count() != carNames.length;
 	}
 }
