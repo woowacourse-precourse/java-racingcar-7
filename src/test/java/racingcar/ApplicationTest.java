@@ -25,7 +25,7 @@ class ApplicationTest extends NsTest {
     void 입력_테스트_2(){
         assertSimpleTest(
                 () -> {
-                    run("pobi,java,con", "5");
+                    run("pobi,java,con", "7");
                 }
         );
     }
@@ -34,7 +34,7 @@ class ApplicationTest extends NsTest {
     void 입력_테스트_3(){
         assertSimpleTest(
                 () -> {
-                    run("a,b,c", "5");
+                    run("a, ,c", "5");
                 }
         );
     }

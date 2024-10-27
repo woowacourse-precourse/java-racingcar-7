@@ -8,8 +8,9 @@ import java.util.Map;
 
 
 public class Racing {
-    private static Map<String, Integer> map = new HashMap<>();
     public static boolean IS_INITIAL = false;
+    private static Map<String, Integer> map = new HashMap<>();
+    private static ArrayList<String> winnerArray = new ArrayList<>();
     private static String MESSAGE = "실행 결과";
 
 
@@ -25,6 +26,7 @@ public class Racing {
         }
     }
 
+
     public static Map<String, Integer> racing(ArrayList<String> carNames, int tryNum) {
 
         if (tryNum == 0) {
@@ -36,10 +38,9 @@ public class Racing {
             System.out.print(MESSAGE);
         }
 
+
         for (String key : carNames) {
-            if (getRamdom() >= 4) {
-                map.put(key, map.get(key)+1);
-            }
+           increaseCar(key);
         }
 
         System.out.println();
@@ -48,6 +49,11 @@ public class Racing {
         return racing(carNames, tryNum - 1);
     }
 
+    private static void increaseCar( String key) {
+        if(getRamdom() >= 4) {
+            map.put(key, map.get(key)+1);
+        }
+    }
 
     public static void printCurrentStatus(Map<String, Integer> map) {
 
@@ -69,21 +75,28 @@ public class Racing {
     public static ArrayList<String> judgementWhoIsWin() {
 
         int minVal = -1;
-        ArrayList<String> winnerArray = new ArrayList<>();
 
-        for (String temp : map.keySet()) {
-            int maxVal = map.get(temp);
+        winnerArray.clear();
+        for (String name : map.keySet()) {
+            int maxVal = map.get(name);
 
-            if (maxVal > minVal) {
-                minVal = maxVal;
-            }
+            minVal = Math.max(maxVal,minVal);
         }
 
-        for (String temp : map.keySet()) {
-            if (minVal == map.get(temp)) {
-                winnerArray.add(temp);
-            }
+        for (String name : map.keySet()) {
+            addArray(map.get(name),name,minVal);
         }
+
         return winnerArray;
     }
+
+
+    private static void addArray(int getVal, String name, int minVal) {
+
+        if(minVal == getVal) {
+            winnerArray.add(name);
+        }
+    }
+
 }
+

@@ -12,23 +12,20 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Input {
 
     public static ArrayList<String> inputCarName() {
-
         System.out.println("참여할 자동차 이름을 알려주세요");
 
-        // "apple,orange,3,4"
         String input = readLine();
 
         return splitCarName(input);
-
     }
-
 
     public static int inputTryNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryNum = readLine();
         return tryNumberValidation(tryNum);
     }
-    public static ArrayList<String> splitCarName (String input) {
+
+    public static ArrayList<String> splitCarName(String input) {
 
         String[] str = input.split(",");
 
@@ -36,7 +33,7 @@ public class Input {
 
         ArrayList<String> splitInput = new ArrayList<>();
 
-        for(String name : str){
+        for (String name : str) {
             splitInput.add(name);
         }
 
@@ -50,30 +47,31 @@ public class Input {
         } catch (Exception e) {
             throw new IllegalArgumentException("시도횟수는 숫자만 입력가능합니다.");
         }
-        return parserInt;
 
+        return parserInt;
     }
+
     public static boolean carNameValidation(String[] str) {
 
-        if(str.length == 0) {
+        if (str.length == 0) {
             throw new IllegalArgumentException("이름을 입력해주세요, 비어있는 이름이 있습니다. ");
         }
 
-        for(String name : str) {
-            if(name.length() == 0) {
-                throw new IllegalArgumentException("이름을 입력해주세요, 비어있는 이름이 있습니다. ");
-            }
-
-            if(name.length()>5)
-                throw new IllegalArgumentException("이름을 5자 이내로 입력하세요.");
+        for (String name : str) {
+            isCarNameEmpty(name);
+            isCarNameOver5(name);
         }
-            return true;
+        return true;
     }
 
-        public static void print (ArrayList<String> prints) {
-            for (String print : prints) {
-                System.out.println("*"+print);
-            }
+    private static void isCarNameOver5(String name) {
+        if(name.length() > 5) {
+            throw new IllegalArgumentException("이름은 5자 이내로 입력하세요.");
         }
-
     }
+    private static void isCarNameEmpty(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("이름을 입력해주세요, 비어있는 이름이 있습니다. ");
+        }
+    }
+}
