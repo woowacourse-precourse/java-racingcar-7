@@ -5,6 +5,7 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.ErrorMessage;
 
 class RaceCarsTest {
     @Test
@@ -30,7 +31,23 @@ class RaceCarsTest {
         Car car = new Car(name);
         List<Car> cars = Arrays.asList(car);
         //when, then
-        Assertions.assertThatThrownBy(() -> new RaceCars(cars)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new RaceCars(cars))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("경주에 같은 이름을 가지는 자동차가 참여하면 예외를 발생한다.")
+    void createRaceCarsWithDuplicatedCars() {
+        //given
+        Name name = new Name("우테코");
+
+        Car car1 = new Car(name);
+        Car car2 = new Car(name);
+        List<Car> cars = Arrays.asList(car1, car2);
+        //when, then
+        Assertions.assertThatThrownBy(() -> new RaceCars(cars))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.DUPLICATED_RACINGCAR.getMessage());
     }
 
 }
