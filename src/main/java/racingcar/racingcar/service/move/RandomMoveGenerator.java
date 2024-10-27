@@ -1,4 +1,4 @@
-package racingcar.racingcar.service.move.impl;
+package racingcar.racingcar.service.move;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.constant.move.MoveConstant;
