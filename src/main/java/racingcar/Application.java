@@ -2,6 +2,15 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingCar racingCar = new RacingCar();
+
+        racingCar.getCarNames();
+        racingCar.removeBlank();
+        racingCar.extractCarNames();
+        racingCar.getTryCount();
+        racingCar.makeRaceStatus();
+        racingCar.startRace();
+        racingCar.checkMaxMoveCount();
+        racingCar.printWinner();
     }
 }
