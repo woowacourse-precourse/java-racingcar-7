@@ -27,7 +27,7 @@ public class RacingCarController {
 
         outputView.printResult();
         race();
-        
+        outputView.printWinner(racingCars.findWinners());
     }
 
     private List<String> prepareRacingCarNames() {

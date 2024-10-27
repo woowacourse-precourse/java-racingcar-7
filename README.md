@@ -38,7 +38,7 @@
 -[X] RacingCars를 통해 시도 횟수만큼 시도
     - OutputView에서 실행 결과 출력
     - OutputView에서 차수별 실행 결과 출력
--[ ] RacingCars를 통해 우승자 결정
+-[X] RacingCars를 통해 우승자 결정
     - OutputView에서 우승자 출력
 
 ## InputView
