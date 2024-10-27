@@ -3,12 +3,14 @@ package racingcar;
 public class ApplicationContext {
     private final View view;
     private final InputParser inputParser;
-    private final GameLogic gameLogic;
+    private final Race race;
+    private final Winner winner;
 
     public ApplicationContext() {
         this.view = new View();
         this.inputParser = new InputParser();
-        this.gameLogic = new GameLogic();
+        this.race = new Race();
+        this.winner = new Winner();
     }
 
     public View getView() {
@@ -19,7 +21,11 @@ public class ApplicationContext {
         return inputParser;
     }
 
-    public GameLogic getGameLogic() {
-        return gameLogic;
+    public Race getRace() {
+        return race;
+    }
+
+    public Winner getWinner() {
+        return winner;
     }
 }
