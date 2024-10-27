@@ -3,6 +3,7 @@ package racingcar;
 import static racingcar.ViewConstants.CAR_STATUS_FORMAT;
 import static racingcar.ViewConstants.POSITION_MARK;
 import static racingcar.ViewConstants.RACING_RESULT;
+import static racingcar.ViewConstants.WINNER_IS;
 
 import java.util.List;
 
@@ -20,6 +21,6 @@ public class OutputView {
     }
 
     public void printWinners(String winnerNames) {
-        System.out.print(winnerNames);
+        System.out.printf("%s%s", WINNER_IS, winnerNames);
     }
 }
