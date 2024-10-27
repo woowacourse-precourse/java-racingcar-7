@@ -20,13 +20,13 @@ public class Game {
         System.out.println("\n실행 결과");
         while (attemptCount-- > 0) {
             for (int i = 0; i < carList.size(); i++) {
-                randomNumberTriggerAndStoreList(i);
+                updatePosition(i);
             }
             printCarPosition();
         }
     }
 
-    private void randomNumberTriggerAndStoreList(int i) {
+    private void updatePosition(int i) {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             carList.set(i, new Car(carList.get(i).getName(), carList.get(i).getPosition() + 1));
         }
