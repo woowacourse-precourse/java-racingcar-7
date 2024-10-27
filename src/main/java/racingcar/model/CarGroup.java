@@ -17,6 +17,9 @@ public class CarGroup {
             Car car = new Car(carName);
             carGroup.add(car);
         }
+        if(carGroup.size() != carGroup.stream().distinct().count()){
+            RacingCarExceptionHandler.throwException(RacingCarExceptionMessage.DUPLICATED_CAR_NAME);
+        }
         this.racingCarList = List.copyOf(carGroup);
     }
 
