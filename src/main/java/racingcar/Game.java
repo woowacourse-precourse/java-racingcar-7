@@ -5,24 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private final List<Car> cars;  // 자동차 리스트
+    private List<Car> cars;
+    private int numberOfRounds;
 
-    public Game(List<String> carNames) {
-        cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
+    public Game(List<Car> cars, int numberOfRounds) {
+        this.cars = cars;
+        this.numberOfRounds = numberOfRounds;
     }
 
-    public void moveCars() {
+    public GameResult runRace() {
+        for (int i = 0; i < numberOfRounds; i++) {
+            moveCars();
+        }
+        return new GameResult(cars);
+    }
+
+    private void moveCars() {
         for (Car car : cars) {
-            int randomValue = Randoms.pickNumberInRange(0, 9);
-            boolean isForward = randomValue >= 4;
+            boolean isForward = shouldMove();
             car.move(isForward);
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
+    private boolean shouldMove() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        return randomNumber >= 4;
     }
 }
