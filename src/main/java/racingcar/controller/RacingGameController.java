@@ -18,9 +18,9 @@ public class RacingGameController {
     private final OutputView outputView;
     private final MoveStrategy moveStrategy;
 
-    public RacingGameController(MoveStrategy moveStrategy) {
-        inputView = new InputView();
-        outputView = new OutputView();
+    public RacingGameController(InputView inputView, OutputView outputView, MoveStrategy moveStrategy) {
+        this.inputView = inputView;
+        this.outputView = outputView;
         this.moveStrategy = moveStrategy;
     }
 
