@@ -48,9 +48,8 @@ class CarTest extends NsTest {
         // Then
         assertThat(car.getPosition()).isEqualTo(initialPosition + 1);
     }
-    
+
     @Override
     public void runMain() {
-        // 해당 클래스에서는 runMain을 사용하지 않습니다.
     }
 }

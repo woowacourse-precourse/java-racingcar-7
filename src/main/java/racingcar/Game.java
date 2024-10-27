@@ -25,7 +25,7 @@ public class Game {
 
         Validator.validateCarNames(carNames);
 
-        for (String carName : carNames) {
+        for (final String carName : carNames) {
             cars.add(new Car(carName));
         }
     }
