@@ -3,6 +3,7 @@ package racingcar.service;
 import racingcar.config.GameConfig;
 import racingcar.message.OutputMessage;
 import racingcar.model.Car;
+import racingcar.model.WinnerCalculator;
 import racingcar.validation.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -43,17 +44,8 @@ public class CarService {
     }
 
     public void showResults(List<Car> cars){
-        List<String> winnerCarList = getWinners(cars);
+        List<String> winnerCarList = WinnerCalculator.calculateWinners(cars);
         outputView.resultView(winnerCarList);
     }
 
-    private List<String> getWinners(List<Car> cars) {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName).toList();
-    }
 }
