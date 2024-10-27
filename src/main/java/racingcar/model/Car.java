@@ -14,4 +14,11 @@ public class Car {
         this.name = name;
     }
 
+    public void drive() {
+        int random = Randoms.pickNumberInRange(0, 9);
+        if (random >= 4) {
+            distance += 1;
+        }
+    }
+
 }
