@@ -12,14 +12,12 @@ public class Position {
     private final RandomUtil randomUtil;
 
     public Position(RandomUtil randomUtil) {
-        this(randomUtil, DEFAULT_POSITION);
-        // this.randomUtil = randomUtil;
-        // position = DEFAULT_POSITION;
+        this(DEFAULT_POSITION,randomUtil);
     }
 
-    public Position(RandomUtil randomUtil, int position) {
-        this.randomUtil = randomUtil;
+    public Position(int position, RandomUtil randomUtil) {
         this.position = position;
+        this.randomUtil = randomUtil;
     }
 
     public int get() {
