@@ -13,7 +13,13 @@ public class CarService {
         if(value>=4) return true;
         return false;
     }
-
-
+    public void Move(ArrayList<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            int value = Generate_RandomValue();
+            if (is_Move(value)) {
+                cars.get(i).setPosition();
+            }
+        }
+    }
 
 }
