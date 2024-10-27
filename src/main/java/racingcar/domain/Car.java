@@ -5,19 +5,23 @@ public class Car {
     private static final String STATUS_CHARACTER = "-";
 
     private final CarName name;
-    private final CarPosition carPosition;
+    private final CarPosition position;
 
-    public Car(CarName name, CarPosition carPosition) {
+    public Car(CarName name, CarPosition position) {
         this.name = name;
-        this.carPosition = carPosition;
+        this.position = position;
     }
 
     public void move() {
-        carPosition.increasePosition();
+        position.increase();
     }
 
-    public CarPosition getPosition() {
-        return carPosition;
+    public boolean isPositionGreaterThan(Car otherCar) {
+        return this.position.isGreaterThan(otherCar.position);
+    }
+
+    public boolean hasSamePositionAs(Car otherCar) {
+        return this.position.equals(otherCar.position);
     }
 
     public CarName getName() {
@@ -26,6 +30,8 @@ public class Car {
 
     @Override
     public String toString() {
-        return String.format("%s : %s", name.getName(), STATUS_CHARACTER.repeat(carPosition.getPosition()));
+        return String.format("%s : %s",
+                name.getName(),
+                STATUS_CHARACTER.repeat(position.getPosition()));
     }
 }

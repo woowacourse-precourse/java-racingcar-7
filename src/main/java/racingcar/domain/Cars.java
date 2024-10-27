@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.List;
 
 public class Cars {
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -14,24 +15,24 @@ public class Cars {
     }
 
     public List<Car> drawWinner() {
-        int record = getRecord();
+        Car carAtMaxPosition = getCarAtMaxPosition();
         return cars.stream()
-                .filter(car -> car.getPosition().getPosition() == record)
+                .filter(car -> car.hasSamePositionAs(carAtMaxPosition))
                 .toList();
-    }
-
-    private int getRecord() {
-        int record = 0;
-        for (Car car : cars) {
-            int position = car.getPosition().getPosition();
-            if (position > record) {
-                record = position;
-            }
-        }
-        return record;
     }
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    private Car getCarAtMaxPosition() {
+        Car carAtMaxPosition = cars.getFirst();
+
+        for (Car car : cars) {
+            if (car.isPositionGreaterThan(carAtMaxPosition)) {
+                carAtMaxPosition = car;
+            }
+        }
+        return carAtMaxPosition;
     }
 }
