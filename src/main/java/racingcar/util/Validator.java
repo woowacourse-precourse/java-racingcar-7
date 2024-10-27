@@ -40,9 +40,13 @@ public class Validator {
 
     public void validateContainSpaceName(List<String> carNamesList) {
         for (String carName: carNamesList) {
-            if (carName.contains(" ")) {
-                throw new IllegalArgumentException(Constants.CAR_NAME_CONTAIN_SPACE_ERROR_MESSAGE);
-            }
+            validateCarNameContainSpace(carName);
+        }
+    }
+
+    private void validateCarNameContainSpace(String carName) {
+        if (carName.contains(" ")) {
+            throw new IllegalArgumentException(Constants.CAR_NAME_CONTAIN_SPACE_ERROR_MESSAGE);
         }
     }
 
