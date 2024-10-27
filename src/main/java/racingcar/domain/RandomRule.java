@@ -10,4 +10,5 @@ public class RandomRule implements GameRule {
         int randNo = RandomNoGenarator.getRandomNo();
         return randNo >= MOVE_NUM;
     }
+
 }

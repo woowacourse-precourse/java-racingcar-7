@@ -22,7 +22,8 @@
       - [x] 적절한 입력을 제외하고 모두 에러처리 - 적절한 입력을 찾는 정규식 찾고 그 외의 경우 `IllegalArgumentException`
     - [x] 횟수
       - [x] 잘못된 입력을 받았을 때 `IllegalArgumentException`이 나오게 문자열을 입력으로 받고 정수인지 검증
-
+- [] **InputParser**
+  - [] 사용자 입력에서 CarName 을 파싱
 ## Domain
 - [x] **Car**
   - [x] 이름, 위치
