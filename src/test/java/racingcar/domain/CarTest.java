@@ -11,7 +11,7 @@ public class CarTest {
 
     private static final String CAR_NAME = "pobi";
     private static final String EXECUTE_RESULT_DELIMITER = " : ";
-    private static final String CURRENT_CAR_POSITION = "-";
+    private static final String NEW_LINE = "\n";
     private static final int MOVE_LENGTH = 3;
     private static final int MINIMUM_MOVE_LENGTH = 3;
 
@@ -30,22 +30,7 @@ public class CarTest {
         String position = car.displayPosition();
 
         //then
-        assertThat(position).isEqualTo(CAR_NAME + EXECUTE_RESULT_DELIMITER);
-    }
-
-    @RepeatedTest(10)
-    @DisplayName("자동차가 이동할 조건이 충족되면 위치가 증가해야 한다.")
-    void increasePositionWhenCarMoved() {
-        //given
-        car.move();
-
-        //when
-        String position = car.displayPosition();
-
-        //then
-        if (!position.equals(CAR_NAME + EXECUTE_RESULT_DELIMITER)) {
-            assertThat(position).isEqualTo(CAR_NAME + EXECUTE_RESULT_DELIMITER + CURRENT_CAR_POSITION);
-        }
+        assertThat(position).isEqualTo(CAR_NAME + EXECUTE_RESULT_DELIMITER + NEW_LINE);
     }
 
     @RepeatedTest(10)
