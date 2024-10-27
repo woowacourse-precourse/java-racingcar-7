@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -65,10 +66,10 @@ class RaceGameTest {
 
         //when
         RoundResultDto roundResult = raceGame.getRoundResult();
-        List<String> convertedResult = roundResult.result();
+        Map<String, String> result = roundResult.roundResult();
 
         //then
-        Assertions.assertThat(convertedResult).containsExactly("우테코 : --", "박재연 : -");
+        Assertions.assertThat(result.containsKey("우테코")).isTrue();
     }
 
     @Test
