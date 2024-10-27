@@ -25,6 +25,14 @@ public class ScoreBoard {
         return car.getName() + " : " + car.toScoreSymbol();
     }
 
+    private List<String> getWinner(int bestScore) {
+        return carList.stream()
+                .map(car -> (CarImpl) car)
+                .filter(car -> car.checkScore(bestScore))
+                .map(CarImpl::getName)
+                .toList();
+    }
+
     private int getTopScore() {
         int bestScore = carList.stream()
                 .map(car -> (CarImpl) car)
