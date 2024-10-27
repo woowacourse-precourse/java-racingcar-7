@@ -15,6 +15,8 @@ public class Application {
     public void run() {
         output.requestCarsName();
         input.getCars();
+
+        output.requestGameCount();
     }
 
     public static void main(String[] args) {
