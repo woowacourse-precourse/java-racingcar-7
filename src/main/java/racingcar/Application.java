@@ -42,10 +42,17 @@ public class Application {
         int roundToInt = Integer.parseInt(round);
         for(int i = 0; i < roundToInt; i++) {
 
-            for (String key : racingStatus.keySet()) {
+            for (String key: racingStatus.keySet()) {
                 if (Randoms.pickNumberInRange(0, 9) >= 4)
                     racingStatus.get(key).append("-");
             }
+
+            StringBuilder statusOutput = new StringBuilder("실행결과\n");
+            for (String key: racingStatus.keySet()) {
+                statusOutput.append(key).append(" : ").append(racingStatus.get(key)).append("\n");
+            }
+
+            System.out.println(statusOutput);
         }
     }
 }
