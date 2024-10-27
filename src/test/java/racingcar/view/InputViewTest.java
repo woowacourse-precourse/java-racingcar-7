@@ -39,11 +39,11 @@ class InputViewTest {
     @Test
     @DisplayName("시도할 횟수를 입력하는 기능이 잘 수행되야 한다.")
     void getAttemptCount() {
-        int expected = 5;
+        String expected = "5";
         String input = "5";
 
         SystemIn(input);
-        int attemptCount = inputView.getAttemptCount();
+        String attemptCount = inputView.getAttemptCount();
 
         assertEquals(expected, attemptCount);
     }
