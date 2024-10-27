@@ -4,42 +4,47 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.ArrayList;
-// 각 자동차 입력받기
 
 public class Application {
     private static List<String> registerCars() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
         String[] names = input.split(",");
 
         List<String> carNames = new ArrayList<>();
         for (String name : names) {
             name = name.trim(); // 공백 제거
-            if (name.length() <= 5) {
-                carNames.add(name);
-            } else {
-                System.out.println("자동차 이름은 5자 이하만 가능합니다.");
-            }
+            validateCarName(name);
+            carNames.add(name);
         }
         return carNames;
     }
 
-    private static int getMoveCount() {
-        System.out.println("시도할 횟수");
-        int moveCount = 0;
-
-        try {
-            moveCount = Integer.parseInt(Console.readLine());
-            if (moveCount < 1) {
-                throw new IllegalArgumentException();
-            }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+    private static void validateCarName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력하세요.");
         }
-        return moveCount;
     }
 
-    private static void startRace(List<String> carNames, int moveCount) {
+    private static int getMoveCount() {
+        System.out.println("시도할 횟수");
+
+        try {
+           int moveCount = Integer.parseInt(Console.readLine());
+           validateMoveCount(moveCount);
+           return moveCount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자를 입력하세요.");
+        }
+    }
+
+    private static void validateMoveCount(int moveCount) {
+        if (moveCount < 1) {
+            throw new IllegalArgumentException("이동 횟수는 1 이상의 숫자를 입력하세요.");
+        }
+    }
+
+    private static List<Integer> startRace(List<String> carNames, int moveCount) {
         System.out.println("실행 결과");
 
         List<Integer> positions = new ArrayList<>();
@@ -51,10 +56,10 @@ public class Application {
             updatePositions(positions);
             printRaceStatus(carNames, positions);
         }
+        return positions;
     }
 
     private static void updatePositions(List<Integer> positions) {
-
         for (int j = 0; j < positions.size(); j++) {
             if (shouldMove()) {
                 positions.set(j, positions.get(j) + 1);
@@ -75,11 +80,26 @@ public class Application {
         System.out.println();
     }
 
+    private static void printWinners(List<String> carNames, List<Integer> positions) {
+        int maxPosition = positions.stream().max(Integer::compareTo).orElse(0);
+        List<String> winners = findWinners(carNames, positions, maxPosition);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static List<String> findWinners(List<String> carNames, List<Integer> positions, int maxPosition) {
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < positions.size(); i++) {
+            if (positions.get(i) == maxPosition) {
+                winners.add(carNames.get(i));
+            }
+        }
+        return winners;
+    }
+
     public static void main(String[] args) {
-        // 자동차 입력받기
         List<String> carNames = registerCars();
-        // 횟수 입력받기
         int moveCount = getMoveCount();
-        startRace(carNames, moveCount);
+        List<Integer> finalPositions = startRace(carNames, moveCount);
+        printWinners(carNames, finalPositions);
     }
 }
