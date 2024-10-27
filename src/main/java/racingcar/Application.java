@@ -92,29 +92,26 @@ public class Application {
     private static void Input() throws IllegalArgumentException{
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String playerText = Console.readLine();
+//        String playerText = "aa,bb,c";
 
         String[] playerArray = playerText.split(",");
-        try {
-            playerListInput(playerArray);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
-        }
+        playerListInput(playerArray);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        try {
-            N = Integer.parseInt(Console.readLine());
-        }catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해야 합니다.");
-        }
+        N = Integer.parseInt(Console.readLine());
     }
 
     static void playerListInput(String[] playerArray) throws IllegalArgumentException{
         for (String player : playerArray) {
-            if(player.length() <= 5){
-                players.add(player);
-            }else{
-                throw new IllegalArgumentException();
+            if(players.contains(player)){
+                throw new IllegalArgumentException("동일한 이름의 선수가 포함되었습니다.");
             }
+
+            if(player.length() > 5){
+                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            }
+
+            players.add(player);
         }
     }
 }
