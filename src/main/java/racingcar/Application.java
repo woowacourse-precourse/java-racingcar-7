@@ -31,6 +31,8 @@ public class Application {
             carValueAssigner.assignRandomValue(cars);
         }
 
+        carValueAssigner.displayWinner(cars);
+
     }
 
 
@@ -39,7 +41,7 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String numberOfRace = Console.readLine();
-
+        System.out.println();
         int raceCount = Integer.parseInt(numberOfRace);
 
         return raceCount;

@@ -116,7 +116,7 @@ class ApplicationTest extends NsTest {
         cars.add(new Car("페라리", 5));
         cars.add(new Car("람보르기니", 3));
 
-        int raceCount = 1;
+        int raceCount = 2;
         CarValueAssigner carValueAssigner = new CarValueAssigner();
 
         for (int i = 0; i < raceCount; i++) {
@@ -129,6 +129,22 @@ class ApplicationTest extends NsTest {
 
             assertThat(output()).contains("포르쉐 : -", "페라리 : -", "람보르기니 : ");
         }
+
+    }
+
+    @Test
+    public void displayWinnerTest() {
+
+        List<Car> cars = new ArrayList<>();
+
+        CarValueAssigner carValueAssigner = new CarValueAssigner();
+        cars.add(new Car("포르쉐", 4, 3));
+        cars.add(new Car("페라리", 5, 3));
+        cars.add(new Car("람보르기니", 3, 1));
+
+        carValueAssigner.displayWinner(cars);
+
+        assertThat(output()).contains("최종 우승자 : 포르쉐, 페라리");
 
     }
 

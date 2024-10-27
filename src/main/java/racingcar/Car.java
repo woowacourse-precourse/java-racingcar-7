@@ -17,6 +17,13 @@ public class Car {
         this.randomValue = randomValue;
     }
 
+    public Car(String name, int randomValue, int score) {
+        this.name = name;
+        this.randomValue = randomValue;
+        this.score = score;
+    }
+
+
     public int getScore() {
         return score;
     }
