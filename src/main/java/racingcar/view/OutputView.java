@@ -13,9 +13,10 @@ public class OutputView {
                 System.out.print(car.getName() + " : ");
                 List<String> processList = car.getMoveList();
                 System.out.print(String.join("" ,processList.subList(0,Math.min(i + 1, processList.size()))));
+                System.out.println();
             }
+            System.out.println();
         }
-        System.out.println();
     }
 
     public void outputWinnerList(ArrayList<String> winnerList){

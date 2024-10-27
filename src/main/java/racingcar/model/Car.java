@@ -14,8 +14,7 @@ public class Car {
 
     public ArrayList<String> move(int roundNumber){
         for (int i = 0; i < roundNumber ; i++) {
-            RandomNumber.randomNumber();
-            if(RandomNumber.getRandomNum() >= 4){
+            if(RandomNumber.randomNumber() >= 4){
                 moveList.add("-");
             }
         }
