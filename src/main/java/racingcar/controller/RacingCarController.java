@@ -26,19 +26,45 @@ public class RacingCarController {
             for (int i = 0; i < tryCount; i++) {
                 takeTurnOnce(carList);
             }
-
+            List<Car> winners = setWinner(carList);
+            view.printLastWinner(winners);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
 
+    private List<Car> setWinner(List<Car> carList) {
+        List<Car> maxCar = new ArrayList<>();
+        maxCar.add(carList.getFirst());
+        for(int i = 1; i < carList.size(); i++) {
+            if (carList.get(i).getPosition() > maxCar.getFirst().getPosition()) {
+                maxCar.clear();
+                maxCar.add(carList.get(i));
+            } else if (carList.get(i).getPosition() == maxCar.getFirst().getPosition()) {
+                maxCar.add(carList.get(i));
+            }
+        }
+//        int maxPosition = carList.stream()
+//                .mapToInt(Car::getPosition)
+//                .max()
+//                .orElse(0);
+//
+//        // 2. 최댓값과 같은 위치에 있는 자동차들을 maxCar에 추가
+//        for (Car car : carList) {
+//            if (car.getPosition() == maxPosition) {
+//                maxCar.add(car);
+//            }
+//        }
+        return maxCar;
+    }
+
     private void takeTurnOnce(List<Car> carList) {
         for(Car car : carList) {
             int randomValue = Randoms.pickNumberInRange(0, 9);
-            if(randomValue >= 4) {
-                car.move();
-            }
+            car.move(randomValue);
+            view.printRaceStatus(car);
         }
+        System.out.println();
     }
 
     // Car 객체 리스트 생성 함수

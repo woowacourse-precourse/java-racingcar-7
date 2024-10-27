@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.Car;
 
 import java.util.List;
 
@@ -18,5 +19,22 @@ public class RacingCarView {
         }
         // 게임 로직
         return tryCount;
+    }
+    public void printRaceStatus(Car car) {
+        int index = car.getPosition();
+        System.out.print(car.getName()+" : ");
+        for (int i = 0; i < index; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
+    // 최종 우승자 출력
+    public void printLastWinner(List<Car> winners) {
+        System.out.print("최종 우승자 : ");
+        System.out.println(String
+                .join(", ", winners.stream()
+                .map(Car::getName)
+                .toArray(String[]::new)));
     }
 }

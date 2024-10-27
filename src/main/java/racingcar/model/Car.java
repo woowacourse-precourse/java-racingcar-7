@@ -19,7 +19,9 @@ public class Car {
         return position;
     }
 
-    public void move() {
-        position++;
+    public void move(int randomValue) {
+        if (randomValue >= 4) {
+            position++;
+        }
     }
 }

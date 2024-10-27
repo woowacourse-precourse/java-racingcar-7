@@ -18,6 +18,16 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
+    void 기능2_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "2");
+                    assertThat(output()).contains("pobi : --", "woni : -", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
@@ -27,6 +37,7 @@ class ApplicationTest extends NsTest {
             MOVING_FORWARD, STOP
         );
     }
+
 
     @Test
     void 예외_테스트() {
