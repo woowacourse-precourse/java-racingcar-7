@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -72,6 +73,34 @@ public class Racing {
             return Integer.valueOf(cntString);
         } catch (Exception e) {
             throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
+        }
+    }
+
+    private void attemptsMoving() {
+        for (int i = 0; i < attemptsCnt; i++) {
+            movingCarsInTurn();
+        }
+    }
+
+    private Integer getRandomNum() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private Boolean isOver4(Integer randomNum) {
+        return randomNum >= 4;
+    }
+
+    private void moveForward(String name) {
+        String current = racingCars.get(name);
+        racingCars.put(name, current + "-");
+    }
+
+    private void movingCarsInTurn() {
+        for (String name : racingCars.keySet()) {
+            Integer randomNum = getRandomNum();
+            if (isOver4(randomNum)) {
+                moveForward(name);
+            }
         }
     }
 }
