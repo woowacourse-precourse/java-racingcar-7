@@ -38,15 +38,11 @@ public class Application {
 
         for (int i = 0; i < tryCount; i++) {
             moveCars(carPositions);
-
-            // 차수별 실행 결과 출력
-            for (Map.Entry<String, Integer> car : carPositions.entrySet()) {
-                System.out.println(car.getKey() + " : " + "-".repeat(car.getValue()));
-            }
-            System.out.println();
+            printRaceStatus(carPositions);
         }
 
         List<String> winners = findWinners(carPositions);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     private static void moveCars(Map<String, Integer> carPositions) {
@@ -55,6 +51,13 @@ public class Application {
                 carPositions.put(name, position + 1);
             }
         });
+    }
+
+    private static void printRaceStatus(Map<String, Integer> carPositions) {
+        carPositions.forEach((name, position) -> {
+            System.out.println(name + " : " + "-".repeat(position));
+        });
+        System.out.println();
     }
 
     private static List<String> findWinners(Map<String, Integer> cars) {
