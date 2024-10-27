@@ -10,7 +10,12 @@ public class Car {
     }
 
     public void move(){
-        distance++;
+        if(canMove())
+            distance++;
+    }
+
+    private boolean canMove(){
+        return (int)(Math.random() * 10) >= 4;
     }
 
     public void printCurrentDistance(){
