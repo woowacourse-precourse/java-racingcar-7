@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 class CarNameTest {
     @DisplayName("자동차 이름은 5자이하여야한다.")
     @Test
-    void carName() throws Exception{
+    void carNameSmallerOrEqualThan5() throws Exception{
         //given
         String name = "123456";
 
@@ -18,5 +18,17 @@ class CarNameTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자 이하여야합니다.");
     }
+
+    @DisplayName("자동차 이름은 공백일 수 없다.")
+    @Test
+    void carNameCantBlank() throws Exception{
+        //given
+        String name = " ";
+        //when & the
+        assertThatThrownBy(() -> new CarName(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 공백이면 안됩니다.");
+
+     }
 
 }
