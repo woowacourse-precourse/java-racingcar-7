@@ -8,7 +8,7 @@ import racingcar.view.OutputView;
 public class RaceController {
     public void start() {
         InputView inputView = new InputView();
-        OutputView outputView = OutputView.getInstance();
+        OutputView outputView = new OutputView();
 
         String carsNames = inputView.inputCarName();
         String repeatTimes = inputView.inputRepeatTimes();
