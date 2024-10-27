@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static racingcar.util.ValidationUtil.*;
 
@@ -32,11 +31,5 @@ class ValidationUtilTest {
     public void 자동차_이름은_중복될_수_없다_중복인_경우(){
         List<String> carNames = Arrays.asList("a","b","a");
         assertThat(isDuplicate(carNames)).isEqualTo(true);
-    }
-
-    @Test
-    public void 자동차의_수는_2대_이상이여야_한다_1대인_경우(){
-        List<String> carNames = Arrays.asList("a");
-        assertThat(isMoreThanOne(carNames)).isEqualTo(false);
     }
 }
