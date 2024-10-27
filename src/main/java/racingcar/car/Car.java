@@ -36,7 +36,7 @@ public class Car {
         return  Randoms.pickNumberInRange(RANDOM_MIN_VALUE, RANDOM_MAX_VALUE);
     }
 
-    public String printStatus(){
+    public String getRaceStatus(){
         return name + COLON_WITH_BLANK + HYPHAN.repeat(status);
     }
 

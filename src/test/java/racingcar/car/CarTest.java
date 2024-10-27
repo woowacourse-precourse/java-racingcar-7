@@ -46,17 +46,17 @@ class CarTest {
     @Test
     void Given_RandomNumberOverFour_When_NumIsFourTwice_Then_PrintTwice() {
         car.move(4);
-        assertThat(car.printStatus()).isEqualTo("a : -");
+        assertThat(car.getRaceStatus()).isEqualTo("a : -");
         car.move(4);
-        assertThat(car.printStatus()).isEqualTo("a : --");
+        assertThat(car.getRaceStatus()).isEqualTo("a : --");
     }
 
     @DisplayName("얼마나 이동했는지를 나타내는 `-`표시가 올바르게 출력되는지 확인한다.")
     @Test
     void Given_RandomNumberOverFourUnderThree_When_NumIsCorrect_Then_PrintOne() {
         car.move(4);
-        assertThat(car.printStatus()).isEqualTo("a : -");
+        assertThat(car.getRaceStatus()).isEqualTo("a : -");
         car.move(3);
-        assertThat(car.printStatus()).isEqualTo("a : -");
+        assertThat(car.getRaceStatus()).isEqualTo("a : -");
     }
 }

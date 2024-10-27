@@ -15,7 +15,7 @@ public class OutputManager {
     }
 
     public static void printCurrent(Car car) {
-        System.out.println(car.printStatus());
+        System.out.println(car.getRaceStatus());
     }
 
     public static void printWinner(List<Car> winners) {
