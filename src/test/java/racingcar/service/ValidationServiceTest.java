@@ -68,7 +68,7 @@ class ValidationServiceTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> ValidationService.validateCarNames(List.of("a", "b", "")))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(ErrorMessage.ENDS_WITH_COMMA.getMessage())
+                        .hasMessage(ErrorMessage.MISSING_CAR_NAME.getMessage())
         );
     }
 
