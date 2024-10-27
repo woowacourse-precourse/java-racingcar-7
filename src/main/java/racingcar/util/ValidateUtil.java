@@ -1,5 +1,8 @@
 package racingcar.util;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ValidateUtil {
     private static final String SPLIT_REGEX_PREFIX = ",";
     private static final String SPACING_PREFIX = " ";
@@ -7,6 +10,14 @@ public class ValidateUtil {
     public static void validateCar(String input) {
         if (input.isBlank() || input.contains(SPACING_PREFIX) || !input.contains(SPLIT_REGEX_PREFIX) || input.split(SPLIT_REGEX_PREFIX).length == 1)
             throw new IllegalArgumentException("Error in Car name input.");
+        validateCarNameLength(Arrays.stream(input.split(SPLIT_REGEX_PREFIX)).toList());
+    }
+
+    private static void validateCarNameLength(List<String> carNames) {
+        carNames.forEach(car -> {
+            if (car.length() >= 5)
+                throw new IllegalArgumentException("Car name's length must be less than 5");
+        });
     }
 
     public static void validateAttemptCount(String attemptCount) {
