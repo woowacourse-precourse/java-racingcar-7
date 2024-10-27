@@ -3,6 +3,7 @@ package racingcar.validator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import racingcar.message.ErrorMessage;
 
 public class CarNameValidator {
     private final static int MAX_LENGTH = 5;
@@ -40,25 +41,25 @@ public class CarNameValidator {
 
     public void validateBlank(String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException("입력은 공백일 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.COMMON_INPUT_BLANK_ERROR.getMessage());
         }
     }
 
     public void validateContainComma(String input) {
         if (!input.contains(DELIM)) {
-            throw new IllegalArgumentException("입력에 구분자 ,를 포함해주세요.");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_SEPARATOR_ERROR.getMessage());
         }
     }
 
     public void validateDuplicate(String carName) {
         if (validCarNames.contains(carName)) {
-            throw new IllegalArgumentException("이름은 중복될 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_NOT_DUPLICATE_ERROR.getMessage());
         }
     }
 
     public void validateMoreThanFive(String carName) {
         if (carName.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException("이름이 5자 이상일 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LENGTH_EXCEEDED_ERROR.getMessage());
         }
     }
 
