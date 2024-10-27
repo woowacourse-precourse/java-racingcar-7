@@ -3,27 +3,17 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 public class CarNameInput {
-    // 자동차 이름 세팅 메소드
     public static String[] settingCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
-
-        // 연속된 쉼표가 있는지 검사
         checkForConsecutiveCommas(input);
-
-        // 입력값 쉼표 기준으로 나누어 저장
         String[] inputData = input.split(",");
-
-        // 자동차 개수 체크
         carNumCheck(inputData);
 
         // 유요한 이름만 저장할 배열 생성
         String[] validCarNames = new String[inputData.length];
-
-        // 이름 길이 체크
         nameLengthCheck(inputData, validCarNames);
 
-        // settingCarName()메소드의 반환값
         return validCarNames;
     }
 
@@ -52,7 +42,6 @@ public class CarNameInput {
             }
             validCarNames[index++] = name;
         }
-        // nameLengthCheck()메소드의 반환값
         return validCarNames;
     }
 }
