@@ -123,26 +123,18 @@ public class Application {
     private static String getWinner(Car[] cars){
         int max = 0;
         List<String> winners = new ArrayList<>();
-        String winner = "";
-
-        for(Car car : cars){
-            winners.add(car.getName());
-        }
 
         for(Car car : cars){
             if(car.getLocation() > max){
                 max = car.getLocation();
-                winner = car.getName();
+                winners.clear();
+                winners.add(car.getName());
             }
-            else if(car.getLocation() == max && max != 0){
-                winner = winner + ", " + car.getName();
+            else if(car.getLocation() == max){
+                winners.add(car.getName());
             }
         }
 
-        if(winner.isEmpty()) {
-            winner = String.join(", ", winners);
-        }
-
-        return winner;
+        return String.join(", ", winners);
     }
 }
