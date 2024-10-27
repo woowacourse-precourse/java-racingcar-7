@@ -25,16 +25,20 @@ public class CarRaceController {
 
     private void validateCarNames(String carNamesInput) {
         String[] carNames = carNamesInput.split(",");
+        validateCarNameCount(carNames);
+        validateIndividualCarNames(carNames);
+    }
 
-        // 유효성 검사: 자동차 이름이 하나 이상인지 확인
+    private void validateCarNameCount(String[] carNames) {
         if (carNames.length < 2) {
-            throw new IllegalArgumentException("하나 이상의 자동차 이름을 입력해주세요."); // 예외 발생
+            throw new IllegalArgumentException("하나 이상의 자동차 이름을 입력해주세요.");
         }
+    }
 
-        // 유효성 검사: 공백 및 빈 문자열 검사
+    private void validateIndividualCarNames(String[] carNames) {
         for (String name : carNames) {
             if (name.trim().isEmpty()) {
-                throw new IllegalArgumentException("공백 없이 입력해주세요."); // 예외 발생
+                throw new IllegalArgumentException("공백 없이 입력해주세요.");
             }
         }
     }
