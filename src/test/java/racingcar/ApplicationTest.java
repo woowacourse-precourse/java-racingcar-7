@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -23,10 +25,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 예외_테스트() {
+    @ParameterizedTest
+    @CsvSource(value = {
+            "pobi,javaji / 1",
+            "A ,B,C / 2",
+            "112,112,BBC / 3",
+            "^^*,1a,2b,3c / 4",
+            ",a,b, / 5",
+            "한글이름,AA,BB,CC / 6",
+            "name1,name2,name3 / a",
+            "name1,name2,name2 / "
+    }, delimiter = '/')
+    void 예외_테스트(String carNames, String trialCount) {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+            assertThatThrownBy(() -> runException(carNames, trialCount))
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
