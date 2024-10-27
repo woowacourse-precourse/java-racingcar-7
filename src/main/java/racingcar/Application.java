@@ -14,7 +14,12 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputRaceTime = Console.readLine();
-        int raceTime = Integer.parseInt(inputRaceTime);
+        int raceTime;
+        try {
+            raceTime = Integer.parseInt(inputRaceTime);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("올바른 시도 횟수를 입력하세요");
+        }
 
         RaceSystem raceSystem = new RaceSystem(carNames, raceTime);
         String result = raceSystem.startRace();
