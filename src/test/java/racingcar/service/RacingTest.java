@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.CarNameDuplicationException;
 import racingcar.exception.CarNameEmptyException;
 import racingcar.exception.CarNameSeparatorException;
@@ -20,31 +22,42 @@ public class RacingTest {
         assertThat(racing.getRacingCars().get(1).getCarName()).isEqualTo("woni");
     }
 
-    @Test
-    void racing_자동차_이름_구분자_예외() {
+    @ParameterizedTest
+    @ValueSource(strings = {"pobiwoni", "pobi", "pobi.woni", "pobi;woni", "pobi!woni", "pobi랑woni"})
+    void racing_자동차_이름_구분자_예외(String input) {
         assertThatThrownBy(() -> {
-            String input = "pobiwoni";
             Racing racing = new Racing(input);
         }).isInstanceOf(CarNameSeparatorException.class)
                 .hasMessageContaining(ExceptionMessage.CAR_NAME_SEPARATOR_EXCEPTION_MESSAGE.getMessage());
     }
 
-    @Test
-    void racing_빈_자동차_이름_예외() {
+    @ParameterizedTest
+    @ValueSource(strings = {",woni", "pobi,", " ,", "pobi, ", " ,woni", ",", ", "})
+    void racing_빈_자동차_이름_예외(String input) {
         assertThatThrownBy(() -> {
-            String input = ",woni";
             Racing racing = new Racing(input);
         }).isInstanceOf(CarNameEmptyException.class)
                 .hasMessageContaining(ExceptionMessage.CAR_NAME_EMPTY_EXCEPTION_MESSAGE.getMessage());
     }
 
-    @Test
-    void racing_자동차_이름_중복_예외() {
+    @ParameterizedTest
+    @ValueSource(strings = {"woni,woni", "pobi,pobi", "pobi,woni,woni"})
+    void racing_자동차_이름_중복_예외(String input) {
         assertThatThrownBy(() -> {
-            String input = "woni,woni";
             Racing racing = new Racing(input);
         }).isInstanceOf(CarNameDuplicationException.class)
                 .hasMessageContaining(ExceptionMessage.CAR_NAME_DUPLICATION_EXCEPTION_MESSAGE.getMessage());
+    }
+
+    @Test
+    void racing_자동차_모드_미설정() {
+        String input = "pobi,woni";
+        Racing racing = new Racing(input);
+
+        assertThat(racing.getRacingCars().get(0).getMode()).isEqualTo("PracticeCar");
+        assertThat(racing.getRacingCars().get(0).getMoveDistance()).isEqualTo(0);
+        assertThat(racing.getRacingCars().get(1).getMode()).isEqualTo("PracticeCar");
+        assertThat(racing.getRacingCars().get(1).getMoveDistance()).isEqualTo(0);
     }
 
     @Test
