@@ -5,9 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,10 +29,18 @@ class ViewTest {
 
     @Test
     void 실행_결과는_자동차_이름_입력순으로_보여준다() {
-        Map<String, StringBuilder> roundResult = new LinkedHashMap<>();
-        roundResult.put("test1", new StringBuilder("-"));
-        roundResult.put("test2", new StringBuilder("--"));
-        roundResult.put("test3", new StringBuilder("---"));
+        List<Car> roundResult = new ArrayList<>();
+        roundResult.add(new Car("test1"));
+        roundResult.add(new Car("test2"));
+        roundResult.add(new Car("test3"));
+
+        int attempts = 1;
+        for (Car car : roundResult) {
+            for(int i=1; i<=attempts; i++) {
+                car.moveForward();
+            }
+            attempts++;
+        }
 
         view.print(roundResult);
 
@@ -49,7 +55,7 @@ class ViewTest {
         winners.add("test2");
         winners.add("test3");
 
-        view.print(winners);
+        view.printFinalResult(winners);
 
         String expectedOutput = "최종 우승자 : test1, test2, test3";
         assertEquals(expectedOutput, outputStreamCaptor.toString());
