@@ -3,6 +3,9 @@ package separator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -20,17 +23,15 @@ class InputSeparatorTest {
         Assertions.assertThat(output).containsExactlyElementsOf(expected);
     }
 
-    @Test
-    @DisplayName("자동차 이름 구분 예외 테스트(null, blank)")
-    void split_X() {
+    @ParameterizedTest
+    @DisplayName("자동차 이름 구분 예외 테스트")
+    @NullAndEmptySource
+    void split_X(String empty) {
         //when
-        String valueOfBlank = "";
-        String valueOfNull = null;
         String valueOfSpace = " ,  ";
         //then
-        assertThrows(IllegalArgumentException.class, () -> Separator.split(valueOfBlank));
-        assertThrows(IllegalArgumentException.class, () -> Separator.split(valueOfNull));
-        assertThrows(IllegalArgumentException.class, () -> Separator.split(valueOfSpace));
+        assertThrows(IllegalArgumentException.class, () -> InputSeparator.split(empty));
+        assertThrows(IllegalArgumentException.class, () -> InputSeparator.split(valueOfSpace));
     }
 
     @Test
@@ -38,7 +39,7 @@ class InputSeparatorTest {
         //when
         String repeatedSeparator = "pobi,woni,,jun";
         //then
-        assertThrows(IllegalArgumentException.class, () -> Separator.split(repeatedSeparator));
+        assertThrows(IllegalArgumentException.class, () -> InputSeparator.split(repeatedSeparator));
     }
 
     @Test
@@ -46,6 +47,7 @@ class InputSeparatorTest {
         //when
         String duplicatedName = "pobi,jun,pobi";
         //then
-        assertThrows(IllegalArgumentException.class, () -> Separator.split(duplicatedName));
+        assertThrows(IllegalArgumentException.class, () -> InputSeparator.split(duplicatedName));
+    }
     }
 }
