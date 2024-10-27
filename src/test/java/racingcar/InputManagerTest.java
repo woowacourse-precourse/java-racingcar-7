@@ -26,7 +26,7 @@ class InputManagerTest {
         System.setIn(in);
 
         // When
-        int rounds = InputManager.getGameRound();
+        int rounds = InputManager.readGameRound();
 
         // Then
         assertThat(rounds).isEqualTo(5);
@@ -43,7 +43,7 @@ class InputManagerTest {
         System.setIn(in);
 
         // When
-        int rounds = InputManager.getGameRound();
+        int rounds = InputManager.readGameRound();
 
         // Then
         assertThat(rounds).isEqualTo(2147483647);
@@ -60,7 +60,7 @@ class InputManagerTest {
         // When
 
         // Then
-        assertThatThrownBy(InputManager::getGameRound)
+        assertThatThrownBy(InputManager::readGameRound)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("게임 횟수가 입력되지 않았습니다.");
     }
@@ -75,7 +75,7 @@ class InputManagerTest {
         System.setIn(in);
         // When
         // Then
-        assertThatThrownBy(InputManager::getGameRound)
+        assertThatThrownBy(InputManager::readGameRound)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("게임 횟수가 입력되지 않았습니다.");
     }
@@ -91,7 +91,7 @@ class InputManagerTest {
 
         // When
         // Then
-        assertThatThrownBy(InputManager::getGameRound)
+        assertThatThrownBy(InputManager::readGameRound)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("게임 횟수는 1 이상이어야 합니다.");
     }
@@ -107,9 +107,9 @@ class InputManagerTest {
 
         // When
         // Then
-        assertThatThrownBy(InputManager::getGameRound)
+        assertThatThrownBy(InputManager::readGameRound)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("게임 횟수는 정수 범위 안 이어야 합니다.");
+                .hasMessage("게임 횟수는 숫자이며, 정수 범위 안이어야 합니다.");
     }
 
     @DisplayName("숫자가 아닌 입력값만 들어왔을 때, 에러 메시지가 발생한다.")
@@ -123,9 +123,9 @@ class InputManagerTest {
 
         // When
         // Then
-        assertThatThrownBy(InputManager::getGameRound)
+        assertThatThrownBy(InputManager::readGameRound)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("게임 횟수 입력값이 숫자가 아닙니다.");
+                .hasMessage("게임 횟수는 숫자이며, 정수 범위 안이어야 합니다.");
     }
 
     @DisplayName("숫자가 아닌 입력값이 숫자와 같이 들어왔을 때, 에러 메시지가 발생한다.")
@@ -139,8 +139,8 @@ class InputManagerTest {
 
         // When
         // Then
-        assertThatThrownBy(InputManager::getGameRound)
+        assertThatThrownBy(InputManager::readGameRound)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("게임 횟수 입력값이 숫자가 아닙니다.");
+                .hasMessage("게임 횟수는 숫자이며, 정수 범위 안이어야 합니다.");
     }
 }
