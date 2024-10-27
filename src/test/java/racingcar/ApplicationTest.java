@@ -98,6 +98,15 @@ class ApplicationTest extends NsTest {
         assertEquals("경기 횟수는 음수가 될 수 없습니다.", ex.getMessage());
     }
 
+
+    @Test
+    @DisplayName("자동차 경주 횟수는 숫자만 가능")
+    void CarRaceInputOnlyNumber() {
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> service.init("car", "error"));
+        assertEquals("경기 횟수는 숫자가 입력되어야 합니다.", ex.getMessage());
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
