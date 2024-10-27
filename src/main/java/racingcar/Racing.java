@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarRacing {
+public class Racing {
 
     public List<Car> settingCar(String[] carNames){
         List<Car> carList = new ArrayList<>();
@@ -18,7 +18,7 @@ public class CarRacing {
         return carList;
     }
 
-    public int racing(List<Car> carList, int numberOfMoves) {
+    public int start(List<Car> carList, int numberOfMoves) {
         int maxLocation = 0;
         for (int i = 0; i < numberOfMoves; i++) {
             for (Car car : carList) {

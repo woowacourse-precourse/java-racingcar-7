@@ -8,8 +8,8 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNames = Input.readCarNames();
 
-        CarRacing carRacing = new CarRacing();
-        List<Car> carList = carRacing.settingCar(carNames);
+        Racing racing = new Racing();
+        List<Car> carList = racing.settingCar(carNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int numberOfMoves = Input.readNumberOfMoves();
@@ -17,9 +17,9 @@ public class Application {
         System.out.println();
         System.out.println("실행 결과");
 
-        int maxLocation = carRacing.racing(carList, numberOfMoves);
+        int maxLocation = racing.start(carList, numberOfMoves);
 
-        List<String> winners = carRacing.getCarNamesAtLocation(carList, maxLocation);
+        List<String> winners = racing.getCarNamesAtLocation(carList, maxLocation);
 
         String result = String.join(",", winners);
 

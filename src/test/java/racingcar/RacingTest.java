@@ -6,16 +6,16 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class CarRacingTest {
+public class RacingTest {
 
     @Test
     @DisplayName("차량 세팅 테스트")
     void car_setting_test() {
-        CarRacing carRacing = new CarRacing();
+        Racing racing = new Racing();
 
         String[] carNames = {"car1", "car2", "car3"};
 
-        List<Car> carList = carRacing.settingCar(carNames);
+        List<Car> carList = racing.settingCar(carNames);
 
         Assertions.assertThat(carList.get(0).getName()).isEqualTo("car1");
         Assertions.assertThat(carList.get(1).getName()).isEqualTo("car2");
@@ -47,17 +47,17 @@ public class CarRacingTest {
     @Test
     @DisplayName("우승자 반환 테스트")
     void winner_Test() {
-        CarRacing carRacing = new CarRacing();
+        Racing racing = new Racing();
 
         String[] carNames = {"car1", "car2", "car3"};
 
-        List<Car> carList = carRacing.settingCar(carNames);
+        List<Car> carList = racing.settingCar(carNames);
 
         carList.get(0).move();
         carList.get(2).move();
 
-        Assertions.assertThat(carRacing.getCarNamesAtLocation(carList, 1).size()).isEqualTo(2);
-        Assertions.assertThat(carRacing.getCarNamesAtLocation(carList, 1).get(0)).isEqualTo("car1");
-        Assertions.assertThat(carRacing.getCarNamesAtLocation(carList, 1).get(1)).isEqualTo("car3");
+        Assertions.assertThat(racing.getCarNamesAtLocation(carList, 1).size()).isEqualTo(2);
+        Assertions.assertThat(racing.getCarNamesAtLocation(carList, 1).get(0)).isEqualTo("car1");
+        Assertions.assertThat(racing.getCarNamesAtLocation(carList, 1).get(1)).isEqualTo("car3");
     }
 }
