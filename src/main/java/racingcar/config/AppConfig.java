@@ -15,15 +15,19 @@ public class AppConfig {
     private InputView inputView() {
         return new InputView();
     }
+
     private OutputView outputView() {
         return new OutputView();
     }
+
     private RacingGameService racingGameService() {
         return new RacingGameService(outputView());
     }
+
     private CarSetupService carSetupService() {
         return new CarSetupService(inputValidator());
     }
+
     private InputValidator inputValidator() {
         return new InputValidator();
     }

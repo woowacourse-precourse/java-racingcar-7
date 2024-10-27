@@ -46,11 +46,11 @@ public class RacingGameController {
     }
 
     private void raceGame(List<Car> cars, int count) {
-        racingGameService.raceGame(cars,count);
+        racingGameService.raceGame(cars, count);
     }
 
     private void displayWinners(List<Car> cars) {
-        List<String>winners = racingGameService.findWinners(cars);
+        List<String> winners = racingGameService.findWinners(cars);
         outputView.displayWinner(winners);
     }
 }
