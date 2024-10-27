@@ -1,9 +1,11 @@
 package racingcar;
 
 public class TryNumbersValidator {
-    public void validate(String tryNums) {
+
+    public Long validate(String tryNums) {
         validateBlank(tryNums);
         validateNumeric(tryNums);
+        return Long.parseLong(tryNums);
     }
 
     public void validateNumeric(String tryNums) {
@@ -19,5 +21,5 @@ public class TryNumbersValidator {
             throw new IllegalArgumentException("공백 값은 허용하지 않습니다.");
         }
     }
-    
+
 }
