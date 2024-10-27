@@ -10,6 +10,8 @@ public class Racing {
     public List<Car> cars = new ArrayList<>();
     public int trialCount;
 
+    private static final int MOVING_NUMBER = 4;
+
     public Racing(String inputCars, String inputTrialCount) {
         List<String> carNames = Parser.parseCarNames(inputCars);
         for (String carName : carNames) {
@@ -21,7 +23,7 @@ public class Racing {
 
     public void runRace() {
         for (Car car : cars) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            if (Randoms.pickNumberInRange(0, 9) >= MOVING_NUMBER) {
                 car.move();
             }
         }
@@ -33,7 +35,6 @@ public class Racing {
         cars.forEach(car -> System.out.println(car.getName() + " : " + car.getMoveString()));
         System.out.println();
     }
-
 
     public String createWinnerList() {
         int winnerScore = getWinnerScore();
