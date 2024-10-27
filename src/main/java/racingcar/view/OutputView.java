@@ -6,12 +6,16 @@ import racingcar.model.Car;
 
 public class OutputView {
 
-    public void outputProcess(int roundNumber,Car car){
+    public void outputProcess(int roundNumber){
+        System.out.println("실행 결과");
         for (int i = 0; i < roundNumber; i++) {
-            System.out.print(Car.getCarList().get(i).getName() + " : ");
-            List<String> processList = Car.getCarList().get(i).getMoveList();
-            System.out.print(String.join(", " ,processList.subList(0,i)));
+            for (Car car : Car.getCarList()) {
+                System.out.println(car.getName() + " : ");
+                List<String> processList = car.getMoveList();
+                System.out.print(String.join(", " ,processList.subList(0,i+1)));
+            }
         }
+        System.out.println();
     }
     public void outputWinnerList(ArrayList<String> winnerList){
         System.out.print("최종 우승자 : ");
