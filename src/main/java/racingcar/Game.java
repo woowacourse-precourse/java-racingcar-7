@@ -6,8 +6,17 @@ import java.util.List;
 import java.util.Optional;
 
 public class Game {
+    private final Integer round;
+    private final List<RacingCar> racingCars;
 
-    private final List<RacingCar> racingCars = new ArrayList<>();
+    public Game(Integer round) {
+        this.round = round;
+        this.racingCars = new ArrayList<>();
+    }
+
+    public Integer getRound() {
+        return round;
+    }
 
     public List<RacingCar> getRacingCars() {
         return racingCars;

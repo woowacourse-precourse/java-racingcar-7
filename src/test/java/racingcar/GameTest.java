@@ -13,7 +13,7 @@ class GameTest {
     @DisplayName("score가 가장 높은사람이 1명일 경우, 우승자는 1명이다.")
     void selectWinner_one() {
         // given
-        Game game = new Game();
+        Game game = new Game(5);
         game.getRacingCars().add(createRacingCar("dean"));
         game.getRacingCars().add(createRacingCar("yuze"));
         game.getRacingCars().add(createRacingCar("woodz"));
@@ -32,7 +32,7 @@ class GameTest {
     @DisplayName("score가 가장 높은사람이 2명일 경우 우승자는 2명이다.")
     void selectWinner_two() {
         // given
-        Game game = new Game();
+        Game game = new Game(5);
         game.getRacingCars().add(createRacingCar("dean"));
         game.getRacingCars().add(createRacingCar("yuze"));
         game.getRacingCars().add(createRacingCar("woodz"));
@@ -52,7 +52,7 @@ class GameTest {
     @DisplayName("모든 참가자의 score가 동점일 경우 우승자는 전체다.")
     void selectWinner_all() {
         // given
-        Game game = new Game();
+        Game game = new Game(5);
         game.getRacingCars().add(createRacingCar("dean"));
         game.getRacingCars().add(createRacingCar("yuze"));
         game.getRacingCars().add(createRacingCar("woodz"));
