@@ -34,6 +34,22 @@ public class Racing {
         return currentPosition;
     }
 
+    public List<String> getFirstPlaceCar() {
+        long firstPlacePosition = getFirstPlacePosition();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == firstPlacePosition)
+                .map(Car::getName)
+                .toList();
+    }
+
+    private long getFirstPlacePosition() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .max(Long::compare)
+                .orElse(0L);
+    }
+
     private void validatePlayableRound() {
         if (currentRounds >= totalRounds) {
             throw new IllegalArgumentException("진행할 수 있는 모든 라운드를 진행하였습니다.");
