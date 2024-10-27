@@ -28,6 +28,9 @@ public class GameController {
     private void playRound(List<Car> cars) {
         for(Car car:cars) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (randomNumber >= 4) {
+                car.goForward();
+            }
         }
     }
 }
