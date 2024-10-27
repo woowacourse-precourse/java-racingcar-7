@@ -20,14 +20,22 @@ public class RaceController {
 
     public void run() {
         String inputCarNames = inputView.inputCarNames();
+        int tryCount = inputView.inputTryCount();
+
         String[] carNames = raceService.splitCarNames(inputCarNames);
         List<Car> cars = raceService.createCars(carNames);
-
-        int tryCount = inputView.inputTryCount();
 
         Race race = new Race(cars, tryCount);
 
         System.out.println();
         outputView.outputResultMessage();
+        for (int i = 0; i < race.getTryCount(); i++) {
+            race.playOneRound();
+            outputView.outputOneRoundResult(race.getCars());
+            System.out.println();
+        }
+
+        List<String> winners = race.getWinners();
+        outputView.outputWinners(winners);
     }
 }
