@@ -77,4 +77,17 @@ class RacingCarsTest {
         assertThatList(names).isEqualTo(List.of("B", "C"));
     }
 
+    @Test
+    @DisplayName("자동차 이름들로 자동차 리스트를 만들 수 있다.")
+    public void createRacingCarsWithNames() {
+        List<String> names = List.of("a", "b", "c");
+
+        RacingCars racingCars = RacingCars.from(names);
+        List<RacingCar> result = racingCars.getRacingCars();
+
+        assertThat(result.get(0).getName()).isEqualTo("a");
+        assertThat(result.get(1).getName()).isEqualTo("b");
+        assertThat(result.get(2).getName()).isEqualTo("c");
+    }
+
 }
