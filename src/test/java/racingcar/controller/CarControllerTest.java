@@ -37,8 +37,8 @@ class CarControllerTest {
         cars.get(0).move();
         cars.get(1).move();
 
-        List<Car> winners = new ArrayList<>();
-        winners.add(cars.get(0));
+        List<String> winners = new ArrayList<>();
+        winners.add(cars.get(0).getName());
         CarController carController = new CarController();
         assertEquals(carController.getWinner(cars, carController.getMostMovedCar(cars)), winners);
     }
