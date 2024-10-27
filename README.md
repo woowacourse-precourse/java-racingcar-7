@@ -24,10 +24,12 @@
 -[X] 우승자 결정
 -[X] 시도 횟수를 다 채웠는지 확인
 
-## NameExtractor
+## UserInputProcessor
 
--[ ] 자동차 이름 입력에서 이름 추출
+-[X] 자동차 이름 재가공
+    - 자동차 이름 입력에서 이름 추출
     - 이름 쉼표(,) 기준으로 구분
+-[ ] 시도 횟수 재가공
 
 ## RacingCarController
 
