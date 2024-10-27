@@ -27,4 +27,19 @@ public class RacingCar implements Car{
         return oilGauge >= engine.getOilConsumption();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public Long getMileage() {
+        return mileage;
+    }
+
+    public Long oilStatus() {
+        return oilGauge;
+    }
 }
