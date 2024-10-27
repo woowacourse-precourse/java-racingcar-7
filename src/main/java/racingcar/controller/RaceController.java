@@ -19,7 +19,6 @@ public class RaceController {
         int count = inputView.receiveCount();
 
         outputView.printRaceResultPhrase();
-
         for (int i = 0; i < count; i++) {
             race(cars);
         }

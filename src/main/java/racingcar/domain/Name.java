@@ -22,7 +22,6 @@ public class Name {
         private static String validate(String name) {
             validateLength(name);
             validateEnglish(name);
-
             return name;
         }
 

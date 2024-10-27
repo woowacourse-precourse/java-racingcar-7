@@ -61,7 +61,6 @@ public class Cars {
         private static List<String> validate(List<String> names) {
             validateParticipant(names);
             validateDuplicateName(names);
-
             return names;
         }
 

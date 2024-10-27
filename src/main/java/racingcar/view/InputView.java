@@ -29,7 +29,6 @@ public class InputView {
 
         private static List<String> validateName(String input) {
             validateSeparator(input);
-
             return split(input, NAME_SEPARATOR_SYMBOL);
         }
 

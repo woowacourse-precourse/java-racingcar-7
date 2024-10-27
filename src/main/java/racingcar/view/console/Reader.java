@@ -15,7 +15,6 @@ public class Reader {
             if (isBlank(input)) {
                 throw new RaceException(ErrorMessage.INVALID_INPUT_BLANK);
             }
-
             return input;
         }
 
