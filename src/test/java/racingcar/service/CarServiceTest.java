@@ -13,4 +13,12 @@ public class CarServiceTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.");
     }
+
+    @DisplayName("시도할 횟수가 1 미만인 경우 IllegalArgumentException 발생")
+    @Test
+    void moveCountLessThan1() {
+        assertThatThrownBy(() -> new CarService().setMoveCount(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도할 횟수는 1 이상이어야 합니다.");
+    }
 }
