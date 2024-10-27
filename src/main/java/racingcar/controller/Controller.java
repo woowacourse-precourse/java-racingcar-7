@@ -10,7 +10,6 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Controller {
-    private static final String CURRENT_LOCATION = "";
     private static final String SEPARATOR = ",";
     private final InputView inputView;
     private final OutputView outputView;
@@ -24,7 +23,7 @@ public class Controller {
         List<String> eachCarName = List.of(carsName.split(SEPARATOR));
         List<Car> carList = new ArrayList<>();
         for (String name : eachCarName) {
-            Car car = new Car(name, CURRENT_LOCATION);
+            Car car = new Car(name);
             carList.add(car);
         }
         return carList;
