@@ -14,7 +14,13 @@ public class RacingGameView {
 
     public int getRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        String round = Console.readLine();
+
+        try {
+            return Integer.parseInt(round);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("횟수는 정수여야 합니다.");
+        }
     }
 
     public void printStatus(List<Car> cars) {
