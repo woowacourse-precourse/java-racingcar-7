@@ -3,7 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputHandlerTest extends NsTest {
@@ -11,14 +10,13 @@ class InputHandlerTest extends NsTest {
     private static final String CAR_LONG_NAME = "carNameLenExceed";
     private static final String CAR_EMPTY_NAME = "";
     private static final int NEGATIVE_MOVE_COUNT = -1;
-    private static final String INVALID_MOVE_COUNT = "three";
 
     @Test
     void 자동차_이름_길이_초과_예외() {
         assertSimpleTest(() -> {
             String[] carNames = {CAR_LONG_NAME, "car"};
             assertThatThrownBy(() -> inputHandler.validCarNames(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class);
         });
     }
 
@@ -27,7 +25,15 @@ class InputHandlerTest extends NsTest {
         assertSimpleTest(() -> {
             String[] carNames = {CAR_EMPTY_NAME, "car"};
             assertThatThrownBy(() -> inputHandler.validCarNames(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 이동_횟수_음수_예외() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> inputHandler.validMoveCnt(NEGATIVE_MOVE_COUNT))
+                    .isInstanceOf(IllegalArgumentException.class);
         });
     }
 
