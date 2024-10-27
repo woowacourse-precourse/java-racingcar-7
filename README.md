@@ -40,10 +40,10 @@ ___
 
 > 자동차들
 
-- [ ] `class PlayersCars`
+- [x] `class PlayersCars`
   `List<Car> playersCars`
-    - [ ] `void moveCar()`
-    - [ ] `List<String> findMaximumScoreCars`
+    - [x] `void moveCar()`
+    - [x] `List<String> findMaximumScoreCars`
 
 ### io
 ___
