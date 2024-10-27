@@ -22,7 +22,7 @@ public class IOHandler {
         System.out.println("-".repeat(racingCar.getCount()));
     }
 
-    public static void printWinner(String  racingCar) {
-        System.out.println(racingCar);
+    public static void printWinner(String winner) {
+        System.out.println(winner);
     }
 }

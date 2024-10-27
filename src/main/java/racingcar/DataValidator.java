@@ -6,21 +6,21 @@ import java.util.List;
 import java.util.Set;
 
 public class DataValidator {
-    public static void validName(String input) {
+    public static void validateName(String input) {
         List<String> list = Arrays.asList(input.split(","));
 
         for (int i = 0; i < list.size(); i++) {
-            isNonEmpty(list.get(i));
+            checkNonEmpty(list.get(i));
             list.set(i, list.get(i).trim());
             checkLength(list.get(i));
-            isAlphaNumeric(list.get(i));
+            validateAlphaNumeric(list.get(i));
         }
 
-        endWith(input);
-        isSame(list);
+        validateEndWith(input);
+        checkSame(list);
     }
 
-    private static void isNonEmpty(String input) {
+    private static void checkNonEmpty(String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException();
         }
@@ -34,24 +34,24 @@ public class DataValidator {
         }
     }
 
-    private static void isAlphaNumeric(String input) {
-        isLetterOrDigit(input);
+    private static void validateAlphaNumeric(String input) {
+        checkLetterOrDigit(input);
     }
 
-    private static void endWith(String input) {
+    private static void validateEndWith(String input) {
         if (input.charAt(input.length() - 1) == ',') {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void isSame(List<String> list) {
+    private static void checkSame(List<String> list) {
         Set<String> set = new HashSet<>(list);
         if (set.size() < list.size()) {
             throw new IllegalArgumentException("중복 작성");
         }
     }
 
-    public static int validCount(String tryCount) {
+    public static int validateTryCount(String tryCount) {
         for (char c : tryCount.toCharArray()) {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException();
@@ -63,7 +63,7 @@ public class DataValidator {
         return Integer.parseInt(tryCount);
     }
 
-    private static void isLetterOrDigit(String input) {
+    private static void checkLetterOrDigit(String input) {
         for (char c : input.toCharArray()) {
             if (!(Character.isLetter(c) || Character.isDigit(c))) {
                 throw new IllegalArgumentException();

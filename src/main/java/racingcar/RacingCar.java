@@ -14,7 +14,7 @@ public class RacingCar {
             this.count++;
             this.setCount(this.count);
         }
-        IOHandler.printResult(this);
+        IOHandler.resultMessage(this);
     }
 
     public String getName() {
