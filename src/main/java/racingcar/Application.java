@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -24,15 +23,8 @@ public class Application {
             cars.add(new Car(name));
         }
 
-        for(Car car : cars) {
-            int randomNumber = Randoms.pickNumberInRange(0,9);
-            System.out.println(randomNumber);
-            if (randomNumber >= 4) {
-                car.move();
-            }
-            System.out.println(car);
-        }
-        System.out.println(attempts);
-
+        RaceController raceController = new RaceController();
+        System.out.println("실행 결과");
+        raceController.runRace(Integer.parseInt(attempts), cars);
     }
 }

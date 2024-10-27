@@ -23,6 +23,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{name='" + name + "', moveCount=" + moveCount + "}";
+        return name + " : " + "-".repeat(moveCount);
     }
 }
