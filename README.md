@@ -2,7 +2,7 @@
 
 ## MVC 패턴 기반으로 리팩토링
 
-### controller
+### racingcar
 최종 애플리케이션 구현
 * Application.java
 
