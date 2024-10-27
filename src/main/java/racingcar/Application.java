@@ -18,6 +18,7 @@ public class Application {
         list = ap.initial(member);
         System.out.println("시도할 횟수는 몇 회인가요?");
         int try_count = 0;
+
         try{
             try_count = Integer.parseInt(Console.readLine());
         }catch (IllegalArgumentException e){
