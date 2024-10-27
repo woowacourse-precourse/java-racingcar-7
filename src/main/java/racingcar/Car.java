@@ -26,7 +26,7 @@ public class Car {
     }
 
     private void validateLengthOf(String name) {
-        if (name.length() > MAX_LENGTH_OF_CAR_NAME) {
+        if (name == null || name.isBlank() || (name.length() > MAX_LENGTH_OF_CAR_NAME)) {
             throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
         }
     }
