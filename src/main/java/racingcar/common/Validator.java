@@ -46,4 +46,10 @@ public class Validator {
             throw new IllegalArgumentException(CAR_NAME_MUST_NOT_BE_EMPTY.getMessage());
         }
     }
+
+    public static void validateCarNameContainBlank(String carName) {
+        if (carName.contains(" ")) {
+            throw new IllegalArgumentException(CAR_NAME_MUST_NOT_CONTAIN_BLANK.getMessage());
+        }
+    }
 }
