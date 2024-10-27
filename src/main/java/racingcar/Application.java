@@ -29,9 +29,19 @@ public class Application {
             carMoves.put(car, movements);
         }
     }
+
+    public static int findMaxMovement(int maxNum, Map<String, Integer> carMoves) {
+        for (int movement: carMoves.values()) {
+            if (movement > maxNum) {
+                maxNum = movement;
+            }
+        }
+        return maxNum;
+    }
     public static void main(String[] args) {
         Map<String, Integer> carMoves = new HashMap<>();
         int count;
+        int maxNum = Integer.MIN_VALUE;
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> cars = new ArrayList<>(List.of(Console.readLine().split(",")));
@@ -57,7 +67,13 @@ public class Application {
             System.out.println();
         }
 
-        // TODO: 최종 우승자 출력
-        System.out.println("최종 우승자 : ");
+        List<String> winners = new ArrayList<>();
+        maxNum = findMaxMovement(maxNum, carMoves);
+        for (String car: cars) {
+            if (carMoves.get(car) == maxNum) {
+                winners.add(car);
+            }
+        }
+        System.out.print("최종 우승자 : " + String.join(", ", winners));
     }
 }
