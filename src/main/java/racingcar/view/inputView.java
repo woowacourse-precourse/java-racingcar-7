@@ -7,7 +7,7 @@ public class inputView {
         return Console.readLine();
     }
 
-    public static String getTryingRaceTimes() {
+    public static String getRaceCount() {
         return Console.readLine();
     }
 }
