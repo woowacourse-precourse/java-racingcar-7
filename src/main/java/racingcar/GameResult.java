@@ -1,20 +1,33 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GameResult {
-    public static String announceWinners(List<Car> cars) {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
+    private final List<Car> cars;
 
-        List<String> winners = cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .collect(Collectors.toList());
+    public GameResult(List<Car> cars) {
+        this.cars = cars;
+    }
 
-        return String.join(",", winners);
+    public List<Car> getWinners() {
+        List<Car> winners = new ArrayList<>();
+        int maxPosition = getMaxPosition();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
     }
 }

@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -16,12 +15,26 @@ public class RacingGame {
     }
 
     public void startRace() {
-        GameResult result = new Game(cars, numberOfRounds).runRace();
-        printPositions(result);
-        announceWinner(result);
+        for (int i = 0; i < numberOfRounds; i++) {
+            moveCars();
+            printPositions();
+        }
+        announceWinner();
     }
 
-    private void printPositions(GameResult result) {
+    private void moveCars() {
+        for (Car car : cars) {
+            boolean isForward = shouldMove();
+            car.move(isForward);
+        }
+    }
+
+    private boolean shouldMove() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        return randomNumber >= 4;
+    }
+
+    private void printPositions() {
         for (Car car : cars) {
             StringBuilder position = new StringBuilder(car.getName() + ": ");
             for (int i = 0; i < car.getPosition(); i++) {
@@ -32,10 +45,31 @@ public class RacingGame {
         System.out.println();
     }
 
-    private void announceWinner(GameResult result) {
-        List<Car> winners = result.getWinners();
+    private void announceWinner() {
+        List<Car> winners = getWinners();
         String winnerNames = getWinnerNames(winners);
-        System.out.println("우승자: " + winnerNames);
+        System.out.println("최종 우승자: " + winnerNames);
+    }
+
+    private List<Car> getWinners() {
+        int maxPosition = getMaxPosition();
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
     }
 
     private String getWinnerNames(List<Car> winners) {
