@@ -1,22 +1,21 @@
 package racingcar.domain.history;
 
-public class RacingHistory {
-    private final String racingCarName;
-    private final int distance;
+import racingcar.domain.car.RacingCar;
 
-    public RacingHistory(String racingCarName, int distance) {
-        this.racingCarName = racingCarName;
-        this.distance = distance;
+public class RacingHistory extends RacingCar {
+
+    public RacingHistory(String name, int distance) {
+        super(name, distance);
     }
 
     // TODO : 이름 반환
     public String getRacingCarName() {
-        return null;
+        return super.getName();
     }
 
     // TODO : 거리 반환
     public int getDistance() {
-        return 0;
+        return super.getDistance();
     }
 
     // TODO : 거리 출력 반환
