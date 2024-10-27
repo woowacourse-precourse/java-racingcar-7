@@ -2,6 +2,7 @@ package racingcar.domain.car;
 
 import java.util.Objects;
 import racingcar.common.exception.CarPositionOutOfRangeException;
+import racingcar.common.exception.IllegalCarNameException;
 
 public class Car {
 
@@ -12,6 +13,7 @@ public class Car {
     private int carPosition;
 
     public Car(String carName) {
+        validateCarName(carName);
         this.carName = carName;
         this.carPosition = CAR_POSITION_INIT;
     }
@@ -19,6 +21,15 @@ public class Car {
     public void forward() {
         validateCarPositionToForward();
         this.carPosition++;
+    }
+
+    private void validateCarName(String carName) {
+        if(carName == null || carName.isBlank()) {
+            throw new IllegalCarNameException(carName);
+        }
+        if(carName.length() > 5) {
+            throw new IllegalCarNameException(carName, carName.length());
+        }
     }
 
     private void validateCarPositionToForward() {

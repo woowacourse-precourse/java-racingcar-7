@@ -14,7 +14,7 @@ class CarFactoryTest {
     @Test
     void registerCarTest() {
         CarFactory carFactory = new CarFactory();
-        List<String> carNames = List.of("genesis", "bmw", "bentley", "hybrid");
+        List<String> carNames = List.of("honda", "bmw", "benz", "ford");
         Cars cars = carFactory.makeCars(carNames);
 
         assertThat(cars.getCars().size()).isEqualTo(4);
@@ -27,7 +27,7 @@ class CarFactoryTest {
     @Test
     void carRegisterFailTest() {
         CarFactory carFactory = new CarFactory();
-        List<String> carNames = List.of("genesis", "genesis");
+        List<String> carNames = List.of("honda", "honda");
         assertThatThrownBy(() -> carFactory.makeCars(carNames))
                 .isInstanceOf(CarDuplicateException.class);
     }
