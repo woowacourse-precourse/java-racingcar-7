@@ -44,7 +44,8 @@ public class CarRacingController {
     }
 
     private void setUpTotalRound() {
-        totalRound = userInterface.getTotalRoundInput();
+        String totalRoundInput = userInterface.getTotalRoundInput();
+        validateTotalRoundInput(totalRoundInput);
     }
 
     private void displayFinalWinner() {
@@ -77,4 +78,17 @@ public class CarRacingController {
         return carNames;
     }
 
+    public void validateTotalRoundInput(String totalRoundInput) {
+        if (totalRoundInput.isBlank()) {
+            throw new IllegalArgumentException("시도 횟수를 공백 없이 자연수로 입력해주세요.");
+        }
+        try {
+            totalRound = Integer.parseInt(totalRoundInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 공백 없는 하나의 자연수만 가능합니다.");
+        }
+        if (totalRound <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 0보다 큰 자연수만 가능합니다.");
+        }
+    }
 }
