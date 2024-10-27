@@ -9,18 +9,14 @@ import racingcar.model.Drivable;
 public class RaceWinnerDecisionFilter implements Filter<RaceRequest, RaceResponse> {
 
     @Override
-    public void doFilter(RaceRequest request, RaceResponse response, RaceFilterChain filterChain) {
-        CarList carList = request.getCarList();
+    public RaceResponse doFilter(RaceRequest request, RaceFilterChain filterChain) {
+        CarList carList = request.carList();
         List<String> winners = getWinners(carList);
-        response.updateWinners(winners);
-        filterChain.doFilter(request, response);
+        return new RaceResponse(winners);
     }
 
     private List<String> getWinners(CarList cars) {
         int maxDistance = cars.getMaxDistance();
-        return cars.getCars().stream()
-                .filter(car -> car.getDistance() == maxDistance)
-                .map(Drivable::getName)
-                .toList();
+        return cars.getCars().stream().filter(car -> car.getDistance() == maxDistance).map(Drivable::getName).toList();
     }
 }

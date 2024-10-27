@@ -2,7 +2,7 @@ package racingcar.filter;
 
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.executor.RaceExecutor;
+import racingcar.filter.executor.RaceExecutor;
 import racingcar.model.CarList;
 
 public class RaceExecutionFilter implements Filter<RaceRequest, RaceResponse> {
@@ -13,12 +13,12 @@ public class RaceExecutionFilter implements Filter<RaceRequest, RaceResponse> {
     }
 
     @Override
-    public void doFilter(RaceRequest request, RaceResponse response, RaceFilterChain chain) {
-        CarList carList = request.getCarList();
-        int iterations = request.getIterations();
+    public RaceResponse doFilter(RaceRequest request, RaceFilterChain chain) {
+        CarList carList = request.carList();
+        int iterations = request.iterations();
 
         executor.executeRace(carList, iterations);
 
-        chain.doFilter(request, response);
+        return chain.doFilter(request);
     }
 }

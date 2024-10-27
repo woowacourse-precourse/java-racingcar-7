@@ -30,11 +30,12 @@ public class RaceFilterChain implements FilterChain<RaceRequest, RaceResponse> {
     }
 
     @Override
-    public void doFilter(RaceRequest request, RaceResponse response) {
+    public RaceResponse doFilter(RaceRequest request) {
         if (hasMoreFilters()) {
             Filter<RaceRequest, RaceResponse> filter = filterIterator.next();
-            filter.doFilter(request, response, this);
+            return filter.doFilter(request, this);
         }
+        return null;
     }
 
     /**

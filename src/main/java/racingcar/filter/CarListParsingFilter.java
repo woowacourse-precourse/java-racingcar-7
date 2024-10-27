@@ -2,7 +2,7 @@ package racingcar.filter;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.collector.CarListCollector;
+import racingcar.common.util.CarListCollector;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
 import racingcar.exception.InvalidCarNameException;
@@ -14,10 +14,10 @@ public class CarListParsingFilter implements Filter<RaceRequest, RaceResponse> {
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
     @Override
-    public void doFilter(RaceRequest request, RaceResponse raceResponse, RaceFilterChain chain) {
-        CarList carList = createCarListFromRequest(request.getCommand());
+    public RaceResponse doFilter(RaceRequest request, RaceFilterChain chain) {
+        CarList carList = createCarListFromRequest(request.command());
         RaceRequest updatedRequest = request.withCarList(carList);
-        chain.doFilter(updatedRequest, raceResponse);
+        return chain.doFilter(updatedRequest);
     }
 
     private CarList createCarListFromRequest(String carNamesExpression) {

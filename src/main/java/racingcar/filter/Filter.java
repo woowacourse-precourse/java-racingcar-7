@@ -14,9 +14,8 @@ public interface Filter<R, T> {
      * 주어진 요청을 처리하고, 다음 필터 체인을 통해 응답을 반환합니다.
      *
      * @param request     처리할 요청 객체
-     * @param response    처리할 응답 객체
      * @param filterChain 다음 필터 체인
      * @return 처리된 응답 객체
      */
-    void doFilter(R request, T response, RaceFilterChain filterChain);
+    T doFilter(R request, RaceFilterChain filterChain);
 }

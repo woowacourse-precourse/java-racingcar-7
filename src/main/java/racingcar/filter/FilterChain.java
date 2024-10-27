@@ -16,5 +16,5 @@ public interface FilterChain<R, T> {
      * @param request 처리할 요청 객체
      * @return 처리된 응답 객체
      */
-    void doFilter(R request, T response);
+    T doFilter(R request);
 }
