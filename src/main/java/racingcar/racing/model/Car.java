@@ -1,7 +1,6 @@
 package racingcar.racing.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.List;
 
 public class Car implements Comparable<Car> {
     private final String name;

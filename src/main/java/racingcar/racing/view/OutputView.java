@@ -19,12 +19,12 @@ public class OutputView {
 
     private static void printRoundResult(List<RoundResult> roundResults) {
         for (RoundResult roundResult : roundResults) {
-            printRoundCar(roundResult.carName(), roundResult.currentDistance());
+            printRoundCarStatus(roundResult.carName(), roundResult.currentDistance());
         }
         System.out.println();
     }
 
-    private static void printRoundCar(String carName, int currentDistance) {
+    private static void printRoundCarStatus(String carName, int currentDistance) {
         System.out.print(carName + " : ");
         for (int i = 0; i < currentDistance; i++) {
             System.out.print("-");
