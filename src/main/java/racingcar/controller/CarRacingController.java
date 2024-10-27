@@ -23,7 +23,7 @@ public class CarRacingController {
         }
     }
 
-    public void run() {
+    public void race() {
         register.carListUp(divide(inputView.inputCar()));
         int count = inputView.inputRound();
         System.out.println("\n실행 결과");
