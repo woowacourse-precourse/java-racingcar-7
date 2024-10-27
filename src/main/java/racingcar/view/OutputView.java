@@ -16,15 +16,15 @@ public class OutputView {
     private static final String WINNER_DELIMITER = ", ";
     private static final String POSITION_INDICATOR = "-";
 
-    public void printMessage(String message) {
+    public static void printMessage(String message) {
         System.out.println(message);
     }
 
-    public void printNewLine() {
+    public static void printNewLine() {
         System.out.println();
     }
 
-    public void printRound(final List<Car> carsList) {
+    public static void printRound(final List<Car> carsList) {
         for (Car car : carsList) {
             final String carName = car.getName();
             final int position = car.getPosition();
@@ -33,7 +33,7 @@ public class OutputView {
         }
     }
 
-    public void printWinners(final List<String> winnersList) {
+    public static void printWinners(final List<String> winnersList) {
         String winners = String.join(WINNER_DELIMITER, winnersList);
 
         System.out.printf(FINAL_RESULT, winners);
