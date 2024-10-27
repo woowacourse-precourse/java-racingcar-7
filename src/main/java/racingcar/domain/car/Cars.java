@@ -34,7 +34,7 @@ public class Cars {
         }
     }
 
-    public List<Name> win() {
+    public List<Name> findWinners() {
         return findSamePositionCar(getMaxPosition()).stream()
                 .map(Car::name)
                 .toList();

@@ -38,7 +38,7 @@ class CarsTest {
     void winMethodReturnTest() {
 
         //when
-        List<Name> winners = cars.win();
+        List<Name> winners = cars.findWinners();
 
         //then
         assertThat(winners.size()).isEqualTo(3);
@@ -51,7 +51,7 @@ class CarsTest {
         moveCars(2);
 
         //when
-        List<Name> winners = cars.win();
+        List<Name> winners = cars.findWinners();
 
         //then
         assertThat(winners.size()).isEqualTo(1);
@@ -65,7 +65,7 @@ class CarsTest {
         moveCars(3);
 
         //when
-        List<Name> winners = cars.win();
+        List<Name> winners = cars.findWinners();
 
         //then
         assertThat(winners.size()).isEqualTo(2);

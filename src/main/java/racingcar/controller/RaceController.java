@@ -33,6 +33,6 @@ public class RaceController {
     }
 
     private void finish(Cars cars) {
-        outputView.printWinners(cars.win());
+        outputView.printWinners(cars.findWinners());
     }
 }
