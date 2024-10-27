@@ -7,6 +7,7 @@ public class Application {
 
     Scanner scan = new Scanner(System.in);
     String[] nameList = null;
+    int count = 0;
 
     void run() {
         getName();
@@ -21,6 +22,11 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    void getCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        count = scan.nextInt();
     }
 
     public static void main(String[] args) {
