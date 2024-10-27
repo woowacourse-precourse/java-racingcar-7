@@ -56,4 +56,16 @@ class ConsoleOutputManagerTest {
         String expectedOutput = "최종 우승자 : car1, car2";
         assertThat(outputStream.toString().trim()).isEqualTo(expectedOutput.trim());
     }
+
+    @Test
+    void 에러_메시지를_정상적으로_출력한다() {
+        // given
+        String errorMessage = "에러 발생";
+
+        // when
+        consoleOutputManager.displayError(errorMessage);
+
+        // then
+        assertThat(outputStream.toString().trim()).isEqualTo(errorMessage);
+    }
 }

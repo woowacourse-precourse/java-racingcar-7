@@ -19,4 +19,9 @@ public class ConsoleOutputManager implements OutputManager {
         String winnerNames = winners.stream().map(Car::getName).collect(Collectors.joining(", "));
         System.out.println("최종 우승자 : " + winnerNames);
     }
+
+    @Override
+    public void displayError(String message) {
+        System.out.println(message);
+    }
 }

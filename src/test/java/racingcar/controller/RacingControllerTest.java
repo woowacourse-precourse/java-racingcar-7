@@ -115,5 +115,10 @@ class RacingControllerTest {
                             .reduce((a, b) -> a + ", " + b)
                             .orElse("");
         }
+
+        @Override
+        public void displayError(String message) {
+            // do nothing
+        }
     }
 }

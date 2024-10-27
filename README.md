@@ -59,6 +59,7 @@
 - **메서드**:
   - `displayProgress(List<Car>)`: 각 자동차의 이름과 현재 위치를 화면에 표시
   - `displayWinners(List<Car>)`: 우승자로 선정된 자동차 이름을 쉼표(`,`)로 구분하여 출력
+  - `displayMessage(String)`: 에러 메시지를 출력
 
 ### 4. **경주 컨트롤러 클래스 (`RacingController`)**
 

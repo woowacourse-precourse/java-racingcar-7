@@ -18,6 +18,9 @@ public class Application {
             controller.setupGame();
             controller.startRace();
             controller.displayWinners();
+        } catch (IllegalArgumentException e) {
+            outputManager.displayError(e.getMessage());
+            throw e;
         } finally {
             Console.close();
         }

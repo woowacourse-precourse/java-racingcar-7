@@ -8,4 +8,6 @@ public interface OutputManager {
     void displayPosition(List<Car> cars);
 
     void displayWinners(List<Car> winners);
+
+    void displayError(String message);
 }
