@@ -28,14 +28,18 @@ public class Output {
     }
 
     public void printResultsByCount(List<Racingcar> racingcars) {
-        for (Racingcar racingcar: racingcars) {
-            System.out.print(racingcar.getName() + " : ");
+        for (Racingcar racingcar : racingcars) {
+            printRacingcarDistance(racingcar);
+        }
+        System.out.println();
+    }
 
-            int distance = racingcar.getDistance();
-            for (int i = 0; i < distance; i++) {
-                System.out.print("-");
-            }
-            System.out.println();
+    private void printRacingcarDistance(Racingcar racingcar) {
+        System.out.print(racingcar.getName() + " : ");
+
+        int distance = racingcar.getDistance();
+        for (int i = 0; i < distance; i++) {
+            System.out.print("-");
         }
         System.out.println();
     }
