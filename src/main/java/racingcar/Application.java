@@ -10,11 +10,7 @@ public class Application {
         int totalMoves = inputTotalMoves();
 
         List<Car> winners = new RacingGame().run(carNames, totalMoves);
-        List<String> winnerNames = winners.stream()
-                .map(car -> car.getName())
-                .collect(Collectors.toList());
-
-        printWinner(winnerNames);
+        printWinners(winners);
     }
 
     private static String[] inputCarNames() {
@@ -39,8 +35,15 @@ public class Application {
         return input;
     }
 
-    private static void printWinner(final List<String> winnerNames) {
+    private static void printWinners(final List<Car> winners) {
+        List<String> winnerNames = abstractWinnerNames(winners);
         output("최종 우승자 : "  + String.join(", ", winnerNames));
+    }
+
+    private static List<String> abstractWinnerNames(final List<Car> winners) {
+        return winners.stream()
+                .map(car -> car.getName())
+                .collect(Collectors.toList());
     }
 
     private static void output(final String output) {
