@@ -43,6 +43,15 @@ public class Application {
 		System.out.println(String.join(",", arr));
 		int moveNum = getMoveCount();
 		System.out.println("실행 결과");
+		racing(arr, moveNum);
+	}
+
+	public static void racing(String[] arr, int moveNum) {
+		int[] result = new int[arr.length];
+		for (int i = 0; i < moveNum; i++) {
+			makeRand(result);
+			addDash(result, arr);
+		}
 	}
 
 	public static void makeRand(int[] result) {
@@ -56,6 +65,15 @@ public class Application {
 
 	public static void addDash(int[] result, String[] arr) {
 		for (int i = 0; i < result.length; i++) {
+			printCarStatus(arr[i], result[i]);
+		}
+		System.out.println();
+	}
+
+	public static void printCarStatus(String name, int dashCount) {
+		System.out.print(name + " : ");
+		for (int j = 0; j < dashCount; j++) {
+			System.out.print("-");
 		}
 		System.out.println();
 	}
