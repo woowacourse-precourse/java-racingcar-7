@@ -1,3 +1,4 @@
+
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -31,8 +32,56 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름_및_시도_횟수_입력_테스트() {
+        assertSimpleTest(() -> {
+            run("pobi,woni,javaj", "3");
+            assertThat(output()).contains("pobi", "woni", "javaj");
+        });
+    }
+    
+    @Test
+    void 자동차_전진_정지_테스트() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni", "1");
+                assertThat(output()).contains("pobi : -", "woni : ");
+            },
+            MOVING_FORWARD, STOP
+        );
+    }
+    
+    @Test
+    void 최종_우승자_출력_테스트() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni,javaj", "3");
+                assertThat(output()).contains("최종 우승자 : pobi, woni");
+            },
+            MOVING_FORWARD, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_처리_테스트_자동차_이름() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,javajig,javajig", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("이름은 5자 이하로 하세요.");
+        });
+    }
+    
+    @Test
+    void 예외_처리_테스트_시도_횟수() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수를 양의 정수로 입력하세요");
+        });
+    }
+
     @Override
-    public void runMain() {
+    protected void runMain() {
         Application.main(new String[]{});
     }
 }
