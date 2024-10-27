@@ -4,6 +4,7 @@ import factory.CarFactory;
 import java.util.List;
 import model.Car;
 import util.ParsingUtil;
+import validator.attemptNumberValidator;
 import validator.carNameValidator;
 import view.InputView;
 
@@ -29,6 +30,8 @@ public class CarController {
     }
 
     public int getAttemptCount() {
-        return inputView.getAttemptCount();
+        String input = inputView.getAttemptCount();
+        attemptNumberValidator.checkAttempt(input); //검증
+        return Integer.parseInt(input);
     }
 }
