@@ -1,17 +1,15 @@
 package racingcar.util;
 
 import static racingcar.util.Constant.*;
-import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
 
 public class InputUtils {
-    public static List<Car> inputCarName() {
-        System.out.println(CAR_NAME_INPUT_MESSAGE);
-        String input = Console.readLine();
-        validateCarNamesInput(input);
-        String[] carNameList = input.split(NAME_SEPARATOR);
+    public static List<Car> createCarListFromInput(String NameInput) {
+        validateCarNamesInput(NameInput);
+        String[] carNameList = NameInput.split(NAME_SEPARATOR);
 
         List<Car> carList = new ArrayList<>();
 
@@ -20,6 +18,11 @@ public class InputUtils {
             carList.add(new Car(name));
         }
         return carList;
+    }
+
+    public static int getAttemptCountFromInput(String attemptInput) {
+        checkAttemptOK(attemptInput);
+        return Integer.parseInt(attemptInput);
     }
 
     private static void validateCarNamesInput(String input){
@@ -44,13 +47,6 @@ public class InputUtils {
         if(carList.stream().anyMatch(car -> car.getName().equals(name))){
             throw new IllegalArgumentException(NAME_INPUT_DUPLICATE_ERROR);
         }
-    }
-
-    public static int inputAttempt() {
-        System.out.println(ATTEMPT_INPUT_MESSAGE);
-        String attempt = Console.readLine();
-        checkAttemptOK(attempt);
-        return Integer.parseInt(attempt);
     }
 
     private static void checkAttemptOK(String attemptInput){
