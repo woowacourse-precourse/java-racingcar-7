@@ -32,4 +32,8 @@ public class RacingService {
   private int randomNumber() {
     return Randoms.pickNumberInRange(0, 9);
   }
+
+  public int getAttemptCount() {
+    return attemptCount;
+  }
 }
