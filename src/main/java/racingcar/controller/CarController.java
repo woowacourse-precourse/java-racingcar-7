@@ -2,15 +2,21 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.service.CarService;
+import racingcar.view.Input;
+import racingcar.view.Output;
 
 import java.util.List;
 
 public class CarController {
 
     private final CarService carService;
+    private final Input input;
+    private final Output output;
 
-    public CarController(CarService carService) {
+    public CarController(CarService carService, Input input, Output output) {
         this.carService = carService;
+        this.input = input;
+        this.output = output;
     }
 
     public void startRace() {
@@ -20,7 +26,7 @@ public class CarController {
     }
 
     private void createRace() {
-        List<String> carsName = null; //inputView에서 차량 이름 받는 부분
+        List<String> carsName = input.cars();
 
         carsName.forEach(name -> {
             Car car = new Car(name);
@@ -29,21 +35,21 @@ public class CarController {
     }
 
     private int getCount() {
-        return 0; // inputView에서 count 받는 부분
+        return input.counts();
     }
 
     private void raceRound(int count) {
-        //실행결과 출력
+        output.race();
 
         for (int i = 0; i < count; i++) {
             carService.moveCar();
-            // 매 라운드 결과 출력
+            output.roundResult(carService.getAllCars());
         }
     }
 
     private void raceOver() {
         List<String> winners = carService.findWinners();
-        //승자 출력 (List 형태로 매개변수 사용)
+        output.raceWinner(winners);
     }
 
 }
