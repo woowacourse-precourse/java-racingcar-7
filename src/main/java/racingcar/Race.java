@@ -16,5 +16,16 @@ public class Race {
         }
         return cars;
     }
+    public void start(){
+        for(int i = 0;i<rounds;i++) {
+            playRound();
+        }
+        decideWinner();
+    }
 
+    private void decideWinner() {
+    }
+
+    private void playRound() {
+    }
 }
