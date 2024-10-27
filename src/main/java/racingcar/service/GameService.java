@@ -25,17 +25,19 @@ public class GameService {
     }
 
     public List<Car> winners(List<Car> cars) {
-        List<Car> raceResult = new ArrayList<>(cars);
-        sortResultsDescendingOrder(raceResult);
+        List<Car> sortedResult = sortResultsDescendingOrder(cars);
 
-        final int winningScore = raceResult.getFirst().getDistance();
+        final int winningScore = sortedResult.getFirst().getDistance();
         isValidRaceResult(winningScore);
 
-        return raceResult.stream().filter(c -> c.getDistance() == winningScore).toList();
+        return sortedResult.stream().filter(c -> c.getDistance() == winningScore).toList();
     }
 
-    private void sortResultsDescendingOrder(List<Car> results) {
-        results.sort(comparingInt(Car::getDistance).reversed());
+    private List<Car> sortResultsDescendingOrder(List<Car> results) {
+        // results 리스트는 불변리스트여서 복사하여 새로운 리스트를 만듦
+        List<Car> newResults = new ArrayList<>(results);
+        newResults.sort(comparingInt(Car::getDistance).reversed());
+        return newResults;
     }
 
     private boolean isValidRaceResult(final int winningScore) {
