@@ -34,7 +34,7 @@ public class RacingGameManager {
     }
 
     private void validateInputCount(int count) {
-        if (count < 1 || count > 1000) {
+        if (count < 2 || count > 1000) {
             throw new IllegalArgumentException("횟수는 최소 2번부터 최대 1000번까지 가능합니다. 입력값 :" + count);
         }
     }
