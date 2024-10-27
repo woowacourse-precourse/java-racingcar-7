@@ -33,5 +33,6 @@ public class RacingController {
     private void racing(Cars cars, Race race) {
         RaceResultDto raceResult = race.progress(cars);
         WinnersDto winners = race.getWinners(cars);
+        view.outputRaceResultAndWinners(raceResult, winners);
     }
 }

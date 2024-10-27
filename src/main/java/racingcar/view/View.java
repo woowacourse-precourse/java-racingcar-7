@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import racingcar.domain.race.dto.RaceResultDto;
+import racingcar.domain.race.dto.WinnersDto;
+
 public class View {
     private final InputView inputView;
     private final OutputView outputView;
@@ -21,5 +24,10 @@ public class View {
     public String inputRaceCount() {
         outputView.printMessage(Output.INPUT_COUNT);
         return inputView.userInput();
+    }
+
+    public void outputRaceResultAndWinners(RaceResultDto raceResult, WinnersDto winners) {
+        outputView.printResult(raceResult);
+        outputView.printWinner(winners);
     }
 }

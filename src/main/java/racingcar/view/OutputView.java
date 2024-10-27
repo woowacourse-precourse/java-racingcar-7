@@ -23,4 +23,18 @@ public class OutputView {
         System.out.println(output.message);
     }
 
+    public void printResult(RaceResultDto raceResultDto) {
+        System.out.println(NEW_LINE.message + RESULT_HEADER.message);
+        raceResultDto.carsResultDtos().forEach(carsResultDto -> {
+            carsResultDto.carResultDtos().forEach(carResultDto -> {
+                System.out.println(carResultDto.carName() + RESULT_DELIMITER.message + RESULT_POSITION.message.repeat(
+                        carResultDto.position()));
+            });
+            System.out.print(NEW_LINE.message);
+        });
+    }
+
+    public void printWinner(WinnersDto winnersDto) {
+        System.out.print(WINNER.message + String.join(WINNER_DELIMITER.message, winnersDto.winners()));
+    }
 }
