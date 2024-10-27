@@ -6,6 +6,7 @@ import racingcar.util.Random;
 
 public class CarService {
 
+    private static final int RANGE_CONDITION = 3;
     private final Random random;
 
     public CarService(Random random) {
@@ -21,7 +22,7 @@ public class CarService {
     public void incrementMoveCount(Car car) {
         int range = random.pickNumberInRange();
 
-        if (range > 3) {
+        if (range > RANGE_CONDITION) {
             car.addMoveCount();
         }
 

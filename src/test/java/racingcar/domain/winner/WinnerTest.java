@@ -18,7 +18,7 @@ class WinnerTest {
     @BeforeEach
     void setUp() {
         this.cars = List.of(new Car("pobi"), new Car("won"), new Car("jun"));
-        this.carService = new CarService(new RandomUtilTest(5));
+        this.carService = new CarService(new RandomUtilTest(RandomUtilTest.SUCCESS_CONDITION));
         this.winner = new Winner();
     }
 

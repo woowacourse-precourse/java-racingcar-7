@@ -1,5 +1,7 @@
 package racingcar.io.output;
 
+import racingcar.domain.delimiter.Delimiter;
+
 public abstract class Output {
 
     public static void playGameInit() {
@@ -24,6 +26,6 @@ public abstract class Output {
     }
 
     private static String repeatDash(int range) {
-        return "-".repeat(range);
+        return Delimiter.DASH.repeat(range);
     }
 }

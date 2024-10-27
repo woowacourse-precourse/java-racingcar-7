@@ -3,6 +3,7 @@ package racingcar.domain.winner;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.car.Car;
+import racingcar.domain.delimiter.Delimiter;
 
 public class Winner {
 
@@ -19,7 +20,7 @@ public class Winner {
             }
         }
 
-        return String.join(", ", winners);
+        return String.join(Delimiter.SPACE_COMMA, winners);
     }
 
 }

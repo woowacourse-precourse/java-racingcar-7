@@ -3,6 +3,7 @@ package racingcar.io.input;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.domain.delimiter.Delimiter;
 import racingcar.validate.CarNameValidator;
 import racingcar.validate.RepetitionCountValidator;
 
@@ -31,6 +32,6 @@ public class Input {
     }
 
     private static List<String> splitCarNames(String input) {
-        return Arrays.stream(input.split(",")).toList();
+        return Arrays.stream(input.split(Delimiter.COMMA)).toList();
     }
 }

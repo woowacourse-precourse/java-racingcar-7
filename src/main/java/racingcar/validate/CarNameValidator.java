@@ -2,11 +2,15 @@ package racingcar.validate;
 
 import java.util.List;
 import racingcar.ErrorMessage;
+import racingcar.domain.delimiter.Delimiter;
 
 public abstract class CarNameValidator {
 
+    private static final int NAME_RANGE_CONDITION = 5;
+    private static final int MINIMUM_CAR_SIZE = 2;
+
     private static void validateNoEdgeComma(String names) {
-        if (names.startsWith(",") || names.endsWith(",")) {
+        if (names.startsWith(Delimiter.COMMA) || names.endsWith(Delimiter.COMMA)) {
             throw new IllegalArgumentException(
                 ErrorMessage.CAR_NAME_NOT_CONTAINS_EDGE_COMMA.getMessage());
         }
@@ -20,7 +24,7 @@ public abstract class CarNameValidator {
     }
 
     private static void validateHasCommaSeparator(String names) {
-        if (!names.contains(",")) {
+        if (!names.contains(Delimiter.COMMA)) {
             throw new IllegalArgumentException(
                 ErrorMessage.CAR_NAMES_NOT_CONTAINS_COMMA.getMessage());
         }
@@ -36,7 +40,7 @@ public abstract class CarNameValidator {
     private static void validateCarNamesLength(List<String> carNames) {
         carNames
             .forEach(name -> {
-                if (name.length() > 5) {
+                if (name.length() > NAME_RANGE_CONDITION) {
                     throw new IllegalArgumentException(
                         ErrorMessage.CAR_NAME_LENGTH_OVER.getMessage());
                 }
@@ -44,7 +48,7 @@ public abstract class CarNameValidator {
     }
 
     private static void validateCarNamesCount(List<String> carNames) {
-        if (carNames.size() < 2) {
+        if (carNames.size() < MINIMUM_CAR_SIZE) {
             throw new IllegalArgumentException(
                 ErrorMessage.CAR_COUNT_NOT_ENOUGH.getMessage());
         }

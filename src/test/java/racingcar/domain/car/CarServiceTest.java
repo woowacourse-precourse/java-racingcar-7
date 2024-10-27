@@ -32,7 +32,8 @@ class CarServiceTest {
     void incrementMoveCountSuccess() {
         // given
         Car car = new Car("pobi");
-        CarService carService = new CarService(new RandomUtilTest(5));
+        CarService carService = new CarService(
+            new RandomUtilTest(RandomUtilTest.SUCCESS_CONDITION));
 
         // when
         carService.incrementMoveCount(car);
@@ -46,7 +47,7 @@ class CarServiceTest {
     void incrementMoveCountFail() {
         // given
         Car car = new Car("pobi");
-        CarService carService = new CarService(new RandomUtilTest(3));
+        CarService carService = new CarService(new RandomUtilTest(RandomUtilTest.FAIL_CONDITION));
 
         // when
         carService.incrementMoveCount(car);
