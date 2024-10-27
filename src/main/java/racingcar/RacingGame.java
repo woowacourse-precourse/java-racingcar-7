@@ -14,6 +14,14 @@ public class RacingGame {
         this.cars = cars;
         this.rounds = rounds;
     }
+
+    public static List<Car> initializeCars() {
+        String input = inputCarNames();
+        List<String> carNames = parseAndTrimCarNames(input);
+        validateCarNames(carNames);
+        return createCarList(carNames);
+    }
+
     private static String inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return Console.readLine();
