@@ -14,16 +14,11 @@ public class RacingGameController {
     }
 
     public void run() {
-        try {
-            String inputNames = InputView.getCarNames();
-            int tryCount = InputView.getTryCount();
-
-            RacingGame racingGame = racingGameService.initializeGame(inputNames);
-            racingGameService.startRace(racingGame, tryCount);
-
-            OutputView.printWinners(racingGame.getWinners());
-        } catch (IllegalArgumentException e) {
-            OutputView.printError(e.getMessage());
-        }
+        String inputNames = InputView.getCarNames();
+        // initializeGame 메서드에서 예외가 발생하면 전파됨
+        RacingGame racingGame = racingGameService.initializeGame(inputNames);
+        int tryCount = InputView.getTryCount();
+        racingGameService.startRace(racingGame, tryCount);
+        OutputView.printWinners(racingGame.getWinners());
     }
 }
