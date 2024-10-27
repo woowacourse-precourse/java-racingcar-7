@@ -2,10 +2,7 @@ package racingcar.domain;
 
 import racingcar.utils.RandomForwardGenerator;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static racingcar.constants.RaceConstants.*;
 
@@ -15,7 +12,7 @@ public class Race {
     private final int forwardCount;
 
     private Race(Car car, int forwardCount) {
-        this.carPositions = new HashMap<>();
+        this.carPositions = new LinkedHashMap<>();
         this.forwardCount = forwardCount;
         setInitialPositions(car);
     }
