@@ -17,19 +17,33 @@ public class GameController {
     }
 
     public void run() {
+        List<String> racingCars = getValidCars();
+        Integer round = getValidRounds();
+        startGame(round, racingCars);
+    }
+
+    public List<String> getValidCars() {
         String nameInput = inputView.executeNameInput();
+        return inputValidator.isValidCarsName(nameInput);
+    }
+
+    public Integer getValidRounds() {
         String roundInput = inputView.executeRoundInput();
+        return inputValidator.isValidRound(roundInput);
+    }
 
-        List<String> racingCars = inputValidator.isValidCarsName(nameInput);
-        Integer round = inputValidator.isValidRound(roundInput);
-
+    private void startGame(Integer round, List<String> racingCars) {
         gameService.init(round, racingCars);
-        play(round);
+        playRounds(round);
+        getWinner();
+    }
+
+    public void getWinner() {
         List<String> winners = gameService.selectWinner();
         outputView.printWinnerMessage(winners);
     }
 
-    public void play(Integer round) {
+    public void playRounds(Integer round) {
         for (int i = 0; i < round; i++) {
             List<RacingCar> result = gameService.executeLogic();
             outputView.resultMessageLoop(result);
