@@ -45,6 +45,18 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 우승자_선정_테스트() {
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("woni");
+        car1.move(4);
+        car2.move(5);
+
+        RacingGame game = new RacingGame(List.of(car1, car2), 1);
+        List<String> winners = game.getWinners();
+
+        assertThat(winners).contains("pobi", "woni");
+    }
 
     @Override
     public void runMain() {
