@@ -30,4 +30,12 @@ public class Car {
             throw new IllegalArgumentException("이름은 영어(알파벳)로만 생성할 수 있습니다.");
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
 }

@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class ConsoleIO {
     private static final String NAME_INPUT_MSG = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -19,5 +20,17 @@ public class ConsoleIO {
 
     public void printResultMessage() {
         System.out.println(OUTPUT_MSG);
+    }
+
+    public void printEachResult(List<Car> cars) {
+        //각 라운드의 자동차 결과를 출력한다
+        for(Car car : cars) {
+            System.out.printf("%s : %s\n", car.getName(), "-".repeat(car.getDistance()));
+        }
+        System.out.println();
+    }
+
+    public void printWinner(List<String> winner) {
+        System.out.println("최종 우승자 : " + String.join(", ", winner));
     }
 }
