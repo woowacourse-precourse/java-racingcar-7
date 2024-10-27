@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racingcar.controller.RaceController;
@@ -14,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ExceptionTest {
     @Test
+    @DisplayName("자동차 이름에 아무 것도 입력되지 않으면 예외가 발생한다.")
     void 자동차_이름에_아무_것도_입력이_되지_않았을_때() {
         String carName = "";
 
@@ -23,6 +25,7 @@ public class ExceptionTest {
     }
 
     @Test
+    @DisplayName("자동차 이름에 5글자 이상이 입력되면 예외가 발생한다.")
     void 자동차_이름에_5글자_이상이_입력되었을_때() {
         String carName = "kyoungmin";
 
@@ -32,6 +35,7 @@ public class ExceptionTest {
     }
 
     @Test
+    @DisplayName("시도 횟수에 0이하의 정수가 입력되면 예외가 발생한다.")
     void 시도_횟수에_0이하의_수가_입력되었을_때() {
         List<Car> cars = new ArrayList<>(List
                 .of(new Car("pobi"), new Car("woni"), new Car("jun")));
@@ -44,6 +48,7 @@ public class ExceptionTest {
     }
 
     @Test
+    @DisplayName("시도 횟수에 정수가 아닌 값이 입력되면 예외가 발생한다.")
     void 시도_횟수에_숫자가_아닌_값이_입력되었을_때() {
         RaceController controller = new RaceController();
         List<Car> cars = new ArrayList<>(List
@@ -57,6 +62,7 @@ public class ExceptionTest {
     }
 
     @Test
+    @DisplayName("자동차 이름에 중복된 값이 입력되면 예외가 발생한다.")
     void 입력된_자동차_이름에_중복된_값이_존재할_때() {
         RaceController controller = new RaceController();
         List<Car> cars = new ArrayList<>(List
