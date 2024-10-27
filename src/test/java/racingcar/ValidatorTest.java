@@ -15,7 +15,7 @@ class ValidatorTest {
     void 자동차_이름_입력시_빈_문자열_검증() {
         assertThatThrownBy(() -> validator.validateCarNamesInput(""))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("입력은 비어있을 수 없습니다");
+            .hasMessage("입력은(는) 비어있을 수 없습니다.");
     }
 
     @ParameterizedTest
@@ -33,7 +33,7 @@ class ValidatorTest {
 
         assertThatThrownBy(() -> validator.validateCarNamesLength(testEmptyStr, 5))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("자동차 이름은 비어있지 않습니다.");
+            .hasMessage("자동차 이름은(는) 비어있을 수 없습니다.");
 
         assertThatThrownBy(() -> validator.validateCarNamesLength(testLongStr, 5))
             .isInstanceOf(IllegalArgumentException.class)
@@ -44,7 +44,7 @@ class ValidatorTest {
     void 반복_횟수_입력_검증() {
         assertThatThrownBy(() -> validator.validateRepeatCount(""))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("반복 횟수는 비어있을 수 없습니다.");
+            .hasMessage("반복 횟수은(는) 비어있을 수 없습니다.");
 
         assertThatThrownBy(() -> validator.validateRepeatCount("-123"))
             .isInstanceOf(IllegalArgumentException.class)
