@@ -43,15 +43,14 @@ public class RaceSystem {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             if (randomNumber >= MIN_MOVE_CONDITION) {
                 car.move();
-                String distance = "-".repeat(car.getDistance());
-                result.append(car.getName());
-                result.append(" : ");
-                result.append(distance);
-                result.append('\n');
             }
-        }
 
-        String tmp = "s";
+            String distance = "-".repeat(car.getDistance());
+            result.append(car.getName());
+            result.append(" : ");
+            result.append(distance);
+            result.append('\n');
+        }
 
         return result;
     }
