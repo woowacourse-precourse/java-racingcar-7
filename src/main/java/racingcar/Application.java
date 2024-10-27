@@ -12,14 +12,19 @@ import racingcar.race.Vehicle;
 
 public class Application {
     public static void main(String[] args) {
+        // 1. 자동차 이름 입력
         String carNamesString = inputCarNames();
 
+        // 2. 라운드 횟수 입력
         int round = inputRound();
 
+        // 3. 자동차 이름 ',' 기준으로 구분한 리스트 변환
         List<String> carNames = parseCarNames(carNamesString);
 
+        // 4. 자동차 이름 리스트를 Vehicle 타입 컬렉션으로 변환
         List<? extends Vehicle> vehicles = mapToVehicles(carNames);
 
+        // 5. 자동차 경주 시작
         startRace(vehicles, round);
     }
 
