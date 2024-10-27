@@ -20,6 +20,6 @@ public class RacingCarConfig {
         InputHandlerImpl inputHandler = new InputHandlerImpl();
         OutputHandler outputHandler = new OutputHandler();
 
-        return new RacingController(carService, racingService, inputHandler, outputHandler, judgeService);
+        return new RacingController(carService, racingService, judgeService, inputHandler, outputHandler);
     }
 }

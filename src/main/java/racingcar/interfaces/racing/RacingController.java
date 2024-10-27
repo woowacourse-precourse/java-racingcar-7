@@ -13,20 +13,18 @@ import racingcar.interfaces.winner.WinnerResponse;
 
 public class RacingController {
 
-    private final InputHandler inputHandler;
-    private final OutputHandler outputHandler;
     private final CarService carService;
     private final RacingService racingService;
     private final JudgeService judgeService;
+    private final InputHandler inputHandler;
+    private final OutputHandler outputHandler;
 
-    public RacingController(CarService carService, RacingService racingService, InputHandler inputHandler,
-                            OutputHandler outputHandler,
-                            JudgeService judgeService) {
+    public RacingController(CarService carService, RacingService racingService, JudgeService judgeService, InputHandler inputHandler, OutputHandler outputHandler) {
         this.carService = carService;
         this.racingService = racingService;
+        this.judgeService = judgeService;
         this.inputHandler = inputHandler;
         this.outputHandler = outputHandler;
-        this.judgeService = judgeService;
     }
 
     public void processRace() {
@@ -42,12 +40,12 @@ public class RacingController {
     private void startRace(Cars cars, int raceCount) {
         for (int i = 0; i < raceCount; i++) {
             CarsResponse carsResponse = racingService.race(cars);
-            printCarsResponse(carsResponse);
+            printEachRace(carsResponse);
             outputHandler.println();
         }
     }
 
-    private void printCarsResponse(CarsResponse carsResponse) {
+    private void printEachRace(CarsResponse carsResponse) {
         for (CarResponse carResponse : carsResponse.carResponses()) {
             outputHandler.print(carResponse.carStatus());
         }

@@ -30,7 +30,7 @@ class RacingControllerTest {
         FakeInputHandler fakeInputHandler = new FakeInputHandler();
         OutputHandler outputHandler = new OutputHandler();
 
-        racingController = new RacingController(carService, racingService, fakeInputHandler, outputHandler, judgeService);
+        racingController = new RacingController(carService, racingService, judgeService, fakeInputHandler, outputHandler);
     }
 
     @DisplayName("4대의 자동차가 5번 경주하여 결과를 출력하는 테스트")
