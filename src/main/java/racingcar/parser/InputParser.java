@@ -6,7 +6,7 @@ import java.util.List;
 public class InputParser {
 
     public List<String> parseCarNames(String input) {
-        String[] carNames = input.split(",");
+        String[] carNames = input.split(",", -1);
         return Arrays.stream(carNames).toList();
     }
 

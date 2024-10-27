@@ -27,7 +27,7 @@ public class InputView {
     public int getTryCount() {
         try {
             String input = Console.readLine();
-            GameValidation.validateTryCountIsNumber(input);
+            GameValidation.validateTryCount(input);
             return inputParser.parseTryCount(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
