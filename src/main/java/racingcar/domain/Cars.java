@@ -11,7 +11,7 @@ import static racingcar.util.ValidationUtil.isDuplicate;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
-    public static int MIN_CAR_COUNT = 2;
+    public static final int MIN_CAR_COUNT = 2;
 
     public Cars(List<String> carNames) {
         validateCarNames(carNames);
