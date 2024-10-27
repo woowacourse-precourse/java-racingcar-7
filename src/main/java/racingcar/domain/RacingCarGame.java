@@ -11,8 +11,8 @@ public class RacingCarGame {
     List<Car> cars = new ArrayList<>();
 
     public RacingCarGame(List<String> carNames) {
+        CarNameValidation.validateName(carNames);
         for (String carName : carNames) {
-            CarNameValidation.validateName(carName);
             cars.add(new Car(carName));
         }
         RacingCarsGroup racingCarsGroup = new RacingCarsGroup(cars);

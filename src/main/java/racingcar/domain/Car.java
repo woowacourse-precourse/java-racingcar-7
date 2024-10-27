@@ -1,13 +1,10 @@
 package racingcar.domain;
 
-import racingcar.validate.CarNameValidation;
-
 public class Car {
     private final String name;
     private int position;
 
     Car(String name) {
-        CarNameValidation.validateName(name);
         this.name = name;
         this.position = 0;
     }

@@ -5,11 +5,14 @@ import java.util.List;
 import racingcar.validate.enums.ValidateMessages;
 
 public class CarNameValidation {
-    public static void validateName(String name) {
-        validateIfCarNameIsNUllOrEmpty(name);
-        validateIfCarNameHasNewline(name);
-        validateIfCarNameLengthWithinFive(name);
-        validateIfCarNameContainsWhiteSpace(name);
+    public static void validateName(List<String> carNames) {
+        validateIfCarNameDuplicated(carNames);
+        for (String carName : carNames) {
+            validateIfCarNameIsNUllOrEmpty(carName);
+            validateIfCarNameHasNewline(carName);
+            validateIfCarNameLengthWithinFive(carName);
+            validateIfCarNameContainsWhiteSpace(carName);
+        }
     }
 
     public static void validateIfCarNameIsNUllOrEmpty(String name) {
