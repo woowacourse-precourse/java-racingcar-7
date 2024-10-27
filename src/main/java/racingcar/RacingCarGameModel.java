@@ -84,4 +84,23 @@ public class RacingCarGameModel {
 
         return validationTime;
     }
+
+    public void initializeParticipantsForTesting(RacingGameInitializationRequest request, int[] distances) {
+        String[] participants = request.participants().split(",");
+
+        if (participants.length != distances.length) {
+            throw new IllegalArgumentException("이름 배열과 거리 배열의 길이는 같아야 합니다.");
+        }
+
+        for (int i = 0; i < participants.length; i++) {
+            ParticipantEntity participant = new ParticipantEntity(participants[i]);
+
+            for (int j = 0; j < distances[i]; j++) {
+                participant.forward();
+            }
+
+            participantEntities.add(participant);
+        }
+    }
+
 }
