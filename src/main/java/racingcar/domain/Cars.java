@@ -17,17 +17,12 @@ public class Cars {
     }
 
     public void roundProcess(RandNumGenerator randNumGenerator) {
-        for (Car car : cars) {
-            car.moveForward(randNumGenerator.isRandNumGreaterThanOrEqualToCriterion());
-        }
+        cars.forEach(car -> car.moveForward(randNumGenerator.isRandNumGreaterThanOrEqualToCriterion()));
     }
 
     public String roundStatus() {
         StringBuilder roundStatus = new StringBuilder();
-
-        for (Car car : cars) {
-            roundStatus.append(car.getCurrentStatus());
-        }
+        cars.forEach(car -> roundStatus.append(car.getCurrentStatus()));
         return roundStatus.toString();
     }
 
