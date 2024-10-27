@@ -2,6 +2,7 @@
 ### 패키지 구조
 ```
 src
+ src
  ├── main
      ├── java
          ├── racingcar
@@ -19,12 +20,16 @@ src
                  ├── InputValidator.java
                  ├── RandomNumberGenerator.java
                  ├── RandomNumberGeneratorImpl.java
+                 ├── CarNameValidator.java
+                 ├── NumberOfTrialsValidator.java
+                 ├── ErrorMessages.java
              ├── view
                  ├── InputView.java
                  ├── OutputView.java
              ├── config
                  ├── AppConfig.java
              ├── Application.java
+
 ```
 ### 기능 구현 목록
 
