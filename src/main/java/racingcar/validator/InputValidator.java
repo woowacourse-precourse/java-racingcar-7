@@ -21,8 +21,12 @@ public class InputValidator {
 
     public static void validatePlayerName(String[] players) {
         for (String player : players) {
-            if (player.trim().length() > 5) {
+            int playerNameLength = player.trim().length();
+
+            if (playerNameLength > 5) {
                 throw new IllegalArgumentException("플레이어 이름은 5자 이하만 가능합니다.");
+            } else if (playerNameLength <= 0) {
+                throw new IllegalArgumentException("플레이어 이름은 공백일 수 없습니다.");
             }
         }
     }
