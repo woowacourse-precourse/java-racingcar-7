@@ -35,9 +35,9 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 자동차_이름_1자_이하_예외_테스트() {
+    void 자동차_이름_1자_미만_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,o", "1"))
+                assertThatThrownBy(() -> runException("pobi,,,", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
