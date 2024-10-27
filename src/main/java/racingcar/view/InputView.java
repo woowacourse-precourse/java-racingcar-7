@@ -16,12 +16,12 @@ public class InputView {
         return splitCarNames(carNames);
     }
 
-    public int getRoundCount() {
+    public String getRoundCount() {
         System.out.println(ViewMessage.INPUT_ROUND_COUNT.getMessage());
         String roundCount = Console.readLine();
         validateNull(roundCount);
         validateBlank(roundCount);
-        return Integer.parseInt(roundCount);
+        return roundCount;
     }
 
     private void validateNull(final String string) {

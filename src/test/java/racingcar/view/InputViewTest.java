@@ -50,10 +50,10 @@ class InputViewTest {
         InputView inputView = new InputView();
 
         //when
-        int tryCount = inputView.getRoundCount();
+        String tryCount = inputView.getRoundCount();
         Console.close();
 
         //then
-        Assertions.assertThat(tryCount).isEqualTo(5);
+        Assertions.assertThat(tryCount).isEqualTo("5");
     }
 }
