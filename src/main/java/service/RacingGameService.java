@@ -46,7 +46,7 @@ public class RacingGameService {
                 .collect(Collectors.toList());
     }
 
-    private void validationName(String[] names){
+    public void validationName(String[] names){
         Set<String> nameSet = new HashSet<>();
         for (String name : names) {
             if (name.length() > MAX_NAME_LENGTH) {
@@ -59,5 +59,12 @@ public class RacingGameService {
                 throw new IllegalArgumentException(ErrorMessage.NAME_DUPLICATE.getErrorMessage());
             }
         }
+    }
+
+    public int validationRange(int attempts){
+        if(attempts <= 0){
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ATTEMPTS_RANGE.getErrorMessage());
+        }
+        return attempts;
     }
 }
