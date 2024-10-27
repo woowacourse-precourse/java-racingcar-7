@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Winner {
 
+    private static final String WINNER_DELIMITER = ", ";
+
     private final List<Car> winners;
 
     public Winner(Cars cars, Car car) {
