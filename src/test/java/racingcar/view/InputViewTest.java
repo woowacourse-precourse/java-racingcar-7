@@ -31,7 +31,8 @@ class InputViewTest {
     @CsvSource({
             "'car,hi,asdf,lll'",
             "'abc,a,b,c'",
-            "'aaaa,abcd,abcd,kore,asdf'"
+            "'aaaa,abcd,abcd,kore,asdf'",
+            "'abcde,qwert,qewss,poiuy'"
     })
     void testGetCarNames(String input) {
         // Given
