@@ -28,6 +28,10 @@ public class RacingController {
     }
     }
 
+    public int getMaxCurrentLocation() {
+        return cars.stream().mapToInt(Car::getCurrentLocation).max().orElse(0);
+    }
+
     public void playOneRace() {
         for (Car car : cars) {
             car.move();
