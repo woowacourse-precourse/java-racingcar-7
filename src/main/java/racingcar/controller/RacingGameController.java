@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.domain.RacingGame;
 import racingcar.utils.CarNameInputProcessor;
 import racingcar.utils.MoveInputProcessor;
 import racingcar.view.RacingGameView;
@@ -9,6 +10,7 @@ public class RacingGameController {
     public void run(){
         List<String> carNames = setCarNames();
         int moveCount = setMoveCount();
+        RacingGame racingGame = new RacingGame(moveCount, carNames);
     }
 
     private List<String> setCarNames(){
