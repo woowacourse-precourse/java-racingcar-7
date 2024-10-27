@@ -2,6 +2,7 @@ package racingcar.utils;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
 import racingcar.utils.StringConvertor;
 
 import java.util.Arrays;
@@ -25,13 +26,16 @@ class StringConvertorTest {
         assertThrows(NumberFormatException.class, () -> StringConvertor.toInt("a"));
     }
 
-    @DisplayName("쉼표로 구분된 문자열을 리스트로 변환")
+    @DisplayName("쉼표로 구분된 문자열을 자동차 리스트로 변환")
     @Test
     void convertStringToList_success() {
         String test1 = "pobi,jun,kim";
-        List<String> list = StringConvertor.toList(test1);
-        assertThat(list).isEqualTo(Arrays.asList(test1.split(",")));
+        List<Car> list = StringConvertor.toCarList(test1);
+
+        assertThat(list).isInstanceOf(List.class);
         assertThat(list.size()).isEqualTo(3);
+        assertThat(list.get(0)).isInstanceOf(Car.class);
+        assertThat(list.get(0).getName()).isEqualTo("pobi");
     }
 
 }
