@@ -14,12 +14,13 @@ import racingcar.view.UserOutputView;
 public class MainController {
 
     private final CarRepository carRepository = new CarRepository();
-    private final RaceController raceController = new RaceController(new RaceService(carRepository), new CarService(carRepository));
+    private final RaceController raceController = new RaceController(new RaceService(carRepository));
+    private final CarController carController = new CarController(new CarService(carRepository));
 
     public void start() {
         UserOutputView.InputCarNameMessage();
         String carNames = UserInputView.readUserInput();
-        raceController.createCars(new CreateCarsRequest(carNames));
+        carController.createCars(new CreateCarsRequest(carNames));
 
         UserOutputView.InputAttemptCountMessage();
         int attemptCount = Parser.parseStringToInt(UserInputView.readUserInput());
