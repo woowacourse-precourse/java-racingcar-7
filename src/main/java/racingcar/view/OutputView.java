@@ -13,7 +13,7 @@ public class OutputView {
     }
 
     public static void printInsertRacersName() {
-        System.out.println(OutputMessages.INSERT_RACERS_NAME);
+        System.out.println(OutputMessages.INSERT_CARS_NAME);
     }
 
     public static void printInsertTryCount() {
