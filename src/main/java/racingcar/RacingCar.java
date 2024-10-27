@@ -5,6 +5,31 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 
+class Car {
+    private String name;
+    private int go;
+
+    public Car(String name) {
+        this.name = name;
+        this.go = 0;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getGo() {
+        return this.go;
+    }
+
+    public int addTrial() {
+        this.go += 1;
+        return this.go;
+    }
+
+
+}
+
 public class RacingCar {
 
 
@@ -35,6 +60,13 @@ public class RacingCar {
             }
         }
     }
+    public static void saveCars(String[] carNames, Car[] cars) {
+        int index = 0;
 
+        for (String carName : carNames) {
+            cars[index++] = new Car(carName);
+        }
+
+    }
 
 }

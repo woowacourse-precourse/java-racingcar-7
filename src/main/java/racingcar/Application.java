@@ -10,6 +10,8 @@ public class Application {
         int inputTrial = RacingCar.inputTrial();
         String[] carNames = RacingCar.splitInputCarNames(inputCarNames);
         RacingCar.checkInputCarNames(carNames);
+        Car cars[] = new Car[carNames.length];
+        RacingCar.saveCars(carNames, cars);
 
 
     }
