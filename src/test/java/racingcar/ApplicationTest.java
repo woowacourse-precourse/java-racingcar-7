@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 import racingcar.validator.GameValidator;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -16,42 +17,62 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
     void 이름에_공백이_포함된_경우_예외_테스트() {
         assertSimpleTest(() ->
-        assertThatThrownBy(() -> GameValidator.validateCarName("po bi"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름에 공백이 포함될 수 없습니다.")
+                assertThatThrownBy(() -> GameValidator.validateCarName("po bi"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름에 공백이 포함될 수 없습니다.")
         );
     }
 
     @Test
     void 이름이_5글자_초과하는_경우_예외_테스트() {
         assertSimpleTest(() ->
-        assertThatThrownBy(() -> GameValidator.validateCarName("javajava"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1자 이상 5자 이하로 입력해야 합니다.")
+                assertThatThrownBy(() -> GameValidator.validateCarName("javajava"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1자 이상 5자 이하로 입력해야 합니다.")
         );
+    }
+
+    @Test
+    void randomNumber_4이상이면_전진() {
+        Car car = new Car("java");
+
+        car.move(4);
+        car.move(5);
+
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void randomNumber_3이하이면_정지() {
+        Car car = new Car("java");
+
+        car.move(2);
+        car.move(3);
+
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

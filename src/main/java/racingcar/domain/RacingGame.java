@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.lang.foreign.PaddingLayout;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
