@@ -16,11 +16,13 @@ class RacingCarInputTest {
 
     @BeforeEach
     void setUp() {
+
         inputStream = System.in;
     }
 
     @AfterEach
     void tearDown() {
+
         System.setIn(inputStream);
         Console.close();
     }
@@ -28,6 +30,7 @@ class RacingCarInputTest {
     @Test
     @DisplayName("자동차 이름 입력 테스트 - 유효한 이름 입력")
     void inputCarNames() {
+
         setInputs("pobi,woni,jun\n");
 
         String[] carNames = racingCarInput.inputCarNames();
@@ -40,6 +43,7 @@ class RacingCarInputTest {
     @Test
     @DisplayName("자동차 이름 입력 테스트 - 유효하지 않은 이름 입력(,,,)")
     void inputCarNamesWithBlank() {
+
         setInputs(",,,\n");
 
         Assertions.assertThatThrownBy(racingCarInput::inputCarNames)
@@ -50,6 +54,7 @@ class RacingCarInputTest {
     @Test
     @DisplayName("자동차 이름 입력 테스트 - 유효하지 않은 이름 입력(jabaji1)")
     void inputCarNamesOverLength() {
+
         setInputs("jabaji1\n");
 
         Assertions.assertThatThrownBy(racingCarInput::inputCarNames)
@@ -60,6 +65,7 @@ class RacingCarInputTest {
     @Test
     @DisplayName("시도 횟수 입력 테스트 - 유효한 시도 횟수 입력")
     void inputTryCount() {
+
         setInputs("5\n");
 
         int tryCount = racingCarInput.inputTryCount();
@@ -70,6 +76,7 @@ class RacingCarInputTest {
     @Test
     @DisplayName("시도 횟수 입력 테스트 - 유효하지 않은 시도 횟수 입력(-1)")
     void inputTryCountWithNegativeNumber() {
+
         setInputs("-1\n");
 
         Assertions.assertThatThrownBy(racingCarInput::inputTryCount)
@@ -80,6 +87,7 @@ class RacingCarInputTest {
     @Test
     @DisplayName("시도 횟수 입력 테스트 - 유효하지 않은 시도 횟수 입력(문자열)")
     void inputTryCountWithString() {
+
         setInputs("abc\n");
 
         Assertions.assertThatThrownBy(racingCarInput::inputTryCount)
@@ -88,6 +96,7 @@ class RacingCarInputTest {
     }
 
     private void setInputs(String input) {
+
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
     }
