@@ -60,6 +60,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 아무도_출발하지_않았을_때_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() ->
+                        assertRandomNumberInRangeTest(
+                                () -> run("pobi,woni", "1"),
+                                STOP, STOP
+                        )
+                ).isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
