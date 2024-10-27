@@ -18,17 +18,14 @@ public class Racing {
         return carList;
     }
 
-    public int start(List<Car> carList, int numberOfMoves) {
-        int maxLocation = 0;
+    public void start(List<Car> carList, int numberOfMoves) {
         for (int i = 0; i < numberOfMoves; i++) {
             for (Car car : carList) {
                 moveCar(car);
                 printCarLocation(car);
-                maxLocation = Math.max(maxLocation, car.getLocation());
             }
             System.out.println();
         }
-        return maxLocation;
     }
 
     public void moveCar(Car car) {
@@ -44,6 +41,14 @@ public class Racing {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public int getWinnerLocation(List<Car> carList) {
+        int maxLocation = 0;
+        for (Car car : carList) {
+            maxLocation = Math.max(maxLocation, car.getLocation());
+        }
+        return maxLocation;
     }
 
     public List<String> getCarNamesAtLocation(List<Car> carList, int location){

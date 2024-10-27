@@ -17,7 +17,9 @@ public class Application {
         System.out.println();
         System.out.println("실행 결과");
 
-        int maxLocation = racing.start(carList, numberOfMoves);
+        racing.start(carList, numberOfMoves);
+
+        int maxLocation = racing.getWinnerLocation(carList);
 
         List<String> winners = racing.getCarNamesAtLocation(carList, maxLocation);
 
