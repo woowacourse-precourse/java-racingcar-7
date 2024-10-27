@@ -1,5 +1,6 @@
 package racingcar.Service;
 
+import racingcar.Controller.RaceViewController;
 import racingcar.DTO.RaceInfoDTO;
 import racingcar.DTO.RaceResultDTO;
 import racingcar.Domain.CarInfo;
@@ -14,14 +15,16 @@ public class RaceProcessService {
     private Integer trialCount;
     private RaceInfoDTO raceInfoDTO;
     private RaceResultEvaluator raceResultEvaluator;
+    private RaceViewController raceViewController;
     private RandomNumber randomNumber;
 
     public RaceProcessService(DomainFactory domainFactory) {
         this.domainFactory = domainFactory;
     }
 
-    public void readyRace(RaceInfoDTO raceInfoDTO) {
+    public void readyRace(RaceInfoDTO raceInfoDTO, RaceViewController raceViewController) {
         this.raceInfoDTO = raceInfoDTO;
+        this.raceViewController = raceViewController;
 
         carInfo = domainFactory.createCarInfo(raceInfoDTO.getCarNames());
         randomNumber = domainFactory.createRandomNumber();
@@ -33,12 +36,16 @@ public class RaceProcessService {
     }
 
     public void startRace() {
+        raceViewController.printRaceResult();
+
         while (trialCount > 0) {
             for (String carName : raceInfoDTO.getCarNames()) {
                 Integer number = randomNumber.pickNumber();
                 carInfo.moveForward(carName, number);
             }
             trialCount--;
+            RaceResultDTO raceResultDTO = new RaceResultDTO(carInfo.exportCarList());
+            raceViewController.gatherRaceResult(raceResultDTO);
         }
     }
 }
