@@ -10,7 +10,7 @@ public class Car extends Racer {
     }
 
     @Override
-    public boolean move() {
+    public boolean canMove() {
         int randomNum = carUtils.pickNumber(0, 9);
         return carUtils.isMovable(randomNum);
     }
