@@ -13,19 +13,6 @@ import java.util.*;
 public class RacingCarIO {
 
     /**
-     * 자동차 객체를 생성합니다
-     * @param name 자동차에 설정할 이름
-     * @return name을 Car의 이름으로 하는 Car 객체
-     * @throws IllegalArgumentException 이름이 비어있는경우
-     */
-    public static Car createCar( String name ) {
-        if ( name.isEmpty() )
-            throw new IllegalArgumentException( INVALID_INPUT_ERR );
-
-        return new Car( name );
-    }
-
-    /**
      * 문제형식을 준수하여 입력값을 가져와 입력표준DTO로 전달합니다
      * @return 입력표준DTO
      * @throws IllegalArgumentException 부적절한 값이 입력된 경우

@@ -17,11 +17,18 @@ public class Race {
 
     public Race( InputDTO inputs ) {
         this.participants = inputs.carNames().stream()
-                .map( RacingCarIO::createCar )
+                .map( this::createCar )
                 .toList();
 
         this.tryCnt = inputs.tryCnt();
         this.currentStatus = new HashMap<>();
+    }
+
+    private Car createCar( String name ) {
+        if ( name.isEmpty() )
+            throw new IllegalArgumentException( INVALID_INPUT_ERR );
+
+        return new Car( name );
     }
 
     public void start() {
