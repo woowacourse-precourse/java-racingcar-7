@@ -3,11 +3,12 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.constant.OutputMessage;
 import racingcar.service.ValidationService;
 
 public class InputView {
     public List<String> getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(OutputMessage.ENTER_CAR_NAMES);
         String input = Console.readLine();
 
         List<String> carNames = Arrays.stream(input.split(","))
@@ -19,7 +20,7 @@ public class InputView {
     }
 
     public int getAttempts() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(OutputMessage.ENTER_ATTEMPTS);
         String input = Console.readLine();
         return ValidationService.validateAttempts(input);
     }
