@@ -5,8 +5,18 @@ import racingcar.model.Car;
 import racingcar.model.Cars;
 
 public class OutputView {
+    private static final OutputView INSTANCE = new OutputView();
     private final String RESULT_MESSAGE = "실행 결과";
     private final String FINAL_WINNER_MESSAGE = "최종 우승자 : ";
+
+    private OutputView() {
+    }
+
+    ;
+
+    public static OutputView getInstance() {
+        return INSTANCE;
+    }
 
     public void showRoundResult(Cars cars) {
         System.out.println(RESULT_MESSAGE);

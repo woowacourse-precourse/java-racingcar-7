@@ -17,12 +17,12 @@ public class CarController {
     private final OutputView outputView;
 
     public CarController(CarMoveManager carMoveManager, InputSplitter inputSplitter,
-                         RandomNumberGenerator randomNumberGenerator, InputView inputView, OutputView outputView) {
+                         RandomNumberGenerator randomNumberGenerator) {
         this.carMoveManager = carMoveManager;
         this.inputSplitter = inputSplitter;
         this.randomNumberGenerator = randomNumberGenerator;
-        this.inputView = inputView;
-        this.outputView = outputView;
+        this.inputView = InputView.getInstance();
+        this.outputView = OutputView.getInstance();
     }
 
     public void play() {
