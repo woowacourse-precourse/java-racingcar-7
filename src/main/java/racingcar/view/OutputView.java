@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.model.Car;
 
 public class OutputView {
@@ -16,5 +18,12 @@ public class OutputView {
 
     public void printNewLine() {
         System.out.println();
+    }
+
+    public void printWinner(List<Car> cars) {
+        String result = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println(WINNER_STRING + result);
     }
 }
