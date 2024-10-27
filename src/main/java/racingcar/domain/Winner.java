@@ -11,19 +11,19 @@ public class Winner {
         this.winner = new ArrayList<>();
     }
 
-    public List<Car> getWinner(ArrayList<Car> carArray){
+    public List<Car> getWinnerList(List<Car> carArray){
         setWinnerList(carArray);
         return winner;
     }
 
-    public void setWinnerList(ArrayList<Car> carArray) {
+    public void setWinnerList(List<Car> carArray) {
         int maxDistance = getMaxDistance(carArray);
         this.winner = carArray.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .collect(Collectors.toList());
     }
 
-    private int getMaxDistance(ArrayList<Car> carArray) {
+    private int getMaxDistance(List<Car> carArray) {
         return carArray.stream()
                 .map(Car::getDistance)
                 .max(Integer::compare) // getDistance는 int를 반환하지만 map Integer로 변환시킴
