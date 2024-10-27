@@ -9,18 +9,6 @@ import org.junit.jupiter.api.Test;
 public class CarTest {
 
     @Test
-    void 이름이_6자_이상이면_예외가_발생한다() {
-        assertThatThrownBy(() -> Car.from("미래소년코난"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 이름이_5자_이하이면_예외가_발생하지_않는다() {
-        assertThatCode(() -> Car.from("배고픈포비"))
-                .doesNotThrowAnyException();
-    }
-
-    @Test
     void 숫자가_4_이상이면_전진한다() {
         // given
         Car car = Car.from("pobi");
@@ -42,6 +30,18 @@ public class CarTest {
 
         // then
         assertThat(car.getAdvanceMarkerCount()).isEqualTo(0);
+    }
+
+    @Test
+    void 이름이_6자_이상이면_예외가_발생한다() {
+        assertThatThrownBy(() -> Car.from("일이삼사오육"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 이름이_5자_이하이면_예외가_발생하지_않는다() {
+        assertThatCode(() -> Car.from("일이삼사오"))
+                .doesNotThrowAnyException();
     }
 
 }
