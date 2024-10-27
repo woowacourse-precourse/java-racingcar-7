@@ -6,9 +6,9 @@ public class RacingCar {
     private RacingCarName racingCarName;
     private Location location;
 
-    public RacingCar(final String racingCarName, final Location location){
+    public RacingCar(final String racingCarName, final int location){
         this.racingCarName = new RacingCarName(racingCarName);
-        this.location = location;
+        this.location = new Location(location);
     }
 
     public void move(final int randomNumber){
