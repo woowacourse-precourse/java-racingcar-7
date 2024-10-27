@@ -27,10 +27,6 @@ public class RacingCar {
     }
 
     public String getPositionWithDash() {
-        StringBuilder dashPosition = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            dashPosition.append("-");
-        }
-        return dashPosition.toString();
+        return "-".repeat(position);
     }
 }
