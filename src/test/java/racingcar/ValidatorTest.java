@@ -30,7 +30,7 @@ class ValidatorTest {
 
     @DisplayName("유효하지 않은 자동차이름 배열 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"car123456,car", ",,"})
+    @ValueSource(strings = {"car123456,car", ",,", ",sumi", "sumi,", "sumi,,"})
     void testInvalidCarNames(String names) {
         // Given: 유효하지 않은 자동차 이름 문자열
         // When: 자동차 이름 검증 메서드 실행
