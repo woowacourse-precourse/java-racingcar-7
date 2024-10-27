@@ -18,6 +18,8 @@ public class Application {
 
         // 2.1 시도할 횟수를 입력받는 기능
         String tryCountInputString = getTryCountInputString();
+        // 2.2 시도할 횟수가 형식에 맞게 입력되었는지 확인하여 정수 타입으로 변환하는 기능
+        int tryCount = getTryCount(tryCountInputString);
     }
 
     public static String getCarNamesInputString() {
@@ -48,5 +50,32 @@ public class Application {
     public static String getTryCountInputString() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Console.readLine();
+    }
+
+    public static int getTryCount(String tryCountInputString) {
+        validateTryCount(tryCountInputString);
+        return Integer.parseInt(tryCountInputString);
+    }
+
+    public static void validateTryCount(String tryCountInputString) {
+        if (!isNumericString(tryCountInputString)) {
+            throw new IllegalArgumentException();
+        }
+        if (!isPositiveNumber(Integer.parseInt(tryCountInputString))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static boolean isNumericString(String tryCountInputString) {
+        try {
+            Integer.parseInt(tryCountInputString);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isPositiveNumber(int number) {
+        return number > 0;
     }
 }
