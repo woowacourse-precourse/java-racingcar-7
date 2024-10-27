@@ -25,4 +25,20 @@ class CarsTest {
         assertThat(carsReadOnly.get(1).getCarName()).isEqualTo("woni");
         assertThat(carsReadOnly.get(2).getCarName()).isEqualTo("jun");
     }
+
+    @Test
+    @DisplayName("자동차 이동 조건에 따른 거리 증가 테스트")
+    void raceOnce() {
+        // given
+        List<String> carNames = Arrays.asList("pobi", "woni");
+        Cars cars = new Cars(carNames);
+        List<Car> carsReadOnly = cars.getCarsReadOnly();
+
+        // when
+        cars.raceOnce();
+
+        // then
+        assertThat(carsReadOnly.get(0).getCurrentDistance()).isBetween(0, 1);
+        assertThat(carsReadOnly.get(1).getCurrentDistance()).isBetween(0, 1);
+    }
 }
