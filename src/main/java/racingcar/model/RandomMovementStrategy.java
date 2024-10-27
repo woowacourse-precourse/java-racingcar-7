@@ -8,7 +8,7 @@ public class RandomMovementStrategy implements MovementStrategy {
         return makeRandomNumber() >= 4;
     }
 
-    private int makeRandomNumber() {
+    protected int makeRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
