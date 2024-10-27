@@ -7,6 +7,7 @@ public class Application {
         // TODO: 프로그램 구현
 
         String[] carNames = getCarNames();
+        int moveCount = getMoveCount();
     }
 
     private static String[] getCarNames() {
@@ -22,5 +23,19 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public static int getMoveCount() {
+        System.out.println("시도할 회수는 몇 번인가요?");
+        String moveCountInput = Console.readLine();
+        return validateMoveCount(moveCountInput);
+    }
+
+    public static int validateMoveCount(String moveCountInput) {
+        int moveCount = Integer.parseInt(moveCountInput);
+        if (moveCount < 0) {
+            throw new IllegalArgumentException();
+        }
+        return moveCount;
     }
 }
