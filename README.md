@@ -64,6 +64,7 @@
 - InputView
   - inputCarNames()
   - inputRoundCount()
+  - parseCarNames()
 - OutputView
   - printRoundResult()
   - printWinners()
