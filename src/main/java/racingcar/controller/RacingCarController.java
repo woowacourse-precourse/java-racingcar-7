@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.model.service.RacingCarService;
+import racingcar.model.RacingCarService;
 import racingcar.view.Input;
 import racingcar.view.Output;
 
@@ -20,7 +20,7 @@ public class RacingCarController {
     public void startGame() {
         List<String> carNames = input.getCarName();
         int tryCount = input.getRound();
-        racingCarService.startGame();
+        racingCarService.startGame(carNames, tryCount);
     }
 
 }
