@@ -2,7 +2,7 @@ package racingcar.car;
 
 import static org.assertj.core.api.Assertions.*;
 import static racingcar.global.constant.Config.MAX_CAR_NAME_SIZE;
-import static racingcar.global.constant.ErrorMessage.CAR_NAME_OVERSIZE_MESSAGE;
+import static racingcar.global.constant.ErrorMessage.CAR_NAME_OVERSIZE_ERROR_MESSAGE;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +25,7 @@ class CarTest {
         // then
         assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CAR_NAME_OVERSIZE_MESSAGE);
+                .hasMessage(CAR_NAME_OVERSIZE_ERROR_MESSAGE);
     }
 
 }
