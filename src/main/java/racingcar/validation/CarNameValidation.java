@@ -1,5 +1,9 @@
 package racingcar.validation;
 
+import static racingcar.constant.SeparatorConstant.COMMA;
+import static racingcar.constant.SeparatorConstant.EMPTY;
+import static racingcar.constant.SeparatorConstant.SPACE;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,7 +38,7 @@ public class CarNameValidation {
 
 
     private static void validateCarName(String input) {
-        String[] carNames = input.replaceAll("\\s+", "").split(",");
+        String[] carNames = input.replaceAll(SPACE.getSeparator(), EMPTY.getSeparator()).split(COMMA.getSeparator());
 
         Set<String> carNamesSet = new HashSet<>();
 
