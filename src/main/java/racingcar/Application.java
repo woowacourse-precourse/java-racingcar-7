@@ -1,7 +1,12 @@
 package racingcar;
 
+import racingcar.presenters.ApplicationPresenter;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        ApplicationPresenter presenter = new ApplicationPresenter();
+        presenter.init();
+        presenter.runGame();
+        presenter.displayResults();
     }
 }
