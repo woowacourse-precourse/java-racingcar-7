@@ -104,4 +104,23 @@ class RacingRequestValidatorTest {
         assertThatThrownBy(() -> RacingRequestValidator.validate(racingRequestDTO))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    private static Stream<Arguments> provideDuplicateCarNames() {
+        return Stream.of(
+                Arguments.of(Arrays.asList("우테코", "우테코", "포비")),
+                Arguments.of(Arrays.asList("a", "a", "a")),
+                Arguments.of(Arrays.asList("떡뽂이", "떡뽂이"))
+        );
+    }
+
+    @ParameterizedTest(name = "차 이름 리스트: {0}")
+    @MethodSource("provideDuplicateCarNames")
+    @DisplayName("중복된 자동차 이름이 존재할 경우 예외를 던진다")
+    void validate_withDuplicateNames(List<String> carNames) {
+        RacingRequestDTO racingRequestDTO = RacingRequestDTO.of(carNames, 5);
+
+        assertThatThrownBy(() -> RacingRequestValidator.validate(racingRequestDTO))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("중복된 자동차 이름이 있습니다.");
+    }
 }
