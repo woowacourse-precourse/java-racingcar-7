@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -86,10 +85,8 @@ class MainTest extends NsTest {
     void printCarNameAndSingleMove() {
         Car car = new Car("pobi", false,0);
         Car car2 = new Car("jun", true,0);
-        List<Car> cars = new ArrayList<>();
-        cars.add(car);
-        cars.add(car2);
-        main.printSingleResult(cars);
+        main.printSingleResult(car);
+        main.printSingleResult(car2);
         assertThat(output()).contains("pobi :");
         assertThat(output()).contains("jun : -");
     }

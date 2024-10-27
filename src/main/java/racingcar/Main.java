@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public List<Car> prepareGame(){
+    public List<Car> prepareGame() {
         String carNameInput = receiveCarNames();
         String[] carNames = splitCarNames(carNameInput);
         List<Car> cars = createAllCars(carNames);
@@ -15,12 +15,23 @@ public class Main {
         return cars;
     }
 
-    public void playGame(){
+    public List<Car> playGame(List<Car> cars) {
+        int playCounts = receivePlayCount();
 
+        for (int i = 0; i < playCounts; i++) {
+            for (Car car : cars) {
+                int randomNumber = createRandomNumber();
+                boolean isMove = isMove(randomNumber);
+                setMoveInformation(car, isMove);
+                printSingleResult(car);
+            }
+        }
+
+        return cars;
     }
 
-    public void finishGame(){
-
+    public void finishGame(List<Car> cars) {
+        printWinners(cars);
     }
 
     public String receiveCarNames() {
@@ -35,11 +46,11 @@ public class Main {
     }
 
     public Car createSingleCar(String carName) {
-        Car car = new Car(carName,false,0);
+        Car car = new Car(carName, false, 0);
         return car;
     }
 
-    public List<Car> createAllCars(String[] carNames){
+    public List<Car> createAllCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
@@ -55,8 +66,8 @@ public class Main {
         return count;
     }
 
-    public int createRandomNumber(){
-        return Randoms.pickNumberInRange(0,9);
+    public int createRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 
     public boolean isMove(int randomNumber) {
@@ -67,11 +78,10 @@ public class Main {
         car.setMove(move);
     }
 
-    public int repeatCreation(){
+    public int repeatCreation() {
         String userInput = receiveCarNames();
         String[] carNames = splitCarNames(userInput);
 
-        // TODO: createSingleCar 만들기만 하고 안 쓰네
         List<Car> cars = createAllCars(carNames);
 
         int repeatCount = 0;
@@ -84,13 +94,11 @@ public class Main {
         return repeatCount;
     }
 
-    public void printSingleResult(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + (car.getMove()?"-":""));
-        }
+    public void printSingleResult(Car car) {
+        System.out.println(car.getName() + " : " + (car.getMove() ? "-" : ""));
     }
 
-    public int repeatGame(int count){
+    public int repeatGame(int count) {
         int game = 0;
         repeatCreation();
 
@@ -110,7 +118,7 @@ public class Main {
                 winner.setLength(0);
                 winner.append(car.getName());
                 maxPosition = car.getPosition();
-            }else if (car.getPosition() == maxPosition) {
+            } else if (car.getPosition() == maxPosition) {
                 winner.append(", ").append(car.getName());
             }
         }
