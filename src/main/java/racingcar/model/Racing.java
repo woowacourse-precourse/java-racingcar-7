@@ -2,9 +2,7 @@ package racingcar.model;
 
 import static racingcar.util.Validator.validateRacingCarCount;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Racing {
 
@@ -14,7 +12,7 @@ public class Racing {
         validateRacingCarCount(racerNames);
         this.allRacers = racerNames.stream()
                 .map(RacingCar::new)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .toList();
     }
 
     public List<RacingCar> start(Integer totalTrialCount) {
