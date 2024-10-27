@@ -8,6 +8,7 @@ public class Car {
 
     private static final int CAR_POSITION_INIT = 0;
     private static final int CAR_POSITION_MAX_CRITERIA = Integer.MAX_VALUE - 2;
+    private static final int MAX_CAR_NAME_LENGTH = 5;
 
     private final String carName;
     private int carPosition;
@@ -23,11 +24,19 @@ public class Car {
         this.carPosition++;
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getCarPosition() {
+        return carPosition;
+    }
+
     private void validateCarName(String carName) {
         if(carName == null || carName.isBlank()) {
             throw new IllegalCarNameException(carName);
         }
-        if(carName.length() > 5) {
+        if(carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalCarNameException(carName, carName.length());
         }
     }
@@ -36,14 +45,6 @@ public class Car {
         if (carPosition > CAR_POSITION_MAX_CRITERIA) {
             throw new CarPositionOutOfRangeException(carName, carPosition);
         }
-    }
-
-    public String getCarName() {
-        return carName;
-    }
-
-    public int getCarPosition() {
-        return carPosition;
     }
 
     @Override
