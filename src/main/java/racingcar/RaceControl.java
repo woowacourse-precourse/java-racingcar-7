@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -50,6 +51,34 @@ public class RaceControl {
      * 경기를 진행합니다. (구현 예정)
      */
     void race() {
+        for (int i = 0; i < this.trialCount; i++) {
+            for(Car car : this.carList) {
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                if (randomNumber >= 4) {
+                    car.move();
+                }
+            }
+
+            this.record(i);
+        }
+    }
+
+    /**
+     * 경기의 결과를 표시합니다.
+     *
+     * @param round 경기회차
+     */
+    void record(int round) {
+
+        System.out.println();
+
+        if (round == 0) {
+            System.out.println("실행결과");
+        }
+
+        for(Car car : this.carList) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getLocation()) );
+        }
 
     }
 

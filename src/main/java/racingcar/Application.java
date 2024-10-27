@@ -7,6 +7,8 @@ public class Application {
         raceControl.enroll();
         raceControl.confirmRoster();
         raceControl.decideRound();
+
+        raceControl.race();
     }
 
 }
