@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class ScoreBoard {
@@ -22,5 +23,15 @@ public class ScoreBoard {
 
     private String createRoundResultForm(CarImpl car) {
         return car.getName() + " : " + car.toScoreSymbol();
+    }
+
+    private int getTopScore() {
+        int bestScore = carList.stream()
+                .map(car -> (CarImpl) car)
+                .max(Comparator.comparingInt(CarImpl::getScore))
+                .map(CarImpl::getScore)
+                .get();
+
+        return bestScore;
     }
 }
