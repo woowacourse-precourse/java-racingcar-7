@@ -4,11 +4,10 @@ import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
 import racingcar.model.winner.Winners;
 import racingcar.strategy.MoveStrategy;
-
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class ResultView {
+    private static final String RESULT_SENTENCE = "실행 결과";
     private static final String WINNER_SENTENCE = "최종 우승자 : ";
     private static final String CAR_MOVE_DELIMITER = " : ";
     private static final String CAR_WINNER_DELIMITER = ", ";
@@ -22,7 +21,8 @@ public class ResultView {
 
     public void moveCarResultView(int tryCount) {
         System.out.println();
-        for(int i=0; i<tryCount; i++) {
+        System.out.println(RESULT_SENTENCE);
+        for (int i = 0; i < tryCount; i++) {
             cars.moves(new MoveStrategy());
             makeResultView();
         }
@@ -31,10 +31,17 @@ public class ResultView {
     private void makeResultView() {
         for (Car car : cars.getCars()) {
             System.out.print(car.getName() + CAR_MOVE_DELIMITER);
-            IntStream.range(0, car.getMoveNumber()).forEach(number -> System.out.print(MOVE_MARKER));
+
+            makeMoveMakerResultView(car);
             System.out.println();
         }
         System.out.println();
+    }
+
+    public void makeMoveMakerResultView(Car car) {
+        for (int i = 0; i < car.getMoveNumber(); i++) {
+            System.out.print(MOVE_MARKER);
+        }
     }
 
     public void winnerResultView() {
