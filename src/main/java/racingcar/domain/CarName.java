@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static racingcar.exception.ExceptionMessage.NAME_OUT_OF_RANGE;
