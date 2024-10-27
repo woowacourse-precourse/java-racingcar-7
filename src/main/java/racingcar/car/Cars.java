@@ -3,6 +3,7 @@ package racingcar.car;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars;
@@ -19,6 +20,18 @@ public class Cars {
             car.move(randomNum);
             car.displayPosition();
         }
+    }
+
+    public String getWinners() {
+        int winnerPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
     }
 
     private static class RandomNumberGenerator {
