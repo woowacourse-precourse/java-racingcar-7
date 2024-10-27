@@ -129,7 +129,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트_자동차_이름_빈문자열_오류() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(",a,,c,", "1"))
+                assertThatThrownBy(() -> runException(",a,,c", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

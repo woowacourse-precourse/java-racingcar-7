@@ -40,4 +40,10 @@ public class Validator {
             throw new IllegalArgumentException(INPUT_MUST_NOT_END_WITH_COMMA.getMessage());
         }
     }
+
+    public static void validateCarNameIsNotEmpty(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException(CAR_NAME_MUST_NOT_BE_EMPTY.getMessage());
+        }
+    }
 }
