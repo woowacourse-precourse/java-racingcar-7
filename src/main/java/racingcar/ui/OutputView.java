@@ -1,7 +1,8 @@
 package racingcar.ui;
 
 import java.util.List;
-import racingcar.domain.round.RoundResult;
+import racingcar.ui.dto.GetFinalWinnerDto;
+import racingcar.ui.dto.GetRacingResultDto;
 
 public class OutputView {
 
@@ -17,10 +18,10 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void showRacingResult(List<RoundResult> racingResult) {
-        racingResult.forEach(roundResult -> BUFFER.append(roundResult.carName())
+    public void showRacingResult(List<GetRacingResultDto> response) {
+        response.forEach(racingResult -> BUFFER.append(racingResult.carName())
                 .append(" : ")
-                .append("-".repeat(roundResult.position()))
+                .append("-".repeat(racingResult.position()))
                 .append(NEW_LINE));
 
         bufferClear();
@@ -32,9 +33,9 @@ public class OutputView {
         BUFFER.setLength(0);
     }
 
-    public void showFinalWinners(List<String> finalWinners) {
+    public void showFinalWinners(GetFinalWinnerDto response) {
         BUFFER.append("최종 우승자 : ")
-                .append(String.join(", ", finalWinners))
+                .append(String.join(", ", response.finalWinners()))
                 .append(NEW_LINE);
 
         bufferClear();

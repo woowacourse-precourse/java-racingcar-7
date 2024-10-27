@@ -6,6 +6,8 @@ import racingcar.domain.racer.movecondition.impl.RandomNumberGenerator;
 import racingcar.domain.round.Round;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
+import racingcar.ui.dto.GetFinalWinnerDto;
+import racingcar.ui.dto.GetRacingResultDto;
 
 public class RacingController {
 
@@ -31,7 +33,7 @@ public class RacingController {
     }
 
     private void endRacingGame(RacingGame racingGame) {
-        this.outputView.showFinalWinners(racingGame.getFinalWinners());
+        this.outputView.showFinalWinners(new GetFinalWinnerDto(racingGame.getFinalWinners()));
     }
 
     private void playRacingGame(RacingGame racingGame) {
@@ -44,7 +46,7 @@ public class RacingController {
 
     private void playNextRound(RacingGame racingGame) {
         racingGame.playNextRound();
-        this.outputView.showRacingResult(racingGame.getRacingResult());
+        this.outputView.showRacingResult(GetRacingResultDto.from(racingGame.getRacingResult()));
     }
 
 }
