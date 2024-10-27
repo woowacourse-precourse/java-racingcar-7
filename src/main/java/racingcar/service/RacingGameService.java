@@ -14,13 +14,7 @@ public class RacingGameService {
         this.randomGenerator = randomGenerator;
     }
 
-    public void startGame(Set<Car> cars, int attemptCount) {
-        for (int i = 0; i < attemptCount; i++) {
-            moveCars(cars);
-        }
-    }
-
-    private void moveCars(Set<Car> cars) {
+    public void moveCars(Set<Car> cars) {
         cars.stream()
                 .filter(car -> shouldMoveForward())
                 .forEach(Car::forward);
