@@ -33,4 +33,8 @@ public class RacingCarNameDTO {
     private boolean isBlank(String inputString){
         return inputString == null || inputString.trim().isEmpty();
     }
+
+    public List<String> getCarNames() {
+        return carNames;
+    }
 }
