@@ -38,7 +38,7 @@ class RaceRuleTest {
         List<Car> cars = List.of(car1, car2, car3);
 
         // when
-        List<Car> winners = RaceRule.determineWinners(cars);
+        List<Car> winners = RaceRule.findWinners(cars);
 
         // then
         assertThat(winners).containsExactly(car1);
@@ -53,7 +53,7 @@ class RaceRuleTest {
         List<Car> cars = List.of(car1, car2, car3);
 
         // when
-        List<Car> winners = RaceRule.determineWinners(cars);
+        List<Car> winners = RaceRule.findWinners(cars);
 
         // then
         assertThat(winners).containsExactlyInAnyOrder(car1, car3);
@@ -72,14 +72,11 @@ class RaceRuleTest {
 
     @Test
     void 중복된_이름이_있으면_예외발생() {
-        Car car1 = new Car("car1", 5);
-        Car car2 = new Car("car1", 4);
-        Car car3 = new Car("car3", 5);
-        List<Car> cars = List.of(car1, car2, car3);
+        List<String> names = List.of("car1", "car1", "car3");
 
         // when
         assertThrows(IllegalArgumentException.class, () -> {
-            RaceRule.determineWinners(cars);
+            RaceRule.validateNames(names);
         });
     }
 }

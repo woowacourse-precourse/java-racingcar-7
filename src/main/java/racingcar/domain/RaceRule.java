@@ -6,6 +6,8 @@ import racingcar.domain.Car;
 import racingcar.utils.generator.NumberGenerator;
 
 public class RaceRule {
+    private static final int MIN_NAMES_SIZE = 2;
+    private static final int MAX_NAMES_SIZE = 10;
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 9;
     private static final int THRESHOLD = 4;
@@ -14,17 +16,33 @@ public class RaceRule {
     public RaceRule(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
     }
-
+    // 이동 규칙
     public boolean canMove() {
         int generated = numberGenerator.generate();
         validateGeneratedNumber(generated);
         return generated >= THRESHOLD;
     }
 
-    public static List<Car> determineWinners(List<Car> cars) {
-        validateCars(cars);
+    // 우승자 규칙
+    public static List<Car> findWinners(List<Car> cars) {
+        int maxMovement = getMaxMovement(cars);
+        return cars.stream()
+                .filter(car -> car.getMovement() == maxMovement)
+                .toList();
+    }
 
-        return findWinners(cars);
+    // 이름 규칙
+    public static void validateNames(List<String> names) {
+        if (names == null || names.isEmpty()) {
+            throw new IllegalArgumentException("자동차 목록은 비었을 수 없습니다.");
+        }
+        if (isDuplicatedNames(names)) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
+        if (MIN_NAMES_SIZE > names.size() || names.size() > MAX_NAMES_SIZE) {
+            String message = String.format("참가하는 자동차는 %d에서 %d 사이여야 합니다.", MIN_NAMES_SIZE, MAX_NAMES_SIZE);
+            throw new IllegalArgumentException(message);
+        }
     }
 
     private static void validateGeneratedNumber(int number) {
@@ -37,22 +55,6 @@ public class RaceRule {
         );
     }
 
-    private static void validateCars(List<Car> cars) {
-        if (cars == null || cars.isEmpty()) {
-            throw new IllegalArgumentException("자동차 목록은 비었을 수 없습니다.");
-        }
-        if (isDuplicatedNames(cars)) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-        }
-    }
-
-    private static List<Car> findWinners(List<Car> cars) {
-        int maxMovement = getMaxMovement(cars);
-        return cars.stream()
-                .filter(car -> car.getMovement() == maxMovement)
-                .toList();
-    }
-
     private static int getMaxMovement(List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getMovement)
@@ -60,7 +62,7 @@ public class RaceRule {
                 .orElse(0);
     }
 
-    public static boolean isDuplicatedNames(List<Car> cars) {
-        return cars.size() != new HashSet<>(cars.stream().map(Car::getName).toList()).size();
+    private static boolean isDuplicatedNames(List<String> names) {
+        return names.size() != new HashSet<>(names.stream().toList()).size();
     }
 }

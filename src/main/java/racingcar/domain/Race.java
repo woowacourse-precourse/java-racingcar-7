@@ -7,9 +7,10 @@ public class Race {
     private final List<Car> cars;
     private final RaceRule raceRule;
 
-    public Race(Round round, List<Car> cars, RaceRule raceRule) {
-        this.round = round;
-        this.cars = cars;
+    public Race(int totalRound, List<String> names, RaceRule raceRule) {
+        RaceRule.validateNames(names);
+        this.round = new Round(totalRound);
+        this.cars = cars(names);
         this.raceRule = raceRule;
     }
 
@@ -40,10 +41,16 @@ public class Race {
             throw new IllegalArgumentException();
         }
 
-        return raceRule.determineWinners(cars);
+        return RaceRule.findWinners(cars);
     }
 
     public boolean isGameEnd() {
         return !round.hasNext();
+    }
+
+    public List<Car> cars(List<String> names) {
+        return names.stream()
+                .map(Car::new)
+                .toList();
     }
 }

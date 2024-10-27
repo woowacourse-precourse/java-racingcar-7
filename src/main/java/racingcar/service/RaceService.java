@@ -17,11 +17,11 @@ public class RaceService {
 
     public RaceService(CarCreateRequest request) {
         NumberGenerator numberGenerator = new RandomDigitsGenerator();
-        List<Car> cars = Arrays.stream(request.getNames()).map(Car::new).toList();
-        Round round = new Round(request.getTryCount());
+        List<String> names = Arrays.stream(request.getNames()).toList();
+        int totalRound = request.getTryCount();
         RaceRule rule = new RaceRule(numberGenerator);
 
-        this.race = new Race(round, cars, rule);
+        this.race = new Race(totalRound, names, rule);
     }
 
     public List<Car> proceed() {
