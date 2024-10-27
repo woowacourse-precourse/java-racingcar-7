@@ -29,6 +29,9 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
         int testCase = Integer.parseInt(input);
+        if (testCase < 0) {
+            throw new IllegalArgumentException();
+        }
         return testCase;
     }
 
