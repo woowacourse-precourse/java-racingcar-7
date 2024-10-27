@@ -5,6 +5,8 @@ import java.util.List;
 
 public class RacingCarService {
 
+    private int winnerCarMovingPoint = 0;
+
     public boolean moveOrStop(int randomNumber) {
         if (randomNumber >= 4 && randomNumber < 10) {
             return true;
@@ -19,24 +21,38 @@ public class RacingCarService {
         return camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
     }
 
-    public List<RacingCar> getCarListFromInput(String input) {
-        return convertRacingCarListFromNameList(getCarNameList(input));
-    }
-
-    public List<String> getCarNameList(String input){
-        return List.of(input.split(","));
-    }
-
-    private List<RacingCar> convertRacingCarListFromNameList(List<String> carNameList){
-        return carNameList.stream().
-                map(name -> new RacingCar(name, ""))
-                .toList();
-    }
-
 
     public void increasingCurrentMovingPoint(RacingCar racingCar, int randomNum) {
         if (moveOrStop(randomNum)) {
             racingCar.plusCurrentMovingPoint();
         }
     }
+
+    public String getWinnerRacingCar(RacingCarList racingCarList) {
+        List<RacingCar> winnerRacingCarList = new ArrayList<>();
+        for (RacingCar racingCar : racingCarList.getRacingCarList()) {
+            winningCarDecisionProcess(racingCar, winnerRacingCarList);
+        }
+        return buildFinalWinnerAnnouncement(winnerRacingCarList);
+    }
+
+    private void winningCarDecisionProcess(RacingCar racingCar, List<RacingCar> winnerRacingCarList) {
+        if (racingCar.getCurrentMovingPointInteger() == winnerCarMovingPoint) {
+            winnerRacingCarList.add(racingCar);
+        }
+
+        if (racingCar.getCurrentMovingPointInteger() > winnerCarMovingPoint) {
+            winnerRacingCarList.clear();
+            winnerRacingCarList.add(racingCar);
+            winnerCarMovingPoint = racingCar.getCurrentMovingPointInteger();
+        }
+    }
+
+    private String buildFinalWinnerAnnouncement(List<RacingCar> winnerRacingCarList) {
+        String result = String.join(", ", winnerRacingCarList.stream()
+                .map(RacingCar::getName)
+                .toList());
+        return "최종 우승자 : " + result;
+    }
+
 }

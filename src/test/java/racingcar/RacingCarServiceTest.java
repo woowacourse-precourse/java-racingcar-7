@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 
@@ -33,9 +32,9 @@ public class RacingCarServiceTest {
     @Test
     void 입력값_리스트로_분리() {
         String input = "qw,er,ty";
-        List<RacingCar> resultList = racingCarService.getCarListFromInput(input);
+        RacingCarList racingCarList = new RacingCarList(input);
         Set<String> resultSet = new HashSet<>();
-        for (RacingCar car : resultList) {
+        for (RacingCar car : racingCarList.getRacingCarList()) {
             resultSet.add(car.getName());
         }
         Set<String> expectSet = new HashSet<>();
