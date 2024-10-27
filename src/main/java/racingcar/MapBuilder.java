@@ -14,7 +14,10 @@ public class MapBuilder {
     }
 
     public void mapCarNamesToStringForwardLines(List<String> carNames) {
-//        이 부분은 어떻게 할지 아직 모르겠다.
+        Map<String, String> forwardCounter = new TreeMap<>();
+        for (int i = 0; i < carNames.size(); i++) {
+            forwardCounter.put(carNames.get(i), "");
+        }
     }
 
     public void mapSingleCarForwardResult(String carNames) {
