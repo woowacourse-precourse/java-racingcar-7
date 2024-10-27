@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Application {
 
         List<Car> cars = new ArrayList<>();
         for (String carName : input.split(",")) {
-            if(carName.length() > 5) {
+            if (carName.length() > 5) {
                 throw new IllegalArgumentException();
             }
             Car car = new Car(carName, 0);
@@ -25,8 +26,25 @@ public class Application {
         }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        Integer tryCount = Integer.parseInt(Console.readLine());
+        int tryCount = Integer.parseInt(Console.readLine());
+        System.out.println();
 
+        System.out.println("실행결과");
+
+        while (tryCount > 0) {
+            for (Car car : cars) {
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                if (randomNumber >= 4) {
+                    car.moveForward();
+                }
+                car.printForward();
+            }
+
+            tryCount = tryCount - 1;
+            System.out.println();
+        }
+
+        System.out.println("end");
     }
 
 }
