@@ -20,7 +20,7 @@ public class WinnerPrint {
         for (int i = 0; i < Application.moveCount.length; i++) {
 
             if (Application.moveCount[i] == maxNumber) {
-                result.add(Application.nameList[i]);
+                result.add(Application.nameList.get(i));
             }
 
         }

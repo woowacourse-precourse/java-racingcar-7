@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static racingcar.RacingProcess.*;
 import static racingcar.ResultPrint.*;
@@ -8,7 +9,7 @@ import static racingcar.WinnerPrint.*;
 
 public class Application {
 
-    public static String[] nameList;
+    public static List<String> nameList;
     public static int racingNumber;
     public static String[] processResult;
     public static int[] moveCount;

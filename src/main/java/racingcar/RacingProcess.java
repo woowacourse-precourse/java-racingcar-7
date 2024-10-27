@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class RacingProcess {
 
-    public static int carNumber = Application.nameList.length;
+    public static int carNumber = Application.nameList.size();
 
     public static void racingProcess() {
 
