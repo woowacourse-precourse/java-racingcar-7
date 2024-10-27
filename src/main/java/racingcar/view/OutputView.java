@@ -23,5 +23,4 @@ public class OutputView {
                 .collect(Collectors.joining(", ")); // 쉼표로 이름을 연결
         System.out.println(OUTPUT_WINNER + winnerNames);
     }
-
 }

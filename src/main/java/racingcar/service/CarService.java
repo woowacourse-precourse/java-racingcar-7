@@ -2,6 +2,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
+import racingcar.util.PlayerNameParser;
 import racingcar.util.PlayerNameValidator;
 import racingcar.util.WinnerSelector;
 
@@ -10,17 +11,20 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CarService {
+    private final PlayerNameParser playerNameParser;
     private final PlayerNameValidator playerNameValidator;
     private final WinnerSelector winnerSelector;
 
     public CarService(PlayerNameValidator playerNameValidator,
-                      WinnerSelector winnerSelector) {
+                      WinnerSelector winnerSelector,
+                      PlayerNameParser playerNameParser) {
         this.playerNameValidator = playerNameValidator;
         this.winnerSelector = winnerSelector;
+        this.playerNameParser = playerNameParser;
     }
 
     public List<Car> playRounds(String playersName, int moveCount) {
-        List<String> names = splitByComma(playersName);
+        List<String> names = playerNameParser.splitByComma(playersName);
         playerNameValidator.validateName(names);
 
         List<Car> cars = carGenerator(names);
@@ -28,11 +32,6 @@ public class CarService {
 
         return winnerSelector.getWinners(cars);
     }
-
-    public List<String> splitByComma(String input) {
-        return Arrays.asList(input.split(","));
-    }
-
 
     private List<Car> carGenerator(List<String> names){
         List<Car> cars = new ArrayList<>();
