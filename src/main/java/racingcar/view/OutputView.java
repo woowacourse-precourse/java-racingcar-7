@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.List;
+
 public class OutputView {
 
     public void printStartMessage() {
@@ -14,7 +16,13 @@ public class OutputView {
         System.out.println(name + " : " + "-".repeat(distance));
     }
 
-    public void printWinner() {
+    public void printResultMessage() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
 
+    public void printWinner(List<String> winnerNameList) {
+        String winner = String.join(",", winnerNameList);
+        System.out.println("최종 우승자 : " + winner);
     }
 }
