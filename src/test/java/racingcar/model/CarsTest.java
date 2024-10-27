@@ -39,4 +39,14 @@ public class CarsTest {
         assertThatThrownBy(() -> Cars.from(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 자동차_이름이_2개_미만이면_예외가_발생한다() {
+        // given
+        String[] carNames = {"pobi"};
+
+        // when, then
+        assertThatThrownBy(() -> Cars.from(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
