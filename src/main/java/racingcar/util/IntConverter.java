@@ -1,17 +1,17 @@
 package racingcar.util;
 
-public class LongConverter {
-    private LongConverter() {
+public class IntConverter {
+    private IntConverter() {
     }
 
-    public static long StringToLong(String string) {
-        long parsedLong;
+    public static long StringToInt(String string) {
+        int parsedLong;
 
         try {
-            parsedLong = Long.parseLong(string);
+            parsedLong = Integer.parseInt(string);
         } catch (NumberFormatException e) {
             checkNumberFormat(e);
-            throw new IllegalArgumentException("입력값이 long 범위를 넘어갔습니다.");
+            throw new IllegalArgumentException("입력값이 int 범위를 넘어갔습니다.");
         }
 
         if (parsedLong <= 0) {

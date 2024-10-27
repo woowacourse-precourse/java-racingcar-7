@@ -2,7 +2,7 @@ package racingcar.car;
 
 public abstract class Car {
     private String carName;
-    protected long moveDistance;
+    protected int moveDistance;
 
     public Car() {
     }
