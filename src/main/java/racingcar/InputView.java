@@ -6,8 +6,9 @@ import static racingcar.ViewConstants.TOTAL_ATTEMPTS_MESSAGE;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    public void requestCarNames() {
+    public String requestCarNames() {
         System.out.println(ENTER_CAR_NAMES_MESSAGE);
+        return Console.readLine();
     }
 
     public String requestTotalAttempts() {
