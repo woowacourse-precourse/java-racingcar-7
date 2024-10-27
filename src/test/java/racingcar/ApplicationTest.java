@@ -73,6 +73,18 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
+    @DisplayName("우승자가 여러 명일 때 쉼표로 구분하여 출력하는지 검사")
+    @Test
+    void validateWinnersCommaSeperated() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("jenn, kelly, jun", "2");
+                    assertThat(output()).contains("jenn : --", "kelly : --", "jun : -", "최종 우승자 : jenn, kelly");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
