@@ -15,8 +15,13 @@ public class GameController {
     }
 
     public void startGame(List<Car> cars, int attempts) {
+        showGameStartMessage();
+        runGameRounds(cars, attempts);
+    }
+
+    private void runGameRounds(List<Car> cars, int attempts) {
         for (int i = 0; i < attempts; i++) {
-            racingCarService.playRound(cars);
+            racingCarService.playSingleRound(cars);
             outputView.printRaceStatus(cars);
         }
     }
@@ -24,5 +29,11 @@ public class GameController {
     public void announceWinners(List<Car> cars) {
         List<String> winners = racingCarService.findFinalWinners(cars);
         outputView.printFinalWinner(winners);
+    }
+
+    // 게임 시작 메시지 출력
+    private void showGameStartMessage() {
+        outputView.printEmptyLine();
+        outputView.printExecutionResult();
     }
 }
