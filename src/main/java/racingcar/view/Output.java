@@ -29,6 +29,10 @@ public class Output {
 
     public void printWinnersPrompt(List<String> winners) {
         System.out.println(WINNERS_PROMPT
-            + winners.stream().collect(Collectors.joining(WINNERS_DELIMITER)));
+                + winners.stream().collect(Collectors.joining(WINNERS_DELIMITER)));
+    }
+
+    public void printNewLine() {
+        System.out.println();
     }
 }
