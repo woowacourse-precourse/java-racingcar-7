@@ -32,8 +32,4 @@ public class GameManager {
             car.Move();
         }
     }
-
-    private void PrintGame(){
-
-    }
 }

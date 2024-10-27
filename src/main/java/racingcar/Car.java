@@ -12,4 +12,12 @@ public class Car {
     public void Move(){
         distance++;
     }
+
+    public void PrintCurrentDistance(){
+        System.out.print(name + " : ");
+        for(int i = 0; i < distance; i++){
+            System.out.print('-');
+        }
+        System.out.println();
+    }
 }
