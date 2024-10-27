@@ -1,7 +1,6 @@
 package racingcar;
 
 public class RoundInputParser {
-
     public static int parse(String input) {
         validateInput(input);
         return processInput(input);
@@ -27,10 +26,9 @@ public class RoundInputParser {
     }
 
     private static int validateRoundNum(int roundNum) {
-        if(roundNum < 0) {
+        if (roundNum < 0) {
             throw new IllegalArgumentException("0이상의 횟수를 입력해야 합니다.");
         }
         return roundNum;
     }
-
 }

@@ -22,7 +22,7 @@ public class CarNameParser {
         List<String> carList = Arrays.stream(input.split(","))
                 .map(String::trim)
                 .map(CarNameParser::processCarName)
-                .collect(Collectors.toList());
+                .toList();
         return carList;
     }
 
