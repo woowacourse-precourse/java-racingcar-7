@@ -28,18 +28,25 @@ public class RacingController {
     }
 
     public void run() {
-        String carName = inputView.getCarName();
-        List<String> splittedCarNames = getSplittedCarNames(carName);
-        racingInputValidateService.validateCarName(splittedCarNames);
+        List<String> carNames = getCarName();
+        String tryCounts = getTryingCount();
 
-        String tryCounts = inputView.getTryCounts();
-        racingInputValidateService.validateTryCount(tryCounts);
-        go(splittedCarNames, tryCounts);
+        go(carNames, tryCounts);
         printWinner();
     }
 
-    private List<String> getSplittedCarNames(String input) {
-        return racingInputValidateService.splitCarName(input);
+    private String getTryingCount() {
+        String tryCounts = inputView.getTryCounts();
+        racingInputValidateService.validateTryCount(tryCounts);
+        return tryCounts;
+    }
+
+    private List<String> getCarName() {
+        String carName = inputView.getCarName();
+        List<String> splittedCarNames = racingInputValidateService.splitCarName(carName);
+        racingInputValidateService.validateCarName(splittedCarNames);
+
+        return splittedCarNames;
     }
 
     private void go(List<String> input, String tryCounts) {
