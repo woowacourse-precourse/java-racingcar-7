@@ -17,7 +17,7 @@ public class InputRaceTimesTest {
     private static final String RACE_TIMES_NEGATIVE_NUMBER = "-3";
     private static final String RACE_TIMES_REAL_NUMBER = "3.3";
 
-    private ValidateRaceTimes validateRaceTimes = new ValidateRaceTimes();
+    private final ValidateRaceTimes validateRaceTimes = new ValidateRaceTimes();
 
     @DisplayName("시도 횟수가 문자를 포함하는 경우 예외 발생")
     @ParameterizedTest
@@ -46,4 +46,15 @@ public class InputRaceTimesTest {
                 .hasMessageContaining("시도 횟수는 빈 값이 될 수 없습니다.");
     }
 
+    @DisplayName("시도 횟수가 0이면 예외 발생")
+    @Test
+    public void ThrowExceptionIfRaceTimesZero() {
+        Throwable thrown = catchThrowable(() -> {
+            validateRaceTimes.isZero(RACE_TIMES_ZERO);
+        });
+
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 0이 될 수 없습니다.");
+    }
 }
