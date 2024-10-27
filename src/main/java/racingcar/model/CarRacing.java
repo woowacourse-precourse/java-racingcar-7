@@ -1,27 +1,41 @@
 package racingcar.model;
 
-import racingcar.utils.CarNameValidator;
-import racingcar.utils.CarRacingValidator;
-import racingcar.utils.Validator;
-
 import java.util.List;
 
 public class CarRacing {
 
     private final List<Car> cars;
-    private final String carCount;
-    Validator validator = new CarRacingValidator();
 
-    public CarRacing(List<Car> cars, String carCount) {
-        validator.validation(carCount);
+
+    public CarRacing(List<Car> cars) {
         this.cars = cars;
-        this.carCount = carCount;
     }
 
     public void startRacing() {
+        moveCars();
+        recordRaceStatus();
+    }
+
+    private void moveCars() {
         for (Car car : cars) {
-            System.out.println(car.getEnginePower());
+            car.move();
         }
     }
 
+    private void recordRaceStatus() {
+        StringBuilder status = new StringBuilder();
+        for (Car car : cars) {
+            status.append(car.getCarName()).append(" : ").append("-".repeat(car.getPosition())).append("\n");
+        }
+        System.out.println(status);
+    }
+
+
+    public List<String> getWinner() {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getCarName)
+                .toList();
+    }
 }
