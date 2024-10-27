@@ -5,7 +5,7 @@ import racingcar.validator.strategies.ValidationStrategy;
 import racingcar.view.ErrorMessage;
 
 /**
- * 자동차 이름 목록에 빈 값이 없는지 검증하는 클래스
+ * 자동차 이름 목록에 빈 값이 없는지 검증
  */
 public class CarNameListNotEmptyValidator implements ValidationStrategy<List<String>> {
 

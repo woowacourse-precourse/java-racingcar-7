@@ -5,6 +5,9 @@ import racingcar.constants.RacingGameConstants;
 import racingcar.validator.strategies.ValidationStrategy;
 import racingcar.view.ErrorMessage;
 
+/**
+ * 자동차 이름이 5자를 초과하는지 검증
+ */
 public class CarNameMaxLengthValidator implements ValidationStrategy<List<String>> {
 
     @Override

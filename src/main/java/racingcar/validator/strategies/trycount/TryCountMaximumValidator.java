@@ -5,6 +5,9 @@ import racingcar.utils.TryCountParser;
 import racingcar.validator.strategies.ValidationStrategy;
 import racingcar.view.ErrorMessage;
 
+/**
+ * 시도 횟수가 1000번이 넘어가는지 검증
+ */
 public class TryCountMaximumValidator implements ValidationStrategy<String> {
 
     @Override

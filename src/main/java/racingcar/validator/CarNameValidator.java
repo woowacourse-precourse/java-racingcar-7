@@ -34,7 +34,7 @@ public class CarNameValidator {
         // 2. 마지막에 쉼표가 있는지 확인
         carNameTrailingCommaValidator.validate(carNames);
 
-        // 3. carNames를 리스트로 분리하여 모든 Validator에 전달
+        // 3. carNames를 리스트로 분리
         List<String> nameList = CarNameParser.splitCarNames(carNames);
 
         // 4. 빈 항목을 포함하지 않는지 검증

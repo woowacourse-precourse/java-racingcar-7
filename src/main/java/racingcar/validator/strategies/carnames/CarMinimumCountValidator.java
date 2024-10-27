@@ -5,6 +5,10 @@ import racingcar.constants.RacingGameConstants;
 import racingcar.validator.strategies.ValidationStrategy;
 import racingcar.view.ErrorMessage;
 
+
+/**
+ * 자동차 이름 목록의 최소 개수를 검증
+ */
 public class CarMinimumCountValidator implements ValidationStrategy<List<String>> {
 
     @Override

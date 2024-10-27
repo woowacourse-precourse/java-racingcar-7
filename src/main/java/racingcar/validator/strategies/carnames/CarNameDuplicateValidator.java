@@ -6,6 +6,9 @@ import java.util.Set;
 import racingcar.validator.strategies.ValidationStrategy;
 import racingcar.view.ErrorMessage;
 
+/**
+ * 중복되는 자동차 이름 검증
+ */
 public class CarNameDuplicateValidator implements ValidationStrategy<List<String>> {
 
     @Override
