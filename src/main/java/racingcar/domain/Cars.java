@@ -11,8 +11,8 @@ public class Cars {
         this.cars = carList;
     }
 
-    public List<Car> findWinner(int maxLocation) {
-
+    public List<Car> findWinner() {
+        int maxLocation = getMaxLocation();
         List<Car> winnerList = new ArrayList<>();
 
         for (Car car : cars) {

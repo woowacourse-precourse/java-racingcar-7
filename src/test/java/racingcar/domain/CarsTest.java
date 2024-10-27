@@ -35,6 +35,6 @@ public class CarsTest {
         List<Car> winnerList = Arrays.asList(car1, car2);
         Cars cars = new Cars(carList);
 
-        assertThat(cars.findWinner(cars.getMaxLocation())).isEqualTo(winnerList);
+        assertThat(cars.findWinner()).isEqualTo(winnerList);
     }
 }
