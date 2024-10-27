@@ -2,6 +2,7 @@ package racingcar.car;
 
 import static racingcar.car.ConditionChecker.canMove;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Car implements Comparable<Car> {
@@ -32,6 +33,11 @@ public class Car implements Comparable<Car> {
         return position == winnerCar.position;
     }
 
+    public void provideNameIfWins(List<Car> winnerList, List<String> container) {
+        if (winnerList.contains(this)) {
+            container.add(name);
+        }
+    }
 
     @Override
     public int compareTo(Car o) {
@@ -53,5 +59,4 @@ public class Car implements Comparable<Car> {
     public int hashCode() {
         return Objects.hashCode(name);
     }
-
 }
