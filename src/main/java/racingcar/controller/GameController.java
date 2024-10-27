@@ -24,7 +24,7 @@ public class GameController {
 
 	private String getCarNamesInput() {
 		OutputView.printCarNamesInputMessage();
-		return InputView.getCarNamesInput();
+		return InputView.getInput();
 	}
 
 	private List<Car> generateCars(String carNamesInput) {
@@ -36,7 +36,7 @@ public class GameController {
 
 	private int getTrialCountInput() {
 		OutputView.printTrialCountInputMessage();
-		String trialCountInput = InputView.getTrialCountInput();
+		String trialCountInput = InputView.getInput();
 		return NumberValidator.validateTrialCountIsDigit(trialCountInput);
 	}
 

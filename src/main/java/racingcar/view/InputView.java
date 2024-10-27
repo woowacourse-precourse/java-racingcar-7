@@ -4,11 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-	public static String getCarNamesInput() {
-		return Console.readLine();
-	}
-
-	public static String getTrialCountInput() {
+	public static String getInput() {
 		return Console.readLine();
 	}
 }
