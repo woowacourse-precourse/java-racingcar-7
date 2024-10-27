@@ -7,6 +7,7 @@ public class InputNumberValidation {
         int numberOfAttempts = 0;
         validateNumberIfNullOrEmpty(inputNumber);
         validateIfInputCanCovertToInt(inputNumber);
+        validateNumberIfContainsNewLine(inputNumber);
         return numberOfAttempts;
     }
 
@@ -21,6 +22,13 @@ public class InputNumberValidation {
             Integer.parseInt(inputNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ValidateMessages.NUMBER_SHOULD_BE_INTEGER.getValidateMessage());
+        }
+    }
+
+    public static void validateNumberIfContainsNewLine(String inputNumber) {
+        if (inputNumber.contains("\n")) {
+            throw new IllegalArgumentException(
+                    ValidateMessages.NUMBER_SHOULD_NOT_CONTAIN_NEW_LINE.getValidateMessage());
         }
     }
 }
