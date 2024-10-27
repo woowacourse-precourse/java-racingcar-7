@@ -2,6 +2,7 @@ package racingcar.validator;
 
 import racingcar.constants.ErrorMessage;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -59,7 +60,15 @@ public class InputValidator {
       throw new IllegalArgumentException(ErrorMessage.POSITIVE_NUMBER);
     }
   }
+  private void validateMaxAttemptCount(String attemptsInput) {
+    BigInteger attemptsCount = new BigInteger(attemptsInput);
+    BigInteger MAX_ATTEMPTS = new BigInteger("1000");
+    if (attemptsCount.compareTo(MAX_ATTEMPTS) > 0) {
+      throw new IllegalArgumentException("Error: 시도 횟수는 " + MAX_ATTEMPTS + " 이하여야 합니다.");
+    }
+  }
   public void validateAttemptCount(String attemptsInput) {
     validatePositiveNumber(attemptsInput);
+    validateMaxAttemptCount(attemptsInput);
   }
 }

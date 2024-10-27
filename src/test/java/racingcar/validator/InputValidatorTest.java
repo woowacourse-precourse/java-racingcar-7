@@ -73,6 +73,7 @@ public class InputValidatorTest {
     attempts.add("2+");
     attempts.add("-2");
     attempts.add("0");
+    attempts.add("1001");
     attempts.forEach((attemptCount) -> {
       assertSimpleTest(() ->
               assertThatThrownBy(() ->
