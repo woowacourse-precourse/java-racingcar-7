@@ -13,11 +13,14 @@ public class InputController {
     }
 
     public String inputCarNames() {
-        return inputView.getCarNames();
+        String carNames = inputView.getCarNames();
+        inputValidator.validateInputCarNames(carNames);
+        return carNames;
     }
 
     public int inputAttemptCount() {
         String attemptCount = inputView.getAttemptCount();
+        inputValidator.validateInputAttemptCount(attemptCount);
         return Integer.parseInt(attemptCount);
     }
 }
