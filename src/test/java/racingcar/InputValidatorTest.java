@@ -12,14 +12,14 @@ class InputValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"0", "1", "0123456789"})
     void passWhenInputHasNumbersOnly(String input) {
-        assertThatCode(() -> new InputValidator().checkHasNumberOnly(input)).doesNotThrowAnyException();
+        assertThatCode(() -> new InputValidator().validateThatContainsOnlyDigits(input)).doesNotThrowAnyException();
     }
 
     @DisplayName("문자열에 숫자가 아닌 문자가 있으면 예외 발생")
     @ParameterizedTest
     @ValueSource(strings = {"", "0회", "1,", ";2", "34번", "56회 시도"})
     void throwIllegalArgumentExceptionWhenInputHasNotNumbersOnly(String input) {
-        assertThatThrownBy(() -> new InputValidator().checkHasNumberOnly(input))
+        assertThatThrownBy(() -> new InputValidator().validateThatContainsOnlyDigits(input))
                 .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 }

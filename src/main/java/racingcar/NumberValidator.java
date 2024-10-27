@@ -1,9 +1,9 @@
 package racingcar;
 
-import static racingcar.RacingConstants.FORWARD_CONDITION_LOWER_BOUND;
+import static racingcar.RacingConstants.MIN_NUMBER_TO_MOVE;
 
 public class NumberValidator {
     public boolean isAboveLowerBound(int number) {
-        return number >= FORWARD_CONDITION_LOWER_BOUND;
+        return number >= MIN_NUMBER_TO_MOVE;
     }
 }

@@ -1,8 +1,8 @@
 package racingcar;
 
-import static racingcar.RacingConstants.CAR_START_POSITION;
-import static racingcar.RacingConstants.MAX_NUMBER;
-import static racingcar.RacingConstants.MIN_NUMBER;
+import static racingcar.RacingConstants.INITIAL_MOVE_COUNT;
+import static racingcar.RacingConstants.MAX_NUMBER_IN_RANGE;
+import static racingcar.RacingConstants.MIN_NUMBER_IN_RANGE;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class Application {
         InputValidator inputValidator = new InputValidator();
         InputController inputController = new InputController(inputValidator);
         OutputView outputView = new OutputView();
-        NumberGenerator numberGenerator = new NumberGenerator(MIN_NUMBER, MAX_NUMBER);
+        NumberGenerator numberGenerator = new NumberGenerator(MIN_NUMBER_IN_RANGE, MAX_NUMBER_IN_RANGE);
         NumberValidator numberValidator = new NumberValidator();
         List<Car> cars;
         int totalAttempts;
@@ -21,7 +21,7 @@ public class Application {
 
         String inputNames = inputView.requestCarNames();
         List<String> carNames = inputController.extractCarNames(inputNames);
-        cars = carNames.stream().map(name -> new Car(name, CAR_START_POSITION)).toList();
+        cars = carNames.stream().map(name -> new Car(name, INITIAL_MOVE_COUNT)).toList();
 
         String inputAttempts = inputView.requestTotalAttempts();
         totalAttempts = inputController.convertToNumber(inputAttempts);

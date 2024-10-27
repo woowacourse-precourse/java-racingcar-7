@@ -13,9 +13,9 @@ public class InputController {
     }
 
     public List<String> extractCarNames(String input) {
-        inputValidator.validateCompetitor(input);
+        inputValidator.validateThatDelimiterIsIn(input);
         List<String> carNames = splitByDelimiter(input);
-        inputValidator.validateDuplicateName(carNames);
+        inputValidator.validateNonDuplicate(carNames);
         return carNames;
     }
 
@@ -24,9 +24,9 @@ public class InputController {
     }
 
     public int convertToNumber(String input) {
-        inputValidator.checkHasNumberOnly(input);
+        inputValidator.validateThatContainsOnlyDigits(input);
         int number = Integer.parseInt(input);
-        inputValidator.checkIsGreaterThanZero(number);
+        inputValidator.validateMinRoundsOrOver(number);
         return number;
     }
 }

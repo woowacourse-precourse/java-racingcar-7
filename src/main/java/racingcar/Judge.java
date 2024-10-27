@@ -1,6 +1,6 @@
 package racingcar;
 
-import static racingcar.RacingConstants.CAR_START_POSITION;
+import static racingcar.RacingConstants.INITIAL_MOVE_COUNT;
 
 import java.util.Comparator;
 import java.util.List;
@@ -15,15 +15,15 @@ public class Judge {
 
     public String getWinnerNames() {
         return currentCars.stream()
-                .filter(car -> findMaxPosition().equals(car.position()))
+                .filter(car -> findMaxMoveCount().equals(car.moveCount()))
                 .map(CurrentCar::carName)
                 .collect(Collectors.joining(", "));
     }
 
-    private Integer findMaxPosition() {
+    private Integer findMaxMoveCount() {
         return currentCars.stream()
-                .map(CurrentCar::position)
+                .map(CurrentCar::moveCount)
                 .max(Comparator.naturalOrder())
-                .orElse(CAR_START_POSITION);
+                .orElse(INITIAL_MOVE_COUNT);
     }
 }

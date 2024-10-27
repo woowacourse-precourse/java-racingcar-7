@@ -1,21 +1,21 @@
 package racingcar;
 
-import static racingcar.ViewConstants.CAR_STATUS_FORMAT;
-import static racingcar.ViewConstants.POSITION_MARK;
-import static racingcar.ViewConstants.RACING_RESULT;
+import static racingcar.ViewConstants.RACE_DISPLAY_FORMAT;
+import static racingcar.ViewConstants.MOVE_SYMBOL;
+import static racingcar.ViewConstants.RACE_RESULT;
 import static racingcar.ViewConstants.WINNER_IS;
 
 import java.util.List;
 
 public class OutputView {
-    public void printResult() {
-        System.out.println(System.lineSeparator() + RACING_RESULT);
+    public void printResultPhrase() {
+        System.out.println(System.lineSeparator() + RACE_RESULT);
     }
 
-    public void printCarStatus(List<CurrentCar> currentCars) {
+    public void printRaceResult(List<CurrentCar> currentCars) {
         for (CurrentCar currentCar : currentCars) {
-            System.out.printf(CAR_STATUS_FORMAT, currentCar.carName());
-            System.out.println(POSITION_MARK.repeat(currentCar.position()));
+            System.out.printf(RACE_DISPLAY_FORMAT, currentCar.carName());
+            System.out.println(MOVE_SYMBOL.repeat(currentCar.moveCount()));
         }
         System.out.println();
     }

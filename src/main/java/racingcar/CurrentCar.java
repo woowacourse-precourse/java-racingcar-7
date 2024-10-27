@@ -1,4 +1,4 @@
 package racingcar;
 
-public record CurrentCar(String carName, int position) {
+public record CurrentCar(String carName, int moveCount) {
 }

@@ -16,10 +16,10 @@ public class Racing {
     }
 
     public void race() {
-        outputView.printResult();
+        outputView.printResultPhrase();
         for (int i = 0; i < totalAttempts; i++) {
             move.tryOnce();
-            outputView.printCarStatus(createCurrentCars());
+            outputView.printRaceResult(createCurrentCars());
         }
     }
 
