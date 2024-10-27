@@ -21,7 +21,9 @@ public class Validator {
     }
 
     public void isInputEmpty(String input) {
-        if (input.isEmpty()) throw new IllegalArgumentException("빈 문자열입니다.");
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("빈 문자열입니다.");
+        }
     }
 
     public void isContainsWhitespace(String carNames) {
