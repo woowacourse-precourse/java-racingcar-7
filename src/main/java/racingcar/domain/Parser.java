@@ -9,10 +9,14 @@ public class Parser {
 
     public List<String> parse(String input) {
         inputValidator.checkPrecondition(input);
-        return Arrays.stream(input.split(","))
+
+        List<String> result = Arrays.stream(input.split(","))
                 .map(String::trim)
                 .map(inputValidator::check)
                 .toList();
+
+        inputValidator.checkResultCondition(result);
+        return result;
     }
 
     public int parseInt(String input) {
