@@ -6,6 +6,7 @@ public class InputView {
     public static String inputCarsName() {
         return readLine();
     }
+
     public static String inputTryNumber() {
         return readLine();
     }

@@ -2,7 +2,7 @@ package racingcar.car;
 
 import static racingcar.exception.ExceptionMessage.CAR_NAME_LENGTH;
 
-public class CarImpl implements Car{
+public class CarImpl implements Car {
     private final String carName;
     private int position;
     public static Integer MOVE_THRESHOLD = 4;
