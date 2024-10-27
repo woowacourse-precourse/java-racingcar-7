@@ -11,7 +11,7 @@ class RacingCarTest {
 
     @Test
     @DisplayName("4를 기준으로 이상이면 true를, 미만이면 false 반환")
-    void 이동_조건_테스트 () {
+    void 이동_조건_테스트() {
 
         assertThat(RacingCar.canMoveForward(0)).isFalse();
         assertThat(RacingCar.canMoveForward(3)).isFalse();
@@ -22,6 +22,7 @@ class RacingCarTest {
     @Test
     @DisplayName("전진 성공 시 전진 횟수는 +1, 아니라면 그대로")
     void 전진_테스트() {
+
         String name = "noname";
         RacingCar racingCar = new RacingCar(name);
 

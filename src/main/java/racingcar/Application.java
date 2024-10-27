@@ -16,9 +16,9 @@ public class Application {
         validateCarNames(carNames);
         validateTryCount(tryCount);
 
-       List<RacingCar> racingCarList = parseRacingCarList(carNames);
-       int maxRoundValue = parseMaxRoundValue(tryCount);
-       Race race = new Race(racingCarList, maxRoundValue);
-       race.start();
+        List<RacingCar> racingCarList = parseRacingCarList(carNames);
+        int maxRoundValue = parseMaxRoundValue(tryCount);
+        Race race = new Race(racingCarList, maxRoundValue);
+        race.start();
     }
 }
