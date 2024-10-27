@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.model.Vehicle;
+
 import java.util.List;
 
 import static racingcar.global.constant.GameMessage.*;
@@ -13,11 +15,11 @@ public class OutputView {
         System.out.println(INPUT_GAME_ROUND_MESSAGE);
     }
 
-    public void printGameRoundResult(String name, String movement) {
-        System.out.println(name + " : " + movement);
-    }
-
-    public void printGameRoundSeparator() {
+    public void printGameRoundResult(List<Vehicle> vehicles) {
+        for (Vehicle vehicle : vehicles) {
+            String result = String.format("%s : %s", vehicle.getName(), vehicle.showMovement());
+            System.out.println(result);
+        }
         System.out.println();
     }
 
