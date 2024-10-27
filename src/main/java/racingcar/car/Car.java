@@ -11,17 +11,22 @@ public class Car {
         this.location = 0;
     }
 
-    public void forwardOne(){
+    public void forwardOne() {
         this.location++;
     }
 
-    public String getCurrentLocation(){
+    public String getCurrentLocation() {
         return "-".repeat(this.location);
     }
+    
+    @Override
+    public String toString() {
+        return this.name;
+    }
 
-    public String getName() { return this.name; }
-
-    private void nameValidation(String name){
-        if(name.length() > 5) throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+    private void nameValidation(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+        }
     }
 }
