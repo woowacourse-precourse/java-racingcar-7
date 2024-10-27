@@ -2,6 +2,7 @@ package racingcar.filter;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.common.exception.InvalidFilterException;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
 
@@ -10,7 +11,7 @@ public class RaceFilterChainBuilder {
 
     public RaceFilterChainBuilder addFilter(Filter<RaceRequest, RaceResponse> filter) {
         if (filter == null) {
-            throw new IllegalArgumentException("Filter cannot be null");
+            throw new InvalidFilterException();
         }
         filters.add(filter);
         return this;
