@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import static racingcar.util.InputValidator.validateNotBlank;
 
-import java.util.List;
-
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private static final String HYPHEN = "-";
@@ -22,12 +20,8 @@ public class Car {
         this.distance = INIT_DISTANCE_VALUE;
     }
 
-    public String joinCars(List<Car> cars) {
-        List<String> list = cars.stream()
-                .map(car -> car.name)
-                .toList();
-
-        return String.join(", ", list);
+    public String getName() {
+        return name;
     }
 
     public int compareDistance(Car otherCar) {
