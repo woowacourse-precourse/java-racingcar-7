@@ -45,8 +45,17 @@ public class GameController {
             System.out.println();
         }
 
+        // 포지션 결과 비교, 우승자 결정
         List<Car> winners = gameService.getWinner(gameStatus);
 
+        List<String> winnerResult = new ArrayList<>();
+        for (Car winner : winners) {
+            winnerResult.add(winner.getName());
+        }
+
+        // 우승자 출력
+        String winner = "최종 우승자 : " + String.join(", ", winnerResult);
+        gameView.displayWinner(winner);
     }
 }
 

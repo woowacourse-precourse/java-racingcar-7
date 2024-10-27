@@ -26,5 +26,8 @@ public class GameView {
         }
     }
 
+    public void displayWinner(String winner) {
+        System.out.println(winner);;
+    }
 
 }
