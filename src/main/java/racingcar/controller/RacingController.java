@@ -6,12 +6,12 @@ import racingcar.service.RacingService;
 import racingcar.service.WinnerService;
 import racingcar.util.Validator;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
+
 public class RacingController {
     public void run() {
-        /*
-        입력, 레이싱, 최종 우승 자동차 출력 수행
-        */
         InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
         Validator validator = new Validator();
         RacingService racingService = new RacingService();
         WinnerService winnerService = new WinnerService();
@@ -24,6 +24,6 @@ public class RacingController {
         racingService.racing(racingInfoDTO);
 
         // 우승 자동차 찾기
-        winnerService.findWinner(racingInfoDTO);
+        outputView.printWinner(winnerService.findWinner(racingInfoDTO));
     }
 }

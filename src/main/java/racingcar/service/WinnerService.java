@@ -3,13 +3,14 @@ package racingcar.service;
 import racingcar.dto.RacingInfoDTO;
 import racingcar.model.Car;
 import racingcar.model.Winner;
+import racingcar.view.OutputView;
 
 import java.math.BigInteger;
 import java.util.List;
 
 public class WinnerService {
 
-    public void findWinner(RacingInfoDTO racingInfoDTO) {
+    public List<Car> findWinner(RacingInfoDTO racingInfoDTO) {
         BigInteger maxPosition = BigInteger.ZERO;
 
         Winner winner = new Winner();
@@ -28,7 +29,6 @@ public class WinnerService {
             }
         }
 
-        // 최종 우승자 출력
-        winner.printWinner();
+        return winnerList;
     }
 }
