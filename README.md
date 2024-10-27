@@ -61,6 +61,7 @@
         - 시행 횟수는 0보다 큰 정수여야 한다
 
 ## **플로우 차트**
+<img src="/images/flowChart.svg" width="400px">
 
 ## **클래스 설계**
 
