@@ -22,4 +22,11 @@ public class InputValidatorTest {
 
         assertThrows(IllegalArgumentException.class, runner::carNameValidator);
     }
+
+    @Test
+    void 자동차_이름_중복_테스트() {
+        var runner = new InputParser("tayo,lani,lani");
+
+        assertThrows(IllegalArgumentException.class, runner::splitByComma);
+    }
 }
