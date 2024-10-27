@@ -1,13 +1,13 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Set;
+import java.util.List;
 import racingcar.service.collection.RacingCar;
 
 public class Game {
 
     public void start(RacingCar racingCar) {
-        final Set<String> allRacingCarName = racingCar.getAllRacingCarName();
+        final List<String> allRacingCarName = racingCar.getAllRacingCarName();
 
         for (String eachCarName : allRacingCarName) {
             final int randomNumber = Randoms.pickNumberInRange(0, 9);
