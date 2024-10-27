@@ -4,11 +4,9 @@ import java.util.LinkedHashMap;
 
 public class InputValidator {
     final String inputText;
-    final LinkedHashMap<Car, Integer> splitInputText;
 
     public InputValidator(String inputText) {
         this.inputText = inputText;
-        splitInputText = new InputParser(inputText).splitByComma();
     }
 
     public void carNameValidator() {
@@ -25,12 +23,16 @@ public class InputValidator {
         }
     }
 
+    private LinkedHashMap<Car, Integer> splitInputText() {
+        return new InputParser(inputText).splitByComma();
+    }
+
     private boolean isBlankInput() {
         return inputText.isBlank();
     }
 
     private boolean isCarNameTooLong() {
-        for (Car car : splitInputText.keySet()) {
+        for (Car car : splitInputText().keySet()) {
             if (car.getCarName().length() > 5) {
                 return true;
             }
