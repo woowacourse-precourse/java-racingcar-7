@@ -2,9 +2,11 @@ package racingcar.controller;
 
 import racingcar.io.Input;
 import racingcar.io.Output;
+import racingcar.model.Racingcar;
 import racingcar.util.Validator;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingcarController {
     private final Output output;
@@ -22,6 +24,7 @@ public class RacingcarController {
         String carName = input.inputString();
 
         List<String> carNameList = validateCarName(carName);
+        List<Racingcar> racingcars = createRacingcars(carNameList);
     }
 
     private List<String> validateCarName(String carName) {
@@ -35,5 +38,11 @@ public class RacingcarController {
         validator.validateNameCharacters(carNameList);
 
         return carNameList;
+    }
+
+    private List<Racingcar> createRacingcars(List<String> carNameList) {
+        return carNameList.stream()
+                .map(Racingcar::new)
+                .collect(Collectors.toList());
     }
 }
