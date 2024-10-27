@@ -36,7 +36,7 @@ public class GameController {
 
     private int readRounds() {
         String input = inputView.requestRound();
-        Validator.checkRound(input);
+        Validator.round(input);
         return InputParser.stringToRound(input);
     }
 
