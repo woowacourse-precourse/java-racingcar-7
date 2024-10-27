@@ -21,6 +21,7 @@ public class RacingGame {
     void playGame() {
         for (int i = 0; i < moveCount; i++) {
             playTurn();
+            System.out.println();
         }
     }
 }
