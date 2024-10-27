@@ -10,9 +10,9 @@ class CarNameTest extends NsTest {
 
     @Test
     void 글자수_초과_테스트() {
-       assertSimpleTest(() ->
-        assertThatThrownBy(() -> runException("javaji1"))
-                .isInstanceOf(IllegalArgumentException.class)
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("javaji1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
