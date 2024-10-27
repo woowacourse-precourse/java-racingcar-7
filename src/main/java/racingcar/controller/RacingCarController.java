@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.Racing;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -22,7 +23,7 @@ public class RacingCarController {
         this.inputView = new InputView();
     }
 
-    public void startRacing() {
+    public void run() {
         outputView.printInputCarNameGuideMessage();
         final String carNames = Console.readLine();
 
@@ -42,15 +43,17 @@ public class RacingCarController {
             cars.add(car);
         }
 
+        Racing racing = new Racing(cars);
+
         runTotalRoundRacing(tryCountNumber);
-        findRacingWinner();
+        findRacingWinner(racing);
     }
 
     private void runTotalRoundRacing(final int tryCountNumber) {
         for (int i = 0; i < tryCountNumber; i++) {
             runOneRoundRacing();
         }
-        System.out.println("");
+        System.out.println();
     }
 
     private void runOneRoundRacing() {
@@ -64,20 +67,19 @@ public class RacingCarController {
         }
     }
 
-    private void findRacingWinner() {
-        int winnerDistance = 0;
+    private void findRacingWinner(final Racing racing) {
 
         for (Car car : cars) {
-            if (car.getDistance() > winnerDistance) {
-                winnerDistance = car.getDistance();
-                winnerNames.clear();
-                winnerNames.add(car.getCarName());
-            } else if (car.getDistance() == winnerDistance) {
-                winnerNames.add(car.getCarName());
+            if (car.getDistance() > racing.getWinnerDistance()) {
+                racing.setWinnerDistance(car.getDistance());
+                racing.getWinnerNames().clear();
+                racing.getWinnerNames().add(car.getCarName());
+            } else if (car.getDistance() == racing.getWinnerDistance()) {
+                racing.getWinnerNames().add(car.getCarName());
             }
         }
 
-        String delimitedWinners = String.join(", ", winnerNames);
+        String delimitedWinners = String.join(", ", racing.getWinnerNames());
         outputView.printFinalWinners(delimitedWinners);
     }
 }
