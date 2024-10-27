@@ -88,6 +88,10 @@ public class Application {
 
 	}
 
-
+	public static void validateCarName(String carName) {
+		if (carName.length() > 5) {
+			throw new IllegalArgumentException("자동차 이름을 5자이하로 입력해주세요 : " + carName);
+		}
+	}
 
 }
