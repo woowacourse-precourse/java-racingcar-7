@@ -5,9 +5,9 @@ import racingcar.domain.car.entity.Car;
 public class RoadPrinter {
 
     public static void printRoad(Car car) {
-        int road= car.getRoad().getLength();
+        int roadLength= car.getRoad().getLength();
         System.out.print(car.getName()+" : ");
-        for(int i=0; i<road; i++) {
+        for(int i=0; i<roadLength; i++) {
             System.out.print("-");
         }
         System.out.println();
