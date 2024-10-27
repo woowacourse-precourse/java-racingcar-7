@@ -5,21 +5,41 @@ import camp.nextstep.edu.missionutils.Console;
 public class CarNameInput {
     // 자동차 이름 세팅 메소드
     public static String[] settingCarName() {
-        // 입력 안내 문구 출력
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = Console.readLine();
 
-        // 사용자 입력값 쉼표 기준으로 나누어 저장
-        String[] inputData = Console.readLine().split(",");
+        // 연속된 쉼표가 있는지 검사
+        checkForConsecutiveCommas(input);
+
+        // 입력값 쉼표 기준으로 나누어 저장
+        String[] inputData = input.split(",");
+
+        // 자동차 개수 체크
+        carNumCheck(inputData);
 
         // 유요한 이름만 저장할 배열 생성
         String[] validCarNames = new String[inputData.length];
 
-        // 이름 길이 체크 메소드 호출
+        // 이름 길이 체크
         nameLengthCheck(inputData, validCarNames);
 
         // settingCarName()메소드의 반환값
         return validCarNames;
     }
+
+    // 연속된 쉼표 체크 메소드
+    public static void checkForConsecutiveCommas(String input) {
+        if (input.contains(",,")) {
+            throw new IllegalArgumentException("쉼표 사이에 빈 이름이 포함될 수 없습니다. 유효한 이름을 입력해주세요.");
+        }
+    }
+
+    // 자동차 개수 체크 메소드
+    public static void carNumCheck(String[] inputData) {
+        if(inputData.length< 2) {
+            throw new IllegalArgumentException("자동차 이름은 최소 두 개 이상 입력해야 합니다. 다시 시도해주세요.");
+        }
+}
 
     // 이름 길이 체크 메소드
     public static String[] nameLengthCheck(String[] inputData, String[] validCarNames) {
@@ -27,8 +47,8 @@ public class CarNameInput {
         int index = 0;
         for (String name : inputData) {
             name = name.trim();    // 앞뒤공백 제거
-            if (name.length() > 5 | name.length() == 0) {
-                throw new IllegalArgumentException("자동차 이름은 5글자 이하이어야 합니다. 다시 시도해주세요");
+            if (name.isEmpty() || name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 1~5글자 이하로 입력해야 합니다. 다시 시도해주세요");
             }
             validCarNames[index++] = name;
         }
