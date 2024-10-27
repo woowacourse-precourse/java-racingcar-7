@@ -15,7 +15,12 @@ public class Winner {
     }
 
     public void printWinner() {
-        System.out.print("최종 우승자 : ");
+        if (winnerList.size() == 1) {
+            System.out.print("최종 우승자 : ");
+        }
+        else {
+            System.out.print("공동 우승자 : ");
+        }
         for (Car car : winnerList) {
             System.out.print(car.getName());
             if (winnerList.getLast() != car) {
