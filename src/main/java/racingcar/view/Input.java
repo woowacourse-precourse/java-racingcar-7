@@ -12,6 +12,10 @@ public class Input {
         if (input == null || input.contains("null")) {
             throw new IllegalArgumentException("자동차 이름에 null이 포함되어 있습니다.");
         }
+        if (input.matches("[,]+")) {
+            throw new IllegalArgumentException("입력값에 ','만 존재합니다.");
+        }
+
         String[] carNamesInput = input.split(",");
         List<String> carNames = new ArrayList<>();
 
