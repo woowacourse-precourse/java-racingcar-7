@@ -2,18 +2,20 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Racing;
+import racingcar.domain.WinnerDeterminer;
 import racingcar.factory.StringParserFactory;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static racingcar.common.Symbol.NEW_LINE;
-import static racingcar.common.Symbol.RESULT;
+import static racingcar.common.Symbol.*;
 
 public class Application {
     public static void main(String[] args) {
 
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputCarName = Console.readLine();
+        System.out.println("시도할 횟수는 몇 회인가요?");
         String inputLoopCount = Console.readLine();
 
         StringParserFactory stringParserFactory = new StringParserFactory();
@@ -21,25 +23,31 @@ public class Application {
         int loopCount = stringParserFactory.parseLoopCount(inputLoopCount);
 
         Racing racing = new Racing();
-        HashMap<String, StringBuilder> racingLog = new HashMap<>();
+        HashMap<String, Integer> racingLog = new HashMap<>();
         initRacingLog(racingLog, carNameList);
 
         for (int i = 0; i < loopCount; i++) {
             racing.start(racingLog, carNameList);
             printRacingResult(racingLog, carNameList);
         }
+
+        WinnerDeterminer winnerDeterminer = new WinnerDeterminer();
+        List<String> winner = winnerDeterminer.determineWinner(racingLog, carNameList);
+
+        System.out.println("최종 우승자 : " + String.join(COMMA + SPACE, winner));
     }
 
-    private static void initRacingLog(HashMap<String, StringBuilder> racingLog, List<String> carNameList) {
+    private static void initRacingLog(HashMap<String, Integer> racingLog, List<String> carNameList) {
         for (String carName : carNameList) {
-            racingLog.put(carName, new StringBuilder());
+            racingLog.put(carName, 0);
         }
     }
 
-    private static void printRacingResult(HashMap<String, StringBuilder> racingLog, List<String> carNameList) {
+    private static void printRacingResult(HashMap<String, Integer> racingLog, List<String> carNameList) {
         StringBuilder stringBuilder = new StringBuilder();
         for (String carName : carNameList) {
-            stringBuilder.append(carName + RESULT + racingLog.get(carName) + NEW_LINE);
+            String moveCount = HYPHEN.repeat(racingLog.get(carName));
+            stringBuilder.append(carName + RESULT + moveCount + NEW_LINE);
         }
         System.out.println(stringBuilder);
     }

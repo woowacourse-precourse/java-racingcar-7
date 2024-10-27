@@ -13,12 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingTest {
 
     private final Racing racing = new Racing();
-    private final HashMap<String, StringBuilder> racingLog = new HashMap<>();
+    private final HashMap<String, Integer> racingLog = new HashMap<>();
 
     @BeforeEach
     void setRacingLog() {
-        racingLog.put("pobi", new StringBuilder().append("-"));
-        racingLog.put("woni", new StringBuilder());
+        racingLog.put("pobi", 1);
+        racingLog.put("woni", 0);
     }
 
     @Test
@@ -34,7 +34,7 @@ class RacingTest {
         }
 
         //then
-        assertThat(racingLog.get("pobi")).contains("-");
-        assertThat(racingLog.get("woni").length()).isLessThanOrEqualTo(5);
+        assertThat(racingLog.get("pobi")).isLessThanOrEqualTo(5);
+        assertThat(racingLog.get("woni")).isLessThanOrEqualTo(5);
     }
 }
