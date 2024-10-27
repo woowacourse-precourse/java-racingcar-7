@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 class ControllerTest {
 
   Input input = new Input();
+  Controller controller = new Controller();
 
   @DisplayName("자동차 이름과 시도횟수를 전달받으면 각 자동차를 전진시킨다")
   @Test
@@ -28,12 +29,17 @@ class ControllerTest {
 
   @DisplayName(" 0~9 랜덤값을 생성하여 결과가 4이상인 경우 전진을 결정한다")
   @Test
-  public void moveOrNot() throws Exception{
+  public void moveOrNotTest() throws Exception{
       //given
+    int randoms = controller.moveOrNot();
+    boolean actual = randoms >= 4;
+    boolean expect = true;
 
       //when
 
+
       //then
+    assertEquals(expect, actual);
   }
 
   @DisplayName(" 자동차 게임 실행 결과를 내림차순으로 정렬한다 ")
