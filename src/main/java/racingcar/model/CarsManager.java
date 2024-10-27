@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarsManager {
 
@@ -11,11 +12,23 @@ public class CarsManager {
         this.cars = cars;
     }
 
-   public static CarsManager by(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
+    public static CarsManager by(List<String> carNames){
+        return new CarsManager(carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList()));
+    }
+
+    public void move(){
+        for (Car car : cars) {
+            car.move();
         }
-        return new CarsManager(cars);
-   }
+    }
+
+    @Override
+    public String toString() {
+        return cars.stream()
+                .map(Car::getResult)
+                .collect(Collectors.joining());
+    }
+
 }

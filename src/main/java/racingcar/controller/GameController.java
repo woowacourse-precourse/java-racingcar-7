@@ -18,12 +18,18 @@ public class GameController {
     public void run() {
         try {
             List<String> carNames = new ArrayList<>(inputView.readCarNames());
-            System.out.println(carNames);
 
-            int TrialCounts = inputView.readTrialsCount();
-            System.out.println(TrialCounts);
+            int numberOfTrials = inputView.readTrialsCount();
 
             CarsManager cars = CarsManager.by(carNames);
+
+            outputView.printResult();
+
+            for (int trial = 0; trial < numberOfTrials; trial++) {
+                cars.move();
+                outputView.printMoving(cars);
+            }
+
         }catch(IllegalArgumentException exception){
             outputView.printExceptionMessage(exception);
         }
