@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.domain.car;
 
 import racingcar.exception.CarNameException.NameLengthExceededException;
 import racingcar.exception.CarNameException.NameLengthShortException;

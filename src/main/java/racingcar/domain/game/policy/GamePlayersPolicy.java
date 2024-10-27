@@ -1,4 +1,4 @@
-package racingcar.game.policy;
+package racingcar.domain.game.policy;
 
 public class GamePlayersPolicy {
     public static final int GAME_MINIMUM_PLAYERS = 2;

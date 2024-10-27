@@ -1,8 +1,8 @@
 package racingcar.exception.message;
 
 
-import static racingcar.car.Name.MAX_LENGTH;
-import static racingcar.car.Name.MIN_LENGTH;
+import static racingcar.domain.car.Name.MAX_LENGTH;
+import static racingcar.domain.car.Name.MIN_LENGTH;
 
 public class CarNameExceptionMessage {
     private CarNameExceptionMessage() {

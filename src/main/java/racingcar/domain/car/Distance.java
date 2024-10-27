@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.domain.car;
 
 public class Distance {
     private final static int ZERO = 0;
