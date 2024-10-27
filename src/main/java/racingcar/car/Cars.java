@@ -14,7 +14,7 @@ public class Cars {
         List<Name> nameList = names.getNames();
         this.cars = getCars(nameList);
     }
-    
+
     public void printCurrentStatus() {
         for (Car car : cars) {
             OutputManager.printCurrent(car);
@@ -44,7 +44,7 @@ public class Cars {
         return winners;
     }
 
-    public int carsSize() {
+    public int getCarsSize() {
         return cars.size();
     }
     private List<Car> getCars(List<Name> names) {
