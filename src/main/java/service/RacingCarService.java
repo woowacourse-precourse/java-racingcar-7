@@ -68,5 +68,9 @@ public class RacingCarService {
         winners.add(car.getName());
     }
 
+    public boolean isPrintAllowed(int attempts) {
+        return attempts <= 1000;
+    }
+
 
 }
