@@ -44,16 +44,9 @@ public class Cars {
     } // findMaxPositionCar
 
     public String getWinnersName() {
-        StringBuilder winnersName = new StringBuilder();
-        for (Car car : cars) {
-            winnersName.append(car.getName()).append(WINNER_SEPARATION_COMMA);
-        } // end for
-        return removeLastComma(winnersName.toString());
+        List<String> winnersName = cars.stream().map(Car::getName).toList();
+        return String.join(WINNER_SEPARATION_COMMA, winnersName);
     } // getWinnersName
-
-    private String removeLastComma(String input) {
-        return input.substring(START_INDEX, input.length() - TRIM_END_INDEX);
-    } // applyWinnerPrintForm
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
