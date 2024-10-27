@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.CarController;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,6 +17,7 @@ class MainTest extends NsTest {
     private Main main = new Main();
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
+    private CarController carController = new CarController();
 
     @Test
     @DisplayName("자동차 이름을 입력받는다")
@@ -35,13 +37,13 @@ class MainTest extends NsTest {
     @Test
     @DisplayName("단일 자동차 객체를 생성한다")
     void createSingleCar() {
-        assertThat(main.createSingleCar("pobi")).isInstanceOf(Car.class);
+        assertThat(carController.createSingleCar("pobi")).isInstanceOf(Car.class);
     }
 
     @Test
     @DisplayName("모든 자동차 객체를 생성한다")
     void createAllCars() {
-        assertThat(main.createAllCars(List.of("pobi", "woni", "jun")).size()).isEqualTo(3);
+        assertThat(carController.createAllCars(List.of("pobi", "woni", "jun")).size()).isEqualTo(3);
     }
 
     @Test

@@ -1,7 +1,7 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.controller.CarController;
 import racingcar.util.CommonIo;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -14,6 +14,7 @@ public class Main {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
     private CommonIo io = new CommonIo();
+    private CarController carController = new CarController();
 
     public void run(){
         finishGame(playGame(prepareGame()));
@@ -23,7 +24,7 @@ public class Main {
         outputView.printGetCarNames();
         String carNameInput = inputView.receiveCarNames();
         List<String> carNames = splitCarNames(carNameInput);
-        List<Car> cars = createAllCars(carNames);
+        List<Car> cars = carController.createAllCars(carNames);
 
         return cars;
     }
@@ -53,21 +54,6 @@ public class Main {
     public List<String> splitCarNames(String input) {
         List<String> carNames = Arrays.stream(input.split(",")).toList();
         return carNames;
-    }
-
-    public Car createSingleCar(String carName) {
-        Car car = new Car(carName, 0);
-        return car;
-    }
-
-    public List<Car> createAllCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String carName : carNames) {
-            cars.add(createSingleCar(carName));
-        }
-
-        return cars;
     }
 
     public int createRandomNumber() {
