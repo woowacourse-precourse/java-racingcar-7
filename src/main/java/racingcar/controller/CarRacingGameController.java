@@ -3,7 +3,7 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
-import racingcar.model.WinnerDecision;
+import racingcar.util.WinnerDecision;
 import racingcar.util.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
