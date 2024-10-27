@@ -50,7 +50,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
+    @Test
+    void 자동차_이름_중복_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi,pobi,", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {

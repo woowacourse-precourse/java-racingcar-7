@@ -3,9 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
-
+import java.util.Set;
 
 
 class Car {
@@ -32,12 +32,19 @@ public class Application {
 
         String[] carNameList = input.split(",",-1);
 
+        Set<String> nameSet = new HashSet<>();
+
+
         for(String carName : carNameList) {
 
             if(carName.isEmpty() || carName.length() >5) {
                 throw new IllegalArgumentException();
             }
 
+            if (!nameSet.add(carName)) {
+                throw new IllegalArgumentException();
+            }
+            
             Car car = new Car(carName);
             cars.add(car);
         }
