@@ -54,7 +54,7 @@
 
 - [ ] 테스트 코드 작성
     - [ ] setup 테스트 코드 작성
-    - [ ] separateInputCars 테스트 코드 작성
+    - [x] separateInputCars 테스트 코드 작성
 - [ ] run 메소드 구현
 - [ ] startGame 메소드 구현
 - [ ] moveCar 메소드 구현
