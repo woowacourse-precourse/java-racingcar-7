@@ -10,11 +10,18 @@ public class CarNameNotEmptyValidator implements ValidationStrategy<String> {
 
     @Override
     public void validate(String carName) {
-        validateNotEmptyCarName(carName);
+        validateNotNull(carName);
+        validateNotBlank(carName);
     }
 
-    private void validateNotEmptyCarName(String carName) {
-        if (carName == null || carName.trim().isEmpty()) {
+    private void validateNotNull(String carName) {
+        if (carName == null) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAMES.getMessage());
+        }
+    }
+
+    private void validateNotBlank(String carName) {
+        if (carName.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAMES.getMessage());
         }
     }

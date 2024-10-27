@@ -11,15 +11,21 @@ public class CarNameListNotEmptyValidator implements ValidationStrategy<List<Str
 
     @Override
     public void validate(List<String> carNames) {
+        validateListNotNull(carNames);
         validateNonEmptyNames(carNames);
+    }
+
+    private void validateListNotNull(List<String> carNames) {
+        if (carNames == null) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_NAME_IN_LIST.getMessage());
+        }
     }
 
     private void validateNonEmptyNames(List<String> carNames) {
         for (String carName : carNames) {
-            if (carName == null || carName.trim().isEmpty()) {
+            if (carName == null || carName.isBlank()) {
                 throw new IllegalArgumentException(ErrorMessage.EMPTY_NAME_IN_LIST.getMessage());
             }
         }
     }
-
 }
