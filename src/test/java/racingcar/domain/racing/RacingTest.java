@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.io.ByteArrayInputStream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -126,10 +125,6 @@ class RacingTest extends NsTest {
         );
         racing.calculateWinner();
         assertThat(racing.getWinners().getFirst().getName()).isEqualTo("aaaaa");
-    }
-
-    private void setInputText(String text) {
-        System.setIn(new ByteArrayInputStream(text.getBytes()));
     }
 
     @Override
