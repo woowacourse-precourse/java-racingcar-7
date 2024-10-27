@@ -65,7 +65,7 @@ public class CarNamesParserTest {
 
     @Test
     @DisplayName("중복된 이름이 존재할 경우에 예외를 발생시킨다.")
-    public void parseCarNamesWithDuplicateNamesThrowsException() {
+    public void shouldThrowExceptionWhenParseCarNamesWithDuplicateNames() {
         // given
         String input = "pobi,woni,pobi";
 
