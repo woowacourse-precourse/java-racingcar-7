@@ -13,6 +13,8 @@ import racingcar.dto.CarDTO;
 import racingcar.service.RandomNumber;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class RacingCars {
@@ -23,14 +25,29 @@ public class RacingCars {
 
     public RacingCars(String readLine) {//todo 이름 중복
         List<Car> tmpList = new ArrayList<>();
+        List<String> usedList = new ArrayList<>();
         String[] nameArray = readLine.split(",");
         for (String name : nameArray) {
             Car car = new Car(name);
+            usedList.add(name);
             tmpList.add(car);
         }
+        validationDuplicateName(nameArray, usedList);
         validationListSize(tmpList);
         this.carList = tmpList;
         randomNumber = new RandomNumber();
+    }
+
+    private void validationDuplicateName(String[] nameArray, List<String> usedList) {
+        for (String name : nameArray) {
+            nameCheck(usedList, name);
+        }
+    }
+
+    private void nameCheck(List<String> usedList, String name) {
+        if (usedList.contains(name)) {
+            throw new IllegalArgumentException("[ERROR] 중복된 이름은 허용 하지 않습니다.");
+        }
     }
 
     private void validationListSize(List<Car> tmpList) {
