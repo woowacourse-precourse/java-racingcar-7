@@ -22,7 +22,7 @@ public class InputView {
 
         Long validTryNums = tryNumbersValidator.validate(tryNums);
         List<String> validCarNames = carNameValidator.validate(carNames);
-        
+
         return new InputDTO(validCarNames, validTryNums);
     }
 
@@ -33,8 +33,7 @@ public class InputView {
 
     private String promptForTryNums() {
         System.out.println(InputMessage.TRY_NUM_INPUT_MESSAGE.getMessage());
-        String tryNums = Console.readLine();
-        return tryNums;
+        return Console.readLine();
     }
 
 
