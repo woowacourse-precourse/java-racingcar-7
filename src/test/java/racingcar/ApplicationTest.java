@@ -87,7 +87,29 @@ class ApplicationTest extends NsTest {
             InputView.Car_names();
         });
     }
-
+    @Test
+    void 우승자_선정_테스트(){
+        Car car1=new Car("pobi");
+        Car car2=new Car("woni");
+        Car car3=new Car("jun");
+        car1.setPosition();
+        car1.setPosition();
+        car1.setPosition();
+        car2.setPosition();
+        car2.setPosition();
+        car3.setPosition();
+        car3.setPosition();
+        car3.setPosition();
+        ArrayList<Car> cars=new ArrayList<>();
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+        CarService car=new CarService();
+        ArrayList<Car> winners=car.getWinnerCar(cars);
+        assertEquals(2, winners.size());
+        assertEquals("pobi",winners.get(0).getCarName());
+        assertEquals("jun",winners.get(1).getCarName());
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
