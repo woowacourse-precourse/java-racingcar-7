@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
@@ -72,6 +73,22 @@ class ApplicationTest extends NsTest {
         String[] carNames = Application.getCarNames(carNamesInputString);
 
         assertThat(carNames).isEqualTo(new String[]{"a", "", "b"});
+    }
+
+    @Test
+    void 테스트_1_3_유효한_이름() {
+        String carNamesInputString = ",a,bc,def,ghij,klmno";
+        String[] carNames = Application.getCarNames(carNamesInputString);
+
+        assertThatNoException().isThrownBy(() -> Application.validateCarNames(carNames));
+    }
+    @Test
+    void 테스트_1_3_유효하지_않은_이름() {
+        String carNamesInputString = ",a,bc,def,ghij,klmno,pqrstu";
+        String[] carNames = Application.getCarNames(carNamesInputString);
+
+        assertThatThrownBy(() -> Application.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
