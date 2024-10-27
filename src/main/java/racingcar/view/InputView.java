@@ -16,16 +16,18 @@ public class InputView {
         return Console.readLine(); // 입력 메시지를 인자로 받아 출력하고 값을 반환
     }
 
-    public void inputCarNames() {
+    public String inputCarNames() {
         participantList = input("경주할 자동차 이름을 입력하세요.");
         raceValidator.validateCarName(participantList);
+        return participantList;
     }
 
-    public void inputTryTo() {
+    public int inputTryTo() {
         String input = input("시도할 횟수는 몇 회인가요?");
         if(raceValidator.validateTryCount(input)){
-            tryTo = Integer.parseInt(input);
+            return tryTo = Integer.parseInt(input);
         }
+        return tryTo;
     }
 
 
