@@ -3,10 +3,14 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.DuplicateCarException;
 import racingcar.game.Game;
+import racingcar.io.OutputManager;
 import racingcar.vehicle.Car;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -128,7 +132,6 @@ class ApplicationTest extends NsTest {
         Game game = new Game();
         int randomNum = Randoms.pickNumberInRange(5, 9);
         cars.forEach(car -> car.run(randomNum));
-        game.winnerPlayer(cars);
     }
 
     @DisplayName("assertRandomNumberInRangeTest 테스트")
@@ -140,4 +143,55 @@ class ApplicationTest extends NsTest {
         }, STOP, STOP, MOVING_FORWARD);
     }
 
+    @DisplayName("HashMap으로 자료구조 변경테스트")
+    @Test
+    void hashMapTest() {
+        HashMap<String, Car> cars = new HashMap<>();
+        Game game = new Game();
+        Assertions.assertThrows(DuplicateCarException.class, () -> game.assignPlayer("pobi,woni,jun,jun"));
+//
+//        for (String carName : cars.keySet()) {
+//            Car car = cars.get(carName);
+//            car.run(4);
+//        }
+//
+//        int max = cars.values().stream().mapToInt(Car::getCnt).max().orElseThrow();
+//        List<String> result =  cars.values().stream().filter((car) -> car.getCnt() == max).map(Car::getName).toList();
+//        OutputManager.getInstance().print("최종 우승자 : " + String.join(", ", result));
+    }
+
+    @DisplayName("HashMap game start 테스트")
+    @Test
+    void HashMapGameStartTest() {
+        Game game = new Game();
+        HashMap<String, Car> result = game.gameStart("pobi,woni,jun", "1");
+        assertThat(3).isEqualTo(result.size());
+    }
+
+    @DisplayName("HashMap game winner 테스트")
+    @Test
+    void HashMapGameWinnerTest() {
+        Game game = new Game();
+        HashMap<String, Car> result = game.gameStart("pobi,woni,jun", "1");
+        game.winnerPlayer(result);
+    }
+
+    @DisplayName("HashMap 실행 테스트")
+    @Test
+    void HashMapAppTest() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @DisplayName("HashMap 자동차 이름 출력 테스트")
+    @Test
+    void HashMapPrintCarNameTest() {
+        Game game = new Game();
+        game.gameStart("pobi,woni,jun,buk,abc", "10");
+    }
 }

@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.HashMap;
 import java.util.List;
 import racingcar.game.Game;
 import racingcar.io.Input;
@@ -15,7 +16,7 @@ public class Application {
         String cnt = in.nextLine();
         System.out.println();
         Game game = new Game();
-        List<Car> result = game.gameStart(carName, cnt);
+        HashMap<String, Car> result = game.gameStart(carName, cnt);
         game.winnerPlayer(result);
     }
 }

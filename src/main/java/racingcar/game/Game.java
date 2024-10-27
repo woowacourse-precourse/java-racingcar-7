@@ -2,19 +2,22 @@ package racingcar.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import racingcar.exception.DuplicateCarException;
 import racingcar.io.OutputManager;
 import racingcar.vehicle.Car;
 
 public class Game {
 
-    public List<Car> gameStart(String carNames, String cnt) {
-        List<Car> playerCars = assignPlayer(carNames);
+    public HashMap<String, Car> gameStart(String carNames, String cnt) {
+        HashMap<String, Car> playerCars = assignPlayer(carNames);
 
         OutputManager.getInstance().print("실행 결과");
 
         for (int i = 0; i < parseCntNumber(cnt); i++) {
-            playerCars.forEach(car ->
+            playerCars.values().forEach(car ->
                     car.run(Randoms.pickNumberInRange(0, 9))
             );
             OutputManager.getInstance().print("");
@@ -22,24 +25,33 @@ public class Game {
         return playerCars;
     }
 
-    public void winnerPlayer(List<Car> player) {
+    public void winnerPlayer(HashMap<String, Car> player) {
         int max = playerMaxCnt(player);
 
-        List<String> winner = player.stream()
+        List<String> winner = player.
+                values()
+                .stream()
                 .filter(car -> car.getCnt() == max)
                 .map(Car::getName)
                 .toList();
         OutputManager.getInstance().print("최종 우승자 : " + String.join(", ", winner));
     }
 
-    private List<Car> assignPlayer(String carName) {
-        return Arrays.stream(carName.split(","))
-                .map(Car::new)
-                .toList();
+    public HashMap<String, Car> assignPlayer(String message) throws DuplicateCarException {
+        HashMap<String, Car> players = new LinkedHashMap<>();
+        Arrays.stream(message.split(","))
+                .forEach(name -> {
+                    if (players.containsKey(name)) {
+                        throw new DuplicateCarException("Player with name '" + name + "' already exists.");
+                    }
+                    players.put(name, new Car(name));
+                });
+        return players;
     }
 
-    private int playerMaxCnt(List<Car> player) {
-        return player.stream()
+    private int playerMaxCnt(HashMap<String, Car> player) {
+        return player.values()
+                .stream()
                 .mapToInt(Car::getCnt)
                 .max()
                 .orElseThrow();
