@@ -8,6 +8,7 @@ import java.util.List;
 
 public class RacingCarService {
     private List<RacingCar> racingCars;
+    private static final String SPLIT_SEPARATOR =",";
 
     public RacingCarService() {
         this.racingCars = new ArrayList<>();
@@ -44,7 +45,7 @@ public class RacingCarService {
     }
 
     public String[] splitCarsName(String inputCarsName) {
-        return Arrays.stream(inputCarsName.split(","))
+        return Arrays.stream(inputCarsName.split(SPLIT_SEPARATOR))
                 .map(String::trim)
                 .toArray(String[]::new);
     }

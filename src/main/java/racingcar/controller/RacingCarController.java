@@ -27,8 +27,9 @@ public class RacingCarController {
             racingCarService.advanceRacingCarByRandomOrZero();
             List<String[]> extractedCarNameAndAdvanceResults = racingCarService.extractCarNameAndAdvanceResult();
             for (String[] carNameAndAdvanceResult : extractedCarNameAndAdvanceResults) {
-                outputView.printCarRacingResult(carNameAndAdvanceResult[0], carNameAndAdvanceResult[1], extractedCarNameAndAdvanceResults.size());
+                outputView.printCarRacingResult(carNameAndAdvanceResult[0], carNameAndAdvanceResult[1]);
             }
+            outputView.printLineSpace();
         }
     }
 }
