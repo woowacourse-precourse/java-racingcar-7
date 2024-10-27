@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.CarFactory;
 import racingcar.domain.Cars;
 import racingcar.view.InputView;
@@ -10,9 +11,9 @@ public class RacingSetUp {
     private final Cars cars;
 
     public RacingSetUp() {
-        this.carNames = setUpCarNames();
-        this.tryCount = setUpTryCount();
-        this.cars = registerCars();
+        carNames = setUpCarNames();
+        tryCount = setUpTryCount();
+        cars = registerCars();
     }
 
     private String setUpCarNames() {
@@ -31,12 +32,14 @@ public class RacingSetUp {
             tryCount = Long.parseLong(textTryCount);
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException("시도 횟수는 아라비아 숫자로 입력해야 합니다");
+        } finally {
+            Console.close();
         }
 
         return tryCount;
     }
 
-    private Cars registerCars() {
+    public Cars registerCars() {
         return CarFactory.getInstance().createCars(carNames);
     }
 
@@ -47,4 +50,5 @@ public class RacingSetUp {
     public Cars getCars() {
         return cars;
     }
+
 }
