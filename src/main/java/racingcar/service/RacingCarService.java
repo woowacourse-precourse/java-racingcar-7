@@ -39,12 +39,11 @@ public class RacingCarService {
 
         for (Map.Entry<String, String> entry : racingCarMap.entrySet()) {
             int length = entry.getValue().length();
-            if (length > maxLength) {
+            if (length == maxLength) {
+                longestKeys.add(entry.getKey());
+            } else if (length > maxLength) {
                 maxLength = length;
                 longestKeys.clear();
-                longestKeys.add(entry.getKey());
-            }
-            if (length == maxLength) {
                 longestKeys.add(entry.getKey());
             }
         }
