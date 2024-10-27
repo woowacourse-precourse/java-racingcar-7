@@ -85,4 +85,17 @@ public class CustomTest {
         assertThat(entry.getValue()).isEqualTo(1);  // 이동하지 않음
     }
 
+    @Test
+    @DisplayName("최종 우승자를 계산하고 올바르게 반환")
+    void testWinner() {
+        Map<String, Integer> race = new HashMap<>();
+        race.put("pobi", 3);
+        race.put("woni", 3);
+        race.put("jun", 2);
+
+        List<String> winners = new ArrayList<>();
+        Application.winner(race, winners);
+
+        assertThat(winners).contains("pobi", "woni");
+    }
 }
