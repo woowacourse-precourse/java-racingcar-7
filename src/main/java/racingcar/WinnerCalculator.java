@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class WinnerCalculator {
@@ -32,10 +31,7 @@ public class WinnerCalculator {
 
     private static void addIfWinner(List<Car> lastRacingRecord, List<String> winnerNames, Car currentCar) {
         if (compareOtherCars(lastRacingRecord, currentCar)) {
-            List<String> winnerDetails = Arrays.stream(currentCar.toCustomFormatString("-").split(" : "))
-                    .toList();
-
-            winnerNames.add(winnerDetails.get(0));
+            winnerNames.add(currentCar.toCarNameString());
         }
     }
 }
