@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import racingcar.exception.InvalidPlayerCountException.PlayerCountExceededException;
-import racingcar.exception.InvalidPlayerCountException.PlayerCountShortException;
+import racingcar.exception.player.InvalidPlayerCountException.PlayerCountExceededException;
+import racingcar.exception.player.InvalidPlayerCountException.PlayerCountShortException;
 
 public class Players {
     public static final int MINIMUM_GAME_PLAYERS = 2;

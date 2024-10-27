@@ -2,8 +2,8 @@ package racingcar.domain.car;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.exception.InvalidCarNameException.NameLengthExceededExceptionInvalid;
-import static racingcar.exception.InvalidCarNameException.NameLengthShortExceptionInvalid;
+import static racingcar.exception.car.InvalidCarNameException.NameLengthExceededExceptionInvalid;
+import static racingcar.exception.car.InvalidCarNameException.NameLengthShortExceptionInvalid;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

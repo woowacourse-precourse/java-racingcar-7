@@ -1,4 +1,4 @@
-package racingcar.exception;
+package racingcar.exception.car;
 
 import racingcar.common.exception.RacingCarException;
 import racingcar.exception.message.CarNameExceptionMessage;

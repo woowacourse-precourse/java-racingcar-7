@@ -6,8 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Distance;
-import racingcar.exception.InvalidPlayerCountException.PlayerCountExceededException;
-import racingcar.exception.InvalidPlayerCountException.PlayerCountShortException;
+import racingcar.exception.player.InvalidPlayerCountException.PlayerCountExceededException;
+import racingcar.exception.player.InvalidPlayerCountException.PlayerCountShortException;
 
 @DisplayName("플레이어 그룹(Players) 유스케이스")
 class PlayersTest {

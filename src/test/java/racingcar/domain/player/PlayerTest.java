@@ -5,8 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Distance;
-import racingcar.exception.InvalidCarNameException.NameLengthExceededExceptionInvalid;
-import racingcar.exception.InvalidCarNameException.NameLengthShortExceptionInvalid;
+import racingcar.exception.car.InvalidCarNameException.NameLengthExceededExceptionInvalid;
+import racingcar.exception.car.InvalidCarNameException.NameLengthShortExceptionInvalid;
 
 @DisplayName("단일 플레이어(Player) 유스케이스")
 class PlayerTest {

@@ -10,13 +10,11 @@ import racingcar.domain.movement.MovementPolicy;
 import racingcar.domain.movement.MovementStrategy;
 import racingcar.domain.movement.RandomMovementStrategy;
 import racingcar.domain.player.Player;
-import racingcar.exception.InvalidPlayerCountException.PlayerCountExceededException;
-import racingcar.exception.InvalidPlayerCountException.PlayerCountShortException;
+import racingcar.exception.game.InvalidRoundsException.InvalidTotalRoundsException;
+import racingcar.exception.player.InvalidPlayerCountException.PlayerCountExceededException;
+import racingcar.exception.player.InvalidPlayerCountException.PlayerCountShortException;
 
 
-/**
- * - [ ] 게임 시작하기 - [ ] 정상적인 게임 생성 - [ ] 부적절한 플레이어 수로 게임 생성 시도
- */
 @DisplayName("게임(Game) 유스케이스")
 class GameTest {
 
@@ -39,9 +37,9 @@ class GameTest {
             Game.start(players, totalRounds, movementPolicy);
         }
 
-        @DisplayName("부적절한 플레이어 수로 게임 생성 시도 - 미달")
+        @DisplayName("최소 플레이어 수 미달로 게임 생성 시도")
         @Test
-        void 부적절한_플레이어_수로_게임_생성_시도_미달() {
+        void 최소_플레이어_수_미달로_게임_생성_시도() {
             // given
             final List<Player> players = List.of(
                     Player.of(1L, "p1")
@@ -54,9 +52,9 @@ class GameTest {
                     .hasMessage("플레이어는 최소 2명 부터 참여할 수 있습니다");
         }
 
-        @DisplayName("부적절한 플레이어 수로 게임 생성 시도 - 초과")
+        @DisplayName("최대 라운드 수 초과로 게임 생성 시도")
         @Test
-        void 부적절한_플레이어_수로_게임_생성_시도_초과() {
+        void 최대_라운드_수_초과로_게임_생성_시도() {
             // given
             final List<Player> players = List.of(
                     Player.of(1L, "p"),
@@ -74,6 +72,41 @@ class GameTest {
                     .isInstanceOf(PlayerCountExceededException.class)
                     .hasMessage("플레이어는 최대 5명 까지 참여할 수 있습니다");
         }
+
+        @DisplayName("최소 라운드 수 미달로 게임 생성 시도")
+        @Test
+        void 최소_라운드_수_미달로_게임_생성_시도() {
+            // given
+            final List<Player> players = List.of(
+                    Player.of(1L, "p1"),
+                    Player.of(2L, "p2")
+
+            );
+            final int totalRounds = 0;
+            MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
+            final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
+            Assertions.assertThatThrownBy(() -> Game.start(players, totalRounds, movementPolicy))
+                    .isInstanceOf(InvalidTotalRoundsException.class)
+                    .hasMessage("라운드는 1-10 사이여야 합니다.");
+        }
+
+        @DisplayName("최대 라운드 수 초과로 게임 생성 시도")
+        @Test
+        void 최대_라운드_수_초과로_게임_생성시도() {
+            // given
+            final List<Player> players = List.of(
+                    Player.of(1L, "p1"),
+                    Player.of(2L, "p2")
+
+            );
+            final int totalRounds = 11;
+            MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
+            final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
+            Assertions.assertThatThrownBy(() -> Game.start(players, totalRounds, movementPolicy))
+                    .isInstanceOf(InvalidTotalRoundsException.class)
+                    .hasMessage("라운드는 1-10 사이여야 합니다.");
+        }
+
 
     }
 

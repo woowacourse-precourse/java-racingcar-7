@@ -1,7 +1,7 @@
 package racingcar.domain.car;
 
-import racingcar.exception.InvalidCarNameException.NameLengthExceededExceptionInvalid;
-import racingcar.exception.InvalidCarNameException.NameLengthShortExceptionInvalid;
+import racingcar.exception.car.InvalidCarNameException.NameLengthExceededExceptionInvalid;
+import racingcar.exception.car.InvalidCarNameException.NameLengthShortExceptionInvalid;
 
 public class Name {
     public static final int MAX_LENGTH = 10;

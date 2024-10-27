@@ -1,4 +1,4 @@
-package racingcar.exception;
+package racingcar.exception.player;
 
 import static racingcar.exception.message.PlayerCountExceptionMessage.PlayerCountExceeded;
 import static racingcar.exception.message.PlayerCountExceptionMessage.PlayerCountShort;
@@ -11,13 +11,13 @@ public class InvalidPlayerCountException extends RacingCarException {
         super(message);
     }
 
-    public static class PlayerCountExceededException extends InvalidCarNameException {
+    public static class PlayerCountExceededException extends InvalidPlayerCountException {
         public PlayerCountExceededException() {
             super(PlayerCountExceeded);
         }
     }
 
-    public static class PlayerCountShortException extends InvalidCarNameException {
+    public static class PlayerCountShortException extends InvalidPlayerCountException {
         public PlayerCountShortException() {
             super(PlayerCountShort);
         }
