@@ -126,6 +126,8 @@ public class RacingCar {
     public void catchError() {
         for (String carNameForCheck : carNameList) {
             checkCarNameLength(carNameForCheck);
+            checkIfCarNameBlank(carNameForCheck);
+            checkIfCarNameSame(carNameForCheck);
         }
     }
 
@@ -135,4 +137,11 @@ public class RacingCar {
             throw new IllegalArgumentException();
         }
     }
+
+    public void checkIfCarNameBlank(String carNameForCheck) {
+        if (carNameForCheck.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
