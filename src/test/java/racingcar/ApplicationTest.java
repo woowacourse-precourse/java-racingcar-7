@@ -150,6 +150,22 @@ class ApplicationTest extends NsTest {
         assertEquals(expectedOutput, actualOutput, "우승자 출력이 잘못되었습니다.");
     }
 
+    @Test
+    void 자동차_생성_테스트() {
+        //given
+        Race race = new Race(new ConsoleInputManager(), new ConsoleOutputManager(), new CarRacingReferee());
+        List<String> carNames = Arrays.asList("Car1", "Car2", "Car3");
+
+        //when
+        List<Car> cars = race.createParticipant(carNames);
+
+        //then
+        assertEquals(3, cars.size(), "자동차 목록 크기는 입력 크기와 일치해야 합니다.");
+        assertEquals("Car1", cars.get(0).getName(), "첫 번째 자동차 이름이 일치해야 합니다.");
+        assertEquals("Car2", cars.get(1).getName(), "두 번째 자동차 이름이 일치해야 합니다.");
+        assertEquals("Car3", cars.get(2).getName(), "세 번재 자동차 이름이 일치해야 합니다.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
