@@ -90,7 +90,7 @@ class ApplicationTest extends NsTest {
     void 자동차_이름_입력여부_테스트2() {
         assertThatThrownBy(() -> {
             // 여기서 직접 validateCarName을 호출
-            Validator.validateCarName(null);
+            Validator.validateCarNameLengthAndEmpty(null);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 비어 있을 수 없습니다.");  // 예외 메시지 확인
     }

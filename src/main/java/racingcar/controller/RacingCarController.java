@@ -19,13 +19,11 @@ public class RacingCarController {
         outputView.trialCountMessage();
         int numberOfTries = inputView.getTrialNumber();
 
-        //TODO: 시도 횟수만큼 레이스 반복
         for (int i = 0; i < numberOfTries; i++) {
             race(racingCars);
             outputView.showRaceStatus(racingCars);
         }
 
-        //TODO: 최종 우승자 선정 및 출력
         List<Car> winners = RaceResult.getWinners(racingCars);
         outputView.finalWinnerMessage(winners);
     }
