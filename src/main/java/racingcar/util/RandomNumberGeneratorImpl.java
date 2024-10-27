@@ -12,6 +12,6 @@ public class RandomNumberGeneratorImpl implements RandomNumberGenerator{
 
   @Override
   public int generate() {
-    return Randoms.pickNumberInRange(MAXIMUM_RANDOM_NUMBER, MAXIMUM_RANDOM_NUMBER);
+    return Randoms.pickNumberInRange(MINIMUM_RANDOM_NUMBER, MAXIMUM_RANDOM_NUMBER);
   }
 }

@@ -22,7 +22,6 @@ public interface CarFactory{
 
   public List<Car> getListFromRawCarNames(String rawCarNames);
 
-  CarNameMap createCarNameMap(List<Car> cars);
   Car createCar(String carName);
   Cars createCars(String rawCarNames, CarsType carsType);
   Cars createDefaultCars(String rawCarNames);
