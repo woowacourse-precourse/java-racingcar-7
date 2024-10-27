@@ -37,4 +37,10 @@ public class Cars {
         }
         return true;
     }
+
+    public void move() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
 }

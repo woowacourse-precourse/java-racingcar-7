@@ -21,4 +21,22 @@ public class Car {
         return position;
     }
 
+    public void move() {
+        if (isMovable()) {
+            position += 1;
+        }
+        displayPosition();
+    }
+
+    private boolean isMovable() {
+        return Randoms.pickNumberInRange(MIN_MOVE_RANGE, MAX_MOVE_RANGE) >= MOVE_THRESHOLD;
+    }
+
+    private void displayPosition() {
+        StringBuilder road = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            road.append("-");
+        }
+        System.out.println(name + " : " + road.toString());
+    }
 }

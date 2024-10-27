@@ -7,5 +7,6 @@ public class Game {
     public void play() {
         cars.createCars();
         resultByRace.askPlayTime();
+        resultByRace.showEachResult(cars);
     }
 }
