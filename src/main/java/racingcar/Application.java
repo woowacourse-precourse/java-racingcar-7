@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Application {
@@ -10,7 +11,7 @@ public class Application {
     * - 이름은 5자 이하만 가능
     * 게임 진행 회차수 입력 기능(readLine()) - 0
     * - String -> int로 변환 - 0
-    * 무작위 0-9 사이 숫자 생성(pickNumberInRange())
+    * 무작위 0-9 사이 숫자 생성(pickNumberInRange()) - 0
     * 자동차 클래스 생성
     * - 자동차 전진 조건 추가(무작위 값이 4 이상일 경우 전진)
     *  - 게임 회차별 현재 자동차들 위치 출력 기능
@@ -41,4 +42,7 @@ public class Application {
         return Integer.parseInt(inputGameCount);
     }
 
+    public static int RandomIntCreate(){
+        return Randoms.pickNumberInRange(0, 9);
+    }
 }
