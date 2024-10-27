@@ -1,8 +1,8 @@
 package racingcar.domain;
 
-import java.util.List;
+import racingcar.util.RandomGenerator;
 
-import static racingcar.util.RandomGenerator.generateRandomNumber;
+import java.util.List;
 
 public class RacingGame {
     private List<Car> carList;
@@ -28,7 +28,7 @@ public class RacingGame {
     }
 
     private void moveCar(Car car) {
-        int randomNumber = generateRandomNumber();
+        int randomNumber = RandomGenerator.generateRandomNumber();
         car.move(randomNumber, racingRule);
     }
 
