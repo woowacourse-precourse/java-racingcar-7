@@ -20,4 +20,10 @@ public class RacingController {
             System.out.println();
         }
     }
+
+    public void determineAndDisplayWinners(Cars cars){
+        cars.calculateMaxMove();
+        cars.determineWinners();
+        outputView.printWinners(cars.getWinners());
+    }
 }

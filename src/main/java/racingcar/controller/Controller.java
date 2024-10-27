@@ -13,17 +13,13 @@ public class Controller {
     }
 
     public void gameStart(){
-
         inputController.validateInputFormat();
         inputController.validateNameLength();
         inputController.validateNonEmptyNames();
         inputController.addCarsFromInput(cars);
 
         racingController.playGame(cars);
-
-        cars.calculateMaxMove();
-        cars.determineWinners();
-        outputView.printWinners(cars.getWinners());
+        racingController.determineAndDisplayWinners(cars);
     }
 
 }
