@@ -18,6 +18,8 @@ public class Application {
         validateCarNames(carNamesList);
 
         List<Car> cars = createCars(carNamesList);
+
+        runRace(cars, numberOfAttempts);
     }
 
     public static RaceInput getInput() {
@@ -68,6 +70,14 @@ public class Application {
         }
 
         return cars;
+    }
+
+    public static void runRace(List<Car> cars, int numberOfAttempts) {
+        for (int i = 0; i < numberOfAttempts; i++) {
+            for (Car car : cars) {
+                car.move();
+            }
+        }
     }
 }
 
