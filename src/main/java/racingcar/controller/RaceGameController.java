@@ -1,11 +1,9 @@
 package racingcar.controller;
 
 import java.util.List;
-import java.util.Set;
 import racingcar.domain.Car;
 import racingcar.service.RaceGameService;
 import racingcar.util.parser.InputStringParser;
-import racingcar.util.parser.StringParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -26,7 +24,7 @@ public class RaceGameController {
 
     public void run() {
         String racerNames = requestInputStringRacerName();
-        List<Car> cars = raceGameService.enrollRacer(racerNames, new StringParser());
+        List<Car> cars = raceGameService.enrollRacer(racerNames, new InputStringParser());
     }
 
     private String requestInputStringRacerName() {
