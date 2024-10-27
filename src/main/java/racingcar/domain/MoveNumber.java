@@ -3,7 +3,7 @@ package racingcar.domain;
 public class MoveNumber {
     private final int moveNumber;
 
-    public MoveNumber(int moveNumber) {
+    protected MoveNumber(int moveNumber) {
         this.moveNumber = moveNumber;
     }
 

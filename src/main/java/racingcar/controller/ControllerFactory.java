@@ -1,6 +1,5 @@
-package racingcar.factory;
+package racingcar.controller;
 
-import racingcar.controller.RacingCarController;
 import racingcar.view.CarsOutputView;
 
 public class ControllerFactory {

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
 
 public class CarsValidatorTest {
     @Test
@@ -17,7 +18,7 @@ public class CarsValidatorTest {
         String testName = "pobi";
         Validator<List<Car>> validator = new CarsValidator();
         List<Car> cars = new ArrayList<>(
-                Arrays.asList(new Car(testName))
+                Arrays.asList(CarFactory.createCar(testName))
         );
 
         assertThatThrownBy(() -> validator.validate(cars))
@@ -35,7 +36,9 @@ public class CarsValidatorTest {
         String testName3 = testNames[2];
         Validator<List<Car>> validator = new CarsValidator();
         List<Car> cars = new ArrayList<>(
-                Arrays.asList(new Car(testName1), new Car(testName2), new Car(testName3))
+                Arrays.asList(CarFactory.createCar(testName1)
+                        , CarFactory.createCar(testName2)
+                        , CarFactory.createCar(testName3))
         );
 
         assertThatThrownBy(() -> validator.validate(cars))

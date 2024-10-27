@@ -1,14 +1,16 @@
 package racingcar.controller;
 
-import racingcar.factory.CarsFactory;
-import racingcar.factory.ControllerFactory;
-import racingcar.factory.MoveNumberFactory;
+import racingcar.domain.CarsFactory;
+import racingcar.domain.MoveNumberFactory;
 import racingcar.domain.Cars;
 import racingcar.domain.MoveNumber;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingCarController {
+    protected RacingCarController() {
+    }
+
     public void run() {
         Cars cars = createCars();
         MoveNumber moveNumber = createMoveNumber();

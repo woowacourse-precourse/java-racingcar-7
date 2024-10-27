@@ -1,8 +1,7 @@
-package racingcar.factory;
+package racingcar.domain;
 
 import static racingcar.validation.Exceptions.MOVE_NUMBER_NOT_INTEGER;
 
-import racingcar.domain.MoveNumber;
 import racingcar.validation.MoveNumberValidator;
 import racingcar.validation.Validator;
 

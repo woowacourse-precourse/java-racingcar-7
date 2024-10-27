@@ -10,7 +10,7 @@ public class Car {
     private String name;
     private int moveDistance;
 
-    public Car(String name) {
+    protected Car(String name) {
         this.name = name;
         this.moveDistance = 0;
     }

@@ -1,10 +1,9 @@
-package racingcar.factory;
+package racingcar.domain;
 
-import racingcar.domain.Car;
 import racingcar.validation.CarValidator;
 import racingcar.validation.Validator;
 
-public class CarFactory {
+public class CarFactory{
     private static final Validator<String> validator = new CarValidator();
 
     public static Car createCar(String carName) {
