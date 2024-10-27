@@ -11,13 +11,13 @@ public class OutputView {
     }
 
     public static void printAllRoundResult(List<List<RoundResult>> allRoundResult) {
+        System.out.println("\n실행결과");
         for (List<RoundResult> roundResults : allRoundResult) {
             printRoundResult(roundResults);
         }
     }
 
     private static void printRoundResult(List<RoundResult> roundResults) {
-        System.out.println("\n실행결과");
         for (RoundResult roundResult : roundResults) {
             printRoundCar(roundResult.carName(), roundResult.currentDistance());
         }

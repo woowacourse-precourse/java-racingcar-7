@@ -27,3 +27,11 @@
   - 자동차가 없을 시
   - 시도 횟수가 숫자가 아닐 시
   - 시도 횟수가 양의 정수가 아닐 시
+
+## 단위 테스트
+- [ ] 유효성 검사 테스트
+- [ ] start 메서드 테스트
+- [ ] selectWinners 메서드 테스트
+
+## 구조
+![woowa_2](https://github.com/user-attachments/assets/abb96dd6-e7b9-4b9a-80b3-b57bdfccdf5b)
