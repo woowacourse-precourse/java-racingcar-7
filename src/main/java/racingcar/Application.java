@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +43,10 @@ public class Application {
             for (Car car : cars) {
                 int randomNumber = Randoms.pickNumberInRange(0, 9);
                 car.moveCar(randomNumber);
-                printCurrentPosition(cars);
             }
+            printCurrentPosition(cars);
         }
+        getWinner(cars);
 
     }
 
@@ -57,6 +60,19 @@ public class Application {
             System.out.println();
         }
         System.out.println();
+    }
+
+    //우승자 추출
+    private static void getWinner(List<Car> cars){
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        List<String> winners = new ArrayList<>();
+
+        for(Car car : cars){
+            if(car.getPosition() == maxPosition){
+                winners.add(car.getName());
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
     //자동차 클래스
     static class Car {
