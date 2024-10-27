@@ -34,11 +34,15 @@ public class Game {
 
     public void addArrayToList() {
         for (int i = 0; i < carNameArray.length; i++) {
+            carList.add(new Car(carNameArray[i], 0));
+        }
+    }
+
+    public void carNameValidation() {
+        for (int i = 0; i < carNameArray.length; i++) {
             if (carNameArray[i].length() > 5) {
                 throw new IllegalArgumentException();
             }
-
-            carList.add(new Car(carNameArray[i], 0));
         }
     }
 

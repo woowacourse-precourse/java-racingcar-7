@@ -7,6 +7,7 @@ public class Application {
         input.inputNameAndAttemptCount();
 
         Game game = new Game(input.getCarNameString().split(","), input.getAttemptCount());
+        game.carNameValidation();
         game.addArrayToList();
         game.play();
 
