@@ -27,6 +27,7 @@ public class RacingController {
         repeatMovesUntilAttemptExhausted(attemptCount, cars);
 
         List<String> totalResult = getTotalResult(cars);
+        printTotalResult(totalResult);
     }
 
     private List<String> getCarNames() {
@@ -53,5 +54,9 @@ public class RacingController {
 
     private static List<String> getTotalResult(Cars cars) {
         return cars.getTotalResult();
+    }
+
+    private void printTotalResult(List<String> totalResult) {
+        outputView.printTotalResult(totalResult);
     }
 }
