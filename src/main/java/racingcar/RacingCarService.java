@@ -34,8 +34,7 @@ public class RacingCarService {
             }
         }
     }
-
-
+    
     private int createRandomNumber() {
         return Randoms.pickNumberInRange(LOW_NUM, HIGH_NUM);
     }

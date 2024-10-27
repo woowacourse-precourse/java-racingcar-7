@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.LinkedHashMap;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -21,6 +22,8 @@ public class RacingCarController {
         String readTryCount = inputView.readTryCount();
         collection = new RacingCarCollection(readCarString, readTryCount);
         service = new RacingCarService(collection.getCarList(), collection.getTryCount());
-        outputView.resultPrint(service.winner(service.getResultMap()));
+        LinkedHashMap<String, Integer> resultMap = service.getResultMap();
+        String winner = service.winner(resultMap);
+        outputView.resultPrint(winner);
     }
 }
