@@ -26,11 +26,10 @@ public class RacingCarGame {
     }
 
     private void raceUntilAttemptIsConsumed(AttemptCount attemptCount, RacingCars racingCars) {
-        while (attemptCount.isRemain()) {
+        attemptCount.runUntilConsumed(() -> {
             racingCars.race();
             List<RaceSnapshot> snapShots = racingCars.getCurrentSnapshots();
             outputHandler.showCurrentRaceSnapshot(snapShots);
-            attemptCount.decrease();
-        }
+        });
     }
 }

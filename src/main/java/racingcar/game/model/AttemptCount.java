@@ -17,4 +17,11 @@ public class AttemptCount {
     public boolean isRemain() {
         return this.count > MIN_INCLUSIVE;
     }
+
+    public void runUntilConsumed(Runnable runnable) {
+        while (isRemain()) {
+            runnable.run();
+            decrease();
+        }
+    }
 }
