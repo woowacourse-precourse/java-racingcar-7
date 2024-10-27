@@ -15,14 +15,14 @@ ___
 
 > "전진"
 
-- [ ] `class Score`
-    - [ ] `void moveForward()`
-    - [ ] `int getScore()`
+- [x] `class Score`
+    - [x] `void moveForward()`
+    - [x] `int getScore()`
 
 > "몇 번의 이동을 할 것인지"
 
-- [ ] `class RoundNumber`
-    - [ ] `void checkMinimumValue()`
+- [x] `class RoundNumber`
+    - [x] `void checkMinimumValue()`
 
 > "무작위 값을 구한 후"
 
