@@ -1,8 +1,8 @@
 package racingcar.domain.fake;
 
-import racingcar.domain.CarForwardCondition;
+import racingcar.domain.racing.RacingStrategy;
 
-public class FakeRandomNumberGenerator implements CarForwardCondition {
+public class FakeRandomNumberGenerator implements RacingStrategy {
 
     private static final int MIN_RANDOM_NUMBER_TO_MOVE_CAR = 4;
 

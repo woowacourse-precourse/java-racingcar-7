@@ -1,8 +1,9 @@
-package racingcar.domain;
+package racingcar.interfaces.racing;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.racing.RacingStrategy;
 
-public class RandomNumberGenerator implements CarForwardCondition {
+public class RandomNumberGenerator implements RacingStrategy {
 
     private static final int MIN_RANDOM_NUMBER = 0;
     private static final int MAX_RANDOM_NUMBER = 9;
