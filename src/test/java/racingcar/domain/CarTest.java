@@ -13,15 +13,15 @@ public class CarTest {
 
     @MethodSource("testData")
     @ParameterizedTest
-    void 차_생성_성공(String input, String output) {
-        Car car = new Car(input, CAR_POSITION_MIN);
-        assertThat(car.getName()).isEqualTo(output);
+    void 차_생성_성공(String carName, String CarName) {
+        Car car = new Car(carName, CAR_POSITION_MIN);
+        assertThat(car.getName()).isEqualTo(CarName);
     }
 
     @MethodSource("errorTestData")
     @ParameterizedTest
-    void 차_생성_실패(String input, Exception e) {
-        assertThatThrownBy(() -> new Car(input, CAR_POSITION_MIN)).isInstanceOf(e.getClass());
+    void 차_생성_실패(String carName, Exception e) {
+        assertThatThrownBy(() -> new Car(carName, CAR_POSITION_MIN)).isInstanceOf(e.getClass());
     }
 
     static Stream<Arguments> testData() {

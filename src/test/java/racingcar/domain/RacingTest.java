@@ -11,9 +11,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class RacingTest {
     @MethodSource("testData")
     @ParameterizedTest
-    void 레이스_결과(List<Car> input, List<String> output) {
-        Racing race = new Racing(input);
-        assertThat(race.findWinners()).isEqualTo(output);
+    void 레이스_결과(List<Car> cars, List<String> winner) {
+        Racing race = new Racing(cars);
+        assertThat(race.findWinners()).isEqualTo(winner);
     }
 
     static Stream<Arguments> testData() {
