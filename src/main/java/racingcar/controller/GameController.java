@@ -20,6 +20,12 @@ public class GameController {
 
     private void progressGame() {
         for (int i = 0; i < InputView.trynum; i++) {
+            startTurn();
+        }
+    }
+
+    private void startTurn() {
+        for (int i = 0; i < user.length; i++) {
             gameEngine.extractRandom();
             gameEngine.scoreUpdate(user[i]);
         }
