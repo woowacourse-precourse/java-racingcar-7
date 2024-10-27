@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,6 +31,25 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+    @Test
+    void 유효한_자동차_이름_테스트() {
+        List<String> validCarNames = List.of("pobi", "woni", "tom");
+        Application.validateCarNames(validCarNames);
+    }
+
+    @Test
+    void 중복된_자동차_이름_예외_테스트() {
+        List<String> duplicateCarNames = List.of("pobi", "pobi", "woni");
+        assertThatThrownBy(() -> Application.validateCarNames(duplicateCarNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 이름_길이_초과_예외_테스트() {
+        List<String> longNameCar = List.of("longname");
+        assertThatThrownBy(() -> Application.validateCarNames(longNameCar))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
