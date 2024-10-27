@@ -1,8 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     private static final int MIN_VALUE = 0;
@@ -60,6 +61,39 @@ public class Application {
         }
     }
 
+    private static void printFinalWinner(String[] carNames) {
+        int maxPosition;
+        List<String> winners;
+
+        maxPosition = findMaxPosition();
+        winners = findWinners(carNames, maxPosition);
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static int findMaxPosition() {
+        int maxPosition;
+
+        maxPosition = 0;
+        for (int position : carPositions) {
+            if (position > maxPosition) {
+                maxPosition = position;
+            }
+        }
+        return maxPosition;
+    }
+
+    private static List<String> findWinners(String[] carNames, int maxPosition) {
+        List<String> winners = new ArrayList<>();
+
+        for (int i = 0; i < carPositions.length; i++) {
+            if (carPositions[i] == maxPosition) {
+                winners.add(carNames[i]);
+            }
+        }
+        return winners;
+    }
+
     public static void main(String[] args) {
         String[] carNames;
         int gameCount;
@@ -67,7 +101,6 @@ public class Application {
         carNames = getCarNames();
         gameCount = getGameCount();
         startRaceNTimes(carNames, gameCount);
-
-        // 최종 우승자 출력
+        printFinalWinner(carNames);
     }
 }
