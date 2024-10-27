@@ -31,8 +31,13 @@ public class GameManager {
 
     private void game(){
         for (Car car : cars) {
-            car.move();
+            if(canMove())
+                car.move();
             car.printCurrentDistance();
         }
+    }
+
+    private boolean canMove(){
+        return (int)(Math.random() * 10) >= 4;
     }
 }
