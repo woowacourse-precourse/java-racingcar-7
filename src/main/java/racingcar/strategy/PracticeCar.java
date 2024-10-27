@@ -29,4 +29,9 @@ public class PracticeCar implements Mode {
     public Integer getMovementDistance() {
         return racingCarMovementDistance;
     }
+
+    @Override
+    public void setMovementDistance(Integer movementDistance) {
+        this.racingCarMovementDistance = movementDistance;
+    }
 }

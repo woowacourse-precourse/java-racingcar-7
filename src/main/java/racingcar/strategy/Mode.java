@@ -6,4 +6,6 @@ public interface Mode {
     Integer getRandomNumber();
 
     Integer getMovementDistance();
+
+    void setMovementDistance(Integer movementDistance);
 }

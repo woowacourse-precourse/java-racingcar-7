@@ -39,4 +39,8 @@ public class Racing {
         Integer racingWinnerRecord = RacingResultCalculator.calculateCarRacingWinnerRecord(racingCars);
         return RacingResultCalculator.calculateCarRacingWinner(racingCars, racingWinnerRecord);
     }
+
+    public List<Car> getRacingCars() {
+        return racingCars;
+    }
 }
