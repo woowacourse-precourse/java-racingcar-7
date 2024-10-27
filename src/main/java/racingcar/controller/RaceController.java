@@ -1,8 +1,9 @@
 package racingcar.controller;
 
+import java.util.NoSuchElementException;
 import racingcar.domain.Race;
-import racingcar.domain.dto.CarsSaveRequestDto;
 import racingcar.service.RaceService;
+import racingcar.view.InputView;
 
 /**
  * packageName    : racingcar.controller
@@ -21,26 +22,28 @@ public class RaceController {
     //----- 싱글톤 패턴 적용 -----//
     private static final RaceController instance = new RaceController();
     private final RaceService raceService = RaceService.getInstance();
+    private final InputView inputView = InputView.getInstance();
     private RaceController() {}
     public static RaceController getInstance() {
         return instance;
     }
     //------------------------//
 
-    public void saveAll(CarsSaveRequestDto requestDto) {
-        raceService.isCarNameValid(requestDto);
-        raceService.saveAll(requestDto);
+
+    public void displayRaceLapInputPage() {
+        try {
+            int lap = inputView.getLapCount();
+            raceService.isLapValid(lap);
+            raceService.save(raceService.createRace(lap));
+
+        } catch (NoSuchElementException | NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public Race raceStart(int lap) {
-        raceService.isLapValid(lap);
-        Race race = raceService.createRace(lap);
-        raceService.getCarMovementByLap(race);
-
-        return race;
-    }
-
-    public void displayWinner(Race race) {
-        raceService.getWinner(race);
+    public void raceStartById(int id) {
+        Race race = raceService.findById(id);
+        raceService.displayCarMovementByLap(race);
+        raceService.displayWinner(race);
     }
 }

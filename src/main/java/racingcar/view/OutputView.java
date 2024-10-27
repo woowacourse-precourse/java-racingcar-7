@@ -5,7 +5,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.Race;
+
+/**
+ * packageName    : racingcar.view
+ * fileName       : outputView
+ * author         : ehgur
+ * date           : 2024-10-25
+ * description    : 출력 처리를 담당하는 클래스
+ * ===========================================================
+ * DATE              AUTHOR             NOTE
+ * -----------------------------------------------------------
+ * 2024-10-25        ehgur            최초 생성
+ */
 
 public class OutputView {
     //----- 싱글톤 패턴 적용 -----//
@@ -17,30 +30,32 @@ public class OutputView {
     //------------------------//
 
     public void displayResultByLap(Race race, BufferedWriter bw) throws IOException {
-        int len = race.getCarsCount();
+        Cars cars = race.getCars();
+        int len = cars.getCarCount();
 
         for (int i = 0; i < len; i++) {
-            Car car = race.getCars().get(i);
+            Car car = cars.getCar(i);
             int carMovement = car.getMoveCount();
 
-            bw.write(car.getName() + " : " + move(carMovement));
             bw.newLine();
+            bw.write(car.getName() + " : " + movementGraph(carMovement));
         }
         bw.newLine();
     }
 
-    private String move(int movement) {
+    private String movementGraph(int movement) {
         return "-".repeat(Math.max(0, movement));
     }
 
-    public void displayWinner(int max, List<Car> cars, BufferedWriter bw) throws IOException{
+    public void displayWinner(int max, Cars cars, BufferedWriter bw) throws IOException{
         List<String> winner = new ArrayList<>();
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             if (car.getMoveCount() == max) {
                 winner.add(car.getName());
             }
         }
         String winners = String.join(", ", winner);
+        bw.newLine();
         bw.write("최종 우승자 : " + winners);
     }
 }

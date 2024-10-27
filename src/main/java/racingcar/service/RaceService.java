@@ -6,9 +6,7 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Race;
-import racingcar.domain.dto.CarsSaveRequestDto;
 import racingcar.domain.repository.RaceRepository;
-import racingcar.validation.CarNameValidator;
 import racingcar.validation.LapValidator;
 import racingcar.view.OutputView;
 
@@ -28,6 +26,7 @@ public class RaceService {
     //----- 싱글톤 패턴 적용 -----//
     private static final RaceService instance = new RaceService();
     private final RaceRepository raceRepository = RaceRepository.getInstance();
+    private final CarService carService = CarService.getInstance();
     private final OutputView outputView = OutputView.getInstance();
     private RaceService(){}
     public static RaceService getInstance() {
@@ -37,21 +36,29 @@ public class RaceService {
 
     private final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    public void saveAll(CarsSaveRequestDto requestDto) {
-        Cars cars = new Cars(requestDto.toEntity());
-        raceRepository.saveAll(cars);
+    public Race createRace(int lap) {
+        List<Car> carList = carService.findAll();
+        Cars cars = new Cars(carList);
+
+        return new Race(cars, lap);
     }
 
-    public void isCarNameValid(CarsSaveRequestDto requestDto) {
-        CarNameValidator.run(requestDto);
+    public void save(Race race) {
+        raceRepository.save(race);
+    }
+
+    public Race findById(int id) {
+        return raceRepository.findById(id);
     }
 
     public void isLapValid(int lap) {
         LapValidator.run(lap);
     }
 
-    public void getCarMovementByLap(Race race) {
+    public void displayCarMovementByLap(Race race) {
         try {
+            bw.newLine();
+            bw.write("실행 결과");
             for (int i = 0; i < race.getLap(); i++) {
                 race.updateCarDataByLap();
                 outputView.displayResultByLap(race,bw);
@@ -61,16 +68,12 @@ public class RaceService {
         }
     }
 
-    public Race createRace(int lap) {
-        Cars cars = raceRepository.findAll();
-        return new Race(cars, lap);
-    }
-
-    public void getWinner(Race race) {
-        List<Car> cars = race.getCars();
+    public void displayWinner(Race race) {
+        Cars cars = race.getCars();
         int max = 0;
+
         try {
-            for (Car car : cars) {
+            for (Car car : cars.getCars()) {
                 int carMovement = car.getMoveCount();
                 if (max < car.getMoveCount()) {
                     max = carMovement;

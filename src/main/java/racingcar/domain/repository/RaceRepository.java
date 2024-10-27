@@ -2,8 +2,19 @@ package racingcar.domain.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.Race;
+
+/**
+ * packageName    : racingcar.domain.repository
+ * fileName       : RaceRepository
+ * author         : ehgur
+ * date           : 2024-10-25
+ * description    : Race 저장소
+ * ===========================================================
+ * DATE              AUTHOR             NOTE
+ * -----------------------------------------------------------
+ * 2024-10-25        ehgur             최초 생성
+ */
 
 public class RaceRepository {
     //----- 싱글톤 패턴 적용 -----//
@@ -14,26 +25,13 @@ public class RaceRepository {
     }
     //----- 싱글톤 패턴 적용 -----//
 
-    private final List<Car> carRepository = new ArrayList<>();
+    private final List<Race> raceRepository = new ArrayList<>();
 
-    public void saveAll(Cars cars) {
-        List<Car> carList = cars.getCars();
-        for (Car car : carList) {
-            save(car);
-        }
+    public void save(Race race) {
+        raceRepository.add(race);
     }
 
-    private void save(Car car) {
-        carRepository.add(car);
-    }
-
-    public Cars findAll() {
-        return new Cars(carRepository);
-    }
-
-    public Car findByCarName(String name) {
-        return carRepository.stream().filter(c -> c.getName().equals(name))
-                .findFirst()
-                .orElse(null);
+    public Race findById(int id) {
+        return raceRepository.get(id);
     }
 }
