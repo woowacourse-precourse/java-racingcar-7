@@ -27,26 +27,4 @@ class CarNamesParserTest {
         // then
         Assertions.assertEquals(List.of("pobi", "woni", "jun", "june"), result);
     }
-
-    @Test
-    void parse_given_blank_input_then_should_be_fail() {
-        // given
-        String input = " ";
-        Parser<String, List<String>> parser = new CarNamesParser();
-        // when
-        // then
-        Exception ex = Assertions.assertThrows(IllegalArgumentException.class, () -> parser.parse(input));
-        Assertions.assertEquals("자동차 이름을 입력해주세요.", ex.getMessage());
-    }
-
-    @Test
-    void parse_given_6글자_이상의_자동차이름_then_should_be_fail() {
-        // given
-        String input = "pobi,woni,jun,hseungh";
-        Parser<String, List<String>> parser = new CarNamesParser();
-        // when
-        // then
-        Exception ex = Assertions.assertThrows(IllegalArgumentException.class, () -> parser.parse(input));
-        Assertions.assertEquals("자동차 이름은 5 글자를 초과할 수 없습니다.", ex.getMessage());
-    }
 }

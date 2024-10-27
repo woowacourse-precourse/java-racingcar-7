@@ -29,7 +29,7 @@ class RaceTest extends NsTest {
         // given
         List<Vehicle> vehicles = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
-            vehicles.add(new Car("car_" + i));
+            vehicles.add(new Car("car" + i));
         }
         int round = 1;
         // when

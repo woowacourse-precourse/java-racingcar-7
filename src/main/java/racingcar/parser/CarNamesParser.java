@@ -8,29 +8,18 @@ public class CarNamesParser implements Parser<String, List<String>> {
 
     @Override
     public List<String> parse(String input) {
-        this.checkInputIsNullOrBlank(input);
+        if (input == null || input.isBlank()) {
+            return List.of("");
+        }
 
         List<String> result = new ArrayList<>();
         StringTokenizer tokenizer = new StringTokenizer(input, ",");
         while (tokenizer.hasMoreTokens()) {
             String value = tokenizer.nextToken().trim();
-            this.checkCarNameLength(value);
             this.addWithoutDuplicated(result, value);
         }
 
         return result;
-    }
-
-    private void checkInputIsNullOrBlank(String input) {
-        if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
-        }
-    }
-
-    private void checkCarNameLength(String value) {
-        if (value.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5 글자를 초과할 수 없습니다.");
-        }
     }
 
     private void addWithoutDuplicated(List<String> list, String value) {

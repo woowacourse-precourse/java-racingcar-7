@@ -13,7 +13,7 @@ class CarTest extends NsTest {
     @Test
     void create_new_Car_should_be_pass() {
         // given
-        String name = "car_name";
+        String name = "name";
         // when
         Vehicle car = new Car(name);
         // then
@@ -22,12 +22,32 @@ class CarTest extends NsTest {
     }
 
     @Test
+    void create_new_Car_when_blank_name_should_be_fail() {
+        // given
+        String name = "  ";
+        // when
+        // then
+        Exception ex = Assertions.assertThrows(IllegalArgumentException.class, () -> new Car(name));
+        Assertions.assertEquals("자동차 이름은 필수입니다.", ex.getMessage());
+    }
+
+    @Test
+    void create_new_Car_when_exceed_length_should_be_fail() {
+        // given
+        String name = "car_name";
+        // when
+        // then
+        Exception ex = Assertions.assertThrows(IllegalArgumentException.class, () -> new Car(name));
+        Assertions.assertEquals("자동차 이름은 5 글자를 초과할 수 없습니다.", ex.getMessage());
+    }
+
+    @Test
     void setName_should_be_pass() {
         // given
-        String name = "origin_name";
+        String name = "oname";
         Car car = new Car(name);
         // when
-        String newName = "new_name";
+        String newName = "nname";
         car.setName(newName);
         // then
         Assertions.assertEquals(newName, car.getName());
@@ -36,9 +56,9 @@ class CarTest extends NsTest {
     @Test
     void equals_should_be_pass() {
         // given
-        Vehicle car1 = new Car("car_name");
-        Vehicle car2 = new Car("car_name");
-        Vehicle car3 = new Car("other_car_name");
+        Vehicle car1 = new Car("cname");
+        Vehicle car2 = new Car("cname");
+        Vehicle car3 = new Car("oname");
         // when
         // then
         Assertions.assertEquals(car1, car2);
@@ -49,19 +69,19 @@ class CarTest extends NsTest {
     @Test
     void toString_should_be_pass() {
         // given
-        String name = "car_name";
+        String name = "cname";
         Vehicle car = new Car(name);
         // when
         String carString = car.toString();
         // then
-        String expect = "Car(name=car_name)";
+        String expect = "Car(name=cname)";
         Assertions.assertEquals(expect, carString);
     }
 
     @Test
     void move_when_randomValue_is_4_should_be_pass() {
         // given
-        Vehicle car = new Car("car_name");
+        Vehicle car = new Car("cname");
         // when
         AtomicBoolean isMove = new AtomicBoolean(false);
         camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(() -> {
@@ -74,7 +94,7 @@ class CarTest extends NsTest {
     @Test
     void move_when_randomValue_is_3_should_be_pass() {
         // given
-        Vehicle car = new Car("car_name");
+        Vehicle car = new Car("cname");
         // when
         AtomicBoolean isMove = new AtomicBoolean(true);
         camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(() -> {
