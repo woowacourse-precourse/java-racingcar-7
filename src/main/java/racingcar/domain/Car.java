@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.constants.GameConstants.*;
+
 public class Car {
     private final String name;
     private int distance;
@@ -17,7 +19,7 @@ public class Car {
     }
 
     public boolean isMoved(int randomNumber) {
-        return randomNumber >= 4;
+        return randomNumber >= MOVE_THRESHOLD;
     }
 
     public void move() {

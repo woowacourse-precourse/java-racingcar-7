@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import static racingcar.constants.GameConstants.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ public class RaceManager {
 
     private void moveCars() {
         for (Car car : cars) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
             if (car.isMoved(randomNumber)) {
                 car.move();
             }
@@ -33,6 +35,7 @@ public class RaceManager {
     public List<String> getWinners() {
         int maxDistance = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
         List<String> winners = new ArrayList<>();
+
         for (Car car : cars) {
             if (car.getDistance() == maxDistance) {
                 winners.add(car.getName());
