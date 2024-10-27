@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.common.RacingCarException;
 import racingcar.controller.RacingController;
 import racingcar.view.ErrorView;
 import racingcar.view.InputView;
@@ -15,7 +16,7 @@ public class Application {
 
         try {
             racingControllerBean.run();
-        } catch (IllegalArgumentException e) {
+        } catch (RacingCarException e) {
             errorViewBean.errorPage(e.getMessage());
         }
     }

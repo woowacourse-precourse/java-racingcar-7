@@ -4,6 +4,8 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.common.ErrorMessage;
+import racingcar.common.RacingCarException;
 
 @DisplayName("사용자 입력 자동차 이름 목록에 대한 유효성 검사")
 class CarNameValidatorTest {
@@ -27,7 +29,8 @@ class CarNameValidatorTest {
         // when, then
         Assertions
                 .assertThatThrownBy(() -> CarNameValidator.validateCarNames(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(RacingCarException.class)
+                .hasMessage(ErrorMessage.EMPTY_CAR_NAMES.getMessage());
     }
 
     @Test
@@ -38,7 +41,8 @@ class CarNameValidatorTest {
         // when, then
         Assertions
                 .assertThatThrownBy(() -> CarNameValidator.validateCarNames(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(RacingCarException.class)
+                .hasMessage(ErrorMessage.CAR_NAME_TOO_LONG.getMessage());
     }
 
     @Test
@@ -49,7 +53,8 @@ class CarNameValidatorTest {
         // when, then
         Assertions
                 .assertThatThrownBy(() -> CarNameValidator.validateCarNames(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(RacingCarException.class)
+                .hasMessage(ErrorMessage.EMPTY_CAR_NAME.getMessage());
     }
 
     @Test
@@ -60,6 +65,7 @@ class CarNameValidatorTest {
         // when, then
         Assertions
                 .assertThatThrownBy(() -> CarNameValidator.validateCarNames(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(RacingCarException.class)
+                .hasMessage(ErrorMessage.DUPLICATED_CAR_NAME.getMessage());
     }
 }

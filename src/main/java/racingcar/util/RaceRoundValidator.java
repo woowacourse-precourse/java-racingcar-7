@@ -1,5 +1,8 @@
 package racingcar.util;
 
+import racingcar.common.ErrorMessage;
+import racingcar.common.RacingCarException;
+
 public class RaceRoundValidator {
     private static final int MAX_RACE_ROUND = 100;
     private static final int MIN_RACE_ROUND = 0;
@@ -12,13 +15,13 @@ public class RaceRoundValidator {
 
     private static void validateNumberFormat(String rawRaceRound) {
         if (!rawRaceRound.matches("\\d+")) {
-            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+            throw new RacingCarException(ErrorMessage.INVALID_NUMBER_FORMAT);
         }
     }
 
     private static void validateRaceRoundInBound(int raceRound) {
         if (raceRound < MIN_RACE_ROUND || raceRound > MAX_RACE_ROUND) {
-            throw new IllegalArgumentException("진행 횟수의 범위는 0부터 100까지입니다.");
+            throw new RacingCarException(ErrorMessage.RACE_ROUND_OUT_OF_BOUND);
         }
     }
 
@@ -26,7 +29,7 @@ public class RaceRoundValidator {
         try {
             return Integer.parseInt(rawRaceRound);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효한 정수를 입력하세요.");
+            throw new RacingCarException(ErrorMessage.INVALID_INTEGER_FORMAT);
         }
     }
 }

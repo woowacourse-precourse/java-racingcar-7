@@ -3,6 +3,8 @@ package racingcar.util;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import racingcar.common.ErrorMessage;
+import racingcar.common.RacingCarException;
 
 public class CarNameValidator {
     private static final int MAX_CAR_NAME_LENGTH = 5;
@@ -22,26 +24,26 @@ public class CarNameValidator {
 
     private static void validateNotEmptyList(List<String> carNames) {
         if (carNames == null || carNames.isEmpty()) {
-            throw new IllegalArgumentException("빈 자동차 이름 목록입니다.");
+            throw new RacingCarException(ErrorMessage.EMPTY_CAR_NAMES);
         }
     }
 
     private static void validateEmptyName(String carName) {
         if (carName == null || carName.trim().isEmpty()) {
-            throw new IllegalArgumentException("자동차의 이름은 비어있을 수 없습니다.");
+            throw new RacingCarException(ErrorMessage.EMPTY_CAR_NAME);
         }
     }
 
     private static void validateNameLength(String carName) {
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차의 이름은 5자를 넘길 수 없습니다.");
+            throw new RacingCarException(ErrorMessage.CAR_NAME_TOO_LONG);
         }
     }
 
     private static void validateDistinctName(List<String> carNames) {
         Set<String> distinctCarNames = new HashSet<>(carNames);
         if (carNames.size() != distinctCarNames.size()) {
-            throw new IllegalArgumentException("동일한 자동차 이름이 존재합니다.");
+            throw new RacingCarException(ErrorMessage.DUPLICATED_CAR_NAME);
         }
     }
 }
