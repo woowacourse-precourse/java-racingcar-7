@@ -5,10 +5,10 @@
 ---
 
 ### 1. 입력
-- [X] 자동차 이름을 입력 받는다.
-- [X] 시도할 횟수를 입력 받는다.
-- [ ] 자동차 이름의 유효성 검사
-- [ ] 시도 횟수의 유효성 검사
+- [X] 자동차 이름을 입력 받는다. - InputView#getCarName
+- [X] 시도할 횟수를 입력 받는다. - InputView#getAttemptNumber
+- [X] 자동차 이름의 유효성 검사 - InputValidator#isValidCarName
+- [X] 시도 횟수의 유효성 검사 - InputValidator#isValidAttemptNumber
 
 ---
 
@@ -27,13 +27,14 @@
 
 ### 3. 사용자 입력에 대한 유효성 검사
 #### 자동차 이름
-- [ ] 자동차 이름이 5자 이하인지 검사
+- [X] 자동차 이름 문자열을 쉼표(,)를 기준으로 분리 - InputValidator#splitCarName
+- [X] 자동차 이름이 5자 이하인지 검사 - InputValidator#checkValidLength
 
 #### 시도 횟수
-- [ ] 시도 횟수가 숫자인지 검사
+- [X] 시도 횟수가 정수형 숫자인지 검사 - InputValidator#isIntegerNumber
 
 #### 문자열
-- [ ] 입력 문자열이 공백이거나 빈 문자열인지 검사
+- [X] 입력 문자열이 공백이거나 빈 문자열인지 검사 - InputValidator#checkEmptyOrBlank
 
 ---
 
