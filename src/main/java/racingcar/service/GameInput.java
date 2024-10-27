@@ -9,6 +9,7 @@ public class GameInput {
 
         try {
             input = Console.readLine();
+            checkSoloParticipated(input);
         } catch(NoSuchElementException e) {
             handleEmptyInputException();
         }
@@ -37,6 +38,14 @@ public class GameInput {
         throw new IllegalArgumentException(
             "아무것도 입력하지 않았습니다. 게임을 진행할 수 없습니다"
         );
+    }
+
+    private void checkSoloParticipated(String input) {
+        if(!input.contains(",")) {
+            throw new IllegalArgumentException(
+                "최소 2인이 참가해야 대회 진행이 가능합니다 : " + input
+            );
+        }
     }
 
     private void handleIntegerFormatException(String wrongInput) {
