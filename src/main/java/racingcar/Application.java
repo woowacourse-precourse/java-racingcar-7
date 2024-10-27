@@ -13,9 +13,9 @@ public class Application {
         String[] names = {};
         int[] distances = {};
         Integer times = 0;
-        String input_names = "";
-        String input_times = "";
-        RacingCar.readInputs(input_names, input_times);
+        String[] Inputs = RacingCar.readInputs();
+        String input_names = Inputs[0];
+        String input_times = Inputs[1];
         RacingCar.checkInputException(input_names, input_times);
         RacingCar.processInputs(names, distances, times, input_names, input_times);
         RacingCar.printOutputs(names,distances,times);
