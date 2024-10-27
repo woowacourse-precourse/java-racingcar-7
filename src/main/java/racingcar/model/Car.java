@@ -26,12 +26,12 @@ public class Car {
         }
     }
 
-    public void setMode(Mode move) {
-        this.mode = move;
-    }
-
     public Integer getMoveDistance() {
         return mode.getMovementDistance();
+    }
+
+    public void setMoveDistance(Integer move) {
+        mode.setMovementDistance(move);
     }
 
     public String getCarName() {
@@ -42,7 +42,7 @@ public class Car {
         return mode.getClass().getSimpleName();
     }
 
-    public void setMoveDistance(Integer move) {
-        mode.setMovementDistance(move);
+    public void setMode(Mode move) {
+        this.mode = move;
     }
 }
