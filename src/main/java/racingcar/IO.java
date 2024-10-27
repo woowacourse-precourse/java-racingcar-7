@@ -12,4 +12,8 @@ public class IO {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Integer.parseInt(Console.readLine());
     }
+
+    public void printWinner(String winners) {
+        System.out.print("최종 우승자 : " + winners);
+    }
 }

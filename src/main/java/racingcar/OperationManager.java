@@ -15,5 +15,6 @@ public class OperationManager {
     public void execute() {
         race.init(carNames);
         race.start(number);
+        race.result();
     }
 }
