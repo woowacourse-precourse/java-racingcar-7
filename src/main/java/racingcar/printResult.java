@@ -15,7 +15,7 @@ public class printResult {
         System.out.println("실행 결과");
 
         for (int i = 0; i < attemptNumber; i++) {
-            for(Car car : cars) {
+            for (Car car : cars) {
                 printCar(car);
             }
         }

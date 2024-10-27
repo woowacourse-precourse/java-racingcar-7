@@ -7,7 +7,7 @@ public class GameController {
 
     public List<Car> mapToCarArray(String[] cars) {
         List<Car> carList = new ArrayList<>();
-        for(String car : cars) {
+        for (String car : cars) {
             carList.add(new Car(car));
         }
         return carList;
