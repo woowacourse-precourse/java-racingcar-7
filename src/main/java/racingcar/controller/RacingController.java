@@ -17,12 +17,12 @@ public class RacingController {
     }
 
     public void start() {
-        creatRacing();
+        createRacing();
         runRacing();
-        disPlayWinner();
+        displayWinner();
     }
 
-    private void creatRacing() {
+    private void createRacing() {
         List<String> cars = readyCars();
         int tryCount = readyTryCount();
         this.racing = Racing.of(cars, tryCount);
@@ -48,7 +48,7 @@ public class RacingController {
         }
     }
 
-    private void disPlayWinner() {
+    private void displayWinner() {
         List<String> winners = racing.getWinners();
         outputView.printWinner(winners);
     }
