@@ -5,4 +5,5 @@ public interface RaceController {
     void advanceCars();
     boolean isFinished();
     void announceWinner();
+    void broadcastRace();
 }

@@ -5,6 +5,7 @@ import racingcar.controller.IO.OutputController;
 import racingcar.model.RacingCar;
 import racingcar.service.factory.CarFactory;
 import racingcar.service.evaluator.WinnerEvaluator;
+import racingcar.view.ResultViewer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +18,16 @@ public class RaceControllerEmb implements RaceController {
     private final RacingCarController racingCarController;
     private final CarFactory carFactory;
     private final WinnerEvaluator winnerEvaluator;
+    private final ResultViewer resultViewer;
     private Long currentRound = 0L;
     private Long totalRound = 0L;
-    public RaceControllerEmb(OutputController outputController, InputController inputController,CarFactory carFactory,RacingCarController racingCarController,WinnerEvaluator winnerEvaluator) {
+    public RaceControllerEmb(OutputController outputController, InputController inputController,CarFactory carFactory,RacingCarController racingCarController,WinnerEvaluator winnerEvaluator,ResultViewer resultViewer) {
         this.outputController = outputController;
         this.inputController = inputController;
         this.carFactory = carFactory;
         this.racingCarController = racingCarController;
         this.winnerEvaluator = winnerEvaluator;
+        this.resultViewer = resultViewer;
     }
 
     @Override
@@ -33,13 +36,23 @@ public class RaceControllerEmb implements RaceController {
         this.racingCars = carFactory.createCars(inputController.getCarsInput());
         outputController.requestUserRoundInput();
         this.totalRound = inputController.getRoundInput();
+        resultViewer.output("\n");
     }
 
     @Override
-    public void advanceCars(){
-        if(isFinished()) return;
+    public void advanceCars() {
         racingCars.forEach(racingCarController::moveForward);
-        currentRound++;
+    }
+
+    @Override
+    public void broadcastRace(){
+        if(currentRound == 0) resultViewer.output("실행 결과\n");
+        while(!isFinished()) {
+            advanceCars();
+            outputController.printCarsCurrentDistance(racingCars);
+            resultViewer.output("\n");
+            currentRound++;
+        }
     }
 
     @Override
@@ -49,6 +62,6 @@ public class RaceControllerEmb implements RaceController {
 
     @Override
     public void announceWinner(){
-        outputController.printWinner(racingCars);
+        outputController.printWinner(winnerEvaluator.determineWinners(racingCars));
     }
 }

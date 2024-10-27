@@ -8,4 +8,5 @@ public interface OutputController {
     void requestUserCarsInput();
     void requestUserRoundInput();
     void printWinner(List<RacingCar> winners);
+    void printCarsCurrentDistance(List<RacingCar> racingCars);
 }

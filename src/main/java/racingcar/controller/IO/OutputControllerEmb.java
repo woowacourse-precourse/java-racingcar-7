@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputControllerEmb implements OutputController {
-    private static final String CAR_INPUT = "경주에 참가할 자동차들을 쉼표(,)로 구분해 입력해주세요 : ";
-    private static final String ROUND_INPUT = "모든 자동차가 각각 전진을 시도할 총 차수를 입력해주세요 : ";
+    private static final String CAR_INPUT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String ROUND_INPUT = "시도할 횟수는 몇 회인가요?";
     private ResultViewer resultViewer;
     public OutputControllerEmb() {
         this.resultViewer =  new ResultViewerEmb();
@@ -18,11 +18,13 @@ public class OutputControllerEmb implements OutputController {
     @Override
     public void requestUserCarsInput() {
         resultViewer.output(CAR_INPUT);
+        resultViewer.output("\n");
     }
 
     @Override
     public void requestUserRoundInput(){
         resultViewer.output(ROUND_INPUT);
+        resultViewer.output("\n");
     }
 
     @Override
@@ -31,8 +33,17 @@ public class OutputControllerEmb implements OutputController {
         String winnerNames = winners.stream()
                 .map(RacingCar::getName)
                 .collect(Collectors.joining(", "));
-
         resultViewer.output(winnerNames);
+    }
+
+    @Override
+    public void printCarsCurrentDistance(List<RacingCar> racingCars) {
+        for (RacingCar racingCar : racingCars) {
+            System.out.print(racingCar.getName() + " : ");
+            System.out.print("-".repeat(racingCar.getDistance()));
+            System.out.print("\n");
+
+        }
     }
 
 }
