@@ -24,7 +24,11 @@ public class RaceValidator {
 
     public static int validateCount(String input) {
         validateCountNotEmpty(input);
-        return Integer.parseInt(input);
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.", e);
+        }
     }
 
     private static void validateCountNotEmpty(String input) {
