@@ -94,6 +94,9 @@
         - `TryCountMaximumValidator`: 시도 횟수가 1000번을 넘어가는지 검증하여, 초과 시 `IllegalArgumentException` 발생
             - **입력값 예시**: `1001`
             - **예외 메시지**: `시도 횟수는 최대 1000회 이하로 입력해 주세요.`
+            - **적용 이유**:
+            - 시도 횟수를 설정하여 비효율적인 게임 진행을 방지
+            - 시스템 자원을 효율적으로 관리할 수 있도록 도움
 
 - [x] 
     3. **Service (RacingGameService)**
