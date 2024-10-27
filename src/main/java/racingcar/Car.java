@@ -11,6 +11,11 @@ public class Car {
         this.name = name;
     }
 
+    public Car(String name, int distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
     public void moveOrStop(int randomNumber){
         if(randomNumber >= RANDOM_POINT_NUMBER){
             increaseDistance();

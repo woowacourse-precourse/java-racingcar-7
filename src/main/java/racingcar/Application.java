@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.io.InputHandler;
+
 import java.util.List;
 
 public class Application {

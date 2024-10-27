@@ -1,13 +1,14 @@
-package racingcar;
+package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.Validator;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racingcar.constant.InputMessage.CAR_NAME_INPUT_MESSAGE;
-import static racingcar.constant.InputMessage.COUNT_INPUT_MESSAGE;
+import static racingcar.constant.IOMessage.CAR_NAME_INPUT_MESSAGE;
+import static racingcar.constant.IOMessage.COUNT_INPUT_MESSAGE;
 
 public class InputHandler {
 
@@ -31,7 +32,7 @@ public class InputHandler {
         return carNameList;
     }
 
-    public String getInput(String message) {
+    private String getInput(String message) {
         System.out.println(message);
         return Console.readLine().trim();
     }
