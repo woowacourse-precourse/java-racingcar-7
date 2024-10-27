@@ -1,13 +1,21 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        View view = new View();
+        String carName = view.inputCarName();
+//        String carRoundCount = view.inputCarRoundCount();
+        view.printOutputCarName(carName);
+//        view.printOutputCarRoundCount(carRoundCount);
+
+        Validator validator = new Validator();
+        validator.validateNameForm(carName);
     }
     public static class View {
         // 사용자로 부터 자동차 이름들을 입력 받음
@@ -72,15 +80,22 @@ public class Application {
                 throw new IllegalArgumentException(VALIDATE_POSITIVE_INTEGER_MSG);
             }
         }
-        
+
     }
 
     public static class Car {
         private String name;
         private int position;
 
-        public void moveForward() {
+        public void attemptMoveForward() {
             //일단은 구현체로 전진 구현
+            if (isMovable()) {
+                position++;
+            }
+        }
+
+        private static boolean isMovable() {
+            return Randoms.pickNumberInRange(0, 9) >= 4;
         }
     }
 
