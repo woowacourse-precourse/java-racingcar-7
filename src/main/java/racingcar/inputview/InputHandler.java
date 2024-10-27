@@ -8,8 +8,7 @@ import javax.xml.validation.Validator;
 public class InputHandler {
     private final String delimiter = ",";
 
-    public String[] split() {
-        String input = Console.readLine();
+    public String[] split(String input) {
         if (InputValidator.isNullOrBlank(input)) {
             throw new IllegalArgumentException("입력이 비어 있거나 공백입니다, 다시 입력해 주세요.");
         }
@@ -22,8 +21,7 @@ public class InputHandler {
         return input.split(delimiter);
     }
 
-    public int getAttemptGameCount() {
-        String input = Console.readLine();
+    public int getAttemptGameCount(String input) {
 
         if (InputValidator.isNullOrBlank(input)) {
             throw new IllegalArgumentException("입력이 비어 있거나 공백입니다, 다시 입력해 주세요.");

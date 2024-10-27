@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.inputview.InputHandler;
 import racingcar.outputview.OutputHandler;
 import racingcar.service.CarManager;
@@ -37,11 +38,13 @@ public class RacingController {
 
     private String[] getCarNamesFromUserInput() {
         outputHandler.promptCarNameInput();
-        return inputHandler.split();
+        String userInput = Console.readLine();
+        return inputHandler.split(userInput);
     }
 
     private int getGameCountFromUserInput() {
         outputHandler.promptAttemptCountInput();
-        return inputHandler.getAttemptGameCount();
+        String userInput = Console.readLine();
+        return inputHandler.getAttemptGameCount(userInput);
     }
 }
