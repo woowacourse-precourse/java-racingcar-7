@@ -14,21 +14,11 @@ class CarsTest {
     void Given_CorrectList_When_CarsHasInput_Then_SuccessWithSameSize() {
         // Given
         List<Name> input = Arrays.asList(new Name("aa"), new Name("bb"), new Name("cc"));
-
+        Names names = new Names("aa,bb,cc");
         // When
-        Cars cars = new Cars(input);
+        Cars cars = new Cars(names);
 
         // Then
         assertThat(cars.getCars(input).size()).isEqualTo(input.size());
-    }
-
-    @DisplayName("")
-    @Test
-    void test() {
-        // Given
-
-        // When
-
-        // Then
     }
 }
