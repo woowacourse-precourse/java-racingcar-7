@@ -25,7 +25,7 @@ class CarTest {
     @DisplayName("4이상의 숫자가 들어오면 차를 전진")
     void checkMove(int input, int excepted) {
         //given
-        Car car = new Car("car", 0);
+        final Car car = new Car("car", 0);
 
         //when
         car.move(input);

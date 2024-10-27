@@ -14,9 +14,9 @@ public class Race {
     }
 
     public void start() {
-        final List<String> carNames = inputView.readCarNames();
+        final List<Car> uniqueCars = inputView.readCars();
         final int attemptCount = inputView.readAttemptCount();
-        final Cars cars = new Cars(carNames);
+        final Cars cars = new Cars(uniqueCars);
 
         outputView.printResultMessage();
         for (int count = 0; count < attemptCount; ++count) {

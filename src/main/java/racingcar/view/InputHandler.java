@@ -2,6 +2,7 @@ package racingcar.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.Car;
 
 public class InputHandler {
     private static final String DELIMITER = ",";
@@ -13,15 +14,16 @@ public class InputHandler {
         }
     }
 
-    public List<String> validateUniqueNames(String input) {
-        final List<String> uniqueCars = new ArrayList<>();
+    public List<Car> validateUniqueNames(String input) {
+        final List<Car> uniqueCars = new ArrayList<>();
 
         final String[] parsedNames = input.split(DELIMITER);
         for (final String name : parsedNames) {
-            if (uniqueCars.contains(name)) {
+            final Car car = new Car(name, 0);
+            if (uniqueCars.contains(car)) {
                 throw new IllegalArgumentException();
             }
-            uniqueCars.add(name);
+            uniqueCars.add(car);
         }
         return uniqueCars;
     }

@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private static final String NAME_FORM = "[A-Za-z0-9]+";
@@ -27,6 +29,23 @@ public class Car {
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        Car car = (Car) object;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 
     private void checkNameLength(String name) {
