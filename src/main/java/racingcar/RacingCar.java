@@ -19,4 +19,8 @@ public class RacingCar {
     public void raiseMoveCount() {
         this.moveCount++;
     }
+
+    public String racingCarInfo() {
+        return name + " : " + "-".repeat(moveCount);
+    }
 }
