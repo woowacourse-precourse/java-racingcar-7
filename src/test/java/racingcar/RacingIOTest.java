@@ -54,6 +54,7 @@ public class RacingIOTest {
         updateAndRecordMovement("c", 1, turnResults);
 
         RacingIO.promptTurnResult(turnResults);
+
         assertThat(getOutput()).contains("실행 결과");
         assertThat(getOutput()).contains("a : -");
         assertThat(getOutput()).contains("a : --");
@@ -61,6 +62,21 @@ public class RacingIOTest {
         assertThat(getOutput()).contains("b : ");
         assertThat(getOutput()).contains("b : -");
         assertThat(getOutput()).contains("c : ");
+    }
+
+    @Test
+    @DisplayName("우승자 결과가 출력 형식을 준수하는지 확인")
+    void 우승자_출력_테스트() {
+        ArrayList<HashMap<String, Integer>> turnResults = new ArrayList<>();
+
+        updateAndRecordMovement("a", 4, turnResults);
+        updateAndRecordMovement("a", 4, turnResults);
+        updateAndRecordMovement("b", 4, turnResults);
+        updateAndRecordMovement("b", 4, turnResults);
+
+        RacingIO.promptWinner(racingService.getWinners());
+
+        assertThat(getOutput()).contains("최종 우승자 : a, b");
     }
 
     private void updateAndRecordMovement(String carName, int randomValue, ArrayList<HashMap<String, Integer>> turnResults) {
