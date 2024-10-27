@@ -60,15 +60,15 @@ public class RacingGame {
     private List<String> getWinner() {
         List<Integer> moveCountList = new ArrayList<>();
 
-        for (int i = 0; i < participantList.size(); i++) {
-            moveCountList.add(participantList.get(i).getMoveCount());
+        for (Participant participant : participantList) {
+            moveCountList.add(participant.getMoveCount());
         }
 
         List<String> winnerList = new ArrayList<>();
 
-        for (int i = 0; i < participantList.size(); i++) {
-            if (Collections.max(moveCountList) == participantList.get(i).getMoveCount()) {
-                winnerList.add(participantList.get(i).getCarName());
+        for (Participant participant : participantList) {
+            if (participant.getMoveCount() == Collections.max(moveCountList)) {
+                winnerList.add(participant.getCarName());
             }
         }
         return winnerList;
@@ -107,11 +107,7 @@ public class RacingGame {
 
     // 자동차 이름이 6자 이상인지 확인하는 메서드
     private void checkCarNameLength() {
-        ListIterator<String> iterator = inputList.listIterator();
-
-        while (iterator.hasNext()) {
-            String str = iterator.next();
-
+        for (String str : inputList) {
             if (str.length() > CAR_NAME_MAX_LENGTH) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
