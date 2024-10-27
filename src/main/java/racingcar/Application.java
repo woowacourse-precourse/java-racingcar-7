@@ -12,7 +12,7 @@ import java.util.Map;
 public class Application {
 
     static List<String> participantList = new ArrayList<>();
-    static Map<String, Integer> participantMap = new HashMap<>();
+    static Map<String, Integer> participantScore = new HashMap<>();
 
     public static boolean isValidName(String name) {
 
@@ -26,17 +26,23 @@ public class Application {
         }
 
     }
-    public static void addScore(String name){
 
+    public static void addScore(String name) {
+        if (participantScore.containsKey(name)) {
+            int number = participantScore.get(name);
+            participantScore.put(name, number + 1);
+        } else {
+            participantScore.put(name, 1);
+        }
     }
 
-    public static void goRandomPlay(){
-            for(final String name: participantList){
-                int randomNumber= Randoms.pickNumberInRange(0,9);
-                if(randomNumber>=4){
-                    addScore(name);
-                }
+    public static void goRandomPlay() {
+        for (final String name : participantList) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (randomNumber >= 4) {
+                addScore(name);
             }
+        }
     }
 
     //주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
