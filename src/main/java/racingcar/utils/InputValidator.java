@@ -1,6 +1,8 @@
 package racingcar.utils;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InputValidator {
 
@@ -9,6 +11,7 @@ public class InputValidator {
 
         validateNameLength(carNames);
         validateNameEmpty(carNames);
+        validateNameDuplicate(carNames);
 
         return carNames;
     }
@@ -20,6 +23,14 @@ public class InputValidator {
         validatePositiveNumber(attemptCount);
 
         return attemptCount;
+    }
+
+    private void validateNameDuplicate(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>(carNames);
+
+        if (uniqueNames.size() != carNames.size()) {
+            throw new IllegalArgumentException(Constant.CAR_NAME_DUPLICATE_ERROR_MESSAGE);
+        }
     }
 
     private void validateNameLength(List<String> carNames) {
