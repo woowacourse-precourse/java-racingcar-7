@@ -1,24 +1,33 @@
 package racingcar.service;
 
-import java.util.Collections;
 import java.util.List;
 import racingcar.domain.Game;
+import racingcar.dto.CarStatusDTO;
+import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.RandomMoveStrategy;
 
 public class GameService {
 
   private Game game;
 
-
-  public void createGame(String carNames, String gameCountInput) {
-    this.game = new Game(carNames, gameCountInput);
+  public void initializeGame(String carNamesInput, String gameCountInput) {
+    MoveStrategy moveStrategy = new RandomMoveStrategy();
+    this.game = new Game(carNamesInput, gameCountInput, moveStrategy);
   }
 
-  public List<String> playRound() {
-    return game.playRound()
-        .orElseGet(Collections::emptyList);
+  public boolean canPlay() {
+    return this.game.canPlay();
+  }
+
+  public void playRound() {
+    this.game.playRound();
+  }
+
+  public List<CarStatusDTO> getCurrentStatuses() {
+    return this.game.getCurrentStatuses();
   }
 
   public List<String> getWinners() {
-    return game.getWinners();
+    return this.game.getWinners();
   }
 }

@@ -18,10 +18,10 @@ class CarTest {
     String name = "pobi";
 
     // When
-    Car car = new Car(name);
+    CarName carName = new CarName(name);
 
     // Then
-    assertNotNull(car);
+    assertNotNull(carName);
   }
 
   @Test
@@ -31,11 +31,11 @@ class CarTest {
     String name = " pobi ";
 
     // When
-    Car car = new Car(name.trim());
+    CarName carName = new CarName(name.trim());
 
     // Then
     String expectedCarName = "pobi";
-    assertEquals(expectedCarName, car.getName());
+    assertEquals(expectedCarName, carName.value());
   }
 
   @Test
@@ -45,11 +45,11 @@ class CarTest {
     String name = "car1!";
 
     // When
-    Car car = new Car(name);
+    CarName carName = new CarName(name);
 
     // Then
     String expectedCarName = "car1!";
-    assertEquals(expectedCarName, car.getName());
+    assertEquals(expectedCarName, carName.value());
   }
 
   @Test
@@ -59,11 +59,11 @@ class CarTest {
     String name = "abcde";
 
     // When
-    Car car = new Car(name);
+    CarName carName = new CarName(name);
 
     // Then
     String expectedCarName = "abcde";
-    assertEquals(expectedCarName, car.getName());
+    assertEquals(expectedCarName, carName.value());
   }
 
   // ## Bad Case
@@ -77,7 +77,7 @@ class CarTest {
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Car(name)
+        () -> new CarName(name)
     );
     assertEquals("Error: 자동차 이름은 5자 이하로 입력해야 합니다.", exception.getMessage());
   }
@@ -91,7 +91,7 @@ class CarTest {
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Car(name)
+        () -> new CarName(name)
     );
     assertEquals("Error: 자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
   }
@@ -105,7 +105,7 @@ class CarTest {
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Car(name.trim())
+        () -> new CarName(name.trim())
     );
     assertEquals("Error: 자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
   }
@@ -119,7 +119,7 @@ class CarTest {
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Car(name)
+        () -> new CarName(name)
     );
     assertEquals("Error: 자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
   }
@@ -133,7 +133,7 @@ class CarTest {
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Car(name)
+        () -> new CarName(name)
     );
     assertEquals("Error: 자동차 이름은 5자 이하로 입력해야 합니다.", exception.getMessage());
   }

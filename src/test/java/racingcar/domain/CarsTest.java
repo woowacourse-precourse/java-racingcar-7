@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.dto.CarStatusDTO;
+import racingcar.factory.CarFactory;
+import racingcar.strategy.RandomMoveStrategy;
+import racingcar.validator.CarsValidator;
 
 class CarsTest {
 
@@ -12,139 +16,144 @@ class CarsTest {
 
   @Test
   @DisplayName("중복되지 않은 이름으로 Cars 객체를 생성한다.")
-  void 중복되지_않은_이름으로_생성() {
+  void createCarsWithUniqueNames() {
     // Given
     String input = "pobi, jun, car1";
+    String[] carNames = input.split(",");
 
     // When
-    Cars cars = new Cars(input);
+    List<Car> carList = CarFactory.createCars(carNames, new RandomMoveStrategy());
+    Cars cars = new Cars(carList);
 
     // Then
-    List<String> carNames = extractCarNames(cars);
-    assertTrue(carNames.contains("pobi"));
-    assertTrue(carNames.contains("jun"));
-    assertTrue(carNames.contains("car1"));
+    List<CarStatusDTO> carNameObjects = cars.getCarStatuses();
+    assertEquals(carNameObjects.getFirst().getName(), "pobi");
+    assertEquals(carNameObjects.get(1).getName(), "jun");
+    assertEquals(carNameObjects.getLast().getName(), "car1");
   }
 
   @Test
   @DisplayName("공백이 포함된 이름을 trim()하여 Cars 객체를 생성한다.")
-  void 공백_포함된_이름_trim_후_Cars_생성() {
+  void createCarsWithTrimmedNames() {
     // Given
     String input = " pobi ,  jun , car2 ";
+    String[] carNames = input.split(",");
 
     // When
-    Cars cars = new Cars(input);
+    List<Car> carList = CarFactory.createCars(carNames, new RandomMoveStrategy());
+    Cars cars = new Cars(carList);
 
     // Then
-    List<String> carNames = extractCarNames(cars);
-    assertTrue(carNames.contains("pobi"));
-    assertTrue(carNames.contains("jun"));
-    assertTrue(carNames.contains("car2"));
+    List<CarStatusDTO> carNameObjects = cars.getCarStatuses();
+    assertEquals(carNameObjects.getFirst().getName(), "pobi");
+    assertEquals(carNameObjects.get(1).getName(), "jun");
+    assertEquals(carNameObjects.getLast().getName(), "car2");
   }
 
   @Test
   @DisplayName("숫자와 특수문자가 포함된 이름으로 Cars 객체를 생성한다.")
-  void 숫자와_특수문자_포함된_이름으로_Cars_생성() {
+  void createCarsWithSpecialCharactersInNames() {
     // Given
     String input = "car1!, pobi@";
+    String[] carNames = input.split(",");
 
     // When
-    Cars cars = new Cars(input);
+    List<Car> carList = CarFactory.createCars(carNames, new RandomMoveStrategy());
+    Cars cars = new Cars(carList);
 
     // Then
-    List<String> carNames = extractCarNames(cars);
-    assertTrue(carNames.contains("car1!"));
-    assertTrue(carNames.contains("pobi@"));
-  }
-
-  private List<String> extractCarNames(Cars cars) {
-    return cars.getAllCarStatuses().stream()
-        .map(status -> status.split(" : ")[0])
-        .toList();
+    List<CarStatusDTO> carNameObjects = cars.getCarStatuses();
+    assertEquals(carNameObjects.getFirst().getName(), "car1!");
+    assertEquals(carNameObjects.getLast().getName(), "pobi@");
   }
 
   // ## Bad Case
 
   @Test
   @DisplayName("중복된 이름이 포함된 경우 예외를 던진다.")
-  void 중복된_이름_예외() {
+  void throwExceptionWhenDuplicateNames() {
     // Given
     String input = "pobi, pobi, jun";
+    String[] carNames = input.split(",");
 
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Cars(input)
+        () -> CarsValidator.validateCarNames(carNames)
     );
     assertEquals("Error: 중복된 자동차 이름은 허용되지 않습니다.", exception.getMessage());
   }
 
   @Test
   @DisplayName("자동차 이름이 5자를 초과하면 예외를 던진다.")
-  void 이름_길이_초과_예외() {
+  void throwExceptionWhenNameExceedsLength() {
     // Given
     String input = "pobi, longname";
+    String[] carNames = input.split(",");
 
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Cars(input)
+        () -> CarFactory.createCars(carNames, new RandomMoveStrategy())
     );
     assertEquals("Error: 자동차 이름은 5자 이하로 입력해야 합니다.", exception.getMessage());
   }
 
   @Test
   @DisplayName("빈 문자열을 이름으로 사용할 경우 예외를 던진다.")
-  void 빈_문자열_예외() {
+  void throwExceptionWhenNameIsEmptyString() {
     // Given
     String input = "pobi, ";
+    String[] carNames = input.split(",");
 
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Cars(input)
+        () -> CarFactory.createCars(carNames, new RandomMoveStrategy())
     );
     assertEquals("Error: 자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
   }
 
   @Test
   @DisplayName("공백 문자열을 이름으로 사용할 경우 예외를 던진다.")
-  void 공백_문자열_예외() {
+  void throwExceptionWhenNameIsWhitespace() {
     // Given
     String input = "  , pobi";
+    String[] carNames = input.split(",");
 
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Cars(input)
+        () -> CarFactory.createCars(carNames, new RandomMoveStrategy())
     );
     assertEquals("Error: 자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
   }
 
   @Test
   @DisplayName("입력값이 null일 경우 예외를 던진다.")
-  void null_이름_예외() {
+  void throwExceptionWhenInputIsNull() {
     // Given
     String input = null;
 
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Cars(input)
+        () -> CarsValidator.validateCarNamesInput(input)
     );
     assertEquals("Error: 입력값은 비어있을 수 없습니다.", exception.getMessage());
   }
 
   @Test
   @DisplayName("숫자만으로 이루어진 이름이 5자를 초과할 경우 예외를 던진다.")
-  void 숫자만으로_이루어진_이름_길이_초과_예외() {
+  void throwExceptionWhenNumericNameExceedsLength() {
     // Given
     String input = "123456, pobi";
+    String[] carNames = input.split(",");
 
     // When & Then
     IllegalArgumentException exception = assertThrows(
         IllegalArgumentException.class,
-        () -> new Cars(input)
+        () -> CarFactory.createCars(carNames, new RandomMoveStrategy())
     );
     assertEquals("Error: 자동차 이름은 5자 이하로 입력해야 합니다.", exception.getMessage());
   }

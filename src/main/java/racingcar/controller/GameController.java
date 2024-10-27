@@ -1,53 +1,53 @@
 package racingcar.controller;
 
-import java.util.List;
 import racingcar.service.GameService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameController {
 
+  private final InputView inputView;
+  private final OutputView outputView;
   private final GameService gameService;
 
   public GameController() {
+    this.inputView = new InputView();
+    this.outputView = new OutputView();
     this.gameService = new GameService();
   }
 
   public void startGame() {
-    String carNames = getCarNamesFromUser();
-    String gameCountInput = getGameCountFromUser();
+    String carNamesInput = collectInputCarNames();
+    String gameCountInput = collectInputGameCount();
 
-    gameService.createGame(carNames, gameCountInput);
+    initializeGame(carNamesInput, gameCountInput);
+    this.outputView.printGameStartMessage();
 
-    playAllRounds();
-    printWinners();
+    runGameLoop();
+
+    displayResults();
   }
 
-  private String getCarNamesFromUser() {
-    OutputView.printCarNamePrompt();
-    return InputView.getCarNames();
+  private String collectInputCarNames() {
+    return this.inputView.getCarNames();
   }
 
-  private String getGameCountFromUser() {
-    OutputView.printGameCountPrompt();
-    return InputView.getTryCount();
+  private String collectInputGameCount() {
+    return this.inputView.getGameCount();
   }
 
-  private void playAllRounds() {
-    OutputView.printGameStartMessage();
-    List<String> roundResults = gameService.playRound();
-    while (!isLastRound(roundResults)) {
-      OutputView.printCarPositions(roundResults);
-      roundResults = gameService.playRound();
+  private void initializeGame(String carNamesInput, String gameCountInput) {
+    this.gameService.initializeGame(carNamesInput, gameCountInput);
+  }
+
+  private void runGameLoop() {
+    while (this.gameService.canPlay()) {
+      this.gameService.playRound();
+      this.outputView.printCarPositions(this.gameService.getCurrentStatuses());
     }
   }
 
-  private boolean isLastRound(List<String> roundResults) {
-    return roundResults.isEmpty();
-  }
-
-  private void printWinners() {
-    List<String> winners = gameService.getWinners();
-    OutputView.printWinners(winners);
+  private void displayResults() {
+    this.outputView.printWinners(this.gameService.getWinners());
   }
 }

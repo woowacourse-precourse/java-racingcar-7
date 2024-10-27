@@ -1,37 +1,38 @@
 package racingcar.domain;
 
-import racingcar.error.ErrorMessages;
+import racingcar.dto.CarStatusDTO;
+import racingcar.strategy.MoveStrategy;
 
 public class Car {
 
-  private static final int MAX_NAME_LENGTH = 5;
-  private final String name;
-  private int position;
+  private final CarName name;
+  private final Position position = new Position();
+  private final MoveStrategy moveStrategy;
 
-  public Car(String name) {
-    validateName(name);
-    this.position = 0;
-    this.name = name;
-  }
-
-  private void validateName(String name) {
-    if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException(ErrorMessages.CAR_NAME_EMPTY);
-    }
-    if (name.length() > MAX_NAME_LENGTH) {
-      throw new IllegalArgumentException(ErrorMessages.CAR_NAME_TOO_LONG);
-    }
+  public Car(String name, MoveStrategy moveStrategy) {
+    this.name = new CarName(name);
+    this.moveStrategy = moveStrategy;
   }
 
   public void move() {
-    this.position++;
+    if (this.moveStrategy.isMovable()) {
+      this.position.increase();
+    }
   }
 
-  public int getPosition() {
-    return position;
+  public boolean isAtPosition(int targetPosition) {
+    return this.position.isEqualTo(targetPosition);
   }
 
-  public String getName() {
-    return name;
+  public String getNameValue() {
+    return this.name.value();
+  }
+
+  public int getPositionValue() {
+    return this.position.getValue();
+  }
+
+  public CarStatusDTO carStatusDTO() {
+    return new CarStatusDTO(this.name.value(), this.position.getValue());
   }
 }

@@ -1,35 +1,29 @@
 package racingcar.view;
 
 import java.util.List;
+import racingcar.dto.CarStatusDTO;
+import racingcar.util.Constants;
 
 public class OutputView {
 
-  private static final String CAR_NAME_PROMPT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-  private static final String GAME_COUNT_PROMPT = "시도할 횟수는 몇 회인가요?";
-  private static final String GAME_START_MESSAGE = "\n실행 결과";
-  private static final String WINNERS_MESSAGE_PREFIX = "최종 우승자 : ";
-
-  private OutputView() {
+  public void printGameStartMessage() {
+    System.out.println(Constants.GAME_START_MESSAGE);
   }
 
-  public static void printCarNamePrompt() {
-    System.out.println(CAR_NAME_PROMPT);
-  }
-
-  public static void printGameCountPrompt() {
-    System.out.println(GAME_COUNT_PROMPT);
-  }
-
-  public static void printGameStartMessage() {
-    System.out.println(GAME_START_MESSAGE);
-  }
-
-  public static void printCarPositions(List<String> carStatuses) {
-    carStatuses.forEach(System.out::println);
+  public void printCarPositions(List<CarStatusDTO> carStatuses) {
+    for (CarStatusDTO status : carStatuses) {
+      printCarPosition(status);
+    }
     System.out.println();
   }
 
-  public static void printWinners(List<String> winners) {
-    System.out.println(WINNERS_MESSAGE_PREFIX + String.join(", ", winners));
+  private void printCarPosition(CarStatusDTO status) {
+    String positionIndicator = "-".repeat(status.getPosition());
+    System.out.println(status.getName() + " : " + positionIndicator);
+  }
+
+  public void printWinners(List<String> winners) {
+    String winnersNames = String.join(Constants.JOIN_DELIMITER, winners);
+    System.out.println(Constants.WINNERS_MESSAGE_PREFIX + winnersNames);
   }
 }

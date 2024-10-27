@@ -1,17 +1,17 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.util.Constants;
 
 public class InputView {
 
-  private InputView() {
-  }
-
-  public static String getCarNames() {
+  public String getCarNames() {
+    System.out.println(Constants.CAR_NAME_PROMPT);
     return Console.readLine();
   }
 
-  public static String getTryCount() {
+  public String getGameCount() {
+    System.out.println(Constants.GAME_COUNT_PROMPT);
     return Console.readLine();
   }
 }

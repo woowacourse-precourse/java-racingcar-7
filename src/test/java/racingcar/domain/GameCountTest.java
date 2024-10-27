@@ -36,7 +36,7 @@ class GameCountTest {
         IllegalArgumentException.class,
         () -> new GameCount(null)
     );
-    assertEquals("Error: 입력값이 null일 수 없습니다.", exception.getMessage());
+    assertEquals("Error: 입력값은 비어있을 수 없습니다.", exception.getMessage());
   }
 
   @Test
@@ -46,7 +46,7 @@ class GameCountTest {
         IllegalArgumentException.class,
         () -> new GameCount("a")
     );
-    assertEquals("Error: 시도 횟수는 1 이상 2,147,483,647 이하의 정수여야 합니다.", exception.getMessage());
+    assertEquals("Error: 시도 횟수는 정수여야 합니다.", exception.getMessage());
   }
 
   @Test
@@ -66,6 +66,6 @@ class GameCountTest {
         IllegalArgumentException.class,
         () -> new GameCount("21474836481")
     );
-    assertEquals("Error: 시도 횟수는 1 이상 2,147,483,647 이하의 정수여야 합니다.", exception.getMessage());
+    assertEquals("Error: 시도 횟수는 정수여야 합니다.", exception.getMessage());
   }
 }

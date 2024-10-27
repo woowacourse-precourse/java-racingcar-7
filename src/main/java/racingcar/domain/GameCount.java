@@ -1,40 +1,40 @@
 package racingcar.domain;
 
 import racingcar.error.ErrorMessages;
+import racingcar.util.Constants;
 
 public class GameCount {
 
-  private static final int MIN_COUNT = 1;
   private int count;
 
-  public GameCount(String input) {
-    this.count = validateAndParse(input);
+  public GameCount(String gameCountInput) {
+    validateInput(gameCountInput);
+    this.count = parseGameCount(gameCountInput);
   }
 
-  private int validateAndParse(String input) {
-    if (input == null) {
-      throw new IllegalArgumentException(ErrorMessages.INPUT_NULL);
+  private void validateInput(String input) {
+    if (input == null || input.isEmpty()) {
+      throw new IllegalArgumentException(ErrorMessages.INPUT_EMPTY.getMessage());
     }
-    if (input.trim().isEmpty()) {
-      throw new IllegalArgumentException(ErrorMessages.GAME_COUNT_EMPTY);
-    }
+  }
 
+  private int parseGameCount(String input) {
     try {
-      int parsedValue = Integer.parseInt(input);
-      if (parsedValue < MIN_COUNT) {
-        throw new IllegalArgumentException(ErrorMessages.GAME_COUNT_INVALID);
+      int gameCount = Integer.parseInt(input);
+      if (gameCount < Constants.MIN_GAME_COUNT) {
+        throw new IllegalArgumentException(ErrorMessages.GAME_COUNT_INVALID.getMessage());
       }
-      return parsedValue;
+      return gameCount;
     } catch (NumberFormatException e) {
-      throw new IllegalArgumentException(ErrorMessages.GAME_COUNT_FORMAT_ERROR);
+      throw new IllegalArgumentException(ErrorMessages.GAME_COUNT_FORMAT_ERROR.getMessage());
     }
-  }
-
-  public boolean canPlay() {
-    return count > 0;
   }
 
   public void decrement() {
-    count--;
+    this.count--;
+  }
+
+  public boolean canPlay() {
+    return this.count > Constants.CAN_NOT_PLAY_COUNT;
   }
 }
