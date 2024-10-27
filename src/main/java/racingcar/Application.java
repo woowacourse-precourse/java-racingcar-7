@@ -2,6 +2,8 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Data data = new Data();
+        Initializer.initData();
+        RaceController.startRacing();
     }
 }
