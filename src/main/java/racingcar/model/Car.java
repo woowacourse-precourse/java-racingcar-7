@@ -42,6 +42,6 @@ public class Car {
     }
 
     private boolean isForwardable() {
-        return Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM) > MIN_FORWARD_NUM;
+        return Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM) >= MIN_FORWARD_NUM;
     }
 }
