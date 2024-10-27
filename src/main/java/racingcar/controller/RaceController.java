@@ -8,6 +8,7 @@ import racingcar.dto.CarDto;
 import racingcar.dto.CarsDto;
 import racingcar.domain.car.CarName;
 import racingcar.domain.move.MoveAttempt;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class RaceController {
     public void run() {
         RacePosition updatePosition = readCarNames();
         MoveAttempt moveAttempt = readMoveAttempt();
-        for(int i = 0; i < moveAttempt.getCount(); i ++) {
+        for (int i = 0; i < moveAttempt.getCount(); i++) {
             updatePosition = attemptToMove(updatePosition);
         }
         showWinner(updatePosition);
@@ -33,7 +34,7 @@ public class RaceController {
     private RacePosition readCarNames() {
         carRaceConfig.getOutPutView().showCarNameExplanation();
         String carNamesString = carRaceConfig.getInputReceiver().readInput();
-        List<CarName> carNameList = Arrays.stream(carNamesString.split(COMMA_DELIMITER))
+        List<CarName> carNameList = Arrays.stream(carNamesString.split(COMMA_DELIMITER, -1))
                 .map(CarName::of)
                 .toList();
         return generateDefaultRacePosition(carNameList);
