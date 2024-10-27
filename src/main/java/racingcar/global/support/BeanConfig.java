@@ -1,4 +1,4 @@
-package racingcar.global.config;
+package racingcar.global.support;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

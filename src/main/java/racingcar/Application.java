@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.global.frontController.FrontController;
+import racingcar.global.support.FrontController;
 
 public class Application {
 

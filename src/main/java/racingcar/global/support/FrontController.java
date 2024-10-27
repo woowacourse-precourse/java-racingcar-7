@@ -1,8 +1,6 @@
-package racingcar.global.frontController;
+package racingcar.global.support;
 
 import java.util.Set;
-import racingcar.global.config.BeanConfig;
-import racingcar.global.config.ProjectScanner;
 import racingcar.racing.controller.RacingController;
 import racingcar.racing.dto.request.RacingRequestDTO;
 import racingcar.racing.dto.response.RacingResponseDTO;

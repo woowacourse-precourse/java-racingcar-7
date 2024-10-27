@@ -1,4 +1,4 @@
-package racingcar.global.config;
+package racingcar.global.support;
 
 import java.io.File;
 import java.io.IOException;
