@@ -14,7 +14,5 @@ public class Application {
         RacingCar.saveCars(carNames, cars);
         RacingCar.outputEachTrial(inputTrial, cars);
         RacingCar.outputWinners(cars);
-
-
     }
 }
