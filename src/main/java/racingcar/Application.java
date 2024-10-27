@@ -14,12 +14,13 @@ public class Application {
     private static final OutputView outputView = new OutputView();
 
     public static void main(String[] args) {
-        InputDTO inputDTO = inputView.display();
+        InputDTO inputDTO = inputView.input();
         List<String> racerNames = inputDTO.getRacerNames();
         Integer totalTrialCount = inputDTO.getTotalTrialCount();
 
         RacingResult racingResult = RacingController.startRace(racerNames, totalTrialCount);
-        OutputDTO outputDTO = RacingController.announceResult(racingResult, totalTrialCount);
+        OutputDTO outputDTO = RacingController.announceResult(racingResult, inputDTO.getTotalTrialCount());
+
         outputView.display(outputDTO);
     }
 }
