@@ -5,6 +5,7 @@ import racingcar.domain.CarFactory;
 import racingcar.domain.CarNameParser;
 import racingcar.util.RandomUtil;
 import racingcar.util.ValidUtil;
+import racingcar.view.OutputView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,9 +22,10 @@ public class RacingGameService {
         return CarFactory.generateCars(carNames);
     }
 
-    public void playRounds(int rounds, List<Car> cars) {
+    public void runRounds(int rounds, List<Car> cars) {
         for (int i = 0; i < rounds; i++) {
             moveCars(cars);
+            OutputView.printRoundResult(cars);
         }
     }
 
