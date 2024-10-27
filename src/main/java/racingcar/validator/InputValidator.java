@@ -35,7 +35,7 @@ public class InputValidator {
                 throw new IllegalArgumentException("음수는 허용되지 않습니다.");
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("라운드는 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("라운드는 자연수를 입력해주세요.");
         }
     }
 }
