@@ -22,7 +22,7 @@ public class OutputHandler {
 
     private String generateHyphens(int position) {
         StringBuilder hyphens = new StringBuilder();
-        hyphens.append("-".repeat(Math.max(0, position)));
+        hyphens.append("-".repeat(position));
         return hyphens.toString();
     }
 }
