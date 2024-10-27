@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Position {
 
-    private static final String POSITION_SIGN = "-";
+    private static final String FORWARD_SIGN = "-";
 
     private int number;
 
@@ -25,7 +25,7 @@ public class Position {
     }
 
     public String currentState() {
-        return POSITION_SIGN.repeat(number);
+        return FORWARD_SIGN.repeat(number);
     }
 
     @Override
@@ -42,11 +42,6 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(number);
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(number);
     }
 
 }
