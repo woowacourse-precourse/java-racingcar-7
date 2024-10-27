@@ -6,7 +6,7 @@ public enum ExceptionMessage {
     INPUT_RANGE_EXCEPTION("입력 값은 양수여야 합니다."),
     INPUT_SAME_EXCEPTION("중복된 값이 입력되었습니다."),
 
-    NAME_QUANTITY_EXCEPTION("5자 이상은 입력할 수 없습니다."),
+    NAME_QUANTITY_EXCEPTION("자동차의 이름은 5이하여야 합니다."),
 
     DELIMITER_NONEXISTENTION_EXCEPTION("쉼표가 적어도 1개 이상은 존재해야 합니다."),
     DELIMITER_DUPLICATION_EXCEPTION("쉼표와 쉼표 사이에 적어도 1개 이상의 문자가 입력되어야 합니다."),
