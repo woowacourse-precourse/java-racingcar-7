@@ -63,7 +63,7 @@ public class Application {
     }
 
     private static void validateNumber(String number) {
-        if (!number.matches("[0-9]+")) {
+        if (!number.matches("-?[0-9]+")) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
     }
