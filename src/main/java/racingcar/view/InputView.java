@@ -11,6 +11,11 @@ public class InputView {
 
     public static int getRaceRounds() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 숫자로 입력해야 합니다.");
+        }
     }
 }
