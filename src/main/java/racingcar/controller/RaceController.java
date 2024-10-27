@@ -1,10 +1,7 @@
 package racingcar.controller;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.view.InputView;
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.view.console.ConsoleWriter;
 
@@ -37,9 +34,8 @@ public class RaceController {
     }
 
     private void finish(Cars cars) {
-        List<Car> winners = cars.getWinners();
-        String winnerNames = winners.stream().map(Car::getName).collect(Collectors.joining(", "));
-        ConsoleWriter.printlnMessage(String.format(RESULT_MESSAGE, winnerNames));
+        List<String> winnerNames = cars.getWinnerNames();
+        ConsoleWriter.printlnMessage(String.format(RESULT_MESSAGE, String.join(", ", winnerNames)));
     }
 
 }
