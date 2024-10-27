@@ -21,6 +21,8 @@ public class PrintHelper {
         }
 
         System.out.println(scoreBoard.toString());
+
+        System.out.println();
     }
 
     private String getState(Player p) {
@@ -49,5 +51,9 @@ public class PrintHelper {
         String result = WINNER_IS + winner.toString();
 
         System.out.println(result);
+    }
+
+    public void startScoreBoard() {
+        System.out.println("\n실행 결과");
     }
 }
