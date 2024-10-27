@@ -49,7 +49,7 @@ class RacingCarTest {
         void 자동차가_MovementPolicy_조건에_따라_전진한다() {
             RacingCar car = new RacingCar("Mini");
             RaceProgressManager manager = new RaceProgressManager(List.of(car));
-            MovementPolicy policy = new MovementPolicy(new MovementNumber(4)); // 조건 충족
+            MovementPolicy policy = new MovementPolicy(new MovementNumber(4));
 
             car.executeForward(policy, manager);
 
@@ -61,7 +61,7 @@ class RacingCarTest {
         void 자동차가_MovementPolicy_조건에_따라_멈춘다() {
             RacingCar car = new RacingCar("Mini");
             RaceProgressManager manager = new RaceProgressManager(List.of(car));
-            MovementPolicy policy = new MovementPolicy(new MovementNumber(3)); // 조건 불충족
+            MovementPolicy policy = new MovementPolicy(new MovementNumber(3));
 
             car.executeForward(policy, manager);
 
