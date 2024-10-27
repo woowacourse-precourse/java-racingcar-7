@@ -2,8 +2,8 @@ package racingcar.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,34 +17,90 @@ import racingcar.util.RandomPicker;
 
 class RacingCarServiceTest {
 
-    private final RandomPicker mockPicker = new RandomPicker() {
-        final int[] numbers = new int[]{6, 3, 8, 1};
-        int index = 0;
+    private RacingCarService racingCarService;
 
-        @Override
-        public int pickNumberInRange(int min, int max) {
-            return numbers[index++];
-        }
-    };
-    private final MoveStrategy mockMoveStrategy = new RandomMoveStrategy(mockPicker);
-    private final RacingCarService racingCarService = new RacingCarService(mockMoveStrategy);
-    private final List<RacingCar> racingCarList = new ArrayList<>();
+    /**
+     * 뽑게될 숫자 pickNumber을 인자로 하여 mockRandomPicker 생성 후 MoveStrategy 생성
+     *
+     * @param pickNumber - 레이싱카 뽑게 될 숫자
+     * @return
+     */
+    private MoveStrategy createMoveStrategyWithMockPicker(int[] pickNumber) {
+        RandomPicker randomPicker = new RandomPicker() {
+            int index = 0;
 
+            @Override
+            public int pickNumberInRange(int min, int max) {
+                return pickNumber[index++];
+            }
+        };
+
+        return new RandomMoveStrategy(randomPicker);
+    }
 
     @BeforeEach
-    void setUp() {
-        racingCarList.add(new RacingCar("CarA", 8));
-        racingCarList.add(new RacingCar("CarB", 5));
-        racingCarList.add(new RacingCar("CarC", 3));
-        racingCarList.add(new RacingCar("CarD", 8));
+    void setUpRacingCar() {
+        // 기본 racingCarService, RandomPicker mocking 시 테스트 내에서 변경 가능
+        racingCarService = new RacingCarService(new RandomMoveStrategy(new RandomPicker()));
+    }
+
+    @ParameterizedTest
+    @MethodSource("testRunCarRacing")
+    @DisplayName("runCarRacing 메서드 실행 후, 레이싱 카 전진 확인")
+    void testRunCarRacing(List<RacingCar> racingCars, int moveCount, int[] pickNumbers, int[] expectedMove) {
+        // Given
+        racingCarService = new RacingCarService(createMoveStrategyWithMockPicker(pickNumbers));
+
+        // When
+        racingCarService.runCarRacing(racingCars, moveCount);
+
+        // Then
+        IntStream.range(0, racingCars.size()).forEach(index -> {
+            System.out.println(racingCars.get(index).getCarName());
+            assertThat(racingCars.get(index).getDistance()).isEqualTo(expectedMove[index]);
+        });
+    }
+
+    static Stream<Object[]> testRunCarRacing() {
+        return Stream.of(
+                new Object[]{
+                        List.of(RacingCar.of("A"), RacingCar.of("B"), RacingCar.of("C")),
+                        5,
+                        new int[] {
+                                5, 4, 4,
+                                4, 3, 5,
+                                6, 6, 6,
+                                1, 2, 3,
+                                4, 6, 8,
+                        },
+                        new int[] {4, 3, 4}
+                },
+                new Object[]{
+                        List.of(RacingCar.of("A"), RacingCar.of("B"), RacingCar.of("C")),
+                        2,
+                        new int[] {
+                                4, 4, 4,
+                                4, 3, 5,
+                        },
+                        new int[] {2, 1, 2}
+                },
+                new Object[]{
+                        List.of(RacingCar.of("A"), RacingCar.of("B"), RacingCar.of("C")),
+                        1,
+                        new int[] {
+                                3, 3, 3,
+                        },
+                        new int[] {0, 0, 0}
+                }
+        );
     }
 
     @ParameterizedTest
     @MethodSource("testWinnerCars")
     @DisplayName("레이싱 게임 우승자 반환 함수 테스트")
-    void testWinnerCars(List<RacingCar> racingCarList, String[] winners) {
+    void testWinnerCars(List<RacingCar> racingCars, String[] winners) {
         // Given & When
-        List<RacingCar> winnerRacingCars = racingCarService.getWinnerRacingCars(racingCarList);
+        List<RacingCar> winnerRacingCars = racingCarService.getWinnerRacingCars(racingCars);
 
         // Then
         assertThat(winnerRacingCars).hasSize(winners.length).extracting(RacingCar::getCarName)
