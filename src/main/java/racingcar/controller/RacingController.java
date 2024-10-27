@@ -48,6 +48,8 @@ public class RacingController {
             racing.runRacingTurn();
         }
 
+        List<String> winners = racing.computeWinner();
+
         outputView.printResultMessage();
 
         for (int i = 1; i <= inputTurns; i++) {
@@ -56,6 +58,8 @@ public class RacingController {
             }
             System.out.println();
         }
+
+        outputView.winnerView(winners);
     }
 
 }

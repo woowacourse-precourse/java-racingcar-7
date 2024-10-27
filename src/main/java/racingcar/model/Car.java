@@ -35,5 +35,9 @@ public class Car {
     public int getDistance(final int turnTime) {
         return this.distance.get(turnTime);
     }
+    
+    public int getFinalDistance() {
+        return this.distance.getLast();
+    }
 
 }
