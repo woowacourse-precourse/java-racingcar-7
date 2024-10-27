@@ -25,7 +25,7 @@ public class GeneralCarFactory implements CarFactory {
     @Override
     public List<Car> createCars(List<String> carNames) {
         return carNames.stream()
-                .map(validation::blackValidation)
+                .map(validation::blankValidation)
                 .map(this::createCar)
                 .toList();
     }

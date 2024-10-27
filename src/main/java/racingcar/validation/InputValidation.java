@@ -2,14 +2,14 @@ package racingcar.validation;
 
 public class InputValidation {
 
-    public String blackValidation(String inputValue){
+    public String blankValidation(String inputValue){
         if(inputValue.isBlank()) throw new IllegalArgumentException("공백으로만 이루어져 있습니다.");
         return inputValue;
     }
 
 
     public int checkCountValidation(String countValue){
-        int count = parseValidation(countValue);
+        int count = parseValidation(blankValidation(countValue));
         positiveValidation(count);
         return count;
     }
