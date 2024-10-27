@@ -20,5 +20,8 @@ public class Application {
         int maxRoundValue = parseMaxRoundValue(tryCount);
         Race race = new Race(racingCarList, maxRoundValue);
         race.start();
+
+        List<String> winnerList = race.findWinner();
+        OutputManager.displayWinner(winnerList);
     }
 }
