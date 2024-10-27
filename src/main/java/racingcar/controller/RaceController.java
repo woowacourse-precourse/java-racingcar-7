@@ -44,6 +44,12 @@ public class RaceController {
                 throw new IllegalArgumentException("자동차 이름에는 공백이 포함될 수 없습니다.");
             }
         }
+
+        // 중복 이름 검사
+        long distinctCount = Arrays.stream(carNames).distinct().count();
+        if (distinctCount < carNames.length) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
     }
 
     private void validateRaceRounds(int raceRounds) throws IllegalArgumentException{
