@@ -52,12 +52,12 @@ class ViewTest extends NsTest {
 
     @Test
     void readCarNames_유효테스트() {
-        String input = "Adam,Ivan,Benjamin";
+        String input = "Adam,Ivan,Harry";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         List<String> result = InputView.readCarNames();
 
-        assertThat(result).containsExactly("Adam", "Ivan", "Benjamin");
+        assertThat(result).containsExactly("Adam", "Ivan", "Harry");
     }
 
     @Test
