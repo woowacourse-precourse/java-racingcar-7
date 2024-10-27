@@ -17,8 +17,8 @@ public class Car {
             throw new IllegalArgumentException("이름은 null이 될 수 없습니다.");
         }
         String trimmedName = carName.trim();
-        if (trimmedName.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+        if (trimmedName.length() > 5 || trimmedName.isEmpty()) {
+            throw new IllegalArgumentException("이름의 길이는 1이상 5이하 입니다.");
         }
         return trimmedName;
     }
