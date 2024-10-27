@@ -67,8 +67,6 @@ MVC로 하기에는 저장해야하는 데이터를 핸들링하는 방식이 �
 
 그리고 개발주니어로써 MVC디자인패턴을 사용함으로써 DB와 같은 기능을 가지는 DAO를 만들기를 목표로 하였다.
 
-![레이싱게임구조도](https://github.com/user-attachments/assets/0ec7c586-1b86-4bfe-ac0d-3da3545ac754)
-
 
 
 
