@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class ValidatorTest {
@@ -40,18 +41,15 @@ class ValidatorTest {
             .hasMessage("자동차 이름은 기준을 넘길 수 없습니다.");
     }
 
-    @Test
-    void 반복_횟수_입력_검증() {
-        assertThatThrownBy(() -> validator.validateRepeatCount(""))
+    @ParameterizedTest
+    @CsvSource({
+        "'', '반복 횟수은(는) 비어있을 수 없습니다.'",
+        "-123, '양수만 입력 가능합니다.'",
+        "123abc45, '숫자만 입력 가능합니다.'"
+    })
+    void 반복_횟수_입력_검증(String input, String errorMessage) {
+        assertThatThrownBy(() -> validator.validateRepeatCount(input))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("반복 횟수은(는) 비어있을 수 없습니다.");
-
-        assertThatThrownBy(() -> validator.validateRepeatCount("-123"))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("양수만 입력 가능합니다.");
-
-        assertThatThrownBy(() -> validator.validateRepeatCount("123abc456"))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("숫자만 입력 가능합니다.");
+            .hasMessage(errorMessage);
     }
 }
