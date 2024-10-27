@@ -8,6 +8,10 @@ public class InputView {
     }
 
     public static int getNumberOfMoves() {
-        return Integer.parseInt(Console.readLine());
+        int moves = Integer.parseInt(Console.readLine());
+        if (moves <= 0) {
+            throw new IllegalArgumentException();
+        }
+        return moves;
     }
 }
