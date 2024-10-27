@@ -7,6 +7,7 @@ public class Game {
     private final InputParser inputParser;
     private final Race race;
     private final Winner winner;
+    private int attempts = 0;
 
     public Game(ApplicationContext applicationContext) {
         this.view = applicationContext.getView();
@@ -16,16 +17,27 @@ public class Game {
     }
 
     public void run() {
-        String[] carNames = getCarNames();
-        int attempts = getAttempts();
-        race.initialize(carNames);
+        start();
+        play();
+        end();
+    }
 
+    private void start() {
+        String[] carNames = getCarNames();
+        attempts = getAttempts();
+        race.register(carNames);
+    }
+
+    private void play() {
         view.printResultHeader();
         for (int i = 0; i < attempts; i++) {
             playSingleRound();
         }
+    }
+
+    private void end() {
         List<String> winners = winner.getBy(race.getResult());
-        view.print(winners);
+        view.printFinalResult(winners);
     }
 
     private String[] getCarNames() {
