@@ -20,7 +20,8 @@ public class CarsValidator implements Validator<List<Car>>{
     private void validateNameDuplication(List<Car> cars) {
         Set<String> uniqueCarNames = new HashSet<>();
         for (Car car : cars) {
-            if (!uniqueCarNames.add(car.getName())) {
+            String lowerCarName = car.getName().toLowerCase();
+            if (!uniqueCarNames.add(lowerCarName)) {
                 throw new IllegalArgumentException(DUPLICATED_CAR_NAME.getMsg());
             }
         }

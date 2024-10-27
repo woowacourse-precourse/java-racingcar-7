@@ -27,22 +27,38 @@ public class CarsValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi,holy,pobi", "w  w,pass,w  w"})
-    @DisplayName("이름 3개가 주어지고 1번째 이름과 3번째 이름이 중복될 때, 3번째 이름에서 예외가 발생한다.")
+    @ValueSource(strings = {"pobi,pobi", "w  w,w  w"})
+    @DisplayName("1번째 이름과 2번째 이름이 중복될 때, 2번째 이름에서 예외가 발생한다.")
     void 중복_이름이면_예외(String testName) {
         String[] testNames = testName.split(",", -1);
         String testName1 = testNames[0];
         String testName2 = testNames[1];
-        String testName3 = testNames[2];
         Validator<List<Car>> validator = new CarsValidator();
         List<Car> cars = new ArrayList<>(
                 Arrays.asList(CarFactory.createCar(testName1)
-                        , CarFactory.createCar(testName2)
-                        , CarFactory.createCar(testName3))
+                        , CarFactory.createCar(testName2))
         );
 
         assertThatThrownBy(() -> validator.validate(cars))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복되지 않은 이름을 입력해주세요.");
+                .hasMessage("대소문자 구분 없이 중복되지 않은 이름을 입력해주세요.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,POBI", "POBI,pobi", "pOBi,PobI", "PoBi,pOBi"})
+    @DisplayName("1번째 이름과 2번째 이름이 중복될 때, 2번째 이름에서 예외가 발생한다.")
+    void 대소문자는_다르지만_중복_이름이면_예외(String testName) {
+        String[] testNames = testName.split(",", -1);
+        String testName1 = testNames[0];
+        String testName2 = testNames[1];
+        Validator<List<Car>> validator = new CarsValidator();
+        List<Car> cars = new ArrayList<>(
+                Arrays.asList(CarFactory.createCar(testName1)
+                        , CarFactory.createCar(testName2))
+        );
+
+        assertThatThrownBy(() -> validator.validate(cars))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("대소문자 구분 없이 중복되지 않은 이름을 입력해주세요.");
     }
 }

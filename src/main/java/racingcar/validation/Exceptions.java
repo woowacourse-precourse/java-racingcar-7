@@ -4,7 +4,7 @@ public enum Exceptions {
     /**
      * Cars 관련 예외
      */
-    DUPLICATED_CAR_NAME("중복되지 않은 이름을 입력해주세요."),
+    DUPLICATED_CAR_NAME("대소문자 구분 없이 중복되지 않은 이름을 입력해주세요."),
     INSUFFICIENT_CARS("2개 이상의 차 이름을 입력해주세요."),
     /**
      * MoveNumber 관련 예외
