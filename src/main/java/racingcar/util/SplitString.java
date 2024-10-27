@@ -1,8 +1,8 @@
 package racingcar.util;
 
-import static racingcar.message.SplitStringExceptionMessage.CAR_NAME_INCLUDE_BLANK;
-import static racingcar.message.SplitStringExceptionMessage.CAR_NAME_INCLUDE_SPECIAL_CHARACTERS;
-import static racingcar.message.SplitStringExceptionMessage.CAR_NAME_LENGTH_OVER;
+import static racingcar.message.exception.SplitStringExceptionMessage.CAR_NAME_INCLUDE_BLANK;
+import static racingcar.message.exception.SplitStringExceptionMessage.CAR_NAME_INCLUDE_SPECIAL_CHARACTERS;
+import static racingcar.message.exception.SplitStringExceptionMessage.CAR_NAME_LENGTH_OVER;
 
 import java.util.Arrays;
 import java.util.List;

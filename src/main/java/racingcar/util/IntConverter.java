@@ -1,8 +1,8 @@
 package racingcar.util;
 
-import static racingcar.message.IntConverterExceptionMessage.INPUT_VALUE_INCLUDE_SPECIAL_CHARACTERS;
-import static racingcar.message.IntConverterExceptionMessage.INPUT_VALUE_MINUS_OR_ZERO;
-import static racingcar.message.IntConverterExceptionMessage.INPUT_VALUE_OVERFLOW;
+import static racingcar.message.exception.IntConverterExceptionMessage.INPUT_VALUE_INCLUDE_SPECIAL_CHARACTERS;
+import static racingcar.message.exception.IntConverterExceptionMessage.INPUT_VALUE_MINUS_OR_ZERO;
+import static racingcar.message.exception.IntConverterExceptionMessage.INPUT_VALUE_OVERFLOW;
 
 public class IntConverter {
     private IntConverter() {

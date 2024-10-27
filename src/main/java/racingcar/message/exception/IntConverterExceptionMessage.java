@@ -1,4 +1,4 @@
-package racingcar.message;
+package racingcar.message.exception;
 
 public class IntConverterExceptionMessage {
     public static final String INPUT_VALUE_OVERFLOW = "입력값이 int 범위를 넘어갔습니다.";

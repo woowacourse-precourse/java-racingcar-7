@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import racingcar.car.Car;
 import racingcar.io.OutputUtil;
-import racingcar.message.ResultPrompt;
+import racingcar.message.prompt.ResultPrompt;
 import racingcar.util.RandomNumberGenerator;
 
 public class RaceSimulator {

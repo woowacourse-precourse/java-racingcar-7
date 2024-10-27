@@ -1,4 +1,4 @@
-package racingcar.message;
+package racingcar.message.prompt;
 
 public class ResultPrompt {
     public static final String RESULT_PROMPT = "실행 결과";

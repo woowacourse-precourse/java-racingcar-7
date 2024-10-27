@@ -1,4 +1,4 @@
-package racingcar.message;
+package racingcar.message.exception;
 
 public class SplitStringExceptionMessage {
     public static final String CAR_NAME_INCLUDE_BLANK = "자동차 이름은 공백 혹은 빈 문자열은 허용되지 않습니다";
