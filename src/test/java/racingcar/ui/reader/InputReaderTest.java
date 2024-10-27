@@ -46,4 +46,23 @@ public class InputReaderTest {
         assertThrows(IllegalArgumentException.class, () -> reader.readNames());
     }
 
+    @Test
+    @DisplayName("이동 시도 횟수 입력")
+    void test3() {
+        int movedCnt = 5;
+        stubReader.setMockUserInput(String.valueOf(movedCnt));
+
+        int result = reader.readMovementAttempts();
+        assertThat(result).isEqualTo(movedCnt);
+    }
+
+    @Test
+    @DisplayName("숫자로 바꿀 수 없는 문자 입력 시 예외")
+    void test4() {
+        String onlyString = "ABC";
+        stubReader.setMockUserInput(onlyString);
+
+        assertThrows(IllegalArgumentException.class, () -> reader.readMovementAttempts());
+    }
+
 }

@@ -14,6 +14,7 @@ public class InputReader {
     private final int  MAX_NAME_LENGTH = 5;
     private final String NAME_DELIMITER = ",";
     private final String CAR_NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private final String MOVEMENT_ATTEMPT_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 
     public InputReader(StringReader reader, StringPrinter printer) {
         this.reader = reader;
@@ -28,6 +29,17 @@ public class InputReader {
         if(hasInvalidName(result))
             throw new IllegalArgumentException("이름 최대 길이를 초과함");
         return result;
+    }
+
+    public int readMovementAttempts() {
+        printer.print(MOVEMENT_ATTEMPT_INPUT_MESSAGE);
+        String attemptsLine = reader.readLine();
+
+        try {
+            return Integer.parseInt(attemptsLine);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 숫자 입력");
+        }
     }
 
     private List<String> splitNames(String line) {
