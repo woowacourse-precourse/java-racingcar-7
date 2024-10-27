@@ -9,5 +9,15 @@ public class Car {
         this.position = new Position();
     }
 
+    public int getPosition() {
+        return position.getValue();
+    }
+
+    public void speed() {
+        if (MovingStrategy.canMove()) {
+            position.moveForward();
+        }
+    }
+
 
 }
