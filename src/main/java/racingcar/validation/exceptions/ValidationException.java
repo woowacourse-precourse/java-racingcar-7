@@ -17,7 +17,7 @@ import java.util.HashSet;
  */
 
 public class ValidationException {
-    private static final HashSet<String> set = new HashSet<>();
+    public static final HashSet<String> set = new HashSet<>();
 
     public static void isDuplicate(String name) {
         if (set.contains(name)) {

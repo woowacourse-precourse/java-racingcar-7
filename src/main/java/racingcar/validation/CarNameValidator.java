@@ -19,6 +19,7 @@ import racingcar.validation.exceptions.ValidationException;
 public class CarNameValidator {
 
     public static void run(CarsSaveRequestDto requestDto) {
+        ValidationException.set.clear();
         List<String> carsName = requestDto.getNames();
         for (String name : carsName) {
             validateCarName(name);
