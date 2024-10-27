@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -9,7 +9,7 @@ import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class RacingCar {
+public class RacingCarController {
 
     static HashSet<Car> cars = new HashSet<>();
     static List<String> winnerNames = new ArrayList<>();
@@ -17,7 +17,7 @@ public class RacingCar {
     private final OutputView outputView;
     private final InputView inputView;
 
-    public RacingCar() {
+    public RacingCarController() {
         this.outputView = new OutputView();
         this.inputView = new InputView();
     }
