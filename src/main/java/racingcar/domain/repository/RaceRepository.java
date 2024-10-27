@@ -34,4 +34,8 @@ public class RaceRepository {
     public Race findById(int id) {
         return raceRepository.get(id);
     }
+
+    public void deleteAll() {
+        raceRepository.clear();
+    }
 }

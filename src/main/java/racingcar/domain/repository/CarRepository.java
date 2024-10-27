@@ -42,4 +42,8 @@ public class CarRepository {
     public List<Car> findAll() {
         return carRepository;
     }
+
+    public void deleteAll() {
+        carRepository.clear();
+    }
 }
