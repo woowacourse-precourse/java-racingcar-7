@@ -43,6 +43,6 @@ public class RacingGame {
                 winnerList.add(car.name);
             }
         }
-        return String.join(",", winnerList);
+        return String.join(", ", winnerList);
     }
 }

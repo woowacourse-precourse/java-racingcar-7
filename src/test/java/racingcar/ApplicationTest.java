@@ -81,11 +81,11 @@ class ApplicationTest extends NsTest {
     @Test
     void 공동_우승자_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("최종 우승자 : pobi,woni");
-            },
-            MOVING_FORWARD, MOVING_FORWARD  // pobi와 woni 모두 전진
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD  // pobi와 woni 모두 전진
         );
     }
 
