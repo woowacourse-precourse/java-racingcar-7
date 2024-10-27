@@ -19,7 +19,7 @@ public class Cars {
     public void playSingleRound() {
         for (Car car : cars) {
             if (car.canMove()) {
-
+                car.move();
             }
         }
     }

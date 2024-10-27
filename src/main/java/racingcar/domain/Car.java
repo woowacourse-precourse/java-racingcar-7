@@ -7,6 +7,7 @@ import racingcar.global.exception.ErrorMessage;
 public class Car {
     private static int NAME_MAX_LENGTH = 5;
     private String name;
+    private int moveCount = 0;
 
     public Car(String name) {
         if (isNameEmpty(name)) {
@@ -20,6 +21,10 @@ public class Car {
 
     public boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
+    public void move() {
+        moveCount++;
     }
 
     public String getName() {
