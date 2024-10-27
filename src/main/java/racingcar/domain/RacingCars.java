@@ -38,6 +38,7 @@ public class RacingCars {
 
     private void validationDuplicateName(String[] nameArray, List<String> usedList) {
         for (String name : nameArray) {
+            usedList.remove(name);
             nameCheck(usedList, name);
         }
     }

@@ -43,4 +43,11 @@ class RacingCarsTest {
         //then
         assertEquals("a, b, c", winners);
     }
+
+    @Test
+    @DisplayName("자동차 이름 중복 테스트")
+    public void duplicateTest() {
+        String testString = "a,b,a";
+        assertThrows(IllegalArgumentException.class, () -> new RacingCars(testString));
+    }
 }
