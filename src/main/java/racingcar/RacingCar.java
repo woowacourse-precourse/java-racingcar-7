@@ -60,6 +60,7 @@ public class RacingCar {
             }
         }
     }
+
     public static void saveCars(String[] carNames, Car[] cars) {
         int index = 0;
 
@@ -68,6 +69,7 @@ public class RacingCar {
         }
 
     }
+
     public static void outputEachTrial(int trial, Car cars[]) {
 
         for (int i = 0; i < trial; i++) {
@@ -85,6 +87,7 @@ public class RacingCar {
             }
         }
     }
+
     public static boolean stopOrGo(Car car) {
         int randomValue = Randoms.pickNumberInRange(0, 9);
         if (randomValue >= 4) {
@@ -103,6 +106,7 @@ public class RacingCar {
         }
         System.out.println();
     }
+
     public static String getGoString(Car car) {
         String goString = "";
         for (int i = 0; i < car.getGo(); i++) {
@@ -118,6 +122,7 @@ public class RacingCar {
         System.out.println("최종 우승자 :" + winnerString);
 
     }
+
     public static int getMaxTrial(Car cars[]) {
         int maxTrial = cars[0].getGo();
         for (int i = 0; i < cars.length; i++) {
@@ -126,6 +131,17 @@ public class RacingCar {
             }
         }
         return maxTrial;
+    }
+
+    public static String makeWinnerString(Car[] cars, int maxTrial) {
+        String output = "";
+        for (int i = 0; i < cars.length; i++) {
+            if (winnerOrNot(cars[i], maxTrial)) {
+                output = output + " " + cars[i].getName() + ",";
+            }
+        }
+        output = output.substring(0, output.length() - 1);
+        return output;
     }
 
 
