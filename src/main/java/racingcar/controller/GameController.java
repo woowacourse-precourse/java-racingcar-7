@@ -89,8 +89,7 @@ public class GameController {
 
     private void printGameWinner() {
         List<String> winners = getWinners();
-        String result = String.join(", ", winners);
-        outputView.printGameWinner(result);
+        outputView.printGameWinner(winners);
     }
 
     private List<String> getWinners() {
