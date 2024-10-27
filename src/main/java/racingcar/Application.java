@@ -1,9 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -17,13 +15,17 @@ public class Application {
         int tryNum = Integer.parseInt(Console.readLine());
 
         List<String> carNames = nameSpliter(inputNames);
+
+        for(int i = 0; i < tryNum; i++ ) {
+
+        }
     }
 
     public static List<String> nameSpliter(String inputNames) {
         String[] splittedNames = inputNames.split(",");
         List<String> carNames = Arrays.stream(splittedNames).collect(Collectors.toList()); // array를 list로 변환
         for (String name : carNames) {
-            if(name.length() > 5){
+            if(name.length() > 5) {
                 throw new IllegalArgumentException();
             }
         }
