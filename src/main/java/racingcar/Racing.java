@@ -28,7 +28,7 @@ public class Racing {
                 throw new IllegalArgumentException();
             }
 
-            Car car = new Car(carName);
+            Car car = new Car(new Name(carName));
             cars.add(car);
         }
         int roundNumber = 0;
@@ -47,11 +47,11 @@ public class Racing {
         for(int i =0; i<roundNumber; i++) {
 
             for(Car car : cars) {
-                car.moveFoward();
+                car.moveForward();
             }
 
             for(Car car : cars) {
-                System.out.print(car.carName +" : ");
+                System.out.print(car.name.getName() +" : ");
 
                 for(int j =0; j < car.position; j++) {
                     System.out.print("-");
@@ -79,7 +79,7 @@ public class Racing {
 
         System.out.print("최종 우승자 : ");
         for(int i = 0; i < winners.size(); i++) {
-            System.out.print(winners.get(i).carName);
+            System.out.print(winners.get(i).name.getName());
             if(i < winners.size() - 1) {
                 System.out.print(", ");
             }

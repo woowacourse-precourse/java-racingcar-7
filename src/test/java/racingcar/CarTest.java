@@ -10,10 +10,10 @@ public class CarTest {
     void testCarCreationWithValidName() {
 
         // given & When
-        Car car = new Car("pobi");
+        Car car = new Car(new Name("pobi"));
 
         // Then
-        assertThat(car.carName).isEqualTo("pobi");
+        assertThat(car.name.getName()).isEqualTo("pobi");
         assertThat(car.position).isEqualTo(0);
     }
 
@@ -21,10 +21,10 @@ public class CarTest {
     void testCarCreationWithInvalidName() {
 
         // when & then
-        assertThatThrownBy(() -> new Car(""))
+        assertThatThrownBy(() -> new Car(new Name("")))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(() -> new Car("wonikim"))
+        assertThatThrownBy(() -> new Car(new Name("cheche903")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -32,10 +32,10 @@ public class CarTest {
     void testCarMovement() {
 
         // given
-        Car car = new Car("pobi");
+        Car car = new Car(new Name("pobi"));
 
         // when
-        car.moveFoward();
+        car.moveForward();
         int position = car.position;
 
         // then

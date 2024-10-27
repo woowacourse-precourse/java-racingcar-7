@@ -4,12 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 
 public class Car {
-    public final String carName;
+    public final Name name;
     public  int position;
 
-    public Car(String carName) {
-        validateNaming(carName);
-        this.carName = carName;
+    public Car(Name carName) {
+        this.name = carName;
         position = 0;
     }
 
@@ -17,16 +16,11 @@ public class Car {
         position+=1;
     }
 
-    public void moveFoward() {
+    public void moveForward() {
         int randomValue = Randoms.pickNumberInRange(0,9);
 
         if(randomValue >= 4) {
             incrementPosition();
-        }
-    }
-    private void validateNaming(String carName) {
-        if(carName.isEmpty() || carName.length() >5) {
-            throw new IllegalArgumentException();
         }
     }
 }
