@@ -43,5 +43,7 @@ public class Application {
         Map<String, Integer> totalForwardCount= mapBuilder.getCarNameAndForwardCount();
         Map<String, Integer> sortedTotalForwardCount = winnerSorter.sort(totalForwardCount);
         List<String> winnerList = winnerSorter.getJointWinners(sortedTotalForwardCount);
+
+        System.out.println(messagePrinter.getWinnerMessage(winnerList));
     }
 }

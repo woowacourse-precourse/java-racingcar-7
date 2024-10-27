@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class MessagePrinter {
 
     MapBuilder mapBuilder = new MapBuilder();
@@ -12,5 +14,12 @@ public class MessagePrinter {
         String totalRandomResult = mapBuilder.getTotalRandomResultFromMap();
         totalRandomResult += "\\n";
         return totalRandomResult;
+    }
+
+    public String getWinnerMessage(List<String> winnerList) {
+        String winnerMessage = "최종 우승자 : ";
+        winnerMessage += String.join(",", winnerList);
+
+        return winnerMessage;
     }
 }
