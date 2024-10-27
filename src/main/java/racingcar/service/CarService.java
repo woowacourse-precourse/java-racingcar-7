@@ -1,39 +1,37 @@
 package racingcar.service;
 
 import racingcar.model.Car;
+import racingcar.util.PlayerNameValidator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static racingcar.util.Constants.MAX_NAME_LENGTH;
-
 public class CarService {
+    private final PlayerNameValidator playerNameValidator
+
+    public CarService(PlayerNameValidator playerNameValidator) {
+        this.playerNameValidator = playerNameValidator;
+    }
 
     public List<Car> playRounds(String playersName, int moveCount) {
         List<String> names = splitByComma(playersName);
-        validateName(names);
+        playerNameValidator.validateName(names);
+
+        List<Car> cars = carGenerator(names);
+
     }
 
     public List<String> splitByComma(String input) {
         return Arrays.asList(input.split(","));
     }
 
-    private void validateName(List<String> names){
-        validateBlank(names);
-        validateLength(names);
-    }
 
-    private void validateBlank(List<String> names){
-        for(String name : names){
-            if(name.isEmpty() || name.isBlank())
-                throw new IllegalArgumentException();
+    private List<Car> carGenerator(List<String> names){
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(new Car(name)); // 이름으로 Car 객체 생성
         }
-    }
-    private void validateLength(List<String> names){
-        for(String name : names){
-            if(name.length() > MAX_NAME_LENGTH)
-                throw new IllegalArgumentException();
-        }
+        return cars;
     }
 }
