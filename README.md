@@ -58,7 +58,7 @@ jun : -----
             - [x] 아무것도 입력하지 않았을 경우
             - [x] 이름이 5자를 초과할 때 ex) pobibi
             - [x] 이름이 영어로 이루어져 있지 않을 경우 ex) 우테코
-            - [ ] 중복되는 이름이 입력되었을 경우 ex) pobi,pobi 
+            - [x] 중복되는 이름이 입력되었을 경우 ex) pobi,pobi 
         - **횟수**
             - [x] 아무것도 입력하지 않았을 경우
             - [x] 숫자가 아닌 값을 입력했을 경우 ex) a
@@ -87,3 +87,63 @@ jun : -----
 - **최종 결과 출력**
     - [x] 각 라운드 실행 과정 출력
     - [x] 우승자 출력
+
+## 게임 규칙
+
+### 이름
+- 5자 이하여야 합니다.
+- 영어로만 이루어져야 합니다.
+- 중복된 이름은 사용할 수 없습니다.
+- 이름은 쉼표로 구분됩니다.
+### 시도 횟수
+- 숫자만 입력할 수 있습니다.
+- 1부터 10까지만 입력할 수 있습니다.
+
+## 역할
+
+### Car
+이름과 위치를 관리하고 이동하는 책임을 가지고 있습니다.
+### Cars
+이동 명령에 특정 자동차의 위치를 업데이트하며, 모든 자동차의 상태를 조회하고 관리합니다.
+### RandomMoveStrategy
+게임의 규칙을 알고 있습니다. `RandomNumberGenerator`로 무작위 값을 생성하고, 이 값이 특정 임계값 이상일 경우 이동 가능성을 판단합니다.
+### MoveCommand
+규칙에 해당하는 자동차(들)에게 이동을 명령합니다.
+### MovementRecord
+각 라운드의 자동차 위치 기록을 관리합니다.
+### Judgment
+기록을 바탕으로 최종 라운드의 우승자를 결정합니다.
+### InputView/OutputView
+필요한 입력값을 처리하고 실행 결과와 우승자를 출력합니다.
+### IOService/RacingService
+필요한 객체와 협력하여 IOService는 입력 검증 및 출력 처리, RacingService는 게임 로직 처리를 담당합니다.
+### RacingGameController
+사용자와의 상호작용을 담당합니다.
+
+## 흐름
+![RacingGame_Flow.png](RacingGame_Flow.png)
+
+## 디렉토리 구조
+```shell
+├── Application.java
+├── controller
+│   └── RacingGameController.java
+├── model
+│   ├── Car.java
+│   ├── Cars.java
+│   ├── Judgment.java
+│   ├── MoveCommand.java
+│   ├── MoveStrategy.java
+│   ├── MovementRecord.java
+│   └── RandomMoveStrategy.java
+├── service
+│   ├── IOService.java
+│   └── RacingService.java
+├── util
+│   └── RandomNumberGenerator.java
+├── validation
+│   └── InputValidator.java
+└── view
+    ├── InputView.java
+    └── OutputView.java
+```
