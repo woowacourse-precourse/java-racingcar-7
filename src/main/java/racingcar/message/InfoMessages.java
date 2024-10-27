@@ -8,4 +8,5 @@ public class InfoMessages {
 
     // Output related info messages
     public static final String OUTPUT_RUN_RESULT = "실행 결과";
+    public static final String OUTPUT_FINAL_WINNER = "최종 우승자 : ";
 }
