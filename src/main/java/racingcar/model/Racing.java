@@ -1,12 +1,18 @@
 package racingcar.model;
 
 public class Racing {
+    private final int END_GAME_COUNT = 0;
     private int tryCount;
 
     public void saveTryCount(int tryCount) {
         this.tryCount = tryCount;
     }
-    // TODO: 이동횟수를 차감한다.
 
-    // TODO: 이동 횟수에 따라 경기 진행 및 종료 여부를 판단한다.
+    public void minusTryCount() {
+        this.tryCount--;
+    }
+
+    public boolean isProgress(){
+        return this.tryCount > END_GAME_COUNT;
+    }
 }
