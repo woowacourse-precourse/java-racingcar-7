@@ -15,6 +15,7 @@ public class WinnerMaker {
                 winners.add(player.getName());
             }
         }
+        // 출력: pobi, java
         return String.join(", ", winners);
     }
 

@@ -1,11 +1,10 @@
 package racingcar.domain;
 
+import java.util.List;
 import racingcar.util.PlayerMaker;
 import racingcar.util.Racing;
 import racingcar.util.RandomNumberMaker;
 import racingcar.util.WinnerMaker;
-
-import java.util.List;
 
 public class RacingCar {
 
@@ -17,7 +16,7 @@ public class RacingCar {
 
     public List<Player> racing() {
         for (Player player : playerList) {
-            Racing.racing(player, RandomNumberMaker.randomNumber());
+            Racing.move(player, RandomNumberMaker.randomNumber());
         }
         return playerList;
     }
