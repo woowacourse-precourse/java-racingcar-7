@@ -19,8 +19,12 @@ public class InputView {
     private List<String> convertCarNamesToList (String inputCarNames) {
         return Arrays.stream(inputCarNames.split(","))
                 .map(String::trim)
+                .filter(inputCarNamesValidator::isNotCarNameEmpty)
+                .filter(inputCarNamesValidator::isCarNameLengthValid)
+                .filter(inputCarNamesValidator::isNotDuplicateCarName)
                 .toList();
     }
+
 
     // TODO: 이동할 횟수를 입력받는다.
 }

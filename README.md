@@ -42,10 +42,10 @@
 
 ### Validator
 #### InputValidator
-- [ ] InputCarNamesValidator
-    - [ ] 자동차 이름이 5자 이하인지 검증한다.
-    - [ ] 자동차 이름이 중복 입력되었는지 검증한다.
-    - [ ] 공백이 입력되었는지 확인한다.
+- [x] InputCarNamesValidator
+    - [x] 자동차 이름이 5자 이하인지 검증한다.
+    - [x] 자동차 이름이 중복 입력되었는지 검증한다.
+    - [x] 공백이 입력되었는지 확인한다.
 - [ ] InputCountValidator
     - [ ] 이동 횟수가 0 이상의 숫자인지 검증한다.
     - [ ] 입력한 숫자의 자료형 범위를 확인한다.

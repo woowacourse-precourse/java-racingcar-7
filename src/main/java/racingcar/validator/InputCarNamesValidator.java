@@ -1,9 +1,29 @@
 package racingcar.validator;
 
+import java.util.HashSet;
+
 public class InputCarNamesValidator {
-    // TODO: 자동차 이름이 5자 이하인지 검증한다.
+    private HashSet<String> validCarNames = new HashSet<>();
 
-    // TODO: 자동차 이름이 중복 입력되었는지 검증한다.
+    public boolean isCarNameLengthValid(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("이름이 5자를 초과했습니다.");
+        }
+        return true;
+    }
 
-    // TODO: 공백이 입력되었는지 확인한다.
+    public boolean isNotDuplicateCarName(String carName) {
+        if (validCarNames.contains(carName)) {
+            throw new IllegalArgumentException("자동차 이름이 중복되어 입력되었습니다.");
+        }
+        validCarNames.add(carName);
+        return true;
+    }
+    
+    public boolean isNotCarNameEmpty(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException("공백이 입력되었습니다.");
+        }
+        return true;
+    }
 }
