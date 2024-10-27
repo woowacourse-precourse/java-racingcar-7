@@ -5,7 +5,6 @@ import racingcar.Car;
 
 public class OutputView {
     public static void printRoundResult(List<Car> cars) {
-        System.out.println("실행 결과");
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getLocation()));
         }

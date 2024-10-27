@@ -40,7 +40,7 @@ public class InputView {
 
         String[] names = carNames.split(COMMA_DELIMITER);
         for (String name : names) {
-            checkNameLength(name);
+            checkNameLength(name.trim());
         }
     }
 
