@@ -24,18 +24,18 @@ public class RacingManagerTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
-    void 시도횟수는_양의_정수(int round) {
-        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), round);
+    void 시도횟수는_양의_정수(int stageCount) {
+        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), stageCount);
 
-        assertThat(manager.getRounds()).isEqualTo(round);
+        assertThat(manager.getStageCount()).isEqualTo(stageCount);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
-    void 차수별_실행_결과를_출력(int round) {
-        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), round);
-        List<RoundResult> result = manager.startRace();
+    void 차수별_실행_결과를_출력(int stageCount) {
+        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), stageCount);
+        List<StageResult> result = manager.startRace();
 
-        assertThat(result.size()).isEqualTo(round);
+        assertThat(result.size()).isEqualTo(stageCount);
     }
 }

@@ -22,10 +22,4 @@ public class Car {
             position++;
         }
     }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        super.clone();
-        return new Car(name);
-    }
 }

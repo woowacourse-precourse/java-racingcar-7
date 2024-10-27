@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RoundResult {
+public class StageResult {
 
     private final Map<Car, Integer> results;
 
-    public RoundResult(List<Car> cars) {
+    public StageResult(List<Car> cars) {
         this.results = cars.stream()
                 .collect(HashMap::new, (map, car) ->
                         map.put(car, car.getPosition()), HashMap::putAll);

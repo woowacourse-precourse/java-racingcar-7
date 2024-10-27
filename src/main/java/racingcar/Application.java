@@ -11,15 +11,15 @@ public class Application {
         String carNameInput = Console.readLine();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String roundInput = Console.readLine();
+        String stageInput = Console.readLine();
 
         List<String> names = Arrays.stream(carNameInput.split(","))
                 .map(String::trim)
                 .toList();
 
-        int round = Integer.parseInt(roundInput);
+        int stageCount = Integer.parseInt(stageInput);
 
-        RacingManager manager = new RacingManager(names, round);
+        RacingManager manager = new RacingManager(names, stageCount);
         manager.startRace();
         manager.printResult();
     }
