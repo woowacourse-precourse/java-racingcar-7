@@ -14,7 +14,7 @@ public class Car {
         return name;
     }
 
-    public int getMoveCount() {
+    public int getPosition() {
         return position;
     }
 
