@@ -20,7 +20,14 @@ public class Racing {
     }
 
     public void playRound() {
+        validatePlayableRound();
         cars.forEach(Car::move);
         currentRounds++;
+    }
+
+    private void validatePlayableRound() {
+        if (currentRounds >= totalRounds) {
+            throw new IllegalArgumentException("진행할 수 있는 모든 라운드를 진행하였습니다.");
+        }
     }
 }
