@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CarNameValidator {
     public void separateByComma(String carNames) {
         if (!isCommaSeparated(carNames)) {
@@ -10,6 +13,16 @@ public class CarNameValidator {
     public void inputMoreThanTwo(String carNames) {
         if (!isMoreThanTwo(split(carNames))) {
             throw new IllegalArgumentException("자동차 이름을 두 개 이상으로 입력해주세요");
+        }
+    }
+
+    public void inputSameName(String carNames) {
+        String[] carNameArray = split(carNames);
+        Set<String> set = new HashSet<>();
+        for (String carName : carNameArray) {
+            if(!set.add(carName)) {
+                throw new IllegalArgumentException("중복되지 않는 이름을 입력해주세요");
+            }
         }
     }
 
