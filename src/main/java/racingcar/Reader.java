@@ -59,8 +59,8 @@ public class Reader {
     }
 
     private static void verifyNumber(int number) {
-        if (number <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다.");
+        if (number < 1) {
+            throw new IllegalArgumentException("시도 횟수는 양의 정수여야 합니다.");
         }
     }
 
