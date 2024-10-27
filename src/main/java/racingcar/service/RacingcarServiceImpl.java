@@ -18,10 +18,8 @@ public class RacingcarServiceImpl implements RacingcarService {
 
     @Override
     public void startRaceByCount(List<Racingcar> racingcars) {
-        for (Racingcar racingcar: racingcars) {
-            if (checkRandomValue()) {
-                racingcar.move();
-            }
+        for (Racingcar racingcar : racingcars) {
+            moveRacingcarIfRandomValueCheck(racingcar);
         }
     }
 
@@ -38,6 +36,12 @@ public class RacingcarServiceImpl implements RacingcarService {
         }
 
         return winners;
+    }
+
+    private void moveRacingcarIfRandomValueCheck(Racingcar racingcar) {
+        if (checkRandomValue()) {
+            racingcar.move();
+        }
     }
 
     private boolean checkRandomValue() {
