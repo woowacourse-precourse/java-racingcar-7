@@ -25,10 +25,9 @@ public class Cars {
     }
 
     public List<String> getCarStates() {
-        List<String> states = new ArrayList<>();
-        cars.forEach(car -> states.add(car.toString()));
-
-        return states;
+        return cars.stream()
+                .map(Car::toString)
+                .toList();
     }
 
     public Car getManyMoveCar() {
@@ -37,15 +36,14 @@ public class Cars {
                 .orElse(cars.getFirst());
     }
 
-    public List<Car> winnerCarplay(Car manyMoveCar) {
-        List<Car> winnerPlayers = new ArrayList<>();
+    public List<Car> findWinners(Car furthestCar) {
+        return cars.stream()
+                .filter(car -> isSameDistance(furthestCar, car))
+                .toList();
+    }
 
-        for (Car car : cars) {
-            if (car.compareDistance(manyMoveCar) == 0)
-                winnerPlayers.add(car);
-        }
-
-        return winnerPlayers;
+    private boolean isSameDistance(Car furthestCar, Car car) {
+        return car.compareDistance(furthestCar) == ZERO;
     }
 
     private List<String> splitCarNames(String inputCarsName) {
