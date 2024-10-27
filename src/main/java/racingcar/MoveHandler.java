@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+
 public class MoveHandler {
 
     // 0~9 범위의 랜덤 숫자를 생성
@@ -15,9 +17,17 @@ public class MoveHandler {
     }
 
     // 자동차 이동 처리
-    public void carMove(Car car) {
+    public void moveCar(Car car) {
         if (canMove(generateRandomNumber())) {
             car.pos++;
         }
     }
+
+    public void playRound(List<Car> cars){
+
+        for(Car car : cars){
+            moveCar(car);
+        }
+    }
+
 }

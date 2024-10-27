@@ -1,34 +1,30 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
-
-
-/*    initializeCars(List<String> carNames)
-    generateRandomNumber()
-
-    canMove(int randomNumber)
-    moveCar(Car car, int randomNumber)
-    playRound(List<Car> cars)
-    getWinners(List<Car> cars)
-
-    validateCarName(String carName)
-    validateAttemptCount(String attemptCount)*/
-
     public static void main(String[] args) {
-        // InputHandler 인스턴스 생성
+        // 핸들러 인스턴스 생성
         InputHandler inputHandler = new InputHandler();
+        MoveHandler moveHandler = new MoveHandler();
+        ResultHandler resultHandler = new ResultHandler();
 
-        // 메서드 호출
+        // 사용자 입력 처리
         List<String> carNames = inputHandler.getCarNames();
         int attemptCount = inputHandler.getRaceAttemptCount();
 
+        // 자동차 초기화
         List<Car> cars = inputHandler.initializeCars(carNames);
 
+        // 지정된 시도 횟수만큼 경주 진행
+        for (int i = 0; i < attemptCount; i++) {
+            moveHandler.playRound(cars);
+            resultHandler.printRoundResult(cars); // 매 라운드 결과 출력
+        }
+
+        // 최종 우승자 출력
+        List<Car> winners = resultHandler.getWinners(cars);
+        resultHandler.printWinners(winners);
     }
 }
