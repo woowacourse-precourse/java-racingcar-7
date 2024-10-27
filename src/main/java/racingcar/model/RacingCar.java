@@ -33,7 +33,7 @@ public class RacingCar {
     }
 
     public void move(Movement movement) {
-        if (movement == Movement.FORWARD) {
+        if (movement == Movement.MOVING_FORWARD) {
             increaseLocation();
         }
     }

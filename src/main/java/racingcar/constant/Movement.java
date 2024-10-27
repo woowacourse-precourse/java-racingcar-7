@@ -1,6 +1,6 @@
 package racingcar.constant;
 
 public enum Movement {
-    FORWARD,
+    MOVING_FORWARD,
     STOP
 }

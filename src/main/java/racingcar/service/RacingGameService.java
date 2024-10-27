@@ -42,7 +42,7 @@ public class RacingGameService {
     // 이동 상태 결정
     private Movement determineMovement(int randomNumber) {
         if (randomNumber >= FORWARD_THRESHOLD) {
-            return Movement.FORWARD;
+            return Movement.MOVING_FORWARD;
         } else {
             return Movement.STOP;
         }
