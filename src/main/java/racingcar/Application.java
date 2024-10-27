@@ -12,5 +12,7 @@ public class Application {
 
         RacingCarController racingCarController = new RacingCarController(racingView, randomNumberGenerator);
         racingCarController.run();
+
+        racingView.viewClose();
     }
 }

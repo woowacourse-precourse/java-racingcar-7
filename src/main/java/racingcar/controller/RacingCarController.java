@@ -43,7 +43,6 @@ public class RacingCarController {
             }
             racingView.printRoundResult(roundState);
         }
-        racingView.viewClose();
     }
 
     private List<Car> createCars(List<String> carNames) {
