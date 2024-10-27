@@ -1,11 +1,10 @@
 package racingcar.service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import racingcar.config.RaceConstants;
 import racingcar.model.Car;
 import racingcar.model.RaceLog;
 import racingcar.repository.CarRepository;
@@ -29,8 +28,13 @@ public class RaceServiceImpl implements RaceService{
     @Override
     public void setRaceCars(String carNameInput) {
         Arrays.stream(carNameInput.split(","))
-                .map(Car::new)
+                .map(this::validateNameAndCreatCar)
                 .forEach(carRepository::save);
+    }
+
+    private Car validateNameAndCreatCar(String name) {
+        validateCarName(name);
+        return new Car(name);
     }
 
     @Override
@@ -50,5 +54,15 @@ public class RaceServiceImpl implements RaceService{
     @Override
     public List<Car> generateWinners() {
         return carRepository.findWinners();
+    }
+
+    private void validateCarName(String name) {
+        validateNameLength(name);
+    }
+
+    private void validateNameLength(String name) {
+        if(name.length() > RaceConstants.CAR_NAME_THRESHOLD) {
+            throw new IllegalArgumentException();
+        }
     }
 }
