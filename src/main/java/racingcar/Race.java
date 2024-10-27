@@ -9,14 +9,14 @@ public class Race {
     private CarFactory carFactory = new CarFactory();
     List<Car> cars;
 
-    public void initRace(String carNames, int number) {
+    public void init(String carNames) {
         StringTokenizer carName = new StringTokenizer(carNames, ",");
         cars = carFactory.createCars(carName);
     }
 
-    public void start(int number) {
+    public void start(long number) {
         System.out.println("실행 결과");
-        for (int i = 0; i < number; i++) {
+        for (long i = 0; i < number; i++) {
             randomMovement();
             carPosition();
             System.out.println();
@@ -33,6 +33,7 @@ public class Race {
     public void carPosition() {
         for (Car car : cars) {
             car.printPosition();
+            System.out.println();
         }
     }
 
