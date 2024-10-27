@@ -1,6 +1,10 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
 
 public class GameEngine {
     private InputReader inputReader;
@@ -20,9 +24,42 @@ public class GameEngine {
         numberOfTrial = inputReader.readNumberOfTrial();
     }
 
-    public void initializeGame(){
-        for(String car : carNames.split(",")){
+    public void initializeGame() {
+        for (String car : carNames.split(",")) {
             racingCars.add(new RacingCar(car));
         }
+    }
+
+    public void race(){
+        for(RacingCar car : racingCars){
+            car.race();
+        }
+    }
+
+    public void showRaceRecord(){
+        for(RacingCar car : racingCars){
+            System.out.printf("%s : %s", car.getCarName(), "-".repeat(car.getRecord()));
+            System.out.println();
+        }
+    }
+    public void showRaceWinner(){
+        int maxRecord = racingCars.stream()
+                .mapToInt(RacingCar::getRecord)
+                .max()
+                .orElse(Integer.MIN_VALUE);
+        String winners = racingCars.stream()
+                .filter(car -> car.getRecord() == maxRecord)
+                .map(RacingCar::getCarName)
+                .collect(Collectors.joining(", "));
+        System.out.printf("최종 우승자 : ");
+        System.out.println(winners);
+    }
+    public void run(){
+        while(numberOfTrial > 0){
+            race();
+            showRaceRecord();
+            --numberOfTrial;
+        }
+        showRaceWinner();
     }
 }
