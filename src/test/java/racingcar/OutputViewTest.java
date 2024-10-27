@@ -41,9 +41,9 @@ public class OutputViewTest {
         //then
         String output = outputStream.toString();
         Assertions.assertAll(
-                () -> Assertions.assertTrue(output.contains("test1 : ----"), "Output should contain 'test1 : ----'"),
-                () -> Assertions.assertTrue(output.contains("test2 : ---"), "Output should contain 'test2 : ---'"),
-                () -> Assertions.assertTrue(output.contains("test3 : ----"), "Output should contain 'test3 : ----'")
+                () -> Assertions.assertTrue(output.contains("test1 : ----")),
+                () -> Assertions.assertTrue(output.contains("test2 : ---")),
+                () -> Assertions.assertTrue(output.contains("test3 : ----"))
         );
     }
 

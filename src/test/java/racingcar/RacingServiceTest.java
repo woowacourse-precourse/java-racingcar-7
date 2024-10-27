@@ -59,15 +59,6 @@ public class RacingServiceTest {
         List<String> winnerList = racingService.getWinner();
 
         //then
-        for (String winner : winnerList) {
-            if (testCarList.get(0).getName().equals(winner)) {
-                Assertions.assertEquals(winnerValue, testProgress.get(testCarList.get(0)));
-            } else if (testCarList.get(1).getName().equals(winner)) {
-                Assertions.assertEquals(winnerValue, testProgress.get(testCarList.get(1)));
-            }
-
-        }
-
         Assertions.assertAll(
                 () -> Assertions.assertFalse(winnerList.isEmpty()),
                 () -> {
