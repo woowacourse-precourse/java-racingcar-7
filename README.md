@@ -17,8 +17,8 @@
 
 5. Output.java : 가장 많은 거리를 이동한 최종 우승자의 자동차 이름 출력하는 클래스
    * printWinner : 최종 우승자 출력
-   * setMax : 제일 많이 이동한 차량의 이동거리 추출
-   * addList : 최종 우승자들을 resultList에 저장
+   * setMaxPosition : 제일 많이 이동한 차량의 이동거리 추출
+   * addList : 최종 우승자들을 winnerList에 저장
 
 ````
 ├─main
