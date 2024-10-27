@@ -15,6 +15,9 @@ public class Application {
         validateCarNames(carNames);
         // 1.4 자동차(Car) 객체의 리스트를 생성하는 기능
         ArrayList<Car> carList = createCarList(carNames);
+
+        // 2.1 시도할 횟수를 입력받는 기능
+        String tryCountInputString = getTryCountInputString();
     }
 
     public static String getCarNamesInputString() {
@@ -40,5 +43,10 @@ public class Application {
             carList.add(new Car(carName));
         }
         return carList;
+    }
+
+    public static String getTryCountInputString() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Console.readLine();
     }
 }
