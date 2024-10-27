@@ -27,7 +27,7 @@ public class Race {
 
     public void result() {
         cars.sort(Comparator.reverseOrder());
-        String winners = String.join(",", findWinners());
+        String winners = String.join(", ", findWinners());
         io.printWinners(winners);
     }
 
@@ -41,7 +41,6 @@ public class Race {
     public void carPosition() {
         for (Car car : cars) {
             car.printPosition();
-            System.out.println();
         }
         System.out.println();
     }

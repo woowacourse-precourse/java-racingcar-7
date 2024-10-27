@@ -17,6 +17,7 @@ public class Car implements Comparable<Car> {
         for (int i = 0; i < position; i++) {
             System.out.print("-");
         }
+        System.out.println();
     }
 
     public String getName() {
