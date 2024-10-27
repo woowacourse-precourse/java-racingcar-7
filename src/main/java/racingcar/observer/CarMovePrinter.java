@@ -13,6 +13,6 @@ public class CarMovePrinter implements CarObserver {
 
     @Override
     public void onMoved(Car car) {
-        outputHandler.outputCarPosition(car);
+        outputHandler.displayCarPosition(car);
     }
 }

@@ -33,7 +33,7 @@ public class InputHandler {
 
     // 빈 문자열도 입력 받기
     private String getSafeInput(String message) {
-        outputHandler.outputMessageWithEmptyLine(message);
+        outputHandler.outputMessageWithNewLine(message);
         try {
             return Console.readLine();
         } catch (NoSuchElementException e) {
