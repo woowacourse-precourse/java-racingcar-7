@@ -30,6 +30,16 @@ class CarListTest {
     }
 
     @Test
+    void 자동차_이름_중복_테스트() {
+        // Given
+        String input = "pobi,woni,Spini,pobi";
+
+        // Then
+        assertThatThrownBy(() -> CarList.carList(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 자동차_이름_경계_테스트() {
         // Given
         String input = "pobii, wonii ,javai, ja va";
