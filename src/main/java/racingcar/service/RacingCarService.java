@@ -1,13 +1,14 @@
 package racingcar.service;
 
-import java.util.ArrayList;
-import java.util.List;
 import racingcar.global.enums.PrintMessage;
 import racingcar.global.util.RandomNumberGenerator;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Race;
 import racingcar.view.OutputView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingCarService {
     private final OutputView outputView = OutputView.getInstance();
@@ -40,7 +41,6 @@ public class RacingCarService {
 
     public void announceWinner(Cars cars) {
         List<String> winnerList = findWinner(cars);
-
         outputView.printWinner(formatWinners(winnerList));
     }
 

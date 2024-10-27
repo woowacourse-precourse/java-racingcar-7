@@ -1,15 +1,15 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.Arrays;
-import java.util.List;
 import racingcar.global.enums.ErrorMessage;
 import racingcar.global.enums.PrintMessage;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class InputView {
-    private static InputView instance;
     private static final OutputView outputView = OutputView.getInstance();
+    private static InputView instance;
 
     public static InputView getInstance() {
         if (instance == null) {
@@ -48,6 +48,4 @@ public class InputView {
             throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT.getMessage());
         }
     }
-
-
 }
