@@ -32,7 +32,7 @@
     - 이름은 5글자 이하
     - 이름 trim 기능
 - [X] 자동차별 상태 저장 기능
-- [ ] 차수 카운트 기능
+- [X] 차수 카운트 기능
 - [ ] 순위 판단 기능 
 - [ ] 차수 진행 기능
     - [X] `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 를 활용해 랜덤 값 추출

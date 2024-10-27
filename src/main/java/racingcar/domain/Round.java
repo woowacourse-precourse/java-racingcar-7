@@ -8,7 +8,11 @@ class Round implements Comparator<Round> {
     public Round(final int round) {
         this.round = round;
     }
-    
+
+    public Round nextRound() {
+        return new Round(this.round + 1);
+    }
+
     @Override
     public int compare(Round o1, Round o2) {
         return o1.round - o2.round;
