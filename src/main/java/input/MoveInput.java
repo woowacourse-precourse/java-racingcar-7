@@ -2,8 +2,12 @@ package input;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Move {
+public class MoveInput {
+    InformationInput informationInput = new InformationInput();
+
     public int inputHandler() {
+        informationInput.printInformationInputOfAttempts();
+
         return howManyMove();
     }
 

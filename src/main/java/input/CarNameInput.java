@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import delimiter.InputDelimiter;
 import java.util.List;
 
-public class CarName {
+public class CarNameInput {
     InputDelimiter inputDelimiter = new InputDelimiter();
+    InformationInput informationInput = new InformationInput();
 
     public List<String> inputHandler() {
         String inputCarNameLump = inputCarName();
@@ -14,6 +15,7 @@ public class CarName {
     }
 
     private String inputCarName() {
+        informationInput.printInformationInputOfCarName();
         // 원시값 포장 필요
         String carName = Console.readLine();
 
