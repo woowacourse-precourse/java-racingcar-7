@@ -2,8 +2,8 @@ package racingcar.util;
 
 import java.util.List;
 
-public class ValidUtil {
-    public static boolean isNumeric(String input) {
+public class ValidationUtil {
+    public static boolean isInteger(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
