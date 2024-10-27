@@ -1,8 +1,10 @@
 package racingcar.view;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racingcar.dto.RaceResultResponse;
+import racingcar.dto.WinnerResponse;
 
 public class OutputView {
 	public void promptCarName() {
@@ -22,6 +24,14 @@ public class OutputView {
 			String result = raceResultResponse.name() + " : " + raceResultResponse.distance();
 			System.out.println(result);
 		});
+	}
+
+	public void printWinners(List<WinnerResponse> winnerResponses) {
+		String winners = winnerResponses.stream()
+			.map(WinnerResponse::name)
+			.collect(Collectors.joining(", "));
+
+		System.out.print("최종 우승자: " + winners);
 	}
 
 	public void printNewLine() {
