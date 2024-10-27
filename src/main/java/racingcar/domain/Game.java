@@ -2,18 +2,16 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Game {
 
     private final List<Car> cars;
-    private final Map<Car, String> results;
+    private final List<Car> results;
 
     public Game() {
         this.cars = new ArrayList<>();
-        this.results = new HashMap<>();
+        this.results = new ArrayList<>();
     }
 
     public List<Car> createCars(List<String> names) {
@@ -25,22 +23,25 @@ public class Game {
         return cars;
     }
 
-    public Map<Car, String> play(List<String> names) {
+    public void play(List<String> names) {
         createCars(names);
         for (Car car : cars) {
             int randNum = Randoms.pickNumberInRange(0, 9);
             car.move(randNum >= 4);
         }
-        return judge();
     }
 
-    private Map<Car, String> judge() {
+    public List<Car> judge() {
         cars.stream()
                 .filter(car -> car.getPosition() == cars.stream()
                         .mapToInt(Car::getPosition)
                         .max()
                         .orElse(0))
-                .forEach(car -> results.put(car, car.getName()));
+                .forEach(car -> results.add(car));
+        return results;
+    }
+
+    public List<Car> getResults() {
         return results;
     }
 
