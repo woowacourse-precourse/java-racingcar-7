@@ -84,24 +84,20 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회 인가요?");
 
         String try_input = Console.readLine();
-        int try_number = parseTryNumber(try_input);
-        validateTryNumber(try_number);
+        int try_number = validateTryNumber(try_input);
 
         return try_number;
-
     }
 
-    private static int parseTryNumber(String input){
+    private static int validateTryNumber(String input){
         try{
+            int try_number = Integer.parseInt(input);
+            if(try_number <= 0){
+                throw new IllegalArgumentException("The number of attempts should be positive integer.");
+            }
             return Integer.parseInt(input);
         }
         catch(NumberFormatException e){
-            throw new IllegalArgumentException("The number of attempts should be positive integer.");
-        }
-    }
-
-    private static void validateTryNumber(int try_number){
-        if(try_number <= 0){
             throw new IllegalArgumentException("The number of attempts should be positive integer.");
         }
     }
