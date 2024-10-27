@@ -1,7 +1,20 @@
 package racingcar;
 
+import racingcar.application.ApplicationReader;
+import racingcar.application.RaceManager;
+import racingcar.config.AppConfig;
+import racingcar.config.RaceConfig;
+
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        AppConfig appConfig = AppConfig.getInstance();
+        ApplicationReader applicationReader = ApplicationReader.getInstance(appConfig.createInput(), appConfig.createView());
+
+        RaceConfig raceConfig = applicationReader.readRaceConfig();
+        RaceManager raceManager = new RaceManager(appConfig);
+
+        raceManager.startRace(raceConfig);
     }
 }
