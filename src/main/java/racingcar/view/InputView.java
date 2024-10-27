@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.domain.MovingCount;
+import racingcar.domain.TrialCount;
 import racingcar.util.SplittingRacingCarName;
 
 public class InputView {
@@ -11,8 +11,8 @@ public class InputView {
         return SplittingRacingCarName.splitRacingCarName(carNames);
     }
 
-    public MovingCount inputTrialCount(){
+    public TrialCount inputTrialCount(){
         String trialCount = Console.readLine();
-        return new MovingCount(trialCount);
+        return new TrialCount(trialCount);
     }
 }
