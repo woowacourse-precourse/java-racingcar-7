@@ -1,8 +1,5 @@
 package racingcar.view;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Winners;
 
@@ -20,12 +17,7 @@ public class OutputView {
     }
 
     public void displayWinners(Winners winners) {
-        List<Car> winnerCars = winners.getWinners();
-
-        String winnerNames = winnerCars.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-
-        System.out.println("최종 우승자 : " + winnerNames);
+        String winnerNames = winners.getWinnerNames();
+        System.out.println(Message.FINAL_WINNER + winnerNames);
     }
 }
