@@ -32,7 +32,7 @@ public class NameRequestHandler {
     }
 
     public void validateSpace(String rawInput) {
-        if (rawInput.contains(" ")) {
+        if (rawInput.matches(".*\\s.*")) {
             throwException(CONTAINS_SPACE_ERROR);
         }
     }

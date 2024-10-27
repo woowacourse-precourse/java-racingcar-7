@@ -33,11 +33,7 @@ public class Cars {
         System.out.println();
     }
 
-    /**
-     * 테스트 전용 메서드
-     * @param carNumber
-     * @return Car
-     */
+    // 테스트 전용 메서드
     public Car getCar(int carNumber) {
         return cars.get(carNumber);
     }
