@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.car.Car;
+import racingcar.car.CarImpl;
 import racingcar.decider.Decider;
 
 import java.util.List;
@@ -16,12 +17,7 @@ public class CarGame {
         this.decider = decider;
     }
     private void moveCars() {
-        for (Car car: entryCars) {
-            boolean move = decider.decideMoveOrNot();
-            if (move) {
-                car.forward();
-            }
-        }
+        this.entryCars.forEach(Car::forward);
     }
 
     private void printCars() {
