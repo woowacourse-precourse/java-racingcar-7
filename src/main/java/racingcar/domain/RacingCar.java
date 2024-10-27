@@ -16,10 +16,15 @@ public class RacingCar {
         // 움직일 수 있는 경우 : 무작위 숫자 4 이상
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             moveCount++;
-        };
+        }
+        ;
     }
 
-    public String getMoveCount() {
-        return String.valueOf(moveCount);
+    public long getMoveCount() {
+        return moveCount;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -1,9 +1,13 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.RacingCar;
 import racingcar.service.RacingCarService;
 import racingcar.service.ValidateService;
 import racingcar.view.InstructionView;
+import racingcar.view.RoundView;
+
+import java.util.stream.IntStream;
 
 
 public class RacingCarController {
@@ -11,11 +15,13 @@ public class RacingCarController {
     InstructionView instructionView;
     ValidateService validateService;
     RacingCarService racingCarService;
+    RoundView roundView;
 
-    public RacingCarController(InstructionView instructionView, ValidateService validateService, RacingCarService racingCarService) {
+    public RacingCarController(InstructionView instructionView, ValidateService validateService, RacingCarService racingCarService, RoundView roundView) {
         this.instructionView = instructionView;
         this.validateService = validateService;
         this.racingCarService = racingCarService;
+        this.roundView = roundView;
     }
 
     public void run() {
@@ -28,7 +34,12 @@ public class RacingCarController {
 
         racingCarService.setupRaceCars(validateService.getValidatedNames());
 
-        racingCarService.runRound();
+        roundView.setRacingCars(racingCarService.getRacingCars());
+
+        IntStream.range(0, (int) validateService.getValidateRaceCount()).forEach(round -> {
+            racingCarService.getRacingCars().forEach(RacingCar::move);
+            roundView.showRoundResults();
+        });
 
     }
 

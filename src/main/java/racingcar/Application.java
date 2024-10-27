@@ -1,10 +1,10 @@
 package racingcar;
 
 import racingcar.controller.RacingCarController;
-//import racingcar.service.RacingCarService;
 import racingcar.service.RacingCarService;
 import racingcar.service.ValidateService;
 import racingcar.view.InstructionView;
+import racingcar.view.RoundView;
 
 public class Application {
     public static void main(String[] args) {
@@ -12,7 +12,8 @@ public class Application {
         InstructionView instructionView = new InstructionView();
         ValidateService validateService = new ValidateService();
         RacingCarService racingCarService = new RacingCarService();
-        RacingCarController controller = new RacingCarController(instructionView, validateService, racingCarService);
+        RoundView roundView = new RoundView();
+        RacingCarController controller = new RacingCarController(instructionView, validateService, racingCarService, roundView);
         controller.run();
     }
 }
