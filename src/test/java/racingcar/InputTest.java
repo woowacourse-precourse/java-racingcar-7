@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class InputTest extends NsTest {
+public class InputTest {
 
     @Test
     @DisplayName("긴 차 이름이 입력되는 경우 오류 테스트")
@@ -23,8 +23,4 @@ public class InputTest extends NsTest {
                 .hasMessageContaining("쉼표는 구분자로만 사용해야 합니다.");
     }
 
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
 }
