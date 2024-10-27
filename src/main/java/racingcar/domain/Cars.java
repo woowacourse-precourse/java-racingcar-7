@@ -6,10 +6,12 @@ import racingcar.utils.RandNumGenerator;
 import racingcar.view.OutputView;
 
 public class Cars {
+    private static final String INPUT_DELIM = ",";
+
     private final List<Car> cars;
 
     public Cars(String carsNames) {
-        String[] splitNames = carsNames.split(",");
+        String[] splitNames = carsNames.split(INPUT_DELIM);
         cars = Arrays.stream(splitNames)
                 .map(name -> new Car(name.strip()))
                 .toList();
