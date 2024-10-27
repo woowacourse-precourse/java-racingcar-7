@@ -100,8 +100,9 @@ jun : -----
 - [ ]  output() : 차수 별 실행 결과, 우승자 안내 문구(단독 or 공동)
 - [ ]  random() : 무작위의 수를 구해, 4 이상이면 전진할 수 있도록 함.
 - [ ]  race() : 전진 및 멈춤 구현
-- [ ]  contoroller() : input → random() + race() → output() 흐름으로 제어.
+- [ ]  contoroller() : input → random() + race() → output() 흐름으로 제어.    
 
+race()는 car를 담은 hashMap과 이동 횟수를 받아, random()을 호출하며 경주하고, 결과를 winner() 메소드를 통해 얻는다.
 
 ### 세부 사항
 - [ ]  자동차가 1대인 경우, 무조건 단독 우승. 
