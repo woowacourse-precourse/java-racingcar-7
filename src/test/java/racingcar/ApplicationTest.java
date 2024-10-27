@@ -94,10 +94,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_경주_횟수_0_오류() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,woni", "0"))
-                        .isInstanceOf(IllegalArgumentException.class)
+    void 예외_테스트_경주_횟수_0_성공() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "0");
+                    assertThat(output()).contains("최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
