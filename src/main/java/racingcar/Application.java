@@ -12,8 +12,6 @@ public class Application {
 
         List<String> carNamesList = splitCarNames(carNames);
 
-        validateCarNamesList(carNamesList);
-
         List<Car> cars = createCars(carNamesList);
 
         runRace(cars, totalAttempts);
@@ -30,19 +28,6 @@ public class Application {
         }
 
         return carNamesList;
-    }
-
-    public static void validateCarNamesList(List<String> carNamesList) {
-        final int MAX_LENGTH = 5;
-
-        for (String carName : carNamesList) {
-            if (carName == null || carName.trim().isEmpty()) {
-                throw new IllegalArgumentException("자동차 이름이 유효하지 않습니다.");
-            }
-            if (carName.length() > MAX_LENGTH) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
-            }
-        }
     }
 
     public static List<Car> createCars(List<String> carNamesList) {
