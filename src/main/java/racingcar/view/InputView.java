@@ -14,10 +14,18 @@ public class InputView {
 
     public static int getTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(readLine());
+        String input = readLine();
+        validateTryCount(input);
+        return Integer.parseInt(input);
     }
 
     private static String readLine() {
         return Console.readLine();
+    }
+
+    private static void validateTryCount(String input) {
+        if (!input.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("시도 횟수는 1회 이상의 숫자여야 합니다.");
+        }
     }
 }
