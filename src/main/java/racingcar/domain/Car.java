@@ -1,4 +1,4 @@
-package racingcar.domain.car;
+package racingcar.domain;
 
 public class Car {
     private String name;
@@ -15,5 +15,9 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public void move() {
+        position++;
     }
 }

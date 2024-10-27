@@ -10,7 +10,6 @@ public enum ErrorMessage {
     NEGATIVE_NUMBER("입력된 숫자는 양수여야 합니다."),
     NOT_INTEGER("입력된 시도 횟수는 숫자여야 합니다.");
 
-
     private final String message;
 
     ErrorMessage(String message) {

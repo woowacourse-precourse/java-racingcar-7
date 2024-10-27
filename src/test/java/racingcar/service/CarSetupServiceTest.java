@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.car.Car;
+import racingcar.domain.Car;
 import racingcar.validator.InputValidator;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class CarSetupServiceTest {
     private InputValidator inputValidator;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         inputValidator = new InputValidator();
         carSetupService = new CarSetupService(inputValidator);
     }
@@ -26,7 +26,7 @@ public class CarSetupServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"YOON,YOON,CHAN"})
     @DisplayName("자동차 이름이 중복될 때 예외 발생")
-    public void testDuplicateCarName(String input) {
+    void testDuplicateCarName(String input) {
         // When
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
                 () -> carSetupService.parseCarNames(input));
@@ -37,7 +37,7 @@ public class CarSetupServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"YOON,WOONG,CHAN"})
     @DisplayName("자동차 이름이 중복되지 않으면 정상 통과")
-    public void testUniqueCarName(String input) {
+    void testUniqueCarName(String input) {
         // When & then
         assertDoesNotThrow(() -> carSetupService.parseCarNames(input));
     }
