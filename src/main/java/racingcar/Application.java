@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.HashMap;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -50,6 +51,26 @@ public class Application {
                 System.out.println(carName + " : " + carStates.get(carName));
             }
             System.out.println();
+        }
+
+        // 자동차 이름별로 진행 사항 비교 후 우승자 정하기
+        // 우승자 리스트 만들기
+        ArrayList<String> winners = new ArrayList<>();
+        int maxLength = 0;
+
+        // 해시 맵 순회
+        for(HashMap.Entry<String, StringBuilder> entry : carStates.entrySet()) {
+            String carName = entry.getKey();
+            StringBuilder carState = carStates.get(carName);
+
+            // 누가 더 멀리 갔는지 비교하고 우승자 정하기
+            if(carState.length() > maxLength) {
+                maxLength = carState.length();
+                winners.clear(); // 더 멀리 간 차 찾으면 리스트 초기화
+                winners.add(carName); // 우승자 갱신
+            } else if (carState.length() == maxLength) {
+                winners.add(carName);   // 같은 길이의 우승자 추가
+            }
         }
     }
 }
