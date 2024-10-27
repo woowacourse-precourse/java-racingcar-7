@@ -71,9 +71,4 @@ public class RaceService {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    private boolean goStraight(int num) {
-        if (num >= 4)
-            return true;
-        return false;
-    }
 }
