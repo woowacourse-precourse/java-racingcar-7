@@ -20,7 +20,6 @@ class ApplicationTest extends NsTest {
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
             },
             MOVING_FORWARD, STOP
-
         );
     }
 
