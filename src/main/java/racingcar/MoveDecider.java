@@ -27,11 +27,21 @@ public class MoveDecider {
             String[] carNames = InputView.inputCar();
             int attemptCount = InputView.inputCount();
 
-            for (String name : carNames) {
-                String movementResult = generateMovementResult (name, attemptCount);
-                System.out.println(movementResult);
-                result.append(movementResult).append("\n");
+            String[] movements = new String[carNames.length];
+            for (int i = 0; i < carNames.length; i++) {
+                movements[i] = carNames[i] + " : ";
+
             }
+
+            for (int attempt = 0; attempt < attemptCount; attempt++) {
+                generateMovementResult(movements);
+                System.out.println();
+            }
+
+            for (String movement : movements) {
+                result.append(movement).append("\n");
+            }
+
 
         } catch (IllegalAccessException e) {
             System.out.println(e.getMessage());
@@ -42,16 +52,14 @@ public class MoveDecider {
         return result.toString();
     }
 
-    private static String generateMovementResult (String carName, int attemptCount) {
-        StringBuilder movement = new StringBuilder();
-
-        for (int i = 0; i < attemptCount; i++) {
+    private static void generateMovementResult (String[] movements) {
+        for (int i = 0; i < movements.length; i++) {
             int randomNum = MoveDecider.pickRandomNum();
             String moved = MoveDecider.isMovable(randomNum);
-            movement.append(moved);
-        }
+            movements[i] += moved;
+            System.out.println(movements[i]);
 
-        return carName + " : " + movement;
+        }
     }
 
 }
