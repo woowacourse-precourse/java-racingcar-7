@@ -1,11 +1,12 @@
-package racingcar.domain;
+package racingcar.domain.game;
 
 import java.util.List;
-import racingcar.dto.CarStatusDTO;
+import racingcar.domain.car.Car;
+import racingcar.view.CarStatusDTO;
 import racingcar.factory.CarFactory;
 import racingcar.strategy.MoveStrategy;
-import racingcar.util.Constants;
-import racingcar.validator.CarsValidator;
+import racingcar.domain.Constants;
+import racingcar.error.CarsValidator;
 
 public class Game {
 

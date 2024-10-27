@@ -1,7 +1,7 @@
 package racingcar.strategy;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.util.Constants;
+import racingcar.domain.Constants;
 
 public class RandomMoveStrategy implements MoveStrategy {
 

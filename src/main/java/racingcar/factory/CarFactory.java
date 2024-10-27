@@ -2,7 +2,7 @@ package racingcar.factory;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.Car;
+import racingcar.domain.car.Car;
 import racingcar.strategy.MoveStrategy;
 
 public class CarFactory {

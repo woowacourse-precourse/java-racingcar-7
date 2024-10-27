@@ -1,8 +1,7 @@
-package racingcar.validator;
+package racingcar.error;
 
 import java.util.HashSet;
 import java.util.Set;
-import racingcar.error.ErrorMessages;
 
 public class CarsValidator {
 

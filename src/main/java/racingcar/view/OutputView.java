@@ -1,13 +1,12 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.dto.CarStatusDTO;
-import racingcar.util.Constants;
+
 
 public class OutputView {
 
   public void printGameStartMessage() {
-    System.out.println(Constants.GAME_START_MESSAGE);
+    System.out.println(GameMessages.GAME_START_MESSAGE);
   }
 
   public void printCarPositions(List<CarStatusDTO> carStatuses) {
@@ -18,12 +17,12 @@ public class OutputView {
   }
 
   private void printCarPosition(CarStatusDTO status) {
-    String positionIndicator = "-".repeat(status.getPosition());
-    System.out.println(status.getName() + " : " + positionIndicator);
+    String positionIndicator = "-".repeat(status.position());
+    System.out.println(status.name() + " : " + positionIndicator);
   }
 
   public void printWinners(List<String> winners) {
-    String winnersNames = String.join(Constants.JOIN_DELIMITER, winners);
-    System.out.println(Constants.WINNERS_MESSAGE_PREFIX + winnersNames);
+    String winnersNames = String.join(GameMessages.JOIN_DELIMITER, winners);
+    System.out.println(GameMessages.WINNERS_MESSAGE_PREFIX + winnersNames);
   }
 }

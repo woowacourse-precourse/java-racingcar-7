@@ -1,9 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.game;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.dto.CarStatusDTO;
-import racingcar.util.Constants;
+import racingcar.domain.car.Car;
+import racingcar.view.CarStatusDTO;
+import racingcar.domain.Constants;
 
 public class Cars {
 

@@ -1,6 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
-import racingcar.dto.CarStatusDTO;
+import racingcar.view.CarStatusDTO;
 import racingcar.strategy.MoveStrategy;
 
 public class Car {

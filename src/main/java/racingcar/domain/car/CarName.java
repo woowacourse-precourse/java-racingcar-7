@@ -1,7 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import racingcar.error.ErrorMessages;
-import racingcar.util.Constants;
+import racingcar.domain.Constants;
 
 public record CarName(String value) {
 

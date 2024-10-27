@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.dto.CarStatusDTO;
+import racingcar.domain.car.Car;
+import racingcar.domain.game.Cars;
+import racingcar.view.CarStatusDTO;
 import racingcar.factory.CarFactory;
 import racingcar.strategy.RandomMoveStrategy;
-import racingcar.validator.CarsValidator;
+import racingcar.error.CarsValidator;
 
 class CarsTest {
 
@@ -27,9 +29,9 @@ class CarsTest {
 
     // Then
     List<CarStatusDTO> carNameObjects = cars.getCarStatuses();
-    assertEquals(carNameObjects.getFirst().getName(), "pobi");
-    assertEquals(carNameObjects.get(1).getName(), "jun");
-    assertEquals(carNameObjects.getLast().getName(), "car1");
+    assertEquals(carNameObjects.getFirst().name(), "pobi");
+    assertEquals(carNameObjects.get(1).name(), "jun");
+    assertEquals(carNameObjects.getLast().name(), "car1");
   }
 
   @Test
@@ -45,9 +47,9 @@ class CarsTest {
 
     // Then
     List<CarStatusDTO> carNameObjects = cars.getCarStatuses();
-    assertEquals(carNameObjects.getFirst().getName(), "pobi");
-    assertEquals(carNameObjects.get(1).getName(), "jun");
-    assertEquals(carNameObjects.getLast().getName(), "car2");
+    assertEquals(carNameObjects.getFirst().name(), "pobi");
+    assertEquals(carNameObjects.get(1).name(), "jun");
+    assertEquals(carNameObjects.getLast().name(), "car2");
   }
 
   @Test
@@ -63,8 +65,8 @@ class CarsTest {
 
     // Then
     List<CarStatusDTO> carNameObjects = cars.getCarStatuses();
-    assertEquals(carNameObjects.getFirst().getName(), "car1!");
-    assertEquals(carNameObjects.getLast().getName(), "pobi@");
+    assertEquals(carNameObjects.getFirst().name(), "car1!");
+    assertEquals(carNameObjects.getLast().name(), "pobi@");
   }
 
   // ## Bad Case

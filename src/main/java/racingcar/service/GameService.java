@@ -1,8 +1,8 @@
 package racingcar.service;
 
 import java.util.List;
-import racingcar.domain.Game;
-import racingcar.dto.CarStatusDTO;
+import racingcar.domain.game.Game;
+import racingcar.view.CarStatusDTO;
 import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
 
