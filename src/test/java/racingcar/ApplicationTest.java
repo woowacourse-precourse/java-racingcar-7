@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -89,6 +91,17 @@ class ApplicationTest extends NsTest {
 
         assertThatThrownBy(() -> Application.validateCarNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 테스트_1_4_carList_생성() {
+        String[] carNames = {"a", "b", "c"};
+        ArrayList<Car> carList = Application.createCarList(carNames);
+
+        assertThat(carList.size()).isEqualTo(3);
+        assertThat(carList.get(0).getName()).isEqualTo("a");
+        assertThat(carList.get(1).getName()).isEqualTo("b");
+        assertThat(carList.get(2).getName()).isEqualTo("c");
     }
 
     @Override
