@@ -29,6 +29,9 @@ public class Application {
             round(splitName, moveValue);
             System.out.println(); // 각 라운드 후 빈 줄 추가
         }
+
+        // 가장 "-"의 개수가 많은 자동차
+        winner(splitName, moveValue);
     }
 
     // 주어진 라운드에 따라 '-' 출력
@@ -45,5 +48,26 @@ public class Application {
             // 누적된 "-" 값 출력
             System.out.println("-".repeat(moveValue.get(i)));
         }
+    }
+
+    private static void winner(List<String> cars, List<Integer> moveValue) {
+
+        // "-" 출력이 가장 많은 값
+        int maxValue = moveValue.get(0);
+
+        for (int i = 0; i < moveValue.size(); i++) {
+            if (maxValue < moveValue.get(i)) {
+                maxValue = moveValue.get(i);
+            }
+        }
+
+        List<String> winners = new ArrayList<>();
+
+        for (int i = 0; i < cars.size(); i++) {
+            if (moveValue.get(i) == maxValue)
+                winners.add(cars.get(i)); // "-" 출력이 가장 많은 자동차만 추가
+        }
+
+        System.out.println(winners.get(0));
     }
 }
