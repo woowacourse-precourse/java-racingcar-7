@@ -58,7 +58,7 @@ public class RacingCar {
             throw new IllegalArgumentException();
         }
         // input_times 스트링이 양의 정수로 변환가능한지 체크
-        if(input_times == null || input_times.matches("\\d+")){
+        if(input_times == null || !input_times.matches("\\d+")){
             throw new IllegalArgumentException();
         }
     }
