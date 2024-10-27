@@ -1,11 +1,11 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarFactory;
+import racingcar.util.RandomGenerator;
 import racingcar.util.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -40,10 +40,9 @@ public class Controller {
     }
 
     private void runGameForRounds(int repeatNumber, List<Car> carList) {
-        int randomValue;
         for (int i = 0; i < repeatNumber; i++) {
             for (Car car : carList) {
-                randomValue = createRandomValue();
+                int randomValue = RandomGenerator.createRandomValue();
                 if (randomValue >= MIN_MOVE_CONDITION) {
                     int currentForwardCount = car.getForwardCount();
                     car.setForwardCount(currentForwardCount + 1);
@@ -51,11 +50,6 @@ public class Controller {
             }
             outputView.printCurrentRoundRacingResult(carList);
         }
-    }
-
-
-    private int createRandomValue() {
-        return Randoms.pickNumberInRange(0, 9);
     }
 
     private List<String> findFinalWinner(List<Car> cars) {
