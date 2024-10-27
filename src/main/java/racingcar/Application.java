@@ -10,11 +10,13 @@ import java.util.Map;
 
 public class Application {
 
-    static List<String> players = new ArrayList<>();
-    static Map<String, Integer> playerDistanceMap = new HashMap<>();
+    static List<String> players;
+    static Map<String, Integer> playerDistanceMap;
     static int N;
 
     public static void main(String[] args) {
+        players = new ArrayList<>();
+        playerDistanceMap = new HashMap<>();
         // TODO: 프로그램 구현
         try {
             Input();
