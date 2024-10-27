@@ -1,9 +1,10 @@
 package racingcar;
 
-import racingcar.Input.ConsoleInputHandler;
-import racingcar.Input.InputHandler;
-import racingcar.Output.ConsoleOutputHandler;
-import racingcar.Output.OutputHandler;
+import racingcar.domain.Racing;
+import racingcar.io.Input.ConsoleInputHandler;
+import racingcar.io.Input.InputHandler;
+import racingcar.io.Output.ConsoleOutputHandler;
+import racingcar.io.Output.OutputHandler;
 
 public class Application {
     public static void main(String[] args) {

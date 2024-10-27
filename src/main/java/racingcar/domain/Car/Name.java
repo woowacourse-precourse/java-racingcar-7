@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.Car;
 
 public class Name {
 
@@ -15,7 +15,7 @@ public class Name {
     }
 
     private void validateNaming(String carName) {
-        if(carName.isEmpty() || carName.length() >5) {
+        if (carName.isEmpty() || carName.length() > 5) {
             throw new IllegalArgumentException();
         }
     }

@@ -1,8 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
-import racingcar.Input.InputHandler;
-import racingcar.Output.OutputHandler;
+import racingcar.domain.Car.Car;
+import racingcar.domain.Car.Cars;
+import racingcar.io.Input.InputHandler;
+import racingcar.io.Output.OutputHandler;
 
 public class Racing {
 

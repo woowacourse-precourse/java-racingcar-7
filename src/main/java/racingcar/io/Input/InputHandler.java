@@ -1,4 +1,4 @@
-package racingcar.Input;
+package racingcar.io.Input;
 
 public interface InputHandler {
 

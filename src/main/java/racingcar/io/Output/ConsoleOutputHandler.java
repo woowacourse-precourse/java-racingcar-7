@@ -1,7 +1,7 @@
-package racingcar.Output;
+package racingcar.io.Output;
 
 import java.util.List;
-import racingcar.Car;
+import racingcar.domain.Car.Car;
 
 public class ConsoleOutputHandler implements OutputHandler {
 

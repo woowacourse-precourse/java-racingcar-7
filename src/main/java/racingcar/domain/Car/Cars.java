@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.Output.OutputHandler;
+import racingcar.io.Output.OutputHandler;
 
 public class Cars {
     private final List<Car> cars;
