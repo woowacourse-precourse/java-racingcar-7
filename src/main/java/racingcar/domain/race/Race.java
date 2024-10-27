@@ -7,6 +7,7 @@ import racingcar.domain.car.Cars;
 import racingcar.domain.car.dto.CarResultDto;
 import racingcar.domain.car.dto.CarsResultDto;
 import racingcar.domain.race.dto.RaceResultDto;
+import racingcar.domain.race.dto.WinnersDto;
 import racingcar.util.NumberGenerator;
 
 public class Race {
@@ -38,5 +39,9 @@ public class Race {
             car.move();
         }
         return new CarResultDto(car.getName(), car.getPosition());
+    }
+
+    public WinnersDto getWinners(Cars cars) {
+        return new WinnersDto(cars.getWinners());
     }
 }

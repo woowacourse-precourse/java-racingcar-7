@@ -4,6 +4,7 @@ import racingcar.domain.car.Cars;
 import racingcar.domain.race.Race;
 import racingcar.domain.race.RandomNumberGenerator;
 import racingcar.domain.race.dto.RaceResultDto;
+import racingcar.domain.race.dto.WinnersDto;
 import racingcar.view.View;
 
 public class RacingController {
@@ -31,5 +32,6 @@ public class RacingController {
 
     private void racing(Cars cars, Race race) {
         RaceResultDto raceResult = race.progress(cars);
+        WinnersDto winners = race.getWinners(cars);
     }
 }

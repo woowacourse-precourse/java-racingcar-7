@@ -27,17 +27,32 @@ public class Cars {
         }
     }
 
-    private List<Car> createCars(String carNames) {
-        return Arrays.stream(carNames.split(SPLIT_DELIMITER))
-                .map(Car::of)
-                .toList();
-    }
-
     public CarsResultDto race(Race race) {
         List<CarResultDto> carResultDtos = new ArrayList<>();
         for (Car car : cars) {
             carResultDtos.add(race.move(car));
         }
         return new CarsResultDto(carResultDtos);
+    }
+
+    private List<Car> createCars(String carNames) {
+        return Arrays.stream(carNames.split(SPLIT_DELIMITER))
+                .map(Car::of)
+                .toList();
+    }
+
+    public List<String> getWinners() {
+        int maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.isMaxPosition(maxPosition))
+                .map(Car::getName)
+                .toList();
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
     }
 }

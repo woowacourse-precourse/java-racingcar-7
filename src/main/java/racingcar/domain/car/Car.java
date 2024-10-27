@@ -27,6 +27,10 @@ public class Car {
         position.add();
     }
 
+    public boolean isMaxPosition(int maxPosition) {
+        return maxPosition == position.getPosition();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
