@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Output {
-    private int max = 0;
+    private int maxPosition = 0;
     List<Car> carList;
 
     public Output(List<Car> carList) {
@@ -12,11 +12,11 @@ public class Output {
     }
 
     public void printOutput() {
-        List<String> resultList = new ArrayList<>();
+        List<String> winnerList = new ArrayList<>();
 
-        setMax();
-        addList(resultList);
-        printWinner(resultList);
+        setMaxPosition();
+        addList(winnerList);
+        printWinner(winnerList);
     }
 
     private void printWinner(List<String> resultList) {
@@ -29,17 +29,17 @@ public class Output {
         }
     }
 
-    private void setMax() {
+    private void setMaxPosition() {
         for(Car car : carList) {
-            if(car.getPosition() > max) {
-                max = car.getPosition();
+            if(car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
             }
         }
     }
 
     private void addList(List<String> resultList) {
         for(Car car : carList) {
-            if(car.getPosition() == max) {
+            if(car.getPosition() == maxPosition) {
                 resultList.add(car.getName());
             }
         }
