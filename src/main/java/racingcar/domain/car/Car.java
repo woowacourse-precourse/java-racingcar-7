@@ -20,4 +20,8 @@ public class Car {
     public void move() {
         moveCount++;
     }
+
+    public String getStatus() {
+        return name + " : " + "-".repeat(Math.max(0, moveCount));
+    }
 }

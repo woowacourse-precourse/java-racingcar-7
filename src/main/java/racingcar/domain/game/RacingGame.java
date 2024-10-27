@@ -2,6 +2,7 @@ package racingcar.domain.game;
 
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -16,12 +17,15 @@ public class RacingGame {
     }
 
     public void run() {
+        OutputView.printResultPrefix();
+
         for (int i = 0; i < tryRounds; i++) {
-            executeCarsAction();
+            executeCarActions();
+            OutputView.printRoundResult(cars);
         }
     }
 
-    private void executeCarsAction() {
+    private void executeCarActions() {
         for (Car car : cars.getCars()) {
             moveCar(car);
         }
