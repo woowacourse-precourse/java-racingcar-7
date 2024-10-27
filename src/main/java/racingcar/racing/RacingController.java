@@ -11,15 +11,13 @@ import racingcar.view.Response;
 
 public class RacingController {
 
-    private final List<Car> carList;
+    private List<Car> carList;
     private int tryCount;
     private List<Car> winners = new ArrayList<>();
 
-    public RacingController(List<Car> carList) {
-        this.carList = carList;
-    }
 
-    public void start() {
+    public void start(List<Car> carList) {
+        this.carList = carList;
         inputTryCount();
         Response.outputStart();
         race();

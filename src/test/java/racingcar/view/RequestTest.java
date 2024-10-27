@@ -1,8 +1,9 @@
 package racingcar.view;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class RequestTest {
@@ -13,7 +14,7 @@ class RequestTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Assertions.assertThat(Request.inputCar()).isEqualTo("a,b,c");
+        assertThat(Request.inputCar()).isEqualTo("a,b,c");
     }
 
     @Test
@@ -22,6 +23,6 @@ class RequestTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Assertions.assertThat(Request.inputTryCount()).isEqualTo("5");
+        assertThat(Request.inputTryCount()).isEqualTo("5");
     }
 }

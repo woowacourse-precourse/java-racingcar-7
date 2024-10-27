@@ -1,11 +1,11 @@
 package racingcar.car;
 
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class RacingCarControllerTest {
@@ -27,7 +27,7 @@ class RacingCarControllerTest {
         List<Car> result = racingCarController.registerRacingCars();
 
         for(int num = 0; num < 3; num++) {
-            Assertions.assertThat(result.get(num).getName()).isEqualTo(carList.get(num).getName());
+            assertThat(result.get(num).getName()).isEqualTo(carList.get(num).getName());
         }
     }
 }
