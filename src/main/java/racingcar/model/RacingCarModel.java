@@ -24,7 +24,13 @@ public class RacingCarModel {
     }
 
     public void forwardAction(List<Integer> randoms) {
-        System.out.println(randoms);
+        validateRandomsSize(randoms);
+
+        for (int i = 0; i < randoms.size(); i++) {
+            if (randoms.get(i) >= 4) {
+                racingCars.get(i).increaseDistance();
+            }
+        }
     }
 
     // 저장된 RacingCar 확인용 메서드
@@ -42,6 +48,12 @@ public class RacingCarModel {
                 .anyMatch(racingCar -> racingCar.getName().equals(trimName));
         if (existDuplicateCarName) {
             throw new IllegalArgumentException(ExceptionMessage.NAME_DUPLICATE);
+        }
+    }
+
+    private void validateRandomsSize(List<Integer> randoms) {
+        if (randoms.size() != racingCars.size()) {
+            throw new IllegalArgumentException(ExceptionMessage.RANDOMS_SIZE_INVALID);
         }
     }
 }

@@ -65,7 +65,7 @@
 - [x] for 문으로 입력된 시도 횟수만큼 라운드를 진행한다.
 - [x] 각 자동차에 대해 랜덤 값을 할당한다.
   > 랜덤 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
-- [ ] 랜덤 값이 4 이상이면 전진시킨다.
+- [x] 랜덤 값이 4 이상이면 전진시킨다.
 
 ### 전역 상수 설정
 

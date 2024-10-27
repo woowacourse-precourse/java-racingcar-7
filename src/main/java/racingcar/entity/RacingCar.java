@@ -22,6 +22,10 @@ public class RacingCar {
         return distance;
     }
 
+    public void increaseDistance() {
+        this.distance++;
+    }
+
     private void validateName(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.NAME_EMPTY);
