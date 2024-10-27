@@ -12,10 +12,10 @@ class ValidateRoundTest {
         InputValidator inputValidator = new InputValidator();
 
         // when
-        Boolean result = inputValidator.isValidRound("58");
+        Integer result = inputValidator.isValidRound("58");
 
         // then
-        Assertions.assertTrue(result);
+        org.assertj.core.api.Assertions.assertThat(result).isEqualTo(58);
     }
 
     @Test

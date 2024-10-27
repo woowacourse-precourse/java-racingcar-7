@@ -4,10 +4,10 @@ import java.util.List;
 
 public class InputValidator {
 
-    public void isValid(String carNames, String round) {
+    public List<String> isValidCarsName(String carNames) {
         isValidInputFormat(carNames);
         isValidName(carNames);
-        isValidRound(round);
+        return Parser.splitByDelimiter(carNames);
     }
 
     public Boolean isValidInputFormat(String input) {
@@ -31,10 +31,10 @@ public class InputValidator {
         return true;
     }
 
-    public Boolean isValidRound(String input) {
+    public Integer isValidRound(String input) {
         if (!input.matches(RegexPatterns.DIGIT_REGEX)) {
             throw new IllegalArgumentException(ExceptionMessages.ONLY_NUMERIC_ATTEMPTS);
         }
-        return true;
+        return Parser.toInteger(input);
     }
 }

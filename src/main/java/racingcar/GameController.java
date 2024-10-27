@@ -17,14 +17,14 @@ public class GameController {
     }
 
     public void run() {
-        String carNames = inputView.executeNameInput();
-        String round = inputView.executeRoundInput();
+        String nameInput = inputView.executeNameInput();
+        String roundInput = inputView.executeRoundInput();
 
-        inputValidator.isValid(carNames, round);
+        List<String> racingCars = inputValidator.isValidCarsName(nameInput);
+        Integer round = inputValidator.isValidRound(roundInput);
 
-        gameService.init(Parser.toInteger(round), Parser.splitByDelimiter(carNames));
-        play(Parser.toInteger(round));
-
+        gameService.init(round, racingCars);
+        play(round);
         List<String> winners = gameService.selectWinner();
         outputView.printWinnerMessage(winners);
     }
