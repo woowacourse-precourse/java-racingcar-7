@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashMap;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
@@ -26,15 +27,29 @@ public class Application {
 
         // 시도할 횟수 입력 받기
         String tryNumStr = Console.readLine();
+        int tryNum = 0;
         // String을 숫자로 변경
-        if(tryNumStr.matches("^[0-9]+$")) {
-            int tryNum = Integer.parseInt(tryNumStr);
-            if(tryNum == 0){
+        if (tryNumStr.matches("^[0-9]+$")) {
+            tryNum = Integer.parseInt(tryNumStr);
+            if (tryNum == 0) {
                 throw new IllegalArgumentException("1 이상의 숫자를 입력하세요");
             }
         } else {
             // 숫자가 아닐 경우 예외 발생
             throw new IllegalArgumentException("숫자가 아닙니다. 다시 입력하세요.");
+        }
+
+        // for 문으로 tryNum만큼 진행
+        for (int i = 0; i < tryNum; i++) {
+            for (String carName : carStates.keySet()) {
+                int randNum = Randoms.pickNumberInRange(0, 9);
+                if(randNum>=4){
+                    // 전진
+                    carStates.get(carName).append("-");
+                }
+                System.out.println(carName + " : " + carStates.get(carName));
+            }
+            System.out.println();
         }
     }
 }
