@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +11,10 @@ public class Cars {
     public Cars(List<Car> cars) {
         validate(cars);
         this.cars = cars;
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
     public void validate(List<Car> cars) {
