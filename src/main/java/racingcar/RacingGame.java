@@ -18,26 +18,26 @@ class RacingGame {
             playRound();
             printRoundResults();
         }
-        printWinners();  // 최종 우승자 출력
+        printWinners();
     }
 
     private List<Car> createCars(String[] names) {
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(new Car(name)); // 각 이름으로 Car 객체 생성 후 리스트에 추가
+            cars.add(new Car(name));
         }
         return cars;
     }
 
-    private String[] inputCarNames() { // 자동차 이름을 입력받음
+    private String[] inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
-        String[] names = input.split(","); // 입력된 이름을 쉼표로 분리
-        validateNames(names); // 유효성 검증
+        String[] names = input.split(",");
+        validateNames(names);
         return names;
     }
 
-    private void validateNames(String[] names) { // 유효성 검증
+    private void validateNames(String[] names) {
         for (String name : names) {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
@@ -68,7 +68,7 @@ class RacingGame {
     }
 
     private void printWinners() {
-        int maxPosition = getMaxPosition();  // 가장 멀리 전진한 위치를 찾음
+        int maxPosition = getMaxPosition();
         List<String> winners = new ArrayList<>();
 
         for (Car car : cars) {
@@ -84,7 +84,7 @@ class RacingGame {
         int maxPosition = 0;
         for (Car car : cars) {
             if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition(); // 최고 위치값을 갱신함
+                maxPosition = car.getPosition();
             }
         }
         return maxPosition;

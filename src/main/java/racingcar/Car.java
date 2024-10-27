@@ -11,7 +11,7 @@ class Car {
         this.name = name;
     }
 
-    public void move() { // 전진조건 4이상
+    public void move() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             position++;
         }
