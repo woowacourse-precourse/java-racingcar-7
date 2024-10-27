@@ -4,12 +4,12 @@ public class TotalRounds {
 
     private static final int MAX_TOTAL_ROUNDS = 10;
     private static final int MIN_TOTAL_ROUNDS = 1;
-    private final int totalRounds;
+    private final int roundCount;
 
-    public TotalRounds(int totalRounds) {
-        validateRoundsInRange(totalRounds);
+    public TotalRounds(int roundCount) {
+        validateRoundsInRange(roundCount);
 
-        this.totalRounds = totalRounds;
+        this.roundCount = roundCount;
     }
 
     private void validateRoundsInRange(int totalRounds) {
@@ -23,6 +23,6 @@ public class TotalRounds {
     }
 
     public boolean hasMoreRoundsThan(int currentRound) {
-        return totalRounds > currentRound;
+        return roundCount > currentRound;
     }
 }
