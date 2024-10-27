@@ -9,10 +9,8 @@ public class GameController {
 
     public void startGame() throws IOException {
         GameData gameData = gameService.getGameData();
+        gameService.playGame(gameData);
 
     }
 
-    private void playGame(GameData gameData) {
-
-    }
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.GameData;
+import racingcar.utils.Util;
 import racingcar.view.InputView;
 
 public class GameService {
@@ -16,6 +17,14 @@ public class GameService {
 
         int attempts = inputView.getTryNumbers();
         return new GameData(cars, attempts);
+    }
+
+    public void playGame(GameData gameData) {
+        for (int i = 0; i < gameData.getAttempts(); i++) {
+            for (Car car : gameData.getCars()) {
+                car.move(Util.generateRandomNumber());
+            }
+        }
     }
 
 }
