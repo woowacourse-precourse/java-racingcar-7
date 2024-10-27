@@ -3,11 +3,12 @@ package validator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
+import util.ParsingUtil;
 
 public class carNameValidator {
     // 정규식 패턴 객체를 상수로 정의, 영문자/한글/숫자만 허용하고 특수문자는 제외
     private static final Pattern VALID_NAME_PATTERN = Pattern.compile("^[a-zA-Z가-힣0-9]+$");
-    
+
     public static void isValid(List<String> carNames) {
         for (String name : carNames) {
             checkSingleCarName(name);
@@ -49,8 +50,9 @@ public class carNameValidator {
 
     }
 
-    //대소문자는 구별하지 않는다.
+    //대소문자는 구별한다.
     public static void checkDuplicateNames(List<String> carNames) {
+        carNames = ParsingUtil.DuplicateNames(carNames);
         if (carNames.size() != new HashSet<>(carNames).size()) {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
