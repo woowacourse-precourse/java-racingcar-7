@@ -34,4 +34,33 @@ class RacingTest {
         RoundDto actual = racing.getRoundResult();
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    void findWinnerTest_whenHasSingleWinner() {
+        Racing racing = new Racing(List.of(createMovedCar("one", 1), createMovedCar("two", 2)));
+        List<String> expected = List.of("two");
+
+        List<String> actual = racing.findWinner();
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void findWinnerTest_whenHasMultiWinner() {
+        Racing racing = new Racing(List.of(
+                createMovedCar("one", 1), createMovedCar("two1", 2), createMovedCar("two2", 2)));
+        List<String> expected = List.of("two1", "two2");
+
+        List<String> actual = racing.findWinner();
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    private Car createMovedCar(String name, int position) {
+        Car car = new Car(name, ALWAYS_MOVE_NUMBER_SUPPLIER);
+        for (int i = 0; i < position; i++) {
+            car.move();
+        }
+        return car;
+    }
 }

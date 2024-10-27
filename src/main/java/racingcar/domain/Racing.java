@@ -26,4 +26,18 @@ public class Racing {
     public RoundDto getRoundResult() {
         return RoundDto.from(cars);
     }
+
+    public List<String> findWinner() {
+        int maxPosition = findMaxPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
+    }
+
+    private int findMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .reduce(Integer.MIN_VALUE, Math::max);
+    }
 }
