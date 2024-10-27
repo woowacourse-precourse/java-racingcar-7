@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.car.RacingCar;
+import racingcar.domain.RaceResult;
 import racingcar.domain.RaceStarter;
 import racingcar.domain.RacingCarGenerator;
 import racingcar.validator.InputValidator;
@@ -30,21 +31,8 @@ public class Application {
         System.out.println("실행 결과");
         RaceStarter.startRace(racingCarList, Integer.parseInt(tryMoveCountInput));
 
-        // find max record of race
-        String maxMoveRecord = "";
-        for(RacingCar racingCar : racingCarList) {
-            if(racingCar.getMoveRecord().length() > maxMoveRecord.length()) {
-                maxMoveRecord = racingCar.getMoveRecord();
-            }
-        }
-
-        // find racing cars have same record as max record of race
-        List<String> winners = new ArrayList<>();
-        for(RacingCar racingCar : racingCarList) {
-            if(racingCar.getMoveRecord().equals(maxMoveRecord)) {
-                winners.add(racingCar.getName());
-            }
-        }
+        RaceResult raceResult = new RaceResult(racingCarList);
+        List<String> winners = raceResult.findWinners();
 
         System.out.println("최종 우승자 : " + String.join(",", winners));
     }

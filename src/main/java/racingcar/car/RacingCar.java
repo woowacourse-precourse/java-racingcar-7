@@ -4,31 +4,31 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingCar {
     private String name;
-    private String moveRecord;
+    private String movedHistory;
 
     public RacingCar(String name) {
         this.name = name;
-        moveRecord = "";
+        movedHistory = "";
     }
 
     public void move() {
         int randomNum = Randoms.pickNumberInRange(0, 9);
         if(randomNum >= 4) {
             // move
-            moveRecord += "-";
+            movedHistory += "-";
         }
         // else, don't move (stop)
     }
 
     public void showRacingStatus() {
-        System.out.println(name + " : " + moveRecord);
+        System.out.println(name + " : " + movedHistory);
     }
 
     public String getName() {
         return name;
     }
 
-    public String getMoveRecord() {
-        return moveRecord;
+    public String getMovedHistory() {
+        return movedHistory;
     }
 }

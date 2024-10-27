@@ -7,8 +7,6 @@ import racingcar.car.RacingCar;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class RaceStarterTest {
 
     @Test
@@ -25,7 +23,7 @@ class RaceStarterTest {
         // then
         for(RacingCar racingCar : racingCarList) {
             // 100번 시도하면 확률상 한 번은 움직였을 것. (제대로 동작하는지 테스트, 실패할 수도 있음)
-            Assertions.assertNotEquals("", racingCar.getMoveRecord());
+            Assertions.assertNotEquals("", racingCar.getMovedHistory());
         }
     }
 
