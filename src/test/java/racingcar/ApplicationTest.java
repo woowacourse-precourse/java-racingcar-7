@@ -99,4 +99,18 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(expectedMessage);
     }
+
+    @Test
+    @DisplayName("같은 이름을 입력하였으면 예외 발생")
+    void inputSameName_InputtedSameName_ExceptionThrown(){
+        //given
+        final String carNames = "Ahn,Seong,Ahn";
+        final String expectedMessage = "중복되지 않는 이름을 입력해주세요";
+        final CarNameValidator carNameValidator = new CarNameValidator();
+
+        //when & then
+        assertThatThrownBy(() -> carNameValidator.inputSameName(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(expectedMessage);
+    }
 }
