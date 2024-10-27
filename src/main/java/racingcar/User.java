@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class User {
 
@@ -17,8 +18,9 @@ public class User {
         String userCarNamesInput = Console.readLine();
 
         // 분리된 문자열 (,) 앞 뒤 공백만 제거하는 정규표현식 사용
-        List<String> carNamesSet = List.of(userCarNamesInput.split("\\s*,\\s*"));
-        return new ArrayList<>(carNamesSet);
+        List<String> carNamesList = List.of(userCarNamesInput.split("\\s*,\\s*"));
+        carNamesList = handleDuplicateCarNames(carNamesList);
+        return new ArrayList<>(carNamesList);
     }
 
     public static int inputGameRepeats() {
@@ -27,6 +29,10 @@ public class User {
         String userGameRepeatInput = Console.readLine().strip();
         validateInputGameRepeats(userGameRepeatInput);
         return Integer.parseInt(userGameRepeatInput);
+    }
+
+    private static List<String> handleDuplicateCarNames(List<String> carNamesList) {
+        return carNamesList.stream().distinct().collect(Collectors.toList());
     }
 
     private static void validateInputGameRepeats(String userGameRepeatInput) {
