@@ -53,7 +53,7 @@ public class Race {
 
     private void validateTryCount(int tryCount) {
         if (tryCount < VALIDATE_NEGATIVE_NUMBER) {
-            throw new IllegalArgumentException("시도할 횟수는 음수일 수 없습니다.");
+            throw new IllegalArgumentException("시도할 횟수는 0 이상이어야 합니다.");
         }
     }
 }
