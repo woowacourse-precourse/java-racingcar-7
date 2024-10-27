@@ -8,9 +8,12 @@ public class InputView {
         return Console.readLine();
     }
 
-    public int getEpoch() {
+    public int getAttemptCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        // 공백이나 문자로 주어진다면 에러를 반환해야 한다. 수정 필요
-        return Integer.parseInt(Console.readLine());
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해야 합니다.");
+        }
     }
 }

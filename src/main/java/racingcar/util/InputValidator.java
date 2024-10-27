@@ -26,10 +26,10 @@ public class InputValidator {
         hasDuplications(names);
     }
 
-    public void validateEpoch(int epoch) {
-        if (epoch < 0) {
+    public void validateAttemptCount(int attemptCount) {
+        if (attemptCount < 0) {
             throw new IllegalArgumentException("시도 횟수는 양의 정수여야 합니다.");
-        } else if (epoch > MAX_EPOCH) {
+        } else if (attemptCount > MAX_EPOCH) {
             throw new IllegalArgumentException("시도 횟수는 100번 이하로 가능합니다.");
         }
     }

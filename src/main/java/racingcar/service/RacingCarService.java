@@ -20,7 +20,7 @@ public class RacingCarService {
 
     public void racingStart(UserInputDto dto) {
         List<String> splitInput = dto.carNames();
-        int epoch = dto.epoch();
+        int epoch = dto.attemptCount();
 
         mapInit(splitInput);
 

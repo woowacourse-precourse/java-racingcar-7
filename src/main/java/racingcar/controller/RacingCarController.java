@@ -22,9 +22,9 @@ public class RacingCarController {
     }
 
     public void start() {
-        List<String> userInput = getUserInputAndValidate();
-        int epoch = getUserEpoch();
-        UserInputDto dto = UserInputDto.of(userInput, epoch);
+        List<String> carNames = getUserInputAndValidate();
+        int attemptCount = getUserEpoch();
+        UserInputDto dto = UserInputDto.of(carNames, attemptCount);
         racingCarService.racingStart(dto);
         displayResult();
     }
@@ -36,8 +36,8 @@ public class RacingCarController {
     }
 
     private int getUserEpoch() {
-        int epoch = inputView.getEpoch();
-        inputValidator.validateEpoch(epoch);
+        int epoch = inputView.getAttemptCount();
+        inputValidator.validateAttemptCount(epoch);
         return epoch;
     }
 
