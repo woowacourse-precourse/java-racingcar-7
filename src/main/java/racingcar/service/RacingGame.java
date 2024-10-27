@@ -38,16 +38,16 @@ public class RacingGame {
     }
 
 
-    private void moveForwardCar(Car car){
+    public void moveForwardCar(Car car){
 
-        if(isGreaterThanOrEqualFour()){
+        if(isGreaterThanOrEqualFour(generateRandomNumberZeroToNine())){
             car.moveCarForward();
         }
     }
 
-    private boolean isGreaterThanOrEqualFour() {
+    private boolean isGreaterThanOrEqualFour(int randomNum) {
 
-        return generateRandomNumberZeroToNine() >= 4;
+        return randomNum >= 4;
     }
 
     private int generateRandomNumberZeroToNine(){
