@@ -1,12 +1,15 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -30,6 +33,31 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 글자5개_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 음수_입력_예외_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자_아닌_입력_예외_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "ㅁ"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
