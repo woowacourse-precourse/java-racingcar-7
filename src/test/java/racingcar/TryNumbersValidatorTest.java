@@ -32,7 +32,7 @@ class TryNumbersValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"111", "12", "23", "12321312"})
+    @ValueSource(strings = {"0", "5", "111", "12", "23", "12321312"})
     void 시도횟수가_정수_일때(String userInput) {
         assertDoesNotThrow(() -> {
             tryNumbersValidator.validateNumeric(userInput);
