@@ -27,7 +27,9 @@ public class Application {
 
         // tryNum만큼 진행
         for (int i = 0; i < tryNum; i++) {
-            for (Car car : carStates.values()) {
+            for (String carName : carNamesList) {
+                carName = carName.trim();
+                Car car = carStates.get(carName);
                 car.race();
                 car.statePrint();
             }

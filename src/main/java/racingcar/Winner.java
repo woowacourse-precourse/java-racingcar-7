@@ -3,7 +3,9 @@ package racingcar;
 public class Winner {
     public static void who() {
         int maxLength = -1;
-        for(Car car: Application.carStates.values()) {
+        for(String carName : Application.carNamesList) {
+            carName = carName.trim();
+            Car car = Application.carStates.get(carName);
             int carStateLength = car.getState().length();
 
             // 누가 더 멀리 갔는지 비교하고 우승자 정하기
