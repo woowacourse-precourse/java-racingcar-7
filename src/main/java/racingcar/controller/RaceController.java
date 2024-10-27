@@ -23,7 +23,7 @@ public class RaceController {
         return ParseStringUtil.parseAttemptCount(InputView.getInput());
     }
 
-    private void racing(Race race, int attemptCount) {
+    private void racing(final Race race, final int attemptCount) {
         OutputView.preRenderResult();
         for (int i = 0; i < attemptCount; i++) {
             race.doRace();
@@ -31,7 +31,7 @@ public class RaceController {
         }
     }
 
-    private void result(Race race) {
+    private void result(final Race race) {
         OutputView.renderWinners(race.getWinners());
     }
 

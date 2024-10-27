@@ -26,7 +26,7 @@ public class OutputView {
         System.out.println(NEXT_LINE + RESULT_OUTPUT);
     }
 
-    public static void renderResult(Race race) {
+    public static void renderResult(final Race race) {
         race.getRaceCars().forEach(car -> {
             System.out.print(car.getName() + BETWEEN_NAME_AND_POSITION);
             renderCurrentPosition(car.getPosition());
@@ -35,11 +35,11 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void renderCurrentPosition(int position) {
+    private static void renderCurrentPosition(final int position) {
         System.out.print(POSITION_COUNT_PREFIX.repeat(position));
     }
 
-    public static void renderWinners(List<String> winners) {
+    public static void renderWinners(final List<String> winners) {
         System.out.print(WINNER_OUTPUT);
         System.out.print(String.join(WINNER_DELIMITER, winners));
     }
