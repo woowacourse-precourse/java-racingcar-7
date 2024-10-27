@@ -26,9 +26,9 @@ public class GameTest {
     void Game_play_test() {
         List<String> carNameList = Arrays.asList("pobi", "woni");
         Game test = new Game(carNameList, 3);
-        test.play();
-        test.play();
-        test.play();
+        test.playOneRound();
+        test.playOneRound();
+        test.playOneRound();
         RacingCar pobi = test.racingCarList.getFirst();
         assertThat(pobi.getCount()).isBetween(0, 3);
     }
