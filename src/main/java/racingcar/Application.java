@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 public class Application {
     private static final Pattern RACING_CAR_NAME_REGEX_PATTERN = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]{0,4}$");
+    private static final Pattern TRY_COUNT_REGEX_PATTERN = Pattern.compile("^[1-9][0-9]*$");
 
     public static void main(String[] args) {
         // TODO 1. 경주할 자동차 이름 입력 받고, 유효성 검증
@@ -16,8 +17,9 @@ public class Application {
         List<String> racingCars = Arrays.asList(racingCarNameInput.split(","));
         validateRacingCars(racingCars);
 
-        // TODO 2. 시도 횟수 입력 받기
+        // TODO 2. 시도 횟수 입력 받고, 유효성 검증
         String tryCountInput = inputString("시도할 횟수는 몇 회인가요?");
+        validateTryCount(tryCountInput);
     }
 
     private static String inputString() {
@@ -42,6 +44,12 @@ public class Application {
     private static void validateRacingCar(String racingCar) {
         if (!RACING_CAR_NAME_REGEX_PATTERN.matcher(racingCar).matches()) {
             throw new IllegalArgumentException("자동차 이름은 영문자로 시작하고, 영문자와 숫자로만 구성되어야 하며, 5글자 이하여야 합니다.");
+        }
+    }
+
+    private static void validateTryCount(String tryCountInput) {
+        if (!TRY_COUNT_REGEX_PATTERN.matcher(tryCountInput).matches()) {
+            throw new IllegalArgumentException("시도 횟수는 숫자로만 구성되어야 하며, 0일 수 없습니다.");
         }
     }
 }
