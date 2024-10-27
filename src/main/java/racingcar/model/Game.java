@@ -37,7 +37,7 @@ public class Game {
         return round == 0;
     }
 
-    public Map<String, Integer> getCarStatus() {
-        return cars.getCarStatus();
+    public List<String> getStatus() {
+        return cars.getStatus();
     }
 }

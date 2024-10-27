@@ -23,6 +23,10 @@ public class Car {
         return Randoms.pickNumberInRange(0, 9);
     }
 
+    public String getStatus() {
+        return name + " : " + "-".repeat(location);
+    }
+
     public String getName() {
         return name;
     }

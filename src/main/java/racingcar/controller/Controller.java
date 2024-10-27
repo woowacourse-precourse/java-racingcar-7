@@ -34,7 +34,8 @@ public class Controller {
         Game game = Game.start(carNames, round);
         while (!game.isGameEnd()) {
             game.play();
-            printStatus(game.getCarStatus());
+//            printStatus(game.getCarStatus());
+            printStatus(game.getStatus());
         }
         printWinner(game.findWinners());
     }
@@ -45,16 +46,10 @@ public class Controller {
         }
     }
 
-    private void printStatus(Map<String, Integer> carStatus) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String carName : carStatus.keySet()) {
-            stringBuilder.append(carName).append(" : ");
-            for (int idx = 0; idx < carStatus.get(carName); idx++) {
-                stringBuilder.append("-");
-            }
-            stringBuilder.append("\n");
+    private void printStatus(List<String> stats) {
+        for (String stat : stats) {
+            view.print(stat);
         }
-        view.print(stringBuilder.toString());
     }
 
     private void printWinner(List<String> winners) {

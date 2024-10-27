@@ -33,12 +33,10 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public Map<String, Integer> getCarStatus() {
-        Map<String, Integer> map = new HashMap<>();
-        for (Car car : cars) {
-            map.put(car.getName(), car.getLocation());
-        }
-        return map;
+    public List<String> getStatus() {
+        return cars.stream()
+                .map(Car::getStatus)
+                .toList();
     }
 
     private int findWinnerLocation() {
