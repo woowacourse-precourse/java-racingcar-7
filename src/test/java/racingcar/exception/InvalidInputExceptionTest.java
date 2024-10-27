@@ -15,6 +15,12 @@ class InvalidInputExceptionTest {
     class carNameInput {
 
         @Test
+        @DisplayName("자동차 이름 정상 입력 시 예외 발생하지 않음")
+        void testValidateCarNames() {
+            validateCarNames(new String[]{"test1", "test2", "test3"});
+        }
+
+        @Test
         @DisplayName("공백 입력 시 예외 발생")
         void testValidateInput_BlankInput_ShouldThrowException() {
             assertThatThrownBy(() -> validateInput(" "))
