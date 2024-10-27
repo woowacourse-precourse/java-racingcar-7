@@ -1,6 +1,8 @@
 package racingcar.controller;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.view.InputView;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
@@ -21,6 +23,8 @@ public class RaceController {
         int roundCount = inputView.requestRoundCount();
 
         play(cars, roundCount);
+
+        finish(cars);
     }
 
     private void play(Cars cars, int roundCount) {
@@ -29,6 +33,10 @@ public class RaceController {
             cars.playSingleRound();
             ConsoleWriter.printlnMessage(cars.toString());
         }
+    }
+
+    private void finish(Cars cars) {
+
     }
 
 }

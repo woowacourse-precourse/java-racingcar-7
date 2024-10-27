@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -29,6 +30,10 @@ public class Cars {
         return cars.stream()
                 .map(car -> car.getName() + " : " + "-".repeat(Math.max(0, car.getMoveCount())) + "\n")
                 .collect(Collectors.joining());
+    }
+
+    private int getMaxMoveCount() {
+        return cars.stream().mapToInt(Car::getMoveCount).max().orElse(0);
     }
 
     private boolean hasDuplicateCarNames(List<Car> cars) {
