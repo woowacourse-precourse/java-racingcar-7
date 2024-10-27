@@ -2,19 +2,26 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.util.CommonIo;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Main {
+    private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
+    private CommonIo io = new CommonIo();
+
     public void run(){
         finishGame(playGame(prepareGame()));
     }
 
     public List<Car> prepareGame() {
-        String carNameInput = receiveCarNames();
+        outputView.printGetCarNames();
+        String carNameInput = inputView.receiveCarNames();
         List<String> carNames = splitCarNames(carNameInput);
         List<Car> cars = createAllCars(carNames);
 
@@ -22,16 +29,17 @@ public class Main {
     }
 
     public List<Car> playGame(List<Car> cars) {
-        int playCounts = receivePlayCount();
+        outputView.printGetPlayCount();
+        int playCount = io.convertStringToInt(inputView.receivePlayCount());
 
-        for (int i = 0; i < playCounts; i++) {
+        for (int i = 0; i < playCount; i++) {
             for (Car car : cars) {
                 int randomNumber = createRandomNumber();
                 boolean isMove = isMove(randomNumber);
                 if(isMove) {
                     setMoveInformation(car);
                 }
-                printSingleResult(car);
+                outputView.printSingleResult(car);
             }
         }
 
@@ -39,13 +47,7 @@ public class Main {
     }
 
     public void finishGame(List<Car> cars) {
-        printWinners(cars);
-    }
-
-    public String receiveCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-        return input;
+        outputView.printWinners(cars);
     }
 
     public List<String> splitCarNames(String input) {
@@ -68,12 +70,6 @@ public class Main {
         return cars;
     }
 
-    public int receivePlayCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int count = Integer.parseInt(Console.readLine());
-        return count;
-    }
-
     public int createRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
@@ -84,26 +80,5 @@ public class Main {
 
     public void setMoveInformation(Car car) {
         car.setPosition(1);
-    }
-
-    public void printSingleResult(Car car) {
-        System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-    }
-
-    public void printWinners(List<Car> cars) {
-        int maxPosition = -1;
-        StringBuilder winner = new StringBuilder();
-
-        for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                winner.setLength(0);
-                winner.append(car.getName());
-                maxPosition = car.getPosition();
-            } else if (car.getPosition() == maxPosition) {
-                winner.append(", ").append(car.getName());
-            }
-        }
-
-        System.out.println("최종 우승자 : " + winner);
     }
 }

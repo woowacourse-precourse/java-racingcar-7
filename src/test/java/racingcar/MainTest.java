@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +14,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MainTest extends NsTest {
     private Main main = new Main();
+    private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
 
     @Test
     @DisplayName("자동차 이름을 입력받는다")
     void carNamesInput() {
         assertSimpleTest(() -> {
             run("pobi,woni,jun");
-            assertThat(main.receiveCarNames()).isEqualTo("pobi,woni,jun");
+            assertThat(inputView.receiveCarNames()).isEqualTo("pobi,woni,jun");
         });
     }
 
@@ -45,7 +49,7 @@ class MainTest extends NsTest {
     void playCountInput() {
         assertSimpleTest(() -> {
             run("5");
-            assertThat(main.receivePlayCount()).isEqualTo(5);
+            assertThat(inputView.receivePlayCount()).isEqualTo("5");
         });
     }
 
@@ -67,8 +71,8 @@ class MainTest extends NsTest {
     void printCarNameAndSingleMove() {
         Car car = new Car("pobi", 0);
         Car car2 = new Car("jun", 1);
-        main.printSingleResult(car);
-        main.printSingleResult(car2);
+        outputView.printSingleResult(car);
+        outputView.printSingleResult(car2);
         assertThat(output()).contains("pobi :");
         assertThat(output()).contains("jun : -");
     }
@@ -81,7 +85,7 @@ class MainTest extends NsTest {
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         cars.add(car2);
-        main.printWinners(cars);
+        outputView.printWinners(cars);
         assertThat(output()).isEqualTo("최종 우승자 : jun");
     }
 
@@ -93,7 +97,7 @@ class MainTest extends NsTest {
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         cars.add(car2);
-        main.printWinners(cars);
+        outputView.printWinners(cars);
         assertThat(output()).isEqualTo("최종 우승자 : pobi, jun");
     }
 

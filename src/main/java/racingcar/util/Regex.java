@@ -2,6 +2,7 @@ package racingcar.util;
 
 public enum Regex {
     ONLY_DIGIT("^[0-9]*$"),
+    DELIMITER_COMMA(","),
     ;
 
 

@@ -10,4 +10,8 @@ public class CommonIo {
     public String receiveInput() {
         return Console.readLine();
     }
+
+    public int convertStringToInt(String message) {
+        return Integer.parseInt(message);
+    }
 }
