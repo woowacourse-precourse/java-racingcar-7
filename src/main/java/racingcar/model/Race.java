@@ -1,14 +1,12 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.util.MoveNumberGenerator;
 import racingcar.util.RaceResultStringGenerator;
+import racingcar.util.RandomMoveNumberGenerator;
 
 import java.util.List;
 
 public class Race {
-    private static final int MIN_VALUE = 0;
-    private static final int MAX_VALUE = 9;
-
     private List<Car> cars;
     private TryCount tryCount;
     private Winner winner;
@@ -22,19 +20,19 @@ public class Race {
         this.raceResultStringGenerator = raceResultStringGenerator;
     }
 
-    public String startRace(){
+    public String startRace(MoveNumberGenerator moveNumberGenerator){
         StringBuilder resultString = new StringBuilder();
         while (tryCount.isNotZero()) {
-            moveCars();
+            moveCars(moveNumberGenerator);
             resultString.append(raceResultStringGenerator.generateRaceResultString(cars));
             tryCount.reduceTryCount();
         }
         return resultString.toString();
     }
 
-    public void moveCars() {
+    private void moveCars(MoveNumberGenerator moveNumberGenerator) {
         for(Car car : this.cars){
-            int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+            int randomNumber = moveNumberGenerator.makeMoveNumber();
             car.move(randomNumber);
         }
     }

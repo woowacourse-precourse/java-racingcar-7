@@ -5,6 +5,7 @@ import racingcar.model.Race;
 import racingcar.model.TryCount;
 import racingcar.model.Winner;
 import racingcar.util.RaceResultStringGenerator;
+import racingcar.util.RandomMoveNumberGenerator;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.TryCountValidator;
 import racingcar.view.InputView;
@@ -51,7 +52,7 @@ public class RacingCarController {
 
     private void raceCars(Race race) {
         outputView.printStartRaceMessage();
-        String raceResult = race.startRace();
+        String raceResult = race.startRace(new RandomMoveNumberGenerator());
         outputView.printRaceResult(raceResult);
     }
 
