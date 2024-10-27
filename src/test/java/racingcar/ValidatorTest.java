@@ -23,7 +23,6 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
     @Test
     void 정수_검증_테스트() {
         int result = Validator.validateCycle("4");
