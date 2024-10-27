@@ -64,18 +64,10 @@ class MainTest extends NsTest {
     }
 
     @Test
-    @DisplayName("자동차 이동 여부가 잘 변경되는지 확인한다")
-    void checkCarMoveInformation() {
-        Car car = new Car("pobi", false,0);
-        main.setMoveInformation(car, true);
-        assertThat(car.getMove()).isTrue();
-    }
-
-    @Test
     @DisplayName("자동차 이름과 1회 움직임 출력을 확인한다")
     void printCarNameAndSingleMove() {
-        Car car = new Car("pobi", false,0);
-        Car car2 = new Car("jun", true,1);
+        Car car = new Car("pobi", 0);
+        Car car2 = new Car("jun", 1);
         main.printSingleResult(car);
         main.printSingleResult(car2);
         assertThat(output()).contains("pobi :");
@@ -85,8 +77,8 @@ class MainTest extends NsTest {
     @Test
     @DisplayName("단독 우승자를 출력한다")
     void printSingleWinners() {
-        Car car = new Car("pobi", false,0);
-        Car car2 = new Car("jun", true,1);
+        Car car = new Car("pobi", 0);
+        Car car2 = new Car("jun", 1);
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         cars.add(car2);
@@ -97,8 +89,8 @@ class MainTest extends NsTest {
     @Test
     @DisplayName("단독 우승자를 출력한다")
     void printMultiWinners() {
-        Car car = new Car("pobi", true,1);
-        Car car2 = new Car("jun", true,1);
+        Car car = new Car("pobi", 1);
+        Car car2 = new Car("jun", 1);
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         cars.add(car2);

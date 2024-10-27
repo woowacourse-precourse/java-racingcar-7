@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    public void run(){
+        finishGame(playGame(prepareGame()));
+    }
+
+
     public List<Car> prepareGame() {
         String carNameInput = receiveCarNames();
         String[] carNames = splitCarNames(carNameInput);
@@ -22,7 +27,9 @@ public class Main {
             for (Car car : cars) {
                 int randomNumber = createRandomNumber();
                 boolean isMove = isMove(randomNumber);
-                setMoveInformation(car, isMove);
+                if(isMove) {
+                    setMoveInformation(car);
+                }
                 printSingleResult(car);
             }
         }
@@ -46,7 +53,7 @@ public class Main {
     }
 
     public Car createSingleCar(String carName) {
-        Car car = new Car(carName, false, 0);
+        Car car = new Car(carName, 0);
         return car;
     }
 
@@ -74,8 +81,7 @@ public class Main {
         return randomNumber >= 4;
     }
 
-    public void setMoveInformation(Car car, boolean move) {
-        car.setMove(move);
+    public void setMoveInformation(Car car) {
         car.setPosition(1);
     }
 
