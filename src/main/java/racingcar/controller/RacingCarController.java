@@ -50,7 +50,8 @@ public class RacingCarController {
 
     private void printNow() {
         for (Car car : carGroup.getCarList()) {
-            System.out.println(car.getName() + " : " + car.scoreToDash(car.getScore()));
+            int i = car.getScore();
+            view.printNow(car.getName(), car.scoreToDash(i));
         }
         System.out.println();
     }
