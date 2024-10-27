@@ -1,8 +1,8 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.utils.Parser;
 import racingcar.view.OutputView;
@@ -17,19 +17,20 @@ public class CarRace {
     }
 
     public void startRace() {
-        while (remainNum > 0) {
-            moveCar();
+        while (remainNum-- > 0) {
+            moveCars();
             OutputView.printResult(createOutputMessage());
-            remainNum--;
         }
         OutputView.printResult(createWinnerMessage());
     }
 
-    private void moveCar() {
-        for (Car car : carList) {
-            if (getRandomNumber() >= 4) {
-                car.move();
-            }
+    private void moveCars() {
+        carList.forEach(this::moveCarIfEligible);
+    }
+
+    private void moveCarIfEligible(Car car) {
+        if (getRandomNumber() >= 4) {
+            car.move();
         }
     }
 
@@ -38,41 +39,38 @@ public class CarRace {
     }
 
     private String createOutputMessage() {
-        StringBuilder sb = new StringBuilder();
+        return carList.stream()
+                .map(this::formatCurrentStatus)
+                .collect(Collectors.joining("\n"));
+    }
 
-        for (Car car : carList) {
-            sb.append(car.getName());
-            sb.append(" : ");
-            sb.append("-".repeat(car.getDistance()));
-            sb.append("\n");
-        }
-
-        return sb.toString();
+    private String formatCurrentStatus(Car car) {
+        return car.getName() + " : " + "-".repeat(car.getDistance());
     }
 
     private String createWinnerMessage() {
-        StringBuilder sb = new StringBuilder("최종 우승자 : ");
-        int winnerCnt = getWinnerCnt();
-        for (Car car : carList) {
-            if (winnerCnt == 0) {
-                break;
-            }
-            sb.append(car.getName()).append(", ");
-            winnerCnt--;
-        }
-        return sb.toString();
+        List<Car> winners = getWinners();
+        return "최종 우승자 : " + formatWinners(winners);
     }
 
-    private int getWinnerCnt() {
-        carList.sort(Comparator.comparingInt(Car::getDistance).reversed());
-        int cnt = 0;
-        int maxDistance = carList.getFirst().getDistance();
-        for (Car car : carList) {
-            if (car.getDistance() != maxDistance) {
-                return cnt;
-            }
-            cnt++;
-        }
-        return cnt;
+    private String formatWinners(List<Car> winners) {
+        return winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+    }
+
+    private List<Car> getWinners() {
+        int maxDistance = getMaxDistance();
+
+        return carList.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxDistance() {
+        return carList.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
     }
 }
