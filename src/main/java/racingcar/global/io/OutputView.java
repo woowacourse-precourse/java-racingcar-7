@@ -6,14 +6,14 @@ import racingcar.car.domain.Car;
 
 public class OutputView {
 
-    public static void printResultHeader(){
+    public static void printResultHeader() {
         System.out.println("\n실행결과");
     }
 
 
     public static void printCarPositions(List<Car> cars) {
         for (Car car : cars) {
-            System.out.printf("%s : %s\n",car.getName(), generateMovement(car.getMove()));
+            System.out.printf("%s : %s\n", car.getName(), generateMovement(car.getMove()));
         }
         System.out.println();
     }
@@ -26,7 +26,7 @@ public class OutputView {
         int max = Collections.max(cars).getMove();
         List<String> results = getWinners(cars, max);
 
-        System.out.printf("최종 우승자 : %s \n", String.join(", ", results) );
+        System.out.printf("최종 우승자 : %s \n", String.join(", ", results));
 
     }
 

@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    public static String printCarNames(){
+    public static String printCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return inputData();
     }
@@ -14,7 +14,7 @@ public class InputView {
         return inputData();
     }
 
-    private static String inputData(){
+    private static String inputData() {
         String input;
         try {
             input = Console.readLine();

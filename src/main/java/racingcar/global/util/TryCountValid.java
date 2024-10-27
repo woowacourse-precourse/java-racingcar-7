@@ -1,6 +1,7 @@
 package racingcar.global.util;
 
-import static racingcar.global.util.CarConst.*;
+import static racingcar.global.util.CarConst.MAX_TRY_COUNT_RANGE;
+import static racingcar.global.util.CarConst.MIN_TRY_COUNT_RANGE;
 
 public class TryCountValid {
     public static void validateRange(int tryCount) {

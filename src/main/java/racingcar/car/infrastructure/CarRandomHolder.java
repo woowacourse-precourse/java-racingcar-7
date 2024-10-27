@@ -1,6 +1,7 @@
 package racingcar.car.infrastructure;
 
-import static racingcar.global.util.CarConst.*;
+import static racingcar.global.util.CarConst.MAX_RANDOM_NUMBER;
+import static racingcar.global.util.CarConst.MIN_RANDOM_NUMBER;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.car.service.port.RandomHolder;
