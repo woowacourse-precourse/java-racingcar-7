@@ -47,5 +47,13 @@ public class Application {
                 }
             }
         }
+
+        // LinkedHashMap 정보 출력
+        for (int i = 0; i < count; i++) {
+            for (Map.Entry<String, Integer> carName : carNameSet) {
+                System.out.println(carName.getKey() + " : " + BAR.repeat(carName.getValue()));
+            }
+            System.out.println();
+        }
     }
 }
