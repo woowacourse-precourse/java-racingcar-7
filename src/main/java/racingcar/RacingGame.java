@@ -16,7 +16,7 @@ public class RacingGame {
         Writer.writeMessage(START_MESSAGE);
 
         for (int i = 0; i < tryNumber; i++) {
-            carManager.playRound();
+            carManager.goAllCars();
             Writer.writeRoundResult(carManager.getCars());
         }
 

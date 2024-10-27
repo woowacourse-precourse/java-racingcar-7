@@ -17,7 +17,7 @@ public class CarManager {
         return cars;
     }
 
-    public void playRound() {
+    public void goAllCars() {
         for (Car car : cars) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             car.go(randomNumber);
