@@ -14,12 +14,12 @@ public class InputValidator {
         validateCarNameLength(names);
         validateCarNameContainsNotAllowedCharacter(names);
         validateCarNameDuplication(names);
-        validateCarNameCount(names);
+        validateCarNameMinCount(names);
     }
 
     public void validateTrialCount(String trialCount) {
         validateTrialCountInputType(trialCount);
-        validateTrialCountRange(trialCount);
+        validateTrialCountMinCount(trialCount);
     }
 
     private void validateCarNameLength(String[] names) {
@@ -34,7 +34,7 @@ public class InputValidator {
         }
     }
 
-    private void validateCarNameCount(String[] names) {
+    private void validateCarNameMinCount(String[] names) {
         if (names.length < MIN_CAR_NAME_COUNT) {
             throw new IllegalArgumentException("자동차의 최소 개수는 2개 입니다.");
         }
@@ -52,7 +52,7 @@ public class InputValidator {
         }
     }
 
-    private void validateTrialCountRange(String trialCount) {
+    private void validateTrialCountMinCount(String trialCount) {
         if (Integer.parseInt(trialCount) < MIN_TRIAL_COUNT) {
             throw new IllegalArgumentException("시행 횟수는 0보다 큰 정수여야 합니다.");
         }
