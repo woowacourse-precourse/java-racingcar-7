@@ -21,13 +21,13 @@ public class CarNameValidator {
     }
 
     public static void checkEmpty(String input) {
-        if (input == null) {
+        if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException(INPUT_STRING_NOT_NULL.message);
         }
     }
 
     public static void checkEmpty(List<String> input) {
-        if (input == null) {
+        if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException(INPUT_STRING_NOT_NULL.message);
         }
     }
