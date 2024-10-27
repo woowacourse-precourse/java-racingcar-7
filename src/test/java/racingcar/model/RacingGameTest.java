@@ -41,4 +41,31 @@ class RacingGameTest {
         racingGame.play();
         assertTrue(racingGame.isNotFinished());
     }
+
+    @Test
+    void 최종_우승자_한_명_테스트() {
+        players.getFirst().move();
+        players.getFirst().move();
+        players.getFirst().move();
+
+        List<RacingCar> finalWinners = racingGame.findFinalWinners();
+
+        assertEquals(finalWinners.size(), 1);
+        assertEquals(finalWinners.getFirst(), players.getFirst());
+    }
+
+    @Test
+    void 최종_우승자_두_명_테스트() {
+        players.getFirst().move();
+        players.getFirst().move();
+
+        players.getLast().move();
+        players.getLast().move();
+
+        List<RacingCar> finalWinners = racingGame.findFinalWinners();
+
+        assertEquals(finalWinners.size(), 2);
+        assertEquals(finalWinners.getFirst(), players.getFirst());
+        assertEquals(finalWinners.getLast(), players.getLast());
+    }
 }
