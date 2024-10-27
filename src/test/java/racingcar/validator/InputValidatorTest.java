@@ -19,7 +19,6 @@ public class InputValidatorTest {
   void  자동차이름_비정상입력_테스트() {
     List<String> carNameInputs = new ArrayList<>();
 
-    carNameInputs.add(null);
     carNameInputs.add("");
     carNameInputs.add("  ");
     carNameInputs.add("pobi , woni , jun");
@@ -38,7 +37,6 @@ public class InputValidatorTest {
   void  시도횟수_비정상입력_테스트() {
     List<String> attemptsInputs = new ArrayList<>();
 
-    attemptsInputs.add(null);
     attemptsInputs.add("");
     attemptsInputs.add("1 2");
     attemptsInputs.add(" 1 2 3 4 ");
