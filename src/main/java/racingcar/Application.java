@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.HashMap;
 import racingcar.controller.RacingController;
 import racingcar.service.RacingCarService;
 import racingcar.util.SeparatorParser;
@@ -17,7 +18,8 @@ public class Application {
         RacingCarService racingCarService = new RacingCarService(separatorParser, inputValidator);
         RacingController racingController = new RacingController(inputView, outputView, racingCarService);
 
-        racingController.input();
+        HashMap<String, String> inputInformation = racingController.input();
+        racingController.init(inputInformation);
         String winnerMessage = racingController.racing();
         racingController.output(winnerMessage);
     }
