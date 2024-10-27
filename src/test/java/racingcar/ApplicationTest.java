@@ -13,7 +13,7 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트() {
+    void testRaceWithOneTry() {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
@@ -24,10 +24,26 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void testExceptionForInvalidCarLength() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void testExceptionForInvalidCarNames() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java;;", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void testExceptionForNonNumeric() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "hh"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
