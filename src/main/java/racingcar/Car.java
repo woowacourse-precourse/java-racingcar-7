@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
 
-    private final Name car;
+    private final Name name;
     private int status;
 
     public Car (Name name){
-        this.car = name;
+        this.name = name;
     }
 
     public int getStatus(){
@@ -31,11 +31,11 @@ public class Car {
     }
 
     public String printStatus(){
-        return car + " : " + "-".repeat(status);
+        return name + " : " + "-".repeat(status);
     }
 
     @Override
     public String toString() {
-        return String.valueOf(car);
+        return String.valueOf(name);
     }
 }
