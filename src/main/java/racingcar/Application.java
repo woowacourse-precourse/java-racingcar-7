@@ -62,6 +62,32 @@ public class Application {
         System.out.println();
     }
 
+    public static ArrayList<String> getFinalWinner(ArrayList<String> carNames) {
+        ArrayList<String> winner = new ArrayList<>();
+        int maxPosition = 0;
+
+        for (String carName: carNames) {
+            int position = carMoveStatus.get(carName);
+
+            if (maxPosition < position) {
+                maxPosition = position;
+                winner.clear();
+                winner.add(carName);
+            }
+
+            else if (maxPosition == position) {
+                winner.add(carName);
+            }
+        }
+
+        return winner;
+    }
+
+    public static void printFinalWinner(ArrayList<String> carNames) {
+        ArrayList<String> winner = getFinalWinner(carNames);
+        System.out.print("최종 우승자 : " + String.join(",", winner));
+    }
+
     public static void racingCarGame() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         ArrayList<String> carNames = getCarNames();
@@ -75,6 +101,8 @@ public class Application {
             moveCars(carNames);
             printCarStatus(carNames);
         }
+
+        printFinalWinner(carNames);
     }
 
     public static void main(String[] args) {
