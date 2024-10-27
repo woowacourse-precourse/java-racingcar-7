@@ -28,9 +28,10 @@ public class Application {
         System.out.println();
         System.out.println("실행 결과");
         for(int i = 0; i < try_count; i++){
-            ap.r_print();
+            ap.add();
+            ap.print_result();
         }
-        ap.result_print(ap.winner_score());
+        ap.print_winner(ap.winner_score());
     }
     public void mem_trim() {
         for(String str : member) {
@@ -39,13 +40,13 @@ public class Application {
             }
         }
     }
-    public void r_print(){
-        Application ap = new Application();
-        ap.add();
-        ap.print_result();
+    public void print_result(){
+        for(int i = 0; i < list.length; i++){
+            System.out.println(list[i].racer_name+" : "+list[i].racer_point);
+        }
         System.out.println();
     }
-    public void result_print(int max){
+    public void print_winner(int max){
         System.out.print("최종 우승자 : ");
         boolean check = true;
         for(int i = 0; i < list.length; i++){
@@ -79,12 +80,6 @@ public class Application {
             }
         }
         return max;
-    }
-
-    public void print_result(){
-        for(int i = 0; i < list.length; i++){
-            System.out.println(list[i].racer_name+" : "+list[i].racer_point);
-        }
     }
 
     public Car [] initial(String [] member){
