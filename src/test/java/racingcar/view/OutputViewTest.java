@@ -63,5 +63,4 @@ class OutputViewTest {
         Assertions.assertThat(out.toString())
                 .isEqualTo(ViewMessage.WINNERS_MESSAGE.getMessage() + "우테코, 박재연\n");
     }
-
 }

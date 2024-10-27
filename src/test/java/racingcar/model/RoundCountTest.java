@@ -50,7 +50,6 @@ class RoundCountTest {
         Assertions.assertThatThrownBy(round::decrease)
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining(ErrorMessage.NO_MORE_ROUND.getMessage());
-
     }
 
     @Test
