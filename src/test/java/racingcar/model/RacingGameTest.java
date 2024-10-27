@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.message.ExceptionMessage.INVALID_RANDOM_NUMBER_EXCEPTION_MESSAGE;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -47,5 +49,27 @@ class RacingGameTest {
         assertThat(records)
                 .extracting("moveDistance")
                 .containsExactly(0, 1, 0);
+    }
+
+    @DisplayName("최대_무작위_값_예외_테스트")
+    @Test
+    public void racingOverMaxExceptionTest() {
+        //given
+        List<Integer> randomNumbersOfRound = List.of(3, 10, 2);
+        //when,then
+        assertThatThrownBy(() -> racingGame.racing(randomNumbersOfRound))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_RANDOM_NUMBER_EXCEPTION_MESSAGE.getMessage());
+    }
+
+    @DisplayName("최소_무작위_값_예외_테스트")
+    @Test
+    public void racingUnderMinExceptionTest() {
+        //given
+        List<Integer> randomNumbersOfRound = List.of(3, -1, 2);
+        //when,then
+        assertThatThrownBy(() -> racingGame.racing(randomNumbersOfRound))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_RANDOM_NUMBER_EXCEPTION_MESSAGE.getMessage());
     }
 }
