@@ -23,7 +23,6 @@ public class RacingController {
     public void process(){
         //자동차 이름 입력
         String[] vehicleNames = inputView.getVehicleName();
-        System.out.println(Arrays.toString(vehicleNames));
         List<Car> carList = new ArrayList<>();
 
         exceptionClass.validateString(vehicleNames);
