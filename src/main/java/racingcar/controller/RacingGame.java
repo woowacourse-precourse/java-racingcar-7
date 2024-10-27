@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.CarFactory;
 import racingcar.domain.Cars;
+import racingcar.domain.Name;
 import racingcar.util.CarNamesCreator;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
@@ -26,7 +27,14 @@ public class RacingGame {
     }
 
     private Long initializeTryCount() {
-        return InputView.promptInputTryCount();
+        String inputTryCount = InputView.promptInputTryCount();
+        InputValidator.validateTryCount(inputTryCount);
+        InputView.close();
+        return stringToLong(inputTryCount);
+    }
+
+    private Long stringToLong(String inputTryCount) {
+        return Long.valueOf(inputTryCount);
     }
 
     private Cars registerCars() {
@@ -44,7 +52,7 @@ public class RacingGame {
     }
 
     private void announceWinners() {
-        List<String> winners = cars.findWinners();
+        List<Name> winners = cars.findWinners();
         ResultView.showWinners(winners);
     }
 
