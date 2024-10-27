@@ -1,6 +1,8 @@
 package racingcar.util;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Validator {
     public void validateEmptyString(String input) {
@@ -14,6 +16,13 @@ public class Validator {
             if (splitInput.length() >= 6) {
                 throw new IllegalArgumentException(Constants.CAR_NAME_LENGTH_ERROR_MESSAGE);
             }
+        }
+    }
+
+    public void validateDuplicateName(List<String> carNamesList) {
+        Set<String> carNamesSet = new HashSet<>(carNamesList);
+        if (carNamesList.size() != carNamesSet.size()) {
+            throw new IllegalArgumentException(Constants.DUPLICATE_CAR_NAME_ERROR_MESSAGE);
         }
     }
 }
