@@ -22,6 +22,12 @@ class ValidatorsTest {
     }
 
     @Test
+    void 자동차_이름_입력_테스트_공백3() {
+        String input = " ";
+        assertThrows(IllegalArgumentException.class, () -> validators.validateString(input));
+    }
+
+    @Test
     void 자동차_이름_입력_테스트_이름글자수() {
         String input = "aaaaaa,bbbbbbb,cd";
         assertThrows(IllegalArgumentException.class, () -> validators.validateString(input));
