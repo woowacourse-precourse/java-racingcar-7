@@ -55,5 +55,13 @@ public class Application {
             }
         }
 
+        public static void resultOutput() {
+            System.out.println("실행 결과");
+            for (int i = 0; i < carNumber; i++) {
+                System.out.println(nameList[i] + " :" + processResult[i]);
+            }
+            System.out.println();
+        }
+
     }
 }
