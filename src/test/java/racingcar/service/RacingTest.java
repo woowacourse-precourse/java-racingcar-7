@@ -53,6 +53,8 @@ public class RacingTest {
         racing.setRacingCarMode(ModeType.RACING_CAR);
 
         assertThat(racing.getRacingCars().get(0).getMode()).isEqualTo("RacingCar");
+        assertThat(racing.getRacingCars().get(0).getMoveDistance()).isEqualTo(0);
         assertThat(racing.getRacingCars().get(1).getMode()).isEqualTo("RacingCar");
+        assertThat(racing.getRacingCars().get(1).getMoveDistance()).isEqualTo(0);
     }
 }
