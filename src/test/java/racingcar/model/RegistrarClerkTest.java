@@ -22,7 +22,7 @@ class RegistrarClerkTest {
     public void should_ReturnCarRace_When_ValidInputGiven() {
         String inputCarNames = "pobi,woni";
         String inputRaceRoundCount = "3";
-        RacingRegisterForm registerForm = RacingRegisterFormFactory.createFrom(inputCarNames, inputRaceRoundCount);
+        RacingRegisterForm registerForm = RacingRegisterFormFactory.create(inputCarNames, inputRaceRoundCount);
         RegistrarClerk registrarClerk = new RegistrarClerk();
         CarRace carRace = registrarClerk.register(registerForm);
 

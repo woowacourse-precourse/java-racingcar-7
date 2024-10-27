@@ -37,7 +37,7 @@ public class RacingGameController {
     private RacingRegisterForm getRacingRegisterForm() {
         String inputCarNames = inputView.requestCarNames();
         String inputRaceRoundCount = inputView.requestRaceRoundCount();
-        return RacingRegisterFormFactory.createFrom(inputCarNames, inputRaceRoundCount);
+        return RacingRegisterFormFactory.create(inputCarNames, inputRaceRoundCount);
     }
 
     private CarRace createCarRace(RacingRegisterForm registerForm) {
