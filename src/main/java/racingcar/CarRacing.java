@@ -7,12 +7,24 @@ import java.util.List;
 
 public class CarRacing {
 
+    public List<Car> settingCar(String[] carNames){
+        List<Car> carList = new ArrayList<>();
+
+        for (String carName : carNames) {
+            Car car = new Car(carName);
+            carList.add(car);
+        }
+
+        return carList;
+    }
+
     public int racing(List<Car> carList, int numberOfMoves) {
         int maxLocation = 0;
         for (int i = 0; i < numberOfMoves; i++) {
             for (Car car : carList) {
                 moveCar(car);
-                maxLocation = Math.max(maxLocation, printCarLocation(car));
+                printCarLocation(car);
+                maxLocation = Math.max(maxLocation, car.getLocation());
             }
             System.out.println();
         }
@@ -25,25 +37,13 @@ public class CarRacing {
         }
     }
 
-    public int printCarLocation(Car car) {
+    public void printCarLocation(Car car) {
         int location = car.getLocation();
         System.out.print(car.getName() + " : ");
         for (int i = 0; i < location; i++) {
             System.out.print("-");
         }
         System.out.println();
-        return location;
-    }
-
-    public List<Car> settingCar(String[] carNames){
-        List<Car> carList = new ArrayList<>();
-
-        for (String carName : carNames) {
-            Car car = new Car(carName);
-            carList.add(car);
-        }
-
-        return carList;
     }
 
     public List<String> getCarNamesAtLocation(List<Car> carList, int location){
