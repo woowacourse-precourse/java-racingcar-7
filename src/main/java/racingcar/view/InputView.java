@@ -6,7 +6,8 @@ public class InputView {
     private CommonIo io = new CommonIo();
 
     public String receiveCarNames() {
-        return io.receiveInput();
+        String original = io.receiveInput();
+        return io.removeWhiteSpace(original);
     }
 
     public String receivePlayCount() {

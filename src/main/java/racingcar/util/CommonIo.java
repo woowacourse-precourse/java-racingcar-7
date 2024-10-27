@@ -14,4 +14,8 @@ public class CommonIo {
     public int convertStringToInt(String message) {
         return Integer.parseInt(message);
     }
+
+    public String removeWhiteSpace(String message) {
+        return message.replaceAll(Message.WHITE_SPACE.getSentence(), Message.BLANK.getSentence());
+    }
 }

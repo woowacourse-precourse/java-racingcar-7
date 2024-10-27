@@ -9,7 +9,7 @@ import java.util.List;
 public class CarController {
 
     public List<String> splitCarNames(String input) {
-        List<String> carNames = Arrays.stream(input.replaceAll(" ","").split(",")).toList();
+        List<String> carNames = Arrays.stream(input.split(",")).toList();
         validateCarNames(carNames);
         return carNames;
     }
