@@ -20,6 +20,8 @@
          - IllegalArgumentException 발생
       2. 빈칸일 경우
          - IllegalArgumentException 발생
+      3. 마지막 ',' 뒤에 이름을 추가하지 않았을 경우(예: "pobi, woni,")
+         - 입력된 이름끼리 경주 진행(예: 경주자는 "pobi", "woni")
 - 자동차 경주를 시도할 횟수
     1. 음수일 경우
        - IllegalArgumentException 발생
