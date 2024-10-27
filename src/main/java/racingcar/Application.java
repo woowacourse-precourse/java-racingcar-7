@@ -39,6 +39,10 @@ public class Application {
                 int randomNumber = RandomIntCreate();
                 car.move(randomNumber);
             }
+            for (Car car : cars.getCars()) {
+                System.out.println(car.getName() + " : " + "-".repeat(car.getMoveDisctance()));
+            }
+            System.out.println();
         }
     }
 
