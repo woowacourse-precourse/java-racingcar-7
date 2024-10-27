@@ -4,6 +4,8 @@ import racingcar.model.NumberGenerator;
 import racingcar.model.RandomNumberGenerator;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -64,5 +66,13 @@ public class Cars {
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
+    }
+
+    public Map<String, Integer> getCarPositionsAtName() {
+        return cars.stream()
+                .collect(Collectors.toMap(
+                        Car::getName,
+                        Car::getPosition
+                ));
     }
 }
