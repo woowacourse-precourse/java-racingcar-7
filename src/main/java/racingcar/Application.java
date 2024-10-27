@@ -31,14 +31,19 @@ public class Application {
             throw new IllegalArgumentException("시도하는 횟수가 너무 많습니다. 10회 이하로 설정해주세요");
         }
 
+        System.out.println("\n실행 결과");
+        String carMovementStatus = "-";
         while (tryNumber > 0) {
             for (String i : carInfo.keySet()) {
                 int randomNum = pickNumberInRange(0, 9);
                 if (randomNum > 3) {
-                    carInfo.replace(i, carInfo.get(i) + randomNum);
+                    carInfo.replace(i, carInfo.get(i) + 1);
                 }
+                System.out.println(i + " : " + carMovementStatus.repeat(carInfo.get(i)));
             }
+            System.out.println();
             tryNumber -= 1;
         }
+
     }
 }
