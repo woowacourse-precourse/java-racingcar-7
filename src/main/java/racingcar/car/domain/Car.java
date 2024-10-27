@@ -15,11 +15,8 @@ public class Car implements Comparable<Car> {
         this.move = 0;
     }
 
-    public void move(RandomHolder randomHolder) {
-        int random = randomHolder.getRandom();
-        if (random >= 4) {
-            move++;
-        }
+    public void move() {
+        move++;
     }
 
     private void validateNameFormat(String name) {

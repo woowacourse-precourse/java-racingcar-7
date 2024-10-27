@@ -80,33 +80,18 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("random 숫자가 4이상이면 move가 1더해진다")
+    @DisplayName("car 클래스의 move를 호출하면 move에 1이 더해진다")
     void move() throws Exception {
         // given
         Car car = new Car("테스트");
 
         // when
-        car.move(new FakeRandomHolder(4));
+        car.move();
 
         // then
         assertThat(car).isNotNull()
                 .extracting("name", "move")
                 .containsExactlyInAnyOrder("테스트", 1);
-    }
-
-    @Test
-    @DisplayName("random 숫자가 3이하이면 움직이지 않는다")
-    void under3Move() throws Exception {
-        // given
-        Car car = new Car("테스트");
-
-        // when
-        car.move(new FakeRandomHolder(3));
-
-        // then
-        assertThat(car).isNotNull()
-                .extracting("name", "move")
-                .containsExactlyInAnyOrder("테스트", 0);
     }
 
 }

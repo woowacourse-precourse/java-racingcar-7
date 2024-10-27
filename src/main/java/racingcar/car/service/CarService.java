@@ -32,7 +32,14 @@ public class CarService {
 
     public void move(List<Car> cars) {
         for (Car car : cars) {
-            car.move(randomHolder);
+            attemptMove(car);
+        }
+    }
+
+    private void attemptMove(Car car) {
+        int random = randomHolder.getRandom();
+        if (random >= 4) {
+            car.move();
         }
     }
 
