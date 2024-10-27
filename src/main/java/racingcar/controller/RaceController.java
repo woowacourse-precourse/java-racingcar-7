@@ -1,17 +1,13 @@
-package racingcar;
+package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.controller.CarController;
-import racingcar.controller.MoveController;
+import racingcar.model.Car;
 import racingcar.util.CommonIo;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+public class RaceController {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
     private CommonIo io = new CommonIo();
@@ -25,7 +21,7 @@ public class Main {
     public List<Car> prepareGame() {
         outputView.printGetCarNames();
         String carNameInput = inputView.receiveCarNames();
-        List<String> carNames = splitCarNames(carNameInput);
+        List<String> carNames = carController.splitCarNames(carNameInput);
         List<Car> cars = carController.createAllCars(carNames);
 
         return cars;
@@ -53,9 +49,5 @@ public class Main {
         outputView.printWinners(cars);
     }
 
-    public List<String> splitCarNames(String input) {
-        List<String> carNames = Arrays.stream(input.split(",")).toList();
-        return carNames;
-    }
 
 }

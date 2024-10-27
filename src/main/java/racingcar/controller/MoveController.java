@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.Car;
+import racingcar.model.Car;
 
 public class MoveController {
     public int createRandomNumber() {

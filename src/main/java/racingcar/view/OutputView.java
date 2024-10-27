@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.Car;
+import racingcar.model.Car;
 import racingcar.util.CommonIo;
 import racingcar.util.Limit;
 import racingcar.util.Message;

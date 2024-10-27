@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.CarController;
+import racingcar.controller.RaceController;
 import racingcar.controller.MoveController;
+import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,8 +16,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MainTest extends NsTest {
-    private Main main = new Main();
+class RaceControllerTest extends NsTest {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
     private CarController carController = new CarController();
@@ -33,7 +34,7 @@ class MainTest extends NsTest {
     @Test
     @DisplayName("쉼표를 기준으로 자동차 이름을 분리한다")
     void splitCarNames() {
-        assertThat(main.splitCarNames("pobi,woni,jun")).isEqualTo(List.of("pobi", "woni", "jun"));
+        assertThat(carController.splitCarNames("pobi,woni,jun")).isEqualTo(List.of("pobi", "woni", "jun"));
     }
 
     @Test
