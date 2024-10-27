@@ -12,7 +12,7 @@ public class RaceGame {
     //사용자의 입력을 받아들이는 메서드
     String getUserInput() throws IOException{
         String userInput;
-        System.out.println("경주에 참여할 자동차의 이름을 입력해주세요. 여러 개일 경우, 각 이름은 comma(,)로 구분해야 합니다. ");
+        //System.out.println("경주에 참여할 자동차의 이름을 입력해주세요. 여러 개일 경우, 각 이름은 comma(,)로 구분해야 합니다. ");
 
         InputStream in = System.in;
         InputStreamReader reader = new InputStreamReader(in);
