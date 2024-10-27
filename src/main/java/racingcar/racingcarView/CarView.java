@@ -1,7 +1,6 @@
 package racingcar.racingcarView;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Map.Entry;
 
 public class CarView {
 
@@ -22,8 +21,8 @@ public class CarView {
         System.out.println();
     }
 
-    public void printResults(Entry<String, Integer> entry) {
-        System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
+    public void printResults(String carName, int carMove) {
+        System.out.println(carName + " : " + "-".repeat(carMove));
     }
 
 

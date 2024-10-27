@@ -1,9 +1,23 @@
-package racingcar.racingcarModel;
+package racingcar.racingcarController;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class ExceptionModel {
+public class ExceptionController {
+
+    public void exceptionCheck(String nameInput, String beforeTryInput) {
+        executeExceptionalHandling(() -> {
+            emptyCarName(nameInput);
+            emptyCarNames(nameInput);
+            overFiveCarNames(nameInput);
+            uniqueCarNames(nameInput);
+            emptyTryInput(beforeTryInput);
+            overIntTryInput(beforeTryInput);
+            isNumberTryInput(beforeTryInput);
+            isPositiveNumberTryInput(beforeTryInput);
+        });
+
+    }
 
     //
     public void executeExceptionalHandling(Runnable runnable) {
