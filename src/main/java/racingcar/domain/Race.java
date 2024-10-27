@@ -51,10 +51,9 @@ public class Race {
         return winnerPosition;
     }
 
-    private boolean validateTryCount(int tryCount) {
+    private void validateTryCount(int tryCount) {
         if (tryCount < VALIDATE_NEGATIVE_NUMBER) {
-            return false;
+            throw new IllegalArgumentException("시도할 횟수는 음수일 수 없습니다.");
         }
-        return true;
     }
 }
