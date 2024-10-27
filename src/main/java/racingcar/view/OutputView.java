@@ -14,14 +14,14 @@ public class OutputView {
         System.out.println(GAME_RESULT_MESSAGE);
     }
 
-    public void printCarsResult(List<Car> cars) {
+    public void printRacingResult(List<Car> cars) {
         for (Car car : cars) {
-            printCarResult(car.getName(), car.getMovedDistance());
+            printCarInfo(car.getName(), car.getMovedDistance());
         }
         printEmptyLine();
     }
 
-    private void printCarResult(String name, int movedDistance) {
+    private void printCarInfo(String name, int movedDistance) {
         printName(name);
         printSeparator();
         convertDistanceToHyphen(movedDistance);

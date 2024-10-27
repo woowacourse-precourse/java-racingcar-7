@@ -26,7 +26,7 @@ public class WinnerTest {
 
         String expectedValue = "pobi";
 
-        String racingWinner = winner.findWinner(carManager.getCars());
+        String racingWinner = winner.find(carManager.getCars());
         assertThat(racingWinner).isEqualTo(expectedValue);
     }
 
@@ -49,7 +49,7 @@ public class WinnerTest {
 
         String expectedWinner = "pobi, even";
 
-        String winner = racing.findWinner(carManager.getCars());
+        String winner = racing.find(carManager.getCars());
         assertThat(winner).isEqualTo(expectedWinner);
     }
 }

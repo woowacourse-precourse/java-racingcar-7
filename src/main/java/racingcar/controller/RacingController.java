@@ -26,7 +26,7 @@ public class RacingController {
     private void racingInit() {
         String userStringInput = racingService.getValidatedStringInput(
                 InputView.getInputCarString());
-        racingService.setUpRacing(userStringInput);
+        racingService.initCars(userStringInput);
     }
 
     private void printWinner() {
@@ -39,7 +39,7 @@ public class RacingController {
         outputView.printGameResultMessage();
         List<List<Car>> racingResult = racingService.fullRacing(userIntegerInput);
         for (List<Car> cars : racingResult) {
-            outputView.printCarsResult(cars);
+            outputView.printRacingResult(cars);
         }
     }
 

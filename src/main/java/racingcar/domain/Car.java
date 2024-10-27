@@ -11,7 +11,7 @@ public class Car {
     private int movedDistance;
 
     public Car(String name) {
-        verifyValidCarName(name);
+        validateCarNameLength(name);
         this.name = name;
     }
 
@@ -30,7 +30,7 @@ public class Car {
         return movedDistance;
     }
 
-    private void verifyValidCarName(String carName) {
+    private void validateCarNameLength(String carName) {
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(OVER_MAX_CAR_NAME.getMessage());
         }

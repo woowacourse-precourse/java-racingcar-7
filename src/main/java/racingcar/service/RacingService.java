@@ -24,7 +24,7 @@ public class RacingService {
         this.validation = validation;
     }
 
-    public void setUpRacing(String userInput) {
+    public void initCars(String userInput) {
         this.carManager = new CarManager(
                 CarCreator.createCars(InputParser.parserCarNames(userInput)));
     }
@@ -46,7 +46,7 @@ public class RacingService {
     }
 
     public String getWinners() {
-        return winner.findWinner(carManager.getCars());
+        return winner.find(carManager.getCars());
     }
 
     public String getValidatedStringInput(String userStringInput) {
