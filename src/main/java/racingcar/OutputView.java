@@ -1,5 +1,8 @@
 package racingcar;
 
+import static racingcar.GameMessages.OUTPUT_SCORE_CHARACTER;
+import static racingcar.GameMessages.OUTPUT_WINNER_GUIDE_MESSAGE;
+
 import java.util.List;
 
 public class OutputView {
@@ -11,15 +14,15 @@ public class OutputView {
     }
 
     void printResultMessage(String name, Integer number) {
-        System.out.print(name + " " + ":" + " ");
+        System.out.print(name + " : ");
         for (int i = 0; i < number; i++) {
-            System.out.print("-");
+            System.out.print(OUTPUT_SCORE_CHARACTER);
         }
         System.out.println();
     }
 
     void printWinnerMessage(List<String> winners) {
-        System.out.print("최종 우승자 : ");
+        System.out.print(OUTPUT_WINNER_GUIDE_MESSAGE);
 
         for (int i = 0; i < winners.size(); i++) {
             if (i == winners.size() - 1) {
