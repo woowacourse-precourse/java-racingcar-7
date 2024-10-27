@@ -16,6 +16,7 @@ public class RaceController {
         getCarNames();
         int moveCount = getMoveCount();
         executeRace(moveCount);
+        announceWinners();
     }
 
     private void getCarNames() {
@@ -73,5 +74,25 @@ public class RaceController {
 
     private void displayCurrentPosition(CarStatus status) {
         System.out.println(status.getName() + " : " + "-".repeat(status.getDistance()));
+    }
+
+    private int calculateMaxDistance() {
+        return cars.stream()
+                .mapToInt(car -> car.toStatus().getDistance())
+                .max()
+                .orElse(0);
+    }
+
+    private List<String> findWinners(int maxDistance) {
+        return cars.stream()
+                .filter(car -> car.toStatus().getDistance() == maxDistance)
+                .map(car -> car.toStatus().getName())
+                .toList();
+    }
+
+    private void announceWinners() {
+        int maxDistance = calculateMaxDistance();
+        String winners = String.join(", ", findWinners(maxDistance));
+        System.out.println("최종 우승자 : " + winners);
     }
 }
