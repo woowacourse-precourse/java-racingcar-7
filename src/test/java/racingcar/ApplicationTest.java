@@ -14,12 +14,20 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    @DisplayName("자동차 이름 길이 예외 테스트")
-    void 이름_길이_예외_테스트() {
+    void 자동차_이름_길이_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("이름은 5자 이하만 가능합니다.")
+        );
+    }
+
+    @Test
+    void 자동차_이름_중복_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 중복될 수 없습니다.")
         );
     }
 
