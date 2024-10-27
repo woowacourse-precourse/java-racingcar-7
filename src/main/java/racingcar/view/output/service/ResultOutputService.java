@@ -1,4 +1,9 @@
 package racingcar.view.output.service;
 
-public interface ResultOutputSerivce {
+import racingcar.racingcar.service.racing.dto.RacingResult;
+
+
+public interface ResultOutputService {
+    void executionResults(RacingResult racingResult);
+    void winningCarsStatistic(String winningCars);
 }
