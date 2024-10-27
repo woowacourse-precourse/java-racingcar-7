@@ -31,6 +31,7 @@ public class RacingGame {
             cars.add(new Car(carName));
         }
         //Todo: 사용자로부터 maxTurn 입력받기
+        inputMaxTurn();
     }
 
     /// 자동차 이름을 입력받아 문자열 배열을 리턴
@@ -44,7 +45,7 @@ public class RacingGame {
     }
 
     /// 자동차 입력부분 예외처리
-    void validateCarName(String[] carNameArray) {
+    private void validateCarName(String[] carNameArray) {
 
         if (carNameArray.length > 8) {
             throw new IllegalArgumentException("자동차 이름은 최대 8개까지 입력 가능합니다.");
@@ -74,7 +75,7 @@ public class RacingGame {
     }
 
     ///자동차 이름 중복 예외처리
-    void checkDuplicateCar(String carName) {
+    private void checkDuplicateCar(String carName) {
 
         for (Car car : cars) {
             if (carName.equals(car.getCarName())) {
@@ -82,6 +83,7 @@ public class RacingGame {
             }
         }
     }
+
 
 
     private void playGame() {
