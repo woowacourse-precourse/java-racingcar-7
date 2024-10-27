@@ -17,3 +17,5 @@
 - printWinner(): 우승자 출력
 
 ## 4. 예외 처리 및 코드 정리
+
+## 5. ApplicationTest 클래스 작성

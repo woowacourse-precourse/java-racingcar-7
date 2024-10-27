@@ -27,6 +27,12 @@ public class Application {
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+
+            /*
+                테스트 클래스를 실행할 때 주석을 해제해야 한다.
+                catch한 예외를 다시 throw하여 예외를 검증한다.
+             */
+            // throw e;
         }
 
     }
