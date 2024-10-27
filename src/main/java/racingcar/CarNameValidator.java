@@ -20,7 +20,7 @@ public class CarNameValidator {
     }
 
     public void inputNotMoreThanFiveCharacter(String carName) {
-        if(carName.length() > 5) {
+        if(isOverFiveCharacter(carName)) {
             throw new IllegalArgumentException("이름을 5자 이하로 입력해주세요");
         }
     }
@@ -31,6 +31,10 @@ public class CarNameValidator {
 
     private boolean isMoreThanTwo(String[] carNameArray) {
         return carNameArray.length > 2;
+    }
+
+    private boolean isOverFiveCharacter(String carName) {
+        return carName.length() > 5;
     }
 
     private boolean isBlank(String carName) {
