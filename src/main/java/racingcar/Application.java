@@ -13,6 +13,13 @@ public class Application {
         }
     }
 
+    public static void printRacingStatus(Map<String, Integer> cars) {
+        for (String car : cars.keySet()) {
+            System.out.println(car + " : " + "-".repeat(cars.get(car)));
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Map<String, Integer> cars = new LinkedHashMap<>();
@@ -28,8 +35,10 @@ public class Application {
             cars.put(name, 0);
         }
 
+        System.out.println("\n실행 결과");
         for (int i = 0; i < tryCount; i++) {
             decideCarMove(cars);
+            printRacingStatus(cars);
         }
 
     }
