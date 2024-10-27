@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import static racingcar.view.OutputView.*;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
@@ -33,7 +35,7 @@ class OutputViewTest {
     @Test
     void 실행_결과_문구를_출력한다() {
         // given
-        String successResult = "\n실행 결과\n";
+        String successResult = LINE_BREAK + RUN_RESULT_MESSAGE + LINE_BREAK;
 
         // when
         outputView.printRunResult();
@@ -48,7 +50,7 @@ class OutputViewTest {
         Cars cars = new Cars("pobi");
         List<String> carStates = cars.getCarStates();
 
-        String successResult = "pobi : \n\n";
+        String successResult = "pobi : " + LINE_BREAK + LINE_BREAK;
 
         // when
         outputView.printRoundResult(carStates);
