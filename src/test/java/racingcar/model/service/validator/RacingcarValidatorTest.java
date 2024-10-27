@@ -54,13 +54,13 @@ class RacingcarValidatorTest {
     }
 
     @Test
-    void 시도횟수_Integer_최대값_이상_예외_테스트() {
+    void 시도횟수_최대값_이상_예외_테스트() {
         // given
-        String attemptCountInput = "2147483648"; // Integer.MAX_VALUE + 1
+        String attemptCountInput = "10001";
 
         // when & then
         assertThatThrownBy(() -> validator.validateAttemptCount(attemptCountInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("시도 횟수는 " + Integer.MAX_VALUE + " 이하이어야 합니다.");
+                .hasMessageContaining("시도 횟수는 " + 10000 + " 이하이어야 합니다.");
     }
 }

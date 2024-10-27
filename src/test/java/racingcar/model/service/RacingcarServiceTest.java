@@ -88,13 +88,13 @@ class RacingcarServiceTest {
     }
 
     @Test
-    void 시도횟수_Integer_최대값_초과_실패_테스트() {
+    void 시도횟수_최대값_초과_실패_테스트() {
         // given
-        String attemptCountInput = "2147483648"; // Integer.MAX_VALUE + 1
+        String attemptCountInput = "10001";
 
         // when & then
         assertThatThrownBy(() -> racingcarService.saveAttemptCount(attemptCountInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("시도 횟수는 " + Integer.MAX_VALUE + " 이하이어야 합니다.");
+                .hasMessageContaining("시도 횟수는 " + 10000 + " 이하이어야 합니다.");
     }
 }
