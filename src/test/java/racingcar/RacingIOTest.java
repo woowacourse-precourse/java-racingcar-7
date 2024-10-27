@@ -2,8 +2,8 @@ package racingcar;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +19,7 @@ public class RacingIOTest {
 
     @BeforeEach
     void setUp() {
-        racingService = new RacingService("a,b,c", 4);
+        racingService = new RacingService("a,b,c", "4");
 
         standardOut = System.out;
         outputStreamCaptor = new ByteArrayOutputStream();
@@ -44,7 +44,7 @@ public class RacingIOTest {
     @Test
     @DisplayName("실행 결과가 출력 형식을 준수하는지 확인")
     void 실행_결과_출력_테스트() {
-        ArrayList<HashMap<String, Integer>> turnResults = new ArrayList<>();
+        LinkedList<LinkedHashMap<String, Integer>> turnResults = new LinkedList<>();
 
         updateAndRecordMovement("a", 4, turnResults);
         updateAndRecordMovement("a", 4, turnResults);
@@ -66,8 +66,8 @@ public class RacingIOTest {
 
     @Test
     @DisplayName("우승자 결과가 출력 형식을 준수하는지 확인")
-    void 우승자_출력_테스트() {
-        ArrayList<HashMap<String, Integer>> turnResults = new ArrayList<>();
+    void 우승자_출력_테스트1() {
+        LinkedList<LinkedHashMap<String, Integer>> turnResults = new LinkedList<>();
 
         updateAndRecordMovement("a", 4, turnResults);
         updateAndRecordMovement("a", 4, turnResults);
@@ -79,9 +79,27 @@ public class RacingIOTest {
         assertThat(getOutput()).contains("최종 우승자 : a, b");
     }
 
-    private void updateAndRecordMovement(String carName, int randomValue, ArrayList<HashMap<String, Integer>> turnResults) {
+    @Test
+    @DisplayName("우승자가 여러 명일 때 우승자 입력 순서대로 출력하는 지 확인")
+    void 우승자_출력_테스트2() {
+        racingService.setCarNameInput("a,aa,aaa");
+        LinkedList<LinkedHashMap<String, Integer>> turnResults = new LinkedList<>();
+
+        updateAndRecordMovement("a", 4, turnResults);
+        updateAndRecordMovement("a", 4, turnResults);
+        updateAndRecordMovement("aa", 4, turnResults);
+        updateAndRecordMovement("aa", 4, turnResults);
+        updateAndRecordMovement("aaa", 4, turnResults);
+        updateAndRecordMovement("aaa", 4, turnResults);
+
+        RacingIO.promptWinner(racingService.getWinners());
+
+        assertThat(getOutput()).contains("최종 우승자 : a, aa, aaa");
+    }
+
+    private void updateAndRecordMovement(String carName, int randomValue, LinkedList<LinkedHashMap<String, Integer>> turnResults) {
         racingService.updateMovement(carName, randomValue);
-        turnResults.add(new HashMap<>(racingService.getCarMap()));
+        turnResults.add(new LinkedHashMap<>(racingService.getCarMap()));
     }
 
     protected String getOutput() {
