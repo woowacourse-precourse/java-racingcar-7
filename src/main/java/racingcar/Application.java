@@ -28,12 +28,8 @@ public class Application {
     }
 
     public static void addScore(String name) {
-        if (participantScore.containsKey(name)) {
-            int number = participantScore.get(name);
-            participantScore.put(name, number + 1);
-        } else {
-            participantScore.put(name, 1);
-        }
+        int number = participantScore.get(name);
+        participantScore.put(name, number + 1);
     }
 
     public static void goRandomPlay() {
@@ -46,14 +42,20 @@ public class Application {
     }
 
     public static void displayStatus() {
-        for( final String name: participantScore.keySet()){
-            System.out.print(name+" : ");
+        for (final String name : participantScore.keySet()) {
+            System.out.print(name + " : ");
             int score = participantScore.get(name);
-            while(score!=0){
+            while (score != 0) {
                 System.out.print('-');
                 score--;
             }
             System.out.println();
+        }
+    }
+
+    public static void initScore() {
+        for (final String name : participantList) {
+            participantScore.put(name, 0);
         }
     }
 
@@ -63,6 +65,7 @@ public class Application {
     //    - 우승자가 여러 명일 경우, 쉼표를 이용하여 구분한다.
     public static void playGame(String number) {
         int playNumber = Integer.parseInt(number);
+        initScore();
         while (playNumber != 0) {
             goRandomPlay();
             displayStatus();
