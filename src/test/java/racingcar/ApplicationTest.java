@@ -61,6 +61,42 @@ class ApplicationTest extends NsTest {
         assertEquals(exception.getMessage(), "이름은 5자 이하로 입력하세요.");
     }
 
+    @Test
+    void 랜덤값_경계값_입력_판단_테스트(){
+        //given
+        Car car = new Car("soyoon");
+
+        //when
+        boolean judge = car.judge(4);
+
+        //then
+        assertEquals(judge, true, "4가 들어올 경우 true가 반환되어야 합니다.");
+    }
+
+    @Test
+    void 랜덤값_true_입력_판단_테스트(){
+        //given
+        Car car = new Car("soyoon");
+
+        //when
+        boolean judge = car.judge(9);
+
+        //then
+        assertEquals(judge, true, "9가 들어올 경우 true가 반환되어야 합니다.");
+    }
+
+    @Test
+    void 랜덤값_false_입력_판단_테스트(){
+        //given
+        Car car = new Car("soyoon");
+
+        //when
+        boolean judge = car.judge(2);
+
+        //then
+        assertEquals(judge, false, "2가 들어올 경우 false가 반환되어야 합니다.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
