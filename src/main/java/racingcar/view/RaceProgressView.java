@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.RacingCar;
+import racingcar.model.RacingCar;
 
 public class RaceProgressView {
     private final String COLON_DELIMITER = " : ";

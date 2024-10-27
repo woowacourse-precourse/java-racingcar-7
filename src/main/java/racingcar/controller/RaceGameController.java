@@ -2,8 +2,8 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.InputDTO;
-import racingcar.RaceJudge;
-import racingcar.RacingCar;
+import racingcar.model.RaceJudge;
+import racingcar.model.RacingCar;
 import racingcar.view.InputView;
 import racingcar.view.RaceWinnerView;
 

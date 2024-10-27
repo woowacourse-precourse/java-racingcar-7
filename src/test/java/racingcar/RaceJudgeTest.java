@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
+import racingcar.model.RaceJudge;
+import racingcar.model.RacingCar;
 
 class RaceJudgeTest {
 
