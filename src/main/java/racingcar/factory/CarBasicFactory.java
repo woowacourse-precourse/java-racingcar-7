@@ -6,6 +6,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import racingcar.common.constant.CarsType;
 import racingcar.model.Car;
+import racingcar.model.CarNameMap;
 import racingcar.model.Cars;
 import racingcar.strategy.CarStrategy;
 import racingcar.strategy.CarsStrategy;
@@ -56,10 +57,22 @@ public class CarBasicFactory implements CarFactory{
   }
 
   @Override
+  public List<String> createCarNames(String rawCarNames) {
+    return Arrays.stream(
+        carStrategy.splitNames(rawCarNames))
+        .toList();
+  }
+
+  @Override
   public List<Car> getListFromRawCarNames(String rawCarNames){
     String[] carNames = splitCarNames(rawCarNames);
     validateNames(carNames);
     return createList(carNames);
+  }
+
+  @Override
+  public CarNameMap createCarNameMap(List<Car> cars) {
+    return CarNameMap.from(cars);
   }
 
   @Override
