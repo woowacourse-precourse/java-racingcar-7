@@ -1,16 +1,13 @@
 package racingcar.global.validator;
 
 import racingcar.global.constant.InvalidInputExceptionMessage;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Consumer;
 
 public class InputValidator {
     public enum ValidationMode {
         CAR_NAME(2, 5, InputValidator::validateCarName),
         CAR_COUNT(2, 10, InputValidator::validateCarCount),
-        GAME_ROUND(2, 1000, InputValidator::validateGameRound);
+        GAME_ROUND(1, 1000, InputValidator::validateGameRound);
 
         private final int min;
         private final int max;
@@ -29,17 +26,14 @@ public class InputValidator {
         public int getMin() {
             return min;
         }
+
+        public void validate(String input) {
+            validator.accept(input);
+        }
     }
 
     public static void validate(ValidationMode mode, String input) {
-        Map<ValidationMode, Consumer<String>> modeMap = new HashMap<>();
-
-        for (ValidationMode validationMode : ValidationMode.values()) {
-            modeMap.put(validationMode, validationMode.validator);
-        }
-
-        Consumer<String> validator = modeMap.get(mode);
-        validator.accept(input);
+        mode.validate(input);
     }
 
     private static void validateCarName(String input) {
@@ -54,7 +48,6 @@ public class InputValidator {
 
     private static void validateCarCount(String input) {
         String[] names = input.split(",");
-
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException(
                     InvalidInputExceptionMessage.emptyCarName());
@@ -69,7 +62,7 @@ public class InputValidator {
     private static void validateGameRound(String input) {
         try {
             int n = Integer.parseInt(input);
-            if (n < 1) {
+            if (n < 0) {
                 throw new IllegalArgumentException(
                         InvalidInputExceptionMessage.gameRoundNotNaturalNumber());
             }
