@@ -7,8 +7,8 @@ public class MoveDecider {
 
     private final NumberGenerator numberGenerator;
 
-    public MoveDecider(RandomNumberGenerator randomNumberGenerator) {
-        this.numberGenerator = randomNumberGenerator;
+    public MoveDecider(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
     }
 
     public boolean isMovable() {
