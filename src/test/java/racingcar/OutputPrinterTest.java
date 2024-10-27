@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -49,5 +51,15 @@ public class OutputPrinterTest {
         runner.showRace(cars);
 
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("tayo : -\nlani : --\nrogi : ---");
+    }
+
+    @Test
+    void 우승자_출력() {
+        List<String> mockWinners = Arrays.asList("tayo", "lani", "rogi");
+        var runner = new OutputPrinter();
+
+        runner.printWinner(mockWinners);
+
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("최종 우승자 : tayo, lani, rogi");
     }
 }
