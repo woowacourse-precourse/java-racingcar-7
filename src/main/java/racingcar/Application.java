@@ -103,19 +103,31 @@ public class Application {
     }
 
     private static void validateCarNames(String[] carNames) {
-        for (String name : carNames) {
+        for (int i = 0; i < carNames.length; i++) {
+            String name = carNames[i];
+
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다 : " + name);
             }
             if (name.contains(" ")) {
                 throw new IllegalArgumentException("자동차 이름은 공백을 포함할 수 없습니다 : " + name);
             }
+
+            checkDuplicateNames(carNames, i);
         }
     }
 
     private static void validateAttempts(int attempts) {
         if (attempts < 1) {
             throw new IllegalArgumentException("시도 횟수는 1 이상의 정수만 가능합니다 : " + attempts);
+        }
+    }
+
+    private static void checkDuplicateNames(String[] carNames, int i) {
+        for(int j = i + 1; j < carNames.length; j++) {
+            if (carNames[j].equals(carNames[i])) {
+                throw new IllegalArgumentException("자동차 이름은 중복할 수 없습니다 : " + carNames[i]);
+            }
         }
     }
 }
