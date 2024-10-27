@@ -1,7 +1,10 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.GameRule;
 import racingcar.domain.RacingGame;
@@ -38,8 +41,33 @@ public class GameService {
         while (!racingGame.isTimeToEnd()) {
             racingGame.increaseGameCount();
             carRacing(racingGame);
+            OutputView.printCarPositions(racingGame);
         }
     }
 
+    public int getMaxPosition(RacingGame racingGame) {
+        return racingGame.getCars().stream()
+                .map(Car::getPosition)
+                .sorted(Comparator.reverseOrder())
+                .toList().get(0).intValue();
+    }
 
+    public List<Car> getWinnerCar(RacingGame racingGame) {
+        List<Car> winnerCar = new ArrayList<>();
+        int maxPosition = getMaxPosition(racingGame);
+        for (Car car : racingGame.getCars()) {
+            if (car.getPosition() == maxPosition) {
+                winnerCar.add(car);
+            }
+        }
+
+        return winnerCar;
+
+    }
+
+    public List<String> getWinnerCarName(RacingGame racingGame) {
+        return getWinnerCar(racingGame).stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
 }
