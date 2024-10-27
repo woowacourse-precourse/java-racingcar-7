@@ -2,6 +2,7 @@ package racingcar.validator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static racingcar.View.constant.ErrorMessage.BLANK_VALUE;
 import static racingcar.View.constant.ErrorMessage.TOO_LONG_VALUE;
 
 import java.util.List;
@@ -18,5 +19,15 @@ class InputValidatorTest {
                 () -> inputValidator.check(fiveLetters)
         );
         assertEquals(TOO_LONG_VALUE.getMessage(), exception.getMessage());
+    }
+
+    @Test
+    void 공백_입력될경우_예외처리() {
+        String blank = "";
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> inputValidator.check(blank)
+        );
+        assertEquals(BLANK_VALUE.getMessage(), exception.getMessage());
     }
 }
