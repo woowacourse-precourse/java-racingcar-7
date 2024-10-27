@@ -7,7 +7,7 @@ public abstract class Car {
     public Car() {
     }
 
-    public long getMoveDistance() {
+    public int getMoveDistance() {
         return moveDistance;
     }
 
