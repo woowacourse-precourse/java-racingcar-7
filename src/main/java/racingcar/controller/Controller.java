@@ -52,6 +52,8 @@ public class Controller {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 car.forward();
             }
+            outputView.printResult(car.getStatus());
         }
+        outputView.print("");
     }
 }
