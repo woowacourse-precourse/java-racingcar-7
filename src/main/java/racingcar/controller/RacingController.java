@@ -16,7 +16,7 @@ public class RacingController {
 
     public void start() {
         Cars cars = createCarsFromUserInput();
-        Race race = createRaceFromUserInputAndCars();
+        Race race = createRaceFromUserInput();
         racing(cars, race);
     }
 
@@ -25,7 +25,7 @@ public class RacingController {
         return Cars.from(carNames);
     }
 
-    private Race createRaceFromUserInputAndCars() {
+    private Race createRaceFromUserInput() {
         String raceCount = view.inputRaceCount();
         return Race.of(raceCount, RandomNumberGenerator.create());
     }
