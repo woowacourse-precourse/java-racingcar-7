@@ -59,6 +59,14 @@ public class RacingProgram {
         }
     }
 
+    void gameResult(){
+        int maxDistance = getMaxDistance();//가장 많이 이동한 거리를 구하기 위해
+        System.out.print("최종 우승자 : ");
+        int check = 0;
+        for(int i = 0; i < cars.size(); i++){
+            check = getWinnerIfMaxDistance(maxDistance, check, i);
+        }
+    }
 
     private void validateCarName(String name) {
         if (name == null || name.isEmpty() || name.isBlank()) {
@@ -91,6 +99,38 @@ public class RacingProgram {
         for (Car car : cars) {
             car.playCar();
         }
+    }
+
+    private int getWinnerIfMaxDistance(int maxDistance, int check, int i) {
+        if(cars.get(i).getInstance() == maxDistance){
+            check = printWinnerName(check, i);
+        }
+        return check;
+    }
+
+    private int printWinnerName(int check, int j) {
+        if(check == 0){
+            check = 1;
+            System.out.print(cars.get(j).getCarName());
+        }else{
+            System.out.print(", " + cars.get(j).getCarName());
+        }
+        return check;
+    }
+
+    private int getMaxDistance() {
+        int maxDistance = 0;
+        for(int j = 0; j < cars.size(); j++){
+            maxDistance = calculateMaxDistance(maxDistance, j);
+        }
+        return maxDistance;
+    }
+
+    private int calculateMaxDistance(int maxDistance, int j) {
+        if(cars.get(j).getInstance() > maxDistance){
+            maxDistance = cars.get(j).getInstance();
+        }
+        return maxDistance;
     }
 
 }
