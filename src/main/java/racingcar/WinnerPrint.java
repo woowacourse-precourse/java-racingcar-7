@@ -15,8 +15,8 @@ public class WinnerPrint {
         }
 
         List<String> result = new ArrayList<>();
-        for (int i : Application.resultNum) {
-            if (i == maxNumber) {
+        for (int i = 0; i < Application.resultNum.length; i++) {
+            if (Application.resultNum[i] == maxNumber) {
                 result.add(Application.nameList[i]);
             }
         }

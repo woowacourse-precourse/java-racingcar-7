@@ -17,7 +17,7 @@ public class RacingProcess {
 
         for (int i = 0; i < carNumber; i++) {
             if (processNum[i] >= 4) {
-                Application.processResult[i] += " -";
+                Application.processResult[i] += "- ";
                 Application.resultNum[i]++;
             }
         }
