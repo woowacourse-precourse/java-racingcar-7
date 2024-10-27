@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.service;
 
-import racingcar.domain.Cars;
+import racingcar.domain.car.Cars;
 
 public class UserOutputService {
 

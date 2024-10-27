@@ -1,13 +1,13 @@
-package racingcar;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.Name;
-import racingcar.domain.Names;
-import racingcar.domain.RepeatCount;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+import racingcar.domain.car.Name;
+import racingcar.domain.car.Names;
+import racingcar.domain.racing.RepeatCount;
 
 public class UserInputService {
 

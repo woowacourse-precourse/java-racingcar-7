@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.service.ApplicationService;
+
 public class Application {
 
     private final ApplicationService applicationService;

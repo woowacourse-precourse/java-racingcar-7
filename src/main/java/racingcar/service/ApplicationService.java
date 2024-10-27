@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.service;
 
-import racingcar.domain.Cars;
-import racingcar.domain.RepeatCount;
+import racingcar.domain.car.Cars;
+import racingcar.domain.racing.Racing;
+import racingcar.domain.racing.RepeatCount;
 
 public class ApplicationService {
 

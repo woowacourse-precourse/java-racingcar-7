@@ -1,9 +1,8 @@
-package racingcar;
+package racingcar.domain.racing;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.RepeatCount;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 
 public class Racing {
 
