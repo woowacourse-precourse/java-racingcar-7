@@ -10,7 +10,6 @@ public class CarManager {
 
     private CarManager() {
         cars = new ArrayList<>();
-        remainingAttempts = 0;
     }
 
     public static CarManager getInstance() {

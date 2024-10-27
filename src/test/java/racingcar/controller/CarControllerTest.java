@@ -23,7 +23,7 @@ class CarControllerTest {
         int expect = 2;
         CarController carController = new CarController();
 
-        assertEquals(carController.getMostMovedCar(cars), expect);
+        assertEquals(carController.getMaxMovedDistance(cars), expect);
     }
 
     @Test
@@ -40,6 +40,6 @@ class CarControllerTest {
         List<String> winners = new ArrayList<>();
         winners.add(cars.get(0).getName());
         CarController carController = new CarController();
-        assertEquals(carController.getWinner(cars, carController.getMostMovedCar(cars)), winners);
+        assertEquals(carController.getWinner(cars, carController.getMaxMovedDistance(cars)), winners);
     }
 }

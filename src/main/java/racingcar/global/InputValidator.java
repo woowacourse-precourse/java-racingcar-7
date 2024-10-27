@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputValidator {
+    private static final int LIMIT_LENGTH = 5;
     public static List<String> convertInputToCarNames(String input) {
         List<String> carNames = new ArrayList<>();
         for (String carName : input.split(",")) {
@@ -17,7 +18,7 @@ public class InputValidator {
     }
 
     public static void checkNameLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > LIMIT_LENGTH) {
             throw new IllegalArgumentException();
         }
     }

@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class CarController {
-    private final int MOVEMENT_STANDARD = 4;
+    private final int MOVEMENT_THRESHOLD = 4;
 
     public void start() {
         OutputView.printCarNameInputMessage();
@@ -27,11 +27,11 @@ public class CarController {
             race(carManager.getCars());
             OutputView.printCarState(carManager.getCars());
         }
-        OutputView.printWinner(getWinner(carManager.getCars(), getMostMovedCar(carManager.getCars())));
+        OutputView.printWinner(getWinner(carManager.getCars(), getMaxMovedDistance(carManager.getCars())));
     }
 
     public boolean canMove() {
-        if (Randoms.pickNumberInRange(0, 9) >= MOVEMENT_STANDARD) {
+        if (Randoms.pickNumberInRange(0, 9) >= MOVEMENT_THRESHOLD) {
             return true;
         }
         return false;
@@ -45,7 +45,7 @@ public class CarController {
         }
     }
 
-    public int getMostMovedCar(List<Car> cars) {
+    public int getMaxMovedDistance(List<Car> cars) {
         int max = Integer.MIN_VALUE;
         for (Car car : cars) {
             if (max < car.getMovedDistance()) {

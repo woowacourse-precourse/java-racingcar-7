@@ -9,6 +9,9 @@ public class OutputView {
     private static final String TOTAL_ATTEMPT_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String WINNING_MESSAGE = "최종 우승자";
+    private static final String SEPARATOR_COLON = " : ";
+    private static final String SEPARATOR_REST = ", ";
+    private static final String PROGRESS = "-";
 
     public static void printCarNameInputMessage() {
         System.out.println(CAR_NAME_INPUT_MESSAGE);
@@ -24,12 +27,12 @@ public class OutputView {
 
     public static void printCarState(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getMovedDistance()));
+            System.out.println(car.getName() + SEPARATOR_COLON + PROGRESS.repeat(car.getMovedDistance()));
         }
         System.out.println();
     }
 
     public static void printWinner(List<String> winners) {
-        System.out.print(WINNING_MESSAGE + " : " + String.join(", ", winners));
+        System.out.print(WINNING_MESSAGE + SEPARATOR_COLON + String.join(SEPARATOR_REST, winners));
     }
 }
