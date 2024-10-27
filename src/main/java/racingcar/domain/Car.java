@@ -11,4 +11,17 @@ public class Car {
         this.name = name;
         this.movement = movement;
     }
+
+    public String getMovement() {
+        return movement;
+    }
+
+    public void updateMovement(String m) {
+        this.movement += m;
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + movement;
+    }
 }
