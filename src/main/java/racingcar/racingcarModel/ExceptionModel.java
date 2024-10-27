@@ -18,6 +18,15 @@ public class ExceptionModel {
             throw new IllegalArgumentException();
         }
     }
+    //자동차 입력 배열 내 공백 확인
+    public void emptyCarNames(String nameInput) {
+        for (String carName : carNames(nameInput)) {
+            if (carName == null || carName.isEmpty()) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
 
 
 }
