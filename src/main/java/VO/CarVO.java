@@ -1,7 +1,5 @@
 package VO;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-
 public class CarVO {
 
     private String carName;

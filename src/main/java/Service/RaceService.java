@@ -1,8 +1,6 @@
 package Service;
 
-import DAO.RaceDAO;
 import VO.CarVO;
-import View.RaceView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +8,6 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class RaceService {
-    private RaceView raceView = new RaceView();
-
     public int runing(int value) {
         int randomPosition = pickNumberInRange(0, 9);
         if (randomPosition >= 4) {

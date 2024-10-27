@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RaceDAO {
-    private Map<String, CarVO> carDatabase = new HashMap<>();
+    private final Map<String, CarVO> carDatabase = new HashMap<>();
     private int round;
 
     public int getRound() {

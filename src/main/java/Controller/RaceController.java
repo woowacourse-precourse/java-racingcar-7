@@ -8,9 +8,9 @@ import View.RaceView;
 import java.util.List;
 
 public class RaceController {
-    private RaceView raceView = new RaceView();
-    private RaceDAO raceDAO = new RaceDAO();
-    private RaceService raceService = new RaceService();
+    private final RaceView raceView = new RaceView();
+    private final RaceDAO raceDAO = new RaceDAO();
+    private final RaceService raceService = new RaceService();
 
     public void raceMain() {
         try {
