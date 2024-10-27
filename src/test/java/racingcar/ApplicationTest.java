@@ -40,9 +40,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 입력받은_자동차_이름에_공백_포함_여부() {
+    void 입력받은_자동차_이름에_사이에_쉼표_2개_이상_입력() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("venus,,luca,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력받은_자동차_이름에_공백_존재() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("venus  ,luca,pobi", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
