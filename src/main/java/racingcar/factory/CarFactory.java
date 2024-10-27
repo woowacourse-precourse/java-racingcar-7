@@ -14,13 +14,12 @@ import racingcar.model.Cars;
 public interface CarFactory{
   Function<List<Car>, Cars> getDefaultCollection ();
   Function<List<Car>, Cars> getCollection (CarsType carsType);
-  public List<Car> createList(String[] carNames);
+  List<Car> createList(List<String> carNames);
 
-  public void validateNames(String[] carNames);
-  public String[] splitCarNames(String rawCarNames);
-  public List<String> createCarNames(String rawCarNames);
+  void validateNames(List<String> carNames);
+  List<String> splitCarNames(String rawCarNames);
 
-  public List<Car> getListFromRawCarNames(String rawCarNames);
+  List<Car> getListFromRawCarNames(String rawCarNames);
 
   Car createCar(String carName);
   Cars createCars(String rawCarNames, CarsType carsType);

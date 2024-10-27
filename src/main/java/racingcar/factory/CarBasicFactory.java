@@ -19,65 +19,58 @@ public class CarBasicFactory implements CarFactory{
   private final CarStrategy carStrategy;
   private final CarsStrategy carsStrategy;
 
-  public CarBasicFactory(CarStrategy carStrategy, CarsStrategy carsStrategy) {
+  public CarBasicFactory(CarStrategy carStrategy, CarsStrategy carsStrategy){
     this.carStrategy = carStrategy;
     this.carsStrategy = carsStrategy;
   }
 
   @Override
-  public Car createCar(String carName) {
+  public Car createCar(String carName){
     return Car.from(carName);
   }
 
   @Override
-  public Function<List<Car>, Cars> getDefaultCollection() {
+  public Function<List<Car>, Cars> getDefaultCollection(){
     return carsStrategy.getDefaultCollection();
   }
 
   @Override
-  public Function<List<Car>, Cars> getCollection (CarsType carsType) {
+  public Function<List<Car>, Cars> getCollection (CarsType carsType){
     return carsStrategy.getCollection(carsType);
   }
 
   @Override
-  public List<Car> createList(String[] carNames) {
-    return Arrays.stream(carNames)
+  public List<Car> createList(List<String> carNames){
+    return carNames.stream()
         .map(this::createCar)
         .collect(Collectors.toList());
   }
 
   @Override
-  public void validateNames(String[] carNames){
+  public void validateNames(List<String> carNames){
     carStrategy.validateNames(carNames);
   }
 
   @Override
-  public String[] splitCarNames(String rawCarNames) {
+  public List<String> splitCarNames(String rawCarNames){
     return carStrategy.splitNames(rawCarNames);
   }
 
   @Override
-  public List<String> createCarNames(String rawCarNames) {
-    return Arrays.stream(
-        carStrategy.splitNames(rawCarNames))
-        .toList();
-  }
-
-  @Override
   public List<Car> getListFromRawCarNames(String rawCarNames){
-    String[] carNames = splitCarNames(rawCarNames);
+    List<String> carNames = splitCarNames(rawCarNames);
     validateNames(carNames);
     return createList(carNames);
   }
 
   @Override
-  public Cars createCars(String rawCarNames, CarsType carsType) {
+  public Cars createCars(String rawCarNames, CarsType carsType){
     return getCollection(carsType)
         .apply(getListFromRawCarNames(rawCarNames));
   }
 
   @Override
-  public Cars createDefaultCars(String rawCarNames) {
+  public Cars createDefaultCars(String rawCarNames){
     return getDefaultCollection()
         .apply(getListFromRawCarNames(rawCarNames));
   }
