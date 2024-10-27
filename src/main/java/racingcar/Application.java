@@ -14,8 +14,7 @@ public class Application {
                 .map(car -> car.getName())
                 .collect(Collectors.toList());
 
-        String output = String.join(", ", winnerNames);
-        System.out.println("최종 우승자 : " + output);
+        printWinner(winnerNames);
     }
 
     private static String[] inputCarNames() {
@@ -38,5 +37,13 @@ public class Application {
             throw new IllegalArgumentException("입력은 필수입니다");
         }
         return input;
+    }
+
+    private static void printWinner(final List<String> winnerNames) {
+        output("최종 우승자 : "  + String.join(", ", winnerNames));
+    }
+
+    private static void output(final String output) {
+        System.out.println(output);
     }
 }
