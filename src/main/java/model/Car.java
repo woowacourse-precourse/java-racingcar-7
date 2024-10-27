@@ -1,7 +1,7 @@
 package model;
 
 public class Car {
-    private String name;
+    private final String name;
     private int position;
     private boolean isStopped;
 
@@ -28,7 +28,7 @@ public class Car {
         isStopped = true;
     }
 
-    // 현재 상태를 확인
+    // 현재 미사용
     public boolean isStopped() {
         return isStopped;
     }
