@@ -88,7 +88,7 @@ class ApplicationTest extends NsTest {
         //when
         //then
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,gyun", "100_000_000"))
+                assertThatThrownBy(() -> runException("pobi,gyun", "100000000"))
                         .isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorType.EXCEEDED_MAX_COUNT)
         );
     }
