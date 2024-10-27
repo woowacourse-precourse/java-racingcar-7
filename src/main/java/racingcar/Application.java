@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import static racingcar.constant.ErrorMessage.RACE_ROUND_ONLY_CAN_NUMBER;
 import static racingcar.constant.ErrorMessage.VEHICLE_NAME_CANNOT_BE_DUPLICATE;
+import static racingcar.constant.Race.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class Application {
     }
 
     private static List<Vehicle> createUniqueVehicles(String inputVehicles) {
-        List<String> vehicles = Arrays.stream(inputVehicles.split(","))
+        List<String> vehicles = Arrays.stream(inputVehicles.split(COMMA))
                 .map(String::trim)
                 .filter(name -> !name.isEmpty())
                 .toList();
@@ -57,7 +58,7 @@ public class Application {
     }
 
     private static void processRound(List<Vehicle> vehicles) {
-        vehicles.forEach(vehicle -> vehicle.moveOrStay(Randoms.pickNumberInRange(0, 9)));
+        vehicles.forEach(vehicle -> vehicle.moveOrStay(Randoms.pickNumberInRange(MIN_PICK_NUMBER, MAX_PICK_NUMBER)));
     }
 
     private static void raceResult(List<Vehicle> vehicles) {
@@ -69,7 +70,7 @@ public class Application {
         String result = vehicles.stream()
                 .filter(vehicle -> vehicle.getCurrentDistance() == Vehicle.MAX_RACE_DISTANCE)
                 .map(Vehicle::getVehicleName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(WINNER_DELIMITER_COMMA));
         System.out.println("최종 우승자 : " + result);
     }
 }
