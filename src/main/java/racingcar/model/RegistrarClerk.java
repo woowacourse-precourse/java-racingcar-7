@@ -7,8 +7,7 @@ public class RegistrarClerk {
     public CarRace register(RacingRegisterForm registerForm) {
         validateRegisterForm(registerForm);
         Cars cars = new Cars(registerForm.carNames());
-        int raceRoundCount = registerForm.raceRoundCount();
-        return new CarRace(cars, raceRoundCount);
+        return new CarRace(cars);
     }
 
     private void validateRegisterForm(RacingRegisterForm registerForm) {

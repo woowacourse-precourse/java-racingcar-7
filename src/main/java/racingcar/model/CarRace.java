@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.dto.RoundRaceRecord;
 import racingcar.model.move.MoveStrategy;
@@ -8,28 +7,19 @@ import racingcar.model.move.RandomMoveStrategy;
 
 public class CarRace {
 
-    private final MoveStrategy moveStrategy;
     private final Cars cars;
-    private final int roundCount;
-    private int currentRoundCount = 0;
+    private final MoveStrategy moveStrategy;
+    private final CarRaceRecorder raceRecorder;
 
-    public CarRace(Cars cars, int roundCount) {
+    public CarRace(Cars cars) {
         this.cars = cars;
-        this.roundCount = roundCount;
         this.moveStrategy = new RandomMoveStrategy();
+        this.raceRecorder = new CarRaceRecorder();
     }
 
     public List<RoundRaceRecord> startRound() {
-        validateExecuteRaceRound();
-        currentRoundCount++;
         moveCarsIfAble();
         return getRoundRaceRecord();
-    }
-
-    private void validateExecuteRaceRound() {
-        if (!hasMoreRounds()) {
-            throw new IllegalStateException("더 이상 라운드를 진행할 수 없습니다. (이미 종료된 경주입니다.)");
-        }
     }
 
     private void moveCarsIfAble() {
@@ -41,37 +31,20 @@ public class CarRace {
     }
 
     private List<RoundRaceRecord> getRoundRaceRecord() {
-        return cars.getCars()
-                .stream()
-                .map(this::mapToRoundRaceRecord)
-                .toList();
-    }
-
-    private RoundRaceRecord mapToRoundRaceRecord(Car car) {
-        return new RoundRaceRecord(car.getName(), car.getPosition());
-    }
-
-    public boolean hasMoreRounds() {
-        return currentRoundCount < roundCount;
+        return raceRecorder.recordRound(cars.getCars());
     }
 
     public List<String> getWinnerCarNames() {
-        if (hasMoreRounds()) {
-            throw new IllegalStateException("자동차 경주가 종료되지 않았습니다.");
-        }
-        List<String> winnerCarNames = new ArrayList<>();
-        int maxPosition = 0;
-        for (Car car : cars.getCars()) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-                winnerCarNames = new ArrayList<>();
-                winnerCarNames.add(car.getName());
-                continue;
-            }
-            if (car.getPosition() == maxPosition) {
-                winnerCarNames.add(car.getName());
-            }
-        }
-        return winnerCarNames;
+        List<Car> allCars = cars.getCars();
+
+        int maxPosition = allCars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElseThrow(() -> new IllegalStateException("자동차가 존재하지 않습니다."));
+
+        return allCars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
     }
 }

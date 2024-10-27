@@ -4,6 +4,7 @@ import java.util.List;
 import racingcar.dto.RacingRegisterForm;
 import racingcar.dto.RoundRaceRecord;
 import racingcar.model.CarRace;
+import racingcar.model.CarRaceRoundManager;
 import racingcar.model.RacingRegisterFormFactory;
 import racingcar.model.RegistrarClerk;
 import racingcar.view.InputView;
@@ -22,16 +23,13 @@ public class RacingGameController {
     public void startRace() {
         RacingRegisterForm registerForm = getRacingRegisterForm();
         CarRace carRace = createCarRace(registerForm);
+        CarRaceRoundManager roundManager = createCarRaceRoundManager(registerForm);
+
         outputView.printRaceStart();
-        while (carRace.hasMoreRounds()) {
-            executeRaceRound(carRace);
+        while (roundManager.hasMoreRounds()) {
+            executeRaceRound(carRace, roundManager);
         }
         displayWinners(carRace);
-    }
-
-    private void executeRaceRound(CarRace carRace) {
-        List<RoundRaceRecord> roundResult = carRace.startRound();
-        outputView.printRoundResult(roundResult);
     }
 
     private RacingRegisterForm getRacingRegisterForm() {
@@ -42,6 +40,16 @@ public class RacingGameController {
 
     private CarRace createCarRace(RacingRegisterForm registerForm) {
         return new RegistrarClerk().register(registerForm);
+    }
+
+    private CarRaceRoundManager createCarRaceRoundManager(RacingRegisterForm registerForm) {
+        return new CarRaceRoundManager(registerForm.raceRoundCount());
+    }
+
+    private void executeRaceRound(CarRace carRace, CarRaceRoundManager roundManager) {
+        List<RoundRaceRecord> roundResult = carRace.startRound();
+        outputView.printRoundResult(roundResult);
+        roundManager.nextRound();
     }
 
     private void displayWinners(CarRace carRace) {
