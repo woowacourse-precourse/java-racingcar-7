@@ -42,6 +42,7 @@ public class RacingcarController {
         }
 
         output.printWinnerPrompt();
+        racingcarService.determineWinner(racingcars);
     }
 
     private List<String> validateCarName(String carName) {
