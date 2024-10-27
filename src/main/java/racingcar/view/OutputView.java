@@ -51,6 +51,10 @@ public class OutputView {
     }
 
     public void displayWinner(int max, Cars cars, StringBuilder output) {
+        if (max == 0) {
+            throw new IllegalArgumentException();
+        }
+
         List<String> winner = new ArrayList<>();
         for (Car car : cars.getCars()) {
             if (car.getMoveCount() == max) {
