@@ -1,8 +1,10 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
 
-    private String carName;
+    private final String carName;
     private int distance;
 
     public Car(String name){
@@ -19,7 +21,11 @@ public class Car {
     }
 
     public void takeTurn(){
-        //Todo: 거리 1만큼 증가
+        //조건에 맞으면 거리 1만큼 증가
+        int randomNumber = Randoms.pickNumberInRange(0,9);
+        if(randomNumber >= 4){
+            distance = distance + 1;
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import camp.nextstep.edu.missionutils.Console;
 
 public class RacingGame {
 
@@ -9,18 +10,39 @@ public class RacingGame {
     int maxTurn = 0;
 
     public void runGame(){
+
         setGame();
         playGame();
         afterGame();
     }
 
-
+    /// 레이싱게임 입력부분
     private void setGame(){
-        //Todo: 사용자로부터 maxTurn, 자동차 이름 입력받기
-        //Todo: 자동차이름을 ','로 구분지어 자동차 리스트에 추가하기
-        //Todo: 입력 예외처리 추가하기(README 참조)
         //Todo: 한 가지 기능을 하는 함수로 나누기
+
+        String[] carNameArray = inputCarName(); // 자동차 이름 입력받아서 배열에 저장
+        // Todo: 자동차 입력 예외처리
+
+        // 자동차 정보 저장
+        for(String carName : carNameArray){
+
+            // Todo: 중복확인 예외처리
+            cars.add(new Car(carName));
+        }
+        //Todo: 사용자로부터 maxTurn 입력받기
     }
+
+    /// 자동차 이름을 입력받아 문자열 배열을 리턴
+    private String[] inputCarName(){
+
+        String carNameString = Console.readLine(); // 사용자로부터 자동차 이름 입력받기
+        carNameString = carNameString.trim();
+
+        // 입력한 자동차 이름으로 생성한 배열 리턴
+        return carNameString.split(",");
+    }
+
+
 
     private void playGame(){
         //Todo: maxTurn번 반복하기
