@@ -12,24 +12,20 @@ public class AppConfig {
         return new RacingGameController(racingGameService(), inputView(), outputView(), carSetupService());
     }
 
-    private RacingGameService racingGameService() {
-        return new RacingGameService();
-    }
-
     private InputView inputView() {
         return new InputView();
     }
-
     private OutputView outputView() {
         return new OutputView();
     }
-
-    private InputValidator inputValidator() {
-        return new InputValidator();
+    private RacingGameService racingGameService() {
+        return new RacingGameService(outputView());
     }
-
     private CarSetupService carSetupService() {
         return new CarSetupService(inputValidator());
+    }
+    private InputValidator inputValidator() {
+        return new InputValidator();
     }
 }
 

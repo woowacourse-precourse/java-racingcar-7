@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import racingcar.domain.car.Car;
+import racingcar.domain.Car;
 import racingcar.exception.ErrorMessage;
 import racingcar.validator.InputValidator;
 
@@ -10,16 +10,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarSetupService {
+public class CarSetupService implements CarSetup {
     private final InputValidator inputValidator;
 
     public CarSetupService(InputValidator inputValidator) {
         this.inputValidator = inputValidator;
     }
 
+    @Override
     public List<Car> parseCarNames(String input) {
         inputValidator.validateIsEmpty(input);
-
         HashSet<String> carNamesSet = new HashSet<>();
 
         return Arrays.stream(input.split(","))
@@ -39,9 +39,9 @@ public class CarSetupService {
                 })
                 .map(name -> new Car(name, 0))
                 .collect(Collectors.toCollection(ArrayList::new));
-
     }
 
+    @Override
     public int parseAttemptCount(String input) {
         inputValidator.validateAttemptCount(input);
 
