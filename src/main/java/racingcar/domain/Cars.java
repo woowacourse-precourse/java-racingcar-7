@@ -19,10 +19,13 @@ public class Cars {
         }
     }
 
-    public List<Car> getWinnerList() {
+    public List<String> getWinnerList() {
         int maxDistance = getMaxDistance(carList);
-        return carList.stream()
+        List<Car> winnerCarList = carList.stream()
                 .filter(car -> car.getDistance() == maxDistance)
+                .collect(Collectors.toList());
+        return winnerCarList.stream()
+                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
