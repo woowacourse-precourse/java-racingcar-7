@@ -7,6 +7,8 @@ import java.util.List;
 
 public class OutputView {
     public static void printRoundResult(RacingGame game) {
+        System.out.println("");
+        System.out.println("실행 결과");
         for (Car car : game.getCars()) {
             System.out.print(car.getName() + " : " + "-".repeat(car.getPosition()) + "\n");
         }
