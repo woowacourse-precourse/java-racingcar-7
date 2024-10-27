@@ -59,7 +59,7 @@ public class Application {
             for(Car car : cars) {
                 int randomValue = Randoms.pickNumberInRange(0,9);
 
-                if(randomValue > 4) {
+                if(randomValue >= 4) {
                     car.incrementPosition();
                 }
             }
@@ -76,5 +76,27 @@ public class Application {
         }
 
 
+        int maxPosition = 0;
+        List<Car> winners = new ArrayList<>();
+
+        for(Car car : cars) {
+            if(car.position > maxPosition) {
+                maxPosition = car.position;
+            }
+        }
+
+        for(Car car : cars) {
+            if(car.position == maxPosition) {
+                winners.add(car);
+            }
+        }
+
+        System.out.print("최종 우승자 : ");
+        for(int i = 0; i < winners.size(); i++) {
+            System.out.print(winners.get(i).carName);
+            if(i < winners.size() - 1) {
+                System.out.print(", ");
+            }
+        }
     }
 }
