@@ -38,4 +38,7 @@ public class Judge {
         return result.toString();
     }
 
+    public void show() {
+        System.out.println(getWinnerNames());
+    }
 }
