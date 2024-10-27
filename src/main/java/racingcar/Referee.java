@@ -15,6 +15,10 @@ public class Referee {
         this.round = Integer.parseInt(round);
     }
 
+    public int getRound() {
+        return round;
+    }
+
     public List<String> judgmentWinner(Map<String, Integer> carsDecision) {
         return carsDecision
                 .entrySet()
