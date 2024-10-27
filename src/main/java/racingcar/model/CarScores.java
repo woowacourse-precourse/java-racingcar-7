@@ -5,18 +5,18 @@ import java.util.LinkedHashMap;
 import java.util.stream.Collectors;
 
 public class CarScores {
-    private static final String CARS_DELIMITER = ",";
+    private static final String CARS_SEPARATOR = ",";
 
-    private LinkedHashMap<CarName, Distances> carScores;
+    private LinkedHashMap<CarName, Distance> carScores;
 
     public CarScores(String cars) {
         isBlank(cars);
-        carScores = new LinkedHashMap<>(Arrays.stream(cars.split(CARS_DELIMITER))
+        carScores = new LinkedHashMap<>(Arrays.stream(cars.split(CARS_SEPARATOR))
                 .map(String::strip)
-                .collect(Collectors.toMap(CarName::new, element -> new Distances(0))));
+                .collect(Collectors.toMap(CarName::new, element -> new Distance(0))));
     }
 
-    public CarScores(LinkedHashMap<CarName, Distances> carScores) {
+    public CarScores(LinkedHashMap<CarName, Distance> carScores) {
         this.carScores = carScores;
     }
 
@@ -26,7 +26,7 @@ public class CarScores {
         }
     }
 
-    public LinkedHashMap<CarName, Distances> getCarScores() {
+    public LinkedHashMap<CarName, Distance> getCarScores() {
         return carScores;
     }
 }
