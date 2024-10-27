@@ -21,6 +21,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 이동횟수_입력이_숫자가_아닐_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
