@@ -9,7 +9,10 @@ import java.util.Map;
 public class RacingController {
     public void start() {
         // 입력 받기
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> carNames = InputView.getCarNames();
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
         int tryTime = InputView.getTryTime();
 
 //        System.out.println(carNames);

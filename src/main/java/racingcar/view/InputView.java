@@ -10,7 +10,6 @@ public class InputView {
     private static final String DELIMITER = ",";
 
     public static List<String> getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
 
         if (input == null || input.isEmpty()) {
@@ -22,7 +21,6 @@ public class InputView {
     }
 
     public static int getTryTime() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
 
         // 입력이 없을 때
