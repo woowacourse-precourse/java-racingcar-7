@@ -4,14 +4,14 @@ import java.util.List;
 
 public class RaceService {
 
-
-    public Race initializeRace(List<String> carNames){
+    public Race initializeRace(List<String> carNames) {
         List<Car> cars = carNames.stream().map(Car::new).toList();
         return new Race(cars);
     }
 
-
-    public void startRace(Race race, int rounds){
-
+    public void startRace(Race race, int rounds) {
+        for (int i = 0; i < rounds; i++) {
+            race.raceOnce();
+        }
     }
 }

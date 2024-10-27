@@ -3,8 +3,8 @@ package racingcar;
 import java.util.List;
 
 public class RaceController {
-    private RaceService raceService;
-    private RaceView raceView;
+    private final RaceService raceService;
+    private final RaceView raceView;
 
     public RaceController(RaceService raceService, RaceView raceView) {
         this.raceService = raceService;
@@ -13,7 +13,6 @@ public class RaceController {
 
     public void startGame() {
         try {
-
             List<String> carNames = raceView.inputCarNames();
             Race race = raceService.initializeRace(carNames);
             int rounds = raceView.inputRounds();

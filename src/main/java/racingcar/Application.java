@@ -6,14 +6,9 @@ public class Application {
 
         RaceService raceService = new RaceService();
         RaceView raceView = new RaceView();
-        RaceController controller = new RaceController();
-
         RaceController controller = new RaceController(raceService, raceView);
+
         controller.startGame();
-
-
-
-
 
     }
 }

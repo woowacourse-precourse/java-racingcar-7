@@ -13,17 +13,17 @@ public class Race {
     }
 
     public void raceOnce() {
-        for(Car car : cars){
+        for (Car car : cars) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             car.move(randomNumber);
         }
     }
 
-    public List<Car> getWinners(){
+    public List<Car> getWinners() {
         int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
         List<Car> winners = new ArrayList<>();
-        for (Car car : cars){
-            if (car.getPosition() == maxPosition){
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
                 winners.add(car);
             }
         }
