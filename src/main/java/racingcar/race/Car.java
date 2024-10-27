@@ -38,7 +38,7 @@ public class Car implements Vehicle {
 
     @Override
     public boolean move() {
-        int randomValue = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 10);
+        int randomValue = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
         return randomValue >= 4;
     }
 
