@@ -27,5 +27,17 @@ public class RacingCar {
             }
             carList.put(carNameSplit, 0);
         }
+
+        System.out.println("실행결과");
+        for(int i=0; i<round; i++) {
+            for (String carName : carList.keySet()) {
+                int randomMove = Randoms.pickNumberInRange(0, 9);
+                if (randomMove >= 4) {
+                    carList.put(carName, carList.get(carName) + 1);
+                }
+                System.out.println(carName + " : " + moveString.repeat(carList.get(carName)));
+            }
+            System.out.println();
+        }
     }
 }

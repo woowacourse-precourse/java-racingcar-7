@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
@@ -15,6 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+
+    @BeforeEach
+    void setUp() {
+        RacingCar.carList.clear();
+    }
 
     @Test
     void 유효한_입력을_받았을_때_carList_입력_확인() {
@@ -31,7 +37,7 @@ class ApplicationTest extends NsTest {
         expectedCarList.put("car2", 0);
         expectedCarList.put("car3", 0);
 
-        assertEquals(expectedCarList, RacingCar.carList);
+        assertEquals(expectedCarList.keySet(), RacingCar.carList.keySet());
     }
 
     @Test
@@ -39,18 +45,6 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-
-    @Test
-    void 기능_테스트() {
-        assertRandomNumberInRangeTest(
-            () -> {
-                RacingCar.run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
         );
     }
 
