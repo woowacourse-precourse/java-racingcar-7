@@ -30,6 +30,10 @@ public class RaceService {
             raceRound(carList);
             printRaceResult(carList);
         }
+        System.out.println();
+
+        // 모든 라운드가 끝난 후 우승자 찾기
+        List<String> winners = getWinners(carList);
     }
 
     private void raceRound(List<Car> carList) {
@@ -37,6 +41,18 @@ public class RaceService {
             if (pickRandomNumber() >= 4)
                 car.move();
         }
+    }
+
+    private List<String> getWinners(List<Car> carList) {
+        int maxDistance = carList.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+
+        return carList.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     private void printRaceResult(List<Car> carList) {
