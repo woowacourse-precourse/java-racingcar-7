@@ -6,10 +6,9 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.model.game.RacingCar;
-import racingcar.model.game.attempt.Attempt;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
+import racingcar.model.game.attempt.Attempt;
 import racingcar.model.game.position.History;
 import racingcar.model.game.position.Position;
 import racingcar.model.game.position.Positions;
@@ -36,7 +35,7 @@ class RacingCarTest {
 
             // Then
             assertThat(racingCar).extracting("positions")
-                    .isEqualTo(new Positions(List.of(Position.zero(), Position.zero())));
+                    .isEqualTo(new Positions(List.of(new Position(0), new Position(0))));
         }
 
         @Test

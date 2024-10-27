@@ -73,9 +73,9 @@ public class RacingCarController {
                                   final StringRepeater stringRepeater) {
         outputView.showCommentForResult();
         racingCar.start();
-        Cars cars = racingCar.getCars();
-        History history = racingCar.getHistory();
-        for (Positions positions : history.values()) {
+        Cars cars = racingCar.cars();
+        History history = racingCar.history();
+        for (Positions positions : history.history()) {
             outputView.showCarPosition(cars.names(), positions, stringRepeater);
         }
     }

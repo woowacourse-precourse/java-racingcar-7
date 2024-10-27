@@ -14,6 +14,6 @@ class IntegerComparableTest {
         IntegerComparable numberComparable = new IntegerComparable();
 
         // When & Then
-        assertThat(numberComparable.compare(2, 1)).isEqualTo(1);
+        assertThat(numberComparable.meetsThreshold(2, 1)).isTrue();
     }
 }

@@ -3,6 +3,7 @@ package racingcar.model.game;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.model.car.Name;
 import racingcar.model.game.attempt.Attempt;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
@@ -18,23 +19,24 @@ public class RacingCar {
 
     public RacingCar(final Cars cars, final Attempt attempt) {
         this.cars = cars;
-        this.positions = Positions.initialize(cars.size());
+        this.positions = Positions.createWithNewRound(cars.size());
         this.history = new History(new ArrayList<>());
         this.attempt = attempt;
     }
 
     public void start() {
-        for (int round = 0; round < attempt.value(); round++) {
+        for (int round = 0; round < attempt.attempt(); round++) {
             List<Boolean> moves = cars.doMove();
             moveWithPositions(moves);
         }
     }
 
     public String calculateWinners() {
-        return positions.calculateWinners()
+        return positions.findWinnersIndices()
                 .stream()
-                .map(cars::car)
+                .map(cars::at)
                 .map(Car::name)
+                .map(Name::name)
                 .collect(Collectors.joining(", "));
     }
 
@@ -47,11 +49,11 @@ public class RacingCar {
         history.add(positions);
     }
 
-    public Cars getCars() {
+    public Cars cars() {
         return cars;
     }
 
-    public History getHistory() {
+    public History history() {
         return history;
     }
 }

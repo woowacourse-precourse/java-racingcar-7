@@ -8,8 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.model.game.position.Position;
-import racingcar.model.game.position.Positions;
 
 @DisplayName("위치 집합 테스트")
 class PositionsTest {
@@ -32,10 +30,10 @@ class PositionsTest {
         @DisplayName("깊은 복사로 생성한다")
         void 성공_생성_깊은복사() {
             // Given
-            Positions positions = new Positions(List.of(Position.zero()));
+            Positions positions = new Positions(List.of(new Position(0)));
 
             // When
-            Positions copied = positions.deepCopy();
+            Positions copied = positions.copy();
 
             // Then
             assertThat(copied).isNotSameAs(positions)
@@ -54,30 +52,11 @@ class PositionsTest {
             int size = 1;
 
             // When
-            Positions positions = Positions.initialize(size);
+            Positions positions = Positions.createWithNewRound(size);
 
             // Then
-            assertThat(positions).extracting("values")
-                    .isEqualTo(List.of(Position.zero()));
-        }
-    }
-
-    @Nested
-    @DisplayName("추가 테스트")
-    class addTest {
-
-        @Test
-        @DisplayName("원소를 추가한다")
-        void 성공_원소추가() {
-            // Given
-            Positions positions = new Positions(Collections.emptyList());
-            Position position = Position.zero();
-
-            // When
-            positions.add(position);
-
-            // Then
-            assertThat(positions).extracting("values").isEqualTo(List.of(Position.zero()));
+            assertThat(positions).extracting("positions")
+                    .isEqualTo(List.of(new Position(0)));
         }
     }
 
@@ -88,13 +67,13 @@ class PositionsTest {
         @DisplayName("해당 인덱스의 위치를 증가시킨다")
         void 성공_위치증가_인덱스() {
             // Given
-            Positions positions = new Positions(List.of(Position.zero()));
+            Positions positions = new Positions(List.of(new Position(0)));
 
             // When
             positions.increase(0);
 
             // Then
-            assertThat(positions).extracting("values")
+            assertThat(positions).extracting("positions")
                     .isEqualTo(List.of(new Position(1)));
         }
     }
@@ -109,7 +88,7 @@ class PositionsTest {
             Positions positions = new Positions(List.of(new Position(1), new Position(2)));
 
             // When
-            List<Integer> winners = positions.calculateWinners();
+            List<Integer> winners = positions.findWinnersIndices();
 
             // Then
             assertThat(winners).isEqualTo(List.of(1));

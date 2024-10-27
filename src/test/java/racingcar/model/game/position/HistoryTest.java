@@ -7,9 +7,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.model.game.position.History;
-import racingcar.model.game.position.Position;
-import racingcar.model.game.position.Positions;
 
 @DisplayName("경기 기록 테스트")
 class HistoryTest {
@@ -28,7 +25,7 @@ class HistoryTest {
             history.add(positions);
 
             // Then
-            assertThat(history.values()).contains(positions);
+            assertThat(history.history()).contains(positions);
         }
     }
 }

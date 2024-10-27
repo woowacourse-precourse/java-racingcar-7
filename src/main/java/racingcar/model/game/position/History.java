@@ -7,18 +7,18 @@ import java.util.Objects;
 
 public class History {
 
-    private final List<Positions> values;
+    private final List<Positions> history;
 
-    public History(final List<Positions> values) {
-        this.values = new ArrayList<>(values);
+    public History(final List<Positions> history) {
+        this.history = new ArrayList<>(history);
     }
 
     public void add(Positions positions) {
-        values.add(positions.deepCopy());
+        history.add(positions.copy());
     }
 
-    public List<Positions> values() {
-        return Collections.unmodifiableList(values);
+    public List<Positions> history() {
+        return Collections.unmodifiableList(history);
     }
 
     @Override
@@ -29,12 +29,12 @@ public class History {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        History history = (History) o;
-        return Objects.equals(values, history.values);
+        History other = (History) o;
+        return Objects.equals(history, other.history);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(values);
+        return Objects.hash(history);
     }
 }

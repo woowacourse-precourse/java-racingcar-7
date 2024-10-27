@@ -21,7 +21,7 @@ class CarsTest {
         cars.add(car);
 
         // Then
-        assertThat(cars).extracting("values")
+        assertThat(cars).extracting("cars")
                 .isEqualTo(List.of(car));
     }
 
@@ -45,10 +45,10 @@ class CarsTest {
         Cars cars = new Cars(List.of(new Car("mint", () -> true), new Car("dobby", () -> true)));
 
         // When
-        List<String> names = cars.names();
+        List<Name> names = cars.names();
 
         // Then
-        assertThat(names).isEqualTo(List.of("mint", "dobby"));
+        assertThat(names).isEqualTo(List.of(new Name("mint"), new Name("dobby")));
     }
 
     @Test
@@ -72,7 +72,7 @@ class CarsTest {
         Cars cars = new Cars(List.of(car));
 
         // When
-        Car selectedCar = cars.car(0);
+        Car selectedCar = cars.at(0);
 
         // Then
         assertThat(selectedCar).isEqualTo(car);

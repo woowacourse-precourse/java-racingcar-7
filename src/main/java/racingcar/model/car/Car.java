@@ -17,8 +17,8 @@ public class Car {
         return movingStrategy.canMove();
     }
 
-    public String name() {
-        return name.value();
+    public Name name() {
+        return name;
     }
 
     @Override
@@ -29,8 +29,8 @@ public class Car {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Car car = (Car) o;
-        return Objects.equals(name, car.name) && Objects.equals(movingStrategy, car.movingStrategy);
+        Car other = (Car) o;
+        return Objects.equals(name, other.name) && Objects.equals(movingStrategy, other.movingStrategy);
     }
 
     @Override

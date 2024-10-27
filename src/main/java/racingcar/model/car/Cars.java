@@ -7,19 +7,19 @@ import racingcar.exception.InvalidNameException;
 
 public class Cars {
 
-    private final List<Car> values;
+    private final List<Car> cars;
 
-    public Cars(final List<Car> values) {
-        this.values = new ArrayList<>(values);
+    public Cars(final List<Car> cars) {
+        this.cars = new ArrayList<>(cars);
     }
 
     public void add(Car car) {
         validate(car);
-        values.add(car);
+        cars.add(car);
     }
 
     public List<Boolean> doMove() {
-        return values.stream()
+        return cars.stream()
                 .map(Car::doesMove)
                 .toList();
     }
@@ -30,23 +30,23 @@ public class Cars {
         }
     }
 
-    private boolean isDuplicated(String name) {
-        return values.stream()
+    private boolean isDuplicated(Name name) {
+        return cars.stream()
                 .anyMatch(car -> car.name().equals(name));
     }
 
-    public List<String> names() {
-        return values.stream()
+    public List<Name> names() {
+        return cars.stream()
                 .map(Car::name)
                 .toList();
     }
 
     public int size() {
-        return values.size();
+        return cars.size();
     }
 
-    public Car car(final int index) {
-        return values.get(index);
+    public Car at(final int index) {
+        return cars.get(index);
     }
 
     @Override
@@ -57,12 +57,12 @@ public class Cars {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Cars cars = (Cars) o;
-        return Objects.equals(values, cars.values);
+        Cars other = (Cars) o;
+        return Objects.equals(cars, other.cars);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(values);
+        return Objects.hash(cars);
     }
 }

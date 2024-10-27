@@ -4,61 +4,55 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 public class Positions {
 
-    private final List<Position> values;
+    private final List<Position> positions;
 
-    public Positions(final List<Position> values) {
-        this.values = new ArrayList<>(values);
+    public Positions(final List<Position> positions) {
+        this.positions = new ArrayList<>(positions);
     }
 
-    public static Positions initialize(long count) {
-        List<Position> zeroPositions = new ArrayList<>();
-        for (long i = 0; i < count; i++) {
-            zeroPositions.add(Position.zero());
-        }
-        return new Positions(zeroPositions);
-    }
-
-    public Positions deepCopy() {
-        Positions newPositions = new Positions(new ArrayList<>());
-        for (Position position : values) {
-            newPositions.add(position.deepCopy());
-        }
-        return newPositions;
-    }
-
-    public void add(Position position) {
-        values.add(position);
+    public static Positions createWithNewRound(long count) {
+        return new Positions(
+                LongStream.range(0, count)
+                        .mapToObj(i -> new Position(0))
+                        .toList()
+        );
     }
 
     public void increase(final int index) {
-        Position position = value(index);
-        position.increase();
+        at(index).increase();
     }
 
-    public List<Integer> calculateWinners() {
-        long maxPosition = calculateMax();
-        return IntStream.range(0, values.size())
-                .filter(index -> value(index).isValue(maxPosition))
+    public List<Integer> findWinnersIndices() {
+        long maxPosition = findMaxPosition();
+        return IntStream.range(0, positions.size())
+                .filter(index -> at(index).is(maxPosition))
                 .boxed()
                 .toList();
     }
 
-    public long longValue(final int index) {
-        return value(index).value();
+    Positions copy() {
+        return new Positions(positions.stream()
+                .map(position -> new Position(position.position()))
+                .toList());
     }
 
-    private long calculateMax() {
-        return values.stream()
-                .map(Position::value)
-                .max(Long::compare)
-                .orElseThrow(IllegalStateException::new);
+    private long findMaxPosition() {
+        return positions.stream()
+                .mapToLong(Position::position)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("positions을 찾을 수 없습니다"));
     }
 
-    private Position value(final int index) {
-        return values.get(index);
+    private Position at(final int index) {
+        return positions.get(index);
+    }
+
+    public long positionAt(final int index) {
+        return at(index).position();
     }
 
     @Override
@@ -69,12 +63,12 @@ public class Positions {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Positions positions = (Positions) o;
-        return Objects.equals(values, positions.values);
+        Positions other = (Positions) o;
+        return Objects.equals(positions, other.positions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(values);
+        return Objects.hash(positions);
     }
 }

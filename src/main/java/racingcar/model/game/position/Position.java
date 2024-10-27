@@ -4,32 +4,22 @@ import java.util.Objects;
 
 public class Position {
 
-    private static final int ZERO = 0;
+    private long position;
 
-    private long value;
-
-    public Position(final long value) {
-        this.value = value;
-    }
-
-    public static Position zero() {
-        return new Position(ZERO);
-    }
-
-    public Position deepCopy() {
-        return new Position(value);
+    public Position(final long position) {
+        this.position = position;
     }
 
     public void increase() {
-        value++;
+        position++;
     }
 
-    public boolean isValue(final long value) {
-        return this.value == value;
+    public boolean is(final long value) {
+        return this.position == value;
     }
 
-    public long value() {
-        return value;
+    public long position() {
+        return position;
     }
 
     @Override
@@ -40,12 +30,12 @@ public class Position {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Position position = (Position) o;
-        return value == position.value;
+        Position other = (Position) o;
+        return position == other.position;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(position);
     }
 }

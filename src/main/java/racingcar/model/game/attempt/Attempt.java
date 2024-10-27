@@ -5,11 +5,11 @@ import racingcar.exception.InvalidAttemptException;
 
 public class Attempt {
 
-    private final long value;
+    private final long attempt;
 
-    public Attempt(final long value) {
-        validate(value);
-        this.value = value;
+    public Attempt(final long attempt) {
+        validate(attempt);
+        this.attempt = attempt;
     }
 
     private void validate(final long attempt) {
@@ -18,8 +18,8 @@ public class Attempt {
         }
     }
 
-    public long value() {
-        return value;
+    public long attempt() {
+        return attempt;
     }
 
     @Override
@@ -30,12 +30,12 @@ public class Attempt {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Attempt attempt = (Attempt) o;
-        return value == attempt.value;
+        Attempt other = (Attempt) o;
+        return attempt == other.attempt;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(attempt);
     }
 }
