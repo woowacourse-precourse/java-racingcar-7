@@ -18,4 +18,14 @@ public class CarTest {
         car.move(3);
         assertThat(car.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    public void displayStateTest() {
+        Car car = new Car("pobi");
+        car.move(4);
+
+        String state = car.displayState();
+
+        assertThat(state).isEqualTo("pobi : -");
+    }
 }
