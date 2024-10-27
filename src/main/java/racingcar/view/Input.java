@@ -2,12 +2,15 @@ package racingcar.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import racingcar.global.io.Condition;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 
 public class Input {
-    public Cars readCarName(String carsInput){
+    public Cars readCarName(){
+        Scanner scanner = new Scanner(System.in);
+        String carsInput = scanner.nextLine();
         List<Car> cars = carSaparator(carsInput);
 
         return new Cars(cars);
