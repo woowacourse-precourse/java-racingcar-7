@@ -50,4 +50,25 @@ public class CarsTest {
         assertThat(maxDistance).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("승자를 정확히 찾는다")
+    void findWinners() {
+        List<Car> carList = Arrays.asList(
+                Car.from(CarName.from("kiri")),
+                Car.from(CarName.from("bob")),
+                Car.from(CarName.from("alice"))
+        );
+        Cars cars = Cars.from(carList);
+
+        carList.get(0).move(() -> true);
+        carList.get(1).move(() -> true);
+        carList.get(1).move(() -> true);
+        carList.get(2).move(() -> false);
+
+        List<String> winners = cars.findRaceWinners();
+        assertThat(winners).containsExactly("bob");
+    }
+
+
+
 }
