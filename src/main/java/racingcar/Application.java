@@ -57,7 +57,12 @@ public class Application {
 
 	}
 
-
+	public static void displayRoundResults(String[] carName, String[] count) {
+		for (int i = 0; i < carName.length; i++) {
+			System.out.println(carName[i] + " : " + count[i]);
+		}
+		System.out.println();
+	}
 
 
 
