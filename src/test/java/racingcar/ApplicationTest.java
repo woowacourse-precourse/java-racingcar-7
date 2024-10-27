@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAME;
+import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAMES;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -87,5 +88,14 @@ class ApplicationTest extends NsTest {
         // when & then
         CarNamesException e = assertThrows(CarNamesException.class, () -> raceManager.setCars(carNames));
         assertEquals(e.getMessage(), INVALID_CAR_NAME.message());
+    }
+
+    @Test
+    void 자동차_이름이_공백문자라면_예외발생() {
+        // given
+        String carNames = "a, ,c";
+        // when & then
+        CarNamesException e = assertThrows(CarNamesException.class, () -> raceManager.setCars(carNames));
+        assertEquals(e.getMessage(), INVALID_CAR_NAMES.message());
     }
 }
