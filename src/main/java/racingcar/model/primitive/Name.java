@@ -6,7 +6,7 @@ import racingcar.exception.ErrorMessage;
 
 public class Name {
 
-    private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
 
     private final String name;
 
@@ -20,21 +20,17 @@ public class Name {
     }
 
     private void validate(String name) {
-        if (isOutOfLength(name)) {
+        if (isExceedMaxLength(name)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME.getMessage());
         }
     }
 
-    private boolean isOutOfLength(String name) {
-        return name.length() > MAX_CAR_NAME_LENGTH;
+    private boolean isExceedMaxLength(String name) {
+        return name.length() > MAX_NAME_LENGTH;
     }
 
     public void add(List<String> winners) {
         winners.add(this.name);
-    }
-
-    public String getName() {
-        return name;
     }
 
     @Override
@@ -52,5 +48,9 @@ public class Name {
     @Override
     public int hashCode() {
         return Objects.hashCode(name);
+    }
+
+    public String getName() {
+        return name;
     }
 }
