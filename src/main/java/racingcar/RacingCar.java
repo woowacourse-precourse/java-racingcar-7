@@ -21,7 +21,7 @@ public class RacingCar {
     String resultLog = "";
     List<Integer> moveCountResult = new ArrayList<>();
     int max;
-    List<String> winnerList = new ArrayList<String>();
+    List<String> winnerList = new ArrayList<>();
     String winners;
 
     public void getCarNames() {
