@@ -7,7 +7,7 @@ import racingcar.model.input.NumberValidator;
 import racingcar.model.output.ProgressResultGenerator;
 import racingcar.model.number.RandomNumberGenerator;
 import racingcar.model.input.TextSeparator;
-import racingcar.model.WinnerDeterminer;
+import racingcar.model.winner.WinnerDeterminer;
 import racingcar.model.output.WinnerResultGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

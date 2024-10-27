@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.winner;
 
 import java.util.List;
 
