@@ -5,7 +5,7 @@ import java.util.List;
 public class RacingResult {
 
     private final List<RacingCar> racingRecords;
-    private final int maxDistance;
+    private final Integer maxDistance;
 
     public RacingResult(List<RacingCar> racingRecords) {
         this.racingRecords = racingRecords;
@@ -15,7 +15,7 @@ public class RacingResult {
     public Integer findMaxDistance() {
         return racingRecords.stream()
                 .map(RacingCar::getDistance)
-                .reduce(maxDistance, Integer::max);
+                .reduce(0, Integer::max);
     }
 
     public List<String> findWinner() {
