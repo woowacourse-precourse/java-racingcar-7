@@ -1,7 +1,19 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        String input = Console.readLine();
+
+        String[] carNameList = input.split(",");
+
+        for(String car : carNameList) {
+            if(car.isEmpty() || car.length() >5) {
+                throw new IllegalArgumentException();
+            }
+        }
+
     }
 }
