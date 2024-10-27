@@ -3,6 +3,7 @@ package racingcar.view;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
+import racingcar.validate.Validator;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;
@@ -17,10 +18,11 @@ class ReaderHelperTest {
         // given
         ReaderHelper readerHelper = new ReaderHelper();
         setInput("player1,player2\n3");
+        Validator validator = new Validator();
 
         // when
         List<String> result = readerHelper.readPlayerName();
-        int playTime = readerHelper.readPlayTime();
+        int playTime = readerHelper.readPlayTime(validator);
 
         // then
         assertEquals(2, result.size());
