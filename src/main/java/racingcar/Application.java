@@ -9,31 +9,47 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String players = Console.readLine();
-        // Todo. players 검증 (이름은 5자 이하)
+        String playerText = Console.readLine();
+        String[] player = playerText.split(",");
 
-        String[] player = players.split(",");
+        // 이름 검증
+        for(String p : player){
+            if (p == null || p.length()>=6 || p.isEmpty()){
+                throw new IllegalArgumentException("이름의 길이가 6자 이상이거나 이름이 없습니다");
+            }
+        }
+
+        // Map으로 플레이어 : 게임 매칭
         HashMap<String, String >games = new HashMap<>();
         for (String p : player ){
             games.put(p, "");
         }
-        System.out.println(games);
+
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int round = Integer.parseInt(Console.readLine());
+        String roundText = Console.readLine();
 
-        // Todo. round 검증
+        // 들어오는 텍스트가 숫자인지 검증
+        if (!roundText.matches("\\d+")) {
+            throw new IllegalArgumentException("입력 값은 숫자만 포함해야 합니다.");
+        }
+        int round = Integer.parseInt(roundText);
 
+        // round가 1 이상의 정수인지 검증
+        if (round < 1) {
+            throw new IllegalArgumentException("라운드는 1 이상의 정수여야 합니다.");
+        }
+
+
+        // 게임 실행
         for (int i=0;i<round;i++){
             for (String p : player){
-                if (Dice.roll()){
-                    String rail = games.get(p)+"-";
-                    games.put(p,rail);
-                }
+                games = Game.play(p,games);
                 System.out.println(p+" : "+games.get(p));
             }
             System.out.println(" ");
         }
 
+        // 승자 구하기 알고리즘
         int far =0;
         List<String> winners = new ArrayList<>();
 
@@ -46,14 +62,9 @@ public class Application {
 
             } else if (value == far){
                 winners.add(entry.getKey());
-            }else {
-                continue;
             }
         }
-        String winner ="";
-        for (String w : winners){
-            winner= winner + w + " ";
-        }
-        System.out.println("최종 우승자 : "+winner); //결과 도출
+        String winner = String.join(", ", winners);
+        System.out.println("최종 우승자 : " + winner);//결과 도출
     }
 }
