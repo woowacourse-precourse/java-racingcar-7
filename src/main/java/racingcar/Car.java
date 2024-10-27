@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private String name;
     private int position = 0;
@@ -21,8 +23,7 @@ public class Car {
         return position;
     }
     public boolean canMove(){
-        long currentTime = System.currentTimeMillis();
-        int number = (int)(currentTime%10);
+        int number = Randoms.pickNumberInRange(0,9);
         return number>=4;
     }
     public void printPosition() {
