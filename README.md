@@ -66,6 +66,9 @@
 - 우승자가 여러 명일 경우 쉼표(,)를 이용하여 이름을 구분하고 출력한다.
 
 ## 업데이트 노트
+### v.1.2.0 Car 클래스에 대한 단위 테스트 추가
+- CarTest: move, printCurrentPosition, getDistance, getName 메서드 테스트 추가
+
 ### v.1.1.2 Collections.sort를 List의 sort 메서드로 변경하여 코드 간결화
 
 ### v.1.1.1 자바 컨벤션 규칙에 따라 코드 스타일 수정
