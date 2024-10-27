@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,11 +10,11 @@ public class CarTest {
     @Test
     @DisplayName("차량 전진 확인")
     void test1() {
-        Car car = new Car();
-        int before = car.getLocation();
+        CarStatus statingStatus = CarStatus.initStartingStatus();
+        Car car = new Car(statingStatus);
 
-        car.moveForward();
+        car.move();
 
-        assertThat(car.getLocation()).isEqualTo(before + 1);
+        Assertions.assertTrue(car.getStatus().isAhead(statingStatus));
     }
 }

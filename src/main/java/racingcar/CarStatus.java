@@ -19,6 +19,10 @@ public class CarStatus {
         return this.location > other.location;
     }
 
+    public CarStatus moveForward(int distance) {
+        return new CarStatus(this.location + distance);
+    }
+
 
     @Override
     public boolean equals(Object o) {

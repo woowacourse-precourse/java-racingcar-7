@@ -1,17 +1,18 @@
 package racingcar;
 
 public class Car {
-    private int location;
+    private static final int MAX_MOVEMENT_DISTANCE = 1;
+    private CarStatus status;
 
-    public Car() {
-        location = 0;
+    public Car(CarStatus status) {
+        this.status = status;
     }
 
-    public void moveForward() {
-        location++;
+    public void move() {
+        this.status = status.moveForward(MAX_MOVEMENT_DISTANCE);
     }
 
-    public int getLocation() {
-        return location;
+    public CarStatus getStatus() {
+        return status;
     }
 }

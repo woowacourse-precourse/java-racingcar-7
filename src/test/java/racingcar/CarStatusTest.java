@@ -9,17 +9,22 @@ class CarStatusTest {
     @Test
     @DisplayName("차량이 앞에 있는지 확인")
     void test1() {
-        CarStatus statusOne = new CarStatus(1);
-        CarStatus statusZero = new CarStatus(0);
-
-        assertTrue(statusOne.isAhead(statusZero));
-        assertFalse(statusZero.isAhead(statusOne));
-        assertFalse(statusOne.isAhead(statusOne));
+        assertTrue(new CarStatus(1).isAhead(new CarStatus(0)));
+        assertFalse(new CarStatus(0).isAhead(new CarStatus(1)));
+        assertFalse(new CarStatus(1).isAhead(new CarStatus(1)));
     }
 
     @Test
     @DisplayName("차량 상태는 값 객체")
     void test2() {
         assertEquals(new CarStatus(1), new CarStatus(1));
+    }
+
+    @Test
+    @DisplayName("차량 상태는 이동될 수 있음")
+    void test3() {
+        assertEquals(
+                new CarStatus(10).moveForward(5),
+                new CarStatus(10 + 5));
     }
 }
