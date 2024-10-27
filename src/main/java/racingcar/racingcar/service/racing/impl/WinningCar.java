@@ -1,4 +1,4 @@
-package racingcar.service.racing.impl;
+package racingcar.racingcar.service.racing.impl;
 import racingcar.constant.separator.SeparatorConstant;
 import racingcar.racingcar.domain.RacingCar;
 import racingcar.racingcar.dto.RacingCarInfo;
