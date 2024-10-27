@@ -36,11 +36,10 @@ public class Application {
     }
 
     public static void StartRace(RaceDto data){
-
-        for(int i = 0; i < data.racers.length; i++){
-            for(int j = 0; j < data.num; j++){
-                if(Randoms.pickNumberInRange(0,9) > 5){
-                    data.forwardNum[i]++;
+        for(int i = 0; i < data.num; i++){
+            for(int j = 0; j < data.racers.length; j++){
+                if(Randoms.pickNumberInRange(0,9) >= 4) {
+                    data.forwardNum[j]++;
                 }
             }
         }
@@ -69,7 +68,7 @@ public class Application {
                 count++;
             }
         }
-        System.out.print("최종 우승자: ");
+        System.out.print("최종 우승자 : ");
         for (int i = 0; i < count; i++) {
             System.out.print(data.racers[winners[i]]);
             if (i < count - 1) {
