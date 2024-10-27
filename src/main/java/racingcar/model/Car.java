@@ -1,6 +1,8 @@
 package racingcar.model;
 
 public class Car {
+    private static final int MINIMUM_CAN_MOVE_CONDITION = 4;
+    private static final int ONE_FORWARD_MOVE_DISTANCE = 1;
     private final RandomIntGenerator randomIntGenerator;
     private final String carName;
     private int position;
@@ -19,7 +21,18 @@ public class Car {
         return position;
     }
 
-    // TODO: 이동 가능 여부에 따라 이동한다.
+    public void tryMove() {
+        if (canMove()) {
+            doMove();
+        }
+    }
 
-    // TODO: 이동 가능 여부를 판단한다.
+    private boolean canMove() {
+        return randomIntGenerator.getRandomNumber() >= MINIMUM_CAN_MOVE_CONDITION;
+    }
+
+    private void doMove() {
+        position += ONE_FORWARD_MOVE_DISTANCE;
+    }
 }
+
