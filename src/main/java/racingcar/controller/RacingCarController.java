@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.model.CarMover;
+import racingcar.model.WinnerDeterminer;
 import racingcar.view.CarNameInputValidator;
 import racingcar.view.MoveCountInputValidator;
 
@@ -33,6 +34,8 @@ public class RacingCarController {
             moveCars();
             printResults();
         }
+
+        printWinners();
     }
 
     public void createCars(List<String> carNames) {
@@ -59,5 +62,11 @@ public class RacingCarController {
             System.out.println(sb.toString());
         }
         System.out.println();
+    }
+
+    public void printWinners() {
+        WinnerDeterminer winnerDeterminer = new WinnerDeterminer(cars);
+        List<String> winners = winnerDeterminer.determineWinners();
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
