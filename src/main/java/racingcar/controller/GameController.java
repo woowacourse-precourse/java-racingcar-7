@@ -3,7 +3,6 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,13 +13,14 @@ public class GameController {
     public void run() {
         outputView.printRequestName();
         List<String> carNameList = inputView.inputCars();
+
         outputView.printRequestTryCount();
         int tryCount = inputView.inputTryCount();
 
         List<Car> carList = new ArrayList<>();
 
         for (String name : carNameList) {
-            Car car = new Car(name, 0);
+            Car car = new Car(name);
             carList.add(car);
         }
 
