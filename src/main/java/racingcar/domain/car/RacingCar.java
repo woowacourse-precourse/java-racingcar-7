@@ -1,11 +1,16 @@
 package racingcar.domain.car;
 
+import racingcar.domain.error.car.RacingCarErrorMessage;
+
 public class RacingCar {
 
     private String name;
     private int forwardCount;
 
     public RacingCar(String name) {
+        if (name.length() > RacingCarConstant.RacingCar_MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException(RacingCarErrorMessage.OVER_NAME_LENGTH);
+        }
         this.name = name;
         this.forwardCount = 0;
     }

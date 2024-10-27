@@ -6,31 +6,26 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import racingcar.domain.car.RacingCar;
-import racingcar.domain.car.RacingCarConstant;
-import racingcar.domain.error.ErrorMessage;
+import racingcar.domain.error.car.RacingCarErrorMessage;
+import racingcar.domain.error.racing.RacingErrorMessage;
 import racingcar.domain.io.RacingOutputView;
 
 public class Racing {
 
     private List<RacingCar> racingCars = new ArrayList<>();
-    private int tryCnt;
     private List<RacingCar> winners = new ArrayList<>();
+    private int tryCnt;
 
     public void setRacingCars(String inputTextForRacingCars) {
-        //빈문자열, 최대 글자수, 비허용 문자 검증
         if (isInvalidInputTextForRacingCars(inputTextForRacingCars)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_TEXT);
+            throw new IllegalArgumentException(RacingErrorMessage.INVALID_INPUT_TEXT);
         }
 
         String[] racingCarNames = inputTextForRacingCars.split(",");
         Set<String> set = new HashSet<>();
         for (String name : racingCarNames) {
-
-            //중복체크, 5자 체크
             if (set.contains(name)) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_TEXT);
-            } else if (name.length() > RacingCarConstant.RacingCar_MAX_NAME_LENGTH) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_TEXT);
+                throw new IllegalArgumentException(RacingCarErrorMessage.DUPLICATE_NAME);
             }
             set.add(name);
             racingCars.add(new RacingCar(name));
@@ -41,11 +36,11 @@ public class Racing {
         try {
             tryCnt = Integer.parseInt(inputTextForTryCount);
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT);
+            throw new IllegalArgumentException(RacingErrorMessage.INVALID_TRY_COUNT);
         }
 
         if (isInvalidTryCount()) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT);
+            throw new IllegalArgumentException(RacingErrorMessage.INVALID_TRY_COUNT);
         }
     }
 
