@@ -36,7 +36,8 @@ public class Car {
     public String toCustomFormatString(String customString) {
         return this.carName.toString() + " : " + this.carPosition.toCustomFormatString(customString);
     }
-    public String toCarNameString(){
+
+    public String toCarNameString() {
         return this.carName.toString();
     }
 }
