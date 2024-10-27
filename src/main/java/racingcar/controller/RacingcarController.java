@@ -43,7 +43,8 @@ public class RacingcarController {
         List<RoundResult> results = racingcarService.proceedRacingGame();
 
         outputView.printProceedGameMessage();
-        results.forEach(gameResult -> outputView.printRoundResult(gameResult.result()));
+        results.forEach(gameResult -> outputView.collectRoundResult(gameResult.result()));
+        outputView.printRoundResult();
 
         return "success";
     }
