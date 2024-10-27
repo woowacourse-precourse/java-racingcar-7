@@ -41,7 +41,7 @@ class CarNameValidatorTest {
 
         // expected
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> CarNameValidator.validateCarNames(input));
+                () -> CarNameValidator.validateCarNames(input));
     }
 
     @Test
@@ -52,7 +52,7 @@ class CarNameValidatorTest {
 
         // expected
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> CarNameValidator.validateCarNames(input));
+                () -> CarNameValidator.validateCarNames(input));
     }
 
     @Test
@@ -63,7 +63,7 @@ class CarNameValidatorTest {
 
         // expected
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> CarNameValidator.validateCarNames(input));
+                () -> CarNameValidator.validateCarNames(input));
     }
 
     @Test
@@ -74,7 +74,7 @@ class CarNameValidatorTest {
 
         // expected
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> CarNameValidator.validateCarNames(input));
+                () -> CarNameValidator.validateCarNames(input));
     }
 
     @Test
@@ -85,7 +85,7 @@ class CarNameValidatorTest {
 
         // expected
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> CarNameValidator.validateCarNames(names));
+                () -> CarNameValidator.validateCarNames(names));
     }
 
     @Test
@@ -96,6 +96,6 @@ class CarNameValidatorTest {
 
         // expected
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> CarNameValidator.validateCarNames(names));
+                () -> CarNameValidator.validateCarNames(names));
     }
 }

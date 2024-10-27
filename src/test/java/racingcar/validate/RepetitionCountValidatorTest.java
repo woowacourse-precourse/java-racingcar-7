@@ -14,7 +14,7 @@ class RepetitionCountValidatorTest {
 
         // expected
         Assertions.assertDoesNotThrow(
-            () -> RepetitionCountValidator.validateRepetitionCount(count)
+                () -> RepetitionCountValidator.validateRepetitionCount(count)
         );
     }
 
@@ -26,7 +26,7 @@ class RepetitionCountValidatorTest {
 
         // expected
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> RepetitionCountValidator.validateRepetitionCount(count)
+                () -> RepetitionCountValidator.validateRepetitionCount(count)
         );
     }
 
@@ -38,7 +38,7 @@ class RepetitionCountValidatorTest {
 
         // expected
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> RepetitionCountValidator.validateRepetitionCount(count)
+                () -> RepetitionCountValidator.validateRepetitionCount(count)
         );
     }
 
@@ -50,7 +50,7 @@ class RepetitionCountValidatorTest {
 
         // expected
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> RepetitionCountValidator.validateRepetitionCount(count)
+                () -> RepetitionCountValidator.validateRepetitionCount(count)
         );
     }
 
@@ -62,7 +62,7 @@ class RepetitionCountValidatorTest {
 
         // expected
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> RepetitionCountValidator.validateRepetitionCount(count)
+                () -> RepetitionCountValidator.validateRepetitionCount(count)
         );
     }
 }

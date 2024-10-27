@@ -15,8 +15,8 @@ public class CarService {
 
     public List<Car> getCars(List<String> carNames) {
         return carNames.stream()
-            .map(Car::new)
-            .toList();
+                .map(Car::new)
+                .toList();
     }
 
     public void incrementMoveCount(Car car) {

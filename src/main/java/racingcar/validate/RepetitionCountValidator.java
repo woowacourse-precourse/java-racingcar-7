@@ -7,7 +7,7 @@ public abstract class RepetitionCountValidator {
     private static void validateIsNumber(String count) {
         if (!count.matches("^[0-9]+$")) {
             throw new IllegalArgumentException(
-                ErrorMessage.REPETITION_COUNT_NOT_A_NUMBER.getMessage());
+                    ErrorMessage.REPETITION_COUNT_NOT_A_NUMBER.getMessage());
         }
     }
 
@@ -16,7 +16,7 @@ public abstract class RepetitionCountValidator {
 
         if (repetitionCount <= 0) {
             throw new IllegalArgumentException(
-                ErrorMessage.REPETITION_COUNT_NOT_NEGATIVE.getMessage());
+                    ErrorMessage.REPETITION_COUNT_NOT_NEGATIVE.getMessage());
         }
     }
 

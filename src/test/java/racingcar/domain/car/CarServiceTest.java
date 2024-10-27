@@ -33,7 +33,7 @@ class CarServiceTest {
         // given
         Car car = new Car("pobi");
         CarService carService = new CarService(
-            new RandomUtilTest(RandomUtilTest.SUCCESS_CONDITION));
+                new RandomUtilTest(RandomUtilTest.SUCCESS_CONDITION));
 
         // when
         carService.incrementMoveCount(car);

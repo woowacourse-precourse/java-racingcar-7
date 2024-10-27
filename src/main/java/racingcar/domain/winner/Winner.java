@@ -10,9 +10,9 @@ public class Winner {
     public String getWinners(List<Car> cars) {
         List<String> winners = new ArrayList<>();
         int maxMoveCount = cars.stream()
-            .mapToInt(Car::getMoveCount)
-            .max()
-            .orElse(0);
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElse(0);
 
         for (Car car : cars) {
             if (car.getMoveCount() == maxMoveCount) {
