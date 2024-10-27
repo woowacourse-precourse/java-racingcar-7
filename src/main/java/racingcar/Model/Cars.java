@@ -3,8 +3,10 @@ package racingcar.Model;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.Optional;
 
 public class Cars {
     private final List<Car> cars;
@@ -48,12 +50,25 @@ public class Cars {
         }
     }
 
+    public List<Car> getWinner() {
+        List<Car> winners = new ArrayList<>();
+        Optional<Integer> maxDistance = getMaxDistance();
+
+        cars.stream().filter(car -> car.getDistance() == maxDistance.orElse(0)).forEach(winners::add);
+
+        return winners;
+    }
+
     public List<Car> getCars() {
         return cars;
     }
 
     private int generateRandomNumber() {
         return Randoms.pickNumberInRange(Rule.MIN_NUMBER.value(), Rule.MAX_NUMBER.value());
+    }
+
+    private Optional<Integer> getMaxDistance() {
+        return cars.stream().map(Car::getDistance).max(Comparator.naturalOrder());
     }
 
 }
