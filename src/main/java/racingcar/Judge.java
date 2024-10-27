@@ -7,22 +7,32 @@ public class Judge {
     List<Car> winners = new ArrayList<>();
 
     public List<Car> judge(List<Car> cars) {
-        int maxDistance = 0;
+        int maxDistance = getMaxDistance(cars);
+
+        addWinnerList(cars, maxDistance);
+
+        return winners;
+    }
+
+    public int getMaxDistance(List<Car> cars) {
+        int maxValue = 0;
 
         for (Car car : cars) {
             int distance = car.getDistance().length();
-            if (distance > maxDistance) {
-                maxDistance = distance;
+            if (distance > maxValue) {
+                maxValue = distance;
             }
         }
 
+        return maxValue;
+    }
+
+    public void addWinnerList(List<Car> cars, int maxDistance) {
         for (Car car : cars) {
             if (car.getDistance().length() == maxDistance) {
                 winners.add(car);
             }
         }
-
-        return winners;
     }
 
     public String getWinnerNames() {
