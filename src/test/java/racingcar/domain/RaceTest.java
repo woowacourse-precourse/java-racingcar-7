@@ -12,6 +12,7 @@ class RaceTest {
 
     private static final String CAR_NAMES = "pobi,woni,jun";
     private static final int ATTEMPT_COUNT = 5;
+    private static final String DELIMITER = ",";
     private Race race;
 
     @BeforeEach
@@ -28,7 +29,7 @@ class RaceTest {
 
         //then
         assertThat(racingProgress).isNotEmpty();
-        assertThat(racingProgress).contains(CAR_NAMES);
+        assertThat(racingProgress).contains(CAR_NAMES.split(DELIMITER));
     }
 
     @Test
