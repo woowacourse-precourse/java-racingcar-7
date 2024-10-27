@@ -15,10 +15,12 @@ public class GameController {
     public static void runRacing(){
         OutputHandler.outputStartInfo();
         String carName = inputCarName();
+
         OutputHandler.outputAskTryValue();
         int tryCountValue = Integer.parseInt(inputTryCount());
-        System.out.println();
-        System.out.println("실행결과");
+
+        displayIntroMessage();
+
         List<String> carNames = BeforeRacing.divideCarName(carName);
         for(int i = 1; i <= tryCountValue; i++){
             List<CarDto> carDtos = createCarDtos(carNames);
@@ -27,8 +29,9 @@ public class GameController {
 
         String raceResult = AfterRacing.getRaceResult(carRacingInfo);
         outputRacingRecult(raceResult);
+
         List<String> winner = AfterRacing.getWinner();
-        ouputRAcingWinner(winner);
+        ouputRacingWinner(winner);
 
     }
 
