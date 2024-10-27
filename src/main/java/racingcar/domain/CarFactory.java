@@ -22,7 +22,7 @@ public class CarFactory {
         return cars;
     }
 
-    public Car makeCar(String carName) {
+    private Car makeCar(String carName) {
         return new Car(carName);
     }
 }
