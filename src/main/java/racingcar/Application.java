@@ -9,6 +9,4 @@ public class Application {
         Game game = new Game();
         game.play();
     }
-
-
 }

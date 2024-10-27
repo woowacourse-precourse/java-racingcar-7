@@ -42,5 +42,4 @@ public class User {
             if (!Character.isDigit(userGameRepeatInput.charAt(i))) throw new IllegalArgumentException(USER_INPUT_GAME_REPEAT_ERROR_MESSAGE);
         }
     }
-
 }

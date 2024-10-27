@@ -33,5 +33,4 @@ public class Car {
             + MAX_NAME_LENGTH
             + "자 이하만 가능합니다");
     }
-
 }
