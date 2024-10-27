@@ -10,11 +10,11 @@ public class Exception {
         }
     }
 
-    public static int tryNumber (String number) {
+    public static int tryNumber(String number) {
         int tryNum = 0;
-        if(number.matches("^[0-9]+$")) {
+        if (number.matches("^[0-9]+$")) {
             tryNum = Integer.parseInt(number);  // String을 숫자로 변경
-            if(tryNum == 0) {
+            if (tryNum == 0) {
                 throw new IllegalArgumentException("1 이상의 숫자를 입력하세요.");
             }
         } else {

@@ -3,7 +3,7 @@ package racingcar;
 public class Winner {
     public static void who() {
         int maxLength = -1;
-        for(String carName : Application.carNamesList) {
+        for (String carName : Application.carNamesList) {
             carName = carName.trim();
             Car car = Application.carStates.get(carName);
             int carStateLength = car.getState().length();
