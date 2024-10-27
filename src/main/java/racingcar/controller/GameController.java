@@ -8,11 +8,9 @@ import racingcar.view.OutputMessage;
 public class GameController {
 
     private final CarHandler carHandler;
-    private final Validation validation;
 
-    public GameController(final CarHandler carHandler, final Validation validation) {
+    public GameController(final CarHandler carHandler) {
         this.carHandler = carHandler;
-        this.validation = validation;
     }
 
     public void start() {
@@ -23,13 +21,13 @@ public class GameController {
 
     private void extractCarNames() {
         final String input = InputMessage.inputCarNames();
-        validation.validateInput(input);
+        Validation.validateInput(input);
         carHandler.createCars(input);
     }
 
     private void attemptGame() {
         final int num = InputMessage.inputGameAttempts();
-        validation.validateGameTryCount(num);
+        Validation.validateGameTryCount(num);
         carHandler.executeRounds(num);
     }
 

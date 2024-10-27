@@ -14,19 +14,14 @@ public class CarHandler {
     private static final String COMMA = ",";
 
     private final List<Car> cars = new ArrayList<>();
-    private final Validation validation = new Validation();
 
     public void createCars(String input) {
         Set<String> distinctCarsName = new HashSet<>();
         String[] carNames = input.split(COMMA);
 
         for (String car : carNames) {
-            car = car.trim();
-            validation.validateInput(car);
-            validation.validateNameLength(car);
-            validation.validateDuplicateCarName(car, distinctCarsName);
-
-            this.cars.add(new Car(car));
+            car = Validation.validateCreateCar(car, distinctCarsName);
+            cars.add(new Car(car));
         }
     }
 
