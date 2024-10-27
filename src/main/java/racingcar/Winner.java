@@ -2,28 +2,25 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Winner {
 
     static List<Car> winners = new ArrayList<>();
-
-    int topForwardCount = 0;
 
     public List<Car> getWinners() {
         return winners;
     }
 
     public List<Car> determineWinners(List<Car> cars) {
-        cars.forEach(car -> {
-            if (car.forwardCount > topForwardCount) {
-                winners.clear();
-                topForwardCount = car.forwardCount;
-            }
-            if (car.forwardCount == topForwardCount) {
-                winners.add(car);
-            }
-        });
-        return winners;
+        int topForwardCount = cars.stream()
+                .mapToInt(car -> car.forwardCount)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.forwardCount == topForwardCount)
+                .collect(Collectors.toList());
     }
 
 }
