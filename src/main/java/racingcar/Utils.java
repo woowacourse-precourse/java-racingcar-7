@@ -5,12 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class Utils {
+    private static List<String> parseString(String input, String delimiter) {
+        List<String> result = Arrays.asList(input.split(delimiter));
+        result.replaceAll(String::strip);
+        return result;
+    }
+
     public static List<String> enterCarList() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String text = Console.readLine();
-        List<String> nameList = Arrays.asList(text.split(","));
-        nameList.replaceAll(String::strip);
-        return nameList;
+        return parseString(Console.readLine(), ",");
     }
 
     public static int enterRound() {
@@ -20,7 +23,8 @@ public final class Utils {
         try {
             int round = Integer.parseInt(text);
             if (round < 0) {
-                throw new IllegalArgumentException("양의 정수를 입력해주세요.");
+                throw new IllegalArgumentException(
+                        "양의 정수를 입력해주세요.");
             }
             return round;
         } catch (NumberFormatException e) {
