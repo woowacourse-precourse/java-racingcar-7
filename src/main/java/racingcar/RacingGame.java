@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -17,6 +18,7 @@ public class RacingGame {
 
     public void run() {
         init();
+        start();
     }
 
     private void init() {
@@ -42,5 +44,24 @@ public class RacingGame {
         String input = view.getTurn();
         Validator.isValidTurn(input);
         turn = Integer.parseInt(input);
+    }
+
+    private void start() {
+        view.displayStartRacing();
+        while (turn > 0) {
+            moveCars();
+            turn--;
+        }
+    }
+
+    private void moveCars() {
+        for (Car car : cars) {
+            int rand = Randoms.pickNumberInRange(0, 9);
+            if (rand >= 4) {
+                car.moveForward();
+            }
+            view.displayCarState(car.getName(), car.getDistance());
+        }
+        view.displayCurrentTurnOver();
     }
 }
