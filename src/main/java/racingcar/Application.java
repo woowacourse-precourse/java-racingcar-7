@@ -21,7 +21,4 @@ public class Application {
        Race race = new Race(racingCarList, maxRoundValue);
        race.start();
     }
-
-
-
 }
