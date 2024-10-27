@@ -31,6 +31,24 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 공백_입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 공백일 수 없습니다.")
+        );
+    }
+
+    @Test
+    void 공백_이름_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 1자 이상 5자 이하여야 합니다.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
