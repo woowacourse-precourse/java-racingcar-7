@@ -1,19 +1,15 @@
 package racingcar.config;
 
+import racingcar.controller.RaceController;
 import racingcar.repository.CarRepository;
 import racingcar.repository.InMemoryCarRepository;
 import racingcar.service.RaceService;
 import racingcar.service.RaceServiceImpl;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class AppConfig {
-
-    CarRepository carRepository;
-    RaceService raceService;
-
-    private AppConfig() {
-        carRepository = InMemoryCarRepository.getInstance();
-        raceService = RaceServiceImpl.getInstance();
-    }
+    private AppConfig() {}
 
     public static class Holder {
         private static final AppConfig INSTANCE = new AppConfig();
@@ -23,10 +19,22 @@ public class AppConfig {
     }
 
     public CarRepository getCarRepository() {
-        return carRepository;
+        return InMemoryCarRepository.getInstance();
     }
 
     public RaceService getRaceService() {
-        return raceService;
+        return RaceServiceImpl.getInstance();
+    }
+
+    public InputView getInputView() {
+        return InputView.getInstance();
+    }
+
+    public OutputView getOutputView() {
+        return OutputView.getInstance();
+    }
+
+    public RaceController getRaceController() {
+        return RaceController.getInstance(getRaceService(), getInputView(), getOutputView());
     }
 }
