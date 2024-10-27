@@ -16,7 +16,7 @@ public class CarTest {
             }
         };
         car.move();
-        assertEquals(car.getPosition(), 1);
+        assertEquals(car.getDistance(), 1);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class CarTest {
             }
         };
         car.move();
-        assertEquals(car.getPosition(), 0);
+        assertEquals(car.getDistance(), 0);
     }
 
     @Test

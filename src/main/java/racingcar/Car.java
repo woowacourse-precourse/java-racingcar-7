@@ -14,6 +14,10 @@ public class Car {
         return carName;
     }
 
+    int getDistance() {
+        return currentDistance;
+    }
+
     boolean canMove() {
         int randomValue = Randoms.pickNumberInRange(0, 9);
         return randomValue >= 4;
@@ -26,11 +30,9 @@ public class Car {
     }
 
     String getStatus() {
-        return getCarName() + " : " + "-".repeat(currentDistance);
+        return getCarName() + " : " + "-".repeat(getDistance());
     }
 
-    int getPosition() {
-        return currentDistance;
-    }
+
 
 }
