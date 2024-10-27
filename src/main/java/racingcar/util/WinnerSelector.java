@@ -20,12 +20,12 @@ public class WinnerSelector {
     }
 
     private int getMaxPosition(List<Car> cars) {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        return maxPosition;
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
     }
+
 
     private void isMaxPosition(List<Car> winners, Car car, int maxPosition) {
         if (car.getPosition() == maxPosition) {

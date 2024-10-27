@@ -41,6 +41,7 @@ public class CarService {
         return cars;
     }
 
+    //TODO: 레이스와 관련된 메소드 나눠야 함.
     private void raceStart(List<Car> cars, int moveCount) {
         for(int i = 0 ; i<moveCount; i++) {
             race(cars);
