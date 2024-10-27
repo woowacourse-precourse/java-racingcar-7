@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -78,5 +79,18 @@ class RaceRuleTest {
         assertThrows(IllegalArgumentException.class, () -> {
             RaceRule.validateNames(names);
         });
+    }
+
+    @Test
+    void 자동차_수가_허용_범위를_벗어나면_예외가_발생한다() {
+        assertThrows(IllegalArgumentException.class, () ->
+                RaceRule.validateNames(List.of("car1"))
+        );
+
+        assertThrows(IllegalArgumentException.class, () -> {
+                    List<String> names = IntStream.rangeClosed(1, 11).mapToObj(i -> "car" + i).toList();
+                    RaceRule.validateNames(names);
+                }
+        );
     }
 }
