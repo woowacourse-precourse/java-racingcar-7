@@ -6,10 +6,12 @@ import java.util.List;
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private final String name;
+    private int position;
 
     public Car(String name) {
         validateName(name);
         this.name = name;
+        this.position = 0;
     }
 
     private void validateName(String name) {
@@ -23,6 +25,14 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void moveForward() {
+        this.position++;
     }
 
     public static List<Car> createCarsFromNames(String names) {
