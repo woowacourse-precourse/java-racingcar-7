@@ -103,6 +103,13 @@ public class RacingCar {
         }
         System.out.println();
     }
+    public static String getGoString(Car car) {
+        String goString = "";
+        for (int i = 0; i < car.getGo(); i++) {
+            goString = goString + "-";
+        }
+        return goString;
+    }
 
 
 }
