@@ -24,6 +24,22 @@ public class RaceService {
         return converter.convertTryCnt(inputTryCnt);
     }
 
+    public void startRace(List<Car> carList, int tryCnt) {
+        System.out.println("실행 결과");
+        for (int i = 0; i < tryCnt; i++) {
+            raceRound(carList);
+        }
+        System.out.println();
+    }
+
+    private void raceRound(List<Car> carList) {
+        for (Car car : carList) {
+            System.out.println(car.getName() + " 이(가) 뽑은 숫자는 : " + pickRandomNumber());
+        }
+        // 라운드 별 구분
+        System.out.println();
+    }
+
     private String[] parseCarNames(String inputCarList) {
         return converter.parseCarList(inputCarList);
     }

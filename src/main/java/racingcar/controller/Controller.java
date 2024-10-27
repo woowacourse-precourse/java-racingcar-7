@@ -12,11 +12,9 @@ public class Controller {
     public void run() {
         List<Car> carList = raceService.createCarList();
         int tryCnt = raceService.getTryCount();
+        System.out.println();
 
-        // 테스트용
-        for (Car car : carList) {
-            System.out.println(car.getName());
-        }
-        System.out.println("시도할 횟수: " + tryCnt);
+        // 경주 시작
+        raceService.startRace(carList, tryCnt);
     }
 }
