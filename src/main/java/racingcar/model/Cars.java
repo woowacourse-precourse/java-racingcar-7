@@ -34,7 +34,6 @@ public class Cars {
         carList.add(new Car(carName));
     }
 
-
     public void moveCars() {
         for (Car car : carList) {
             car.move();
@@ -48,7 +47,6 @@ public class Cars {
         for (Car car : carList) {
             addCarIfTopPosition(winners, car, topPosition);
         }
-
         return winners;
     }
 

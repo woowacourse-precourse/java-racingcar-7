@@ -7,12 +7,10 @@ import racingcar.view.View;
 
 public class Controller {
     public void launchRace() {
-
         Cars cars = initRaceCar();
         int tryCount = View.displayTryCountInputPrompt();
         startRace(cars, tryCount);
         endRace(cars);
-
     }
 
 
@@ -32,8 +30,5 @@ public class Controller {
     private void endRace(Cars cars) {
         List<Car> winners = cars.findWinnerCars();
         View.printWinner(winners);
-
     }
-
-
 }

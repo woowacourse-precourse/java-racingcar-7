@@ -5,7 +5,6 @@ import java.util.List;
 import racingcar.global.message.ErrorMessage;
 
 public class ParseStringUtils {
-
     private ParseStringUtils() {
         // 인스턴스화 방지
     }
@@ -31,6 +30,4 @@ public class ParseStringUtils {
         }
         carNamesList.add(trimmedName);
     }
-
-
 }
