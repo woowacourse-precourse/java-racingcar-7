@@ -13,6 +13,11 @@ public class InputView {
     }
     // 총 이동횟수 입력받기
     public static int readMoveNumInput(){
-        return Integer.parseInt(Console.readLine()); // 나중에 분리
+        String input = Console.readLine();
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(); // 예외 발생
+        }
     }
 }
