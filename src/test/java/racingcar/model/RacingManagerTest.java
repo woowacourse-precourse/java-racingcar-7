@@ -9,28 +9,24 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class RacingManagerTest {
-
-    private RacingManager racingManager;
     private List<Car> cars;
-
-    @BeforeEach
-    void setUp() {
-        racingManager = new RacingManager();
-        cars = new ArrayList<>();
-        cars.add(new Car("car1"));
-        cars.add(new Car("car2"));
-        cars.add(new Car("car3"));
-    }
 
     @Test
     @DisplayName("시도 횟수 값만큼 라운드 실행 및 결과 출력")
     void playAndDisplayRounds_withTryCount() {
         int tryCount = 5;
+        cars = new ArrayList<>();
+        cars.add(new Car("car1"));
+        cars.add(new Car("car2"));
+        cars.add(new Car("car3"));
 
-        racingManager.playRounds(cars, tryCount);
+        RacingManager racingManager = new RacingManager(cars, tryCount);
+        racingManager.playRounds();
 
         for (Car car : cars) {
-            assertThat(car.getPosition().length()).isGreaterThanOrEqualTo(0);
+            assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);
         }
+
+        System.out.print("최종 우승자 : " + racingManager.getWinners());
     }
 }
