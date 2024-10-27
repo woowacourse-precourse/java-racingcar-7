@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
     @Test
-    void 출력_시_이름과_이동을_함께_출력한다() {
-        Car car = new Car("상원");
+    void 이동() {
+        Car car = new Car("car1");
 
         car.move();
         car.move();
 
-        assertThat(car.toString()).isEqualTo("상원 : --");
+        assertThat(car.getMovement()).isEqualTo(2);
     }
 }
