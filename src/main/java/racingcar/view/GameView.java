@@ -6,7 +6,6 @@ import racingcar.domain.Message;
 
 public class GameView {
 
-
     public String getInputCarNames() {
         System.out.println(Message.promptInputCarNames());
         String carNamesInput = Console.readLine();
@@ -27,7 +26,7 @@ public class GameView {
     }
 
     public void displayWinner(String winner) {
-        System.out.println(winner);;
+        System.out.println(winner);
     }
 
 }

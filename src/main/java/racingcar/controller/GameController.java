@@ -11,12 +11,13 @@ import racingcar.service.Validator;
 import racingcar.view.GameView;
 
 public class GameController {
+
     GameService gameService = new GameService();
     GameView gameView = new GameView();
     GameStatus gameStatus = new GameStatus();
 
     public void gameStart() {
-        // 차 이름 입력받기
+
         String carNames = gameView.getInputCarNames();
         String[] carNameArray = carNames.split(",");
 
@@ -25,7 +26,6 @@ public class GameController {
         Validator.isCarNameFormatValid(carNameArray);
         Validator.isCarNameDuplicate(carNameArray);
 
-        // 시도횟수 입력받기
         String tryCountStr = gameView.getInputTryCount();
         int tryCount = Integer.parseInt(tryCountStr);
 
@@ -53,7 +53,6 @@ public class GameController {
             winnerResult.add(winner.getName());
         }
 
-        // 우승자 출력
         String winner = "최종 우승자 : " + String.join(", ", winnerResult);
         gameView.displayWinner(winner);
     }
