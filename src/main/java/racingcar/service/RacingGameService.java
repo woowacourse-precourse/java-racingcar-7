@@ -2,9 +2,8 @@ package racingcar.service;
 
 import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
-import racingcar.domain.CarNameParser;
 import racingcar.util.RandomUtil;
-import racingcar.util.ValidUtil;
+import racingcar.util.ValidationUtil;
 import racingcar.view.OutputView;
 
 import java.util.List;
@@ -15,18 +14,18 @@ import static racingcar.constant.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
 import static racingcar.constant.ServiceConstants.MIN_CAR_COUNT;
 
 public class RacingGameService {
-    public List<Car> createCarsWithUniqueName(String input) {
-        List<String> carNames = CarNameParser.parse(input);
+    public List<Car> createCarsWithUniqueName(List<String> carNames) {
         validateCarCount(carNames);
         validateUniqueCarNames(carNames);
         return CarFactory.generateCars(carNames);
     }
 
-    public void runRounds(int rounds, List<Car> cars) {
+    public List<Car> runRounds(int rounds, List<Car> cars) {
         for (int i = 0; i < rounds; i++) {
-            moveCars(cars);
+            raceCars(cars);
             OutputView.printRoundResult(cars);
         }
+        return cars;
     }
 
     public List<String> selectWinners(List<Car> cars) {
@@ -41,7 +40,7 @@ public class RacingGameService {
                 .collect(Collectors.toList());
     }
 
-    private void moveCars(List<Car> cars) {
+    private void raceCars(List<Car> cars) {
         for (Car car : cars) {
             int randomNumber = RandomUtil.generateRandomNumber();
             car.move(randomNumber);
@@ -55,7 +54,7 @@ public class RacingGameService {
     }
 
     private void validateUniqueCarNames(List<String> carNames) {
-        if (ValidUtil.isDuplicate(carNames)) {
+        if (ValidationUtil.isDuplicate(carNames)) {
             throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR_MESSAGE);
         }
     }

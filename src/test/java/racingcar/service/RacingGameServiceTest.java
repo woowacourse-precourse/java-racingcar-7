@@ -17,10 +17,10 @@ class RacingGameServiceTest {
     public void 자동차를_생성한다() {
         // given
         final var racingGameService = new RacingGameService();
-        String input = "pobi,woni,jun";
+        List<String> carNames = Arrays.asList("pobi","woni","jun");
 
         // when
-        List<Car> registeredCars = racingGameService.createCarsWithUniqueName(input);
+        List<Car> registeredCars = racingGameService.createCarsWithUniqueName(carNames);
 
         // then
         assertThat(registeredCars.size()).isEqualTo(3);
@@ -31,10 +31,10 @@ class RacingGameServiceTest {
     public void 자동차를_생성한다_중복된_이름인_경우() {
         // given
         final var racingGameService = new RacingGameService();
-        String input = "pobi,woni,pobi";
+        List<String> carNames = Arrays.asList("pobi","woni","pobi");
 
         // when & then
-        assertThatThrownBy(() -> racingGameService.createCarsWithUniqueName(input))
+        assertThatThrownBy(() -> racingGameService.createCarsWithUniqueName(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CAR_NAME_DUPLICATE_ERROR_MESSAGE);
     }
@@ -43,10 +43,10 @@ class RacingGameServiceTest {
     public void 자동차_수는_최소_2대_이상이어야_한다_2대_미만인_경우() {
         // given
         final var racingGameService = new RacingGameService();
-        String input = "a";
+        List<String> carNames = Arrays.asList("pobi");
 
         // when & then
-        assertThatThrownBy(() -> racingGameService.createCarsWithUniqueName(input))
+        assertThatThrownBy(() -> racingGameService.createCarsWithUniqueName(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CAR_COUNT_ERROR_MESSAGE);
     }
