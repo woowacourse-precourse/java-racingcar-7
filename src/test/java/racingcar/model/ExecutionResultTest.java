@@ -8,7 +8,9 @@ class ExecutionResultTest {
 
     @Test
     void testToString() {
-        ExecutionResult result = new ExecutionResult("pobi", 3);
-        assertThat(result.toString()).isEqualTo("pobi : ---");
+        Car car = new Car("pobi");
+        car.increasePosition();
+        ExecutionResult result = ExecutionResult.ofValue(car);
+        assertThat(result.toString()).isEqualTo("pobi : -");
     }
 }
