@@ -1,9 +1,7 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.enums.Constants;
 import racingcar.enums.Delimiter;
 import racingcar.enums.ViewMessage;
 import racingcar.service.RacingCarService;
@@ -17,25 +15,42 @@ public class RacingCarController {
     private final RacingCarService racingCarService = new RacingCarService();
 
     public void play() {
+        List<Car> cars = prepareCars();
+        int rounds = inputRounds();
+        int maxMoveCount = startRace(cars, rounds);
+        printWinners(cars, maxMoveCount);
+    }
+
+    private List<Car> prepareCars() {
         String inputString = inputView.promptCarNames();
-        List<Car> cars = racingCarService.makeCarList(inputString);
-        int rounds = Integer.parseInt(inputView.promptRounds());
+        return racingCarService.makeCarList(inputString);
+    }
+
+    private int inputRounds() {
+        return Integer.parseInt(inputView.promptRounds());
+    }
+
+    private int startRace(List<Car> cars, int rounds) {
         outputView.printResult();
         int maxMoveCount = 0;
         while (rounds-- > 0) {
-            for (Car car : cars) {
-                int value = Randoms.pickNumberInRange(Constants.RANGE_LOWER_BOUND.getValue(),
-                        Constants.RANGE_UPPER_BOUND.getValue());
-                car.move(value);
-                maxMoveCount = Math.max(maxMoveCount, car.moveCount);
-            }
-            StringBuilder stringBuilder = new StringBuilder();
-            for (Car car : cars) {
-                stringBuilder.append(car);
-                stringBuilder.append(ViewMessage.PRINT_BLANK.getMessage());
-            }
-            outputView.printRoundStatus(stringBuilder.toString());
+            maxMoveCount = runRace(cars, maxMoveCount);
         }
+        return maxMoveCount;
+    }
+
+    private int runRace(List<Car> cars, int maxMoveCount) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : cars) {
+            car.move();
+            maxMoveCount = Math.max(maxMoveCount, car.moveCount);
+            stringBuilder.append(car).append(ViewMessage.PRINT_BLANK.getMessage());
+        }
+        outputView.printRoundStatus(stringBuilder.toString());
+        return maxMoveCount;
+    }
+
+    private void printWinners(List<Car> cars, int maxMoveCount) {
         List<String> winners = racingCarService.findWinners(cars, maxMoveCount);
         String result = String.join(Delimiter.COMMA_WITH_SPACE.getSymbol(), winners);
         outputView.printWinners(result);

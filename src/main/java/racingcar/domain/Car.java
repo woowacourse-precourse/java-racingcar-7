@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.enums.Constants;
 
 public class Car {
@@ -10,7 +11,9 @@ public class Car {
         this.name = name;
     }
 
-    public void move(int value) {
+    public void move() {
+        int value = Randoms.pickNumberInRange(Constants.RANGE_LOWER_BOUND.getValue(),
+                Constants.RANGE_UPPER_BOUND.getValue());
         if (value >= Constants.MOVE_CONDITION.getValue()) {
             moveCount++;
         }
