@@ -22,6 +22,10 @@ public class OutputView {
         System.out.println();
     }
 
+    public void printWinners(List<String> winnerNames) {
+        System.out.println(WINNER_PROMPT + String.join(", ", winnerNames));
+    }
+
     private String getMoveDistance(int position) {
         String moveDistance = "";
         for (int i = 0; i<position; i++) {
@@ -29,7 +33,4 @@ public class OutputView {
         }
         return moveDistance;
     }
-
-
-    // TODO: 최종 우승 자동차를 출력한다.
 }
