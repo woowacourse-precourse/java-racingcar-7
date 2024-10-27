@@ -1,13 +1,11 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
 import racingcar.model.Game;
 import racingcar.util.Convertor;
 import racingcar.view.View;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Controller {
