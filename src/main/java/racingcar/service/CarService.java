@@ -3,6 +3,7 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
 import racingcar.util.PlayerNameValidator;
+import racingcar.util.WinnerSelector;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,9 +11,12 @@ import java.util.List;
 
 public class CarService {
     private final PlayerNameValidator playerNameValidator;
+    private final WinnerSelector winnerSelector;
 
-    public CarService(PlayerNameValidator playerNameValidator) {
+    public CarService(PlayerNameValidator playerNameValidator,
+                      WinnerSelector winnerSelector) {
         this.playerNameValidator = playerNameValidator;
+        this.winnerSelector = winnerSelector;
     }
 
     public List<Car> playRounds(String playersName, int moveCount) {
@@ -22,7 +26,7 @@ public class CarService {
         List<Car> cars = carGenerator(names);
         raceStart(cars,moveCount);
 
-        return getWinners(cars);
+        return winnerSelector.getWinners(cars);
     }
 
     public List<String> splitByComma(String input) {
@@ -66,32 +70,4 @@ public class CarService {
     private boolean canMove(){
         return Randoms.pickNumberInRange(0,9) >=4;
     }
-
-    private List<Car> getWinners(List<Car> cars) {
-        int maxPosition = getMaxPosition(cars);
-        return winnerListAdd(cars,maxPosition);
-    }
-
-    private int getMaxPosition(List<Car> cars) {
-        int maxPosition = 0;
-        for(Car car : cars){
-            maxPosition = Math.max(maxPosition,car.getPosition());
-        }
-        return maxPosition;
-    }
-
-    private List<Car> winnerListAdd(List<Car> cars, int maxPosition) {
-        List<Car> winners = new ArrayList<>();
-        for(Car car : cars){
-            isMaxPosition(winners,car,maxPosition);
-            }
-        return winners;
-        }
-
-    private void isMaxPosition(List<Car> winners,Car car, int maxPosition) {
-        if(car.getPosition() == maxPosition){
-            winners.add(car);
-        }
-    }
-
 }
