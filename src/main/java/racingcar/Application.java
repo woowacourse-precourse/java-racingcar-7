@@ -4,6 +4,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Application {
@@ -18,6 +19,7 @@ public class Application {
         getCount();
         resetMoveList();
         output();
+        getWinner();
     }
 
     void getName() {
@@ -69,6 +71,26 @@ public class Application {
         }
     }
 
+    void getWinner() {
+        int max = 0;
+        int maxIndex = 0;
+        for (int i = 0; i < moveList.size(); i++) {
+            if (max < moveList.get(i)) {
+                max = moveList.get(i);
+                maxIndex = i;
+            }
+        }
+        printWinner(maxIndex);
+    }
+
+    void printWinner(int maxIndex) {
+        System.out.printf("최종 우승자 : %s", nameList[maxIndex]);
+        for (int i = maxIndex + 1; i < moveList.size(); i++) {
+            if (Objects.equals(moveList.get(maxIndex), moveList.get(i))) {
+                System.out.printf(", %s", nameList[i]);
+            }
+        }
+    }
 
 
     public static void main(String[] args) {
