@@ -25,7 +25,7 @@ public class Application {
         String input = getString();
         List<String> carNames = parseCarList(input);
 
-        RaceValidator.validateCarNamesLength(carNames);
+        RaceValidator.validateCarNames(carNames);
 
         return carNames;
     }
@@ -36,7 +36,7 @@ public class Application {
     }
 
     private static List<String> parseCarList(String input) {
-        List<String> carNames = new ArrayList<String>(Arrays.asList(input.split(",")));
+        List<String> carNames = new ArrayList<String>(Arrays.asList(input.split(",", -1)));
         return carNames;
     }
 
