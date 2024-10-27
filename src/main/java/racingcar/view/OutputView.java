@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 public class OutputView {
     private static final String NEW_LINE = "\n";
     private static final String WINNER_MESSAGE = "최종 우승자 : ";
-    private static final String RESULT_HEADER = "실행 결과";
 
     private String formatCarResult(Car car) {
         return car.getName() + " : " +
@@ -22,11 +21,11 @@ public class OutputView {
     }
 
     public void printResult(Cars cars) {
-        System.out.println(RESULT_HEADER);
         String result = cars.getCars().stream()
                 .map(this::formatCarResult)
                 .collect(Collectors.joining());
         System.out.print(result);
+        System.out.println();
     }
 
     public void printWinner(List<String> winner) {

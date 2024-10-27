@@ -14,7 +14,6 @@ public class RacingController {
         Cars cars = setCars(inputView.inputCarNames());
         int count = inputView.inputCount();
 
-        System.out.println("실행 결과");
         runRacing(cars, count);
 
         List<String> winnerList= cars.getWinner();
@@ -26,6 +25,8 @@ public class RacingController {
     }
 
     public void runRacing(Cars cars, int count){
+        System.out.println();
+        System.out.println("실행 결과");
         while(count > 0){
             cars.moveCars();
             outputView.printResult(cars);
