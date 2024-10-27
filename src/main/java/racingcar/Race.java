@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Race {
     public void runRace() {
@@ -15,6 +16,9 @@ public class Race {
         List<Car> racingCars = createCarClassList(racingCarsName); // Car클래스 리스트를 생성한다.
 
         startRaceRound(racingCars, raceRound); // race round를 진행한다.
+
+        int maxScore = findMaxScore(racingCars); // 가장 높은 score를 확인한다.
+        printWinner(racingCars, maxScore); // 우승자를 출력한다.
     }
 
     public String inputCarName() {
@@ -64,5 +68,22 @@ public class Race {
             car.score ++;
         }
         System.out.println(car.name+" : " + "-".repeat(car.score));
+    }
+
+    public int findMaxScore(List<Car> racingCars) {
+        int maxScore = racingCars.stream()
+                .mapToInt(car -> car.score)
+                .max()
+                .orElse(0);
+        return maxScore;
+    }
+
+    public void printWinner(List<Car> racingCars, int maxScore) {
+        List<String> winners = racingCars.stream()
+                .filter(car -> car.score == maxScore)
+                .map(car -> car.name)
+                .collect(Collectors.toList());
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
