@@ -11,7 +11,7 @@ public class Application {
     private static final Pattern RACING_CAR_NAME_REGEX_PATTERN = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]{0,4}$");
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        // TODO 1. 경주할 자동차 이름 입력 받고, 유효성 검증
         String racingCarNameInput = inputString("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> racingCars = Arrays.asList(racingCarNameInput.split(","));
         validateRacingCars(racingCars);
