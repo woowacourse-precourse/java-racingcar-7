@@ -10,12 +10,12 @@ import java.util.List;
  */
 public class CarManager {
     //TODO 승자를 판별한다
-    private static final String SPLITER = ",";
+    private static final String SPLITTER = ",";
 
     //TODO 유효성 검사 메서드 분리
     //TODO 중복 요소 확인시 문제가 되는 요소가 무엇인지 에러메시지에 적을 수 있도록 로직 개선
     public List<Car> createCarsFromInput(String input) {
-        List<String> carNames = Arrays.stream(input.split(SPLITER)).toList();
+        List<String> carNames = Arrays.stream(input.split(SPLITTER)).toList();
         //개수 검증
         if (carNames.size() < 2 || carNames.size() > 1000) {
             throw new IllegalArgumentException("자동차의 개수는 최소 2개부터 최대 1,000개까지 가능합니다.");
