@@ -25,6 +25,6 @@ public class OutputView {
     }
 
     public static void printRest() {
-        System.out.print(" ,");
+        System.out.print(", ");
     }
 }
