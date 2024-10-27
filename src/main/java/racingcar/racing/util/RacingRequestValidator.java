@@ -7,9 +7,16 @@ import racingcar.racing.dto.request.RacingRequestDTO;
 public class RacingRequestValidator {
 
     public static void validateRacingRequest(RacingRequestDTO racingRequestDTO) {
+        validateCarNameList(racingRequestDTO.carNames());
         validateCarNameLength(racingRequestDTO.carNames());
         validateDuplicateCarName(racingRequestDTO.carNames());
         validateRound(racingRequestDTO.round());
+    }
+
+    private static void validateCarNameList(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 1개 이상이어야 합니다.");
+        }
     }
 
     private static void validateCarNameLength(List<String> carNames) {
