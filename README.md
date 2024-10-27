@@ -30,7 +30,9 @@
   - [x] 시도 횟수를 0으로 입력했을 때
   - [x] 시도 횟수를 입력하지 않았을 때
   - [x] 중복된 자동차 이름이 있을 때
-  - [x] 자동차 null일 때 
+  - [x] CarGroup 생성 시 자동차 이름 입력값이 null일 때 
 # 고려한 부분
-## 일급컬렉션 사용
-- CarGroup을 일급컬렉션으로 구현해 Car 객체의 불변성과 유효성 검증에 대한 신뢰성을 보장
+- 일급컬렉션 사용
+  - CarGroup을 일급컬렉션으로 구현해 Car 객체의 불변성과 유효성 검증에 대한 신뢰성을 보장
+- Exception Handler, Exception Message Enum 사용
+  - Exception Message를 별도로 관리하고 Handler를 통해 호출해 Exception 관리 편의성 적용 
