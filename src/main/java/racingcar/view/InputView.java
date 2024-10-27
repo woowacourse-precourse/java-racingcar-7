@@ -4,6 +4,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.model.Race;
 import racingcar.view.validator.CarNameDuplicateValidator;
 import racingcar.view.validator.CarNameLengthValidator;
 import racingcar.view.validator.CarNameNullValidator;
@@ -33,7 +34,7 @@ public class InputView {
         return carNames;
     }
 
-    public long receiveRacingNumber() {
+    public Race receiveRacingNumber() {
         System.out.println(Message.RECEIVE_RACING_NUMBER);
 
         String input = getInput();
@@ -44,7 +45,9 @@ public class InputView {
         racingNumberNullValidator.validate(input);
         racingNumberFormatValidator.validate(input);
 
-        return Long.parseLong(input);
+        long raceNumber = Long.parseLong(input);
+
+        return Race.of(raceNumber);
     }
 
     private static String getInput() {

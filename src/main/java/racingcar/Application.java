@@ -1,13 +1,13 @@
 package racingcar;
 
-import java.util.List;
-import racingcar.view.InputView;
+import racingcar.controller.RacingController;
+import racingcar.service.RacingService;
 
 public class Application {
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
-        List<String> carNames = inputView.receiveCarNames();
-        long racingNumber = inputView.receiveRacingNumber();
+        RacingService racingService = new RacingService();
+        RacingController racingController = new RacingController(racingService);
+        racingController.start();
     }
 }
