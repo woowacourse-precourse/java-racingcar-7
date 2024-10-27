@@ -164,8 +164,8 @@
 
 # **✅ 과제 진행 요구 사항**
 
-- [ ]  [java-racingcar-7](https://github.com/woowacourse-precourse/java-racingcar-7) 저장소를 Fork & Clone
-- [ ]  `README.md`에 구현할 기능 목록을 정리해 추가
+- [x]  [java-racingcar-7](https://github.com/woowacourse-precourse/java-racingcar-7) 저장소를 Fork & Clone
+- [x]  `README.md`에 구현할 기능 목록을 정리해 추가
 - [ ]  Git의 커밋 단위는 앞 단계에서 `README.md`에 정리한 기능 목록 단위로 추가한다.
     - [AngularJS Git Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)을 참고해 커밋 메시지를 작성한다.
 - [ ]  완료 후 Pull Request
