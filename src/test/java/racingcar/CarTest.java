@@ -16,6 +16,13 @@ class CarTest extends NsTest {
         assertThat(car.getName()).isEqualTo("pobi");
     }
 
+    @Test
+    void 입력받은_문자열을_쉼표를_기준으로_구분() {
+        String inputString = "pobi,woni,   jun";
+        String[] names = CarGenerator.splitInputString(inputString);
+        assertThat(names).isEqualTo(new String[]{"pobi", "woni", "jun"});
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
