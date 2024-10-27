@@ -9,12 +9,12 @@ import java.util.List;
 
 public class RacingcarController {
     private List<Car> cars = new ArrayList<>();
-    private int attemptCount;
+    private static final int MOVE_THRESHOLD = 4;
 
     public void playGame() {
         String carNames = inputCarNames();
-        createCarsFromNames(carNames);
-        attemptCount = inputAttemptCount();
+        cars = Car.createCarsFromNames(carNames);
+        int attemptCount = inputAttemptCount();
 
         for (int i = 0; i < attemptCount; i++) {
             raceCars();
@@ -46,10 +46,6 @@ public class RacingcarController {
         }
     }
 
-    private void createCarsFromNames(String names) {
-        cars = Car.createCarsFromNames(names);
-    }
-
     private void raceCars() {
         for (Car car : cars) {
             if (shouldMoveForward()) {
@@ -59,8 +55,7 @@ public class RacingcarController {
     }
 
     private boolean shouldMoveForward() {
-        int randomValue = Randoms.pickNumberInRange(0, 9);
-        return randomValue >= 4;
+        return Randoms.pickNumberInRange(0, 9) >= MOVE_THRESHOLD;
     }
 
     private void displayCurrentPositions() {
