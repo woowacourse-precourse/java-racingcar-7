@@ -22,6 +22,7 @@ public class GameController {
 
     public void startRace(int attempts) {
         for (int i = 0; i < attempts; i++) {
+            moveCars();
             OutputHandler.printRoundResult(cars);
         }
         OutputHandler.printWinners(getWinners());
