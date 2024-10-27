@@ -3,6 +3,7 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.validator.CarsValidator;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         CarsValidator.validateCars(cars);
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     } // Cars
 
     public void move() {
