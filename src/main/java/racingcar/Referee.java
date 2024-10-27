@@ -34,4 +34,27 @@ public class Referee {
             outputView.printRacing(racingField.getCarPositions());
         }
     }
+
+    private void announceWinners() {
+        outputView.printWinner(
+                getWinners(racingField.getCarPositions())
+        );
+
+    }
+
+    private List<String> getWinners(Map<Car, Integer> result) {
+        final int maxScore = getMaxScore(result);
+        return result.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() == maxScore)
+                .map(entry -> entry.getKey().getName())
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxScore(Map<Car, Integer> result) {
+        return result.values().stream()
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(0);
+    }
 }
