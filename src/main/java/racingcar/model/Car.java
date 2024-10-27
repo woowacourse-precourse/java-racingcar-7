@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.exceptions.RacingCarExceptionHandler;
+import racingcar.exceptions.RacingCarExceptionMessage;
 
 public class Car {
     private final String name;
@@ -8,7 +10,7 @@ public class Car {
 
     public Car(String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException("차 이름은 5자를 초과할 수 없습니다.");
+            RacingCarExceptionHandler.getException(RacingCarExceptionMessage.CAR_NAME_CANNOT_EXCEED_FIVE);
         }
         this.name = name;
         this.score = 0;
