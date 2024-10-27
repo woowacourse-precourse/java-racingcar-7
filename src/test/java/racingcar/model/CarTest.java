@@ -16,14 +16,14 @@ class CarTest {
     private final String validCarName = "car";
 
     @Test
-    void 이름_생성_성공() {
+    void Car_생성() {
         assertDoesNotThrow(() -> {
             Car.of(randomGenerator, validCarName);
         });
     }
 
     @Test
-    void 이름_생성_실패() {
+    void 자동차의_이름은_1자이상_5자이하이다() {
         String longName = "hantol";
         String emptyName = "";
 
@@ -36,7 +36,7 @@ class CarTest {
     }
 
     @Test
-    void 이동_성공() {
+    void 자동차는_랜덤값이_4이상이면_전진한다() {
         Car car = Car.of(nineGenerator, validCarName);
 
         car.tryMove();
@@ -45,7 +45,7 @@ class CarTest {
     }
 
     @Test
-    void 이동_실패() {
+    void 자동차는_랜덤값이_4미만이면_전진하지_앉는다() {
         Car car = Car.of(zeroGenerator, validCarName);
 
         car.tryMove();
@@ -54,7 +54,7 @@ class CarTest {
     }
 
     @Test
-    void 거리_비교() {
+    void 자동차_거리_비교() {
 
         Car car1 = Car.of(nineGenerator, validCarName);
         Car car2 = Car.of(zeroGenerator, validCarName);

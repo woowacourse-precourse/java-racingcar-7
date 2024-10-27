@@ -25,14 +25,14 @@ class RacingTest {
     private final int validAttempt = 5;
 
     @Test
-    void 레이스_생성_성공() {
+    void Racing_생성_성공() {
         assertDoesNotThrow(() ->
                 Racing.of(validCars, validAttempt)
         );
     }
 
     @Test
-    void 레이스_생성_실패_시도_횟수_오류() {
+    void 레이싱_시도횟수가_0으로_생성할수_없다() {
         int invalidAttempt = 0;
 
         assertThatThrownBy(() ->
@@ -41,14 +41,14 @@ class RacingTest {
     }
 
     @Test
-    void 레이스_성공() {
+    void 레이싱_시도횟수가_1이상이면_시도가능하다() {
         Racing racing = Racing.of(validCars, 1);
 
         assertDoesNotThrow(racing::makeAttempt);
     }
 
     @Test
-    void 레이스_실패() {
+    void 레이싱_시도횟수가_0인데_시도하면_예외가_발생한다() {
         Racing racing = Racing.of(validCars, 1);
         racing.makeAttempt();
 
@@ -57,7 +57,7 @@ class RacingTest {
     }
 
     @Test
-    void 레이스_시작_끝() {
+    void 레이싱_시도횟수가_0이면_종료한다() {
         Racing racing = Racing.of(validCars, 1);
 
         assertThat(racing.isFinish()).isFalse();
@@ -66,7 +66,7 @@ class RacingTest {
     }
 
     @Test
-    void 상태_검증() {
+    void 레이싱의_상황을_반환한다() {
         Racing racing = Racing.of(moveCars, 2);
         Map<String, Integer> expect = Map.of(
                 validCarNames.get(0), 1,
@@ -81,7 +81,7 @@ class RacingTest {
     }
 
     @Test
-    void 우승자_이름() {
+    void 우승자들의_이름을_반환한다() {
         Racing racing = Racing.of(moveCars, 2);
         List<String> expect = new ArrayList<>(validCarNames);
 

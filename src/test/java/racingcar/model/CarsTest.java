@@ -23,14 +23,14 @@ class CarsTest {
     );
 
     @Test
-    void 자동차들_생성_성공() {
+    void Cars_생성() {
         assertDoesNotThrow(() ->
                 Cars.of(randomGenerator, validCarNames)
         );
     }
 
     @Test
-    void 자동차들_생성_실패() {
+    void 자동차_이름은_중복될수_없다() {
         List<String> duplicateCarNames = List.of("car", "car");
 
         assertThatThrownBy(() ->
@@ -39,7 +39,7 @@ class CarsTest {
     }
 
     @Test
-    void 움직이기_성공_상태_검증() {
+    void 모든_자동차_전진_시도한다() {
         Cars cars = Cars.of(nineGenerator, validCarNames);
         Map<String, Integer> expect = Map.of(
                 validCarNames.get(0), 1,
@@ -53,7 +53,7 @@ class CarsTest {
     }
 
     @Test
-    void findWinners() {
+    void 우승자들을_찾는다() {
         Cars cars = Cars.of(nineGenerator, validCarNames);
         List<Car> expect = new ArrayList<>(validCarNames
                 .stream()
