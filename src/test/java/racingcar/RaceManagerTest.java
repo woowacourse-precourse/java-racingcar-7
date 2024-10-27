@@ -11,16 +11,14 @@ import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.Car;
-import racingcar.model.Players;
+import racingcar.model.Cars;
 import racingcar.model.TryCount;
-import racingcar.model.TryCountDto;
 
-class RacingGameControllerTest {
-    private Players players;
+class RaceManagerTest {
+    private Cars cars;
 
     @BeforeEach
     void beforeEach() {
-        players = new Players();
     }
 
     @DisplayName("자동차 이름이 영어가 아니면 예외가 발생한다")
@@ -42,42 +40,37 @@ class RacingGameControllerTest {
     @DisplayName("자동차 이름이 중복되는 경우 예외가 발생한다")
     @Test
     void 자동차_이름_중복_테스트() {
-        List<String> names = List.of("Hippo","Hippo","B","C");
-
-        assertThatThrownBy(() -> players.registerAll(names)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Cars.from("Hippo,Hippo,B,C")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 이름이 10개를 초과하는 경우 예외가 발생한다")
     @Test
     void 자동차_이름_최대_개수_테스트() {
-        List<String> names = List.of("A","B","C","D","E","F","G","H","I","J","K");
-
-        assertThatThrownBy(() -> players.registerAll(names)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Cars.from("A,B,C,D,E,F,G,H,I,J,K")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 이름이 1개인 경우 예외가 발생한다")
     @Test
     void 자동차_이름_최소_개수_테스트() {
-        List<String> names = List.of("A");
-        assertThatThrownBy(() -> players.registerAll(names)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Cars.from("A")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력 받은 시도 횟수가 숫자가 아닌 경우 예외가 발생한다")
     @Test
     void 시도_횟수_숫자_테스트() {
-        assertThatThrownBy(() -> new TryCountDto("하나")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> TryCount.from("하나")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력 받은 시도 횟수가 빈 값인 경우 예외가 발생한다")
     @Test
     void 시도_횟수_빈_값_테스트() {
-        assertThatThrownBy(() -> new TryCountDto("")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> TryCount.from("")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("시도 횟수가 1~10 범위를 벗어나는 경우 예외가 발생한다")
     @ParameterizedTest
-    @ValueSource(ints = {0,11})
-    void 시도_횟수_범위_테스트(int count) {
+    @ValueSource(strings = {"0","11"})
+    void 시도_횟수_범위_테스트(String count) {
         assertThatThrownBy(() -> TryCount.from(count)).isInstanceOf(IllegalArgumentException.class);
     }
 }

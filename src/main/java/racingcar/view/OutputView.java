@@ -16,7 +16,7 @@ public class OutputView {
         StringBuilder stringBuilder = new StringBuilder();
 
         cars.forEach(car -> {
-            stringBuilder.append(car.getName());
+            stringBuilder.append(car.getCarName());
             stringBuilder.append(" : ");
             stringBuilder.append("-".repeat(Math.max(0, car.getCurrentLocation())));
             stringBuilder.append("\n");
@@ -31,7 +31,7 @@ public class OutputView {
         stringBuilder.append(WINNER_HEADER);
 
         for (int i = 0; i < winners.size(); i++) {
-            stringBuilder.append(winners.get(i).getName());
+            stringBuilder.append(winners.get(i).getCarName());
             if (i < winners.size() - 1) {
                 stringBuilder.append(", ");
             }
