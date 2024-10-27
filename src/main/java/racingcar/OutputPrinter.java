@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class OutputPrinter {
     public void promptCarNames() {
@@ -14,6 +15,17 @@ public class OutputPrinter {
     public void showRace(LinkedHashMap<Car, Integer> cars) {
         cars.forEach(this::printProgress);
         System.out.println();
+    }
+
+    public void printWinner(List<String> winners) {
+        System.out.print("최종 우승자 : ");
+
+        for (int i = 0; i < winners.size(); i++) {
+            System.out.print(winners.get(i));
+            if (winners.size() > i + 1) {
+                System.out.print(", ");
+            }
+        }
     }
 
     private void printProgress(Car car, Integer progress) {
