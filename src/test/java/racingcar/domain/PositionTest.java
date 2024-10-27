@@ -5,34 +5,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 public class PositionTest {
-    @Test
-    void Position_생성() {
-        Position position = new Position(1);
-        assertThat(position).isEqualTo(new Position(1));
-    }
+
+    private final Position POSITION_AT_ONE = new Position(1);
 
     @Test
-    void 전진() {
-        Position position = new Position(0);
-        assertThat(position.increase()).isEqualTo(new Position(1));
+    void Position_생성() {
+        assertThat(POSITION_AT_ONE).isEqualTo(new Position(1));
     }
 
     @Test
     void 더_큰_위치값_구하기() {
-        Position position = new Position(4);
-        assertThat(position.getMax(3)).isEqualTo(4);
+        assertThat(POSITION_AT_ONE.getMax(2)).isEqualTo(2);
     }
 
     @Test
-    void 같은_위치값인지_판단하기() {
-        Position position = new Position(2);
-        assertThat(position.isSame(2)).isTrue();
-        assertThat(position.isSame(3)).isFalse();
+    void 같은_위치인지_판단하기() {
+        assertThat(POSITION_AT_ONE.isSame(1)).isTrue();
+        assertThat(POSITION_AT_ONE.isSame(3)).isFalse();
+    }
+
+    @Test
+    void 증가() {
+        assertThat(POSITION_AT_ONE.increase()).isEqualTo(new Position(2));
     }
 
     @Test
     void 전진_횟수_표시하기() {
-        Position position = new Position(2);
-        assertThat(position.currentState()).isEqualTo("--");
+        assertThat(POSITION_AT_ONE.currentState()).isEqualTo("-");
     }
 }

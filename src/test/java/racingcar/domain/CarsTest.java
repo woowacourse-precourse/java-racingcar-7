@@ -13,15 +13,15 @@ public class CarsTest {
     private final Car CAR_JUN = new Car("jun", 3);
 
     @Test
-    void Cars_객체_생성() {
-        List<Car> carList = List.of(new Car("pobi"), new Car("nana"));
+    void Cars_생성() {
+        List<Car> carList = List.of(CAR_POBI, CAR_NANA);
         Cars cars = new Cars(carList);
         assertThat(cars).isEqualTo(new Cars(carList));
     }
 
     @Test
     void 자동차_이름_중복() {
-        List<Car> carList = List.of(new Car("pobi"), new Car("pobi"));
+        List<Car> carList = List.of(CAR_POBI, CAR_POBI);
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Cars(carList))
                 .withMessageMatching("중복되는 자동차 이름은 사용할 수 없습니다");

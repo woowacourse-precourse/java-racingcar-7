@@ -6,14 +6,16 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import org.junit.jupiter.api.Test;
 
 public class NameTest {
+
+    private final Name POBI = new Name("pobi");
+
     @Test
     void Name_생성() {
-        Name name = new Name("pobi");
-        assertThat(name).isEqualTo(new Name("pobi"));
+        assertThat(POBI).isEqualTo(new Name("pobi"));
     }
 
     @Test
-    void 이름_길이_예외() {
+    void 자동차_이름은_1자_이상_5자_이하여야_함() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Name(""))
                 .withMessageMatching("자동차 이름은 1자 이상 5자 이하여야 합니다");
@@ -25,7 +27,7 @@ public class NameTest {
 
     @Test
     void to_string() {
-        assertThat(new Name("pobi").toString()).isEqualTo("pobi");
+        assertThat(POBI.toString()).isEqualTo("pobi");
     }
 
 }

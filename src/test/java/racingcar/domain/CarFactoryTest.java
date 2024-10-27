@@ -4,11 +4,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CarFactoryTest {
 
-    private final CarFactory carFactory = CarFactory.getInstance();
+    private CarFactory carFactory;
+    private final Car CAR_POBI = new Car("pobi");
+    private final Car CAR_NANA = new Car("nana");
+    private final Car CAR_JUN = new Car("jun");
+
+    @BeforeEach
+    void setUp() {
+        carFactory = CarFactory.getInstance();
+    }
 
     @Test
     void CarFactory_생성() {
@@ -17,20 +26,20 @@ public class CarFactoryTest {
 
     @Test
     void Cars_생성() {
-        String carNames = "pobi,nana";
-        List<Car> carList = List.of(new Car("pobi"), new Car("nana"));
-        assertThat(carFactory.createCars(carNames)).isEqualTo(new Cars(carList));
+        String names = "pobi,nana";
+        List<Car> carList = List.of(CAR_POBI, CAR_NANA);
+        assertThat(carFactory.createCars(names)).isEqualTo(new Cars(carList));
     }
 
     @Test
     void 자동차_이름_공백_제거하여_Cars_생성() {
-        String carNames = " pobi  , nana  ,   jun  ";
-        List<Car> carList = List.of(new Car("pobi"), new Car("nana"), new Car("jun"));
-        assertThat(carFactory.createCars(carNames)).isEqualTo(new Cars(carList));
+        String names = " pobi  , nana  ,   jun  ";
+        List<Car> carList = List.of(CAR_POBI, CAR_NANA, CAR_JUN);
+        assertThat(carFactory.createCars(names)).isEqualTo(new Cars(carList));
     }
 
     @Test
-    void 콤마로_split_할_수_없음() {
+    void 콤마로_자동차_이름_split_못함() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> carFactory.createCars("pobi:nana,jun"))
                 .withMessageMatching("자동차 이름은 콤마로 구분해야 합니다");
