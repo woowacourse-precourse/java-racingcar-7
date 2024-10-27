@@ -1,20 +1,50 @@
 # java-racingcar-precourse
 # 자동차 경주
 ## 기능 목록
+-- --
 ### 1. Model 패키지
-
+- car.java : 자동차를 나타내는 모델 클래스
+  - move() : 자동차 위치 이동
+  - getPositionSymbols() : 현재 위치를 '-'기호로 변환 후 반환
+- RacingGame.java : 게임 상태 관리
+  - getCars() : 자동차들의 리스트 반환
 
 ### 2. View 패키지
+- InputView.java : 사용자로부터 입력을 받음
+  - inputCarNames() : 자동차 이름 입력 받기
+  - inputNumberOfAttempts() : 시도 횟수 입력 받기
+- OutputView.java : 게임 진행 결과를 출력
+  - printExecutionResult() : 실행 결과 헤더 출력
+  - printCars() : 자동차의 이름과 위치 출력
+  - printWinners() : 최종 우승자 출력
 
+### 3. Controller 패키지 
+- GameController.java : 게임 컨트롤러 클래스
+  - 입력 처리
+  - 게임 진행
+  - 결과 출력
 
-### 3. Controller 패키지
+### 4. Service 패키지 
+- GameService.java : 게임 비즈니스 로직 처리
+  - initGame() : 게임 초기화
+  - processCarName() : 자동차 이름을 분리, 자동차 이름 유효성 검사
+  - validateNumberOfAttempts() : 시도 횟수의 유효성 검사
+  - moveCars() : 자동차 이동 여부 판단 후 업데이트
+  - getCars() : 현재 자동차 리스트 반환
+  - getWinners() : 우승자 찾은 후 반환
 
+### 5. Util 패키지 
+- InputValidator.java : 입력값의 유효성 검사
+  - validateCarName() : 자동차 이름 검사
+  - splitCarName() : 입력값 각 자동차 이름으로 분리
+- RandomNumberGenerator.java : 랜덤 숫자 생성
+  - shouldMove() : 랜덤 값 생성 후 4이상일 경우 이동 반환
 
-### 4. Service 패키지
-
-
-### 5. Util 패키지
-
+## 발전 사항
+이전 차수보다 더 발전 시켜본 점
+- MVC 패턴 적용  
+  => 역할 분담을 통해 효율적인 개발  
+  => 설계 변경에 유연하게 대응
 
 
 ## 과제 진행 요구 사항
