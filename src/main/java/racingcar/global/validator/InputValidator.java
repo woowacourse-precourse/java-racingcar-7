@@ -1,13 +1,14 @@
 package racingcar.global.validator;
 
 import racingcar.global.constant.InvalidInputExceptionMessage;
+
 import java.util.function.Consumer;
 
 public class InputValidator {
     public enum ValidationMode {
-        CAR_NAME(2, 5, InputValidator::validateCarName),
-        CAR_COUNT(2, 10, InputValidator::validateCarCount),
-        GAME_ROUND(1, 1000, InputValidator::validateGameRound);
+        CAR_NAME(1, 5, InputValidator::validateCarName),
+        CAR_COUNT(1, 1000000, InputValidator::validateCarCount),
+        GAME_ROUND(1, Integer.MAX_VALUE - 1, InputValidator::validateGameRound);
 
         private final int min;
         private final int max;
