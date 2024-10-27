@@ -61,9 +61,9 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("이름을 입력하지 않았을 때")
-    void 자동차_이름_입력하지않았을때() {
+    void 자동차_이름_입력하지_않았을때() {
         assertThatThrownBy(() -> {
-            run("", "3");
+            run("\n", "3");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름이 입력되지 않았습니다.");
     }
@@ -86,6 +86,41 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("자동차 이름은 중복되면 안됩니다.");
     }
 
+    @Test
+    @DisplayName("시도 횟수 입력을 하지 않았을 때")
+    void 시도_횟수_입력하지_않았을때() {
+        assertThatThrownBy(() -> {
+            run("poby,woni,jun", "\n");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수가 입력되지 않았습니다.");
+    }
+
+    @Test
+    @DisplayName("시도 횟수 공백 포함")
+    void 시도_횟수_공백_포함() {
+        assertThatThrownBy(() -> {
+            run("poby,woni,jun", " ");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("공백을 포함하면 안됩니다.");
+    }
+
+    @Test
+    @DisplayName("시도 횟수 숫자 이외의 값 입력")
+    void 시도_횟수_숫자_이외의_값_입력() {
+        assertThatThrownBy(() -> {
+            run("poby,woni,jun", "@");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 양의 정수로 입력 해야합니다.");
+    }
+
+    @Test
+    @DisplayName("시도 횟수 0 또는 음수")
+    void 시도_횟수_0_또는_음수_입력() {
+        assertThatThrownBy(() -> {
+            run("poby,woni,jun", "-1");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 양의 정수로 입력 해야합니다.");
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
