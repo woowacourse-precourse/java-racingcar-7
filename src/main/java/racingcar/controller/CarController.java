@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
 import racingcar.model.CarManager;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -23,5 +24,15 @@ public class CarController {
                 car.move();
             }
         }
+    }
+
+    public int getMostMovedCar(List<Car> cars) {
+        int max = Integer.MIN_VALUE;
+        for(Car car : cars) {
+            if(max < car.getMovedDistance()) {
+                max = car.getMovedDistance();
+            }
+        }
+        return max;
     }
 }
