@@ -77,7 +77,13 @@ public class Application {
 
     public static class Car {
         private String name;
+        private final String name;
         private int position;
+
+        private Car(String name) {
+            this.name = name;
+            this.position = 0;
+        }
 
         public void attemptMoveForward() {
             //일단은 구현체로 전진 구현
