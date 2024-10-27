@@ -55,4 +55,14 @@ public class Validator {
             throw new IllegalArgumentException(Constants.COUNT_CONTAIN_SPACE_ERROR_MESSAGE);
         }
     }
+
+    public int validateCountNonInteger(String count) {
+        int countInt;
+        try {
+            countInt = Integer.parseInt(count);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Constants.COUNT_NON_NUMBER_ERROR_MESSAGE);
+        }
+        return countInt;
+    }
 }
