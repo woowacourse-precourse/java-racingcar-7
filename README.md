@@ -117,4 +117,7 @@
 - [x] **자동차 이름 중복 검증**: 동일한 이름의 자동차가 등록되지 않도록 예외를 발생시킨다.
 - [x] **자동차 존재 여부 검증**: 진행 상태 업데이트 시, 등록되지 않은 자동차에 대해 예외를 발생시킨다.
 
+### 🛠️ RacingCar 검증 로직
+- [x] **MovementPolicy null 검증**: `MovementPolicy`가 null일 경우 예외를 발생시킨다.
+- [x] **RaceProgressManager null 검증**: `RaceProgressManager`가 null일 경우 예외를 발생시킨다.
 
