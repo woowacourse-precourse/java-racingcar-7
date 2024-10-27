@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -14,5 +12,6 @@ public class Application {
         List<Car> carNameList = Car.createCarList(separatedCarNames);
 
         int howManyTimesMove = carInputHandler.userInputHowManyTimes();
+        carOutputHandler.runRace(carNameList, howManyTimesMove);
     }
 }
