@@ -6,17 +6,19 @@ import java.util.List;
 public class CarRace {
 
     private final List<Car> cars;
+    private final int lapCount;
 
-    public CarRace(List<Car> cars) {
+    public CarRace(List<Car> cars, int lapCount) {
         this.cars = cars;
-    }
-
-    public void addCar(Car car) {
-        cars.add(car);
+        this.lapCount = lapCount;
     }
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public int getLapCount() {
+        return lapCount;
     }
 
     public List<Car> findCarsByPosition(int position) {
