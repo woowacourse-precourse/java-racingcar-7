@@ -18,18 +18,13 @@ import org.junit.jupiter.api.Test;
 class InputViewTest {
 
     private ByteArrayOutputStream outputMessage;
-    private InputView inputView;
+    private final InputView inputView = new InputView();
 
     @BeforeEach
     void setUpStreams() {
         // 출력 스트림을 가로채기 위해 출력 스트림을 원하는 타입의 객체로 설정
         outputMessage = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputMessage));
-    }
-
-    @BeforeEach
-    void setUpInputView() {
-        inputView = new InputView();
     }
 
     @AfterEach

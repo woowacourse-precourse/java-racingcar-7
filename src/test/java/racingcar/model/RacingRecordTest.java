@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class RacingRecordTest {
 
-    private RacingRecord racingRecord = new RacingRecord(new Car("pobi"));
+    private final RacingRecord racingRecord = new RacingRecord(new Car("pobi"));
 
     @DisplayName("RacingRecord_생성_테스트")
     @Test
