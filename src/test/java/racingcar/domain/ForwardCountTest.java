@@ -15,7 +15,7 @@ public class ForwardCountTest {
     void validateNumber(String candidate) {
         assertThatThrownBy(() -> ForwardCount.from(candidate))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도할 횟수는 1~100 사이의 숫자만 입력 가능합나다.");
+                .hasMessage("시도할 횟수는 1~100 사이의 숫자만 입력 가능합니다.");
     }
 
     @ParameterizedTest
@@ -24,7 +24,7 @@ public class ForwardCountTest {
     void validateForwardCountOutOfRange(String candidate) {
         assertThatThrownBy(() -> ForwardCount.from(candidate))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도할 횟수는 1~100 사이의 숫자만 입력 가능합나다.");
+                .hasMessage("시도할 횟수는 1~100 사이의 숫자만 입력 가능합니다.");
     }
 
     @ParameterizedTest
