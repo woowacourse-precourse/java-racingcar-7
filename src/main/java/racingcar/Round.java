@@ -14,6 +14,14 @@ public class Round {
         }
     }
 
+    public static void print(final List<Car> cars) {
+        StringBuilder result = new StringBuilder();
+        for (Car car: cars) {
+            result.append(car.toString()).append("\n");
+        }
+        System.out.println(result);
+    }
+
     public static String roundResult(final List<Car> cars) {
         StringBuilder builder = new StringBuilder();
         for (Car car: cars) {

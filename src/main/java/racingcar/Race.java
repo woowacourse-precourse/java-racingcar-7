@@ -19,15 +19,20 @@ public class Race {
                 numbers.add(numberGenerator.generateNumber(4));
             }
             Round.play(cars, numbers);
+            Round.print(cars);
         }
     }
+
+
 
     public List<Car> getWinners() {
         List<Car> winners = new ArrayList<>();
         PriorityQueue<Car> priorityQueue = new PriorityQueue<>();
         priorityQueue.addAll(cars);
-        Car prev = priorityQueue.poll();
-        while (Objects.equals(Objects.requireNonNull(prev).getDistance(), Objects.requireNonNull(priorityQueue.peek()).getDistance())) {
+        Car first = priorityQueue.poll();
+        winners.add(first);
+        while (!priorityQueue.isEmpty()
+                && Objects.equals(first.getDistance(), priorityQueue.peek().getDistance())) {
             winners.add(priorityQueue.poll());
         }
         return winners;
