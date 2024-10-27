@@ -24,6 +24,14 @@ class TryNumbersValidatorTest {
     }
 
     @ParameterizedTest
+    @ValueSource(strings = {"-1", "-2", "-3", "-123"})
+    void 시도횟수가_음수일때(String userInput) {
+        assertThrows(IllegalArgumentException.class, () -> {
+            tryNumbersValidator.validateNumeric(userInput);
+        });
+    }
+
+    @ParameterizedTest
     @ValueSource(strings = {"111", "12", "23", "12321312"})
     void 시도횟수가_정수_일때(String userInput) {
         assertDoesNotThrow(() -> {
