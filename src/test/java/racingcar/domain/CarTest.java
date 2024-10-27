@@ -56,6 +56,7 @@ public class CarTest {
     @Test
     void to_string() {
         Car car = new Car("pobi", 3);
+        
         assertThat(car.toString()).isEqualTo("pobi : ---\n");
     }
 }

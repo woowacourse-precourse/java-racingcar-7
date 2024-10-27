@@ -31,5 +31,4 @@ public class RacingGame {
     private void announceWinners() {
         ResultView.showWinners(racingSetUp.getCars().findWinners());
     }
-
 }

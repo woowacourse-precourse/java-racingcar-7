@@ -34,6 +34,7 @@ public class Cars {
 
     public List<String> findWinners() {
         int maxMove = calculateMaxMoves();
+
         return carList.stream()
                 .filter(car -> car.isSameMaxMove(maxMove))
                 .map(Car::getName)
@@ -46,7 +47,6 @@ public class Cars {
         for (Car car : carList) {
             maxMove = car.getMaxMove(maxMove);
         }
-
         return maxMove;
     }
 
@@ -72,5 +72,4 @@ public class Cars {
                 .map(Car::toString)
                 .collect(Collectors.joining());
     }
-
 }

@@ -68,5 +68,4 @@ public class Car {
     public String toString() {
         return name.toString() + NAME_POSITION_SEPARATOR + position.currentState() + LINE_CHANGE;
     }
-
 }

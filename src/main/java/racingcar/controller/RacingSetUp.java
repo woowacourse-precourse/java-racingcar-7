@@ -38,7 +38,6 @@ public class RacingSetUp {
         } finally {
             Console.close();
         }
-
         return tryCount;
     }
 
@@ -53,5 +52,4 @@ public class RacingSetUp {
     public Cars getCars() {
         return cars;
     }
-
 }

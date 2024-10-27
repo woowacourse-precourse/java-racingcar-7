@@ -17,12 +17,14 @@ public class CarsTest {
     void Cars_생성() {
         List<Car> carList = List.of(CAR_POBI, CAR_NANA);
         Cars cars = new Cars(carList);
+
         assertThat(cars).isEqualTo(new Cars(carList));
     }
 
     @Test
     void 자동차_이름_중복() {
         List<Car> carList = List.of(CAR_POBI, CAR_POBI);
+
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Cars(carList))
                 .withMessageMatching(Constants.DUPLICATE_CAR_NAMES);
@@ -34,6 +36,7 @@ public class CarsTest {
         Cars cars = new Cars(carList);
 
         List<String> winners = List.of("pobi");
+
         assertThat(cars.findWinners()).isEqualTo(winners);
     }
 
@@ -43,6 +46,7 @@ public class CarsTest {
         Cars cars = new Cars(carList);
 
         List<String> winners = List.of("pobi", "jun");
+
         assertThat(cars.findWinners()).isEqualTo(winners);
     }
 

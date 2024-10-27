@@ -16,5 +16,4 @@ public class InputView {
         System.out.println(ENTER_TRY_COUNT_PROMPT);
         return Console.readLine();
     }
-
 }
