@@ -12,6 +12,10 @@ public class ExecutionResult {
         this.movedDistance = movedDistance;
     }
 
+    public static ExecutionResult ofValue(Car car) {
+        return new ExecutionResult(car.getName(), car.getPosition());
+    }
+
     @Override
     public String toString() {
         return DISPLAY_PATTERN.formatted(carName, generateDistanceIndicator(movedDistance));
