@@ -7,7 +7,7 @@ public class Validator {
         }
     }
 
-    public void validateMoveCount(String moveCountInput) {
+    public int validateAttemptCount(String moveCountInput) {
         if (moveCountInput == null || moveCountInput.isEmpty()) {
             throw new IllegalArgumentException("이동 횟수는 빈 값일 수 없습니다.");
         }
@@ -17,5 +17,7 @@ public class Validator {
         if (moveCount < 0) {
             throw new IllegalArgumentException("이동 횟수는 0 이상의 정수여야 합니다.");
         }
+
+        return moveCount;
     }
 }
