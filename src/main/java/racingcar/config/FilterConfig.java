@@ -9,7 +9,7 @@ import racingcar.filter.impl.filterchain.CarNameFilterChain;
 import racingcar.filter.impl.filterchain.RoundFilterChain;
 
 public class FilterConfig {
-    private static final FilterConfig INSTANCE = new FilterConfig();
+    private static FilterConfig INSTANCE;
 
     private final FilterChain carNameFilterChain = new CarNameFilterChain();
     private final FilterChain roundFilterChain = new RoundFilterChain();
@@ -22,6 +22,9 @@ public class FilterConfig {
     }
 
     public static FilterConfig getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new FilterConfig();
+        }
         return INSTANCE;
     }
 
