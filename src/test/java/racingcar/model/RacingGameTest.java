@@ -72,4 +72,16 @@ class RacingGameTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_RANDOM_NUMBER_EXCEPTION_MESSAGE.getMessage());
     }
+
+    @DisplayName("무작위값들_생성_테스트")
+    @Test
+    public void generateRandomNumbers() {
+        //given
+        List<RacingRecord> records = racingGame.getRecords();
+        int numberOfCars = records.size();
+        //when
+        List<Integer> randomNumbers = racingGame.generateRandomNumbers();
+        //then
+        assertThat(randomNumbers.size()).isEqualTo(numberOfCars);
+    }
 }

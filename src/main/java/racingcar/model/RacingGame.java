@@ -27,6 +27,14 @@ public class RacingGame {
                 , GameSettings.MAX_RANDOM_NUMBER.getNumber());
     }
 
+    public List<Integer> generateRandomNumbers() {
+        List<Integer> randomNumbers = new ArrayList<>();
+        for (int i = 0; i < records.size(); i++) {
+            randomNumbers.add(generateRandomNumber());
+        }
+        return randomNumbers;
+    }
+
     public void racing(List<Integer> randomNumbersOfRound) {
         checkingRandomNumbers(randomNumbersOfRound);
 
