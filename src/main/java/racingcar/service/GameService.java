@@ -18,7 +18,7 @@ public class GameService {
         }
     }
 
-    public List<Map<String, String>> progressGame(GameStatus gameStatus, int tryCount) {
+    public List<Map<String, String>> moveForwardCar(GameStatus gameStatus, int tryCount) {
         Set<Car> cars = gameStatus.getCar();
         List<Map<String, String>> carsPosition = new ArrayList<>();
 
@@ -46,5 +46,32 @@ public class GameService {
         }
         return updatedCarPosition;
     }
+
+    public List<Car> getWinner(GameStatus gameStatus) {
+        Set<Car> cars = gameStatus.getCar();
+        List<Car> winningCar = getComparedPosition(cars);
+
+        return winningCar;
+    }
+
+    private List<Car> getComparedPosition(Set<Car> cars) {
+        List<Car> winningCars = new ArrayList<>();
+        int currentMaxPosition = Integer.MIN_VALUE;
+
+        for (Car car : cars) {
+            int carPosition = car.getPosition();
+
+            if (carPosition > currentMaxPosition) {
+                currentMaxPosition = carPosition;
+                winningCars.clear();
+            }
+
+            if (carPosition == currentMaxPosition) {
+                winningCars.add(car);
+            }
+        }
+        return winningCars;
+    }
+
 
 }
