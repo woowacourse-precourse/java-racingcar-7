@@ -34,7 +34,7 @@ class RaceTest {
     void 자동차_전진_해주라(int number) {
         Race race = new Race(cars, new FixedNumberGenerator(number));
 
-        race.playOneRound();
+        race.playSingleRound();
 
         race.getCars().forEach(car -> assertThat(car.getMoveDistance()).isEqualTo(1));
     }
@@ -44,7 +44,7 @@ class RaceTest {
     void 자동차_전진_하면안됨제발(int number) {
         Race race = new Race(cars, new FixedNumberGenerator(number));
 
-        race.playOneRound();
+        race.playSingleRound();
 
         race.getCars().forEach(car -> assertThat(car.getMoveDistance()).isEqualTo(0));
     }
@@ -54,9 +54,9 @@ class RaceTest {
     void 움직인_한_라운드_테스트(int number) {
         Race race = new Race(cars, new FixedNumberGenerator(number));
 
-        race.playOneRound();
+        race.playSingleRound();
 
-        assertThat(race.getOneRoundResult()).isEqualTo(List.of(
+        assertThat(race.getSingleRoundResult()).isEqualTo(List.of(
                 "도현 : -",
                 "현도 : -"
         ));
@@ -67,9 +67,9 @@ class RaceTest {
     void 안_움직인_한_라운드_테스트(int number) {
         Race race = new Race(cars, new FixedNumberGenerator(number));
 
-        race.playOneRound();
+        race.playSingleRound();
 
-        assertThat(race.getOneRoundResult()).isEqualTo(List.of(
+        assertThat(race.getSingleRoundResult()).isEqualTo(List.of(
                 "도현 : ",
                 "현도 : "
         ));

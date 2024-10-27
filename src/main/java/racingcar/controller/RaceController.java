@@ -10,17 +10,36 @@ import racingcar.view.OutputView;
 
 public class RaceController {
 
-    public void run() {
-        ArrayList<String> carNames = InputView.readCarNames();
-        int repeatCount = InputView.readRepeatCount();
+    private final InputView inputView;
+    private final OutputView outputView;
+    private Race race;
 
-        Race race = new Race(carNames,new RandomNumberGenerator());
-        OutputView.printResultMessage();
-        IntStream.range(0, repeatCount)
-                .forEach(i -> {race.playOneRound();
-                    OutputView.printRoundResult(race.getOneRoundResult());
-                });
+    public RaceController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
+
+    public void run() {
+        ArrayList<String> carNames = inputView.readCarNames();
+        int repeatCount = inputView.readRepeatCount();
+
+        race(repeatCount, carNames);
+        announceWinner();
+    }
+
+    private void race(int repeatCount, ArrayList<String> carNames) {
+        race = new Race(carNames, new RandomNumberGenerator());
+        outputView.printResultMessage();
+        IntStream.range(0, repeatCount).forEach(i -> playSingleRound());
+    }
+
+    private void playSingleRound() {
+        race.playSingleRound();
+        outputView.printRoundResult(race.getSingleRoundResult());
+    }
+
+    private void announceWinner() {
         Winner winner = new Winner(race.getCars());
-        OutputView.printWinningCars(winner.getWinningCars());
+        outputView.printWinningCars(winner.getWinningCars());
     }
 }

@@ -11,12 +11,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class InputViewTest {
+class ConsoleInputViewTest {
 
+    private InputView inputView;
     private ByteArrayOutputStream outputStream;
 
     @BeforeEach
     void setUp() {
+        inputView = new ConsoleInputView();
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
     }
@@ -31,7 +33,7 @@ class InputViewTest {
     void 자동차_입력_프롬프트_출력() {
         setInputStream("pobi,woni,jun");
 
-        InputView.readCarNames();
+        inputView.readCarNames();
 
         assertThat(outputStream.toString()).contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
     }
@@ -41,7 +43,7 @@ class InputViewTest {
         String input = "pobi,woni,jun";
         setInputStream(input);
 
-        ArrayList<String> carNames = InputView.readCarNames();
+        ArrayList<String> carNames = inputView.readCarNames();
 
         assertThat(carNames).isEqualTo(List.of("pobi","woni","jun"));
     }
@@ -51,7 +53,7 @@ class InputViewTest {
         int input = 5;
         setInputStream(String.valueOf(input));
 
-        int repeatCount = InputView.readRepeatCount();
+        int repeatCount = inputView.readRepeatCount();
 
         assertThat(repeatCount).isEqualTo(input);
     }

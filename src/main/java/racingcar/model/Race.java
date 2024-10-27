@@ -16,7 +16,7 @@ public class Race {
         this.numberGenerator = numberGenerator;
     }
 
-    public void playOneRound() {
+    public void playSingleRound() {
         for (Car car : cars) {
             if (numberGenerator.generateNumber() >= NumberConstants.MOVE_REQUIREMENT) {
                 car.increaseDistance();
@@ -24,7 +24,7 @@ public class Race {
         }
     }
 
-    public List<String> getOneRoundResult() {
+    public List<String> getSingleRoundResult() {
         List<String> roundResult = new ArrayList<>();
         cars.forEach(car
                 -> roundResult.add(car.getName()
