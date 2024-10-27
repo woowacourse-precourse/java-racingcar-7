@@ -1,6 +1,4 @@
-package racingcar.View;
-
-import static racingcar.Validation.validateGameCount;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
