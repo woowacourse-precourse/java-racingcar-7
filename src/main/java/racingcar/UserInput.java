@@ -14,16 +14,6 @@ public class UserInput {
     public static int inputNumberOfExecutions() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputNumber = Console.readLine();
-        return parseIntOrThrow(inputNumber);
-    }
-
-    private static int parseIntOrThrow(String inputNumber) {
-        try {
-            Integer.parseInt(inputNumber);
-        } catch (NumberFormatException e) {
-            throw new IllegalThreadStateException("입력된 시도 횟수가 숫자가 아닙니다. : " + inputNumber);
-        }
-
-        return Integer.parseInt(inputNumber);
+        return ExceptionHandler.parseIntOrThrow(inputNumber);
     }
 }

@@ -11,9 +11,7 @@ public class Race {
     private final int moveCount;
 
     public Race(List<String> cars, int moveCount) {
-        if (moveCount == 0) {
-            throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 합니다.");
-        }
+        ExceptionHandler.validateMoveCount(moveCount);
 
         this.cars = createCars(cars);
         this.moveCount = moveCount;
@@ -22,9 +20,7 @@ public class Race {
     private List<Car> createCars(List<String> carsName) {
         Set<String> uniqueCarsName = new HashSet<>(carsName);
 
-        if (carsName.size() != uniqueCarsName.size()) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-        }
+        ExceptionHandler.validateDuplicateCarName(carsName.size(), uniqueCarsName.size());
 
         return carsName.stream()
                 .map(Car::new)
