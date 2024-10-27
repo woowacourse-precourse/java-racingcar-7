@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private static final String ERROR_CAR_NAME_TOO_LONG = "자동차 이름은 5자 이하여야 합니다.";
 
@@ -12,7 +14,10 @@ public class Car {
     }
 
     public void move() {
-        distance += 1;
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (randomNumber >= 4) {
+            distance += 1;
+        }
     }
 
     private void validateName(String carName) {

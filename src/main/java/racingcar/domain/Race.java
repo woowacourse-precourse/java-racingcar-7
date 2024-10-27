@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -20,10 +19,7 @@ public class Race {
 
     public void moveAll() {
         for (Car car : cars) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (randomNumber >= 4) {
-                car.move();
-            }
+            car.move();
         }
     }
 
