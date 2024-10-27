@@ -28,5 +28,6 @@ public class RaceController {
 
     public void run() {
         raceService.setRaceCars(inputView.inputCarNames());
+        raceService.runRaceRounds(Integer.parseInt(inputView.inputTryCount()));
     }
 }
