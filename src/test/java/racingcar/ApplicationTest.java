@@ -24,10 +24,35 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 기능_테스트_큰수() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "50");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_초과() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트_공백() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트_구분자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi;javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -36,3 +61,7 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 }
+// pobi,woni,jun  -> o
+// pobibi,woni,jun -> x
+// pobi, woni,jun -> x
+// pobi,woni;jun -> x
