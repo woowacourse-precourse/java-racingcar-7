@@ -195,6 +195,46 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 테스트_4_1_우승자_확인() {
+        ArrayList<Car> carList = new ArrayList<>();
+        carList.add(new Car("a"));
+        carList.add(new Car("b"));
+        carList.add(new Car("c"));
+
+        carList.get(1).goForward();
+        carList.get(2).goForward();
+        carList.get(2).goForward();
+
+        ArrayList<String> winnerList = Application.getWinnerList(carList);
+
+        assertThat(winnerList.size()).isEqualTo(1);
+        assertThat(winnerList.get(0)).isEqualTo("c");
+
+        Application.printWinners(winnerList);
+        assertThat(output()).isEqualTo("최종 우승자 : c");
+    }
+
+    @Test
+    void 테스트_4_1_우승자_확인_공동우승() {
+        ArrayList<Car> carList = new ArrayList<>();
+        carList.add(new Car("a"));
+        carList.add(new Car("b"));
+        carList.add(new Car("c"));
+
+        carList.get(1).goForward();
+        carList.get(2).goForward();
+
+        ArrayList<String> winnerList = Application.getWinnerList(carList);
+
+        assertThat(winnerList.size()).isEqualTo(2);
+        assertThat(winnerList.get(0)).isEqualTo("b");
+        assertThat(winnerList.get(1)).isEqualTo("c");
+
+        Application.printWinners(winnerList);
+        assertThat(output()).isEqualTo("최종 우승자 : b, c");
+    }
+
     @AfterEach
     void closeConsole() {
         Console.close();
