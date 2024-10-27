@@ -9,7 +9,7 @@ public class RaceGame {
     String[] carNamesList;
     int totalCars;
 
-    //사용자의 입력을 받아들이는 메서드,
+    //사용자의 입력을 받아들이는 메서드
     String getUserInput() throws IOException{
         String userInput;
         System.out.println("경주에 참여할 자동차의 이름을 입력해주세요. 여러 개일 경우, 각 이름은 comma(,)로 구분해야 합니다. ");
@@ -23,8 +23,8 @@ public class RaceGame {
         return userInput;
     }
 
+    //사용자의 입력에서 이름을 추출해 배열로 저장하는 메서드
     void getNamesList(String input){
-
         //null 예외 처리 성공
         //comma 기준으로 구분 성공
         try{
