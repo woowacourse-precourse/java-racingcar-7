@@ -20,6 +20,7 @@ class CarTest extends NsTest {
                 CarValidator.validateCarName("", uniqueNames)
         );
         assert(exception.getMessage().equals("자동차 이름은 비어 있을 수 없습니다."));
+
     }
 
     @Test
