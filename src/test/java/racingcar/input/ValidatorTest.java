@@ -53,7 +53,7 @@ class ValidatorTest {
             validator.validateInput(userInput);
         });
 
-        assertEquals("자동차 이름에 공백은 입력할 수 없습니다", exception.getMessage());
+        assertEquals("자동차 이름에 공백은 입력할 수 없습니다.", exception.getMessage());
     }
 
     @Test
@@ -68,7 +68,7 @@ class ValidatorTest {
             validator.validateInput(userInput);
         });
 
-        assertEquals("각 자동차 이름은 5글자 이하로 입력해야 합니다", exception.getMessage());
+        assertEquals("각 자동차 이름은 5글자 이하로 입력해야 합니다.", exception.getMessage());
     }
 
     @Test
