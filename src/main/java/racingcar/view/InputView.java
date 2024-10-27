@@ -8,8 +8,8 @@ public class InputView {
         return Console.readLine().split(",");
     }
 
-    public static int getRaceAttempts() {
+    public static String getRaceAttempts() {
         System.out.println("시도할 횟수를 입력하세요 :");
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 }
