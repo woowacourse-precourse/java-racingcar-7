@@ -15,6 +15,10 @@ public class RacingCarValidator {
         if (carNames.length == 0) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_EMPTY.getMessage());
         }
+        if (carNames.length == Constants.CAR_COUNT_MINIMUM.getValue()) {
+            throw new IllegalArgumentException(
+                    ErrorMessage.CAR_COUNT_MINIMUM.getMessage(Constants.CAR_COUNT_MINIMUM.getValue()));
+        }
     }
 
     public void validateCarName(String carName) {
