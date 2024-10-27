@@ -2,6 +2,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -33,5 +34,18 @@ public class GameRunner {
             return true;
         }
         return false;
+    }
+
+    public String getWinner(Map<String, Integer> carState) {
+        int maxPosition = carState.values().stream()
+                .max(Integer::compareTo)
+                .orElse(0);
+
+        List<String> winners = carState.entrySet().stream()
+                .filter(entry -> entry.getValue() == maxPosition)
+                .map(Map.Entry::getKey)
+                .toList();
+
+        return String.join(",", winners);
     }
 }
