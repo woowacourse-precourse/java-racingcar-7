@@ -40,16 +40,52 @@
     - 사용자의 입력을 분리한다.
     - 자동차 위치를 저장하고 이동 시킨다.
 
+RacingCar
+
+- 레이싱 자동차 정보를 저장하는 기능을 담당
+
+RacingCarManager
+
+- 레이싱 자동차들 관리 기능을 담당
+
+RacingCarNameInput
+
+- 레이싱 자동차 이름 입력 기능을 담당
+
+GameCoinInput
+
+- 게임 시도 횟수 입력 기능을 담당
+
+RandomNumberGenerator
+
+- 랜덤한 수 생성 기능을 담당
+
+WinnerFinder
+
+- 우승자를 찾아내는 기능을 담당
+
 ### View
 
 - 사용자에게 보여지는 입력 문구를 출력한다.
 - 입력을 받는다.
 - 사용자에게 보여지는 문구를 출력한다.
 
+InputView
+
+- 사용자의 입력을 담당
+
+OutputView
+
+- 사용자에게 출력을 담당
+
 ### Controller
 
 - Model과 View 사이에서 데이터를 주고 받는다.
 - 전체적인 게임의 흐름을 담당한다.
+
+RacingGame
+
+- 전체적인 게임의 관리와 흐름을 담당
 
 ## 1주차에 받은 피드백
 
