@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.car.Cars;
 import racingcar.racing.RacingCarService;
@@ -26,5 +27,7 @@ public class Application {
 
         final List<String> winners = service.findWinners();
         writer.writeWinners(winners);
+
+        Console.close();
     }
 }
