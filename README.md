@@ -21,15 +21,26 @@
 
 ## 기능 목록
 1. InputView Class (View)
-   - [ ] 입력 문자열 분리
-   - [ ] 이동 횟수 입력
+   - [X] 입력 문자열 분리
+   - [X] 이동 횟수 입력
 2. OutputView Class (View)
-   - [ ] 중간 결과 출력
-   - [ ] 최종 우승자 출력
+   - [X] 중간 결과 출력
+   - [X] 최종 우승자 출력
 3. Vehicle Class (Model)
-   - [ ] Set Vehicle Name
-   - [ ] Move Vehicle
+   - [X] Set Vehicle Name
+   - [X] Move Vehicle
 4. Exception Class (Model)
-   - [ ] 이름 글자 수 Exception
+   - [X] 이름 글자 수 Exception
+   - [X] 문자열이 공백과 ,로만 이루어진 경우 Exception
 5. RacingController (Controller)
-   - [ ] View와 Model을 이용하여 순서에 맞게 구현
+   - [X] View와 Model을 이용하여 순서에 맞게 구현
+
+## 미션 요구 사항
+0.[X] 1주차 공통 피드백을 최대한 반영한다.
+1.[X] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
+   - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
+   - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
+2.[X] 3항 연산자를 쓰지 않는다.
+3.[X] 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
+4.[X] JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
+5.[X] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
