@@ -19,7 +19,9 @@ public class RacingServiceImpl implements RacingService {
 
         List<RoundResultDTO> roundResultDTOs = performRaceMoves(racingManager, moveCount);
 
-        return null;
+        List<String> winnerNames = determineWinners(racingManager);
+
+        return RacingResponseDTO.of(roundResultDTOs, winnerNames);
     }
 
     private RacingManager initializeParticipants(List<String> carNames) {
@@ -45,5 +47,9 @@ public class RacingServiceImpl implements RacingService {
                 .map(CarRoundStateDTO::from)
                 .collect(Collectors.toList());
         return RoundResultDTO.of(carStates);
+    }
+
+    private List<String> determineWinners(RacingManager racingManager) {
+        return racingManager.findWinnerNames();
     }
 }
