@@ -1,7 +1,9 @@
 package racingcar.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Cars {
     private List<Car> cars;
@@ -17,6 +19,13 @@ public class Cars {
         }
     }
 
+    public Map<String, Integer> getInformation() {
+        Map<String, Integer> carsInfo = new HashMap<>();
+        for (Car car : this.cars) {
+            carsInfo.put(car.getName(), car.getDistance());
+        }
+        return carsInfo;
+    }
 
     private void addToCars(List<String> carNames) {
         for (String carName : carNames) {
