@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import racingcar.exception.DuplicatedElementException;
@@ -16,11 +17,7 @@ public class RacingCarInputView {
         String input = Console.readLine();
 
         carNames = Arrays.stream(input.split(",")).toList();
-        try {
-            Validator.validateDuplicated(carNames);
-        } catch (DuplicatedElementException e) {
-            throw new IllegalArgumentException("중복되지 않은 이름으로 입력해주세요.");
-        }
+        Validator.validateCarNames(carNames);
 
         return carNames;
     }
@@ -31,20 +28,44 @@ public class RacingCarInputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
 
-        try {
-            tryCount = Integer.parseInt(input);
-            Validator.validatePositiveNumber(tryCount);
-        } catch (NumberFormatException | NonPositiveNumberException e) {
-            throw new IllegalArgumentException("int형 범위의 양수를 입력해주세요.");
-        }
+        tryCount = parseInt(input);
+        Validator.validateTryCount(tryCount);
 
         return tryCount;
     }
 
+    private static int parseInt(String numberStr) {
+        int result;
+
+        try {
+            result = Integer.parseInt(numberStr);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("int형으로 변환할 수 없습니다.");
+        }
+
+        return result;
+    }
+
     private static class Validator {
 
-        private static void validateDuplicated(List<String> list) {
-            if (list.size() != new HashSet<>(list).size()) {
+        public static void validateCarNames(List<String> list) {
+            try {
+                validateDuplicated(list);
+            } catch (DuplicatedElementException e) {
+                throw new IllegalArgumentException("중복되지 않은 이름으로 입력해주세요.");
+            }
+        }
+
+        private static void validateTryCount(int tryCount) {
+            try {
+                validatePositiveNumber(tryCount);
+            } catch (NonPositiveNumberException e) {
+                throw new IllegalArgumentException("시도 횟수는 양수만을 허용합니다.");
+            }
+        }
+
+        private static void validateDuplicated(Collection<?> collection) {
+            if (collection.size() != new HashSet<>(collection).size()) {
                 throw new DuplicatedElementException();
             }
         }
