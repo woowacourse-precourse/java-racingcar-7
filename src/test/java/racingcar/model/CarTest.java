@@ -28,12 +28,12 @@ class CarTest {
     @DisplayName("랜덤값의 크기가 4이상이라면 전진할 수 있다.")
     @ParameterizedTest
     @CsvSource(value = {"4,1", "3,0"})
-    void isMove(int randomNumber, int expectedPosition) {
+    void tryMove(int randomNumber, int expectedPosition) {
         //given
         Car car = Car.of("pobi", new StubRandomNumberGenerator(randomNumber));
 
         //when
-        car.isMove();
+        car.tryMove();
 
         //then
         CarStatusDto carStatusDto = car.mapStatusToDto();
@@ -47,9 +47,9 @@ class CarTest {
         Car car = Car.of("pobi", new StubRandomNumberGenerator(4));
         int position = 2;
 
-        car.isMove();
-        car.isMove();
-        car.isMove();
+        car.tryMove();
+        car.tryMove();
+        car.tryMove();
 
         //when
         int maxPosition = car.findMaxPosition(position);
@@ -65,9 +65,9 @@ class CarTest {
         //given
         Car car = Car.of("pobi", new StubRandomNumberGenerator(4));
 
-        car.isMove();
-        car.isMove();
-        car.isMove();
+        car.tryMove();
+        car.tryMove();
+        car.tryMove();
 
         //when
         boolean result = car.isMaxPosition(maxPosition);

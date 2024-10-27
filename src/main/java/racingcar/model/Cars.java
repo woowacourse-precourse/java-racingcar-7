@@ -43,7 +43,7 @@ public class Cars {
 
     public void move() {
         for (Car car : cars) {
-            car.isMove();
+            car.tryMove();
         }
     }
 

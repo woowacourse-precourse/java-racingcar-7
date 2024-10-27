@@ -26,8 +26,8 @@ public class Car {
         return new Car(name, randomNumberStrategy);
     }
 
-    public void isMove() {
-        int randomNumber = createRandomNumber();
+    public void tryMove() {
+        int randomNumber = randomNumberStrategy.generateNumber();
         if (isMoveCondition(randomNumber)) {
             moveForward();
         }
@@ -47,10 +47,6 @@ public class Car {
 
     public boolean isMaxPosition(int maxPosition) {
         return position.isMax(maxPosition);
-    }
-
-    private int createRandomNumber() {
-        return randomNumberStrategy.generateNumber();
     }
 
     private boolean isMoveCondition(int randomNumber) {
