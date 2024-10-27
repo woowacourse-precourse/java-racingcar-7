@@ -22,6 +22,7 @@ public class RacingController {
         List<Car> carList = makeCarList(inputView.names());
         int repeat = stringToInt(inputView.repeat());
         raceStart(carList,repeat);
+        outputView.winners(carList);
     }
 
     List<Car> makeCarList(String names){
