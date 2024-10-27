@@ -1,26 +1,29 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 public class Game {
 
-    public List<RacingCar> init(List<String> carNames) {
-        return initCars(carNames);
-    }
+    private final List<RacingCar> racingCars = new ArrayList<>();
 
-    public List<RacingCar> initCars(List<String> carNames) {
-        List<RacingCar> racingCars = new ArrayList<>();
-        for (String name : carNames) {
-            racingCars.add(RacingCar.createRacingCar(name));
-        }
+    public List<RacingCar> getRacingCars() {
         return racingCars;
     }
 
-    public List<RacingCar> executeLogic(List<RacingCar> racingCars) {
+    public void init(List<String> carNames) {
+        initCars(carNames);
+    }
+
+    public void initCars(List<String> carNames) {
+        for (String name : carNames) {
+            racingCars.add(RacingCar.createRacingCar(name));
+        }
+    }
+
+    public List<RacingCar> executeLogic() {
         for (RacingCar racingCar : racingCars) {
             Integer randomNumber = GameUtil.randomNumber();
             if (GameUtil.isForward(randomNumber)) {
@@ -30,7 +33,7 @@ public class Game {
         return racingCars;
     }
 
-    public List<String> selectWinner(List<RacingCar> racingCars) {
+    public List<String> selectWinner() {
         Optional<RacingCar> firstWinner = racingCars.stream().max(Comparator.comparing(RacingCar::getScore));
 
         if (firstWinner.isEmpty()) {
