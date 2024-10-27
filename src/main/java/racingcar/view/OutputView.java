@@ -23,9 +23,14 @@ public class OutputView {
         this(DEFAULT_WRITER);
     }
 
+    public void outputRoundResultTitle() {
+        writer.writeLine("\n실행 결과");
+    }
+
     public void outputRoundResult(RoundDto roundResult) {
         roundResult.cars()
                 .forEach(this::outputCarResult);
+        writer.writeLine();
     }
 
     private void outputCarResult(CarDto car) {

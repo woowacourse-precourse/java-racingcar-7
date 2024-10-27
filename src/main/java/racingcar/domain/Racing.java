@@ -13,6 +13,13 @@ public class Racing {
         this.cars = cars;
     }
 
+    public static Racing from(List<String> carNames) {
+        List<Car> cars = carNames.stream()
+                .map(Car::new)
+                .toList();
+        return new Racing(cars);
+    }
+
     private void validate(List<Car> cars) {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException("차는 1대 이상 존재해야 합니다");

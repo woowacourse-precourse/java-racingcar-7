@@ -15,4 +15,8 @@ public class RoundCount {
             throw new IllegalArgumentException("시도 횟수는 양수이어야 합니다");
         }
     }
+
+    public int getCount() {
+        return count;
+    }
 }

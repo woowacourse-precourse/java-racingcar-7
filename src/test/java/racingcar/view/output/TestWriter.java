@@ -9,6 +9,11 @@ public class TestWriter implements Writer {
         this.outputText += message + "\n";
     }
 
+    @Override
+    public void writeLine() {
+        this.outputText += "\n";
+    }
+
     public String getOutputText() {
         return outputText;
     }
