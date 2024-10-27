@@ -10,7 +10,7 @@ class ResultPrinterTest {
     @Test
     void 공동우승자_찾기_테스트() {
         // 테스트 데이터 생성
-        Car[] cars = { new Car("pobi"), new Car("woni"), new Car("sh") };
+        Car[] cars = {new Car("pobi"), new Car("woni"), new Car("sh")};
         cars[0].dashCount = 3; // pobi
         cars[1].dashCount = 7; // woni
         cars[2].dashCount = 7; // sh
