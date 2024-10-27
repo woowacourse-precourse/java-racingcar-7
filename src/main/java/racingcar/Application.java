@@ -41,6 +41,12 @@ public class Application {
             throw new IllegalArgumentException("자동차 이름은 빈 값이 될 수 없습니다.");
         }
 
+        for (String n : catList) {
+            if (n.length() > 5) {
+                throw new IllegalArgumentException("5자 이하의 이름을 입력해주세요.");
+            }
+        }
+
         return catList;
     }
 
