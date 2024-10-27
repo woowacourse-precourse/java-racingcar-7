@@ -6,7 +6,10 @@ import static racingcar.View.constant.OutputMessage.START_MESSAGE;
 import java.util.List;
 import racingcar.View.InputView;
 import racingcar.View.OutputView;
+import racingcar.domain.Car;
+import racingcar.domain.CarImpl;
 import racingcar.domain.Parser;
+import racingcar.domain.ScoreBoard;
 
 public class Controller {
     private final InputView inputView = new InputView();
@@ -19,8 +22,10 @@ public class Controller {
 
         outputView.printMessage(START_COUNT);
         int tryCount = getTryCount();
-    }
 
+        List<Car> carList = getCarList(carNames);
+        ScoreBoard scoreBoard = ScoreBoard.from(carList);
+    }
 
     public List<String> getCarNames() {
         return parser.parse(inputView.inputString());
@@ -28,5 +33,11 @@ public class Controller {
 
     public int getTryCount() {
         return parser.parseInt(inputView.inputString());
+    }
+
+    public List<Car> getCarList(List<String> carNames) {
+        return carNames.stream()
+                .map(CarImpl::from)
+                .toList();
     }
 }
