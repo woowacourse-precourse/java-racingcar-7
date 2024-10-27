@@ -47,7 +47,7 @@ public class RacingController {
             return;
         }
         attemptCount.decreaseCount();
-        cars.move(randomValueGenerator);
+        cars.moveEachRandomly(randomValueGenerator);
         outputView.printExecutionResult(cars.getExecutionResult());
         repeatMovesUntilAttemptExhausted(attemptCount, cars);
     }

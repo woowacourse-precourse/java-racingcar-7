@@ -40,7 +40,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void move(ValueGenerator valueGenerator) {
+    public void moveEachRandomly(ValueGenerator valueGenerator) {
         cars.stream()
                 .filter(car -> valueGenerator.getValue() >= 4)
                 .forEach(Car::increasePosition);

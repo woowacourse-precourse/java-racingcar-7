@@ -35,7 +35,7 @@ class CarsTest {
         Cars cars = Cars.valueOf(input);
 
         ValueGenerator moveGenerator = () -> 4;
-        cars.move(moveGenerator);
+        cars.moveEachRandomly(moveGenerator);
 
         assertThat(cars.getExecutionResult()).isEqualTo(List.of("pobi : -"));
     }
@@ -46,7 +46,7 @@ class CarsTest {
         Cars cars = Cars.valueOf(input);
 
         ValueGenerator stayGenerator = () -> 3;
-        cars.move(stayGenerator);
+        cars.moveEachRandomly(stayGenerator);
 
         assertThat(cars.getExecutionResult()).isEqualTo(List.of("pobi : "));
     }
