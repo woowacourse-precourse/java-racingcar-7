@@ -78,3 +78,33 @@
   
 ##### constant package
 	[X] ConstantHandler -> Constants
+  
+* * *
+  
+### 완성한 프로그램 구성  
+
+```
+  \---java
+    +---racingcar
+    |       Application.java
+    |       GameManager.java
+    |       InputManager.java
+    |       RacingCar.java
+    |       RacingCarFactory.java
+    |       OutputManager.java
+    |
+    +---utils
+    |       ContentParser.java
+    |       LetterCounter.java
+    |       PlayerMoving.java
+    |
+    +---inspector
+    |       InspectName.java
+    |       InspectRaceResult.java
+    |
+    +---constant
+    |       Constants.java
+    |
+    \---exceptor
+            Validator.java
+```
