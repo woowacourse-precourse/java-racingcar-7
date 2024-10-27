@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.front.exception.DuplicatedCarNamesException;
 import racingcar.front.exception.InvalidCarNameInputException;
 
 class CommaDelimiterParserTest {
@@ -44,5 +45,27 @@ class CommaDelimiterParserTest {
         //then
         assertThatThrownBy(() -> CommaDelimiterParser.parse(delimitedName)).isInstanceOf(
                 InvalidCarNameInputException.class);
+    }
+
+    @Test
+    @DisplayName("차 이름으로 공백이 들어왔을 때 예외 처리")
+    void 문자열_파싱_예외_테스트4() {
+        //given
+        String delimitedName = "kag ,lee,choi";
+        //when
+        //then
+        assertThatThrownBy(() -> CommaDelimiterParser.parse(delimitedName)).isInstanceOf(
+                InvalidCarNameInputException.class);
+    }
+
+    @Test
+    @DisplayName("중복된 차 이름이 들어왔을 때 예외 처리")
+    void 문자열_파싱_예외_테스트5() {
+        //given
+        String delimitedName = "lee,lee,choi";
+        //when
+        //then
+        assertThatThrownBy(() -> CommaDelimiterParser.parse(delimitedName)).isInstanceOf(
+                DuplicatedCarNamesException.class);
     }
 }
