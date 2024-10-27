@@ -7,7 +7,7 @@ import racingcar.model.number.RandomNumberGenerator;
 public class Racing {
     private final Cars cars;
 
-    public Racing(Cars cars) {
+    public Racing(final Cars cars) {
         this.cars = cars;
     }
 

@@ -27,14 +27,14 @@ public class Car {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Car car = (Car) o;
+        final Car car = (Car) o;
         return Objects.equals(name, car.name);
     }
 
