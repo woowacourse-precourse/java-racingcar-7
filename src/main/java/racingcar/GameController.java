@@ -5,16 +5,8 @@ import java.util.List;
 
 public class GameController {
 
-    public List<Car> mapToCarArray(String[] cars) {
-        List<Car> carList = new ArrayList<>();
-        for (String car : cars) {
-            carList.add(new Car(car));
-        }
-        return carList;
-    }
+    public void moveCars(List<Car> cars, int attemptNumber, PrintResult printResult) {
 
-    public void moveCars(List<Car> cars, int attemptNumber) {
-        PrintResult printResult = new PrintResult();
         for (int i = 0; i < attemptNumber; i++) {
             for (Car car : cars) {
                 car.move();
@@ -25,7 +17,7 @@ public class GameController {
     }
 
     public int maxWinNumber(List<Car> cars) {
-        int maxNumber = cars.get(0).getForwardCount();
+        int maxNumber = cars.getFirst().getForwardCount();
         for (Car car : cars) {
             if (car.getForwardCount() > maxNumber) {
                 maxNumber = car.getForwardCount();
@@ -34,9 +26,7 @@ public class GameController {
         return maxNumber;
     }
 
-    public void maxCarName(List<Car> cars) {
-        PrintResult printResult = new PrintResult();
-
+    public List<String> maxCarName(List<Car> cars) {
         int maxWinNumber = maxWinNumber(cars);
 
         List<String> maxCarName = new ArrayList<>();
@@ -45,6 +35,6 @@ public class GameController {
                 maxCarName.add(car.getCarName());
             }
         }
-        printResult.printWinner(maxCarName);
+        return maxCarName;
     }
 }

@@ -8,6 +8,7 @@ public class Application {
         InputHandler inputHandler = new InputHandler();
         InputParser inputParser = new InputParser();
         GameController gameController = new GameController();
+        PrintResult printResult = new PrintResult();
 
         String inputCarName = inputHandler.inputCarName();
         List<Car> car = inputParser.parseCarName(inputCarName);
@@ -17,9 +18,10 @@ public class Application {
             int attemptNumber = inputParser.parseAttemptNumber(inputAttemptNumber);
 
             System.out.println("\n실행 결과");
-            gameController.moveCars(car, attemptNumber);
+            gameController.moveCars(car, attemptNumber, printResult);
         }
 
-        gameController.maxCarName(car);
+        List<String> winner = gameController.maxCarName(car);
+        printResult.printWinner(winner);
     }
 }
