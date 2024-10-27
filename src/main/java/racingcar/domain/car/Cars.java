@@ -26,7 +26,7 @@ public class Cars {
         sortByDistanceHigh();
         Car winner = this.cars.getFirst();
         for (Car car : this.cars) {
-            addWinners(car, winner, winners);
+            determineWinner(car, winner, winners);
         }
 
         return winners;
@@ -36,7 +36,7 @@ public class Cars {
         this.cars.sort((o1, o2) -> o2.getDistance() - o1.getDistance());
     }
 
-    private void addWinners(Car car, Car winner, List<String> winners) {
+    private void determineWinner(Car car, Car winner, List<String> winners) {
         if (car.getDistance() == winner.getDistance()) {
             winners.add(car.getName());
         }
