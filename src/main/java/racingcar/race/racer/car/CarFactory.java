@@ -9,8 +9,7 @@ import java.util.List;
 public class CarFactory implements RacerFactory<Car> {
 
     @Override
-    public List<Car> createRacers() {
-        String[] names = new CarInputHandler().inputRacerNames();
+    public List<Car> createRacers(String[] names) {
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
             cars.add(new Car(name));
