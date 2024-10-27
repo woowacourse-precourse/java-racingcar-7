@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.model.Cars;
 import racingcar.model.RaceRound;
 import racingcar.model.RacingGame;
@@ -23,7 +24,7 @@ public class RacingGameController {
             String roundsForString = InputView.getNumberOfRounds();
             RoundValidator.isValid(roundsForString);
 
-            RaceRound rounds = new RaceRound(roundsForString);
+            RaceRound rounds = new RaceRound(Integer.parseInt(roundsForString), cars);
 
             roundStart(cars, rounds);
         } catch (IllegalArgumentException exception) {
@@ -40,5 +41,9 @@ public class RacingGameController {
         racingGame.RoundsStart();
 
         //TODO : 게임 완료 후 진행상황 및 결과 출력
+        List<RaceRound> gameResult = racingGame.getGameResult();
+        gameResult.forEach(round -> {
+            OutputView.roundResult(round.toStringRoundResult());
+        });
     }
 }

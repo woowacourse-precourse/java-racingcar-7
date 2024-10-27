@@ -3,9 +3,9 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
-    private String name;
+    private final String name;
     private Distance distance;
-    private int order;
+    private final int order;
 
     public Car(String name, int order){
         this.name = name;
