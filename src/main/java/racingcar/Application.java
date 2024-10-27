@@ -13,14 +13,7 @@ public class Application {
         String[] carList = inputProcess.splitName(carNames);
         inputProcess.checkName(carList);
 
-        int[] winnerCount = new int[carList.length];
-        Racing racing = new Racing();
-        Winner winner = new Winner();
-        for (int i = 0; i < number; i++) {
-            int[] racingResult = racing.racing(carList, number);
-            winner.checkWinner(racingResult, winnerCount);
-        }
-        System.out.print("최종 우승자 : ");
-        winner.printFinalWinner(carList, winnerCount);
+        RacingCar racingGame = new RacingCar(carList, number);
+        racingGame.start();
     }
 }
