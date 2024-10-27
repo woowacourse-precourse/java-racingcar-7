@@ -7,6 +7,9 @@ public class RacingCars {
     private final List<RacingCar> racingCars;
 
     public RacingCars(List<RacingCar> racingCars) {
+        if (racingCars == null) {
+            throw new IllegalArgumentException("자동차 리스트는 null 일 수 없습니다.");
+        }
         this.racingCars = racingCars;
     }
 

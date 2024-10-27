@@ -25,4 +25,11 @@ class RacingCarsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("자동차 리스트는 NULL이 될 수 없다.")
+    public void cannotCreateRacingCarListWithNull() {
+        assertThatThrownBy(() -> new RacingCars(null))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
