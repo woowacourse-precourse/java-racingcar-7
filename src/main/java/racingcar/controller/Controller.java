@@ -32,6 +32,7 @@ public class Controller {
             announceOfWinners(cars);
         } catch (IllegalArgumentException error) {
             outputView.printErrorMessage(error);
+            throw (error);
         }
     }
 
