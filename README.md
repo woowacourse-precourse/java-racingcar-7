@@ -296,6 +296,51 @@ flowchart LR
 2. 테스트시 가짜 전략으로 대체 가능
 3. 이동 로직의 변경이 다른 코드에 영향을 주지 않음
 
+#### 테스트를 위한 전략 구현체
+
+테스트의 용이성과 예측 가능성을 높이기 위해 다음과 같은 테스트용 전략들을 구현하였습니다:
+
+1. `AlwaysMovingStrategy`
+
+- 항상 전진하는 전략
+- 모든 차가 매 라운드 이동하는 경우 테스트
+- 최대 이동거리 테스트에 활용
+
+2. `NeverMovingStrategy`
+
+- 절대 전진하지 않는 전략
+- 모든 차가 정지된 상태 테스트
+- 초기 상태 유지 검증에 활용
+
+3. `SequentialMovingStrategy`
+
+- 미리 정의된 순서대로 이동을 결정하는 전략
+- 생성 시점에 지정된 boolean 배열에 따라 이동
+- 복잡한 이동 패턴 테스트 가능
+- 배열 범위 초과 시 예외 발생
+
+이러한 테스트 전략들을 통해:
+
+- 예측 가능한 상황에서의 동작 검증
+- 경계 조건 테스트
+- 다양한 시나리오 재현
+- 랜덤성 제거로 인한 테스트 안정성 확보
+
+가 가능해졌습니다.
+
+사용 예시:
+
+```
+// 항상 이동
+car.attemptMove(new AlwaysMovingStrategy ());
+
+// 절대 이동하지 않음
+car.attemptMove(new NeverMovingStrategy ());
+
+// 지정된 패턴으로 이동 (true, false, true 순서로 이동)
+car.attemptMove(SequentialMovingStrategy.sequence(true, false, true));
+```
+
 ### 4️⃣ 기록 관리와 스냅샷 패턴
 
 게임의 진행 상황을 추적하기 위해 `RaceHistory`라는 일급 컬렉션과 `CarsPositionSnapshot` 값 객체를 활용했습니다. 각 라운드의 상태는 스냅샷으로 저장되어 불변성을 보장하며, 이는 게임
@@ -342,16 +387,46 @@ List 인터페이스를 확장하여 추가 기능을 제공하는 데코레이�
 
 프로젝트의 코드 품질을 보장하기 위해 자체 아키텍처 테스트 프레임워크를 구현했습니다:
 
-1. **CodeStyleAnalyzer**
-    - 들여쓰기 깊이 검사 (최대 2)
-    - 삼항 연산자 사용 감지
-    - 메서드 길이 제한 (최대 15줄)
+#### CodeStyleAnalyzer 구현
 
-2. **빌더 패턴 활용**
+코드 스타일을 자동으로 검사하는 분석기를 구현하여 일관된 코드 품질을 유지합니다.
+
+1. **검사 항목**
+
+- 들여쓰기 깊이 제한 (최대 2)
+    - if, for, while 등의 제어문 중첩 깊이 검사
+    - 과도한 중첩으로 인한 복잡도 증가 방지
+- 삼항 연산자 사용 감지
+    - 가독성을 해치는 삼항 연산자 사용 방지
+    - 명시적인 if-else 구문 사용 유도
+- 메서드 길이 제한 (최대 15줄)
+    - 메서드의 단일 책임 원칙 준수 유도
+    - 유지보수성 향상을 위한 적절한 크기 제한
+
+2. **빌더 패턴을 활용한 유연한 설정**
 
 ```java
+// 개별 검사 설정
 CodeStyleAnalyzer analyzer = new CodeStyleAnalyzer()
-        .checkIndentDepth(2)
-        .checkTernaryOperator()
-        .checkMethodSize(15);
+                .checkIndentDepth(2)        // 들여쓰기 깊이 검사
+                .checkTernaryOperator()     // 삼항 연산자 검사
+                .checkMethodSize(15);       // 메서드 길이 검사
+
+// 또는 모든 검사 활성화
+CodeStyleAnalyzer analyzer = new CodeStyleAnalyzer().checkAll();
+```
+
+#### 실제 코드베이스 검증 (CodeStyleTest)
+
+프로젝트 전체 코드에 대한 스타일 검증
+
+```java
+
+@Test
+void 메서드는_15_줄을_초과하지_않아야_한다() throws IOException {
+    CodeStyleAnalyzer analyzer = new CodeStyleAnalyzer()
+            .checkMethodSize(15);
+    List<CodeViolation> violations = analyzer.analyzeDirectory(BASE_PATH);
+    assertThat(violations).isEmpty();
+}
 ```
