@@ -27,4 +27,9 @@ public class RacingCarRepository implements CarRepository {
     public List<Car> findAll() {
         return new ArrayList<>(repository.values());
     }
+
+    @Override
+    public void clear() {
+        repository.clear();
+    }
 }

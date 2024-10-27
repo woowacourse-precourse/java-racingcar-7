@@ -8,4 +8,6 @@ public interface CarRepository {
     void save(Car car);
 
     List<Car> findAll();
+
+    void clear();
 }
