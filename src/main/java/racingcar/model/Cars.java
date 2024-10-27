@@ -8,7 +8,7 @@ public class Cars {
     private static final int DEFAULT_POSITION = 0;
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
     }
 
