@@ -12,9 +12,9 @@ public class Racing {
         this.cars = new ArrayList<>(cars);
     }
 
-    public List<Car> move() {
+    public List<Car> move(final int score) {
         for (Car car : cars) {
-            car.go(1);
+            car.go(score);
         }
         return Collections.unmodifiableList(cars);
     }

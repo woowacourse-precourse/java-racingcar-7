@@ -49,7 +49,7 @@ public class RacingCarService {
         final List<RacingCarResult> racingCarResult = new ArrayList<>();
         final int value = count.getValue();
         for (int turn = 0; turn < value; turn++) {
-            final List<Car> cars = racing.move();
+            final List<Car> cars = racing.move(Rule.FORWARD_SCORE);
             racingCarResult.add(RacingCarResult.of(mapToRacingCarProgresses(cars)));
         }
         return racingCarResult;
@@ -69,7 +69,7 @@ public class RacingCarService {
 
     private Car createCar(final String value) {
         final CarName carName = CarName.of(value, stringValidator);
-        return new Car(carName, new Score(0), numberGenerator);
+        return new Car(carName, new Score(Rule.INITIAL_SCORE), numberGenerator);
     }
 
     private List<String> parseToList(final String values) {

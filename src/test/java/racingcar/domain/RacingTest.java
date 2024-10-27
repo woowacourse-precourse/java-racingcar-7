@@ -39,7 +39,7 @@ class RacingTest {
         final Racing racing = new Racing(List.of(car1, car2));
 
         //when
-        final List<Car> cars = racing.move();
+        final List<Car> cars = racing.move(1);
 
         //then
         assertAll(
