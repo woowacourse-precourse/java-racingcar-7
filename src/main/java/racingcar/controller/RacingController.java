@@ -24,6 +24,7 @@ public class RacingController {
 		Attempt attempt = inputAttempt();
 		List<Car> cars = registerCars(carNames);
 		Race race = Race.from(attempt, cars);
+		race.canProgress();
 	}
 
 	private CarNames inputCarName() {

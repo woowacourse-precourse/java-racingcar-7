@@ -40,4 +40,15 @@ public class Attempt {
 		}
 	}
 
+	public boolean isRemained() {
+		if (value >= MIN_ATTEMPT_COUNT) {
+			decrementAttempts();
+			return true;
+		}
+		return false;
+	}
+
+	private void decrementAttempts() {
+		value--;
+	}
 }
