@@ -19,3 +19,13 @@ public class Car {
         return position;
     }
 
+    public void move() {
+        if (isForward()) {
+            position++;
+        }
+    }
+
+    private boolean isForward() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
