@@ -24,7 +24,8 @@ public class Names {
     }
 
     public List<Name> initializeNames(String input) {
-        validate(input);
+        validateEmptyString(input);
+        validateConsecutiveComma(input);
 
         List<String> splitNameList = List.of(input.split(COMMA));
         List<Name> nameList = new ArrayList<>();
@@ -38,21 +39,28 @@ public class Names {
         return nameList;
     }
 
-    private static void validate(String input) {
+    private void validateEmptyString(String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException(INPUT_IS_EMPTY_MESSAGE);
         }
+    }
+
+    private void validateConsecutiveComma(String input) {
         if (input.contains(CONSECUTIVE_COMMAS)) {
             throw new IllegalArgumentException(CAN_BE_NO_CONSECUTIVE_COMMAS_MESSAGE);
+        }
+    }
+
+    private void validateDuplicatedName(List<Name> nameList, Name name) {
+        if (nameList.contains(name)) {
+            throw new IllegalArgumentException(INPUT_CANT_HAVE_DUPLICATED_NAME_MESSAGE);
         }
     }
 
     private void append(List<Name> nameList, String nameString) {
         Name name = new Name(nameString);
 
-        if (nameList.contains(name)) {
-            throw new IllegalArgumentException(INPUT_CANT_HAVE_DUPLICATED_NAME_MESSAGE);
-        }
+        validateDuplicatedName(nameList, name);
 
         nameList.add(name);
     }
