@@ -14,10 +14,16 @@ public class Application {
         List<Car> cars = getCars(names);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        try{
-            int repeat = Integer.parseInt(readLine());
+        int repeat;
+        try {
+            repeat = Integer.parseInt(readLine());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < repeat; i++) {
+            race(cars);
+            printCurrentStatus(cars);
         }
 
     }
@@ -49,4 +55,6 @@ public class Application {
         }
         System.out.println();
     }
+
+
 }
