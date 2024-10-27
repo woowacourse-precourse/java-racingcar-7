@@ -43,7 +43,6 @@ public class CarRacingController {
         validator.isValidName(names);
 
         for(String name: names) carList.add(new Car(name));
-
     }
 
     public void inputCount(){ //시행할 홧수 입력
