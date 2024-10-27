@@ -2,8 +2,6 @@ package racingcar.model;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
-import java.io.Serializable;
-
 public class Car {
     private String name;
     private int position;
@@ -17,21 +15,22 @@ public class Car {
         return new Car(name);
     }
 
-    static int randomNumberGenerator() {
+    public static int randomNumberGenerator() {
         int randomNumber = pickNumberInRange(0, 9);
         return randomNumber;
     }
 
     public void move(int i) {
         if (i >= 4) {
-            // 전진
             position += 1;
-        } else {
-            return;
         }
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }
