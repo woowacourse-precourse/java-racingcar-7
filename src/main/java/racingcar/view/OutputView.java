@@ -1,19 +1,17 @@
 package racingcar.view;
 
-import racingcar.user.SettingGameUser;
-import racingcar.user.UserObject;
-
 public class OutputView {
-    public static void printTurnResult() {
-        for (UserObject user : SettingGameUser.user) {
-            System.out.println(user.name + ":" + user.score);
-        }
-        System.out.println("");
+    public static void printTurnResult(String name, String score) {
+        System.out.println(name + " : " + score);
     }
 
     public static void printResultSentence() {
         System.out.println("");
         System.out.println("실행 결과");
+    }
+
+    public static void printEmpty() {
+        System.out.println("");
     }
 
     public static void printWinnerSentence() {
