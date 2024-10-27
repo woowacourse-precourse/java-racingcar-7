@@ -20,7 +20,7 @@ public class RacingResult {
 
     public List<String> findWinner() {
         return racingRecords.stream()
-                .filter(racingCar -> racingCar.getDistance() == maxDistance)
+                .filter(racingCar -> racingCar.getDistance() == maxDistance.intValue())
                 .map(RacingCar::getName)
                 .toList();
     }
