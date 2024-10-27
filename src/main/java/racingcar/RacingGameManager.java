@@ -5,9 +5,9 @@ import java.util.List;
 
 public class RacingGameManager {
     private final CarManager carManager;
-    private final ConsoleIO console;
+    private final ConsoleIo console;
 
-    public RacingGameManager(CarManager carManager, ConsoleIO console) {
+    public RacingGameManager(CarManager carManager, ConsoleIo console) {
         this.carManager = carManager;
         this.console = console;
     }
