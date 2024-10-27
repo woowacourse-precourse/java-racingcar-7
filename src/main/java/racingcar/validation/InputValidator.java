@@ -23,5 +23,10 @@ public class InputValidator {
             }
         }
     }
-    
+
+    public static void validateTime(int inputTime) {
+        if (inputTime < 0) {
+            throw new IllegalArgumentException("시도 횟수는 0 이상의 정수여야 합니다.");
+        }
+    }
 }
