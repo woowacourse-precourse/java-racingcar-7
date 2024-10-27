@@ -4,11 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 import static racingcar.message.ErrorMessage.INVALID_NUMBER_ERROR;
 import static racingcar.message.ErrorMessage.NEGATIVE_NUMBER_ERROR;
+import static racingcar.message.InfoMessage.REQUEST_NUMBER_MESSAGE;
 import static racingcar.utils.ExceptionUtils.throwException;
 
 public class NumberRequestHandler {
     public int getNumber() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(REQUEST_NUMBER_MESSAGE.getMessage());
         String inputString = Console.readLine();
         int rawNumber = convertToInteger(inputString);
         validateNegative(rawNumber);

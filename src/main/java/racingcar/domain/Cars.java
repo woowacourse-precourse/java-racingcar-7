@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static racingcar.message.InfoMessage.STATUS_NOTIFICATION_MESSAGE;
+
 public class Cars {
     private List<Car> cars;
 
@@ -18,7 +20,7 @@ public class Cars {
     }
 
     public void racing(int moveNum) {
-        System.out.println("\n실행결과");
+        System.out.println(STATUS_NOTIFICATION_MESSAGE.getMessage());
         IntStream.range(0, moveNum)
                 .forEach(i -> {
                     cars.forEach(Car::moveOrStop);

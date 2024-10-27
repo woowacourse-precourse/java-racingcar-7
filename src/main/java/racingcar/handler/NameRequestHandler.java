@@ -5,12 +5,13 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
 import static racingcar.message.ErrorMessage.*;
+import static racingcar.message.InfoMessage.REQUEST_NAMES_MESSAGE;
 import static racingcar.utils.ExceptionUtils.throwException;
 
 public class NameRequestHandler {
 
     public String[] getNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(REQUEST_NAMES_MESSAGE.getMessage());
         String rawInput = Console.readLine();
         return validateInput(rawInput);
     }
