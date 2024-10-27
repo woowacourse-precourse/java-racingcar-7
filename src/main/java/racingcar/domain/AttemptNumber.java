@@ -16,6 +16,10 @@ public class AttemptNumber {
         return new AttemptNumber(attemptNumber);
     }
 
+    public int getAttemptNumber() {
+        return attemptNumber;
+    }
+
     private static int stringToInt(String input) {
         try {
             return Integer.parseInt(input);
