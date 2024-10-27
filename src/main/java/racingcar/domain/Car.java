@@ -31,6 +31,10 @@ public class Car {
         return name;
     }
 
+    public int getMoveCount() {
+        return moveCount;
+    }
+
     private boolean isNameEmpty(String name) {
         return name == null || name.isBlank();
     }

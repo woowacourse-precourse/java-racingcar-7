@@ -24,6 +24,13 @@ public class Cars {
         }
     }
 
+    @Override
+    public String toString() {
+        return cars.stream()
+                .map(car -> car.getName() + " : " + "-".repeat(Math.max(0, car.getMoveCount())) + "\n")
+                .collect(Collectors.joining());
+    }
+
     private boolean hasDuplicateCarNames(List<Car> cars) {
         Set<String> carUniqueNames = cars.stream().map(Car::getName).collect(Collectors.toSet());
         return carUniqueNames.size() != cars.size();
