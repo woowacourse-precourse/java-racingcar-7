@@ -56,7 +56,7 @@ class ApplicationTest extends NsTest {
     void 입력값을_받고_MoveCount로_설정_테스트() {
         int testMoveCount = 5;
 
-        moveCountInput.getInput(testMoveCount);
+        moveCountInput.setInput(testMoveCount);
 
         assertEquals(testMoveCount, moveCountInput.getMoveCount(),
             "The move count should match the input value.");
