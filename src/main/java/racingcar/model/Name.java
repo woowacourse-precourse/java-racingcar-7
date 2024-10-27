@@ -9,6 +9,7 @@ public class Name {
 
     public Name(final String value) {
         validateNameLength(value);
+        validateBlank(value);
         this.value = value;
     }
 
@@ -32,6 +33,12 @@ public class Name {
     private void validateNameLength(final String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH_OUT_OF_RANGE.getMessage());
+        }
+    }
+
+    private void validateBlank(String value) {
+        if (value.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.NAME_INAPPROPRIATE.getMessage());
         }
     }
 }

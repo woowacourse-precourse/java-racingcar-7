@@ -13,4 +13,11 @@ class NameTest {
                 .hasMessage("자동차의 이름은 5자 이하여야 합니다.");
     }
 
+    @Test
+    @DisplayName("이름이 공백으로만 이루어져 있으면 예외를 발생한다.")
+    void validateBlank() {
+        Assertions.assertThatThrownBy(() -> new Name("  "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차의 이름은 공백이 될 수 없습니다.");
+    }
 }
