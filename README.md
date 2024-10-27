@@ -34,7 +34,7 @@
 ## RacingCarController
 
 -[X] InputView에서 이름, 시도 횟수 입력 받기
--[ ] RacingCars 생성
+-[X] 입력 재가공 후 RacingCars 생성
 -[ ] RacingCars를 통해 시도 횟수만큼 시도
     - OutputView에서 실행 결과 출력
     - OutputView에서 차수별 실행 결과 출력
