@@ -55,7 +55,7 @@ class ApplicationTest extends NsTest {
     @ValueSource(strings = {"-1", "0", "", " "})
     void Lap_입력_포맷_예외_테스트(String lap) {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("abc,zwd", lap))
+                assertThatThrownBy(() -> runException("car3,car4", lap))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() ->
                         assertRandomNumberInRangeTest(
-                                () -> run("pobi,woni", "1"),
+                                () -> run("car1,car2", "1"),
                                 STOP, STOP
                         )
                 ).isInstanceOf(IllegalArgumentException.class)
