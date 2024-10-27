@@ -47,10 +47,10 @@ public class RacingGame {
     }
 
     private void afterGame() {
-        //Todo: 각 자동차별 최종 거리를 이용하여, 1등 거리 구하기
-        //Todo: 1등 거리에 해당하는 자동차 이름을 winners 배열에 저장
-        //Todo: winners 배열을 통해 우승자 출력하기
-        //Todo: 한 가지 기능을 하는 함수로 나누기
+
+        int winScore = getWinScore();
+        selectWinner(winScore);
+        printWinners();
     }
 
 
@@ -157,5 +157,34 @@ public class RacingGame {
         }
 
         System.out.println();
+    }
+
+    /// 우승점수 계산
+    private int getWinScore(){
+        int winScore = 0;
+
+        for(Car car : cars){
+            if(winScore < car.getDistance()){
+                winScore = car.getDistance();
+            }
+        }
+
+        return winScore;
+    }
+
+    ///점수가 가장 많은 자동차를 Winners 배열에 저장
+    private void selectWinner(int winScore){
+
+        for(Car car : cars){
+            if(car.getDistance() == winScore){
+                winners.add(car.getCarName());
+            }
+        }
+    }
+
+    /// 우승자 목록 출력
+    private  void printWinners(){
+        String result = String.join(",", winners);
+        System.out.println(result);
     }
 }
