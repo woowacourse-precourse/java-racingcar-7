@@ -17,4 +17,16 @@ public class Position {
     public String toString() {
         return this.value;
     }
+
+    public int getLength() {
+        return this.value.length();
+    }
+
+    public boolean isMoreFar(Position position) {
+        return this.value.length() > position.value.length();
+    }
+
+    public boolean isSame(Position position) {
+        return this.value.length() == position.value.length();
+    }
 }

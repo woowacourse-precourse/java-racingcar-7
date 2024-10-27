@@ -4,39 +4,43 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Name;
+import racingcar.domain.Names;
 
-public class UserInputManager {
-    private int repeat;
-    private List<String> carNameList;
+public class UserInputService {
 
-    public UserInputManager() {
-        this.repeat = 0;
-        this.carNameList = new ArrayList<>();
+    public UserInputService() {
     }
 
     public void close() {
         Console.close();
     }
 
-    public List<Car> createCar() {
+    public Cars createCar() {
+        Names names = createNames();
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < names.size(); i++) {
+            Name name = names.getNames().get(i);
+            Car car = new Car(name);
+            cars.add(car);
+        }
+
+        return new Cars(cars);
+    }
+
+    private Names createNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         String carNameLine = Console.readLine();
         String[] carNames = carNameLine.split(",");
+
+        List<Name> nameList = new ArrayList<>();
         for (String carName : carNames) {
-            carNameValidate(carName);
-            this.carNameList.add(carName);
+            nameList.add(new Name(carName));
         }
 
-        return this.carNameList.stream()
-                .map(Car::new)
-                .toList();
-    }
-
-    private void carNameValidate(String carName) {
-        if (carNameList.contains(carName)) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-        }
+        return new Names(nameList);
     }
 
     public int createRepeat() {
@@ -44,9 +48,8 @@ public class UserInputManager {
 
         String userInput = Console.readLine();
         repeatValidate(userInput);
-        this.repeat = Integer.parseInt(userInput);
 
-        return this.repeat;
+        return Integer.parseInt(userInput);
     }
 
     private void repeatValidate(String userInput) {
@@ -58,4 +61,5 @@ public class UserInputManager {
             throw new IllegalArgumentException("입력 값이 10만 미만이어야합니다.");
         }
     }
+
 }

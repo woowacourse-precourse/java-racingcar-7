@@ -1,11 +1,11 @@
 package racingcar.domain;
 
 public class Car {
-    private Name name;
-    private Position position;
+    private final Name name;
+    private final Position position;
 
-    public Car(String name) {
-        this.name = new Name(name);
+    public Car(Name name) {
+        this.name = name;
         this.position = new Position();
     }
 
@@ -13,8 +13,20 @@ public class Car {
         this.position.add(distance);
     }
 
+    public String getName() {
+        return this.name.toString();
+    }
+
     @Override
     public String toString() {
         return this.name + " : " + this.position;
+    }
+
+    public boolean isMoreFar(Car car) {
+        return this.position.isMoreFar(car.position);
+    }
+
+    public boolean isSamePosition(Car car) {
+        return this.position.isSame(car.position);
     }
 }

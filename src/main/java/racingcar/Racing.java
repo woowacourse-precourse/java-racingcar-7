@@ -1,21 +1,15 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class Racing {
-    private List<Car> carList;
-    private int repeat;
+    private final Cars cars;
+    private final int repeat;
 
-    public Racing() {
-        this.carList = new ArrayList<>();
-        this.repeat = 0;
-    }
-
-    public void setting(List<Car> carList, int repeat) {
-        this.carList = carList;
+    public Racing(Cars cars, int repeat) {
+        this.cars = cars;
         this.repeat = repeat;
     }
 
@@ -28,7 +22,7 @@ public class Racing {
     }
 
     private void race() {
-        for (Car car : this.carList) {
+        for (Car car : this.cars.getCars()) {
             int distance = canMove();
             car.forward(distance);
         }
@@ -43,11 +37,11 @@ public class Racing {
     }
 
     private void printStatus() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Car car : this.carList) {
-            stringBuilder.append(car);
-            stringBuilder.append("\n");
-        }
-        System.out.println(stringBuilder);
+        this.cars.printCar();
     }
+
+    public Cars getWinners() {
+        return this.cars.findFarthestCars();
+    }
+
 }
