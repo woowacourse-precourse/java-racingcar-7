@@ -16,8 +16,9 @@ public class RaceController {
 
     public void raceRun() {
         outputView.printCarNameInputPrompt();
-        String input = inputView.inputCarNames();
+        String input = inputView.getStrInput();
         List<String> carNameList = Utils.splitNames(input);
         outputView.printInputAttempsPrompt();
+        int attemptCount = Utils.inputToInt(inputView.getStrInput());
     }
 }
