@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         String input = Console.readLine();
         List<Car> cars = makeCars(input);
-        int step = setStep(Console.readLine());
+        int stage = setStage(Console.readLine());
     }
 
     public static List<Car> makeCars(String input) {
@@ -27,15 +27,15 @@ public class Application {
         return cars;
     }
 
-    public static int setStep(String input) {
+    public static int setStage(String input) {
         try {
-            int step = Integer.parseInt(input);
+            int stage = Integer.parseInt(input);
 
-            if (step < 1) {
+            if (stage < 1) {
                 throw new IllegalArgumentException();
             }
 
-            return step;
+            return stage;
 
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();

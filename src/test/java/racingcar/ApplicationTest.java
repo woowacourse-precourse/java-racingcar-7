@@ -50,12 +50,12 @@ class ApplicationTest extends NsTest {
         assertAll(
                 () -> {
                     assertThrows(IllegalArgumentException.class, () -> {
-                        Application.setStep("abc");
+                        Application.setStage("abc");
                     });
                 },
                 () -> {
                     assertThrows(IllegalArgumentException.class, () -> {
-                        Application.setStep("-5");
+                        Application.setStage("-5");
                     });
                 }
         );
