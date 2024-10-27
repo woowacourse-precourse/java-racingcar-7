@@ -2,14 +2,19 @@ package racingcar.service;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.repository.CarRepository;
+import racingcar.repository.RacingCarRepository;
 
 public class RacingCarService implements CarService {
 
-    private final CarRepository carRepository;
+    private final RacingCarRepository carRepository = RacingCarRepository.getInstance();
 
-    public RacingCarService(CarRepository carRepository) {
-        this.carRepository = carRepository;
+    private static final RacingCarService instance = new RacingCarService();
+
+    public static RacingCarService getInstance() {
+        return instance;
+    }
+
+    private RacingCarService() {
     }
 
     @Override

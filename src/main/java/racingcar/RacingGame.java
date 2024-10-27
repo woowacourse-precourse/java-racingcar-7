@@ -3,8 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.repository.CarRepository;
-import racingcar.repository.RacingCarRepository;
 import racingcar.service.CarService;
 import racingcar.service.RacingCarService;
 import racingcar.util.CarNameValidator;
@@ -14,8 +12,7 @@ import racingcar.util.RacingCarOutput;
 public class RacingGame {
 
     // Todo: 생성자로 초기하는게 좋은 것인가?
-    private final static CarRepository carRepository = new RacingCarRepository();
-    private final static CarService carService = new RacingCarService(carRepository);
+    private final CarService carService = RacingCarService.getInstance();
     private final static RacingCarInput racingCarInput = new RacingCarInput();
     private final static RacingCarOutput racingCarOutput = new RacingCarOutput();
 

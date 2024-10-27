@@ -9,6 +9,15 @@ public class RacingCarRepository implements CarRepository {
 
     private static ConcurrentHashMap<String, Car> repository = new ConcurrentHashMap<>();
 
+    private static final RacingCarRepository instance = new RacingCarRepository();
+
+    public static RacingCarRepository getInstance() {
+        return instance;
+    }
+
+    private RacingCarRepository() {
+    }
+
     @Override
     public void save(Car car) {
         repository.put(car.getName(), car);
