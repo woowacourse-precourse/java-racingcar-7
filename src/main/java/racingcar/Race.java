@@ -14,6 +14,7 @@ public class Race {
     public void playRacing() {
         for (int i = 0; i < moveCount; i++) {
             carsMove();
+            OutputView.outputRacingResult(cars);
         }
     }
 
