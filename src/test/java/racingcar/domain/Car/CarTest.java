@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 public class CarTest {
 
     @Test
-    void testCarCreationWithValidName() {
-
+    void 초기화_테스트() {
         // given & when
         Car car = new Car(new Name("pobi"));
 
@@ -19,8 +18,7 @@ public class CarTest {
     }
 
     @Test
-    void testCarCreationWithInvalidName() {
-
+    void 이름_예외_테스트() {
         // when & then
         assertThatThrownBy(() -> new Car(new Name("")))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -30,8 +28,7 @@ public class CarTest {
     }
 
     @Test
-    void testCarMovement() {
-
+    void 움직임_테스트() {
         // given
         Car car = new Car(new Name("pobi"));
 

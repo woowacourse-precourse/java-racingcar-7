@@ -1,7 +1,9 @@
 package racingcar.domain.Car;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +19,7 @@ class CarsTest {
     }
 
     @Test
-    void testValidateDuplicateName() {
+    void 중복_이름_예외_테스트() {
         // given
         String[] duplicateNames = {"pobi", "pobi"};
 
@@ -26,4 +28,24 @@ class CarsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 이동_테스트() {
+        // when
+        cars.moveForward();
+
+        // then
+        for (Car car : cars.getWinners()) {
+            assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);
+        }
+    }
+
+    @Test
+    void 우승자_반환_테스트() {
+        // given
+        cars.moveForward();
+        List<Car> winners = cars.getWinners();
+
+        // then
+        assertThat(winners).isNotEmpty();
+    }
 }
