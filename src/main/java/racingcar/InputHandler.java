@@ -17,4 +17,17 @@ public class InputHandler {
         }
         return carNames;
     }
+
+    public static int getRaceAttempts(String input) {
+        int attempts;
+        try {
+            attempts = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("이동 횟수는 숫자여야 합니다.");
+        }
+        if (attempts < 1) {
+            throw new IllegalArgumentException("이동 횟수는 1회 이상이어야 합니다.");
+        }
+        return attempts;
+    }
 }
