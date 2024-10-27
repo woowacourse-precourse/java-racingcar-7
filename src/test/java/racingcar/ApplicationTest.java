@@ -54,6 +54,18 @@ class ApplicationTest extends NsTest {
         RacingCar.outputEachTrial(inputTrial, cars);
     }
 
+    @Test
+    void 최종_우승자_출력() {
+        String inputCarNames = "박새결,김주아,조성민";
+        int inputTrial = 10;
+        String[] carNames = RacingCar.splitInputCarNames(inputCarNames);
+        RacingCar.checkInputCarNames(carNames);
+        Car cars[] = new Car[carNames.length];
+        RacingCar.saveCars(carNames, cars);
+        RacingCar.outputEachTrial(inputTrial, cars);
+        RacingCar.outputWinners(cars);
+    }
+
 
     @Test
     void 기능_테스트() {
