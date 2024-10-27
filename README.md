@@ -65,4 +65,5 @@
 - Car의 position도 독립된 클래스로 만들기 -> 효과 판단하기 **(Done)**
 - 자동차 이름 중복 체크하기 **(Done)**
 - CarNamesCreator에서 하는 일 CarFactory로 옮기기 **(Done)**
-- 이름 잘 짓기 리팩토링 진행
+- 이름 잘 짓기 리팩토링 진행 **(Done)**
+- 입/출력에 대한 테스트 진행 **(Done)**
