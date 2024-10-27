@@ -22,5 +22,14 @@ public class Application {
                 }
             }
         }
+
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .toList();
     }
 }
