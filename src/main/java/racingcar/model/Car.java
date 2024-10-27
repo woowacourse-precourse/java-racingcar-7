@@ -21,10 +21,6 @@ public class Car {
         return distance;
     }
 
-    public void setDistance(Distance distance) {
-        this.distance = distance;
-    }
-
     public int getRandomValue(){
         return Randoms.pickNumberInRange(0, 9);
     }
