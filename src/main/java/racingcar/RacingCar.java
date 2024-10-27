@@ -48,7 +48,11 @@ public class RacingCar {
 
     public void getTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        this.tryCount = Integer.parseInt(readLine());
+        try {
+            this.tryCount = Integer.parseInt(readLine());
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void makeRaceStatus() {
