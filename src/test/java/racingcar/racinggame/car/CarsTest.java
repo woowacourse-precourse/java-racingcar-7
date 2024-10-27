@@ -90,8 +90,40 @@ class CarsTest {
 			.hasMessage("랜덤 값과 자동차의 개수가 일치하지 않습니다.");
 	}
 
+	@DisplayName("우승 자동차의 이름을 조회할 수 있다")
 	@Test
 	void getWinners() {
+		// given
+		List<String> carNames = asList("aaa", "bbb", "ccc");
+		Cars cars = Cars.create(carNames);
+
+		List<Integer> randomValues = List.of(3, 4, 0);
+		cars.moveAll(randomValues);
+
+		// when
+		List<String> winners = cars.getWinners();
+
+		// then
+		assertThat(winners).hasSize(1)
+			.containsExactly("bbb");
+	}
+
+	@DisplayName("우승 자동차는 1명 이상일 수 있다")
+	@Test
+	void getWinnersWithCowinner() {
+		// given
+		List<String> carNames = asList("aaa", "bbb", "ccc");
+		Cars cars = Cars.create(carNames);
+
+		List<Integer> randomValues = List.of(3, 4, 9);
+		cars.moveAll(randomValues);
+
+		// when
+		List<String> winners = cars.getWinners();
+
+		// then
+		assertThat(winners).hasSize(2)
+			.containsExactly("bbb", "ccc");
 	}
 
 	@Test
