@@ -1,18 +1,16 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Racing {
-    private final List<Car> carList = new ArrayList<>();
+    private List<Car> carList;
 
-    public void addCar(Car car) {
-        this.carList.add(car);
-    }
-
-    public List<Car> getCarList() {
-        return this.carList;
+    public Racing(String cars) {
+        carList = Arrays.stream(cars.split(","))
+                .map(Car::new)
+                .toList();
     }
 
     public String race(int repeat) {
