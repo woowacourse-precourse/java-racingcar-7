@@ -11,4 +11,19 @@ public class InputView {
         System.out.println(INPUT_NAME_STRING);
         return Console.readLine();
     }
+
+    public String inputTimes() {
+        System.out.println(INPUT_TIMES_STRING);
+        String times = Console.readLine();
+        validateNumber(times);
+        return times;
+    }
+
+    public void validateNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("시도할 횟수는 정수여야 합니다.");
+        }
+    }
 }
