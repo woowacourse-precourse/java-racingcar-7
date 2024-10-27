@@ -6,7 +6,7 @@ public enum InfoMessage {
     STATUS_NOTIFICATION_MESSAGE("\n실행결과"),
     WINNER_NOTIFICATION_MESSAGE("최종 우승자 : ");
 
-    private String message;
+    private final String message;
 
     InfoMessage(String message){
         this.message = message;

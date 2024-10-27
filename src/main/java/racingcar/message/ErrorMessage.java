@@ -8,7 +8,7 @@ public enum ErrorMessage {
     INVALID_NUMBER_ERROR("[ERROR] 시도 횟수는 정수여야 합니다."),
     NEGATIVE_NUMBER_ERROR("[ERROR] 시도 횟수는 0 이상의 정수여야 합니다.");
 
-    private String message;
+    private final String message;
 
     ErrorMessage(String message){
         this.message = message;
