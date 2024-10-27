@@ -18,4 +18,8 @@ public class CarInfo {
             carList.put(carName, currentPosition + 1);
         }
     }
+
+    public HashMap<String, Integer> exportCarList() {
+        return carList;
+    }
 }
