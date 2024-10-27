@@ -22,6 +22,8 @@ public class Application {
 
         raceStart(count, carNames, carPositions);
 
+        printFinalWinners(carNames, carPositions);
+
 
     }
 
@@ -93,6 +95,41 @@ public class Application {
             System.out.println(carNames[i] + " : " + "-".repeat(carPositions[i]));
         }
         System.out.println();
+    }
+
+    private static void printFinalWinners(String[] carNames, int[] carPositions) {
+        int maxPosition = findMaxPosition(carPositions);
+        StringBuilder winners = getWinners(carNames, carPositions, maxPosition);
+
+        System.out.println("최종 우승자 : "+ winners);
+
+    }
+
+    private static int findMaxPosition(int[] carPositions) {
+        int maxPosition = 0;
+        for (int eachCarPosition : carPositions) {
+            if (eachCarPosition > maxPosition) {
+                maxPosition = eachCarPosition;
+            }
+        }
+        return maxPosition;
+    }
+
+    private static StringBuilder getWinners(String[] carNames, int[] carPositions, int maxPosition) {
+        StringBuilder winners = new StringBuilder();
+        for (int i = 0; i < carNames.length; i++) {
+            addWinnerIfMaxPosition(carNames, carPositions, maxPosition, winners, i);
+        }
+        return winners;
+    }
+
+    private static void addWinnerIfMaxPosition(String[] carNames, int[] carPositions, int maxPosition, StringBuilder winners, int indexNum) {
+        if (carPositions[indexNum] == maxPosition) {
+            if (winners.length() > 0) {
+                winners.append(", ");
+            }
+            winners.append(carNames[indexNum]);
+        }
     }
 
 }
