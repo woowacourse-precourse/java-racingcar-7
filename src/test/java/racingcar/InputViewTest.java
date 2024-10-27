@@ -81,11 +81,11 @@ class InputViewTest {
         Assertions.assertThatThrownBy(() -> {
                     inputView.enterCarNames();
                 }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("이름의 길이는 1글자 이상 5글자 이하만 가능합니다.");
+                .hasMessageContaining("중복된 자동차 이름이 있습니다.");
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"abcde,abcde,abc", "123,1,123"})
+    @ValueSource(strings = {"1", "999999"})
     void 경기_횟수_올바른_입력_테스트(String carNames) {
         // given
         String[] args = {carNames};
