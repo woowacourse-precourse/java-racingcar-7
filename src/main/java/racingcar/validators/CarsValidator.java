@@ -5,7 +5,6 @@ import racingcar.common.Languages;
 import racingcar.common.Ranges;
 
 public class CarsValidator {
-
     private final List<String> cars;
 
     public CarsValidator(List<String> cars) {
