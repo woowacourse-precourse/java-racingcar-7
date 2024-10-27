@@ -1,6 +1,8 @@
 package racingcar.domain;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
     private final int tryCount;
@@ -13,5 +15,11 @@ public class Game {
 
     public void run() {
         cars.forEach(Car::move);
+    }
+
+    public HashMap<String, Integer> getRoundResult() {
+        HashMap<String, Integer> result = new HashMap<>();
+        cars.forEach(car -> result.put(car.getName(), car.getPosition()));
+        return result;
     }
 }
