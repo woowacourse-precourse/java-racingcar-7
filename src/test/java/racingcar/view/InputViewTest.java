@@ -73,6 +73,23 @@ class InputViewTest {
         int moveCountResult = InputView.getMoveCount();
 
         // Then
-        assertThat(moveCountResult).isEqualTo(moveCount);
+        assertThat(moveCountResult).isEqualTo(Integer.valueOf(moveCount));
+    }
+
+
+    @ParameterizedTest
+    @CsvSource({
+            "001",  // 유효하지 않은 숫자 형태 correct: 1
+            "-1",   // 음수 입력 예외 케이스
+            "'\n'"  // 아무 것도 입력하지 않고 엔터 눌렀을 시
+    })
+    void testGetMoveCountException(String moveCount) {
+        // Given
+        this.command(moveCount);
+
+        // When & Then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                InputView::getMoveCount);
+        assertThat(exception.getMessage()).isEqualTo("이동 횟수 입력이 올바르지 않습니다.");
     }
 }
