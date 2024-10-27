@@ -1,6 +1,9 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.Model.Car;
 import racingcar.Service.CarService;
@@ -24,6 +27,10 @@ class ApplicationTest extends NsTest {
     CarService carService = new CarService();
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+    @AfterEach
+    void closeConsole() {
+        Console.close();
+    }
 
     @Test
     void 기능_테스트() {
@@ -35,13 +42,28 @@ class ApplicationTest extends NsTest {
             MOVING_FORWARD, STOP
         );
     }
-
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+    @Test
+    void 자동차_이름_입력_테스트() {
+        String input = "car1,car2,car3";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        String result = InputView.Car_names();
+        assertEquals("car1,car2,car3", result);
+    }
+    @Test
+    void 게임_횟수_입력_테스트() {
+        String input = "5";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        int result = InputView.Game_count();
+        assertEquals(5, result);
     }
     @Test
     void 자동차_이름_분리_테스트(){
@@ -83,12 +105,13 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 자동차_이름_5자_초과_테스트(){
-        String CarName="woniwoni";
+        String CarName="woniwoni,pin";
         ByteArrayInputStream CarNamein=new ByteArrayInputStream(CarName.getBytes());
         System.setIn(CarNamein);
         assertThrows(IllegalArgumentException.class,()->{
             InputView.Car_names();
         });
+        System.setIn(System.in);
     }
     @Test
     void 우승자_선정_테스트(){
