@@ -37,4 +37,12 @@ public class CarNameValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessageConstants.ERROR_CAR_NAME_TOO_LONG);
     }
+
+    @Test
+    void 자동차_이름_중복된_이름_예외_테스트() {
+        List<String> carNames = Arrays.asList("pobi", "woni", "pobi");
+        assertThatThrownBy(() -> CarNameValidator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessageConstants.ERROR_CAR_NAME_DUPLICATE);
+    }
 }
