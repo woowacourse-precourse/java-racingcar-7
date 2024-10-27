@@ -28,6 +28,8 @@ public class RacingCarController {
             String tryCountInput = inputView.getInput();
             String runResult = racingCarService.racingStart(tryCountInput);
             outputView.printRunResult(runResult);
+
+            outputView.printWinnerResult(racingCarService.racingResult());
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
             throw e;

@@ -10,4 +10,5 @@ public class ExceptionMessage {
     public static final String TRY_COUNT_MUST_NATURAL_NUMBER = "시도할 횟수는 자연수여야 합니다.";
     public static final String RANDOMS_SIZE_INVALID = "생성된 랜덤 리스트의 크기가 유효하지 않습니다.";
     public static final String UNHANDLED_EXCEPTION_OCCURRED = "처리되지 않은 예외가 발생했습니다.";
+    public static final String RACING_CAR_DISTANCE_ERROR = "이동거리 연산 중 에러가 발생했습니다.";
 }

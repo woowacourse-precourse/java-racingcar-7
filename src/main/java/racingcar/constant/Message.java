@@ -11,4 +11,6 @@ public class Message {
     public static final String RUN_RESULT_SEPARATOR = " : ";
     public static final String RUN_RESULT_DISTANCE = "-";
     public static final String NEW_LINE = "\n";
+
+    public static final String WINNER_RESULT_MESSAGE = "최종 우승자 : ";
 }

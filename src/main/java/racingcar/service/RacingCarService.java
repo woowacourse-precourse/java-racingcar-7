@@ -3,6 +3,7 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.combiner.Combiner;
 import racingcar.constant.GamePolicy;
 import racingcar.constant.Message;
 import racingcar.model.RacingCarModel;
@@ -13,11 +14,13 @@ public class RacingCarService {
 
     private final InputValidator inputValidator;
     private final InputParser inputParser;
+    private final Combiner combiner;
     private final RacingCarModel racingCarModel;
 
     public RacingCarService() {
         this.inputValidator = new InputValidator();
         this.inputParser = new InputParser();
+        this.combiner = new Combiner();
         this.racingCarModel = new RacingCarModel();
     }
 
@@ -54,5 +57,10 @@ public class RacingCarService {
         racingCarModel.forwardAction(randomNumbers);
         racingCarModel.appendRunResult(sb);
         sb.append(Message.NEW_LINE);
+    }
+
+    public String racingResult() {
+        List<String> winners = racingCarModel.getWinner();
+        return combiner.combineResult(winners);
     }
 }

@@ -49,6 +49,20 @@ public class RacingCarModel {
         sb.append(Message.NEW_LINE);
     }
 
+    public List<String> getWinner() {
+        int max = racingCars.stream()
+                .mapToInt(RacingCar::getDistance)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.RACING_CAR_DISTANCE_ERROR));
+
+        List<String> winners = racingCars.stream()
+                .filter(racingCar -> racingCar.getDistance() == max)
+                .map(RacingCar::getName)
+                .toList();
+
+        return winners;
+    }
+
     private void validateDuplicateCarName(String name) {
         String trimName = name.trim();
         boolean existDuplicateCarName = racingCars.stream()
