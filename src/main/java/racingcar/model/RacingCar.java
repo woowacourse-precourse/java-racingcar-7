@@ -1,27 +1,25 @@
 package racingcar.model;
 
 public class RacingCar {
-    private static final int MOVE_STANDARD = 4;
-
     private final String name;
     private int position;
 
     public RacingCar(String name) {
-        this.name = name;
+        this.name = name.trim();
         this.position = 0;
     }
 
-    public void move(int randomNumber){
-        if(randomNumber >= MOVE_STANDARD){
+    public void move(boolean shouldMove) {
+        if (shouldMove) {
             position++;
         }
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return position;
     }
 }

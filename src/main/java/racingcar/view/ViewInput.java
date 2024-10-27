@@ -20,14 +20,14 @@ public class ViewInput {
         return Arrays.asList(input.trim().split(","));
     }
 
-    public int receiverNumberOfWin(){
+    public int receiveRaceAttempts(){
         System.out.println(USER_INPUT_NUMBER_MESSAGE);
         String number = Console.readLine();
         numberValidator(number);
         return Integer.parseInt(number);
     }
 
-    protected void carNameValidator(String input){
+    private void carNameValidator(String input){
         String[] names = input.split(",");
 
         for(String name : names){
@@ -37,7 +37,7 @@ public class ViewInput {
         }
     }
 
-    protected void numberValidator(String input) {
+    private void numberValidator(String input) {
         try {
             if (Objects.isNull(input) || input.isBlank() || Integer.parseInt(input) < 0) {
                 throw new IllegalArgumentException(NUMBER_ERROR_MESSAGE);

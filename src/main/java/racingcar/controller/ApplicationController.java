@@ -9,7 +9,6 @@ public class ApplicationController {
 
     private final ViewInput viewInput;
 
-
     public ApplicationController(ViewInput viewInput) {
         this.viewInput = viewInput;
     }
@@ -17,12 +16,12 @@ public class ApplicationController {
 
     public void run(){
         List<String> carNames = viewInput.receiveCarNames();
-        int winStandardNumber = viewInput.receiverNumberOfWin();
+        int attempts = viewInput.receiveRaceAttempts();
 
         RacingGame racingGame = new RacingGame(carNames);
-        for(int i = 0 ; i < winStandardNumber ; i++){
+        for(int i = 0 ; i < attempts ; i++){
             racingGame.playOneTurn();
-            ViewOutput.printResult(racingGame.getCarNames());
+            ViewOutput.printResult(racingGame.getCars());
         }
         ViewOutput.printWinners(racingGame.getWinnerNames());
 

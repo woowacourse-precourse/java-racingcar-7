@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.controller.ApplicationController;
 import racingcar.view.ViewInput;
+import racingcar.view.ViewOutput;
 
 public class Application {
     public static void main(String[] args) {

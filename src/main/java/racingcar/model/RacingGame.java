@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final int MOVE_STANDARD = 4;
     private final List<RacingCar> cars;
 
     public RacingGame(List<String> carNames) {
@@ -13,15 +14,18 @@ public class RacingGame {
             .collect(Collectors.toList());
     }
 
-    public void playOneTurn(){
-        cars.forEach(car -> car.move(Randoms.pickNumberInRange(0,9)));
+    public void playOneTurn() {
+        cars.forEach(car -> {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            car.move(randomNumber >= MOVE_STANDARD);
+        });
     }
 
-    public List<RacingCar> getCarNames(){
+    public List<RacingCar> getCars() {
         return cars;
     }
 
-    public List<String> getWinnerNames(){
+    public List<String> getWinnerNames() {
         int maxPosition = cars.stream()
             .mapToInt(RacingCar::getPosition)
             .max()
@@ -32,5 +36,4 @@ public class RacingGame {
             .map(RacingCar::getName)
             .collect(Collectors.toList());
     }
-
 }
