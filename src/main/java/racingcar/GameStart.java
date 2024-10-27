@@ -6,12 +6,7 @@ public class GameStart {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String PRINT_WINNER = "최종 우승자 : ";
 
-    public static void run() {
-        String input = IOHandler.inputMessage();
-
-        List<RacingCar> racingCarList = DataParser.parseName(input);
-        int tryCount = DataParser.parseCount(IOHandler.inputTryCount());
-
+    public static void run(List<RacingCar> racingCarList, int tryCount) {
         System.out.println('\n' + RESULT_MESSAGE);
         for (int i = 0; i < tryCount; i++) {
             for (RacingCar racingCar : racingCarList) {
@@ -30,6 +25,9 @@ public class GameStart {
             } else if (maxmove == racingCar.getCount()) {
                 winner += ", " + racingCar.getName();
             }
+        }
+        if (maxmove == 0) {
+            throw new IllegalArgumentException();
         }
         IOHandler.printWinner(winner);
     }
