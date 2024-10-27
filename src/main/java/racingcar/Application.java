@@ -10,17 +10,17 @@ import racingcar.car.Car;
 import racingcar.car.RandomCar;
 
 public class Application {
-    private Cars cars;
-
-    public Application() {
-        this.cars = new Cars();
-    }
-
     public static void main(String[] args) {
         Application racingGame = new Application();
         racingGame.registerCars(RandomCar::new);
         racingGame.playGame();
         racingGame.printWinner();
+    }
+    
+    private Cars cars;
+
+    public Application() {
+        this.cars = new Cars();
     }
 
     public void registerCars(Function<String, Car> factory) {
