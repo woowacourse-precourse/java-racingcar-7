@@ -34,7 +34,7 @@ class RacingGameRoundTest {
 
             // then
             for (Car car : carList) {
-                assertThat(car.getMoveCount()).isEqualTo(1);  // 각 자동차의 위치가 전진하지 않았는지 확인
+                assertThat(car.getMoveCount()).isEqualTo(1);
             }
         });
     }
@@ -59,7 +59,7 @@ class RacingGameRoundTest {
 
             // then
             for (Car car : carList) {
-                assertThat(car.getMoveCount()).isEqualTo(0);  // 각 자동차의 위치가 전진하지 않았는지 확인
+                assertThat(car.getMoveCount()).isEqualTo(0);
             }
         });
     }
