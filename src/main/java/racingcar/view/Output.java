@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Output {
-    private static String excecutionResult = "\r\n실행 결과";
-    private static String winnersMessage = "최종 우승자 : ";
+    private static String EXCECUTION_RESULT = "\r\n실행 결과";
+    private static String WINNERS_MESSAGE = "최종 우승자 : ";
 
     public static void printExcecutionResult() {
-        System.out.println(excecutionResult);
+        System.out.println(EXCECUTION_RESULT);
     }
 
     public static void printEachTurnResult(HashMap<String, Integer> raceProgress) {
@@ -29,6 +29,6 @@ public class Output {
     }
 
     public static void printWinners(String winners) {
-        System.out.println(winnersMessage + winners);
+        System.out.println(WINNERS_MESSAGE + winners);
     }
 }
