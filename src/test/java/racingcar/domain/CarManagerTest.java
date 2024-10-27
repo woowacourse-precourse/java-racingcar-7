@@ -36,4 +36,19 @@ class CarManagerTest {
         assertThat(cars.get(1).getPosition()).isEqualTo(0);
         assertThat(cars.get(2).getPosition()).isEqualTo(1);
     }
+
+    @Test
+    void 가장_많이_이동한_자동차를_뽑는다(){
+        // given
+        List<Car> cars= Arrays.asList(new Car("jang"), new Car("jin"), new Car("young"));
+        CarManager carManager = new CarManager(cars);
+        carManager.moveCars(Arrays.asList(5, 1, 5));
+
+        // when
+        List<String>carNames = carManager.findWinners();
+
+        // then
+        assertThat(carNames.size()).isEqualTo(2);
+        assertThat(carNames.get(1)).isEqualTo("young");
+    }
 }
