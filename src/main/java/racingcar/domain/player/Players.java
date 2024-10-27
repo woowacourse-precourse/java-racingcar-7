@@ -1,5 +1,6 @@
 package racingcar.domain.player;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,17 +13,29 @@ public class Players {
     private final Map<Long, Player> players;
 
     private Players(List<Player> players) {
+        validateCount(players);
         this.players = mapFrom(players);
     }
 
     public static Players from(List<Player> players) {
+        return new Players(players);
+    }
+
+    public void update(Player player) {
+        players.put(player.getId(), player);
+    }
+
+    public List<Player> getAll() {
+        return new ArrayList<>(players.values());
+    }
+
+    private void validateCount(List<Player> players) {
         if (players.size() < MINIMUM_GAME_PLAYERS) {
             throw new PlayerCountShortException();
         }
         if (players.size() > MAXIMUM_GAME_PLAYERS) {
             throw new PlayerCountExceededException();
         }
-        return new Players(players);
     }
 
     private Map<Long, Player> mapFrom(List<Player> players) {
@@ -32,4 +45,6 @@ public class Players {
                         player -> player)
                 );
     }
+
+
 }

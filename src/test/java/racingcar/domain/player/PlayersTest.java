@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Distance;
 import racingcar.exception.InvalidPlayerCountException.PlayerCountExceededException;
 import racingcar.exception.InvalidPlayerCountException.PlayerCountShortException;
 
@@ -72,6 +73,33 @@ class PlayersTest {
             // expect
             Assertions.assertThatCode(() -> Players.from(players))
                     .doesNotThrowAnyException();
+        }
+    }
+
+    @DisplayName("플레이어 그룹 업데이트하기")
+    @Nested
+    class 플레이어_그룹_업데이트하기 {
+
+        @DisplayName("플레이어 정보 업데이트")
+        @Test
+        void 플레이어_정보_업데이트() {
+            // given
+            Player p1 = Player.of(1L, "name1");
+            p1 = p1.move(Distance.of(10));
+
+            Player p2 = Player.of(2L, "name2");
+            p2 = p2.move(Distance.of(20));
+
+            Player p3 = Player.of(2L, "name3");
+            p3 = p3.move(Distance.of(30));
+
+            Players players = Players.from(List.of(p1, p2));
+
+            // when
+            players.update(p3);
+
+            // then
+            Assertions.assertThat(players.getAll().get(1).getDistanceValue()).isEqualTo(30);
         }
     }
 
