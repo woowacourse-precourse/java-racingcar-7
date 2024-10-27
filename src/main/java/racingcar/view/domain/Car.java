@@ -13,4 +13,8 @@ public class Car {
         }
         this.name = str;
     }
+
+    public String getName() {
+        return name;
+    }
 }
