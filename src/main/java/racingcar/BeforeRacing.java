@@ -38,4 +38,13 @@ public class BeforeRacing {
         return carName.replace(" ", "");
     }
 
+    public static void validateTryValue(String tryValue){
+        validateTryValueNull(tryValue);
+    }
+
+    public static void validateTryValueNull(String tryValue) {
+        if(tryValue.isBlank()){
+            throw new IllegalArgumentException("시도할 횟수가 공백 입니다.");
+        }
+    }
 }

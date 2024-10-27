@@ -13,13 +13,14 @@ public class GameController {
     protected static final Map<Integer, List<CarDto>> carRacingInfo = new HashMap<>();
 
     public static void runRacing(){
-        OutputHandler.outputStartInfo();
+        OutputHandler.outputStartMessage();
         String carName = inputCarName();
 
         OutputHandler.outputAskTryValue();
-        int tryCountValue = Integer.parseInt(inputTryCount());
 
-        displayIntroMessage();
+        int tryCountValue = getTryCountValue();
+
+        outputEndMessage();
 
         List<String> carNames = BeforeRacing.divideCarName(carName);
         for(int i = 1; i <= tryCountValue; i++){
@@ -53,5 +54,15 @@ public class GameController {
 
     public static void raceResultRecord(int tryCount ,List<CarDto> carDto) {
         carRacingInfo.put(tryCount, carDto);
+    }
+
+    public static int getTryCountValue(){
+        String tryCount = inputTryCount();
+        BeforeRacing.validateTryValue(tryCount);
+        try {
+            return Integer.parseInt(tryCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 숫자여야 합니다.", e);
+        }
     }
 }
