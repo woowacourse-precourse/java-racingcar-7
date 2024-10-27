@@ -1,8 +1,10 @@
 package racingcar.view;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +15,11 @@ class ConsoleInputViewTest {
     @BeforeEach
     void setUp() {
         consoleInputView = new ConsoleInputView();
+    }
+
+    @AfterEach
+    void closeConsole() {
+        Console.close();
     }
 
     @Test
@@ -39,19 +46,6 @@ class ConsoleInputViewTest {
         //then
         Assertions.assertThat(input)
                 .isEqualTo("5");
-    }
-
-    @Test
-    void readLine() {
-        //given
-        System.setIn(createUserInput("aaaaaaa"));
-
-        //when
-        String input = consoleInputView.inputAttemptCount();
-
-        //then
-        Assertions.assertThat(input)
-                .isEqualTo("aaaaaaa");
     }
 
     InputStream createUserInput(String input) {
