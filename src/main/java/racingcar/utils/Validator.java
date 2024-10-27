@@ -26,12 +26,12 @@ public class Validator {
         return Integer.parseInt(attemptCount);
     }
 
-    private static boolean haveValidLength(List<String> carNames) {
+    private static boolean haveValidLength(final List<String> carNames) {
         return carNames.size() > 0 && carNames.stream()
                 .allMatch(carName -> carName.length() >= 1 && carName.length() <= 5);
     }
 
-    private static boolean hasDuplicates(List<String> carNames) {
+    private static boolean hasDuplicates(final List<String> carNames) {
         Set<String> uniqueNames = new HashSet<>(carNames);
         return uniqueNames.size() < carNames.size();
     }

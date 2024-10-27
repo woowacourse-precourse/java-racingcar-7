@@ -10,7 +10,7 @@ public class Race {
     private List<Car> cars;
     private int attemptCount;
 
-    public Race(List<Car> cars, int attemptCount) {
+    public Race(final List<Car> cars, final int attemptCount) {
         this.cars = cars;
         this.attemptCount = attemptCount;
     }
@@ -23,13 +23,13 @@ public class Race {
         printWinners(findWinners(cars));
     }
 
-    private void moveRandomly(Car car) {
+    private void moveRandomly(final Car car) {
         if (pickNumberInRange(0, 9) >= 4) {
             car.moveForward();
         }
     }
 
-    private List<String> findWinners(List<Car> cars) {
+    private List<String> findWinners(final List<Car> cars) {
         int maxDistance = cars.stream().mapToInt(Car::getDistance).max()
                 .orElseThrow(() -> new IllegalStateException("비어있는 차량 목록"));
         List<String> winners = cars.stream().filter(car -> car.getDistance() == maxDistance).map(Car::getName).toList();

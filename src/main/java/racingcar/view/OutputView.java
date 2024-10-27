@@ -12,13 +12,13 @@ public class OutputView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printRaceStatus(List<Car> cars) {
+    public static void printRaceStatus(final List<Car> cars) {
         StringBuilder sb = new StringBuilder();
         cars.stream().forEach(car -> sb.append(car.getName() + " : " + MOVE_UNIT.repeat(car.getDistance()) + "\n"));
         System.out.println(sb);
     }
 
-    public static void printWinners(List<String> winners) {
+    public static void printWinners(final List<String> winners) {
         System.out.println(WINNER_MESSAGE + String.join(", ", winners));
     }
 }

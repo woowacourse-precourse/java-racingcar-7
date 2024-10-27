@@ -41,7 +41,7 @@ class ValidatorTest {
     @DisplayName("유효한 시도 횟수 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"5", "200", "1023"})
-    void testValidAttemptCount(String attempt) {
+    void testValidAttemptCount(final String attempt) {
         // Given: 유효한 시도 횟수
         // When: 시도 횟수 검증 메서드 실행
         int count = assertDoesNotThrow(() -> Validator.validateAttemptCount(attempt));
@@ -53,7 +53,7 @@ class ValidatorTest {
     @DisplayName("유효하지 않은 시도 횟수 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"-200", "0", "", "hi"})
-    void testInvalidAttemptCount(String attempt) {
+    void testInvalidAttemptCount(final String attempt) {
         // Given: 유효하지 않은 시도 횟수
         // When: 시도 횟수 검증 메서드 실행
         // Then: IllegalArgumentException 발생해야 함.
