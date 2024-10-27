@@ -1,7 +1,6 @@
 package racingcar;
 
 public class GameFactory {
-
     private static GameService createGameService() {
         return new GameService();
     }

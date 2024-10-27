@@ -3,7 +3,6 @@ package racingcar;
 import java.util.List;
 
 public class OutputView {
-
     void resultMessageLoop(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             printResultMessage(racingCar.getName(), racingCar.getScore());
@@ -17,10 +16,6 @@ public class OutputView {
             System.out.print("-");
         }
         System.out.println();
-    }
-
-    void printWinnerMessage(String winner) {
-        System.out.println("최종 우승자 : " + winner);
     }
 
     void printWinnerMessage(List<String> winners) {

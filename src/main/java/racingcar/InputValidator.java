@@ -3,7 +3,6 @@ package racingcar;
 import java.util.List;
 
 public class InputValidator {
-
     public List<String> isValidCarsName(String carNames) {
         isValidInputFormat(carNames);
         isValidName(carNames);
@@ -23,7 +22,6 @@ public class InputValidator {
             if (name.isEmpty()) {
                 throw new IllegalArgumentException(ExceptionMessages.CONTAINS_DELIMITER_IN_NAME);
             }
-
             if (name.length() > 5) {
                 throw new IllegalArgumentException(ExceptionMessages.NAME_TOO_LONG);
             }

@@ -15,10 +15,6 @@ public class Game {
         return new Game(round, racingCars);
     }
 
-    public Integer getRound() {
-        return round;
-    }
-
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
