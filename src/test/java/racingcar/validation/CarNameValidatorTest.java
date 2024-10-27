@@ -45,4 +45,12 @@ public class CarNameValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessageConstants.ERROR_CAR_NAME_DUPLICATE);
     }
+
+    @Test
+    void 자동차_이름_특수_문자_포함_예외_테스트() {
+        List<String> carNames = Arrays.asList("pobi", "@woni", "jun");
+        assertThatThrownBy(() -> CarNameValidator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessageConstants.ERROR_CAR_NAME_INVALID_CHARACTERS);
+    }
 }
