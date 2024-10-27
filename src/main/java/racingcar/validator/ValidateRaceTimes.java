@@ -16,4 +16,10 @@ public class ValidateRaceTimes {
             throw new IllegalArgumentException("시도 횟수는 빈 값이 될 수 없습니다.");
         }
     }
+
+    public void isZero(String raceTimes) {
+        if (raceTimes.equals("0")) {
+            throw new IllegalArgumentException("시도 횟수는 0이 될 수 없습니다.");
+        }
+    }
 }

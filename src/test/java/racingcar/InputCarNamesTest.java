@@ -1,14 +1,12 @@
 package racingcar;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import racingcar.validator.ValidateCarNames;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class InputCarNamesTest {
     private final ValidateCarNames validateCarNames = new ValidateCarNames();
