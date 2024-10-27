@@ -12,15 +12,23 @@ public class Validator {
             if (!set.add(name)) {
                 throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NAME.getMessage());
             }
-            validateName(name);
+            validateEmptyName(name);
+            validateNameLimit(name);
         }
     }
 
-    private void validateName(String name) {
+    private void validateNameLimit(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException(ErrorMessage.NAME_OVER_LIMIT.getMessage());
         }
     }
+
+    private void validateEmptyName(String name) {
+        if (name.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_NAME.getMessage());
+        }
+    }
+
 
     public int validateCount(String count) {
         try {
