@@ -5,6 +5,7 @@ package racingcar.controller;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.dto.RacingResult;
 import racingcar.model.Car;
 import racingcar.service.InputValidator;
 import racingcar.service.RacingCarService;
@@ -44,10 +45,10 @@ public class RacingCarController {
                 .collect(Collectors.toList());
 
         // 게임 진행
-        List<String> winnerList = racingCarService.startRacingGame(cars, tryCount);
+        RacingResult racingResult = racingCarService.startRacingGame(cars, tryCount);
 
         // 게임 결과 출력
-        String result = stringHandler.join(winnerList);
-        racingCarView.printResult(result);
+        String winnerInfo = stringHandler.join(racingResult.getWinnerNames());
+        racingCarView.printResult(racingResult.getResult(), winnerInfo);
     }
 }

@@ -1,46 +1,48 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
+import racingcar.dto.RacingResult;
 import racingcar.model.Car;
 
 public class RacingCarService {
 
     private static final int MINIMUM_TRY_COUNT = 1;
 
-    public List<String> startRacingGame(List<Car> cars, int tryCount) {
+    public RacingResult startRacingGame(List<Car> cars, int tryCount) {
+
+        StringBuilder racingResultBuilder = new StringBuilder();
 
         while (tryCount-- >= MINIMUM_TRY_COUNT) {
             for (Car car : cars) {
                 int ramdomNumber = Randoms.pickNumberInRange(0, 9);
 
-                System.out.print(car.getName() + " : ");
-
+                racingResultBuilder.append(car.getName()).append(" : ");
                 if (ramdomNumber >= 4) {      // 전진
                     car.go();
                 }
                 for (int i = 0; i < car.getPos(); i++) {
-                    System.out.print("-");
+                    racingResultBuilder.append("-");
                 }
-                System.out.println();
+                racingResultBuilder.append("\n");
             }
-            System.out.println();
+            racingResultBuilder.append("\n");
         }
 
-        // 게임 결과 산출
-        int max = 0;
-        for (Car car : cars) {
-            max = Math.max(max, car.getPos());
-        }
+        List<String> winnerNames = generateWinnerResult(cars);
 
-        List<String> winnerList = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPos() == max) {
-                winnerList.add(car.getName());
-            }
-        }
+        return RacingResult.of(racingResultBuilder.toString(), winnerNames);
+    }
 
-        return winnerList;
+    private List<String> generateWinnerResult(List<Car> cars) {
+        int max = cars.stream()
+                .mapToInt(Car::getPos)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPos() == max)
+                .map(Car::getName)
+                .toList();
     }
 }
