@@ -99,6 +99,17 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    @DisplayName("사용자의 시도 횟수 입력값이 숫자가 아닐 때 예외처리")
+    void 시도횟수_숫자_X(){
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,joon", "hi"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorCode.CANT_CONVERT_TO_INTEGER.getMessage()));
+
+
+    }
 
 
 
