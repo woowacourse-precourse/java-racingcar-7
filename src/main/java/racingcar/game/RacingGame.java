@@ -18,6 +18,9 @@ public class RacingGame {
 
         outputHandler.printAskTryNum();
         int tryNum = inputHandler.getTryNum();
+        if (tryNum == 0) {
+            return;
+        }
 
         RacingGameManager racingGameManager = new RacingGameManager();
         racingGameManager.prepareGameRounds(tryNum, carNames);
