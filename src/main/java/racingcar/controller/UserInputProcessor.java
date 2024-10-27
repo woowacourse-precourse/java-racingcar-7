@@ -13,6 +13,9 @@ public class UserInputProcessor {
                 .toList();
     }
 
+    public Integer processTotalAttempts(String userInput) {
+        return parseStringToInteger(userInput);
+    }
 
     private List<String> extractCarName(String userInput) {
         return Arrays.stream(userInput.split(CAR_NAME_DELIMITER)).toList();
@@ -20,5 +23,9 @@ public class UserInputProcessor {
 
     private String removeBlank(String userInput) {
         return userInput.trim();
+    }
+
+    private Integer parseStringToInteger(String userInput) {
+        return Integer.parseInt(userInput);
     }
 }
