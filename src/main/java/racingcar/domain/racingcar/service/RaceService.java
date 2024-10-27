@@ -2,19 +2,19 @@ package racingcar.domain.racingcar.service;
 
 import java.util.List;
 import racingcar.domain.racingcar.domain.Race;
-import racingcar.domain.racingcar.dto.RaceResult;
-import racingcar.domain.racingcar.dto.RaceStatus;
 
 public interface RaceService {
 
-    Race createRace(List<String> carNames, int totalRounds);
+    static RaceService getInstance() {
+        return RaceServiceImpl.getInstance();
+    }
+
+    Race createRace(List<String> carNames, int rounds);
 
     void moveAllCars(Race race);
 
-    void runFullRace(Race race);
+    List<String> getWinnerNames(Race race);
 
-    RaceResult summarizeRace(Race race);
-
-    RaceStatus getCurrentStatus(Race race);
+    List<String> getRaceStatus(Race race);
 
 }
