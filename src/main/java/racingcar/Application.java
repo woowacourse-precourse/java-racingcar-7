@@ -25,5 +25,6 @@ public class Application {
         move = new Move(cars, numberValidator, numberGenerator);
         racing = new Racing(cars, totalAttempts, move, outputView);
         racing.race();
+        racing.announceWinners();
     }
 }

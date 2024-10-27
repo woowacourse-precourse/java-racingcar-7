@@ -18,4 +18,8 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public void printWinners(String winnerNames) {
+        System.out.print(winnerNames);
+    }
 }

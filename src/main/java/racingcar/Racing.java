@@ -19,8 +19,19 @@ public class Racing {
         outputView.printResult();
         for (int i = 0; i < totalAttempts; i++) {
             move.tryOnce();
-            List<CurrentCar> currentCars = cars.stream().map(Car::createCurrentCar).toList();
-            outputView.printCarStatus(currentCars);
+            outputView.printCarStatus(createCurrentCars());
         }
+    }
+
+    private List<CurrentCar> createCurrentCars() {
+        return cars.stream().map(Car::createCurrentCar).toList();
+    }
+
+    public void announceWinners() {
+        outputView.printWinners(createJudge().getWinnerNames());
+    }
+
+    private Judge createJudge() {
+        return new Judge(createCurrentCars());
     }
 }
