@@ -19,15 +19,19 @@ public class GameController {
     }
 
     private void ready() {
-        List<Car> cars = readCars();
+        List<Car> carList = readCars();
         int rounds = readRounds();
-        race = new Race(cars, rounds);
+        race = new Race(carList, rounds);
     }
 
     private List<Car> readCars() {
         String input = inputView.requestCarNames();
         Validator.inputSting(input);
-        return InputParser.stringToCarList(input);
+
+        List<Car> carList = InputParser.stringToCarList(input);
+        Validator.carList(carList);
+
+        return carList;
     }
 
     private int readRounds() {
@@ -45,8 +49,8 @@ public class GameController {
     }
 
     private void finish() {
-       List<Car> winnerList =  race.getWinnerList();
-       outputView.printResult(winnerList);
+        List<Car> winnerList = race.getWinnerList();
+        outputView.printResult(winnerList);
     }
 
 }
