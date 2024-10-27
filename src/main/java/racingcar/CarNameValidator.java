@@ -8,7 +8,7 @@ public class CarNameValidator {
     }
 
     public void inputMoreThanTwo(String carNames) {
-        if (!isMoreThanTwo(carNames)) {
+        if (!isMoreThanTwo(split(carNames))) {
             throw new IllegalArgumentException("자동차 이름을 두 개 이상으로 입력해주세요");
         }
     }
@@ -17,8 +17,11 @@ public class CarNameValidator {
         return carNames.matches("^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$");
     }
 
-    private boolean isMoreThanTwo(String carNames) {
-        String[] carNameList = carNames.split(",");
-        return carNameList.length > 2;
+    private boolean isMoreThanTwo(String[] carNames) {
+        return carNames.length > 2;
+    }
+
+    private String[] split(String carNames) {
+        return carNames.split(",");
     }
 }
