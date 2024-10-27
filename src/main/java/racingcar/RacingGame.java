@@ -10,7 +10,7 @@ public class RacingGame {
 
     public RacingGame(List<String> carNames, int attempts) {
         for (String name : carNames) {
-            participatingCars.add(new Car(name));
+            participatingCars.add(new Car(name.trim()));
         }
         this.attempts = attempts;
     }
@@ -24,6 +24,10 @@ public class RacingGame {
 
     public List<String> getWinnerNames() {
         return findWinners(calculateMaxPosition());
+    }
+
+    public List<Car> getParticipatingCars() {
+        return participatingCars;
     }
 
     private int calculateMaxPosition() {
