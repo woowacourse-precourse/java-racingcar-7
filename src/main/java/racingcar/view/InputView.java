@@ -19,8 +19,8 @@ public class InputView {
 
     public static int getTrialCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int trialCount = Integer.parseInt(Console.readLine());
-        TrialCountValidator.validate(trialCount);
-        return trialCount;
+        String trialCountInput = Console.readLine();
+        TrialCountValidator.validate(trialCountInput);
+        return Integer.parseInt(trialCountInput);
     }
 }
