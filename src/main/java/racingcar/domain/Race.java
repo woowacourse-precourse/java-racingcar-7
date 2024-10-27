@@ -52,10 +52,11 @@ public class Race {
                 .getPosition();
     }
 
-    public List<Car> getWinners() {
+    public List<String> getWinners() {
         int highestPosition = getHighestPosition();
         return raceCars.stream()
                 .filter(car -> car.getPosition() == highestPosition)
+                .map(Car::getName)
                 .toList();
     }
 
