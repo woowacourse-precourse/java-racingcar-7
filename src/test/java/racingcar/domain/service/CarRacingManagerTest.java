@@ -2,6 +2,9 @@ package racingcar.domain.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.model.car.Car;
+
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -17,7 +20,11 @@ class CarRacingManagerTest {
         carRacingManager.moveForward("1");
 
         // then
-        assertThat(carRacingManager.getDistance("1")).isEqualTo(1);
+        final Car movedCar = carRacingManager.getList().stream()
+                .filter(car -> car.getName().equals("1"))
+                .findFirst()
+                .get();
+        assertThat(movedCar.getDistance()).isEqualTo(1);
     }
 
     @Test

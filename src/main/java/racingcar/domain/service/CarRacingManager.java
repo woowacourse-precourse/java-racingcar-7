@@ -34,10 +34,6 @@ public class CarRacingManager {
         return List.copyOf(cars.values());
     }
 
-    public int getDistance(final String name) {
-        return cars.get(name).getDistance();
-    }
-
     public void moveForward(final String name) {
         cars.get(name).moveForward();
     }
