@@ -8,6 +8,7 @@ public class Car {
 
     public Car(String carName, int tryCount){
         this.carName = carName;
+        this.tryCount = tryCount;
     }
 
     public String getCarName(){
