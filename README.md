@@ -24,19 +24,21 @@
       - [x] 잘못된 입력을 받았을 때 `IllegalArgumentException`이 나오게 문자열을 입력으로 받고 정수인지 검증
 
 ## Domain
-- [ ] **Car**
-  - [ ] 이름, 위치
-  - [ ] 움직이는 동작
-- [ ] **Cars**
-  - [ ] `car` 목록 관리
-  - [ ] `winner` 찾기
+- [x] **Car**
+  - [x] 이름, 위치
+  - [x] 움직이는 동작
+- [x] **Cars**
+  - [x] 'car' 객체 리스트
+  - [x] `car` 목록 관리
+  - [x] `winner` 찾기
+    -[x] 최대 이동거리 찾기
 - [ ] **Game**
   - [ ] `Cars` 관리
   - [ ] Random 값에 따라 'Cars' move
 
 ## Controller
 - [ ] **GameController**
-  - [ ] Game을 실행
+  - [ ] Game 을 실행
 
 ## View
 - [ ] **InputView**
