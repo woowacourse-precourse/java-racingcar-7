@@ -3,6 +3,6 @@ package racingcar.dto;
 import java.util.List;
 
 public record UserInputDto(
-        List<String> parsedCarNames,
-        int validatedTrialCount
+        List<String> carNames,
+        int trialCount
 ) { }

@@ -11,6 +11,7 @@ import racingcar.view.OutputView;
 public class CarRaceManager {
 
     private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
     private UserInputValidator userInputValidator = new UserInputValidator();
     private CarRace carRace;
 
@@ -21,6 +22,7 @@ public class CarRaceManager {
         initializeCars(userInputDto.carNames());
         List<String> winners = carRace.start(userInputDto.trialCount());
 
+        outputView.printWinners(winners);
     }
 
     private void initializeCars(List<String> carNames) {
