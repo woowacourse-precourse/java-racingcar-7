@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private String[] carArray;
+    final private String[] carNameArray;
     private int attemptCount;
     List<Car> carList = new ArrayList<>();
 
 
-    public Game(String[] carList, int count) {
-        this.carArray = carList;
-        this.attemptCount = count;
+    public Game(String[] carNameArray, int attemptCount) {
+        this.carNameArray = carNameArray;
+        this.attemptCount = attemptCount;
     }
 
     public void play() {
@@ -33,12 +33,12 @@ public class Game {
     }
 
     public void inputLane() {
-        for (int i = 0; i < carArray.length; i++) {
-            if (carArray[i].length() > 5) {
+        for (int i = 0; i < carNameArray.length; i++) {
+            if (carNameArray[i].length() > 5) {
                 throw new IllegalArgumentException();
             }
 
-            carList.add(new Car(carArray[i], 0));
+            carList.add(new Car(carNameArray[i], 0));
         }
     }
 

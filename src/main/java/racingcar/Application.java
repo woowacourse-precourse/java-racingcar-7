@@ -5,9 +5,9 @@ public class Application {
         // TODO: 프로그램 구현
         // pobi,woni,jun
         Input input = new Input();
-        input.nameAndCurrentCount();
+        input.inputNameAndAttemptCount();
 
-        Game game = new Game(input.getCarList().split(","), input.getCount());
+        Game game = new Game(input.getCarNameString().split(","), input.getAttemptCount());
         game.inputLane();
         game.play();
 
