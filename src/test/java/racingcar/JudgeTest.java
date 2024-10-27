@@ -10,44 +10,50 @@ public class JudgeTest {
     private final Judge judge = new Judge();
 
     @Test
-    @DisplayName("경기 결과 판단 테스트")
-    public void judge() {
-        Car[] cars1 = {new Car("test1"), new Car("test2"), new Car("test3")};
-        Car[] cars2 = {new Car("test3"), new Car("test4"), new Car("test5")};
+    @DisplayName("경기 결과 판단 테스트1")
+    public void testJudge1() {
+        Car[] expected = {new Car("test1"), new Car("test2"), new Car("test3")};
         List<Car> result;
 
         //distance result is 2.
-        cars1[0].increaseDistance();
-        cars1[0].increaseDistance();
+        expected[0].increaseDistance();
+        expected[0].increaseDistance();
 
         //distance result is 3.
-        cars1[1].increaseDistance();
-        cars1[1].increaseDistance();
-        cars1[1].increaseDistance();
+        expected[1].increaseDistance();
+        expected[1].increaseDistance();
+        expected[1].increaseDistance();
 
         //distance result is 2.
-        cars1[2].increaseDistance();
-        cars1[2].increaseDistance();
-        cars1[2].increaseDistance();
+        expected[2].increaseDistance();
+        expected[2].increaseDistance();
 
-        result = judge.judge(List.of(cars1));
-        assertEquals(List.of(cars1[1], cars1[2]), result);
+        result = judge.judge(List.of(expected));
+        assertEquals(List.of(expected[1]), result);
+    }
+
+    @Test
+    @DisplayName("경기 결과 판단 테스트2")
+    public void testJudge2() {
+        Car[] expected = {new Car("test3"), new Car("test4"), new Car("test5")};
+        List<Car> result;
 
         //distance result is 2.
-        cars2[0].increaseDistance();
-        cars2[0].increaseDistance();
+        expected[0].increaseDistance();
+        expected[0].increaseDistance();
 
         //distance result is 3.
-        cars2[1].increaseDistance();
-        cars2[1].increaseDistance();
-        cars2[1].increaseDistance();
+        expected[1].increaseDistance();
+        expected[1].increaseDistance();
+        expected[1].increaseDistance();
 
-        //distance result is 1.
-        cars2[2].increaseDistance();
+        //distance result is 3.
+        expected[2].increaseDistance();
+        expected[2].increaseDistance();
+        expected[2].increaseDistance();
 
-        result.clear();
-        result = judge.judge(List.of(cars2));
-        assertEquals(List.of(cars2[1]), result);
+        result = judge.judge(List.of(expected));
+        assertEquals(List.of(expected[1], expected[2]), result);
     }
 
     @Test
