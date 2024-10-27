@@ -8,8 +8,8 @@ import racingcar.util.RandomMovementDecider;
 public class Game {
     private final InputOutputHandler ioHandler;
 
-    public Game() {
-        this.ioHandler = new InputOutputHandler();
+    public Game(InputOutputHandler ioHandler) {
+        this.ioHandler = ioHandler;
     }
 
     public void play() {
