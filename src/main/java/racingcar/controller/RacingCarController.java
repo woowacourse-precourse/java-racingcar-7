@@ -18,15 +18,15 @@ public class RacingCarController {
 
     private Car inputCarNames() {
         InputView.showInputPrompt(ViewMessage.CAR_NAME_INPUT_PROMPT);
-        return Car.from(Input.from(read()).getNames());
+        return Car.from(Input.from(readInput()).getNames());
     }
 
     private int inputForwardCount() {
         InputView.showInputPrompt(ViewMessage.FORWARD_COUNT_INPUT_PROMPT);
-        return ForwardCount.from(read()).getForwardCount();
+        return ForwardCount.from(readInput()).getForwardCount();
     }
 
-    public static String read() {
+    public static String readInput() {
         return Console.readLine();
     }
 
