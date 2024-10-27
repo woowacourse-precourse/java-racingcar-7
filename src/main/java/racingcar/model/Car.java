@@ -19,4 +19,11 @@ public class Car {
     public String getPosition() {
         return position;
     }
+
+    public void attemptMoveForward() {
+        int random = Randoms.pickNumberInRange(0, 9);
+        if (random >= 4) {
+            position = position + "-";
+        }
+    }
 }
