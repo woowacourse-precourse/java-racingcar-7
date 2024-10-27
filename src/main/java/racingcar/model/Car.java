@@ -4,26 +4,21 @@ import racingcar.view.InputView;
 
 public class Car {
     private String name;
-    private String distance;
+    private Integer distance = 0;
 
     public Car(String carName) {
         this.name = carName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDistance() {
+        this.distance++;
     }
 
-    public void setDistance(String distance) {
-        this.distance = distance;
-    }
-
-    public String getDistance() {
+    public Integer getDistance() {
         return distance;
     }
 
     public String getName() {
         return name;
     }
-
 }

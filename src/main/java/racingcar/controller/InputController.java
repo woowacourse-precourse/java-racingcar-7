@@ -6,9 +6,9 @@ import racingcar.view.InputView;
 import java.util.List;
 
 public class InputController {
-    InputView inputView = new InputView();
-    CarNameValidator carNameValidator = new CarNameValidator();
-    AttemptCountValidator attemptCountValidator = new AttemptCountValidator();
+    private InputView inputView = new InputView();
+    private CarNameValidator carNameValidator = new CarNameValidator();
+    private AttemptCountValidator attemptCountValidator = new AttemptCountValidator();
 
     public List<Car> initCars() {
         String carName = inputView.enterCarName();

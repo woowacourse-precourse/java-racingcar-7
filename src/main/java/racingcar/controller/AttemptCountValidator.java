@@ -6,7 +6,7 @@ public class AttemptCountValidator {
     private static final String INVALID_INPUT_ERROR_MESSAGE = "시도 횟수는 정수로만 입력이 가능합니다.";
 
     public Integer validate(String inputString) {
-        if(!isBlank(inputString)) {
+        if (!isBlank(inputString)) {
             throw new IllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
         }
 
