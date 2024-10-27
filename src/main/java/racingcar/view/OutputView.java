@@ -6,7 +6,7 @@ public class OutputView {
     private OutputView() {
     }
 
-    public static void showCarNameInputMessage(){
+    public static void showCarNameInputMessage() {
         System.out.println(CAR_NAME_INPUT_MESSAGE);
     }
 }

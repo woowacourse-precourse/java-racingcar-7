@@ -5,7 +5,7 @@ import racingcar.view.OutputView;
 
 public class RacingController {
 
-    public void startGame(){
+    public void startGame() {
         String carNames = getCarNames();
     }
 
