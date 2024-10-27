@@ -22,4 +22,8 @@ public class OutputView {
         String winnerList = String.join(", ", winners);
         System.out.println("최종 우승자 : " + winnerList);
     }
+
+    public void displayError(String message) {
+        System.out.println(message);
+    }
 }

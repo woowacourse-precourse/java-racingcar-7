@@ -26,11 +26,19 @@ public class RacingCarController {
     }
 
     public void run() {
-        String carNamesInput = inputView.displayCarNamePrompt();
-        List<String> carList = carNameParser.run(carNamesInput);
+        List<String> carList;
+        int attemptCount;
 
-        String attemptCountInput = inputView.displayCountPrompt();
-        int attemptCount = getAttemptCount.run(attemptCountInput);
+        try {
+            String carNamesInput = inputView.displayCarNamePrompt();
+            carList = carNameParser.run(carNamesInput);
+
+            String attemptCountInput = inputView.displayCountPrompt();
+            attemptCount = getAttemptCount.run(attemptCountInput);
+        } catch (IllegalArgumentException e) {
+            outputView.displayError(e.getMessage()); // 예외 메시지를 출력
+            throw e; // 프로그램 종료
+        }
 
         racingScoreBoard.registerCars(carList);
         outputView.displayRaceResultPrompt();

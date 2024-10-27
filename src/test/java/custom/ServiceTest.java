@@ -38,30 +38,44 @@ class ServiceTest {
 
     @Test
     void 자동차이름분리기능_문자열분리메소드_테스트() {
-        String input = "pobi,woni,javaji";
+        String input = "pobi,woni,jun";
         List<String> result = carNameParser.splitByComma(input);
-        assertThat(result).containsExactly("pobi", "woni", "javaji");
+        assertThat(result).containsExactly("pobi", "woni", "jun");
     }
 
     @Test
-    void 자동차이름분리기능_공백제거메소드_단일공백_테스트() {
-        List<String> input = Arrays.asList(" pobi ", " woni ", " javaji ");
+    void 자동차이름분리기능_앞뒤공백제거메소드_단일공백_테스트() {
+        List<String> input = Arrays.asList(" pobi ", " woni ", " jun ");
         List<String> result = carNameParser.trimCarNames(input);
-        assertThat(result).containsExactly("pobi", "woni", "javaji");
+        assertThat(result).containsExactly("pobi", "woni", "jun");
     }
 
     @Test
-    void 자동차이름분리기능_공백제거메소드_연속공백_테스트() {
-        List<String> input = Arrays.asList("  pobi  ", "  woni  ", "   javaji   ");
+    void 자동차이름분리기능_앞뒤공백제거메소드_연속공백_테스트() {
+        List<String> input = Arrays.asList("  pobi  ", "  woni  ", "   jun   ");
         List<String> result = carNameParser.trimCarNames(input);
-        assertThat(result).containsExactly("pobi", "woni", "javaji");
+        assertThat(result).containsExactly("pobi", "woni", "jun");
     }
 
     @Test
-    void 자동차이름분리기능_입력된문자열이빈문자열일때_테스트() {
+    void 자동차이름분리기능_입력이NULL일때_테스트() {
+        assertThatThrownBy(() -> carNameParser.run(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력은 null 일 수 없습니다");
+    }
+
+    @Test
+    void 자동차이름분리기능_입력이빈문자열일때_테스트() {
         assertThatThrownBy(() -> carNameParser.run(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력은 빈 문자열 일 수 없습니다");
+    }
+
+    @Test
+    void 자동차이름분리기능_입력이공백으로구성되어있을때_테스트() {
+        assertThatThrownBy(() -> carNameParser.run("     "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력은 공백으로만 구성될 수 없습니다");
     }
 
     @Test
@@ -109,23 +123,24 @@ class ServiceTest {
     // 실행 횟수 변환 기능 테스트
 
     @Test
-    void 실행횟수변환기능_정수변환메소드_숫자일경우_테스트() {
-        int result = getAttemptCount.convertStringToNumber("5");
-        assertThat(result).isEqualTo(5);
-    }
-
-    @Test
-    void 실행횟수변환기능_입력받은문자열이NULL일때_테스트() {
+    void 실행횟수변환기능_입력이NULL일때_테스트() {
         assertThatThrownBy(() -> getAttemptCount.run(null))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력은 null 일 수 없습니다");
     }
 
     @Test
-    void 실행횟수변환기능_입력받은문자열이빈문자열일때_테스트() {
+    void 실행횟수변환기능_입력이빈문자열일때_테스트() {
         assertThatThrownBy(() -> getAttemptCount.run(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력은 빈 문자열 일 수 없습니다");
+    }
+
+    @Test
+    void 실행횟수변환기능_입력이공백으로구성되어있을때_테스트() {
+        assertThatThrownBy(() -> getAttemptCount.run("    "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력은 공백으로만 구성될 수 없습니다");
     }
 
     @Test
