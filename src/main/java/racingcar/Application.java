@@ -3,7 +3,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class Application {
@@ -12,6 +14,7 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String names = Console.readLine();
+        validateEndofInput(names);
         List<Car> cars = createCars(names);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
@@ -24,8 +27,11 @@ public class Application {
     public static List<Car> createCars(String names) {
         String[] carNames = names.split(",");
         List<Car> cars = new ArrayList<>();
+        Set<String> carNameSet = new HashSet<>();
         for (String carName : carNames) {
-            validateCarName(carName);
+            validateDuplicate(carNameSet, carName);
+            validateEmpty(carName);
+            validateLength(carName);
             cars.add(new Car(carName));
         }
         return cars;
@@ -37,7 +43,22 @@ public class Application {
         }
         return trial;
     }
-    public static void validateCarName(String carName) {
+    public static void validateDuplicate(Set<String> set, String name) {
+        if (!set.add(name)) {
+            throw new IllegalArgumentException();
+        }
+    }
+    public static void validateEndofInput(String names) {
+        if (!Character.isAlphabetic(names.charAt(names.length() - 1))) {
+            throw new IllegalArgumentException();
+        }
+    }
+    public static void validateEmpty(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+    }
+    public static void validateLength(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException();
         }

@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -55,6 +57,23 @@ class ApplicationTest extends NsTest {
     @Test
     void validateException_NotInteger() {
         assertThatThrownBy(() -> Application.validateInteger("abcd"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void validateException_Blank() {
+        assertThatThrownBy(() -> Application.validateEmpty(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void validateException_EndOfInput() {
+        assertThatThrownBy(() -> Application.validateEndofInput("pobi"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void validateException_Duplicated() {
+        Set<String> set = new HashSet<>();
+        set.add("pobi");
+        assertThatThrownBy(() -> Application.validateDuplicate(set,"pobi"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Override
