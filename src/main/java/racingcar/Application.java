@@ -51,7 +51,9 @@ public class Application {
 
     private static void playRacingCarRound(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
         for (String racingCar : racingCars) {
-            if (canMoveForward()) {
+            int randomValue = Randoms.pickNumberInRange(RANDOM_LOWER_BOUND, RANDOM_UPPER_BOUND);
+
+            if (canMoveForward(randomValue)) {
                 int updatedScore = racingCarsDistance.get(racingCar) + 1;
                 racingCarsDistance.put(racingCar, updatedScore);
             }
@@ -95,9 +97,7 @@ public class Application {
         System.out.println();
     }
 
-    private static boolean canMoveForward() {
-        int randomValue = Randoms.pickNumberInRange(RANDOM_LOWER_BOUND, RANDOM_UPPER_BOUND);
-
+    private static boolean canMoveForward(int randomValue) {
         return randomValue >= MOVE_FORWARD_THRESHOLD;
     }
 
