@@ -62,7 +62,7 @@ public class Racing {
         }
 
         // 우승자 출력
-        System.out.println("최종 우승자: " + String.join(", ", winners));
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
 
