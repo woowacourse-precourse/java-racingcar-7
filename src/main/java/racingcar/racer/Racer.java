@@ -9,12 +9,12 @@ public abstract class Racer {
     }
 
     public void tryMove() {
-        if(move()){
+        if(canMove()){
             distance += "-";
         }
     }
 
-    public abstract boolean move();
+    public abstract boolean canMove();
 
     public String getDistance() {
         return distance;
