@@ -7,8 +7,8 @@ import static racingcar.view.OutputView.printWinners;
 import java.util.List;
 
 public class Race {
-    private List<Car> cars;
-    private int attemptCount;
+    private final List<Car> cars;
+    private final int attemptCount;
 
     public Race(final List<Car> cars, final int attemptCount) {
         this.cars = cars;
