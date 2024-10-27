@@ -54,9 +54,9 @@ public class MyTest {
         return List.of(firstCar, secondCar);
     }
 
-    @DisplayName("자동차 이름 Validator 테스트")
+    @DisplayName("자동차 이름(올바른 값) 예외 테스트")
     @Test
-    public void 자동차_이름_예외_테스트() {
+    public void 올바른_자동차_이름_예외_테스트() {
         String[] validCars = {
                 // 정상 케이스 1. 기본
                 "hyun,yenni", "HYUN,YENNI",
@@ -70,6 +70,15 @@ public class MyTest {
                 "alone",
         };
 
+        final Validator validator = new Validator();
+        for (String cars : validCars) {
+            assertThatNoException().isThrownBy(() -> validator.checkAboutCars(cars));
+        }
+    }
+
+    @DisplayName("자동차 이름(잘못된 값) 예외 테스트")
+    @Test
+    public void 잘못된_자동차_이름_예외_테스트() {
         String[] invalidCars = {
                 // 예외 케이스 1. 이름 글자 수 제한 초과
                 "123456, hyun",
@@ -86,39 +95,42 @@ public class MyTest {
         };
 
         final Validator validator = new Validator();
-        for (String cars : validCars) {
-            assertThatNoException().isThrownBy(() -> validator.checkAboutCars(cars));
-        }
         for (String cars : invalidCars) {
             assertThatIllegalArgumentException().isThrownBy(() -> validator.checkAboutCars(cars))
                     .withMessage(WRONG_CAR_NAME_EXCEPTION);
         }
     }
 
-    @DisplayName("시도할 횟수 Validator 테스트")
+    @DisplayName("시도 횟수 무차별 대입 예외 테스트")
     @Test
-    public void 게임_시도횟수_예외_테스트() {
+    public void 시도횟수_무차별_대입_예외_테스트() {
         final Validator validator = new Validator();
 
         for (int i = -1; i < 10; i++) { // -1부터 10까지 대입 테스트
             String currentRound = Integer.toString(i);
 
-            if (i <= 0) {
+            if (i <= 0) { // 음수거나 0이라면 예외
                 assertThatIllegalArgumentException().
                         isThrownBy(() -> validator.checkAboutRound(currentRound))
                         .withMessage(WRONG_ROUND_EXCEPTION);
 
                 continue;
             }
+
             assertThatNoException().isThrownBy(() -> validator.checkAboutRound(currentRound));
         }
+    }
 
+    @DisplayName("시도 횟수 빈 값 예외 테스트")
+    @Test
+    public void 시도횟수_빈값_예외_테스트() {
+        final Validator validator = new Validator();
         // 빈 값 대입 테스트
         String emptyString = "";
         assertThatIllegalArgumentException().isThrownBy(() -> validator.checkAboutRound(emptyString));
     }
 
-    @DisplayName("무작위 값에 따른 정지")
+    @DisplayName("무작위 값에 따른 정지 테스트")
     @Test
     void 무작위_값_정지_테스트() {
         // given - 테스트 값 준비
@@ -131,7 +143,7 @@ public class MyTest {
         assertThat(actualResult).isEqualTo(STOP);
     }
 
-    @DisplayName("무작위 값에 따른 전진")
+    @DisplayName("무작위 값에 따른 전진 테스트")
     @Test
     void 무작위_값_전진_테스트() {
         // given
@@ -144,7 +156,7 @@ public class MyTest {
         assertThat(actualResult).isEqualTo(MOVE_ONCE);
     }
 
-    @DisplayName("자동차 위치 정지")
+    @DisplayName("정지 값에 대한 실제 자동차의 위치 테스트")
     @Test
     void 자동차_정지_테스트() {
         // given
@@ -158,7 +170,7 @@ public class MyTest {
         assertThat(car.getPosition()).isEqualTo(STOP);
     }
 
-    @DisplayName("자동차 위치 전진")
+    @DisplayName("전진 값에 대한 실제 자동차의 위치 테스트")
     @Test
     void 자동차_전진_테스트() {
         // given
@@ -179,7 +191,7 @@ public class MyTest {
         String expectedOutput = "실행 결과\ncar1 : -\ncar2 : -\ncar3 : -";
         OutputHandler outputHandler = new OutputHandler();
 
-        // 자동차 리스트 생성
+        // 자동차 리스트 생성 후 move
         MoveStrategy moveStrategy = new RandomMoveStrategy(new TestNumberGenerator(RANDOM_VALUE_THAT_MOVE));
         List<Car> cars = generateCars(moveStrategy);
         cars.forEach(Car::move);
