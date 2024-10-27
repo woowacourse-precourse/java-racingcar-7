@@ -7,7 +7,6 @@ public class Controller {
         String s= InputView.getInput();
         Seperator seperator=new Seperator(s);
 
-
     }
 
 
