@@ -3,7 +3,7 @@ package racingcar.interfaces.racing;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.racing.RacingStrategy;
 
-public class RandomNumberGenerator implements RacingStrategy {
+public class RandomRacingStrategy implements RacingStrategy {
 
     private static final int MIN_RANDOM_NUMBER = 0;
     private static final int MAX_RANDOM_NUMBER = 9;
