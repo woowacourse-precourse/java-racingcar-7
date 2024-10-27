@@ -1,8 +1,11 @@
 package racingcar.car;
 
+import racingcar.message.ExceptionMessage;
 import racingcar.validator.CarNameValidator;
 
 import java.util.Objects;
+
+import static racingcar.message.ExceptionMessage.*;
 
 public class Car {
     private final String name;
@@ -35,6 +38,8 @@ public class Car {
 
     @Override
     public String toString() {
+        if(position < 0) throw new IllegalArgumentException(POSITION_UNDER_ZERO.getMessage());
+
         String progress = STICK.repeat(position);
         return name + " : " + progress;
     }
