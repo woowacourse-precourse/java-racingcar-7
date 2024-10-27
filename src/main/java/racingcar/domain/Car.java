@@ -35,4 +35,18 @@ public class Car {
         int randomNumber = generateRandomNumber();
         forwardCar(randomNumber);
     }
+
+    /**
+     * 자동차 이름 getter
+     */
+    public String getCarName() {
+        return carName;
+    }
+
+    /**
+     * 전진 횟수 getter
+     */
+    public int getMoveCount() {
+        return moveCount;
+    }
 }
