@@ -32,6 +32,21 @@ public class Application {
         return moveCount;
     }
 
+    public static void moveCar(int[] moveStatus){
+        for(int i=0 ; i < moveStatus.length ; i++) {
+            if(canMove()) {
+                moveStatus[i] += 1;
+            }
+        }
+    }
+
+    public static boolean canMove() {
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+
+        return randomValue >= 4;
+    }
+
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -44,6 +59,12 @@ public class Application {
 
         String[] carName = saveCar(inputName);
         int moveCount = saveMoveCount(inputMoveCount);
+        int[] moveStatus = new int[carName.length];
+
+        for(int i = 0 ; i < moveCount ; i++){
+            moveCar(moveStatus);
+        }
+
 
     }
 }
