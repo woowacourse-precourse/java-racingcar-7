@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.stream.Collectors;
 import racingcar.car.Car;
 
 import java.util.List;
@@ -14,28 +15,21 @@ public class OutputView {
     }
 
     public static void excuteResult() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     public static void resultPerTry(List<Car> racingCar) {
-        StringBuilder sb = new StringBuilder();
-        for (Car car : racingCar) {
-            sb.append(car.getCarName());
-            sb.append(" : ");
-            sb.append("-".repeat(car.getPosition()));
-            sb.append("\n");
-        }
-        System.out.println(sb);
+        String tryResult = racingCar.stream()
+                .map(car -> car.getCarName() + " : " + "-".repeat(car.getPosition()))
+                .collect(Collectors.joining("\n"));
+        System.out.println(tryResult + "\n");
     }
 
     public static void outputWinner(List<Car> winners) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("최종 우승자 : ");
-        for (Car winner : winners) {
-            sb.append(winner.getCarName());
-            sb.append(", ");
-        }
-
-        System.out.println(sb.substring(0, sb.length() - 2));
+        String winnerResult = "최종 우승자 : " +
+                winners.stream()
+                        .map(Car::getCarName)
+                        .collect(Collectors.joining(", "));
+        System.out.println(winnerResult);
     }
 }
