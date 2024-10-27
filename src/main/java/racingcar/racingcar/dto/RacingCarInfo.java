@@ -1,7 +1,9 @@
 package racingcar.racingcar.dto;
 
+import racingcar.constant.separator.SeparatorConstant;
 import racingcar.racingcar.domain.RacingCar;
 
+import java.util.Collections;
 import java.util.List;
 
 public class RacingCarInfo {
@@ -10,6 +12,15 @@ public class RacingCarInfo {
         this.racingCarInfo = racingCarInfo;
     }
     public List<RacingCar> getRacingCarInfo() {
-        return racingCarInfo;
+        return Collections.synchronizedList(racingCarInfo);
     }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        racingCarInfo.forEach(
+                (racingCar) -> sb.append(racingCar).append(SeparatorConstant.NEXT_LINE)
+        );
+        return sb.toString();
+    }
+
 }
