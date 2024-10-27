@@ -26,6 +26,7 @@
   - 입력이 정수형이 아닌 경우 IllegalArgumentException을을 발생시킨다.
 - [x] 자동차 이름을 생성한다.
   - 자동차 이름이 5자보다 크다면 IllegalArgumentException을 발생시킨다.
+  - 자동차 이름이 null이거나 빈 문자열인 경우 IllegalArgumentException을 발생시킨다.
 - [x] 자동차를 생성한다.
   - 자동차는 이름과 거리를 가진다.
     - 거리의 기본값은 0이다.
