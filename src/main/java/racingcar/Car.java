@@ -20,7 +20,9 @@ public class Car {
 
     private void setTryNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        tryNumber = Integer.parseInt(readLine());
+        String checkTryNumber = readLine();
+        validateTryNumber(checkTryNumber);
+        tryNumber = Integer.parseInt(checkTryNumber);
     }
 
     public HashMap<String, Integer> getCar() {
@@ -33,9 +35,27 @@ public class Car {
         return tryNumber;
     }
 
-    public void validateCarName(String carName){
+    private void validateCarName(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
+        }
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력 해야합니다.");
+        }
+        if (carName.contains(" ")) {
+            throw new IllegalArgumentException("공백을 포함하면 안됩니다.");
+        }
+    }
+
+    private void validateTryNumber(String checkTryNumber) {
+        if (Integer.parseInt(checkTryNumber) <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 양의 정수로 입력 해야합니다.");
+        }
+        if (checkTryNumber.isEmpty()) {
+            throw new IllegalArgumentException("시도 횟수가 입력되지 않았습니다.");
+        }
+        if (checkTryNumber.trim().isEmpty()) {
+            throw new IllegalArgumentException("공백을 포함하면 안됩니다.");
         }
     }
 }
