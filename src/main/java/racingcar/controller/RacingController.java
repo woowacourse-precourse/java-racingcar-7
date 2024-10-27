@@ -7,28 +7,24 @@ import racingcar.model.Winners;
 import racingcar.service.RacingService;
 import racingcar.view.InputProcessor;
 import racingcar.view.OutputView;
-import racingcar.view.validator.carName.CarNameValidatorFacade;
-import racingcar.view.validator.racingNumber.RacingNumberValidatorFacade;
 
 public class RacingController {
 
     private final RacingService racingService;
+    private final InputProcessor inputProcessor;
 
-    public RacingController(RacingService racingService) {
+    public RacingController(RacingService racingService, InputProcessor inputProcessor) {
         this.racingService = racingService;
+        this.inputProcessor = inputProcessor;
     }
 
     public void start() {
-        CarNameValidatorFacade carNameValidatorFacade = new CarNameValidatorFacade();
-        RacingNumberValidatorFacade racingNumberValidatorFacade = new RacingNumberValidatorFacade();
-
-        InputProcessor inputProcessor = new InputProcessor(carNameValidatorFacade, racingNumberValidatorFacade);
         List<String> carNames = inputProcessor.receiveCarNames();
         Race race = inputProcessor.receiveRacingNumber();
 
         Cars cars = racingService.enterCars(carNames);
         Winners winners = racingService.startRace(cars, race);
-        OutputView outputView = OutputView.getInstance();
-        outputView.displayWinners(winners);
+
+        OutputView.getInstance().displayWinners(winners);
     }
 }
