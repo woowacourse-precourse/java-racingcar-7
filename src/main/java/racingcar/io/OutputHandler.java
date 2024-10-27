@@ -9,18 +9,21 @@ import static racingcar.constant.IOMessage.WINNER_MESSAGE;
 
 public class OutputHandler {
 
+    public void printStart() {
+        output(RESULT_HEAD);
+    }
+
     public void printResult(List<String> winners) {
         String winnerMessage = String.join(", ", winners);
         output(WINNER_MESSAGE + winnerMessage);
     }
 
     public void printStatus(List<Car> cars) {
-        output(RESULT_HEAD);
         for (Car car : cars) {
             output(car.getName() + " : " + "-".repeat(car.getDistance()));
         }
+        output("");
     }
-
 
     private void output(String message) {
         System.out.println(message);

@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static racingcar.RaceConfig.RANDOM_POINT_NUMBER;
 
 public class Car {
@@ -14,6 +17,14 @@ public class Car {
     public Car(String name, int distance) {
         this.name = name;
         this.distance = distance;
+    }
+
+    public static List<Car> createCars(List<String> carNames){
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
+        return cars;
     }
 
     public void moveOrStop(int randomNumber){
