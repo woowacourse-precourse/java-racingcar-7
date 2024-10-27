@@ -26,6 +26,14 @@ public class CarRacingManager {
         return new CarRacingManager(carList);
     }
 
+    public List<String> getNames() {
+        return cars.keySet().stream().toList();
+    }
+
+    public List<Car> getList() {
+        return List.copyOf(cars.values());
+    }
+
     public int getDistance(final String name) {
         return cars.get(name).getDistance();
     }
