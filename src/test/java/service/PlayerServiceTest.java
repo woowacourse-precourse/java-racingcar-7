@@ -7,15 +7,15 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 
-class CarServiceTest {
+class PlayerServiceTest {
 
-    private final CarService carService = new CarService();
+    private final PlayerService playerService = new PlayerService();
 
     @Test
     void 유효한_차_이름_입력시_테스트() {
         String carNames = "pobi,woni,jun";
 
-        List<Car> carList = carService.createCarList(carNames);
+        List<Car> carList = playerService.registerPlayers(carNames);
 
         assertThat(carList).hasSize(3);
         assertThat(carList.getFirst().getName()).isEqualTo("pobi");
@@ -27,7 +27,7 @@ class CarServiceTest {
     void 전처리_필요한_차_이름_입력시_테스트() {
         String carNames = "  pobi,    woni, jun ";
 
-        List<Car> carList = carService.createCarList(carNames);
+        List<Car> carList = playerService.registerPlayers(carNames);
 
         assertThat(carList).hasSize(3);
         assertThat(carList.getFirst().getName()).isEqualTo("pobi");
@@ -40,7 +40,7 @@ class CarServiceTest {
         String carNames = "";
 
         assertThatThrownBy(() -> {
-            carService.createCarList(carNames);
+            playerService.registerPlayers(carNames);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("부적절한 형식의 자동차 이름을 입력했습니다. (자동차 이름은 공백이 아닌 5자 이하 문자열)");
     }
@@ -50,7 +50,7 @@ class CarServiceTest {
         String carNames = "very_loooooooong_name, pobi,woni,jun";
 
         assertThatThrownBy(() -> {
-            carService.createCarList(carNames);
+            playerService.registerPlayers(carNames);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("부적절한 형식의 자동차 이름을 입력했습니다. (자동차 이름은 공백이 아닌 5자 이하 문자열)");
     }
@@ -60,7 +60,7 @@ class CarServiceTest {
         String carNames = "pobi,pobi,jun";
 
         assertThatThrownBy(() -> {
-            carService.createCarList(carNames);
+            playerService.registerPlayers(carNames);
         }).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("중복된 자동차 이름을 입력했습니다.");
     }
 }

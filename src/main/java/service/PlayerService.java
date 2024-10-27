@@ -5,17 +5,17 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarValidator;
 
-public class CarService {
+public class PlayerService {
 
     private static final String COMMA = ",";
 
-    public List<Car> createCarList(String carNames) {
+    public List<Car> registerPlayers(String carNames) {
         List<String> carNameList = parseCarNames(carNames);
-        List<Car> carList = carNameList.stream().map(Car::new).toList();
+        List<Car> players = carNameList.stream().map(Car::new).toList();
 
-        CarValidator.validate(carList);
+        CarValidator.validate(players);
 
-        return carList;
+        return players;
     }
 
     private List<String> parseCarNames(String carNames) {
