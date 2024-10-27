@@ -32,6 +32,10 @@ public class CarManager {
         return remainingAttempts;
     }
 
+    public void decrementRemainingAttempts() {
+        remainingAttempts--;
+    }
+
     public List<Car> getCars() {
         return cars;
     }
