@@ -13,7 +13,7 @@ public class Application {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        carNameList = inputView.createCar();
+        carNameList = inputView.createCars();
 
         for (String name: carNameList) {
             carList.add(new Car(name));
