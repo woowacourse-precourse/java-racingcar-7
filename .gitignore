@@ -33,3 +33,10 @@ out/
 
 ### Mac OS ###
 .DS_Store
+
+### gradle ###
+/build/
+/.gradle/
+/gradle/
+/gradlew
+/gradlew.bat
