@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -50,7 +49,7 @@ public class RacingView {
     }
 
     public void viewClose() {
-        Console.close();
+        inputProvider.close();
     }
 }
 

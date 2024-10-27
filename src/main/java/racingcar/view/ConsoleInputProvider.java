@@ -7,4 +7,9 @@ public class ConsoleInputProvider implements InputProvider {
     public String readLine() {
         return Console.readLine();
     }
+
+    @Override
+    public void close() {
+        Console.close();
+    }
 }
