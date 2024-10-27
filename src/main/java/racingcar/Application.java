@@ -18,7 +18,7 @@ public class Application {
         System.out.println();
         int times = readTimes();
         positions = runRound(times, cars, positions);
-
+        printWinners(cars, positions);
     }
 
     /**
@@ -122,6 +122,23 @@ public class Application {
         }
 
         return updatedCarPositions;
+    }
+
+    /**
+     * 최종 우승자를 출력하는 함수
+     *
+     * @param carNames     자동차 이름 리스트
+     * @param carPositions 자동차 위치 리스트
+     */
+    private static void printWinners(List<String> carNames, List<Integer> carPositions) {
+        int maxPosition = carPositions.stream()
+                .max(Integer::compare)
+                .orElseThrow(IllegalArgumentException::new);
+        String[] winners = IntStream.range(0, carNames.size())
+                .filter(i -> carPositions.get(i) == maxPosition)
+                .mapToObj(carNames::get)
+                .toArray(String[]::new);
+        System.out.printf("최종 우승자 : %s\n", String.join(", ", winners));
     }
 
 }
