@@ -34,21 +34,29 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트2() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(","))
+                assertThatThrownBy(() -> runException(",","1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
     @Test
     void 예외_테스트3() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(""))
+                assertThatThrownBy(() -> runException("","1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
     @Test
     void 예외_테스트4() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(" "))
+                assertThatThrownBy(() -> runException(" ","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트5() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
