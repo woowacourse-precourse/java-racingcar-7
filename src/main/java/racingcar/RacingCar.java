@@ -8,6 +8,7 @@ public class RacingCar {
     String carNames;
     List<String> carNameList;
     int carNamesSize;
+    int tryCount;
 
     public void getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -22,4 +23,9 @@ public class RacingCar {
         this.carNameList = Arrays.asList(carNames.split(","));
         carNamesSize = carNameList.size();
     }
+    public void getTryCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        this.tryCount = Integer.parseInt(readLine());
+    }
+
 }
