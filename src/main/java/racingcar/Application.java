@@ -7,8 +7,9 @@ public class Application {
         Parser parser = new Parser();
         Validator validator = new Validator();
         Racing racing = new Racing();
+        Judge judge = new Judge();
 
-        Executor executor = new Executor(ioController, parser, validator, racing);
+        Executor executor = new Executor(ioController, parser, validator, racing, judge);
 
         executor.run();
     }

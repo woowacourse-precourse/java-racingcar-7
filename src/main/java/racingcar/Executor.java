@@ -19,12 +19,14 @@ public class Executor {
     private final Parser parser;
     private final Validator validator;
     private final Racing racing;
+    private final Judge judge;
 
-    Executor(IOController ioController, Parser parser, Validator validator, Racing racing) {
+    Executor(IOController ioController, Parser parser, Validator validator, Racing racing, Judge judge) {
         this.ioController = ioController;
         this.parser = parser;
         this.validator = validator;
         this.racing = racing;
+        this.judge = judge;
     }
 
     public void run() {
@@ -46,7 +48,7 @@ public class Executor {
             ioController.printResults(cars);
         }
 
-        winners = getWinners(cars);
+        winners = judge.getWinners(cars);
         ioController.printWinners(winners);
     }
 
@@ -74,10 +76,4 @@ public class Executor {
         final long maxMoveCount = cars.stream()
             .mapToLong(Car::getMoveCount).max().orElse(0);
 
-        winners = cars.stream()
-            .filter(car -> car.getMoveCount() == maxMoveCount)
-            .toList();
-
-        return winners;
-    }
 }
