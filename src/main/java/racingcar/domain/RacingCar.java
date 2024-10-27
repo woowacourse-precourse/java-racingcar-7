@@ -17,12 +17,12 @@ public class RacingCar {
         }
     }
 
-    public RacingCarName getRacingCarName() {
-        return racingCarName;
+    public String getRacingCarName() {
+        return racingCarName.racingCarName();
     }
 
-    public Location getLocation() {
-        return location;
+    public int getLocation() {
+        return location.location();
     }
 }
 

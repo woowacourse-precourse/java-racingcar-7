@@ -15,7 +15,7 @@ private static final int MINIMUM_CAR_COUNT = 2;
     }
 
     private void validateDuplicateRacingCarNames(List<RacingCar> racingCars) {
-        Set<RacingCarName> racingCarNames = racingCars.stream()
+        Set<String> racingCarNames = racingCars.stream()
                 .map(RacingCar::getRacingCarName)
                 .collect(Collectors.toSet());
 
@@ -28,5 +28,9 @@ private static final int MINIMUM_CAR_COUNT = 2;
         if (racingCars.size() < MINIMUM_CAR_COUNT) {
             throw new IllegalArgumentException("자동차 경주를 위해서는 최소 2대 이상의 자동차를 만들어야 합니다.");
         }
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 }
