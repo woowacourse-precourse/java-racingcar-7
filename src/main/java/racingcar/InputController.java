@@ -13,8 +13,8 @@ public class InputController {
     }
 
     public List<String> extractCarNames(String input) {
-        inputValidator.validateThatDelimiterIsIn(input);
         List<String> carNames = splitByDelimiter(input);
+        inputValidator.validateCountOf(carNames);
         inputValidator.validateNonDuplicate(carNames);
         return carNames;
     }

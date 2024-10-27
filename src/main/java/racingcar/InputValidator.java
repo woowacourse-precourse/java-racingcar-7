@@ -1,19 +1,19 @@
 package racingcar;
 
 import static racingcar.RacingConstants.MIN_ROUNDS;
+import static racingcar.RacingConstants.REQUIRED_MIN_PLAYERS;
 import static racingcar.ViewConstants.DUPLICATE_NAME_ERROR_MESSAGE;
 import static racingcar.ViewConstants.LESS_THAN_MIN_ROUNDS_ERROR_MESSAGE;
-import static racingcar.ViewConstants.NAME_DELIMITER;
 import static racingcar.ViewConstants.TOTAL_ROUNDS_REGEX;
-import static racingcar.ViewConstants.NO_DELIMITER_ERROR_MESSAGE;
+import static racingcar.ViewConstants.NOT_ENOUGH_PLAYERS_ERROR_MESSAGE;
 import static racingcar.ViewConstants.CONTAINS_NON_DIGIT_ERROR_MESSAGE;
 
 import java.util.List;
 
 public class InputValidator {
-    public void validateThatDelimiterIsIn(String input) {
-        if (!input.contains(NAME_DELIMITER)) {
-            throw new IllegalArgumentException(NO_DELIMITER_ERROR_MESSAGE);
+    public void validateCountOf(List<String> names) {
+        if (names.size() < REQUIRED_MIN_PLAYERS) {
+            throw new IllegalArgumentException(NOT_ENOUGH_PLAYERS_ERROR_MESSAGE);
         }
     }
 
