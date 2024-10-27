@@ -15,9 +15,9 @@ public class RaceService {
     private final Cars cars;
     private final NumberMaker randomNumberMaker;
 
-    public RaceService(Cars cars, AttemptCounter attemptManager, NumberMaker randomNumberMaker) {
-        this.cars = cars;
+    public RaceService(AttemptCounter attemptManager, Cars cars, NumberMaker randomNumberMaker) {
         this.attemptCounter = attemptManager;
+        this.cars = cars;
         this.randomNumberMaker = randomNumberMaker;
     }
 
@@ -26,13 +26,17 @@ public class RaceService {
     }
 
     public void runRace() {
+        tryMove();
+        attemptCounter.decrease();
+    }
+
+    private void tryMove() {
         for (Car car : cars.getCars()) {
             int randomNumber = randomNumberMaker.make();
             if (randomNumber >= CAN_MOVE_MIN_RANDOM_CRITERIA) {
                 car.updateDistance(MOVE_DISTANCE);
             }
         }
-        attemptCounter.decrease();
     }
 
 
