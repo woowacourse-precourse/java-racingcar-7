@@ -17,19 +17,14 @@ public class Game {
 
             int rounds = InputManager.readGameRound();
 
-            Game.start(cars, rounds);
+            race(cars, rounds);
         } finally {
             InputManager.close();
         }
     }
 
-    public static void start(Cars cars, int rounds){
-        OutputManager.printStartMessage();
-        race(cars, rounds);
-        printWinner(cars);
-    }
-
     private static void race(Cars cars, int rounds){
+        OutputManager.printStartMessage();
 
         for (int round = 0; round < rounds; round++){
             cars.moveCars();
@@ -37,6 +32,7 @@ public class Game {
             printNextLine();
         }
 
+        printWinner(cars);
     }
     
     private static void printWinner(Cars cars) {
