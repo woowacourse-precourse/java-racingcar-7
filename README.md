@@ -4,7 +4,7 @@
 
 ## 기능 구현 목록
 - 기본 입출력 - `StringPrinter`, `StringReader`
-  - 사용자 친화 입출력 - `UserInputReader`
+  - 사용자 친화 입출력 - `UserInputRequester`
 - 사용자 이름 입력
 - 사용자 시도 횟수 입력
 - 자동차 경주 게임 시작
@@ -19,7 +19,7 @@
   - `List<String>`을 반환하는 것보다 더 의미있는 객체를 반환? 
 - 사용자 시도 횟수 입력
   - `InputReader`가 너무 많은 역할을 하는 것은 아닐까?
-  - `InputReader`의 메시지를 프린트하고 읽어오는 중복 로직
+  - [x] `InputReader`의 메시지를 프린트하고 읽어오는 중복 로직
 - 자동차 경주 게임 시작
 - 가장 많이 전진한 사람들 확인
 - 자동차 전진
