@@ -25,16 +25,14 @@ public class Game {
         return playerCars;
     }
 
-    public void winnerPlayer(HashMap<String, Car> player) {
+    public List<String> winnerPlayer(HashMap<String, Car> player) {
         int max = playerMaxCnt(player);
-
-        List<String> winner = player.
+        return player.
                 values()
                 .stream()
                 .filter(car -> car.getCnt() == max)
                 .map(Car::getName)
                 .toList();
-        OutputManager.getInstance().print("최종 우승자 : " + String.join(", ", winner));
     }
 
     public HashMap<String, Car> assignPlayer(String message) throws DuplicateCarException {

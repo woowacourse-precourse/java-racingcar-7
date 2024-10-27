@@ -1,9 +1,11 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import racingcar.game.Game;
 import racingcar.io.Input;
+import racingcar.io.OutputManager;
 import racingcar.vehicle.Car;
 
 public class Application {
@@ -17,6 +19,7 @@ public class Application {
         System.out.println();
         Game game = new Game();
         HashMap<String, Car> result = game.gameStart(carName, cnt);
-        game.winnerPlayer(result);
+        List<String> winner = game.winnerPlayer(result);
+        OutputManager.getInstance().print("최종 우승자 : " + String.join(", ", winner));
     }
 }
