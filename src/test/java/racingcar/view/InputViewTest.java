@@ -58,4 +58,21 @@ class InputViewTest {
                 InputView::getCarNames);
         assertThat(exception.getMessage()).isEqualTo("자동차 이름 입력이 올바르지 않습니다.");
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1",
+            "100",
+            "425"
+    })
+    void testGetMoveCount(int moveCount) {
+        // Given
+        this.command(String.valueOf(moveCount));
+
+        // When
+        int moveCountResult = InputView.getMoveCount();
+
+        // Then
+        assertThat(moveCountResult).isEqualTo(moveCount);
+    }
 }
