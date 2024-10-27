@@ -45,4 +45,13 @@ public class Application {
 		System.out.println("실행 결과");
 	}
 
+	public static void makeRand(int[] result) {
+		for (int i = 0; i < result.length; i++) {
+			int randNum = Randoms.pickNumberInRange(0, 9);
+			if (randNum > 3) {
+				result[i] += 1;
+			}
+		}
+	}
+
 }
