@@ -7,17 +7,17 @@ public class InputView {
     private static final String ASK_ATTEMPT_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String ERROR_MESSAGE_FOR_NO_INPUT = "입력하지 않았습니다. 프로그램을 종료합니다.";
 
-    public String askCarName() {
+    public static String askCarName() {
         System.out.println(ASK_CAR_NAME_MESSAGE);
         return validate(Console.readLine());
     }
 
-    public String askAttemptNumber() {
+    public static String askAttemptNumber() {
         System.out.println(ASK_ATTEMPT_NUMBER_MESSAGE);
         return validate(Console.readLine());
     }
 
-    public String validate(String input) {
+    public static String validate(String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_NO_INPUT);
         }
