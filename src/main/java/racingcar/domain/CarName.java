@@ -2,28 +2,31 @@ package racingcar.domain;
 
 import java.util.regex.Pattern;
 
-import static racingcar.exception.ExceptionMessage.NAME_OUT_OF_RANGE;
-import static racingcar.exception.ExceptionMessage.WRONG_NAME_FORMAT;
+import static racingcar.exception.ExceptionMessage.*;
 
 public record CarName(String name) {
 
+    public static final int MINIMUM = 1;
     public static final int MAXIMUM = 5;
     public static final Pattern SPECIAL_CHARACTER = Pattern.compile("[^a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ]");
 
     public CarName {
-        validateCarsName(name);
+        validateFormat(name);
         validateLength(name);
     }
 
-    private void validateLength(String name) {
-        if (name.isBlank() || name.length() > MAXIMUM) {
-            throw new IllegalArgumentException(NAME_OUT_OF_RANGE.formatMessage(MAXIMUM));
+    private void validateFormat(String name) {
+        if (SPECIAL_CHARACTER.matcher(name).find()) {
+            throw new IllegalArgumentException(WRONG_NAME_FORMAT.getMessage());
         }
     }
 
-    private void validateCarsName(String name) {
-        if (SPECIAL_CHARACTER.matcher(name).find()) {
-            throw new IllegalArgumentException(WRONG_NAME_FORMAT.getMessage());
+    private void validateLength(String name) {
+        if (name.isBlank()) {
+            throw new IllegalArgumentException(NAME_BLANK.formatMessage(MINIMUM));
+        }
+        if (name.length() > MAXIMUM) {
+            throw new IllegalArgumentException(NAME_OUT_OF_RANGE.formatMessage(MAXIMUM));
         }
     }
 }
