@@ -16,7 +16,7 @@ public class ExceptionMessageTest {
         try {
             RacingChance chance = RacingChance.getAfterValidateFormat(zeroChance);
         } catch (IllegalArgumentException e) {
-            assertEquals("[ERROR] 시도할 횟수는 0 이상이어야 합니다.",
+            assertEquals("[ERROR] 시도할 횟수는 1 이상이어야 합니다.",
                     e.getMessage());
         }
     }
@@ -28,8 +28,8 @@ public class ExceptionMessageTest {
         try {
             RacingChance chance = RacingChance.getAfterValidateFormat(outOfBound);
         } catch (IllegalArgumentException e) {
-            assertEquals("[ERROR] 숫자가 아니거나 int 범위를 벗어납니다.",
-                    e.getMessage());
+            assertEquals("[ERROR] 숫자가 아니거나 " +
+                    "int 범위(2의 31승 - 1)를 벗어납니다.", e.getMessage());
         }
     }
 
@@ -40,8 +40,8 @@ public class ExceptionMessageTest {
         try {
             RacingChance chance = RacingChance.getAfterValidateFormat(noDigits);
         } catch (IllegalArgumentException e) {
-            assertEquals("[ERROR] 숫자가 아니거나 int 범위를 벗어납니다.",
-                    e.getMessage());
+            assertEquals("[ERROR] 숫자가 아니거나 " +
+                            "int 범위(2의 31승 - 1)를 벗어납니다.", e.getMessage());
         }
     }
 
@@ -64,7 +64,8 @@ public class ExceptionMessageTest {
         try {
             CarNames names = CarNames.getAfterValidateFormat(breakLengthLimit);
         } catch (IllegalArgumentException e) {
-            assertEquals("[ERROR] 올바른 자동차 이름 형식이 아닙니다.",
+            assertEquals("[ERROR] 올바른 자동차 이름 형식이 아닙니다. " +
+                            "이름에 허용되는 문자는 알파벳, 한글, 아라비아 숫자입니다.",
                     e.getMessage());
         }
     }
