@@ -6,7 +6,7 @@ import java.util.List;
 public class Judge {
     List<Car> winners = new ArrayList<>();
 
-    public List<Car> judge(Car[] cars) {
+    public List<Car> judge(List<Car> cars) {
         int maxDistance = 0;
 
         for (Car car : cars) {
