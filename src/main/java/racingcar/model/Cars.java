@@ -6,6 +6,7 @@ import static racingcar.message.ErrorMessages.UNPROVIDED_NAMES;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import racingcar.exception.InvalidInputException;
 
@@ -17,7 +18,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(String inputCarNames) {
-        String inputNames = inputCarNames.trim();
+        String inputNames = Objects.requireNonNullElse(inputCarNames, "").trim();
         validateUnprovidedNames(inputNames);
 
         String[] nameArray = inputNames.split(NAME_DELIMITER);
@@ -45,8 +46,8 @@ public class Cars {
         return new Winners(cars);
     }
 
-    private void validateUnprovidedNames(String names) {
-        if (names == null || names.isEmpty()) {
+    private void validateUnprovidedNames(final String names) {
+        if (names.isBlank()) {
             throw new InvalidInputException(UNPROVIDED_NAMES);
         }
     }
