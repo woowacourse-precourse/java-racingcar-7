@@ -46,12 +46,15 @@
         1. 0에서 9 사이에서 무작위 값을 구한다. (Model / RandomNumberGenerator)
         2. 무작위 값을 Car 객체에 전달한다.
         3. 무작위 값이 4 이상인 경우 Car 객체는 전진한다. (Model / Car, Movement)
-        4. 자동차 이름과 전진 현황을 출력한다. (View / OutputView)
-            - pobi : —
-    2. 빈 줄을 출력한다. (View / OutputView)
+    2. 중간 결과를 생성한다. (Model / ProgressResultGenerator)
+    3. 중간 결과를 전달받아 출력한다. (View / OutputView)
+        - pobi : --
+          woni : -
+          jun : --
 10. 메세지(최종 우승자)를 출력한다. (View / OutputView)
     - 최종 우승자 :
-11. 최종 우승자를 뽑아 정답 문자열을 생성한다. (Model / WinnerDeterminer)
+11. 최종 우승자를 뽑는다. (Model / WinnerDeterminer)
+12. 최종 우승자를 토대로 최종 결과 문자열을 생성한다. (Model / WinnerResultGenerator)
     1. 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한 정답 문자열을 생성한다.
-12. 정답 문자열을 출력한다. (View / OutputView)
+13. 최종 결과 문자열을 출력한다. (View / OutputView)
     - pobi, jun
