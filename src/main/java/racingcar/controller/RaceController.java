@@ -37,6 +37,7 @@ public class RaceController {
 
     public void startRace() {
         input();
+        outputTitle();
         race();
         findWinner();
         outputWinner();
@@ -51,6 +52,10 @@ public class RaceController {
 
     private void findWinner() {
         raceService.findWinner(raceModel.getCars(), raceModel.getWinners());
+    }
+
+    private void outputTitle() {
+        OutputView.printTitle();
     }
 
     private void outputProgress() {
