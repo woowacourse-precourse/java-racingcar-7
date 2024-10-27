@@ -1,8 +1,5 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Car {
 
     public Car(String name) {
@@ -13,8 +10,6 @@ public class Car {
 
     private String name;
 
-    private List<Integer> roundIdList = new ArrayList<>();
-
     public int getId() {
         return this.id;
     }
@@ -23,17 +18,7 @@ public class Car {
         return this.name;
     }
 
-    public List<Integer> getRoundIdList() {
-        return this.roundIdList;
-    }
-
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void addRound(Round round) {
-        if (!roundIdList.contains(round.getId())) {
-            this.roundIdList.add(round.getId());
-        }
     }
 }
