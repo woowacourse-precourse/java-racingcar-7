@@ -24,13 +24,15 @@ public class CarModel {
     // 랜덤값에 따라 전진 여부를 결정하는 메서드
     public int isForward(int currentValue) {
 
-        int i = Randoms.pickNumberInRange(0, 9);
+        int i = Randoms.pickNumberInRange(0, maxRandomNumber);
 
-        if (i >= 4) {
+        if (i >= forwardNumber) {
             return currentValue + 1;
         }
         return currentValue;
     }
+    private static final int forwardNumber = 4;
+    private static final int maxRandomNumber = 9;
 
     // 맵 내 최대 value를 구하는 메서드
     public int maxValue(LinkedHashMap<String, Integer> carInfo) {
@@ -58,7 +60,7 @@ public class CarModel {
     }
 
     // 승자가 두 명 이상이면 사이에 콤마를 붙여주는 메서드
-    public void appendWinner(StringBuilder winner, String key) {
+    private void appendWinner(StringBuilder winner, String key) {
         if (winner.length() > 0) {
             winner.append(", ");
         }
