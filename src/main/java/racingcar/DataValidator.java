@@ -61,7 +61,7 @@ public class DataValidator {
     public static int validateTryCount(String tryCount) {
         for (char c : tryCount.toCharArray()) {
             if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException(ErrorMassage.INVALIDE_TRY.getMessage());
+                throw new IllegalArgumentException(ErrorMassage.INVALID_TRY.getMessage());
             }
         }
         if (Integer.parseInt(tryCount) <= 0) {
