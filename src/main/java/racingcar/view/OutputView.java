@@ -26,7 +26,7 @@ public class OutputView {
     }
 
     public static void printFinalWinner(List<String> finalWinners) {
-        System.out.print(OutputMessages.FINAL_WINNER);
+        System.out.print(OutputMessages.WINNER_ANNOUNCEMENT);
         StringBuilder result = new StringBuilder();
 
         for (String winner : finalWinners) {
