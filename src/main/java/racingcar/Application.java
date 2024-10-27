@@ -40,7 +40,7 @@ public class Application {
     }
 
     public static void getNames(Map<String, Integer> race, String input) throws IllegalArgumentException {
-        if(input.isEmpty() || input.isBlank()) {
+        if(input.isBlank()) {
             throw new IllegalArgumentException("빈 문자열을 입력할 수 없습니다.");
         }
         String[] names = input.split(",");
