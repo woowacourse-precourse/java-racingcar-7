@@ -25,4 +25,19 @@ public class SystemService {
 		System.out.println();
 	}
 
+	public List<Car> getWinner(List<Car> cars) {
+		int maxMovement = findMaxMovement(cars);
+
+		return cars.stream()
+				.filter(car -> car.getMovement() == maxMovement)
+				.collect(Collectors.toList());
+	}
+
+	private int findMaxMovement(List<Car> cars) {
+		return cars.stream()
+				.mapToInt(Car::getMovement)
+				.max()
+				.orElse(0);
+	}
+
 }
