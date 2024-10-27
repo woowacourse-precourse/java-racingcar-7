@@ -26,4 +26,8 @@ public class Car {
             position = position + "-";
         }
     }
+
+    public void displayPosition() {
+        System.out.println(getName() + " : " + getPosition());
+    }
 }
