@@ -99,15 +99,12 @@ class ApplicationTest extends NsTest {
 
             for (Car car : cars) {
                 int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
-                if (randomValue >= 4 && randomValue <= 10) {
-                    int Score = car.getScore();
-                    car.setScore(Score +1);
-                }
+                carValueAssigner.updateScoreBasedOnComparison(car, randomValue);
             }
 
         assertEquals(1, cars.get(0).getScore());
-        assertEquals(1, cars.get(0).getScore());
-        assertEquals(0, cars.get(0).getScore());
+        assertEquals(1, cars.get(1).getScore());
+        assertEquals(0, cars.get(2).getScore());
 
 
 

@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarValueAssigner {
@@ -15,9 +16,15 @@ public class CarValueAssigner {
 
             car.setRandomValue(randomValue);// 자동차에 랜덤 값 할당
 
-
+            updateScoreBasedOnComparison(car, randomValue);
         }
 
+    }
+
+    public void updateScoreBasedOnComparison(Car car, int randomValue) {
+        if (randomValue >= 4 && randomValue <= 10) {
+            car.setScore(car.getScore() + 1); // 조건을 만족하면 점수 증가
+        }
     }
 
 
