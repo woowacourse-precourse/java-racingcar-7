@@ -1,4 +1,4 @@
-package racingcar.function;
+package racingcar.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 import racingcar.service.Racing;
 import racingcar.strategy.ModeType;
-import racingcar.util.RacingResultCalculator;
 
 public class RacingResultCalculatorTest {
     @Test
