@@ -7,7 +7,7 @@ import racingcar.domain.racing.RacingService;
 import racingcar.interfaces.input.InputHandlerImpl;
 import racingcar.interfaces.output.OutputHandler;
 import racingcar.interfaces.racing.RacingController;
-import racingcar.infrastructures.RandomRacingStrategy;
+import racingcar.infrastructures.racing.RandomRacingStrategy;
 
 public class RacingCarConfig {
 
