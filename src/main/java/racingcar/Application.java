@@ -42,5 +42,6 @@ public class Application {
         //우승자 목록 도출하기
         Map<String, Integer> totalForwardCount= mapBuilder.getCarNameAndForwardCount();
         Map<String, Integer> sortedTotalForwardCount = winnerSorter.sort(totalForwardCount);
+        List<String> winnerList = winnerSorter.getJointWinners(sortedTotalForwardCount);
     }
 }
