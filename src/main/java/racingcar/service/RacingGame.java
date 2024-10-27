@@ -1,8 +1,9 @@
-package racingcar.domain;
+package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import racingcar.domain.Player;
 import racingcar.dto.RoundResult;
 import racingcar.utils.CustomNumberGenerator;
 import racingcar.utils.NumberGenerator;

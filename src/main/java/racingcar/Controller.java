@@ -3,7 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Player;
-import racingcar.domain.RacingGame;
+import racingcar.service.RacingGame;
 
 public class Controller {
     private final InputView inputView;

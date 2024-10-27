@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.service;
 
 import racingcar.utils.NumberGenerator;
 
