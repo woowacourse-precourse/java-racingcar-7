@@ -2,7 +2,10 @@ package racingcar.front.parser;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import racingcar.front.exception.DuplicatedCarNamesException;
 import racingcar.front.exception.InvalidCarNameInputException;
 
 public class CommaDelimiterParser {
@@ -15,6 +18,11 @@ public class CommaDelimiterParser {
         }
 
         String[] split = carNames.split(COMMA);
+        Set<String> nonDuplicatedCarNames = Arrays.stream(split).collect(Collectors.toSet());
+        if (nonDuplicatedCarNames.size() < split.length) {
+            throw new DuplicatedCarNamesException();
+        }
+
         return Arrays.stream(split).toList();
     }
 }
