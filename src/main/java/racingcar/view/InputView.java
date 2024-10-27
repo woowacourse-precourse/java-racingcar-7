@@ -1,22 +1,25 @@
 package racingcar.view;
 
-import racingcar.validator.CarNameValidator;
-import racingcar.validator.TryCountValidator;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
+    private static final String WHITESPACE_REGEX = "\\s";
+    private static final String EMPTY_STRING = "";
     private static final String CAR_NAME_DELIMITER = ",";
     private static final String EMPTY_CAR_NAME = "이름이 빈 값 입니다.";
     private static final String CANNOT_CONVERT_INTO_INT_ERROR = "입력하신 시도할 횟수를 int로 변환할 수 없습니다.";
+    private static final String CANNOT_INPUT_DUPLICATED_NAMES = "중복된 자동차 이름은 입력하실 수 없습니다.";
 
     public List<String> scanCarNames(){
         String carNameString = readLine();
-        List<String> carNames = Arrays.asList(carNameString.split(CAR_NAME_DELIMITER));
+        List<String> carNames = Arrays.stream(carNameString.split(CAR_NAME_DELIMITER))
+                .map(name -> name.replaceAll(WHITESPACE_REGEX, EMPTY_STRING))
+                .collect(Collectors.toList());
         isValidNames(carNames);
         return carNames;
     }
@@ -36,7 +39,7 @@ public class InputView {
         HashSet<String> names = new HashSet<>();
         for(String carName : carNames){
             if(names.contains(carName)){
-                throw new IllegalArgumentException("중복된 자동차 이름은 입력하실 수 없습니다.");
+                throw new IllegalArgumentException(CANNOT_INPUT_DUPLICATED_NAMES);
             }
             names.add(carName);
         }

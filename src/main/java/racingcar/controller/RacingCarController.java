@@ -11,8 +11,6 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 public class RacingCarController {
