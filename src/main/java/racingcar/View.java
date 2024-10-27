@@ -7,9 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 public class View {
-
     public String readInput() {
         return Console.readLine();
+    }
+
+    public void printNewLine() {
+        System.out.println();
     }
 
     public void printCarNamePrompt() {
@@ -24,13 +27,13 @@ public class View {
         System.out.println(RESULT_HEADER);
     }
 
-    public void printStatus(Map<String, StringBuilder> roundResult) {
+    public void print(Map<String, StringBuilder> roundResult) {
         roundResult.forEach((carName, status) ->
                 System.out.println(carName + " : " + status)
         );
     }
 
-    public void printWinners(List<String> winners) {
+    public void print(List<String> winners) {
         System.out.print(FINAL_WINNERS_MESSAGE + String.join(", ", winners));
     }
 }
