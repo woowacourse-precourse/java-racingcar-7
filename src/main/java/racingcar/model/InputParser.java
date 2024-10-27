@@ -7,7 +7,7 @@ import racingcar.validators.InputValidator;
 
 public class InputParser {
 
-    public LinkedHashMap<String, Integer> parseCarNames(String cars) {
+    public LinkedHashMap<String, Integer> parseCars(String cars) {
         List<String> cars_list = Arrays.asList(cars.replace(" ", "").split(",", -1));
 
         InputValidator validator = new InputValidator();
@@ -21,7 +21,7 @@ public class InputParser {
         return cars_parsed;
     }
 
-    public int parseTotalRounds(String rounds) {
+    public int parseRounds(String rounds) {
         InputValidator validator = new InputValidator();
         validator.validateRounds(rounds);
 

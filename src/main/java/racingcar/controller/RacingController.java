@@ -20,11 +20,11 @@ public class RacingController {
     }
 
     public void run() {
-        LinkedHashMap<String, Integer> cars = parser.parseCarNames(inputView.getCarNames());
-        int totalRounds = parser.parseTotalRounds(inputView.getTotalRounds());
+        LinkedHashMap<String, Integer> cars = parser.parseCars(inputView.getCars());
+        int rounds = parser.parseRounds(inputView.getRounds());
 
         outputView.printStart();
-        for (int round = 0; round < totalRounds; round++) {
+        for (int round = 0; round < rounds; round++) {
             cars = racingModel.moveCars(cars);
             outputView.printRound(cars);
         }
