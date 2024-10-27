@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatNoException;
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.util.CarNameUtils;
+import racingcar.utils.CarNameParser;
 import racingcar.view.ErrorMessage;
 
 public class CarNameListNotEmptyValidatorTest {
@@ -20,7 +20,7 @@ public class CarNameListNotEmptyValidatorTest {
             "' , ', EMPTY_NAME_IN_LIST"           // 모두 공백 이름
     })
     void validate_WhenListContainsEmptyOrBlankName_ShouldThrowException(String carNames, String errorMessage) {
-        List<String> carNameList = CarNameUtils.splitCarNames(carNames);
+        List<String> carNameList = CarNameParser.splitCarNames(carNames);
         assertExceptionThrown(carNameList, errorMessage);
     }
 
@@ -30,7 +30,7 @@ public class CarNameListNotEmptyValidatorTest {
             "'Alice,Bob,Carol'" // 모두 유효한 이름
     })
     void validate_WhenListContainsOnlyValidNames_ShouldNotThrowException(String carNames) {
-        List<String> carNameList = CarNameUtils.splitCarNames(carNames);
+        List<String> carNameList = CarNameParser.splitCarNames(carNames);
         assertNoExceptionThrown(carNameList);
     }
 

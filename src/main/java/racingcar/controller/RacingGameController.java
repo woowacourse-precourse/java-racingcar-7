@@ -34,7 +34,7 @@ public class RacingGameController {
         runAllRaces(tryCount);
         printFinalWinners();
 
-        inputView.close(); // 콘솔 자원 해제
+        closeInput(); // 입력 스트림 자원 해제
     }
 
     private List<String> getCarNames() {
@@ -62,6 +62,10 @@ public class RacingGameController {
 
     private void printFinalWinners() {
         outputView.printWinners(racingGameService.findWinners());
+    }
+
+    private void closeInput() {
+        inputView.close(); // 입력 스트림 자원 해제
     }
 
 }
