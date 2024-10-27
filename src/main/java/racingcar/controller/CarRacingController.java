@@ -35,7 +35,7 @@ public class CarRacingController {
         return Cars.from(carNames);
     }
 
-    private void gameStart(final CarRacingGame carRacingGame) {
+    private void gameStart(CarRacingGame carRacingGame) {
         outputView.printResult();
         while (carRacingGame.canPlay()) {
             List<Car> cars = carRacingGame.start();

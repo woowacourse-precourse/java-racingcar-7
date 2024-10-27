@@ -6,13 +6,13 @@ import java.util.List;
 public class Parser {
     public static final String INPUT_DELIMITER = ",";
 
-    public List<String> parseCarName(final String inputValue) {
+    public List<String> parseCarName(String inputValue) {
         return Arrays.stream(inputValue.split(INPUT_DELIMITER))
                 .map(String::trim)
                 .toList();
     }
 
-    public int parseGameRounds(final String inputValue) {
+    public int parseGameRounds(String inputValue) {
         try {
             return Integer.parseInt(inputValue);
         } catch (NumberFormatException e) {

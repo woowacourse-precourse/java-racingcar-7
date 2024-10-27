@@ -23,7 +23,7 @@ public class InputView {
         return rounds;
     }
 
-    private void validateGameRounds(final int rounds) {
+    private void validateGameRounds(int rounds) {
         if (rounds < MINIMUM_ROUNDS) {
             throw new IllegalArgumentException(String.format("횟수는 %d이상 입력해주세요", MINIMUM_ROUNDS));
         }

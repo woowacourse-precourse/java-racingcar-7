@@ -11,7 +11,7 @@ public class Car implements Comparable<Car> {
     private final String name;
     private int position = 0;
 
-    public Car(final String name) {
+    public Car(String name) {
         validate(name);
         this.name = name;
     }
@@ -34,7 +34,7 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
-    private void validate(final String name) {
+    private void validate(String name) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_CAR_NAME_ERROR);
         }
