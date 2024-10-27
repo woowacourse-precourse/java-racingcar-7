@@ -148,6 +148,190 @@ flowchart LR
 
 ## 📐 구현 내용
 
+> 오른쪽의 <-> 버튼을 누르면 잘 보여요
+
+```mermaid
+classDiagram
+    direction BT
+    class Application {
+        + main(String[]) void
+    }
+    class Car {
+        + withName(Name) Car
+        + attemptMove(MovingStrategy) void
+        + getPosition() Position
+        + compareTo(Car) int
+        + getName() Name
+    }
+    class CarPositionDto {
+        + fromEntry(Entry~Name, Position~) CarPositionDto
+        + name() String
+        + position() int
+    }
+    class Cars {
+        + from(List~Car~) Cars
+        - validateNotEmpty(List~Car~) void
+        + getCarsWithMaxStep() List~Car~
+        + attemptMoveAll(MovingStrategy) void
+        + createSnapshot() CarsPositionSnapshot
+    }
+    class CarsPositionDto {
+        + from(CarsPositionSnapshot) CarsPositionDto
+        + carPositions() List~CarPositionDto~
+    }
+    class CarsPositionSnapshot {
+        + from(List~Car~) CarsPositionSnapshot
+        + getValue() Map~Name, Position~
+    }
+    class EnhancedList~E~ {
+        + listIterator(int) ListIterator~E~
+        + isEmpty() boolean
+        + retainAll(Collection~?~) boolean
+        + clear() void
+        + size() int
+        + toArray() Object[]
+        + remove(int) E
+        + remove(Object) boolean
+        + indexOf(Object) int
+        + iterator() Iterator~E~
+        + listIterator() ListIterator~E~
+        + subList(int, int) List~E~
+        + hashCode() int
+        + add(E) boolean
+        + addAll(Collection~E~) boolean
+        + toString() String
+        + containsAll(Collection~?~) boolean
+        + get(int) E
+        + equals(Object) boolean
+        + toArray(T[]) T[]
+        + set(int, E) E
+        + maxAll() List~E~
+        + addAll(int, Collection~E~) boolean
+        + removeAll(Collection~?~) boolean
+        + lastIndexOf(Object) int
+        + add(int, E) void
+        + contains(Object) boolean
+    }
+    class ExceptionMessage {
+        <<enumeration>>
+        + valueOf(String) ExceptionMessage
+        + message() String
+        + format(Object[]) String
+        + values() ExceptionMessage[]
+    }
+    class InputView {
+        - readLineWithPrompt(String) String
+        + getTotalRace() String
+        + getCarNames() String
+    }
+    class MovingStrategy {
+        <<Interface>>
+        + shouldMove() boolean
+    }
+    class Name {
+        + from(String) Name
+        - validateLength(String) void
+        + getValue() String
+    }
+    class NumberParser {
+        - validateEmpty(String) void
+        - validateOverflow(String) void
+        - parseToInt(String) Integer
+        + parse(String) Integer
+        - validateNull(String) void
+    }
+    class OutputView {
+        + printWinners(WinnerNamesDto) void
+        - appendRoundResult(StringBuilder, CarsPositionDto) void
+        + printRoundResults(List~CarsPositionDto~) void
+    }
+    class Position {
+        + initial() Position
+        + compareTo(Position) int
+        + equals(Object) boolean
+        + hashCode() int
+        + getValue() int
+        + forward() Position
+    }
+    class Race {
+        + execute(MovingStrategy) void
+        + getEntireHistory() List~CarsPositionDto~
+        + initializeRace(Cars, RoundProgress) Race
+        + getWinners() WinnerNamesDto
+        - executeRound(MovingStrategy) void
+    }
+    class RaceHistory {
+        + add(CarsPositionSnapshot) void
+        + create() RaceHistory
+        + toPositionDtos() List~CarsPositionDto~
+    }
+    class RaceResultDto {
+        + of(List~CarsPositionDto~, WinnerNamesDto) RaceResultDto
+        + winners() WinnerNamesDto
+        + raceHistory() List~CarsPositionDto~
+    }
+    class RacingController {
+        + run() void
+    }
+    class RacingService {
+        + createAndExecute(List~String~, int, MovingStrategy) RaceResultDto
+        - createCars(List~String~) Cars
+        - createRace(List~String~, int) Race
+    }
+    class RandomMovingStrategy {
+        + getInstance() RandomMovingStrategy
+        + shouldMove() boolean
+    }
+    class Round {
+        + from(int) Round
+        + getCount() int
+        + next() Round
+        + hashCode() int
+        + equals(Object) boolean
+        - validateMinimum(int) void
+    }
+    class RoundProgress {
+        + progress() void
+        + createFromTotalRounds(Round) RoundProgress
+        + hasNext() boolean
+    }
+    class StringSplitter {
+        - isNotEmpty(String) boolean
+        + split(String) List~String~
+    }
+    class WinnerNamesDto {
+        + from(List~Car~) WinnerNamesDto
+        + winners() List~String~
+    }
+
+    Application ..> InputView: «create»
+    Application ..> NumberParser: «create»
+    Application ..> OutputView: «create»
+    Application ..> RacingController: «create»
+    Application ..> RacingService: «create»
+    Application ..> StringSplitter: «create»
+    Car "1" *--> "name 1" Name
+    Car "1" *--> "position 1" Position
+    Cars "1" *--> "value *" Car
+    Cars "1" *--> "value 1" EnhancedList~E~
+    Cars ..> EnhancedList~E~: «create»
+    CarsPositionDto "1" *--> "carPositions *" CarPositionDto
+    CarsPositionSnapshot "1" *--> "value *" Name
+    CarsPositionSnapshot "1" *--> "value *" Position
+    Race "1" *--> "cars 1" Cars
+    Race "1" *--> "raceHistory 1" RaceHistory
+    Race "1" *--> "roundProgress 1" RoundProgress
+    RaceHistory "1" *--> "snapshots *" CarsPositionSnapshot
+    RaceResultDto "1" *--> "raceHistory *" CarsPositionDto
+    RacingController "1" *--> "inputView 1" InputView
+    RacingController "1" *--> "numberParser 1" NumberParser
+    RacingController "1" *--> "outputView 1" OutputView
+    RacingController "1" *--> "racingService 1" RacingService
+    RacingController "1" *--> "stringSplitter 1" StringSplitter
+    RandomMovingStrategy ..> MovingStrategy
+    RoundProgress "1" *--> "totalRounds 1" Round 
+```
+
 <table>
     <tr>
         <th align="center">Package</th>
