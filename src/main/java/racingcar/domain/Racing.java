@@ -11,9 +11,14 @@ public class Racing {
     private final InputHandler inputHandler;
     private final OutputHandler outputHandler;
 
-    public Racing(InputHandler inputHandler, OutputHandler outputHandler) {
+    private final Cars cars;
+    private Round round;
+
+    public Racing(InputHandler inputHandler, OutputHandler outputHandler, Cars cars, Round round) {
         this.inputHandler = inputHandler;
         this.outputHandler = outputHandler;
+        this.cars = cars;
+        this.round = round;
     }
 
     public void start() {
@@ -24,13 +29,11 @@ public class Racing {
 
         String[] carNameList = input.split(",", -1);
 
-        Cars cars = new Cars();
-
         cars.addCar(carNameList);
 
         outputHandler.printRoundRequest();
 
-        Round round = new Round(inputHandler.inputRoundNumber());
+        round.updateRound(inputHandler.inputRoundNumber());
 
         for (int i = 0; i < round.getRound(); i++) {
             cars.moveForward();

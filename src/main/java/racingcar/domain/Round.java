@@ -2,16 +2,19 @@ package racingcar.domain;
 
 public class Round {
 
-    private final int round;
+    private int round;
 
-    public Round(int round) {
-        this.round = round;
-        validateInteger();
-
+    public Round() {
+        round = 0;
     }
 
     public int getRound() {
         return round;
+    }
+
+    public void updateRound(int round) {
+        this.round = round;
+        validateInteger();
     }
 
     private void validateInteger() {
