@@ -23,13 +23,13 @@ public class CarRaceView {
             validateTryCount(tryCount);
             return tryCount;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해주세요."); // 예외 발생
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
     }
 
     private void validateTryCount(int tryCount) {
         if (tryCount <= 0) {
-            throw new IllegalArgumentException("1 이상의 숫자를 입력해주세요."); // 예외 발생
+            throw new IllegalArgumentException("1 이상의 숫자를 입력해주세요.");
         }
     }
 
