@@ -1,11 +1,16 @@
 package racingcar.validation;
 
 
+import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_DUPLICATE;
 import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_MUST_ENG_KOR_DIGIT;
 import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_MUST_UNDER_LENGTH_FIVE;
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_SEPARATOR;
 import static racingcar.service.exception.CarNamesExceptionMessage.NO_INPUT;
 
+import java.util.Arrays;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import racingcar.service.exception.CarNamesException;
 
 public class CarNamesValidator {
@@ -20,6 +25,7 @@ public class CarNamesValidator {
         validateSeparator(carNames);
         validateCarNameEngKorDigit(carNames);
         validateCarNameUnderLengthFive(carNames);
+        validateCarNamesDuplicated(carNames);
         return carNames;
     }
 
@@ -49,5 +55,15 @@ public class CarNamesValidator {
                 throw new CarNamesException(CAR_NAME_MUST_UNDER_LENGTH_FIVE);
             }
         }
+    }
+
+    private static void validateCarNamesDuplicated(String carNames) {
+        Map<String, Long> nameCountMap = Arrays.stream(carNames.split(CAR_NAMES_SEPARATOR))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        nameCountMap.forEach((name, count) -> {
+            if (count > 1) {
+                throw new CarNamesException(CAR_NAME_DUPLICATE);
+            }
+        });
     }
 }
