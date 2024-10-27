@@ -20,6 +20,13 @@ class MyRacingTest extends NsTest {
         );
     }
     @Test
+    void inputSameName() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi,soo", "2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
     void notNaturalNumber() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,java", "0"))
