@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RaceControl {
@@ -41,11 +43,41 @@ public class RaceControl {
             }
         }
 
-        this.nameList = Arrays.stream(input.split(","))
+        // 중복 이름을 처리하여 nameList에 저장
+        this.nameList = processDuplicateNames(names);
+    }
+    
+    /**
+     * 경주할 자동차들의 이름의 중복을 처리합니다.
+     *
+     * @param names 등록된 자동차들의 이름
+     * @return 중복처리가 끝난 이름의 리스트
+     */
+    private List<String> processDuplicateNames(String[] names) {
+        Map<String, Integer> nameCountMap = new HashMap<>();
+
+        return Arrays.stream(names)
                 .map(String::trim) // 각 문자열 요소의 양 끝 공백 제거
+                .map(name -> addIdentifierForDuplicate(name, nameCountMap)) // 중복 처리
                 .collect(Collectors.toList());
     }
-
+    
+    /**
+     * 중복 이름에 식별자를 추가합니다.
+     *
+     * @param name 등록된 자동차의 이름 , nameCountMap 이름의 갯수를 저장
+     * @return 식별자가 붙은 이름
+     */
+    private String addIdentifierForDuplicate(String name, Map<String, Integer> nameCountMap) {
+        if (nameCountMap.containsKey(name)) {
+            int count = nameCountMap.get(name) + 1;
+            nameCountMap.put(name, count);
+            return name + "(" + count + ")";
+        } else {
+            nameCountMap.put(name, 1);
+            return name; // 처음 등장하는 이름은 그대로 반환
+        }
+    }
 
     /**
      * 경주할 자동차 명단을 확정합니다.
@@ -103,7 +135,7 @@ public class RaceControl {
         System.out.println();
 
         if (round == 0) {
-            System.out.println("실행결과");
+            System.out.println("실행 결과");
         }
 
         for(Car car : this.carList) {
