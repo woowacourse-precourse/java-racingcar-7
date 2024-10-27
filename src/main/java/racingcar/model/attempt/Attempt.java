@@ -14,7 +14,7 @@ public class Attempt {
 
     private void validate(final long attempt) {
         if (attempt < 0) {
-            throw new InvalidAttemptException("시도 횟수는 양수여야 합니다.");
+            throw new InvalidAttemptException("시도 횟수는 0 또는 양수여야 합니다.");
         }
     }
 
