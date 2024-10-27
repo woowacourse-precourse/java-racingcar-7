@@ -19,5 +19,7 @@ public class RacingController {
         String namesInput = racingView.requestNamesInput();
 
         Set<Car> cars = racingService.createCars(namesInput);
+
+        String countInput = racingView.requestCountInput();
     }
 }
