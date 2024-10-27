@@ -16,7 +16,7 @@ public class Application {
         List<Car> raceCars = getCarNames();
         Integer attempt = getAttempt();
 
-        startGame(raceCars,attempt);
+        startGame(raceCars, attempt);
         List<Car> winnerCar = findWinner(raceCars);
         printWinner(winnerCar);
     }
@@ -27,12 +27,12 @@ public class Application {
         String allMembers = Console.readLine();
         String[] carNames = allMembers.split(",");
 
-        if (allMembers == "" || allMembers.trim().isEmpty()) {
+        if (allMembers.equals("") || allMembers.trim().isEmpty()) {
             throw new IllegalArgumentException("참여하는 자동차가 없습니다.");
         }
-        // 각 이름에 대해 Car 객체를 생성하여 리스트에 추가
+
         for (String name : carNames) {
-            if(name.trim().length() > 5) {
+            if (name.trim().length() > 5) {
                 throw new IllegalArgumentException("이름은 5글자 이하로 설정해야 합니다.");
             }
             raceCars.add(new Car(name.trim()));
@@ -44,7 +44,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         Integer attempt = Integer.valueOf(Console.readLine());
 
-        if(attempt <= 0) {
+        if (attempt <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1이상으로 설정해야 합니다.");
         }
 
@@ -54,17 +54,18 @@ public class Application {
     public static void startGame(List<Car> raceCars, Integer attempt) {
         System.out.println();
         System.out.println("실행 결과");
+
         for (int attemptNum = 0; attemptNum < attempt; attemptNum++) {
             runRaceRound(raceCars);
             printRaceRoundProgress(raceCars);
         }
-
     }
 
     private static void runRaceRound(List<Car> raceCars) {
         for (Car car : raceCars) {
-            if(dice.roll() >= 4)
+            if (dice.roll() >= 4) {
                 car.moveOneStep();
+            }
         }
     }
 
@@ -77,23 +78,20 @@ public class Application {
 
     private static List<Car> findWinner(List<Car> raceCars) {
         int maxPosition = raceCars.stream()
-                                    .mapToInt(Car::getPosition)
-                                    .max()
-                                    .orElseThrow(() -> new IllegalArgumentException("Car list is empty"));
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("Car list is empty"));
 
-        List<Car> winner = raceCars.stream()
-                                    .filter(car -> car.getPosition() == maxPosition)
-                                    .toList();
-
-        return winner;
+        return raceCars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
     }
 
     private static void printWinner(List<Car> winnerCar) {
         String winner = winnerCar.stream()
-                                    .map(Car::getName)  // Car 객체의 이름을 추출
-                                    .collect(Collectors.joining(", "));  // 쉼표로 이름을 합침
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
 
         System.out.println("최종 우승자 : " + winner);
     }
 }
-

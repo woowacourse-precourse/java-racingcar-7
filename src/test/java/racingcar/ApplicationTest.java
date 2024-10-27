@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
@@ -26,18 +27,18 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("Empty Car Name")
     void carNameIsEmpty() {
-        assertThatThrownBy(()-> {
+        assertThatThrownBy(() -> {
             run("\n");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("참여하는 자동차가 없습니다.");
     }
 
     @ParameterizedTest
-    @DisplayName("attempt Count Check")
+    @DisplayName("Attempt Count Check")
     @ValueSource(strings = {"0", "-1"})
     void attemptCountIsZeroOrNegative(String attemptCount) {
-        assertThatThrownBy(()-> {
-            run("pobi,woni",attemptCount);
+        assertThatThrownBy(() -> {
+            run("pobi,woni", attemptCount);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("시도 횟수는 1이상으로 설정해야 합니다.");
     }
