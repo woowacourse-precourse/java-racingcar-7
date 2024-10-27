@@ -100,12 +100,12 @@ public class Race {
     }
 
     private void printResultPage() {
+        Page<String> winnersPage = new SimpleTextPage();
+        winnersPage.isNewLineAtEOF(true);
         String content = "최종 우승자 : " +
                 this.winners.stream()
                 .map(Vehicle::getName)
                 .collect(Collectors.joining(", "));
-        Page<String> winnersPage = new SimpleTextPage();
-        winnersPage.isNewLineAtEOF(true);
         winnersPage.render(content);
     }
 }
