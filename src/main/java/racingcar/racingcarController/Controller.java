@@ -3,16 +3,18 @@ package racingcar.racingcarController;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import racingcar.racingcarModel.CarModel;
+import racingcar.racingcarModel.ExceptionModel;
 import racingcar.racingcarView.CarView;
-
 
 public class Controller {
     private CarView carView;
     private CarModel carModel;
+    private ExceptionModel exceptionModel;
 
-    public Controller(CarView carView, CarModel carModel) {
+    public Controller(CarView carView, CarModel carModel, ExceptionModel exceptionModel) {
         this.carView = carView;
         this.carModel = carModel;
+        this.exceptionModel = exceptionModel;
     }
 
     public void run() {
