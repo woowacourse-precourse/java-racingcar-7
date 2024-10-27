@@ -4,6 +4,12 @@ import java.math.BigInteger;
 
 public class Constant {
 
+    // Car
+    public static final int MOVE_THRESHOLD = 4;
+    public static final int RANDOM_MIN = 0;
+    public static final int RANDOM_MAX = 9;
+    public static final int MOVE_INCREMENT = 1;
+
     // InputView
     public static final String CAR_NAMES_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     public static final String ATTEMPT_COUNT_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
@@ -22,11 +28,6 @@ public class Constant {
 
     // Parser
     public static final String CAR_NAME_SEPARATOR = ",";
-
-    // RaceService
-    public static final int MOVE_THRESHOLD = 4;
-    public static final int RANDOM_MIN = 0;
-    public static final int RANDOM_MAX = 9;
 
     // RaceController
     public static final String WINNER_NAME_JOINER = ", ";

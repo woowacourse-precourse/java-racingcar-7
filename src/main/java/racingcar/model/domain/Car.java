@@ -1,5 +1,9 @@
 package racingcar.model.domain;
 
+import static racingcar.constant.Constant.*;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
 
     private final String carName;
@@ -18,7 +22,14 @@ public class Car {
         return currentDistance;
     }
 
-    public void increaseDistance() {
-        currentDistance++;
+    public void moveConditionally() {
+        int random = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
+        if (random >= MOVE_THRESHOLD) {
+            increaseDistance();
+        }
+    }
+
+    private void increaseDistance() {
+        currentDistance += MOVE_INCREMENT;
     }
 }

@@ -2,8 +2,8 @@ package racingcar.view;
 
 import static racingcar.constant.Constant.*;
 
-import java.util.List;
 import racingcar.model.domain.Car;
+import racingcar.model.domain.Cars;
 
 public class OutputView {
 
@@ -11,8 +11,8 @@ public class OutputView {
         System.out.println(START_MESSAGE);
     }
 
-    public void printRaceProgress(List<Car> cars) {
-        for (Car car : cars) {
+    public void printRaceProgress(Cars cars) {
+        for (Car car : cars.getCarsReadOnly()) {
             System.out.println(formatRaceProgress(car));
         }
         System.out.println();

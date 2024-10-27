@@ -34,15 +34,15 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 거리가 1씩 증가하는지 확인하는 테스트")
-    void increaseDistanceByOne() {
+    @DisplayName("자동차가 조건에 따라 이동하여 거리가 0 또는 1인지 확인")
+    void moveConditionally() {
         // given
         Car car = new Car("pobi");
 
         // when
-        car.increaseDistance();
+        car.moveConditionally();
 
         // then
-        assertThat(car.getCurrentDistance()).isEqualTo(1);
+        assertThat(car.getCurrentDistance()).isBetween(0, 1);
     }
 }

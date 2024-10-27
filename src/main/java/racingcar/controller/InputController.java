@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.List;
 import racingcar.model.Parser;
 import racingcar.model.Validator;
+import racingcar.model.domain.Cars;
 import racingcar.view.InputView;
 
 public class InputController {
@@ -18,11 +19,11 @@ public class InputController {
         this.validator = validator;
     }
 
-    public List<String> getValidatedCarNames() {
+    public Cars getValidatedCarNames() {
         String carNamesInput = inputView.getCarNamesInput();
         List<String> carNames = parser.parseCarNames(carNamesInput);
         validator.validateCarNames(carNames);
-        return carNames;
+        return new Cars(carNames);
     }
 
     public BigInteger getValidatedAttemptCount() {
