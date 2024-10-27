@@ -3,7 +3,6 @@ package racingcar.repository;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -31,11 +30,10 @@ class RacingCarRepositoryTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @DisplayName("저장된 자동차 목록 조회 테스트")
     void findAll() {
 
-        // 저장 순서를 보장하지 않음
         Car car1 = new Car("pobi");
         Car car2 = new Car("woni");
         Car car3 = new Car("jun");

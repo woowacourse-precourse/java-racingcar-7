@@ -1,13 +1,16 @@
 package racingcar.repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 import racingcar.domain.Car;
 
 public class RacingCarRepository implements CarRepository {
 
-    private static ConcurrentHashMap<String, Car> repository = new ConcurrentHashMap<>();
+    private static Map<String, Car> repository =
+            Collections.synchronizedMap(new LinkedHashMap<>());
 
     private static final RacingCarRepository instance = new RacingCarRepository();
 
