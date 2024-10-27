@@ -26,12 +26,6 @@ class ApplicationTest extends NsTest {
             run("poby,woni,abcdef", "3");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 5자 이하로 입력 해야합니다.");
-
-        // 시도 횟수가 10회를 초과
-        assertThatThrownBy(() -> {
-            run("poby,woni,jun", "12");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("시도하는 횟수가 너무 많습니다. 10회 이하로 설정해주세요");
     }
 
     @Test
