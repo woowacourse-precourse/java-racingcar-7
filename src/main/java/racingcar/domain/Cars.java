@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import racingcar.utils.Validator;
 
 public class Cars {
     private final List<Car> cars;
@@ -29,9 +30,14 @@ public class Cars {
 
     private void addCars(List<String> names) {
         for (String name : names) {
+            validateNameLength(name);
             Car car = new Car(name);
             cars.add(car);
         }
+    }
+
+    private void validateNameLength(String name) {
+        Validator.checkNameLength(name);
     }
 
     public List<Car> getCars() {
