@@ -1,53 +1,50 @@
 package Service;
 
+import DAO.RaceDAO;
 import VO.CarVO;
 import View.RaceView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class RaceService {
     private RaceView raceView = new RaceView();
-    private List<CarVO> cars;
-    private int round;
 
-    public RaceService(List<CarVO> userInputCars, int userInputRound){
-        cars=userInputCars;
-        round=userInputRound;
-    }
-
-    public void raceing(int i){
-        for (CarVO car : cars) {
-            car.runing();
+    public int runing(int value) {
+        int randomPosition = pickNumberInRange(0, 9);
+        if (randomPosition >= 4) {
+            value++;
         }
-        raceView.raceState(cars,i);
+        return value;
     }
 
-    public void roundStart(){
-        for (int i=0;i<round;i++){
-            raceing(i);
+    public List<CarVO> raceing(List<CarVO> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            int position = cars.get(i).getPosition();
+            int resultPosition = runing(position);
+            cars.get(i).setPosition(resultPosition);
         }
-    }
-
-    public List<CarVO> carsState() {
         return cars;
     }
 
-    public int getMaxPosition(){
-        int position=0;
+    public int getMaxPosition(List<CarVO> cars) {
+        int position = 0;
         for (CarVO car : cars) {
-            if(car.getPosition()>position){
-                position=car.getPosition();
+            if (car.getPosition() > position) {
+                position = car.getPosition();
             }
         }
         return position;
     }
 
 
-    public List<String> winnerCars() {
+    public List<String> winnerCars(List<CarVO> cars) {
         List<String> winners = new ArrayList<>();
+        int maxPosition = getMaxPosition(cars);
         for (CarVO car : cars) {
-            if (car.getPosition() == getMaxPosition()) {
+            if (car.getPosition() == maxPosition) {
                 winners.add(car.getCarName());
             }
         }

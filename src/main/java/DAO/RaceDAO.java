@@ -9,6 +9,15 @@ import java.util.Map;
 
 public class RaceDAO {
     private Map<String, CarVO> carDatabase = new HashMap<>();
+    private int round;
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
 
     public void inputCar(CarVO car) {
         carDatabase.put(car.getCarName(), car);
