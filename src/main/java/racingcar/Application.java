@@ -9,14 +9,15 @@ import java.util.StringTokenizer;
 
 
 public class Application {
-    static List<Car> cars = new ArrayList<>();
+    static List<Car> cars;
     static int playCount;
     static int count;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String str = Console.readLine();
         playCount = Integer.parseInt(Console.readLine());
-        
+        cars = new ArrayList<>();
+
         createCar(str);
 
         playGame();
@@ -41,32 +42,32 @@ public class Application {
         for (int i = 0; i < playCount; i++) {
             for (int j = 0; j < count; j++) {
                 int randomNum = Randoms.pickNumberInRange(0,9);
-
-                if(randomNum >= 4) {
-                    cars.get(j).location += 1;
-                }
+                recordLoc(j, randomNum);
             }
-
-            for (int j = 0; j < count; j++) {
-                System.out.print(cars.get(j).getInfo());
-            }
-            System.out.println();
+            printLoc();
         }
     }
 
-    static void printWinner() {
-        int temp = 0;
-        for (int i = 0; i < count; i++) {
-            temp = Math.max(temp, cars.get(i).location);
+    static void recordLoc(int carNum, int randomNum) {
+        if(randomNum >= 4) {
+            cars.get(carNum).location += 1;
         }
+    }
+
+    static void printLoc() {
+        for (int j = 0; j < count; j++) {
+            System.out.print(cars.get(j).getInfo());
+        }
+        System.out.println();
+    }
+
+    static void printWinner() {
+
+        int winnerLoc = getWinnerLoc();
 
         List<String> winner = new ArrayList<>();
-        if(temp != 0){
-            for (int i = 0; i < count; i++) {
-                if(cars.get(i).location == temp) {
-                    winner.add(cars.get(i).name);
-                }
-            }
+        if(winnerLoc != 0){
+            winner = getWinner(winnerLoc);
         }
 
         StringBuilder sb = new StringBuilder();
@@ -79,4 +80,23 @@ public class Application {
 
         System.out.println(sb);
     }
+
+    static int getWinnerLoc() {
+        int temp = 0;
+        for (int i = 0; i < count; i++) {
+            temp = Math.max(temp, cars.get(i).location);
+        }
+        return temp;
+    }
+
+    static List<String> getWinner(int winnerLoc) {
+        List<String> winner = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            if(cars.get(i).location == winnerLoc) {
+                winner.add(cars.get(i).name);
+            }
+        }
+        return winner;
+    }
+    
 }
