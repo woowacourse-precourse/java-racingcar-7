@@ -19,4 +19,18 @@ public class RacingGame {
         return Console.readLine();
     }
 
+    private static List<String> parseAndTrimCarNames(String input) {
+        return Arrays.stream(input.split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
+    }
+
+    protected static void validateCarNames(List<String> carNames) {
+        carNames.forEach(name -> {
+            if (name.isEmpty() || name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+            }
+        });
+    }
+
 }
