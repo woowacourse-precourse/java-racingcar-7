@@ -15,8 +15,7 @@ import racingcar.view.OutputView;
 public class GameController {
 
 	public void run() {
-		OutputView.printCarNamesInputMessage();
-		String carNamesInput = InputView.getCarNamesInput();
+		String carNamesInput = getCarNamesInput();
 		List<String> carNames = TextSeparator.separateCarNames(carNamesInput);
 		List<Car> cars = carNames.stream()
 				.map(Car::new)
@@ -33,6 +32,11 @@ public class GameController {
 		List<String> winners = WinnerDeterminer.determineWinner(cars);
 		String winnerResult = WinnerResultGenerator.generateWinnerResult(winners);
 		OutputView.printWinnerResultMessage(winnerResult);
+	}
+
+	private String getCarNamesInput() {
+		OutputView.printCarNamesInputMessage();
+		return InputView.getCarNamesInput();
 	}
 
 	private void executeRaceRound(List<Car> cars) {
