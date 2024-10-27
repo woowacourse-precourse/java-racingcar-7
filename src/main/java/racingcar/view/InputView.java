@@ -13,9 +13,9 @@ public class InputView {
         return CarNames;
     }
 
-    public static int getInputNumberOfAttempts(){
+    public static String getInputNumberOfAttempts(){
         System.out.println(INPUT_NUMBER_OF_ATTEMPTS);
         String numberOfAttempts = Console.readLine();
-        return Integer.parseInt(numberOfAttempts);
+        return numberOfAttempts;
     }
 }
