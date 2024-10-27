@@ -2,24 +2,32 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.request.CarCreateRequest;
+import racingcar.request.RaceCreateRequest;
+import racingcar.response.RoundResponse;
+import racingcar.response.WinnerResponse;
 import racingcar.service.RaceService;
-import racingcar.view.OutputView;
 
 public class RaceController {
     private final RaceService service;
-    private final OutputView view;
 
-    public RaceController(CarCreateRequest carCreateRequest) {
-        service = new RaceService(carCreateRequest);
-        view = new OutputView();
+    public RaceController() {
+        this.service = new RaceService();
     }
 
-    public void execute() {
-        do {
-            List<Car> cars = service.proceed();
-            view.displayMessage(cars.toString());
-        } while (!service.isGameEnd());
-        view.displayMessage("우승자 : " + service.getWinner().toString());
+    public void createRace(RaceCreateRequest request) {
+        service.createRace(request.getNames(), request.getTryCount());
+    }
+
+    public RoundResponse playRound() {
+        List<Car> movedCars = service.playRound();
+        boolean isGameEnd = service.isGameEnd();
+
+        return new RoundResponse(movedCars, isGameEnd);
+    }
+
+    public WinnerResponse getWinner() {
+        List<Car> winners = service.getWinner();
+
+        return new WinnerResponse(winners);
     }
 }

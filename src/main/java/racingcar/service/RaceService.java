@@ -9,30 +9,29 @@ import racingcar.domain.Race;
 
 import racingcar.domain.RaceRule;
 import racingcar.utils.generator.RandomDigitsGenerator;
-import racingcar.domain.Round;
-import racingcar.request.CarCreateRequest;
 
 public class RaceService {
-    private final Race race;
+    private final RaceRule rule;
+    private Race race;
 
-    public RaceService(CarCreateRequest request) {
+    public RaceService() {
         NumberGenerator numberGenerator = new RandomDigitsGenerator();
-        List<String> names = Arrays.stream(request.getNames()).toList();
-        int totalRound = request.getTryCount();
-        RaceRule rule = new RaceRule(numberGenerator);
-
-        this.race = new Race(totalRound, names, rule);
+        this.rule = new RaceRule(numberGenerator);
     }
 
-    public List<Car> proceed() {
+    public void createRace(List<String> names, int tryCount) {
+        this.race = new Race(tryCount, names, rule);
+    }
+
+    public List<Car> playRound() {
         return race.proceed();
-    }
-
-    public List<Car> getWinner() {
-        return race.getWinner();
     }
 
     public boolean isGameEnd() {
         return race.isGameEnd();
+    }
+
+    public List<Car> getWinner() {
+        return race.getWinner();
     }
 }
