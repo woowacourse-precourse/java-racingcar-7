@@ -14,6 +14,11 @@ public class Race {
     }
     public List<Car> createParticipant(List<String> carName) {
         List<Car> carList = new ArrayList<>();
+
+        if(carName.isEmpty()){
+            throw new NullPointerException("리스트가 비었습니다.");
+        }
+
         for(int i = 0; i < carName.size(); i++){
             String name = carName.get(i);
             carList.add(new RacingCar(name));
@@ -30,6 +35,8 @@ public class Race {
         int count = inputManager.getNumberOfAttempt();
 
         List<Car> result = null;
+        System.out.println();
+        System.out.print("실행 결과");
         for(int i = 0; i < count; i++){
             result = referee.checkDrivingDistance(carList);
             outputManager.printExecutionResult(result);
