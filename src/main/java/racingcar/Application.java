@@ -35,5 +35,8 @@ public class Application {
             randomPicker.runSingleRandomRound(carNames);
             mapBuilder.mapSingleRandomRoundResult(i);
         }
+        System.out.println(messagePrinter.totalRandomResultMessage());
+
+
     }
 }
