@@ -24,6 +24,8 @@ public class Application {
         String triesInput = Console.readLine();
         int numTries = validateAndParseTries(triesInput);
 
+        GameContext gameContext = new GameContext(cars, numTries);
+        gameContext.playGame();
     }
 
     static void validateCarNames(List<String> carNames) {
