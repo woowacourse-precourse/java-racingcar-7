@@ -78,4 +78,17 @@ public class Application {
 		System.out.println();
 	}
 
+	public static String findWinners(int[] result, String[] arr, int max) {
+		StringBuilder winners = new StringBuilder();
+		for (int i = 0; i < result.length; i++) {
+			if (result[i] == max) {
+				winners.append(arr[i]).append(", ");
+			}
+		}
+		if (winners.length() > 0) {
+			return winners.substring(0, winners.length() - 2);
+		} else {
+			return "";
+		}
+	}
 }
