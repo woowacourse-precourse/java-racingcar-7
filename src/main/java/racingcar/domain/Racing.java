@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.List;
+import racingcar.dto.RoundDto;
 
 public class Racing {
 
@@ -16,5 +17,13 @@ public class Racing {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException("차는 1대 이상 존재해야 합니다");
         }
+    }
+
+    public void progress() {
+        cars.forEach(Car::move);
+    }
+
+    public RoundDto getRoundResult() {
+        return RoundDto.from(cars);
     }
 }
