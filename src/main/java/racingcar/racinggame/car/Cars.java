@@ -6,13 +6,15 @@ import java.util.Set;
 
 public class Cars {
 
+	private static final int SINGLE_CAR_COUNT = 1;
 	private static final String DUPLICATION_CAR_NAME_ERROR_MESSAGE = "중복된 자동차 이름이 존재합니다.";
 	private static final String NOT_EQUALS_CARS_COUNT_AND_RANDOM_VALUES_COUNT_ERROR_MESSAGE = "랜덤 값과 자동차의 개수가 일치하지 않습니다.";
+	private static final String SINGLE_CAR_ERROR_MESSAGE = "2대 이상의 차량이 필요합니다.";
 
 	private final List<Car> cars;
 
 	private Cars(List<String> carNames) {
-		validateDuplicateCarName(carNames);
+		validateCarNames(carNames);
 
 		this.cars = carNames.stream()
 			.map(Car::create)
@@ -21,6 +23,17 @@ public class Cars {
 
 	public static Cars create(List<String> carNames) {
 		return new Cars(carNames);
+	}
+
+	private void validateCarNames(List<String> carNames) {
+		validateSingleCar(carNames);
+		validateDuplicateCarName(carNames);
+	}
+
+	private void validateSingleCar(List<String> carNames) {
+		if (carNames.size() <= SINGLE_CAR_COUNT) {
+			throw new IllegalArgumentException(SINGLE_CAR_ERROR_MESSAGE);
+		}
 	}
 
 	private void validateDuplicateCarName(List<String> carNames) {
