@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.service.InputDecodeService;
+import racingcar.service.InputValidationService;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -11,12 +12,14 @@ public class RacingController {
 
     private InputView inputView;
     private OutputView outputView;
+    private InputValidationService inputValidationService;
     private InputDecodeService inputDecodeService;
     private RacingService racingService;
 
     public RacingController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.inputValidationService = new InputValidationService();
         this.inputDecodeService = new InputDecodeService();
         this.racingService = new RacingService();
     }
@@ -30,11 +33,13 @@ public class RacingController {
 
     private List<Car> prepareRacingCar() {
         String rawCarNames = inputView.inputCarNames();
+        inputValidationService.validateRawCarNames(rawCarNames);
         return inputDecodeService.decodeRawCarNames(rawCarNames);
     }
 
     private int prepareRoundCount() {
         String rawRoundCount = inputView.inputRoundCount();
+        inputValidationService.validateRawRoundCount(rawRoundCount);
         return inputDecodeService.decodeRawRoundCount(rawRoundCount);
     }
 
