@@ -6,9 +6,9 @@ import java.util.List;
 public class InputNameDuplicationValidator implements InputNameValidator {
 
     @Override
-    public void validate(String inputName) {
+    public void validate(String inputNames) {
         List<String> checkedNames = new ArrayList<>();
-        for (String name : splitInputNames(inputName)) {
+        for (String name : splitInputNames(inputNames)) {
             checkDuplication(name, checkedNames);
             checkedNames.add(name);
         }
