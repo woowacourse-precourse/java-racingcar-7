@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -21,6 +22,27 @@ public class Application {
         String tryCountInput = inputString("시도할 횟수는 몇 회인가요?");
         validateTryCount(tryCountInput);
         int tryCount = Integer.parseInt(tryCountInput);
+
+        // 자동차 경주 게임 수행
+        playRacingCarGame(tryCount, racingCars);
+    }
+
+    private static void playRacingCarGame(int tryCount, List<String> racingCars) {
+        // 자동차 이름을 키로 하고, 이동 거리를 값으로 하는 맵 초기화
+        HashMap<String, Integer> racingCarsDistance = new HashMap<>();
+        racingCars.forEach(racingCar -> racingCarsDistance.put(racingCar, 0));
+
+        // 자동차 경주 게임의 라운드를 시도 횟수만큼 수행
+        for (int i = 0; i < tryCount; i++) {
+            playRacingCarRound(racingCars, racingCarsDistance);
+            // TODO: 자동차 경주 게임의 각 라운드의 결과를 출력
+        }
+    }
+
+    private static void playRacingCarRound(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
+        for (String racingCar : racingCars) {
+            // TODO: 해당 자동차가 전진 가능하면, 이동 거리를 1 증가
+        }
     }
 
     private static String inputString() {
