@@ -37,6 +37,11 @@ public class Application {
 
 	}
 
+	public static int inputRoundCount() {
+		System.out.println("시도할 횟수는 몇 회인가요?");
+		String roundCount = Console.readLine();
+		return Integer.parseInt(roundCount);
+	}
 
 
 
