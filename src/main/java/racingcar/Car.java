@@ -33,13 +33,20 @@ public class Car {
 	}
 
 	public int move() {
-
-		int randomValue = Randoms.pickNumberInRange(0, 9);
-
-		if (randomValue >= 4) {
+		if (pickNumber()) {
 			moveCounter++;
 		}
 
 		return moveCounter;
+	}
+
+	private boolean pickNumber() {
+		int randomValue = Randoms.pickNumberInRange(0, 9);
+
+		if (randomValue >= 4) {
+			return true;
+		}
+
+		return false;
 	}
 }
