@@ -33,6 +33,6 @@ public class OutputView {
 		List<String> winnerNames = winners.stream()
 			.map(winner -> String.valueOf(winner.getWinner()))
 			.toList();
-		System.out.println(View.WINNER_OUTPUT.getConstant() + String.join(",", winnerNames));
+		System.out.println(View.WINNER_OUTPUT.getConstant() + String.join(", ", winnerNames));
 	}
 }
