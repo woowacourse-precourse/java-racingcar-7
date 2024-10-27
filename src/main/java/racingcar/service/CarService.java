@@ -12,6 +12,10 @@ public class CarService {
         this.cars = new ArrayList<>();
     }
 
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
+
     public void addCars(ArrayList<Car> newCars) {
         cars.addAll(newCars);
     }
