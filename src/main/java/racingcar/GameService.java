@@ -60,5 +60,26 @@ public class GameService {
 
     }
 
+    public String findingWinner(Map<String, Integer> cars) {
+
+        int maxValue = 0;
+        for (int score : cars.values()) {
+            if (score > maxValue) {
+                maxValue = score;
+            }
+        }
+
+        for (Map.Entry<String, Integer> entry : cars.entrySet()) {
+            String car = entry.getKey();
+            Integer score = entry.getValue();
+
+            if (score == maxValue) {
+                gameRepository.setWinner(car);
+            }
+        }
+
+        return String.join(",", gameRepository.getWinner());
+    }
+
 
 }

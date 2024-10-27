@@ -6,6 +6,7 @@ import java.util.List;
 public class GameRepository {
 
     private List<String> names = new ArrayList<>();
+    private final List<String> winner = new ArrayList<>();
     private int round;
 
     public void setCarName(List<String> splitNames) {
@@ -27,4 +28,13 @@ public class GameRepository {
     public int getRound() {
         return this.round;
     }
+
+    public void setWinner(String input) {
+        this.winner.add(input);
+    }
+
+    public List<String> getWinner() {
+        return this.winner;
+    }
+
 }
