@@ -9,7 +9,7 @@ import static racingcar.exception.ExceptionMessage.WRONG_NAME_FORMAT;
 public class CarName {
 
     public static final int MAXIMUM = 5;
-    public static final Pattern SPECIAL_CHARACTER = Pattern.compile("[^a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]");
+    public static final Pattern SPECIAL_CHARACTER = Pattern.compile("[^a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ]");
 
     private final String name;
 
