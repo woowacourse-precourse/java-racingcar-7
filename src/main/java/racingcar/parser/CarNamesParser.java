@@ -18,6 +18,7 @@ public class CarNamesParser {
     private static List<String> getCarNames(final String input) {
         return Arrays.stream(input.split(CAR_NAMES_DELIMITER))
                 .map(String::trim)
+                .filter(name -> !name.isBlank())
                 .toList();
     }
 }
