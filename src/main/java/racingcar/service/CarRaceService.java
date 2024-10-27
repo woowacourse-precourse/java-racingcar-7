@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.toMap;
 import static racingcar.enums.ExceptionMessage.CAR_NOT_FOUND;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import racingcar.domain.Car;
@@ -34,7 +35,9 @@ public class CarRaceService {
         return cars.stream()
                 .collect(toMap(
                         Car::getName,
-                        Car::getMovingDistance
+                        Car::getMovingDistance,
+                        (oldValue, newValue) -> oldValue,
+                        LinkedHashMap::new
                 ));
     }
 
