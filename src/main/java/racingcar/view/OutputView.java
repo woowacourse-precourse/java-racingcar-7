@@ -1,7 +1,9 @@
 package racingcar.view;
 
+import java.util.HashMap;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class OutputView {
 
@@ -17,12 +19,15 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void printRoundResult(Car car) {
-            System.out.print(car.getName() + " : ");
-            for (int i = 0; i < car.getPosition(); i++) {
+    public void printRoundResult(HashMap<String, Integer> result) {
+        for (String name : result.keySet()) {
+            System.out.print(name + " : ");
+            for (int i = 0; i < result.get(name); i++) {
                 System.out.print("-");
             }
             System.out.println();
+        }
+        System.out.println();
     }
 
     public void printWinner(List<String> winner) {

@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,39 +12,38 @@ public class GameController {
     private final OutputView outputView = new OutputView();
 
     public void run() {
-        outputView.printRequestName();
-        List<String> carNameList = inputView.inputCars();
+        Cars cars = setCars();
+        int tryCount = setTryCount();
+        gameStart(tryCount, cars);
+    }
 
+    private void gameStart(int tryCount, Cars cars) {
+        outputView.printResultMessage();
+        for (int i = 0; i < tryCount; i++) {
+            cars.move();
+            outputView.printRoundResult(cars.getRoundResult());
+        }
+        outputView.printWinner(cars.getWinner());
+    }
+
+    private int setTryCount() {
         outputView.printRequestTryCount();
         int tryCount = inputView.inputTryCount();
+        return tryCount;
+    }
 
-        List<Car> carList = new ArrayList<>();
+    private Cars setCars() {
+        outputView.printRequestName();
+        List<String> carNames = inputView.inputCars();
 
-        for (String name : carNameList) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String name : carNames) {
             Car car = new Car(name);
-            carList.add(car);
+            cars.add(car);
         }
 
-        outputView.printResultMessage();
-
-        for (int i = 0; i < tryCount; i++) {
-            for (Car car : carList) {
-                car.move();
-                outputView.printRoundResult(car);
-            }
-            System.out.println();
-        }
-
-        int maxDistance = 0;
-        List<String> winner = new ArrayList<>();
-
-        for (Car car : carList) {
-            if (car.getPosition() >= maxDistance) {
-                maxDistance = car.getPosition();
-                winner.add(car.getName());
-            }
-        }
-
-        outputView.printWinner(winner);
+        Cars carList = new Cars(cars);
+        return carList;
     }
 }
