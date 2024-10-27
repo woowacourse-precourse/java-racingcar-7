@@ -37,8 +37,8 @@ public class TryRoundTest {
                 String input = "-123";
                 //when then
                 assertThatThrownBy(() -> new TryRound(input))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("양수만 입력해야 합니다.");
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("양수만 입력해야 합니다.");
             }
 
             @Test
@@ -48,8 +48,8 @@ public class TryRoundTest {
                 String input = "0";
                 //when then
                 assertThatThrownBy(() -> new TryRound(input))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("양수만 입력해야 합니다.");
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("양수만 입력해야 합니다.");
             }
 
             @Test
@@ -60,37 +60,32 @@ public class TryRoundTest {
 
                 //when then
                 assertThatThrownBy(() -> new TryRound(input))
-                        .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class);
             }
         }
+    }
 
-        @Nested
-        @DisplayName("마지막 라운드인지 확인하는 기능 테스트")
-        class whenIsFinishRoundReturnTrue {
-
-            @Test
-            @DisplayName("finalRound가 3일 때, 생성 후와 1번째 2번째는 flase를 반환하고, 3번째는 true를 반환한다.")
-            void returnTrueWhenFinalRound3EqualCurrentRound() {
-                //given
-                String finalRound = "3";
-                TryRound tryRound = new TryRound(finalRound);
-                //when
-                assertAll(
-                        () -> assertThat(tryRound.isNotFinish()).isEqualTo(true),
-                        () -> {
-                            tryRound.moveToNextRound();
-                            assertThat(tryRound.isNotFinish()).isEqualTo(true);
-                        },
-                        () -> {
-                            tryRound.moveToNextRound();
-                            assertThat(tryRound.isNotFinish()).isEqualTo(true);
-                        },
-                        () -> {
-                            tryRound.moveToNextRound();
-                            assertThat(tryRound.isNotFinish()).isEqualTo(false);
-                        }
-                );
+    @Test
+    @DisplayName("finalRound가 3일 때, 생성 후와 1번째 2번째는 flase를 반환하고, 3번째는 true를 반환한다.")
+    void returnTrueWhenFinalRound3EqualCurrentRound() {
+        //given
+        String finalRound = "3";
+        TryRound tryRound = new TryRound(finalRound);
+        //when
+        assertAll(
+            () -> assertThat(tryRound.isNotFinish()).isEqualTo(true),
+            () -> {
+                tryRound.moveToNextRound();
+                assertThat(tryRound.isNotFinish()).isEqualTo(true);
+            },
+            () -> {
+                tryRound.moveToNextRound();
+                assertThat(tryRound.isNotFinish()).isEqualTo(true);
+            },
+            () -> {
+                tryRound.moveToNextRound();
+                assertThat(tryRound.isNotFinish()).isEqualTo(false);
             }
-        }
+        );
     }
 }
