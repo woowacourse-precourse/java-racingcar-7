@@ -1,16 +1,38 @@
 package racingcar;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class GameServiceTest {
+
+    @Nested
+    @DisplayName("게임 로직을 실행합니다.")
+    class ExecuteLogicTest {
+        private final Integer ROUND = 5;
+        private final List<String> racingCarsName = new ArrayList<>();
+        @Test
+        void 게임핵심로직을_실행합니다() {
+            //given
+            GameService gameService = new GameService();
+            racingCarsName.add("woodz");
+            racingCarsName.add("dean");
+            racingCarsName.add("yuze");
+
+            // when
+            gameService.init(ROUND, racingCarsName);
+            List<RacingCar> racingCars = gameService.executeLogic();
+
+            // then
+            assertNotNull(racingCars);
+        }
+    }
+
     @Nested
     @DisplayName("게임을 초기화 합니다.")
     class InitGameTest {
