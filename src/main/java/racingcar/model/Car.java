@@ -26,4 +26,10 @@ public class Car {
         return curLocation.length() == maximumLength;
     }
 
+    private void validateName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
+    }
+
 }
