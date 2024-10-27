@@ -21,7 +21,7 @@ public class RacingProcess {
 
             if (processNum[i] >= 4) {
 
-                Application.processResult[i] += "- ";
+                Application.processResult[i] += "-";
                 Application.moveCount[i]++;
 
             }
