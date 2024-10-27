@@ -11,8 +11,8 @@ import racingcar.repository.RoundRepository;
 
 public class RoundRepositoryTest {
 
-    private RoundRepository roundRepository = RoundRepository.getInstance();
     private CarRepository carRepository = CarRepository.getInstance();
+    private RoundRepository roundRepository = RoundRepository.getInstance(carRepository);
 
     @Test
     public void testRoundSaveAndReferToCar() {
