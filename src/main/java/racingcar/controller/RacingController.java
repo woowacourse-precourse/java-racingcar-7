@@ -21,6 +21,13 @@ public class RacingController {
 
         Race race = new Race(racingCarsName);
 
+        race(iterationInput, race);
+
+        List<String> winnersName = race.findWinners();
+        outputHandler.printRaceWinner(winnersName);
+    }
+
+    private void race(Integer iterationInput, Race race) {
         int iteration = 0;
         outputHandler.displayResultMessage();
 
@@ -29,7 +36,5 @@ public class RacingController {
             outputHandler.printRaceResult(raceResults);
             iteration++;
         }
-        List<String> winnersName = race.findWinners();
-        outputHandler.printRaceWinner(winnersName);
     }
 }
