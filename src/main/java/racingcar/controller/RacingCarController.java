@@ -22,16 +22,25 @@ public class RacingCarController {
     }
 
     public void start() {
-        String inputCarNames = inputView.inputCarNames();
-
+        Cars cars = getCars();
         String inputTryCount = inputView.inputTryCount();
-
-        List<String> names = Arrays.asList(inputCarNames.split(","));
-        Cars cars = new Cars(names);
 
         outputView.printRunResultMessage();
         runRaceRounds(cars, Integer.parseInt(inputTryCount), powerGenerator);
         outputView.printWinningNames(cars.getWinnerNames());
+    }
+
+    private Cars getCars() {
+        List<String> names = parseCarNames(inputView.inputCarNames());
+        return createCars(names);
+    }
+
+    private List<String> parseCarNames(String inputCarNames) {
+        return Arrays.asList(inputCarNames.split(","));
+    }
+
+    private Cars createCars(List<String> names) {
+        return new Cars(names);
     }
 
     private void runRaceRounds(Cars cars, int tryCount, PowerGenerator powerGenerator) {
