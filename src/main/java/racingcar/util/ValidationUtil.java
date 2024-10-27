@@ -5,8 +5,8 @@ import java.util.List;
 import static racingcar.exception.ErrorMessages.TRIAL_COUNT_ERROR_MESSAGE;
 
 public class ValidationUtil {
-    public static void validateTrial(String trial){
-        if(isEmpty(trial) || !isInteger(trial) || !isPositive(trial)){
+    public static void validateTrialCount(String trialCount){
+        if(isEmpty(trialCount) || !isInteger(trialCount) || !isPositive(trialCount)){
             throw new IllegalArgumentException(TRIAL_COUNT_ERROR_MESSAGE);
         }
     }

@@ -6,7 +6,7 @@ import racingcar.util.RandomUtil;
 
 import java.util.List;
 
-import static racingcar.util.ValidationUtil.validateTrial;
+import static racingcar.util.ValidationUtil.validateTrialCount;
 import static racingcar.view.InputView.readConsoleInput;
 import static racingcar.view.OutputView.*;
 
@@ -28,7 +28,7 @@ public class RacingGameController {
     private static int getTrialCountFromUser() {
         promptTrialCountInput();
         String trialStr = readConsoleInput();
-        validateTrial(trialStr);
+        validateTrialCount(trialStr);
         return Integer.parseInt(trialStr);
     }
 
