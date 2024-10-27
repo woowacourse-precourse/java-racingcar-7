@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -24,11 +25,14 @@ public class RacingCar {
         }
     }
 
-    private static String[] getWinners(String[] names, int[] distances) {
-        int max = Arrays.stream(distances).max().getAsInt();
-        int[] max_indices = IntStream.range(0, distances.length).filter(i -> distances[i] == max).toArray();
-        String[] winners = IntStream.of(max_indices).mapToObj(i -> names[i]).toArray(String[]::new);
-        return winners;
+    private static List<String> getWinners(List<String> names, List<Integer> distances) {
+        int maxDistance = distances.stream().
+                max(Integer::compare).
+                orElseThrow(() -> new NoSuchElementException("No scores found"));
+        return IntStream.range(0, distances.size())
+                .filter(i -> distances.get(i) == maxDistance)
+                .mapToObj(names::get)
+                .collect(Collectors.toList());
     }
 
     public static String[] readInputs(){
@@ -51,7 +55,7 @@ public class RacingCar {
     public static void printOutputs(List<String> names, List<Integer> distances, Integer times) {
         System.out.println("실행 결과");
         printProcess(times,names,distances);
-        String[] winners = getWinners(names, distances);
+        List<String> winners = getWinners(names, distances);
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
