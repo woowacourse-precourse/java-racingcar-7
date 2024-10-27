@@ -1,7 +1,7 @@
 package racingcar.model;
 
-import racingcar.constant.MessageConstants;
-import racingcar.view.OutputView;
+import racingcar.common.constant.MessageConstants;
+import racingcar.ui.OutputUI;
 
 /**
  * RacingCarProxy는 RacingCar의 프록시 역할을 하며, 자동차의 이동을 기록하고 출력하는 기능을 추가합니다.
@@ -38,7 +38,7 @@ public class RacingCarProxy implements Drivable {
         String carName = racingCar.getName();
         String distanceIndicator = getDistanceIndicator();
 
-        OutputView.printResult(MessageConstants.OUTPUT_RACE_RECORD_TEMPLATE, carName, distanceIndicator);
+        OutputUI.printResult(MessageConstants.OUTPUT_RACE_RECORD_TEMPLATE, carName, distanceIndicator);
     }
 
     /**
