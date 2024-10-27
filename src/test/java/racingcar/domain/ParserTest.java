@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static racingcar.View.constant.ErrorMessage.BLANK_VALUE;
 import static racingcar.View.constant.ErrorMessage.INVALID_INTEGER;
+import static racingcar.View.constant.ErrorMessage.OVER_VALUE;
 import static racingcar.View.constant.ErrorMessage.TOO_LONG_VALUE;
 
 import java.util.List;
@@ -56,5 +57,16 @@ class ParserTest {
                 () -> parser.parseInt(input)
         );
         assertEquals(INVALID_INTEGER.getMessage(), exception.getMessage());
+    }
+
+    @Test
+    void 입력이_정수를_벗어날_경우_예외처리() {
+        String input = String.valueOf(Long.MAX_VALUE);
+        System.out.println(input);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> parser.parseInt(input)
+        );
+        assertEquals(OVER_VALUE.getMessage(), exception.getMessage());
     }
 }
