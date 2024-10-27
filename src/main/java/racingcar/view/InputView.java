@@ -18,7 +18,6 @@ public class InputView {
     }
 
     public static int inputTryCount() {
-        System.out.println();
         System.out.println(CAR_TRY_QUESTION);
         int tryCount = Integer.parseInt(Console.readLine());
         validateTryCount(tryCount);
