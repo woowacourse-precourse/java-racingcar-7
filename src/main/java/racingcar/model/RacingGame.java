@@ -2,12 +2,15 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
+
     private static final int START_INCLUSIVE = 0;
     private static final int END_INCLUSIVE = 9;
     private static final int MOVE_THRESHOLD = 4;
     private static final int FIRST_ROUND = 1;
+    private static final int ERROR_POSITION = -1;
 
     private final List<RacingCar> players;
     private final int totalRound;
@@ -55,5 +58,11 @@ public class RacingGame {
 
     public boolean isFirstRound() {
         return currentRound == FIRST_ROUND;
+    }
+
+    public List<RacingCar> findFinalWinners() {
+        int maxPosition = players.stream().mapToInt(RacingCar::getPosition).max().orElse(ERROR_POSITION);
+
+        return players.stream().filter(player -> player.getPosition() == maxPosition).collect(Collectors.toList());
     }
 }
