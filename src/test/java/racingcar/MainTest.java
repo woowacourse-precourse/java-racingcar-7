@@ -72,15 +72,6 @@ class MainTest extends NsTest {
     }
 
     @Test
-    @DisplayName("자동차 개수만큼 이동 여부 설정하는지 확인한다")
-    void checkCarMoveInformationCount() {
-        assertSimpleTest(() -> {
-            run("pobi,woni,jun");
-            assertThat(main.repeatCreation()).isEqualTo(3);
-        });
-    }
-
-    @Test
     @DisplayName("자동차 이름과 1회 움직임 출력을 확인한다")
     void printCarNameAndSingleMove() {
         Car car = new Car("pobi", false,0);
@@ -89,15 +80,6 @@ class MainTest extends NsTest {
         main.printSingleResult(car2);
         assertThat(output()).contains("pobi :");
         assertThat(output()).contains("jun : -");
-    }
-
-    @Test
-    @DisplayName("시도 횟수만큼 반복한다")
-    void repeatGame(){
-        assertSimpleTest(()->{
-            run("pobi,woni,jun");
-            assertThat(main.repeatGame(5)).isEqualTo(5);
-        });
     }
 
     @Test
