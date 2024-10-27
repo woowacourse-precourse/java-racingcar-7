@@ -11,7 +11,7 @@ public class Application {
         ApplicationReader applicationReader = ApplicationReader.getInstance(appConfig.createInput(), appConfig.createView());
 
         RaceConfig raceConfig = applicationReader.readRaceConfig();
-        RaceManager raceManager = new RaceManager(appConfig.createCarFactory(), appConfig.createView());
+        RaceManager raceManager = new RaceManager(appConfig);
 
         raceManager.startRace(raceConfig);
     }

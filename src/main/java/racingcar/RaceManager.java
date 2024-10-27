@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.config.AppConfig;
 import racingcar.config.RaceConfig;
 import racingcar.car.CarFactory;
 import racingcar.car.CarRegistry;
@@ -8,27 +9,28 @@ import racingcar.race.Stadium;
 import racingcar.io.View;
 
 public class RaceManager {
-    private final CarFactory carFactory;
+    private final AppConfig appConfig;
     private final View view;
 
-    public RaceManager(CarFactory carFactory, View view) {
-        this.carFactory = carFactory;
-        this.view = view;
+    public RaceManager(AppConfig appConfig) {
+        this.appConfig = appConfig;
+        this.view = appConfig.createView();
     }
 
-    public void startRace(RaceConfig config) {
-        String carNames = config.getCarNames();
+    public void startRace(RaceConfig raceConfig) {
+        String carNames = raceConfig.getCarNames();
+        CarFactory carFactory = appConfig.createCarFactory();
 
-        CarRegistry carRegistry = new CarRegistry(carFactory.createCars(carNames));
-        RaceResult raceResult = new RaceResult(new StringBuilder(), carRegistry);
-        Stadium stadium = new Stadium(carRegistry, raceResult);
+        CarRegistry carRegistry = appConfig.createCarRegistry(carFactory.createCars(carNames));
+        RaceResult raceResult = appConfig.createRaceResult(carRegistry);
+        Stadium stadium = appConfig.createStadium(carRegistry, raceResult);
 
-        race(stadium, raceResult, config.getRounds());
+        stadium.raceEachRounds(raceConfig.getRounds());
+
+        viewRaceResult(raceResult);
     }
 
-    private void race(Stadium stadium, RaceResult raceResult, int rounds) {
-        stadium.raceEachRounds(rounds);
-
+    private void viewRaceResult(RaceResult raceResult) {
         view.printExecutionOutput(raceResult.toString());
         view.printWinner(raceResult.winnersToString());
     }

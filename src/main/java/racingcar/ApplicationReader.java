@@ -28,6 +28,6 @@ public class ApplicationReader {
         view.printRoundsGuide();
         Integer rounds = Integer.parseInt(input.rounds());
 
-        return RaceConfig.getInstance(carNames, rounds);
+        return new RaceConfig(carNames, rounds);
     }
 }
