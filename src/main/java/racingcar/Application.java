@@ -17,7 +17,8 @@ public class Application {
 
         for (int i = 0; i < count; i++) {
             int number = Randoms.pickNumberInRange(0, 9);
-
+            if (number >= 4) { result[i] += number; }
+            
         }
     }
 }
