@@ -32,6 +32,17 @@ public class Application {
         return testCase;
     }
 
+    public static void racingCar(int tc, List<Car> carList) {
+        System.out.println("실행 결과");
+
+        while (tc >= 0) {
+            for (Car car : carList) {
+                car.move();
+                car.print();
+            }
+            tc--;
+        }
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -42,6 +53,6 @@ public class Application {
 
         int tc = inputTestCaseNum();
 
-        
+        racingCar(tc, carList);
     }
 }
