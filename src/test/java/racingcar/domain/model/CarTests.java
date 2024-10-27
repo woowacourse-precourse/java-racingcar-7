@@ -18,7 +18,7 @@ class CarTests {
         );
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "차 이름 : {0}")
     @DisplayName("잘못된 자동차 이름 입력 시 예외 발생")
     @MethodSource("invalidCarNames")
     public void invalidCarNameThrowException(String carName, String errorMessage) {
@@ -43,7 +43,7 @@ class CarTests {
         );
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "isCanMove : {0}, 움직인 거리 : {1}")
     @DisplayName("isCanMove가 true이면 전진, false이면 전진하지 않는다.")
     @MethodSource("isCanMove")
     void move(boolean isCanMove, int expected) {
