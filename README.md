@@ -75,9 +75,15 @@ jun : -----
 # 구현 기능 목록 
 ## Main 
 - 입력 : String 자동차 이름들 (,로 나뉘어진 차 이름), 시도 횟수
+
   - 자동차 이름들과 시도 횟수를 String으로 받아
   - 시도 횟수를 정수형으로 변경 후 시도 횟수 만큼 반복
-  - 
+  - checkCarNameError()함수를 사용하여 5글자 이상의 자동차 이름이 있는지 확인 
+  - 자동차 들의 진행상황을 기록하기 위해 carProgressArr 배열을 만든다. 
+  - 입력받은 시도 횟수 만큼 반복을 하며, 자동차 마다의 진행 여부를 canProgressWithRandomNum()을 통해 전달 받고 
+  - carProgressArr에 저장 및 printCarNameProgress 함수를 사용해 현재 진행 상황을 출력 
+  - 시도 횟수가 끝난다면, 최종 우승자를 getWinners함수를 이용해 찾아내고 출력한다. 
+  
 - 출력 : 각 시도마다 진행 결과, 최종 우승자 
 
 ## checkCarNameError()
