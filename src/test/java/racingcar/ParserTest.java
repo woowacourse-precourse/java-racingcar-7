@@ -16,7 +16,18 @@ class ParserTest {
     }
 
     @Test
-    public void 자동차이름목록_쉼표_외_문자기준분리_5글자이하_예외테스트() throws Exception {
+    public void 자동차이름목록_쉼표기준분리_빈이름_예외테스트() throws Exception {
+        //Given
+        String carNames = "pobi,,jun";
+
+        //When, Then
+        Assertions.assertThatCode(() -> Parser.parseCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Parser.CAR_NAME_LENGTH_EXCEPTION_MSG);
+    }
+
+    @Test
+    public void 자동차이름목록_쉼표_외_문자기준분리_5글자초과_예외테스트() throws Exception {
         //Given
         String carNames = "pobi,woni:jun";
 

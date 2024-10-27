@@ -3,7 +3,6 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.accelerator.Accelerator;
 
 public class CarGroup {
 
@@ -13,9 +12,9 @@ public class CarGroup {
         this.cars = new ArrayList<>(cars);
     }
 
-    public void accelerateAll(Accelerator accelerator) {
+    public void accelerateAll() {
         for (Car car : cars) {
-            car.accelerate(accelerator);
+            car.accelerate();
         }
     }
 

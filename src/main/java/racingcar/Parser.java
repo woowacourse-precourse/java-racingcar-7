@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import racingcar.accelerator.BrokenAccelerator;
 
 public class Parser {
 
@@ -13,15 +14,17 @@ public class Parser {
         return carName != null && !carName.isEmpty() && carName.length() <= CAR_NAME_MAX_LENGTH;
     }
 
+    private static Car createCar(String carName) {
+        if (!validateCarName(carName)) {
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION_MSG);
+        }
+        return new Car(carName, new BrokenAccelerator());
+    }
+
     public static CarGroup parseCarNames(String input) {
         return new CarGroup(Arrays.stream(input.split(","))
                 .map(String::trim)
-                .map(carName -> {
-                    if (!validateCarName(carName)) {
-                        throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION_MSG);
-                    }
-                    return new Car(carName);
-                })
+                .map(Parser::createCar)
                 .collect(Collectors.toList()));
     }
 

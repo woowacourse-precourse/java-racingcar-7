@@ -2,10 +2,8 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 
-import java.util.Arrays;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import racingcar.accelerator.BrokenAccelerator;
 
 class CarGroupTest {
 
@@ -16,11 +14,10 @@ class CarGroupTest {
     public void 가장_멀리_전진한_자동차_테스트() throws Exception {
 
         // Given
-        CarGroup carGroup = new CarGroup(Arrays.asList(new Car("pobi"), new Car("woni")));
+        String carNames = "pobi,woni";
+        CarGroup carGroup = Parser.parseCarNames(carNames);
         assertRandomNumberInRangeTest(
-                () -> {
-                    carGroup.accelerateAll(new BrokenAccelerator());
-                },
+                carGroup::accelerateAll,
                 MOVING_FORWARD, STOP
         );
         int expected = 1;
@@ -36,11 +33,10 @@ class CarGroupTest {
     public void 가장_멀리_전진한_여러_자동차_테스트() throws Exception {
 
         // Given
-        CarGroup carGroup = new CarGroup(Arrays.asList(new Car("pobi"), new Car("woni")));
+        String carNames = "pobi,woni";
+        CarGroup carGroup = Parser.parseCarNames(carNames);
         assertRandomNumberInRangeTest(
-                () -> {
-                    carGroup.accelerateAll(new BrokenAccelerator());
-                },
+                carGroup::accelerateAll,
                 MOVING_FORWARD, MOVING_FORWARD
         );
 

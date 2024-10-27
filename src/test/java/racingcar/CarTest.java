@@ -14,11 +14,15 @@ class CarTest {
 
     private final Accelerator accelerator = new BrokenAccelerator();
 
+    public static Car createCarWithBrokenAcceleratorForTest(String carName) {
+        return new Car(carName, new BrokenAccelerator());
+    }
+
     @Test
     public void 자동차_이름_주행거리_초기화_테스트() throws Exception {
         //Given
         String carName = "pobi";
-        Car car = new Car(carName);
+        Car car = createCarWithBrokenAcceleratorForTest(carName);
 
         //When
         String actualName = car.getName();
@@ -28,19 +32,18 @@ class CarTest {
         Assertions.assertThat(actualName).isEqualTo(carName);
         Assertions.assertThat(actualMileage).isEqualTo(0);
     }
-    
+
     @Test
     public void toString_테스트() throws Exception {
         //Given
-        Car car1 = new Car("pobi");
+        String carName = "pobi";
+
+        Car car1 = createCarWithBrokenAcceleratorForTest(carName);
         String expected1 = "pobi : ";
 
-        Car car2 = new Car("pobi");
-
+        Car car2 = createCarWithBrokenAcceleratorForTest(carName);
         assertRandomNumberInRangeTest(
-                () -> {
-                    car2.accelerate(new BrokenAccelerator());
-                },
+                car2::accelerate,
                 MOVING_FORWARD
         );
         String expected2 = "pobi : -";

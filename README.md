@@ -57,7 +57,7 @@
 - [x] 콘솔 입출력 기능을 Prompt 클래스로 추상화한다.
 - [ ] 사용자의 입력과 비즈니스 로직 사이에서 입력을 처리하는 CarRacingEnroll 클래스를 구현한다.
 - [x] Prompt에 필요한 데이터를 저장하는 DTO 역할의 PromptModel 클래스를 구현한다.
-- [ ] Car 클래스가 Accelerator 구현체를 포함하도록 의존 관계를 수정한다.
+- [x] Car 클래스가 Accelerator 구현체를 포함하도록 의존 관계를 수정한다.
 - [ ] toString() 대신 명확한 의미를 갖는 메서드로 구현한다.
 - [ ] CarRacing.race의 기능을 독립적인 단위로 분리한다.
 - [ ] CarRacing.race의 반환 타입을 수정한다.

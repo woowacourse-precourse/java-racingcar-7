@@ -1,11 +1,10 @@
-package racingcar;
+package racingcar.accelerator;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import racingcar.accelerator.Accelerator;
-import racingcar.accelerator.BrokenAccelerator;
+import racingcar.Car;
 
 class BrokenAcceleratorTest {
 

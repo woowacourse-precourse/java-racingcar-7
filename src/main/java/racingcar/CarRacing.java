@@ -1,12 +1,10 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import racingcar.accelerator.BrokenAccelerator;
+import racingcar.prompt.PromptModel;
 
 public class CarRacing {
 
-    private int attempts;
+    private final int attempts;
     private final CarGroup carGroup;
 
     CarRacing(CarGroup carGroup, int attempts) {
@@ -18,16 +16,23 @@ public class CarRacing {
         return attempts;
     }
 
-    public List<String> race() {
-        List<String> data = new ArrayList<>();
+    public CarGroup getCarGroup() {
+        return carGroup;
+    }
 
+    public PromptModel race() {
+        PromptModel result = new PromptModel();
+
+        /*
+         * 별도의 메서드로 분리한다.
+         * */
         for (int i = 0; i < attempts; i++) {
-            carGroup.accelerateAll(new BrokenAccelerator());
-            data.add(carGroup.toString());
+            carGroup.accelerateAll();
+            result.add(carGroup.toString());
         }
         CarRacingWinner winner = new CarRacingWinner(carGroup);
-        data.add(winner.toString());
+        result.add(winner.toString());
 
-        return data;
+        return result;
     }
 }
