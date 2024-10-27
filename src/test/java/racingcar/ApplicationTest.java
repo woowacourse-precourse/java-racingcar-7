@@ -3,9 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -72,8 +69,9 @@ class ApplicationTest extends NsTest {
     @Test
     void 자동차_경주게임_기능_테스트() {
         assertRandomNumberInRangeTest(() -> {
-            List<String> carNames = Arrays.asList("pobi", "woni");
-            Cars cars = new Cars(carNames);
+            String carName = "pobi,woni";
+            CarNames carNames = new CarNames(carName);
+            Cars cars = new Cars(carNames.createCars());
             int raceTime = 3;
 
             race(raceTime, cars);

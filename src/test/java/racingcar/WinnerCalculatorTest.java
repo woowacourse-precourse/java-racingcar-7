@@ -16,8 +16,9 @@ class WinnerCalculatorTest {
     @Test
     void 단독_우승자_계산_기능_테스트() {
         assertRandomNumberInRangeTest(() -> {
-            List<String> carNames = Arrays.asList("pobi", "woni");
-            Cars cars = new Cars(carNames);
+            String carName = "pobi,woni";
+            CarNames carNames = new CarNames(carName);
+            Cars cars = new Cars(carNames.createCars());
             int raceTime = 3;
 
             List<Car> racingCars = race(raceTime, cars);
@@ -31,8 +32,9 @@ class WinnerCalculatorTest {
     @Test
     void 공동_우승자_계산_기능_테스트() {
         assertRandomNumberInRangeTest(() -> {
-            List<String> carNames = Arrays.asList("pobi", "woni");
-            Cars cars = new Cars(carNames);
+            String carName = "pobi,woni";
+            CarNames carNames = new CarNames(carName);
+            Cars cars = new Cars(carNames.createCars());
             int raceTime = 1;
 
             List<Car> racingCars = race(raceTime, cars);

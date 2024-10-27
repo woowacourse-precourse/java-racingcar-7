@@ -25,7 +25,6 @@ public class Car {
         return this.carPosition.isAheadOrEqual(otherCar.carPosition);
     }
 
-
     public boolean isName(String givenName) {
         return name.equals(givenName);
     }

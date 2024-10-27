@@ -4,24 +4,21 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CarNames {
+    private final List<CarName> carNames;
 
-    private CarNames() {
+    public CarNames(String carName) {
+        this.carNames = createCarNames(carName);
     }
 
-    public static List<String> createCarNames(String carName) {
-        List<String> carNames = Arrays.stream(carName.split(","))
+    public List<Car> createCars() {
+        return this.carNames.stream()
+                .map(CarName::createCar)
                 .toList();
-
-        for (String name : carNames) {
-            isNameLongerThanFive(name);
-        }
-
-        return carNames;
     }
 
-    private static void isNameLongerThanFive(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException(name + "이름이 5자리가 넘습니다");
-        }
+    private List<CarName> createCarNames(String carName) {
+        return Arrays.stream(carName.split(","))
+                .map(CarName::new)
+                .toList();
     }
 }

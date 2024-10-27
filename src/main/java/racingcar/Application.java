@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static racingcar.CarNames.createCarNames;
 import static racingcar.WinnerCalculator.calculateWinners;
 
 public class Application {
@@ -14,8 +13,8 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int raceTime = Integer.parseInt(Console.readLine());
 
-        List<String> carNames = createCarNames(carName);
-        Cars cars = new Cars(carNames);
+        CarNames carNames = new CarNames(carName);
+        Cars cars = new Cars(carNames.createCars());
 
         System.out.println("실행 결과");
         List<Car> racingCars = race(raceTime, cars);

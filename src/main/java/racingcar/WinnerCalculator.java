@@ -26,6 +26,7 @@ public class WinnerCalculator {
                 return false;
             }
         }
+
         return true;
     }
 
