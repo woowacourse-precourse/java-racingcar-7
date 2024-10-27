@@ -46,7 +46,7 @@ public class RacingCarGame {
         List<Car> cars = RacingCarsGroup.getCars();
         for (int i = 0; i < moves.size(); i++) {
             if (moves.get(i) >= 4) {
-                cars.get(i).increasePosition(moves.get(i));
+                cars.get(i).increasePosition();
             }
         }
     }

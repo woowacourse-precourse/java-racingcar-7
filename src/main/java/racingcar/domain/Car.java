@@ -17,7 +17,7 @@ public class Car {
         return "-".repeat(position);
     }
 
-    public void increasePosition(int randomMovement) {
+    public void increasePosition() {
         position++;
     }
 
