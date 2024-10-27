@@ -8,7 +8,7 @@ import java.lang.String;
 import java.util.HashMap;
 
 
-public class Model {
+public class CarModel {
 
 
 

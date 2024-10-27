@@ -3,7 +3,7 @@ package racingcar.racingcarView;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class View {
+public class CarView {
 
     public String readInput() {
         return Console.readLine();

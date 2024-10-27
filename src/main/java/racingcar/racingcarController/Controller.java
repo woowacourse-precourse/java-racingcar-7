@@ -2,42 +2,41 @@ package racingcar.racingcarController;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import racingcar.racingcarModel.Model;
-import racingcar.racingcarView.View;
+import racingcar.racingcarModel.CarModel;
+import racingcar.racingcarView.CarView;
 
 
 public class Controller {
-    private View view;
-    private Model model;
+    private CarView carView;
+    private CarModel carModel;
 
-    public Controller(View View, Model Model) {
-    this.view = View;
-    this.model = Model;
+    public Controller(CarView carView, CarModel carModel) {
+        this.carView = carView;
+        this.carModel = carModel;
     }
 
     public void run() {
-        view.printNameInputMessage();
-        String nameInput = view.readInput();
-        view.printTryInputMessage();
-        int tryInput = Integer.parseInt(view.readInput());
+        carView.printNameInputMessage();
+        String nameInput = carView.readInput();
+        carView.printTryInputMessage();
+        int tryInput = Integer.parseInt(carView.readInput());
 
-        LinkedHashMap<String, Integer> carInfo = model.initializeCarInfo(nameInput);
+        LinkedHashMap<String, Integer> carInfo = carModel.initializeCarInfo(nameInput);
 
-        view.printRunResults();
+        carView.printRunResults();
 
         for (int i = 0; i < tryInput; i++) {
             for (HashMap.Entry<String, Integer> entry : carInfo.entrySet()) {
-                carInfo.put(entry.getKey(), model.isForward(entry.getValue()));
+                carInfo.put(entry.getKey(), carModel.isForward(entry.getValue()));
                 System.out.println(entry.getKey()+ " : " + "-".repeat(entry.getValue()) );
 
             }
             System.out.println();
         }
 
-        int maxValue = model.maxValue(carInfo);
-        String winner = model.winnerCar(carInfo,maxValue);
-        view.printWinners(winner);
-
+        int maxValue = carModel.maxValue(carInfo);
+        String winner = carModel.winnerCar(carInfo,maxValue);
+        carView.printWinners(winner);
 
 
 

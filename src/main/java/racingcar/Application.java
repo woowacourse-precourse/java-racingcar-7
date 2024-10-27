@@ -1,14 +1,14 @@
 package racingcar;
 
 import racingcar.racingcarController.Controller;
-import racingcar.racingcarView.View;
-import racingcar.racingcarModel.Model;
+import racingcar.racingcarView.CarView;
+import racingcar.racingcarModel.CarModel;
 
 public class Application {
     public static void main(String[] args) {
-        View view = new View();
-        Model model = new Model();
-        Controller controller = new Controller(view, model);
+        CarView carView = new CarView();
+        CarModel carModel = new CarModel();
+        Controller controller = new Controller(carView, carModel);
         controller.run();
 
 
