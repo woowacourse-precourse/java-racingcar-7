@@ -23,26 +23,35 @@ public class RacingGame {
             System.out.println();
             nowTry++;
         }
-        printWinners();
+        // 최대 카운트 값을 찾음
+        int maxCount = getMaxCount();
+        // 최대 카운트를 가진 우승자들을 찾음
+        List<String> winners = getWinner(maxCount);
+        printWinners(winners);
     }
 
-    private void printWinners() {
-        // 최대 카운트 값을 찾음
-        int maxCount = cars.stream()
-                .mapToInt(car -> car.getRacingCount().length())
-                .max()
-                .orElse(0);
-
-        // 최대 카운트를 가진 우승자들을 찾음
-        List<String> winners = cars.stream()
-                .filter(car -> car.getRacingCount().length() == maxCount)
-                .map(Car::getName)
-                .collect(Collectors.toList());
+    private void printWinners(List<String> winners) {
 
         if (winners.size() == 1) {
             System.out.println("최종 우승자 : " + winners.getFirst());
         } else {
             System.out.println("최종 우승자 : " + String.join(", ", winners));
         }
+    }
+
+    private List<String> getWinner(int maxCount) {
+        List<String> winners = cars.stream()
+                .filter(car -> car.getRacingCount().length() == maxCount)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        return winners;
+    }
+
+    private int getMaxCount() {
+        int maxCount = cars.stream()
+                .mapToInt(car -> car.getRacingCount().length())
+                .max()
+                .orElse(0);
+        return maxCount;
     }
 }
