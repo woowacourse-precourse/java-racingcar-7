@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.stream.IntStream;
 import racingcar.service.CarRaceService;
+import racingcar.strategy.MoveStrategy;
 import racingcar.util.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -12,8 +13,8 @@ public class CarRaceController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public CarRaceController(CarRaceService carRaceService, InputView inputView, OutputView outputView) {
-        this.carRaceService = carRaceService;
+    public CarRaceController(InputView inputView, OutputView outputView, MoveStrategy moveStrategy) {
+        this.carRaceService = new CarRaceService(moveStrategy);
         this.inputView = inputView;
         this.outputView = outputView;
     }
