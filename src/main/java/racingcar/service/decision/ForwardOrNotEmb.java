@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.service.decision;
 
 import camp.nextstep.edu.missionutils.Randoms;
 public class ForwardOrNotEmb implements ForwardOrNot {

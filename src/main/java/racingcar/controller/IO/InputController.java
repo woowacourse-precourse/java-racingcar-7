@@ -1,4 +1,4 @@
-package racingcar.controller;
+package racingcar.controller.IO;
 
 import java.util.List;
 

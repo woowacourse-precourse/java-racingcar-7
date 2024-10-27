@@ -2,9 +2,8 @@ package racingcar;
 
 
 import racingcar.controller.RaceController;
-import racingcar.controller.RaceControllerEmb;
-import racingcar.service.RaceControllerFactory;
-import racingcar.service.RaceControllerFactoryEmb;
+import racingcar.service.factory.RaceControllerFactory;
+import racingcar.service.factory.RaceControllerFactoryEmb;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,6 +14,6 @@ public class Application {
         while (!raceController.isFinished()) {
             raceController.advanceCars();
         }
-        raceController.presentAward();
+        raceController.announceWinner();
     }
 }

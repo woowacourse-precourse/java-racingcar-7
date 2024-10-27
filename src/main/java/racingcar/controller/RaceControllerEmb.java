@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import racingcar.controller.IO.InputController;
+import racingcar.controller.IO.OutputController;
 import racingcar.model.RacingCar;
 import racingcar.service.factory.CarFactory;
 import racingcar.service.evaluator.WinnerEvaluator;
@@ -46,7 +48,7 @@ public class RaceControllerEmb implements RaceController {
     }
 
     @Override
-    public void presentAward(){
+    public void announceWinner(){
         outputController.printWinner(racingCars);
     }
 }

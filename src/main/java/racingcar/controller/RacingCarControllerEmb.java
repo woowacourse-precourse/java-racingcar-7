@@ -1,9 +1,8 @@
 package racingcar.controller;
 
 import racingcar.model.RacingCar;
-import racingcar.model.RacingCarEmb;
-import racingcar.service.ForwardOrNot;
-import racingcar.service.ForwardOrNotEmb;
+import racingcar.service.decision.ForwardOrNot;
+import racingcar.service.decision.ForwardOrNotEmb;
 
 public class RacingCarControllerEmb implements RacingCarController {
     private final ForwardOrNot forwardOrNot;

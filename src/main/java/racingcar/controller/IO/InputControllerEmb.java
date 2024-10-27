@@ -1,4 +1,4 @@
-package racingcar.controller;
+package racingcar.controller.IO;
 
 import racingcar.service.parser.ParsingService;
 import racingcar.service.parser.ParsingServiceEmb;

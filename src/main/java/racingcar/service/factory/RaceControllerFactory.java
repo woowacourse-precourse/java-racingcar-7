@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.service.factory;
 
 import racingcar.controller.RaceController;
 
