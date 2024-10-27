@@ -3,8 +3,11 @@ package racingcar;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     private static final String START_TEXT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -16,12 +19,11 @@ public class Application {
 
     private static String getInput(){
         String inputString = Console.readLine();
-        Console.close();
         return inputString;
     }
 
     private static ArrayList<String> splitCarNames(String input){
-        ArrayList<String> carNames = new ArrayList<>(Arrays.asList(input.split(",")));
+        ArrayList<String> carNames = new ArrayList<>(Arrays.asList(input.split(",",0)));
         return carNames;
     }
 
@@ -37,6 +39,7 @@ public class Application {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
     }
+
     private static void validCarNames(ArrayList<String> carNames){
         for(int i=0; i<carNames.size(); i++){
             carNames.set(i,isEnglishOnlyName(carNames.get(i)));
@@ -50,21 +53,27 @@ public class Application {
         }
     }
 
-    private static void checkDuplicateName(ArrayList<String> carNames){
-        LinkedHashSet<String> carNamesSet  = new LinkedHashSet<>(carNames);
-        if (carNamesSet.size() != carNames.size()){
+    private static LinkedHashMap<String, Integer> checkDuplicateName(ArrayList<String> carNames){
+        LinkedHashMap<String, Integer> carNamesMap = new LinkedHashMap<>();
+        for (String carname: carNames){
+            carNamesMap.put(carname, 0);
+        }
+        if (carNamesMap.size() != carNames.size()){
             throw new IllegalArgumentException("중복된 자동차 이름은 사용할 수 없습니다.(대문자와 소문자는 동일하게 인식됩니다.)");
         }
+        return carNamesMap;
     }
 
-    private static ArrayList<String> getCarNames(){
+    private static LinkedHashMap<String,Integer> getCarNames(){
+        System.out.println(START_TEXT);
         String inputString = getInput();
         ArrayList<String> carNames = splitCarNames(inputString);
         validCarCount(carNames);
         validCarNames(carNames);
-        checkDuplicateName(carNames);
-        return carNames;
+        LinkedHashMap<String,Integer> carNamesMap = checkDuplicateName(carNames);
+        return carNamesMap;
     }
+
     private static void isValidTimes(final int times){
         if ((times < 1) || (times > MAX_GAME_COUNT)){
             throw new IllegalArgumentException("최대 게임 횟수는 10번입니다.");
@@ -72,6 +81,7 @@ public class Application {
     }
 
     private static int getGameTimes(){
+        System.out.println(GAME_TIME_TEXT);
         final int GAME_TIMES;
         String timesString = getInput();
         try{
@@ -83,11 +93,38 @@ public class Application {
         return GAME_TIMES;
     }
 
-    public static void main(String[] args) {
-        System.out.println(START_TEXT);
-        getCarNames();
-        System.out.println(GAME_TIME_TEXT);
-        getGameTimes();
+    private static ArrayList<Integer> getRandomNumbers(int carNumbers){
+        ArrayList<Integer> randomNumbers = new ArrayList<>();
+        for(int i=0; i<carNumbers; i++){
+            randomNumbers.add(Randoms.pickNumberInRange(0,9));
+        }
+        return randomNumbers;
+    }
 
+    private static void updateResult(LinkedHashMap<String,Integer> cars, ArrayList<Integer> randomNumbers){
+        ArrayList<String> carNames = new ArrayList<>(cars.keySet());
+        for(int numIndex = 0; numIndex< cars.size(); numIndex++){
+            String curCarNames = carNames.get(numIndex);
+            int curCarLocation = cars.get(curCarNames);
+            if (randomNumbers.get(numIndex) > 3){
+                curCarLocation++;
+                cars.put(curCarNames, curCarLocation);
+            }
+        }
+        System.out.println();
+    }
+
+    private static void playGame(LinkedHashMap<String,Integer> cars, int times){
+        ArrayList<Integer> randomNumbers = new ArrayList<>();
+        for(int i=0; i<times; i++){
+            randomNumbers = getRandomNumbers(cars.size());
+            updateResult(cars, randomNumbers);
+        }
+    }
+
+    public static void main(String[] args) {
+        LinkedHashMap<String, Integer> carNames = getCarNames();
+        int gameTimes = getGameTimes();
+        playGame(carNames, gameTimes);
     }
 }
