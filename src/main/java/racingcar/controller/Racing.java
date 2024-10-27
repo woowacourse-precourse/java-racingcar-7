@@ -18,21 +18,32 @@ public class Racing {
         this.racingManager = racingManager;
     }
 
-    public void start() {
-        outputView.requestCarNameMessage();
-        String carNames = inputView.getCarNames();
-        outputView.requestNumberOfRoundsMessage();
-        int numberOfRounds = inputView.getNumberOfRounds();
-        List<Car> carList = racingManager.parseCarNamesToCar(carNames);
-        outputView.raceStartMessage();
-
-        for (int x = 0; x < numberOfRounds; x++) {
-            racingManager.moveOrStop(carList);
-            outputView.displayRaceProgress(carList);
-        }
-        List<Car> winnerList = racingManager.getWinners(carList);
-        outputView.displayWinners(winnerList);
+    public void start(){
+        List<Car>carList = initializeRace();
+        int numberOfRounds = getValidatedNumberOfRounds();
+        playRound(carList, numberOfRounds);
+        displayResult(carList);
     }
 
+    private int getValidatedNumberOfRounds() {
+        outputView.requestNumberOfRoundsMessage();
+        return inputView.getNumberOfRounds();
+    }
 
+    private void displayResult(List<Car> carList) {
+        outputView.displayWinners(racingManager.getWinners(carList));
+    }
+
+    private void playRound(List<Car> carList, int numberOfRounds) {
+        for(int i = 0; i<numberOfRounds; i++){
+            racingManager.moveOrStop(carList);
+        }
+        outputView.displayRaceProgress(carList);
+    }
+
+    private List<Car> initializeRace() {
+        outputView.requestCarNameMessage();
+        String carNames = inputView.getCarNames();
+        return racingManager.parseCarNamesToCar(carNames);
+    }
 }
