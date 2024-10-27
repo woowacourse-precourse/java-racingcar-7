@@ -33,3 +33,22 @@ out/
 
 ### Mac OS ###
 .DS_Store
+
+### Eclipse ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
