@@ -14,6 +14,7 @@ import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_N
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAMES;
 import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_CANNOT_BLANK;
 import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_MUST_DIGIT;
+import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_MUST_POSITIVE_INTEGER;
 import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_OVERFLOW;
 import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_UNDERFLOW;
 
@@ -207,4 +208,14 @@ class ApplicationTest extends NsTest {
         RaceCountException e = assertThrows(RaceCountException.class, () -> raceManager.setRaceCount(raceCount));
         assertEquals(e.getMessage(), RACE_COUNT_UNDERFLOW.message());
     }
+
+    @Test
+    void 경주_횟수가_양의_정수가_아니라면_예외발생() {
+        // given
+        String raceCount = "-1";
+        // when & then
+        RaceCountException e = assertThrows(RaceCountException.class, () -> raceManager.setRaceCount(raceCount));
+        assertEquals(e.getMessage(), RACE_COUNT_MUST_POSITIVE_INTEGER.message());
+    }
+
 }
