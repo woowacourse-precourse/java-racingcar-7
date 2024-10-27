@@ -22,7 +22,7 @@ public class RacingGame {
         return num;
     }
 
-    public List<Car> getWinner(){
+    public List<Car> getWinner() {
         int maxPosition = 0;
 
         for (Car car : carList) {

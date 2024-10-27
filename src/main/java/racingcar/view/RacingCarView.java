@@ -7,28 +7,28 @@ import java.util.List;
 
 public class RacingCarView {
 
-    public String[] readCarName(){
+    public String[] readCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return Console.readLine().split(",");
     }
 
-    public int readNum(){
+    public int readNum() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Integer.parseInt(Console.readLine());
     }
 
-    public void printStarting(){
+    public void printStarting() {
         System.out.println("실행 결과");
     }
 
-    public void printEachGame(List<Car> cars){
+    public void printEachGame(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + getStringPosition(car.getPosition()));
         }
         System.out.println();
     }
 
-    private String getStringPosition(int position){
+    private String getStringPosition(int position) {
         return "-".repeat(position);
     }
 

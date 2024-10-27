@@ -18,7 +18,7 @@ public class RacingController {
         this.racingCarView = new RacingCarView();
     }
 
-    public void init(){
+    public void init() {
         String[] carNames = racingCarView.readCarName();
         Validator.checkCarNames(carNames);
         Validator.checkDuplicateForCarName(carNames);
@@ -30,7 +30,7 @@ public class RacingController {
         racingService.initGame(cars, num);
     }
 
-    public void play(){
+    public void play() {
         racingCarView.printStarting();
         RacingGame racingGame = racingService.getRacingGame();
         int num = racingGame.getNum();
@@ -39,11 +39,10 @@ public class RacingController {
             List<Car> cars = racingService.playOneGame();
             racingCarView.printEachGame(cars);
         }
-        
+
         List<Car> carList = racingGame.getWinner();
         racingCarView.printWinners(carList);
     }
-
 
 
 }
