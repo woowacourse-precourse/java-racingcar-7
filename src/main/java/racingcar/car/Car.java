@@ -5,6 +5,10 @@ import racingcar.name.Name;
 
 public class Car {
 
+    private final int MOVEABLE_NUMBER = 4;
+    private final String COLON_WITH_BLANK = " : ";
+    private final String HYPHAN = "-";
+
     private final Name name;
     private int status;
 
@@ -21,22 +25,21 @@ public class Car {
     }
 
     public void move(int num){
-        if (num >= 4) {
+        if (num >= MOVEABLE_NUMBER) {
             status++;
         }
     }
 
     private int getRandomNum () {
-        int num = Randoms.pickNumberInRange(0, 9);
-        return num;
+        return  Randoms.pickNumberInRange(0, 9);
     }
 
     public String printStatus(){
-        return name + " : " + "-".repeat(status);
+        return name + COLON_WITH_BLANK + HYPHAN.repeat(status);
     }
 
     @Override
     public String toString() {
-        return String.valueOf(name);
+        return name.toString();
     }
 }
