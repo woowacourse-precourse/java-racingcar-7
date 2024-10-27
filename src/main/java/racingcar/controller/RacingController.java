@@ -51,6 +51,10 @@ public class RacingController {
     public void setAttempts(String input) {
         try {
             this.attempts = Integer.parseInt(input);
+
+            if (attempts <= 0) {
+                throw new IllegalArgumentException("시도할 횟수는 양수만 입력 가능합니다.");
+            }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도할 횟수는 숫자만 입력 가능합니다. ");
         }
