@@ -11,9 +11,9 @@ public class InputView {
 
     }
 
-    public int getAttemptCount() {
+    public String getAttemptCount() {
         OutputView.printAttemptPrompt();
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 
 }
