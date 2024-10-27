@@ -1,7 +1,20 @@
 package racingcar.model;
 
-public class RacingResult {
-    // TODO: 우승 자동차의 이름을 반환한다.
+import java.util.List;
 
-    // TODO: 우승 자동차를 결정한다.
+public class RacingResult {
+    private List<String> winners;
+
+    public List<String> getWinnerNames(Cars cars) {
+        determineRacingWinners(cars);
+        return winners;
+    }
+
+    private void determineRacingWinners(Cars cars) {
+        int winnerPosition = cars.getLongestPosition();
+        winners = cars.getCars().stream()
+                .filter(car -> car.getPosition() >= winnerPosition)
+                .map(Car::getCarName)
+                .toList();
+    }
 }
