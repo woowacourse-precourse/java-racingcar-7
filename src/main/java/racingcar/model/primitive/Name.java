@@ -2,6 +2,7 @@ package racingcar.model.primitive;
 
 import java.util.List;
 import java.util.Objects;
+import racingcar.exception.ErrorMessage;
 
 public class Name {
 
@@ -20,7 +21,7 @@ public class Name {
 
     private void validate(String name) {
         if (isOutOfLength(name)) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME.getMessage());
         }
     }
 

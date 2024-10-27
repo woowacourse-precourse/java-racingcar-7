@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import racingcar.exception.ErrorMessage;
 import racingcar.model.dto.CarStatusDto;
 import racingcar.util.randomnumber.RandomNumberGenerator;
 
@@ -23,6 +24,21 @@ public class Cars {
 
     protected static Cars fromCars(List<Car> cars) {
         return new Cars(cars);
+    }
+
+    private static void validateDuplicate(List<String> carNames) {
+        Set<String> nonDuplicateCarNames = new HashSet<>(carNames);
+        if (nonDuplicateCarNames.size() != carNames.size()) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
+        }
+    }
+
+    private static List<Car> createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(Car.of(carName, new RandomNumberGenerator()));
+        }
+        return cars;
     }
 
     public void move() {
@@ -61,21 +77,6 @@ public class Cars {
             }
         }
         return winners;
-    }
-
-    private static void validateDuplicate(List<String> carNames) {
-        Set<String> nonDuplicateCarNames = new HashSet<>(carNames);
-        if (nonDuplicateCarNames.size() != carNames.size()) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-        }
-    }
-
-    private static List<Car> createCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(Car.of(carName, new RandomNumberGenerator()));
-        }
-        return cars;
     }
 
     @Override

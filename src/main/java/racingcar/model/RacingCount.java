@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.Objects;
+import racingcar.exception.ErrorMessage;
 
 public class RacingCount {
 
@@ -28,7 +29,7 @@ public class RacingCount {
 
     private void validate(int tryCount) {
         if (isTryCount(tryCount)) {
-            throw new IllegalArgumentException("시도횟수는 최소 1회 이상이여아 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.MINIMUM_TRY_COUNT.getMessage());
         }
     }
 
