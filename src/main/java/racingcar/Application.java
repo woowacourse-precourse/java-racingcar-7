@@ -17,23 +17,7 @@ public class Application {
         Map<String, Integer> carPositions = initializeCarPositions(racingCarNames);
         System.out.println("\n실행 결과");
 
-        for (int i = 0; i < tryCount; i++) {
-            for (String car : racingCarNames) {
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
-                if (randomNumber >= 4) {
-                    carPositions.put(car, carPositions.get(car) + 1);
-                }
-            }
-
-            for (String car : racingCarNames) {
-                System.out.print(car + " : ");
-                for (int j = 0; j < carPositions.get(car); j++) {
-                    System.out.print("-");
-                }
-                System.out.println();
-            }
-            System.out.println();
-        }
+        runRace(racingCarNames, tryCount, carPositions);
 
         int maxPosition = Collections.max(carPositions.values());
         List<String> winners = new ArrayList<>();
@@ -95,5 +79,32 @@ public class Application {
             carPositions.put(car, 0);
         }
         return carPositions;
+    }
+
+    private static void runRace(List<String> carNames, int tryCount, Map<String, Integer> carPositions) {
+        for (int i = 0; i < tryCount; i++) {
+            moveCars(carNames, carPositions);
+            printRaceStatus(carNames, carPositions);
+        }
+    }
+
+    private static void moveCars(List<String> carNames, Map<String, Integer> carPositions) {
+        for (String car : carNames) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (randomNumber >= 4) {
+                carPositions.put(car, carPositions.get(car) + 1);
+            }
+        }
+    }
+
+    private static void printRaceStatus(List<String> carNames, Map<String, Integer> carPositions) {
+        for (String car : carNames) {
+            System.out.print(car + " : ");
+            for (int i = 0; i < carPositions.get(car); i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
