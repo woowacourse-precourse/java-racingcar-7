@@ -44,8 +44,9 @@ public class Application {
             playRacingCarRound(racingCars, racingCarsDistance);
         }
 
-        // 자동차 경주 게임의 우승자를 선정
+        // 자동차 경주 게임의 우승자를 선정 및 출력
         List<String> winners = findWinners(racingCars, racingCarsDistance);
+        showWinners(winners);
     }
 
     private static void playRacingCarRound(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
@@ -79,6 +80,11 @@ public class Application {
             }
         }
         return max;
+    }
+
+    private static void showWinners(List<String> winners) {
+        String winnersJoinedByComma = String.join(",", winners);
+        System.out.printf("최종 우승자 : %s", winnersJoinedByComma);
     }
 
     private static void showRoundResult(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
