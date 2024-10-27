@@ -3,7 +3,9 @@ package racingcar;
 public class Application {
 
     public static void main(String[] args) {
-        Racing racing = new Racing();
+        Input input = new Input();
+
+        Racing racing = new Racing(input);
         racing.ready();
     }
 }
