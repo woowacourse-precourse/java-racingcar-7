@@ -9,6 +9,7 @@ import racingcar.racinggame.io.input.validation.UserInputValidation;
 public class InputHandler {
 
 	private static final String CAR_NAME_DELIMITER = ",";
+	private static final int SPLIT_OPTION = -1;
 
 	private final UserInputValidation userInputValidation;
 
@@ -20,7 +21,7 @@ public class InputHandler {
 		String inputCarNames = Console.readLine();
 		userInputValidation.validateInputCarNames(inputCarNames, CAR_NAME_DELIMITER);
 
-		return Arrays.asList(inputCarNames.split(CAR_NAME_DELIMITER));
+		return Arrays.asList(inputCarNames.split(CAR_NAME_DELIMITER, SPLIT_OPTION));
 	}
 
 	public int getTryCount() {
