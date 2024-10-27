@@ -2,6 +2,7 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -33,15 +34,17 @@ public class RaceServiceImpl implements RaceService{
     }
 
     @Override
-    public List<RaceLog> runRaceRounds(int round) {
+    public List<RaceLog> executeRaceRounds(int round) {
         List<Car> cars = carRepository.findAll();
 
         return IntStream.range(0, round)
-                .mapToObj(i -> {
-                    cars.forEach(Car::tryMove);
-                    return new RaceLog(new ArrayList<>(cars));
-                })
+                .mapToObj(i -> executeRaceRound(cars))
                 .collect(Collectors.toList());
+    }
+
+    private RaceLog executeRaceRound(List<Car> cars) {
+        cars.forEach(Car::tryMove);
+        return new RaceLog(List.copyOf(cars));
     }
 
     @Override

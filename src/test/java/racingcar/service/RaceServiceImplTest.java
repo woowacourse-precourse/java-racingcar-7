@@ -18,8 +18,8 @@ class RaceServiceImplTest {
         raceService.setRaceCars("1번차,2번차,3번차");
         assertRandomNumberInRangeTest(
                 () -> {
-                    RaceLog raceLog1 = raceService.runRaceRounds(1).get(0);
-                    RaceLog raceLog2 = raceService.runRaceRounds(1).get(0);
+                    RaceLog raceLog1 = raceService.executeRaceRounds(1).get(0);
+                    RaceLog raceLog2 = raceService.executeRaceRounds(1).get(0);
 
                     assertEquals(raceLog1.getRacerProgresses().get(0).generateString(), "1번차 : -");
                     assertEquals(raceLog1.getRacerProgresses().get(1).generateString(), "2번차 : ");
