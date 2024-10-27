@@ -1,5 +1,9 @@
 package racingcar.util;
 
+import static racingcar.message.IntConverterExceptionMessage.INPUT_VALUE_INCLUDE_SPECIAL_CHARACTERS;
+import static racingcar.message.IntConverterExceptionMessage.INPUT_VALUE_MINUS_OR_ZERO;
+import static racingcar.message.IntConverterExceptionMessage.INPUT_VALUE_OVERFLOW;
+
 public class IntConverter {
     private IntConverter() {
     }
@@ -11,11 +15,11 @@ public class IntConverter {
             parsedLong = Integer.parseInt(string);
         } catch (NumberFormatException e) {
             checkNumberFormat(e);
-            throw new IllegalArgumentException("입력값이 int 범위를 넘어갔습니다.");
+            throw new IllegalArgumentException(INPUT_VALUE_OVERFLOW);
         }
 
         if (parsedLong <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 0 이상입니다.");
+            throw new IllegalArgumentException(INPUT_VALUE_MINUS_OR_ZERO);
         }
 
         return parsedLong;
@@ -27,7 +31,7 @@ public class IntConverter {
 
         for (int i = 0; i < errorInput.length(); i++) {
             if (!Character.isDigit(errorInput.charAt(i))) {
-                throw new IllegalArgumentException("구분자 이외의 문자가 수식에 포함되있습니다.");
+                throw new IllegalArgumentException(INPUT_VALUE_INCLUDE_SPECIAL_CHARACTERS);
             }
         }
     }
