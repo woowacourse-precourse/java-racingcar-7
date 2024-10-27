@@ -2,19 +2,24 @@ package racingcar.config;
 
 import racingcar.controller.RacingController;
 import racingcar.service.RacingService;
-import racingcar.view.RacingView;
+import racingcar.view.RacingInputView;
+import racingcar.view.RacingOutputView;
 
 public class AppConfiguration {
 
     public RacingController racingController() {
-        return new RacingController(racingService(), racingView());
+        return new RacingController(racingService(), inputView(), outputView());
     }
 
     private RacingService racingService() {
         return new RacingService();
     }
 
-    private RacingView racingView() {
-        return new RacingView();
+    private RacingInputView inputView() {
+        return new RacingInputView();
+    }
+
+    private RacingOutputView outputView() {
+        return new RacingOutputView();
     }
 }

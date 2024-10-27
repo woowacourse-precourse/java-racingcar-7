@@ -3,23 +3,26 @@ package racingcar.controller;
 import java.util.Set;
 import racingcar.domain.Car;
 import racingcar.service.RacingService;
-import racingcar.view.RacingView;
+import racingcar.view.RacingInputView;
+import racingcar.view.RacingOutputView;
 
 public class RacingController {
 
     private final RacingService racingService;
-    private final RacingView racingView;
+    private final RacingInputView inputView;
+    private final RacingOutputView outputView;
 
-    public RacingController(RacingService racingService, RacingView racingView) {
+    public RacingController(RacingService racingService, RacingInputView inputView, RacingOutputView outputView) {
         this.racingService = racingService;
-        this.racingView = racingView;
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
-        String namesInput = racingView.requestNamesInput();
+        String namesInput = inputView.requestNamesInput();
 
         Set<Car> cars = racingService.createCars(namesInput);
 
-        String countInput = racingView.requestCountInput();
+        String countInput = inputView.requestCountInput();
     }
 }
