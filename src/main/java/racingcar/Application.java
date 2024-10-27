@@ -10,6 +10,7 @@ public class Application {
     public static void main(String[] args) {
         String carName = Console.readLine();
         List<String> splitName = new ArrayList<>(List.of(carName.split(",")));
+        ArrayList<Integer> moveValue = new ArrayList<>();
 
         for (int i = 0; i < splitName.size(); i++) {
 
@@ -17,7 +18,12 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름은 최대 5자입니다.");
             }
 
-            splitName.set(i, String.valueOf((Randoms.pickNumberInRange(0, 9))));
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            moveValue.add(randomNumber);
+
+            if (moveValue.get(i) >= 4) {
+                System.out.println(splitName.get(i) + ":" + "-");
+            }
         }
     }
 }
