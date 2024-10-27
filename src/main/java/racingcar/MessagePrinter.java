@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.Map;
 
 public class MessagePrinter {
 
@@ -10,12 +11,6 @@ public class MessagePrinter {
     final String roundNumGuideMessage = "시도할 횟수는 몇 회인가요?";
     final String resultGuideMessage = "실행 결과";
 
-    public String totalRandomResultMessage(){
-        String totalRandomResult = mapBuilder.getTotalRandomResultFromMap();
-        totalRandomResult += "\\n";
-        return totalRandomResult;
-    }
-
     public String getWinnerMessage(List<String> winnerList) {
         String winnerMessage = "최종 우승자 : ";
         winnerMessage += String.join(",", winnerList);
@@ -23,7 +18,24 @@ public class MessagePrinter {
         return winnerMessage;
     }
 
-    public String getSingleRoundResultMessage(String carName, String line) {
-        return carName + " : " + line;
+    public String getSingleRoundResultMessage(List<String> carNames, int roundNum) {
+        List<Map.Entry<String, String>> entry = mapBuilder.getSingleRoundResult(carNames, roundNum);
+        String singleRoundResultMessage = "";
+
+        for (int i = 0; i < entry.size(); i++) {
+            String carName = entry.get(i).getKey();
+            String line = entry.get(i).getValue();
+            singleRoundResultMessage = carName + " : " + line +"\\n";
+        }
+
+        return singleRoundResultMessage;
+    }
+
+    public String getTotalRoundResultMessage(List<String> totalRoundResultList) {
+
+        String totalRoundResultMessage = String.join("\\n", totalRoundResultList);
+        totalRoundResultMessage += "\\n";
+
+        return totalRoundResultMessage;
     }
 }

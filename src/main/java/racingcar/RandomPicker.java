@@ -1,17 +1,26 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RandomPicker {
 
     MapBuilder mapBuilder = new MapBuilder();
+    MessagePrinter messagePrinter = new MessagePrinter();
 
-    public void runRandomRounds(List<String> carNames, int totalRounds) {
+    public List<String> runRandomRounds(List<String> carNames, int totalRounds) {
+
+        String singleRoundResultMessage;
+        List<String> totalRoundResultList = new ArrayList<>();
+
         for(int i = 0; i < totalRounds; i++){
             runSingleRandomRound(carNames);
-            mapBuilder.getSingleRoundResult(carNames, i);
+            singleRoundResultMessage = messagePrinter.getSingleRoundResultMessage(carNames, i);
+            totalRoundResultList.add(singleRoundResultMessage);
         }
+
+        return totalRoundResultList;
     }
 
     public void runSingleRandomRound(List<String> carNames){

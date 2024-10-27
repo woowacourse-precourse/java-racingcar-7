@@ -5,12 +5,6 @@ import java.util.Map;
 
 public class WinnerSorter {
 
-    public Map<String, Integer> sort(Map<String, Integer> totalForwardCount) {
-//        맵은 정렬 어케하는지 모르겠네
-//        return sortedTotalForwardCount;
-        return null;
-    }
-
     public List<String> getJointWinners(Map<String, Integer> sortedTotalForwardCount) {
 //        맵은 우승자 판별 어케하는지 모르겠네
         for (int i = 0; i < sortedTotalForwardCount.size(); i++) {

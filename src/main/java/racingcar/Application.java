@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Application {
     public static void main(String[] args) {
@@ -34,13 +35,12 @@ public class Application {
 
             System.out.println(messagePrinter.resultGuideMessage);
             // 입력된 라운드 횟수만큼 랜덤라운드 1회를 반복
-            randomPicker.runRandomRounds(carNames, totalRounds);
-            System.out.println(messagePrinter.totalRandomResultMessage());
+            List<String> totalRoundResultList = randomPicker.runRandomRounds(carNames, totalRounds);
+            System.out.println(messagePrinter.getTotalRoundResultMessage(totalRoundResultList));
 
             //우승자 목록 도출하기
-            Map<String, Integer> totalForwardCount= mapBuilder.getCarNameAndForwardCount();
-            Map<String, Integer> sortedTotalForwardCount = winnerSorter.sort(totalForwardCount);
-            List<String> winnerList = winnerSorter.getJointWinners(sortedTotalForwardCount);
+            TreeMap<String, Integer> forwardCounter= mapBuilder.getCarNameAndForwardCount();
+            List<String> winnerList = winnerSorter.getJointWinners(forwardCounter);
 
             System.out.println(messagePrinter.getWinnerMessage(winnerList));
 
