@@ -13,6 +13,11 @@ public class GameWrapper {
         System.out.println("시도할 횟수는 몇 회인가요?");
         racingGameService.setNumberOfRounds(Console.readLine());
 
+        System.out.println();
+        System.out.println("실행 결과");
+        racingGameService.playingGame();
+
+
     }
 
 }

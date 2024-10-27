@@ -27,6 +27,16 @@ public class GameService {
 
     }
 
+    public void playingGame() {
+
+        Map<String, Integer> cars = setCarPositionOnTheLine();
+        for (int round = 0; round < gameRepository.getRound(); round++) {
+            roundOnRound(cars);
+        }
+        System.out.println("최종 우승자 : " + findingWinner(cars));
+
+    }
+
 
     public Map<String, Integer> setCarPositionOnTheLine() {
 
