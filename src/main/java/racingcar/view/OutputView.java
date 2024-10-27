@@ -3,6 +3,10 @@ package racingcar.view;
 import java.util.List;
 import racingcar.domain.Car;
 
+/**
+ * OutputView
+ * - 사용자 출력 관리
+ */
 public class OutputView {
 
     public static void printRoundResult(List<Car> cars) {

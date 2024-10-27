@@ -1,24 +1,16 @@
-package racingcar.domain;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import racingcar.domain.Car;
 
 /**
- * CarRacing
- * - 게임의 라운드를 반복하고, 각 자동차의 이동을 처리하는 클래스
+ * CarRacingService
+ * - 자동차 경주 라운드 실행, 우승자 계산 같은 비즈니스 로직 수행
  */
-public class CarRacing {
-    private final List<Car> cars;
+public class CarRacingService {
 
-    public CarRacing(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public void runRound() {
+    public void runRound(List<Car> cars) {
         for (Car car : cars) {
             if (isMovable()) {
                 car.move();
@@ -31,7 +23,7 @@ public class CarRacing {
         return randomValue >= 4;
     }
 
-    public List<Car> findWinners() {
+    public List<Car> findWinners(List<Car> cars) {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()

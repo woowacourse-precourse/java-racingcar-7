@@ -2,11 +2,16 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.domain.CarRacing;
+import racingcar.service.CarRacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+/**
+ * RacingController
+ * - 자동차 경주 게임의 전체적인 로직을 제어
+ */
 public class RacingController {
+    private final CarRacingService carRacingService = new CarRacingService();
 
     public void startGame() {
         List<String> carNames = InputView.getCarNames();
@@ -15,16 +20,14 @@ public class RacingController {
         List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .toList();
-        CarRacing carRacing = new CarRacing(cars);
 
-        // 게임 라운드별 결과 출력
         System.out.println("\n실행 결과");
         for (int i = 0; i < trialCount; i++) {
-            carRacing.runRound();
-            OutputView.printRoundResult(carRacing.getCars());
+            carRacingService.runRound(cars);
+            OutputView.printRoundResult(cars);
         }
 
-        List<Car> winners = carRacing.findWinners();
+        List<Car> winners = carRacingService.findWinners(cars);
         OutputView.printWinners(winners);
     }
 }

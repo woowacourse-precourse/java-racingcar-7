@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.validator.TrialCountValidator;
 
+/**
+ * InputView
+ * - 사용자 입력 관리
+ */
 public class InputView {
 
     public static List<String> getCarNames() {

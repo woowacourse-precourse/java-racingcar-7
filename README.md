@@ -36,7 +36,7 @@
 ### 3. 자동차 전진 조건 설정
 - [ ] 0에서 9 사이의 무작위 값을 생성한다.
 - [ ] 해당 값이 4 이상일 경우 자동차가 전진한다.
-    - [ ] 무작위 값이 0에서 0 사이가 아닌 값이 들어올 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+    - [ ] 무작위 값이 0에서 9 사이가 아닌 값이 들어올 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
 ---
 ### 4. 게임 진행 및 결과 출력
 - [ ] 각 라운드별로 각 자동차의 전진 결과를 출력한다.
@@ -49,19 +49,19 @@
 - [ ] 모든 사용자 입력에서 IllegalArgumentException을 발생시키는 상황에 대해 예외 메시지를 출력한다.
     - [ ] 자동차 이름: `자동차 이름은 1자 이상 5자 이하로 입력해야 합니다.`
     - [ ] 시도 횟수: `시도 횟수는 1 이상의 정수로 입력해야 합니다.`
-    - [ ] 무작위 값 범위: `전진 조건을 설정하는 값은 0에서 9 사이여야 합니다.`
 ---
 <br/>
 
 ## 📦 역할 별 패키지 분리
 ### domain
 - `Car`: 각 자동차의 상태와 전진 기능을 관리
-- `CarRacing`: 레이스 전체 흐름과 진행을 관리
-- `RandomNumberGenerator`: 무작위 숫자 생성 기능을 제공
 ---
 ### view
 - `InputView`: 사용자로부터 입력을 받는 역할
 - `OutputView`: 게임 진행 상황과 결과를 출력하는 역할
+---
+### service
+- `CarRacingService`: 자동차 경주의 비즈니스 로직 수행
 ---
 ### controller
 - `RacingController`: 전체 게임 흐름을 제어하고, 레이스의 각 단계를 조정 
@@ -75,8 +75,7 @@
     - 이름 길이 및 공백 여부 등 기본 조건을 검사
 - `TrialCountValidator`: 시도 횟수 입력의 유효성을 검사
     - 양의 정수인지 확인하고, 유효하지 않다면 예외를 발생
-- `RandomNumberGenerator` : 무작위 값이 0에서 9 사이인지 검사
-- `ValidatorManager`: `CarNameValidator`와 `TrialCountValidator`, `RandomNumberGenerator`를 종합하여 입력값을 최종 검증
+- `ValidatorManager`: `CarNameValidator`와 `TrialCountValidator`를 종합하여 입력값을 최종 검증
     - 단일 Validator 클래스를 호출하는 대신, 각 Validator에 역할을 위임하여 검증 로직을 관리
 ---
 
