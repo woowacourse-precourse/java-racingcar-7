@@ -16,8 +16,9 @@ public class Car {
     }
 
     void move() {
-
-
+        if (canMove()) {
+            currentDistance++;
+        }
     }
 
 }
