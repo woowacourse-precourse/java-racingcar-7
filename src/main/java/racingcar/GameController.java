@@ -1,8 +1,5 @@
 package racingcar;
 
-import static racingcar.InputHandler.inputCarName;
-import static racingcar.InputHandler.inputTryCount;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,9 +7,9 @@ import java.util.Map;
 
 public class GameController {
 
-    public static final Map<Integer, List<CarDto>> carRacingInfo = new HashMap<>();
+    protected static final Map<Integer, List<CarDto>> carRacingInfo = new HashMap<>();
 
-    public static List<CarDto> startRacing(List<String> carNames){
+    public static List<CarDto> createCarDtos(List<String> carNames){
         List<CarDto> carInfoList = new ArrayList<>();
 
         for (String carName : carNames) {
