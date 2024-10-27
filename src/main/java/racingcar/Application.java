@@ -8,8 +8,8 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         List<Car> cars = inputCarNames();
-
         int tryCount = inputTryCount();
+
         gameStart(cars, tryCount);
     }
 
@@ -36,6 +36,19 @@ public class Application {
             for (Car car : cars) {
                 car.move();
             }
+
+            printProgress(cars);
         }
+    }
+
+    private static void printProgress(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.print(car.getName() + " : ");
+            for (int i = 0; i < car.getLocation(); i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
