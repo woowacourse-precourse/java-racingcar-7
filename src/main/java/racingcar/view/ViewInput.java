@@ -17,7 +17,7 @@ public class ViewInput {
         System.out.println(INITIAL_MESSAGE);
         String input = Console.readLine();
         carNameValidator(input);
-        return Arrays.asList(input.split(","));
+        return Arrays.asList(input.trim().split(","));
     }
 
     public int receiverNumberOfWin(){
