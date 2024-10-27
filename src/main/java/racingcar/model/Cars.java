@@ -34,22 +34,21 @@ public class Cars {
         }
     }
 
-    public ArrayList<String> winnerNames() {
-        int maxMovedCount = -1;
-        ArrayList<String> names = new ArrayList<>(cars.size()); // 오버헤드를 방지하기 위해, 최대 사이즈만큼 미리 할당
+    public ArrayList<String> getWinnerNames() {
+        int maxMoveCount = findMaxMovedCount();
 
-        for (Car car : cars) {
-            if (maxMovedCount > car.countMove()) {
-                continue;
-            }
+        return new ArrayList<>(
+                cars.stream()
+                        .filter(car -> car.countMove() == maxMoveCount)
+                        .map(Car::getName)
+                        .toList()
+        );
+    }
 
-            if (maxMovedCount < car.countMove()) {
-                maxMovedCount = car.countMove();
-                names.clear();
-            }
-
-            names.add(car.getName());
-        }
-        return names;
+    private int findMaxMovedCount() {
+        return cars.stream()
+                .mapToInt(Car::countMove)
+                .max()
+                .getAsInt();
     }
 }

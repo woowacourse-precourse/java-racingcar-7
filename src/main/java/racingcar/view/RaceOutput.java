@@ -26,7 +26,7 @@ public class RaceOutput {
     public static void printWinner(Cars cars) {
         System.out.printf(
                 WINNER_FORMAT,
-                String.join(WINNER_SEPARATOR, cars.winnerNames())
+                String.join(WINNER_SEPARATOR, cars.getWinnerNames())
         );
     }
 }
