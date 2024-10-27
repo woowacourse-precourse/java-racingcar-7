@@ -7,6 +7,8 @@ public class OutputView {
 
     private static final String NEXT_LINE = System.lineSeparator();
     private static final String FORWARD_DASH = "-";
+    private static final String WINNER_DELIMITER = ", ";
+    private static final String RACING_RESULT_DELIMITER = " : ";
 
     public void printInputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -26,13 +28,13 @@ public class OutputView {
             int position = racingResult.position();
 
             String dashCount = FORWARD_DASH.repeat(position);
-            System.out.println(name + " : " + dashCount);
+            System.out.println(name + RACING_RESULT_DELIMITER + dashCount);
         }
         System.out.println();
     }
 
     public void printWinner(List<String> winners) {
-        String winner = String.join(", ", winners);
+        String winner = String.join(WINNER_DELIMITER, winners);
         System.out.println("최종 우승자 : " + winner);
     }
 }
