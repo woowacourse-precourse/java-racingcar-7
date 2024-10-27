@@ -25,19 +25,19 @@ class ApplicationTest extends NsTest {
     @DisplayName("기능_테스트 number 1")
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     @DisplayName("기능_테스트 number 2")
-    void 기능_테스트2(){
+    void 기능_테스트2() {
         assertRandomNumberInRangeTest(
-                ()->{
+                () -> {
                     run("pobi,woni,pubi", "2");
                     assertThat(output()).contains("pobi : -", "woni : ", "pubi : ", "pobi : -", "woni : -", "pubi : -")
                             .contains("최종 우승자 : pobi, woni, pubi");
@@ -50,8 +50,8 @@ class ApplicationTest extends NsTest {
     @DisplayName("자동차 이름이 5 이상일 때")
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
