@@ -7,7 +7,7 @@ public class RacingResult {
     private final List<RacingCar> racingRecords;
     private final Integer maxDistance;
 
-    public RacingResult(List<RacingCar> racingRecords) {
+    public RacingResult(final List<RacingCar> racingRecords) {
         this.racingRecords = racingRecords;
         this.maxDistance = findMaxDistance();
     }
