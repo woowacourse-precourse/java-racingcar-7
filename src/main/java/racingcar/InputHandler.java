@@ -6,29 +6,29 @@ import java.util.List;
 
 public class InputHandler {
     public List<String> getCarNames(){
-        System.out.println("========== 자동차 경주 게임 ==========");
-        System.out.println();
-        System.out.print("경주할 자동차 이름을 입력하세요. : ");
-
-        String inputCarNames = Console.readLine();
-        String[] carNamesArray = inputCarNames.split(",");
-
         List<String> carNames = new ArrayList<>();
-        for (String name: carNamesArray){
-            carNames.add(name.trim());
-        }
-        System.out.println();
+        String inputCarNames;
+
+        while (true){
+            System.out.print("경주할 자동차 이름을 입력하세요.(완료: 0) : ");
+            inputCarNames = Console.readLine().trim();
+
+            if (inputCarNames.equals("0")) {
+                break;
+            }
+
+            String[] names = inputCarNames.split(",");
+            for (String name: names){
+                carNames.add(name.trim());
+            }
+        }System.out.println(carNames);
         return carNames;
     }
 
     public int getAttempCount(){
         System.out.print("시도할 횟수를 입력하세요. : ");
-
         String count = Console.readLine();
-        int attemptCount = Integer.parseInt(count);
-
-        System.out.println();
-        return attemptCount;
+        return Integer.parseInt(count);
     }
 
 }
