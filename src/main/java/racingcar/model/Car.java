@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final String BLANK_NAME_ERROR_MESSAGE = "공백은 이름이 될 수 없습니다.";
+    private static final String NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5자 이하만 가능합니다.";
     private static final int NAME_LENGTH_LIMIT = 5;
     private static final int MOVEABLE_LIMIT = 4;
     private final String name;
@@ -16,8 +18,11 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (isBlank(name) || isTooLong(name)) {
-            throw new IllegalArgumentException();
+        if (isBlank(name)) {
+            throw new IllegalArgumentException(BLANK_NAME_ERROR_MESSAGE);
+        }
+        if (isTooLong(name)) {
+            throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
         }
     }
 
