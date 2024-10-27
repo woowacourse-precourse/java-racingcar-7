@@ -2,6 +2,7 @@ package racingcar.validation;
 
 
 import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_MUST_ENG_KOR_DIGIT;
+import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_MUST_UNDER_LENGTH_FIVE;
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_SEPARATOR;
 import static racingcar.service.exception.CarNamesExceptionMessage.NO_INPUT;
 
@@ -18,6 +19,7 @@ public class CarNamesValidator {
         validateCarNamesBlank(carNames);
         validateSeparator(carNames);
         validateCarNameEngKorDigit(carNames);
+        validateCarNameUnderLengthFive(carNames);
         return carNames;
     }
 
@@ -37,6 +39,14 @@ public class CarNamesValidator {
         for (String carName : carNames.split(CAR_NAMES_SEPARATOR)) {
             if (!carName.matches(CAR_NAME_REGEX)) {
                 throw new CarNamesException(CAR_NAME_MUST_ENG_KOR_DIGIT);
+            }
+        }
+    }
+
+    private static void validateCarNameUnderLengthFive(String carNames) {
+        for (String carName : carNames.split(CAR_NAMES_SEPARATOR)) {
+            if (carName.length() > 5) {
+                throw new CarNamesException(CAR_NAME_MUST_UNDER_LENGTH_FIVE);
             }
         }
     }
