@@ -1,9 +1,10 @@
-package racingcar;
+package racingcar.service;
 
 import static racingcar.validation.Validation.validateName;
 import static racingcar.validation.Validation.validateSameName;
 
 import java.util.ArrayList;
+import racingcar.domain.DTO;
 
 public class GameService {
 

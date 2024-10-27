@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.DTO;
 
 public class GameStart {
     private static int max;
