@@ -1,9 +1,11 @@
 package racingcar.controller;
 
+import java.util.stream.IntStream;
+import racingcar.domain.AttemptCount;
 import racingcar.domain.Cars;
 import racingcar.domain.MoveStrategy;
-import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class GameController {
 
@@ -18,8 +20,18 @@ public class GameController {
         final int numberOfAttempts = InputView.getNumberOfAttempts();
 
         final Cars cars = new Cars(carNames);
-        final RacingGame racingGame = new RacingGame(cars, moveStrategy, numberOfAttempts);
+        final AttemptCount attemptCount = new AttemptCount(numberOfAttempts);
 
-        racingGame.play();
+        OutputView.printRaceStart();
+        playRounds(cars, attemptCount);
+        OutputView.printWinners(cars.getWinners());
+    }
+
+    private void playRounds(Cars cars, AttemptCount attemptCount) {
+        IntStream.range(0, attemptCount.numberOfAttempts())
+                .forEach(i -> {
+                    cars.attemptCarMovements(moveStrategy);
+                    OutputView.printRaceProgress(cars.get());
+                });
     }
 }
