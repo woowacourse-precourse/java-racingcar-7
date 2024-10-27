@@ -3,13 +3,9 @@ package racingcar.service;
 import racingcar.domain.Cars;
 
 public class RegisterService {
-    private final Cars cars;
-
-    public RegisterService(Cars cars) {
-        this.cars = cars;
-    }
-
-    public void registerCars(String carNames) {
+    public Cars registerCars(String carNames) {
+        Cars cars = new Cars();
         cars.registerCars(carNames);
+        return cars;
     }
 }
