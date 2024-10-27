@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.dto.CarPosition;
 import racingcar.dto.CarsPositions;
+import racingcar.dto.Winners;
 
 public class Cars {
     private final List<Car> cars;
@@ -33,7 +34,7 @@ public class Cars {
         }
     }
 
-    public CarsPositions buildCurrentStates(){
+    public CarsPositions buildCarsPositions(){
         List<CarPosition> carsPositions = new ArrayList<>();
         for (Car car : cars) {
             carsPositions.add(car.buildCarPosition());
@@ -42,7 +43,7 @@ public class Cars {
         return new CarsPositions(carsPositions);
     }
 
-    public List<String> getWinner(){
+    public Winners buildWinners(){
         List<String> winners = new ArrayList<>();
         int highestPosition = 0;
         for (Car car : cars) {
@@ -57,6 +58,6 @@ public class Cars {
             }
         }
 
-        return winners;
+        return new Winners(winners);
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.Parser;
 import racingcar.dto.CarsPositions;
+import racingcar.dto.Winners;
 import racingcar.validator.CarNamesValidator;
 import racingcar.validator.TotalRoundsValidator;
 import racingcar.view.InputView;
@@ -24,7 +25,7 @@ public class Game {
         int totalRounds = Integer.parseInt(rawTotalRounds);
 
         proceedRacing(cars, totalRounds);
-        OutputView.printWinner(cars.getWinner());
+        announceWinner(cars);
 
         Console.close();
     }
@@ -34,9 +35,14 @@ public class Game {
 
         for (int i = 0; i < totalRounds; i++) {
             cars.proceedOneRound();
-            CarsPositions carsPositions = cars.buildCurrentStates();
+            CarsPositions carsPositions = cars.buildCarsPositions();
             OutputView.printRoundResult(carsPositions.getVisualizedPositions());
         }
+    }
+
+    private void announceWinner(Cars cars) {
+        Winners winners = cars.buildWinners();
+        OutputView.printWinner(winners.getWinners());
     }
 
 }
