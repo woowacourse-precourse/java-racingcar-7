@@ -23,9 +23,20 @@ public class Game {
         List<String> carNames = Input.inputCarNames();
         List<Car> cars = carService.getCars(carNames);
 
-        Output.howManyTry();
-        int repetitionCount = Input.inputRepetition();
+        int repetitionCount = getRepetitionCount();
 
+        playGame(repetitionCount, cars);
+        announceWinners(cars);
+
+        Input.close();
+    }
+
+    private void announceWinners(List<Car> cars) {
+        String winners = winner.getWinners(cars);
+        Output.winner(winners);
+    }
+
+    private void playGame(int repetitionCount, List<Car> cars) {
         Output.executionResult();
         for (int i = 0; i < repetitionCount; i++) {
             for (Car car : cars) {
@@ -34,10 +45,10 @@ public class Game {
             }
             System.out.println();
         }
+    }
 
-        String winners = winner.getWinners(cars);
-        Output.winner(winners);
-
-        Input.close();
+    private int getRepetitionCount() {
+        Output.howManyTry();
+        return Input.inputRepetition();
     }
 }
