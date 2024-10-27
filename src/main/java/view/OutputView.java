@@ -1,6 +1,8 @@
 package view;
 
-import constant.Comment;
+import static constant.Comment.RESULT_MESSAGE;
+import static constant.Comment.WINNER_MESSAGE;
+
 import service.ResultService;
 
 public class OutputView {
@@ -12,11 +14,11 @@ public class OutputView {
     }
 
     public void gameResultMessage(String roundResults) {
-        System.out.printf(Comment.RESULT_MESSAGE.getMessage() + roundResults);
+        System.out.printf(RESULT_MESSAGE.getMessage() + roundResults);
     }
 
     public void gameWinnerMessage() {
-        System.out.printf(Comment.WINNER_MESSAGE.getMessage() + resultService.displayWinners());
+        System.out.printf(WINNER_MESSAGE.getMessage() + resultService.displayWinners());
     }
 }
 
