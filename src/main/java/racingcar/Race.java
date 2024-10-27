@@ -19,6 +19,7 @@ public class Race {
     }
 
     public void racing(List<Car> carList, int attemptCount) {
+        System.out.println("실행 결과");
         for (int i = 0; i < attemptCount; i++) {
             moveCars(carList, attemptCount - i);
             System.out.println();
