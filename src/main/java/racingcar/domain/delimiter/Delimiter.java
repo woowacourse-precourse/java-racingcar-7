@@ -1,8 +1,17 @@
 package racingcar.domain.delimiter;
 
-public class Delimiter {
+public enum Delimiter {
+    COMMA(","),
+    SPACE_COMMA(", "),
+    DASH("-");
 
-    public static final String COMMA = ",";
-    public static final String SPACE_COMMA = ", ";
-    public static final String DASH = "-";
+    private final String delimiter;
+
+    Delimiter(String delimiter) {
+        this.delimiter = delimiter;
+    }
+
+    public String getDelimiter() {
+        return delimiter;
+    }
 }

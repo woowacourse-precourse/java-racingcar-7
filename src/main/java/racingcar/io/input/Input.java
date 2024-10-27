@@ -35,6 +35,6 @@ public class Input {
     }
 
     private static List<String> splitCarNames(String input) {
-        return Arrays.stream(input.split(Delimiter.COMMA)).toList();
+        return Arrays.stream(input.split(Delimiter.COMMA.getDelimiter())).toList();
     }
 }

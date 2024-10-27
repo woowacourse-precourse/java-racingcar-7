@@ -13,7 +13,7 @@ public class CarNameValidator {
     }
 
     private static void validateNoEdgeComma(String names) {
-        if (names.startsWith(Delimiter.COMMA) || names.endsWith(Delimiter.COMMA)) {
+        if (names.startsWith(Delimiter.COMMA.getDelimiter()) || names.endsWith(Delimiter.COMMA.getDelimiter())) {
             throw new IllegalArgumentException(
                     ErrorMessage.CAR_NAME_NOT_CONTAINS_EDGE_COMMA.getMessage());
         }
@@ -27,7 +27,7 @@ public class CarNameValidator {
     }
 
     private static void validateHasCommaSeparator(String names) {
-        if (!names.contains(Delimiter.COMMA)) {
+        if (!names.contains(Delimiter.COMMA.getDelimiter())) {
             throw new IllegalArgumentException(
                     ErrorMessage.CAR_NAMES_NOT_CONTAINS_COMMA.getMessage());
         }

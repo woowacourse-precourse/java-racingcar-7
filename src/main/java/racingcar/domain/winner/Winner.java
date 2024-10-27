@@ -20,7 +20,7 @@ public class Winner {
             }
         }
 
-        return String.join(Delimiter.SPACE_COMMA, winners);
+        return String.join(Delimiter.SPACE_COMMA.getDelimiter(), winners);
     }
 
 }

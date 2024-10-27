@@ -29,6 +29,6 @@ public class Output {
     }
 
     private static String repeatDash(int range) {
-        return Delimiter.DASH.repeat(range);
+        return Delimiter.DASH.getDelimiter().repeat(range);
     }
 }
