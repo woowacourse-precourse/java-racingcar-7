@@ -69,7 +69,7 @@ public class InputView {
     }
 
     private void validateRoundCountRange(int roundCount) {
-        if (roundCount < 0 || roundCount > 100_0000) {
+        if (roundCount <= 0 || roundCount > 100_0000) {
             throw new IllegalArgumentException("1이상 100만 이하의 숫자를 입력해주세요.");
         }
     }
