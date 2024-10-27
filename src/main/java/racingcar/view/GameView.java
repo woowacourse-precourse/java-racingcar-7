@@ -18,4 +18,8 @@ public final class GameView {
     public void displayGameStart() {
         System.out.println("실행 결과");
     }
+
+    public void displayCarPosition(String carPosition) {
+        System.out.println(carPosition);
+    }
 }
