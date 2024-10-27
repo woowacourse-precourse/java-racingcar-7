@@ -23,5 +23,18 @@ public class Application {
             }
             carStates.put(carName, new StringBuilder());
         }
+
+        // 시도할 횟수 입력 받기
+        String tryNumStr = Console.readLine();
+        // String을 숫자로 변경
+        if(tryNumStr.matches("^[0-9]+$")) {
+            int tryNum = Integer.parseInt(tryNumStr);
+            if(tryNum == 0){
+                throw new IllegalArgumentException("1 이상의 숫자를 입력하세요");
+            }
+        } else {
+            // 숫자가 아닐 경우 예외 발생
+            throw new IllegalArgumentException("숫자가 아닙니다. 다시 입력하세요.");
+        }
     }
 }
