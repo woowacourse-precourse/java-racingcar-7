@@ -64,9 +64,9 @@ public class RaceController implements GameController {
     }
 
 
-    private void validateNameLength(String s) {
-        if (s.length() > 5) {
-            throw new IllegalArgumentException();
+    private void validateNameLength(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("5글자이하의 자동차의 이름을 입력해주세요.");
         }
     }
 }
