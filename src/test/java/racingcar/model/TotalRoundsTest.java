@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static racingcar.model.ExceptionMessages.TotalRounds.TOTAL_ROUNDS_ABOVE_MAXIMUM;
+import static racingcar.model.ExceptionMessages.TotalRounds.TOTAL_ROUNDS_BELOW_MINIMUM;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +22,7 @@ public class TotalRoundsTest {
         // when & then
         assertThatThrownBy(() -> new TotalRounds(invalidTotalRounds))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("총 라운드 수는 10회 이하여야 합니다.");
+                .hasMessage(TOTAL_ROUNDS_ABOVE_MAXIMUM);
     }
 
     @Test
@@ -32,7 +34,7 @@ public class TotalRoundsTest {
         // when & then
         assertThatThrownBy(() -> new TotalRounds(invalidTotalRounds))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("총 라운드 수는 2회 이상이어야 합니다.");
+                .hasMessage(TOTAL_ROUNDS_BELOW_MINIMUM);
     }
 
 }

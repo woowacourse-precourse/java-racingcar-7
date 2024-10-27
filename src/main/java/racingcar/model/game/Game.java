@@ -1,5 +1,8 @@
 package racingcar.model.game;
 
+import static racingcar.model.ExceptionMessages.Game.INSUFFICIENT_CAR_COUNT;
+import static racingcar.model.ExceptionMessages.Game.NO_REGISTERED_WINNERS;
+
 import java.util.List;
 import racingcar.model.car.CarSnapshot;
 import racingcar.model.car.Cars;
@@ -29,7 +32,7 @@ public class Game {
 
     private void validateQualification(Cars cars) {
         if (cars.hasFewerNumberOfCarsThan(MINIMUM_NUMBER_OF_CARS)) {
-            throw new IllegalArgumentException("최소 2대 이상 출전해야 합니다.");
+            throw new IllegalArgumentException(INSUFFICIENT_CAR_COUNT);
         }
     }
 
@@ -58,7 +61,7 @@ public class Game {
 
     public List<String> getNameOfWinners() {
         if (winners == null) {
-            throw new IllegalArgumentException("아직 우승자들이 등록되지 않았습니다.");
+            throw new IllegalArgumentException(NO_REGISTERED_WINNERS);
         }
         return winners.getNamesOfWinner();
     }

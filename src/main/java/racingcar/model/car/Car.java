@@ -1,5 +1,7 @@
 package racingcar.model.car;
 
+import static racingcar.model.ExceptionMessages.Car.LENGTH_OF_NAME_EXCEED;
+
 public class Car {
 
     private static final int MAX_LENGTH_OF_NAME = 5;
@@ -24,7 +26,7 @@ public class Car {
 
     private void validateNameLength(final String name) {
         if (name.length() > MAX_LENGTH_OF_NAME) {
-            throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다.");
+            throw new IllegalArgumentException(LENGTH_OF_NAME_EXCEED);
         }
     }
 

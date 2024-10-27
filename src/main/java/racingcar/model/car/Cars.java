@@ -1,5 +1,8 @@
 package racingcar.model.car;
 
+import static racingcar.model.ExceptionMessages.Cars.DUPLICATE_CAR_NAME;
+import static racingcar.model.ExceptionMessages.Cars.NO_REGISTERED_CARS;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,7 +25,7 @@ public class Cars {
         Set<String> uniqueNames = new HashSet<>(List.of(names));
 
         if (names.length != uniqueNames.size()) {
-            throw new IllegalArgumentException("중복된 이름이 존재합니다.");
+            throw new IllegalArgumentException(DUPLICATE_CAR_NAME);
         }
     }
 
@@ -46,7 +49,7 @@ public class Cars {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElseThrow(() -> new IllegalStateException("등록된 차량이 없습니다."));
+                .orElseThrow(() -> new IllegalStateException(NO_REGISTERED_CARS));
 
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)

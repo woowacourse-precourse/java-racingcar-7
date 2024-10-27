@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static racingcar.model.ExceptionMessages.Cars.DUPLICATE_CAR_NAME;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ public class CarsTest {
         // when & then
         assertThatThrownBy(() -> new Cars(duplicatedNames))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복된 이름이 존재합니다.");
+                .hasMessage(DUPLICATE_CAR_NAME);
     }
 
 }

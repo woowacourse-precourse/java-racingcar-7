@@ -2,6 +2,7 @@ package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static racingcar.model.ExceptionMessages.Game.INSUFFICIENT_CAR_COUNT;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,7 +46,7 @@ public class GameTest {
         assertThatThrownBy(
                 () -> new Game(invalidNumberOfCars, totalRounds, new RandomNumberPicker(), new PositionBasedReferee()))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("최소 2대 이상 출전해야 합니다.");
+                .hasMessage(INSUFFICIENT_CAR_COUNT);
     }
 
     @Test
