@@ -1,12 +1,12 @@
-package racingcar.application.usecase;
+package racingcar.application.port.input;
 
 import racingcar.application.dto.request.RaceRequest;
 import racingcar.application.dto.response.RaceResponse;
 import racingcar.domain.race.Race;
 
-public interface RaceExecutionUseCase {
+public interface ManageRaceUsecase {
 
-    RaceResponse runRace(RaceRequest raceRequest);
+    RaceResponse run(RaceRequest raceRequest);
 
     String determineWinners(Race race);
 }

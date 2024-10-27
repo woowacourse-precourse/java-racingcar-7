@@ -10,13 +10,14 @@ import racingcar.application.validation.InputValidator;
 @DisplayName("InputValidator 클래스 테스트")
 public class InputValidatorTest {
 
+    private final InputValidator inputValidator = new InputValidator();
     @Test
     void 쉼표가_연속적으로_입력된_경우_예외를_발생한다() {
         // given
         String carNames = "a,,b";
 
         // when & then
-        Assertions.assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
+        Assertions.assertThatThrownBy(() -> inputValidator.validateCarNames(carNames))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(CONSECUTIVE_COMMA.getMessage());
     }
@@ -27,7 +28,7 @@ public class InputValidatorTest {
         String carNames = "a,b,c";
 
         // when & then
-        Assertions.assertThatCode(() -> InputValidator.validateCarNames(carNames))
+        Assertions.assertThatCode(() -> inputValidator.validateCarNames(carNames))
             .doesNotThrowAnyException();
     }
 
@@ -37,9 +38,9 @@ public class InputValidatorTest {
         String rounds = "";
 
         // when % then
-        Assertions.assertThatThrownBy(() -> InputValidator.validateRound(rounds))
+        Assertions.assertThatThrownBy(() -> inputValidator.validateRound(rounds))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage(ROUNDS_EMPTY.getMessage());
+            .hasMessage(ROUND_EMPTY.getMessage());
     }
     @Test
     void 시도_횟수가_1_미만일시_예외를_발생한다() {
@@ -47,7 +48,7 @@ public class InputValidatorTest {
         String rounds = "0";
 
         // when % then
-        Assertions.assertThatThrownBy(() -> InputValidator.validateRound(rounds))
+        Assertions.assertThatThrownBy(() -> inputValidator.validateRound(rounds))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(ROUNDS_LESS_THAN_ONE.getMessage());
     }
@@ -58,8 +59,8 @@ public class InputValidatorTest {
         String rounds = "a";
 
         // when % then
-        Assertions.assertThatThrownBy(() -> InputValidator.validateRound(rounds))
+        Assertions.assertThatThrownBy(() -> inputValidator.validateRound(rounds))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage(ROUNDS_NOT_NUMBER.getMessage());
+            .hasMessage(ROUND_NOT_NUMBER.getMessage());
     }
 }

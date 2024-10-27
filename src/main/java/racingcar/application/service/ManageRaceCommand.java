@@ -2,21 +2,21 @@ package racingcar.application.service;
 
 import racingcar.application.dto.request.RaceRequest;
 import racingcar.application.dto.response.RaceResponse;
-import racingcar.application.usecase.RaceExecutionUseCase;
+import racingcar.application.port.input.ManageRaceUsecase;
 import racingcar.domain.acceleration.RandomAcceleration;
 import racingcar.domain.race.Race;
 import racingcar.domain.race.service.RaceHelper;
 
-public class RaceExecutionCommand implements RaceExecutionUseCase {
+public class ManageRaceCommand implements ManageRaceUsecase {
 
     private final RaceHelper raceHelper;
 
-    public RaceExecutionCommand(RaceHelper raceService) {
-        this.raceHelper = raceService;
+    public ManageRaceCommand(RaceHelper raceHelper) {
+        this.raceHelper = raceHelper;
     }
 
     @Override
-    public RaceResponse runRace(final RaceRequest raceRequest) {
+    public RaceResponse run(final RaceRequest raceRequest) {
         Race race = Race.of(raceRequest.carNames(), new RandomAcceleration());
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < raceRequest.round(); i++) {
