@@ -21,9 +21,12 @@ class ApplicationTest extends NsTest {
                             RacingCarResultUtil.generateIntermediateResultMessage(
                                     2,
                                     "pobi", "woni",
-                                    "1", "0"),
+                                    "1", "0"
+                            ),
                             RacingCarResultUtil.generateWinnerMessage(
-                                    "pobi"));
+                                    "pobi"
+                            )
+                    );
                 },
                 MOVING_FORWARD, STOP
         );
@@ -38,9 +41,12 @@ class ApplicationTest extends NsTest {
                             RacingCarResultUtil.generateIntermediateResultMessage(
                                     2,
                                     "pobi", "woni",
-                                    "1", "0"),
+                                    "1", "0"
+                            ),
                             RacingCarResultUtil.generateWinnerMessage(
-                                    "pobi"));
+                                    "pobi"
+                            )
+                    );
                 },
                 MOVING_FORWARD, STOP
         );
@@ -56,10 +62,12 @@ class ApplicationTest extends NsTest {
                                     3,
                                     "pobi", "woni", "hani",
                                     "1", "0", "0",
-                                    "1", "1", "0"),
+                                    "1", "1", "0"
+                            ),
                             RacingCarResultUtil.generateWinnerMessage(
                                     "pobi", "woni"
-                            ));
+                            )
+                    );
                 },
                 MOVING_FORWARD, STOP, STOP, STOP, MOVING_FORWARD, STOP
         );
@@ -74,9 +82,12 @@ class ApplicationTest extends NsTest {
                             RacingCarResultUtil.generateIntermediateResultMessage(
                                     2,
                                     "pobi", "woni",
-                                    "1", "0"),
+                                    "1", "0"
+                            ),
                             RacingCarResultUtil.generateWinnerMessage(
-                                    "pobi"));
+                                    "pobi"
+                            )
+                    );
                 },
                 MOVING_FORWARD, STOP
         );
