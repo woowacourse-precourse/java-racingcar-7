@@ -4,17 +4,18 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Main {
     public void run(){
         finishGame(playGame(prepareGame()));
     }
 
-
     public List<Car> prepareGame() {
         String carNameInput = receiveCarNames();
-        String[] carNames = splitCarNames(carNameInput);
+        List<String> carNames = splitCarNames(carNameInput);
         List<Car> cars = createAllCars(carNames);
 
         return cars;
@@ -47,8 +48,8 @@ public class Main {
         return input;
     }
 
-    public String[] splitCarNames(String input) {
-        String[] carNames = input.split(",");
+    public List<String> splitCarNames(String input) {
+        List<String> carNames = Arrays.stream(input.split(",")).toList();
         return carNames;
     }
 
@@ -57,7 +58,7 @@ public class Main {
         return car;
     }
 
-    public List<Car> createAllCars(String[] carNames) {
+    public List<Car> createAllCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {

@@ -25,7 +25,7 @@ class MainTest extends NsTest {
     @Test
     @DisplayName("쉼표를 기준으로 자동차 이름을 분리한다")
     void splitCarNames() {
-        assertThat(main.splitCarNames("pobi,woni,jun")).isEqualTo(new String[]{"pobi", "woni", "jun"});
+        assertThat(main.splitCarNames("pobi,woni,jun")).isEqualTo(List.of("pobi", "woni", "jun"));
     }
 
     @Test
@@ -37,8 +37,7 @@ class MainTest extends NsTest {
     @Test
     @DisplayName("모든 자동차 객체를 생성한다")
     void createAllCars() {
-        assertThat(main.createAllCars(new String[]{"pobi", "woni", "jun"}))
-                .hasSize(3);
+        assertThat(main.createAllCars(List.of("pobi", "woni", "jun")).size()).isEqualTo(3);
     }
 
     @Test
