@@ -7,7 +7,7 @@ public class RandomNumberGenerator {
         throw new IllegalStateException("Util Class");
     }
 
-    public static int generateRandomInteger() {
+    public static int generateRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 }
