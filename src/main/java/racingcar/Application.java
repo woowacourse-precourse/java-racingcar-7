@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
-        try{
+
             MessagePrinter messagePrinter = new MessagePrinter();
             InputReader inputReader = new InputReader();
             InputExtractor inputExtractor = new InputExtractor();
@@ -14,6 +14,7 @@ public class Application {
             RandomPicker randomPicker = new RandomPicker();
             WinnerSorter winnerSorter = new WinnerSorter();
 
+        try{
             System.out.println(messagePrinter.carNameGuideMessage);
             String userInputCar = inputReader.getUserInput();
 
@@ -33,10 +34,7 @@ public class Application {
 
             System.out.println(messagePrinter.resultGuideMessage);
             // 입력된 라운드 횟수만큼 랜덤라운드 1회를 반복
-            for(int i = 0; i < totalRounds; i++){
-                randomPicker.runSingleRandomRound(carNames);
-                mapBuilder.mapSingleRandomRoundResult(i);
-            }
+            randomPicker.runRandomRounds(carNames, totalRounds);
             System.out.println(messagePrinter.totalRandomResultMessage());
 
             //우승자 목록 도출하기
@@ -45,6 +43,7 @@ public class Application {
             List<String> winnerList = winnerSorter.getJointWinners(sortedTotalForwardCount);
 
             System.out.println(messagePrinter.getWinnerMessage(winnerList));
+
         } catch(IllegalArgumentException e) {
             throw e;
         }

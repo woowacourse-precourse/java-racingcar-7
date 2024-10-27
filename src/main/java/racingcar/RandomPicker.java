@@ -7,6 +7,13 @@ public class RandomPicker {
 
     MapBuilder mapBuilder = new MapBuilder();
 
+    public void runRandomRounds(List<String> carNames, int totalRounds) {
+        for(int i = 0; i < totalRounds; i++){
+            runSingleRandomRound(carNames);
+            mapBuilder.mapSingleRandomRoundResult(i);
+        }
+    }
+
     public void runSingleRandomRound(List<String> carNames){
         for (int i = 0; i < carNames.size(); i++) {
             String carName = carNames.get(i);

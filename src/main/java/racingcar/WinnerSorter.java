@@ -7,7 +7,8 @@ public class WinnerSorter {
 
     public Map<String, Integer> sort(Map<String, Integer> totalForwardCount) {
 //        맵은 정렬 어케하는지 모르겠네
-        return sortedTotalForwardCount;
+//        return sortedTotalForwardCount;
+        return null;
     }
 
     public List<String> getJointWinners(Map<String, Integer> sortedTotalForwardCount) {
