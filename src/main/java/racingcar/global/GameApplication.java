@@ -9,7 +9,10 @@ public class GameApplication {
         CarController carController = new CarController();
         RaceController raceController = new RaceController();
 
-        Map<String, String> race = carController.createCars();
+        Map<String, String> cars = carController.createCars();
         int round = raceController.raceEnterRound();
+
+        raceController.raceProgression(round, cars);
+        raceController.raceWinnerCheck(cars);
     }
 }
