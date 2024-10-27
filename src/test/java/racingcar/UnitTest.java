@@ -32,7 +32,7 @@ public class UnitTest extends NsTest {
     @DisplayName("splitInput 작동테스트")
     void splitInputTest() {
         List<RacingCar> resultCars = Application.splitInput("car1,car2, car3");
-        assertThat(resultCars).extracting("name").containsExactly("car1", "car2","car3");
+        assertThat(resultCars).extracting("name").containsExactly("car1", "car2", "car3");
     }
 
     @Test
@@ -51,7 +51,7 @@ public class UnitTest extends NsTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1,1","2,2","3,3","4,4","5,5","10000,10000"})
+    @CsvSource({"1,1", "2,2", "3,3", "4,4", "5,5", "10000,10000"})
     @DisplayName("parseTrial 글자수 정상 작동 테스트")
     void parseTrialTest(String input, int realTrial) {
         Integer result = Application.parseTrial(input);
@@ -60,7 +60,7 @@ public class UnitTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"--","dkssdu","asdfasdf","!"})
+    @ValueSource(strings = {"--", "dkssdu", "asdfasdf", "!"})
     @DisplayName("parseTrial 예외 테스트")
     void parseTrialTest2(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -134,8 +134,8 @@ public class UnitTest extends NsTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         Application.printCarInfo(cars);
-        assertThat(out.toString()).contains(cars.get(0).name+" : -",
-                cars.get(1).name+" : ---", cars.get(2).name+" : --");
+        assertThat(out.toString()).contains(cars.get(0).name + " : -",
+                cars.get(1).name + " : ---", cars.get(2).name + " : --");
     }
 
     @ParameterizedTest
