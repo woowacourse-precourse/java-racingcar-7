@@ -25,7 +25,8 @@ class GameLogicTest {
     void 랜덤_값이_4_이상일_경우_전진한다() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    Map<String, StringBuilder> result = gameLogic.moveCarsIfQualified();
+                    gameLogic.moveCarsIfQualified();
+                    Map<String, StringBuilder> result = gameLogic.getResult();
 
                     assertThat(result.get("test1").toString()).isEqualTo(MOVE_INDICATOR);
                     assertThat(result.get("test2").toString()).isEqualTo("");

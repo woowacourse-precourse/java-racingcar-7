@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.Map;
 
 public class Game {
     private final View view;
@@ -52,8 +51,8 @@ public class Game {
     }
 
     private void playSingleRound() {
-        Map<String, StringBuilder> roundResult = gameLogic.moveCarsIfQualified();
-        view.printStatus(roundResult);
+        gameLogic.moveCarsIfQualified();
+        view.printStatus(gameLogic.getResult());
         System.out.println();
     }
 }
