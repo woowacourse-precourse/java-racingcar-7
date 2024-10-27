@@ -10,9 +10,9 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GameTest {
+public class GameServiceTest {
     private static final int GAMECOUNT = 10;
-    Game game;
+    GameService game;
 
     @BeforeEach
     public void setUp() {
@@ -20,7 +20,7 @@ public class GameTest {
         cars.put("pobi", 0);
         cars.put("woni", 0);
         cars.put("jun", 0);
-        game = new Game(GAMECOUNT, cars);
+        game = new GameService(GAMECOUNT, cars);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class GameTest {
         cars.put("pobi", 3);
         cars.put("woni", 3);
         cars.put("jun", 1);
-        game = new Game(GAMECOUNT, cars);
+        game = new GameService(GAMECOUNT, cars);
 
         List<String> winners = game.getWinners();
 

@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-public class Game {
+public class GameService {
     private static final int RANDOM_MIN = 0;
     private static final int RANDOM_MAX = 9;
 
@@ -12,7 +12,7 @@ public class Game {
     private final Map<String, Integer> cars;
     private List<Map<String, Integer>> record;
 
-    public Game(int gameCount, Map<String, Integer> cars) {
+    public GameService(int gameCount, Map<String, Integer> cars) {
         this.gameCount = gameCount;
         this.cars = cars;
 
