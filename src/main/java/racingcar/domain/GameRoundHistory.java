@@ -21,4 +21,17 @@ public class GameRoundHistory {
         eachRoundResult.append("\n");
     }
 
+    public void storeFinalWinners(List<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            if (i != cars.size() - 1) {
+                finalResult
+                        .append(cars.get(i).getName())
+                        .append(", ");
+            }
+            if (i == cars.size() - 1) {
+                finalResult.append(cars.get(i).getName());
+            }
+        }
+    }
+
 }
