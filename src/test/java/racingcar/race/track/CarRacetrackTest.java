@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.race.MockCar;
 import racingcar.race.racer.car.Car;
 import racingcar.race.track.cartrack.CarRaceUtils;
 import racingcar.race.track.cartrack.CarRacetrack;

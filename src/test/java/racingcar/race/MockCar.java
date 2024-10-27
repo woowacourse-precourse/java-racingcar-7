@@ -1,4 +1,4 @@
-package racingcar.race.track;
+package racingcar.race;
 
 import racingcar.race.racer.car.Car;
 
