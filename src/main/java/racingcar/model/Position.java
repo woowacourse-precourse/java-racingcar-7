@@ -12,4 +12,8 @@ public class Position {
     public int toInteger() {
         return this.position;
     }
+
+    public void move(int distance) {
+        this.position += distance;
+    }
 }
