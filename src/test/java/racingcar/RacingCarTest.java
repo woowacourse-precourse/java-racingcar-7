@@ -75,7 +75,7 @@ public class RacingCarTest extends NsTest {
     @Test
     void 빈_이름_실패() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,", "1"))
+                assertThatThrownBy(() -> runException("", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -83,7 +83,7 @@ public class RacingCarTest extends NsTest {
     @Test
     void 공백_이름_실패() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,  ", "1"))
+                assertThatThrownBy(() -> runException("  ", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -92,6 +92,22 @@ public class RacingCarTest extends NsTest {
     void 중복_이름_실패() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 구분자_사이_공백_이름_실패() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, ,woni", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 구분자_사이_빈_이름_실패() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,woni", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
