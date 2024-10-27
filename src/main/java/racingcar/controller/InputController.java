@@ -1,13 +1,13 @@
 package racingcar.controller;
 
-import racingcar.validator.InitialInputValidator;
+import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 
-public class RacingCarController {
+public class InputController {
   private final InputView inputView;
-  private final InitialInputValidator inputValidator;
+  private final InputValidator inputValidator;
 
-  public RacingCarController(InputView inputView, InitialInputValidator inputValidator) {
+  public InputController(InputView inputView, InputValidator inputValidator) {
     this.inputView = inputView;
     this.inputValidator = inputValidator;
   }

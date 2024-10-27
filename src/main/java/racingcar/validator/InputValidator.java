@@ -2,7 +2,7 @@ package racingcar.validator;
 
 import racingcar.constants.ErrorMessage;
 
-public class InitialInputValidator {
+public class InputValidator {
   private void validateNotNull(String input) {
     if (input == null) {
       throw new IllegalArgumentException(ErrorMessage.NULL);
