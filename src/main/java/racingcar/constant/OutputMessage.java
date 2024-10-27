@@ -7,5 +7,4 @@ public class OutputMessage {
     public static final String WINNER_DELIMITER = ", ";
     public static final String MOVEMENT_STATE_FORMAT = "%s : %s";
     public static final String WINNERS_ANNOUNCEMENT = "최종 우승자 : ";
-    public static final String ERROR_PREFIX = "[오류] ";
 }
