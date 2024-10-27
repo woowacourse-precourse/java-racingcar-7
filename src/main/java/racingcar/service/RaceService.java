@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RaceService {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public RaceService() {
         this.cars = new ArrayList<>();
@@ -27,6 +27,27 @@ public class RaceService {
         }
     }
 
+    public List<Car> getWinners(){
+        List<Car> winners = new ArrayList<>();
+        int maxScore = getMaxScore();
+        for (Car car : cars) {
+            if (car.getScore().equals(maxScore)){
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private int getMaxScore() {
+        int maxScore = 0;
+        for (Car car : cars) {
+            int score = car.getScore();
+            if(maxScore < score){
+                maxScore = score;
+            }
+        }
+        return maxScore;
+    }
     private static List<String> getNameList(String input) {
         return Arrays.stream(input.split(",")).toList();
     }
