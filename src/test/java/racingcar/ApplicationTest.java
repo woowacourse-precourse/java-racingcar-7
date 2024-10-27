@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -121,6 +123,62 @@ class ApplicationTest extends NsTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("시도 횟수는 양의 정수로 입력 해야합니다.");
     }
+
+    @Test
+    @DisplayName("자동차 경주를 정상적으로 시작할 때")
+    void 정상적인_경주_시작() {
+        HashMap<String, Integer> cars = new HashMap<>();
+        cars.put("poby", 0);
+        cars.put("woni", 0);
+
+        assertSimpleTest(() -> {
+            new Race().startRace(cars, 2);
+            assertThat(output()).contains("실행 결과", "poby : ", "woni : ");
+        });
+    }
+
+    @Test
+    @DisplayName("자동차가 이동하는지 확인")
+    void 자동차_위치_업데이트_테스트() {
+        HashMap<String, Integer> cars = new HashMap<>();
+        cars.put("poby", 0);
+        cars.put("woni", 0);
+
+        assertSimpleTest(() -> {
+            new Race().startRace(cars, 1);
+            assertThat(cars.get("poby")).isGreaterThanOrEqualTo(0);
+            assertThat(cars.get("woni")).isGreaterThanOrEqualTo(0);
+        });
+    }
+
+    @Test
+    @DisplayName("경주 결과가 한 명일 때")
+    void 경주_결과_한명의_우승자_출력() {
+        HashMap<String, Integer> cars = new HashMap<>();
+        cars.put("poby", 3);
+        cars.put("woni", 1);
+        cars.put("jun", 2);
+
+        assertSimpleTest(() -> {
+            new Race().resultRace(cars);
+            assertThat(output()).contains("최종 우승자 : poby");
+        });
+    }
+
+    @Test
+    @DisplayName("경주 결과가 여러 명일 때")
+    void 경주_결과_다수의_우승자_테스트() {
+        HashMap<String, Integer> cars = new HashMap<>();
+        cars.put("poby", 4);
+        cars.put("woni", 4);
+        cars.put("jun", 2);
+
+        assertSimpleTest(() -> {
+            new Race().resultRace(cars);
+            assertThat(output()).contains("최종 우승자 : poby, woni");
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
