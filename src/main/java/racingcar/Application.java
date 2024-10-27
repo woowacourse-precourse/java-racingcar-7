@@ -1,7 +1,13 @@
 package racingcar;
 
+import racingcar.manager.InputManager;
+import racingcar.manager.RacingManager;
+import racingcar.manager.RunManager;
+import racingcar.manager.WinnerManager;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RunManager runManager = new RunManager(new InputManager(), new RacingManager(), new WinnerManager());
+        runManager.run();
     }
 }
