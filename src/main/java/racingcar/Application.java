@@ -36,4 +36,17 @@ public class Application {
                 .collect(Collectors.toList());
 
     }
+
+    // 시도 횟수를 정수로 변환, 예외처리
+    public static int changeN(String input) {
+        try {
+            int count = Integer.parseInt(input);
+            if (count <= 0) {
+                throw new IllegalArgumentException("한 라운드 이상 게임을 진행해야 합니다.");
+            }
+            return count;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수를 입력하세요.");
+        }
+    }
 }
