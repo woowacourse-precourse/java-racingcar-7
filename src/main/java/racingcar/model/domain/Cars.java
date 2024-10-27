@@ -22,4 +22,10 @@ public class Cars {
     public List<Car> getCarsReadOnly() {
         return Collections.unmodifiableList(cars);
     }
+
+    public void raceOnce() {
+        for (Car car : cars) {
+            car.moveConditionally();
+        }
+    }
 }
