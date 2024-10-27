@@ -9,12 +9,18 @@ public class Reader {
 
     public static List<String> readCarNames() {
         String input = Console.readLine();
+
+        return splitNameInput(input);
+    }
+
+    public static List<String> splitNameInput(String input) {
         verifyNameInput(input);
 
         List<String> carNames = Arrays.asList(input.split(","));
         verifyCarNames(carNames);
 
         return carNames;
+
     }
 
     private static void verifyNameInput(String input) {
