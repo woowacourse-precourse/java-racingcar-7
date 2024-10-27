@@ -20,6 +20,10 @@ public class RacingCar {
             cars.add(new Car(carList.get(i),tryCount));
         }
 
+        for(int i=0;i<cars.size();i++){
+            cars.get(i).moveForward();
+        }
+
     }
 
 }
