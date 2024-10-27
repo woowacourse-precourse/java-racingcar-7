@@ -7,4 +7,8 @@ public class Car {
         this.name = name;
         movedDistance = 0;
     }
+
+    public void move() {
+        movedDistance += 1;
+    }
 }
