@@ -37,4 +37,11 @@ public class Racing {
         }
     }
 
+    public static void main(String[] args) {
+        int tryCount = 0;
+        while (tryCount-1 > 0) {
+            tryCount --;
+        }   System.out.println();
+    }
 }
+
