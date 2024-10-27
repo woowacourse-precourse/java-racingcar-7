@@ -13,7 +13,7 @@ class CarNamesValidatorTest {
     private final RacingCarService racingCarService = new RacingCarService();
 
     @Test
-    @DisplayName("입력을 검증하는 메서드")
+    @DisplayName("차 이름 문자열 오류 검증")
     public void testValidateCarNamesInput() {
         //given
         String carNames1 = "";
@@ -29,6 +29,7 @@ class CarNamesValidatorTest {
     }
 
     @Test
+    @DisplayName("차 이름 리스트 변환 후 길이, 중복 에러 검증")
     public void testValidateCarNamesList() {
         //given
         String carNames1 = "car1,car2car3";
@@ -47,7 +48,7 @@ class CarNamesValidatorTest {
     }
 
     @Test
-    @DisplayName("차 이름 중복 확인 메서드")
+    @DisplayName("차 이름 중복 검증")
     public void testIsDuplicateCarName() {
         //given
         List<String> listCarName1 = Arrays.asList("car1", "car2", "car2");
