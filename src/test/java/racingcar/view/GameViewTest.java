@@ -33,10 +33,10 @@ class GameViewTest {
 
         gameView.displayRoundResult(cars);
 
-        String expectedOutput = "실행결과\n" +
+        String expectedOutput =
                 "pobi : --\n" +
                 "woni : ---\n" +
-                "jun : -\n";
+                "jun : -\n\n";
         assertThat(outputStream.toString()).isEqualTo(expectedOutput);
     }
 
