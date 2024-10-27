@@ -15,8 +15,12 @@ public class RaceViewController {
     }
 
     public RaceInfoDTO gatherRaceInfo() {
-        List<String> carNames = inputView.inputCarName();
-        int trialCount = inputView.inputTrialCount();
-        return new RaceInfoDTO(carNames, trialCount);
+        try {
+            List<String> carNames = inputView.inputCarName();
+            int trialCount = inputView.inputTrialCount();
+            return new RaceInfoDTO(carNames, trialCount);
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
     }
 }
