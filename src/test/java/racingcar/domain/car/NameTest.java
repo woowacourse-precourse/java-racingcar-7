@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.exception.CarNameException.NameLengthExceededException;
-import racingcar.exception.CarNameException.NameLengthShortException;
+import racingcar.exception.InvalidCarNameException.NameLengthExceededExceptionInvalid;
+import racingcar.exception.InvalidCarNameException.NameLengthShortExceptionInvalid;
 
 class NameTest {
 
@@ -50,7 +50,7 @@ class NameTest {
             assertThatThrownBy(() -> {
                 Name.of(elevenWords);
             })
-                    .isInstanceOf(NameLengthExceededException.class)
+                    .isInstanceOf(NameLengthExceededExceptionInvalid.class)
                     .hasMessage(expectMessage);
         }
 
@@ -64,7 +64,7 @@ class NameTest {
             assertThatThrownBy(() -> {
                 Name.of(inSufficientLengthName);
             })
-                    .isInstanceOf(NameLengthShortException.class)
+                    .isInstanceOf(NameLengthShortExceptionInvalid.class)
                     .hasMessage(expectMessage);
         }
 

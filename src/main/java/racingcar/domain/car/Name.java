@@ -1,7 +1,7 @@
 package racingcar.domain.car;
 
-import racingcar.exception.CarNameException.NameLengthExceededException;
-import racingcar.exception.CarNameException.NameLengthShortException;
+import racingcar.exception.InvalidCarNameException.NameLengthExceededExceptionInvalid;
+import racingcar.exception.InvalidCarNameException.NameLengthShortExceptionInvalid;
 
 public class Name {
     public static final int MAX_LENGTH = 10;
@@ -29,13 +29,13 @@ public class Name {
 
     private void validateMinLength(String name) {
         if (isSmallerThenNAME_MIN_LENTH(name)) {
-            throw new NameLengthShortException();
+            throw new NameLengthShortExceptionInvalid();
         }
     }
 
     private void validateMaxLength(String name) {
         if (isBiggerThenNAME_MAX_LENTH(name)) {
-            throw new NameLengthExceededException();
+            throw new NameLengthExceededExceptionInvalid();
         }
     }
 

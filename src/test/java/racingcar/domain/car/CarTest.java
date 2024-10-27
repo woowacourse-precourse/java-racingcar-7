@@ -2,8 +2,8 @@ package racingcar.domain.car;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.exception.CarNameException.NameLengthExceededException;
-import static racingcar.exception.CarNameException.NameLengthShortException;
+import static racingcar.exception.InvalidCarNameException.NameLengthExceededExceptionInvalid;
+import static racingcar.exception.InvalidCarNameException.NameLengthShortExceptionInvalid;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -52,7 +52,7 @@ class CarTest {
             assertThatThrownBy(() -> {
                 Car.of(elevenWords);
             })
-                    .isInstanceOf(NameLengthExceededException.class)
+                    .isInstanceOf(NameLengthExceededExceptionInvalid.class)
                     .hasMessage(expectMessage);
         }
 
@@ -66,7 +66,7 @@ class CarTest {
             assertThatThrownBy(() -> {
                 Car.of(inSufficientLengthName);
             })
-                    .isInstanceOf(NameLengthShortException.class)
+                    .isInstanceOf(NameLengthShortExceptionInvalid.class)
                     .hasMessage(expectMessage);
         }
 

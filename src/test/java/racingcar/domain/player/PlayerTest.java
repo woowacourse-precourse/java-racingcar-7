@@ -5,8 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Distance;
-import racingcar.exception.CarNameException.NameLengthExceededException;
-import racingcar.exception.CarNameException.NameLengthShortException;
+import racingcar.exception.InvalidCarNameException.NameLengthExceededExceptionInvalid;
+import racingcar.exception.InvalidCarNameException.NameLengthShortExceptionInvalid;
 
 @DisplayName("단일 플레이어(Player) 유스케이스")
 class PlayerTest {
@@ -34,7 +34,7 @@ class PlayerTest {
 
             // expect
             Assertions.assertThatThrownBy(() -> Player.of(id, unValidName))
-                    .isInstanceOf(NameLengthShortException.class)
+                    .isInstanceOf(NameLengthShortExceptionInvalid.class)
                     .hasMessage("자동차 이름은 최소 1자부터 가능합니다.");
         }
 
@@ -47,7 +47,7 @@ class PlayerTest {
 
             // expect
             Assertions.assertThatThrownBy(() -> Player.of(id, unValidName))
-                    .isInstanceOf(NameLengthExceededException.class)
+                    .isInstanceOf(NameLengthExceededExceptionInvalid.class)
                     .hasMessage("자동차 이름은 최대 10자까지 가능합니다.");
         }
     }
