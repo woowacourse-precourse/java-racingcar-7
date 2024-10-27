@@ -16,14 +16,10 @@ public class RacingService {
     }
 
     public int insertTryCount(String input) {
-        try {
-            Validator.validateNumericInput(input);
-            int attemptCount = Integer.parseInt(input);
-            Validator.isNegative(attemptCount);
-            return attemptCount;
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
+        Validator.validateNumericInput(input);
+        int attemptCount = Integer.parseInt(input);
+        Validator.isNegative(attemptCount);
+        return attemptCount;
     }
 
     public void moveCars() {
@@ -43,6 +39,7 @@ public class RacingService {
     }
 
     private List<Car> createCarsFromInput(String input) {
+        Validator.checkLastIndexAndThrowException(input);
         String[] carInputs = input.split(",");
         List<Car> inputCars = new ArrayList<>();
         for (String car : carInputs) {
