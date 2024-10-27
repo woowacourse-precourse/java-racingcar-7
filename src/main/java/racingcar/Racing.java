@@ -19,6 +19,10 @@ public class Racing {
         }
     }
 
+    public Car[] getCars() {
+        return cars;
+    }
+
     public void runRound() {
         for (Car car : cars) {
             car.addDist();
