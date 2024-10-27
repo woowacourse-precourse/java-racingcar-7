@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.car.Cars;
 import racingcar.io.InputView;
 import racingcar.io.OutputView;
@@ -9,10 +10,12 @@ import racingcar.number.generator.RandomNumberGenerator;
 public class GameManager {
     private final InputView inputView;
     private final OutputView outputView;
+    private final Judgment judgment;
 
     public GameManager() {
         inputView = new InputView();
         outputView = new OutputView();
+        judgment = new Judgment();
     }
 
     public void start() {
@@ -20,6 +23,16 @@ public class GameManager {
         Cars cars = putCars(carName);
         int movementNumber = readMovementNumber();
         moveCar(cars, movementNumber);
+        List<String> winner = makeWinnerList(cars);
+        printWinner(winner);
+    }
+
+    private void printWinner(List<String> winner) {
+        outputView.printWinner(winner);
+    }
+
+    private List<String> makeWinnerList(Cars cars) {
+        return judgment.makeWinnerNameList(cars);
     }
 
     private int readMovementNumber() {
