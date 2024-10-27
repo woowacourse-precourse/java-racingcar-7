@@ -7,6 +7,7 @@ import object.Car;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalInt;
 
 public class Application {
 
@@ -60,8 +61,7 @@ public class Application {
         return Integer.parseInt(tryCountInput);
     }
 
-    private static List<
-            Car> initializeCars(List<String> carNameList) {
+    private static List<Car> initializeCars(List<String> carNameList) {
         List<Car> cars = new ArrayList<>();
         for (String name : carNameList) {
             cars.add(new Car(name));
@@ -75,7 +75,6 @@ public class Application {
             System.out.println();
         }
     }
-
     private static void raceRound(List<Car> cars) {
         for (Car car : cars) {
             if (shouldAdvance()) {
