@@ -15,7 +15,7 @@ public class CarsSaveRequestDto {
 
     public List<Car> toEntity() {
         return names.stream()
-                .map(name -> new Car(name,0))
+                .map(name -> new Car(name, 0))
                 .collect(Collectors.toList());
     }
 

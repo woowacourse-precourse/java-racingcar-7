@@ -20,7 +20,10 @@ import racingcar.enums.Message;
 public class InputView {
     //----- 싱글톤 패턴 적용 -----//
     private static final InputView instance = new InputView();
-    private InputView(){}
+
+    private InputView() {
+    }
+
     public static InputView getInstance() {
         return instance;
     }

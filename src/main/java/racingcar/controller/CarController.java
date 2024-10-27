@@ -22,7 +22,10 @@ public class CarController {
     private static final CarController instance = new CarController();
     private final InputView inputView = InputView.getInstance();
     private final CarService carService = CarService.getInstance();
-    private CarController() {}
+
+    private CarController() {
+    }
+
     public static CarController getInstance() {
         return instance;
     }

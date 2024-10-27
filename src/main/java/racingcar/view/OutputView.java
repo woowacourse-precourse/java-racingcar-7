@@ -21,7 +21,10 @@ import racingcar.domain.Race;
 public class OutputView {
     //----- 싱글톤 패턴 적용 -----//
     private static final OutputView instance = new OutputView();
-    private OutputView(){}
+
+    private OutputView() {
+    }
+
     public static OutputView getInstance() {
         return instance;
     }

@@ -20,7 +20,10 @@ import racingcar.domain.Cars;
 public class CarRepository {
     //----- 싱글톤 패턴 적용 -----//
     private static final CarRepository instance = new CarRepository();
-    private CarRepository(){}
+
+    private CarRepository() {
+    }
+
     public static CarRepository getInstance() {
         return instance;
     }

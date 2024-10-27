@@ -26,7 +26,10 @@ public class RaceService {
     private final RaceRepository raceRepository = RaceRepository.getInstance();
     private final CarService carService = CarService.getInstance();
     private final OutputView outputView = OutputView.getInstance();
-    private RaceService(){}
+
+    private RaceService() {
+    }
+
     public static RaceService getInstance() {
         return instance;
     }
@@ -51,12 +54,12 @@ public class RaceService {
         LapValidator.run(lap);
     }
 
-    public void displayCarMovementByLap(Race race,StringBuilder output) {
+    public void displayCarMovementByLap(Race race, StringBuilder output) {
         try {
             output.append("\n실행 결과");
             for (int i = 0; i < race.getLap(); i++) {
                 race.updateCarDataByLap();
-                outputView.displayResultByLap(race,output);
+                outputView.displayResultByLap(race, output);
             }
         } catch (Exception e) {
             throw new IllegalArgumentException();
@@ -68,7 +71,7 @@ public class RaceService {
         int max = getMaxCarMovement(cars);
 
         try {
-            outputView.displayWinner(max,cars,output);
+            outputView.displayWinner(max, cars, output);
             return output.toString();
         } catch (Exception e) {
             throw new IllegalArgumentException();

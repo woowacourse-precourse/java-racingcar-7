@@ -22,7 +22,10 @@ public class RaceController {
     private static final RaceController instance = new RaceController();
     private final RaceService raceService = RaceService.getInstance();
     private final InputView inputView = InputView.getInstance();
-    private RaceController() {}
+
+    private RaceController() {
+    }
+
     public static RaceController getInstance() {
         return instance;
     }
@@ -38,7 +41,7 @@ public class RaceController {
     public void raceStartById(int id) {
         StringBuilder output = new StringBuilder();
         Race race = raceService.findById(id);
-        raceService.displayCarMovementByLap(race,output);
-        System.out.println(raceService.displayWinner(race,output));
+        raceService.displayCarMovementByLap(race, output);
+        System.out.println(raceService.displayWinner(race, output));
     }
 }

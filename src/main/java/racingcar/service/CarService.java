@@ -23,8 +23,13 @@ public class CarService {
     //----- 싱글톤 패턴 적용 -----//
     private static final CarService instance = new CarService();
     private final CarRepository carRepository = CarRepository.getInstance();
-    private CarService(){}
-    public static CarService getInstance() {return instance;}
+
+    private CarService() {
+    }
+
+    public static CarService getInstance() {
+        return instance;
+    }
     //------------------------//
 
     public void saveAll(CarsSaveRequestDto requestDto) {

@@ -19,7 +19,10 @@ import racingcar.domain.Race;
 public class RaceRepository {
     //----- 싱글톤 패턴 적용 -----//
     private static final RaceRepository instance = new RaceRepository();
-    private RaceRepository(){}
+
+    private RaceRepository() {
+    }
+
     public static RaceRepository getInstance() {
         return instance;
     }
