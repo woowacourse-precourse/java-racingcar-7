@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.Arrays;
 import java.util.List;
 import racingcar.global.enums.ErrorMessage;
 import racingcar.global.enums.PrintMessage;
@@ -23,7 +25,9 @@ public class InputView {
     }
 
     public List<String> splitNames(String names) {
-        return List.of(names.split(","));
+        return Arrays.stream(names.split(","))
+                .map(String::trim)
+                .toList();
     }
 
     public Integer inputCount() {
