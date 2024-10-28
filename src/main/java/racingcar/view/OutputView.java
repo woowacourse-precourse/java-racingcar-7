@@ -10,6 +10,7 @@ public class OutputView {
         for (Car car : cars) {
             car.printCarDistance();
         }
+        System.out.println();
     }
 
     public void displayFinalResults(List<String> winnerNames) {
