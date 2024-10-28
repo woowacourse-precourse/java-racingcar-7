@@ -15,7 +15,6 @@ public class CarsService {
         RaceResult raceResult = getRaceResult(cars);
 
         return new WinnerDto(raceResult.getWinners());
-
     }
 
     private RaceResult getRaceResult(Cars cars) {

@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.strategy.MoveStrategy;

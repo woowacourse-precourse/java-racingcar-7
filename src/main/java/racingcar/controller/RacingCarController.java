@@ -49,5 +49,4 @@ public class RacingCarController {
         return carsService.createCars(carNames, moveStrategy);
     }
 
-
 }
