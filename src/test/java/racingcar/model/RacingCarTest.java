@@ -18,4 +18,15 @@ class RacingCarTest {
 
         Assertions.assertThat(car.getDistance()).isEqualTo(5);
     }
+    @DisplayName("전진에 실패하면 거리가 유지된다")
+    @Test
+    void goAheadTest2(){
+        RacingCar car = new RacingCar("car1");
+        for (int i=0; i<5; i++){
+            //4미만이면 유지
+            car.goAhead(3);
+        }
+
+        Assertions.assertThat(car.getDistance()).isEqualTo(0);
+    }
 }
