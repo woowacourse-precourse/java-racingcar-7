@@ -13,20 +13,20 @@ import racingcar.util.DependencyFactory;
 
 public class GameRepositoryTest {
 
+    private GameRepository gameRepository = GameRepository.getInstance();
+    private RoundRepository roundRepository = RoundRepository.getInstance();
+
     @BeforeAll
     public static void beforeAll() {
         DependencyFactory.initialize();
     }
 
     @Test
-    @DisplayName("Game 저장 및 Round 참조관계 테스트")
-    public void testGameSaveAndReferToRound() {
+    @DisplayName("Game, Round 저장 및 참조관계 테스트")
+    public void testGameRoundSaveAndReferToRound() {
 
         // given
-        GameRepository gameRepository = GameRepository.getInstance();
-        RoundRepository roundRepository = RoundRepository.getInstance();
-        Game exGame = new Game();
-
+        Game exGame = new Game.Builder().build();
         Integer gameId = gameRepository.saveAndReturnId(exGame);
 
         Round exRound1 = new Round.Builder().build();
