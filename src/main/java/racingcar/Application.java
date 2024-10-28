@@ -32,12 +32,28 @@ public class Application {
             hyphen[i] = "";
         }
 
-        for (int i = 0; i < cars.length; i++) {
-            ranNum = Randoms.pickNumberInRange(0, 9);
-            if (ranNum >= 4) {
-                hyphen[i] += '-';
+        // 횟수만큼 시도할 때마다 전진한 횟수 출력하기
+        for (int j = 0; j < count; j++) {
+            for (int i = 0; i < cars.length; i++) {
+                ranNum = Randoms.pickNumberInRange(0, 9);
+                if (ranNum >= 4) {
+                    hyphen[i] += '-';
+                }
+                System.out.println(cars[i] + " : " +  hyphen[i]);
             }
-            System.out.println(cars[i] + " : " +  hyphen[i]);
+            System.out.println();
         }
+
+        // 경주할 자동차 중 전진한 최대값 구하기
+        int[] hyp_length = new int[cars.length];
+        int max = -999;
+        for(int i =0; i < cars.length; i++) {
+            hyp_length[i] = hyphen[i].length();
+
+            if (max < hyp_length[i]) {
+                max = hyp_length[i];
+            }
+        }
+        System.out.println(max);
     }
 }
