@@ -22,11 +22,15 @@ public class Car {
             positionNumber++;
         }
     }
-    public int getPositionNum() {
+    public int getPositionNumber() {
         return positionNumber;
     }
 
     public String playResult(){
         return carName+" : "+"-".repeat(positionNumber);
+    }
+
+    public boolean isWinner(int maxPosition){
+        return positionNumber==maxPosition;
     }
 }
