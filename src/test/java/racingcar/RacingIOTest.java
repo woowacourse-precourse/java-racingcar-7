@@ -35,8 +35,8 @@ public class RacingIOTest {
     @Test
     @DisplayName("시작 부분이 출력 형식을 준수하는지 확인")
     void 시작_부분_출력_테스트() {
-        RacingIO.promptCarNamesInput();
-        RacingIO.promptMoveCountInput();
+        RacingIO.promptCarNameInput();
+        RacingIO.promptMaxTurnInput();
         assertThat(getOutput()).contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         assertThat(getOutput()).contains("시도할 횟수는 몇 회인가요?");
     }
@@ -53,7 +53,7 @@ public class RacingIOTest {
         updateAndRecordMovement("b", 4, turnResults);
         updateAndRecordMovement("c", 1, turnResults);
 
-        RacingIO.promptTurnResult(turnResults);
+        RacingIO.printRaceResult(turnResults);
 
         assertThat(getOutput()).contains("실행 결과");
         assertThat(getOutput()).contains("a : -");
@@ -98,8 +98,8 @@ public class RacingIOTest {
     }
 
     private void updateAndRecordMovement(String carName, int randomValue, LinkedList<LinkedHashMap<String, Integer>> turnResults) {
-        racingService.updateMovement(carName, randomValue);
-        turnResults.add(new LinkedHashMap<>(racingService.getCarMap()));
+        racingService.moveCar(carName, randomValue);
+        turnResults.add(new LinkedHashMap<>(racingService.getCarPositions()));
     }
 
     protected String getOutput() {

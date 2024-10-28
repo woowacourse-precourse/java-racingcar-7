@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class ExceptionTest {
+public class ValidatorTest {
     private RacingService racingService;
 
     @Test
@@ -12,7 +12,7 @@ public class ExceptionTest {
     void 자동차_이름_5글자_초과_테스트() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             racingService = new RacingService("aaaaaaa,bbbbbbb,ccccccc,ddddddd", "4");
-            racingService.startRaceGame();
+            racingService.startRace();
         });
     }
 
@@ -21,7 +21,7 @@ public class ExceptionTest {
     void 자동차_이름_중복_테스트() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             racingService = new RacingService("a,a,b,c,d", "4");
-            racingService.startRaceGame();
+            racingService.startRace();
         });
     }
 
@@ -30,7 +30,7 @@ public class ExceptionTest {
     void 자동차_이름_공백_테스트() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             racingService = new RacingService("a,,,b,,,", "4");
-            racingService.startRaceGame();
+            racingService.startRace();
         });
     }
 
@@ -39,7 +39,7 @@ public class ExceptionTest {
     void 시도할_횟수_숫자_테스트() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             racingService = new RacingService("a,b,c", "a");
-            racingService.startRaceGame();
+            racingService.startRace();
         });
     }
 }
