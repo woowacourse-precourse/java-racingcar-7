@@ -5,7 +5,7 @@ import static racingcar.exception.message.GameExceptionMessages.ALREADY_GAME_END
 import static racingcar.exception.message.GameExceptionMessages.GAME_NOT_INITIALIZED;
 import static racingcar.exception.message.GameExceptionMessages.VALID_ROUNDS_REQUIRED;
 
-import racingcar.common.exception.RacingCarException;
+import racingcar.exception.RacingCarException;
 
 public class GameException extends RacingCarException {
     public GameException(String message) {

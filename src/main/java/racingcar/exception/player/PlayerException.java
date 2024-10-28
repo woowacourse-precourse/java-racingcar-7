@@ -4,7 +4,7 @@ import static racingcar.exception.message.PlayerCountExceptionMessage.PlayerCoun
 import static racingcar.exception.message.PlayerCountExceptionMessage.PlayerCountShort;
 import static racingcar.exception.message.PlayerExceptionMessages.PLAYER_NOT_FOUND_ID;
 
-import racingcar.common.exception.RacingCarException;
+import racingcar.exception.RacingCarException;
 
 public class PlayerException extends RacingCarException {
 

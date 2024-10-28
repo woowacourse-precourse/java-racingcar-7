@@ -1,6 +1,6 @@
 package racingcar.exception.car;
 
-import racingcar.common.exception.RacingCarException;
+import racingcar.exception.RacingCarException;
 import racingcar.exception.message.CarNameExceptionMessage;
 
 public class InvalidCarNameException extends RacingCarException {
