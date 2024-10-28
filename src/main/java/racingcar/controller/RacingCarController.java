@@ -27,7 +27,9 @@ public class RacingCarController {
 
         Race race = new Race(createCars(carNames));
         startRace(roundCount, race);
-        racingView.printWinners(race.getWinners());
+
+        List<String> winners = race.getWinners();
+        racingView.printWinners(winners);
     }
 
     private void startRace(int roundCount, Race race) {
