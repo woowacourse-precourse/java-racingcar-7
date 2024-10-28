@@ -25,7 +25,7 @@ public class GameOverDTOConverter {
             for(CarRoundResult carRoundResult : carRoundResults){
                 carRoundResultDTO dto = new carRoundResultDTO(
                         carRoundResult.getCarName(),
-                        carRoundResult.getCurrentCount()
+                        carRoundResult.getCurrentMoveCount()
                 );
                 carRoundResultDTOS.add(dto);
             }
