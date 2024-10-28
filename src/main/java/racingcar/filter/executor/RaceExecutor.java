@@ -1,11 +1,11 @@
 package racingcar.filter.executor;
 
-import racingcar.model.CarList;
+import racingcar.model.RacingCarList;
 
 public class RaceExecutor {
-    public void executeRace(CarList carList, int iterations) {
+    public void executeRace(RacingCarList racingCarList, int iterations) {
         for (int i = 1; i <= iterations; i++) {
-            carList.moveAll();
+            racingCarList.moveAll();
         }
     }
 }
