@@ -2,6 +2,7 @@ package racingcar.model.game;
 
 import java.util.List;
 import java.util.Objects;
+import racingcar.exceptions.InvalidInputException;
 import racingcar.model.car.Car;
 
 public class Race {
@@ -12,6 +13,9 @@ public class Race {
     public Race(int tryCount) {
         this.carrier = new Carrier();
         this.tryCount = tryCount;
+        if (tryCount < 0) {
+            throw new InvalidInputException();
+        }
     }
 
     public void addCar(Car car) {
