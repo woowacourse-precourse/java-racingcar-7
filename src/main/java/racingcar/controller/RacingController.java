@@ -8,7 +8,26 @@ import racingcar.view.RacingView;
 import racingcar.service.RacingService;
 
 public class RacingController {
+    private final RacingView view = new RacingView();
     private List<Car> cars = new ArrayList<>();
+    private RacingService service;
+
+    public void start() {
+        String names = view.inputNames();
+        setCarList(names);
+
+        service = new RacingService(cars);
+
+        String countInput = view.inputCount();
+        int tryCount = parseCount(countInput);
+
+        for (int i = 0; i < tryCount; i++) {
+            service.moveCars();
+            view.printCars(cars);
+        }
+
+        view.printWinners(service.getWinner());
+    }
 
     public void setCarList(String names) {
         for (String name : names.split(",")) {
