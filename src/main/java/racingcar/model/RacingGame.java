@@ -53,6 +53,9 @@ public class RacingGame {
             if (name.length() > NAME_MAX) {
                 throw new IllegalArgumentException("차의 이름은 5글자 이하여야 합니다");
             }
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("이름에 공백 문자열이 입력되었습니다");
+            }
         }
         return names;
     }
