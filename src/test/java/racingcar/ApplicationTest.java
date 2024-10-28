@@ -79,6 +79,62 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // 출력 테스트
+    @Test
+    void 자동차_1개_출력_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi", "2");
+                    assertThat(output()).contains("pobi : --");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 자동차_2개_출력_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 자동차_3개_출력_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,hehe", "3");
+                    assertThat(output()).contains("pobi : -", "woni : ", "hehe : --");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 전체_출력_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,hehe", "3");
+                    assertThat(output()).contains("pobi : -", "woni : ", "hehe : --", "최종 우승자 : hehe");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 공동_우승_출력_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,hehe", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "hehe : ", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
