@@ -34,6 +34,10 @@ public class Application {
                     cars.put(car, cars.get(car) + 1);
                 }
             }
+            for (Map.Entry<String, Integer> entry : cars.entrySet()) {
+                System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
+            }
+            System.out.println();
         }
     }
 }
