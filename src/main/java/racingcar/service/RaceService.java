@@ -1,13 +1,10 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import racingcar.model.CarName;
 import racingcar.model.CarScores;
 import racingcar.model.Distance;
