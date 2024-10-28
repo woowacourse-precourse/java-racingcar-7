@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    private String name;
+    private final String name;
     private int movementOfNumber = 0;
     private static final int MINIMUM_MOVEMENT_THRESHOLD = 4;
 
