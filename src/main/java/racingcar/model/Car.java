@@ -2,6 +2,7 @@ package racingcar.model;
 
 public class Car {
 
+    private final static String FORWARD_MARK = "-";
     private String name;
     private int forward;
 
@@ -25,8 +26,12 @@ public class Car {
         return forward;
     }
 
-    public void move(int count){
-        forward += count;
+    public String getForwardMark(){
+        return FORWARD_MARK.repeat(forward);
+    }
+
+    public void move(){
+        forward++;
     }
 
 
