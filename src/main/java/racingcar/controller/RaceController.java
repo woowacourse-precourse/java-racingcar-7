@@ -2,15 +2,15 @@ package racingcar.controller;
 
 import static racingcar.utils.LoggerUtils.logError;
 import static racingcar.utils.LoggerUtils.logInfo;
-import racingcar.model.car.RandomMoveStrategy;
+import racingcar.model.car.strategy.RandomMoveStrategy;
 import racingcar.service.RaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class GameController {
+public class RaceController {
     private final RaceService raceService;
 
-    public GameController(RaceService raceService) {
+    public RaceController(RaceService raceService) {
         this.raceService = raceService;
     }
 

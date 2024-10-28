@@ -1,5 +1,6 @@
 package racingcar.model.car;
 
+import racingcar.model.car.strategy.MoveStrategy;
 import racingcar.utils.ValidationUtils;
 
 public class Car {

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.car.RandomMoveStrategy;
+import racingcar.model.car.strategy.RandomMoveStrategy;
 
 @DisplayName("RandomMoveStrategy 무작위 전진 조건 테스트")
 public class RandomMoveStrategyTest {

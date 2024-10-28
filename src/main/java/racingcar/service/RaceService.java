@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.car.Car;
-import racingcar.model.car.CarFactory;
-import racingcar.model.car.MoveStrategy;
+import racingcar.model.car.factory.CarFactory;
+import racingcar.model.car.strategy.MoveStrategy;
 import racingcar.model.race.RaceManager;
 
 public class RaceService {

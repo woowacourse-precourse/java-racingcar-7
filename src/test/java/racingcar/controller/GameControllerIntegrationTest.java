@@ -18,7 +18,7 @@ public class GameControllerIntegrationTest extends NsTest {
     @Override
     protected void runMain() {
         RaceService raceService = new RaceService();
-        GameController controller = new GameController(raceService);
+        RaceController controller = new RaceController(raceService);
         controller.start();
     }
 }

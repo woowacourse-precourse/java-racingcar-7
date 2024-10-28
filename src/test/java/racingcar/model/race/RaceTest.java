@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.car.AlwaysMoveStrategy;
+import racingcar.model.car.strategy.AlwaysMoveStrategy;
 import racingcar.model.car.Car;
 
 public class RaceTest {
