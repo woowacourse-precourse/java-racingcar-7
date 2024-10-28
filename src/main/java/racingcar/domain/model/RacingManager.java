@@ -20,7 +20,7 @@ public class RacingManager {
     }
 
     public void moveCars() {
-        cars.forEach(Car::move);
+        cars.forEach(Car::tryMove);
     }
 
     public List<Car> getCars() {

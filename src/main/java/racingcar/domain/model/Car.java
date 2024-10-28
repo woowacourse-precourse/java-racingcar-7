@@ -52,7 +52,7 @@ public class Car {
         return moveCount;
     }
 
-    public void move() {
+    public void tryMove() {
         if(moveConditionEvaluator.isCanMove()) {
             this.moveCount++;
         }
