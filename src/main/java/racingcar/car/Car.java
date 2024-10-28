@@ -1,10 +1,8 @@
 package racingcar.car;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Objects;
 
 public final class Car {
-    private static final int MOVE_CRITERIA = 4;
     private static final int NAME_LENGTH_LIMIT = 5;
     private static final String ERROR_BLANK_NAME = "자동차 이름은 공백일 수 없습니다.";
     private static final String ERROR_NAME_LENGTH = "자동차 이름은 %d자 이하만 가능합니다.".formatted(NAME_LENGTH_LIMIT);
@@ -31,10 +29,7 @@ public final class Car {
     }
 
     public void move() {
-        int randomInteger = Randoms.pickNumberInRange(0, 9);
-        if (randomInteger >= MOVE_CRITERIA) {
-            position++;
-        }
+        position++;
     }
 
     public String getName() {
