@@ -24,18 +24,29 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차 이동 테스트")
-    public void testCarMove() {
-        car.move(true);
+    public void testCarMoveTrue() {
+        car.setMovableType(new TrueMovable());
+
+        car.move();
         assertEquals("-", car.getDistance());
 
-        car.move(false);
-        assertEquals("-", car.getDistance());
+        car.move();
+        car.move();
+        car.move();
+        assertEquals("----", car.getDistance());
+    }
 
-        car.move(true);
-        car.move(true);
-        car.move(true);
-        car.move(true);
-        assertEquals("-----", car.getDistance());
+    @Test
+    @DisplayName("자동차 이동 테스트")
+    public void testCarMoveFalse() {
+        car.setMovableType(new FalseMovable());
+
+        car.move();
+        car.move();
+        car.move();
+        car.move();
+        
+        assertEquals("", car.getDistance());
     }
 
     @Test

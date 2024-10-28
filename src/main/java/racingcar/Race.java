@@ -30,6 +30,7 @@ public class Race {
 
         for (String str : strCars) {
             carList.add(new Car(str));
+            carList.getLast().setMovableType(new BasicMovable());
         }
     }
 
@@ -47,7 +48,7 @@ public class Race {
 
     public void moveCar() {
         for (Car car : carList) {
-            car.isMovable();
+            car.move();
             show(car.getName(), car.getDistance());
         }
         System.out.print("\n");

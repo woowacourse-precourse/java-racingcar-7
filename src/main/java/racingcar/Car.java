@@ -4,6 +4,8 @@ public class Car {
     private String name;
     private String distance;
 
+    private Movable movableType;
+
     public Car(String name) {
         this.name = name;
         this.distance = "";
@@ -21,13 +23,13 @@ public class Car {
         return this.name;
     }
 
-    public void move(Boolean isMove) {
-        if (isMove) {
+    public void move() {
+        if (movableType.isMovable()) {
             increaseDistance();
         }
     }
 
-    public void isMovable() {
-        move(Util.getRandom() >= 4);
+    public void setMovableType(Movable movable) {
+        this.movableType = movable;
     }
 }
