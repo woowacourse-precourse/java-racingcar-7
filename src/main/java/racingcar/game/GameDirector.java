@@ -1,7 +1,6 @@
 package racingcar.game;
 
 
-import racingcar.exception.Validator;
 import racingcar.util.Printer;
 
 import java.util.List;
@@ -10,12 +9,11 @@ import static racingcar.util.SystemMessage.RESULT;
 
 public class GameDirector {
     private final int count;
-    private final CarList manager;
+    private final CarManager manager;
 
-    public GameDirector(String carNames, String count) {
-        manager = new CarList();
-        manager.add(carNames);
-        this.count = Validator.validateCountIfNegative(count);
+    public GameDirector(List<String> carNames, int count) {
+        manager = CarManager.createManager(carNames);
+        this.count = count;
     }
 
     public List<Car> run() {
