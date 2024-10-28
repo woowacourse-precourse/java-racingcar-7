@@ -10,9 +10,14 @@ public class InputValidator {
         }
     }
 
-    public static int parseIntWithValidation(String input) {
+    public static int parsePositiveNumberWithValidation(String input) {
         try {
-            return Integer.parseInt(input);
+            int num = Integer.parseInt(input);
+            if (num < 0) {
+                throw new IllegalArgumentException("양수 값이 아닙니다 : " + input);
+            }
+            return num;
+
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수 값이 아닙니다 : " + input);
         }
