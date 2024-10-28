@@ -3,7 +3,7 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.model.RacingCars;
 import racingcar.model.RacingGame;
-import racingcar.util.CarNameValidator;
+import racingcar.util.InputValidator;
 import racingcar.view.RacingCarView;
 
 public class RacingCarController {
@@ -17,14 +17,20 @@ public class RacingCarController {
 
     private RacingGame readyRacingGame(RacingCars racingCars) {
         String inputCarNames = RacingCarView.inputCarNames();
-        CarNameValidator.checkCarNameEmpty(inputCarNames);
+        InputValidator.checkCarNameEmpty(inputCarNames);
 
         for (final String inputCarName : inputCarNames.split(",")) {
             String carName = inputCarName.trim();
             racingCars.add(new Car(carName));
         }
 
-        int tryNum = Integer.parseInt(RacingCarView.inputTryNumber());
+        int tryNum;
+        try {
+            tryNum = Integer.parseInt(RacingCarView.inputTryNumber());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        InputValidator.checkTryNumNegative(tryNum);
 
         return new RacingGame(racingCars, tryNum);
     }
