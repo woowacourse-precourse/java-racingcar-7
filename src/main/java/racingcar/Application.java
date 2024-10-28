@@ -1,6 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -21,7 +24,20 @@ public class Application {
 
         // 0~9 사이에 무작위 값 생성하기
         int ranNum;
-        ranNum = Randoms.pickNumberInRange(0, 9);
-        System.out.println(ranNum);
+
+        // 무작위 값이 4 이상일 경우 전진하기
+        String[] hyphen = new String[cars.length];
+
+        for (int i = 0; i < cars.length; i++) {
+            hyphen[i] = "";
+        }
+
+        for (int i = 0; i < cars.length; i++) {
+            ranNum = Randoms.pickNumberInRange(0, 9);
+            if (ranNum >= 4) {
+                hyphen[i] += '-';
+            }
+            System.out.println(cars[i] + " : " +  hyphen[i]);
+        }
     }
 }
