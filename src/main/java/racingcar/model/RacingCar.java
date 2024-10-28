@@ -28,13 +28,13 @@ public class RacingCar {
         return location;
     }
 
-    public void increaseLocation() {
-        this.location++;
-    }
-
     public void move(Movement movement) {
         if (movement == Movement.MOVING_FORWARD) {
             increaseLocation();
         }
+    }
+
+    private void increaseLocation() {
+        this.location++;
     }
 }
