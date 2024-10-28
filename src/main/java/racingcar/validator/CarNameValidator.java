@@ -18,7 +18,7 @@ public class CarNameValidator {
     }
 
     public static void validateCarNameLength(String carName) {
-        if (carName.length() > NAME_LENGTH) {
+        if (carName.length() > NAME_LENGTH || carName.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_MESSAGE);
         }
     }
