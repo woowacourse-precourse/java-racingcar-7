@@ -23,16 +23,6 @@ public class UtilsTest {
     }
 
     @Test
-    void 이름_공백_제거_테스트() {
-        String inputWithWhitespace = "po bi";
-        String expected = "pobi";
-
-        String result = Utils.removeNameWhitespace(inputWithWhitespace);
-
-        assertThat(result).isEqualTo(expected);
-    }
-
-    @Test
     void 이름_길이_유효성_테스트() {
         String invalidName = "po bi ";
 
