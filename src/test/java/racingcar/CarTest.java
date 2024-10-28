@@ -40,22 +40,7 @@ public class CarTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy((ThrowingCallable) new Car("   "));
     }
-
-    @Test
-    void moveCar() {
-        // 자동차 움직이기
-        Car car = new Car("car1");
-        int preLocation = car.getLocation();
-        car.move();
-        int curLocation = car.getLocation();
-        assertThat(curLocation).isEqualTo(preLocation + 1);
-    }
-
-    @Test
-    void stopCar() {
-        // 상태 변화가 없기에 method 구현 X
-    }
-
+    
     @Test
     void randomMoveCar() {
         // 자동차 확률적으로 전진/정지
