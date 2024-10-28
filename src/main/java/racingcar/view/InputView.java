@@ -11,14 +11,14 @@ public class InputView {
     public String getRacingCarNames() {
         System.out.println(NAME_MESSAGE);
         final String racingCarNames = Console.readLine();
-        inputViewValidator.validateNotEmptyAndBlank(racingCarNames);
+        inputViewValidator.validateNotNullAndBlank(racingCarNames);
         return racingCarNames;
     }
 
     public String getTotalAttempts() {
         System.out.println(TOTAL_ATTEMPTS_MESSAGE);
         final String totalAttempts = Console.readLine();
-        inputViewValidator.validateNotEmptyAndBlank(totalAttempts);
+        inputViewValidator.validateNotNullAndBlank(totalAttempts);
         inputViewValidator.validateNumeric(totalAttempts);
         return totalAttempts;
     }

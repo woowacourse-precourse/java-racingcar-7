@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 public class InputViewValidator {
     private static final Pattern NUMERIC_PATTERN = Pattern.compile("^[0-9]+$");
 
-    public void validateNotEmptyAndBlank(String input) {
-        if (input.isEmpty() || input.trim().isBlank()) {
+    public void validateNotNullAndBlank(String input) {
+        if (input == null || input.isBlank()) {
             throw new IllegalArgumentException(EMPTY_OR_BLANK_INPUT_ERROR.getMessage());
         }
     }

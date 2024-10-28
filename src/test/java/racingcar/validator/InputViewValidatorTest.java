@@ -23,7 +23,7 @@ class InputViewValidatorTest {
     void 문자열이_널이거나_공백이면_에러가_발생한다(String userInput) {
         IllegalArgumentException e = assertThrowsExactly(IllegalArgumentException.class,
                 () -> {
-                    inputViewValidator.validateNotEmptyAndBlank(userInput);
+                    inputViewValidator.validateNotNullAndBlank(userInput);
                 }
         );
         assertEquals(EMPTY_OR_BLANK_INPUT_ERROR.getMessage(), e.getMessage());
