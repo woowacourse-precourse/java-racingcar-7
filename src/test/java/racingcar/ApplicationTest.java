@@ -165,6 +165,28 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 자동차_경주_게임의_최종_우승자가_한_명인_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("apple,cool", "1");
+                    assertThat(output()).contains("apple : -", "cool : ", "최종 우승자 : apple");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 자동차_경주_게임의_최종_우승자가_두_명_이상인_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("apple,cool", "1");
+                    assertThat(output()).contains("apple : -", "cool : -", "최종 우승자 : apple,cool");
+                },
+                MOVING_FORWARD, 9
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
