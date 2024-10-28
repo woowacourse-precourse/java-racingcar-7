@@ -3,20 +3,18 @@ package racingcar.car;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarService {
     private final String CAR_DELIMITER = ",";
 
     public List<Car> createCar(String raceCar) {
-        List<Car> cars = new ArrayList<>();
-        List<String> raceCars = Arrays.asList(raceCar.split(CAR_DELIMITER));
-
-        for (String carName : raceCars) {
-            validateName(carName);
-            cars.add(new Car(carName));
-        }
-
-        return cars;
+        return Arrays.stream(raceCar.split(CAR_DELIMITER))
+                .map(carName -> {
+                    validateName(carName);
+                    return new Car(carName);
+                })
+                .collect(Collectors.toList());
     }
 
     public void validateName(String carName) {
