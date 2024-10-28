@@ -7,9 +7,17 @@ public class InputView {
         String carNames =  Console.readLine();
         String[] carNameArray = carNames.split(",");
 
-        for (String carName : carNameArray) {
+        for (int i = 0; i < carNameArray.length; i++) {
+            String carName = carNameArray[i];
+
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            }
+
+            for (int j = i + 1; j < carNameArray.length; j++) {
+                if (carName.equals(carNameArray[j])) {
+                    throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
+                }
             }
         }
 
