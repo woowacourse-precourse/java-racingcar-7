@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import static racingcar.view.ViewMessages.NEW_LINE;
 import static racingcar.view.ViewMessages.OUTPUT_MESSAGE;
 import static racingcar.view.ViewMessages.WINNER_OUTPUT_MESSAGE;
 
@@ -12,19 +13,27 @@ import racingcar.util.FormatUtil;
 public class OutputView {
 
     public static void printRoundResults(List<RoundResultDto> roundResults) {
-        System.out.println(OUTPUT_MESSAGE.getMessage());
-        roundResults.forEach(OutputView::printRoundResult);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(OUTPUT_MESSAGE.getMessage())
+                .append(NEW_LINE.getMessage());
+
+        roundResults.forEach(roundResult -> stringBuilder.append(getRoundResultString(roundResult)));
+
+        System.out.print(stringBuilder);
     }
 
-    private static void printRoundResult(RoundResultDto roundResult) {
+    private static String getRoundResultString(RoundResultDto roundResult) {
+        StringBuilder stringBuilder = new StringBuilder();
         List<CarSnapShot> carSnapShots = roundResult.getCarSnapShots();
-        carSnapShots.forEach(OutputView::printCarSnapShot);
-        System.out.println();
-    }
 
-    private static void printCarSnapShot(CarSnapShot carSnapShot) {
-        String carStatus = FormatUtil.joinCarStatus(carSnapShot);
-        System.out.println(carStatus);
+        carSnapShots.forEach(
+                carSnapShot -> stringBuilder
+                        .append(FormatUtil.joinCarStatus(carSnapShot))
+                        .append(NEW_LINE.getMessage()));
+
+        stringBuilder.append(NEW_LINE.getMessage());
+
+        return stringBuilder.toString();
     }
 
     public static void printWinners(WinnerDto winners) {
