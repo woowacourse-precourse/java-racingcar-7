@@ -11,7 +11,7 @@ public class Judgement {
         this.cars = cars;
     }
 
-    private void printResult(Car curCar) {
+    private void printRoundResult(Car curCar) {
         int curCarLocation = curCar.getcurrentLocation();
         System.out.print(curCar.name() + " : ");
         for (int count = 0; count < curCarLocation; count++) {
@@ -20,13 +20,13 @@ public class Judgement {
         System.out.println();
     }
 
-    public void updateResult(List<Integer> randomNumbers) {
+    public void updateRoundResult(List<Integer> randomNumbers) {
         for (int carIndex = 0; carIndex < cars.length; carIndex++) {
             Car curCar = cars[carIndex];
             if (randomNumbers.get(carIndex) > 3) {
                 curCar.move();
             }
-            printResult(curCar);
+            printRoundResult(curCar);
         }
         System.out.println();
     }
@@ -54,13 +54,7 @@ public class Judgement {
     public void printWinner() {
         System.out.print("최종 우승자 : ");
         List<String> winnerList = judgeWinner();
-        for (int i = 0; i < winnerList.size(); i++) {
-            System.out.print(winnerList.get(i));
-            if (i != winnerList.size() - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println();
+        System.out.println(String.join(", ", winnerList));
     }
 
 }
