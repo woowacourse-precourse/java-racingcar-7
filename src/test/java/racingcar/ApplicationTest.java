@@ -35,4 +35,19 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 자동차_이름이_5자를_초과하면_예외를_던진다() {
+        String[] invalidCarNames = {"jaehee", "woowa"};
+
+        assertThatThrownBy(() -> Application.validateCarNames(invalidCarNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5자 이하만 가능합니다.");
+    }
+
+    @Test
+    void 자동차_이름이_5자_이하면_정상작동한다() {
+        String[] validCarNames = {"jae","hee","woowa"};
+        Application.validateCarNames(validCarNames);
+    }
 }
