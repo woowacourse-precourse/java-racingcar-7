@@ -26,4 +26,25 @@ class CarTest {
         // then
         assertThat(car.getPosition()).isEqualTo(2); // 위치가 2로 증가
     }
+
+    @Test
+    void 무작위_값이_4일_때_이동() {
+        // given
+        Car car = new Car("pobi");
+        // when
+        car.tryToMove(4);
+        // then
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 무작위_값이_3일_때_이동하지_않음() {
+        // given
+        Car car = new Car("pobi");
+        // when
+        car.tryToMove(3);
+        // then
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
 }

@@ -39,4 +39,8 @@ public class Validator {
             throw new IllegalArgumentException(INVALID_TRY_COUNT_ERROR);
         }
     }
+
+    public static boolean allowMove(int randomValue) {
+        return randomValue >= 4;
+    }
 }

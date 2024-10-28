@@ -19,4 +19,10 @@ public class Car {
     public void move() {
         position++;
     }
+
+    public void tryToMove(int randomValue) {
+        if (Validator.allowMove(randomValue)) {
+            move();
+        }
+    }
 }
