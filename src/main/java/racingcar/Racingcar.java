@@ -20,4 +20,11 @@ public class Racingcar {
 
         return cars;
     }
+
+    // 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력
+    public static void print_racing(HashMap<String, Integer> cars) {
+        for (String s : cars.keySet()) {
+            System.out.println(s + " : " + "-".repeat(cars.get(s)));
+        }
+    }
 }
