@@ -76,7 +76,7 @@ class RacingGameTest {
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         racingGame.printWinner(cars);
-        assertThat(output.toString()).isEqualTo("\n최종 우승자 : carA");
+        assertThat(output.toString()).isEqualTo("최종 우승자 : carA");
     }
 
     @Test
@@ -88,7 +88,7 @@ class RacingGameTest {
         OutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         racingGame.printWinner(cars);
-        assertThat(output.toString()).isEqualTo("\n최종 우승자 : carA, carB");
+        assertThat(output.toString()).isEqualTo("최종 우승자 : carA, carB");
     }
 
 }
