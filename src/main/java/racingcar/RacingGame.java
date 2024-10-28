@@ -8,6 +8,9 @@ import java.util.Set;
 public class RacingGame {
 
     public void start() {
+        Set<String> carNames = getCarNames();
+        int round = setRound();
+        play(round, );
     }
 
     private int setRound() {
@@ -39,14 +42,29 @@ public class RacingGame {
     }
 
     private void play(int round, Set<Car> playingCars) {
-
+        for (int i = 0; i < round; i++) {
+            eachRoundResult(playingCars);
+            System.out.println();
+        }
+        System.out.println("최종 우승자 : " + getWinner(playingCars));
     }
 
     private void eachRoundResult(Set<Car> playingCars) {
-
+        for (Car car : playingCars) {
+            car.move();
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
     }
 
     private String getWinner(Set<Car> playingCars) {
-
+        int maxPosition = playingCars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElseThrow(IllegalArgumentException::new);
+        return playingCars.stream()
+            .filter(car -> car.getPosition() == maxPosition)
+            .map(Car::getName)
+            .reduce((a, b) -> a + ", " + " " + b)
+            .orElseThrow(IllegalArgumentException::new);
     }
 }
