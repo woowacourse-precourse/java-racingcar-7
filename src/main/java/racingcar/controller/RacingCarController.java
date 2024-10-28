@@ -35,6 +35,7 @@ public class RacingCarController {
         while (attemptNumber.isRemain()) {
             attemptNumber.decrease();
             cars.moveAll(randomNumber);
+            printRaceStatus(cars);
         }
     }
 
