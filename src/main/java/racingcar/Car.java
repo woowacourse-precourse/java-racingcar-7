@@ -18,11 +18,10 @@ public class Car {
             position++;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String displayPosition() {
+        StringBuilder display = new StringBuilder(name + " : ");
+        display.append("-".repeat(position));
 
-    public int getPosition() {
-        return position;
+        return display.toString();
     }
 }

@@ -8,7 +8,7 @@ public class Application {
         String input = Console.readLine();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int cnt = Integer.parseInt(Console.readLine());
+        int turn = Integer.parseInt(Console.readLine());
 
         String[] carNames = input.split(",");
     }
