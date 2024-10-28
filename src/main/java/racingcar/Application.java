@@ -14,6 +14,7 @@ public class Application {
     }
 
     public void setCar(String[] carNames) {
+        List<String> checknames = new ArrayList<>();
         for (String name : carNames) {
             cars.add(new RacingCar(name.trim()));
         }
@@ -23,14 +24,14 @@ public class Application {
         for(var car : cars) {
             int canGo = Randoms.pickNumberInRange(0, 9);
             if (canGo >= 4) {
-                ++car.length;
+                ++car.numberOfForward;
             }
         }
     }
 
     public void printProgressOfGame(){
         for(var car : cars){
-            System.out.println(car.carName + " : " + "-".repeat(car.length));
+            System.out.println(car.carName + " : " + "-".repeat(car.numberOfForward));
         }
         System.out.print('\n');
     }
@@ -39,12 +40,12 @@ public class Application {
         int max = 0;
         
         for(var car : cars){
-            if(car.length > max){
+            if(car.numberOfForward > max){
                 winners.clear();
                 winners.add(car.carName);
-                max = car.length;
+                max = car.numberOfForward;
             }
-            else if(car.length == max){
+            else if(car.numberOfForward == max){
                 winners.add(car.carName);
             }
         }
