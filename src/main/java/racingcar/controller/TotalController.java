@@ -26,6 +26,10 @@ public class TotalController {
         return raceStarterService.getRace();
     }
 
+    private void prepareRace() {
+        RacingController.getInstance().carMovementSetting(raceStarterService);
+    }
+
     public static TotalController getInstance() {
         if (instance == null) {
             instance = new TotalController();
