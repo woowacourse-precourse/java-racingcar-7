@@ -19,6 +19,10 @@ public class CarService {
                 throw new IllegalArgumentException("중복된 자동차 이름을 입력했습니다.");
             }
 
+            if (carName.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+            }
+
             carNamesSet.add(carName);
             cars.add(new Car(carName, 0));
         }
