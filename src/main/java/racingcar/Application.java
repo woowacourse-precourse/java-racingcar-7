@@ -25,6 +25,9 @@ public class Application {
                 if (checkCar.length()>5){
                     throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
                 }
+                if (!isNmberic(checkCar)){
+                    throw new IllegalArgumentException("자동차 이름은 숫자일 수 없습니다.");
+                }
             }
 
         } catch (IllegalArgumentException e){
@@ -83,7 +86,7 @@ public class Application {
         for (String car : carArr) {
             if (totalLength == map.get(car).length()){
                 if (totalWinner == null){
-                    totalWinner += car;
+                    totalWinner = car;
                 } else{
                     totalWinner += (", " + car);
                 }
