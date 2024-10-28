@@ -30,14 +30,14 @@ public class RaceTest {
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void 숫자가_4_이상일_경우_전진_규칙_충족_테스트(int number) {
+    void 숫자가_4_이상일_경우_이동가능_테스트(int number) {
         Rule rule = new Rule();
         Assertions.assertThat(rule.canMove(number)).isTrue();
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
-    void 숫자가_4_미만일_경우_전진_규칙_미달_테스트(int number) {
+    void 숫자가_4_미만일_경우_이동불가능_테스트(int number) {
         Rule rule = new Rule();
         Assertions.assertThat(rule.canMove(number)).isFalse();
     }
