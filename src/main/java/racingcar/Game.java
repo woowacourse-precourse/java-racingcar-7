@@ -18,7 +18,7 @@ public class Game {
         }
     }
 
-    public String[] carInput() {
+    public String[] carInput() throws IllegalArgumentException {
         Output.carName();
         String[] cars = Input.carName();
         Output.tryNum();
@@ -27,7 +27,7 @@ public class Game {
         return cars;
     }
 
-    public void carInit(String[] cars) {
+    public void carInit(String[] cars) throws IllegalArgumentException {
 
     }
 

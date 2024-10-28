@@ -14,6 +14,7 @@ public class Input {
 
         return str.split(",");
     }
+
     public static int tryNum() throws IllegalArgumentException {
         int n = 0;
         try {
