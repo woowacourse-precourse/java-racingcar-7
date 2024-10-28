@@ -3,16 +3,15 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private final List<Car> cars;
 
     public RacingGame(List<String> carNames) {
-        this.cars = new ArrayList<>();
-        for (String carName : carNames) {
-            Car car = new Car(carName);
-            this.cars.add(car);
-        }
+        this.cars = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public List<Car> move() {
