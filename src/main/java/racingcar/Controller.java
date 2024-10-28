@@ -4,6 +4,9 @@ import java.util.List;
 import racingcar.argumentresolver.ArgumentResolver;
 import racingcar.argumentresolver.AttemptCountArgumentResolver;
 import racingcar.argumentresolver.CarArgumentResolver;
+import racingcar.validator.RangeValidator;
+import racingcar.validator.SizeValidator;
+import racingcar.validator.Validator;
 
 public class Controller {
 
@@ -13,8 +16,8 @@ public class Controller {
     private final ArgumentResolver<List<String>> carArgumentResolver = new CarArgumentResolver();
     private final ArgumentResolver<Integer> attemptCountArgumentResolver = new AttemptCountArgumentResolver();
 
-    private final SizeValidator sizeValidator = new SizeValidator();
-    private final RangeValidator rangeValidator = new RangeValidator();
+    private final Validator<List<String>> sizeValidator = new SizeValidator();
+    private final Validator<Integer> rangeValidator = new RangeValidator();
 
     private final CarConverter carConverter = new CarConverter();
     private final AllCarMover allCarMover = new AllCarMover();
