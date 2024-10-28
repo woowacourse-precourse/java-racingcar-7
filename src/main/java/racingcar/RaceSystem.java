@@ -23,9 +23,9 @@ public class RaceSystem {
         for (String carName: carNames) {
             if (carName.isBlank() || carName.length() > MAX_CAR_NAME_CONDITION) {
                 StringBuilder errorMessage = new StringBuilder();
-                errorMessage.append("자동차 이름은 공백이거나 문자의 길이가 ");
+                errorMessage.append("자동차 이름은 공백이거나 ");
                 errorMessage.append(MAX_CAR_NAME_CONDITION);
-                errorMessage.append(" 이상일 수 없습니다");
+                errorMessage.append("자를 초과할 수 없습니다");
                 throw new IllegalArgumentException(errorMessage.toString());
             }
 
@@ -38,7 +38,11 @@ public class RaceSystem {
 
     private int initializeRaceTime(int raceTime) {
         if (raceTime < MIN_RACE_TIME_CONDITION) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다");
+            StringBuilder errorMessage = new StringBuilder();
+            errorMessage.append("시도 횟수는 ");
+            errorMessage.append(MIN_RACE_TIME_CONDITION);
+            errorMessage.append(" 이상이어야 합니다");
+            throw new IllegalArgumentException(errorMessage.toString());
         }
 
         return raceTime;
