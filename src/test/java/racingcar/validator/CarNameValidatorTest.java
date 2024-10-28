@@ -2,10 +2,8 @@ package racingcar.validator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.RacingException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static racingcar.exception.ErrorMessage.INVALID_CAR_NAME_FORMAT;
 import static racingcar.exception.ErrorMessage.INVALID_CAR_NAME_LENGTH;
 
