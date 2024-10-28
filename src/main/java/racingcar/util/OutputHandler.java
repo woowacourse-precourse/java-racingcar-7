@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.util;
 
 public class OutputHandler {
     public void printResult(String[] results) {
