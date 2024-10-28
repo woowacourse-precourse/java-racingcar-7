@@ -11,8 +11,8 @@ public class Racing {
         System.out.println("\n실행 결과");
 
         for (int i = 0; i < count; i++) {
-            forwardCondition(cars);
-            presentStatus(cars);
+            moveCarIfMovable(cars);
+            printPresentStatus(cars);
             System.out.println();
         }
 
@@ -29,7 +29,7 @@ public class Racing {
         return cars;
     }
 
-    private void forwardCondition(List<Car> cars) {
+    private void moveCarIfMovable(List<Car> cars) {
         for (Car car : cars) {
             if (isMovable()) {
                 car.incrementMoveCount();
@@ -41,7 +41,7 @@ public class Racing {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    private void presentStatus(List<Car> cars) {
+    private void printPresentStatus(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + generateDashLine(car));
         }
