@@ -1,0 +1,67 @@
+package racingcar.controller;
+
+import racingcar.model.CarMoveDeterminator;
+import racingcar.model.Cars;
+import racingcar.model.MoveStrategy;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+import java.util.Arrays;
+import java.util.List;
+
+public class GameFlow {
+
+    private Cars cars;
+    private int numberOfMoves;
+    MoveStrategy moveStrategy = () -> CarMoveDeterminator.determine();
+
+    public GameFlow() {}
+
+    public void start() {
+        List<String> carNames = parseCarNames();
+        cars = new Cars(carNames);
+        String NumberInput = InputView.inputNumberOfMoves();
+        setNumberOfMoves(NumberInput);
+        runRace();
+        displayWinners();
+    }
+
+    private List<String> parseCarNames() {
+        String carNameInput = InputView.inputCarNames();
+        List<String> carNames = Arrays.asList(carNameInput.split(","));
+        return carNames;
+    }
+
+    void setNumberOfMoves(String NumberInput) {
+        validateNumberOfMoves(NumberInput);
+        numberOfMoves = Integer.parseInt(NumberInput);
+    }
+
+    private void validateNumberOfMoves(String NumberInput) {
+        try {
+            int NumberOfMoves = Integer.parseInt(NumberInput);
+            if (NumberOfMoves <= 0) {
+                throw new IllegalArgumentException("이동 횟수는 1 이상의 양수여야 합니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("이동 횟수는 아라비아 숫자여야 합니다.");
+        }
+    }
+
+    private void runRace() {
+        OutputView.printRaceStartNotice();
+        for (int i = 0; i < numberOfMoves; i++) {
+            cars.moveCars(moveStrategy);
+            OutputView.printProgress(cars.collectProgressVisualizations());
+        }
+    }
+
+    private void displayWinners() {
+        List<String> winners = cars.calculateWinners();
+        OutputView.printWinners(winners);
+    }
+    
+    public int getNumberOfMoves() {
+        return numberOfMoves;
+    }
+
+}
