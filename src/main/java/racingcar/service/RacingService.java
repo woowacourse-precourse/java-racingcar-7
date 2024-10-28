@@ -19,6 +19,11 @@ public class RacingService {
         this.inputView = new InputView();
     }
 
+    public RacingService(final OutputView outputView, final InputView inputView) {
+        this.outputView = outputView;
+        this.inputView = inputView;
+    }
+
     public RacingRequestDto racingSetUpRequest() {
         outputView.printInputCarNameGuideMessage();
         final String carNames = Console.readLine();
