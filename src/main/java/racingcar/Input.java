@@ -9,7 +9,7 @@ public class Input {
     public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String text = Console.readLine().replaceAll("\\s", "");
-        List<String> carNames = List.of(text.split(","));
+        List<String> carNames = List.of(text.split(",", -1));
 
         for (String carName : carNames) {
             if (carName.length() > LENGTH_LIMIT) {
