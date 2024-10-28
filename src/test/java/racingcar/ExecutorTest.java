@@ -1,0 +1,40 @@
+package racingcar;
+
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.List;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class ExecutorTest extends NsTest {
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
+
+    IOController ioController = new IOController();
+    Parser parser = new Parser();
+    Validator validator = new Validator();
+    Racing racing = new Racing();
+    Judge judge = new Judge();
+    Executor executor = new Executor(ioController, parser, validator, racing, judge);
+
+    @Test
+    void 실행() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("car1,car2,car3", "1");
+                Assertions.assertThat(output())
+                    .contains("car1 : -", "car2 : ", "car3 : -", "최종 우승자 : car1, car3");
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+
+    @Override
+    public void runMain() {
+        executor.run();
+    }
+}
