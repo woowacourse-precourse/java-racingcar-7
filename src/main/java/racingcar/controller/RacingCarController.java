@@ -28,5 +28,6 @@ public class RacingCarController {
         }
 
         racingCarService.findWinners();
+        outputView.displayWinners(racingCarService.getWinnerList());
     }
 }

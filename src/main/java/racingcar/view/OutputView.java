@@ -17,6 +17,10 @@ public class OutputView {
         System.out.println();
     }
 
+    public void displayWinners(List<String> winnerList) {
+        System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+    }
+
     private void displayHeaderIfFirstRace() {
         if (isFirstRace) {
             System.out.println("\n실행 결과");
