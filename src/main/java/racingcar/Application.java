@@ -11,15 +11,9 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int attemptsNum = Integer.parseInt(Console.readLine());
 
-        Game game = new Game(CarName.carNameFilter(input));
+        Game game = new Game(CarName.carNameFilter(input),attemptsNum);
 
-        System.out.println("실행 결과");
-        for (int i = 1; i <= attemptsNum; i++) {
-            game.attemptStatus();
-        }
-
-        List<String> winners = game.findWinners();
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+        game.startGame();
 
         Console.close();
     }

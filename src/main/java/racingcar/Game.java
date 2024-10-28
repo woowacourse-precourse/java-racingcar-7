@@ -8,21 +8,38 @@ import java.util.List;
 public class Game {
     private final List<String> carList;
     private final List<Integer> carPositions;
+    private final int attemptsNum;
 
-    public Game(List<String> carList) {
+    public Game(List<String> carList, int attemptsNum) {
         this.carList = carList;
+        this.attemptsNum = attemptsNum;
         this.carPositions = new ArrayList<>();
         for (int i = 0; i < carList.size(); i++) {
             carPositions.add(0);
         }
     }
 
-    public void attemptStatus() {
+    public void startGame() {
+        System.out.println("실행 결과");
+        for (int i = 0; i < attemptsNum; i++) {
+            moveCars();
+            printCarsPosition();
+        }
+        List<String> winners = findWinners();
+        printWinners(winners);
+    }
+
+    public void moveCars() {
         for (int i = 0; i < carList.size(); i++) {
             int randomNum = Randoms.pickNumberInRange(0, 9);
             if (randomNum >= 4) {
                 carPositions.set(i, carPositions.get(i) + 1);
             }
+        }
+    }
+
+    public void printCarsPosition() {
+        for (int i = 0; i < carList.size(); i++) {
             System.out.print(carList.get(i) + " : ");
             System.out.println("-".repeat(carPositions.get(i)));
         }
@@ -38,6 +55,10 @@ public class Game {
             }
         }
         return winners;
+    }
+
+    public void printWinners(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     public List<Integer> getCarPositions() {
