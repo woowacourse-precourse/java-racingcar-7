@@ -9,6 +9,7 @@ public class Application {
     private static final CarInitializer carInitializer = new CarInitializer();
     private static Map<String, Integer> stateMap;
     private static int progressCount = 0;
+    
     public static void main(String[] args) {
         setArguments();
         progressRace();
@@ -31,6 +32,9 @@ public class Application {
         try {
             System.out.println("시도할 횟수는 몇 회인가요?");
             progressCount = Integer.parseInt(Console.readLine());
+            if (progressCount < 0) {
+                throw new IllegalArgumentException("시도 횟수는 음수가 될 수 없습니다.");
+            }
         } catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException("올바르지 않은 값을 입력받았습니다.");
         }
