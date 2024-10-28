@@ -17,4 +17,11 @@ public class Output {
         }
         System.out.println();
     }
+
+    public void printWinners(List<String> winners) {
+        System.out.print("최종 우승자 : ");
+        for (String winner : winners) {
+            System.out.print(winner);
+        }
+    }
 }

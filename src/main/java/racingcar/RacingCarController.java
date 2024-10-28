@@ -22,5 +22,22 @@ public class RacingCarController {
             output.printCars(cars);
         }
         List<String> winners = findWinner();
+        output.printWinners(winners);
+    }
+
+    public List<String> findWinner() {
+        List<String> winners = new ArrayList<>();
+        int maxLocation = 0;
+
+        for (Car car : cars) {
+            if (maxLocation < car.getLocation()) {
+                winners.clear();
+                winners.add(car.getName());
+            } else if (maxLocation == car.getLocation()) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
     }
 }
