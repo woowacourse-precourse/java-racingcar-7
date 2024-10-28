@@ -29,4 +29,13 @@ public class InputValidator {
         }
         return carNames;
     }
+
+    public static int validateMoveCnt(String input) {
+        // 입력 이동 횟수가 숫자인지 검증
+        try {
+            return Integer.parseInt( input.trim());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("이동 횟수는 숫자여야만 합니다.");
+        }
+    }
 }
