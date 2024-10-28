@@ -1,4 +1,4 @@
-package racingcar.operator;
+package racingcar.module;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -51,7 +51,7 @@ public class WinnerSelectorTest {
     }
 
     @Test
-    public void testGetTopScores_WithRandomValues() {
+    public void testGetTopScores() {
         WinnerSelector selector = new WinnerSelector(users);
         List<String> resultTopScorers = selector.getTopScores();
         // 예상과 실제 비교
