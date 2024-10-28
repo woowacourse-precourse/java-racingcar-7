@@ -15,10 +15,10 @@ public class RacingGameController {
         RaceCount raceCount = new RaceCount(InputView.getRaceCount());
 
         OutputView.printExecutionResult();
-        for(int nowRaceTurn = 0; nowRaceTurn < raceCount.getValue(); nowRaceTurn++) {
+        for (int nowRaceTurn = 0; nowRaceTurn < raceCount.getValue(); nowRaceTurn++) {
             carScores = RaceService.playGame(carScores);
         }
 
-        // 최종 우승자 출력하기
+        RaceService.findFinalWinner(carScores);
     }
 }
