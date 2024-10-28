@@ -11,7 +11,7 @@ public class Output {
     private static final String NUMBER_REQUEST_MESSAGE =
             "시도할 횟수는 몇 회인가요?";
     private static final String RUN_RESULT_MESSAGE =
-            "\\n실행 결과";
+            "실행 결과";
 
     public static void printCarNameRequestMessage(){
         System.out.println(CAR_NAME_REQUEST_MESSAGE);
@@ -22,6 +22,7 @@ public class Output {
     }
 
     public static void printRunResultMessage(){
+        printBlankLine();
         System.out.println(RUN_RESULT_MESSAGE);
     }
 
@@ -29,5 +30,10 @@ public class Output {
         for (Car car : carList) {
             System.out.println(car);
         }
+        printBlankLine();
+    }
+
+    private static void printBlankLine(){
+        System.out.println();
     }
 }
