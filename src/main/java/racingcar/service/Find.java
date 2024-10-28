@@ -7,7 +7,7 @@ import racingcar.service.collection.RacingCar;
 public class Find {
 
     public int FurthestNumber(RacingCar racingCar) {
-        List<String> allRacingCarName = racingCar.getAllRacingCarName();
+        final List<String> allRacingCarName = racingCar.getAllRacingCarName();
         int max = 0;
 
         for (String eachRacingCar : allRacingCarName) {
@@ -19,8 +19,8 @@ public class Find {
     }
 
     public List<String> Winners(RacingCar racingCar, int furthestNumber) {
-        List<String> winners = new ArrayList<>();
-        List<String> allRacingCarName = racingCar.getAllRacingCarName();
+        final List<String> winners = new ArrayList<>();
+        final List<String> allRacingCarName = racingCar.getAllRacingCarName();
 
         for (String eachRacingCar : allRacingCarName) {
             if (racingCar.getRacingCarPosition(eachRacingCar) == furthestNumber) {
