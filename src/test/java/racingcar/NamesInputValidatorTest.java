@@ -1,9 +1,9 @@
 package racingcar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class NamesInputValidatorTest {
@@ -11,14 +11,14 @@ class NamesInputValidatorTest {
     @Test
     @DisplayName("',' 기준으로 이름 입력값 유효성 검사")
     void validateSuccess() {
-        Assertions.assertThatCode(() -> NamesInputValidator.validate("abc,hijk"))
+        assertThatCode(() -> NamesInputValidator.validate("abc,hijk"))
                 .doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("',' 사이에 공백은 제거하여 이름으로 저장")
     void validateBlankSuccess() {
-        Assertions.assertThatCode(() -> NamesInputValidator.validate(" abc, hijk "))
+        assertThatCode(() -> NamesInputValidator.validate(" abc, hijk "))
                 .doesNotThrowAnyException();
     }
 
