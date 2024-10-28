@@ -10,29 +10,29 @@ public class Cars {
     private final List<Car> carList;
 
     public Cars(String carNames) {
-        List<String> carNameList = convertCarNamesToList(carNames);
-        validateListSize(carNameList);
-        validateNoDuplicateNames(carNameList);
-        this.carList = carNameList.stream()
+        List<Car> tempCarList = convertCarNamesToList(carNames).stream()
                 .map(Car::new)
                 .toList();
+        validateListSize(tempCarList);
+        validateNoDuplicateNames(tempCarList);
+        this.carList = tempCarList;
     }
 
-    private static List<String> convertCarNamesToList(String input) {
-        return Arrays.asList(input.split(DELIMITER_COMMA));
+    private static List<String> convertCarNamesToList(String carNames) {
+        return Arrays.asList(carNames.split(DELIMITER_COMMA));
     }
 
-    public void validateListSize(List<String> carNames) {
-        if (carNames.size() < MIN_LIST_SIZE) {
+    public void validateListSize(List<Car> carList) {
+        if (carList.size() < MIN_LIST_SIZE) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_NAME_LIST_SIZE);
         }
     }
 
-    public void validateNoDuplicateNames(List<String> carNames) {
-        long distinctCount = carNames.stream()
+    public void validateNoDuplicateNames(List<Car> carList) {
+        long distinctCount = carList.stream()
                 .distinct()
                 .count();
-        if (carNames.size() != distinctCount) {
+        if (carList.size() != distinctCount) {
             throw new IllegalArgumentException(ErrorMessages.DUPLICATE_NAME);
         }
     }
