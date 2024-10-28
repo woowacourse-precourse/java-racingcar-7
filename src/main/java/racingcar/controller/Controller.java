@@ -36,6 +36,7 @@ public class Controller {
         int tryNum=parsing.parseNum(tryNumber);
 
         //게임 진행
+        OutputView.printStart();
         for (int i=0;i<tryNum;i++){
             randomGameService.RandomGame(racingGame.getCars());
             OutputView.printEachResult(racingGame.getCars());
