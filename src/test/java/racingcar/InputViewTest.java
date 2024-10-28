@@ -23,9 +23,20 @@ class InputViewTest {
         Assertions.assertThatList(result)
                 .containsExactly("pobi", "woni", "jun");
     }
-//
-//    @Test
-//    void printRounds() {
-//    }
+
+    @Test
+    void 입력된_문자열을_정수로_반환() {
+        //givenR
+        InputView input = new InputView();
+        String inputNumber = "5";
+
+        //when
+        InputStream in = new ByteArrayInputStream(inputNumber.getBytes());
+        System.setIn(in);
+        int result = input.printRounds();
+
+        //then
+        Assertions.assertThat(result).isEqualTo(5);
+    }
 
 }
