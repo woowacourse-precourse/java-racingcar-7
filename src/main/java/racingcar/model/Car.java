@@ -5,10 +5,13 @@ import racingcar.constant.ExceptionMessage;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
+
+    private final RacePolicy racePolicy;
     private final String name;
     private int position;
 
-    public Car(String name) {
+    public Car(RacePolicy racePolicy, String name) {
+        this.racePolicy = racePolicy;
         validateEmptyName(name);
         validateNameLength(name);
         this.name = name;
@@ -29,7 +32,7 @@ public class Car {
 
     public void tryMoveForward() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if (RacePolicy.canMoveForward(randomNumber)) {
+        if (racePolicy.canMoveForward(randomNumber)) {
             moveForward();
         }
     }

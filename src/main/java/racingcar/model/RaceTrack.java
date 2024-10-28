@@ -7,11 +7,18 @@ import racingcar.constant.ExceptionMessage;
 public class RaceTrack {
     private static final int INITIAL_POSITION = 0;
 
+    private final RacePolicy racePolicy;
     private List<Car> cars;
+
+    public RaceTrack(RacePolicy racePolicy) {
+        this.racePolicy = racePolicy;
+    }
 
     public void registerCars(List<String> carNames) {
         validateUniqueNames(carNames);
-        this.cars = carNames.stream().map(Car::new).toList();
+        this.cars = carNames.stream()
+                .map(name -> new Car(racePolicy, name))
+                .toList();
     }
 
     private void validateUniqueNames(List<String> carNames) {
