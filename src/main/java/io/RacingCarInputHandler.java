@@ -24,7 +24,7 @@ public class RacingCarInputHandler {
     }
 
     public int getRacingCount(String userInputCount) {
-        try{
+        try {
             int intCount = Integer.parseInt(userInputCount);
             isPositiveNumber(intCount);
             return intCount;
