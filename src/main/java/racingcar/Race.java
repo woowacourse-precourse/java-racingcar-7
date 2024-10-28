@@ -49,4 +49,12 @@ public class Race {
 
         return num;
     }
+
+    public void start() {
+        System.out.println("실행 결과");
+        for (int progressCount = 1; progressCount <= tryCount; progressCount++) {
+            cars.forEach(Car::move);
+            System.out.println();
+        }
+    }
 }

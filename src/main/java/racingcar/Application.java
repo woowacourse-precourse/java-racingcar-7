@@ -10,6 +10,7 @@ public class Application {
         String tryCount = Console.readLine();
 
         Race race = new Race(carNames, tryCount);
+        race.start();
 
         Console.close();
     }
