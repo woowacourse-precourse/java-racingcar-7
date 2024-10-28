@@ -67,9 +67,17 @@ public class Race {
             result.add(car.getForwardProgressLength());
         }));
         int max = Collections.max(result);
-        cars.forEach((car -> {
-            winner += car.isWinner(max);
-        }));
+        findWinner(max);
         System.out.println("최종 우승자 : " + winner);
+    }
+
+    private void findWinner(int max) {
+        cars.forEach((car -> {
+            if (winner.equals("")) {
+                winner += car.isWinner(max);
+            } else if(!(car.isWinner(max).equals(""))) {
+                winner += ", " + car.isWinner(max);
+            }
+        }));
     }
 }
