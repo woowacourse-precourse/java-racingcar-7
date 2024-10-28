@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
+    private static final int MOVE_THRESHOLD = 4;
     public static void main(String[] args) {
         // 입력 받기
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -34,6 +34,12 @@ public class Application {
             throw e; // 잘못된 입력 처리 후 프로그램 정상 종료
         }
 
+        // 실행 결과
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < rounds; i++) {
+            playRound(cars);
+            printRoundResult(cars);
+        }
 
     }
 
@@ -51,6 +57,24 @@ public class Application {
         }
 
         return cars;
+    }
+
+    // 라운드 실행
+    private static void playRound(List<Car> cars) {
+        for (Car car : cars) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            if (randomValue >= MOVE_THRESHOLD) {
+                car.move();
+            }
+        }
+    }
+
+    // 라운드 결과 출력
+    private static void printRoundResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + car.getPosition());
+        }
+        System.out.println();
     }
 
 }
