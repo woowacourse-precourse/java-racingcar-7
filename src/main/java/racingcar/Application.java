@@ -48,5 +48,7 @@ public class Application {
                 .filter(entry -> entry.getValue() == maxValue)
                 .map(Map.Entry::getKey)
                 .toList();
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
