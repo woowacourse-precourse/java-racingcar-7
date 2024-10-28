@@ -1,7 +1,14 @@
 package racingcar;
 
+import racingcar.adapters.input.RaceCliInputAdapter;
+import racingcar.infrastructure.config.AppConfig;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        AppConfig appConfig = new AppConfig();
+        RaceCliInputAdapter raceCliInputAdapter = appConfig.getRaceCliInputAdapter();
+
+        raceCliInputAdapter.run();
     }
 }
