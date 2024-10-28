@@ -32,7 +32,13 @@ public class Validator {
         if (totalRacingRound.isBlank()) {
             return 0;
         }
-        return Integer.parseInt(totalRacingRound);
+
+        Integer validTotalRacingRound = Integer.parseInt(totalRacingRound);
+        if (validTotalRacingRound < 0) {
+            throw new NumberFormatException();
+        }
+
+        return validTotalRacingRound;
     }
 
 }

@@ -39,7 +39,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("테스트 : 공백을 포함한 이름")
-    void 이름_테스트_공백포함이름() {
+    void 테스트_이름_공백포함이름() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni,  juu n ", "1");
@@ -50,8 +50,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("자동차 이름에 공백이 있는 경우")
-    void 이름_예외_테스트_공백() {
+    @DisplayName("예외: 자동차 이름에 공백이 있는 경우")
+    void 예외_테스트_이름_공백() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi, , woni", "5"))
                     .isInstanceOf(IllegalArgumentException.class);
@@ -59,8 +59,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("자동차 이름에 \\n이 있는 경우")
-    void 이름_예외_테스트_줄바꿈() {
+    @DisplayName("예외: 자동차 이름에 \\n이 있는 경우")
+    void 예외_테스트_이름_줄바꿈() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi, \n , woni", "5"))
                     .isInstanceOf(IllegalArgumentException.class);
@@ -68,8 +68,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("0번 입력 시")
-    void 시도횟수_0번일때() {
+    @DisplayName("테스트: 0번 입력 시")
+    void 테스트_시도횟수_0번일때() {
         assertSimpleTest(
                 () -> {
                     run(" pobi,woni ", "0");
@@ -79,14 +79,32 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("시도횟수 \\n 입력시")
-    void 시도횟수_엔터일때() {
+    @DisplayName("테스트: 시도횟수 \\n 입력시")
+    void 테스트_시도횟수_엔터일때() {
         assertSimpleTest(
                 () -> {
                     run(" pobi,woni ", "\n");
                     assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi, woni");
                 }
         );
+    }
+
+    @Test
+    @DisplayName("예외: 시도횟수 실수 입력 시")
+    void 예외_테스트_시도횟수_DOUBLE일때() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi, woni, mirim", "1.0"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    @DisplayName("예외: 시도횟수 음수 입력 시")
+    void 예외_테스트_시도횟수_음수일때() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi, woni, mirim", "-1"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
     }
 
 
