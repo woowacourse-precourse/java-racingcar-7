@@ -24,18 +24,8 @@ public class Cars {
     }
 
     public List<Car> determineWinners() {
-        int maxPosition = raceCars.stream()
-                .mapToInt(car -> car.getPosition().position())
-                .max()
-                .orElse(0);
-
-        List<Car> leadingCars = new ArrayList<>();
-        for (Car car : raceCars) {
-            if (car.getPosition().position() == maxPosition) {
-                leadingCars.add(car);
-            }
-        }
-        return leadingCars;
+        int maxPosition = findMaxPosition();
+        return filterWinningCars(maxPosition);
     }
 
     public List<Car> getCars() {
@@ -59,5 +49,18 @@ public class Cars {
         for (String carName : carNames) {
             raceCars.add(new Car(carName));
         }
+    }
+
+    private int findMaxPosition() {
+        return raceCars.stream()
+                .mapToInt(car -> car.getPosition().position())
+                .max()
+                .orElse(0);
+    }
+
+    private List<Car> filterWinningCars(int maxPosition) {
+        return raceCars.stream()
+                .filter(car -> car.getPosition().position() == maxPosition)
+                .toList();
     }
 }
