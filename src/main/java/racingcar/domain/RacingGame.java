@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.UI;
+import racingcar.view.OutputView;
 import racingcar.Utils;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ public class RacingGame {
     private final int limit;
     private final List<Car> participants = new ArrayList<>();
     private final Utils utils = new Utils();
-    private final UI ui = new UI();
+    private final OutputView outputView = new OutputView();
 
     public RacingGame(int limit) {
         this.limit = limit;
@@ -26,12 +26,12 @@ public class RacingGame {
         for (int curr = 0; curr < limit; curr++) {
             playSingleRound();
             if (curr == 0) {
-                ui.printRoundResult(true, participants);
+                outputView.printRoundResult(true, participants);
                 continue;
             }
-            ui.printRoundResult(false, participants);
+            outputView.printRoundResult(false, participants);
         }
-        ui.printWinners(utils.countWinners(participants));
+        outputView.printWinners(utils.countWinners(participants));
     }
 
     private void playSingleRound() {
