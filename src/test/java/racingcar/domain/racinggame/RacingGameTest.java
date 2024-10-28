@@ -38,6 +38,22 @@ class RacingGameTest {
     }
 
     @Test
-    void getFormattedGameResult() {
+    void 게임_결과_출력_테스트(){
+        //given
+        RacingCarNamesDTO racingCarNamesDTO = new RacingCarNamesDTO("Car1,Car2,Car3");
+        MoveStrategy moveStrategy = new MoveStrategy() {
+            @Override
+            public boolean isAllowedToAdvance() {
+                return true;
+            }
+        };
+        Cars cars = new Cars(racingCarNamesDTO, moveStrategy);
+        RacingGame racingGame = new RacingGame(cars);
+
+        //when
+        assertThat(racingGame.getFormattedGameResult())
+                .isEqualTo("Car1 : -\nCar2 : -\nCar3 : -\n\n");
     }
+
+    
 }

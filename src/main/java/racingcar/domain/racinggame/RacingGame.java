@@ -1,14 +1,12 @@
 package racingcar.domain.racinggame;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 
 public class RacingGame {
-    private Map<String, Integer> distances = new HashMap<>();
+    private Map<String, Integer> distances = new LinkedHashMap<>();
 
     public RacingGame(Cars cars){
         for(Car car : cars.getCars()){
