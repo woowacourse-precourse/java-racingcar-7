@@ -18,11 +18,20 @@ public class Application {
         Integer playNum = getPlayNumber();
 
         checkNumberPositive(playNum);
+        ArrayList<Integer> scoreList = new ArrayList<>();
+
+        getScoreArray(carName, scoreList);
     }
 
     private static void checkNumberPositive(Integer playNum) {
         if(playNum <0)
             throw new IllegalArgumentException("횟수로 양수만 가능합니다.");
+    }
+
+    private static void getScoreArray(ArrayList<String> carName, ArrayList<Integer> scoreList) {
+        for (int i = 0; i < carName.size(); i++) {
+            scoreList.add(0);
+        }
     }
 
     private static Integer getPlayNumber() {
