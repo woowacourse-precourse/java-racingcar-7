@@ -11,8 +11,9 @@ public class Player {
     public String getName() {
         return name;
     }
-    public void setScore(Integer score) {
-        this.score = score;
+    public void winGame(Integer amount) {
+        amount = Math.max(amount, 0);
+        this.score += amount;
     }
     public Integer getScore() {
         return score;
