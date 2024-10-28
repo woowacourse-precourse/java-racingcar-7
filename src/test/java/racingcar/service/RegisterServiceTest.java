@@ -1,4 +1,4 @@
-package racingcar.Service;
+package racingcar.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.service.RegisterService;
 
 public class RegisterServiceTest {
     @DisplayName("모든 차를 등록하는지 확인")

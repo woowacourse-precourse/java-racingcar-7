@@ -1,4 +1,4 @@
-package racingcar.Service;
+package racingcar.service;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,8 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.service.RegisterService;
-import racingcar.service.RoundService;
 
 public class RoundServiceTest {
     private static final int MOVING_FORWARD = 4;
