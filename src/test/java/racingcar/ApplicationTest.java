@@ -67,6 +67,11 @@ class ApplicationTest extends NsTest {
         assertExceptionThrown("pobi,woni", "abc", ErrorMessage.INVALID_NUMBER_FORMAT);
     }
 
+    @Test
+    void 자동차_이름에_숫자가_포함된_경우_예외_발생() {
+        assertExceptionThrown("kim,1woni", "3", ErrorMessage.INVALID_NAME_CHARACTER);
+    }
+
     private void assertExceptionThrown(String input, String rounds, ErrorMessage errorMessage) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input, rounds))
