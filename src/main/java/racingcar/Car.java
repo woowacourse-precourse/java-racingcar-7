@@ -19,6 +19,12 @@ public class Car {
         return location;
     }
 
+    public void moveForwardOrNot() {
+        if (randomNumber() > 3) {
+            location++;
+        }
+    }
+
     private int randomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
