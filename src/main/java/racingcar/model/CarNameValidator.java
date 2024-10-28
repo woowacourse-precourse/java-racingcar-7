@@ -6,14 +6,18 @@ import java.util.Set;
 
 public class CarNameValidator {
 
+    String regex = "[\\p{Cntrl}!@#$%^&*()\\-+=\\{\\}\\[\\]|:;\"'<>?,/\\\\`~]+";
+
     public void validateCarNameList(List<String> carNameList) {
         validateCarListEmpty(carNameList);
-        validateCarNameDuplicated(carNameList);
 
         for (String carName : carNameList) {
             validateCarNameLength(carName);
             validateCarNameEmpty(carName);
+            validateNoSpecialChar(carName);
         }
+
+        validateCarNameDuplicated(carNameList);
     }
 
     private void validateCarNameLength(String carName) {
@@ -23,13 +27,19 @@ public class CarNameValidator {
     }
 
     private void validateCarNameEmpty(String carName) {
-        if (carName.isEmpty()) {
+        if (carName.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차의 이름이 공백일 수 없습니다.");
         }
     }
 
+    private void validateNoSpecialChar(String carName) {
+        if (carName.matches(".*" + regex + ".*")) {
+            throw new IllegalArgumentException("자동차 이름은 제어문자 및 메타문자를 포함할 수 없습니다.");
+        }
+    }
+
     private void validateCarListEmpty(List<String> carNameList) {
-        if (carNameList.size() == 1 && carNameList.getFirst().isEmpty()) {
+        if (carNameList.isEmpty() || carNameList.size() == 1 && carNameList.getFirst().trim().isEmpty()) {
             throw new IllegalArgumentException("최소 한 대 이상의 자동차가 필요합니다.");
         }
     }
