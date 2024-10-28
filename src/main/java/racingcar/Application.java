@@ -8,7 +8,15 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        List<Car> cars = createCars();
+        int attempts = getAttemptCount();
+
+        for (int i = 0; i < attempts; i++) {
+            playRound(cars);
+            displayRoundResults(cars);
+        }
+
+        announceWinners(cars);
     }
 
     private static List<Car> createCars() {
