@@ -20,18 +20,11 @@ public class RacingCarController {
         int numberOfTries = inputView.getTrialNumber();
 
         for (int i = 0; i < numberOfTries; i++) {
-            race(racingCars);
+            race.race(racingCars);
             outputView.showRaceStatus(racingCars);
         }
 
         List<Car> winners = RaceResult.getWinners(racingCars);
         outputView.finalWinnerMessage(winners);
-    }
-
-    public void race(List<Car> racingCars) {
-        for (Car car : racingCars) {
-            int randomValue = randomNumberGenerator.generateRandomNumber();
-            car.move(randomValue);
-        }
     }
 }
