@@ -7,6 +7,7 @@ import static racingcar.ExceptionMessage.INVALID_TYPE_ROUND_SIZE;
 import static racingcar.Rounds.MAX_ROUND_COUNT;
 import static racingcar.Rounds.MIN_ROUND_COUNT;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -34,4 +35,10 @@ class RoundsTest {
                 .hasMessage(INVALID_TYPE_ROUND_SIZE.getMessage());
     }
 
+    @Test
+    void 시도_횟수가_null이면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Rounds(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_TYPE_ROUND_SIZE.getMessage());
+    }
 }
