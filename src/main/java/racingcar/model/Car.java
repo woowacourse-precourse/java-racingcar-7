@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.util.RandomNumber;
+
 import java.util.List;
 
 public class Car {
@@ -11,7 +13,9 @@ public class Car {
     }
 
     public void moveForward(){
-        forward = getForward() + 1;
+        if(RandomNumber.getRandomNumber() >= 4){
+            forward = getForward() + 1;
+        }
     }
 
     public void printForward(){
