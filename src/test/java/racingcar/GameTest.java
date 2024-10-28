@@ -75,4 +75,18 @@ public class GameTest {
         assertThrows(IllegalArgumentException.class, () -> game.parseMoveCount(input));
     }
 
+    static Stream<Arguments> printWinnersCases() {
+        return Stream.of(
+                Arguments.of(new ArrayList<Car>(Arrays.asList(new Car("pobi",1),new Car("woni", 2))),"최종 우승자 : woni"),
+                Arguments.of(new ArrayList<Car>(Arrays.asList(new Car("pobi",2),new Car("woni", 2))),"최종 우승자 : pobi, woni")
+
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("printWinnersCases")
+    public void printWinnersTests(List<Car> input, String expected){
+        Game game = new Game();
+        assertThat(game.printWinners(input)).isEqualTo(expected);
+    }
 }
