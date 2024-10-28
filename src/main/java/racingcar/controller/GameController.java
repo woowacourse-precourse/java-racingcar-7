@@ -11,6 +11,7 @@ public class GameController {
         set();
         OutputView.roundStart();
         game();
+        winnerAnnouncement();
     }
 
     public void set() {
@@ -23,5 +24,10 @@ public class GameController {
             racing.round();
             OutputView.roundOutput(racing.getCars());
         }
+    }
+
+    public void winnerAnnouncement(){
+        racing.sort();
+        OutputView.winnerOutput(racing.getCars());
     }
 }
