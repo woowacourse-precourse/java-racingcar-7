@@ -11,7 +11,11 @@ public class Car {
         distance = 0L;
     }
 
-    public void moveOrNot() {
+    public Long getDistance() {
+        return distance;
+    }
+
+    public void updateDistance() {
         if (isCarMove()) {
             distance++;
         }
@@ -35,9 +39,5 @@ public class Car {
 
         sb.append("\n");
         return sb.toString();
-    }
-
-    public Long getDistance() {
-        return distance;
     }
 }
