@@ -2,8 +2,10 @@ package racingcar.models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -11,6 +13,7 @@ public class Cars {
 
     public Cars(List<String> carNames) {
         this.cars = new ArrayList<>();
+        validateDuplicateNames(carNames);
         addToCars(carNames);
     }
 
@@ -50,6 +53,15 @@ public class Cars {
     private void addToCars(List<String> carNames) {
         for (String carName : carNames) {
             this.cars.add(new Car(carName.trim()));
+        }
+    }
+
+    private void validateDuplicateNames(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>();
+        for (String carName : carNames) {
+            if (!uniqueNames.add(carName.trim())) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
