@@ -28,7 +28,7 @@ public class RacingGame {
         return getWinners();
     }
 
-    private void validateCarCount(int count) {
+    private void validateCarCount(final int count) {
         if (count < MIN_CAR_COUNT) {
             throw new IllegalArgumentException("자동차는 최소 1대 이상이어야 합니다");
         }
