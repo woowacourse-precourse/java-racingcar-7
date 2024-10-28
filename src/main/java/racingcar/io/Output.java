@@ -14,10 +14,10 @@ public class Output {
     }
 
     public static void result() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     public static void winner() {
-        System.out.println("최종 우승자 : ");
+        System.out.print("최종 우승자 : ");
     }
 }

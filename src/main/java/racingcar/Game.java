@@ -2,14 +2,16 @@ package racingcar;
 
 import racingcar.io.Input;
 import racingcar.io.Output;
+import racingcar.model.*;
 
 public class Game {
-    public int num; //시행 횟수
+    public int num;
+    public CarHandler cars;
 
     public void start() {
         try {
-            String[] cars = carInput();
-            carInit(cars);
+            String[] names = carInput();
+            carInit(names);
             gameProgress();
             winner();
         } catch(IllegalArgumentException e) {
@@ -20,22 +22,33 @@ public class Game {
 
     public String[] carInput() throws IllegalArgumentException {
         Output.carName();
-        String[] cars = Input.carName();
+        String[] names = Input.carName();
         Output.tryNum();
         num = Input.tryNum();
 
-        return cars;
+        return names;
     }
 
-    public void carInit(String[] cars) throws IllegalArgumentException {
-
+    public void carInit(String[] names) throws IllegalArgumentException {
+        cars = new CarHandler();
+        for(String name : names) {
+            if(name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+            cars.addCar(name);
+        }
     }
 
     public void gameProgress() {
-
+        Output.result();
+        for(int i=0; i<num; i++) {
+            cars.goCar();
+            cars.printPos();
+            System.out.println();
+        }
     }
 
     public void winner() {
-
+        Output.winner();
     }
 }
