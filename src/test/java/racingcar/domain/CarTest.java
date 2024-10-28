@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarTest {
     @Test
-    @DisplayName("랜덤 수가 1~4일 때 정지하는지 검증")
+    @DisplayName("랜덤_수가_1~4일_때_정지하는지_테스트")
     void stopTest() {
         Car pobi = new Car("pobi");
 
@@ -23,7 +23,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("랜덤 수가 5~9일 때 전진하는지 검증")
+    @DisplayName("랜덤_수가_5~9일_때_전진하는지_테스트")
     void moveTest() {
         Car pobi = new Car("pobi");
 

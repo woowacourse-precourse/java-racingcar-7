@@ -11,7 +11,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 class CarsTest {
 
     @Test
-    @DisplayName("경주 우승자 계산 검증")
+    @DisplayName("경주_우승자_계산_테스트")
     void calculateFinalWinner() {
         Car pobi = new Car("pobi");
         Car hani = new Car("hani");

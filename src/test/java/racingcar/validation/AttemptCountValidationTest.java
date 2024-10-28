@@ -14,7 +14,7 @@ class AttemptCountValidationTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @DisplayName("시도할 횟수가 null 이거나 빈 값일 수 없다.")
+    @DisplayName("시도할_횟수가_null_이거나_빈_값일_수_없다.")
     void validateNotNullOrEmptyTest(String input) {
         Throwable exception = getValidate(input);
         assertEquals(ATTEMPT_COUNT_CANNOT_BE_NULL_OR_EMPTY.getMessage(), exception.getMessage());
@@ -23,7 +23,7 @@ class AttemptCountValidationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"a", "abc"})
-    @DisplayName("시도할 횟수는 정수여야 한다.")
+    @DisplayName("시도할_횟수는_정수여야_한다.")
     void validateIsIntegerTest(String input) {
         Throwable exception = getValidate(input);
         assertEquals(ATTEMPT_COUNT_IS_NOT_AN_INTEGER.getMessage(), exception.getMessage());
