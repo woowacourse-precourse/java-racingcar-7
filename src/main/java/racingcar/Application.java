@@ -1,6 +1,7 @@
 package racingcar;
 
 import console.ConsoleUtil;
+import console.Message;
 import java.util.ArrayList;
 import util.CarUtil;
 
@@ -13,11 +14,11 @@ public class Application {
 
         ArrayList<Car> cars = CarUtil.makeCarList(carNames);
         for (int i = 0; i < racingCounts; i++) {
+            System.out.println(Message.PREFIX_PER_TURN + (i + 1) + Message.SUFFIX_PER_TURN);
             for (Car car : cars) {
                 CarUtil.advanceSixTimesOutOfTen(car);
                 car.printRacingInfo();
             }
-            System.out.println();
         }
         CarUtil.printWinners(cars);
     }

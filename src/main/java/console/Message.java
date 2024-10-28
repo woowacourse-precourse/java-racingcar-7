@@ -6,13 +6,13 @@ public class Message {
             경주할 자동차 이름을 입력해주세요.
                         
             * 여러 차량의 이름은 쉼표(,)로 구분하세요.
-            * 각 이름에는 공백을 넣지 마세요.
+            * 입력 시 공백을 넣지 마세요.
             * 예시: pobi,woni,jun
                         
             입력 후 엔터를 누르면 확인됩니다.""";
     public static final String PROMPT_FOR_ATTEMPTS = """
             시도할 횟수를 입력해주세요.
-                        
+                       
             * 숫자만 입력 가능합니다.
             * 입력 횟수는 1이상의 정수를 입력해주세요
             * 최대 2147483647까지 입력 가능합니다.
@@ -26,4 +26,7 @@ public class Message {
     public static final String CAR_NAME_SEPARATOR_ERROR = "각 자동차는 쉼표(,)로 구분되어야 합니다.";
     public static final String VALUE_REQUIRED_ERROR = "값을 입력해주세요";
     public static final String OUTPUT_SEPARATOR = " : ";
+    public static final String PREFIX_PER_TURN = "[";
+    public static final String SUFFIX_PER_TURN = "회차 실행결과]";
+    public static final String RULE_PER_TURN = "자동차별 전진정보는 -로 표시됩니다.";
 }

@@ -48,6 +48,7 @@ public class CarUtil {
 
     public static void printWinners(ArrayList<Car> cars) {
         String winners = getWinnerNames(cars);
-        System.out.println(WINNER_ANNOUNCEMENT_PREFIX + winners);
+        System.out.println();
+        System.out.print(WINNER_ANNOUNCEMENT_PREFIX + winners);
     }
 }

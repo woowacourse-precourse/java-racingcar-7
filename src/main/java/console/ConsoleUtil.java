@@ -29,6 +29,9 @@ public class ConsoleUtil {
     }
 
     public static void closeConsole() {
+        System.out.println();
+        System.out.println(Message.RULE_PER_TURN);
+        System.out.println();
         Console.close();
     }
 
