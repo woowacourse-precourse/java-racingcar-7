@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.model.Car;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +37,7 @@ public class Game {
         int currentCnt = 0;
         while (currentCnt < count) {
             playTurn();
-            printCars();
+            OutputView.printProgressRacing(cars);
             currentCnt++;
         }
         findWinners();
@@ -49,13 +52,6 @@ public class Game {
                 car.stop();
             }
         }
-    }
-
-    private void printCars() {
-        for (Car car : cars) {
-            System.out.println(car.getCarName() + " : " + "-".repeat(car.getDistance()));
-        }
-        System.out.println();
     }
 
     private void findWinners() {
