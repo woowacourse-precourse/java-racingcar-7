@@ -3,19 +3,17 @@ package racingcar.domain;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public class Race {
 
     private final List<Car> cars;
     private final NumberGenerator numberGenerator;
 
-    public Race(String rawCarNames, NumberGenerator numberGenerator) {
+    public Race(List<String> carNames, NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
-        
-        List<String> parsedCarNames = parseCarNames(rawCarNames);
-        validateDuplicates(parsedCarNames);
-        this.cars = createCars(parsedCarNames);
+
+        validateDuplicates(carNames);
+        this.cars = createCars(carNames);
     }
 
     public List<Car> moveAll() {
@@ -31,24 +29,19 @@ public class Race {
                 .toList();
     }
 
-    private List<String> parseCarNames(String rawCarNames) {
-        return Stream.of(rawCarNames.split(","))
-                .toList();
-    }
-
-    private void validateDuplicates(List<String> parsedCarNames) {
+    private void validateDuplicates(List<String> carNames) {
         Set<String> uniqueCarNames = new HashSet<>();
 
-        for (String carName : parsedCarNames) {
+        for (String carName : carNames) {
             if (!uniqueCarNames.add(carName)) {
                 throw new IllegalArgumentException("중복된 차 이름이 있습니다.");
             }
         }
     }
 
-    private List<Car> createCars(List<String> parsedCarNames) {
-        return parsedCarNames.stream()
-                .map(parsedCarName -> new Car(parsedCarName, numberGenerator))
+    private List<Car> createCars(List<String> carNames) {
+        return carNames.stream()
+                .map(carName -> new Car(carName, numberGenerator))
                 .toList();
     }
 

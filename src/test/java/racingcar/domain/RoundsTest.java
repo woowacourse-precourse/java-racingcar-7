@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,8 @@ class RoundsTest {
     @DisplayName("라운드 반복 성공")
     @Test
     void repeatTest() {
-        Race race = new Race("pobi", () -> 4);
+        List<String> carNames = List.of("pobi");
+        Race race = new Race(carNames, () -> 4);
         Rounds rounds = new Rounds("3");
 
         rounds.repeat(race::moveAll);

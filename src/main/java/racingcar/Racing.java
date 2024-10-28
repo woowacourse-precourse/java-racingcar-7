@@ -21,8 +21,8 @@ public class Racing {
     }
 
     public void ready() {
-        String rawCarNames = input.readCarNames();
-        Race race = new Race(rawCarNames, numberGenerator);
+        List<String> carNames = input.readCarNames();
+        Race race = new Race(carNames, numberGenerator);
 
         start(race);
     }
