@@ -68,7 +68,7 @@ public class Application {
         System.out.print("최종 우승자 : ");
         for (String key : racing_progress.keySet()) {
             if (max == racing_progress.get(key)) {
-                System.out.print(key + " ");
+                System.out.print(key + ", ");
             }
         }
     }
