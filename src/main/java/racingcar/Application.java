@@ -104,7 +104,7 @@ public class Application {
         return maxMoves;
     }
 
-    public static void winner(List<String> carNames, List<Integer> carMovementCounts) {
+    public static List<String> findWinner(List<String> carNames, List<Integer> carMovementCounts) {
 
         int maxMoves = getMaxMoves(carMovementCounts);
 
@@ -115,6 +115,13 @@ public class Application {
             if (carMovementCounts.get(i) == maxMoves)
                 winners.add(carNames.get(i)); // "-" 출력이 같거나 가장 많은 자동차만 추가
         }
+
+        return winners;
+    }
+
+    public static void winner(List<String> carNames, List<Integer> carMovementCounts) {
+
+        List<String> winners = findWinner(carNames, carMovementCounts);
 
         for (String jointWinners : winners) {
             System.out.println("최종 우승자 : " + jointWinners);
