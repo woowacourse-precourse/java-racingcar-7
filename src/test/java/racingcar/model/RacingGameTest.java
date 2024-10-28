@@ -3,10 +3,14 @@ package racingcar.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class RacingGameTest {
@@ -56,5 +60,23 @@ public class RacingGameTest {
         List<String> winners = racingGame.getWinners();
 
         assertThat(winners).isEqualTo(List.of("pobi", "woni"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"t,t", "pobi,pobi", "ab,th,ab"})
+    void checkDuplicateTest(String carNames) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> new RacingGame(carNames, 2))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {",", ",,,", "pobi,"})
+    void validateFormatTest(String carNames) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> new RacingGame(carNames, 2))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 }
