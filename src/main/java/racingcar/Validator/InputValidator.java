@@ -1,11 +1,13 @@
 package racingcar.Validator;
 
-import java.util.Arrays;
 import java.util.List;
-
+import static racingcar.InputFormatter.parseCarNames;
+import static racingcar.InputFormatter.trimInput;
 
 
 public class InputValidator {
+
+    private static final String MESSAGE = "입력이 잘못되었습니다";
 
     // 빈 입력값을 검사하는 메서드
     public static void checkEmptyInput(String inputString) {
@@ -42,8 +44,19 @@ public class InputValidator {
         return !carName.isEmpty() && carName.chars().allMatch(Character::isLetterOrDigit);
     }
 
-    // 입력 문자열을 쉼표로 분리하여 자동차 이름 리스트 반환
-    private static List<String> parseCarNames(String inputString) {
-        return Arrays.asList(inputString.split(",", -1)); // trim을 여기서는 적용하지 않음-> ',,'인 경우를 구별하기 위함
+    public static void validateCarNames(String inputString) {
+        InputValidator.checkEmptyInput(inputString);
+        String trimmedInput = trimInput(inputString);
+        if (!InputValidator.checkInputFormat(trimmedInput) || !InputValidator.checkInputRule(trimmedInput)) {
+            throw new IllegalArgumentException(MESSAGE);
+        }
     }
+
+    public static void validateNumber(String inputNum) {
+        if (!InputValidator.isNumber(inputNum)) {
+            throw new IllegalArgumentException(MESSAGE);
+        }
+    }
+
+
 }
