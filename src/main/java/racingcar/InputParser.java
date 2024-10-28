@@ -13,6 +13,8 @@ public class InputParser {
         return carNames;
     }
 
+    private static final int MAX_CAR_NAME_LENGTH = 5;
+
     private static void validateCarNames(List<String> carNames) {
         if (carNames.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAMES.getMessage());
@@ -22,7 +24,7 @@ public class InputParser {
             if (carName.isEmpty()) {
                 throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAMES.getMessage());
             }
-            if (carName.length() > 5) {
+            if (carName.length() > MAX_CAR_NAME_LENGTH) {
                 throw new IllegalArgumentException(ErrorMessages.INVALID_CAR_NAME_LENGTH.getMessage());
             }
             if (!uniqueCarNames.add(carName)) {
