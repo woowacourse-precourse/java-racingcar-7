@@ -18,5 +18,10 @@ public class Application {
         String intInput = Console.readLine();
 
         int tryCount = InputValidator(intInput);
+
+        List<Cars> cars = new ArrayList<>();
+        for (String s : carsList) {
+            cars.add(new Cars(s));
+        }
     }
 }
