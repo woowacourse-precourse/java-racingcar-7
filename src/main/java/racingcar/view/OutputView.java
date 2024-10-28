@@ -10,6 +10,7 @@ public class OutputView {
     private static final String VISUAL_BAR_CHARACTER = "-";
     private static final String CAR_MOVE_DISTANCE_FORMAT = " : ";
     private static final String WINNER_SEPARATOR = ",";
+    private static final int NONE_VISUAL_BAR = 0;
 
     public void printResult(CarRaceSnapshotDTOs carRaceSnapshotDTOs) {
         System.out.println(EXECUTION_RESULT_MESSAGE);
@@ -23,8 +24,8 @@ public class OutputView {
         List<String> carNames = carRaceSnapshotDTO.carNames();
         List<Integer> moveDistances = carRaceSnapshotDTO.moveDistances();
 
-        for (int j = 0; j < carNames.size(); j++) {
-            printCarMoveDistance(carNames.get(j), moveDistances.get(j));
+        for (int i = 0; i < carNames.size(); i++) {
+            printCarMoveDistance(carNames.get(i), moveDistances.get(i));
         }
         System.out.println();
     }
@@ -35,7 +36,7 @@ public class OutputView {
     }
 
     private String generateVisualBar(int moveDistance) {
-        return VISUAL_BAR_CHARACTER.repeat(Math.max(0, moveDistance));
+        return VISUAL_BAR_CHARACTER.repeat(Math.max(NONE_VISUAL_BAR, moveDistance));
     }
 
     public void printWinners(List<String> winners) {
