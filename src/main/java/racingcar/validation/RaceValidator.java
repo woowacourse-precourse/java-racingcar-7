@@ -1,10 +1,30 @@
 package racingcar.validation;
 
-public class RaceValidator {
-    private final String REGEXP = "^[0-9]+$";
-    private final String COMMA = ",";
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
-    public void isNotNullOrEmpty(String input) {
+public class RaceValidator {
+    private static final String COMMA = ",";
+
+
+    public static boolean validateTryCount(String input) {
+        isNotNullOrEmpty(input);
+        int inputInteger = validateTryCountType(input);
+        if (inputInteger < 1) {
+            throw new IllegalArgumentException(RaceValidatorException.NEGATIVE_TRY_COUNT.getMessage());
+        }
+        return true;
+    }
+
+    public static void validateCarName(String input){
+        isNotNullOrEmpty(input);
+        isStartedWithComma(input);
+        validateCommaFormat(input);
+        validateDoubleCarNames(input);
+        hasDuplicatedComma(input);
+    }
+
+    private static void isNotNullOrEmpty(String input) {
         if (input == null) {
             throw new IllegalArgumentException(RaceValidatorException.NULL_INPUT.getMessage()); // null 체크
         }
@@ -13,44 +33,29 @@ public class RaceValidator {
         }
     }
 
-    public boolean validateTryCount(String input) {
-        int inputInteger = validateTryCountType(input);
-        if (inputInteger < 1) {
-            throw new IllegalArgumentException(RaceValidatorException.NEGATIVE_TRY_COUNT.getMessage());
-        }
-        return true;
-    }
-
-    public void validateCarName(String input){
-        isNotNullOrEmpty(input);
-        isStartedWithComma(input);
-        validateCommaFormat(input);
-    }
-
-    private String removeAllSpaces(String input) {
-        return input.replaceAll("\\s+", ""); // 모든 공백 제거
-    }
-
-
-    private void validateCarNameLength(String input){
-        if(removeAllSpaces(input).length()>5){
+    private static void validateCarNameLength(String input){
+        if(input.length()>5){
             throw new IllegalArgumentException(RaceValidatorException.INVALID_CAR_NAME.getMessage());
         }
     }
 
-    private void isStartedWithComma(String input){
+    private static void isStartedWithComma(String input){
         if(input.startsWith(COMMA)){
             throw new IllegalArgumentException(RaceValidatorException.STARTED_WITH_COMMA.getMessage());
         }
     }
 
-    private long countCommas(String input) {
+    private static void hasDuplicatedComma(String input){
+        if(input.contains(COMMA+COMMA)) throw new IllegalArgumentException(RaceValidatorException.INVAILD_CAR_NAMES.getMessage());
+    }
+
+    private static long countCommas(String input) {
         return input.chars()
                 .filter(c -> c == ',')
                 .count();
     }
 
-    private void validateCommaFormat(String input){
+    private static void validateCommaFormat(String input){
         String[] carNames = input.split(COMMA);
         if(countCommas(input)>=carNames.length){
             throw new IllegalArgumentException(RaceValidatorException.INVAILD_CAR_NAMES.getMessage());
@@ -58,20 +63,28 @@ public class RaceValidator {
          validateCarNamesLength(carNames);
     }
 
-    private void validateCarNamesLength(String[] carNames) {
+    private static void validateCarNamesLength(String[] carNames) {
         for (String carName : carNames) {
             validateCarNameLength(carName);
         }
     }
 
-    private int validateTryCountType(String input){
-        if(!input.matches(REGEXP)){
+    private static int validateTryCountType(String input){
+        String RegExp = "^[0-9]+$";
+        if(!input.matches(RegExp)){
             throw new IllegalArgumentException(RaceValidatorException.NON_NUMERIC_TRY_COUNT.getMessage());
         }
         return Integer.parseInt(input);
     }
 
-    // 이름이 중복될 경우의 검증
+    private static void validateDoubleCarNames(String input){
+        String[] carNames = input.split(COMMA);
+        boolean hasDuplicates = Arrays.stream(carNames)
+                .collect(Collectors.toSet())
+                .size() != carNames.length;
+        if(hasDuplicates) throw new IllegalArgumentException(RaceValidatorException. DUPLICATED_CAR_NAMES.getMessage());
+    }
+
 
 
 }

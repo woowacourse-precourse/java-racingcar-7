@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.validation.RaceValidator;
 import racingcar.view.InputView;
 import racingcar.model.Car;
 import racingcar.view.OutputView;
@@ -10,15 +11,22 @@ public class CarController {
 
     public void startRace(){
         InputView inputView = new InputView();
-        String carInput = inputView.inputCarNames();
-        int tryInput = inputView.inputTryTo();
 
-        List<Car> cars = Car.createCars(carInput);
+        String carInput = inputView.inputCarNames();
+        RaceValidator.validateCarName(carInput);
+        carInput = removeSpaces(carInput);
+
+        int tryInput = inputView.inputTryTo();
+        RaceValidator.validateTryCount(String.valueOf(tryInput));
+
+        List<Car> cars = Car.createCars(removeSpaces(carInput));
         randomMoves(cars, tryInput);
+
         OutputView.printRaceResult(Car.findWinner(cars));
     }
 
-    private static void randomMoves(List<Car> cars, int tryNumber){
+
+    private void randomMoves(List<Car> cars, int tryNumber){
         OutputView.printResult();
         for(int j=0;j<tryNumber;j++){
             for(int i=0;i<cars.size();i++){
@@ -26,6 +34,10 @@ public class CarController {
             }
             OutputView.printNow(cars);
         }
+    }
+
+    private String removeSpaces(String input){
+        return input.replaceAll(" ","");
     }
 
 
