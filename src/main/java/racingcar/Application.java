@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.CarList;
+import racingcar.domain.MovingCountValidator;
 import racingcar.domain.Racing;
 import racingcar.dto.InputRequest;
 import racingcar.io.InputView;
@@ -11,7 +12,8 @@ public class Application {
         // TODO: 프로그램 구현
         InputRequest inputRequest = InputView.readLine();
         CarList carList = CarList.from(inputRequest.carNames());
-        Racing racing = new Racing(carList, inputRequest.movingCount());
+        int movingCount = MovingCountValidator.from(inputRequest.movingCount());
+        Racing racing = new Racing(carList, movingCount);
         String result = racing.start();
         OutputView.print(result);
     }
