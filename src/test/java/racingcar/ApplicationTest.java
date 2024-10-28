@@ -45,4 +45,20 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
                 );
     }
+
+    @Test
+    void input_error_시도횟수_1이하() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni,jun", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void input_error_시도횟수_문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni,jun", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
