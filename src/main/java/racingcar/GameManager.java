@@ -1,7 +1,6 @@
 package racingcar;
 
-import static racingcar.CarFactory.createCars;
-
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -19,13 +18,16 @@ public class GameManager {
         this.raceManager = new RaceManager(outputProcesser);
     }
 
-
     public void run() {
         String carNames = inputProcesser.getCarNames();
         int tryNums = inputProcesser.getTryNums();
-        List<Car> cars = CarFactory.createCars(carNames);
+
+        List<Car> cars = Car.createCars(carNames);
         raceManager.startRace(cars, tryNums);
+
         String winnerNames = raceManager.getWinners(cars);
         outputProcesser.printWinners(winnerNames);
+
+        Console.close();
     }
 }

@@ -13,16 +13,13 @@ public class RaceManager {
         this.outputProcesser = outputProcesser;
     }
 
-    /*
-    랜덤 수 추출해서 입력받은 실행 횟수만큼 경주 실행
-     */
     public void startRace(List<Car> cars, int tryNum) {
         for (int i = 0; i < tryNum; i++) {
-            cars.forEach(car -> {
-                if (canMove()) {
-                    car.addDistance();
-                }
-            });
+            List<Car> carsToMove = cars.stream()
+                    .filter(car -> canMove())
+                    .collect(Collectors.toList());
+
+            carsToMove.forEach(Car::addDistance);
             outputProcesser.printRaceResult(cars);
         }
     }
@@ -31,20 +28,21 @@ public class RaceManager {
         return Randoms.pickNumberInRange(0, 9) > MOVE_THRESHOLD;
     }
 
-    /*
-    우승자 판단
-     */
     public String getWinners(List<Car> cars) {
-        List<String> winners = new ArrayList<>();
-
-        int maxDistance = cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .orElse(0);
+        int maxDistance = getMaxDistance(cars);
 
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName)
                 .collect(Collectors.joining(","));
+    }
+
+    private int getMaxDistance(List<Car> cars) {
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+
+        return maxDistance;
     }
 }
