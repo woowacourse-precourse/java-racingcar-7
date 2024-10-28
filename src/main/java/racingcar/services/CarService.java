@@ -11,4 +11,8 @@ public class CarService {
         List<String> carNameList = Arrays.asList(carNames.split(","));
         this.cars = new Cars(carNameList);
     }
+
+    public void incrementCars() {
+        cars.incrementDistance();
+    }
 }
