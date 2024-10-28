@@ -12,7 +12,7 @@ class RacingGameTest {
     @Test
     void 한칸_전진_테스트() {
         // given
-        Player testPlayer = new Player("kinopio", 0);
+        Player testPlayer = new Player("kino", 0);
         RacingGame racingGame = new RacingGame(List.of(testPlayer), 1);
 
         // when
@@ -27,7 +27,7 @@ class RacingGameTest {
     @Test
     void 정지_테스트() {
         // given
-        Player testPlayer = new Player("kinopio", 0);
+        Player testPlayer = new Player("kino", 0);
         RacingGame racingGame = new RacingGame(List.of(testPlayer), 1);
 
         // when
@@ -42,7 +42,7 @@ class RacingGameTest {
     @Test
     void 승자_테스트() {
         // given
-        List<Player> testPlayers = List.of(new Player("mario", 0), new Player("luigi", 0), new Player("kinopio", 0));
+        List<Player> testPlayers = List.of(new Player("mario", 0), new Player("luigi", 0), new Player("kino", 0));
 
         RacingGame racingGame = new RacingGame(testPlayers, 1);
 

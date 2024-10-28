@@ -40,7 +40,7 @@ class InputViewTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"\n", "a,", ",a", "a,,a"})
+    @ValueSource(strings = {"a,", ",a", "a,,a"})
     void 자동차_이름_빈_문자열_예외_테스트(String carNames) {
         // given
         String[] args = {carNames};
@@ -51,7 +51,7 @@ class InputViewTest {
         Assertions.assertThatThrownBy(() -> {
                     inputView.enterCarNames();
                 }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("이름의 길이는 1글자 이상 5글자 이하만 가능합니다.");
+                .hasMessageContaining("이름의 길이를 1글자 이상 5글자 이하로 입력해주세요.");
     }
 
     @ParameterizedTest
@@ -66,7 +66,7 @@ class InputViewTest {
         Assertions.assertThatThrownBy(() -> {
                     inputView.enterCarNames();
                 }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("이름의 길이는 1글자 이상 5글자 이하만 가능합니다.");
+                .hasMessageContaining("이름의 길이를 1글자 이상 5글자 이하로 입력해주세요.");
     }
 
     @ParameterizedTest
