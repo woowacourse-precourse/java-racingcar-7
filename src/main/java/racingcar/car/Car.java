@@ -1,6 +1,6 @@
 package racingcar.car;
 
-public class Car {
+public class Car implements Comparable<Car>{
     private String name;
     private int moveCount;
 
@@ -25,5 +25,10 @@ public class Car {
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return Integer.compare(car.getMoveCount(), this.moveCount);
     }
 }
