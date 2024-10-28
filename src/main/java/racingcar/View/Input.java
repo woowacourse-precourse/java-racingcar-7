@@ -21,6 +21,9 @@ public class Input {
     public Integer RequestNumberOfTrialMessage() throws IllegalArgumentException{
         System.out.println("시도할 횟수는 몇 회인가요?");
         this.trialCount = Integer.parseInt(Console.readLine());
+        if (this.trialCount < 1) {
+            throw new IllegalArgumentException("시도 횟수는 1회 이상이여야 합니다.");
+        }
         return trialCount;
     }
 }
