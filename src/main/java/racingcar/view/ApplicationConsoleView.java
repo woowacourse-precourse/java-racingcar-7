@@ -22,6 +22,7 @@ public class ApplicationConsoleView implements ApplicationView {
 
     @Override
     public void printRacingProgressResult(List<String> results) {
+        println(PROGRESS_RESULT_MESSAGE);
         StringBuilder resultBuilder = new StringBuilder();
         for (String result : results) {
             resultBuilder.append(result).append(DOUBLE_LINE_BREAKER);
