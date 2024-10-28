@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class RaceManager {
@@ -13,6 +15,24 @@ public class RaceManager {
             }
         }
         return cars;
+    }
+
+    public List<String> findWinners(Map<String, Integer> cars) {
+        int maxMoveDist = 0;
+        List<String> winners = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> car : cars.entrySet()) {
+            if (car.getValue() > maxMoveDist) {
+                maxMoveDist = car.getValue();
+                winners.clear();
+                winners.add(car.getKey());
+            }
+            else if (car.getValue() == maxMoveDist) {
+                winners.add(car.getKey());
+            }
+        }
+
+        return winners;
     }
 
     private boolean isMovable() {
