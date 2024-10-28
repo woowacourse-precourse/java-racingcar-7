@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import racingcar.error.ErrorStatus;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +12,7 @@ public class RacingCarService {
         String[] carNames = carName.split(",");
 
         for (String car : carNames) {
-            if (car.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하로만 가능합니다.");
+            if (car.length() > 5) throw new IllegalArgumentException(ErrorStatus.OVERSIZE_CAR_NAME);
 
             cars.put(car, "");
         }
