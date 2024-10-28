@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.common.constant.ErrorMessage;
 
 public class ConsoleInput {
 
