@@ -2,6 +2,7 @@ package racingcar.application.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.*;
 import org.junit.jupiter.api.Test;
 
 class RacingServiceTest {
@@ -19,10 +20,19 @@ class RacingServiceTest {
   }
 
   @Test
-  void playRound() {
-  }
-
-  @Test
   void getWinners() {
+    RacingService racingService = new RacingService();
+    racingService.setup("pobi,woni,jun", 5);
+
+    racingService.playRound();
+
+    List<String> winners = racingService.getWinners();
+
+    assertTrue(winners.size() >= 1 && winners.size() <= 3);
+
+    List<String> initialCarNames = List.of("pobi", "woni", "jun");
+    for (String winner : winners) {
+      assertTrue(initialCarNames.contains(winner));
+    }
   }
 }
