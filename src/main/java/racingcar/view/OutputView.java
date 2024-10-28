@@ -11,22 +11,22 @@ public class OutputView {
     private static final String WINNERS_PREFIX = "최종 우승자 : ";
     private static final String CAR_INFIX = " : ";
     private static final String CAR_DELIMITER = ", ";
-    private static final String POSITION_CHARACTER = "-";
+    private static final String POSITION_INDICATOR = "-";
 
-    public void noticeResult() {
+    public void printBeforeResult() {
         System.out.println(RESULT_START_MESSAGE);
     }
 
-    public void printStatusOf(List<CarDto> cars) {
+    public void printProgress(List<CarDto> cars) {
         for (CarDto carDto : cars) {
-            printStatusOf(carDto);
+            printProgress(carDto);
         }
         System.out.println();
     }
 
-    private void printStatusOf(CarDto carDto) {
-        int fromZeroToPosition = carDto.getPosition();
-        String progress = POSITION_CHARACTER.repeat(fromZeroToPosition);
+    private void printProgress(CarDto carDto) {
+        int numberIndicator = carDto.getPosition();
+        String progress = POSITION_INDICATOR.repeat(numberIndicator);
         System.out.println(carDto.getCarName() + CAR_INFIX + progress);
     }
 
