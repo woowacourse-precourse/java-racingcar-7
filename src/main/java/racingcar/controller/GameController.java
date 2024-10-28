@@ -25,6 +25,16 @@ public class GameController {
     }
 
     public void run() {
+        List<String> namesAndAttempts = inputPart();
+        String names = namesAndAttempts.get(0);
+        String attempts = namesAndAttempts.get(1);
+
+        List<RacingRecord> records = play(names, attempts);
+
+        endPart(records);
+    }
+
+    private List<String> inputPart() {
         String names = view.printView();
 
         validator.checkValidNames(names);
@@ -34,6 +44,10 @@ public class GameController {
 
         validator.checkValidAttempts(attempts);
 
+        return List.of(names, attempts);
+    }
+
+    private List<RacingRecord> play(String names, String attempts) {
         Generator generator = gameModel.getGenerator();
         List<RacingRecord> records = generator.generateRecordsFrom(names);
 
@@ -46,6 +60,10 @@ public class GameController {
             view.printView();
         }
 
+        return records;
+    }
+
+    private void endPart(List<RacingRecord> records) {
         RacingJudge racingJudge = gameModel.getRacingJudge();
         String winners = racingJudge.decideWinnerBy(records);
 
