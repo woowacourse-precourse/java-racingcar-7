@@ -21,4 +21,13 @@ public class RacingGame {
             cars.add(new Car(name));
         }
     }
+
+    public void executeRound() {
+        for (Car car : cars) {
+            int randomNum = RandomNumManager.generateRandomNumber();
+            if (RandomNumManager.isGreaterThanThree(randomNum)) {
+                car.moveForward();
+            }
+        }
+    }
 }
