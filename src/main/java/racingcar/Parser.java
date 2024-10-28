@@ -8,14 +8,10 @@ public class Parser {
 
     }
 
-    public static Cars parseCar(final String input) {
+    public static List<String> trimSplit(final String input) {
         List<String> carNames = Arrays.asList(input.split(","));
         carNames.replaceAll(String::trim);
 
-        return new Cars(carNames);
-    }
-
-    public static PlayCount parsePlayCount(final String input) {
-        return new PlayCount(input);
+        return carNames;
     }
 }
