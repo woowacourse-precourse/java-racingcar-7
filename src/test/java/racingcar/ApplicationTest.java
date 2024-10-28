@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -85,7 +84,7 @@ class ApplicationTest extends NsTest {
             }
 
             @Test
-            void Long_보다_클_경우_예외() {
+            void 범위_보다_클_경우_예외() {
                 assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("abc", "999999999999999999999999999999999999"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -100,10 +99,20 @@ class ApplicationTest extends NsTest {
 
         @Test
         void 단일_우승자() {
+            String expected = """
+                경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
+                시도할 횟수는 몇 회인가요?
+                
+                실행 결과
+                pobi : -
+                woni :\s
+                
+                최종 우승자 : pobi""";
+
             assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "1");
-                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                    assertThat(output()).contains(expected);
                 },
                 MOVING_FORWARD, STOP
             );
@@ -111,9 +120,44 @@ class ApplicationTest extends NsTest {
 
         @Test
         void 공동_우승자() {
+            String expected = """
+                경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
+                시도할 횟수는 몇 회인가요?
+                
+                실행 결과
+                pobi : -
+                woni :\s
+                jun : -
+                
+                pobi : --
+                woni : -
+                jun : --
+                
+                pobi : ---
+                woni : --
+                jun : ---
+                
+                pobi : ----
+                woni : ---
+                jun : ----
+                
+                pobi : -----
+                woni : ----
+                jun : -----
+                
+                최종 우승자 : pobi, jun""";
 
-            // TODO : 테스트 작성
-
+            assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "5");
+                    assertThat(output()).isEqualTo(expected);
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+            );
         }
     }
 
