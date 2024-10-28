@@ -7,7 +7,7 @@ public class Car {
     public Car(String name) {
         ExceptionHandler.validateCarNameLength(name);
 
-        this.name = name;
+        this.name = name.trim();
     }
 
     public void moveCar() {

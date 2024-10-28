@@ -24,6 +24,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 쉼표_사이_공백_제거_기능_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi, woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
     void 공동_우승자_출력_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
