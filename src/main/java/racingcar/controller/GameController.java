@@ -1,10 +1,13 @@
 package racingcar.controller;
 
 import racingcar.domain.Car;
+import racingcar.service.GameService;
+import racingcar.util.DataTransFormer;
 import racingcar.validation.BlankNameValidator;
 import racingcar.validation.NameLengthValidator;
 import racingcar.validation.TrialTimesValidator;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 
@@ -17,6 +20,7 @@ public class GameController {
         validateTrialTimesInput(trialTimes);
 
         ArrayList<Car> carList = registerCars(carNames);
+        startGame(carList, DataTransFormer.makeStringToInt(trialTimes));
     }
 
     private static void validateNameInput(ArrayList<String> carNames) {
@@ -40,4 +44,37 @@ public class GameController {
             carList.add(Car.registerCarNameFrom(carName));
         }
     }
+
+    private static void startGame(ArrayList<Car> carList, int trialTimes) {
+        OutputView.printNoticeBeforeResult();
+        while(trialTimes-- > 0) {
+            proceedSingleRound(carList);
+            showIntermediateResult(carList);
+        }
+    }
+    private static void proceedSingleRound(ArrayList<Car> carList) {
+        for(Car car : carList) {
+            double randomNumber = GameService.makeRandNumberZeroToNine();
+            boolean carMove = GameService.isAbleToMove(randomNumber);
+            applyMoveResult(car, carMove);
+        }
+    }
+
+    private static void applyMoveResult(Car car, boolean carMove) {
+        if(carMove) {
+            car.moveCar();
+        }
+    }
+
+    private static void showIntermediateResult(ArrayList<Car> carList) {
+        OutputView.printIntermediateResult(carList);
+    }
+
+//    private static Car chooseTheWinner() {
+//
+//    }
+//
+//    private void anncounceTheWinner() {
+//
+//    }
 }
