@@ -16,6 +16,7 @@ build/
 
 ### IntelliJ IDEA ###
 .idea
+.metadata
 *.iws
 *.iml
 *.ipr
