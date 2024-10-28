@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 public class CarRacingGame {
 
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int MOVE_THRESHOLD = 4;
 
     public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -42,5 +44,10 @@ public class CarRacingGame {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효한 숫자를 입력해야 합니다.");
         }
+    }
+
+    public static boolean isMovable() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        return randomNumber >= MOVE_THRESHOLD;
     }
 }
