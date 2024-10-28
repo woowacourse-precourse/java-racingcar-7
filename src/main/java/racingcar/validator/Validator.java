@@ -8,24 +8,34 @@ public final class Validator {
     public static void validateCarNamesInput(String input) {
         validateNotEmpty(input);
         validateContainsBlank(input);
+        validateNoCarName(input);
         validateNameLengthOver(input);
         validateUniqueName(input);
     }
 
     public static void validateTotalRoundInput(String input) {
+        validateNotEmpty(input);
         validateNumber(input);
         validateAboveZero(input);
     }
 
     private static void validateNotEmpty(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("Car name is empty");
+            throw new IllegalArgumentException("Input is empty");
         }
     }
 
     private static void validateContainsBlank(String input) {
         if (input.contains(" ")) {
             throw new IllegalArgumentException("Car names input contains blank");
+        }
+    }
+
+    private static void validateNoCarName(String input) {
+        for (String carName : input.split(",", -1)) {
+            if (carName == null || carName.isEmpty()) {
+                throw new IllegalArgumentException("Car name is empty");
+            }
         }
     }
 
