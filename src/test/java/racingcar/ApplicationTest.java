@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -131,6 +132,16 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("apple,mango", "a"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 자동차가_전진하지_못하는_경우() {
+        assertThat(Application.canMoveForward(Randoms.pickNumberInRange(0, 3))).isEqualTo(false);
+    }
+
+    @Test
+    void 자동차가_전진하는_경우() {
+        assertThat(Application.canMoveForward(Randoms.pickNumberInRange(4, 9))).isEqualTo(true);
     }
 
     @Override

@@ -97,7 +97,7 @@ public class Application {
         System.out.println();
     }
 
-    private static boolean canMoveForward(int randomValue) {
+    public static boolean canMoveForward(int randomValue) {
         return randomValue >= MOVE_FORWARD_THRESHOLD;
     }
 
