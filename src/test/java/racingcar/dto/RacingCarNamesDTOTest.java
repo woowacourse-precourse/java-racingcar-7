@@ -1,6 +1,5 @@
 package racingcar.dto;
 
-import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
