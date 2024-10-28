@@ -12,23 +12,28 @@ public class WholeCycleGame {
     WinnerOutput winnerOutput = new WinnerOutput();
 
 
-    public void gameStart(List<String> participateCarList, int numberOfgameCycle) {
+    public void gameStart(List<String> participateCarList, int numberOfGameCycle) {
         Map<String, String> initialScore = gameOfScore.initializeScore(participateCarList);
 
-        // 이름바꾸기: printNoticeOfExecution
-        scoreOutput.printResultOfExecution();
+        scoreOutput.printNoticeOfExecution();
 
-        for (int i = 0; i < numberOfgameCycle; i++) {
-            List<String> oneGameMoveCarList = oneCycleGame.oneGameResult(participateCarList);
-            // initial이라는 말이 마음에 들지 않는다. -> current score로 고치기 addResultOfOneGame 으로 이름 고치기
-            initialScore = gameOfScore.resultOfOneGameScore(oneGameMoveCarList, initialScore);
-
-            scoreOutput.printCurrentScore(initialScore);
-        }
-
-        // finalscore가 어떻게 초기점수 ;;;
-        List<String> finalWinnerList = gameOfScore.makeFinalWinnerList(initialScore);
+        Map<String, String> finalScore = proceedRacingGame(participateCarList, initialScore, numberOfGameCycle);
+        List<String> finalWinnerList = gameOfScore.makeFinalWinnerList(finalScore);
 
         winnerOutput.printFinalWinners(finalWinnerList);
+    }
+
+    private Map<String, String> proceedRacingGame(List<String> participateCarList, Map<String, String> initialScore,
+                                                  int numberOfGameCycle) {
+        Map<String, String> currentScore = initialScore;
+
+        for (int i = 0; i < numberOfGameCycle; i++) {
+            List<String> oneGameMoveCarList = oneCycleGame.oneGameResult(participateCarList);
+            currentScore = gameOfScore.addResultOfOneGameScore(oneGameMoveCarList, initialScore);
+
+            scoreOutput.printCurrentScore(currentScore);
+        }
+
+        return currentScore;
     }
 }
