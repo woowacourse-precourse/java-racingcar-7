@@ -18,7 +18,7 @@ public class RaceService {
 
     public void start() {
         carManager.createCars(carNames);
-        race.play(attemptCount, carManager.getCars());
+        race.run(attemptCount, carManager.getCars());
     }
 
     public List<String> getWinners() {

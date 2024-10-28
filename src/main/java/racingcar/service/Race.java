@@ -16,7 +16,7 @@ public class Race {
     public static final int MAX_VALUE = 9;
     private List<Map<String, Integer>> result = new ArrayList<>();
 
-    public void play(int attemptCount, List<Car> cars) {
+    public void run(int attemptCount, List<Car> cars) {
         IntStream.range(0, attemptCount).forEach(i -> {
             runRound(cars);
             updateRoundResult(cars);

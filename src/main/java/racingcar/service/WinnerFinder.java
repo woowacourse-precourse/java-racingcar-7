@@ -8,10 +8,10 @@ import java.util.List;
 public class WinnerFinder {
 
     public List<String> getWinners(List<Car> cars) {
-        return findWinner(cars);
+        return findWinners(cars);
     }
 
-    private List<String> findWinner(List<Car> cars) {
+    private List<String> findWinners(List<Car> cars) {
         int maxPosition = findMaxPosition(cars);
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
