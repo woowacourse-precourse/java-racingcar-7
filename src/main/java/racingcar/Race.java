@@ -15,11 +15,14 @@ public class Race {
         List<Car> cars = createCar(getNames());
         int tryCount = getTryCount();
 
+        System.out.println("실행 결과");
 
         for (int i = 0; i < tryCount; i++) {
             for (Car currentCar : cars) {
                 randomlyDecideToMove(currentCar);
+                currentCar.showDistance();
             }
+            System.out.print('\n');
         }
     }
 
