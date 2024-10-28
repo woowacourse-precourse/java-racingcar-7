@@ -1,12 +1,14 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     private static final int MIN_COUNT = 1;
     private static final int MAX_NAMES_COUNT = 10;
     private static final int MAX_NAME_LENGTH = 5;
     private static final int MAX_PLAY_COUNT = 25;
+    private static final int MIN_MOVE_NUMBER = 4;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -87,6 +89,19 @@ public class Application {
     private static void playGame(String[] names, int playCount) {
         int[] moves = new int[names.length];
         printGamePlayStartMessage();
+        for(int i = 0; i < playCount; i++){
+            moveCars(moves);
+        }
+    }
+
+    public static void moveCars(int[] moves) {
+        int number = 0;
+        for(int i = 0; i < moves.length; i++){
+            number = Randoms.pickNumberInRange(0,9);
+            if(number >= MIN_MOVE_NUMBER){
+                moves[i]++;
+            }
+        }
     }
 
     public static void printGamePlayStartMessage() {

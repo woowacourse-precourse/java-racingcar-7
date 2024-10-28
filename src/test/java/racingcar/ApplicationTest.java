@@ -152,6 +152,21 @@ class ApplicationTest extends NsTest {
         assertDoesNotThrow(()-> Application.validatePlayCount(5));
     }
 
+    @Test
+    void 정상적으로_이동횟수가_증가하는지_확인(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    int[] expected = {1,0,1};
+                    int[] move = {0,0,0};
+                    Application.moveCars(move);
+
+                    assertArrayEquals(expected, move);
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
