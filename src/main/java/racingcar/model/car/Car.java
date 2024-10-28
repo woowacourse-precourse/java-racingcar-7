@@ -23,4 +23,10 @@ public abstract class Car {
     public String toString() {
         return name + " : " + "-".repeat(distance);
     }
+
+    @Override
+    public boolean equals(Object car) {
+        Car temp = (Car) car;
+        return temp.name.equals(name);
+    }
 }
