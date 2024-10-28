@@ -29,7 +29,7 @@
   - (`determineWinners` 함수로 최종 우승자를 판별한다.)
   - 예: `최종 우승자 : pobi, jun`
 
-### [] Test: 테스트 케이스 작성 및 실행
+### [✅] Test: 테스트 케이스 작성 및 실행
 
 
 ## **개선할 사항**
@@ -41,7 +41,7 @@
 
 # **과제 진행 요구 사항**
 
-### [] Commit Convention
+### [✅] Commit Convention
 - Git의 커밋 단위는 앞 단계에서 README.md에 정리한 기능 목록 단위로 추가한다.
 - [AngularJS Git Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)을 참고해 커밋 메시지를 작성한다.
 - 자세한 과제 진행 방법은 프리코스 진행 가이드 문서를 참고한다.
