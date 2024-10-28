@@ -9,12 +9,12 @@ class NumberGeneratorTest {
     NumberGenerator numberGenerator;
 
     @BeforeEach
-    void setUp(){
-        numberGenerator=new RandomNumberGenerator();
+    void setUp() {
+        numberGenerator = new RandomNumberGenerator();
     }
 
     @Test
-    void 랜덤수는_0과_9_사이이다(){
-        assertThat(numberGenerator.generateNumber()).isBetween(0,9);
+    void 랜덤수는_0과_9_사이이다() {
+        assertThat(numberGenerator.generateNumber()).isBetween(0, 9);
     }
 }

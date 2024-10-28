@@ -2,7 +2,7 @@ package racingcar.domain;
 
 public class Car {
     private static final int LOWEST_MOVEMENT = 4;
-    private final String  name;
+    private final String name;
     private String state;
 
     public String getName() {
