@@ -2,6 +2,7 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -70,19 +71,7 @@ public class Cars {
         }
     }
 
-    public int size() {
-        if (cars == null) {
-            return 0;
-        }
-
-        return cars.size();
-    }
-
-    public Car indexOf(int index) {
-        if (index >= size()) {
-            return null;
-        }
-
-        return cars.get(index);
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }

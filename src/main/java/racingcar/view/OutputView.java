@@ -12,8 +12,8 @@ public class OutputView {
     }
 
     public void showStatus(Cars cars) {
-        for (int idx = 0; idx < cars.size(); idx++) {
-            showCarLocationToGauge(cars.indexOf(idx));
+        for (Car car : cars.getCars()) {
+            showCarLocationToGauge(car);
         }
         System.out.println();
     }
