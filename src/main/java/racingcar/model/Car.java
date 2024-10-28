@@ -21,6 +21,11 @@ public class Car {
         this.name = name;
     }
 
+    public Car(Car other) {
+        this.name = other.name;
+        this.moveCount = other.moveCount;
+    }
+
     private static void validateName(String name) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_CAR_NAME.getMessage());
@@ -48,13 +53,5 @@ public class Car {
 
     public int countMove() {
         return this.moveCount;
-    }
-
-    @Override
-    public Car clone() {
-        Car newCar = new Car(this.name);
-
-        newCar.moveCount = this.moveCount;
-        return newCar;
     }
 }

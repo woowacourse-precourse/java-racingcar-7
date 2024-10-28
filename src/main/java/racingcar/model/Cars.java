@@ -7,7 +7,7 @@ public class Cars {
     private static final int SPLIT_ALL = -1;
     private static final String DELIMITER = ",";
 
-    private final ArrayList<Car> cars;
+    private final List<Car> cars;
 
     public Cars(String names) {
         cars = new ArrayList<>();
@@ -18,7 +18,7 @@ public class Cars {
 
     public List<Car> toList() {
         return cars.stream()
-                .map(Car::clone)
+                .map(Car::new)
                 .toList();
     }
 
