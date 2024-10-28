@@ -6,17 +6,27 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        String[] carNames = inputCarNames();
-        int raceCount = inputRaceCount();
-        Car[] cars = createCars(carNames);
-        progressRace(raceCount, cars);
-        printWinnner(cars);
-        Console.close();
+        try {
+            String[] carNames = inputCarNames();
+            int raceCount = inputRaceCount();
+            Car[] cars = createCars(carNames);
+            progressRace(raceCount, cars);
+            printWinner(cars);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            Console.close();
+        }
     }
 
     public static String[] inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNames = readLine().split(",");
+        for (String carName : carNames){
+            if (carName.length() > 5){
+                throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+            }
+        }
         return carNames;
     }
 
@@ -51,7 +61,7 @@ public class Application {
         }
     }
 
-    public static void printWinnner(Car[] cars) {
+    public static void printWinner(Car[] cars) {
         WinnerDecider winnerDecider = new WinnerDecider(cars);
         System.out.println("최종 우승자 : " + winnerDecider.decideWinner());
     }
