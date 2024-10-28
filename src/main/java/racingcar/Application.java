@@ -39,18 +39,11 @@ public class Application {
         System.out.println("실행 결과");
         //7. 시도할 횟수동안 다음의 4-6과정을 반복한다.
         for (int i = 0; i < parseInt(inputTry); i++) {
-            for (String targetCar : carArr) {
-                //4. 각 자동차의 전진 조건에 대해 정하기 위해 0-9사이의 무작위 값을 구한다.
-                Integer pickNum = Randoms.pickNumberInRange(0, 9);
-                //5. 만약 무작위 값이 4이상일 경우 전진해야하니, 해당 자동차의 키 값에 대한 value에 +1을 해준다.
-                map = checkPickNum(pickNum, targetCar, map);
-
-
-            }
+            // 4-5. 과정 함수화
+            map = tryPickSet(carArr, map);
 
             //6. 전진 시도 차수별 실행 결과를 출력한다. 자동차 이름 키 값에 대한 밸류값만큼 '-'를 출력한다.
             printStatus(carArr, map);
-
             System.out.println();
         }
 
@@ -135,5 +128,15 @@ public class Application {
             System.out.println(targetCar + " : " + map.get(targetCar));
         }
 
+    }
+
+    public static HashMap<String, String> tryPickSet(String[] carArr, HashMap<String, String> map){
+        for (String targetCar : carArr) {
+            //4. 각 자동차의 전진 조건에 대해 정하기 위해 0-9사이의 무작위 값을 구한다.
+            Integer pickNum = Randoms.pickNumberInRange(0, 9);
+            //5. 만약 무작위 값이 4이상일 경우 전진해야하니, 해당 자동차의 키 값에 대한 value에 +1을 해준다.
+            map = checkPickNum(pickNum, targetCar, map);
+        }
+        return map;
     }
 }
