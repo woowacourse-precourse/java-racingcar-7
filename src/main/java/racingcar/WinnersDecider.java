@@ -4,21 +4,14 @@ import java.util.List;
 
 public class WinnersDecider {
 
-    public List<Car> run(final List<Car> cars) {
-        final int maxMoveCount = getMaxMoveCount(cars);
+    private final WinningPolicy winningPolicy;
 
-        return cars.stream()
-                .filter((car) -> car.getMoveCount() == maxMoveCount)
-                .toList();
+    public WinnersDecider(WinningPolicy winningPolicy) {
+        this.winningPolicy = winningPolicy;
     }
 
-    private int getMaxMoveCount(final List<Car> cars) {
-        int maxMoveCount = 0;
-        for (Car car : cars) {
-            maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
-        }
-
-        return maxMoveCount;
+    public List<Car> run(final List<Car> cars) {
+        return winningPolicy.determineWinners(cars);
     }
 
 }
