@@ -41,7 +41,7 @@ class CarTest {
     @Test
     void 자동차_이동_2() {
         String carName = "test";
-        IntSupplier intSupplier = () -> 4;
+        IntSupplier intSupplier = () -> 5;
         Car car = Car.of(carName, intSupplier);
 
         car.move();

@@ -15,12 +15,12 @@ public class Car {
     }
 
 
-    public static Car of(String name, IntSupplier engine) {
+    protected static Car of(String name, IntSupplier engine) {
         CarName carName = new CarName(name);
         return new Car(carName, engine);
     }
 
-    public void move() {
+    protected void move() {
         int value = engine.getAsInt();
         if (value >= MOVE_CRITERIA) {
             position++;

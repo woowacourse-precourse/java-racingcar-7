@@ -1,7 +1,7 @@
 package racingcar.domain.car;
 
 public class CarName {
-    
+
     private static final String CAR_NAME_REGEX = "[a-zA-Z가-힣]+";
     private final String name;
 

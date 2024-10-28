@@ -8,7 +8,7 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    protected Cars(List<Car> cars) {
         this.cars = cars;
     }
 
