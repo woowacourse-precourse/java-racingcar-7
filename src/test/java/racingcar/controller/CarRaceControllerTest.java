@@ -12,13 +12,15 @@ import static racingcar.enums.ExceptionMessage.SINGLE_CAR_NAME;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.service.CarRaceService;
+import racingcar.strategy.FixedMoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -26,6 +28,7 @@ import racingcar.view.OutputView;
 class CarRaceControllerTest {
 
     private CarRaceController carRaceController;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @BeforeEach
     void setUp() {
@@ -34,11 +37,17 @@ class CarRaceControllerTest {
                 new OutputView(),
                 new RandomMoveStrategy()
         );
+        System.setOut(new PrintStream(outContent));
     }
 
     @AfterEach
     void tearDown() {
         Console.close();
+        outContent.reset();
+    }
+
+    private ByteArrayInputStream getInputStream(String input) {
+        return new ByteArrayInputStream(input.getBytes());
     }
 
     @Test
@@ -51,10 +60,6 @@ class CarRaceControllerTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> carRaceController.run());
         assertEquals(EMPTY_CAR_NAMES.getMessage(), exception.getMessage());
-    }
-
-    private ByteArrayInputStream getInputStream(String input) {
-        return new ByteArrayInputStream(input.getBytes());
     }
 
     @Test
@@ -131,5 +136,40 @@ class CarRaceControllerTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> carRaceController.run());
         assertEquals(INVALID_ATTEMPTS_NUMBER.getMessage(), exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("자동차 이름과 시도 횟수를 정상적으로 입력하여 경주 결과를 출력한다.")
+    void should_PrintRaceResult_When_ValidCarNamesAndAttemptsProvided() {
+        //given
+        System.setIn(getInputStream("foo,bar\n2"));
+        //시도 횟수마다 무조건 전진으로 강제
+        CarRaceController carRaceController = new CarRaceController(
+                new InputView(),
+                new OutputView(),
+                new FixedMoveStrategy(true)
+        );
+
+        String expected = """
+                경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
+                시도할 횟수는 몇 회인가요?
+
+                실행 결과
+                foo : -
+                bar : -
+                
+                foo : --
+                bar : --
+
+                최종 우승자 : foo, bar""";
+        
+        //when
+        carRaceController.run();
+
+        //then
+        String actual = outContent.toString()
+                .replace(System.lineSeparator(), "\n");  //줄바꿈 통일
+
+        assertEquals(expected, actual);
     }
 }
