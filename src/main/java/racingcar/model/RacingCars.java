@@ -31,7 +31,7 @@ public class RacingCars implements Cars {
 
     private void validateEmpty(Collection<Car> cars) {
         if (cars == null || cars.isEmpty()) {
-            throw new CarNameException(ErrorMessage.EMPTY_INPUT.getMessage());
+            throw new CarNameException(ErrorMessage.CAR_NAME_IS_EMPTY.getMessage());
         }
     }
 }
