@@ -18,13 +18,13 @@ public class InputView {
     public static String[] parseCars(String text) {
         text = text.replaceAll("^,+|,+$", ""); // 앞뒤 , 오는경우 제거
         String[] cars = text.split(",");
-        if (text.isEmpty()) {
-            throw new IllegalArgumentException("자동차는 최소 1대이상 입력해야합니다.");
-        }
         cars = Arrays.stream(cars)
                 .map(String::trim)
                 .filter(name -> !name.isEmpty())
                 .toArray(String[]::new);
+        if (cars.length <= 1) {
+            throw new IllegalArgumentException("자동차는 최소 2대이상 입력해야합니다.");
+        }
         validateCars(cars);
         return cars;
     }
