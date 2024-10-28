@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import racingcar.util.Parser;
 import racingcar.util.Validator;
 
@@ -23,7 +24,7 @@ public class InputView {
 		return Console.readLine();
 	}
 
-	public ArrayList<String> getCarNames() {
+	public List<String> getCarNames() {
 		System.out.println(CAR_NAMES_INPUT_MESSAGE);
 		String input = readLine();
 		ArrayList<String> carNames = parser.stringToList(input);
