@@ -40,6 +40,15 @@ public class Application {
         }
     }
 
+    private static void playRound(List<Car> cars) {
+        for (Car car : cars) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            if (randomValue >= 4) {
+                car.move();
+            }
+        }
+    }
+
     private static class Car {
         private final String name;
         private int position;
