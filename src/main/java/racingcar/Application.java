@@ -33,6 +33,7 @@ public class Application {
                     // 원하는 작업 수행
                     System.out.println(carName + " : " + "-".repeat(pos));
                 }
+                System.out.println();
             }
 
             // 최대값을 가진 키들을 가져옴
