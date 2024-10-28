@@ -2,7 +2,9 @@ package racingcar.view;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.RaceResult;
 
+import java.util.List;
 
 public class Output {
     public void printRoundResult(Cars cars) {
@@ -12,6 +14,18 @@ public class Output {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public void printWinner(Cars cars) {
+        RaceResult raceResult = new RaceResult();
+        List<Car> winner = raceResult.getWinner(cars);
+        int winnerCount = 0;
+        for(Car car : winner) {
+            System.out.print(car.getName());
+            winnerCount++;
+            if(winnerCount < winner.size())
+                System.out.print(", ");
+        }
     }
 
     private void printDash(int count) {
