@@ -9,12 +9,12 @@ public class RaceController {
         Cars cars = new Cars(carList);
         int tryCount = InputView.inputTryCount();
 
-        System.out.println();
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
 
         for (int n = 0; n < tryCount; n++) {
             cars.moveAllCars();
-            OutputView.printCarStatus(cars);
+            List<String> allStatus = cars.collectAllStatuses();
+            OutputView.printCarStatus(allStatus);
         }
 
         List<Car> winner = cars.findWinner();
