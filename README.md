@@ -48,18 +48,18 @@ ___
 ### io
 ___
 
-- [ ] `interface UserInputHandler { String makeUserInputString, int makeUserInputInt }`
-- [ ] `class WoowaUserInput`
-    - [ ] `String makeUserInputString()`
-    - [ ] `int makeUserInput()`
+- [x] `interface UserInputHandler { String makeUserInputString, int makeUserInputInt }`
+- [x] `class WoowaUserInput`
+    - [x] `String makeUserInputString()`
+    - [x] `int makeUserInput()`
 
-- [ ] `class ParserUserInput`
-    - [ ] `void hasOnlyCharacters()`
-    - [ ] `void split()`
+- [x] `class ParserUserInput`
+    - [x] `void hasOnlyCharacters()`
+    - [x] `void split()`
 
-- [ ] `class Printer`
-    - [ ] `void printRoundResult()`
-    - [ ] `void printFinalResult()`
+- [x] `class Printer`
+    - [x] `void printRoundResult()`
+    - [x] `void printFinalResult()`
 
 ### controller
 ___
