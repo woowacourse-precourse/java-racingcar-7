@@ -36,4 +36,11 @@ public class RacingGame {
         racingCars.moveOrNotForAll();
         Output.printManyLines(racingCars.toString());
     }
+
+    public void progressAll() {
+        Output.printProgressGuide();
+        while (gameCount-- > 0) {
+            progress();
+        }
+    }
 }
