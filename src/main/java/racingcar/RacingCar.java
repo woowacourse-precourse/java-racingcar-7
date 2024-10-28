@@ -13,7 +13,7 @@ public class RacingCar {
         this.score += 1;
     }
 
-    public static RacingCar createRacingCar(String name) {
+    public static RacingCar of(String name) {
         return new RacingCar(name);
     }
 

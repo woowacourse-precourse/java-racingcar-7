@@ -19,7 +19,7 @@ public class GameService {
     public List<RacingCar> createRacingCars(List<String> carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String name : carNames) {
-            racingCars.add(RacingCar.createRacingCar(name));
+            racingCars.add(RacingCar.of(name));
         }
         return racingCars;
     }
