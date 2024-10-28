@@ -22,9 +22,15 @@ public class Race {
     public void runOnce() {
         for (Car car : carList) {
             if (isForwardMovable()) {
-                car.increaseScore();
+                int carScore = car.increaseScore();
+                updateMaxScore(carScore);
             }
         }
+    }
+
+    public void updateMaxScore(int carScore) {
+        if(maxScore < carScore)
+            maxScore = carScore;
     }
 
     public boolean isForwardMovable() {
