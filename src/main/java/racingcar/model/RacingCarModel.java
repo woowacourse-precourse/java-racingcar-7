@@ -22,7 +22,7 @@ public class RacingCarModel {
         return (Randoms.pickNumberInRange(0, 9) > 3);
     }
 
-    private void setProgress (Map<String, Integer> raceStatus) {
+    public void setProgress(Map<String, Integer> raceStatus) {
         for(String car : raceStatus.keySet()) {
             if (isForwarding()) {
                 raceStatus.put(car, raceStatus.get(car) + 1);
