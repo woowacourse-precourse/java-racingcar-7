@@ -5,6 +5,7 @@ import racingcar.domain.Car;
 import racingcar.domain.Race;
 import racingcar.enums.Delimiter;
 import racingcar.service.RacingCarService;
+import racingcar.validator.RacingCarValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,6 +14,7 @@ public class RacingCarController {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
     private final RacingCarService racingCarService = new RacingCarService();
+    private final RacingCarValidator validator = new RacingCarValidator();
 
     public void play() {
         Race race = new Race(prepareCars());
@@ -27,7 +29,9 @@ public class RacingCarController {
     }
 
     private int inputRounds() {
-        return Integer.parseInt(inputView.promptRounds());
+        String inputString = inputView.promptRounds();
+        validator.validateRounds(inputString);
+        return Integer.parseInt(inputString);
     }
 
     private void startRace(Race race, int rounds) {
