@@ -11,9 +11,12 @@ import racingcar.dto.WinnerDto;
 public class FormatUtil {
 
     public static String joinCarStatus(CarSnapShot carSnapShot) {
-        return carSnapShot.getName()
-                + COLON.getValue()
-                + DISTANCE.getValue().repeat(carSnapShot.getPosition());
+        StringBuilder stringBuilder = new StringBuilder();
+
+        return stringBuilder.append(carSnapShot.getName())
+                .append(COLON.getValue())
+                .append(DISTANCE.getValue().repeat(carSnapShot.getPosition()))
+                .toString();
     }
 
     public static String joinWinners(WinnerDto winners) {
