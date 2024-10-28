@@ -1,12 +1,15 @@
 package domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import domain.car.CarName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.enums.ErrorMessage;
 
 class CarNameTest {
@@ -23,7 +26,7 @@ class CarNameTest {
             CarName carName = CarName.from(validName);
 
             // then
-            assertEquals(validName, carName.getName());
+            assertThat(validName).isEqualTo(carName.getName());
         }
 
         @Test
@@ -32,10 +35,9 @@ class CarNameTest {
             String blankName = "   ";
 
             // when & then
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                    () -> CarName.from(blankName));
-
-            assertEquals(ErrorMessage.BLANK_INPUT_NOT_ALLOWED.getMessage(), exception.getMessage());
+            assertThatThrownBy(() -> CarName.from(blankName))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.BLANK_INPUT_NOT_ALLOWED.getMessage());
         }
 
         @Test
@@ -44,10 +46,19 @@ class CarNameTest {
             String longName = "LongName";
 
             // when & then
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                    () -> CarName.from(longName));
+            assertThatThrownBy(() -> CarName.from(longName))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.INVALID_NAME_LENGTH.getMessage());
+        }
 
-            assertEquals(ErrorMessage.INVALID_NAME_LENGTH.getMessage(), exception.getMessage());
+        @ParameterizedTest
+        @ValueSource(strings = {"a\\n", "b\\t", "c\\r", "d\\b"})
+        void 이름에_제어_문자가_포함될_경우_CarName_객체를_생성할_수_없다(String invalidName) {
+            // when & then
+
+            assertThatThrownBy(() -> CarName.from(invalidName))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.INVALID_SPECIAL_CHARACTER.getMessage());
         }
     }
 
