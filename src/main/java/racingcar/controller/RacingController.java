@@ -6,28 +6,25 @@ import racingcar.model.WinnerSelector;
 import racingcar.view.inputView.CarNameInputView;
 import racingcar.view.inputView.InputView;
 import racingcar.view.inputView.MoveCountInputView;
-import racingcar.view.outputView.OutputView;
-import racingcar.view.outputView.ProgressOutputView;
 import racingcar.view.outputView.WinnersOutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingController {
-    private List<Car> carList;
-    private final InputView carNameInputView;
-    private final InputView moveCountInputView;
-
-    public RacingController(){
-        this.carNameInputView = new CarNameInputView();
-        this.moveCountInputView = new MoveCountInputView();
-    }
-
     public void startRacing(){
+        InputView carNameInputView = new CarNameInputView();
+        InputView moveCountInputView = new MoveCountInputView();
         String carListInput = carNameInputView.input();
         Integer moveCountInput = Integer.parseInt(moveCountInputView.input());
 
         CarListParser parser = new CarListParser(carListInput);
-        carList = parser.parsingData();
+        List<Car> carList = parser.parsingData();
+
+        WinnerSelector winnerSelector = new WinnerSelector(carList, moveCountInput);
+        winnerSelector.racing();
+        winnerSelector.selectWinners();
+
+        WinnersOutputView winnersOutputView = new WinnersOutputView(winnerSelector);
+        winnersOutputView.print();
     }
 }

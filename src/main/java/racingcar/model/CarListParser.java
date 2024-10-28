@@ -14,7 +14,7 @@ public class CarListParser {
         List<Car> carList = new ArrayList<>();
 
         for(String carName: input.split(",")){
-            carList.add(new Car(carName));
+            carList.add(new Car(carName.trim()));
         }
 
         return carList;

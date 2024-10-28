@@ -2,7 +2,6 @@ package racingcar.view.inputView;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.validator.MoveCountValidator;
-import racingcar.view.inputView.InputView;
 
 public class MoveCountInputView implements InputView {
     private static final String MOVE_COUNT_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";

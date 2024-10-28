@@ -6,25 +6,19 @@ public class Car {
     private final String name;
     private Integer distance;
 
-    public Car(String name, Integer moveCount){
+    public Car(String name){
         this.name = name;
-        tryMove(moveCount);
+        this.distance = 0;
     }
 
-    public void tryMove(Integer moveCount){
-        for(int i = 0;  i < moveCount; i++){
-            moveForward();
+    public void moveForward(){
+        if(isMoveForward()){
+            this.distance++;
         }
     }
 
     private boolean isMoveForward(){
         return Randoms.pickNumberInRange(0, 9) >= 4;
-    }
-
-    private void moveForward(){
-        if(isMoveForward()){
-            this.distance++;
-        }
     }
 
     public String getName() {

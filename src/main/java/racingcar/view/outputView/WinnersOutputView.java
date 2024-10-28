@@ -2,7 +2,6 @@ package racingcar.view.outputView;
 
 import racingcar.model.Car;
 import racingcar.model.WinnerSelector;
-import racingcar.view.outputView.OutputView;
 
 import java.util.List;
 

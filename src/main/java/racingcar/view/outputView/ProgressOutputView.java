@@ -1,12 +1,11 @@
 package racingcar.view.outputView;
 
 import racingcar.model.Car;
-import racingcar.view.outputView.OutputView;
 
 import java.util.List;
 
 public class ProgressOutputView implements OutputView {
-    private final List<Car> carList;
+    private List<Car> carList;
 
     public ProgressOutputView(List<Car> carList){
         this.carList = carList;
