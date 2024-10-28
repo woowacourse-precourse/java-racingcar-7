@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.model.AttemptCount;
 import racingcar.model.MovementFactorGenerator;
 import racingcar.model.RacingCarSnapShot;
 import racingcar.model.RacingCars;
@@ -20,11 +21,14 @@ public class RacingCarController {
         List<String> racingCarNames = racingCarView.getRacingCarNames();
         RacingCars racingCars = RacingCars.of(racingCarNames, movementFactorGenerator);
 
-        int attemptCount = racingCarView.getAttemptCount();
+        int count = racingCarView.getAttemptCount();
+        AttemptCount attemptCount = new AttemptCount(count);
+
         racingCarView.showRaceResultComment();
-        for (int i = 0; i < attemptCount; i++) {
+        while (attemptCount.isRemain()) {
             List<RacingCarSnapShot> snapShots = racingCars.race();
             racingCarView.showRaceResult(snapShots);
+            attemptCount.decrease();
         }
 
         List<String> winners = racingCars.getWinners();
