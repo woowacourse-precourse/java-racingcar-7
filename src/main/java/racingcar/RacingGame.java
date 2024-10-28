@@ -9,11 +9,21 @@ public class RacingGame {
     private static final int FORWARD_THRESHOLD = 4;
     private final List<Car> cars;
 
-    public RacingGame(List<Car> cars) {
-        this.cars = cars;
+    public RacingGame(List<String> names) {
+        this.cars = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
-    public void race() {
+    public void executeRace(int attempts) {
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < attempts; i++) {
+            race();
+            printStatus();
+        }
+    }
+
+    private void race() {
         for (Car car : cars) {
             moveForward(car);
         }
@@ -22,14 +32,6 @@ public class RacingGame {
     private void moveForward(Car car) {
         if (Randoms.pickNumberInRange(0, 9) >= FORWARD_THRESHOLD) {
             car.move();
-        }
-    }
-
-    public void executeRace(int attempts) {
-        System.out.println("\n실행 결과");
-        for (int i = 0; i < attempts; i++) {
-            race();
-            printStatus();
         }
     }
 
