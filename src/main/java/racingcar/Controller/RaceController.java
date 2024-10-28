@@ -1,6 +1,8 @@
 package racingcar;
 
-import java.util.ArrayList;
+import racingcar.View.Input;
+import racingcar.View.Output;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

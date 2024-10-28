@@ -6,11 +6,26 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.Validator.CarNameValidator;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarNameValidatorTest {
     /** 테스트 클래스 명 -> [메서드 명]_[테스트 중 상태]_[기대 행위] **/
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    @DisplayName("자동차 이름 문자열 입력 시, 공백이면 예외 발생")
+    void inputBlank_InputtedBlank_ExceptionThrown(String carNames){
+        //given
+        final String expectedMessage = "공백이 아닌 자동차 이름들을 입력해주세요";
+        final CarNameValidator carNameValidator = new CarNameValidator();
+
+        //when & then
+        assertThatThrownBy(() -> carNameValidator.inputBlank(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(expectedMessage);
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"Ahn;Seong;Mo", "Ahn,Seong;Mo", "Ahn/Seong,Mo"})
     @DisplayName("자동차 이름들을 쉼표(,)로 구분하지 않았으면 예외 발생")
