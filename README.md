@@ -44,9 +44,9 @@
 
 ## 구조 설계
 - controller.RacingController
-  - 입력값 처리 setCarsAndRoundNumber
   - 메인 실행 메소드 racing
 - service.RacingService
+  - 입력값 처리 setCarsAndRoundNumber
   - 자동차 이름 추출 splitCars
   - 자동차 이름 검증 validateCarsInput
   - 횟수 검증 validateRoundNumberInput
