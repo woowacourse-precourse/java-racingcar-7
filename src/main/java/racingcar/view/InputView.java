@@ -13,4 +13,13 @@ public class InputView {
 
         return inputCarName;
     }
+
+    // Player로부터 자동차 경주의 회수를 입력받음
+    public String requestInputCarRaceTimes() {
+        System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_RACE_TIMES.getValue());
+        String inputCarRaceTimes = readLine();
+        System.out.println(inputCarRaceTimes);
+
+        return inputCarRaceTimes;
+    }
 }

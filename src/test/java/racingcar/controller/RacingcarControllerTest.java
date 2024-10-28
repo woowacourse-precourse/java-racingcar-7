@@ -159,7 +159,7 @@ public class RacingcarControllerTest extends NsTest {
 		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder().carNameList(carNameList).inputCarRaceTimes(5).build();
 		racingCarServiceTest.initSaveRacingCar(racingCarInitDto);
 		racingCarServiceTest.playCarRacing();
-		racingCarServiceTest.printCarRacingResult();
+		racingCarServiceTest.carRacingResult();
 	}
 
 	@Override

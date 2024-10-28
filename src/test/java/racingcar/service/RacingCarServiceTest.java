@@ -85,7 +85,7 @@ public class RacingCarServiceTest {
 		System.out.println();
 	}
 
-	public void printCarRacingResult() {
+	public void carRacingResult() {
 		Map<String, RacingCar> racingCarMap = racingCarRepository.sortRacingCarMapByValueDesc(this.getRacingCarMap());
 		StringJoiner stringJoiner = new StringJoiner(", ");
 		Integer maxMoveForwardPosition = (racingCarMap.entrySet().iterator().next().getValue()).getCarPosition();
