@@ -11,6 +11,8 @@ import racingcar.repository.PlayerRepository;
 import racingcar.service.GameService;
 import racingcar.service.PlayerService;
 import racingcar.util.IdGenerator;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
@@ -38,8 +40,13 @@ public class Application {
                 movementPolicy
         );
 
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+
         return new GameController(
-                gameService
+                gameService,
+                inputView,
+                outputView
         );
     }
 }

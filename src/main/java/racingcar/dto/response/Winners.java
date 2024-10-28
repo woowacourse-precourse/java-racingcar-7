@@ -1,5 +1,7 @@
 package racingcar.dto.response;
 
+import static racingcar.constant.ViewConstants.WINNERS_DELIMITER;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.player.Player;
@@ -7,7 +9,6 @@ import racingcar.domain.player.Player;
 public record Winners(
         List<String> names
 ) {
-    private static final String WINNERS_DELIMITER = ", ";
 
     public static Winners from(List<Player> players) {
         int maxPosition = findMaxPosition(players);
