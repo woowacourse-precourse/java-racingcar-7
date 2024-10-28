@@ -19,7 +19,11 @@ public class View {
     List<String> carNames = new ArrayList<String>();
     List<Car> cars = new ArrayList<Car>();
 
+    Game game = new Game();
+
     public void game(){
+
+
         int count;
         String input;
 
@@ -28,7 +32,7 @@ public class View {
         count = inputCount();
         cars = addCars(carNames);
         play(count,cars);
-
+        System.out.println( game.winners(cars));
 
     }
     /*
@@ -37,7 +41,7 @@ public class View {
     po:
     메소드 구분
      */
-    public void play(int count,List<Car> cars){
+    public void play(int count,List<Car> cars){ //game
         System.out.println("실행결과");
         for(int i =0; i<count ; i++){
             //여기부터
@@ -46,9 +50,12 @@ public class View {
             }
             System.out.println();
             //여기 구분
+            if(i == count){
+                game.winners(cars);
+            }
         }
     }
-    private void printGame(Car car){
+    private void printGame(Car car){ //game
         car.move();
         car.getPosition();
         System.out.print(car.name + " : ");
