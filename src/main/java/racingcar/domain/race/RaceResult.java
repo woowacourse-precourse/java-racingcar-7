@@ -13,9 +13,6 @@ public class RaceResult {
     }
 
     public List<Car> getRaceWinnerList() {
-        if(races.isEmpty()) {
-            return List.of();
-        }
         List<Car> finalRaceSortedResult = getFinalRaceSortedResult();
         return getCoWinnerCarList(finalRaceSortedResult);
     }
