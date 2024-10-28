@@ -7,23 +7,23 @@ import static racingcar.view.OutputView.printWinners;
 
 import java.util.List;
 import racingcar.model.Car;
-import racingcar.model.CarGroup;
+import racingcar.model.RacingGame;
 import racingcar.view.OutputView;
 
 public class GameController {
 
     public void run() {
         List<String> carNames = inputCarNames();
-        CarGroup carGroup = new CarGroup(carNames);
-
         int tryCount = inputTryCount();
-        for (int i = 0; i < tryCount; i++) {
-            carGroup.move();
-            carGroup.getCars().forEach(OutputView::printProgress);
+
+        RacingGame racingGame = new RacingGame(carNames, tryCount);
+        while (!racingGame.isFinished()) {
+            racingGame.moveAll();
+            racingGame.getCars().forEach(OutputView::printProgress);
             printNewLine();
         }
 
-        List<Car> winners = carGroup.getWinners();
+        List<Car> winners = racingGame.getWinners();
         printWinners(winners);
     }
 }

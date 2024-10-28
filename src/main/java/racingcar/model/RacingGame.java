@@ -6,16 +6,18 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import racingcar.utils.RandomNumberGenerator;
 
-public class CarGroup {
+public class RacingGame {
 
     private static final String ERROR_MIN_CARS_MESSAGE = "자동차 이름은 적어도 두 개 입력해야 합니다.";
     private static final String ERROR_DUPLICATE_CAR_NAME_MESSAGE = "중복된 자동차 이름이 존재합니다.";
     private static final int MIN_CARS_SIZE = 2;
 
     private final Set<Car> cars;
+    private int tryCount;
 
-    public CarGroup(List<String> carNames) {
+    public RacingGame(List<String> carNames, int tryCount) {
         this.cars = initCars(carNames);
+        this.tryCount = tryCount;
         validateSize();
     }
 
@@ -59,9 +61,14 @@ public class CarGroup {
         return maxPosition;
     }
 
-    public void move() {
+    public void moveAll() {
         cars.forEach(car -> {
             car.moveFront(RandomNumberGenerator.generate());
         });
+        tryCount--;
+    }
+
+    public boolean isFinished() {
+        return tryCount <= 0;
     }
 }
