@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameFlow {
+    
     private Cars cars;
     private int numberOfMoves;
 
@@ -17,7 +18,7 @@ public class GameFlow {
         cars = new Cars(carNames);
         setNumberOfMoves();
         runRace();
-        // displayWinners();
+        displayWinners();
     }
 
     private List<String> parseCarNames() {
@@ -25,13 +26,13 @@ public class GameFlow {
         List<String> carNames = Arrays.asList(carNameInput.split(","));
         return carNames;
     }
-    
+
     private void setNumberOfMoves() {
         String NumberInput = InputView.inputNumberOfMoves();
         validateNumberOfMoves(NumberInput);
         numberOfMoves = Integer.parseInt(NumberInput);
     }
-    
+
     private void validateNumberOfMoves(String NumberInput) {
         try {
             int NumberOfMoves = Integer.parseInt(NumberInput);
@@ -42,13 +43,18 @@ public class GameFlow {
             throw new IllegalArgumentException("이동 횟수는 아라비아 숫자여야 합니다.");
         }
     }
-    
+
     private void runRace() {
         OutputView.printRaceStartNotice();
         for (int i = 0; i < numberOfMoves; i++) {
             cars.moveCars();
             OutputView.printProgress(cars.collectProgressVisualizations());
         }
+    }
+
+    private void displayWinners() {
+        List<String> winners = cars.calculateWinners();
+        OutputView.printWinners(winners);
     }
 
 }

@@ -1,6 +1,7 @@
 package racingcar.model;
 
 public class Car {
+    
     private static final int MAX_NAME_LENGTH = 5;
 
     private final String name;
@@ -19,19 +20,27 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
         }
     }
-    
+
     public void move() {
         if (CarMoveDeterminator.determine()) {
             progress++;
         }
     }
-    
+
     public String visualizeProgress() {
         StringBuilder progressVisualization = new StringBuilder(name + " : ");
         for (int i = 0; i < progress; i++) {
             progressVisualization.append("-");
         }
         return progressVisualization.toString();
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public String getName() {
+        return name;
     }
 
 }
