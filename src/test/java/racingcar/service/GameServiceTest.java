@@ -62,4 +62,19 @@ public class GameServiceTest extends NsTest {
                 STOP, STOP, STOP
         );
     }
+
+    @Test
+    void multipleRoundsWinnerTest() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("poby,woni,jun", "3");
+                    String resultOutput = output();
+                    assertThat(resultOutput).contains("최종 우승자 : poby, jun");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD,
+                STOP, MOVING_FORWARD, STOP,
+                MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+
 }
