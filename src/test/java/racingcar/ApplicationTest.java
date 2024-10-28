@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -32,15 +33,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트2() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji", "s"))
-                        .isInstanceOf(IllegalArgumentException.class)
+    @DisplayName("시도 횟수 예외 테스트")
+    void 시도_횟수_예외_테스트() {
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("pobi,javaji", "s"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
-    void 과정_테스트() {
+    void 과정_출력_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni,jun", "1");
@@ -60,7 +61,7 @@ class ApplicationTest extends NsTest {
                 MOVING_FORWARD, MOVING_FORWARD
         );
     }
-    
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

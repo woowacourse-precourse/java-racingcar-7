@@ -20,7 +20,6 @@ public class Application {
         MovePolicy policy = new MovePolicy();
         Race race = new Race(carNames);
         for (int i = 0; i < count; i++) {
-
             for (String car : carNames) {
                 if (policy.run()) {
                     race.updateProgress(car);

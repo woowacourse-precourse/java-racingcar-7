@@ -2,7 +2,6 @@ package racingcar.process;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.process.MovePolicy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +14,17 @@ class MovePolicyTest {
     @DisplayName("랜덤 값에 따른 전진 테스트")
     void movePolicyTest() {
         MovePolicy policy = new MovePolicy();
+        List<Boolean> actual = new ArrayList<>();
+        List<Boolean> expected = List.of(false, false, false, false, true, true, true, true, true, true);
 
-        assertRandomNumberInRangeTest(() -> {
-            List<Boolean> actual = new ArrayList<>();
-            for (int i = 0; i < 10; i++) {
-                actual.add(policy.run());
-            }
-            List<Boolean> expected = List.of(false, false, false, false, true, true, true, true, true, true);
-            assertIterableEquals(expected, actual);
-        }, 0,1,2,3,4,5,6,7,8,9);
+        assertRandomNumberInRangeTest(
+                () -> {
+                    for (int i = 0; i < 10; i++) {
+                        actual.add(policy.run());
+                    }
+                    assertIterableEquals(expected, actual);
+                },
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+        );
     }
 }

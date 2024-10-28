@@ -1,8 +1,6 @@
 package racingcar.separator;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class InputSeparator {
     private static final Integer MAX_NAME_LENGTH = 5;

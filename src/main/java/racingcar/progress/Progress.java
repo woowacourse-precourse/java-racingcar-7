@@ -1,6 +1,6 @@
 package racingcar.progress;
 
-public class Progress{
+public class Progress {
     private Integer progress = 0;
 
     public Integer getProgress() {
