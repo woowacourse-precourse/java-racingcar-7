@@ -2,7 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RacingGame {
@@ -39,6 +41,11 @@ public class RacingGame {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
             }
         });
+
+        Set<String> uniqueNames = new HashSet<>(carNames);
+        if (uniqueNames.size() != carNames.size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
     }
 
     private static List<Car> createCarList(List<String> carNames) {
