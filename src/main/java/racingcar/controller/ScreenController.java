@@ -44,4 +44,8 @@ public class ScreenController {
                 ,lapScore.getScore())
         );
     }
+
+    public void printWinner(String winner) {
+        System.out.println(ScoreBoard.winner(winner));
+    }
 }
