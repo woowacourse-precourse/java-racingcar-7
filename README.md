@@ -1,6 +1,6 @@
 # java-racingcar-precourse
 
-# 학습 목표
+## 🎯 학습 목표
 
 ---
 + 여러 역할을 수행하는 큰 함수를 단일 역할을 수행하는 작은 함수로 분리한다.
@@ -17,7 +17,7 @@
   + [ ] 클래스와 메서드 이름을 한 두 단어로 유지하려고 노력하기
 
 
-## 요구사항 분석
+## 📈 요구사항 분석
 
 ---
 > 초간단 자동차 경주 게임을 구현한다.
@@ -47,6 +47,56 @@
   + 우승자를 출력할 때 쉼표를 이용해서 구분해야 한다.
 + **사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.**
   + 잘못된 입력값이 존재한다.
+
+## 🌲 폴더 트리 구조
+```aiignore
+├── Application.java
+├── controller
+│   ├── InputController.java
+│   ├── RacingController.java
+│   ├── RegistrationController.java
+│   ├── ScreenController.java
+│   └── TotalController.java
+├── domain
+│   ├── Car.java
+│   ├── Engine.java
+│   ├── Input.java
+│   ├── LapScore.java
+│   ├── Paddock.java
+│   ├── Race.java
+│   ├── RacingCar.java
+│   └── Registration.java
+├── repository
+│   └── InputRepository.java
+├── service
+│   ├── constant
+│   │   ├── ExpressionFormat.java
+│   │   └── RacingRules.java
+│   ├── input
+│   │   ├── InputService.java
+│   │   ├── RegistrationService.java
+│   │   └── Validation.java
+│   ├── prep
+│   │   ├── EngineService.java
+│   │   ├── PaddockService.java
+│   │   └── RacePrepService.java
+│   ├── race
+│   │   ├── LapScoreService.java
+│   │   ├── LapUpdateService.java
+│   │   ├── RaceStarterService.java
+│   │   └── WinnerService.java
+│   └── racer
+│       └── RacerService.java
+└── view
+    ├── ScoreBoard.java
+    ├── UserInput.java
+    └── constant
+        ├── Output.java
+        └── Request.java
+
+```
+
+### 클래스 다이어그램
 
 # 🛠️ 기능 목록
 
