@@ -1,7 +1,16 @@
 package racingcar;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        UserInput userInput = new UserInput();
+        List<String> racingCarNames = userInput.readCarNames();
+        int raceCount = userInput.readRaceCount();
+
+        RaceOutput raceOutput = new RaceOutput();
+        RaceManager raceManager = new RaceManager(racingCarNames, raceOutput);
+
+        raceManager.startRace(raceCount);
     }
 }
