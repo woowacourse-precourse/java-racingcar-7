@@ -25,7 +25,7 @@ public class RacingCarService {
         createRacingCarsBySplitCarsName(carsNames);
     }
 
-    public void advanceRacingCarByRandomOrZero() {
+    public void advanceRacingCar() {
         for (RacingCar racingCarTemp : racingCars) {
             if (racingCarTemp.shouldAdvance()) {
                 racingCarTemp.addAdvanceResult();
