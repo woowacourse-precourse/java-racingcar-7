@@ -8,6 +8,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
@@ -23,6 +24,11 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
+
+
+
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -30,6 +36,47 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 숫자대신문자넣기() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "d"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 처음에빈문자열넣기() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 중간에빈문자열넣기() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, ,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 매우_큰_실행횟수 () {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "1000000000"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+
+
+
+
 
     @Override
     public void runMain() {

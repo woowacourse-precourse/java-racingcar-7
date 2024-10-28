@@ -1,6 +1,6 @@
 package racingcar.service;
 
-public class ParsingService {
+public class NumberParsingService {
     public int parseNum(String s){
         int num=0;
         if (s.length()>5){

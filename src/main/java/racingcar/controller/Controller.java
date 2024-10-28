@@ -1,5 +1,4 @@
 package racingcar.controller;
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.RacingGame;
 import racingcar.service.*;
 import racingcar.view.InputView;
@@ -8,7 +7,7 @@ import racingcar.view.OutputView;
 public class Controller {
     //멤버
     private final SeperatorService seperator= new SeperatorService();
-    private final ParsingService parsing=new ParsingService();
+    private final NumberParsingService parsing=new NumberParsingService();
     private final ValidService valid=new ValidService();
     private final RacingGame racingGame=new RacingGame();
     private final RandomGameService randomGameService=new RandomGameService();
@@ -18,6 +17,7 @@ public class Controller {
     public void start(){
         OutputView.requestCarsName();
         String input= InputView.getInput();
+
         //이름 분리
         seperator.seperateName(input);
 
