@@ -8,7 +8,7 @@ public class RoundCount {
     private int roundCount;
 
     public RoundCount(String roundCount) {
-        validateRoundCount(roundCount);
+        validate(roundCount);
         this.roundCount = Integer.parseInt(roundCount);
     }
 
@@ -23,7 +23,7 @@ public class RoundCount {
         return roundCount > 0;
     }
 
-    private void validateRoundCount(String input) {
+    private void validate(String input) {
         validateNumberFormat(input);
         validatePositiveRoundCount(input);
     }
