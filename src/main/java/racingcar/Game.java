@@ -45,10 +45,16 @@ public class Game {
             cars.add(new Car(carName));
     }
 
+    void moveCars(){
+        for(Car car : cars)
+            car.moveCar();
+    }
+
     public Game(){
         List<String> carNames = readCarName();
         createCars(carNames);
     }
+
 
 
 }
