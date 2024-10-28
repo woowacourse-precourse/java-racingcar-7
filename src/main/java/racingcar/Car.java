@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Objects;
+
 public class Car {
     public static final int MAX_NAME_LENGTH = 5;
     private final String name;
@@ -44,5 +46,18 @@ public class Car {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 빈 문자열일 수 없습니다");
         }
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Car car = (Car) object;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
