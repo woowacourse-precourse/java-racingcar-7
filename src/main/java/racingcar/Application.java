@@ -9,15 +9,15 @@ import racingcar.view.RaceView;
 import java.util.List;
 
 public class Application {
+    private static final MovePolicy policy = new RandomMovePolicy();
+
     public static void main(String[] args) {
         RaceView.displayCarNameInputMessage();
         String text = Console.readLine();
-
         RaceView.displayAttemptCountMessage();
         int count = Integer.parseInt(Console.readLine());
 
         List<String> carNames = InputSeparator.split(text);
-        MovePolicy policy = new MovePolicy();
         Race race = new Race(carNames);
         for (int i = 0; i < count; i++) {
             for (String car : carNames) {
