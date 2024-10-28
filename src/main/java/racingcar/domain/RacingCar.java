@@ -22,6 +22,7 @@ public class RacingCar {
             raceOnce();       // 한 라운드 진행
             printRaceStatus(); // 라운드 결과 출력
         }
+        printWinners();
     }
 
     private void raceOnce() {
@@ -35,6 +36,11 @@ public class RacingCar {
             System.out.println(car.displayPosition());  // Car의 displayPosition() 메서드로 상태 출력
         }
         System.out.println();  // 라운드 간 줄바꿈
+    }
+
+    private void printWinners() {
+        List<String> winners = determineWinners();
+        System.out.println("Winner: " + String.join(", ", winners));
     }
 
     private List<String> determineWinners() {
