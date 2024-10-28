@@ -40,4 +40,15 @@ public class GameService {
         }
     }
 
+    public void getRounds() {
+        int inputRounds = gameView.inputRounds();
+        validateRounds(inputRounds);
+        numRounds = inputRounds;
+    }
+
+    private void validateRounds(int inputRounds) {
+        if (inputRounds <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 0보다 커야합니다.");
+        }
+    }
 }

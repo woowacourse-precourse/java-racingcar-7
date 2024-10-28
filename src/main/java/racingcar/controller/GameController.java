@@ -7,5 +7,6 @@ public class GameController {
 
     public void startGame() {
         gameService.getCarNames();
+        gameService.getRounds();
     }
 }
