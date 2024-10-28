@@ -18,5 +18,7 @@ public class RacingcarController {
         String rawCarName = racingcarView.carNameInput();
         List<String> parsedCarName = racingcarService.parseCarName(rawCarName);
         racingcarService.validateCarName(parsedCarName);
+
+        String trialCount = racingcarView.trialCountInput();
     }
 }

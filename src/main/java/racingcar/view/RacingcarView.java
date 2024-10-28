@@ -11,4 +11,13 @@ public class RacingcarView {
             throw new IllegalArgumentException();
         }
     }
+
+    public String trialCountInput() {
+        try {
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            return Console.readLine().trim();
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
