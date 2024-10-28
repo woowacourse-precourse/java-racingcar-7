@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarManagerTest {
 
-    private CarManager carManager;
+    private CarManager carManager = new CarManager();
 
     @BeforeEach
     void setUp() {
