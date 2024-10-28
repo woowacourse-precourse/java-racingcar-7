@@ -8,33 +8,19 @@ import org.junit.jupiter.api.Test;
 
 class InputViewTest {
 
-    @DisplayName("자동차 이름을 정상적으로 입력받는지 확인")
+    @DisplayName("사용자 입력을 정상적으로 받는지 확인")
     @Test
-    void askCarNames() {
+    void ask() {
         // given
         InputView inputView = new InputView();
-        String data = "pobi,crong,honux";
+        String data = "pobi,crong,honux\n5";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
 
         // when
-        String maybeNames = inputView.askCarNames();
+        ConsoleInput consoleInput = inputView.ask();
 
         // then
-        assertThat(maybeNames).isEqualTo("pobi,crong,honux");
+        assertThat(consoleInput).isEqualTo(new ConsoleInput("pobi,crong,honux", "5"));
     }
 
-    @DisplayName("시도 횟수를 정상적으로 입력받는지 확인")
-    @Test
-    void askTryCount() {
-        // given
-        InputView inputView = new InputView();
-        String data = "5";
-        System.setIn(new ByteArrayInputStream(data.getBytes()));
-
-        // when
-        String maybeTryCount = inputView.askTryCount();
-
-        // then
-        assertThat(maybeTryCount).isEqualTo("5");
-    }
 }
