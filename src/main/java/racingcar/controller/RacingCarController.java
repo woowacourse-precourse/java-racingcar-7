@@ -5,12 +5,13 @@ import racingcar.model.RacingGame;
 import racingcar.model.Winner;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+import racingcar.view.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarController {
-    final InputView inputView = new InputView();
+    final InputView inputView = new InputView(new Validator());
     final OutputView outputView = new OutputView();
 
     public void run() {
