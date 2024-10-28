@@ -2,13 +2,14 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.model.car.Cars;
+import racingcar.model.count.TryCount;
 import racingcar.model.race.Racing;
 import racingcar.model.race.Winner;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RaceController {
-    private final int tryCount;
+    private final TryCount tryCount;
     private final String carNames;
 
     public RaceController() {
@@ -20,7 +21,7 @@ public class RaceController {
         final Cars cars = new Cars(carNames);
         final Racing racing = new Racing(cars);
         OutputView.printResultMessage();
-        for (int i = 0; i < tryCount; i++) {
+        for (int i = 0; i < tryCount.getTryCount(); i++) {
             runSingleTrial(cars, racing);
         }
         OutputView.printWinner(findWinner(cars));
@@ -45,9 +46,10 @@ public class RaceController {
         }
     }
 
-    private int initTryCount() {
+    private TryCount initTryCount() {
         try {
-            return InputView.inputTryCount();
+            final String count = InputView.inputTryCount();
+            return new TryCount(count);
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
             throw e;
