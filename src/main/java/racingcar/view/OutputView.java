@@ -20,7 +20,7 @@ public class OutputView {
         System.out.println("\n" + ROUND_RESULTS_PREFIX);
     }
 
-    public static void printRoundResults(List<String> roundResults) {
+    public void printRoundResults(List<String> roundResults) {
         roundResults.forEach(System.out::println);
         System.out.println();
     }

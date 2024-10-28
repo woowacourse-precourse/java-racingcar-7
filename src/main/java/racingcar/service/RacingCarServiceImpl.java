@@ -11,7 +11,10 @@ public class RacingCarServiceImpl implements RacingCarService{
 
     @Override
     public void startRace(String carNames, int tryCount) {
-
+        racingGame.initialize(carNames, tryCount);
+        while (racingGame.hasNextRound()) {
+            racingGame.playRound();
+        }
     }
 
     @Override
