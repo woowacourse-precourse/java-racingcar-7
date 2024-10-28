@@ -21,7 +21,7 @@ public class Application {
         for (String name : carNames) {
             carNamesSet.add(name.trim()); //이름 양쪽 공백 제거 후 추가
         }
-        if(carNamesSet.isEmpty()) throw new IllegalArgumentException();
+        if(carNamesSet.isEmpty()) throw new IllegalArgumentException(); //아무 자동차도 없을 때
         return carNamesSet;
     }
 
