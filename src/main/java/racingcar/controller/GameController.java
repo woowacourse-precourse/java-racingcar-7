@@ -7,15 +7,12 @@ import racingcar.domain.RacingGame;
 import racingcar.domain.factory.CarFactory;
 import racingcar.view.InputParser;
 import racingcar.view.InputView;
-import racingcar.view.OutputView;
 
 public class GameController {
     private final InputView inputView;
-    private final OutputView outputView;
 
-    public GameController(InputView inputView, OutputView outputView) {
+    public GameController(InputView inputView) {
         this.inputView = inputView;
-        this.outputView = outputView;
     }
 
     public void run() {
