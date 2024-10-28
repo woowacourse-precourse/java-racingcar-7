@@ -12,33 +12,14 @@ public class InputHandler {
         String[] carNames = input.split(",");
         List<String> carNamesList = new ArrayList<>(Arrays.asList(carNames));
 
-        checkNameDuplicate(carNamesList);
-        for(String carName: carNamesList) {
-            checkNameLength(carName);
-        }
+        Validator.checkCarNameDuplicate(carNamesList);
+        carNamesList.forEach(Validator::checkNameLength);
 
         return carNamesList;
     }
 
     public static int getTimes() {
         String input = Console.readLine();
-
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static void checkNameDuplicate(List<String> carNamesList) {
-        if (carNamesList.size() != carNamesList.stream().distinct().count()) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static void checkNameLength(String carName) {
-        if (carName.length() >= 6) {
-            throw new IllegalArgumentException();
-        }
+        return Validator.checkTimeInputFormat(input);
     }
 }
