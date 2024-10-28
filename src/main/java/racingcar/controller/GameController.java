@@ -24,7 +24,7 @@ public class GameController {
         output.showResultMessage();
         playGame();
         List<Car> cars = manager.getCars();
-        getWinner(cars);
+        getFinalLine(cars);
     }
 
     private void playGame() {
@@ -34,15 +34,17 @@ public class GameController {
         }
     }
 
-    private void getWinner(List<Car> cars) {
+    private void getFinalLine(List<Car> cars) {
         List<String> winner = new ArrayList<>();
         int maxRange = 0;
 
-        // 승자 거리 찾기
         for (Car car : cars) {
             maxRange = Math.max(maxRange, car.getDistance());
         }
-        // 승자 거리와 일치하는 사람 찾기
+        getWinnerName(cars, maxRange, winner);
+    }
+
+    private void getWinnerName(List<Car> cars, int maxRange, List<String> winner) {
         for (Car car : cars) {
             if (maxRange == car.getDistance()) {
                 winner.add(car.getCarName());

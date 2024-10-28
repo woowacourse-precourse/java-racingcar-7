@@ -1,16 +1,26 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import racingcar.util.ExceptionChecker;
 
 public class CarsManager {
-
+    private String input;
     private final List<Car> cars = new ArrayList<>();
 
+    public CarsManager(String input) {
+        this.input = input;
+        ExceptionChecker.validateNameInput(input);
+        setCarNames();
+    }
 
-    public CarsManager(List<String> carNames) {
-        for (String carName : carNames) {
-            this.cars.add(new Car(carName));
+    public void setCarNames() {
+        List<String> carNamesArray;
+        carNamesArray = Arrays.asList(input.replace(" ", "").split(","));
+        for (String carName : carNamesArray) {
+            cars.add(new Car(carName));
+            ExceptionChecker.validateIsLengthOver(carNamesArray);
         }
     }
 
