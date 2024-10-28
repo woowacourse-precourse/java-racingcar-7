@@ -44,6 +44,6 @@ public class Race {
 
     private List<Car> winners() {
         Car first = cars.stream().min(Car::compareDistance).orElseThrow();
-        return cars.stream().filter(car -> car.hasSameDistanceWith(first)).toList();
+        return cars.stream().filter(car -> car.isSameDistanceAs(first)).toList();
     }
 }

@@ -27,7 +27,7 @@ public class Car {
         }
     }
 
-    public boolean hasSameDistanceWith(Car anotherCar) {
+    public boolean isSameDistanceAs(Car anotherCar) {
         return Objects.equals(this.distance, anotherCar.distance);
     }
 
