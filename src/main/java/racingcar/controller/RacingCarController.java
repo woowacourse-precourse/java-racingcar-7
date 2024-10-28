@@ -18,19 +18,34 @@ public class RacingCarController {
     }
 
     public void run() {
+        RacingCars racingCars = createRacingCars();
+        AttemptCount attemptCount = getAttemptCount();
+
+        race(racingCars, attemptCount);
+
+        showGameResult(racingCars);
+    }
+
+    private RacingCars createRacingCars() {
         List<String> racingCarNames = racingCarView.getRacingCarNames();
-        RacingCars racingCars = RacingCars.of(racingCarNames, movementFactorGenerator);
+        return RacingCars.of(racingCarNames, movementFactorGenerator);
+    }
 
+    private AttemptCount getAttemptCount() {
         int count = racingCarView.getAttemptCount();
-        AttemptCount attemptCount = new AttemptCount(count);
+        return new AttemptCount(count);
+    }
 
+    private void race(RacingCars racingCars, AttemptCount attemptCount) {
         racingCarView.showRaceResultComment();
         while (attemptCount.isRemain()) {
             List<RacingCarSnapShot> snapShots = racingCars.race();
             racingCarView.showRaceResult(snapShots);
             attemptCount.decrease();
         }
+    }
 
+    private void showGameResult(RacingCars racingCars) {
         List<String> winners = racingCars.getWinners();
         racingCarView.showWinners(winners);
     }
