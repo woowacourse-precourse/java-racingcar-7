@@ -8,17 +8,14 @@ public class Game {
     private final OutputView outputView;
     private final CarGenerator carGenerator;
     private final WinnerDecider winnerDecider;
-    private final InputValidator inputValidator;
     private final RandomNumberGenerator randomNumberGenerator;
 
-    public Game(InputView inputView, OutputView outputView, CarGenerator carGenerator, WinnerDecider winnerDecider,
-                InputValidator inputValidator,
-                RandomNumberGenerator randomNumberGenerator) {
+    public Game(InputView inputView, OutputView outputView, CarGenerator carGenerator,
+                WinnerDecider winnerDecider, RandomNumberGenerator randomNumberGenerator) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.carGenerator = carGenerator;
         this.winnerDecider = winnerDecider;
-        this.inputValidator = inputValidator;
         this.randomNumberGenerator = randomNumberGenerator;
     }
 
