@@ -20,7 +20,7 @@ public class InputView {
             int raceCount = Integer.parseInt(Console.readLine());
             validateRaceCount(raceCount);
             return raceCount;
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
     }
@@ -28,6 +28,7 @@ public class InputView {
     private static void validateCarNames(List<String> carNames) {
         for (String carName : carNames) {
             if (carName.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            if (carName.isBlank()) throw new IllegalArgumentException("자동차 이름으로 빈 문자열이 올 수 없습니다.");
         }
     }
 
