@@ -11,24 +11,31 @@ public class InputDelimiter {
         List<String> delimiterWithCommaList = new ArrayList<>();
 
         for (String carName : inputCarName.split(CAR_NAME_DELIMITER)) {
-            delimiterWithCommaList.add(carName);
+            String refinedCarName = refineCarName(carName);
+
+            isCorrectCarName(refinedCarName);
+
+            delimiterWithCommaList.add(refinedCarName);
         }
 
-        isCorrectCarName(delimiterWithCommaList);
         isDuplicateCarName(delimiterWithCommaList);
 
         return delimiterWithCommaList;
     }
 
-    private void isCorrectCarName(List<String> delimiterWithCommaList) {
-        delimiterWithCommaList.forEach(i -> {
-            if (i.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하로 적어주세요.");
-            }
-            if (i.length() == 0) {
-                throw new IllegalArgumentException("comma(\",\")는 자동차 이름 구분자입니다. 자동차 이름 사이에만 하나의 comma가 올 수 있도록 해주세요.");
-            }
-        });
+    private String refineCarName(String carName) {
+        String refinedCarName = carName.trim();
+
+        return refinedCarName;
+    }
+
+    private void isCorrectCarName(String refinedCarName) {
+        if (refinedCarName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하로 적어주세요.");
+        }
+        if (refinedCarName.length() == 0) {
+            throw new IllegalArgumentException("자동차 이름으로 공백이 올 수 없습니다. 최소 한문자 이상 적어주세요.");
+        }
     }
 
     private void isDuplicateCarName(List<String> delimiterWithCommaList) {

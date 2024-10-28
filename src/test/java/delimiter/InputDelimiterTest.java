@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.Application;
 
 @DisplayName("구분자 관련 테스트")
-public class InputDelimiterTest extends NsTest{
+public class InputDelimiterTest extends NsTest {
     @Test
     @DisplayName("구분자로 분리된 리스트 인자의 문자열 길이가 6 이상일 경우 예외 발생")
     void 실패_구분자로분리된하나의문자열_길이가6이상() {
@@ -22,15 +22,15 @@ public class InputDelimiterTest extends NsTest{
     }
 
     @Test
-    @DisplayName("구분자로 분리된 리스트 인자의 문자열 길이가 빈문자열일 경우 예외 발생")
-    void 실패_구분자로분리된하나의문자열_길이가0() {
+    @DisplayName("구분자로 분리된 리스트 인자의 공백 제거 후 문자열 길이가 0일 경우 예외 발생")
+    void 실패_공백제거후문자열_길이가0() {
         // Given
-        String exampleOfStringLengthZero = "honi,,boni";
+        String exampleOfStringWithTrim = "   ,23, ";
 
         // When&Then
-        assertThatThrownBy(() -> runException(exampleOfStringLengthZero))
+        assertThatThrownBy(() -> runException(exampleOfStringWithTrim))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("comma(\",\")는 자동차 이름 구분자입니다. 자동차 이름 사이에만 하나의 comma가 올 수 있도록 해주세요.");
+                .hasMessageContaining("자동차 이름으로 공백이 올 수 없습니다. 최소 한문자 이상 적어주세요.");
     }
 
     @Test
