@@ -1,16 +1,13 @@
 package racingcar.controller;
 
-import java.net.ConnectException;
 import racingcar.domain.Race;
 import racingcar.domain.Registration;
 import racingcar.service.race.RaceStarterService;
 import racingcar.service.race.WinnerService;
 
 public class TotalController {
-
     private static TotalController instance = new TotalController();
     private RaceStarterService raceStarterService;
-    private RacingController racingController;
 
     private TotalController() {
         raceStarterService = new RaceStarterService();
@@ -22,6 +19,7 @@ public class TotalController {
 
         connectRelayServer(race);
         prepareRace();
+
         allLapUpdate(race);
         printWinner(race);
     }
@@ -44,7 +42,6 @@ public class TotalController {
         RacingController.getInstance().carMovementSetting(raceStarterService);
     }
 
-
     private void oneLapUpdate() {
         RacingController.getInstance().gameUpdate();
         ScreenController.getInstance().scoreBoardUpdate();
@@ -61,7 +58,7 @@ public class TotalController {
         ScreenController.getInstance().printWinner(winnerService.raceWinners());
     }
 
-    public static TotalController getInstance() {
+    public static TotalController getControl() {
         if (instance == null) {
             instance = new TotalController();
         }

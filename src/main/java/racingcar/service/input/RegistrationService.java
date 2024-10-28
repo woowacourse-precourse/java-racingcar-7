@@ -1,7 +1,6 @@
 package racingcar.service.input;
 
 import java.util.List;
-import java.util.function.Function;
 import racingcar.domain.Input;
 import racingcar.domain.Registration;
 import racingcar.repository.InputRepository;

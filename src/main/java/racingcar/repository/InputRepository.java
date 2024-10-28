@@ -8,7 +8,7 @@ import racingcar.view.constant.Request;
 public class InputRepository {
 
     private static InputRepository instance;
-    private final Map<String, Input> inputMap;
+    private Map<String, Input> inputMap;
 
     private InputRepository() {
         this.inputMap = new HashMap<>();

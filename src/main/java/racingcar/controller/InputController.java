@@ -16,13 +16,14 @@ public class InputController {
     public static void getInputs()  {
         Input carNamesInput = rawInput(Request.CAR_NAMES.toString());
         inputService.saveInput(carNamesInput, Validation::carNames);
+
         Input LapCountInput = rawInput(Request.ATTEMPT_NUMBER.toString());
         inputService.saveInput(LapCountInput, Validation::lapCount);
     }
 
     private static Input rawInput(String requestMessage) {
-         return inputService.receive(requestMessage
-                 , UserInput.request(requestMessage));
+        return inputService.receive(requestMessage
+                , UserInput.request(requestMessage));
     }
 
     public static InputController getInstance() {

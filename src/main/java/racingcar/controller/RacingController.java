@@ -1,14 +1,9 @@
 package racingcar.controller;
 
-import racingcar.domain.Race;
-import racingcar.domain.Registration;
-import racingcar.service.input.RegistrationService;
-import racingcar.service.prep.RacePrepService;
 import racingcar.service.race.LapUpdateService;
 import racingcar.service.race.RaceStarterService;
 
 public class RacingController {
-
     private static RacingController instance;
 
     private LapUpdateService lapUpdateService;

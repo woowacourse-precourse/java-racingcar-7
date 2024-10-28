@@ -31,7 +31,7 @@ public class ScreenController {
         printLap(lapScoreService.createEntryScores(race.getEntry()));
     }
 
-    public void printLap(List<LapScore> lapScores) {
+    private void printLap(List<LapScore> lapScores) {
         for (LapScore lapScore : lapScores) {
             printCarStatus(lapScore);
         }
