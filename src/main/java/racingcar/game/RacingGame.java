@@ -22,14 +22,17 @@ public class RacingGame {
             return;
         }
 
-        RacingGameManager racingGameManager = new RacingGameManager();
-        racingGameManager.prepareGameRounds(tryNum, carNames);
-        racingGameManager.startGame(gameData);
-
-        outputHandler.printCarsRacingResult(gameData);
+        playGame(carNames, tryNum);
 
         List<Car> car = winnerDecider.decideWinner(gameData);
 
+        outputHandler.printCarsRacingResult(gameData);
         outputHandler.printWinner(car);
+    }
+
+    private void playGame(String[] carNames, int tryNum) {
+        RacingGameManager racingGameManager = new RacingGameManager();
+        racingGameManager.prepareGameRounds(tryNum, carNames);
+        racingGameManager.startGame(gameData);
     }
 }
