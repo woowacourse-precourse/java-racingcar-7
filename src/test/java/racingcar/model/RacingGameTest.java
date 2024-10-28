@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.Application;
+import racingcar.service.RacingGame;
 
 public class RacingGameTest extends NsTest {
     @ParameterizedTest
