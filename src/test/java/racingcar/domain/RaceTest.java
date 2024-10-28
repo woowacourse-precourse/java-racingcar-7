@@ -92,7 +92,7 @@ class RaceTest {
         Car car1 = new Car("Car", () -> true);
         Car car2 = new Car("Car", () -> true);
         Car car3 = new Car("Car2", () -> true);
-        List<Car> carsWithDuplicateNames = List.of(car1, car2, car3);
+        List<Car> carsWithDuplicateNames = Arrays.asList(car1, car2, car3);
 
         int totalRounds = 5;
 

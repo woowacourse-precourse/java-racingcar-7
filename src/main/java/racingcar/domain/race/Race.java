@@ -1,31 +1,18 @@
 package racingcar.domain.race;
 
-import static racingcar.error.ErrorMessageConstants.DUPLICATE_CAR_NAME;
-
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import racingcar.domain.car.Car;
+import racingcar.validator.RaceValidator;
 
 public class Race {
     private final List<Car> cars;
     private final Integer totalRounds;
 
     public Race(List<Car> cars, int totalRounds) {
-        validateCarsDuplicate(cars);
+        RaceValidator.validate(cars);
         this.cars = cars;
         this.totalRounds = totalRounds;
-    }
-
-    private void validateCarsDuplicate(List<Car> cars) {
-        Set<String> carNameSet = new HashSet<>();
-        for (Car car : cars) {
-            if (!carNameSet.add(car.getName())) {
-                String errorMessage = String.format(DUPLICATE_CAR_NAME, car.getName());
-                throw new IllegalArgumentException(errorMessage);
-            }
-        }
     }
 
     public List<RoundResult> raceStart() {
