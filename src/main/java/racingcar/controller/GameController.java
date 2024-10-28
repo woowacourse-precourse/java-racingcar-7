@@ -14,7 +14,7 @@ public class GameController {
     private Cars cars;
     private int tryCount;
 
-    public GameController(InputView inputView, CarNameValidator carNameValidator, OutputView outputView){
+    public GameController(InputView inputView, OutputView outputView, CarNameValidator carNameValidator){
         this.inputView = inputView;
         this.outputView = outputView;
         this.carNameValidator = carNameValidator;
