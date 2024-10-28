@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private final String name;
     private String forwardProgress;
+    private int forwardProgressLength;
     private int pickNumber;
 
     public Car(String name) {
@@ -16,6 +17,7 @@ public class Car {
         pickNumber = Randoms.pickNumberInRange(0, 9);
         if (pickNumber >= 4) {
             forwardProgress += "-";
+            forwardProgressLength = forwardProgress.length();
         }
         printForwardProgress();
     }
