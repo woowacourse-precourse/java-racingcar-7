@@ -24,11 +24,9 @@ public class Car {
     public ArrayList<String> getMoveList() {
         return moveList;
     }
-
     public String getName() {
         return name;
     }
-
     public static ArrayList<Car> getCarList() {
         return carList;
     }

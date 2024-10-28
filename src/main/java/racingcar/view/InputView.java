@@ -21,7 +21,6 @@ public class InputView {
     public static String getCarNames() {
         return carNames;
     }
-
     public static int getRoundNumber() {
         return roundNumber;
     }

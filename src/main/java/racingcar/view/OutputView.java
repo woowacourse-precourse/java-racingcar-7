@@ -28,6 +28,5 @@ public class OutputView {
                 System.out.println(", " +  winnerList.get(i));
             }
         }
-
     }
 }
