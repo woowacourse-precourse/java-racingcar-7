@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Racing {
     private List<String> carNames = new ArrayList<>();
@@ -50,6 +51,33 @@ public class Racing {
     }
 
 
+    private void forwardCar(int randomNumber, Map<String, String> carPositions, String carName){
+        if (randomNumber >= 4) {
+            carPositions.put(carName, carPositions.get(carName) + "-");
+        }
+    }
     public void inGame() {
+        for (int i = 1; i <= round; i++) {
+            for (String carName : carNames) {
+                int randomNumber = pickNumberInRange(0, 9);
+
+                forwardCar(randomNumber, carPositions, carName);
+            }
+            printCarStatuses();
+        }
+    }
+
+    private void printCarStatuses() {
+        System.out.println();
+
+        for (String carName : carNames) {
+            String status = carPositions.get(carName);
+
+            if (status == null || status.isEmpty()) {
+                System.out.println(carName + " : ");
+            } else {
+                System.out.println(carName + " : " + status);
+            }
+        }
     }
 }
