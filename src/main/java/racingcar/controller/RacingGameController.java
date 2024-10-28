@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.RacingGame;
@@ -13,12 +12,9 @@ public class RacingGameController {
         String[] carNames = InputView.getCarNames();
         int tryCount = InputView.getTryCount();
 
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name.trim()));
-        }
-
+        List<Car> cars = Car.generate(carNames);
         RacingGame game = new RacingGame(cars);
+
         for (int i = 0; i < tryCount; i++) {
             List<Car> roundCars = game.playRound();
             ResultView.printRoundResults(roundCars);
