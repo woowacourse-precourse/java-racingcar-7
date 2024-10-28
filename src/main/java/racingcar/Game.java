@@ -13,4 +13,19 @@ public class Game {
         this.cars = getCarName();
         this.rounds = inputRoundCount();
     }
+
+    private List<racingcar.Car> getCarName() {
+        // 자동차 이름 받기
+        System.out.print("자동차의 이름을 입력하세요(,로 구분): ");
+        String input = Console.readLine();
+        String[] names = input.split(",");
+        List<racingcar.Car> cars = new ArrayList<>();
+
+        // 입력 받은 이름 공백 제거하여 생성
+        for (String name : names) {
+            cars.add(new racingcar.Car(name.trim()));
+        }
+
+        return cars;
+    }
 }
