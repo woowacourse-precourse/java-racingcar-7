@@ -54,7 +54,18 @@ public class Application {
                 j++;
             }
         }
-        
+
+        // 최종 우승자 출력
+        String victoryCar = "";
+        for(int i=0; i<victoryCarName.length; i++){
+            if(victoryCarName[i] == null){
+                break;
+            }
+
+            victoryCar += victoryCarName[i] + ", ";
+        }
+
+        System.out.println("최종우승자 : " + victoryCar);
     }
 
 
