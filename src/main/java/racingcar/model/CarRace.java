@@ -23,7 +23,6 @@ public class CarRace {
     }
 
     public void advanceCars(List<Boolean> moveOrNot) {
-        // TODO: isAdvance.size() == cars.size() 검증 해야되나?
         for (int i = 0; i < cars.size(); i++) {
             if (moveOrNot.get(i)) {
                 cars.get(i).addMove();
@@ -35,7 +34,7 @@ public class CarRace {
         int max = findMax();
         return cars.stream()
                 .filter(car -> car.getMove() == max)
-                .collect(Collectors.toList()); // TODO: List<Car> or List<String> ??
+                .collect(Collectors.toList());
     }
 
     private int findMax() {
@@ -47,7 +46,7 @@ public class CarRace {
 
     private List<Integer> pickMove() {
         List<Integer> moves = new ArrayList<>();
-        for (Car car : cars) { // TODO: cars 이렇게 써도 되나?
+        for (Car car : cars) {
             moves.add(car.getMove());
         }
         return moves;
