@@ -11,11 +11,11 @@ public class ValidateCarNamesTest {
     @DisplayName("자동차 이름이 5자를 초과할 때 예외가 발생해야 한다")
     void validateCarNames_lengthExceeded_shouldThrowException() {
         // given
-        CarService carService = new CarService();
+        NameValidationService nameValidationService = new NameValidationService();
         String invalidCarName = "pobidori";
 
         // when & then
-        assertThatThrownBy(() -> carService.validateCarNames(invalidCarName))
+        assertThatThrownBy(() -> nameValidationService.validateCarNames(invalidCarName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Constants.INVALID_CAR_NAME_LENGTH);
     }
@@ -23,10 +23,10 @@ public class ValidateCarNamesTest {
     @Test
     @DisplayName("자동차 이름이 공백일 때 예외가 발생해야 한다")
     void validateCarNames_empty_shouldThrowException() {
-        CarService carService = new CarService();
+        NameValidationService nameValidationService = new NameValidationService();
         String emptyCarName = "   "; // 공백 문자열
 
-        assertThatThrownBy(() -> carService.validateCarNames(emptyCarName))
+        assertThatThrownBy(() -> nameValidationService.validateCarNames(emptyCarName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Constants.INVALID_CAR_NAME_EMPTY);
     }

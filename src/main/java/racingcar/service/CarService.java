@@ -6,46 +6,35 @@ import racingcar.model.Car;
 import racingcar.model.CarList;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class CarService {
+    private final NameValidationService nameValidationService;
     private final CarList carList = new CarList(new ArrayList<>());
     private final List<String> winners = new ArrayList<>();
     private String[] carNames;
     private int moveCount;
 
-    public void createGame(String carNames) {
-        splitCarNames(carNames);
-        checkForDuplicateCarNames(this.carNames);
-
-        for (String carName : this.carNames) {
-            validateCarNames(carName);
-            carList.addCar(new Car(carName, 0));
-        }
+    public CarService() {
+        this.nameValidationService = new NameValidationService();
     }
 
-    public void checkForDuplicateCarNames(String[] carNames) {
-        Set<String> uniqueNames = new HashSet<>();
-        for (String name : carNames) {
-            if (!uniqueNames.add(name)) {
-                throw new IllegalArgumentException(Constants.DUPLICATE_CAR_NAME);
-            }
+    public CarService(NameValidationService nameValidationService) {
+        this.nameValidationService = nameValidationService;
+    }
+
+    public void createGame(String carNames) {
+        splitCarNames(carNames);
+        nameValidationService.checkForDuplicateCarNames(this.carNames);
+
+        for (String carName : this.carNames) {
+            nameValidationService.validateCarNames(carName);
+            carList.addCar(new Car(carName, 0));
         }
     }
 
     public void splitCarNames(String carNames) {
         this.carNames = carNames.split(",");
-    }
-
-    public void validateCarNames(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException(Constants.INVALID_CAR_NAME_LENGTH);
-        }
-        if (carName == null || carName.trim().isEmpty()) {
-            throw new IllegalArgumentException(Constants.INVALID_CAR_NAME_EMPTY);
-        }
     }
 
     public void playGame() {
