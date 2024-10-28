@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.domain.ErrorMessage.CAR_NAME_BLANK;
+import static racingcar.domain.ErrorMessage.CAR_NAME_CONTAIN_SPECIAL_CHARACTER;
 import static racingcar.domain.ErrorMessage.CAR_NAME_MAX;
 
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ class CarTest {
 
         assertThatThrownBy(() -> new Car("%%"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름에 특수문자는 사용 불가합니다.");
+                .hasMessageContaining(CAR_NAME_CONTAIN_SPECIAL_CHARACTER.getMessage());
     }
 
     @Test
@@ -37,7 +38,7 @@ class CarTest {
 
         assertThatThrownBy(() -> new Car("%%현대"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름에 특수문자는 사용 불가합니다.");
+                .hasMessageContaining(CAR_NAME_CONTAIN_SPECIAL_CHARACTER.getMessage());
     }
 
 

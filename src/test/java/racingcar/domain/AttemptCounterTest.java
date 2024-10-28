@@ -16,7 +16,7 @@ class AttemptCounterTest {
     }
 
     @Test
-    void 최대값보다_큰_시도횟수_예외_처리() {
+    void 최댓값보다_큰_시도횟수_예외_처리() {
         assertThatThrownBy(() -> new AttemptCounter(101))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ATTEMPT_RANGE.getMessage());

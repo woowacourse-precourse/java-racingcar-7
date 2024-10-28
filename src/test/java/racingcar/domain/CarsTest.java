@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class CarsTest {
 
     @Test
-    void 최대값보다_큰_자동차_수_예외_처리() {
+    void 최댓값보다_큰_자동차_수_예외_처리() {
         Set<Car> cars = new HashSet<>();
         for (int i = 0; i < 51; i++) {
             cars.add(new Car(i + ""));
