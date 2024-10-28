@@ -19,10 +19,11 @@ public class RacingGameController {
         String inputRound = InputView.getRound();
         int round = RoundInputConverter.setIntRound(inputRound);
 
+        OutputView.startRacePrint();
+
         Race race = new Race(raceParticipants, round);
 
         race.start();
-        OutputView.startRacePrint();
 
         List<Car> winner = race.getWinner();
         OutputView.printWinners(winner);
