@@ -11,10 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingCarModelTest {
     private RacingCarModel racingCarModel;
 
+
     @BeforeEach
+    @DisplayName("테스트를 하나 실행할 때마다 모델 클래스를 초기화시킨다")
     void beforeEach(){
         racingCarModel = new RacingCarModel();
     }
+
 
     @Test
     @DisplayName("입력받은 자동차 이름 문자열을 ','기준으로 나누어 리스트로 반환한다")
@@ -30,6 +33,7 @@ public class RacingCarModelTest {
         assertThat(carNameList).contains("pobi", "woni", "jun");
     }
 
+
     @Test
     @DisplayName("자동차 이름의 맨 앞과 뒤의 공백을 제거하고 저장하는지 확인한다")
     void setCarNameListTest2(){
@@ -43,6 +47,7 @@ public class RacingCarModelTest {
         //then
         assertThat(carNameList).contains("pobi", "woni", "jun");
     }
+
 
     @Test
     @DisplayName("자동차가 전진했을 시 그에 따라 value 값을 1씩 증가시킨다")
@@ -79,6 +84,7 @@ public class RacingCarModelTest {
 
     }
 
+
     @Test
     @DisplayName("모든 자동차의 전진 횟수가 0이면 모두가 공동 우승자가 되는지 확인한다")
     void getWinnerListTest2(){
@@ -92,7 +98,6 @@ public class RacingCarModelTest {
 
         //then
         assertThat(winnerList).contains("pobi", "woni", "jun");
-
     }
 
 

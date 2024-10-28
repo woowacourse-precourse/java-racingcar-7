@@ -9,61 +9,39 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class RacingCarServiceTest {
-
     private RacingCarService racingCarService;
     private RacingCarModel racingCarModel;
 
+
     @BeforeEach
+    @DisplayName("racingCarService의 기능을 테스트하기 위해 model을 적절한 값들로 초기화한다")
     void beforeEach(){
-        racingCarModel = new RacingCarModel();
-        racingCarModel.setCarNameList("pobi,jun,woni");
-        racingCarModel.addRacingCar("pobi", 0);
+        this.racingCarModel = new RacingCarModel();
+        ResultGeneratorService resultGeneratorService = new ResultGeneratorService();
+        this.racingCarService = new RacingCarService(racingCarModel, resultGeneratorService);
+
+        //given
+        String carNameString = "pobi,woni,jun";
+
+        //when
+        racingCarModel.setCarNameList(carNameString);
+        racingCarModel.setCarHashMap();
+        racingCarService.setCarNameList();
+    }
+
+
+    @Test
+    @DisplayName("경주의 결과가 정상적으로 출력되는지 확인한다")
+    void getRacingResultTest(){
+        //given & when
+        racingCarModel.addRacingCar("woni", 1);
         racingCarModel.addRacingCar("jun", 2);
-        racingCarModel.addRacingCar("woni", 2);
-        racingCarService = new RacingCarService(racingCarModel);
-    }
 
-
-    @Test
-    @DisplayName("최종 우승자 정보를 담고 있는 문자열 생성이 정상적으로 작동하는지 확인한다")
-    void winnerResultStringTest(){
-        //when
-        racingCarService.setWinnerResultString();
-        String winnerResultString = racingCarService.getWinnerResultString();
+        String racingResult = racingCarService.getRacingResult();
 
         //then
-        assertThat(winnerResultString).isEqualTo("jun, woni");
+        assertThat(racingResult).isEqualTo("pobi : \nwoni : -\njun : --");
     }
-
-    @Test
-    @DisplayName("최종 우승자 정보를 담고 있는 문자열 생성이 정상적으로 작동하는지 확인한다")
-    void winnerResultStringTest2(){
-        //given
-        racingCarModel.addRacingCar("jun", 3);
-
-        //when
-        racingCarService.setWinnerResultString();
-        String winnerResultString = racingCarService.getWinnerResultString();
-
-        //then
-        assertThat(winnerResultString).isEqualTo("jun");
-    }
-
-    @Test
-    @DisplayName("각 경기 결과 정보를 담고 있는 문자열 생성이 정상적으로 작동하는지 확인한다")
-    void createRacingResultTest(){
-        //given
-        racingCarModel.addRacingCar("jun", 3);
-
-        //when
-        String racingResult = racingCarService.createRacingResult();
-
-        //then
-        assertThat(racingResult).isEqualTo("pobi : \njun : ---\nwoni : --");
-    }
-
-
-
 
 
 }
