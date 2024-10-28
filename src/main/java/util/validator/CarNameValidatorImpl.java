@@ -6,14 +6,16 @@ import java.util.Arrays;
 public class CarNameValidatorImpl implements Validator<String> {
     @Override
     public void validate(String input) {
-        if (input == null || input.trim().isEmpty()) {
-            throw new IllegalArgumentException(Message.EMPTY_OR_NULL_NAME.getMessage());
-        }
-
+        validateNullBlankName(input);
         validateDelimiter(input);
         validateSingleName(input);
         List<String> carNames = Arrays.asList(input.split(","));
         validateNameLength(carNames);
+    }
+    private void validateNullBlankName(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException(Message.EMPTY_OR_NULL_NAME.getMessage());
+        }
     }
 
     private void validateSingleName(String input) {
