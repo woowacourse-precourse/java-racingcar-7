@@ -2,7 +2,7 @@ package racingcar.model;
 
 public class RacingCar {
 
-    private static final int NAME_MAX_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
     private static final int MOVING_THRESHOLD = 4;
 
     private final String name;
@@ -48,7 +48,7 @@ public class RacingCar {
             throw new IllegalArgumentException("자동차 이름에 공백이 포함될 수 없습니다.");
         }
         if (isOverMaxLength(name)) {
-            throw new IllegalArgumentException(String.format("자동차 이름의 길이는 %d이하여야 합니다.", NAME_MAX_LENGTH));
+            throw new IllegalArgumentException(String.format("자동차 이름의 길이는 %d이하여야 합니다.", MAX_NAME_LENGTH));
         }
     }
 
@@ -61,6 +61,6 @@ public class RacingCar {
     }
 
     private boolean isOverMaxLength(String name) {
-        return name.length() > NAME_MAX_LENGTH;
+        return name.length() > MAX_NAME_LENGTH;
     }
 }

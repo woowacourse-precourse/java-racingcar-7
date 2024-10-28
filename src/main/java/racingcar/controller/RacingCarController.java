@@ -6,12 +6,12 @@ import racingcar.model.RacingCarSnapShot;
 import racingcar.model.RacingCars;
 import racingcar.view.RacingCarView;
 
-public class RacingController {
+public class RacingCarController {
 
     private final RacingCarView racingCarView;
     private final MovementFactorGenerator movementFactorGenerator;
 
-    public RacingController(RacingCarView racingCarView, MovementFactorGenerator movementFactorGenerator) {
+    public RacingCarController(RacingCarView racingCarView, MovementFactorGenerator movementFactorGenerator) {
         this.racingCarView = racingCarView;
         this.movementFactorGenerator = movementFactorGenerator;
     }
