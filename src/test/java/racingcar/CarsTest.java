@@ -19,7 +19,8 @@ class CarsTest {
         //given
         Set<String> input = Set.of("pobi", "ddot");
         //when
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
         //then
         assertEquals(input, cars.keySet());
     }
@@ -29,7 +30,8 @@ class CarsTest {
     void findWinScore() {
         //given
         Set<String> input = Set.of("pobi", "ddot", "a");
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
         //when
         cars.putAll(Map.of("pobi", 1, "ddot", 2, "a", 6));
 
@@ -43,7 +45,8 @@ class CarsTest {
     void getWinnerNamesTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot", "a");
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
         //when
         cars.putAll(Map.of("pobi", 1, "ddot", 2, "a", 6));
         //then
@@ -56,7 +59,8 @@ class CarsTest {
     void getWinnerNamesMoreThanOneTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot", "a");
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
         //when
         cars.putAll(Map.of("pobi", 7, "ddot", 7, "a", 7));
         //then
@@ -70,7 +74,8 @@ class CarsTest {
     void goTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
         //when
         //then
         assertRandomNumberInRangeTest(

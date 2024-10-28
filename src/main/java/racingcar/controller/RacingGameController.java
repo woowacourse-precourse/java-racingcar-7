@@ -11,33 +11,41 @@ import java.util.Set;
 public class RacingGameController {
     private final SystemView systemView;
     private final RaceView raceView;
-    private final CarsNameParser carsNameParser;
+    private final Cars cars;
 
-    public RacingGameController() {
-        this.systemView = new SystemView();
-        this.raceView = new RaceView();
-        this.carsNameParser = new CarsNameParser();
+    public RacingGameController(SystemView systemView, RaceView raceView, Cars cars) {
+        this.systemView = systemView;
+        this.raceView = raceView;
+        this.cars = cars;
     }
 
     public void run() {
-        try {
-            String nameInput = systemView.printSystemNameInputMessage();
-            Set<String> carNames = carsNameParser.parse(nameInput);
+        handleCarNamesInput();
+        handleTrialInput();
+        startRace();
+        displayWinner();
+    }
 
-            Cars cars = new Cars(carNames);
-            cars.registerObserver(raceView);
+    private void handleCarNamesInput() {
+        String nameInput = systemView.printSystemNameInputMessage();
+        Set<String> carNames = CarsNameParser.parse(nameInput);
+        cars.addCars(carNames);
+        cars.registerObserver(raceView);
+    }
 
-            String trialInput = systemView.printSystemInputTrialMessage();
-            InputValidator.validateTrialInput(trialInput);
+    private void handleTrialInput() {
+        String trialInput = systemView.printSystemInputTrialMessage();
+        InputValidator.validateTrialInput(trialInput);
+        cars.setTrialCount(Integer.parseInt(trialInput));
+    }
 
-            systemView.printSystemRaceStartMessage();
-            cars.repeatGo(Integer.parseInt(trialInput));
+    private void startRace() {
+        systemView.printSystemRaceStartMessage();
+        cars.repeatGo();
+    }
 
-            systemView.printSystemWinneMessage();
-            raceView.displayWinner();
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-            throw e;
-        }
+    private void displayWinner() {
+        systemView.printSystemWinneMessage();
+        raceView.displayWinner();
     }
 }

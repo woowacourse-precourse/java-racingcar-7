@@ -38,7 +38,8 @@ class RaceViewTest {
     void displayOneTrialTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
         cars.registerObserver(raceView);
         raceView.setCars(cars);
         //when
@@ -52,7 +53,9 @@ class RaceViewTest {
     void displayWinnerTest() {
         //give
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
+
         cars.registerObserver(raceView);
         cars.putAll(Map.of("pobi", 1, "ddot", 0));
         raceView.setCars(cars);
@@ -67,7 +70,8 @@ class RaceViewTest {
     void displayMultipleWinnerTest() {
         //give
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
         cars.registerObserver(raceView);
         cars.putAll(Map.of("pobi", 1, "ddot", 1));
         raceView.setCars(cars);
@@ -82,7 +86,8 @@ class RaceViewTest {
     void updateGoTrialTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
         cars.registerObserver(raceView);
         cars.putAll(Map.of("pobi", 1, "ddot", 0));
         //when
@@ -95,7 +100,8 @@ class RaceViewTest {
     void updateWinnerTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
         cars.registerObserver(raceView);
         cars.putAll(Map.of("pobi", 1, "ddot", 0));
         //when
@@ -108,7 +114,8 @@ class RaceViewTest {
     void canCarsGoUpdateObserverTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars(input);
+        cars = new Cars();
+        cars.addCars(input);
         cars.registerObserver(raceView);
         //when, then
         assertRandomNumberInRangeTest(

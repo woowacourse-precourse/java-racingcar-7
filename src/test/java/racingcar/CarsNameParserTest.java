@@ -16,9 +16,8 @@ class CarsNameParserTest {
     void parseNamesTest() {
         //given
         String input = "pobi,ddot,teddy";
-        CarsNameParser carsNameParser = new CarsNameParser();
         //when
-        Set<String> carsName = carsNameParser.parse(input);
+        Set<String> carsName = CarsNameParser.parse(input);
         //then
         assertEquals(Set.of("pobi", "ddot", "teddy"), carsName);
     }
@@ -28,9 +27,8 @@ class CarsNameParserTest {
     void parseRepeatedNamesTest() {
         //given
         String input = "pobi,ddot,pobi";
-        CarsNameParser carsNameParser = new CarsNameParser();
         //when
-        Set<String> carsName = carsNameParser.parse(input);
+        Set<String> carsName = CarsNameParser.parse(input);
         //then
         assertEquals(Set.of("pobi", "ddot"), carsName);
         assertEquals(Set.of("ddot", "pobi"), carsName);
@@ -72,13 +70,11 @@ class CarsNameParserTest {
 
 
     void testNameParsing(Set<String> carsName, String input) {
-        CarsNameParser carsNameParser = new CarsNameParser();
-        assertEquals(carsName, carsNameParser.parse(input));
+        assertEquals(carsName, CarsNameParser.parse(input));
     }
 
     void testNameParsingThrow(String input) {
-        CarsNameParser carsNameParser = new CarsNameParser();
-        assertThrows(IllegalArgumentException.class, () -> carsNameParser.parse(input));
+        assertThrows(IllegalArgumentException.class, () -> CarsNameParser.parse(input));
     }
 
 

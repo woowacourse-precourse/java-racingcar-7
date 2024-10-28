@@ -10,10 +10,8 @@ import racingcar.raceInterface.Subject;
 
 public class Cars extends HashMap<String, Integer> implements Subject {
     private final List<Observer> observers = new ArrayList<>();
+    private int trial = 0;
 
-    public Cars(Set<String> carNames) {
-        addCars(carNames);
-    }
 
     public void addCars(Set<String> carsName) {
         for (String carName : carsName) {
@@ -57,8 +55,8 @@ public class Cars extends HashMap<String, Integer> implements Subject {
         notifyObservers();
     }
 
-    public void repeatGo(int attempts) {
-        for (int i = 0; i < attempts; i++) {
+    public void repeatGo() {
+        for (int i = 0; i < this.trial; i++) {
             this.go();
         }
     }
@@ -76,4 +74,7 @@ public class Cars extends HashMap<String, Integer> implements Subject {
         }
     }
 
+    public void setTrialCount(int i) {
+        this.trial = i;
+    }
 }
