@@ -69,6 +69,5 @@
 - 입/출력에 대한 테스트 진행 **(Done)**
 
 ## 변경된 클래스 다이어그램 
-<br>
-![자동차 경주 1차 클래스 다이어그램 (4)](https://github.com/user-attachments/assets/5795b1a4-5167-4210-ba1d-4eb326bbf96d)
+![자동차 경주 1차 클래스 다이어그램 (4)](https://github.com/user-attachments/assets/57df13a8-1074-4c82-af5d-2236d1824417)
 
