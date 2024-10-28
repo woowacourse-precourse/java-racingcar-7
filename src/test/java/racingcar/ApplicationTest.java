@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 
@@ -28,6 +27,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
+        Car.resetNames();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
