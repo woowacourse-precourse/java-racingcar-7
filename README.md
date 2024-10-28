@@ -1,5 +1,5 @@
 # java-racingcar-precourse
-Seconde week woowa pre-course
+Second week woowa pre-course
 
 ## Functional Requirements
 **초간단 자동차 경주 게임을 구현한다.**    
