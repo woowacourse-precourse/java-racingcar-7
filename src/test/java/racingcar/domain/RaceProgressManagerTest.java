@@ -33,13 +33,13 @@ class RaceProgressManagerTest {
         }
 
         @Test
-        @DisplayName("존재하지 않는 자동차의 진행 상황을 업데이트하려고 하면 예외가 발생한다")
-        void 존재하지_않는_자동차의_진행_상황을_업데이트할_경우_예외가_발생한다() {
+        @DisplayName("등록되지 않은 자동차의 진행 상황을 업데이트하려고 하면 예외가 발생한다")
+        void 등록되지_않은_자동차의_진행_상황을_업데이트하려고_할_경우_예외가_발생한다() {
             RacingCar car = new RacingCar("Audi");
             RaceProgressManager manager = new RaceProgressManager(List.of(car));
-            RacingCar nonExistentCar = new RacingCar("Tesla");
+            RacingCar unregisteredCar = new RacingCar("Tesla");
 
-            assertThatThrownBy(() -> manager.updateProgressForForward(nonExistentCar))
+            assertThatThrownBy(() -> manager.updateProgressForForward(unregisteredCar))
                     .isInstanceOf(RacingCarException.class)
                     .hasMessage(CAR_MUST_BE_REGISTERED.getMessage());
         }

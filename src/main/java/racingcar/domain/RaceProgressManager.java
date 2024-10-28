@@ -20,7 +20,7 @@ public class RaceProgressManager {
     }
 
     public void updateProgressForForward(RacingCar car) {
-        validateCarExists(car);
+        validateCarIsRegistered(car);
         raceProgress.put(car.getName(), raceProgress.get(car.getName()) + 1);
     }
 
@@ -39,7 +39,7 @@ public class RaceProgressManager {
         }
     }
 
-    private void validateCarExists(RacingCar car) {
+    private void validateCarIsRegistered(RacingCar car) {
         if (!raceProgress.containsKey(car.getName())) {
             throw RacingCarException.from(CAR_MUST_BE_REGISTERED);
         }
