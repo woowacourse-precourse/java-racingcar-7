@@ -7,7 +7,9 @@ public class Input {
     private static final String TRIAL_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?";
     public static String inputCarName() {
         printCarNameMessage();
-        return Console.readLine();
+        String inputCarName = Console.readLine();
+        validateNull(inputCarName);
+        return inputCarName;
     }
 
     private static void printCarNameMessage() {
@@ -16,10 +18,22 @@ public class Input {
 
     public static String inputTrialNumber() {
         printTrialNumberMessage();
-        return Console.readLine();
+        String inputTrialNumber = Console.readLine();
+        validateNull(inputTrialNumber);
+        return inputTrialNumber;
     }
 
     private static void printTrialNumberMessage() {
         System.out.println(TRIAL_NUMBER_MESSAGE);
+    }
+
+    private static void validateNull(final String input) {
+        if (isNull(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static Boolean isNull(final String input) {
+        return input == null;
     }
 }

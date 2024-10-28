@@ -8,9 +8,9 @@ public class RacingCar {
     private final String GAME_START_MESSAGE = "실행 결과";
     private final String WINNER_CAR_NAMES_MESSAGE = "최종 우승자 : %s";
 
-    public RacingCar(List<String> carNames, String trialNumber) {
-        this.carList = new Cars(carNames);
-        this.trialNumber = new TrialNumber(trialNumber);
+    public RacingCar(String inputCarName, String inputTrialNumber) {
+        this.carList = new Cars(inputCarName);
+        this.trialNumber = new TrialNumber(inputTrialNumber);
     }
 
 

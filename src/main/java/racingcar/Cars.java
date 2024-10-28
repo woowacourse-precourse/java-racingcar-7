@@ -5,8 +5,10 @@ import java.util.List;
 
 public class Cars {
     private final List<Car> CAR_LIST;
+    private static final String CAR_NAME_DELIMITER = ",";
 
-    public Cars(List<String> carNameList) {
+    public Cars(String inputCarName) {
+        List<String> carNameList = parseCarName(inputCarName);
         this.CAR_LIST = generateCarList(carNameList);
     }
 
@@ -16,6 +18,10 @@ public class Cars {
             carList.add(new Car(carName));
         }
         return carList;
+    }
+
+    private List<String> parseCarName(final String carName) {
+        return List.of(carName.split(CAR_NAME_DELIMITER));
     }
 
     public void move() {
