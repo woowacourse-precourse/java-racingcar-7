@@ -29,7 +29,7 @@ public class RacingController {
     }
 
     private void startRace() {
-        print(PRINT_RACE_RESULT.getMessage());
+        newLinePrint(PRINT_RACE_RESULT.getMessage());
 
         int rounds = race.getRounds();
         while (rounds-- > 0) {
