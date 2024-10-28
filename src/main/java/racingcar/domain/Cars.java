@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 
+import racingcar.config.RaceConfig;
 import racingcar.dto.RaceResultResponse;
 import racingcar.dto.WinnerResponse;
 import racingcar.util.RandomNumberPicker;
@@ -36,6 +37,6 @@ public class Cars {
 		return cars.stream()
 			.mapToInt(Car::getDistance)
 			.max()
-			.orElse(0);
+			.orElse(RaceConfig.INITIAL_DISTANCE.getNumber());
 	}
 }
