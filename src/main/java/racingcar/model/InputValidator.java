@@ -69,20 +69,26 @@ public class InputValidator {
         }
     }
 
-    public boolean isValidAttempts(String input) {
-        nullCheck(input);
+    public boolean isValidAttempts(String attempts) {
+        nullCheck(attempts);
+        checkInvalidAttemptsInputOf(attempts);
+        checkOverIntAreaOf(attempts);
 
+        return true;
+    }
+
+    private void checkInvalidAttemptsInputOf(String input) {
         String regex = "^[0-9]+$";
         if (!Pattern.matches(regex, input)) {
             throw new IllegalArgumentException(INVALID_ATTEMPTS_INPUT_EXCEPTION_MESSAGE.getMessage());
         }
+    }
 
+    private void checkOverIntAreaOf(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ATTEMPTS_OVER_INT_AREA_EXCEPTION_MESSAGE.getMessage());
         }
-
-        return true;
     }
 }
