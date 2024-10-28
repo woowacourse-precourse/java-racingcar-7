@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
-import racingcar.model.game.attempt.Attempt;
+import racingcar.model.game.round.Round;
 import racingcar.model.game.position.History;
 import racingcar.model.game.position.Position;
 import racingcar.model.game.position.Positions;
@@ -27,8 +27,8 @@ class RacingCarTest {
             // Given
             MovingStrategy movingStrategy = () -> true;
             Cars cars = new Cars(List.of(new Car("pobi", movingStrategy), new Car("woni", movingStrategy)));
-            Attempt attempt = new Attempt(0);
-            RacingCar racingCar = new RacingCar(cars, attempt);
+            Round round = new Round(0);
+            RacingCar racingCar = new RacingCar(cars, round);
 
             // When
             racingCar.start();
@@ -43,8 +43,8 @@ class RacingCarTest {
         void 성공_시작_시도횟수1이상() {
             // Given
             Cars cars = new Cars(List.of(new Car("pobi", () -> true), new Car("woni", () -> false)));
-            Attempt attempt = new Attempt(1);
-            RacingCar racingCar = new RacingCar(cars, attempt);
+            Round round = new Round(1);
+            RacingCar racingCar = new RacingCar(cars, round);
 
             // When
             racingCar.start();
@@ -69,8 +69,8 @@ class RacingCarTest {
         void 성공_우승자계산_우승자한명() {
             // Given
             Cars cars = new Cars(List.of(new Car("pobi", () -> true), new Car("woni", () -> false)));
-            Attempt attempt = new Attempt(1);
-            RacingCar racingCar = new RacingCar(cars, attempt);
+            Round round = new Round(1);
+            RacingCar racingCar = new RacingCar(cars, round);
             racingCar.start();
 
             // When
@@ -85,8 +85,8 @@ class RacingCarTest {
         void 성공_우승자계산_우승자여러명() {
             // Given
             Cars cars = new Cars(List.of(new Car("pobi", () -> true), new Car("woni", () -> true)));
-            Attempt attempt = new Attempt(1);
-            RacingCar racingCar = new RacingCar(cars, attempt);
+            Round round = new Round(1);
+            RacingCar racingCar = new RacingCar(cars, round);
             racingCar.start();
 
             // When

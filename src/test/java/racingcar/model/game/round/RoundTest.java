@@ -1,4 +1,4 @@
-package racingcar.model.game.attempt;
+package racingcar.model.game.round;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -6,11 +6,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.InvalidAttemptException;
-import racingcar.model.game.attempt.Attempt;
+import racingcar.exception.InvalidRoundException;
 
 @DisplayName("시도 횟수 테스트")
-class AttemptTest {
+class RoundTest {
 
     @Nested
     @DisplayName("생성 테스트")
@@ -23,7 +22,7 @@ class AttemptTest {
 
             // When & Then
             assertThatCode(() -> {
-                new Attempt(0);
+                new Round(0);
             }).doesNotThrowAnyException();
         }
 
@@ -33,10 +32,10 @@ class AttemptTest {
             // Given
 
             // When & Then
-            assertThatThrownBy(() -> new Attempt(-1))
-                    .isExactlyInstanceOf(InvalidAttemptException.class)
+            assertThatThrownBy(() -> new Round(-1))
+                    .isExactlyInstanceOf(InvalidRoundException.class)
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("시도 횟수는 0 또는 양수여야 합니다.");
+                    .hasMessage("시도할 횟수는 0 또는 양수여야 합니다.");
         }
     }
 }

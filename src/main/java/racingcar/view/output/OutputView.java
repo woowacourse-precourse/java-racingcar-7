@@ -7,7 +7,7 @@ import racingcar.support.repeater.StringRepeater;
 public interface OutputView {
     void showCommentForCarNames();
 
-    void showCommentForAttempt();
+    void showCommentForRound();
 
     void showCommentForResult();
 

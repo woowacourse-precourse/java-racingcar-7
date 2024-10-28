@@ -1,11 +1,11 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
-import racingcar.exception.InvalidAttemptException;
+import racingcar.exception.InvalidRoundException;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
 import racingcar.model.game.RacingCar;
-import racingcar.model.game.attempt.Attempt;
+import racingcar.model.game.round.Round;
 import racingcar.model.game.position.History;
 import racingcar.model.game.strategy.MovingStrategy;
 import racingcar.support.repeater.StringRepeater;
@@ -34,10 +34,10 @@ public class RacingCarController {
     public void process() {
         String inputNames = readNames(outputView, inputView);
         Cars cars = initializeCars(splitter, inputNames, movingStrategy);
-        Attempt attempt = readAttempt(outputView, inputView);
+        Round round = readRound(outputView, inputView);
 
-        RacingCar racingCar = new RacingCar(cars, attempt);
-        showRacingResult(outputView, attempt, racingCar, stringRepeater);
+        RacingCar racingCar = new RacingCar(cars, round);
+        showRacingResult(outputView, round, racingCar, stringRepeater);
         showWinners(racingCar);
     }
 
@@ -55,27 +55,27 @@ public class RacingCarController {
         return cars;
     }
 
-    private Attempt readAttempt(OutputView outputView, InputView inputView) {
-        outputView.showCommentForAttempt();
-        String inputAttempt = inputView.read();
-        validateInputAttempt(inputAttempt);
-        return new Attempt(Long.parseLong(inputAttempt));
+    private Round readRound(OutputView outputView, InputView inputView) {
+        outputView.showCommentForRound();
+        String inputRound = inputView.read();
+        validateInputRound(inputRound);
+        return new Round(Long.parseLong(inputRound));
     }
 
-    private void validateInputAttempt(final String inputAttempt) {
-        if (inputAttempt == null || inputAttempt.isBlank()) {
-            throw new InvalidAttemptException("시도 횟수는 null이거나 공백일 수 없습니다.");
+    private void validateInputRound(final String inputRound) {
+        if (inputRound == null || inputRound.isBlank()) {
+            throw new InvalidRoundException("라운드 횟수는 null이거나 공백일 수 없습니다.");
         }
     }
 
-    private void showRacingResult(OutputView outputView, final Attempt attempt, final RacingCar racingCar,
+    private void showRacingResult(OutputView outputView, final Round round, final RacingCar racingCar,
                                   final StringRepeater stringRepeater) {
         outputView.showCommentForResult();
         racingCar.start();
         Cars cars = racingCar.cars();
         History history = racingCar.history();
-        for (int round = 0; round < attempt.attempt(); round++) {
-            outputView.showCarPosition(cars.names(), history.at(round), stringRepeater);
+        for (int index = 0; index < round.round(); index++) {
+            outputView.showCarPosition(cars.names(), history.at(index), stringRepeater);
         }
     }
 

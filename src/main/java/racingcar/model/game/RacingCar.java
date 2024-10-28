@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
 import racingcar.model.car.Name;
-import racingcar.model.game.attempt.Attempt;
+import racingcar.model.game.round.Round;
 import racingcar.model.game.position.History;
 import racingcar.model.game.position.Positions;
 
@@ -14,17 +14,17 @@ public class RacingCar {
     private final Cars cars;
     private final Positions positions;
     private final History history;
-    private final Attempt attempt;
+    private final Round round;
 
-    public RacingCar(final Cars cars, final Attempt attempt) {
+    public RacingCar(final Cars cars, final Round round) {
         this.cars = cars;
         this.positions = Positions.createWithNewRound(cars.size());
         this.history = new History();
-        this.attempt = attempt;
+        this.round = round;
     }
 
     public void start() {
-        for (int round = 0; round < attempt.attempt(); round++) {
+        for (int index = 0; index < round.round(); index++) {
             List<Boolean> moves = cars.doMove();
             moveWithPositions(moves);
         }
