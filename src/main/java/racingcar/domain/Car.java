@@ -1,8 +1,9 @@
 package racingcar.domain;
 
+import static racingcar.domain.GameConstants.MOVED_BOUND;
+import static racingcar.domain.GameConstants.POSITION_SYMBOL;
+
 public class Car {
-    private static final int MOVED_BOUND = 4;
-    private static final String POSITION_FORMAT_SYMBOL = "-";
     private final String name;
     private int position = 0;
 
@@ -32,7 +33,7 @@ public class Car {
 
     public String getCurrentStateFormat() {
         String stateFormat = "%s : %s";
-        String positionFormat = POSITION_FORMAT_SYMBOL.repeat(position);
+        String positionFormat = POSITION_SYMBOL.repeat(position);
         return String.format(stateFormat, name, positionFormat);
     }
 }

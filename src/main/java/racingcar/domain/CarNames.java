@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.domain.GameConstants.MAXIMUM_CAR_NAME_LENGTH;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,7 +36,7 @@ public class CarNames {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_NULL.message());
         }
-        if (name.length() >= 5) {
+        if (name.length() >= MAXIMUM_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_OVER_RANGE.message());
         }
         if (!name.matches("[a-zA-Z0-9]+")) {
