@@ -7,10 +7,10 @@ import java.util.List;
 public class RacingGame {
     private final List<Car> participants = new ArrayList<>();
 
-    private final String DISTANCE_INDICATOR = "-";
-    private final String NAME_DISTANCE_SPLIT = " : ";
+    private static final String DISTANCE_INDICATOR = "-";
+    private static final String NAME_DISTANCE_SPLIT = " : ";
 
-    private final int MOVE_STANDARD_NUMBER = 4;
+    private static final int MOVE_STANDARD_NUMBER = 4;
 
     public RacingGame(List<String> carNamesList) {
         registerParticipants(carNamesList);

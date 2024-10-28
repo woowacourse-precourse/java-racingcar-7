@@ -4,8 +4,8 @@ public class Car {
     private final String name;
     private int distance = 0;
 
-    private final int MIN_NAME_LENGTH = 1;
-    private final int MAX_NAME_LENGTH = 5;
+    private static final int MIN_NAME_LENGTH = 1;
+    private static final int MAX_NAME_LENGTH = 5;
 
     public Car(String name) {
         validateNameLength(name);

@@ -4,8 +4,8 @@ import java.util.List;
 
 public class GameValidator {
 
-    private final static int MAX_CAR_NAMES_SIZE = 50;
-    private final static int MAX_GAME_REPEATS_SIZE = 100;
+    private static final int MAX_CAR_NAMES_SIZE = 50;
+    private static final int MAX_GAME_REPEATS_SIZE = 100;
 
     public static void validate(List<String> carNamesList, int gameRepeats) {
         validateMaxCarNamesListSize(carNamesList);
