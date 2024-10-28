@@ -5,6 +5,7 @@ import racingcar.validate.enums.ValidateMessages;
 public class InputNumberValidation {
     public static void validateInputNumber(String inputNumber) {
         validateNumberIfNullOrEmpty(inputNumber);
+        validateNumberIfNegative(inputNumber);
         validateIfInputCanCovertToInt(inputNumber);
         validateNumberIfContainsNewLine(inputNumber);
         validateNumberifWhiteSpaceExist(inputNumber);
@@ -14,6 +15,12 @@ public class InputNumberValidation {
     public static void validateNumberIfNullOrEmpty(String inputNumber) {
         if (inputNumber == null || inputNumber.isEmpty()) {
             throw new IllegalArgumentException(ValidateMessages.NUMBER_CANNOT_BE_NULL_OR_EMPTY.getValidateMessage());
+        }
+    }
+
+    public static void validateNumberIfNegative(String inputNumber) {
+        if (Integer.parseInt(inputNumber) < 0) {
+            throw new IllegalArgumentException(ValidateMessages.NUMBER_CANNOT_BE_NEGATIVE.getValidateMessage());
         }
     }
 
