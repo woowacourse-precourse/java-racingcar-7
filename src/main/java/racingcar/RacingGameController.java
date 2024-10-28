@@ -11,7 +11,7 @@ public class RacingGameController {
         this.outputHandler = new OutputHandler();
     }
 
-    public void start(){
+    public void start() {
         List<String> carNames = inputHandler.readAndSplitCarNames();
         int roundNumber = inputHandler.readRoundNumber();
 
@@ -20,7 +20,7 @@ public class RacingGameController {
 
         outputHandler.printStartMessage();
 
-        for(int i = 0; i < roundNumber; i++) {
+        for (int i = 0; i < roundNumber; i++) {
             racingGame.moveCars();
             outputHandler.printRoundResult(racingGame.getCars());
         }

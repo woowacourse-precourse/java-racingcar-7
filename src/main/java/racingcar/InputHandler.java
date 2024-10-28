@@ -29,7 +29,7 @@ public class InputHandler {
         final String carNameRegex = "^[a-zA-Z0-9]{1,5}$";
 
         for (String carName : input.split(",")) {
-            if(!carName.matches(carNameRegex)) {
+            if (!carName.matches(carNameRegex)) {
                 throw new IllegalArgumentException("자동차 이름은 영어와 숫자만을 사용해서 만들 수 있고, 1자 이상 5자 이하만 가능합니다.");
             }
         }

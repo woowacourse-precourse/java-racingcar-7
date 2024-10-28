@@ -14,7 +14,7 @@ public class Car {
     }
 
     public void move(Movement movement) {
-        if(movement.canMove()) {
+        if (movement.canMove()) {
             position++;
         }
     }
