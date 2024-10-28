@@ -51,6 +51,15 @@ public class Application {
         }
     }
 
+    public static void goRandomPlays() {
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(0, 9, participantList.size());
+        for (int i = 0; i < randomNumbers.size(); i++) {
+            if (randomNumbers.get(i) >= 4) {
+                addScore(participantList.get(i));
+            }
+        }
+    }
+
     public static void displayStatus() {
         for (final String name : participantScore.keySet()) {
             System.out.print(name + " : ");
@@ -103,12 +112,16 @@ public class Application {
     public static void playGame(String number) {
         if (!isNumber(number)) {
             throw new IllegalArgumentException("숫자를 입력하세요.");
-
         }
         int playNumber = Integer.parseInt(number);
+        boolean isSingleGame = true;
+        if (playNumber > 1) {
+            isSingleGame = false;
+        }
         initScore();
         while (playNumber != 0) {
-            goRandomPlay();
+            if (isSingleGame) goRandomPlay();
+            else goRandomPlays();
             displayStatus();
             System.out.println();
             playNumber--;
