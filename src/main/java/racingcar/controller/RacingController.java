@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 
+import racingcar.domain.AttemptCount;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.parser.CarNameInputParser;
@@ -22,9 +23,9 @@ public class RacingController {
 		List<String> carNames = parseCarNameInput(carNameInput);
 		Cars cars = createCars(carNames);
 
-		int attemptCount = readAttemptCountInput();
+		AttemptCount attemptCount = readAttemptCountInput();
 
-		printRaceResult(attemptCount, cars);
+		printRaceResult(attemptCount.getAttemptCount(), cars);
 		printWinners(cars);
 	}
 
@@ -48,10 +49,11 @@ public class RacingController {
 		return new Cars(cars);
 	}
 
-	private int readAttemptCountInput() {
+	private AttemptCount readAttemptCountInput() {
 		outputView.promptAttemptCount();
+		int attemptCountInput = inputView.readAttemptCountInput();
 
-		return inputView.readAttemptCountInput();
+		return new AttemptCount(attemptCountInput);
 	}
 
 	private void printRaceResult(int attemptCount, Cars cars) {
