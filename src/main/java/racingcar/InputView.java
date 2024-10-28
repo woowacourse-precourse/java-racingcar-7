@@ -21,7 +21,15 @@ public class InputView {
             carMap.put(str, new Car(str));
         }
 
+        isCarMapEmpty(carMap);
+
         return carMap;
+    }
+
+    protected void isCarMapEmpty(LinkedHashMap<String, Car> carMap) {
+        if(carMap.isEmpty()){
+            throw new IllegalArgumentException();
+        }
     }
 
     protected boolean isCarListInputValid(LinkedHashMap<String, Car> map, String str) {
@@ -29,7 +37,7 @@ public class InputView {
             return false;
         }
 
-        if (str.length() > 5 || str.length() == 0) {
+        if (str.length() > 5) {
             return false;
         }
 
@@ -41,7 +49,7 @@ public class InputView {
         return convertInputToLong(Console.readLine());
     }
 
-    public Long convertInputToLong(String input) {
+    protected Long convertInputToLong(String input) {
         if (!isRoundNumberValid(input)) {
             throw new IllegalArgumentException();
         }
