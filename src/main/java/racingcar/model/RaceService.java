@@ -57,11 +57,11 @@ public class RaceService {
                 .collect(Collectors.toList());
     }
 
-    private String[] parseCarNames(String inputCarList) {
+    public String[] parseCarNames(String inputCarList) {
         return converter.parseCarList(inputCarList);
     }
 
-    private List<Car> convertToCarList(String[] carNameList) {
+    public List<Car> convertToCarList(String[] carNameList) {
         return Arrays.stream(carNameList)
                 .map(Car::new)
                 .collect(Collectors.toList());
@@ -71,7 +71,7 @@ public class RaceService {
         return Randoms.pickNumberInRange(Constants.MIN_RANDOM_NUM, Constants.MAX_RANDOM_NUM);
     }
 
-    private void moveCarBasedOnRandomNum(Car car) {
+    public void moveCarBasedOnRandomNum(Car car) {
         if (pickRandomNumber() >= Constants.MOVE_NUM)
             car.move();
     }
