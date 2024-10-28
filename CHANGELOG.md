@@ -1,0 +1,27 @@
+- docs: 느낀점 추가
+- refactor: WinnerNames 변수명 리팩토링
+- docs: HashMap 관련 내용 추가
+- fix: HashMap 관련 에러 제거
+- refactor: test 오류 제거
+- refactor: InputReader private 생성자 추가
+- fix: service import 에러 해결
+- feat: 자동차 이동한 거리 & 우승자 판별 구현
+- Merge remote-tracking branch 'origin/feat/reader-and-viewer' into feat/reader-and-viewer
+- refactor: 입출력 기능 리팩토링
+- feat: 입출력 기능 구현
+- refactor: 패키지 위치 변경 및 사소한 리팩토링
+- refactor: 입출력 기능 리팩토링
+- feat: 입출력 기능 구현
+- refactor: Car 전진 로직 변경
+- test: 자동차 이름 검증 테스트 추가
+- refactor: 알파뱃 이름만 작성하도록 검증 추가
+- refactor(duplicateEx): 사용하지 않는 예외 제거
+- test: CarRepository 테스트 추가
+- feat: 중복된 이름 검증 기능 구현
+- docs: 구현할 기능 목록 추가
+- feat: 자동차 추가 기능 구현
+- test: 자동차 전진 혹은 멈춤 테스트 추가
+- feat: 자동차 전진 혹은 멈춤 구현
+- docs: 구현할 기능 목록 수정
+- docs: 구현할 기능 목록 작성
+- feat: setup project
