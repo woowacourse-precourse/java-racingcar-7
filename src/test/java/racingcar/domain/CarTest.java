@@ -34,7 +34,7 @@ public class CarTest {
     @Test
     @DisplayName("이름 길이 테스트")
     void 이름_길이_테스트() {
-        Assertions.assertThatThrownBy(() -> new Car("javajigi"))
+        Assertions.assertThatThrownBy(() -> new Car("javaji"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름의 길이가 5자를 넘을 수 없습니다");
     }
