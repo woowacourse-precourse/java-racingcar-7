@@ -116,6 +116,17 @@ public class Application {
         }
     }
 
+    public static List<String> getWinners(){
+        List<String> winners = new ArrayList<>();
+        int maxScore = getMaxScore();
+        for(int i = 0; i < gameScores.size(); i++){
+            if(gameScores.get(i).length() == maxScore){
+                winners.add(carList.get(i));
+            }
+        }
+        return winners;
+    }
+
     public static int getMaxScore(){
         int maxScore = 0;
         for(int i = 0; i < gameScores.size(); i++){
