@@ -44,9 +44,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
+    @Test
+    void input_error_이름_미입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void input_error_횟수_미입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("phobi", " "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Test
@@ -83,4 +94,8 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
 }
