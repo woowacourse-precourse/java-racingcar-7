@@ -11,7 +11,7 @@ public class Application {
 
         RacingGame racingGame = new RacingGame(carNames,tryNum);
         racingGame.play();
-
+        printWinners(racingGame.getWinners());
     }
 
     public static String[] inputCarNames(){
@@ -22,5 +22,9 @@ public class Application {
     public static int inputTryNum(){
         System.out.println("시도할 횟수는 몇 회 인가요?");
         return Integer.parseInt(Console.readLine());
+    }
+
+    public static void printWinners(List<String> winners){
+        System.out.println("최종 우승자 : " + String.join(", ",winners));
     }
 }
