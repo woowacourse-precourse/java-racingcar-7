@@ -2,7 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.Map;
-import racingcar.controller.CarDTO;
+import racingcar.dto.CarDTO;
 
 public class OutputView {
 

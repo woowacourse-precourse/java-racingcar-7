@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.dto.RaceResultDTO;
 import racingcar.service.RacingService;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;

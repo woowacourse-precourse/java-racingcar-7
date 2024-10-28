@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import racingcar.controller.CarDTO;
-import racingcar.controller.RaceResultDTO;
+import racingcar.dto.CarDTO;
+import racingcar.dto.RaceResultDTO;
 import racingcar.domain.Car;
 
 public class RacingService {

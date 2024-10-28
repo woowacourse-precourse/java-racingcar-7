@@ -1,4 +1,4 @@
-package racingcar.controller;
+package racingcar.dto;
 
 public record CarDTO(
    String name,
