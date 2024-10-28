@@ -70,9 +70,21 @@ public class Application {
     }
 
     int getRaceRoundInput() {
-        String str = Console.readLine();
-        validateNotEmpty(str);
-        return Integer.parseInt(str);
+        String userInput = Console.readLine();
+        validateNotEmpty(userInput);
+        validateIntInput(userInput);
+        return Integer.parseInt(userInput);
+    }
+
+    void validateIntInput(String userInput) {
+        try {
+            int userInputInt = Integer.parseInt(userInput);
+            if (userInputInt < 1) {
+                throw new IllegalArgumentException("1 이상의 숫자를 입력해야 합니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 실행 횟수를 숫자를 입력해야 합니다.");
+        }
     }
 
     void initializeCarPositions(String[] cars) {
@@ -92,6 +104,7 @@ public class Application {
 
     void executeRaceRound() {
         for (String car : carPositions.keySet()) {
+
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 moveCarForward(car);
             }
