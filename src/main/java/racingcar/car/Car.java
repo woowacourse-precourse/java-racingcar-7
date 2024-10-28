@@ -16,6 +16,14 @@ class Car {
 		this.position = 0;
 	}
 
+	String getName() {
+		return name;
+	}
+
+	int getPosition() {
+		return position;
+	}
+
 	private void validateNameLength(String name) {
 		if (name.trim().length() > NAME_LENGTH_LIMIT) {
 			throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
@@ -28,14 +36,6 @@ class Car {
 		}
 
 		System.out.println(name + " : " + "-".repeat(position));
-	}
-
-	int getPosition() {
-		return position;
-	}
-
-	String getName() {
-		return name;
 	}
 
 	boolean isWinner(Car winner) {
