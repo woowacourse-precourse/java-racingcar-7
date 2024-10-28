@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,7 +32,43 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void nameLengthExceptionTest() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,javaji,woni", "3"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("자동차 이름은 최대 5자까지 입력 가능합니다.");
+        });
+    }
 
+    @Test
+    void nameDuplicationGenerationTest() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni,pobi", "3"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("자동차 이름은 중복 생성 할 수 없습니다.");
+        });
+    }
+
+    @Test
+    void attemptCountExceptionTest() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("잘못된 이동 횟수 입니다.");
+        });
+    }
+
+    @Test
+    void attemptThrowsExceptionForOverflowInput() {
+        String inputString = "2147483648";
+
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", inputString))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
+        });
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
