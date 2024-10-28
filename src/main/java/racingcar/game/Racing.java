@@ -18,6 +18,7 @@ public class Racing {
     }
 
     public void start() {
+        System.out.println("\n실행 결과");
         for (int i = 0; i < moveCount; i++) {
             for (Car car : cars) {
                 car.move();
@@ -26,13 +27,25 @@ public class Racing {
             System.out.println();
         }
 
-        Car winner = getWinner();
-        System.out.println("최종 우승자 : " + winner.getName());
+        displayWinner();
     }
 
-    public Car getWinner() {
+    private void displayWinner() {
+        List<Car> winners = getWinners();
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(", ", winners.stream()
+                .map(Car::getName)
+                .toList()));
+    }
+
+    public List<Car> getWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
+
         return cars.stream()
-            .max((car1, car2) -> Integer.compare(car1.getPosition(), car2.getPosition()))
-            .get();
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
     }
 }

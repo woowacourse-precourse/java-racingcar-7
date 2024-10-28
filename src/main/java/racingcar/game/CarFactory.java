@@ -8,8 +8,8 @@ public abstract class CarFactory {
 
     public static List<Car> createCars(String names) {
         return Arrays.stream(names.split(","))
-            .map(String::trim)
-            .map(Car::new)
-            .collect(Collectors.toList());
+                .map(String::trim)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }

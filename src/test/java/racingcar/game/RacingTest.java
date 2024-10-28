@@ -20,7 +20,21 @@ class RacingTest {
         racing.start();
 
         // then
-        Car winner = racing.getWinner();
-        assertTrue(cars.stream().allMatch(car -> car.getPosition() <= winner.getPosition()));
+        List<Car> winners = racing.getWinners();
+
+        // winner 위치가 서로 같아야 함
+        int winnerPosition = winners.get(0).getPosition();
+        for (Car car : winners) {
+            assertEquals(winnerPosition, car.getPosition());
+        }
+
+        // winner를 제외한 나머지 차량은 winner보다 위치가 작아야 함
+        for (Car car : cars) {
+            if (winners.contains(car)) {
+                continue;
+            }
+            assertTrue(car.getPosition() < winnerPosition);
+        }
+
     }
 }
