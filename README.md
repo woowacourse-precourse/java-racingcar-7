@@ -93,6 +93,46 @@
 - UserViewTest
 </details>
 
+---
+
+<details>
+<summary> 클래스별 주요 기능 </summary>
+
+- ***Application***
+  - RacingGame() 객체인 racingGame을 생성하여 racingGame.run()으로 게임 시작
+- ***RacingGame***
+  - 클래스 내 전역 변수 : Car car; Integer attemptNum; List<String>cars;
+  - **run**
+    - **car.set()** : 출전할 자동차 명단 저장
+    - **setAttemptNum()** : 시도 횟수(게임 라운드) 저장
+    - **startGame()** : 시도 횟수만큼 자동차별 랜덤한 값에 의한 이동 및 시도 결과 출력
+    - **selectWinner()** : 자동차들의 이동 횟수 중 최댓값을 구하여 최댓값과 이동 횟수가 일치하는 자동차 명단 출력
+- ***Car***
+  - 클래스 내 전역 변수 : HashMap<String, Integer> carMap;
+  - **separateName(input)** : 입력 받은 자동차 명단을 carMap에 저장
+    - **checkDoubleSeparator(input)** : 구분자를 두 개 연달아 사용했을 경우 throw Exception
+    - **checkLastBlank(input)** : 마지막 문자가 ,일 경우 throw Exception
+    - **checkBlank(input)** : 문자열에 공백이 포함될 경우 throw Exception
+    - **spitInput** : 문자열을 쉼표(,)로 구분하여 저장한 배열
+    - **checkCount(splitInput.length)** : 자동차의 수가 5개 초과이면 throw Exception
+    - **checkNameLen(s)** : 자동차 이름이 5자 초과이면 throw Exception
+    - **checkDuplication(s)** : 중복된 자동차 이름이 존재할 경우 throw Exception
+    - **putCarMap(s)** : carMap에 자동차 이름을 key로, 이동 횟수를 저장할 value를 0으로 초기화
+- ***UserView***
+  - 모든 method를 static으로 지정하여 UserView 객체를 생성하지 않아도 사용 가능
+  - **readCarName()** : 자동차 이름을 입력할 수 있도록 안내문을 출력하고 readLine() 반환
+  - **readAttemptNum()** : 시도 횟수를 입력할 수 있도록 안내문을 출력하고 readLine() 반환
+  - **printResultGuide()** : 게임 결과 출력을 시작할 안내문 출력
+  - **printPlayerAttemptResult(name, count)** : 출력 형식에 맞게 자동차 이름과 이동 횟수 출력
+  - **printWinner(winners)** : 출력 형식에 맞게 winners에 포함된 모든 우승자 출력
+- Test
+  - ***ApplicationTest*** : 기본 제공된 테스트 코드
+  - ***CarNameTest*** : Car 클래스 내의 자동차 이름에 대한 유효성 검증 함수의 신뢰성 확인
+  - ***AttemptNumTest*** : RacingGame 클래스 내의 시도 횟수에 대한 유효성 검증 함수의 신뢰성 확인
+  - ***UserViewTest*** : UserView 클래스 내의 사용자 입력값과 출력값이 올바른지 확인
+
+</details>
+
 ___
 ## 🐜 학습 목표
 - 여러 역할을 수행하는 **큰 함수**를 단일 역할을 수행하는 **작은 함수로 분리**한다.
