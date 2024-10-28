@@ -11,7 +11,6 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class InputViewTest {
     private InputView inputView;
@@ -31,6 +30,17 @@ class InputViewTest {
     void 자동차_이름이_공백인_경우_예외발생() {
         // given
         System.setIn(readUserInput("\n3\n"));
+
+        // when
+        assertThatThrownBy(() -> inputView.readRacingInfo())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("시도횟수가_공백인_경우_예외발생")
+    void 시도횟수가_공백인_경우_예외발생() {
+        // given
+        System.setIn(readUserInput("pobi,alice\n\n"));
 
         // when
         assertThatThrownBy(() -> inputView.readRacingInfo())
