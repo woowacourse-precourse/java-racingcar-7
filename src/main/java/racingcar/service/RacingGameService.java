@@ -6,6 +6,8 @@ import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.racinggame.RacingGame;
 import racingcar.domain.racinggame.RacingGames;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.dto.RacingAttemptDTO;
 import racingcar.dto.RacingCarNamesDTO;
 import racingcar.dto.ResultDTO;
@@ -13,7 +15,8 @@ import racingcar.dto.ResultDTO;
 public class RacingGameService {
     public static ResultDTO runGame(RacingCarNamesDTO racingCarNamesDTO, RacingAttemptDTO racingAttemptDTO){
         RacingGames racingGames = new RacingGames();
-        Cars cars = new Cars(racingCarNamesDTO);
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+        Cars cars = new Cars(racingCarNamesDTO, moveStrategy);
         int attempts = racingAttemptDTO.getRacingAttempts();
 
         for(int i = 0; i < attempts; i++){
