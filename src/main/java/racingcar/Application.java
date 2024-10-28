@@ -1,7 +1,50 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
+import java.util.ArrayList;
+
 public class Application {
+
+    private static ArrayList<String> splitCarNames(String carNames) {
+        ArrayList<String> carNameList = new ArrayList<>();
+        for (String carName : carNames.split(",")) {
+            carName = carName.trim();
+            if (validateCarName(carName)) {
+                carNameList.add(carName); // 조건 만족 시 차 이름 추가
+            }
+        }
+        return carNameList;
+    }
+
+    private static boolean validateCarName(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름 5자 초과");
+        } else if (carName.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름을 입력하지 않음");
+        } else {
+           return true;
+        }
+    }
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
+        String carNames = readLine();
+        ArrayList<String> carNameList = splitCarNames(carNames);
+
+        System.out.println("시도할 회수는 몇회인가요?");
+        String tryCountString = readLine();
+        if (!tryCountString.matches("^[0-9]\\d*$")) {
+            throw new IllegalArgumentException("시도 횟수는 0 이상의 정수만 가능");
+        }
+        int tryCount = Integer.parseInt(tryCountString);
+
+        Track track = new Track(carNameList);
+        for (int i = 0; i < tryCount; i++) {
+            track.move();
+            track.print();
+            System.out.println();
+        }
+        track.printWinners();
     }
 }
