@@ -48,19 +48,4 @@ class CarTest {
         //then
         assertThat(position).isEqualTo(Car.NOT_MOVED);
     }
-
-    @DisplayName("자동차의 이름과 위치를 함께 가진다")
-    @RepeatedTest(value = 5, name = RepeatedTest.SHORT_DISPLAY_NAME)
-    public void whenCarMoves_thenReturnsCarNameWithCorrectPosition(RepetitionInfo repetitionInfo) {
-        //given
-        String carName = "pobi";
-        int position = repetitionInfo.getCurrentRepetition();
-        int moveRole = 4;
-
-        //when
-        testCar.move(moveRole);
-
-        //then
-        assertThat(testCar.getNameWithPosition()).isEqualTo(carName + " : " + "-".repeat(position));
-    }
 }

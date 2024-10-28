@@ -30,10 +30,6 @@ public class Car {
         }
     }
 
-    public String getNameWithPosition() {
-        return String.format("%s : %s", name, "-".repeat(position));
-    }
-
     public String getName() {
         return name;
     }
