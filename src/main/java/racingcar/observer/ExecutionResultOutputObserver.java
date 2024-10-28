@@ -22,6 +22,7 @@ public class ExecutionResultOutputObserver implements Observer{
             for (Car car: cars) {
                 writer.write(CarView.executionResult(car));
             }
+            writer.append("\n");
             writer.flush();
         } catch (IOException exception) {
             System.err.println(exception.getMessage());
