@@ -12,7 +12,7 @@ public abstract class IOHandler {
 
     public static List<String> setRacerList() {
         System.out.println(START_MESSAGE);
-        List<String> racerList = Arrays.asList(Console.readLine().split(","));
+        List<String> racerList = List.of(Console.readLine().split(","));
         Validator.validateName(racerList);
         return racerList;
     }
