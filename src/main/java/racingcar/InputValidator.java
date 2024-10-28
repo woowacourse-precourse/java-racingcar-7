@@ -14,4 +14,11 @@ public class InputValidator {
         carNameValidator.inputMoreThanTwo(carNames);
         carNameValidator.inputSameName(carNames);
     }
+
+    void validateCarName(String carNames){
+        for(String carName : carNames.split(",")){
+            carNameValidator.inputMoreThanOneCharacter(carName);
+            carNameValidator.inputNotMoreThanFiveCharacter(carName);
+        }
+    }
 }
