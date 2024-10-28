@@ -78,7 +78,7 @@ public class Application {
     }
 
     public static void move(Map.Entry<String, Integer> element, boolean goStop) {
-        if(goStop) {
+        if (goStop) {
             element.setValue(element.getValue() + 1);
         }
     }
