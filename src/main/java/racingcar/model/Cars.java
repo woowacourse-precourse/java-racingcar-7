@@ -6,6 +6,7 @@ public class Cars {
     private final List<Car> cars;
 
     private Cars(List<String> carNames) {
+        validateCarNamesEmpty(carNames);
         this.cars = carNames.stream()
                 .map(Car::create)
                 .toList();
@@ -13,6 +14,12 @@ public class Cars {
 
     public static Cars apply(List<String> carNames) {
         return new Cars(carNames);
+    }
+
+    private void validateCarNamesEmpty(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void playARound() {
