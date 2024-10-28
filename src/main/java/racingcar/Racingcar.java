@@ -8,6 +8,10 @@ public class Racingcar {
     // 주어진 횟수 동안 n대 자동차는 전진 or 멈춤
     public static HashMap<String, Integer> racing(int nums, HashMap<String, Integer> cars) {
 
+        if (nums < 1){
+            throw new IllegalArgumentException("시도 횟수가 너무 적습니다.");
+        }
+
         for (int i = 0; i < nums; i++) {
             // 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우
             for (String s : cars.keySet()) {
@@ -37,6 +41,10 @@ public class Racingcar {
         String[] name = names.split(",");
 
         for (String s : name) {
+            // 이름은 5글자 이하. 예외처리
+            if (s.length() > 5) {
+                throw new IllegalArgumentException("이름이 너무 깁니다.");
+            }
             cars.put(s, 0);
         }
 
