@@ -14,6 +14,7 @@ public class Application {
                 .map(Car::new)
                 .collect(Collectors.toList());
         RacingGame game = new RacingGame(cars);
+        game.executeRace(attempts);
         // TODO: 추가 구현
     }
 

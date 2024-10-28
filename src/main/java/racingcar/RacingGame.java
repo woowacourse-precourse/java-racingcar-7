@@ -23,4 +23,21 @@ public class RacingGame {
             car.move();
         }
     }
+
+    public void executeRace(int attempts) {
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < attempts; i++) {
+            race();
+            printStatus();
+        }
+    }
+
+    private void printStatus() {
+        for (Car car : cars) {
+            System.out.printf("%s : %s%n",
+                    car.getName(),
+                    "-".repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
 }
