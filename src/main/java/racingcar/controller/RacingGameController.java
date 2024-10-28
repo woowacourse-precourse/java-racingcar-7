@@ -1,13 +1,11 @@
 package racingcar.controller;
 
+import static racingcar.utils.CarNameInputProcessor.splitCarNames;
 import static racingcar.utils.TotalRoundsInputProcessor.parseTotalRounds;
 
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.RacingGame;
-import racingcar.utils.CarNameInputProcessor;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.domain.*;
+import racingcar.view.*;
 
 public class RacingGameController {
     public void run() {
@@ -19,8 +17,7 @@ public class RacingGameController {
 
     List<String> setCarNames() {
         String carNames = InputView.getCarNames();
-        CarNameInputProcessor carNameInputProcessor = new CarNameInputProcessor(carNames);
-        return carNameInputProcessor.splitCarNames();
+        return splitCarNames(carNames);
     }
 
     int setTotalRounds() {
