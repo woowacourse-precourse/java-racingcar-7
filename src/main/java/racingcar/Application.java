@@ -15,7 +15,7 @@ public class Application {
         //경주 진행
         for(int i = 0; i < attempts; i++){
             moveCars(cars);
-            //todo: 자동차 이동 상태 출력
+            printRaceResult(cars);
         }
 
     }
@@ -48,5 +48,13 @@ public class Application {
                 car.increasePosition();
             }
         }
+    }
+
+    // 자동차 이동 결과 출력
+    private static void printRaceResult(List<Car> cars){
+        for (Car car : cars){
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println();
     }
 }
