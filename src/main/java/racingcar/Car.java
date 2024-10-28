@@ -8,11 +8,16 @@ public class Car {
 
     public Car(String name) {
         location = 0;
+        name = name.trim();
+        if (name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
         this.name = name;
     }
 
     public Car() {
         location = 0;
+        throw new IllegalArgumentException();
     }
 
     private void move() {
