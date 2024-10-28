@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import repository.CarRepository;
 
 public class Car {
-    private final String name;
-    private final ArrayList<Integer> forwardCount;
+    public final String name;
+    public final ArrayList<Integer> forwardCount;
 
     public Car(String name) {
         this.name = name;
@@ -27,11 +27,11 @@ public class Car {
         return forwardCount;
     }
 
-    private void moveForward() {
+    public void moveForward() {
         this.forwardCount.add(1);
     }
 
-    private void doNotMoveForward() {
+    public void doNotMoveForward() {
         this.forwardCount.add(0);
     }
 
@@ -43,7 +43,7 @@ public class Car {
         doNotMoveForward();
     }
 
-    private boolean isMoveAllowed() {
+    public boolean isMoveAllowed() {
         return pickNumberInRange(0, 9) >= 4;
     }
 
