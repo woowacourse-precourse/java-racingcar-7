@@ -17,5 +17,8 @@ public class Application {
 
         RacingController.printRacing(racingCars, racingCounter);
 
+        ArrayList<String> winners = RacingController.judgeWinner(racingCars);
+        System.out.print("최종 우승자 : " + String.join(", ", winners));
+
     }
 }

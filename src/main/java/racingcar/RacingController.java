@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class RacingController {
 
 
-
     public static ArrayList<Boolean> setMoveCondition(int racingCounter) {
         ArrayList<Boolean> moveCondition = new ArrayList<Boolean>();
         for (int i = 0; i < racingCounter; i++) {
@@ -46,4 +45,24 @@ public class RacingController {
             System.out.print("-");
         }
     }
+
+    public static ArrayList<String> judgeWinner(ArrayList<RacingCar> racingCars) {
+        ArrayList<String> winners = new ArrayList<>();
+
+        int maxPosition = 0;
+        for(RacingCar rc : racingCars) {
+            maxPosition = Integer.max(maxPosition, rc.getPosition());
+        }
+
+        for (RacingCar rc : racingCars) {
+            if (rc.getPosition() == maxPosition) {
+                winners.add(rc.getName());
+            }
+        }
+
+        return winners;
+    }
+
+
+
 }
