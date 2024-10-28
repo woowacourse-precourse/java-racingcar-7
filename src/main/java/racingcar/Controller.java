@@ -1,14 +1,17 @@
 package racingcar;
 
 import java.util.List;
+import racingcar.argumentresolver.ArgumentResolver;
+import racingcar.argumentresolver.AttemptCountArgumentResolver;
+import racingcar.argumentresolver.CarArgumentResolver;
 
 public class Controller {
 
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
 
-    private final CarArgumentResolver carArgumentResolver = new CarArgumentResolver();
-    private final AttemptCountArgumentResolver attemptCountArgumentResolver = new AttemptCountArgumentResolver();
+    private final ArgumentResolver<List<String>> carArgumentResolver = new CarArgumentResolver();
+    private final ArgumentResolver<Integer> attemptCountArgumentResolver = new AttemptCountArgumentResolver();
 
     private final SizeValidator sizeValidator = new SizeValidator();
     private final RangeValidator rangeValidator = new RangeValidator();

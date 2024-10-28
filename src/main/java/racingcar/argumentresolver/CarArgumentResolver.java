@@ -1,12 +1,13 @@
-package racingcar;
+package racingcar.argumentresolver;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class CarArgumentResolver {
+public class CarArgumentResolver implements ArgumentResolver<List<String>> {
 
     private static final int NEGATIVE = -1;
 
+    @Override
     public List<String> parse(String parameter) {
         checkBlank(parameter);
         return splitWithBlankAndTrim(parameter);

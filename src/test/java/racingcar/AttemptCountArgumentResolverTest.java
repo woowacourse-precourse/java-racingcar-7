@@ -5,6 +5,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.argumentresolver.AttemptCountArgumentResolver;
 
 class AttemptCountArgumentResolverTest {
 

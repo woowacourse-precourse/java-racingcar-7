@@ -1,8 +1,9 @@
-package racingcar;
+package racingcar.argumentresolver;
 
-public class AttemptCountArgumentResolver {
+public class AttemptCountArgumentResolver implements ArgumentResolver<Integer> {
 
-    public int parse(String parameter) {
+    @Override
+    public Integer parse(String parameter) {
         try {
             return Integer.parseInt(parameter);
         } catch (NumberFormatException e) {
