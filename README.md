@@ -1,58 +1,56 @@
-## 🎯 구현 기능 목록
-
 ### 📌 자동차 이름 입력
 
-- []  자동차의 이름은 5자 이하만 가능하다.
-    - []  자동차 이름은 쉼표(,)를 기준으로 구분한다.
+- [x]  자동차의 이름은 5자 이하만 가능하다.
+    - [x]  자동차 이름은 쉼표(,)를 기준으로 구분한다.
     
     ```bash
     경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
     pobi,woni,jun
     ```
     
-    - []  사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
+    - [x]  사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
     
 
 **🚫 입력 예외 처리**
 
-- []  구분자로 쉼표(,)가 아닌 다른 문자가 들어올 경우`IllegalArgumentException`
-- []  이름이 5자를 초과하는 경우`IllegalArgumentException`
-- []  구분자 앞, 뒤에 이름이 오지 않는 경우`IllegalArgumentException`
-- []  중복된 차량 이름이 들어올 경우`IllegalArgumentException`
+- [x]  구분자로 쉼표(,)가 아닌 다른 문자가 들어올 경우`IllegalArgumentException`
+- [x]  이름이 5자를 초과하는 경우`IllegalArgumentException`
+- [x]  구분자 앞, 뒤에 이름이 오지 않는 경우`IllegalArgumentException`
+- [x]  중복된 차량 이름이 들어올 경우`IllegalArgumentException`
 
 ---
 
 ### 📌 시도할 횟수 입력
 
-- []  몇 번 이동을 할 것인지 입력
+- [x]  몇 번 이동을 할 것인지 입력
     
     ```bash
     시도할 횟수는 몇 회인가요?
     5
     ```
     
-    - []  사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
+    - [x]  사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
 
 **🚫 시도할 횟수 예외 처리**
 
-- []  숫자 대신 문자가 입력된 경우`IllegalArgumentException`
-- []  0이나 음수가 입력된 경우`IllegalArgumentException`
-- []  null 값인 경우`IllegalArgumentException`
+- [x]  숫자 대신 문자가 입력된 경우`IllegalArgumentException`
+- [x]  0이나 음수가 입력된 경우`IllegalArgumentException`
+- [x]  null 값인 경우`IllegalArgumentException`
 - [ ]  int 범위를 초과하는 큰 값인 경우`IllegalArgumentException`
 
 ---
 
 ### 📌 이동 실행 및 계산
 
-- []  전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우
-    - []  Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
-    - []  `Collection`을 활용해서 이동 거리를 저장
+- [x]  전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우
+    - [x]  Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
+    - [x]  `Collection`을 활용해서 이동 거리를 저장
 
 ---
 
 ### 📌 결과 출력
 
-- []  시도할 횟수만큼 이동한 뒤 결과를 출력
+- [x]  시도할 횟수만큼 이동한 뒤 결과를 출력
     
     ```bash
     실행 결과
@@ -78,7 +76,7 @@
     ```
     
     - [ ]  `Collection`에 저장한 이동 거리만큼 출력
-- []  우승자는 한 명 이상일 수 있다.
+- [x]  우승자는 한 명 이상일 수 있다.
     
     ```bash
     최종 우승자 : pobi
@@ -86,15 +84,15 @@
     최종 우승자 : pobi, jun
     ```
     
-    - []  우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분
+    - [x]  우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분
 
 ---
 
 ### 📌 프로그래밍 요구 사항
 
-- []  indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용
-- []  3항 연산자를 쓰지 않는다.
-- []  함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들기
+- [x]  indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용
+- [x]  3항 연산자를 쓰지 않는다.
+- [x]  함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들기
 
 ---
 
