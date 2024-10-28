@@ -11,7 +11,7 @@ public class RandomNumberGeneratorTest {
     @DisplayName("Randoms.pickNumberInRange()는 0에서 9 사이의 값을 고르게 생성하는지 검증")
     @RepeatedTest(100)
     void generateRandomNumberWithinRange() {
-        int randomValue = Randoms.pickNumberInRange(0, 9); // 무작위 값 생성
-        assertThat(randomValue).isBetween(0, 9); // 생성된 값이 0에서 9 사이에 있는지 검증
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+        assertThat(randomValue).isBetween(0, 9);
     }
 }
