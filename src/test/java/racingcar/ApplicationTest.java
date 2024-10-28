@@ -51,6 +51,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName(", 없이 입력된 경우")
+    void noComma() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
     @DisplayName("경기 횟수가 null 혹은 Empty인 경우")
     void CarNameNullOrEmpty() {
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
