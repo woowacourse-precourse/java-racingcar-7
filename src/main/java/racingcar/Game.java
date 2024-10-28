@@ -29,7 +29,7 @@ public class Game {
             }
             printCarsPosition(cars);
         }
-        printWinners(cars);
+        System.out.println(printWinners(cars));
     }
 
     List<Car> parseCars(String input){
