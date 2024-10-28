@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
 
 class CarTest {
 
@@ -17,7 +16,7 @@ class CarTest {
     void 이동거리_증가() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    Car car = new Car("pobi");
+                    Car car = Car.of("pobi");
                     car.move();
                     car.move();
                     assertThat(car.toString()).isEqualTo("pobi : --");
@@ -25,7 +24,7 @@ class CarTest {
         );
         assertRandomNumberInRangeTest(
                 () -> {
-                    Car car = new Car("woni");
+                    Car car = Car.of("woni");
                     car.move();
                     car.move();
                     car.move();
@@ -34,7 +33,7 @@ class CarTest {
         );
         assertRandomNumberInRangeTest(
                 () -> {
-                    Car car = new Car("jun");
+                    Car car = Car.of("jun");
                     car.move();
                     car.move();
                     car.move();
@@ -48,7 +47,12 @@ class CarTest {
     @Test
     void 이름_길이_예외() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> new Car("pobiiii"))
+            assertThatThrownBy(() -> Car.of("pobiiii"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("자동차 이름은 5자 이하의 문자열만 가능합니다.");
+        });
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> Car.of("pobi,javajigi"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("자동차 이름은 5자 이하의 문자열만 가능합니다.");
         });
@@ -57,22 +61,17 @@ class CarTest {
     @Test
     void 빈_이름_예외() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> new Car(""))
+            assertThatThrownBy(() -> Car.of(""))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("빈 이름은 사용할 수 없습니다.");
         });
         assertSimpleTest(() -> {
-            (assertThatThrownBy(() -> new Car("  "))
+            (assertThatThrownBy(() -> Car.of("  "))
                     .isInstanceOf(IllegalArgumentException.class))
                     .hasMessageContaining("빈 이름은 사용할 수 없습니다.");
         });
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> new Car(" \n\n "))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("빈 이름은 사용할 수 없습니다.");
-        });
-        assertSimpleTest(() -> {
-            assertThatThrownBy(() -> new Car(null))
+            assertThatThrownBy(() -> Car.of(" \n\n "))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("빈 이름은 사용할 수 없습니다.");
         });

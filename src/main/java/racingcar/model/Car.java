@@ -3,14 +3,18 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
-    private String name;
+    private final String name;
     private int distance;
 
-    public Car(String name) {
-        String nonEmptyName = validateEmptyName(name);
-        validateNameLength(nonEmptyName);
+    public Car(String name, int distance) {
+        validateEmptyName(name);
+        validateNameLength(name);
         this.name = name;
-        this.distance = 0;
+        this.distance = distance;
+    }
+
+    public static Car of(String name) {
+        return new Car(name.trim(), 0);
     }
 
     public void move() {
@@ -19,17 +23,16 @@ public class Car {
         }
     }
 
-    public static void validateNameLength(String name) {
+    private void validateNameLength(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하의 문자열만 가능합니다.");
         }
     }
 
-    public static String validateEmptyName(String name) {
-        if (name == null || name.trim().isBlank()) {
+    private void validateEmptyName(String name) {
+        if (name.isBlank()) {
             throw new IllegalArgumentException("빈 이름은 사용할 수 없습니다.");
         }
-        return name.trim();
     }
 
     public String getName() {

@@ -16,7 +16,7 @@ public class Racing {
 
     public static Racing of(String cars) {
         return new Racing(Arrays.stream(cars.split(","))
-                .map(Car::new)
+                .map(Car::of)
                 .toList());
     }
 
