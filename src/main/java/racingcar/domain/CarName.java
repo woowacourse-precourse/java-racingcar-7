@@ -8,23 +8,23 @@ public class CarName {
 
     private final String name;
 
-    public CarName(String value) {
-        validateBlank(value);
-        validateLength(value);
-        this.name = value;
+    public CarName(String name) {
+        validateBlank(name);
+        validateLength(name);
+        this.name = name;
     }
 
-    private void validateLength(String value) {
-        if (value.length() > MAX_LENGTH_OF_CAR_NAME) {
+    private void validateLength(String name) {
+        if (name.length() > MAX_LENGTH_OF_CAR_NAME) {
             throw new IllegalArgumentException("자동차 이름은 최대 5자입니다.");
         }
     }
 
-    private void validateBlank(String value) {
-        if (value == null) {
+    private void validateBlank(String name) {
+        if (name == null) {
             throw new NullPointerException("자동차 이름에 null이 올 수 없습니다.");
         }
-        if (value.isBlank()) {
+        if (name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }
     }
