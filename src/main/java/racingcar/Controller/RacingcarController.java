@@ -22,6 +22,8 @@ public class RacingcarController {
         List<Car> cars = inputView.readCarName().stream()
                 .map(Car::new)
                 .toList();
+        // unique 정도 검사.
+        Car.validateUniqueCarNames(cars);
         // 정적 메서드 참조 : ClassName::staticMethod
         // 인스턴스 메서드 참조 : instance::method
         // 특정 객체의 메서드 참조 : ClassName::instanceMethod (객체 인스턴스 -> 매개변수)

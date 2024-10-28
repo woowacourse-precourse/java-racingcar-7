@@ -11,15 +11,30 @@ public class Car {
 
     public Car(String name) {
         validNameLength(name);
+        validNameType(name);
         this.name = name;
     }
 
     private void validNameLength(String name) {
         if (name.length() > 5 || name.isEmpty()) {
-            throw new IllegalArgumentException("이름은 다섯자 이내로 입력하세요");
+            throw new IllegalArgumentException("이름은 다섯자 이내로 입력하세요.");
         }
     }
+    private void validNameType(String name){
+        if(name.chars().anyMatch(Character::isDigit)){
+            throw new IllegalArgumentException("이름에 숫자가 포함되면 안됩니다.");
+        }
+    }
+    public static void validateUniqueCarNames(List<Car> cars) {
+        int uniqueCarNamesCount = (int)cars.stream()
+                .map(car -> car.name)
+                .distinct()
+                .count();
 
+        if (uniqueCarNamesCount != cars.size()) {
+            throw new IllegalArgumentException("이름이 중복되면 안됩니다.");
+        }
+    }
 
     public void move() {
         if (canMove()) {
