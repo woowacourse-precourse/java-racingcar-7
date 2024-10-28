@@ -19,8 +19,7 @@ public class RaceResult {
         }
     }
 
-    public void printWinners() {
-        String winnerNames = String.join(", ", winners.stream().map(Car::getName).toArray(String[]::new));
-        System.out.println("최종 우승자: " + winnerNames);
+    public List<Car> getWinners() {
+        return winners;
     }
 }

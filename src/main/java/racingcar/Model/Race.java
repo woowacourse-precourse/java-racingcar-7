@@ -18,14 +18,12 @@ public class Race {
     public void startRace(int numberOfRounds) {
         for (int i = 0; i < numberOfRounds; i++) {
             for (Car car : cars) {
-                goAndStop(car);
-                System.out.println(car.getName() + " : " + car.getPosition());
+                moveOrStop(car);
             }
-            System.out.println();
         }
     }
 
-    public void goAndStop(Car car){
+    public void moveOrStop(Car car){
         if (Randoms.pickNumberInRange(0, 9) >= minCarPower) {
             car.move();
         }

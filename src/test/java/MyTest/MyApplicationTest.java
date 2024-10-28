@@ -20,8 +20,8 @@ public class MyApplicationTest {
 
     @Test
     public void inputCarName_메서드_사용시_쉼표로_구분2() {
-        String input = "a, ab, abcde";
-        String[] result = input.split(",\\s*");
+        String input = "a,ab,abcde";
+        String[] result = input.split(",".trim());
         String[] expected = {"a", "ab", "abcde"};
         assertArrayEquals(expected, result);
     }

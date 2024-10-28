@@ -6,10 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.View.RacingCarView;
 
 public class RacingRace {
     public static final int MINIMUM_VALUE_CAR_POWER = 4;
-    InputMessage inputMessage = new InputMessage();
+    RacingCarView racingCarView = new RacingCarView();
     Map<String, String> carData = new HashMap<>();
     int maxDistance = 0;
     List<String> winners = new ArrayList<>();
@@ -94,9 +95,9 @@ public class RacingRace {
     }
 
     public void racingRace(){
-        String[] carNames = inputMessage.inputCarNameReturnSplit(",");
+        String[] carNames = racingCarView.inputCarNames();
         UserInputService.racingCarUserInput(carNames);
-        String tryRacingRaces = inputMessage.inputNumberOfTries();
+        String tryRacingRaces = racingCarView.inputNumberOfTries();
         startingCarNumber(carNames);
         NumberOfRaces(tryRacingRaces, carNames);
         whoMaxDistance(carNames);
