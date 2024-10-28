@@ -15,7 +15,6 @@ public class Cars {
     private static final int MIN_SIZE = 2;
     private static final int MAX_SIZE = 10;
 
-
     private final List<Car> cars;
 
     private Cars(List<Car> cars) {
