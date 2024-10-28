@@ -31,7 +31,7 @@ public class RaceGame {
     }
 
     //사용자의 입력에서 이름을 추출해 배열로 저장하는 메서드
-    void getNamesList(String input){
+    void getNamesList(String input)throws Exception{
         //null 예외 처리 성공
         //comma 기준으로 구분 성공
         try{
@@ -39,6 +39,10 @@ public class RaceGame {
             totalCars = carNamesList.length;
         } catch (NullPointerException e){
             throw new IllegalArgumentException("입력값이 존재하지 않습니다.");
+        }
+
+        if (totalCars <= 1){
+            throw new IllegalArgumentException("자동차가 2개 이상일 때 부터 자동차 경주를 진행할 수 있습니다.");
         }
 
         //이름의 앞,뒤 공백 제거 완료
@@ -61,11 +65,11 @@ public class RaceGame {
         try{
             this.totalRounds = Integer.parseInt(userInput);
         } catch (NumberFormatException e){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값이 올바른 형태가 아닙니다.");
         }
 
         if (totalRounds < 1){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값이 1 이상이어야 합니다.");
         }
     }
 
@@ -86,6 +90,7 @@ public class RaceGame {
 
     void playOneRound(RacingCar[] carList){
         for (RacingCar car : carList){
+            car.checkForwardCondition();
             if (car.forwardCondition){
                 car.moveForward();
             }

@@ -44,7 +44,6 @@ public class RacingCar implements Comparable<RacingCar> {
         return this.forwardCondition;
     }
 
-//    void moveForward() throws Exception{
 void moveForward(){
         this.currentLocation += "-";
         this.currentDistance += 1;

@@ -67,11 +67,11 @@ public class RacingCarTest{
         RacingCar car = new RacingCar();
 
         car.currentDistance = 2;
-        car.currentLocation = "__";
+        car.currentLocation = "--";
         car.moveForward();
 
         assertAll(
-                () -> assertEquals("___", car.currentLocation),
+                () -> assertEquals("---", car.currentLocation),
                 () -> assertEquals(3, car.currentDistance)
         );
     }
