@@ -2,6 +2,8 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Objects;
+
 public class Car {
     private final String name;
     private final Location location;
@@ -51,5 +53,17 @@ public class Car {
 
     public int getLocation() {
         return location.getLocation();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car car)) return false;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 }
