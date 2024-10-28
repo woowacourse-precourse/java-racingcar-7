@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.PriorityQueue;
@@ -7,6 +8,8 @@ import java.util.concurrent.PriorityBlockingQueue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.strategy.CarBasicStrategy;
 
 /**
@@ -40,7 +43,7 @@ class CarTest {
     assertEquals(initialPosition + 1, car.getPosition());
   }
 
-  @DisplayName("[Success]move : 자동차 이동 또는 정지 테스트")
+  @DisplayName("[Success]moveOrStay : 자동차 이동 또는 정지 테스트")
   @Test
   void moveOrStay() {
     int initialPosition = car.getPosition();
@@ -51,6 +54,36 @@ class CarTest {
     else {
       assertEquals(initialPosition, car.getPosition());
     }
+  }
+
+  @DisplayName("[Success]moveOrStay : 난수 값이 4 이상일 때 전진 테스트")
+  @ParameterizedTest
+  @ValueSource(ints = {4,5,6,7,8,9})
+  void moveOrStay_moveWhenGreaterThanOrEqualFour(int randomValue) {
+    int initialPosition = car.getPosition();
+    assertRandomNumberInRangeTest(
+        () -> {
+          HasCarMoved result = car.moveOrStay();
+          assertTrue(result.moved());
+          assertEquals(initialPosition + 1, car.getPosition());
+        },
+        randomValue
+    );
+  }
+
+  @DisplayName("[Success]moveOrStay : 난수 값이 4 미만일 때 정지 테스트")
+  @ParameterizedTest
+  @ValueSource(ints = {0,1,2,3})
+  void moveOrStay_stayWhenLessThanFour(int randomValue) {
+    int initialPosition = car.getPosition();
+    assertRandomNumberInRangeTest(
+        () -> {
+          HasCarMoved result = car.moveOrStay();
+          assertFalse(result.moved());
+          assertEquals(initialPosition, car.getPosition());
+        },
+        randomValue
+    );
   }
 
   @DisplayName("[Success]compareTo : 자동차 비교 테스트")
