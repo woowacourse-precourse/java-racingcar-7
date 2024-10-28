@@ -13,6 +13,11 @@ public class Car {
         this.name = name;
     }
 
+    public Car(Car origin){
+        this.name = origin.name;
+        this.moveCnt = origin.moveCnt;
+    }
+
     public String getName(){
        return this.name;
     }

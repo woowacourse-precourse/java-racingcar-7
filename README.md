@@ -23,6 +23,7 @@
 
 - have responsibility to process main logic and update Car data
 - provide interface for service logic and accessing Car data list
+- return copied car data which is not same reference with repository of model
 
 ## Controller
 

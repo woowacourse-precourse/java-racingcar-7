@@ -19,15 +19,27 @@ public class CarModel {
     }
 
     public List<Car> findAll(){
-        return new ArrayList<Car>(this.carRepository);
+        List<Car> ret =  new ArrayList<Car>();
+
+        this.carRepository.forEach(car->{
+            Car target = new Car(car);
+            ret.add(target);
+        });
+
+        return ret;
     }
 
     public Car findCarByName(String name){
 
-        return this.carRepository.stream()
+        Car target = this.carRepository.stream()
                 .filter(car -> car.getName().equals(name))
                 .findAny()
                 .orElse(null);
+
+        if(target==null)
+            return null;
+
+        return new Car(target);
 
     }
 
@@ -45,7 +57,10 @@ public class CarModel {
         List<Car> ret = new ArrayList<Car>();
         this.carRepository.stream()
                 .filter(car -> car.getMove()==move)
-                .forEach(ret::add);
+                .forEach(car->{
+                    Car target = new Car(car);
+                    ret.add(target);
+                });
 
         return ret;
     }
@@ -59,8 +74,8 @@ public class CarModel {
     }
 
     public void tryMoveAllCars(){
-        List<Car> carList = this.findAll();
-        carList.forEach(car -> {
+
+        this.carRepository.forEach(car -> {
             this.tryMoveCar(car);
         });
     }
@@ -88,7 +103,7 @@ public class CarModel {
     public List<Car> findWinner(int totalStage){
 
         if(totalStage < 0){
-            return null;
+            return new ArrayList<Car>();
         }
 
         List<Car> winner = this.findCarsByMove(totalStage);
