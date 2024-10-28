@@ -1,7 +1,10 @@
 package racingcar.model;
-
+import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,6 +47,28 @@ class RacingModelTest {
         String winners = model.getWinners();
         assertTrue(winners.contains("pobi"));
         assertTrue(winners.contains("woni"));
+    }
+
+    @Test
+    void 아무도_움직이지_않을때() {
+        // Given
+        String[] carNames = {"pobi", "woni", "jun"};
+        model.initializeCars(carNames);
+
+        // When: 모든 자동차를 모킹하여 이동하지 않도록 설정
+        List<Car> cars = model.getCarStates();
+        for (Car car : cars) {
+            Car mockCar = spy(car);
+            doNothing().when(mockCar).move(); // move 호출 시 아무것도 하지 않음
+        }
+
+        model.raceOneRound();
+
+        // Then: 3명이 공동 우승인지 확인
+        String winners = model.getWinners();
+        assertTrue(winners.contains("pobi"));
+        assertTrue(winners.contains("woni"));
+        assertTrue(winners.contains("jun"));
     }
 
 
