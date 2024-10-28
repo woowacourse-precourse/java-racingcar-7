@@ -2,11 +2,15 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
+
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
         StringTokenizer tokenizer = new StringTokenizer(Console.readLine(), ",");
         String car1 = tokenizer.nextToken();
@@ -26,6 +30,23 @@ public class Application {
                     car.go();
                 }
             }
+        }
+        //우승자를 뽑는 방식
+        private static void winner(List<Car> cars){
+            int maxDistatnce = 0;
+            for (Car car : cars) {
+                if (car.getDistance() >= maxDistatnce) {
+                    maxDistatnce = car.getDistance();
+                }
+            }
+            List<String> winners = new ArrayList<>();
+            for (Car car : cars) {
+                if (car.getDistance() == maxDistatnce) {
+                    winners.add(car.getName());
+                }
+            }
+            //우승자 출력
+            System.out.println("최종 우승자 : " + String.join(", ", winners));
         }
 
     }
