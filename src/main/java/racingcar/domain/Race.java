@@ -39,7 +39,6 @@ public class Race {
     }
 
     public void playOneRound() {
-        List<Car> cars = this.cars;
         for (Car car : cars) {
             if (canMove()) {
                 car.move();
