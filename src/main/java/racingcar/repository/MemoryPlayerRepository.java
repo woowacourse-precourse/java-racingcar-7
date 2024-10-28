@@ -1,9 +1,12 @@
 package racingcar.repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import racingcar.domain.player.Player;
+import racingcar.exception.player.PlayerException.PlayerNotFoundException;
 
 public class MemoryPlayerRepository implements PlayerRepository {
     private final Map<Long, Player> store = new HashMap<>();
@@ -16,12 +19,13 @@ public class MemoryPlayerRepository implements PlayerRepository {
 
     @Override
     public Player findById(Long id) {
-        return null;
+        return Optional.ofNullable(store.get(id))
+                .orElseThrow(() -> new PlayerNotFoundException(id));
     }
 
     @Override
     public List<Player> findAll() {
-        return null;
+        return new ArrayList<>(store.values());
     }
 
 }

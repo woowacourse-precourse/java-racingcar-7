@@ -1,12 +1,15 @@
 package racingcar.repository;
 
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.player.Player;
+import racingcar.exception.player.PlayerException.PlayerNotFoundException;
 
 @DisplayName("플레이어 레파지토리(PlayerRepository) 유스케이스")
 class MemoryPlayerRepositoryTest {
@@ -48,6 +51,18 @@ class MemoryPlayerRepositoryTest {
             // then
             Assertions.assertThat(gotsPlayer.getId()).isEqualTo(playerId);
 
+        }
+
+        @DisplayName("id가 Null일때 조회 시도")
+        @Test
+        void id가_Null일때_조회_시도() {
+            // given
+            PlayerRepository playerRepository = new MemoryPlayerRepository();
+
+            // when & then
+            assertThatThrownBy(() -> playerRepository.findById(null))
+                    .isInstanceOf(PlayerNotFoundException.class)
+                    .hasMessageContaining("존재하지 않는 플레이어 id 입니다 :");
         }
 
     }
