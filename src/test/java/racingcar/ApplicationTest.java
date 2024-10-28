@@ -38,10 +38,31 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("테스트 : 공백을 포함한 이름")
+    void 이름_테스트_공백포함이름() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,  juu n ", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "juu n : -", "최종 우승자 : pobi, juu n");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+
+    @Test
     @DisplayName("자동차 이름에 공백이 있는 경우")
-    void 이름_공백_예외_테스트() {
+    void 이름_예외_테스트_공백() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi, , woni", "5"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    @DisplayName("자동차 이름에 \\n이 있는 경우")
+    void 이름_예외_테스트_줄바꿈() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi, \n , woni", "5"))
                     .isInstanceOf(IllegalArgumentException.class);
         });
     }
