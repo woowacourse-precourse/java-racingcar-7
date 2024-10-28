@@ -39,4 +39,9 @@ public class OutputViewImpl implements OutputView {
   public void printEmptyLine() {
     System.out.println();
   }
+
+  @Override
+  public void printWinners(List<String> winners) {
+    System.out.print(FINAL_WINNER_MESSAGE + " : " + String.join(", ", winners));
+  }
 }
