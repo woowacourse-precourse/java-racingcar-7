@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar;
 
 import racingcar.controller.GameController;
 import racingcar.domain.strategy.DefaultRandomGenerator;
