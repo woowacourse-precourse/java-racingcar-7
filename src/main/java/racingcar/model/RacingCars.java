@@ -9,4 +9,8 @@ public class RacingCars {
     public void add(Car car) {
         racingCars.add(car);
     }
+
+    public List<Car> getRacingCars() {
+        return racingCars;
+    }
 }

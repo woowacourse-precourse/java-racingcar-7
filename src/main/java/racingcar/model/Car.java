@@ -9,4 +9,8 @@ public class Car {
         this.name = name;
         this.distance = 0;
     }
+
+    public void move() {
+        this.distance += 1;
+    }
 }

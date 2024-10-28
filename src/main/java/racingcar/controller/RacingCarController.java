@@ -3,22 +3,32 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.model.RacingCars;
 import racingcar.model.RacingGame;
+import racingcar.service.RacingCarService;
 import racingcar.view.RacingCarView;
 
 public class RacingCarController {
 
-    RacingCarView view = new RacingCarView();
-    RacingCars racingCars = new RacingCars();
+    private final RacingCarService racingCarService;
+    public RacingCarController(RacingCarService racingCarService) {
+        this.racingCarService = racingCarService;
+    }
 
-    public void raceStart() {
+    public void startGame() {
 
-        String inputCarNames = view.inputCarNames();
+        RacingCars racingCars = new RacingCars();
+        RacingGame racingGame = readyRacingGame(racingCars);
+        racingCarService.raceStart(racingGame);
+    }
+
+    private RacingGame readyRacingGame(RacingCars racingCars) {
+
+        String inputCarNames = RacingCarView.inputCarNames();
         for (final String carName : inputCarNames.split(",")) {
             racingCars.add(new Car(carName));
         }
 
-        int tryNum = Integer.parseInt(view.inputTryNumber());
+        int tryNum = Integer.parseInt(RacingCarView.inputTryNumber());
 
-        RacingGame racingGame = new RacingGame(racingCars, tryNum);
+        return new RacingGame(racingCars, tryNum);
     }
 }

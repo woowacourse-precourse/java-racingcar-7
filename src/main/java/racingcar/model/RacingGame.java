@@ -9,4 +9,12 @@ public class RacingGame {
         this.racingCars = racingCars;
         this.tryNumber = tryNumber;
     }
+
+    public int getTryNumber() {
+        return tryNumber;
+    }
+
+    public RacingCars getRacingCars() {
+        return racingCars;
+    }
 }
