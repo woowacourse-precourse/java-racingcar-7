@@ -73,6 +73,7 @@
 - [ ] ScoreBoard를 업데이트 한다.
     - [ ] LapScore 를 입력받는다.
     - [ ] Lap 동안 있던 정보를 출력한다.
+      - [x] 자동차 하나의 정보를 출력한다.
 - [ ] 승자를 출력한다.
 
 ### 🕹InputController

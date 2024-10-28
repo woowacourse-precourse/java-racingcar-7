@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.LapScore;
 import racingcar.domain.Race;
 import racingcar.view.ScoreBoard;
 
@@ -20,5 +21,12 @@ public class ScreenController {
     public void connect(Race race) {
         System.out.println(ScoreBoard.initMessage());
         this.race = race;
+    }
+
+    private void printCarStatus(LapScore lapScore) {
+        System.out.println(ScoreBoard.carStatus(
+                lapScore.getCarName()
+                ,lapScore.getScore())
+        );
     }
 }
