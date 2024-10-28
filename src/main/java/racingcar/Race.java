@@ -24,3 +24,8 @@ public class Race {
         return new Cars(carNameList);
     }
 
+    public void start() {
+        for (int i = 0; i < moveAttemptsCount; i++) {
+            competingCars.moveAll();
+        }
+    }

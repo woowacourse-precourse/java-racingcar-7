@@ -18,4 +18,8 @@ public class Cars {
         return carList;
     }
 
+    public void moveAll() {
+        carList.forEach(Car::forwardOrStop);
+    }
+
 }

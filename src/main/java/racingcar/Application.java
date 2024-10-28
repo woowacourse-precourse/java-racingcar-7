@@ -13,6 +13,7 @@ public class Application {
 
         Race race = new Race(names, moveAttemptsCount);
 
+        race.start();
     }
 
 
