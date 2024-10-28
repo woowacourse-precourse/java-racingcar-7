@@ -28,4 +28,10 @@ public class Validator {
             throw new IllegalArgumentException("자동차 이름에 중복이 포함되면 안됩니다.");
         }
     }
+
+    public static void validateAttemptCount(int attemptCount) {
+        if (attemptCount < 1) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
+        }
+    }
 }

@@ -22,4 +22,10 @@ public class RacingGameController {
 
         return carNames;
     }
+
+    public int getAttemptCount() {
+        int attemptCount = InputView.getAttemptCount();
+        Validator.validateAttemptCount(attemptCount);
+        return attemptCount;
+    }
 }
