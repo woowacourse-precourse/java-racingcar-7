@@ -17,6 +17,17 @@ public class Race {
         }
     }
 
+    public List<Car> end() {
+        int maxPosition = CARS.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return CARS.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
+    }
+
     private void run(){
         CARS.forEach(car -> car.move(MovementGenerator.getRandomMovement()));
         Output.printRunResult(CARS);
