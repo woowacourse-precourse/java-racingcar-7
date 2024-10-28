@@ -28,18 +28,4 @@ class RacingCarTest {
         racingCar.moveForward(() -> 9);
         assertThat(racingCar.getPosition()).isEqualTo(initialPos + 3);
     }
-
-    @Test
-    void 자동차의_이름은_5자_이하만_가능하다() {
-        new RacingCar("abcde");
-        new RacingCar("abcd ");
-
-        assertThatThrownBy(() -> new RacingCar(""))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INPUT_IS_EMPTY.getMessage());
-
-        assertThatThrownBy(() -> new RacingCar("abcdef"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CAR_NAME_IS_BETWEEN_ONE_AND_FIVE.getMessage());
-    }
 }

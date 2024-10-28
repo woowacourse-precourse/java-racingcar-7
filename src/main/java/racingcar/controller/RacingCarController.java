@@ -8,23 +8,19 @@ import racingcar.model.Racing;
 import racingcar.view.RacingCarView;
 
 public class RacingCarController {
-    private final ValidatorFactory validatorFactory;
+    private final Validator<List<String>> carValidator;
+    private final Validator<Integer> roundValidator;
     private final RacingCarView racingCarView;
     private Racing racing;
     private Integer round;
-    private final Supplier<Integer> randomSupplier = new RandomSupplier();
+    private final Supplier<Integer> randomSupplier;
 
-    public RacingCarController(RacingCarView racingCarView, ValidatorFactory validatorFactory) {
-        this.validatorFactory = validatorFactory;
+    public RacingCarController(RacingCarView racingCarView, ValidatorFactory validatorFactory, Supplier<Integer> randomSupplier) {
+        this.carValidator = validatorFactory.getCarValidator();
+        this.roundValidator = validatorFactory.getRoundValidator();
         this.racingCarView = racingCarView;
-        withRacing(racingCarView.inputCarNames());
-        withRound(racingCarView.inputRound());
-    }
-
-    private void withRacing(String input) {
-        Validator<List<String>> carValidator = validatorFactory.getCarValidator();
-        List<String> carNames = carValidator.validate(input);
-        this.racing = new Racing(carNames);
+        this.randomSupplier = randomSupplier;
+        initialize(racingCarView.inputCarNames(), racingCarView.inputRound());
     }
 
     public void run() {
@@ -35,8 +31,9 @@ public class RacingCarController {
         racingCarView.printWinners(racing.findFarthestCars());
     }
 
-    private void withRound(String input) {
-        Validator<Integer> roundValidator = validatorFactory.getRoundValidator();
-        this.round = roundValidator.validate(input);
+    public void initialize(String carNamesInput, String roundInput) {
+        List<String> carNames = carValidator.validate(carNamesInput);
+        this.round = roundValidator.validate(roundInput);
+        this.racing = new Racing(carNames);
     }
 }

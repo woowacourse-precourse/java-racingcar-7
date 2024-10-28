@@ -14,7 +14,7 @@ public class Racing {
     }
 
     public List<RacingCar> findFarthestCars() {
-        int maxPosition = getMaxPos();
+        int maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(racingCar -> racingCar.getPosition() == maxPosition)
                 .collect(toList());
@@ -36,7 +36,7 @@ public class Racing {
                 .forEach(cars::add);
     }
 
-    private int getMaxPos() {
+    private int getMaxPosition() {
         return cars.stream()
                 .mapToInt(RacingCar::getPosition)
                 .max()

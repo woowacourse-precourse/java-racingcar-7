@@ -11,9 +11,8 @@ public class RacingCar {
     private int position; // 자동차의 현재 위치
     private final int FORWARD_STANDARD = 4;
 
-
     public RacingCar(String name) {
-        withName(name);
+        this.name = name;
         this.position = 0;
     }
 
@@ -31,16 +30,6 @@ public class RacingCar {
         return name;
     }
 
-
-    private void withName(String name) {
-        if (StringUtils.isBlank(name)) {
-            throw new IllegalArgumentException(INPUT_IS_EMPTY.getMessage());
-        }
-        if (name.length() > 5) {
-            throw new IllegalArgumentException(CAR_NAME_IS_BETWEEN_ONE_AND_FIVE.getMessage());
-        }
-        this.name = name;
-    }
 
     private boolean isForward(int num) {
         return num >= FORWARD_STANDARD;
