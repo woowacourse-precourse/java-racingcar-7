@@ -7,24 +7,25 @@ import java.util.stream.Collectors;
 import racingcar.Model.Car;
 import racingcar.View.InputView;
 import racingcar.View.OutputView;
+import racingcar.util.Validator;
 
 public class GameController {
     private List<Car> cars;
 
     public void startGame() {
-        try {
-            setupCars();
-            int roundCount = getValidatedRoundCount();
-            for (int i = 0; i < roundCount; i++) {
-                runRound();
-                OutputView.printRoundResults(cars);
-            }
-            List<String> winners = determineWinners();
-            OutputView.printWinners(winners);
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        setupCars();
+        int roundCount = getRoundCount();
+        for (int i = 0; i < roundCount; i++) {
+            runRound();
+            OutputView.printRoundResults(cars);
         }
+        List<String> winners = determineWinners();
+        OutputView.printWinners(winners);
+
+    }
+
+    public void endGame() {
+
     }
 
     private void setupCars() {
@@ -35,26 +36,14 @@ public class GameController {
 
     private List<String> parseCarNames(String input) {
         List<String> carNames = List.of(input.split(","));
-        validateCarNames(carNames);
+        Validator.checkCarNameLength(carNames);
+        Validator.checkCarNamesUnique(carNames);
         return carNames;
     }
 
-    private void validateCarNames(List<String> carNames) {
-        if (carNames.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름을 하나 이상 입력해야 합니다.");
-        }
-        for (var name : carNames) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5글자 이하여야 합니다.");
-            }
-        }
-    }
 
-    private int getValidatedRoundCount() {
+    private int getRoundCount() {
         int roundCount = InputView.InputRoundNumber();
-        if (roundCount <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
-        }
         return roundCount;
     }
 
