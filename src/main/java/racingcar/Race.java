@@ -25,6 +25,25 @@ public class Race {
         }
     }
 
+    public void getWinner(ArrayList<Car> cars) {
+        ArrayList<String> winners = new ArrayList<>();
+
+        int maxForward = 0;
+        for (Car car: cars) {
+            if (car.getForward() > maxForward) {
+                maxForward = car.getForward();
+            }
+        }
+
+        for (Car car: cars) {
+            if (car.getForward() == maxForward) {
+                winners.add(car.getName());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
     private String makeCarResult(Car car) {
         return car.getName() + " : " + "-".repeat(car.getCondition());
     }
