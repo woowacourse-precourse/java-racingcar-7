@@ -32,8 +32,8 @@ public class OutputTest {
         cars.getCarList().forEach(car -> car.moveIfTrue(5));
         round.saveRoundResult(cars);
 
-        OutputView.roundResult(round.toStringRoundResult());
-        assertEquals("emily : -----\ntomas : -----\ngina : -----\n", round.toStringRoundResult());
+        OutputView.roundResult(cars.toStringRoundResult());
+        assertEquals("emily : -----\ntomas : -----\ngina : -----\n", cars.toStringRoundResult());
     }
 
     @Test
