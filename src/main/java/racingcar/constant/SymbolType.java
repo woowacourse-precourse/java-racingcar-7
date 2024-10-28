@@ -5,6 +5,7 @@ public enum SymbolType {
     RESULT_TOKEN(" : "),
     CAR_NAME_DELIMITER(","),
     RESULT_DELIMITER(", ");
+
     private final String symbol;
 
     SymbolType(String symbol) {
