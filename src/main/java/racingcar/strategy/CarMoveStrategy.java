@@ -1,4 +1,4 @@
-package racingcar.util.movement;
+package racingcar.strategy;
 
 public class CarMoveStrategy implements MoveStrategy {
     private static final int MOVE_THRESHOLD = 4;
