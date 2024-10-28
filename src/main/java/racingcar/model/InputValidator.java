@@ -15,6 +15,12 @@ import java.util.regex.Pattern;
 
 public class InputValidator {
 
+    public static final String DELIMITER = ",";
+    public static final int MAX_LENGTH_OF_NAME = 5;
+    public static final String WHITE_SPACE = " ";
+    public static final String NAME_PATTERN_REGEX = "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9\\s,]+$";
+    public static final String ATTEMPTS_PATTERN_REGEX = "^[0-9]+$";
+
     private void nullCheck(String input) {
         if (input == null) {
             throw new IllegalArgumentException(NULL_INPUT_EXCEPTION_MESSAGE.getMessage());
@@ -24,7 +30,7 @@ public class InputValidator {
     public void checkValidNames(String input) {
         nullCheck(input);
 
-        List<String> names = List.of(input.split(","));
+        List<String> names = List.of(input.split(DELIMITER));
 
         for (String name : names) {
             checkEmptyOf(name);
@@ -42,20 +48,19 @@ public class InputValidator {
     }
 
     private void checkThresholdLengthOf(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_LENGTH_OF_NAME) {
             throw new IllegalArgumentException(NAME_LENGTH_OVER_EXCEPTION_MESSAGE.getMessage());
         }
     }
 
     private void checkStartEndWhiteSpaceOf(String name) {
-        if (name.startsWith(" ") | name.endsWith(" ")) {
+        if (name.startsWith(WHITE_SPACE) | name.endsWith(WHITE_SPACE)) {
             throw new IllegalArgumentException(START_OR_END_WITH_WHITESPACE_EXCEPTION_MESSAGE.getMessage());
         }
     }
 
     private void checkInvalidCharacterOf(String name) {
-        String regex = "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9\\s,]+$";
-        if (!Pattern.matches(regex, name)) {
+        if (!Pattern.matches(NAME_PATTERN_REGEX, name)) {
             throw new IllegalArgumentException(INVALID_CHARACTER_EXCEPTION_MESSAGE.getMessage());
         }
     }
@@ -74,8 +79,7 @@ public class InputValidator {
     }
 
     private void checkInvalidAttemptsInputOf(String input) {
-        String regex = "^[0-9]+$";
-        if (!Pattern.matches(regex, input)) {
+        if (!Pattern.matches(ATTEMPTS_PATTERN_REGEX, input)) {
             throw new IllegalArgumentException(INVALID_ATTEMPTS_INPUT_EXCEPTION_MESSAGE.getMessage());
         }
     }
