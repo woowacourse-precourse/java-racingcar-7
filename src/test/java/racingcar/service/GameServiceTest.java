@@ -3,6 +3,7 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 
 import java.util.*;
 
@@ -20,24 +21,29 @@ public class GameServiceTest {
 
     @Test
     @DisplayName("자동차 전진 여부 테스트")
-    public void moveTest() {
-        game.move("pobi", 3);
-        game.move("woni", 4);
-        Map<String, Integer> carMap =  game.getCars();
+    public void moveIfConditionMetTest() {
+        Car pobi = game.getCarList().get(0);
+        Car woni = game.getCarList().get(1);
 
-        assertEquals(0, carMap.get("pobi"));
-        assertEquals(1, carMap.get("woni"));
+        game.moveIfConditionMet(pobi, 3);
+        game.moveIfConditionMet(woni, 4);
+
+        assertEquals(0, pobi.getPosition());
+        assertEquals(1, woni.getPosition());
     }
 
     @Test
     @DisplayName("우승자 가져오기 테스트")
     public void getWinnerTest() {
-        game.move("pobi", 4);
-        game.move("woni", 4);
+        Car pobi = game.getCarList().get(0);
+        Car jun = game.getCarList().get(2);
+
+        game.moveIfConditionMet(pobi, 4);
+        game.moveIfConditionMet(jun, 4);
 
         List<String> winners = game.getWinners();
 
-        assertTrue(winners.containsAll(Arrays.asList("pobi", "woni")));
+        assertTrue(winners.containsAll(Arrays.asList("pobi", "jun")));
     }
 
     @Test
@@ -52,5 +58,4 @@ public class GameServiceTest {
         assertEquals(GAMECOUNT, record.size());
 
     }
-
 }
