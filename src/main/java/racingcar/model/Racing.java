@@ -7,8 +7,8 @@ import java.util.List;
  * @since : 24. 10. 26.
  */
 public class Racing {
-  Cars cars;
-  int roundCount;
+  private Cars cars;
+  private int roundCount;
 
   private Racing (Cars cars, int roundCount){
     this.cars = cars;
