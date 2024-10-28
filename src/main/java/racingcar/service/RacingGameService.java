@@ -13,10 +13,12 @@ import java.util.List;
 
 public class RacingGameService {
     private final CarService carService;
+    private static final int FORWARD_LIMIT = 4;
 
     public RacingGameService(CarService carService){
         this.carService = carService;
     }
+
     public RacingGame registerRacingGame(Integer totalRound, List<Car> racingCars){
         return new RacingGame(totalRound, racingCars);
     }
@@ -64,12 +66,11 @@ public class RacingGameService {
         return game;
     }
 
-
     private CarRoundResult carRoundStart(Integer round, Car car){
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         CarState carState;
 
-        if(randomNumber < 4){
+        if(randomNumber < FORWARD_LIMIT){
             carState = CarState.STOP;
         }
         else{
