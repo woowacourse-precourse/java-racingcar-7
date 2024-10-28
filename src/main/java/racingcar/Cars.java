@@ -10,6 +10,7 @@ public class Cars {
 
     public Cars(List<String> names, RandomGenerator generator){
         for(String name : names){
+            Rule.validateNameLength(name);
             cars.add(new Car(name, generator));
         }
     }

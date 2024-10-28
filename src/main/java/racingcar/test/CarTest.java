@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.test;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.Car;
 import racingcar.randomgenerator.RandomGenerator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
