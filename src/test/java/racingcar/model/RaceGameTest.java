@@ -2,11 +2,11 @@ package racingcar.model;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.dto.FinalResultDto;
+import racingcar.model.dto.RoundIndividualResultDto;
 import racingcar.model.dto.RoundResultDto;
 
 class RaceGameTest {
@@ -66,10 +66,10 @@ class RaceGameTest {
 
         //when
         RoundResultDto roundResult = raceGame.getRoundResult();
-        Map<String, String> result = roundResult.roundResult();
+        List<RoundIndividualResultDto> result = roundResult.roundResult();
 
         //then
-        Assertions.assertThat(result.containsKey("우테코")).isTrue();
+        Assertions.assertThat(result.get(0).name()).isEqualTo("우테코");
     }
 
     @Test

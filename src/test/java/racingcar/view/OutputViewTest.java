@@ -4,15 +4,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Name;
-import racingcar.model.Position;
 import racingcar.model.dto.FinalResultDto;
+import racingcar.model.dto.RoundIndividualResultDto;
 import racingcar.model.dto.RoundResultDto;
 
 class OutputViewTest {
@@ -34,19 +31,20 @@ class OutputViewTest {
 
         //then
         Assertions.assertThat(out.toString())
-                .isEqualTo(ViewMessage.RESULT_MESSAGE.getMessage() + "\n");
+                .isEqualTo("\n" + ViewMessage.RESULT_MESSAGE.getMessage());
     }
 
     @Test
     @DisplayName("라운드 결과를 출력한다.")
     void printRoundResult() {
         //given
-        Map<Name, Position> result = new LinkedHashMap<>();
-        result.put(new Name("박재연"), new Position(2));
-        result.put(new Name("우테코"), new Position(3));
+        RoundIndividualResultDto individual1 = new RoundIndividualResultDto("박재연", 2);
+        RoundIndividualResultDto individual2 = new RoundIndividualResultDto("우테코", 3);
+        RoundResultDto result = new RoundResultDto(Arrays.asList(individual1, individual2));
 
         //when
-        outputView.printRoundResult(RoundResultDto.of(result));
+        outputView.printRoundResult(result);
+
         // then
         Assertions.assertThat(out.toString())
                 .isEqualTo("\n박재연 : --\n우테코 : ---\n");

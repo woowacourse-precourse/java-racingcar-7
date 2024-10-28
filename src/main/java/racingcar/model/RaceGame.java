@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.dto.FinalResultDto;
+import racingcar.model.dto.RoundIndividualResultDto;
 import racingcar.model.dto.RoundResultDto;
 
 public class RaceGame {
@@ -20,7 +21,12 @@ public class RaceGame {
 
     public RoundResultDto getRoundResult() {
         List<Car> cars = raceCars.getCars();
-        return RoundResultDto.of(cars.stream().collect(Collectors.toMap(Car::getName, Car::getPosition)));
+        return new RoundResultDto(
+                cars.stream().map(car ->
+                                new RoundIndividualResultDto(car.getName().getValue(), car.getPosition().getValue())
+                        )
+                        .collect(Collectors.toList())
+        );
     }
 
     public FinalResultDto getWinner() {
