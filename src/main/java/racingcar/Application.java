@@ -40,6 +40,17 @@ public class Application {
         }
     }
 
+    private static void printRaceWinner(Map<String, Integer> racing_progress) {
+        int max = Collections.max(racing_progress.values());
+
+        System.out.print("최종 우승자 : ");
+        for (String key : racing_progress.keySet()) {
+            if (max == racing_progress.get(key)) {
+                System.out.print(key + " ");
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
