@@ -44,4 +44,10 @@ public class InputValidator {
         }
     }
 
+    public static void validateEndIsAlphbetorNumber(String input) {
+        char lastChar = input.charAt(input.length() - 1);
+        if (!Character.isLetterOrDigit(lastChar)) {
+            throw new IllegalArgumentException("입력값의 마지막 문자는 알파벳 또는 숫자여야 합니다 : " + input);
+        }
+    }
 }
