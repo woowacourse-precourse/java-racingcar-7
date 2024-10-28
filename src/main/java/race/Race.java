@@ -40,6 +40,7 @@ public class Race {
         String[] tokens = input.split(",");
 
         for (String token : tokens) {
+            token = token.trim();
 
             CheckException.checkNameOfCar(token);
             cars.put(token, 0);
