@@ -1,6 +1,8 @@
 package car;
 
 public class Car {
+
+    public static Integer maxDistance;
     private final String name;
     private Integer distance;
 
@@ -11,6 +13,11 @@ public class Car {
 
     public void move(){
         distance++;
+        maxDistance = Math.max(distance, maxDistance);
+    }
+
+    public Integer getDistance(){
+        return distance;
     }
 
     @Override
