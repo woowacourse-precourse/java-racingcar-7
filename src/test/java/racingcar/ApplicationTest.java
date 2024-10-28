@@ -31,6 +31,11 @@ class ApplicationTest extends NsTest {
         );
 
         assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,pobi2", "0"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("자연수가 아닌 값이 들어왔습니다.")
