@@ -22,14 +22,6 @@ public class RacingTrack {
         validateCarCount();
     }
 
-    public void checkDuplicatedCarName(String name) {
-        var duplicatedName = cars.stream()
-                .anyMatch(car -> car.getName().equals(name));
-        if (duplicatedName) {
-            throw new IllegalArgumentException(RacingTrackException.DUPLICATED_CAR_NAME.getMessage());
-        }
-    }
-
     public List<String> step() {
         for (Car car : cars) {
             var seed = Randoms.pickNumberInRange(0, 9);
@@ -62,6 +54,14 @@ public class RacingTrack {
 
     public List<Car> getCarsForTest() {
         return cars;
+    }
+    
+    private void checkDuplicatedCarName(String name) {
+        var duplicatedName = cars.stream()
+                .anyMatch(car -> car.getName().equals(name));
+        if (duplicatedName) {
+            throw new IllegalArgumentException(RacingTrackException.DUPLICATED_CAR_NAME.getMessage());
+        }
     }
 
     private void validateCarCount() {
