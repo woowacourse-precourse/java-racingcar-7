@@ -27,7 +27,7 @@ public class RoundResultTest {
             cars.get(2).move();
         }, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP);
 
-        RoundResult roundResult = new RoundResult(cars);
+        RoundResult roundResult = RoundResult.recordRound(cars);
 
         assertThat(roundResult.getCarNames()).containsExactly("Alpha", "Bravo", "Choco");
         assertThat(roundResult.getCarPositions()).containsExactly(1, 1, 1);
