@@ -17,5 +17,4 @@ public class InputView {
         String input = Console.readLine();
         return InputValidator.validateGameCountAndReturn(input);
     }
-
 }
