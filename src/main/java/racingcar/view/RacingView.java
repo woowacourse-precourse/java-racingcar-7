@@ -2,7 +2,6 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
-import racingcar.dto.RaceResponse;
 import racingcar.global.validationUtils.InputValidation;
 import java.util.List;
 
@@ -29,21 +28,17 @@ public class RacingView {
     }
 
     // 각 차수별로 자동차 상태 출력
-    public void printCarStates(List<Car> carStates) {
+    public static void printCarStates(List<Car> carStates) {
         for (Car car : carStates) {
             System.out.println(car.getName() + " : " + car.getPosition());
         }
     }
 
     // 최종 우승자 출력
-    public void printWinners(String winners) {
+    public static void printWinners(String winners) {
         System.out.println("최종 우승자 : " + winners);
     }
 
-    public void printRaceResult(RaceResponse response) {
-        printCarStates(response.getCarStates());
-        printWinners(response.getWinner());
-    }
 
     // 자동차 이름에 공백 제거
     private String[] validateCarNames(String[] carNames) {
