@@ -17,6 +17,14 @@ public class CarTest {
     }
 
     @Test
+    void 자동차_이름이_5자_이하일_경우_생성_성공() {
+        Car car = new Car("pobi");
+
+        assertThat(car.getName()).isEqualTo("pobi");
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
     void 글자수_5자_초과() {
         assertThatThrownBy(() -> new Car("longerThanFive"))
                 .isInstanceOf(IllegalArgumentException.class)
