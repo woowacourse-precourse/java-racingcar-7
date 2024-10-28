@@ -33,9 +33,9 @@ public class RacingcarService {
         }
     }
 
-    public List<Car> createCar(List<String> input) {
+    public List<Car> createCar(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
-        for (String name : input) {
+        for (String name : carNames) {
             cars.add(new Car(name));
         }
         return cars;
