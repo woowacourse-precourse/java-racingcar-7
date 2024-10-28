@@ -1,12 +1,14 @@
 package racingcar.view;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static racingcar.constant.ExceptionMessage.INVALID_COUNT_RANGE;
 import static racingcar.constant.ExceptionMessage.INVALID_COUNT_TYPE;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.validator.InputValidator;
 
 public class InputView {
+
+    InputValidator inputValidator = new InputValidator();
 
     public void printCarInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -17,7 +19,10 @@ public class InputView {
     }
 
     public String getStringInput() {
-        return readLine();
+        String input = Console.readLine();
+        inputValidator.validateEmptyString(input);
+
+        return input;
     }
 
     public int getIntegerInput() {
@@ -28,6 +33,8 @@ public class InputView {
     }
 
     private void validateIntegerInput(String input) {
+        inputValidator.validateEmptyString(input);
+
         if (input.matches("0+")) {
             throw new IllegalArgumentException(INVALID_COUNT_RANGE.getValue());
         }
