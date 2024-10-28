@@ -17,11 +17,11 @@ public class RoundController {
     }
 
     public void gameStart(){
-        ArrayList<String> carNameList = InputHandler.handleCarNames(inputView);
+        InputHandler.handleCarNames(inputView);
         Judge judge = new Judge();
         int roundNumber = inputView.inputRounds();
 
-        for (String carName : carNameList) {
+        for (String carName : InputHandler.getCarNameList()) {
             Car car = new Car(carName);
             car.move(roundNumber);
         }
