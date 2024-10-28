@@ -7,7 +7,7 @@ public record Position(
         return new Position(0);
     }
 
-    public Position move() {
+    public Position increment() {
         return new Position(position + 1);
     }
 }
