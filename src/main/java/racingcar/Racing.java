@@ -26,7 +26,7 @@ public class Racing {
 
     public void show() {
         for (Car car : racingCar) {
-            System.out.println(car.getName() + " : ");
+            System.out.print(car.getName() + " : ");
             for (int i = 0; i < car.getCount(); i++) {
                 System.out.print("-");
             }

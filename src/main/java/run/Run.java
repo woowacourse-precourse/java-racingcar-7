@@ -32,7 +32,7 @@ public class Run {
         }
         for (String carName : carNames) {
             if (carName.length() > 5 || carName.isBlank()) {
-                throw new IllegalStateException();
+                throw new IllegalArgumentException();
             }
             isDigit(carName);
         }
@@ -43,7 +43,7 @@ public class Run {
         for (int i = 0; i < carName.length(); i++) {
             char c = carName.charAt(i);
             if (c < 65 || (c > 90 && c < 97) || c > 122) {
-                throw new IllegalStateException();
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -56,7 +56,7 @@ public class Run {
             if (c >= 48 && c <= 57) {
                 continue;
             } else {
-                throw new IllegalStateException();
+                throw new IllegalArgumentException();
             }
         }
         System.out.println();
