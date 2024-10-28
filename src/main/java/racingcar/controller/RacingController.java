@@ -22,6 +22,9 @@ public class RacingController {
             carRacingGame.advanceRound();
             printRoundResults(carRacingGame.getCurrentRoundResults());
         }
+
+        // 4. 최종 우승자 출력
+        printWinners(carRacingGame.getWinners());
     }
 
     // 사용자로부터 자동차 이름을 입력받고 처리
@@ -47,5 +50,11 @@ public class RacingController {
             System.out.println(result);
         }
         System.out.println();  // 라운드 사이에 줄바꿈으로 구분
+    }
+
+    // 최종 우승자 출력
+    private void printWinners(List<String> winners) {
+        String result = String.join(", ", winners);
+        System.out.println("최종 우승자: " + result);
     }
 }

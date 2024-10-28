@@ -24,4 +24,14 @@ public class Car {
     public String getStatus() {
         return name + " : " + "-".repeat(position);
     }
+
+    // 위치를 반환
+    public int getPosition() {
+        return position;
+    }
+
+    // 이름을 반환
+    public String getName() {
+        return name;
+    }
 }
