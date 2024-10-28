@@ -23,7 +23,7 @@ public class CarName {
 
     public static void validateHasBlank(String carName) {
         if (carName.contains(BLANK)) {
-            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_MUST_NOT_HAVE_CHARACTER.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_MUST_NOT_HAVE_BLANK.getErrorMessage());
         }
     }
 
