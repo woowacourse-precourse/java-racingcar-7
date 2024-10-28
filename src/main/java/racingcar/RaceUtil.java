@@ -11,6 +11,7 @@ public class RaceUtil {
      * @return 입력받은 이름을 담은 ArrayList
      */
     public ArrayList<String> inputRaceCar(){
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         ArrayList<String> carNameList = new ArrayList<>();
         String[] carName = Console.readLine().split(",");
 

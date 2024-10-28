@@ -5,7 +5,7 @@ public class RaceCar {
     private int forward;
 
     public RaceCar(String name){
-        this.name = name;
+        this.name = name.trim();
         this.forward = 0;
     }
 
