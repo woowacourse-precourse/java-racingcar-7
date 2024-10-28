@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ProgressManagementTest {
 
@@ -48,6 +49,7 @@ class ProgressManagementTest {
         // then
         assertThat(result).isFalse();
     }
+
     @Test
     @DisplayName("현재 진행한 시도 횟수를 1만큼 증가시킨다.")
     void incrementTryCount() {
@@ -60,5 +62,17 @@ class ProgressManagementTest {
 
         // then
         assertThat(progressManagement.isProgress()).isFalse();
+    }
+
+    @Test
+    @DisplayName("최대 시도 횟수 이상 시도할 경우 예외가 발생한다.")
+    void incrementTryCountThrowsException() {
+        // given
+        int tryCount = 0;
+        ProgressManagement progressManagement = new ProgressManagement(tryCount);
+
+        // when, then
+        assertThatThrownBy(progressManagement::incrementTryCount)
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

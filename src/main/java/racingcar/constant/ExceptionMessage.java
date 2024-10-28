@@ -3,7 +3,8 @@ package racingcar.constant;
 public enum ExceptionMessage {
 
     NOT_INTEGER("숫자만 입력할 수 있습니다."),
-    TOO_LONG_NAME("이름은 5자 이하만 가능합니다.");
+    TOO_LONG_NAME("이름은 5자 이하만 가능합니다."),
+    OVER_MAX_TRY_COUNT("시도할 수 있는 횟수를 모두 사용했습니다.");
 
     private final String message;
 
