@@ -31,7 +31,7 @@ class OutputMakerTest {
         //given
         List<String> winnerNames = List.of("woody", "fobi");
         Winners winners = new Winners(winnerNames);
-        String expected = "최종 우승자 : woody, fobi";
+        String expected = "\n최종 우승자 : woody, fobi";
 
         //when
         String result = OutputMaker.finalResult(winners);
