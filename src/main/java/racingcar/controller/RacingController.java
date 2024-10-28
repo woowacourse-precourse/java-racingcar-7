@@ -6,6 +6,7 @@ import racingcar.domain.entity.Attempt;
 import racingcar.domain.entity.car.Car;
 import racingcar.domain.entity.car.CarNames;
 import racingcar.domain.entity.Race;
+import racingcar.domain.vo.CarVO;
 import racingcar.view.InputView;
 import racingcar.view.OutputMessage;
 import racingcar.view.OutputView;
@@ -25,6 +26,7 @@ public class RacingController {
 		List<Car> cars = registerCars(carNames);
 		Race race = Race.from(attempt, cars);
 		printRaceResult(race);
+		List<String> winnerList = getWinnerList(race);
 	}
 
 	private CarNames inputCarName() {
@@ -56,5 +58,10 @@ public class RacingController {
 		for (String[] sentence : resultSentence) {
 			outputView.print(OutputMessage.DISTANCE, sentence[0], sentence[1]);
 		}
+	}
+
+	private List<String> getWinnerList(Race race) {
+		List<CarVO> carVOList = race.toCarVOList();
+		return CarVO.getWinnerList(carVOList);
 	}
 }

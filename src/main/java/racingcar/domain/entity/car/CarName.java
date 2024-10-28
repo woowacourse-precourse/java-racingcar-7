@@ -3,6 +3,7 @@ package racingcar.domain.entity.car;
 import java.util.Objects;
 
 import racingcar.common.exception.ErrorMessages;
+import racingcar.domain.vo.CarNameVO;
 
 public class CarName {
 	private static final int MAX_NAME_LENGTH = 5;
@@ -23,6 +24,10 @@ public class CarName {
 		String[] sentence = new String[2];
 		sentence[0] = value;
 		return sentence;
+	}
+
+	public CarNameVO toCarNameVO() {
+		return new CarNameVO(value);
 	}
 
 	@Override
