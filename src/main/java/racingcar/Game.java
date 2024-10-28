@@ -32,4 +32,20 @@ class Game {
         }
     }
 
+    public void printWinners() {
+        int maxPosition = 0;
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < carList.size(); i++) {
+            final int currentCarPosition = carList.get(i).getPosition();
+            final String currentCarName = carList.get(i).getName();
+            if (maxPosition < currentCarPosition) {
+                winners.clear();
+                winners.add(currentCarName);
+                maxPosition = currentCarPosition;
+            } else if (maxPosition == currentCarPosition) {
+                winners.add(currentCarName);
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }

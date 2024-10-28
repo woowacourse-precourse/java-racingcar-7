@@ -26,7 +26,11 @@ class Car {
         return position;
     }
 
-    public String getProgress() {
-        return "-".repeat(position);
+    public void printCurrentStatus() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(getName());
+        stringBuilder.append(" : ");
+        stringBuilder.append("-".repeat(position));
+        System.out.print(stringBuilder);
     }
 }
