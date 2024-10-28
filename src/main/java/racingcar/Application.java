@@ -9,10 +9,12 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carName = Console.readLine();
         List<String> splitName = new ArrayList<>(List.of(carName.split(",")));
         List<Integer> moveValue = new ArrayList<>();
 
+        System.out.println("시도할 횟수는 몇 회인가요?");
         int trial = Integer.parseInt(Console.readLine());
 
         for (int i = 0; i < splitName.size(); i++) {
@@ -24,6 +26,7 @@ public class Application {
             moveValue.add(0); // 각 이름의 초기 이동 값을 0으로 설정
         }
 
+        System.out.println("실행 결과");
         // 각 라운드별 "-" 출력
         for (int i = 1; i <= trial; i++) {
             round(splitName, moveValue);
@@ -61,13 +64,16 @@ public class Application {
             }
         }
 
+        // 공동 우승자
         List<String> winners = new ArrayList<>();
 
         for (int i = 0; i < cars.size(); i++) {
             if (moveValue.get(i) == maxValue)
-                winners.add(cars.get(i)); // "-" 출력이 가장 많은 자동차만 추가
+                winners.add(cars.get(i)); // "-" 출력이 같거나 가장 많은 자동차만 추가
         }
 
-        System.out.println(winners.get(0));
+        for (String jointWinners : winners) {
+            System.out.println("최종 우승자 : " + jointWinners);
+        }
     }
 }
