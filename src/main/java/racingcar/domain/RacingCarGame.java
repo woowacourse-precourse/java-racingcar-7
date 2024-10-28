@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.domain.CarCondition.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +32,7 @@ public class RacingCarGame {
     }
 
     private void moveCar(Car car, Integer number) {
-        if (number >= 4) {
+        if (number >= MOVE.getCondition()) {
             car.move();
         }
     }

@@ -8,7 +8,7 @@ public enum OutputMessage {
     MOVE_MARK("-"),
     WINNER("최종 우승자");
 
-    private String message;
+    private final String message;
 
     OutputMessage(String message) {
         this.message = message;
