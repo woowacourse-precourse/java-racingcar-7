@@ -20,9 +20,9 @@ public class Car {
                 .toList();
     }
 
-    private boolean checkLength(String name) {
+    public boolean checkLength(String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input Name is too long");
         }
         return true;
     }
