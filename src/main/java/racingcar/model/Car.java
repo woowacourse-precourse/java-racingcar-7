@@ -1,6 +1,7 @@
 package racingcar.model;
 
 public class Car {
+
     private final String name;
     private Long position;
 
@@ -23,5 +24,15 @@ public class Car {
 
     public static Car createCar(String name) {
         return new Car(name);
+    }
+
+    public String getPositionString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (long i = 0L; i < position; i++) {
+            sb.append("-");
+        }
+
+        return sb.toString();
     }
 }
