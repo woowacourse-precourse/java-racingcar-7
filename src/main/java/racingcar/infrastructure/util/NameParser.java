@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NameParser {
-
-    private final NameValidator nameValidator = new NameValidator();
-
     // TODO : ',' 로 이름 구별하기
     public List<String> parsingName(String name) {
         if (name == null || name.trim().isEmpty()) {
@@ -21,7 +18,7 @@ public class NameParser {
                 .filter(s -> !s.isEmpty())
                 .collect(Collectors.toList());
 
-        nameValidator.validRacingCarName(names);
+        NameValidator.validRacingCarName(names);
         return names;
     }
 }
