@@ -1,17 +1,16 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-import java.util.stream.Stream;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+
 class ApplicationTest extends NsTest {
+
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
@@ -38,24 +37,25 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 테스트_입력_이름_공백_제거와_중복_제거() {
-        // given
-        Input input = new Input();
-        String carNames = "pobi, pobi , pobi, woni";
-        List<String> result = Stream.of(carNames.split(",")).map(String::trim).distinct().toList();
-
-        // when, then
-        assertThat(result.size()).isEqualTo(2);
+        String carNames = "pobi, pobi, pobi ,woni";
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run(carNames, "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP);
     }
 
     @Test
     void 테스트_중복이름_5개_초과() {
         // given
-        Input input = new Input();
         String carNames = "pobi, pobi , pobi, woni, pobi  , june, pobi, pobi,pobi";
-        List<String> result = Stream.of(carNames.split(",")).map(String::trim).distinct().toList();
-
-        // when, then
-        assertThat(result.size()).isEqualTo(3);
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run(carNames, "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP);
     }
 
     @Test
@@ -68,7 +68,7 @@ class ApplicationTest extends NsTest {
         // when
         assertRandomNumberInRangeTest(
                 () -> {
-                    for (int round = 1; round <= rounds; round += 1){
+                    for (int round = 1; round <= rounds; round += 1) {
                         racingGame.playNextRound();
                     }
                     RoundStatus finalRoundStatus = racingGame.getRoundStatus();
@@ -112,8 +112,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트_이름_5글자_이상() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
