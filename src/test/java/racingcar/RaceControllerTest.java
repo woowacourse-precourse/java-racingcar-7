@@ -62,4 +62,19 @@ public class RaceControllerTest {
         int resultCount = output.split("pobi : ").length - 1;
         assertTrue(resultCount == 5, "시도 횟수만큼의 결과가 출력되어야 합니다.");
     }
+
+    @Test
+    void 우승자_결정_및_출력_테스트() {
+        raceController.startRace(5);
+
+        String output = outputStream.toString();
+
+        assertTrue(output.contains("최종 우승자 : "), "우승자 출력 형식이 올바르지 않습니다.");
+
+        List<Car> cars = raceController.getCars();
+        boolean hasWinner = cars.stream()
+                .map(Car::getName)
+                .anyMatch(output::contains);
+        assertTrue(hasWinner, "우승자의 이름이 출력에 포함되어야 합니다.");
+    }
 }
