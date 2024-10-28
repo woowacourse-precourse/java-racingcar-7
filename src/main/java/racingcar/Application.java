@@ -17,16 +17,19 @@ public class Application {
         ap.mem_trim();
         list = ap.initial(member);
         System.out.println("시도할 횟수는 몇 회인가요?");
+        int try_count = int_exception();
+        System.out.println("\n실행 결과");
+        execution(try_count);
+        ap.print_winner(ap.winner_score());
+    }
+    public int int_exception(){
         int try_count = 0;
-
         try{
             try_count = Integer.parseInt(Console.readLine());
         }catch (IllegalArgumentException e){
             System.out.print("invalid error");
         }
-        System.out.println("\n실행 결과");
-        execution(try_count);
-        ap.print_winner(ap.winner_score());
+        return try_count;
     }
 
     public void execution(int count){
