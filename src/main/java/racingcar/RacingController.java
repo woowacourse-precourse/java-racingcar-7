@@ -60,6 +60,7 @@ public class RacingController {
         }
     }
     private void runRace(List<Car> cars, int rounds) {
+        System.out.println("실행 결과");
         for (int i = 0 ; i < rounds ; i++) {
             for (Car car : cars) {
                 car.canMove();
