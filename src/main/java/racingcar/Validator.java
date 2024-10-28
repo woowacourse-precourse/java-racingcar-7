@@ -1,8 +1,25 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Validator {
+    public static List<Car> validateAndParseCarNames(String carNamesInput) {
+        Validator.validateNameEmpty(carNamesInput);
+
+        String[] names = carNamesInput.split(",");
+        List<String> nameList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            String trimName = name.trim(); // 이름 양 끝 공백 제거
+            Validator.validateNameLength(trimName);
+            Validator.validateNameDuplicate(trimName, nameList);
+            nameList.add(trimName);
+            cars.add(new Car(trimName, ""));
+        }
+        return cars;
+    }
+
     public static void validateNameEmpty(String name) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("빈 이름은 입력할 수 없습니다.");
