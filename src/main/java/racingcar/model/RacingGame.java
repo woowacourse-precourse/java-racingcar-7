@@ -22,10 +22,13 @@ public class RacingGame {
     }
 
     private void saveRoundResult() {
-        List<CarSnapshot> currentRound = cars.getAllCars().stream()
+        roundResults.add(getCurrentRoundResult());
+    }
+
+    private List<CarSnapshot> getCurrentRoundResult() {
+        return cars.getAllCars().stream()
                 .map(CarSnapshot::new)
                 .toList();
-        roundResults.add(currentRound);
     }
 
     public List<List<CarSnapshot>> getRoundResults() {
