@@ -24,4 +24,23 @@ public class RacingGameController {
         return cars;
     }
 
+    public static int maxDistance(List<Car> cars) {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            maxDistance = Math.max(maxDistance, car.getDistance());
+        }
+        return maxDistance;
+    }
+
+    public static List<String> getWinner(List<Car> cars) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getDistance() >= maxDistance(cars)) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
+
 }
