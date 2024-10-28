@@ -8,6 +8,8 @@ public class InputCarName {
         String car = Console.readLine();
 
         DelimiterName delimiterCar = new DelimiterName();
+        delimiterCar.validateDelimiter();
+
         String[] carList = car.split(delimiterCar.delimiter);
 
         for (String carName : carList) {
