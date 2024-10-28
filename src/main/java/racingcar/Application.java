@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 
@@ -9,28 +10,34 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
+        String[] carNames = input.split(",");
+        validateInput(carNames);
 
         System.out.println("시도할 회수는 몇 회인가요?");
         int count = Integer.parseInt(Console.readLine());
         validateCount(count);
 
+        String[] positions = prepareRacing(carNames);
         System.out.println("실행결과 ");
 
         for (int i = 0; i < count; i++) {
-            String roundProgress = doRacing(input, count);
-            System.out.println(roundProgress);
+            doRacing(positions);
+            printRoundProgress(carNames, positions);
         }
 
         String winner = getWinner();
         System.out.println("최종 우승자 : " + winner);
     }
 
-    private static String doRacing(String input, int count) {
-        String[] cars = input.split(",");
-        validateInput(cars);
-        validateCount(count);
-        return "";
+    private static String[] prepareRacing(String[] carNames) {
+        String[] positions = new String[carNames.length];
+        for (int i = 0; i < positions.length; i++) {
+            positions[i] = ""; // 초기화
+        }
+
+        return positions;
     }
+
 
     private static String getWinner() {
         return "";
@@ -81,5 +88,25 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름은 알파벳만 포함할 수 있습니다.");
             }
         }
+    }
+
+    private static void doRacing(String[] positions) {
+        for (int i = 0; i < positions.length; i++) {
+            if (isMoving()) {
+                positions[i] += "-";
+            }
+        }
+    }
+
+    private static boolean isMoving() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        return randomNumber >= 4;
+    }
+
+    private static void printRoundProgress(String[] carNames, String[] positions) {
+        for (int i = 0; i < carNames.length; i++) {
+            System.out.println(carNames[i] + " : " + positions[i]);
+        }
+        System.out.println(); // 라운드 간 줄바꿈
     }
 }
