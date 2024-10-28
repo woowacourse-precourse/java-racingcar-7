@@ -1,4 +1,3 @@
-//Application.java 
 package racingcar;
 
 import java.util.List;
