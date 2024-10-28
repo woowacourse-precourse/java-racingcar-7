@@ -1,5 +1,6 @@
 package racingcar.entity;
 
+import racingcar.Config;
 import racingcar.exception.CarNameValidationError;
 import racingcar.exception.ExceptionUtils;
 
@@ -23,7 +24,7 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        if (randomNumber >= 4) {
+        if (randomNumber >= Config.MOVE_MINIMUM_VALUE.getValue()) {
             this.position++;
         }
     }

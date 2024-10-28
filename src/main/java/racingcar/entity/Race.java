@@ -1,15 +1,12 @@
 package racingcar.entity;
 
 import java.util.List;
+import racingcar.Config;
 import racingcar.exception.ExceptionUtils;
 import racingcar.exception.RaceValidationError;
 import racingcar.util.RandomNumberGenerator;
 
 public class Race {
-    public static final int NUMBER_OF_CAR_LIMIT = 10;
-    public static final int RANDOM_NUMBER_BEGIN = 0;
-    public static final int RANDOM_NUMBER_END = 9;
-
     final List<Car> cars;
 
     private Race() {
@@ -23,7 +20,8 @@ public class Race {
 
     public void runSingleRound(RandomNumberGenerator randomNumberGenerator) {
         for (Car car : this.cars) {
-            car.move(randomNumberGenerator.pickRandomNumberInRange(RANDOM_NUMBER_BEGIN, RANDOM_NUMBER_END));
+            car.move(randomNumberGenerator.pickRandomNumberInRange(Config.RANDOM_NUMBER_BEGIN.getValue(),
+                    Config.RANDOM_NUMBER_END.getValue()));
         }
     }
 
@@ -51,7 +49,7 @@ public class Race {
     private void validate(List<Car> cars) {
         if (cars == null) {
             ExceptionUtils.throwIllegalArgException(RaceValidationError.CARS_NULL);
-        } else if (NUMBER_OF_CAR_LIMIT < cars.size()) {
+        } else if (Config.NUMBER_OF_CAR_LIMIT.getValue() < cars.size()) {
             ExceptionUtils.throwIllegalArgException(RaceValidationError.CARS_EXCEED_LIMIT);
         } else if (cars.stream().map(Car::getName).distinct().count() != cars.size()) {
             ExceptionUtils.throwIllegalArgException(RaceValidationError.CARS_DUPLICATE_NAME);
