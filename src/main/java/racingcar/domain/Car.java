@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Car {
 
-    private static final int MOVE_STANDARD = 4;
     private static final String NAME_POSITION_SEPARATOR = " : ";
     private static final String LINE_CHANGE = "\n";
 
@@ -28,10 +27,10 @@ public class Car {
         this.position = position;
     }
 
-    public Car decideMove(int random) {
-        if (random >= MOVE_STANDARD) {
+    public Car move(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable()) {
             position = position.increase();
-            return new Car(name, position);
+            return this;
         }
         return this;
     }

@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import racingcar.constants.Constants;
-import racingcar.util.RandomUtil;
 
 public class Cars {
 
@@ -28,8 +27,8 @@ public class Cars {
         return carSet.size() < carList.size();
     }
 
-    public void takeTurn() {
-        carList.forEach(car -> car.decideMove(RandomUtil.pickRandom()));
+    public void takeTurn(MoveStrategy moveStrategy) {
+        carList.forEach(car -> car.move(moveStrategy));
     }
 
     public List<String> findWinners() {

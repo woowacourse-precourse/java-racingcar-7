@@ -28,12 +28,12 @@ public class CarTest {
 
     @Test
     void 랜덤값_4이상이면_자동차_전진() {
-        assertThat(CAR_MARU.decideMove(4)).isEqualTo(new Car("maru", 1));
+        assertThat(CAR_MARU.move(() -> true)).isEqualTo(new Car("maru", 1));
     }
 
     @Test
     void 랜덤값_4미만이면_자동차_정지() {
-        assertThat(CAR_MARU.decideMove(3)).isEqualTo(CAR_MARU);
+        assertThat(CAR_MARU.move(() -> false)).isEqualTo(CAR_MARU);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class CarTest {
     @Test
     void to_string() {
         Car car = new Car("pobi", 3);
-        
+
         assertThat(car.toString()).isEqualTo("pobi : ---\n");
     }
 }
