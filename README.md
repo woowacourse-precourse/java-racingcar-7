@@ -1,5 +1,8 @@
 # java-racingcar-precourse
 
+![Generic badge](https://img.shields.io/badge/precourse-week2-green.svg)
+![Generic badge](https://img.shields.io/badge/JDK-21-blue.svg)
+
 ## 구현 기능 목록
 
 - [x] 경주할 자동차 이름을 입력받는 기능
