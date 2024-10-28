@@ -10,7 +10,7 @@ import java.util.List;
 import racingcar.race.manager.DelimiterManager;
 import racingcar.race.manager.ParseManager;
 import racingcar.race.manager.ValidManager;
-import racingcar.race.model.Cars;
+import racingcar.race.model.Racer;
 
 public class RacingGame {
 
@@ -26,23 +26,23 @@ public class RacingGame {
         this.delimiterManager = delimiterManager;
     }
 
-    private static void displayWinners(Cars cars) {
+    private static void displayWinners(Racer racer) {
         System.out.print(WINNER_RESULT_TEXT);
-        String winners = cars.getWinners();
+        String winners = racer.getWinners();
         System.out.println(winners);
     }
 
-    private static void displayExecute(Cars cars, int round) {
+    private static void displayExecute(Racer racer, int round) {
         System.out.println(EXECUTION_RESULT_TEXT);
-        String executionResult = cars.getExecutedRound(round);
+        String executionResult = racer.getExecutedRound(round);
         System.out.println(executionResult);
     }
 
     public void start() {
-        Cars cars = Cars.of(enterNames());
+        Racer racer = Racer.of(enterNames());
         int round = enterRound();
-        displayExecute(cars, round);
-        displayWinners(cars);
+        displayExecute(racer, round);
+        displayWinners(racer);
     }
 
     private List<String> enterNames() {

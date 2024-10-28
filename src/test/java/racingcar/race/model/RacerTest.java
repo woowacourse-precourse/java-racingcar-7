@@ -10,7 +10,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
 
-class CarsTest extends NsTest {
+class RacerTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
@@ -32,10 +32,10 @@ class CarsTest extends NsTest {
     void 우승자가_2명이상이면_쉼표를_구분자로한다() {
         //given
         List<String> participants = List.of("MAC", "APLLE", "BEST");
-        Cars cars = Cars.of(participants);
+        Racer racer = Racer.of(participants);
         String expectedWinners = participants.stream().collect(Collectors.joining(", "));
         //when
-        String winners = cars.getWinners();
+        String winners = racer.getWinners();
         //then
         Assertions.assertThat(expectedWinners).isEqualTo(winners);
     }

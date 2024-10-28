@@ -4,15 +4,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Cars {
+public class Racer {
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
+    private Racer(List<Car> cars) {
         this.cars = cars;
     }
 
-    public static Cars of(List<String> names) {
-        return new Cars(names.stream().map(Car::new).toList());
+    public static Racer of(List<String> names) {
+        return new Racer(names.stream().map(Car::new).toList());
     }
 
     public String getWinners() {
