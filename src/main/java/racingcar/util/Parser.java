@@ -30,7 +30,10 @@ public class Parser {
     public int parseAttemptCount(String input) {
         validator.validateCountEmpty(input);
         try {
-            return Integer.parseInt(input);
+            int attemptCount = Integer.parseInt(input);
+            validator.validatePositive(attemptCount);
+
+            return attemptCount;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("int 범위의 양수만 입력 가능합니다.");
         }

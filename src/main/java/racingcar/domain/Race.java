@@ -23,7 +23,6 @@ public class Race {
         List<Car> cars = parser.parseCarNames(view.scanCarNames());
 
         int attemptCount = parser.parseAttemptCount(view.scanAttemptCount(cars));
-        validator.validatePositive(attemptCount);
 
         startRace(cars, attemptCount);
 
