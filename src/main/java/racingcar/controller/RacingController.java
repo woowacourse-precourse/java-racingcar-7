@@ -11,6 +11,8 @@ import racingcar.view.OutputView;
 
 public class RacingController {
 
+    private static final int MAX_CAR_NAME_LENGTH = 5;
+
     final InputView inputView = new InputView();
     final OutputView outputView = new OutputView();
     int attempts;
@@ -69,7 +71,7 @@ public class RacingController {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다. ");
         }
-        if (name.length() > 5) {
+        if (name.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다. ");
         }
         return name;
