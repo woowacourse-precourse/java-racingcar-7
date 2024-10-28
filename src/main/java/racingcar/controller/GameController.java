@@ -7,6 +7,7 @@ import racingcar.domain.RacingGame;
 import racingcar.domain.factory.CarFactory;
 import racingcar.view.InputParser;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class GameController {
     private final InputView inputView;
@@ -29,5 +30,8 @@ public class GameController {
 
         // 자동차 경주 시작
         RacingGame.play(cars, round);
+
+        // 자동차 경주 종료
+        List<Car> winners = RacingGame.getWinners(cars);
     }
 }
