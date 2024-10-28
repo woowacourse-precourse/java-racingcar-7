@@ -11,11 +11,7 @@ public class PlayerStat {
         this.carName = carName;
         this.position = position;
     }
-
-    public int getRound() {
-        return round;
-    }
-
+    
     public String getCarName() {
         return carName;
     }

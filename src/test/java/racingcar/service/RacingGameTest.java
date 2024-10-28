@@ -8,8 +8,6 @@ import racingcar.domain.Player;
 class RacingGameTest {
     private static final AlwaysThreeNumberGenerator three = new AlwaysThreeNumberGenerator();
     private static final AlwaysFourNumberGenerator four = new AlwaysFourNumberGenerator();
-    private static final int MOVING_FORWARD = 4;
-    private static final int STOP = 3;
 
     @Test
     void 한칸_전진_테스트() {
