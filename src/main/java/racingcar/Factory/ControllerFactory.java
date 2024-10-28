@@ -8,6 +8,7 @@ import racingcar.View.OutputView;
 
 public class ControllerFactory {
     private final DomainFactory domainFactory;
+
     public ControllerFactory(DomainFactory domainFactory) {
         this.domainFactory = domainFactory;
     }

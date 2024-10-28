@@ -7,8 +7,7 @@ import racingcar.Util.Exception.ErrorMessage;
 
 public class NameValidation {
     public static boolean isLongName(List<String> names) {
-        for (String name : names)
-        {
+        for (String name : names) {
             if (name.length() > 5) {
                 return true;
             }
@@ -17,8 +16,7 @@ public class NameValidation {
     }
 
     public static boolean isWhitespace(List<String> names) {
-        for (String name : names)
-        {
+        for (String name : names) {
             if (name != null && name.trim().isEmpty()) {
                 return true;
             }
@@ -27,8 +25,7 @@ public class NameValidation {
     }
 
     public static boolean isEmpty(List<String> names) {
-        for (String name : names)
-        {
+        for (String name : names) {
             if (name != null && name.isEmpty()) {
                 return true;
             }

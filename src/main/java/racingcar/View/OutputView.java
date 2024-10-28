@@ -25,7 +25,7 @@ public class OutputView {
     public String convertPositionToDashes(Integer currentPosition) {
         StringBuilder raceBar = new StringBuilder();
 
-        while(currentPosition > 0) {
+        while (currentPosition > 0) {
             raceBar.append("-");
             currentPosition--;
         }
