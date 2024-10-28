@@ -34,10 +34,12 @@ public class CarInitializer {
 
         for (String name : nameList) {
             String playerName = name.strip();
-            if (playerName.isBlank() || playerName.length() > NAME_LENGTH_LIMIT) {
-                throw new IllegalArgumentException();
+            if (playerName.isBlank()) {
+                throw new IllegalArgumentException("자동차 이름이 공백으로 입력되었습니다.");
+            } else if(playerName.length() > NAME_LENGTH_LIMIT) {
+                throw new IllegalArgumentException("자동차의 이름은 " + NAME_LENGTH_LIMIT + "자 이내여야 합니다.");
             } else if (stateMap.containsKey(playerName)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다: " + playerName);
             } else {
                 stateMap.put(playerName, 0);
             }
