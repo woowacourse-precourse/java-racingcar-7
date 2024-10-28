@@ -19,49 +19,52 @@ class CarTest {
     @DisplayName("출력 결과 확인 테스트")
     void carTest1() {
         // given
-        String name = "car";
-        Car car = Car.create(name, 5);
+        CarName carName = CarName.create("car");
+
+        Car car = Car.create(carName, 5);
 
         // when
         String result = car.status();
 
         // then
-        assertThat(result).isEqualTo(name + COLON + "-----");
+        assertThat(result).isEqualTo(carName + COLON + "-----");
     }
 
     @Test
     @DisplayName("최소 값 테스트")
     void carTest2() {
         // given
-        String name = "car";
-        Car car = Car.create(name, 0);
+        CarName carName = CarName.create("car");
+
+        Car car = Car.create(carName, 0);
 
         // when
         String result = car.status();
 
         // then
-        assertThat(result).isEqualTo(name + COLON);
+        assertThat(result).isEqualTo(carName + COLON);
     }
 
     @Test
     @DisplayName("최소 값 테스트")
     void carTest3() {
         // given
-        String name = "car";
-        Car car = Car.create(name);
+        CarName carName = CarName.create("car");
+
+        Car car = Car.create(carName);
 
         // when
         String result = car.status();
 
         // then
-        assertThat(result).isEqualTo(name + COLON);
+        assertThat(result).isEqualTo(carName + COLON);
     }
 
     @Disabled
     @Test
     @DisplayName("최대 값 테스트 : 최대 반복 횟수 확인")
     void carTestMaxCount() {
-        String name = "c";
+        CarName carName = CarName.create("1234");
 
         // 테스트 결과 1410000000 정도에서 메모리 초과
         int tryCount = 1410000000;
@@ -70,9 +73,9 @@ class CarTest {
 
         while (!memoryExceeded) {
             try {
-                Car car = Car.create(name, tryCount);
+                Car car = Car.create(carName, tryCount);
                 String result = car.status();
-                assertThat(result).isEqualTo(name + COLON + MOVING.repeat(tryCount));
+                assertThat(result).isEqualTo(carName + COLON + MOVING.repeat(tryCount));
                 tryCount += increase;
             } catch (OutOfMemoryError e) {
                 memoryExceeded = true;
@@ -85,18 +88,19 @@ class CarTest {
     @DisplayName("유효하지 않은 입력값 테스트")
     @ValueSource(strings = {"자동차이름긺"})
     @NullAndEmptySource
-    void test4(String name) {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Car.create(name);
-        });
+    void test4(String carName) {
+
+        assertThrows(IllegalArgumentException.class, () ->
+                CarName.create(carName)
+        );
     }
 
     @Test
     @DisplayName("이름 5자 테스트")
     void test5() {
-        String name = "12345";
-        Car car = Car.create(name);
-        assertThat(car.status()).isEqualTo(name + COLON + MOVING.repeat(0));
+        CarName carName = CarName.create("12345");
+        Car car = Car.create(carName);
+        assertThat(car.status()).isEqualTo(carName + COLON + MOVING.repeat(0));
     }
 
 

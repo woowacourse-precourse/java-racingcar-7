@@ -18,7 +18,7 @@ class CarListTest {
 
         CarList carList = new CarList();
         for (String name : input.split(",")) {
-            carList.add(name);
+            carList.add(CarName.create(name));
         }
 
         CarNameCollect carNameCollect = CarNameCollect.create(input);

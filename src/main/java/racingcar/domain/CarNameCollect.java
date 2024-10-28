@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import static racingcar.utils.Constant.COMMA;
-import static racingcar.utils.Constant.MAX_CAR_NAME_LEN;
 import static racingcar.utils.ErrorMessage.INVALID_CAR_NAME;
 import static racingcar.utils.ErrorMessage.INVALID_INPUT;
 
@@ -15,23 +14,10 @@ public class CarNameCollect {
         this.value = input;
     }
 
-    public static CarNameCollect create(String carNames) {
-        return new CarNameCollect(validInput(carNames));
+    public static CarNameCollect create(String input) {
+        return new CarNameCollect(validInput(input));
     }
 
-    protected static String validName(String name) {
-        if (name == null || isInvalidName(name)) {
-            throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
-        }
-
-        return name;
-    }
-
-    private static boolean isInvalidName(String name) {
-        int length = name.length();
-
-        return length == 0 || length > MAX_CAR_NAME_LEN;
-    }
 
     private static String validInput(String input) {
         if (input == null || input.isEmpty()) {
@@ -50,13 +36,13 @@ public class CarNameCollect {
 
 
     protected String[] split() {
-        String[] splitInput = value.split(COMMA);
+        String[] splitName = value.split(COMMA);
 
-        if (splitInput.length == 0) {
+        if (splitName.length == 0) {
             throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
         }
 
-        return splitInput;
+        return splitName;
     }
 
     @Override

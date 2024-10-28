@@ -4,6 +4,7 @@ import static racingcar.utils.Constant.COMMA;
 import static racingcar.utils.Constant.ENTER;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -25,18 +26,15 @@ public class CarList {
 
     public static CarList from(CarNameCollect carNameCollect) {
         CarList carList = new CarList();
-        String[] splitName = carNameCollect.split();
-
-        for (String name : splitName) {
-            String validName = CarNameCollect.validName(name);
-            carList.add(validName);
-        }
+        Arrays.stream(carNameCollect.split())
+                .map(CarName::create)
+                .forEach(carList::add);
 
         return carList;
     }
 
-    public void add(String name) {
-        Car car = Car.create(name);
+    public void add(CarName carName) {
+        Car car = Car.create(carName);
         cars.add(car);
     }
 

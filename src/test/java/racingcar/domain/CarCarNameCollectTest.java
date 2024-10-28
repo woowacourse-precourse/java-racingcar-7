@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
-class CarNameCollectTest {
+class CarCarNameCollectTest {
 
     @Test
     @DisplayName("정상 입력 테스트")
@@ -21,9 +21,9 @@ class CarNameCollectTest {
 
         CarNameCollect carNameCollect = CarNameCollect.create(s);
         CarList expect = new CarList();
-        expect.add("pobi");
-        expect.add("woni");
-        expect.add("jun");
+        expect.add(CarName.create("pobi"));
+        expect.add(CarName.create("woni"));
+        expect.add(CarName.create("jun"));
 
         CarList result = CarList.from(carNameCollect);
 
@@ -40,8 +40,6 @@ class CarNameCollectTest {
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
-
-
 
 
     @Test
@@ -79,8 +77,6 @@ class CarNameCollectTest {
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
-
-
 
 
 }

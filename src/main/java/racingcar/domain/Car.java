@@ -14,22 +14,22 @@ public class Car {
     private final String name;
     private Integer moveCnt;
 
-    public Car(String name) {
-        this.name = name;
+    private Car(CarName carName) {
+        this.name = carName.toString();
         this.moveCnt = 0;
     }
 
-    public Car(String name, Integer moveCnt) {
-        this.name = name;
+    private Car(CarName carName, Integer moveCnt) {
+        this.name = carName.toString();
         this.moveCnt = moveCnt;
     }
 
-    public static Car create(String name) {
-        return new Car(CarNameCollect.validName(name));
+    public static Car create(CarName carName) {
+        return new Car(carName);
     }
 
-    public static Car create(String name, Integer cnt) {
-        return new Car(CarNameCollect.validName(name), cnt);
+    public static Car create(CarName carName, Integer cnt) {
+        return new Car(carName, cnt);
     }
 
     public Integer move() {

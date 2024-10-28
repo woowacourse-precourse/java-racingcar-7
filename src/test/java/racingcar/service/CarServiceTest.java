@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.config.RacingcarConfig;
 import racingcar.domain.CarList;
+import racingcar.domain.CarName;
 import racingcar.domain.TryCount;
 import racingcar.domain.Winners;
 
@@ -21,9 +22,9 @@ class CarServiceTest {
         TryCount tryCount = new TryCount(0);
         CarList carList = new CarList();
 
-        carList.add("car1");
-        carList.add("car2");
-        carList.add("car3");
+        carList.add(CarName.create("car1"));
+        carList.add(CarName.create("car2"));
+        carList.add(CarName.create("car3"));
 
         Winners expect = Winners.from(carList);
 
