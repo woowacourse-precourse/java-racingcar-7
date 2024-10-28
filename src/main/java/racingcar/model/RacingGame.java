@@ -28,6 +28,10 @@ public class RacingGame {
         return stepInfo;
     }
 
+    public List<String> getWinnerNames() {
+        return racingTrack.getWinnerNames();
+    }
+
     private void validateRound(Integer round) {
         if (round < MINIMUM_ROUND) {
             throw new IllegalArgumentException(RacingGameException.ROUND_IS_LESS_THAN_ONE.getMessage());
