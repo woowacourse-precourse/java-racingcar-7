@@ -1,56 +1,24 @@
 package racingcar;
 
 
-import java.util.ArrayList;
 import java.util.List;
-import racingcar.car.CarImpl;
 import racingcar.car.ICar;
-import racingcar.display.IInputDisplay;
+import racingcar.display.IGameSettingDisplay;
 import racingcar.display.IOutputDisplay;
 import racingcar.display.OutputDisplayImpl;
-import racingcar.display.WtcInputDisplay;
+import racingcar.display.WtcGameSettingDisplay;
 
 public class Application {
 
-    private static IInputDisplay inputDisplay;
-
     public static void main(String[] args) {
-        inputDisplay = new WtcInputDisplay();
+        IGameSettingDisplay gameSettingDisplay = new WtcGameSettingDisplay();
 
-        List<ICar> carList = settingCarList();
-        int round = settingRound();
+        List<ICar> carList = gameSettingDisplay.settingCarList();
+        int round = gameSettingDisplay.settingRound();
 
         IOutputDisplay outputDisplay = new OutputDisplayImpl();
         CarRacingGame carRacingGame = new CarRacingGame(outputDisplay, carList, round);
 
         carRacingGame.start();
-    }
-
-    private static List<ICar> settingCarList() {
-        String carNameMass = inputDisplay.getPromptInput("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-        if (carNameMass == null || carNameMass.isBlank()) {
-            throw new IllegalArgumentException(ErrorMessage.CAR_INPUT_EMPTY.getMessage());
-        }
-
-        String[] carNames = carNameMass.split(",");
-
-        List<ICar> carList = new ArrayList<>();
-        for (final String carName : carNames) {
-            carList.add(new CarImpl(carName));
-        }
-
-        return carList;
-    }
-
-    private static int settingRound() {
-        String roundStr = inputDisplay.getPromptInput("시도할 횟수는 몇 회인가요?\n");
-        if (roundStr == null || roundStr.isBlank()) {
-            throw new IllegalArgumentException(ErrorMessage.ROUND_INPUT_EMPTY.getMessage());
-        }
-        if (!roundStr.matches("-?\\d+")) {
-            throw new IllegalArgumentException(ErrorMessage.ROUND_INPUT_TYPE_NOT_MATCH.getMessage());
-        }
-
-        return Integer.parseInt(roundStr);
     }
 }
