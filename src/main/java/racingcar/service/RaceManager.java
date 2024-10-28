@@ -23,7 +23,7 @@ public class RaceManager {
         return round;
     }
 
-    public void playRoundUntilRoundCount(OutputView outputView) {
+    public void playAllRounds(OutputView outputView) {
         for (int i = 0; i < round; i++) {
             for (Car car : cars) {
                 car.attemptMoveForward();

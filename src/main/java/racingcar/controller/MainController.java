@@ -11,26 +11,31 @@ import racingcar.view.OutputView;
 import java.util.List;
 
 public class MainController {
-    private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
-    private final Validator validator = new Validator();
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final Validator validator;
 
+    public MainController(InputView inputView, OutputView outputView, Validator validator) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.validator = validator;
+    }
     public void run() {
-        String inputCarNames = inputView.inputCarName();
-        String inputCarRoundCount = inputView.inputCarRoundCount();
+        String CarNames = inputView.inputCarName();
+        String CarRoundCount = inputView.inputCarRoundCount();
 
-        validator.validateAllInput(inputCarNames, inputCarRoundCount);
+        validator.validateAllInput(CarNames, CarRoundCount);
 
-        List<Car> cars = CarFactory.createCarsFromInput(inputCarNames);
-        int carRoundCount = Integer.parseInt(inputCarRoundCount);
+        List<Car> cars = CarFactory.createCarsFromInput(CarNames);
+        int carRoundCount = Integer.parseInt(CarRoundCount);
 
         RaceManager raceManager = new RaceManager(cars, carRoundCount);
-        raceManager.playRoundUntilRoundCount(outputView);
+        raceManager.playAllRounds(outputView);
 
         List<Car> carsAtFinish = raceManager.getCars();
         WinnerDeterminer winnerDeterminer = new WinnerDeterminer(carsAtFinish);
-        List<Car> winners = winnerDeterminer.determineWinner();
 
+        List<Car> winners = winnerDeterminer.determineWinner();
         outputView.displayWinners(winners);
     }
 }
