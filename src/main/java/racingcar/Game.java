@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Game {
     public static void run() {
-        String userInput = InputData.getInputData();
+        String userInput = InputManager.getInputData();
         ValidateCar.validateInputCar(userInput);
-        String userInputCount = InputCount.getInputCountData();
+        String userInputCount = InputManager.getInputCountData();
         ValidateCount.validateInputCount(userInputCount);
 
         List<GameCar> doGame = GameCarParsingList.createGameCarList(userInput);
@@ -14,5 +14,8 @@ public class Game {
 
         GameCarProcess gameCarProcess = new GameCarProcess(doGame, tryCount);
         gameCarProcess.gameProgress();
+
+        List<String> findWinner = gameCarProcess.findWinner();
+        OutputManager.winnerPrint(findWinner);
     }
 }
