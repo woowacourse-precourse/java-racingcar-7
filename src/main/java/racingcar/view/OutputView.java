@@ -21,7 +21,9 @@ public class OutputView {
     }
 
     private void appendAllRoundResults(List<RoundResult> roundResults) {
-        stringBuilder.append(ROUND_RESULT_START_MESSAGE).append("\n");
+        stringBuilder.append("\n")
+                .append(ROUND_RESULT_START_MESSAGE)
+                .append("\n");
         for (RoundResult roundResult : roundResults) {
             appendRoundResult(roundResult);
         }
@@ -40,8 +42,7 @@ public class OutputView {
 
     private void appendWinners(List<String> winners) {
         stringBuilder.append("최종 우승자 : ")
-                .append(joinWinners(winners))
-                .append("\n");
+                .append(joinWinners(winners));
     }
 
     private String joinWinners(List<String> winners) {
