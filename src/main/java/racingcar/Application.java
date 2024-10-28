@@ -1,10 +1,14 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final int MOVE_CONDITION = 4;
+
     public static void main(String[] args) {
         String[] carNames = inputCarNames();
     }
@@ -59,6 +63,10 @@ public class Application {
                 car.move();
             }
         }
+    }
+
+    private static boolean shouldMove() {
+        return Randoms.pickNumberInRange(0, 9) >= MOVE_CONDITION;
     }
 
 }
