@@ -33,3 +33,6 @@
 - `randomNumberPick`: 랜덤 함수 호출 코드를 함수로 분리하여 랜덤값을 반환하도록 했다.
 - `printGameResult`: 각 게임의 실행 결과를 출력한다.
 - `printWinner`: 가장 높은 점수를 가진 차량을 `winner`에 저장하여 이를 바탕으로 동일한 점수를 가진 차량을 리스트에 저장한다. 이후 최종 우승자를 출력한다.
+
+## 실행 결과
+![image](https://github.com/user-attachments/assets/572d9990-7f49-4438-a5b1-0a58ad06963f)
