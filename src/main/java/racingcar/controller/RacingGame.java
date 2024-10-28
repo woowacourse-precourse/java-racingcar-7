@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.CarRacer;
 import racingcar.model.InputFilter;
+import racingcar.view.InputView;
 
 public class RacingGame {
 
@@ -18,5 +19,7 @@ public class RacingGame {
         carRacer.moveCars(inputFilter.getMoveCount());
 
         ViewController.printWinners(carRacer.getWinners());
+
+        InputView.closeRead();
     }
 }
