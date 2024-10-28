@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ public class Round {
     private Map<Car, Integer> results;
 
     public Round(){
+        this.cars = new ArrayList<Car>();
         this.results = new HashMap<Car, Integer>();
     }
 
