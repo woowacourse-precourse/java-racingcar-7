@@ -10,19 +10,20 @@ ___
 > "경주할 자동차 이름"
 
 - [x] `class UserName`
-    - [x] `void checkMaximumLength()`
-    - [x] `void hasOnlyCharacters()`
+    - [x] `void checkMaximumLength(String userName)`
+    - [x] `void hasOnlyCharacters(String userName)`
 
 > "전진"
 
 - [x] `class Score`
     - [x] `void moveForward()`
-    - [x] `int getScore()`
+    - [x] `int getScoreValue()`
 
 > "몇 번의 이동을 할 것인지"
 
 - [x] `class RoundNumber`
     - [x] `void checkMinimumValue()`
+    - [x] `int getRoundNumber()`
 
 > "무작위 값을 구한 후"
 
@@ -36,14 +37,16 @@ ___
   `Score score, UserName userName`
     - [x] `int compareTo(Car o)`
     - [x] `String getUserName()`
-    - [x] `int getScore()`
+    - [x] `Score getScore()`
+    - [x] `void moveCar(int randomNumber)`
 
 > 자동차들
 
 - [x] `class PlayersCars`
   `List<Car> playersCars`
-    - [x] `void moveCar()`
-    - [x] `List<String> findMaximumScoreCars`
+    - [x] `void moveSequence(NumberGenerator numberGenerator)`
+    - [x] `List<String> findMaximumScoreCars()`
+    - [x] `List<Car> getPlayersCars()`
 
 ### io
 ___
@@ -54,23 +57,14 @@ ___
     - [x] `int makeUserInput()`
 
 - [x] `class ParserUserInput`
-    - [x] `void hasOnlyCharacters()`
-    - [x] `void split()`
+    - [x] `void split(String parseTarget)`
 
 - [x] `class Printer`
-    - [x] `void printRoundResult()`
-    - [x] `void printFinalResult()`
+    - [x] `void printRoundResult(List<Car> roundResult)`
+    - [x] `void printFinalResult(List<String> finalResult)`
 
 ### controller
 ___
 
-- [ ] `class Controller`
-    - [ ] `void run()`
-        - [ ] `void playRound(RoundNumber)`
-            - [ ] `void playersCars.moveCar`
-            - [ ] `void printRoundResult()`
-        - [ ] `void printFinalResult()`
-
-## 구현
-
-___
+- [x] `class Controller`
+    - [x] `void run()`
