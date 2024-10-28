@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import racingcar.util.RandomNumberGenerator;
 
 public class Cars {
     private final List<Car> cars;
@@ -11,8 +12,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void move() {
-        cars.forEach(Car::move);
+    public void move(RandomNumberGenerator randomNumberGenerator) {
+        cars.forEach(car -> car.move(randomNumberGenerator.move()));
     }
 
     public HashMap<String, Integer> getRoundResult() {
