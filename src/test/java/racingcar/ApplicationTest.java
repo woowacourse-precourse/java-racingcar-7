@@ -50,6 +50,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 완전하지_않은_낱말(){
+        ArrayList<String> carNameList = new ArrayList<>(List.of("ㅁ불완전ㅇ"));
+        assertThrows(IllegalArgumentException.class,() -> {
+            InputValidator.notCompleteKoreanName(carNameList);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
