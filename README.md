@@ -31,6 +31,11 @@
     - 이름 쉼표(,) 기준으로 구분
 -[X] 시도 횟수 재가공
 
+## UserInputProcessorValidator
+
+-[X] 총 시도횟수가 정수 범위를 넘어가는지 검증
+- 정수 범위를 넘어갈 경우 `IllegalArgumentException` 발생
+
 ## RacingCarController
 
 -[X] InputView에서 이름, 시도 횟수 입력 받기
