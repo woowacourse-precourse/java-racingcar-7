@@ -12,8 +12,8 @@
 
 
 2. **시도할 횟수 입력**
-    - [ ] 자동차 이름 입력이 완료되면, 게임에서 자동차들이 이동할 시도 횟수를 입력받는다.
-    - [ ] 입력받은 시도 횟수는 자연수이어야 하며, 입력 후 올바른 값인지 확인한다.
+    - [x] 자동차 이름 입력이 완료되면, 게임에서 자동차들이 이동할 시도 횟수를 입력받는다.
+    - [x] 입력받은 시도 횟수는 자연수이어야 하며, 입력 후 올바른 값인지 확인한다.
 
 
 ### 2. 입력 예외 처리
@@ -24,10 +24,10 @@
 
 
 - **시도 횟수 검증**
-    - [ ] 시도할 횟수가 숫자가 아닌 경우 'IllegalArgumentException'을 발생시킨다.
-    - [ ] 시도할 횟수가 자연수가 아닌 경우 'IllegalArgumentException'을 발생시킨다.
-    - [ ] 시도할 횟수가 0인 경우 'IllegalArgumentException'을 발생시킨다.
-    - [ ] 시도할 횟수가 공백이라면 'IllegalArgumentException'을 발생시킨다.
+    - [x] 시도할 횟수가 숫자가 아닌 경우 'IllegalArgumentException'을 발생시킨다.
+    - [x] 시도할 횟수가 자연수가 아닌 경우 'IllegalArgumentException'을 발생시킨다.
+    - [x] 시도할 횟수가 0인 경우 'IllegalArgumentException'을 발생시킨다.
+    - [x] 시도할 횟수가 공백이라면 'IllegalArgumentException'을 발생시킨다.
 
 ------
 

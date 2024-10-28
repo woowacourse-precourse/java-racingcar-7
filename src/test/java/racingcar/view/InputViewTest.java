@@ -48,8 +48,7 @@ class InputViewTest {
         provideInput("car1,carqwq,car3");
 
         //when & then
-        Assertions.assertThatThrownBy(() -> InputView.inputCarNames())
-                .isInstanceOf(IllegalArgumentException.class)
+        Assertions.assertThatThrownBy(() -> InputView.inputCarNames()).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 1~5자 이내여야 합니다.");
     }
 
@@ -60,8 +59,7 @@ class InputViewTest {
         provideInput("car1,car3, ");
 
         //when & then
-        Assertions.assertThatThrownBy(() -> InputView.inputCarNames())
-                .isInstanceOf(IllegalArgumentException.class)
+        Assertions.assertThatThrownBy(() -> InputView.inputCarNames()).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 빈칸이 아니어야 합니다.");
     }
 
@@ -72,8 +70,53 @@ class InputViewTest {
         provideInput("car1,car2,car1");
 
         //when & then
-        Assertions.assertThatThrownBy(() -> InputView.inputCarNames())
-                .isInstanceOf(IllegalArgumentException.class)
+        Assertions.assertThatThrownBy(() -> InputView.inputCarNames()).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("시도할 횟수가 정상적인 경우")
+    void inputTryCount_returnsValidCount() {
+        //given
+        provideInput("5");
+
+        //when
+        int tryCount = InputView.inputTryCount();
+
+        //then
+        Assertions.assertThat(tryCount).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("시도할 횟수가 숫자가 아닌 경우 예외 발생")
+    void inputTryCount_throwException_whenInputIsNotNumber() {
+        //given
+        provideInput("abc");
+
+        //when & then
+        Assertions.assertThatThrownBy(() -> InputView.inputTryCount()).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 숫자로 입력해야 합니다.");
+    }
+
+    @Test
+    @DisplayName("시도할 횟수가 공백인 경우 예외 발생")
+    void inputTryCount_throwException_whenInputIsBlank() {
+        //given
+        provideInput(" ");
+
+        //when & then
+        Assertions.assertThatThrownBy(() -> InputView.inputTryCount()).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 공백일 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("시도할 횟수가 자연수가 아닌 경우 예외 발생")
+    void inputTryCount_throwException_whenInputIsNotPositive() {
+        //given
+        provideInput("-1");
+
+        //when & then
+        Assertions.assertThatThrownBy(() -> InputView.inputTryCount()).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 1 이상의 자연수이어야 합니다.");
     }
 }
