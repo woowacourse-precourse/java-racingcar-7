@@ -2,7 +2,6 @@ package racingcar.service;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import racingcar.config.RaceConstants;
 import racingcar.model.Car;
@@ -49,7 +48,7 @@ public class RaceServiceImpl implements RaceService{
 
         return IntStream.range(0, round)
                 .mapToObj(i -> executeRaceRound(cars))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private RaceLog executeRaceRound(List<Car> cars) {

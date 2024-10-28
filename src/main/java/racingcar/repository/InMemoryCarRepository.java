@@ -2,8 +2,6 @@ package racingcar.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import racingcar.model.Car;
 
 public class InMemoryCarRepository implements CarRepository{
@@ -47,13 +45,13 @@ public class InMemoryCarRepository implements CarRepository{
 
     private List<Car> findByProgress(int progress) {
         return carStore.stream()
-                .filter(car -> car.getProgress() == progress)
-                .collect(Collectors.toList());
+                .filter(car -> car.isSameProgress(progress))
+                .toList();
     }
 
     public boolean existsByName(String name) {
         return carStore.stream()
-                .anyMatch(car -> Objects.equals(car.getName(), name));
+                .anyMatch(car -> car.isSameName(name));
     }
 
     public void reset() {
