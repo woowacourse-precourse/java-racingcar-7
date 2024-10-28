@@ -50,7 +50,7 @@ public class RacingController {
         ArrayList<String> winners = new ArrayList<>();
 
         int maxPosition = 0;
-        for(RacingCar rc : racingCars) {
+        for (RacingCar rc : racingCars) {
             maxPosition = Integer.max(maxPosition, rc.getPosition());
         }
 
@@ -59,10 +59,8 @@ public class RacingController {
                 winners.add(rc.getName());
             }
         }
-
         return winners;
     }
-
 
 
 }
