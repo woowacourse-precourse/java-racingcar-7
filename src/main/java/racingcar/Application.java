@@ -27,7 +27,7 @@ public class Application {
         printResults(cars);  // 경주 후 결과 출력
 
         String winners = determineWinners(cars); // 우승자 결정
-        System.out.println("우승자: " + winners);
+        System.out.println("최종 우승자: " + winners);
     }
 
     private static void validateInput(String[] carNames, int attempts) {
