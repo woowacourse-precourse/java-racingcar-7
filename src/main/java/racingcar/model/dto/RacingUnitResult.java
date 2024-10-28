@@ -8,7 +8,7 @@ public class RacingUnitResult {
 
     Map<Car, Integer> result = new LinkedHashMap<>();
 
-    public void addResult(Car car){
+    public void addResult(Car car) {
         this.result.put(car, car.getPosition());
     }
 
