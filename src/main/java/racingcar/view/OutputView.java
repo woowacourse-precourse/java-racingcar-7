@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.model.Car;
 
 public class OutputView {
+    private static final String WINNER_MESSAGE = "최종 우승자";
 
     private static String getDistanceVisual(int distance) {
         StringBuilder visual = new StringBuilder();
@@ -21,4 +22,22 @@ public class OutputView {
         System.out.println();
     }
 
+    public static void printWinnerMessage(List<Car> cars) {
+        int maxDistance = 0;
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getDistance() > maxDistance) {
+                maxDistance = car.getDistance();
+            }
+        }
+
+        for (Car car : cars) {
+            if (car.getDistance() == maxDistance) {
+                winners.add(car.getName());
+            }
+        }
+
+        System.out.println(WINNER_MESSAGE + " : " + String.join(", ", winners));
+    }
 }
