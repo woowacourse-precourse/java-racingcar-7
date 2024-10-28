@@ -16,6 +16,12 @@ class Car {
 public class Application {
     static Car car_list[];
 
+    public static void checkValid(String name) {
+        if (name.length() > 5 || name.length() == 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void saveCar(String user_input) {
         user_input += ",";
         String name = "";
@@ -24,9 +30,7 @@ public class Application {
             if (user_input.charAt(i) != ',') {
                 name += user_input.charAt(i);
             } else {
-                if (name.length() > 5) {
-                    throw new IllegalArgumentException();
-                }
+                checkValid(user_input);
 
                 Car new_car = new Car(name, 0);
                 car_list[idx++] = new_car;
