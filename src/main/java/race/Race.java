@@ -52,5 +52,34 @@ public class Race {
         rounds.add(round);
     }
 
+    public String printFinalResult(){
+        int maxBound = 0;
+        List<String> winners = new ArrayList<>();
+        StringBuilder result = new StringBuilder();
+        for(Car car : cars)
+            fixFinalWinner(winners, car, maxBound);
+
+        for(String winner : winners){
+            result.append(winner);
+        }
+
+        return result.toString();
+    }
+
+    private int fixMaxBound(Car car, int maxBound){
+        return Math.max(car.getMoveCount(), maxBound);
+
+    }
+
+    private void fixFinalWinner(List<String> winners, Car car, int maxBound){
+        if(car.getMoveCount() > maxBound){
+            maxBound = fixMaxBound(car, maxBound);
+            winners.clear();
+            winners.add(car.getCarName());
+        }else if(car.getMoveCount() == maxBound){
+            winners.add(car.getCarName());
+        }
+
+    }
 
 }
