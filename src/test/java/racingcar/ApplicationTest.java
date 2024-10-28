@@ -35,4 +35,26 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 빈_이름_입력_예외_테스트() {
+        String input = "pobi,,woni";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(input, "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복_우숭자_발생_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD,MOVING_FORWARD
+        );
+    }
+
+
 }
