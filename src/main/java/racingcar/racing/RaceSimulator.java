@@ -12,10 +12,7 @@ import racingcar.message.prompt.ResultPrompt;
 import racingcar.util.RandomNumberGenerator;
 
 public class RaceSimulator {
-    private RaceSimulator() {
-    }
-
-    public static void startRace(List<Car> cars, long tryCount) {
+    public void startRace(List<Car> cars, long tryCount) {
         println(ResultPrompt.RESULT_PROMPT);
 
         while (tryCount-- > 0) {
@@ -24,30 +21,30 @@ public class RaceSimulator {
         }
     }
 
-    private static void tryMoveCars(List<Car> cars) {
+    private void tryMoveCars(List<Car> cars) {
         cars.stream()
                 .filter(car -> RandomNumberGenerator.getRandomNumber() >= MOVE_STAND_NUMBER)
                 .forEach(Car::moveCar);
     }
 
-    private static String getRacingProgress(List<Car> cars) {
+    private String getRacingProgress(List<Car> cars) {
         return cars.stream()
                 .map(car -> car.getCarName() + " : " + "-".repeat(car.getMoveDistance()))
                 .collect(Collectors.joining("\n"));
     }
 
-    public static String getRacingWinner(List<Car> cars) {
+    public String getRacingWinner(List<Car> cars) {
         List<Car> copyCars = new ArrayList<>(cars);
         int moveDistanceMax = getMoveDistanceMax(copyCars);
         return choseRacingWinner(copyCars, moveDistanceMax);
     }
 
-    private static int getMoveDistanceMax(List<Car> cars) {
+    private int getMoveDistanceMax(List<Car> cars) {
         cars.sort(Comparator.comparingInt(Car::getMoveDistance).reversed());
         return cars.getFirst().getMoveDistance();
     }
 
-    private static String choseRacingWinner(List<Car> cars, int moveDistanceMax) {
+    private String choseRacingWinner(List<Car> cars, int moveDistanceMax) {
         StringBuilder winners = new StringBuilder();
 
         winners.append(cars.getFirst().getCarName());

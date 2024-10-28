@@ -6,8 +6,6 @@ import static racingcar.io.OutputUtil.println;
 import static racingcar.message.prompt.ResultPrompt.WINNER_PROMPT;
 import static racingcar.message.prompt.UserInputPrompt.CAR_NAME_PROMPT;
 import static racingcar.message.prompt.UserInputPrompt.TRY_COUNT_PROMPT;
-import static racingcar.racing.RaceSimulator.getRacingWinner;
-import static racingcar.racing.RaceSimulator.startRace;
 import static racingcar.util.SplitString.SplitCarNames;
 
 import java.util.List;
@@ -16,6 +14,7 @@ import racingcar.car.CarFactory;
 import racingcar.util.IntConverter;
 
 public class RacingManager {
+    private final RaceSimulator raceSimulator = new RaceSimulator();
     private final CarFactory carFactory;
 
     public RacingManager(CarFactory carFactory) {
@@ -32,7 +31,7 @@ public class RacingManager {
         println(TRY_COUNT_PROMPT);
         long tryCount = IntConverter.StringToInt(InputString());
 
-        startRace(cars, tryCount);
-        print(WINNER_PROMPT + getRacingWinner(cars));
+        raceSimulator.startRace(cars, tryCount);
+        print(WINNER_PROMPT + raceSimulator.getRacingWinner(cars));
     }
 }
