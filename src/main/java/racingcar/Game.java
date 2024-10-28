@@ -11,7 +11,7 @@ public class Game {
         this.racingCars = racingCars;
     }
 
-    public static Game createGame(Integer round, List<RacingCar> racingCars) {
+    public static Game of(Integer round, List<RacingCar> racingCars) {
         return new Game(round, racingCars);
     }
 

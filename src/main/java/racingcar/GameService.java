@@ -13,7 +13,7 @@ public class GameService {
     }
 
     public void init(Integer round, List<String> carNames) {
-        this.game = Game.createGame(round, createRacingCars(carNames));
+        this.game = Game.of(round, createRacingCars(carNames));
     }
 
     public List<RacingCar> createRacingCars(List<String> carNames) {
