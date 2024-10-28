@@ -24,7 +24,10 @@ public class InputHandler {
     }
 
     boolean isCarNameLengthValid(String carName) {
-        return carName != null && carName.length() <= MAX_NAME_LENGTH;
+        if (carName.isBlank()){
+            throw new IllegalArgumentException("자동차 이름을 입력해야합니다.");
+        }
+        return carName.length() <= MAX_NAME_LENGTH;
     }
 
     boolean areAllCarNameLengthsValid(List<String> carNames) {
