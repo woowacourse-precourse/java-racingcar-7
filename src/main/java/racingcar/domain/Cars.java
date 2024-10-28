@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Cars {
-    public static String delimiter = ",";
+    private static String delimiter = ",";
 
     private final List<Car> cars;
 
