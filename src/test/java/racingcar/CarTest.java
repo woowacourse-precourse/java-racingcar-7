@@ -22,7 +22,7 @@ public class CarTest {
     }
     @DisplayName("자동차 객체 생성 성공 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"a", "pobi", "a2", "abcd", "12345"})
+    @ValueSource(strings = {"한동근", "두동근", "3동근", "four", "12345"})
     void carNameSuccessTest(String name) {
         Car car = new Car(name);
 
@@ -31,7 +31,7 @@ public class CarTest {
 
     @DisplayName("자동차 객체 생성 실패 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"", "     ", "123456", "thisIsMoreThenFour"})
+    @ValueSource(strings = {"", "     ", "123456", "한동근두동근세동근네동근"})
     void carNameFailTest(String name) {
         assertThatThrownBy(() -> validator.validateName(List.of(name)))
                 .isInstanceOf(IllegalArgumentException.class);
