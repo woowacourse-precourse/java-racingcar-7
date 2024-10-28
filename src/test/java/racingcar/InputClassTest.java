@@ -8,7 +8,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 class InputClassTest {
 
-    InputClass inputClass = new InputClass();
+    InputView inputView = new InputView();
     final Integer MAXIMUM_LIMIT_NAME_LENGTH = 5;
 
     @Test
@@ -17,9 +17,9 @@ class InputClassTest {
         String text = "five";
         String attemptNumber = "5";
 
-        assertThatThrownBy(() -> inputClass.validateAttemptNumber(text))
+        assertThatThrownBy(() -> inputView.validateAttemptNumber(text))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThat(inputClass.validateAttemptNumber(attemptNumber))
+        assertThat(inputView.validateAttemptNumber(attemptNumber))
                 .isInstanceOf(Integer.class);
     }
 
@@ -30,7 +30,7 @@ class InputClassTest {
         Car car = new Car("car");
 
         assertThatThrownBy(() ->
-                inputClass.validateCarNameLength(exceedNameCar.getCarName())).isInstanceOf(IllegalArgumentException.class);
+                inputView.validateCarNameLength(exceedNameCar.getCarName())).isInstanceOf(IllegalArgumentException.class);
         assertThat(car.getCarName().length()).isLessThanOrEqualTo(MAXIMUM_LIMIT_NAME_LENGTH);
     }
 }

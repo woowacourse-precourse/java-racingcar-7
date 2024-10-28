@@ -3,7 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 
-public class InputClass {
+public class InputView {
 
     private final String INPUT_SENTENCE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표로 구분)";
     private final String TRY_SENTENCE = "시도할 횟수를 입력하세요.";
