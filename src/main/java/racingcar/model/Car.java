@@ -13,7 +13,6 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        validateName(name);
         this.name = name;
         this.position = position;
     }
