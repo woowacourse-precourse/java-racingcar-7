@@ -17,13 +17,9 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String trialCounts = Console.readLine();
-
-        List<Integer> carMovementCounts = new ArrayList<>();
-
-        for (int i = 0; i < splitCarNames.size(); i++) {
-            carMovementCounts.add(0); // 각 이름의 초기 이동 값을 0으로 설정
-        }
-
+        
+        List<Integer> carMovementCounts = IntitalcarMovementCounts(splitCarNames.size());
+    
         System.out.println("실행 결과");
         // 각 라운드별 "-" 출력
         for (int i = 1; i <= Integer.parseInt(trialCounts); i++) {
@@ -82,6 +78,17 @@ public class Application {
             // 누적된 "-" 값 출력
             System.out.println("-".repeat(carMovementCounts.get(i)));
         }
+    }
+
+    public static List<Integer> IntitalcarMovementCounts(int numberOfCars) {
+
+        List<Integer> intitalcarMovementCounts = new ArrayList<>();
+
+        for (int i = 0; i < numberOfCars; i++) {
+            intitalcarMovementCounts.add(0);
+        }
+
+        return intitalcarMovementCounts;
     }
 
     public static void winner(List<String> carNames, List<Integer> carMovementCounts) {
