@@ -1,27 +1,21 @@
 package racingcar.controller;
 
-import racingcar.model.InputProcessor;
 import racingcar.model.Race;
 import racingcar.model.RaceProcess;
-import racingcar.view.InputView;
 
 public class RacingGame {
 
+    private final Race race;
+    private final RaceProcess raceProcess;
+
     public RacingGame() {
+        RaceSetup setup = new RaceSetup();
+        this.race = setup.initializeRace();
+        this.raceProcess = new RaceProcess(race);
     }
 
     public void start() {
-        String carNames = ViewController.readCarNames();
-        String moveCount = ViewController.readTryCount();
-
-        InputProcessor inputProcessor = new InputProcessor(carNames, moveCount);
-
-        Race race = new Race(inputProcessor.getCarNames());
-        RaceProcess carRacer = new RaceProcess(race);
-        carRacer.startRace(inputProcessor.getTryCount());
-
-        ViewController.printWinners(race.getWinners());
-
-        InputView.closeRead();
+        raceProcess.startRace(race.getTryCount());
+        raceProcess.printFinalWinners();
     }
 }

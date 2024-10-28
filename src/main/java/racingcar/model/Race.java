@@ -6,9 +6,11 @@ import java.util.stream.Collectors;
 public class Race {
 
     private final List<Car> cars;
+    private final int tryCount;
 
-    public Race(List<String> carNames) {
+    public Race(List<String> carNames, int tryCount) {
         this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
+        this.tryCount = tryCount;
     }
 
     public void playRound() {
@@ -29,5 +31,9 @@ public class Race {
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .collect(Collectors.toList());
+    }
+
+    public int getTryCount() {
+        return tryCount;
     }
 }

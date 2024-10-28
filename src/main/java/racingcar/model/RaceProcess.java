@@ -16,6 +16,9 @@ public class RaceProcess {
             race.playRound();
             ViewController.printRaceProcess(race.getCars());
         }
+    }
+
+    public void printFinalWinners() {
         ViewController.printWinners(race.getWinners());
     }
 }

@@ -17,7 +17,7 @@ class RaceProcessTest {
 
     @BeforeEach
     void setUp() {
-        race = new Race(List.of("pobi", "crong", "honux"));
+        race = new Race(List.of("pobi", "crong", "honux"), 3);
         raceProcess = new RaceProcess(race);
     }
 
@@ -26,20 +26,13 @@ class RaceProcessTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        // given
-        int moveCount = 3;
-
         // when
-        raceProcess.startRace(moveCount);
+        raceProcess.startRace(race.getTryCount());
 
         // then
         String output = outputStream.toString().trim();
         assertThat(output).contains("실행 결과");
 
         race.getCars().forEach(car -> assertThat(output).contains(car.getName()));
-
-        List<String> winners = race.getWinners();
-        String expectedWinnersOutput = "최종 우승자 : " + String.join(", ", winners);
-        assertThat(output).contains(expectedWinnersOutput);
     }
 }

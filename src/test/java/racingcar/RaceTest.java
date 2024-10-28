@@ -14,7 +14,7 @@ class RaceTest {
 
     @BeforeEach
     void setUp() {
-        race = new Race(List.of("pobi", "crong", "honux"));
+        race = new Race(List.of("pobi", "crong", "honux"), 3);
     }
 
     @Test
