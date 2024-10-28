@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validation {
-    private static final String CAR_NAME_INPUT_PATTERN = "[.]{1,5}";
+    private static final String CAR_NAME_INPUT_PATTERN = ".{1,5}";
     private static final String CAR_NAME_DELIMITER = ",";
     private static final int MIN_LIMIT = 1;
     private static final int MAX_LIMIT = 100;
@@ -21,7 +21,7 @@ public class Validation {
             throw new IllegalArgumentException("모든 자동차는 서로 다른 이름을 가져야 합니다.");
         }
 
-        if (!validateEachCarName(splited)) {
+        if (!validateLengthOfCarName(splited)) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다.");
         }
 
@@ -43,7 +43,7 @@ public class Validation {
         return false;
     }
 
-    private boolean validateEachCarName(String[] splited) {
+    private boolean validateLengthOfCarName(String[] splited) {
         for (String carName : splited) {
             if (!Pattern.matches(CAR_NAME_INPUT_PATTERN, carName)) {
                 return false;
