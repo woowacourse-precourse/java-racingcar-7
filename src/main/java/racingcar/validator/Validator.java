@@ -9,9 +9,17 @@ public class Validator {
         }
     }
 
-    public void carNameEmptyValidate(String car) {
+    public void carNameAllBlankValidate(String car) {
         if (car.isBlank()) {
             throw new IllegalArgumentException("레이싱카 이름은 공백일 수 없습니다.");
+        }
+    }
+
+    public void carNameWhiteSpaceValidate(String car) {
+        for(char c : car.toCharArray()) {
+            if(Character.isWhitespace(c)) {
+                throw new IllegalArgumentException("레이싱카 이름에 공백이 포함될 수 없습니다.");
+            }
         }
     }
 

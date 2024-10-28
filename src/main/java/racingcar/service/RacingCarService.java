@@ -21,7 +21,8 @@ public class RacingCarService {
         for(String car : cars) {
             car = car.trim(); //앞 뒤 공백 제거
 
-            validator.carNameEmptyValidate(car);
+            validator.carNameAllBlankValidate(car);
+            validator.carNameWhiteSpaceValidate(car);
             validator.carNameLengthValidate(car);
             validator.delimiterValidate(car);
 
