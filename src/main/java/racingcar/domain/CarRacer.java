@@ -15,6 +15,7 @@ public class CarRacer extends Racer {
 
     private CarRacer(String name) {
         validateNameLength(name);
+        validateNameBlank(name);
         this.name = name;
         this.progressState = DEFAULT_STATE;
     }
@@ -43,6 +44,12 @@ public class CarRacer extends Racer {
     private void validateNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(NAME_OVER_LENGTH);
+        }
+    }
+
+    private void validateNameBlank(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException(NAME_BLANK);
         }
     }
 }
