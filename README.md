@@ -44,3 +44,11 @@
 
 - run and manage controller
 - handle Exception
+
+
+# Implement Test
+
+### Exception Test
+
+-  Case) Input blank as name
+- Case) Input Large number as Race Stage 
