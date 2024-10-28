@@ -15,6 +15,9 @@ public class TrialCountValidator {
             if (trialCount < 1) {
                 throw new CarRacingException(ErrorMessage.INVALID_TRIAL_COUNT);
             }
+            if (trialCount > 1000) {
+                throw new CarRacingException(ErrorMessage.EXCEEDS_TRIAL_COUNT);
+            }
         } catch (NumberFormatException e) {
             throw new CarRacingException(ErrorMessage.INVALID_NUMBER_FORMAT);
         }

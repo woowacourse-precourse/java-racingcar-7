@@ -13,6 +13,10 @@ import racingcar.exception.ErrorMessage;
 public class CarNameValidator {
 
     public static void validateNames(List<String> carNames) {
+        if (carNames.size() < 2 || carNames.size() > 1000) {
+            throw new CarRacingException(ErrorMessage.INVALID_CAR_COUNT);
+        }
+
         Set<String> nameSet = new HashSet<>();
         for (String name : carNames) {
             validate(name);

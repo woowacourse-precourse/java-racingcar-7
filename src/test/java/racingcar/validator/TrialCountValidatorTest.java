@@ -30,6 +30,12 @@ public class TrialCountValidatorTest {
     }
 
     @Test
+    @DisplayName("시도 횟수가 1,000을 초과할 때 예외 발생")
+    void exceedsTrialCountThrowsException() {
+        assertThrows(CarRacingException.class, () -> TrialCountValidator.validate("1001"));
+    }
+
+    @Test
     @DisplayName("유효한 시도 횟수 입력 시 예외가 발생하지 않음")
     void validTrialCount() {
         TrialCountValidator.validate("1");
