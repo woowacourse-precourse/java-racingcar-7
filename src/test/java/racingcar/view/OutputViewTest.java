@@ -33,4 +33,19 @@ public class OutputViewTest {
 
         System.setOut(System.out);
     }
+
+    @Test
+    public void 테스트_우승자_출력() {
+        List<String> winners = Arrays.asList("pobi", "woni");
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        OutputView.printWinners(winners);
+
+        String expectedOutput = "최종 우승자 : pobi, woni\n";
+        assertEquals(expectedOutput, outContent.toString().replace("\r", ""));
+
+        System.setOut(System.out);
+    }
 }
