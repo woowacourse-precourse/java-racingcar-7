@@ -23,7 +23,7 @@ public class CarList extends ArrayList<Car> {
     }
 
     private List<String> splitCarNames(String carNames) {
-        return Arrays.asList(carNames.split(DELIMITER_COMMA));
+        return Arrays.asList(carNames.split(DELIMITER_COMMA, -1));
     }
 
     private void validateListSize(List<Car> carList) {
