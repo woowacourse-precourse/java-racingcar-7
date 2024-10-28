@@ -8,6 +8,12 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.PriorityQueue;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class RaceGame {
     String[] carNamesList;
@@ -52,6 +58,15 @@ public class RaceGame {
 
             if (carNamesList[i].matches("^( )+$")){
                 throw new IllegalArgumentException("입력값이 공백으로 이루어져 있습니다.");
+            }
+        }
+
+        ArrayList<String> list = new ArrayList<>(Arrays.asList(carNamesList));
+
+        for (int i = 0; i < totalCars; i++){
+            int cnt = Collections.frequency(list, carNamesList[i]);
+            if (cnt > 1){
+                throw new IllegalArgumentException("자동차의 이름은 같을 수 없습니다.");
             }
         }
     }
