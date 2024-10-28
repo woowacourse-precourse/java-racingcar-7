@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.exception.ErrorMessage.RACE_RESULT_EMPTY;
+import static racingcar.exception.ErrorMessage.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,7 +50,7 @@ class WinnerDeciderTest {
 
         assertThatThrownBy(() -> winnerDecider.determineWinners(raceResult))
                 .isInstanceOf(RacingCarException.class)
-                .hasMessage(RACE_RESULT_EMPTY.getMessage());
+                .hasMessage(RACE_RESULT_MUST_HAVE_PROGRESS.getMessage());
     }
 
     private static Stream<Arguments> provideRaceProgressForSingleWinner() {

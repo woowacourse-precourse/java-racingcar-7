@@ -26,10 +26,10 @@ class RandomNumberGeneratorTest {
         void null_값이_생성될_경우_예외가_발생한다(Integer invalidNumber) {
             assertThatThrownBy(() -> {
                 if (invalidNumber == null) {
-                    throw RacingCarException.from(RANDOM_NUMBER_GENERATOR_NULL_VALUE);
+                    throw RacingCarException.from(RANDOM_NUMBER_REQUIRED);
                 }
             }).isInstanceOf(RacingCarException.class)
-                    .hasMessage(RANDOM_NUMBER_GENERATOR_NULL_VALUE.getMessage());
+                    .hasMessage(RANDOM_NUMBER_REQUIRED.getMessage());
         }
 
         @ParameterizedTest
@@ -38,10 +38,10 @@ class RandomNumberGeneratorTest {
         void 생성된_값이_범위를_벗어날_경우_예외가_발생한다(int invalidNumber) {
             assertThatThrownBy(() -> {
                 if (invalidNumber < 0 || invalidNumber > 9) {
-                    throw RacingCarException.from(RANDOM_NUMBER_GENERATOR_OUT_OF_RANGE);
+                    throw RacingCarException.from(RANDOM_NUMBER_MUST_BE_IN_RANGE);
                 }
             }).isInstanceOf(RacingCarException.class)
-                    .hasMessage(RANDOM_NUMBER_GENERATOR_OUT_OF_RANGE.getMessage());
+                    .hasMessage(RANDOM_NUMBER_MUST_BE_IN_RANGE.getMessage());
         }
     }
 
@@ -54,7 +54,7 @@ class RandomNumberGeneratorTest {
         void MovementNumber_객체는_null이_아니어야_한다() {
             MovementNumber movementNumber = randomNumberGenerator.movementNumber();
             assertThat(movementNumber)
-                    .as(RANDOM_NUMBER_GENERATOR_NULL_VALUE.getMessage())
+                    .as(RANDOM_NUMBER_REQUIRED.getMessage())
                     .isNotNull();
         }
 
@@ -63,7 +63,7 @@ class RandomNumberGeneratorTest {
         void MovementNumber_내부_값이_0에서_9_사이의_정수여야_한다() {
             MovementNumber movementNumber = randomNumberGenerator.movementNumber();
             assertThat(movementNumber.value())
-                    .as(RANDOM_NUMBER_GENERATOR_OUT_OF_RANGE.getMessage())
+                    .as(RANDOM_NUMBER_MUST_BE_IN_RANGE.getMessage())
                     .isBetween(0, 9);
         }
     }

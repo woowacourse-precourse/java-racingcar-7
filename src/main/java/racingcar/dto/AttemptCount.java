@@ -19,7 +19,7 @@ public record AttemptCount(int value) {
 
     private static void validateRange(int attemptCount) {
         if (attemptCount < 1 || attemptCount > 20) {
-            throw RacingCarException.from(ATTEMPT_COUNT_OUT_OF_RANGE);
+            throw RacingCarException.from(ATTEMPT_COUNT_MUST_BE_IN_RANGE);
         }
     }
 

@@ -19,7 +19,7 @@ class InputViewTest extends ConsoleOutputTestHelper {
         assertThatThrownBy(() -> {
                     inputView.readRacingCarNames();
                 }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(EMPTY_INPUT.getMessage())
+                .hasMessageContaining(INPUT_REQUIRED.getMessage())
         ;
     }
 }

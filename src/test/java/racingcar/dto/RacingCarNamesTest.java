@@ -25,7 +25,7 @@ class RacingCarNamesTest {
         void 자동차가_2대_미만일_경우_예외가_발생한다(String input) {
             assertThatThrownBy(() -> RacingCarNames.from(input))
                     .isInstanceOf(RacingCarException.class)
-                    .hasMessage(RACING_CAR_MINIMUM_TWO_REQUIRED.getMessage());
+                    .hasMessage(MINIMUM_TWO_CARS_REQUIRED.getMessage());
         }
 
         @ParameterizedTest
@@ -37,7 +37,7 @@ class RacingCarNamesTest {
         void 자동차_이름이_영어_또는_한글로만_이루어지지_않으면_예외가_발생한다(String input) {
             assertThatThrownBy(() -> RacingCarNames.from(input))
                     .isInstanceOf(RacingCarException.class)
-                    .hasMessage(RACING_CAR_NAME_MUST_BE_ENGLISH_OR_KOREAN.getMessage());
+                    .hasMessage(ONLY_ENGLISH_OR_KOREAN_ALLOWED.getMessage());
         }
     }
 

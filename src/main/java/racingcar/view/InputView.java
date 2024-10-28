@@ -23,7 +23,7 @@ public class InputView {
 
     private void validateNonEmptyInput(String input) {
         if (input.trim().isEmpty()) {
-            throw RacingCarException.from(EMPTY_INPUT);
+            throw RacingCarException.from(INPUT_REQUIRED);
         }
     }
 }

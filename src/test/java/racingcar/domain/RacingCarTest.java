@@ -32,7 +32,7 @@ class RacingCarTest {
         void MovementPolicy가_null일_경우_예외가_발생한다() {
             assertThatThrownBy(() -> car.executeForward(null, manager))
                     .isInstanceOf(RacingCarException.class)
-                    .hasMessage(MOVEMENT_POLICY_NULL.getMessage())
+                    .hasMessage(POLICY_REQUIRED.getMessage())
                     .as("MovementPolicy가 null일 때 예외가 발생해야 합니다.");
         }
 
@@ -43,7 +43,7 @@ class RacingCarTest {
 
             assertThatThrownBy(() -> car.executeForward(policy, null))
                     .isInstanceOf(RacingCarException.class)
-                    .hasMessage(RACE_PROGRESS_MANAGER_NULL.getMessage())
+                    .hasMessage(MANAGER_REQUIRED.getMessage())
                     .as("RaceProgressManager가 null일 때 예외가 발생해야 합니다.");
         }
     }

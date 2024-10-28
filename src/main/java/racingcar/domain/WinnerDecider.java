@@ -21,7 +21,7 @@ public class WinnerDecider {
 
     private void validateRaceProgressNotEmpty(Map<String, Integer> raceProgress) {
         if (raceProgress.isEmpty()) {
-            throw RacingCarException.from(RACE_RESULT_EMPTY);
+            throw RacingCarException.from(RACE_RESULT_MUST_HAVE_PROGRESS);
         }
     }
 

@@ -37,7 +37,7 @@ class AttemptCountTest {
         void 시도_횟수가_범위를_벗어나면_예외가_발생한다(String invalidAttemptCount) {
             assertThatThrownBy(() -> AttemptCount.from(invalidAttemptCount))
                     .isInstanceOf(RacingCarException.class)
-                    .hasMessage(ATTEMPT_COUNT_OUT_OF_RANGE.getMessage());
+                    .hasMessage(ATTEMPT_COUNT_MUST_BE_IN_RANGE.getMessage());
         }
 
         @ParameterizedTest

@@ -29,13 +29,13 @@ public class RacingCar {
 
     private void validateNonNullPolicy(MovementPolicy policy) {
         if (policy == null) {
-            throw RacingCarException.from(MOVEMENT_POLICY_NULL);
+            throw RacingCarException.from(POLICY_REQUIRED);
         }
     }
 
     private void validateNonNullManager(RaceProgressManager manager) {
         if (manager == null) {
-            throw RacingCarException.from(RACE_PROGRESS_MANAGER_NULL);
+            throw RacingCarException.from(MANAGER_REQUIRED);
         }
     }
 }

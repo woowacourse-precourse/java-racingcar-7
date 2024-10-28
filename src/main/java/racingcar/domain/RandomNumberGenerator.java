@@ -25,13 +25,13 @@ public class RandomNumberGenerator {
 
     private void validateNull(Integer randomNumber) {
         if (randomNumber == null) {
-            throw RacingCarException.from(RANDOM_NUMBER_GENERATOR_NULL_VALUE);
+            throw RacingCarException.from(RANDOM_NUMBER_REQUIRED);
         }
     }
 
     private void validateRange(Integer randomNumber) {
         if (randomNumber < 0 || randomNumber > 9) {
-            throw RacingCarException.from(RANDOM_NUMBER_GENERATOR_OUT_OF_RANGE);
+            throw RacingCarException.from(RANDOM_NUMBER_MUST_BE_IN_RANGE);
         }
     }
 }

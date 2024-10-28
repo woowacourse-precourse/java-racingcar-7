@@ -35,13 +35,13 @@ public class RaceProgressManager {
 
     private void addUniqueName(RacingCar car, Set<String> uniqueNames) {
         if (!uniqueNames.add(car.getName())) {
-            throw RacingCarException.from(RACE_PROGRESS_MANAGER_DUPLICATE_CAR_NAME);
+            throw RacingCarException.from(UNIQUE_CAR_NAME_REQUIRED);
         }
     }
 
     private void validateCarExists(RacingCar car) {
         if (!raceProgress.containsKey(car.getName())) {
-            throw RacingCarException.from(RACE_PROGRESS_MANAGER_CAR_NOT_FOUND);
+            throw RacingCarException.from(CAR_MUST_BE_REGISTERED);
         }
     }
 }

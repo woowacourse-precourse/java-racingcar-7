@@ -29,7 +29,7 @@ class RaceProgressManagerTest {
 
             assertThatThrownBy(() -> new RaceProgressManager(List.of(car1, car2)))
                     .isInstanceOf(RacingCarException.class)
-                    .hasMessage(RACE_PROGRESS_MANAGER_DUPLICATE_CAR_NAME.getMessage());
+                    .hasMessage(UNIQUE_CAR_NAME_REQUIRED.getMessage());
         }
 
         @Test
@@ -41,7 +41,7 @@ class RaceProgressManagerTest {
 
             assertThatThrownBy(() -> manager.updateProgressForForward(nonExistentCar))
                     .isInstanceOf(RacingCarException.class)
-                    .hasMessage(RACE_PROGRESS_MANAGER_CAR_NOT_FOUND.getMessage());
+                    .hasMessage(CAR_MUST_BE_REGISTERED.getMessage());
         }
     }
 
