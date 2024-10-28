@@ -2,9 +2,8 @@ package racingcar;
 
 public class Validator {
     protected void validMinus(Integer input) {
-
         int attempts = Integer.parseInt(String.valueOf(input));
-        if (attempts <= 0) {  // 음수 및 0 입력에 대한 예외 처리
+        if (attempts <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
     }

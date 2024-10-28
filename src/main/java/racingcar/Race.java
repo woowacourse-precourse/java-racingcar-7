@@ -26,10 +26,9 @@ public class Race {
 
 
     protected HashMap<String, Integer> winner(HashMap<String, Integer> car) {
+        Integer maxValue = Collections.max(car.values());  // 가장 많이 전진한 자동차
 
-        Integer maxValue = Collections.max(car.values());
-
-        for (String key : car.keySet()) {
+        for (String key : car.keySet()) {  // 동점자 제외하고 삭제
             if (!Objects.equals(car.get(key), maxValue)) {
                 car.remove(key);
             }
