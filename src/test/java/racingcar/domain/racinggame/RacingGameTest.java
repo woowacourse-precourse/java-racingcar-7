@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Cars;
 import racingcar.domain.strategy.MoveStrategy;
@@ -23,18 +25,16 @@ class RacingGameTest {
             }
         };
         Cars cars = new Cars(racingCarNamesDTO, moveStrategy);
-        RacingGame racingGame = new RacingGame();
+        RacingGame racingGame = new RacingGame(cars);
 
         //when
-        racingGame.startGame(cars);
-        List<Integer> result = racingGame.getDistances();
+        Map<String, Integer> result = racingGame.getDistances();
 
         //then
-        assertThat(result).isEqualTo(new ArrayList<>(Arrays.asList(1, 1, 1)));
-    }
-
-    @Test
-    void getDistances() {
+        List<Integer> valueList = result.values()
+                                .stream()
+                                .toList();
+        assertThat(valueList).isEqualTo(new ArrayList<>(Arrays.asList(1, 1, 1)));
     }
 
     @Test

@@ -20,8 +20,7 @@ public class RacingGameService {
         int attempts = racingAttemptDTO.getRacingAttempts();
 
         for(int i = 0; i < attempts; i++){
-            RacingGame racingGame = new RacingGame();
-            racingGame.startGame(cars);
+            RacingGame racingGame = new RacingGame(cars);
             racingGames.addRacingGame(racingGame);
         }
 
@@ -31,7 +30,7 @@ public class RacingGameService {
     public static String printPlayingResult(RacingGames racingGames, Cars cars){
         StringBuilder result = new StringBuilder();
         for(RacingGame racingGame : racingGames.getRacingGames()){
-            result.append(racingGame.getFormattedGameResult(cars));
+            result.append(racingGame.getFormattedGameResult());
         }
         return result.toString();
     }

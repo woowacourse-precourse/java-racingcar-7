@@ -1,40 +1,41 @@
 package racingcar.domain.racinggame;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 
 public class RacingGame {
-    private List<Integer> distances = new ArrayList<>();
+    private Map<String, Integer> distances = new HashMap<>();
 
-    public void startGame(Cars cars) {
-        for(int i = 0; i < cars.size(); i++){
-            distances.add(cars.getCarByNumber(i).move());
+    public RacingGame(Cars cars){
+        for(Car car : cars.getCars()){
+            car.move();
+            distances.put(car.getCarName(), car.getCurrentDistance());
         }
     }
 
-    public List<Integer> getDistances() {
+    public Map<String, Integer> getDistances() {
         return distances;
     }
 
-    public String getFormattedGameResult(Cars cars){
+    public String getFormattedGameResult(){
         StringBuilder result = new StringBuilder();
-        for(Car car : cars.getCars()){
-            result.append(formatCarResult(car)).append("\n");
+        for(String carName : distances.keySet()){
+            result.append(carName).append(" : ");
+            result.append(formatCarResult(distances.get(carName))).append("\n");
         }
         result.append("\n");
         return result.toString();
     }
 
-    private String formatCarResult(Car car) {
+    public String formatCarResult(int advance) {
         StringBuilder result = new StringBuilder();
-        result.append(car.getCarName()).append(" : ");
-
-        for (int i = 0; i < car.getCurrentDistance(); i++) {
+        for (int i = 0; i < advance; i++) {
             result.append("-");
         }
-
         return result.toString();
     }
 }
