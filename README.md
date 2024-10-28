@@ -67,8 +67,8 @@
 - [ ] Race를 업데이트 한다.
 
 ### 🕹ScreenController
-- [ ] 싱글톤으로 설계
-- [ ] Race를 입력 받는다
+- [x] 싱글톤으로 설계
+- [x] Race를 입력 받는다
 - [ ] ScoreBoard를 업데이트할 방식을 설정한다.
 - [ ] ScoreBoard를 업데이트 한다.
     - [ ] LapScore 를 입력받는다.
