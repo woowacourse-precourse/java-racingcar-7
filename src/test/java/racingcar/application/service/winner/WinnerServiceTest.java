@@ -20,7 +20,7 @@ class WinnerServiceTest {
     @Test
     void 우승자_저장하기() {
         racingCarService.inputCarName("car1,car2");
-        racingCarService.inputTryNumber(3);
+        racingCarService.inputTryNumber("3");
         racingCarService.startGame();
 
         winnerService.saveWinners();

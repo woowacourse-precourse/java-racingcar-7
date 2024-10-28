@@ -31,7 +31,7 @@ class RacingCarServiceTest {
     @Test
     void 게임을_정상적으로_진행할_수_있다() {
         racingCarService.inputCarName("car1,car2");
-        racingCarService.inputTryNumber(3);
+        racingCarService.inputTryNumber("3");
 
         racingCarService.startGame();
 
