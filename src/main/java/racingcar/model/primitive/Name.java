@@ -19,6 +19,10 @@ public class Name {
         return new Name(name);
     }
 
+    public void add(List<String> winners) {
+        winners.add(this.name);
+    }
+
     private void validate(String name) {
         if (isExceedMaxLength(name)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME.getMessage());
@@ -27,10 +31,6 @@ public class Name {
 
     private boolean isExceedMaxLength(String name) {
         return name.length() > MAX_NAME_LENGTH;
-    }
-
-    public void add(List<String> winners) {
-        winners.add(this.name);
     }
 
     @Override
