@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import java.util.List;
-
 import racingcar.dto.RacingCarProgress;
 import racingcar.dto.RacingCarResult;
 import racingcar.dto.RacingCarWinner;

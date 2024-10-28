@@ -5,9 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.fake.FakeStringValidator;
 import racingcar.fake.ForwardNumberGenerator;
 import racingcar.fake.StopNumberGenerator;
-import racingcar.fake.FakeStringValidator;
 import racingcar.util.generator.NumberGenerator;
 import racingcar.util.validator.StringValidator;
 

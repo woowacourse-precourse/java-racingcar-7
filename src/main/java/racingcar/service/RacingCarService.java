@@ -12,8 +12,8 @@ import racingcar.domain.Score;
 import racingcar.dto.RacingCarProgress;
 import racingcar.dto.RacingCarResult;
 import racingcar.dto.RacingCarWinner;
-import racingcar.util.validator.ListValidator;
 import racingcar.util.generator.NumberGenerator;
+import racingcar.util.validator.ListValidator;
 import racingcar.util.validator.NumberValidator;
 import racingcar.util.validator.StringValidator;
 
