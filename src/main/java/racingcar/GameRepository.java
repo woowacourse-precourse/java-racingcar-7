@@ -13,11 +13,7 @@ public class GameRepository {
         this.names = splitNames;
     }
 
-    public String getCarName(int index) {
-        return this.names.get(index);
-    }
-
-    public List<String> getAllNames() {
+    public List<String> getCarNames() {
         return this.names;
     }
 

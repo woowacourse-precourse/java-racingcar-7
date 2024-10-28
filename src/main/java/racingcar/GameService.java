@@ -51,7 +51,7 @@ public class GameService {
 
     public Map<String, Integer> setCarPositionOnTheLine() {
 
-        return gameRepository.getAllNames().stream()
+        return gameRepository.getCarNames().stream()
                 .collect(Collectors.toMap(name -> name, name -> 0));
     }
 

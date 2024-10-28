@@ -16,7 +16,7 @@ public class GameRepositoryTest {
 
         // when
         gameRepository.setCarName(names);
-        List<String> allNames = gameRepository.getAllNames();
+        List<String> allNames = gameRepository.getCarNames();
 
         // then
         assertThat(allNames).containsExactly("tokki", "pobi", "nori");
