@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.*;
 
 public class Racingcar {
     // 주어진 횟수 동안 n대 자동차는 전진 or 멈춤
-    public static HashMap<String, Integer> racing(int nums, HashMap<String, Integer> cars) {
+    public static void racing(int nums, HashMap<String, Integer> cars) {
 
         if (nums < 1) {
             throw new IllegalArgumentException("시도 횟수가 너무 적습니다.");
@@ -23,9 +23,8 @@ public class Racingcar {
             }
             // 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력
             print_racing(cars);
+            System.out.println();
         }
-
-        return cars;
     }
 
     // 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력
@@ -70,7 +69,7 @@ public class Racingcar {
 
         if (topCars.size() == 1) {
             // 단독 우승자 안내 문구
-            System.out.println("최종 우승자 : " + topCars.get(0));
+            System.out.println("최종 우승자 : " + topCars.getFirst());
         } else {
             // 공동 우승자 안내 문구
             System.out.println("최종 우승자 : " + String.join(", ", topCars));
