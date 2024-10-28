@@ -1,9 +1,12 @@
 package racingcar.application.service;
 
+import static racingcar.common.constant.ExceptionMessage.*;
+
 import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.application.implement.RaceHistoryManager;
 import racingcar.application.implement.RaceWinnerIdentifier;
+import racingcar.common.constant.ExceptionMessage;
 import racingcar.persistence.CarRacerRepository;
 import racingcar.application.implement.RaceStarter;
 import racingcar.domain.CarRacer;
@@ -26,6 +29,7 @@ public class RacingCarManager implements RacingManager<CarRacer> {
 
     @Override
     public void registerAll(List<CarRacer> racers) {
+        validateDuplicationName(racers);
         carRacerRepository.addAll(racers);
     }
 
@@ -45,5 +49,16 @@ public class RacingCarManager implements RacingManager<CarRacer> {
         List<CarRacer> winners = raceWinnerIdentifier.identify(racedCars);
         List<String> carRaceHistories = raceHistoryManager.getAllHistory();
         return RaceResult.of(winners, carRaceHistories);
+    }
+
+    private void validateDuplicationName(List<CarRacer> racers) {
+        long uniqueCount = racers.stream()
+                .map(CarRacer::getName)
+                .distinct()
+                .count();
+
+        if (uniqueCount != racers.size()) {
+            throw new IllegalArgumentException(DUPLICATE_NAME);
+        }
     }
 }
