@@ -21,7 +21,7 @@ public enum ErrorMessage {
             "자동차 이름은 5자 이하만 돼요."),
     CAR_NAME_FORMAT(
             "[F0003]",
-            "자동차 이름은 영문 대소문자와 숫자만 돼요"),
+            "자동차 이름은 영문 대소문자와 숫자만 돼요."),
     ;
 
     String errorCode;
