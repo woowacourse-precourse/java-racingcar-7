@@ -22,6 +22,21 @@ public class RacingManager {
         this.directionController = directionController;
     }
 
+    public void start() {
+        view.printCarNameProvideMessage();
+        final String carsStringWithDelimiter = readLine();
+        final List<Car> cars = car.splitByDelimiter(carsStringWithDelimiter);
+
+        view.printTryCountProvideMessage();
+        final int tryCount = Integer.parseInt(readLine());
+
+        view.printExecutionResult();
+        for (int i = 0; i < tryCount; i++) {
+            movingProcess(cars);
+        }
+        view.printWinningPeople(findFastestCar(cars));
+    }
+
     private List<Car> findFastestCar(List<Car> cars) {
         final int maxLength = cars.stream()
                 .map(Car::getMoveStatus)
