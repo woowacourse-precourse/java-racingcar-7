@@ -6,6 +6,12 @@ public class Race {
     private Input input = new Input();
     private ArrayList<Car> cars = new ArrayList<>();
 
+    public void run() {
+        setRace();
+        startRace();
+        getWinner(cars);
+    }
+
     public void setRace() {
         input.setCarNames();
         input.setRounds();
