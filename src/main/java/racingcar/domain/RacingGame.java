@@ -9,8 +9,7 @@ public class RacingGame {
     private Round round;
 
     public RacingGame(String inputValue, Round round) {
-        this.cars = initCars(inputValue);
-        this.round = round;
+        this(initCars(inputValue), round);
     }
 
     public RacingGame(String inputValue, int round) {
@@ -19,6 +18,11 @@ public class RacingGame {
 
     public static Cars initCars(String inputValue) {
         return Cars.from(inputValue);
+    }
+
+    private RacingGame(Cars cars, Round round) {
+        this.cars = cars;
+        this.round = round;
     }
 
     public void racing() {
