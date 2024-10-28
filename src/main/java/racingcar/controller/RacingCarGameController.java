@@ -23,9 +23,9 @@ public class RacingCarGameController {
 
         ApplicationOutputView.outputLine("시도할 횟수는 몇 회인가요?");
 
-        int trial;
-        if ((trial = ApplicationInputView.getInt()) > TRIAL_INPUT_LIMIT) {
-            throw new IllegalArgumentException("100 이하의 정수를 입력 해주세요.");
+        int trial = ApplicationInputView.getInt();
+        if (trial < 1 || trial > TRIAL_INPUT_LIMIT) {
+            throw new IllegalArgumentException("1 이상 100 이하의 정수를 입력 해주세요.");
         }
 
         ApplicationOutputView.outputLine("실행 결과");
