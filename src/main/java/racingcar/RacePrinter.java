@@ -2,8 +2,8 @@ package racingcar;
 import java.util.List;
 import java.util.ArrayList;
 
-public class RacePrinter {
-
+public class RacePrinter implements Printer {
+    @Override
     public void printStatus(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
@@ -11,6 +11,7 @@ public class RacePrinter {
         System.out.println();
     }
 
+    @Override
     public void printWinners(List<Car> cars) {
         int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
         List<String> winners = new ArrayList<>();
