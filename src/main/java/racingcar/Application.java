@@ -2,9 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -13,10 +11,15 @@ public class Application {
         String[] player = playerText.split(",");
 
         // 이름 검증
+        Set<String > playerSet = new HashSet<>();
         for(String p : player){
-            if (p == null || p.length()>=6 || p.isEmpty()){
+            if (p == null || p.length()>=6 || p.trim().isEmpty()){
                 throw new IllegalArgumentException("이름의 길이가 6자 이상이거나 이름이 없습니다");
             }
+            if (playerSet.contains(p)){
+                throw new IllegalArgumentException(String.format("중복된 이름이 있습니다 : %s",p));
+            }
+            playerSet.add(p);
         }
 
         // Map으로 플레이어 : 게임 매칭
