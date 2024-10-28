@@ -56,4 +56,23 @@ public class RacingServiceTest {
         }
     }
 
+    @Nested
+    @DisplayName("승리자 확인")
+    class CheckWinners {
+
+        @Test
+        @DisplayName("승리자를 확인하는 테스트")
+        void identifiesWinnersCorrectly() {
+            car1.move(1);
+            car2.move(5);
+            car3.move(5);
+            List<Car> carList = List.of(car1, car2, car3);
+
+            List<Car> winners = racingService.checkWinnerList(carList);
+
+            assertThat(winners).hasSize(2);
+            assertThat(winners).extracting(Car::getName).containsExactlyInAnyOrder("Car2", "Car3");
+        }
+    }
+
 }
