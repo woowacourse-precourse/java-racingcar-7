@@ -26,7 +26,7 @@ public class CarNameCountValidatorImplTest {
     public void validate_ShouldNotThrowException_WhenCarCountIsTwoOrMore() {
         String[] carNames = {"Car1", "Car2"};
 
-        Assertions.assertDoesNotThrow(() -> validator.validate(carNames)); // 예외가 발생하지 않으면 테스트 통과
+        Assertions.assertDoesNotThrow(() -> validator.validate(carNames));
     }
 }
 

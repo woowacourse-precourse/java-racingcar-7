@@ -26,6 +26,6 @@ public class MoveTrialValidatorImplTest {
     public void validate_ShouldNotThrowException_WhenTrialInputIsNumeric() {
         String trialInputString = "5";
 
-        Assertions.assertDoesNotThrow(() -> validator.valdate(trialInputString)); // 예외가 발생하지 않으면 테스트 통과
+        Assertions.assertDoesNotThrow(() -> validator.valdate(trialInputString));
     }
 }

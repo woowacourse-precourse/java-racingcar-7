@@ -30,6 +30,5 @@ public class CarNameValidatorImplTest {
         String carNameString = "Car1,Car2";
 
         Assertions.assertDoesNotThrow(() -> carNameValidator.validate(carNameString));
-        // 예외가 발생하지 않으면 테스트 통과
     }
 }
