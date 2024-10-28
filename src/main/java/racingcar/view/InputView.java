@@ -7,7 +7,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public String readTryNumber() {
+    public String readTryCount() {
         return Console.readLine();
     }
 }

@@ -19,9 +19,7 @@ public class Car {
         return position;
     }
 
-    public void race() {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-
+    public void move(int randomNumber) {
         if (randomNumber >= 4) {
             this.position++;
         }

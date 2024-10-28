@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
+import racingcar.model.Race;
 import racingcar.util.StringParser;
 import racingcar.view.InputView;
 
@@ -19,17 +20,20 @@ public class RacingController {
     public void run() {
         List<String> inputStringList = requestInputStringList();
         List<Car> carList = getCarList(stringParser.parseCarNameString(inputStringList.getFirst()));
-        int tryNumber = stringParser.parseTryNumberString(inputStringList.get(1));
+        int tryCount = stringParser.parseTryCountString(inputStringList.get(1));
+
+        Race race = new Race(carList, tryCount);
+        race.startRace();
     }
 
     private List<String> requestInputStringList() {
         List<String> inputStringList = new ArrayList<>();
 
         final String carNameString = inputView.readCarName();
-        final String tryNumberString = inputView.readTryNumber();
+        final String tryCountString = inputView.readTryCount();
 
         inputStringList.add(carNameString);
-        inputStringList.add(tryNumberString);
+        inputStringList.add(tryCountString);
 
         return inputStringList;
     }
