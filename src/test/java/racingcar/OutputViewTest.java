@@ -27,14 +27,16 @@ class OutputViewTest {
 
     @Test
     void printWinner() {
-        RandomCar winner = new RandomCar("pobi");
+        Engine engine = new RandomEngine();
+        Car winner = new Car("pobi", engine);
         outputView.printWinner(winner);
         assertEquals("최종 우승자 : pobi\n", outContent.toString());
     }
 
     @Test
     void printWinners() {
-        List<Car> winners = List.of(new RandomCar("pobi"), new RandomCar("jun"));
+        Engine engine = new RandomEngine();
+        List<Car> winners = List.of(new Car("pobi", engine), new Car("jun", engine));
         outputView.printWinner(winners);
         assertEquals("최종 우승자 : pobi, jun\n", outContent.toString());
     }

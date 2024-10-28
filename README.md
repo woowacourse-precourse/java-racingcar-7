@@ -30,7 +30,7 @@ camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사
 - [x] 시도 횟수 입력
 - [ ] 매 턴 실행 결과 출력
 - [ ] 우승자 출력
-- [ ] 참가 차량 그룹 생성
+- [x] 참가 차량 그룹 생성
 - [ ] 참가 차량 그룹 전진
 - [ ] 차량 전진
 - [ ] 우승자 선정
@@ -48,6 +48,7 @@ RacingController
     - AbstractCarFactory
       - RandomCarFactory
         - Car
-          - RandomCar
-        - Engine
-          - RandomEngine
+          - Engine
+            - RandomEngine
+
+1. Engine만 갈아끼면 RandomCar로 바꿀 필요가 없다!
