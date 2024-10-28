@@ -29,7 +29,7 @@ public class Cars {
     }
 
     public List<String> getWinnerNames() {
-        int maxMoveCount = findMaxMovedCount();
+        int maxMoveCount = findMaxMoveCount();
 
         return cars.stream()
                 .filter(car -> car.countMove() == maxMoveCount)
@@ -37,7 +37,7 @@ public class Cars {
                 .toList();
     }
 
-    private int findMaxMovedCount() {
+    private int findMaxMoveCount() {
         return cars.stream()
                 .mapToInt(Car::countMove)
                 .max()
