@@ -43,10 +43,7 @@ public class RacingCar {
         System.out.println("\n" + "실행 결과");
         for (int i = 0; i < tryTimes; i++) {
             for (String carName : cars.keySet()) {
-
-                if (Randoms.pickNumberInRange(0, 9) >= 4)
-                    cars.put(carName, cars.get(carName) + 1);
-
+                checkMoving(carName);
                 System.out.println(carName + " : " + hyphen(cars.get(carName)));
             }
             System.out.println();
@@ -54,17 +51,17 @@ public class RacingCar {
     }
 
     private void printWinner() {
-        StringBuilder winner = new StringBuilder();
-        int highScore = Collections.max(cars.values());
+        StringBuilder winners = new StringBuilder();
+        int highScore = findHighScore();
         for (String carName : cars.keySet()) {
-            if (cars.get(carName) == highScore) {
-                if (winner.length() > 0) {
-                    winner.append(", " + carName);
-                } else
-                    winner.append(carName);
-            }
+            findWinner(highScore, winners, carName);
         }
-        System.out.println("최종 우승자 : " + winner.toString());
+        System.out.println("최종 우승자 : " + winners.toString());
+    }
+
+    private void checkMoving(String carName) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4)
+            cars.put(carName, cars.get(carName) + 1);
     }
 
     private String hyphen(int number) {
@@ -74,4 +71,18 @@ public class RacingCar {
         }
         return sb.toString();
     }
+
+    private int findHighScore() {
+        return Collections.max(cars.values());
+    }
+
+    private void findWinner(int highScore, StringBuilder winners, String carName) {
+        if (cars.get(carName) == highScore) {
+            if (winners.length() > 0)
+                winners.append(", " + carName);
+            else
+                winners.append(carName);
+        }
+    }
+
 }
