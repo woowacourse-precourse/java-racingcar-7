@@ -67,7 +67,7 @@ public class Controller {
     }
 
     private String getCarNamesByUserInput() {
-        InputView.requestCarNameMessage();
+        InputView.requestCarNamesMessage();
         String input = Console.readLine();
         return checkValidationCarNamesInput(input);
     }
