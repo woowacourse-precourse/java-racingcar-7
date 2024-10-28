@@ -22,4 +22,14 @@ public class MovementGeneratorTest extends NsTest {
         //then
         assertThat(num).isBetween(0, 9);
     }
+
+    @Test
+    @DisplayName("랜덤한 움직임이 반환되는지 테스트")
+    void getRandomMovement_MethodCall_gotMovement() {
+        //when
+        Movement movement = MovementGenerator.getRandomMovement();
+
+        //then
+        assertThat(movement).isIn(Movement.GO, Movement.STOP);
+    }
 }
