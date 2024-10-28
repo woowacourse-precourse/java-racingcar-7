@@ -3,7 +3,9 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.utils.StringParser;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class InputView {
@@ -14,7 +16,18 @@ public class InputView {
     public static List<String> readCarNames() {
         System.out.println(INPUT_CAR_NAME_MESSAGE);
         String input = Console.readLine();
-        return StringParser.splitByComma(input);
+        List<String> carNames = StringParser.splitByComma(input);
+
+        if (carNames.size() < 2) {
+            throw new IllegalArgumentException();
+        }
+
+        Set<String> uniqueNames = new HashSet<>(carNames);
+        if (uniqueNames.size() != carNames.size()) {
+            throw new IllegalArgumentException();
+        }
+
+        return carNames;
     }
 
     public static int readAttemptNumber() {
