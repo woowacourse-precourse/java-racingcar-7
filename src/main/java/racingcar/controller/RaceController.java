@@ -14,12 +14,7 @@ public class RaceController {
         CarRace carRace = new CarRace(cars, attempts);
 
         OutputView.printStartGame();
-
-        while (attempts.isNotEndGame()) {
-            carRace.runRace();
-            OutputView.printCarPositions(cars.getCars());
-            attempts.consumeAttempt();
-        }
+        runRaceRounds(carRace, attempts, cars);
 
         OutputView.printWinners(carRace.getWinners());
     }
@@ -30,5 +25,13 @@ public class RaceController {
 
     private String inputNumberOfAttempts() {
         return InputView.getInputNumberOfAttempts();
+    }
+
+    private void runRaceRounds(CarRace carRace, Attempts attempts, Cars cars) {
+        while (attempts.isNotEndGame()) {
+            carRace.runRace();
+            OutputView.printCarPositions(cars.getCars());
+            attempts.consumeAttempt();
+        }
     }
 }
