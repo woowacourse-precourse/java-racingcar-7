@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-
+import camp.nextstep.edu.missionutils.Randoms;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Set;
 import racingcar.model.Car;
 import racingcar.view.InputView;
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.view.ResultView;
-
 
 public class RaceController {
     public void startRace() {
@@ -21,11 +19,9 @@ public class RaceController {
         ResultView.printWinners(winners);
     }
 
-
     private String getCarNames() {
         return InputView.getCarNames();
     }
-
 
     private void runRace(List<Car> cars, BigInteger attempts) {
         for (BigInteger i = BigInteger.ZERO; i.compareTo(attempts) < 0; i = i.add(BigInteger.ONE)) {
@@ -38,30 +34,24 @@ public class RaceController {
         }
     }
 
-
     private List<Car> createCars(String carNames) {
         String[] names = carNames.split(",");
         List<Car> cars = new ArrayList<>();
         Set<String> uniqueNames = new HashSet<>();
 
-
         for (String name : names) {
             name = name.trim();
             validateCarName(name);
-
 
             if (!uniqueNames.add(name)) {
                 throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다: " + name);
             }
 
-
             cars.add(new Car(name));
         }
 
-
         return cars;
     }
-
 
     private void validateCarName(String name) {
         if (name.isEmpty()) {
@@ -72,13 +62,11 @@ public class RaceController {
         }
     }
 
-
     private List<Car> determineWinners(List<Car> cars) {
         BigInteger maxPosition = cars.stream()
-                                     .map(Car::getPosition)
-                                     .max(BigInteger::compareTo)
-                                     .orElse(BigInteger.ZERO);
-
+                .map(Car::getPosition)
+                .max(BigInteger::compareTo)
+                .orElse(BigInteger.ZERO);
 
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
