@@ -16,12 +16,16 @@ public class GameService {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public void carRacing(RacingGame racingGame) {
+    private void carRacing(RacingGame racingGame) {
         for (Car car : racingGame.getCars()) {
             int randomNumber = getRandomNumber();
-            if (racingGame.getGameRule().moveForward(randomNumber)) {
-                car.moveForward();
-            }
+            checkRuleStopOrMove(racingGame,car,randomNumber);
+        }
+    }
+
+    private void checkRuleStopOrMove(RacingGame racingGame, Car car, int randomNumber){
+        if(racingGame.getGameRule().moveForward(randomNumber)){
+            car.moveForward();
         }
     }
 
@@ -41,28 +45,38 @@ public class GameService {
         while (!racingGame.isTimeToEnd()) {
             racingGame.increaseGameCount();
             carRacing(racingGame);
-            OutputView.printCarPositions(racingGame);
+            displayRaceStatus(racingGame);
         }
     }
 
-    public int getMaxPosition(RacingGame racingGame) {
+    private void displayRaceStatus(RacingGame racingGame) {
+        for(Car car : racingGame.getCars()){
+            OutputView.printRacingCar(car.getName(), car.getPosition());
+        }
+    }
+
+    private int getMaxPosition(RacingGame racingGame) {
         return racingGame.getCars().stream()
                 .map(Car::getPosition)
                 .sorted(Comparator.reverseOrder())
-                .toList().get(0).intValue();
+                .toList().getFirst();
     }
 
-    public List<Car> getWinnerCar(RacingGame racingGame) {
+    private List<Car> getWinnerCar(RacingGame racingGame) {
         List<Car> winnerCar = new ArrayList<>();
         int maxPosition = getMaxPosition(racingGame);
         for (Car car : racingGame.getCars()) {
-            if (car.getPosition() == maxPosition) {
-                winnerCar.add(car);
-            }
+            findWinnerCar(car, maxPosition, winnerCar);
         }
 
         return winnerCar;
 
+    }
+
+    private void findWinnerCar(Car car, int maxPosition, List<Car> winnerCar) {
+        if (car.getPosition() == maxPosition) {
+            winnerCar.add(car);
+        }
     }
 
     public List<String> getWinnerCarName(RacingGame racingGame) {
