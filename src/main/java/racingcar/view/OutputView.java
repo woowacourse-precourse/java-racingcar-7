@@ -10,7 +10,7 @@ public class OutputView {
     }
 
     public void printRacingProcess(RacingCarService racingCarService) {
-        for (Car car : racingCarService.getCars().getCars()) {
+        for (Car car : racingCarService.getCars().getCarList()) {
             System.out.println(car.getName().toString() + " : " + "-".repeat(car.getPosition().getValue()));
         }
         System.out.println();

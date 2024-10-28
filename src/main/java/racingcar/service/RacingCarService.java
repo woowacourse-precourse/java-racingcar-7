@@ -31,7 +31,7 @@ public class RacingCarService {
     }
 
     public void moveCars() {
-        for (Car car : cars.getCars()) {
+        for (Car car : cars.getCarList()) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
             if (randomNumber > STOP_BOUNDARY) {
                 car.move();
@@ -41,7 +41,7 @@ public class RacingCarService {
 
     public List<String> findWinnersName() {
         Position longestPosition = getLongestPosition();
-        return cars.getCars()
+        return cars.getCarList()
                 .stream()
                 .filter(car -> car.getPosition().getValue() == longestPosition.getValue())
                 .map(car -> car.getName().toString())
@@ -49,7 +49,7 @@ public class RacingCarService {
     }
 
     private Position getLongestPosition() {
-        return cars.getCars()
+        return cars.getCarList()
                 .stream()
                 .map(Car::getPosition)
                 .max(Comparator.comparing(Position::getValue))
