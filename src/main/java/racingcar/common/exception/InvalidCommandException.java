@@ -1,0 +1,9 @@
+package racingcar.common.exception;
+
+import racingcar.common.constant.MessageConstants;
+
+public class InvalidCommandException extends IllegalArgumentException {
+    public InvalidCommandException() {
+        super(MessageConstants.INVALID_COMMAND_ERROR);
+    }
+}
