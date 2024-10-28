@@ -1,18 +1,19 @@
 package racingcar.util;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class StringParser {
     public List<String> parseCarNameString(String input) {
         List<String> carNameList = Arrays.asList(input.split(","));
-        for (String carName : carNameList) {
+
+        for (int i = 0; i < carNameList.size(); i++) {
+            String carName = carNameList.get(i).trim();
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             }
 
-            carNameList.set(carNameList.indexOf(carName), carName.trim());
+            carNameList.set(i, carName);
         }
 
         return carNameList;

@@ -22,7 +22,7 @@ public class Race {
             moveCars();
             outputView.printStepResult(cars);
         }
-        List<String> firstPlaceCarsList = getfirstPlaceCarsNameList();
+        List<String> firstPlaceCarsList = getFirstPlaceCarsNameList();
         outputView.printFinalFirstPlaceCars(firstPlaceCarsList);
     }
 
@@ -32,7 +32,7 @@ public class Race {
         }
     }
 
-    private List<String> getfirstPlaceCarsNameList() {
+    private List<String> getFirstPlaceCarsNameList() {
         List<String> firstPlaceCarsNameList = new ArrayList<>();
         int firstPlaceCarPosition = Integer.MIN_VALUE;
 
