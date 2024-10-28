@@ -24,18 +24,18 @@ public class CarRacingGame {
                 .collect(Collectors.toList());
     }
 
-    // 자동차 경주 진행
-    public List<String> startRace(int attemptCount) {
-        List<String> raceResults = new ArrayList<>();
-        for (int i = 0; i < attemptCount; i++) {
-            StringBuilder roundResult = new StringBuilder();
-            for (Car car : cars) {
-                car.move(isMovable());
-                roundResult.append(car.getStatus()).append("\n");
-            }
-            raceResults.add(roundResult.toString());
+    // 한 라운드를 실행하여 모든 자동차의 이동을 업데이트
+    public void advanceRound() {
+        for (Car car : cars) {
+            car.move(isMovable());
         }
-        return raceResults;
+    }
+
+    // 현재 라운드 결과 반환
+    public List<String> getCurrentRoundResults() {
+        return cars.stream()
+                .map(Car::getStatus)
+                .collect(Collectors.toList());
     }
 
     // 자동차가 전진할 조건을 판단

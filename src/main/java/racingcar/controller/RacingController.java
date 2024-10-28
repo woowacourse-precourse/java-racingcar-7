@@ -16,10 +16,12 @@ public class RacingController {
 
         // 2. 게임 초기화 및 경주 시작
         carRacingGame.initializeCars(carNames);
-        List<String> results = carRacingGame.startRace(attemptCount);
 
-        // 3. 경주 결과 출력
-        printRaceResults(results);
+        // 3. 각 라운드의 결과 출력
+        for (int i = 0; i < attemptCount; i++) {
+            carRacingGame.advanceRound();
+            printRoundResults(carRacingGame.getCurrentRoundResults());
+        }
     }
 
     // 사용자로부터 자동차 이름을 입력받고 처리
@@ -39,11 +41,11 @@ public class RacingController {
         }
     }
 
-    // 경주 결과를 출력
-    private void printRaceResults(List<String> raceResults) {
-        System.out.println("경주 결과:");
-        for (String result : raceResults) {
+    // 라운드 결과를 출력
+    private void printRoundResults(List<String> roundResults) {
+        for (String result : roundResults) {
             System.out.println(result);
         }
+        System.out.println();  // 라운드 사이에 줄바꿈으로 구분
     }
 }
