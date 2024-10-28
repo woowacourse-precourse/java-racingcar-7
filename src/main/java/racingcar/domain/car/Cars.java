@@ -2,7 +2,6 @@ package racingcar.domain.car;
 
 import java.util.ArrayList;
 import racingcar.domain.strategy.MoveStrategy;
-import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.dto.RacingCarNamesDTO;
 
 public class Cars {
