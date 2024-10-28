@@ -37,14 +37,20 @@ public class RacingServiceImpl implements RacingService {
 
     private void raceAndRecordOfCarsAndTurns(CarsByNames carsByNames, RacingTurns turns) {
         for (RacingTurn turn : turns) {
-            for (Map.Entry<String, Supplier<Integer>> entry : turn.getEntrySet()) {
-                String name = entry.getKey();
-                Supplier<Integer> strategy = entry.getValue();
-                Car car = carsByNames.get(name);
-                car.moveBy(strategy);
-                repository.saveProgress(new RacingProgress(car));
-            }
+            moveEachCarByStrategyAndRecordProgress(turn, carsByNames);
             repository.saveBreakingLine();
+        }
+    }
+    
+    private void moveEachCarByStrategyAndRecordProgress(RacingTurn turn, CarsByNames carsByNames) {
+        for (Map.Entry<String, Supplier<Integer>> entry : turn.getEntrySet()) {
+            String name = entry.getKey();
+            Supplier<Integer> strategy = entry.getValue();
+            Car car = carsByNames.get(name);
+            
+            car.moveBy(strategy);
+            
+            repository.saveProgress(new RacingProgress(car));
         }
     }
 
