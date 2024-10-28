@@ -8,13 +8,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.ExceptionMessage;
 
 public class InputValidatorTest {
-    private final InputValidator validator = new InputValidator();
 
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
     public void 자동차_이름_입력되지_않은_경우(String carNames) {
         // when & then
-        assertThatThrownBy(() -> validator.validateCarNames(carNames))
+        assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.EMPTY_CAR_NAMES.getMessage());
     }
@@ -25,7 +24,7 @@ public class InputValidatorTest {
         String carNames = null;
 
         // when & then
-        assertThatThrownBy(() -> validator.validateCarNames(carNames))
+        assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.EMPTY_CAR_NAMES.getMessage());
     }
@@ -36,7 +35,7 @@ public class InputValidatorTest {
         String carNames = "pobi";
 
         // when & then
-        assertThatThrownBy(() -> validator.validateCarNames(carNames))
+        assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.INSUFFICIENT_CARS.getMessage());
     }
@@ -47,7 +46,7 @@ public class InputValidatorTest {
         String carNames = "pobi,jimmy0524";
 
         // when & then
-        assertThatThrownBy(() -> validator.validateCarNames(carNames))
+        assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.TOO_LONG_NAME.getMessage());
     }
@@ -55,6 +54,9 @@ public class InputValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"0", "10000"})
     public void 시도할횟수가_유효하지_않은_경우(String count) {
+        // given
+        InputValidator validator = new InputValidator();
+
         // when & then
         assertThatThrownBy(() -> validator.validateAttemptCount(count))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -63,6 +65,9 @@ public class InputValidatorTest {
 
     @Test
     public void 시도할횟수가_문자인_경우_예외발생() {
+        // given
+        InputValidator validator = new InputValidator();
+
         // given
         String count = "abc";
 

@@ -3,7 +3,8 @@ package racingcar.validator;
 import racingcar.exception.ExceptionMessage;
 
 public class InputValidator {
-    public void validateCarNames(String carNames) {
+
+    public static void validateCarNames(String carNames) {
         checkEmptyCarNames(carNames);
         checkMinimumCarCount(carNames);
         checkBoundary(carNames);
@@ -27,31 +28,31 @@ public class InputValidator {
         }
     }
 
-    private void checkEmptyCarNames(String carNames) {
+    private static void checkEmptyCarNames(String carNames) {
         if (carNames == null || carNames.trim().isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.EMPTY_CAR_NAMES.getMessage());
         }
     }
 
-    private void checkMinimumCarCount(String carNames) {
+    private static void checkMinimumCarCount(String carNames) {
         if (!carNames.contains(",")) {
             throw new IllegalArgumentException(ExceptionMessage.INSUFFICIENT_CARS.getMessage());
         }
     }
 
-    private void checkBoundary(String carNames) {
+    private static void checkBoundary(String carNames) {
         if (carNames.trim().startsWith(",") || carNames.trim().endsWith(",")) {
             throw new IllegalArgumentException(ExceptionMessage.BOUNDARY_DELIMITER.getMessage());
         }
     }
 
-    private void checkCarNameValid(String name) {
+    private static void checkCarNameValid(String name) {
         if (name.trim().isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_CAR_NAME.getMessage());
         }
     }
 
-    private void checkCarNameLength(String name) {
+    private static void checkCarNameLength(String name) {
         if (name.trim().length() > 5) {
             throw new IllegalArgumentException(ExceptionMessage.TOO_LONG_NAME.getMessage());
         }
