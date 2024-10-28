@@ -1,4 +1,4 @@
-package racingcar.test;
+package racingcar.customtest;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

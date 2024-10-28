@@ -1,4 +1,4 @@
-package racingcar.test;
+package racingcar.customtest;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
