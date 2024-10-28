@@ -17,34 +17,29 @@ class RacingCarValidatorTest extends NsTest {
     @Test
     @DisplayName("자동차의 이름에 대한 조건을 만족하면 예외가 발생하지 않는다")
     void t001() {
-        //given
         String testInput = ("a").repeat(MAX_CAR_NAME_LENGTH);
 
         assertThatCode(() -> {
-            racingCarValidator.validateCarName(testInput);  //when
-        }).doesNotThrowAnyException();                      //then
+            racingCarValidator.validateCarName(testInput);
+        }).doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("자동차의 이름이 일정 글자수를 넘으면 예외가 발생한다")
     void t002() {
-        //given
         String testInput = ("a").repeat(MAX_CAR_NAME_LENGTH) + "a";
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> racingCarValidator.validateCarName(testInput)) //when
-                        .isInstanceOf(IllegalArgumentException.class)                   //then
+                assertThatThrownBy(() -> racingCarValidator.validateCarName(testInput))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
     @DisplayName("주행 횟수에는 숫자 이외의 것이 입력될 수 없다")
     void t003() {
-
-        //given
         String testInput = "둘";
 
-        //when, then
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> racingCarValidator.raceCountParsingValidate(testInput))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -54,10 +49,8 @@ class RacingCarValidatorTest extends NsTest {
     @Test
     @DisplayName("주행 횟수에는 음수가 입력될 수 없다")
     void t004() {
-        //given
         String testInput = "-3";
 
-        //when, then
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> racingCarValidator.raceCountNegativeNumberValidate(testInput))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -67,10 +60,8 @@ class RacingCarValidatorTest extends NsTest {
     @Test
     @DisplayName("주행 횟수에는 소수가 입력될 수 없다")
     void t005() {
-        //given
         String testInput = "3.3";
 
-        //when, then
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> racingCarValidator.raceCountDecimalValidate(testInput))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -80,10 +71,8 @@ class RacingCarValidatorTest extends NsTest {
     @Test
     @DisplayName("주행 횟수에 대한 유효성 검사를 진행할 수 있다")
     void t006() {
-        //String
         String testInput = "5";
 
-        //when, then
         assertThatCode(() -> {
             racingCarValidator.validateRaceCount(testInput);
         }).doesNotThrowAnyException();
