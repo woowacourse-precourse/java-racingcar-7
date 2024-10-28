@@ -7,7 +7,7 @@ public enum UiMessage {
 
     //=====================OUTPUT MESSAGE=====================//
     UI_OUTPUT_EXECUTION_RESULT_MESSAGE("실행 결과"),
-    UI_OUTPUT_WINNER_RESULT_MESSAGE("최종 우승자 :");
+    UI_OUTPUT_WINNER_RESULT_MESSAGE("최종 우승자 : ");
     private final String message;
 
     UiMessage(String message){
