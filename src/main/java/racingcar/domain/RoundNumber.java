@@ -8,6 +8,10 @@ public class RoundNumber {
         this.roundNumber = roundNumber;
     }
 
+    public int getRoundNumber() {
+        return roundNumber;
+    }
+
     private void checkMinimumValue(int roundNumber) {
         if (roundNumber < 0) {
             throw new IllegalArgumentException();

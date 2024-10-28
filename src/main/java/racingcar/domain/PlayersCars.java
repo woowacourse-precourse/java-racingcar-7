@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
@@ -8,9 +9,14 @@ public class PlayersCars {
     private List<Car> playersCars;
 
     public PlayersCars(List<String> userNames) {
+        playersCars = new ArrayList<>();
         for (String each : userNames) {
             this.playersCars.add(new Car(each));
         }
+    }
+
+    public List<Car> getPlayersCars() {
+        return playersCars;
     }
 
     public void moveSequence(NumberGenerator numberGenerator) {

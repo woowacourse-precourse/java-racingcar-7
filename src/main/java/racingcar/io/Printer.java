@@ -8,7 +8,7 @@ import racingcar.domain.Car;
 public class Printer {
     private final String WOOWA_SCORE_TYPE = "-";
     private final String WOOWA_RESULT_DELIMITER = " : ";
-    private final String NEWLINE = "\n";
+    private final Character NEWLINE = '\n';
     private final String WOOWA_FINAL_FORMAT = "최종 우승자 : ";
     private final String WOOWA_FINAL_DELIMITER = ", ";
 
@@ -24,6 +24,7 @@ public class Printer {
         IntStream.range(0, roundResult.size())
                 .forEach(index -> System.out.print(roundResultNames.get(index)
                         + WOOWA_RESULT_DELIMITER + WOOWA_SCORE_TYPE.repeat(roundResultScore.get(index)) + NEWLINE));
+        System.out.println();
     }
 
     public void printFinalResult(List<String> finalResult) {
