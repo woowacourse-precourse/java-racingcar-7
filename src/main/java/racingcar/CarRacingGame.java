@@ -67,4 +67,29 @@ public class CarRacingGame {
         }
         return cars;
     }
+
+    public static List<String> findWinners(List<Car> cars) {
+        int maxPosition = 0;
+
+        // 첫 번째 루프: 가장 먼 위치(maxPosition)를 찾음
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+
+        // 두 번째 루프: maxPosition에 있는 자동차의 이름을 리스트에 추가
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
+
+    public static void printWinners(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }
