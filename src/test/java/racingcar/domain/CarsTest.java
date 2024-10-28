@@ -42,4 +42,20 @@ public class CarsTest {
                 number
         );
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void 랜덤_숫자가_4이상_일때_모든_자동차의_이동_상황_테스트(int number) {
+        Cars cars = Cars.from(List.of(Car.from("우테코"), Car.from("프리코스")));
+        assertRandomNumberInRangeTest(
+                () -> {
+                    cars.moveEachCar();
+                    cars.getCars().forEach(car -> {
+                        assertThat(car.getPosition()).isEqualTo(1);
+                        assertThat(car.getMoveStatus()).isEqualTo("-");
+                    });
+                },
+                number
+        );
+    }
 }
