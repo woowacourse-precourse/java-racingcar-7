@@ -2,8 +2,8 @@ package racingcar.config;
 
 import racingcar.controller.GameController;
 import racingcar.model.car.CarFactory;
-import racingcar.model.movement.Movement;
-import racingcar.model.movement.RandomMovement;
+import racingcar.model.movementstrategy.MovementStrategy;
+import racingcar.model.movementstrategy.RandomMovementStrategy;
 import racingcar.model.service.RacingCarService;
 
 public class AppConfig {
@@ -19,7 +19,7 @@ public class AppConfig {
         return new CarFactory(movement());
     }
 
-    public Movement movement() {
-        return new RandomMovement();
+    public MovementStrategy movement() {
+        return new RandomMovementStrategy();
     }
 }

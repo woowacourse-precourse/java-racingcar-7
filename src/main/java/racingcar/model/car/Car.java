@@ -1,24 +1,24 @@
 package racingcar.model.car;
 
-import racingcar.model.movement.Movement;
+import racingcar.model.movementstrategy.MovementStrategy;
 
 public class Car {
     private final CarName carName;
     private final MoveResults moveResults;
-    private final Movement movement;
+    private final MovementStrategy movementStrategy;
 
-    public Car(CarName carName, MoveResults moveResults, Movement movement) {
+    public Car(CarName carName, MoveResults moveResults, MovementStrategy movementStrategy) {
         this.carName = carName;
         this.moveResults = moveResults;
-        this.movement = movement;
+        this.movementStrategy = movementStrategy;
     }
 
-    public static Car of(String carName, Movement movement) {
-        return new Car(CarName.of(carName), new MoveResults(), movement);
+    public static Car of(String carName, MovementStrategy movementStrategy) {
+        return new Car(CarName.of(carName), new MoveResults(), movementStrategy);
     }
 
     public void move() {
-        moveResults.add(movement.isMove());
+        moveResults.add(movementStrategy.isMove());
     }
 
     public int getPosition() {

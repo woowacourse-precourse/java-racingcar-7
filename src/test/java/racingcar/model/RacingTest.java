@@ -14,7 +14,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.common.Error.NOT_DUPLICATED_NAME;
-import static racingcar.model.movement.RandomMovement.MOVE_MIN_NUMBER;
+import static racingcar.model.movementstrategy.RandomMovementStrategy.MOVE_MIN_NUMBER;
 
 class RacingTest {
     private AppConfig appConfig = new AppConfig();

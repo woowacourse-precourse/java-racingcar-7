@@ -1,8 +1,8 @@
-package racingcar.model.movement;
+package racingcar.model.movementstrategy;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomMovement implements Movement {
+public class RandomMovementStrategy implements MovementStrategy {
 
     public static final int MIN_RANDOM_NUMBER = 0;
     public static final int MAX_RANDOM_NUMBER = 9;

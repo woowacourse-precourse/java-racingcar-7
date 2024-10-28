@@ -2,7 +2,7 @@ package racingcar.model.car;
 
 import org.junit.jupiter.api.Test;
 import racingcar.config.AppConfig;
-import racingcar.model.movement.Movement;
+import racingcar.model.movementstrategy.MovementStrategy;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ class CarFactoryTest {
     void 자동차를_생산하면_이름이_올바르게_저장된다() {
         //given
         CarFactory carFactory = appConfig.carFactory();
-        Movement movement = appConfig.movement();
+        MovementStrategy movementStrategy = appConfig.movement();
 
         String carName1 = "name1";
         String carName2 = "name2";
@@ -30,9 +30,9 @@ class CarFactoryTest {
         //then
         assertThat(cars)
                 .isEqualTo(
-                        List.of(Car.of(carName1, movement),
-                                Car.of(carName2, movement),
-                                Car.of(carName3, movement))
+                        List.of(Car.of(carName1, movementStrategy),
+                                Car.of(carName2, movementStrategy),
+                                Car.of(carName3, movementStrategy))
                 );
     }
 
