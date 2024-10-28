@@ -3,19 +3,19 @@ package validator;
 public class RepeatCountValidator {
 
     public static void validateInputRepeatCount(String inputRepeatCount) {
-        isNotEmpty(inputRepeatCount);
-        isNotBigNumber(inputRepeatCount);
-        isNotChar(inputRepeatCount);
-        isNotNegativeNumber(Integer.parseInt(inputRepeatCount));
+        repeatCountShouldNotBeBlank(inputRepeatCount);
+        repeatCountShouldNotBeBigNumber(inputRepeatCount);
+        repeatCountShouldNotBeChar(inputRepeatCount);
+        repeatCountShouldNotBeNegativeNumber(Integer.parseInt(inputRepeatCount));
     }
 
-    private static void isNotEmpty(String inputRepeatCount) {
+    private static void repeatCountShouldNotBeBlank(String inputRepeatCount) {
         if (inputRepeatCount.isEmpty()) {
             throw new IllegalArgumentException("반복 횟수가 입력되지 않았습니다.");
         }
     }
 
-    private static void isNotBigNumber(String inputRepeatCount) {
+    private static void repeatCountShouldNotBeBigNumber(String inputRepeatCount) {
         try {
             Integer.parseInt(inputRepeatCount);
         } catch (NumberFormatException e) {
@@ -25,7 +25,7 @@ public class RepeatCountValidator {
         }
     }
 
-    private static void isNotChar(String inputRepeatCount) {
+    private static void repeatCountShouldNotBeChar(String inputRepeatCount) {
         try {
             Integer.parseInt(inputRepeatCount);
         } catch (NumberFormatException e) {
@@ -33,7 +33,7 @@ public class RepeatCountValidator {
         }
     }
 
-    private static void isNotNegativeNumber(int repeatCount) {
+    private static void repeatCountShouldNotBeNegativeNumber(int repeatCount) {
         if (repeatCount < 0) {
             throw new IllegalArgumentException("반복 횟수는 0 이상의 정수 입니다.");
         }
