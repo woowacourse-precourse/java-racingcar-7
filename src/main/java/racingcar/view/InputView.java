@@ -1,7 +1,10 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import racingcar.constant.ErrorMessages;
+import racingcar.model.Car;
+import racingcar.model.CarList;
 import racingcar.model.Cars;
 import racingcar.model.TryCount;
 
@@ -11,7 +14,8 @@ public class InputView {
 
     public static Cars readCars() {
         String carNames = read(CAR_NAMES);
-        return new Cars(carNames);
+        List<Car> carList = new CarList(carNames);
+        return new Cars(carList);
     }
 
     public static TryCount readTryCount() {
