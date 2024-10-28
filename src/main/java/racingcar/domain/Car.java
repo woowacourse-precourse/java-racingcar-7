@@ -10,7 +10,7 @@ public class Car {
     private int moveCount = 0;
 
     public Car(String name) {
-        validName(name);
+        validateName(name);
         this.name = name;
     }
 
@@ -36,18 +36,18 @@ public class Car {
         return moveCount;
     }
 
-    private void validName(String name) {
-        checkNameEmpty(name);
-        checkNameLength(name);
+    private void validateName(String name) {
+        validateNameEmpty(name);
+        validateNameLength(name);
     }
 
-    private void checkNameEmpty(String name) {
+    private void validateNameEmpty(String name) {
         if (isNameEmpty(name)) {
             throw CustomException.of(ErrorMessage.BLANK_CAR_NAME_ERROR);
         }
     }
 
-    private void checkNameLength(String name) {
+    private void validateNameLength(String name) {
         if (isNameTooLong(name)) {
             throw CustomException.of(ErrorMessage.CAR_NAME_TOO_LONG_ERROR);
         }
