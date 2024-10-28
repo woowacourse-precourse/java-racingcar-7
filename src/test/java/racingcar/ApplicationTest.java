@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
     void 한개_이하_이름(){
         InputHandler inputHandler = new InputHandler();
         assertThrows(IllegalArgumentException.class, () -> {
-            InputValidator.notOneName(inputHandler);
+            InputValidator.notOneName(InputHandler);
         });
     }
 

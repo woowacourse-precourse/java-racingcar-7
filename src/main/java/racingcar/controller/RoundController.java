@@ -2,6 +2,7 @@ package racingcar.controller;
 
 
 import java.util.ArrayList;
+import racingcar.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 import racingcar.model.Car;
