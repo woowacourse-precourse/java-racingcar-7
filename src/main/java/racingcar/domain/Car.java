@@ -2,6 +2,8 @@ package racingcar.domain;
 import static camp.nextstep.edu.missionutils.Randoms.*;
 
 public class Car {
+    private static final int FORWARD_CONDITION = 4;
+
     private final String name;
     private int position = 0;
 
@@ -20,7 +22,7 @@ public class Car {
     }
 
     private boolean isMovable() {
-        return pickNumberInRange(0,9) >= 4;
+        return pickNumberInRange(0,9) >= FORWARD_CONDITION;
     }
 
 
