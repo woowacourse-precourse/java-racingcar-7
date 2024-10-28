@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import java.util.Objects;
+import racingcar.domain.car.dto.CarResultDto;
 
 public class Car {
     private final CarName name;
@@ -29,6 +30,10 @@ public class Car {
 
     public boolean isMaxPosition(int maxPosition) {
         return maxPosition == position.getPosition();
+    }
+
+    public CarResultDto getRaceResult() {
+        return new CarResultDto(this.getName(), this.getPosition());
     }
 
     @Override

@@ -38,7 +38,7 @@ public class Race {
         if (CAN_MOVE_NUMBER <= randomNumberGenerator.generate()) {
             car.move();
         }
-        return new CarResultDto(car.getName(), car.getPosition());
+        return car.getRaceResult();
     }
 
     public WinnersDto getWinners(Cars cars) {
