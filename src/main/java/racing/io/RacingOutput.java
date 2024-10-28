@@ -6,7 +6,6 @@ import java.util.List;
 
 public class RacingOutput {
 
-    //   todo : 메서드 명 수정
     private String displayPosition(int repeatCnt) {
         return "-".repeat(repeatCnt);
     }

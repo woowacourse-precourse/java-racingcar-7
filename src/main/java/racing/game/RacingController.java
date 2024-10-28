@@ -13,12 +13,6 @@ public class RacingController {
     private final RacingOutput racingOutput = new RacingOutput();
     private final RacingInput racingInput = new RacingInput();
 
-    private List<Car> createCars(List<String> carNames) {
-        ArrayList<Car> cars = new ArrayList<>();
-        carNames.forEach(carName -> cars.add(new Car(carName)));
-
-        return cars;
-    }
 
     private void startRound(List<Car> cars) {
         cars.forEach(racingService::moveCarForward);
@@ -34,6 +28,12 @@ public class RacingController {
         racingOutput.displayWinners(winnerNames);
     }
 
+    public List<Car> createCars(List<String> carNames) {
+        ArrayList<Car> cars = new ArrayList<>();
+        carNames.forEach(carName -> cars.add(new Car(carName)));
+
+        return cars;
+    }
 
     public void startRacingGame() {
         List<String> carNames = racingInput.getCarNames();
