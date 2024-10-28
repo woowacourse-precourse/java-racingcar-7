@@ -1,13 +1,16 @@
 package model;
 
 public class Car {
-    private static final int INITIAL_POSITION = 0;
-
     private final String name;
-    private int position = INITIAL_POSITION;
+    private int position;
 
     public Car(String name) {
         this.name = name;
+        this.position = 0;
+    }
+
+    public void moveForward() {
+        this.position++;
     }
 
     public String getName() {
@@ -16,9 +19,5 @@ public class Car {
 
     public int getPosition() {
         return position;
-    }
-
-    public void moveForward() {
-        position++;
     }
 }
