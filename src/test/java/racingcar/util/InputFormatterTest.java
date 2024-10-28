@@ -40,6 +40,14 @@ class InputFormatterTest {
     }
 
     @Test
+    public void 자동차_이름_null_입력_테스트() {
+        String carInput = null;
+
+        assertThatThrownBy(() -> InputFormatter.getFormattedCarNames(carInput))
+                .isInstanceOf(CarNameFormatException.class);
+    }
+
+    @Test
     public void 시도_횟수_입력_테스트() {
         String countInput = "5";
 
