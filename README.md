@@ -29,32 +29,35 @@
 
 ## 📂 프로젝트 구조
 
-- main
-    - java
-        - controller
-            - RacingGameController
-        - model
-            - Car
-            - Cars
-        - movement
-            - MovementHandler
-            - CarMovementHandler
-        - service
-            - RacingGameService
-        - splitter
-            - CarNameSplitter
-            - CarNameSplitterImpl
-        - validator
-            - Validator
-            - CarNameValidator
-            - RaceCountValidator
-            - ParseValidator
-            - ParseIntValidator
-            - Message
-        - view
-            - InputView
-            - OutputView
-            - Message
+```
+└── java
+    ├── controller
+    │   └── RacingGameController.java
+    ├── model
+    │   ├── Car.java
+    │   └── Cars.java
+    ├── movement
+    │   ├── MovementHandler.java
+    │   └── CarMovementHandler.java
+    ├── racingcar
+    │   └── Application.java
+    ├── service
+    │   └── RacingGameService.java
+    ├── splitter
+    │   ├── CarNameSplitter.java
+    │   └── CarNameSplitterImpl.java
+    ├── validator
+    │   ├── Message.java
+    │   ├── Validator.java
+    │   ├── RaceCountValidator.java
+    │   ├── CarNameValidator.java
+    │   ├── ParseValidator.java
+    │   └── ParseIntValidator.java
+    └── view
+        ├── Message.java
+        ├── InputView.java
+        └── OutputView.java
+```
 
 ---
 
