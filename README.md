@@ -37,3 +37,5 @@
 - 우승자 출력
   - 우승자가 한명일 경우
   - 우승자가 여러명일 경우
+## 순서도
+![racingCar](https://github.com/user-attachments/assets/0166f2bf-81b5-417f-9fd3-7af5898dc66b)
