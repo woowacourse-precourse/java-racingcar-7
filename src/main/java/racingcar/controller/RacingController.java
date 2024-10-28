@@ -1,5 +1,8 @@
 package racingcar.controller;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Cars;
 import racingcar.domain.Movement;
 import racingcar.domain.TrialCount;
@@ -15,7 +18,8 @@ public class RacingController {
     private final TrialCount trialCount;
 
     public RacingController(InputView inputView, OutputView outputView, Movement movement) {
-        cars = Cars.ofNames(inputView.readNames());
+        String[] names = inputView.readNames();
+        cars = Cars.ofNames(getTrimmedNames(names));
         trialCount = new TrialCount(inputView.inputTrialCounts());
         this.outputView = outputView;
         this.movement = movement;
@@ -29,5 +33,11 @@ public class RacingController {
             trialCount.decrease();
         }
         outputView.printWinners(cars.findWinners());
+    }
+
+    private List<String> getTrimmedNames(String[] names) {
+        return Arrays.stream(names)
+                .map(String::trim)
+                .collect(Collectors.toList());
     }
 }
