@@ -16,14 +16,17 @@ public class Race {
 
     public void startRace(int numberOfRounds) {
 
+        System.out.println("실행 결과");
         for (int i = 0; i < numberOfRounds; i++) {
             for (Car car : cars) {
                 moveOrStop(car);
+                System.out.println(car.getName() + " : " + car.getPosition());
             }
+            System.out.println();
         }
     }
 
-    public void moveOrStop(Car car){
+    public void moveOrStop(Car car) {
 
         if (Randoms.pickNumberInRange(0, 9) >= minCarPower) {
             car.move();

@@ -12,10 +12,13 @@ public class RacingCarView {
         return Console.readLine().split(",");
     }
 
-    public String inputNumberOfTries(){
+    public String inputNumberOfTries() {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Console.readLine();
+        String tryCount = Console.readLine();
+        System.out.println();
+
+        return tryCount;
     }
 
     public void printRaceProgress(List<Car> cars) {
