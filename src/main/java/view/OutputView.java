@@ -6,11 +6,11 @@ import util.Constants;
 public class OutputView {
     public static void outputWindow(String[] results){
         for(String result : results){
-            printOutputString(result + "\n");
+            printOutputString(result);
         }
     }
 
     private static void printOutputString(String prompt) {
-        System.out.println(prompt);
+        System.out.print(prompt);
     }
 }
