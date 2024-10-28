@@ -15,6 +15,6 @@ public class Application {
         RacingCarGame racingCarGame = new RacingCarGame(inputView, outputView, number, cars);
 
         racingCarGame.initGame();
-        racingCarGame.startRacingGame();
+        racingCarGame.startGame();
     }
 }

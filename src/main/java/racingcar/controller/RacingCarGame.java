@@ -35,14 +35,14 @@ public class RacingCarGame {
         cars.setCarList(inputString);
     }
 
-    public void startRacingGame() {
+    public void startGame() {
         outputView.printResultMessage();
         while (tryCount-- > 0) {
             playOneRound();
         }
 
         List<String> winnerList = cars.getWinnerList();
-        outputView.printWinner(winnerList); //car을 넘겨주면 안되기 떄문에 이렇게 따로 리스트를 만들었는데 다른 방법은 없는지, DTO??
+        outputView.printWinner(winnerList);
     }
 
     private void playOneRound() {
