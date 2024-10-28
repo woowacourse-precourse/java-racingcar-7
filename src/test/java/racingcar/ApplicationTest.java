@@ -62,6 +62,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_시도횟수_문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "c"))
+                        .isInstanceOf(NumberFormatException.class)
+        );
+    }
+
+    @Test
     void 예외_테스트_시도횟수_0() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaj", "0"))
