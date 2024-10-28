@@ -1,8 +1,11 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
@@ -20,9 +23,9 @@ public class Application {
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameInput = Console.readLine();
-        List<String> cars = List.of(carNameInput.split(","));
+        List<String> carNames = List.of(carNameInput.split(","));
 
-        cars.forEach(car -> {
+        carNames.forEach(car -> {
             if(car.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
             }
@@ -33,6 +36,38 @@ public class Application {
         if(tryCount < 1) {
             throw new IllegalArgumentException("시도 횟수는 1이상이어야 합니다.");
         }
+
+
+        Map<String, Integer> cars = new HashMap<>();
+        carNames.forEach(carName -> {
+            cars.putIfAbsent(carName, 0);
+        });
+
+        for(int i = 0; i < tryCount; i++) {
+
+            for(String car : cars.keySet()) {
+                int randomValue = Randoms.pickNumberInRange(0, 9);
+
+                if(randomValue >= 4) {
+                    int prevPosition = cars.get(car);
+                    cars.put(car, prevPosition + 1);
+                }
+            }
+
+            //현재상태 출력
+            StringBuilder carStatus = new StringBuilder();
+            cars.keySet().forEach(carName -> {
+                carStatus.append(carName).append(" : ");
+                for(int k = 0; k < cars.get(carName); k++) {
+                    carStatus.append("-");
+                }
+                carStatus.append("\n");
+            });
+            System.out.println(carStatus);
+        }
+
+
+
 
     }
 }
