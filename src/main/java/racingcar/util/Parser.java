@@ -11,8 +11,6 @@ public class Parser {
     }
 
     public static int parseInt(String input) {
-        InputValidator.validateNumeric(input);
-
         return Integer.parseInt(input);
     }
 }

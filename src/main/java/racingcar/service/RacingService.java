@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.response.Winners;
+import racingcar.util.InputValidator;
 import racingcar.util.Parser;
 
 public class RacingService {
@@ -22,6 +23,16 @@ public class RacingService {
                 .map(element -> new Car(element.strip()))
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    public int parseValidatedInt(String input) {
+        InputValidator.validateEmpty(input);
+        InputValidator.validateNumeric(input);
+
+        int parsedInt = Parser.parseInt(input);
+        InputValidator.validatePositive(parsedInt);
+
+        return parsedInt;
     }
 
     public Winners findWinners(Cars cars) {

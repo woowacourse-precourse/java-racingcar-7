@@ -34,4 +34,14 @@ public class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Error.EMPTY_VALUE.getMessage());
     }
+
+    @Test
+    @DisplayName("양수 이외의 값을 입력할 경우 해당 예외 문구를 출력한다")
+    void throw_when_input_is_not_positive() {
+        int input = -1;
+
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> InputValidator.validatePositive(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Error.NOT_POSITIVE.getMessage());
+    }
 }

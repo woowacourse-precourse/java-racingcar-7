@@ -6,7 +6,6 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.response.Winners;
 import racingcar.service.RacingService;
-import racingcar.util.Parser;
 import racingcar.util.RandomNumberPicker;
 import racingcar.view.RacingInputView;
 import racingcar.view.RacingOutputView;
@@ -35,7 +34,7 @@ public class RacingController {
     }
 
     private void progress(String countInput, Cars collection) {
-        int count = Parser.parseInt(countInput);
+        int count = racingService.parseValidatedInt(countInput);
         List<Car> cars = collection.getCars();
 
         outputView.guideProgress();
