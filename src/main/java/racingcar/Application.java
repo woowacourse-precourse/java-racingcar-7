@@ -50,9 +50,8 @@ public class Application {
         //8. 시도가 끝나면 우승자를 뽑는다. 해시맵에서 value값이 가장 큰 키 값을 최종 우승자로 출력한다.
         Integer totalLength=0;
         for (String targetCar : carArr) {
-            if (totalLength <= map.get(targetCar).length()){
-                totalLength= map.get(targetCar).length();
-            }
+            //8-1.해시맵에서 value값이 가장 큰 키 값찾는다.
+            totalLength = setTotalLength(totalLength, map.get(targetCar).length());
         }
 
         String totalWinner = null;
@@ -138,5 +137,13 @@ public class Application {
             map = checkPickNum(pickNum, targetCar, map);
         }
         return map;
+    }
+
+    //8-1.해시맵에서 value값이 가장 큰 키 값찾는다.
+    public static Integer setTotalLength(Integer totalLength, Integer targetLength){
+        if (totalLength <= targetLength){
+            totalLength = targetLength;
+        }
+        return totalLength;
     }
 }
