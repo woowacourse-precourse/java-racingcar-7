@@ -2,7 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 
-public class OutPutView {
+public class ResultView {
 
     public void printWinners(List<String> winners) {
 

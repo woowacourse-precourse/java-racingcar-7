@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.view.RaceStatusView;
 
 public class RacingGame {
     private ArrayList<Car> cars;
@@ -14,11 +15,12 @@ public class RacingGame {
     }
 
     public List<String> race() {
+        RaceStatusView raceStatusView = new RaceStatusView();
         int nowTry = 0;
         while (tryNumber != nowTry) {
             for (Car car : cars) {
                 car.checkForward();
-                System.out.println(car.getName() + " : " + car.getRacingCount());
+                raceStatusView.showRaceStatus(car);
             }
             System.out.println();
             nowTry++;

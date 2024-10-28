@@ -6,12 +6,12 @@ import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
-import racingcar.view.OutPutView;
+import racingcar.view.ResultView;
 
 public class RacingController {
     InputView inputView = new InputView();
     InputValidator inputValidator = new InputValidator();
-    OutPutView outPutView = new OutPutView();
+    ResultView outPutView = new ResultView();
 
 
     public void startGame() {
