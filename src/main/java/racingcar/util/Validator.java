@@ -8,6 +8,13 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
+    public void checkInput(String input) {
+        checkInputFormat(input);
+        checkDuplicateName(input);
+        checkNullName(input);
+        checkNameLength(input);
+        checkCarNum(input);
+    }
     public void checkInputFormat(String input) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9,\\s가-힣ㄱ-ㅎㅏ-ㅣ]*$");
         if(!input.matches(pattern.pattern())) {
