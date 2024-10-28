@@ -18,17 +18,22 @@ public class Application {
         cars = new ArrayList<Car>();
         view = new View(cars);
 
+        view.printNameScript();
         inputName();
+
+        view.printNumberScript();
         inputNumberOfTry();
 
         for(int i = 0; i < numberOfTry; i++) {
             play();
         }
     }
+
     public static void play(){
         for (Car car : cars) {
             car.move();
         }
+        view.printCars();
     }
     public static void inputName(){
         input = Console.readLine();
