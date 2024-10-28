@@ -3,6 +3,7 @@ import racingcar.domain.Car;
 
 import java.util.List;
 
+//출력 뷰
 public class OutputView {
     public static void printRoundResult(List<Car> car) {
         for (Car c : car) {
