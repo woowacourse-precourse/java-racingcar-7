@@ -17,15 +17,15 @@ public class OutputView {
     private static final String PROGRESS = "%s : %s";
 
     public void printAskCars() {
-        printMessage(ASK_CARS);
+        printlnMessage(ASK_CARS);
     }
 
     public void printAskCount() {
-        printMessage(ASK_COUNT);
+        printlnMessage(ASK_COUNT);
     }
 
     public void printResultTitle() {
-        printMessage(RESULT_TITLE);
+        printlnMessage(RESULT_TITLE);
     }
 
     public void printResults(final List<RacingCarResult> results) {
@@ -35,7 +35,7 @@ public class OutputView {
             sb.append(resultMessage);
             sb.append(LINE_SEPARATOR);
         }
-        System.out.print(sb);
+        printMessage(sb.toString());
     }
 
     public void printWinner(final RacingCarWinner racingCarWinner) {
@@ -58,8 +58,11 @@ public class OutputView {
         return sb.toString();
     }
 
-
     private void printMessage(final String message) {
+        System.out.print(message);
+    }
+
+    private void printlnMessage(final String message) {
         System.out.println(message);
     }
 }
