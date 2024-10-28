@@ -16,7 +16,6 @@ class CarRaceSnapshotTest {
         String[] carNames = {"pobi", "woni", "jun"};
         FixedMovementStrategy fixedMovementStrategy = new FixedMovementStrategy(4);
         cars = new Cars(carNames, fixedMovementStrategy);
-
     }
 
     @Test
@@ -43,6 +42,5 @@ class CarRaceSnapshotTest {
 
         // then
         assertThat(carRaceSnapshot.getMaxDistanceCarsName()).isEqualTo(expectedCarNames);
-
     }
 }
