@@ -60,11 +60,25 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 공백_에러() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi"," "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 빈문자열_에러() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi",""))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Test
     void 숫자가_아닌_값이_입력한_경우() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,migi","1"))
+                assertThatThrownBy(() -> runException("pobi,migi","fds"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
