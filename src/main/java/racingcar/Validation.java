@@ -19,8 +19,8 @@ public class Validation {
     }
 
     private static void checkForDuplication(String[] carNames) {
-
         List<String> duplicatedCarNames = new ArrayList<>();
+
         for (String carName : carNames) {
             if (duplicatedCarNames.contains(carName)) {
                 throw new IllegalArgumentException(DUPLICATE_CAR_NAME_MESSAGE);
@@ -31,6 +31,7 @@ public class Validation {
 
     public static int checkTryCounts(String tryCounts) {
         int counts;
+        
         try {
             counts = Integer.parseInt(tryCounts);
         } catch (NumberFormatException e) {
