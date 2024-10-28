@@ -31,7 +31,7 @@ public class CarRacingController {
     public void playRound(int count) {
         while (count > 0) {
             carMoves();
-            outputView.outputCarMoves(register.carsMoveCount());
+            outputView.outputCarMoves(register.carsMoveCountList());
             count--;
         }
     }

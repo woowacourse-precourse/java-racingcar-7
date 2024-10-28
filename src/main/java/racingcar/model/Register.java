@@ -18,7 +18,7 @@ public class Register {
         }
     }
 
-    public LinkedHashMap<String, Integer> carsMoveCount() {
+    public LinkedHashMap<String, Integer> carsMoveCountList() {
         LinkedHashMap<String, Integer> moves = new LinkedHashMap<>();
         for (Car c : carList) {
             moves.put(c.name, c.distance);
@@ -27,7 +27,7 @@ public class Register {
     }
 
     public ArrayList<String> racingWinner() {
-        LinkedHashMap<String, Integer> carMoves = carsMoveCount();
+        LinkedHashMap<String, Integer> carMoves = carsMoveCountList();
         int maxMove = Collections.max(carMoves.values());
 
         ArrayList<String> winners = new ArrayList<>();

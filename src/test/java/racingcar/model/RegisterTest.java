@@ -59,7 +59,7 @@ class RegisterTest {
         expectedMove.put("진용1", 2);
         expectedMove.put("진용2", 3);
 
-        Assertions.assertThat(register.carsMoveCount()).isEqualTo(expectedMove);
+        Assertions.assertThat(register.carsMoveCountList()).isEqualTo(expectedMove);
     }
 
     @Test
