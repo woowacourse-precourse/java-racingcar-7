@@ -24,6 +24,10 @@ public class Car {
         return name.getName() + " : " + position.getPosition();
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
     public void move(MovingStrategy strategy) {
         if (strategy.isMovable()) {
             position.forward();

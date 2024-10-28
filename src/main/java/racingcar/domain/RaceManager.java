@@ -64,6 +64,14 @@ public class RaceManager {
                 .forEach(car -> car.move(movingStrategy));
     }
 
+    public RacingCars getRacingCars() {
+        return racingCars;
+    }
+
+    public List<String> getWinnersName() {
+        return winnersName;
+    }
+
     public static RaceManager createRaceManager(InputDto dto,
                                                 MovingStrategy movingStrategy) {
         return new RaceManager(

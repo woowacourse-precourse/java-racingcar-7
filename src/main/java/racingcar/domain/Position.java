@@ -23,6 +23,4 @@ public class Position {
     public static Position from() {
         return new Position();
     }
-
-
 }
