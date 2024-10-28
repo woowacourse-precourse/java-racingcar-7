@@ -7,10 +7,14 @@ import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println(" 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> cars_name = getCarsName();
 
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int attemptCount = getAttemptCount();
+
     }
+
 
     public static List<String> getCarsName() {
         String input = Console.readLine();
@@ -44,6 +48,32 @@ public class Application {
             if (!nameSet.add(name)) {
                 throw new IllegalArgumentException("자동차 이름은 중복될 수 없다");
             }
+        }
+    }
+
+    public static int getAttemptCount() {
+        String input = Console.readLine();
+        return validateAttemptCount(input);
+    }
+
+    // 유효성 검사만을 위한 메서드 추가
+    public static int validateAttemptCount(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("시도 횟수는 빈 문자열일 수 없습니다.");
+        }
+
+        if (input.contains(" ")) {
+            throw new IllegalArgumentException("시도 횟수는 공백을 포함할 수 없습니다.");
+        }
+
+        try {
+            int attemptCount = Integer.parseInt(input);
+            if (attemptCount < 1) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상의 양수여야 합니다.");
+            }
+            return attemptCount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 정수여야 합니다.");
         }
     }
 }
