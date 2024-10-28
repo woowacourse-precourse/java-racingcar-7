@@ -10,6 +10,9 @@ public class Car {
         this.name = name;
     }
 
+    /**
+     * 랜덤 값이 4 이상이면 전진한다.
+     */
     public void move() {
         int random = Randoms.pickNumberInRange(0, 9);
         if (random >= 4) {
