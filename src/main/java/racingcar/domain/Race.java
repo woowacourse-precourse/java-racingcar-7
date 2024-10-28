@@ -12,6 +12,7 @@ public class Race {
 
     public Race(String rawCarNames, NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
+        
         List<String> parsedCarNames = parseCarNames(rawCarNames);
         validateDuplicates(parsedCarNames);
         this.cars = createCars(parsedCarNames);

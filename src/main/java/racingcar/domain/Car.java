@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class Car {
+    
     private static final String ERROR_CAR_NAME_TOO_LONG = "자동차 이름은 5자 이하여야 합니다.";
     public static final String ERROR_CAR_NAME_NO_SPACE = "자동차 이름에 공백을 포함할 수 없습니다.";
 
