@@ -1,8 +1,8 @@
 package racingcar.domain;
 
 import static racingcar.exception.ExceptionMessage.*;
+import static racingcar.utils.RandomNumberGenerator.generateRandomNum;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -26,7 +26,7 @@ public class RacingGame {
 
     public List<Car> move() {
         for (Car car : cars) {
-            int randomNum = Randoms.pickNumberInRange(0, 9);
+            int randomNum = generateRandomNum();
             car.move(randomNum);
         }
         return cars;
