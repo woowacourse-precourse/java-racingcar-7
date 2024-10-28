@@ -17,6 +17,10 @@ public class RacingCarRepository {
         return cars;
     }
 
+    public ArrayList<BigInteger> getValues() {
+        return values;
+    }
+
     public void addCar(String carName) {
         this.cars.add(carName);
         this.values.add(BigInteger.ZERO);
