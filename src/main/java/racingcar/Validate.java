@@ -23,4 +23,10 @@ public class Validate {
             throw new IllegalArgumentException("자동차 이름은 빈 값일 수 없습니다.");
         }
     }
+
+    public static void validateGameCount(int gameCount){
+        if (gameCount <= 0) {
+            throw new IllegalArgumentException("게임 횟수는 1 이상이어야 합니다.");
+        }
+    }
 }

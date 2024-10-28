@@ -16,8 +16,9 @@ public class Input {
     public int getGameCount(){
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputGameCount = Console.readLine();
-
-        return convertStrToInt(inputGameCount);
+        int gameCount = convertStrToInt(inputGameCount);
+        Validate.validateGameCount(gameCount);
+        return gameCount;
     }
 
     public static List<String> splitCarNames(String inputCarNames){
