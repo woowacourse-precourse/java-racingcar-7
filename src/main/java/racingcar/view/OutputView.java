@@ -18,4 +18,8 @@ public class OutputView {
 			.forEach(car -> System.out.println(car.getName() + " : " + "-".repeat(car.getPosition())));
 		System.out.println();
 	}
+
+	public static void winners(List<String> winners) {
+		System.out.println("최종 우승자 : " + String.join(", ", winners));
+	}
 }
