@@ -31,4 +31,11 @@ public class Cars {
             car.move(randomNumber);
         }
     }
+
+    public void printCurrentPositions(){
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getMoveDisctance()));
+        }
+        System.out.println();
+    }
 }

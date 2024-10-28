@@ -36,10 +36,7 @@ public class Application {
 
         for (int i = 0; i < gameCount; i++) {
             cars.moveCars();
-            for (Car car : cars.getCars()) {
-                System.out.println(car.getName() + " : " + "-".repeat(car.getMoveDisctance()));
-            }
-            System.out.println();
+            cars.printCurrentPositions();
         }
     }
 
