@@ -27,4 +27,16 @@ public class RacingGame {
             printCurrentRaceStatus();
         }
     }
+
+    public void race(){
+        for (racingcar.Car car : cars){
+            car.move(generateRandomNumber());
+        }
+    }
+
+    public int generateRandomNumber(){
+        return Randoms.pickNumberInRange(0,9);
+    }
+
+
 }
