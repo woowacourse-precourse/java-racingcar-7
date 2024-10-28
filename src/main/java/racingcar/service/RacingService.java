@@ -29,7 +29,11 @@ public class RacingService {
     }
 
     public String getInputCarName() {
-        return requestInputString(InputType.CAR_NAME);
+        String carNames = requestInputString(InputType.CAR_NAME);
+        if (isBlank(carNames)) {
+            throw new IllegalArgumentException((EMPTY_INPUT.getMessage()));
+        }
+        return carNames;
     }
 
     public int getInputTotalRound() {
