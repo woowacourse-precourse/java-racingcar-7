@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racingcar.car.Car;
 import racingcar.car.CompeteCars;
 import racingcar.game.Round;
 
@@ -23,11 +22,13 @@ class RoundTest {
     }
 
     @Test
-    void getMoveCountTest() {
+    void hasNextTest() {
         CompeteCars cars = new CompeteCars(List.of("test", "cars"));
-        Round round = new Round(5, cars);
+        Round round = new Round(1, cars);
 
-        assertThat(round.getMoveCount()).isEqualTo(5);
+        round.progress();
+
+        assertThat(round.hasNext()).isFalse();
     }
 
     @Test
@@ -37,30 +38,7 @@ class RoundTest {
 
         assertRandomNumberInRangeTest(() -> {
             round.progress();
-            List<Integer> movedPositions = cars.getAll().stream().map(Car::getPosition).toList();
-            assertThat(movedPositions).containsExactly(1, 1);
-        }, MOVING_FORWARD, MOVING_FORWARD);
-    }
-
-    @Test
-    void getResult() {
-        CompeteCars cars = new CompeteCars(List.of("test", "cars"));
-        Round round = new Round(1, cars);
-
-        assertRandomNumberInRangeTest(() -> {
-            round.progress();
-            assertThat(round.getResult()).isEqualTo("test : -\ncars : ");
-        }, MOVING_FORWARD, STOP);
-    }
-
-    @Test
-    void getWinners() {
-        CompeteCars cars = new CompeteCars(List.of("test", "cars"));
-        Round round = new Round(1, cars);
-
-        assertRandomNumberInRangeTest(() -> {
-            round.progress();
-            assertThat(round.getWinners()).containsExactly("test");
+            assertThat(cars.getWinnerCars()).contains("test");
         }, MOVING_FORWARD, STOP);
     }
 }
