@@ -9,6 +9,7 @@ public class Car {
 
     Car(String name) {
         this.carName = name;
+        this.distance = 0;
     }
 
     String getCarName() {
@@ -32,5 +33,10 @@ public class Car {
 
     String getStatus() {
         return getCarName() + " : " + "-".repeat(getDistance());
+    }
+
+    // 테스트용으로만 사용
+    void setDistance(int distance) {
+        this.distance = distance;
     }
 }
