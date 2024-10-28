@@ -17,4 +17,7 @@ public class Car {
 
     }
 
+    public void printCar(){
+        System.out.println(String.join(" : ",name,"-".repeat(move)));
+    }
 }
