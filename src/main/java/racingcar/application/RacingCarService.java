@@ -4,7 +4,6 @@ import racingcar.domain.car.Car;
 import racingcar.domain.car.CarRepository;
 import racingcar.domain.car.value.Name;
 import racingcar.domain.refree.Referee;
-import racingcar.domain.refree.value.Result;
 import racingcar.domain.refree.value.SingleResult;
 import racingcar.domain.refree.value.TotalResult;
 import racingcar.domain.refree.value.WinnerNames;
