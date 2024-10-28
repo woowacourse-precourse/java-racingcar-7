@@ -1,101 +1,10 @@
-# java-racingcar-precourse
+### 지난주 코드리뷰 피드백
+- 계층형 아키텍처로 프로젝트를 구성했는데 서비스 계층에서 상태를 가지고, view에서 참조를 하는 등의 부분에서 수정했으면 한다는 피드백을 받았다. 이에 따라 계층형 아키텍처에 대해서 상세히 공부하고 어떻게 하면 SOLID 원칙을 지키며 구현할 수 있을지 고민했다.
+- 상수 클래스를 만들어서 상수를 관리한 부분에 대해서는 칭찬을 받았다. 조금 더 발전시켜서 enum 클래스로 만들었다.
+- 서비스 계층에 단일 클래스로 비지니스 로직을 전부 처리하다보니 많은 책임을 지고 있다는 피드백을 받았다. 단일 책임 원칙에 따라 서비스를 분리했다.
+- 테스트 코드를 클래스마다 나눠서 단위 테스트를 해보는게 어떤가라는 피드백을 받았다. 지난번엔 구현 따로 테스트 따로 완성하다보니 통합 테스트만 진행하게 되었다. 이번에는 기능 하나를 완성시키면 바로 테스트를 돌릴 수 있도록 단위테스트를 만들었다.
 
-## 기능 요구 사항
-
-초간단 자동차 경주 게임을 구현한다.
-
-- 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
-- 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
-- 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
-- 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
-- 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
-- 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
-- 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
-- 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
-
-## 입출력 요구 사항
-
-### 입력
-
-- 경주할 자동차 이름(이름은 쉼표(,) 기준으로 구분)
-
-```
-pobi,woni,jun
-```
-
-- 시도할 횟수
-
-```
-5
-```
-
-### 출력
-
-- 차수별 실행 결과
-
-```
-pobi : --
-woni : ----
-jun : ---
-```
-
-- 단독 우승자 안내 문구
-
-```
-최종 우승자 : pobi
-```
-
-- 공동 우승자 안내 문구
-
-```
-최종 우승자 : pobi, jun
-```
-
-### 실행 결과 예시
-
-```
-경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
-pobi,woni,jun
-시도할 횟수는 몇 회인가요?
-5
-
-실행 결과
-pobi : -
-woni :
-jun : -
-
-pobi : --
-woni : -
-jun : --
-
-pobi : ---
-woni : --
-jun : ---
-
-pobi : ----
-woni : ---
-jun : ----
-
-pobi : -----
-woni : ----
-jun : -----
-
-최종 우승자 : pobi, jun
-```
-
-
-## 주의해야할 프로그래밍 요구사항
-- JUnit 5와 AssertJ를 이용할 것
-- build.gradle 파일은 변경할 수 없으며, 제공된 라이브러리 이외의 외부 라이브러리는 사용하지 않는다.
-- 프로그램 종료 시 System.exit()를 호출하지 않는다.
-  프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 등의 이름을 바꾸거나 이동하지 않는다.
-- 3항 연산자를 쓰지 않는다.
-- **camp.nextstep.edu.missionutils**에서 제공하는 **Randoms** 및 **Console API**를 사용하여 구현해야 한다.
-- Random 값 추출은 **camp.nextstep.edu.missionutils.Randoms**의 **pickNumberInRange**를 활용한다.
-- 사용자가 입력하는 값은 **camp.nextstep.edu.missionutils.Console**의 **readLine**을 활용한다.
-
-
-## 구현할 기능 목록
+### 구현할 기능 목록
 - 입력
 - 자동차 등록
     - 자동차 이름 입력
@@ -110,48 +19,129 @@ jun : -----
 - 결과 계산
 - 결과 출력
 
+### 적용해 볼 디자인 패턴 및 기능
+- [x] 팩토리 패턴
+- [x] 불변 객체 record 클래스
+- [x] 사용자 정의 예외
+- [x] 객체 equals & hashCode 오버라이드
+- [x] enum 상수
+- [x] 일급 컬렉션
 
-## 파일 구조
-- controller
+### 파일 구조
+```bash
+└─racingcar
+    │  Application.java
+    │  RacingGame.java
+    │
+    ├─controller
+    │      GameController.java
+    │      GameControllerFactory.java
+    │
+    ├─exception
+    │  │  EmptyInputException.java
+    │  │  TheCarDoesntStartException.java
+    │  │
+    │  ├─carName
+    │  │      DuplicateCarNameException.java
+    │  │      InvalidCarNameLengthException.java
+    │  │      InvalidCharacterException.java
+    │  │      InvalidRegisterCarsInputLengthException.java
+    │  │
+    │  └─executionNumber
+    │          NotNumberException.java
+    │          NumberRangeException.java
+    │
+    ├─model
+    │  │  Car.java
+    │  │  Cars.java
+    │  │  ExecutionNumber.java
+    │  │
+    │  └─factory
+    │          CarFactory.java
+    │
+    ├─service
+    │      GameService.java
+    │      RaceService.java
+    │      RegisterCarService.java
+    │      RegisterExecutionNumberService.java
+    │
+    ├─util
+    │  │  DataTransformUtil.java
+    │  │  ValidationUtil.java
+    │  │
+    │  └─constant
+    │          CharacterConstant.java
+    │          MoveCarNumberConstant.java
+    │          OutputMessageConstant.java
+    │          RegisterCarNumberConstant.java
+    │
+    └─view
+          InputView.java
+          OutputView.java
+```
+
+
+### 메소드 시그니처
 - view
-- model
+  - InputView
+    - input() -> String
+    - registerCarInputView() -> String
+    - registerExecutionNumberInputView() -> String
+    - registerExecutionNumberMessage() -> void
+    - registerCarMessage() -> void
+  - OutputView
+    - newLine() -> void
+    - executionResultMessage() -> void
+    - printResult(Cars) -> void
+    - finalWinnerMessage(List<String>) -> void
+- controller
+  - GameController
+    - registerCars(String) -> Cars
+    - registExecutionNumber(String) -> ExecutionNumber
+    - race(Cars) -> Cars
+    - raceResult(Cars) -> List<String>
+- service
+  - GameService
+    - winners(Cars) -> List<String>
+    - isMoving() -> boolean
+    - randomNumber() -> int
+  - RaceService
+    - race(Cars) -> Cars
+  - RegisterCarService 
+    - registerCars(String) -> Cars
+    - mapToCarNames(String) -> List<String>
+    - carNameRegistration(List<String>) -> Cars
+    - isValidCarNameInput(String) -> boolean
+  - RegisterExecutionNumberService
+    - registerExecutionNumber(String) -> ExecutionNumber
+    - isValidExecutionNumber(String) -> boolean
 - util
-- service
-- exception
+  - DataTransformUtil
+    - splitInput(String, String) -> List<String>
+    - parseToInt(String) -> int
+  - ValidationUtil
+    - isValidRegisterCarsInputLength(String) -> boolean
+    - isValidCarNameLength(List<String>) -> boolean
+    - containsInvalidCharacter(String) -> boolean
+    - isNumber(String) -> boolean
+    - isValidExecutionRange(String) -> boolean
+- model
+  - Car
+    - move() -> Car
+  - Cars
+    - moveOneTurn(GameService) -> Cars
+    - duplicateValidation() -> boolean
+    - carsToString() -> List<String>
+    - carsToName() -> List<String>
+    - sortCarsToDescendingOrder() -> Cars
+    - findWinners() -> Cars
 
-
-## 메소드 시그니처
-- view
-  - input() -> String
-  - carRegistMessage() -> void
-  - newLine() -> void
-  - countRegistMessage() -> void
-  - executionMessage() -> void
-  - printResult(List<Car>) -> void
-  - finalWinnerMessage(List<Var>) -> void
-- controller
-  - carRegist() -> List<Car>
-  - registExecutionNumber() -> Long
-  - race(List<Car>, ExecutionNumber) -> List<Car>
-  - raceResult(List<Car>) -> void
-- service
-  - splitInput(String) -> List<String>
-  - convertToCar(List<String>) -> List<Car>
-  - parseToLong(String) -> Long
-  - isMoving() -> boolean
-  - randomNumber() -> int
-  - raceResult(List<Car>) -> List<Car>
-  - isRaceStarted(Integer) -> boolean
-  - isValidLength(List<String>) -> boolean
-  - isNumber(String) -> boolean
-  - containsInvalidCharacter(String) -> boolean
-  - isValidRange(String) -> boolean
-
-
-## 예외 목록
-- 빈 입력값 예외
-- 특수문자 입력 예외
-- 입력값 길이 예외
-- 시도 횟수 입력 시 문자 예외
-- 숫자 범위 예외
-- 모든 자동차 시작 위치 예외
+### 예외 목록
+- DuplicateCarNameException : 중복된 자동차 이름 예외
+- InvalidCarNameLengthException : 자동차 이름 길이 예외
+- InvalidCharacterException : 특수문자 입력 예외
+- InvalidRegisterCarsInputLengthException : 입력값 길이 예외
+- NotNumberException : 시도 횟수 입력 시 문자 예외
+- NumberRangeException : 숫자 범위 예외
+- EmptyInputException : 빈 입력값 예외
+- TheCarDoesntStartException : 모든 자동차 출발하지 않음 예외
