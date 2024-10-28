@@ -10,5 +10,6 @@ public class UserInputService {
             InputValidator.validateNotNullOrEmpty(carName);
         }
         InputValidator.isAtLeastTwoCars(carNames);
+        InputValidator.carNameDuplicatedException(carNames);
     }
 }

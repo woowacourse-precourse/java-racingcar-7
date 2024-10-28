@@ -1,6 +1,9 @@
 package racingcar.Utils;
 
+import java.util.Arrays;
+import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 
 public class InputValidator {
@@ -37,6 +40,18 @@ public class InputValidator {
 
         if (carNames.length < 2){
             throw new IllegalArgumentException("자동차를 두 대 이상 입력하셔야 합니다.");
+        }
+    }
+
+    @DisplayName("자동차 이름 중복 시 예외 발생")
+    public static void carNameDuplicatedException(String[] carNames){
+
+        Set<String> uniqueElements = Arrays.stream(carNames)
+                .map(String::trim)
+                .collect(Collectors.toSet());
+
+        if(uniqueElements.size() < carNames.length){
+            throw new IllegalArgumentException("자동차 이름이 중복되었습니다.");
         }
     }
 }
