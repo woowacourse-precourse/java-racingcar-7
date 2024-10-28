@@ -19,9 +19,9 @@ public class Racing {
         inputList.forEach(name -> cars.add(new Car(name.trim())));
     }
 
-    public void performRaceRound(List<Car> cars) {
+    public void performRaceRound() {
         cars.forEach(car -> {
-            if (Randoms.pickNumberInRange(0, 9) >= MOVE_THRESHOLD) {
+            if (Randoms.pickNumberInRange(MIN_RANDOM, MAX_RANDOM) >= MOVE_THRESHOLD) {
                 car.moveForward();
             }
         });

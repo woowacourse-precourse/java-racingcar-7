@@ -30,7 +30,7 @@ public class Application {
 
     private static void startRace(Racing racing, int attempts) {
         for (int i = 0; i < attempts; i++) {
-            racing.performRaceRound(racing.getCars());
+            racing.performRaceRound();
             displayRoundResult(racing);
         }
     }

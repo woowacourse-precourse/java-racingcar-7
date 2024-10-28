@@ -40,7 +40,7 @@ public class RacingTest {
 
         assertRandomNumberInRangeTest(
                 () -> {
-                    racing.performRaceRound(cars);
+                    racing.performRaceRound();
 
                     assertThat(cars.stream().anyMatch(car -> car.getPosition() > 0)).isTrue();
                 },

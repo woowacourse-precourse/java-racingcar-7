@@ -8,29 +8,31 @@ public class Validator {
 
     private static final int MIN_ATTEMPTS = 1;
     private static final String ERROR_EMPTY_INPUT = "경주할 자동차가 없습니다.";
+    private static final String ERROR_MINIMUM_CARS = "경주할 자동차는 최소 2대 이상이어야 합니다.";
     private static final String ERROR_DUPLICATE_NAMES = "자동차 이름이 중복되었습니다.";
     private static final String ERROR_NAME_LENGTH = "자동차 이름은 1자 이상, 5자 이하만 가능합니다.";
+    private static final String ERROR_NON_NUMERIC_ATTEMPTS = "시도 횟수는 숫자여야 합니다.";
     private static final String ERROR_INVALID_ATTEMPTS = "시도 횟수는 1이상 이어야합니다.";
 
 
     public static List<String> validateInput(String input) {
-        checkIfInputISEmpty(input);
-        List<String> inputList = spiltInput(input);
+        checkIfInputIsEmpty(input);
+        List<String> inputList = splitInput(input);
         checkDuplicateNames(inputList);
         checkNameLength(inputList);
         return inputList;
     }
 
-    private static void checkIfInputISEmpty(String input) {
+    private static void checkIfInputIsEmpty(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException(ERROR_EMPTY_INPUT);
         }
     }
 
-    private static List<String> spiltInput(String input) {
+    private static List<String> splitInput(String input) {
         List<String> inputList = List.of(input.split(","));
         if (inputList.size() < 2) {
-            throw new IllegalArgumentException("경주할 자동차는 최소 2대 이상이어야 합니다.");
+            throw new IllegalArgumentException(ERROR_MINIMUM_CARS);
         }
         return inputList;
     }
@@ -43,7 +45,7 @@ public class Validator {
     }
 
     private static void checkNameLength(List<String> inputList) {
-        inputList.forEach(name ->{
+        inputList.forEach(name -> {
             name = name.trim();
             if (name.isEmpty() || name.length() > Car.MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException(ERROR_NAME_LENGTH);
@@ -55,7 +57,7 @@ public class Validator {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+            throw new IllegalArgumentException(ERROR_NON_NUMERIC_ATTEMPTS);
         }
     }
 
@@ -64,7 +66,6 @@ public class Validator {
             throw new IllegalArgumentException(ERROR_INVALID_ATTEMPTS);
         }
     }
-
 
 
 }
