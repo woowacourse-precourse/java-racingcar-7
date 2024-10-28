@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import racingcar.domain.random.DefaultRandomGenerator;
 import racingcar.domain.random.FixedRandomGenerator;
-import racingcar.domain.random.RandomGenerator;
 import racingcar.utility.Utils;
 import racingcar.view.ProgressAndResultOutput;
 import racingcar.view.UserInput;
