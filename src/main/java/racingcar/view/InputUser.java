@@ -21,7 +21,7 @@ public class InputUser {
     }
 
     private void nameLengthValidation(List<String> names) {
-        for(String name : names) {
+        for (String name : names) {
             if (5 < name.length()) {
                 throw new IllegalArgumentException("이름은 5글자 이하로 입력해주세요.");
             }
@@ -32,7 +32,7 @@ public class InputUser {
         try {
             int number = Integer.parseInt(input);
             if (number < 1) {
-                throw  new IllegalArgumentException("1 이상의 수를 입력해주세요.");
+                throw new IllegalArgumentException("1 이상의 수를 입력해주세요.");
             }
             return number;
         } catch (NumberFormatException e) {
