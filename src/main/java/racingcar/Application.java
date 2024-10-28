@@ -1,15 +1,22 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         List<Car> cars = inputCars();
         int attempts = inputAttempts();
+
+        //경주 진행
+        for(int i = 0; i < attempts; i++){
+            moveCars(cars);
+            //todo: 자동차 이동 상태 출력
+        }
 
     }
 
@@ -32,5 +39,14 @@ public class Application {
     private static int inputAttempts(){
         System.out.println("시도할 회수는 몇회인가요?");
         return Integer.parseInt(Console.readLine());
+    }
+
+    // 자동차 이동
+    private static void moveCars(List<Car> cars){
+        for(Car car : cars) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                car.increasePosition();
+            }
+        }
     }
 }
