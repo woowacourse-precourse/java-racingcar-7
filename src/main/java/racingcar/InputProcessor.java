@@ -15,7 +15,7 @@ public class InputProcessor {
     }
 
     private static List<String> checkCarNames(String[] cars) {
-        List<String> carList = new ArrayList<>();
+        List<String> carNames = new ArrayList<>();
         for(String car : cars) {
             if (car.isEmpty()) {
                 continue;
@@ -23,9 +23,9 @@ public class InputProcessor {
             if (car.length() > 5) {
                 throw new IllegalArgumentException("Invalid String length");
             }
-            carList.add(car);
+            carNames.add(car);
         }
-        return carList;
+        return carNames;
     }
 
     public static int getMoveCount() {
