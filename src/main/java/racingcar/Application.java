@@ -1,7 +1,7 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.view.InputView;
 
 import java.util.*;
 
@@ -9,8 +9,7 @@ public class Application {
     public static void main(String[] args) {
 
         // 1. 문자열 입력받기
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String words = Console.readLine();
+        String words = InputView.inputWords();
 
         // 2. 문자열의 시작과 끝이 공백이거나 쉼표인지 확인
         // 그렇다면 잘못된 값이므로 IllegalArgumentException를 발생시킴
@@ -68,16 +67,7 @@ public class Application {
         }
 
         // 7. 시도할 횟수 입력받기
-        // 입력받은 시도할 횟수가 정수 형태가 아닐 경우
-        // NumberFormatException가 발생하는 것을 이용해
-        // 이에 해당할 경우 IllegalArgumentException를 발생시킴
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryNumber;
-        try {
-            tryNumber = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
+        int tryNumber = InputView.inputTryNumbers();
 
         // 8. 시도할 횟수가 자연수인지 확인
         if (tryNumber <= 0) {
