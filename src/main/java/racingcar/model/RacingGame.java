@@ -2,7 +2,6 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,9 +15,25 @@ public class RacingGame {
     }
 
     private List<Car> initializeCars(String carNames) {
-        return Arrays.stream(carNames.split(","))
+        List<String> carNamesList = List.of(carNames.split(","));
+        validateFormat(carNames, carNamesList);
+        checkDuplicate(carNamesList);
+        return carNamesList.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
+
+    public void validateFormat(String carNames, List<String> carNameList) {
+        int count = carNames.length() - carNames.replace(",", "").length();
+        if (count + 1 != carNameList.size()) {
+            throw new IllegalArgumentException("입력 형식이 올바르지 않습니다.: " + carNames);
+        }
+    }
+
+    public void checkDuplicate(List<String> carNameList) {
+        if (carNameList.size() != carNameList.stream().distinct().count()) {
+            throw new IllegalArgumentException("자동차 이름은 중복일 수 없습니다.");
+        }
     }
 
     public void playRound() {
