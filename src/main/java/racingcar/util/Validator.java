@@ -41,6 +41,11 @@ public class Validator {
         }
     }
 
-    
+    public void checkCarNum(String input) {
+        List<String> nameList = Arrays.stream(input.split(",")).map(String::strip).toList();
+        if(nameList.size() < 2) {
+            throw new IllegalArgumentException("자동차는 2대 이상이어야 합니다.");
+        }
+    }
 
 }
