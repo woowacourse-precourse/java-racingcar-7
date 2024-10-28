@@ -10,6 +10,10 @@ public class InputParsingServiceImpl implements InputParsingService {
 
     @Override
     public int parseAttemptCountString(String input) {
-        return Integer.parseInt(input);
+        int attemptCount = Integer.parseInt(input);
+        if (attemptCount < 1) {
+            throw new IllegalArgumentException("시도 횟수는 1보다 커야 합니다.");
+        }
+        return attemptCount;
     }
 }
