@@ -18,7 +18,7 @@ public class Validator {
         return validator;
     }
 
-    // InputService()에서 carName(String)의 유효성 검사
+    // InputService에서 carName(String)의 유효성 검사
     public void isValidName(String carName) {
         if (carName.isBlank()) {
             throw new EmptyNameException();
@@ -28,6 +28,7 @@ public class Validator {
         }
     }
 
+    // RacingController에서 totalRacingNumber의 유효성 검사
     public Integer isValidRoundNumber(String totalRacingRound) {
         if (totalRacingRound.isBlank()) {
             return 0;

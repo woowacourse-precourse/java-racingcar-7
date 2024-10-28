@@ -8,5 +8,4 @@ public class Application {
         RacingController racingController = new RacingController();
         racingController.startRaceGame();
     }
-
 }

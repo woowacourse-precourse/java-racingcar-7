@@ -30,6 +30,7 @@ public class RacingController {
     public void startRaceGame() {
         try {
             controlRaceGame();
+
         } catch (NumberFormatException exception) {
             System.out.println(ErrorMessage.NOT_VALID_TOTAL_ROUND_NUMBER);
             System.out.println(ErrorMessage.LOG_FOR_DEVELOPER + exception.getMessage());

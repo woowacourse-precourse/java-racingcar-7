@@ -9,7 +9,7 @@ import racingcar.view.OutputView;
 public class Racing {
 
     private Map<String, Integer> racingCars;
-    private Integer totalRacingRound;
+    private final Integer totalRacingRound;
 
     public Racing(Map<String, Integer> racingCars, Integer racingTotalRound) {
         this.racingCars = racingCars;
@@ -19,15 +19,13 @@ public class Racing {
     public void race() {
         RacingRoundService racingRoundService = RacingRoundService.getRacingRoundServiceInstance();
         OutputView outputView = OutputView.getOutputViewInstance();
-
         outputView.printRaceStart();
-
-        int count = 0;
 
         if(totalRacingRound == 0) {
             outputView.printRoundState(racingCars);
         }
 
+        int count = 0;
         while (count < totalRacingRound) {
             racingRoundService.racingRound(racingCars);
             outputView.printRoundState(racingCars);
@@ -36,7 +34,6 @@ public class Racing {
 
         WinnerService winnerService = WinnerService.getWinnerServiceInstance();
         List<String> winners = winnerService.judgeWinner(racingCars);
-
         outputView.printWinnerView(winners);
 
     }
