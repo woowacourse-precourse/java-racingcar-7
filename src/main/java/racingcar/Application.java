@@ -11,9 +11,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int iteration = NumberOfIterationInput.getIteration();
 
-        //전진하는지 체크
-        IsMovable isMovable = new IsMovable(carNames.length, iteration);
-
-
+        System.out.println("\n실행 결과");
+        new IsMovable(carNames, iteration).getIsMovable();
     }
 }
