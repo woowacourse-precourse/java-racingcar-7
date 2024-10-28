@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.application.implement.RaceHistoryManager;
 import racingcar.application.implement.RaceWinnerIdentifier;
-import racingcar.common.constant.ExceptionMessage;
 import racingcar.persistence.CarRacerRepository;
 import racingcar.application.implement.RaceStarter;
 import racingcar.domain.CarRacer;
