@@ -16,7 +16,7 @@ public class Cars {
 
     public void run() {
         for (Car car : cars) {
-            int randomNum = RandomNumberGenerator.generate();
+            int randomNum = Randoms.pickNumberInRange(0, 9);
             car.move(randomNum);
         }
     }
@@ -38,11 +38,5 @@ public class Cars {
                 .filter(car -> car.getPosition() == winnerPosition)
                 .map(Car::getName)
                 .collect(Collectors.joining(","));
-    }
-
-    private static class RandomNumberGenerator {
-        public static int generate() {
-            return Randoms.pickNumberInRange(0, 9);
-        }
     }
 }
