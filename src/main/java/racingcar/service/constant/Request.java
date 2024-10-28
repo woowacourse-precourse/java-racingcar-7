@@ -1,4 +1,4 @@
-package racingcar.view.constant;
+package racingcar.service.constant;
 
 public enum Request {
 

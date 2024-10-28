@@ -30,7 +30,7 @@ class LapScoreServiceTest {
         LapScoreService lapScoreService = new LapScoreService(cars);
 
         LapScore expected = new LapScore(carName, "-".repeat(mileage.intValue()));
-        LapScore actual = lapScoreService.createEntryScores(cars).getFirst();
+        LapScore actual = lapScoreService.getLapScores().getFirst();
 
         assertEquals(expected.getCarName(), actual.getCarName());
         assertEquals(expected.getScore(), actual.getScore());

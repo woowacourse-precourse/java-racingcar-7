@@ -3,7 +3,6 @@ package racingcar.service.input;
 import java.util.function.Function;
 import racingcar.domain.Input;
 import racingcar.repository.InputRepository;
-import racingcar.view.constant.Request;
 
 public class InputService {
 

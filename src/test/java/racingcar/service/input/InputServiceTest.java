@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Input;
-import racingcar.view.constant.Request;
+import racingcar.service.constant.Request;
 
 class InputServiceTest {
 

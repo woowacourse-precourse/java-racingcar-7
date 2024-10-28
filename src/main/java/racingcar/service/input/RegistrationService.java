@@ -5,7 +5,7 @@ import racingcar.domain.Input;
 import racingcar.domain.Registration;
 import racingcar.repository.InputRepository;
 import racingcar.service.constant.ExpressionFormat;
-import racingcar.view.constant.Request;
+import racingcar.service.constant.Request;
 
 public class RegistrationService {
 

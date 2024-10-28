@@ -7,7 +7,7 @@ import racingcar.service.race.WinnerService;
 
 public class TotalController {
     private static TotalController instance = new TotalController();
-    private RaceStarterService raceStarterService;
+    private final RaceStarterService raceStarterService;
 
     private TotalController() {
         raceStarterService = new RaceStarterService();
@@ -25,7 +25,7 @@ public class TotalController {
     }
 
     private void getInput() {
-        InputController.getInputs();
+        InputController.getInstance().getInputs();
     }
 
     private void connectRelayServer(Race race) {

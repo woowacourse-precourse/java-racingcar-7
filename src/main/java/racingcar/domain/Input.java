@@ -1,8 +1,5 @@
 package racingcar.domain;
 
-import java.lang.reflect.Type;
-import racingcar.view.constant.Request;
-
 public class Input {
 
     private String request;

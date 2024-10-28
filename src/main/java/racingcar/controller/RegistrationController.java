@@ -6,7 +6,7 @@ import racingcar.service.input.RegistrationService;
 public class RegistrationController {
 
     private static RegistrationController instance;
-    private RegistrationService registrationService;
+    private final RegistrationService registrationService;
 
     private RegistrationController() {
         this.registrationService = new RegistrationService();
@@ -18,7 +18,7 @@ public class RegistrationController {
 
     public static RegistrationController getInstance() {
         if (instance == null) {
-            return new RegistrationController();
+            instance = new RegistrationController();
         }
         return instance;
     }

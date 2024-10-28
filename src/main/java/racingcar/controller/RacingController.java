@@ -4,8 +4,8 @@ import racingcar.service.race.LapUpdateService;
 import racingcar.service.race.RaceStarterService;
 
 public class RacingController {
-    private static RacingController instance;
 
+    private static RacingController instance;
     private LapUpdateService lapUpdateService;
 
     private RacingController() {

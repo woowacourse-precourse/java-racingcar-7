@@ -5,7 +5,6 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.LapScore;
 import racingcar.service.constant.ExpressionFormat;
-import racingcar.view.constant.Output;
 
 public class LapScoreService {
 
@@ -13,13 +12,13 @@ public class LapScoreService {
 
     public LapScoreService(List<Car> entry) {
         lapScores = new ArrayList<>();
+        createEntryScores(entry);
     }
 
-    public List<LapScore> createEntryScores(List<Car> entry) {
+    private void createEntryScores(List<Car> entry) {
         for (Car racingCar : entry) {
             lapScores.add(createScore(racingCar));
         }
-        return lapScores;
     }
 
     private LapScore createScore(Car racingCar) {
@@ -29,5 +28,9 @@ public class LapScoreService {
     private String carPosition(Car racingCar) {
         return ExpressionFormat.POSITION_MARK.form()
                 .repeat(racingCar.getMileage().intValue());
+    }
+
+    public List<LapScore> getLapScores() {
+        return lapScores;
     }
 }

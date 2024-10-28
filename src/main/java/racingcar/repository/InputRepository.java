@@ -3,7 +3,6 @@ package racingcar.repository;
 import java.util.HashMap;
 import java.util.Map;
 import racingcar.domain.Input;
-import racingcar.view.constant.Request;
 
 public class InputRepository {
 

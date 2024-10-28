@@ -28,7 +28,7 @@ public class ScreenController {
 
     public void scoreBoardUpdate() {
         LapScoreService lapScoreService = new LapScoreService(race.getEntry());
-        printLap(lapScoreService.createEntryScores(race.getEntry()));
+        printLap(lapScoreService.getLapScores());
     }
 
     private void printLap(List<LapScore> lapScores) {
