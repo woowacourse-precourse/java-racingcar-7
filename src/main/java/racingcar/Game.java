@@ -9,17 +9,17 @@ public class Game {
     private RacingGame racingGame;
 
     public void play() {
-        initGame();
+        getUserInput();
+        racingGame = new RacingGame(carNamesList);
         GameValidator.validate(carNamesList, gameRepeats);
         startGame();
         racingGame.printWinners();
     }
 
-    private void initGame() {
+    private void getUserInput() {
         carNamesList = User.inputCarNames();
         gameRepeats = User.inputGameRepeats();
         Console.close();
-        racingGame = new RacingGame(carNamesList);
     }
 
     private void startGame() {
