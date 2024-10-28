@@ -7,7 +7,7 @@ import racingcar.dto.RacingResult;
 public class RacingResultFormatter {
     private static final String RACING_FORMAT = "%s : %s%n";
 
-    private RacingResultFormatter() {    // 인스턴스화 방지
+    private RacingResultFormatter() {
     }
 
     public static String format(List<RacingResult> results) {

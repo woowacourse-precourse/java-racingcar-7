@@ -1,47 +1,52 @@
 package racingcar.controller;
 
+import racingcar.service.GameService;
 import racingcar.model.CarsManager;
 import racingcar.view.OutputView;
 import racingcar.dto.RacingResult;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GameController {
     private final OutputView outputView;
     private final InputController inputController;
+    private final GameService gameService;
 
-    public GameController(InputController inputController, OutputView outputView) {
+    public GameController(
+            InputController inputController,
+            OutputView outputView,
+            GameService gameService
+    ) {
         this.inputController = inputController;
         this.outputView = outputView;
+        this.gameService = gameService;
     }
 
     public void run() {
-        CarsManager cars = CarsManager.by(inputController.readCarNames());
-        moveCars(cars);
-        printWinners(cars);
+        CarsManager cars = initializeGame();
+        playGame(cars);
+        showResult(cars);
     }
 
-    private void moveCars(CarsManager cars) {
-        int numberOfTrials = inputController.readTrialsCount();
+    private CarsManager initializeGame() {
+        return CarsManager.by(inputController.readCarNames());
+    }
+
+    private void playGame(CarsManager cars) {
+        int trials = inputController.readTrialsCount();
         outputView.printResult();
-        for (int trial = 0; trial < numberOfTrials; trial++) {
-            moveCarsOnce(cars);
+
+        for (int round = 0; round < trials; round++) {
+            executeOneRound(cars);
         }
     }
 
-    private void moveCarsOnce(CarsManager cars) {
-        cars.move();
-        List<RacingResult> racingResults = convertToRacingResults(cars);
-        outputView.printRacing(racingResults);
+    private void executeOneRound(CarsManager cars) {
+        gameService.moveAllCarsOnce(cars);
+        List<RacingResult> results = gameService.convertToRacingResults(cars);
+        outputView.printRacing(results);
     }
 
-    private List<RacingResult> convertToRacingResults(CarsManager cars) {
-        return cars.getCars().stream()
-                .map(car -> new RacingResult(car.getName(), car.getPosition()))
-                .collect(Collectors.toList());
-    }
-
-    private void printWinners(CarsManager cars) {
+    private void showResult(CarsManager cars) {
         outputView.printWinners(cars.getWinners());
     }
 }
