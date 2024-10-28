@@ -20,7 +20,7 @@ public class Car {
         }
     }
     
-    public void move() {
+    public void move() { //이동 조건 필요
         progress++;
     }
 }

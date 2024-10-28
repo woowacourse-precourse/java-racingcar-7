@@ -1,17 +1,19 @@
 package racingcar.controller;
 
+import racingcar.model.Cars;
 import racingcar.view.InputView;
 import java.util.Arrays;
 import java.util.List;
 
 public class GameFlow {
+    private Cars cars;
     private int numberOfMoves;
 
     public GameFlow() {}
 
     public void start() {
         List<String> carNames = parseCarNames();
-        // createCars(carNames);
+        cars = new Cars(carNames);
         setNumberOfMoves();
         // runRace();
         // displayWinners();
@@ -22,7 +24,7 @@ public class GameFlow {
         List<String> carNames = Arrays.asList(carNameInput.split(","));
         return carNames;
     }
-
+    
     private void setNumberOfMoves() {
         String NumberInput = InputView.inputNumberOfMoves();
         validateNumberOfMoves(NumberInput);
@@ -39,7 +41,6 @@ public class GameFlow {
             throw new IllegalArgumentException("이동 횟수는 아라비아 숫자여야 합니다.");
         }
     }
-    
     
 
 
