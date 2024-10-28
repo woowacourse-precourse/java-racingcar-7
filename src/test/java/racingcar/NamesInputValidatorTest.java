@@ -16,10 +16,18 @@ class NamesInputValidatorTest {
     }
 
     @Test
-    @DisplayName("',' 사이에 공백은 제거하여 이름으로 저장")
+    @DisplayName("',' 사이 공백 무관")
     void validateBlankSuccess() {
         assertThatCode(() -> NamesInputValidator.validate(" abc, hijk "))
                 .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("입력값이 공백일 경우 예외 발생")
+    void validateBlank() {
+        assertThatThrownBy(() -> NamesInputValidator.validate(" "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력값이 존재하지 않습니다");
     }
 
     @Test

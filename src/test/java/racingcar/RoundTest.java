@@ -12,7 +12,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class RoundTest {
 
     Car car1, car2;
-    List<String> cars;
     Round round;
 
     @BeforeEach
