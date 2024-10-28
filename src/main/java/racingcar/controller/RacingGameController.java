@@ -19,15 +19,24 @@ public class RacingGameController {
     }
 
     public void run() {
+        RacingGame racingGame = initializeRaceGame();
+        outputView.printRaceResultPrefix();
+        processRaceHistory(racingGame);
+        displayWinners(racingGame);
+    }
+
+    private RacingGame initializeRaceGame() {
         List<String> carNames = inputView.getCarNames();
         int attempts = inputView.getAttempts();
-        RacingGame racingGame = racingGameService.initializeRace(carNames, attempts);
+        return racingGameService.initializeRace(carNames, attempts);
+    }
 
-        outputView.printRaceResultPrefix();
+    private void processRaceHistory(RacingGame racingGame) {
         List<List<CarLocation>> raceHistory = racingGameService.runRaceRounds(racingGame);
-
         raceHistory.forEach(outputView::printRaceProcess);
+    }
 
+    private void displayWinners(RacingGame racingGame) {
         List<String> winners = racingGameService.getWinners(racingGame.cars());
         outputView.printWinners(winners);
     }
