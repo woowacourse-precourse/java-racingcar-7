@@ -9,50 +9,16 @@ import java.util.Queue;
 public class Application {
 
     public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNames = readLine();
 
-        LinkedList<Car> carList = new LinkedList<>();
-        carList = parsingCarName(carNames);
+        RacingCar.start();
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryNum = Integer.parseInt(readLine());
-        if (tryNum <= 0) {
-            throw new IllegalArgumentException();
-        }
-
-        for (int i = 0; i < tryNum; i++) {
-            moveForward(carList);
-            outPutConsole(carList);
-            System.out.println();
-        }
-
-        winner(carList);
-    }
-
-    static LinkedList<Car> parsingCarName(String carNames) {
-        LinkedList<Car> carList = new LinkedList<>();
-
-        if (carNames == null || carNames.isBlank()) {
-            throw new IllegalArgumentException();
-        }
-
-        for (String name : carNames.split(",")) {
-            checkCarName(name);
-            carList.add(new Car(name.trim(), 0));
-        }
-
-        return carList;
-    }
-
-    static void checkCarName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException();
-        }
-
-        if (name.length() > 5) {
-            throw new IllegalArgumentException();
-        }
+//        for (int i = 0; i < tryNum; i++) {
+//            moveForward(carList);
+//            outPutConsole(carList);
+//            System.out.println();
+//        }
+//
+//        winner(carList);
     }
 
     static void moveForward(LinkedList<Car> carList) {
