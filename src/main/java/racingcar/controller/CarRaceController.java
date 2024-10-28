@@ -28,7 +28,24 @@ public class CarRaceController {
         printLimitMessage();
         raceCars.raceStart(Console.readLine());
 
+        printLimitMessage();
+        raceCars.raceStart(Console.readLine());
+        endGame(raceCars.findWinner());
 
+        Console.close();
+
+
+    }
+
+    public static void endGame(ArrayList<CarInfo> winnerRacers) {
+        printFinalWinner();
+        int winnerRacersCount = winnerRacers.size();
+        for (int i = 0; i < winnerRacersCount; i++) {
+            System.out.print(winnerRacers.get(i).getCarName());
+            if (i < winnerRacersCount - 1) {
+                printDelimiter();
+            }
+        }
     }
 
 
