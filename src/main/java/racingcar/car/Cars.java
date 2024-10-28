@@ -14,7 +14,7 @@ public class Cars {
         List<Name> nameList = names.getNames();
         this.cars = getCars(nameList);
     }
-    
+
     public void moveCars() {
         for (Car car : cars) {
             car.shellMove();
@@ -42,7 +42,7 @@ public class Cars {
         int winnerMovement = checkMaxMovement();
 
         for (Car car : cars) {
-            if (isWinner(car, winnerMovement)){
+            if (car.isWinner(car, winnerMovement)){
                 winners.add(car);
             }
         }
@@ -62,9 +62,5 @@ public class Cars {
         }
 
         return carList;
-    }
-
-    private static boolean isWinner(Car car, int winnerMovement) {
-        return car.getStatus() == winnerMovement;
     }
 }
