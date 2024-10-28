@@ -14,4 +14,19 @@ public class Output {
         printString("시도할 횟수는 몇 회인가요?");
     }
 
+    public static void printManyLines(String hasManyLines) {
+        String[] lines = hasManyLines.split("\n");
+        for (String line : lines) {
+            printString(line);
+        }
+        paragraphSeparator();
+    }
+
+    private static void paragraphSeparator() {
+        printString("---");
+    }
+
+    public static void printProgressGuide() {
+        printString("게임 진행 상황");
+    }
 }
