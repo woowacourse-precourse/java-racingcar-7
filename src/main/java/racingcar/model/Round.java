@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.Objects;
+
 public class Round {
     private int round;
 
@@ -24,5 +26,17 @@ public class Round {
 
     public boolean isZero() {
         return round == 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Round round1)) return false;
+        return round == round1.round;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(round);
     }
 }

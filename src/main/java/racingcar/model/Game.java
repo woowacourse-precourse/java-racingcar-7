@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Game {
     private final Cars cars;
@@ -40,5 +41,17 @@ public class Game {
 
     public List<String> getStatus() {
         return cars.getStatus();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Game game)) return false;
+        return Objects.equals(cars, game.cars) && Objects.equals(round, game.round);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars, round);
     }
 }
