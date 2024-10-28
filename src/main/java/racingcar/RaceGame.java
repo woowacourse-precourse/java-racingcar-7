@@ -1,11 +1,20 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RaceGame {
+    private List<Car> cars;
+
     public void play() throws IllegalArgumentException {
         String[] carNames = readCarNames();
         int tryCnt = readTryCount();
+        cars = new ArrayList<>();
+        
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
     }
 
     private String[] readCarNames() throws IllegalArgumentException {
