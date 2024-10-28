@@ -19,6 +19,10 @@ public class CarService {
     }
 
     private void validateCarNames(List<String> carNames) {
+        if (carNames.isEmpty() || carNames.stream().anyMatch(name -> name.isEmpty())) {
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_DUPLICATED.message());
+        }
+
         Set<String> uniqueNames = new HashSet<>(carNames);
         if (uniqueNames.size() < carNames.size()) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_DUPLICATED.message());
