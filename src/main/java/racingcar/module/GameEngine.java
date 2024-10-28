@@ -14,5 +14,4 @@ public class GameEngine {
             user.updateUserScore();
         }
     }
-
 }
