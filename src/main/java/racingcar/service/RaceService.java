@@ -15,7 +15,6 @@ public class RaceService {
          while (!isEndRace(round++, raceCount)) {
             cars.moveAll();
             RoundResultDto roundResult = new RoundResultDto(cars);
-
             roundResults.add(roundResult);
         }
 
