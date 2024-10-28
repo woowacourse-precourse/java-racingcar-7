@@ -10,8 +10,8 @@ public class StringUtil {
 
     public static List<String> splitByComma(String string) {
         return Arrays.stream(string.split(DELIMITER))
-                .peek(NameValidator::isValidSize)
-                .peek(NameValidator::isNotBlank)
+                .peek(s -> StringSizeValidator.checkLimitedSize(s,5))
+                .peek(StringSizeValidator::checkBlank)
                 .toList();
     }
 
