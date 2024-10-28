@@ -2,14 +2,13 @@ package racingcar.validator;
 
 import racingcar.enums.ErrorMessage;
 
-public class InputValidator {
+public class CarNameValidator {
 
-    public static void validateCarNames(String input) {
-        validateBlank(input);
+    private CarNameValidator() {
     }
 
-    public static void validateTryCount(String tryCount) {
-        validateBlank(tryCount);
+    public static void validateCarNames(String carNames) {
+        validateBlank(carNames);
     }
 
     private static void validateBlank(String input) {
@@ -17,5 +16,4 @@ public class InputValidator {
             throw new IllegalArgumentException(ErrorMessage.BLANK_INPUT_NOT_ALLOWED.getMessage());
         }
     }
-
 }
