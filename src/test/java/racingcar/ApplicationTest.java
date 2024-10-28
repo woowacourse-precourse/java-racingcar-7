@@ -90,7 +90,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 자동차_25대_이상_예외처리_테스트(){
+    void 자동차_10대_이상_예외처리_테스트(){
         String[] names = new String[27];
         for(int i = 0; i < names.length; i++){
             names[i] = " ";
@@ -99,8 +99,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 자동차_1대_이상_25대_이하_정상처리_테스트(){
-        String[] names = new String[23];
+    void 자동차_1대_이상_10대_이하_정상처리_테스트(){
+        String[] names = new String[9];
         for(int i = 0; i < names.length; i++){
             names[i] = " ";
         }

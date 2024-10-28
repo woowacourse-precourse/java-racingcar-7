@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     private static final int MIN_COUNT = 1;
-    private static final int MAX_NAMES_COUNT = 25;
+    private static final int MAX_NAMES_COUNT = 10;
     private static final int MAx_NAME_LENGTH = 5;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -48,7 +48,7 @@ public class Application {
 
     public static void validateNamesCount(String[] names) {
         if(names.length > MAX_NAMES_COUNT || names.length < MIN_COUNT) {
-            throw new IllegalArgumentException("가능한 자동차 수는 최소 1대, 최대 25대입니다.");
+            throw new IllegalArgumentException("가능한 자동차 수는 최소 1대, 최대 10대입니다.");
         }
     }
 
