@@ -1,13 +1,6 @@
 package racingcar.controller;
 
 import racingcar.domain.RacingCars;
-import racingcar.service.RacingCarService;
-import racingcar.service.ValidateService;
-import racingcar.util.RandomGenerator;
-import racingcar.util.RandomsWrapper;
-import racingcar.view.InstructionView;
-import racingcar.view.ResultView;
-import racingcar.view.RoundView;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -17,7 +10,6 @@ public class MainController {
     private final RacingCarInputController racingCarInputController;
     private final RacingCarController racingCarController;
     private final RacingCarOutputController racingCarOutputController;
-    private RacingCars racingCars;
 
     public MainController(RacingCarInputController racingCarInputController, RacingCarController racingCarController, RacingCarOutputController racingCarOutputController) {
         this.racingCarInputController = racingCarInputController;
@@ -28,9 +20,9 @@ public class MainController {
     public void run() {
         List<String> validatedNames = getValidatedNames();
         long validatedRaceCount = getValidatedRaceCount();
-        setupRacingCars(validatedNames);
-        runRaceRounds(validatedRaceCount);
-        printRaceResults();
+        RacingCars racingCars = setupRacingCars(validatedNames);
+        runRaceRounds(validatedRaceCount, racingCars);
+        printRaceResults(racingCars);
     }
 
     private List<String> getValidatedNames() {
@@ -43,11 +35,11 @@ public class MainController {
         return racingCarController.validateRaceCount(raceCount);
     }
 
-    private void setupRacingCars(List<String> validatedNames) {
-        this.racingCars = racingCarController.setupRacingCars(validatedNames);
+    private RacingCars setupRacingCars(List<String> validatedNames) {
+        return racingCarController.setupRacingCars(validatedNames);
     }
 
-    private void runRaceRounds(long validatedRaceCount) {
+    private void runRaceRounds(long validatedRaceCount, RacingCars racingCars) {
         racingCarOutputController.startRaceRound();
         IntStream.range(0, (int) validatedRaceCount)
                 .forEach(i -> {
@@ -56,7 +48,7 @@ public class MainController {
                 });
     }
 
-    private void printRaceResults() {
+    private void printRaceResults(RacingCars racingCars) {
         RacingCars bestDrivers = racingCarController.findBestDriver(racingCars);
         racingCarOutputController.printResult(bestDrivers);
     }
