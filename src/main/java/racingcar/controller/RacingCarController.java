@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.service.RacingCarService;
+import racingcar.validator.CarRacingRepeatCountValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -10,20 +11,25 @@ public class RacingCarController {
     private final InputView inputView;
     private final OutputView outputView;
     private final RacingCarService racingCarService;
+    private final CarRacingRepeatCountValidator carRacingRepeatCountValidator;
 
-    public RacingCarController(InputView inputView, OutputView outputView, RacingCarService racingCarService) {
+
+    public RacingCarController(InputView inputView, OutputView outputView, RacingCarService racingCarService, CarRacingRepeatCountValidator carRacingRepeatCountValidator) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.racingCarService = racingCarService;
+        this.carRacingRepeatCountValidator = carRacingRepeatCountValidator;
     }
 
     public void run() {
         String inputCarsName = inputView.inputCarsName();
         racingCarService.createRacingCars(inputCarsName);
 
-        int inputCarRacingRepeatCount = inputView.inputCarRacingRepeatCount();
+        String inputCarRacingRepeatCount = inputView.inputCarRacingRepeatCount();
+        carRacingRepeatCountValidator.validateRepeatCountNumberFormat(inputCarRacingRepeatCount);
+        int integerCarRacingRepeatCount = Integer.parseInt(inputCarRacingRepeatCount);
 
-        for (int i = 0; i < inputCarRacingRepeatCount; i++) {
+        for (int i = 0; i < integerCarRacingRepeatCount; i++) {
             racingCarService.advanceRacingCarByRandomOrZero();
             List<String[]> extractedCarNameAndAdvanceResults = racingCarService.extractCarNameAndAdvanceResult();
             for (String[] carNameAndAdvanceResult : extractedCarNameAndAdvanceResults) {

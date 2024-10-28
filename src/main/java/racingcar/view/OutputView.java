@@ -11,6 +11,6 @@ public class OutputView {
     }
 
     public void printLineSpace() {
-        System.out.println("\n");
+        System.out.println();
     }
 }

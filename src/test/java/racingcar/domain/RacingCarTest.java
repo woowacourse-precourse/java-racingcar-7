@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RacingCarTest {
 
@@ -13,16 +12,15 @@ public class RacingCarTest {
 
     @BeforeEach
     void 초기화() {
-        racingCar = new RacingCar("pobi,woni, jun", new ArrayList<>());
+        racingCar = new RacingCar("pobi", new ArrayList<>());
     }
 
     @Test
-    void 회차별_전진_처리() {
-        int randomInteger = 5;
+    void 전진_처리() {
+        racingCar.addAdvanceResult();
 
-        racingCar.addRandomAdvanceResult(randomInteger);
+        int advanceCount = racingCar.getAdvanceResults().size();
 
-        Assertions.assertThat(racingCar.getAdvanceResults()).hasSize(5);
-        Assertions.assertThat(racingCar.getAdvanceResults()).allMatch(c -> c.equals('-'));
+        Assertions.assertThat(advanceCount).isEqualTo(1);
     }
 }

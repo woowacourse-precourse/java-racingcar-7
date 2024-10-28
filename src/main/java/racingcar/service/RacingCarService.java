@@ -27,8 +27,9 @@ public class RacingCarService {
 
     public void advanceRacingCarByRandomOrZero() {
         for (RacingCar racingCarTemp : racingCars) {
-            int randomOrZero = racingCarTemp.getRandomOrZero();
-            racingCarTemp.addRandomAdvanceResult(randomOrZero);
+            if (racingCarTemp.shouldAdvance()) {
+                racingCarTemp.addAdvanceResult();
+            }
         }
     }
 

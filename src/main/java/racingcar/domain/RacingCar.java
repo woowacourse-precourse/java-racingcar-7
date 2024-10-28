@@ -21,17 +21,12 @@ public class RacingCar {
         this.advanceResults = advanceResult;
     }
 
-    public int getRandomOrZero() {
+    public boolean shouldAdvance() {
         int randomInteger = Randoms.pickNumberInRange(0, 9);
-        if (randomInteger < 4) {
-            return 0;
-        }
-        return randomInteger;
+        return randomInteger >= 4;
     }
 
-    public void addRandomAdvanceResult(int randomInteger) {
-        for (int i = 0; i < randomInteger; i++) {
-            this.advanceResults.add('-');
-        }
+    public void addAdvanceResult() {
+        this.advanceResults.add('-');
     }
 }

@@ -75,14 +75,15 @@ class RacingCarServiceTest {
 
     @Test
     void 우승자_선출() throws Exception {
+
         racingCarService.createRacingCars("pobi,jun");
 
         Field racingCarsField = RacingCarService.class.getDeclaredField("racingCars");
         racingCarsField.setAccessible(true);
         List<RacingCar> racingCars = (List<RacingCar>) racingCarsField.get(racingCarService);
 
-        racingCars.get(0).addRandomAdvanceResult(5);
-        racingCars.get(1).addRandomAdvanceResult(5); 
+        racingCars.get(0).addAdvanceResult();
+        racingCars.get(1).addAdvanceResult();
 
         String winners = racingCarService.selectCarRacingWinners();
 

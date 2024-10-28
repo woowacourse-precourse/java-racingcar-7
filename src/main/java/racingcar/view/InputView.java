@@ -10,9 +10,9 @@ public class InputView {
         return inputCarsName;
     }
 
-    public int inputCarRacingRepeatCount() {
+    public String inputCarRacingRepeatCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int inputCarRacingRepeatCount = Integer.parseInt(Console.readLine());
+        String inputCarRacingRepeatCount = Console.readLine();
         return inputCarRacingRepeatCount;
     }
 }
