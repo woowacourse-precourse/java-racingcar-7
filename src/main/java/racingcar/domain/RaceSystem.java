@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racingcar.constants.ErrorMessage.CAR_NAME_LENGTH_ERROR_MESSAGE;
+import static racingcar.constants.ErrorMessage.RACE_TIME_RANGE_ERROR_MESSAGE;
 import static racingcar.constants.RaceSystemConstant.*;
 
 public class RaceSystem {
@@ -22,11 +24,7 @@ public class RaceSystem {
 
         for (String carName: carNames) {
             if (carName.isBlank() || carName.length() > MAX_CAR_NAME_CONDITION) {
-                StringBuilder errorMessage = new StringBuilder();
-                errorMessage.append("자동차 이름은 공백이거나 ");
-                errorMessage.append(MAX_CAR_NAME_CONDITION);
-                errorMessage.append("자를 초과할 수 없습니다");
-                throw new IllegalArgumentException(errorMessage.toString());
+                throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR_MESSAGE);
             }
 
             Car newCar = new Car(carName);
@@ -38,11 +36,7 @@ public class RaceSystem {
 
     private int initializeRaceTime(int raceTime) {
         if (raceTime < MIN_RACE_TIME_CONDITION) {
-            StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("시도 횟수는 ");
-            errorMessage.append(MIN_RACE_TIME_CONDITION);
-            errorMessage.append(" 이상이어야 합니다");
-            throw new IllegalArgumentException(errorMessage.toString());
+            throw new IllegalArgumentException(RACE_TIME_RANGE_ERROR_MESSAGE);
         }
 
         return raceTime;

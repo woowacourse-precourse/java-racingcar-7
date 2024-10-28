@@ -5,6 +5,8 @@ import racingcar.domain.RaceSystem;
 
 import java.util.List;
 
+import static racingcar.constants.ErrorMessage.RACE_TIME_FORMAT_ERROR_MESSAGE;
+
 public class Application {
 
     private static final String DELIMITER = ",";
@@ -20,7 +22,7 @@ public class Application {
         try {
             raceTime = Integer.parseInt(inputRaceTime);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("올바른 시도 횟수를 입력하세요");
+            throw new IllegalArgumentException(RACE_TIME_FORMAT_ERROR_MESSAGE);
         }
 
         RaceSystem raceSystem = new RaceSystem(carNames, raceTime);
