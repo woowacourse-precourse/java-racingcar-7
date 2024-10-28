@@ -1,8 +1,9 @@
 package racingcar;
 
-import static racingcar.Validator.InputValidator;
+import static racingcar.Cars.*;
+import static racingcar.Validator.*;
+
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +22,11 @@ public class Application {
 
         List<Cars> cars = new ArrayList<>();
         for (String s : carsList) {
-            cars.add(new Cars(s));
+            cars.add(new Cars(s, tryCount));
         }
+
+        System.out.println("\n실행 결과");
+
+        moving(cars);
     }
 }
