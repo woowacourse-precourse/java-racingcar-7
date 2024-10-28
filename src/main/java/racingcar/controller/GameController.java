@@ -19,15 +19,23 @@ public class GameController {
 
     public void run() {
         List<Car> cars = initCars();
-        int tryCount = inputView.getTryCount();
+        int tryCount = getTryCount();
         playRace(cars, tryCount);
         List<String> winners = getWinners(cars);
         ResultView.printWinners(winners);
     }
 
     private List<Car> initCars() {
-        String[] carNames = inputView.getCarNames();
+        String[] carNames = getCarNames();
         validateCarNames(carNames);
+        return createCars(carNames);
+    }
+
+    private String[] getCarNames() {
+        return inputView.getCarNames();
+    }
+
+    private List<Car> createCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             cars.add(new Car(name, new RandomNumberGeneratorImpl()));
@@ -49,14 +57,26 @@ public class GameController {
         }
     }
 
+    private int getTryCount() {
+        return inputView.getTryCount();
+    }
+
     private void playRace(List<Car> cars, int tryCount) {
         System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
-            for (Car car : cars) {
-                car.move();
-            }
-            ResultView.printProgress(cars);
+            raceOnce(cars);
+            printRaceStatus(cars);
         }
+    }
+
+    private void raceOnce(List<Car> cars) {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    private void printRaceStatus(List<Car> cars) {
+        ResultView.printProgress(cars);
     }
 
     private List<String> getWinners(List<Car> cars) {
