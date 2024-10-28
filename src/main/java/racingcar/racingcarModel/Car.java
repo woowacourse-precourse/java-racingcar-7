@@ -7,10 +7,6 @@ public class Car {
     private int carMove;
 
 
-    public Car() {
-    }
-
-
     public Car(String carName) {
         this.carName = carName;
         this.carMove = 0;

@@ -20,17 +20,17 @@ public class Controller {
         carView.printNameInputMessage();
         String nameInput = carView.readInput();
         carView.printTryInputMessage();
-        String beforeTryInput = carView.readInput();
+        String beforeTryInput = carView.readInput(); // 시행 횟수 임시 저장
 
-        //예외 검사
+        // 예외 검사
         exceptionController.exceptionCheck(nameInput, beforeTryInput);
 
-        int tryInput = Integer.parseInt(beforeTryInput);
-        List<Car> cars = carList(nameInput);
+        int tryInput = Integer.parseInt(beforeTryInput); // 시행 횟수 입력
+        List<Car> cars = carList(nameInput); // 자동차 이름 리스트로 변환
 
         startRace(tryInput, cars);
 
-        String winner = winnerCar(cars, maxValue(cars));
+        String winner = winnerCar(cars, maxValue(cars)); // 승리한 자동차 이름 winner 스트링으로 변환
         carView.printWinners(winner);
     }
 
@@ -46,7 +46,7 @@ public class Controller {
     }
 
     // nameInput 분리해서 리스트 대입
-    public List<Car> carList(String nameInput) {
+    private List<Car> carList(String nameInput) {
         List<Car> cars = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(nameInput, ",");
         while (st.hasMoreTokens()) {
@@ -56,7 +56,7 @@ public class Controller {
     }
 
     // 랜덤값에 따라 전진 여부를 결정하는 메서드
-    public int isForward(int currentValue) {
+    private int isForward(int currentValue) {
 
         int i = Randoms.pickNumberInRange(0, MAX_RANDOM_NUMBER);
 
@@ -90,7 +90,6 @@ public class Controller {
                 appendWinner(winner, car.getCarName());
             }
         }
-
         return winner.toString();
     }
 
@@ -101,6 +100,4 @@ public class Controller {
         }
         winner.append(carName);
     }
-
-
 }
