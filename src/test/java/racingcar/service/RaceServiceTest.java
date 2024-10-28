@@ -9,11 +9,11 @@ import racingcar.domain.Cars;
 import racingcar.domain.strategy.AlwaysMoveStrategy;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.dto.RoundResultDto;
+import racingcar.wrapper.RaceCount;
 
 public class RaceServiceTest {
 
     private RaceService raceService;
-    private int tryCount;
     private Cars cars;
 
     @BeforeEach
@@ -22,15 +22,14 @@ public class RaceServiceTest {
         String carNames = "pobi,crong,honux";
         MoveStrategy moveStrategy = new AlwaysMoveStrategy();
         cars = new Cars(carNames, moveStrategy);
-        tryCount = 5;
     }
 
     @Test
     void 라운드_결과_리스트로_반환_테스트() {
-        List<RoundResultDto> roundResults = raceService.playRace(cars, tryCount);
+        List<RoundResultDto> roundResults = raceService.playRace(cars, RaceCount.of("5"));
 
         assertThat(roundResults.size())
-                .isEqualTo(tryCount);
+                .isEqualTo(5);
     }
 
 }
