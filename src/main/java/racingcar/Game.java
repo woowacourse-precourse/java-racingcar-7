@@ -60,6 +60,7 @@ public class Game {
     public Game(){
         List<String> carNames = readCarName();
         createCars(carNames);
+        readMoveNumber();
     }
 
     public String getWinner(){
