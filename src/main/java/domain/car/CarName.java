@@ -1,4 +1,4 @@
-package domain;
+package domain.car;
 
 import java.util.Objects;
 import racingcar.enums.ErrorMessage;
@@ -12,7 +12,7 @@ public class CarName {
         validateCarName(this.name);
     }
 
-    public static CarName from(String name) {
+    public static CarName from(final String name) {
         return new CarName(name);
     }
 
@@ -25,13 +25,13 @@ public class CarName {
         validateLength(name);
     }
 
-    private void validateBlank(String name) {
+    private void validateBlank(final String name) {
         if (name.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.BLANK_INPUT_NOT_ALLOWED.getMessage());
         }
     }
 
-    private void validateLength(String name) {
+    private void validateLength(final String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_LENGTH.getMessage());
         }

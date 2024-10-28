@@ -1,4 +1,4 @@
-package domain;
+package domain.car;
 
 import java.util.HashSet;
 import java.util.List;
@@ -8,12 +8,12 @@ import racingcar.enums.ErrorMessage;
 public class Cars {
     private final List<Car> carList;
 
-    private Cars(List<Car> carList) {
-        validateDuplicateNames(carList); // 중복 검증 추가
+    private Cars(final List<Car> carList) {
+        validateDuplicateNames(carList);
         this.carList = carList;
     }
 
-    public static Cars from(List<Car> carList) {
+    public static Cars from(final List<Car> carList) {
         return new Cars(carList);
     }
 
@@ -21,7 +21,7 @@ public class Cars {
         return carList.size();
     }
 
-    private void validateDuplicateNames(List<Car> carList) {
+    private void validateDuplicateNames(final List<Car> carList) {
         Set<String> carNames = new HashSet<>();
         for (Car car : carList) {
             if (!carNames.add(car.getName())) {
