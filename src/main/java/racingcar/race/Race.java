@@ -33,8 +33,8 @@ public class Race {
     }
 
     public void startRace(int times){
-        if(racers.isEmpty()){
-            throw new IllegalArgumentException("선수가 없어 레이스를 진행할 수 없습니다.");
+        if(racers.size()<2){
+            throw new IllegalArgumentException("경주를 하기 위해서 선수는 최소 2명이 필요합니다.");
         }
 
         reset();
