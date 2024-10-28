@@ -40,5 +40,7 @@ public class RacingController {
 
             outputView.printRacingResult(carList);
         }
+
+        outputView.printWinners(judge.getWinners(carList));
     }
 }
