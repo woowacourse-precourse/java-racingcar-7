@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.exception.ExceptionMessage;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -39,7 +41,7 @@ public class Cars {
     }
 
     private void validateNoDuplicateCarName(String carName) {
-        if (uniqueCarNames.contains(carName)) throw new IllegalArgumentException("차 이름이 중복됩니다.");
+        if (uniqueCarNames.contains(carName)) throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_IS_DUPLE.getErrorMessage());
         uniqueCarNames.add(carName);
     }
 

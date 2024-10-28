@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.exception.ExceptionMessage;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,15 +45,15 @@ public class Car {
 
     private void checkCarNameIsValid(String carName) {
         if (carName.isBlank() || carName.length() > CAR_NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException("유효하지 않은 자동차 이름입니다.");
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_INVALID_LENGTH.getErrorMessage());
         }
 
         if (carName.contains(" ")) {
-            throw new IllegalArgumentException("이름에 공백을 제외시켜주세요.");
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_INCLUDE_BLANK.getErrorMessage());
         }
 
         if (!isMatchesCarNamePattern(carName)) {
-            throw new IllegalArgumentException("한글, 영어, 숫자로만 입력해주세요.");
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_INCLUDE_INVALID_STRING.getErrorMessage());
         }
     }
 

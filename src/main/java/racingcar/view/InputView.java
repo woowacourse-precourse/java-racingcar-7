@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.dto.RacingInfo;
+import racingcar.exception.ExceptionMessage;
 
 public class InputView {
     private static final String INPUT_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -33,7 +34,7 @@ public class InputView {
 
     private void checkRacingInfoIsNull(String carNames) {
         if (carNames == null || carNames.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름 또는 경기횟수를 입력해주세요.");
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_VALUE_IS_NULL.getErrorMessage());
         }
     }
 
@@ -41,7 +42,7 @@ public class InputView {
         try {
             return Integer.parseInt(tryCount);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("경기횟수는 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ExceptionMessage.TRY_COUNT_IS_NOT_NUMBER.getErrorMessage());
         }
     }
 }
