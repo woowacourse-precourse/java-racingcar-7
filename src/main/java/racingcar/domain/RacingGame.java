@@ -15,13 +15,6 @@ public class RacingGame {
         this.randomNumManager = new RandomNumManager();
     }
 
-    public void createCars(List<String> nameList) {
-        NameValidator.validateNames(nameList);
-        for (String name : nameList) {
-            cars.add(new Car(name));
-        }
-    }
-
     public void executeRound() {
         for (Car car : cars) {
             int randomNum = RandomNumManager.generateRandomNumber();
