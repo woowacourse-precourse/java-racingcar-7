@@ -11,7 +11,7 @@ import racingcar.Application;
 
 class RacingCarServiceTest extends NsTest{
 
-    RacingCarService racingCarService = new RacingCarService();
+    GameSetup racingCarService = new GameSetup();
 
     @Test
     void 자동차_이름_5자_초과_예외_테스트() {

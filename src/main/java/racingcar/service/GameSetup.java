@@ -3,7 +3,7 @@ package racingcar.service;
 import java.util.HashSet;
 import java.util.Set;
 
-public class RacingCarService {
+public class GameSetup {
 
     public Set<String> splitCarName(String carNameList) {
         Set<String> carNames = new HashSet<>();
