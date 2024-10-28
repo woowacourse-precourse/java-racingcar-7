@@ -57,6 +57,7 @@ public class RacingManager {
             String position = "";
             Car car = carList.get(i);
             checkMove(car);
+            printPosition(car, position);
         }
     }
 
@@ -68,8 +69,39 @@ public class RacingManager {
         }
     }
 
+    private void printPosition(Car car, String position) {
+        for(int j = 0; j < car.getPosition(); j++) {
+            position += '-';
+        }
+        System.out.println(car.getName() + " : " + position);
+    }
+
+    public void getMaxPosition() {
+        MAX_POSITION = carList.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .map(Car::getPosition)
+                .orElse(-1);
+    }
+
+    public void getMaxPostionCars() {
+        // 최대 position을 가진 모든 객체의 name을 리스트로 추출
+        names = carList.stream()
+                .filter(o -> o.getPosition() == MAX_POSITION)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    public void printMaxPositionCars() {
+        String result = names.stream()
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : " + result);
+    }
+
     public void runRacing() {
         createCar();
         startRacing();
+        getMaxPosition();
+        getMaxPostionCars();
+        printMaxPositionCars();
     }
 }
