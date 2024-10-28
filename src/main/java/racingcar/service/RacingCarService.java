@@ -7,11 +7,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
+import racingcar.controller.OutputController;
+import racingcar.repository.RacingCarRepository;
 import racingcar.validator.Validator;
 
-public class racingCarService {
+public class RacingCarService {
 
-    public static void makeCarMap(String[] cars, Validator validator, Map<String, String> carMoveMap) {
+    RacingCarRepository racingCarRepository = new RacingCarRepository();
+    OutputController outputController = new OutputController();
+
+    public void makeCarMap(String[] cars, Validator validator, Map<String, String> carMoveMap) {
         for(String car : cars) {
             car = car.trim(); //앞 뒤 공백 제거
             Boolean carNameLengthValidate = validator.carNameLengthValidate(car);
@@ -24,7 +29,7 @@ public class racingCarService {
         }
     }
 
-    public static void moveController(String[] cars, Map<String, String> carMoveMap) {
+    public void moveController(String[] cars, Map<String, String> carMoveMap) {
         int randomNum;
         for (String car: cars) {
             randomNum = Randoms.pickNumberInRange(0, 9);
@@ -36,7 +41,16 @@ public class racingCarService {
         }
     }
 
-    public static ArrayList<String> findWinners(Map<String, String> carMoveMap) {
+    public void executeRaceRounds(String[] cars, Map<String, String> carMoveMap, int attempts) {
+        int trial = 0;
+        while (trial < attempts) { //리팩토링
+            trial++;
+            moveController(cars, carMoveMap);
+            outputController.printPerAttempt(carMoveMap);
+        }
+    }
+
+    public ArrayList<String> findWinners(Map<String, String> carMoveMap) {
         ArrayList<String> winners = new ArrayList<>();
         int winnerPosition = 0;
 
@@ -55,5 +69,9 @@ public class racingCarService {
         }
 
         return winners;
+    }
+
+    public Map<String, String> getCarMoveMap() {
+        return racingCarRepository.getCarMoveMap();
     }
 }
