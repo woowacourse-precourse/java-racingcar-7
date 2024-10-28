@@ -46,6 +46,7 @@ public class InputView {
             count++;
         }
         validation.isPlayerCountValid(count);
+        validation.isPlayerNameDuplicated(nameArray);
 
         return nameArray;
     }

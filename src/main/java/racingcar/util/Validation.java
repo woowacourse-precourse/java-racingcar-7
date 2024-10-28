@@ -1,5 +1,8 @@
 package racingcar.util;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import racingcar.constant.Constant;
 import racingcar.constant.ErrorMessage;
 
@@ -13,6 +16,15 @@ public class Validation {
     public void isPlayerCountValid(int playerCount) {
         if (playerCount < Constant.MIN_PLAYERS_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_MIN_CAR_COUNT);
+        }
+    }
+
+    public void isPlayerNameDuplicated(ArrayList<String> nameList) {
+        for (String name : nameList) {
+            int frequency = Collections.frequency(nameList, name);
+            if (frequency > 1) {
+                throw new IllegalArgumentException(ErrorMessage.ERROR_CAR_NAME_DUPLICATED);
+            }
         }
     }
 
