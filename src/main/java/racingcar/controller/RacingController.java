@@ -14,7 +14,9 @@ public class RacingController {
         OutputView.printInputCarNameMessage();
         String input = InputView.inputCarNames();
         String trimmedInput = InputView.removeSpace(input);
+        CarNameValidator.validateTrimmedInput(trimmedInput);
         List<String> carNames = InputView.splitStringByDelimiters(trimmedInput, ",");
+        CarNameValidator.validateCarNamesCount(carNames);
         CarNameValidator.validateCarNameLength(carNames);
 
         int totalCarCounts = carNames.size();
