@@ -114,7 +114,7 @@ public class Application {
     }
 
     private static void playRound(Map<String, Integer> cars, int iterationNumber) {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
         for (int i = 0; i < iterationNumber; i++) {
             for (Map.Entry<String, Integer> car : cars.entrySet()) {
                 car.setValue(car.getValue() + randomDistanceToMove());
