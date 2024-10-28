@@ -7,12 +7,12 @@ import java.util.Map;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
     public Cars(final List<String> carNames) {
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
+        cars = carNames.stream()
+                .map(Car::new)
+                .toList();
     }
 
     public void updatePosition(final String carName) {

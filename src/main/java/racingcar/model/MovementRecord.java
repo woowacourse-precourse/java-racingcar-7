@@ -14,7 +14,7 @@ public class MovementRecord {
     }
 
     public List<Map<String, Integer>> getRounds() {
-        return roundRecords;
+        return List.copyOf(roundRecords);
     }
 
 }
