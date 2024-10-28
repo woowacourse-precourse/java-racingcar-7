@@ -9,11 +9,11 @@ public class CarDTO {
 
         this.goStraight = 0;//초기값은 0으로 설정
     }
-
+    //getter
     public String getCarName() {
         return carName;
     }
-
+    //getter
     public int getGoStraight() {
         return goStraight;
     }
