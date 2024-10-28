@@ -16,7 +16,7 @@ public class WinningCars {
 
     public String getWinnerNames() {
         return getWinnerList().stream()
-                .map(Car::getName)
+                .map(car -> " " + car.getName())
                 .collect(Collectors.joining(GameConstants.COMMA));
     }
 
