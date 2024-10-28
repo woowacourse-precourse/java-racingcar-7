@@ -70,6 +70,18 @@ class InputValidatorTest {
     }
 
     @Test
+    void 자동차이름_연속적인_쉼표_X() {
+        //given
+        String carNames = "woody,,,fobi";
+
+        //when
+
+        //then
+        assertThatThrownBy(() -> inputValidator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 자동차이름_6자이상_X() {
         //given
         String carNames = "woody,fobi,abcdef";
