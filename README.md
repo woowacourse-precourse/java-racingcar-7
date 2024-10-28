@@ -13,7 +13,8 @@
 - [x] 각 자동차에 이동을 요청한다.
 - [x] 경주에 참가하는 자동차 객체 리스트를 조회한다.
 - [x] 가장 멀리 간 자동차의 거리를 반환한다.
-#### RandomIntGenerator
+### IntGenerator
+#### RandomIntGeneratorStrategy
 - [x] 0-9 사이의 숫자를 생성한다.
 ### 경주
 #### Racing
@@ -166,6 +167,11 @@
 ## 클래스 설계
 - MVC 패턴을 사용했습니다.
 - Validator를 사용했습니다.
+- Strategy 패턴을 사용했습니다.
+  - 테스트 코드를 작성중에 RandomIntGenerator의 숫자를 지정할 수 없어서, 찾아보던 중에 전략 패턴을 알게 되어 적용했습니다.
+  - 이에 MinValueIntGeneratorStrategy, MaxValueIntGeneratorStrategy 클래스를 생성해서 테스트 코드 작성에 사용했습니다.
+  - 알고리즘은 진짜 사용자가 사용하는 RandomIntGeneratorStrategy, 자동차가 실제로 움직이는 테스트하는 MaxValueIntGeneratorStrategy, 
+  자동차가 멈춰있는지 확인하는 MinValueIntGeneratorStrategy가 있다.
 ### Model
 #### Car (자동차)
 - 자동차 객체를 생성한다.
@@ -189,7 +195,7 @@
 - 우승 자동차의 이름을 반환한다.
 - 우승 자동차를 결정한다.
 
-#### RandomIntGenerator
+#### RandomIntGeneratorStrategy
 - 0~9 사이의 숫자를 생성한다.
 
 ### View
