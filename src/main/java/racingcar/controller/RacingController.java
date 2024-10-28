@@ -13,7 +13,7 @@ import racingcar.view.OutputView;
 /**
  * View와 Service 사이를 연결하는 클래스
  * InputView로부터 자동차 이름과 주행 시도 횟수 문자열을 건네 받아서
- * 객체 생성 후 Cars 객체를 생성한다. Service에게 Cars객체와 RacingChance를
+ * 객체 생성 후 Cars 객체를 생성한다. Service에게 주요 모델을
  * 넘겨주고 결과 값을 요청하며 OutputView에 결과를 전달한다.
  */
 public class RacingController {

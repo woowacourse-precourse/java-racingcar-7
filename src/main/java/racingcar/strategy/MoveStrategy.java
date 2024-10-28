@@ -2,9 +2,7 @@ package racingcar.strategy;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-/**
- * 자동차가 전진할지 멈출지 전략을 제공하는 클래스
- */
+/** 자동차가 주행 전략을 제공하는 클래스 */
 public final class MoveStrategy {
 
     private MoveStrategy() {}

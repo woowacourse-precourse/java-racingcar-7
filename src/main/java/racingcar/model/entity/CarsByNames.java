@@ -6,9 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 자동차들을 콜렉션으로 저장한 클래스
- */
+/** 자동차 이름과 자동차 객체(Car)를 매핑함 */
 public final class CarsByNames {
 
     private final Map<String, Car> carsByNames;

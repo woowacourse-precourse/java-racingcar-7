@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Supplier;
 
+/** RacingTurn을 순차적으로 저장하여 순회할 수 있도록 저장함 */
 public final class RacingTurns implements Iterable<RacingTurn> {
 
     private final List<RacingTurn> turns;

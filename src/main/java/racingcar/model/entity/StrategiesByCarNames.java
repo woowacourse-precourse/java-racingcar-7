@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+/** 자동차 이름과 자동차 이동 전략 순차적으로 저장한 컬렉션을 매핑함 */
 public record StrategiesByCarNames(Map<String, List<Supplier<Integer>>> strategies) {
 
     public static StrategiesByCarNames getAllRandomMove(CarNames names,

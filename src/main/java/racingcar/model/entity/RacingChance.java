@@ -2,14 +2,13 @@ package racingcar.model.entity;
 
 import racingcar.utils.message.ErrorMessage;
 
-/**
- * 주행 시도 횟수를 담은 객체 : 입력값 검증 기능 수행
- */
+/** 주행 시도 횟수를 담은 객체 : 입력값 검증 기능 수행 */
 public record RacingChance(int chance) {
 
     /**
      * 콘솔로부터 자동차 주행 시도 횟수를 입력받아서 올바른 형식인지 검증한 다음
      * 정수(int)로 반환하는 메서드
+     *
      * @param 검증되지 않은 자동차 주행 시도
      * @return 자동차 주행 시도 횟수
      * @throws 콘솔에서 입력된 문자열이 int 범위를 벗어나거나 숫자가 아닌 문자열이거나

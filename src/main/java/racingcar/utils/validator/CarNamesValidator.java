@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/** 자동차 이름 입력 문자열 형식을 검증함 */
 public final class CarNamesValidator {
 
     public static final String ONLY_DIGIT_ALPHABET_KOREAN = "[0-9a-zA-Z가-힣]";
