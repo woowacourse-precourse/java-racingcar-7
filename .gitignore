@@ -20,6 +20,7 @@ build/
 *.iml
 *.ipr
 out/
+*.log
 
 ### NetBeans ###
 /nbproject/private/
@@ -33,3 +34,7 @@ out/
 
 ### Mac OS ###
 .DS_Store
+
+### 빌드 및 테스트 출력 디렉토리 무시 ###
+test-output/
+target/
