@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import racingcar.exception.CarNameValidator;
 
 public class RacingGameService {
 
@@ -78,19 +79,19 @@ public class RacingGameService {
     // carName 검증 메서드
     private void validateCarName(String carName, List<String> carNames) {
         if (carName.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+            CarNameValidator.nameTooLong();
         }
 
         if (carName.trim().isEmpty()) {
-            throw new IllegalArgumentException("이름은 공백이 될 수 없습니다.");
+            CarNameValidator.blankName();
         }
 
         if (!carName.matches("[a-zA-Z]+")) {
-            throw new IllegalArgumentException("이름은 영어 문자만 가능합니다.");
+            CarNameValidator.invalidCharacters();
         }
 
         if (Collections.frequency(carNames, carName) > 1) {
-            throw new IllegalArgumentException("이름은 중복될 수 없습니다.");
+            CarNameValidator.duplicateName();
         }
     }
 }
