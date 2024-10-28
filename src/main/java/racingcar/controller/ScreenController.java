@@ -1,8 +1,10 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.domain.LapScore;
 import racingcar.domain.Race;
 import racingcar.view.ScoreBoard;
+import racingcar.view.constant.Output;
 
 public class ScreenController {
 
@@ -21,6 +23,13 @@ public class ScreenController {
     public void connect(Race race) {
         System.out.println(ScoreBoard.initMessage());
         this.race = race;
+    }
+
+    private void printLap(List<LapScore> lapScores) {
+        for (LapScore lapScore : lapScores) {
+            printCarStatus(lapScore);
+        }
+        System.out.print(Output.SEPARATOR_BLANK_LINES);
     }
 
     private void printCarStatus(LapScore lapScore) {
