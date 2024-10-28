@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class SplittingRacingCarNameTest {
     @DisplayName("자동차는 쉼표(,)를 기준으로 구분하여 생성된다.")
     @Test
-    void splitCarName() throws Exception{
+    void splitRacingCarName() throws Exception{
         //given
         String playerInput = "ini,yoni,nini,bye";
         SplittingRacingCarName splittingRacingCarName = new SplittingRacingCarName();
