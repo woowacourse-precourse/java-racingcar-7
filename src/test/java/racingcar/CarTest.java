@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 
 public class CarTest {
-
     private Car car;
 
     @BeforeEach

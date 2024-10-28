@@ -8,7 +8,6 @@ import racingcar.model.RandomGenerator;
 
 public class RacingTest {
 
-
     @Test
     @DisplayName("랜덤으로 숫자 추출이 정상적으로 작동합니다.")
     void 랜덤으로_숫자_추출이_정상적으로_작동합니다() {
