@@ -2,13 +2,13 @@ package racingcar.model;
 
 import java.util.List;
 
-import static racingcar.model.ModelConstants.*;
-
 public class RaceGame {
     private List<Car> cars;
+    private int roundCount;
 
-    public RaceGame(List<Car> cars) {
+    public RaceGame(List<Car> cars, int roundCount) {
         this.cars = cars;
+        this.roundCount = roundCount;
     }
 
     public void playRound() {
@@ -31,5 +31,9 @@ public class RaceGame {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public int getRoundCount() {
+        return roundCount;
     }
 }
