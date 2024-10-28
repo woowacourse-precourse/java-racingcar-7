@@ -11,4 +11,10 @@ public class InputExceptionHandler {
             }
         }
     }
+
+    public static void validateAttemptCount(String attemptCount) {
+        if (attemptCount.matches("-?\\d+")) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ATTEMPT_COUNT.getMessage());
+        }
+    }
 }

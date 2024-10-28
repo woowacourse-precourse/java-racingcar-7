@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import racingcar.exception.InputExceptionHandler;
 
 public class RacingService {
 
     public int parseAttemptCount(String inputAttemptCount) {
+        InputExceptionHandler.validateAttemptCount(inputAttemptCount);
+
         return Integer.parseInt(inputAttemptCount);
     }
 
