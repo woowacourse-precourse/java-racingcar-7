@@ -22,6 +22,7 @@ public class GameController {
 
     public void run() {
         Game game = initializeGame();
+        playGame(game);
     }
 
     private Game initializeGame() {
@@ -44,5 +45,11 @@ public class GameController {
         return AttemptsInputConverter.convert(input);
     }
 
+    private void playGame(Game game) {
+        outputView.displayRoundResultHeader();
+        while (game.hasRemainingRounds()) {
+            game.playOneRound();
+        }
+    }
 }
 

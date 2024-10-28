@@ -12,4 +12,13 @@ public class Game {
         this.cars = cars;
         this.totalRounds = totalRounds;
     }
+
+    public boolean hasRemainingRounds() {
+        return completedRounds < totalRounds;
+    }
+
+    public void playOneRound() {
+        //TODO
+        completedRounds++;
+    }
 }
