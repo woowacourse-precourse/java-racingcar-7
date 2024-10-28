@@ -22,6 +22,13 @@ public class CarList {
         return new CarList(cars);
     }
 
+    public int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
+
     private static List<String> splitCarNames(String carNames) {
         return Arrays.stream(carNames.split(",")).toList();
     }
