@@ -15,6 +15,9 @@ public class InputHandler {
     }
 
     public static ArrayList<String> getCarNameList() {
+        for (int i = 0; i < carNameList.size(); i++) {
+            carNameList.set(i, carNameList.get(i).replaceAll("^\\s+|\\s+$", ""));
+        }
         return carNameList;
     }
 }
