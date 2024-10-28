@@ -32,6 +32,9 @@ public class RaceControl {
      * @param input 경주할 자동차 이름 목록 문자열
      */
     public void verifyName(String input) {
+        if (input == null || input.isBlank()) {
+            throw new IllegalArgumentException("경주할 자동차 이름이 입력되지 않았습니다.");
+        }
 
         if (input.trim().endsWith(",")) {
             throw new IllegalArgumentException("잘못된 입력 형식입니다: 이름이 비어있습니다.");
