@@ -21,6 +21,16 @@ class ApplicationTest extends NsTest {
             },
             MOVING_FORWARD, STOP
         );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi,woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+
+
     }
 
     @Test
@@ -30,6 +40,7 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
 
     @Override
     public void runMain() {
