@@ -23,7 +23,6 @@ public class RacingService {
 
         return new RaceResult(race.getCars());
     }
-
     private void printRaceStatus(List<Car> cars) {
         cars.forEach(car -> System.out.println(car.toString()));
         System.out.println();
