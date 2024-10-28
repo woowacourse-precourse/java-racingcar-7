@@ -14,21 +14,21 @@ public class RacingGame {
     public void start() {
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼포(,) 기준으로 구분)");
-        String inputCars = Console.readLine();
+        String inputCarNames = Console.readLine();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int inputRounds = Integer.parseInt(Console.readLine());
 
-        GameValidator.validateName(inputCars);
+        GameValidator.validateName(inputCarNames);
         GameValidator.validateMoveCount(inputRounds);
 
-        cars = splitCars(inputCars);
+        cars = splitCars(inputCarNames);
         playRounds(inputRounds);
         printWinners();
     }
 
-    private List<Car> splitCars(String input) {
-        String[] carNames = input.split(",");
+    private List<Car> splitCars(String inputCarNames) {
+        String[] carNames = inputCarNames.split(",");
         return Arrays.stream(carNames)
                 .peek(GameValidator::validateCarName)
                 .map(Car::new)
