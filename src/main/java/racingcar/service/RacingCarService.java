@@ -4,9 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.error.ErrorStatus;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RacingCarService {
     private static final String FORWARD_MARK = "-";
@@ -20,13 +22,12 @@ public class RacingCarService {
     public Map<String, String> validateCarNames(String carName) {
         Map<String, String> cars = new HashMap<>();
 
-        String[] carNames = carName.split(",");
+        Arrays.stream(carName.split(",")).peek(car -> {
+            if (car.length() > 5) {
+                throw new IllegalArgumentException(ErrorStatus.OVERSIZE_CAR_NAME);
+            }
+        }).forEach(car -> cars.put(car, ""));
 
-        for (String car : carNames) {
-            if (car.length() > 5) throw new IllegalArgumentException(ErrorStatus.OVERSIZE_CAR_NAME);
-
-            cars.put(car, "");
-        }
         return cars;
     }
 
@@ -74,12 +75,7 @@ public class RacingCarService {
     }
 
     private List<String> getWinnersWithMaxDistance(Map<String, String> cars, int maxDistance) {
-        List<String> winnerNames = new ArrayList<>();
-
-        for (Map.Entry<String, String> car : cars.entrySet()) {
-            if (car.getValue().length() == maxDistance) winnerNames.add(car.getKey());
-        }
-        return winnerNames;
+        return cars.entrySet().stream().filter(car -> car.getValue().length() == maxDistance).map(Map.Entry::getKey).collect(Collectors.toList());
     }
 
 }
