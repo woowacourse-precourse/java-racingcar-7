@@ -1,5 +1,6 @@
 package racingcar;
 
+
 public class RacingController {
     private final InputView inputView;
 
@@ -8,6 +9,6 @@ public class RacingController {
     }
 
     public void run() {
-        inputView.askCarNames();
+        ConsoleInput consoleInput = inputView.ask();
     }
 }
