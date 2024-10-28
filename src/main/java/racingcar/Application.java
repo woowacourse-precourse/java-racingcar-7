@@ -26,15 +26,22 @@ public class Application {
                 if(Randoms.pickNumberInRange(0, 9) > 4){
                     move[j]++;
                 }
+                // 진행 과정 출력
+                System.out.print(carName[j] + ": ");
+                for(int k=0; k<move[j]; k++){
+                    System.out.print("-");
+                }
+                System.out.println();
             }
+            System.out.println();
         }
 
         // 최고거리 체크
         int max = 0;
 
         for(int i=0; i<move.length; i++){
-            if(move[j] > max){
-                max = move[j];
+            if(move[i] > max){
+                max = move[i];
             }
         }
 
@@ -47,8 +54,7 @@ public class Application {
                 j++;
             }
         }
-
-
+        
     }
 
 
