@@ -58,6 +58,30 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_빈_이름_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,jun", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_중복_이름_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni,pobi", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_숫자_아닌_경주_횟수() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "three"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         racingcar.Application.main(new String[]{});

@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     private static final int MOVE_THRESHOLD = 4;
@@ -26,10 +28,7 @@ public class Application {
         int rounds;
 
         try {
-            rounds = Integer.parseInt(Console.readLine().trim());
-            if (rounds <= 0) {
-                throw new IllegalArgumentException("횟수는 1 이상이어야 합니다.");
-            }
+            rounds = parseRounds(Console.readLine().trim()); // 경주 횟수 파싱
         } catch (IllegalArgumentException e) {
             System.out.println("에러: 잘못된 입력입니다. " + e.getMessage());
             throw e; // 잘못된 입력 처리 후 프로그램 정상 종료
@@ -50,16 +49,36 @@ public class Application {
     private static List<Car> initializeCars(String carNamesInput) {
         String[] carNames = carNamesInput.split(",");
         List<Car> cars = new ArrayList<>();
+        Set<String> uniqueNames = new HashSet<>();
 
         for (String name : carNames) {
             name = name.trim();
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
+            }
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+            if (!uniqueNames.add(name)) {
+                throw new IllegalArgumentException("자동차 이름에 중복이 없어야 합니다.");
             }
             cars.add(new Car(name));
         }
 
         return cars;
+    }
+
+    // 경주 횟수 파싱 및 검증
+    private static int parseRounds(String input) {
+        try {
+            int rounds = Integer.parseInt(input);
+            if (rounds <= 0) {
+                throw new IllegalArgumentException("횟수는 1 이상이어야 합니다.");
+            }
+            return rounds;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("경주 횟수는 숫자여야 합니다.");
+        }
     }
 
     // 라운드 실행
