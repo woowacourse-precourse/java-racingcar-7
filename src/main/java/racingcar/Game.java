@@ -28,4 +28,15 @@ public class Game {
 
         return cars;
     }
+
+    private int inputRoundCount() {
+        // 시도 횟수 받기, 숫자만 받기
+        System.out.println("시도할 횟수는 몇 회인가요");
+        try {
+            String input = Console.readLine();
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 값입니다.");
+        }
+    }
 }
