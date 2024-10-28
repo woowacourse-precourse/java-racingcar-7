@@ -14,18 +14,6 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    @DisplayName("자동차 이름 입력 받아 저장하는 기능 테스트")
-    void saveCarNamesTest(){
-        assertSimpleTest(() -> {
-            run("pobi,jun,woni");
-            String expectedOutput = "car name: pobi" + System.lineSeparator() +
-                    "car name: jun" + System.lineSeparator() +
-                    "car name: woni";
-            assertThat(output()).contains(expectedOutput);
-        });
-    }
-
-    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {

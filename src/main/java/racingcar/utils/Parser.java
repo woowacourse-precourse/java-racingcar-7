@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 public class Parser {
 
     public List<String> parsingCarNames(String input){
-        //input = input.replace(" ", ""); //문자열 공백 제거
 
         List<String> names = new ArrayList<>();
 
