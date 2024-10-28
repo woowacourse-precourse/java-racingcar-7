@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import racingcar.constants.GameConstants;
 import racingcar.validate.Validation;
 import racingcar.view.OutputMessage;
 
@@ -10,8 +11,6 @@ import java.util.Set;
 
 public class RaceCars {
 
-    private static final String COMMA = ",";
-
     private final List<Car> cars = new ArrayList<>();
 
     public List<Car> getCars() {
@@ -20,7 +19,7 @@ public class RaceCars {
 
     public void createCars(String input) {
         Set<String> distinctCarsName = new HashSet<>();
-        String[] carNames = input.split(COMMA);
+        String[] carNames = input.split(GameConstants.COMMA);
 
         for (String car : carNames) {
             car = Validation.validateCreateCar(car, distinctCarsName);

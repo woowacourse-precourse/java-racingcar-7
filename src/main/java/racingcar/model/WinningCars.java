@@ -1,12 +1,13 @@
 package racingcar.model;
 
+import racingcar.constants.GameConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningCars {
 
-    private static final String COMMA = ",";
     private final List<Car> cars;
 
     public WinningCars(List<Car> cars) {
@@ -16,7 +17,7 @@ public class WinningCars {
     public String getWinnerNames() {
         return getWinnerList().stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(COMMA));
+                .collect(Collectors.joining(GameConstants.COMMA));
     }
 
     private List<Car> getWinnerList() {

@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.constants;
 
 public enum ErrorType {
 

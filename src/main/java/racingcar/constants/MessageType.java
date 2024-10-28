@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.constants;
 
 public enum MessageType {
 
