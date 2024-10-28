@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static racingcar.constant.ErrorMessage.VEHICLE_CANNOT_BE_EMPTY;
 import static racingcar.constant.ErrorMessage.VEHICLE_NAME_CANNOT_BE_DUPLICATE;
 import static racingcar.constant.Race.*;
 
@@ -18,6 +19,10 @@ public class Vehicles {
                 .map(String::trim)
                 .filter(name -> !name.isEmpty())
                 .toList();
+
+        if(vehicles.isEmpty()){
+            throw new IllegalArgumentException(VEHICLE_CANNOT_BE_EMPTY);
+        }
 
         Set<String> uniqueNames = Set.copyOf(vehicles);
         if (uniqueNames.size() < vehicles.size()) {
