@@ -8,7 +8,7 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingGameController {
-    public static void runRacingGame() {
+    public static void run() {
         OutputView.printCarNameGuide();
         CarScores carScores = new CarScores(InputView.getCarNames());
 
