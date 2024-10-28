@@ -59,5 +59,15 @@ public class Application {
             numOfGo.add(go);
         }
 
+        // 출력 요구 사항
+        System.out.println("");
+        System.out.println("실행 결과");
+
+        for(String name : names){
+            System.out.println(name + " : ");
+        }
+
+        System.out.println("최종 우승자 : ");
+
     }
 }
