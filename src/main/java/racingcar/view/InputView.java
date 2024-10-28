@@ -16,6 +16,7 @@ public class InputView {
     public static String getInputNumberOfAttempts(){
         System.out.println(INPUT_NUMBER_OF_ATTEMPTS);
         String numberOfAttempts = Console.readLine();
+        InputValidator.validateInput(numberOfAttempts);
         return numberOfAttempts;
     }
 }
