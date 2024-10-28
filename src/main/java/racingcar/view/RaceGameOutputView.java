@@ -4,18 +4,17 @@ import racingcar.model.Car;
 
 import java.util.List;
 
-public class OutputView {
+public class RaceGameOutputView {
 
     public static void printRaceProgress(List<Car> cars) {
+        // 각 자동차의 이름과 현재 위치에 따른 하이픈을 출력
         for (Car car : cars) {
-            StringBuilder output = new StringBuilder(car.getName() + " : ");
-            for (int i = 0; i < car.getPosition(); i++) {
-                output.append('-');
-            }
-            System.out.println(output);
+            // 자동차 이름과 현재 위치에 맞춰 하이픈을 출력
+            System.out.println(car.getName() + " : " + "-".repeat(Math.max(0, car.getPosition())));
         }
         System.out.println();
     }
+
 
     public static void printWinners(List<Car> winners) {
         StringBuilder winnerNames = new StringBuilder();
