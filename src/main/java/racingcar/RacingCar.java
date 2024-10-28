@@ -39,9 +39,10 @@ public class RacingCar {
                 car.setValue(car.getValue() + 1);
             }
 
-            System.out.println(car.getKey() + " : " + "-".repeat(car.getValue()));
+            OutputConsole.outputExecutionResult(car.getKey(), car.getValue());
         }
-        System.out.println();
+
+        OutputConsole.changeLine();
     }
 
     private void winnerResult() {
@@ -52,7 +53,7 @@ public class RacingCar {
                 .map(Map.Entry::getKey)
                 .toList();
 
-        System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+        OutputConsole.outputWinnerResult(winnerList);
     }
 
     private void validateCar(String car) {
