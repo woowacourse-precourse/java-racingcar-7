@@ -1,8 +1,8 @@
 package racingcar;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullSource;
 
 import java.util.List;
 
@@ -38,10 +38,11 @@ public class ReaderTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void 널_입력_분리_테스트() {
+    @ParameterizedTest
+    @NullSource
+    void 널_이름_입력_분리_테스트(String input) {
 
-        assertThatThrownBy(() -> Reader.splitNameInput(null))
+        assertThatThrownBy(() -> Reader.splitNameInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
