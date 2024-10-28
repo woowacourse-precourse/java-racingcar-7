@@ -2,19 +2,20 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashMap;
+
 public class Application {
     public static void main(String[] args) {
-
-
-
         //1. 경주할 자동차의 이름을 쉼표 기준으로 구분하여 한줄에 받기
         String inputCar;
+        String[] carArr = null;
+
 
         try{
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             inputCar = Console.readLine();
             String car = inputCar;
-            String[] carArr = car.split(",");
+            carArr = car.split(",");
 
             //1-1. 자동차 이름이 5자를 초과한 경우 에러 출력
             for (String checkCar : carArr) {
@@ -39,7 +40,18 @@ public class Application {
             return;
         }
 
+        //3. 전체 자동차를 포함하는 해시맵을 만들고, 키는 자동차의 이름으로 하고 값은 0으로 초기화 한다.
+
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String car : carArr){
+            map.put(car, 0);
+        }
+
+
+
     }
+
+
 
     public static void checkIfNumeric(String inputTry){
         if (!isNmberic(inputTry)){
