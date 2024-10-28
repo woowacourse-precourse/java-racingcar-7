@@ -30,7 +30,8 @@ class CarTest {
     @Test
     @DisplayName("자동차는 전진 상태일때 자신의 이동 현황에 -를 추가한다.")
     void 전진_상태_일때_저장값_검증_테스트(){
-        Assertions.assertThat(testCar.getMoveStatus(Direction.FORWARD))
+        testCar.moveToOrientedDirection(Direction.FORWARD);
+        Assertions.assertThat(testCar.getMoveStatus())
                 .isEqualTo("-");
     }
 
