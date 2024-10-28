@@ -6,14 +6,14 @@ public class RacingController {
     private final OutputView outputView;
     private final RacingService racingService;
 
-    public RacingController() {
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
-        this.racingService = new RacingService();
+    public RacingController(InputView inputView, OutputView outputView, RacingService racingService) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.racingService = racingService;
     }
 
     public void run() {
         ConsoleInput consoleInput = inputView.ask();
-        racingService.start(consoleInput);
+        racingService.start(consoleInput, outputView);
     }
 }

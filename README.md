@@ -28,12 +28,12 @@ camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사
 ## 구현 기능 목록
 - [x] 자동차 이름 입력
 - [x] 시도 횟수 입력
-- [ ] 매 턴 실행 결과 출력
-- [ ] 우승자 출력
+- [x] 매 턴 실행 결과 출력
+- [x] 우승자 출력
 - [x] 참가 차량 그룹 생성
-- [ ] 참가 차량 그룹 전진
-- [ ] 차량 전진
-- [ ] 우승자 선정
+- [x] 참가 차량 그룹 전진
+- [x] 차량 전진
+- [x] 우승자 선정
 
 
 ## 구현 클래스(계층 ver)  
@@ -51,4 +51,5 @@ RacingController
           - Engine
             - RandomEngine
 
+생각
 1. Engine만 갈아끼면 RandomCar로 바꿀 필요가 없다!

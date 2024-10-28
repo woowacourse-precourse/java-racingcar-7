@@ -22,22 +22,31 @@ class OutputViewTest {
     @Test
     void printInfo() {
         outputView.printInfo();
-        assertEquals("실행 결과\n", outContent.toString());
+        assertEquals("\n실행 결과\n", outContent.toString());
     }
 
     @Test
     void printWinner() {
         Engine engine = new RandomEngine();
-        Car winner = new Car("pobi", engine);
-        outputView.printWinner(winner);
+        Car winner = Car.of("pobi", engine);
+        outputView.printWinner(List.of(winner));
         assertEquals("최종 우승자 : pobi\n", outContent.toString());
     }
 
     @Test
     void printWinners() {
         Engine engine = new RandomEngine();
-        List<Car> winners = List.of(new Car("pobi", engine), new Car("jun", engine));
+        List<Car> winners = List.of(Car.of("pobi", engine), Car.of("jun", engine));
         outputView.printWinner(winners);
         assertEquals("최종 우승자 : pobi, jun\n", outContent.toString());
+    }
+
+    @Test
+    void printRound() {
+        Engine engine = new RandomEngine();
+        Car car1 = Car.of("pobi", engine);
+        Car car2 = Car.of("crong", engine);
+        outputView.printRound(List.of(car1, car2));
+        assertEquals("pobi : \ncrong : \n\n", outContent.toString());
     }
 }

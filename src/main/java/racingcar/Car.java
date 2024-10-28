@@ -5,10 +5,14 @@ public class Car {
     private int position;
     private Engine engine;
 
-    public Car(String name, Engine engine) {
+    private Car(String name, Engine engine) {
         this.name = name;
         this.position = 0;
         this.engine = engine;
+    }
+
+    public static Car of(String name, Engine engine) {
+        return new Car(name, engine);
     }
 
     public String getName() {
