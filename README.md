@@ -84,6 +84,15 @@
 - throwArgumentException
 </details>
 
+<details>
+<summary> __Test__ </summary>
+
+- ApplicationTest
+- AttemptNumTest
+- CarNameTest
+- UserViewTest
+</details>
+
 ___
 ## 🐜 학습 목표
 - 여러 역할을 수행하는 **큰 함수**를 단일 역할을 수행하는 **작은 함수로 분리**한다.
