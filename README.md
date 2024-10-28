@@ -1,5 +1,8 @@
 # 자동차 경주
 
+<details>
+  <summary><strong>2주 차 프리코스 과제 요구 사항</strong></summary>
+  <div markdown="1">
 
 ## 과제 진행 요구 사항
 - 미션은 자동차 경주 저장소를 포크하고 클론하는 것으로 시작한다.
@@ -115,11 +118,12 @@ jun : -----
 ```
 Randoms.pickNumberInRange(0, 9);
 ```
+  </div>
+</details>
 
-
-## 구현할 기능 목록
-- `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 경주할 자동차 이름을 입력받는다.
-- 해당 값이 유효한 값인지 확인하며, 유효한 값은 아래의 조건을 모두 만족해야 한다.
+## 📝 구현할 기능 목록
+✅ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 경주할 자동차 이름을 입력받는다.  
+✅ 해당 값이 유효한 값인지 확인하며, 유효한 값은 아래의 조건을 모두 만족해야 한다.  
 ```
   1. 최소 2개 이상의 자동차의 이름이 존재해야 한다.
   2. 자동차 이름은 쉼표(,)를 기준으로 구분하며 시작과 끝이 쉼표여서는 안된다.
@@ -128,17 +132,17 @@ Randoms.pickNumberInRange(0, 9);
   5. 자동차의 이름은 최소 1자 이상, 최대 5자 이하여야 한다.
   6. 자동차의 이름은 중복 없이 모두 다른 이름이다.
 ```
-- 유효한 값이 아닐 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.  
+✅ 유효한 값이 아닐 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.  
 
 
-- `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 시도할 횟수를 입력받는다.
-- 해당 값은 자연수여야 하며, 유효한 값이 아닐 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
+✅ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 시도할 횟수를 입력받는다.  
+✅ 해당 값은 자연수여야 하며, 유효한 값이 아닐 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.  
 
 
-- `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 0에서 9까지의 수 중 하나의 수를 무작위로 받는다.
-- 무작위 값이 4 이상인 경우 해당 자동차를 앞으로 한 칸 움직인다.
-- 위와 같은 과정을 시도할 횟수만큼 반복해 자동차 경주 게임을 진행한다.
+✅ `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 0에서 9까지의 수 중 하나의 수를 무작위로 받는다.  
+✅ 무작위 값이 4 이상인 경우 해당 자동차를 앞으로 한 칸 움직인다.  
+✅ 위와 같은 과정을 시도할 횟수만큼 반복해 자동차 경주 게임을 진행한다.  
 
 
-- 자동차 경주 게임을 완료한 후 누가 우승했는지 출력 예시에 따라 출력한다.
-- 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
+✅ 자동차 경주 게임을 완료한 후 누가 우승했는지 출력 예시에 따라 출력한다.  
+✅ 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
