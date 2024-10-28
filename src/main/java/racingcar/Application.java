@@ -7,14 +7,28 @@ public class Application {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        try {
+            String[] names = nameInput(scanner);
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            int count = scanner.nextInt();
+            play(names, count);
+
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+
+
+    }
+
+    private static String[] nameInput(Scanner scanner) {
         String input = scanner.nextLine();
-        // TODO: 입력 오류
-
-        String[] names = input.split(",");
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int count = scanner.nextInt();
-
-        play(names, count);
+        String names[] = input.split(",");
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
+            }
+        }
+        return names;
     }
 
     private static void play(String[] names, int count) {
@@ -28,29 +42,33 @@ public class Application {
         // 게임 시작
         for (int i = 0; i < count; i++) {
             // 차 전진
-            for (int j = 0; j < cars.size(); j++) {
-                cars.get(j).move();
-                cars.get(j).print();
+            for (Car car: cars) {
+                car.move();
+                car.print();
             }
             System.out.println();
         }
 
         // 경기 결과
-        winner(cars);
+        List<String> winners = getWinners(cars);
+        printWinners(winners);
 
     }
 
-    private static void winner(List<Car> cars) {
-        Collections.sort(cars, new CarComparator());
-        int winningCount = cars.get(cars.size() - 1).getAdvanceCount();
+    private static List<String> getWinners(List<Car> cars) {
 
-        ArrayList<String> winner = new ArrayList<>();
+        int winningCount = Collections.max(cars, new CarComparator()).getAdvanceCount();
+        List<String> winner = new ArrayList<>();
+
         for (Car car : cars) {
             if (car.getAdvanceCount() == winningCount) {
                 winner.add(car.getName());
             }
         }
+        return winner;
+    }
 
+    private static void printWinners(List<String> winner) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < winner.size(); i++) {
             sb.append(winner.get(i));
