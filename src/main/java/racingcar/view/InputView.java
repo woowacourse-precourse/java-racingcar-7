@@ -1,13 +1,21 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.validator.CarNameValidator;
 
 public class InputView {
 
     public static String[] getCarNames() {
-        String[] value = Console.readLine().split(",");
+        String input = Console.readLine();
+        CarNameValidator.commaEnding(input);
+        String[] carNames = input.split(",");
 
-        return value;
+        for (String name : carNames) {
+            CarNameValidator.Spaces(name);
+            CarNameValidator.Characters(name);
+        }
+
+        return carNames;
     }
 
     public static String getRound() {
