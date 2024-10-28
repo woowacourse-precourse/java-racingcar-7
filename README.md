@@ -25,7 +25,7 @@
   - 결과 출력
 
 ### 4. Service 패키지 
-- GameService.java : 게임 비즈니스 로직 처리
+- RacingGameService.java : 게임 비즈니스 로직 처리
   - initGame() : 게임 초기화
   - processCarName() : 자동차 이름을 분리, 자동차 이름 유효성 검사
   - validateNumberOfAttempts() : 시도 횟수의 유효성 검사
