@@ -45,6 +45,22 @@ public class Application {
         }
         return cars;
     }
+
+    private static void race(List<Car> cars, int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            raceOneRound(cars);
+            printCarPositions(cars);
+        }
+    }
+
+    private static void raceOneRound(List<Car> cars) {
+        for (Car car : cars) {
+            if (shouldMove()) {
+                car.move();
+            }
+        }
+    }
+
 }
 
 class Car {
