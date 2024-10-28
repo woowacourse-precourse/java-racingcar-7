@@ -15,6 +15,10 @@ public class OutputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
+    public static void printRoundResultsHeader() {
+        System.out.println("실행 결과");
+    }
+
     public static void printRoundResults(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
