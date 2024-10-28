@@ -13,12 +13,12 @@ public class Car {
 
     public void tryMoveForward() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) {
+        if (RacePolicy.canMoveForward(randomNumber)) {
             moveForward();
         }
     }
 
-    public void moveForward() {
+    private void moveForward() {
         position++;
     }
 
