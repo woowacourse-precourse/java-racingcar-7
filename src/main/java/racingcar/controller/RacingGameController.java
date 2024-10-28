@@ -42,5 +42,20 @@ public class RacingGameController {
         return winners;
     }
 
+    public void readyRace(List<Car> cars) {
+        for (Car car : cars) {
+            car.drive();
+        }
+    }
+
+    public void run() {
+        List<Car> cars = initializeCars();  // 자동차 리스트를 한 번만 초기화
+        int round = InputView.getInputTime();  // 시도 횟수를 입력받음
+        for (int i = 0; i < round; i++) {
+            readyRace(cars);  // 기존의 cars 리스트를 사용하여 매 라운드 실행
+            OutputView.printRoundResult(cars);
+        }
+        OutputView.printWinner(cars);
+    }
 
 }
