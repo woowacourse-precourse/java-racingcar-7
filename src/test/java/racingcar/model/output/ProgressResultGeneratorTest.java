@@ -50,4 +50,19 @@ class ProgressResultGeneratorTest {
 		// then
 		assertEquals(expectedResult, progressResult);
 	}
+
+	@Test
+	@DisplayName("자동차가 전진하지 않은 경우 중간 결과를 생성할 수 있다.")
+	void 전진하지_않은_자동차의_중간_결과를_생성한다() {
+		// given
+		String carName = "name";
+		List<Car> car = List.of(new Car(carName));
+		String expectedResult = carName + separator;
+
+		// when
+		String progressResult = ProgressResultGenerator.generateProgressResult(car);
+
+		// then
+		assertEquals(expectedResult, progressResult);
+	}
 }
