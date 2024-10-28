@@ -10,11 +10,13 @@ public class WinnerSelector {
         int max = Integer.MIN_VALUE;
         for (Car car : cars) {
             int score = car.getScore();
+
             if (score > max) {
                 max = score;
                 winners.clear();
                 winners.add(car.getCarName());
             }
+
             if (score == max) {
                 winners.add(car.getCarName());
             }
