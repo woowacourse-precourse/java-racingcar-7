@@ -12,7 +12,7 @@ public class RacingCar {
 
     public void start(String cars, int tryTimes) {
         List<String> carList = List.of(cars.split(","));
-        addCar(carList);
+        addCar(validateCar(carList));
 
         forwardOrStop(tryTimes);
 
@@ -56,16 +56,24 @@ public class RacingCar {
     }
 
     private void validateCar(String car) {
-        if(car == null || car.isBlank()) {
+        if (car == null || car.isBlank()) {
             throw new IllegalArgumentException("자동차 이름이 빈 값일 수 없습니다.");
         }
 
-        if(5 < car.length()) {
+        if (5 < car.length()) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
 
-        if(carMap.containsKey(car)) {
+        if (carMap.containsKey(car)) {
             throw new IllegalArgumentException("중복된 이름입니다.");
         }
+    }
+
+    private List<String> validateCar(List<String> carList) {
+        if (carList.size() < 2) {
+            throw new IllegalArgumentException("자동차는 2개 이상 입력해주세요.");
+        }
+
+        return carList;
     }
 }
