@@ -26,16 +26,16 @@ public class RacingServiceImpl implements RacingService {
     }
 
     @Override
-    public void raceOfCarsAndTurns(CarsByNames carsByNames, RacingTurns turns) {
+    public void raceOfCarNamesAndTurns(CarsByNames carsByNames, RacingTurns turns) {
         repository.saveStartMessage();
 
-        raceAndRecordOfCarsAndTurns(carsByNames, turns);
+        raceAndRecordProgress(carsByNames, turns);
 
         RacingWinners racingWinners = RacingWinners.getFromCars(carsByNames);
         repository.saveResult(racingWinners);
     }
 
-    private void raceAndRecordOfCarsAndTurns(CarsByNames carsByNames, RacingTurns turns) {
+    private void raceAndRecordProgress(CarsByNames carsByNames, RacingTurns turns) {
         for (RacingTurn turn : turns) {
             moveEachCarByStrategyAndRecordProgress(turn, carsByNames);
             repository.saveBreakingLine();

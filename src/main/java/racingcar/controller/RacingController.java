@@ -44,7 +44,7 @@ public class RacingController {
                 RacingTurns.getInstance(names, strategies, chance);
 
         // 레이싱 서비스 호출
-        racingService.raceOfCarsAndTurns(carsByNames, turns);
+        racingService.raceOfCarNamesAndTurns(carsByNames, turns);
 
         // 레이싱 기록 불러와서 출력
         RacingRecording recording = racingService.getRecord();

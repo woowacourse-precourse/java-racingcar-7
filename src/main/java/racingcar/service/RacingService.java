@@ -11,7 +11,7 @@ import racingcar.model.entity.RacingTurns;
  */
 public interface RacingService {
     
-    void raceOfCarsAndTurns(CarsByNames carsByNames, RacingTurns turns);
+    void raceOfCarNamesAndTurns(CarsByNames carsByNames, RacingTurns turns);
 
     RacingRecording getRecord();
 
