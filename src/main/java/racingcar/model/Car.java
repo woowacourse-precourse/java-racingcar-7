@@ -34,12 +34,19 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException(CarException.CAR_NAME_IS_NULL_OR_EMPTY.getMessage());
-        }
+        validateNameNullOrEmpty(name);
+        validateNameLength(name);
+    }
 
+    private static void validateNameLength(String name) {
         if (name.length() > MAXIMUM_NAME_LENGTH) {
             throw new IllegalArgumentException(CarException.CAR_NAME_IS_OVER_FIVE.getMessage());
+        }
+    }
+
+    private static void validateNameNullOrEmpty(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException(CarException.CAR_NAME_IS_NULL_OR_EMPTY.getMessage());
         }
     }
 }
