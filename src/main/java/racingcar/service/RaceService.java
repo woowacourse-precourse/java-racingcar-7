@@ -17,14 +17,20 @@ public class RaceService {
 
     public void init(String input) {
         List<String> nameList = getNameList(input);
+        List<Car> inputCars = nameToCars(nameList);
+        setCars(inputCars);
+    }
+
+    private static List<String> getNameList(String input) {
+        return Arrays.stream(input.split(",")).toList();
+    }
+
+    private static List<Car> nameToCars(List<String> nameList) {
         List<Car> inputCars = new ArrayList<>();
         for (String name : nameList) {
             inputCars.add(new Car(name));
         }
-        cars.set(inputCars);
-    }
-    private static List<String> getNameList(String input) {
-        return Arrays.stream(input.split(",")).toList();
+        return inputCars;
     }
 
     public void race() {
@@ -33,15 +39,15 @@ public class RaceService {
         }
     }
 
-    public List<Car> getWinners(){
-        List<Car> winners = new ArrayList<>();
+    public String getWinners(){
+        String winners = "";
         int maxScore = getMaxScore();
         for (Car car : cars.get()) {
             if (car.getScore().equals(maxScore)){
-                winners.add(car);
+                winners += ", "+car.getName();
             }
         }
-        return winners;
+        return winners.substring(2);
     }
 
     private int getMaxScore() {
@@ -54,7 +60,9 @@ public class RaceService {
         }
         return maxScore;
     }
-
+    private void setCars(List<Car> inputCars) {
+        cars.set(inputCars);
+    }
     public Cars getCars(){
         return cars;
     }
