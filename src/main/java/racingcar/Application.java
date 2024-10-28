@@ -12,6 +12,6 @@ public class Application {
         int round = Integer.parseInt(InputUtil.inputNumber());
         Race race = new Race(new NumberGenerator(), names);
         race.run(round);
-        OutputUtil.printResult(race.getWinners());
+        OutputUtil.print(race.result());
     }
 }

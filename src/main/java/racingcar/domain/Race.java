@@ -1,14 +1,13 @@
 package racingcar.domain;
 
 import racingcar.NumberGenerator;
-import racingcar.exception.CustomException;
-import racingcar.exception.ExceptionCode;
 
 import java.util.*;
 
 public class Race {
     private final NumberGenerator numberGenerator;
     private final List<Car> cars = new ArrayList<>();
+    private final StringBuilder result = new StringBuilder("\n실행 결과\n");
 
     public Race(final NumberGenerator numberGenerator, final List<String> names) {
         this.numberGenerator = numberGenerator;
@@ -18,31 +17,41 @@ public class Race {
     }
 
     public void run(final int rounds) {
-        for (int num = 0; num < rounds; num++) {
-            play(createIntegers());
-            System.out.println(roundResult());
+        for (int trial = 0; trial < rounds; trial++) {
+            playOneRound(numbers());
         }
     }
 
-    private void play( List<Integer> numbers) {
-        if (cars.size() != numbers.size()) {
-            throw new CustomException(ExceptionCode.SIZE_NOT_MATCHED);
-        }
-        for (int round=0; round<numbers.size(); round++) {
-            Car car = cars.get(round);
-            car.execute(numbers.get(round));
-        }
-    }
-
-    private List<Integer> createIntegers() {
+    private List<Integer> numbers() {
         List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < cars.size(); i++) {
+        for (Car ignored : cars) {
             numbers.add(numberGenerator.generate());
         }
         return numbers;
     }
 
-    public List<Car> getWinners() {
+    private void playOneRound( List<Integer> numbers) {
+        for (int idx = 0; idx < numbers.size(); idx++) {
+            Car car = cars.get(idx);
+            car.execute(numbers.get(idx));
+        }
+        appendRoundResult();
+    }
+
+    private void appendRoundResult() {
+        for (Car car: cars) {
+            result.append(car).append("\n");
+        }
+        result.append("\n");
+    }
+
+    public String result() {
+        result.append("최종 우승자 : ");
+        result.append(String.join(", ", winners().stream().map(Car::getName).toList()));
+        return result.toString();
+    }
+
+    private List<Car> winners() {
         return extractFrom(priorityQueue());
     }
 
@@ -61,14 +70,5 @@ public class Race {
             winners.add(priorityQueue.poll());
         }
         return winners;
-    }
-
-    private String roundResult() {
-        StringBuilder builder = new StringBuilder();
-        for (Car car: cars) {
-            builder.append(car).append("\n");
-        }
-        builder.append("\n");
-        return builder.toString();
     }
 }
