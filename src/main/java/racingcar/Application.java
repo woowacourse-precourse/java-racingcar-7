@@ -24,4 +24,18 @@ public class Application {
             }
         }
     }
+
+    private static int inputMoveCount() {
+        System.out.println("시도할 횟수는 몇회인가요?");
+        int moveCount = Integer.parseInt(Console.readLine());
+        validateMoveCount(moveCount);
+        return moveCount;
+    }
+
+    private static void validateMoveCount(int moveCount) {
+        if (moveCount <= 0) {
+            throw new IllegalArgumentException("이동 횟수는 1 이상이어야 합니다.");
+        }
+    }
+
 }
