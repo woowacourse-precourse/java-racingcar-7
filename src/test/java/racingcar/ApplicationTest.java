@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.errorMessage.ErrorMessage;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -38,25 +39,25 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,pobi2", "0"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("자연수가 아닌 값이 들어왔습니다.")
+                        .hasMessageContaining(ErrorMessage.INVALID_ATTEMPT_NUMBER.getMessage())
         );
 
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,pobi2", "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("자연수가 아닌 값이 들어왔습니다.")
+                        .hasMessageContaining(ErrorMessage.INVALID_ATTEMPT_NUMBER.getMessage())
         );
 
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,pobi2", "안녕"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("숫자가 아닌 값이 들어왔습니다.")
+                        .hasMessageContaining(ErrorMessage.NOT_NUMBER_ATTEMPT.getMessage())
         );
 
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,pobi", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("이미 존재하는 차 이름입니다.")
+                        .hasMessageContaining(ErrorMessage.DUPLICATED_CAR_NAME.getMessage())
         );
     }
 
