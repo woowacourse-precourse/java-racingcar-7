@@ -10,8 +10,8 @@
 1. 쉼표가 존재하는 경우
    - 이름들 중 중복된 이름이 존재하면 IllegalArgumentException을 발생시킨다
    - 이름들 중 하나라도 6자리 이상인 경우 IllegalArgumentException을 발생시킨다
-   - 이름이 공백이라면 IllegalArgumentException을 발생시킨다
-   
+   - 이름에 공백이 존재하면 IllegalArgumentException을 발생시킨다
+   - 문장의 시작 또는 끝이 쉼표라면 IllegalArgumentException을 발생시킨다
 
 2. 쉼표가 존재하지 않는 경우
    - 이름이 6자리 이상인 경우 IllegalArgumentException을 발생시킨다
@@ -20,7 +20,7 @@
 
 ✔️입력1 고려사항
 - 한글,영어,특수문자 혼용을 허용한다  ex) K5, 포르쉐-911 등 한글,영어,특수문자를 혼용하는 자동차 모델이 존재하고, 모델 이름을 자동차 이름으로 적용할 수 있다.
-- 이름에 공백이 있으면 제거하고 게임을 진행한다
+
 
 ***입력2) 게임을 몇 번 진행할지 입력한다***
 >5
