@@ -48,32 +48,54 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트1_이름길이제한() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("레이싱카 이름의 길이는 5글자가 넘을 수 없습니다.")
         );
     }
 
     @Test
     void 예외_테스트2_컴마이외의구분자() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,java;kate", "1"))
+                assertThatThrownBy(() -> runException("pobi,ja;ka", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("',' 이외의 구분자를 사용할 수 없습니다.")
         );
     }
 
     @Test
     void 예외_테스트3_attempt_0() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,java;kate", "0"))
+                assertThatThrownBy(() -> runException("pobi,java,kate", "0"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도할 횟수는 0 이하가 될 수 없습니다.")
         );
     }
 
     @Test
-    void 예외_테스트4_이름이공백() {
+    void 예외_테스트4_attempt_음수() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java,kate", "-2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도할 횟수는 0 이하가 될 수 없습니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트5_이름이공백() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,   ", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("레이싱카 이름은 공백일 수 없습니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트6_이름사이공백() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, w o", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("레이싱카 이름에 공백이 포함될 수 없습니다.")
         );
     }
 
