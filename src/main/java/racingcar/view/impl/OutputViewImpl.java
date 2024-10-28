@@ -12,7 +12,7 @@ public class OutputViewImpl implements OutputView {
 
     @Override
     public void printResult(Result result) {
-        System.out.println(result.toIntermediateResult());
+        System.out.println(result.middleResult());
     }
 
     @Override
