@@ -25,5 +25,5 @@ class Car {
 public class model {
     public static List<Car> car_list = new ArrayList<>();
     public static List<Car> winner_list = new ArrayList<>();
-    public static int totalCount;
+    public static int gameCount;
 }

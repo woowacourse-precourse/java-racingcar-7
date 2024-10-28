@@ -3,7 +3,7 @@ package racingcar;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static racingcar.model.winner_list;
 import static racingcar.model.car_list;
-import static racingcar.model.totalCount;
+import static racingcar.model.gameCount;
 import static racingcar.controller.checkNumberValid;
 import static racingcar.controller.saveCar;
 
@@ -19,7 +19,7 @@ public class view {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = readLine();
         checkNumberValid(input);
-        totalCount = Integer.parseInt(input);
+        gameCount = Integer.parseInt(input);
     }
 
     // 출력

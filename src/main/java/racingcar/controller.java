@@ -2,7 +2,7 @@ package racingcar;
 
 import static racingcar.model.winner_list;
 import static racingcar.model.car_list;
-import static racingcar.model.totalCount;
+import static racingcar.model.gameCount;
 import static racingcar.view.printGame;
 
 public class controller {
@@ -68,7 +68,7 @@ public class controller {
 
     public static void gameProgress() {
         System.out.println("실행 결과");
-        for (int i = 0; i < totalCount; i++) {
+        for (int i = 0; i < gameCount; i++) {
             getRandomNum();
             printGame();
         }
