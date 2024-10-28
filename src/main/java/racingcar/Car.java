@@ -13,6 +13,10 @@ public class Car {
         return position;
     }
 
+    public void move() {
+        position++;
+    }
+
     private String name;
     private int position = 0;
 }
