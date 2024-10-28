@@ -11,6 +11,7 @@ public class InputView {
         try {
             int inputTryTimes = Integer.parseInt(Console.readLine());
             if (inputTryTimes < 0) {
+                // error는 enum case 만들어서 ex invalid어쩌구
                 throw new IllegalArgumentException("횟수는 1 이상의 정수로 입력해 주세요.");
             }
             return inputTryTimes;

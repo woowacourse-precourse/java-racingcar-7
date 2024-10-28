@@ -1,6 +1,6 @@
 package racingcar.controller.infrastructure;
 
-import racingcar.controller.domain.GameController;
+import racingcar.controller.domain.RaceController;
 import racingcar.model.domain.Race;
 import racingcar.model.infrastructure.CarRace;
 import racingcar.model.infrastructure.RaceRule;
@@ -11,12 +11,11 @@ import racingcar.view.enumerate.OutputConstant;
 
 import java.util.List;
 
-// carRace / race
-public class RaceController implements GameController {
+public class CarRaceController implements RaceController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public RaceController(InputView inputView, OutputView outputView) {
+    public CarRaceController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
