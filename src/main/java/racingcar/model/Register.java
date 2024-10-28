@@ -6,10 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Register {
-    // 경주 할 자동차들 리스트 등록 기능
-    // 자동차들의 전진 횟수 조회 기능
-    // 우승자 조회 기능
-
     public ArrayList<Car> carList;
 
     public Register() {
