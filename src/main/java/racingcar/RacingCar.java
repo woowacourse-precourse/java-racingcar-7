@@ -44,4 +44,10 @@ public class RacingCar {
         }
     }
 
+    @Override
+    public String toString() {
+        final String DISTANCE_BAR = "-";
+        return name + " : " + DISTANCE_BAR.repeat(distance);
+    }
+
 }

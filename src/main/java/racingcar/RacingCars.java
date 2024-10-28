@@ -26,4 +26,14 @@ public class RacingCars {
         racingCarList.forEach(RacingCar::moveOrNot);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (RacingCar racingCar : racingCarList) {
+            sb.append(racingCar.toString());
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
 }
