@@ -5,14 +5,14 @@ import racingcar.View.OutputView;
 
 public class CarRacing {
     private final RacingRule racingRule;
-    private final int totalRounds;
     private final Racers racers;
+    private final int totalRounds;
     private final OutputView outputView;
 
-    public CarRacing(RacingRule racingRule, int totalRounds, Racers racers, OutputView outputView) {
+    public CarRacing(RacingRule racingRule, Racers racers, int totalRounds, OutputView outputView) {
         this.racingRule = racingRule;
-        this.totalRounds = totalRounds;
         this.racers = racers;
+        this.totalRounds = totalRounds;
         this.outputView = outputView;
     }
 

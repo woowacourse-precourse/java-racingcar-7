@@ -29,19 +29,19 @@ public class AppConfig {
     }
 
     public CarRacing carRacing() {
-        return new CarRacing(racingRule(), totalRounds(), racers(), outputView());
+        return new CarRacing(racingRule(), racers(), totalRounds(), outputView());
     }
 
     public RacingRule racingRule() {
         return new RacingRule(MIN_NUMBER_IN_RANGE, MAX_NUMBER_IN_RANGE, MIN_NUMBER_TO_MOVE);
     }
 
-    public int totalRounds() {
-        return racingInitializer().registerTotalRounds();
-    }
-
     public Racers racers() {
         return racingInitializer().registerRacers();
+    }
+
+    public int totalRounds() {
+        return racingInitializer().registerTotalRounds();
     }
 
     public OutputView outputView() {
