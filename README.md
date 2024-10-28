@@ -34,7 +34,7 @@
     - 자동차라는 객체 정의
 - [x] private void validateName(String name);
     - 자동차 이름 조건 정의
-- [x] protected void move();
+- [x] public void move();
     - 자동차 한칸 움직임
 - [x] private boolean hasMoveCondition();
     - 움직일 수 있는 조건인지 확인
