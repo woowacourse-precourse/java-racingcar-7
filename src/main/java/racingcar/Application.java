@@ -86,11 +86,11 @@ public class Application {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        String carNames = inputView.inputCarName();
+        String carNames = inputView.readCarName();
         isSeperatorPresent(carNames);
         isLastCharacterComma(carNames);
         String[] carName = seperateCarNames(carNames);
-        String gameCountStr = inputView.inputGameCount();
+        String gameCountStr = inputView.readGameCount();
         isGameCountNumber(gameCountStr);
         int gameCount = Integer.parseInt(gameCountStr);
         isGameCountOneOrMore(gameCount);
