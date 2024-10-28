@@ -36,7 +36,7 @@ public class CarTest {
     @DisplayName("움직인 거리에 따른 실행 결과를 getStatus()로 출력한다.")
     void getStatusTest() {
         Car car = new Car("testcar");
-        car.currentDistance = 5;
+        car.distance = 5;
         assertTrue(car.getStatus().startsWith("testcar : -----"));
     }
 }
