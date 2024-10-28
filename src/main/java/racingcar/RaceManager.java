@@ -55,7 +55,7 @@ public class RaceManager {
                 .map(String::trim)
                 .peek(name -> { // 각 이름의 길이를 검사
                     if (name.length() > limitNameLength) {
-                        throw new IllegalArgumentException("이름은 5자 이하어야 합니다: " + name);
+                        throw new IllegalArgumentException("이름은 5자 이하여야 합니다: " + name);
                     }
                 })
                 .collect(Collectors.toList());
