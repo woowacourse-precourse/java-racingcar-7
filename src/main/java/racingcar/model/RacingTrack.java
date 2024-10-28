@@ -6,6 +6,8 @@ import java.util.List;
 import racingcar.exception.RacingTrackException;
 
 public class RacingTrack {
+    private static final int MINIMUM_CAR_COUNT = 2;
+    private static final int MAXIMUM_CAR_COUNT = 10;
     private final List<Car> cars;
 
     public RacingTrack() {
@@ -17,6 +19,7 @@ public class RacingTrack {
             checkDuplicatedCarName(carName);
             cars.add(new Car(carName));
         }
+        validateCarCount();
     }
 
     public void checkDuplicatedCarName(String name) {
@@ -59,5 +62,15 @@ public class RacingTrack {
 
     public List<Car> getCarsForTest() {
         return cars;
+    }
+
+    private void validateCarCount() {
+        var carCount = cars.size();
+        if (carCount < MINIMUM_CAR_COUNT) {
+            throw new IllegalArgumentException(RacingTrackException.NOT_ENOUGH_CAR.getMessage());
+        }
+        if (carCount > MAXIMUM_CAR_COUNT) {
+            throw new IllegalArgumentException(RacingTrackException.TOO_MANY_CAR.getMessage());
+        }
     }
 }
