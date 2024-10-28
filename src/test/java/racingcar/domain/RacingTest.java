@@ -31,7 +31,8 @@ class RacingTest {
     @ParameterizedTest
     @CsvSource(value = {
             "0 / 2 / 0 / car2",
-            "1 / 1 / 0 / car1, car2"
+            "1 / 1 / 0 / car1, car2",
+            "0 / 0 / 0 / car1, car2, car3"
     }, delimiter = '/')
     void 승자_목록_문자열_생성_성공(int move1, int move2, int move3, String expected) {
         Racing racing = new Racing("car1,car2,car3", "10");
