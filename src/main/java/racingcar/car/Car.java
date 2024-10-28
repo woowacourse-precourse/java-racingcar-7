@@ -20,8 +20,8 @@ public class Car {
         return position;
     }
 
-    public void move(int randomNum) {
-        if (randomNum >= MOVE_TRIGGER) {
+    public void move(int randomNumber) {
+        if (randomNumber >= MOVE_TRIGGER) {
             this.position++;
         }
     }
