@@ -29,6 +29,4 @@ public class RacingCarGame {
         outputView.printGameRounds(gameRounds);
         outputView.printWinner(cars.getWinnerList());
     }
-
-
 }
