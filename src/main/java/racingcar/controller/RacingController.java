@@ -16,7 +16,7 @@ public class RacingController {
 
     public RacingController(final InputView inputView, final OutputView outputView, final StringParser stringParser) {
         this.inputView = inputView;
-        this.outputView = new OutputView();
+        this.outputView = outputView;
         this.stringParser = stringParser;
     }
 
