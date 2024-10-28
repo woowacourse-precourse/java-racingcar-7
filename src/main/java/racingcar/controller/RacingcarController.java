@@ -26,5 +26,7 @@ public class RacingcarController {
         List<Car> cars = racingcarService.createCar(parsedCarName);
 
         System.out.println("실행결과");
+        for (int i = 1; i <= Integer.parseInt(trialCount); i++) {
+        }
     }
 }
