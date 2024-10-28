@@ -70,21 +70,9 @@ public class RaceSystem {
                 car.move();
             }
 
-            StringBuilder carStatus = getCarStatus(car);
-            result.append(carStatus);
+            result.append(car.getStatus());
+            result.append('\n');
         }
-
-        return result;
-    }
-
-    private StringBuilder getCarStatus(Car car) {
-        String distance = "-".repeat(car.getDistance());
-
-        StringBuilder result = new StringBuilder();
-        result.append(car.getName());
-        result.append(" : ");
-        result.append(distance);
-        result.append('\n');
 
         return result;
     }
