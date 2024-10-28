@@ -35,7 +35,7 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차 이름 반환 테스트")
-    public void carNameTst(){
+    public void carNameTst() {
         //given
         String exceptedName = "gamza";
         //when

@@ -19,6 +19,7 @@ public class GameController {
     }
 
     public void gameSetting() {
+        OutputView.requestInputPlayerNames();
         vehicles.nameSettings(InputView.playerNames());
         OutputView.requestPlayCount();
         playCount = InputView.playCount();
