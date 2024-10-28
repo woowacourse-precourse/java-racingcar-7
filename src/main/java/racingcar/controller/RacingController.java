@@ -20,7 +20,6 @@ public class RacingController {
     }
 
     private static void inputValid() {
-
         if (racingCars == null || racingCars.trim().isEmpty()) {
             ErrorView.error_Empty();
         }
@@ -46,7 +45,6 @@ public class RacingController {
                     ErrorView.error_SameName();
                 }
             }
-
             nameList[count] = name;
             count++;
         }

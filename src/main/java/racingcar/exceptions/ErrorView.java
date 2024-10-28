@@ -34,6 +34,4 @@ public class ErrorView {
     public static void error_InvalidCount2() {
         throw new IllegalArgumentException(Message.ERROR_INVALIDCOUNT2);
     }
-
-
 }

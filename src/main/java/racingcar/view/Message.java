@@ -3,7 +3,6 @@ package racingcar.view;
 public class Message {
     public static String START = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     public static String COUNT = "시도할 횟수는 몇 회인가요?";
-
     public static String ERROR_EMPTY = "입력되지 않았습니다. 경주할 자동차 이름을 입력해주세요.";
     public static String ERROR_ONECAR = "경주를 하기 위해서는 2대 이상의 자동차가 필요합니다.";
     public static String ERROR_OVERNAME = "자동차 이름은 5자 이하로 입력해야 합니다.";
