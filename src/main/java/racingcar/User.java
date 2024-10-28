@@ -1,13 +1,22 @@
 package racingcar;
 
-import static racingcar.Validation.*;
+import static racingcar.Constant.INPUT_CARS;
+import static racingcar.Constant.INPUT_MOVES;
+import static racingcar.Constant.INTEGER_MESSAGE;
+import static racingcar.Validation.inputLastIndexValidate;
+import static racingcar.Validation.inputValidate;
+import static racingcar.Validation.moveValidate;
+import static racingcar.Validation.nameDuplicateValidate;
+import static racingcar.Validation.nameLengthValidate;
+import static racingcar.Validation.tooManyCarsValidate;
+import static racingcar.Validation.tooManyMovesValidate;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-
+    private static final String DELIMITER = ",";
 
     public List<Car> grantCarName() {
         List<String> carNames = inputCarName();
@@ -22,12 +31,12 @@ public class User {
 
     public int grantMoves() {
         int moves;
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(INPUT_MOVES);
 
         try {
             moves = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수를 입력해주세요. ");
+            throw new IllegalArgumentException(INTEGER_MESSAGE);
         }
 
         moveValidate(moves);
@@ -41,12 +50,12 @@ public class User {
     private List<String> inputCarName() {
         List<String> cars = new ArrayList<>();
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(INPUT_CARS);
         String input = Validation.inputValidate(Console.readLine());
 
         inputLastIndexValidate(input);
 
-        String[] carName = input.split(",");
+        String[] carName = input.split(DELIMITER);
 
         for (String car : carName) {
             nameLengthValidate(car);

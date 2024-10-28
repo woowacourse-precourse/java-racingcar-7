@@ -1,12 +1,13 @@
 package racingcar;
 
 public class Car {
-    private int position;
+    private final static int INIT_POSITION = 0;
     private final String name;
+    private int position;
 
     public Car(String name) {
         this.name = name;
-        position = 0;
+        position = INIT_POSITION;
     }
 
     public void move() {

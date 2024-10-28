@@ -1,50 +1,63 @@
 package racingcar;
 
+import static racingcar.Constant.DUPLICATE_MESSAGE;
+import static racingcar.Constant.EMPTY_MESSAGE;
+import static racingcar.Constant.END_DELIMITER_MESSAGE;
+import static racingcar.Constant.LENGTH_OVER_MESSAGE;
+import static racingcar.Constant.MIN_MOVES_MESSAGE;
+import static racingcar.Constant.TOO_MANY_CARS_MESSAGE;
+import static racingcar.Constant.TOO_MANY_MOVES_MESSAGE;
+
 import java.util.List;
 
 public class Validation {
+    private static final String DELIMITER = ",";
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int MAX_CARS = 10;
+    private static final int MAX_MOVES = 10;
+    private static final int MIN_MOVES = 1;
 
     public static String inputValidate(String string) {
         string = string.trim();
         if (string.isEmpty()) {
-            throw new IllegalArgumentException("입력이 비어있습니다. ");
+            throw new IllegalArgumentException(EMPTY_MESSAGE);
         }
         return string;
     }
 
     public static void inputLastIndexValidate(String string) {
-        if (string.endsWith(",")) {
-            throw new IllegalArgumentException("문자열의 끝에 구분자가 위치해있습니다.");
+        if (string.endsWith(DELIMITER)) {
+            throw new IllegalArgumentException(END_DELIMITER_MESSAGE);
         }
     }
 
     public static void nameLengthValidate(String string) {
-        if (string.length() > 5) {
-            throw new IllegalArgumentException("자동차의 이름은 최대 5자까지 허용됩니다. ");
+        if (string.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException(LENGTH_OVER_MESSAGE);
         }
     }
 
     public static void nameDuplicateValidate(String string, List<String> list) {
         if (list.contains(string)) {
-            throw new IllegalArgumentException("자동차의 이름이 중복되었습니다. ");
+            throw new IllegalArgumentException(DUPLICATE_MESSAGE);
         }
     }
 
     public static void tooManyCarsValidate(List<String> list) {
-        if (list.size() > 10) {
-            throw new IllegalArgumentException("자동차는 10대까지 허용됩니다. ");
+        if (list.size() > MAX_CARS) {
+            throw new IllegalArgumentException(TOO_MANY_CARS_MESSAGE);
         }
     }
 
     public static void tooManyMovesValidate(int move) {
-        if (move > 10) {
-            throw new IllegalArgumentException("이동 횟수는 10회까지 허용됩니다. ");
+        if (move > MAX_MOVES) {
+            throw new IllegalArgumentException(TOO_MANY_MOVES_MESSAGE);
         }
     }
 
     public static void moveValidate(int move) {
-        if (move < 1) {
-            throw new IllegalArgumentException("1회 이상 이동해야합니다. ");
+        if (move < MIN_MOVES) {
+            throw new IllegalArgumentException(MIN_MOVES_MESSAGE);
         }
     }
 
