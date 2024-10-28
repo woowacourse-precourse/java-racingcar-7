@@ -45,7 +45,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 시도_횟수_비정상_알파벳_테스트() {
+    void 시도_횟수_비정상_알파벳_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,,hello", "a"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -53,7 +53,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 시도_횟수_비정상_음수_테스트() {
+    void 시도_횟수_비정상_음수_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,,hello", "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -72,7 +72,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 글자_5자_초과_예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
