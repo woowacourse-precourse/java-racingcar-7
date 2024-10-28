@@ -43,9 +43,13 @@ public class RaceController {
     private void playRace(int trialCount) {
         outputView.displayRoundResultMessage();
         for (int round = 0; round < trialCount; round++) {
-            raceTrack.tryMoveCars();
-            outputView.displayRoundResult(raceTrack.getCars());
+            playSingleRound();
         }
+    }
+
+    private void playSingleRound() {
+        raceTrack.tryMoveAllCars();
+        outputView.displayRoundResult(raceTrack.getCars());
     }
 
     private void announceWinners() {

@@ -23,7 +23,7 @@ public class RaceTrack {
         }
     }
 
-    public void tryMoveCars() {
+    public void tryMoveAllCars() {
         for (Car car : cars) {
             car.tryMoveForward();
         }
