@@ -96,6 +96,9 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         try{
             count = Integer.parseInt(Console.readLine());
+            if(count<=0){
+                throw new IllegalArgumentException("1이상의 숫자를 입력해야 합니다.");
+            }
         } catch (NumberFormatException e){
             throw new IllegalArgumentException("횟수는 숫자로 입력해야 합니다.");
         }
