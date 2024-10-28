@@ -13,18 +13,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class CarsTest {
     @Test
     void 자동차가_최소_경주_대수_이하일_때_예외_발생() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> Cars.from(List.of(Car.from("우테코"))))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> Cars.from(List.of(Car.from("우테코"))))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 자동차_이름이_중복된_경우에_예외_발생() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> Cars.from(List.of(Car.from("우테코"), Car.from("우테코"))))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> Cars.from(List.of(Car.from("우테코"), Car.from("우테코"))))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
