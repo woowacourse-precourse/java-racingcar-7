@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import racingcar.controller.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

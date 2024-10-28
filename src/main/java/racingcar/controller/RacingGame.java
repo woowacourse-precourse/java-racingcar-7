@@ -8,7 +8,7 @@ import racingcar.view.OutputView;
 public class RacingGame {
 
     private final InputView inputView;
-    private OutputView outputView;
+    private final OutputView outputView;
 
     public RacingGame(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -23,7 +23,7 @@ public class RacingGame {
             outputView.printRoundResult(carGroup);
         }
 
-        carGroup.printWinners();
+        outputView.printWinners(carGroup.getWinners());
     }
 
 }
