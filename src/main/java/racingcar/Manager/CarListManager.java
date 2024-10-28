@@ -3,7 +3,6 @@ package racingcar.Manager;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.Input.MoveCountInput;
 import racingcar.Input.NameInput;
 import racingcar.Vehicle.Car;
 
@@ -18,11 +17,10 @@ public class CarListManager {
   }
 
   public void makeCarList(){
-    String[] carNames = nameInput.getInput();
+    String[] carNames = nameInput.getName();
     for(String carName : carNames)
     {
-      Car car = new Car(carName,0);
-      this.carList.add(car);
+      this.carList.add(new Car(carName,0));
     }
   }
 

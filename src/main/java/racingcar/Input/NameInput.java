@@ -19,7 +19,7 @@ public class NameInput {
     this.name = input.split(",");
   }
 
-  public String[] getInput()
+  public String[] getName()
   {
     return name;
   }

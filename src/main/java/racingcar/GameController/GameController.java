@@ -2,7 +2,7 @@ package racingcar.GameController;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.Input.MoveCountInput;
+import racingcar.Input.GameRoundInput;
 import racingcar.Input.NameInput;
 import racingcar.Manager.CarListManager;
 import racingcar.ReturnResult;
@@ -23,9 +23,13 @@ public class GameController{
   }
 
   public void getInput(){
-    MoveCountInput moveCount = new MoveCountInput();
-    NameInput nameInput = new NameInput();
+    getNameInput();
+    getGameRoundInput();
+  }
 
+
+  public void getNameInput(){
+    NameInput nameInput = new NameInput();
     System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     String names = Console.readLine();
     if(nameInput.validateInput(names)){
@@ -33,10 +37,14 @@ public class GameController{
     }else{
       throw new IllegalArgumentException();
     }
-    System.out.println("시도할 횟수는 몇 회인가요?");
-    moveCount.setMoveCount(Integer.parseInt(Console.readLine()));
-    this.GameRound = moveCount.getMoveCount();
     this.nameInput = nameInput;
+  }
+
+  public void getGameRoundInput(){
+    GameRoundInput GameRound = new GameRoundInput();
+    System.out.println("시도할 횟수는 몇 회인가요?");
+    GameRound.setGameRound(Integer.parseInt(Console.readLine()));
+    this.GameRound = GameRound.getGameRound();
   }
 
   public void GiveCommandToCarListManager(){

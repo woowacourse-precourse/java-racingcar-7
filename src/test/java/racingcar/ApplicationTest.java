@@ -3,7 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.Input.MoveCountInput;
+import racingcar.Input.GameRoundInput;
 import racingcar.Input.NameInput;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -44,11 +44,11 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-    private MoveCountInput moveCountInput;
+    private GameRoundInput moveCountInput;
 
     @BeforeEach
     void setUp() {
-        moveCountInput = new MoveCountInput();
+        moveCountInput = new GameRoundInput();
         nameInput = new NameInput();
     }
 
@@ -56,9 +56,9 @@ class ApplicationTest extends NsTest {
     void 입력값을_받고_MoveCount로_설정_테스트() {
         int testMoveCount = 5;
 
-        moveCountInput.setMoveCount(testMoveCount);
+        moveCountInput.setGameRound(testMoveCount);
 
-        assertEquals(testMoveCount, moveCountInput.getMoveCount(),
+        assertEquals(testMoveCount, moveCountInput.getGameRound(),
             "The move count should match the input value.");
     }
 
