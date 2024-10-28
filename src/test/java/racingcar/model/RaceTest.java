@@ -23,7 +23,7 @@ class RaceTest {
     void 거리_0_이상() {
         race.startEachRound(cars);
         for (Car car : cars) {
-            assertThat(car.getDistance()).isGreaterThan(0);
+            assertThat(car.getDistance()).isGreaterThanOrEqualTo(0);
         }
     }
 
