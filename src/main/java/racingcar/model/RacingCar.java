@@ -20,12 +20,10 @@ public class RacingCar implements Drivable {
         this.distance = distance;
     }
 
-    @Override
     public int getDistance() {
         return distance;
     }
 
-    @Override
     public String getName() {
         return name;
     }
