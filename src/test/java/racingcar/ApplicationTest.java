@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.persistence.InMemoryCarRacerRepository;
 
@@ -36,6 +37,24 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("시도할 횟수를 숫자가 아닌 문자로 입력하였을 시 예외를 발생시킨다.")
+    @Test
+    void noNumberException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "s"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("시도할 횟수를 음수로 입력하였을 시 예외를 발생시킨다.")
+    @Test
+    void noPositiveNumberException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
