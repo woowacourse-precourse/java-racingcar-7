@@ -13,4 +13,13 @@ public class RacingGame {
 
     }
 
+    private String displayPosition(Car car) {
+        String name = car.getName();
+        int pos = car.getPosition();
+
+        StringBuilder display = new StringBuilder(name + " : ");
+        display.append("-".repeat(pos));
+
+        return display.toString();
+    }
 }
