@@ -19,7 +19,7 @@ public class GameManager {
     }
 
     public void start() {
-        String[] carName = readCarName();
+        List<String> carName = readCarName();
         Cars cars = putCars(carName);
         int movementNumber = readMovementNumber();
         simulateMoveCar(cars, movementNumber);
@@ -40,15 +40,13 @@ public class GameManager {
         return inputView.readMovementNumber();
     }
 
-    private Cars putCars(String[] carName) {
+    private Cars putCars(List<String> carName) {
         Cars cars = new Cars();
-        for (String name : carName) {
-            cars.addCar(name);
-        }
+        carName.forEach(cars::addCar);
         return cars;
     }
 
-    private String[] readCarName() {
+    private List<String> readCarName() {
         outputView.printCarNameMessage();
         return inputView.readCarName();
     }
