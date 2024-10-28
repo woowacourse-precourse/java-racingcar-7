@@ -23,6 +23,7 @@ public class Application {
         validateNamesCount(names);
         validateNameLength(names);
         input = getPlayCount();
+        int playCount = validateNumber(input);
     }
 
     public static void printStartMessage() {
@@ -63,5 +64,13 @@ public class Application {
 
     public static String getPlayCount() {
         return Console.readLine();
+    }
+
+    public static int validateNumber(String input) {
+        try{
+            return Integer.parseInt(input);
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException("시도 횟수는 숫자가 입력되어야 합니다.");
+        }
     }
 }

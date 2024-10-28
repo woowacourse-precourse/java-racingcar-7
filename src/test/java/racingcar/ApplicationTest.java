@@ -142,6 +142,22 @@ class ApplicationTest extends NsTest {
         assertDoesNotThrow(() -> Application.validateNameLength(names));
     }
 
+    @Test
+    void 숫자가_입력되지_않을_경우_예외발생(){
+        assertThrows(IllegalArgumentException.class, () -> Application.validateNumber("a"));
+        assertThrows(IllegalArgumentException.class, () -> Application.validateNumber(""));
+        assertThrows(IllegalArgumentException.class, () -> Application.validateNumber(" "));
+        assertThrows(IllegalArgumentException.class, () -> Application.validateNumber("rk"));
+    }
+
+    @Test
+    void 숫자가_입력될_경우_정상처리(){
+        assertDoesNotThrow(() -> Application.validateNumber("1"));
+        assertDoesNotThrow(() -> Application.validateNumber("0"));
+        assertDoesNotThrow(() -> Application.validateNumber("-1"));
+        assertDoesNotThrow(() -> Application.validateNumber("999999"));
+    }
+
     @AfterEach
     public void tearDown() {
         System.setOut(standardOut);
