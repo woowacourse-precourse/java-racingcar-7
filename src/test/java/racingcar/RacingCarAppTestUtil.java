@@ -2,7 +2,7 @@ package racingcar;
 
 import java.io.ByteArrayInputStream;
 
-public class RacingCarAppTest {
+public class RacingCarAppTestUtil {
 
     public static void run(String... args) {
         byte[] buf = String.join("\n", args).getBytes();
