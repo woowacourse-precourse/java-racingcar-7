@@ -23,10 +23,10 @@ public class Racing {
         try {
             repeat = Integer.parseInt(Console.readLine());
             if (repeat <= 0) {
-                throw new IllegalArgumentException("시도횟수가 0 이하");
+                throw new IllegalArgumentException("시도횟수가 0 이하 오류");
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자로 입력해야 함");
+            throw new IllegalArgumentException("시도횟수에 문자 입력 오류");
         }
 
         // # 4. 생성된 랜덤수를 통한 전진여부 판단하기

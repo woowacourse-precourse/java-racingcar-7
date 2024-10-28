@@ -24,6 +24,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+        //이름길이 예외 테스트
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
@@ -57,7 +58,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi,woni", "-1"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("시도횟수가 0 이하");
+                    .hasMessageContaining("시도횟수가 0 이하 오류");
         });
     }
 
@@ -80,6 +81,24 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,pobi,woni", "1"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("이름 중복 오류");
+        });
+    }
+
+    @Test
+    void 숫자_입력_예외_테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", "a"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("시도횟수에 문자 입력 오류");
+        });
+    }
+
+    @Test
+    void 빈_이름_예외_테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("", "3"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("빈 입력 오류");
         });
     }
 
