@@ -8,7 +8,7 @@ public class InputParser {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAMES.getMessage());
         }
-        List<String> carNames = Arrays.asList(input.split(","));
+        List<String> carNames = Arrays.asList(input.split(",", -1));
         validateCarNames(carNames);
         return carNames;
     }
@@ -16,6 +16,11 @@ public class InputParser {
     private static void validateCarNames(List<String> carNames) {
         if (carNames.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAMES.getMessage());
+        }
+        for (String carName : carNames) {
+            if (carName.isEmpty()) {
+                throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAMES.getMessage());
+            }
         }
     }
 }

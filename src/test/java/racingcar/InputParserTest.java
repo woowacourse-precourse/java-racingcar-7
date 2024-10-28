@@ -18,5 +18,11 @@ public class InputParserTest {
     @Test
     void testParseCarNamesWhenInvalidInput() {
         assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames(""));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames(","));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames(",,,,,,"));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames("a,b,c,,d,e,f"));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames("a,b,c,d,e,f,"));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames(",a,b,c,d,e,f"));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames("a,b,,c,d,,e,f"));
     }
 }
