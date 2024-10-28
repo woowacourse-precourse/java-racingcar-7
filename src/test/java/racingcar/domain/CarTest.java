@@ -14,7 +14,6 @@ class CarTest {
         pobi.move(1);
         pobi.move(2);
         pobi.move(3);
-        pobi.move(4);
 
         int pobiExpectedPosition = 0;
 
@@ -28,13 +27,14 @@ class CarTest {
     void moveTest() {
         Car pobi = new Car("pobi");
 
+        pobi.move(4);
         pobi.move(5);
         pobi.move(6);
         pobi.move(7);
         pobi.move(8);
         pobi.move(9);
 
-        int pobiExpectedPosition = 5;
+        int pobiExpectedPosition = 6;
 
         int pobiActualPosition = pobi.getMovementOfNumber();
 
