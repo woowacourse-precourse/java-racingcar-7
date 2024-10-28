@@ -25,10 +25,14 @@ public class InputValidator {
     }
 
     public void attemptCount(int attempts) {
+        if (attempts <= 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ATTEMPT_COUNT.getMessage());
+        }
         if (attempts > AppConstants.MAX_ATTEMPTS) {
             throw new IllegalArgumentException(ErrorMessage.MAX_ATTEMPTS_EXCEEDED.getMessage());
         }
     }
+
 
     public void carNames(List<String> carNames) {
         if (carNames.size() > AppConstants.MAX_CAR_COUNT) {

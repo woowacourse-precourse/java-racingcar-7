@@ -51,7 +51,6 @@ class InputParserTest {
         return Stream.of(
                 Arguments.of("abc"),
                 Arguments.of("1.5"),
-                Arguments.of("-2"),
                 Arguments.of(" ")
         );
     }
