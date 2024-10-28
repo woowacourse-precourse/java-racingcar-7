@@ -2,7 +2,7 @@ package racingcar.model;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int position;
 
     public Car(String name,int position) {
@@ -24,9 +24,5 @@ public class Car {
 
     public void move() {
         position += 1;
-    }
-
-    public void resetPosition() {
-        position = 0;
     }
 }

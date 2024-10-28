@@ -1,9 +1,7 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import racingcar.model.Car;
 import racingcar.model.GameResult;
 
@@ -17,8 +15,7 @@ public class GameRunner {
     private static final String LINE_BREAK = "\n";
     private static final String WINNER_DELIMITER = ",";
 
-    public GameResult runGame(Set<String> carNames, int finalAttemptCount) {
-        List<Car> cars = initializeCarState(carNames);
+    public GameResult runGame(List<Car> cars, int finalAttemptCount) {
         StringBuilder allRoundResults = new StringBuilder();
 
         for (int attemptCount = 0; attemptCount < finalAttemptCount; attemptCount++) {
@@ -27,14 +24,6 @@ public class GameRunner {
         }
 
         return new GameResult(cars, allRoundResults.toString());
-    }
-
-    private List<Car> initializeCarState(Set<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
-        return cars;
     }
 
     public void updateCarState(List<Car> cars) {
@@ -66,12 +55,10 @@ public class GameRunner {
 
     public String formatRoundResult(List<Car> cars) {
         StringBuilder result = new StringBuilder();
-        cars.forEach(car -> {
-            result.append(car.getName())
-                    .append(CAR_POSITION_INDICATOR)
-                    .append(POSITION_SYMBOL.repeat(Math.max(0, car.getPosition())))
-                    .append(LINE_BREAK);
-        });
+        cars.forEach(car -> result.append(car.getName())
+                .append(CAR_POSITION_INDICATOR)
+                .append(POSITION_SYMBOL.repeat(Math.max(0, car.getPosition())))
+                .append(LINE_BREAK));
         return result.toString();
     }
 }
