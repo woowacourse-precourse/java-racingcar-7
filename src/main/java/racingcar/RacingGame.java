@@ -47,7 +47,7 @@ public class RacingGame {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_MESSAGE_COUNT);
         }
-        if (num == 0) {
+        if (num < 1) {
             throw new IllegalArgumentException(ERROR_MESSAGE_COUNT);
         }
         return num;
