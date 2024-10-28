@@ -23,6 +23,25 @@ public class Cars {
         }
     }
 
+    public List<Car> determineWinners() {
+        int maxPosition = raceCars.stream()
+                .mapToInt(car -> car.getPosition().position())
+                .max()
+                .orElse(0);
+
+        List<Car> leadingCars = new ArrayList<>();
+        for (Car car : raceCars) {
+            if (car.getPosition().position() == maxPosition) {
+                leadingCars.add(car);
+            }
+        }
+        return leadingCars;
+    }
+
+    public List<Car> getCars() {
+        return raceCars;
+    }
+
     private void validateCarNameUniqueness(List<String> carNames) {
         Set<String> uniqueNames = new HashSet<>(carNames);
         if (uniqueNames.size() != carNames.size()) {
