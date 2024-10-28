@@ -43,16 +43,6 @@ public class CarModel {
 
     }
 
-    public Car findCarByObject(Car target){
-
-        int idx = this.carRepository.indexOf(target);
-        if(idx == -1){
-            return null;
-        }
-
-        return this.carRepository.get(idx);
-    }
-
     public List<Car> findCarsByMove(int move){
         List<Car> ret = new ArrayList<Car>();
         this.carRepository.stream()
