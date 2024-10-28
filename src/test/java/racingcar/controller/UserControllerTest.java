@@ -9,7 +9,7 @@ import racingcar.user.UserObject;
 
 class UserControllerTest {
     private UserController userController;
-    private final String inputString = "aaaa,bbb,cccc,dddd";
+    private final String inputString = "aaaa,bbbb,cccc,dddd";
 
     @BeforeEach
     void setUp() {
