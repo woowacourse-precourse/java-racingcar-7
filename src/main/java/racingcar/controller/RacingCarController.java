@@ -18,14 +18,12 @@ public class RacingCarController {
 
 
     public RacingCarController(final SeperateCarNameService seperateCarNameService,
-                               final MovingCarServiceImpl movingCarServiceImpl,
-                               final OutputView outputView,
-                               final InputView inputView){
+                               final MovingCarService movingCarService){
 
         this.seperateCarNameService = seperateCarNameService;
-        this.movingCarService = movingCarServiceImpl;
-        this.outputView = outputView;
-        this.inputView = inputView;
+        this.movingCarService = movingCarService;
+        this.outputView = new OutputView();
+        this.inputView = new InputView();
 
     }
 
