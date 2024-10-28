@@ -5,19 +5,6 @@ import java.util.List;
 
 public class Validation {
 
-    private static Validation instance;
-
-    private Validation() {
-
-    }
-
-    public static Validation getInstance() {
-        if (instance == null) {
-            instance = new Validation();
-        }
-        return instance;
-    }
-
     public static final String carNameDivider = ",";
 
     /**
