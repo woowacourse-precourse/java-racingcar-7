@@ -12,7 +12,7 @@ public class Cars {
 
     public Cars(String input) {
         this.cars = parseString(input);
-        validCars();
+        validateDuplicateCarName();
     }
 
     public void playSingleRound() {
@@ -40,7 +40,7 @@ public class Cars {
         return Arrays.stream(input.split(",")).map(Car::new).toList();
     }
 
-    private void validCars() {
+    private void validateDuplicateCarName() {
         if (hasDuplicateCarNames(cars)) {
             throw CustomException.of(ErrorMessage.DUPLICATE_CAR_NAME_ERROR);
         }
