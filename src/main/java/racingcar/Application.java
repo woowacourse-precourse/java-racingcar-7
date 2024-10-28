@@ -13,16 +13,14 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String strRound = Console.readLine();
         InputValidator.validateRound(strRound);
-        int round = Integer.parseInt(strRound);
+        int totalRound = Integer.parseInt(strRound);
 
         Cars cars = new Cars(strPlayer.split(","));
 
         System.out.println("\n실행 결과");
-        while (round > 0) {
+        for (int round = 0; round < totalRound; round++) {
             cars.run();
             System.out.println();
-
-            round--;
         }
 
         String winner = cars.getWinners();
