@@ -40,15 +40,13 @@ public class RacingCarService {
         return carNameAndAdvanceResultList;
     }
 
-    public String convertAdvanceResultsToString(List<Character> advanceResults) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Character advanceSymbol : advanceResults) {
-            stringBuilder.append(advanceSymbol);
-        }
-        return stringBuilder.toString();
+    public String selectCarRacingWinners() {
+        int maxAdvanceCount = findMaxAdvanceCount();
+        List<String> winners = findWinners(maxAdvanceCount);
+        return formatWinners(winners);
     }
 
-    public String[] splitCarsName(String inputCarsName) {
+    private String[] splitCarsName(String inputCarsName) {
         String[] names = inputCarsName.split(RacingCarConstants.SPLIT_SEPARATOR);
         for (int i = 0; i < names.length; i++) {
             names[i] = names[i].trim();
@@ -56,7 +54,7 @@ public class RacingCarService {
         return names;
     }
 
-    public void createRacingCarsBySplitCarsName(String[] carsNames) {
+    private void createRacingCarsBySplitCarsName(String[] carsNames) {
         for (String carName : carsNames) {
             racingCarNameValidator.validateCarNameLength(carName);
             racingCarNameValidator.validateCarNameIsEmpty(carName);
@@ -64,10 +62,12 @@ public class RacingCarService {
         }
     }
 
-    public String selectCarRacingWinners() {
-        int maxAdvanceCount = findMaxAdvanceCount();
-        List<String> winners = findWinners(maxAdvanceCount);
-        return formatWinners(winners);
+    private String convertAdvanceResultsToString(List<Character> advanceResults) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Character advanceSymbol : advanceResults) {
+            stringBuilder.append(advanceSymbol);
+        }
+        return stringBuilder.toString();
     }
 
     private int findMaxAdvanceCount() {
