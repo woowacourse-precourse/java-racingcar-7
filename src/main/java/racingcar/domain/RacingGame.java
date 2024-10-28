@@ -1,13 +1,9 @@
-package racingcar.game;
+package racingcar.domain;
 
 import static racingcar.error.GameErrorMessage.NO_STARTED;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.RacingCar;
-import racingcar.parser.RacingCarParser;
-import racingcar.validator.NamesValidator;
-import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingGame {
@@ -17,43 +13,27 @@ public class RacingGame {
     private List<RacingCar> racingCarList;
     private final int tryCount;
 
-    RacingGame(List<RacingCar> racingCarList, int tryCount) {
+    public RacingGame(List<RacingCar> racingCarList, int tryCount) {
         this.racingCarList = racingCarList;
         this.tryCount = tryCount;
     }
 
-    public static void run() {
-        RacingGame racingGame = inputData();
-        playGame(racingGame);
-        resultWinner(racingGame);
-    }
-
-    private static RacingGame inputData() {
-        String inputName = InputView.inputName();
-        NamesValidator.validateName(inputName);
-
-        List<RacingCar> racingCarList = RacingCarParser.createRacingCarList(inputName);
-        int tryCount = InputView.inputTryCount();
-
-        return new RacingGame(racingCarList, tryCount);
-    }
-
-    private static void playGame(RacingGame racingGame) {
+    public void play() {
         System.out.println(RESULT_MESSAGE);
-        for (int i = 0; i < racingGame.tryCount; i++) {
-            for (RacingCar racingCar : racingGame.racingCarList) {
+        for (int i = 0; i < this.tryCount; i++) {
+            for (RacingCar racingCar : this.racingCarList) {
                 racingCar.move();
             }
             System.out.println();
         }
     }
 
-    private static void resultWinner(RacingGame racingGame) {
+    public void resultWinner() {
         System.out.print(PRINT_WINNER);
-        OutputView.printWinner(getWinner(racingGame.racingCarList));
+        OutputView.printWinner(getWinner(this.racingCarList));
     }
 
-    private static String getWinner(List<RacingCar> racingCarList) {
+    private String getWinner(List<RacingCar> racingCarList) {
         List<String> winnerList = new ArrayList<>();
         int maxMove = getMaxMove(racingCarList);
 
@@ -65,7 +45,7 @@ public class RacingGame {
         return String.join(", ", winnerList);
     }
 
-    private static int getMaxMove(List<RacingCar> racingCarList) {
+    private int getMaxMove(List<RacingCar> racingCarList) {
         int maxMove = 0;
         for (RacingCar racingCar : racingCarList) {
             maxMove = Math.max(maxMove, racingCar.getCount());
