@@ -16,8 +16,7 @@ public class RaceController {
     }
 
     public void start() {
-        String input = inputView.requestCarsName();
-        Cars cars = new Cars(input);
+        Cars cars = new Cars(inputView.requestCarsName());
         int roundCount = inputView.requestRoundCount();
 
         play(cars, roundCount);
