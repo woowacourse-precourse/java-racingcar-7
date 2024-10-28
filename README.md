@@ -13,6 +13,10 @@
  ┃ ┗ 📜Message.java
  ┣ 📂service
  ┃ ┗ 📜CarRaceService.java
+ ┣ 📂strategy
+ ┃ ┣ 📜FixedMoveStrategy.java
+ ┃ ┣ 📜MoveStrategy.java
+ ┃ ┗ 📜RandomMoveStrategy.java
  ┣ 📂util
  ┃ ┣ 📜RandomUtil.java
  ┃ ┗ 📜Validator.java
@@ -21,14 +25,18 @@
  ┃ ┗ 📜OutputView.java
  ┗ 📜Application.java
 ```
-- `Car` : 자동차 객체를 정의하는 클래스입니다. 자동차의 이름과 이동 거리를 저장하고 전진 기능을 제공합니다.
-- `CarRaceService` : 자동차 경주에 필요한 로직을 처리합니다. 자동차 전진 여부를 판단하고 최종 우승자를 결정합니다.
 - `CarRaceController` : 사용자 입력과 출력을 관리하며 게임 전체 흐름을 제어합니다.
+- `Car` : 자동차 객체를 정의하는 클래스입니다. 자동차의 이름과 이동 거리를 저장하고 전진 기능을 제공합니다.
+- `ExceptionMessage` : 예외 상황에서 사용하는 메시지를 관리합니다.
+- `Message` : 일반적인 출력 메시지를 관리합니다.
+- `CarRaceService` : 자동차 경주에 필요한 로직을 처리합니다. 자동차 전진 여부를 판단하고 최종 우승자를 결정합니다.
+- `MoveStrategy` : 자동차의 전진 여부를 결정하는 조건을 정의하는 인터페이스입니다.
+- `RandomMoveStrategy` : `MoveStrategy`의 구현체로, 임의의 수를 생성해 전진 여부를 결정합니다.
+- `FixedMoveStrategy` : 테스트 환경에서 활용할 수 있는 `MoveStrategy`의 구현체로, 특정 조건에 따라 전진 여부를 강제할 수 있습니다.
 - `RandomUtil` : 랜덤 숫자를 생성합니다.
 - `Validator` : 입력값의 유효성을 검사하여 잘못된 입력 시 `IllegalArgumentException`을 발생시킵니다.
 - `InputView`, `OutputView` : 콘솔 입출력을 담당합니다.
-- `ExceptionMessage` : 예외 상황에서 사용하는 메시지를 관리합니다.
-- `Message` : 일반적인 출력 메시지를 관리합니다.
+- `Application` : `CarRaceController`를 호출하여 게임을 시작하는 메인 클래스입니다.
 
 ## 기능 목록
 - **자동차 이름 입력 및 유효성 검사**
