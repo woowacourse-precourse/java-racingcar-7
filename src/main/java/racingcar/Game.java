@@ -19,8 +19,8 @@ public class Game {
         List<String> carNames = inputHandler.getCarNames();
         cars = createCars(carNames);
 
-        Integer roundSize = inputHandler.getRoundSize();
-        rounds = new Rounds(roundSize);
+        String roundSizeInput = inputHandler.getRoundSize();
+        rounds = new Rounds(roundSizeInput);
 
         outputHandler.printResultMessage();
         rounds.proceedRounds(cars, outputHandler);

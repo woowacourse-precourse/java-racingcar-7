@@ -19,7 +19,6 @@ public class InputHandler {
 
     public String getRoundSize() {
         System.out.println(ROUND_SIZE_INPUT_MESSAGE.getMessage());
-        String input = Console.readLine();
-        return InputValidator.validateRoundCount(input);
+        return Console.readLine();
     }
 }
