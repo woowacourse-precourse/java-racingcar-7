@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.ErrorMessage.*;
 
 
-public class ConsoleIOTest {
+public class InputValidationTest {
 
     @AfterEach
     void tearDown() throws Exception {
