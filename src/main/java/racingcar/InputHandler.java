@@ -9,7 +9,7 @@ public class InputHandler {
         String[] carNames = input.split(",");
 
         for(String carName: carNames) {
-            checkNameIsAvailable(carName);
+            checkNameLength(carName);
         }
 
         return carNames;
@@ -25,7 +25,7 @@ public class InputHandler {
         }
     }
 
-    public static void checkNameIsAvailable(String carName) {
+    public static void checkNameLength(String carName) {
         if (carName.length() >= 6) {
             throw new IllegalArgumentException();
         }
