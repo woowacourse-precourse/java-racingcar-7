@@ -7,6 +7,8 @@ public class Racing {
     public static void startRace(String carNames, String tryCount) {
         List<Car> cars = nameCars(carNames);
         
+        Play play = new Play(cars);
+        play.play(tryCount);
     }
 
     private static List<Car> nameCars(final String carNames) {
@@ -22,6 +24,8 @@ public class Racing {
 
         return cars;
     }
+
+    
 
    
 
