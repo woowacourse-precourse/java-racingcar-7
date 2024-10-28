@@ -43,7 +43,10 @@
     ├── Application.java
     ├── controller/
     │   └─ RacingCarController.java
-    │       └─ + run()
+    │       ├─ + run()
+    │       ├─ + getRacingCarNameFromUserInController() : String
+    │       ├─ + getNumberOfRaceFromUserInController() : String
+    │       └─ + RaceNTimeInController(racingCarDTO : racingCarDTO)
     ├── dto/
     │   └─ RacingCarDTO.java
     │       ├─ - racingCarData : HashMap<String, Integer>
@@ -176,7 +179,10 @@
     - 주어진 예제를 이용하여 통합 테스트코드 추가하기
 
     ✅ 구현 후 느낀점 / 추가 개선사항 
-    
+    - Controller 내부에서 run 메소드에 절차적으로 구성되어있던 내용들을 각각의 역할에 맞춰서 함수로 분리하였다.
+    - 이렇게 함에 따라 각각의 함수들이 Controller와 각각의 Service, View와 연결되도록 수정하였다.
+    - 예제중에 랜덤으로 작동되는 로직이 있어서 전체적인 테스트를 작성하는 것은 힘들거같아, 예외 처리에 대한 테스트를 추가하였다.
+    - 확실히 2023년도에 동일한 주제로 코드를 작성했었는데 가장 체감이 잘되는것 같다.
     
 
 ```
