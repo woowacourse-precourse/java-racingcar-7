@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Cars;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class GameFlow {
         List<String> carNames = parseCarNames();
         cars = new Cars(carNames);
         setNumberOfMoves();
-        // runRace();
+        runRace();
         // displayWinners();
     }
 
@@ -42,6 +43,12 @@ public class GameFlow {
         }
     }
     
-
+    private void runRace() {
+        OutputView.printRaceStartNotice();
+        for (int i = 0; i < numberOfMoves; i++) {
+            cars.moveCars();
+            OutputView.printProgress(cars.collectProgressVisualizations());
+        }
+    }
 
 }

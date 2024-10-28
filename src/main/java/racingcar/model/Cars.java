@@ -41,5 +41,13 @@ public class Cars {
             car.move();
         }
     }
+    
+    public List<String> collectProgressVisualizations() {
+        List<String> CarProgressVisualizations = new ArrayList<>();
+        for (Car car : cars) {
+            CarProgressVisualizations.add(car.visualizeProgress());
+        }
+        return CarProgressVisualizations;
+    }
 
 }

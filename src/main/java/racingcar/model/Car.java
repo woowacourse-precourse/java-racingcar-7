@@ -25,4 +25,13 @@ public class Car {
             progress++;
         }
     }
+    
+    public String visualizeProgress() {
+        StringBuilder progressVisualization = new StringBuilder(name + " : ");
+        for (int i = 0; i < progress; i++) {
+            progressVisualization.append("-");
+        }
+        return progressVisualization.toString();
+    }
+
 }
