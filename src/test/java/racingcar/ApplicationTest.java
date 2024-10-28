@@ -32,6 +32,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 중복_이름_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 여러_번_이동_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
