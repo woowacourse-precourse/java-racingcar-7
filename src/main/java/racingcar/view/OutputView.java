@@ -8,10 +8,9 @@ public class OutputView {
     private static final String PRINT_WINNER_MESSAGE = "최종 우승자 : ";
     private static final String PRINT_RUN_RESULT_MESSAGE = "실행 결과 : ";
 
-    private void printMessage(String message) {
+    public void printMessage(String message) {
         System.out.println(message);
     }
-
 
     public void printReadCarNameMessage() {
         printMessage(PRINT_READ_CAR_NAME_MESSAGE);
@@ -21,10 +20,8 @@ public class OutputView {
         printMessage(PRINT_READ_TOTAL_TRY_MESSAGE);
     }
 
-    public void printRunResult() {printMessage(PRINT_RUN_RESULT_MESSAGE);}
+    public void printRunResult() { printMessage(PRINT_RUN_RESULT_MESSAGE); }
 
-    public void printWinners(List<String> winners) {
-        printMessage(PRINT_WINNER_MESSAGE + String.join(", ", winners));
-    }
+    public void printWinners(List<String> winners) { printMessage(PRINT_WINNER_MESSAGE + String.join(", ", winners)); }
 
 }
