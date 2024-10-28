@@ -27,6 +27,7 @@ public class CarRepositoryTest {
 
         Round exRound = new Round.Builder()
                 .thisRound(3)
+                .gameId(1)
                 .build();
 
         //when
