@@ -3,7 +3,6 @@ package racingcar;
 public class Car {
 
     private static final int NAME_LIMIT = 5;
-    public static final int NOT_MOVED = -1;
 
     private final String name;
     private int position = 0;
@@ -12,11 +11,8 @@ public class Car {
         this.name = name;
     }
 
-    public int move(int num) {
-        if (num >= 4) {
-            return ++position;
-        }
-        return NOT_MOVED;
+    public void move() {
+        ++position;
     }
 
     public static Car from(String name) {

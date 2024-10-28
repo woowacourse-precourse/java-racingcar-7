@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,9 +18,21 @@ public class RaceReferee {
         int maxPosition = Collections.max(positions);
 
         return cars.stream()
-           .filter(car -> car.getPosition() == maxPosition)
+            .filter(car -> car.getPosition() == maxPosition)
             .map(Car::getName)
             .toList();
+    }
+
+    public List<Car> playRound(List<Car> cars) {
+        cars.forEach(this::tryMove);
+        return cars;
+    }
+
+    private void tryMove(Car car) {
+        int randomNum = Randoms.pickNumberInRange(0, 9);
+        if (randomNum >= MOVE_RULE) {
+            car.move();
+        }
     }
 
     public static RaceReferee from(int round) {
