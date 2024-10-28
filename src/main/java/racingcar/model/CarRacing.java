@@ -13,7 +13,6 @@ public class CarRacing {
 
     public void startRacing() {
         moveCars();
-        recordRaceStatus();
     }
 
     private void moveCars() {
@@ -22,12 +21,12 @@ public class CarRacing {
         }
     }
 
-    private void recordRaceStatus() {
+    public String recordRaceStatus() {
         StringBuilder status = new StringBuilder();
         for (Car car : cars) {
             status.append(car.getCarName()).append(" : ").append("-".repeat(car.getPosition())).append("\n");
         }
-        System.out.println(status);
+        return status.toString();
     }
 
 
