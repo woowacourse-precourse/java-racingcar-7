@@ -24,4 +24,23 @@ public class CarRacingGame {
             }
         }
     }
+
+    public static int getNumberOfAttempts() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+        int attempts = validateAttempts(input);
+        return attempts;
+    }
+
+    private static int validateAttempts(String input) {
+        try {
+            int attempts = Integer.parseInt(input);
+            if (attempts <= 0) {
+                throw new IllegalArgumentException("이동 횟수는 1 이상의 정수여야 합니다.");
+            }
+            return attempts;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자를 입력해야 합니다.");
+        }
+    }
 }
