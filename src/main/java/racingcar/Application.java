@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -25,5 +26,17 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputMoveCnt = Console.readLine();
         int validateMoveCnt = InputValidator.validateMoveCnt(inputMoveCnt);
+
+        /**
+         * 3. 자동차 객체 생성
+         *    - 자동차 이름, 이동거리를 필드로 갖는 객체 생성
+         *    - 자동차 리스트 반환
+         */
+        List<CarVO> carVOList = new ArrayList<>();
+        for (int i = 0; i < validateNames.size(); i++) {
+            String trim = validateNames.get(i).trim();
+            CarVO carVO = new CarVO(trim);
+            carVOList.add(carVO);
+        }
     }
 }
