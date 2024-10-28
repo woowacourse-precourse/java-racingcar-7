@@ -31,5 +31,6 @@ public class Race {
     private void run(){
         CARS.forEach(car -> car.move(MovementGenerator.getRandomMovement()));
         Output.printRunResult(CARS);
+        Output.printBlankLine();
     }
 }
