@@ -29,4 +29,16 @@ public class GameResult {
         showWinners(winners);   // 우승자 출력
     }
 
+    static List<racingcar.Car> getWinners(List<racingcar.Car> cars, int maxPoint) {
+        // 최대 점수와 같은 자동차 찾기
+        List<racingcar.Car> winners = new ArrayList<>();
+        for (racingcar.Car car : cars) {
+            if (car.getCount() == maxPoint) {
+                winners.add(car);   // 우승자
+            }
+        }
+
+        return winners;
+    }
+
 }
