@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import racingcar.util.RandomNumber;
 import racingcar.util.StringParser;
 import racingcar.view.InputView;
@@ -58,7 +59,9 @@ public class Game {
     private void readCarsData() {
         InputView.printCarInputMessage();
         List<String> names = StringParser.parseCarName(InputView.readCars());
-        this.cars = names.stream().map(Car::new).collect(Collectors.toList());
+        this.cars = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private void readMoveNumberData() {
