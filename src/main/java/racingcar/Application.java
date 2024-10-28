@@ -28,8 +28,19 @@ public class Application {
         System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
             goOrStop(cars);
+            printRoundResult(cars);
         }
+    }
 
+    private static void printRoundResult(HashMap<String, Integer> cars) {
+        for (String key : cars.keySet()) {
+            StringBuilder meter = new StringBuilder();
+            for (int i = 0; i < cars.get(key); i++) {
+                meter.append("-");
+            }
+            System.out.println(key + " : " + meter);
+        }
+        System.out.println();
     }
 
     private static void goOrStop(HashMap<String, Integer> cars) {
