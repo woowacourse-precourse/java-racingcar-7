@@ -15,7 +15,6 @@ public enum InteractionMessageEnum {
         this.message = message;
     }
 
-    // TODO: getter vs. 직접 사용??
     public String getInteractionMessage() {
         return message;
     }
