@@ -12,8 +12,8 @@ public class RacingCarGameManager {
 
     public void runGame() {
         try {
-            String carName = input.inputCarName();
-            int tryCount = Integer.parseInt(validateException.isTryCountValid(input.inputTryCount()));
+            String carName = input.getCarName();
+            int tryCount = Integer.parseInt(validateException.isTryCountValid(input.getTryCount()));
             GameLogicRunner gameLogicRunner = new GameLogicRunner(carName);
 
             for (int i = 0; i < tryCount; i++) {
