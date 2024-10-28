@@ -9,7 +9,7 @@ public class Car {
     private static final int POWER_THRESHOLD = 4;
     private static final String POSITION_MARKER = "-";
 
-    private String name;
+    private final String name;
     private int distance;
 
     public Car(String name) {
