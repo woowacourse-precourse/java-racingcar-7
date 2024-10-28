@@ -66,4 +66,19 @@ public class Application {
         }
     }
 
+    public static void output() {
+        System.out.println("실행 결과");
+        for(int i = 0; i < N; i++) {
+            race();
+        }
+
+        winner();
+
+        System.out.print("최종 우승자 : ");
+        for(int i = 0; i < winners.size(); i++){
+            String str = ", ";
+            if (i == winners.size()-1) str = "";
+            System.out.print(winners.get(i) + str);
+        }
+    }
 }
