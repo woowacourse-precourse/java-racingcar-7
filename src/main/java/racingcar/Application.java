@@ -19,8 +19,8 @@ public class Application {
         // TODO: 프로그램 구현
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-        List<String> cars = List.of(input.split(","));
+        String carNameInput = Console.readLine();
+        List<String> cars = List.of(carNameInput.split(","));
 
         cars.forEach(car -> {
             if(car.length() > 5) {
@@ -28,7 +28,11 @@ public class Application {
             }
         });
 
-
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryCount = Integer.parseInt(Console.readLine());
+        if(tryCount < 1) {
+            throw new IllegalArgumentException("시도 횟수는 1이상이어야 합니다.");
+        }
 
     }
 }
