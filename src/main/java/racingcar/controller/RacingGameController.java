@@ -24,6 +24,7 @@ public class RacingGameController {
         Race race = new Race(raceParticipants, round);
         //시작
         race.start();
+        OutputView.startRacePrint();
 
         //승자를 구함
         List<Car> winner = race.getWinner();

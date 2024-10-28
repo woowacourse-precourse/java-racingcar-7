@@ -13,12 +13,17 @@ public class OutputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
+    public static void startRacePrint() {
+        System.out.println("\n실행 결과");
+    }
+
     public static void printRoundResult(List<Car> raceParticipants) {
         for (Car car : raceParticipants) {
             System.out.println(car.getName() + " : " + car.getPosition());
         }
         System.out.println();
     }
+
 
     public static void printWinners(List<Car> winners) {
         String winnerNames = winners.stream().map(Car::getName).collect(Collectors.joining(", "));

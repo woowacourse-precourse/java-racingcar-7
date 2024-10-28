@@ -16,16 +16,17 @@ public class Race {
     }
 
     public void start() {
-        System.out.println();
-        System.out.println("실행 결과");
+
         for (int i = 0; i <= rounds; i++) {
-            for (Car car : raceParticipants) {
-                int randomValue = Randoms.pickNumberInRange(0, 9);
-                car.move(randomValue);
-
-            }
+            moveCars();
             OutputView.printRoundResult(raceParticipants);
+        }
+    }
 
+    private void moveCars() {
+        for (Car car : raceParticipants) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            car.move(randomValue);
         }
     }
 
