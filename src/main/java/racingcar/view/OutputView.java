@@ -4,6 +4,7 @@ public class OutputView {
 
     public static void printRacingResult(String racingResult){
         System.out.print(racingResult);
+        System.out.println();
     }
 
 
