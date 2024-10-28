@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.domain.random.RandomGenerator;
 
@@ -75,7 +74,18 @@ public class CarRaceController {
         }
         return winners;
     }
-    public void raceDisplay(){
-        //이후 중간 과정 출력 시 사용
+    public List<String> getPlayCarsName(){
+        List<String> playCarsName = new ArrayList<>();
+        for(Car car : playCars){
+            playCarsName.add(car.getCarName());
+        }
+        return playCarsName;
+    }
+    public List<Integer> getPlayCarsStep(){
+        List<Integer> playCarsStep = new ArrayList<>();
+        for(Car car : playCars){
+            playCarsStep.add(car.getStepCount());
+        }
+        return playCarsStep;
     }
 }
