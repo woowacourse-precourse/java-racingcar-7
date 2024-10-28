@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -27,21 +28,39 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 자동차_입력_테스트() {
-        // Given: 테스트할 입력값 설정
-        String input = "pobi,woni,jun";
-        String inputLongName = "pobia, woni fang, junsubae";
+    void 자동차_이동_테스트() {
+        // Given
+        List<String> carNames = Arrays.asList("pobi", "woni", "jun");
+        LinkedHashMap<String, Integer> carDistanceResults = new LinkedHashMap<>();
 
-        // When: getCarNames() 메서드 호출
-        List<String> carNames = Application.splitCarNames(input);
+        for (String carName : carNames) {
+            carDistanceResults.put(carName, 0);
+        }
+
+        // When
+        Application.updateDistance(carDistanceResults, "pobi", MOVING_FORWARD);
+        Application.updateDistance(carDistanceResults, "woni", MOVING_FORWARD);
+        Application.updateDistance(carDistanceResults, "jun", STOP);
 
         // Then: 결과 검증
-        List<String> expectedNames = Arrays.asList("pobi", "woni", "jun");
-        assertThat(carNames).isEqualTo(expectedNames);
+        assertThat(carDistanceResults.get("pobi")).isEqualTo(1);
+        assertThat(carDistanceResults.get("woni")).isEqualTo(1);
+        assertThat(carDistanceResults.get("jun")).isEqualTo(0);
 
-        //예외 검증
-        assertThatThrownBy(() -> Application.splitCarNames(inputLongName))
-                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 자동차_경주_결과_테스트() {
+        // Given: 자동차 이름과 이동 횟수 설정
+        List<String> carNames = Arrays.asList("pobi", "woni", "jun");
+        int numberOfMoves = 5;
+
+        // When: playGame() 메서드 호출
+        List<String> winners = Application.playGame(carNames, numberOfMoves);
+
+        // Then: 결과 검증
+        assertThat(winners).isNotEmpty();
+        assertThat(output()).contains("pobi", "woni", "jun");
     }
 
     @Test
