@@ -34,10 +34,8 @@ public class Application {
 
         Cars cars = new Cars(carNames);
 
-        for (int i = 0; i < gameCount; i++) {
-            cars.moveCars();
-            cars.printCurrentPositions();
-        }
+        Game game = new Game(cars, gameCount);
+        game.playGame();
     }
 
     public static List<String> splitCarNames(String inputCarNames){
