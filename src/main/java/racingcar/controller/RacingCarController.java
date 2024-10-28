@@ -24,5 +24,10 @@ public class RacingCarController {
         int racingCarCount = racingCarInputView.readRacingCountInput();
         racingCarOutputView.printRacingCarResultMessage();
         racingCarService.createRace(race, racingCarNames);
+
+        for (int round = 0; round < racingCarCount; round++) {
+            racingCarService.updateRacingCarStatus(race);
+            racingCarOutputView.printCurrentRacingCar(race);
+        }
     }
 }

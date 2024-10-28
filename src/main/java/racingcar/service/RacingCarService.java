@@ -17,4 +17,17 @@ public class RacingCarService {
     private void addCarToRace(Race race, Car car) {
         race.addCar(car);
     }
+
+    public void updateRacingCarStatus(Race race) {
+        for (Car car : race.getCars()) {
+            moveCarPosition(car);
+        }
+    }
+
+    private void moveCarPosition(Car car) {
+        int randomNumber = (int)(Math.random() * 10);
+        if (randomNumber >= 4) {
+            car.move();
+        }
+    }
 }
