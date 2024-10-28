@@ -83,6 +83,7 @@ class CarTest extends NsTest {
 
                     ArrayList<Integer> actual = car.forwardCount;
                     ArrayList<Integer> expected = new ArrayList<>();
+                    expected.add(0);
                     expected.add(1);
 
                     // then
@@ -129,7 +130,7 @@ class CarTest extends NsTest {
                     // then
                     Assertions.assertThat(car.forwardCount).isEqualTo(expected);
                 },
-                MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
         );
     }
 
