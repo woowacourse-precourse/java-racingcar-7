@@ -44,4 +44,10 @@ public class Validator {
             throw new IllegalArgumentException("숫자가 아닌 문자는 입력할수없습니다.");
         }
     }
+
+    static void validateRightDelimiter(String input) {
+        if (input.startsWith(InputUtils.delimiter) || input.endsWith(InputUtils.delimiter)) {
+            throw new IllegalArgumentException("구분자로 시작하거나 끝나는 문자열을 입력할수없습니다.");
+        }
+    }
 }

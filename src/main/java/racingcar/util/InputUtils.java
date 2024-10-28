@@ -3,6 +3,7 @@ package racingcar.util;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputUtils {
+    static final String delimiter = ",";
     public static String[] readCarNameInput() {
         String carNameInput = Console.readLine();
         Validator.validateWhitespaceInput(carNameInput);
@@ -18,7 +19,8 @@ public class InputUtils {
     }
 
     private static String[] parseCarNames(String carNameInput) {
-        String[] carNames = carNameInput.split(",");
+        Validator.validateRightDelimiter(carNameInput);
+        String[] carNames = carNameInput.split(delimiter);
         if (carNames.length == 0) {
             throw new IllegalArgumentException("하나 이상의 이름을 입력해야합니다.");
         }
