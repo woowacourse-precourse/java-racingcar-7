@@ -27,7 +27,7 @@ class ControllerTest {
       //then
   }
 
-  @DisplayName(" 0~9 랜덤값을 생성하여 결과가 4이상인 경우 전진을 결정한다")
+  @DisplayName("0~9 랜덤값을 생성하여 결과가 4이상인 경우 전진을 결정한다")
   @Test
   public void moveOrNotTest() throws Exception{
       //given
@@ -38,20 +38,29 @@ class ControllerTest {
       //when
 
 
+
       //then
     assertEquals(expect, actual);
   }
 
-  @DisplayName(" 자동차 게임 실행 결과를 내림차순으로 정렬한다 ")
+  // 전진 수가 결정되면 각 자동차 별로 전진 수를 할당한다
+  @DisplayName("전진 수가 결정되면 각 자동차 별로 전진 수를 할당한다")
   @Test
-  public void reverseOrderResult() throws Exception{
+  void setMoveCountsTest() {
+
+  }
+
+  @DisplayName("자동차 게임 실행 결과를 내림차순으로 정렬한다")
+  @Test
+  public void reverseOrderResultTest() throws Exception{
     //given
+    String expect = "pobi";
+    String actual = controller.reverseOrderResult();
 
     //when
 
     //then
+    assertEquals(expect, actual);
   }
-
-
 
 }

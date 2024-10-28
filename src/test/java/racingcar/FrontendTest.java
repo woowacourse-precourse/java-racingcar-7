@@ -19,6 +19,7 @@ class FrontendTest {
   @Test
   void printRaceResult() {
     // given
+
     // when
     // then
   }
