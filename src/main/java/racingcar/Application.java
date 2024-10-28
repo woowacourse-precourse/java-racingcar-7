@@ -2,15 +2,12 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
-        List<Car> cars = inputCarNames();
+        List<Car> cars = InputHandler.inputCarNames();
         int tryCount = inputTryCount();
 
         gameStart(cars, tryCount);
@@ -18,35 +15,7 @@ public class Application {
         printWinner(cars);
     }
 
-    private static List<Car> inputCarNames() {
-        List<Car> cars = new ArrayList<>();
-
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-
-        List<String> carNames = Arrays.asList(input.split(","));
-        if (carNames.size() <= 1) {
-            throw new IllegalArgumentException("자동차는 2개 이상이여야 합니다.");
-        }
-
-        Set<String> uniqueCarNames = new HashSet<>(carNames);
-        if (uniqueCarNames.size() != carNames.size()) {
-            throw new IllegalArgumentException("자동차 이름은 중복되지 않아야 합니다.");
-        }
-
-        for (String carName : carNames) {
-            if (carName == null || carName.isBlank()) {
-                throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
-            }
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            }
-            cars.add(new Car(carName));
-        }
-        return cars;
-    }
-
-    private static int inputTryCount() {
+    public static int inputTryCount() {
         try {
             System.out.println("시도할 횟수는 몇 회인가요?");
             int count = Integer.parseInt(Console.readLine());
