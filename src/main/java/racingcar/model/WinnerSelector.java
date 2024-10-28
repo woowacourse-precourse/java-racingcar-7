@@ -11,7 +11,7 @@ public class WinnerSelector {
     }
 
     public List<Car> selectWinners(List<Car> carList){
-        Long maxDistance = Long.MIN_VALUE;
+        Integer maxDistance = Integer.MIN_VALUE;
 
         for(Car car: carList){
             maxDistance = selectWinner(car, maxDistance);
@@ -20,7 +20,7 @@ public class WinnerSelector {
         return winners;
     }
 
-    public Long selectWinner(Car car, Long maxDistance){
+    public Integer selectWinner(Car car, Integer maxDistance){
         if(car.getDistance() > maxDistance){
             winners.clear();
             winners.add(car);
@@ -30,5 +30,9 @@ public class WinnerSelector {
         }
 
         return Math.max(car.getDistance(), maxDistance);
+    }
+
+    public List<Car> getWinners() {
+        return winners;
     }
 }

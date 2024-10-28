@@ -4,15 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     private final String name;
-    private Long distance;
+    private Integer distance;
 
-    public Car(String name, Long moveCount){
+    public Car(String name, Integer moveCount){
         this.name = name;
         tryMove(moveCount);
     }
 
-    public void tryMove(Long moveCount){
-        for(long i = 0;  i < moveCount; i++){
+    public void tryMove(Integer moveCount){
+        for(int i = 0;  i < moveCount; i++){
             moveForward();
         }
     }
@@ -31,7 +31,7 @@ public class Car {
         return name;
     }
 
-    public Long getDistance() {
+    public Integer getDistance() {
         return distance;
     }
 }
