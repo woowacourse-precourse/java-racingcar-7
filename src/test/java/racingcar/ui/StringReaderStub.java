@@ -1,11 +1,11 @@
-package racingcar.ui.mock;
+package racingcar.ui;
 
 import racingcar.ui.StringReader;
 
-public class StubStringReader extends StringReader {
+public class StringReaderStub extends StringReader {
     private String testLine;
 
-    public StubStringReader() {}
+    public StringReaderStub() {}
 
     @Override
     public String readLine() {

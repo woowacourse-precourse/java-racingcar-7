@@ -1,8 +1,8 @@
-package racingcar.ui.mock;
+package racingcar.ui;
 
 import racingcar.ui.StringPrinter;
 
-public class DummyStringPrinter extends StringPrinter {
+public class StringPrinterDummy extends StringPrinter {
     @Override
     public void print(String value) {
     }

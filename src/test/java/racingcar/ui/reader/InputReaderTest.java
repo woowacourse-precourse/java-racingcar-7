@@ -4,8 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.ui.UserInputRequester;
-import racingcar.ui.mock.DummyStringPrinter;
-import racingcar.ui.mock.StubStringReader;
+import racingcar.ui.StringPrinterDummy;
+import racingcar.ui.StringReaderStub;
 
 import java.util.List;
 
@@ -15,14 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class InputReaderTest {
 
     private InputReader reader;
-    private StubStringReader stubReader;
-    private DummyStringPrinter dummyPrinter;
+    private StringReaderStub stubReader;
+    private StringPrinterDummy dummyPrinter;
     private UserInputRequester userInputRequester;
 
     @BeforeEach
     void beforeEach() {
-        stubReader = new StubStringReader();
-        dummyPrinter = new DummyStringPrinter();
+        stubReader = new StringReaderStub();
+        dummyPrinter = new StringPrinterDummy();
         userInputRequester = new UserInputRequester(stubReader, dummyPrinter);
         reader = new InputReader(userInputRequester);
     }

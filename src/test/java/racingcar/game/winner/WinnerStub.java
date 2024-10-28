@@ -2,14 +2,14 @@ package racingcar.game.winner;
 
 import java.util.List;
 
-public class MockWinner extends Winner {
+public class WinnerStub extends Winner {
     private List<String> testValue;
 
-    public MockWinner() {
+    public WinnerStub() {
         super(null);
     }
 
-    protected MockWinner(List<String> names) {
+    protected WinnerStub(List<String> names) {
         super(null);
     }
 
