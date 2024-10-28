@@ -38,10 +38,13 @@ public class Cars {
     public void moveAll(List<Integer> randomNumbers){
         validateSize(randomNumbers);
         for(int i=0; i<randomNumbers.size(); i++){
-            Integer randomCount = randomNumbers.get(i);
-            cars.get(i).move(randomCount);
+            move(i, randomNumbers.get(i));
         }
         print();
+    }
+
+    private void move(int index, Integer randomCount) {
+        cars.get(index).move(randomCount);
     }
 
     private void validateSize(List<Integer> randomNumbers) {
