@@ -40,6 +40,7 @@ public class RacingGameController {
             printRaceStatus();
             System.out.println();
         }
+        printWinner();
     }
 
     private void raceCars() {
@@ -52,5 +53,20 @@ public class RacingGameController {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
+    }
+
+    private Car getWinner() {
+        Car winner = cars.get(0);
+        for (Car car : cars) {
+            if (car.getPosition() > winner.getPosition()) {
+                winner = car;
+            }
+        }
+        return winner;
+    }
+
+    private void printWinner() {
+        Car winner = getWinner();
+        System.out.println("최종 우승자 : " + winner.getName());
     }
 }
