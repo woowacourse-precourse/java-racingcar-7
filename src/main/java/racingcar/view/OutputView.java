@@ -10,10 +10,6 @@ public class OutputView {
     private static final String RACING_FORMAT = "%s : %s%n";
     private static final String FINAL_WINNER_FORMAT = "최종 우승자 : %s";
 
-    public void printExceptionMessage(Exception exception) {
-        System.out.println(exception.getMessage());
-    }
-
     public void printResult() {
         System.out.println(EXECUTION_RESULT_MESSAGE);
     }
@@ -23,7 +19,6 @@ public class OutputView {
     }
 
     private String joinResults(CarsManager cars) {
-        // Collectors 변수를 제거하고 Collectors.joining() 직접 사용
         return cars.getCars().stream()
                 .map(this::formatResult)
                 .collect(Collectors.joining());

@@ -14,14 +14,11 @@ public class GameController {
     }
 
     public void run() {
-        try {
+
             CarsManager cars = CarsManager.by(inputView.readCarNames());
             moveCars(cars);
             printWinners(cars);
 
-        } catch (IllegalArgumentException exception) {
-            throw exception;
-        }
     }
     private void moveCars(CarsManager cars) {
         int numberOfTrials = inputView.readTrialsCount();

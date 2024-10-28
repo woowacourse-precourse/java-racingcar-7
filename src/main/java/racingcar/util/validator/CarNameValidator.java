@@ -13,9 +13,7 @@ public class CarNameValidator extends Validator {
     public void validate(String input) throws IllegalArgumentException {
         List<String> carNames = Arrays.asList(Util.removeSpace(input).split(","));
         validateNumberOfCars(carNames);
-        for (String carName : carNames) {
-            validateCarNameLength(carName);
-        }
+        carNames.forEach(CarNameValidator::validateCarNameLength);  // stream() 생략 가능
     }
 
     private static void validateCarNameLength(String carName) {
