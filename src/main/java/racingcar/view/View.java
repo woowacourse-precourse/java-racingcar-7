@@ -23,6 +23,7 @@ public class View {
     public static String requestTryMoveNumber() {
         printlnMessage(REQUEST_TRY_MOVE_NUMBER_MESSAGE);
         String number = enterMessage();
+        Validator.validateTryMoveNumber(number);
         return number;
     }
 
@@ -78,6 +79,25 @@ public class View {
             Set<String> uniqueNames = new HashSet<>(names);
             if (uniqueNames.size() != names.size()) {
                 throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
+            }
+        }
+
+        public static void validateTryMoveNumber(String input) {
+            String trimmedInput = input.trim();
+            checkPositive(parseInputToInt(trimmedInput));
+        }
+
+        private static int parseInputToInt(String input) {
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("횟수는 숫자여야 합니다.");
+            }
+        }
+
+        private static void checkPositive(int number) {
+            if (number <= 0) {
+                throw new IllegalArgumentException("횟수는 1보다 큰 숫자여야 합니다.");
             }
         }
     }
