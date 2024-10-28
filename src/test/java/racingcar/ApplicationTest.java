@@ -1,16 +1,32 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.repository.CarRepository;
+import racingcar.domain.repository.RaceRepository;
+
 class ApplicationTest extends NsTest {
+
+    private final CarRepository carRepository = CarRepository.getInstance();
+    private final RaceRepository raceRepository = RaceRepository.getInstance();
+
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+
+    @BeforeEach
+    void setUp() {
+        carRepository.deleteAll();
+        raceRepository.deleteAll();
+    }
 
     @Test
     void 기능_테스트() {
@@ -26,8 +42,41 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "666666,1,22", "55555,,22",
+            "55555, ,22", "55555,22,22"})
+    void 자동차_이름_입력_포맷_예외_테스트(String carsName) {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException(carsName, "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {"-1", "0", "", " "})
+    void Lap_입력_포맷_예외_테스트(String lap) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("car3,car4", lap))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 아무도_출발하지_않았을_때_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() ->
+                        assertRandomNumberInRangeTest(
+                                () -> run("car1,car2", "1"),
+                                STOP, STOP
+                        )
+                ).isInstanceOf(IllegalArgumentException.class)
         );
     }
 
