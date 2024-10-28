@@ -8,6 +8,7 @@ public class Car implements Comparable<Car> {
 
     private final String name;
     private Long distance;
+    public static final int WINNING_BOUNDARY = 4;
 
     private Car(String name) {
         this.name = name;
@@ -32,7 +33,7 @@ public class Car implements Comparable<Car> {
     }
 
     public void execute(final int command) {
-        if (command >= 4) {
+        if (command >= WINNING_BOUNDARY) {
             this.distance++;
         }
     }
