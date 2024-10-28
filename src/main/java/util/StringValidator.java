@@ -18,9 +18,9 @@ public class StringValidator {
 
     }
 
-    public static void checkNotNull(String text){
-        if(text == null)
-            throw new IllegalArgumentException("입력한 문자열이 null 입니다.");
+    public static void checkNotNullOrEmpty(String text){
+        if(text == null || text.isEmpty())
+            throw new IllegalArgumentException("입력한 문자열이 없습니다.");
 
     }
     public static void checkPositiveIntValue(String numString){
