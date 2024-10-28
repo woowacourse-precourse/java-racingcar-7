@@ -7,8 +7,11 @@ public class RacingCarController {
 
     public void run() {
         String carNames;
+        int tryCount;
 
         inputView.displayCarNamesPrompt();
         carNames = inputView.inputCarNames();
+        inputView.displayTryCountPrompt();
+        tryCount = inputView.inputTryCount();
     }
 }
