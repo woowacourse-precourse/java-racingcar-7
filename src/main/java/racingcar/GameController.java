@@ -1,8 +1,9 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.domain.Car;
+import racingcar.domain.RaceReferee;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -10,7 +11,6 @@ public class GameController {
 
     private final OutputView outputView;
     private final InputView inputView;
-    private RaceReferee referee;
 
     public GameController(OutputView outputView, InputView inputView) {
         this.outputView = outputView;
@@ -21,23 +21,16 @@ public class GameController {
         String carNames = getCarNames();
         List<Car> cars = createCarsFromNames(carNames);
         int round = getRacingRound();
-        referee = RaceReferee.from(round);
+        RaceReferee referee = RaceReferee.from(round);
 
-        while(round > 0) {
-            playRound(cars);
+        while (round > 0) {
+            referee.playRound(cars);
+            outputView.printMovingCarsWithPositions(cars);
             --round;
         }
 
         List<String> winners = referee.declareWinnerNames(cars);
         outputView.printRacingWinners(winners);
-    }
-
-    private void playRound(List<Car> cars) {
-        cars.forEach(car -> {
-            int randomNum = Randoms.pickNumberInRange(0, 9);
-            car.move(randomNum);
-        });
-        outputView.printMovingCarsWithPositions(cars);
     }
 
     private String getCarNames() {
