@@ -19,7 +19,7 @@ public class Racing {
         printWinners(cars);
     }
 
-    private List<Car> initializeCars(List<String> names) {
+    protected List<Car> initializeCars(List<String> names) {
         List<Car> cars = new ArrayList<>();
 
         for (String name : names) {
@@ -29,7 +29,7 @@ public class Racing {
         return cars;
     }
 
-    private void moveCarIfMovable(List<Car> cars) {
+    protected void moveCarIfMovable(List<Car> cars) {
         for (Car car : cars) {
             if (isMovable()) {
                 car.incrementMoveCount();
@@ -37,17 +37,17 @@ public class Racing {
         }
     }
 
-    private boolean isMovable() {
+    protected boolean isMovable() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    private void printPresentStatus(List<Car> cars) {
+    protected void printPresentStatus(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + generateDashLine(car));
         }
     }
 
-    private String generateDashLine(Car car) {
+    protected String generateDashLine(Car car) {
         StringBuilder dashLine = new StringBuilder();
 
         for (int i = 0; i < car.getMoveCount(); i++) {
@@ -57,7 +57,7 @@ public class Racing {
         return dashLine.toString();
     }
 
-    private void printWinners(List<Car> cars) {
+    protected void printWinners(List<Car> cars) {
         int maxMoveCount = findMaxMoveCount(cars);
         List<String> winners = new ArrayList<>();
 
@@ -74,7 +74,7 @@ public class Racing {
      * @param cars (List<Car>)
      * @return maxMoveCount (int)
      */
-    private int findMaxMoveCount(List<Car> cars) {
+    protected int findMaxMoveCount(List<Car> cars) {
         int maxMoveCount = 0;
 
         for (Car car : cars) {
