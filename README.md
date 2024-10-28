@@ -35,4 +35,3 @@
   - [x] 자동차 갯수가 2대 미만이면 `IllegalArgumentException`을 발생시킨다.
   - [x] 시도 횟수가 1 미만이면 `IllegalArgumentException`을 발생시킨다.
   - [x] 시도 횟수가 숫자가 아니면 `IllegalArgumentException`을 발생시킨다.
-
