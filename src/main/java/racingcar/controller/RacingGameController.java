@@ -3,6 +3,7 @@ package racingcar.controller;
 import static racingcar.utils.CarNameInputProcessor.splitCarNames;
 import static racingcar.utils.TotalRoundsInputProcessor.parseTotalRounds;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.domain.*;
 import racingcar.view.*;
@@ -11,6 +12,7 @@ public class RacingGameController {
     public void run() {
         List<String> carNames = setCarNames();
         int moveCount = setTotalRounds();
+        Console.close();
         RacingGame racingGame = new RacingGame(carNames);
         startGame(racingGame, moveCount);
     }
