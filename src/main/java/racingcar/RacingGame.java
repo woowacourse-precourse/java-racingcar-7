@@ -28,7 +28,8 @@ public class RacingGame {
             determineCarsMovement(cars);
             outputView.printMovementResult(cars);
         }
-        ArrayList<Car> winners = referee.selectWinners(cars);
+        ArrayList<String> winners = referee.selectWinners(cars);
+        outputView.printWinner(winners);
     }
 
     private void determineCarsMovement(ArrayList<Car> cars) {
