@@ -21,6 +21,10 @@ public class Car {
         return distance;
     }
 
+    public String getDistanceStatusBar(int distance){
+        return "-".repeat(Math.max(0, distance));
+    }
+
     public int getRandomValue(){
         return Randoms.pickNumberInRange(0, 9);
     }
