@@ -6,10 +6,6 @@ import racingcar.racing.model.Car;
 import racingcar.racing.model.dto.RoundResult;
 
 public class OutputView {
-    public static void printMessage(String message) {
-        System.out.println(message);
-    }
-
     public static void printAllRoundResult(List<List<RoundResult>> allRoundResult) {
         System.out.println("\n실행결과");
         for (List<RoundResult> roundResults : allRoundResult) {
