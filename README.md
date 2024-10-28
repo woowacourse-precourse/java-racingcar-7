@@ -3,7 +3,7 @@
 
 - 클라이언트 요청(RacingView), RacingRequest 기능 정의
 - Car 클래스 데이터 정의 및 기능 구현
-- RacingController 기능 정의 구현 racingService 기능 정의
+- RacingController 기능 정의 구현 RacingService 기능 정의
 - 클라이언트 요청 출력(racingView) 기능 정의
 
 ## 기능 요구 사항
