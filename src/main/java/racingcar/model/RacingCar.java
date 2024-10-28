@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.exception.CarNameEmptyException;
+import racingcar.exception.CarNameOverMaxLengthException;
 
 public class RacingCar {
 
@@ -43,13 +45,20 @@ public class RacingCar {
 
         private static final int MAX_NAME_LENGTH = 5;
 
-        private static void validateName(String name) {
+        public static void validateName(String name) {
+            validateNameEmpty(name);
+            validateNameLength(name);
+        }
 
+        private static void validateNameEmpty(String name) {
             if (name.isEmpty()) {
-                throw new IllegalArgumentException("이름은 비어있을 수 없습니다.");
+                throw new CarNameEmptyException();
             }
+        }
+
+        private static void validateNameLength(String name) {
             if (name.length() > MAX_NAME_LENGTH) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.: " + name);
+                throw new CarNameOverMaxLengthException(name);
             }
         }
     }
