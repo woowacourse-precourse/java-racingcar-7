@@ -18,11 +18,14 @@ public class InputUtil {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String namesInput = input();
         NamesInputValidator.validate(namesInput);
+        return parseNames(namesInput);
+    }
+
+    private static List<String> parseNames(String namesInput) {
         String[] tokens = namesInput.split(",");
         List<String> names = new ArrayList<>();
         for (String token: tokens) {
-            String name = token.strip();
-            names.add(name);
+            names.add(token.strip());
         }
         return names;
     }
