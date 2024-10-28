@@ -28,36 +28,25 @@ public class GameController {
             playGame(racingGame, rounds);
         } catch (IllegalArgumentException e) {
             outputView.printError(e.getMessage());
+            // 여기서 메서드를 끝내도록 수정 - 더 이상의 재시도 없음
+            return;  // 예외 발생 시 즉시 종료
         }
     }
 
     private String[] getValidCarNames() {
-        while (true) {
-            try {
-                String input = inputView.readCarNames();
-                if (input == null || input.trim().isEmpty()) {
-                    throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
-                }
-                String[] carNames = input.split(",", -1); // 빈 문자열도 포함하여 분할
-                inputValidator.validateCarNames(carNames);
-                return carNames;
-            } catch (IllegalArgumentException e) {
-                outputView.printError(e.getMessage());
-            }
-        }
+        // while문 제거
+        String input = inputView.readCarNames();
+        String[] carNames = input.split(",");
+        inputValidator.validateCarNames(carNames);
+        return carNames;
     }
 
     private int getValidRounds() {
-        while (true) {
-            try {
-                String input = inputView.readRounds();
-                int rounds = Integer.parseInt(input);
-                inputValidator.validateRounds(rounds);
-                return rounds;
-            } catch (IllegalArgumentException e) {
-                outputView.printError(e.getMessage());
-            }
-        }
+        // while문 제거
+        String input = inputView.readRounds();
+        int rounds = Integer.parseInt(input);
+        inputValidator.validateRounds(rounds);
+        return rounds;
     }
 
     private void playGame(RacingGame racingGame, int rounds) {
