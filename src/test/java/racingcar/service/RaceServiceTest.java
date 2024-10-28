@@ -20,7 +20,7 @@ public class RaceServiceTest {
         raceService = new RaceService();
     }
 
-    @DisplayName("race 내 자동차들 중 최대 전진 값을 구한다.")
+    @DisplayName("레이스 내 자동차들 중 최대 전진 값을 구한다.")
     @MethodSource("provideDistanceTestCases")
     @ParameterizedTest(name = "기대값: \"{0}\", 입력값: \"{1}\"")
     void getMaxDistance(int expectedMaxDistance, List<Integer> distanceList) {
@@ -29,7 +29,7 @@ public class RaceServiceTest {
 
     @DisplayName("우승자를 선정한다.")
     @MethodSource("provideGetWinnerCarTestCases")
-    @ParameterizedTest(name = "기대 list: \"{0}\", 입력 list: \"{1}\", 최대 전진값: \"{2}\"")
+    @ParameterizedTest(name = "기대값: \"{0}\", 입력값: \"{1}\", 최대 전진값: \"{2}\"")
     void getWinnerCar(List<Car> expectedCarList, List<Car> inputCarList, int maxDistance) {
         List<Car> winnerCarList = raceService.getCarListWithMaxDistance(inputCarList, maxDistance);
 

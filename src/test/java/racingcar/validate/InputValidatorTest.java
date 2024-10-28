@@ -19,28 +19,28 @@ class InputValidatorTest {
         inputValidator = new InputValidator();
     }
 
-    @DisplayName("입력한 차 이름 문자열을 검증한다.(실패 테스트)")
+    @DisplayName("입력한 차 이름 문자열을 검증한다. - 실패 테스트")
     @MethodSource("failedInputCarNamesTestCases")
     @ParameterizedTest(name = "입력값: \"{0}\"")
     void validateFailedInputCarNames(String inputCarNames) {
         assertThrows(IllegalArgumentException.class, () -> inputValidator.validateInputCarNames(inputCarNames));
     }
 
-    @DisplayName("입력한 차 이름 문자열을 검증한다.(성공 테스트)")
+    @DisplayName("입력한 차 이름 문자열을 검증한다. - 성공 테스트")
     @MethodSource("succeedInputCarNamesTestCases")
     @ParameterizedTest(name = "입력값: \"{0}\"")
     void validateSucceedInputCarNames(String inputCarNames) {
         assertDoesNotThrow(() -> inputValidator.validateInputCarNames(inputCarNames));
     }
 
-    @DisplayName("입력한 시도 횟수를 검증한다.(실패 테스트)")
+    @DisplayName("입력한 시도 횟수를 검증한다. - 실패 테스트")
     @MethodSource("failedInputAttemptCount")
     @ParameterizedTest(name = "입력값: \"{0}\"")
     void validateFailedInputAttemptCount(String inputAttemptCount) {
         assertThrows(IllegalArgumentException.class, () -> inputValidator.validateInputAttemptCount(inputAttemptCount));
     }
 
-    @DisplayName("입력한 시도 횟수를 검증한다.(성공 테스트)")
+    @DisplayName("입력한 시도 횟수를 검증한다. - 성공 테스트")
     @MethodSource("succeedInputAttemptCount")
     @ParameterizedTest(name = "입력값: \"{0}\"")
     void validateSucceedInputAttemptCount(String inputAttemptCount) {
