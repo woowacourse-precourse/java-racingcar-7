@@ -6,11 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.util.SplitterUtil;
+import racingcar.validator.CarNameValidator;
 
 public class Cars {
-
-    private static final String DUPLICATE_CAR_NAME = "중복된 이름이 존재합니다.";
-
 
     private final List<Car> cars;
     private final MoveStrategy moveStrategy;
@@ -18,7 +16,7 @@ public class Cars {
     public Cars(String carName, MoveStrategy moveStrategy) {
         this.cars = createCars(carName);
         this.moveStrategy = moveStrategy;
-        validateDuplicateCarNames(carName);
+        CarNameValidator.validateDuplicateCarNames(carName);
     }
 
     public void moveAllCars() {
@@ -38,16 +36,6 @@ public class Cars {
         return Arrays.stream(splitCarNames)
                 .map(Car::new)
                 .collect(Collectors.toList());
-    }
-
-    private void validateDuplicateCarNames(String carNames) {
-        String[] splitCarNames = SplitterUtil.splitCarNames(carNames);
-        List<String> carNameList = Arrays.asList(splitCarNames);
-        int uniqueCarNames = new HashSet<>(carNameList).size();
-
-        if (uniqueCarNames != cars.size()) {
-            throw new IllegalArgumentException(DUPLICATE_CAR_NAME);
-        }
     }
 
     public List<Car> getCars() {
