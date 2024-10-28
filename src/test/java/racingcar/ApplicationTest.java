@@ -34,7 +34,6 @@ class ApplicationTest extends NsTest {
                 STOP, MOVING_FORWARD,
                 MOVING_FORWARD, MOVING_FORWARD
         );
-
     }
 
     @Test
