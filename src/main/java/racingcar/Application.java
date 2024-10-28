@@ -7,7 +7,7 @@ public class Application {
     public static void main(String[] args) {
         InputHandler inputHandler = new InputHandler();
         List<Car> carList = inputHandler.getCarName();
-        int attemptNumber = inputHandler.getAttemtpNumber();
+        int attemptNumber = inputHandler.getAttemptNumber();
 
         RaceTrack raceTrack = new RaceTrack(carList);
         RaceController raceController = new RaceController(raceTrack, carList);
