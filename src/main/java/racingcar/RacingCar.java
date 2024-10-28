@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Objects;
 
 public class RacingCar {
@@ -35,4 +36,12 @@ public class RacingCar {
     public int hashCode() {
         return Objects.hash(name);
     }
+
+    public void moveOrNot() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) {
+            distance++;
+        }
+    }
+
 }

@@ -22,4 +22,8 @@ public class RacingCars {
         }
     }
 
+    public void moveOrNotForAll() {
+        racingCarList.forEach(RacingCar::moveOrNot);
+    }
+
 }
