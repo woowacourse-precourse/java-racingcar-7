@@ -1,9 +1,10 @@
-package racingcar;
+package racingcar.service;
 
-import static racingcar.ExceptionMessages.*;
-import static racingcar.RegexPatterns.*;
+import static racingcar.common.constant.ExceptionMessages.*;
+import static racingcar.common.constant.RegexPatterns.*;
 
 import java.util.List;
+import racingcar.common.util.Parser;
 
 public class InputValidator {
     private static final Integer MAX_NAME_LENGTH = 5;

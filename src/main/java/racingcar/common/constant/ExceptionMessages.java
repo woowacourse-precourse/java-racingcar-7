@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.common.constant;
 
 public final class ExceptionMessages {
     public static final String INVALID_INPUT_FORMAT = "올바른 입력 형식이 아닙니다.";

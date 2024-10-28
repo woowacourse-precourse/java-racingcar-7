@@ -8,9 +8,11 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import racingcar.domain.RacingCar;
+import racingcar.view.OutputView;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static racingcar.GameMessages.*;
+import static racingcar.common.constant.GameMessages.*;
 
 public class OutputViewTest {
     private final OutputView outputView = new OutputView();

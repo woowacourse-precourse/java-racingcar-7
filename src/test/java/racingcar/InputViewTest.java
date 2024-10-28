@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.view.InputView;
 
 class InputViewTest {
 

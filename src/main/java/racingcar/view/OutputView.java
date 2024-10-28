@@ -1,10 +1,11 @@
-package racingcar;
+package racingcar.view;
 
 import static racingcar.common.constant.GameMessages.*;
 import static racingcar.common.constant.RegexPatterns.*;
 
 import java.util.List;
 import java.util.stream.IntStream;
+import racingcar.domain.RacingCar;
 
 public class OutputView {
     public void printResultGuideMessage() {

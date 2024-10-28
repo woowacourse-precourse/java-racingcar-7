@@ -1,4 +1,10 @@
-package racingcar;
+package racingcar.common.config;
+
+import racingcar.controller.GameController;
+import racingcar.service.InputValidator;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+import racingcar.service.GameService;
 
 public class GameFactory {
     private static GameService createGameService() {

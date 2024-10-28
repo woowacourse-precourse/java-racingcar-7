@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.common.util;
 
-import static racingcar.RegexPatterns.*;
+import static racingcar.common.constant.RegexPatterns.*;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,11 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.List;
+import racingcar.service.GameService;
+import racingcar.service.InputValidator;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+import racingcar.domain.RacingCar;
 
 public class GameController {
     private final GameService gameService;

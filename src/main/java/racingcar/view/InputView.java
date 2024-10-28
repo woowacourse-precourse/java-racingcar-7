@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.view;
 
-import static racingcar.GameMessages.*;
+import static racingcar.common.constant.GameMessages.*;
 
 import camp.nextstep.edu.missionutils.Console;
 

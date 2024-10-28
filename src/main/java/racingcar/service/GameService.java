@@ -1,11 +1,14 @@
-package racingcar;
+package racingcar.service;
 
-import static racingcar.ExceptionMessages.*;
+import static racingcar.common.constant.ExceptionMessages.*;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import racingcar.common.util.GameUtil;
+import racingcar.domain.RacingCar;
+import racingcar.domain.Game;
 
 public class GameService {
     private Game game;
