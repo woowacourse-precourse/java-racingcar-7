@@ -33,7 +33,7 @@ public playGame()
 - [x]  for (int curr = 0; curr < limit; curr++)
     - [x]  playSingleRound() 호출해 라운드 진행
     - [x]  UI.printRoundResult() 호출해 현재 라운드의 결과 출력
-- [x]  반복이 끝나면 Utils.countWinners() 호출해 결과 집계
+- [x]  반복이 끝나면 Utils.getWinners() 호출해 결과 집계
 - [x]  UI.printWinners() 호출해 결과 출력
 
 private void playSingleRound()

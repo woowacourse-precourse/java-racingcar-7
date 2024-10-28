@@ -16,7 +16,7 @@ public class Utils {
         return false;
     }
 
-    public List<String> countWinners(List<Car> participants) {
+    public List<String> getWinners(List<Car> participants) {
         participants.sort(new CarMoveCntComparator());
         List<String> winners = new ArrayList<>();
         winners.add(participants.getFirst().getName());

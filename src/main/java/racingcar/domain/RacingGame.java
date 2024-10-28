@@ -33,7 +33,7 @@ public class RacingGame {
             }
             outputView.printRoundResult(false, participants);
         }
-        outputView.printWinners(utils.countWinners(participants));
+        outputView.printWinners(utils.getWinners(participants));
     }
 
     private void playSingleRound() {
