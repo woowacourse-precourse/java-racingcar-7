@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private Cars cars;
-    private AttemptCount attemptCount;
-    private List<List<CarSnapshot>> roundResults;
+    private final Cars cars;
+    private final AttemptCount attemptCount;
+    private final List<List<CarSnapshot>> roundResults = new ArrayList<>();
 
     public RacingGame(Cars cars, AttemptCount attemptCount) {
         this.cars = cars;
         this.attemptCount = attemptCount;
-        this.roundResults = new ArrayList<>();
     }
 
     public void play() {
