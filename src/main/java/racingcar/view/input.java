@@ -11,7 +11,7 @@ public class input {
         return splitCarNames(carNames);
     }
 
-    private List<String> splitCarNames(String carNames) {
+    public List<String> splitCarNames(String carNames) {
         return Arrays.asList(carNames.split(","));
     }
 
