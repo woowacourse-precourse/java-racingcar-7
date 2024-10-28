@@ -20,5 +20,6 @@ public class RacingcarController {
         racingGame.play();
 
         OutputView.printRacingResult(racingGame.getRoundResults(), racingGame.getWinnerNames());
+        InputView.closeConsole();
     }
 }

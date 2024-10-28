@@ -16,4 +16,8 @@ public class InputView {
 
         return input;
     }
+
+    public static void closeConsole() {
+        Console.close();
+    }
 }
