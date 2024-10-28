@@ -27,7 +27,6 @@ public class Race {
             if(racerName == null || racerName.isEmpty()) {
                 this.racers.add(new Racer("C" + (racers.size()+1) ));
                 continue;
-                //throw new IllegalArgumentException("레이서 이름이 필요합니다.");
             }
             this.racers.add(new Racer(racerName));
         }
