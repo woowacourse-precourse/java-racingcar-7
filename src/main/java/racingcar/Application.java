@@ -2,18 +2,20 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         Separator separator = new Separator();
         Racing racing = new Racing();
 
-        String[] names = getCarNames(separator);
+        List<String> names = getCarNames(separator);
         int count = getAttemptCount();
 
         racing.run(names, count);
     }
 
-    private static String[] getCarNames(Separator separator) {
+    private static List<String> getCarNames(Separator separator) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputNames = Console.readLine();
 

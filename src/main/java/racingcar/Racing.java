@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-    public void run(String[] names, int count) {
+    public void run(List<String> names, int count) {
         List<Car> cars = initializeCars(names);
         System.out.println("\n실행 결과");
 
@@ -19,7 +19,7 @@ public class Racing {
         printWinners(cars);
     }
 
-    private List<Car> initializeCars(String[] names) {
+    private List<Car> initializeCars(List<String> names) {
         List<Car> cars = new ArrayList<>();
 
         for (String name : names) {
