@@ -1,32 +1,34 @@
-package racingcar.service;
+package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.model.Car;
 
-public class RaceService {
+public record Cars(List<Car> cars) {
 
-    public static final int CAR_MAX_SCOPE = 100;
-    public static final int CAR_FORWARD_CONDITION = 4;
+    private static final int CAR_MAX_SCOPE = 100;
+    private static final int CAR_FORWARD_CONDITION = 4;
 
-    public List<Car> carListOf(String userInput) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : userInput.split(",")) {
-            if (!cars.isEmpty()) {
-                validateSameNameIn(cars, carName);
-            }
-
-            cars.add(Car.from(carName));
-        }
-
+    public Cars {
         validateExistCarInList(cars);
         validateCarListLessThenMaxLength(cars);
-        return cars;
     }
 
-    public List<String> findWinners(List<Car> cars) {
-        int maxLocation = findMaxLocation(cars);
+    public static List<Car> makeCarList(String userInput) {
+        List<Car> carlist = new ArrayList<>();
+        for (String carName : userInput.split(",")) {
+            if (!carlist.isEmpty()) {
+                validateSameNameIn(carlist, carName);
+            }
+
+            carlist.add(Car.from(carName));
+        }
+
+        return carlist;
+    }
+
+    public List<String> findWinners() {
+        int maxLocation = findMaxLocation();
         List<String> winnersName = new ArrayList<>();
         for (Car car : cars) {
             if (maxLocation == car.location()) {
@@ -36,7 +38,7 @@ public class RaceService {
         return winnersName;
     }
 
-    public void forwardWithRandomCondition(List<Car> cars) {
+    public void forwardWithRandomCondition() {
         for (Car car : cars) {
             int random = Randoms.pickNumberInRange(0, 9);
             if (random >= CAR_FORWARD_CONDITION) {
@@ -45,7 +47,7 @@ public class RaceService {
         }
     }
 
-    private int findMaxLocation(List<Car> cars) {
+    private int findMaxLocation() {
         int maxLocation = 0;
         for (Car car : cars) {
             maxLocation = Math.max(car.location(), maxLocation);
@@ -53,7 +55,7 @@ public class RaceService {
         return maxLocation;
     }
 
-    private void validateSameNameIn(List<Car> cars, String carName) {
+    private static void validateSameNameIn(List<Car> cars, String carName) {
         for (Car car : cars) {
             if (car.name().equals(carName)) {
                 throw new IllegalArgumentException("중복되는 이름이 존재합니다.");
@@ -68,7 +70,7 @@ public class RaceService {
     }
 
     private void validateExistCarInList(List<Car> cars) {
-        if (cars.isEmpty()) {
+        if (cars == null || cars.isEmpty()) {
             throw new IllegalArgumentException("자동차가 없습니다.");
         }
     }

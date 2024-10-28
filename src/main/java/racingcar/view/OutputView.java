@@ -2,6 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.Cars;
 
 public class OutputView {
 
@@ -10,8 +11,8 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void showStatus(List<Car> cars) {
-        for (Car car : cars) {
+    public void showStatus(Cars cars) {
+        for (Car car : cars.cars()) {
             showCarLocationToGauge(car);
         }
         System.out.println();
