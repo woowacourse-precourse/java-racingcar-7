@@ -2,12 +2,14 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.constants.RacingConstant;
+import racingcar.dto.CarDto;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private String name;
     private int position;
 
     private Car(String name){
+        validateName(name);
         this.name = name;
         this.position = 0;
     }
@@ -35,8 +37,22 @@ public class Car {
     }
 
     private void checkNameSize(String name, int size){
-        if(name.length() <= size){
+        if(name.length() > size){
             throw new IllegalArgumentException("자동차의 이름이 너무 큽니다.");
         }
     }
+
+    public boolean isSamePosition(Car otherCar) {
+        return this.position == otherCar.position;
+    }
+
+    @Override
+    public int compareTo(Car otherCar) {
+        return this.position - otherCar.position;
+    }
+
+    public CarDto toDto() {
+        return new CarDto(name, position);
+    }
+
 }
