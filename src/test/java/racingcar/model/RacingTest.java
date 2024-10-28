@@ -46,4 +46,20 @@ class RacingTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("자동차이름에_공백이_포함된_경우_예외발생")
+    void 자동차이름에_공백이_포함된_경우_예외발생() {
+        // given
+        RacingInfo carNameIncludeEmpty = new RacingInfo(
+                "pobi, jason, alice",
+                3
+        );
+
+        // then
+        assertThatThrownBy(() -> {
+            // when
+            racing = new Racing(carNameIncludeEmpty);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
