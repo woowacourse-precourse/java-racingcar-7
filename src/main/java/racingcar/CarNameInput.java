@@ -38,7 +38,7 @@ public class CarNameInput {
         for (String name : inputData) {
             name = name.trim();    // 앞뒤공백 제거
             if (name.isEmpty() || name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 1~5글자 이하로 입력해야 합니다. 다시 시도해주세요");
+                throw new IllegalArgumentException("자동차 이름은 1~5글자 이하로 입력해야 합니다. 다시 시도해주세요.");
             }
             validCarNames[index++] = name;
         }
