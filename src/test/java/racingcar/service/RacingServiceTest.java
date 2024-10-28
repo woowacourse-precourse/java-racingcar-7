@@ -9,12 +9,12 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ServiceTest extends NsTest {
+class RacingServiceTest extends NsTest {
 
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
-    Service service = new Service(new CarRace());
+    RacingService racingService = new RacingService(new CarRace());
 
     @Test
     void operate() {
@@ -30,6 +30,6 @@ class ServiceTest extends NsTest {
 
     @Override
     protected void runMain() {
-        service.operate(List.of("pobi", "woni"), "2");
+        racingService.operate(List.of("pobi", "woni"), "2");
     }
 }

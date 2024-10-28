@@ -8,10 +8,10 @@ import racingcar.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Service { // TODO: 이름 더 명확하게 개선
+public class RacingService {
     private final CarRace carRace;
 
-    public Service(CarRace carRace) {
+    public RacingService(CarRace carRace) {
         this.carRace = carRace;
     }
 

@@ -1,12 +1,12 @@
 package racingcar;
 
-import racingcar.controller.Controller;
+import racingcar.controller.RacingController;
 import racingcar.model.CarRace;
 import racingcar.service.validation.AttemptNumberValidator;
 import racingcar.service.validation.InputValidator;
 import racingcar.service.validation.NameValidator;
 import racingcar.model.InputParser;
-import racingcar.service.Service;
+import racingcar.service.RacingService;
 
 import java.util.List;
 
@@ -17,8 +17,8 @@ public class Application {
         InputValidator<List<String>> nameValidator = new NameValidator();
         InputValidator<String> attemptValidator = new AttemptNumberValidator();
         CarRace carRace = new CarRace();
-        Service service = new Service(carRace);
-        Controller controller = new Controller(inputParser, nameValidator, attemptValidator, service);
-        controller.run();
+        RacingService racingService = new RacingService(carRace);
+        RacingController racingController = new RacingController(inputParser, nameValidator, attemptValidator, racingService);
+        racingController.run();
     }
 }

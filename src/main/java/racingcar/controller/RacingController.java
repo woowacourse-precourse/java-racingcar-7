@@ -3,23 +3,23 @@ package racingcar.controller;
 import racingcar.service.validation.InputValidator;
 import racingcar.model.Car;
 import racingcar.model.InputParser;
-import racingcar.service.Service;
+import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.List;
 
-public class Controller { // TODO: 이름 더 명확하게 개선
-    private final InputParser inputParser; // TODO: final??
+public class RacingController {
+    private final InputParser inputParser;
     private final InputValidator<List<String>> nameValidator;
     private final InputValidator<String> attemptNumberValidator;
-    private final Service service;
+    private final RacingService racingService;
 
-    public Controller(InputParser inputParser, InputValidator<List<String>> nameValidator, InputValidator<String> attemptNumberValidator, Service service) {
+    public RacingController(InputParser inputParser, InputValidator<List<String>> nameValidator, InputValidator<String> attemptNumberValidator, RacingService racingService) {
         this.inputParser = inputParser;
         this.nameValidator = nameValidator;
         this.attemptNumberValidator = attemptNumberValidator;
-        this.service = service;
+        this.racingService = racingService;
     }
 
     public void run() {
@@ -34,9 +34,9 @@ public class Controller { // TODO: 이름 더 명확하게 개선
         attemptNumberValidator.validate(initialAttempt);
 
         OutputView.printResultMessage();
-        service.operate(names, initialAttempt);
+        racingService.operate(names, initialAttempt);
 
-        List<Car> winners =service.getWinner();
+        List<Car> winners = racingService.getWinner();
         OutputView.printWinner(winners);
     }
 }
