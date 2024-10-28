@@ -21,11 +21,53 @@ public class Application {
         ArrayList<Integer> scoreList = new ArrayList<>();
 
         getScoreArray(carName, scoreList);
+
+        doRace(carName, playNum, scoreList);
+    }
+
+    private static void doRace(ArrayList<String> carName, Integer playNum, ArrayList<Integer> scoreList) {
+        for (int i = 0; i < playNum; i++) {
+            moveAllCarOneTime(carName, scoreList);
+            //진행사항 출력
+            printCarsMoveStates(carName, scoreList);
+        }
     }
 
     private static void checkNumberPositive(Integer playNum) {
         if(playNum <0)
             throw new IllegalArgumentException("횟수로 양수만 가능합니다.");
+    }
+
+
+    private static void printCarsMoveStates(List<String> carName, ArrayList<Integer> scoreList) {
+        for (int j = 0; j < carName.size(); j++) {
+            printCarMoveState(carName, scoreList, j);
+        }
+        System.out.println("");
+    }
+
+    private static void printCarMoveState(List<String> carName, ArrayList<Integer> scoreList, int j) {
+        System.out.print(carName.get(j) + " : ");
+        for (int k = 0; k < scoreList.get(j); k++) {
+            System.out.print("-");
+        }
+        System.out.println("");
+    }
+
+    private static void moveAllCarOneTime(List<String> carName, ArrayList<Integer> scoreList) {
+        for (int j = 0; j < carName.size(); j++) {
+            int delimiter = getMoveStep();
+            scoreList.set(j, scoreList.get(j) + delimiter);
+        }
+    }
+
+    private static int getMoveStep() {
+        int randomNum = (int) (Math.random() * 10);
+        if (randomNum < 4) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     private static void getScoreArray(ArrayList<String> carName, ArrayList<Integer> scoreList) {
