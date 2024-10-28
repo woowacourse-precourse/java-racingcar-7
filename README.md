@@ -19,9 +19,9 @@
 <br><br>
 
 ### 🔧 구현할 기능
-- [ ] Model Layer
+- [x] Model Layer
   - [X] Car : 자동차 객체. 이름 및 현재 위치 저장.
-  - [ ] Race : Car 리스트, 진행해야 할 총 round 저장 
+  - [x] Race : Car 리스트, 진행해야 할 총 round 저장 
 - [ ] View Layer
   - [ ] Input : 자동차 이름 및 진행횟수 입력. 조건에 맞지 않는 입력은 예외 처리.
   - [ ] Output : 각 round 별 경기 결과 출력. 최종 우승자 출력.
@@ -29,6 +29,6 @@
   - [ ] GameService : 한 라운드를 진행하는 로직. 우승자 결정 로직.
 - [ ] Controller Layer
   - [ ] CarRace : 전체 라운드를 진행. Model 객체 생성. Service와 View 연결.
-- [ ] Util
+- [x] Util
   - [X] Exception : 처리할 예외 목록
   - [X] CONSTANT : 필요한 상수값 변수화
