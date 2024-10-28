@@ -1,7 +1,6 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
-import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Register;
 import racingcar.view.InputView;
@@ -18,8 +17,13 @@ public class CarRacingController {
         this.register = register;
     }
 
-    public ArrayList<String> divide(String cars) {
-        return new ArrayList<>(List.of(cars.split(",")));
+    public ArrayList<String> divideCar(String cars) {
+        ArrayList<String> carList = new ArrayList<>();
+        for (String c : cars.split(",")) {
+            String addCar = c.trim();
+            carList.add(addCar);
+        }
+        return carList;
     }
 
     public void carMoves() {
@@ -37,7 +41,7 @@ public class CarRacingController {
     }
 
     public void race() {
-        register.carListUp(divide(inputView.inputCar()));
+        register.carListUp(divideCar(inputView.inputCar()));
         playRound(inputView.inputRound());
         outputView.outputWinner(register.racingWinner());
     }
