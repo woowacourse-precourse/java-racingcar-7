@@ -7,13 +7,16 @@ import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
+    private final Car testCar = new Car("자동차");
+    private final Car testCar2 = new Car("해적선");
+
+    private final int movable_num = Randoms.pickNumberInRange(4, 9);
+    private final int unmovable_num = Randoms.pickNumberInRange(0, 3);
+
     @Test
     @DisplayName("전진 가능한 최솟값을 넘으면 자동차는 전진한다")
     void move_when_over_margin() {
-        Car testCar = new Car("자동차");
-        int randomNumber = Randoms.pickNumberInRange(4, 9);
-
-        testCar.move(randomNumber);
+        testCar.move(movable_num);
 
         Assertions.assertEquals(testCar.getDistance(), 1);
     }
@@ -21,11 +24,18 @@ public class CarTest {
     @Test
     @DisplayName("전진 가능한 최솟값보다 작으면 자동차는 전진하지 않는다")
     void stop_when_under_margin() {
-        Car testCar = new Car("자동차");
-        int randomNumber = Randoms.pickNumberInRange(0, 3);
-
-        testCar.move(randomNumber);
+        testCar.move(unmovable_num);
 
         Assertions.assertEquals(testCar.getDistance(), 0);
     }
+
+    @Test
+    @DisplayName("전진한 자동차와 멈춘 자동차의 거리를 정상적으로 비교한다")
+    void compare_cars() {
+        testCar.move(movable_num);
+        testCar2.move(unmovable_num);
+
+        Assertions.assertTrue(testCar.compareTo(testCar2) < 0);
+    }
+
 }
