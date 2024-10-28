@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
+import racingcar.constants.ErrorMessage;
 
 public class RaceCount {
     private final int raceCount;
@@ -18,19 +19,19 @@ public class RaceCount {
 
     public static void hasCharacters(String raceCount) {
         if (!RACE_TIMES_PATTERN.matcher(raceCount).matches()) {
-            throw new IllegalArgumentException("숫자 이외의 문자가 포함되어 있습니다.");
+            throw new IllegalArgumentException(ErrorMessage.RACE_COUNT_DOES_NOT_HAVE_CHARACTER.getErrorMessage());
         }
     }
 
     public static void isBlank(String raceCount) {
         if (raceCount == null || raceCount.isBlank()) {
-            throw new IllegalArgumentException("시도 횟수는 빈 값이 될 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.RACE_COUNT_CAN_NOT_BE_EMPTY.getErrorMessage());
         }
     }
 
     public static void isZero(String raceCount) {
         if (raceCount.equals("0")) {
-            throw new IllegalArgumentException("시도 횟수는 0이 될 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.RACE_COUNT_CAN_NOT_BE_ZERO.getErrorMessage());
         }
     }
 

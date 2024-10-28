@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import racingcar.model.RaceCount;
+import racingcar.constants.ErrorMessage;
 
 public class InputRaceCountTest {
     private static final String RACE_TIMES_ALPHABET = "abc";
@@ -29,7 +30,7 @@ public class InputRaceCountTest {
 
         assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("숫자 이외의 문자가 포함되어 있습니다.");
+                .hasMessageContaining(ErrorMessage.RACE_COUNT_DOES_NOT_HAVE_CHARACTER.getErrorMessage());
     }
 
     @DisplayName("시도 횟수가 빈 값이면 예외 발생")
@@ -42,7 +43,7 @@ public class InputRaceCountTest {
 
         assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("시도 횟수는 빈 값이 될 수 없습니다.");
+                .hasMessageContaining(ErrorMessage.RACE_COUNT_CAN_NOT_BE_EMPTY.getErrorMessage());
     }
 
     @DisplayName("시도 횟수가 0이면 예외 발생")
@@ -54,6 +55,6 @@ public class InputRaceCountTest {
 
         assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("시도 횟수는 0이 될 수 없습니다.");
+                .hasMessageContaining(ErrorMessage.RACE_COUNT_CAN_NOT_BE_ZERO.getErrorMessage());
     }
 }
