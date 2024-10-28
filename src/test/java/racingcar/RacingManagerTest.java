@@ -47,4 +47,13 @@ public class RacingManagerTest {
 
         assertThat(manager.winners()).containsExactly("pobi");
     }
+
+    @Test
+    void 우승자가_여러명인_경우_쉼표_구분() {
+        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), 1);
+        manager.getCars().getFirst().attemptMove(4);
+        manager.getCars().getLast().attemptMove(4);
+
+        assertThat(manager.winners()).containsExactly("pobi", "jun");
+    }
 }
