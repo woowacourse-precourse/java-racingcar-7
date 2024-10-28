@@ -10,6 +10,8 @@ public class CarNameSplitter {
     }
 
     public static List<String> separateCarNames(String names) {
-        return Arrays.asList(names.split(CAR_NAME_DELIMITER));
+        return Arrays.stream(names.split(CAR_NAME_DELIMITER))
+                .map(String::trim)
+                .toList();
     }
 }
