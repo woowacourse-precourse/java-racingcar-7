@@ -17,6 +17,6 @@ public class OutputView {
 
     public void printWinners(List<String> winners) {
         String winnerNames = String.join(", ", winners.toArray(new String[0]));
-        System.out.println("\n최종 우승자 : " + winnerNames);
+        System.out.println("최종 우승자 : " + winnerNames);
     }
 }
