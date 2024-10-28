@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
 
-    /**
-     * 예외 테스트: 자동차 이름 입력 시 빈 입력이 들어왔을 때 예외가 발생하는지 확인합니다. 빈 자동차 이름을 입력하면 `EMPTY_CAR_NAME` 예외 메시지가 출력되어야 합니다.
-     */
     @Test
     @DisplayName("예외_테스트_빈_자동차_이름")
     void emptyCarNameException() {
@@ -22,9 +19,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    /**
-     * 예외 테스트: 자동차 이름 입력 시 공백 입력이 들어왔을 때 예외가 발생하는지 확인합니다. 빈 자동차 이름을 입력하면 `INVALID_CAR_NAME` 예외 메시지가 출력되어야 합니다.
-     */
     @Test
     @DisplayName("예외_테스트_공백_자동차_이름")
     void spaceCarNameException() {
@@ -35,10 +29,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    /**
-     * 예외 테스트: 자동차 이름이 5자를 초과할 경우 예외가 발생하는지 확인합니다. "pobi,javaji"에서 "javaji"는 6자이므로 `INVALID_CAR_NAME` 예외 메시지가 출력되어야
-     * 합니다.
-     */
     @Test
     @DisplayName("예외_테스트_이름_길이_초과")
     void overCarNameException() {
@@ -49,10 +39,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    /**
-     * 예외 테스트: 중복된 자동차 이름이 입력되었을 때 예외가 발생하는지 확인합니다. "pobi,woni,pobi"에서 "pobi"가 중복되므로 `DUPLICATE_CAR_NAMES` 예외 메시지가 출력되어야
-     * 합니다.
-     */
     @Test
     @DisplayName("예외_테스트_중복_자동차_이름")
     void duplicateCarNameException() {
@@ -63,9 +49,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    /**
-     * 예외 테스트: 이동 횟수 입력 시 빈 입력이 들어왔을 때 예외가 발생하는지 확인합니다. 빈 이동 횟수를 입력하면 `EMPTY_MOVE_COUNT` 예외 메시지가 출력되어야 합니다.
-     */
     @Test
     @DisplayName("예외_테스트_빈_이동_횟수")
     void emptyMoveCountException() {
@@ -76,10 +59,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    /**
-     * 예외 테스트: 이동 횟수 입력 시 숫자가 아닌 값이 들어왔을 때 예외가 발생하는지 확인합니다. "five"와 같은 숫자가 아닌 입력을 하면 `INVALID_MOVE_COUNT` 예외 메시지가 출력되어야
-     * 합니다.
-     */
     @Test
     @DisplayName("예외_테스트_비숫자_이동_횟수")
     void invalidMoveCountException() {
@@ -90,9 +69,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    /**
-     * 예외 테스트: 이동 횟수 입력 시 음수가 들어왔을 때 예외가 발생하는지 확인합니다. "-1"과 같은 음수 입력을 하면 `NEGATIVE_MOVE_COUNT` 예외 메시지가 출력되어야 합니다.
-     */
     @Test
     @DisplayName("예외_테스트_음수_이동_횟수")
     void minusMoveCountException() {
