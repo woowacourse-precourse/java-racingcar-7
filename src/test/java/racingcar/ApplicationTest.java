@@ -58,7 +58,8 @@ class ApplicationTest extends NsTest {
     @CsvSource(value = {
             "pobi,javaj,pobi | 1",
             "pobi,javaji | 1",
-            "pobi, | 1"},
+            "pobi, | 1",
+            "pobi,  ,javaj | 1"},
             delimiter = '|'
     )
     void 이름_형식_예외_테스트(String carNames, String attemptNum) {
