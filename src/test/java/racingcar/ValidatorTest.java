@@ -24,7 +24,19 @@ class ValidatorTest extends NsTest {
 
     @Test
     void 유효한_자동차_이름_리스트_테스트() {
-        List<String> carNames = Arrays.asList("pobi", "crong", "honux");
+        List<String> carNames = Arrays.asList("pobi", "woni", "jun");
+        Validator.validateCarNames(carNames);
+    }
+    
+    @Test
+    void 유효한_자동차_이름_언더바_리스트_테스트() {
+        List<String> carNames = Arrays.asList("po_bi", "wo_ni", "jun");
+        Validator.validateCarNames(carNames);
+    }
+    
+    @Test
+    void 유효한_자동차_이름_한글_리스트_테스트() {
+        List<String> carNames = Arrays.asList("포비", "워니", "준");
         Validator.validateCarNames(carNames);
     }
     
@@ -53,7 +65,7 @@ class ValidatorTest extends NsTest {
 
     @Test
     void 자동차_이름_공백_포함_예외_테스트() {
-        List<String> carNames = Arrays.asList("po bi", "crong");
+        List<String> carNames = Arrays.asList("po bi", "woni");
         assertSimpleTest(() -> 
             assertThatThrownBy(() -> Validator.validateCarNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -63,7 +75,7 @@ class ValidatorTest extends NsTest {
 
     @Test
     void 자동차_이름_길이_초과_예외_테스트() {
-        List<String> carNames = Arrays.asList("pobisuper", "crong");
+        List<String> carNames = Arrays.asList("pobiwoni", "jun");
         assertSimpleTest(() -> 
             assertThatThrownBy(() -> Validator.validateCarNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -73,7 +85,7 @@ class ValidatorTest extends NsTest {
 
     @Test
     void 자동차_이름_잘못된_문자_포함_예외_테스트() {
-        List<String> carNames = Arrays.asList("pobi!", "crong");
+        List<String> carNames = Arrays.asList("pobi!", "woni");
         assertSimpleTest(() -> 
             assertThatThrownBy(() -> Validator.validateCarNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -82,8 +94,28 @@ class ValidatorTest extends NsTest {
     }
 
     @Test
+    void 자동차_이름_시작_언더바_포함_예외_테스트() {
+        List<String> carNames = Arrays.asList("_pobi", "woni");
+        assertSimpleTest(() -> 
+            assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 영문자, 숫자, 한글만 포함하고, 언더바(_)는 처음이나 끝에 위치할 수 없습니다.")
+        );
+    }
+    
+    @Test
+    void 자동차_이름_끝_언더바_포함_예외_테스트() {
+        List<String> carNames = Arrays.asList("pobi_", "woni");
+        assertSimpleTest(() -> 
+            assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 영문자, 숫자, 한글만 포함하고, 언더바(_)는 처음이나 끝에 위치할 수 없습니다.")
+        );
+    }
+    
+    @Test
     void 자동차_이름_중복_예외_테스트() {
-        List<String> carNames = Arrays.asList("pobi", "pobi", "crong");
+        List<String> carNames = Arrays.asList("pobi", "pobi", "woni");
         assertSimpleTest(() -> 
             assertThatThrownBy(() -> Validator.validateCarNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
