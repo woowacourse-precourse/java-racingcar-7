@@ -38,7 +38,15 @@ public class InputView {
 
         System.out.println(("시도할 횟수는 몇 회인가요?"));
         String cnt = Console.readLine();
+        int tryCount = Integer.parseInt(cnt);
 
-        return Integer.parseInt(cnt);
+        if (tryCount < 1 || tryCount > 10) {
+            throw new IllegalArgumentException("시도할 횟수는 1 이상 10 이하만 가능합니다.");
+        }
+
+
+        return tryCount;
     }
+
+
 }
