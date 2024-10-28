@@ -3,7 +3,6 @@ package racingcar.domain;
 import racingcar.utils.RandomNumberGenerator;
 import java.util.List;
 
-
 public class RacingGame {
     private static final int INITIAL_ROUND = 0;
     private int tryCount;
