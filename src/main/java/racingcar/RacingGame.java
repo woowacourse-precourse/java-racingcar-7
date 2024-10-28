@@ -48,4 +48,13 @@ public class RacingGame {
     }
     System.out.println();
   }
+
+  private void printWinners(List<Car> cars) {
+    int maxPosition = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+    List<String> winners = cars.stream()
+        .filter(car -> car.getDistance() == maxPosition)
+        .map(Car::getName)
+        .collect(Collectors.toList());
+    System.out.println("최종 우승자 : " + String.join(", ", winners));
+  }
 }
