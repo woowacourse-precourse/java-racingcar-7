@@ -18,7 +18,7 @@ public class RacingGameService {
 
         // 각 자동차 이름에 대한 예외사항 검증 메서드
         for (String carName : carNames) {
-            validateCarName(carName);
+            validateCarName(carName, carNames);
         }
 
         //차의 이동거리 초기화
@@ -76,7 +76,7 @@ public class RacingGameService {
 
 
     // carName 검증 메서드
-    private void validateCarName(String carName) {
+    private void validateCarName(String carName, List<String> carNames) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
         }
@@ -87,6 +87,10 @@ public class RacingGameService {
 
         if (!carName.matches("[a-zA-Z]+")) {
             throw new IllegalArgumentException("이름은 영어 문자만 가능합니다.");
+        }
+
+        if (Collections.frequency(carNames, carName) > 1) {
+            throw new IllegalArgumentException("이름은 중복될 수 없습니다.");
         }
     }
 }
