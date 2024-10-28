@@ -7,6 +7,7 @@ import racingcar.util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.random.RandomGenerator;
 
 public class RacingGameService {
 
@@ -21,8 +22,10 @@ public class RacingGameService {
         return carNames;
     }
 
-    public void validateNumberOfAttempts() {
-
+    public void validateNumberOfAttempts(int numberOfAttempts) {
+        if (numberOfAttempts <= 0) {
+            throw new IllegalArgumentException("[error] 시도 횟수는 1 이상");
+        }
     }
 
     public void moveCars() {
