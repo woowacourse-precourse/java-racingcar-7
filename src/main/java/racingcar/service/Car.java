@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.service;
 
-import static racingcar.RacingConstants.MAX_LENGTH_OF_CAR_NAME;
-import static racingcar.ViewConstants.MOVE_SYMBOL;
-import static racingcar.ViewConstants.NAME_LENGTH_ERROR_MESSAGE;
-import static racingcar.ViewConstants.RACE_DISPLAY_FORMAT;
+import static racingcar.config.RacingConstants.MAX_LENGTH_OF_CAR_NAME;
+import static racingcar.View.ViewConstants.MOVE_SYMBOL;
+import static racingcar.View.ViewConstants.NAME_LENGTH_ERROR_MESSAGE;
+import static racingcar.View.ViewConstants.RACE_DISPLAY_FORMAT;
 
 public class Car implements Comparable<Car> {
     private final String name;

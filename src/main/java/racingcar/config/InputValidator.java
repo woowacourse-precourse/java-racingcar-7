@@ -1,12 +1,12 @@
-package racingcar;
+package racingcar.config;
 
-import static racingcar.RacingConstants.MIN_ROUNDS;
-import static racingcar.RacingConstants.REQUIRED_MIN_PLAYERS;
-import static racingcar.ViewConstants.DUPLICATE_NAME_ERROR_MESSAGE;
-import static racingcar.ViewConstants.LESS_THAN_MIN_ROUNDS_ERROR_MESSAGE;
-import static racingcar.ViewConstants.TOTAL_ROUNDS_REGEX;
-import static racingcar.ViewConstants.NOT_ENOUGH_PLAYERS_ERROR_MESSAGE;
-import static racingcar.ViewConstants.CONTAINS_NON_DIGIT_ERROR_MESSAGE;
+import static racingcar.config.RacingConstants.MIN_ROUNDS;
+import static racingcar.config.RacingConstants.REQUIRED_MIN_PLAYERS;
+import static racingcar.View.ViewConstants.DUPLICATE_NAME_ERROR_MESSAGE;
+import static racingcar.View.ViewConstants.LESS_THAN_MIN_ROUNDS_ERROR_MESSAGE;
+import static racingcar.View.ViewConstants.TOTAL_ROUNDS_REGEX;
+import static racingcar.View.ViewConstants.NOT_ENOUGH_PLAYERS_ERROR_MESSAGE;
+import static racingcar.View.ViewConstants.CONTAINS_NON_DIGIT_ERROR_MESSAGE;
 
 import java.util.List;
 

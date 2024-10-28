@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.View;
 
-import static racingcar.RacingConstants.MAX_LENGTH_OF_CAR_NAME;
-import static racingcar.RacingConstants.MIN_LENGTH_OF_CAR_NAME;
-import static racingcar.RacingConstants.MIN_ROUNDS;
-import static racingcar.RacingConstants.REQUIRED_MIN_PLAYERS;
+import static racingcar.config.RacingConstants.MAX_LENGTH_OF_CAR_NAME;
+import static racingcar.config.RacingConstants.MIN_LENGTH_OF_CAR_NAME;
+import static racingcar.config.RacingConstants.MIN_ROUNDS;
+import static racingcar.config.RacingConstants.REQUIRED_MIN_PLAYERS;
 
 public class ViewConstants {
     public static final String ENTER_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";

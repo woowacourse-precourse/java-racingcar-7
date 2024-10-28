@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.config;
 
 public class RacingConstants {
     public static final int REQUIRED_MIN_PLAYERS = 2;

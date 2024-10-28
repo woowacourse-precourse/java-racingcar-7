@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.View;
 
-import static racingcar.ViewConstants.ENTER_CAR_NAMES_MESSAGE;
-import static racingcar.ViewConstants.ENTER_TOTAL_ROUNDS_MESSAGE;
+import static racingcar.View.ViewConstants.ENTER_CAR_NAMES_MESSAGE;
+import static racingcar.View.ViewConstants.ENTER_TOTAL_ROUNDS_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 

@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.View.OutputView;
 
 public class CarRacing {
     private final RacingRule racingRule;

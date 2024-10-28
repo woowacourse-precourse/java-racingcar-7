@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.View;
 
-import static racingcar.ViewConstants.NAME_DELIMITER;
-import static racingcar.ViewConstants.RACE_RESULT;
-import static racingcar.ViewConstants.WHITE_SPACE;
-import static racingcar.ViewConstants.WINNER_IS;
+import static racingcar.View.ViewConstants.NAME_DELIMITER;
+import static racingcar.View.ViewConstants.RACE_RESULT;
+import static racingcar.View.ViewConstants.WHITE_SPACE;
+import static racingcar.View.ViewConstants.WINNER_IS;
 
 import java.util.List;
 

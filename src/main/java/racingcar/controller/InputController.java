@@ -1,9 +1,10 @@
-package racingcar;
+package racingcar.controller;
 
-import static racingcar.ViewConstants.NAME_DELIMITER;
+import static racingcar.View.ViewConstants.NAME_DELIMITER;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.config.InputValidator;
 
 public class InputController {
     private final InputValidator inputValidator;

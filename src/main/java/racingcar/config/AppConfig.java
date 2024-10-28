@@ -1,8 +1,15 @@
-package racingcar;
+package racingcar.config;
 
-import static racingcar.RacingConstants.MAX_NUMBER_IN_RANGE;
-import static racingcar.RacingConstants.MIN_NUMBER_IN_RANGE;
-import static racingcar.RacingConstants.MIN_NUMBER_TO_MOVE;
+import static racingcar.config.RacingConstants.MAX_NUMBER_IN_RANGE;
+import static racingcar.config.RacingConstants.MIN_NUMBER_IN_RANGE;
+import static racingcar.config.RacingConstants.MIN_NUMBER_TO_MOVE;
+
+import racingcar.service.CarRacing;
+import racingcar.controller.InputController;
+import racingcar.service.Racers;
+import racingcar.service.RacingRule;
+import racingcar.View.InputView;
+import racingcar.View.OutputView;
 
 public class AppConfig {
     public RacingInitializer racingInitializer() {
