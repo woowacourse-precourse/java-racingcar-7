@@ -20,7 +20,8 @@ public class GameRunner {
 
         for (int attemptCount = 0; attemptCount < finalAttemptCount; attemptCount++) {
             updateCarState(cars);
-            allRoundResults.append(formatRoundResult(cars));
+            allRoundResults.append(formatRoundResult(cars))
+                    .append(LINE_BREAK);
         }
 
         return new GameResult(cars, allRoundResults.toString());
