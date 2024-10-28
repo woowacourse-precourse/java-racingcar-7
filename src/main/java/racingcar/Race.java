@@ -5,22 +5,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    public void run() {
-        List<Car> cars = Validator.validateAndParseCarNames(View.scanCarNames());
+    private final Validator validator;
+    private final View view;
 
-        int attemptCount = Validator.validateAndParseInteger(View.scanAttemptCount(cars));
-        Validator.validatePositive(attemptCount);
+    Race(Validator validator, View view) {
+        this.validator = validator;
+        this.view = view;
+    }
+    public void run() {
+        List<Car> cars = validator.validateAndParseCarNames(view.scanCarNames());
+
+        int attemptCount = validator.validateAndParseInteger(view.scanAttemptCount(cars));
+        validator.validatePositive(attemptCount);
 
         startRace(cars, attemptCount);
 
         List<String> winners = getWinners(cars, getMaxDistance(cars));
-        View.printWinners(winners);
+        view.printWinners(winners);
     }
 
     void startRace(List<Car> cars, int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
             moveCars(cars);
-            View.printCarsProgress(cars);
+            view.printCarsProgress(cars);
         }
     }
 
