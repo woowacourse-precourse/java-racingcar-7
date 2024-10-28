@@ -17,4 +17,8 @@ public class RaceManager {
             race.moveCars();
         }
     }
+
+    public List<String> getWinners() {
+        return race.getWinners();
+    }
 }
