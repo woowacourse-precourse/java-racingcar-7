@@ -36,4 +36,8 @@ public class Car {
 	public String print() {
 		return String.format("%s : %s", name, "-".repeat(moveCount));
 	}
+
+	public boolean isWinner(int count) {
+		return moveCount == count;
+	}
 }
