@@ -1,8 +1,11 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -10,6 +13,8 @@ public class Application {
         List<String> carNames = getCarNames();
         // 시도 횟수 입력
         int attempts = getAttempts();
+        // 입력 값 기준으로 게임 초기 세팅
+        Map<String, Integer> carPositions = initializeCarPositions(carNames);
 
     }
 
@@ -48,4 +53,15 @@ public class Application {
             throw new IllegalArgumentException("잘못된 입력입니다. 숫자를 입력해주세요.");
         }
     }
+
+
+    // 입력 값 기준으로 게임 초기 세팅
+    private static Map<String, Integer> initializeCarPositions(List<String> names) {
+        Map<String, Integer> carPositions = new HashMap<>();
+        for (String name : names) {
+            carPositions.put(name, 0);
+        }
+        return carPositions;
+    }
+
 }
