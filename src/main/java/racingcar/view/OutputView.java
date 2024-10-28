@@ -2,7 +2,7 @@ package racingcar.view;
 
 import racingcar.model.Car;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class OutputView {
     public static void requestCarsName(){
@@ -13,12 +13,15 @@ public class OutputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public static void printEachResult(ArrayList<Car> cars){
+    public static void printEachResult(List<Car> cars){
         for (Car car : cars) {
             String carName=car.getName();
             int carScore=car.getScore();
             System.out.println(carName+" : " + "-".repeat(carScore));
+
         }
+        System.out.println(" ");
 
     }
+
 }

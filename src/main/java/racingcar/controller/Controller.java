@@ -36,6 +36,7 @@ public class Controller {
 
         for (int i=0;i<tryNum;i++){
             randomGameService.RandomGame(racingGame.getCars());
+            OutputView.printEachResult(racingGame.getCars());
 
         }
 
