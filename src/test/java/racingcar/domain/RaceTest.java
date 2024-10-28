@@ -9,11 +9,11 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class RaceTest {
+class RaceTest {
 
     @DisplayName("우승자 결정하는 기능 테스트")
     @Test
-    public void decisionWinnersTest() {
+    void decisionWinnersTest() {
         List<Car> Cars = new ArrayList<>();
         Cars.add(new Car("pobi"));
         Cars.add(new Car("won"));
@@ -33,7 +33,7 @@ public class RaceTest {
 
     @DisplayName("경주 종료 후 우승자가 올바르게 결정되는지 테스트")
     @Test
-    public void winnersNotNullTest() {
+    void winnersNotNullTest() {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi"));
         cars.add(new Car("won"));
@@ -51,7 +51,7 @@ public class RaceTest {
 
     @DisplayName("시도 횟수가 0 미만일 때 예외를 발생시키는지 테스트")
     @Test
-    public void invalidTryCountTest() {
+    void invalidTryCountTest() {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi"));
 

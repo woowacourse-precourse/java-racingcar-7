@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class RaceServiceTest {
 
-    private RaceService raceService;
+    RaceService raceService;
 
     @BeforeEach
     void setUp() {
@@ -17,7 +17,7 @@ public class RaceServiceTest {
 
     @DisplayName("자동차 이름을 쉼표 기준으로 분리하는 기능 테스트")
     @Test
-    public void splitCarNamesTest() {
+    void splitCarNamesTest() {
         String[] carNames = raceService.splitCarNames("pobi,won,juni");
         assertEquals(carNames[0], "pobi");
         assertEquals(carNames[1], "won");
