@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class RaceTest {
 
@@ -11,83 +13,45 @@ public class RaceTest {
     void 자동차_이름이_주어졌을_때() {
         Race race = new Race("sisu,java", "3");
         assertThat(race.getRacingCars().stream().map(Car::getName).toList()).containsExactly("sisu", "java");
-
     }
 
-    @Test
-    void 자동차_이름이_5자_초과일_때() {
+    @ParameterizedTest
+    @CsvSource(value = {"longNameTest,test,java,sisu:3", "java jigi,test,java,sisu:3"}, delimiter = ':')
+    void 자동차_이름이_5자_초과일_때(String carNames, String roundInput) {
         assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("longNameTest,test,java,sisu", "3");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("java jigi,test,java,sisu", "3");
+            Race race = new Race(carNames, roundInput);
         });
     }
 
-    @Test
-    void 이름이_없는_입력값이_주어질_때() {
+    @ParameterizedTest
+    @CsvSource(value = {"'':3", ",sisu:3", "sisu,:3", "sisu,,java:3", "sisu,,:3"}, delimiter = ':')
+    void 이름이_없는_입력값이_주어질_때(String carName, String roundInput) {
         assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("", "3");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race(",sisu", "3");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu,", "3");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu,,java", "3");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu,,", "3");
+            Race race = new Race(carName, roundInput);
         });
     }
 
-    @Test
-    void 중복되는_이름이_있을_때() {
+    @ParameterizedTest
+    @CsvSource(value = {"sisu,sisu:3", "java,java,java:1"}, delimiter = ':')
+    void 중복되는_이름이_있을_때(String racingCarNames, String roundInput) {
         assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu,sisu", "3");
+            Race race = new Race(racingCarNames, roundInput);
         });
     }
 
-    @Test
-    void 정수가_아닌_값이_round_인자로_주어졌을_때() {
+    @ParameterizedTest
+    @CsvSource(value = {"sisu,I'm not an integer", "sisu,", "sisu,3.0", "sisu,!"})
+    void 정수가_아닌_값이_round_인자로_주어졌을_때(String carName, String roundInput) {
         assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu", "I'm not an integer");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu", "0.999999999999999999999");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu", "3.1");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu", "3e");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu", "3!");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu", "100000000000000000000000000000000000");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu", "");
+            Race race = new Race(carName, roundInput);
         });
     }
 
-    @Test
-    void 양수가_아닌_값이_round_인자로_주어졌을_때() {
+    @ParameterizedTest
+    @CsvSource(value = {"sisu:-1", "sisu:0", "sisu:10000000000000000000"}, delimiter = ':')
+    void 범위를_벗어난_값이_round_인자로_주어졌을_때(String carNames, String roundInput) {
         assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu", "-1");
+            Race race = new Race(carNames, roundInput);
         });
-        assertThrows(IllegalArgumentException.class, () -> {
-            Race race = new Race("sisu", "0");
-        });
-
     }
-//    @Test
-//    void 우승자_확인() {
-//        Race race = new Race("해건,수미,영재");
-////        assertThat(race.get)
-//    }
 }
