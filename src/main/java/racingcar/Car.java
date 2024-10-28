@@ -3,7 +3,6 @@ package racingcar;
 public class Car implements Vehicle {
     private String name;
     private Engine engine;
-
     private static int MAX_NAME_LENGTH = 5;
 
     public Car(String name, Engine engine) {
