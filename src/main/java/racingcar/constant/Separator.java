@@ -1,15 +1,15 @@
 package racingcar.constant;
 
 public enum Separator {
-	COMMA(",");
+    COMMA(",");
 
-	private final String separator;
+    private final String separator;
 
-	Separator(String separator) {
-		this.separator = separator;
-	}
+    Separator(String separator) {
+        this.separator = separator;
+    }
 
-	public String getSeparator() {
-		return separator;
-	}
+    public String getSeparator() {
+        return separator;
+    }
 }
