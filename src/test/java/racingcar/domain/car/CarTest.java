@@ -26,4 +26,38 @@ class CarTest {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> Car.of(carName, intSupplier));
     }
+
+    @Test
+    void 자동차_이동() {
+        String carName = "test";
+        IntSupplier intSupplier = () -> 4;
+        Car car = Car.of(carName, intSupplier);
+
+        car.move();
+
+        Assertions.assertEquals(car.getPosition(), 1);
+    }
+
+    @Test
+    void 자동차_이동_2() {
+        String carName = "test";
+        IntSupplier intSupplier = () -> 4;
+        Car car = Car.of(carName, intSupplier);
+
+        car.move();
+        car.move();
+
+        Assertions.assertEquals(car.getPosition(), 2);
+    }
+
+    @Test
+    void 자동차_이동_안함() {
+        String carName = "test";
+        IntSupplier intSupplier = () -> 3;
+        Car car = Car.of(carName, intSupplier);
+
+        car.move();
+
+        Assertions.assertEquals(car.getPosition(), 0);
+    }
 }
