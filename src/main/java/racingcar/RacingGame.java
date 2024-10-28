@@ -11,6 +11,7 @@ public class RacingGame {
 
     public void start() {
         inputCarNames();
+        inputAttempts();
     }
 
     // 자동차 이름 입력
@@ -20,6 +21,15 @@ public class RacingGame {
         String[] carNames = input.split(",");
         for (String name : carNames) {
             cars.add(new Car(name.trim()));
+        }
+    }
+
+    // 시도 횟수 입력
+    private void inputAttempts() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        attempts = Integer.parseInt(Console.readLine());
+        if (attempts <= 0) {
+            throw new IllegalArgumentException("횟수는 1 이상의 정수여야 합니다.");
         }
     }
 }
