@@ -19,18 +19,7 @@ import racingcar.view.input.exception.InputException;
  * @since : 24. 10. 27.
  */
 class RacingRequestTest {
-
-
-
-  @BeforeEach
-  void setUp(){
-  }
-
-  @Test
-  void from() {
-  }
-
-
+  
   @DisplayName("[Success]from : 올바른 사용자 입력")
   @ParameterizedTest
   @MethodSource("validUserInputs")
