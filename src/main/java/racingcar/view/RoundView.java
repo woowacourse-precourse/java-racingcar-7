@@ -15,13 +15,13 @@ public class RoundView {
 
     public void printRound() {
         List<RacingRecord> records = racingGame.getRecords();
-        String printResult = "";
+        StringBuilder printResult = new StringBuilder();
 
         for (RacingRecord record : records) {
             String carName = record.getCarName();
             int moveDistance = record.getMoveDistance();
 
-            printResult += carName + " : " + "-".repeat(moveDistance) + "\n";
+            printResult.append(carName).append(" : ").append("-".repeat(moveDistance)).append("\n");
         }
         System.out.print(printResult + "\n");
     }

@@ -26,7 +26,7 @@ class RoundViewTest {
 
     @DisplayName("RoundView_생성_테스트")
     @Test
-    public void newInputValidator() {
+    public void newRoundView() {
         //given
         //when
         //then
@@ -37,10 +37,12 @@ class RoundViewTest {
     @Test
     public void printRoundTest() {
         //given
-        String expectedView = "pobi : -\n"
-                + "woni : \n"
-                + "jun : -\n"
-                + "\n";
+        String expectedView = """
+                pobi : -
+                woni :\s
+                jun : -
+                
+                """;
         //when
         racingGame.racing(List.of(4, 0, 4));
         roundView.printRound();
@@ -53,14 +55,16 @@ class RoundViewTest {
     @Test
     public void printTwoRoundTest() {
         //given
-        String expectedView = "pobi : -\n"
-                + "woni : \n"
-                + "jun : -\n"
-                + "\n"
-                + "pobi : --\n"
-                + "woni : -\n"
-                + "jun : --\n"
-                + "\n";
+        String expectedView = """
+                pobi : -
+                woni :\s
+                jun : -
+                
+                pobi : --
+                woni : -
+                jun : --
+                
+                """;
         //when
         racingGame.racing(List.of(4, 0, 4));
         roundView.printRound();
