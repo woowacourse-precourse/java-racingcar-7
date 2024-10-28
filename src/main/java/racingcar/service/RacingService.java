@@ -10,30 +10,38 @@ public class RacingService {
     List<Integer> randomNum = new ArrayList<>();
     List<Integer> movementNum = new ArrayList<>();
 
-    public void separateCarNames (String namesOfCars) {
+    public final OutputService outputService;
+
+    public RacingService(OutputService outputService) {
+        this.outputService = outputService;
+    }
+
+    public void separateCarNames(String namesOfCars) {
         nameOfCar = List.of(namesOfCars.split(","));
         for (String s : nameOfCar) { // movementNum 초기화
             movementNum.add(0);
         }
     }
 
-    public void race (int numberOfRaces) {
+    public void race(int numberOfRaces) {
+        outputService.printStartRacing();
         while (numberOfRaces > 0) {
             randomNum.clear();
             setRandomNum();
             decideStopOrGo();
+            outputService.printRacingResults(nameOfCar, movementNum);
             numberOfRaces--;
         }
     }
 
-    public void setRandomNum () {
+    public void setRandomNum() {
         for (int i=0; i<nameOfCar.size(); i++) {
             int num = Randoms.pickNumberInRange(0,9);
             randomNum.add(num);
         }
     }
 
-    public void decideStopOrGo () {
+    public void decideStopOrGo() {
         for (int i=0; i<randomNum.size(); i++) {
             if (randomNum.get(i) >= 4) {
                 int increaseMovementNum = movementNum.get(i)+1;
