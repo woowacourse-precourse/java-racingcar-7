@@ -13,6 +13,9 @@ import racingcar.view.Message;
 import racingcar.view.OutputView;
 
 public class GameService {
+    public static final int START_NUMBER = 0;
+    public static final int END_NUMBER = 9;
+    public static final int THRESHOLD = 4;
     private OutputView outputView = new OutputView();
     private InputView inputView = new InputView();
     private Validator validator = new Validator();
@@ -44,7 +47,7 @@ public class GameService {
 
     private void playSet(List<Car> cars) {
         for (Car car : cars) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            if (Randoms.pickNumberInRange(START_NUMBER, END_NUMBER) >= THRESHOLD) {
                 car.forward();
             }
             outputView.printResult(car.getStatus());
