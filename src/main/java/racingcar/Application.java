@@ -3,8 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import static java.lang.Integer.parseInt;
 
@@ -22,7 +20,6 @@ public class Application {
         isValidCars(carArr);
 
         //feat:2. 시도할 횟수 변수에 횟수 값 입력 받기
-
         String inputTry;
         System.out.println("시도할 횟수는 몇 회인가요?");
         inputTry = Console.readLine();
@@ -46,11 +43,8 @@ public class Application {
                 //4. 각 자동차의 전진 조건에 대해 정하기 위해 0-9사이의 무작위 값을 구한다.
                 Integer pickNum = Randoms.pickNumberInRange(0, 9);
                 //5. 만약 무작위 값이 4이상일 경우 전진해야하니, 해당 자동차의 키 값에 대한 value에 +1을 해준다.
-                if (pickNum >= 4) {
-                    String value = map.get(targetCar);
-                    value += "-";
-                    map.put(targetCar, value);
-                }
+                map = checkPickNum(pickNum, targetCar, map);
+
 
             }
 
@@ -126,5 +120,12 @@ public class Application {
         }
     }
 
-
+    //feat:1-2. 자동차 이름이 숫자일 경우 에러 출력(함수화)
+    public static HashMap<String, String> checkPickNum(Integer pickNum, String targetCar, HashMap<String, String> map){
+        if (pickNum >= 4) {
+            String value = map.get(targetCar);
+            value += "-";
+            map.put(targetCar, value);
+        }
+    return map;
 }
