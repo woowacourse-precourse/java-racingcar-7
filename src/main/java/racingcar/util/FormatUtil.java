@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.domain.dto.CarSnapShot;
 import racingcar.dto.WinnerDto;
 
-public class Format {
+public class FormatUtil {
 
     public static String joinCarStatus(CarSnapShot carSnapShot) {
         return carSnapShot.getName()
