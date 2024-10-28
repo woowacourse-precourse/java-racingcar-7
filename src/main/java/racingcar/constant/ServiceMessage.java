@@ -8,7 +8,6 @@ public enum ServiceMessage {
     PLAYING_RACING_MOVE_LENGTH("-"),
     WINNER_USER("최종 우승자 : ");
 
-
     private final String message;
 
     ServiceMessage(String message) {

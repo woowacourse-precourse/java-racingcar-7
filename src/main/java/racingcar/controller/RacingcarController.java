@@ -8,12 +8,12 @@ import racingcar.model.RacingPlayingCycle;
 import racingcar.model.RacingcarDataVerification;
 import racingcar.splitter.RacingcarSplitter;
 import racingcar.view.InputView;
-import racingcar.view.OuputView;
+import racingcar.view.OutputView;
 
 public class RacingcarController {
     private final FindManyMovingRacingcar findManyMovingRacingcar;
     private final InputView inputView;
-    private final OuputView outputView;
+    private final OutputView outputView;
     private final RacingcarDataVerification racingcarDataVerification;
     private final RacingPlayingCycle racingPlayingCycle;
     private final RacingcarSplitter splitter;
@@ -21,7 +21,7 @@ public class RacingcarController {
     public RacingcarController() {
         findManyMovingRacingcar = new FindManyMovingRacingcar();
         inputView = new InputView();
-        outputView = new OuputView();
+        outputView = new OutputView();
         racingcarDataVerification = new RacingcarDataVerification();
         racingPlayingCycle = new RacingPlayingCycle();
         splitter = new RacingcarSplitter();
