@@ -4,23 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.vehicle.Car;
+import racingcar.vehicle.Vehicle;
 
 public class Winner {
 
-    static List<Car> winners = new ArrayList<>();
+    static List<Vehicle> winners = new ArrayList<>();
 
-    public List<Car> getWinners() {
+    public List<Vehicle> getWinners() {
         return winners;
     }
 
-    public List<Car> determineWinners(List<Car> cars) {
-        int topForwardCount = cars.stream()
-                .mapToInt(car -> car.getForwardCount())
+    public void determine(List<Vehicle> vehicles) {
+        int topForwardCount = vehicles.stream()
+                .mapToInt(vehicle -> vehicle.getForwardCount())
                 .max()
                 .orElse(0);
 
-        return cars.stream()
-                .filter(car -> car.getForwardCount() == topForwardCount)
+        winners = vehicles.stream()
+                .filter(vehicle -> vehicle.getForwardCount() == topForwardCount)
                 .collect(Collectors.toList());
     }
 
