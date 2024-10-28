@@ -28,6 +28,7 @@ public class Controller {
             race.roundMove(cars);
             Output.printRoundResult(cars);
         }
+        System.out.print("최종 우승자 : ");
         Output.printWinner(cars);
     }
 }
