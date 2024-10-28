@@ -5,11 +5,13 @@ import java.util.List;
 
 public class Validation {
 
-    private static final String WRONG_CAR_NAME_INPUT_MESSAGE = "올바르지 못한 자동차이름";
+    private static final String WRONG_CAR_NAME_INPUT_MESSAGE = "올바르지 못한 자동차 입력";
     private static final String WRONG_TRY_INPUT_MESSAGE = "올바르지 못한 시도 횟수";
-    private static final String DUPLICATE_CAR_NAME_MESSAGE = "중복된 자동차이름";
 
     public static void checkCarNames(String[] carNames) {
+        if (carNames.length < 2) {
+            throw new IllegalArgumentException(WRONG_CAR_NAME_INPUT_MESSAGE);
+        }
         for (String carName : carNames) {
             if (carName.isEmpty() || carName.length() > 5) {
                 throw new IllegalArgumentException(WRONG_CAR_NAME_INPUT_MESSAGE);
@@ -23,7 +25,7 @@ public class Validation {
 
         for (String carName : carNames) {
             if (duplicatedCarNames.contains(carName)) {
-                throw new IllegalArgumentException(DUPLICATE_CAR_NAME_MESSAGE);
+                throw new IllegalArgumentException(WRONG_CAR_NAME_INPUT_MESSAGE);
             }
             duplicatedCarNames.add(carName);
         }
@@ -31,7 +33,7 @@ public class Validation {
 
     public static int checkTryCounts(String tryCounts) {
         int counts;
-        
+
         try {
             counts = Integer.parseInt(tryCounts);
         } catch (NumberFormatException e) {
