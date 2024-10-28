@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.GameData;
+import racingcar.engine.GameEngine;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

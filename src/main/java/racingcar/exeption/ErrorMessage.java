@@ -1,4 +1,4 @@
-package racingcar.utils;
+package racingcar.exeption;
 
 public enum ErrorMessage {
     CAR_NAME_DUPLICATED("중복된 차 이름이 존재합니다."),

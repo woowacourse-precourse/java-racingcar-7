@@ -5,7 +5,7 @@ import static racingcar.domain.GameConstants.MAXIMUM_CAR_NAME_LENGTH;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import racingcar.utils.ErrorMessage;
+import racingcar.exeption.ErrorMessage;
 import racingcar.utils.Util;
 
 public class CarNames {

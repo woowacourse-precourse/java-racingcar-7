@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.engine;
 
 import java.util.List;
 import java.util.stream.Collectors;
