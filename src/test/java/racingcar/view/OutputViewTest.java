@@ -3,8 +3,8 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-import racingcar.model.Car;
-import racingcar.model.Winner;
+import racingcar.domain.Car;
+import racingcar.domain.Winner;
 
 import java.util.List;
 

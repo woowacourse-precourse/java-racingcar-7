@@ -1,6 +1,5 @@
-package racingcar.model;
+package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.utils.RandomUtils;
 
 public class Car {
