@@ -9,10 +9,10 @@ public class CarController {
 
     public void start() {
         InputView.displayInputPrompt();
-        String carNames = InputView.readStringInput();
+        String carNames = InputView.readInput();
         carService.createCarModel(carNames);
         InputView.displayTryCountPrompt();
-        int tryCount = InputView.readNumberInput();
+        int tryCount = carService.validateAndParseTryCount(InputView.readInput());
         OutPutView.displayResultMessage();
         for (int i = 0; i < tryCount; i++) {
             carService.incrementCars();

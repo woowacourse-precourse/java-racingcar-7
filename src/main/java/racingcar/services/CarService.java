@@ -24,4 +24,12 @@ public class CarService {
     public List<String> getWinners() {
         return cars.getWinners();
     }
+
+    public int validateAndParseTryCount(String tryCount) {
+        try {
+            return Integer.parseInt(tryCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다: " + tryCount);
+        }
+    }
 }
