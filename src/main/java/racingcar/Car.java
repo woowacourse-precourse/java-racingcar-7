@@ -30,7 +30,7 @@ public class Car {
         }
     }
 
-    public String displayStatus() {
+    public String getStatus() {
         return name.trim() + " : " + "-".repeat(position);
     }
 
