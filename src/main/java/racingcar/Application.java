@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.vo.CarVO;
 
 public class Application {
     public static void main(String[] args) {
@@ -37,6 +38,25 @@ public class Application {
             String trim = validateNames.get(i).trim();
             CarVO carVO = new CarVO(trim);
             carVOList.add(carVO);
+        }
+
+        /**
+         * 4. 자동차 이동 및 상태 출력
+         *    - 각 자동차 객체별로 무작위 값 생성
+         *    - 4 이상인 경우 이동거리 값 1 증가
+         *    - 매 이동 후 자동차의 현재 상태 출력
+         *    - 이동 횟수 만큼 반복
+         */
+        for (int i = 0; i < validateMoveCnt; i++) {
+            for (CarVO carVO : carVOList) {
+                carVO.move();
+            }
+            // 이동 후 각 자동차의 상태를 출력
+            System.out.println("실행 결과");
+            for (CarVO carVO : carVOList) {
+                System.out.println(carVO.getCurrentState());
+            }
+            System.out.println();
         }
     }
 }
