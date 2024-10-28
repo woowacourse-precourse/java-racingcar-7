@@ -17,7 +17,7 @@ class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        String carNames = "pobi,haeyoon,hae";
+        String carNames = "pobi,yoon,hae";
         int gameCount = 5;
 
         InputHandler inputHandler = new InputHandler() {
@@ -43,7 +43,7 @@ class RacingGameTest {
         racingGame.run();
         assertEquals(3, cars.size());
         assertEquals("pobi", cars.get(0).carName());
-        assertEquals("haeyoon", cars.get(1).carName());
+        assertEquals("yoon", cars.get(1).carName());
         assertEquals("hae", cars.get(2).carName());
     }
 
