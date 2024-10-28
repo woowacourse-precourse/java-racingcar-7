@@ -19,7 +19,7 @@ public class AppConfig {
         inboundAdapter = new InputAdapter(outputPort, inputPort, gameUseCase);
     }
 
-    public InboundAdapter getCliInputAdapter() {
+    public InboundAdapter getInboundAdapter() {
         return this.inboundAdapter;
     }
 }
