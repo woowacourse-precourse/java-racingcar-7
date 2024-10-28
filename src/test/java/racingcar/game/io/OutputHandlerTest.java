@@ -34,20 +34,6 @@ class OutputHandlerTest {
         output.reset();
     }
 
-    @DisplayName("이동할지 횟수 입력 안내 메시지를 출력한다.")
-    @ParameterizedTest
-    @EnumSource(names = {"ATTEMPT_COUNT_INPUT_NAVIGATE"})
-    void testShowAttemptCountInputMessage(OutputMessage outputMessage) {
-        // given
-        String messageTemplate = outputMessage.getTemplate();
-
-        // when
-        outputHandler.showAttemptCountInputMessage();
-
-        // then
-        assertThat(output.toString().replace("\n", "").strip()).isEqualTo(messageTemplate);
-    }
-
     @DisplayName("자동차 입력 안내 메시지를 출력한다.")
     @ParameterizedTest
     @EnumSource(names = {"CAR_INPUT_NAVIGATE"})
@@ -57,6 +43,20 @@ class OutputHandlerTest {
 
         // when
         outputHandler.showCarInputMessage();
+
+        // then
+        assertThat(output.toString().replace("\n", "").strip()).isEqualTo(messageTemplate);
+    }
+
+    @DisplayName("이동할지 횟수 입력 안내 메시지를 출력한다.")
+    @ParameterizedTest
+    @EnumSource(names = {"ATTEMPT_COUNT_INPUT_NAVIGATE"})
+    void testShowAttemptCountInputMessage(OutputMessage outputMessage) {
+        // given
+        String messageTemplate = outputMessage.getTemplate();
+
+        // when
+        outputHandler.showAttemptCountInputMessage();
 
         // then
         assertThat(output.toString().replace("\n", "").strip()).isEqualTo(messageTemplate);
@@ -83,7 +83,7 @@ class OutputHandlerTest {
             "pobi,woni,jun/3,3,1/pobi : ---woni : ---jun : -",
             "pobi,woni,jun/4,4,2/pobi : ----woni : ----jun : --"
     }, delimiter = '/')
-    public void testShowCurrentRaceSnapshot(String carNames, String counts, String expected) {
+    void testShowCurrentRaceSnapshot(String carNames, String counts, String expected) {
         // given
         List<Car> cars = createCars(carNames);
         List<Integer> moveCounts = createMoveCounts(counts);
