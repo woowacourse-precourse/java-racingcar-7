@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,5 +47,29 @@ public class CarRacingGameTests {
             assertThat(car.getPosition())
                     .isLessThan(randomWinner.getPosition());
         }
+    }
+
+    @Test
+    public void error_alreadyGameDone() {
+        // given
+        IOutputDisplay outputDisplay = new OutputDisplayImpl();
+        List<ICar> carList = new ArrayList<>();
+        int round = 10;
+        for (int i = 0; i < 4; i++) {
+            carList.add(
+                    new CarImpl("car" + i)
+            );
+        }
+
+        CarRacingGame carRacingGame = new CarRacingGame(outputDisplay, carList, round);
+
+        // when
+        carRacingGame.start();
+
+        Throwable throwable = catchThrowable(carRacingGame::start);
+
+        // then
+        assertThat(throwable)
+                .hasMessageContaining(ErrorMessage.ALREADY_GAME_DONE.getMessage());
     }
 }

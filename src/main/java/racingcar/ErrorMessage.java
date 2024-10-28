@@ -12,7 +12,8 @@ public enum ErrorMessage {
     CAR_NAME_LENGTH_OVER("자동차 이름은 5자리 이하여야합니다"),
 
     CAN_NOT_FOUND_WINNER("우승자를 찾을 수 없음"),
-    ;
+
+    ALREADY_GAME_DONE("이미 끝난 게임입니다");
 
     private String msg;
 

@@ -42,6 +42,9 @@ public class CarRacingGame {
         if (round <= 0) {
             throw new IllegalArgumentException(ErrorMessage.INSUFFICIENT_MIN_ROUND.getMessage());
         }
+        if (0 < currentRound) {
+            throw new IllegalCallerException(ErrorMessage.ALREADY_GAME_DONE.getMessage());
+        }
     }
 
     private void round() {
