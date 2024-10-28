@@ -17,8 +17,9 @@ public class Application {
                 cars.add(newCar);
             }
 
-            Game game = new Game(cars); // 게임 시작
-            
+            Game game = new Game(cars);
+            game.StartGame(); // 게임 시작
+
         } catch (IllegalArgumentException e) {
             System.out.println("입력 오류: " + e.getMessage());
         }
