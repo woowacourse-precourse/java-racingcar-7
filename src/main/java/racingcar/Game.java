@@ -15,7 +15,7 @@ public class Game {
         try{
             String readString= Console.readLine();
             String regex = "^([A-Za-z0-9][A-Za-z0-9 ]{0,4})(,[A-Za-z0-9][A-Za-z0-9 ]{0,4})*$";
-            if(Pattern.matches(regex, readString))
+            if(!Pattern.matches(regex, readString))
                 throw new IllegalArgumentException();
             carNames = List.of(readString.split(","));
 
@@ -30,7 +30,7 @@ public class Game {
         try{
             String readString = Console.readLine();
             String regex = "^[^0]\\d*$";
-            if(Pattern.matches(regex, readString))
+            if(!Pattern.matches(regex, readString))
                 throw new IllegalArgumentException();
             moveNumber = Integer.parseInt(readString);
         }catch (Exception e){
