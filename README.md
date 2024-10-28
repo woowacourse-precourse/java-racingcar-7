@@ -72,8 +72,8 @@ Cars
 - [x] 자동차 최대 이동 거리가 얼마인지 계산하는 메서드가 제대로 작동하는지 테스트한다.
 
 Racing
-- [ ] Racing 생성 및 tryCount 제대로 저장되는지 확인한다.
-- [ ] tryCount 제대로 저장되어 올바른 isProgress 값을 반환하는지 테스트한다.
+- [x] tryCount 제대로 저장되는지 확인한다.
+- [x] tryCount 제대로 저장되어 올바른 isProgress 값을 반환하는지 테스트한다.
 
 RacingResult
 - [ ] 한 명이 우승자일 때 한 명의 우승자만 특정지어 올바르게 판단해서 우승자를 반환하는지 테스트한다.
