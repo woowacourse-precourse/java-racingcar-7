@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import util.ParsingUtil;
 
-public class carNameValidator {
+public class CarNameValidator {
     // 정규식 패턴 객체를 상수로 정의, 영문자/한글/숫자만 허용하고 특수문자는 제외
     private static final Pattern VALID_NAME_PATTERN = Pattern.compile("^[a-zA-Z가-힣0-9]+$");
 
@@ -19,8 +19,8 @@ public class carNameValidator {
     }
 
     public static void isBlank(String input) {
-        if (input.equals(" ")) {
-            throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다.");
+        if (input.contains(" ")) {
+            throw new IllegalArgumentException("자동차 이름은 공백이 포함될 수 없습니다.");
         }
     }
 
@@ -34,7 +34,7 @@ public class carNameValidator {
         checkEmpty(input);
         checkCarNameLength(input);
         isBlank(input);
-        checkspecialCharacters(input);
+        checkSpecialCharacters(input);
     }
 
     public static void checkCarNameLength(String input) {
@@ -43,7 +43,7 @@ public class carNameValidator {
         }
     }
 
-    public static void checkspecialCharacters(String input) {
+    public static void checkSpecialCharacters(String input) {
         if (!VALID_NAME_PATTERN.matcher(input).matches()) {
             throw new IllegalArgumentException("특수문자는 포함시킬 수 없습니다.");
         }
@@ -52,7 +52,7 @@ public class carNameValidator {
 
     //대소문자는 구별한다.
     public static void checkDuplicateNames(List<String> carNames) {
-        carNames = ParsingUtil.DuplicateNames(carNames);
+        carNames = ParsingUtil.convertToLowercase(carNames);
         if (carNames.size() != new HashSet<>(carNames).size()) {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }

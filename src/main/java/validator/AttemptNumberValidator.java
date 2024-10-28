@@ -2,7 +2,7 @@ package validator;
 
 import java.math.BigInteger;
 
-public class attemptNumberValidator {
+public class AttemptNumberValidator {
 
     private static final BigInteger INT_MIN = BigInteger.ZERO;
     private static final BigInteger INT_MAX = BigInteger.valueOf(Integer.MAX_VALUE);
