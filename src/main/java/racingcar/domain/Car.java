@@ -22,6 +22,12 @@ public class Car {
 		}
 	}
 
+	public void move(int number) {
+		if (number >= 4) {
+			position++;
+		}
+	}
+
 	private boolean isInvalidName(String name) {
 		return name == null || name.trim().isEmpty() || name.length() > MAX_NAME_LENGTH;
 	}
