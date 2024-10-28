@@ -77,8 +77,10 @@ public class Racing {
     }
 
     private void attemptsMoving() {
+        System.out.println("\n실행 결과");
         for (int i = 0; i < attemptsCnt; i++) {
             movingCarsInTurn();
+            printCurrent();
         }
     }
 
@@ -102,5 +104,12 @@ public class Racing {
                 moveForward(name);
             }
         }
+    }
+
+    private void printCurrent() {
+        for (String name : racingCars.keySet()) {
+            System.out.println(name + " : " + racingCars.get(name));
+        }
+        System.out.println();
     }
 }
