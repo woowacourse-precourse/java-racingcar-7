@@ -1,25 +1,8 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Validator {
-    public List<Car> validateAndParseCarNames(String carNamesInput) {
-        validateNameEmpty(carNamesInput);
-
-        String[] names = carNamesInput.split(",");
-        List<Car> cars = new ArrayList<>();
-
-        for (String name : names) {
-            String trimName = name.trim(); // 이름 양 끝 공백 제거
-            validateNameLength(trimName);
-            validateNameDuplicate(trimName, cars);
-            cars.add(new Car(trimName, ""));
-        }
-
-        return cars;
-    }
-
     public void validateNameEmpty(String name) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("빈 이름은 입력할 수 없습니다.");
@@ -37,15 +20,6 @@ public class Validator {
             if (car.getName().equals(name)) {
                 throw new IllegalArgumentException("중복된 이름은 허용되지 않습니다.");
             }
-        }
-    }
-
-    public int validateAndParseInteger(String input) {
-        validateCountEmpty(input);
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("int 범위의 양수만 입력 가능합니다.");
         }
     }
 

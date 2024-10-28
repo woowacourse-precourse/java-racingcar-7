@@ -7,16 +7,18 @@ import java.util.List;
 public class Race {
     private final Validator validator;
     private final View view;
+    private final Parser parser;
 
-    public Race(Validator validator, View view) {
-        this.validator = validator;
-        this.view = view;
+    public Race(Config config) {
+        this.validator = config.getValidator();
+        this.view = config.getView();
+        this.parser = config.getParser();
     }
 
     public void run() {
-        List<Car> cars = validator.validateAndParseCarNames(view.scanCarNames());
+        List<Car> cars = parser.parseCarNames(view.scanCarNames());
 
-        int attemptCount = validator.validateAndParseInteger(view.scanAttemptCount(cars));
+        int attemptCount = parser.parseAttemptCount(view.scanAttemptCount(cars));
         validator.validatePositive(attemptCount);
 
         startRace(cars, attemptCount);
