@@ -19,8 +19,6 @@ public class RacingCarService {
     }
 
     public List<RacingCar> findWinner(final Collection<RacingCar> racingCars) {
-//        int biggestScore = 0;
-//        AtomicInteger biggestScore = new AtomicInteger(0);
         List<RacingCar> winners = new LinkedList<>();
         int biggestScore = 0;
         for(RacingCar racingCar : racingCars){
