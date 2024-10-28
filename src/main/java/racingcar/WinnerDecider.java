@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinnerDecider {
-    private Car[] cars;
+    private ArrayList<Car> cars;
 
-    public WinnerDecider(Car[] cars) {
+    public WinnerDecider(ArrayList<Car> cars) {
         this.cars = cars;
     }
 

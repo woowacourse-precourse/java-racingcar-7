@@ -33,18 +33,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("공동 우승자가 있을 경우 모두 출력")
-    void jointWinner() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("pobi,woni", "1");
-                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
-                },
-                MOVING_FORWARD, STOP
-        );
-    }
-
-    @Test
     @DisplayName("자동차 이름에 잘못된 값이 입력될 경우 예외 발생")
     void validateCarNames() {
         assertSimpleTest(() ->

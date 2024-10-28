@@ -2,10 +2,13 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RacingController {
-    private Car[] cars;
+import java.util.ArrayList;
+import java.util.List;
 
-    public RacingController(String[] carNames) {
+public class RacingController {
+    private ArrayList<Car> cars;
+
+    public RacingController(List<String> carNames) {
         this.cars = createCars(carNames);
     }
 
@@ -18,10 +21,10 @@ public class RacingController {
         }
     }
 
-    private Car[] createCars(String[] carNames) {
-        Car[] cars = new Car[carNames.length];
-        for (int i = 0; i < carNames.length; i++) {
-            cars[i] = new Car(carNames[i]);
+    private ArrayList<Car> createCars(List<String> carNames) {
+        ArrayList<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return cars;
     }
@@ -39,7 +42,7 @@ public class RacingController {
         }
     }
 
-    public Car[] getCars() {
+    public ArrayList<Car> getCars() {
         return cars;
     }
 }
