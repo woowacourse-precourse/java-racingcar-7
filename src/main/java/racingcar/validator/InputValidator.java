@@ -14,28 +14,35 @@ public class InputValidator {
     }
 
     public static void validatePlayerCount(String[] players) {
-        if (players.length < 2) {
+        final int MIN_PLAYER_COUNT = 2;
+
+        if (players.length < MIN_PLAYER_COUNT) {
             throw new IllegalArgumentException("플레이어 수는 최소 두명 이상이어야 합니다.");
         }
     }
 
     public static void validatePlayerName(String[] players) {
+        final int MAX_PLAYER_NAME_LENGTH = 5;
+        final int MIN_PLAYER_NAME_LENGTH = 1;
+
         for (String player : players) {
             int playerNameLength = player.trim().length();
 
-            if (playerNameLength > 5) {
+            if (playerNameLength > MAX_PLAYER_NAME_LENGTH) {
                 throw new IllegalArgumentException("플레이어 이름은 5자 이하만 가능합니다.");
-            } else if (playerNameLength == 0) {
+            } else if (playerNameLength < MIN_PLAYER_NAME_LENGTH) {
                 throw new IllegalArgumentException("플레이어 이름은 공백일 수 없습니다.");
             }
         }
     }
 
     public static void validateRound(String strRound) {
+        final int MIN_ROUND = 0;
+
         try {
             int round = Integer.parseInt(strRound);
 
-            if (round < 0) {
+            if (round < MIN_ROUND) {
                 throw new IllegalArgumentException("음수는 허용되지 않습니다.");
             }
         } catch (NumberFormatException e) {
