@@ -59,4 +59,51 @@
 
 #### 예외 처리 파트
 
-- [ ] 사용자가 잘못된 값을 입력하면 예외 발생 기능
+- [x] 사용자가 잘못된 값을 입력하면 예외 발생 기능
+
+### 프로젝트 패키지 구조
+
+```
+.
+└── java
+    └── racingcar
+        ├── Application.java
+        ├── config
+        │   └── AppConfig.java
+        ├── controller
+        │   ├── RacingCarController.java
+        │   └── RacingCarControllerImpl.java
+        ├── converter
+        │   └── RacingHistoryConverter.java
+        ├── dto
+        │   ├── CarDto.java
+        │   └── RacingHistoryDto.java
+        ├── model
+        │   └── domain
+        │       ├── Car.java
+        │       ├── RacingHistory.java
+        │       ├── comparator
+        │       │   └── CarMovedDistanceComparator.java
+        │       └── vo
+        │           ├── CarName.java
+        │           └── Distance.java
+        ├── repository
+        │   ├── CarRepository.java
+        │   ├── InMemoryCarRepository.java
+        │   ├── InMemoryRacingHistoryRepository.java
+        │   └── RacingHistoryRepository.java
+        ├── service
+        │   ├── CarService.java
+        │   ├── CarServiceImpl.java
+        │   ├── InputParsingService.java
+        │   ├── InputParsingServiceImpl.java
+        │   ├── RacingHistoryService.java
+        │   ├── RacingHistoryServiceImpl.java
+        │   ├── RacingService.java
+        │   └── RacingServiceImpl.java
+        └── view
+            ├── ConsoleInputView.java
+            ├── ConsoleOutputView.java
+            ├── InputView.java
+            └── OutputView.java
+```
