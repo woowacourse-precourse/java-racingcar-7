@@ -3,7 +3,7 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
-import racingcar.validator.CarNameValidator;
+import racingcar.validator.RacingCarNameValidator;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -15,12 +15,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingCarServiceTest {
 
     private RacingCarService racingCarService;
-    private CarNameValidator carNameValidator;
+    private RacingCarNameValidator racingCarNameValidator;
 
     @BeforeEach
     void setUp() {
-        carNameValidator = new CarNameValidator();
-        racingCarService = new RacingCarService(carNameValidator);
+        racingCarNameValidator = new RacingCarNameValidator();
+        racingCarService = new RacingCarService(racingCarNameValidator);
     }
 
     @Test

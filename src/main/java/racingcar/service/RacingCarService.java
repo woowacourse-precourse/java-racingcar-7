@@ -2,7 +2,7 @@ package racingcar.service;
 
 import racingcar.constants.RacingCarConstants;
 import racingcar.domain.RacingCar;
-import racingcar.validator.CarNameValidator;
+import racingcar.validator.RacingCarNameValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +10,10 @@ import java.util.List;
 
 public class RacingCarService {
     private final List<RacingCar> racingCars;
-    private final CarNameValidator carNameValidator;
+    private final RacingCarNameValidator racingCarNameValidator;
 
-    public RacingCarService(CarNameValidator carNameValidator) {
-        this.carNameValidator = carNameValidator;
+    public RacingCarService(RacingCarNameValidator racingCarNameValidator) {
+        this.racingCarNameValidator = racingCarNameValidator;
         this.racingCars = new ArrayList<>();
     }
 
@@ -58,8 +58,8 @@ public class RacingCarService {
 
     public void createRacingCarsBySplitCarsName(String[] carsNames) {
         for (String carName : carsNames) {
-            carNameValidator.validateCarNameLength(carName);
-            carNameValidator.validateCarNameIsEmpty(carName);
+            racingCarNameValidator.validateCarNameLength(carName);
+            racingCarNameValidator.validateCarNameIsEmpty(carName);
             this.racingCars.add(new RacingCar(carName, new ArrayList<>()));
         }
     }

@@ -2,7 +2,7 @@ package racingcar.validator;
 
 import racingcar.constants.ValidationConstants;
 
-public class CarNameValidator {
+public class RacingCarNameValidator {
 
     public void validateCarNameLength(String carName) {
         if (carName.length() > 5) {

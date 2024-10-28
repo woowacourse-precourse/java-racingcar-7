@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.service.RacingCarService;
-import racingcar.validator.CarRacingRepeatCountValidator;
+import racingcar.validator.RacingCarRepeatCountValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,14 +11,14 @@ public class RacingCarController {
     private final InputView inputView;
     private final OutputView outputView;
     private final RacingCarService racingCarService;
-    private final CarRacingRepeatCountValidator carRacingRepeatCountValidator;
+    private final RacingCarRepeatCountValidator racingCarRepeatCountValidator;
 
 
-    public RacingCarController(InputView inputView, OutputView outputView, RacingCarService racingCarService, CarRacingRepeatCountValidator carRacingRepeatCountValidator) {
+    public RacingCarController(InputView inputView, OutputView outputView, RacingCarService racingCarService, RacingCarRepeatCountValidator racingCarRepeatCountValidator) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.racingCarService = racingCarService;
-        this.carRacingRepeatCountValidator = carRacingRepeatCountValidator;
+        this.racingCarRepeatCountValidator = racingCarRepeatCountValidator;
     }
 
     public void run() {
@@ -26,7 +26,7 @@ public class RacingCarController {
         racingCarService.createRacingCars(inputCarsName);
 
         String inputCarRacingRepeatCount = inputView.inputCarRacingRepeatCount();
-        carRacingRepeatCountValidator.validateRepeatCountNumberFormat(inputCarRacingRepeatCount);
+        racingCarRepeatCountValidator.validateRepeatCountNumberFormat(inputCarRacingRepeatCount);
         int integerCarRacingRepeatCount = Integer.parseInt(inputCarRacingRepeatCount);
 
         for (int i = 0; i < integerCarRacingRepeatCount; i++) {

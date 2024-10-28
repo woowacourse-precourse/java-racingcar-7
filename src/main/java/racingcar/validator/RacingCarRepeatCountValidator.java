@@ -2,7 +2,7 @@ package racingcar.validator;
 
 import racingcar.constants.ValidationConstants;
 
-public class CarRacingRepeatCountValidator {
+public class RacingCarRepeatCountValidator {
 
     public void validateRepeatCountNumberFormat(String inputCarRacingRepeatCount) {
         try {
