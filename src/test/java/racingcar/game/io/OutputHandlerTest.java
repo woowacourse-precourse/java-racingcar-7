@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EnumSource;
 import racingcar.game.model.Car;
 import racingcar.game.model.RaceSnapshot;
 import racingcar.game.model.Winners;
@@ -31,6 +32,20 @@ class OutputHandlerTest {
     void restOutput() {
         System.setOut(System.out);
         output.reset();
+    }
+
+    @DisplayName("실행 결과 메시지를 출력한다.")
+    @ParameterizedTest
+    @EnumSource(names = {"RACE_RESULT_NAVIGATE"})
+    void testShowRaceResultMessage(OutputMessage outputMessage) {
+        // given
+        String messageTemplate = outputMessage.getTemplate();
+
+        // when
+        outputHandler.showRaceResultMessage();
+
+        // then
+        assertThat(output.toString().replace("\n", "").strip()).isEqualTo(messageTemplate);
     }
 
     @DisplayName("중간 이동 횟수를 출력한다.")
@@ -53,7 +68,6 @@ class OutputHandlerTest {
 
         // then
         assertThat(output.toString().replace("\n", "").strip()).isEqualTo(expected);
-
     }
 
     @DisplayName("자동차 경주 우승자를 출력한다.")
