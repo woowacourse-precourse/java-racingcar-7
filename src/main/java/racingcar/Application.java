@@ -9,9 +9,8 @@ public class Application {
             String inputNames = readCarNames();
             String inputCount = readCount();
             GameService game = new GameService(inputNames, inputCount);
-            System.out.println("입력된 자동차 이름 : ");
-            game.getCars().forEach(car -> System.out.println(car.getName()));
-            System.out.println("시도 횟수 : " + game.getCount());
+            game.play();
+            printWinner(game);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -25,6 +24,11 @@ public class Application {
     private static String readCount() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         return camp.nextstep.edu.missionutils.Console.readLine();
+    }
+
+    private static void printWinner(GameService game) {
+        String winner = game.getWinnersNames();
+        System.out.println("최종 우승자 : " + winner);
     }
 }
 

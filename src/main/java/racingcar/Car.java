@@ -3,10 +3,12 @@ package racingcar;
 // 자동차의 이름
 public class Car {
     private final String name;
+    private int position;
 
     public Car(String name) {
         validateName(name);
         this.name = name;
+        this.position = 0;
     }
 
     private void validateName(String name) {
@@ -22,8 +24,16 @@ public class Car {
         return name;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public void moveForward() {
+        this.position++;
+    }
+
     @Override
     public String toString() {
-        return name;
+        return name + " : " + "-".repeat(position);
     }
 }

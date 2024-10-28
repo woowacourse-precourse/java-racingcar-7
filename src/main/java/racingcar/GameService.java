@@ -4,9 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // 레이싱게임의 서비스 로직
-// 차 목록, 시도 횟수
+// 차 목록, 시도 횟수, (전진, 게임진행)
 public class GameService {
     private final List<Car> cars;
     private final int tryNumber;
@@ -43,11 +44,46 @@ public class GameService {
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public void play() {
+        for (int i = 0; i < tryNumber; i++) {
+            playRound();
+            printCurrentState();
+        }
     }
 
-    public int getCount() {
-        return tryNumber;
+    private void playRound() {
+        for (Car car : cars) {
+            if (isMoveForward()) {
+                car.moveForward();
+            }
+        }
+    }
+
+    private boolean isMoveForward() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        return randomNumber >= 4;
+    }
+
+    private void printCurrentState() {
+        String currentState = cars.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining("\n"));
+        System.out.println(currentState + "\n");
+    }
+
+    public List<Car> getWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    public String getWinnersNames() {
+        return getWinners().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 }
