@@ -8,13 +8,11 @@ public class InputView {
 
     public String readCarNames() {
         System.out.println(RACE_CAR_NAMES_INPUT);
-        String carNames = Console.readLine();
-        return carNames;
+        return Console.readLine();
     }
 
     public String readRaceCounts() {
         System.out.println(RACE_CAR_COUNTS_INPUT);
-        String raceCounts = Console.readLine();
-        return raceCounts;
+        return Console.readLine();
     }
 }
