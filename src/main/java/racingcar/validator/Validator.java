@@ -8,14 +8,15 @@ public class Validator {
     public boolean validateNames(String string) {
         if (string.isEmpty() || isOverOne(string)) {
             isOverOne(string);
+        if (string.isEmpty() || isSingleName(string)) {
         }
         List<String> names = Util.splitByComma(string);
         names.forEach(name -> isLimitExceed(name, 5));
         return true;
     }
 
-    private boolean isOverOne(String string) {
-        return Util.splitByComma(string).size() <= 1;
+    private boolean isSingleName(String string) {
+        return Util.splitByComma(string).size() == 1;
     }
 
     private void isLimitExceed(String string, int limit) {
