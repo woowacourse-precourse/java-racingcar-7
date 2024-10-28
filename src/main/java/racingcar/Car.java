@@ -16,11 +16,11 @@ public class Car {
         int randomNum;
         randomNum = Randoms.pickNumberInRange(0, 9);
 
-        if (randomNum < 5) {
-            this.stop();
+        if (randomNum >= 4) {
+            distance++;
             return;
         }
-        distance++;
+        stop();
     }
 
     public void stop() {
