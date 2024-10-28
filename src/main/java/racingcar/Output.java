@@ -33,6 +33,14 @@ public class Output {
         printBlankLine();
     }
 
+    public static void printFinalWinner(List<Car> carList){
+        StringJoiner finalWinner = new StringJoiner(", ");
+        for (Car car : carList) {
+            finalWinner.add(car.getName());
+        }
+        System.out.println("최종 우승자 : " + finalWinner);
+    }
+
     private static void printBlankLine(){
         System.out.println();
     }
