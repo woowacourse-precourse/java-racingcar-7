@@ -27,6 +27,7 @@ public class Application {
         validateCarList();
         attempt = inputAttempt();
         createGameScores();
+        simulate();
 
     }
 
@@ -79,6 +80,12 @@ public class Application {
 
     public static void inputAttemptPrint(){
         System.out.println(ATTEMPT_PRINT);
+    }
+
+    public static void simulate(){
+        for(int i = 0; i < attempt; i++){
+            playRound();
+        }
     }
 
     public static void playRound(){
