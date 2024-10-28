@@ -7,6 +7,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<String> names) {
+        CarsValidator.validate(names);
         this.cars = names.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());

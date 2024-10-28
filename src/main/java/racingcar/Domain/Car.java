@@ -5,6 +5,8 @@ public class Car {
     private final Position position;
 
     public Car(String name) {
+        CarNameValidator.validate(name);
+
         this.name = CarName.from(name).toString();
         this.position = new Position();
     }
@@ -18,7 +20,6 @@ public class Car {
             position.moveForward();
         }
     }
-
 
     public String getName() {
         return name;

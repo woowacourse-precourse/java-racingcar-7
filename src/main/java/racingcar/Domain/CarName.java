@@ -5,7 +5,7 @@ public class CarName {
 
 
     private CarName(String value) {
-        CarNameValidatator.validate(value);
+        CarNameValidator.validate(value);
         this.value = value;
     }
 

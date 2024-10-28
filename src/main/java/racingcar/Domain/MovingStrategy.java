@@ -11,3 +11,4 @@ public class MovingStrategy {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER) >= FORWARD_THRESHOLD;
     }
 }
+

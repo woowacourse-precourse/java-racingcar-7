@@ -7,7 +7,7 @@ public class RacingGame {
     private final InputView inputView;
     private final OutputView outputView;
     private Cars cars;
-    private int moveCount;
+    private MoveCount moveCount;
 
     public RacingGame(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -19,12 +19,12 @@ public class RacingGame {
         cars = new Cars(inputView.readCarNames());
 
         inputView.requestMoveCount();
-        moveCount = inputView.readMoveCount();
+        moveCount = new MoveCount(inputView.readMoveCount());
     }
 
     private void race() {
         outputView.printRaceResult();
-        for (int i = 0; i < moveCount; i++) {
+        for (int i = 0; i < moveCount.getValue(); i++) {
             cars.move();
             outputView.printRoundResult(cars.getCars());
         }

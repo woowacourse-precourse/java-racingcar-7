@@ -7,7 +7,7 @@ import java.util.List;
 public class InputView {
 
     public void carnameInput() {
-        System.out.println("자동차 이름을 입력해 주세요.");
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     }
 
     public void requestMoveCount() {
@@ -15,12 +15,19 @@ public class InputView {
     }
 
     public List<String> readCarNames() {
-        String input = Console.readLine();
-        return Arrays.asList(input.split(","));
+        return Arrays.asList(Console.readLine().split(","));
     }
 
-    public int readMoveCount() {
-        return Integer.parseInt(Console.readLine());
+    public String readMoveCount() {
+        return Console.readLine();
+    }
+
+    private int validateMoveCount(String input) {
+        int count = Integer.parseInt(input);
+        if (count < 1) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
+        return count;
     }
 
 }

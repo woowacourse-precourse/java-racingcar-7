@@ -2,7 +2,7 @@ package racingcar.Domain;
 
 import racingcar.Message.ErrorMessage;
 
-public class CarNameValidatator {
+public class CarNameValidator {
     private static final int MAX_NAME_LENGTH = 5;
 
     private static void validateBlank(String name) {
@@ -17,9 +17,17 @@ public class CarNameValidatator {
         }
     }
 
+    private static void validateCharacters(String name) {
+        if (!name.matches("[a-zA-Z0-9가-힣]+")) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE_INVALID_CHARACTER);
+        }
+    }
+
     public static void validate(String name) {
         validateBlank(name);
         validateLength(name);
+        validateCharacters(name);
+
     }
 
 }
