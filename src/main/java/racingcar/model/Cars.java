@@ -26,9 +26,9 @@ public class Cars {
     }
 
     private void initCars(List<String> carNames) {
-        RandomIntGenerator randomIntGenerator = new RandomIntGenerator();
+        IntGeneratorStrategy intGeneratorStrategy = new RandomIntGeneratorStrategy();
         for (String carName : carNames) {
-            Car car = new Car(carName, randomIntGenerator);
+            Car car = new Car(carName, intGeneratorStrategy);
             cars.add(car);
         }
     }
