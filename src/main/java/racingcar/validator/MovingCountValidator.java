@@ -32,8 +32,8 @@ public class MovingCountValidator {
 
     private static Long validateBigIntegerConversion(String numberString) {
         try {
-            BigInteger bigIntegerValue = new BigInteger(numberString);
-            throw new RacingException(ErrorMessage.TOO_MANY_MOVING_COUNT);
+            new BigInteger(numberString);
+            throw RacingException.from(ErrorMessage.TOO_MANY_MOVING_COUNT);
         } catch (NumberFormatException e) {
             throw RacingException.from(ErrorMessage.INVALID_MOVING_COUNT);
         }
