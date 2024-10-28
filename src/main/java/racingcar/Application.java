@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -12,6 +13,8 @@ public class Application {
         int attempts = getAttempts();
         validateCarNames(carNames);
         validateAttempts(attempts);
+
+        List<Car> cars = createCars(carNames);
     }
 
     private static List<String> getCarNames() {
@@ -25,7 +28,6 @@ public class Application {
         return Integer.parseInt(Console.readLine());
     }
 
-    // 자동차 이름 유효성 검사
     private static void validateCarNames(List<String> carNames) {
         Set<String> uniqueNames = new HashSet<>(carNames);
         if (uniqueNames.size() != carNames.size()) {
@@ -38,10 +40,40 @@ public class Application {
         }
     }
 
-    // 시도 횟수 유효성 검사
     private static void validateAttempts(int attempts) {
         if (attempts < 1) {
             throw new IllegalArgumentException("시도 횟수는 1 이상의 숫자여야 합니다.");
         }
+    }
+
+    // 자동차 객체 생성
+    private static List<Car> createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
+        return cars;
+    }
+}
+
+class Car {
+    private final String name;
+    private int position;
+
+    public Car(String name) {
+        this.name = name;
+        this.position = 0;
+    }
+
+    public void moveForward() {
+        position++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
