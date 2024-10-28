@@ -14,11 +14,13 @@ public class MoveCountInputView implements InputView {
     }
 
     @Override
-    public void input(){
+    public String input(){
         System.out.println(MOVE_COUNT_INPUT_MESSAGE);
         String input = Console.readLine();
 
         isValidate(input);
+
+        return input;
     }
 
     @Override

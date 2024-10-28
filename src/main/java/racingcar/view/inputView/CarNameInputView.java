@@ -13,12 +13,14 @@ public class CarNameInputView implements InputView {
     }
 
     @Override
-    public void input(){
+    public String input(){
         System.out.println(CAR_NAME_INPUT_MESSAGE);
 
         String input = Console.readLine();
 
         isValidate(input);
+
+        return input;
     }
 
     @Override
