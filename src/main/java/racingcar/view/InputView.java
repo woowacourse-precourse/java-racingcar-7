@@ -8,8 +8,8 @@ public class InputView {
         return Console.readLine();
     }
 
-    public int inputAttemptCount() {
+    public String inputAttemptCount() {
         System.out.println("Enter number of attempts:");
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 }
