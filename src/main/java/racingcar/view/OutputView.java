@@ -13,25 +13,25 @@ public class OutputView {
 
     public static void requestForCarNames() {
         OutputWriter.displayMessage(REQUEST_FOR_CAR_NAMES);
-    } // requestForCarNames
+    }
 
     public static void requestForRaceCount() {
         OutputWriter.displayMessage(REQUEST_FOR_RACE_COUNT);
-    } // requestForRaceCount
+    }
 
     public static void displayRaceResult() {
         OutputWriter.displayNewLine();
         OutputWriter.displayMessage(RACE_RESULT);
-    } // displayRunResult
+    }
 
     public static void displayRoundResult(Cars cars) {
         for (Car car : cars.getCars()) {
             OutputWriter.displayMessage(car.getRoundResult());
-        } // end for
+        }
         OutputWriter.displayNewLine();
-    } // displayRoundResult
+    }
 
     public static void displayWinner(Cars cars) {
         OutputWriter.displayMessage(FINAL_WINNER_IS + cars.getWinnersName());
-    } // displayWinner
-} // class
+    }
+}

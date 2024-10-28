@@ -15,20 +15,20 @@ public class InputValidator {
     public static void validateCarNames(String input) {
         if (splitByComma(input)) {
             throw new IllegalArgumentException(ErrorMessage.PREFIX + ErrorMessage.CAR_NAME_MUST_BE_SPLIT_BY_COMMA);
-        } // end if
-    } // validateCarNames
+        }
+    }
 
     private static boolean splitByComma(String input) {
         return !carNamePattern.matcher(input).matches();
-    } // splitByComma
+    }
 
     public static void validateRaceCount(String input) {
         if (isNumber(input)) {
             throw new IllegalArgumentException(ErrorMessage.PREFIX + ErrorMessage.RACE_COUNT_ONLY_CAN_NUMBER);
-        } // end if
-    } // validateRaceCount
+        }
+    }
 
     private static boolean isNumber(String inputTimes) {
         return !numberPattern.matcher(inputTimes).matches();
-    } // isNumber
-} // class
+    }
+}

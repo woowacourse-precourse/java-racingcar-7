@@ -18,7 +18,7 @@ public class InputView {
         InputValidator.validateCarNames(input);
 
         return inputCarNames;
-    } // responseForCarNames
+    }
 
     public static int responseForRaceCount() {
         String inputTimes = Console.readLine();
@@ -26,5 +26,5 @@ public class InputView {
         InputValidator.validateRaceCount(inputTimes);
 
         return Integer.parseInt(inputTimes);
-    } // responseForRaceCount
-} // class
+    }
+}

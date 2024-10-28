@@ -17,7 +17,7 @@ class CarValidatorTest {
         assertDoesNotThrow(() -> {
             CarValidator.validateCar("jjang");
         });
-    } // validateCarNameLength
+    }
 
     @Test
     @DisplayName("자동차 이름이 5자 초과할 때 예외가 발생하는지")
@@ -26,7 +26,7 @@ class CarValidatorTest {
             CarValidator.validateCar("jjangi");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.PREFIX + ErrorMessage.CAR_NAME_MAX_LENGTH_IS_FIVE);
-    } // carNameLengthException
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
@@ -36,5 +36,5 @@ class CarValidatorTest {
             CarValidator.validateCar(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.PREFIX + ErrorMessage.CAR_NAME_MUST_BE_FILLED);
-    } // carNameBlankException
-} // class
+    }
+}

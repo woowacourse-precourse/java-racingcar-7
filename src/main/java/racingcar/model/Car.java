@@ -14,46 +14,45 @@ public class Car implements Comparable<Car> {
     private int position;
 
     public Car(String name) {
-        CarValidator.validateCar(name);
-
         this.name = name;
         this.position = INITIAL_POSITION;
-    } // Car
+        CarValidator.validateCar(name);
+    }
 
     public void move(int power) {
         if (power >= MOVEABLE_POWER) {
             position++;
-        } // end if
-    } // move
+        }
+    }
 
     public String getRoundResult() {
         return name + COLON + MOVE_BAR.repeat(position);
-    } // getRoundResult
+    }
 
     public String getName() {
         return name;
-    } // getName
+    }
 
     @Override
     public int compareTo(Car compareCar) {
         return Integer.compare(compareCar.position, this.position);
-    } // compareTo
+    }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
-        } // end if
+        }
 
         if (!(obj instanceof Car car)) {
             return false;
-        } // end if
+        }
 
         return Objects.equals(name, car.name);
-    } // equals
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(name);
-    } // hashCode
-} // class
+    }
+}

@@ -19,14 +19,14 @@ class CarsTest {
     @DisplayName("자동차 리스트 객체 생성")
     void createCars(List<Car> cars, String message) {
         assertThat(new Cars(cars)).isInstanceOf(Cars.class);
-    } // createCars
+    }
 
     static Stream<Arguments> generateData() {
         return Stream.of(
                 Arguments.of(List.of(new Car("pobi"), new Car("woni")), "중복 없을 때"),
                 Arguments.of(List.of(new Car("pobi"), new Car("woni"), new Car("jun"),
                         new Car("jjang"), new Car("lee")), "5대일 때"));
-    } // generateData
+    }
 
     @ParameterizedTest(name = "{index} : {2}")
     @MethodSource("generateExceptionData")
@@ -36,7 +36,7 @@ class CarsTest {
             new Cars(cars);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.PREFIX + expectedErrorMessage);
-    } // createCarsException
+    }
 
     static Stream<Arguments> generateExceptionData() {
         return Stream.of(
@@ -46,5 +46,5 @@ class CarsTest {
                         new Car("jjang"), new Car("lee"), new Car("hi")),
                         ErrorMessage.MAX_CAR_UNITS_IS_FIVE, "5대초과일 때")
         );
-    } // generateExceptionData
-} // class
+    }
+}

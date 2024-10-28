@@ -5,9 +5,9 @@ public class RaceCount {
 
     public RaceCount(int raceCount) {
         this.raceCount = raceCount;
-    } // RaceCount
+    }
 
     public int getRaceCount() {
         return raceCount;
-    } // getRaceCount
-} // class
+    }
+}

@@ -15,15 +15,15 @@ public abstract class IOTest {
         printStream = System.out;
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
-    } // setUp
+    }
 
     @AfterEach
     protected void printResult() {
         System.setOut(printStream);
         System.out.println(getOutput());
-    } // printResult
+    }
 
     protected String getOutput() {
         return outputStream.toString();
-    } // getOutput
-} // class
+    }
+}

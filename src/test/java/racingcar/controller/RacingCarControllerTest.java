@@ -27,7 +27,7 @@ class RacingCarControllerTest extends IOTest {
                 },
                 4, 3, 4, 4
         );
-    } // printRaceResult
+    }
 
     @Test
     @DisplayName("최종 우승자 출력 - 단독")
@@ -44,7 +44,7 @@ class RacingCarControllerTest extends IOTest {
                 },
                 4, 3, 4, 4
         );
-    } // printWinner
+    }
 
     @Test
     @DisplayName("최종 우승자 출력 - 공동")
@@ -61,5 +61,5 @@ class RacingCarControllerTest extends IOTest {
                 },
                 4, 4
         );
-    } // printWinners
-} // class
+    }
+}

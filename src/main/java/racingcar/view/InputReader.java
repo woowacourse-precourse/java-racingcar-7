@@ -7,5 +7,5 @@ public class InputReader {
 
     public static String inputMessage() {
         return Console.readLine();
-    } // inputMessage
-} // class
+    }
+}

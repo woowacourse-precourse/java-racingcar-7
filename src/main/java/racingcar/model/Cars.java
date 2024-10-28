@@ -18,37 +18,37 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        CarsValidator.validateCars(cars);
         this.cars = new ArrayList<>(cars);
-    } // Cars
+        CarsValidator.validateCars(cars);
+    }
 
     public void move() {
         for (Car car : cars) {
             car.move(getPower());
-        } // end for
-    } // move
+        }
+    }
 
     public int getPower() {
         return Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
-    } // getPower
+    }
 
     public Cars judgeWinnerCars() {
         Car maxPositionCar = findMaxPositionCar();
         cars.removeIf(car -> car.compareTo(maxPositionCar) != SAME_POSITION);
         return new Cars(cars);
-    } // judgeWinnerCars
+    }
 
     private Car findMaxPositionCar() {
         Collections.sort(cars);
         return cars.getFirst();
-    } // findMaxPositionCar
+    }
 
     public String getWinnersName() {
         List<String> winnersName = cars.stream().map(Car::getName).toList();
         return String.join(WINNER_SEPARATION_COMMA, winnersName);
-    } // getWinnersName
+    }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
-    } // getCars
-} // class
+    }
+}

@@ -20,7 +20,7 @@ class CarsValidatorTest {
         assertDoesNotThrow(() -> {
            CarsValidator.validateCars(cars);
         });
-    } // notDuplicateName
+    }
 
     @Test
     @DisplayName("중복되는 이름 입력 예외")
@@ -31,7 +31,7 @@ class CarsValidatorTest {
             CarsValidator.validateCars(cars);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.PREFIX + ErrorMessage.CAR_NAME_CANNOT_DUPLICATE);
-    } // duplicateException
+    }
 
     @Test
     @DisplayName("5대 이하일 때")
@@ -42,7 +42,7 @@ class CarsValidatorTest {
         assertDoesNotThrow(() -> {
             CarsValidator.validateCars(cars);
         });
-    } // maxCarUnits
+    }
 
     @Test
     @DisplayName("5대 초과일 때")
@@ -54,5 +54,5 @@ class CarsValidatorTest {
             CarsValidator.validateCars(cars);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.PREFIX + ErrorMessage.MAX_CAR_UNITS_IS_FIVE);
-    } // maxCarUnitsException
-} // class
+    }
+}

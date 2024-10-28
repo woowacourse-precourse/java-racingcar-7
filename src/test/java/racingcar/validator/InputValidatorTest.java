@@ -17,7 +17,7 @@ class InputValidatorTest {
         assertDoesNotThrow(() -> {
            InputValidator.validateCarNames(input);
         });
-    } // carNamesSplitByComma
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi;woni;jun", "pobi,woni;jun", "pobi; woni; jun"})
@@ -27,7 +27,7 @@ class InputValidatorTest {
            InputValidator.validateCarNames(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.PREFIX + ErrorMessage.CAR_NAME_MUST_BE_SPLIT_BY_COMMA);
-    } // carNamesSplitException
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "9"})
@@ -36,7 +36,7 @@ class InputValidatorTest {
         assertDoesNotThrow(() -> {
             InputValidator.validateRaceCount(input);
         });
-    } // raceCountIsNumber
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"네번", "백번", "one", "0", "-1", "10"})
@@ -46,5 +46,5 @@ class InputValidatorTest {
             InputValidator.validateRaceCount(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.PREFIX + ErrorMessage.RACE_COUNT_ONLY_CAN_NUMBER);
-    } // raceCountException
-} // class
+    }
+}

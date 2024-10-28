@@ -16,7 +16,7 @@ class CarTest {
     @DisplayName("자동차 객체 생성")
     void createCar(String input) {
         assertThat(new Car(input)).isInstanceOf(Car.class);
-    } // createCar
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "123456", "jjangi"})
@@ -25,7 +25,7 @@ class CarTest {
         assertThatThrownBy(() -> {
             new Car(input);
         }).isInstanceOf(IllegalArgumentException.class);
-    } // createCarException
+    }
 
     @ParameterizedTest
     @CsvSource(value = {"4,1", "3,0"}, delimiter = ',')
@@ -35,5 +35,5 @@ class CarTest {
         car.move(power);
 
         assertThat(car).extracting("position").isEqualTo(expectedPosition);
-    } // moveCar
-} // class
+    }
+}
