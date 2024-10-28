@@ -2,10 +2,13 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Assertions.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
@@ -31,6 +34,26 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"a,b,c", "a,b", "a, b  ", "pobi, cola"})
+    void createCarValidInput(String input) {
+        assertThatNoException().isThrownBy(()-> Car.createCars(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "  ", ",,", ",a,b,c", "a", "a,a", " \n\t", "a, ,b", "a,b,c,", "a,  a", "jaeeun,pobi"})
+    void createCarInputException(String input) {
+        assertThatThrownBy(() -> Car.createCars(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void wrong_tryCount_test() {
+        assertThatThrownBy(()-> {
+            RacingGame game = new RacingGame();
+            game.setTryCount(0);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
