@@ -35,6 +35,6 @@ public class OutputTest {
 
         gameResult = racingGame.getEachRoundResult();
         OutputView.roundResult(round.toStringRoundResult());
-        assertEquals("emily: 5\ntomas: 5\ngina: 5\n", round.toStringRoundResult());
+        assertEquals("emily: -----\ntomas: -----\ngina: -----\n", round.toStringRoundResult());
     }
 }
