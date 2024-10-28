@@ -5,21 +5,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Racing {
     private List<String> carNames = new ArrayList<>();
-    private Map<String, String> carPositions = new HashMap<>();
     private int round;
+    private Map<String, String> carPositions = new HashMap<>();
 
     public void setCarName() {
+        Printer.printInputCarNames();
         String inputCarName = Console.readLine();
         this.carNames = List.of(inputCarName.split(","));
 
         validateCarNames();
 
         for (String carName : carNames) {
-            carPositions.put(carName, "");  // 초기 상태를 빈 문자열로 설정
+            carPositions.put(carName, "");
         }
     }
 
@@ -36,7 +38,7 @@ public class Racing {
     }
 
     public void setRound() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        Printer.promptRound();
         String inputRound = Console.readLine();
 
         try {
@@ -49,7 +51,6 @@ public class Racing {
             throw new IllegalArgumentException("라운드는 정수여야 합니다.");
         }
     }
-
 
     private void forwardCar(int randomNumber, Map<String, String> carPositions, String carName){
         if (randomNumber >= 4) {
@@ -65,21 +66,16 @@ public class Racing {
             }
             printCarStatuses();
         }
+        winners();
     }
 
     private void printCarStatuses() {
-        System.out.println();
+        Printer.printNewLine();
 
         for (String carName : carNames) {
             String status = carPositions.get(carName);
-
-            if (status == null || status.isEmpty()) {
-                System.out.println(carName + " : ");
-            } else {
-                System.out.println(carName + " : " + status);
-            }
+            Printer.printCarStatus(carName, status);
         }
-        winners();
     }
 
     private void winners() {
@@ -98,6 +94,6 @@ public class Racing {
             }
         }
 
-        System.out.println("최종 우승자 : " + String.join(",", winners));
+        Printer.printWinners(winners);
     }
 }
