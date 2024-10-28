@@ -5,7 +5,15 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
     public static String[] getCarNames() {
         String carNames =  Console.readLine();
-        return carNames.split(",");
+        String[] carNameArray = carNames.split(",");
+
+        for (String carName : carNameArray) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            }
+        }
+
+        return carNameArray;
     }
 
     public static int getMovementCount() {
