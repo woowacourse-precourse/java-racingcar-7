@@ -1,5 +1,5 @@
 package validator;
 
 public interface ParseValidator {
-    void validateParseInt(String input);
+    void validateParse(String input);
 }

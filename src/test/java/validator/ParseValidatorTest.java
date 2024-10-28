@@ -25,7 +25,7 @@ public class ParseValidatorTest {
         @ValueSource(strings = {"a"})
         void carNameLengthTest(String input) {
             assertThatIllegalArgumentException()
-                    .isThrownBy(() -> parseValidator.validateParseInt(input))
+                    .isThrownBy(() -> parseValidator.validateParse(input))
                     .withMessage(Message.INVALID_PARSE_INT.getMessage());
         }
     }
@@ -37,7 +37,7 @@ public class ParseValidatorTest {
         @DisplayName("유효한 입력입니다.")
         @ValueSource(strings = {"5"})
         void carNameLengthTest(String input) {
-            assertThatCode(() -> parseValidator.validateParseInt(input))
+            assertThatCode(() -> parseValidator.validateParse(input))
                     .doesNotThrowAnyException();
         }
     }

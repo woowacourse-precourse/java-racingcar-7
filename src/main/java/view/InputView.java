@@ -25,7 +25,7 @@ public class InputView {
     public int getRaceCount() {
         System.out.println(Message.RACE_COUNT_MESSAGE.getMessage());
         String number = Console.readLine();
-        parseValidator.validateParseInt(number);
+        parseValidator.validateParse(number);
         Console.close();
         int raceCount = Integer.parseInt(number);
         raceCountValidator.validate(raceCount);
