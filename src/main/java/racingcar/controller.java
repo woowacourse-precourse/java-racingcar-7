@@ -41,12 +41,16 @@ public class controller {
         }
     }
 
+    public static void addWinnerList(Car tempCar, int score) {
+        if (tempCar.move_cnt == score) {
+            winner_list.add(tempCar);
+        }
+    }
+
     public static void getWinner(int score) {
         for (int i = 0; i < car_list.size(); i++) {
             Car tempCar = car_list.get(i);
-            if (tempCar.move_cnt == score) {
-                winner_list.add(tempCar);
-            }
+            addWinnerList(tempCar, score);
         }
     }
 
