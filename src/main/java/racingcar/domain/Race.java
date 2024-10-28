@@ -8,6 +8,10 @@ import racingcar.view.OutputView;
 
 public class Race {
 
+    private static final int THRESHOLD = 4;
+    private static final String DELIMITER = ", ";
+    private static final String DISTANCE_SYMBOL = "-";
+
     private final int tryCount;
     private final OutputView outputView;
     private List<RacingCar> racingCarList;
@@ -44,13 +48,13 @@ public class Race {
 
     private void moveCar(RacingCar racingCar) {
         if (canMoving()) {
-            racingCar.setPosition(racingCar.getPosition() + "-");
+            racingCar.setPosition(racingCar.getPosition() + DISTANCE_SYMBOL);
         }
         outputView.printRaceResult(racingCar.getName(), racingCar.getPosition());
     }
 
     private boolean canMoving() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+        return Randoms.pickNumberInRange(0, 9) >= THRESHOLD;
     }
 
     private int findLongestPosition() {
@@ -68,6 +72,6 @@ public class Race {
                 winners.add(racingCar.getName());
             }
         }
-        return String.join(",", winners);
+        return String.join(DELIMITER, winners);
     }
 }
