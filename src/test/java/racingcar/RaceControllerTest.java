@@ -2,7 +2,6 @@ package racingcar;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -39,41 +38,41 @@ public class RaceControllerTest {
 
         List<Car> cars = raceController.getCars();
 
-        for (Car car : cars) {
-            int position = car.getPosition();
-            System.out.println(car.getName() + " 위치: " + position);
-        }
+        cars.forEach(car ->
+                System.out.println(car.getName() + " 위치: " + car.getPosition())
+        );
+
+        cars.forEach(car ->
+                assertThat(car.getPosition()).isGreaterThanOrEqualTo(0)
+        );
     }
 
     @Test
     void 경주_시도_횟수에_따라_자동차_상태와_출력_형식_확인() {
-        raceController.startRace(5);
+        int attempts = 5;
+        raceController.startRace(attempts);
 
         String output = outputStream.toString();
-
-        assertTrue(output.contains("실행 결과"));
+        assertThat(output).contains("실행 결과");
 
         List<Car> cars = raceController.getCars();
-        for (Car car : cars) {
-            assertTrue(output.contains(car.getName() + " : "));
-        }
+        cars.forEach(car -> assertThat(output).contains(car.getName() + " : "));
 
         int resultCount = output.split("pobi : ").length - 1;
-        assertTrue(resultCount == 5, "시도 횟수만큼의 결과가 출력되어야 합니다.");
+        assertThat(resultCount).isEqualTo(attempts);
     }
 
     @Test
     void 우승자_결정_및_출력_테스트() {
         raceController.startRace(5);
-
         String output = outputStream.toString();
 
-        assertTrue(output.contains("최종 우승자 : "), "우승자 출력 형식이 올바르지 않습니다.");
+        assertThat(output).contains("최종 우승자 : ");
 
         List<Car> cars = raceController.getCars();
         boolean hasWinner = cars.stream()
                 .map(Car::getName)
                 .anyMatch(output::contains);
-        assertTrue(hasWinner, "우승자의 이름이 출력에 포함되어야 합니다.");
+        assertThat(hasWinner).isTrue();
     }
 }
