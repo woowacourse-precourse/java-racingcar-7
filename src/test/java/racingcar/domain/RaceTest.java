@@ -32,9 +32,10 @@ class RaceTest {
     @Test
     void SuccessCars() {
         Race cars = Race.of("car1,car2,car3");
-        NumberGenerator numberGenerator = new MockNumberGenerator(3, 4, 5, 1, 6, 3);
+
         // 멈춤, 전진, 전진 | 멈춤, 전진, 멈춤
-        Accelerator accelerator = new RandomNumberAccelerator(numberGenerator);
+        Accelerator accelerator = new RandomNumberAccelerator(
+                MockNumberGenerator.createMockNumberGenerator(3, 4, 5, 1, 6, 3));
         for (int i = 0; i < 2; i++) {
             cars.play(accelerator);
         }
@@ -48,9 +49,9 @@ class RaceTest {
     @Test
     void getWinners() {
         Race cars = Race.of("car1,car2,car3");
-        NumberGenerator numberGenerator = new MockNumberGenerator(3, 4, 5, 1, 6, 9);
         // 멈춤, 전진, 전진 | 전진, 전진, 전진 -> 우승자 car2 car3
-        Accelerator accelerator = new RandomNumberAccelerator(numberGenerator);
+        Accelerator accelerator = new RandomNumberAccelerator(
+                MockNumberGenerator.createMockNumberGenerator(3, 4, 5, 1, 6, 9));
         for (int i = 0; i < 2; i++) {
             cars.play(accelerator);
         }

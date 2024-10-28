@@ -11,6 +11,10 @@ public class MockNumberGenerator implements NumberGenerator {
         this.numbers.addAll(Arrays.asList(numbers));
     }
 
+    public static NumberGenerator createMockNumberGenerator(Integer ... numbers) {
+        return new MockNumberGenerator(numbers);
+    }
+
     @Override
     public int generate() {
         validateEmpty();

@@ -13,8 +13,7 @@ class RandomNumberAcceleratorTest {
     @Test
     void moveCar() {
         Car car = Car.createCarAtStartLine("fobi");
-        MockNumberGenerator mockNumberGenerator = new MockNumberGenerator(4);
-        Accelerator accelerator = new RandomNumberAccelerator(mockNumberGenerator);
+        Accelerator accelerator = new RandomNumberAccelerator(MockNumberGenerator.createMockNumberGenerator(4));
         accelerator.move(car);
         assertEquals(car.getCarDistance(), 1);
     }
@@ -23,8 +22,7 @@ class RandomNumberAcceleratorTest {
     @Test
     void NotMoveCar() {
         Car car = Car.createCarAtStartLine("fobi");
-        MockNumberGenerator mockNumberGenerator = new MockNumberGenerator(3);
-        Accelerator accelerator = new RandomNumberAccelerator(mockNumberGenerator);
+        Accelerator accelerator = new RandomNumberAccelerator(MockNumberGenerator.createMockNumberGenerator(3));
         accelerator.move(car);
         assertEquals(car.getCarDistance(), 0);
     }
