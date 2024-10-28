@@ -40,11 +40,19 @@ class InputValidatorTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {1, 3, 10, 20})
+    void 이동할_시도_횟수는_0보다_큰_경우_예외가_발생하지_않는다(int num) {
+        assertThatNoException().isThrownBy(() -> InputValidator.validateNumeric(num));
+    }
+
+    @ParameterizedTest
     @ValueSource(ints = {-11, -1, -1234, 0})
-    void validateNumeric(int num) {
+    void 이동할_시도_횟수는_0보다_작은_경우_예외가_발생한다(int num) {
         assertThatThrownBy(() -> InputValidator.validateNumeric(num))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("시도 횟수는 최소 한 번 입니다.");
     }
+
+
 
 }
