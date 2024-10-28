@@ -60,4 +60,9 @@ public class Car {
             throw new IllegalArgumentException(NAME_LENGTH_ERROR);
         }
     }
+
+    @Override
+    public String toString() {
+        return "name:" + name + " " + "position:" + position;
+    }
 }
