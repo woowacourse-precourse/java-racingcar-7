@@ -37,9 +37,7 @@ public class GameStart {
     private static int getMaxMove(List<RacingCar> racingCarList) {
         int maxMove = 0;
         for (RacingCar racingCar : racingCarList) {
-            if (maxMove < racingCar.getCount()) {
-                maxMove = racingCar.getCount();
-            }
+            maxMove = Math.max(maxMove, racingCar.getCount());
         }
 
         if (maxMove == 0) {
