@@ -1,14 +1,12 @@
 package racingcar.view;
 
-import static racingcar.constant.ViewConstants.RESULT_HEADER;
-
 import racingcar.constant.ViewConstants;
 import racingcar.domain.game.GameResult;
 import racingcar.dto.response.Winners;
 
 public class OutputView {
     public void displayRunResultText() {
-        System.out.println(RESULT_HEADER);
+        System.out.println(ViewConstants.RESULT_HEADER);
     }
 
     public void displayResult(GameResult result) {
@@ -23,7 +21,10 @@ public class OutputView {
     }
 
     public void displayWinners(Winners winners) {
-        System.out.printf(ViewConstants.WINNERS_FORMAT,
-                winners.getNames());
+        String formattedNames = String.join(
+                ViewConstants.WINNERS_DELIMITER,
+                winners.getWinnerNames()
+        );
+        System.out.printf(ViewConstants.WINNERS_FORMAT, formattedNames);
     }
 }

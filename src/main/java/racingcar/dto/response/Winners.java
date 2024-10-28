@@ -1,7 +1,5 @@
 package racingcar.dto.response;
 
-import static racingcar.constant.ViewConstants.WINNERS_DELIMITER;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.player.Player;
@@ -9,7 +7,6 @@ import racingcar.domain.player.Player;
 public record Winners(
         List<String> names
 ) {
-
     public static Winners from(List<Player> players) {
         int maxPosition = findMaxPosition(players);
         return new Winners(
@@ -27,8 +24,8 @@ public record Winners(
                 .orElse(0);
     }
 
-    // 수정된 부분
-    public String getNames() {
-        return String.join(WINNERS_DELIMITER, names);
+    // 단순히 이름 목록만 제공
+    public List<String> getWinnerNames() {
+        return names;
     }
 }
