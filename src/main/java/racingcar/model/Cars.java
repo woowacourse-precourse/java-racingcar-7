@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,12 +23,9 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> getWinner() {
-        Integer winnerPosition = cars.stream().map(Car::getCurrentLocation)
-                .max(Comparator.comparing(x -> x))
-                .orElseThrow(IllegalArgumentException::new);
-
-        return cars.stream().filter(car -> car.getCurrentLocation() == winnerPosition).toList();
+    public int getMaxLocation() {
+        List<Integer> locations = cars.stream().map(Car::getCurrentLocation).toList();
+        return Collections.max(locations);
     }
 
     private void validate() {
@@ -39,7 +36,6 @@ public class Cars {
     private void validateDuplicate(List<Car> cars) {
         Set<Car> checkCars = new HashSet<>(cars);
         if (checkCars.size() != cars.size()) {
-
             throw new IllegalArgumentException("게임 내 중복된 이름이 존재합니다.");
         }
     }

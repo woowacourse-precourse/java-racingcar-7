@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import java.util.Arrays;
-import java.util.List;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -37,7 +35,7 @@ public class RaceManager {
     }
 
     private void showWinner() {
-        List<Car> winners = race.checkWinner();
-        outputView.printWinner(winners);
+        Winners winners = race.checkWinner();
+        outputView.printWinner(winners.getWinner());
     }
 }

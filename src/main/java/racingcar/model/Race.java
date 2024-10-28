@@ -26,7 +26,7 @@ public class Race {
         return cars.getCars();
     }
 
-    public List<Car> checkWinner() {
-        return cars.getWinner();
+    public Winners checkWinner() {
+        return Winners.from(cars);
     }
 }
