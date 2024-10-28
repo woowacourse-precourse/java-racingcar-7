@@ -1,16 +1,18 @@
 package racingcar.Controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.Model.Car;
 import racingcar.View.InputView;
 import racingcar.View.OutputView;
+import racingcar.result.ResultCalculator;
+import racingcar.service.RacingGameService;
 import racingcar.util.Validator;
 
 public class GameController {
     private List<Car> cars;
+    private final RacingGameService racingGameService = new RacingGameService();
+    private final ResultCalculator resultCalculator = new ResultCalculator();
 
     public void startGame() {
         setupCars();
@@ -37,9 +39,7 @@ public class GameController {
     }
 
     private List<Car> createCarList(List<String> carNames) {
-        return carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
+        return carNames.stream().map(Car::new).collect(Collectors.toList());
     }
 
     private int getRoundCount() {
@@ -56,49 +56,13 @@ public class GameController {
 
     private void runRounds(int roundCount) {
         for (int i = 0; i < roundCount; i++) {
-            runRound();
+            racingGameService.runRound(cars);
             OutputView.printRoundResults(cars);
         }
     }
 
-    private void runRound() {
-        for (Car car : cars) {
-            moveCarIfPossible(car);
-        }
-    }
-
-    private void moveCarIfPossible(Car car) {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-        car.move(randomNumber);
-    }
-
     public void endGame() {
-        List<String> winners = determineWinners();
+        List<String> winners = resultCalculator.determineWinners(cars);
         OutputView.printWinners(winners);
-    }
-
-    private List<String> determineWinners() {
-        int maxPosition = findMaxPosition();
-        return findWinnersWithMaxPosition(maxPosition);
-    }
-
-    private int findMaxPosition() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-            }
-        }
-        return maxPosition;
-    }
-
-    private List<String> findWinnersWithMaxPosition(int maxPosition) {
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
-                winners.add(car.getName());
-            }
-        }
-        return winners;
     }
 }
