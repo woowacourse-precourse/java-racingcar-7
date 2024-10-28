@@ -14,4 +14,7 @@ public class OutputView {
     public static void printWinner(List<String> winners) {
         System.out.printf("최종 우승자 : %s\n", String.join(", ", winners));
     }
+    public static void printError(String message) {
+        System.out.println(message + "\n입력 오류로 프로그램을 종료합니다.");
+    }
 }
