@@ -34,6 +34,7 @@ public class GameController {
         List<Car> carList = carMaker.makeCars(carNames);
         FinalResultDto finalResultDto = racingGame.playRacingGame(roundNumber, carList);
 
+        outputView.printResultStatement();
         printResults(finalResultDto, roundNumber);
     }
 
