@@ -2,8 +2,8 @@ package racingcar.service;
 
 import static racingcar.constant.ErrorType.CAR_NAME_TOO_LONG;
 import static racingcar.constant.ErrorType.EMPTY_INPUT;
+import static racingcar.constant.ErrorType.INVALID_RACE_COUNT;
 import static racingcar.constant.ErrorType.NOT_ENOUGH_CAR;
-import static racingcar.constant.ErrorType.RACE_COUNT_TOO_LOW;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
@@ -41,6 +41,9 @@ public class RacingService {
         if (isBlank(totalRound)) {
             throw new IllegalArgumentException((EMPTY_INPUT.getMessage()));
         }
+        if (!isInteger(totalRound)) {
+            throw new IllegalArgumentException((INVALID_RACE_COUNT.getMessage()));
+        }
         return Integer.parseInt(totalRound);
     }
 
@@ -54,7 +57,7 @@ public class RacingService {
 
     public void playGame(int inputTotalRound) {
         if (inputTotalRound < 1) {
-            throw new IllegalArgumentException((RACE_COUNT_TOO_LOW.getMessage()));
+            throw new IllegalArgumentException((INVALID_RACE_COUNT.getMessage()));
         }
 
         int round = 0;
@@ -127,5 +130,14 @@ public class RacingService {
 
     private boolean isBlank(String input) {
         return input == null || input.trim().isEmpty();
+    }
+
+    private boolean isInteger(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
