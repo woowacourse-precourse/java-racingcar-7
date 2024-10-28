@@ -31,14 +31,8 @@ public class RacingGameController {
         return attemptCount;
     }
 
-    // 입력된 시도 횟수만큼 레이스를 반복
-    public void startRace(int attemptCount) {
-        for (int i = 0; i < attemptCount; i++) {
-            raceCars();
-            printRaceStatus();
-            System.out.println();
-        }
-        printWinner();
+    public void startRace() {
+        raceCars();
     }
 
     private void raceCars() {
@@ -47,13 +41,11 @@ public class RacingGameController {
         }
     }
 
-    private void printRaceStatus() {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        }
+    public List<Car> getCars() {
+        return cars;
     }
 
-    private List<Car> getWinners() {
+    public List<Car> getWinners() {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
@@ -64,11 +56,4 @@ public class RacingGameController {
                 .collect(Collectors.toList());
     }
 
-    private void printWinner() {
-        List<Car> winners = getWinners();
-        String winnerNames = winners.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-        System.out.println("최종 우승자 : " + winnerNames);
-    }
 }

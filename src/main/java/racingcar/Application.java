@@ -1,6 +1,8 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
+import racingcar.model.Car;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -15,6 +17,14 @@ public class Application {
         int attemptCount = controller.getAttemptCount();
 
         //레이스 시작
-        controller.startRace(attemptCount);
+        for (int i = 0; i < attemptCount; i++) {
+            controller.startRace();
+            OutputView.printRaceStatus(controller.getCars());
+            System.out.println();
+        }
+
+        // 최종 우승자 출력
+        List<Car> winners = controller.getWinners();
+        OutputView.printWinners(winners);
     }
 }
