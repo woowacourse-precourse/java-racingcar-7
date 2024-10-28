@@ -10,6 +10,7 @@ import racingcar.util.ErrorMessage;
 
 public class CarService {
     private static final String DELIMITER = ",";
+
     public String[] getCarsByDelimiter(String carNames) {
         if (carNames == null || carNames.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.NULL_OR_EMPTY_INPUT.getMessage());
