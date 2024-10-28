@@ -8,7 +8,7 @@ public class Car implements Comparable<Car> {
 
     private final String name;
     private Long distance;
-    public static final int WINNING_BOUNDARY = 4;
+    public static final int FORWARDING_CONDITION = 4;
 
     private Car(String name) {
         this.name = name;
@@ -24,16 +24,16 @@ public class Car implements Comparable<Car> {
         return cars;
     }
 
-//    public Long getDistance() {
-//        return distance;
-//    }
+    public Long getDistance() {
+        return distance;
+    }
 
     public String getName() {
         return name;
     }
 
     public void execute(final int command) {
-        if (command >= WINNING_BOUNDARY) {
+        if (command >= FORWARDING_CONDITION) {
             this.distance++;
         }
     }
