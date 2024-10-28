@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.model.RacingCars;
 import racingcar.model.RacingGame;
+import racingcar.util.CarNameValidator;
 import racingcar.view.RacingCarView;
 
 public class RacingCarController {
@@ -16,7 +17,10 @@ public class RacingCarController {
 
     private RacingGame readyRacingGame(RacingCars racingCars) {
         String inputCarNames = RacingCarView.inputCarNames();
-        for (final String carName : inputCarNames.split(",")) {
+        CarNameValidator.checkCarNameEmpty(inputCarNames);
+
+        for (final String inputCarName : inputCarNames.split(",")) {
+            String carName = inputCarName.trim();
             racingCars.add(new Car(carName));
         }
 
