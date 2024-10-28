@@ -14,13 +14,13 @@ class InputViewTest {
     }
 
     @Test
-    @DisplayName("자동차 이름 최소 1개 이상")
+    @DisplayName("자동차 최소 2개 이상")
     public void minimumOneCarNameTest() {
         String input = "";
 
         Assertions.assertThatThrownBy(() -> InputView.parseCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차는 최소 1대이상 입력해야합니다.");
+                .hasMessageContaining("자동차는 최소 2대이상 입력해야합니다.");
     }
 
     @Test
@@ -34,7 +34,7 @@ class InputViewTest {
     @Test
     @DisplayName("자동차 이름 5자 초과")
     public void lengthCarNameTest() {
-        String input = "wooaaaaahancorse";
+        String input = "wooaaaaahancorse,pobi";
 
         Assertions.assertThatThrownBy(() -> InputView.parseCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -59,6 +59,16 @@ class InputViewTest {
         Assertions.assertThatThrownBy(() -> InputView.parseCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 영문자와 숫자만 포함해야 합니다.");
+    }
+
+    @Test
+    @DisplayName("자동차 이름에 띄어쓰기 입력")
+    public void invalidCarNameSpaceTest() {
+        String input = " ,   , ";
+
+        Assertions.assertThatThrownBy(() -> InputView.parseCars(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차는 최소 2대이상 입력해야합니다.");
     }
 
     @Test
