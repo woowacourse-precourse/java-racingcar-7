@@ -1,8 +1,10 @@
 package racingcar.Controller;
 
 import java.util.List;
+import racingcar.Constants.ViewMessage;
 import racingcar.Model.Car;
 import racingcar.Model.InputParser;
+import racingcar.Model.MessageFormatter;
 import racingcar.Model.Race;
 import racingcar.Model.Validator;
 import racingcar.View.InputView;
@@ -25,9 +27,9 @@ public class GameController {
     }
 
     private void ready() {
-        List<Car> carList = readCars();
+        List<Car> cars = readCars();
         int rounds = readRounds();
-        race = new Race(carList, rounds);
+        race = new Race(cars, rounds);
     }
 
     private List<Car> readCars() {
@@ -49,17 +51,19 @@ public class GameController {
     }
 
     private void play() {
-        outputView.printResultMessage();
+        outputView.printMessage(ViewMessage.RESULT_MESSAGE);
         for (int i = 0; i < race.getRound(); i++) {
             race.play();
-            outputView.printCarStates(race.getCarList());
-            System.out.println();
+
+            List<String> roundResultFormat = MessageFormatter.carStates(race.getCarList());
+            outputView.printMessages(roundResultFormat);
         }
     }
 
     private void finish() {
-        List<Car> winnerList = race.getWinnerList();
-        outputView.printResult(winnerList);
+        List<Car> winnerList = race.getWinners();
+        String winnerFormat = MessageFormatter.winners(winnerList);
+        outputView.printMessage(winnerFormat);
     }
 
 }

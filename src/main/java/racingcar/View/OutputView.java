@@ -2,23 +2,24 @@ package racingcar.View;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.Constants.ViewMessage;
 import racingcar.Model.Car;
 
 public class OutputView {
-    private final static String RESULT_MESSAGE = "실행 결과";
 
-    public void printResultMessage() {
-        System.out.println(RESULT_MESSAGE);
+    public void printMessage(String message) {
+        System.out.println(message);
     }
 
-    public void printCarStates(List<Car> carList) {
-        for (Car car : carList) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getLocation()));
+    public void printMessages(List<String> messages) {
+        for (String message : messages) {
+            System.out.println(message);
         }
+        System.out.println();
     }
 
-    public void printResult(List<Car> winnerList){
-        System.out.print("최종 우승자 : ");
+    public void printResult(List<Car> winnerList) {
+        System.out.print(ViewMessage.FINAL_WINNER_MESSAGE);
         String winners = winnerList.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));

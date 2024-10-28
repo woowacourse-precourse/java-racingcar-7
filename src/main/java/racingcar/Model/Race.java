@@ -38,7 +38,7 @@ public class Race {
         }
     }
 
-    public List<Car> getWinnerList() {
+    public List<Car> getWinners() {
         int first = findFirstLocation(carList);
         return getCarsAt(first);
     }
