@@ -6,14 +6,13 @@ import static racingcar.common.RacingCarConstant.MOVE_THRESHOLD;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import racingcar.persistence.CarRaceHistory;
 
 public class CarRace implements Race<RacingCar> {
 
-    private final CarRaceHistory carRaceHistory;
+    private final CarRaceHistoryRecorder carRaceHistoryRecorder;
 
-    public CarRace(CarRaceHistory carRaceHistory) {
-        this.carRaceHistory = carRaceHistory;
+    public CarRace(CarRaceHistoryRecorder carRaceHistoryRegister) {
+        this.carRaceHistoryRecorder = carRaceHistoryRegister;
     }
 
     @Override
@@ -23,6 +22,7 @@ public class CarRace implements Race<RacingCar> {
                 racingCar.forward();
             }
         });
+        carRaceHistoryRecorder.record(racingCars);
     }
 
     private boolean isMovable() {

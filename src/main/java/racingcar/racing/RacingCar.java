@@ -1,5 +1,6 @@
 package racingcar.racing;
 
+import static racingcar.common.RacingCarConstant.DEFAULT_STATE;
 import static racingcar.common.RacingCarConstant.FORWARD_BAR;
 
 public class RacingCar extends Racer {
@@ -9,6 +10,7 @@ public class RacingCar extends Racer {
 
     public RacingCar(String name) {
         this.name = name;
+        this.progressState = DEFAULT_STATE;
     }
 
     public String getName() {
@@ -25,5 +27,10 @@ public class RacingCar extends Racer {
 
     public static RacingCar from(String name) {
         return new RacingCar(name);
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + progressState;
     }
 }
