@@ -23,6 +23,7 @@ public class GameController {
     public void run() {
         Game game = initializeGame();
         playGame(game);
+        displayWinners(game);
     }
 
     private Game initializeGame() {
@@ -51,6 +52,11 @@ public class GameController {
             game.playOneRound();
             outputView.displayCars(game.getCars());
         }
+    }
+
+    private void displayWinners(Game game) {
+        List<String> winners = game.getWinnerNames();
+        outputView.displayWinners(winners);
     }
 }
 

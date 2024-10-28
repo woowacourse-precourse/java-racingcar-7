@@ -11,6 +11,8 @@ public class OutputView {
     private static final String PROMPT_RUN_RESULT_TITLE = "실행 결과";
     private static final String LOCATION_FORMAT = "-";
     private static final String CAR_INFO_FORMAT = "%s : %s\n";
+    private static final String MESSAGE_FINAL_WINNER_TITLE = "최종 우승자 : ";
+    private static final String WINNER_DELIMITER = ", ";
 
     public void displayInputCarNamesPrompt() {
         System.out.println(INPUT_CAR_NAMES_PROMPT_MESSAGE);
@@ -37,4 +39,9 @@ public class OutputView {
         return CAR_INFO_FORMAT.formatted(car.name(), location);
     }
 
+    public void displayWinners(List<String> winners) {
+        System.out.print(MESSAGE_FINAL_WINNER_TITLE);
+        String winnerText = String.join(WINNER_DELIMITER, winners);
+        System.out.println(winnerText);
+    }
 }
