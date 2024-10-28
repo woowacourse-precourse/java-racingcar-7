@@ -7,15 +7,8 @@ public class RaceCars {
     private final List<Car> cars;
 
     public RaceCars(final List<Car> cars) {
-        validateDuplicatedCars(cars);
-        validateNumberOfCars(cars);
+        validate(cars);
         this.cars = cars;
-    }
-
-    private void validateNumberOfCars(List<Car> cars) {
-        if (hasInappropriateNumberOfCars(cars)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_RACINGCAR_NUMBER.getMessage());
-        }
     }
 
     public void moveAllCars(Movement movement) {
@@ -40,8 +33,9 @@ public class RaceCars {
                 .toList();
     }
 
-    private boolean hasInappropriateNumberOfCars(List<Car> cars) {
-        return cars.size() < 2;
+    private void validate(List<Car> cars) {
+        validateDuplicatedCars(cars);
+        validateNumberOfCars(cars);
     }
 
     private void validateDuplicatedCars(List<Car> cars) {
@@ -49,5 +43,15 @@ public class RaceCars {
         if (distinctCarNumber != cars.size()) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATED_RACINGCAR.getMessage());
         }
+    }
+
+    private void validateNumberOfCars(List<Car> cars) {
+        if (hasInappropriateNumberOfCars(cars)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RACINGCAR_NUMBER.getMessage());
+        }
+    }
+
+    private boolean hasInappropriateNumberOfCars(List<Car> cars) {
+        return cars.size() < 2;
     }
 }
