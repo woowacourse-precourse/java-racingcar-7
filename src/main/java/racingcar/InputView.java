@@ -6,7 +6,7 @@ import java.util.List;
 public class InputView {
     private static final String INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String INPUT_TRIAL_COUNT = "시도할 회수는 몇회인가요?";
-    private static final String POSITIVE_NUMBER_PATTERN = "시도할 회수는 몇회인가요?";
+    private static final String POSITIVE_NUMBER_PATTERN = "\\d+";
     private static final String EMPTY_INPUT_ERROR = "빈 값이 입력되었습니다.";
     private static final String DUPLICATE_NAME_ERROR = "중복된 이름이 있습니다.";
     private static final String POSITIVE_NUMBER_ERROR = "양수를 입력해주세요.";
