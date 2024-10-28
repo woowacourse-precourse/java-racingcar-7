@@ -3,7 +3,7 @@ package racingcar;
 import racingcar.randomgenerator.RandomGenerator;
 
 public class Car {
-    private static final int RANDOM_BOUNDARY = 10;
+    private static final int RANDOM_BOUNDARY = 9;
     private static final int COMPARISON_POINT = 4;
     private static final int START_POSITION = 0;
     private static final String ROUND_FINISH_FORMAT = "%s : %s";
