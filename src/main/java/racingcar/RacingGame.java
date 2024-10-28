@@ -29,4 +29,12 @@ public class RacingGame {
                 .map(Car::toString)
                 .collect(Collectors.joining("\n"));
     }
+
+    public void play() {
+        System.out.println("실행 결과");
+        for (int i = 0; i < numberOfTrials; i++) {
+            trial();
+            System.out.println(this.toString());
+        }
+    }
 }
