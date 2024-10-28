@@ -16,7 +16,7 @@ class CarTest {
         //when
         //then
         assertThat(car)
-            .extracting("name", "position")
+            .extracting("name", "position.value")
             .containsExactlyInAnyOrder("pobi", 0);
     }
 
@@ -37,7 +37,7 @@ class CarTest {
         car.move(4);
         //then
         assertThat(car)
-            .extracting("name", "position")
+            .extracting("name", "position.value")
             .containsExactlyInAnyOrder("pobi", 1);
     }
 
@@ -50,7 +50,7 @@ class CarTest {
         car.move(3);
         //then
         assertThat(car)
-            .extracting("name", "position")
+            .extracting("name", "position.value")
             .containsExactlyInAnyOrder("pobi", 0);
     }
 

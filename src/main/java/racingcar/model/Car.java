@@ -3,19 +3,17 @@ package racingcar.model;
 
 public class Car {
 
-    private static final int DEFAULT_POSITION_VALUE = 0;
     private static final int MOVABLE_NUMBER_OF_CRITERIA = 4;
-    private static final int MOVE_DISTANCE = 1;
     private static final int MAX_NAME_LENGTH = 5;
-    private static final String NOTATION_OF_POSITION = "-";
+    private static final int DEFAULT_POSITION_VALUE = 0;
 
     private final String name;
-    private int position;
+    private final Position position;
 
     private Car(final String name) {
         checkNameLength(name);
         this.name = name;
-        this.position = DEFAULT_POSITION_VALUE;
+        this.position = new Position(DEFAULT_POSITION_VALUE);
     }
 
     public static Car from(final String name) {
@@ -30,24 +28,23 @@ public class Car {
 
     public void move(final int number) {
         if (number >= MOVABLE_NUMBER_OF_CRITERIA) {
-            position += MOVE_DISTANCE;
+            position.moveForward();
         }
     }
 
     public boolean isNotSamePositionTo(final int position) {
-        return this.position != position;
+        return !this.position.isEqualTo(position);
+    }
+
+    public int currentPosition() {
+        return position.getPosition();
     }
 
     public String getCurrentSituation() {
-        return String.format("%s : %s", name, NOTATION_OF_POSITION.repeat(position));
+        return String.format("%s : %s", name, position.getNotations());
     }
 
     public String getName() {
         return name;
     }
-
-    public int getPosition() {
-        return position;
-    }
-
 }

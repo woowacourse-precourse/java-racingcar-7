@@ -36,7 +36,7 @@ class CarsTest {
         //when
         List<Car> movedCars = cars.move(() -> 4);
         //then
-        assertThat(movedCars).extracting("name", "position")
+        assertThat(movedCars).extracting("name", "position.value")
             .containsExactly(
                 Tuple.tuple("pobi", 1),
                 Tuple.tuple("hello", 1)
@@ -53,7 +53,7 @@ class CarsTest {
         //when
         List<Car> movedCars = cars.move(() -> 3);
         //then
-        assertThat(movedCars).extracting("name", "position")
+        assertThat(movedCars).extracting("name", "position.value")
             .containsExactly(
                 Tuple.tuple("pobi", 0),
                 Tuple.tuple("hello", 0)

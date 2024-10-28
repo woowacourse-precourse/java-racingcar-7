@@ -33,9 +33,9 @@ public class Cars {
 
     private int calculateMaxPosition(final List<Car> winnerCars) {
         return winnerCars.stream()
-            .mapToInt(Car::getPosition)
+            .mapToInt(Car::currentPosition)
             .max()
-            .orElseThrow(() -> new IllegalArgumentException("최대 위치를 찾을 수 없습니다."));
+            .orElseThrow(() -> new IllegalArgumentException("최대 위치를 계산할 수 없습니다."));
     }
 
 }
