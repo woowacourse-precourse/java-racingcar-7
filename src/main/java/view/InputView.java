@@ -6,8 +6,7 @@ public class InputView {
 
     public String getCarNames() {
         OutputView.printGuide();
-        String CarNames = Console.readLine();
-        return CarNames;
+        return Console.readLine();
 
     }
 
