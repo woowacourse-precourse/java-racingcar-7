@@ -15,8 +15,10 @@ public class RacingOutput {
         System.out.println(car.getName() + " : " + displayPosition(car.getPosition()));
     }
 
-    public void displayPositions(List<Car> cars) {
-        System.out.println("실행 결과");
+    public void displayStartMessage() {
+        System.out.println("\n실행 결과");
+    }
+    public void displayCarPositions(List<Car> cars) {
         for (Car car : cars) {
             displayCarPosition(car);
         }

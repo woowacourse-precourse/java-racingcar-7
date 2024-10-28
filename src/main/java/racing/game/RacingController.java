@@ -22,10 +22,11 @@ public class RacingController {
 
     private void startRound(List<Car> cars) {
         cars.forEach(racingService::moveCarForward);
+        showRoundResult(cars);
     }
 
     private void showRoundResult(List<Car> cars) {
-        racingOutput.displayPositions(cars);
+        racingOutput.displayCarPositions(cars);
     }
 
     private void showWinner(List<Car> cars) {
@@ -39,9 +40,9 @@ public class RacingController {
         List<Car> cars = createCars(carNames);
         int gameRound = racingInput.getGameRound();
 
+        racingOutput.displayStartMessage();
         for (int roundNum = 0; roundNum < gameRound; roundNum++) {
             startRound(cars);
-            showRoundResult(cars);
         }
 
         showWinner(cars);
