@@ -33,11 +33,11 @@ public class Car {
         return this.carPosition.isPosition(givenPosition);
     }
 
-    public String toCustomFormatString(String carFormat, String positionFormat) {
-        return this.carName.toString() + carFormat + this.carPosition.toCustomFormatString(positionFormat);
+    public CarName getCarName() {
+        return carName;
     }
 
-    public String toCarNameString() {
-        return this.carName.toString();
+    public CarPosition getCarPosition() {
+        return carPosition;
     }
 }

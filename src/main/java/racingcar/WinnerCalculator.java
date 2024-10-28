@@ -31,7 +31,7 @@ public class WinnerCalculator {
 
     private static void addIfWinner(List<Car> lastRacingRecord, List<String> winnerNames, Car currentCar) {
         if (compareOtherCars(lastRacingRecord, currentCar)) {
-            winnerNames.add(currentCar.toCarNameString());
+            winnerNames.add(currentCar.getCarName().getCarName());
         }
     }
 }

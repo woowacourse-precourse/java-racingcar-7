@@ -34,7 +34,12 @@ public class Application {
     private static List<Car> moveCars(Cars cars) {
         List<Car> racingCars = cars.moveCars();
         for (Car racingCar : racingCars) {
-            System.out.println(racingCar.toCustomFormatString(CAR_STRING_FORMAT, POSITION_STRING_FORMAT));
+            String carName = racingCar.getCarName()
+                    .getCarName();
+            int currentPosition = racingCar.getCarPosition()
+                    .getCurrentPosition();
+
+            System.out.println(carName + CAR_STRING_FORMAT + POSITION_STRING_FORMAT.repeat(currentPosition));
         }
         System.out.println();
 

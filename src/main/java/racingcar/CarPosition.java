@@ -31,7 +31,7 @@ public class CarPosition {
         return this.currentPosition == givenPosition;
     }
 
-    public String toCustomFormatString(String customString) {
-        return customString.repeat(this.currentPosition);
+    public int getCurrentPosition() {
+        return this.currentPosition;
     }
 }
