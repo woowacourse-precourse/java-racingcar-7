@@ -9,4 +9,17 @@ public class GameResult {
         }
         System.out.println();
     }
+
+    static int findMaxPoint(List<racingcar.Car> cars) {
+        // 가장 멀리간 점수 찾기
+        int maxPoint = 0;
+        for (racingcar.Car car : cars) {
+            if (car.getCount() > maxPoint) {
+                maxPoint = car.getCount();
+            }
+        }
+
+        return maxPoint;
+    }
+
 }
