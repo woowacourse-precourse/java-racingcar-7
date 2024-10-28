@@ -33,7 +33,7 @@ public class RacingCarView {
     }
 
     public void showResultInfo(){
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     // 각 라운드의 결과를 출력
