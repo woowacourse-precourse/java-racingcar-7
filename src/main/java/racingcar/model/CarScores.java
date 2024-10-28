@@ -27,7 +27,7 @@ public class CarScores {
 
     public static void isBlank(String carNames) {
         if (carNames == null || carNames.isBlank()) {
-            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_CAN_NOT_BE_EMPTY.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAMES_CAN_NOT_BE_EMPTY.getErrorMessage());
         }
     }
 
