@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class RaceTest {
 
-    NumberGenerator forwardGenerator = () -> 4;
+    NumberGenerator moveGenerator = () -> 4;
     NumberGenerator stopGenerator = () -> 3;
 
     @DisplayName("레이스 생성 성공")
@@ -35,7 +35,7 @@ class RaceTest {
     @DisplayName("우승자 판별 성공")
     @Test
     void findWinnersTest() {
-        Race race = new Race("pobi,woni", forwardGenerator);
+        Race race = new Race("pobi,woni", moveGenerator);
 
         race.getCars().get(0).move();
         List<Car> winners = race.findWinners();

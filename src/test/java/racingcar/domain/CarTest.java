@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-    NumberGenerator forwardGenerator = () -> 4;
+    NumberGenerator moveGenerator = () -> 4;
     NumberGenerator stopGenerator = () -> 3;
 
     @DisplayName("자동차 생성 성공")
@@ -42,7 +42,7 @@ class CarTest {
     @DisplayName("자동차 전진 성공")
     @Test
     void moveTest() {
-        Car car = new Car("pobi", forwardGenerator);
+        Car car = new Car("pobi", moveGenerator);
 
         car.move();
 
