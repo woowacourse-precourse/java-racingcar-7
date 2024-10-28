@@ -16,7 +16,7 @@ public class Application {
 
     }
 
-
+    //자동차 입력 기능 메소드
     public static List<String> getCarsName() {
         String input = Console.readLine();
 
@@ -29,7 +29,7 @@ public class Application {
         validateCarNames(carNames);
         return carNames;
     }
-
+    //자동차 입력 유효성 검사 메소드
     public static void validateCarNames(List<String> carNames) {
         Set<String> nameSet = new HashSet<>();
 
@@ -57,7 +57,7 @@ public class Application {
         return validateAttemptCount(input);
     }
 
-    // 유효성 검사만을 위한 메서드 추가
+    // 유효성 검사을 위한 메서드
     public static int validateAttemptCount(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("시도 횟수는 빈 문자열일 수 없습니다.");
@@ -89,12 +89,26 @@ public class Application {
         for (int i = 0; i < attemptCount; i++) {
             System.out.println("\n라운드 " + (i + 1));
             for (Car car : cars) {
-                car.move();  // 각 자동차에 대해 무작위 이동 수행
-                System.out.println(car);  // 자동차의 현재 위치 출력
+                car.move();
+                System.out.println(car);
+            }
+        }
+        printWinners(cars);
+
+
+    }
+    //우승자 출력 메소드
+    private static void printWinners(List<Car> cars) {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
             }
         }
 
-
+        System.out.println("\n최종 우승자 : " + String.join(", ", winners));
     }
 
 
