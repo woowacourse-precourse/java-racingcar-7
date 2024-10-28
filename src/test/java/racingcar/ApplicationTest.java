@@ -48,6 +48,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // 3단계: 자동차 경주 진행 기능 테스트
+    @Test
+    void 자동차경주_진행_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
