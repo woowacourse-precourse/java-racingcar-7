@@ -6,10 +6,6 @@ import java.util.List;
 public class Executor {
     private static final int NAME_LENGTH_LIMIT = 5;
 
-    private long repeatCount;
-    private List<Car> cars;
-    private List<Car> winners;
-
     private final IOController ioController;
     private final Parser parser;
     private final Validator validator;
@@ -33,17 +29,17 @@ public class Executor {
         List<String> carNames = parser.parseCarNamesByOperator(inputCarNamesStr);
 
         validator.validateCarNamesLength(carNames, NAME_LENGTH_LIMIT);
-        cars = Car.createCarsByName(carNames);
+        List<Car> cars = Car.createCarsByName(carNames);
 
         validator.validateRepeatCount(inputRepeatCountStr);
-        repeatCount = parser.parseRepeatCount(inputRepeatCountStr);
+        long repeatCount = parser.parseRepeatCount(inputRepeatCountStr);
 
         for (int i = 0; i < repeatCount; i++) {
             racing.moveCars(cars);
             ioController.printResults(cars);
         }
 
-        winners = judge.getWinners(cars);
+        List<Car> winners = judge.getWinners(cars);
         ioController.printWinners(winners);
     }
 }
