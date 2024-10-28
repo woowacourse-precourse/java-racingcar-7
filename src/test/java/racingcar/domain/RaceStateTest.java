@@ -35,8 +35,8 @@ class RaceStateTest {
     @DisplayName("랜덤 숫자에 따라 자동차 전진")
     void 자동차_전진_확인() {
         // given
-        List<String> cars = List.of("kim");
-        raceState.initGame(cars);
+        List<String> carsNames = List.of("kim");
+        raceState.initGame(carsNames);
 
         // when
         boolean anyCarMoved = false;
