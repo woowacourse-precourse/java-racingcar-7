@@ -22,7 +22,7 @@ public class InputRepository {
         return inputMap.get(request);
     }
 
-    public static InputRepository getRepo() {
+    public static InputRepository connect() {
         if (instance == null) {
             instance = new InputRepository();
         }
