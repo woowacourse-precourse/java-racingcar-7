@@ -15,9 +15,8 @@ public class BasicRacingCarGameFactory {
                 new BasicRacingCarNameParser(),
                 new BasicRacingCarGameValidator(),
                 new BasicRacingCarGenerator(),
-                new BasicRacingCarTransporter(),
-                new BasicRacingCarGameWinnerSelector(),
-                new BasicRacingCarGameRandomGenerator()
+                new BasicRacingCarTransporter(new BasicRacingCarGameRandomGenerator()),
+                new BasicRacingCarGameWinnerSelector()
         );
     }
 }

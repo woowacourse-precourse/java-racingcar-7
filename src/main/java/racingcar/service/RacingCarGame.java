@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCarGameResult;
 import racingcar.util.generator.RacingCarGenerator;
-import racingcar.util.generator.RacingCarGameRandomGenerator;
 import racingcar.util.selector.RacingCarGameWinnerSelector;
 import racingcar.util.parser.RacingCarNameParser;
 import racingcar.util.transporter.RacingCarTransporter;
@@ -17,7 +16,6 @@ public class RacingCarGame {
     private final RacingCarGenerator racingCarGenerator;
     private final RacingCarTransporter racingCarTransporter;
     private final RacingCarGameWinnerSelector racingCarGameWinnerSelector;
-    private final RacingCarGameRandomGenerator racingCarRandomGenerator;
     private static final String WINNER_NAME_DELIMITER = ", ";
 
     public RacingCarGame(
@@ -25,15 +23,13 @@ public class RacingCarGame {
             RacingCarGameValidator racingCarGameValidator,
             RacingCarGenerator racingCarGenerator,
             RacingCarTransporter racingCarTransporter,
-            RacingCarGameWinnerSelector racingCarGameWinnerSelector,
-            RacingCarGameRandomGenerator racingCarRandomGenerator
+            RacingCarGameWinnerSelector racingCarGameWinnerSelector
     ) {
         this.racingCarNameParser = racingCarNameParser;
         this.racingCarGameValidator = racingCarGameValidator;
         this.racingCarGenerator = racingCarGenerator;
         this.racingCarTransporter = racingCarTransporter;
         this.racingCarGameWinnerSelector = racingCarGameWinnerSelector;
-        this.racingCarRandomGenerator = racingCarRandomGenerator;
     }
 
     public RacingCarGameResult playRacingGame(String carNames, int moveCount) {
@@ -59,8 +55,7 @@ public class RacingCarGame {
         StringBuilder gameState = new StringBuilder();
 
         for (int i = 0; i < moveCount; i++) {
-            List<Integer> randomNumbers = racingCarRandomGenerator.generateRandomNumbers(racingCars.size());
-            racingCarTransporter.transportRacingCar(racingCars, randomNumbers);
+            racingCarTransporter.transportRacingCar(racingCars);
             gameState.append(recordRacingCarState(racingCars)).append("\n");
         }
 
