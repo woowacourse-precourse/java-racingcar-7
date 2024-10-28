@@ -1,10 +1,10 @@
-package racingcar;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -34,9 +34,17 @@ public class Application {
     }
 
     private static void validateCarNames(String[] names) {
+        Set<String> uniqueNames = new HashSet<>();
+
         for (String name : names) {
+            if (name.isBlank()) {
+                throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
+            }
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+            if (!uniqueNames.add(name)) {
+                throw new IllegalArgumentException("중복된 자동차 이름이 입력되었습니다.");
             }
         }
     }
