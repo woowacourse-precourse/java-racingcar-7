@@ -29,7 +29,11 @@ public class Application {
 
     public static int getNumberOfTurn() {
         String number = Console.readLine().trim();
-        return Integer.parseInt(number);
+        int numberOfTurn = Integer.parseInt(number);
+        if (numberOfTurn < 0) {
+            throw new IllegalArgumentException("시도 횟수는 음수여선 안됩니다.");
+        }
+        return numberOfTurn;
     }
     public static void main(String[] args) {
         showInputCarNameDialogue();
