@@ -6,7 +6,7 @@ import java.util.List;
 
 public class InputValidator {
 
-    private static final String NAME_PATTERN = "^[a-zA-Z]+(,[a-zA-Z]+)*$";
+    private static final String NAME_PATTERN = "^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$";
 
     private InputValidator() {
     }
