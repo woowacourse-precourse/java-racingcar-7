@@ -1,12 +1,7 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -14,6 +9,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 class InputClassTest {
 
     InputClass inputClass = new InputClass();
+    final Integer MAXIMUM_LIMIT_NAME_LENGTH = 5;
 
     @Test
     @DisplayName("자동차의 전진조건을 결정하는 숫자 입력 테스트")
@@ -32,10 +28,9 @@ class InputClassTest {
     void validateCarNameLengthTest() {
         Car exceedNameCar = new Car("Lamborghini");
         Car car = new Car("car");
-        int MAXIMUM_LIMIT_NAME_LENGTH = 5;
 
         assertThatThrownBy(() ->
                 inputClass.validateCarNameLength(exceedNameCar.getCarName())).isInstanceOf(IllegalArgumentException.class);
-        assertThat(car.getCarName().length()).isLessThan(MAXIMUM_LIMIT_NAME_LENGTH);
+        assertThat(car.getCarName().length()).isLessThanOrEqualTo(MAXIMUM_LIMIT_NAME_LENGTH);
     }
 }
