@@ -8,7 +8,7 @@ public class Application {
     public static void main(String[] args) {
         CarNameParser carNameParser = new CarNameParser(promptCarName());
         RaceManager raceManager = new RaceManager(carNameParser.getCarNames(), promptRaceRound());
-        RaceWinnerDeterminer raceWinnerDeterminer = new RaceWinnerDeterminer(carNameParser.getCarNames(), raceManager.getCurrentScores());
+        new RaceWinnerDeterminer(carNameParser.getCarNames(), raceManager.getCurrentScores());
     }
 
     private static String promptCarName() {

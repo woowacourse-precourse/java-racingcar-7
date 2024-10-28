@@ -14,6 +14,7 @@ public class RaceWinnerDeterminer {
         this.currentScores = currentScores;
         this.winners = new ArrayList<>();
         selectWinner();
+        hasMultipleWinners();
     }
 
     private void selectWinner() {
@@ -24,5 +25,21 @@ public class RaceWinnerDeterminer {
             }
         }
     }
-}
 
+    private void hasMultipleWinners() {
+        if (winners.size() > 1) {
+            announceMultipleWinners();
+        } else {
+            announceSingleWinner();
+        }
+    }
+
+    private void announceSingleWinner() {
+        System.out.println("최종 우승자 : " + winners.getFirst());
+    }
+
+    private void announceMultipleWinners() {
+        String winnerString = String.join(", ", winners);
+        System.out.println("최종 우승자 : " + winnerString);
+    }
+}
