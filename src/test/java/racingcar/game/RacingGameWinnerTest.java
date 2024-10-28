@@ -42,8 +42,27 @@ public class RacingGameWinnerTest extends NsTest {
         assertEquals(MessageType.RESPONSE_FINAL_WINNER.getMessage() + winningCars.getWinnerNames(), MessageType.RESPONSE_FINAL_WINNER.getMessage() + " kim, jun");
     }
 
+    @Test
+    @DisplayName("단일 우승자 출력 테스트")
+    void printWinnerOutputTest() {
+        Car car1 = new Car("kim");
+        Car car2 = new Car("jun");
+
+        car1.moveCar(GameConstants.MOVING_FORWARD);
+        car2.moveCar(GameConstants.STOP);
+
+        cars.add(car1);
+        cars.add(car2);
+
+        winningCars = new WinningCars(cars);
+
+        assertEquals(MessageType.RESPONSE_FINAL_WINNER.getMessage() + winningCars.getWinnerNames(), MessageType.RESPONSE_FINAL_WINNER.getMessage() + " kim");
+
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
     }
+
 }

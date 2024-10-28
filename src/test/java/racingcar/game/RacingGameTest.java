@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
+import racingcar.constants.GameConstants;
 import racingcar.model.Car;
 import racingcar.model.RaceCars;
 
@@ -13,10 +14,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingGameTest extends NsTest {
-
-    private static final int MOVING_FORWARD = 4;
-    private static final int STOP = 3;
-    private static final int INIT_MOVE_COUNT = 0;
 
     private RaceCars raceCars;
 
@@ -43,8 +40,8 @@ public class RacingGameTest extends NsTest {
     void moveCarIncrementsMoveCountOnFourOrMore() {
         Car car = new Car("kim");
 
-        assertEquals(INIT_MOVE_COUNT, car.getMoveCount());
-        car.moveCar(MOVING_FORWARD);
+        assertEquals(GameConstants.INIT_MOVE_COUNT, car.getMoveCount());
+        car.moveCar(GameConstants.MOVING_FORWARD);
 
         assertEquals(1, car.getMoveCount());
     }
@@ -54,8 +51,8 @@ public class RacingGameTest extends NsTest {
     void moveCarDoesNotIncrementCountOnNumberLessThanFour() {
         Car car = new Car("kim");
 
-        assertEquals(INIT_MOVE_COUNT, car.getMoveCount());
-        car.moveCar(STOP);
+        assertEquals(GameConstants.INIT_MOVE_COUNT, car.getMoveCount());
+        car.moveCar(GameConstants.STOP);
 
         assertEquals(0, car.getMoveCount());
     }
