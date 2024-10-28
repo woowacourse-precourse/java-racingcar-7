@@ -9,4 +9,9 @@ public class Output {
     private static void printString(String string) {
         System.out.println(string);
     }
+
+    public static void printGameCountGuide() {
+        printString("시도할 횟수는 몇 회인가요?");
+    }
+
 }

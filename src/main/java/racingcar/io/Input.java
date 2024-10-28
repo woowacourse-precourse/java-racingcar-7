@@ -17,4 +17,13 @@ public class Input {
         return name;
     }
 
+    public static int readToInteger() {
+        Output.printGameCountGuide();
+        try {
+            return Integer.parseInt(readLine());
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException("현재 입력은 정수만을 할 수 있습니다.");
+        }
+    }
+
 }
