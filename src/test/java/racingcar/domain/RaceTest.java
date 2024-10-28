@@ -16,13 +16,30 @@ public class RaceTest {
         Cars.add(new Car("pobi"));
         Cars.add(new Car("won"));
         Cars.add(new Car("juni"));
+
         Race race = new Race(Cars, 5);
+
         Cars.get(0).move();
         Cars.get(0).move();
         Cars.get(1).move();
         Cars.get(2).move();
         Cars.get(2).move();
+
         List<String> winners = race.getWinners();
-        assertEquals(String.join(", ",winners), "pobi, juni");
+        assertEquals(String.join(", ", winners), "pobi, juni");
+    }
+
+    @DisplayName("시도 횟수가 0 미만일 때 예외를 발생시키는지 테스트")
+    @Test
+    public void invalidTryCountTest() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("pobi"));
+
+        IllegalArgumentException thrown = org.junit.jupiter.api.Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> new Race(cars,-1)
+        );
+
+        assertEquals("시도할 횟수는 0 이상이어야 합니다.", thrown.getMessage());
     }
 }
