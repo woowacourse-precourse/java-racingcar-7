@@ -1,6 +1,5 @@
 package racingcar.application.service.winner;
 
-import java.util.List;
 import racingcar.domain.car.RacingCar;
 import racingcar.domain.car.repository.RacingCarRepository;
 import racingcar.domain.history.repository.RacingHistoryRepository;
@@ -9,6 +8,9 @@ import racingcar.domain.winner.repository.WinnerRepository;
 import racingcar.infrastructure.persistence.InMemoryRacingCarRepository;
 import racingcar.infrastructure.persistence.InMemoryRacingHistoryRepository;
 import racingcar.infrastructure.persistence.InMemoryWinnerRepository;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinnerService {
 
@@ -32,10 +34,19 @@ public class WinnerService {
 
     public boolean selectWinners(RacingCar racingCar){
         int maxDistance = racingHistoryRepository.getMaxDistance();
+
         return maxDistance == racingCar.getDistance();
     }
 
     public List<Winner> getWinners(){
         return winnerRepository.getWinners();
+    }
+
+    public String getWinnerToString() {
+        List<Winner> winners = winnerRepository.getWinners();
+
+        return winners.stream()
+                .map(Winner::getName)
+                .collect(Collectors.joining(", "));
     }
 }
