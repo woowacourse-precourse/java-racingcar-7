@@ -35,4 +35,66 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 자동차_동일_이름_테스트(){
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("java,java"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 시도_횟수_테스트1(){
+        assertSimpleTest(()->{
+            assertThatThrownBy(()->runException("java,jre,jdk","0"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 시도_횟수_테스트2(){
+        assertSimpleTest(()->{
+            assertThatThrownBy(()->runException("java,jre,jdk","-1"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 시도_횟수_테스트3(){
+        assertSimpleTest(()->{
+            assertThatThrownBy(()->runException("java,jre,jdk","c"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 성공_테스트(){
+        assertSimpleTest(()->{
+            run("java,char,j","5");
+        });
+    }
+
+    @Test
+    void 콤마만_입력(){
+        assertSimpleTest(()->{
+            assertThatThrownBy(()->runException(",","5"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 이름_입력_안함(){
+        assertSimpleTest(()->{
+            assertThatThrownBy(()->runException("\n"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 이름_앞뒤_공백_테스트(){
+        assertSimpleTest(()->{
+            run("java  , char,  j  ","5");
+        });
+    }
 }
