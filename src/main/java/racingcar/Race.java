@@ -7,6 +7,7 @@ public class Race {
     private final ArrayList<Car> cars = new ArrayList<>();
     private final int tryCount;
     private ArrayList<Integer> result = new ArrayList<>();
+    private String winner = "";
 
     public Race(String carNames, String tryCount) {
         setCars(carNames);
@@ -58,6 +59,7 @@ public class Race {
             cars.forEach(Car::move);
             System.out.println();
         }
+        finish();
     }
 
     private void finish() {
@@ -65,5 +67,9 @@ public class Race {
             result.add(car.getForwardProgressLength());
         }));
         int max = Collections.max(result);
+        cars.forEach((car -> {
+            winner += car.isWinner(max);
+        }));
+        System.out.println("최종 우승자 : " + winner);
     }
 }

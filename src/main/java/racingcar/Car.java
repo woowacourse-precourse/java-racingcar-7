@@ -29,4 +29,11 @@ public class Car {
     public int getForwardProgressLength() {
         return forwardProgressLength;
     }
+
+    public String isWinner(int max) {
+        if (max == forwardProgressLength) {
+            return name;
+        }
+        return "";
+    }
 }
