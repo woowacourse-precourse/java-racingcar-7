@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.controller.GameController;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class Application {
     public static void main(String[] args) {
@@ -17,6 +18,7 @@ public class Application {
     	
     	GameController game = new GameController(carNames, trialNum);
         game.play();
+        ResultView.printWinners(game.getCars());
     	
     }
 }
