@@ -18,12 +18,7 @@ public class OutputView {
     }
 
     public static void printWinners(List<String> winners) {
-        System.out.print("최종 우승자 : ");
-        if(winners.size()==1){
-            System.out.println(winners.getFirst());
-            return;
-        }
-        System.out.println(String.join(", ", winners));
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     public static void printRacingCarsStatus(List<RacingCarStatus> racingCarsStatus) {

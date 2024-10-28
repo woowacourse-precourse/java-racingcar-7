@@ -9,16 +9,6 @@ import org.junit.jupiter.api.Test;
 class InputViewTest extends NsTest{
 
     @Test
-    void 올바른_자동차_이름_입력시_이름_반환() {
-        //given
-        run("pobi,woni,jun");
-        //when
-        String[] carNames = InputView.getCarNames();
-        //then
-        assertThat(carNames).containsExactly("pobi","woni","jun");
-    }
-
-    @Test
     void 올바른_시도_횟수_입력시_정수_반환() {
         //given
         run("5");

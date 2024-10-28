@@ -35,7 +35,6 @@ public class RacingCarList {
         return racingCars;
     }
 
-    // 스트림 API 적용 가능
     public List<String> findWinners() {
         int maxPosition = getMaxPosition();
         List<String> winners = new ArrayList<>();
@@ -49,7 +48,6 @@ public class RacingCarList {
         return winners;
     }
 
-    // 스트림 API 적용 가능
     private int getMaxPosition() {
         int maxPosition = 0;
 
