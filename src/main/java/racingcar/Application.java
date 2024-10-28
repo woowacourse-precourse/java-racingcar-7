@@ -11,7 +11,7 @@ public class Application {
         OutputView outputView = new OutputView();
         RaceTrack raceTrack = new RaceTrack();
 
-        RaceController gameController = new RaceController(inputView, outputView, raceTrack);
-        gameController.run();
+        RaceController raceController = new RaceController(inputView, outputView, raceTrack);
+        raceController.run();
     }
 }
