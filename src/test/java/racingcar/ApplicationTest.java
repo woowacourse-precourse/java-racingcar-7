@@ -15,19 +15,20 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.")
         );
     }
 
@@ -61,7 +62,16 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트_구분자_없이_입력() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi woni", "1"))
+                assertThatThrownBy(() -> runException("pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차는 최소 2대 이상이어야 합니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_쉼표_외_다른_구분자가_사용된_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi|woni", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("자동차 이름을 쉼표로 구분해야 합니다.")
         );

@@ -10,14 +10,15 @@ public class Validator {
             throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
         }
 
+        // 쉼표 이외의 다른 구분자가 사용된 경우 예외 처리
+        if (input.matches(".*[^a-zA-Z0-9,\\s].*")) {
+            throw new IllegalArgumentException("자동차 이름을 쉼표로 구분해야 합니다.");
+        }
+
         String[] carNames = input.split(",");
 
         if (carNames.length < 2) {
             throw new IllegalArgumentException("자동차는 최소 2대 이상이어야 합니다.");
-        }
-
-        if (!input.contains(",")) {
-            throw new IllegalArgumentException("자동차 이름을 쉼표로 구분해야 합니다.");
         }
 
         Set<String> nameSet = new HashSet<>();
