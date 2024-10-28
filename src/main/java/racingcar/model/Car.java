@@ -20,6 +20,9 @@ public class Car {
     if (name.length() > 5) {
       throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
     }
+    if (name.isEmpty()){
+      throw new IllegalArgumentException("자동차 이름에는 빈 스페이스가 포함될 수 없습니다.");
+    }
   }
   public int getPosition() {
     return position;
