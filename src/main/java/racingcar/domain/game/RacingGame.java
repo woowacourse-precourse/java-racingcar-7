@@ -1,37 +1,66 @@
 package racingcar.domain.game;
 
-import java.util.List;
 import racingcar.domain.car.Cars;
-import racingcar.view.output.OutputView;
 
 public class RacingGame implements Game {
     private final Cars cars;
     private final RacingGameCount racingCount;
-    private final OutputView outputView;
+    private RacingGameState racingGameState;
+    private int currentRound;
 
-    public RacingGame(Cars cars, RacingGameCount racingCount, OutputView outputView) {
+    public RacingGame(Cars cars, RacingGameCount racingCount) {
         this.cars = cars;
         this.racingCount = racingCount;
-        this.outputView = outputView;
+        this.currentRound = 0;
+        initializeGameState();
     }
 
     @Override
     public void play() {
-        int totalTries = racingCount.getTryCountValue();
-
-        for (int i = 0; i < totalTries; i++) {
+        while (!isGameFinished()) {
             playOneRound();
         }
-        printWinners();
+        updateFinalGameState();
     }
 
-    private void playOneRound() {
+    public void playOneRound() {
+        if (isGameFinished()) {
+            return;
+        }
+        moveAndUpdateRound();
+        updateGameState();
+    }
+
+    private void moveAndUpdateRound() {
         cars.moveAllCarsRandomly();
-        outputView.printRoundResult(cars.createRoundResults());
+        currentRound++;
     }
 
-    private void printWinners() {
-        List<String> winners = cars.findWinners();
-        outputView.printGameResult(winners);
+    private void updateGameState() {
+        if (isGameFinished()) {
+            updateFinalGameState();
+            return;
+        }
+        updateRoundState();
+    }
+
+    private void initializeGameState() {
+        racingGameState = new RacingGameState(cars.createRoundResults(), null);
+    }
+
+    public boolean isGameFinished() {
+        return currentRound >= racingCount.getTryCountValue();
+    }
+
+    private void updateRoundState() {
+        racingGameState = new RacingGameState(cars.createRoundResults(), null);
+    }
+
+    private void updateFinalGameState() {
+        racingGameState = new RacingGameState(cars.createRoundResults(), cars.findWinners());
+    }
+
+    public RacingGameState getGameState() {
+        return racingGameState;
     }
 }

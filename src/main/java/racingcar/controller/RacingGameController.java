@@ -1,35 +1,48 @@
 package racingcar.controller;
 
 import racingcar.domain.car.Cars;
-import racingcar.domain.game.Game;
+import racingcar.domain.game.RacingGameState;
 import racingcar.domain.game.RacingGame;
 import racingcar.domain.game.RacingGameCount;
-import racingcar.view.input.GameInputView;
 import racingcar.view.input.RacingGameInputConsole;
 import racingcar.view.output.OutputView;
-import racingcar.view.output.RacingGameOutPutView;
 
-public class RacingGameController implements GameInputView {
+public class RacingGameController {
     private final RacingGameInputConsole inputView;
+    private final OutputView outputView;
 
-    public RacingGameController() {
-        this.inputView = new RacingGameInputConsole();
+    public RacingGameController(RacingGameInputConsole inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
-    @Override
     public void start() {
-        Game game = createGame();
-        game.play();
+        RacingGame game = createGame();
+        playAndDisplayGame(game);
     }
 
-    private Game createGame() {
-        String carNames = inputView.readCarsInput();
+    private RacingGame createGame() {
+        String carNames = inputView.readInput();
+        String tryCount = inputView.readTryCountInput();
+
         Cars cars = Cars.createCarsFrom(carNames);
+        RacingGameCount racingCount = new RacingGameCount(tryCount);
 
-        String tryCountInput = inputView.readTryCountInput();
-        RacingGameCount count = new RacingGameCount(tryCountInput);
+        return new RacingGame(cars, racingCount);
+    }
 
-        OutputView resultView = new RacingGameOutPutView();
-        return new RacingGame(cars, count, resultView);
+    private void playAndDisplayGame(RacingGame game) {
+        checkFinishedGame(game);
+
+        RacingGameState finalState = game.getGameState();
+        outputView.printGameResult(finalState.getWinners());
+    }
+
+    private void checkFinishedGame(RacingGame game) {
+        while (!game.isGameFinished()) {
+            game.playOneRound();
+            RacingGameState roundState = game.getGameState();
+            outputView.printRoundResult(roundState.getRoundResults());
+        }
     }
 }
