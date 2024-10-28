@@ -2,8 +2,11 @@
 
 ## 객체 모델링
 ![img.png](images/model.png)
-## 클래스 다이어그램
+## 초기 클래스 다이어그램
 ![img.png](images/class_diagram.png)
+
+## 최종 클래스 다이어그램
+![img.png](images/final_class_diagram.png)
 
 ## 기능구현목록
 
