@@ -36,4 +36,10 @@ class RacingCarNamesDTOTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("경주할 자동차는 두 대 이상 입력해야 합니다.");
     }
+
+    @Test
+    @DisplayName("정상 입력되었을 떼 테스트")
+    void 정상_입력되었을때_테스트(){
+
+    }
 }

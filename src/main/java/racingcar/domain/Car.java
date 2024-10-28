@@ -1,27 +1,24 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class Car {
     private String carName;
-    private int currentProgress;
+    private int currentDistances;
 
     public Car(String carName) {
         this.carName = carName;
-        currentProgress = 0;
+        currentDistances = 0;
     }
 
     public int move(){
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if(randomNumber >= 4) return ++currentProgress;
-        return currentProgress;
+        if(MoveStrategy.randomMoveStrategy()) return ++currentDistances;
+        return currentDistances;
     }
 
     public String getCarName() {
         return carName;
     }
 
-    public int getCurrentProgress() {
-        return currentProgress;
+    public int getCurrentDistances() {
+        return currentDistances;
     }
 }

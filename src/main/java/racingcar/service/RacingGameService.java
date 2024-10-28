@@ -35,16 +35,16 @@ public class RacingGameService {
 
     public static String getMaxProgressCars(Cars cars){
         List<String> maxProgressCarNames = new ArrayList<>();
-        int maxProgress = cars.findCarByNumber(0).getCurrentProgress();
+        int maxProgress = cars.findCarByNumber(0).getCurrentDistances();
 
         for (Car car : cars.getCars()) {
-            if (car.getCurrentProgress() > maxProgress) {
-                maxProgress = car.getCurrentProgress();
+            if (car.getCurrentDistances() > maxProgress) {
+                maxProgress = car.getCurrentDistances();
             }
         }
 
         for (Car car : cars.getCars()) {
-            if (car.getCurrentProgress() == maxProgress) {
+            if (car.getCurrentDistances() == maxProgress) {
                 maxProgressCarNames.add(car.getCarName());
             }
         }

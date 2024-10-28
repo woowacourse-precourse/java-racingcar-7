@@ -29,7 +29,7 @@ public class RacingGame {
         StringBuilder result = new StringBuilder();
         result.append(car.getCarName()).append(" : ");
 
-        for (int i = 0; i < car.getCurrentProgress(); i++) {
+        for (int i = 0; i < car.getCurrentDistances(); i++) {
             result.append("-");
         }
 
