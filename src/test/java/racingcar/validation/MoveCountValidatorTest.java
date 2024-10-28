@@ -23,4 +23,12 @@ class MoveCountValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessageConstants.ERROR_MOVE_COUNT_NOT_NUMBER);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1"})
+    void 이동_횟수가_양의_정수가_아닌_경우_예외_테스트(String moveCountInput) {
+        assertThatThrownBy(() -> MoveCountValidator.validateMoveCount(moveCountInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessageConstants.ERROR_MOVE_COUNT_NEGATIVE);
+    }
 }
