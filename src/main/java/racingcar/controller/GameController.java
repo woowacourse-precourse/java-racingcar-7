@@ -22,13 +22,13 @@ public class GameController {
         inputView.printCarNameRequestMessage();
         List<Car> cars = makeCars();
         inputView.printTryCntRequestMessage();
-        int rounds = Integer.parseInt(inputView.getTryCnt());
+        int tryCnt = Integer.parseInt(inputView.getTryCnt());
 
         Game game = new Game(cars, new Referee(), new RandomNumberGenerator());
-        while (rounds > 0) {
+        while (tryCnt > 0) {
             game.playOneRound();
             outputView.printRoundResult(game.getCars());
-            rounds--;
+            tryCnt--;
         }
         outputView.printFinalResult(game.getWinners());
     }
