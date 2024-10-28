@@ -1,5 +1,7 @@
 package racingcar.model.car;
 
+import static racingcar.model.message.ErrorMessage.INVALID_CAR_NAME_LENGTH;
+
 public class CarName {
 
 	private static final int CAR_NAME_MAX_LENGTH_LIMIT = 5;
@@ -17,7 +19,7 @@ public class CarName {
 
 	private void validateName(String name) {
 		if (checkNameIsEmpty(name) || checkNameOverMaxLength(name)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getMessage());
 		}
 	}
 
