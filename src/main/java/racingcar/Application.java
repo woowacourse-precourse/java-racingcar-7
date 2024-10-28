@@ -77,7 +77,7 @@ public class Application {
                 winners.add(car.getName());
             }
         }
-        System.out.println("최종 우승자 : " + String.join(",", winners));
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     public static void main(String[] args) {
