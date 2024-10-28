@@ -9,12 +9,17 @@ public class RacingCarService {
 
     private final RacingCarRepository racingCarRepository;
 
-    public RacingCarService(RacingCarRepository racingCarRepository){
-        this.racingCarRepository = racingCarRepository;
+
+
+    public void racingGame(Collection<RacingCar> racingCars){
+        racingCars.forEach(this::race);
     }
 
-    public void registerRacingCars(Collection<String> carNames){
-        carNames.forEach(carName -> racingCarRepository.save(RacingCar.createRacingCar(carName)));
+    private void race(RacingCar racingCar){
+        int number = Randoms.pickNumberInRange(0, 9);
+        if(number>=4){
+            racingCar.move();
+        }
     }
 
 

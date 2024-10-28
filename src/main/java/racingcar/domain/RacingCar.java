@@ -12,4 +12,16 @@ public class RacingCar {
     public static RacingCar createRacingCar(String name){
         return new RacingCar(name);
     }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public int getRaceScore(){
+        return this.raceScore;
+    }
+
+    public void move(){
+        this.raceScore++;
+    }
 }
