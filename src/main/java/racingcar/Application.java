@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.controller.CarNamesController;
+import racingcar.controller.NumberController;
 import racingcar.controller.WordsController;
 import racingcar.view.InputView;
 
@@ -41,11 +42,11 @@ public class Application {
             }
         }
 
-        // 7. 시도할 횟수 입력받기
+        // 6. 시도할 횟수 입력받기
         int tryNumber = InputView.inputTryNumbers();
 
-        // 8. 시도할 횟수가 자연수인지 확인
-        if (tryNumber <= 0) {
+        // 7. 시도할 횟수가 자연수인지 확인
+        if (!NumberController.isNaturalNumber(tryNumber)) {
             throw new IllegalArgumentException();
         }
 
