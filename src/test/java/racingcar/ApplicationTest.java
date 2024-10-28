@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -25,7 +24,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("턴 수가 2 이상인 경우를 확인")
     void 기능_테스트2() {
         assertRandomNumberInRangeTest(
                 () -> {

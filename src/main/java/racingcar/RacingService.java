@@ -59,11 +59,11 @@ public class RacingService {
     }
 
     public String[] getWinners() {
-        int maxDistance = getMaxPosition();
+        int maxPosition = getMaxPosition();
 
         LinkedList<String> winners = new LinkedList<>();
         for (Map.Entry<String, Integer> carPosition : carPositions.entrySet()) {
-            if (carPosition.getValue() == maxDistance) {
+            if (carPosition.getValue() == maxPosition) {
                 winners.add(carPosition.getKey());
             }
         }
