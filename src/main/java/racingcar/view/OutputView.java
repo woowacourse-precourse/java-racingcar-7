@@ -20,31 +20,31 @@ public class OutputView {
     }
 
     public void displayRacing(List<Car> cars) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         if (!check) {
-            result += "\n" + OUTPUT_HEADER + "\n";
+            result.append("\n" + OUTPUT_HEADER + "\n");
             check = true;
         }
 
         for (Car car : cars) {
-            result += car.getName() + " : " + "-".repeat(car.getPosition()) + "\n";
+            result.append(car.getName()).append(" : ").append("-".repeat(car.getPosition())).append("\n");
         }
 
         System.out.println(result);
     }
 
     public void displayWinners(List<Car> winners) {
-        String result = "";
-        result += WINNER_HEADER;
+        StringBuilder result = new StringBuilder();
+        result.append(WINNER_HEADER);
 
         if (winners.size() == 1) {
-            result += winners.get(0).getName();
+            result.append(winners.getFirst().getName());
         } else {
             String collect = winners.stream()
                     .map(Car::getName)
                     .collect(Collectors.joining(", "));
-            result += collect;
+            result.append(collect);
         }
 
         System.out.print(result);

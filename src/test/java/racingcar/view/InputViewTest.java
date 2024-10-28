@@ -11,10 +11,9 @@ public class InputViewTest {
         //given
         String input = "pobi,woni";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        InputView inputView = new InputView();
 
         //when
-        String carNames = inputView.getInput();
+        String carNames = InputView.getInput();
 
         //then
         assertThat(carNames).isEqualTo("pobi,woni");

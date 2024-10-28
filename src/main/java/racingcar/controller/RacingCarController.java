@@ -9,16 +9,11 @@ import racingcar.view.OutputView;
 
 public class RacingCarController {
     private final RacingCarService racingCarService;
-    private final InputView inputView;
     private final OutputView outputView;
-    private final InputValidator inputValidator;
 
-    public RacingCarController(RacingCarService racingCarService, InputView inputView,
-                               OutputView outputView, InputValidator inputValidator) {
+    public RacingCarController(RacingCarService racingCarService, OutputView outputView) {
         this.racingCarService = racingCarService;
-        this.inputView = inputView;
         this.outputView = outputView;
-        this.inputValidator = inputValidator;
     }
 
     public void run() {
@@ -30,15 +25,15 @@ public class RacingCarController {
 
     private List<Car> processCarNames() {
         outputView.displayPrompt(1);
-        String carNames = inputView.getInput();
-        inputValidator.validateCarNames(carNames);
+        String carNames = InputView.getInput();
+        InputValidator.validateCarNames(carNames);
         return racingCarService.separateCarNames(carNames);
     }
 
     private int processAttemptCount() {
         outputView.displayPrompt(2);
-        String attemptCount = inputView.getInput();
-        inputValidator.validateAttemptCount(attemptCount);
+        String attemptCount = InputView.getInput();
+        InputValidator.validateAttemptCount(attemptCount);
         return Integer.parseInt(attemptCount);
     }
 

@@ -16,7 +16,7 @@ public class InputValidator {
         }
     }
 
-    public void validateAttemptCount(String count) {
+    public static void validateAttemptCount(String count) {
         validateEmptyCount(count);
 
         try {

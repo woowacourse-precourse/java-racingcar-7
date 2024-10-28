@@ -54,25 +54,19 @@ public class InputValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"0", "10000"})
     public void 시도할횟수가_유효하지_않은_경우(String count) {
-        // given
-        InputValidator validator = new InputValidator();
-
         // when & then
-        assertThatThrownBy(() -> validator.validateAttemptCount(count))
+        assertThatThrownBy(() -> InputValidator.validateAttemptCount(count))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.OUT_OF_BOUNDS_ATTEMPT_COUNT.getMessage());
     }
 
     @Test
     public void 시도할횟수가_문자인_경우_예외발생() {
-        // given
-        InputValidator validator = new InputValidator();
-
-        // given
+       // given
         String count = "abc";
 
         // when & then
-        assertThatThrownBy(() -> validator.validateAttemptCount(count))
+        assertThatThrownBy(() -> InputValidator.validateAttemptCount(count))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.INVALID_ATTEMPT_COUNT.getMessage());
     }
