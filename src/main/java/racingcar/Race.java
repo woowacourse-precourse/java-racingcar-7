@@ -15,7 +15,7 @@ public class Race {
         Round round = new Round(cars);
         for (int num = 0; num < rounds; num++) {
             round.play(createIntegers());
-            System.out.println(round.roundResult());
+            System.out.println(round);
         }
     }
 

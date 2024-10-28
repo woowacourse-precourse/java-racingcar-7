@@ -46,6 +46,6 @@ class RoundTest {
     void roundResult() {
         round.play(List.of(4, 3));
         String expectedResult = "AAA : -\nBBB : \n\n";
-        assertThat(round.roundResult()).isEqualTo(expectedResult);
+        assertThat(round.toString()).isEqualTo(expectedResult);
     }
 }

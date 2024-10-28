@@ -20,15 +20,8 @@ public class Round {
         }
     }
 
-    public void print() {
-        StringBuilder result = new StringBuilder();
-        for (Car car: cars) {
-            result.append(car.toString()).append("\n");
-        }
-        System.out.println(result);
-    }
-
-    public String roundResult() {
+    @Override
+    public String toString() {
         StringBuilder builder = new StringBuilder();
         for (Car car: cars) {
             builder.append(car).append("\n");
