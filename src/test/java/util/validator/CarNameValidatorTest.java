@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import util.validator.Validator;
-import util.validator.Message;
 
 class CarNameValidatorTest {
 
@@ -24,7 +22,6 @@ class CarNameValidatorTest {
     @Nested
     @DisplayName("유효하지 않은 입력 테스트")
     class InvalidInputTest {
-
         @ParameterizedTest
         @DisplayName("6글자 이상의 이름은 예외 처리한다.")
         @ValueSource(strings = {"pobi, asdfgh"})
@@ -72,11 +69,10 @@ class CarNameValidatorTest {
     @Nested
     @DisplayName("유효한 입력 테스트")
     class ValidInputTest {
-
         @ParameterizedTest
         @DisplayName("유효한 여러 이름 입력은 예외를 발생시키지 않는다.")
-        @ValueSource(strings = {"pobi, woni, jun"})
-        void 여러_정상_입력(String input) {
+        @ValueSource(strings = {"pobi,woni,jun"})
+        void validInputTest(String input) {
             assertThatCode(() -> carNameValidator.validate(input))
                     .doesNotThrowAnyException();
         }
