@@ -14,6 +14,14 @@ public class Car {
         this.count++;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
     @Override
     public String toString() {
         return name + " : " + printCountResult(this.count);

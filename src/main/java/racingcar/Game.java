@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
 
@@ -48,5 +49,29 @@ public class Game {
             System.out.println();
         }
 
+        // 3. 우승자 찾기
+        List<Car> winnerCars = findWinnerCars();
+        List<String> winnerNames = winnerCars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        System.out.print("최종 우승자 : " + String.join(", ", winnerNames));
+
+    }
+
+    public List<Car> findWinnerCars() {
+        List<Car> winnerCars = new ArrayList<>();
+        int maxCount = Integer.MIN_VALUE;
+
+        for (Car car : cars) {
+            if (car.getCount() > maxCount) {
+                maxCount = car.getCount();
+                winnerCars.clear();
+                winnerCars.add(car);
+            } else if (car.getCount() == maxCount) {
+                winnerCars.add(car);
+            }
+        }
+
+        return winnerCars;
     }
 }
