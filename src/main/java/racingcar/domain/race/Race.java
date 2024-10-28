@@ -1,5 +1,7 @@
 package racingcar.domain.race;
 
+import static racingcar.error.ErrorMessageConstants.DUPLICATE_CAR_NAME;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,7 +22,8 @@ public class Race {
         Set<String> carNameSet = new HashSet<>();
         for (Car car : cars) {
             if (!carNameSet.add(car.getName())) {
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다: " + car.getName());
+                String errorMessage = String.format(DUPLICATE_CAR_NAME, car.getName());
+                throw new IllegalArgumentException(errorMessage);
             }
         }
     }

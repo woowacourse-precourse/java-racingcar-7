@@ -1,5 +1,8 @@
 package racingcar.domain.car;
 
+import static racingcar.error.ErrorMessageConstants.CAR_NAME_TOO_LONG;
+import static racingcar.error.ErrorMessageConstants.INVALID_CAR_NAME;
+
 import racingcar.domain.car.strategy.MovingStrategy;
 
 public class Car {
@@ -17,13 +20,13 @@ public class Car {
 
     private void validateCarName(String name) {
         if (name == null) {
-            throw new IllegalArgumentException("자동차 이름은 null일 수 없습니다.");
+            throw new IllegalArgumentException(INVALID_CAR_NAME);
         }
         if (name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+            throw new IllegalArgumentException(INVALID_CAR_NAME);
         }
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException(CAR_NAME_TOO_LONG);
         }
     }
 
