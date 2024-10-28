@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    // 클래스 변수는 상수로 선언하지 않는 이상 함부로 쓰지 않는 것이 좋아보인다. 개선 필요
     static ArrayList<Integer> racingDistance = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -21,14 +22,29 @@ public class Application {
 
         for (String name : nameList) {
             if (name.length() > 5) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("5글자가 넘는 이름 입력");
             }
+            if (name.equals(" ")) {
+                throw new IllegalArgumentException("공백인 값 입력");
+            }
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("연속으로 쉼표 2개 이상 입력");
+            }
+        }
+        int racingCnt;
+
+        try {
+            racingCnt = Integer.parseInt(textSecond);
+        }
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수가 아닌 값 입력");
+        }
+
+        if (racingCnt <= 0) {
+            throw new IllegalArgumentException("0이거나 음수인 값 입력");
         }
 
         final int numberOfCar = nameList.length;
-
-        // racintCnt가 정수 값인지 확인해야 함
-        int racingCnt = Integer.parseInt(textSecond);
 
         for (int i = 0; i < numberOfCar; i++) {
             racingDistance.add(0);
