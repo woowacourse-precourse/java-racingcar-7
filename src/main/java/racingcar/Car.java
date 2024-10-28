@@ -2,9 +2,9 @@ package racingcar;
 
 public class Car {
 
+    private static final int MIN_MOVE_CONDITIONS = 4;
     private String name;
     private int distance;
-    private static int MIN_MOVE_CONDITIONS = 4;
 
     public Car(String name, int distance) {
         this.name = name;

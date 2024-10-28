@@ -10,12 +10,12 @@ import java.util.stream.Stream;
 
 public class RacingGame {
 
-    private static String START_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    private static String GAME_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
-    private static String GAME_RESULT = "\n실행 결과";
-    private static String FINAL_WINNER = "최종 우승자 : ";
-    private static String ERROR_MESSAGE_NAME = "이름은 5자 이하로 입력해야 합니다.";
-    private static String ERROR_MESSAGE_COUNT = "1 이상의 숫자만 입력할 수 있습니다.";
+    private static final String START_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String GAME_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
+    private static final String GAME_RESULT = "\n실행 결과";
+    private static final String FINAL_WINNER = "최종 우승자 : ";
+    private static final String ERROR_MESSAGE_NAME = "이름은 5자 이하로 입력해야 합니다.";
+    private static final String ERROR_MESSAGE_COUNT = "1 이상의 숫자만 입력할 수 있습니다.";
 
     public void start() {
         System.out.println(START_MESSAGE);
