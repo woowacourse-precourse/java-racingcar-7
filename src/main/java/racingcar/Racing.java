@@ -166,7 +166,7 @@ public class Racing {
 
     private String joinWinnerNames() {
         List<String> winnersList = getWinners();
-        return String.join(DELIMITERS, winnersList);
+        return String.join(DELIMITERS + " ", winnersList);
     }
 
     public void run() {
