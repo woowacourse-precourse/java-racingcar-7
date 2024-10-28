@@ -6,10 +6,10 @@ public class Output {
 
     public static final String DELIMITERS_OF_CAR_ID = ", ";
 
-    private final StringBuilder out;
+    private final StringBuffer out;
 
     public Output() {
-        this.out = new StringBuilder();
+        this.out = new StringBuffer();
     }
 
     public void newLine() {
