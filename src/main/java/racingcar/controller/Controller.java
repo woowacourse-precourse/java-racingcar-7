@@ -31,12 +31,9 @@ public class Controller {
         OutputView.showRaceStart();
         for (int count = 0; count < inputRaceCount; count++) {
             carsInRace.startRaceOnce();
-
-            // 해당 차례 결과 출력
-            for (Car car : carsInRace.getCarsInRace()) {
-                OutputView.showRaceResult(car.getName(), car.getWinCount());
-                OutputView.showNewLine();
-            }
+            carsInRace.getCarsInRace()
+                    .forEach(car -> OutputView.showRaceResult(car.getName(), car.getWinCount()));
+            OutputView.showNewLine();
         }
 
         // 우승자 출력
