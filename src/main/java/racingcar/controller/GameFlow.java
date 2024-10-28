@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameFlow {
-    
+
     private Cars cars;
     private int numberOfMoves;
     MoveStrategy moveStrategy = () -> CarMoveDeterminator.determine();
@@ -19,7 +19,8 @@ public class GameFlow {
     public void start() {
         List<String> carNames = parseCarNames();
         cars = new Cars(carNames);
-        setNumberOfMoves();
+        String NumberInput = InputView.inputNumberOfMoves();
+        setNumberOfMoves(NumberInput);
         runRace();
         displayWinners();
     }
@@ -30,8 +31,7 @@ public class GameFlow {
         return carNames;
     }
 
-    private void setNumberOfMoves() {
-        String NumberInput = InputView.inputNumberOfMoves();
+    void setNumberOfMoves(String NumberInput) {
         validateNumberOfMoves(NumberInput);
         numberOfMoves = Integer.parseInt(NumberInput);
     }
@@ -58,6 +58,10 @@ public class GameFlow {
     private void displayWinners() {
         List<String> winners = cars.calculateWinners();
         OutputView.printWinners(winners);
+    }
+    
+    public int getNumberOfMoves() {
+        return numberOfMoves;
     }
 
 }
