@@ -1,37 +1,36 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingManager {
 
     private final List<Car> cars;
-    private final int stageCount;
-    private final List<StageResult> stageResults;
+    private final int count;
+    private final RacingResult racingResult;
 
-    public RacingManager(List<String> carNames, int stageCount) {
-        this.stageCount = stageCount;
+    public RacingManager(List<String> carNames, int count) {
+        this.count = count;
         this.cars = carNames.stream()
                 .map(Car::new)
                 .toList();
-        this.stageResults = new ArrayList<>(stageCount);
+        this.racingResult = new RacingResult(count);
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public int getStageCount() {
-        return stageCount;
+    public int getCount() {
+        return count;
     }
 
-    public List<StageResult> startRace() {
-        for (int i = 0; i < stageCount; i++) {
+    public RacingResult startRace() {
+        for (int i = 0; i < count; i++) {
             moveCars();
-            stageResults.add(new StageResult(cars));
+            racingResult.takeSnapshot(cars);
         }
-        return stageResults;
+        return racingResult;
     }
 
     private void moveCars() {
@@ -39,24 +38,5 @@ public class RacingManager {
             int number = Randoms.pickNumberInRange(0, 9);
             car.tryMove(number);
         });
-    }
-
-    public void printResult() {
-        for (StageResult result : stageResults) {
-            result.print();
-        }
-        System.out.println();
-        System.out.println("최종 우승자 : " + String.join(", ", winners()));
-    }
-
-    public List<String> winners() {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(IllegalAccessError::new);
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .toList();
     }
 }

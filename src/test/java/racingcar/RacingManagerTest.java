@@ -1,5 +1,6 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
@@ -10,7 +11,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class RacingManagerTest {
 
-    private static final int MOVEMENT_THRESHOLD = 4;
+    private static final int MOVE = 4;
+    private static final int STOP = 3;
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi,woni,jun", "pobi, woni, jun"})
@@ -27,35 +29,38 @@ public class RacingManagerTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
-    void 시도횟수는_양의_정수(int stageCount) {
-        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), stageCount);
+    void 시도횟수는_양의_정수(int count) {
+        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), count);
 
-        assertThat(manager.getStageCount()).isEqualTo(stageCount);
+        assertThat(manager.getCount()).isEqualTo(count);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
-    void 차수별_실행_결과를_출력(int stageCount) {
-        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), stageCount);
-        List<StageResult> result = manager.startRace();
+    void 차수별_실행_결과를_출력(int count) {
+        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), count);
+        RacingResult result = manager.startRace();
 
-        assertThat(result.size()).isEqualTo(stageCount);
+        assertThat(result.getSnapshots().size()).isEqualTo(count);
     }
 
     @Test
     void 가장_많이_전진한_자동차가_우승() {
         RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), 1);
-        manager.getCars().getFirst().tryMove(MOVEMENT_THRESHOLD);
 
-        assertThat(manager.winners()).containsExactly("pobi");
+        assertRandomNumberInRangeTest(() -> {
+            RacingResult result = manager.startRace();
+            assertThat(result.winners()).containsExactly("pobi");
+        }, MOVE, STOP, STOP);
     }
 
     @Test
     void 우승자가_여러명인_경우_쉼표_구분() {
         RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), 1);
-        manager.getCars().getFirst().tryMove(MOVEMENT_THRESHOLD);
-        manager.getCars().getLast().tryMove(MOVEMENT_THRESHOLD);
 
-        assertThat(manager.winners()).containsExactly("pobi", "jun");
+        assertRandomNumberInRangeTest(() -> {
+            RacingResult result = manager.startRace();
+            assertThat(result.winners()).containsExactly("pobi", "jun");
+        }, MOVE, STOP, MOVE);
     }
 }

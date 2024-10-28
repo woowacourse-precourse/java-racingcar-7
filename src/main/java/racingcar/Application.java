@@ -7,16 +7,18 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNameInput = Console.readLine();
+        String nameInput = Console.readLine();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String stageInput = Console.readLine();
+        String countInput = Console.readLine();
 
-        List<String> names = InputValidator.validateName(carNameInput);
-        int stageCount = InputValidator.validateStageCount(stageInput);
+        List<String> names = InputValidator.validateName(nameInput);
+        int count = InputValidator.validateCount(countInput);
 
-        RacingManager manager = new RacingManager(names, stageCount);
-        manager.startRace();
-        manager.printResult();
+        RacingManager manager = new RacingManager(names, count);
+        RacingResult result = manager.startRace();
+
+        System.out.println("\n실행 결과");
+        result.print();
     }
 }

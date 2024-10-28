@@ -41,16 +41,16 @@ public class InputValidator {
         return name.length() > MAX_NAME_LENGTH;
     }
 
-    public static int validateStageCount(String countInput) {
-        int stageCount = Integer.parseInt(countInput);
+    public static int validateCount(String countInput) {
+        int count = Integer.parseInt(countInput);
 
-        if (isNotPositive(stageCount)) {
+        if (isNotPositive(count)) {
             throw new IllegalArgumentException();
         }
-        return stageCount;
+        return count;
     }
 
-    private static boolean isNotPositive(int stageCount) {
-        return stageCount < POSITIVE;
+    private static boolean isNotPositive(int count) {
+        return count < POSITIVE;
     }
 }

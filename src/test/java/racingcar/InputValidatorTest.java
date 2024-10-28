@@ -30,8 +30,8 @@ public class InputValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"0", "-1", "1.1", "1.0"})
-    void 시도횟수가_양의정수가_아닌경우_예외발생(String stageCount) {
+    void 시도횟수가_양의정수가_아닌경우_예외발생(String count) {
         assertThatIllegalArgumentException().isThrownBy(() ->
-                InputValidator.validateStageCount(stageCount));
+                InputValidator.validateCount(count));
     }
 }
