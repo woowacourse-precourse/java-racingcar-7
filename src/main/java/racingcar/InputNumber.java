@@ -3,7 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputNumber {
-    public int TryNumber() {
+    public int tryNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int input;
         try {
