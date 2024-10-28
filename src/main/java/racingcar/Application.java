@@ -20,6 +20,13 @@ class Function {
 		}
 	}
 
+	public static void checkNameDuplication(ArrayList<String> checkNameDuplicationList, String inputName) {
+		if (checkNameDuplicationList.contains(inputName)) {
+			throw new IllegalArgumentException();
+		}
+
+	}
+
 }
 
 public class Application {
