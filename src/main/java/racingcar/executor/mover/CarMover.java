@@ -1,7 +1,9 @@
 package racingcar.executor.mover;
 
-import java.util.Map;
+import racingcar.entity.Car;
+
+import java.util.List;
 
 public interface CarMover {
-    Map<String, Integer> run(Map<String, Integer> currentHistory);
+    List<Car> run(List<Car> currentHistory);
 }

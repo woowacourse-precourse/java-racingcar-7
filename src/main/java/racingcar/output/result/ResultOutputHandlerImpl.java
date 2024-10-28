@@ -1,9 +1,9 @@
 package racingcar.output.result;
 
+import racingcar.entity.Car;
 import racingcar.executor.decider.winner.WinnerListDecider;
 
 import java.util.List;
-import java.util.Map;
 
 public class ResultOutputHandlerImpl implements ResultOutputHandler {
 
@@ -14,7 +14,7 @@ public class ResultOutputHandlerImpl implements ResultOutputHandler {
     }
 
     @Override
-    public void printWinner(Map<String, Integer> history) {
+    public void printWinner(List<Car> history) {
         List<String> winners = winnerListDecider.findWinners(history);
         System.out.println("\n최종 우승자 : " + String.join(", ", winners));
     }

@@ -1,8 +1,10 @@
 package racingcar.output.process;
 
-import java.util.Map;
+import racingcar.entity.Car;
+
+import java.util.List;
 
 public interface ProcessOutputHandler {
     void printFirstPhrase();
-    void printHistory(Map<String, Integer> history);
+    void printHistory(List<Car> history);
 }

@@ -1,7 +1,9 @@
 package racingcar.output.result;
 
-import java.util.Map;
+import racingcar.entity.Car;
+
+import java.util.List;
 
 public interface ResultOutputHandler {
-    void printWinner(Map<String, Integer> history);
+    void printWinner(List<Car> history);
 }

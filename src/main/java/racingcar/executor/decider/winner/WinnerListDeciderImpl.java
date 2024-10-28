@@ -1,20 +1,22 @@
 package racingcar.executor.decider.winner;
 
+import racingcar.entity.Car;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class WinnerListDeciderImpl implements WinnerListDecider {
     @Override
-    public List<String> findWinners(Map<String, Integer> history) {
-        int maxDistance = history.values().stream()
-                .max(Integer::compare)
+    public List<String> findWinners(List<Car> racingHistory) {
+        int maxDistance = racingHistory.stream()
+                .mapToInt(Car::getDistance)
+                .max()
                 .orElse(0);
 
         List<String> winners = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : history.entrySet())
-            if (entry.getValue() == maxDistance)
-                winners.add(entry.getKey());
+        for (Car car : racingHistory)
+            if (car.getDistance() == maxDistance)
+                winners.add(car.getCarName());
 
         return winners;
     }

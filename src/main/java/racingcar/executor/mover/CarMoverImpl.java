@@ -1,9 +1,10 @@
 package racingcar.executor.mover;
 
+import racingcar.entity.Car;
 import racingcar.executor.decider.movement.RandomMovementDecider;
 import racingcar.executor.generator.movement.RandomIntegerGenerator;
 
-import java.util.Map;
+import java.util.List;
 
 public class CarMoverImpl implements CarMover {
 
@@ -14,10 +15,10 @@ public class CarMoverImpl implements CarMover {
     }
 
     @Override
-    public Map<String, Integer> run(Map<String, Integer> currentHistory) {
-        for (String carName : currentHistory.keySet()) {
+    public List<Car> run(List<Car> currentHistory) {
+        for (Car car : currentHistory) {
             if (randomMovementDecider.decide(RandomIntegerGenerator.run()))
-               currentHistory.put(carName, currentHistory.get(carName) + 1);
+               car.move();
         }
         return currentHistory;
     }
