@@ -1,6 +1,7 @@
 package racingcar;
 
 public class DependencyInjectionConfig {
+    private static CarRepository carRepository;
     private static CarService carService;
     private static GameController gameController;
 
@@ -16,5 +17,12 @@ public class DependencyInjectionConfig {
             gameController = new GameController();
         }
         return gameController;
+    }
+
+    public static synchronized CarRepository carRepository() {
+        if (carRepository == null) {
+            carRepository = new CarRepository();
+        }
+        return carRepository;
     }
 }
