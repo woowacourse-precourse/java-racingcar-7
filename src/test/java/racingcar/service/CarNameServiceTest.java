@@ -34,6 +34,13 @@ class CarNameServiceTest {
     }
 
     @Test
+    @DisplayName("자동차가 1대만 있어 유효하지 않은 경우 ")
+    public void oneCarName() {
+        String carName = "car";
+        assertThrows(IllegalArgumentException.class, () -> carNameService.getNamesFromString((carName)));
+    }
+
+    @Test
     @DisplayName("자동차 이름이 유효한 경우")
     public void validCarName() {
         String carName = "aaa,bbb, ccc ";
