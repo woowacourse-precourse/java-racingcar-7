@@ -1,9 +1,12 @@
 package racingcar.validation;
 
-public class Inputvalidator {
+public class InputValidator {
     public static void validateCarNames(String cars) {
         String[] racingCars = cars.split(",");
         for (String car : racingCars) {
+            if (car.trim().isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
+            }
             if (car.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
             }

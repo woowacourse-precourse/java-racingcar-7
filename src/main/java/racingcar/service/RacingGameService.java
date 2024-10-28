@@ -1,11 +1,10 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.validation.Inputvalidator;
 import racingcar.view.OutputView;
 
-import static racingcar.validation.Inputvalidator.validateCarNames;
-import static racingcar.validation.Inputvalidator.validateTryNumber;
+import static racingcar.validation.InputValidator.validateCarNames;
+import static racingcar.validation.InputValidator.validateTryNumber;
 
 public class RacingGameService {
     public void processRacingCars(String racingCars, String tryNumber) {
