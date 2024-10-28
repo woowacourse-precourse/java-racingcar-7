@@ -6,7 +6,9 @@ public class NumberParsingService {
         if (s.length()>5){
             throw new IllegalArgumentException("시도 횟수는 10만 아래로 설정해 주세요");
         }
+
         StringBuilder number =new StringBuilder();
+
         for (int i=0;i<s.length();i++){
             char ch=s.charAt(i);
             if (ch<'0'||ch>'9'){

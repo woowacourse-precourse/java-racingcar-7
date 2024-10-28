@@ -25,6 +25,18 @@ class ApplicationTest extends NsTest {
     }
 
 
+    @Test
+    void 이름사이에공백넣기() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("p o b i,     w   o n  i", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+
 
 
 
