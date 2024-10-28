@@ -61,4 +61,32 @@ class InputParserTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(InputException.NAME_IS_EMPTY.getMessage());
     }
+
+    @ParameterizedTest(name = "입력값 {0}파싱 테스트")
+    @DisplayName("라운드 파싱 테스트")
+    @ValueSource(strings = {"1", "2", "3", "4", "5"})
+    void parseRoundTest(String input) {
+        // given
+        final int expected = Integer.parseInt(input);
+
+        // when
+        var parseResponse = InputParser.parseRound(input);
+
+        // then
+        assertThat(parseResponse).isEqualTo(expected);
+    }
+
+    @ParameterizedTest(name = "입력값 {0}파싱 테스트")
+    @DisplayName("공백이 포함된 라운드 파싱 테스트")
+    @ValueSource(strings = {"1   ", "   2", "   3   ", "  4  ", " 5 "})
+    void parseRoundShouldBeTrimTest(String input) {
+        // given
+        final int expected = Integer.parseInt(input.trim());
+
+        // when
+        var parseResponse = InputParser.parseRound(input);
+
+        // then
+        assertThat(parseResponse).isEqualTo(expected);
+    }
 }
