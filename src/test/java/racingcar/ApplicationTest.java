@@ -85,6 +85,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 시도횟수_숫자가아닌문자입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
