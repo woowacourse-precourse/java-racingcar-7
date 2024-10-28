@@ -3,6 +3,7 @@ package racingcar.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import racingcar.exceptions.CarNameException;
 import racingcar.exceptions.InvalidInputException;
 
 public class InputValidationService implements ValidationService {
@@ -24,9 +25,15 @@ public class InputValidationService implements ValidationService {
 
         for (String name : names) {
             boolean isDuplicate = bitMap.getOrDefault(name, false);
-            if (!isValidName(name) || isDuplicate) {
+
+            if (isDuplicate) {
+                throw new CarNameException();
+            }
+
+            if (!isValidName(name)) {
                 throw new InvalidInputException();
             }
+
             bitMap.put(name, true);
         }
 
