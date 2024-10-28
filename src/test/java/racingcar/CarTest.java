@@ -40,7 +40,7 @@ public class CarTest {
 
         //when
         for (int i = 0; i < moveCount; i++) {
-            car.moveFoward();
+            car.moveForward();
         }
 
         assertThat(car.getPosition()).isEqualTo(moveCount);
@@ -54,7 +54,7 @@ public class CarTest {
 
         //when
         for (int i = 0; i < moveTimes; i++) {
-            car.moveFoward();
+            car.moveForward();
         }
 
         //then
