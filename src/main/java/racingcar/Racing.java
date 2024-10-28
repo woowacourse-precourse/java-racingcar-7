@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class Racing {
         }
         return carList;
     }
+
     private void playGame() {
         for (int i = 0; i < attempts; i++) {
             for (Car car : cars) {
@@ -54,7 +56,7 @@ public class Racing {
         System.out.println();
     }
 
-    private int getMaxPosition(){
+    private int getMaxPosition() {
         int maxPosition = -1;
         for (Car car : cars) {
             if (car.getPosition() > maxPosition) {
