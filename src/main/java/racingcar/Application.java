@@ -34,6 +34,12 @@ public class Application {
         }
     }
 
+    private static void printRacingProgress(Map<String, Integer> racing_progress) {
+        for (String name : racing_progress.keySet()) {
+            System.out.println(name + " : " + "-".repeat(racing_progress.get(name)));
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
