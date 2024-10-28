@@ -12,6 +12,10 @@ public enum Delimiter {
 		this.delimiter = delimiter;
 	}
 
+	public String getDelimiter() {
+		return delimiter;
+	}
+
 	public List<String> splitCarNames(String carNames) {
 		return Arrays.asList(carNames.split(this.delimiter));
 	}

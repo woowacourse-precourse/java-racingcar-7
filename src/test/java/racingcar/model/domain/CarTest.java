@@ -20,7 +20,27 @@ class CarTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { "pobi", "woni", "jun" })
+	@ValueSource(strings = { "pobi|woni|jun", "pobi-woni-jun" })
+	void 쉼표가_아닌_다른_구분자가_입력된_경우_예외(String carNames) {
+		Assertions.assertSimpleTest(() -> {
+			assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage(ErrorMessage.INVALID_DELIMITER.getMessage());
+		});
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = { "pobi ,woni, jun", "pobi, woni" })
+	void 이름과_구분자_사이에_공백이_있을_경우_예외(String carNames) {
+		Assertions.assertSimpleTest(() -> {
+			assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage(ErrorMessage.SPACE_BETWEEN_NAME.getMessage());
+		});
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = { "pobi,", "woni,", "jun," })
 	void 자동차가_한대일_경우_예외(String carNames) {
 		Assertions.assertSimpleTest(() -> {
 			assertThatThrownBy(() -> Validator.validateCarNames(carNames))
