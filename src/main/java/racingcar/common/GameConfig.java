@@ -1,5 +1,6 @@
 package racingcar.common;
 
+import racingcar.application.service.WinnerIdentifier;
 import racingcar.application.service.RacingCarConverter;
 import racingcar.persistence.CarRaceHistory;
 import racingcar.persistence.InMemoryRacingCarRepository;
@@ -41,7 +42,7 @@ public class GameConfig {
     }
 
     private RacingManager<RacingCar> racingManager() {
-        return new RacingCarManager(race(), racingCarRepository());
+        return new RacingCarManager(race(), racingCarRepository(), new WinnerIdentifier());
     }
 
     private RacingCarRepository racingCarRepository() {

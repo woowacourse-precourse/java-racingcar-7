@@ -16,8 +16,8 @@ class InMemoryRacingCarRepositoryTest {
     @Test
     void addAll() {
         Assertions.assertSimpleTest(() -> {
-            RacingCar car = new RacingCar("car1");
-            RacingCar car2 = new RacingCar("car2");
+            RacingCar car = RacingCar.from("car1");
+            RacingCar car2 = RacingCar.from("car2");
 
             repository.addAll(List.of(car, car2));
             assertThat(repository.getAll()).hasSize(2);

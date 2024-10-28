@@ -8,7 +8,10 @@ public class RacingCar extends Racer {
     private String name;
     private String progressState;
 
-    public RacingCar(String name) {
+    private RacingCar() {
+    }
+
+    private RacingCar(String name) {
         this.name = name;
         this.progressState = DEFAULT_STATE;
     }
