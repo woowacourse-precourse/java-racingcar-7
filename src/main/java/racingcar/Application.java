@@ -16,7 +16,7 @@ public class Application {
         int tryNum = InputView.getTryNum();
         Map<String, Integer> carProgress = OutputController.initializeCarProgress(carNames);
         OutputController.raceByOrder(carNames, carProgress, tryNum);
-        OutputController.findWinner(carNames, carProgress);
+        OutputController.determineWinner(carNames, carProgress);
 
 
 

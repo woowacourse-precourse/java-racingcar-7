@@ -8,7 +8,6 @@ public class OutputView {
     }
 
     public static void printRacingProcess(List<String> carNames, Map<String, Integer> carProgress){
-
         for (String carName : carNames){
             printCarProcess(carName, carProgress.get(carName));
         }

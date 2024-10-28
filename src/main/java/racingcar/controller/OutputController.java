@@ -29,30 +29,40 @@ public class OutputController {
         for (int i = 0; i < tryNum; i++) {
             raceCar(carNames, carProgress);
             OutputView.printRacingProcess(carNames, carProgress);
-
         }
     }
 
-    public static StringBuilder findWinner(List<String> carNames, Map<String, Integer> carProgress){
-        int maxProgress = 0;
+    private static StringBuilder getWinnersByMaxProgress(List<String> carNames, Map<String, Integer> carProgress, int maxProgress) {
         StringBuilder winners = new StringBuilder();
-
         for (String carName : carNames) {
-            maxProgress = Math.max(maxProgress, carProgress.get(carName));
-        }
-
-        for (String carName : carNames) {
-            if (carProgress.get(carName) != maxProgress) {
-                continue;
+            if (carProgress.get(carName) == maxProgress) {
+                appendWinner(winners, carName);
             }
-            if (!winners.isEmpty()) {
-                winners.append(",");
-            }
-            winners.append(carName);
         }
-        OutputView.printWinner(winners);
         return winners;
     }
 
+    private static void appendWinner(StringBuilder winners, String carName) {
+        if (!winners.isEmpty()) {
+            winners.append(",");
+        }
+        winners.append(carName);
+    }
 
+
+    public static int findMaxProgress(List<String> carNames, Map<String, Integer> carProgress){
+        int maxProgress = 0;
+        for (String carName : carNames) {
+            maxProgress = Math.max(maxProgress, carProgress.get(carName));
+        }
+        return maxProgress;
+    }
+
+    public static StringBuilder determineWinner(List<String> carNames, Map<String, Integer> carProgress){
+        int maxProgress = findMaxProgress(carNames, carProgress);
+        StringBuilder winner = getWinnersByMaxProgress(carNames, carProgress, maxProgress);
+        OutputView.printWinner(winner);
+        return winner;
+
+    }
 }
