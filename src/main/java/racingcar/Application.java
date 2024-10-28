@@ -2,7 +2,13 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        InputAmountOfRace inputAmount = new InputAmountOfRace();
+        inputAmount.inputRaceAmount();
+        int raceAmount = inputAmount.getRaceAmount();
+
+        RandomRaceOrNot raceResult = new RandomRaceOrNot();
+        raceResult.performRace();
+
         OutputRacing outputRacing = new OutputRacing();
         outputRacing.main(args);
     }
