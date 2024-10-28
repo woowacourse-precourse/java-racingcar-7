@@ -6,7 +6,7 @@ import java.util.List;
 import racingcar.Util.Exception.ErrorMessage;
 import racingcar.Util.Message.IOMessage;
 import racingcar.Validation.NameValidation;
-import racingcar.Validation.NumberOfTrialValidation;
+import racingcar.Validation.TrialCountValidation;
 
 public class InputView {
     public List<String> inputCarName() {
@@ -21,7 +21,7 @@ public class InputView {
             System.out.println(IOMessage.INPUT_TRIAL_COUNT.getMessage());
             String count = Console.readLine();
 
-            if (NumberOfTrialValidation.isNotInteger(count)) {
+            if (TrialCountValidation.isNotInteger(count)) {
                 throw new IllegalArgumentException(ErrorMessage.TRIAL_NOT_INTEGER.getMessage());
             }
 

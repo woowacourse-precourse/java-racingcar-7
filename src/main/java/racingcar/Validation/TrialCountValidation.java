@@ -1,6 +1,6 @@
 package racingcar.Validation;
 
-public class NumberOfTrialValidation {
+public class TrialCountValidation {
     public static boolean isNotInteger(String input) {
         try {
             Integer.parseInt(input);

@@ -3,7 +3,7 @@ package racingcar.DTO;
 import java.util.List;
 import racingcar.Util.Exception.ErrorMessage;
 import racingcar.Validation.NameValidation;
-import racingcar.Validation.NumberOfTrialValidation;
+import racingcar.Validation.TrialCountValidation;
 
 public class RaceInfoDTO {
     private List<String> carNames;
@@ -16,10 +16,10 @@ public class RaceInfoDTO {
         if (NameValidation.hasDuplicate(carNames)) {
             throw new IllegalArgumentException(ErrorMessage.NAME_DUPLICATE.getMessage());
         }
-        if (NumberOfTrialValidation.isNegative(trialCount)) {
+        if (TrialCountValidation.isNegative(trialCount)) {
             throw new IllegalArgumentException(ErrorMessage.TRIAL_NEGATIVE.getMessage());
         }
-        if (NumberOfTrialValidation.isZero(trialCount)) {
+        if (TrialCountValidation.isZero(trialCount)) {
             throw new IllegalArgumentException(ErrorMessage.TRIAL_ZERO.getMessage());
         }
         this.carNames = carNames;
