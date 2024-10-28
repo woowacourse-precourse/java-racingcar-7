@@ -48,4 +48,36 @@ public class ValidatorTest{
         assertEquals(ErrorCode.INVALID_CAR_NAME.getMessage(), exception.getMessage());
     }
 
+    @Test
+    @DisplayName("시도 횟수 검증 - 숫자 아님")
+    void validateTryCountTest_invalidNumberFormat() {
+        // 숫자가 아닌 입력 시 TRY_COUNT_IS_NOT_NUMBER 예외 메시지가 발생해야 함
+        IllegalArgumentException exception = assertThrowsExactly(
+                IllegalArgumentException.class,
+                () -> validator.validateTryCount("abc"),
+                "예외가 발생해야 합니다."
+        );
+        assertEquals(ErrorCode.TRY_COUNT_IS_NOT_NUMBER.getMessage(), exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("시도 횟수 검증 - 1 미만")
+    void validateTryCountTest_lessThanOne() {
+        // 시도 횟수가 1 미만일 경우 INVALID_TRY_COUNT 예외 메시지가 발생해야 함
+        IllegalArgumentException exception = assertThrowsExactly(
+                IllegalArgumentException.class,
+                () -> validator.validateTryCount("0"),
+                "예외가 발생해야 합니다."
+        );
+        assertEquals(ErrorCode.INVALID_TRY_COUNT.getMessage(), exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("시도 횟수 검증 - 유효한 시도 횟수")
+    void validateTryCountTest_validAttempt() {
+        // 유효한 시도 횟수가 입력되었을 경우 반환된 시도 횟수가 정확한지 확인
+        int attempts = validator.validateTryCount("3");
+        assertEquals(3, attempts);
+    }
+
 }
