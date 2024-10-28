@@ -8,5 +8,7 @@ public class ErrorMessage {
     public static final String ERROR_MESSAGE_INVALID_CHARACTER = "자동차 이름에 특수문자나 공백을 포함할 수 없습니다.";
     public static final String ERROR_MESSAGE_NO_CARS = "최소 1대 이상의 자동차가 필요합니다.";
     public static final String ERROR_MESSAGE_DUPLICATE_NAME = "중복된 자동차 이름이 있습니다.";
+    public static final String ERROR_MESSAGE_INVALID_NUMBER_FORMAT = "시도 횟수는 숫자만 입력 가능합니다.";
+    public static final String ERROR_MESSAGE_NUMBER_TOO_LARGE = "시도 횟수가 너무 큽니다. (최대 " + Integer.MAX_VALUE + ")";
 
 }
