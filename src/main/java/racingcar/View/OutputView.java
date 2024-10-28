@@ -23,6 +23,6 @@ public class OutputView {
     }
     public void printWinners(List<String> winners){
         String winnerNames= String.join(delimiter, winners);
-        System.out.printf("%s가 최종 우승했습니다.",winnerNames);
+        System.out.printf("최종 우승자 : %s",winnerNames);
     }
 }

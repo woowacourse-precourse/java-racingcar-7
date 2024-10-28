@@ -15,10 +15,11 @@ public class Car {
     }
 
     private void validNameLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > 5 || name.isEmpty()) {
             throw new IllegalArgumentException("이름은 다섯자 이내로 입력하세요");
         }
     }
+
 
     public void move() {
         if (canMove()) {
