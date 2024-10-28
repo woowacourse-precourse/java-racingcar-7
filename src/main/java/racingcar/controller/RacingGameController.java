@@ -6,6 +6,7 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.RacingGame;
 import racingcar.util.NumberConverter;
+import racingcar.util.RandomUtil;
 import racingcar.util.StringParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -37,7 +38,8 @@ public class RacingGameController{
         String roundInput = inputView.round();
         int round = numberConverter.convert(roundInput);
 
-        RacingGame racingGame = new RacingGame(cars, round);
+        RandomUtil randomUtil = new RandomUtil();
+        RacingGame racingGame = new RacingGame(cars, round, randomUtil);
 
         for(int i = 0; i < round; i++) {
             outputView.resultOfRound(racingGame.progress());

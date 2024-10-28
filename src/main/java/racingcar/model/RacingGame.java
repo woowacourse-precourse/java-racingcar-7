@@ -9,14 +9,15 @@ import racingcar.util.RandomUtil;
 public class RacingGame {
     private List<Car> racer;
     private int round;
-    private RandomUtil randomUtil = new RandomUtil();
+    private final RandomUtil randomUtil;
     private List<Result.Round> resultOfRound;
 
-    public RacingGame(List<Car> racer, int round) {
+    public RacingGame(List<Car> racer, int round, RandomUtil randomUtil) {
         validateRound(round);
 
         this.racer = racer;
         this.round = round;
+        this.randomUtil = randomUtil;
     }
 
     private void validateRound(int round) {
