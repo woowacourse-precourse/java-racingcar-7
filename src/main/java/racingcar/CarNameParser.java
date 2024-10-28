@@ -41,4 +41,8 @@ public class CarNameParser {
             }
         }
     }
+
+    public List<String> getCarNames() {
+        return carNames;
+    }
 }

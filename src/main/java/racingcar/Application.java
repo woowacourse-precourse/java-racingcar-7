@@ -9,6 +9,7 @@ public class Application {
         String carNames = promptCarName();
         CarNameParser carNameParser = new CarNameParser(carNames);
         int raceRound = promptRaceRound();
+        RaceManager raceManager = new RaceManager(carNameParser.getCarNames(), raceRound);
     }
 
     private static String promptCarName() {
