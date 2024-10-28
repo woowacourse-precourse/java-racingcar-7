@@ -8,7 +8,7 @@ class CarTest {
 
 
     @Test
-    void addMove_Test() {
+    void addMove_test() {
         Car car = new Car("TestCar");
 
         car.addMove();
