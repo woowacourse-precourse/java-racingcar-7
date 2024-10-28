@@ -25,7 +25,7 @@ public class InputValidator {
 
             if (playerNameLength > 5) {
                 throw new IllegalArgumentException("플레이어 이름은 5자 이하만 가능합니다.");
-            } else if (playerNameLength <= 0) {
+            } else if (playerNameLength == 0) {
                 throw new IllegalArgumentException("플레이어 이름은 공백일 수 없습니다.");
             }
         }
