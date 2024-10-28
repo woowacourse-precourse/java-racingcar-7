@@ -22,6 +22,19 @@ class ApplicationTest extends NsTest {
             MOVING_FORWARD, STOP
         );
     }
+    @Test
+    void 기능_테스트_우승자_여러명() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains(
+                            "pobi : -",
+                            "woni : -",
+                            "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
 
     @Test
     void 예외_테스트() {
