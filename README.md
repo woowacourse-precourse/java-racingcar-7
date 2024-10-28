@@ -30,36 +30,37 @@
 
 ### Car.class
 
-- private Car(String name);
+- [ ] private Car(String name);
     - 자동차라는 객체 정의
-- private void validateName(String name);
+- [ ] private void validateName(String name);
     - 자동차 이름 조건 정의
-- protected void move();
+- [ ] protected void move();
     - 자동차 한칸 움직임
-- private boolean hasMoveCondition();
+- [ ] private boolean hasMoveCondition();
     - 움직일 수 있는 조건인지 확인
 
 ### RacingCar.class
 
-- private RacingCar(String name);
+- [ ] private RacingCar(String name);
     - 레이싱카 객체 정의
-- public void create();
+- [ ] public void create();
     - 정적 팩토리 메소드
 
 ### Race.class
 
-- private Race(List<String> CarNames, int tryCount)
+- [ ] private Race(List<String> CarNames, int tryCount)
     - 레이스 객체 정의
-- private void playRound();
-- public void start();
+- [ ] private void playRound();
+    - Round 진행
+- [ ] public void start();
     - 정적 팩토리 메소드
-- private void validateTryCount()
+- [ ] private void validateTryCount()
     - 1회 이상
-- private void printRoundResult();
+- [ ] private void printRoundResult();
     - 라운드 결과 출력
-- private List<String> findWinners();
+- [ ] private List<String> findWinners();
     - 우승자 찾아서 List 반환
-- private void printWinners()
+- [ ] private void printWinners()
     - 최종우승자 출력
 
 ## 입출력 요구 사항
