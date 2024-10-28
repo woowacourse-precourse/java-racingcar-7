@@ -15,10 +15,6 @@ public class Race {
     }
 
     public boolean hasNext() {
-        if (count < raceNumber) {
-            count++;
-            return true;
-        }
-        return false;
+        return count++ < raceNumber;
     }
 }
