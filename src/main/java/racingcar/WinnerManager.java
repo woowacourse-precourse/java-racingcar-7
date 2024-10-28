@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinnerManager {
     public int getMaxDistance(List<Car> cars) {
@@ -8,5 +9,12 @@ public class WinnerManager {
                 .mapToInt(Car::getDistance)
                 .max()
                 .orElseThrow(() -> new IllegalArgumentException("자동차가 없습니다"));
+    }
+
+    public List<Car> determineWinners(List<Car> cars) {
+        int maxDistance = getMaxDistance(cars);
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .toList();
     }
 }
