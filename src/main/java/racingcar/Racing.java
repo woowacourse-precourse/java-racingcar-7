@@ -7,12 +7,8 @@ import java.util.List;
 
 public class Racing {
     public void run(String[] names, int count) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String name : names) {
-            Car car = new Car(name);
-            cars.add(car);
-        }
+        List<Car> cars = initializeCars(names);
+        System.out.println("\n실행 결과");
 
         for (int i = 0; i < count; i++) {
             forwardCondition(cars);
@@ -23,33 +19,48 @@ public class Racing {
         printWinners(cars);
     }
 
+    public List<Car> initializeCars(String[] names) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
+
+        return cars;
+    }
+
     public void forwardCondition(List<Car> cars) {
         for (Car car : cars) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
-            if (randomNumber >= 4) {
+            if (isMovable()) {
                 car.incrementMoveCount();
             }
         }
     }
 
+    public boolean isMovable() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
     public void presentStatus(List<Car> cars) {
         for (Car car : cars) {
-            System.out.print(car.getName() + " : ");
-            generateDashLine(car);
+            System.out.println(car.getName() + " : " + generateDashLine(car));
         }
     }
 
-    public void generateDashLine(Car car) {
+    public String generateDashLine(Car car) {
+        StringBuilder dashLine = new StringBuilder();
+
         for (int i = 0; i < car.getMoveCount(); i++) {
-            System.out.print("-");
+            dashLine.append("-");
         }
-        System.out.println();
+
+        return dashLine.toString();
     }
 
     public void printWinners(List<Car> cars) {
         int maxMoveCount = findMaxMoveCount(cars);
-
         List<String> winners = new ArrayList<>();
+
         for (Car car : cars) {
             if (car.getMoveCount() == maxMoveCount) {
                 winners.add(car.getName());
@@ -60,11 +71,13 @@ public class Racing {
 
     private int findMaxMoveCount(List<Car> cars) {
         int maxMoveCount = 0;
+
         for (Car car : cars) {
             if (car.getMoveCount() > maxMoveCount) {
                 maxMoveCount = car.getMoveCount();
             }
         }
+
         return maxMoveCount;
     }
 }
