@@ -25,7 +25,7 @@ public class AttemptCount {
     }
 
     private void validateValidCount() {
-        if(racingAttemptCount < MIN_ATTEMPT_COUNT || racingAttemptCount > MAX_ATTEMPT_COUNT) {
+        if (racingAttemptCount < MIN_ATTEMPT_COUNT || racingAttemptCount > MAX_ATTEMPT_COUNT) {
             throw new IllegalArgumentException("시도 횟수는 " + MIN_ATTEMPT_COUNT + " ~ " + MAX_ATTEMPT_COUNT + "사이여야합니다.");
         }
     }

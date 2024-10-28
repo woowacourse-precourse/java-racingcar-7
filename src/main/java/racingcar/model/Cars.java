@@ -40,7 +40,7 @@ public class Cars {
     }
 
     private void validateDelimiterPosition(String carName) {
-        if(carName.startsWith(DELIMITER) || carName.endsWith(DELIMITER)) {
+        if (carName.startsWith(DELIMITER) || carName.endsWith(DELIMITER)) {
             throw new IllegalArgumentException("처음과 마지막에 구분자를 포함시킬 수 없습니다.");
         }
     }
@@ -65,13 +65,13 @@ public class Cars {
     }
 
     private void validateMAXCarCount(List<String> carNamesList) {
-        if(carNamesList.size() > MAX_CAR_COUNT) {
+        if (carNamesList.size() > MAX_CAR_COUNT) {
             throw new IllegalArgumentException("자동차는" + MAX_CAR_COUNT + "대 이하로만 설정할 수 있습니다.");
         }
     }
 
     private void validateMinCarCount(List<String> carNamesList) {
-        if(carNamesList.size() < MIN_CAR_COUNT) {
+        if (carNamesList.size() < MIN_CAR_COUNT) {
             throw new IllegalArgumentException("레이스를 하기위해 최소" + MIN_CAR_COUNT + "대 이상의 자동차가 필요합니다.");
         }
     }
