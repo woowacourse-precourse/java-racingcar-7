@@ -2,19 +2,16 @@ package racingcar.domain;
 
 import racingcar.utils.OutputHandler;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RaceGame {
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
     private final int attemptCount;
 
-    public RaceGame(List<String> carNames, int attemptCount) {
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
+    public RaceGame(List<Car> cars, int attemptCount) {
+        this.cars = cars;
         this.attemptCount = attemptCount;
     }
 
