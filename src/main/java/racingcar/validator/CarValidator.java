@@ -1,12 +1,15 @@
 package racingcar.validator;
 
 import java.util.List;
+import static racingcar.utils.CarErrorMessage.*;
 
 public class CarValidator {
 
+    private final int MAX_CAR_NAME_LENGTH = 5;
+
     public void validateInputCarNames(String inputCarNames) {
         if (inputCarNames == null || inputCarNames.trim().isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름을 입력해 주세요.");
+            throw new IllegalArgumentException(NULL_OR_EMPTY_CAR_NAMES);
         }
     }
 
@@ -17,13 +20,12 @@ public class CarValidator {
     }
 
     public void validateCarName(String CarName) {
-        final int MAX_CAR_NAME_LENGTH = 5;
 
         if (CarName == null || CarName.trim().isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
+            throw new IllegalArgumentException(NULL_OR_EMPTY_CAR_NAME);
         }
         if (CarName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다. 입력된 이름: " + CarName);
+            throw new IllegalArgumentException(CAR_NAME_TOO_LONG + CarName);
         }
     }
 

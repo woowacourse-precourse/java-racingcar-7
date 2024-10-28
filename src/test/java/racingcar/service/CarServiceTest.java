@@ -8,6 +8,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import static racingcar.utils.CarErrorMessage.*;
+
 public class CarServiceTest {
 
     private final CarService carService = new CarService();
@@ -31,7 +33,7 @@ public class CarServiceTest {
 
         assertThatThrownBy(() -> carService.processCarNames(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름을 입력해 주세요.");
+                .hasMessage(NULL_OR_EMPTY_CAR_NAMES);
     }
 
     @Test
@@ -43,7 +45,7 @@ public class CarServiceTest {
 
         assertThatThrownBy(() -> carService.processCarNames(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 비어 있을 수 없습니다.");
+                .hasMessage(NULL_OR_EMPTY_CAR_NAME);
     }
 
     @Test
@@ -55,6 +57,6 @@ public class CarServiceTest {
 
         assertThatThrownBy(() -> carService.processCarNames(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.");
+                .hasMessageContaining(CAR_NAME_TOO_LONG);
     }
 }
