@@ -28,9 +28,17 @@ public class RaceSimulator {
     }
 
     private String getRacingProgress(List<Car> cars) {
-        return cars.stream()
-                .map(car -> car.getCarName() + " : " + "-".repeat(car.getMoveDistance()))
-                .collect(Collectors.joining("\n"));
+        StringBuilder racingProgress = new StringBuilder();
+
+        for (Car car : cars) {
+            racingProgress
+                    .append(car.getCarName())
+                    .append(" : ")
+                    .append("-".repeat(car.getMoveDistance()))
+                    .append('\n');
+        }
+
+        return racingProgress.toString();
     }
 
     public String getRacingWinner(List<Car> cars) {
