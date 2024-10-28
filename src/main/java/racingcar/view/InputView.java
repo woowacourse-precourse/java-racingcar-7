@@ -12,8 +12,8 @@ public class InputView {
         return input.split(NAME_DELIMITER);
     }
 
-    public int inputTrialCounts() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
+    public int putCoins() {
+        System.out.println("시도할 횟수는 몇 회 인가요?");
         return Integer.parseInt(Console.readLine());
     }
 }
