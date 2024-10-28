@@ -16,6 +16,9 @@ public class Application {
         // 입력 값 기준으로 게임 초기 세팅
         Map<String, Integer> carPositions = initializeCarPositions(carNames);
 
+        // 경주 게임 시작
+        runRace(carNames, carPositions, attempts);
+
     }
 
     // 자동차 이름 입력
@@ -63,5 +66,34 @@ public class Application {
         }
         return carPositions;
     }
+
+
+    // 경주 게임 시작
+    private static void runRace(List<String> names, Map<String, Integer> carPositions, int attempts) {
+        for (int i = 0; i < attempts; i++) {
+            // 각 자동차에 대해 이동 여부 결정
+            for (String name : names) {
+                int picked = Randoms.pickNumberInRange(0, 9);
+                if (picked >= 4) {
+                    // 이동 거리를 1 증가
+                    carPositions.put(name, carPositions.get(name) + 1);
+                }
+            }
+
+            // 차수별 실행 결과 출력
+            printPositions(names, carPositions);
+        }
+    }
+
+    // 차수별 실행 결과 출력
+    private static void printPositions(List<String> names, Map<String, Integer> carPositions) {
+        for (String name : names) {
+            int position = carPositions.get(name);
+            System.out.print(name + " : ");
+            System.out.println("-".repeat(position));
+        }
+        System.out.println();
+    }
+
 
 }
