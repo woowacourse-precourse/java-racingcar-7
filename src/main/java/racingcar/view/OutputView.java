@@ -1,30 +1,12 @@
 package racingcar.view;
 
-import racingcar.constant.ViewConstants;
 import racingcar.domain.game.GameResult;
 import racingcar.dto.response.Winners;
 
-public class OutputView {
-    public void displayRunResultText() {
-        System.out.println(ViewConstants.RESULT_HEADER);
-    }
+public interface OutputView {
+    void displayRunResultText();
 
-    public void displayResult(GameResult result) {
-        result.results().forEach(this::displayStatus);
-        System.out.println();
-    }
+    void displayResult(GameResult result);
 
-    private void displayStatus(GameResult.PlayerResult result) {
-        String position = ViewConstants.FORWARD_SYMBOL.repeat(result.position());
-        System.out.printf(ViewConstants.POSITION_FORMAT,
-                result.name(), position);
-    }
-
-    public void displayWinners(Winners winners) {
-        String formattedNames = String.join(
-                ViewConstants.WINNERS_DELIMITER,
-                winners.getWinnerNames()
-        );
-        System.out.printf(ViewConstants.WINNERS_FORMAT, formattedNames);
-    }
+    void displayWinners(Winners winners);
 }

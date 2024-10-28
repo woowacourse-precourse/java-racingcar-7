@@ -14,10 +14,7 @@ public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public GameController(
-            GameService gameService,
-            InputView inputView,
-            OutputView outputView) {
+    public GameController(GameService gameService, InputView inputView, OutputView outputView) {
         this.gameService = gameService;
         this.inputView = inputView;
         this.outputView = outputView;
