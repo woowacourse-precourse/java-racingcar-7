@@ -16,10 +16,12 @@ public class Application {
     private final static String INPUT_VALIDATION_SIZE_EXCEPTION_MESSAGE = "자동차 이름 형식을 맞춰주세요. 자동차 이름은 5자 이하입니다.";
 
     public static List<String> carList;
+    public static int attempt;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         carList = inputCar();
         validateCarList();
+        attempt = inputAttempt();
 
     public static List<String> inputCar(){
         inputCarNamePrint();
@@ -28,6 +30,13 @@ public class Application {
         return Arrays.stream(input.split(COMMA))
                 .map(String::trim)
                 .toList();
+    }
+
+    public static int inputAttempt(){
+        inputAttemptPrint();
+        String input = Console.readLine();
+        validateAttemptInput(input);
+        return Integer.parseInt(input);
     }
 
     public static void validateInput(String input){
