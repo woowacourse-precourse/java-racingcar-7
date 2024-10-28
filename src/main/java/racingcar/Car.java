@@ -46,7 +46,7 @@ public class Car {
             return;
         }
 
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("자동차 이름은 영문자와 숫자만 허용합니다");
     }
 
     @Override
