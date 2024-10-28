@@ -12,6 +12,7 @@ public class TurnManager {
     public void progressTurn() {
         for (int i = 0; i < TURN; i++) {
             executeEachTurn();
+            GameController.displayProgress(user);
         }
         endTurn();
     }
@@ -21,7 +22,6 @@ public class TurnManager {
             gameEngine.extractRandom();
             gameEngine.scoreUpdate(users);
         }
-        GameController.displayProgress(user);
     }
 
     public void endTurn() {
