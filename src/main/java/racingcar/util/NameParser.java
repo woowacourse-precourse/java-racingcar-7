@@ -9,14 +9,15 @@ public class NameParser {
     public static List<String> convertStringToName(String names) {
         return trimNames(parseNames(names));
     }
+
     public static List<String> parseNames(String names) {
         return Arrays.stream(names.split(DELIMITER)).toList();
     }
 
     public static List<String> trimNames(List<String> names) {
         return names.stream()
-            .map(String::trim)
-            .toList();
+                .map(String::trim)
+                .toList();
     }
 
 

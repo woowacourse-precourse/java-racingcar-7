@@ -18,7 +18,7 @@ public class Car {
 
     public void move() {
         final int number = NumberGenerator.generate();
-        if (number > 4) {
+        if (number >= 4) {
             distance++;
         }
     }
