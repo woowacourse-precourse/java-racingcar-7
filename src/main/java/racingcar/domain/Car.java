@@ -3,8 +3,8 @@ package racingcar.domain;
 import java.util.function.Supplier;
 
 public class Car {
-	String name;
-	int steps;
+	private String name;
+	private int steps;
 
 	private Car(String name) {
 		this.name = name;
@@ -37,6 +37,14 @@ public class Car {
 
 	public String showStatus(String stat) {
 		return name + " : " + stat.repeat(steps) + "\n";
+	}
+
+	public int getScore() {
+		return this.steps;
+	}
+
+	public String getName() {
+		return this.name;
 	}
 
 }
