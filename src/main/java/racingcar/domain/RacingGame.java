@@ -9,11 +9,13 @@ import java.util.List;
 public class RacingGame {
     private final int limit;
     private final List<Car> participants = new ArrayList<>();
-    private final Utils utils = new Utils();
-    private final OutputView outputView = new OutputView();
+    private final Utils utils;
+    private final OutputView outputView;
 
-    public RacingGame(int limit) {
+    public RacingGame(int limit, OutputView outputView, Utils utils) {
         this.limit = limit;
+        this.outputView = outputView;
+        this.utils = utils;
     }
 
     public void setParticipants(String[] splited) {
