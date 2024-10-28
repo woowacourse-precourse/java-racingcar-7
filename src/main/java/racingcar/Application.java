@@ -5,8 +5,10 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        Scanner sc1 = new Scanner(System.in);
-        String carName = sc1.nextLine();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String carName = sc.nextLine();
         System.out.println(carName);
+
     }
 }
