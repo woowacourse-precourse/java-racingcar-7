@@ -6,23 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class GameView {
-    // 입력
-    private String userInput() {
-        String input = Console.readLine();
-        return input;
-    }
 
+    private final Validator validator = new Validator();
+
+    // 입력
     public HashMap<String, Integer> inputCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String userInput = userInput();
+        String userInput = Console.readLine();
         String[] str = userInput.split(",");
         HashMap<String, Integer> car = new HashMap<>();
         for(String s : str) {
-            if(s.length() > 5)
-                throw new IllegalArgumentException();
-            if(car.containsKey(s))
-                throw new IllegalArgumentException();
-
+            validator.nameValidation(s, car.keySet());
             car.put(s, 0);
         }
 
@@ -31,13 +25,10 @@ public class GameView {
 
     public int inputGameCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String userInput = userInput();
+        String userInput = Console.readLine();
         System.out.println();
-        try {
-            return Integer.parseInt(userInput);
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
+        validator.countValidation(userInput);
+        return Integer.parseInt(userInput);
     }
 
 
