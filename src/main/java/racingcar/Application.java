@@ -16,6 +16,7 @@ public class Application {
         }
         String getName() { return this.name; }
         int getDistance() { return this.distance; }
+        void setDistance( int distance ) { this.distance = distance; }
         void drive( int distance ){
             if( distance >= 4 ) this.distance += distance;
         }
