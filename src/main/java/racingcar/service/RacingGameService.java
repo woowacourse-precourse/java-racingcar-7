@@ -1,35 +1,44 @@
 package racingcar.service;
 
+import static racingcar.handler.OutputHandler.executeResultOutput;
+
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.handler.OutputHandler;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
-import static racingcar.handler.OutputHandler.gameResult;
 
 public class RacingGameService {
 
     private final List<Integer> carMovesCount = new ArrayList<>();
+    private final List<Integer> maxIndexes = new ArrayList<>();
+    private final List<String> winners = new ArrayList<>();
+    private String result = "";
 
-    public void startRace(List<String> carNames, int tryCount) {
+    public String startRace(List<String> carNames, int tryCount) {
 
         // 각 자동차 이름에 대한 예외사항 검증 메서드
-        for(String carName : carNames){
+        for (String carName : carNames) {
             validateCarName(carName);
         }
 
         //차의 이동거리 초기화
         initSetCarMovesCount(carNames);
 
-        gameResult();
+        executeResultOutput();
 
         // 시도 횟수만큼 반복
         for (int i = 0; i < tryCount; i++) {
             carMovesCount(carNames);
         }
 
+        return gameResult(carNames);
 
+    }
+
+    private void initSetCarMovesCount(List<String> carNames) {
+        for (int i = 0; i < carNames.size(); i++) {
+            carMovesCount.add(0);  // 이동 횟수를 0으로 초기화
+        }
     }
 
     private void carMovesCount(List<String> carNames) {
@@ -42,13 +51,28 @@ public class RacingGameService {
         System.out.println();
     }
 
-    private void initSetCarMovesCount(List<String> carNames) {
-        for (int i = 0; i < carNames.size(); i++) {
-            carMovesCount.add(0);  // 이동 횟수를 0으로 초기화
+    private String gameResult(List<String> carNames) {
+        int maxValue = Collections.max(carMovesCount);
+
+        for (int i = 0; i < carMovesCount.size(); i++) {
+            if (carMovesCount.get(i) == maxValue) {
+                maxIndexes.add(i);
+            }
         }
+
+        for (int index : maxIndexes) {
+            winners.add(carNames.get(index));
+        }
+
+        if (winners.size() == 1) {
+            result = winners.get(0);
+        } else {
+            result = String.join(", ", winners);
+        }
+
+        return result;
+
     }
-
-
 
 
     // carName 검증 메서드
