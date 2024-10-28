@@ -50,4 +50,15 @@ public class Cars {
         }
         return maxMoveDistance;
     }
+
+    public List<String> findWinners(int maxMoveDistance){
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if(car.getMoveDisctance() == maxMoveDistance){
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
 }
