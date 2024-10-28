@@ -5,9 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+import static racingcar.ErrorMessage.CAR_NAME_LENGTH_ERROR;
+import static racingcar.ErrorMessage.TRY_COUNT_ERROR;
+
 public class Application {
 
     private static final int POSITION_UPDATE_THRESHOLD = 4;
+    private static final int CAR_NAME_MAX_LENGTH = 5;
 
     public static void main(String[] args) {
 
@@ -118,7 +122,7 @@ public class Application {
     private static void validateTryCount(int tryCount) {
 
         if(tryCount < 1) {
-            throw new IllegalArgumentException("시도 횟수는 1이상이어야 합니다.");
+            throw new IllegalArgumentException(TRY_COUNT_ERROR);
         }
     }
 
@@ -143,8 +147,8 @@ public class Application {
 
     private static void validateNameLength(String car) {
 
-        if(car.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        if(car.length() > CAR_NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR);
         }
     }
 }
