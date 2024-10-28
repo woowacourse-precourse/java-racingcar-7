@@ -3,9 +3,8 @@ package racingcar.model;
 import java.util.Objects;
 
 public class CarName {
-    private String carName;
+    private final String carName;
 
-    private static final int MIN_CAR_NAME = 1;
     private static final int MAX_CAR_NAME = 5;
     private static final String BLANK = " ";
 
@@ -16,7 +15,7 @@ public class CarName {
     }
 
     public static void validateLength(String carName) {
-        if (carName.length() < MIN_CAR_NAME || carName.length() > MAX_CAR_NAME) {
+        if (carName.isBlank() || carName.length() > MAX_CAR_NAME) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다.");
         }
     }
@@ -40,7 +39,7 @@ public class CarName {
             return false;
         }
         CarName comparingCarName = (CarName) obj;
-        return carName == comparingCarName.carName;
+        return Objects.equals(carName, comparingCarName.carName);
     }
 
     @Override
