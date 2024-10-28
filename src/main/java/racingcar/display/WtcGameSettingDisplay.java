@@ -9,6 +9,8 @@ import racingcar.car.ICar;
 
 public class WtcGameSettingDisplay implements IGameSettingDisplay {
 
+    private static final int CAR_NAME_LENGTH_LIMIT = 5;
+
     @Override
     public List<ICar> settingCarList() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
@@ -22,6 +24,9 @@ public class WtcGameSettingDisplay implements IGameSettingDisplay {
 
         List<ICar> carList = new ArrayList<>();
         for (final String carName : carNames) {
+            if (CAR_NAME_LENGTH_LIMIT < carName.length()) {
+                throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LENGTH_OVER.getMessage());
+            }
             carList.add(new CarImpl(carName));
         }
 
