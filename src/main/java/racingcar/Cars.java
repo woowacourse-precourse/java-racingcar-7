@@ -7,27 +7,26 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Cars {
 
     String name;
-    static String move = "";
-    static int tryCount;
-    static int count = 0;
+    String move = "";
+    int count = 0;
     static List<Cars> cars = new ArrayList<>();
 
-    public Cars(String s, int num) {
+    public Cars(String s) {
         name = s;
-        tryCount = num;
     }
 
     public static void makeCarslist(List<String> carsList){
         for (String s : carsList) {
-            cars.add(new Cars(s, tryCount));
+            cars.add(new Cars(s));
         }
     }
 
     public static void printMoves(List<Cars> cars) {
         for (Cars car : cars) {
-            System.out.println(car.name+" : "+move);
+            System.out.println(car.name+" : "+car.move);
         }
     }
+
     public static void tryMoving(int tryCount){
         for(int i=0; i<tryCount; i++){
             moving();
@@ -38,11 +37,10 @@ public class Cars {
         for (Cars car : cars) {
             int num = Randoms.pickNumberInRange(0, 9);
             if (num >= 4) {
-                Cars.move += "-";   
-                Cars.count += 1;
+                car.move += "-";
+                car.count += 1;
             }
         }
         printMoves(cars);
     }
-
 }

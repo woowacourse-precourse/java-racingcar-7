@@ -23,6 +23,6 @@ public class Application {
         System.out.println("\n실행 결과");
 
         makeCarslist(carsList);
-        moving();
+        tryMoving(tryCount);
     }
 }
