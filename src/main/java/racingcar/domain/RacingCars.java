@@ -9,11 +9,11 @@ import static racingcar.exception.ErrorMessages.CAR_COUNT_ERROR_MESSAGE;
 import static racingcar.exception.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
 import static racingcar.util.ValidationUtil.isDuplicate;
 
-public class Cars {
+public class RacingCars {
     private List<Car> cars = new ArrayList<>();
     public static final int MIN_CAR_COUNT = 2;
 
-    public Cars(List<String> carNames) {
+    public RacingCars(List<String> carNames) {
         validateCarNames(carNames);
         for (String carName : carNames) {
             cars.add(new Car(carName));
