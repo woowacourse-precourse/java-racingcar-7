@@ -58,14 +58,8 @@ public class Application {
         }
     }
 
-    public static void isGameCountNumber(String gameCountStr) {
-        if (!gameCountStr.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException("숫자를 입력해 주세요.");
-        }
-    }
-
-    public static void isGameCountOneOrMore(int gameCount) {
-        if (gameCount <= 0) {
+    public static void isGameCountPositiveNumber(String gameCountStr) {
+        if (!gameCountStr.chars().allMatch(Character::isDigit) || gameCountStr.equals("0")) {
             throw new IllegalArgumentException("1 이상의 숫자를 입력해 주세요.");
         }
     }
@@ -91,9 +85,8 @@ public class Application {
         isLastCharacterComma(carNames);
         String[] carName = seperateCarNames(carNames);
         String gameCountStr = inputView.readGameCount();
-        isGameCountNumber(gameCountStr);
+        isGameCountPositiveNumber(gameCountStr);
         int gameCount = Integer.parseInt(gameCountStr);
-        isGameCountOneOrMore(gameCount);
         runGame(carName, gameCount);
     }
 }
