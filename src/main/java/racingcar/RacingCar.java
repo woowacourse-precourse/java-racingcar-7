@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ public class RacingCar {
         inputCarName();
         int tryTimes = inputTryTimes();
         tryMoving(tryTimes);
+        printWinner();
     }
 
     private void inputCarName() {
@@ -33,7 +35,7 @@ public class RacingCar {
     private void tryMoving(int tryTimes) {
         System.out.println("\n" + "실행 결과");
         for (int i = 0; i < tryTimes; i++) {
-            for (String carName : cars.keySet()){
+            for (String carName : cars.keySet()) {
 
                 if (Randoms.pickNumberInRange(0, 9) >= 4)
                     cars.put(carName, cars.get(carName) + 1);
@@ -42,6 +44,21 @@ public class RacingCar {
             }
             System.out.println();
         }
+    }
+
+    private void printWinner() {
+        StringBuilder winner = new StringBuilder();
+        int highScore = Collections.max(cars.values());
+        for (String carName : cars.keySet()) {
+            if (cars.get(carName) == highScore) {
+                if (winner.length() > 0) {
+                    winner.append(", " + carName);
+                }
+                else
+                    winner.append(carName);
+            }
+        }
+        System.out.println("최종 우승자 : " + winner.toString());
     }
 
     private String hyphen(int number) {
