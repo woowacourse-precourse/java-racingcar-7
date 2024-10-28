@@ -1,19 +1,12 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Application {
     public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNames = Console.readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int number = Integer.parseInt(Console.readLine());
+        Car[] cars = Initialize.initializeCars();
+        int attemptCount = Initialize.initializeAttemptCount();
 
-        InputProcess inputProcess = new InputProcess();
-        String[] carList = inputProcess.splitName(carNames);
-        inputProcess.checkName(carList);
+        ValidateValue.validateValue(cars, attemptCount);
 
-        RacingCar racingGame = new RacingCar(carList, number);
-        racingGame.start();
+        Racing.start(cars, attemptCount);
     }
 }
