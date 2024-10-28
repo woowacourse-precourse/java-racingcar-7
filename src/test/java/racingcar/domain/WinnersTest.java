@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-class WinnerTest {
+class WinnersTest {
 
     @Test
     void 우승자가_단일인_경우_1명만_반환한다() {
@@ -12,7 +12,7 @@ class WinnerTest {
         Cars cars = new Cars("pobi");
         Car furthestCar = cars.getFurthestCar();
 
-        Winner winner = new Winner(cars, furthestCar);
+        Winners winner = new Winners(cars, furthestCar);
 
         // when
         String winnerString = winner.toString();
@@ -27,7 +27,7 @@ class WinnerTest {
         Cars cars = new Cars("pobi,jun");
         Car furthestCar = cars.getFurthestCar();
 
-        Winner winner = new Winner(cars, furthestCar);
+        Winners winner = new Winners(cars, furthestCar);
 
         // when
         String winnerString = winner.toString();

@@ -2,14 +2,14 @@ package racingcar.domain;
 
 import java.util.List;
 
-public class Winner {
+public class Winners {
 
     private static final String WINNER_DELIMITER = ", ";
 
     private final List<Car> winners;
 
-    public Winner(Cars cars, Car car) {
-        this.winners = cars.findWinners(car);
+    public Winners(Cars cars, Car furthestCar) {
+        this.winners = cars.findWinners(furthestCar);
     }
 
     @Override

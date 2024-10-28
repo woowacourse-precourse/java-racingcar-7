@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.Winner;
+import racingcar.domain.Winners;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -23,13 +23,13 @@ public class GameController {
     }
 
     private void displayWinners(Cars cars) {
-        Winner winner = determineWinners(cars);
+        Winners winner = determineWinners(cars);
         outputView.printFinalWinners(winner.toString());
     }
 
-    private Winner determineWinners(Cars cars) {
+    private Winners determineWinners(Cars cars) {
         Car furthestCar = cars.getFurthestCar();
-        return new Winner(cars, furthestCar);
+        return new Winners(cars, furthestCar);
     }
 
     private Cars initCars() {
