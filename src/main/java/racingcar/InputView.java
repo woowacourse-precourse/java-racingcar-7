@@ -2,25 +2,18 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputHandler {
+public class InputView {
 
-    public String[] getCarNames() {
+    public String getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carList = Console.readLine();
-        carList = removeBlank(carList);
 
-        String[] cars = carList.split(",");
-        validateCarNames(cars);
-
-        return cars;
+        return Console.readLine();
     }
 
-    public int getTryCount() {
+    public String getTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String tryCount = Console.readLine();
-        tryCount = removeBlank(tryCount);
 
-        return validateTryCount(tryCount);
+        return Console.readLine();
     }
 
     private String removeBlank(String str) {

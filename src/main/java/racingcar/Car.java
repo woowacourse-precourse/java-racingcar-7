@@ -15,10 +15,11 @@ public class Car {
         }
     }
 
-    public void printCount() {
-        System.out.print(name + " : ");
-        for(int j = 0; j< position; j++){
-            System.out.print("-");
-        }
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
