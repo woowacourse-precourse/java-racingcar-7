@@ -36,13 +36,21 @@ public class RacingGameController {
     // 입력된 시도 횟수만큼 레이스를 반복
     public void startRace(int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
-
+            raceCars();
+            printRaceStatus();
+            System.out.println();
         }
     }
 
     private void raceCars() {
         for (Car car : cars) {
             car.move();
+        }
+    }
+
+    private void printRaceStatus() {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
     }
 }
