@@ -1,5 +1,8 @@
 package racingcar.validator;
 
+import static racingcar.validator.ErrorMessages.INVALID_COUNT_RANGE;
+import static racingcar.validator.ErrorMessages.INVALID_COUNT_TYPE;
+
 public class RaceCountValidator {
 
     public static int validateRaceCount(String raceCount) {
@@ -14,7 +17,7 @@ public class RaceCountValidator {
         try {
             count = Integer.parseInt(raceCount);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("레이스 횟수는 숫자여야 합니다.");
+            throw new IllegalArgumentException(INVALID_COUNT_TYPE.getMessage());
         }
 
         return count;
@@ -22,7 +25,7 @@ public class RaceCountValidator {
 
     private static void validateCountRange(int raceCount) {
         if (raceCount < 1) {
-            throw new IllegalArgumentException("레이스 횟수는 1 이상이어야 합니다.");
+            throw new IllegalArgumentException(INVALID_COUNT_RANGE.getMessage());
         }
     }
 
