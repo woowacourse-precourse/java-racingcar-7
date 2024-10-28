@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.controller.Controller;
+import racingcar.model.CarRace;
 import racingcar.service.validation.AttemptNumberValidator;
 import racingcar.service.validation.InputValidator;
 import racingcar.service.validation.NameValidator;
@@ -15,7 +16,8 @@ public class Application {
         InputParser inputParser = new InputParser();
         InputValidator<List<String>> nameValidator = new NameValidator();
         InputValidator<String> attemptValidator = new AttemptNumberValidator();
-        Service service = new Service();
+        CarRace carRace = new CarRace();
+        Service service = new Service(carRace);
         Controller controller = new Controller(inputParser, nameValidator, attemptValidator, service);
         controller.run();
     }

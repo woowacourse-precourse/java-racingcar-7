@@ -2,6 +2,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.model.CarRace;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ class ServiceTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
-    Service service = new Service();
+    Service service = new Service(new CarRace());
 
     @Test
     void operate() {

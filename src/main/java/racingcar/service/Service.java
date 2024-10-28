@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Service { // TODO: 이름 더 명확하게 개선
-    CarRace carRace = new CarRace(); // TODO: composition으로??
+    private final CarRace carRace;
+
+    public Service(CarRace carRace) {
+        this.carRace = carRace;
+    }
 
     public void operate(List<String> names, String attemptNumber) {
         List<Boolean> initialRandoms = getRandom(names.size() * convertType(attemptNumber));
