@@ -4,6 +4,7 @@ import racingcar.model.Car;
 import racingcar.service.CarService;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class RacingCarController {
 
     List<Car> cars = CarService.createCars(carNames);
     CarService carService = new CarService(cars, attemptsCount);
-    carService.startRace();
+    List<String> Winners = carService.startRace();
+    OutputView.printWinners(Winners);
   }
 }

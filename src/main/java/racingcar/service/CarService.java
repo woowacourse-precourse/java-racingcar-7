@@ -2,7 +2,6 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
-import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,14 +57,13 @@ public class CarService {
       }
     }
   }
-  public void startRace() {
+  public List<String> startRace() {
     System.out.println("실행 결과");
     for (int i = 0; i < attemptsCount; i++) {
       moveCars();
       printStatus();
       System.out.println();
     }
-    List<String>Winners = findWinners();
-    OutputView.printWinners(Winners);
+    return findWinners();
   }
 }
