@@ -2,6 +2,7 @@ package racingcar.controller.validator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.in;
 import static racingcar.exception.ErrorBase.CAR_COUNT_EXCEEDS_LIMIT;
 import static racingcar.exception.ErrorBase.CAR_NAME_IS_BETWEEN_ONE_AND_FIVE;
 import static racingcar.exception.ErrorBase.INPUT_IS_EMPTY;
@@ -9,12 +10,17 @@ import static racingcar.exception.ErrorBase.INPUT_IS_EMPTY;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class ValidateCarTest {
+class ValidateCarTest extends ValidatorTest<List<String>>{
+    @Override
+    protected Validator<List<String>> getValidator() {
+        return new ValidateCar();
+    }
+
     @Test
     void 쉼표로_구분된_자동차의_이름을_입력받는다() {
         String input = "pobi, woni, jun";
 
-        List<String> cars = ValidateCar.validateName(input);
+        List<String> cars = getValidator().validate(input);
 
         assertThat(cars).hasSize(3)
                 .containsExactlyInAnyOrder("pobi", "woni", "jun");
@@ -26,47 +32,40 @@ class ValidateCarTest {
         String input = " pobi , woni     , jun         ";
 
         // when
-        List<String> result = ValidateCar.validateName(input);
+        List<String> result = getValidator().validate(input);
 
         // then
         assertThat(result).containsExactly("pobi", "woni", "jun");
     }
 
     @Test
-    void 입력받은_문자열이_빈_문자열이면_예외를_발생시킨다(){
-        String input = "";
-
-        assertThatThrownBy(() -> ValidateCar.validateName(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INPUT_IS_EMPTY.getMessage());
-    }
-
-    @Test
     void 쉼표로_구분한_자동차의_이름이_빈_문자열이면_예외를_발생시킨다(){
         String input = "car1, , car2";
-        assertThatThrownBy(() -> ValidateCar.validateName(input))
+        assertThatThrownBy(() -> getValidator().validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INPUT_IS_EMPTY.getMessage());
+                .hasMessage(CAR_NAME_IS_BETWEEN_ONE_AND_FIVE.getMessage());
     }
 
     @Test
     void 자동차_이름이_최대글자를_초과하면_예외를_발생시킨다() {
         String input = "a".repeat(ValidateCar.NAME_LENGTH + 1);
 
-        assertThatThrownBy(() -> ValidateCar.validateName(input))
+        assertThatThrownBy(() -> getValidator().validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CAR_NAME_IS_BETWEEN_ONE_AND_FIVE.getMessage());
     }
 
     @Test
-    void 입력받은_자동차의_개수가_1000개_이상이면_예외를_발생시킨다() {
+    void 입력받은_자동차의_개수가_최대개수를_초과하면_예외를_발생시킨다() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < ValidateCar.MAX_CARS + 1; i++) {
             sb.append(i).append(",");
         }
 
-        assertThatThrownBy(() -> ValidateCar.validateName(sb.toString()))
+        assertThatThrownBy(() -> getValidator().validate(sb.toString()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CAR_COUNT_EXCEEDS_LIMIT.getMessage());
     }
+
+
 }
