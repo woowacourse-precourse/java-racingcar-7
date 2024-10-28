@@ -2,6 +2,11 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        ConsoleReader consoleReader = new DefaultConsoleReader();
+        RaceController raceController = new RaceController(consoleReader);
+
+        raceController.startRace();
+        raceController.executeRace();
+        raceController.endRace();
     }
 }
