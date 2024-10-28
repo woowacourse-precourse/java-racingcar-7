@@ -1,8 +1,9 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import racingcar.validator.CarNameValidator;
 
 public class CarFactory {
@@ -11,19 +12,12 @@ public class CarFactory {
 
     private static final String DELIMITER = ",";
 
-    public ArrayList<Car> createCar(String rawCarNames) {
-        ArrayList<String> carNameList = new ArrayList<>(Arrays.asList(rawCarNames.split(DELIMITER)));
+    public List<Car> createCar(String rawCarNames) {
+        Set<String> carNameSet = new HashSet<>();
 
-        ArrayList<Car> carList = new ArrayList<>();
-        HashSet<String> carNameSet = new HashSet<>();
-
-        for (String carName : carNameList) {
-            carName = carNameValidator.isValid(carName, carNameSet);
-
-            carList.add(Car.createCar(carName));
-            carNameSet.add(carName);
-        }
-
-        return carList;
+        return Arrays.stream(rawCarNames.split(DELIMITER))
+                .map(carName -> carNameValidator.checkCarName(carName, carNameSet))
+                .map(Car::createCar)
+                .toList();
     }
 }
