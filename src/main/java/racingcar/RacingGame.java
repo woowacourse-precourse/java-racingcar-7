@@ -10,8 +10,9 @@ public class RacingGame {
     private List<Car> cars;
     private int numberOfTrials;
 
-    public RacingGame(int numberOfTrials, String... names) {
-        this.numberOfTrials = numberOfTrials;
+    public RacingGame(String numberOfTrials, String... names) {
+        validateNumberOfTrials(numberOfTrials);
+        this.numberOfTrials = Integer.parseInt(numberOfTrials);
         this.cars = Arrays.stream(names)
                 .map(Car::new)
                 .toList();
