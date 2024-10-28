@@ -32,6 +32,7 @@ public class RacingCarController {
         OutputView.printRoundResults(raceStatus);
         WinnerDto winners = getWinnerNames(cars);
         OutputView.printWinners(winners);
+        InputView.closeStream();
     }
 
     private List<RoundResultDto> playRace(Cars cars, int tryCount) {

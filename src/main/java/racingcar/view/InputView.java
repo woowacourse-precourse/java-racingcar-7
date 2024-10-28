@@ -15,4 +15,8 @@ public class InputView {
 
         return Integer.parseInt(Console.readLine());
     }
+
+    public static void closeStream() {
+        Console.close();
+    }
 }
