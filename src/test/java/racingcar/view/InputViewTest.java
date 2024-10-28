@@ -3,7 +3,6 @@ package racingcar.view;
 import static org.assertj.core.api.Assertions.*;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class InputViewTest extends NsTest{
