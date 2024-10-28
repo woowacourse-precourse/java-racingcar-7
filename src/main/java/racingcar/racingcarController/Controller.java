@@ -43,7 +43,6 @@ public class Controller {
             }
             System.out.println();
         }
-
     }
 
     // nameInput 분리해서 리스트 대입
@@ -59,19 +58,19 @@ public class Controller {
     // 랜덤값에 따라 전진 여부를 결정하는 메서드
     public int isForward(int currentValue) {
 
-        int i = Randoms.pickNumberInRange(0, Max_Random_Number);
+        int i = Randoms.pickNumberInRange(0, MAX_RANDOM_NUMBER);
 
-        if (i >= Forward_Number) {
+        if (i >= FORWARD_NUMBER) {
             return currentValue + 1;
         }
         return currentValue;
     }
 
-    private static final int Forward_Number = 4;
-    private static final int Max_Random_Number = 9;
+    private static final int FORWARD_NUMBER = 4;
+    private static final int MAX_RANDOM_NUMBER = 9;
 
     // 맵 내 최대 value를 구하는 메서드
-    public int maxValue(List<Car> cars) {
+    private int maxValue(List<Car> cars) {
         int maxValue = 0;
 
         for (Car car : cars) {
@@ -83,7 +82,7 @@ public class Controller {
     }
 
     // 맵 내 최대 value를 지닌 값의 key를 구해서 String으로 합하는 메서드
-    public String winnerCar(List<Car> cars, int maxValue) {
+    private String winnerCar(List<Car> cars, int maxValue) {
         StringBuilder winner = new StringBuilder();
 
         for (Car car : cars) {
@@ -97,7 +96,7 @@ public class Controller {
 
     // 승자가 두 명 이상이면 사이에 콤마를 붙여주는 메서드
     private void appendWinner(StringBuilder winner, String carName) {
-        if (winner.length() > 0) {
+        if (!winner.isEmpty()) {
             winner.append(", ");
         }
         winner.append(carName);
