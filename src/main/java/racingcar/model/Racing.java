@@ -17,18 +17,18 @@ public class Racing {
     }
 
     public void race() {
+        RacingRoundService racingRoundService = RacingRoundService.getRacingRoundServiceInstance();
+        OutputView outputView = OutputView.getOutputViewInstance();
+        outputView.printRaceStart();
 
         int count = 0;
-        RacingRoundService racingRoundService = new RacingRoundService();
-        OutputView outputView = new OutputView();
-
         while (count < racingTotalRound) {
             racingRoundService.racingRound(racingCars);
             outputView.printOutputView(racingCars);
             count++;
         }
 
-        WinnerService winnerService = new WinnerService();
+        WinnerService winnerService = WinnerService.getWinnerServiceInstance();
         List<String> winners = winnerService.judgeWinner(racingCars);
         outputView.printWinnerView(winners);
 

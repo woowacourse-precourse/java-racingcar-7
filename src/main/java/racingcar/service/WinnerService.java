@@ -7,16 +7,27 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class WinnerService {
+    private static WinnerService winnerService;
 
-    public List<String> judgeWinner(Map<String, Integer> racingCar) {
-        Integer maxValue = Collections.max(racingCar.values());
+    private WinnerService() {}
+
+    public static WinnerService getWinnerServiceInstance() {
+        if (winnerService == null) {
+            winnerService = new WinnerService();
+            return winnerService;
+        }
+        return winnerService;
+    }
+
+    public List<String> judgeWinner(Map<String, Integer> racingCars) {
+        Integer maxValue = Collections.max(racingCars.values());
         List<String> winners = new LinkedList<>();
 
-        for (Entry<String, Integer> entry : racingCar.entrySet()) {
+        for (Entry<String, Integer> entry : racingCars.entrySet()) {
             String carName = entry.getKey();
-            Integer go = entry.getValue();
+            Integer carPosition = entry.getValue();
 
-            if(go.equals(maxValue)) {
+            if(carPosition.equals(maxValue)) {
                 winners.add(carName);
             }
         }

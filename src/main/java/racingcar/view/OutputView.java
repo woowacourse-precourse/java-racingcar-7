@@ -4,17 +4,32 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
+    private static OutputView outputView;
+
+    private OutputView() {}
+
+    public static OutputView getOutputViewInstance() {
+        if (outputView == null) {
+            outputView = new OutputView();
+            return outputView;
+        }
+        return outputView;
+    }
+
+    public void printRaceStart() {
+        System.out.println("==== 레이스 시작 ====");
+    }
+
 
     public void printOutputView(Map<String, Integer> racingCars) {
-        System.out.println("실행 결과");
         printRound(racingCars);
     }
 
     private void printRound(Map<String, Integer> racingCars) {
         for (String carName : racingCars.keySet()) {
-            int go = racingCars.get(carName);
+            int carPosition = racingCars.get(carName);
 
-            System.out.println(carName + " : " + "-".repeat(go) );
+            System.out.println(carName + " : " + "-".repeat(carPosition) );
         }
         System.out.println();
     }
