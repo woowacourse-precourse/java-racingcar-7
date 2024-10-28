@@ -1,17 +1,17 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import java.util.Arrays;
-import java.util.List;
-import org.junit.jupiter.api.Test;
-import racingcar.validator.InputValidator;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+import racingcar.validator.InputValidator;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -20,19 +20,19 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 이름_입력시_다섯_글자_초과_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
