@@ -25,6 +25,6 @@ public class Player implements Comparable<Player> {
 
     @Override
     public int compareTo(Player o) {
-        return this.score - o.getScore();
+        return o.getScore() - this.score;
     }
 }
