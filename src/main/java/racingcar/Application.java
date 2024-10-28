@@ -2,16 +2,16 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
+        InputView inputView = new InputView();
+        String input = inputView.inputCarNames();
 
         // Car 라는 클래스를 만들어 List<Car>로 처리할까 -> 확장성 고려해서(나중에 후진 같은 것이 생길지도)
         // Map<String, Integer>로 처리할까
@@ -25,8 +25,7 @@ public class Application {
             cars.add(car);
         }
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryCount = Integer.parseInt(Console.readLine());
+        int tryCount = inputView.inputTryCount();
         System.out.println();
 
         System.out.println("실행결과");

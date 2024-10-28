@@ -3,7 +3,7 @@ package racingcar;
 import java.util.List;
 
 public class Car {
-    private String name;
+    private final String name;
     private Integer forward;
 
     public Car(String carName, int forward) {
@@ -39,7 +39,7 @@ public class Car {
     }
 
     public static List<Car> getMaxByForward(List<Car> cars) {
-        // 가장 큰 a 값을 가진 Car 객체 찾기
+        // 가장 큰 forward 값을 가진 Car 객체 찾기
         int maxForward = cars.stream()
                 .mapToInt(Car::getForward)
                 .max() // 최대값 찾기
