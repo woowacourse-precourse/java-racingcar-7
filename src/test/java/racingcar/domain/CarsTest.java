@@ -14,4 +14,12 @@ public class CarsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 자동차_이름이_중복된_경우에_예외_발생() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Cars.from(List.of(Car.from("우테코"), Car.from("우테코"))))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
