@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.car;
 
 public class Car {
     private String name;
-    private long moveCount;
+    private int moveCount;
 
     public Car(String name) {
         this.name = name;
@@ -23,7 +23,7 @@ public class Car {
         this.name = name;
     }
 
-    public long getMoveCount() {
+    public int getMoveCount() {
         return moveCount;
     }
 }
