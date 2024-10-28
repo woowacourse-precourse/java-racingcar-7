@@ -26,7 +26,7 @@ public class RacingGameController {
 
     private int getMoveCountFromInput() {
         String moveCountInput = InputView.getMoveCount();
-        return racingGameService.parseMoveCount(moveCountInput);
+        return racingGameService.validateAndParseMoveCount(moveCountInput);
     }
 
     private void raceAllRounds(List<Car> cars, int moveCount) {
