@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
@@ -14,6 +13,6 @@ public class Application {
         // 1. 게임 시작
         carGameManager.startGame();
 
-        Console.close();
+        ConsoleReader.close();
     }
 }

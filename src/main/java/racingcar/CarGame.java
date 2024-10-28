@@ -23,7 +23,7 @@ public class CarGame {
 
 
     public void playOneRound() {
-        if(!canPlay()) { // 방어 로직
+        if (!canPlay()) { // 방어 로직
             throw new IllegalStateException("게임이 끝났습니다.");
         }
 

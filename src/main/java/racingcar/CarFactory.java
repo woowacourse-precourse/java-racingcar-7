@@ -13,7 +13,7 @@ public class CarFactory {
     public List<Car> createCarsFromInput(String input) {
         String[] carNames = commaCarNameTokenizer.split(input);
         return Arrays.stream(carNames)
-                .map(Car::new)
-                .toList();
+            .map(Car::new)
+            .toList();
     }
 }

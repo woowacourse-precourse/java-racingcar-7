@@ -13,7 +13,7 @@ public class RacingCarConsoleWriter {
         System.out.printf("최종 우승자 : %s\n", winnerString);
     }
 
-    public static void writeRoundStartMessage(){
+    public static void writeRoundStartMessage() {
         System.out.println("\n실행 결과");
     }
 
