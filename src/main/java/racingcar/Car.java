@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
 
-    public String name;
+    String name;
     int distance;
 
     public Car(String name) {
@@ -12,19 +12,18 @@ public class Car {
         this.distance = 0;
     }
 
-    public void drive() {
+    public void move() {
         int randomNum;
-
         randomNum = Randoms.pickNumberInRange(0, 9);
-        if (randomNum >= 4) {
-            distance++;
+
+        if (randomNum < 5) {
+            this.stop();
             return;
         }
-        this.stop();
+        distance++;
     }
 
     public void stop() {
         return;
     }
-
 }
