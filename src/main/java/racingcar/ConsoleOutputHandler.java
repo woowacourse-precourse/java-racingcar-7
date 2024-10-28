@@ -25,6 +25,7 @@ public class ConsoleOutputHandler {
     }
 
     public void showCommentForResult() {
+        System.out.println();
         System.out.println("실행 결과");
     }
 
@@ -33,10 +34,10 @@ public class ConsoleOutputHandler {
         String result = "최종 우승자 : ";
 
         for (Player winner : winners) {
-            result = result + winner.getName() + ",";
+            result = result + winner.getName() + ", ";
         }
 
-        System.out.println(trimResult(result));
+        System.out.print(trimResult(result));
 
     }
 
