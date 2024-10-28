@@ -2,7 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Application {
@@ -39,5 +41,12 @@ public class Application {
             }
             System.out.println();
         }
+
+        int maxValue = Collections.max(cars.values());
+
+        List<String> winners = cars.entrySet().stream()
+                .filter(entry -> entry.getValue() == maxValue)
+                .map(Map.Entry::getKey)
+                .toList();
     }
 }
