@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashMap;
 
+import static java.lang.Integer.parseInt;
+
 public class Application {
     public static void main(String[] args) {
         //1. 경주할 자동차의 이름을 쉼표 기준으로 구분하여 한줄에 받기
@@ -48,23 +50,26 @@ public class Application {
         }
 
         System.out.println("실행 결과");
-        for (String car : carArr){
-            //4. 각 자동차의 전진 조건에 대해 정하기 위해 0-9사이의 무작위 값을 구한다.
-            Integer pickNum = Randoms.pickNumberInRange(0, 9);
-            //5. 만약 무작위 값이 4이상일 경우 전진해야하니, 해당 자동차의 키 값에 대한 value에 +1을 해준다.
-            if (pickNum >= 4){
-                String value = map.get(car);
-                value += "-";
-                map.put(car, value);
+        //7. 시도할 횟수동안 다음의 4-6과정을 반복한다.
+        for (int i = 0; i < parseInt(inputTry); i++) {
+            for (String car : carArr) {
+                //4. 각 자동차의 전진 조건에 대해 정하기 위해 0-9사이의 무작위 값을 구한다.
+                Integer pickNum = Randoms.pickNumberInRange(0, 9);
+                //5. 만약 무작위 값이 4이상일 경우 전진해야하니, 해당 자동차의 키 값에 대한 value에 +1을 해준다.
+                if (pickNum >= 4) {
+                    String value = map.get(car);
+                    value += "-";
+                    map.put(car, value);
+                }
+
             }
 
+            //6. 전진 시도 차수별 실행 결과를 출력한다. 자동차 이름 키 값에 대한 밸류값만큼 '-'를 출력한다.
+            for (String car : carArr) {
+                System.out.println(car + " : " + map.get(car));
+            }
+            System.out.println();
         }
-
-        //6. 전진 시도 차수별 실행 결과를 출력한다. 자동차 이름 키 값에 대한 밸류값만큼 '-'를 출력한다.
-        for (String car : carArr){
-            System.out.println(car+" : "+map.get(car));
-        }
-
 
     }
 
