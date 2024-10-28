@@ -1,6 +1,6 @@
-package racingcar.racing.view;
+package racingcar.racing.presentation.view;
 
-import static racingcar.racing.utils.ExceptionMessages.IO_EXCEPTION_MESSAGE;
+import static racingcar.racing.common.ExceptionMessages.IO_EXCEPTION_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 

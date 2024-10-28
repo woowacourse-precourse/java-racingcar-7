@@ -1,6 +1,6 @@
-package racingcar.racing.model.dto;
+package racingcar.racing.domain.dto;
 
-import racingcar.racing.model.Car;
+import racingcar.racing.domain.Car;
 
 public record CarRoundResult(String carName, int currentDistance) {
     public static CarRoundResult from(Car car) {

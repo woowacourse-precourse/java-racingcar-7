@@ -1,14 +1,14 @@
-package racingcar.racing.controller;
+package racingcar.racing.presentation;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.racing.model.Car;
-import racingcar.racing.model.RacingGame;
-import racingcar.racing.model.dto.CarRoundResult;
-import racingcar.racing.utils.InputParser;
-import racingcar.racing.utils.InputValidator;
-import racingcar.racing.view.InputView;
-import racingcar.racing.view.OutputView;
+import racingcar.racing.domain.Car;
+import racingcar.racing.domain.RacingGame;
+import racingcar.racing.domain.dto.CarRoundResult;
+import racingcar.racing.common.InputParser;
+import racingcar.racing.common.InputValidator;
+import racingcar.racing.presentation.view.InputView;
+import racingcar.racing.presentation.view.OutputView;
 
 public class RacingGameManager {
     private RacingGame racingGame;

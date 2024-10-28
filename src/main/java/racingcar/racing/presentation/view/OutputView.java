@@ -1,9 +1,9 @@
-package racingcar.racing.view;
+package racingcar.racing.presentation.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.racing.model.Car;
-import racingcar.racing.model.dto.CarRoundResult;
+import racingcar.racing.domain.Car;
+import racingcar.racing.domain.dto.CarRoundResult;
 
 public class OutputView {
     public static void printAllRoundResult(List<List<CarRoundResult>> allRoundResult) {

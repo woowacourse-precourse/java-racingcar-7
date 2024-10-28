@@ -1,9 +1,9 @@
-package racingcar.racing.utils;
+package racingcar.racing.common;
 
-import static racingcar.racing.utils.ExceptionMessages.EMPTY_CAR_EXCEPTION_MESSAGE;
-import static racingcar.racing.utils.ExceptionMessages.INPUT_EMPTY_EXCEPTION_MESSAGE;
-import static racingcar.racing.utils.ExceptionMessages.INVALID_ATTEMPT_EXCEPTION_MESSAGE;
-import static racingcar.racing.utils.ExceptionMessages.INVALID_CAR_LENGTH_EXCEPTION_MESSAGE;
+import static racingcar.racing.common.ExceptionMessages.EMPTY_CAR_EXCEPTION_MESSAGE;
+import static racingcar.racing.common.ExceptionMessages.INPUT_EMPTY_EXCEPTION_MESSAGE;
+import static racingcar.racing.common.ExceptionMessages.INVALID_ATTEMPT_EXCEPTION_MESSAGE;
+import static racingcar.racing.common.ExceptionMessages.INVALID_CAR_LENGTH_EXCEPTION_MESSAGE;
 
 import java.util.List;
 

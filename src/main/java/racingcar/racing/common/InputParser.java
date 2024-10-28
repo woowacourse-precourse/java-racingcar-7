@@ -1,6 +1,6 @@
-package racingcar.racing.utils;
+package racingcar.racing.common;
 
-import static racingcar.racing.utils.ExceptionMessages.INVALID_ATTEMPT_EXCEPTION_MESSAGE;
+import static racingcar.racing.common.ExceptionMessages.INVALID_ATTEMPT_EXCEPTION_MESSAGE;
 
 import java.util.Arrays;
 import java.util.List;

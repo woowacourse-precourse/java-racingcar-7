@@ -1,10 +1,10 @@
-package racingcar.racing.model;
+package racingcar.racing.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.racing.model.dto.CarRoundResult;
+import racingcar.racing.domain.dto.CarRoundResult;
 
 public class RacingGame {
     private final int allRound;

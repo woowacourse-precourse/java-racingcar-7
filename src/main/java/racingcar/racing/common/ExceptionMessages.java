@@ -1,4 +1,4 @@
-package racingcar.racing.utils;
+package racingcar.racing.common;
 
 public class ExceptionMessages {
     public static final String INPUT_EMPTY_EXCEPTION_MESSAGE = "값을 입력해주세요.";
