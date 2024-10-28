@@ -3,17 +3,14 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static racingcar.exception.ErrorCode.*;
 
 public class Racing {
     private String cars;
     private Integer attemptsCnt;
-    private Map<String, String> racingCars;
+    private LinkedHashMap<String, String> racingCars;
     private List<String> winnersList;
     private final String DELIMITERS = ",";
     private final String MOVED_ROAD = "-";
@@ -42,7 +39,7 @@ public class Racing {
     }
 
     private void makeCarsDict(String[] carNames) {
-        racingCars = new HashMap<>();
+        racingCars = new LinkedHashMap<>();
 
         for (String name : carNames) {
             racingCars.put(name, "");
