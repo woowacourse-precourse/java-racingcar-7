@@ -30,7 +30,7 @@ public class Name {
 
 	private void validateAlphabet(String name) {
 		if (!name.matches("^[a-zA-Z]+")) {
-			throw new IllegalArgumentException("[ERROR] 입력값은 알파벳으로만 구성되어야 합니다.");
+			throw new IllegalArgumentException("[ERROR] 자동차 이름은 알파벳으로만 구성되어야 합니다.");
 		}
 	}
 
