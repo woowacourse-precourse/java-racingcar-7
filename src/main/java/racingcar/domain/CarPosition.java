@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.util.RandomNumberGenerator;
-
 import java.util.Objects;
 
 public class CarPosition {
@@ -15,10 +13,8 @@ public class CarPosition {
         this.position = START_POSITION;
     }
 
-    public void increasePositionOnCondition() {
-        if (RandomNumberGenerator.pickNumberInRange() >= MINIMUM_NUMBER) {
-            position++;
-        }
+    public void increase() {
+        position++;
     }
 
     public boolean isGreaterThan(CarPosition other) {

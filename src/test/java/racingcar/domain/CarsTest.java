@@ -2,70 +2,67 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.dto.request.CarsRequest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarsTest {
 
-    @DisplayName("유효한 자동차 이름 리스트로 CarsRequest가 생성된다.")
+    @DisplayName("숫자의 값이 4이상이면 전진할 수 있다.")
     @Test
-    void canCreateCarsRequest() {
+    void canMoveIfNumberIsMoreThanThree() {
         //given
-        List<CarName> carNames = List.of(new CarName("a"), new CarName("b")); // 유효한 이름
+        List<Car> initialCars = List.of(
+                new Car(new CarName("a"), new CarPosition()),
+                new Car(new CarName("b"), new CarPosition()),
+                new Car(new CarName("c"), new CarPosition()));
+        Cars cars = new Cars(initialCars);
         //when
-        CarsRequest carsRequest = new CarsRequest(carNames);
-        //then
-        assertThat(carsRequest.cars()).hasSize(2);
+        cars.move(new FixedNumberGenerator(5,4,3));
+        // then
+        assertThat(cars.getCars().get(0).getPosition().getPosition()).isEqualTo(1);
+        assertThat(cars.getCars().get(1).getPosition().getPosition()).isEqualTo(1);
+        assertThat(cars.getCars().get(2).getPosition().getPosition()).isEqualTo(0);
     }
 
-    @DisplayName("자동차 수가 1대 이하일 경우 예외가 발생한다.")
+    @DisplayName("한 명의 우승자가 있는 경우")
     @Test
-    void throwsExceptionWhenCarsCountIsBelowMinimum() {
+    void findSingleWinner() {
         //given
-        List<CarName> carNames = List.of(new CarName("a"));
+        Car carA = createCarWithPosition("a", 8);
+        Car carB = createCarWithPosition("b", 2);
+        Car carC = createCarWithPosition("c", 1);
+        Cars cars = new Cars(List.of(carA, carB, carC));
         //when
+        List<Car> winners = cars.drawWinner();
         //then
-        assertThatThrownBy(() -> new CarsRequest(carNames))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("최소 2명부터 최대 10명까지 경주가 가능합니다."); // 예외 메시지
+        assertThat(winners)
+                .hasSize(1)
+                .containsExactly(carA);
     }
 
-    @DisplayName("자동차 수가 10대 이상일 경우 예외가 발생한다.")
+    @DisplayName("공동 우승자가 있는 경우")
     @Test
-    void throwsExceptionWhenCarsCountIsAboveMaximum() {
+    void findMultipleWinners() {
         //given
-        List<CarName> carNames = createCarNameListWithMoreThanTen();
+        Car carA = createCarWithPosition("a", 3);
+        Car carB = createCarWithPosition("b", 3);
+        Car carC = createCarWithPosition("c", 1);
+        Cars cars = new Cars(List.of(carA, carB, carC));
         //when
+        List<Car> winners = cars.drawWinner();
         //then
-        assertThatThrownBy(() -> new CarsRequest(carNames))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("최소 2명부터 최대 10명까지 경주가 가능합니다."); // 예외 메시지
+        assertThat(winners)
+                .hasSize(2)
+                .containsExactly(carA, carB);
     }
 
-    @DisplayName("중복된 자동차 이름이 있는 경우 예외가 발생한다.")
-    @Test
-    void throwsExceptionWhenCarNamesAreDuplicated() {
-        //given
-        List<CarName> carNames = List.of(new CarName("dd"), new CarName("dd"));
-        //when
-        //then
-        assertThatThrownBy(() -> new CarsRequest(carNames))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("중복된 이름이 존재합니다."); // 예외 메시지
-    }
-
-    private List<CarName> createCarNameListWithMoreThanTen() {
-        List<CarName> carNames = new ArrayList<>();
-        String[] names = {"하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟", "아홉", "열", "열하나"};
-
-        for (String name : names) {
-            carNames.add(new CarName(name));
+    private Car createCarWithPosition(String name, int position) {
+        Car car = new Car(new CarName(name), new CarPosition());
+        for (int i = 0; i < position; i++) {
+            car.move();
         }
-        return carNames;
+        return car;
     }
 }

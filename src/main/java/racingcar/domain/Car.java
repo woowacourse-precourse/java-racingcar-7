@@ -13,7 +13,7 @@ public class Car {
     }
 
     public void move() {
-        position.increasePositionOnCondition();
+        position.increase();
     }
 
     public boolean isPositionGreaterThan(Car otherCar) {
@@ -26,6 +26,10 @@ public class Car {
 
     public CarName getName() {
         return name;
+    }
+
+    public CarPosition getPosition() {
+        return position;
     }
 
     @Override

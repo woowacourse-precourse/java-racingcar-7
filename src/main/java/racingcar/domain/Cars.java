@@ -10,8 +10,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void move() {
-        cars.forEach(Car::move);
+    public void move(NumberGenerator numberGenerator) {
+        cars.stream()
+                .filter(car -> canMove(numberGenerator))
+                .forEach(Car::move);
     }
 
     public List<Car> drawWinner() {
@@ -23,6 +25,10 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    private boolean canMove(NumberGenerator numberGenerator) {
+        return numberGenerator.generate() >= CarPosition.MINIMUM_NUMBER;
     }
 
     private Car getCarAtMaxPosition() {

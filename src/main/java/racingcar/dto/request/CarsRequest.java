@@ -1,9 +1,6 @@
 package racingcar.dto.request;
 
-import racingcar.domain.Car;
-import racingcar.domain.CarName;
-import racingcar.domain.CarPosition;
-import racingcar.domain.Cars;
+import racingcar.domain.*;
 
 import java.util.List;
 

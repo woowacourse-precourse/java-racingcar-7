@@ -1,6 +1,7 @@
 package racingcar.config;
 
 import racingcar.controller.GameController;
+import racingcar.domain.RandomNumberGenerator;
 import racingcar.io.input.CliInputReader;
 import racingcar.io.output.CliOutputWriter;
 import racingcar.service.GameService;
@@ -11,10 +12,14 @@ public class AppConfig {
 
     public GameController gameController() {
         return new GameController(
-                new GameService(),
+                gameService(),
                 inputView(),
                 outputView()
         );
+    }
+
+    public GameService gameService() {
+        return new GameService(new RandomNumberGenerator());
     }
 
     public InputView inputView() {
@@ -27,5 +32,4 @@ public class AppConfig {
     public OutputView outputView() {
         return new OutputView(new CliOutputWriter());
     }
-
 }
