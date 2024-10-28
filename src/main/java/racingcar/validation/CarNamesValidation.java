@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 
 public class CarNamesValidation {
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final String NAME_DELIMITER = ",";
+
     public static List<String> validateCarNames(String carNames) {
         isCarNamesEmpty(carNames);
         isCarNamesDelimiterValid(carNames);
@@ -24,7 +27,7 @@ public class CarNamesValidation {
     }
 
     private static List<String> convertCarNamesToList(String carNames) {
-        List<String> namesList = Arrays.asList(carNames.split(","));
+        List<String> namesList = Arrays.asList(carNames.split(NAME_DELIMITER));
 
         isCarNameOverFive(namesList);
         isCarNamesDuplicate(namesList);
@@ -34,7 +37,7 @@ public class CarNamesValidation {
 
     private static void isCarNameOverFive(List<String> names) {
         for (String name : names)
-            if (name.length() > 5) throw new CarNamesException(CarNamesException.MESSAGE_CAR_NAME_OVER_FIVE);
+            if (name.length() > MAX_NAME_LENGTH) throw new CarNamesException(CarNamesException.MESSAGE_CAR_NAME_OVER_FIVE);
     }
 
     private static void isCarNamesDuplicate(List<String> names) {
