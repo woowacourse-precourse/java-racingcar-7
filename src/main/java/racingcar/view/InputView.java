@@ -18,8 +18,17 @@ public class InputView {
     }
 
     public static int getAttemptNumber() {
-        System.out.println(INPUT_ATTEMPT_NUMBER_MESSAGE);
-        int input = Integer.parseInt(Console.readLine());
-        return input;
+        try {
+            System.out.println(INPUT_ATTEMPT_NUMBER_MESSAGE);
+            int attemptNumber = Integer.parseInt(Console.readLine());
+
+            if (attemptNumber <= 0) {
+                throw new IllegalArgumentException();
+            }
+
+            return attemptNumber;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
