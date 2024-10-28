@@ -26,7 +26,7 @@ public class Car {
         }
     }
 
-    private void move() {
+    public void move() {
         this.distance++;
     }
 
