@@ -40,21 +40,22 @@ public class GameController {
         return carList;
     }
 
-    private static void fillCarList(ArrayList<String> carNames, ArrayList<Car> carList)  {
-        for(String carName : carNames) {
+    private static void fillCarList(ArrayList<String> carNames, ArrayList<Car> carList) {
+        for (String carName : carNames) {
             carList.add(Car.registerCarNameFrom(carName));
         }
     }
 
     private static void startGame(ArrayList<Car> carList, int trialTimes) {
         OutputView.printNoticeBeforeResult();
-        while(trialTimes-- > 0) {
+        while (trialTimes-- > 0) {
             proceedSingleRound(carList);
             showIntermediateResult(carList);
         }
     }
+
     private static void proceedSingleRound(ArrayList<Car> carList) {
-        for(Car car : carList) {
+        for (Car car : carList) {
             double randomNumber = GameService.makeRandNumberZeroToNine();
             boolean carMove = GameService.isAbleToMove(randomNumber);
             applyMoveResult(car, carMove);
@@ -62,7 +63,7 @@ public class GameController {
     }
 
     private static void applyMoveResult(Car car, boolean carMove) {
-        if(carMove) {
+        if (carMove) {
             car.moveCar();
         }
     }

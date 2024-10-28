@@ -6,7 +6,8 @@ import racingcar.domain.Car;
 import java.util.ArrayList;
 
 public class GameService {
-    private GameService() {}
+    private GameService() {
+    }
 
     // 0 ~ 9 사이의 난수를 발생시킨다
     public static double makeRandNumberZeroToNine() {
@@ -28,7 +29,7 @@ public class GameService {
 
     private static int getMaxMileage(ArrayList<Car> carList) {
         int max = 0;
-        for(Car car : carList) {
+        for (Car car : carList) {
             max = Math.max(max, car.getMileage());
         }
 
@@ -36,12 +37,13 @@ public class GameService {
     }
 
     private static void chooseHighestMileageCars(ArrayList<String> winnerList, ArrayList<Car> carList, int maxMileage) {
-        for(Car car : carList) {
+        for (Car car : carList) {
             putToWinnerListIfMax(winnerList, car, maxMileage);
         }
     }
+
     private static void putToWinnerListIfMax(ArrayList<String> winnerList, Car car, int maxMileage) {
-        if(car.getMileage() == maxMileage) {
+        if (car.getMileage() == maxMileage) {
             winnerList.add(car.getCarName());
         }
     }

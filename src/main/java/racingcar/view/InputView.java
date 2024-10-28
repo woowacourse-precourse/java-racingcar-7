@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class InputView {
-    private InputView() {}
+    private InputView() {
+    }
 
     public static ArrayList<String> getCarNames() {
         ViewMessage.printInputNameMessage();

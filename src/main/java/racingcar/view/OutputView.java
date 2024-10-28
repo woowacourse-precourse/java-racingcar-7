@@ -6,14 +6,15 @@ import racingcar.util.DataTransFormer;
 import java.util.ArrayList;
 
 public class OutputView {
-    private OutputView() {}
+    private OutputView() {
+    }
 
     public static void printNoticeBeforeResult() {
         ViewMessage.printInitResultMessage();
     }
 
     public static void printIntermediateResult(ArrayList<Car> carList) {
-        for(Car car : carList) {
+        for (Car car : carList) {
             printEachCarResult(car);
         }
         System.out.println();
