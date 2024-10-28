@@ -36,6 +36,10 @@ public class RaceManager {
         }
     }
 
+    public void finishRace() {
+        outputView.printWinner(cars);
+    }
+
     private void makeCarsMove() {
         for (Car car : cars) {
             if (car.setAndReturnRandomNumber() >= comparisonNumber) {
