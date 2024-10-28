@@ -2,8 +2,7 @@ package racingcar;
 
 import java.util.List;
 
-public class Validator {
-
+public abstract class Validator {
     private static final int MAX_NAME_LENGTH = 5;
 
     public static void validateName(List<String> names) {
