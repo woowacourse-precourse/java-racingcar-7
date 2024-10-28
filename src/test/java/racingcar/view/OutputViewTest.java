@@ -8,7 +8,6 @@ import racingcar.model.Winner;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 class OutputViewTest extends NsTest {
@@ -27,10 +26,10 @@ class OutputViewTest extends NsTest {
         Car pobi = new Car("pobi");
         Car woni = new Car("woni");
         Car jun = new Car("jun");
-        pobi.moveForward();
-        pobi.moveForward();
-        woni.moveForward();
-        jun.moveForward();
+        pobi.move();
+        pobi.move();
+        woni.move();
+        jun.move();
 
         List<Car> cars = List.of(pobi, woni, jun);
 

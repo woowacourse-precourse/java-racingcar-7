@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 class WinnerTest {
@@ -19,10 +18,10 @@ class WinnerTest {
         Car woni = new Car("woni");
         Car jun = new Car("jun");
 
-        pobi.moveForward();
-        pobi.moveForward();
-        woni.moveForward();
-        jun.moveForward();
+        pobi.move();
+        pobi.move();
+        woni.move();
+        jun.move();
 
         List<Car> cars = new ArrayList<>(List.of(pobi, woni, jun));
         Winner winner = new Winner();

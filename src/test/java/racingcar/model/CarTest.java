@@ -24,9 +24,9 @@ class CarTest {
         Car car = new Car("pobi");
 
         //when
-        car.moveForward();
-        car.moveForward();
-        car.moveForward();
+        car.move();
+        car.move();
+        car.move();
 
         //then
         assertThat(car.getPoint()).isSameAs(3);
