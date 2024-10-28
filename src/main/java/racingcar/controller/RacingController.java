@@ -12,7 +12,6 @@ public class RacingController {
     private final OutputView outputView = new OutputView();
     private final InputService inputService = new InputService();
 
-
     public void racing() {
         List<String> carNames = inputService.getCarNames(inputView.inputCars());
         RacingService racingService = new RacingService(carNames);

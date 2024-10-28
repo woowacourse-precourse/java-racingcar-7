@@ -10,7 +10,6 @@ public class RacingService {
     private final List<String> carNames;
     private final Map<String, Integer> carPositions = new HashMap<>();
 
-
     public RacingService(List<String> carNames) {
         this.carNames = carNames;
         carNames.forEach(car -> carPositions.put(car, 0));

@@ -9,7 +9,6 @@ public class InputService {
     private static final int MAX_CAR_NAME_LENGTH = 5;
     private static final int MAX_ROUND_NUMBER = 10;
 
-
     public List<String> getCarNames(String carsInput) {
         if (carsInput == null) {
             throw new IllegalArgumentException();
@@ -27,8 +26,15 @@ public class InputService {
     }
 
     private void validateCarsInput(List<String> cars) {
+        checkCarsEmpty(cars);
         checkCarsLength(cars);
         checkCarsDuplication(cars);
+    }
+
+    private void checkCarsEmpty(List<String> cars) {
+        if (cars.stream().anyMatch(car -> car.length() == 0)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void checkCarsLength(List<String> cars) {
@@ -55,7 +61,7 @@ public class InputService {
     }
 
     private void validateRoundNumberInput(int roundNumber) {
-        if (roundNumber > MAX_ROUND_NUMBER) {
+        if (roundNumber <= 0 || roundNumber > MAX_ROUND_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
