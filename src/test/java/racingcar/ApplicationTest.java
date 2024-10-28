@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -34,5 +35,14 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    @DisplayName("자동차 이름에 공백이 있는 경우")
+    void 이름_공백_예외_테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi, , woni", "5"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
     }
 }

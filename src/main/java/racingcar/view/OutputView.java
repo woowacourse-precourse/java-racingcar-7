@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +21,7 @@ public class OutputView {
 
     public void printWinnerView(List<String> winners) {
         System.out.print("최종 우승자 : ");
-        System.out.println(winners);
+        System.out.println(String.join(", ", winners));
     }
 
 }
