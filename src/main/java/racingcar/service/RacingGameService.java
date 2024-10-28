@@ -16,12 +16,26 @@ public class RacingGameService {
         return racingGame.getCars();
     }
 
-    public List<String> getWinners() {
-
-    }
-
     private int getMaxPosition() {
+        int maxPosition = 0;
 
+        for (Car car : racingGame.getCars()) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+
+        return maxPosition;
+    }
+    public List<String> getWinners() {
+        int maxPosition = getMaxPosition();
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : racingGame.getCars()) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
     }
 
     public void initGame(List<String> carNames) {
