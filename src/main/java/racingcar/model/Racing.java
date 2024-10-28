@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.List;
 import java.util.Objects;
 import racingcar.model.dto.CarStatusDto;
+import racingcar.model.primitive.RacingCount;
 
 public class Racing {
 
