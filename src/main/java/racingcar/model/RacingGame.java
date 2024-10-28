@@ -19,10 +19,7 @@ public class RacingGame {
     public void startRacing() {
         for (int i = 0; i < roofCount; i++) {
             for (Car car : cars) {
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
-                if (randomNumber >= 4){
-                    car.move();
-                }
+                car.tryMove();
             }
             outputView.printCurrentResult(cars);
         }

@@ -1,5 +1,8 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.utils.RandomUtils;
+
 public class Car {
     private String name;
     private int point;
@@ -15,6 +18,13 @@ public class Car {
 
     public int getPoint() {
         return point;
+    }
+
+    public void tryMove() {
+        int randomNumber = RandomUtils.generate();
+        if (randomNumber >= 4) {
+            move();
+        }
     }
 
     public void move() {
