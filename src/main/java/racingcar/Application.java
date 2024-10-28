@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.text.MessageFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -18,7 +19,10 @@ public class Application {
             carName = carName.strip();
             // scenario 2: long name provided
             if (carName.length() > 5) {
-                throw new IllegalArgumentException("[ERROR] Length limit(5) exceeded: \"" + carName + "\"");
+                throw new IllegalArgumentException(
+                        MessageFormat.format(
+                                "[ERROR] Length limit(5) exceeded: \"{0}\"({1})",
+                                carName, carName.length()));
             }
             // scenario 3: blank name provided
             if (carName.isEmpty()) {
@@ -26,12 +30,15 @@ public class Application {
             }
             // scenario 4: duplicated name provided
             if (cars.containsKey(carName)) {
-                throw new IllegalArgumentException("[ERROR] Duplicated name: \"" + carName + "\"");
+                throw new IllegalArgumentException(
+                        MessageFormat.format(
+                                "[ERROR] Duplicated name not allowed: \"{0}\"",
+                                carName));
             }
             cars.put(carName, 0);
         }
         if (cars.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] Nobody is in game");
+            throw new IllegalArgumentException("[ERROR] You need to register at least one car.");
         }
 
         // input iterations
@@ -42,7 +49,9 @@ public class Application {
         try {
             iterationNumber = Integer.parseInt(iterationNumberRaw);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] Failed to parse \"" + iterationNumberRaw + "\" into integer.");
+            throw new IllegalArgumentException(MessageFormat.format(
+                    "[ERROR] Failed to parse \"{0}\" into integer.",
+                    iterationNumberRaw));
         }
         if (iterationNumber <= 0) {
             throw new IllegalArgumentException("[ERROR] You must enter positive integer.");
