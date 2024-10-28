@@ -4,6 +4,8 @@ import java.util.List;
 import racingcar.view.ErrorMessage;
 
 public class RaceCars {
+    private static final int DEFAULT_POSITION = 0;
+    private static final int MINIMUM_NUMBER_OF_CARS = 2;
     private final List<Car> cars;
 
     public RaceCars(final List<Car> cars) {
@@ -23,7 +25,7 @@ public class RaceCars {
         return cars.stream()
                 .mapToInt(car -> car.getPosition().getValue())
                 .max()
-                .orElse(0);
+                .orElse(DEFAULT_POSITION);
     }
 
     public List<String> getWinners(int maxPosition) {
@@ -52,6 +54,6 @@ public class RaceCars {
     }
 
     private boolean hasInappropriateNumberOfCars(List<Car> cars) {
-        return cars.size() < 2;
+        return cars.size() < MINIMUM_NUMBER_OF_CARS;
     }
 }
