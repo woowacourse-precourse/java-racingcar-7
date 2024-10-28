@@ -25,13 +25,13 @@ public class RaceController {
         InputView.printEnterCarNames();
         String enteredCarNames = InputView.getInput();
 
-        List<Car> racingCars = cars.extractCars(enteredCarNames);
+        List<Car> racingCars = cars.extractValidCars(enteredCarNames);
 
         InputView.printEnterRaceCount();
-        String countStr = InputView.getInput();
+        String raceCountInput = InputView.getInput();
 
-        RaceCountValidator.validate(countStr);
-        int raceCount = Integer.parseInt(countStr);
+        RaceCountValidator.validate(raceCountInput);
+        int raceCount = Integer.parseInt(raceCountInput);
 
         OutputView.printGameResultMessage();
 
