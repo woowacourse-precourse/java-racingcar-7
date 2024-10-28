@@ -39,6 +39,7 @@ public class Application {
             }
             System.out.println(carNames[i] + " : " + nowRaceCarResult);
         }
+        System.out.println();
     }
 
     private static void determineWinners(String[] carNames, List<StringBuilder> raceResults) {
