@@ -1,9 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 public class RegistrationManager {
@@ -39,21 +37,20 @@ public class RegistrationManager {
     }
 
     public void checkValidCarNames() {
-        for (int i = 0; i < cars.length; i++) {
-            String curCarName = cars[i].name();
-            cars[i].rename(getLowerCaseName(curCarName));
+        for (Car car : cars) {
+            String curCarName = car.name();
+            car.rename(getLowerCaseName(curCarName));
             isValidlengthName(curCarName);
         }
     }
 
     public void checkDuplicatePlayer() {
         ArrayList<String> nameList = new ArrayList<>();
-        for (int i = 0; i < cars.length; i++) {
-            nameList.add(cars[i].name());
-        }
-        Set<String> nameSet = new HashSet<>(nameList);
-        if (nameList.size() != nameSet.size()) {
-            throw new IllegalArgumentException("중복된 자동차 이름은 사용할 수 없습니다.(대문자와 소문자는 동일하게 인식됩니다.)");
+        for (Car car : cars) {
+            if (nameList.contains(car.name())) {
+                throw new IllegalArgumentException("중복된 자동차 이름은 사용할 수 없습니다.(대문자와 소문자는 동일하게 인식됩니다.)");
+            }
+            nameList.add(car.name());
         }
     }
 
