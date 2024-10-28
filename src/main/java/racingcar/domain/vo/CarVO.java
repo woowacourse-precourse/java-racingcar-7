@@ -3,7 +3,6 @@ package racingcar.domain.vo;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racingcar.domain.entity.car.Car;
 import racingcar.domain.entity.car.CarName;
 import racingcar.domain.entity.car.Distance;
 
@@ -15,7 +14,7 @@ public class CarVO {
 		this.name = name.toCarNameVO();
 		this.distance = distance.toDistanceVO();
 	}
-	
+
 	public CarNameVO getCarNameVO() {
 		return name;
 	}
