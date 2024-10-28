@@ -16,7 +16,7 @@ public class RacingGameService {
                 .toList();
     }
 
-    public int parseMoveCount(String moveCountInput) {
+    public int validateAndParseMoveCount(String moveCountInput) {
         MoveCountValidator.validateMoveCount(moveCountInput);
         return Integer.parseInt(moveCountInput);
     }

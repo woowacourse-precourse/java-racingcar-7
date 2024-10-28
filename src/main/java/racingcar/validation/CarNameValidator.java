@@ -44,7 +44,7 @@ public class CarNameValidator {
     }
 
     private static void validateNameHasInvalidCharacters(String name) {
-        if (!name.matches("[a-zA-z0-9]+")) {
+        if (!name.matches("[a-zA-Z0-9]+")) {
             throw new IllegalArgumentException(ErrorMessageConstants.ERROR_CAR_NAME_INVALID_CHARACTERS);
         }
     }
