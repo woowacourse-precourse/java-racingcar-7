@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.primitive;
 
 import java.util.Objects;
 import racingcar.exception.ErrorMessage;
