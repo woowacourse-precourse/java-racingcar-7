@@ -42,3 +42,6 @@ out/
 /test-output/
 /test-reports/
 *.log
+
+#.gradle/ 폴더 전체를 Git에서 무시
+.gradle/
