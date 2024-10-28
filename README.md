@@ -50,3 +50,44 @@
 
 <br>
 
+# 고민한 점과 새로 배운 점
+1. 일급 컬렉션의 개념과 적용
+- 고민한 점: Cars, RaceProgress와 같은 리스트 형태의 데이터를 어떻게 일급 컬렉션으로 관리할지 고민했습니다.
+- 새로 배운 점: 일급 컬렉션을 사용하면 컬렉션과 관련된 모든 로직을 해당 클래스에 응집할 수 있어 가독성이 높아진다는 것을 알게되었습니다. RoundPositions와 같이 의미 있는 이름을 부여함으로써 데이터의 맥락을 더 잘 전달할 수 있었습니다.
+
+2. 불변성과 List.copyOf
+- 새로 배운 점: List.copyOf를 통해 외부에서 컬렉션을 수정하지 못하게 보장할 수 있어, 데이터 무결성을 유지하고 예상치 못한 버그를 방지할 수 있다는 것을 알게되었습니다.
+
+3. 입력 검증과 변환 로직의 분리
+- 고민한 점: InputValidator와 InputParser의 역할을 분리하는 것이 필요한지, 또 어떤 로직이 어느 클래스에 있어야 할지에 대해 고민했습니다.
+- 새로 배운 점: 검증과 변환의 역할을 명확히 분리하면, 코드의 응집도가 높아지고 역할이 명확해진다는 것을 알게되었습니다. InputValidator는 검증에 집중하고, InputParser는 데이터를 필요한 형태로 변환하도록 분리하면서 각 클래스의 책임이 더욱 명확해졌습니다.
+
+4. 의존성 주입을 통한 테스트와 유지보수성 향상
+- 고민한 점: InputView에서 InputValidator와 InputParser를 의존성 주입 방식으로 변경하는 이유와 그 이점에 대해 고민했습니다.
+- 새로 배운 점: 의존성 주입을 통해 클래스 간 결합도를 낮추고, 필요할 때 다른 구현체로 교체할 수 있어 테스트가 더 용이해진다는 점을 알게되었습니다.
+
+<br>
+
+# 구성 클래스
+- constant
+  - AppConstants
+  - ErrorMessage
+  - CommonMessage
+- controller
+  - RaceController
+- model
+  - Car
+  - Cars
+  - RaceProgress
+  - RoundPositions
+  - RaceResult
+- parser
+  - InputParser
+- service
+  - RaceService
+- validator
+  - InputValidator
+- view
+  - InputView
+  - OutputView
+- Application
