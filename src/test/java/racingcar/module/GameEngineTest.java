@@ -1,4 +1,4 @@
-package racingcar.operator;
+package racingcar.module;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -30,4 +30,5 @@ public class GameEngineTest {
             assertEquals(initialScore, user.getUserScoreNum());
         }
     }
+
 }
