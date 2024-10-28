@@ -19,7 +19,9 @@ public class InputProcessor {
 
     public List<String> validateCarNames(String carNames) {
         Validator.checkBlank(carNames);
+        Validator.checkCommaFormat(carNames);
         List<String> splitCarNames = Arrays.asList(carNames.split(","));
+        Validator.checkDuplicateCarNames(splitCarNames);
         Validator.checkNameLength(splitCarNames);
         return splitCarNames;
     }
