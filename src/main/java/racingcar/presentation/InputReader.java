@@ -1,7 +1,7 @@
 package racingcar.presentation;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.domain.model.value.Name;
+import racingcar.domain.car.value.Name;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class InputReader {
                 .toList();
     }
 
-    public static Long readCount() {
+    public static int readCount() {
         try {
             return readCountValue();
         } catch (NumberFormatException e) {
@@ -27,10 +27,10 @@ public class InputReader {
         }
     }
 
-    private static long readCountValue() {
+    private static int readCountValue() {
         String userInput = Console.readLine();
 
-        long count = Long.parseLong(userInput);
+        int count = Integer.parseInt(userInput);
         if (count < 1) {
             throw new NumberFormatException();
         }
