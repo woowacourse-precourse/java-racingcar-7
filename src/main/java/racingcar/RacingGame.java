@@ -26,8 +26,8 @@ public class RacingGame {
         System.out.println(GAME_COUNT_MESSAGE);
         int count = countCheck(readLine());
         System.out.println(GAME_RESULT);
-        findMovingCar(cars);
         for (int i = 0; i < count; i++) {
+            findMovingCar(cars);
             printGameResult(cars);
         }
         printWinner(cars);
