@@ -33,37 +33,37 @@ class RaceServiceTest {
     @Test
     void race_increaseLocationTest () {
         assertRandomNumberInRangeTest(
-            () -> {
-                // given
-                List<Car> carList = List.of(new Car("jeong"), new Car("hun"));
+                () -> {
+                    // given
+                    List<Car> carList = List.of(new Car("jeong"), new Car("hun"));
 
-                // when
-                raceService.race(carList);
+                    // when
+                    raceService.race(carList);
 
-                // then
-                assertThat(carList.get(0).getLocation()).isEqualTo(0);
-                assertThat(carList.get(1).getLocation()).isEqualTo(1);
-            },
-            3, 4
+                    // then
+                    assertThat(carList.get(0).getLocation()).isEqualTo(0);
+                    assertThat(carList.get(1).getLocation()).isEqualTo(1);
+                    },
+                3, 4
         );
     }
 
     @Test
     void checkMaxLocation_successTest () {
         assertRandomNumberInRangeTest(
-            () -> {
-                // given
-                List<Car> carList = List.of(new Car("jeong"), new Car("hun"));
+                () -> {
+                    // given
+                    List<Car> carList = List.of(new Car("jeong"), new Car("hun"));
 
-                // when
-                raceService.race(carList);
-                raceService.race(carList);
-                int maxLocation = raceService.checkMaxLocation(carList);
+                    // when
+                    raceService.race(carList);
+                    raceService.race(carList);
+                    int maxLocation = raceService.checkMaxLocation(carList);
 
-                // then
-                assertThat(maxLocation).isEqualTo(2);
-            },
-            3, 4, 3, 4
+                    // then
+                    assertThat(maxLocation).isEqualTo(2);
+                },
+                3, 4, 3, 4
         );
     }
 
