@@ -5,14 +5,15 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class NameParserTest {
 
     private NameParser nameParser;
 
     @BeforeEach
-    public void before(){
+    public void before() {
         nameParser = new NameParser();
     }
 

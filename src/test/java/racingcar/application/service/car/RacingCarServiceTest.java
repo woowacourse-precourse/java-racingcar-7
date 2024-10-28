@@ -1,19 +1,20 @@
 package racingcar.application.service.car;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.RacingCar;
 import racingcar.infrastructure.persistence.InMemoryRacingCarRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 class RacingCarServiceTest {
 
     private RacingCarService racingCarService;
     private InMemoryRacingCarRepository repository;
 
     @BeforeEach
-    public void before(){
+    public void before() {
         repository = InMemoryRacingCarRepository.getInstance();
         repository.clear();
         racingCarService = new RacingCarService();

@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class NameValidatorTest {
     private NameValidator nameValidator;
 
     @BeforeEach
-    public void before(){
+    public void before() {
         nameValidator = new NameValidator();
     }
 
@@ -21,6 +21,6 @@ class NameValidatorTest {
         List<String> names = List.of("test", "name", "jijongkwon");
 
         // 5이상인지 확인
-        assertThrows(IllegalArgumentException.class, () -> nameValidator.validRacingCarName(names));
+        assertThrows(IllegalArgumentException.class, () -> NameValidator.validRacingCarName(names));
     }
 }

@@ -1,10 +1,10 @@
 package racingcar.application.service.winner;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.application.service.car.RacingCarService;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class WinnerServiceTest {
 
@@ -12,7 +12,7 @@ class WinnerServiceTest {
     private RacingCarService racingCarService;
 
     @BeforeEach
-    public void before(){
+    public void before() {
         winnerService = new WinnerService();
         racingCarService = new RacingCarService();
     }

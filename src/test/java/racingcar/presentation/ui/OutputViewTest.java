@@ -1,13 +1,8 @@
 package racingcar.presentation.ui;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.application.service.winner.WinnerService;
-import racingcar.domain.car.RacingCar;
 import racingcar.domain.history.RacingHistory;
 import racingcar.domain.winner.Winner;
 import racingcar.domain.winner.repository.WinnerRepository;
@@ -15,6 +10,11 @@ import racingcar.infrastructure.persistence.InMemoryRacingCarRepository;
 import racingcar.infrastructure.persistence.InMemoryRacingHistoryRepository;
 import racingcar.infrastructure.persistence.InMemoryWinnerRepository;
 import racingcar.presentation.enums.UiMessage;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class OutputViewTest {
     private OutputView outputView;
@@ -25,7 +25,7 @@ class OutputViewTest {
     private WinnerRepository winnerRepository;
 
     @BeforeEach
-    void before(){
+    void before() {
         outputView = new OutputView();
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
@@ -53,7 +53,7 @@ class OutputViewTest {
     }
 
     @Test
-    void 우승자_결과_화면_출력_테스트(){
+    void 우승자_결과_화면_출력_테스트() {
         winnerRepository.saveWinner(new Winner("pobi"));
         winnerRepository.saveWinner(new Winner("woni"));
 
