@@ -6,7 +6,10 @@ import java.util.Set;
 
 public class Validator {
     public static void carName(String name) {
-        if (name.isEmpty()) {
+        if (name == null) {
+            throw new IllegalArgumentException("자동차 이름은 null일 수 없습니다.");
+        }
+        if (name.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }
         if (name.length() > 5) {
