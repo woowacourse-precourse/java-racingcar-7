@@ -15,6 +15,7 @@ public class OutputViewTest {
     void 단독_우승자_메시지_출력() {
         System.setOut(new PrintStream(outputStreamCaptor));
         String winner = "pobi";
+
         OutputView.printSoloWinnerMessage(winner);
 
         assertThat(outputStreamCaptor.toString()).isEqualTo("최종 우승자 : pobi\n");
@@ -24,6 +25,7 @@ public class OutputViewTest {
     void 공동_우승자_메시지_출력() {
         System.setOut(new PrintStream(outputStreamCaptor));
         List<String> winnerNames = List.of("pobi", "jun");
+
         OutputView.printJointWinnerMessage(winnerNames);
 
         assertThat(outputStreamCaptor.toString()).isEqualTo("최종 우승자 : pobi, jun\n");

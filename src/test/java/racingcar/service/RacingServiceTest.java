@@ -1,14 +1,9 @@
 package racingcar.service;
 
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-
-
 
 public class RacingServiceTest {
     @Test
@@ -17,6 +12,7 @@ public class RacingServiceTest {
         List<String> carNames = List.of("pobi", "jun", "seok");
 
         List<String> winners = RacingService.getWinners(moveCounts, carNames);
+
         assertThat(winners).containsExactly("jun");
     }
 
@@ -26,6 +22,7 @@ public class RacingServiceTest {
         List<String> carNames = List.of("pobi", "jun", "seok");
 
         List<String> winners = RacingService.getWinners(moveCounts, carNames);
+
         assertThat(winners).containsExactly("jun", "seok");
     }
 }
