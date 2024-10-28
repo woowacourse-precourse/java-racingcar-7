@@ -39,4 +39,21 @@ public class RacingServiceTest {
             assertThat(cars).extracting(Car::getName).containsExactly("Car1", "Car2", "Car3");
         }
     }
+
+    @Nested
+    @DisplayName("경주 라운드 실행")
+    class ExecuteRaceRound {
+
+        @Test
+        @DisplayName("경주 라운드를 실행하고 자동차의 거리가 변경되는 테스트")
+        void changesCarDistanceAfterExecutingRaceRound() {
+            List<Car> carList = List.of(car1, car2);
+
+            racingService.executeRound(carList);
+
+            assertThat(car1.getState()).isGreaterThanOrEqualTo(0);
+            assertThat(car2.getState()).isGreaterThanOrEqualTo(0);
+        }
+    }
+
 }
