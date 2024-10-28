@@ -34,4 +34,17 @@ public class Application {
         }
         return tryCount;
     }
+
+    private static boolean shouldMove() {
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+        return randomValue >= 4;
+    }
+
+    private static void moveCars(String[] carNames, int[] positions) {
+        for (int i = 0; i < carNames.length; i++) {
+            if (shouldMove()) {
+                positions[i]++;
+            }
+        }
+    }
 }
