@@ -2,9 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.HashMap;
-
 import static java.lang.Integer.parseInt;
 
 public class Application {
@@ -17,6 +15,7 @@ public class Application {
         try{
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             inputCar = Console.readLine();
+//            System.out.println("inputCar: "+ inputCar);
             String car = inputCar;
             carArr = car.split(",");
 
@@ -25,13 +24,14 @@ public class Application {
                 if (checkCar.length()>5){
                     throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
                 }
-                if (!isNmberic(checkCar)){
+                if (isNmberic(checkCar)){
                     throw new IllegalArgumentException("자동차 이름은 숫자일 수 없습니다.");
                 }
             }
 
         } catch (IllegalArgumentException e){
-            return;
+            System.out.println(e.getMessage());
+            throw e;
         }
 
         //feat:2. 시도할 횟수 변수에 횟수 값 입력 받기
