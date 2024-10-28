@@ -16,6 +16,7 @@ public class Input {
     public int getGameCount(){
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputGameCount = Console.readLine();
+
         return convertStrToInt(inputGameCount);
     }
 
@@ -26,7 +27,9 @@ public class Input {
     public static List<String> trimCarNames(List<String> carNames){
         List<String> trimNames = new ArrayList<>();
         for (String carName : carNames) {
-            trimNames.add(carName.trim());
+            carName = carName.trim();
+            Validate.validateCarNameLength(carName);
+            trimNames.add(carName);
         }
         return trimNames;
     }
