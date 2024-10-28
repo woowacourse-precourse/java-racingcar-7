@@ -16,9 +16,17 @@ public class InputValidator {
     }
 
     void validateCarName(String carNames){
-        for(String carName : carNames.split(",")){
-            carNameValidator.inputMoreThanOneCharacter(carName);
-            carNameValidator.inputNotMoreThanFiveCharacter(carName);
+        for(String carName : split(carNames)){
+            checkCarName(carName);
         }
+    }
+
+    private void checkCarName(String carName) {
+        carNameValidator.inputMoreThanOneCharacter(carName);
+        carNameValidator.inputNotMoreThanFiveCharacter(carName);
+    }
+
+    private String[] split(String carNames){
+        return carNames.split(",");
     }
 }
