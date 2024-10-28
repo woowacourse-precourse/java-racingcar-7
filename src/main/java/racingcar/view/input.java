@@ -8,8 +8,17 @@ public class input {
     public List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNames = Console.readLine();
-        return splitCarNames(carNames);
+        List<String> names = splitCarNames(carNames);
+
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름을 5글자 이내로 작성해 주세요.");
+            }
+        }
+
+        return names;
     }
+    
 
     public List<String> splitCarNames(String carNames) {
         return Arrays.asList(carNames.split(","));

@@ -5,9 +5,6 @@ public class Car {
     private int position = 0;
 
     public Car(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름을 5글자 이내로 작성해 주세요.");
-        }
         this.name = name;
     }
 
