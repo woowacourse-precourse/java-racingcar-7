@@ -1,5 +1,9 @@
 package racingcar.controller;
 
+import domain.car.Car;
+import domain.car.CarFactory;
+import domain.car.Cars;
+import java.util.List;
 import racingcar.converter.Converter;
 import racingcar.validator.TryCountValidator;
 import racingcar.view.InputView;
@@ -13,8 +17,14 @@ public class RacingController {
     }
 
     public void startGame() {
-        String carNames = getCarNames();
+        Cars cars = createCars();
         int tryCount = getTryCount();
+    }
+
+    private Cars createCars() {
+        String carNames = getCarNames();
+        List<Car> carList = CarFactory.createCars(carNames);
+        return Cars.from(carList);
     }
 
     private static String getCarNames() {
