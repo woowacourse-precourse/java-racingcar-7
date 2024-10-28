@@ -1,4 +1,25 @@
 # java-racingcar-precourse
+## 파일 구조
+```
+racingcar
+┣ controller
+┃ ┗ RacingCarController.java
+┣ domain
+┃ ┣ Car.java
+┃ ┣ Cars.java
+┃ ┣ Name.java
+┃ ┗ Position.java
+┣ exception
+┃ ┗ ExceptionMessage.java
+┣ service
+┃ ┣ RacingCarService.java
+┃ ┗ TryCount.java
+┣ view
+┃ ┣ InputView.java
+┃ ┗ OutputView.java
+┗ Application.java
+```
+
 ## 자동차 경주 구현 사항
 ### 입력 구현 사항
 - [X] 경주할 자동차 이름 입력받기
@@ -11,7 +32,7 @@
 
 ### 비즈니스 로직 구현 사항
 - [X] 시도 횟수만큼 로직 진행하기
-- [X] 0~9 사이의 random값을 구한 후 0~3이면 정지, 4~9면 전진하기
+- [X] 0에서 9사이의 random값을 구한 후 3 이하면 정지, 4 이상이면 전진하기
 - [X] 종료 후 가장 많이 전진한 이름 찾기
 
 ### 출력 구현 사항
