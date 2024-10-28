@@ -16,7 +16,7 @@ public class Application {
             carReady.startRace(); // 레이싱 게임 시작
         } catch (IllegalArgumentException e) {
             System.out.println("입력 오류가 발생했습니다: " + e.getMessage());
-            System.exit(1);
+            //System.exit(1);
         }
     }
 }
