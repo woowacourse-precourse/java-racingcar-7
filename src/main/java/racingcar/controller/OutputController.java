@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class outputController {
+public class OutputController {
 
     public void printResultSentence() {
         System.out.println("실행 결과");
