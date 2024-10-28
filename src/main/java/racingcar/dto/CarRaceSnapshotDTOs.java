@@ -13,7 +13,7 @@ public record CarRaceSnapshotDTOs(
         return new CarRaceSnapshotDTOs(carRaceSnapshotDTOs);
     }
 
-    private static List<CarRaceSnapshotDTO> convertToDTOs(List<CarRaceSnapshot> carRaceSnapshots) {
+    private static List<CarRaceSnapshotDTO> convertToDTOs(final List<CarRaceSnapshot> carRaceSnapshots) {
         return carRaceSnapshots.stream()
                 .map(snapshot -> CarRaceSnapshotDTO.of(snapshot.getCarNames(), snapshot.getCarMoveDistances()))
                 .collect(Collectors.toList());
