@@ -8,7 +8,7 @@ public class Car {
 		validateName(name);
 
 		this.name = name;
-		this.distance = 0;
+		this.distance = RaceConfig.INITIAL_DISTANCE.getNumber();
 	}
 
 	public void move(int randomNumber) {
