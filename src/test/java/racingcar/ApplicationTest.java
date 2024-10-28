@@ -16,8 +16,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 기능_테스트() {
-        assertRandomNumberInRangeTest(
-                () -> {
+        assertRandomNumberInRangeTest(() -> {
                     run("pobi,woni", "1");
                     assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
                 },
@@ -35,8 +34,7 @@ class ApplicationTest extends NsTest {
     })
     void 나의_기능_테스트(String name, String attempt, String expectedOutput1, String expectedOutput2,
                    String expectedWinner, int moveOrStop1, int moveOrStop2) {
-        assertRandomNumberInRangeTest(
-                () -> {
+        assertRandomNumberInRangeTest(() -> {
                     run(name, attempt);
                     assertThat(output()).contains(expectedOutput1, expectedOutput2, expectedWinner);
                 },
