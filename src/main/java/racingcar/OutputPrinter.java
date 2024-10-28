@@ -1,15 +1,17 @@
 package racingcar;
 
+import racingcar.enums.PrintText;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 
 public class OutputPrinter {
     public void promptCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(PrintText.CAR_NAME_PROMPT.getPrint());
     }
 
     public void promptAttemptCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(PrintText.ATTEMPT_COUNT_PROMPT.getPrint());
     }
 
     public void showRace(LinkedHashMap<Car, Integer> cars) {
@@ -35,6 +37,6 @@ public class OutputPrinter {
     }
 
     private void printProgressBars(int length) {
-        System.out.print("-".repeat(length));
+        System.out.print(PrintText.MOVE_SYMBOL.getPrint().repeat(length));
     }
 }
