@@ -45,5 +45,16 @@ public class RacingCarGame {
         int randomNumber = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
         return randomNumber >= 4;
     }
+
+    // RacingCarGame.java
+
+    public void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            if (canMove()) {
+                car.moveForward();
+            }
+        }
+    }
+
 }
 
