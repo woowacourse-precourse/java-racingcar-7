@@ -1,5 +1,4 @@
 package racingcar.model;
-정
 import java.util.ArrayList;
 import java.util.List;
 
