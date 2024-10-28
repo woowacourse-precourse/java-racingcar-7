@@ -4,7 +4,12 @@ import org.junit.jupiter.api.Test;
 import racingcar.Domain.Car;
 import racingcar.repository.CarRepository;
 import racingcar.service.RacingGameService;
+
+import java.io.ByteArrayInputStream;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingGameServiceTest {
 
@@ -47,6 +52,20 @@ public class RacingGameServiceTest {
         // Then
         System.out.println("Winners: " + winners); // 반환된 우승자를 출력합니다.
         assertEquals("Car3", winners); // 예상 우승자 목록을 확인합니다.
+    }
+    
+    @Test
+    public void testAcceptCarListWithExceedingMaxLength() {
+        // Given
+        String carNameExceedingMaxLength = "CarNameThatExceedsMaxLength";
+        System.setIn(new ByteArrayInputStream(carNameExceedingMaxLength.getBytes()));
+
+        // When
+        RacingGameService racingGameService = new RacingGameService();
+        Throwable exception = assertThrows(IllegalArgumentException.class, racingGameService::acceptCarList);
+
+        // Then
+        assertEquals("경주할 자동차 이름은 5자 이하만 가능합니다.", exception.getMessage());
     }
 
 }
