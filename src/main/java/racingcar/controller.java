@@ -8,7 +8,7 @@ import static racingcar.model.totalCount;
 import static racingcar.view.printGame;
 
 public class controller {
-    public static void checkInput(String input) {
+    public static void checkNumberValid(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) > '9' || input.charAt(i) < '0') {
                 throw new IllegalArgumentException();
@@ -16,7 +16,7 @@ public class controller {
         }
     }
 
-    public static void checkValid(String name) {
+    public static void checkNameValid(String name) {
         if (name.length() > 5 || name.length() == 0) {
             throw new IllegalArgumentException();
         }
@@ -30,7 +30,7 @@ public class controller {
             if (user_input.charAt(i) != ',') {
                 name += user_input.charAt(i);
             } else {
-                checkValid(name);
+                checkNameValid(name);
                 car_list.add(new Car(name, 0));
                 name = "";
             }
