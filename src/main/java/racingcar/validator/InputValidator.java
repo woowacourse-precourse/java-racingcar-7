@@ -20,6 +20,10 @@ public class InputValidator {
     }
 
     public void checkPrecondition(String input) {
+        if (input == null) {
+            throw new RacingcarException(BLANK_VALUE);
+        }
+
         if (input.trim().endsWith(",")) {
             throw new RacingcarException(BLANK_VALUE);
         }
@@ -66,7 +70,7 @@ public class InputValidator {
     }
 
     public void checkBlank(String input) {
-        if (input == null || input.isBlank() || input.isEmpty()) {
+        if (input.isBlank() || input.isEmpty()) {
             throw new RacingcarException(BLANK_VALUE);
         }
     }
