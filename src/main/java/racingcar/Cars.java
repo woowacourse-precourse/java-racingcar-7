@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     /* 자동차 클래스 관리 클래스 생성 - 0
@@ -37,5 +38,16 @@ public class Cars {
             System.out.println(car.getName() + " : " + "-".repeat(car.getMoveDisctance()));
         }
         System.out.println();
+    }
+
+    public int maxMoveDistance(){
+        int maxMoveDistance = 0;
+
+        for (Car car : cars) {
+            if(car.getMoveDisctance() > maxMoveDistance){
+                maxMoveDistance = car.getMoveDisctance();
+            }
+        }
+        return maxMoveDistance;
     }
 }
