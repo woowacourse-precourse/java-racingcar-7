@@ -16,7 +16,7 @@ public class GameOfScore {
         return initialScore;
     }
 
-    public Map<String, String> resultOfOneGameScore(List<String> oneGameMoveCarList, Map<String, String> currentScore) {
+    public Map<String, String> addResultOfOneGameScore(List<String> oneGameMoveCarList, Map<String, String> currentScore) {
         for (int moveCarIndex = 0; moveCarIndex < oneGameMoveCarList.size(); moveCarIndex++) {
             String moveCarName = oneGameMoveCarList.get(moveCarIndex);
             String thisCarScore = currentScore.get(moveCarName);
