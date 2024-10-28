@@ -15,7 +15,10 @@ public class InputUtils {
         }
 
         String[] carNames = carName.split(",");
-        List<String> listOfCarNames = new ArrayList<>(Arrays.asList(carNames));
+        List<String> listOfCarNames = Arrays.stream(carNames)
+                .map(String::trim)
+                .filter(name -> !name.isEmpty())
+                .toList();
         List<String> finalListOfCarNames = new ArrayList<>();
 
         for (String individualCarName : listOfCarNames) {
