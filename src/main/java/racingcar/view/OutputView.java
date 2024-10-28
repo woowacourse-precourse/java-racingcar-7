@@ -7,6 +7,7 @@ import java.util.List;
 import racingcar.domain.dto.CarSnapShot;
 import racingcar.dto.RoundResultDto;
 import racingcar.dto.WinnerDto;
+import racingcar.util.Format;
 
 public class OutputView {
 
@@ -21,28 +22,14 @@ public class OutputView {
     }
 
     private static void printCarSnapShot(CarSnapShot carSnapShot) {
-        String carStatus = joinCarStatus(carSnapShot);
+        String carStatus = Format.joinCarStatus(carSnapShot);
         System.out.println(carStatus);
     }
 
-    private static String joinCarStatus(CarSnapShot carSnapShot) {
-        return carSnapShot.getName()
-                + " : "
-                + "-".repeat(carSnapShot.getPosition())
-                + "\n";
-    }
-
     public static void printWinners(WinnerDto winners) {
-        String winnerNames = joinWinners(winners);
+        String winnerNames = Format.joinWinners(winners);
 
         System.out.println(WINNER_OUTPUT_MESSAGE.getMessage() + winnerNames);
     }
-
-
-    private static String joinWinners(WinnerDto winners) {
-        List<String> winnerNames = winners.names();
-        return String.join(", ", winnerNames);
-    }
-
 
 }
