@@ -1,7 +1,18 @@
 package racingcar;
 
+import racingcar.racingcarController.Controller;
+import racingcar.racingcarController.ExceptionController;
+import racingcar.racingcarView.CarView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        CarView carView = new CarView();
+        ExceptionController ExceptionController = new ExceptionController();
+
+        Controller controller = new Controller(carView, ExceptionController);
+        controller.run();
+
+
     }
+
 }
