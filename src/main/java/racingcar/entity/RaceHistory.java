@@ -25,4 +25,8 @@ public class RaceHistory {
     public List<Map<String, Integer>> getRounds() {
         return this.history;
     }
+
+    public Map<String, Integer> getLastRound() {
+        return this.history.getLast();
+    }
 }

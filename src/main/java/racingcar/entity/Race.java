@@ -33,10 +33,6 @@ public class Race {
         return this.raceHistory;
     }
 
-    public List<Car> getCars() {
-        return this.cars;
-    }
-
     public List<String> getWinners() {
         int maxPosition = this.cars
                 .stream()
