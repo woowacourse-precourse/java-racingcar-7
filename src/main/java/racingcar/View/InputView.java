@@ -10,22 +10,21 @@ import racingcar.Validation.NumberOfTrialValidation;
 
 public class InputView {
     public List<String> inputCarName() {
-        try {
-            System.out.println(IOMessage.INPUT_CAR_NAMES.getMessage());
-            String names = Console.readLine();
-            return splitNames(names);
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
+        System.out.println(IOMessage.INPUT_CAR_NAMES.getMessage());
+        String names = Console.readLine();
+
+        return splitNames(names);
     }
 
     public int inputTrialCount() {
         try {
             System.out.println(IOMessage.INPUT_TRIAL_COUNT.getMessage());
             String count = Console.readLine();
+
             if (NumberOfTrialValidation.isNotInteger(count)) {
                 throw new IllegalArgumentException(ErrorMessage.TRIAL_NOT_INTEGER.getMessage());
             }
+
             return Integer.parseInt(count);
         } catch (IllegalArgumentException e) {
             throw e;
@@ -40,6 +39,7 @@ public class InputView {
             NameValidation.validateName(name);
             carNames.add(name.trim());
         }
+
         return carNames;
     }
 }
