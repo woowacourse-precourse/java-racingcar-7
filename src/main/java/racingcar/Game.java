@@ -62,6 +62,13 @@ public class Game {
         createCars(carNames);
     }
 
+    public void run(){
+        System.out.println("실행결과");
+        for(int round = 0; round < moveNumber; round++){
+            moveCars();
+            printCars();
+        }
+    }
 
 
 }
