@@ -20,17 +20,21 @@ public class RacingCarController {
     public void run() {
         String carNames = inputView.getCarsName();
         String numberOfRoundsStr = inputView.getNumber();
-        int numberOfRounds = Integer.parseInt(numberOfRoundsStr);
+
+        int numberOfRounds;
+        try {
+            numberOfRounds = Integer.parseInt(numberOfRoundsStr);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("횟수는 정수로 입력해야 합니다.");
+        }
 
         Map<String, Integer> raceStatus = service.initializeCars(carNames);
 
-        // 각 라운드 진행
         for (int i = 0; i < numberOfRounds; i++) {
             service.progressRound(raceStatus);
-            OutputView.printProgress(raceStatus); // 현재 진행 상황 출력
+            OutputView.printProgress(raceStatus);
         }
 
-        // 최종 결과 출력
         List<String> winners = service.getWinners(raceStatus);
         outputView.printResult(winners);
     }

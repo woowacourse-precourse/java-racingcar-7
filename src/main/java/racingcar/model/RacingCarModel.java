@@ -8,18 +8,28 @@ import java.util.Map;
 
 public class RacingCarModel {
 
-    public String[] SplitCarName(String carNames) {
-        return carNames.split(",");
-    }
-    public Map<String, Integer> setCarStatus(String[] carNames) {
-        Map<String, Integer> carStatus = new HashMap<>();
-        for (String carName: carNames) {
-            carStatus.put(carName, 0);
+    private boolean lengthValidator (String car) {
+        if (car.length() <= 5) {
+                return true;
         }
-        return carStatus;
+        throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
     }
     private boolean isForwarding () {
         return (Randoms.pickNumberInRange(0, 9) > 3);
+    }
+
+    public String[] SplitCarName(String carNames) {
+        return carNames.split(",");
+    }
+
+    public Map<String, Integer> setCarStatus(String[] carNames) {
+        Map<String, Integer> carStatus = new HashMap<>();
+        for (String carName: carNames) {
+            if (lengthValidator(carName)) {
+                carStatus.put(carName, 0);
+            }
+        }
+        return carStatus;
     }
 
     public void setProgress(Map<String, Integer> raceStatus) {
