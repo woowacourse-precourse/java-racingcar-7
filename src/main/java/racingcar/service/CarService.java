@@ -12,7 +12,7 @@ public class CarService {
         }
         String[] cars = carNames.split(",");
         if (cars.length == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("구분자로만 이루어진 문자열입니다.");
         }
         for (String name : cars) {
             System.out.println("name = " + name);
