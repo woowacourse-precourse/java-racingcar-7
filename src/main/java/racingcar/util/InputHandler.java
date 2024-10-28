@@ -15,8 +15,9 @@ public abstract class InputHandler {
                 .toList();
     }
 
-    public static String readAttemptCount() {
+    public static int readAttemptCount() {
         Printer.print(SystemMessage.ATTEMPT_COUNT_MESSAGE);
-        return Console.readLine();
+        String circleCount = Console.readLine();
+        return Validator.validateCircleCountIfNegative(circleCount);
     }
 }
