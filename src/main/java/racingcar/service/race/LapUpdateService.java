@@ -13,6 +13,11 @@ public class LapUpdateService {
         this.race = race;
     }
 
+    public void runLap() {
+        updateEntry();
+        race.completeALap();
+    }
+
     private void updateEntry() {
         race.getEntry().forEach(racerService::pushOrHold);
     }

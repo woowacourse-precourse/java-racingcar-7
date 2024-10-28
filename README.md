@@ -214,7 +214,7 @@
 - [x] Race 객체를 입력 받는다.
 - [x] Lap 을 진행한다.
     - [x] Race 객체의 경기 참여 자동차 객체의 상태를 변화시킨다.
-- [ ] Race 객체의 lap count 를 변화시킨다.
+- [x] Race 객체의 lap count 를 변화시킨다.
 #### 🤵 RaceStarterService
 - [x] 생성 시, RacePrepService 를 입력받는다.
 - [x] 생성 시, 경기 등록 정보를 입력 받는다.
