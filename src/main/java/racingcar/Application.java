@@ -83,7 +83,7 @@ public class Application {
             if (user_input.charAt(i) != ',') {
                 name += user_input.charAt(i);
             } else {
-                checkValid(user_input);
+                checkValid(name);
 
                 Car new_car = new Car(name, 0);
                 car_list[idx++] = new_car;
