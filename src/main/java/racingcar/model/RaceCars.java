@@ -8,10 +8,14 @@ public class RaceCars {
 
     public RaceCars(final List<Car> cars) {
         validateDuplicatedCars(cars);
+        validateNumberOfCars(cars);
+        this.cars = cars;
+    }
+
+    private void validateNumberOfCars(List<Car> cars) {
         if (hasInappropriateNumberOfCars(cars)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RACINGCAR_NUMBER.getMessage());
         }
-        this.cars = cars;
     }
 
     public void moveAllCars(Movement movement) {
