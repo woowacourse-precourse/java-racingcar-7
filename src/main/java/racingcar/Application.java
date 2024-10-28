@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
@@ -23,11 +22,16 @@ public class Application {
         if (names.length < 2) {
             throw new IllegalArgumentException("이름이 두 개 이상이어야 합니다.");
         }
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("각 자동차 이름은 5자 이하여야 합니다: " + name);
+            }
+        }
     }
 
     private static int validateAttempts(String attemptsInput) {
-        if (!isNumeric(attemptsInput)) {
-            throw new IllegalArgumentException("시도할 횟수는 숫자여야 합니다.");
+        if (!isNumeric(attemptsInput) || Integer.parseInt(attemptsInput) <= 0) {
+            throw new IllegalArgumentException("시도할 횟수는 0보다 큰 숫자여야 합니다.");
         }
         return Integer.parseInt(attemptsInput);
     }
@@ -35,5 +39,4 @@ public class Application {
     private static boolean isNumeric(String str) {
         return str.matches("\\d+");
     }
-
 }
