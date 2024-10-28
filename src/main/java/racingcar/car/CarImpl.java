@@ -1,6 +1,7 @@
 package racingcar.car;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.ErrorMessage;
 
 public class CarImpl implements ICar {
 
@@ -14,7 +15,7 @@ public class CarImpl implements ICar {
      */
     public CarImpl(String name) {
         if (name.length() > CAR_NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException("자동차 이름은 5자리 이하여야합니다");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LENGTH_OVER.getMessage());
         }
 
         this.name = name;

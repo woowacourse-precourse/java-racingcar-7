@@ -29,7 +29,7 @@ public class Application {
     private static List<ICar> settingCarList() {
         String carNameMass = inputDisplay.getPromptInput("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
         if (carNameMass == null || carNameMass.isBlank()) {
-            throw new IllegalArgumentException("경주할 자동차 이름을 입력하여야 합니다");
+            throw new IllegalArgumentException(ErrorMessage.CAR_INPUT_EMPTY.getMessage());
         }
 
         String[] carNames = carNameMass.split(",");
@@ -45,10 +45,10 @@ public class Application {
     private static int settingRound() {
         String roundStr = inputDisplay.getPromptInput("시도할 횟수는 몇 회인가요?\n");
         if (roundStr == null || roundStr.isBlank()) {
-            throw new IllegalArgumentException("시도할 횟수를 입력해야 합니다");
+            throw new IllegalArgumentException(ErrorMessage.ROUND_INPUT_EMPTY.getMessage());
         }
         if (!roundStr.matches("-?\\d+")) {
-            throw new IllegalArgumentException("시도할 횟수 입력은 숫자여야 합니다");
+            throw new IllegalArgumentException(ErrorMessage.ROUND_INPUT_TYPE_NOT_MATCH.getMessage());
         }
 
         return Integer.parseInt(roundStr);
