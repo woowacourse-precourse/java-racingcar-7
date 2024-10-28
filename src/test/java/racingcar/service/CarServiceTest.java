@@ -34,13 +34,7 @@ public class CarServiceTest {
     void registerCar(List<Car> expectedCarList, List<String> carNames) {
         List<Car> registerCarList = carService.registerCar(carNames);
 
-        assertEquals(expectedCarList.size(), registerCarList.size());
-
-        for (int idx = 0; idx < expectedCarList.size(); idx++) {
-            assertEquals(expectedCarList.get(idx).getName(), registerCarList.get(idx).getName());
-            assertEquals(expectedCarList.get(idx).getLocation(),
-                    registerCarList.get(idx).getLocation());
-        }
+        assertEquals(expectedCarList, registerCarList);
     }
 
     private static Stream<Arguments> provideSplitCarNamesTestCases() {

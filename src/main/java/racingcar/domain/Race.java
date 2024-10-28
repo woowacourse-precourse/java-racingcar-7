@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Race {
@@ -24,5 +25,21 @@ public class Race {
         return getCarList().stream()
                 .map(Car::getLocation)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Race race)) {
+            return false;
+        }
+        return (Objects.equals(carList, race.carList) && (Objects.equals(attemptCount, race.attemptCount)));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carList, attemptCount);
     }
 }

@@ -33,13 +33,7 @@ public class RaceServiceTest {
     void getWinnerCar(List<Car> expectedCarList, List<Car> inputCarList, int maxDistance) {
         List<Car> winnerCarList = raceService.getCarListWithMaxDistance(inputCarList, maxDistance);
 
-        assertEquals(expectedCarList.size(), winnerCarList.size());
-
-        for (int idx = 0; idx < expectedCarList.size(); idx++) {
-            assertEquals(expectedCarList.get(idx).getName(), winnerCarList.get(idx).getName());
-            assertEquals(expectedCarList.get(idx).getLocation(),
-                    winnerCarList.get(idx).getLocation());
-        }
+        assertEquals(expectedCarList, winnerCarList);
     }
 
     private static Stream<Arguments> provideDistanceTestCases() {
