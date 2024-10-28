@@ -11,7 +11,7 @@ public class RaceController {
         Cars cars = InputView.readCars();
         TryCount tryCount = InputView.readTryCount();
         playRace(cars, tryCount);
-        finishRace(cars);
+        endRace(cars);
     }
 
     public void playRace(Cars cars, TryCount tryCount) {
@@ -22,7 +22,7 @@ public class RaceController {
         });
     }
 
-    public void finishRace(Cars cars) {
+    public void endRace(Cars cars) {
         List<String> raceWinner = cars.getRaceWinner();
         OutputView.printRaceWinner(raceWinner);
     }
