@@ -4,13 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     private final String name;
-    private int location;
+    private final Location location;
 
     private Car(String name) {
         validateCarNameLength(name);
         validateCarNameEmpty(name);
         this.name = name;
-        this.location = 0;
+        this.location = Location.init(0);
     }
 
     public static Car create(String name) {
@@ -30,7 +30,7 @@ public class Car {
     }
 
     public void moveForward() {
-        location++;
+        location.move();
     }
 
     public int pickRandomNumber() {
@@ -38,11 +38,11 @@ public class Car {
     }
 
     public String makeStatusResult() {
-        return name + " : " + "-".repeat(location);
+        return name + " : " + location.makeProgressBar();
     }
 
     public boolean isSameLocation(int winnerLocation) {
-        return location == winnerLocation;
+        return location.isSame(winnerLocation);
     }
 
     public String getName() {
@@ -50,6 +50,6 @@ public class Car {
     }
 
     public int getLocation() {
-        return location;
+        return location.getLocation();
     }
 }
