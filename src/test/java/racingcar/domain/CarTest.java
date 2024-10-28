@@ -39,7 +39,17 @@ class CarTest {
                 .hasMessage("자동차 이름에 공백을 포함할 수 없습니다.");
     }
 
-    @DisplayName("자동차 전진 성공 : 랜덤 숫자가 4 이상인 경우")
+    @DisplayName("자동차 생성 실패 : 빈 값 입력")
+    @Test
+    void validateNoEmptyTest() {
+        String carName = "";
+
+        Assertions.assertThatThrownBy(() -> new Car(carName, stopGenerator))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름으로 빈 값을 입력할 수 없습니다.");
+    }
+
+    @DisplayName("자동차 전진 : 랜덤 숫자가 4 이상인 경우")
     @Test
     void moveTest() {
         Car car = new Car("pobi", moveGenerator);
