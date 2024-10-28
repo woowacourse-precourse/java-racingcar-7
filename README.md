@@ -14,8 +14,9 @@
   
 
 - ### 자동차 이동 전략 설정
-    - [ ] 무작위 이동 전략 (RandomMoveStrategy) 구현
-    - [ ] 테스트용 이동 전략 (AlwaysMoveStrategy) 구현
+    - [x] MoveStrategy 인터페이스 구현
+    - [x] 무작위 이동 전략 (RandomMoveStrategy) 구현
+    - [x] 테스트용 이동 전략 (AlwaysMoveStrategy) 구현
 
 
 - ### 레이스 진행
