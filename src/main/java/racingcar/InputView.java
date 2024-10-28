@@ -14,10 +14,12 @@ public class InputView {
         return carNames;
     }
 
-    public static int readNumber() {
+    public static int readRaceCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         try {
-            return Integer.parseInt(Console.readLine());
+            int raceCount = Integer.parseInt(Console.readLine());
+            validateRaceCount(raceCount);
+            return raceCount;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
@@ -26,6 +28,12 @@ public class InputView {
     private static void validateCarNames(List<String> carNames) {
         for (String carName : carNames) {
             if (carName.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+        }
+    }
+
+    private static void validateRaceCount(int raceCount) {
+        if (raceCount <= 0) {
+            throw new IllegalArgumentException("시도할 횟수는 1회 이상이어야 합니다.");
         }
     }
 }
