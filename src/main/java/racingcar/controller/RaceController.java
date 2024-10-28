@@ -1,8 +1,8 @@
 package racingcar.controller;
 
-import racingcar.parser.InputParser;
+import racingcar.service.parser.InputParser;
 import racingcar.service.RaceService;
-import racingcar.validator.InputValidator;
+import racingcar.service.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
