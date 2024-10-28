@@ -16,11 +16,27 @@ class ApplicationTest extends NsTest {
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
-                run("pobi,woni", "1");
+                run("pobi,woni,jun", "4");
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
             },
             MOVING_FORWARD, STOP
         );
+    }
+    
+    @Test
+    void 자동차_이름_길이_초과_테스트() {
+    	String input = "pobi,woni,longlongname";
+    	
+    	assertThatThrownBy(() -> Application.validateCarNames(input))
+    			.isInstanceOf(IllegalArgumentException.class);	
+    }
+    
+    @Test
+    void 시도_횟수_입력_초과_예외_테스트() {
+    	String input = "0";
+    	
+    	assertThatThrownBy(() -> Application.checkMoveSet(input))
+				.isInstanceOf(IllegalArgumentException.class);	
     }
 
     @Test
