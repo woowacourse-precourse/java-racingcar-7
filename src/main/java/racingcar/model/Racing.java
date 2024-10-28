@@ -40,7 +40,7 @@ public class Racing {
 
     public String formatWinners() {
         ArrayList<String> winnerNames = Car.parseWinnerNames(cars);
-        String joinedWinners = String.join(",", winnerNames);
+        String joinedWinners = String.join(", ", winnerNames);
 
         return "최종 우승자 : " + joinedWinners;
     }
