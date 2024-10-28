@@ -31,6 +31,9 @@ public class RacingcarController {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도할 횟수에 숫자를 입력하세요.");
         }
+        if (numberOfRaces >= 1000) {
+            throw new IllegalArgumentException("시도 횟수가 1000 이상입니다.");
+        }
         racingService.race(numberOfRaces);
     }
 }
