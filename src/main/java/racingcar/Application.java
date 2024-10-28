@@ -18,6 +18,7 @@ public class Application {
             processController.run();
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
+            throw e;
         }
     }
 }
