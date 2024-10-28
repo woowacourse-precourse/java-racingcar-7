@@ -22,12 +22,72 @@ class ApplicationTest extends NsTest {
             MOVING_FORWARD, STOP
         );
     }
+    @Test
+    void 공동_우승자_기능_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,yejin", "2");
+                    assertThat(output()).contains(
+                            "pobi : --",
+                            "woni : --",
+                            "yejin : --",
+                            "최종 우승자 : pobi, woni, yejin");
+                },
+                MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 중간_출력_기능_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,yejin", "3");
+                    assertThat(output()).contains(
+                            "pobi : -","woni : -","yejin : ",
+                            "pobi : -","woni : --","yejin : ",
+                            "pobi : -","woni : ---","yejin : ",
+                            "최종 우승자 : woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, STOP,
+                STOP, MOVING_FORWARD, STOP,
+                STOP, MOVING_FORWARD, STOP
+
+        );
+    }
+
+    @Test
+    void 이동이_없는_경우_기능_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,yejin", "3");
+                    assertThat(output()).contains(
+                            "pobi : ","woni : ","yejin : ",
+                            "pobi : ","woni : ","yejin : ",
+                            "pobi : ","woni : ","yejin : ",
+                            "최종 우승자 : pobi, woni, yejin");
+                },
+                STOP, STOP, STOP,
+                STOP, STOP, STOP,
+                STOP, STOP, STOP
+        );
+
+    }
+
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("","phobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 

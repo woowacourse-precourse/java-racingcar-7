@@ -8,7 +8,6 @@ public class Model {
     private Map<String, ArrayList<Integer>> carMap;
     private List<String> winner;
 
-
     public Map<String, ArrayList<Integer>> getCarMap(){
         return carMap;
     }

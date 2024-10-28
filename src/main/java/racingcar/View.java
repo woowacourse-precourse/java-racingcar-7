@@ -9,7 +9,6 @@ import java.util.Map;
 public class View {
     private final GameController gameController;
     private Model model;
-
     private int tryCount;
 
     public void input() {
@@ -63,7 +62,6 @@ public class View {
     public View(){
         this.gameController = DependencyInjectionConfig.gameController();
     }
-
 
     private void checkInputValid(String[] carNames){
         for(String carName : carNames){

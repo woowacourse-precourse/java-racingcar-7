@@ -69,8 +69,6 @@ public class CarService {
         }
     }
 
-
-
     private void moveCar(String car){
         ArrayList<Integer> carPosition = carRepository.getCarPosition(car);
         if(carPosition.size() == 0)
