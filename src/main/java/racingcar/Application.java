@@ -25,12 +25,19 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = scanner.nextInt();
 
+        System.out.println("실행 결과");
         for (int i = 0; i < count; i++) {
             moveCar(cars);
-
+            printResult(cars);
         }
     }
 
+    private static void printResult(Map<String, Integer> cars) {
+        for (String name : cars.keySet()) {
+            System.out.println(name + " : " + "-".repeat(cars.get(name)));
+        }
+        System.out.println();
+    }
 
 
     private static void moveCar(Map<String, Integer> cars) {
