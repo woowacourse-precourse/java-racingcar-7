@@ -16,10 +16,6 @@ public class RaceCount {
         this.raceCount = Integer.parseInt(raceCount);
     }
 
-    public int getValue() {
-        return raceCount;
-    }
-
     public static void hasCharacters(String raceCount) {
         if (!RACE_TIMES_PATTERN.matcher(raceCount).matches()) {
             throw new IllegalArgumentException(ErrorMessage.RACE_COUNT_DOES_NOT_HAVE_CHARACTER.getErrorMessage());
@@ -36,6 +32,10 @@ public class RaceCount {
         if (raceCount.equals("0")) {
             throw new IllegalArgumentException(ErrorMessage.RACE_COUNT_CAN_NOT_BE_ZERO.getErrorMessage());
         }
+    }
+
+    public int getValue() {
+        return raceCount;
     }
 
     @Override
