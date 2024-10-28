@@ -49,10 +49,6 @@ public class RacingGame {
         return carNames.stream().map(carName -> Map.of(carName, 0)).toList();
     }
 
-    public int pickRandomCar(){
-        return Randoms.pickNumberInRange(0, carInfoList.size()-1);
-    }
-
     private boolean isMovingAvailable(){
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }

@@ -77,14 +77,6 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
         });
     }
-
-    // 랜덤 테스트 ----------------------------------------------
-    @Test
-    void 무작위_자동차선택_테스트() {
-        int randomCarIndex = racingGame.pickRandomCar();
-        assertThat(randomCarIndex).isBetween(0, racingGame.getCarInfoList().size() - 1);
-    }
-
     // 통합 테스트 ----------------------------------------------
     @Test
     void 기능_테스트() {
