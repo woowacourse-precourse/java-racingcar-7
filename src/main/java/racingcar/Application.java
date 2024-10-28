@@ -38,7 +38,7 @@ public class Application {
             throw new IllegalArgumentException(e);
         }
 
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
 
         for (int i = 0; i < raceGame.totalRounds; i++){
             raceGame.playOneRound(carList);
