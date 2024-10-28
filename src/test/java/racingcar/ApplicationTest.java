@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.text.html.HTMLDocument;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,10 +26,71 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void output_error_공동_우승자() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void input_error_이름_미입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void input_error_횟수_미입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("phobi", " "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void input_error_글자수_초과() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("woowahan"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+    }
+
+    @Test
+    void input_error_이름중복() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("phobi, phobi"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+
+    @Test
+    void input_error_시도횟수_1이하() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni,jun", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void input_error_시도횟수_문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni,jun", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
