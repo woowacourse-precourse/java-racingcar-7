@@ -24,26 +24,39 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 차량_모든_움직임_테스트() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("car1,car2,car3", "3");
+                String output = output();
+                assertThat(output).contains("car1 : ---", "car2 : ---", "car3 : ---");
+                assertThat(output).contains("최종 우승자 : car1, car2, car3");
+            },
+            9, 9, 9, 9, 9, 9, 9, 9, 9
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
-    void 공백_테스트(){
+    void 공백_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi, ", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi, ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
-    void 숫자_테스트(){
+    void 숫자_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,woni", "a"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,woni", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
