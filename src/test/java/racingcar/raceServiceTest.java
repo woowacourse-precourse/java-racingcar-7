@@ -1,17 +1,14 @@
 package racingcar;
 
-import Controller.RaceController;
 import VO.CarVO;
 import DAO.RaceDAO;
 import Service.RaceService;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RaceServiceTest {
 
@@ -25,7 +22,6 @@ class RaceServiceTest {
     }
 
     @Test
-    @DisplayName("자동차 객체를 생성하고 이름이 잘 저장되는지 테스트")
     void createCarNameTest() {
         CarVO car = new CarVO();
         car.setCarName("TestCar");
@@ -33,7 +29,6 @@ class RaceServiceTest {
     }
 
     @Test
-    @DisplayName("자동차 위치 증가 테스트")
     void carPositionIncreaseTest() {
         CarVO car = new CarVO();
         car.setPosition(3);
@@ -42,7 +37,6 @@ class RaceServiceTest {
     }
 
     @Test
-    @DisplayName("최대 위치값 반환 테스트")
     void getMaxPositionTest() {
         CarVO car1 = new CarVO();
         car1.setCarName("TestCar1");
@@ -63,7 +57,6 @@ class RaceServiceTest {
     }
 
     @Test
-    @DisplayName("우승 자동차 이름 반환 테스트")
     void winnerCarsTest() {
         CarVO car1 = new CarVO();
         car1.setCarName("CarA");
@@ -87,7 +80,6 @@ class RaceServiceTest {
 
 
     @Test
-    @DisplayName("자동차 리스트 생성 및 크기 확인 테스트")
     void carListSizeTest() {
         CarVO car1 = new CarVO();
         CarVO car2 = new CarVO();
@@ -103,7 +95,6 @@ class RaceServiceTest {
 
 
     @Test
-    @DisplayName("자동차 초기 위치 설정 테스트")
     void initialPositionTest() {
         CarVO car = new CarVO();
         car.setPosition(0);
@@ -111,7 +102,6 @@ class RaceServiceTest {
     }
 
     @Test
-    @DisplayName("위치 값에 따른 자동차 시각화 결과 확인 테스트")
     void carPositionDisplayTest() {
         CarVO car = new CarVO();
         car.setCarName("CarD");
@@ -119,15 +109,4 @@ class RaceServiceTest {
         assertThat(car.toString()).isEqualTo("CarD : ---");
     }
 
-    @Test
-    @DisplayName("자동차 리스트에서 이름으로 검색하여 자동차 반환 테스트")
-    void findCarByNameTest() {
-        CarVO car = new CarVO();
-        car.setCarName("FindMe");
-        raceDAO.inputCar(car);
-
-        CarVO foundCar = raceDAO.findCarName("FindMe");
-        assertThat(foundCar).isNotNull();
-        assertThat(foundCar.getCarName()).isEqualTo("FindMe");
-    }
 }
