@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static racingcar.constants.Constants.ADVANCE_LIMIT;
+import static racingcar.constants.Constants.INITIAL_DISTANCE;
 import static racingcar.constants.Constants.ONE_STEP;
 
 import java.util.Objects;
@@ -12,7 +13,7 @@ public class Car {
 
     public Car(CarName carName) {
         this.carName = carName;
-        this.distance = 0;
+        this.distance = INITIAL_DISTANCE;
     }
 
     public void decideToGo(int randomNumber) {
