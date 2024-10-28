@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.enums.ExceptionMessages;
+import racingcar.message.ExceptionMessages;
 import racingcar.exception.RoundException;
 
 public class InputView {

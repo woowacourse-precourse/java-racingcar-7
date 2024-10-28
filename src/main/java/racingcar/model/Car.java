@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import racingcar.enums.ExceptionMessages;
+import racingcar.message.ExceptionMessages;
 import racingcar.exception.CarNameException;
 
 public class Car {

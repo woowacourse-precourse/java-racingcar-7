@@ -1,4 +1,4 @@
-package racingcar.enums;
+package racingcar.message;
 
 public enum ExceptionMessages {
     EMPTY_INPUT("자동차 이름은 비어 있을 수 없습니다."),

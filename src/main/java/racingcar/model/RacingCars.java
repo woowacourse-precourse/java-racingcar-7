@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
-import racingcar.enums.ExceptionMessages;
+import racingcar.message.ExceptionMessages;
 import racingcar.exception.CarNameException;
 import racingcar.util.MoveStrategy;
 
