@@ -6,6 +6,19 @@ import java.util.List;
 import model.Car;
 
 public class RacingCarService {
+    private boolean warningFlag = false;
+
+    public void setWarningFlag() {
+        this.warningFlag = true;
+    }
+
+    public boolean hasPrintedWarning() {
+        return warningFlag;
+    }
+
+    public boolean isPrintAllowed(int attempts) {
+        return attempts <= 1000;
+    }
 
     // 한 라운드를 실행
     public void playSingleRound(List<Car> cars) {
@@ -66,10 +79,6 @@ public class RacingCarService {
     // 우승자의 이름을 리스트에 추가하는 함수
     private void addWinner(List<String> winners, Car car) {
         winners.add(car.getName());
-    }
-
-    public boolean isPrintAllowed(int attempts) {
-        return attempts <= 1000;
     }
 
 
