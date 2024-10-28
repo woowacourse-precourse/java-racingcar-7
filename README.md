@@ -15,7 +15,7 @@
 - [x] 경주할 자동차 이름을 입력 받은 후에, 자동차 이동 횟수를 입력 받는다.
 
 
-- [ ] 사용자가 잘못된 값을 입력한 경우 `IllegalArgumentException`을 발생시킨다.
+- [x] 사용자가 잘못된 값을 입력한 경우 `IllegalArgumentException`을 발생시킨다.
 
 ---
 
