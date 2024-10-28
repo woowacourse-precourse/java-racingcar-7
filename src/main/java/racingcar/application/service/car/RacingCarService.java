@@ -2,6 +2,7 @@ package racingcar.application.service.car;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.application.service.history.RacingHistoryService;
+import racingcar.application.service.winner.WinnerService;
 import racingcar.domain.car.RacingCar;
 import racingcar.infrastructure.persistence.InMemoryRacingCarRepository;
 import racingcar.infrastructure.util.NameParser;
@@ -13,12 +14,14 @@ public class RacingCarService {
     private final NameParser nameParser;
     private final InMemoryRacingCarRepository racingRepository;
     private final RacingHistoryService racingHistoryService;
+    private final WinnerService winnerService;
     private int tryNumber;
 
     public RacingCarService() {
         this.nameParser = new NameParser();
         this.racingRepository = InMemoryRacingCarRepository.getInstance();
         this.racingHistoryService = new RacingHistoryService();
+        this.winnerService = new WinnerService();
     }
 
     public void inputCarName(String racingCars) {
@@ -51,6 +54,8 @@ public class RacingCarService {
                 saveRacingHistory(racingCar);
             }
         }
+
+        saveWinners();
     }
 
     // TODO : 4 이상인 경우 전진하기
@@ -63,5 +68,9 @@ public class RacingCarService {
 
     private void saveRacingHistory(RacingCar racingCar){
         racingHistoryService.saveHistory(racingCar);
+    }
+
+    private void saveWinners(){
+        winnerService.saveWinners();
     }
 }
