@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import racingcar.view.InputView;
 
 public class InputHandler {
-    private static ArrayList<String> carNameList;
+    private static ArrayList<String> carNameList = new ArrayList<>();
 
     static ArrayList<String> handleCarNames(InputView inputView){
         carNameList = Arrays.stream(inputView.inputCarName().split(","))
