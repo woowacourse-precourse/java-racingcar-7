@@ -1,6 +1,6 @@
 package racingcar;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -14,18 +14,6 @@ public class RaceControllerTest {
     private RaceController raceController;
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-    @Test
-    void 자동차_이름_유효성_검증_테스트() {
-        RaceController controller = new RaceController();
-
-        List<String> validNames = controller.parseAndValidateCarNames("pobi,crong,honux");
-        assertEquals(List.of("pobi", "crong", "honux"), validNames);
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            controller.parseAndValidateCarNames("pobi,tooLongName,honux");
-        });
-    }
-
     @BeforeEach
     void setup() {
         raceController = new RaceController();
@@ -33,6 +21,17 @@ public class RaceControllerTest {
 
         System.setOut(new PrintStream(outputStream));
     }
+
+    @Test
+    void 자동차_이름_유효성_검증_테스트() {
+        List<String> validNames = raceController.parseAndValidateCarNames("pobi,crong,honux");
+        assertThat(validNames).containsExactly("pobi", "crong", "honux");
+
+        assertThrows(IllegalArgumentException.class,
+                () -> raceController.parseAndValidateCarNames("pobi,tooLongName,honux"),
+                "5자 이상 이름이 입력되면 예외가 발생해야 합니다.");
+    }
+
 
     @Test
     void 각_라운드에서_자동차_전진_여부_결정_및_위치_업데이트() {
