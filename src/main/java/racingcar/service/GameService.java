@@ -5,6 +5,7 @@ import racingcar.validator.CarNameValidator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -39,8 +40,13 @@ public class GameService {
                 .orElse(0); // 리스트가 비어있을 경우 0 반환
     }
 
-
-
+    public List<String> getWinners(List<Car> cars) {
+        int maxDistance = findMaxDistance(cars);
+        return cars.stream()
+                .filter(car -> car.getDistanceList().get(0) == maxDistance) // maxDistance와 같은 거리를 가진 자동차 필터링
+                .map(car -> car.getImmutableNameList().get(0)) // 자동차 이름을 가져옵니다.
+                .collect(Collectors.toList()); // 리스트로 수집합니다.
+    }
 
     private String[] splitCarNames(String carNamesString) {
         return carNamesString.split(","); // 자동차 이름을 콤마로 분리
