@@ -7,7 +7,7 @@ import racingcar.view.enums.Constants;
 public class ResultView {
 
   public static void printRoundResult(List<Car> cars) {
-    System.out.println(Constants.ENTER_MESSAGE.getMessage());
+    System.out.println();
     for (Car car : cars) {
       printCarResult(car);
     }
@@ -22,6 +22,7 @@ public class ResultView {
   }
 
   public static void printWinners(List<Car> winners) {
+    System.out.println();
     if (winners.size() == 1) {
       System.out.println(Constants.FINAL_RESULT_MESSAGE.getMessage() + winners.get(0).getName());
     } else {
