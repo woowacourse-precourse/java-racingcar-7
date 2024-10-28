@@ -42,16 +42,15 @@ public class Application {
             for (String targetCar : carArr) {
                 //4. 각 자동차의 전진 조건에 대해 정하기 위해 0-9사이의 무작위 값을 구한다.
                 Integer pickNum = Randoms.pickNumberInRange(0, 9);
-                //5. 만약 무작위 값이 4이상일 경우 전진해야하니, 해당 자동차의 키 값에 대한 value에 +1을 해준다.
+                //5. 만약 무작위 값이 4이상일 경우 전진해야하니, 해당 자동차의 키 값에 대한 value에 +1을 해준다. 
                 map = checkPickNum(pickNum, targetCar, map);
 
 
             }
 
             //6. 전진 시도 차수별 실행 결과를 출력한다. 자동차 이름 키 값에 대한 밸류값만큼 '-'를 출력한다.
-            for (String targetCar : carArr) {
-                System.out.println(targetCar + " : " + map.get(targetCar));
-            }
+            printStatus(carArr, map);
+
             System.out.println();
         }
 
@@ -129,4 +128,6 @@ public class Application {
         }
         return map;
     }
+
+
 }
