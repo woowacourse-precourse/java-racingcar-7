@@ -45,6 +45,13 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
     }
 
+    @Test
+    void 이동_횟수_음수_예외_테스트() {
+        assertThatThrownBy(() -> RacingGame.parseRounds("-3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("이동 횟수는 0보다 커야 합니다.");
+    }
+
         );
     }
 
