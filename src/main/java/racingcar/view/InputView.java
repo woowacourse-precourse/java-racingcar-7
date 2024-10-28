@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.dto.RawCarNamesInput;
+import racingcar.dto.RawMovingCountInput;
 import racingcar.validator.MovingCountValidator;
 import racingcar.validator.RawCarNamesValidator;
 
@@ -12,17 +14,23 @@ public class InputView {
 
     public String inputCarNames() {
         outputView.printCarNamesInstruction();
-        String rawCarNames = Console.readLine().stripLeading().stripTrailing();
+        RawCarNamesInput rawCarNamesInput = RawCarNamesInput.of(Console.readLine());
 
-        rawCarNamesValidator.isEmpty(rawCarNames);
+        String rawCarNames = rawCarNamesInput.rawCarNames();
+
+        rawCarNamesValidator.validateNotEmpty(rawCarNames);
 
         return rawCarNames;
     }
 
-    public Long inputMovingCount() {
+    public String inputMovingCount() {
         outputView.printMovingCountInstruction();
-        String rawMovingCount = Console.readLine();
+        RawMovingCountInput rawMovingCountInput = RawMovingCountInput.of(Console.readLine());
 
-        return movingCountValidator.validateMovingCount(rawMovingCount);
+        String rawMovingCount = rawMovingCountInput.rawMovingCount();
+
+        movingCountValidator.validateNotEmpty(rawMovingCount);
+
+        return rawMovingCount;
     }
 }
