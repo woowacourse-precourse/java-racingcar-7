@@ -1,12 +1,12 @@
 package racingcar.racing;
 
+import static racingcar.common.FormatConstants.*;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.persistence.CarRaceHistory;
 
 public class CarRaceHistoryRecorder {
-
-    private static final String LINE_BREAKER = "\n";
 
     private final CarRaceHistory carRaceHistory;
 

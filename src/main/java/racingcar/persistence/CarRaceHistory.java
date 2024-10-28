@@ -18,4 +18,8 @@ public class CarRaceHistory {
     public void add(String result) {
         histories.add(result);
     }
+
+    public List<String> getHistories() {
+        return new ArrayList<>(histories);
+    }
 }
