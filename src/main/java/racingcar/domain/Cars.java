@@ -37,13 +37,13 @@ public class Cars {
 		return carList.stream()
 			.filter(car -> car.getScore() == max)
 			.map(Car::getName)
-			.collect(Collectors.joining(","));
+			.collect(Collectors.joining(", "));
 	}
 
 	private Integer getHighestScore() {
 		return carList.stream()
 			.map(Car::getScore)
 			.max(Integer::compare)
-			.orElseGet(() -> 0);
+			.orElse(0);
 	}
 }
