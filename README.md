@@ -1,6 +1,25 @@
 # java-racingcar-precourse
 
-**기능 목록**
+### 디렉토리 구조
+```markdown
+src
+ └── main
+     ├── java
+     │    └── racinggame
+     │         ├── Application.java
+     │         ├── Car.java
+     │         ├── ExceptionHandler.java
+     │         ├── OutputView.java
+     │         ├── Race.java
+     │         ├── RaceGame.java
+     │         └── UserInput.java
+     └── test
+          └── java
+               └── racinggame
+                    └── ApplicationTest.java
+```
+---
+### 기능 목록
 
 - [x] 자동차 이름 입력 받기
 - [x] 각 자동차 이름 구분
