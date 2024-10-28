@@ -7,31 +7,23 @@ public class RaceManager {
 
     public List<String> calculateWinners(RaceCars raceCars, int raceCount) {
 
-        int maxRecord = findMaxRecord(raceCars, raceCount);
         List<String> winners = new ArrayList<>();
+        int maxRecord = Integer.MIN_VALUE;
 
         for (int i = 0; i < raceCars.size(); i++) {
             Car car = raceCars.getCarByIndex(i);
+            String carName = car.getName();
             int lastRaceRecord = car.getRecordLengthByRound(raceCount - 1);
 
-            if (lastRaceRecord == maxRecord) {
-                winners.add(car.getName());
+            if (lastRaceRecord > maxRecord) {
+                maxRecord = lastRaceRecord;
+                winners.clear();
+                winners.add(carName);
+            } else if (lastRaceRecord == maxRecord) {
+                winners.add(carName);
             }
         }
 
         return winners;
-    }
-
-    private int findMaxRecord(RaceCars raceCars, int raceCount) {
-        int maxRecord = 0;
-
-        for (int i = 0; i < raceCars.size(); i++) {
-            Car car = raceCars.getCarByIndex(i);
-            int lastRaceRecord = car.getRecordLengthByRound(raceCount - 1);
-
-            maxRecord = Math.max(maxRecord, lastRaceRecord);
-        }
-
-        return maxRecord;
     }
 }
