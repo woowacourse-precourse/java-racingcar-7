@@ -25,8 +25,4 @@ public class CarNamesController {
     public static boolean checkDuplication(String carName, HashMap<String, Integer> carPositions) {
         return carPositions.containsKey(carName);
     }
-
-    public static void addCar(String carName, HashMap<String, Integer> carPositions) {
-        carPositions.put(carName, 0);
-    }
 }

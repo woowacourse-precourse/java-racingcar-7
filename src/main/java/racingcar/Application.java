@@ -39,7 +39,7 @@ public class Application {
             if (CarNamesController.checkDuplication(carName, carPositions)) {
                 throw new IllegalArgumentException();
             } else {
-                CarNamesController.addCar(carName, carPositions);
+                carPositions.put(carName, 0);
             }
         }
 
