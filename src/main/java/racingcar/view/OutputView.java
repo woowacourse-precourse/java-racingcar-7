@@ -1,11 +1,7 @@
 package racingcar.view;
 
-import racingcar.controller.Race;
 import racingcar.model.Car;
-
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
 
 public class OutputView {
 

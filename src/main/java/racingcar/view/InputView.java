@@ -1,12 +1,13 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.exception.NameException;
+import racingcar.exception.TryNumberException;
 import racingcar.model.Car;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 
 public class InputView {
@@ -25,8 +26,13 @@ public class InputView {
         List<Car> carList=new ArrayList<>();
         String[] carNames = carName.split(",");
         for (String name : carNames) {
+            NameException nameException=new NameException();
+            nameException.nameException(name);
+        }
+        for (String name : carNames) {
             carList.add(new Car(name));
         }
+
         return carList;
     }
 

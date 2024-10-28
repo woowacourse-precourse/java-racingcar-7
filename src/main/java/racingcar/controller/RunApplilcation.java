@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.exception.TryNumberException;
 import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -15,6 +16,8 @@ public class RunApplilcation {
         InputView inputView=new InputView();
         carList=inputView.inputCarList();
         tryNumber = inputView.inputRound();
+        TryNumberException tryNumberException = new TryNumberException();
+        tryNumberException.tryNumberException(tryNumber);
 
         Race race=new Race();
         race.nRoundGame(tryNumber,carList);
