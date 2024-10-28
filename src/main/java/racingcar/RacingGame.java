@@ -27,7 +27,7 @@ public class RacingGame {
         for (int i = 0; i < count; i++) {
             printGameResult(cars);
         }
-        getWinner(cars);
+        printWinner(cars);
     }
 
     public void nameCheck(List<Car> cars) {
@@ -56,7 +56,7 @@ public class RacingGame {
         System.out.println();
     }
 
-    private void getWinner(List<Car> cars) {
+    public void printWinner(List<Car> cars) {
         Car winner = cars.stream().max(Comparator.comparingInt(Car::getDistance)).get();
         List<String> winners = cars.stream().filter(c -> c.getDistance() >= winner.getDistance()).map(c -> c.getName())
                 .collect(Collectors.toList());
