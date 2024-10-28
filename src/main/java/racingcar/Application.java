@@ -14,6 +14,20 @@ public class Application {
         String pureInput = getInputCarNames();
         ArrayList<String> carName = new ArrayList<>(List.of(pureInput.split(",")));
         validateCarNames(carName);
+
+        Integer playNum = getPlayNumber();
+    }
+
+    private static Integer getPlayNumber() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        Integer num;
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            num = Integer.parseInt(br.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("시도 횟수로 숫자만 가능합니다.");
+        }
+        return num;
     }
 
     private static void validateCarNames(ArrayList<String> carName) {
