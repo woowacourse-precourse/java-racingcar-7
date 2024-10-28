@@ -68,8 +68,8 @@ class ApplicationTest extends NsTest {
     @Test
     void validateUniqueCarName_예외_테스트() {
         String[] carNames = {"Car-1", "Car-1", "Car-2"};
-
         application.initializeCarPositions(carNames);
+
         assertThatThrownBy(() -> application.validateUniqueCarName(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -77,8 +77,8 @@ class ApplicationTest extends NsTest {
     @Test
     void validateUniqueCarName_정상_입력_테스트() {
         String[] carNames = {"Car-1", "Car-2", "Car-3"};
-
         application.initializeCarPositions(carNames);
+
         assertThatCode(() -> application.validateUniqueCarName(carNames))
                 .doesNotThrowAnyException();
     }
@@ -104,6 +104,17 @@ class ApplicationTest extends NsTest {
 
         for (String carName : carNames) {
             assertThat(application.carPositions.get(carName)).isEqualTo(0);
+        }
+    }
+
+    @Test
+    void moveCarForward_자동차_전진_테스트() {
+        String[] carNames = {"Car-1", "Car-2", "Car-3"};
+        application.initializeCarPositions(carNames);
+
+        for (String carName : carNames) {
+            application.moveCarForward(carName);
+            assertThat(application.carPositions.get(carName)).isEqualTo(1);
         }
     }
 
