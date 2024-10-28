@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.io.Input;
+import racingcar.io.Output;
 
 public class RacingGame {
 
@@ -14,11 +15,13 @@ public class RacingGame {
 
 
     public void gameCountPreparation() {
+        Output.printGameCountGuide();
         gameCount = Input.readToInteger();
     }
 
     public void racingCarPreparation() {
-        String carNameWithDelimiter = Input.readNames();
+        Output.printNameGuide();
+        String carNameWithDelimiter = Input.readNotNullAndNotEmptyString();
         StringSeparator stringSeparator = new StringSeparator(carNameWithDelimiter, ",");
         while (stringSeparator.hasNext()) {
             racingCars.registRacingCar(new RacingCar(stringSeparator.next()));
