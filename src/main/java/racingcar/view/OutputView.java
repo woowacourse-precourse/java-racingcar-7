@@ -1,8 +1,7 @@
 package racingcar.view;
 
-import racingcar.model.Car;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class OutputView {
     public void printRaceResultStart() {
@@ -10,17 +9,15 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void printRaceRound(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        }
+    public void printRaceRound(List<String> carNames, List<Integer> positions) {
+        IntStream.range(0, carNames.size()).forEach(i ->
+                System.out.println(carNames.get(i) + " : " + "-".repeat(positions.get(i)))
+        );
         System.out.println();
     }
 
-    public void printWinners(List<Car> winners) {
-        String winnerNames = winners.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
+    public void printWinners(List<String> winners) {
+        String winnerNames = String.join(", ", winners);
         System.out.println("최종 우승자 : " + winnerNames);
     }
 

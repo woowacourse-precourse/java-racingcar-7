@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
+import racingcar.service.RaceResult;
 import racingcar.service.RaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -19,11 +19,16 @@ public class RaceController {
 
     public void run() {
         try {
-            List<Car> cars = inputView.getCar();
-            int attempts = inputView.getNumberOfAttempt();
+            List<String> carNames = inputView.getCarNames();
+            int attempts = inputView.getNumberOfAttempts();
             outputView.printRaceResultStart();
-            raceService.start(cars, attempts);
-            outputView.printWinners(raceService.getWinners(cars));
+
+            RaceResult result = raceService.start(carNames, attempts);
+            for (List<Integer> roundPosition : result.roundPositions()) {
+                outputView.printRaceRound(carNames, roundPosition);
+            }
+
+            outputView.printWinners(result.winners());
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
             throw e;
