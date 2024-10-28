@@ -2,6 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public class View {
     private final GameController gameController;
     private Model model;
@@ -16,9 +19,13 @@ public class View {
         int tryCount = Integer.parseInt(Console.readLine());
 
         RequestDto requestDto = new RequestDto(carNames, tryCount);
+        gameController.playGame(requestDto);
     }
 
     public void output(){
+
+        model = gameController.getResult();
+        Map<String, ArrayList<Integer>> carMap;
 
 
     }

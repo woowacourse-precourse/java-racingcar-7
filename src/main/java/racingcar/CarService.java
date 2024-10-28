@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CarService {
     private CarRepository carRepository;
@@ -26,20 +27,28 @@ public class CarService {
         }
     }
 
-    public void getResultModel(){
-        Model model = new Model(carRepository.getMap(), getWinner());
-
+    public Model getResultModel(){
+        return new Model(carRepository.getMap(), getWinner());
     }
 
-    private String getWinner() {
+    private List<String> getWinner() {
 
         Map<String, ArrayList<Integer>> carMap = carRepository.getMap();
 
+        int maxValue = carMap.values().stream()
+                .filter(values -> !values.isEmpty())  // 빈 리스트 제외
+                .mapToInt(values -> values.get(values.size() - 1))
+                .max()
+                .orElse(Integer.MIN_VALUE);
+
+
         return carMap.entrySet().stream()
-                .filter(entry -> !entry.getValue().isEmpty())
-                .max(Comparator.comparingInt(entry -> entry.getValue().get(entry.getValue().size() - 1)))
+                .filter(entry -> {
+                    ArrayList<Integer> values = entry.getValue();
+                    return !values.isEmpty() && values.get(values.size() - 1) == maxValue;
+                })
                 .map(Map.Entry::getKey)
-                .orElse("");
+                .collect(Collectors.toList());
     }
 
 
