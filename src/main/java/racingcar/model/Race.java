@@ -32,4 +32,16 @@ public class Race {
             car.move();
         }
     }
+
+    public List<String> getWinners() {
+        int maxPosition = cars.values().stream()    // 최대 이동 거리 계산
+                .mapToInt(car -> car.getPosition().length())
+                .max()
+                .orElse(0);
+
+        return cars.values().stream()   // 최대 이동 거리와 동일한 자동차 필터링(우승자 여러명인지 체크)
+                .filter(car -> car.getPosition().length() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
 }
