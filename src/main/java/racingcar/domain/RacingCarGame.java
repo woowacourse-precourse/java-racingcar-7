@@ -1,27 +1,31 @@
 package racingcar.domain;
 
 import racingcar.io.InputReader;
-import racingcar.io.OutputPrinter;
+import racingcar.io.Printer;
 
 import java.util.List;
 
 public class RacingCarGame {
 
     private final InputReader reader = new InputReader();
-    private final OutputPrinter printer = new OutputPrinter();
+    private final Printer printer = new Printer();
     private final RaceState raceState = new RaceState();
 
     public void play() {
 
-        // 자동차 이름 및 실행횟수 입력받기
+        // 자동차 이름 입력 받기
+        printer.printInputNamesMessage();
         List<String> carNames = reader.readCarNames();
+
+        // 경주 라운드 입력 받기
+        printer.printInputRoundMessage();
         int roundCount = reader.readCount();
 
         // 게임 초기화
         raceState.initGame(carNames);
 
         // 라운드 실행
-        printer.printStartMessage();
+        printer.printRaceStartMessage();
         for (int i = 0; i < roundCount; i++) {
             raceState.playRound();
             printer.printRoundResult(raceState.getCars());
