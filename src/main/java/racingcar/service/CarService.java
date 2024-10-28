@@ -8,8 +8,7 @@ import racingcar.repository.CarRepository;
 
 public class CarService {
     private final static Validator validator = new Validator();
-    private final static CarRepository CAR_REPOSITORY = new CarRepository();
-
+    private final static CarRepository carRepository = new CarRepository();
 
     public void makeCar(String input) {
         validator.checkCarName(input);
@@ -18,7 +17,7 @@ public class CarService {
 
     public void saveCar(List<String> carNames) {
         for (String carName : carNames) {
-            CAR_REPOSITORY.save(new Car(carName));
+            carRepository.save(new Car(carName));
         }
     }
 
