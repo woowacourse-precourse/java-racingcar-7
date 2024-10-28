@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RacingCar {
     private static final int MOVE_THRESHOLD = 4;
-    
+
     private final List<Car> cars;
     private final int attemptCount;
 
@@ -22,12 +22,10 @@ public class RacingCar {
             printRaceStatus(); // 라운드 결과 출력
         }
     }
-
+    
     private void raceOnce() {
         for (Car car : cars) {
-            if (RandomNumberGenerator.getRandomNumber() >= 4) {
-                car.move();
-            }
+            car.tryMove(); // Car의 이동 시도를 위임
         }
     }
 
