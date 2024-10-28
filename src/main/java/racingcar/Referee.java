@@ -15,7 +15,7 @@ public class Referee {
     private int findMaxPosition(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
+            maxPosition = car.compareMax(maxPosition);
         }
 
         return maxPosition;

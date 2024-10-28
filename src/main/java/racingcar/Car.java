@@ -23,9 +23,10 @@ public class Car {
         return name + " : " + "-".repeat(position);
     }
 
-    public int getPosition() {
-        return position;
+    public int compareMax(int position) {
+        return Math.max(this.position, position);
     }
+
 
     @Override
     public String toString() {
