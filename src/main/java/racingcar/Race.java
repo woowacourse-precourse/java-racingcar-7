@@ -28,9 +28,17 @@ public class Race {
     }
 
     public List<Car> getWinners() {
-        List<Car> winners = new ArrayList<>();
+        return extractFrom(priorityQueue());
+    }
+
+    private PriorityQueue<Car> priorityQueue() {
         PriorityQueue<Car> priorityQueue = new PriorityQueue<>();
         priorityQueue.addAll(cars);
+        return priorityQueue;
+    }
+
+    private List<Car> extractFrom(PriorityQueue<Car> priorityQueue) {
+        List<Car> winners = new ArrayList<>();
         Car first = priorityQueue.poll();
         assert first != null;
         winners.add(first);
