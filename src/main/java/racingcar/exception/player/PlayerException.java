@@ -5,20 +5,20 @@ import static racingcar.exception.message.PlayerCountExceptionMessage.PlayerCoun
 
 import racingcar.common.exception.RacingCarException;
 
-public class InvalidPlayerCountException extends RacingCarException {
+public class PlayerException extends RacingCarException {
 
-    public InvalidPlayerCountException(String message) {
+    public PlayerException(String message) {
         super(message);
     }
 
-    public static class PlayerCountExceededException extends InvalidPlayerCountException {
-        public PlayerCountExceededException() {
+    public static class PlayerExceededException extends PlayerException {
+        public PlayerExceededException() {
             super(PlayerCountExceeded);
         }
     }
 
-    public static class PlayerCountShortException extends InvalidPlayerCountException {
-        public PlayerCountShortException() {
+    public static class PlayerUnderstaffedException extends PlayerException {
+        public PlayerUnderstaffedException() {
             super(PlayerCountShort);
         }
     }

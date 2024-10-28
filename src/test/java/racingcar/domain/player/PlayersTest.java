@@ -8,8 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Distance;
-import racingcar.exception.player.InvalidPlayerCountException.PlayerCountExceededException;
-import racingcar.exception.player.InvalidPlayerCountException.PlayerCountShortException;
+import racingcar.exception.player.PlayerException.PlayerExceededException;
+import racingcar.exception.player.PlayerException.PlayerUnderstaffedException;
 
 @DisplayName("플레이어 그룹(Players) 유스케이스")
 class PlayersTest {
@@ -39,7 +39,7 @@ class PlayersTest {
 
             // expect
             Assertions.assertThatThrownBy(() -> Players.from(emptyPlayers))
-                    .isInstanceOf(PlayerCountShortException.class)
+                    .isInstanceOf(PlayerUnderstaffedException.class)
                     .hasMessage("플레이어는 최소 2명 부터 참여할 수 있습니다");
 
         }
@@ -59,7 +59,7 @@ class PlayersTest {
 
             // expect
             Assertions.assertThatThrownBy(() -> Players.from(exceededPlayers))
-                    .isInstanceOf(PlayerCountExceededException.class)
+                    .isInstanceOf(PlayerExceededException.class)
                     .hasMessage("플레이어는 최대 5명 까지 참여할 수 있습니다");
 
         }

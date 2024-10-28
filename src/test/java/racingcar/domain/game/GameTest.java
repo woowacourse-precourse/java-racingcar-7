@@ -12,8 +12,8 @@ import racingcar.domain.movement.RandomMovementStrategy;
 import racingcar.domain.player.Player;
 import racingcar.exception.game.GameException.GameEndedException;
 import racingcar.exception.game.GameException.InvalidTotalRoundsException;
-import racingcar.exception.player.InvalidPlayerCountException.PlayerCountExceededException;
-import racingcar.exception.player.InvalidPlayerCountException.PlayerCountShortException;
+import racingcar.exception.player.PlayerException.PlayerExceededException;
+import racingcar.exception.player.PlayerException.PlayerUnderstaffedException;
 
 
 @DisplayName("게임(Game) 유스케이스")
@@ -54,7 +54,7 @@ class GameTest {
 
             // expect
             Assertions.assertThatThrownBy(() -> Game.start(players, totalRounds, movementPolicy))
-                    .isInstanceOf(PlayerCountShortException.class)
+                    .isInstanceOf(PlayerUnderstaffedException.class)
                     .hasMessage("플레이어는 최소 2명 부터 참여할 수 있습니다");
         }
 
@@ -77,7 +77,7 @@ class GameTest {
 
             // expect
             Assertions.assertThatThrownBy(() -> Game.start(players, totalRounds, movementPolicy))
-                    .isInstanceOf(PlayerCountExceededException.class)
+                    .isInstanceOf(PlayerExceededException.class)
                     .hasMessage("플레이어는 최대 5명 까지 참여할 수 있습니다");
         }
 

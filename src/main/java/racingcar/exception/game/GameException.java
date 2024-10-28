@@ -1,7 +1,9 @@
 package racingcar.exception.game;
 
-import static racingcar.exception.message.GameEndedExceptionMessage.ALREADY_GAME_ENDED;
-import static racingcar.exception.message.GameRoundExceptionMessage.VALID_ROUNDS_REQUIRED;
+
+import static racingcar.exception.message.GameExceptionMessages.ALREADY_GAME_ENDED;
+import static racingcar.exception.message.GameExceptionMessages.GAME_NOT_INITIALIZED;
+import static racingcar.exception.message.GameExceptionMessages.VALID_ROUNDS_REQUIRED;
 
 import racingcar.common.exception.RacingCarException;
 
@@ -19,6 +21,12 @@ public class GameException extends RacingCarException {
     public static class InvalidTotalRoundsException extends GameException {
         public InvalidTotalRoundsException() {
             super(VALID_ROUNDS_REQUIRED);
+        }
+    }
+
+    public static class GameNotInitializedException extends GameException {
+        public GameNotInitializedException() {
+            super(GAME_NOT_INITIALIZED);
         }
     }
 

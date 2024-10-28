@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import racingcar.exception.player.InvalidPlayerCountException.PlayerCountExceededException;
-import racingcar.exception.player.InvalidPlayerCountException.PlayerCountShortException;
+import racingcar.exception.player.PlayerException.PlayerExceededException;
+import racingcar.exception.player.PlayerException.PlayerUnderstaffedException;
 
 public class Players {
     private final Map<Long, Player> players;
@@ -39,10 +39,10 @@ public class Players {
 
     private void validateCount(List<Player> players) {
         if (players.size() < MINIMUM_PLAYERS) {
-            throw new PlayerCountShortException();
+            throw new PlayerUnderstaffedException();
         }
         if (players.size() > MAXIMUM_PLAYERS) {
-            throw new PlayerCountExceededException();
+            throw new PlayerExceededException();
         }
     }
 
