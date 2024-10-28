@@ -22,7 +22,6 @@ public class View {
     public void displayRoundStatus(List<String> roundStatus) {
         System.out.println("실행 결과");
         System.out.println(String.join("\n", roundStatus));
-        System.out.println();
     }
 
     public void outputResult(List<String> result) {
