@@ -15,6 +15,9 @@ public class InputView {
 
         String[] carNames = input.split(",");
         for (String str : carNames) {
+            if(str.isBlank()) {
+                throw new IllegalArgumentException();
+            }
             if (!isCarListInputValid(carMap, str)) {
                 throw new IllegalArgumentException();
             }
