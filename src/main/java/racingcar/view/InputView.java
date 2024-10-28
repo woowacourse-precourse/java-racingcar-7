@@ -23,8 +23,19 @@ public class InputView {
         if (readCarString != null && !readCarString.isEmpty()) {
             String[] parsedString = readCarString.split(INPUT_DELIMITER_COMMA);
             trimFirstElement(parsedString);
-            inputDataList.addAll(Arrays.asList(parsedString));
+
+            for (String carName : parsedString) {
+                String trimmedCarName = carName.trim();
+                checkDuplicateAndAddCarName(trimmedCarName);
+            }
         }
+    }
+
+    private void checkDuplicateAndAddCarName(String carName) {
+        if (inputDataList.contains(carName)) {
+            throw new IllegalArgumentException("Error: 중복된 이름이 존재합니다.");
+        }
+        inputDataList.add(carName);
     }
 
     private void trimFirstElement(String[] parsedString) {
