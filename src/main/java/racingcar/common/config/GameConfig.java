@@ -4,7 +4,7 @@ import racingcar.application.implement.RaceHistoryManager;
 import racingcar.application.implement.CarRaceWinnerIdentifier;
 import racingcar.application.implement.RaceWinnerIdentifier;
 import racingcar.common.support.RacingCarConverter;
-import racingcar.persistence.RacingCarHistoryRepository;
+import racingcar.persistence.CarRaceHistoryRepository;
 import racingcar.persistence.InMemoryCarRacerRepository;
 import racingcar.common.support.ObjectConverter;
 import racingcar.application.Game;
@@ -57,7 +57,7 @@ public class GameConfig {
     }
 
     private RaceHistoryManager<CarRacer> carRaceHistoryRecorder() {
-        return new CarRaceHistoryManager(RacingCarHistoryRepository.getInstance(), new CarRaceHistoryWriter());
+        return new CarRaceHistoryManager(CarRaceHistoryRepository.getInstance(), new CarRaceHistoryWriter());
     }
 
     private RaceWinnerIdentifier<CarRacer> raceWinnerIdentifier() {

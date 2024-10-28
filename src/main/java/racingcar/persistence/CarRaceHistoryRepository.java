@@ -3,15 +3,15 @@ package racingcar.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingCarHistoryRepository {
+public class CarRaceHistoryRepository {
 
-    private static final RacingCarHistoryRepository INSTANCE = new RacingCarHistoryRepository();
+    private static final CarRaceHistoryRepository INSTANCE = new CarRaceHistoryRepository();
     private final List<String> histories = new ArrayList<>();
 
-    private RacingCarHistoryRepository() {
+    private CarRaceHistoryRepository() {
     }
 
-    public static RacingCarHistoryRepository getInstance() {
+    public static CarRaceHistoryRepository getInstance() {
         return INSTANCE;
     }
 

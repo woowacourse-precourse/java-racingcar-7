@@ -1,15 +1,15 @@
 package racingcar.application.implement;
 
 import java.util.List;
-import racingcar.persistence.RacingCarHistoryRepository;
+import racingcar.persistence.CarRaceHistoryRepository;
 import racingcar.domain.CarRacer;
 
 public class CarRaceHistoryManager implements RaceHistoryManager<CarRacer> {
 
-    private final RacingCarHistoryRepository repository;
+    private final CarRaceHistoryRepository repository;
     private final CarRaceHistoryWriter writer;
 
-    public CarRaceHistoryManager(RacingCarHistoryRepository repository, CarRaceHistoryWriter writer) {
+    public CarRaceHistoryManager(CarRaceHistoryRepository repository, CarRaceHistoryWriter writer) {
         this.repository = repository;
         this.writer = writer;
     }
