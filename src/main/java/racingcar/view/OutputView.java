@@ -15,6 +15,10 @@ public class OutputView {
         System.out.println();
     }
 
+    public void displayWinners(String winners){
+        System.out.println("최종 우승자 : " + winners);
+    }
+
     private static String getCarStatus(Car car) {
         return car.getName() + " : " + "-".repeat(car.getScore());
     }
