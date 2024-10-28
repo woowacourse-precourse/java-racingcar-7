@@ -22,12 +22,23 @@ public class InputView {
                 .toList();
     }
 
-    private boolean isDuplicated(String[] split) {
-        return Arrays.stream(split).distinct().count() != split.length;
+    private boolean isDuplicated(String[] strings) {
+        return Arrays.stream(strings).distinct().count() != strings.length;
     }
 
     public int readRound() {
         System.out.println("라운드 수를 입력하세요");
         return Integer.parseInt(Console.readLine());
+    }
+
+    private void validateRound(String input) {
+        try {
+            int inputNumber = Integer.parseInt(input);
+            if (inputNumber < 1 || inputNumber >= 10000) {
+                throw new IllegalArgumentException("라운드 입력은 1만 이하의 양수여야 함");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해야 함", e);
+        }
     }
 }
