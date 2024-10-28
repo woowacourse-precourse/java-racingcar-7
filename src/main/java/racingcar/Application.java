@@ -41,6 +41,8 @@ public class Application {
             printRoundResult(cars);
         }
 
+        // 최종 우승자 출력
+        printWinners(cars);
     }
 
     // 자동차 초기화
@@ -77,6 +79,22 @@ public class Application {
         System.out.println();
     }
 
+    // 우승자 출력
+    private static void printWinners(List<Car> cars) {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPositionValue)
+                .max()
+                .orElse(0);
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPositionValue() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }
 
 // 자동차 클래스
