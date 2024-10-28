@@ -6,9 +6,9 @@ public class Separator {
 
     String delimiter = ",";
 
-    public List<String> separateCarList(String carListInput) {
-        List<String> carList = List.of(carListInput.split(delimiter));
-        return carList;
+    public List<String> separateVehicleList(String vehicleListInput) {
+        List<String> vehicleList = List.of(vehicleListInput.split(delimiter));
+        return vehicleList;
     }
 
 }
