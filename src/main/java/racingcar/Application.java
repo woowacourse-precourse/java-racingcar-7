@@ -3,7 +3,7 @@ package racingcar;
 import racingcar.controller.RacingController;
 import racingcar.domain.Movement;
 import racingcar.domain.NumberGenerator;
-import racingcar.domain.NumberOverFour;
+import racingcar.domain.NumberOverFourMovement;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -14,7 +14,7 @@ public class Application {
 
     public static void main(String[] args) {
         NumberGenerator randomNumberGenerator = new RandomNumberGenerator(RANDOM_NUMBER_END_INCLUSIVE);
-        Movement numberOverFour = new NumberOverFour(randomNumberGenerator);
+        Movement numberOverFour = new NumberOverFourMovement(randomNumberGenerator);
 
         new RacingController(
                 new InputView(),

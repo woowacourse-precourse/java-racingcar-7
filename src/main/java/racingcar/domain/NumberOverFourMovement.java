@@ -1,12 +1,12 @@
 package racingcar.domain;
 
-public class NumberOverFour implements Movement {
+public class NumberOverFourMovement implements Movement {
 
     public static final int MOVE_BOUNDARY_INCLUSIVE = 4;
 
     private final NumberGenerator numberGenerator;
 
-    public NumberOverFour(NumberGenerator numberStrategy) {
+    public NumberOverFourMovement(NumberGenerator numberStrategy) {
         this.numberGenerator = numberStrategy;
     }
 
