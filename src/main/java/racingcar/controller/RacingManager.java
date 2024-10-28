@@ -22,6 +22,17 @@ public class RacingManager {
         this.directionController = directionController;
     }
 
+    private List<Car> findFastestCar(List<Car> cars) {
+        final int maxLength = cars.stream()
+                .map(Car::getMoveStatus)
+                .map(String::length)
+                .max(Integer::compareTo)
+                .orElse(0);
+        return cars.stream()
+                .filter(c -> c.getMoveStatus().length() == maxLength)
+                .toList();
+    }
+
     private void movingProcess(List<Car> cars) {
         for (Car c : cars) {
             int randomNum = random.generateRandomValueInRange();
