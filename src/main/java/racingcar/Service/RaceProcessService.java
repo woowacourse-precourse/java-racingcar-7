@@ -4,14 +4,14 @@ import racingcar.Controller.RaceViewController;
 import racingcar.DTO.RaceFinalWinnerDTO;
 import racingcar.DTO.RaceInfoDTO;
 import racingcar.DTO.RaceResultDTO;
-import racingcar.Domain.CarInfo;
+import racingcar.Domain.CarManager;
 import racingcar.Domain.RaceResultEvaluator;
 import racingcar.Domain.RandomNumber;
 import racingcar.Factory.DomainFactory;
 
 public class RaceProcessService {
     private final DomainFactory domainFactory;
-    private CarInfo carInfo;
+    private CarManager carManager;
     private RaceInfoDTO raceInfoDTO;
     private RaceViewController raceViewController;
     private RandomNumber randomNumber;
@@ -24,7 +24,7 @@ public class RaceProcessService {
     public void readyRace(RaceInfoDTO raceInfoDTO, RaceViewController raceViewController) {
         this.raceInfoDTO = raceInfoDTO;
         this.raceViewController = raceViewController;
-        this.carInfo = domainFactory.createCarInfo(raceInfoDTO.getCarNames());
+        this.carManager = domainFactory.createCarInfo(raceInfoDTO.getCarNames());
         this.randomNumber = domainFactory.createRandomNumber();
         this.trialCount = raceInfoDTO.getTrialCount();
 
@@ -32,7 +32,7 @@ public class RaceProcessService {
     }
 
     private void startRace() {
-        RaceResultDTO raceResultDTO = new RaceResultDTO(carInfo.exportCarList());
+        RaceResultDTO raceResultDTO = new RaceResultDTO(carManager.exportCarList());
         raceViewController.printRaceResult();
 
         while (trialCount-- > 0) {
@@ -45,10 +45,10 @@ public class RaceProcessService {
     private void stratSingleRound(RaceResultDTO raceResultDTO) {
         for (String carName : raceInfoDTO.getCarNames()) {
             Integer number = randomNumber.pickNumber();
-            carInfo.moveForward(carName, number);
+            carManager.moveForward(carName, number);
         }
 
-        raceResultDTO.updateResults(carInfo.exportCarList());
+        raceResultDTO.updateResults(carManager.exportCarList());
         raceViewController.gatherRaceResult(raceResultDTO);
     }
 
