@@ -1,14 +1,13 @@
 package racingcar.ui;
 
+import static racingcar.ui.validator.InputValidator.validateCarNames;
+import static racingcar.ui.validator.InputValidator.validatePositiveNumber;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
-
-    private static final int MAXIMUM_CAR_SIZE = 100;
-    private static final int MINIMUM_ROUND = 1;
-    private static final int MAXIMUM_ROUND = 500;
 
     public String input() {
         return Console.readLine().stripTrailing();
@@ -26,32 +25,9 @@ public class InputView {
         return carNames;
     }
 
-    private void validateCarNames(List<String> carNames) {
-        validateCarNamesSize(carNames);
-        validateNoWhitespace(carNames);
-    }
-
-    private void validateCarNamesSize(List<String> carNames) {
-        if (carNames.isEmpty() || carNames.size() > MAXIMUM_CAR_SIZE) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     private List<String> convertStringToList(String[] splitNames) {
         return Arrays.asList(splitNames);
     }
-
-    private void validateNoWhitespace(List<String> carNames) {
-        if (containsWhitespace(carNames)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private boolean containsWhitespace(List<String> splitNames) {
-        return splitNames.stream()
-                .anyMatch(name -> name.length() != name.trim().length());
-    }
-
     public int showGetFinalRoundInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
@@ -59,12 +35,6 @@ public class InputView {
         validatePositiveNumber(finalRound);
 
         return finalRound;
-    }
-
-    private void validatePositiveNumber(int finalRound) {
-        if (finalRound < MINIMUM_ROUND || finalRound > MAXIMUM_ROUND) {
-            throw new IllegalArgumentException();
-        }
     }
 
     private int parseFinalRound() {
