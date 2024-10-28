@@ -17,6 +17,12 @@ public record Cars(List<Car> carList) {
         return new Cars(carList);
     }
 
+    public void moveCars() {
+        carList.forEach(car ->
+            car.moveForwardIfTrue(Utils.isTrueWithProbability60Percent())
+        );
+    }
+
     @Override
     public String toString() {
         return carList.stream()
