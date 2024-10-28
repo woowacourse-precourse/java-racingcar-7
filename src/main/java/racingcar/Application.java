@@ -1,7 +1,7 @@
 package racingcar;
 
 
-import racingcar.controller.RaceController;
+import racingcar.controller.RaceGameController;
 import racingcar.model.Cars;
 import racingcar.model.Move;
 import racingcar.model.RaceGame;
@@ -13,7 +13,7 @@ public class Application {
         final Move move = new Move();
         final RaceGame raceGame = new RaceGame(move);
 
-        final RaceController raceController = new RaceController(cars, raceGame);
+        final RaceGameController raceController = new RaceGameController(cars, raceGame);
 
         raceController.run();
     }
