@@ -3,7 +3,7 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racingcar.dto.RaceResultResponse;
+import racingcar.dto.CarMovementResponse;
 import racingcar.dto.WinnerResponse;
 
 public class OutputView {

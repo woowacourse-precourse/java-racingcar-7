@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.List;
 
 import racingcar.config.RaceConfig;
-import racingcar.dto.RaceResultResponse;
+import racingcar.dto.CarMovementResponse;
 import racingcar.dto.WinnerResponse;
 import racingcar.util.RandomNumberPicker;
 
@@ -18,9 +18,9 @@ public class Cars {
 		cars.forEach(car -> car.move(RandomNumberPicker.pickNumber()));
 	}
 
-	public List<RaceResultResponse> findRaceStatus() {
+	public List<CarMovementResponse> findRaceStatus() {
 		return cars.stream()
-			.map(RaceResultResponse::new)
+			.map(CarMovementResponse::new)
 			.toList();
 	}
 
