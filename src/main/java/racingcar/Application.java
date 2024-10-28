@@ -18,6 +18,7 @@ class RacingGame {
 
     public void start() {
         cars = getCars();
+        attemptCount = getAttemptCount();
     }
 
     private List<Car> getCars() {
@@ -40,20 +41,25 @@ class RacingGame {
         }
     }
 
-    class Car {
-        private final String name;
-        private int position = 0;
+    private int getAttemptCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Integer.parseInt(Console.readLine());
+    }
+}
 
-        public Car(String name) {
-            this.name = name;
-        }
+class Car {
+    private final String name;
+    private int position = 0;
 
-        public String getName() {
-            return name;
-        }
+    public Car(String name) {
+        this.name = name;
+    }
 
-        public int getPosition() {
-            return position;
-        }
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
