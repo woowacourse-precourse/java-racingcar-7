@@ -47,11 +47,13 @@ public class Application {
         String winner = "최종 우승자 : ";
         for (int i = 0; i < players.size(); i++) {
             if (scores.get(i).length() == win_score) {
-                winner += players.get(i);
-                break;
+                // 공동 우승자가 존재 할 수 있으니 쉼표(',') 추가
+                winner += (players.get(i) + ", ");
             }
         }
-        // 최종 우승자 출력
+        // 최송 우승자 혹은 공동 우승자 뒤에 붙은 쉼표(',') 제거
+        winner = winner.substring(0, winner.length() - 2);
+        // 최종 우승자 혹은 공동 우승자 출력
         System.out.println(winner);
     }
 }
