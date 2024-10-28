@@ -4,6 +4,7 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarName;
 import racingcar.model.Cars;
+import racingcar.model.TryCount;
 import racingcar.utils.StringSplitter;
 
 public class RacingConfig {
@@ -25,7 +26,7 @@ public class RacingConfig {
                 map(Car::new)
                 .toList();
 
-        return new RacingGame(new Cars(rawCars), rawTryCount);
+        return new RacingGame(new Cars(rawCars), new TryCount(rawTryCount));
     }
 }
 

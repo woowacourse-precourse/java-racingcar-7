@@ -1,20 +1,17 @@
 package racingcar.service;
 
-import static racingcar.constants.Constants.MIN_TRY_COUNT;
-
 import java.util.List;
-import racingcar.constants.ErrorMessages;
 import racingcar.model.CarName;
 import racingcar.model.Cars;
+import racingcar.model.TryCount;
 
 public class RacingGame {
     private final Cars cars;
-    private final int tryCount;
+    private final TryCount tryCount;
 
-    public RacingGame(Cars cars, String tryCount) {
-        validateTryCount(tryCount);
+    public RacingGame(Cars cars, TryCount tryCount) {
         this.cars = cars;
-        this.tryCount = Integer.parseInt(tryCount);
+        this.tryCount = tryCount;
     }
 
     public List<String> getFinalWinner() {
@@ -28,33 +25,12 @@ public class RacingGame {
     }
 
     public void runAllCycle() {
-        for (int i = 0; i < tryCount; i++) {
+        for (int i = 0; i < tryCount.getTryCount(); i++) {
             runOneCycle();
         }
     }
 
     private void runOneCycle() {
         cars.moveAllCars();
-    }
-
-    private void validateTryCount(String tryCount) {
-        validateInt(tryCount);
-        validateOverZero(Integer.parseInt(tryCount));
-    }
-
-    private void validateOverZero(int tryCount) {
-        if (tryCount <= MIN_TRY_COUNT) {
-            throw new IllegalArgumentException(ErrorMessages.INVALID_RANGE_TRY_COUNT.getMessage());
-        }
-    }
-
-    private void validateInt(String tryCount) {
-        if (!isInt(tryCount)) {
-            throw new IllegalArgumentException(ErrorMessages.INVALID_NOT_NUMBER_TRY_COUNT.getMessage());
-        }
-    }
-
-    private boolean isInt(String tryCount) {
-        return tryCount.chars().allMatch(Character::isDigit);
     }
 }
