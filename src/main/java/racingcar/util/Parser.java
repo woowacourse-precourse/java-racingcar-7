@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.Car;
 
 public class Parser {
     private final Validator validator;

@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.util;
 
 import java.util.List;
+import racingcar.domain.Car;
 
 public class Validator {
     public void validateNameEmpty(String name) {

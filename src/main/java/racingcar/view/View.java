@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.domain.Car;
 
 public class View {
     public String scanCarNames() {

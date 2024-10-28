@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.config;
+
+import racingcar.view.View;
+import racingcar.util.Parser;
+import racingcar.util.Validator;
 
 public class Config {
     private final Validator validator = new Validator();

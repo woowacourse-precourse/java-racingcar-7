@@ -1,8 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.config.Config;
+import racingcar.util.Parser;
+import racingcar.util.Validator;
+import racingcar.view.View;
 
 public class Race {
     private final Validator validator;

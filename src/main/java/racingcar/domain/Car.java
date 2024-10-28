@@ -1,15 +1,15 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
     private final String name;
     private String progress;
 
-    Car (String name) {
+    public Car (String name) {
         this.name = name;
         progress = "";
     }
 
-    Car (String name, String progress) {
+    public Car (String name, String progress) {
         this.name = name;
         this.progress = progress;
     }
