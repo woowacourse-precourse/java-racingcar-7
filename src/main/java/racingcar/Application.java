@@ -73,7 +73,25 @@ public class Application {
             System.out.println("");
         }
 
-        System.out.println("최종 우승자 : ");
+        int bestNumOfGo = 0;
+        for (int i = 0; i < lengthOfNames; i++) {
+            if (numOfGo.get(i) > bestNumOfGo) {
+                bestNumOfGo = numOfGo.get(i);
+            }
+        }
+        System.out.println(bestNumOfGo);
 
+        int winnerCount = 0;
+        for (int i = 0; i < lengthOfNames; i++) {
+            if (numOfGo.get(i) == bestNumOfGo) {
+                winnerCount += 1;
+                if (winnerCount == 1) {
+                    System.out.print("최종 우승자 : " + names[i]);
+                } else {
+                    System.out.print(", " + names[i]);
+                }
+
+            }
+        }
     }
 }
