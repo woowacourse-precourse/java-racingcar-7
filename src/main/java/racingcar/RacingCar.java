@@ -10,11 +10,11 @@ import java.util.Map;
 public class RacingCar {
     private final Map<String, Integer> carMap = new HashMap<>();
 
-    public void start(String cars, int tryTimes) {
+    public void start(String cars, String tryTimesString) {
         List<String> carList = List.of(cars.split(","));
         addCar(validateCar(carList));
 
-        forwardOrStop(tryTimes);
+        forwardOrStop(validateTime(tryTimesString));
 
         winnerResult();
     }
@@ -75,5 +75,21 @@ public class RacingCar {
         }
 
         return carList;
+    }
+
+    private int validateTime(String tryTimesString) {
+        int tryTimes;
+
+        try {
+            tryTimes = Integer.parseInt(tryTimesString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수에 숫자만 입력해주세요.");
+        }
+
+        if (tryTimes <= 0) {
+            throw new IllegalArgumentException("시도할 횟수는 1회 이상으로 입력해주세요.");
+        }
+
+        return tryTimes;
     }
 }
