@@ -21,12 +21,16 @@ public class Car {
 
     public void tryMove() {
         int randomNumber = RandomUtils.generate();
-        if (randomNumber >= 4) {
+        if (isSatisfied(randomNumber)) {
             move();
         }
     }
 
-    public void move() {
+    private void move() {
         this.point++;
+    }
+
+    private boolean isSatisfied(int randomNumber) {
+        return randomNumber >= 4;
     }
 }
