@@ -15,6 +15,7 @@ public class Cars {
     }
 
     private List<Car> createCars(String inputCars) {
+        carsValidator(inputCars);
         List<Car> carsList = new ArrayList<>();
         Set<String> carNamesSet = new HashSet<>();
         String[] carNames = inputCars.split(delimiter);
@@ -31,5 +32,11 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public void carsValidator(String inputCars){
+        if(inputCars.charAt(0) == ',' || inputCars.charAt(inputCars.length()-1) == ','){
+            throw new IllegalArgumentException("자동차 이름의 입력은 ','로 시작하거나 끝날 수 없습니다");
+        }
     }
 }

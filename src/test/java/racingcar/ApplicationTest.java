@@ -108,6 +108,33 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 예외_테스트_자동차_이름_맨앞_쉼표() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException(",pobi,woni", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("자동차 이름의 입력은 ','로 시작하거나 끝날 수 없습니다");
+        });
+    }
+
+    @Test
+    void 예외_테스트_자동차_이름_맨뒤_쉼표() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,,woni,", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("자동차 이름의 입력은 ','로 시작하거나 끝날 수 없습니다");
+        });
+    }
+
+    @Test
+    void 예외_테스트_자동차_이름_쉼표만_입력() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException(",", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("자동차 이름의 입력은 ','로 시작하거나 끝날 수 없습니다");
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
