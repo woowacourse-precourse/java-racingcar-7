@@ -1,9 +1,11 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.RacingCars;
 import racingcar.model.RacingGame;
+import racingcar.view.RacingCarView;
 
 public class RacingCarService {
 
@@ -14,11 +16,15 @@ public class RacingCarService {
     }
 
     private void moveCar(RacingCars racingCars) {
-        for (Car car : racingCars.getRacingCars()) {
+
+        List<Car> cars = racingCars.getRacingCars();
+
+        for (Car car : cars) {
             if (canMove()) {
                 car.move();
             }
         }
+        RacingCarView.displayMovement(cars);
     }
 
     private boolean canMove() {
