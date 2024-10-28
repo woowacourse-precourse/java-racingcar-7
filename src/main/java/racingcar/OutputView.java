@@ -36,7 +36,9 @@ public class OutputView {
             Car car = record.getCarLocation();
             sb.append(car.getName());
             sb.append(" : ");
-            sb.append(car.currentLocation());
+
+            convertDash(car.currentLocation(), sb);
+
             sb.append("\n");
             if (count % racingGame.countCars() == 0) {
                 sb.append("\n");
@@ -45,5 +47,9 @@ public class OutputView {
 
         sb.deleteCharAt(sb.length() - 1);
         System.out.println(sb);
+    }
+
+    private static void convertDash(int location, StringBuilder sb) {
+        sb.append("-".repeat(Math.max(0, location)));
     }
 }
