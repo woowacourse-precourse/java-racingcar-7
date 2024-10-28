@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashSet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,10 @@ public class RacingCarControllerTest {
         RacingRequestDto racingRequestDto = new RacingRequestDto("pobi,woni,jun", 5);
         HashSet<Car> cars = carService.validateCarNames(racingRequestDto.getCarNames());
         Racing racing = new Racing();
+
+        String userInput = "pobi,woni,jun\n5\n"; // Simulate the input the program expects
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inputStream);
 
         // when & then
         assertDoesNotThrow(() -> racingCarController.run());
