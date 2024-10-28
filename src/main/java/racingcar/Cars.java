@@ -16,7 +16,7 @@ public class Cars {
     }
 
     public void moveAllCars() {
-        carList.forEach(Car::move);
+        carList.forEach(car -> car.move(Utils.generateRandomValue()));
     }
 
     private int findMaxPosition() {
