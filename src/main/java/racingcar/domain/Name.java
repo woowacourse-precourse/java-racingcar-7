@@ -8,9 +8,10 @@ public record Name(
 ) {
     private static final int MAX_NAME_LENGTH = 5;
 
-    public Name {
+    static Name newInstance(String carName) {
         validateCarNameNotEmpty(carName);
         validateCarNameLength(carName);
+        return new Name(carName);
     }
 
     private static void validateCarNameNotEmpty(String carName) {
