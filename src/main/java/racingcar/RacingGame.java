@@ -28,7 +28,7 @@ public class RacingGame {
         outputHandler.showWinners(winners);
     }
 
-    private static List<Car> createCarsFrom(String[] carNames) {
+    private List<Car> createCarsFrom(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             Car car = createCar(name);
@@ -57,7 +57,8 @@ public class RacingGame {
                 max = score;
                 winners.clear();
                 winners.add(car.getCarName());
-            } else if (score == max) {
+            }
+            if (score == max) {
                 winners.add(car.getCarName());
             }
         }
