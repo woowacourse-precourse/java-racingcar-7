@@ -48,6 +48,22 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @ParameterizedTest
+    @DisplayName("차량 이름이 비어 있거나, 공백을 포함하면 예외")
+    @CsvSource({
+            "'pobi, wani', '3'",
+            "'pobi, ,wani', '3'",
+            "',', '3'",
+            "'pobi,,wani', '3'",
+            "'pobi,wani,', '3'"
+    })
+    void throwExceptionIfCarNameContainsBlank(String carNamesInput, String totalRoundInput) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(carNamesInput, totalRoundInput))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
