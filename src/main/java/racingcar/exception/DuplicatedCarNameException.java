@@ -1,6 +1,6 @@
 package racingcar.exception;
 
-public class DuplicatedCarNameException extends IllegalArgumentException {
+public class DuplicatedCarNameException extends DuplicatedElementException {
 
     private static final String DEFAULT_MESSAGE = "중복되지 않은 이름으로 입력해주세요.";
 
