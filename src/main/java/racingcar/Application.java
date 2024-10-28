@@ -12,7 +12,8 @@ public class Application {
         final InputView inputView = new InputView();
         final OutputView outputView = new OutputView(new PrintFormatter());
         final RaceGameService raceGameServiceImpl = new RaceGameServiceImpl();
-        final RaceGameController raceGameController = new RaceGameController(inputView, outputView, raceGameServiceImpl);
+        final RaceGameController raceGameController = new RaceGameController(inputView, outputView,
+                raceGameServiceImpl);
 
         raceGameController.run();
     }

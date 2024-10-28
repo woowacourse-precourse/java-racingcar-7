@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 
 public class PrintFormatter {
-    public String formatRoundResult(Car car){
+    public String formatRoundResult(Car car) {
         return car.getName() + " : " + car.getCurrentDistance();
     }
 

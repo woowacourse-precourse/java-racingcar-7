@@ -31,18 +31,18 @@ public class Car implements Raceable {
         return progressBuilder.toString();
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public int getMoveCount(){
+    public int getMoveCount() {
         return this.moveCount;
     }
 
-    private void validateNameLength(String name){
-        if(name.length() > NAME_MAX_LEGNTH) {
+    private void validateNameLength(String name) {
+        if (name.length() > NAME_MAX_LEGNTH) {
             throw new IllegalArgumentException(NAME_MAX_LENGTH_ERROR);
-        }else if(name.length() < NAME_MIN_LEGNTH){
+        } else if (name.length() < NAME_MIN_LEGNTH) {
             throw new IllegalArgumentException(NAME_MIN_LENGTH_ERROR);
         }
     }

@@ -14,6 +14,7 @@ public class RandomNumberGeneratorTest {
     void setUp() {
         randomNumberGenerator = new RandomNumberGenerator();
     }
+
     @Test
     @DisplayName("유효한 범위의 랜덤한 숫자를 생성하는지 검증")
     void testGenerateNumberWithinRange() {

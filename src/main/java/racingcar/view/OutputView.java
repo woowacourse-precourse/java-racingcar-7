@@ -34,7 +34,7 @@ public class OutputView {
         printMessage("");
     }
 
-    public void printWinner(List<Car> cars){
+    public void printWinner(List<Car> cars) {
         printMessage(printFormatter.formatWinner(PRINT_WINNER, cars));
     }
 

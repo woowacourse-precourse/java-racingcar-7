@@ -8,6 +8,7 @@ public class ErrorMessage {
     public static final String NOT_A_NUMBER_ERROR = "시도 횟수는 숫자만 입력 가능합니다.";
     public static final String TRIAL_MIN_COUNT_ERROR = "시도 횟수는 1이상만 입력 가능합니다.";
     public static final String INVALID_RANDOM_NUMBER_RANGE_ERROR = "허용되지 않은 랜덤한 숫자 범위입니다.";
+
     private ErrorMessage() {
 
     }

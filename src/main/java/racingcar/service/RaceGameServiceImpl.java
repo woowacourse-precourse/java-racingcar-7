@@ -7,12 +7,12 @@ import racingcar.domain.Car;
 import racingcar.domain.Referee;
 import racingcar.util.parser.StringParser;
 
-public class RaceGameServiceImpl implements RaceGameService{
+public class RaceGameServiceImpl implements RaceGameService {
     @Override
     public List<Car> enrollRacer(String racerNames, StringParser stringParser) {
         Set<String> parsedRacerNames = stringParser.extractTokens(racerNames);
         List<Car> racers = new ArrayList<>();
-        for(String racerName : parsedRacerNames){
+        for (String racerName : parsedRacerNames) {
             Car racer = new Car(racerName);
             racers.add(racer);
         }
@@ -21,8 +21,8 @@ public class RaceGameServiceImpl implements RaceGameService{
 
     @Override
     public void progressRound(List<Car> cars, Referee referee) {
-        for (Car car : cars){
-            if(referee.judgeRacerCanMove()) {
+        for (Car car : cars) {
+            if (referee.judgeRacerCanMove()) {
                 car.moveFoward();
             }
         }
@@ -35,8 +35,8 @@ public class RaceGameServiceImpl implements RaceGameService{
                 .mapToInt(Car::getMoveCount)
                 .max()
                 .orElse(0);
-        for (Car car : cars){
-            if(car.getMoveCount() == maxMoveCount){
+        for (Car car : cars) {
+            if (car.getMoveCount() == maxMoveCount) {
                 winner.add(car);
             }
         }
