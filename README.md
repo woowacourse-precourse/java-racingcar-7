@@ -206,4 +206,5 @@
 2. 전진/멈춤 조건 변겅 또는 추가
 
 ## 클래스 다이어그램
-<img width="950" alt="2주차 미션 클래스 다이어그램" src="https://github.com/user-attachments/assets/d8de7c52-462a-43c5-8ad1-71d4582eb548">
+![2주 차 미션 클래스 다이어그램](https://github.com/user-attachments/assets/77f4ff25-79a9-4781-83ca-b58ec72449d8)
+
