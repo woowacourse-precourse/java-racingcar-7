@@ -3,16 +3,14 @@ package racingcar.converter;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.enums.ErrorMessage;
 
 class StringToIntegerConverterTest {
-    
+
     @Nested
-    @DisplayName("String을 Integer로 변환 시")
-    class ConvertStringToIntegerTests {
+    class String_To_Integer_변환_테스트 {
         Converter<String, Integer> converter = new StringToIntegerConverter();
 
         @Test
