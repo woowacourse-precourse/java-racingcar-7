@@ -10,7 +10,7 @@ public class OutputView {
         System.out.println("\n실행 결과");
     }
 
-    public void printRaceResult(String carName, String Markers) {
+    public void printCarStatus(String carName, String Markers) {
         System.out.println(carName + " : " + Markers);
     }
 

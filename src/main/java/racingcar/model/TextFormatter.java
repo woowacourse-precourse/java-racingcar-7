@@ -9,7 +9,7 @@ public class TextFormatter {
         return carNames.split(",");
     }
 
-    public String getWinnerNames(List<Car> winners) {
+    public String formatWinnerNames(List<Car> winners) {
         return winners.stream()
                       .map(Car::getName)
                       .collect(Collectors.joining(", "));

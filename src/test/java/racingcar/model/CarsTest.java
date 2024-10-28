@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class CarsTest {
 
+    private static final int ADVANCE_NUMBER = 9;
     private Cars cars;
     private Car pobi;
     private Car woni;
@@ -26,29 +27,26 @@ public class CarsTest {
         jun = cars.getCars()
                   .get(2);
 
-        pobi.addAdvanceMarker();  // pobi: 1회 전진
-        woni.addAdvanceMarker();  // woni: 1회 전진
-        woni.addAdvanceMarker();  // woni: 2회 전진
-        jun.addAdvanceMarker();   // jun: 1회 전진
-        jun.addAdvanceMarker();   // jun: 2회 전진
+        pobi.advance(ADVANCE_NUMBER);  // pobi: 1회 전진
+        woni.advance(ADVANCE_NUMBER);  // woni: 1회 전진
+        woni.advance(ADVANCE_NUMBER);  // woni: 2회 전진
+        jun.advance(ADVANCE_NUMBER);   // jun: 1회 전진
+        jun.advance(ADVANCE_NUMBER);   // jun: 2회 전진
     }
 
     @Test
     void 최대_전진_횟수를_구한다() {
         // when
-        int maxAdvanceMarkerCount = cars.getMaxAdvanceMarkerCount();
+        int maxAdvanceCount = cars.getMaxAdvanceCount();
 
         // then
-        assertThat(maxAdvanceMarkerCount).isEqualTo(2);
+        assertThat(maxAdvanceCount).isEqualTo(2);
     }
 
     @Test
     void 가장_많이_전진한_우승자를_찾는다() {
-        // given
-        int maxAdvanceMarkerCount = cars.getMaxAdvanceMarkerCount();
-
         // when
-        List<Car> winners = cars.findWinners(maxAdvanceMarkerCount);
+        List<Car> winners = cars.findWinners();
 
         // then
         assertThat(winners).hasSize(2)

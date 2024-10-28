@@ -13,22 +13,22 @@ public class InputView {
 
     public String readTotalRounds() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String roundNumber = Console.readLine();
-        validateNotBlank(roundNumber);
-        validatePositiveRoundNumber(roundNumber);
-        return roundNumber;
-    }
-
-    public void validatePositiveRoundNumber(String input) {
-        int roundNumber = Integer.parseInt(input);
-        if (roundNumber < 1) {
-            throw new IllegalArgumentException("총 라운드 수는 1 이상이어야 합니다.");
-        }
+        String roundCount = Console.readLine();
+        validateNotBlank(roundCount);
+        validatePositiveRoundCount(roundCount);
+        return roundCount;
     }
 
     public void validateNotBlank(String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException("입력값이 빈 공백이거나 비어있으면 안 됩니다.");
+        }
+    }
+
+    public void validatePositiveRoundCount(String input) {
+        int roundCount = Integer.parseInt(input);
+        if (roundCount < 1) {
+            throw new IllegalArgumentException("총 라운드 수는 1 이상이어야 합니다.");
         }
     }
 }

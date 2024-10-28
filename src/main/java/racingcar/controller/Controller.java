@@ -2,10 +2,8 @@ package racingcar.controller;
 
 import static java.lang.Integer.parseInt;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
-import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.RacingGame;
 import racingcar.model.TextFormatter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -25,8 +23,10 @@ public class Controller {
     public void startRace() {
         try {
             Cars cars = initializeCars();
-            runRaceRounds(cars);
-            announceOfWinners(cars);
+            int totalRounds = parseInt(inputView.readTotalRounds());
+            RacingGame racingGame = new RacingGame(cars);
+            racingGame.playRounds(totalRounds, outputView);
+            announceOfWinners(racingGame);
         } catch (IllegalArgumentException error) {
             outputView.printErrorMessage(error);
             throw (error);
@@ -39,29 +39,8 @@ public class Controller {
         return Cars.from(carNameArr);
     }
 
-    private void runRaceRounds(Cars cars) {
-        int totalRounds = parseInt(inputView.readTotalRounds());
-        Console.close();
-
-        outputView.printRaceResultMessage();
-        for (int round = 0; round < totalRounds; round++) {
-            cars.advanceCarsRandomly();
-            showRoundResults(cars);
-        }
-    }
-
-    private void showRoundResults(Cars cars) {
-        for (Car car : cars.getCars()) {
-            String advanceMarkers = String.join("", car.getAdvanceMarkers());
-            outputView.printRaceResult(car.getName(), advanceMarkers);
-        }
-        outputView.printBlankLine();
-    }
-
-    private void announceOfWinners(Cars cars) {
-        int maxAdvanceMarkersCount = cars.getMaxAdvanceMarkerCount();
-        List<Car> winners = cars.findWinners(maxAdvanceMarkersCount);
-        String winnerNames = textFormatter.getWinnerNames(winners);
-        outputView.printWinners(winnerNames);
+    private void announceOfWinners(RacingGame racingGame) {
+        String winners = textFormatter.formatWinnerNames(racingGame.getWinners());
+        outputView.printWinners(winners);
     }
 }

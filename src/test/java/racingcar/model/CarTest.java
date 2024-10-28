@@ -20,7 +20,7 @@ public class CarTest {
         car.advance(number);
 
         // then
-        assertThat(car.getAdvanceMarkerCount()).isEqualTo(expected);
+        assertThat(car.getAdvanceCount()).isEqualTo(expected);
     }
 
     @Test

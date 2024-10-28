@@ -19,7 +19,7 @@ public class InputViewTest {
     @ParameterizedTest
     @ValueSource(strings = {"0", "-1"})
     void 총_라운드_수가_1_미만이면_예외가_발생한다(String input) {
-        assertThatThrownBy(() -> inputView.validatePositiveRoundNumber(input))
+        assertThatThrownBy(() -> inputView.validatePositiveRoundCount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

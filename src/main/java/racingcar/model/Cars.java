@@ -25,22 +25,20 @@ public class Cars {
     }
 
     public void advanceCarsRandomly() {
-        for (Car car : cars) {
-            int number = Randoms.pickNumberInRange(0, 9);
-            car.advance(number);
-        }
+        cars.forEach(car -> car.advance(Randoms.pickNumberInRange(0, 9)));
     }
 
-    public List<Car> findWinners(int maxMarkerCount) {
+    public List<Car> findWinners() {
+        int maxAdvanceCount = getMaxAdvanceCount();
         return cars.stream()
-                   .filter(car -> car.getAdvanceMarkerCount() == maxMarkerCount)
+                   .filter(car -> car.getAdvanceCount() == maxAdvanceCount)
                    .toList();
     }
 
-    public int getMaxAdvanceMarkerCount() {
+    public int getMaxAdvanceCount() {
         return cars.stream()
-                   .map(Car::getAdvanceMarkerCount)
-                   .max(Long::compare)
+                   .mapToInt(Car::getAdvanceCount)
+                   .max()
                    .orElse(0);
     }
 
@@ -54,7 +52,7 @@ public class Cars {
         for (Car car : cars) {
             String carName = car.getName();
             if (!uniqueNames.add(carName)) {
-                throw new IllegalArgumentException("이름은 중복될 수 없습니다. 중복된 이름 : " + carName);
+                throw new IllegalArgumentException("이름은 중복될 수 없습니다. 중복된 이름: " + carName);
             }
         }
     }
