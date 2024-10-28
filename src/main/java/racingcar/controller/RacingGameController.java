@@ -11,11 +11,6 @@ public class RacingGameController {
     }
 
     public void startRace(String carNames, String tryNumber) {
-        String[] inputs = InputView.getRacingCarsAndTryNumber();
-
-        String racingCars = inputs[0];
-        tryNumber = inputs[1];
-
-        racingGameService.processRacingCars(racingCars,tryNumber);
+        racingGameService.processRacingCars(carNames,tryNumber);
     }
 }

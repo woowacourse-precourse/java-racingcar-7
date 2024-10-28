@@ -8,7 +8,7 @@ import racingcar.validation.Inputvalidator;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class ExceptionTest {
-    private RacingGameService racingGameService;
+
     @Test
     void carNameValidate() {
         String cars = "ponyCar,choco,Amen";
