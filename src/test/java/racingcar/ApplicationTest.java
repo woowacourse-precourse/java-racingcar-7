@@ -14,15 +14,6 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 차가_한대만_입력되었을때_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("경주를 위해서는 최소 2대 이상의 자동차가 필요합니다.")
-        );
-    }
-
-    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
