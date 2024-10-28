@@ -73,13 +73,8 @@ public class Controller {
     }
 
     private String checkValidationCarNamesInput(String input) {
-        try {
-            validator.checkCarNamesInput(input);
-            return input;
-        } catch (IllegalArgumentException e) {
-            OutputView.printException(e.getMessage());
-            return getCarNamesByUserInput();
-        }
+        validator.checkCarNamesInput(input);
+        return input;
     }
 
 }
