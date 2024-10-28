@@ -27,13 +27,13 @@ public class RacingController {
             // 2. 시도 횟수만큼 경주 진행
             for (int i = 0; i < request.getRoundCount(); i++) {
                 System.out.println("차시 : " + (i + 1));
-                view.printCarStates(model.getCarStates());
-                model.raceOneRound();
+                model.raceOneRound();  // 전진 여부 결정
+                view.printCarStates(model.getCarStates());  // 전진 결과 출력
             }
 
             // 3. 최종 우승자
             view.printWinners(model.getWinners());
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             ErrorHandler.handlerError(e.getMessage());
         }
     }
