@@ -34,7 +34,7 @@ public class RacingCar {
     }
 
     private void validateRaceSize(int player, int round) {
-        if (player * round < 100_000) {
+        if (player * round > 100_000) {
             throw new IllegalArgumentException("참가자 수와 라운드 수가 너무 많습니다");
         }
     }
