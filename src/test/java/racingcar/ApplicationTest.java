@@ -23,6 +23,8 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -30,6 +32,23 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 잘못된_입력값() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복된_입력값() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
