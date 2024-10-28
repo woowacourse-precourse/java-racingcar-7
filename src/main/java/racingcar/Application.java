@@ -23,6 +23,7 @@ public class Application {
 
         List<Car> cars = createCars(carNames);
         runRace(cars, attempts);
+        printResults(cars);  // 경주 후 결과 출력
     }
 
     private static List<Car> createCars(String[] carNames) {
@@ -48,6 +49,13 @@ public class Application {
         System.out.println("-".repeat(car.getPosition()));
     }
 
+    private static void printResults(List<Car> cars) {
+        System.out.println("최종 결과:");
+        for (Car car : cars) {
+            System.out.println(car.getName() + ": " + "-".repeat(car.getPosition()));
+        }
+    }
+
     private static void validateCarNames(String[] names) {
         for (String name : names) {
             if (name.length() > 5) {
@@ -64,7 +72,7 @@ public class Application {
 }
 
 class Car {
-    private String name;
+    private final String name;
     private int position;
 
     public Car(String name) {
