@@ -41,12 +41,6 @@ public class InputView {
 		}
 	}
 
-	private void validatePositive(String input) {
-		if (Integer.parseInt(input) <= 0) {
-			throw new IllegalArgumentException("[ERROR] 시도 횟수는 0보다 커야 합니다.");
-		}
-	}
-
 	private boolean isDigit(String input) {
 		return input.chars().allMatch(Character::isDigit);
 	}
