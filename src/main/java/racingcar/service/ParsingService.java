@@ -3,8 +3,8 @@ package racingcar.service;
 public class ParsingService {
     public int parseNum(String s){
         int num=0;
-        if (s.length()>6){
-            throw new IllegalArgumentException("시도 횟수는 100만 아래로 설정해 주세요");
+        if (s.length()>5){
+            throw new IllegalArgumentException("시도 횟수는 10만 아래로 설정해 주세요");
         }
         StringBuilder number =new StringBuilder();
         for (int i=0;i<s.length();i++){
