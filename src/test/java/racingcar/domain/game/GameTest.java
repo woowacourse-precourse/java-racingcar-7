@@ -35,7 +35,10 @@ class GameTest {
             final int totalRounds = 5;
             MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
             final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
-            Game.start(players, totalRounds, movementPolicy);
+
+            // expect
+            Assertions.assertThatCode(() -> Game.start(players, totalRounds, movementPolicy))
+                    .doesNotThrowAnyException();
         }
 
         @DisplayName("최소 플레이어 수 미달로 게임 생성 시도")
@@ -48,6 +51,8 @@ class GameTest {
             final int totalRounds = 5;
             MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
             final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
+
+            // expect
             Assertions.assertThatThrownBy(() -> Game.start(players, totalRounds, movementPolicy))
                     .isInstanceOf(PlayerCountShortException.class)
                     .hasMessage("플레이어는 최소 2명 부터 참여할 수 있습니다");
@@ -69,6 +74,8 @@ class GameTest {
             final int totalRounds = 5;
             MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
             final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
+
+            // expect
             Assertions.assertThatThrownBy(() -> Game.start(players, totalRounds, movementPolicy))
                     .isInstanceOf(PlayerCountExceededException.class)
                     .hasMessage("플레이어는 최대 5명 까지 참여할 수 있습니다");
@@ -86,6 +93,8 @@ class GameTest {
             final int totalRounds = 0;
             MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
             final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
+
+            // expect
             Assertions.assertThatThrownBy(() -> Game.start(players, totalRounds, movementPolicy))
                     .isInstanceOf(InvalidTotalRoundsException.class)
                     .hasMessage("라운드는 1-10 사이여야 합니다.");
@@ -103,6 +112,8 @@ class GameTest {
             final int totalRounds = 11;
             MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
             final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
+
+            // expect
             Assertions.assertThatThrownBy(() -> Game.start(players, totalRounds, movementPolicy))
                     .isInstanceOf(InvalidTotalRoundsException.class)
                     .hasMessage("라운드는 1-10 사이여야 합니다.");
@@ -156,7 +167,51 @@ class GameTest {
             }
         }
 
+        @DisplayName("게임 종료 확인하기")
+        @Nested
+        class 게임_종료_확인하기 {
+            @DisplayName("진행 중인 게임 확인")
+            @Test
+            void 진행_중인_게임_확인() {
+                // given
+                final List<Player> validPlayers = List.of(
+                        Player.of(1L, "p1"),
+                        Player.of(2L, "p2")
 
+                );
+                final int validRounds = 2;
+                MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
+                final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
+
+                // when
+                Game startGame = Game.start(validPlayers, validRounds, movementPolicy);
+                Game playedGame = startGame.play();
+
+                // then
+                Assertions.assertThat(playedGame.isFinished()).isFalse();
+            }
+
+            @DisplayName("종료된 게임 확인")
+            @Test
+            void 종료된_게임_확인() {
+                // given
+                final List<Player> validPlayers = List.of(
+                        Player.of(1L, "p1"),
+                        Player.of(2L, "p2")
+
+                );
+                final int validRounds = 2;
+                MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
+                final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
+
+                // when
+                Game startGame = Game.start(validPlayers, validRounds, movementPolicy);
+                Game playedGame = startGame.play();
+                Game endGame = playedGame.play();
+
+                // then
+                Assertions.assertThat(endGame.isFinished()).isTrue();
+            }
+        }
     }
-
 }
