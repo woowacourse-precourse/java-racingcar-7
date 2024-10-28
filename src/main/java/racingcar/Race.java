@@ -1,7 +1,11 @@
 package racingcar;
 
+import static racingcar.InputHandler.readRacingInfo;
+
 public class Race {
 
-    public void start() {}
+    public void start() {
+        readRacingInfo();
+    }
 
 }
