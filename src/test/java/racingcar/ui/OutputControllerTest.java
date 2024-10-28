@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcar.domain.Winners;
 
 class OutputControllerTest {
 
@@ -49,8 +48,8 @@ class OutputControllerTest {
 
         outputController.printProgressedInfo(
                 List.of(
-                        new ProgressedInformation("test", 5),
-                        new ProgressedInformation("test", 5)
+                        new ProgressedResult("test", 5),
+                        new ProgressedResult("test", 5)
                 )
         );
 

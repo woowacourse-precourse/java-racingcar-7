@@ -18,14 +18,14 @@ public class OutputController {
         this.outputConsole.printWithLineBreak("시도할 횟수는 몇 회인가요?");
     }
 
-    public void printProgressedInfo(final List<ProgressedInformation> progressedInformation) {
-        for (final ProgressedInformation information : progressedInformation) {
-            this.outputConsole.printWithLineBreak(information.getResult());
+    public void printProgressedInfo(final List<ProgressedResult> progressedResults) {
+        for (final ProgressedResult progressedResult : progressedResults) {
+            this.outputConsole.printWithLineBreak(progressedResult.getResult());
         }
         this.outputConsole.printWithLineBreak("");
     }
 
-    public void printWinners(final Winners winners) {
-        this.outputConsole.print(winners.getResult());
+    public void printWinners(final WinnerResults winnerResults) {
+        this.outputConsole.print(winnerResults.getResult());
     }
 }
