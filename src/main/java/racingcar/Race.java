@@ -11,15 +11,14 @@ public class Race {
         this.COUNT = count;
     }
 
-    public void start() {
-        Output.printBlankLine();
-        Output.printRunResultMessage();
+    public void start(){
         for (int i = 0; i < COUNT; i++) {
-            for (Car car : CARS) {
-                Movement movement = MovementGenerator.getRandomMovement();
-                car.move(movement);
-            }
-            Output.printRunResult(CARS);
+            run();
         }
+    }
+
+    private void run(){
+        CARS.forEach(car -> car.move(MovementGenerator.getRandomMovement()));
+        Output.printRunResult(CARS);
     }
 }
