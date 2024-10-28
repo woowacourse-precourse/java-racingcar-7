@@ -42,11 +42,15 @@ public class Application {
     }
 
     public static void moveCar(final int numberOfCar) {
-        for (int i = 0; i < numberOfCar; i++) {
-            if (Randoms.pickNumberInRange(0, 9) < 4) {
-                continue;
-            }
-            racingDistance.set(i, racingDistance.get(i) + 1);
+        for (int carNumber = 0; carNumber < numberOfCar; carNumber++) {
+            isMoved(carNumber);
+        }
+    }
+
+    public static void isMoved(final int carNumber) {
+        int randZeroNine = Randoms.pickNumberInRange(0, 9);
+        if (randZeroNine >= 4) {
+            racingDistance.set(carNumber, racingDistance.get(carNumber) + 1);
         }
     }
 
