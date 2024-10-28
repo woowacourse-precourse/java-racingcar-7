@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -10,6 +9,7 @@ import java.util.stream.IntStream;
  */
 public class RacingGame {
     RacingInput racingInput = new RacingInput();
+    RacingOutput racingOutput = new RacingOutput();
     List<Car> cars;
     int totalRounds;
 
@@ -31,34 +31,29 @@ public class RacingGame {
     public void play() {
         System.out.println("\n실행 결과");
         IntStream.range(0, totalRounds).forEach(i -> doRound());
-        displayWinner();
+
+        racingOutput.displayWinner(calculateWinner());
     }
 
     private void doRound() {
         for (Car car : cars) {
             car.attemptMove();
         }
-        displayRaceProgress();
+
+        List<CarDto> carDtos = cars.stream().map(Car::toDto).toList();
+        racingOutput.displayRaceProgress(carDtos);
     }
 
-    private void displayRaceProgress() {
-        String raceProgress = cars.stream()
-                .map(Car::toString)
-                .collect(Collectors.joining());
-        System.out.println(raceProgress);
-    }
-
-    private void displayWinner() {
-        int maxProgress = cars.stream()
-                .map(Car::toDto)
+    private List<String> calculateWinner() {
+        List<CarDto> carDtos = cars.stream().map(Car::toDto).toList();
+        int maxProgress = carDtos.stream()
                 .map(CarDto::position)
                 .max(Integer::compare)
                 .orElseThrow(() -> new IllegalArgumentException("자동차가 입력되지 않았습니다."));
-        String winners = cars.stream()
-                .map(Car::toDto)
+
+        return carDtos.stream()
                 .filter(carDto -> carDto.position() == maxProgress)
                 .map(CarDto::name)
-                .collect(Collectors.joining(", "));
-        System.out.println("최종 우승자 : " + winners);
+                .toList();
     }
 }

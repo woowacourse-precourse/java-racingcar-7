@@ -8,7 +8,7 @@ public class CarTest {
     public void 출력_테스트() {
         Car car = new Car("test");
 
-        Assertions.assertThat(car.toString()).isEqualTo("test : \n");
+        Assertions.assertThat(car.toDto().toString()).isEqualTo("test : \n");
     }
 
     @Test
