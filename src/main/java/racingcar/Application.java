@@ -13,6 +13,7 @@ public class Application {
         List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
+        RacingGame game = new RacingGame(cars);
         // TODO: 추가 구현
     }
 
