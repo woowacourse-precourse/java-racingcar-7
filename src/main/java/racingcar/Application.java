@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
-        Map<String, Integer> race = new HashMap<String, Integer>();
+        Map<String, Integer> race = new HashMap<>();
         try {
             getNames(race, input);
         } catch (IllegalArgumentException e) {
@@ -26,18 +26,14 @@ public class Application {
         System.out.println("실행 결과");
 
         for (int i = 0; i < num; i++) {
-            Iterator<Map.Entry<String, Integer>> entry = race.entrySet().iterator();
-            while (entry.hasNext()) {
-                Map.Entry<String, Integer> element = entry.next();
+            for(Map.Entry<String, Integer> entry : race.entrySet()){
                 int r = randomNum();
-                move(element, goStop(r));
+                move(entry, goStop(r));
             }
-            Iterator<Map.Entry<String, Integer>> newEntry = race.entrySet().iterator();
-            printRace(newEntry);
+            printRace(race);
         }
 
-        List<String> winners = new ArrayList<>();
-        winner(race, winners);
+        List<String> winners = getWinners(race);
         printWinner(winners);
     }
 
@@ -50,7 +46,7 @@ public class Application {
             throw new IllegalArgumentException("자동차는 2개 이상이어야 합니다.");
         }
         for (String name : names) {
-            if (name.length() == 0) {
+            if (name.isEmpty()) {
                 throw new IllegalArgumentException("이름은 한 글자 이상이어야 합니다.");
             }
             if (name.length() > 5) {
@@ -78,47 +74,38 @@ public class Application {
     }
 
     public static boolean goStop(int n) {
-        if (n >= 4) {
-            return true;
-        }
-        return false;
+        return n >= 4;
     }
 
     public static void move(Map.Entry<String, Integer> element, boolean goStop) {
-        if (goStop) {
+        if(goStop) {
             element.setValue(element.getValue() + 1);
         }
     }
 
-    public static void printRace(Iterator<Map.Entry<String, Integer>> entry) {
-        while (entry.hasNext()) {
-            Map.Entry<String, Integer> element = entry.next();
-            String result = "";
-            result += element.getKey() + " : ";
-            for (int i = 0; i < element.getValue(); i++) {
-                result += "-";
-            }
-            System.out.println(result);
+    public static void printRace(Map<String, Integer> race) {
+        StringBuilder result = new StringBuilder();
+        for(Map.Entry<String, Integer> entry : race.entrySet()) {
+            result.append(entry.getKey()).append(" : ");
+            result.append("-".repeat(entry.getValue()));
+            result.append("\n");
         }
-        System.out.println("");
+        System.out.print(result.toString());
+        System.out.println();
     }
 
-    public static void winner(Map<String, Integer> race, List<String> winners) {
-        Integer max = Collections.max(race.values());
-        Iterator<Map.Entry<String, Integer>> entry = race.entrySet().iterator();
-        while (entry.hasNext()) {
-            Map.Entry<String, Integer> element = entry.next();
-            if (element.getValue() == max) {
-                winners.add(element.getKey());
+    public static List<String> getWinners(Map<String, Integer> race) {
+        int maxDistance = Collections.max(race.values());
+        List<String> winners = new ArrayList<>();
+        for(Map.Entry<String, Integer> entry : race.entrySet()) {
+            if (entry.getValue() == maxDistance) {
+                winners.add(entry.getKey());
             }
         }
+        return winners;
     }
 
     public static void printWinner(List<String> winners) {
-        String result = "최종 우승자 : ";
-        for (String winner : winners) {
-            result += winner + ", ";
-        }
-        System.out.println(result.substring(0, result.length() - 2));
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
