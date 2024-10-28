@@ -10,4 +10,10 @@ public class CarGroup {
                 .map(Car::new)
                 .toList();
     }
+
+    public void printCarPositions() {
+        for (Car car : cars) {
+            System.out.println(car.getName() + "의 위치: " + car.getPosition());
+        }
+    }
 }
