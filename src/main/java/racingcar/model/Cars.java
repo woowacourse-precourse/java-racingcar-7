@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.constants.ErrorMessages;
+import racingcar.constant.ErrorMessages;
 
 public class Cars {
     private static final String DELIMITER_COMMA = ",";

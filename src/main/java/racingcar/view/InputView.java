@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.constants.ErrorMessages;
-import racingcar.constants.Messages;
+import racingcar.constant.ErrorMessages;
+import racingcar.constant.Messages;
 import racingcar.model.Cars;
 import racingcar.model.TryCount;
 

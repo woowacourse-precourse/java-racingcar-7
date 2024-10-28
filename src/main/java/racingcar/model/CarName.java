@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import java.util.Objects;
-import racingcar.constants.ErrorMessages;
+import racingcar.constant.ErrorMessages;
 
 public class CarName {
     private static final int MAX_LENGTH = 5;

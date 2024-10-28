@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import racingcar.constants.ErrorMessages;
+import racingcar.constant.ErrorMessages;
 
 public class TryCount {
     private final int count;
