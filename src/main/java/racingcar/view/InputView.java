@@ -18,7 +18,7 @@ public class InputView {
     }
 
     public static String validate(String input) {
-        if (input.isBlank()) {
+        if (input == null || input.isBlank()) {
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_NO_INPUT);
         }
         return input;
