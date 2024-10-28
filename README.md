@@ -2,6 +2,8 @@
 
 About 2nd pre-course project
 
+---
+
 ## 📁 디렉토리 구조
 
 ```
