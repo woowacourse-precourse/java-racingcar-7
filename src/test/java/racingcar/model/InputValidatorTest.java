@@ -39,7 +39,7 @@ class InputValidatorTest {
 
     @DisplayName("null_입력_예외_테스트")
     @Test
-    public void NameForNullExceptionTest() {
+    public void nameForNullExceptionTest() {
         //given
         String input = null;
         //when,then
@@ -72,7 +72,7 @@ class InputValidatorTest {
 
     @DisplayName("앞공백_검사_테스트")
     @Test
-    public void StartWhiteSpaceExceptionTest() {
+    public void startWhiteSpaceExceptionTest() {
         //given
         String names = "aaaa,aaaaa, aaaa";
         //when,then
