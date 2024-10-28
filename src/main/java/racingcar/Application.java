@@ -7,8 +7,6 @@ public class Application {
         InputReader inputReader = new InputReader();
         GameEngine gameEngine = new GameEngine(inputReader);
 
-        gameEngine.readUserInput();
-        gameEngine.initializeGame();
         gameEngine.run();
     }
 }

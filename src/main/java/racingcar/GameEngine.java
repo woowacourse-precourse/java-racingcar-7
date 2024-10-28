@@ -1,9 +1,8 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.OptionalInt;
+import net.bytebuddy.dynamic.DynamicType;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class GameEngine {
@@ -56,11 +55,26 @@ public class GameEngine {
         System.out.println(winners);
     }
     public void run(){
+        readUserInput();
+        initializeGame();
         while(numberOfTrial > 0){
             race();
             showRaceRecord();
+            System.out.println();
             --numberOfTrial;
         }
         showRaceWinner();
+    }
+
+    public String getCarNames() {
+        return carNames;
+    }
+
+    public int getNumberOfTrial() {
+        return numberOfTrial;
+    }
+
+    public ArrayList<RacingCar> getRacingCars() {
+        return racingCars;
     }
 }

@@ -27,12 +27,37 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 빈_입력에_대응(){
-        assertSimpleTest(()->{
-            run("", "");
-            assertThat(output()).contains("최종 우승자 :");
-        });
+        assertSimpleTest(()->
+            assertThatThrownBy(()->runException("",""))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    );
     }
 
+    @Test
+    void 이름이_5글자_이상일때(){
+        assertSimpleTest(()->
+                assertThatThrownBy(()->runException("abaced,adfgcs","2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 구분자가_쉼표가_아닐때(){
+        assertSimpleTest(()->
+                assertThatThrownBy(()->runException("abaced;dfgcs","2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 구분자와_이름사이에_공백이_있을때(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
