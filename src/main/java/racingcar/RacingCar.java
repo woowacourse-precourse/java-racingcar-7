@@ -57,21 +57,21 @@ public class RacingCar {
 
     private void validateCar(String car) {
         if (car == null || car.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름이 빈 값일 수 없습니다.");
+            throw new IllegalArgumentException(ErrorSubstance.CAR_NAME_EMPTY_VALUE.getMessage());
         }
 
         if (5 < car.length()) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(ErrorSubstance.CAR_NAME_LETTER_EXCESS.getMessage());
         }
 
         if (carMap.containsKey(car)) {
-            throw new IllegalArgumentException("중복된 이름입니다.");
+            throw new IllegalArgumentException(ErrorSubstance.CAR_NAME_DUPLICATION.getMessage());
         }
     }
 
     private List<String> validateCar(List<String> carList) {
         if (carList.size() < 2) {
-            throw new IllegalArgumentException("자동차는 2개 이상 입력해주세요.");
+            throw new IllegalArgumentException(ErrorSubstance.CAR_NOT_COLLECT_COUNT.getMessage());
         }
 
         return carList;
@@ -83,11 +83,11 @@ public class RacingCar {
         try {
             tryTimes = Integer.parseInt(tryTimesString);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도할 횟수에 숫자만 입력해주세요.");
+            throw new IllegalArgumentException(ErrorSubstance.TRY_TIME_INAPPROPRIATE.getMessage());
         }
 
         if (tryTimes <= 0) {
-            throw new IllegalArgumentException("시도할 횟수는 1회 이상으로 입력해주세요.");
+            throw new IllegalArgumentException(ErrorSubstance.TRY_TIME_NOT_COLLECT_NUM.getMessage());
         }
 
         return tryTimes;
