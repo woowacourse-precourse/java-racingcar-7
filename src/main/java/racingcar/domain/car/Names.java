@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Names {
 
-    private final int MAX_SIZE = 1000;
+    private final int MAX_SIZE = 500;
 
     private final List<Name> names;
 
