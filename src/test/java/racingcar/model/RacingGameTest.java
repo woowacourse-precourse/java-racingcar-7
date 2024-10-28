@@ -24,14 +24,16 @@ class RacingGameTest {
     void 게임_종료후_우승자() {
         Car car1 = new Car("pobi");
         Car car2 = new Car("crong");
-        car1.move(5); // 이동
-        car2.move(4); // 이동
+        car1.move(5); // 이동하여 위치가 5가 됨
+        car2.move(5); // 이동하여 위치가 5가 됨
 
         Cars cars = new Cars(List.of(car1, car2));
         RacingGame game = new RacingGame(cars, 1);
 
         List<String> winners = game.getWinners();
 
-        assertThat(winners).contains("pobi", "crong");
+        // 두 자동차가 같은 위치에 있으므로, 모두 우승자로 포함되어야 함
+        assertThat(winners).containsExactlyInAnyOrder("pobi", "crong");
     }
+
 }
