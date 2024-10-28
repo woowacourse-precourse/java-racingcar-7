@@ -14,7 +14,7 @@ public class ResultView {
     public void printRaceResult(Cars cars) {
         List<Car> carList = cars.getCars();
         for (Car car : carList) {
-            System.out.println(car.toString());
+            System.out.println(car.getCurrentStatus());
         }
         System.out.println();
     }
