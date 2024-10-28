@@ -48,11 +48,8 @@ public class RacingService {
     }
 
     public void addRacingCar(String inputCarNames) {
-        String noBlankCarNames = getNoneBlank(inputCarNames);
-        List<String> carNames = splitByComma(noBlankCarNames);
-        enoughCars(carNames);
-        carNames.stream().filter(this::carNameValidate)
-                .forEach(carName -> racingCars.put(carName, new RacingCar(carName)));
+        List<String> carNames = getValidCarNames(inputCarNames);
+        carNames.forEach(carName -> racingCars.put(carName, new RacingCar(carName)));
     }
 
     public void playGame(int inputTotalRound) {
@@ -70,16 +67,41 @@ public class RacingService {
     }
 
     public void responseGameResult() {
-        int maxScore = racingCars.values().stream().mapToInt(RacingCar::getScore).max().orElse(0);
-        if (maxScore != 0) {
-            List<String> winners = racingCars.values().stream().filter(racingCar -> racingCar.getScore() == maxScore)
-                    .map(RacingCar::getName).collect(Collectors.toList());
-            outputView.responseGameResult(String.join(", ", winners));
-        } else {
+        List<String> winners = findWinners();
+        if (winners.isEmpty()) {
             outputView.responseGameResult("우승자가 없습니다.");
+        } else {
+            outputView.responseGameResult(String.join(", ", winners));
         }
     }
 
+    private List<String> getValidCarNames(String inputCarNames) {
+        String noneBlankCarNames = getNoneBlank(inputCarNames);
+        List<String> carNames = splitByComma(noneBlankCarNames);
+        validateEnoughCars(carNames);
+        carNames.forEach(this::validateCarName);
+        return carNames;
+    }
+
+    private void validateEnoughCars(List<String> carNames) {
+        if (carNames.size() < 2) {
+            throw new IllegalArgumentException(NOT_ENOUGH_CAR.getMessage());
+        }
+    }
+
+    private void validateCarName(String carName) {
+        if (carName.length() >= 5) {
+            throw new IllegalArgumentException(CAR_NAME_TOO_LONG.getMessage());
+        } else if (isBlank(carName)) {
+            throw new IllegalArgumentException(EMPTY_INPUT.getMessage());
+        }
+    }
+
+    private List<String> findWinners() {
+        int maxScore = racingCars.values().stream().mapToInt(RacingCar::getScore).max().orElse(0);
+        return racingCars.values().stream().filter(racingCar -> racingCar.getScore() == maxScore)
+                .map(RacingCar::getName).collect(Collectors.toList());
+    }
 
     private void playRound() {
         racingCars.values().forEach(racingCar -> {
@@ -91,14 +113,14 @@ public class RacingService {
     }
 
     private void buildRoundResult(boolean isLastRound) {
-        racingCars.values().forEach(racingCar -> {
-            String name = racingCar.getName();
-            int score = racingCar.getScore();
-            roundResultsBuilder.append(name).append(" : ").append("-".repeat(score)).append("\n");
-        });
+        racingCars.values().forEach(racingCar -> roundResultsBuilder.append(formatRoundResult(racingCar)));
         if (!isLastRound) {
             roundResultsBuilder.append("\n");
         }
+    }
+
+    private String formatRoundResult(RacingCar racingCar) {
+        return racingCar.getName() + " : " + "-".repeat(racingCar.getScore()) + "\n";
     }
 
     private String getNoneBlank(String inputCarNames) {
@@ -108,21 +130,6 @@ public class RacingService {
     private String requestInputString(InputType inputType) {
         outputView.printAskInput(inputType);
         return inputView.read();
-    }
-
-    private void enoughCars(List<String> carNames) {
-        if (carNames.size() < 2) {
-            throw new IllegalArgumentException((NOT_ENOUGH_CAR.getMessage()));
-        }
-    }
-
-    private boolean carNameValidate(String carName) {
-        if (carName.length() >= 5) {
-            throw new IllegalArgumentException((CAR_NAME_TOO_LONG.getMessage()));
-        } else if (isBlank(carName)) {
-            throw new IllegalArgumentException((EMPTY_INPUT.getMessage()));
-        }
-        return true;
     }
 
     private boolean isLastRound(int round, int inputPlayCount) {
