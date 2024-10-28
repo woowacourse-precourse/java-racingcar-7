@@ -2,6 +2,7 @@ package racingcar.application.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.application.dto.InputCarNamesDTO;
 import racingcar.application.model.Car;
 
@@ -35,5 +36,18 @@ public class RacingService {
 
   public int getAttemptCount() {
     return attemptCount;
+  }
+
+  public List<String> getWinners() {
+
+    int maxForward = cars.stream()
+        .mapToInt(Car::getForward)
+        .max()
+        .orElse(0);
+
+    return cars.stream()
+        .filter(car -> car.getForward() == maxForward)
+        .map(Car::getName)
+        .collect(Collectors.toList());
   }
 }
