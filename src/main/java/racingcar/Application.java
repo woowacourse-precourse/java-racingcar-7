@@ -7,7 +7,7 @@ public class Application {
         List<Car> cars = InputHandler.inputCarNames();
         int tryCount = InputHandler.inputTryCount();
 
-        GameHandler.gameStart(cars, tryCount);
+        GameManager.gameStart(cars, tryCount);
 
         OutputHandler.printWinner(cars);
     }

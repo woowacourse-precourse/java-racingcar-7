@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.List;
 
-public class GameHandler {
+public class GameManager {
     public static void gameStart(List<Car> cars, int tryCount) {
         System.out.println("실행 결과");
 
