@@ -26,12 +26,6 @@ public class CarGenerator {
         }
     }
 
-    public static void checkIsNumeric(String carName) {
-        if (carName.matches(NUMBER_REGEX)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     public static void checkIsEmpty(String carName) {
         if (carName.isEmpty()) {
             throw new IllegalArgumentException();
@@ -40,10 +34,9 @@ public class CarGenerator {
 
     public static String[] trimStringArrayElements(String[] carNames) {
         for (int i = 0; i < carNames.length; i++) {
+            checkIsEmpty(carNames[i]);
             carNames[i] = carNames[i].trim();
             checkNameLength(carNames[i]);
-            checkIsEmpty(carNames[i]);
-            checkIsNumeric(carNames[i]);
         }
         return carNames;
     }
