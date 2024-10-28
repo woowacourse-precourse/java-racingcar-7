@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
-    private final List<Car> cars;
-    private final int attemptCount;
-    private final RandomMoveStrategy moveStrategy;
+    private List<Car> cars;
+    private RandomMoveStrategy moveStrategy;
 
-    public RacingCarGame(List<Car> cars, int attemptCount) {
-        this.cars = cars;
-        this.attemptCount = attemptCount;
+    public RacingCarGame() {
+        this.cars = new ArrayList<>();
         this.moveStrategy = new RandomMoveStrategy();
     }
 
-    public RacingCarGame(List<Car> cars, int attemptCount, RandomMoveStrategy moveStrategy) {
-        this.cars = cars;
-        this.attemptCount = attemptCount;
+    public void forceRandomMoveStrategy(RandomMoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
+    }
+
+    public void initialize(List<Car> carList) {
+        this.cars = carList;
     }
 
     public void raceEachCar() {
@@ -51,9 +51,5 @@ public class RacingCarGame {
 
     public List<Car> getCars() {
         return cars;
-    }
-
-    public int getAttemptCount() {
-        return attemptCount;
     }
 }

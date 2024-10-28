@@ -15,15 +15,14 @@ public class RacingCarGameTest {
     void 자동차경주게임_초기설정_테스트() {
         //given
         List<Car> cars = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
-        int attemptCount = 5;
 
         //when
-        RacingCarGame racingCarGame = new RacingCarGame(cars, attemptCount);
+        RacingCarGame racingCarGame = new RacingCarGame();
+        racingCarGame.initialize(cars);
 
         //then
         assertAll(
-                () -> assertThat(racingCarGame.getCars()).isEqualTo(cars),
-                () -> assertThat(racingCarGame.getAttemptCount()).isEqualTo(attemptCount)
+                () -> assertThat(racingCarGame.getCars()).isEqualTo(cars)
         );
     }
 
@@ -33,7 +32,6 @@ public class RacingCarGameTest {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
         List<Car> cars = Arrays.asList(car1, car2);
-        int attemptCount = 5;
 
         RandomMoveStrategy mockStrategy = new RandomMoveStrategy() {
             @Override
@@ -47,7 +45,9 @@ public class RacingCarGameTest {
             }
         };
 
-        RacingCarGame game = new RacingCarGame(cars, attemptCount, mockStrategy);
+        RacingCarGame game = new RacingCarGame();
+        game.initialize(cars);
+        game.forceRandomMoveStrategy(mockStrategy);
 
         // when
         game.raceEachCar();
@@ -65,7 +65,6 @@ public class RacingCarGameTest {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
         List<Car> cars = Arrays.asList(car1, car2);
-        int attemptCount = 5;
 
         RandomMoveStrategy mockStrategy = new RandomMoveStrategy() {
             @Override
@@ -79,7 +78,9 @@ public class RacingCarGameTest {
             }
         };
 
-        RacingCarGame game = new RacingCarGame(cars, attemptCount, mockStrategy);
+        RacingCarGame game = new RacingCarGame();
+        game.initialize(cars);
+        game.forceRandomMoveStrategy(mockStrategy);
 
         // when
         game.raceEachCar();
@@ -97,7 +98,6 @@ public class RacingCarGameTest {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
         List<Car> cars = Arrays.asList(car1, car2);
-        int attemptCount = 5;
 
         RandomMoveStrategy mockStrategy = new RandomMoveStrategy() {
             private int count = 0;
@@ -114,7 +114,9 @@ public class RacingCarGameTest {
             }
         };
 
-        RacingCarGame game = new RacingCarGame(cars, attemptCount, mockStrategy);
+        RacingCarGame game = new RacingCarGame();
+        game.initialize(cars);
+        game.forceRandomMoveStrategy(mockStrategy);
 
         // when
         game.raceEachCar();
@@ -139,8 +141,8 @@ public class RacingCarGameTest {
         car3.moveForward();
 
         List<Car> cars = Arrays.asList(car1, car2, car3);
-        int attemptCount = 5;
-        RacingCarGame game = new RacingCarGame(cars, attemptCount);
+        RacingCarGame game = new RacingCarGame();
+        game.initialize(cars);
 
         // when
         int maxPosition = game.findMaxPosition();
@@ -157,8 +159,9 @@ public class RacingCarGameTest {
         Car car3 = new Car("car3");
 
         List<Car> cars = Arrays.asList(car1, car2, car3);
-        int attemptCount = 5;
-        RacingCarGame game = new RacingCarGame(cars, 5);
+
+        RacingCarGame game = new RacingCarGame();
+        game.initialize(cars);
 
         // when
         List<String> winners = game.getWinnerList();
@@ -185,8 +188,9 @@ public class RacingCarGameTest {
         car3.moveForward();
 
         List<Car> cars = Arrays.asList(car1, car2, car3);
-        int attemptCount = 5;
-        RacingCarGame game = new RacingCarGame(cars, attemptCount);
+
+        RacingCarGame game = new RacingCarGame();
+        game.initialize(cars);
 
         // when
         List<String> winners = game.getWinnerList();
@@ -212,8 +216,9 @@ public class RacingCarGameTest {
         car3.moveForward();
 
         List<Car> cars = Arrays.asList(car1, car2, car3);
-        int attemptCount = 5;
-        RacingCarGame game = new RacingCarGame(cars, attemptCount);
+
+        RacingCarGame game = new RacingCarGame();
+        game.initialize(cars);
 
         // when
         List<String> winners = game.getWinnerList();

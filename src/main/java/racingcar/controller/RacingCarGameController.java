@@ -21,7 +21,8 @@ public class RacingCarGameController {
         List<Car> racingCars = convertToCars(carNames);
         int attemptCount = input.getAttemptCount();
 
-        RacingCarGame racingCarGame = new RacingCarGame(racingCars, attemptCount);
+        RacingCarGame racingCarGame = new RacingCarGame();
+        racingCarGame.initialize(racingCars);
 
         for (int i = 0; i < attemptCount; i++) {
             racingCarGame.raceEachCar();
