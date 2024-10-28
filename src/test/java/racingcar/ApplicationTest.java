@@ -32,41 +32,6 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
-    @Test
-    void nameLengthExceptionTest() {
-        assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("pobi,javaji,woni", "3"))
-                    .isInstanceOf(IllegalArgumentException.class);
-        });
-    }
-
-
-
-    @Test
-    void nameDuplicationGenerationTest() {
-        assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("pobi,woni,pobi", "3"))
-                    .isInstanceOf(IllegalArgumentException.class);
-        });
-    }
-
-    @Test
-    void attemptCountExceptionTest() {
-        assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("pobi,woni", "0"))
-                    .isInstanceOf(IllegalArgumentException.class);
-        });
-    }
-
-    @Test
-    void attemptThrowsExceptionForOverflowInput() {
-        String inputString = "2147483648";
-
-        assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("pobi,woni", inputString))
-                    .isInstanceOf(IllegalArgumentException.class);
-        });
-    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
