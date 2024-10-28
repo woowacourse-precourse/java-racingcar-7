@@ -6,7 +6,7 @@ public class ExceptionHandler {
             throw new IllegalArgumentException("입력 값은 필수입니다.");
         }
     }
-    
+
     public static void validateCarNameLength (String name){
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5글자 이하로 입력해주세요. : " + name);
@@ -19,8 +19,8 @@ public class ExceptionHandler {
         }
     }
 
-    public static void validateMoveCount (int moveCount) {
-        if (moveCount == 0) {
+    public static void validateTryCount(int tryCount) {
+        if (tryCount <= 0) {
             throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 합니다.");
         }
     }

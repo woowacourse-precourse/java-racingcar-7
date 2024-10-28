@@ -9,7 +9,7 @@ public class Race {
     private final int tryCount;
 
     public Race(List<String> cars, int tryCount) {
-        ExceptionHandler.validateMoveCount(tryCount);
+        ExceptionHandler.validateTryCount(tryCount);
 
         this.cars = createCars(cars);
         this.tryCount = tryCount;
