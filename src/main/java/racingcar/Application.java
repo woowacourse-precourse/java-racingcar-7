@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 
@@ -12,55 +11,53 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String move_cnt = Console.readLine();
 
+        validateInput(move_cnt);
         ArrayList<Car> race_result = race_start(cars, move_cnt);
         ArrayList<String> winners = getRaceWinners(race_result);
         printWinners(winners);
     }
 
+    public static void validateInput(String input) {
+        try {
+            int moveCount = Integer.parseInt(input);
+            if (moveCount < 0) {
+                throw new IllegalArgumentException("이동 횟수는 음수일 수 없습니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("이동 횟수는 숫자여야 합니다.");
+        }
+    }
+
     public static ArrayList<Car> add_cars(String cars) {
         ArrayList<Car> carList = new ArrayList<>();
-        for (String car_name : cars.split(",")) {
+        String[] carNames = cars.split(",");
+
+        if (carNames.length == 0 || (carNames.length == 1 && carNames[0].isEmpty())) {
+            throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
+        }
+
+        for (String car_name : carNames) {
             car_name = car_name.strip();
-            validate(car_name);
+            if (car_name.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
+            }
             carList.add(new Car(car_name, 0));
         }
         return carList;
     }
 
-    public static void validate(String car_name) {
-        if (car_name.length() > 5) {
-            throw new IllegalArgumentException();
-        }
-    }
 
     public static ArrayList<Car> race_start(String cars, String move_cnt) {
         ArrayList<Car> carList = add_cars(cars);
         int move_time = Integer.parseInt(move_cnt);
         while (move_time-- > 0) {
-            carList = move_car(carList);
-            showRaceprogress(carList);
-        }
-        return carList;
-    }
-
-    public static ArrayList<Car> move_car(ArrayList<Car> carList) {
-        for (Car car : carList) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                car.setDistance(car.getDistance() + 1);
-            }
-        }
-        return carList;
-    }
-
-    public static void showRaceprogress(ArrayList<Car> carList) {
-        for (Car car : carList) {
-            System.out.print(car.getName() + " : ");
-            for (int i = 0; i < car.getDistance(); i++) {
-                System.out.print('-');
+            for (Car car : carList) {
+                car.move();
+                car.showRaceProgress();
             }
             System.out.println();
         }
-        System.out.println();
+        return carList;
     }
 
     public static ArrayList<String> getRaceWinners(ArrayList<Car> carList) {
@@ -84,6 +81,6 @@ public class Application {
         for (i = 0; i < winners.size() - 1; i++) {
             System.out.print(winners.get(i) + ", ");
         }
-        System.out.print(winners.get(winners.size() - 1));
+        System.out.print(winners.getLast());
     }
 }
