@@ -23,4 +23,8 @@ public class Race {
             cars.add(new Car(carName));
         }
     }
+
+    private int generateRandomNum() {
+        return Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+    }
 }
