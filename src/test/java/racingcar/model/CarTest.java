@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.model.Car;
 
 class CarTest {
     @DisplayName("최소 길이보다 짧은 이름을 전달받으면 예외 발생")

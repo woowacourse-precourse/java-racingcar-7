@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -12,8 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.model.Car;
-import racingcar.model.Racers;
+import racingcar.service.CarRacingService;
 
 class RacersTest {
     private final CarRacingService carRacingService = new CarRacingService();
