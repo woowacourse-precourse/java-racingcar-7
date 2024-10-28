@@ -19,4 +19,15 @@ public class ValidateCarNamesTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Constants.INVALID_CAR_NAME_LENGTH);
     }
+
+    @Test
+    @DisplayName("자동차 이름이 공백일 때 예외가 발생해야 한다")
+    void validateCarNames_empty_shouldThrowException() {
+        CarService carService = new CarService();
+        String emptyCarName = "   "; // 공백 문자열
+
+        assertThatThrownBy(() -> carService.validateCarNames(emptyCarName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Constants.INVALID_CAR_NAME_EMPTY);
+    }
 }
