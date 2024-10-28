@@ -96,6 +96,46 @@ class GameServiceTest {
             Assertions.assertThatCode(() -> gameService.playRound())
                     .isInstanceOf(GameNotInitializedException.class)
                     .hasMessage("게임이 초기화되지 않았습니다.");
+        }
+
+    }
+
+    @DisplayName("다음 라운드 확인하기")
+    @Nested
+    class 다음_라운드_확인하기 {
+
+        @DisplayName("다음 라운드 존재 확인")
+        @Test
+        void 다음_라운드_존재_확인() {
+            // given
+            GameService gameService = createGameService();
+            GameStartRequest gameStartRequest = new GameStartRequest(List.of("p1", "p2", "p3"), 2);
+            gameService.initialize(gameStartRequest);
+
+            // when
+            gameService.playRound();
+            boolean result = gameService.hasNextRound();
+
+            // then
+            Assertions.assertThat(result).isTrue();
+
+        }
+
+        @DisplayName("다음 라운드 없음 확인")
+        @Test
+        void 다음_라운드_없음_확인() {
+            // given
+            GameService gameService = createGameService();
+            GameStartRequest gameStartRequest = new GameStartRequest(List.of("p1", "p2", "p3"), 2);
+            gameService.initialize(gameStartRequest);
+
+            // when
+            gameService.playRound();
+            gameService.playRound();
+            boolean result = gameService.hasNextRound();
+
+            // then
+            Assertions.assertThat(result).isFalse();
 
         }
 

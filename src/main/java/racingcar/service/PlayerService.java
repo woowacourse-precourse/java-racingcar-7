@@ -1,11 +1,12 @@
 package racingcar.service;
 
+import static racingcar.constant.GameConstants.MAXIMUM_PLAYERS;
+import static racingcar.constant.GameConstants.MINIMUM_PLAYERS;
 import static racingcar.exception.player.PlayerException.PlayerExceededException;
 import static racingcar.exception.player.PlayerException.PlayerUnderstaffedException;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.constant.GameConstants;
 import racingcar.domain.player.Player;
 import racingcar.repository.PlayerRepository;
 import racingcar.util.IdGenerator;
@@ -26,12 +27,16 @@ public class PlayerService {
                 .collect(Collectors.toList());
     }
 
+    public List<Player> getAllPlayers() {
+        return repository.findAll();
+    }
+
     private void validateNames(List<String> names) {
-        if (names.size() > GameConstants.MAXIMUM_PLAYERS) {
+        if (names.size() > MAXIMUM_PLAYERS) {
             throw new PlayerExceededException();
         }
 
-        if (names.size() < GameConstants.MINIMUM_PLAYERS) {
+        if (names.size() < MINIMUM_PLAYERS) {
             throw new PlayerUnderstaffedException();
         }
     }
@@ -40,10 +45,6 @@ public class PlayerService {
         Long id = idGenerator.generate();
         Player player = Player.of(id, name);
         return repository.save(player);
-    }
-
-    public List<Player> getAllPlayers() {
-        return repository.findAll();
     }
 
 }

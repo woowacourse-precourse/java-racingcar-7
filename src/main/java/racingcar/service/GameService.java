@@ -36,6 +36,10 @@ public class GameService {
         return GameResult.from(playedGame.getPlayers());
     }
 
+    public boolean hasNextRound() {
+        return !game.isFinished();
+    }
+
     private void validateGameInitialized() {
         if (game == null) {
             throw new GameException.GameNotInitializedException();
