@@ -3,27 +3,40 @@ package racingcar.race.validation;
 import racingcar.common.ExceptionEnum;
 import racingcar.race.exception.AttemptCountException;
 
-// 시도 횟수에 대한 검증 클래스
 public class AttemptCountValidator {
-    // 시도 횟수 검증 메서드
+
+    // 시도 횟수 검증
     public void validateAttemptCount(String attemptCountInput) {
-        if (attemptCountInput == null || attemptCountInput.trim().isEmpty()) {
-            throw new AttemptCountException(ExceptionEnum.NON_NUMERIC_ATTEMPT_COUNT.getMessage());
+        validateNumeric(attemptCountInput);
+
+        long attemptCount = Long.parseLong(attemptCountInput);
+        validateCountRange(attemptCount);
+    }
+
+    // 입력이 숫자(정수)인지 검증
+    private void validateNumeric(String input) {
+        if (input == null) {
+            throw new AttemptCountException(ExceptionEnum.NULL_ATTEMPT_COUNT.getMessage());
+        }
+
+        if (input.trim().isEmpty()) {
+            throw new AttemptCountException(ExceptionEnum.EMPTY_ATTEMPT_COUNT.getMessage());
         }
 
         try {
-            int attemptCount = Integer.parseInt(attemptCountInput);
-
-            if (attemptCount < 0) {
-                throw new AttemptCountException(ExceptionEnum.NEGATIVE_ATTEMPT_COUNT.getMessage());
-            }
-
-            if (attemptCount == 0) {
-                throw new AttemptCountException(ExceptionEnum.ZERO_ATTEMPT_COUNT.getMessage());
-            }
-
+            Long.parseLong(input);
         } catch (NumberFormatException e) {
             throw new AttemptCountException(ExceptionEnum.NON_INTEGER_ATTEMPT_COUNT.getMessage());
+        }
+    }
+
+    // 시도 횟수 값이 양수인지 검증
+    private void validateCountRange(long attemptCount) {
+        if (attemptCount < 0) {
+            throw new AttemptCountException(ExceptionEnum.NEGATIVE_ATTEMPT_COUNT.getMessage());
+        }
+        if (attemptCount == 0) {
+            throw new AttemptCountException(ExceptionEnum.ZERO_ATTEMPT_COUNT.getMessage());
         }
     }
 }
