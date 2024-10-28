@@ -19,6 +19,10 @@ public class Application {
     private static String[] nameInput(Scanner scanner) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = scanner.nextLine();
+        if (input == null || input.isBlank()) {
+            throw new IllegalArgumentException("값을 입력해 주세요");
+        }
+
         String names[] = input.split(",");
 
         Set<String> uniqueNames = new HashSet<>();
@@ -37,13 +41,17 @@ public class Application {
     private static int getTryCount(Scanner scanner) {
         System.out.println("시도할 횟수는 몇 회인가요?");
         try {
-            int count = scanner.nextInt();
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                throw new IllegalArgumentException("값을 입력해 주세요.");
+            }
+            int count = Integer.parseInt(input);
             if (count < 1) {
                 throw new IllegalArgumentException("1 이상의 숫자를 입력해 주세요.");
             }
             return count;
-        } catch (InputMismatchException e) {
-            throw new IllegalArgumentException("1 이상의 숫자를 입력해 주세요.");
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해 주세요.");
         }
     }
 
