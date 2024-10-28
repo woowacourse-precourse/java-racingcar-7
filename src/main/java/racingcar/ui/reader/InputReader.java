@@ -4,12 +4,10 @@ import racingcar.ui.UserInputRequester;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class InputReader {
     private final UserInputRequester userInput;
 
-    private final int  MAX_NAME_LENGTH = 5;
     private final String NAME_DELIMITER = ",";
     private final String CAR_NAME_PROMPT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private final String MOVEMENT_ATTEMPT_PROMPT = "시도할 횟수는 몇 회인가요?";
@@ -19,10 +17,7 @@ public class InputReader {
     }
 
     public List<String> readNames() {
-        List<String> result = splitNames(userInput.request(CAR_NAME_PROMPT));
-        if(hasInvalidName(result))
-            throw new IllegalArgumentException("이름 최대 길이를 초과함");
-        return result;
+        return splitNames(userInput.request(CAR_NAME_PROMPT));
     }
 
     public int readMovementAttempts() {
@@ -35,14 +30,5 @@ public class InputReader {
 
     private List<String> splitNames(String line) {
         return Arrays.stream(line.split(NAME_DELIMITER)).toList();
-    }
-
-    private boolean hasInvalidName(List<String> names) {
-        return toStringLength(names)
-                .anyMatch(nameLength -> nameLength > MAX_NAME_LENGTH);
-    }
-
-    private IntStream toStringLength(List<String> names) {
-        return names.stream().mapToInt(String::length);
     }
 }

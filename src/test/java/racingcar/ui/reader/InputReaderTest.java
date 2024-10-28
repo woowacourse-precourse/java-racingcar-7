@@ -40,15 +40,6 @@ public class InputReaderTest {
     }
 
     @Test
-    @DisplayName("이름 길이가 5를 초과하면 예외를 발생")
-    void test2() {
-        String names = "pobi,abcdef,jun";
-        stubReader.setMockUserInput(names);
-
-        assertThrows(IllegalArgumentException.class, () -> reader.readNames());
-    }
-
-    @Test
     @DisplayName("이동 시도 횟수 입력")
     void test3() {
         int movedCnt = 5;
