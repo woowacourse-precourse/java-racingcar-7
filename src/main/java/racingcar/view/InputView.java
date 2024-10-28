@@ -1,36 +1,35 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.constant.AppConstants;
-import racingcar.validator.InputValidator;
-import java.util.Arrays;
+import racingcar.validation.InputValidator;
+import racingcar.parser.InputParser;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class InputView {
+    private final InputValidator inputValidator;
+    private final InputParser inputParser;
+
+    public InputView() {
+        this.inputValidator = new InputValidator();
+        this.inputParser = new InputParser();
+    }
+
     public List<String> getCarNames() {
         String input = Console.readLine();
-        InputValidator.checkDelimiter(input);
+        inputValidator.checkDelimiter(input);
 
-        List<String> carNames = Arrays.stream(input.split(AppConstants.DELIMITER))
-                .map(String::trim)
-                .collect(Collectors.toList());
-
-        InputValidator.carNames(carNames);
+        List<String> carNames = inputParser.convertToCarNamesList(input);
+        inputValidator.carNames(carNames);
         return carNames;
     }
 
     public int getNumberOfAttempts() {
         String input = Console.readLine();
-        InputValidator.isNumeric(input);
+        inputValidator.isNumeric(input);
 
-        int attempts = convertToInt(input);
-        InputValidator.attemptCount(attempts);
+        int attempts = inputParser.convertToInt(input);
+        inputValidator.attemptCount(attempts);
         return attempts;
-    }
-
-    private int convertToInt(String input) {
-        return Integer.parseInt(input);
     }
 
     public void close() {
