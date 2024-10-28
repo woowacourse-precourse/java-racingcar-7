@@ -35,6 +35,10 @@ public class ValidationUtils {
         }
     }
 
+    public static boolean isAlphanumeric(String input) {
+        return input.matches("[a-zA-Z0-9]+");
+    }
+
     public static void validateTryCount(int tryCount) {
         if (tryCount <= 0 || tryCount > MAX_TRY_COUNT) {
             throw new IllegalArgumentException("이동 횟수는 1 이상 " + MAX_TRY_COUNT + " 이하의 숫자여야 합니다.");
