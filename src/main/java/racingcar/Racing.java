@@ -1,18 +1,23 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-    public void runRace(List<Car> cars) {
+    private final List<Car> cars;
+
+    public Racing(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public void runSingleRound() {
         for (Car car : cars) {
             car.moveForwardByRandom();
         }
     }
 
-    public List<Car> getWinners(List<Car> cars) {
-        int maxForwardCount = getMaxForwardCount(cars);
+    public List<Car> getWinners() {
+        int maxForwardCount = getMaxForwardCount();
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.getForwardCount() == maxForwardCount) {
@@ -23,7 +28,7 @@ public class Racing {
         return winners;
     }
 
-    private int getMaxForwardCount(List<Car> cars) {
+    private int getMaxForwardCount() {
         int maxForwardCount = 0;
         for (Car car : cars) {
             maxForwardCount = Math.max(maxForwardCount, car.getForwardCount());
