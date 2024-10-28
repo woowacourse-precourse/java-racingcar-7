@@ -18,6 +18,17 @@ public class Racing {
         int repeat = Integer.parseInt(Console.readLine());
 
         String[] racer = spliter(input);
+        int[] racerMoved = new int[racer.length];
+
+        // # 4. 생성된 랜덤수를 통한 전진여부 판단하기
+        System.out.println("실행 결과");
+        for (int i = 0; i < repeat; i++) {
+            for (int j = 0; j < racer.length; j++) {
+                if (isMove(randomGenerator())) racerMoved[j]++;
+                System.out.println(racer[j] + " : " + "-".repeat(racerMoved[j]));
+            }
+        }
+
 
     }
 
@@ -27,9 +38,12 @@ public class Racing {
     }
 
     // # 3. 무작위 값 생성하기
-    public int randomGenerator(){
-        return Randoms.pickNumberInRange(0,9);
+    public int randomGenerator() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 
+    public boolean isMove(int num) {
+        return num >= 4;
+    }
 
 }
