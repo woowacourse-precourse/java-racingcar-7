@@ -36,7 +36,6 @@ public class RacingGameController {
     }
 
     private void displayResults() {
-        outputView.displayExecutionResult();
         outputView.displayWinners(racingGame.getCarList());
     }
 
@@ -49,5 +48,4 @@ public class RacingGameController {
         outputView.inputAttemptCount();
         return inputView.inputAttemptCount();
     }
-
 }
