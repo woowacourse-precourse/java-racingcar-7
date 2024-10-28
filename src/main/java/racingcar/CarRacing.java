@@ -19,8 +19,8 @@ public class CarRacing {
 
     // 지정된 횟수만큼 각 회차별로 경주 결과를 출력하는 메서드
     public void startRace(int attempts) {
+        System.out.println("실행결과");
         for (int i = 0; i < attempts; i++) {
-            System.out.println("회차 " + (i + 1) + " 결과:");
             for (Car car : cars) {
                 car.move();
                 System.out.println(car.getName() + " : " + car.getPositionDisplay());
@@ -70,7 +70,7 @@ public class CarRacing {
     }
 
     // 최종 우승자 결정 및 출력 메서드
-    private void printWinners() {
+    public void printWinners() {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()

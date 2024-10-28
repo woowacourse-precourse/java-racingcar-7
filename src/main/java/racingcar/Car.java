@@ -28,6 +28,6 @@ public class Car {
     }
 
     public String getPositionDisplay() {
-        return name+" : "+ "-".repeat(position);
+        return "-".repeat(position);
     }
 }
