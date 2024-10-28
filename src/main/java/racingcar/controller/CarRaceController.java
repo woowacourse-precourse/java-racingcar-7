@@ -20,7 +20,7 @@ public class CarRaceController {
         this.outputView = new OutputView();
     }
 
-    private RaceInfo getRaceInfo(){
+    private RaceInfo getRaceInfo() {
         outputView.printNoticeStatementName();
         List<String> names = inputView.getNames();
         outputView.printNoticeStatementCnt();
@@ -45,5 +45,17 @@ public class CarRaceController {
         return winners;
     }
 
+    public void run() {
+        RaceInfo raceInfo = getRaceInfo();
+        List<RaceResult> raceResults = new ArrayList<>();
+        this.carRace = new CarRace(raceInfo);
 
+        while (this.carRace.checkTryCnt()) {
+            List<Car> cars = this.carRace.process();
+            raceResults.add(new RaceResult(cars));
+        }
+
+        outputView.printRaceResults(raceResults);
+        outputView.printWinner(getWinner(carRace.getCars()));
+    }
 }
