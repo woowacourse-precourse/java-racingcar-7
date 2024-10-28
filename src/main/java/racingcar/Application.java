@@ -12,6 +12,7 @@ public class Application {
 
     private static final int POSITION_UPDATE_THRESHOLD = 4;
     private static final int CAR_NAME_MAX_LENGTH = 5;
+    private static final int MINIMUM_TRY_COUNT = 1;
 
     public static void main(String[] args) {
 
@@ -121,7 +122,7 @@ public class Application {
 
     private static void validateTryCount(int tryCount) {
 
-        if(tryCount < 1) {
+        if(tryCount < MINIMUM_TRY_COUNT) {
             throw new IllegalArgumentException(TRY_COUNT_ERROR);
         }
     }
