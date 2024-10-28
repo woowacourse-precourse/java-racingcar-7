@@ -20,13 +20,13 @@ public class Car {
     public static Car from(String name) {
         return new Car(new Name(name), new Location());
     }
-    // 자동차에게 움직이라는 메세지를 전달하여 조건에 충족 시 자동차를 이동시킨다.
+
     public void move() {
         if (canMove()) {
             location.moveForward();
         }
     }
-    // 현재 자동차의 위치를 확인할 수 있다.
+
     public int getCurrentLocation() {
         return location.getLocation();
     }
