@@ -21,9 +21,7 @@ public class CarValidator {
         if (carNamesArray.length == 0) return true;
 
         return Arrays.stream(carNamesArray)
-                .anyMatch(carName -> {
-                    return carName.length() > 5 || carName.trim().isEmpty() || carName.trim().isBlank();
-                });
+                .anyMatch(carName -> carName.length() > 5 || carName.trim().isEmpty() || carName.trim().isBlank());
     }
 
     private static boolean hasInvalidCharacters(String carNames) {

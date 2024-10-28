@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.RacingGameController;
 import racingcar.model.Car;
-import racingcar.model.Cars;
-import racingcar.model.RaceRound;
 
 public class RacingGameTest {
     private static final String CAR_NAMES = "emily, tomas, gina";

@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import java.util.List;
-
 public class RaceRound {
     private final int rounds;
     private Cars thisRoundCars;
