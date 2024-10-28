@@ -8,6 +8,20 @@ import java.util.Collections;
 import java.util.List;
 
 public class Application {
+    private static final String REQUEST_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String REQUEST_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
+    private static final String ERROR_EMPTY_INPUT = "내용을 입력해주세요.";
+    private static final String ERROR_BLANK_BETWEEN_DELIMITER = "이름은 공백일 수 없습니다.";
+    private static final String ERROR_NAME_LENGTH = "자동차 이름은 5자 이하만 가능합니다.";
+    private static final String ERROR_PARSE_INT = "숫자만 입력해주세요.";
+    private static final String ERROR_POSITIVE_INT = "1 이상의 양의 정수만 입력해주세요.";
+    private static final String PRINT_RUN_RESULT_MESSAGE = "실행 결과";
+    private static final String PRINT_NAME_POSITION_SEPARATOR = " : ";
+    private static final String PRINT_POSITION_MARKER = "-";
+    private static final String PRINT_WINNER_MESSAGE = "최종 우승자 : ";
+    private static final String PRINT_WINNER_DELIMITER = ", ";
+    private static final String DELIMITER = ",";
+
     public static void main(String[] args) {
         final String[] names = getInputName();
         final int inputCount = getInputCount();
@@ -15,12 +29,11 @@ public class Application {
         final List<Car> cars = createCars(names);
 
         runRace(inputCount, cars);
-
         printWinner(cars);
     }
 
     static class Car {
-        String name;
+        final String name;
         int advance;
 
         Car(String name) {
@@ -30,39 +43,26 @@ public class Application {
     }
 
     private static String[] getInputName() {
-        final String REQUEST_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-
         System.out.println(REQUEST_NAME_MESSAGE);
         String inputName = Console.readLine();
 
         validateInputEmpty(inputName);
 
-        final String[] names = splitDelimiter(inputName);
+        final String[] names = inputName.split(DELIMITER);
 
         validateCarNames(names);
-
         validateNameLength(names);
 
         return names;
     }
 
-    public static void validateInputEmpty(String inputName) {
-        final String ERROR_EMPTY_INPUT = "내용을 입력해주세요.";
-
-        if (inputName == null || inputName.isEmpty()) {
+    private static void validateInputEmpty(String inputName) {
+        if (inputName == null || inputName.isBlank()) {
             throw new IllegalArgumentException(ERROR_EMPTY_INPUT);
         }
     }
 
-    private static String[] splitDelimiter(String inputName) {
-        final String DELIMITER = ",";
-
-        return inputName.split(DELIMITER);
-    }
-
     private static void validateCarNames(String[] names) {
-        final String ERROR_BLANK_BETWEEN_DELIMITER = "이름은 공백일 수 없습니다.";
-
         for (String name : names) {
             if (name.isBlank()) {
                 throw new IllegalArgumentException(ERROR_BLANK_BETWEEN_DELIMITER);
@@ -71,8 +71,6 @@ public class Application {
     }
 
     private static void validateNameLength(String[] names) {
-        final String ERROR_NAME_LENGTH = "자동차 이름은 5자 이하만 가능합니다.";
-
         for (String name : names) {
             if (name.length() > 5) {
                 throw new IllegalArgumentException(ERROR_NAME_LENGTH);
@@ -81,8 +79,6 @@ public class Application {
     }
 
     private static int getInputCount() {
-        final String REQUEST_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
-
         System.out.println(REQUEST_COUNT_MESSAGE);
         String input = Console.readLine();
 
@@ -92,9 +88,6 @@ public class Application {
     }
 
     private static int validateInputInteger(String input) {
-        final String ERROR_PARSE_INT = "숫자만 입력해주세요.";
-        final String ERROR_POSITIVE_INT = "1 이상의 양의 정수만 입력해주세요.";
-
         int inputCount;
 
         try {
@@ -120,22 +113,17 @@ public class Application {
     }
 
     private static void runRace(int inputCount, List<Car> cars) {
-        final String PRINT_RUN_RESULT_MESSAGE = "실행 결과";
 
         System.out.println(PRINT_RUN_RESULT_MESSAGE);
         for (int i = 0; i < inputCount; i++) {
             updateCarsAdvance(cars);
-
             printCarsPosition(cars);
         }
     }
 
     private static void printCarsPosition(List<Car> cars) {
-        final String PRINT_SEPARATOR_FORM = " : ";
-        final String PRINT_DEFAULT_MARKER = "-";
-
         for (Car car : cars) {
-            System.out.println(car.name + PRINT_SEPARATOR_FORM + PRINT_DEFAULT_MARKER.repeat(car.advance));
+            System.out.println(car.name + PRINT_NAME_POSITION_SEPARATOR + PRINT_POSITION_MARKER.repeat(car.advance));
         }
         System.out.println();
     }
@@ -151,13 +139,10 @@ public class Application {
     }
 
     private static void printWinner(List<Car> cars) {
-        final String PRINT_RESULT_FORM = "최종 우승자 : ";
-        final String PRINT_DEFAULT_DELIMITER_FROM = ", ";
-
         final List<Integer> advances = getAdvances(cars);
         final List<String> winner = getWinner(cars, advances);
 
-        System.out.println(PRINT_RESULT_FORM + String.join(PRINT_DEFAULT_DELIMITER_FROM, winner));
+        System.out.println(PRINT_WINNER_MESSAGE + String.join(PRINT_WINNER_DELIMITER, winner));
     }
 
     private static List<Integer> getAdvances(List<Car> cars) {
