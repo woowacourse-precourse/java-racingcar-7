@@ -32,7 +32,7 @@ public class Car {
     }
 
     public void moveCar(){
-        int randomVal = Randoms.pickNumberInRange(0, 10);
+        int randomVal = Randoms.pickNumberInRange(0, 9);
         if(randomVal >= 4)
             setMoveCount(this.moveCount + 1);
 
