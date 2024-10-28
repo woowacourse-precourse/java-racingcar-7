@@ -13,8 +13,8 @@ public class RacingGame {
 
     public void run() {
         List<Car> cars = new ArrayList<>();
-        initializeCars(cars, Input.inputCarNames());
-        int tryCounts = Input.inputTryCounts();
-        Output.printResult(cars, tryCounts);
+        initializeCars(cars, Reader.createCarNames());
+        int tryCounts = Reader.createTryCounts();
+        Printer.displayResult(cars, tryCounts);
     }
 }
