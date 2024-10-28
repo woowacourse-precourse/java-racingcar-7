@@ -75,6 +75,24 @@ class Function {
 		}
 	}
 
+	public static ArrayList<String> searchWinner(ArrayList<Player> playerList, int carryoutCount) {
+		ArrayList<String> winnerList = new ArrayList<String>();
+
+		for (int i = 0; i < playerList.size(); i++) {
+			if (playerList.get(i).racingProcessCount == carryoutCount) {
+				winnerList.add(playerList.get(i).name);
+				continue;
+			}
+
+			if (i == playerList.size() - 1 && winnerList.size() == 0) {
+				carryoutCount--;
+				i = -1;
+			}
+		}
+
+		return winnerList;
+	}
+
 
 
 }
