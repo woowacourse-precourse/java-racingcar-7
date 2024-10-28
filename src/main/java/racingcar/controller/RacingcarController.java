@@ -1,19 +1,23 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.gameuserdata.RacingUserData;
+import racingcar.model.FindManyMovingRacingcar;
 import racingcar.model.RacingPlayingCycle;
 import racingcar.model.RacingcarDataVerification;
 import racingcar.splitter.RacingcarSplitter;
 import racingcar.view.InputView;
 
 public class RacingcarController {
+    private final FindManyMovingRacingcar findManyMovingRacingcar;
     private final InputView inputView;
     private final RacingcarDataVerification racingcarDataVerification;
     private final RacingPlayingCycle racingPlayingCycle;
     private final RacingcarSplitter splitter;
 
     public RacingcarController() {
+        findManyMovingRacingcar = new FindManyMovingRacingcar();
         inputView = new InputView();
         racingcarDataVerification = new RacingcarDataVerification();
         racingPlayingCycle = new RacingPlayingCycle();
@@ -29,5 +33,9 @@ public class RacingcarController {
         List<RacingUserData> racingUserDataList = splitter.racingUserDataSplitter(RacingCarSplitName);
 
         racingUserDataList = racingPlayingCycle.racingPlayingCycle(RacingCount, racingUserDataList);
+
+        int ManyMoveValue = findManyMovingRacingcar.FindManyMovingLength(racingUserDataList);
+        ArrayList<String> RacingWinnerUsers = findManyMovingRacingcar.FindManyMovingCars(racingUserDataList,
+                ManyMoveValue);
     }
 }
