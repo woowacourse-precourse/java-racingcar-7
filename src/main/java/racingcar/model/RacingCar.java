@@ -8,4 +8,16 @@ public class RacingCar {
         this.position = 0;
         this.carName = carName;
     }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
 }

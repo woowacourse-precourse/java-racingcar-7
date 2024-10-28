@@ -1,7 +1,9 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.model.RacingCar;
 import racingcar.view.GameView;
 
@@ -50,5 +52,51 @@ public class GameService {
         if (inputRounds <= 0) {
             throw new IllegalArgumentException("시도 횟수는 0보다 커야합니다.");
         }
+    }
+
+    public void doGame() {
+        while (numRounds > 0) {
+            playGameByRound();
+            numRounds--;
+        }
+        getGameResult();
+    }
+
+    private void getGameResult() {
+        int maxPosition = getMaxPosition(racingCars);
+        List<String> winners = determineWinner(racingCars, maxPosition);
+        gameView.displayWinner(winners);
+    }
+
+    private List<String> determineWinner(List<RacingCar> racingCars, int maxPosition) {
+        return racingCars.stream()
+            .filter(racingCar -> racingCar.getPosition() == maxPosition)
+            .map(RacingCar::getCarName)
+            .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition(List<RacingCar> racingCars) {
+        return racingCars.stream()
+            .mapToInt(RacingCar::getPosition)
+            .max()
+            .orElse(0);
+    }
+
+    private void playGameByRound() {
+        for (RacingCar racingCar : racingCars) {
+            int randomNum = generateCarRandomNum(racingCar);
+            determineCarMove(randomNum, racingCar);
+        }
+        gameView.displayCurrentRound(racingCars);
+    }
+
+    private void determineCarMove(int randomNum, RacingCar racingCar) {
+        if (randomNum >= 4) {
+            racingCar.setPosition(racingCar.getPosition() + 1);
+        }
+    }
+
+    private int generateCarRandomNum(RacingCar racingCar) {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
