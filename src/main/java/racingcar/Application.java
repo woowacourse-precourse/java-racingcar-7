@@ -18,13 +18,11 @@ class Car{
     public String getNow(){
         return this.name;
     }
-
     public void move(int value){
         if(value>=4){
             now++;
         }
     }
-
     public String printNow(){
         return name+" : "+"-".repeat(now);
     }
@@ -33,13 +31,14 @@ public class Application {
     private static List<Car> cars = new ArrayList<>();
     private static int count = 0;
 
-    public static void checkName(List<String> names){
+    public static void checkNameDuplicate(List<String> names) {
         // 예외처리 : 자동차 이름이 같을 경우
         Set<String> uniqueNames = Set.copyOf(names);
-        if(uniqueNames.size() != names.size()){
+        if (uniqueNames.size() != names.size()) {
             throw new IllegalArgumentException("자동차 이름은 중복되지 않아야 합니다.");
         }
-
+    }
+    public static void checkNameLength(List<String> names){
         // 예외처리 : 자동차 이름의 길이가 5글자를 초과하는 경우
         for(String name:names){
             if(name.length()>5){
@@ -63,17 +62,15 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-
         // 1. 자동차 이름 입력
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> carNames = List.of(Console.readLine().split(","));
-        checkName(carNames);  // 예외처리
+        checkNameDuplicate(carNames);
+        checkNameLength(carNames);
 
         // 2. 시도할 횟수 입력
         System.out.println("시도할 횟수는 몇 회인가요?");
         count = Integer.parseInt(Console.readLine());
-
         System.out.println("\n실행결과");
 
         // 3. 경주 시행
@@ -83,7 +80,8 @@ public class Application {
             count--;
         }
 
-        // 4. 출력
+        // 4. 우승자 출력
+
 
     }
 }
