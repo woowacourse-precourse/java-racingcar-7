@@ -38,13 +38,19 @@ public class RacingCar {
     }
 
     public static void printRacing(String attemptCount, List<Car> carArray) {
-        System.out.println("\n실행 결과");
-        for(int i = 0; i < Integer.parseInt(attemptCount); i++) {
-            for(Car car : carArray) {
-                car.move();
-                System.out.println(car.getName()+" : " + "-".repeat(car.getMoveCount()));
+        try {
+            int count = Integer.parseInt(attemptCount);
+
+            System.out.println("\n실행 결과");
+            for(int i = 0; i < count; i++) {
+                for(Car car : carArray) {
+                    car.move();
+                    System.out.println(car.getName()+" : " + "-".repeat(car.getMoveCount()));
+                }
+                System.out.println();
             }
-            System.out.println();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
         }
     }
 
