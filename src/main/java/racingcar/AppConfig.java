@@ -6,7 +6,7 @@ import racingcar.domain.RandomMoveStrategy;
 
 public class AppConfig {
     public RacingCarList racingCarList() {
-        return new RacingCarList(new ArrayList<>(), randomMoveStrategy());
+        return new RacingCarList(randomMoveStrategy());
     }
 
     public RandomMoveStrategy randomMoveStrategy() {

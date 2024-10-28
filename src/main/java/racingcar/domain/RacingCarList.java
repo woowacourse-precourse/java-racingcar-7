@@ -5,16 +5,15 @@ import java.util.List;
 import racingcar.exception.InvalidCarNameException;
 
 public class RacingCarList {
-    private final List<RacingCar> racingCars;
+    private final List<RacingCar> racingCars = new ArrayList<>();
     private final MoveStrategy moveStrategy;
 
-    public RacingCarList(List<RacingCar> racingCars, MoveStrategy moveStrategy) {
-        this.racingCars = racingCars;
+    public RacingCarList(MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
     }
 
     public void moveAllCars() {
-        for (RacingCar racingCar:racingCars) {
+        for (RacingCar racingCar : racingCars) {
             racingCar.checkMoveForwardAndMove(moveStrategy);
         }
     }
@@ -41,7 +40,7 @@ public class RacingCarList {
         int maxPosition = getMaxPosition();
         List<String> winners = new ArrayList<>();
 
-        for (RacingCar racingCar:racingCars) {
+        for (RacingCar racingCar : racingCars) {
             if(racingCar.getPosition()==maxPosition) {
                 winners.add(racingCar.getName());
             }
@@ -54,7 +53,7 @@ public class RacingCarList {
     private int getMaxPosition() {
         int maxPosition = 0;
 
-        for (RacingCar racingCar:racingCars) {
+        for (RacingCar racingCar : racingCars) {
             int position = racingCar.getPosition();
             if(maxPosition <=position) {
                 maxPosition = position;
@@ -66,7 +65,7 @@ public class RacingCarList {
 
     public List<RacingCarStatus> getRacingCarsStatus() {
         List<RacingCarStatus> racingCarsStatus = new ArrayList<>();
-        for(RacingCar racingCar:racingCars) {
+        for(RacingCar racingCar : racingCars) {
             racingCarsStatus.add(new RacingCarStatus(racingCar.getName(),racingCar.getPosition()));
         }
         return racingCarsStatus;

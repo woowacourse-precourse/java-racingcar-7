@@ -20,7 +20,7 @@ class RacingCarListTest {
         //given
         String newCarName = "pobi";
         MoveStrategy moveStrategy = new RandomMoveStrategy();
-        RacingCarList racingCarList = new RacingCarList(racingCars, moveStrategy);
+        RacingCarList racingCarList = new RacingCarList(moveStrategy);
         //when
         racingCarList.addRacingCar(newCarName);
         String name = racingCarList.getRacingCars().getFirst().getName();
@@ -32,7 +32,7 @@ class RacingCarListTest {
     void 중복된_자동차_이름_생성시_예외_발생() {
         //given
         MoveStrategy moveStrategy = new RandomMoveStrategy();
-        RacingCarList racingCarList = new RacingCarList(racingCars, moveStrategy);
+        RacingCarList racingCarList = new RacingCarList(moveStrategy);
         racingCarList.addRacingCar("pobi");
 
         //when, then
@@ -43,7 +43,7 @@ class RacingCarListTest {
     void 모든_자동차의_이동_전략이_참일때_전진한다() {
         //given
         MoveStrategy moveStrategy = () -> true;
-        RacingCarList racingCarList = new RacingCarList(racingCars, moveStrategy);
+        RacingCarList racingCarList = new RacingCarList(moveStrategy);
         racingCarList.addRacingCar("pobi");
         racingCarList.addRacingCar("pobi2");
 
@@ -61,7 +61,7 @@ class RacingCarListTest {
     void 모든_자동자_상태_반환() {
         //given
         MoveStrategy moveStrategy = () -> true;
-        RacingCarList racingCarList = new RacingCarList(racingCars, moveStrategy);
+        RacingCarList racingCarList = new RacingCarList(moveStrategy);
         racingCarList.addRacingCar("pobi");
         racingCarList.moveAllCars();
 
@@ -78,7 +78,7 @@ class RacingCarListTest {
     void 우승자_찾기() {
         //given
         MoveStrategy moveStrategy = () -> true;
-        RacingCarList racingCarList = new RacingCarList(racingCars, moveStrategy);
+        RacingCarList racingCarList = new RacingCarList(moveStrategy);
         racingCarList.addRacingCar("pobi");
         racingCarList.moveAllCars();
 
