@@ -34,16 +34,24 @@ public class CarService {
     }
 
     public void saveCars(List<CarCreateReqDto> createReqDtos) {
-        List<Car> cars = createReqDtos.stream()
+        List<Car> cars = getCarsFrom(createReqDtos);
+        isLessThanOrEqualToMaxSize(cars);
+        carRepository.saveAll(cars);
+    }
+
+    private List<Car> getCarsFrom(List<CarCreateReqDto> createReqDtos) {
+        return createReqDtos.stream()
                 .map(carCreateReqDto -> {
-                    isValidName(carCreateReqDto.getCarName());
+                    isLessThanOrEqualToMaxNameLength(carCreateReqDto.getCarName());
                     return Car.from(carCreateReqDto);
                 })
                 .toList();
+    }
+
+    private void isLessThanOrEqualToMaxSize(List<Car> cars) {
         if (cars.size() > MAX_CAR.getNumber()) {
             throw new IllegalArgumentException(ErrorStatus.OVER_HUNDRED_CAR.getMessage());
         }
-        carRepository.saveAll(cars);
     }
 
     public List<CarMoveRespDto> moveCars() {
@@ -66,15 +74,15 @@ public class CarService {
                 .toList();
     }
 
-    private void isValidName(String name) {
-		if (name.length() > MAX_CAR_NAME_LENGTH.getNumber()) {
-			throw new IllegalArgumentException(ErrorStatus.CAR_NAME_RANGE.getMessage());
-		}
+    private void isLessThanOrEqualToMaxNameLength(String name) {
+        if (name.length() > MAX_CAR_NAME_LENGTH.getNumber()) {
+            throw new IllegalArgumentException(ErrorStatus.CAR_NAME_RANGE.getMessage());
+        }
     }
 
-    public void isPossibleCount(Integer count) {
-		if (count > MAX_COUNT.getNumber() || count < MIN_COUNT.getNumber()) {
-			throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
-		}
+    public void isInValidRangeCount(Integer count) {
+        if (count > MAX_COUNT.getNumber() || count < MIN_COUNT.getNumber()) {
+            throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
+        }
     }
 }

@@ -38,7 +38,7 @@ public class CarController {
 
     public void moveCars() {
         Integer count = inputView.readCountInput();
-        carService.isPossibleCount(count);
+        carService.isInValidRangeCount(count);
         while (count-- > 0) {
             List<CarMoveRespDto> results = carService.moveCars();
             outputView.printMoveResults(results);

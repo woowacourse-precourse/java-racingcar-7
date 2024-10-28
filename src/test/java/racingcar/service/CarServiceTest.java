@@ -96,7 +96,7 @@ public class CarServiceTest {
         Integer count = 0;
 
         // WHEN - THEN
-        assertThatThrownBy(() -> carService.isPossibleCount(count)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> carService.isInValidRangeCount(count)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -106,6 +106,6 @@ public class CarServiceTest {
         Integer count = 10000;
 
         // WHEN - THEN
-        assertThatThrownBy(() -> carService.isPossibleCount(count)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> carService.isInValidRangeCount(count)).isInstanceOf(IllegalArgumentException.class);
     }
 }
