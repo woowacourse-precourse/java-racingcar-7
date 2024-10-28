@@ -1,14 +1,28 @@
 package racingcar.util;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 
 class GameManagerTest {
+
+    @Test
+    void setCars() {
+        GameManager gameManager = new GameManager();
+        String input = "CarA,CarB,CarC";
+        ArrayList<Car> cars = gameManager.setCars(input);
+
+        assertThat(cars).hasSize(3);
+        assertThat(cars).extracting("name").containsExactlyInAnyOrder("CarA", "CarB", "CarC");
+        assertThat(cars).extracting("distance").containsExactlyInAnyOrder(0, 0, 0);
+    }
+
 
     @Test
     void getWinner() {
@@ -26,11 +40,5 @@ class GameManagerTest {
         winners = gameManager.getWinner(cars);
         assertThat(winners).hasSize(2);
         assertThat(winners).extracting("name").containsExactlyInAnyOrder("Car C", "Car D");
-    }
-
-
-    @Test
-    void playOneTime() {
-
     }
 }

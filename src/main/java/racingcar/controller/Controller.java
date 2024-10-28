@@ -10,10 +10,9 @@ import racingcar.view.OutputView;
 
 public class Controller {
 
-    private ArrayList<Car> cars = new ArrayList<>();
+    private ArrayList<Car> cars;
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
-    Saparator saparator = new Saparator(",");
     GameManager gameManager = new GameManager();
 
     public void start() {
@@ -24,15 +23,7 @@ public class Controller {
 
     public void setCars() {
         String input = inputView.getCarNames();
-
-
-        String[] carNames = saparator.split(input);
-
-        for (String name : carNames) {
-            Validator.validateLengthUpTo5(name);
-            Validator.validateEmpty(name);
-            cars.add(new Car(name));
-        }
+        cars = gameManager.setCars(input);
     }
 
     public void playGame() {
