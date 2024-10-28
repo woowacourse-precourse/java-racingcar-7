@@ -11,7 +11,7 @@ public class CarRacingGame {
     private List<Car> cars = new ArrayList<>();
 
     // 자동차 이름을 파싱하여 반환
-    public List<String> parseCarNames(String input) {
+    public static List<String> parseCarNames(String input) {
         return Arrays.stream(input.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
