@@ -2,7 +2,7 @@ package racingcar.application.service;
 
 import java.util.List;
 import racingcar.persistence.InMemoryRacingCarRepository;
-import racingcar.RacingCar;
+import racingcar.racing.RacingCar;
 import racingcar.application.RacingManager;
 
 public class RacingCarManager implements RacingManager<RacingCar> {

@@ -1,6 +1,4 @@
-package racingcar;
-
-import racingcar.racing.Racer;
+package racingcar.racing;
 
 public class RacingCar extends Racer {
 

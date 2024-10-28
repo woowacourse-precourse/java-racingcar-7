@@ -2,7 +2,7 @@ package racingcar.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.RacingCar;
+import racingcar.racing.RacingCar;
 
 public class InMemoryRacingCarRepository {
 

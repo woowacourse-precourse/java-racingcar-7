@@ -3,7 +3,7 @@ package racingcar.common;
 import racingcar.persistence.InMemoryRacingCarRepository;
 import racingcar.application.Converter;
 import racingcar.application.Game;
-import racingcar.RacingCar;
+import racingcar.racing.RacingCar;
 import racingcar.application.service.RacingCarConverter;
 import racingcar.application.service.RacingCarGame;
 import racingcar.application.service.RacingCarManager;

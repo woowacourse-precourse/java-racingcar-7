@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.application.service.RacingCarConverter;
+import racingcar.racing.RacingCar;
 
 class RacingCarConverterTest {
 

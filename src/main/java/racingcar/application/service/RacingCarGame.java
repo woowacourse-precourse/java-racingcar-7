@@ -1,7 +1,7 @@
 package racingcar.application.service;
 
 import java.util.List;
-import racingcar.RacingCar;
+import racingcar.racing.RacingCar;
 import racingcar.application.Converter;
 import racingcar.application.Game;
 import racingcar.application.RacingManager;
