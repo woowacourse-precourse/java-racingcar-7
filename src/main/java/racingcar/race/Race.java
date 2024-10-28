@@ -12,6 +12,9 @@ public class Race {
 		Cars cars = new Cars(players);
 
 		int totalRound = readRound();
+		for (int round = 0; round < totalRound; round++) {
+			cars.run();
+		}
 	}
 
 	private String[] readPlayers() {
