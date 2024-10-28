@@ -11,6 +11,7 @@ public class Validator {
     private static final int CAR_NAME_MAX_LENGTH = 5;
 
     public static void validateCarNames(List<String> carNames) {
+        validateCarNameEmpty(carNames);
         validateCarNameFormat(carNames);
         validateDuplicatedCarName(carNames);
     }
@@ -21,13 +22,16 @@ public class Validator {
     }
 
     private static void validateCarNameFormat(List<String> carNames) {
-        if (carNames.isEmpty()) {
-            throw new CarNameFormatException("null");
-        }
         for (String carName : carNames) {
             if (carName == null || carName.isBlank() || carName.length() > CAR_NAME_MAX_LENGTH) {
                 throw new CarNameFormatException(carName);
             }
+        }
+    }
+
+    private static void validateCarNameEmpty(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new CarNameFormatException("null");
         }
     }
 
