@@ -10,8 +10,14 @@ public class Application {
             String carNamesInput = Console.readLine();
             String[] carNames = validateCarNames(carNamesInput);
             
+            // 이동 횟수 입력
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            int numberOfAttempts = Integer.parseInt(Console.readLine());
+
             // 자동차 이동
-            moveCars(carNames);
+            for (int i = 0; i < numberOfAttempts; i++) {
+                moveCars(carNames);
+            }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
