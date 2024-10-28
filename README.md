@@ -12,8 +12,9 @@ Service : RacingGame <br>
 
 
 Repository, Domain : Cars, Car<br>
-현재는 List<Car>로 구현하지만 DB로 변경할 수 있도록 설계
-Car : 이름, 위치, move 메서드를 포함
+현재는 List<Car>로 구현하지만 DB로 변경할 수 있도록 설계 <br>
+Car : 이름, 위치, move 메서드를 포함 <br>
+ListRepository : 싱글톤으로 구현
 
 # 기능
 1. 자동차 이름 입력
