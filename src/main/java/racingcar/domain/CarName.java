@@ -7,6 +7,7 @@ public class CarName {
 
     private static final int MIN_CAR_COUNT = 2;
     private static final int MAX_CAR_COUNT = 10;
+
     private final List<String> carNames;
 
     public CarName(List<String> carNames) {
@@ -23,25 +24,37 @@ public class CarName {
 
     private void isNameLengthValid() {
         for (String carName : carNames) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("이름의 길이가 5이하만 가능합니다.");
-            }
+            checkCarNameLength(carName);
+        }
+    }
+
+    private void checkCarNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("이름의 길이가 5이하만 가능합니다.");
         }
     }
 
     private void isNameNotEmpty() {
         for (String carName : carNames) {
-            if (carName == null || carName.trim().isEmpty()) {
-                throw new IllegalArgumentException("이름이 비어있습니다.");
-            }
+            checkCarNameEmpty(carName);
+        }
+    }
+
+    private void checkCarNameEmpty(String carName) {
+        if (carName == null || carName.trim().isEmpty()) {
+            throw new IllegalArgumentException("이름이 비어있습니다.");
         }
     }
 
     private void isNameDuplicate() {
         for (String carName : carNames) {
-            if (Collections.frequency(carNames, carName) > 1) {
-                throw new IllegalArgumentException("이름이 중복되었습니다.");
-            }
+            checkCarNameDuplicate(carName);
+        }
+    }
+
+    private void checkCarNameDuplicate(String carName) {
+        if (Collections.frequency(carNames, carName) > 1) {
+            throw new IllegalArgumentException("이름이 중복되었습니다.");
         }
     }
 
