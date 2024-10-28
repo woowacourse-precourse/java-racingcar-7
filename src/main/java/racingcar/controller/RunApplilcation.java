@@ -14,10 +14,10 @@ public class RunApplilcation {
 
     public void runAppliccation() {
         InputView inputView=new InputView();
+        OutputView outputView=new OutputView();
+
         carList=inputView.inputCarList();
-        tryNumber = inputView.inputRound();
-        TryNumberException tryNumberException = new TryNumberException();
-        tryNumberException.tryNumberException(tryNumber);
+        tryNumber = inputView.inputTryNumber();
 
         Race race=new Race();
         race.nRoundGame(tryNumber,carList);
@@ -25,7 +25,6 @@ public class RunApplilcation {
         CalculateWinner calculateWinner=new CalculateWinner();
         String winnerNames=calculateWinner.calculateWinner(carList);
 
-        OutputView outputView=new OutputView();
         outputView.printWinner(winnerNames);
     }
 }

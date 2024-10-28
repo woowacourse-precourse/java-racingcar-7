@@ -5,35 +5,32 @@ import racingcar.exception.NameException;
 import racingcar.exception.TryNumberException;
 import racingcar.model.Car;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 
 public class InputView {
     public List<Car> inputCarList () {
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
-        String carName = Console.readLine();
-        return divideCar(carName);
+        String carNames = Console.readLine();
+        return Arrays.stream(carNames.split(","))
+                .map(this::createCarWithNameCheck)  // 예외 체크용 메서드로 이름 검증
+                .collect(Collectors.toList());
     }
 
-    public int inputRound(){
+    private Car createCarWithNameCheck(String name) {
+        NameException nameException=new NameException();
+        nameException.nameException(name);
+        return new Car(name);
+    }
+
+    public int inputTryNumber(){
         System.out.println("시도할 횟수는 몇회인가요?");
-        return Integer.parseInt(Console.readLine());
-    }
-
-    public List<Car> divideCar(String carName){
-        List<Car> carList=new ArrayList<>();
-        String[] carNames = carName.split(",");
-        for (String name : carNames) {
-            NameException nameException=new NameException();
-            nameException.nameException(name);
-        }
-        for (String name : carNames) {
-            carList.add(new Car(name));
-        }
-
-        return carList;
+        int tryNumber= Integer.parseInt(Console.readLine());
+        TryNumberException tryNumberException=new TryNumberException();
+        tryNumberException.tryNumberException(tryNumber);
+        return tryNumber;
     }
 
 }
