@@ -8,6 +8,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -140,6 +142,17 @@ class ApplicationTest extends NsTest {
         System.setOut(System.out);
 
         assertThat(outputStream.toString()).contains("Car-1 : --", "Car-2 : -", "Car-3 : ");
+    }
+
+    @Test
+    void getWinnerList_우승자_선정_테스트() {
+        String[] carNames = {"Car-1", "Car-2", "Car-3"};
+        application.initializeCarPositions(carNames);
+
+        application.moveCarForward("Car-1");
+        application.moveCarForward("Car-2");
+
+        assertThat(application.getWinnerList()).contains("Car-1", "Car-2");
     }
 
     @Override
