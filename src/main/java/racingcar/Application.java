@@ -14,21 +14,28 @@ import racingcar.validator.CarNameValidator;
 import racingcar.validator.RoundValidator;
 import racingcar.validator.Validator;
 import racingcar.validator.ValidatorFacade;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+import racingcar.view.ViewFacade;
 
 public class Application {
     public static void main(String[] args) {
-        MoveStrategy moveStrategy = new CarMoveStrategy();
         InputParser inputParser = new InputSplitter();
+
+        MoveStrategy moveStrategy = new CarMoveStrategy();
         Generator<Integer> generator = new IntegerGenerator();
+        RacingService racingService = new RacingService(moveStrategy, generator);
 
         Validator<String> carNameValidator = new CarNameValidator();
         Validator<String> roundValidator = new RoundValidator();
         Validator<CarNames> carCountValidator = new CarCountValidator();
         ValidatorFacade validatorFacade = new ValidatorFacade(carNameValidator, roundValidator, carCountValidator);
 
-        RacingService racingService = new RacingService(moveStrategy, generator);
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+        ViewFacade viewFacade = new ViewFacade(inputView, outputView);
 
-        CarController carController = new CarController(racingService, validatorFacade, inputParser);
+        CarController carController = new CarController(racingService, validatorFacade, inputParser, viewFacade);
 
         carController.play();
     }

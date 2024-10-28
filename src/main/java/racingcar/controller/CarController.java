@@ -7,27 +7,24 @@ import racingcar.model.Cars;
 import racingcar.service.RacingService;
 import racingcar.util.parser.InputParser;
 import racingcar.validator.ValidatorFacade;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.view.ViewFacade;
 
 public class CarController {
     private final RacingService racingService;
     private final ValidatorFacade validatorFacade;
     private final InputParser inputParser;
-    private final InputView inputView;
-    private final OutputView outputView;
+    private final ViewFacade viewFacade;
 
     public CarController(RacingService racingService, ValidatorFacade validatorFacade,
-                         InputParser inputParser) {
+                         InputParser inputParser, ViewFacade viewFacade) {
         this.racingService = racingService;
         this.validatorFacade = validatorFacade;
         this.inputParser = inputParser;
-        this.inputView = InputView.getInstance();
-        this.outputView = OutputView.getInstance();
+        this.viewFacade = viewFacade;
     }
 
     public void play() {
-        String carNamesInput = inputView.getCarNames();
+        String carNamesInput = viewFacade.getCarNames();
 
         // 입력 파싱 및 개별 이름 유효성 검사
         CarNames names = inputParser.parse(carNamesInput);
@@ -37,7 +34,7 @@ public class CarController {
 
         validatorFacade.validateCarCount(names);
 
-        String countInput = inputView.getCount();
+        String countInput = viewFacade.getCount();
 
         // 라운드 수 유효성 검사
         validatorFacade.validateRoundCount(countInput);
@@ -46,13 +43,13 @@ public class CarController {
         // 유효성 검사를 통과한 경우 게임 시작
         Cars cars = racingService.initializeCars(names);
 
-        outputView.showResultMessage();
+        viewFacade.showResultMessage();
         // 각 라운드 결과 표시
         for (int i = 0; i < count; i++) {
             racingService.playRound(cars); // 매 라운드 진행
-            outputView.showRoundResult(cars); // 매 라운드 결과 표시
+            viewFacade.showRoundResult(cars); // 매 라운드 결과 표시
         }
         List<Car> winners = cars.getWinners();
-        outputView.showWinners(winners);
+        viewFacade.showWinners(winners);
     }
 }
