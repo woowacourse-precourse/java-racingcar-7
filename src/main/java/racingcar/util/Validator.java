@@ -31,4 +31,16 @@ public class Validator {
             }
         }
     }
+
+    public void checkNullName(String input) {
+        List<String> nameList = Arrays.stream(input.split(",")).map(String::strip).toList();
+        for(String name : nameList) {
+            if(name.length() == 5) {
+                throw new IllegalArgumentException("이름은 공백이 될 수 없습니다.");
+            }
+        }
+    }
+
+    
+
 }

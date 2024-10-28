@@ -18,8 +18,8 @@
   - [ ] 우승자 배열을 가지고 우승자를 출력해준다.
 - 예외처리
   - [x] 자동차 이름에 중복이 있으면 `IllegalArgumentException`을 발생시킨다.
-  - [ ] 자동차 이름이 5자를 넘으면 `IllegalArgumentException`을 발생시킨다.
-  - [ ] 자동차 이름이 빈칸이면 `IllegalArgumentException`을 발생시킨다.
+  - [x] 자동차 이름이 5자를 넘으면 `IllegalArgumentException`을 발생시킨다.
+  - [x] 자동차 이름이 빈칸이면 `IllegalArgumentException`을 발생시킨다.
   - [x] 입력에 ',', 영어, 숫자, 한글 이외에 다른 입력이 들어오면 `IllegalArgumentException`을 발생시킨다.
   - [ ] 자동차 갯수가 2대 미만이면 `IllegalArgumentException`을 발생시킨다.
   - [ ] 시도 횟수가 1 미만이면 `IllegalArgumentException`을 발생시킨다.
