@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.MovingStrategy;
 import racingcar.domain.race.Race;
+import racingcar.domain.result.RoundResult;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -22,8 +23,12 @@ public class RaceController {
         List<Car> cars = createCars(carNames);
 
         Race race = new Race(cars, totalRounds);
-        List<Car> winners = race.raceStart();
 
+        for (RoundResult roundResult : race.raceStart()) {
+            OutputView.printRoundResults(roundResult.getCars());
+        }
+
+        List<Car> winners = race.decideWinners();
         OutputView.printWinners(winners);
     }
 

@@ -41,13 +41,14 @@ class RaceTest {
 
     @DisplayName("전체 경주가 끝나면 최종 우승자가 결정된다.")
     @Test
-    void raceStart_decidesWinner() {
+    void raceStart() {
         // given
         int totalRounds = 3;
         Race race = new Race(cars, totalRounds);
 
         // when
-        List<Car> winners = race.raceStart();
+        race.raceStart();
+        List<Car> winners = race.decideWinners();
 
         // then
         //항상 전진하는 Car1과 Car2 공동 우승

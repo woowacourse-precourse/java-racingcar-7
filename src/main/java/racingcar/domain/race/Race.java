@@ -1,10 +1,11 @@
 package racingcar.domain.race;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import racingcar.domain.car.Car;
-import racingcar.view.OutputView;
+import racingcar.domain.result.RoundResult;
 
 public class Race {
     private final List<Car> cars;
@@ -25,22 +26,23 @@ public class Race {
         }
     }
 
-    public List<Car> raceStart() {
+    public List<RoundResult> raceStart() {
+        List<RoundResult> roundResults = new ArrayList<>();
         for (int i = 0; i < totalRounds; i++) {
             runOneRound();
+            roundResults.add(new RoundResult(new ArrayList<>(cars)));
         }
 
-        return decideWinners();
+        return roundResults;
     }
 
     public void runOneRound() {
         for (Car car : cars) {
             car.oneRoundStart();
-            OutputView.printRoundResults(cars);
         }
     }
 
-    private List<Car> decideWinners() {
+    public List<Car> decideWinners() {
         Car leadingCar = findLeadingCar();
         return cars.stream()
                 .filter(car -> car.isSamePositionAs(leadingCar))
