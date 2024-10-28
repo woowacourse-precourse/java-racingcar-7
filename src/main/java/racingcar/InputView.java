@@ -15,7 +15,9 @@ public class InputView {
 
     public static int inputTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String trycount = Console.readLine();
+        String trycount = Console.readLine().trim();
+        validateEmpty(trycount);
+        validateNumber(trycount);
         return Integer.parseInt(trycount);
     }
 
@@ -32,6 +34,12 @@ public class InputView {
 
         if (nameCount != names.size()) {
             throw new IllegalArgumentException("중복된 이름이 있습니다.");
+        }
+    }
+
+    private static void validateNumber(String input) {
+        if (!input.matches("\\d+")) {
+            throw new IllegalArgumentException("양수를 입력해주세요.");
         }
     }
 }
