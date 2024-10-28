@@ -11,8 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingGameTest {
 
     @Test
-    @DisplayName("우승자가 한 명일 때 올바르게 반환되는지 테스트한다")
-    void 우승자가_한명일_때_올바르게_반환된다() {
+    void 기능_테스트_우승자_한명() {
         List<String> carNames = Arrays.asList("car1", "car2", "car3");
         RacingGame game = new RacingGame(carNames, 5);
 
@@ -29,8 +28,7 @@ public class RacingGameTest {
     }
 
     @Test
-    @DisplayName("우승자가 여러 명일 때 올바르게 반환되는지 테스트한다")
-    void 우승자가_여러명일_때_올바르게_반환된다() {
+    void 기능_테스트_우승자_여러명() {
         List<String> carNames = Arrays.asList("car1", "car2", "car3");
         RacingGame game = new RacingGame(carNames, 5);
 
@@ -46,7 +44,6 @@ public class RacingGameTest {
         assertThat(winners).containsExactlyInAnyOrder("car1", "car2");
     }
 
-    // Reflection을 사용하여 Car의 position을 설정하는 헬퍼 메서드
     private void setCarPosition(Car car, int position) {
         try {
             java.lang.reflect.Field field = Car.class.getDeclaredField("position");
