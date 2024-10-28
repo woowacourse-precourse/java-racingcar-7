@@ -43,28 +43,34 @@ public class Application {
             throw new IllegalArgumentException("숫자만 입력가능합니다.");
         }
 
-        // 기능 요구 사항
-        ArrayList<Integer> numOfGo = new ArrayList<>();
-        int j = 0;
-        int lengthOfNames = names.length;
-        for (j = 0; j < lengthOfNames; j++) {
-            int i = 0;
-            int go = 0;
-            for (i = 0; i < repeat; i++) {
-                int random = Randoms.pickNumberInRange(0, 9);
-                if (random >= 4) {
-                    go += 1;
-                }
-            }
-            numOfGo.add(go);
-        }
-
-        // 출력 요구 사항
+        // 출력 요구 사항 1-1
         System.out.println("");
         System.out.println("실행 결과");
 
-        for(String name : names){
-            System.out.println(name + " : ");
+        // 기능 요구 사항
+        int lengthOfNames = names.length;
+
+        ArrayList<Integer> numOfGo = new ArrayList<>();
+        for (int i = 0; i < lengthOfNames; i++) {
+            numOfGo.add(0);
+        }
+
+        ArrayList<String> status = new ArrayList<>();
+        for (int i = 0; i < lengthOfNames; i++) {
+            status.add("");
+        }
+
+        for (int j = 0; j < repeat; j++) {
+            for (int i = 0; i < lengthOfNames; i++) {
+                System.out.print(names[i] + " : ");
+                int random = Randoms.pickNumberInRange(0, 9);
+                if (random >= 4) {
+                    status.set(i, status.get(i) + "-");
+                    numOfGo.set(i, numOfGo.get(i) + 1);
+                }
+                System.out.println(status.get(i));
+            }
+            System.out.println("");
         }
 
         System.out.println("최종 우승자 : ");
