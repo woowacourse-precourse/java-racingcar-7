@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,21 +9,8 @@ import racingcar.model.CarScores;
 import racingcar.model.Distance;
 import racingcar.view.OutputView;
 
-public class RaceService {
+public class RaceWinnerService {
     private static final int INIT_MAX_TO_ZERO = 0;
-
-    public static CarScores playGame(CarScores previousCarScores) {
-        LinkedHashMap<CarName, Distance> nowScores = new LinkedHashMap<>();
-
-        for (Map.Entry<CarName, Distance> nowCarScore : previousCarScores.getCarScores().entrySet()) {
-            int randomNumber = getRandomNumber();
-            Distance newDistance = moveOrStop(nowCarScore.getValue(), randomNumber);
-            nowScores.put(nowCarScore.getKey(), newDistance);
-            OutputView.printNowCarScore(nowCarScore.getKey(), newDistance);
-        }
-
-        return new CarScores(nowScores);
-    }
 
     public static void findLastWinner(CarScores carScores) {
         int max = INIT_MAX_TO_ZERO;
@@ -43,17 +29,6 @@ public class RaceService {
                 .collect(Collectors.toList());
 
         OutputView.printFinalWinner(lastWinners);
-    }
-
-    private static int getRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
-    }
-
-    private static Distance moveOrStop(Distance previousDistance, int randomNumber) {
-        if (randomNumber >= 4 && randomNumber <= 9) {
-            return new Distance(previousDistance.move(randomNumber));
-        }
-        return previousDistance;
     }
 
     private static int getNewMax(int max, int nowScore) {

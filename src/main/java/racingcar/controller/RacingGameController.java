@@ -2,7 +2,8 @@ package racingcar.controller;
 
 import racingcar.model.CarScores;
 import racingcar.model.RaceCount;
-import racingcar.service.RaceService;
+import racingcar.service.RaceWinnerService;
+import racingcar.service.RoundRaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,10 +17,10 @@ public class RacingGameController {
 
         OutputView.printExecutionResult();
         for (int nowRaceTurn = 0; nowRaceTurn < raceCount.getValue(); nowRaceTurn++) {
-            carScores = RaceService.playGame(carScores);
+            carScores = RoundRaceService.playGame(carScores);
             System.out.println();
         }
 
-        RaceService.findLastWinner(carScores);
+        RaceWinnerService.findLastWinner(carScores);
     }
 }
