@@ -69,6 +69,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 공백입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, java", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
