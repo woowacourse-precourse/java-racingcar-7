@@ -13,6 +13,7 @@ public class Application {
         List<StringBuilder> raceResults = initializeRaceResults(carNames);
 
         runRace(attempts, carNames, raceResults);
+        determineWinners(carNames, raceResults);
     }
 
     private static void runRace(int attempts, String[] carNames, List<StringBuilder> raceResults) {
@@ -31,6 +32,32 @@ public class Application {
                 nowRaceCarResult.append("-");
             }
             System.out.println(carNames[i] + " : " + nowRaceCarResult);
+        }
+    }
+
+    private static void determineWinners(String[] carNames, List<StringBuilder> raceResults) {
+        List<String> winners = new ArrayList<>();
+        int maxDistance = 0;
+
+        for (StringBuilder result : raceResults) {
+            if (result.length() > maxDistance) {
+                maxDistance = result.length();
+            }
+        }
+
+        for (int i = 0; i < raceResults.size(); i++) {
+            if (raceResults.get(i).length() == maxDistance) {
+                winners.add(carNames[i]);
+            }
+        }
+
+        displayWinners(winners);
+    }
+
+    private static void displayWinners(List<String> winners) {
+        System.out.print("최종 우승자 : ");
+        for (String winner : winners) {
+            System.out.print(winner + ",");
         }
     }
 
