@@ -38,4 +38,8 @@ public class RacingGame {
 
         return winners;
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
