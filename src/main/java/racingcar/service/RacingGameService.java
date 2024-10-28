@@ -8,12 +8,13 @@ import racingcar.model.RacingGame;
 public class RacingGameService {
     private RacingGame racingGame;
 
-    public void startGame(String carNames, int rounds) {
+    public void startGame(String carNames, String rounds) {
         validateCarNames(carNames);
-        validateRounds(rounds);
+        int parsedRounds = parseRounds(rounds);
+        validateRounds(parsedRounds);
 
         List<Car> cars = createCars(carNames);
-        racingGame = new RacingGame(cars, rounds);
+        racingGame = new RacingGame(cars, parsedRounds);
     }
 
     public void playRound() {
@@ -39,13 +40,23 @@ public class RacingGameService {
             String trimmedName = carName.trim();
             if (trimmedName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            } else if (trimmedName.length() <= 0) {
+                throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
             }
+        }
+    }
+
+    private int parseRounds(String rounds) {
+        try {
+            return Integer.parseInt(rounds);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("경기 횟수는 숫자로 입력해야 합니다.");
         }
     }
 
     private void validateRounds(int rounds) {
         if (rounds <= 0) {
-            throw new IllegalArgumentException("라운드는 1 이상이어야 합니다.");
+            throw new IllegalArgumentException("경기 횟수는 1 이상이어야 합니다.");
         }
     }
 

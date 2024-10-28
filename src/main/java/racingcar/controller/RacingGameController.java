@@ -20,7 +20,7 @@ public class RacingGameController {
     public void start() {
 
         String carNames = inputView.getCarNames();
-        int rounds = inputView.getRounds();
+        String rounds = inputView.getRounds();
 
         racingGameService.startGame(carNames, rounds);
         while (racingGameService.hasNextRound()) {
