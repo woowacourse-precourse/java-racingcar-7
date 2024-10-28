@@ -18,7 +18,7 @@ public class CarNameTest {
     }
 
     @Test
-    void 자동차_이름이_없_때_예외_발생() {
+    void 자동차_이름이_없을_때_예외_발생() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> CarName.from(""))
                         .isInstanceOf(IllegalArgumentException.class)
