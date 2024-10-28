@@ -11,6 +11,10 @@ public class OutputView {
         System.out.println(OutputMessage.RESULT.getMessage());
     }
 
+    /**
+     * 자동차의 이동거리를 출력해주는 메서드
+     * @param cars 자동차
+     */
     public void racingView(List<Car> cars){
         for (Car car : cars) {
             String positionMark = "-".repeat(car.getPosition());

@@ -19,6 +19,9 @@ public class CarService {
         this.outputView = new OutputView();
     }
 
+    /**
+     * 자동차 이름과 시도 횟수를 입력하는 메서드
+     */
     public GameConfig initializeGame() {
         String inputCarName = inputView.inputCarName();
 
@@ -32,6 +35,11 @@ public class CarService {
         return new GameConfig(cars, attemptCount);
     }
 
+    /**
+     * 시도 횟수 만큼 랜덤숫자를 추출해 자동차를 움직이는 메서드
+     * @param cars 경주하는 자동차들
+     * @param count 시도 횟수
+     */
     public void startRace(List<Car> cars, int count) {
         outputView.racingResult();
 
@@ -41,6 +49,10 @@ public class CarService {
         }
     }
 
+    /**
+     * 가장 많이 이동한 자동차들을 계산해서 출력 명령을 보내는 메서드
+     * @param cars 경주하는 자동차들
+     */
     public void showResults(List<Car> cars){
         List<String> winnerCarList = GameUtil.calculateWinners(cars);
         outputView.resultView(winnerCarList);
