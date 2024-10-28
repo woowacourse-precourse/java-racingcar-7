@@ -1,13 +1,13 @@
 package racingcar.service;
 
+import static racingcar.util.constant.CharacterConstant.CAR_DELIMITER;
+
+import java.util.List;
+
 import racingcar.model.Cars;
 import racingcar.model.factory.CarFactory;
 import racingcar.util.DataTransformUtil;
 import racingcar.util.ValidationUtil;
-
-import java.util.List;
-
-import static racingcar.util.constant.CharacterConstant.CAR_DELIMITER;
 
 public class RegisterCarService {
 

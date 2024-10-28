@@ -11,14 +11,14 @@ import static racingcar.util.constant.OutputMessageConstant.INPUT_TURN_COUNT;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Test;
+
 import racingcar.exception.TheCarDoesntStartException;
 import racingcar.exception.carName.DuplicateCarNameException;
 import racingcar.exception.EmptyInputException;
 import racingcar.exception.carName.InvalidCharacterException;
 import racingcar.exception.carName.InvalidCarNameLengthException;
-
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
 import racingcar.exception.carName.InvalidRegisterCarsInputLengthException;
 import racingcar.exception.executionNumber.NumberRangeException;
 

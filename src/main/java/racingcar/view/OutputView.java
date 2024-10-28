@@ -1,9 +1,10 @@
 package racingcar.view;
 
-import java.util.List;
-import racingcar.model.Cars;
-
 import static racingcar.util.constant.OutputMessageConstant.*;
+
+import java.util.List;
+
+import racingcar.model.Cars;
 
 public class OutputView {
 

@@ -2,9 +2,9 @@ package racingcar.model.factory;
 
 import static racingcar.util.constant.RegisterCarNumberConstant.PRIME_CAR_DISTANCE;
 
-import racingcar.model.Car;
-
 import java.util.List;
+
+import racingcar.model.Car;
 import racingcar.model.Cars;
 
 public class CarFactory {

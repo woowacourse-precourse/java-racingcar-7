@@ -7,10 +7,12 @@ import static racingcar.util.constant.RegisterCarNumberConstant.PRIME_CAR_DISTAN
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
 import racingcar.exception.TheCarDoesntStartException;
 import racingcar.model.Car;
 import racingcar.model.Cars;

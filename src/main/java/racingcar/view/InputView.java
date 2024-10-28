@@ -1,9 +1,9 @@
 package racingcar.view;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import static racingcar.util.constant.OutputMessageConstant.INPUT_CAR_NAME;
 import static racingcar.util.constant.OutputMessageConstant.INPUT_TURN_COUNT;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 

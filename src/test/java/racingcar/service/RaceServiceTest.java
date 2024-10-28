@@ -5,7 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.util.constant.RegisterCarNumberConstant.PRIME_CAR_DISTANCE;
 
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
+
 import racingcar.model.Car;
 import racingcar.model.Cars;
 

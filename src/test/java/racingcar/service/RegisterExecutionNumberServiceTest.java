@@ -7,6 +7,7 @@ import static racingcar.util.constant.MoveCarNumberConstant.EXECUTION_RANGE_MIN_
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
 import racingcar.exception.EmptyInputException;
 import racingcar.exception.executionNumber.NotNumberException;
 import racingcar.exception.executionNumber.NumberRangeException;

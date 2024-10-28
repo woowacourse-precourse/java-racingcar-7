@@ -6,9 +6,11 @@ import static racingcar.util.constant.RegisterCarNumberConstant.PRIME_CAR_DISTAN
 import static racingcar.util.constant.RegisterCarNumberConstant.REGISTER_CARS_INPUT_MAX_LENGTH;
 
 import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
 import racingcar.exception.EmptyInputException;
 import racingcar.exception.carName.DuplicateCarNameException;
 import racingcar.exception.carName.InvalidCarNameLengthException;

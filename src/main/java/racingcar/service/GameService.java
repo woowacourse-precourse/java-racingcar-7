@@ -7,6 +7,7 @@ import static racingcar.util.constant.MoveCarNumberConstant.RANDOM_NUMBER_START_
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import racingcar.model.Cars;
 
 public class GameService {
