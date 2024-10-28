@@ -16,12 +16,12 @@ public class RaceController {
 	}
 
 	private void runRace() {
-		String carNames = inputCarNames();
-		int attemptNumber = inputAttemptNumber();
+		String carNames = getCarNames();
+		int attemptNumber = getAttemptNumber();
 		this.raceService = new RaceService(Delimiter.COMMA, carNames, attemptNumber);
 	}
 
-	private String inputCarNames() {
+	private String getCarNames() {
 		OutputView.carName();
 		String carNames = InputView.getCarNames();
 
@@ -29,7 +29,7 @@ public class RaceController {
 		return carNames;
 	}
 
-	private int inputAttemptNumber() {
+	private int getAttemptNumber() {
 		OutputView.attemptNumber();
 		int attemptNumber = InputView.getAttemptNumber();
 
