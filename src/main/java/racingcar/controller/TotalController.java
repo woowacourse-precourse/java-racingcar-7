@@ -30,6 +30,17 @@ public class TotalController {
         RacingController.getInstance().carMovementSetting(raceStarterService);
     }
 
+    private void oneLapUpdate() {
+        RacingController.getInstance().gameUpdate();
+        ScreenController.getInstance().scoreBoardUpdate();
+    }
+
+    private void allLapUpdate(Race race) {
+        while (!race.getLapLefts().equals(0L)) {
+            oneLapUpdate();
+        }
+    }
+
     public static TotalController getInstance() {
         if (instance == null) {
             instance = new TotalController();
