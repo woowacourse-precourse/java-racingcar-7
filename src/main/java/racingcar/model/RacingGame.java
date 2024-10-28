@@ -8,29 +8,10 @@ public class RacingGame {
     private final int rounds;
     private int currentRound;
 
-    public RacingGame(String carNames, int rounds) {
-        this.cars = createCars(carNames);
+    public RacingGame(List<Car> cars, int rounds) {
+        this.cars = cars;
         this.rounds = rounds;
         this.currentRound = 0;
-    }
-
-    private List<Car> createCars(String name) {
-        String[] carNameArray = name.split(",");
-
-        // 이름 길이 검증
-        for (String carName : carNameArray) {
-            String trimmedName = carName.trim();
-            if (trimmedName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            }
-        }
-        // 검증 후 car객체 생성
-        List<Car> cars = new ArrayList<>();
-
-        for (String carName : carNameArray) {
-            cars.add(new Car(carName.trim()));
-        }
-        return cars;
     }
 
     public boolean hasNextRound() {

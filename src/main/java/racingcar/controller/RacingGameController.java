@@ -2,25 +2,33 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.model.Car;
-import racingcar.model.RacingGame;
+import racingcar.service.RacingGameService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingGameController {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+    private final RacingGameService racingGameService;
+
     private List<Car> cars;
+
+    public RacingGameController() {
+        this.racingGameService = new RacingGameService();
+    }
 
     public void start() {
 
         String carNames = inputView.getCarNames();
         int rounds = inputView.getRounds();
 
-        RacingGame racingGame = new RacingGame(carNames, rounds);
-        while (racingGame.hasNextRound()) {
-            racingGame.playRound();
-            outputView.displayRoundResults(racingGame.getCars());
+        racingGameService.startGame(carNames, rounds);
+        while (racingGameService.hasNextRound()) {
+            racingGameService.playRound();
+            List<Car> cars = racingGameService.getCurrentStatus();
+            outputView.displayRoundResults(cars);
         }
-        outputView.displayWinners(racingGame.getWinners());
+        List<String> winners = racingGameService.getWinners();
+        outputView.displayWinners(winners);
     }
 }
