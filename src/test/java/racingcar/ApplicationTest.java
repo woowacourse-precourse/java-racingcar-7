@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.strategy.MovableStrategy;
+import racingcar.domain.strategy.RandomMovableStrategy;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -57,5 +59,22 @@ class ApplicationTest extends NsTest {
         car.move();
         car.move();
         assertThat(car.getPositionAsString()).isEqualTo("--");
+    }
+
+    @Test
+    void 이동확률을정상적으로확인한다() {
+        MovableStrategy strategy = new RandomMovableStrategy();
+        int moveCount = 0;
+        int trials = 10000;
+
+        for (int i = 0; i < trials; i++) {
+            if (strategy.shouldMove()) {
+                moveCount++;
+            }
+        }
+
+        double moveProbability = (double) moveCount / trials;
+        // 4 이상일 경우 이동
+        assertThat(moveProbability).isGreaterThan(0.4).isLessThan(0.6);
     }
 }
