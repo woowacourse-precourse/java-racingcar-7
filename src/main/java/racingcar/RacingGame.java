@@ -31,10 +31,7 @@ public class RacingGame {
         int numOfTrial = inputConsoleHandler.askNumOfTrial();
 
         outputConsoleHandler.showResultPrefixMessage();
-        for (int numTry = 0; numTry < numOfTrial; numTry++) {
-            cars.tryMoveForward(numberProvider);
-            showCarsPositionalStatusForEachTrial(cars);
-        }
+        progressTrials(numOfTrial, cars);
 
         showWinners(cars);
     }
@@ -57,5 +54,12 @@ public class RacingGame {
         winnerList.forEach(car -> car.provideNameIfWins(winnerList, winnerNameList));
 
         return winnerNameList;
+    }
+
+    private void progressTrials(int numOfTrial, Cars cars) {
+        for (int numTry = 0; numTry < numOfTrial; numTry++) {
+            cars.tryMoveForward(numberProvider);
+            showCarsPositionalStatusForEachTrial(cars);
+        }
     }
 }
