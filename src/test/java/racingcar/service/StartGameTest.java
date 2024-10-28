@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
-import racingcar.service.GameService;
 import racingcar.view.OutputView;
 
 import java.util.Arrays;
@@ -30,7 +29,7 @@ class StartGameTest {
         int attemptCount = 3;
 
         // When
-        raceService.startGame(attemptCount, cars);
+        raceService.controller.startGame(attemptCount, cars, raceService);
 
         // Then
         assertThat(cars).extracting("distance").isNotEmpty(); // 자동차의 거리가 비어있지 않은지 확인
