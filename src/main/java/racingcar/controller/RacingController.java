@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import static racingcar.constant.ExceptionMessage.MAX_COUNT_NOT_FOUND;
+
 import java.util.List;
 import java.util.Map;
 import racingcar.model.car.Car;
@@ -25,6 +27,7 @@ public class RacingController {
         RacingUnitResultList racingUnitResultList = race.proceedRace();
 
         generateUnitResults(racingUnitResultList);
+        generateFinalResult(racingUnitResultList);
     }
 
     private int getCountInput() {
@@ -54,6 +57,22 @@ public class RacingController {
             Map<Car, Integer> resultInfo = unitResult.getResult();
             outputView.printUnitResult(resultInfo);
         }
+    }
+
+    private void generateFinalResult(RacingUnitResultList racingUnitResultList) {
+        List<RacingUnitResult> unitResultList = racingUnitResultList.getRacingUnitResultList();
+        RacingUnitResult lastUnitResult = unitResultList.getLast();
+
+        int maxCounts = lastUnitResult.getResult().values().stream()
+                .max(Integer::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException(MAX_COUNT_NOT_FOUND.getValue()));
+
+        List<Car> maxCars = lastUnitResult.getResult().entrySet().stream()
+                .filter(entry -> entry.getValue().equals(maxCounts))
+                .map(Map.Entry::getKey)
+                .toList();
+
+        outputView.printFinalResultView(maxCars);
     }
 
 }
