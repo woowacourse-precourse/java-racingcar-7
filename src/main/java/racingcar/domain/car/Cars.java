@@ -10,6 +10,7 @@ public class Cars {
     private final List<Car> carList;
 
     private Cars(final List<Car> carList) {
+        validateNotEmpty(carList);
         validateDuplicateNames(carList);
         this.carList = carList;
     }
@@ -26,6 +27,12 @@ public class Cars {
         return carList.size();
     }
 
+    private void validateNotEmpty(final List<Car> carList) {
+        if (carList.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_LIST.getMessage());
+        }
+    }
+
     private void validateDuplicateNames(final List<Car> carList) {
         Set<String> carNames = new HashSet<>();
         for (Car car : carList) {
@@ -34,4 +41,6 @@ public class Cars {
             }
         }
     }
+
+
 }

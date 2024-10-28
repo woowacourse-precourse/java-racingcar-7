@@ -23,7 +23,7 @@ public class CarName {
     private void validateCarName(final String name) {
         validateBlank(name);
         validateLength(name);
-        validateSpecialCharacters(name); // 제어 문자 검증 추가
+        validateSpecialCharacters(name);
     }
 
     private void validateBlank(final String name) {
