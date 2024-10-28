@@ -22,7 +22,7 @@ public class Car {
         return name;
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
             position++;
         }
