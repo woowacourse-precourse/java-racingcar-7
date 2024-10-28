@@ -11,9 +11,11 @@ public enum ErrorMessage {
     SPACES_NOT_ALLOWED("자동차 이름에 공백이 포함되면 안됩니다");
 
     private final String message;
+
     ErrorMessage(String message) {
         this.message = message;
     }
+
     public String getMessage() {
         return message;
     }

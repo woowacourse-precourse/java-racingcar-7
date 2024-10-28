@@ -26,7 +26,7 @@ public class CarNamesValidatorTest {
         @DisplayName("리스트가 공백이 아닌 정상적인 값이라면 통과한다")
         void Given_ValidCarNames_When_validateEmptyInput_Then_DoNothing() {
             //given
-            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뚜","보뚜"));
+            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뚜", "보뚜"));
 
             //when & then
             assertDoesNotThrow(() -> CarNamesValidator.validate(carNames));
@@ -53,7 +53,7 @@ public class CarNamesValidatorTest {
         @DisplayName("옳바른 자동차 이름이 원소로 들어온 경우 아무것도 하지 않는다")
         void Given_ValidCarNames_When_validateListElements_Then_DoNothing() {
             //given
-            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뚜","뚜보","커비"));
+            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뚜", "뚜보", "커비"));
 
             //when & then
             assertDoesNotThrow(() -> CarNamesValidator.validate(carNames));
@@ -64,7 +64,7 @@ public class CarNamesValidatorTest {
         @DisplayName("자동차 이름으로 공백이 들어온 경우 예외를 던진다")
         void Given_EmptyCarNames_When_validateListElements_Then_ThrowException() {
             //given
-            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뚜","보뚜","","  "));
+            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뚜", "보뚜", "", "  "));
 
             //when & then
             assertThatThrownBy(() -> CarNamesValidator.validate(carNames))
@@ -77,7 +77,7 @@ public class CarNamesValidatorTest {
         @DisplayName("자동차 이름에 공백이 포함된 경우 예외를 던진다")
         void Given_CarNameWithSpace_When_validateListElements_Then_ThrowException() {
             //given
-            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뚜뽀뚜","ㅃ뚜"," 뽀 뚜"));
+            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뚜뽀뚜", "ㅃ뚜", " 뽀 뚜"));
 
             //when & then
             assertThatThrownBy(() -> CarNamesValidator.validate(carNames))
@@ -89,7 +89,7 @@ public class CarNamesValidatorTest {
         @DisplayName("자동차 이름이의 길이가 5글자 초과인 경우 예외를 던진다")
         void Given_TooLongName_When_validateListElements_Then_ThrowException() {
             //given
-            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뽀뽀뽀뚜뚜뚜","보뚜","뽀뚜"));
+            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뽀뽀뽀뚜뚜뚜", "보뚜", "뽀뚜"));
 
             //when & then
             assertThatThrownBy(() -> CarNamesValidator.validate(carNames))
@@ -101,7 +101,7 @@ public class CarNamesValidatorTest {
         @DisplayName("동일한 이름이 두 번 들어온 경우 예외를 던진다")
         void Given_DuplicatedName_When_validateListElements_Then_ThrowException() {
             //given
-            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뚜","보뚜","뽀뚜"));
+            final List<String> carNames = new ArrayList<>(Arrays.asList("뽀뚜", "보뚜", "뽀뚜"));
 
             //when & then
             assertThatThrownBy(() -> CarNamesValidator.validate(carNames))

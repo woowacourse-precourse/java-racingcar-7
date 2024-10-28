@@ -13,28 +13,28 @@ public class Cars {
         this.cars = cars;
     }
 
-    private static Car createCar(String carName){
+    private static Car createCar(String carName) {
         return new Car(carName);
     }
 
-    public static Cars createCars(List<String> carNames){
+    public static Cars createCars(List<String> carNames) {
 
-        return new Cars (carNames.stream()
-                        .map(Cars::createCar)
-                        .toList());
+        return new Cars(carNames.stream()
+                .map(Cars::createCar)
+                .toList());
 
     }
 
-    public void proceedOneRound(){
+    public void proceedOneRound() {
         for (Car car : cars) {
-            MovementDecider movementDecider =  new MovementDecider();
-            if (movementDecider.makeDecision()){
+            MovementDecider movementDecider = new MovementDecider();
+            if (movementDecider.makeDecision()) {
                 car.move();
             }
         }
     }
 
-    public CarsPositions buildCarsPositions(){
+    public CarsPositions buildCarsPositions() {
         List<CarPosition> carsPositions = new ArrayList<>();
         for (Car car : cars) {
             carsPositions.add(car.buildCarPosition());
@@ -43,7 +43,7 @@ public class Cars {
         return new CarsPositions(carsPositions);
     }
 
-    public Winners buildWinners(){
+    public Winners buildWinners() {
         List<String> winners = new ArrayList<>();
         int highestPosition = 0;
         for (Car car : cars) {

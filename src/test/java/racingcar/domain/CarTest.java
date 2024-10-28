@@ -12,7 +12,7 @@ public class CarTest {
 
     @Nested
     @DisplayName("차량 객체를 생성한다")
-    class createCarTest{
+    class createCarTest {
         @Test
         @DisplayName("차량 객체 생성 시 입력한 값과 이름이 동일하다")
         void Given_ValidName_When_CreateCar_Then_Success() {
@@ -28,14 +28,13 @@ public class CarTest {
     }
 
 
-
     @Nested
     @DisplayName("move - position이 1 증가한다")
-    class moveTest{
+    class moveTest {
 
         @Test
         @DisplayName("move() 실행 후 정상적으로 position이 1 증가한다.")
-        void Given_ValidName_When_Move_Then_Success(){
+        void Given_ValidName_When_Move_Then_Success() {
             //given
             final String validName = "뽀뚜";
             final Car car = new Car(validName);
@@ -45,17 +44,17 @@ public class CarTest {
             car.move();
 
             //then
-            assertThat(car.getPosition()).isEqualTo( startPosition+1);
+            assertThat(car.getPosition()).isEqualTo(startPosition + 1);
         }
     }
 
     @Nested
     @DisplayName("buildCarPosition - 라운드 결과를 DTO형태로 리턴한다")
-    class buildCarPositionTest{
+    class buildCarPositionTest {
 
         @Test
         @DisplayName("라운드 결과를 정상적으로 DTO형태로 리턴한다")
-        void Given_ValidName_When_BuildCarPosition_Then_Success(){
+        void Given_ValidName_When_BuildCarPosition_Then_Success() {
             //given
             final String validName = "뽀뚜";
             final Car car = new Car(validName);
@@ -64,8 +63,8 @@ public class CarTest {
             CarPosition carPosition = car.buildCarPosition();
 
             //then
-            assertThat( carPosition.carName()).isEqualTo(car.getName());
-            assertThat( carPosition.position()).isEqualTo(car.getPosition());
+            assertThat(carPosition.carName()).isEqualTo(car.getName());
+            assertThat(carPosition.position()).isEqualTo(car.getPosition());
 
         }
 

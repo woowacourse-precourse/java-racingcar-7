@@ -11,11 +11,11 @@ public class MovementDecider {
         generateRandomNumber();
     }
 
-    public boolean makeDecision(){
+    public boolean makeDecision() {
         return randomNumber >= 4;
     }
 
-    private int generateRandomNumber(){
+    private int generateRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 }

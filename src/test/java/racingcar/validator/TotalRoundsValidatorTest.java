@@ -3,6 +3,7 @@ package racingcar.validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
 import static racingcar.exception.ErrorMessage.EMPTY_INPUT;
 import static racingcar.exception.ErrorMessage.NOT_NUMBER;
 import static racingcar.exception.ErrorMessage.NOT_INT;
@@ -67,8 +68,8 @@ public class TotalRoundsValidatorTest {
 
             //when & then
             assertThatThrownBy(() -> TotalRoundsValidator.validate(notInteger))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining(NOT_INT.getMessage());
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(NOT_INT.getMessage());
         }
 
         @Test
@@ -91,8 +92,8 @@ public class TotalRoundsValidatorTest {
 
             //when & then
             assertThatThrownBy(() -> TotalRoundsValidator.validate(notPositiveInteger))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining(NOT_POSITIVE_INT.getMessage());
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(NOT_POSITIVE_INT.getMessage());
         }
 
         @Test
