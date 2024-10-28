@@ -38,8 +38,11 @@ public class OutputView {
         System.out.println(FINAL_WINNER_MESSAGE + " : " + winnerNames);
     }
 
+    public void printNewLine() {
+        System.out.println();
+    }
+
     private String generateDashes(int position) {
         return POSITION_MARKER.repeat(Math.max(0, position));
     }
-
 }
