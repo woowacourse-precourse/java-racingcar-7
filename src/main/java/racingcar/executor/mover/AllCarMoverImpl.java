@@ -6,18 +6,18 @@ import racingcar.executor.generator.movement.RandomIntegerGenerator;
 
 import java.util.List;
 
-public class CarMoverImpl implements CarMover {
+public class AllCarMoverImpl implements AllCarMover {
 
     private final RandomMovementDecider randomMovementDecider;
 
-    public CarMoverImpl(RandomMovementDecider randomMovementDecider) {
+    public AllCarMoverImpl(RandomMovementDecider randomMovementDecider) {
         this.randomMovementDecider = randomMovementDecider;
     }
 
     @Override
     public List<Car> run(List<Car> currentHistory) {
         for (Car car : currentHistory) {
-            if (randomMovementDecider.decide(RandomIntegerGenerator.run()))
+            if (randomMovementDecider.decide(RandomIntegerGenerator.runZeroToNine()))
                car.move();
         }
         return currentHistory;

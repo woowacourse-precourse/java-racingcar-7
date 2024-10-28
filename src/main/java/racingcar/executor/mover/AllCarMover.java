@@ -4,6 +4,6 @@ import racingcar.entity.Car;
 
 import java.util.List;
 
-public interface CarMover {
+public interface AllCarMover {
     List<Car> run(List<Car> currentHistory);
 }
