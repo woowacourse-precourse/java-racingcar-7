@@ -17,7 +17,7 @@ public class InputView {
                 .map(String::trim)
                 .toList();
 
-        ValidationService.validateCarNames(carNames);
+        ValidationService.validateCarNamesInput(carNames);
         return carNames;
     }
 

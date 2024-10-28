@@ -12,7 +12,7 @@ class ValidationServiceTest {
     @Test
     void 자동차_이름이_하나일_경우() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> ValidationService.validateCarNames(List.of("pobi")))
+                assertThatThrownBy(() -> ValidationService.validateCarNamesInput(List.of("pobi")))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(ErrorMessage.INSUFFICIENT_CAR_NAMES.getMessage())
         );
@@ -21,7 +21,7 @@ class ValidationServiceTest {
     @Test
     void 자동차_이름이_5자를_초과할_경우() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> ValidationService.validateCarNames(List.of("pobiiii", "woni")))
+                assertThatThrownBy(() -> ValidationService.validateCarNamesInput(List.of("pobiiii", "woni")))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(ErrorMessage.INVALID_CAR_NAME_LENGTH.getMessage())
         );
@@ -30,7 +30,7 @@ class ValidationServiceTest {
     @Test
     void 자동차_이름을_중복되게_적을_경우() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> ValidationService.validateCarNames(List.of("pobi", "pobi")))
+                assertThatThrownBy(() -> ValidationService.validateCarNamesInput(List.of("pobi", "pobi")))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(ErrorMessage.DUPLICATE_CAR_NAME.getMessage())
         );
@@ -39,7 +39,7 @@ class ValidationServiceTest {
     @Test
     void 자동차_이름을_대소문자만_다르고_중복되게_적을_경우() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> ValidationService.validateCarNames(List.of("pobi", "POBI")))
+                assertThatThrownBy(() -> ValidationService.validateCarNamesInput(List.of("pobi", "POBI")))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(ErrorMessage.DUPLICATE_CAR_NAME.getMessage())
         );

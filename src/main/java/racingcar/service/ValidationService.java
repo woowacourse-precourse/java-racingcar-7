@@ -19,7 +19,7 @@ public class ValidationService {
         }
     }
 
-    public static void validateCarNames(List<String> carNames) {
+    public static void validateCarNamesInput(List<String> carNames) {
         validateCarCount(carNames);
         carNames.forEach(ValidationService::validateCarName);
         checkDuplicateNames(carNames);
