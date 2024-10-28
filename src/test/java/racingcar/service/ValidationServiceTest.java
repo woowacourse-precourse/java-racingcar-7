@@ -7,6 +7,7 @@ import static racingcar.TestConstants.CAR_NAME_BLANK;
 import static racingcar.TestConstants.CAR_NAME_JUN;
 import static racingcar.TestConstants.CAR_NAME_POBI;
 import static racingcar.TestConstants.CAR_NAME_UP_5;
+import static racingcar.TestConstants.CAR_NAME_WITH_KOREAN;
 import static racingcar.TestConstants.CAR_NAME_WONI;
 import static racingcar.TestConstants.GAME_COUNT_NEGATIVE;
 import static racingcar.TestConstants.GAME_COUNT_NON_INTEGER;
@@ -88,6 +89,20 @@ class ValidationServiceTest {
     void cannotCarNameUp5 () {
         // given
         String invalidCarName = CAR_NAME_UP_5;
+
+        // when & then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            validateCarName(invalidCarName);
+        });
+
+        assertEquals(INVALID_CAR_NAME, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("차 이름에는 영어 소문자와 대문자를 제외한 문자, 특수 문자, 숫자 등이 포함될 수 없다.")
+    void onlyAlphaBetInCarName () {
+        // given
+        String invalidCarName = CAR_NAME_WITH_KOREAN;
 
         // when & then
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {

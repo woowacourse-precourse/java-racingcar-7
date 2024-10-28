@@ -7,6 +7,7 @@ public class TestConstants {
     public static String CAR_NAME_5 = "abcde";
     public static String CAR_NAME_BLANK = "";
     public static String CAR_NAME_UP_5 = "abcdef";
+    public static String CAR_NAME_WITH_KOREAN = "ab안";
 
     public static String GAME_COUNT_POSITIVE = "3";
     public static String GAME_COUNT_NON_NUMERIC = "hello";
