@@ -1,12 +1,10 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
-    private InputHandler inputHandler = new InputHandler();
+    private final InputHandler inputHandler = new InputHandler();
 
     public void run() {
         String[] carNames = inputHandler.getCarNames();
