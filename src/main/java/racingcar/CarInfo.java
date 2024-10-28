@@ -7,4 +7,8 @@ public abstract class CarInfo {
      public CarInfo(String carName) {
           this.carName = carName;
      }
+
+     public void carMove() {
+          carPosition++;
+     }
 }
