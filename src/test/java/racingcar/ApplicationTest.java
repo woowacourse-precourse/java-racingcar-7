@@ -13,22 +13,44 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트() {
+    void 자동차_이름_입력_테스트() {
+        run("pobi,woni", "1");
+        assertThat(output()).contains("pobi : ", "woni : ");
+    }
+
+    @Test
+    void 시도_횟수_입력_테스트() {
+        run("pobi,woni", "3");
+        assertThat(output()).contains("pobi : ", "woni : ");
+    }
+
+    @Test
+    void 자동차_이동_로직_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+    void 최종_우승자_발표_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "3");
+                    assertThat(output()).contains("최종 우승자 : ");
+                },
+                MOVING_FORWARD, STOP
         );
+    }
+
+    @Test
+    void 잘못된_자동차_이름_입력_테스트() {
+        assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 5자 이하이어야 합니다.");
     }
 
     @Override
