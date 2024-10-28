@@ -68,10 +68,27 @@ public class Application {
                 distances[j]++;
             }
         }
+        displayRaceStatus(carNames, distances);
     }
 
     // 전진 조건 체크
     private static boolean canAdvance() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
+    // 현재 경주 상태 출력
+    private static void displayRaceStatus(String[] carNames, int[] distances) {
+        for (int j = 0; j < carNames.length; j++) {
+            System.out.print(carNames[j].trim() + " : ");
+            displayCarProgress(distances[j]);
+        }
+        System.out.println();
+    }
+
+    private static void displayCarProgress(int distance) {
+        for (int k = 0; k < distance; k++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
