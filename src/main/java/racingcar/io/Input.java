@@ -18,7 +18,7 @@ public class Input {
     }
 
     private void validateNotNumber(String playCount) {
-        boolean isNotNumber = !Pattern.matches("^(0|[0-9]+)$", playCount);
+        boolean isNotNumber = !Pattern.matches("^(0|-?[0-9]+)$", playCount);
 
         if (isNotNumber) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_NOT_NUMBER.getMessage());
