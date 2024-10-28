@@ -59,6 +59,9 @@ public class RaceManager {
         }
     }
 
+    /**
+     * 레이싱을 1회 수행
+     */
     public void doRacing() {
         for (Car car : cars) {
             if (car.isForward()) {
