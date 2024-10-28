@@ -23,6 +23,15 @@ class RaceRegistrationFormFactoryTest {
     }
 
     @Test
+    @DisplayName("자동차의 이름이 1자 미만인 경우 예외가 발생한다.")
+    void should_ThrowException_When_CarNameLessThan1() {
+        String inputCarNames = "";
+        String inputRaceRoundCount = "1";
+        assertThatThrownBy(() -> RaceRegistrationFormFactory.create(inputCarNames, inputRaceRoundCount))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("자동차의 이름이 5자를 초과하는 경우 예외가 발생한다.")
     void should_ThrowException_When_CarNameLongerThan5() {
         String inputCarNames = "abcdef";
@@ -64,6 +73,16 @@ class RaceRegistrationFormFactoryTest {
     void should_ThrowException_When_RaceRoundCountIsNotNumeric() {
         String inputCarNames = "pobi,woni";
         String inputRaceRoundCount = "가";
+
+        assertThatThrownBy(() -> RaceRegistrationFormFactory.create(inputCarNames, inputRaceRoundCount))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("시도할 횟수가 null인 경우 예외 테스트")
+    void should_ThrowException_When_RaceRoundCountIsNull() {
+        String inputCarNames = "pobi,woni";
+        String inputRaceRoundCount = null;
 
         assertThatThrownBy(() -> RaceRegistrationFormFactory.create(inputCarNames, inputRaceRoundCount))
                 .isInstanceOf(IllegalArgumentException.class);
