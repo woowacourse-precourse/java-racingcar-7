@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class InputHandler {
     static final char COMMA = ',';
@@ -9,7 +10,7 @@ public class InputHandler {
     public static LinkedHashMap<String, StringBuffer> getNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
-        String[] names = input.split(",", -1);
+        List<String> names = List.of(input.split(",", -1));
         LinkedHashMap<String, StringBuffer> cars = new LinkedHashMap<>();
         storeCarName(names, cars);
         return cars;
@@ -29,7 +30,7 @@ public class InputHandler {
         }
     }
 
-    private static void storeCarName(String[] names, LinkedHashMap<String, StringBuffer> cars) {
+    private static void storeCarName(List<String> names, LinkedHashMap<String, StringBuffer> cars) {
         for (String name : names) {
             if (name.indexOf(COMMA) != -1) { // 이름에 ,가 포함된 경우
                 throw new IllegalArgumentException();
