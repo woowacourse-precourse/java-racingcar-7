@@ -27,15 +27,20 @@ public class InputHandler {
     }
 
     private static List<String> splitNames(String nameString) {
-        String[] participants = nameString.split(NAME_DIAMETER);
-        validateNames(participants);
+        List<String> participants = Arrays.stream(nameString.split(NAME_DIAMETER)).toList();
+        validateLimitedLength(participants);
+        validateUniqueNicknames(participants);
 
-        return Arrays.stream(participants).toList();
+        return participants;
     }
 
+    private static void validateUniqueNicknames(List<String> participants) {
+        long uniqueCount = participants.stream().distinct().count();
+        if (uniqueCount < participants.size())
+            throw new IllegalArgumentException();
+    }
 
-
-    private static void validateNames(String[] participants) {
+    private static void validateLimitedLength(List<String> participants) {
         for (String participant : participants) {
             if (participant.length() > 5) {
                 throw new IllegalArgumentException();
