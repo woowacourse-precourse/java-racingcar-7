@@ -10,6 +10,8 @@ public class Parser {
 
     public static Cars parseCar(final String input) {
         List<String> carNames = Arrays.asList(input.split(","));
+        carNames.replaceAll(String::trim);
+
         return new Cars(carNames);
     }
 
