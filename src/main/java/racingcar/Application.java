@@ -11,20 +11,20 @@ public class Application {
         String[] player = playerText.split(",");
 
         // 이름 검증
-        Set<String > playerSet = new HashSet<>();
-        for(String p : player){
-            if (p == null || p.length()>=6 || p.trim().isEmpty()){
+        Set<String> playerSet = new HashSet<>();
+        for (String p : player) {
+            if (p == null || p.length() >= 6 || p.trim().isEmpty()) {
                 throw new IllegalArgumentException("이름의 길이가 6자 이상이거나 이름이 없습니다");
             }
-            if (playerSet.contains(p)){
-                throw new IllegalArgumentException(String.format("중복된 이름이 있습니다 : %s",p));
+            if (playerSet.contains(p)) {
+                throw new IllegalArgumentException(String.format("중복된 이름이 있습니다 : %s", p));
             }
             playerSet.add(p);
         }
 
         // Map으로 플레이어 : 게임 매칭
-        HashMap<String, String >games = new HashMap<>();
-        for (String p : player ){
+        HashMap<String, String> games = new HashMap<>();
+        for (String p : player) {
             games.put(p, "");
         }
 
@@ -44,26 +44,26 @@ public class Application {
 
 
         // 게임 실행
-        for (int i=0;i<round;i++){
-            for (String p : player){
-                games = Game.play(p,games);
-                System.out.println(p+" : "+games.get(p));
+        for (int i = 0; i < round; i++) {
+            for (String p : player) {
+                Game.play(p, games);
+                System.out.println(p + " : " + games.get(p));
             }
             System.out.println(" ");
         }
 
         // 승자 구하기 알고리즘
-        int far =0;
+        int far = 0;
         List<String> winners = new ArrayList<>();
 
-        for (HashMap.Entry<String, String> entry : games.entrySet()){
+        for (HashMap.Entry<String, String> entry : games.entrySet()) {
             int value = entry.getValue().length();
-            if(value >far){
+            if (value > far) {
                 far = value;
                 winners.clear();
                 winners.add(entry.getKey());
 
-            } else if (value == far){
+            } else if (value == far) {
                 winners.add(entry.getKey());
             }
         }
