@@ -16,7 +16,7 @@ public class OutputView {
     }
 
     public void printWinners(List<String> winners){
-        String message = "최중 우승 : ";
+        String message = "최종 우승자 : ";
         if(winners.size() == 1){
             printSingleWinner(message, winners);
             return;
