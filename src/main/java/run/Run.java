@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.Car;
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.Racing;
 
 public class Run {
     public void start() {
         List<Car> racingCar = new ArrayList<>();
         getCar(racingCar);
         int tryNum = getTryNum();
+        racingResult(racingCar, tryNum);
     }
+
 
     private void getCar(List<Car> racingCar) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -59,5 +62,9 @@ public class Run {
         System.out.println();
         return Integer.parseInt(tryNum);
 
+    }
+
+    private static void racingResult(List<Car> racingCar, int tryNum) {
+        Racing racing = new Racing(racingCar, tryNum);
     }
 }
