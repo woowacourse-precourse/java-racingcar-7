@@ -5,6 +5,7 @@ import static racingcar.validation.ValidationName.validateSameName;
 
 import java.util.ArrayList;
 import racingcar.domain.Car;
+import racingcar.view.Output;
 
 public class GameService {
 
@@ -24,5 +25,16 @@ public class GameService {
             cars[i] = new Car(carNameArray.get(i), 0);
         }
         return cars;
+    }
+
+    public static void gameWinners(Car[] cars, int max) {
+        ArrayList<String> gameWinners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getForwardCount() == max) {
+                gameWinners.add(car.getCarName());
+            }
+        }
+        String winners = String.join(", ", gameWinners);
+        Output.gameWinners(winners);
     }
 }

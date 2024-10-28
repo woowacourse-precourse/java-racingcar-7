@@ -7,7 +7,7 @@ public class Output {
     private static boolean isFirstOutput = true;
 
     public static void gameResult(Car[] player) {
-        if(isFirstOutput) {
+        if (isFirstOutput) {
             System.out.println("\n실행 결과");
             isFirstOutput = false;
         }
@@ -18,17 +18,7 @@ public class Output {
         System.out.println();
     }
 
-    public static void gameWinners(int max, Car[] participants) {
-        System.out.print("최종 우승자 : ");
-        int count = 0;
-        for (Car participant : participants) {
-            if (count == 0 && participant.getForwardCount() == max) {
-                System.out.print(participant.getCarName());
-                count++;
-            } else if (count >= 1 && participant.getForwardCount() == max) {
-                System.out.print(", " + participant.getCarName());
-            }
-        }
-
+    public static void gameWinners(String gameWinners) {
+        System.out.print("최종 우승자 : " + gameWinners);
     }
 }

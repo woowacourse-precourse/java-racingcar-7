@@ -7,6 +7,7 @@ import static racingcar.validation.ValidationGameCount.validateGameCount;
 
 import java.util.ArrayList;
 import racingcar.domain.Car;
+import racingcar.service.GameService;
 import racingcar.view.*;
 
 public class RacingGameController {
@@ -23,7 +24,7 @@ public class RacingGameController {
             max = race(cars);
             Output.gameResult(cars);
         }
-        Output.gameWinners(max, cars);
 
+        GameService.gameWinners(cars, max);
     }
 }
