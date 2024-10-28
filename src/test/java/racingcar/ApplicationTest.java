@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.text.html.HTMLDocument;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,5 +36,13 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void input_error_글자수_초과() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("woowahan"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
     }
 }
