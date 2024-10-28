@@ -43,11 +43,11 @@ public class Application {
 
         List<Car> winners =  carRacing.findWinners(cars);
 
-        String winnerName = "최종 우승자 : ";
+        List<String> winnerNames = new ArrayList<>();
         for (Car winner : winners) {
-            winnerName += winner.getName() + ", ";
+            winnerNames.add(winner.getName());
         }
-        winnerName = winnerName.substring(0, winnerName.length() - 2);
-        System.out.println(winnerName);
+        String result = String.join(", ", winnerNames);
+        System.out.println("최종 우승자 : " + result);
     }
 }
