@@ -23,14 +23,18 @@ public class RacingOutputView {
         boolean stop = true;
         for (Car car : cars) {
             if (car.getGoStop() == maxDistance) {
-                if (!stop) {
-                    System.out.print(", ");
-                }
-                System.out.print(car.getName());
+                printCarWinner(car, stop);
                 stop = false;
             }
         }
         System.out.println();
+    }
+
+    private void printCarWinner(Car car, boolean stop) {
+        if (!stop) {
+            System.out.print(", ");
+        }
+        System.out.print(car.getName());
     }
 
 }
