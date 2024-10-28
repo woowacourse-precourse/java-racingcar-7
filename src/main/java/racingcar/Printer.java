@@ -22,6 +22,7 @@ public class Printer {
 
     public static String displayDistance(Car car) {
         String distance = "";
+        
         for (int i = 0; i < car.distance; i++) {
             distance = distance.concat("-");
         }
