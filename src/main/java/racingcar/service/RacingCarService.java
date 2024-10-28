@@ -11,9 +11,6 @@ import java.util.stream.Collectors;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 
-//자동차이름 5글자 이상인지 판단
-//공백만 들어온 경우에 대한 예외처리
-//,를 기준으로 앞 뒤에 공백은 지우고 중간 문자열 중간의 공백은 유지
 public class RacingCarService {
     private RacingCarView view;
 
@@ -23,7 +20,7 @@ public class RacingCarService {
     }
 
 
-    // 자동차 이름을 입력받고 유효성을 검사하는 메서드
+    // 자동차 이름을 입력받고 유효성을 검사
     public List<CarDTO> splitCarName() {
 
         String input = view.getInputCarName().getInput();
@@ -34,18 +31,16 @@ public class RacingCarService {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }
 
-        // ','를 기준으로 문자열 분리
         String[] tokens = input.split(",");
 
         for (String token : tokens) {
-            // 각 자동차 이름의 앞뒤 공백 제거
+
             String trimmedName = token.trim();
 
             // 자동차 이름이 5글자 이상인 경우 예외 발생
             if (trimmedName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5글자 미만이어야 합니다. 잘못된 이름: " + trimmedName);
             }
-
 
             CarDTO carDTO = new CarDTO(trimmedName);
             carDTOList.add(carDTO);
@@ -70,13 +65,14 @@ public class RacingCarService {
     }
 
 
-    // 최종 우승자를 계산하는 메서드
+    // 최종 우승자를 선별
     public List<String> determineWinners(List<CarDTO> cars) {
+        //최고값 추출
         int maxStraight = cars.stream()
                 .max(Comparator.comparingInt(CarDTO::getGoStraight))
                 .orElseThrow()
                 .getGoStraight();
-
+        //우승자 리스트 리턴
         return cars.stream()
                 .filter(car -> car.getGoStraight() == maxStraight)
                 .map(CarDTO::getCarName)
