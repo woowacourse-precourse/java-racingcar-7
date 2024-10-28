@@ -32,7 +32,7 @@ public class RacingGame implements Game {
     }
 
     private void moveAndUpdateRound() {
-        cars.moveAllCarsRandomly();
+        cars.moveAll();
         currentRound++;
     }
 

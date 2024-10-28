@@ -4,16 +4,22 @@ import racingcar.domain.car.Cars;
 import racingcar.domain.game.RacingGameState;
 import racingcar.domain.game.RacingGame;
 import racingcar.domain.game.RacingGameCount;
+import racingcar.domain.movement.MovementStrategy;
 import racingcar.view.input.RacingGameInput;
 import racingcar.view.output.OutputView;
 
 public class RacingGameController {
     private final RacingGameInput inputView;
     private final OutputView outputView;
+    private final MovementStrategy moveStrategy;
 
-    public RacingGameController(RacingGameInput inputView, OutputView outputView) {
+    public RacingGameController(
+            RacingGameInput inputView,
+            OutputView outputView,
+            MovementStrategy moveStrategy) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.moveStrategy = moveStrategy;
     }
 
     public void start() {
@@ -25,7 +31,7 @@ public class RacingGameController {
         String carNames = inputView.readInput();
         String tryCount = inputView.readTryCountInput();
 
-        Cars cars = Cars.createCarsFrom(carNames);
+        Cars cars = Cars.createCarsFrom(carNames, moveStrategy);
         RacingGameCount racingCount = new RacingGameCount(tryCount);
 
         return new RacingGame(cars, racingCount);
