@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
+import racingcar.dto.WinnerDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -27,7 +28,7 @@ public class RacingCarController {
 
         outputView.printResult();
         race();
-        outputView.printWinner(racingCars.findWinners());
+        outputView.printWinner(getWinnerDto());
     }
 
     private List<String> prepareRacingCarNames() {
@@ -43,5 +44,12 @@ public class RacingCarController {
             List<RacingCar> attemptResult = racingCars.attempt();
             outputView.printAttemptResult(attemptResult);
         }
+    }
+
+    private List<WinnerDto> getWinnerDto() {
+        List<RacingCar> winners = racingCars.findWinners();
+        return winners.stream()
+                .map(winner -> new WinnerDto(winner.getCarName()))
+                .toList();
     }
 }

@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.RacingCar;
+import racingcar.dto.WinnerDto;
 
 public class OutputView {
     private static final String RESULT_MESSAGE = "실행 결과";
@@ -27,7 +28,7 @@ public class OutputView {
                 + ATTEMPT_RESULT_MESSAGE_ADVANCE_INDICATOR.repeat(car.getAdvanceCount());
     }
 
-    public void printWinner(List<RacingCar> winners) {
+    public void printWinner(List<WinnerDto> winners) {
         System.out.println(WINNER_MESSAGE + getWinnerFormat(extractWinnerName(winners)));
     }
 
@@ -35,9 +36,9 @@ public class OutputView {
         return String.join(WINNER_FORMAT_SEPARATOR, winners);
     }
 
-    private List<String> extractWinnerName(List<RacingCar> winners) {
+    private List<String> extractWinnerName(List<WinnerDto> winners) {
         return winners.stream()
-                .map(RacingCar::getCarName)
+                .map(WinnerDto::getWinnerName)
                 .collect(Collectors.toList());
     }
 }
