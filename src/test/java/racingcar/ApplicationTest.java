@@ -35,7 +35,7 @@ class ApplicationTest extends NsTest {
         String input = "carA,carB,carC";
         String[] expected = {"carA", "carB", "carC"};
     
-        assertArrayEquals(expected, 자동차이름_분리(input));
+        assertArrayEquals(expected, input.splitCarNames(carNames));
     }
 
     @Override
