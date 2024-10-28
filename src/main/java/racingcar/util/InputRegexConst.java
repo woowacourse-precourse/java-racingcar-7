@@ -1,7 +1,8 @@
 package racingcar.util;
 
 public enum InputRegexConst {
-    RACERS_NAME_REGEX("^([^,]{1,5})(,[^,]{1,5})*$"),
+
+    RACERS_NAME_REGEX("^([^,\\s]{1,5})(,[^,\\s]{1,5})*$"),
     LAPS_NUMBER_REGEX("^[1-9]\\d*$");
 
     private final String regex;
