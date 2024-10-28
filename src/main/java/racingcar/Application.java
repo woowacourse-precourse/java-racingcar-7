@@ -30,6 +30,16 @@ public class Application {
         }
     }
 
+    private static int getAttemptCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
+    }
+
     private static class Car {
         private final String name;
         private int position;
