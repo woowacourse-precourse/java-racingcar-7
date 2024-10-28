@@ -20,7 +20,11 @@ public class Application {
 
         testValidInput(cars);
 
-
+        while (currentTryCnt < maxTryCnt) {
+            raceOneTurn(cars, currentRecord);
+            currentTryCnt++;
+            System.out.println();
+        }
     }
 
     public static void testValidInput(String[] cars) {
@@ -31,4 +35,19 @@ public class Application {
             }
         }
     }
+
+    static void raceOneTurn(String[] cars, int[] currentRecord) {
+        for (int i = 0; i < cars.length; i++) {
+            moveAndPrintCar(cars[i], currentRecord, i);
+        }
+    }
+
+    static void moveAndPrintCar(String carName, int[] currentRecord, int index) {
+        int randNum = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
+        if (randNum >= 4) {
+            currentRecord[index]++;
+        }
+        System.out.println(carName + " : " + "-".repeat(currentRecord[index]));
+    }
+
 }
