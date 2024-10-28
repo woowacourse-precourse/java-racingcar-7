@@ -7,6 +7,7 @@ import racingcar.model.car.Car;
 import racingcar.model.car.factory.CarFactory;
 import racingcar.model.car.strategy.MoveStrategy;
 import racingcar.model.race.RaceManager;
+import racingcar.utils.ValidationUtils;
 
 public class RaceService {
     private RaceManager raceManager;
@@ -25,6 +26,7 @@ public class RaceService {
             MoveStrategy strategy
     ) {
         return Arrays.stream(carNames)
+                .filter(ValidationUtils::isAlphanumeric)
                 .map(name -> CarFactory.createCar(name, strategy))
                 .collect(Collectors.toList());
     }
