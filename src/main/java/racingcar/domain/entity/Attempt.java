@@ -22,7 +22,7 @@ public class Attempt {
 
 	private static void validateNotBlank(String input) {
 		if (input == null || input.isEmpty()) {
-			throw new IllegalArgumentException(ErrorMessages.BLANK_NOT_ALLOWE.getMessage());
+			throw new IllegalArgumentException(ErrorMessages.BLANK_NOT_ALLOWED.getMessage());
 		}
 	}
 

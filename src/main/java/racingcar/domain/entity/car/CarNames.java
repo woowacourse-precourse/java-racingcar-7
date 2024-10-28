@@ -29,7 +29,7 @@ public class CarNames {
 
 	private static void validateNotBlank(String input) {
 		if (input == null || input.isBlank() || input.endsWith(",")) {
-			throw new IllegalArgumentException(ErrorMessages.BLANK_NOT_ALLOWE.getMessage());
+			throw new IllegalArgumentException(ErrorMessages.BLANK_NOT_ALLOWED.getMessage());
 		}
 	}
 
