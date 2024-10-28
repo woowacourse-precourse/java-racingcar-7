@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.model;
 
 import java.util.List;
 

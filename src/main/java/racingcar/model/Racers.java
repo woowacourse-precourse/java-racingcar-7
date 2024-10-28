@@ -1,8 +1,8 @@
-package racingcar.service;
+package racingcar.model;
 
 import static racingcar.View.ViewConstants.DUPLICATE_NAME_ERROR_MESSAGE;
 import static racingcar.View.ViewConstants.NOT_ENOUGH_PLAYERS_ERROR_MESSAGE;
-import static racingcar.config.RacingConstants.REQUIRED_MIN_PLAYERS;
+import static racingcar.model.RacingConstants.REQUIRED_MIN_PLAYERS;
 
 import java.util.List;
 

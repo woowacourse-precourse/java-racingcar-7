@@ -1,13 +1,16 @@
 package racingcar.service;
 
 import static racingcar.View.ViewConstants.LESS_THAN_MIN_ROUNDS_ERROR_MESSAGE;
-import static racingcar.config.RacingConstants.INITIAL_MOVE_COUNT;
-import static racingcar.config.RacingConstants.MAX_NUMBER_IN_RANGE;
-import static racingcar.config.RacingConstants.MIN_NUMBER_IN_RANGE;
-import static racingcar.config.RacingConstants.MIN_NUMBER_TO_MOVE;
-import static racingcar.config.RacingConstants.MIN_ROUNDS;
+import static racingcar.model.RacingConstants.INITIAL_MOVE_COUNT;
+import static racingcar.model.RacingConstants.MAX_NUMBER_IN_RANGE;
+import static racingcar.model.RacingConstants.MIN_NUMBER_IN_RANGE;
+import static racingcar.model.RacingConstants.MIN_NUMBER_TO_MOVE;
+import static racingcar.model.RacingConstants.MIN_ROUNDS;
 
 import java.util.List;
+import racingcar.model.Car;
+import racingcar.model.Racers;
+import racingcar.model.RacingRule;
 
 public class CarRacingService {
     public RacingRule setRacingRule() {

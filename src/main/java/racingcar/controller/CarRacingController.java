@@ -7,7 +7,7 @@ import java.util.List;
 import racingcar.View.InputView;
 import racingcar.View.OutputView;
 import racingcar.View.InputValidator;
-import racingcar.service.CarRacing;
+import racingcar.model.CarRacing;
 
 public class CarRacingController {
     private final InputView inputView;

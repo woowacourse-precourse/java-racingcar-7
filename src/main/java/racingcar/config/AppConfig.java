@@ -1,10 +1,10 @@
 package racingcar.config;
 
 import racingcar.View.InputValidator;
-import racingcar.service.CarRacing;
+import racingcar.model.CarRacing;
 import racingcar.controller.CarRacingController;
-import racingcar.service.Racers;
-import racingcar.service.RacingRule;
+import racingcar.model.Racers;
+import racingcar.model.RacingRule;
 import racingcar.View.InputView;
 import racingcar.View.OutputView;
 import racingcar.service.CarRacingService;
