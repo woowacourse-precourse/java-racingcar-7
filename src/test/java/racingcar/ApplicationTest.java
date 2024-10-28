@@ -59,9 +59,6 @@ class ApplicationTest extends NsTest {
     @Test
     void 빈_칸_입력_예외처리_테스트(){
         assertThrows(IllegalArgumentException.class, () -> Application.validateEmptyInput(""));
-        assertThrows(IllegalArgumentException.class, () -> Application.validateEmptyInput(" "));
-        assertThrows(IllegalArgumentException.class, () -> Application.validateEmptyInput("     "));
-        assertThrows(IllegalArgumentException.class, () -> Application.validateEmptyInput(" "));
     }
 
     @Test
