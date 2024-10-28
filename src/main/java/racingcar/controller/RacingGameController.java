@@ -32,6 +32,7 @@ public class RacingGameController {
         playRounds(round, cars);
 
         List<Car> winners = winnerService.getWinners(cars);
+        OutputView.finalWinner(winners);
     }
 
     private Round setupRound() {
