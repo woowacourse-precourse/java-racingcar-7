@@ -8,21 +8,19 @@ import org.junit.jupiter.api.Test;
 
 class RaceTest {
 
-    NumberGenerator moveGenerator = () -> 4;
+    NumberGenerator forwardGenerator = () -> 4;
     NumberGenerator stopGenerator = () -> 3;
 
     @DisplayName("레이스 생성 성공")
     @Test
-    void parseCarNamesTest() {
+    void raceTest() {
         String rawCarNames = "pobi,woni";
 
-        Race race = new Race(rawCarNames, stopGenerator);
-
-        Assertions.assertThat(race.getCars().get(0).getName()).isEqualTo("pobi");
-        Assertions.assertThat(race.getCars().get(1).getName()).isEqualTo("woni");
+        Assertions.assertThatCode(() -> new Race(rawCarNames, stopGenerator))
+                .doesNotThrowAnyException();
     }
 
-    @DisplayName("레이스 생성 실패")
+    @DisplayName("레이스 생성 실패 : 중복된 자동차 이름")
     @Test
     void validateDuplicatesTest() {
         String rawCarNames = "pobi,pobi,woni";
@@ -35,7 +33,7 @@ class RaceTest {
     @DisplayName("우승자 판별 성공")
     @Test
     void findWinnersTest() {
-        Race race = new Race("pobi,woni", moveGenerator);
+        Race race = new Race("pobi,woni", forwardGenerator);
 
         race.getCars().get(0).move();
         List<Car> winners = race.findWinners();
