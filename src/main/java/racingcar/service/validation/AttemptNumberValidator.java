@@ -1,5 +1,6 @@
 package racingcar.service.validation;
 
+import racingcar.service.utils.ExceptionUtils;
 import racingcar.view.messages.ErrorMessageEnum;
 
 public class AttemptNumberValidator implements InputValidator<String> {
@@ -10,15 +11,14 @@ public class AttemptNumberValidator implements InputValidator<String> {
         checkNaturalNumber(initialInput);
     }
 
-    // TODO: enum 호출 넘 길다..
     private void checkNaturalNumber(String initialInput) {
         try {
             int attemptNumber = Integer.parseInt(initialInput);
             if (attemptNumber <= 0) {
-                throw new IllegalArgumentException(ErrorMessageEnum.NOT_NATURAL_NUMBER_ERROR.getErrorMessage());
+                ExceptionUtils.throwIllegalArgumentException(ErrorMessageEnum.NOT_NATURAL_NUMBER_ERROR);
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessageEnum.NOT_NATURAL_NUMBER_ERROR.getErrorMessage());
+            ExceptionUtils.throwIllegalArgumentException(ErrorMessageEnum.NOT_NATURAL_NUMBER_ERROR);
         }
     }
 }

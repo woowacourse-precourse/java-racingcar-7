@@ -1,5 +1,6 @@
 package racingcar.service.validation;
 
+import racingcar.service.utils.ExceptionUtils;
 import racingcar.view.messages.ErrorMessageEnum;
 
 public interface InputValidator<T> {
@@ -7,7 +8,7 @@ public interface InputValidator<T> {
 
     default void checkEmpty(String value) throws IllegalArgumentException {
         if (value == null || value.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessageEnum.EMPTY_ERROR.getErrorMessage());
+            ExceptionUtils.throwIllegalArgumentException(ErrorMessageEnum.EMPTY_ERROR);
         }
     }
 }

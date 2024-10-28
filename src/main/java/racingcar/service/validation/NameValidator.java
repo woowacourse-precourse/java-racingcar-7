@@ -1,5 +1,6 @@
 package racingcar.service.validation;
 
+import racingcar.service.utils.ExceptionUtils;
 import racingcar.view.messages.ErrorMessageEnum;
 
 import java.util.HashSet;
@@ -17,7 +18,7 @@ public class NameValidator implements InputValidator<List<String>> {
     private void checkLength(List<String> names) throws IllegalArgumentException {
         for (String name : names) { // TODO: 스트림으로 고칠 수 있나?
             if (name.length() > 5) {
-                throw new IllegalArgumentException(ErrorMessageEnum.NAME_LENGTH_ERROR.getErrorMessage());
+                ExceptionUtils.throwIllegalArgumentException(ErrorMessageEnum.NAME_LENGTH_ERROR);
             }
         }
     }
@@ -27,7 +28,7 @@ public class NameValidator implements InputValidator<List<String>> {
         Set<String> singleNames = new HashSet<>(names); // TODO: HashSet??
         if (singleNames.size() != names.size()) {
             // TODO: 에러메시지 이넘 get 호출?
-            throw new IllegalArgumentException(ErrorMessageEnum.DUPLICATE_NAMES_ERROR.getErrorMessage());
+            ExceptionUtils.throwIllegalArgumentException(ErrorMessageEnum.DUPLICATE_NAMES_ERROR);
         }
     }
 }
