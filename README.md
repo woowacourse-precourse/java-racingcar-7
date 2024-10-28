@@ -49,9 +49,9 @@ List\<Car> participants: 경주에 참가한 자동차의 목록
 
 - [x]  for (int curr = 0; curr < limit; curr++)
     - [x]  playSingleRound() 호출해 라운드 진행
-    - [x]  UI.printRoundResult() 호출해 현재 라운드의 결과 출력
+    - [x]  OuputView.printRoundResult() 호출해 현재 라운드의 결과 출력
 - [x]  반복이 끝나면 Utils.getWinners() 호출해 결과 집계
-- [x]  UI.printWinners() 호출해 결과 출력
+- [x]  OuputView.printWinners() 호출해 결과 출력
 
 **private void playSingleRound()**
 
@@ -82,7 +82,7 @@ int movedCnt: 현재까지 전진한 횟수
 - [x]  `amp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()` 을 활용해 0에서 9 사이의 랜덤 값 추출
 - [x]  해당 랜덤 값이 4 이상이면 true, 3 이하이면 false 리턴
 
-**public List\<String> countWinners(List\<Car> participants)**
+**public List\<String> getWinners(List\<Car> participants)**
 
 \: 우승자를 집계하는 메소드.
 
