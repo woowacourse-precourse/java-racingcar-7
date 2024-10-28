@@ -48,7 +48,7 @@
     - [x] start 메서드 반환 확인
     - [x] selectWinner 확인
 - [ ] Car 단위 테스트
-  - [ ] 랜덤한 수가 나오는지 확인
+  - [x] 랜덤한 수가 나오는지 확인
   - [ ] totalDistance가 증가되었는지 확인
   - [ ] compareTo 정렬 결과 확인
 - [ ] InputValidator 단위 테스트
