@@ -2,10 +2,16 @@ package racingcar.inputvalidator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.InputValidator;
 
 class ValidateNameTest {
+    private InputValidator inputValidator;
+    @BeforeEach
+    void setUp() {
+        inputValidator = new InputValidator();
+    }
 
     @Test
     void 컴마를_이름에_포함하지_않으면_올바른_입력입니다() {
@@ -13,7 +19,6 @@ class ValidateNameTest {
         String validInput = "yuze,woodz,jason";
 
         // when
-        InputValidator inputValidator = new InputValidator();
         Boolean result = inputValidator.isValidName(validInput);
 
         // then
@@ -26,7 +31,6 @@ class ValidateNameTest {
         String validInput = "yu1ze,woodz,2jon";
 
         // when
-        InputValidator inputValidator = new InputValidator();
         Boolean result = inputValidator.isValidName(validInput);
 
         // then
@@ -39,7 +43,6 @@ class ValidateNameTest {
         String validInput = "yu ze,woodz,jason";
 
         // when
-        InputValidator inputValidator = new InputValidator();
         Boolean result = inputValidator.isValidName(validInput);
 
         // then
@@ -52,7 +55,6 @@ class ValidateNameTest {
         String validInput = "yu.ze,woodz,jon~";
 
         // when
-        InputValidator inputValidator = new InputValidator();
         Boolean result = inputValidator.isValidName(validInput);
 
         // then
@@ -63,9 +65,6 @@ class ValidateNameTest {
     void 컴마가_이름에_포함되면_올바르지않은_입력입니다() {
         // given
         String invalidInput = "yuze,w,,oodz,jason";
-
-        // when
-        InputValidator inputValidator = new InputValidator();
 
         // then
         assertThrows(IllegalArgumentException.class, () -> inputValidator.isValidName(invalidInput));
