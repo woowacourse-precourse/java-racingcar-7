@@ -23,4 +23,14 @@ public class Application {
 
         return Integer.parseInt(totalOfRoundsInput);
     }
+
+    protected void runRace(Race race, int totalRounds) {
+        System.out.println("실행 결과");
+
+        for (int i = 0; i < totalRounds; i++) {
+            race.moveAllCars();
+            race.displayCarProgress();
+            System.out.println();
+        }
+    }
 }
