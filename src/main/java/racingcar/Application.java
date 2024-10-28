@@ -1,6 +1,7 @@
 package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,11 +21,11 @@ public class Application {
         final int numRounds = Integer.parseInt(readLine());
         for (int i = 0; i != numRounds; i++) {
             racingCars.parallelStream()
-                    .forEach(RacingCar::move);
+                    .forEach(racingCar -> racingCar.move(pickNumberInRange(0, 9)));
 
             racingCars.stream()
                     .forEach(racingCar ->
-                        pw.println(racingCar.getName() + ": " + "-".repeat(racingCar.getMileage()))
+                        pw.println(racingCar.getName() + " : " + "-".repeat(racingCar.getMileage()))
                     );
             
             pw.println();

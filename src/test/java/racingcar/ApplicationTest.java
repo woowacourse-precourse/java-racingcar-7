@@ -1,13 +1,16 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
+import camp.nextstep.edu.missionutils.test.NsTest;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -15,17 +18,36 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 전진_테스트() {
+        final List<String> carNames = List.of("pobi", "woni", "jun");
+        final int numRounds = 2;
+
         assertSimpleTest(
             () -> {
-                run("pobi,woni,jun", "2");
-                assertEquals("""
-                    pobi: -
-                    woni: -
-                    jun: -
+                run(String.join(",", carNames), String.valueOf(numRounds));
 
-                    pobi: --
-                    woni: --
-                    jun: --""", output());
+                final List<Integer> mileages = Stream.generate(() -> 0)
+                        .limit(carNames.size())
+                        .collect(Collectors.toCollection(ArrayList::new));
+
+                final String[] lines = output().split("\n");
+                for (int i = 0, j = 0; i != lines.length; i++, j = i % (carNames.size() + 1)) {
+                    final String line = lines[i];
+
+                    if (j == carNames.size()) {
+                        assertThat(line.isBlank());
+                        continue;
+                    }
+
+                    final String[] words = line.split(" : ");
+                    assertEquals(2, words.length);
+
+                    assertEquals(carNames.get(j), words[0]);
+
+                    assertEquals("-".repeat(words[1].length()), words[1]);
+                    assertThat(mileages.get(j) <= words[1].length());
+                    mileages.set(j, words[1].length());
+                }
+                assertEquals(numRounds * (carNames.size() + 1) - 1, lines.length);
             }
         );
     }
