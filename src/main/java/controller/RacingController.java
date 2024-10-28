@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import model.Car;
+import validator.InputValidator;
 import view.ResultView;
 
 public class RacingController {
@@ -11,6 +12,9 @@ public class RacingController {
     private final int raceRounds;
 
     public RacingController(List<String> carsList, int raceRounds) {
+        InputValidator.validatePositiveInteger(raceRounds);
+        InputValidator.validateZero(raceRounds);
+
         this.cars = new ArrayList<>();
         for (String car : carsList) {
             cars.add(new Car(car));
