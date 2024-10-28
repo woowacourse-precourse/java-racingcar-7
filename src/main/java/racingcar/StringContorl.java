@@ -1,7 +1,8 @@
 package racingcar;
 
 public interface StringContorl {
-    public void AppendCarName(String readData);
-    public void SetCounterNumber(String readData);
-    public void SetMoveCounter();
+    public String[] spliteStr(String readData);
+    public String countToDash(int moveCount);
+    public int strToInt(String str);
+
 }

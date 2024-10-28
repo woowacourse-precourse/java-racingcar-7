@@ -1,16 +1,36 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class DataInfo implements UserIO{
-    private String readData;
+    private String userName;
+    private int moveCount;
 
     @Override
-    public String getReadline() {
-        return this.readData;
+    public void initStatus(String userName) {
+        this.userName = userName;
+        this.moveCount = 0;
     }
 
     @Override
-    public void setReadline(String readline) {
-        this.readData = readline;
+    public void setUserName(String readline) {
+        this.userName = readline;
     }
+
+    @Override
+    public String getUserName(){
+        return this.userName;
+    }
+
+    @Override
+    public int getMoveCount(){
+        return this.moveCount;
+    }
+
+    @Override
+    public void move(){
+        if(Randoms.pickNumberInRange(0,9) > 4) this.moveCount++;
+    }
+
 
 }
