@@ -34,6 +34,17 @@ class RaceTest {
                 .hasMessage("중복된 이름의 자동차가 존재합니다.");
     }
 
+    @DisplayName("레이스 생성 실패 : 둘 미만의 자동차가 참가")
+    @Test
+    void validateAtLeastTwoCarsTest() {
+        Car pobi = new Car("pobi", forwardGenerator);
+        List<Car> cars = List.of(pobi);
+
+        Assertions.assertThatThrownBy(() -> new Race(cars))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("둘 이상의 자동차가 경주에 참여해야 합니다.");
+    }
+
     @DisplayName("우승자 판별 성공 : 한 명의 우승자")
     @Test
     void findWinnerTest() {

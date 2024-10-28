@@ -10,6 +10,7 @@ public class Race {
 
     public Race(List<Car> cars) {
         validateDuplicates(cars);
+        validateAtLeastTwoCars(cars);
         this.cars = cars;
     }
 
@@ -34,6 +35,12 @@ public class Race {
             if (!uniqueCarNames.add(carName)) {
                 throw new IllegalArgumentException("중복된 이름의 자동차가 존재합니다.");
             }
+        }
+    }
+
+    private void validateAtLeastTwoCars(List<Car> cars) {
+        if (cars.size() < 2) {
+            throw new IllegalArgumentException("둘 이상의 자동차가 경주에 참여해야 합니다.");
         }
     }
 
