@@ -31,6 +31,33 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 이름_5자_초과_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,b,cdefghi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("cdefghi: 이름은 5자를 초과할 수 없습니다.")
+        );
+    }
+
+    @Test
+    void 중복_이름_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,b,b", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("b: 중복된 이름이 입력되었습니다.")
+        );
+    }
+
+    @Test
+    void 정수가_아닌_값_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,b,c", "1@@!"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1@@!: 숫자만 입력할 수 있습니다.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
