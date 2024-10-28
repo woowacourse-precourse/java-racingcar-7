@@ -31,7 +31,10 @@ public class GameController {
         // 자동차 경주 시작
         RacingGame.play(cars, round);
 
-        // 자동차 경주 종료
+        // 자동차 경주 우승자 선출
         List<Car> winners = RacingGame.getWinners(cars);
+
+        // 우승자 출력
+        OutputView.printWinners(winners);
     }
 }
