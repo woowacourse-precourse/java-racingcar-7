@@ -20,7 +20,7 @@ public class InputReader {
     }
 
     public int readCount() {
-        String input = Console.readLine().trim();
+        String input = Console.readLine();
         validator.validateInput(input);
 
         int count = parser.parseInt(input);
