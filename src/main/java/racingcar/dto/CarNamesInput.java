@@ -8,7 +8,7 @@ public record CarNamesInput(
 ) {
     public CarNamesInput {
         validateCarNamesNotNull(carNames);
-        validateCarNamesEmpty(carNames);
+        validateCarNamesNotEmpty(carNames);
     }
 
     private void validateCarNamesNotNull(String carNames) {
@@ -17,7 +17,7 @@ public record CarNamesInput(
         }
     }
 
-    private void validateCarNamesEmpty(String carNames) {
+    private void validateCarNamesNotEmpty(String carNames) {
         if (carNames.isEmpty()) {
             throw RacingCarGameException.from(ErrorMessage.EMPTY_INPUT_ERROR);
         }
