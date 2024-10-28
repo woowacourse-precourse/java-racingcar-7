@@ -2,6 +2,7 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -25,6 +26,9 @@ public class RacingService {
             }
             else if (s.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름이 5자를 초과했습니다.");
+            }
+            else if (Collections.frequency(nameOfCar, s) != 1) {
+                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
             }
             movementNum.add(0);
         }
