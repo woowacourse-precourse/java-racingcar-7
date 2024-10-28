@@ -7,7 +7,7 @@ import static racingcar.common.RacingCarConstant.MOVE_THRESHOLD;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
-public class CarRace implements Race<RacingCar> {
+public class CarRacing implements Racing<RacingCar> {
 
     @Override
     public void start(List<RacingCar> racingCars) {
