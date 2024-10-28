@@ -1,7 +1,6 @@
 package racingcar.race;
 
 import java.util.List;
-import racingcar.Application;
 import racingcar.car.Car;
 
 public class RaceController {
