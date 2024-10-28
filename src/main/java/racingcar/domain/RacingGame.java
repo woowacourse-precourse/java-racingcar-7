@@ -28,10 +28,16 @@ public class RacingGame {
     }
 
     private void validateDuplicateNames(String[] carNames) {
-        Set<String> uniqueNames = Arrays.stream(carNames)
+        List<String> trimmedNames = Arrays.stream(carNames)
                 .map(String::trim)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
 
+        // 빈 이름 검증
+        if (trimmedNames.stream().anyMatch(String::isEmpty)) {
+            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
+        }
+
+        Set<String> uniqueNames = new HashSet<>(trimmedNames);
         if (uniqueNames.size() != carNames.length) {
             throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
         }
@@ -39,9 +45,11 @@ public class RacingGame {
 
     private List<Car> createCars(String[] carNames) {
         return Arrays.stream(carNames)
-                .map(name -> new Car(name.trim()))
+                .map(String::trim)
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
+
 
     public void playOneRound() {
         if (isGameFinished()) {
