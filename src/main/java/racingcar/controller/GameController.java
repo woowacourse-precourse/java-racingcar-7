@@ -52,6 +52,8 @@ public final class GameController {
     public List<String> readCarNames() {
         String carNamesInput = gameView.getCarNamesInput();
 
+        Validator.validateCarNamesInput(carNamesInput);
+
         return parseCarNames(carNamesInput);
     }
 

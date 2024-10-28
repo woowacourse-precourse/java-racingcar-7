@@ -1,12 +1,15 @@
 package racingcar.validator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public final class Validator {
 
     public static void validateCarNamesInput(String input) {
         validateNotEmpty(input);
         validateContainsBlank(input);
         validateNameLengthOver(input);
-
+        validateUniqueName(input);
     }
 
     public static void validateTotalRoundInput(String input) {
@@ -34,6 +37,15 @@ public final class Validator {
         }
     }
 
+    private static void validateUniqueName(String input) {
+        Set<String> carNameSet = new HashSet<>();
+
+        for (String carName : input.split(",")) {
+            if (!carNameSet.add(carName)) {
+                throw new IllegalArgumentException("Car name must be unique");
+            }
+        }
+    }
 
     private static void validateNumber(String input) {
         try {
