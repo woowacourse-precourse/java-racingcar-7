@@ -16,8 +16,12 @@ public class CarName {
 	}
 
 	private void validateName(String name) {
-		if (name.isEmpty() || name.length() > CAR_NAME_MAX_LENGTH_LIMIT) {
+		if (checkNameIsEmpty(name) || name.length() > CAR_NAME_MAX_LENGTH_LIMIT) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	private boolean checkNameIsEmpty(String name) {
+		return name.isEmpty();
 	}
 }
