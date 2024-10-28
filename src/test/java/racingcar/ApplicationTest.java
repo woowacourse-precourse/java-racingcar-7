@@ -1,6 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -40,6 +44,15 @@ class ApplicationTest extends NsTest {
             assertThat(e).hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.");
         }
     }
+
+    @Test
+    public void carMoves() {
+        Car car = new Car("pobi");
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+
 
     @Override
     public void runMain() {
