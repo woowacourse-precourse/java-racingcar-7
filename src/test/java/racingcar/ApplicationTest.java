@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Parser;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -29,6 +30,24 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 쉼표_없으면(){
+        assertThatThrownBy(() -> Parser.parse("pobi obis"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 숫자_있으면(){
+        assertThatThrownBy(() -> Parser.parse("1111,22222"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 길이_5넘으면(){
+        assertThatThrownBy(() -> Parser.parse("HelloIam,NiceToMeet"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
