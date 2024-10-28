@@ -22,3 +22,6 @@
 ### 학습할 목록
 - [x] 테스트 코드 API 학습: https://jolly-restaurant-d2f.notion.site/Java-Test-JUnit-AssertJ-12ab51098aa0809e84eada3624f1ed47?pvs=4
 - [x] 디버깅 학습 (feat/IntelliJ): https://jolly-restaurant-d2f.notion.site/Debug-Intellij-12db51098aa080d19fb0f43f9f9f7776?pvs=4
+
+### 과제 구현 과정
+- 링크: https://jolly-restaurant-d2f.notion.site/12db51098aa08026ad93cdba0e29c20d?pvs=4
