@@ -1,6 +1,7 @@
 package racingcar.car;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.StringJoiner;
@@ -16,11 +17,16 @@ public class Cars {
     }
 
     public static Cars from(List<Car> cars) {
+
+        validateDuplicatedNames(cars);
+
         return new Cars(cars);
     }
 
     public static Cars of(String... carNames) {
         List<Car> carList = new ArrayList<>();
+
+        validateDuplicatedNames(carNames);
 
         for (String name : carNames) {
             carList.add(Car.from(name));
@@ -59,4 +65,24 @@ public class Cars {
     }
 
 
+    private static void validateDuplicatedNames(List<Car> cars) {
+        boolean isDuplicated = cars.stream()
+                .distinct()
+                .count() != cars.size();
+
+        if (isDuplicated) {
+            throw new IllegalArgumentException("자동차 이름은 서로 중복될 수 없습니다.");
+        }
+
+    }
+
+    private static void validateDuplicatedNames(String[] carNames) {
+        boolean isDuplicated = Arrays.stream(carNames)
+                .distinct()
+                .count() != carNames.length;
+
+        if (isDuplicated) {
+            throw new IllegalArgumentException("자동차 이름은 서로 중복될 수 없습니다.");
+        }
+    }
 }

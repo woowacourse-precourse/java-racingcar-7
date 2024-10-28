@@ -10,6 +10,10 @@ public class Car implements Comparable<Car> {
     private int position = 0;
 
     private Car(String name) {
+        validateEmptyName(name);
+        validateBlankName(name);
+        validateLargeLengthName(name);
+
         this.name = name;
     }
 
@@ -58,5 +62,23 @@ public class Car implements Comparable<Car> {
     @Override
     public int hashCode() {
         return Objects.hashCode(name);
+    }
+
+    private void validateEmptyName(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 비워둘 수 없습니다.");
+        }
+    }
+
+    private void validateBlankName(String name) {
+        if (name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+        }
+    }
+
+    private void validateLargeLengthName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
     }
 }
