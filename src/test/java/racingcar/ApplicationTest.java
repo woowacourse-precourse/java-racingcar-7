@@ -31,6 +31,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 차이름에_쉼표를_포함할_수_없습니다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jav,,ji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
