@@ -1,8 +1,7 @@
 package racingcar.view;
 
-import racingcar.model.Car;
-
 import java.util.List;
+import racingcar.model.Cars;
 
 import static racingcar.util.constant.OutputMessageConstant.*;
 
@@ -16,18 +15,13 @@ public class OutputView {
         System.out.println(EXECUTION_RESULT.getMessage());
     }
 
-    public void printResult(List<Car> cars) {
-        cars.forEach(System.out::println);
+    public void printResult(Cars cars) {
+        cars.carsToString().forEach(System.out::println);
         newline();
     }
 
-    public void finalWinnerMessage(List<Car> winners) {
+    public void finalWinnerMessage(List<String> winners) {
         System.out.print(FINAL_WINNER.getMessage());
-        for (int i = 0; i < winners.size(); i++) {
-            System.out.print(winners.get(i).getName());
-            if(i + 1 < winners.size()) {
-                System.out.print(", ");
-            }
-        }
+        System.out.println(String.join(", ", winners));
     }
 }

@@ -3,6 +3,7 @@ package racingcar.service;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.util.constant.RegisterCarNumberConstant.PRIME_CAR_DISTANCE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +13,13 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.TheCarDoesntStartException;
 import racingcar.model.Car;
+import racingcar.model.Cars;
 
 class GameServiceTest {
 
     private GameService gameService;
+    private static final String BMW = "BMW";
+    private static final String AUDI = "Audi";
 
     @BeforeEach
     void setUp() {
@@ -45,39 +49,34 @@ class GameServiceTest {
 
         @Test
         void 공동_1등_테스트() {
-            List<Car> cars = new ArrayList<>();
-            Car bmw = new Car("BMW");
-            bmw.move();
-            Car audi = new Car("Audi");
-            audi.move();
-            cars.add(bmw);
-            cars.add(audi);
+            List<Car> addCars = List.of(new Car(BMW, 1), new Car(AUDI, 1));
+            Cars cars = new Cars(addCars);
+
             assertSimpleTest(() ->
-                    assertEquals(cars, gameService.winners(cars))
+                    assertEquals(cars.carsToName(), gameService.winners(cars))
             );
         }
 
         @Test
         void 단일_1등_테스트() {
-            List<Car> cars = new ArrayList<>();
-            Car bmw = new Car("BMW");
-            bmw.move();
-            Car audi = new Car("Audi");
-            cars.add(bmw);
-            cars.add(audi);
+            List<Car> addCars = List.of(new Car(BMW, 1), new Car(AUDI, PRIME_CAR_DISTANCE.getValue()));
+            Cars cars = new Cars(addCars);
 
-            List<Car> winner = new ArrayList<>();
-            winner.add(bmw);
+            List<Car> addWinnerCars = List.of(new Car(BMW, 1));
+            Cars expectedWinner = new Cars(addWinnerCars);
+
             assertSimpleTest(() ->
-                    assertEquals(winner, gameService.winners(cars))
+                    assertEquals(expectedWinner.carsToName(), gameService.winners(cars))
             );
         }
 
         @Test
         void 출발_안한_경우_테스트() {
-            List<Car> cars = new ArrayList<>();
-            cars.add(new Car("BMW"));
-            cars.add(new Car("Audi"));
+            List<Car> addCars = new ArrayList<>();
+            addCars.add(new Car(BMW, PRIME_CAR_DISTANCE.getValue()));
+            addCars.add(new Car(AUDI, PRIME_CAR_DISTANCE.getValue()));
+            Cars cars = new Cars(addCars);
+
             assertSimpleTest(() ->
                     assertThrows(TheCarDoesntStartException.class, () -> gameService.winners(cars))
             );

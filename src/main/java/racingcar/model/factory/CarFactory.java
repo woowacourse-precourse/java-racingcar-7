@@ -1,12 +1,16 @@
 package racingcar.model.factory;
 
+import static racingcar.util.constant.RegisterCarNumberConstant.PRIME_CAR_DISTANCE;
+
 import racingcar.model.Car;
 
 import java.util.List;
+import racingcar.model.Cars;
 
 public class CarFactory {
 
-    public static List<Car> convertToCar(List<String> carNames) {
-        return carNames.stream().map(Car::new).toList();
+    public static Cars convertToCar(List<String> carNames) {
+        List<Car> carList = carNames.stream().map(carName -> new Car(carName, PRIME_CAR_DISTANCE.getValue())).toList();
+        return new Cars(carList);
     }
 }

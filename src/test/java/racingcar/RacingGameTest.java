@@ -11,6 +11,7 @@ import static racingcar.util.constant.OutputMessageConstant.INPUT_TURN_COUNT;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import racingcar.exception.TheCarDoesntStartException;
 import racingcar.exception.carName.DuplicateCarNameException;
 import racingcar.exception.EmptyInputException;
 import racingcar.exception.carName.InvalidCharacterException;
@@ -57,7 +58,7 @@ public class RacingGameTest extends NsTest {
         }
 
         @Test
-        void 자동차_이름_중복_테스트() {
+        void 자동차_이름_중복_예외테스트() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("oo,oo", "1"))
                             .isInstanceOf(DuplicateCarNameException.class)
@@ -81,16 +82,26 @@ public class RacingGameTest extends NsTest {
         }
 
         @Test
-        void 빈_입력값_예외테스트() {
+        @DisplayName("입력값 검증 중 빈값 예외테스트")
+        void 빈_입력값_예외테스트1() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("", "1"))
+                            .isInstanceOf(EmptyInputException.class)
+            );
+        }
+
+        @Test
+        @DisplayName("자동차 이름 검증 중 빈값 예외테스트")
+        void 빈_입력값_예외테스트2() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("abcd,,efgh", "1"))
                             .isInstanceOf(EmptyInputException.class)
             );
         }
     }
 
     @Nested
-    @DisplayName("시도횟수 등록중 예외테스트")
+    @DisplayName("시도횟수 등록 테스트")
     class ExecutionNumberRegistExceptionTests {
 
         @Test
@@ -116,6 +127,21 @@ public class RacingGameTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("abc", "1001"))
                             .isInstanceOf(NumberRangeException.class)
+            );
+        }
+    }
+
+    @Nested
+    @DisplayName("자동차 등록 테스트")
+    class RaceResultTests {
+
+        @Test
+        void 자동차_정지_예외테스트() {
+            assertRandomNumberInRangeTest(
+                    () -> assertThatThrownBy(
+                                () -> runException("pobi,eddy", "1"))
+                                .isInstanceOf(TheCarDoesntStartException.class),
+                    STOP, STOP
             );
         }
     }

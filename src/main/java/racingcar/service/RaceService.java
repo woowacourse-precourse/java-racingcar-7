@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import racingcar.model.Car;
+import racingcar.model.Cars;
 
 public class RaceService {
 
@@ -10,9 +10,7 @@ public class RaceService {
         this.gameService = gameService;
     }
 
-    public void race(Car racingCar) {
-        if (gameService.isMoving()) {
-            racingCar.move();
-        }
+    public Cars race(Cars racingCars) {
+        return racingCars.moveOneTurn(gameService);
     }
 }

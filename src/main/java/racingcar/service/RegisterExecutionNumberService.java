@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import racingcar.model.ExecutionNumber;
 import racingcar.util.DataTransformUtil;
 import racingcar.util.ValidationUtil;
 
@@ -13,9 +14,9 @@ public class RegisterExecutionNumberService {
         this.dataTransformUtil = dataTransformUtil;
     }
 
-    public int registerExecutionNumber(final String executionNumberInput) {
+    public ExecutionNumber registerExecutionNumber(final String executionNumberInput) {
         isValidExecutionNumber(executionNumberInput);
-        return dataTransformUtil.parseToInt(executionNumberInput);
+        return new ExecutionNumber(dataTransformUtil.parseToInt(executionNumberInput));
     }
 
     private boolean isValidExecutionNumber(final String executionNumberInput){

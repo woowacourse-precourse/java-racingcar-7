@@ -1,40 +1,21 @@
 package racingcar.model;
 
-import static racingcar.util.constant.RegisterCarNumberConstant.PRIME_CAR_DISTANCE;
-
 import java.util.Objects;
 
-public class Car {
+public record Car(String name, int distance) {
 
-    private final String name;
-    private int distance;
-
-    public Car(String name) {
-        this.name = name;
-        distance = PRIME_CAR_DISTANCE.getValue();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getDistance() {
-        return distance;
-    }
-
-    public void move() {
-        distance++;
-    }
-
-    @Override
-    public String toString() {
-        return name + " : " + "-".repeat(distance);
+    public Car move() {
+        return new Car(name, distance + 1);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(this == obj) return true;
-        if(obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         Car car = (Car) obj;
         return name.equals(car.name);
     }
@@ -42,5 +23,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + "-".repeat(distance);
     }
 }

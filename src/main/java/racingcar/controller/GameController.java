@@ -1,6 +1,7 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
+import racingcar.model.Cars;
+import racingcar.model.ExecutionNumber;
 import racingcar.service.RaceService;
 import racingcar.service.RegisterCarService;
 import racingcar.service.RegisterExecutionNumberService;
@@ -26,19 +27,19 @@ public class GameController {
         this.raceService = raceService;
     }
 
-    public List<Car> registerCars(final String input) {
+    public Cars registerCars(final String input) {
         return registerCarService.registerCars(input);
     }
 
-    public int registerExecutionNumber(final String executionNumberInput) {
+    public ExecutionNumber registerExecutionNumber(final String executionNumberInput) {
         return registerExecutionNumberService.registerExecutionNumber(executionNumberInput);
     }
 
-    public void race(Car racingCar) {
-        raceService.race(racingCar);
+    public Cars race(Cars racingCars) {
+        return raceService.race(racingCars);
     }
 
-    public List<Car> raceResult(List<Car> cars) {
+    public List<String> raceResult(Cars cars) {
         return gameService.winners(cars);
     }
 }

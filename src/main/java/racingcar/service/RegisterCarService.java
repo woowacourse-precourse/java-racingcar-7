@@ -1,14 +1,11 @@
 package racingcar.service;
 
-import racingcar.exception.carName.DuplicateCarNameException;
-import racingcar.model.Car;
+import racingcar.model.Cars;
 import racingcar.model.factory.CarFactory;
 import racingcar.util.DataTransformUtil;
 import racingcar.util.ValidationUtil;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static racingcar.util.constant.CharacterConstant.CAR_DELIMITER;
 
@@ -22,7 +19,7 @@ public class RegisterCarService {
         this.dataTransformUtil = dataTransformUtil;
     }
 
-    public List<Car> registerCars(final String input) {
+    public Cars registerCars(final String input) {
         List<String> carNames = mapToCarNames(input);
         return carNameRegistration(carNames);
     }
@@ -32,19 +29,11 @@ public class RegisterCarService {
         return dataTransformUtil.splitInput(carNameInput, CAR_DELIMITER.getStringValue());
     }
 
-    private List<Car> carNameRegistration(List<String> carNames) {
+    private Cars carNameRegistration(List<String> carNames) {
         validationUtil.isValidCarNameLength(carNames);
-        List<Car> cars = CarFactory.convertToCar(carNames);
-        carNameDuplicateValidation(cars);
+        Cars cars = CarFactory.convertToCar(carNames);
+        cars.duplicateValidation();
         return cars;
-    }
-
-    private boolean carNameDuplicateValidation(List<Car> cars) {
-        Set<Car> deduplicationCars = new HashSet<>(cars);
-        if(cars.size() != deduplicationCars.size()) {
-            throw new DuplicateCarNameException();
-        }
-        return true;
     }
 
     private boolean isValidCarNameInput(final String input) {
