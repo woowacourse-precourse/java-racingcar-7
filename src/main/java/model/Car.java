@@ -27,8 +27,7 @@ public class Car {
     public void stop() {
         isStopped = true;
     }
-
-    // 현재 미사용
+    
     public boolean isStopped() {
         return isStopped;
     }
