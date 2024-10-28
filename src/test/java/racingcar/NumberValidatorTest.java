@@ -1,18 +1,13 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class NumberValidatorTest extends NsTest {
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
-
+public class NumberValidatorTest {
+    /** 테스트 클래스 명 -> [메서드 명]_[테스트 중 상태]_[기대 행위] **/
     @ParameterizedTest
     @ValueSource(ints = {0, -1, -2, -3, -10, -100})
     @DisplayName("주어진 횟수를 양수로 입력하지 않으면 예외 발생")

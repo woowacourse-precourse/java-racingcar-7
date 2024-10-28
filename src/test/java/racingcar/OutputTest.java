@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,14 +12,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class OutputTest extends NsTest {
+public class OutputTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
 
     @BeforeEach
     void setUpStreams() {
@@ -42,7 +36,7 @@ public class OutputTest extends NsTest {
         //then
         assertThat(outContent.toString().trim())
                 .isEqualTo("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        outContent.reset(); // 매 테스트 후 출력 리셋
+        outContent.reset();
     }
 
     @Test
@@ -54,7 +48,7 @@ public class OutputTest extends NsTest {
         //then
         assertThat(outContent.toString().trim())
                 .isEqualTo("시도할 횟수는 몇 회인가요?");
-        outContent.reset(); // 매 테스트 후 출력 리셋
+        outContent.reset();
     }
 
     @Test
@@ -66,7 +60,7 @@ public class OutputTest extends NsTest {
         //then
         assertThat(outContent.toString().trim())
                 .isEqualTo("실행 결과");
-        outContent.reset(); // 매 테스트 후 출력 리셋
+        outContent.reset();
     }
 
     @Test
@@ -93,7 +87,7 @@ public class OutputTest extends NsTest {
         //then
         assertThat(outContent.toString().trim())
                 .isEqualTo(expectedMessage);
-        outContent.reset(); // 매 테스트 후 출력 리셋
+        outContent.reset();
     }
 
     @Test
@@ -114,6 +108,6 @@ public class OutputTest extends NsTest {
         //then
         assertThat(outContent.toString().trim())
                 .isEqualTo(expectedMessage);
-        outContent.reset(); // 매 테스트 후 출력 리셋
+        outContent.reset();
     }
 }

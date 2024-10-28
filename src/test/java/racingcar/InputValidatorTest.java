@@ -1,19 +1,13 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class InputValidatorTest extends NsTest {
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
-
+public class InputValidatorTest {
+    /** 테스트 클래스 명 -> [메서드 명]_[테스트 중 상태]_[기대 행위] **/
     @ParameterizedTest
     @ValueSource(strings = {"Ahn;Seong;Mo", "Ahn", "Ahn,Seong,Ahn"})
     @DisplayName("잘못된 자동차 이름 문자열 입력 예외 발생")

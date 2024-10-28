@@ -1,28 +1,17 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InputTest extends NsTest {
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
-
+public class InputTest {
     @AfterEach
     void tearDown() {
-        // 각 테스트 후에 System.in을 원래 입력으로 재설정합니다.
         Console.close();
     }
 
