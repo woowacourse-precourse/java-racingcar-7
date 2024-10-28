@@ -1,7 +1,8 @@
 package racingcar.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-
+// 사용자에게 입력 값을 받는 역할을 하는 InputView입니다.
+// 해당 View는 입력 값을 받는 역할만 충실하게 구현하였습니다.
 public class InputView {
 
     private static final String INPUT_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";

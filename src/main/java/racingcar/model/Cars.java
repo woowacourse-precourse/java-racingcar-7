@@ -22,7 +22,7 @@ public class Cars {
         this.cars = cars;
         validate();
     }
-
+    // input으로 받은 자동차 이름을 이용해서 car를 생성하고 cars에 등록한다.
     public static Cars from(String input) {
         List<Car> cars = Arrays.stream(input.split(INPUT_DELIMITER, -1)).map(Car::from).toList();
         return new Cars(cars);
@@ -31,12 +31,12 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
-
+    // 제일 많이 이동한 Location을 꺼내본다.
     public int getMaxLocation() {
         List<Integer> locations = cars.stream().map(Car::getCurrentLocation).toList();
         return Collections.max(locations);
     }
-
+    // 검증 절차 -> 중복, cars size
     private void validate() {
         validateCarsSize();
         validateDuplicate();

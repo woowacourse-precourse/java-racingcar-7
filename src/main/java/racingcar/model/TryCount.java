@@ -15,7 +15,7 @@ public class TryCount {
         validateRange(count);
         this.count = count;
     }
-
+    // 시도 횟수에 대해서 input 값에 대한 검증을 실시하고 검증 통과 시 int 값으로 변환하여 범위 검증 실행 후 생성
     public static TryCount from(String input) {
         validateNumeric(input);
         validateEmpty(input);

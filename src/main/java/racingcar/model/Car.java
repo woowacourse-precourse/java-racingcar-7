@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Car {
 
-    private static final int MOVE_CONDITION = 4;
+    private static final int MOVE_MIN_CONDITION = 4;
     private static final int MIN_CONDITION = 0;
     private static final int MAX_CONDITION = 9;
 
@@ -20,17 +20,13 @@ public class Car {
     public static Car from(String name) {
         return new Car(new Name(name), new Location());
     }
-
+    // 자동차에게 움직이라는 메세지를 전달하여 조건에 충족 시 자동차를 이동시킨다.
     public void move() {
         if (canMove()) {
             location.moveForward();
         }
     }
-
-    private boolean canMove() {
-        return Randoms.pickNumberInRange(MIN_CONDITION, MAX_CONDITION) >= MOVE_CONDITION;
-    }
-
+    // 현재 자동차의 위치를 확인할 수 있다.
     public int getCurrentLocation() {
         return location.getLocation();
     }
@@ -53,6 +49,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hashCode(name);
+    }
+
+    private boolean canMove() {
+        return Randoms.pickNumberInRange(MIN_CONDITION, MAX_CONDITION) >= MOVE_MIN_CONDITION;
     }
 }
 

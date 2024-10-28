@@ -1,5 +1,5 @@
 package racingcar.model;
-
+// 자동차의 이름을 담아두는 일급 객체! 자동차 이름을 검증하고 담아둡니다!
 public record Name(String name) {
 
     private static final String INVALID_EMPTY_MESSAGE = "이름에 빈 값을 입력할 수 없습니다.";
