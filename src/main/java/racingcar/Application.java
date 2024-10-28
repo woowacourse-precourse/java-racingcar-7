@@ -13,7 +13,7 @@ public class Application {
         try {
             String[] name = inputName();
             for(String str: name){
-                if(str.length()>5){
+                if(str.length() > 5){
                     throw new IllegalArgumentException();
                 }
             }
@@ -25,6 +25,7 @@ public class Application {
                 move[i] = "";
             }
 
+            System.out.println("실행 결과");
             for (int i = 0; i < num; i++) {
                 display(name, move);
             }
