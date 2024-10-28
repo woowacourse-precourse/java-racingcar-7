@@ -1,7 +1,11 @@
 package racingcar.domain.racingcar;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import racingcar.dto.RacingCarDto;
 
 public class RacingCarRepository {
@@ -36,4 +40,22 @@ public class RacingCarRepository {
 		return racingCarMap.get(carName);
 	}
 
+	public void movingForwardByName(RacingCarDto racingCarDto) {
+		racingCarMap.get(racingCarDto.getCarName()).movingForward();
+	}
+
+	public void movingForwardByName(String carName) {
+		racingCarMap.get(carName).movingForward();
+	}
+
+	public LinkedHashMap<String, RacingCar> sortRacingCarMapByValueDesc(Map<String, RacingCar> map) {
+		List<Entry<String, RacingCar>> entryList = new LinkedList<>(map.entrySet());
+		Collections.sort(entryList, (racingCar, comparedRacingCar) -> comparedRacingCar.getValue().getCarPosition().compareTo(racingCar.getValue().getCarPosition()));
+		LinkedHashMap<String, RacingCar> racingCarLinkedHashMap = new LinkedHashMap<>();
+		for (Map.Entry<String, RacingCar> entity : entryList) {
+			racingCarLinkedHashMap.put(entity.getKey(), entity.getValue());
+		}
+
+		return racingCarLinkedHashMap;
+	}
 }

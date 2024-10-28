@@ -53,4 +53,12 @@ public class ValidatorService {
 		}
 		return (arrUserInput.length != userInputSet.size());
 	}
+
+	public ValidationMsg validationCarRaceTimes(String RaceTimes) {
+		if (RaceTimes == null) return ValidationMsg.NULL_TYPE;
+		if (RaceTimes.isEmpty()) return ValidationMsg.EMPTY_TYPE;
+		try { Integer.valueOf(RaceTimes); } catch (NumberFormatException e) { return ValidationMsg.NOT_NUMBER; }
+		if (RaceTimes.equals("0")) return ValidationMsg.ZERO_TYPE;
+		return ValidationMsg.PROPER_TYPE;
+	}
 }

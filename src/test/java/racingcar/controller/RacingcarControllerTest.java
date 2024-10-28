@@ -21,7 +21,7 @@ import racingcar.service.RacingCarService;
 import racingcar.service.RacingCarServiceTest;
 import racingcar.service.ValidatorServiceTest;
 
-public class OperatorControllerTest extends NsTest {
+public class RacingcarControllerTest extends NsTest {
 	private ValidatorServiceTest validatorServiceTest;
 	private RacingCarServiceTest racingCarServiceTest;
 	private List<String> carNameList;
@@ -101,18 +101,15 @@ public class OperatorControllerTest extends NsTest {
 		assertEquals(ValidationMsg.EMPTY_TYPE, validatorServiceTest.getInstance().validationCarRaceTimes(""));
 	}
 
-
 	@DisplayName("자동차_레이싱_시도_회수_입력값_0_검증")
 	@Test
 	void 자동차_레이싱_시도_회수_입력값_0_검증() {
 		assertThrows(IllegalArgumentException.class,() -> {
 			System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_RACE_TIMES.getValue()); run("0");
-			String carName = readLine();
-			System.out.println(carName);
+			String carName = readLine(); System.out.println(carName);
 			ValidationMsg validationMsg = validatorServiceTest.getInstance().validationCarRaceTimes(carName);
 			if (validationMsg == ValidationMsg.ZERO_TYPE) {
-				System.out.println(validationMsg.getValue());
-				throw new IllegalArgumentException();
+				System.out.println(validationMsg.getValue()); throw new IllegalArgumentException();
 			}
 		});
 	}
@@ -121,12 +118,10 @@ public class OperatorControllerTest extends NsTest {
 	void 자동차_레이싱_시도_회수_입력값_숫자_이외_값_검증() {
 		assertThrows(IllegalArgumentException.class,() -> {
 			System.out.print(InterfaceMsg.REQUEST_INPUT_CAR_RACE_TIMES.getValue()); run("pobi");
-			String carName = readLine();
-			System.out.println(carName);
+			String carName = readLine(); System.out.println(carName);
 			ValidationMsg validationMsg = validatorServiceTest.getInstance().validationCarRaceTimes(carName);
 			if (validationMsg == ValidationMsg.NOT_NUMBER) {
-				System.out.println(validationMsg.getValue());
-				throw new IllegalArgumentException();
+				System.out.println(validationMsg.getValue()); throw new IllegalArgumentException();
 			}
 		});
 	}
@@ -148,6 +143,23 @@ public class OperatorControllerTest extends NsTest {
 		RacingCarService.getInstance().initSaveRacingCar(racingCarInitDto);
 
 		RacingCarService.getInstance().getRacingCarMap().forEach((key, val) -> assertThat(carNameList).contains(key));
+		RacingCarService.getInstance().getRacingCarMap().forEach((key, val) -> val.movingForward());
+		RacingCarService.getInstance().getRacingCarMap().forEach((key, val) -> System.out.println(key + " : " + val.getCarPosition()));
+	}
+
+	@Test
+	void RacingCarRepository가_가진_RacingCar들의_이름과_전진한_값을_출력() {
+		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder().carNameList(carNameList).inputCarRaceTimes(5).build();
+		racingCarServiceTest.initSaveRacingCar(racingCarInitDto);
+		racingCarServiceTest.playCarRacing();
+	}
+
+	@Test
+	void 최종_우승자_결과출력() {
+		RacingCarInitDto racingCarInitDto = RacingCarInitDto.builder().carNameList(carNameList).inputCarRaceTimes(5).build();
+		racingCarServiceTest.initSaveRacingCar(racingCarInitDto);
+		racingCarServiceTest.playCarRacing();
+		racingCarServiceTest.printCarRacingResult();
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package racingcar.domain.racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Objects;
 import racingcar.domain.enums.ValidationMsg;
 
@@ -11,10 +12,12 @@ public class RacingCar {
 	private static final int MAX_RAMDOM = 9;
 
 	private String carName;
+	private Integer carPosition;
 
 	public RacingCar(String carName) {
 		validateCarName(carName);
 		this.carName = carName;
+		this.carPosition = 0;
 	}
 
 	private void validateCarName(String carName) {
@@ -25,6 +28,20 @@ public class RacingCar {
 
 	public String getCarName() {
 		return carName;
+	}
+
+	public Integer getCarPosition() {
+		return carPosition;
+	}
+
+	private void movingForwardRacingCar() {
+		this.carPosition++;
+	}
+
+	public void movingForward() {
+		if (Randoms.pickNumberInRange(MIN_RAMDOM, MAX_RAMDOM) >= MOVING_FORWARD) {
+			this.movingForwardRacingCar();
+		}
 	}
 
 	@Override
