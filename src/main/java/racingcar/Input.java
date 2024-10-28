@@ -18,4 +18,10 @@ public class Input {
         inputValidator.validateCarName(carNames);
         return carNames;
     }
+
+    public static int getNumber(){
+        int number = Integer.parseInt(Console.readLine());
+        inputValidator.validateNumber(number);
+        return number;
+    }
 }
