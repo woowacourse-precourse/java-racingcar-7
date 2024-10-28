@@ -1,6 +1,6 @@
 package racingcar.model.infrastructure;
 
-import racingcar.model.domain.RaceFind;
+import racingcar.model.domain.Race;
 import racingcar.model.domain.Rule;
 import racingcar.model.domain.Vehicle;
 import racingcar.view.OutputView;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static racingcar.view.enumerate.OutputConstant.PRINT_RUNNING_RESULT_SENTENCE;
 
-public class CarRace implements RaceFind {
+public class CarRace implements Race {
     private final static Integer CAR_INIT_DISTANCE = 0;
     private final int tryTimes;
     private final List<Vehicle> cars;
@@ -49,7 +49,7 @@ public class CarRace implements RaceFind {
     }
 
     @Override
-    public List<String> getWinners() {
+    public List<String> findWinners() {
         int maxDistance = getMaxDistanceBetweenCars();
         return findWinner(maxDistance);
     }

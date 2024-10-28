@@ -18,12 +18,12 @@ class RaceFindTest {
         List<Car> cars = List.of(new Car("name1", 1, carMoveDecider),
                 new Car("name2", 2, carMoveDecider),
                 new Car("name3", 3, carMoveDecider));
-        RaceFind race = new CarRace(1, cars,new RaceRule());
+        Race race = new CarRace(1, cars,new RaceRule());
 
         // when
         System.out.println("=====Logic Start=====");
 
-        List<String> winners = race.getWinners();
+        List<String> winners = race.findWinners();
 
         System.out.println("=====Logic End=====");
         // then

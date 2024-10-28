@@ -2,7 +2,6 @@ package racingcar.controller.infrastructure;
 
 import racingcar.controller.domain.GameController;
 import racingcar.model.domain.Race;
-import racingcar.model.domain.RaceFind;
 import racingcar.model.infrastructure.CarRace;
 import racingcar.model.infrastructure.RaceRule;
 import racingcar.util.Splitter;
@@ -12,6 +11,7 @@ import racingcar.view.enumerate.OutputConstant;
 
 import java.util.List;
 
+// carRace / race
 public class RaceController implements GameController {
     private final InputView inputView;
     private final OutputView outputView;
@@ -23,12 +23,13 @@ public class RaceController implements GameController {
 
     @Override
     public void run() {
-        RaceFind race = createRacing();
+        Race race = createRacing();
         playRace(race);
         announce(race);
     }
 
     @Override
+    // toNames(String) splitNames
     public List<String> process(String in) {
         List<String> split = Splitter.split(in);
         for (String s : split) {
@@ -37,8 +38,8 @@ public class RaceController implements GameController {
         return split;
     }
 
-    private void announce(RaceFind race) {
-        List<String> winners = race.getWinners();
+    private void announce(Race race) {
+        List<String> winners = race.findWinners();
         outputView.printWinners(winners);
     }
 
@@ -56,7 +57,8 @@ public class RaceController implements GameController {
         return inputView.inputCarName();
     }
 
-    private RaceFind createRacing() {
+    // createRace
+    private Race createRacing() {
         String carNamesInput = requestCarNames();
         int tryTimes = requestTryTimes();
         List<String> carNames = process(carNamesInput);
@@ -66,6 +68,7 @@ public class RaceController implements GameController {
 
     private void validateNameLength(String name) {
         if (name.length() > 5) {
+            //enum error
             throw new IllegalArgumentException("5글자이하의 자동차의 이름을 입력해주세요.");
         }
     }
