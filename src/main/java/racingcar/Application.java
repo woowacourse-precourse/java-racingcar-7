@@ -7,8 +7,8 @@ import racingcar.view.InputView;
 public class Application {
     public static void main(String[] args) {
         Racing racing = Racing.of(InputView.readCars());
-        int trials = Integer.parseInt(InputView.readTrials());
-        GameController gameController = new GameController(racing, trials);
+        int round = Integer.parseInt(InputView.readTrials());
+        GameController gameController = new GameController(racing, round);
         gameController.run();
     }
 }
