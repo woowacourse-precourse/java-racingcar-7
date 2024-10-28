@@ -1,12 +1,13 @@
 package racingcar.view;
 
+import racingcar.domain.CarDTO;
 import racingcar.domain.InputDTO;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-//자동차이름 5글자 이상인지 판단
-//공백만 들어온 경우에 대한 예외처리
-//,를 기준으로 앞 뒤에 공백은 지우고 중간 문자열 중간의 공백은 유지
+
 public class RacingCarView {
 
     public InputDTO getInputCarName() {
@@ -27,6 +28,14 @@ public class RacingCarView {
 
     public void showRoundTimeInfo(){
         System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
+    // 각 라운드의 결과를 출력하는 메서드
+    public void showRoundResult(List<CarDTO> cars) {
+        for (CarDTO car : cars) {
+            System.out.println(car.getCarName() + " : " + "-".repeat(car.getGoStraight()));
+        }
+        System.out.println();
     }
 
 }

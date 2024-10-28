@@ -6,8 +6,8 @@ public class CarDTO {
 
     public CarDTO(String carName) {
         this.carName = carName;
-        //초기값은 0으로 설정
-        this.goStraight = 0;
+
+        this.goStraight = 0;//초기값은 0으로 설정
     }
 
     public String getCarName() {
