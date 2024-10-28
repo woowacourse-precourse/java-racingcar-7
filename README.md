@@ -107,7 +107,7 @@ jun : -----
 
 ## ✏️ 구현할 기능
 
-### 1. IoC(Inverse of Control), DI(Dependency Injection) 기능을 구현한다.
+### 1. IoC(Inversion of Control), DI(Dependency Injection) 기능을 구현한다.
 
 > [!NOTE]
 > 
