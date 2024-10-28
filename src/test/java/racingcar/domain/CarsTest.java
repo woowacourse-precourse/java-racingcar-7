@@ -1,10 +1,14 @@
 package racingcar.domain;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarsTest {
     @Test
@@ -20,6 +24,22 @@ public class CarsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> Cars.from(List.of(Car.from("우테코"), Car.from("우테코"))))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void 랜덤_숫자가_0에서_3까지_일때_모든_자동차의_이동_상황_테스트(int number) {
+        Cars cars = Cars.from(List.of(Car.from("우테코"), Car.from("프리코스")));
+        assertRandomNumberInRangeTest(
+                () -> {
+                    cars.moveEachCar();
+                    cars.getCars().forEach(car -> {
+                                        assertThat(car.getPosition()).isEqualTo(0);
+                                        assertThat(car.getMoveStatus()).isEqualTo("");
+                                    });
+                },
+                number
         );
     }
 }
