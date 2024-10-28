@@ -6,6 +6,7 @@ import java.util.Map;
 import racingcar.model.CarName;
 import racingcar.model.CarScores;
 import racingcar.model.Distance;
+import racingcar.view.OutputView;
 
 public class RaceService {
     public static CarScores playGame(CarScores previousCarScores) {
@@ -15,7 +16,7 @@ public class RaceService {
             int randomNumber = getRandomNumber();
             Distance newDistance = moveOrStop(nowCarScore.getValue(), randomNumber);
             nowScores.put(nowCarScore.getKey(), newDistance);
-            // 출력 로직 필요
+            OutputView.printNowCarScore(nowCarScore.getKey(), newDistance);
         }
 
         return new CarScores(nowScores);
