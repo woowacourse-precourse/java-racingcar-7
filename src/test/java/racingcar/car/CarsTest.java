@@ -1,6 +1,7 @@
 package racingcar.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -38,5 +39,13 @@ class CarsTest {
 
         // then
         assertThat(winnerList).containsExactly(Car.from("test2"), Car.from("test3"));
+    }
+
+    @Test
+    @DisplayName("자동차 이름은 서로 중복될 수 없다")
+    void whenDuplicatedCarsNameThrowException() {
+        assertThatThrownBy(() -> Cars.of("t1", "t2", "t2"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 서로 중복될 수 없습니다.");
     }
 }
