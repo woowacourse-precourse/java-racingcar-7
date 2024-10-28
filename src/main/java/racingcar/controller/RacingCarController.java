@@ -22,8 +22,10 @@ public class RacingCarController {
         String carNames = Console.readLine();
         InputHandler.promptForAttemptCount();
         String countString = Console.readLine();
+
         InputHandler.validateCarNames(carNames);
         InputHandler.validateAttemptCount(countString);
+
         int attemptCount = Integer.parseInt(countString);
 
         List<Car> cars = Car.createCars(carNames);
@@ -32,7 +34,6 @@ public class RacingCarController {
         racingCarService.startRace(race, attemptCount);
 
         List<String> winners = racingCarService.getWinners(race.getCars());
-
         OutputHandler.printWinners(winners);
     }
 }

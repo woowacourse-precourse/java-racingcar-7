@@ -19,8 +19,10 @@ public class InputHandler {
         if (carNames == null || carNames.isEmpty() || carNames.equals(" ")) {
             throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
         }
+
         List<String> carNameList = new ArrayList<>();
         carNameList.addAll(Arrays.asList(carNames.split(",")));
+
         for (String carName : carNameList) {
             if (carName.isEmpty() || !carName.matches("[a-zA-Z0-9]+")) {
                 throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
@@ -35,6 +37,7 @@ public class InputHandler {
         if (attemptCount == null || attemptCount.isEmpty()) {
             throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
         }
+
         try {
             int count = Integer.parseInt(attemptCount);
             if (count <= 0) {
