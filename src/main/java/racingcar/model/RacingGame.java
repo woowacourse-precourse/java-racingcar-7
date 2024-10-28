@@ -1,14 +1,17 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.dto.CarDto;
+import racingcar.dto.RacingGameDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final String DELIMITER = ",";
+
     private final List<Car> cars;
     private final int tryCount;
-    private static final String DELIMITER = ",";
 
     public RacingGame(String carNames, int tryCount) {
         this.cars = initializeCars(carNames);
@@ -24,14 +27,14 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public void validateFormat(String carNames, List<String> carNameList) {
+    private void validateFormat(String carNames, List<String> carNameList) {
         int count = carNames.length() - carNames.replace(DELIMITER, "").length();
         if (count + 1 != carNameList.size()) {
             throw new IllegalArgumentException("입력 형식이 올바르지 않습니다.: " + carNames);
         }
     }
 
-    public void checkDuplicate(List<String> carNameList) {
+    private void checkDuplicate(List<String> carNameList) {
         if (carNameList.size() != carNameList.stream().distinct().count()) {
             throw new IllegalArgumentException("자동차 이름은 중복일 수 없습니다.");
         }
@@ -52,23 +55,21 @@ public class RacingGame {
     public List<String> getWinners() {
         int maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
+                .map(Car::toCarDtO)
+                .filter(dto -> dto.position() == maxPosition)
+                .map(CarDto::name)
                 .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
+                .map(Car::toCarDtO)
+                .mapToInt(CarDto::position)
                 .max()
                 .orElse(0);
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public int getTryCount() {
-        return tryCount;
+    public RacingGameDto toRacingGameDto() {
+        return new RacingGameDto(cars, tryCount);
     }
 }

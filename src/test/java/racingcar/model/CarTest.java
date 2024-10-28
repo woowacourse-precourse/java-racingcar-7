@@ -15,14 +15,14 @@ public class CarTest {
     public void carForward() {
         Car car = new Car("pobi");
         car.move(MOVING_FORWARD);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.toCarDtO().position()).isEqualTo(1);
     }
 
     @Test
     public void carStop() {
         Car car = new Car("pobi");
         car.move(STOP);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.toCarDtO().position()).isEqualTo(0);
     }
 
     @Test

@@ -6,21 +6,21 @@ import racingcar.view.OutputView;
 
 public class RacingGameController {
     private final RacingGame racingGame;
+    private final int tryCount;
 
     public RacingGameController() {
         this.racingGame = initallizeRacingGame();
+        this.tryCount = InputView.inputTryCount();
     }
 
     private RacingGame initallizeRacingGame() {
         String carNames = InputView.inputCarNames();
-        int tryCount = InputView.inputTryCount();
-
         return new RacingGame(carNames, tryCount);
     }
 
     public void startRace() {
         OutputView.printInitialMessage();
-        for (int i = 0; i < racingGame.getTryCount(); i++) {
+        for (int i = 0; i < tryCount; i++) {
             racingGame.playRound();
             OutputView.printRoundResult(racingGame.getAllCarStates());
         }

@@ -1,10 +1,14 @@
 package racingcar.model;
 
+import racingcar.dto.CarDto;
+
 public class Car {
-    private final String name;
-    private int position = 0;
     private static final int MOVE_CRITERIA_VALUE = 4;
     private static final int MAX_NAME_LENGTH = 5;
+    private static final String POSITION_MARK = "-";
+
+    private final String name;
+    private int position = 0;
 
     public Car(String name) {
         validateName(name.strip());
@@ -25,14 +29,10 @@ public class Car {
 
     //현재 상태를 표시(ex. pobi : ---)
     public String displayState() {
-        return name + " : " + "-".repeat(position);
+        return name + " : " + POSITION_MARK.repeat(position);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
+    public CarDto toCarDtO() {
+        return new CarDto(name, position);
     }
 }
