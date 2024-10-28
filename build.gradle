@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group = 'camp.nextstep.edu'
@@ -22,4 +23,20 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+// 모든 Java 컴파일 작업에 대해 UTF-8 인코딩을 사용하도록 설정
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+// 테스트 작업에서도 UTF-8 인코딩을 사용하도록 설정
+tasks.withType(Test) {
+    systemProperty 'file.encoding', 'UTF-8'
+}
+// build.gradle
+
+application {
+    // 기존 설정이 있다면 유지하고, 아래 줄을 추가
+    applicationDefaultJvmArgs = ["-Dfile.encoding=UTF-8"]
 }
