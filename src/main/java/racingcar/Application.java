@@ -7,7 +7,11 @@ import java.util.*;
 public class Application {
     public static List<String> cars;
     public static void main(String[] args) {
-
+        try {
+            input();
+        } catch(Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void input(){
@@ -15,7 +19,17 @@ public class Application {
         String input = Console.readLine();
         cars = Arrays.asList(input.split(","));
 
+        if(cars.isEmpty() || !isValid()) throw new IllegalArgumentException();
+
         System.out.println("시도할 횟수는 몇 회인가요?");
         int N = Integer.parseInt(Console.readLine());
+    }
+
+    public static boolean isValid(){
+        for (String car : cars) {
+            if (car.length() > 5) return false;
+        }
+
+        return true;
     }
 }
