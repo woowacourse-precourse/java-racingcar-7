@@ -18,8 +18,8 @@
 - 전진 칸 수와 조건이 바뀌어도 코드를 쉽게 수정하고 확장할 수 있도록 하기 위해
 
 ## ⛳️ 2주차 목표
-- [ ] VO 사용해보기
-- [ ] 1주차 피드백 모두 반영하기
+- [x] VO 사용해보기
+- [x] 1주차 피드백 모두 반영하기
 
 ## ✏️ 구현할 기능 목록
 
@@ -70,55 +70,50 @@
 - [x] 최대 위치 값에 해당하는 우승한 자동차 목록을 구한다.
 - [x] 우승자(들)를 출력한다.
 
-## 📦 역할 별 패키지 분리
-
-
-
 ## ✅ 1주차 피드백 반영 여부
-- [ ]  요구 사항을 정확하게 준수한다
-- [ ]  커밋 메시지를 의미 있게 작성한다
-- [ ]  커밋 메시지에 이슈 또는 풀 리퀘스트 번호를 포함하지 않는다
-- [ ]  풀 리퀘스트를 만든 후에는 닫지 말고 추가 커밋을 한다
-- [ ]  오류를 찾을 때 출력 함수 대신 디버거를 사용한다
-- [ ]  이름을 통해 의도를 드러낸다
-- [ ]  축약하지 않는다
-- [ ]  if, for, while문 사이의 공백도 코딩 컨벤션이다.
-- [ ]  공백 라인을 의미 있게 사용한다
-- [ ]  스페이스와 탭을 혼용하지 않는다
-- [ ]  의미 없는 주석을 달지 않는다
-- [ ]  코드 포매팅을 사용한다
-- [ ]  Java에서 제공하는 API를 적극 활용한다
-- [ ]  배열 대신 컬렉션을 사용한다
+- [x]  요구 사항을 정확하게 준수한다
+- [x]  커밋 메시지를 의미 있게 작성한다
+- [x]  커밋 메시지에 이슈 또는 풀 리퀘스트 번호를 포함하지 않는다
+- [x]  풀 리퀘스트를 만든 후에는 닫지 말고 추가 커밋을 한다
+- [x]  오류를 찾을 때 출력 함수 대신 디버거를 사용한다
+- [x]  이름을 통해 의도를 드러낸다
+- [x]  축약하지 않는다
+- [x]  if, for, while문 사이의 공백도 코딩 컨벤션이다.
+- [x]  공백 라인을 의미 있게 사용한다
+- [x]  스페이스와 탭을 혼용하지 않는다
+- [x]  의미 없는 주석을 달지 않는다
+- [x]  코드 포매팅을 사용한다
+- [x]  Java에서 제공하는 API를 적극 활용한다
+- [x]  배열 대신 컬렉션을 사용한다
 
 ## ✅ 과제 진행 요구 사항
 
 - [x]  **[java-racingcar-7](https://github.com/woowacourse-precourse/java-racingcar-7)** 저장소를 Fork & Clone
 - [x]  README.md에 구현할 기능 목록을 정리해 추가
-- [ ]  완료 후 Pull Request
-- [ ]  중간 회고를 진행하고 소감에 구체적인 결과를 작성해서 제출
-- [ ]  제출한 후 결과 확인, 통과하지 못했다면 수정해 다시 제출
+- [x]  완료 후 Pull Request
+- [x]  중간 회고를 진행하고 소감에 구체적인 결과를 작성해서 제출
+- [x]  제출한 후 결과 확인, 통과하지 못했다면 수정해 다시 제출
 
 ## ✅ 프로그래밍 요구 사항
 
 ### 제출 전 확인 리스트
 
-- [ ]  JDK-21 사용
-- [ ]  프로그램 실행의 시작점은 `Application`의 `main()`
-- [ ]  `build.gradle` 변경 불가, 제공된 라이브러리만 사용
-- [ ]  [Java Style Guide](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java)를 준수하며 프로그래밍
-- [ ]  프로그램 종료 시`System.exit()`를 호출 X
-- [ ]  프로그램 구현 완료 시 `ApplicationTest`의 모든 테스트가 성공
-- [ ]  프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동 X
-- [ ]  자바 코드 컨벤션을 지키면서 프로그래밍한다.
-- [ ]  indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
-- [ ]  3항 연산자를 쓰지 않는다.
-- [ ]  함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- [ ]  JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
+- [x]  JDK-21 사용
+- [x]  프로그램 실행의 시작점은 `Application`의 `main()`
+- [x]  `build.gradle` 변경 불가, 제공된 라이브러리만 사용
+- [x]  [Java Style Guide](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java)를 준수하며 프로그래밍
+- [x]  프로그램 종료 시`System.exit()`를 호출 X
+- [x]  프로그램 구현 완료 시 `ApplicationTest`의 모든 테스트가 성공
+- [x]  프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동 X
+- [x]  자바 코드 컨벤션을 지키면서 프로그래밍한다.
+- [x]  indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
+- [x]  3항 연산자를 쓰지 않는다.
+- [x]  함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
+- [x]  JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
 
 
 ### 라이브러리 요구 사항
 
-- [ ]  camp.nextstep.edu.missionutils에서 제공하는 Console API를 사용하여 구현
-    - [ ]  Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
-    - [ ] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
-- [ ]  사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용 
+- [x]  camp.nextstep.edu.missionutils에서 제공하는 Console API를 사용하여 구현
+    - [x]  Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
+    - [x]  사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용 
