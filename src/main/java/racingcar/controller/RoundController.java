@@ -21,6 +21,7 @@ public class RoundController {
         InputHandler.handleCarNames(inputView);
 
         InputValidator.notOneName(InputHandler.getCarNameList());
+        InputValidator.notOverFiveLetter(InputHandler.getCarNameList());
 
         Judge judge = new Judge();
         int roundNumber = inputView.inputRounds();
