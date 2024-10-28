@@ -1,7 +1,19 @@
 package racingcar;
 
+import racingcar.car.CarFactory;
+import racingcar.car.Cars;
+import racingcar.io.InputHandler;
+import racingcar.race.Race;
+import racingcar.race.RaceController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RaceController raceController = new RaceController(
+                new InputHandler(),
+                new Race(),
+                new Cars(),
+                new CarFactory()
+        );
+        raceController.runRace();
     }
 }

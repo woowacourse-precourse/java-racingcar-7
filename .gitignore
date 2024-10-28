@@ -33,3 +33,12 @@ out/
 
 ### Mac OS ###
 .DS_Store
+
+### JAVA ###
+*.class
+
+### Git ###
+.gitmessage.txt
+
+### Others ###
+diagram/
