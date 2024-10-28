@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.controller.RacingController;
+import racingcar.controller.RaceController;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -8,8 +8,8 @@ public class Application {
     public static void main(String[] args) {
         InputView inputView = InputView.getInstance();
         OutputView outputView = OutputView.getInstance();
-        RacingController racingController = new RacingController(inputView, outputView);
+        RaceController raceController = new RaceController(inputView, outputView);
 
-        racingController.run();
+        raceController.run();
     }
 }

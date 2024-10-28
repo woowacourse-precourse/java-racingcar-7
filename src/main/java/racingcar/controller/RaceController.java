@@ -9,11 +9,11 @@ import racingcar.parser.CarNameInputParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class RacingController {
+public class RaceController {
 	private final InputView inputView;
 	private final OutputView outputView;
 
-	public RacingController(InputView inputView, OutputView outputView) {
+	public RaceController(InputView inputView, OutputView outputView) {
 		this.inputView = inputView;
 		this.outputView = outputView;
 	}
