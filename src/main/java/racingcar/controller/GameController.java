@@ -19,14 +19,14 @@ public class GameController {
         roundNumber = InputController.setRoundNumber();
     }
 
-    public void game(){
-        for(int i = 0; i < roundNumber; i++){
+    public void game() {
+        for (int i = 0; i < roundNumber; i++) {
             racing.round();
             OutputView.roundOutput(racing.getCars());
         }
     }
 
-    public void winnerAnnouncement(){
+    public void winnerAnnouncement() {
         racing.sort();
         OutputView.winnerOutput(racing.getCars());
     }
