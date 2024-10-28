@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +53,21 @@ class RacingGame {
             throw new IllegalArgumentException("잘못된 입력입니다. 숫자를 입력해주세요.");
         }
     }
+
+    public void playAllRounds() {
+        for (int currentRound = 0; currentRound < numberOfAttempts; currentRound++) {
+            playSingleRound();
+        }
+    }
+
+    private void playSingleRound() {
+        for (Car car : participatingCars) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            if (randomValue >= 4) {
+                car.moveForward();
+            }
+        }
+    }
 }
 
 class Car {
@@ -64,5 +81,9 @@ class Car {
 
     public String getName() {
         return carName;
+    }
+
+    public void moveForward() {
+        currentPosition++;
     }
 }
