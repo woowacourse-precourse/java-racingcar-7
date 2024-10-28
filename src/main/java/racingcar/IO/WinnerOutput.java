@@ -20,7 +20,7 @@ public class WinnerOutput {
                 winners.add(carNames[i]);
             }
         }
-        String result = String.join(",", winners);
+        String result = String.join(", ", winners);
         System.out.println("최종 우승자 : "+result);
 
     }

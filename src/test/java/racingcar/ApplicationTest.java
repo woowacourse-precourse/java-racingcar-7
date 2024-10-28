@@ -25,10 +25,42 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 공동우승자_기능_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("one,two,three", "4");
+                    assertThat(output()).contains("one : --", "two : --", "three : --", "최종 우승자 : one, two, three");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                STOP, STOP, STOP,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                STOP, STOP, STOP
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_이름_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("이름은 한 글자 이상 작성해 주세요.")
+        );
+    }
+
+    @Test
+    void 횟수_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("one,two", "a3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("횟수는 정수만 입력해주세요.")
         );
     }
 
