@@ -46,5 +46,9 @@ public class CarController {
     }
 
     private void gameOver() {
+        String winner = carService.getWinner(cars);
+        outputView.printCarMove();
+        outputView.printWinner(winner);
+        Console.close();
     }
 }
