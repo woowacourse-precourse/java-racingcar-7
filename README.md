@@ -10,12 +10,14 @@
 
 ## class
  - input validator
-   * names
-   * number of tries
+   * validate names
+   * validate number of tries
  
  - game controller
    * init
+     + initialize cars with names
    * play
+     + move cars, print each step, print winners
  
  - car
    + attribute
@@ -24,6 +26,7 @@
    + method
      - move()
  
- - printer
-   * winner
-   * each step
+ - ~~printer~~
+   * ~~winner~~
+   * ~~each step~~
+ 
