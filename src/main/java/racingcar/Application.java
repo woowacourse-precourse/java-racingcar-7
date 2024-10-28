@@ -94,7 +94,11 @@ public class Application {
 
         // 2. 시도할 횟수 입력
         System.out.println("시도할 횟수는 몇 회인가요?");
-        count = Integer.parseInt(Console.readLine());
+        try{
+            count = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("횟수는 숫자로 입력해야 합니다.");
+        }
         System.out.println("\n실행결과");
 
         // 3. 경주 시행
