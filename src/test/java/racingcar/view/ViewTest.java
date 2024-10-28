@@ -33,9 +33,6 @@ public class ViewTest {
 
         Assertions.assertThat(requestInputDto.getInputCars()).contains(USER_INPUT_CARS.split(","));
         Assertions.assertThat(requestInputDto.getInputCnt()).isEqualTo(Integer.parseInt(USER_INPUT_CNT));
-
-        System.out.println(requestInputDto.getInputCars());
-        System.out.println(requestInputDto.getInputCnt());
     }
 
     @DisplayName("자동차 이름에 쉼표(,)가 연속적으로 존재하는 경우 예외 발생")
