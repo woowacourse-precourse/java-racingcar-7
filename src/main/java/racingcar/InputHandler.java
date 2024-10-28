@@ -27,8 +27,6 @@ public class InputHandler {
         for (String name : names) {
             validateCarName(name);
         }
-
-        CarName.clear();
         CarName.addAll(Arrays.asList(names));
     }
 
@@ -39,9 +37,7 @@ public class InputHandler {
         if (name.length() > 5) {
             throw new IllegalArgumentException();
         }
-        if (name.contains(".")) {
-            throw new IllegalArgumentException();
-        }
+
     }
 
     public static void setRacingCounter(String input) {
