@@ -1,7 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.domain.CarConstants.POSITION_SYMBOL;
 import static racingcar.domain.GameConstants.MOVED_BOUND;
-import static racingcar.domain.GameConstants.POSITION_SYMBOL;
 
 public class Car {
     private final String name;

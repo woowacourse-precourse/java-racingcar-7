@@ -1,6 +1,8 @@
 package racingcar.domain;
 
-import static racingcar.domain.GameConstants.MAXIMUM_CAR_NAME_LENGTH;
+
+import static racingcar.domain.CarConstants.CAR_NAME_REGEX;
+import static racingcar.domain.CarConstants.MAXIMUM_CAR_NAME_LENGTH;
 
 import java.util.HashSet;
 import java.util.List;
@@ -9,7 +11,6 @@ import racingcar.exeption.ErrorMessage;
 import racingcar.utils.Util;
 
 public class CarNames {
-    private static final String CAR_NAME_REGEX = "[a-zA-Z0-9]+";
 
     private final List<String> names;
 
