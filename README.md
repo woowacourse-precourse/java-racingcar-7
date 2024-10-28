@@ -11,7 +11,7 @@
 ## 학습 목표
 ```markdown
 📝 간단한 자동차 경주 게임을 구현하여 Java 객체 지향 프로그래밍, 클래스 설계, 메서드 분리, 랜덤 요소 제어 등을 학습하고, Git 및 GitHub 활용에 익숙해진다.
-📝 테스트 코드 작성과 리팩토링을 통해 코드 품질과 유지보수성을 높이는 경험을 합니다.
+📝 테스트 코드 작성과 리팩토링을 통해 코드 품질과 유지보수성을 높이는 경험을 한다.
 ```
 
 <br />
@@ -77,13 +77,65 @@
 # 테스트
 - **테스트 코드**
 ```java
+@Test
+void 기능_테스트() {
+    assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni", "1");
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+            },
+            MOVING_FORWARD, STOP
+    );
+}
 
+@Test
+void 예외_테스트() {
+    assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+    );
+}
+
+@Test
+void 빈_자동차_이름_예외_테스트() {
+    assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,,jun", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+    );
+}
+
+@Test
+void 경주_횟수_숫자_아님_예외_테스트() {
+    assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,woni", "five"))
+                    .isInstanceOf(IllegalArgumentException.class)
+    );
+}
+
+@Test
+void 경주_횟수_0일_때_테스트() {
+    assertSimpleTest(() -> {
+        run("pobi,woni", "0");
+        assertThat(output()).contains("최종 우승자 : pobi, woni");
+    });
+}
+
+@Test
+void 공동_우승자_발생_테스트() {
+    assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni,jun", "3");
+                assertThat(output()).contains("최종 우승자 : pobi, woni");
+            },
+            MOVING_FORWARD, MOVING_FORWARD, STOP
+    );
+}
 ```
 
 
 > 아래의 출력 결과처럼 테스트가 잘 됐음을 알 수 있다.
 
-<img src="" width="700;" alt="">
+<img src="https://github.com/user-attachments/assets/afa23828-2b1b-4200-992b-271fd70546b0" width="700;" alt="">
 
 <br />
 
@@ -93,18 +145,46 @@
 
 - **실수 코드**
 ```java
-
+public List<String> findWinners() {
+    // 최대값(위치) 찾기
+    int maxPosition = cars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElse(0); // 자동차 리스트가 비어있는 경우 0 반환
+    // 최대값에 도달한 자동차 필터링
+    return cars.stream()
+            .filter(car -> car.getPosition() == maxPosition)
+            .map(Car::getName)
+            .collect(Collectors.toList());
+}
 ```
 
 - **개선된 코드**
 ```java
+public List<Car> findWinners() {
+    // 최대값(위치) 찾기
+    int maxPosition = cars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElse(0); // 자동차 리스트가 비어있는 경우 0 반환
 
+    // 최대값에 도달한 자동차 필터링
+    return cars.stream()
+            .filter(car -> car.getPosition() == maxPosition)
+            .collect(Collectors.toList());
+}
 ```
 
 - **문제점**
-    - 
+    - 반환 타입 불일치:
+      - `findWinners()` 메서드는 우승자들을 담은 `List<Car>` 타입을 반환해야 하는데, 실수 코드에서는 `List<String>` 타입을 반환하도록 구현되어 있었다.
+    - 기능 불일치:
+      - 반환된 `List<String>`에서는 각 자동차의 이름만 제공되므로, `Car` 객체 전체 정보가 필요한 다른 로직에서 제약이 발생했다.
 
 - **해결 방법**
-    - 
+    - 타입 수정:
+      - 개선된 코드에서는 `findWinners()` 메서드의 반환 타입을 `List<Car>`로 수정하여, `Car` 객체 전체가 반환되도록 했다.
+    - 최대 위치 값을 가진 자동차 필터링:
+      - 자동차 객체의 위치를 기준으로 최대 위치 값과 일치하는 자동차들을 필터링하여 `List<Car>` 타입으로 반환했다.
 
 <br />
