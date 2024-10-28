@@ -11,6 +11,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Cars;
+import racingcar.strategy.MovementStrategy;
+import racingcar.strategy.RandomMovementStrategy;
 import racingcar.view.RaceView;
 
 class RaceViewTest {
@@ -19,12 +21,14 @@ class RaceViewTest {
     private final PrintStream originalOut = System.out;
     RaceView raceView;
     Cars cars;
+    MovementStrategy strategy;
 
     @BeforeEach
     void setUp() {
         // 출력 스트림을 가로채기 위해 System.out 재설정
         System.setOut(new PrintStream(outContent));
         raceView = new RaceView();
+        strategy = new RandomMovementStrategy();
     }
 
     @AfterEach
@@ -38,7 +42,7 @@ class RaceViewTest {
     void displayOneTrialTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars();
+        cars = new Cars(strategy);
         cars.addCars(input);
         cars.registerObserver(raceView);
         raceView.setCars(cars);
@@ -53,7 +57,7 @@ class RaceViewTest {
     void displayWinnerTest() {
         //give
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars();
+        cars = new Cars(strategy);
         cars.addCars(input);
 
         cars.registerObserver(raceView);
@@ -70,7 +74,7 @@ class RaceViewTest {
     void displayMultipleWinnerTest() {
         //give
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars();
+        cars = new Cars(strategy);
         cars.addCars(input);
         cars.registerObserver(raceView);
         cars.putAll(Map.of("pobi", 1, "ddot", 1));
@@ -86,7 +90,7 @@ class RaceViewTest {
     void updateGoTrialTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars();
+        cars = new Cars(strategy);
         cars.addCars(input);
         cars.registerObserver(raceView);
         cars.putAll(Map.of("pobi", 1, "ddot", 0));
@@ -100,7 +104,8 @@ class RaceViewTest {
     void updateWinnerTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars();
+        
+        cars = new Cars(strategy);
         cars.addCars(input);
         cars.registerObserver(raceView);
         cars.putAll(Map.of("pobi", 1, "ddot", 0));
@@ -114,7 +119,7 @@ class RaceViewTest {
     void canCarsGoUpdateObserverTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars();
+        cars = new Cars(strategy);
         cars.addCars(input);
         cars.registerObserver(raceView);
         //when, then

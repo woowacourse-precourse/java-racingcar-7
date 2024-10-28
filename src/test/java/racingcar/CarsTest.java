@@ -5,13 +5,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Map;
 import java.util.Set;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Cars;
+import racingcar.strategy.MovementStrategy;
+import racingcar.strategy.RandomMovementStrategy;
 
 class CarsTest {
 
     Cars cars;
+    MovementStrategy strategy;
+
+    @BeforeEach
+    void setUp() {
+        strategy = new RandomMovementStrategy();
+    }
 
     @Test
     @DisplayName("자동차 생성")
@@ -19,7 +28,7 @@ class CarsTest {
         //given
         Set<String> input = Set.of("pobi", "ddot");
         //when
-        cars = new Cars();
+        cars = new Cars(strategy);
         cars.addCars(input);
         //then
         assertEquals(input, cars.keySet());
@@ -30,7 +39,7 @@ class CarsTest {
     void findWinScore() {
         //given
         Set<String> input = Set.of("pobi", "ddot", "a");
-        cars = new Cars();
+        cars = new Cars(strategy);
         cars.addCars(input);
         //when
         cars.putAll(Map.of("pobi", 1, "ddot", 2, "a", 6));
@@ -45,7 +54,7 @@ class CarsTest {
     void getWinnerNamesTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot", "a");
-        cars = new Cars();
+        cars = new Cars(strategy);
         cars.addCars(input);
         //when
         cars.putAll(Map.of("pobi", 1, "ddot", 2, "a", 6));
@@ -59,7 +68,7 @@ class CarsTest {
     void getWinnerNamesMoreThanOneTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot", "a");
-        cars = new Cars();
+        cars = new Cars(strategy);
         cars.addCars(input);
         //when
         cars.putAll(Map.of("pobi", 7, "ddot", 7, "a", 7));
@@ -74,7 +83,7 @@ class CarsTest {
     void goTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");
-        cars = new Cars();
+        cars = new Cars(strategy);
         cars.addCars(input);
         //when
         //then

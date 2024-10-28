@@ -1,17 +1,21 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import racingcar.raceInterface.Observer;
 import racingcar.raceInterface.Subject;
+import racingcar.strategy.MovementStrategy;
 
 public class Cars extends HashMap<String, Integer> implements Subject {
-    public static final int GO_CONDITION = 3;
     private final List<Observer> observers = new ArrayList<>();
     private int trial = 0;
+    private MovementStrategy movementStrategy;
+
+    public Cars(MovementStrategy movementStrategy) {
+        this.movementStrategy = movementStrategy;
+    }
 
     public void addCars(Set<String> carsName) {
         for (String carName : carsName) {
@@ -54,16 +58,11 @@ public class Cars extends HashMap<String, Integer> implements Subject {
 
     public void go() {
         for (String name : this.keySet()) {
-            int referenceNumber = Randoms.pickNumberInRange(0, 9);
-            isOverCondition(name, referenceNumber);
+            if (movementStrategy.canMove()) {
+                this.put(name, this.get(name) + 1);
+            }
         }
         notifyObservers();
-    }
-
-    private void isOverCondition(String name, int referenceNumber) {
-        if (referenceNumber > GO_CONDITION) {
-            this.put(name, this.get(name) + 1);
-        }
     }
 
     public void repeatGo() {
