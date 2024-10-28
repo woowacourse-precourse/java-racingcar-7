@@ -9,7 +9,7 @@ public class RaceCountValidatorImpl implements RaceCountValidator {
     public void validate(String input) {
         validateEmptyOrBlankInput(input);
         validateNumericInput(input);
-        validateMinimumAttemptCount(input);
+        validateMinimumRaceCount(input);
     }
 
     private void validateEmptyOrBlankInput(String raceCount) {
@@ -19,12 +19,12 @@ public class RaceCountValidatorImpl implements RaceCountValidator {
     }
 
     private void validateNumericInput(String raceCount) {
-        if (isNumeric(raceCount)) {
+        if (!isNumeric(raceCount)) {
             throw new IllegalArgumentException("경주 횟수는 숫자여야 합니다.");
         }
     }
 
-    private void validateMinimumAttemptCount(String raceCountInput) {
+    private void validateMinimumRaceCount(String raceCountInput) {
         int raceCount = Integer.parseInt(raceCountInput);
         if (raceCount <= 0) {
             throw new IllegalArgumentException("경주 횟수는 1 이상이어야 합니다.");
