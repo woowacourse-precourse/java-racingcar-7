@@ -17,13 +17,13 @@ public class CarName {
         return this.name;
     }
 
-    public void checkCarNamelength(String name){
+    private void checkCarNamelength(String name){
         if(name.length() > MAX_LENGTH){
             throw new IllegalArgumentException(NAME_LENGTH_OVER_ERROR_MESSAGE);
         }
     }
 
-    public void checkCarNameisBlank(String name){
+    private void checkCarNameisBlank(String name){
         if(name.isBlank()){
             throw new IllegalArgumentException(EMPTY_NAME_ERROR_MESSAGE);
         }
