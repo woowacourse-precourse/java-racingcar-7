@@ -18,11 +18,7 @@ public class RacingGameController {
 
         RacingGame racingGame = new RacingGame(cars, tryCount);
 
-        OutputView.printRoundResultsHeader();
-        for (int i = 0; i < tryCount; i++) {
-            racingGame.start();
-            OutputView.printRoundResults(racingGame.getCars());
-        }
+        racingGame.start();
 
         List<Car> winners = racingGame.getWinners();
         OutputView.printWinners(winners);

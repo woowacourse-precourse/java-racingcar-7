@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import racingcar.view.OutputView;
 
 public class RacingGame {
 
@@ -14,7 +15,11 @@ public class RacingGame {
     }
 
     public void start() {
-        playRound();
+        OutputView.printRoundResultsHeader();
+        for (int i = 0; i < tryCount; i++) {
+            playRound();
+            OutputView.printRoundResults(this.getCars());
+        }
     }
 
     private void playRound() {
