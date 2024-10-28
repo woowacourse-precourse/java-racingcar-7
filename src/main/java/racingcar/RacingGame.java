@@ -41,13 +41,18 @@ public class RacingGame {
     private void inputAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
+        attempts = validateAttempts(input);
 
+    }
+
+    public int validateAttempts(String input){
         try { // 시도할 횟수의 입력값 체크
             if (!input.matches("\\d+")) { // 입력값이 정수(양의 정수)인지 확인
                 throw new IllegalArgumentException("시도 횟수는 자연수여야 합니다.");
             }
+            int attemptCount = Integer.parseInt(input);
 
-            attempts = Integer.parseInt(input);
+            return attemptCount;
 
         }catch (NumberFormatException e){
             throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.", e);
