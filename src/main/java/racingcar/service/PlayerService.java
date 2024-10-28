@@ -42,4 +42,8 @@ public class PlayerService {
         return repository.save(player);
     }
 
+    public List<Player> getAllPlayers() {
+        return repository.findAll();
+    }
+
 }
