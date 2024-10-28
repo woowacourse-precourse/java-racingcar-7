@@ -27,4 +27,17 @@ class validatorTest {
             validator.validateNames(names);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 시행_횟수_검증_테스트() {
+        Long times = 10L;
+        validator.validateTimes(times);
+    }
+
+    @Test
+    void 시행_횟수_예외_테스트() {
+        Long times = 0L;
+        Assertions.assertThatThrownBy(() -> validator.validateTimes(times))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
