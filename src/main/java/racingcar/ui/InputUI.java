@@ -16,7 +16,7 @@ public class InputUI {
     public static Integer inputInteger(String msg) {
         printMessage(msg);
         try {
-            return Integer.parseInt(Console.readLine());
+            return Integer.parseInt(Console.readLine().trim());
         } catch (NumberFormatException e) {
             throw new InvalidInputException();
         }
