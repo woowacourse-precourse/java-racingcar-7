@@ -14,7 +14,7 @@ public class InputValidator {
 
     public static void notOverFiveLetter(ArrayList<String> carNameList) {
         for (String carName : carNameList) {
-            if(carName.length() >5){
+            if(carName.trim().length() >5){
                 throw new IllegalArgumentException();
             }
         }
