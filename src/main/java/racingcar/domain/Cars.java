@@ -20,12 +20,11 @@ public class Cars {
         String[] carNames = inputCars.split(delimiter);
 
         for (String carName : carNames) {
-            String trimmedName = carName.trim();
-            if (carNamesSet.contains(trimmedName)) {
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다: " + trimmedName);
+            if (carNamesSet.contains(carName)) {
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다: " + carName);
             }
-            carNamesSet.add(trimmedName);
-            carsList.add(new Car(new CarName(trimmedName)));
+            carNamesSet.add(carName);
+            carsList.add(new Car(new CarName(carName)));
         }
         return carsList;
     }
