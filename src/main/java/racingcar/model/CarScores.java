@@ -13,12 +13,11 @@ public class CarScores {
 
     public CarScores(String cars) {
         isBlank(cars);
-        carScores = new LinkedHashMap<>(
-                Arrays.stream(cars.split(CARS_SEPARATOR))
-                        .map(String::strip)
-                        .collect(Collectors.toMap(
-                                CarName::new, element -> new Distance(0),
-                                (existing, replacement) -> replacement, LinkedHashMap::new)));
+        carScores = new LinkedHashMap<>(Arrays.stream(cars.split(CARS_SEPARATOR))
+                .map(String::strip)
+                .collect(Collectors.toMap(
+                        CarName::new, element -> new Distance(0),
+                        (existing, replacement) -> replacement, LinkedHashMap::new)));
     }
 
     public CarScores(LinkedHashMap<CarName, Distance> carScores) {
