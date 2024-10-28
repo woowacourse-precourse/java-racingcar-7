@@ -41,7 +41,53 @@ class ApplicationTest extends NsTest {
                     run("pobi,java,kate", "3");
                     assertThat(output()).contains("pobi : -", "java : -", "kate : ", "최종 우승자 : pobi, java");
                 },
-                MOVING_FORWARD, MOVING_FORWARD, STOP
+                MOVING_FORWARD, MOVING_FORWARD, STOP, STOP, STOP, STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트4_모든자동차멈춤() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,kate", "2");
+                    assertThat(output()).contains("pobi : ", "woni : ", "kate : ", "최종 우승자 : pobi, woni, kate");
+                },
+                STOP, STOP, STOP, STOP, STOP, STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트5_모든자동차이동() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,kate", "2");
+                    assertThat(output()).contains("pobi : --", "woni : --", "kate : --", "최종 우승자 : pobi, woni, kate");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 기능_테스트6_일부자동차이동() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,kate", "2");
+                    assertThat(output()).contains("pobi : -", "woni : ", "kate : -", "최종 우승자 : pobi, kate");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트7_자동차반복이동() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,kate", "3");
+                    assertThat(output()).contains("pobi : --", "woni : --", "kate : -", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, STOP, STOP,
+                STOP, MOVING_FORWARD, STOP
         );
     }
 
