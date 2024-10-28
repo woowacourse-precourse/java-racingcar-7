@@ -5,6 +5,8 @@ import racingcar.domain.Winners;
 import racingcar.handler.NameRequestHandler;
 import racingcar.handler.NumberRequestHandler;
 
+import java.util.List;
+
 import static racingcar.view.WinnersView.showWinners;
 
 public class RacingController {
@@ -18,7 +20,7 @@ public class RacingController {
     }
 
     public void run() {
-        String[] names = nameRequestHandler.getNames();
+        List<String> names = nameRequestHandler.getNames();
         int moveNum = numberRequestHandler.getNumber();
         Cars cars = Cars.from(names);
 

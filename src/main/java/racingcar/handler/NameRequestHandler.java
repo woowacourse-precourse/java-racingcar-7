@@ -3,25 +3,25 @@ package racingcar.handler;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.view.RequestView;
 
-import java.util.Arrays;
+import java.util.List;
 
 import static racingcar.message.ErrorMessage.*;
 import static racingcar.utils.ExceptionUtils.throwException;
 
 public class NameRequestHandler {
 
-    public String[] getNames() {
+    public List<String> getNames() {
         RequestView.requestNames();
         String rawInput = Console.readLine();
         return validateInput(rawInput);
     }
 
-    private String[] validateInput(String rawInput) {
+    private List<String> validateInput(String rawInput) {
         validateBlank(rawInput);
         validateSpace(rawInput);
-        String[] rawNames = rawInput.split(",");
-        validateNames(rawNames);
-        return rawNames;
+        List<String> names = List.of(rawInput.split(","));
+        validateNames(names);
+        return names;
     }
 
     public void validateBlank(String rawInput) {
@@ -36,9 +36,9 @@ public class NameRequestHandler {
         }
     }
 
-    public void validateNames(String[] rawNames) {
-        Arrays.stream(rawNames)
-                .filter(rawName -> rawName.isEmpty() || rawName.length() > 5)
+    public void validateNames(List<String> names) {
+        names.stream()
+                .filter(name -> name.isEmpty() || name.length() > 5)
                 .findFirst()
                 .ifPresent(invalidName -> {
                     throwException(NAME_LENGTH_ERROR);

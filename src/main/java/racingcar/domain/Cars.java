@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.view.StatusView;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -10,13 +9,13 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(String[] names) {
-        cars = Arrays.stream(names)
+    private Cars(List<String> names) {
+        cars = names.stream()
                 .map(Car::new)
                 .toList();
     }
 
-    public static Cars from(String[] names) {
+    public static Cars from(List<String> names) {
         return new Cars(names);
     }
 
