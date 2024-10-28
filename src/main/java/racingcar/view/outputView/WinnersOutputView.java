@@ -1,11 +1,12 @@
-package racingcar.view;
+package racingcar.view.outputView;
 
 import racingcar.model.Car;
 import racingcar.model.WinnerSelector;
+import racingcar.view.outputView.OutputView;
 
 import java.util.List;
 
-public class WinnersOutputView implements OutputView{
+public class WinnersOutputView implements OutputView {
     private final List<Car> winners;
 
     public WinnersOutputView(WinnerSelector winnerSelector){

@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.view.outputView;
 
 public interface OutputView {
     public void print();

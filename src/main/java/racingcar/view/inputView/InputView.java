@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.view.inputView;
 
 public interface InputView {
     public void input();
