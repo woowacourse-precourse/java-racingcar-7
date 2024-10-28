@@ -35,7 +35,7 @@ public class Cars {
 
     private int findMaxMoveCount() {
         int maxMoveCount = 0;
-        for (Car car : cars) {
+        for (final Car car : cars) {
             maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
         }
         return maxMoveCount;
