@@ -10,6 +10,8 @@ import java.util.Set;
 public class View {
 
     private static final String REQUEST_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String REQUEST_TRY_MOVE_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?";
+
 
     public static String requestCarNames() {
         printlnMessage(REQUEST_CAR_NAMES_MESSAGE);
@@ -18,7 +20,13 @@ public class View {
         return names;
     }
 
-    private static void printlnMessage(String message) {
+    public static String requestTryMoveNumber() {
+        printlnMessage(REQUEST_TRY_MOVE_NUMBER_MESSAGE);
+        String number = enterMessage();
+        return number;
+    }
+
+    public static void printlnMessage(String message) {
         System.out.println(message);
     }
 
