@@ -15,6 +15,7 @@ public class RacingCarView {
     }
 
     public void printRoundResult(String roundResult) {
+        System.out.println("실행 결과");
         System.out.println(roundResult);
     }
 
