@@ -96,18 +96,34 @@ public class RaceControl {
      */
     public void decideRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        this.trialCount = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
 
-        this.verifyRound();
+        this.trialCount = this.verifyRound(input);
     }
 
     /**
      * 경주할 횟수를 검증합니다.
+     *
+     * @param input 입력한 문자열
+     * @return 경주할 횟수
      */
-    private void verifyRound() {
-        if (this.trialCount <= 0) {
+    private int verifyRound(String input) {
+        if (input == null || input.isBlank()) {
+            throw new IllegalArgumentException("경주할 횟수가 입력되지 않았습니다.");
+        }
+
+        int roundCount;
+        try {
+            roundCount = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("경주할 횟수는 숫자여야 합니다.");
+        }
+
+        if (roundCount <= 0) {
             throw new IllegalArgumentException("경주할 횟수는 최소 1번 이상이어야 합니다.");
         }
+
+        return roundCount;
     }
 
     /**
