@@ -38,7 +38,7 @@ public abstract class Car {
     /**
      * 자동차를 전진시킨다. 전진 조건이 충족되면 위치를 한 칸 증가시킨다.
      */
-    protected void move() {
+    public void move() {
         if (hasMoveCondition()) {
             position++;
         }
