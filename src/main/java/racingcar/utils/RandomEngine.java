@@ -1,6 +1,6 @@
 package racingcar.utils;
 
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomEngine implements Engine {
     private static final int MAX_ENGINE_POWER = 10;
@@ -8,11 +8,10 @@ public class RandomEngine implements Engine {
 
     @Override
     public boolean isEngineRunning() {
-        return runEngine() >= IS_ENGINE_RUNNING_MINIMUM_POWER; // runEngine()의 결과가 4 이상이면 true, 아니면 false
+        return runEngine() >= IS_ENGINE_RUNNING_MINIMUM_POWER;
     }
 
     public int runEngine() {
-        Random random = new Random();
-        return random.nextInt(MAX_ENGINE_POWER);
+        return Randoms.pickNumberInRange(0, MAX_ENGINE_POWER);
     }
 }
