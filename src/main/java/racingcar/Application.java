@@ -19,18 +19,31 @@ public class Application {
         int tryCount = getTryCount();
 
         Map<String, Integer> cars = initCarPosition(carNames);
-
         int maxPosition = executeRacingGame(tryCount, cars);
 
-        List<String> winnerName = new ArrayList<>();
-        cars.forEach((carname, position) -> {
-            if(position == maxPosition) {
-                winnerName.add(carname);
-            }
-        });
+        List<String> winnerName = getWinnersName(cars, maxPosition);
+        printWinner(winnerName);
+    }
 
+    private static void printWinner(List<String> winnerName) {
         String winner = String.join(", ", winnerName);
         System.out.println("최종 우승자 : " + winner);
+    }
+
+    private static List<String> getWinnersName(Map<String, Integer> cars, int maxPosition) {
+
+        List<String> winnerNames = new ArrayList<>();
+        cars.forEach((carname, position) -> {
+            addIfWinner(maxPosition, carname, position, winnerNames);
+        });
+
+        return winnerNames;
+    }
+
+    private static void addIfWinner(int maxPosition, String carname, Integer position, List<String> winnerName) {
+        if(position == maxPosition) {
+            winnerName.add(carname);
+        }
     }
 
     private static int executeRacingGame(int tryCount, Map<String, Integer> cars) {
