@@ -6,6 +6,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -147,5 +149,49 @@ class ApplicationTest extends NsTest {
 
         String winners = Application.getWinners(cars);
         assertThat(winners).isEqualTo("car1,car3");
+    }
+
+    @Test
+    @DisplayName("유효한 무작위 숫자가 생성되면 자동차가 이동 거리를 증가시킨다")
+    void moveCarsTest() {
+        // Given
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        List<Car> cars = List.of(car1, car2);
+
+        // 무작위 숫자 리스트 (4 이상은 이동, 3 이하는 이동하지 않음)
+        List<Integer> randomNumbers = List.of(4, 3);
+
+        // When
+        Application.moveCars(cars, randomNumbers);
+
+        // Then
+        assertThat(car1.getDistance()).isEqualTo(1);  // 유효한 숫자 4로 이동
+        assertThat(car2.getDistance()).isEqualTo(0);  // 유효하지 않은 숫자 3으로 이동하지 않음
+    }
+
+    @Test
+    @DisplayName("자동차 이름과 이동 거리를 출력 형식에 맞게 출력한다")
+    void showCarDistancesTest() {
+        // Given
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        car1.addDistance();
+        car1.addDistance(); // 이동 거리 2
+        car2.addDistance(); // 이동 거리 1
+        List<Car> cars = List.of(car1, car2);
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        // When
+        Application.showCarDistances(cars);
+
+        // Then
+        String output = outputStream.toString().trim();
+        assertThat(output).isEqualTo("car1 : --\ncar2 : -");
+
+        // Reset System.out
+        System.setOut(System.out);
     }
 }
