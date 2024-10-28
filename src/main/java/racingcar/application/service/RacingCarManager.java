@@ -6,17 +6,17 @@ import racingcar.persistence.RacingCarRepository;
 import racingcar.racing.CarRaceHistoryManager;
 import racingcar.racing.CarRaceResult;
 import racingcar.racing.Racing;
-import racingcar.racing.RacingCar;
+import racingcar.racing.CarRacer;
 import racingcar.application.RacingManager;
 
-public class RacingCarManager implements RacingManager<RacingCar> {
+public class RacingCarManager implements RacingManager<CarRacer> {
 
-    private final Racing<RacingCar> racing;
+    private final Racing<CarRacer> racing;
     private final RacingCarRepository racingCarRepository;
     private final CarRaceHistoryManager carRaceHistoryManager;
     private final WinnerIdentifier winnerIdentifier;
 
-    public RacingCarManager(Racing<RacingCar> racing, RacingCarRepository racingCarRepository,
+    public RacingCarManager(Racing<CarRacer> racing, RacingCarRepository racingCarRepository,
             CarRaceHistoryManager carRaceHistoryManager, WinnerIdentifier winnerIdentifier) {
         this.racing = racing;
         this.racingCarRepository = racingCarRepository;
@@ -25,13 +25,13 @@ public class RacingCarManager implements RacingManager<RacingCar> {
     }
 
     @Override
-    public void registerAll(List<RacingCar> racers) {
+    public void registerAll(List<CarRacer> racers) {
         racingCarRepository.addAll(racers);
     }
 
     @Override
     public void raceStart(int gameCount) {
-        List<RacingCar> registeredCars = racingCarRepository.getAll();
+        List<CarRacer> registeredCars = racingCarRepository.getAll();
         IntStream.range(0, gameCount)
                 .forEach(count -> {
                     racing.start(registeredCars);
@@ -41,8 +41,8 @@ public class RacingCarManager implements RacingManager<RacingCar> {
 
     @Override
     public CarRaceResult createRaceResult() {
-        List<RacingCar> racedCars = racingCarRepository.getAll();
-        List<RacingCar> winners = winnerIdentifier.identify(racedCars);
+        List<CarRacer> racedCars = racingCarRepository.getAll();
+        List<CarRacer> winners = winnerIdentifier.identify(racedCars);
         List<String> carRaceHistories = carRaceHistoryManager.getAllHistory();
         return CarRaceResult.of(winners, carRaceHistories);
     }

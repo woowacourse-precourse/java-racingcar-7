@@ -11,7 +11,7 @@ import racingcar.racing.CarRacing;
 import racingcar.racing.CarRaceHistoryManager;
 import racingcar.racing.CarRaceHistoryWriter;
 import racingcar.racing.Racing;
-import racingcar.racing.RacingCar;
+import racingcar.racing.CarRacer;
 import racingcar.application.service.RacingCarGame;
 import racingcar.application.service.RacingCarManager;
 import racingcar.application.RacingManager;
@@ -38,11 +38,11 @@ public class GameConfig {
         return new ApplicationConsoleView();
     }
 
-    private ObjectConverter<RacingCar> converter() {
+    private ObjectConverter<CarRacer> converter() {
         return new RacingCarConverter();
     }
 
-    private RacingManager<RacingCar> racingManager() {
+    private RacingManager<CarRacer> racingManager() {
         return new RacingCarManager(race(), racingCarRepository(), carRaceHistoryRecorder(), winnerIdentifier());
     }
 
@@ -50,7 +50,7 @@ public class GameConfig {
         return InMemoryRacingCarRepository.getInstance();
     }
 
-    private Racing<RacingCar> race() {
+    private Racing<CarRacer> race() {
         return new CarRacing();
     }
 

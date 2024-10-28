@@ -1,13 +1,13 @@
 package racingcar.persistence;
 
 import java.util.List;
-import racingcar.racing.RacingCar;
+import racingcar.racing.CarRacer;
 
 public interface RacingCarRepository {
 
-    List<RacingCar> getAll();
+    List<CarRacer> getAll();
 
-    void addAll(List<RacingCar> racingCars);
+    void addAll(List<CarRacer> carRacers);
 
     void clear();
 }

@@ -7,9 +7,9 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.racing.RacingCar;
+import racingcar.racing.CarRacer;
 
-class InMemoryRacingCarRepositoryTest {
+class InMemoryCarRacerRepositoryTest {
 
     InMemoryRacingCarRepository repository = InMemoryRacingCarRepository.getInstance();
 
@@ -22,8 +22,8 @@ class InMemoryRacingCarRepositoryTest {
     @Test
     void addAll() {
         Assertions.assertSimpleTest(() -> {
-            RacingCar car = RacingCar.from("car1");
-            RacingCar car2 = RacingCar.from("car2");
+            CarRacer car = CarRacer.from("car1");
+            CarRacer car2 = CarRacer.from("car2");
 
             repository.addAll(List.of(car, car2));
             assertThat(repository.getAll()).hasSize(2);

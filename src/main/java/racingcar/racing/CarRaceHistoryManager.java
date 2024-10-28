@@ -13,8 +13,8 @@ public class CarRaceHistoryManager {
         this.writer = writer;
     }
 
-    public void record(List<RacingCar> racingCars) {
-        String result = writer.writeAll(racingCars);
+    public void record(List<CarRacer> carRacers) {
+        String result = writer.writeAll(carRacers);
         repository.add(result);
     }
 

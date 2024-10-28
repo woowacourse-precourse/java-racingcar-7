@@ -1,11 +1,11 @@
 package racingcar.application.service;
 
 import java.util.List;
-import racingcar.racing.RacingCar;
+import racingcar.racing.CarRacer;
 
 public class WinnerIdentifier {
 
-    public List<RacingCar> identify(List<RacingCar> racedCars) {
+    public List<CarRacer> identify(List<CarRacer> racedCars) {
         int maxProgress = getMaxProgress(racedCars);
 
         return racedCars.stream()
@@ -13,7 +13,7 @@ public class WinnerIdentifier {
                 .toList();
     }
 
-    private int getMaxProgress(List<RacingCar> racedCars) {
+    private int getMaxProgress(List<CarRacer> racedCars) {
         return racedCars.stream()
                 .mapToInt(car -> car.getProgressState().length())
                 .max()

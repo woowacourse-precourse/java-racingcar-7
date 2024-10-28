@@ -3,15 +3,15 @@ package racingcar.racing;
 import static racingcar.common.RacingCarConstant.DEFAULT_STATE;
 import static racingcar.common.RacingCarConstant.FORWARD_BAR;
 
-public class RacingCar extends Racer {
+public class CarRacer extends Racer {
 
     private String name;
     private String progressState;
 
-    private RacingCar() {
+    private CarRacer() {
     }
 
-    private RacingCar(String name) {
+    private CarRacer(String name) {
         this.name = name;
         this.progressState = DEFAULT_STATE;
     }
@@ -28,8 +28,8 @@ public class RacingCar extends Racer {
         progressState += FORWARD_BAR;
     }
 
-    public static RacingCar from(String name) {
-        return new RacingCar(name);
+    public static CarRacer from(String name) {
+        return new CarRacer(name);
     }
 
     @Override

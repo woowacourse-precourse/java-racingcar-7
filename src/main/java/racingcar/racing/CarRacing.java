@@ -7,11 +7,11 @@ import static racingcar.common.RacingCarConstant.MOVE_THRESHOLD;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
-public class CarRacing implements Racing<RacingCar> {
+public class CarRacing implements Racing<CarRacer> {
 
     @Override
-    public void start(List<RacingCar> racingCars) {
-        racingCars.forEach(racingCar -> {
+    public void start(List<CarRacer> carRacers) {
+        carRacers.forEach(racingCar -> {
             if (isMovable()) {
                 racingCar.forward();
             }

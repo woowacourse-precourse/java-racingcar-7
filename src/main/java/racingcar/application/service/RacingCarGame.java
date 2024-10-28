@@ -2,7 +2,7 @@ package racingcar.application.service;
 
 import java.util.List;
 import racingcar.racing.CarRaceResult;
-import racingcar.racing.RacingCar;
+import racingcar.racing.CarRacer;
 import racingcar.application.ObjectConverter;
 import racingcar.application.Game;
 import racingcar.application.RacingManager;
@@ -11,11 +11,11 @@ import racingcar.view.ApplicationView;
 public class RacingCarGame implements Game {
 
     private final ApplicationView applicationView;
-    private final RacingManager<RacingCar> racingManager;
-    private final ObjectConverter<RacingCar> objectConverter;
+    private final RacingManager<CarRacer> racingManager;
+    private final ObjectConverter<CarRacer> objectConverter;
 
     public RacingCarGame(ApplicationView applicationView,
-            RacingManager<RacingCar> racingManager, ObjectConverter<RacingCar> objectConverter) {
+            RacingManager<CarRacer> racingManager, ObjectConverter<CarRacer> objectConverter) {
         this.applicationView = applicationView;
         this.racingManager = racingManager;
         this.objectConverter = objectConverter;
@@ -32,8 +32,8 @@ public class RacingCarGame implements Game {
 
     private void registerRacingCars() {
         String responseCars = applicationView.requestInputCars();
-        List<RacingCar> racingCars = objectConverter.toObjects(responseCars);
-        racingManager.registerAll(racingCars);
+        List<CarRacer> carRacers = objectConverter.toObjects(responseCars);
+        racingManager.registerAll(carRacers);
     }
 
     private void playRacingCarGame() {
@@ -47,7 +47,7 @@ public class RacingCarGame implements Game {
         List<String> racingHistories = carRaceResult.histories();
         applicationView.printRacingProgressResult(racingHistories);
 
-        List<RacingCar> winners = carRaceResult.winners();
+        List<CarRacer> winners = carRaceResult.winners();
         String winnersName = objectConverter.toStringNames(winners);
         applicationView.printWinners(winnersName);
 

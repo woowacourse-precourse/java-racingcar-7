@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 public class CarRaceHistoryWriter {
 
-    public String writeAll(List<RacingCar> racingCars) {
-        return racingCars.stream()
-                .map(RacingCar::toString)
+    public String writeAll(List<CarRacer> carRacers) {
+        return carRacers.stream()
+                .map(CarRacer::toString)
                 .collect(Collectors.joining(LINE_BREAKER));
     }
 }

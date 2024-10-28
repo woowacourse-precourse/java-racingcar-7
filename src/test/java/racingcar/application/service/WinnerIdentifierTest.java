@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.test.Assertions;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.racing.RacingCar;
+import racingcar.racing.CarRacer;
 
 class WinnerIdentifierTest {
 
@@ -16,15 +16,15 @@ class WinnerIdentifierTest {
     @Test
     void identifyInOne() {
         Assertions.assertSimpleTest(() -> {
-            RacingCar car1 = RacingCar.from("car1");
-            RacingCar car2 = RacingCar.from("car2");
+            CarRacer car1 = CarRacer.from("car1");
+            CarRacer car2 = CarRacer.from("car2");
 
             car1.forward();
             car2.forward();
             car2.forward();
 
-            List<RacingCar> racingCars = List.of(car1, car2);
-            List<RacingCar> winners = winnerIdentifier.identify(racingCars);
+            List<CarRacer> carRacers = List.of(car1, car2);
+            List<CarRacer> winners = winnerIdentifier.identify(carRacers);
 
             assertThat(winners).contains(car2);
         });
@@ -34,9 +34,9 @@ class WinnerIdentifierTest {
     @Test
     void identifyInTwoMore() {
         Assertions.assertSimpleTest(() -> {
-            RacingCar car1 = RacingCar.from("car1");
-            RacingCar car2 = RacingCar.from("car2");
-            RacingCar car3 = RacingCar.from("car3");
+            CarRacer car1 = CarRacer.from("car1");
+            CarRacer car2 = CarRacer.from("car2");
+            CarRacer car3 = CarRacer.from("car3");
 
             car1.forward();
             car1.forward();
@@ -44,8 +44,8 @@ class WinnerIdentifierTest {
             car2.forward();
             car3.forward();
 
-            List<RacingCar> racingCars = List.of(car1, car2, car3);
-            List<RacingCar> winners = winnerIdentifier.identify(racingCars);
+            List<CarRacer> carRacers = List.of(car1, car2, car3);
+            List<CarRacer> winners = winnerIdentifier.identify(carRacers);
 
             assertThat(winners).contains(car1, car2);
         });
