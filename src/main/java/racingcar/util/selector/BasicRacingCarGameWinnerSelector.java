@@ -5,7 +5,7 @@ import racingcar.domain.RacingCar;
 
 public class BasicRacingCarGameWinnerSelector implements RacingCarGameWinnerSelector {
     @Override
-    public List<RacingCar> generateWinner(List<RacingCar> racingCars) {
+    public List<RacingCar> selectWinner(List<RacingCar> racingCars) {
         int maxLocation = getMaxLocation(racingCars);
         return racingCars.stream()
                 .filter(racingCar -> racingCar.getCurrentLocation() == maxLocation)

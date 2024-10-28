@@ -4,5 +4,5 @@ import java.util.List;
 import racingcar.domain.RacingCar;
 
 public interface RacingCarGameWinnerSelector {
-    public List<RacingCar> generateWinner(List<RacingCar> racingCars);
+    public List<RacingCar> selectWinner(List<RacingCar> racingCars);
 }
