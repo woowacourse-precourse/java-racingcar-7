@@ -22,12 +22,8 @@ public class Race {
         }
     }
     public List<String> getWinners() {
-        int max = 0;
+        int max = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
         List<String> winners = new ArrayList<>();
-
-        for (Car car : cars) {
-            if (car.getDistance() > max) max = car.getDistance();
-        }
 
         for (Car car : cars) {
             if (car.getDistance() == max) winners.add(car.getName());
