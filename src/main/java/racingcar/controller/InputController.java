@@ -9,20 +9,21 @@ import racingcar.view.constant.Request;
 public class InputController {
 
     private static InputController instance;
-    private final InputService inputService = new InputService();
+    private static final InputService inputService = new InputService();
 
     private InputController() {}
 
-    public void getInputs()  {
+    public static void getInputs()  {
         Input carNamesInput = rawInput(Request.CAR_NAMES.toString());
         inputService.saveInput(carNamesInput, Validation::carNames);
+
         Input LapCountInput = rawInput(Request.ATTEMPT_NUMBER.toString());
         inputService.saveInput(LapCountInput, Validation::lapCount);
     }
 
-    private Input rawInput(String requestMessage) {
-         return inputService.receive(requestMessage
-                 , UserInput.request(requestMessage));
+    private static Input rawInput(String requestMessage) {
+        return inputService.receive(requestMessage
+                , UserInput.request(requestMessage));
     }
 
     public static InputController getInstance() {
