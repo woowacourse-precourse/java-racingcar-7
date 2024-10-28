@@ -41,3 +41,7 @@
 - 출력 처리
   - 차수별 실행 결과 프린트 
   - 우승자 안내 문구 단독인 경우, 공동인 경우
+
+
+## 클래스 다이어그램
+<img width="880" alt="racingcar-최종" src="https://github.com/user-attachments/assets/025fe72a-b4dd-465d-b8cb-51be1e91b57f">
