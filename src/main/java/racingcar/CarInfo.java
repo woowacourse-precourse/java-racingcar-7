@@ -16,3 +16,9 @@ public abstract class CarInfo {
           return carPosition;
      }
 }
+
+class Car extends CarInfo {
+     public Car(String carName) {
+          super(carName);
+     }
+}
