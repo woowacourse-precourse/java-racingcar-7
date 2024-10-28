@@ -1,10 +1,10 @@
 package racingcar.controller;
 
-import racingcar.service.RaceResult;
+import racingcar.model.RaceResult;
 import racingcar.service.RaceService;
+import racingcar.model.RoundPositions;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
 import java.util.List;
 
 public class RaceController {
@@ -29,8 +29,10 @@ public class RaceController {
             outputView.printRaceResultStart();
 
             RaceResult result = raceService.start(carNames, attempts);
-            for (List<Integer> roundPosition : result.roundPositions()) {
-                outputView.printRaceRound(carNames, roundPosition);
+
+            // 라운드 별 기록 출력
+            for (RoundPositions roundPosition : result.roundPositions().getProgress()) {
+                outputView.printRaceRound(carNames, roundPosition.positions());
             }
 
             outputView.printWinners(result.winners());
