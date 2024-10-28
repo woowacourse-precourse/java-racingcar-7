@@ -20,7 +20,7 @@ public class GameController {
         GameService gameService = new GameService(carNames, attemptCount, new RandomNumberGenerator());
         GameResult gameResult = gameService.playGame();
 
-        gameResult.getRoundResults().forEach(OutputView::printRecord);
+        OutputView.printRecord(gameResult.getRoundResults());
 
         OutputView.printWinner(gameResult.getWinners());
     }
