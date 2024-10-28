@@ -5,8 +5,8 @@ import racingcar.domain.vo.CarVO;
 public class Car {
 	private static final int MIN_INT_FOR_MOVING = 4;
 
-	private CarName name;
-	private Distance distance;
+	private final CarName name;
+	private final Distance distance;
 
 	public Car(CarName name, Distance distance) {
 		this.name = name;
