@@ -62,12 +62,25 @@ public class Game {
         createCars(carNames);
     }
 
+    public String getWinner(){
+        String Winner = "";
+        int maxMove = -1;
+        for (Car car : cars){
+            if(car.move > maxMove)
+                Winner = car.name;
+            if(car.move == maxMove)
+                Winner = String.join(", ",Winner,car.name);
+        }
+        return Winner;
+    }
+
     public void run(){
         System.out.println("실행결과");
         for(int round = 0; round < moveNumber; round++){
             moveCars();
             printCars();
         }
+        System.out.println("최종 우승자 : "+getWinner());
     }
 
 
