@@ -17,19 +17,6 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("우승자 판단 테스트")
-    void 우승자_판단_테스트() {
-        Cars cars = new Cars(new String[] {"pobi","woni"});
-        NumberGenerator canMove = () -> 5;
-        NumberGenerator canNotMove = () -> 1;
-
-        cars.getCars().get(0).move(canMove.generateNumber());
-        cars.getCars().get(1).move(canNotMove.generateNumber());
-
-        Assertions.assertThat(cars.getWinners()).isEqualTo("pobi");
-    }
-
-    @Test
     @DisplayName("이름 길이 테스트")
     void 이름_길이_테스트() {
         Assertions.assertThatThrownBy(() -> new Car("javajigi"))

@@ -3,7 +3,6 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.IntFunction;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -28,21 +27,6 @@ public class Cars {
                 .filter(player -> Arrays.stream(players).filter(player::equals).count() > 1)
                 .distinct()
                 .count();
-    }
-
-    private static IntFunction<String> nameOfPlayer(String[] players) {
-        return i -> getString(players, i);
-    }
-
-    private static String getString(String[] players, int i) {
-        if (players[i].isEmpty()) {
-            return String.format("%d 번째 선수", (i + 1));
-        }
-        return players[i];
-    }
-
-    public int getSize() {
-        return cars.size();
     }
 
     public List<Car> getCars() {

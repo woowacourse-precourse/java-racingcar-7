@@ -22,6 +22,33 @@ public class CarsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("같은 이름을 사용할 수 없습니다");
 
-        ;
     }
+
+
+    @Test
+    @DisplayName("우승자 찾기 테스트")
+    void 우승자_찾기_테스트() {
+        Cars cars = new Cars(new String[] {"pobi","woni"});
+        NumberGenerator canMove = () -> 5;
+        NumberGenerator canNotMove = () -> 1;
+
+        cars.getCars().get(0).move(canMove.generateNumber());
+        cars.getCars().get(1).move(canNotMove.generateNumber());
+
+        Assertions.assertThat(cars.getWinners()).isEqualTo("pobi");
+    }
+
+    @Test
+    @DisplayName("우승자2명 이상 찾기 테스트")
+    void 우승자_2명이상_찾기_테스트() {
+        Cars cars = new Cars(new String[] {"pobi","woni"});
+        NumberGenerator canMove = () -> 5;
+
+        cars.getCars().get(0).move(canMove.generateNumber());
+        cars.getCars().get(1).move(canMove.generateNumber());
+
+        Assertions.assertThat(cars.getWinners()).isEqualTo("pobi, woni");
+    }
+
+
 }
