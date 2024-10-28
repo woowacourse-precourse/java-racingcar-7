@@ -19,11 +19,13 @@ public class OutputView {
 		System.out.println("실행 결과");
 	}
 
-	public void printRaceStatus(List<RaceResultResponse> raceResultResponses) {
-		raceResultResponses.forEach(raceResultResponse -> {
-			String result = raceResultResponse.name() + " : " + "-".repeat(raceResultResponse.distance());
-			System.out.println(result);
-		});
+	public void printNewLine() {
+		System.out.println();
+	}
+
+	public void printRaceStatus(List<CarMovementResponse> carMovementResponses) {
+		carMovementResponses.forEach(carMovementResponse ->
+			System.out.println(buildMovementString(carMovementResponse)));
 	}
 
 	public void printWinners(List<WinnerResponse> winnerResponses) {
@@ -34,7 +36,7 @@ public class OutputView {
 		System.out.print("최종 우승자 : " + winners);
 	}
 
-	public void printNewLine() {
-		System.out.println();
+	private String buildMovementString(CarMovementResponse carMovementResponse) {
+		return carMovementResponse.name() + " : " + "-".repeat(carMovementResponse.distance());
 	}
 }
