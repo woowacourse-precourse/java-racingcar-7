@@ -21,7 +21,7 @@ public class Validator {
         try {
             int attemptCount = Integer.parseInt(attemptCountInput);
             if (attemptCount <= 0) {
-                throw new IllegalArgumentException("시도 횟수는 1 이상의 양수로 입력해야 합니다.");
+                throw new IllegalArgumentException("시도 횟수는 1 이상 입력해야 합니다.");
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 정수로 입력해야 합니다.");
