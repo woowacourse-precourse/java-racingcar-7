@@ -36,10 +36,10 @@
 <br>
 
 ### 제출 전 확인 사항
-- [ ] 인덴트
-- [ ] 3항 연산자를 사용하지 않았는가
-- [ ] 메소드가 한 가지 일만 하는가
-- [ ] 테스트 코드를 적절히 작성하였는가
-- [ ] 자바 코드 컨벤션 (https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java)
-- [ ] `./gradlew clean test` 명령어 실행
-- [ ] 테스트 코드 통과
+- [x] 인덴트
+- [x] 3항 연산자를 사용하지 않았는가
+- [x] 메소드가 한 가지 일만 하는가
+- [x] 테스트 코드를 적절히 작성하였는가
+- [x] 자바 코드 컨벤션 (https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java)
+- [x] `./gradlew clean test` 명령어 실행
+- [x] 테스트 코드 통과
