@@ -1,13 +1,15 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
 
-        try (Scanner scanner = new Scanner(System.in)){
-            String[] names = nameInput(scanner);
-            int count = getTryCount(scanner);
+        try {
+            String[] names = nameInput();
+            int count = getTryCount();
             play(names, count);
 
         } catch (IllegalArgumentException e) {
@@ -16,9 +18,9 @@ public class Application {
 
     }
 
-    private static String[] nameInput(Scanner scanner) {
+    private static String[] nameInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = scanner.nextLine();
+        String input = Console.readLine();
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException("값을 입력해 주세요");
         }
@@ -38,10 +40,10 @@ public class Application {
         return names;
     }
 
-    private static int getTryCount(Scanner scanner) {
+    private static int getTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         try {
-            String input = scanner.nextLine().trim();
+            String input = Console.readLine().trim();
             if (input.isEmpty()) {
                 throw new IllegalArgumentException("값을 입력해 주세요.");
             }

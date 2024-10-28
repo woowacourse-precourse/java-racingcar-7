@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private final String name;
 
@@ -12,7 +14,7 @@ public class Car {
     }
 
     public void move() {
-        int n = (int) (Math.random() * 10);
+        int n = Randoms.pickNumberInRange(0, 9);
         if (n >= 4) {
             advanceCount += 1;
             streaks.append("-");
