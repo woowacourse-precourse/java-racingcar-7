@@ -18,4 +18,8 @@ public class RacingCarService {
             car.move();
         }
     }
+
+    public List<Car> getCarList() {
+        return carList;
+    }
 }
