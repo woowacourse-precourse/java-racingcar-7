@@ -24,17 +24,20 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
+    void 기능_테스트2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "3");
+                    assertThat(output()).contains("pobi : ---", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
         );
     }
 
     @Test
-    void 잘못된_입력_테스트1() {
+    void 예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji", " "))
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
