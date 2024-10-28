@@ -47,5 +47,9 @@ public class RacingCarValidator {
                 throw new IllegalArgumentException();
             }
         }
+        int rounds = Integer.parseInt(roundString);
+        if (rounds < Constants.ROUND_MINIMUM.getValue() || rounds > Constants.ROUND_MAXIMUM.getValue()) {
+            throw new IllegalArgumentException();
+        }
     }
 }

@@ -7,6 +7,8 @@ public enum Constants {
     NAME_LENGTH_LIMIT(5),
     MOVE_CONDITION(4),
     CAR_COUNT_MINIMUM(1),
+    ROUND_MINIMUM(0),
+    ROUND_MAXIMUM(100),
     ;
 
     private final int value;
