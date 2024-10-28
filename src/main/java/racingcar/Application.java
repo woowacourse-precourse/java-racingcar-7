@@ -13,13 +13,11 @@ public class Application {
         List<String> names = Arrays.asList(input.split(","));
         List<Car> cars = new ArrayList<>();
 
-        try {
-            for (String name : names) {
-                cars.add(new Car(name));
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return;
+            cars.add(new Car(name));
         }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
