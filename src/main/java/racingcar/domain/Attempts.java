@@ -21,4 +21,14 @@ public class Attempts {
             throw new IllegalArgumentException(INVALID_ATTEMPTS_ERROR_MESSAGE);
         }
     }
+
+    public void comsumeAttempt() {
+        if (remainAttempts > 0) {
+            remainAttempts--;
+        }
+    }
+
+    public boolean isEndGame() {
+        return remainAttempts > 0;
+    }
 }
