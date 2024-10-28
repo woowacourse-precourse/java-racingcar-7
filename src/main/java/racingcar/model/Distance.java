@@ -10,4 +10,8 @@ public class Distance {
     public int move(int randomDistance) {
         return this.distance + randomDistance;
     }
+
+    public int getDistance() {
+        return distance;
+    }
 }
