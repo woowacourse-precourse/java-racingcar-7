@@ -9,7 +9,7 @@ class InputValidatorTest {
 
     @Test
     public void 입력이_없는_경우() {
-        InputValidator inputValidator = new InputValidator();
+        NameValidator inputValidator = new NameValidator();
 
         boolean hasNoInput = inputValidator.checkNameIsEmpty("");
 
@@ -18,7 +18,7 @@ class InputValidatorTest {
 
     @Test
     public void 이름이_6자_이상인_경우() {
-        InputValidator inputValidator = new InputValidator();
+        NameValidator inputValidator = new NameValidator();
 
         boolean length4 = inputValidator.checkNameIsLongerThanFive("pobi,woni,jun"); //4자인 경우
         boolean length5 = inputValidator.checkNameIsLongerThanFive("pobii,woni,jun");//5자인 경우
@@ -31,7 +31,7 @@ class InputValidatorTest {
 
     @Test
     public void 이름에_숫자가_포함된_경우() {
-        InputValidator inputValidator = new InputValidator();
+        NameValidator inputValidator = new NameValidator();
 
         boolean noNumber = inputValidator.checkNameIncludeNumber("pobi,woni,jun"); //정상적인 입력
         boolean hasNumber = inputValidator.checkNameIncludeNumber("pobi,woni,1");//이름이 숫자인 경우
@@ -44,7 +44,7 @@ class InputValidatorTest {
 
     @Test
     public void 쉼표뒤에_이름이_없는_경우() {
-        InputValidator inputValidator = new InputValidator();
+        NameValidator inputValidator = new NameValidator();
 
         boolean normalInput = inputValidator.checkNameHasNameBehindComma("pobi,woni,jun"); //정상적인 입력
         boolean NoNameBehindCommaInput = inputValidator.checkNameHasNameBehindComma("pobi,woni,");//쉼표 뒤 이름이 없는 경우
@@ -60,10 +60,10 @@ class InputValidatorTest {
 
     @Test
     public void 시도횟수가_숫자가_아닌경우() {
-        InputValidator inputValidator = new InputValidator();
+        TryNumberValidator tryNumberValidator = new TryNumberValidator();
 
-        boolean normalInput = inputValidator.checkTryNumberIsNotNumber("5"); //정상적인 입력
-        boolean stringInput = inputValidator.checkTryNumberIsNotNumber("A");//숫자가 아닌 문자인 경우
+        boolean normalInput = tryNumberValidator.checkTryNumberIsNotNumber("5"); //정상적인 입력
+        boolean stringInput = tryNumberValidator.checkTryNumberIsNotNumber("A");//숫자가 아닌 문자인 경우
 
         assertThat(normalInput).isFalse();
         assertThat(stringInput).isTrue();
@@ -71,11 +71,11 @@ class InputValidatorTest {
 
     @Test
     public void 시도횟수가_1이상의_정수가_아닌경우() {
-        InputValidator inputValidator = new InputValidator();
+        TryNumberValidator tryNumberValidator = new TryNumberValidator();
 
-        boolean normalInput = inputValidator.checkTryNumberIsNotInteger("1"); //정상적인 입력
-        boolean zeroInput = inputValidator.checkTryNumberIsNotInteger("0");
-        boolean minusInput = inputValidator.checkTryNumberIsNotInteger("-1");
+        boolean normalInput = tryNumberValidator.checkTryNumberIsNotInteger("1"); //정상적인 입력
+        boolean zeroInput = tryNumberValidator.checkTryNumberIsNotInteger("0");
+        boolean minusInput = tryNumberValidator.checkTryNumberIsNotInteger("-1");
 
         assertThat(normalInput).isFalse();
         assertThat(zeroInput).isTrue();
