@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class GameCars {
-    public  final ArrayList<Car> cars = new ArrayList<>();
+    public final ArrayList<Car> cars = new ArrayList<>();
 
     public GameCars(String[] carNames) {
         for (String carName : carNames) {
