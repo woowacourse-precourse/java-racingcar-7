@@ -38,6 +38,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    public void 이름_입력시_정수외의_입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("정수 값이 아닙니다 : a")
+        );
+    }
+
+    @Test
     public void 공백_입력_테스트() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             InputValidator.validateEmpty("   "); // 공백 문자열 입력
