@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import racingcar.dto.CarDTO;
 import racingcar.message.ExceptionCode;
 
 import java.util.ArrayList;
@@ -38,15 +39,19 @@ public class Racing {
         int fastest = 0;
 
         for (final Car car : this.carList) {
-            if (fastest == car.getDistance()) {
-                winners.add(car.getName());
+            CarDTO dto = car.getCarDTO();
+            String name = dto.getName();
+            int position = dto.getPosition();
+
+            if (fastest == position) {
+                winners.add(name);
                 continue;
             }
 
-            if (fastest < car.getDistance()) {
-                fastest = car.getDistance();
+            if (fastest < position) {
+                fastest = position;
                 winners.clear();
-                winners.add(car.getName());
+                winners.add(name);
             }
         }
         return winners;

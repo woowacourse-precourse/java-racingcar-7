@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import racingcar.dto.CarDTO;
 import racingcar.message.ExceptionCode;
 
 public class Car {
@@ -28,12 +29,12 @@ public class Car {
         distance.moveOrNot();
     }
 
-    public String getName() {
-        return this.name;
+    public CarDTO getCarDTO() {
+        return new CarDTO(this.name, this.distance.getPosition());
     }
 
-    public int getDistance() {
-        return this.distance.getPosition();
+    public String getName() {
+        return this.name;
     }
 
 }

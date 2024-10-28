@@ -28,15 +28,15 @@ public class RacingController {
 
         Racing racing = new Racing(carList);
 
-        resultView.printResultMessage();
+        resultView.printDescription();
         for (int i = 0; i < inputTurns; i++) {
             racing.runRacingTurn();
             resultView.addTurnView(carList);
         }
-        resultView.printResultView();
+        resultView.print();
 
         List<String> winners = racing.computeWinner();
-        winnerView.printWinnerView(winners);
+        winnerView.print(winners);
 
     }
 
