@@ -13,15 +13,15 @@ public class ConsoleOutputView implements OutputView {
     @Override
     public void printRacingHistoryByRound(List<RacingHistoryOutputDto> racingHistoryOutputDtoList) {
         for (RacingHistoryOutputDto historyOutputDto : racingHistoryOutputDtoList) {
-            System.out.println(historyOutputDto.getCarName() + " : " + createDistanceVisualization(
-                    historyOutputDto.getTotalMovedDistance()));
+            System.out.println(historyOutputDto.carName() + " : " + createDistanceVisualization(
+                    historyOutputDto.totalMovedDistance()));
         }
         System.out.println();
     }
 
     @Override
     public void printWinner(List<CarOutputDto> carOutputDtoList) {
-        String winners = carOutputDtoList.stream().map(CarOutputDto::getCarName)
+        String winners = carOutputDtoList.stream().map(CarOutputDto::carName)
                 .reduce((name1, name2) -> name1 + ", " + name2)
                 .orElseThrow(() -> new IllegalArgumentException("우승자 없음"));
         System.out.println("최종 우승자 : " + winners);
