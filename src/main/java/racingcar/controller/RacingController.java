@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.service.RacingService;
+import racingcar.validation.CarNameValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,6 +15,8 @@ public class RacingController {
         String input = InputView.inputCarNames();
         String trimmedInput = InputView.removeSpace(input);
         List<String> carNames = InputView.splitStringByDelimiters(trimmedInput, ",");
+        CarNameValidator.validateCarNameLength(carNames);
+
         int totalCarCounts = carNames.size();
 
         OutputView.printInputAttemptCountMessage();
