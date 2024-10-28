@@ -7,8 +7,8 @@ public class Application {
         try {
             RacingGameController controller = new RacingGameController();
             controller.startGame();
-        } catch() {
+        } catch(IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
-
     }
 }
