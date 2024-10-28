@@ -1,4 +1,4 @@
-package message;
+package racingcar.message;
 
 public enum Message {
 
