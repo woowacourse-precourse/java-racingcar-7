@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.domain.CarDTO;
 import racingcar.domain.InputDTO;
+import racingcar.domain.RoundTimeDTO;
 
 import java.util.List;
 import java.util.stream.Collector;
@@ -18,10 +19,21 @@ public class RacingCarView {
         return new InputDTO(input);
     }
 
-    public int getRoundTime() {
+    public RoundTimeDTO getInputRoundTime() {
         String input = readLine();
+        if (input.isEmpty()) {
+            return new RoundTimeDTO(-1);
+        }
+        try {
 
-        return Integer.parseInt(input);
+            return new RoundTimeDTO(Integer.parseInt(input));
+
+        } catch (NumberFormatException e) {
+            // NumberFormatException을 IllegalArgumentException으로 변경
+            throw new IllegalArgumentException("올바른 숫자를 입력해 주세요: " + input);
+        }
+
+
     }
 
     public void showCarInputInfo() {
