@@ -3,7 +3,6 @@ package racingcar.controller;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarController {
@@ -15,6 +14,5 @@ public class RacingCarController {
             int tryCount = InputView.getTryCount();
             this.racingCarService = new RacingCarService(nameList);
         }
-
 
 }
