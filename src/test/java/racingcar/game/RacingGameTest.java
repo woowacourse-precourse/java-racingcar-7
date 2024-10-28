@@ -39,13 +39,24 @@ public class RacingGameTest extends NsTest {
 
     @Test
     @DisplayName("4 이상 숫자 발생시 자동차 움직임 확인 테스트")
-    void executeRoundsTest() {
+    void moveCarIncrementsMoveCountOnFourOrMore() {
         Car car = new Car("kim");
 
         assertEquals(0, car.getMoveCount());
         car.moveCar(5);
 
         assertEquals(1, car.getMoveCount());
+    }
+
+    @Test
+    @DisplayName("4 미만 숫자 발생시 자동차 움직임 확인 테스트")
+    void moveCarDoesNotIncrementCountOnNumberLessThanFour() {
+        Car car = new Car("kim");
+
+        assertEquals(0, car.getMoveCount());
+        car.moveCar(3);
+
+        assertEquals(0, car.getMoveCount());
     }
 
     @Override
