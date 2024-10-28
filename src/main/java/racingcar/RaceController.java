@@ -20,4 +20,21 @@ public class RaceController {
             throw new IllegalArgumentException("자동차 이름은 1자 이상, 5자 이하로 입력해야 합니다.");
         }
     }
+
+    public void startRace(int attempts) {
+        for (int i = 0; i < attempts; i++) {
+            playRound();
+            // OutputView.printRaceProgress(cars);
+        }
+    }
+
+    public void playRound() {
+        for (Car car : cars) {
+            car.moveIfPossible();
+        }
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
