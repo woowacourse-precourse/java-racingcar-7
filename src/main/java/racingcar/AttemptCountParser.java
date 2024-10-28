@@ -3,10 +3,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class AttemptCountParser {
 
-    /**
-     * 사용자에게 시도 횟수를 입력받는 메서드
-     * @return 사용자의 시도횟수 입력 문자열
-     * */
+
     public String inputAttemptCount(){
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Console.readLine();
@@ -30,10 +27,6 @@ public class AttemptCountParser {
         }
     }
 
-    /**
-     * RacingGame에 시도 횟수를 입력받고 검증 후 전달하는 메서드
-     * @return 유효한 시도 횟수
-     * */
     public int getAttemptCount(){
         return validateAttemptCount(inputAttemptCount());
     }

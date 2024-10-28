@@ -18,9 +18,7 @@ public class RacingGame{
         this.randomGenerator = randomGenerator;
     }
 
-    /**
-     * 우승자 출력 기능
-     */
+
     public void outputWinners(List<String> winnerNames){
         System.out.println("최종 우승자 : " + String.join(", ", winnerNames));
     }
@@ -38,9 +36,6 @@ public class RacingGame{
                 .toList();
     }
 
-    /**
-     * cars 중 moveCount 최대값 찾는 메서드
-     * */
     public int getMaxMoveCount(){
         int maxMoveCount = 0;
         for(Car car : cars){
@@ -52,15 +47,12 @@ public class RacingGame{
     }
 
     /**
-     * 실행결과 출력 기능
+     * 자동차 전진 실행결과 출력 기능
      * */
     public void outputRaceResult(Car car){
         System.out.println(car.getName() + " : "+ "-".repeat(car.getMoveCount()));
     }
 
-    /**
-     * 자동차 객체들을 생성하고 자동차 리스트에 추가하는 객체
-     * */
     public void addCars(List<String> validatedCarNames){
         for(String carName : validatedCarNames){
             cars.add(new Car(carName));
@@ -90,16 +82,10 @@ public class RacingGame{
         }
     }
 
-    /**
-     * 사용자가 시도할 횟수를 입력받는 메서드
-     **/
     public int getAttemptCount(){
         return attemptCountParser.getAttemptCount();
     }
 
-    /**
-     * 입력받은 자동차 이름 리스트를 반환하는 메서드
-     * */
     public List<String> getValidatedCarNames(){
         String input = carNameParser.inputCarNames();
         String[] splitCarName = carNameParser.splitCarNamesByComma(input);
