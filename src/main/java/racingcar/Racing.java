@@ -79,5 +79,25 @@ public class Racing {
                 System.out.println(carName + " : " + status);
             }
         }
+        winners();
+    }
+
+    private void winners() {
+        int maxStars = 0;
+
+        for (String status : carPositions.values()) {
+            maxStars = Math.max(maxStars, status.length());
+        }
+
+        List<String> winners = new ArrayList<>();
+        for (String carName : carNames) {
+            String currCarDash = carPositions.get(carName);
+
+            if (currCarDash.length() == maxStars) {
+                winners.add(carName);
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(",", winners));
     }
 }
