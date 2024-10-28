@@ -32,7 +32,7 @@ public class RacingGame {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
-                .sorted()  // 우승자 이름 정렬 (일관성을 위해)
+                // .sorted() 제거 - 입력 순서 유지
                 .collect(Collectors.toList());
     }
 
