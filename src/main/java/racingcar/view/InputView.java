@@ -41,7 +41,8 @@ public class InputView {
     }
 
     private void validateTryCount(int input) {
-        if (input < MIN_PLAY_COUNT || input > MAX_PLAY_COUNT)
+        if (input < MIN_PLAY_COUNT || input > MAX_PLAY_COUNT) {
             throw new IllegalArgumentException();
+        }
     }
 }
