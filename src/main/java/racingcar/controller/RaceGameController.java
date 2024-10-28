@@ -18,7 +18,7 @@ public class RaceGameController {
         this.raceWinnerView = new RaceWinnerView();
     }
 
-    public void start() {
+    public void gameStart() {
         InputDTO inputDTO = inputView.getInput();
         Long tryNum = inputDTO.tryNums();
         List<RacingCar> racingCars = inputDTO.to();
