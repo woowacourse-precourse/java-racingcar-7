@@ -77,4 +77,36 @@ class RacingTest {
             racing = new Racing(carNameDuple);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("자동차이름이_5글자_초과인경우_예외발생")
+    void 자동차이름이_5글자_초과인경우_예외발생() {
+        // given
+        RacingInfo carNameOverLength = new RacingInfo(
+                "pobipobi,em,alice",
+                3
+        );
+
+        // then
+        assertThatThrownBy(() -> {
+            // when
+            racing = new Racing(carNameOverLength);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("자동차이름에_한글_영어_숫자_외의_문자포함된_경우_예외발생")
+    void 자동차이름에_한글_영어_숫자_외의_문자포함된_경우_예외발생() {
+        // given
+        RacingInfo invalidCarName = new RacingInfo(
+                "_3_,a2s,ada",
+                3
+        );
+
+        // then
+        assertThatThrownBy(() -> {
+            // when
+            racing = new Racing(invalidCarName);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
