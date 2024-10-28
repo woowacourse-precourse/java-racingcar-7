@@ -8,25 +8,30 @@ import java.util.List;
 
 public class GameController {
     public void run() {
-        String[] carNames = InputView.getCarNames();
-        int tryCount = InputView.getTryCount();
+        List<Car> cars = initCars();
+        playRace(cars);
+        List<String> winners = getWinners(cars);
+        ResultView.printWinners(winners);
+    }
 
+    private List<Car> initCars() {
+        String[] carNames = InputView.getCarNames();
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             cars.add(new Car(name));
         }
+        return cars;
+    }
 
+    private void playRace(List<Car> cars) {
+        int tryCount = InputView.getTryCount();
         System.out.println("실행 결과");
-
         for (int i = 0; i < tryCount; i++) {
             for (Car car : cars) {
                 car.move();
             }
             ResultView.printProgress(cars);
         }
-
-        List<String> winners = getWinners(cars);
-        ResultView.printWinners(winners);
     }
 
     private List<String> getWinners(List<Car> cars) {
