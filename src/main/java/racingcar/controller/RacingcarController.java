@@ -39,7 +39,7 @@ public class RacingcarController {
         try {
             round = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("자연수가 아닌 값이 들어왔습니다.");
+            throw new IllegalArgumentException("숫자가 아닌 값이 들어왔습니다.");
         }
         RoundValidator.validate(round);
 
