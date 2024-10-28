@@ -24,9 +24,9 @@ public class Cars {
         List<Car> winnerCarList = carList.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .collect(Collectors.toList());
-        return winnerCarList.stream()
+        return List.copyOf(winnerCarList.stream()
                 .map(Car::getName)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     private int getMaxDistance(List<Car> carArray) {
@@ -39,5 +39,4 @@ public class Cars {
     public List<Car> getCarList() {
         return List.copyOf(carList);
     }
-
 }
