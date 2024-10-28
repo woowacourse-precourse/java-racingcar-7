@@ -7,8 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.RaceRequest;
-import racingcar.filter.executor.MockRaceExecutor;
-import racingcar.model.CarList;
+import racingcar.filter.mock.MockRaceExecutor;
+import racingcar.model.RacingCarList;
 
 class RaceExecutionFilterTest {
     private RaceExecutionFilter filter;
@@ -23,9 +23,9 @@ class RaceExecutionFilterTest {
     @Test
     @DisplayName("doFilter가 executeRace 메서드를 호출해야 한다")
     void testDoFilterCallsExecuteRace() {
-        CarList carList = new CarList(Collections.emptyList());
+        RacingCarList racingCarList = new RacingCarList(Collections.emptyList());
         RaceRequest request = new RaceRequest("Car1,Car2", 3);
-        request = request.withCarList(carList);
+        request = request.withCarList(racingCarList);
 
         RaceFilterChain chain = new RaceFilterChain(Collections.emptyList());
 
