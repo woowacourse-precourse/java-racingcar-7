@@ -8,7 +8,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        try {
+
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             List<Car> cars = inputName();
             System.out.println("시도할 횟수는 몇 회인가요?");
@@ -17,16 +17,13 @@ public class Application {
                 throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다.");
             }
             System.out.println("실행 결과");
-
             //게임 실행
             for (int i = 0; i < trial; i++) {
                 playOneRound(cars);
                 playResult(cars);
             }
             winner(cars);
-        } catch (IllegalArgumentException e) {
-            System.out.println("잘못된 입력입니다: " + e.getMessage());
-        }
+
     }
 
     //입력문 기능으로 빼기
@@ -41,12 +38,24 @@ public class Application {
     }
     //검증문도 빼기
     private static void validateName(String[] carNames) {
+        List<String> errors = new ArrayList<>();
         for (String name : carNames) {
             name = name.trim();
             if(name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다. ");
             }
+            if (isNumeric(name)) {
+                throw new IllegalArgumentException("자동차 이름은 숫자만 입력할 수 없습니다.");
+            }
+
         }
+        if (!errors.isEmpty()) {
+            throw new IllegalArgumentException(String.join("\n", errors));
+        }
+    }
+
+    private static boolean isNumeric(String name) {
+        return name.matches("\\d+");
     }
 
     //매판 결과값
@@ -65,7 +74,6 @@ public class Application {
                 car.go();
             }
         }
-
     }
 
     //우승자를 뽑는 방식
@@ -85,5 +93,4 @@ public class Application {
         //우승자 출력
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
-
 }
