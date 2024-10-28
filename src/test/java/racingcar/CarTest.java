@@ -27,4 +27,25 @@ public class CarTest extends NsTest {
         assertThat(name).isEqualTo(car.getName());
         assertThat(defaultPosition).isEqualTo(car.getPosition());
     }
+
+    /** 테스트 클래스 명 -> [메서드 명]_[테스트 중 상태]_[기대 행위] **/
+    @Test
+    @DisplayName("Movement.GO 또는 Movement.STOP 을 받았을 경우 자동차 위치 변화 테스트")
+    void move_InputtedMovementGo_movedPosition() {
+        // given
+        String name = "Ahn";
+        int movingPosition = 1;
+        int stopPosition = 0;
+
+        Car car1 = new Car(name);
+        Car car2 = new Car(name);
+
+        // when
+        car1.move(Movement.GO);
+        car2.move(Movement.STOP);
+
+        // then
+        assertThat(movingPosition).isEqualTo(car1.getPosition());
+        assertThat(stopPosition).isEqualTo(car2.getPosition());
+    }
 }
