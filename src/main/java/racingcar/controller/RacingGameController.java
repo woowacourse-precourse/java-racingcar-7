@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racingcar.validator.Validator.*;
+
 public class RacingGameController {
     private List<Car> cars;
 
@@ -18,18 +20,14 @@ public class RacingGameController {
                 .map(String::trim)
                 .collect(Collectors.toList());
 
-        // 자동차 이름 유효성 검사
-        Validator.validateNameLength(carNames);
-        Validator.validateNameFormat(carNames);
-        Validator.validateUniqueNames(carNames);
-
+        Validator.validateAll(carNames);
         cars = carNames.stream().map(Car::new).collect(Collectors.toList());
         return carNames;
     }
 
     public int getAttemptCount() {
         int attemptCount = InputView.getAttemptCount();
-        Validator.validateAttemptCount(attemptCount);
+        Validator.validateAll(attemptCount);
         return attemptCount;
     }
 

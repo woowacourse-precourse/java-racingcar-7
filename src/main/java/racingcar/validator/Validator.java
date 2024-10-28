@@ -6,6 +6,16 @@ import java.util.Set;
 
 public class Validator {
 
+    public static void validateAll(List<String> carNames) {
+        validateNameLength(carNames);
+        validateNameFormat(carNames);
+        validateUniqueNames(carNames);
+    }
+
+    public static void validateAll(int attemptCount) {
+        validateAttemptCount(attemptCount);
+    }
+
     public static void validateNameLength(List<String> carNames) {
         for (String name : carNames) {
             if (name.length() > 5) {
