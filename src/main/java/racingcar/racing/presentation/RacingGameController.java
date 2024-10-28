@@ -10,7 +10,7 @@ import racingcar.racing.common.InputValidator;
 import racingcar.racing.presentation.view.InputView;
 import racingcar.racing.presentation.view.OutputView;
 
-public class RacingGameManager {
+public class RacingGameController {
     private RacingGame racingGame;
 
     public void run() {
