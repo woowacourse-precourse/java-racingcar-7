@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import java.util.List;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -30,12 +31,41 @@ public class RaceManager {
         outputView.printRoundHeader();
         for (int i = 0; i < race.getTryCount(); i++) {
             race.round();
-            outputView.printRoundResult(race.getPlayers());
+            outputView.printRoundResult(displayRoundResult());
         }
     }
 
     private void showWinner() {
         Winners winners = race.createWinner();
-        outputView.printWinner(winners.getWinner());
+        String result = displayWinners(winners.getWinners());
+        outputView.printWinners(result);
+    }
+
+    private String displayRoundResult() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        List<Car> cars = race.getPlayers();
+
+        cars.forEach(car -> {
+            stringBuilder.append(car.getCarName());
+            stringBuilder.append(" : ");
+            stringBuilder.append("-".repeat(Math.max(0, car.getCurrentLocation())));
+            stringBuilder.append("\n");
+        });
+
+        return stringBuilder.toString();
+    }
+
+    private String displayWinners(List<Car> winners) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < winners.size(); i++) {
+            stringBuilder.append(winners.get(i).getCarName());
+            if (i < winners.size() - 1) {
+                stringBuilder.append(", ");
+            }
+        }
+
+        return stringBuilder.toString();
     }
 }

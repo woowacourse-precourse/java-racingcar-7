@@ -3,10 +3,10 @@ package racingcar.model;
 import java.util.List;
 
 public class Winners {
-    List<Car> winner;
+    List<Car> winners;
 
-    private Winners(List<Car> winner) {
-        this.winner = winner;
+    private Winners(List<Car> winners) {
+        this.winners = winners;
     }
 
     public static Winners from(Cars cars) {
@@ -14,8 +14,8 @@ public class Winners {
         return new Winners(winner);
     }
 
-    public List<Car> getWinner() {
-        return winner;
+    public List<Car> getWinners() {
+        return winners;
     }
 
     private static List<Car> checkWinner(Cars cars) {
