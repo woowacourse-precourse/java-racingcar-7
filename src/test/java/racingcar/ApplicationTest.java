@@ -7,6 +7,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -36,4 +37,30 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+
+    @Test
+    void saveCar_예외값_테스트1(){
+        String inputName = ", ";
+
+        assertThatThrownBy(() -> Application.saveCar(inputName))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void saveCar_예외값_테스트2(){
+        String inputName = "123456,1234567";
+
+        assertThatThrownBy(() -> Application.saveCar(inputName))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void saveCar_테스트(){
+        String inputName = "pobi,woni,son";
+        String[] result = Application.saveCar(inputName);
+
+        assertArrayEquals(new String[]{"pobi", "woni", "son"}, result);
+    }
+
 }
