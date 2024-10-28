@@ -26,20 +26,6 @@ public class Cars {
         }
     }
 
-    public void printCurrentPositions(){
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getMoveDisctance()));
-        }
-        System.out.println();
-    }
-
-    public void printWinners(){
-        int maxMoveDistance = maxMoveDistance();
-        List<String> winners = findWinners(maxMoveDistance);
-
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
-    }
-
     public int maxMoveDistance(){
         int maxMoveDistance = 0;
 
