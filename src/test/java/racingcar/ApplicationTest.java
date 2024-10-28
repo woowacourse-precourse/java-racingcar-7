@@ -66,6 +66,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 이름_작성_안함(){
+        ArrayList<String> carNameList = new ArrayList<>(List.of(""," ","불가"));
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputValidator.notWriteLetter(carNameList);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
