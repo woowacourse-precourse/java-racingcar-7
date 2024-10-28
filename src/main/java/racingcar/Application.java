@@ -1,7 +1,14 @@
 package racingcar;
 
+import racingcar.service.InputService;
+
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        InputService inputService = InputService.getInstance();
+
+        List<String> names = inputService.getNames();
+        int count = inputService.getTryCount();
     }
 }
