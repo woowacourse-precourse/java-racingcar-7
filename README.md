@@ -1,1 +1,51 @@
 # java-racingcar-precourse
+
+- 주어진 횟수 동안 n대의 자동차는 전진 혹은 정지한다.
+- 각 자동차에 이름을 부여할 수 있다. 차가 전진할 때 이름을 출력한다.
+- 이름은 쉼표`,`를 구분으로 하고 5자 이하이다.
+- 몇 번 이동할 지 입력할 수 있다.
+- 전진 조건은 0~9 사이 무작위 숫자 중 4이상이다.
+- 게임 완료 후 우승자를 출력한다. 한 명 이상일 수 있다. 쉼표`,`로 구분하여 출력한다.
+- 잘못된 값을 입력한 경우 `IllegalArgumentException`를 발생한 후 종료한다.
+
+---
+- Input
+  -
+  - inputCarName
+    - 자동차 이름 입력 메세지를 출력한다.
+    - 입력에 대한 유효성 검사를 한다.
+      - null 확인
+      - 콤마`,`로 끝나는지 확인
+  - inputTrialNumber
+    - 시도 횟수를 입력 받는다.
+    - null 확인
+- TrialNumber
+  -
+  - isTrialLowerThanTrialNumber
+    - 현재 시행 횟수가 입력 받은 시행 횟수 보다 작은지 반환
+  - increaseTrial
+    - 현재 시행 횟수를 증가
+- Car
+  -
+  - visualizeDistance
+    - 현재 얼마나 이동했는지 이름과 `-`로 출력
+  - maxDistanceAndOtherDistance
+    - 기준이 되는 이동 거리와 비교하여 최대 값을 반환
+  - isEqualToWinnerDistance
+    - 최대 이동 거리와 비교하여 같은지 반환
+  - move
+    - 난수에 따라 이동
+  - 이름에 대한 유효성 검사
+- Cars
+  - 
+  - move
+    - Car object들을 이동 명령을 내림
+  - getWinnersCarName
+    - 우승 자동차의 최대 이동거리를 구하고 이와 같은 자동차 이름을 `,`로 구분하여 반환
+  - printCarsStatus
+    - Car object들의 현재 상태를 출력
+- RacingCar
+  - 
+  - run
+    - TrialNumber에게 현재 시행할 수 있는지 요청하고 가능하다면 Cars에게 이동 명령 내림
+    - Cars에게 우승 자동차 이름을 받아 결과 메세지와 함께 출력
