@@ -9,8 +9,7 @@ public enum RacingException {
     WRONG_COUNT_ERROR("시도 횟수는 자연수이어야 합니다.")
     ;
 
-
-    private static final String PREFIX = "[error]";
+    private static final String PREFIX = "[error] ";
     private String description;
 
     RacingException(String description) {
