@@ -13,8 +13,6 @@ public class CarNameValidator {
     }
 
     private static void validateCarName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException();
-        }
+        if (name.length() > 5) { throw new IllegalArgumentException(); }
     }
 }
