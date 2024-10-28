@@ -8,8 +8,15 @@ public class InputParser {
     public List<Car> parseCarName(String carName) {
         String[] names = carName.split(",");
         List<Car> cars = new ArrayList<>();
+
         for (String name : names) {
+            if (name.trim().isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
+            }
             cars.add(new Car(name));
+        }
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름의 길이는 1이상입니다.");
         }
         return cars;
     }
