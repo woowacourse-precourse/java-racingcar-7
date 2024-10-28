@@ -14,7 +14,27 @@ class Car {
 }
 
 public class Application {
-    Car car_list[];
+    static Car car_list[];
+
+    public static void saveCar(String user_input) {
+        user_input += ",";
+        String name = "";
+        int idx = 0;
+        for (int i = 0; i < user_input.length(); i++) {
+            if (user_input.charAt(i) != ',') {
+                name += user_input.charAt(i);
+            } else {
+                if (name.length() > 5) {
+                    throw new IllegalArgumentException();
+                }
+
+                Car new_car = new Car(name, 0);
+                car_list[idx++] = new_car;
+                name = "";
+            }
+        }
+
+    }
 
     public static void inputCar() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
