@@ -74,6 +74,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 양수_아님(){
+        int roundNumber = -3;
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputValidator.notPositiveNum(roundNumber);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
