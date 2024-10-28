@@ -2,7 +2,7 @@ package racingcar.utils;
 
 import java.util.Random;
 
-public class RandomEngine implements Engine{
+public class RandomEngine implements Engine {
     private static final int MAX_ENGINE_POWER = 10;
     private static final int IS_ENGINE_RUNNING_MINIMUM_POWER = 4;
 
