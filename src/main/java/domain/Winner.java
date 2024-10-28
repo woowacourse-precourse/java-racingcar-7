@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Winner {
 
-    private static final StringBuilder sb = new StringBuilder();
+    private static StringBuilder sb = new StringBuilder();
 
     private final List<Car> cars;
     private String winner;
@@ -25,6 +25,7 @@ public class Winner {
         }
 
         this.winner = sb.toString();
+        sb = new StringBuilder();
     }
 
     private int findMaxStatus() {

@@ -1,6 +1,8 @@
 package domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CarNames {
 
@@ -18,11 +20,12 @@ public class CarNames {
 
 
     private static void validateDuplicate(final List<CarName> names) {
-        Boolean result = names.stream()
-                .distinct()
-                .count() != names.size();
+        Set<String> check = new HashSet<>();
+        for (CarName name: names) {
+            check.add(name.getName());
+        }
 
-        if (!result) {
+        if (check.size() != names.size()) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
     }
