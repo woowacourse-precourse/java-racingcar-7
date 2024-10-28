@@ -7,12 +7,9 @@
 - [ ] inputCarsNames: 자동차 이름 입력 메서드
 - [ ] inputTryCount: 시도 횟수 입력 메서드
 
-### 2. StringToNumberUtils
+### 2. StringUtils
 
-> 인터페이스로 제공 (Integer, Long 과 같이 다양한 숫자를 제공)
-> StringToIntegerUtils, StringToLongUtils
-
-- [ ] validateNumber - 입력 받은 문자열이 숫자인지 검증 메서드 (숫자로 변환하지 못할 시 예외 발생)
+- [ ] validateNotEmpty - 입력 받은 문자열이 비어있는지 검증하는 메서드
 - [ ] toNumber - 문자열을 숫자로 형 변환 메서드
 
 ### 3. Car
