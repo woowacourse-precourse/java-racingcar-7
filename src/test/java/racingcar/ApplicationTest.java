@@ -69,7 +69,7 @@ class ApplicationTest extends NsTest {
         });
 
         //then
-        assertEquals(exception.getMessage(), "이름은 5자 이하로 입력하세요.");
+        assertEquals(exception.getMessage(), "입력 서식에 맞춰 주세요.");
     }
 
     @Test
