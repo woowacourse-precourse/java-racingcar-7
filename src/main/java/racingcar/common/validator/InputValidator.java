@@ -9,12 +9,9 @@ public class InputValidator {
       throw new IllegalArgumentException("자동차 이름은 빈 문자열이 올 수 없습니다.");
     }
 
-    if (!input.contains(",")) {
-      throw new IllegalArgumentException("자동차 이름은 쉼표(,)로만 구분해야 합니다.");
-    }
-
     String[] carNames = input.split(",");
     Arrays.stream(carNames).forEach(InputValidator::validateCarName);
+
     return carNames;
   }
 
