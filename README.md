@@ -58,7 +58,7 @@
 - [x] 싱글톤으로 설계
 - [x] Lap이 진행되는 방식을 설정한다.
     - [x] LapUpdateService를 주입한다.
-- [ ] Race를 업데이트 한다.
+- [x] Race를 업데이트 한다.
 
 ### 🕹ScreenController
 - [x] 싱글톤으로 설계

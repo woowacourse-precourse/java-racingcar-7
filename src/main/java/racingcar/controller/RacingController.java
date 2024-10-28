@@ -21,4 +21,8 @@ public class RacingController {
     public void carMovementSetting(RaceStarterService raceStarterService) {
         lapUpdateService = new LapUpdateService(raceStarterService.getRace());
     }
+
+    public void gameUpdate() {
+        lapUpdateService.runLap();
+    }
 }
