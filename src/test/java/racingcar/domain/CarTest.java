@@ -48,16 +48,6 @@ class CarTest {
         anotherCar.execute(FORWARDING_CONDITION -1);
         assertThat(car.getDistance()).isEqualTo(2); // car은 이동 거리가 2
         assertThat(anotherCar.getDistance()).isEqualTo(1); // anotherCar은 이동 거리가 1
-        assertThat(car.compareTo(anotherCar)).isNegative();
-    }
-
-    @Test
-    @DisplayName("이동 거리가 같으면 Car 이름 사전식 비교")
-    void compareName() {
-        car.execute(FORWARDING_CONDITION);
-        anotherCar.execute(FORWARDING_CONDITION);
-        assertThat(car.getDistance()).isEqualTo(1); // car은 이동 거리가 1
-        assertThat(anotherCar.getDistance()).isEqualTo(1); // anotherCar은 이동 거리가 1
-        assertThat(car.compareTo(anotherCar)).isPositive(); // Jihye가 Jihyun보다 우선순위 높음
+        assertThat(car.compareDistance(anotherCar)).isNegative();
     }
 }

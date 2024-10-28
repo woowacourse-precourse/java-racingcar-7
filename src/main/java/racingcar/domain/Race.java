@@ -43,23 +43,7 @@ public class Race {
     }
 
     private List<Car> winners() {
-        return extractFrom(priorityQueue());
-    }
-
-    private PriorityQueue<Car> priorityQueue() {
-        PriorityQueue<Car> priorityQueue = new PriorityQueue<>();
-        priorityQueue.addAll(cars);
-        return priorityQueue;
-    }
-
-    private List<Car> extractFrom(final PriorityQueue<Car> priorityQueue) {
-        List<Car> winners = new ArrayList<>();
-        Car first = priorityQueue.poll();
-        assert first != null;
-        winners.add(first);
-        while (!priorityQueue.isEmpty() && first.hasSameDistanceWith(priorityQueue.peek())) {
-            winners.add(priorityQueue.poll());
-        }
-        return winners;
+        Car first = cars.stream().min(Car::compareDistance).orElseThrow();
+        return cars.stream().filter(car -> car.hasSameDistanceWith(first)).toList();
     }
 }

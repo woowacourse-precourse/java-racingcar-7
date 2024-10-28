@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
     private final String name;
     private Long distance;
@@ -31,6 +31,10 @@ public class Car implements Comparable<Car> {
         return Objects.equals(this.distance, anotherCar.distance);
     }
 
+    public int compareDistance(Car anotherCar) {
+        return -1 * Long.compare(this.distance, anotherCar.distance);
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(this.name).append(" : ");
@@ -38,14 +42,5 @@ public class Car implements Comparable<Car> {
             builder.append("-");
         }
         return builder.toString();
-    }
-
-    @Override
-    public int compareTo(Car car) {
-        int comparison = -1 * Long.compare(this.distance, car.distance);
-        if (comparison == 0) {
-            return this.name.compareTo(car.name);
-        }
-        return comparison;
     }
 }
