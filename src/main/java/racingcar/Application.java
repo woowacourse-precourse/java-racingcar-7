@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -25,6 +26,8 @@ class RacingGame {
     public void start() {
         participatingCars = getParticipatingCarsFromUserInput();
         numberOfAttempts = getNumberOfAttemptsFromUserInput();
+        playAllRounds();
+        printRaceWinners();
     }
 
     private List<Car> getParticipatingCarsFromUserInput() {
@@ -54,9 +57,10 @@ class RacingGame {
         }
     }
 
-    public void playAllRounds() {
+    private void playAllRounds() {
         for (int currentRound = 0; currentRound < numberOfAttempts; currentRound++) {
             playSingleRound();
+            printRoundResults();
         }
     }
 
@@ -69,11 +73,25 @@ class RacingGame {
         }
     }
 
-    public void printRoundResults() {
+    private void printRoundResults() {
         for (Car car : participatingCars) {
             System.out.println(car.getName() + " : " + car.getPositionRepresentation());
         }
         System.out.println();
+    }
+
+    private void printRaceWinners() {
+        int maxPosition = participatingCars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        List<String> winners = participatingCars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
 
@@ -88,6 +106,10 @@ class Car {
 
     public String getName() {
         return carName;
+    }
+
+    public int getPosition() {
+        return currentPosition;
     }
 
     public void moveForward() {
