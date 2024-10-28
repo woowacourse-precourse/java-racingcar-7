@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.view.ConsoleInput;
+import racingcar.view.ConsoleOutput;
+
 import static racingcar.common.constant.OutputConstant.*;
 
 public class Application {
