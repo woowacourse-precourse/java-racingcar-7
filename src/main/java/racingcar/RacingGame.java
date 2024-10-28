@@ -13,6 +13,10 @@ public class RacingGame {
         gameCount = 0;
     }
 
+    public void preparation() {
+        racingCarPreparation();
+        gameCountPreparation();
+    }
 
     public void gameCountPreparation() {
         Output.printGameCountGuide();
@@ -26,5 +30,10 @@ public class RacingGame {
         while (stringSeparator.hasNext()) {
             racingCars.registRacingCar(new RacingCar(stringSeparator.next()));
         }
+    }
+
+    public void progress() {
+        racingCars.moveOrNotForAll();
+        Output.printManyLines(racingCars.toString());
     }
 }
