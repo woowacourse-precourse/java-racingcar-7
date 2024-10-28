@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.List;
+import java.util.*;
 
 public class RaceValidator {
     public static void validateCarNames(List<String> carNames) {
@@ -8,6 +8,7 @@ public class RaceValidator {
             validateCarNameLength(name);  // 길이 검사
             validateCarNameNotEmpty(name); // 공백 검사
         }
+        validateCarNameDuplication(carNames);
     }
 
     private static void validateCarNameLength(String name) {
@@ -19,6 +20,13 @@ public class RaceValidator {
     private static void validateCarNameNotEmpty(String name) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+        }
+    }
+
+    private static void validateCarNameDuplication(List<String> carNames) {
+        Set<String> uniqueCarNames = new HashSet<>(carNames);
+        if (uniqueCarNames.size() != carNames.size()) {
+            throw new IllegalArgumentException("자동차 이름에 중복된 값이 있습니다.");
         }
     }
 
