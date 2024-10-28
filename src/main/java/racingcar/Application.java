@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.controller.CarNamesController;
 import racingcar.controller.WordsController;
 import racingcar.view.InputView;
 
@@ -21,22 +22,11 @@ public class Application {
         // 3. 쉼표를 기준으로 경주할 자동차 이름을 분리
         List<String> carNames = List.of(words.split(","));
 
-        // 4. 자동차 이름 시작과 끝이 공백인지 확인
-        // 그렇다면 잘못된 값이므로 IllegalArgumentException를 발생시킴
-        for (String carName : carNames) {
-            if (carName.startsWith(" ") | carName.endsWith(" ")) {
-                throw new IllegalArgumentException();
-            }
-        }
-
-        // 5. 자동차 이름의 길이가 1 이상 5 이하이며
-        // 한글 또는 영어대소문자 또는 숫자로 이루어져 있는지 확인
-        // 아니라면 잘못된 값이므로 IllegalArgumentException를 발생시킴
-        for (String carName : carNames) {
-            if (!carName.matches("^[A-Za-z0-9가-힣]{1,5}$")) {
-                System.out.println(carName);
-                throw new IllegalArgumentException();
-            }
+        // 4. 자동차 이름이 공백으로 시작하거나 끝나는 경우,
+        // 또는 한글 또는 영어대소문자 또는 숫자로 이루어진 1 이상 5 이하의 글자가 아닐 경우
+        // 잘못된 값이므로 IllegalArgumentException를 발생시킴
+        if (!CarNamesController.isValid(carNames) | !CarNamesController.checkConditions(carNames)) {
+            throw new IllegalArgumentException();
         }
 
         // 6. 자동차 이름을 key, 전진한 거리를 value로 가지는 맵을 만듦
