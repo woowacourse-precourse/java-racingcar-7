@@ -2,7 +2,7 @@ package racingcar.io;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.vehicle.Car;
+import racingcar.vehicle.Vehicle;
 
 public class ConsoleOutputHandler {
 
@@ -14,12 +14,12 @@ public class ConsoleOutputHandler {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public void printExecumentInstruction(Car car) {
-        System.out.print(car.getVehicleName() + " : ");
-        printProgressLine(car.getForwardCount());
+    public void printProgressDegree(Vehicle vehicle) {
+        System.out.print(vehicle.getVehicleName() + " : ");
+        printProgressLine(vehicle.getForwardCount());
     }
 
-    public void printWinner(List<Car> winners) {
+    public void printWinner(List<Vehicle> winners) {
         String winnerMembers;
         winnerMembers = winnersListToString(winners);
 
@@ -36,11 +36,11 @@ public class ConsoleOutputHandler {
         System.out.println();
     }
 
-    private static String winnersListToString(List<Car> winners) {
+    private static String winnersListToString(List<Vehicle> winners) {
         String winnerMembers;
         if (winners.size() > 1) {
             winnerMembers = String.join(", ", winners.stream()
-                    .map(Car::getVehicleName)
+                    .map(Vehicle::getVehicleName)
                     .collect(Collectors.toList()));
         }
         else  {
