@@ -40,11 +40,11 @@ class RacingJudgeTest {
         //given
         List<RacingRecord> records = racingGame.getRecords();
         //when
-        racingGame.racing(List.of(0, 4, 4));
-        racingGame.racing(List.of(0, 4, 4));
-        racingGame.racing(List.of(0, 4, 4));
+        racingGame.racing(List.of(4, 4, 4));
+        racingGame.racing(List.of(4, 4, 4));
+        racingGame.racing(List.of(4, 4, 4));
         String winners = judge.decideWinnerBy(records);
         //then
-        assertThat(winners).isEqualTo("woni,jun");
+        assertThat(winners).isEqualTo("pobi, woni, jun");
     }
 }

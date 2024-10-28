@@ -44,7 +44,7 @@ public class RacingJudge {
 
     private void addAnotherWinner(String name) {
         if (!isFirstWinner()) {
-            winners += "," + name;
+            winners += ", " + name;
         }
     }
 
