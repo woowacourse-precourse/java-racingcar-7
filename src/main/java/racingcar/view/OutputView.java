@@ -33,6 +33,6 @@ public class OutputView {
 	}
 
 	public static void winners(List<String> winners) {
-		System.out.println(FINAL_WINNER + String.join(Delimiter.COMMA + " ", winners));
+		System.out.println(FINAL_WINNER + String.join(Delimiter.COMMA.getDelimiter() + " ", winners));
 	}
 }
