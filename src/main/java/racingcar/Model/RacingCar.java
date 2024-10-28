@@ -1,4 +1,4 @@
-package racingcar.View.Model;
+package racingcar.Model;
 
 public class RacingCar implements Comparable<RacingCar> {
 
@@ -6,8 +6,15 @@ public class RacingCar implements Comparable<RacingCar> {
     int score;
 
     public RacingCar(int score, String name) {
+        validateName(name);
         this.score = score;
         this.name = name;
+    }
+
+    private void validateName(String name) {
+        if(name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public String getName() {
