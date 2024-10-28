@@ -109,6 +109,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 주행거리_확인_테스트() {
+        //given
+        Referee referee = new CarRacingReferee();
+        List<Car> carList = Arrays.asList(
+                new TestCar("jisu", 3),
+                new TestCar("jun", 6),
+                new TestCar("minji", 5)
+        );
+
+        //when
+        List<Car> confirmedCar = referee.checkDrivingDistance(carList);
+
+        //then
+        assertEquals(0, confirmedCar.get(0).getDistance(), "jisu의 이동 거리가 잘못되었습니다.");
+        assertEquals(1, confirmedCar.get(1).getDistance(), "jun의 이동 거리가 잘못되었습니다.");
+        assertEquals(1, confirmedCar.get(2).getDistance(), "minji의 이동 거리가 잘못되었습니다.");
+    }
+
+    @Test
     void 주행거리_판단_테스트_전진(){
         //given
         Referee referee = new CarRacingReferee();
@@ -136,6 +155,43 @@ class ApplicationTest extends NsTest {
         assertEquals(car, testCar);
     }
 
+    @Test
+    void 우승자_판단_테스트(){
+        //given
+        Referee referee = new CarRacingReferee();
+
+        Car suji = new TestCar(2,"suji");
+        Car minji = new TestCar(4,"minji");
+        Car yunji = new TestCar(8,"yunji");
+
+        List<Car> carList = Arrays.asList(suji, minji, yunji);
+
+        //when
+        List<Car> winners = referee.judgeWinner(carList);
+
+        //then
+        List<Car> expected = Arrays.asList(yunji);
+        assertThat(winners).usingRecursiveAssertion().isEqualTo(expected);
+    }
+
+    @Test
+    void 우승자_여러명_판단_테스트(){
+        //given
+        Referee referee = new CarRacingReferee();
+
+        Car suji = new TestCar(2,"suji");
+        Car minji = new TestCar(4,"minji");
+        Car yunji = new TestCar(4,"yunji");
+
+        List<Car> carList = Arrays.asList(suji, minji, yunji);
+
+        //when
+        List<Car> winners = referee.judgeWinner(carList);
+
+        //then
+        List<Car> expected = Arrays.asList(minji, yunji);
+        assertThat(winners).usingRecursiveAssertion().isEqualTo(expected);
+    }
     @Test
     void 최종_우승자_출력_테스트() {
         // given
