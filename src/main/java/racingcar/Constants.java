@@ -7,4 +7,8 @@ public class Constants {
 
     public static final String DASH="-";
     public static final String WINNER="최종 우승자 : ";
+
+    public static final int GO_NUMBER=4;
+    public static final int MIN_RANDOM_NUMBER=1;
+    public static final int MAX_RANDOM_NUMBER=9;
 }
