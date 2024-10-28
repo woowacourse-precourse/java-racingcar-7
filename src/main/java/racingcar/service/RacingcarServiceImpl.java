@@ -24,4 +24,25 @@ public class RacingcarServiceImpl implements RacingcarService {
         }
     }
 
+    @Override
+    public void moveCars() {
+        List<Car> cars = racingcarRepository.getAllCar();
+
+        for (var car : cars) {
+            car.move();
+        }
+    }
+
+    @Override
+    public String getRoundStatus() {
+        List<Car> cars = racingcarRepository.getAllCar();
+
+        var sb = new StringBuilder();
+        for (var car : cars) {
+            sb.append(car.getState())
+                    .append("\n");
+        }
+
+        return sb.toString();
+    }
 }

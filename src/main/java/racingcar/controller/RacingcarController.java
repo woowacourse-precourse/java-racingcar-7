@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import racingcar.service.RacingcarService;
 import racingcar.validator.RoundValidator;
 import racingcar.view.View;
@@ -18,6 +20,13 @@ public class RacingcarController {
         racingcarService.initializeCars(players);
         var attempts = getRound();
 
+        List<String> roundResult = new ArrayList<>();
+        for (int i = 0; i < attempts; i++) {
+            racingcarService.moveCars();
+            String roundStatus = racingcarService.getRoundStatus();
+            roundResult.add(roundStatus);
+        }
+        view.displayRoundStatus(roundResult);
     }
 
 

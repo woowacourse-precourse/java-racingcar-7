@@ -15,4 +15,9 @@ public class RacingcarRepositoryImpl implements RacingcarRepository {
     public void save(Car car) {
         cars.add(car);
     }
+
+    @Override
+    public List<Car> getAllCar() {
+        return this.cars;
+    }
 }
