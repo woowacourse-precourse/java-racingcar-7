@@ -51,7 +51,6 @@ public class ContextProxy implements InvocationHandler {
 
     private void validParameter(Parameter parameter, Object argument) {
         List<Annotation> annotations = Arrays.stream(parameter.getAnnotations())
-                .peek(System.out::println)
                 .filter(it -> !it.annotationType().equals(Valid.class))
                 .toList();
 
