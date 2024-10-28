@@ -87,7 +87,7 @@ class RacingServiceImplTest {
                     racingService.startRacing(attemptCount);
                     List<CarOutputDto> winnerList = racingService.selectWinner();
                     assertThat(List.of("test1"))
-                            .isEqualTo(winnerList.stream().map(CarOutputDto::getCarName).collect(Collectors.toList()));
+                            .isEqualTo(winnerList.stream().map(CarOutputDto::carName).collect(Collectors.toList()));
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
         );
@@ -109,7 +109,7 @@ class RacingServiceImplTest {
                     racingService.startRacing(attemptCount);
                     List<CarOutputDto> winnerList = racingService.selectWinner();
                     assertThat(List.of("test1", "test2"))
-                            .isEqualTo(winnerList.stream().map(CarOutputDto::getCarName).collect(Collectors.toList()));
+                            .isEqualTo(winnerList.stream().map(CarOutputDto::carName).collect(Collectors.toList()));
                 },
                 MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
         );
