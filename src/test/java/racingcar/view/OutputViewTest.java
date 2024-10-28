@@ -10,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.domain.race.CarSnapshot;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,17 +33,14 @@ class OutputViewTest {
     @Test
     void printRoundResults() {
         // given
-        List<Car> cars = Arrays.asList(
-                new Car("Car1", () -> true),
-                new Car("Car2", () -> false),
-                new Car("Car3", () -> true)
+        List<CarSnapshot> carSnapshots = Arrays.asList(
+                new CarSnapshot("Car1", 1),
+                new CarSnapshot("Car2", 0),
+                new CarSnapshot("Car3", 1)
         );
 
-        cars.get(0).oneRoundStart();
-        cars.get(2).oneRoundStart();
-
         // when
-        OutputView.printRoundResults(cars);
+        OutputView.printRoundResults(carSnapshots);
 
         // then
         String expectedOutput = "Car1 : -\nCar2 : \nCar3 : -\n\n";

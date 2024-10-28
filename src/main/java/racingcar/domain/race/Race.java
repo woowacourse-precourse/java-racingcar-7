@@ -2,6 +2,7 @@ package racingcar.domain.race;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
 import racingcar.validator.RaceValidator;
 
@@ -19,7 +20,11 @@ public class Race {
         List<RoundResult> roundResults = new ArrayList<>();
         for (int i = 0; i < totalRounds; i++) {
             runOneRound();
-            roundResults.add(new RoundResult(new ArrayList<>(cars)));
+
+            List<CarSnapshot> carSnapshots = cars.stream()
+                    .map(Car::toSnapshot)
+                    .collect(Collectors.toList());
+            roundResults.add(new RoundResult(carSnapshots));
         }
 
         return roundResults;

@@ -3,12 +3,13 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
+import racingcar.domain.race.CarSnapshot;
 
 public class OutputView {
 
-    public static void printRoundResults(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+    public static void printRoundResults(List<CarSnapshot> carSnapshots) {
+        for (CarSnapshot carSnapshot : carSnapshots) {
+            System.out.println(carSnapshot.getName() + " : " + "-".repeat(carSnapshot.getPosition()));
         }
         System.out.println();
     }

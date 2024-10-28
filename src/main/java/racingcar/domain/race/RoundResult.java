@@ -4,13 +4,13 @@ import java.util.List;
 import racingcar.domain.car.Car;
 
 public class RoundResult {
-    private final List<Car> cars;
+    private final List<CarSnapshot> carSnapshots;
 
-    public RoundResult(List<Car> cars) {
-        this.cars = List.copyOf(cars);  // 불변 리스트로 저장
+    public RoundResult(List<CarSnapshot> carSnapshots) {
+        this.carSnapshots = carSnapshots;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<CarSnapshot> getCarSnapshots() {
+        return carSnapshots;
     }
 }

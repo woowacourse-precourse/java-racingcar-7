@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import racingcar.domain.car.strategy.MovingStrategy;
+import racingcar.domain.race.CarSnapshot;
 import racingcar.validator.CarValidator;
 
 public class Car {
@@ -33,6 +34,9 @@ public class Car {
         return this.position.equals(leadingCar.position);
     }
 
+    public CarSnapshot toSnapshot() {
+        return new CarSnapshot(this.name, this.position);
+    }
 
     public Integer getPosition() {
         return position;
