@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -24,7 +23,7 @@ class GameControllerTest {
         void 정상적인_게임_시작() {
             // given
             GameService gameService = new TestGameService();
-            InputView inputView = new TestInputView(List.of("p1", "p2"), 2);
+            InputView inputView = new TestInputView("haha");
             OutputView outputView = new TestOutputView();
             GameController gameController = new GameController(gameService, inputView, outputView);
 
