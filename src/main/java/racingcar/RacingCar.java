@@ -1,13 +1,12 @@
 package racingcar;
 
-import static racingcar.Winner.winners;
-
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.io.ConsoleInputHandler;
 import racingcar.io.ConsoleOutputHandler;
 import racingcar.util.Separator;
 import racingcar.vehicle.Car;
+import racingcar.vehicle.Vehicle;
 
 public class RacingCar {
 
@@ -18,30 +17,30 @@ public class RacingCar {
 
     public void run() {
         consoleOutputHandler.printCarNameInstruction();
-        String carListInput = consoleInputHandler.getCarListInput();
+        String vehicleListInput = consoleInputHandler.getVehicleListInput();
         consoleOutputHandler.printTryCountInstruction();
         int tryCount = consoleInputHandler.getMoveTryCount();
-        List<String> carList = separator.separateCarList(carListInput);
-        List<Car> cars = new ArrayList<>();
+        List<String> vehicleList = separator.separateVehicleList(vehicleListInput);
+        List<Vehicle> vehicles = new ArrayList<>();
 
         System.out.println();
         System.out.println("실행 결과");
 
-        for (int i = 0; i < carList.size(); i++) {
-            cars.add(new Car(carList.get(i), tryCount));
+        for (int i = 0; i < vehicleList.size(); i++) {
+            vehicles.add(new Car(vehicleList.get(i), tryCount));
         }
 
         for (int i = 0; i < tryCount; i++) {
-            cars.forEach(car -> {
-                car.moveForward();
-                consoleOutputHandler.printExecumentInstruction(car);
+            vehicles.forEach(vehicle -> {
+                vehicle.attemptMoveForward();
+                consoleOutputHandler.printProgressDegree(vehicle);
             });
             System.out.println();
         }
 
-        winners = winner.determineWinners(cars);
+        winner.determine(vehicles);
 
-        consoleOutputHandler.printWinner(winners);
+        consoleOutputHandler.printWinner(winner.getWinners());
     }
 
 }
