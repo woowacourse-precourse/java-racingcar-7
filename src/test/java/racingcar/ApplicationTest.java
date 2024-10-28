@@ -107,6 +107,41 @@ class ApplicationTest extends NsTest {
         assertDoesNotThrow(() -> Application.validateNamesCount(names));
     }
 
+    @Test
+    void 자동차_이름_5자_초과인_경우_예외_발생(){
+        String[] names = new String[]{
+                "abcd",
+                "abcdef"
+        };
+        assertThrows(IllegalArgumentException.class, () -> Application.validateNameLength(names));
+
+        names[1] = "가나다라마바";
+        assertThrows(IllegalArgumentException.class, () -> Application.validateNameLength(names));
+
+        names[1] = "ㅁㄷㅂㄷㅇㅁ";
+        assertThrows(IllegalArgumentException.class, () -> Application.validateNameLength(names));
+
+        names[1] = "";
+        assertThrows(IllegalArgumentException.class, () -> Application.validateNameLength(names));
+    }
+
+    @Test
+    void 자동차_이름_5자_이하인_경우_정상처리(){
+        String[] names = new String[]{
+                "a",
+                "bc",
+                "abcd",
+                "abc"
+        };
+        assertDoesNotThrow(() -> Application.validateNameLength(names));
+
+        names[1] = "가나다라바";
+        assertDoesNotThrow(() -> Application.validateNameLength(names));
+
+        names[1] = "ㅁㅂㅇㄷㄹ";
+        assertDoesNotThrow(() -> Application.validateNameLength(names));
+    }
+
     @AfterEach
     public void tearDown() {
         System.setOut(standardOut);
