@@ -23,6 +23,7 @@ public class OutputHandler {
         for (Car car : carList) {
             StringBuilder sb = new StringBuilder();
             int count = car.getPosition();
+
             System.out.print(car.getName() + " : ");
             sb.append("-".repeat(Math.max(0, count)));
             System.out.print(sb + "\n");
