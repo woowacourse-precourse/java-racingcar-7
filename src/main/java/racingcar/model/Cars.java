@@ -15,7 +15,7 @@ public class Cars {
     public static final int MAX_CAR_COUNT = 5;
     public static final int MIN_CAR_COUNT = 2;
     public static final String DELIMITER = ",";
-    private static final Map<String, Car> carsCache = new HashMap<>();
+    private final Map<String, Car> carsCache = new HashMap<>();
 
     public Cars(String carNames, MoveStrategy moveStrategy) {
         validateBasicCarNameConditions(carNames);
