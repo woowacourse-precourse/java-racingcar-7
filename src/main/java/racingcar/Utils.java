@@ -1,7 +1,11 @@
 package racingcar;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Utils {
     static String[] getNamesFromString(String names) {
+        Set<String> uniqueCheck = new HashSet<>();
         if (names == null || names.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 필수 입력값입니다. ");
         }
@@ -16,6 +20,10 @@ public class Utils {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("유효하지 않은 자동차 이름입니다.");
             }
+            if (uniqueCheck.contains(name)) {
+                throw new IllegalArgumentException("중복된 이름의 자동차가 있습니다. ");
+            }
+            uniqueCheck.add(name);
         }
         return nameArray;
     }
