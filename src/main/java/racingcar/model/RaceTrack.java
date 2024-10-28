@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,11 +16,7 @@ public class RaceTrack {
 
     public void moveCars() {
         for (Car car : cars) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
-            if (randomNumber >= 4) {
-                car.goForward();
-            }
-//            outputView.printCarPosition(car);
+            car.tryMoveForward();
         }
     }
 
