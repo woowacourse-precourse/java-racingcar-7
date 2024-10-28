@@ -26,8 +26,24 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+            assertThatThrownBy(() -> runException("pobi,javaji", "1"))  // 자동차 이름 길이 5이상 입력 예외 테스트
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_이름_하나_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi", "1"))     // 자동차 이름 하나 입력 예외 테스트
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_이름_연속_쉼표_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,woni,,,", "1"))    // 자동차 이름 연속된 쉼표 입력 예외 테스트
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
