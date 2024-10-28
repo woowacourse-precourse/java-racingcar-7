@@ -5,6 +5,7 @@ import racingcar.controller.RacingController;
 import racingcar.controller.format.RaceResultFormatter;
 import racingcar.controller.handler.ConsoleInputHandler;
 import racingcar.controller.handler.ConsoleOutputHandler;
+import racingcar.controller.handler.input.ConsoleInputProvider;
 import racingcar.service.RaceEngine;
 import racingcar.service.RacingService;
 import racingcar.util.random.RaceRandomGenerator;
@@ -24,7 +25,7 @@ public class Config {
     }
 
     public ConsoleInputHandler consoleInputHandler() {
-        return new ConsoleInputHandler(new InputParser());
+        return new ConsoleInputHandler(new InputParser(), new ConsoleInputProvider());
     }
 
     public RaceEngine raceEngine() {
