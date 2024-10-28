@@ -4,7 +4,7 @@ import java.util.List;
 
 import racingcar.domain.AttemptCount;
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.Race;
 import racingcar.parser.CarNameInputParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -21,12 +21,12 @@ public class RacingController {
 	public void run() {
 		String carNameInput = readCarNameInput();
 		List<String> carNames = parseCarNameInput(carNameInput);
-		Cars cars = createCars(carNames);
+		Race race = createRace(carNames);
 
 		AttemptCount attemptCount = readAttemptCountInput();
 
-		printRaceResult(attemptCount.getAttemptCount(), cars);
-		printWinners(cars);
+		printRaceResult(attemptCount.getAttemptCount(), race);
+		printWinners(race);
 	}
 
 	private String readCarNameInput() {
@@ -41,12 +41,12 @@ public class RacingController {
 		return carNameInputParser.parseInput(carNameInput);
 	}
 
-	private Cars createCars(List<String> carNames) {
+	private Race createRace(List<String> carNames) {
 		List<Car> cars = carNames.stream()
 			.map(Car::new)
 			.toList();
 
-		return new Cars(cars);
+		return new Race(cars);
 	}
 
 	private AttemptCount readAttemptCountInput() {
@@ -56,17 +56,17 @@ public class RacingController {
 		return new AttemptCount(attemptCountInput);
 	}
 
-	private void printRaceResult(int attemptCount, Cars cars) {
+	private void printRaceResult(int attemptCount, Race race) {
 		outputView.printNewLine();
 		outputView.printRaceResultPrompt();
 		for (int i = 0; i < attemptCount; i++) {
-			cars.moveEachCars();
-			outputView.printRaceResult(cars.findRaceStatus());
+			race.moveEachCars();
+			outputView.printRaceResult(race.findRaceStatus());
 			outputView.printNewLine();
 		}
 	}
 
-	private void printWinners(Cars cars) {
-		outputView.printWinners(cars.selectWinners());
+	private void printWinners(Race race) {
+		outputView.printWinners(race.selectWinners());
 	}
 }

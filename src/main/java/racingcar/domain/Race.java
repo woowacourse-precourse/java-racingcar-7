@@ -7,10 +7,10 @@ import racingcar.dto.CarMovementResponse;
 import racingcar.dto.WinnerResponse;
 import racingcar.util.RandomNumberPicker;
 
-public class Cars {
+public class Race {
 	private final List<Car> cars;
 
-	public Cars(List<Car> cars) {
+	public Race(List<Car> cars) {
 		this.cars = cars;
 	}
 
