@@ -68,7 +68,7 @@ public class RacingCarMachine {
 
 		outputHandler.showStartResultMessage();
 
-		excuteGameByTryNumber();
+		executeGameByTryNumber();
 
 		// 7. 시도 횟수로 1이 입력 되었을 때 모든 차가 출발하지 않은 경우
 		if (doseOneTryNumberAndAllCarsNotForward()) {
@@ -115,7 +115,7 @@ public class RacingCarMachine {
 		return tryNumber.getTryNumber() == 1 && carForward.values().stream().allMatch(length -> length.equals(""));
 	}
 
-	private void excuteGameByTryNumber() {
+	private void executeGameByTryNumber() {
 		for (int i = 0; i < tryNumber.getTryNumber(); i++) {
 			canMoveForward();
 			outputHandler.showBlankSpace();
