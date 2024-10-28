@@ -81,6 +81,18 @@ public class Application {
         System.out.println(ATTEMPT_PRINT);
     }
 
+    public static void playRound(){
+        for(int i = 0; i < gameScores.size(); i++){
+            if(pickingRandomNumber()) {
+                StringBuilder sb = gameScores.get(i);
+                sb.append(FORWARD_SYMBOL);
+                gameScores.set(i, sb);
+                outputRoundScores();
+            }
+        }
+
+    }
+
     public static boolean pickingRandomNumber(){
         return Randoms.pickNumberInRange(0, 9) >= FORWARD_MIN_VALUE;
     }
