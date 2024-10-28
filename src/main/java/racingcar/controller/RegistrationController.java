@@ -35,4 +35,8 @@ public class RegistrationController {
     private List<String> lineupSetting(String carNames) {
         return List.of(carNames.split(ExpressionFormat.SEPARATOR.form()));
     }
+
+    private Long lapCountSetting(String count) {
+        return Long.parseLong(count);
+    }
 }
