@@ -7,8 +7,6 @@ import racingcar.service.util.RandomNumberGenerator;
 import racingcar.view.OutputView;
 import racingcar.view.constant.RunConstant;
 
-import java.util.*;
-
 public class GameService {
     private final Car car;
     private final NumberOfAttempt numberOfAttempt;
@@ -19,6 +17,17 @@ public class GameService {
         this.car = car;
         this.numberOfAttempt = numberOfAttempt;
         manageCarMovement.initialize(car.getCars());
+    }
+
+    public void showExecutionResult() {
+        int repeatCount = numberOfAttempt.getNumber();
+        outputView.printExecutionStartMessage();
+
+        while (repeatCount != 0) {
+            moveCarBasedOnRandomNumber();
+            outputView.printExecutionResult(manageCarMovement, car.getCars());
+            repeatCount--;
+        }
     }
 
     private void moveCarBasedOnRandomNumber() {
