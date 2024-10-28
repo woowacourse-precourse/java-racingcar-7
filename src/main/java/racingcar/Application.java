@@ -47,4 +47,11 @@ public class Application {
             }
         }
     }
+
+    private static void printPositions(String[] carNames, int[] positions) {
+        for (int i = 0; i < carNames.length; i++) {
+            System.out.println(carNames[i] + " : " + "-".repeat(positions[i]));
+        }
+        System.out.println();
+    }
 }
