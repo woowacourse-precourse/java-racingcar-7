@@ -15,7 +15,7 @@ public class RacingGame {
     }
 
     private void initialize() {
-        inputView.requestMoveCount();
+        inputView.carnameInput();
         cars = new Cars(inputView.readCarNames());
 
         inputView.requestMoveCount();

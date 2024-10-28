@@ -1,7 +1,6 @@
 package racingcar.Controller;
 
-import camp.nextstep.edu.missionutils.Console;
-import racingcar.Domain.Car;
+import racingcar.Domain.RacingGame;
 import racingcar.View.InputView;
 import racingcar.View.OutputView;
 
@@ -14,9 +13,8 @@ public class Controller {
         this.outputView = outputView;
     }
 
-    public Car run() {
-        inputView.carnameInput();
-        String input = Console.readLine();
-        return new Car(input);
+    public void run() {
+        RacingGame game = new RacingGame(inputView, outputView);
+        game.play();
     }
 }
