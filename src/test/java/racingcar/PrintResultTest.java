@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
-
 
 public class PrintResultTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -34,7 +32,7 @@ public class PrintResultTest extends NsTest {
 
     @Test
     void 최종우승자_출력_테스트() {
-        List<String> carName = List.of("pobi","woni");
+        List<String> carName = List.of("pobi", "woni");
         printResult.printWinner(carName);
         assertThat(output()).contains("최종 우승자 : pobi, woni");
     }
