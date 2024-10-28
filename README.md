@@ -1,7 +1,33 @@
 # java-racingcar-precourse
 
 ---
+```
+.
+├── main
+│   └── java
+│       └── racingcar
+│           ├── Application.java
+│           ├── controller
+│           │   └── RacingController.java
+│           ├── domain
+│           │   └── Car.java
+│           ├── service
+│           │   ├── RacingService.java
+│           │   ├── Separator.java
+│           │   └── Validation.java
+│           └── view
+│               ├── InputView.java
+│               └── OutputView.java
+└── test
+    └── java
+        └── racingcar
+            ├── ApplicationTest.java
+            └── service
+                ├── SeparatorTest.java
+                └── ValidationTest.java
 
+
+```
 ## 기능 목록
 -[x] 입력 받은 문자열 분리 및 검증
   - 구분자(,)를 기준으로 문자열 분리
