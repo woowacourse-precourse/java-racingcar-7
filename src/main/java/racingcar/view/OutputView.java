@@ -13,6 +13,7 @@ public class OutputView {
     private static final String PROCESS_POSITION_MARK = "-";
 
     public static void printProcess(MovementRecord movementRecord) {
+        System.out.println();
         System.out.println(PROCESS_RESULT);
 
         for (Map<String, Integer> round : movementRecord.getRounds()) {
