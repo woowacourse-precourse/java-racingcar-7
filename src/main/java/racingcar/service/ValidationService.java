@@ -3,6 +3,7 @@ package racingcar.service;
 import static racingcar.common.Constants.DUPLICATED_CAR_NAMES;
 import static racingcar.common.Constants.INVALID_CAR_NAME;
 import static racingcar.common.Constants.INVALID_GAME_COUNT;
+import static racingcar.common.Constants.MAX_GAME_COUNT;
 import static racingcar.common.Constants.MAX_NAME_LENGTH;
 import static racingcar.common.Constants.ONLY_ALPHABET;
 import static racingcar.common.Constants.ONLY_POSITIVE;
@@ -28,7 +29,7 @@ public class ValidationService {
     }
 
     public static void validateGameCount (String rawGameCount) {
-        if (!isPositive(rawGameCount)) {
+        if (!isPositive(rawGameCount) || Long.parseLong(rawGameCount) > MAX_GAME_COUNT) {
             throw new IllegalArgumentException(INVALID_GAME_COUNT);
         }
     }

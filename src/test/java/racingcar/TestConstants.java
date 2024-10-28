@@ -14,6 +14,7 @@ public class TestConstants {
     public static String GAME_COUNT_NON_INTEGER = "13.1";
     public static String GAME_COUNT_NEGATIVE = "-1";
     public static String GAME_COUNT_ZERO = "0";
+    public static String GAME_COUNT_UP_MAX_INT = "2147483648";
 
     public static Integer START_LOCATION = 0;
     public static Integer CAR_COUNT = 3;

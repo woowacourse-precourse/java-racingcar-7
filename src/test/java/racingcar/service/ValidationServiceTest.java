@@ -13,6 +13,7 @@ import static racingcar.TestConstants.GAME_COUNT_NEGATIVE;
 import static racingcar.TestConstants.GAME_COUNT_NON_INTEGER;
 import static racingcar.TestConstants.GAME_COUNT_NON_NUMERIC;
 import static racingcar.TestConstants.GAME_COUNT_POSITIVE;
+import static racingcar.TestConstants.GAME_COUNT_UP_MAX_INT;
 import static racingcar.TestConstants.GAME_COUNT_ZERO;
 import static racingcar.common.Constants.DUPLICATED_CAR_NAMES;
 import static racingcar.common.Constants.INVALID_CAR_NAME;
@@ -170,6 +171,20 @@ class ValidationServiceTest {
     void gameCountIsNotZero () {
         // given
         String rawGameCount = GAME_COUNT_ZERO;
+
+        // when & then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            validateGameCount(rawGameCount);
+        });
+
+        assertEquals(INVALID_GAME_COUNT, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("게임 횟수는 Integer의 최대 범위를 넘을 수 없다.")
+    void gameCountIsUnderThanIntegerMax () {
+        // given
+        String rawGameCount = GAME_COUNT_UP_MAX_INT;
 
         // when & then
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {

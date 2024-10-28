@@ -15,6 +15,7 @@ public class Constants {
 
     public static Integer START_LOCATION = 0;
     public static Integer MAX_NAME_LENGTH = 5;
+    public static Integer MAX_GAME_COUNT = Integer.MAX_VALUE;
     public static Integer MIN_RANDOM_NUMBER = 0;
     public static Integer MAX_RANDOM_NUMBER = 9;
     public static Integer MOVE_NUMBER = 4;
