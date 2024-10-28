@@ -21,6 +21,12 @@ public class OutputView {
         System.out.println("실행결과");
     }
 
+    // 게임 시작 메시지 출력
+    public void showGameStartMessage() {
+        printEmptyLine();
+        printExecutionResult();
+    }
+
     public void printWarningMessage() {
         System.out.println("경고: 시도 횟수가 너무 많아 중간 결과를 생략합니다.");
     }
