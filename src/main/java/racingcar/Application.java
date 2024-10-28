@@ -73,15 +73,19 @@ public class Application {
     }
 
     public static void viewWinner(final int numberOfCar, final String[] name) {
-        int winnerDistance = Collections.max(racingDistance);
-
         ArrayList<String> winner = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            if (racingDistance.get(i) == winnerDistance) {
-                winner.add(name[i]);
+        
+        for (int carNumber = 0; carNumber < numberOfCar; carNumber++) {
+            if (isWinner(carNumber)) {
+                winner.add(name[carNumber]);
             }
         }
         System.out.println("최종 우승자 : " + String.join(",", winner));
+    }
+
+    public static boolean isWinner(final int carNumber) {
+        int winnerDistance = Collections.max(racingDistance);
+        return racingDistance.get(carNumber) == winnerDistance;
     }
 
     public static int parseRacingCnt(final String textSecond) {
