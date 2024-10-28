@@ -14,7 +14,7 @@ class AttemptCountTest {
     @CsvSource({"1", "500"})
     @ParameterizedTest
     void createWithValidCount(int count) {
-        // when & then
+        // when
         AttemptCount attemptCount = new AttemptCount(count);
 
         // then
