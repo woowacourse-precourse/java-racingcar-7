@@ -20,5 +20,6 @@ public class RacingcarController {
         racingcarService.validateCarName(parsedCarName);
 
         String trialCount = racingcarView.trialCountInput();
+        racingcarService.validateNumber(trialCount);
     }
 }

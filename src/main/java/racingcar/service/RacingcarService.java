@@ -17,4 +17,15 @@ public class RacingcarService {
             }
         }
     }
+
+    public void validateNumber(String trialCount) {
+        try {
+            int number = Integer.parseInt(trialCount);
+            if (number <= 0) {
+                throw new IllegalArgumentException("최소 1입니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력값입니다.");
+        }
+    }
 }
