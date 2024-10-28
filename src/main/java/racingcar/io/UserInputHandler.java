@@ -1,7 +1,9 @@
 package racingcar.io;
 
+import java.util.List;
+
 public interface UserInputHandler {
-    String makeUserInputNames();
+    List<String> makeUserInputNames();
 
     int makeUserInputRoundNumber();
 }
