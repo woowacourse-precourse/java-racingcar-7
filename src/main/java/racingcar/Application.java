@@ -19,7 +19,7 @@ public class Application {
         attemptCountValidator.attemptCountValidator();
 
         LinkedHashMap<Car, Integer> cars = new InputParser(carNames).splitByComma();
-        RaceController controller = new RaceController(cars, Integer.parseInt(attemptCount));
+        RaceController controller = new RaceController(cars, Long.parseLong(attemptCount));
 
         controller.start();
         printer.printWinner(controller.findWinner());

@@ -23,7 +23,7 @@ public class InputValidator {
     public void attemptCountValidator() {
         if (isBlankInput()) {
             throw new IllegalArgumentException(ErrorText.EMPTY_ATTEMPT_COUNT.getErrorText());
-        } else if (isPositiveInteger()) {
+        } else if (isPositiveValue()) {
             throw new IllegalArgumentException(ErrorText.NON_POSITIVE_ATTEMPT_COUNT.getErrorText());
         }
     }
@@ -45,14 +45,12 @@ public class InputValidator {
         return false;
     }
 
-    private boolean isPositiveInteger() {
+    private boolean isPositiveValue() {
         try {
-            if (Integer.parseInt(inputText) < 0) {
-                return true;
-            }
+            long value = Long.parseLong(inputText);
+            return value < 0;
         } catch (NumberFormatException e) {
             return true;
         }
-        return false;
     }
 }

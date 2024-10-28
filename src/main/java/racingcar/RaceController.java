@@ -10,10 +10,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class RaceController {
-    private final int attemptCount;
+    private final long attemptCount;
     private final LinkedHashMap<Car, Integer> cars;
 
-    public RaceController(LinkedHashMap<Car, Integer> cars, int attemptCount) {
+    public RaceController(LinkedHashMap<Car, Integer> cars, long attemptCount) {
         this.attemptCount = attemptCount;
         this.cars = cars;
     }
