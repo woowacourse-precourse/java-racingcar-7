@@ -44,7 +44,7 @@ public class RacingGame {
     }
 
     private void validateFinalRoundCheck() {
-        if (this.isNotGameOver()) {
+        if (isNotGameOver()) {
             throw new IllegalArgumentException();
         }
     }

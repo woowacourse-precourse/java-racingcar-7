@@ -34,7 +34,7 @@ public class Round {
     }
 
     public boolean isNotFinalRound() {
-        return !(this.nowRound() == finalRound);
+        return !(nowRound() == finalRound);
     }
 
 }

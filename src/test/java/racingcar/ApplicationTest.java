@@ -146,6 +146,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("입력 마지막에 공백이 있을 경우, 정상 동작이 된다.")
+    void end_to_end_test_11() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni ", "1 ");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
     private static String createCarNames() {
         return IntStream.range(0, 100)
                 .mapToObj(String::valueOf)

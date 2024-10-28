@@ -10,7 +10,7 @@ public class Condition {
     }
 
     public boolean canMoveForward() {
-        return generator.generate() >= FORWARD_THRESHOLD;
+        return this.generator.generate() >= FORWARD_THRESHOLD;
     }
 
 }
