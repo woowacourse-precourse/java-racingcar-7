@@ -31,6 +31,66 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 쉼표만_입력한_경우_에러() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 아무것도_입력하지_않은_경우_에러() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 공백만_입력한_경우_에러() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" ","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복된_이름을_입력한_경우_에러() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 공백_에러() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi"," "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 빈문자열_에러() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi",""))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자가_아닌_값이_입력한_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,migi","fds"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 숫자_0이하의_값을_입력한_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,fds","-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
