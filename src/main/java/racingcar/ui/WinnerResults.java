@@ -1,13 +1,16 @@
 package racingcar.ui;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Winners {
+public class WinnerResults {
 
-    private final List<Winner> winners;
+    private final List<WinnerResult> winners;
 
-    public Winners(final List<Winner> winners) {
-        this.winners = winners;
+    public WinnerResults(final List<String> winners) {
+        this.winners = winners.stream()
+                .map(carName -> new WinnerResult(carName))
+                .collect(Collectors.toList());
     }
 
     String getResult() {

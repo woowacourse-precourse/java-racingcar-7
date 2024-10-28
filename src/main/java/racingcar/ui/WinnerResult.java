@@ -1,10 +1,10 @@
 package racingcar.ui;
 
-public class Winner {
+class WinnerResult {
 
     private final String winnerName;
 
-    public Winner(final String winnerName) {
+    WinnerResult(final String winnerName) {
         this.winnerName = winnerName;
     }
 
