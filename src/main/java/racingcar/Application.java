@@ -8,6 +8,7 @@ public class Application {
         int tryCount = UserInput.inputTryCount();
 
         Race race = new Race(cars, tryCount);
-        race.playRacing();
+        RaceGame game = new RaceGame(race);
+        game.playRacing();
     }
 }
