@@ -3,6 +3,7 @@ package racingcar.observer;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
+import racingcar.CarGame;
 import racingcar.car.Car;
 import racingcar.car.CarView;
 
@@ -17,16 +18,9 @@ public class GameResultObserver implements Observer{
 
     @Override
     public void notifyUpdate() {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
-        List<String> names = cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .toList();
+        List<String> winnerNames = CarGame.getWinnersName(cars);
         try {
-            writer.write(CarView.winnerNames(names));
+            writer.write(CarView.winnerNames(winnerNames));
             writer.flush();
         } catch (IOException exception) {
             System.err.println(exception.getMessage());

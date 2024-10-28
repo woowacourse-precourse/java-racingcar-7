@@ -34,4 +34,16 @@ public class CarGame {
     public void subscribeExecuteObserver(Observer executeObserver) {
         this.executeObserver = executeObserver;
     }
+
+    public static List<String> getWinnersName(List<Car> entryCars) {
+        int maxPosition = entryCars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+        List<String> names = entryCars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
+        return names;
+    }
 }
