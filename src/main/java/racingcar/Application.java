@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -10,6 +9,9 @@ public class Application {
         int moveCount = InputProcessor.getMoveCount();
         System.out.println("carNames = " + carNames);
         System.out.println("moveCount = " + moveCount);
+        Race race = new Race(carNames, moveCount);
+        race.startRace();
+        race.displayResults();
     }
 
 }
