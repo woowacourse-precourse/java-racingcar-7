@@ -1,13 +1,13 @@
 package racingcar.service;
 
 public class SeperatorService {
-    private final String[] names;
+    private  String[] names;
 
     public String[] getNames() {
         return names;
     }
 
-    public SeperatorService(String s) {
+    public void seperate(String s) {
         names=s.split(",");
     }
 

@@ -8,11 +8,10 @@ import racingcar.view.OutputView;
 
 public class Controller {
 
-
     public void start(){
         OutputView.requestCarsName();
-        String s= InputView.getInput();
-        SeperatorService seperator=new SeperatorService(s);
+        String input= InputView.getInput();
+        SeperatorService seperator=new SeperatorService();
         ParsingService parsing=new ParsingService();
         Valid valid=new Valid();
         //이름 유효성 검사
@@ -20,7 +19,7 @@ public class Controller {
             valid.valid(name);
         }
         OutputView.requestTryNumber();
-        int tryNum=parsing.parsingNum(s);
+        int tryNum=parsing.parsingNum(input);
 
 
 
