@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -10,18 +11,28 @@ public class Application {
             String names = Console.readLine();
             String[] namesArray = names.split(",");
 
+            int tryCount = inputRaceAttempts(); // 횟수 입력 및 유효성 검사
+
             for (String name : namesArray) {
                 validateCarNames(name); // 이름 유효성 검사
-            }
 
-            int tryCount = inputRaceAttempts(); // 횟수 입력 및 유효성 검사
+                int position = 0;
+                for (int i = 0; i < tryCount; i++) {
+                    int randomNumber = Randoms.pickNumberInRange(0, 9);
+                    position = move(randomNumber, position);
+                }
+            }
 
         } catch (IllegalArgumentException e) {
             throw e;
         }
+    }
 
-
-
+    public static int move(int randomNumber, int position) {
+        if (randomNumber >= 4) {
+            position++;
+        }
+        return position;
     }
 
     // 시도할 횟수 입력받기
@@ -50,7 +61,4 @@ public class Application {
             throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
         }
     }
-}
-
-
 }
