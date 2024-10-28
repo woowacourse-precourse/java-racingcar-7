@@ -8,10 +8,12 @@ import java.util.List;
 
 public class RacingView {
 
+    private static final String INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요. (이름은 쉼표로 구분)";
+    private static final String INPUT_NUMBER = "시도할 횟수는 몇 회인가요?";
 
     // 자동차 이름 입력 받기
     public String[] getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표로 구분)");
+        System.out.println(INPUT_MESSAGE);
         String[] carName = Console.readLine().trim().split(",");
         String[] trimmedCarNames = validateCarNames(carName);  // 공백 제거 및 배열 반환
         validateCar(trimmedCarNames);  // 검증 수행
@@ -21,7 +23,7 @@ public class RacingView {
 
     // 시도 횟수 입력 받기
     public int getRoundCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(INPUT_NUMBER);
         int parseInt = Integer.parseInt(Console.readLine());
         InputValidation.checkParseInt(parseInt);
         return parseInt;
