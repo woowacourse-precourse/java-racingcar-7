@@ -17,7 +17,7 @@ public class Winner {
     public static List<Car> find(List<Car> cars) {
         int maxDistance = findMaxDistance(cars);
         List<Car> winners = new ArrayList<>();
-        
+
         for (Car car : cars) {
             if (maxDistance == car.distance) {
                 winners.add(car);
