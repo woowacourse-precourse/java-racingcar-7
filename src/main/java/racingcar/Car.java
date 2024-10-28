@@ -11,4 +11,10 @@ public class Car {
         move = 0;
     }
 
+    public void moveCar(){
+        if(Randoms.pickNumberInRange(0,9)>=4)
+            move += 1;
+
+    }
+
 }
