@@ -20,9 +20,7 @@
 
 ### 3. Controller 패키지 
 - RacingGameController.java : 게임 컨트롤러 클래스
-  - 입력 처리
-  - 게임 진행
-  - 결과 출력
+  - StartGame(): 입력 처리, 게임 진행, 결과 출력
 
 ### 4. Service 패키지 
 - RacingGameService.java : 게임 비즈니스 로직 처리
