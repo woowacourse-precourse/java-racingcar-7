@@ -12,11 +12,10 @@ public class RacingInput {
     private final InputValidator inputValidator = new InputValidator();
 
     private List<String> parseCarName(String carNameStr) {
-        List<String> carNames = Arrays.stream(carNameStr.split(","))
+
+        return Arrays.stream(carNameStr.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
-
-        return carNames;
     }
 
     public List<String> getCarNames() {
