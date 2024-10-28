@@ -14,7 +14,7 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
-        this.position = position;
+        this.position = 0;
     }
 
     public void move(boolean shouldMove) {
