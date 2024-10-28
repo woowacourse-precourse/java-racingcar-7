@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.util.RandomNumberGenerator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class RacingCar {
@@ -22,7 +23,7 @@ public class RacingCar {
             printRaceStatus(); // 라운드 결과 출력
         }
     }
-    
+
     private void raceOnce() {
         for (Car car : cars) {
             car.tryMove(); // Car의 이동 시도를 위임
@@ -34,5 +35,27 @@ public class RacingCar {
             System.out.println(car.displayPosition());  // Car의 displayPosition() 메서드로 상태 출력
         }
         System.out.println();  // 라운드 간 줄바꿈
+    }
+
+    private List<String> determineWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(car -> extractPositionFromDisplay(car.displayPosition()))
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> extractPositionFromDisplay(car.displayPosition()) == maxPosition)
+                .map(car -> extractNameFromDisplay(car.displayPosition()))
+                .collect(Collectors.toList());
+    }
+
+    private int extractPositionFromDisplay(String display) {
+        return display.lastIndexOf('-') - display.indexOf(':');
+    }
+
+    private String extractNameFromDisplay(String display) {
+        int colonIndex = display.indexOf(':');
+        String name = display.substring(0, colonIndex);
+        return name.trim();
     }
 }
