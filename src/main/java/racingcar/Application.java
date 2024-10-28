@@ -14,7 +14,7 @@ public class Application {
 
     private static void startGame()  {
         printStartMessage();
-        String input = getCarNamesInput();
+        String input = getCarNamesInput().replaceAll(" ","");
     }
 
     public static void printStartMessage() {
@@ -27,5 +27,12 @@ public class Application {
 
     public static String getCarNamesInput() {
         return Console.readLine();
+    }
+
+    public static void validateEmptyInput(String input) {
+
+        if(input.isEmpty()) {
+            throw new IllegalArgumentException("정확한 값을 입력해 주세요.");
+        }
     }
 }

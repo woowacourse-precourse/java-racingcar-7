@@ -76,6 +76,19 @@ class ApplicationTest extends NsTest {
                 .trim());
     }
 
+    @Test
+    void 빈_칸_입력_예외처리_테스트(){
+        assertThrows(IllegalArgumentException.class, () -> Application.validateEmptyInput(""));
+        assertThrows(IllegalArgumentException.class, () -> Application.validateEmptyInput(" "));
+        assertThrows(IllegalArgumentException.class, () -> Application.validateEmptyInput("     "));
+        assertThrows(IllegalArgumentException.class, () -> Application.validateEmptyInput(" "));
+    }
+
+    @Test
+    void 빈_칸이_아닌_정상입력_예외처리_테스트(){
+        assertDoesNotThrow(() -> Application.validateEmptyInput("abcd"));
+    }
+
     @AfterEach
     public void tearDown() {
         System.setOut(standardOut);
