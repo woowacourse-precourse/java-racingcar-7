@@ -12,27 +12,27 @@ public class CarController {
     public void startRace(){
         InputView inputView = new InputView();
 
-        String carInput = inputView.inputCarNames();
-        RaceValidator.validateCarName(carInput);
-        carInput = removeSpaces(carInput);
+        String carsInput = inputView.inputParticipantNames();
+        RaceValidator.validateCarName(carsInput);
+        carsInput = removeSpaces(carsInput);
 
-        int tryInput = inputView.inputTryTo();
-        RaceValidator.validateTryCount(String.valueOf(tryInput));
+        int attemptsInput = inputView.inputAttempts();
+        RaceValidator.validateTryCount(String.valueOf(attemptsInput));
 
-        List<Car> cars = Car.createCars(removeSpaces(carInput));
-        randomMoves(cars, tryInput);
+        List<Car> cars = Car.createCars(removeSpaces(carsInput));
+        simulateCarMovements(cars, attemptsInput);
 
-        OutputView.printRaceResult(Car.findWinner(cars));
+        OutputView.printFinalWinners(Car.findWinningCars(cars));
     }
 
 
-    private void randomMoves(List<Car> cars, int tryNumber){
+    private void simulateCarMovements(List<Car> cars, int attempts){
         OutputView.printResult();
-        for(int j=0;j<tryNumber;j++){
+        for(int j=0;j<attempts;j++){
             for(int i=0;i<cars.size();i++){
-                Car.randomMove(cars.get(i));
+                Car.tryRandomMove(cars.get(i));
             }
-            OutputView.printNow(cars);
+            OutputView.printCurrentPositions(cars);
         }
     }
 
