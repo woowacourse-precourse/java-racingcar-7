@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DataConverter {
-    public static List<Car> convertFromCarNameListToCar(String[] input) {;
+    public static List<Car> convertFromCarNameListToCarList(String[] input) {;
         return Arrays.stream(input).map(Car::new).toList();
     }
 }
