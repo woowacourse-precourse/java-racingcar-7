@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.dto.RaceRequest;
+import racingcar.global.error.ErrorHandler;
 import racingcar.model.RacingModel;
 import racingcar.view.RacingView;
 
@@ -33,7 +34,7 @@ public class RacingController {
             // 3. 최종 우승자
             view.printWinners(model.getWinners());
         }catch (IllegalArgumentException e){
-            throw new IllegalArgumentException("오류");
+            ErrorHandler.handlerError(e.getMessage());
         }
     }
 }

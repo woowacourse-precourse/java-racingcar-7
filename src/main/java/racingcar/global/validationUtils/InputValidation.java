@@ -1,5 +1,7 @@
 package racingcar.global.validationUtils;
 
+import racingcar.global.error.ErrorMessage;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -13,7 +15,7 @@ public class InputValidation {
     public static void checkDuplicate(String carName) {
         Set<String> duplicateCheck = new HashSet<>();
         if (!duplicateCheck.add(carName)) {
-            throw new IllegalArgumentException("카 이름이 중복 되었습니다 " + carName);
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_IS_DUPLICATED.getExplanation() + carName);
         }
     }
 
@@ -21,34 +23,31 @@ public class InputValidation {
         Pattern pattern = Pattern.compile(REGEX);
         Matcher matcher = pattern.matcher(carName);
         if (matcher.find()) {
-            throw new IllegalArgumentException("한글 또는 영어만 허용합니다: " + carName);
+            throw new IllegalArgumentException(ErrorMessage.ONLY_KOREAN_OR_ENGLISH_ARE_ACCEPTED.getExplanation() + carName);
         }
     }
-
 
     public static void checkLength(String carName) {
-        if (carName.length() > LIMITS) { // 길이가 5 초과인 경우
-            System.out.println("차 이름 글자 수 5 이상 : " + carName.length());
-            throw new IllegalArgumentException("자동차 이름이 5자가 넘습니다 : " + carName + " , " + carName.length());
+        if (carName.length() > LIMITS) {
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_IS_LONGER_THAN_5_CHARACTERS.getExplanation() + carName + " , " + carName.length());
         }
     }
 
-    public static void checkOnce(String[] car){
+    public static void checkOnce(String[] car) {
         if (car.length == 1) {
-           throw new IllegalArgumentException("자동차 경주 하려면 두대 이상 되어야 합니다");
+            throw new IllegalArgumentException(ErrorMessage.TO_RACE_A_CAR_YOU_NEED_AT_LEAST_TWO_CARS.getExplanation());
         }
     }
 
-    public static void checkWhite(String carName){
+    public static void checkWhite(String carName) {
         if (carName.trim().isEmpty()) {
-            throw new IllegalArgumentException("빈 이름이나 공백만 포함된 이름은 허용되지 않습니다: " + carName);
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_NAMES_OR_NAMES_WITH_SPACES_ARE_NOT_ALLOWED.getExplanation() + carName);
         }
     }
 
-
-    public static void  checkParseInt(int number) {
+    public static void checkParseInt(int number) {
         if (number < 0) {
-            throw new IllegalArgumentException("음수는 허용 하지 않습니다 : " + number);
+            throw new IllegalArgumentException(ErrorMessage.NEGATIVE_NUMBERS_ARE_NOT_ALLOWED.getExplanation() + number);
         }
     }
 }
