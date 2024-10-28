@@ -16,18 +16,16 @@ public class NameValidator implements InputValidator<List<String>> {
     }
 
     private void checkLength(List<String> names) throws IllegalArgumentException {
-        for (String name : names) { // TODO: 스트림으로 고칠 수 있나?
+        for (String name : names) {
             if (name.length() > 5) {
                 ExceptionUtils.throwIllegalArgumentException(ErrorMessageEnum.NAME_LENGTH_ERROR);
             }
         }
     }
 
-    // TODO: try-catch로 수정?
     private void checkDuplicate(List<String> names) throws IllegalArgumentException {
-        Set<String> singleNames = new HashSet<>(names); // TODO: HashSet??
+        Set<String> singleNames = new HashSet<>(names);
         if (singleNames.size() != names.size()) {
-            // TODO: 에러메시지 이넘 get 호출?
             ExceptionUtils.throwIllegalArgumentException(ErrorMessageEnum.DUPLICATE_NAMES_ERROR);
         }
     }
