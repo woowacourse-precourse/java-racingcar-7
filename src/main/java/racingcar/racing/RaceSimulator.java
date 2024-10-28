@@ -6,7 +6,6 @@ import static racingcar.io.OutputUtil.println;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.car.Car;
 import racingcar.message.prompt.ResultPrompt;
 import racingcar.util.RandomNumberGenerator;
