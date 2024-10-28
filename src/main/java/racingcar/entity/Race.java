@@ -7,7 +7,7 @@ import racingcar.exception.RaceValidationError;
 import racingcar.util.RandomNumberGenerator;
 
 public class Race {
-    final List<Car> cars;
+    private final List<Car> cars;
 
     private Race() {
         this.cars = null;

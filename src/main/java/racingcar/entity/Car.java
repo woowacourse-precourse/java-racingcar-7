@@ -5,8 +5,8 @@ import racingcar.exception.CarNameValidationError;
 import racingcar.exception.ExceptionUtils;
 
 public class Car {
-    final String name;
-    int position;
+    final private String name;
+    private int position;
 
     public Car(String name) {
         this.name = name;
