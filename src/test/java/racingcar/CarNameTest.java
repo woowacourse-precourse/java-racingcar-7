@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.Message.ErrorMessage;
+import racingcar.Validator.CarNameValidator;
 
 class CarNameTest extends NsTest {
 
@@ -35,6 +36,26 @@ class CarNameTest extends NsTest {
                         .hasMessage(ErrorMessage.ERROR_MESSAGE_INVALID_CHARACTER)
         );
     }
+
+    @Test
+    void 이름_null_검증() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> CarNameValidator.validate(null))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.ERROR_MESSAGE_BLANK)
+        );
+    }
+
+    @Test
+    void 이름_빈문자열_검증() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> CarNameValidator.validate(""))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.ERROR_MESSAGE_BLANK)
+        );
+    }
+
+
 
     @Override
     protected void runMain() {
