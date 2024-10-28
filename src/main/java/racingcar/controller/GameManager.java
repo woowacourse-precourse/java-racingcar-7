@@ -7,7 +7,7 @@ import racingcar.view.OutputView;
 import java.util.List;
 import java.util.Map;
 
-public class GameController {
+public class GameManager {
     private static final InputView inputView = new InputView();
     private static final OutputView outputView = new OutputView();
 
