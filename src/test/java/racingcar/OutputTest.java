@@ -65,7 +65,7 @@ public class OutputTest extends NsTest {
 
         //then
         assertThat(outContent.toString().trim())
-                .isEqualTo("\\n실행 결과");
+                .isEqualTo("실행 결과");
         outContent.reset(); // 매 테스트 후 출력 리셋
     }
 
