@@ -8,17 +8,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RandomNumberGeneratorTest {
 
-    public static final int TEST_FAIL_MAX_VALUE = 20;
+    private static final int TEST_FAIL_MAX_VALUE = 20;
     private static final int MIN_VALUE = 0;
     private static final int MAX_VALUE = 9;
-    public static final int TEST_COUNT = 1000;
-    public static final int ACCEPT_VALUE = 4;
-    public static final int TEST_FAIL_MIN_VALUE = 11;
+    private static final int TEST_COUNT = 1000;
+    private static final int ACCEPT_VALUE = 4;
+    private static final int TEST_FAIL_MIN_VALUE = 11;
 
     @Test
     void 랜덤_숫자_생성_테스트() {
         // given
-        RandomNumberGenerator randomNumberGenerator = new DefaultRandomNumberGenerator();
+        RandomNumberGenerator randomNumberGenerator = new FixedRandomNumberGenerator(4);
 
         // when
         Integer result = randomNumberGenerator.getRandomNumber(MIN_VALUE, MAX_VALUE);

@@ -3,6 +3,7 @@ package racingcar.domain.race;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Cars;
 import racingcar.domain.random.DefaultRandomNumberGenerator;
+import racingcar.domain.random.FixedRandomNumberGenerator;
 
 public class RaceTest {
 
@@ -12,7 +13,7 @@ public class RaceTest {
     void 게임_생성() {
         // given
         Cars cars = new Cars(USERS);
-        Race race = new Race(new DefaultRandomNumberGenerator());
+        Race race = new Race(new FixedRandomNumberGenerator(4));
 
         // when
         race.racing(cars);
