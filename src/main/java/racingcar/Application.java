@@ -117,16 +117,18 @@ public class Application {
         }
     }
 
-    private static void printEachRaceResult(List<Car> cars) {
+    public static void printEachRaceResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.print(car.getCarName() + " : ");
+            StringBuilder positionDisplay = new StringBuilder();
             for (int i = 0; i < car.getCarPosition(); i++) {
-                System.out.print("-");
+                positionDisplay.append("-");
             }
-            System.out.println();
+            System.out.println(positionDisplay);
         }
         System.out.println();
     }
+
 
     public static List<String> findWinners(List<Car> cars) {
         final int maxPosition = findMaxPosition(cars);
