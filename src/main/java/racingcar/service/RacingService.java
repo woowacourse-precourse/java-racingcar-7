@@ -11,6 +11,10 @@ import java.util.stream.Collectors;
 public class RacingService {
 
     public RaceResult runRace(String carNames, int attempts) {
+        if (attempts <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 양수로 입력해주세요.");
+        }
+
         List<Car> carList = Arrays.stream(carNames.split(","))
                 .map(Car::new)
                 .collect(Collectors.toList());
@@ -23,6 +27,7 @@ public class RacingService {
 
         return new RaceResult(race.getCars());
     }
+
     private void printRaceStatus(List<Car> cars) {
         cars.forEach(car -> System.out.println(car.toString()));
         System.out.println();
