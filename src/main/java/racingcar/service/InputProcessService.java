@@ -25,7 +25,7 @@ public class InputProcessService {
             car = car.trim();
 
             if(car.length() == 0){
-                throw new IllegalArgumentException(car + ": 자동차의 이름은 한 글자 이상만 가능합니다.");
+                throw new IllegalArgumentException("자동차의 이름은 한 글자 이상만 가능합니다.");
             }
 
             if(car.length() > 5){
