@@ -5,11 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingGameTest {
     private CarNameParser carNameParser;
@@ -38,7 +35,7 @@ class RacingGameTest {
         RacingGame racingGame = createRacingGameWithValidRandomNumber();
 
         //when
-        racingGame.addCars(carNames);
+        racingGame.createCars(carNames);
         List<Car> cars = racingGame.getCars();
 
         //then
@@ -89,7 +86,7 @@ class RacingGameTest {
         RacingGame racingGame = createRacingGameWithValidRandomNumber();
 
         List<String> carNames = Arrays.asList("car1", "car2", "car3");
-        racingGame.addCars(carNames);
+        racingGame.createCars(carNames);
         int attemptCount = 5;   // 반복 시도 횟수
 
         //when
@@ -109,7 +106,7 @@ class RacingGameTest {
         RacingGame racingGame = createRacingGameWithValidRandomNumber();
 
         List<String> carNames = Arrays.asList("car1", "car2", "car3");
-        racingGame.addCars(carNames);
+        racingGame.createCars(carNames);
         List<Car> cars = racingGame.getCars();
         List<String> expectedWinners = Arrays.asList("car1");
         cars.get(0).move(VALID_RANDOM_NUMBER);
@@ -128,7 +125,7 @@ class RacingGameTest {
         RacingGame racingGame = createRacingGameWithValidRandomNumber();
 
         List<String> carNames = Arrays.asList("car1", "car2", "car3");
-        racingGame.addCars(carNames);
+        racingGame.createCars(carNames);
         List<Car> cars = racingGame.getCars();
         List<String> expectedWinners = Arrays.asList("car1", "car2", "car3");
 

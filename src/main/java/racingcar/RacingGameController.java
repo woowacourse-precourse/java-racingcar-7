@@ -16,7 +16,7 @@ public class RacingGameController {
         // 자동차 이름 입력받기
         List<String> carNames = racingGame.getValidatedCarNames();
         // 자동차 생성
-        racingGame.addCars(carNames);
+        racingGame.createCars(carNames);
         // 사용자 실행 횟수 입력받기
         int attemptCount = racingGame.getAttemptCount();
         // 실행 횟수 만큼 자동차 전진

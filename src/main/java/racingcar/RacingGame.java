@@ -53,7 +53,7 @@ public class RacingGame{
         System.out.println(car.getName() + " : "+ "-".repeat(car.getMoveCount()));
     }
 
-    public void addCars(List<String> validatedCarNames){
+    public void createCars(List<String> validatedCarNames){
         for(String carName : validatedCarNames){
             cars.add(new Car(carName));
         }
