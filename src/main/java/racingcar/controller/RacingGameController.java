@@ -3,6 +3,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.domain.CarList;
 
+import java.util.List;
+
 public class RacingGameController {
     private final CarList carList;
     public RacingGameController(){
@@ -21,6 +23,17 @@ public class RacingGameController {
         for(Car car: carList.getCars()){
             car.move(Randoms.pickNumberInRange(0, 9));
         }
+    }
+    // 판마다의 결과 보여주기
+    public String[] getResult(){
+        List<Car> racingCars = carList.getCars();
+        String[] cur_results = new String[racingCars.size()];
+
+        for(int i = 0; i < racingCars.size(); i++){
+            Car car = racingCars.get(i);
+            cur_results[i] = car.getName() + " : " + car.getPositionDisplay();
+        }
+        return cur_results;
     }
 
 }
