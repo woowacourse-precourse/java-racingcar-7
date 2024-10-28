@@ -21,6 +21,24 @@ public class RaceGame {
                 car.move();
             }
         }
+
+        List<String> winnerNames = getWinnerNames(cars);
+    }
+
+    private List<String> getWinnerNames(List<Car> cars) {
+        int winnerDistance = 0;
+        ArrayList<String> winnerNames = new ArrayList<>();
+
+        for (Car car : cars) {
+            winnerDistance = Math.max(winnerDistance, car.getPosition());
+        }
+        for (Car car : cars) {
+            if (car.getPosition() == winnerDistance) {
+                winnerNames.add(car.getCarName());
+            }
+        }
+
+        return winnerNames;
     }
 
     private String[] readCarNames() throws IllegalArgumentException {
