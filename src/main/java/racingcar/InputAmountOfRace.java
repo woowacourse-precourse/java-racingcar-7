@@ -10,7 +10,18 @@ public class InputAmountOfRace {
         String raceString = Console.readLine();
 
         raceAmount = Integer.parseInt(raceString);
+
+        try {
+            raceAmount = Integer.parseInt(raceString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
+        }
+
+        if (raceAmount <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다.");
+        }
     }
+
 
     public int getRaceAmount() {
         return raceAmount;
