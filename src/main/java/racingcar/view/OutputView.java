@@ -7,6 +7,17 @@ import racingcar.dto.CarMovementResponse;
 import racingcar.dto.WinnerResponse;
 
 public class OutputView {
+	private OutputView() {
+	}
+
+	private static class OutputViewHolder {
+		private static final OutputView instance = new OutputView();
+	}
+
+	public static OutputView getInstance() {
+		return OutputViewHolder.instance;
+	}
+
 	public void promptCarName() {
 		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 	}
