@@ -32,7 +32,7 @@ public class RacingCarView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public void showResultInfo(){
+    public void showResultInfo() {
         System.out.println("\n실행 결과");
     }
 

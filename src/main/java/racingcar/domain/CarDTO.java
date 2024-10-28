@@ -22,7 +22,7 @@ public class CarDTO {
         this.carName = carName;
     }
 
-    public  void setGoStraight(int goStraight) {
+    public void setGoStraight(int goStraight) {
         this.goStraight = goStraight;
     }
 
@@ -30,5 +30,6 @@ public class CarDTO {
     public void moveForward() {
         goStraight++;
     }
+
 
 }

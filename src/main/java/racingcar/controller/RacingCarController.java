@@ -17,7 +17,7 @@ public class RacingCarController {
         this.racingCarView = racingCarView;
     }
 
-    public void CarRacingStart(){
+    public void CarRacingStart() {
         racingCarView.showCarInputInfo();
         InputDTO inputDTO = racingCarView.getInputCarName();
         racingCarView.showRoundTimeInfo();
@@ -29,7 +29,7 @@ public class RacingCarController {
         racingCarService.startRace(carDTOList, roundTime);
 
 
-        List<CarDTO>  winnerCarList = racingCarService.determineWinners(carDTOList);
+        List<CarDTO> winnerCarList = racingCarService.determineWinners(carDTOList);
         racingCarView.printWinners(winnerCarList);
 
     }
