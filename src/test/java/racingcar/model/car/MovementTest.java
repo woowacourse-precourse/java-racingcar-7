@@ -22,4 +22,21 @@ class MovementTest {
 		// then
 		assertEquals(car.getMovement(), expectedMovement);
 	}
+
+	@Test
+	@DisplayName("랜덤으로 생성한 수의 크기가 4 이상이라면 자동차는 전진한다.")
+	void 수의_값이_4_이상이라면_이동한다() {
+		// given
+		String carName = "name";
+		Car car = new Car(carName);
+		int movementValue = 1;
+		int expectedMovement = car.getMovement() + movementValue;
+		int randomNumber = 4;
+
+		// when
+		car.move(randomNumber);
+
+		// then
+		assertEquals(car.getMovement(), expectedMovement);
+	}
 }
