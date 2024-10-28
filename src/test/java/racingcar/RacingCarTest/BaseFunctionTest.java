@@ -7,9 +7,7 @@ import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
 import racingcar.service.RacingCarService;
 import racingcar.service.ValidateService;
-import racingcar.util.MockRandomGenerator;
-import racingcar.util.RandomGenerator;
-import racingcar.util.RandomsWrapper;
+import racingcar.util.*;
 import racingcar.view.InstructionView;
 import racingcar.view.ResultView;
 import racingcar.view.RoundView;
@@ -24,11 +22,11 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.util.ConditionConstant.*;
+import static racingcar.util.ErrorMessage.*;
+import static racingcar.util.PromptMessage.*;
 
 public class BaseFunctionTest {
-
-    int MOVE_CONDITION = 4;
-    int STOP_CONDITION = 1;
 
 
     @Test
@@ -36,10 +34,10 @@ public class BaseFunctionTest {
 
         //given
         InstructionView view = new InstructionView();
-        String expectedMessage = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+        String expectedMessage = PROMPT_CAR_NAMES;
 
         //when
-        String message = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+        String message = PROMPT_CAR_NAMES;
 
         //then
         assertThat(view.printInstruction(message)).isEqualTo(expectedMessage);
@@ -89,7 +87,7 @@ public class BaseFunctionTest {
         //then
         assertThatThrownBy(() -> service.validateName(longerThanFiveName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("길이가 5이하를 만족하지 않습니다.");
+                .hasMessageContaining(ERROR_CAR_NAME_LENGTH);
     }
 
     @Test
@@ -103,7 +101,7 @@ public class BaseFunctionTest {
         //then
         assertThatThrownBy(() -> service.validateName(hasBlankName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("이름이 공백입니다.");
+                .hasMessageContaining(ERROR_BLANK_CAR_NAME);
     }
 
     @Test

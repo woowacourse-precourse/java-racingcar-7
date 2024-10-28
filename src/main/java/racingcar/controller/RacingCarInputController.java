@@ -3,6 +3,8 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.view.InstructionView;
 
+import static racingcar.util.PromptMessage.*;
+
 public class RacingCarInputController {
 
     InstructionView instructionView;
@@ -12,12 +14,12 @@ public class RacingCarInputController {
     }
 
     public String getRacingCarNames() {
-        instructionView.printInstruction("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        instructionView.printInstruction(PROMPT_CAR_NAMES);
         return Console.readLine();
     }
 
     public String getRacingCarRaceCount() {
-        instructionView.printInstruction("시도할 횟수는 몇 회인가요?");
+        instructionView.printInstruction(PROMPT_RACE_COUNT);
         return Console.readLine();
     }
 }

@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import racingcar.util.RandomGenerator;
 
+import static racingcar.util.ConditionConstant.MOVE_CONDITION;
+
 public class RacingCar {
 
     String name;
@@ -16,7 +18,7 @@ public class RacingCar {
 
     public void move() {
         // 움직일 수 있는 경우 : 무작위 숫자 4 이상
-        if (randomGenerator.pickNumberInRange(0, 9) >= 4) {
+        if (randomGenerator.pickNumberInRange(0, 9) >= MOVE_CONDITION) {
             moveCount++;
         }
         ;

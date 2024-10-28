@@ -1,12 +1,17 @@
 package racingcar.service;
 
+import racingcar.util.ConditionConstant;
+import racingcar.util.ErrorMessage;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static racingcar.util.ConditionConstant.MAX_LENGTH;
+import static racingcar.util.ErrorMessage.*;
+
 public class ValidateService {
 
-    int MAX_LENGTH = 5;
     long validateRaceCount;
     List<String> rawNames, validatedNames;
 
@@ -22,12 +27,12 @@ public class ValidateService {
             String trimmedName = rawName.trim();
             // 공백처리
             if (trimmedName.isEmpty()) {
-                throw new IllegalArgumentException("이름이 공백입니다.");
+                throw new IllegalArgumentException(ERROR_BLANK_CAR_NAME);
             }
 
             // 길이 제한
             if (trimmedName.length() > MAX_LENGTH) {
-                throw new IllegalArgumentException("길이가 5이하를 만족하지 않습니다.");
+                throw new IllegalArgumentException(ERROR_CAR_NAME_LENGTH);
             }
 
             // 유효한 이름
@@ -41,7 +46,7 @@ public class ValidateService {
 
         // 공백 입력
         if (trimmedRaceCount.isEmpty()) {
-            throw new IllegalArgumentException("입력이 비어 있습니다.");
+            throw new IllegalArgumentException(ERROR_BLANK_INPUT);
         }
 
         try {
@@ -53,7 +58,7 @@ public class ValidateService {
             validateRaceCount = rawRaceCount;
         } catch (Exception e) {
             // 음수 확인, 숫자로 변경 할 수 없을 경우
-            throw new IllegalArgumentException("올바른 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ERROR_INVALID_NUMBER_INPUT);
         }
         return validateRaceCount;
     }

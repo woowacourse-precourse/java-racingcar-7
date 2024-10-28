@@ -3,6 +3,8 @@ package racingcar.view;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
 
+import static racingcar.util.PromptMessage.FINAL_WINNER_MESSAGE;
+
 
 public class ResultView {
 
@@ -19,12 +21,12 @@ public class ResultView {
 
     public void printWinner() {
         racingCars.getRacingCars().forEach(racingCar -> {
-            System.out.println("최종 우승자 : " + racingCar.getName());
+            System.out.println(FINAL_WINNER_MESSAGE + racingCar.getName());
         });
     }
 
     public void printWinners() {
-        System.out.print("최종 우승자 : " + String.join(", ", racingCars.getRacingCars()
+        System.out.print(FINAL_WINNER_MESSAGE + String.join(", ", racingCars.getRacingCars()
                 .stream()
                 .map(RacingCar::getName)
                 .toList()));
