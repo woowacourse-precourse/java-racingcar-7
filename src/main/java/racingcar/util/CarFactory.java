@@ -21,9 +21,8 @@ public class CarFactory {
      * @throws IllegalArgumentException 입력 값이 비어있거나, 이름이 중복 또는 5자 초과일 경우 발생
      */
     public static List<RacingCar> createCars(String input) {
-        validateInput(input);
+        String[] carNames = validateAndParseInput(input);
 
-        String[] carNames = input.split(",");
         validateUniqueNames(carNames);
 
         return Arrays.stream(carNames)
@@ -35,12 +34,21 @@ public class CarFactory {
     /**
      * 입력 값이 null 또는 빈 문자열인지 검증한다.
      * @param input 자동차 이름 입력 문자열
-     * @throws IllegalArgumentException 입력이 비어있을 경우 발생
+     * @return 파싱하여 생성된 carName의 정보가 담긴 String 배열
+     * @throws IllegalArgumentException 입력이 비어있을 경우 혹은 파싱 후 리스트가 비어있을 경우 발생
      */
-    private static void validateInput(String input) {
+    private static String[] validateAndParseInput(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_CAR_NAMES_ERROR);
         }
+
+        String[] carNames = input.split(",");
+
+        if(carNames.length == 0){
+            throw new IllegalArgumentException(EMPTY_LIST_ERROR);
+        }
+
+        return carNames;
     }
 
     /**
@@ -62,16 +70,15 @@ public class CarFactory {
      * 자동차 이름의 길이를 검증하고, 유효하면 RacingCar 객체를 생성한다.
      * @param carName 생성할 자동차 이름
      * @return 생성된 RacingCar 객체
-     * @throws IllegalArgumentException 이름이 5자 초과일 경우 발생
+     * @throws IllegalArgumentException 이름이 공백(space)이거나, 이름의 길이가 0이거나, 5자 초과일 경우 발생
      */
     private static RacingCar createCar(String carName) {
-        carName = carName.trim();
 
-        if(carName.isEmpty()){
-            throw new IllegalArgumentException(EMPTY_NAME_ERROR);
+        if(carName.isBlank()){
+            throw new IllegalArgumentException(BLANK_NAME_ERROR);
         }
 
-        if (carName.length() > 5) {
+        if (carName.length() > MAX_CAR_NAME_LENGTH || carName.isEmpty()) {
             throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR + carName);
         }
         return new RacingCar(carName);
