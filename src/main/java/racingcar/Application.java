@@ -71,6 +71,25 @@ public class Application {
             System.out.println();
         }
 
+        //8. 시도가 끝나면 우승자를 뽑는다. 해시맵에서 value값이 가장 큰 키 값을 최종 우승자로 출력한다.
+        Integer totalLength=0;
+        for (String car : carArr) {
+            if (totalLength <= map.get(car).length()){
+                totalLength= map.get(car).length();
+            }
+        }
+
+        String totalWinner = null;
+        for (String car : carArr) {
+            if (totalLength == map.get(car).length()){
+                if (totalWinner == null){
+                    totalWinner += car;
+                } else{
+                    totalWinner += (", " + car);
+                }
+            }
+        }
+        System.out.println("최종 우승자 : "+totalWinner);
     }
 
 
