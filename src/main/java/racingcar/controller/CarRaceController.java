@@ -5,7 +5,6 @@ import racingcar.dto.CarRaceSnapshotDTOs;
 import racingcar.model.CarRace;
 import racingcar.model.Cars;
 import racingcar.util.MovementStrategy;
-import racingcar.util.RandomMovementStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -21,17 +20,35 @@ public class CarRaceController {
     }
 
     public void raceStart() {
-        Cars cars = new Cars(inputView.readCars(), movementStrategy);
+        Cars cars = initializeCars();
+        CarRace carRace = initializeCarRace(cars);
+
+        displayResults(carRace);
+        displayWinners(carRace);
+
+        Console.close();
+    }
+
+    private Cars initializeCars() {
+        return new Cars(inputView.readCars(), movementStrategy);
+    }
+
+    private CarRace initializeCarRace(Cars cars) {
         int attemptCount = inputView.readAttemptCount();
 
         CarRace carRace = new CarRace(attemptCount);
         carRace.startRace(cars);
 
+        return carRace;
+    }
+
+    private void displayResults(CarRace carRace) {
         CarRaceSnapshotDTOs carRaceSnapshotDTOs = CarRaceSnapshotDTOs.from(carRace.getCarRaceSnapshots());
+
         outputView.printResult(carRaceSnapshotDTOs);
+    }
 
+    private void displayWinners(CarRace carRace) {
         outputView.printWinners(carRace.getFinalWinners());
-
-        Console.close();
     }
 }
