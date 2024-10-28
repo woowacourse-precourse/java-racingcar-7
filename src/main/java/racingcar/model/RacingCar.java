@@ -13,11 +13,11 @@ public class RacingCar implements Car{
     public RacingCar(String name) {
         this.name = name;
     }
-
+    @Override
     public int getScore() {
         return score;
     }
-
+    @Override
     public String getName() {
         return name;
     }
