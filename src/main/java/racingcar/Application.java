@@ -21,7 +21,12 @@ public class Application {
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
+
         List<String> carNames = Arrays.asList(input.split(","));
+        if (carNames.size() <= 1) {
+            throw new IllegalArgumentException("자동차는 2개 이상이여야 합니다.");
+        }
+
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
