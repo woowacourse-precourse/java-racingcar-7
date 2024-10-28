@@ -48,7 +48,8 @@ public class Track {
     }
 
     public void runVehicle(Vehicle vehicle) {
+        int moveDistance = vehicle.pushPedal();
         Integer currentPosition = vehiclePositionMap.get(vehicle);
-        vehiclePositionMap.put(vehicle, currentPosition);
+        vehiclePositionMap.put(vehicle, currentPosition + moveDistance);
     }
 }
