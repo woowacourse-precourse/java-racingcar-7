@@ -11,8 +11,15 @@ public class Car {
         this.position = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     public void attemptMoveForward() {
-        //일단은 구현체로 전진 구현
         if (isMovable()) {
             position++;
         }
@@ -20,13 +27,5 @@ public class Car {
 
     private static boolean isMovable() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
     }
 }

@@ -6,16 +6,7 @@ import racingcar.domain.Car;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class View {
-    // 사용자로 부터 자동차 이름들을 입력 받음
-    public String inputCarName() {
-        return Console.readLine();
-    }
-
-    // 사용자로 부터 자동차 이동 횟수를 입력 받음
-    public String inputCarRoundCount() {
-        return Console.readLine();
-    }
+public class OutputView {
 
     // 경주할 자동차 입력에 대한 출력
     public void printOutputCarName(String input) {

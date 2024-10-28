@@ -1,8 +1,12 @@
 package racingcar.validator;
 
 public class Validator {
-    private static final String VALID_NAME_PATTERN = "^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$";
     private static final int NAME_MAX_LENGTH = 5;
+
+    private static final String NAME_DELIMITER = ",";
+
+
+    private static final String VALID_NAME_PATTERN = "^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$";
     private static final String POSITIVE_INTEGER_PATTERN = "^[0-9]+$";
 
 
@@ -26,7 +30,7 @@ public class Validator {
 
     // 자동차 이름이 5자 이내인지 검증
     private void validateNameCount(String input) {
-        String[] names = input.split(",");
+        String[] names = input.split(NAME_DELIMITER);
         for (String name : names) {
             if (name.length() > NAME_MAX_LENGTH) {
                 throw new IllegalArgumentException(MAX_NAME_SIZE_MSG);
