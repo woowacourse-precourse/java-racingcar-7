@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import static racingcar.exception.ErrorBase.CAR_NAME_IS_BETWEEN_ONE_AND_FIVE;
-import static racingcar.exception.ErrorBase.CAR_NAME_IS_EMPTY;
+import static racingcar.exception.ErrorBase.INPUT_IS_EMPTY;
 
 import java.util.function.Supplier;
 import org.junit.platform.commons.util.StringUtils;
@@ -34,7 +34,7 @@ public class RacingCar {
 
     private void withName(String name) {
         if (StringUtils.isBlank(name)) {
-            throw new IllegalArgumentException(CAR_NAME_IS_EMPTY.getMessage());
+            throw new IllegalArgumentException(INPUT_IS_EMPTY.getMessage());
         }
         if (name.length() > 5) {
             throw new IllegalArgumentException(CAR_NAME_IS_BETWEEN_ONE_AND_FIVE.getMessage());

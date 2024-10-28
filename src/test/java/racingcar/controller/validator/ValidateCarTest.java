@@ -2,13 +2,11 @@ package racingcar.controller.validator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.in;
-import static org.junit.jupiter.api.Assertions.*;
 import static racingcar.exception.ErrorBase.CAR_COUNT_EXCEEDS_LIMIT;
-import static racingcar.exception.ErrorBase.CAR_NAME_IS_EMPTY;
+import static racingcar.exception.ErrorBase.CAR_NAME_IS_BETWEEN_ONE_AND_FIVE;
+import static racingcar.exception.ErrorBase.INPUT_IS_EMPTY;
 
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ValidateCarTest {
@@ -40,7 +38,7 @@ class ValidateCarTest {
 
         assertThatThrownBy(() -> ValidateCar.validateName(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CAR_NAME_IS_EMPTY.getMessage());
+                .hasMessage(INPUT_IS_EMPTY.getMessage());
     }
 
     @Test
@@ -48,13 +46,22 @@ class ValidateCarTest {
         String input = "car1, , car2";
         assertThatThrownBy(() -> ValidateCar.validateName(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CAR_NAME_IS_EMPTY.getMessage());
+                .hasMessage(INPUT_IS_EMPTY.getMessage());
+    }
+
+    @Test
+    void 자동차_이름이_최대글자를_초과하면_예외를_발생시킨다() {
+        String input = "a".repeat(ValidateCar.NAME_LENGTH + 1);
+
+        assertThatThrownBy(() -> ValidateCar.validateName(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CAR_NAME_IS_BETWEEN_ONE_AND_FIVE.getMessage());
     }
 
     @Test
     void 입력받은_자동차의_개수가_1000개_이상이면_예외를_발생시킨다() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 1001; i++) {
+        for (int i = 0; i < ValidateCar.MAX_CARS + 1; i++) {
             sb.append(i).append(",");
         }
 

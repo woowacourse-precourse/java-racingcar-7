@@ -101,10 +101,10 @@
   - [x] `추가적인 예외처리` : 입력받는 자동차의 개수는 1000개 이하로 제한한다.
   
 - [x] 몇 번의 이동을 할 것인지 입력한다.
-  - [ ] `예외처리` : 빈 문자열이면 `IllegalArgumentException`
-  - [ ] `예외처리` : 공백 문자만 존재하면 `IllegalArgumentException`
-  - [ ] `예외처리` : 숫자가 아니면 `IllegalArgumentException`
-  - [ ] `추가적인 예외처리` : 입력받는 숫자는 1000 이하로 제한한다. 
+  - [x] `예외처리` : 빈 문자열이면 `IllegalArgumentException`
+  - [x] `예외처리` : 공백 문자만 존재하면 `IllegalArgumentException`
+  - [x] `예외처리` : 숫자가 아니면 `IllegalArgumentException`
+  - [x] `추가적인 예외처리` : 입력받는 숫자는 1000 이하로 제한한다. 
 
 <br>
 

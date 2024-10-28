@@ -3,7 +3,7 @@ package racingcar.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.exception.ErrorBase.CAR_NAME_IS_BETWEEN_ONE_AND_FIVE;
-import static racingcar.exception.ErrorBase.CAR_NAME_IS_EMPTY;
+import static racingcar.exception.ErrorBase.INPUT_IS_EMPTY;
 
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +36,7 @@ class RacingCarTest {
 
         assertThatThrownBy(() -> new RacingCar(""))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CAR_NAME_IS_EMPTY.getMessage());
+                .hasMessage(INPUT_IS_EMPTY.getMessage());
 
         assertThatThrownBy(() -> new RacingCar("abcdef"))
                 .isInstanceOf(IllegalArgumentException.class)
