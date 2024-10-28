@@ -1,5 +1,6 @@
 package racingcar.common.config;
 
+import racingcar.application.implement.MovementStrategy;
 import racingcar.application.implement.RaceHistoryManager;
 import racingcar.application.implement.CarRaceWinnerIdentifier;
 import racingcar.application.implement.RaceWinnerIdentifier;
@@ -53,7 +54,7 @@ public class GameConfig {
     }
 
     private RaceStarter<CarRacer> race() {
-        return new CarRaceStarter();
+        return new CarRaceStarter(new MovementStrategy());
     }
 
     private RaceHistoryManager<CarRacer> carRaceHistoryRecorder() {
