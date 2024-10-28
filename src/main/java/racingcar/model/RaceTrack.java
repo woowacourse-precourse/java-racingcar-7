@@ -11,7 +11,15 @@ public class RaceTrack {
 
     public void registerCars(String carRegistrationRequest) {
         List<String> carNames = Arrays.asList(carRegistrationRequest.split(CAR_NAME_SEPARATOR));
+        validateUniqueNames(carNames);
         this.cars = carNames.stream().map(Car::new).toList();
+    }
+
+    private void validateUniqueNames(List<String> carNames) {
+        long uniqueNamesSize = carNames.stream().distinct().count();
+        if (uniqueNamesSize != carNames.size()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void moveCars() {
