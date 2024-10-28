@@ -18,17 +18,17 @@ public class Cars {
         this.carList = tempCarList;
     }
 
-    private static List<String> convertCarNamesToList(String carNames) {
+    private List<String> convertCarNamesToList(String carNames) {
         return Arrays.asList(carNames.split(DELIMITER_COMMA));
     }
 
-    public void validateListSize(List<Car> carList) {
+    private void validateListSize(List<Car> carList) {
         if (carList.size() < MIN_LIST_SIZE) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_NAME_LIST_SIZE);
         }
     }
 
-    public void validateNoDuplicateNames(List<Car> carList) {
+    private void validateNoDuplicateNames(List<Car> carList) {
         long distinctCount = carList.stream()
                 .distinct()
                 .count();
