@@ -30,17 +30,22 @@ public class Application {
             
         }
 
+
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         String num = Console.readLine();
 
         try{
             int number = Integer.parseInt(num);
-            System.out.println(number);
+            if(number == 0){
+                throw new IllegalArgumentException("1 이상의 숫자만 가능합니다.");
+            }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력가능합니다.");
         }
 
+
+        int random = 0;
 
     }
 }
