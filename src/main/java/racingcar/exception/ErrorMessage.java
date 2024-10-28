@@ -8,7 +8,7 @@ public enum ErrorMessage {
     DUPLICATED_CAR_NAME("동일한 자동차 이름이 존재합니다."),
 
     INVALID_NUMBER_FORMAT("숫자만 입력할 수 있습니다."),
-    RACE_ROUND_OUT_OF_BOUND("진행 횟수의 범위는 0부터 100까지입니다."),
+    RACE_ROUND_OUT_OF_BOUND("진행 횟수의 범위는 1부터 100까지입니다."),
     INVALID_INTEGER_FORMAT("유효한 정수를 입력하세요.");
 
     private final String message;
