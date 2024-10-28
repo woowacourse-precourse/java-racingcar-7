@@ -9,12 +9,6 @@ import java.util.List;
 
 public class CarRace implements Race<RacingCar> {
 
-    private final CarRaceHistoryRecorder carRaceHistoryRecorder;
-
-    public CarRace(CarRaceHistoryRecorder carRaceHistoryRegister) {
-        this.carRaceHistoryRecorder = carRaceHistoryRegister;
-    }
-
     @Override
     public void start(List<RacingCar> racingCars) {
         racingCars.forEach(racingCar -> {
@@ -22,7 +16,6 @@ public class CarRace implements Race<RacingCar> {
                 racingCar.forward();
             }
         });
-        carRaceHistoryRecorder.record(racingCars);
     }
 
     private boolean isMovable() {

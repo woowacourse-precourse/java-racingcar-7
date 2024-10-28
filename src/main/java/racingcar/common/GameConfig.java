@@ -42,7 +42,7 @@ public class GameConfig {
     }
 
     private RacingManager<RacingCar> racingManager() {
-        return new RacingCarManager(race(), racingCarRepository(), new WinnerIdentifier());
+        return new RacingCarManager(race(), racingCarRepository(), carRaceHistoryRecorder(), winnerIdentifier());
     }
 
     private RacingCarRepository racingCarRepository() {
@@ -50,10 +50,14 @@ public class GameConfig {
     }
 
     private Race<RacingCar> race() {
-        return new CarRace(carRaceHistoryRecorder());
+        return new CarRace();
     }
 
     private CarRaceHistoryRecorder carRaceHistoryRecorder() {
         return new CarRaceHistoryRecorder(CarRaceHistory.getInstance());
+    }
+
+    private WinnerIdentifier winnerIdentifier() {
+        return new WinnerIdentifier();
     }
 }
