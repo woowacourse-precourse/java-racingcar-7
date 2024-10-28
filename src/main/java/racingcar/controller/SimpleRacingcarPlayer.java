@@ -16,9 +16,15 @@ public class SimpleRacingcarPlayer implements RacingcarController {
     }
 
     @Override
-    public RacingcarResults startRace() {
+    public void startRace() {
         UserInput userInput = racingcarView.getInput();
-        // TODO. 메서드 구현
-        return null;
+
+        racingcarService.setRacingcars(userInput.carNames());
+        for (int i = 0; i < userInput.repeatNum(); i++) {
+            RacingcarResults results = racingcarService.racing();
+            racingcarView.printOutput(results);
+        }
+
+        racingcarView.printResult(racingcarService.findWinner());
     }
 }

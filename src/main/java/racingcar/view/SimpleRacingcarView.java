@@ -32,4 +32,9 @@ public class SimpleRacingcarView implements RacingcarView {
     public void printOutput(RacingcarResults result) {
         // TODO. 메서드 구현
     }
+
+    @Override
+    public void printResult(List<String> winner) {
+        // TODO. 메서드 구현
+    }
 }
