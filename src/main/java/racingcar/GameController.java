@@ -9,12 +9,21 @@ import java.util.List;
 
 public class GameController {
 
-    private InputView inputView;
+    private final InputView inputView;
+    private final OutputView outputView;
+
+    public GameController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
+
 
     public void gameStart() {
         List<Car> cars = input();
+        int tryCount = inputView.inputTryCount();
 
-        playGame(cars);
+        playGame(cars, tryCount);
+        findWinner(cars);
     }
 
     public List<Car> input() {
@@ -24,14 +33,12 @@ public class GameController {
             Car car = new Car(carName);
             cars.add(car);
         }
-
         return cars;
     }
 
-    public void playGame(List<Car> cars) {
-        int maxRound = InputView.inputTryCount();
-        System.out.println("실행 결과");
-        for (int round = 1; round <= maxRound; round++) {
+    public void playGame(List<Car> cars, int tryCount) {
+        System.out.println(System.lineSeparator() + "실행 결과");
+        for (int round = 1; round <= tryCount; round++) {
             for (Car car : cars) {
                 int num = Randoms.pickNumberInRange(0, 9);
                 if (num >= 4) {
@@ -39,8 +46,25 @@ public class GameController {
                 }
                 String dash = "-".repeat(car.getPosition());
                 System.out.println(car.getName() + " : " + dash);
+                // outputView.printRoundResult(cars);
             }
+            System.out.println();
+        }
+    }
+
+    public void findWinner(List<Car> cars) {
+        List<Car> winners = new ArrayList<>();
+        int maxPosition = 0;
+
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
         }
 
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        outputView.printWinners((winners));
     }
 }
