@@ -8,4 +8,8 @@ public class Parser {
         List<String> carNames = Arrays.asList(input.split(","));
         return new Cars(carNames);
     }
+
+    public static PlayCount parsePlayCount(final String input) {
+        return new PlayCount(input);
+    }
 }
