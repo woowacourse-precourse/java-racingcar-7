@@ -1,7 +1,8 @@
 package racingcar.controller;
 
-import racingcar.model.CarRacer;
 import racingcar.model.InputProcessor;
+import racingcar.model.Race;
+import racingcar.model.RaceProcess;
 import racingcar.view.InputView;
 
 public class RacingGame {
@@ -15,10 +16,11 @@ public class RacingGame {
 
         InputProcessor inputProcessor = new InputProcessor(carNames, moveCount);
 
-        CarRacer carRacer = new CarRacer(inputProcessor.getCarNames());
+        Race race = new Race(inputProcessor.getCarNames());
+        RaceProcess carRacer = new RaceProcess(race);
         carRacer.startRace(inputProcessor.getTryCount());
 
-        ViewController.printWinners(carRacer.getWinners());
+        ViewController.printWinners(race.getWinners());
 
         InputView.closeRead();
     }

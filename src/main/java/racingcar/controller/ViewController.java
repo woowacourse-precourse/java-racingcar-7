@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,6 +20,16 @@ public class ViewController {
     public static String readTryCount() {
         System.out.println(INPUT_TRY_COUNT);
         return InputView.readInput();
+    }
+
+    public static void printStartRacePhrase() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
+    public static void printRaceProcess(List<Car> cars) {
+        OutputView.printRaceResult(cars);
+        System.out.println();
     }
 
     public static void printWinners(List<String> winners) {
