@@ -14,7 +14,7 @@ public class Car {
 
     public void move(int random_val) {
         if (length != 0) {
-            if (length >= MIN_AVAILABLE_LENGTH) length++;
+            length++;
         } else {
             length = random_val;
         }
