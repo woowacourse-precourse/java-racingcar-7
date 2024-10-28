@@ -21,11 +21,7 @@ public class RacingCarController {
         GameRoundInputHandler.handle(gameRound);
         int parsedGameRound = Integer.parseInt(gameRound);
 
-        List<RacingCar> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new RacingCar(carName));
-        }
-        RacingCars racingCars = new RacingCars(cars);
+        RacingCars racingCars = new RacingCars(carNames);
 
         System.out.println(Message.EXECUTION_MESSAGE);
         for(int i = 0; i < parsedGameRound; i++) {
