@@ -29,6 +29,9 @@ public class RacingGameController {
             moveCar();
             outputView.roundResult(cars);
         }
+
+        outputView.gameResult(winners(cars));
+        
     }
 
     public List<Car> splitCar(String carList) {
@@ -46,4 +49,13 @@ public class RacingGameController {
             car.move(Randoms.pickNumberInRange(0, 9));
         }
     }
+
+    public List<String> winners(List<Car> cars) {
+        int winnerScore = cars.stream().mapToInt(Car::getScore).max().orElse(0);
+        return cars.stream()
+                .filter(car -> car.getScore() == winnerScore)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
 }
