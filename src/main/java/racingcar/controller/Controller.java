@@ -32,7 +32,7 @@ public class Controller {
     private String getLoopCountByInput() {
         InputView.printRequestLoopCountMessage();
         String loopCount = Console.readLine();
-        validator.checkNegativeCount(loopCount);
+        validator.checkNonPositiveCount(loopCount);
         return loopCount;
     }
 

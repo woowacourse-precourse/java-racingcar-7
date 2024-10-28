@@ -45,11 +45,11 @@ class ValidatorTest {
     }
 
     @Test
-    void checkNegativeCountExceptionTest() {
+    void checkNonPositiveCountExceptionTest() {
         // given
         String count = "-100";
         // when & then
-        assertThatThrownBy(() ->  validator.checkNegativeCount(count))
+        assertThatThrownBy(() ->  validator.checkNonPositiveCount(count))
         .isInstanceOf(IllegalArgumentException.class);
     }
 
