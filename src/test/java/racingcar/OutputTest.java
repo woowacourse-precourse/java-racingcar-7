@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -64,6 +66,33 @@ public class OutputTest extends NsTest {
         //then
         assertThat(outContent.toString().trim())
                 .isEqualTo("\\n실행 결과");
+        outContent.reset(); // 매 테스트 후 출력 리셋
+    }
+
+    @Test
+    @DisplayName("실행 결과 출력")
+    void printRunResult_MethodCall_ShouldPrintRunResult() {
+        //given
+        String expectedMessage = "Ahn : -\r\nSeong : \r\nMo : -";
+        List<Car> carList = new ArrayList<>();
+        Car car1 = new Car("Ahn");
+        Car car2 = new Car("Seong");
+        Car car3 = new Car("Mo");
+
+        car1.move(Movement.GO);
+        car2.move(Movement.STOP);
+        car3.move(Movement.GO);
+
+        carList.add(car1);
+        carList.add(car2);
+        carList.add(car3);
+
+        //when
+        Output.printRunResult(carList);
+
+        //then
+        assertThat(outContent.toString().trim())
+                .isEqualTo(expectedMessage);
         outContent.reset(); // 매 테스트 후 출력 리셋
     }
 }
