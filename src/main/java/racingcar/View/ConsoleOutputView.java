@@ -2,8 +2,9 @@ package racingcar.View;
 
 import java.util.List;
 import racingcar.Domain.Car;
+import racingcar.Viewinterface.OutputView;
 
-public class OutputView {
+public class ConsoleOutputView implements OutputView {
 
     public void printRaceResult() {
         System.out.println("\n실행 결과");

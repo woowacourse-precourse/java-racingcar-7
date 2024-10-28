@@ -1,12 +1,12 @@
 package racingcar.Controller;
 
 import racingcar.Domain.RacingGame;
-import racingcar.View.InputView;
-import racingcar.View.OutputView;
+import racingcar.Viewinterface.InputView;
+import racingcar.Viewinterface.OutputView;
 
 public class Controller {
-    private InputView inputView;
-    private OutputView outputView;
+    private final InputView inputView;
+    private final OutputView outputView;
 
     public Controller(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -18,3 +18,4 @@ public class Controller {
         game.play();
     }
 }
+

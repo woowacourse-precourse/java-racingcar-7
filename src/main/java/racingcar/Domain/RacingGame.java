@@ -1,7 +1,7 @@
 package racingcar.Domain;
 
-import racingcar.View.InputView;
-import racingcar.View.OutputView;
+import racingcar.Viewinterface.InputView;
+import racingcar.Viewinterface.OutputView;
 
 public class RacingGame {
     private final InputView inputView;
@@ -15,7 +15,7 @@ public class RacingGame {
     }
 
     private void initialize() {
-        inputView.carnameInput();
+        inputView.carNameInput();
         cars = new Cars(inputView.readCarNames());
 
         inputView.requestMoveCount();
