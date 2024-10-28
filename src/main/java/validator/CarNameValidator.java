@@ -3,7 +3,7 @@ package validator;
 import java.util.Arrays;
 import java.util.List;
 
-public class CarNameValidatorImpl implements Validator<String> {
+public class CarNameValidator implements Validator<String> {
     @Override
     public void validate(String input) {
         validateNullBlankName(input);

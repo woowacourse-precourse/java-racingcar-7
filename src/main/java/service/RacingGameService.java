@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import model.Car;
 import model.Cars;
-import randomnumber.RandomNumberHandler;
+import movement.MovementHandler;
 import view.OutputView;
 
 public class RacingGameService {
-    private final RandomNumberHandler randomNumberHandler;
+    private final MovementHandler randomNumberHandler;
     private final OutputView outputView;
 
-    public RacingGameService(RandomNumberHandler randomNumberHandler, OutputView outputView) {
+    public RacingGameService(MovementHandler randomNumberHandler, OutputView outputView) {
         this.randomNumberHandler = randomNumberHandler;
         this.outputView = outputView;
     }

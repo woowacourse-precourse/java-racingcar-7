@@ -16,7 +16,7 @@ class CarNameValidatorTest {
 
     @BeforeEach
     void setUp() {
-        carNameValidator = new CarNameValidatorImpl();
+        carNameValidator = new CarNameValidator();
     }
 
     @Nested

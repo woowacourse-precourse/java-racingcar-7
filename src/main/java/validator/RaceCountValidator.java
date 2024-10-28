@@ -1,6 +1,6 @@
 package validator;
 
-public class RaceCountValidatorImpl implements Validator<Integer> {
+public class RaceCountValidator implements Validator<Integer> {
     private static final int MIN_RACE_COUNT = 1;
     private static final int MAX_RACE_COUNT = 100;
 

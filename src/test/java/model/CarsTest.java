@@ -3,10 +3,10 @@ package model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import movement.CarMovementHandler;
+import movement.MovementHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import randomnumber.RandomNumberHandler;
-import randomnumber.RandomNumberHandlerImpl;
 
 class CarsTest {
 
@@ -23,7 +23,7 @@ class CarsTest {
                 .map(Car::getPosition)
                 .toList();
 
-        RandomNumberHandler randomNumberHandler = new RandomNumberHandlerImpl();
+        MovementHandler randomNumberHandler = new CarMovementHandler();
         cars.moveAll(randomNumberHandler);
 
         for (int i = 0; i < cars.getCars().size(); i++) {

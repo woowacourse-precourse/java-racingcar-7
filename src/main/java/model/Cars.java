@@ -1,10 +1,9 @@
 package model;
 
-import randomnumber.RandomNumberHandler;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import movement.MovementHandler;
 
 public class Cars {
     private final List<Car> cars;
@@ -16,7 +15,7 @@ public class Cars {
                 .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
 
-    public void moveAll(RandomNumberHandler randomNumberHandler) {
+    public void moveAll(MovementHandler randomNumberHandler) {
         for (Car car : cars) {
             if (randomNumberHandler.canMove()) {
                 car.moveForward();

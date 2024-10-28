@@ -14,7 +14,7 @@ public class RaceCountValidatorTest {
 
     @BeforeEach
     void setUp() {
-        raceCountValidator = new RaceCountValidatorImpl();
+        raceCountValidator = new RaceCountValidator();
     }
 
     @Nested
@@ -39,6 +39,7 @@ public class RaceCountValidatorTest {
                     .withMessage(Message.INVALID_MAX_RACE_COUNT.getMessage());
         }
     }
+
     @Nested
     @DisplayName("유효한 입력 테스트")
     class ValidInputTest {

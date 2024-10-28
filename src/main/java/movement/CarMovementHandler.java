@@ -1,8 +1,8 @@
-package randomnumber;
+package movement;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomNumberHandlerImpl implements RandomNumberHandler {
+public class CarMovementHandler implements MovementHandler {
     private static final int MINIMUM_MOVEMENT_VALUE = 4;
     private static final int START_INCLUSIVE = 0;
     private static final int END_INCLUSIVE = 9;
