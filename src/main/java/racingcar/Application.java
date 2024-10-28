@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) {
@@ -30,7 +32,32 @@ public class Application {
             goOrStop(cars);
             printRoundResult(cars);
         }
+        printFinalWinner(cars);
     }
+
+    private static void printFinalWinner(HashMap<String, Integer> cars) {
+        int maxValue = 0;
+        List<String> maxKeys = new ArrayList<>();
+
+        for (String key : cars.keySet()) {
+            int value = cars.get(key);
+
+            if (value > maxValue) {
+                maxValue = value;
+                maxKeys.clear();
+                maxKeys.add(key);
+            } else if (value == maxValue) {
+                maxKeys.add(key);
+            }
+        }
+
+        System.out.print("최종 우승자 : " + maxKeys.get(0));
+        for (int i = 1; i < maxKeys.size(); i++) {
+            System.out.print(", " + maxKeys.get(i));
+        }
+
+    }
+
 
     private static void printRoundResult(HashMap<String, Integer> cars) {
         for (String key : cars.keySet()) {
