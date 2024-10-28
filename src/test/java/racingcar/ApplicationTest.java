@@ -13,7 +13,54 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 우승자_다수_기능_테스트() {
+    void 횟수_문자_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "-n"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("횟수는 숫자만 입력 가능합니다.")
+        );
+    }
+
+    @Test
+    void 횟수_제로_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("횟수는 양수여야 합니다.")
+        );
+    }
+
+    @Test
+    void 횟수_음수_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("횟수는 양수여야 합니다.")
+        );
+    }
+
+    @Test
+    void 자동차_이름_중복_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 중복될 수 없습니다.")
+        );
+    }
+
+    @Test
+    void 단독_우승자_기능_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "jun : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, STOP
+        );
+    }
+
+    @Test
+    void 공동_우승자_기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni,jun", "1");

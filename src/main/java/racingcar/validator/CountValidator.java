@@ -17,7 +17,7 @@ public class CountValidator {
 
     private static void checkCountIsPositive(String strCount) throws Exception {
         int count = Integer.parseInt(strCount);
-        if (count < 0) {
+        if (count <= 0) {
             throw new Exception("횟수는 양수여야 합니다.");
         }
     }
