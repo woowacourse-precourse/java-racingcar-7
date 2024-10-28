@@ -2,7 +2,7 @@ package racingcar.adapter.inbound.cli;
 
 import racingcar.application.dto.RacingGameRequest;
 import racingcar.application.dto.Response;
-import racingcar.application.port.inbound.InboundAdapter;
+import racingcar.adapter.inbound.InboundAdapter;
 import racingcar.application.port.inbound.GameUseCase;
 import racingcar.application.port.inbound.InputPort;
 import racingcar.application.port.outbound.OutputPort;

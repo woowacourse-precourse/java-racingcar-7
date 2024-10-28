@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.application.port.inbound.InboundAdapter;
+import racingcar.adapter.inbound.InboundAdapter;
 import racingcar.infrastructure.config.AppConfig;
 
 public class Application {
