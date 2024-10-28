@@ -8,14 +8,8 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static int inputTryNumbers() {
+    public static String inputTryNumbers() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryNumber;
-        try {
-            tryNumber = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-        return tryNumber;
+        return Console.readLine();
     }
 }

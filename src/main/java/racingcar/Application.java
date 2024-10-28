@@ -44,12 +44,13 @@ public class Application {
         }
 
         // 6. 시도할 횟수 입력받기
-        int tryNumber = InputView.inputTryNumbers();
+        String number = InputView.inputTryNumbers();
 
-        // 7. 시도할 횟수가 자연수인지 확인
-        if (!NumberController.isNaturalNumber(tryNumber)) {
+        // 7. 시도할 횟수가 자연수로 변환 가능한지 확인 후 변환
+        if (!NumberController.isInteger(number) | !NumberController.isNaturalNumber(number)) {
             throw new IllegalArgumentException();
         }
+        int tryNumber = Integer.parseInt(number);
 
         // 8. 시도할 횟수만큼 게임을 진행하며 차수별 실행 결과 출력
         for (int round = 0; round < tryNumber; round++) {
