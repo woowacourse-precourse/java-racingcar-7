@@ -42,5 +42,10 @@ public class RacingCarValidator {
         if (roundString == null || roundString.isBlank()) {
             throw new IllegalArgumentException();
         }
+        for (int i = 0; i < roundString.length(); i++) {
+            if (!Character.isDigit(roundString.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
