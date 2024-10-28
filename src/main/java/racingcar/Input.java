@@ -6,14 +6,16 @@ import java.util.List;
 
 public class Input {
 
-    public List<String> getCarNames(){
+    public List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputCarNames = Console.readLine();
         List<String> carNames = splitCarNames(inputCarNames);
-        return trimCarNames(carNames);
+        List<String> trimCarNames = trimCarNames(carNames);
+        Validate.vaildateCar(trimCarNames);
+        return trimCarNames;
     }
 
-    public int getGameCount(){
+    public int getGameCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputGameCount = Console.readLine();
         int gameCount = convertStrToInt(inputGameCount);
@@ -21,24 +23,19 @@ public class Input {
         return gameCount;
     }
 
-    public static List<String> splitCarNames(String inputCarNames){
+    public static List<String> splitCarNames(String inputCarNames) {
         return List.of(inputCarNames.split(","));
     }
 
-    public static List<String> trimCarNames(List<String> carNames){
+    public static List<String> trimCarNames(List<String> carNames) {
         List<String> trimNames = new ArrayList<>();
-        Validate.validateDuplicateName(carNames);
         for (String carName : carNames) {
-            carName = carName.trim();
-            Validate.validateCarNameIsEmpty(carName);
-            Validate.validateCarNameLength(carName);
-            trimNames.add(carName);
+            trimNames.add(carName.trim());
         }
-        Validate.validateCarsCount(trimNames);
         return trimNames;
     }
 
-    public static int convertStrToInt(String inputGameCount){
+    public static int convertStrToInt(String inputGameCount) {
         return Integer.parseInt(inputGameCount);
     }
 }
