@@ -11,4 +11,8 @@ public class RacingUnitResultList {
         this.racingUnitResultList.add(racingUnitResult);
     }
 
+    public List<RacingUnitResult> getRacingUnitResultList() {
+        return this.racingUnitResultList;
+    }
+
 }
