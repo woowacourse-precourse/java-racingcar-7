@@ -11,9 +11,17 @@ public class Round {
     private final LocalDateTime startTime;
 
     public Round(final String maxRound) {
-        this.maxRound = Integer.parseInt(maxRound);
+        this.maxRound = getMaxRound(maxRound);
         this.currRound = 0;
-        this.startTime = LocalDateTime.now();
+        this.startTime = LocalDateTime.now();4
+    }
+
+    private static int getMaxRound(final String inputRound) {
+        try {
+            return Integer.parseInt(inputRound);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 라운드 수 입력");
+        }
     }
 
     private Round(final int maxRound, final int currRound) {
