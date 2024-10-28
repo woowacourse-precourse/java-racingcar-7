@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,18 +21,6 @@ class RaceRefereeTest {
 
         //when & then
         assertThrows(IllegalArgumentException.class, () -> RaceReferee.from(negativeRound));
-    }
-
-    @Test
-    public void givenRacingRound_thenPlayRound() {
-        //given
-        int round = 5;
-        RaceReferee referee = RaceReferee.from(round);
-
-        //when
-
-        //then
-
     }
 
     @Test
