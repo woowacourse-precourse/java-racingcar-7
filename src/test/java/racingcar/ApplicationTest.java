@@ -44,6 +44,21 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+
+    @Test
+    void validateAttempts_withZero_throwsException() {
+        assertThatThrownBy(() -> Application.validateAttempts(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수는 1 이상이어야 합니다.");
+    }
+
+    @Test
+    void validateAttempts_withNegativeNumber_throwsException() {
+        assertThatThrownBy(() -> Application.validateAttempts(-1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수는 1 이상이어야 합니다.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
