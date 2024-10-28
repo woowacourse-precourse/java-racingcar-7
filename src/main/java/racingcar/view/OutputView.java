@@ -25,4 +25,16 @@ public class OutputView {
 
         System.out.println();
     }
+
+    public void printWinners(ArrayList<String> winners) {
+        System.out.print(InfoMessage.FINAL_WINNER.getMessage());
+
+        for (int i = 0; i < winners.size(); i++) {
+            System.out.print(winners.get(i));
+
+            if (i != winners.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+    }
 }
