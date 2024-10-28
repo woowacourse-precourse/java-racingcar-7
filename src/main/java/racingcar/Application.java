@@ -17,6 +17,21 @@ public class Application {
     static Car car_list[];
     static int totalCount;
 
+    public static void getRandomNum() {
+        for (int i = 0; i < car_list.length; i++) {
+            int random_num = pickNumberInRange(0, 9);
+            if (random_num >= 4) {
+                car_list[i].move_cnt++;
+            }
+        }
+    }
+
+    public static void gameProgress() {
+        for (int i = 0; i < totalCount; i++) {
+            getRandomNum();
+        }
+    }
+
     public static void checkValid(String name) {
         if (name.length() > 5 || name.length() == 0) {
             throw new IllegalArgumentException();
@@ -55,5 +70,6 @@ public class Application {
     public static void main(String[] args) {
         inputCar();
         inputCount();
+        gameProgress();
     }
 }
