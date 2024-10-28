@@ -2,8 +2,6 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Cars;
-import racingcar.domain.strategy.MoveStrategy;
-import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.dto.RoundResultDto;
 import racingcar.dto.WinnerDto;
 import racingcar.service.CarsService;
@@ -16,12 +14,10 @@ public class RacingCarController {
 
     private final CarsService carsService;
     private final RaceService raceService;
-    private final MoveStrategy moveStrategy;
 
     public RacingCarController() {
         this.carsService = new CarsService();
         this.raceService = new RaceService();
-        this.moveStrategy = new RandomMoveStrategy();
     }
 
     public void run() {
@@ -46,7 +42,7 @@ public class RacingCarController {
     }
 
     private Cars createCars(String carNames) {
-        return carsService.createCars(carNames, moveStrategy);
+        return carsService.createCars(carNames);
     }
 
 }
