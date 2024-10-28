@@ -17,4 +17,9 @@ public class RacingCarManager implements RacingManager<RacingCar> {
     public void registerAll(List<RacingCar> racers) {
         inMemoryRacingCarRepository.addAll(racers);
     }
+
+    @Override
+    public void raceStart(int gameCount) {
+
+    }
 }

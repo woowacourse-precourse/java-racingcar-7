@@ -22,12 +22,19 @@ public class RacingCarGame implements Game {
 
     @Override
     public void play() {
-        inputRacingCar();
+        registerRacingCars();
+
+        playRacingGame();
     }
 
-    private void inputRacingCar() {
+    private void registerRacingCars() {
         String responseCars = applicationView.requestInputCars();
         List<RacingCar> racingCars = converter.toObjects(responseCars);
         racingManager.registerAll(racingCars);
+    }
+
+    private void playRacingGame() {
+        int gameCount = applicationView.requestGameCount();
+        racingManager.raceStart(gameCount);
     }
 }

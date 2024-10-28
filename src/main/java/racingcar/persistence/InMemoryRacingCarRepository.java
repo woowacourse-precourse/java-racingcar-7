@@ -2,6 +2,7 @@ package racingcar.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.racing.RacingCar;
 
 public class InMemoryRacingCarRepository {
@@ -15,6 +16,10 @@ public class InMemoryRacingCarRepository {
 
     public static InMemoryRacingCarRepository getInstance() {
         return INSTANCE;
+    }
+
+    public List<RacingCar> getAll() {
+        return new ArrayList<>(RACING_CARS);
     }
 
     public void addAll(List<RacingCar> racingCars) {
