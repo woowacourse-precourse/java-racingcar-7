@@ -13,6 +13,7 @@ public class RacingManager {
     private String input = "";
     private int NUMBER;
     private String[] inputCars;
+    private ExceptionManager exceptionManager;
     private List<Car> carList = new ArrayList<>();
     private int MAX_POSITION;
     private List<String> names = new ArrayList<>();
@@ -28,6 +29,7 @@ public class RacingManager {
             throw new IllegalArgumentException("숫자를 입력하지 않았습니다.");
         }
         splitInputCars();
+        exceptionManager = new ExceptionManager(input, inputCars, NUMBER);
     }
 
     private void splitInputCars() {
@@ -98,6 +100,7 @@ public class RacingManager {
     }
 
     public void runRacing() {
+        exceptionManager.checkException();
         createCar();
         startRacing();
         getMaxPosition();
