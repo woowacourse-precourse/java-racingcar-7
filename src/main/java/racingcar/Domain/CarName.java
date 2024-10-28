@@ -13,8 +13,8 @@ public class CarName {
         return new CarName(value);
     }
 
-    @Override
-    public String toString() {
+
+    public String getValue() {
         return value;
     }
 

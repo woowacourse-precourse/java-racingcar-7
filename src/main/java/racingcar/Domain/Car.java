@@ -1,13 +1,14 @@
 package racingcar.Domain;
 
 public class Car {
-    private final String name;
+    private final CarName name;
     private final Position position;
+
+
 
     public Car(String name) {
         CarNameValidator.validate(name);
-
-        this.name = CarName.from(name).toString();
+        this.name = CarName.from(name);
         this.position = new Position();
     }
 
@@ -22,6 +23,6 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getValue();
     }
 }
