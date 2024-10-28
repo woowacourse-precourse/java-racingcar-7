@@ -68,10 +68,14 @@ public class Race {
         List<String> winners = new ArrayList<>();
         int longestPosition = findLongestPosition();
         for (RacingCar racingCar : racingCarList) {
-            if (racingCar.getPosition().length() == longestPosition) {
-                winners.add(racingCar.getName());
-            }
+            addWinner(racingCar, longestPosition, winners);
         }
         return String.join(DELIMITER, winners);
+    }
+
+    private void addWinner(RacingCar racingCar, int longestPosition, List<String> winners) {
+        if (racingCar.getPosition().length() == longestPosition) {
+            winners.add(racingCar.getName());
+        }
     }
 }
