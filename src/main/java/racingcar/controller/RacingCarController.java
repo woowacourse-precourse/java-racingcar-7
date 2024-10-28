@@ -32,9 +32,13 @@ public class RacingCarController {
         int numberOfMoves = inputView.inputNumberOfMoves();
 
         racingCarService.prepare(carNames, randomNumber);
-        racingCarService.race(numberOfMoves);
 
-        outputView.outputMoveResult(racingCarService.getMoveResult());
+
+        outputView.outputMoveResultMessage();
+        for (int i = 0; i < numberOfMoves; i++) {
+            racingCarService.race();
+            outputView.outputMoveResult(racingCarService.getMoveResult());
+        }
         outputView.outputWinnerCars(racingCarService.findWinnerCars());
     }
 }

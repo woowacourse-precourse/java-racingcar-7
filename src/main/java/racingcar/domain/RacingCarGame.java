@@ -8,20 +8,16 @@ import racingcar.util.RandomNumber;
 
 public class RacingCarGame {
 
-    private static final List<Car> racingCars = new ArrayList<>();
+    private final List<Car> racingCars = new ArrayList<>();
 
     private final List<String> winnerCars = new ArrayList<>();
     private final RandomNumber randomNumber;
 
-    public RacingCarGame(RandomNumber randomNumber) {
-        this.randomNumber = randomNumber;
-    }
-
-    public static RacingCarGame create(List<String> carNames, RandomNumber randomNumber) {
+    public RacingCarGame(List<String> carNames, RandomNumber randomNumber) {
         for (String carName : carNames) {
             racingCars.add(Car.create(carName));
         }
-        return new RacingCarGame(randomNumber);
+        this.randomNumber = randomNumber;
     }
 
     public void moveCars() {

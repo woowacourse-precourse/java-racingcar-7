@@ -15,10 +15,16 @@ public class OutputView {
         System.out.println(INPUT_NUMBER_OF_MOVES.getMessage());
     }
 
+    public void outputMoveResultMessage() {
+        System.out.println();
+        System.out.println(RESULT_MESSAGE.getMessage());
+    }
+
     public void outputMoveResult(Map<String, Integer> result) {
         for (String carName : result.keySet()) {
             System.out.println(carName + RESULT_SEPARATOR.getMessage() + makeMoveMark(result.get(carName)));
         }
+        System.out.println();
     }
 
     private String makeMoveMark(Integer move) {
@@ -30,6 +36,6 @@ public class OutputView {
     }
 
     private String makeWinnerCarsNames(List<String> winnerCars) {
-        return winnerCars.toString().replaceAll("[\\\\[\\\\]]", "");
+        return winnerCars.toString().replaceAll("[\\[\\]]", "");
     }
 }

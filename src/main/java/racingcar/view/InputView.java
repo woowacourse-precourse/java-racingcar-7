@@ -12,7 +12,7 @@ public class InputView {
 
     public Integer inputNumberOfMoves() {
         String input = Console.readLine();
-        InputValidation.checkIsNumber(Console.readLine());
+        InputValidation.checkIsNumber(input);
 
         return Integer.parseInt(input);
     }
