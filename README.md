@@ -182,11 +182,11 @@
 
 - [x]  [java-racingcar-7](https://github.com/woowacourse-precourse/java-racingcar-7) 저장소를 Fork & Clone
 - [x]  `README.md`에 구현할 기능 목록을 정리해 추가
-- [ ]  Git의 커밋 단위는 앞 단계에서 `README.md`에 정리한 기능 목록 단위로 추가한다.
+- [x]  Git의 커밋 단위는 앞 단계에서 `README.md`에 정리한 기능 목록 단위로 추가한다.
     - [AngularJS Git Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)을 참고해 커밋 메시지를 작성한다.
-- [ ]  완료 후 Pull Request
-- [ ]  우아한테크코스 지원 플랫폼에 소감 작성 후 제출
-- [ ]  제출한 후 결과 확인, 통과하지 못했다면 수정해 다시 제출
+- [x]  완료 후 Pull Request
+- [x]  우아한테크코스 지원 플랫폼에 소감 작성 후 제출
+- [x]  제출한 후 결과 확인, 통과하지 못했다면 수정해 다시 제출
 
 # ✅ 프로그래밍 요구 사항
 
@@ -219,7 +219,7 @@
 - [x]  Git으로 관리할 자원을 고려한다
 - [x]  커밋 메시지를 의미 있게 작성한다
 - [x]  커밋 메시지에 이슈 또는 풀 리퀘스트 번호를 포함하지 않는다
-- [ ]  풀 리퀘스트를 만든 후에는 닫지 말고 추가 커밋을 한다
+- [x]  풀 리퀘스트를 만든 후에는 닫지 말고 추가 커밋을 한다
 - [x]  오류를 찾을 때 출력 함수 대신 디버거를 사용한다
 - [x]  이름을 통해 의도를 드러낸다
 - [x]  축약하지 않는다
