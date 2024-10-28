@@ -16,7 +16,8 @@ public class Controller {
         String input=inputView.inputName();
         int num = inputView.inputNum();
         ArrayList<String> participants = Parser.parse(input);
-        String winner=RacingGame.race();
-        outputView.output(winner);
+        outputView.result();
+        String winner=RacingGame.race(participants, num);
+        outputView.finalWinner(winner);
     }
 }
