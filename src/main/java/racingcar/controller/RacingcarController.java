@@ -31,7 +31,7 @@ public class RacingcarController {
         printWinner(racingGame, racingcarList);
     }
 
-    public void printWinner(RacingGame racingGame , List<Racingcar> racingcarList) {
+    public void printWinner(RacingGame racingGame, List<Racingcar> racingcarList) {
         List<String> winners = findWinner(racingcarList);
         OutputView.printWinner(winners);
 
@@ -41,7 +41,7 @@ public class RacingcarController {
         String[] racingcars = racingcarNames.split(",");
         List<Racingcar> racingcarsList = new ArrayList<>();
 
-        for(String racingcarName : racingcars) {
+        for (String racingcarName : racingcars) {
             racingcarName = racingcarName.trim();
             if (racingcarName.length() > 5) {
                 throw new IllegalArgumentException();
@@ -56,7 +56,7 @@ public class RacingcarController {
         List<String> winners = new ArrayList<>();
         int maxLocation = Integer.MIN_VALUE;
         for (Racingcar racingcar : racingcarList) {
-            if(racingcar.getLocation() > maxLocation) {
+            if (racingcar.getLocation() > maxLocation) {
                 winners.clear();
                 maxLocation = racingcar.getLocation();
                 winners.add(racingcar.getCarName());
@@ -66,7 +66,6 @@ public class RacingcarController {
         }
         return winners;
     }
-
 
 
 }
