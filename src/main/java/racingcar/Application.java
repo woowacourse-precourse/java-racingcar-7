@@ -15,6 +15,8 @@ public class Application {
     private static void startGame()  {
         printStartMessage();
         String input = getCarNamesInput().replaceAll(" ","");
+        validateEmptyInput(input);
+        String[] names = splitWithComma(input);
     }
 
     public static void printStartMessage() {
@@ -30,9 +32,12 @@ public class Application {
     }
 
     public static void validateEmptyInput(String input) {
-
         if(input.isEmpty()) {
             throw new IllegalArgumentException("정확한 값을 입력해 주세요.");
         }
+    }
+
+    public static String[] splitWithComma(String input) {
+        return input.split(",");
     }
 }
