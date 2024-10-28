@@ -14,6 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingGameTest extends NsTest {
 
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
+
     private RaceCars raceCars;
 
     @BeforeEach
@@ -32,6 +35,17 @@ public class RacingGameTest extends NsTest {
         assertEquals("kim", cars.get(0).getName());
         assertEquals("jun", cars.get(1).getName());
         assertEquals("pobi", cars.get(2).getName());
+    }
+
+    @Test
+    @DisplayName("4 이상 숫자 발생시 자동차 움직임 확인 테스트")
+    void executeRoundsTest() {
+        Car car = new Car("kim");
+
+        assertEquals(0, car.getMoveCount());
+        car.moveCar(5);
+
+        assertEquals(1, car.getMoveCount());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.constants.GameConstants;
 import racingcar.validate.Validation;
 import racingcar.view.OutputMessage;
@@ -36,11 +37,15 @@ public class RaceCars {
 
     private void proceedCar() {
         for (Car car : cars) {
-            car.moveCar();
+            car.moveCar(getRandomNumber());
             int carMoveCount = car.getMoveCount();
             OutputMessage.printHyphenMessage(car.getName(), carMoveCount);
         }
         System.out.println();
+    }
+
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(GameConstants.RANDOM_MIN, GameConstants.RANDOM_MAX);
     }
 
 

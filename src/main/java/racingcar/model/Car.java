@@ -13,8 +13,7 @@ public class Car {
         this.name = name;
     }
 
-    public void moveCar() {
-        int randomNum = Randoms.pickNumberInRange(GameConstants.RANDOM_MIN, GameConstants.RANDOM_MAX);
+    public void moveCar(int randomNum) {
         if (randomNum >= GameConstants.MOVING_FORWARD) {
             moveCount++;
         }
