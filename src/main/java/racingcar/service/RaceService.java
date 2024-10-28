@@ -3,7 +3,10 @@ package racingcar.service;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -17,11 +20,11 @@ public class RaceService {
         this.round = round;
     }
 
-    public List<String> getWinnersNames() {
+    public List<Car> getWinners() {
         return cars.getWinnerNames();
     }
 
-    public List<Map<Car, Integer>> createRaceResults() {
+    public List<Map<Car, Integer>> createRaceLogs() {
         List<Map<Car, Integer>> raceResults = IntStream.range(0, round)
                 .mapToObj(i -> Collections.unmodifiableMap(createRaceResult()))
                 .toList();
@@ -29,13 +32,15 @@ public class RaceService {
         return raceResults;
     }
 
-    private Map<Car, Integer> createRaceResult () {
+    private Map<Car, Integer> createRaceResult() {
         cars.move();
 
         Map<Car, Integer> raceResult = cars.getCars().stream()
                 .collect(Collectors.toMap(
                         car -> car,
-                        car -> car.getPosition()
+                        car -> car.getPosition(),
+                        (car1, car2) -> car1,
+                        LinkedHashMap::new
                 ));
 
         return raceResult;

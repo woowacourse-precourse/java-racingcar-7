@@ -18,10 +18,10 @@ public class CarIntegrationTest {
 
     static Stream<Arguments> provideStopEngine() {
         return Stream.of(
-                arguments(List.of("stopCarA", "stopCarB"), 0),
-                arguments(List.of("stopCarA", "stopCarB"), 1),
-                arguments(List.of("stopCarA", "stopCarB"), 2),
-                arguments(List.of("stopCarA", "stopCarB"), 3)
+                arguments(List.of("stopA", "stopB"), 0),
+                arguments(List.of("stopA", "stopB"), 1),
+                arguments(List.of("stopA", "stopB"), 2),
+                arguments(List.of("stopA", "stopB"), 3)
         );
     }
 
@@ -39,8 +39,8 @@ public class CarIntegrationTest {
 
     static Stream<Arguments> provideMoveEngine() {
         return Stream.of(
-                arguments(List.of("moveCarA", "moveCarB"), 4),
-                arguments(List.of("moveCarA", "moveCarB"), 9)
+                arguments(List.of("moveA", "moveB"), 4),
+                arguments(List.of("moveA", "moveB"), 9)
         );
     }
 

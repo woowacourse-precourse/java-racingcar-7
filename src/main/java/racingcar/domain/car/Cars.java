@@ -16,12 +16,11 @@ public class Cars {
         cars.forEach(car -> car.move());
     }
 
-    public List<String> getWinnerNames() {
+    public List<Car> getWinnerNames() {
         final int maxPosition = getMaxPosition();
 
-        List<String> winners = cars.stream()
+        List<Car> winners = cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getCarName)
                 .toList();
 
         return winners;
@@ -30,7 +29,7 @@ public class Cars {
     private int getMaxPosition() {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
-                .min()
+                .max()
                 .getAsInt();
 
         return maxPosition;

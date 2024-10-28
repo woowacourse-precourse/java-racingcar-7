@@ -14,7 +14,6 @@ public class Car {
         this.engine = engine;
     }
 
-
     protected static Car of(String name, IntSupplier engine) {
         CarName carName = new CarName(name);
         return new Car(carName, engine);

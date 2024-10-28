@@ -16,7 +16,9 @@ public class InputView {
             throw new IllegalArgumentException("동명이인 입력");
         }
 
-        return List.of(split);
+        return Arrays.stream(split)
+                .map(String::trim)
+                .toList();
     }
 
     private boolean isDuplicated(String[] split) {

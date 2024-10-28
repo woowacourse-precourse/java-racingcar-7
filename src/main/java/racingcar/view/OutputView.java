@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public class OutputView {
 
-
     public void printRaceResult(List<Map<Car, Integer>> raceResults) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("실행 결과\n");
@@ -18,12 +17,11 @@ public class OutputView {
                 .collect(Collectors.joining("\n\n"));
         stringBuilder.append(output);
 
-        System.out.println(stringBuilder.toString());
+        System.out.println(stringBuilder.toString() + "\n");
     }
 
     private String toStringResult(Map<Car, Integer> map) {
         return map.entrySet().stream()
-
                 .map(entry -> {
                     StringBuilder stringBuilder = new StringBuilder();
 
