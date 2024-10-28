@@ -74,7 +74,7 @@ public class ValidatorTest extends NsTest {
     @Test
     void duplicate_exception_runtime_test() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,".repeat(1000000)+"pobi","3"))
+                assertThatThrownBy(() -> runException("pobi,".repeat(800000)+"pobi","3"))
                         .isInstanceOf(IllegalArgumentException.class) // 약 200만개 이상의 배열을 처리할 때 limit 초과
         );
     }

@@ -84,6 +84,30 @@ public class ContentParserTest extends NsTest {
                 });
     }
 
+    @DisplayName("이모지_한글_혼용_테스트")
+    @Test
+    void emoji_korean_input_test(){
+        ArrayList<String> parsedGroup = ContentParser.parsingContentToGroup("😂포비 ,🫡워니　,　😥준　");
+        assertThat(parsedGroup).satisfies(
+                group -> {
+                    assertThat(group.get(0)).isEqualTo("😂포비");
+                    assertThat(group.get(1)).isEqualTo("🫡워니");
+                    assertThat(group.get(2)).isEqualTo("😥준");
+                });
+    }
+
+    @DisplayName("띄어쓰기가_중간에_있는_경우_테스트")
+    @Test
+    void whitespace_test(){
+        ArrayList<String> parsedGroup = ContentParser.parsingContentToGroup("po bi ,won y　, j u n　");
+        assertThat(parsedGroup).satisfies(
+                group -> {
+                    assertThat(group.get(0)).isEqualTo("po bi");
+                    assertThat(group.get(1)).isEqualTo("won y");
+                    assertThat(group.get(2)).isEqualTo("j u n");
+                });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
