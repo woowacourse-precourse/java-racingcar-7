@@ -17,15 +17,19 @@ import mvc.controller.RaceController;
 
 */
 
-/*TODO
- * - 실행의 책임을 다하기 (예외 대응, 리소스 정리 등)진행하기
- * */
 public class Application {
     public static void main(String[] args) {
 
         RaceController raceController = new RaceController();
 
-        raceController.runRace();
-
+        try {
+            raceController.runRace();
+        }catch (IllegalArgumentException e){
+            System.out.println(" please check your input");
+            throw e;
+        }catch(Exception e){
+            System.out.println(" Internal logic error. need to handle it");
+            throw new IllegalArgumentException("Internal logic error.",e);
+        }
     }
 }

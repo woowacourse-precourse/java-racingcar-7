@@ -42,3 +42,4 @@
 ## Main Application
 
 - run and manage controller
+- handle Exception
