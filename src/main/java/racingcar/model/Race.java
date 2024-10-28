@@ -1,0 +1,38 @@
+package racingcar.model;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static racingcar.view.OutputView.printRaceStatus;
+import static racingcar.view.OutputView.printWinners;
+
+import java.util.List;
+
+public class Race {
+    private final List<Car> cars;
+    private final int attemptCount;
+
+    public Race(final List<Car> cars, final int attemptCount) {
+        this.cars = cars;
+        this.attemptCount = attemptCount;
+    }
+
+    public void operate() {
+        for (int i = 0; i < attemptCount; i++) {
+            cars.forEach(this::moveRandomly);
+            printRaceStatus(cars);
+        }
+        printWinners(findWinners(cars));
+    }
+
+    private void moveRandomly(final Car car) {
+        if (pickNumberInRange(0, 9) >= 4) {
+            car.moveForward();
+        }
+    }
+
+    private List<String> findWinners(final List<Car> cars) {
+        int maxDistance = cars.stream().mapToInt(Car::getDistance).max()
+                .orElseThrow(() -> new IllegalStateException("비어있는 차량 목록"));
+        List<String> winners = cars.stream().filter(car -> car.getDistance() == maxDistance).map(Car::getName).toList();
+        return winners;
+    }
+}
