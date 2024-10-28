@@ -6,7 +6,7 @@ public class RoundValidator {
 
         if(isNullOrEmpty(input)) throw new IllegalArgumentException("횟수를 입력해야합니다.");
         if(!isNumber(input)) throw new IllegalArgumentException("숫자만 입력해야합니다.");
-        if(!isHigherThanOne(input)) throw new IllegalArgumentException("횟수는 2회 이상이어야 합니다.");
+        if(!isHigherThanZero(input)) throw new IllegalArgumentException("횟수는 2회 이상이어야 합니다.");
 
         return true;
     }
@@ -19,7 +19,7 @@ public class RoundValidator {
         return input.matches("^\\d+$");
     }
 
-    private static boolean isHigherThanOne(String input) {
-        return Integer.parseInt(input) > 1;
+    private static boolean isHigherThanZero(String input) {
+        return Integer.parseInt(input) > 0;
     }
 }
