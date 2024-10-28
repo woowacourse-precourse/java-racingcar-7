@@ -34,6 +34,42 @@ public class RacingManager {
         this.inputCars = input.split(",");
     }
 
+    private void createCar() {
+        for(int i = 0; i < inputCars.length; i++){
+            Car car = new Car(inputCars[i], 0);
+            carList.add(car);
+        }
+    }
+
+    private void startRacing() {
+        System.out.println();
+        System.out.println("실행 결과");
+        while(NUMBER > 0){
+            startMove(carList);
+            System.out.println();
+            NUMBER -= 1;
+        }
+    }
+
+    private void startMove(List<Car> carList) {
+        int RANDOM_NUM;
+        for(int i = 0; i < carList.size(); i++) {
+            String position = "";
+            Car car = carList.get(i);
+            checkMove(car);
+        }
+    }
+
+    private void checkMove(Car car) {
+        int RANDOM_NUM = Randoms.pickNumberInRange(0, 9);
+        int MOVE_FORWARD_NUM = 4;
+        if(RANDOM_NUM >= MOVE_FORWARD_NUM) {
+            car.moveForword();
+        }
+    }
+
     public void runRacing() {
+        createCar();
+        startRacing();
     }
 }
