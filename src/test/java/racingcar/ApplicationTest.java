@@ -2,11 +2,16 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import java.util.*;
+import java.io.*;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static racingcar.Application.autoWin;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -47,6 +52,25 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("0보다 큰 정수를 입력해주세요.")
         );
+    }
+
+    @Test
+    void 자동_우승_테스트() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        // given
+        List<String> carNames = List.of("pobi");
+
+        // when
+        boolean isAutoWin = autoWin(carNames);
+
+        // then
+        assertTrue(isAutoWin);
+        assertEquals("최종 우승자 : pobi", outputStream.toString().trim());
+
+        System.setOut(originalOut);
     }
 
     @Override

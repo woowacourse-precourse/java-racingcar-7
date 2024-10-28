@@ -43,7 +43,7 @@ public class Application {
                 .collect(Collectors.toList());
     }
 
-    private static boolean autoWin(List<String> carNames) {
+    public static boolean autoWin(List<String> carNames) {
         if (carNames.size() == 1) {
             System.out.println("최종 우승자 : " + carNames.get(0));
             return true;
