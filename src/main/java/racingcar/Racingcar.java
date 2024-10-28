@@ -3,9 +3,10 @@ package racingcar;
 public class Racingcar {
     private final String name;
     private int position;
+    private static final int THRESHOLD_LENGTH = 5;
 
     public Racingcar(String name){
-        if(name.length() > 5 || name.isEmpty()){
+        if(name.length() > THRESHOLD_LENGTH || name.isEmpty()){
             throw new IllegalArgumentException();
         }
         this.name = name;
