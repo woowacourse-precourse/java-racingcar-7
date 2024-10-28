@@ -1,11 +1,13 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Random;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        getInput();
     }
+
     private static void getInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNamesInput = Console.readLine();
@@ -16,8 +18,6 @@ public class Application {
         String attemptsInput = Console.readLine();
         int attempts = Integer.parseInt(attemptsInput);
         validateAttempts(attempts);
-
-        // 입력값을 이후 로직에서 사용할 수 있도록 처리할 수 있습니다.
     }
 
     private static void validateCarNames(String[] names) {
@@ -32,5 +32,30 @@ public class Application {
         if (attempts <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
         }
+    }
+}
+
+class Car {
+    private final String name;
+    private int position;
+
+    public Car(String name) {
+        this.name = name;
+        this.position = 0;
+    }
+
+    public void move() {
+        int randomValue = new Random().nextInt(10); // 0~9 랜덤 값 생성
+        if (randomValue >= 4) {
+            position++;
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
