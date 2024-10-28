@@ -1,11 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.ExceptionMessage.INVALID_RANGE_ROUND_SIZE;
-import static racingcar.ExceptionMessage.INVALID_TYPE_ROUND_SIZE;
-import static racingcar.Rounds.MAX_ROUND_COUNT;
-import static racingcar.Rounds.MIN_ROUND_COUNT;
+import static racingcar.message.ExceptionMessage.INVALID_RANGE_ROUND_SIZE;
+import static racingcar.message.ExceptionMessage.INVALID_TYPE_ROUND_SIZE;
+import static racingcar.domain.Rounds.MAX_ROUND_COUNT;
+import static racingcar.domain.Rounds.MIN_ROUND_COUNT;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

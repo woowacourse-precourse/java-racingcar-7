@@ -1,10 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
-import static racingcar.ExceptionMessage.INVALID_RANGE_ROUND_SIZE;
-import static racingcar.ExceptionMessage.INVALID_TYPE_ROUND_SIZE;
+import static racingcar.message.ExceptionMessage.INVALID_RANGE_ROUND_SIZE;
+import static racingcar.message.ExceptionMessage.INVALID_TYPE_ROUND_SIZE;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.handler.OutputHandler;
+import racingcar.util.RandomUtil;
 
 public class Rounds {
     static final int MIN_ROUND_COUNT = 1;

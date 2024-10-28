@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
-import static racingcar.ExceptionMessage.DUPLICATE_CAR_NAME;
-import static racingcar.ExceptionMessage.INVALID_SIZE_CAR_NAME;
+import static racingcar.message.ExceptionMessage.DUPLICATE_CAR_NAME;
+import static racingcar.message.ExceptionMessage.INVALID_SIZE_CAR_NAME;
 
 import java.util.ArrayList;
 import java.util.Collections;

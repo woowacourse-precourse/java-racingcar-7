@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.handler;
 
-import static racingcar.OutputMessage.*;
+import static racingcar.message.OutputMessage.*;
 
 import java.util.List;
 

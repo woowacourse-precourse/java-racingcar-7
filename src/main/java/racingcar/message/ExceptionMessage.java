@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.message;
 
 public enum ExceptionMessage {
     NULL_CAR_NAME("자동차명은 null이 될 수 없습니다. %d자 이상의 문자를 입력해주세요."),

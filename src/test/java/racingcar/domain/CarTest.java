@@ -1,13 +1,13 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.Car.MAX_CAR_NAME_LENGTH;
-import static racingcar.Car.MIN_CAR_NAME_LENGTH;
-import static racingcar.ExceptionMessage.BLANK_CAR_NAME;
-import static racingcar.ExceptionMessage.INVALID_LENGTH_RANGE_CAR_NAME;
-import static racingcar.ExceptionMessage.NULL_CAR_NAME;
+import static racingcar.domain.Car.MAX_CAR_NAME_LENGTH;
+import static racingcar.domain.Car.MIN_CAR_NAME_LENGTH;
+import static racingcar.message.ExceptionMessage.BLANK_CAR_NAME;
+import static racingcar.message.ExceptionMessage.INVALID_LENGTH_RANGE_CAR_NAME;
+import static racingcar.message.ExceptionMessage.NULL_CAR_NAME;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

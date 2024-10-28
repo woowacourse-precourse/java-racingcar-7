@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
-import static racingcar.ExceptionMessage.*;
+import static racingcar.message.ExceptionMessage.*;
 
 public class Car {
     static final int MIN_CAR_NAME_LENGTH = 1;

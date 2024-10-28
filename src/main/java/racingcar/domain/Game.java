@@ -1,6 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
+import racingcar.handler.InputHandler;
+import racingcar.handler.OutputHandler;
 
 public class Game {
     private final InputHandler inputHandler;
