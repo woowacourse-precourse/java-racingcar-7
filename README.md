@@ -23,14 +23,15 @@
   - 
   - parseCarName
     - 입력받은 이름을 쉽표`,`를 기준으로 나눈다.
-  - parseTrialNumber
-    - 입력받은 횟수를 숫자로 변환한다.
+    - `List<String>`으로 반환한다.
 - InputValidation
   - 
   - validateNull
     - 입력 값이 `null`인지 검사한다.
-  - validateCarName
-    - 이름이 5자 이하인지 검사한다.
+- TrialNumber
+  - 
+  - parseTrialNumber
+    - 입력받은 횟수를 숫자로 변환 후 반환한다.
   - validateTrialNumber
     - 시도 횟수가 숫자인지 검사한다.
 - Car
@@ -41,3 +42,5 @@
     - 전진한 거리를 반환한다.
   - getRandomNumber
     - 전진하기 위한 조건인 난수를 반환한다.
+  - validateCarName
+    - 이름이 5자 이하인지 검사한다.
