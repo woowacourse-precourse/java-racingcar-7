@@ -9,11 +9,13 @@ public class InputView {
 
     public String[] readCars() {
         System.out.println(CAR_NAME_PROMPT);
+
         return Console.readLine().split(NAME_SEPARATOR);
     }
 
     public int readAttemptCount() {
         System.out.println(ATTEMPT_COUNT_PROMPT);
+
         return Integer.parseInt(Console.readLine());
     }
 }
