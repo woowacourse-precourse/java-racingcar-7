@@ -8,5 +8,9 @@ public class InputView {
         String CarsName = Console.readLine();
         return CarsName;
     }
-    
+
+    public int getRoundNumber() {
+        String RoundNumber = Console.readLine();
+        return Integer.parseInt(RoundNumber);
+    }
 }
