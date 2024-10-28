@@ -15,6 +15,7 @@ import racingcar.util.IntConverter;
 
 public class RacingManager {
     private final RaceSimulator raceSimulator = new RaceSimulator();
+    private final WinnerDecider winnerDecider = new WinnerDecider();
     private final CarFactory carFactory;
 
     public RacingManager(CarFactory carFactory) {
@@ -42,6 +43,6 @@ public class RacingManager {
 
     private void startRaceSimulate(List<Car> cars, int tryCount) {
         raceSimulator.startRace(cars, tryCount);
-        print(WINNER_PROMPT + raceSimulator.getRacingWinner(cars));
+        print(WINNER_PROMPT + winnerDecider.getRacingWinner(cars));
     }
 }
