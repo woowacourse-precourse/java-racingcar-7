@@ -1,11 +1,22 @@
-HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+# Java 컴파일된 파일
+*.class
 
-### STS ###
+# 빌드 폴더
+/build/
+target/
+
+# 환경 설정 파일
+.env
+*.properties
+
+# IDE 설정 파일
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Spring Tool Suite (STS) 설정 파일
 .apt_generated
 .classpath
 .factorypath
@@ -14,22 +25,23 @@ build/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+# VS Code
 .vscode/
 
-### Mac OS ###
+# Mac OS
 .DS_Store
+
+# 테스트 보고서 및 로그 파일
+/test-output/
+/test-reports/
+*.log
+
+#.gradle/ 폴더 전체를 Git에서 무시
+.gradle/
