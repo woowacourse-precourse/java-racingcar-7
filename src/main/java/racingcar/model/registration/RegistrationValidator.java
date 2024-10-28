@@ -11,6 +11,9 @@ public class RegistrationValidator {
     private static final String ONLY_DIGITS_REGEX = "\\d+";
     private static final int MIN_RACE_ROUND_COUNT = 1;
 
+    private RegistrationValidator() {
+    }
+
     public static void validateRawInputCarNames(String rawInputCarNames) {
         List<String> carNames = splitRawInput(rawInputCarNames);
         for (String carName : carNames) {
