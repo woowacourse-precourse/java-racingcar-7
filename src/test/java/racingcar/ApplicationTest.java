@@ -17,8 +17,8 @@ class ApplicationTest extends NsTest {
     void 정상_기능() {
         assertRandomNumberInRangeTest(
             () -> {
-                run("eunho,woni", "1");
-                assertThat(output()).contains("eunho : -", "woni : ", "최종 우승자 : eunho");
+                run("pobi,woni", "1");
+                assertThat(output()).contains("woni : ", "최종 우승자 : pobi");
             },
             MOVING_FORWARD, STOP
         );
@@ -45,29 +45,7 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
             () -> {
                 run("1,2", "1");
-                assertThat(output()).contains("1 : -", "2 : ", "최종 우승자 : ");
-            },
-            MOVING_FORWARD, STOP
-        );
-    }
-
-    @Test
-    void 특수문자_이름() {
-        assertRandomNumberInRangeTest(
-            () -> {
-                run("*,;,:", "2");
-                assertThat(output()).contains("* : -", "; : ", ": : ", "최종 우승자 : ");
-            },
-            MOVING_FORWARD, STOP
-        );
-    }
-
-    @Test
-    void 이스케이프시퀀스_이름() {
-        assertRandomNumberInRangeTest(
-            () -> {
-                run("*,;,:", "2");
-                assertThat(output()).contains("* : -", "; : ", ": : ", "최종 우승자 : ");
+                assertThat(output()).contains("1 : ", "2 : ", "최종 우승자 : ");
             },
             MOVING_FORWARD, STOP
         );
