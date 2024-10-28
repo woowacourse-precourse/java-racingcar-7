@@ -13,19 +13,20 @@ public class Output {
     public void printNumInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
+
     public void printStart() {
         System.out.println("실행 결과");
     }
 
 
     public void printTurn(List<Car> carList) {
-        for(Car car : carList) {
+        for (Car car : carList) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println();
     }
 
-    public void printWinner(List<String > winnerList) {
+    public void printWinner(List<String> winnerList) {
         System.out.println("최종 우승자 : " + String.join(",", winnerList));
     }
 }

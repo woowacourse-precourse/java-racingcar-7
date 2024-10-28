@@ -9,13 +9,14 @@ public class RacingGame {
     private final Output output = new Output();
     private final List<Car> carList;
     private final int number;
+
     public RacingGame(List<Car> carList, int num) {
         this.carList = carList;
         this.number = num;
     }
 
     public void start() {
-        for(int i = 0; i < number; i++) {
+        for (int i = 0; i < number; i++) {
             playTurn();
             output.printTurn(carList);
         }
@@ -37,6 +38,7 @@ public class RacingGame {
     public List<Car> getCarList() {
         return carList;
     }
+
     public void playTurn() {
         carList.forEach(car -> car.move(Randoms.pickNumberInRange(0, 9)));
     }

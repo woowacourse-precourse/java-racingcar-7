@@ -7,11 +7,11 @@ import racingcar.view.Input;
 import racingcar.view.Output;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarController {
     private final Input input = new Input();
     private final Output output = new Output();
+
     public void start() {
         output.printCarInput();
         List<String> nameList = input.userCarInput(Console.readLine());

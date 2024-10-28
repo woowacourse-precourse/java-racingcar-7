@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Input {
     private final Validator validator = new Validator();
+
     public List<String> userCarInput(String input) {
         validator.checkCarInput(input);
         return Arrays.stream(input.split(",")).map(String::strip).toList();

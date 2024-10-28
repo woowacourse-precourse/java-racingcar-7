@@ -9,7 +9,7 @@ public class Car {
     }
 
     public void move(int num) {
-        if(num >= 4) this.position++;
+        if (num >= 4) this.position++;
     }
 
     public int getPosition() {
