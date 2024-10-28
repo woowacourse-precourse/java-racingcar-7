@@ -26,4 +26,9 @@ public class WinnerService {
                 .map(Car::getName)
                 .toList();
     }
+
+    public String raceWinners() {
+        return String.join(ExpressionFormat.WINNER_SEPARATOR.form()
+                , winners);
+    }
 }

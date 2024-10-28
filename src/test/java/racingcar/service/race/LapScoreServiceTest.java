@@ -8,11 +8,12 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Engine;
 import racingcar.domain.LapScore;
+import racingcar.service.DemoCar;
 
 class LapScoreServiceTest {
 
     private Car testCar (String carName, Long mileage) {
-        return new CarForLapScoreTest(
+        return new DemoCar(
                 carName
                 , new Engine(1L
                 ,1L)
