@@ -65,4 +65,8 @@ public class RacingGame {
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
     }
+
+    public void printResult() {
+        System.out.println("최종 우승자 : " + getWinnerNames());
+    }
 }
