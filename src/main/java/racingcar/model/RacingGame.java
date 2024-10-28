@@ -8,8 +8,14 @@ public class RacingGame {
     private int roundCount;
 
     public void initialize(String carNames, int roundCount) {
+        validate(carNames, roundCount);
         this.cars = createCars(carNames);
         this.roundCount = roundCount;
+    }
+
+    private void validate(String carNames, int roundCount) {
+        Validator.validateInputString(carNames);
+        Validator.validateRoundCount(roundCount);
     }
 
     private List<Car> createCars(String carNames) {
