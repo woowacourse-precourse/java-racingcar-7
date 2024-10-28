@@ -14,6 +14,13 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
+    public static Cars ofNames(final List<String> names) {
+        List<Car> cars = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new Cars(cars);
+    }
+
     public void move(final Movement movement) {
         cars.forEach(car -> car.move(movement.canMove()));
     }
