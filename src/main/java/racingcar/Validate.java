@@ -13,8 +13,14 @@ public class Validate {
 
     public static void validateDuplicateName(List<String> names){
         Set<String> checkDuplicateNames = new HashSet<>(names);
-        if(checkDuplicateNames.size() != names.size()){
+        if (checkDuplicateNames.size() != names.size()) {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
+    }
+
+    public static void validateCarNameIsEmpty(String name){
+        if (name.isEmpty()){
+            throw new IllegalArgumentException("자동차 이름은 빈 값일 수 없습니다.");
         }
     }
 }

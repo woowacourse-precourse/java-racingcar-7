@@ -29,6 +29,7 @@ public class Input {
         Validate.validateDuplicateName(carNames);
         for (String carName : carNames) {
             carName = carName.trim();
+            Validate.validateCarNameIsEmpty(carName);
             Validate.validateCarNameLength(carName);
             trimNames.add(carName);
         }
