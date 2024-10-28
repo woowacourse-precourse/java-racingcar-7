@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class Racing {
 
     private final List<Car> cars;
-    private final List<String> history = new ArrayList<>();
+    private final List<RacingHistory> roundHistory = new ArrayList<>();
 
     private Racing(List<Car> cars) {
         this.cars = cars;
@@ -19,11 +19,15 @@ public class Racing {
 
     public void start() {
         runRound();
-        recordHistory();
+        record();
     }
 
     public void printHistory() {
-        System.out.println(String.join("\n\n", history));
+        String history = roundHistory.stream()
+                .map(it -> it.joinHistory("\n"))
+                .collect(Collectors.joining("\n\n"));
+
+        System.out.println(history);
     }
 
     public List<Car> getWinners() {
@@ -38,12 +42,8 @@ public class Racing {
         cars.forEach(Car::moveForward);
     }
 
-    private void recordHistory() {
-        String roundHistory = cars.stream()
-                .map(Car::toString)
-                .collect(Collectors.joining("\n"));
-
-        history.add(roundHistory);
+    private void record() {
+        roundHistory.add(RacingHistory.of(cars));
     }
 
     private int findLongDistance() {
