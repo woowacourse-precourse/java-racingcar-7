@@ -15,11 +15,4 @@ public class OutputView {
     public static void requireNumberOfAttempts(){
         System.out.println(REQUIRE_NUMBER_OF_ATTEMPTS);
     }
-
-    public static void printPlayingResult(RacingGames racingGames, Cars cars){
-        StringBuilder result = new StringBuilder();
-        for(RacingGame racingGame : racingGames.getRacingGames()){
-            result.append(racingGame.getFormattedGameResult(cars));
-        }
-    }
 }

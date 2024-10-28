@@ -4,22 +4,16 @@ import racingcar.domain.Cars;
 import racingcar.domain.RacingGames;
 
 public class ResultDTO {
-    private Cars cars;
-    private RacingGames racingGames;
+    private String gameResult;
     private String finalWinner;
 
-    public ResultDTO(Cars cars, RacingGames racingGames, String finalWinner) {
-        this.cars = cars;
-        this.racingGames = racingGames;
+    public ResultDTO(String gameResult, String finalWinner) {
+        this.gameResult = gameResult;
         this.finalWinner = finalWinner;
     }
 
-    public Cars getCars() {
-        return cars;
-    }
-
-    public RacingGames getRacingGames() {
-        return racingGames;
+    public String getGameResult() {
+        return gameResult;
     }
 
     public String getFinalWinner() {

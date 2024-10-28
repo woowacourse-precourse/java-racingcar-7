@@ -25,6 +25,14 @@ public class RacingGameService {
         return new ResultDTO(cars, racingGames, getMaxProgressCars(cars));
     }
 
+    public static String printPlayingResult(RacingGames racingGames, Cars cars){
+        StringBuilder result = new StringBuilder();
+        for(RacingGame racingGame : racingGames.getRacingGames()){
+            result.append(racingGame.getFormattedGameResult(cars));
+        }
+        return result.toString();
+    }
+
     public static String getMaxProgressCars(Cars cars){
         List<String> maxProgressCarNames = new ArrayList<>();
         int maxProgress = cars.findCarByNumber(0).getCurrentProgress();
