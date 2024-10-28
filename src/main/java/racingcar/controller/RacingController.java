@@ -18,6 +18,7 @@ public class RacingController {
     public void run() {
         var carNames = getCarNames();
         var round = getRound();
+        playGame(carNames, round);
     }
 
     private void playGame(List<String> carNames, int round) {
