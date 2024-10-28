@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.model.Game;
+import racingcar.validator.Validator;
 import racingcar.view.GameView;
 
 public final class GameController {
@@ -25,11 +26,8 @@ public final class GameController {
         String carNamesInput = gameView.getCarNamesInput();
         // 파싱과정에서 조건에 맞게 validate하기! -> 유효한 이름, 5글자 이하
         List<String> carNameList = parseCarNames(carNamesInput);
-
-        // 입력값 정수인지 validate하기
-        int totalRound = Integer.parseInt(gameView.getTotalRoundInput());
-
-        game = new Game(totalRound);
+        
+        game = new Game(readTotalRound());
         for (String carName : carNameList) {
             game.addCar(new Car(carName));
         }
@@ -51,6 +49,14 @@ public final class GameController {
                 .collect(Collectors.joining(", "));
 
         gameView.displayWinners(winnerString);
+    }
+
+    public int readTotalRound() {
+        String totalRoundInput = gameView.getTotalRoundInput();
+
+        Validator.validateTotalRoundInput(totalRoundInput);
+
+        return Integer.parseInt(totalRoundInput);
     }
 
     public List<String> parseCarNames(String carNamesInput) {
