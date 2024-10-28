@@ -6,7 +6,7 @@ import racingcar.constant.Constants;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class ValidateCarNamesTest {
+public class NameValidationTest {
     @Test
     @DisplayName("자동차 이름이 5자를 초과할 때 예외가 발생해야 한다")
     void validateCarNames_lengthExceeded_shouldThrowException() {
