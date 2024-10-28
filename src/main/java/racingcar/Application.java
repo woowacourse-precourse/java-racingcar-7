@@ -32,7 +32,7 @@ public class Application {
     // 자동차 이름 입력
     // 입력 값 검사
     private static void validateCarNames(String input) {
-        if (!input.matches("(\\b\\w{1,5}\\b)(,\\b\\w{1,5}\\b)*")) {
+        if (!input.matches("([가-힣\\w-_.]{1,5})(,[가-힣\\w-_.]{1,5})*")) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
