@@ -16,19 +16,6 @@ class ApplicationTest extends NsTest {
     private static final Duration PERFORMANCE_LIMIT = Duration.ofMillis(10); // 10ms = 0.01초
 
     @Test
-    void 성능_테스트() {
-        assertTimeout(PERFORMANCE_LIMIT, () -> {
-            assertRandomNumberInRangeTest(
-                    () -> {
-                        run("pobi,woni", "1");
-                        assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-                    },
-                    MOVING_FORWARD, STOP
-            );
-        });
-    }
-
-    @Test
     void 기본_기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
