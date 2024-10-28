@@ -35,12 +35,16 @@ public class Application {
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             name = name.trim();
-            if(name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다. ");
-            }
+            validateName(name);
             cars.add(new Car(name));
         }
         return cars;
+    }
+    //검증문도 빼기
+    private static void validateName(String name) {
+        if(name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다. ");
+        }
     }
 
     //매판 결과값
