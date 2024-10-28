@@ -6,9 +6,9 @@ public class Race {
     private final Cars raceCars;
     private Count remainingRounds;
 
-    public Race(Cars raceCars, Count totalRounds) {
-        this.raceCars = raceCars;
-        this.remainingRounds = totalRounds;
+    public Race(List<String> carNames, int totalRounds) {
+        this.raceCars = new Cars(carNames);
+        this.remainingRounds = Count.newInstance(totalRounds);
     }
 
     public List<Car> moveAllCarsAndGetStatus(NumberGenerator numberGenerator) {

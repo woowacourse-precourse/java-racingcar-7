@@ -2,8 +2,6 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.Count;
 import racingcar.domain.NumberGenerator;
 import racingcar.domain.Race;
 import racingcar.domain.RandomNumberGenerator;
@@ -24,12 +22,9 @@ public class RacingCarGameController {
 
     public void startGame() {
         GameSettingsInput gameSettingsInput = initializeGameSettings();
-        Cars cars = new Cars(gameSettingsInput.carNames());
-        Count count = Count.newInstance(gameSettingsInput.tryCount());
-        RandomNumberGenerator numberGenerator = new RandomNumberGenerator();
-        Race race = new Race(cars, count);
+        Race race = new Race(gameSettingsInput.carNames(), gameSettingsInput.tryCount());
 
-        startRace(race, numberGenerator);
+        startRace(race, new RandomNumberGenerator());
         endRace(race);
     }
 
