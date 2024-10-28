@@ -50,7 +50,8 @@ public class Application {
         for(String name : names) {
             if(name.length() == 0) {
                 throw new IllegalArgumentException("이름은 한 글자 이상이어야 합니다.");
-            } else if(name.length() > 5) {
+            }
+            if(name.length() > 5) {
                 throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
             }
             race.put(name, 0);

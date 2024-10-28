@@ -8,7 +8,7 @@ import java.util.*;
 public class CustomTest {
 
     @Test
-    @DisplayName("자동차 이름 목록이 정상적으로 생성되는지 테스트")
+//    @DisplayName("자동차 이름 목록이 정상적으로 생성되는지 테스트")
     void testGetNames() {
         Map<String, Integer> race = new HashMap<>();
         String input = "pobi,woni,jun";
@@ -18,7 +18,7 @@ public class CustomTest {
     }
 
     @Test
-    @DisplayName("자동차 이름 목록이 빈 문자열일 때 예외 발생")
+//    @DisplayName("자동차 이름 목록이 빈 문자열일 때 예외 발생")
     void testEmptyStringException() {
         Map<String, Integer> race = new HashMap<>();
         assertThatThrownBy(() -> Application.getNames(race, ""))
@@ -27,7 +27,7 @@ public class CustomTest {
     }
 
     @Test
-    @DisplayName("자동차 이름이 두 개 이상이 아닐 때 예외 발생")
+//    @DisplayName("자동차 이름이 두 개 이상이 아닐 때 예외 발생")
     void testMinimumCarException() {
         Map<String, Integer> race = new HashMap<>();
         assertThatThrownBy(() -> Application.getNames(race, "pobi"))
@@ -36,7 +36,7 @@ public class CustomTest {
     }
 
     @Test
-    @DisplayName("자동차 이름이 한 글자 이상이 아닐 때 예외 발생")
+//    @DisplayName("자동차 이름이 한 글자 이상이 아닐 때 예외 발생")
     void testMinimumCarNameException() {
         Map<String, Integer> race = new HashMap<>();
         assertThatThrownBy(() -> Application.getNames(race, "pobi,,jun"))
@@ -45,7 +45,7 @@ public class CustomTest {
     }
 
     @Test
-    @DisplayName("자동차 이름이 5자 초과일 때 예외 발생")
+//    @DisplayName("자동차 이름이 5자 초과일 때 예외 발생")
     void testMaximumCarNameException() {
         Map<String, Integer> race = new HashMap<>();
         assertThatThrownBy(() -> Application.getNames(race, "pobi, javaji"))
@@ -54,7 +54,7 @@ public class CustomTest {
     }
 
     @Test
-    @DisplayName("이동 횟수가 숫자가 아닐 때 예외 발생")
+//    @DisplayName("이동 횟수가 숫자가 아닐 때 예외 발생")
     void testParseNumberFormatException() {
         assertThatThrownBy(() -> Application.parseNumber("three"))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -62,7 +62,7 @@ public class CustomTest {
     }
 
     @Test
-    @DisplayName("음수 이동 횟수를 입력했을 때 예외 발생")
+//    @DisplayName("음수 이동 횟수를 입력했을 때 예외 발생")
     void testParseNumberNegativeException() {
         assertThatThrownBy(() -> Application.parseNumber("-1"))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -70,7 +70,7 @@ public class CustomTest {
     }
 
     @Test
-    @DisplayName("자동차 이동 시 이동 거리가 정상적으로 증가")
+//    @DisplayName("자동차 이동 시 이동 거리가 정상적으로 증가")
     void testMove() {
         Map<String, Integer> race = new HashMap<>();
         race.put("pobi", 0);
@@ -86,7 +86,7 @@ public class CustomTest {
     }
 
     @Test
-    @DisplayName("최종 우승자를 계산하고 올바르게 반환")
+//    @DisplayName("최종 우승자를 계산하고 올바르게 반환")
     void testWinner() {
         Map<String, Integer> race = new HashMap<>();
         race.put("pobi", 3);
