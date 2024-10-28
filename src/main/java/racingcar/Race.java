@@ -33,7 +33,7 @@ public class Race {
             if (checkCarName(carName)) {
                 carList.add(new Car(carName, 0));
             } else {
-                throw new IllegalArgumentException("Invalid car name");
+                throw new IllegalArgumentException("잘못된 자동차 이름입니다.");
             }
         }
     }
