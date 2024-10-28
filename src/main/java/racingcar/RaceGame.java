@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class RaceGame {
     public void play() throws IllegalArgumentException {
         String[] carNames = readCarNames();
+        int tryCnt = readTryCount();
     }
 
     private String[] readCarNames() throws IllegalArgumentException {
@@ -16,5 +17,11 @@ public class RaceGame {
             }
         }
         return carNames;
+    }
+
+    private int readTryCount() throws IllegalArgumentException {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryCnt = Integer.parseInt(Console.readLine());
+        return tryCnt;
     }
 }
