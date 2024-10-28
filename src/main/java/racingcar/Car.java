@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.stream.IntStream;
+
 public class Car {
     private int position = 0;
     private final String name;
@@ -23,5 +25,13 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public void displayPosition() {
+        System.out.print(name + " : ");
+        for(int i = 0; i < position; i ++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
