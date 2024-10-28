@@ -45,11 +45,10 @@ public class Race {
     }
 
     private static int getMaxDistance(List<Car> cars) {
-        int maxDistance = cars.stream()
+        return cars.stream()
                 .mapToInt(car -> car.getDistance().size())
                 .max()
                 .orElse(0);
-        return maxDistance;
     }
 
     private static void randomlyDecideToMove(Car currentCar) {
