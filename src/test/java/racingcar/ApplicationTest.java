@@ -38,6 +38,13 @@ class ApplicationTest extends NsTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 숫자만 입력할 수 없습니다.");
     }
+    @Test
+    void 공동_우승자_출력() {
+        List<Car> cars = List.of(new Car("pobi"), new Car("crong"));
+        cars.get(0).go();
+        cars.get(1).go();
+        Application.winner(cars);
+    }
 
 
     @Override
