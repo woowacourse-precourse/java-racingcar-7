@@ -17,7 +17,7 @@ public class InputView {
         return tokenizeCarsName(Console.readLine());
     }
 
-    public List<String> tokenizeCarsName(String carNamesString){
+    private List<String> tokenizeCarsName(String carNamesString){
         return Arrays.stream(carNamesString.split(Symbol.SEPARATE_MARKER.getSymbol()))
                 .map(String::trim)
                 .toList();

@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.CarGroup;
 import racingcar.view.InputView;
 
 public class RacingGame {
@@ -11,7 +12,7 @@ public class RacingGame {
     }
 
     public void run(){
-
+        CarGroup carGroup = new CarGroup(inputView.readCars());
     }
 
 }
