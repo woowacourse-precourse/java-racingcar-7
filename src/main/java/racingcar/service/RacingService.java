@@ -81,4 +81,10 @@ public class RacingService {
             }
         });
     }
+
+    public void racing() {
+        for (int round = 0; round < roundNumber; round++) {
+            moveCars();
+        }
+    }
 }
