@@ -1,18 +1,16 @@
 package racingcar;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RaceController {
+    private final List<Car> cars = new ArrayList<>();
 
     public List<String> parseAndValidateCarNames(String input) {
-        List<String> carNames = Arrays.stream(input.split(","))
-                .map(String::trim)
-                .collect(Collectors.toList());
-
+        List<String> carNames = List.of(input.split(","));
         for (String name : carNames) {
-            validateCarName(name);
+            validateCarName(name.trim());
+            cars.add(new Car(name.trim()));
         }
         return carNames;
     }
