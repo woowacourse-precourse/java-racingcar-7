@@ -38,7 +38,7 @@ public class Controller {
 
     private void startGame(List<RacingCar> carList, String loopCount) {
         service.initGame(carList, Parser.parseNumber(loopCount));
-        OutputView.printResult();
+        OutputView.printResultMessage();
         service.playRounds();
     }
 
