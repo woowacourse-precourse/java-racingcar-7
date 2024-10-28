@@ -76,15 +76,19 @@ public class Application {
     public static boolean isValidCars(String[] carArr){
         try{
             //1-1. 자동차 이름이 5자를 초과한 경우 에러 출력
-            for (String checkCar : carArr) {
-                checkLengthValidCars(checkCar);
-                checkNumericValidCars(checkCar);
-            }
+            validateCarNames(carArr);
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             throw e;
         }
         return true;
+    }
+
+    public static void validateCarNames(String[] carArr) {
+        for (String checkCar : carArr) {
+            checkLengthValidCars(checkCar);
+            checkNumericValidCars(checkCar);
+        }
     }
 
     //feat:1-1. 자동차 이름이 5자를 초과한 경우 에러 출력(함수화)
