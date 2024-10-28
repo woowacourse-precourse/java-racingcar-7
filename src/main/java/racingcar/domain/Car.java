@@ -17,7 +17,7 @@ public class Car {
         return name;
     }
 
-    void move (MoveStrategy moveStrategy) {
+    protected void move (MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
             position++;
         }
