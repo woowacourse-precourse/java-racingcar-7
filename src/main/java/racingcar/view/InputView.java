@@ -3,6 +3,8 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
+    private static final String DIGIT_PATTERN = "\\d+";
+
     public String getString() {
         String input = Console.readLine();
         validateEmptyString(input);
@@ -24,7 +26,7 @@ public class InputView {
     }
 
     private void validateDigitFormat(String input) {
-        if (input.matches("\\d+")) {
+        if (!input.matches(DIGIT_PATTERN)) {
             throw new IllegalArgumentException();
         }
     }
