@@ -1,5 +1,7 @@
 package racingcar.Model;
 
+import java.util.Objects;
+
 public class RacingCar implements Comparable<RacingCar> {
 
     String name;
@@ -12,7 +14,7 @@ public class RacingCar implements Comparable<RacingCar> {
     }
 
     private void validateName(String name) {
-        if(name.length() > 5) {
+        if (name == null || name.length() > 5 || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
@@ -27,6 +29,19 @@ public class RacingCar implements Comparable<RacingCar> {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(name, racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     @Override
