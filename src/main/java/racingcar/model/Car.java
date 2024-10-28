@@ -20,7 +20,9 @@ public class Car {
         }
     }
     
-    public void move() { //이동 조건 필요
-        progress++;
+    public void move() {
+        if (CarMoveDeterminator.determine()) {
+            progress++;
+        }
     }
 }
