@@ -9,9 +9,9 @@ import racingcar.raceInterface.Observer;
 import racingcar.raceInterface.Subject;
 
 public class Cars extends HashMap<String, Integer> implements Subject {
+    public static final int GO_CONDITION = 3;
     private final List<Observer> observers = new ArrayList<>();
     private int trial = 0;
-
 
     public void addCars(Set<String> carsName) {
         for (String carName : carsName) {
@@ -19,13 +19,16 @@ public class Cars extends HashMap<String, Integer> implements Subject {
         }
     }
 
-
     public String getWinnerNames(int winnerScore) {
         List<String> winnerNames = new ArrayList<>();
+        getWinners(winnerScore, winnerNames);
+        return String.join(", ", winnerNames);
+    }
+
+    private void getWinners(int winnerScore, List<String> winnerNames) {
         for (String name : this.keySet()) {
             isWinner(winnerScore, name, winnerNames);
         }
-        return String.join(", ", winnerNames);
     }
 
     private void isWinner(int winnerScore, String name, List<String> winnerNames) {
@@ -34,13 +37,17 @@ public class Cars extends HashMap<String, Integer> implements Subject {
         }
     }
 
-
     public int findWinScore() {
         int winnerScore = 0;
         for (String name : this.keySet()) {
-            if (this.get(name) >= winnerScore) {
-                winnerScore = this.get(name);
-            }
+            winnerScore = isWinScore(name, winnerScore);
+        }
+        return winnerScore;
+    }
+
+    private int isWinScore(String name, int winnerScore) {
+        if (this.get(name) >= winnerScore) {
+            winnerScore = this.get(name);
         }
         return winnerScore;
     }
@@ -48,11 +55,15 @@ public class Cars extends HashMap<String, Integer> implements Subject {
     public void go() {
         for (String name : this.keySet()) {
             int referenceNumber = Randoms.pickNumberInRange(0, 9);
-            if (referenceNumber > 3) {
-                this.put(name, this.get(name) + 1);
-            }
+            isOverCondition(name, referenceNumber);
         }
         notifyObservers();
+    }
+
+    private void isOverCondition(String name, int referenceNumber) {
+        if (referenceNumber > GO_CONDITION) {
+            this.put(name, this.get(name) + 1);
+        }
     }
 
     public void repeatGo() {
@@ -60,7 +71,6 @@ public class Cars extends HashMap<String, Integer> implements Subject {
             this.go();
         }
     }
-
 
     @Override
     public void registerObserver(Observer observer) {

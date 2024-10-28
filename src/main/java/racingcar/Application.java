@@ -10,6 +10,7 @@ public class Application {
         SystemView systemView = new SystemView();
         RaceView raceView = new RaceView();
         Cars cars = new Cars();
+        cars.registerObserver(raceView);
         RacingGameController controller = new RacingGameController(systemView, raceView, cars);
         controller.run();
     }
