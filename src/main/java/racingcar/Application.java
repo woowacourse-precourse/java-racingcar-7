@@ -62,9 +62,7 @@ public class Application {
 
     private static void displayWinners(List<String> winners) {
         System.out.print("최종 우승자 : ");
-        for (String winner : winners) {
-            System.out.print(winner + ",");
-        }
+        System.out.print(String.join(",", winners));
     }
 
     private static String[] getCarNames(){
