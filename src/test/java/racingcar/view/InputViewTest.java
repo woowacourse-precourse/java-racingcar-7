@@ -2,23 +2,35 @@ package racingcar.view;
 
 import static org.assertj.core.api.Assertions.*;
 
+import camp.nextstep.edu.missionutils.Console;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class InputViewTest {
 
 	private InputView inputView = InputView.getInstance();
+	private ByteArrayInputStream inputStream;
+
+	@AfterEach
+	void close() {
+		Console.close();
+	}
 
 	@Test
 	@DisplayName("자동차 이름을 쉼표로 구분한다.")
 	public void readCarNames() {
 		// GIVEN
 		String input = "a,b,c,d,e,f";
+		inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
 
 		// WHEN
-		List<String> names = inputView.splitNames(input);
+		List<String> names = inputView.readCarInput();
 
 		// THEN
 		assertThat(names).hasSize(6);
@@ -30,10 +42,26 @@ public class InputViewTest {
 	public void isEmptyName() {
 		// GIVEN
 		String input = "a,b,c,,e";
+		inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
 
 		// WHEN - THEN
 		assertThatThrownBy(() -> {
-			inputView.splitNames(input);
+			inputView.readCarInput();
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	@DisplayName("구분자 내에 공백이 있을 경우, IllegalArgumentException을 발생시킨다.")
+	public void isWhiteSpace() {
+		// GIVEN
+		String input = "a,b,c, ,e";
+		inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
+
+		// WHEN - THEN
+		assertThatThrownBy(() -> {
+			inputView.readCarInput();
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -42,9 +70,11 @@ public class InputViewTest {
 	public void isNumberCount() {
 	    // GIVEN
 		String input = "ab12c";
+		inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
 
 	    // WHEN - THEN
-		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> inputView.readCountInput()).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
@@ -52,9 +82,11 @@ public class InputViewTest {
 	public void parseNumber() {
 	    // GIVEN
 		String input = "9999";
+		inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
 
 	    // WHEN
-		Integer result = inputView.parseCount(input);
+		Integer result = inputView.readCountInput();
 
 		// THEN
 		assertThat(result).isEqualTo(9999);
@@ -65,9 +97,11 @@ public class InputViewTest {
 	public void isIntRange() {
 	    // GIVEN
 		String input = "2147483648";
+		inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
 
 	    // WHEN - THEN
-		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> inputView.readCountInput()).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
@@ -75,27 +109,21 @@ public class InputViewTest {
 	public void minusCountTest() {
 	    // GIVEN
 		String input = "-10";
+		inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
 
 	    // WHEN - THEN
-		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
-	}
-
-	@Test
-	@DisplayName("시도 횟수에 0이 들어올 경우 예외를 발생시킨다.")
-	public void zeroCountTest() {
-	    // GIVEN
-		String input = "0";
-
-	    // WHEN - THEN
-		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> inputView.readCountInput()).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@DisplayName("경주 최대 횟수를 초과하면 예외를 발생시킨다.")
 	public void maxCountTest() {
 		// GIVEN
 		String input = "10000";
+		inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
 
 		// WHEN - THEN
-		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> inputView.readCountInput()).isInstanceOf(IllegalArgumentException.class);
 	}
 }

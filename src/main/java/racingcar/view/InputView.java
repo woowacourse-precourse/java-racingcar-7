@@ -34,7 +34,7 @@ public class InputView {
         return parseCount(input);
     }
 
-    public Integer parseCount(String input) {
+    private Integer parseCount(String input) {
         if (!isNumber(input)) {
             throw new IllegalArgumentException(ErrorStatus.NOT_NUMBER.getMessage());
         }
@@ -55,7 +55,7 @@ public class InputView {
         return true;
     }
 
-    public List<String> splitNames(String input) {
+    private List<String> splitNames(String input) {
         String regex = String.join(DELIMITER,
                 Arrays.stream(Separator.values()).map(Separator::getSeparator).toList());
 
