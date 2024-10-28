@@ -15,7 +15,7 @@ class CarTest {
             a.forward();
             a.forward();
             a.forward();
-            assertThat(a.toString()).isEqualTo("a : ---");
+            assertThat(a.toPrettyString()).isEqualTo("a : ---");
         });
     }
 

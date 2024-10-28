@@ -11,8 +11,7 @@ public class Car implements Comparator<Car> {
         this.position = 0;
     }
 
-    @Override
-    public String toString() {
+    public String toPrettyString() {
         return name+" : "+ "-".repeat(position);
     }
 

@@ -24,7 +24,7 @@ public class Cars {
 
     public String toPrettyString() {
         return cars.stream()
-                .map(Car::toString)
+                .map(Car::toPrettyString)
                 .collect(Collectors.joining(FEED)) + FEED;
     }
 
