@@ -25,12 +25,18 @@ public class RacingGame {
         cars = new ArrayList<>();
 
         for (String name : carNames) {
-            if (name.trim().length() > 5) { // 자동차 이름 길이 체크
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            }
+            validateCarName(name);
             cars.add(new Car(name.trim()));
         }
     }
+
+    public void validateCarName(String name) {
+            if (name.trim().length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+    }
+
+
 
     private void inputAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
