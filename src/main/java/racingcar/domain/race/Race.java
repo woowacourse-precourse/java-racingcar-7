@@ -3,6 +3,8 @@ package racingcar.domain.race;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+import racingcar.dto.RaceProgressDto;
+import racingcar.view.OutputView;
 
 public class Race {
     private static final int MOVE_THRESHOLD = 4;
@@ -24,10 +26,12 @@ public class Race {
     public void start() {
         for (int i = 0; i < this.tryCount; i++) {
             progress();
+            displayProgress();
         }
     }
 
     private void progress() {
+        OutputView.showResultMessage();
         this.cars.getCars().forEach(this::moveCarIfPossible);
     }
 
@@ -36,6 +40,11 @@ public class Race {
         if (randomNum >= MOVE_THRESHOLD) {
             car.move();
         }
+    }
+
+    private void displayProgress() {
+        RaceProgressDto raceProgressDto = RaceProgressDto.from(this.cars);
+        OutputView.showRaceProgress(raceProgressDto);
     }
 }
 
