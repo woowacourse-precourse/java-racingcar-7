@@ -75,11 +75,15 @@ public class Application {
         return intitalcarMovementCounts;
     }
 
+    public static int pickRandomNumber() {
+       return Randoms.pickNumberInRange(0, 9);
+    }
+
     public static void round(List<String> carNames, List<Integer> carMovementCounts) {
 
         for (int i = 0; i < carNames.size(); i++) {
             System.out.print(carNames.get(i) + " : ");
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            int randomNumber = pickRandomNumber();
 
             if (randomNumber >= 4) {
                 carMovementCounts.set(i, carMovementCounts.get(i) + 1); // 누적 이동 값 증가
