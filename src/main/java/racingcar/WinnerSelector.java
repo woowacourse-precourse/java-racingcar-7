@@ -15,6 +15,7 @@ public class WinnerSelector {
                 max = score;
                 winners.clear();
                 winners.add(car.getCarName());
+                continue;
             }
 
             if (score == max) {

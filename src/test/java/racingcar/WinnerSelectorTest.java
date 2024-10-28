@@ -39,7 +39,7 @@ class WinnerSelectorTest {
 
         List<String> winners = WinnerSelector.calculateWinners(cars);
 
-        Assertions.assertThat(winners).hasSize(1)
+        Assertions.assertThat(winners).hasSize(2)
             .containsExactlyInAnyOrder("apple", "lemon");
     }
 
