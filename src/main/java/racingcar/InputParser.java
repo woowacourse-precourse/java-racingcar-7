@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.enums.Delimiter;
 import racingcar.enums.ErrorText;
+import racingcar.enums.Limits;
 
 import java.util.LinkedHashMap;
 
@@ -18,7 +19,7 @@ public class InputParser {
             if (isDuplicateCarName(result, carName)) {
                 throw new IllegalArgumentException(ErrorText.DUPLICATE_CAR_NAME.getErrorText());
             }
-            result.put(new Car(carName), 0);
+            result.put(new Car(carName), Limits.DEFAULT.getValue());
         }
         return result;
     }

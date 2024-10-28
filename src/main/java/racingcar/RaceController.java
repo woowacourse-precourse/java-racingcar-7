@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.enums.Limits;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -42,7 +43,7 @@ public class RaceController {
         Iterator<Car> carIterator = cars.keySet().iterator();
         while (carIterator.hasNext()) {
             Car car = carIterator.next();
-            if (getRandomNumber() >= 4) {
+            if (getRandomNumber() >= Limits.MIN_FORWARD_VALUE.getValue()) {
                 cars.put(car, cars.get(car) + 1);
             }
         }

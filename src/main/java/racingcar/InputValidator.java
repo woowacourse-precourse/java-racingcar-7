@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.enums.ErrorText;
+import racingcar.enums.Limits;
 
 import java.util.LinkedHashMap;
 
@@ -37,7 +38,7 @@ public class InputValidator {
 
     private boolean isCarNameTooLong() {
         for (Car car : splitInputText().keySet()) {
-            if (car.getCarName().length() > 5) {
+            if (car.getCarName().length() > Limits.MAX.getValue()) {
                 return true;
             }
         }
