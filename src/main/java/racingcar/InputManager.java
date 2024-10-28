@@ -7,7 +7,7 @@ import validator.Validator;
 public class InputManager {
 
     public static String inputPlayerGroup(){
-        System.out.println(Constants.RACING_CAR_INPUT_MASSEAGE);
+        System.out.println(Constants.RACING_CAR_NAME_INPUT_MASSEAGE);
         return Console.readLine();
     }
 
