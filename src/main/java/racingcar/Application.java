@@ -38,4 +38,37 @@ public class Application {
         }
     }
 
+    private static List<Car> createCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
+        return cars;
+    }
+}
+
+class Car {
+    private final String name;
+    private int distance;
+
+    public Car(String name) {
+        this.name = name;
+        this.distance = 0;
+    }
+
+    public void move() {
+        this.distance++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public String getPosition() {
+        return "-".repeat(distance);
+    }
 }
