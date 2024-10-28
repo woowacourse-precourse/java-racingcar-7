@@ -12,22 +12,63 @@ class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
+    // 1단계: 자동차 이름 입력 기능 테스트
     @Test
-    void 기능_테스트() {
-        assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
-        );
+    void 자동차이름_정상입력_테스트() {
+        assertSimpleTest(() -> {
+            run("pobi,woni", "5");
+            assertThat(Application.carNames).containsExactly("pobi", "woni");
+        });
     }
 
     @Test
-    void 예외_테스트() {
+    void 자동차이름_길이초과_예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.")
+        );
+    }
+
+    // 2단계: 이동 횟수 입력 기능 테스트
+    @Test
+    void 이동횟수_정상입력_테스트() {
+        assertSimpleTest(() -> {
+            run("pobi,woni", "5");
+            assertThat(Application.tryCount).isEqualTo(5);
+        });
+    }
+
+    @Test
+    void 이동횟수_음수입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("이동 횟수는 양의 정수여야 합니다.")
+        );
+    }
+
+    // 3단계: 자동차 경주 진행 기능 테스트
+    @Test
+    void 자동차경주_진행_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    // 4단계: 우승자 결정 기능 테스트
+    @Test
+    void 우승자_결정_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
