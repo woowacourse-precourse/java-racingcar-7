@@ -19,7 +19,7 @@ public class Application {
         announceWinners(cars);
     }
 
-    private static List<Car> createCars() {
+    protected static List<Car> createCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
         String[] carNames = input.split(",");
@@ -32,13 +32,13 @@ public class Application {
         return cars;
     }
 
-    private static void validateCarName(String name) {
+    protected static void validateCarName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다: " + name);
         }
     }
 
-    private static int getAttemptCount() {
+    protected static int getAttemptCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
         try {
@@ -64,7 +64,7 @@ public class Application {
         System.out.println();
     }
 
-    private static void announceWinners(List<Car> cars) {
+    protected static void announceWinners(List<Car> cars) {
         int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
         List<String> winners = new ArrayList<>();
 
@@ -77,7 +77,7 @@ public class Application {
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
-    private static class Car {
+    public static class Car {
         private final String name;
         private int position;
 
