@@ -65,11 +65,11 @@
 
 ### Application.class
 
-- [ ] public static void main(String[] args);
+- [x] public static void main(String[] args);
     - 자동차 경주 게임 실행
-- [ ] private static List<String> setCarNames();
+- [x] private static List<String> setCarNames();
     - 자동차 이름들 입력
-- [ ] private static int setTryCount();
+- [x] private static int setTryCount();
     - 시도 횟수 입력
 
 ## 입출력 요구 사항
