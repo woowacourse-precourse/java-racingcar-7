@@ -53,16 +53,16 @@
 
 ## 입력 받은 시도 횟수 동안 전진 및 정지 실행
 
-- [ ]  0에서 9사이에서 무작위 값을 생성 한다.
-    - [ ]  값이 4 이상일 경우 전진
-    - [ ]  값이 4 미안일 경우 정지
-- [ ]  누적 전진 횟수를 저장한다.
+- [x]  0에서 9사이에서 무작위 값을 생성 한다.
+    - [x]  값이 4 이상일 경우 전진
+    - [x]  값이 4 미안일 경우 정지
+- [x]  누적 전진 횟수를 저장한다.
 
 ## 한번의 시도가 끝나면 실행 결과 출력
 
-- [ ]  `“실행 결과”`를 출력한다.
-- [ ]  실행 결과를 `"(이름) : (전진 횟수)"` 방식으로 출력한다.
-    - [ ]  `(전진 횟수)`에 전진 1회당 `-`을 출력한다.
+- [x]  `“실행 결과”`를 출력한다.
+- [x]  실행 결과를 `"(이름) : (전진 횟수)"` 방식으로 출력한다.
+    - [x]  `(전진 횟수)`에 전진 1회당 `-`을 출력한다.
 
 ## 모든 시도가 끝나면 최종 우승자 출력
 
@@ -94,7 +94,7 @@
 
 - 입력받은 문자열을 통해서 자동차 객체를 생성
 
-### Random
+### RandomNumberGenerator
 
 - 0에서 9사이에서 무작위 값을 생성
 
@@ -197,9 +197,9 @@
 
 ## 라이브러리 요구 사항
 
-- [ ]  `camp.nextstep.edu.missionutils`에서 제공하는 `Console` API를 사용하여 구현해야 한다.
-- [ ]  Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
-- [ ]  사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+- [x]  `camp.nextstep.edu.missionutils`에서 제공하는 `Console` API를 사용하여 구현해야 한다.
+- [x]  Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+- [x]  사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 # ✅ 1주차 공통 피드백
 
