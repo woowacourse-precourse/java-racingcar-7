@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.enums.ErrorText;
+
 import java.util.LinkedHashMap;
 
 public class InputValidator {
@@ -11,17 +13,17 @@ public class InputValidator {
 
     public void carNameValidator() {
         if (isBlankInput()) {
-            throw new IllegalArgumentException("경주할 자동차 이름을 입력하세요.");
+            throw new IllegalArgumentException(ErrorText.EMPTY_CAR_NAME.getErrorText());
         } else if (isCarNameTooLong()) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException(ErrorText.CAR_NAME_TOO_LONG.getErrorText());
         }
     }
 
     public void attemptCountValidator() {
         if (isBlankInput()) {
-            throw new IllegalArgumentException("시도 횟수를 입력하세요.");
+            throw new IllegalArgumentException(ErrorText.EMPTY_ATTEMPT_COUNT.getErrorText());
         } else if (isPositiveInteger()) {
-            throw new IllegalArgumentException("시도 횟수는 양의 정수만 입력 가능합니다.");
+            throw new IllegalArgumentException(ErrorText.NON_POSITIVE_ATTEMPT_COUNT.getErrorText());
         }
     }
 
