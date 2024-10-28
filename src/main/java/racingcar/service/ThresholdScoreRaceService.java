@@ -31,5 +31,4 @@ public final class ThresholdScoreRaceService implements RaceService {
     private int generateNumber() {
         return numberGenerator.generateNumber(MIN_NUM, MAX_NUM);
     }
-
 }

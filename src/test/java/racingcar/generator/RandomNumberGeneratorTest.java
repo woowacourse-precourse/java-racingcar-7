@@ -14,5 +14,4 @@ public class RandomNumberGeneratorTest {
         int random_Number = randomNumberGenerator.generateNumber(MIN_NUM, MAX_NUM);
         assertThat(random_Number).isBetween(MIN_NUM, MAX_NUM);
     }
-
 }

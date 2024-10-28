@@ -16,5 +16,4 @@ public class RandomNumberGenerator implements NumberGenerator {
     public int generateNumber(int min, int max) {
         return Randoms.pickNumberInRange(min, max);
     }
-
 }

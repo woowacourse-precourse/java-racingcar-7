@@ -91,5 +91,4 @@ public class RacingController {
                 .map(car -> WinnerResponseDto.of(car.getName(), car.getPosition()))
                 .toList();
     }
-
 }
