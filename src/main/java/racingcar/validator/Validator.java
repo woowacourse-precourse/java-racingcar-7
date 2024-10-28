@@ -20,8 +20,7 @@ public class Validator {
     private static void nameLengthCheck(String name) {
         if (name.length() >= 6) {
             throw new IllegalArgumentException("이름 길이가 6 이상입니다.");
-        }
-        if (name.isEmpty()) {
+        } else if (name.isEmpty()) {
             throw new IllegalArgumentException("이름이 없습니다");
         }
     }
@@ -34,26 +33,34 @@ public class Validator {
         }
 
         for (String name : checkSameName.keySet()) {
-            if (checkSameName.get(name) == 1) {
-                checkSameName.remove(name);
-            }
+            eraseOnlyOneCar(name, checkSameName);
         }
 
         for (int i = cars.size() - 1; i >= 0; i--) {
-            String car = cars.get(i);
-            Long counter = checkSameName.get(car);
-
-            if (counter == null) {
-                continue;
-            }
-
-            checkSameName.put(car, counter - 1);
-            car += "-" + counter;
-
-            cars.set(i, car);
+            modifySameName(cars, i, checkSameName);
         }
 
         return cars;
+    }
+
+    private static void eraseOnlyOneCar(String name, Map<String, Long> checkSameName) {
+        if (checkSameName.get(name) == 1) {
+            checkSameName.remove(name);
+        }
+    }
+
+    private static void modifySameName(ArrayList<String> cars, int index, Map<String, Long> checkSameName) {
+        String car = cars.get(index);
+        Long counter = checkSameName.get(car);
+
+        if (counter == null) {
+            return;
+        }
+
+        checkSameName.put(car, counter - 1);
+        car += "-" + counter;
+
+        cars.set(index, car);
     }
 
     public Long convertTryCount(String input) {
