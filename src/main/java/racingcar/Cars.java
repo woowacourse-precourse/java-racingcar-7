@@ -7,7 +7,7 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(List<String> carNames) {
-        validateCarNames(carNames);
+        validateUniqueCarNames(carNames);
 
         this.cars = new ArrayList<>();
         for (String carName : carNames) {
@@ -26,7 +26,7 @@ public class Cars {
                 .mapToInt(Car::getDistance)
                 .max()
                 .getAsInt();
-        
+
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getCarName)
@@ -37,9 +37,13 @@ public class Cars {
         return cars;
     }
 
-    private void validateCarNames(List<String> carNames) {
+    private void validateUniqueCarNames(List<String> carNames) {
         if (carNames == null || carNames.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("유효하지 않은 값 입니다.");
+        }
+
+        if (carNames.stream().distinct().count() != carNames.size()) {
+            throw new IllegalArgumentException("중복된 자동차 이름 입력은 불가능 합니다.");
         }
     }
 }
