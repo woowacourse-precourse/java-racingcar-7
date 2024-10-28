@@ -42,7 +42,7 @@ public class Application {
 
     public static int validateMoveCount(String moveCountInput) {
         int moveCount = Integer.parseInt(moveCountInput);
-        if (moveCount < 0) {
+        if (moveCount < 1) {
             throw new IllegalArgumentException();
         }
         return moveCount;
@@ -118,7 +118,8 @@ class Car {
     }
 
     public void move() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+        if (randomValue >= 4) {
             position++;
         }
     }
@@ -129,6 +130,6 @@ class Car {
         for (int i = 0; i < position; i++) {
             sb.append("-");
         }
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 }
