@@ -1,6 +1,8 @@
 package racingcar;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.exception.ExceptionMessage.*;
 import static racingcar.utils.CarNameInputProcessor.splitCarNames;
 
 import java.util.List;
@@ -16,14 +18,18 @@ public class CarNameInputProcessorTest {
     @NullAndEmptySource
     @ValueSource(strings = {"  ", "\t", "\n"})
     void testEmptyOrBlankInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> splitCarNames(input));
+        assertThatThrownBy(() -> splitCarNames(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(EMPTY_INPUT_ERROR);
     }
 
     @DisplayName("입력 값의 맨 앞이나 맨 뒤에 쉼표가 오는 경우 - IllegalArgumentException 반환")
     @ParameterizedTest
     @ValueSource(strings = {", pobi, woni", "pobi, woni,"})
     void testInputWithComma(String input) {
-        assertThrows(IllegalArgumentException.class, () -> splitCarNames(input));
+        assertThatThrownBy(() -> splitCarNames(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_COMMA_POSITION);
     }
 
     @DisplayName("유효한 자동차 이름 입력 - List 반환(중복 Ok)")

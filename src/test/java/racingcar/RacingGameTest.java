@@ -1,6 +1,8 @@
 package racingcar;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.exception.ExceptionMessage.DUPLICATE_CAR_NAME_ERROR;
 
 import java.util.*;
 import org.junit.jupiter.api.*;
@@ -13,7 +15,8 @@ public class RacingGameTest {
     private List<String> carNames;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
+        // given
         carNames = Arrays.asList("pobi", "woni", "jun");
     }
 
@@ -35,7 +38,9 @@ public class RacingGameTest {
     @ParameterizedTest
     @MethodSource("provideDuplicateNameInputs")
     void testDuplicateCarNames(List<String> carNames) {
-        assertThrows(IllegalArgumentException.class, () -> new RacingGame(carNames));
+        assertThatThrownBy(() -> new RacingGame(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(DUPLICATE_CAR_NAME_ERROR);
     }
 
     static List<List<String>> provideDuplicateNameInputs() {

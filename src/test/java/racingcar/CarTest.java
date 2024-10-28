@@ -1,6 +1,8 @@
 package racingcar;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.exception.ExceptionMessage.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,8 +29,13 @@ public class CarTest {
     @Test
     @DisplayName("자동차 이름이 5자를 초과할 경우 - Car 객체 생성 실패")
     void testInvalidCar() {
+        // given
         String carName = "pobiwoni";
-        assertThrows(IllegalArgumentException.class, () -> new Car(carName));
+
+        // when & then
+        assertThatThrownBy(() -> new Car(carName)).
+                isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CAR_NAME_TOO_LONG);
     }
 
     @DisplayName("자동차 이름 중에 공백 또는 빈 문자열이 있는 경우 - IllegalArgumentException 반환")
@@ -36,7 +43,9 @@ public class CarTest {
     @NullAndEmptySource
     @ValueSource(strings = {"  ", "\t", "\n"})
     void testEmptyOrBlankCar(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new Car(input));
+        assertThatThrownBy(() -> new Car(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_CAR_NAME);
     }
 
 

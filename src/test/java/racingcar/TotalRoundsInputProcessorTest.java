@@ -1,6 +1,8 @@
 package racingcar;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.exception.ExceptionMessage.*;
 import static racingcar.utils.TotalRoundsInputProcessor.*;
 
 import java.util.stream.Stream;
@@ -15,7 +17,9 @@ public class TotalRoundsInputProcessorTest {
     @NullAndEmptySource
     @ValueSource(strings = {"  ", "\t", "\n"})
     void testEmptyOrBlankInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> parseTotalRounds(input));
+        assertThatThrownBy(() -> parseTotalRounds(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(EMPTY_ROUNDS_ERROR);
     }
 
 
@@ -23,7 +27,9 @@ public class TotalRoundsInputProcessorTest {
     @ParameterizedTest
     @ValueSource(strings = {"0", "-2", "-100"})
     void testZeroOrNegativeInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> parseTotalRounds(input));
+        assertThatThrownBy(() -> parseTotalRounds(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NON_POSITIVE_ROUNDS_ERROR);
     }
 
 
@@ -31,7 +37,9 @@ public class TotalRoundsInputProcessorTest {
     @ParameterizedTest
     @ValueSource(strings = {"아이", "2년", "1임"})
     void testStringInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> parseTotalRounds(input));
+        assertThatThrownBy(() -> parseTotalRounds(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_NUMBER_ERROR);
     }
 
 
