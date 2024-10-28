@@ -36,9 +36,9 @@ public class RepeatCountTest {
     }
 
     @Test
-    @DisplayName("입력 값이 100 이상일 시 예외 발생")
+    @DisplayName("입력 값이 1001 이상일 시 예외 발생")
     void createRepeatCountWithHighNumberThrowsException() {
-        assertThatThrownBy(() -> new RepeatCount("100"))
+        assertThatThrownBy(() -> new RepeatCount("1001"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

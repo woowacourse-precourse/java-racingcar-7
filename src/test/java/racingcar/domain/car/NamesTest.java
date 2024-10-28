@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 public class NamesTest {
 
     @Test
-    @DisplayName("이름 개수가 1000개 초과 시 예외 발생")
+    @DisplayName("이름 개수가 500개 초과 시 예외 발생")
     void createNamesWithExceedLimitThrowsException() {
         List<Name> names = new ArrayList<>();
-        for (int i = 0; i < 10001; i++) {
+        for (int i = 0; i < 501; i++) {
             names.add(new Name(i + ""));
         }
 
