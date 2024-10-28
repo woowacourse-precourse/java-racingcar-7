@@ -17,9 +17,9 @@ public class RacingCarValidator {
     }
 
     public void validateRaceCount(String raceCount) {
-        raceCountParsingValidate(raceCount);
         raceCountDecimalValidate(raceCount);
         raceCountNegativeNumberValidate(raceCount);
+        raceCountParsingValidate(raceCount);
     }
 
     private void carNameBlankValidate(String carName) {

@@ -8,7 +8,7 @@ import racingcar.entity.RacingCar;
 
 public class RacingCarRepositoryImpl implements RacingCarRepository {
 
-    private static final HashSet<RacingCar> storage = new HashSet<>();
+    private static HashSet<RacingCar> storage = new HashSet<>();
 
     @Override
     public void save(RacingCar racingCar) {
@@ -25,5 +25,10 @@ public class RacingCarRepositoryImpl implements RacingCarRepository {
         return storage.stream()
                 .filter(racingCar -> racingCar.getName().equals(name))
                 .findFirst();
+    }
+
+    @Override
+    public void deleteAll() {
+        storage = new HashSet<>();
     }
 }

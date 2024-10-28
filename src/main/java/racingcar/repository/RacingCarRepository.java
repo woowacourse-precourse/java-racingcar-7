@@ -10,4 +10,6 @@ public interface RacingCarRepository {
     List<RacingCar> findAll();
 
     Optional<RacingCar> findByName(String name);
+
+    void deleteAll();
 }
