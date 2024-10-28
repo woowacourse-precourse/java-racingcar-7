@@ -10,5 +10,9 @@ public class Application {
         InputHandler inputHandler = new InputHandler();
         List<String> carNames = inputHandler.getCarNames();
         Integer tryCount = inputHandler.getTryCount();
+
+        RacingSimulation racingSimulation = new RacingSimulation();
+        List<CarRecord> carRecords = racingSimulation.simulateRace(carNames, tryCount);
+
     }
 }
