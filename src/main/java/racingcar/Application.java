@@ -8,20 +8,26 @@ import java.util.ArrayList;
 
 public class Application {
 	
-	private static final int MAX_NAME_LENGTH = 5;
 	private static final int MOVE_THRESHOLD = 4;
-	
+	private static final int MAX_NAME_LENGTH = 5;
     public static void main(String[] args) {
-      
-    	String[] carName = inputCarNames();
-    }
+        // TODO: 프로그램 구현
     
+    	String[] carName = inputCarNames();
+    	int moveSet =  inputMoveSet();
+    	List<Car> cars = createCar(carName);
+    	game(cars, moveSet);
+    	printWinners(cars);
+    	
+    }
+    	
+    // 자동차 이름 받기 
     private static String[] inputCarNames() {
     	System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분): ");
     	String inputNames = Console.readLine();
     	return validateCarNames(inputNames);
     }
-  
+    
     private static String[] validateCarNames(String inputNames) {
     	String[] carNames = inputNames.split(",");
     	carNamesData(carNames);
@@ -38,7 +44,6 @@ public class Application {
     		throw new IllegalArgumentException();
     	
     }
-    
     private static int inputMoveSet() {
     	System.out.println("시도할 횟수는 몇 회인가요?: ");
     	String input = Console.readLine();
@@ -83,11 +88,34 @@ public class Application {
     		car.move();
     	}
     }
+    private static void printWinners(List<Car> cars) {
+        List<Car> winners = getWinners(cars);
+        System.out.println("최종 우승자 : " + String.join(", ", winners.stream().map(Car::inputCarName).toArray(String[]::new)));
+    }
     
     private static void carStatus(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.inputCarName() + " : " + car.getDistanceRepresentation());
         }
+    }
+    
+    private static List<Car> getWinners(List<Car> cars) {
+    	int maxDistance = getMaxDistance(cars);
+    	return findWinners(cars, maxDistance);
+    }
+    
+    private static int getMaxDistance(List<Car> cars) {
+        return cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+    }
+    
+    private static List<Car> findWinners(List<Car> cars, int maxDistance) {
+    	List<Car> winners = new ArrayList<>();
+    	for (Car car : cars) {
+    		if (car.getDistance() == maxDistance) {
+    			winners.add(car);
+    		}
+    	}
+    	return winners;
     }
     
     static class Car {
@@ -118,6 +146,4 @@ public class Application {
     		return "-".repeat(distance);
     	}
     }    
-    
-   
 }
