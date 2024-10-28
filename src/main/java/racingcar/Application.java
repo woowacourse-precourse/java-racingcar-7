@@ -21,7 +21,15 @@ public class Application {
         for (int i = 0; i < moveTryCount; i++) {
             for (RacingCar racingCar : racingCars) {
                 racingCar.move();
+                System.out.print(racingCar.getName() + " : ");
+
+                int position = racingCar.getPosition();
+                while (position-- > 0) {
+                    System.out.print("-");
+                }
+                System.out.println();
             }
         }
+        System.out.println("test");
     }
 }
