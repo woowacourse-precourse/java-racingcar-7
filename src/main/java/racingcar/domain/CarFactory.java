@@ -17,14 +17,14 @@ public class CarFactory {
     public List<Car> createCars(String input) {
         List<String> carNames = parseCar(input);
         return carNames.stream()
-                        .map(CarFactory::createCar)
-                        .collect(Collectors.toList());
+                .map(CarFactory::createCar)
+                .collect(Collectors.toList());
     }
 
     private static List<String> parseCar(String input) {
         List<String> carNames = Arrays.stream(input.split(","))
-                                        .map(String::trim)
-                                        .collect(Collectors.toList());
+                .map(String::trim)
+                .collect(Collectors.toList());
         validateCount(carNames);
         return carNames;
     }

@@ -8,16 +8,20 @@ import java.util.List;
 public class RacingCarGame {
     private List<Car> cars;
 
-    private static RacingCarGame instance = new RacingCarGame();
-    private RacingCarGame() {}
-    public static RacingCarGame getInstance() {
-        return instance;
+
+    private RacingCarGame(List<Car> cars) {this.cars = cars;}
+
+    public static RacingCarGame getInstance(List<Car> cars) {
+        return new RacingCarGame(cars);
     }
 
     public void game(int turn) {
         for (int i=0; i<turn; i++) {
             gameTurn();
+            System.out.println(turnResult());
         }
+
+        System.out.println(finalResult());
     }
     private void gameTurn() {
         for (Car car: cars) {
@@ -31,9 +35,9 @@ public class RacingCarGame {
         StringBuilder sb = new StringBuilder();
         for (Car car : cars) {
             sb.append(car.getName())
-                .append(" : ")
-                .append("-".repeat(car.getLocation()))
-                .append("\n");
+                    .append(" : ")
+                    .append("-".repeat(car.getLocation()))
+                    .append("\n");
         }
         return sb.toString();
     }
