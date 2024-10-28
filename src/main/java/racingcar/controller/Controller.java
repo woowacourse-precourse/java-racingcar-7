@@ -1,5 +1,4 @@
 package racingcar.controller;
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.service.ParsingService;
 import racingcar.service.SeperatorService;
 import racingcar.valid.Valid;
@@ -19,7 +18,7 @@ public class Controller {
             valid.valid(name);
         }
         OutputView.requestTryNumber();
-        int tryNum=parsing.parsingNum(input);
+        int tryNum=parsing.parseNum(input);
 
 
 

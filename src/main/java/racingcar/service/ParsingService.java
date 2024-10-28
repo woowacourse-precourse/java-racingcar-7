@@ -1,7 +1,7 @@
 package racingcar.service;
 
 public class ParsingService {
-    public int parsingNum(String s){
+    public int parseNum(String s){
         int num=0;
         if (s.length()>6){
             throw new IllegalArgumentException("시도 횟수는 100만 아래로 설정해 주세요");
