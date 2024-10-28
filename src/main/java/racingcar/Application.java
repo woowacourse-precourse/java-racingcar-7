@@ -9,15 +9,22 @@ public class Application {
     private static ArrayList<String> splitCarNames(String carNames) {
         ArrayList<String> carNameList = new ArrayList<>();
         for (String carName : carNames.split(",")) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름 5자 초과");
-            } else if (carName.trim().isEmpty()) {
-                throw new IllegalArgumentException("자동차 이름을 입력하지 않음");
-            } else {
-                carNameList.add(carName.trim()); // 조건 만족 시 자동차 이름 추가
+            carName = carName.trim();
+            if (validateCarName(carName)) {
+                carNameList.add(carName); // 조건 만족 시 차 이름 추가
             }
         }
         return carNameList;
+    }
+
+    private static boolean validateCarName(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름 5자 초과");
+        } else if (carName.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름을 입력하지 않음");
+        } else {
+           return true;
+        }
     }
 
     public static void main(String[] args) {
