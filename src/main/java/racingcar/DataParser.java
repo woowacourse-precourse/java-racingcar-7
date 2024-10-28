@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataParser {
-    public static List<RacingCar> createRacingCar(String input) {
-        List<String> list = List.of(input.split(","));
+    public static List<RacingCar> createRacingCar(String inputName) {
+        List<String> namelist = List.of(inputName.split(","));
         List<RacingCar> racingCarList = new ArrayList<>();
 
-        for (String s : list) {
-            RacingCar racingCar = new RacingCar(s.trim());
+        for (String name : namelist) {
+            RacingCar racingCar = new RacingCar(name.trim());
             racingCarList.add(racingCar);
         }
         return racingCarList;
