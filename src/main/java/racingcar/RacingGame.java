@@ -65,7 +65,7 @@ public class RacingGame {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    private void printGameResult(List<Car> cars) {
+    public void printGameResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
         }
