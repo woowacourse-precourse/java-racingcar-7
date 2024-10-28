@@ -6,6 +6,9 @@ public class StringSplitter {
 
     private static final String DELIMITER = ",";
 
+    private StringSplitter() {
+    }
+
     public static List<String> splitByComma(String input) {
         return List.of(input.split(DELIMITER));
     }

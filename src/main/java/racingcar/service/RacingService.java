@@ -4,6 +4,7 @@ import static racingcar.constant.ErrorType.CAR_NAME_TOO_LONG;
 import static racingcar.constant.ErrorType.EMPTY_INPUT;
 import static racingcar.constant.ErrorType.INVALID_RACE_COUNT;
 import static racingcar.constant.ErrorType.NOT_ENOUGH_CAR;
+import static racingcar.util.StringSplitter.splitByComma;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
@@ -12,7 +13,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import racingcar.constant.InputType;
 import racingcar.domain.RacingCar;
-import racingcar.util.StringSplitter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -49,7 +49,7 @@ public class RacingService {
 
     public void addRacingCar(String inputCarNames) {
         String noBlankCarNames = getNoneBlank(inputCarNames);
-        List<String> carNames = StringSplitter.splitByComma(noBlankCarNames);
+        List<String> carNames = splitByComma(noBlankCarNames);
         enoughCars(carNames);
         carNames.stream().filter(this::carNameValidate)
                 .forEach(carName -> racingCars.put(carName, new RacingCar(carName)));
