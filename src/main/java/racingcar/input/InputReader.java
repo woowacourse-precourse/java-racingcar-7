@@ -7,7 +7,7 @@ public class InputReader {
 
     private final InputParser inputParser;
 
-    public InputReader(InputParser inputParser) {
+    public InputReader(final InputParser inputParser) {
         this.inputParser = inputParser;
     }
 

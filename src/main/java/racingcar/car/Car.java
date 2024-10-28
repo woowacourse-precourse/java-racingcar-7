@@ -8,12 +8,13 @@ public class Car implements Comparable<Car> {
     private static final int MAX = 9;
     private static final int MIN = 0;
     private static final int STOP_VALUE = 3;
+    private static final int DEFAULT_MOVEMENT_DISTANCE = 1;
 
     private final NumberGenerator randomGenerator;
     private final String name;
     private int position;
 
-    public Car(String name, NumberGenerator randomGenerator) {
+    public Car(final String name, final NumberGenerator randomGenerator) {
         this.randomGenerator = randomGenerator;
         this.name = name;
         this.position = 0;
@@ -24,11 +25,11 @@ public class Car implements Comparable<Car> {
 
         validateRange(randomNumber);
         if (isPossible(randomNumber)) {
-            this.position += 1;
+            this.position += DEFAULT_MOVEMENT_DISTANCE;
         }
     }
 
-    private void validateRange(int randomNumber) {
+    private void validateRange(final int randomNumber) {
         if (isRangeOut(randomNumber)) {
             throw new IllegalArgumentException(Constant.RANDOM_RANGE_VALUE_ERROR_STRING);
         }
@@ -46,12 +47,12 @@ public class Car implements Comparable<Car> {
         return randomNumber > STOP_VALUE;
     }
 
-    public boolean isSamePosition(Car car) {
+    public boolean isSamePosition(final Car car) {
         return this.position == car.position;
     }
 
     @Override
-    public int compareTo(Car car) {
+    public int compareTo(final Car car) {
         return this.position - car.position;
     }
 

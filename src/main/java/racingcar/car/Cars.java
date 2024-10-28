@@ -9,37 +9,36 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
+    private Cars(final List<Car> cars) {
         this.cars = cars;
     }
 
-    public static Cars createCars(List<String> names) {
+    public static Cars createCars(final List<String> names) {
         return new Cars(toCars(names));
     }
 
     public List<String> getRacingWinners() {
-        final Car headCar = findFirstPositionCar();
-        return findSamePositionCars(headCar);
+        return findSamePositionCars(getFirstPositionCar());
     }
 
     public void moveAll() {
         cars.forEach(Car::move);
     }
 
-    private static List<Car> toCars(List<String> names) {
+    private static List<Car> toCars(final List<String> names) {
         return names.stream()
                 .map(name -> new Car(name, new RandomGenerator()))
                 .toList();
     }
 
-    private List<String> findSamePositionCars(Car headCar) {
+    private List<String> findSamePositionCars(final Car headCar) {
         return cars.stream()
                 .filter(headCar::isSamePosition)
                 .map(Car::getName)
                 .toList();
     }
 
-    private Car findFirstPositionCar() {
+    private Car getFirstPositionCar() {
         return cars.stream()
                 .max(Car::compareTo)
                 .orElseThrow(() -> new IllegalArgumentException(Constant.CARS_EMPTY_ERROR_STRING));

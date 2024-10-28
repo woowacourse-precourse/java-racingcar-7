@@ -28,7 +28,7 @@ public class InputParser {
         return input.split(COMMA);
     }
 
-    private int parseInteger(String number) {
+    private int parseInteger(final String number) {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {

@@ -10,7 +10,7 @@ public class RacingManager {
     private final InputReader inputReader;
     private final OutputViewer outputViewer;
 
-    public RacingManager(InputReader inputReader, OutputViewer outputViewer) {
+    public RacingManager(final InputReader inputReader, final OutputViewer outputViewer) {
         this.inputReader = inputReader;
         this.outputViewer = outputViewer;
     }
