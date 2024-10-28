@@ -24,6 +24,10 @@ class Car{
             now++;
         }
     }
+
+    public String printNow(){
+        return name+" : "+"-".repeat(now);
+    }
 }
 public class Application {
     private static List<Car> cars = new ArrayList<>();
@@ -53,7 +57,9 @@ public class Application {
     public static void playTurn(){
         for(Car car:cars){
             car.move(Randoms.pickNumberInRange(0,9));
+            System.out.println(car.printNow());
         }
+        System.out.println();
     }
 
     public static void main(String[] args) {
