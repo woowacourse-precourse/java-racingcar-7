@@ -93,8 +93,18 @@ class RacingGameTest {
     }
 
     @Test
-    @DisplayName("우승자가 1명인 경우")
+    @DisplayName("실행 결과 출력 확인")
     @Order(8)
+    void printGameResult() {
+        cars.add(new Car("carA", 5));
+        OutputStream output = getOutputStream();
+        racingGame.printGameResult(cars);
+        assertThat(output.toString()).contains("abc : ", "abcde : ", "carA : -----");
+    }
+
+    @Test
+    @DisplayName("우승자가 1명인 경우")
+    @Order(9)
     void printWinner() {
         cars.add(new Car("carA", 3));
         OutputStream output = getOutputStream();
@@ -102,9 +112,10 @@ class RacingGameTest {
         assertThat(output.toString()).isEqualTo("최종 우승자 : carA");
     }
 
+
     @Test
     @DisplayName("우승자가 2명인 경우")
-    @Order(9)
+    @Order(10)
     void printWinners() {
         cars.add(new Car("carA", 5));
         cars.add(new Car("carB", 5));
