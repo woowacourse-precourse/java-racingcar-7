@@ -24,6 +24,7 @@ public class RacingCar {
         return distance;
     }
 
+    //toString 메서드 오버라이딩으로 system.out.print로 출력이 바로 가능하게끔 설정
     @Override
     public String toString(){
         return carName + " : " + "-".repeat(distance);

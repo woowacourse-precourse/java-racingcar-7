@@ -9,13 +9,16 @@ public class InspectRaceResult {
     private int highestDistance = 0;
 
     public void inspectWinner(ArrayList<RacingCar> group){
+
         for(RacingCar racingCar : group){
             compareElementToHighestDistance(racingCar);
         }
+
         OutputManager.printRaceResult(winner);
     }
 
     public void compareElementToHighestDistance(RacingCar racingCar){
+
         if(racingCar.isNewWinner(highestDistance)){
             winner.clear();
             highestDistance = racingCar.getDistance();

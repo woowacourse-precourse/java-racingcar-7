@@ -26,7 +26,7 @@
 > InputNameParser : 입력받은 문자열을 파싱하는 클래스
   
   
-##### exceptor package
+##### validator package
 > ExceptionHandler : 오류와 잘못 입력 받은 값을 관리하는 클래스
   
   
@@ -73,7 +73,7 @@
 	[X] InputNameParser  -> ContentParser
 	[X] LetterCounter
   
-##### exceptor
+##### validator
 	[X] ExceptionHandler  
   
 ##### constant package
@@ -105,6 +105,6 @@
     +---constant
     |       Constants.java
     |
-    \---exceptor
+    \---validator
             Validator.java
 ```

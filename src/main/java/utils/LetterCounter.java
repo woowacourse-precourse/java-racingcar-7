@@ -9,9 +9,11 @@ public class LetterCounter {
         int count = 0;
         BreakIterator counter = BreakIterator.getCharacterInstance();
         counter.setText(name);
+
         while(counter.next() != BreakIterator.DONE){
             count++;
         }
+
         return count;
     }
 }

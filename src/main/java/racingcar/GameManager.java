@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import utils.ContentParser;
 
 public class GameManager {
-    private ArrayList<String> playerGroup;
     private ArrayList<RacingCar> racingCarGroup;
-    private int playerTurn;
+    private int racingTurn;
     private int currentTurn = 0;
 
     public void execute() {
@@ -17,9 +16,9 @@ public class GameManager {
     }
 
     private void playerSetting(){
-        playerGroup = playerGroupSetting();
-        playerTurn = playerTurnSetting();
-        racingCarGroup = RacingCarFactory.createRacingCarGroup(playerGroup);
+        ArrayList<String> playerGroup = playerGroupSetting();
+        racingTurn = playerTurnSetting();
+        racingCarGroup = RacingCarFactory.generateRacingCarGroup(playerGroup);
     }
 
     private ArrayList<String> playerGroupSetting(){
@@ -28,24 +27,28 @@ public class GameManager {
     }
 
     private int playerTurnSetting(){
-        return InputManager.inputTurn();
+        return InputManager.inputRacingTurn();
     }
 
     private void raceSetting(){
         OutputManager.printBlankLine();
         System.out.println(Constants.RACING_START_MESSAGE);
-        while(currentTurn < playerTurn){
-            racing();
+
+        while(currentTurn < racingTurn){
+            racingCurrentTurn();
             OutputManager.printCurrentResult(racingCarGroup);
             currentTurn++;
         }
+
         InspectRaceResult inspectRaceResult = new InspectRaceResult();
         inspectRaceResult.inspectWinner(racingCarGroup);
     }
 
-    private void racing(){
+    private void racingCurrentTurn(){
+
         for(RacingCar racingCar : racingCarGroup){
             racingCar.addDistance();
         }
+
     }
 }

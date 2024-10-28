@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 public class OutputManager {
     public static void printCurrentResult(ArrayList<RacingCar> group){
+
         for(RacingCar racingCar : group){
             System.out.println(racingCar);
         }
+
         printBlankLine();
     }
 
