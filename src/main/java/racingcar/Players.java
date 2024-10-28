@@ -27,14 +27,15 @@ public class Players {
         }
         return max;
     }
-    public List<String> whoIsWinner(){
+    public void whoIsWinner(){
         int max=theMaxInt();
         for(int i=0;i<names.size();i++){
             if(count.get(i)==max){
                 winner.add(names.get(i));
             }
         }
-        return winner;
+        String result = String.join(", ", winner);
+        System.out.println("최종 우승자 : " + result);
     }
 
     public List<String> getNames() {

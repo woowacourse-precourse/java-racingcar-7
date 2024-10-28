@@ -10,6 +10,7 @@ import static java.lang.Integer.parseInt;
 
 public class Application {
     public static void main(String[] args) {
+
         String name="";
         int movements=0;
         List<String> names = new ArrayList<>();
@@ -31,7 +32,6 @@ public class Application {
         RandomMove rm = new RandomMove();
         rm.randomMove(movements);
 
-        winner=players.whoIsWinner();
-        System.out.println("최종 우승자 : " + winner);
+        players.whoIsWinner();
     }
 }
