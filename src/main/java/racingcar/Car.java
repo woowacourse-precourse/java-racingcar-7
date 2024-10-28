@@ -17,4 +17,9 @@ public class Car {
     public boolean isPositionSameAs(int value) {
         return this.position == value;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

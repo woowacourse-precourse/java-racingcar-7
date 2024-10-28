@@ -35,4 +35,20 @@ class CarManagerTest {
         // then
         assertThat(car.isPositionSameAs(0)).isTrue();
     }
+
+    @DisplayName("쉼표를 기준으로 문자열에서 자동차 이름을 부여한다.")
+    @Test
+    void makeCarsTest() {
+        // given
+        String text = "pobi,woni,jun";
+        CarManager manager = new CarManager(null);
+
+        // when
+        List<Car> cars = manager.makeCarsFromText(text);
+
+        // then
+        assertThat(cars.get(0).toString()).hasToString("pobi");
+        assertThat(cars.get(1).toString()).hasToString("woni");
+        assertThat(cars.get(2).toString()).hasToString("jun");
+    }
 }
