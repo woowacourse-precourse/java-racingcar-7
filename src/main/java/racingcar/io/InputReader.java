@@ -6,8 +6,6 @@ import java.util.List;
 
 public class InputReader {
 
-
-
     private final InputValidator validator = new InputValidator();
     private final InputParser parser = new InputParser();
 
@@ -15,7 +13,7 @@ public class InputReader {
         String input = Console.readLine();
         validator.validateInput(input);
 
-        List<String> cars = List.of(input.split(","));
+        List<String> cars = parser.parseCarNames(input);
         validator.validateName(cars);
 
         return cars;
