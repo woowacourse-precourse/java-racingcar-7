@@ -9,6 +9,7 @@ public class RacingCar {
     String currentLocation;
     int currentDistance;
     int randomNumber;
+    boolean forwardCondition;
 
     RacingCar(){
         this.carName = "";
@@ -29,15 +30,18 @@ public class RacingCar {
 
     boolean checkForwardCondition(){
         this.randomNumber = pickNumberInRange(0,9);
-        return this.randomNumber > 3;
+        if(this.randomNumber > 3) {
+            this.forwardCondition = true;
+        }
+        else {
+            this.forwardCondition = false;
+        }
+        return this.forwardCondition;
     }
 
-    void moveForward() throws Exception{
+//    void moveForward() throws Exception{
+void moveForward(){
         this.currentLocation += "_";
         this.currentDistance += 1;
-
-        if (this.currentLocation.length() != this.currentDistance){
-            throw new ArithmeticException();
-        }
     }
 }
