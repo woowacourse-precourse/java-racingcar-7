@@ -32,6 +32,10 @@ public class CarRace {
             this.currentTryCnt += 1;
         }
 
-        return cars;
+        return getCars();
+    }
+
+    public List<Car> getCars() {
+        return List.copyOf(this.cars);
     }
 }
