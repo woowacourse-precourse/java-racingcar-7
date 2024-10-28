@@ -24,10 +24,26 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_자동차_이름은_중복되지_않아야_한다() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+            assertThatThrownBy(() -> runException("pobi,pobi", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_이동_횟수는_숫자로_입력_받는다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "five"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_이름_구분자는_쉼표로_입력_받는다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi/woni", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
