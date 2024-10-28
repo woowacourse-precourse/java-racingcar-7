@@ -2,10 +2,9 @@ package racingcar.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.racing.RacingCar;
 
-public class InMemoryRacingCarRepository {
+public class InMemoryRacingCarRepository implements RacingCarRepository{
 
     private static final InMemoryRacingCarRepository INSTANCE = new InMemoryRacingCarRepository();
     private final List<RacingCar> RACING_CARS = new ArrayList<>();
