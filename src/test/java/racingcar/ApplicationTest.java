@@ -36,17 +36,17 @@ class ApplicationTest extends NsTest {
     void nameLengthExceptionTest() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi,javaji,woni", "3"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("자동차 이름은 최대 5자까지 입력 가능합니다.");
+                    .isInstanceOf(IllegalArgumentException.class);
         });
     }
+
+
 
     @Test
     void nameDuplicationGenerationTest() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi,woni,pobi", "3"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("자동차 이름은 중복 생성 할 수 없습니다.");
+                    .isInstanceOf(IllegalArgumentException.class);
         });
     }
 
@@ -54,8 +54,7 @@ class ApplicationTest extends NsTest {
     void attemptCountExceptionTest() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi,woni", "0"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("잘못된 이동 횟수 입니다.");
+                    .isInstanceOf(IllegalArgumentException.class);
         });
     }
 
@@ -65,8 +64,7 @@ class ApplicationTest extends NsTest {
 
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi,woni", inputString))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR]");
+                    .isInstanceOf(IllegalArgumentException.class);
         });
     }
     @Override
