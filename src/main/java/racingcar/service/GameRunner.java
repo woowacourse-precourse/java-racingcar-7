@@ -17,8 +17,7 @@ public class GameRunner {
     private static final String LINE_BREAK = "\n";
     private static final String WINNER_DELIMITER = ",";
 
-    public GameResult runGame(Set<String> carNames, int finalAttemptCount) {
-        List<Car> cars = initializeCarState(carNames);
+    public GameResult runGame(List<Car> cars, int finalAttemptCount) {
         StringBuilder allRoundResults = new StringBuilder();
 
         for (int attemptCount = 0; attemptCount < finalAttemptCount; attemptCount++) {
@@ -27,14 +26,6 @@ public class GameRunner {
         }
 
         return new GameResult(cars, allRoundResults.toString());
-    }
-
-    private List<Car> initializeCarState(Set<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
-        return cars;
     }
 
     public void updateCarState(List<Car> cars) {

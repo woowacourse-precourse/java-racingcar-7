@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.model.Game;
 import racingcar.model.GameResult;
@@ -27,7 +28,11 @@ public class RacingCarController {
         Set<String> carNames = splitCarNames();
         int attemptCount = parseAttemptCount();
 
-        Game game = new Game(carNames, attemptCount);
+        List<Car> cars = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+
+        Game game = new Game(cars, attemptCount);
 
         startGame(game);
     }
@@ -43,7 +48,7 @@ public class RacingCarController {
     }
 
     public void startGame(Game game) {
-        GameResult gameResult = gameRunner.runGame(game.getCarNames(), game.getAttemptCount());
+        GameResult gameResult = gameRunner.runGame(game.getCars(), game.getAttemptCount());
         outputView.showRoundResult(gameResult.getAllRoundResults());
         showResult(gameResult.getFinalCarState());
     }
