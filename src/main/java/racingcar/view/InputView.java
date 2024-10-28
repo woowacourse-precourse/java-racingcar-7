@@ -28,7 +28,10 @@ public class InputView {
 
     public int readRound() {
         System.out.println("라운드 수를 입력하세요");
-        return Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        validateRound(input);
+
+        return Integer.parseInt(input);
     }
 
     private void validateRound(String input) {

@@ -23,6 +23,7 @@ public class RacingCar {
         Cars cars = CarGenerator.generateCars(carNames, engine);
 
         int round = inputView.readRound();
+        validateRaceSize(carNames.size(), round);
         RaceService raceService = new RaceService(cars, round);
 
         List<Map<Car, Integer>> raceLogs = raceService.createRaceLogs();
@@ -30,5 +31,11 @@ public class RacingCar {
 
         List<Car> winners = raceService.getWinners();
         outputView.printNames(winners);
+    }
+
+    private void validateRaceSize(int player, int round) {
+        if (player * round < 100_000) {
+            throw new IllegalArgumentException("참가자 수와 라운드 수가 너무 많습니다");
+        }
     }
 }
