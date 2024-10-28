@@ -14,4 +14,20 @@ public class AttemptNumberTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 시도_횟수에_음수_입력시_예외_발생() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> AttemptNumber.from("-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수에_0_입력시_예외_발생() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> AttemptNumber.from("0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
