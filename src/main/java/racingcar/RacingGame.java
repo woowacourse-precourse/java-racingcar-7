@@ -5,17 +5,26 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class RacingGame {
-    private ArrayList<Car> cars;
-    private int tryCount;
+    InputView inputView;
+    InputParser inputParser;
+    OutputView outputView;
 
-    public RacingGame(ArrayList<Car> cars, int tryCount) {
-        this.cars = cars;
-        this.tryCount = tryCount;
+    public RacingGame(InputView inputView, InputParser inputParser, OutputView outputView) {
+        this.inputView = inputView;
+        this.inputParser = inputParser;
+        this.outputView = outputView;
     }
 
     public void start() {
+        String inputCarNames = inputView.readCarNames();
+        ArrayList<Car> cars = inputParser.parseCarNames(inputCarNames);
+        String inputTryCount = inputView.readTryCount();
+        int tryCount = inputParser.parseTryCount(inputTryCount);
+
+        System.out.println("\n실행결과");
         for (int i = 0; i < tryCount; i++) {
             determineCarsMovement(cars);
+            outputView.printMovementResult(cars);
         }
     }
 
