@@ -39,13 +39,24 @@ public class RacingController {
         String input = Console.readLine();
         List<String> carNames = carRacingGame.parseCarNames(input);
 
-        // 이름이 유효하지 않으면 예외 발생
-        for (String name : carNames) {
-            if (name.isEmpty() || name.length() > 5) {
-                throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상 5자 이하여야 합니다.");
-            }
-        }
+        validateCarNames(carNames);
         return carNames;
+    }
+
+    // 자동차 이름 유효성 검증 메서드
+    private void validateCarNames(List<String> carNames) {
+        if (carNames.isEmpty() || carNames.stream().anyMatch(String::isEmpty)) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상 5자 이하여야 합니다.");
+        }
+
+        carNames.forEach(this::validateCarNameLength);
+    }
+
+    // 개별 자동차 이름 길이 검증
+    private void validateCarNameLength(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상 5자 이하여야 합니다.");
+        }
     }
 
     // 사용자로부터 이동 횟수를 입력받고 처리
