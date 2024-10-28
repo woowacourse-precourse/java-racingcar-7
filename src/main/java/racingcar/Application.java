@@ -24,6 +24,11 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
+        // static 변수들 초기화
+        len = 0;
+        winLength = 0;
+        resultArr = new ArrayList<>();
+
         // 자동차 이름 입력 요청 문자열 출력
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
