@@ -13,18 +13,29 @@ public class RaceController {
         String carNames = InputView.getCarNames();
         String[] carNamesList=wrongCheckName(carNames);
         int rounds = InputView.getRounds();
-        if (rounds<0){
+        negativeRoundCheck(rounds);
+        Race race = new Race(Arrays.asList(carNamesList), rounds);
+        startRace(rounds,race);
+        selectWinners(race);
+    }
+
+    public void negativeRoundCheck( int round){
+        if (round<0){
             throw new IllegalArgumentException("라운드 수가 음수임");
         }
-        Race race = new Race(Arrays.asList(carNamesList), rounds);
-        for (int i = 0; i < rounds; i++) {
+    }
+    public void startRace(int round, Race race){
+        for (int i = 0; i < round; i++) {
             race.start();
             ResultView.printRoundResult(race.getCars());
         }
+    }
 
+    public void selectWinners(Race race){
         List<String> winners = race.getWinners();
         ResultView.printWinners(winners);
     }
+
     public String[] wrongCheckName(String carname){
         String[] CarNameList=carname.split(",");
         Set <String> names=new HashSet<>();

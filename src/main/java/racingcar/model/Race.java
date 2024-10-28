@@ -24,16 +24,16 @@ public class Race {
         return new ArrayList<>(cars);
     }
     public List<String> getWinners() {
-        int maxPosition = 0;
+        int maxLocation = 0;
         for (Car car : cars) {
-            if (car.getLocation() > maxPosition) {
-                maxPosition = car.getLocation();
+            if (car.getLocation() > maxLocation) {
+                maxLocation = car.getLocation();
             }
 
         }
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getLocation() == maxPosition) {
+            if (car.getLocation() == maxLocation) {
                 winners.add(car.getName());
             }
         }
