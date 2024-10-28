@@ -3,14 +3,12 @@ package racingcar.model;
 import java.util.List;
 
 public class Game {
-    private final List<Car> cars;
+    private final Cars cars;
     private final Round round;
 
     private Game(List<String> carNames, int round) {
         validateDuplicatedCarName(carNames);
-        this.cars = carNames.stream()
-                .map(Car::create)
-                .toList();
+        this.cars = Cars.apply(carNames);
         this.round = Round.of(round);
     }
 
@@ -25,38 +23,12 @@ public class Game {
     }
 
     public void play() {
-        playARound();
+        cars.playARound();
         round.proceed();
     }
 
-    private void playARound() {
-        for (Car car : cars) {
-            move(car);
-        }
-    }
-
-    private static void move(Car car) {
-        if (CanMoveForward(car)) {
-            car.moveForward();
-        }
-    }
-
-    private static boolean CanMoveForward(Car car) {
-        return car.pickRandomNumber() >= 4;
-    }
-
     public List<String> findWinners() {
-        return cars.stream()
-                .filter(car -> car.isSameLocation(findWinnerLocation()))
-                .map(Car::getName)
-                .toList();
-    }
-
-    private int findWinnerLocation() {
-        return cars.stream()
-                .mapToInt(Car::getLocation)
-                .max()
-                .orElse(0);
+        return cars.findWinners();
     }
 
     public boolean isGameEnd() {
@@ -67,8 +39,6 @@ public class Game {
     }
 
     public List<String> getStatus() {
-        return cars.stream()
-                .map(Car::makeStatusResult)
-                .toList();
+        return cars.getStatus();
     }
 }
