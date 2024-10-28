@@ -1,12 +1,9 @@
 ## 자동차 경주
 
 ### [1. 기능 요구 사항](#functional-requirements)
-
 ### [2. 입출력 요구 사항](#io-requirements)
-
 ### [3-1. 프로그래밍 요구 사항 1](#programming-requirements1)
 ### [3-2. 프로그래밍 요구 사항 2](#programming-requirements2)
-
 ### [4. 기능 구현 목록](#implement-list)
 
 ## ✅ 기능 요구 사항 <a id="functional-requirements"></a>
@@ -20,7 +17,7 @@
 - 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
-## ✅ 입출력 요구 사항 <a id="functional-requirements"></a>
+## ✅ 입출력 요구 사항 <a id="io-requirements"></a>
 
 ### 📍 **입력**
 
@@ -86,7 +83,7 @@
 - 프로그램 종료 시 System.exit()를 호출하지 않는다.
 - 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 등의 이름을 바꾸거나 이동하지 않는다.
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.
-    - 기본적으로 [Java Style Guide](#https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java)를 원칙으로 한다.
+    - 기본적으로 [Java Style Guide](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java)를 원칙으로 한다.
 
 ## ✅ 프로그래밍 요구 사항 2 <a id="programming-requirements2"></a>
 
@@ -97,10 +94,10 @@
 - 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
 - JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
   - 테스트 도구 사용법이 익숙하지 않다면 아래 문서를 참고하여 학습한 후 테스트를 구현한다
-    - [JUnit5 User Guide](#https://junit.org/junit5/docs/current/user-guide/)
-    - [AssertJ User Guide](#https://assertj.github.io/doc/)
-    - [AssertJ Exception Assertions](#https://www.baeldung.com/assertj-exception-assertion)
-    - [Guide to JUnit5 Parameterized Tests](#https://www.baeldung.com/parameterized-tests-junit-5)
+    - [JUnit5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
+    - [AssertJ User Guide](https://assertj.github.io/doc/)
+    - [AssertJ Exception Assertions](https://www.baeldung.com/assertj-exception-assertion)
+    - [Guide to JUnit5 Parameterized Tests](https://www.baeldung.com/parameterized-tests-junit-5)
 
 ### 라이브러리
 
@@ -135,7 +132,7 @@
   - round를 몇 번 시도할 것인지 int 범위 내의 자연수(1~2,147,483,647)로 입력한다.
 
 - [x] 입력 처리기
-  - 사용자가 입력한 자동차 이름을 쉼표로 구분하여 토큰화한 뒤 공백을 제거하고 5자 이하인 경우 저장한다. (ex. "hail, ssin"은 허용)
+  - 사용자가 입력한 자동차 이름을 쉼표를 구분자로 토큰화한 뒤 공백을 제거하고 5자 이하인 경우 저장한다. (ex. "hail, ssin"은 허용)
     - 입력 문자열이 완전 공백인 경우에는 오류로 처리한다. (ex. "", "   ") 
   - 시도할 횟수가 int 범위의 자연수일 경우 저장한다. 
     - 숫자로 변환할 수 있는 숫자 문자열은 허용한다. (ex. "01"은 허용)
@@ -143,7 +140,7 @@
 ## 출력
 
 - [x] inputView
-  - 프로그램을 시작할 때 [입출력 요구 사항](#-입출력-요구-사항-a-idfunctional-requirementsa)에 맞추어 입력 메시지를 출력하고 문자열을 입력받는다.
+  - 프로그램을 시작할 때 [입출력 요구 사항](#-입출력-요구-사항-a-idio-requirementsa)에 맞추어 입력 메시지를 출력하고 문자열을 입력받는다.
 
 - [x] outputView
   - 시도 횟수만큼 실행한 결과를 메서드로 호출하여 출력한다.

@@ -2,8 +2,8 @@ commit history
 
 
 ## docs
+README
 - docs(README): make a list of functional requirements
-- docs(CHANGELOG): create CHANGELOG.md to track commit history
 - docs(README): update feature requirements
   - correct logic description for moving forward
   - specify input operations and winner announcement
@@ -11,6 +11,10 @@ commit history
 - docs(README): add input description and test cases for better clarity
 - docs(README): add description for tests
   - rename GameCountValidatorTest to GameRoundValidatorTest for clarity
+- docs(README): fix anchor links and update reference link syntax
+
+CHANGELOG
+- docs(CHANGELOG): create CHANGELOG.md to track commit history
 - docs(CHANGELOG): document commit history for project tracking
 
 ## CarGameController
