@@ -1,15 +1,14 @@
 package racingcar;
 
 public class Car {
-    private String name;
-    private String moveCount;
+    private final String name;
+    private String moveCount = "";
 
-    private CarMoveCondition carMoveCondition;
+    private final CarMoveCondition carMoveCondition;
 
     public Car(String name, CarMoveCondition carMoveCondition) {
         this.carMoveCondition = carMoveCondition;
         this.name = name;
-        this.moveCount = "";
     }
 
     public String getName() {

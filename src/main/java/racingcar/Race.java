@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 public class Race {
 
-    private List<Car> carList = new ArrayList<>();
-    private Integer tryCount;
+    private final List<Car> carList = new ArrayList<>();
+    private final Integer tryCount;
 
     IOController ioController = new IOController();
 
