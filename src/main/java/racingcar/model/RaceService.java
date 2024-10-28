@@ -45,7 +45,7 @@ public class RaceService {
         }
     }
 
-    private List<String> getWinners(List<Car> carList) {
+    public List<String> getWinners(List<Car> carList) {
         int maxDistance = carList.stream()
                 .mapToInt(Car::getDistance)
                 .max()

@@ -51,4 +51,23 @@ public class RaceServiceTest {
         assertThat(car.getDistance()).isGreaterThanOrEqualTo(0);
     }
 
+    @Test
+    @DisplayName("가장 멀리 간 자동차를 우승자로 찾는 테스트")
+    void getWinnersTest() {
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("woni");
+        Car car3 = new Car("conn");
+
+        car1.move();
+        car1.move();
+        car2.move();
+        car3.move();
+        car3.move();
+
+        List<Car> carList = List.of(car1, car2, car3);
+        List<String> winners = raceService.getWinners(carList);
+
+        assertThat(winners).containsExactly("pobi", "conn");
+    }
+
 }
