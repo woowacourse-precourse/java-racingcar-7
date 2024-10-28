@@ -37,4 +37,22 @@ public class CarValidatorTest {
             carValidator.validateWhiteSpace(names.strip());
         });
     }
+
+    @Test
+    @DisplayName("한글과 영어 이외의 특수 문자를 입력하면 예외다")
+    void throw_when_name_contains_symbol() {
+        String name = "&";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            carValidator.validateType(name.strip());
+        });
+    }
+
+    @Test
+    @DisplayName("한글을 입력하면 정상적으로 작동한다")
+    void throw_when_name_contains_korean() {
+        String name = "루피";
+
+        Assertions.assertDoesNotThrow(() -> carValidator.validateType(name.strip()));
+    }
 }

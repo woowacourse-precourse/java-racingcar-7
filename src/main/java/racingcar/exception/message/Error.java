@@ -6,6 +6,7 @@ public enum Error {
     EMPTY_VALUE("공백 혹은 빈 문자열은 입력할 수 없습니다"),
     CONTAINING_WHITE_SPACE("이름 사이에 공백을 입력할 수 없습니다."),
     NOT_POSITIVE("양수 외에는 입력할 수 없습니다"),
+    NOT_REQUIRED_TYPE("한글과 영어 외의 특수 기호는 입력할 수 없습니다."),
     NOT_NUMERIC("숫자 이외에는 입력할 수 없습니다.");
 
     private final String message;
