@@ -12,6 +12,8 @@ public class Output {
             "시도할 횟수는 몇 회인가요?";
     private static final String RUN_RESULT_MESSAGE =
             "실행 결과";
+    private static final String FINAL_WINNER_MESSAGE =
+            "최종 우승자 : ";
 
     public static void printCarNameRequestMessage(){
         System.out.println(CAR_NAME_REQUEST_MESSAGE);
@@ -22,7 +24,6 @@ public class Output {
     }
 
     public static void printRunResultMessage(){
-        printBlankLine();
         System.out.println(RUN_RESULT_MESSAGE);
     }
 
@@ -30,18 +31,21 @@ public class Output {
         for (Car car : carList) {
             System.out.println(car);
         }
-        printBlankLine();
     }
 
-    public static void printFinalWinner(List<Car> carList){
+    public static void printFinalWinner(List<Car> winnerCarList){
+        System.out.println(FINAL_WINNER_MESSAGE + joinCarName(winnerCarList));
+    }
+
+    public static void printBlankLine(){
+        System.out.println();
+    }
+
+    private static StringJoiner joinCarName(List<Car> carList){
         StringJoiner finalWinner = new StringJoiner(", ");
         for (Car car : carList) {
             finalWinner.add(car.getName());
         }
-        System.out.println("최종 우승자 : " + finalWinner);
-    }
-
-    private static void printBlankLine(){
-        System.out.println();
+        return finalWinner;
     }
 }
