@@ -17,14 +17,16 @@ public class Cars {
         this.numberGenerator = numberGenerator;
     }
 
+    public static Cars from(List<String> names) {
+        return from(names, new RandomNumberGenerator());
+    }
+
     public static Cars from(List<String> names, NumberGenerator numberGenerator) {
         List<Car> cars = names.stream()
                 .map(Car::from)
                 .toList();
-
-        return new Cars(cars, new RandomNumberGenerator());
+        return new Cars(cars, numberGenerator);
     }
-
     public List<String> getNames() {
         return cars.stream()
                 .map(Car::getName)
