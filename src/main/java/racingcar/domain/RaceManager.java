@@ -54,7 +54,7 @@ public class RaceManager {
     private void findWinningCarsNames() {
         winnersName = racingCars.getCars()
                 .stream()
-                .filter(car -> car.getPositionDistance() == winningPosition) // == 연산으로 비교
+                .filter(car -> car.getPositionDistance() == winningPosition)
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
