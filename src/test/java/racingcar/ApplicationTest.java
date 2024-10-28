@@ -13,6 +13,17 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
+    void 이동_출력() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni", "1");
+                assertThat(output()).contains("pobi : -", "woni : ");
+            },
+            MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
