@@ -15,7 +15,8 @@ public class RacingGameTest {
                 new Car("jun")
         );
         int moveCount = 10;
-        RacingGame racingGame = new RacingGame(cars, moveCount);
+        WinnerManager winnerManager = new WinnerManager();
+        RacingGame racingGame = new RacingGame(cars, moveCount, winnerManager);
         racingGame.playGame();
     }
 }

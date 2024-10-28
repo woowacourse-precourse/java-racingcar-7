@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinnerManager {
+    public WinnerManager() {
+    }
+
     public int getMaxDistance(List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getDistance)
