@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -32,17 +34,11 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    @DisplayName("자동차 이름이 5자를 초과할 경우 예외 발생")
-    void exceedCarNameThrowsException() {
-        assertThatThrownBy(() -> runException("pobi,jun,sjsk3232", "1"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("자동차 이름이 공백일 경우 예외 발생")
-    void blankCarNameThrowsException() {
-        assertThatThrownBy(() -> runException("pobi,jun, ", "1"))
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,jun,sjsk32", "pobi,jun, ", ""})
+    @DisplayName("자동차 이름이 5자를 초과하거나 공백일 경우 예외 발생")
+    void invalidCarNameThrowsException(String invalidCarNames) {
+        assertThatThrownBy(() -> runException(invalidCarNames, "1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
