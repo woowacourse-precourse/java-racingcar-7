@@ -27,6 +27,7 @@ public class InputValidator {
 
     public static void numberValidator(String input) {
         int number;
+
         try {
             number = Integer.parseInt(input);
         } catch (NumberFormatException e) {

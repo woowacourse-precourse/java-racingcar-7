@@ -21,7 +21,7 @@ public class RacingCarController {
         int tryNum = InputView.getTryNum();
 
         for (String carName : carNames) {
-            Car car = new Car(carName,0);
+            Car car = new Car(carName, 0);
             carList.add(car);
         }
         Cars cars = new Cars(carList);
