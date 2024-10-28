@@ -10,6 +10,9 @@ public class InputReader {
 
     private static final String INVALID_COUNT = "1 이상의 숫자를 입력해야합니다.";
 
+    private InputReader() {
+    }
+
     public static List<Name> readCarNames() {
         String userInput = Console.readLine();
         String[] carNames = userInput.split(",");
