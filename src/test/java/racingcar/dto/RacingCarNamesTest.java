@@ -16,10 +16,28 @@ class RacingCarNamesTest {
     @DisplayName("실패 케이스")
     class FailureCases {
 
+        @Test
+        @DisplayName("자동차 이름이 쉼표로 시작하면 예외가 발생한다")
+        void 자동차_이름이_쉼표로_시작하면_예외가_발생한다() {
+            String input = ",페라리, 아우디";
+            assertThatThrownBy(() -> RacingCarNames.from(input))
+                    .isInstanceOf(RacingCarException.class)
+                    .hasMessage(MUST_START_WITH_LETTER.getMessage());
+        }
+
+        @Test
+        @DisplayName("자동차 이름이 쉼표로 끝나면 예외가 발생한다")
+        void 자동차_이름이_쉼표로_끝나면_예외가_발생한다() {
+            String input = "벤츠, 페파리,";
+            assertThatThrownBy(() -> RacingCarNames.from(input))
+                    .isInstanceOf(RacingCarException.class)
+                    .hasMessage(MUST_END_WITH_LETTER.getMessage());
+        }
+
         @ParameterizedTest
         @ValueSource(strings = {
                 "레드불",
-                "페라리,"
+                "페라리"
         })
         @DisplayName("자동차가 2대 미만일 경우 예외가 발생한다")
         void 자동차가_2대_미만일_경우_예외가_발생한다(String input) {
@@ -50,6 +68,15 @@ class RacingCarNamesTest {
             assertThatThrownBy(() -> RacingCarNames.from(input))
                     .isInstanceOf(RacingCarException.class)
                     .hasMessage(NAME_MAX_LENGTH_LIMIT.getMessage());
+        }
+
+        @Test
+        @DisplayName("자동차 이름이 비어 있으면 예외가 발생한다")
+        void 자동차_이름이_비어_있으면_예외가_발생한다() {
+            String input = "페라리, ,벤츠";
+            assertThatThrownBy(() -> RacingCarNames.from(input))
+                    .isInstanceOf(RacingCarException.class)
+                    .hasMessage(NAME_REQUIRED.getMessage());
         }
     }
 

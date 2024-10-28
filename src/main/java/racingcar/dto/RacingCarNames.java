@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 public record RacingCarNames(List<String> carNames) {
 
     public static RacingCarNames from(String input) {
+        validateInputFormat(input);
         List<String> carNames = Stream.of(input.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
@@ -17,9 +18,33 @@ public record RacingCarNames(List<String> carNames) {
         return new RacingCarNames(carNames);
     }
 
+    private static void validateInputFormat(String input) {
+        validateStartsWithComma(input);
+        validateEndsWithComma(input);
+    }
+
+    private static void validateStartsWithComma(String input) {
+        if (input.startsWith(",")) {
+            throw RacingCarException.from(MUST_START_WITH_LETTER);
+        }
+    }
+
+    private static void validateEndsWithComma(String input) {
+        if (input.endsWith(",")) {
+            throw RacingCarException.from(MUST_END_WITH_LETTER);
+        }
+    }
+
     private static void validateInput(List<String> carNames) {
+        validateNoEmptyCarNames(carNames);
         validateMinimumTwoCars(carNames);
         validateEachCarName(carNames);
+    }
+
+    private static void validateNoEmptyCarNames(List<String> carNames) {
+        if (carNames.contains("")) {
+            throw RacingCarException.from(NAME_REQUIRED);
+        }
     }
 
     private static void validateMinimumTwoCars(List<String> carNames) {
