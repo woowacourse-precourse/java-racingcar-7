@@ -23,7 +23,7 @@ public class TotalRoundsValidator {
 
     private static void validateIsNumber (String rawTotalRounds){
         try {
-            Float.parseFloat(rawTotalRounds);
+            Double.parseDouble(rawTotalRounds);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NOT_NUMBER.getMessage());
         }

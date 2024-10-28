@@ -20,7 +20,7 @@ public class CarsTest {
         @DisplayName("성공적으로 Cars 일급 컬렉션 객체를 생성한다.")
         void Given_ValidNames_When_Create_Then_Success(){
             //given
-            List<String> validCarNames = Arrays.asList("뽀뚜","뚜보","우테코");
+            final List<String> validCarNames = Arrays.asList("뽀뚜","뚜보","우테코");
 
             //when & then
             assertDoesNotThrow(()-> Cars.createCars(validCarNames));

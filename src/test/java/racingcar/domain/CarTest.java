@@ -17,7 +17,7 @@ public class CarTest {
         @DisplayName("차량 객체 생성 시 입력한 값과 이름이 동일하다")
         void Given_ValidName_When_CreateCar_Then_Success() {
             //given
-            String validName = "뽀뚜";
+            final String validName = "뽀뚜";
 
             //when
             Car car = new Car(validName);
@@ -37,9 +37,9 @@ public class CarTest {
         @DisplayName("move() 실행 후 정상적으로 position이 1 증가한다.")
         void Given_ValidName_When_Move_Then_Success(){
             //given
-            String validName = "뽀뚜";
-            Car car = new Car(validName);
-            int startPosition = car.getPosition();
+            final String validName = "뽀뚜";
+            final Car car = new Car(validName);
+            final int startPosition = car.getPosition();
 
             //when
             car.move();
@@ -57,8 +57,8 @@ public class CarTest {
         @DisplayName("라운드 결과를 정상적으로 DTO형태로 리턴한다")
         void Given_ValidName_When_BuildCarPosition_Then_Success(){
             //given
-            String validName = "뽀뚜";
-            Car car = new Car(validName);
+            final String validName = "뽀뚜";
+            final Car car = new Car(validName);
 
             //when
             CarPosition carPosition = car.buildCarPosition();

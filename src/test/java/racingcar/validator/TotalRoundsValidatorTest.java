@@ -72,6 +72,18 @@ public class TotalRoundsValidatorTest {
         }
 
         @Test
+        @DisplayName("입력값이 정수이긴 하나 int의 범위를 벗어나면 예외를 던진다")
+        void Given_TooLargeInteger_When_ValidateNumber_Then_ThrowException() {
+            //given
+            final String tooLargeInteger = "1000000000000";
+
+            //when & then
+            assertThatThrownBy(() -> TotalRoundsValidator.validate(tooLargeInteger))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(NOT_INT.getMessage());
+        }
+
+        @Test
         @DisplayName("입력값이 정수이긴 하나 양수가 아닌 경우 예외를 던진다")
         void Given_NotPositiveInteger_When_ValidateNumber_Then_ThrowException() {
             //given
