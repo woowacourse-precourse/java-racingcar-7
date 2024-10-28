@@ -2,7 +2,7 @@ package racingcar.utils;
 
 public class NumberOfTrialsValidator implements InputValidator {
 
-    // 매직 넘버를 상수로 처리
+
     private static final int MIN_TRIALS_NUMBER = 1;
 
     @Override
