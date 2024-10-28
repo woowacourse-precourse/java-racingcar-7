@@ -1,4 +1,4 @@
-package racingcar.Domain;
+package racingcar.Validator;
 
 import racingcar.Message.ErrorMessage;
 

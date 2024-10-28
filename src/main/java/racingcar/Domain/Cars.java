@@ -2,6 +2,7 @@ package racingcar.Domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.Validator.CarsValidator;
 
 public class Cars {
     private final List<Car> cars;

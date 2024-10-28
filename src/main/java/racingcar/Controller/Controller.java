@@ -1,8 +1,8 @@
 package racingcar.Controller;
 
 import racingcar.Domain.RacingGame;
-import racingcar.Viewinterface.InputView;
-import racingcar.Viewinterface.OutputView;
+import racingcar.ViewInterface.InputView;
+import racingcar.ViewInterface.OutputView;
 
 public class Controller {
     private final InputView inputView;

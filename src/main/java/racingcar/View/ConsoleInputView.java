@@ -3,7 +3,7 @@ package racingcar.View;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import racingcar.Viewinterface.InputView;
+import racingcar.ViewInterface.InputView;
 
 public class ConsoleInputView implements InputView {
 

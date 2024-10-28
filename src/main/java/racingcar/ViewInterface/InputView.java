@@ -1,4 +1,4 @@
-package racingcar.Viewinterface;
+package racingcar.ViewInterface;
 
 import java.util.List;
 

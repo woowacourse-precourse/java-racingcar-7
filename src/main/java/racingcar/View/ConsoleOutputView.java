@@ -2,7 +2,7 @@ package racingcar.View;
 
 import java.util.List;
 import racingcar.Domain.Car;
-import racingcar.Viewinterface.OutputView;
+import racingcar.ViewInterface.OutputView;
 
 public class ConsoleOutputView implements OutputView {
 

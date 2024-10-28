@@ -1,10 +1,10 @@
 package racingcar.Domain;
 
+import racingcar.Validator.CarNameValidator;
+
 public class Car {
     private final CarName name;
     private final Position position;
-
-
 
     public Car(String name) {
         CarNameValidator.validate(name);

@@ -1,4 +1,4 @@
-package racingcar.Domain;
+package racingcar.Validator;
 
 import java.util.HashSet;
 import java.util.List;

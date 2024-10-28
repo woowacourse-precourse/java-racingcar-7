@@ -1,7 +1,7 @@
 package racingcar.Domain;
 
-import racingcar.Viewinterface.InputView;
-import racingcar.Viewinterface.OutputView;
+import racingcar.ViewInterface.InputView;
+import racingcar.ViewInterface.OutputView;
 
 public class RacingGame {
     private final InputView inputView;

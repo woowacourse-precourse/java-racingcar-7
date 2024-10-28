@@ -3,8 +3,8 @@ package racingcar;
 import racingcar.Controller.Controller;
 import racingcar.View.ConsoleInputView;
 import racingcar.View.ConsoleOutputView;
-import racingcar.Viewinterface.InputView;
-import racingcar.Viewinterface.OutputView;
+import racingcar.ViewInterface.InputView;
+import racingcar.ViewInterface.OutputView;
 
 public class Application {
     public static void main(String[] args) {
