@@ -19,6 +19,14 @@ public class Race {
         this.maxScore = 0;
     }
 
+    public void startRace() {
+        for (int i = 0; i < moveCount; i++) {
+            runOnce();
+            displayStatus();
+            System.out.println();
+        }
+    }
+
     public void runOnce() {
         for (Car car : carList) {
             if (isForwardMovable()) {
