@@ -1,4 +1,4 @@
-package racingcar.ui;
+package racingcar.service;
 
 import static racingcar.ui.InputError.DUPLICATE_NAME;
 import static racingcar.ui.InputError.NAME_CANNOT_BE_BLANK;

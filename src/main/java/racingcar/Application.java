@@ -7,7 +7,7 @@ import racingcar.service.strategy.RandomMoveStrategy;
 import racingcar.ui.Input;
 import racingcar.domain.CarFactory;
 import racingcar.service.RaceManager;
-import racingcar.ui.InputParser;
+import racingcar.service.InputParser;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
