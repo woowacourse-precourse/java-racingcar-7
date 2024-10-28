@@ -9,9 +9,9 @@ class InputParserTest {
 
     @Test
     void 자동차_이름_파싱() {
-        String carNamesInput = "lucku,kimchi";
+        String carNamesInput = "lee,lucku";
         List<String> carNames = InputParser.parseCarNames(carNamesInput);
-        assertThat(carNames).containsExactly("lucku", "kimchi");
+        assertThat(carNames).containsExactly("lee", "lucku");
     }
 
     @Test
