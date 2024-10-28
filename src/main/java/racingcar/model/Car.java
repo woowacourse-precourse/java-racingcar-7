@@ -4,6 +4,9 @@ public class Car {
     private String name;
     private StringBuilder position;
 
+    private static final int MOVE_NUMBER = 4;
+
+
     public Car(String name) {
         this.name = name;
         this.position = new StringBuilder();
@@ -18,7 +21,7 @@ public class Car {
     }
 
     public void move(int randomValue) {
-        if (randomValue >= 4) {
+        if (randomValue >= MOVE_NUMBER) {
             position.append("-");
         }
     }
