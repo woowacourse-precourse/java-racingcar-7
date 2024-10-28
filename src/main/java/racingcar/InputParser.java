@@ -19,6 +19,9 @@ public class InputParser {
             if (carName.isEmpty()) {
                 throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAMES.getMessage());
             }
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException(ErrorMessages.INVALID_CAR_NAME_LENGTH.getMessage());
+            }
         }
     }
 
