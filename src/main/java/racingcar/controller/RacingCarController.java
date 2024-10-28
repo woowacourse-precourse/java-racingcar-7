@@ -30,9 +30,7 @@ public class RacingCarController {
         ArrayList<String> cars = validator.splitByComma(carInfo);
         ArrayList<String> refinedCars = validator.changeSameName(cars);
 
-        for (String car : refinedCars) {
-            racingCarRepository.addCar(car);
-        }
+        refinedCars.forEach(racingCarRepository::addCar);
     }
 
     public void getTryCount() {
@@ -54,7 +52,7 @@ public class RacingCarController {
 
     private void calculateNumbersInCars(ArrayList<String> cars) {
         IntStream.range(0, cars.size())
-                .filter(j -> pickNumberInRange(0, 9) >= 4)
+                .filter(x -> pickNumberInRange(0, 9) >= 4)
                 .forEach(racingCarRepository::plusValue);
     }
 
