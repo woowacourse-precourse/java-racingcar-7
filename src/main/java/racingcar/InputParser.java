@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.enums.ErrorText;
+
 import java.util.LinkedHashMap;
 
 public class InputParser {
@@ -13,7 +15,7 @@ public class InputParser {
         LinkedHashMap<Car, Integer> result = new LinkedHashMap<>();
         for (String carName : carNames.split(",")) {
             if (isDuplicateCarName(result, carName)) {
-                throw new IllegalArgumentException("자동차 이름이 중복되었습니다.");
+                throw new IllegalArgumentException(ErrorText.DUPLICATE_CAR_NAME.getErrorText());
             }
             result.put(new Car(carName), 0);
         }
