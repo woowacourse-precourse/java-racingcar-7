@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OutputView {
 
-    public static void showOutputView(List<String> names) {
+    public static void printWinners(List<String> names) {
         StringBuilder winners = new StringBuilder("최종 우승자 : ");
         String strNames = String.join(", ", names);
         winners.append(strNames);
