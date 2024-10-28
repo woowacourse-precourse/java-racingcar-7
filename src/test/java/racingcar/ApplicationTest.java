@@ -23,11 +23,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
     @Test
-    void 예외_테스트() {
+    void 자동차_이름_길이_예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 라운드_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni,jun", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
