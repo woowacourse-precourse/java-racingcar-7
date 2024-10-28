@@ -23,7 +23,7 @@ class CarsTest {
     @Test
     void 중복_입력은_예외를_발생한다() {
         // given
-        String carName = "pobi, jun, pobi";
+        String carName = "pobi,jun,pobi";
 
         // when & then
         assertThrows(IllegalArgumentException.class,
