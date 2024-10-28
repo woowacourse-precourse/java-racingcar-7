@@ -16,6 +16,8 @@ public class Racingcar {
                     cars.put(s, cars.get(s) + 1);
                 }
             }
+            // 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력
+            print_racing(cars);
         }
 
         return cars;
@@ -26,5 +28,18 @@ public class Racingcar {
         for (String s : cars.keySet()) {
             System.out.println(s + " : " + "-".repeat(cars.get(s)));
         }
+    }
+
+    // 자동차 이름은 쉼표(,)를 기준으로 구분
+    public static HashMap<String, Integer> cars_names(String names) {
+        HashMap<String, Integer> cars = new HashMap<>();
+
+        String[] name = names.split(",");
+
+        for (String s : name) {
+            cars.put(s, 0);
+        }
+
+        return cars;
     }
 }
