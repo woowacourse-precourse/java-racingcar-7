@@ -19,4 +19,17 @@ class RacingGameTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(RacingGameException.ROUND_IS_LESS_THAN_ONE.getMessage());
     }
+
+    @Test
+    @DisplayName("남은 라운드 수가 0 일 경우 게임 진행 시 오류 발생")
+    void gameEndTest() {
+        // given
+        RacingGame racingGame = new RacingGame(1);
+        racingGame.playRound();
+
+        // when & then
+        assertThatThrownBy(racingGame::playRound)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(RacingGameException.GAME_IS_END.getMessage());
+    }
 }
