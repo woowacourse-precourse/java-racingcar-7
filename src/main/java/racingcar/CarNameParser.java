@@ -6,14 +6,12 @@ public class CarNameParser {
 	private static final String DELIMITER = ",";
 	private CarValidator carValidator;
 
-	public List<String> parseCarNameList(String carNames) {
-		return splitCarNameList(carNames).stream()
-				.map(carValidator::validateNameEmpty)
-				.map(carValidator::validateCarNameLimit)
-				.toList();
+	public List<String> getCarNames(String input) {
+		List<String> carNames = splitCarNames(input);
+		return carValidator.validateCarNameList(carNames);
 	}
 
-	private List<String> splitCarNameList(String carNameList) {
+	private List<String> splitCarNames(String carNameList) {
 		return List.of(carNameList.split(DELIMITER));
 	}
 }
