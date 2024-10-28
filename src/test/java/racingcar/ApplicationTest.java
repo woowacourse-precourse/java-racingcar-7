@@ -32,6 +32,17 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
+	void 예외_테스트() {
+		String name = "pobi,javaji";
+		String attempts = "1";
+
+		assertSimpleTest(() ->
+			assertThatThrownBy(() -> runException(name, attempts))
+				.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
+	@Test
 	void 복수_우승자_선정_테스트() {
 		String name = "pobi,woni";
 		String attempts = "1";
@@ -90,19 +101,8 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
-	void 예외_테스트() {
-		String name = "pobi,javaji";
-		String attempts = "1";
-
-		assertSimpleTest(() ->
-			assertThatThrownBy(() -> runException(name, attempts))
-				.isInstanceOf(IllegalArgumentException.class)
-		);
-	}
-
-	@ParameterizedTest
-	@ValueSource(strings = {"", " "})
-	void 이름이_비어있거나_공백만_있는_경우_테스트(String name) {
+	void 이름이_비어있는_경우_예외_테스트() {
+		String name = "";
 		String attempts = "1";
 
 		assertSimpleTest(() ->
@@ -112,7 +112,18 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
-	void 이름_중복_테스트() {
+	void 이름이_공백만_있는_경우_예외_테스트() {
+		String name = " ";
+		String attempts = "1";
+
+		assertSimpleTest(() ->
+			assertThatThrownBy(() -> runException(name, attempts))
+				.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
+	@Test
+	void 이름_중복_예외_테스트() {
 		String name = "pobi,pobi";
 		String attempts = "1";
 
@@ -122,10 +133,32 @@ class ApplicationTest extends NsTest {
 		);
 	}
 
-	@ParameterizedTest
-	@ValueSource(strings = {"0", "-1", "abc"})
-	void 시도_횟수_유효성_테스트(String attempts) {
+	@Test
+	void 시도_횟수가_0인_경우_예외_테스트() {
 		String name = "pobi,woni";
+		String attempts = "0";
+
+		assertSimpleTest(() ->
+			assertThatThrownBy(() -> runException(name, attempts))
+				.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
+	@Test
+	void 시도_횟수가_음수인_경우_예외_테스트() {
+		String name = "pobi,woni";
+		String attempts = "-1";
+
+		assertSimpleTest(() ->
+			assertThatThrownBy(() -> runException(name, attempts))
+				.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
+	@Test
+	void 시도_횟수가_숫자가_아닌_경우_예외_테스트() {
+		String name = "pobi,woni";
+		String attempts = "abc";
 
 		assertSimpleTest(() ->
 			assertThatThrownBy(() -> runException(name, attempts))
