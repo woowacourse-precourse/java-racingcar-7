@@ -1,6 +1,7 @@
 package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.config.RaceConfig;
 
 public class RandomNumberPicker {
 	private RandomNumberPicker() {
@@ -8,6 +9,9 @@ public class RandomNumberPicker {
 	}
 
 	public static int pickNumber() {
-		return Randoms.pickNumberInRange(0, 9);
+		return Randoms.pickNumberInRange(
+			RaceConfig.RANDOM_NUMBER_START.getNumber(),
+			RaceConfig.RANDOM_NUMBER_END.getNumber()
+		);
 	}
 }
