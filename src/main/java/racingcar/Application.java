@@ -2,15 +2,19 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    private static final int MOVE_CONDITION = 4;
+    private static final int MOVE_CONDITION = 4; // 전진 조건 상수 추가
 
     public static void main(String[] args) {
         String[] carNames = inputCarNames();
+        int moveCount = inputMoveCount();
+
+        List<Car> cars = createCars(carNames);
+        race(cars, moveCount);
+        announceWinners(cars);
     }
 
     private static String[] inputCarNames() {
@@ -20,6 +24,13 @@ public class Application {
         return input.split(",");
     }
 
+    private static int inputMoveCount() {
+        System.out.println("시도할 횟수는 몇회인가요?");
+        int moveCount = Integer.parseInt(Console.readLine());
+        validateMoveCount(moveCount);
+        return moveCount;
+    }
+
     private static void validateCarNames(String input) {
         String[] names = input.split(",");
         for (String name : names) {
@@ -27,13 +38,6 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름은 5자를 넘을 수 없습니다.");
             }
         }
-    }
-
-    private static int inputMoveCount() {
-        System.out.println("시도할 횟수는 몇회인가요?");
-        int moveCount = Integer.parseInt(Console.readLine());
-        validateMoveCount(moveCount);
-        return moveCount;
     }
 
     private static void validateMoveCount(int moveCount) {
@@ -99,7 +103,6 @@ public class Application {
         }
         return winners;
     }
-
 }
 
 class Car {
