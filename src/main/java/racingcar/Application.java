@@ -124,9 +124,19 @@ public class Application {
         saveCar(user_input);
     }
 
+    public static void checkInput(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) > '9' || input.charAt(i) < '0') {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
     public static void inputCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        totalCount = Integer.parseInt(readLine());
+        String input = readLine();
+        checkInput(input);
+        totalCount = Integer.parseInt(input);
     }
 
     public static void main(String[] args) {
