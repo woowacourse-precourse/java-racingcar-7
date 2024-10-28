@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class JudgmentCarName {
-
 	private static final JudgmentCarName INSTANCE = new JudgmentCarName();
 
 	private JudgmentCarName() {}

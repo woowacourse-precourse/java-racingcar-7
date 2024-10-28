@@ -6,7 +6,6 @@ import static racingcar.common.Message.INPUT_INIT_MESSAGE;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
-
 	public static String inputCarsName() {
 		System.out.println(INPUT_INIT_MESSAGE);
 		return Console.readLine();
@@ -16,5 +15,4 @@ public class Input {
 		System.out.println(INPUT_COUNT_MESSAGE);
 		return Integer.parseInt(Console.readLine());
 	}
-
 }

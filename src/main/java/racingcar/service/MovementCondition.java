@@ -8,7 +8,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 
 public class MovementCondition {
-
 	private static final MovementCondition INSTANCE = new MovementCondition();
 
 	private MovementCondition() {}

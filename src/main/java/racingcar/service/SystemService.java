@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SystemService {
-
 	private static final SystemService INSTANCE = new SystemService();
 	private final JudgmentCarName judgment = JudgmentCarName.getInstance();
 
