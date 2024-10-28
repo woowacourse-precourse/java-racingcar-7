@@ -4,11 +4,17 @@ import java.util.Objects;
 
 public class Car {
     private final CarName name;
+    private final int speed;
     private int position;
 
     public Car(String name) {
         this.name = new CarName(name);
+        this.speed = 1;
         this.position = 0;
+    }
+
+    public void move() {
+        this.position += speed;
     }
 
     @Override

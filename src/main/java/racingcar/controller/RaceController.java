@@ -12,8 +12,6 @@ public class RaceController {
     }
 
     public void playRace(Cars cars, TryCount tryCount) {
-        tryCount.repeat(() -> {
-
-        });
+        tryCount.repeat(cars::tryMoveAll);
     }
 }

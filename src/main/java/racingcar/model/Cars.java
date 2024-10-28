@@ -3,10 +3,13 @@ package racingcar.model;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.constant.ErrorMessages;
+import racingcar.util.RandomUtil;
 
 public class Cars {
     private static final String DELIMITER_COMMA = ",";
     private static final int MIN_LIST_SIZE = 2;
+    private static final int MOVE_THRESHOLD = 4;
+
     private final List<Car> carList;
 
     public Cars(String carNames) {
@@ -35,5 +38,18 @@ public class Cars {
         if (carList.size() != distinctCount) {
             throw new IllegalArgumentException(ErrorMessages.DUPLICATE_NAME);
         }
+    }
+
+    public void tryMoveAll() {
+        carList.forEach(car -> {
+            int randomNumber = RandomUtil.generateRandomNumber();
+            if (isMovable(randomNumber)) {
+                car.move();
+            }
+        });
+    }
+
+    private boolean isMovable(int randomNumber) {
+        return randomNumber >= MOVE_THRESHOLD;
     }
 }
