@@ -24,22 +24,28 @@ class Car {
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        List<String> carNames = new ArrayList<>();
-        carNames = getCarNames();
-
-        isValidCarNames(carNames);
-
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int totalRaceCount = 0;
-        totalRaceCount = getTotalRaceCount();
+        List<String> carNames = inputCarNames();
+        int totalRaceCount = inputRaceCount();
 
         List<Car> cars = createCars(carNames);
-
         playRaceInTotalCounts(cars, totalRaceCount);
 
         List<String> winners = findWinners(cars);
         printWinners(winners);
+    }
+
+    public static List<String> inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        List<String> carNames = getCarNames();
+        isValidCarNames(carNames);
+        return carNames;
+    }
+
+    public static int inputRaceCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int totalRaceCount = getTotalRaceCount();
+        isValidTotalRaceCount(Integer.toString(totalRaceCount));
+        return totalRaceCount;
     }
 
     public static List<String> getCarNames(){
@@ -61,7 +67,6 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        // 중복된 이름이 있는지 확인
         Set<String> uniqueNames = new HashSet<>(carNames);
         if (uniqueNames.size() != carNames.size()) {
             throw new IllegalArgumentException();
