@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
@@ -19,7 +20,16 @@ public class Application {
         String[] carName = carNameText.split(",");
         int[] move = new int[carName.length];
 
+        // 난수 생성후 조건에 따라 전진하기
+        for(int i=0; i<tryNum; i++){
+            for(int j=0; j<carName.length; j++){
+                if(Randoms.pickNumberInRange(0, 9) > 4){
+                    move[j]++;
+                }
+            }
+        }
 
+        
     }
 
 
