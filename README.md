@@ -16,4 +16,7 @@
 - [x] depth가 2 이하인지
   - 3인 곳이 있어서 객체 지향 구조로 변경 
 - [x] 메서드 단일 책임을 지는지
-- [ ] 메서드별 unit test
+- 메서드별 unit test
+  - [ ] go
+  - [ ] show
+  - [ ] prickAWinner
