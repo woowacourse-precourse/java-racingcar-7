@@ -15,8 +15,18 @@ public class Car {
         this.distance = 0;
     }
 
+    private Car(String name, int distance) {
+        this.name = name;
+        this.status = Status.STOP;
+        this.distance = distance;
+    }
+
     public static Car of(String name) {
         return new Car(name);
+    }
+
+    public static Car of(String name, int distance) {
+        return new Car(name, distance);
     }
 
     public void attemptMove() {
