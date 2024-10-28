@@ -6,6 +6,9 @@ import racingcar.view.RacingCarIO;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static java.util.Collections.max;
@@ -45,13 +48,14 @@ public class RacingCarController {
         ArrayList<String> cars = racingCarRepository.getCars();
 
         for (int i = 0; i < tryCount; i++) {
-            for (int j = 0; j < cars.size(); j++) {
-                int result = pickNumberInRange(0, 9);
-                if (result >= 4) {
-                    racingCarRepository.plusValue(j);
-                }
-            }
+            calculateNumbersInCars(cars);
         }
+    }
+
+    private void calculateNumbersInCars(ArrayList<String> cars) {
+        IntStream.range(0, cars.size())
+                .filter(j -> pickNumberInRange(0, 9) >= 4)
+                .forEach(racingCarRepository::plusValue);
     }
 
     public void calculateWinner() {
@@ -59,13 +63,10 @@ public class RacingCarController {
         ArrayList<BigInteger> values = racingCarRepository.getValues();
         BigInteger maxiValue = max(values);
 
-        ArrayList<String> winners = new ArrayList<>();
-
-        for (int i = 0; i < values.size(); i++) {
-            if (values.get(i).compareTo(maxiValue) == 0) {
-                winners.add(cars.get(i));
-            }
-        }
+        List<String> winners = IntStream.range(0, values.size())
+                .filter(index -> values.get(index).compareTo(maxiValue) == 0)
+                .mapToObj(cars::get)
+                .collect(Collectors.toList());
 
         racingCarIO.printResult(cars, values);
         racingCarIO.printWinners(winners);
