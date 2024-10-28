@@ -3,13 +3,16 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Racing {
     private String cars;
     private Integer attemptsCnt;
     private Map<String, String> racingCars;
+    private List<String> winnersList;
     private final String DELIMITERS = ",";
 
     Racing() {}
@@ -111,5 +114,43 @@ public class Racing {
             System.out.println(name + " : " + racingCars.get(name));
         }
         System.out.println();
+    }
+
+    private List<String> getWinners() {
+        winnersList = new ArrayList<>();
+
+        for (String name : racingCars.keySet()) {
+            if (isMaxRacingLength(name)) {
+                winnersList.add(name);
+            }
+        }
+
+        return winnersList;
+    }
+
+    private Boolean isMaxRacingLength(String name) {
+        Integer maxLength = getMaxRacingLength();
+        return getRacingLength(name) == maxLength;
+    }
+
+    private Integer getMaxRacingLength() {
+        Integer maxRacingLength = 0;
+
+        for (String name : racingCars.keySet()) {
+            Integer racingLength = getRacingLength(name);
+            if (isBiggerThanMaxLength(racingLength, maxRacingLength)) {
+                maxRacingLength = racingLength;
+            }
+        }
+
+        return maxRacingLength;
+    }
+
+    private Integer getRacingLength(String name) {
+        return racingCars.get(name).length();
+    }
+
+    private Boolean isBiggerThanMaxLength(Integer racingLength, Integer maxLength) {
+        return racingLength > maxLength;
     }
 }
