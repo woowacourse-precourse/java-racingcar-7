@@ -83,8 +83,7 @@ class ApplicationTest extends NsTest {
         cars.add(new Car("람보르기니", 3));
 
         for (Car car : cars) {
-            int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
-            carService.updateScoreIfNeeded(car, car.getRandomValue());
+            carService.assignRandomValue(car);
         }
 
         assertEquals(1, cars.get(0).getScore());
@@ -96,21 +95,20 @@ class ApplicationTest extends NsTest {
     @Test
     public void displayRoundScoresTest() {
 
-        CarService carService = new CarService();
-
+        
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("포르쉐", 4));
         cars.add(new Car("페라리", 5));
         cars.add(new Car("람보르기니", 3));
 
         for (Car car : cars) {
-            int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
-            carService.updateScoreIfNeeded(car, randomValue);
+            car.evaluateScoreBasedOnRandomValue(car.getRandomValue());
         }
 
         assertThat(output()).contains("포르쉐 : -", "페라리 : -", "람보르기니 :");
 
     }
+
 
     @Test
     public void displayWinnerTest() {

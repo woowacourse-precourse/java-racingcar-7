@@ -26,6 +26,10 @@ public class CarView {
         }
     }
 
+    public void updateScoreIfNeeded(String name, int score) {
+        System.out.println(name + " : " + generateScoreDisplay(score));
+    }
+
     public void showWinners(List<Car> winners) {
         String winnerNames = winners.stream()
                 .map(Car::getName)

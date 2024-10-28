@@ -17,30 +17,18 @@ public class CarService {
         }
     }
 
-    protected void assignRandomValue(Car car) {
+    public void assignRandomValue(Car car) {
         int randomValue = Randoms.pickNumberInRange(MIN, MAX);
-        car.setRandomValue(randomValue);
-        updateScoreIfNeeded(car, randomValue);
+        car.evaluateScoreBasedOnRandomValue(randomValue);
     }
 
-    public void updateScoreIfNeeded(Car car, int randomValue) {
-        if (randomValue >= 4) {
-            incrementScore(car);
-        }
-        System.out.println(car.getName() + " : " + carView.generateScoreDisplay(car.getScore()));
-    }
-
-    public void incrementScore(Car car) {
-        car.setScore(car.getScore() + 1);
-
-    }
 
     public List<Car> findWinners(List<Car> cars) {
         List<Car> winners = new ArrayList<>();
         int maxScore = findMaxScore(cars);
 
         for (Car car : cars) {
-            if (car.getScore() == maxScore) {
+            if (car.determineWinners(maxScore)) {
                 winners.add(car);
             }
         }
@@ -51,7 +39,7 @@ public class CarService {
     private int findMaxScore(List<Car> cars) {
         int maxScore = Integer.MIN_VALUE;
         for (Car car : cars) {
-            maxScore = Math.max(maxScore, car.getScore());
+            maxScore = car.compareScore(maxScore); // 점수를 비교하여 maxScore 업데이트
         }
         return maxScore;
     }
