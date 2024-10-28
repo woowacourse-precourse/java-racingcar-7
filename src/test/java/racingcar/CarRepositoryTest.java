@@ -3,9 +3,9 @@ package racingcar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.model.Car;
-import racingcar.domain.model.CarRepository;
-import racingcar.domain.model.value.Name;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarRepository;
+import racingcar.domain.car.value.Name;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ class CarRepositoryTest {
 
         // given
         CarRepository carRepository = new CarRepository();
-        List<Car> cars = List.of(Car.create("a"), Car.create("b"), Car.create("c"));
+        List<Car> cars = List.of(Car.create(new Name("a")), Car.create(new Name("b")), Car.create(new Name("c")));
         List<Name> carNames = cars.stream()
                 .map(Car::getName)
                 .toList();
@@ -39,7 +39,7 @@ class CarRepositoryTest {
 
         // given
         CarRepository carRepository = new CarRepository();
-        List<Car> cars = List.of(Car.create("a"), Car.create("a"), Car.create("c"));
+        List<Car> cars = List.of(Car.create(new Name("a")), Car.create(new Name("b")), Car.create(new Name("a")));
 
         // when, then
         Assertions.assertThatThrownBy(() -> carRepository.saveAll(cars))

@@ -3,8 +3,8 @@ package racingcar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.model.Car;
-import racingcar.domain.model.value.Distance;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.value.Name;
 
 class CarTest {
 
@@ -13,10 +13,10 @@ class CarTest {
     @Test
     void nameFormExceptionTest() {
 
-        Assertions.assertThatThrownBy(() -> Car.create("a1"))
+        Assertions.assertThatThrownBy(() -> Car.create(new Name("a1")))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        Assertions.assertThatThrownBy(() -> Car.create("a a"))
+        Assertions.assertThatThrownBy(() -> Car.create(new Name("a a")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,7 +24,7 @@ class CarTest {
     @Test
     void nameLengthExceptionTest() {
 
-        Assertions.assertThatThrownBy(() -> Car.create("abcdef"))
+        Assertions.assertThatThrownBy(() -> Car.create(new Name("abcdef")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
