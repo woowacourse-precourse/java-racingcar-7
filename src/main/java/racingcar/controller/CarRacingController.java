@@ -26,4 +26,19 @@ public class CarRacingController {
         }
         return cars;
     }
+
+    public void startRace() {
+        List<String> carNames = inputView.askCarNames();
+        List<Car> cars = createCars(carNames);
+        int tryCount = inputView.askTryCount();
+
+        for (int i = 0; i < tryCount; i++) {
+            for (Car car : cars) {
+                car.move(randomNumberGenerator);
+            }
+            outputView.displayCarRacingStatus(cars);
+        }
+        outputView.printWinnerMessage(cars);
+    }
+
 }
