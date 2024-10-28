@@ -1,11 +1,11 @@
 package racingcar.view;
 
-import static racingcar.Exception.ErrorMessage.DUPLICATE_CAR_NAMES;
-import static racingcar.Exception.ErrorMessage.EMPTY_CAR_NAME;
-import static racingcar.Exception.ErrorMessage.EMPTY_MOVE_COUNT;
-import static racingcar.Exception.ErrorMessage.INVALID_CAR_NAME;
-import static racingcar.Exception.ErrorMessage.INVALID_MOVE_COUNT;
-import static racingcar.Exception.ErrorMessage.NEGATIVE_MOVE_COUNT;
+import static racingcar.exception.ErrorMessage.DUPLICATE_CAR_NAMES;
+import static racingcar.exception.ErrorMessage.EMPTY_CAR_NAME;
+import static racingcar.exception.ErrorMessage.EMPTY_MOVE_COUNT;
+import static racingcar.exception.ErrorMessage.INVALID_CAR_NAME;
+import static racingcar.exception.ErrorMessage.INVALID_MOVE_COUNT;
+import static racingcar.exception.ErrorMessage.NEGATIVE_MOVE_COUNT;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;

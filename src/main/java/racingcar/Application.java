@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.Controller.RacingGame;
+import racingcar.controller.RacingGame;
 import racingcar.service.CarNames;
 import racingcar.service.RandomNumberGenerator;
 import racingcar.service.Winner;

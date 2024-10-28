@@ -6,7 +6,7 @@ import static racingcar.view.Message.FINAL_WINNER_MESSAGE;
 import static racingcar.view.Message.ROUND_RESULT_MESSAGE;
 
 import java.util.List;
-import racingcar.Entity.Car;
+import racingcar.entity.Car;
 
 public class OutputView {
 

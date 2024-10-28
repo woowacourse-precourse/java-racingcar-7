@@ -1,8 +1,8 @@
-package racingcar.Controller;
+package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.Entity.Car;
+import racingcar.entity.Car;
 import racingcar.service.RandomNumberGenerator;
 
 public class RacingGame {

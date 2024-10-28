@@ -1,4 +1,4 @@
-package racingcar.Exception;
+package racingcar.exception;
 
 public class ErrorMessage {
     public static final String INVALID_CAR_NAME = "자동차 이름은 1자 이상 5자 이하여야 합니다.";

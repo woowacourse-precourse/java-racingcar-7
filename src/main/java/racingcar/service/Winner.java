@@ -2,7 +2,7 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.Entity.Car;
+import racingcar.entity.Car;
 
 public class Winner {
 
