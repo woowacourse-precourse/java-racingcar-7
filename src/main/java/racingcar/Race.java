@@ -9,9 +9,12 @@ public class Race {
     private final int MIN_PARTICIPANT_COUNT = 2;
 
     private Cars competingCars;
-    public Race(String names) {
+    private int moveAttemptsCount;
+
+    public Race(String names, int moveAttemptsCount) {
         List<String> carNameList = Splitter.splitCarName(names);
         this.competingCars = validateAndJoinCar(carNameList);
+        this.moveAttemptsCount = moveAttemptsCount;
     }
 
     private Cars validateAndJoinCar(List<String> carNameList) {
