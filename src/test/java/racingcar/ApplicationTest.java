@@ -45,8 +45,8 @@ class ApplicationTest extends NsTest {
                 () -> {
                     run("pobi,woni,sam", "3");
                     assertThat(output()).contains("pobi : -", "woni : ", "sam : -",
-                            "pobi : - -", "woni : ", "sam : - -",
-                            "pobi : - - -", "woni : ", "sam : - - -",
+                            "pobi : --", "woni : ", "sam : --",
+                            "pobi : ---", "woni : ", "sam : ---",
                             "최종 우승자 : pobi, sam");
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD,
