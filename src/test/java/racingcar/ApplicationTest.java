@@ -44,7 +44,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("쉼표를 2번 이상 연속으로 입력했을 때")
+    @DisplayName("길이가 0인 자동차 이름을 입력할 때")
     void colonIsNotOneExceptionTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,,,java", "3"))
