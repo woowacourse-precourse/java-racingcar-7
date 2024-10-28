@@ -55,7 +55,7 @@ public class AttemptCountValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"-1"}) //given
+    @ValueSource(strings = {"-1"})
     @DisplayName("입력된 음수일때 예외 발생")
     void testNegativeNumber(String input) {
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
@@ -65,7 +65,7 @@ public class AttemptCountValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"9223372036854775807"}) //given
+    @ValueSource(strings = {"9223372036854775807"})
     @DisplayName("정수범위 초과 입력시 예외 발생")
     void testOverFlowInteger(String input) {
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,

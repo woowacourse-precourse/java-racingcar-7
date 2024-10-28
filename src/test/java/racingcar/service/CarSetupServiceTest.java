@@ -57,7 +57,6 @@ public class CarSetupServiceTest {
         }
     }
 
-    // MethodSource 제공 메서드
     static Stream<Arguments> carNamesProvider() {
         return Stream.of(
                 Arguments.arguments(new String[]{"YOON", "WOONG", "CHAN"}, 3),

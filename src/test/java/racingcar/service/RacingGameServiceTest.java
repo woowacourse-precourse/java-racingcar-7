@@ -117,9 +117,8 @@ public class RacingGameServiceTest {
                 .map(Car::new)
                 .toList();
 
-        // 각 자동차를 이동
         for (Car car : cars) {
-            car.move();  // 이동 로직은 필요에 따라 조정
+            car.move();
         }
         return cars;
     }
