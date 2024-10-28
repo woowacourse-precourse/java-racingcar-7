@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import static racingcar.exception.constants.ErrorMessage.CANNOT_RACE_ALONE;
 import static racingcar.exception.constants.ErrorMessage.DUPLICATE_CAR_NAME;
 import static racingcar.view.constants.ViewMessage.RACE_STATUS;
 
@@ -11,6 +12,8 @@ import racingcar.exception.RacingCarException;
 import racingcar.view.OutputView;
 
 public class RacingGame {
+
+    private static final int MINIMUM_CARS = 1;
 
     private final List<Car> cars;
     private final RacingGameRound gameRound;
@@ -66,6 +69,10 @@ public class RacingGame {
     }
 
     private void validate(final List<Car> cars) {
+        if (cars.size() <= MINIMUM_CARS) {
+            throw new RacingCarException(CANNOT_RACE_ALONE.getMessage());
+        }
+
         Set<String> carNames = new HashSet<>();
 
         cars.stream()
