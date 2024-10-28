@@ -39,7 +39,7 @@ public class Race {
         return priorityQueue;
     }
 
-    private List<Car> extractFrom(PriorityQueue<Car> priorityQueue) {
+    private List<Car> extractFrom(final PriorityQueue<Car> priorityQueue) {
         List<Car> winners = new ArrayList<>();
         Car first = priorityQueue.poll();
         assert first != null;
