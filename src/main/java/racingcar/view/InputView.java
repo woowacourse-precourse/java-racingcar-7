@@ -1,21 +1,24 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.io.IOException;
 import racingcar.utils.ErrorMessage;
 
 public class InputView {
     private static final String GET_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String GET_TRY_NUMBERS = "시도할 회수는 몇회인가요?";
 
-    public String getCarNames() throws IOException {
+    public String getCarNames() {
         System.out.println(GET_CAR_NAMES);
-        return Console.readLine();
+        String carNames = Console.readLine();
+        Console.close();
+        return carNames;
     }
 
-    public int getTryNumbers() throws IOException {
+    public int getTryNumbers() {
         System.out.println(GET_TRY_NUMBERS);
-        return validateTrialNumber(Integer.parseInt(Console.readLine()));
+        int tryNumber = validateTrialNumber(Integer.parseInt(Console.readLine()));
+        Console.close();
+        return tryNumber;
     }
 
     private int validateTrialNumber(int trials) {
