@@ -91,18 +91,16 @@ public class Application {
     public static boolean checkLengthValidCars(String checkCar){
         if (checkCar.length()>5) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }else{
-            return true;
         }
+        return true;
     }
 
     //feat:1-2. 자동차 이름이 숫자일 경우 에러 출력(함수화)
     public static boolean checkNumericValidCars(String checkCar){
         if (isNmberic(checkCar)){
             throw new IllegalArgumentException("자동차 이름은 숫자일 수 없습니다.");
-        }else{
-            return true;
         }
+        return true;
     }
 
     //feat:1-2. 자동차 이름이 숫자일 경우 에러 출력(함수화)
@@ -152,10 +150,8 @@ public class Application {
     //8-2-1. 가장 큰 값을 가진 사람을 따로 저장한다.
     public static String setWinner(String targetCar, String totalWinner){
         if (totalWinner == null){
-            totalWinner = targetCar;
-        } else{
-            totalWinner += (", " + targetCar);
+            return targetCar;
         }
-        return totalWinner;
+        return totalWinner + ", " + targetCar;
     }
 }
