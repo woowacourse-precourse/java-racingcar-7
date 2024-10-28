@@ -91,15 +91,27 @@ public class Racing {
             throw new IllegalArgumentException("빈 입력 오류");
         }
         String[] names = input.split(",");
-        for (String name : names) {
-            if (name.trim().isEmpty()) {
+        for (int i = 0; i < names.length; i++) {
+            if (names[i].trim().isEmpty()) {
                 throw new IllegalArgumentException("빈 이름 오류");
             }
-            if (name.trim().length() > 5) {
+            if (names[i].trim().length() > 5) {
                 throw new IllegalArgumentException("이름 길이 오류");
+            }
+            if (isDuplicated(names, names[i].trim(), i)) {
+                throw new IllegalArgumentException("이름 중복 오류");
             }
         }
         return names;
+    }
+
+    //이름 중복인지 체크하기
+    public boolean isDuplicated(String[] names, String name, int idx) {
+        for (int i = 0; i < names.length; i++) {
+            if (i == idx) continue;
+            else if (names[i].equals(name)) return true;
+        }
+        return false;
     }
 
     // # 3. 무작위 값 생성하기
