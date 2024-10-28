@@ -5,11 +5,16 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        startGame();
+        try{
+            startGame();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     private static void startGame()  {
         printStartMessage();
+        String input = getCarNamesInput();
     }
 
     public static void printStartMessage() {
@@ -18,5 +23,9 @@ public class Application {
 
     public static void printTryCountMessage() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
+    public static String getCarNamesInput() {
+        return Console.readLine();
     }
 }
