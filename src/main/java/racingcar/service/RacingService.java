@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RacingService {
@@ -14,6 +13,7 @@ public class RacingService {
 
     private void setCarsAndRoundNumber(String carsInput, String roundNumberInput) {
         setCars(carsInput);
+        setRoundNumber(roundNumberInput);
     }
 
     private void setCars(String carsInput) {
@@ -52,5 +52,20 @@ public class RacingService {
 
     private Map<String, Integer> initializeCarsStatus(List<String> cars) {
         return new HashMap<>();
+    }
+
+    private void setRoundNumber(String roundNumberInput) {
+        if (roundNumberInput == null) {
+            throw new IllegalArgumentException();
+        }
+
+        roundNumber = Integer.parseInt(roundNumberInput);
+        validateRoundNumberInput();
+    }
+
+    private void validateRoundNumberInput() {
+        if (roundNumber > 10) {
+            throw new IllegalArgumentException();
+        }
     }
 }
