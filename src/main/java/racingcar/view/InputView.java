@@ -13,6 +13,11 @@ public class InputView {
         return inputCarNames();
     }
 
+    public static int getTrialTimes() {
+        ViewMessage.printTrialTimesMessage();
+        return Integer.parseInt(Console.readLine());
+    }
+
     private static ArrayList<String> inputCarNames() {
         String nameInputString = Console.readLine();
         return makeStringToList(nameInputString);
