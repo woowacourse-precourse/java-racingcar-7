@@ -42,10 +42,11 @@ public class RacingCarService {
     public List<RacingCar> setRacingCars() {
         List<RacingCar> racingCars = new ArrayList<>();
 
-        StringTokenizer st = new StringTokenizer(InputView.userInputCarNames(), ",");
+        StringTokenizer st = new StringTokenizer(RacingCar.validateCarNames(InputView.userInputCarNames()), ",");
         while(st.hasMoreTokens()) {
             String carName = st.nextToken();
-            RacingCar racingCar = new RacingCar(RacingCar.validateCarName(carName));
+            RacingCar.validateCarName(carName);
+            RacingCar racingCar = new RacingCar(carName);
             racingCars.add(racingCar);
         }
         return racingCars;

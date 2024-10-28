@@ -19,13 +19,19 @@ public class RacingCar {
         return carName;
     }
 
-    public static String validateCarName(String carName) {
-        if (carName == null || carName.isEmpty()) {
+    public static String validateCarNames(String carNames) { // 자동차 이름 입력 확인
+        if (carNames == null || carNames.trim().isEmpty()) {
+            throw new IllegalArgumentException(UserErrorMessage.NOT_ALLOWED_BLANK);
+        } else {
+            return carNames;
+        }
+    }
+
+    public static void validateCarName(String carName) { // 각각의 자동차 이름 조건 확인
+        if (carName == null || carName.trim().isEmpty()) {
             throw new IllegalArgumentException(UserErrorMessage.NOT_ALLOWED_BLANK);
         } else if (carName.length() > 5) {
             throw new IllegalArgumentException(UserErrorMessage.NOT_ALLOWED_LENGTH);
-        } else {
-            return carName;
         }
     }
 
