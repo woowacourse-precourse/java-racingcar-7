@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int MIN_NAME_LENGTH = 1;
     private int distance;
     private String name;
 
@@ -16,6 +17,9 @@ public class Car {
 
     public void validateNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+        if (name.length() < MIN_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
