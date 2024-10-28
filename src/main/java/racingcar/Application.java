@@ -24,11 +24,7 @@ public class Application {
 
         for (int i = 0; i < movementCount; i++) {
             moveCars(cars);
-
-            for (Car car : cars) {
-                System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
-            }
-
+            showCarDistances(cars);
             System.out.println();
         }
 
@@ -115,6 +111,12 @@ public class Application {
             if (isValidNumber) {
                 car.addDistance();
             }
+        }
+    }
+
+    public static void showCarDistances(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
         }
     }
 }
