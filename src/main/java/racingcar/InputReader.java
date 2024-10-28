@@ -5,21 +5,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputReader {
-    public String readCarNames() throws NoSuchElementException{
+    ValidationCheck validationCheck = new ValidationCheck();
+    public String readCarNames(){
         String userInput = camp.nextstep.edu.missionutils.Console.readLine();
-        validateCarNames(userInput);
+        validationCheck.validateCarName(userInput);
         return userInput;
     }
-    public int readNumberOfTrial() throws NoSuchElementException{
+    public int readNumberOfTrial(){
         String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+        validationCheck.validateNumberOfTrial(userInput);
         return Integer.parseInt(userInput);
-    }
-    private static Pattern pattern = Pattern.compile("[A-Za-z][A-Za-z0-9]{0,4}");
-    private void validateCarNames(String userInput) throws IllegalArgumentException{
-        for(String name : userInput.split(",")){
-            Matcher matcher = pattern.matcher(name.trim());
-            if(!matcher.matches())
-                throw new IllegalArgumentException("이름이 형식에 맞지 않습니다.");
-        }
     }
 }
