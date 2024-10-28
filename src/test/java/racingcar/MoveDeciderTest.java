@@ -28,14 +28,14 @@ class MoveDeciderTest extends NsTest {
     @Test
     void move() {
         run("Harry,Amy,Tom", "3");
-        String result = MoveDecider.move();
-        assertThat(result).contains("Harry : ","Amy : ","Tom : ");
+        String output = output();
+        assertThat(output).contains("Harry : ","Amy : ","Tom : ");
 
     }
 
 
     @Override
     protected void runMain() {
-
+        Application.main(new String[]{});
     }
 }

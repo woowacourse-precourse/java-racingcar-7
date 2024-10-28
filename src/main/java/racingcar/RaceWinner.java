@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceWinner {
-    public static String findWinner() {
-        String[] finalMovements = MoveDecider.move().split("\n");
+    public static void findWinner(String finalMovements) {
+        String[] movements = finalMovements.split("\n");
 
         List<String> winners = new ArrayList<>();
         int maxDistance = 0;
 
-        for (String movement : finalMovements) {
+        for (String movement : movements) {
             String[] parts = movement.split(" : ");
             if (parts.length < 2) {
                 continue;
@@ -29,9 +29,8 @@ public class RaceWinner {
                 winners.add(carName);
             }
         }
-        String winnerResult = "최종 우승자: " + String.join(", ", winners);
+        String winnerResult = "최종 우승자 : " + String.join(", ", winners);
         System.out.println(winnerResult);
-        return winnerResult;
 
     }
 }

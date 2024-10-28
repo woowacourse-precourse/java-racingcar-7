@@ -11,8 +11,8 @@ class RaceWinnerTest extends NsTest {
     @Test
     void findWinner() {
         run("Harry,Amy,Tom", "3");
-        String result = RaceWinner.findWinner();
-        assertThat(result).contains("최종 우승자: ");
+        String output = output();
+        assertThat(output).contains("최종 우승자: ");
     }
 
     @Override
