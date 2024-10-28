@@ -20,8 +20,10 @@ public class RacingCar {
     }
 
     private void addCar(List<String> carList) {
-        for (String cars : carList) {
-            carMap.put(cars, 0);
+        for (String car : carList) {
+            validateCar(car);
+
+            carMap.put(car, 0);
         }
     }
 
@@ -51,5 +53,19 @@ public class RacingCar {
                 .toList();
 
         System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+    }
+
+    private void validateCar(String car) {
+        if(car == null || car.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름이 빈 값일 수 없습니다.");
+        }
+
+        if(5 < car.length()) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
+        }
+
+        if(carMap.containsKey(car)) {
+            throw new IllegalArgumentException("중복된 이름입니다.");
+        }
     }
 }
