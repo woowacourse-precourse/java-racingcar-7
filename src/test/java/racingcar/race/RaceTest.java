@@ -46,7 +46,7 @@ public class RaceTest {
         List<Racer> racers = race.getRacers();
 
         String[] expectedName = {"C1", "C2", "Test"};
-        int idx = 0;g
+        int idx = 0;
 
         for(Racer racer : racers) {
             assertThat(racer.getName()).isEqualTo(expectedName[idx++]);
