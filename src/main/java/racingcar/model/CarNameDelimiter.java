@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import racingcar.exception.ExceptionCode;
+
 import static racingcar.model.Number.MAX_NAME_LENGTH;
 
 
@@ -22,6 +23,7 @@ public class CarNameDelimiter {
         validStringLength(validCarName);
         for (String name : validCarName) {
             validCarNameNull(name);
+            validCarNameLength(name);
         }
     }
 
@@ -46,5 +48,12 @@ public class CarNameDelimiter {
             throw new IllegalArgumentException(ExceptionCode.NAME_NULL.getMessage());
         }
     }
+
+    public void validCarNameLength(String name) {
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException(ExceptionCode.NAME_SIZE_OVER.getMessage());
+        }
+    }
+
 
 }
