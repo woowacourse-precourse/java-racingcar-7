@@ -109,4 +109,17 @@ class RacingTest {
             racing = new Racing(invalidCarName);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("시도횟수가_0인_경우_예외발생")
+    void 시도횟수가_0인_경우_예외발생() {
+        // then
+        assertThatThrownBy(() -> {
+            // given, when
+            new RacingInfo(
+                    "pobi,alice,jason",
+                    0
+            );
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
