@@ -1,12 +1,11 @@
 package racingcar.domain.strategy;
 
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomMovableStrategy implements MovableStrategy {
-    private static final Random random = new Random();
 
     @Override
     public boolean shouldMove() {
-        return random.nextInt(10) >= 4;
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 }
