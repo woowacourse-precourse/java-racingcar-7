@@ -8,7 +8,9 @@ public class InputView {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
         validateEmpty(input);
-        return Utils.splitByDelimiter(input);
+        List<String> carNames = Utils.splitByDelimiter(input);
+        validateDuplicate(carNames);
+        return carNames;
     }
 
     public static int inputTryCount() {
@@ -23,4 +25,13 @@ public class InputView {
         }
     }
 
+    private static void validateDuplicate(List<String> names) {
+        long nameCount = names.stream()
+                .distinct()
+                .count();
+
+        if (nameCount != names.size()) {
+            throw new IllegalArgumentException("중복된 이름이 있습니다.");
+        }
+    }
 }
