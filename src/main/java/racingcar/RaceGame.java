@@ -16,13 +16,28 @@ public class RaceGame {
             cars.add(new Car(carName));
         }
 
+        System.out.println("\n" + "실행 결과");
         for (int i = 0; i < tryCnt; i++) {
-            for (Car car : cars) {
-                car.move();
-            }
+            simulate(cars);
+            System.out.println();
         }
 
         printWinner(getWinnerNames(cars));
+    }
+
+    private void simulate(List<Car> cars) {
+        System.out.println("\n" + "실행 결과");
+        for (Car car : cars) {
+            car.move();
+        }
+        for (Car car : cars) {
+            StringBuilder position = new StringBuilder();
+            position.append(car.getCarName() + " : ");
+            for (int i = 0; i < car.getPosition(); i++) {
+                position.append("-");
+            }
+            System.out.println(position.toString());
+        }
     }
 
     private List<String> getWinnerNames(List<Car> cars) {
