@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class GameServiceTest {
-
     @Nested
     @DisplayName("게임 로직을 실행합니다.")
     class ExecuteLogicTest {

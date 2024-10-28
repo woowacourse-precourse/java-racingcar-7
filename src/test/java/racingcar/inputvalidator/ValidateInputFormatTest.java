@@ -1,8 +1,9 @@
-package racingcar;
+package racingcar.inputvalidator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import racingcar.InputValidator;
 
 class ValidateInputFormatTest {
 

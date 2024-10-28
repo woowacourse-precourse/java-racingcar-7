@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class GameUtilTest {
-
     @Test
     void 랜덤함수를_통해_숫자가_반환되는지_확인합니다() {
         // when
