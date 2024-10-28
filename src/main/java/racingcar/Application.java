@@ -12,17 +12,15 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> splitCarNames = getCarNames(Console.readLine());
 
+        //자동차 이름 길이 검사
+        carNamesLength(splitCarNames);
+
         List<Integer> carMovementCounts = new ArrayList<>();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int trial = Integer.parseInt(Console.readLine());
 
         for (int i = 0; i < splitCarNames.size(); i++) {
-
-            if (splitCarNames.get(i).length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 최대 5자입니다.");
-            }
-
             carMovementCounts.add(0); // 각 이름의 초기 이동 값을 0으로 설정
         }
 
@@ -46,6 +44,15 @@ public class Application {
         List<String> splitCarNames = new ArrayList<>(List.of(carNames.split(",")));
 
         return splitCarNames;
+    }
+
+    public static void carNamesLength (List<String> splitCarNames) {
+
+        for (int i = 0; i < splitCarNames.size(); i++) {
+            if (splitCarNames.get(i).length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 최대 5자입니다.");
+            }
+        }
     }
 
     // 주어진 라운드에 따라 '-' 출력
