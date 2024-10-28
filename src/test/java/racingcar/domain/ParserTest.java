@@ -3,6 +3,7 @@ package racingcar.domain;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static racingcar.View.constant.ErrorMessage.BLANK_VALUE;
+import static racingcar.View.constant.ErrorMessage.DUPLICATED;
 import static racingcar.View.constant.ErrorMessage.INVALID_INTEGER;
 import static racingcar.View.constant.ErrorMessage.OVER_VALUE;
 import static racingcar.View.constant.ErrorMessage.TOO_LONG_VALUE;
@@ -69,4 +70,15 @@ class ParserTest {
         );
         assertEquals(OVER_VALUE.getMessage(), exception.getMessage());
     }
+
+    @Test
+    void 이름이_중복일_경우_예외처리() {
+        String input = "자동차1, 자동차1, 자동차3";
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> parser.parse(input)
+        );
+        assertEquals(DUPLICATED.getMessage(), exception.getMessage());
+    }
+
 }
