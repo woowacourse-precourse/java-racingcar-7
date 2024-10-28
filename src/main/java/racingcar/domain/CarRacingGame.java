@@ -1,7 +1,9 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import racingcar.util.RandomNumber;
 
 public class CarRacingGame {
@@ -34,5 +36,13 @@ public class CarRacingGame {
         if (number >= 4) {
             car.move();
         }
+    }
+
+    public Map<String, Integer> getMoveResult() {
+        Map<String, Integer> result = new HashMap<>();
+        for (Car racingCar : racingCars) {
+            result.put(racingCar.getName(), racingCar.getMove());
+        }
+        return result;
     }
 }

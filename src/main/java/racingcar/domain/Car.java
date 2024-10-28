@@ -24,4 +24,12 @@ public class Car {
     public void move() {
         move++;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getMove() {
+        return move;
+    }
 }
