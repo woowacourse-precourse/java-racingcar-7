@@ -34,9 +34,9 @@ public class Application {
 
     private static int getTryNum() {
         int tryNum;
-        try{
+        try {
             tryNum = notZero(Integer.parseInt(Console.readLine()));
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정상적인 숫자가 입력되지 않았습니다.");
         }
         return tryNum;
@@ -50,13 +50,12 @@ public class Application {
         return carListName;
     }
 
-    private static int notZero(int tryNum){
-        if(tryNum == 0){
+    private static int notZero(int tryNum) {
+        if (tryNum == 0) {
             throw new IllegalArgumentException("0 입력은 옳지 않습니다.");
         }
         return tryNum;
     }
-
 
 
     private static void carsMove(int inputTry, ArrayList<Car> cars) {
