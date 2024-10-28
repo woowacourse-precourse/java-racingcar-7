@@ -32,6 +32,7 @@ public class RacingGame {
     public void startRace() {
         for (int i = 0; i < moveCount; i++) {
             moveCars();
+            OutputView.printRoundResult(cars);
         }
     }
 

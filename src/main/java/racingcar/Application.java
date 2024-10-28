@@ -13,9 +13,6 @@ public class Application {
 
             System.out.println("\n실행 결과");
             racingGame.startRace();
-            for (int i = 0; i < moveCount; i++) {
-                OutputView.printRoundResult(racingGame.getCars());
-            }
 
             List<Car> winners = racingGame.getWinners();
             OutputView.printWinners(winners);
