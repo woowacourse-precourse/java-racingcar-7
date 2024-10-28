@@ -13,6 +13,13 @@ public class InputView {
     }
 
     public static int inputNumberOfAttempts() {
+        System.out.println(INPUT_NUMBER_OF_ATTEMPTS_MESSAGE);
 
+        String input = Console.readLine();
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[error] 숫자가 아닙니다.");
+        }
     }
 }
