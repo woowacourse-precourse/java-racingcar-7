@@ -8,7 +8,7 @@ import static racingcar.racing.utils.ExceptionMessages.INVALID_CAR_LENGTH_EXCEPT
 import java.util.List;
 
 public class InputValidator {
-    public static boolean isAttemptNumberValid(int attemptNumber) {
+    private static boolean isAttemptNumberValid(int attemptNumber) {
         if (attemptNumber <= 0) {
             return false;
         }
@@ -21,7 +21,7 @@ public class InputValidator {
         }
     }
 
-    public static boolean isInputNotEmptyValid(String inputCar) {
+    private static boolean isInputNotEmptyValid(String inputCar) {
         if (inputCar == null || inputCar == "\n" || inputCar == "") {
             return false;
         }
@@ -34,7 +34,7 @@ public class InputValidator {
         }
     }
 
-    public static boolean isCarNameLengthValid(List<String> carNames) {
+    private static boolean isCarNameLengthValid(List<String> carNames) {
         for (String carName : carNames) {
             if (carName.length() > 5) {
                 return false;
@@ -49,7 +49,7 @@ public class InputValidator {
         }
     }
 
-    public static boolean idCarArrayNotEmptyValid(List<String> carNames) {
+    private static boolean idCarArrayNotEmptyValid(List<String> carNames) {
         if (carNames.isEmpty() || carNames == null) {
             return false;
         }
