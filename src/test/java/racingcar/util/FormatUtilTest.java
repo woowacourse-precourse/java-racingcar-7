@@ -28,7 +28,7 @@ public class FormatUtilTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"a,b,c", "a,b,c,d", "a,b,c,d,e"})
+    @ValueSource(strings = {"a, b, c", "a, b, c, d", "a, b, c, d, e"})
     void 우승자_포맷_테스트(String winners) {
         WinnerDto winnerDto = new WinnerDto(Collections.singletonList(winners));
         String format = FormatUtil.joinWinners(winnerDto);

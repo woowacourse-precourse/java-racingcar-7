@@ -4,7 +4,8 @@ public enum UtilConstants {
 
     COLON(" : "),
     DISTANCE("-"),
-    DELIMITER(",");
+    DELIMITER(","),
+    WINNER_DELIMITER(", ");
 
     private final String value;
 

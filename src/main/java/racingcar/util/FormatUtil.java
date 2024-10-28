@@ -1,8 +1,8 @@
 package racingcar.util;
 
 import static racingcar.util.UtilConstants.COLON;
-import static racingcar.util.UtilConstants.DELIMITER;
 import static racingcar.util.UtilConstants.DISTANCE;
+import static racingcar.util.UtilConstants.WINNER_DELIMITER;
 
 import java.util.List;
 import racingcar.domain.dto.CarSnapShot;
@@ -18,7 +18,7 @@ public class FormatUtil {
 
     public static String joinWinners(WinnerDto winners) {
         List<String> winnerNames = winners.names();
-        return String.join(DELIMITER.getValue(), winnerNames);
+        return String.join(WINNER_DELIMITER.getValue(), winnerNames);
     }
 
 }
