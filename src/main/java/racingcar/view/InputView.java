@@ -23,10 +23,8 @@ public class InputView {
         return input.replaceAll("\\s+", "");
     }
 
-    public static Integer inputAttemptCount() {
+    public static String inputAttemptCount() {
         String input = Console.readLine();
-        int attemptCount = Integer.parseInt(input);
-        return attemptCount;
+        return input;
     }
-
 }

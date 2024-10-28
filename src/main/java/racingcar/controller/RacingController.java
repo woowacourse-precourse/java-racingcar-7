@@ -22,7 +22,9 @@ public class RacingController {
         int totalCarCounts = carNames.size();
 
         OutputView.printInputAttemptCountMessage();
-        int attemptCount = InputView.inputAttemptCount();
+        String attemptInput = InputView.inputAttemptCount();
+        int attemptCount = Integer.parseInt(attemptInput);
+
 
         OutputView.printExecutionResultMessage();
 
