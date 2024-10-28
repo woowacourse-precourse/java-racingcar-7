@@ -22,6 +22,19 @@ public class Racing {
             cars.print();
             System.out.println();
         });
+
+
+        System.out.println("최종 우승자 : ");
+
+        List<Car> carList = cars.getWinners();
+        for(int i = 0;i<carList.size();i++) {
+            if(i==carList.size()-1){
+                carList.get(i).carNamePrint();
+                break;
+            }
+            carList.get(i).carNamePrint();
+            System.out.print(", ");
+        }
     }
 
     private static List<Car> getCarList(String carNames) {

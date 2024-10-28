@@ -13,6 +13,6 @@ public class CarName {
     }
 
     public void print() {
-        System.out.print(name + " : ");
+        System.out.print(name);
     }
 }
