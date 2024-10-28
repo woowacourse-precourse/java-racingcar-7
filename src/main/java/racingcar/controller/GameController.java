@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.math.BigInteger;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
 import racingcar.domain.factory.CarFactory;
 import racingcar.view.InputParser;
 import racingcar.view.InputView;
@@ -18,12 +19,15 @@ public class GameController {
     }
 
     public void run() {
+        // 자동차 이름 입력
         String inputName = inputView.requestCarNames();
         List<String> carNames = InputParser.parseCarNames(inputName);
 
+        // 진행할 라운드 수 입력
         String inputRound = inputView.requestMaxRound();
-        BigInteger round =  InputParser.
+        BigInteger round =  InputParser.parseMaxRound(inputRound);
 
-        CarFactory.createCars(carNames);
+        // 입력받은 자동차 이름 수 만큼 자동차 생성
+        List<Car> cars = CarFactory.createCars(carNames);
     }
 }
