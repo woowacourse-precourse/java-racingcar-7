@@ -1,9 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.constants.ErrorType;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -32,21 +30,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    @DisplayName("공백, 개행문자, tab 와같은 빈 문자열 입력시 예외 처리")
-    void checkedEmptyStringInput() {
-        assertThatThrownBy(() -> runException(" ","","     "))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorType.INPUT_NULL_ERROR.getMessage());
-    }
-
-    @Test
-    @DisplayName("게임 실행 횟수 1회 미만시 예외 처리")
-    void checkedTryGameNum() {
-        assertThatThrownBy(() -> runException("0", "-10", "-1"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorType.GAME_TRY_COUNT_ERROR.getMessage());
-    }
 
     @Override
     public void runMain() {

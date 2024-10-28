@@ -15,7 +15,7 @@ public class Car {
 
     public void moveCar() {
         int randomNum = Randoms.pickNumberInRange(GameConstants.RANDOM_MIN, GameConstants.RANDOM_MAX);
-        if (randomNum >= GameConstants.MOVE_THRESHOLD) {
+        if (randomNum >= GameConstants.MOVING_FORWARD) {
             moveCount++;
         }
     }

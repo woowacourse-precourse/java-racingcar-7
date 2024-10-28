@@ -6,7 +6,7 @@ public final class GameConstants {
 
     public static final int RANDOM_MAX = 9;
 
-    public static final int MOVE_THRESHOLD = 4;
+    public static final int MOVING_FORWARD = 4;
 
     public static final int MAX_CAR_NAME_LENGTH = 5;
 
