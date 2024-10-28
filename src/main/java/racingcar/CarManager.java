@@ -27,7 +27,14 @@ public class CarManager {
     public void getRandomNumber() {
         for (Car car : carList) {
             int num = Randoms.pickNumberInRange(0, 9);
-
+            boolean moveForward = numCheck(num);
+            if (moveForward) {
+                car.carMove();
+            }
         }
+    }
+
+    private boolean numCheck(int num) {
+        return num >= 4;
     }
 }
