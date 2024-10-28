@@ -11,7 +11,6 @@ public enum ExpressionFormat {
 
     WINNER_SEPARATOR(", ");
 
-
     private final String rule;
 
     ExpressionFormat(String format) {

@@ -15,12 +15,19 @@ public class LapScoreService {
         lapScores = new ArrayList<>();
     }
 
+    public List<LapScore> createEntryScores(List<Car> entry) {
+        for (Car racingCar : entry) {
+            lapScores.add(createScore(racingCar));
+        }
+        return lapScores;
+    }
+
     private LapScore createScore(Car racingCar) {
         return new LapScore(racingCar.getName(), carPosition(racingCar));
     }
 
     private String carPosition(Car racingCar) {
-        return ExpressionFormat.POSITION_MARK.toString()
+        return ExpressionFormat.POSITION_MARK.form()
                 .repeat(racingCar.getMileage().intValue());
     }
 }
