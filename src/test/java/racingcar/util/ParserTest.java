@@ -1,5 +1,6 @@
 package racingcar.util;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.model.RacingCar;
 
@@ -19,4 +20,12 @@ class ParserTest {
         assertEquals(3, list.size());
     }
 
+    @Test
+    void parseNumberTest() {
+        // given
+        String count = "ss";
+        // when & then
+        Assertions.assertThatThrownBy(() -> Parser.parseNumber(count))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
