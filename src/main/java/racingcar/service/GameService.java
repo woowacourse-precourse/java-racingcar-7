@@ -2,7 +2,7 @@ package racingcar.service;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.NumberGenerator;
+import racingcar.domain.movestrategy.MoveStrategy;
 import racingcar.dto.request.CarsRequest;
 import racingcar.dto.response.CarsResponse;
 import racingcar.dto.response.WinnerResponse;
@@ -11,11 +11,11 @@ import java.util.List;
 
 public class GameService {
 
-    private final NumberGenerator numberGenerator;
+    private final MoveStrategy moveStrategy;
     private Cars cars;
 
-    public GameService(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
+    public GameService(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
     public void initializeCars(CarsRequest carsRequest) {
@@ -23,7 +23,7 @@ public class GameService {
     }
 
     public CarsResponse moveCars() {
-        cars.move(numberGenerator);
+        cars.move(moveStrategy);
         return CarsResponse.from(cars);
     }
 

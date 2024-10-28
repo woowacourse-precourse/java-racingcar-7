@@ -2,29 +2,13 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.movestrategy.FixedMoveStrategy;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
-
-    @DisplayName("숫자의 값이 4이상이면 전진할 수 있다.")
-    @Test
-    void canMoveIfNumberIsMoreThanThree() {
-        //given
-        List<Car> initialCars = List.of(
-                new Car(new CarName("a"), new CarPosition()),
-                new Car(new CarName("b"), new CarPosition()),
-                new Car(new CarName("c"), new CarPosition()));
-        Cars cars = new Cars(initialCars);
-        //when
-        cars.move(new FixedNumberGenerator(5,4,3));
-        // then
-        assertThat(cars.getCars().get(0).getPosition().getPosition()).isEqualTo(1);
-        assertThat(cars.getCars().get(1).getPosition().getPosition()).isEqualTo(1);
-        assertThat(cars.getCars().get(2).getPosition().getPosition()).isEqualTo(0);
-    }
 
     @DisplayName("한 명의 우승자가 있는 경우")
     @Test

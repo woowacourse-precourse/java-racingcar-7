@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.movestrategy.MoveStrategy;
+
 import java.util.List;
 
 public class Cars {
@@ -10,10 +12,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void move(NumberGenerator numberGenerator) {
-        cars.stream()
-                .filter(car -> canMove(numberGenerator))
-                .forEach(Car::move);
+    public void move(MoveStrategy moveStrategy) {
+        cars.forEach(moveStrategy::move);
     }
 
     public List<Car> drawWinner() {
@@ -25,10 +25,6 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
-    }
-
-    private boolean canMove(NumberGenerator numberGenerator) {
-        return numberGenerator.generate() >= CarPosition.MINIMUM_NUMBER;
     }
 
     private Car getCarAtMaxPosition() {

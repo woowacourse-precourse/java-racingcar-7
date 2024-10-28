@@ -5,8 +5,6 @@ import java.util.Objects;
 public class CarPosition {
 
     public static final int START_POSITION = 0;
-    public static final int MINIMUM_NUMBER = 4;
-
     private int position;
 
     public CarPosition() {
