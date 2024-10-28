@@ -61,6 +61,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 음수_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
