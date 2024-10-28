@@ -34,11 +34,11 @@
 >   * [x] 이동 횟수 입력에 정수가 아닌 값을 넣을 경우 예외를 던져야함.
 > 
 > ## 테스트 코드 작성
-> * [ ] CarTest
-> * [ ] UtilsTest
-> * [ ] RaceTest
+> * [x] CarTest
+> * [x] UtilsTest
+> * [x] RaceTest
 > * [ ] InputViewTest
-> * [ ] OutPutViewTest
+> * [x] OutPutViewTest
 > 
 > ### 1주차 피드백을 통해 고려해봐야하는 사항들 메모
 > 1. git에 올릴 필요 없는 자원들을 찾아보고 gitignore에 추가해보자. // O
