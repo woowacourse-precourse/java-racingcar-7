@@ -42,17 +42,14 @@ public class RacingController {
             }
         }
     }
+
     public void RacingRun() {
         try {
             String[] carNames = finalGetCarsNames();
             int RacingRounds = getRoundRacing();
             validateCarNames(carNames);
 
-            List<Car> cars = new ArrayList<>();
-
-            for (String name : carNames) {
-                cars.add(new Car(name, 0));
-            }
+            List<Car> cars = MakeCars(carNames);
             runRace(cars, RacingRounds);
 
             MaxRace(cars);
@@ -61,6 +58,15 @@ public class RacingController {
             throw e;
         }
     }
+
+    private List<Car> MakeCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name, 0));
+        }
+        return cars;
+    }
+
     private void runRace(List<Car> cars, int rounds) {
         System.out.println("실행 결과");
         for (int i = 0 ; i < rounds ; i++) {
