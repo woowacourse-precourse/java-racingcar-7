@@ -30,7 +30,8 @@ public class CarService {
     }
 
 
-    public void countTotalMove() {
+    public void countTotalMove(Car car) {
         // 움직인 자동차 개수 세기
+        car.setTotalMove(car.getTotalMove() + 1);
     }
 }
