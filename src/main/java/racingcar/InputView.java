@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
-    private final String delimeter = ",";
+    private final String delimiter = ",";
 
     private String readLine() {
         return Console.readLine();
@@ -17,7 +17,7 @@ public class InputView {
         String input = readLine();
 
         return Arrays.stream(input
-                .split(delimeter))
+                .split(delimiter))
                 .toList();
     }
 
