@@ -1,0 +1,50 @@
+package racingcar.model;
+
+import racingcar.constant.ExceptionMessage;
+
+public class Car {
+    private static final int MAX_NAME_LENGTH = 5;
+
+    private final RacePolicy racePolicy;
+    private final String name;
+    private int position;
+
+    public Car(RacePolicy racePolicy, String name) {
+        this.racePolicy = racePolicy;
+        validateEmptyName(name);
+        validateNameLength(name);
+        this.name = name;
+        this.position = 0;
+    }
+
+    private void validateEmptyName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_EMPTY_STRING.getMessage());
+        }
+    }
+
+    private void validateNameLength(String name) {
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_LENGTH_LIMITATION.getMessage());
+        }
+    }
+
+    public void tryMoveForward() {
+        int randomNumber = racePolicy.generateRandomNumber();
+        if (racePolicy.canMoveForward(randomNumber)) {
+            moveForward();
+        }
+    }
+
+    private void moveForward() {
+        position++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+}
