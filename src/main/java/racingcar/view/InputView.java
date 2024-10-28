@@ -1,73 +1,75 @@
 package racingcar.view;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-
-import camp.nextstep.edu.missionutils.Console;
-import racingcar.car.exception.NoSeparatorException;
 import racingcar.constant.ErrorStatus;
 import racingcar.constant.Separator;
 import racingcar.constant.View;
 
 public class InputView {
 
-	private InputView() {
-	}
+    private static final String DELIMITER = "|";
 
-	private static class InputViewHolder {
-		private static final InputView INSTANCE = new InputView();
-	}
+    private InputView() {
+    }
 
-	public static InputView getInstance() {
-		return InputViewHolder.INSTANCE;
-	}
+    private static class InputViewHolder {
+        private static final InputView INSTANCE = new InputView();
+    }
 
-	public List<String> readCarInput() {
-		System.out.println(View.CAR_NAME_INPUT.getConstant());
-		String input = Console.readLine();
-		return splitNames(input);
-	}
+    public static InputView getInstance() {
+        return InputViewHolder.INSTANCE;
+    }
 
-	public Integer readCountInput() {
-		System.out.println(View.COUNT_INPUT.getConstant());
-		String input = Console.readLine();
-		return parseCount(input);
-	}
+    public List<String> readCarInput() {
+        System.out.println(View.CAR_NAME_INPUT.getMessage());
+        String input = Console.readLine();
+        return splitNames(input);
+    }
 
-	public Integer parseCount(String input) {
-		if (!isNumber(input)) {
-			throw new IllegalArgumentException(ErrorStatus.NOT_NUMBER.getMessage());
-		}
-		try {
-			int count = Integer.parseInt(input);
-			if (10000 <= count || count <= 0)
-				throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
-			return count;
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
-		}
-	}
+    public Integer readCountInput() {
+        System.out.println(View.COUNT_INPUT.getMessage());
+        String input = Console.readLine();
+        return parseCount(input);
+    }
 
-	private Boolean isNumber(String input) {
-		for (char c : input.toCharArray()) {
-			if (!Character.isDigit(c)) {
-				return false;
-			}
-		}
-		return true;
-	}
+    public Integer parseCount(String input) {
+        if (!isNumber(input)) {
+            throw new IllegalArgumentException(ErrorStatus.NOT_NUMBER.getMessage());
+        }
+        try {
+            int count = Integer.parseInt(input);
+            if (10000 <= count || count <= 0) {
+                throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
+            }
+            return count;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
+        }
+    }
 
-	public List<String> splitNames(String input) {
-		String regex = Arrays.stream(Separator.values())
-			.map(Separator::getSeparator)
-			.reduce((s1, s2) -> s1 + "|" + s2)
-			.orElseThrow(() -> new NoSeparatorException("구분자가 존재하지 않습니다."));
+    private Boolean isNumber(String input) {
+        for (char c : input.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-		return Arrays.stream(input.split(regex))
-			.peek(s -> {
-				if (s.isBlank())
-					throw new IllegalArgumentException("잘못된 자동차 이름이 있습니다.");
-			})
-			.toList();
-	}
+    public List<String> splitNames(String input) {
+        String regex = String.join(DELIMITER,
+                Arrays.stream(Separator.values()).map(Separator::getSeparator).toList());
+
+        return Arrays.stream(input.split(regex))
+                .peek(this::isBlankCarName)
+                .toList();
+    }
+
+    private void isBlankCarName(String carName) {
+        if (carName.isBlank()) {
+            throw new IllegalArgumentException(ErrorStatus.INVALID_CAR_NAME.getMessage());
+        }
+    }
 }
