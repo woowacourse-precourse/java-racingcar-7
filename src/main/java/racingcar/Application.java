@@ -3,7 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Application {
@@ -27,6 +29,25 @@ public class Application {
         }
 
         // 우승자 가려내기
+        List<String> winners = new ArrayList<>();
+        int max = 0;
+        for(Map.Entry<String, Integer> entry : carsInfo.entrySet()) {
+            if(entry.getValue() > max ) {
+                max = entry.getValue();
+                winners.clear();
+                winners.add(entry.getKey());
+            }else if(entry.getValue() == max) {
+                winners.add(entry.getKey());
+            }
+        }
+
+        System.out.print("최종 우승자 : ");
+        for(int i = 0; i < winners.size(); i++) {
+            System.out.print(winners.get(i));
+            if(i != winners.size() - 1) {
+                System.out.print(", ");
+            }
+        }
     }
     static void racing(Map<String, Integer> carsInfo) {
         // 자동차 별로 전진하는 것 구현
