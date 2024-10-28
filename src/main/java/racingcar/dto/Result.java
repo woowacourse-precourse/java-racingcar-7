@@ -28,7 +28,7 @@ public class Result {
                 .collect(Collectors.joining(LINE_SEPARATOR, "", LINE_SEPARATOR));
     }
 
-    public String finalWinner() {
-        return String.format(Message.FINAL_WINNER_MESSAGE, String.join(", ", result.keySet()));
+    public String finalResult() {
+        return String.format(Message.FINAL_RESULT, String.join(", ", result.keySet()));
     }
 }
