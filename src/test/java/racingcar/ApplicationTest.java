@@ -1,7 +1,12 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Map;
+import java.util.function.Supplier;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -35,4 +40,25 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    @DisplayName("모두 승자")
+    void testSimulateFullRace_AllWins() {
+        // given
+        String[] names = {"pobi", "java"};
+        int tryCount = 2;
+        Supplier<Integer> alwaysWinSupplier = () -> 4;
+
+        // when
+        Map<String, boolean[]> result = Application.simulateFullRace(names, tryCount,
+                alwaysWinSupplier);
+
+        // then
+        for (boolean[] gameWinHistory : result.values()) {
+            for (boolean win : gameWinHistory) {
+                Assertions.assertThat(win).isTrue();
+            }
+        }
+    }
+
 }
