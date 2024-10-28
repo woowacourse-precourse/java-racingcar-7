@@ -25,11 +25,16 @@ public class Application {
             System.out.print("invalid error");
         }
         System.out.println("\n실행 결과");
-        for(int i = 0; i < try_count; i++){
-            ap.add();
-            ap.print_result();
-        }
+        execution(try_count);
         ap.print_winner(ap.winner_score());
+    }
+
+    public void execution(int count){
+        if(count > 0){
+            add();
+            print_result();
+            execution(count-1);
+        }
     }
 
     public void check(String input){
