@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.dto.CarDto;
 
 public class Cars {
 
@@ -25,10 +26,11 @@ public class Cars {
         cars.forEach(car -> car.move(movement.canMove()));
     }
 
-    public List<Car> findWinners() {
+    public List<CarDto> findWinners() {
         Car farthestCar = findFarthestCar();
         return cars.stream()
                 .filter(car -> car.hasSamePositionWith(farthestCar))
+                .map(Car::toDto)
                 .collect(Collectors.toList());
     }
 
@@ -49,5 +51,10 @@ public class Cars {
         if (cars.size() > new HashSet<>(cars).size()) {
             throw new IllegalArgumentException("자동차는 중복될 수 없습니다.");
         }
+    }
+
+    public List<CarDto> getCarsInfo() {
+        return cars.stream()
+                .map(Car::toDto).toList();
     }
 }

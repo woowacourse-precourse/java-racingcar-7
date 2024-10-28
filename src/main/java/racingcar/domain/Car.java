@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.dto.CarDto;
+
 public class Car {
 
     private static final int INITIAL_POSITION = 0;
@@ -15,6 +17,10 @@ public class Car {
         if (canMove) {
             position++;
         }
+    }
+
+    public CarDto toDto() {
+        return new CarDto(name.getCarName(), position);
     }
 
     public boolean isFartherThan(Car other) {

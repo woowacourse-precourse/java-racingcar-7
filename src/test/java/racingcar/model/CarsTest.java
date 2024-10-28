@@ -6,9 +6,8 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.Game;
 
-public class GameTest {
+public class CarsTest {
 
     @Test
     void 입력받은만큼_자동차를_생성할_수_있다() {

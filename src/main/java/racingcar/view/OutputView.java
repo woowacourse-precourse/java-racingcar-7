@@ -2,7 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.Car;
+import racingcar.domain.dto.CarDto;
 
 public class OutputView {
 
@@ -16,26 +16,26 @@ public class OutputView {
         System.out.println(RESULT_START_MESSAGE);
     }
 
-    public void printStatusOf(List<Car> cars) {
-        for (Car car : cars) {
-            printStatusOf(car);
+    public void printStatusOf(List<CarDto> cars) {
+        for (CarDto carDto : cars) {
+            printStatusOf(carDto);
         }
         System.out.println();
     }
 
-    private void printStatusOf(Car car) {
-        int fromZeroToPosition = car.getPosition();
+    private void printStatusOf(CarDto carDto) {
+        int fromZeroToPosition = carDto.getPosition();
         String progress = POSITION_CHARACTER.repeat(fromZeroToPosition);
-        System.out.println(car.getName() + CAR_INFIX + progress);
+        System.out.println(carDto.getCarName() + CAR_INFIX + progress);
     }
 
-    public void printWinners(List<Car> winners) {
+    public void printWinners(List<CarDto> winners) {
         System.out.println(WINNERS_PREFIX + joinNamesOf(winners));
     }
 
-    private String joinNamesOf(List<Car> cars) {
+    private String joinNamesOf(List<CarDto> cars) {
         return cars.stream()
-                .map(Car::getName)
+                .map(CarDto::getCarName)
                 .collect(Collectors.joining(CAR_DELIMITER));
     }
 }
