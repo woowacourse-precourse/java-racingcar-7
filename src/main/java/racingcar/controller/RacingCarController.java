@@ -23,7 +23,11 @@ public class RacingCarController {
         view.printTryInputString();
         String tryInputString = view.readInput();
         checkTryNumLength(tryInputString.trim());
-        tryNum = Integer.parseInt(tryInputString);
+        try {
+            tryNum = Integer.parseInt(tryInputString);
+        } catch (NumberFormatException e) {
+            RacingCarExceptionHandler.throwException(RacingCarExceptionMessage.TRY_NUM_MUST_BE_INTEGER);
+        }
 
         // race
         race();
