@@ -13,6 +13,9 @@ public class InputValidator {
     }
 
     private static void validateCarName(String name) {
+        if (name.isEmpty() || name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("[error] 자동차 이름은 1~5자");
+        }
 
     }
 }
