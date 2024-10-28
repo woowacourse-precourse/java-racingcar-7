@@ -13,6 +13,7 @@ public class CarValidator {
 
     public void noDuplicateCarNames(final List<String> carNames) {
         Set<String> carNamesSet = new HashSet<>(carNames);
+
         if (carNames.size() != carNamesSet.size()) {
             throw new IllegalArgumentException("차 이름은 중복되서는 안됩니다.");
         }

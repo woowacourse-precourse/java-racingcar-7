@@ -7,7 +7,7 @@ public class InputController {
     private final InputView inputView;
     private final InputValidator inputValidator;
 
-    public InputController(InputView inputView, InputValidator inputValidator) {
+    public InputController(final InputView inputView, final InputValidator inputValidator) {
         this.inputView = inputView;
         this.inputValidator = inputValidator;
     }

@@ -15,6 +15,7 @@ public class CarService {
     public List<Car> registerCar(final List<String> carNames) {
         List<Car> carList = new ArrayList<>();
         carNames.forEach(carName -> carList.add(new Car(carName)));
+
         return carList;
     }
 }

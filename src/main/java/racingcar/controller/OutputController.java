@@ -8,7 +8,7 @@ import racingcar.view.OutputView;
 public class OutputController {
     private final OutputView outputView;
 
-    public OutputController(OutputView outputView) {
+    public OutputController(final OutputView outputView) {
         this.outputView = outputView;
     }
 

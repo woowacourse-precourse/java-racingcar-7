@@ -11,8 +11,9 @@ public class Controller {
     private final CarController carController;
     private final RaceController raceController;
 
-    public Controller(InputController inputController, OutputController outputController, CarController carController,
-                      RaceController raceController) {
+    public Controller(final InputController inputController, final OutputController outputController,
+                      final CarController carController,
+                      final RaceController raceController) {
         this.inputController = inputController;
         this.outputController = outputController;
         this.carController = carController;
@@ -33,7 +34,7 @@ public class Controller {
         outputController.printWinners(winnerCarList);
     }
 
-    private void printGame(Race race) {
+    private void printGame(final Race race) {
         outputController.printEndLine();
         outputController.printGameResultMessage();
 

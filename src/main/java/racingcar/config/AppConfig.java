@@ -29,24 +29,24 @@ public class AppConfig {
         this.carValidator = new CarValidator();
     }
 
-    public InputController createInputController() {
-        return new InputController(inputView, inputValidator);
-    }
-
-    public OutputController createOutputController() {
-        return new OutputController(outputView);
-    }
-
-    public CarController createCarController() {
-        return new CarController(carService, carValidator);
-    }
-
-    public RaceController createRaceController() {
-        return new RaceController(raceService);
-    }
-
     public Controller createController() {
         return new Controller(createInputController(), createOutputController(), createCarController(),
                 createRaceController());
+    }
+
+    private InputController createInputController() {
+        return new InputController(inputView, inputValidator);
+    }
+
+    private OutputController createOutputController() {
+        return new OutputController(outputView);
+    }
+
+    private CarController createCarController() {
+        return new CarController(carService, carValidator);
+    }
+
+    private RaceController createRaceController() {
+        return new RaceController(raceService);
     }
 }
