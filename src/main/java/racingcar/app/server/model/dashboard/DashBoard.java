@@ -22,10 +22,10 @@ public class DashBoard {
         return new DashBoard(cars);
     }
 
-    public void offerLapChart() {
-        List<String> positions = cars.currentPositions();
-        String summary = String.join("\n", positions);
-        lapCharts.offer(summary);
+    public void addLapChart() {
+        List<String> summaries = cars.currentPositions();
+        LapChart lapChart = LapChart.from(summaries);
+        lapCharts.offer(lapChart);
     }
 
     public List<String> offerAllLapCharts() {

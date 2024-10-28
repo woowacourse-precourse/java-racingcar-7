@@ -15,8 +15,8 @@ public class LapCharts {
         return new LapCharts();
     }
 
-    public void offer(final String lapChart) {
-        lapCharts.add(LapChart.from(lapChart));
+    public void offer(final LapChart lapChart) {
+        lapCharts.add(lapChart);
     }
 
     public List<String> offerLapCharts() {

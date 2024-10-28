@@ -3,24 +3,24 @@ package racingcar.app.server.model.car;
 import static java.util.Objects.requireNonNull;
 import static racingcar.app.server.error.ErrorMessage.SHOULD_NOT_BE_NULL;
 
-import racingcar.app.server.model.position.Distance;
-import racingcar.app.server.model.position.Position;
+import racingcar.app.server.model.location.Distance;
+import racingcar.app.server.model.location.Position;
 import racingcar.app.server.model.race.Lap;
 
 public class MyProgress {
 
     private Lap remainingLap;
-    private Position position;
+    private Distance currentDistance;
 
-    private MyProgress(final Lap remainingLap, final Position position) {
+    private MyProgress(final Lap remainingLap, final Distance currentDistance) {
         this.remainingLap = remainingLap;
-        this.position = position;
+        this.currentDistance = currentDistance;
     }
 
-    public static MyProgress from(final Lap remainingLap, final Position position) {
+    public static MyProgress from(final Lap remainingLap, final Distance currentDistance) {
         validateIsNull(remainingLap);
-        validateIsNull(position);
-        return new MyProgress(remainingLap, position);
+        validateIsNull(currentDistance);
+        return new MyProgress(remainingLap, currentDistance);
     }
 
     public boolean completedAllLap() {
@@ -28,17 +28,16 @@ public class MyProgress {
     }
 
 
-    public void updatePosition(Distance distance) {
-        this.position = position.add(distance);
+    public void updateDistance(Distance distance) {
+        this.currentDistance = currentDistance.add(distance);
     }
 
     public void countDownRemainingLap(final Lap countDownAmount) {
         this.remainingLap = remainingLap.minus(countDownAmount);
     }
 
-    @Override
-    public String toString() {
-        return position.toString();
+    public Position currentPosition() {
+        return currentDistance.toPosition();
     }
 
     private static <T> void validateIsNull(T obj) {

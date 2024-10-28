@@ -10,7 +10,6 @@ public class Lap {
     public static Lap ZERO = Lap.from(0L);
     public static Lap ONE = Lap.from(1);
 
-
     private final long value;
 
     private Lap(final long value) {

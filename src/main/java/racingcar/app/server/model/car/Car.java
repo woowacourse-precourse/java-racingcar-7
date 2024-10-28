@@ -3,10 +3,9 @@ package racingcar.app.server.model.car;
 import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
 import static racingcar.app.server.error.ErrorMessage.SHOULD_NOT_BE_NULL;
-import static racingcar.app.server.model.car.MovementCondition.getDistanceBy;
 
 import racingcar.app.server.exception.LengthExceedException;
-import racingcar.app.server.model.position.Distance;
+import racingcar.app.server.model.location.Distance;
 import racingcar.app.server.model.race.Lap;
 
 public class Car {
@@ -22,7 +21,7 @@ public class Car {
         this.myProgress = myProgress;
     }
 
-    public static Car from(final String name, final MyProgress myProgress) {
+    public static Car of(final String name, final MyProgress myProgress) {
         requireNonNull(name, SHOULD_NOT_BE_NULL);
         validateNameLength(name);
         return new Car(name, myProgress);
@@ -33,17 +32,18 @@ public class Car {
     }
 
     public Distance movableDistance() {
-        Speed randomSpeed = SpeedGenerator.generateRandomSpeed();
-        return getDistanceBy(randomSpeed);
+        Speed randomSpeed = Speed.generateRandomSpeed();
+        return MovementCondition.getMovableDistanceBy(randomSpeed);
     }
 
     public void updateProgress(final Distance distance, Lap countDownAmount) {
-        myProgress.updatePosition(distance);
+        myProgress.updateDistance(distance);
         myProgress.countDownRemainingLap(countDownAmount);
     }
 
     public String myProgressSummary() {
-        return format("%s : %s", name, myProgress.toString());
+        String position = myProgress.currentPosition().toString();
+        return format("%s : %s", name, position);
     }
 
     @Override

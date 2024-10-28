@@ -1,6 +1,5 @@
 package racingcar.app.server.service;
 
-import static racingcar.app.server.model.position.Position.ON_START_LINE;
 import static racingcar.app.server.model.race.Lap.ONE;
 
 import java.util.ArrayList;
@@ -9,6 +8,7 @@ import racingcar.app.server.model.car.Car;
 import racingcar.app.server.model.car.Cars;
 import racingcar.app.server.model.car.MyProgress;
 import racingcar.app.server.model.dashboard.DashBoard;
+import racingcar.app.server.model.location.Distance;
 import racingcar.app.server.model.race.Lap;
 import racingcar.app.server.model.race.Race;
 
@@ -18,8 +18,8 @@ public class RaceService {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             Lap lap = Lap.from(lapCount);
-            MyProgress myProgress = MyProgress.from(lap, ON_START_LINE);
-            Car car = Car.from(carName, myProgress);
+            MyProgress myProgress = MyProgress.from(lap, Distance.ZERO);
+            Car car = Car.of(carName, myProgress);
             cars.add(car);
         }
         return Cars.of(cars);
@@ -30,7 +30,7 @@ public class RaceService {
         DashBoard dashBoard = DashBoard.from(cars);
         while (race.isUnderway()) {
             cars.move();
-            dashBoard.offerLapChart();
+            dashBoard.addLapChart();
             race.countDownRemainingLapCount(ONE);
         }
         return dashBoard;

@@ -15,14 +15,13 @@ public class CarTest {
         // given
         String name = "JAVA";
         long remainingLap = 6L;
-        String position = "---";
-        Car sut = CarHelper.mock(name, remainingLap, position);
+        Car sut = CarHelper.mock(name, remainingLap, 3);
 
         // when
         String actual = sut.myProgressSummary();
 
         // then
-        String expected = String.format("%s : %s", name, position);
+        String expected = String.format("%s : %s", name, "---");
         assertThat(actual.equals(expected)).isTrue();
     }
 }

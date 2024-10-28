@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static racingcar.app.server.error.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import java.util.List;
-import racingcar.app.server.model.position.Distance;
+import racingcar.app.server.model.location.Distance;
 import racingcar.app.server.model.race.Lap;
 
 public class Cars {

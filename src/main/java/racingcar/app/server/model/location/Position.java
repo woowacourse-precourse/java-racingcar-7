@@ -1,16 +1,16 @@
-package racingcar.app.server.model.position;
+package racingcar.app.server.model.location;
 
 import static java.util.Objects.requireNonNull;
 import static racingcar.app.server.error.ErrorMessage.DISTANCE_SHOULD_NOT_BE_MINUS;
 import static racingcar.app.server.error.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import java.util.Objects;
+import java.util.stream.LongStream;
 import racingcar.app.server.exception.ShouldNotBeMinusException;
 
 public class Position {
 
-    public static Position ON_START_LINE = initiate();
-    private static final String INITIAL_POSITION = "";
+    private static final String POSITION_ICON = "-";
 
     private final String value;
 
@@ -18,30 +18,25 @@ public class Position {
         this.value = value;
     }
 
-    private static Position initiate() {
-        return new Position(INITIAL_POSITION);
-    }
-
     public static Position from(String source) {
         requireNonNull(source, SHOULD_NOT_BE_NULL);
         return new Position(source.strip());
     }
 
-    public Position add(final Distance distance) {
-        Distance destination = currentDistance().add(distance);
-        if (destination.isLowerThanZero()) {
+    public static Position fromDistance(long distance) {
+        validateIsMinus(distance);
+
+        StringBuilder positionBuilder = new StringBuilder();
+        LongStream.range(0, distance)
+                .forEach(idx -> positionBuilder.append(POSITION_ICON));
+
+        return Position.from(positionBuilder.toString());
+    }
+
+    private static void validateIsMinus(long distance) {
+        if (distance < 0) {
             throw new ShouldNotBeMinusException(DISTANCE_SHOULD_NOT_BE_MINUS);
         }
-        return PositionBuilder.from(destination);
-    }
-
-    public Distance currentDistance() {
-        return Distance.from(value.length());
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
     }
 
     @Override
@@ -59,5 +54,10 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hashCode(value);
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
     }
 }

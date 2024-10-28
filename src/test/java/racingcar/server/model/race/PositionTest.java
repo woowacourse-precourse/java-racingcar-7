@@ -1,39 +1,55 @@
 package racingcar.server.model.race;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.app.server.error.ErrorMessage.DISTANCE_SHOULD_NOT_BE_MINUS;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.app.server.model.position.Distance;
-import racingcar.app.server.model.position.Position;
+import racingcar.app.server.exception.ShouldNotBeMinusException;
+import racingcar.app.server.model.location.Position;
 
 public class PositionTest {
 
     @Test
-    @DisplayName("[전진] 2바퀴 돌았고, 3번째 바퀴 돌때")
-    void moveForward() {
+    @DisplayName("distance 7일 때")
+    void convertDistanceToPositionCase1() {
         // given
-        Position position = Position.from("---");
+        long distance = 7;
+        Position expected = Position.from("-------");
 
         // when
-        Position actual = position.add(Distance.ONE);
+        Position actual = Position.fromDistance(distance);
 
         // then
-        Position expected = Position.from("----");
         assertThat(actual.equals(expected)).isTrue();
     }
 
     @Test
-    @DisplayName("[정지] 2바퀴 돌았고, 3번째 바퀴 돌때")
-    void noMovement() {
+    @DisplayName("distance -1일 때")
+    void convertDistanceToPositionCase2() {
         // given
-        Position position = Position.from("---");
+        long distance = -1;
+
+        // when & then
+        Assertions.assertThrows(
+                ShouldNotBeMinusException.class,
+                () -> Position.fromDistance(distance),
+                DISTANCE_SHOULD_NOT_BE_MINUS
+        );
+    }
+
+    @Test
+    @DisplayName("distance 0일 때")
+    void convertDistanceToPositionCase3() {
+        // given
+        long distance = 0;
+        Position expected = Position.from("");
 
         // when
-        Position actual = position.add(Distance.ZERO);
+        Position actual = Position.fromDistance(distance);
 
         // then
-        Position expected = Position.from("---");
         assertThat(actual.equals(expected)).isTrue();
     }
 }
