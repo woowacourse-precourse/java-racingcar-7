@@ -13,5 +13,15 @@ public class Players {
             count.add(0);
         }
     }
+    public void addCount(int indexNum){
+        count.set(indexNum, count.get(indexNum) + 1);
+    }
 
+    public List<String> getNames() {
+        return names;
+    }
+
+    public List<Integer> getCount(){ return count; }
 }
+
+
