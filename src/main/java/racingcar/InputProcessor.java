@@ -25,6 +25,9 @@ public class InputProcessor {
             }
             carNames.add(car);
         }
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException("Invalid input");
+        }
         return carNames;
     }
 
