@@ -26,9 +26,9 @@ public class RacingCars {
         return racingCars.stream().mapToInt(Car::getPosition).max().orElseThrow(IllegalStateException::new);
     }
 
-    public void moveEachCarsIfPossible() {
+    public void moveEachCarsIfPossible(int randomMinvalue, int randomMaxValue) {
         for (Car car : racingCars) {
-            car.moveIfPossible(Randoms.pickNumberInRange(0, 9));
+            car.moveIfPossible(Randoms.pickNumberInRange(randomMinvalue, randomMaxValue));
         }
     }
 
@@ -37,6 +37,10 @@ public class RacingCars {
             System.out.println(car.getStatus());
         }
         System.out.println();
+    }
+
+    public ArrayList<Car> getRacingCars() {
+        return racingCars;
     }
 
 }

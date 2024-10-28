@@ -56,7 +56,7 @@ public class Race {
     }
 
     private void round() {
-        racingCars.moveEachCarsIfPossible();
+        racingCars.moveEachCarsIfPossible(0, 9);
         racingCars.printEachCarsStatus();
     }
 
