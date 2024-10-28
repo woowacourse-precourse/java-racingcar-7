@@ -40,7 +40,7 @@ public class CarService {
         }
     }
 
-    public CarList getCarlist() {
+    public CarList getCarList() {
         return carList;
     }
 
@@ -75,5 +75,4 @@ public class CarService {
     public List<String> getWinners() {
         return winners;
     }
-
 }
