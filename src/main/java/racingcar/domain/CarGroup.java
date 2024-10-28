@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.common.IOMessage;
+import racingcar.common.Symbol;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,7 +38,7 @@ public class CarGroup {
 
     public void printCarPositions() {
         for (Car car : cars) {
-            String positionMarker = "-".repeat(car.getPosition());
+            String positionMarker = Symbol.POSITION_MARKER.getSymbol().repeat(car.getPosition());
             System.out.printf(IOMessage.CAR_POSITION_FORMAT.getText() + "%n", car.getName(), positionMarker);
         }
     }
