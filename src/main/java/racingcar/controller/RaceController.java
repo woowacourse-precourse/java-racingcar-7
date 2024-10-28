@@ -24,7 +24,8 @@ public class RaceController {
 
         Race race = new Race(cars, totalRounds);
 
-        for (RoundResult roundResult : race.raceStart()) {
+        List<RoundResult> roundResults = race.raceStart();
+        for (RoundResult roundResult : roundResults) {
             OutputView.printRoundResults(roundResult.getCarSnapshots());
         }
 
