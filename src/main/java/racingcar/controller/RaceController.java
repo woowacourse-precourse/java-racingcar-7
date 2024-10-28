@@ -7,6 +7,8 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RaceController {
+    private static final String CAR_NAME_SEPARATOR = ",";
+
     private final InputView inputView;
     private final OutputView outputView;
     private final RaceTrack raceTrack;
@@ -22,17 +24,22 @@ public class RaceController {
     }
 
     public void run() {
-        String carRegistrationRequest = getCarNames();
+        List<String> carNames = getCarNames();
         int trialCount = getTrialCount();
 
-        raceTrack.registerCars(carRegistrationRequest);
+        raceTrack.registerCars(carNames);
         playRace(trialCount);
         announceWinners();
     }
 
-    private String getCarNames() {
+    private List<String> getCarNames() {
         outputView.displayCarNameInputMessage();
-        return inputView.getString();
+        String carRegistrationRequest = inputView.getString();
+        return parseCarNames(carRegistrationRequest);
+    }
+
+    private List<String> parseCarNames(String carRegistrationRequest) {
+        return List.of(carRegistrationRequest.split(CAR_NAME_SEPARATOR));
     }
 
     private int getTrialCount() {
