@@ -12,7 +12,7 @@ public class Car {
 
     public void move() {
         int powerOfCars = Randoms.pickNumberInRange(0, 9);
-        if (powerOfCars >= 5) {
+        if (powerOfCars >= 4) {
             distance++;
         }
     }
