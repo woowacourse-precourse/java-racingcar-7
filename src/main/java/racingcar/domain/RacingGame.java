@@ -27,7 +27,10 @@ public class RacingGame {
     }
 
     private void recordCurrentRound() {
-        this.roundHistory.addRoundSnapshot(round.nowRound(), RoundSnapshot.from(getRacers()));
+        this.roundHistory.addRoundSnapshot(
+                round.nowRound(),
+                RoundSnapshot.from(getRacers())
+        );
     }
 
     public List<RoundResult> getRacingResult() {

@@ -22,14 +22,14 @@ class RoundHistoryTest {
         roundResult.add(new RoundResult("car1", 1));
         roundResult.add(new RoundResult("car2", 2));
         roundResult.add(new RoundResult("car3", 3));
-        roundSnapshot = new RoundSnapshot(roundResult, 3);
+        roundSnapshot = new RoundSnapshot(roundResult);
     }
 
     @Test
     @DisplayName("라운드 정보를 추가 한 경우, 라운드 정보의 상세 내역을 알 수 있다.")
     void givenRoundResultSnapshot_whenAddRoundResult_ThenRoundSnapshotHasSizeThree() {
         // given
-        RoundSnapshot roundSnapshot = new RoundSnapshot(List.of(roundResult.getFirst()), 0);
+        RoundSnapshot roundSnapshot = new RoundSnapshot(List.of(roundResult.getFirst()));
 
         // when
         roundHistory.addRoundSnapshot(1, roundSnapshot);
@@ -59,34 +59,6 @@ class RoundHistoryTest {
         // when & then
         assertThatThrownBy(() -> roundHistory.getRoundResult(1))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("3개의 라운드 정보가 주어질 경우, 승자는 1명이다.")
-    void givenDefaultRoundSnapshotAndAddRoundResult_whenGetWinnersByRound_thenOneWinner() {
-        // given
-        roundHistory.addRoundSnapshot(1, roundSnapshot);
-
-        // when
-        List<String> result = roundHistory.getWinnersByRound(1);
-
-        // then
-        assertThat(result).hasSize(1);
-    }
-
-    @Test
-    @DisplayName("4개의 라운드 정보가 주어질 경우, 승자는 2명이다.")
-    void givenFourRoundResultSnapshotAndAddRoundResult_whenGetWinnersByRound_thenTwoWinner() {
-        // given
-        roundResult.add(new RoundResult("car4", 3));
-        roundSnapshot = new RoundSnapshot(roundResult, 3);
-        roundHistory.addRoundSnapshot(1, roundSnapshot);
-
-        // when
-        List<String> result = roundHistory.getWinnersByRound(1);
-
-        // then
-        assertThat(result).hasSize(2);
     }
 
 }

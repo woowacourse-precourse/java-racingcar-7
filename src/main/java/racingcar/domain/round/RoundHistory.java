@@ -21,13 +21,7 @@ public class RoundHistory {
     }
 
     public List<String> getWinnersByRound(int round) {
-        RoundSnapshot roundSnapShot = getRoundSnapShot(round);
-
-        return roundSnapShot.roundResult()
-                .stream()
-                .filter(roundInfo -> roundInfo.position() == roundSnapShot.maxPosition())
-                .map(RoundResult::carName)
-                .toList();
+        return getRoundSnapShot(round).getWinners();
     }
 
     private RoundSnapshot getRoundSnapShot(int round) {
