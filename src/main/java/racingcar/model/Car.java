@@ -28,4 +28,9 @@ public class Car {
     public List<Integer> getDistanceList() {
         return Collections.unmodifiableList(Collections.singletonList(distance));
     }
+
+    // 이름을 읽기 전용 리스트로 반환
+    public List<String> getImmutableNameList() {
+        return Collections.unmodifiableList(Collections.singletonList(name));
+    }
 }
