@@ -14,7 +14,7 @@ public class Car {
     public void moveOnceRandom() {
         int num = Randoms.pickNumberInRange(0, 9);
 
-        if (num > 4) {
+        if (num >= 4) {
             location++;
         }
     }
