@@ -9,9 +9,15 @@ public class GameConfiguration {
     private int attemptCount;
 
     public GameConfiguration(InputHandler inputHandler, InputParser inputParser) {
-        String carNames = inputHandler.inputCarNames();
-        this.carsNames = inputParser.parser(carNames);
-        this.attemptCount = inputHandler.inputGameCount();
+        String input = inputHandler.inputCarNames();
+        Validation.validateDelimiter(input);
+        String[] carNames = inputParser.parser(input);
+        Validation.validateCarNames(carNames);
+        this.carsNames = carNames;
+
+        int gameCount = inputHandler.inputGameCount();
+        Validation.validateAttemptCount(String.valueOf(gameCount));
+        this.attemptCount = gameCount;
     }
 
     public String[] carNames() {
