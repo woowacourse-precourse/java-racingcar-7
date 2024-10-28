@@ -47,15 +47,15 @@ class ApplicationTest extends NsTest {
     @Test
     void 시도_횟수_비정상_알파벳_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,,hello", "a"))
+                assertThatThrownBy(() -> runException("pobi,hello", "a"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
-    void 시도_횟수_비정상_음수_예외_테스트() {
+    void 시도_횟수_음수_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,,hello", "-1"))
+                assertThatThrownBy(() -> runException("pobi,hello", "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
