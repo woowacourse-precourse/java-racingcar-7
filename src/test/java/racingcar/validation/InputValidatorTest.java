@@ -9,13 +9,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.validation.ErrorMessage.*;
 
 public class InputValidatorTest {
-    private static final String CARNAME_ERROR_MESSAGE_COUNT = "생성할 수 있는 자동차의 개수는 2개 이상 20이하 입니다.";
-    private static final String CARNAME_ERROR_MESSAGE_LENGTH = "이름은 1글자 이상, 5글자 이하 입니다.";
-    private static final String CARNAME_ERROR_MESSAGE_FORMAT = "이름은 숫자, 알파벳, 한글 조합만 가능합니다.";
-    private static final String GAMECOUNT_ERROR_MESSAGE_LENGTH = "시도할 횟수는 1이상 99999이하의 숫자입니다.";
-    private static final String GAMECOUNT_ERROR_MESSAGE_FORMAT = "숫자를 입력해주세요.";
 
     private static Stream<Arguments> provideCarNameCases() {
         return Stream.of(
@@ -29,15 +25,15 @@ public class InputValidatorTest {
 
     private static Stream<Arguments> provideCarNameExceptionCases() {
         return Stream.of(
-                Arguments.of("abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc", CARNAME_ERROR_MESSAGE_COUNT),
-                Arguments.of("abc,abc", CARNAME_ERROR_MESSAGE_COUNT),
-                Arguments.of("abc", CARNAME_ERROR_MESSAGE_COUNT),
-                Arguments.of("", CARNAME_ERROR_MESSAGE_COUNT),
-                Arguments.of("abc,", CARNAME_ERROR_MESSAGE_COUNT),
-                Arguments.of("abcdef", CARNAME_ERROR_MESSAGE_COUNT),
-                Arguments.of("abc,abcdefg", CARNAME_ERROR_MESSAGE_LENGTH),
-                Arguments.of("abc,a bc", CARNAME_ERROR_MESSAGE_FORMAT),
-                Arguments.of("1###,1@,1\n234", CARNAME_ERROR_MESSAGE_FORMAT)
+                Arguments.of("abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc", CAR_NAME_COUNT_ERROR),
+                Arguments.of("abc,abc", CAR_NAME_COUNT_ERROR),
+                Arguments.of("abc", CAR_NAME_COUNT_ERROR),
+                Arguments.of("", CAR_NAME_COUNT_ERROR),
+                Arguments.of("abc,", CAR_NAME_COUNT_ERROR),
+                Arguments.of("abcdef", CAR_NAME_COUNT_ERROR),
+                Arguments.of("abc,abcdefg", CAR_NAME_LENGTH_ERROR),
+                Arguments.of("abc,a bc", CAR_NAME_FORMAT_ERROR),
+                Arguments.of("1###,1@,1\n234", CAR_NAME_FORMAT_ERROR)
         );
     }
 
@@ -51,11 +47,11 @@ public class InputValidatorTest {
 
     private static Stream<Arguments> provideGameCountExceptionCases() {
         return Stream.of(
-                Arguments.of("abc", GAMECOUNT_ERROR_MESSAGE_FORMAT),
-                Arguments.of("#DE,", GAMECOUNT_ERROR_MESSAGE_FORMAT),
-                Arguments.of("-1", GAMECOUNT_ERROR_MESSAGE_LENGTH),
-                Arguments.of("0", GAMECOUNT_ERROR_MESSAGE_LENGTH),
-                Arguments.of("99999999", GAMECOUNT_ERROR_MESSAGE_LENGTH)
+                Arguments.of("abc", GAME_COUNT_FORMAT_ERROR),
+                Arguments.of("#DE,", GAME_COUNT_FORMAT_ERROR),
+                Arguments.of("-1", GAME_COUNT_RANGE_ERROR),
+                Arguments.of("0", GAME_COUNT_RANGE_ERROR),
+                Arguments.of("99999999", GAME_COUNT_RANGE_ERROR)
         );
     }
 
