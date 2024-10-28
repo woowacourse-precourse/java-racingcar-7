@@ -8,6 +8,14 @@ public class Car {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getRacingStatus() {
+        return racingStatus;
+    }
+
     public void go() {
         this.racingStatus += 1;
     }
