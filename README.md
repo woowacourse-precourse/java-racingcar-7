@@ -8,7 +8,8 @@
 
 - 여러 역할을 수행하는 큰 함수를 단일 역할을 수행하는 작은 함수로 분리한다.
 - 테스트 도구를 사용하는 방법을 배우고 프로그램이 제대로 작동하는지 테스트한다.
-- [1주 차 공통 피드백](https://docs.google.com/document/d/1MdiqBV5nhSfFB96-p5LlKrGM8uLopXslh1vEzwxR9Bo/edit?usp=sharing)을 최대한 반영한다.
+- [1주 차 공통 피드백](https://docs.google.com/document/d/1MdiqBV5nhSfFB96-p5LlKrGM8uLopXslh1vEzwxR9Bo/edit?usp=sharing)을 최대한
+  반영한다.
 
 # **기능 요구 사항**
 
@@ -33,11 +34,11 @@
 
 ---
 
-- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
+- 사용자가 잘못된 값을 입력할 경우`IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
 ---
 
-# **✏️ 프로그램의 흐름 정리** 
+# **✏️ 프로그램의 흐름 정리**
 
 <aside>
 
@@ -52,7 +53,6 @@
 4. 주어진 횟수가 끝나면 가장 많이 전진한 차량을 최종 우승자로 선정해서 출력
 
    → 다수가 우승했을 경우 쉼표를 이용해서 출력해야 함
-
 
 **`잘못된 값`  정의**
 
@@ -84,7 +84,7 @@
 
 - 아무런 이름을 입력하지 않는 경우
 
-  → 해당 상황은 `,` , `\n` 와 같은 경우인데, 인식할  이름이 없는 경우는 잘못된 값
+  → 해당 상황은 `,` , `\n` 와 같은 경우인데, 인식할 이름이 없는 경우는 잘못된 값
 
 </aside>
 
@@ -93,6 +93,7 @@
 # **기능 구현 목록**
 
 ## 1. 사용자 입력 처리
+
 - [x] **자동차 이름 입력받기**
     - [x] 쉼표(,)로 구분된 이름 입력
     - [x] 각 이름은 5자 이하로 제한
@@ -108,6 +109,7 @@
 ---
 
 ## 2. 자동차 객체 생성 및 초기화
+
 - [x] **자동차 객체(CarInfo) 생성**
     - [x] 입력된 이름을 기반으로 객체 생성
     - [x] 각 자동차의 초기 이동 칸 수를 0으로 설정
@@ -115,6 +117,7 @@
 ---
 
 ## 3. 경주 진행 (RaceProcessService)
+
 - [x] **경주를 시도 횟수만큼 반복**
     - [x] 각 시도마다 무작위 값 생성(RandomNumber)
         - [x] 4 이상일 경우 자동차가 전진
@@ -122,6 +125,7 @@
 ---
 
 ## 4. 자동차 상태 업데이트 및 이동 거리 출력
+
 - [x] **자동차 이동 결과 출력**
     - [x] 매 시도 후 모든 자동차의 이동 거리 출력
         - 예시: `pobi : --, woni : ---`
@@ -130,14 +134,16 @@
 ---
 
 ## 5. 우승자 선정 (RaceResultEvaluator)
-- [ ] **최종 우승자 선정**
-    - [ ] 경주 종료 후 가장 멀리 이동한 자동차를 선정
-    - [ ] 단독 우승자: `최종 우승자: pobi`
-    - [ ] 공동 우승자: `최종 우승자: pobi, jun`
+
+- [x] **최종 우승자 선정**
+    - [x] 경주 종료 후 가장 멀리 이동한 자동차를 선정
+    - [x] 단독 우승자: `최종 우승자: pobi`
+    - [x] 공동 우승자: `최종 우승자: pobi, jun`
 
 ---
 
 ## 6. 입력 및 예외 처리
+
 - [x] **IllegalArgumentException 예외 처리**
     - [x] 잘못된 값 입력 시 예외 발생
     - [x] 예외 메시지 출력 후 프로그램 종료
@@ -146,31 +152,33 @@
 ---
 
 ## 7. MVC 패턴 구현
-- [ ] **RaceViewController**
-    - [ ] InputView와 OutputView를 사용해 사용자와 상호작용
 
-- [ ] **RaceProcessController**
-    - [ ] 비즈니스 로직 수행 및 결과 전달
+- [x] **RaceViewController**
+    - [x] InputView와 OutputView를 사용해 사용자와 상호작용
 
-- [ ] **팩토리 패턴 적용**
-    - [ ] DomainFactory를 통해 도메인 객체 생성 위임
-    - [ ] RaceProcessService에서 직접 객체를 생성하지 않도록 설계
+- [x] **RaceProcessController**
+    - [x] 비즈니스 로직 수행 및 결과 전달
+
+- [x] **팩토리 패턴 적용**
+    - [x] DomainFactory를 통해 도메인 객체 생성 위임
+    - [x] RaceProcessService에서 직접 객체를 생성하지 않도록 설계
 
 ---
 
 ## 8. 테스트 코드 작성 및 검증
-- [ ] **테스트 항목**
-    - [ ] 이름 검증(NameValidation) 테스트
-    - [ ] 시행 횟수 검증(NumberOfTrialValidation) 테스트
-    - [ ] 경주 로직 테스트
-    - [ ] 우승자 선정 로직 테스트
+
+- [x] **테스트 항목**
+    - [x] 이름 검증(NameValidation) 테스트
+    - [x] 시행 횟수 검증(NumberOfTrialValidation) 테스트
+    - [x] 경주 로직 테스트
+    - [x] 우승자 선정 로직 테스트
 
 ---
 
 ## 9. 상수 및 메시지 관리
+
 - [x] **ErrorMessage**: 에러 메시지 상수화
 - [x] **IOMessage**: 입출력 메시지 상수화
-
 
 # **프로젝트 구조**
 
@@ -196,10 +204,10 @@
     - Constants // 전반적으로 사용되는 상수 관리
         - Constant
     - Exception
-      - ErrorMessage  // 에러 메시지 관련 문자열 상수화
-      - ExceptionType // Enum 객체
+        - ErrorMessage // 에러 메시지 관련 문자열 상수화
+        - ExceptionType // Enum 객체
     - Message // 문자열 관련 상수
-      - IOMessage // 입출력 관련 문자열 상수화
+        - IOMessage // 입출력 관련 문자열 상수화
 - View
     - InputView // 사용자에게 보여질 화면 (입력)
     - OutputView // 사용자에게 보여질 화면 (출력)
