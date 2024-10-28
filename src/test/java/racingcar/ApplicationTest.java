@@ -82,6 +82,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 자동차_이름_중복_실패_케이스() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("ABC,ABC", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 시도횟수_알파벳_입력() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("A,B", "case"))

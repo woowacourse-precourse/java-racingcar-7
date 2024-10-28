@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.model.Cars;
 import racingcar.service.CarService;
 import racingcar.service.Extractor;
@@ -40,7 +41,10 @@ public class ApplicationController {
     }
 
     private Cars getCars(String input) {
-        Cars cars = extractor.extractCars(input);
+        List<String> carNames = extractor.getCarNames(input);
+        validator.validateDuplicatedCarName(carNames);
+
+        Cars cars = extractor.extractCars(carNames);
         validator.validateCountOfCars(cars);
         validator.validateCarNameLength(cars);
         return cars;

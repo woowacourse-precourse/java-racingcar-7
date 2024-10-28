@@ -1,5 +1,9 @@
 package racingcar.service;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 
@@ -8,6 +12,16 @@ public class Validator {
     public void validateIsEmpty(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+        }
+    }
+
+    public void validateDuplicatedCarName(List<String> carNames) {
+        Set<String> carNameSet = new HashSet<>();
+
+        for (String carName : carNames) {
+            if (!carNameSet.add(carName)) {
+                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
+            }
         }
     }
 
