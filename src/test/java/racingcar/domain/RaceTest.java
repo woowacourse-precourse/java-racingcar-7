@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,10 +55,7 @@ public class RaceTest {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi"));
 
-        IllegalArgumentException thrown = org.junit.jupiter.api.Assertions.assertThrows(
-                IllegalArgumentException.class,
-                () -> new Race(cars, -1)
-        );
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Race(cars, -1));
 
         assertEquals("시도할 횟수는 0 이상이어야 합니다.", thrown.getMessage());
     }
