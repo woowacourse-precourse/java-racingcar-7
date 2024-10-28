@@ -27,6 +27,8 @@ public class WinnerManagerTest {
         car2.setDistance(4);
         car3.setDistance(7);
         car4.setDistance(10);
+
+        winnerManager = new WinnerManager();
     }
 
     @Test
