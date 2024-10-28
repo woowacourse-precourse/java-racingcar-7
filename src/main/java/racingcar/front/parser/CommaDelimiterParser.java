@@ -13,16 +13,25 @@ public class CommaDelimiterParser {
     private static final String COMMA = ",";
 
     public static List<String> parse(String carNames) {
-        if (INPUT_FORMAT.matcher(carNames).matches() == false) {
+        if (isMatch(carNames) == false) {
             throw new InvalidCarNameInputException();
         }
 
-        String[] split = carNames.split(COMMA);
-        Set<String> nonDuplicatedCarNames = Arrays.stream(split).collect(Collectors.toSet());
-        if (nonDuplicatedCarNames.size() < split.length) {
+        String[] splitCarNames = carNames.split(COMMA);
+
+        if (checkDuplicatedNames(splitCarNames)) {
             throw new DuplicatedCarNamesException();
         }
 
-        return Arrays.stream(split).toList();
+        return Arrays.stream(splitCarNames).toList();
+    }
+
+    private static boolean isMatch(String carNames) {
+        return INPUT_FORMAT.matcher(carNames).matches();
+    }
+
+    private static boolean checkDuplicatedNames(String[] carNames){
+        Set<String> nonDuplicatedCarNames = Arrays.stream(carNames).collect(Collectors.toSet());
+        return nonDuplicatedCarNames.size() < carNames.length;
     }
 }
