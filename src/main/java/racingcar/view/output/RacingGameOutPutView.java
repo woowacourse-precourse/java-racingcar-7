@@ -1,11 +1,11 @@
-package racingcar;
+package racingcar.view.output;
 
 import java.util.List;
 
-public class RacingGameResultOutPut implements GameResultOutput {
+public class RacingGameOutPutView implements OutputView {
 
     @Override
-    public void printRoundResult(List<GameRoundResultOutput> results) {
+    public void printRoundResult(List<RoundView> results) {
         StringBuilder output = new StringBuilder();
         output.append("\n실행 결과\n");
 

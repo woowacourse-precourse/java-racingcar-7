@@ -1,16 +1,18 @@
-package racingcar;
+package racingcar.domain.game;
 
 import java.util.List;
+import racingcar.domain.car.Cars;
+import racingcar.view.output.OutputView;
 
 public class RacingGame implements Game {
     private final Cars cars;
     private final RacingGameCount racingCount;
-    private final GameResultOutput resultView;
+    private final OutputView outputView;
 
-    public RacingGame(Cars cars, RacingGameCount racingCount, GameResultOutput gameResultOutput) {
+    public RacingGame(Cars cars, RacingGameCount racingCount, OutputView outputView) {
         this.cars = cars;
         this.racingCount = racingCount;
-        this.resultView = gameResultOutput;
+        this.outputView = outputView;
     }
 
     @Override
@@ -24,12 +26,12 @@ public class RacingGame implements Game {
     }
 
     private void playOneRound() {
-        cars.pickRandomNumberAndMoveCar();
-        resultView.printRoundResult(cars.createRoundResults());
+        cars.moveAllCarsRandomly();
+        outputView.printRoundResult(cars.createRoundResults());
     }
 
     private void printWinners() {
         List<String> winners = cars.findWinners();
-        resultView.printGameResult(winners);
+        outputView.printGameResult(winners);
     }
 }

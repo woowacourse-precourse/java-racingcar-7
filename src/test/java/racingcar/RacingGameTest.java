@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Car;
 
 @DisplayName("자동차 경주 테스트")
 public class RacingGameTest {

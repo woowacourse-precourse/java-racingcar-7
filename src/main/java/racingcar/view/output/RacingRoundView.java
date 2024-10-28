@@ -1,10 +1,10 @@
-package racingcar;
+package racingcar.view.output;
 
-public class RacingRoundResultOutput implements GameRoundResultOutput {
+public class RacingRoundView implements RoundView {
     private final String name;
     private final int position;
 
-    public RacingRoundResultOutput(String name, int position) {
+    public RacingRoundView(String name, int position) {
         this.name = name;
         this.position = position;
     }

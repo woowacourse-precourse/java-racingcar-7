@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.game;
 
 public interface Game {
     void play();

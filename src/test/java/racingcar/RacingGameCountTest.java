@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.game.RacingGameCount;
 
 @DisplayName("경주 횟수 검증 테스트")
 public class RacingGameCountTest {

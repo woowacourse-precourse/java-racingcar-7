@@ -1,10 +1,12 @@
-package racingcar;
+package racingcar.domain.car;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.view.output.RoundView;
+import racingcar.view.output.RacingRoundView;
 
 public class Cars {
     private final List<Car> cars;
@@ -34,7 +36,7 @@ public class Cars {
         }
     }
 
-    public void pickRandomNumberAndMoveCar() {
+    public void moveAllCarsRandomly() {
         cars.forEach(car -> {
             int number = Randoms.pickNumberInRange(0, 9);
             car.moveCar(number);
@@ -60,9 +62,9 @@ public class Cars {
         return cars.size();
     }
 
-    public List<GameRoundResultOutput> createRoundResults() {
+    public List<RoundView> createRoundResults() {
         return cars.stream()
-                .map(car -> new RacingRoundResultOutput(car.getName(), car.getPosition()))
+                .map(car -> new RacingRoundView(car.getName(), car.getPosition()))
                 .collect(Collectors.toList());
     }
 

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.game;
 
 public class RacingGameCount {
     private final int tryCount;
