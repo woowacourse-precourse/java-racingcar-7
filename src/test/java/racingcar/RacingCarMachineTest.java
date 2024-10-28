@@ -11,6 +11,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.io.InputHandler;
@@ -43,6 +45,21 @@ class RacingCarMachineTest {
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 		System.setIn(inputStream);
 		return new RacingCarMachine(outputHandler, inputHandler);
+	}
+
+	@DisplayName("게임을 정상적으로 실행할 수 있다.")
+	@ParameterizedTest
+	@ValueSource(strings = {"name,poni\n2\n", "name,poni,juni\n3\n", "java\n1\n"})
+	void runGameTest(String input) {
+		// given
+		RacingCarMachine machine = createRacingCarMachine(input);
+		String output;
+
+		// when
+		machine.run();
+		// then
+		output = outputStream.toString();
+		assertThat(output.contains("최종 우승자 : ")).isTrue();
 	}
 
 	@DisplayName("이름을 입력하지 않으면 예외가 발생한다.")
