@@ -17,9 +17,9 @@ public class RaceTrack {
     }
 
     public List<Car> getWinner() {
-        int maxPositon = getMaxPosition();
+        int maxPosition = getMaxPosition();
         return carList.stream()
-                .filter(car -> car.getPosition() == maxPositon)
+                .filter(car -> car.getPosition() == maxPosition)
                 .collect(Collectors.toList());
     }
 
