@@ -2,6 +2,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,16 +51,6 @@ public class CarService {
     }
     return winners;
   }
-  private void printWinners(List<String> winners) {
-    System.out.print("최종 우승자 : ");
-    for (int i = 0; i < winners.size(); i++) {
-      System.out.print(winners.get(i));
-      if (i != winners.size() - 1) {
-        System.out.print(", ");
-      }
-    }
-    System.out.println();
-  }
   private void moveCars() {
     for (Car car : cars) {
       if (canMove()) {
@@ -75,6 +66,6 @@ public class CarService {
       System.out.println();
     }
     List<String>Winners = findWinners();
-    printWinners(Winners);
+    OutputView.printWinners(Winners);
   }
 }
