@@ -7,7 +7,7 @@ import static racingcar.model.Number.MAX_NUMBER;
 import static racingcar.model.Number.RESTRICT_NUMBER;
 
 
-public class Random {
+public class RandomUtils {
 
     public static int createRandomNumber() {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
