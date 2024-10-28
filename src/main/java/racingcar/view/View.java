@@ -35,6 +35,10 @@ public class View {
         return Console.readLine();
     }
 
+    public static void printlnString(String string) {
+        System.out.println(string);
+    }
+
     public static class Validator {
         public static void validateCarNames(String input) {
             List<String> names = Arrays.asList(input.split(","));

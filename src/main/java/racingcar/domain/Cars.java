@@ -20,4 +20,21 @@ public class Cars {
                 .collect(Collectors.toList());
         return new Cars(cars);
     }
+
+    public void tryMoveCars() {
+        for (Car car : cars) {
+            car.tryMove();
+        }
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    @Override
+    public String toString() {
+        return cars.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining("\n"));
+    }
 }
