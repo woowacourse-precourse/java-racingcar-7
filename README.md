@@ -17,7 +17,7 @@
 5. 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션을 종료한다.
 
 ### 예외 상황
--  이름이 5자 이상이면 예외
+-  이름이 6자 이상이면 예외
 - 입력값 시작이나 끝이 쉼표이면 예외
 - 이름이 중복되면 예외
 - 이름이 비었으면 예외
@@ -47,8 +47,12 @@
   - 메인 실행 메소드 racing
 - service.RacingService
   - 입력값 처리 setCarsAndRoundNumber
+  - 자동차 입력값 처리 setCars
   - 자동차 이름 추출 splitCars
   - 자동차 이름 검증 validateCarsInput
+  - 자동차 이름 길이 확인 checkCarsLength
+  - 자동차 이름 중복 확인 checkCarsDuplication
+  - 횟수 입력값 처리 setRoundNumber
   - 횟수 검증 validateRoundNumberInput
   - 전진 횟수 리스트 생성 initializeCarsStatus
   - 횟수만큼 반복 메인 메소드 racing
