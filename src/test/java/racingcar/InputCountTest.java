@@ -23,7 +23,7 @@ class InputCountTest {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         // when
-        String result = InputCount.getInputCountData();
+        String result = InputManager.getInputCountData();
 
         // then
         String expectedOutput = "시도할 횟수는 몇 회인가요?";
