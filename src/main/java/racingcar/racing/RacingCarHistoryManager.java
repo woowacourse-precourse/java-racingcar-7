@@ -3,12 +3,12 @@ package racingcar.racing;
 import java.util.List;
 import racingcar.persistence.RacingCarHistoryRepository;
 
-public class CarRaceHistoryManager {
+public class RacingCarHistoryManager {
 
     private final RacingCarHistoryRepository repository;
-    private final CarRaceHistoryWriter writer;
+    private final RacingCarHistoryWriter writer;
 
-    public CarRaceHistoryManager(RacingCarHistoryRepository repository, CarRaceHistoryWriter writer) {
+    public RacingCarHistoryManager(RacingCarHistoryRepository repository, RacingCarHistoryWriter writer) {
         this.repository = repository;
         this.writer = writer;
     }

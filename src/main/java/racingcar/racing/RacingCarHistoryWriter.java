@@ -5,7 +5,7 @@ import static racingcar.common.FormatConstants.LINE_BREAKER;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarRaceHistoryWriter {
+public class RacingCarHistoryWriter {
 
     public String writeAll(List<CarRacer> carRacers) {
         return carRacers.stream()
