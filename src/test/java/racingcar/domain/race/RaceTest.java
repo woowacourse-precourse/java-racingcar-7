@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
-import racingcar.domain.result.RaceResult;
 
 class RaceTest {
 
@@ -35,9 +34,9 @@ class RaceTest {
         race.runOneRound();
 
         // then
-        assertThat(race.getCars().get(0).getPosition()).isEqualTo(1);
-        assertThat(race.getCars().get(1).getPosition()).isEqualTo(1);
-        assertThat(race.getCars().get(2).getPosition()).isEqualTo(0);
+        assertThat(cars.get(0).getPosition()).isEqualTo(1);
+        assertThat(cars.get(1).getPosition()).isEqualTo(1);
+        assertThat(cars.get(2).getPosition()).isEqualTo(0);
     }
 
     @DisplayName("전체 경주가 끝나면 최종 우승자가 결정된다.")
@@ -48,11 +47,11 @@ class RaceTest {
         Race race = new Race(cars, totalRounds);
 
         // when
-        RaceResult result = race.raceStart();
+        List<Car> winners = race.raceStart();
 
         // then
         //항상 전진하는 Car1과 Car2 공동 우승
-        assertThat(result.getWinners()).containsExactlyInAnyOrder(cars.get(0), cars.get(1));
+        assertThat(winners).containsExactlyInAnyOrder(cars.get(0), cars.get(1));
     }
 
     @DisplayName("모든 라운드를 실행하면, 각 라운드에서 자동차의 위치가 변화한다.")
@@ -65,9 +64,9 @@ class RaceTest {
         race.raceStart();
 
         // then
-        assertThat(race.getCars().get(0).getPosition()).isEqualTo(3);
-        assertThat(race.getCars().get(1).getPosition()).isEqualTo(3);
-        assertThat(race.getCars().get(2).getPosition()).isEqualTo(0);
+        assertThat(cars.get(0).getPosition()).isEqualTo(3);
+        assertThat(cars.get(1).getPosition()).isEqualTo(3);
+        assertThat(cars.get(2).getPosition()).isEqualTo(0);
     }
 
     @DisplayName("중복된 차 이름이 있으면 예외를 발생시킨다.")

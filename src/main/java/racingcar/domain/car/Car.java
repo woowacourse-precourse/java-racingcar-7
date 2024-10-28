@@ -25,17 +25,30 @@ public class Car {
         }
     }
 
-    public void move() {
+    public void oneRoundStart() {
+        move();
+    }
+
+    private void move() {
         if (movingStrategy.canMove()) {
             this.position++;
         }
     }
 
-    public String getName() {
-        return name;
+    public boolean isAheadOf(Car otherCar) {
+        return this.position > otherCar.position;
     }
+
+    public boolean isSamePositionAs(Car leadingCar) {
+        return this.position.equals(leadingCar.position);
+    }
+
 
     public Integer getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }

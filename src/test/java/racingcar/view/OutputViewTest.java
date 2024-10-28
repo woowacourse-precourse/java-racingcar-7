@@ -38,8 +38,8 @@ class OutputViewTest {
                 new Car("Car3", () -> true)
         );
 
-        cars.get(0).move();
-        cars.get(2).move();
+        cars.get(0).oneRoundStart();
+        cars.get(2).oneRoundStart();
 
         // when
         OutputView.printRoundResults(cars);

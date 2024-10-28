@@ -7,13 +7,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
+
     @Test
     @DisplayName("이동할 수 있는 경우, 전진한다.")
     void moveWhenStrategyAllows() {
         //항상 canMove가 true인 전략
         Car car = new Car("Car", () -> true);
 
-        car.move();
+        car.oneRoundStart();
 
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -24,10 +25,11 @@ class CarTest {
         //항상 canMove가 false인 전략
         Car car = new Car("Car", () -> false);  // 전진 불가
 
-        car.move();
+        car.oneRoundStart();
 
         assertThat(car.getPosition()).isEqualTo(0);
     }
+
 
     @DisplayName("이름이 5자인 경우 정상적으로 생성된다.")
     @Test
