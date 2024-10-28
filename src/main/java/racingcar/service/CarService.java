@@ -6,43 +6,44 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
+import racingcar.util.ErrorMessage;
 
 public class CarService {
+    private static final String DELIMITER = ",";
     public String[] getCarsByDelimiter(String carNames) {
         if (carNames == null || carNames.isBlank()) {
-            throw new IllegalArgumentException("널이거나 비었네");
+            throw new IllegalArgumentException(ErrorMessage.NULL_OR_EMPTY_INPUT.getMessage());
         }
-        String[] cars = carNames.split(",");
+        String[] cars = carNames.split(DELIMITER);
         if (cars.length == 0) {
-            throw new IllegalArgumentException("구분자로만 이루어진 문자열입니다.");
+            throw new IllegalArgumentException(ErrorMessage.ONLY_DELIMITER_STRING.getMessage());
         }
         for (String name : cars) {
             if (name.isBlank()) {
-                throw new IllegalArgumentException("이름은 빈 문자열이 될 수 없습니다.");
+                throw new IllegalArgumentException(ErrorMessage.BLANK_NAME.getMessage());
             }
             if (name.length() > 5) {
-                throw new IllegalArgumentException("이름의 길이가 5글자 이상입나다.");
+                throw new IllegalArgumentException(ErrorMessage.NAME_TOO_LONG.getMessage());
             }
-
         }
         return cars;
     }
 
     public int getNumber(String number) {
         if (number == null || number.isBlank()) {
-            throw new IllegalArgumentException("널이거나 공백입니다.");
+            throw new IllegalArgumentException(ErrorMessage.NULL_OR_EMPTY_INPUT.getMessage());
         }
         if (number.charAt(0) == '-') {
-            throw new IllegalArgumentException("음수입니다.");
+            throw new IllegalArgumentException(ErrorMessage.NEGATIVE_NUMBER.getMessage());
         }
         try {
             int data = Integer.parseInt(number);
             if (data <= 0) {
-                throw new IllegalArgumentException("입력값이 0이거나 오버플로우가 발생했습니다.");
+                throw new IllegalArgumentException(ErrorMessage.ZERO_OR_OVERFLOW.getMessage());
             }
             return data;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값이 소수나 문자입니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_FORMAT.getMessage());
         }
     }
 
@@ -54,7 +55,7 @@ public class CarService {
         return cars.stream()
                 .filter(car -> car.getPosition().length() == winnerPosition)
                 .map(Car::getName)
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(DELIMITER));
     }
 
     public List<Car> getCarsByCarNames(String[] carNames) {
