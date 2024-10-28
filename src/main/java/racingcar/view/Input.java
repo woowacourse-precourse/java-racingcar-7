@@ -11,14 +11,21 @@ public class Input {
 
 	public static List<String> readCarNames() {
 		String carNames = Console.readLine();
-		String[] split = carNames.split(DELIMITER);
+		String[] splitNames = carNames.split(DELIMITER);
 
-		if (split.length == 0 || Arrays.stream(split).allMatch(String::isBlank)) {
+		if (splitNames.length == 0 || Arrays.stream(splitNames).allMatch(str -> str.isEmpty() || str.isBlank())) {
 			throw new IllegalArgumentException("자동차 이름을 하나 이상 입력해주세요.");
 		}
 
-		return Arrays.stream(split)
+		List<String> trimmedNames = Arrays.stream(splitNames)
+			.map(String::trim)
 			.toList();
+
+		if (trimmedNames.isEmpty() || trimmedNames.contains("")) {
+			throw new IllegalArgumentException("자동차 이름을 빈 값 없이 입력해주세요.");
+		}
+
+		return trimmedNames;
 	}
 
 	public static int readTurn() {
