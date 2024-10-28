@@ -9,11 +9,11 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String cars = Console.readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String move_cnt = Console.readLine();
+        String moveCnt = Console.readLine();
 
-        validateInput(move_cnt);
-        ArrayList<Car> race_result = race_start(cars, move_cnt);
-        ArrayList<String> winners = getRaceWinners(race_result);
+        validateInput(moveCnt);
+        ArrayList<Car> raceResult = raceStart(cars, moveCnt);
+        ArrayList<String> winners = getRaceWinners(raceResult);
         printWinners(winners);
     }
 
@@ -28,7 +28,7 @@ public class Application {
         }
     }
 
-    public static ArrayList<Car> add_cars(String cars) {
+    public static ArrayList<Car> addCars(String cars) {
         ArrayList<Car> carList = new ArrayList<>();
         String[] carNames = cars.split(",");
 
@@ -36,21 +36,21 @@ public class Application {
             throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
         }
 
-        for (String car_name : carNames) {
-            car_name = car_name.strip();
-            if (car_name.isEmpty()) {
+        for (String carName : carNames) {
+            carName = carName.strip();
+            if (carName.isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
             }
-            carList.add(new Car(car_name, 0));
+            carList.add(new Car(carName, 0));
         }
         return carList;
     }
 
+    public static ArrayList<Car> raceStart(String cars, String moveCnt) {
+        ArrayList<Car> carList = addCars(cars);
+        int moveTime = Integer.parseInt(moveCnt);
 
-    public static ArrayList<Car> race_start(String cars, String move_cnt) {
-        ArrayList<Car> carList = add_cars(cars);
-        int move_time = Integer.parseInt(move_cnt);
-        while (move_time-- > 0) {
+        while (moveTime-- > 0) {
             for (Car car : carList) {
                 car.move();
                 car.showRaceProgress();
@@ -61,14 +61,15 @@ public class Application {
     }
 
     public static ArrayList<String> getRaceWinners(ArrayList<Car> carList) {
-        int maxwins = 0;
+        int maxWins = 0;
         ArrayList<String> winners = new ArrayList<>();
+
         for (Car car : carList) {
-            if (car.getDistance() > maxwins) {
-                maxwins = car.getDistance();
+            if (car.getDistance() > maxWins) {
+                maxWins = car.getDistance();
                 winners.clear();
                 winners.add(car.getName());
-            } else if (car.getDistance() == maxwins) {
+            } else if (car.getDistance() == maxWins) {
                 winners.add(car.getName());
             }
         }
@@ -76,9 +77,9 @@ public class Application {
     }
 
     public static void printWinners(ArrayList<String> winners) {
-        int i;
         System.out.print("최종 우승자 : ");
-        for (i = 0; i < winners.size() - 1; i++) {
+
+        for (int i = 0; i < winners.size() - 1; i++) {
             System.out.print(winners.get(i) + ", ");
         }
         System.out.print(winners.getLast());

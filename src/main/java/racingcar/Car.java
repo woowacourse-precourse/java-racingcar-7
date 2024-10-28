@@ -7,7 +7,7 @@ public class Car {
     private int distance;
 
     public Car(String name, int distance) {
-        validateName(name); // 유효성 검사
+        validateName(name);
         this.name = name;
         this.distance = distance;
     }
@@ -26,12 +26,13 @@ public class Car {
 
     public void move() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
-            this.distance++; // 자동차 거리 증가
+            this.distance++;
         }
     }
 
     public void showRaceProgress() {
         System.out.print(name + " : ");
+
         for (int i = 0; i < distance; i++) {
             System.out.print("-");
         }
