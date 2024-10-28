@@ -20,7 +20,7 @@ public class Car {
 	}
 
 	private boolean isMovable(int randomNumber) {
-		return randomNumber >= 4;
+		return randomNumber >= RaceConfig.MOVE_CONDITION_NUMBER.getNumber();
 	}
 
 	private void validateName(String name) {
