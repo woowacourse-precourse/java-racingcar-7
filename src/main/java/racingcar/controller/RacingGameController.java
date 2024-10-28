@@ -38,8 +38,7 @@ public class RacingGameController {
         RacingGame racingGame = new RacingGame(cars, rounds);
         OutputView.gameStart();
 
-        racingGame.gameRoundStart();
-        List<RaceRound> gameResult = racingGame.getEachRoundResult();
+        List<RaceRound> gameResult = racingGame.gameRoundStart();
 
         gameResult.forEach(round -> OutputView.roundResult(round.toStringRoundResult()));
 

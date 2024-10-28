@@ -14,16 +14,18 @@ public class RacingGame {
         eachRoundResult = new ArrayList<>();
     }
 
-    public List<RaceRound> getEachRoundResult() {
+    public List<RaceRound> getEachRoundResult(RaceRound allRounds) {
         return eachRoundResult;
     }
 
-    public void gameRoundStart(){
+    public List<RaceRound> gameRoundStart(){
         for(int i = 0; i< raceRound.getRounds(); i++){
             RaceRound thisRound = new RaceRound(i, cars);
             thisRound.roundStart(cars);
             thisRound.saveRoundResult(cars);
+            eachRoundResult.add(thisRound);
         }
+        return eachRoundResult;
     }
 
     private RaceRound getFinalRound() {
