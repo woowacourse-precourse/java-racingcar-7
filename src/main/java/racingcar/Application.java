@@ -9,9 +9,11 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNames = Console.readLine();
 
-        String[] strings = carNames.split(",");
+        Parser parser = new Parser(",");
+        String[] parsedStrings = parser.parsing(carNames);
+
         List<Vehicle> vehicles = new ArrayList<>();
-        for (String carName : strings) {
+        for (String carName : parsedStrings) {
             Engine engine = new RandomEngine(1, 9, 4);
             vehicles.add(new Car(carName, engine));
         }
@@ -22,7 +24,6 @@ public class Application {
         int cycle = Integer.parseInt(cycleString);
 
         System.out.println("실행 결과");
-
         for (int i = 1; i <= cycle; i++) {
             track.runOneCycle();
             System.out.println(track.getWholeSituation());
