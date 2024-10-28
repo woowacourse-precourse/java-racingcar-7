@@ -17,5 +17,10 @@ public class Car {
         if (pickNumber >= 4) {
             forwardProgress += "-";
         }
+        printForwardProgress();
+    }
+
+    private void printForwardProgress() {
+        System.out.println(name + " : " + forwardProgress);
     }
 }
