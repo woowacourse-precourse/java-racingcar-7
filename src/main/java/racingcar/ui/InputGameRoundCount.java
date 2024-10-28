@@ -8,11 +8,18 @@ public class InputGameRoundCount {
     private final String roundCount;
 
     InputGameRoundCount(final String roundCount) {
+        validateMinus(roundCount);
         this.roundCount = roundCount;
     }
 
     public Round getRound() {
         return new Round(this.roundCount);
+    }
+
+    private static void validateMinus(final String roundCount) {
+        if (roundCount.startsWith("-")) {
+            throw new IllegalArgumentException("라운드는 음수 불가");
+        }
     }
 
     @Override
