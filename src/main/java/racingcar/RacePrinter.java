@@ -2,22 +2,27 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class RacePrinter {
     private static final String START_MESSAGE = System.lineSeparator() + "실행 결과";
 
-    public void printWinner(ArrayList<String> winner) {
+    public void printWinner(List<Car> winners) {
         StringBuilder message = new StringBuilder("최종 우승자 : ");
-        message.append(String.join(", ",winner));
+        List<String> winnerNames = new ArrayList<>();
+        for(Car winner : winners){
+            winnerNames.add(winner.getName());
+        }
+        message.append(String.join(", ", winnerNames));
         System.out.println(message);
     }
 
-    public void printRace(HashMap<String, Integer> carMap) {
+    public void printRace(List<Car> cars) {
         StringBuilder message = new StringBuilder();
-        for (String key : carMap.keySet()) {
-            message.append(key)
+        for (Car car : cars) {
+            message.append(car.getName())
                     .append(" : ")
-                    .append("-".repeat(carMap.get(key)))
+                    .append("-".repeat(car.getMoveCount()))
                     .append("\n");
         }
         System.out.println(message);

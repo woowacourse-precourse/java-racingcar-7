@@ -8,10 +8,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Race {
     private final RacePrinter printer = new RacePrinter();
-    private HashMap<String, Integer> carMap;
+    private List<Car> cars;
 
     public void start(List<String> carNames, int raceTimes) {
-        carMap = initCars(carNames);
+        cars = initCars(carNames);
         printer.printStartMessage();
         runRace(raceTimes);
         printer.printWinner(checkWinner());
@@ -20,24 +20,24 @@ public class Race {
     private void runRace(int raceTimes) {
         for (int i = 0; i < raceTimes; i++) {
             moveAllCars();
-            printer.printRace(carMap);
+            printer.printRace(cars);
         }
     }
 
     private void moveAllCars() {
-        for (String key : carMap.keySet()) {
-            int value = carMap.get(key);
-            int number = randomNumber();
-            carMap.put(key, value + number);
+        for (Car car : cars){
+            if (randomNumber()>=4){
+                car.move();
+            }
         }
     }
 
-    private ArrayList<String> checkWinner() {
-        ArrayList<String> winners = new ArrayList<>();
+    private List<Car> checkWinner() {
+        List<Car> winners = new ArrayList<>();
         int maxValue = findMaxValue();
-        for (String key : carMap.keySet()) {
-            if (carMap.get(key) == maxValue) {
-                winners.add(key);
+        for(Car car:cars){
+            if(car.getMoveCount() == maxValue){
+                winners.add(car);
             }
         }
         return winners;
@@ -45,25 +45,21 @@ public class Race {
 
     private int findMaxValue() {
         int maxValue = 0;
-        for (int value : carMap.values()) {
-            maxValue = Math.max(maxValue, value);
+        for (Car car:cars){
+            maxValue = Math.max(maxValue,car.getMoveCount());
         }
         return maxValue;
     }
 
-    private HashMap<String, Integer> initCars(List<String> carNames) {
-        HashMap<String, Integer> map = new HashMap<>();
-        for (String car : carNames) {
-            map.put(car, 0);
+    private List<Car> initCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
-        return map;
+        return cars;
     }
 
     private int randomNumber() {
-        int num = Randoms.pickNumberInRange(0, 9);
-        if (num < 4) {
-            return 0;
-        }
-        return 1;
+        return Randoms.pickNumberInRange(0, 9);
     }
 }

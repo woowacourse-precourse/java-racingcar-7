@@ -21,7 +21,7 @@ public class CheckInput {
 
     private List<String> trimCarNames(List<String> carNames) {
         List<String> trimmedCarNames = new ArrayList<>();
-        for (String carName : carNames ) {
+        for (String carName : carNames) {
             trimmedCarNames.add(carName.trim());
         }
         return trimmedCarNames;
@@ -67,7 +67,7 @@ public class CheckInput {
 
     private int toInt(String raceCountString) {
         int raceCount = Integer.parseInt(raceCountString);
-        if(raceCount<=0){
+        if (raceCount <= 0) {
             throw new IllegalArgumentException(ERROR_INVALID_COUNT);
         }
         return Integer.parseInt(raceCountString);
