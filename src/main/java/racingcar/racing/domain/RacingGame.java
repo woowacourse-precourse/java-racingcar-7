@@ -50,4 +50,12 @@ public class RacingGame {
                 .filter(participant -> participant.getTotalDistance() == winnerScore)
                 .collect(Collectors.toList());
     }
+
+    public int getAllRound() {
+        return allRound;
+    }
+
+    public List<Car> getParticipants() {
+        return participants;
+    }
 }
