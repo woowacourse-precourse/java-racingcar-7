@@ -7,7 +7,7 @@ import racingcar.model.RaceResult;
 import java.util.List;
 
 public class Output {
-    public void printRoundResult(Cars cars) {
+    public static void printRoundResult(Cars cars) {
         for(Car car : cars.getCarList()) {
             System.out.print(car.getName() + " : ");
             printDash(car.getPosition());
@@ -16,7 +16,7 @@ public class Output {
         System.out.println();
     }
 
-    public void printWinner(Cars cars) {
+    public static void printWinner(Cars cars) {
         RaceResult raceResult = new RaceResult();
         List<Car> winner = raceResult.getWinner(cars);
         int winnerCount = 0;
@@ -28,7 +28,7 @@ public class Output {
         }
     }
 
-    private void printDash(int count) {
+    private static void printDash(int count) {
         for(int i = 0; i < count; i++)
             System.out.print("-");
     }
