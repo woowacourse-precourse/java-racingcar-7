@@ -1,5 +1,6 @@
 package racingcar.domain.car;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,6 +16,10 @@ public class Cars {
 
     public static Cars from(final List<Car> carList) {
         return new Cars(carList);
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(carList);
     }
 
     public int size() {

@@ -5,6 +5,7 @@ import racingcar.converter.Converter;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.CarFactory;
 import racingcar.domain.car.Cars;
+import racingcar.domain.race.Race;
 import racingcar.validator.TryCountValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -19,6 +20,9 @@ public class RacingController {
     public void startGame() {
         Cars cars = createCars();
         int tryCount = getTryCount();
+
+        Race race = Race.from(cars, tryCount);
+        race.start();
     }
 
     private Cars createCars() {
