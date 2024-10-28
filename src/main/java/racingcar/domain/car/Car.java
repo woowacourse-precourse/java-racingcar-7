@@ -13,11 +13,4 @@ public class Car {
             position++;
         }
     }
-
-    public String showStatus() {
-        String progress = "-".repeat(position);
-        String format = "%s : %s";
-
-        return String.format(format, name, progress);
-    }
 }
