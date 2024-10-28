@@ -6,8 +6,6 @@ import racingcar.util.Util;
 public class Validator {
 
     public boolean validateNames(String string) {
-        if (string.isEmpty() || isOverOne(string)) {
-            isOverOne(string);
         if (string.isEmpty() || isSingleName(string)) {
             throw new IllegalArgumentException();
         }
