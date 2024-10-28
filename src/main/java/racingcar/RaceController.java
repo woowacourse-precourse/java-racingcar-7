@@ -22,9 +22,10 @@ public class RaceController {
     }
 
     public void startRace(int attempts) {
+        OutputView.printResultHeader();
         for (int i = 0; i < attempts; i++) {
             playRound();
-            // OutputView.printRaceProgress(cars);
+            OutputView.printRaceProgress(cars);
         }
     }
 

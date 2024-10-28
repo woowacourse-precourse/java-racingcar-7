@@ -11,5 +11,7 @@ public class Application {
 
         int attempts = InputView.getAttempts();
 
+        raceController.startRace(attempts);
+
     }
 }
