@@ -12,6 +12,9 @@ public class Car {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
         }
+        if (name.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
+        }
         this.name = name;
     }
 
