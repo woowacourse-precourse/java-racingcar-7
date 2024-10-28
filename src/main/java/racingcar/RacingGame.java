@@ -37,4 +37,9 @@ public class RacingGame {
             System.out.println(this.toString());
         }
     }
+
+    public int getMaxPosition() {
+        cars.sort(Car::compareTo);
+        return cars.getFirst().getPosition();
+    }
 }
