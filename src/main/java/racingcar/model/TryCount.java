@@ -24,4 +24,10 @@ public class TryCount {
             throw new IllegalArgumentException(ErrorMessages.INVALID_TRY_COUNT_MIN);
         }
     }
+
+    public void repeat(Runnable runnable) {
+        for (int i = 0; i < count; i++) {
+            runnable.run();
+        }
+    }
 }
