@@ -10,6 +10,8 @@ public class Application {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();
 
+
+
     }
 }
 
@@ -30,6 +32,15 @@ class RacingGame {
             cars.add(new Car(name.trim()));
         }
         return cars;
+    }
+
+    public int inputRaceCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 정수여야 합니다.");
+        }
     }
 
 
