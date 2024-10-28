@@ -28,6 +28,9 @@ public class Application {
         try {
             validateAttemptInput(attemptInput);
             int attempts = Integer.parseInt(attemptInput);
+
+            Race race = new Race(cars);
+            race.startRace(attempts);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
