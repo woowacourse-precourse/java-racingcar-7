@@ -6,7 +6,7 @@ import racingcar.exception.RacingCarException;
 import racingcar.model.car.Car;
 
 public class Racing {
-    private static final int MAX_RACE_ROUND = 100;
+    private static final int MAX_RACE_ROUND = 10000;
     private static final int MIN_RACE_ROUND = 1;
 
     private final Participants participants;
