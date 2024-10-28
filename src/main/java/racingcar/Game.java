@@ -25,7 +25,19 @@ public class Game {
         return carNames;
     }
 
-    public void createCars(List<String> carNames){
+    void readMoveNumber(){
+        try{
+            String readString = Console.readLine();
+            String regex = "^[^0]\\d*$";
+            if(Pattern.matches(regex, readString))
+                throw new IllegalArgumentException();
+            moveNumber = Integer.parseInt(readString);
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    void createCars(List<String> carNames){
         if(carNames.isEmpty())
             throw new IllegalArgumentException();
         cars = new ArrayList<Car>();
