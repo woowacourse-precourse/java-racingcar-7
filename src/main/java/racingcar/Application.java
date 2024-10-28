@@ -43,12 +43,27 @@ public class Application {
         }
     }
 
+    public static int moveCar(List<Car> carList) {
+        int maxPosition = 0;
+
+        for (Car car : carList) {
+            car.move();
+            System.out.printf("%s : ", car.getName());
+            System.out.println("-".repeat(car.getPosition()));
+            maxPosition = Integer.max(maxPosition, car.getPosition());
+        }
+
+        return maxPosition;
+    }
+
     public static void game(List<Car> carList, int moveCount) {
         int maxPosition = 0;
+        System.out.println("\n실행 결과");
 
         //이동 및 최장 거리 계산
         while (moveCount-- > 0) {
-            //maxPosition = Integer.max(maxPosition, moveCar());
+            maxPosition = Integer.max(maxPosition, moveCar(carList));
+            System.out.println();
         }
 
         //우승자 결정
