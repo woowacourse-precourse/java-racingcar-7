@@ -3,6 +3,8 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
+    private static final int MINIMUM_MOVABLE_NUMBER = 4;
+
     private final String name;
     private int position;
 
@@ -26,6 +28,6 @@ public class Car {
     }
 
     private static boolean isMovable() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+        return Randoms.pickNumberInRange(0, 9) >= MINIMUM_MOVABLE_NUMBER;
     }
 }
