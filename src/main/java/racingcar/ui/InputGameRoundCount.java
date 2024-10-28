@@ -1,6 +1,7 @@
 package racingcar.ui;
 
 import java.util.Objects;
+import racingcar.domain.Round;
 
 public class InputGameRoundCount {
 
@@ -8,6 +9,10 @@ public class InputGameRoundCount {
 
     InputGameRoundCount(final String roundCount) {
         this.roundCount = roundCount;
+    }
+
+    public Round getRound() {
+        return new Round(this.roundCount);
     }
 
     @Override
