@@ -8,6 +8,7 @@ public class ValidatorTest {
     @Test
     void 자동차_이름_입력_검증_테스트() {
         String validInput = "povi,hhj,java";
+        String validInput2 = "povi1,hhj2,java0,sprin";
         String invalidInput = "povi,hhj.java";
         String invalidInput2 = "hohoho,hhj,java";
         // hohoho -> 6 자 이름
@@ -15,7 +16,9 @@ public class ValidatorTest {
         // 유효한 입력
         Assertions.assertThatCode(() -> InputValidator.nameValidator(validInput))
                 .doesNotThrowAnyException();
-
+        // 유효한 입력
+        Assertions.assertThatCode(() -> InputValidator.nameValidator(validInput2))
+                .doesNotThrowAnyException();
         // 잘못된 구분자 사용
         Assertions.assertThatThrownBy(() -> InputValidator.nameValidator(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
