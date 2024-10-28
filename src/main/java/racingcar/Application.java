@@ -9,7 +9,6 @@ import java.util.Map;
 public class Application {
     public static void main(String[] args) {
 
-        //
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carsNameInput = Console.readLine();
 
@@ -20,10 +19,11 @@ public class Application {
         for(String carName : carsNameInput.split(",")) {
             carsInfo.put(carName, 0);
         }
-
+        System.out.println("실행 결과");
         for(int i = 0; i < Integer.parseInt(chanceInput); i++) {
             racing(carsInfo);
-            printResult();
+            printResult(carsInfo);
+            System.out.println();
         }
 
         // 우승자 가려내기
@@ -39,7 +39,10 @@ public class Application {
         }
 
     }
-    static void printResult() {
+    static void printResult(Map<String, Integer> carsInfo) {
         // 출력하기
+        for(Map.Entry<String, Integer> entry : carsInfo.entrySet()) {
+            System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
+        }
     }
 }
