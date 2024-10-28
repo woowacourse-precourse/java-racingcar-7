@@ -1,6 +1,7 @@
 package racingcar.model;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Judge {
 
@@ -8,20 +9,15 @@ public class Judge {
         return randomNumber >= 4;
     }
 
-    public ArrayList<String> getWinners(ArrayList<Car> carList) {
-        ArrayList<String> winners = new ArrayList<>();
-        Long maxPosition = 0L;
+    public List<String> getWinners(List<Car> carList) {
+        Long maxPosition = carList.stream()
+                .mapToLong(Car::getPosition)
+                .max()
+                .orElse(0);
 
-        for (Car car : carList) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-
-        for (Car car : carList) {
-            if (car.getPosition().equals(maxPosition)) {
-                winners.add(car.getName());
-            }
-        }
-
-        return winners;
+        return carList.stream()
+                .filter(car -> car.getPosition().equals(maxPosition))
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }
