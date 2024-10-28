@@ -14,11 +14,11 @@ public class Car {
 
   public void tryToMove(int randomValue) {
     if (randomValue >= 4) {
-      position.move();
+      this.position.move();
     }
   }
 
   public CarDTO toDTO() {
-    return new CarDTO(name, position.toDTO());
+    return new CarDTO(this.name, this.position.toDTO().position());
   }
 }

@@ -25,7 +25,7 @@ class OutputTest {
 
   @Test
   void 진행상황_출력_테스트() {
-    CarDTO carDTO = new CarDTO("hsj", new PositionDTO(3));
+    CarDTO carDTO = new CarDTO("hsj", new PositionDTO(3).position());
     output.printRaceProgress(carDTO);
 
     assertThat(outputStream.toString().trim()).isEqualTo("hsj : ---");

@@ -28,7 +28,7 @@ class RacingGameTest {
     racingService.moveCars(cars);
 
     List<CarDTO> carDTOs = racingService.getCarDTOs(cars);
-    carDTOs.forEach(carDTO -> assertThat(carDTO.positionDTO().position()).isNotNegative());
+    carDTOs.forEach(carDTO -> assertThat(carDTO.position()).isNotNegative());
   }
 
   @Test

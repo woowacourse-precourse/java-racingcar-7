@@ -10,7 +10,7 @@ public class Output {
   }
 
   public void printRaceProgress(CarDTO carDTO) {
-    printMessage(carDTO.name() + " : " + "-".repeat(carDTO.positionDTO().position()));
+    printMessage(carDTO.name() + " : " + "-".repeat(carDTO.position()));
   }
 
   public void printWinners(List<String> winners) {

@@ -21,9 +21,9 @@ public class RacingService {
   }
 
   public List<CarDTO> findWinners(List<CarDTO> carDTOs) {
-    int maxPosition = carDTOs.stream().mapToInt(car -> car.positionDTO().position()).max()
+    int maxPosition = carDTOs.stream().mapToInt(car -> car.position()).max()
         .orElse(0);
 
-    return carDTOs.stream().filter(car -> car.positionDTO().position() == maxPosition).toList();
+    return carDTOs.stream().filter(car -> car.position() == maxPosition).toList();
   }
 }
