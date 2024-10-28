@@ -6,12 +6,6 @@ import java.util.stream.Collectors;
 import racingcar.exception.ErrorCode;
 
 public class Utils {
-    public static String removeNameWhitespace(String name) {
-        validateName(name);
-
-        return name.replaceAll("\\s+", ""); // "정규표현식" \\s: 모든 공백 문자, +: 앞의 패턴 반복됨
-    }
-
     public static String removeWhitespace(String input) {
         return input.replaceAll("\\s+", "");
     }
@@ -24,7 +18,8 @@ public class Utils {
 
     public static List<String> splitNames(String input) {
         return Arrays.stream(input.split(","))
-                .map(Utils::removeNameWhitespace)
+                .map(Utils::removeWhitespace)
+                .peek(Utils::validateName) // .peek은 최종 연산이 있는 경우에만 동작한다.
                 .collect(Collectors.toList());
     }
 

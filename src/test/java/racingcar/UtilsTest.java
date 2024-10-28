@@ -46,7 +46,7 @@ public class UtilsTest {
         String input = "pobi, java,  woni"; // 공백 포함
         List<String> expectedNames = List.of("pobi", "java", "woni");
 
-        List<String> result = Utils.splitNames(expectedNames);
+        List<String> result = Utils.splitNames(input);
 
         assertThat(result).isEqualTo(expectedNames);
     }
