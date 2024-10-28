@@ -10,37 +10,42 @@
 
 ---
 - Input
-  - 
+  -
   - inputCarName
-    - 자동차의 이름을 받는다.
-  - printInputCarNameMessage
-    - 이름을 받을 때 메세지를 출력한다.
+    - 자동차 이름 입력 메세지를 출력한다.
+    - 입력에 대한 유효성 검사를 한다.
+      - null 확인
+      - 콤마`,`로 끝나는지 확인
   - inputTrialNumber
-    - 시도할 횟수를 받는다.
-  - printInputTrialNumberMessage
-    - 횟수를 받을 때 메세지를 출력한다.
-- Parser
-  - 
-  - parseCarName
-    - 입력받은 이름을 쉽표`,`를 기준으로 나눈다.
-    - `List<String>`으로 반환한다.
-- InputValidation
-  - 
-  - validateNull
-    - 입력 값이 `null`인지 검사한다.
+    - 시도 횟수를 입력 받는다.
+    - null 확인
 - TrialNumber
-  - 
-  - parseTrialNumber
-    - 입력받은 횟수를 숫자로 변환 후 반환한다.
-  - validateTrialNumber
-    - 시도 횟수가 숫자인지 검사한다.
+  -
+  - isTrialLowerThanTrialNumber
+    - 현재 시행 횟수가 입력 받은 시행 횟수 보다 작은지 반환
+  - increaseTrial
+    - 현재 시행 횟수를 증가
 - Car
+  -
+  - visualizeDistance
+    - 현재 얼마나 이동했는지 이름과 `-`로 출력
+  - maxDistanceAndOtherDistance
+    - 기준이 되는 이동 거리와 비교하여 최대 값을 반환
+  - isEqualToWinnerDistance
+    - 최대 이동 거리와 비교하여 같은지 반환
+  - move
+    - 난수에 따라 이동
+  - 이름에 대한 유효성 검사
+- Cars
   - 
-  - getCarName
-    - 차 이름을 반환한다.
-  - getDistance
-    - 전진한 거리를 반환한다.
-  - getRandomNumber
-    - 전진하기 위한 조건인 난수를 반환한다.
-  - validateCarName
-    - 이름이 5자 이하인지 검사한다.
+  - move
+    - Car object들을 이동 명령을 내림
+  - getWinnersCarName
+    - 우승 자동차의 최대 이동거리를 구하고 이와 같은 자동차 이름을 `,`로 구분하여 반환
+  - printCarsStatus
+    - Car object들의 현재 상태를 출력
+- RacingCar
+  - 
+  - run
+    - TrialNumber에게 현재 시행할 수 있는지 요청하고 가능하다면 Cars에게 이동 명령 내림
+    - Cars에게 우승 자동차 이름을 받아 결과 메세지와 함께 출력
