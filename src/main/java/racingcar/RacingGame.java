@@ -50,12 +50,14 @@ public class RacingGame {
 
     private void displayWinner() {
         int maxProgress = cars.stream()
-                .map(Car::getPosition)
+                .map(Car::toDto)
+                .map(CarDto::position)
                 .max(Integer::compare)
                 .orElseThrow(() -> new IllegalArgumentException("자동차가 입력되지 않았습니다."));
         String winners = cars.stream()
-                .filter(car -> car.getPosition() == maxProgress)
-                .map(Car::getName)
+                .map(Car::toDto)
+                .filter(carDto -> carDto.position() == maxProgress)
+                .map(CarDto::name)
                 .collect(Collectors.joining(", "));
         System.out.println("최종 우승자 : " + winners);
     }

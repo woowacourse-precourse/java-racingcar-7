@@ -41,6 +41,10 @@ public class Car {
         }
     }
 
+    public CarDto toDto() {
+        return new CarDto(name, position);
+    }
+
     /**
      * Returns a car's information in the format: {@code "[name] : ['-' repeated by position]\n"}
      *
@@ -52,13 +56,5 @@ public class Car {
                 + " : "
                 + "-".repeat(position)
                 + "\n";
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
     }
 }

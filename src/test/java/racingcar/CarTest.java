@@ -17,6 +17,6 @@ public class CarTest {
 
         car.attemptMove();
 
-        Assertions.assertThat(car.getPosition()).isIn(0, 1);
+        Assertions.assertThat(car.toDto().position()).isIn(0, 1);
     }
 }
