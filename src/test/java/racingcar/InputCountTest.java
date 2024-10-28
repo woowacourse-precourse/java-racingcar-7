@@ -17,9 +17,9 @@ class InputCountTest {
     }
 
     @Test
-    void 시도횟수_출력_확인_테스트() {
+    void 시도횟수_문구및입력_출력_확인_테스트() {
         // given
-        String input = "5\n";
+        String input = "5";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         // when
@@ -30,5 +30,6 @@ class InputCountTest {
         String actualOutput = outputStreamCaptor.toString().trim();
 
         assertThat(actualOutput).isEqualTo(expectedOutput);
+        assertThat(result).isEqualTo(input);
     }
 }
