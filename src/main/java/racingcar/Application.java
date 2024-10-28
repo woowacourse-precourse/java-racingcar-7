@@ -17,6 +17,9 @@ public class Application {
     static List<String> winners = new ArrayList<>();
 
     public static boolean isValidName(String name) {
+        if (name.length() == 0) {
+            throw new IllegalArgumentException("이름을 한 글자 이상 입력해야 합니다.");
+        }
         if (name.length() > 5) {
             throw new IllegalArgumentException("이름의 길이는 5글자 이하이어야 합니다.");
         }
@@ -88,7 +91,20 @@ public class Application {
         System.out.println("최종 우승자 : " + result);
     }
 
+    public static boolean isNumber(String str) {
+        for (char c : str.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void playGame(String number) {
+        if (!isNumber(number)) {
+            throw new IllegalArgumentException("숫자를 입력하세요.");
+
+        }
         int playNumber = Integer.parseInt(number);
         initScore();
         while (playNumber != 0) {
