@@ -1,5 +1,6 @@
 package racingcar.validator;
 
+import racingcar.enums.Constraints;
 import racingcar.enums.Exceptions;
 
 import java.util.HashSet;
@@ -25,7 +26,7 @@ public class CarNameValidator {
     }
 
     void validateCarNameLength(String input) {
-        if (input.length() > 5) {
+        if (input.length() > Constraints.MAX_CAR_NAME_LENGTH.getValue()) {
             throw new IllegalArgumentException(Exceptions.INVALID_CAR_NAME_LENGTH.getMessage());
         }
     }

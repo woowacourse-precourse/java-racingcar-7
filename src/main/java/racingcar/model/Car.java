@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.enums.Constraints;
+
 public class Car {
     private final String name;
     private int position;
@@ -9,7 +11,7 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= 4) {
+        if (number >= Constraints.MOVE_CONDITION.getValue()) {
             position++;
         }
     }
