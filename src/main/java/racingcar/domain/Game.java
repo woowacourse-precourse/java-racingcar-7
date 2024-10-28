@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 import racingcar.domain.car.Car;
+import racingcar.domain.dto.CarDto;
 
 public class Game {
     private final List<Car> cars;
@@ -20,5 +21,11 @@ public class Game {
     public void playOneRound() {
         cars.forEach(Car::moveIfPossible);
         completedRounds++;
+    }
+
+    public List<CarDto> getCars() {
+        return cars.stream()
+                .map(car -> new CarDto(car.getName(), car.getLocation()))
+                .toList();
     }
 }

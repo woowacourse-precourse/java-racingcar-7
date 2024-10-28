@@ -49,6 +49,7 @@ public class GameController {
         outputView.displayRoundResultHeader();
         while (game.hasRemainingRounds()) {
             game.playOneRound();
+            outputView.displayCars(game.getCars());
         }
     }
 }
