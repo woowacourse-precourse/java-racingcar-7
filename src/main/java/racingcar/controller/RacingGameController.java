@@ -4,6 +4,7 @@ import racingcar.model.Cars;
 import racingcar.model.RacingCarGame;
 import racingcar.util.NumberParser;
 import racingcar.view.RacingCarGameInputView;
+import racingcar.view.RacingCarGameOutputView;
 
 public class RacingGameController {
 
@@ -11,5 +12,12 @@ public class RacingGameController {
         Cars cars = new Cars(RacingCarGameInputView.inputCarNames());
         int totalRounds = NumberParser.parsePositiveInteger(RacingCarGameInputView.inputTotalRound());
         RacingCarGame racingCarGame = new RacingCarGame(cars, totalRounds);
+
+        RacingCarGameOutputView.printExecutionResultHeader();
+        do {
+            racingCarGame.runRound();
+            RacingCarGameOutputView.printCarPositions(cars);
+        } while (!racingCarGame.isEnd());
+
     }
 }
