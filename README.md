@@ -20,7 +20,7 @@
 2. Application에서는 camp.nextstep.edu.missionutils.Console 라이브러리를 사용해 문자열을 입력받는다.
 3. Application에서는 두가지 입력에 대한 정규식을 멤버로 두어 입력을 받는다.
 4. Application에서는 입력이 각 패턴에 맞지 않는 경우 IllegalArgumentException을 발생시킨다.
-4. Application에서는 play를 통해 Car.move를 반복호출한다.
-5. Car에서는 move에서 난수 생성기를 통해 각 Car의 위치를 조정한다.
-6. View에서는 두번의 입력에 대한 안내문구를 출력한다.
-7. View에서는 printWinner를 통해 우승자를 출력한다. 이떄 2명 이상의 우승자에 대해서도 처리를 해준다.
+5. Application에서는 play를 통해 Car.move를 반복호출한다.
+6. Car에서는 move에서 난수 생성기를 통해 각 Car의 위치를 조정한다.
+7. View에서는 두번의 입력에 대한 안내문구를 출력한다.
+8. View에서는 printWinner를 통해 우승자를 출력한다. 이떄 2명 이상의 우승자에 대해서도 처리를 해준다.
