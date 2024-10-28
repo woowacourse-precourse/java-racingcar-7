@@ -19,7 +19,7 @@ public class CarInput {
         //System.out.println("경주할 자동차 이름을 입력하세요.");
         String players = Console.readLine();
 
-        if(players.isEmpty() || players.equals("")) {
+        if(players.isEmpty() || players.equals("") || players.length() >= 5) {
             throw new IllegalArgumentException();
         }
 
