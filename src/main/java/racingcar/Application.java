@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
 public class Application {
@@ -16,7 +17,7 @@ public class Application {
         // TODO: 프로그램 구현
         String[] names = getNames();
         int tryCount = getTryCount();
-        Map<String, boolean[]> playerGameHistory = simulateFullRace(names, tryCount);
+        Map<String, boolean[]> playerGameHistory = simulateFullRace(names, tryCount, () -> pickNumberInRange(0, 9));
         printResult(tryCount, playerGameHistory);
     }
 
@@ -36,12 +37,12 @@ public class Application {
         return Integer.parseInt(readLine());
     }
 
-    public static Map<String, boolean[]> simulateFullRace(String[] names, int tryCount) {
+    public static Map<String, boolean[]> simulateFullRace(String[] names, int tryCount, Supplier<Integer> randomGenerator) {
         Map<String, boolean[]> playerGameHistory = initGameHistory(names, tryCount);
 
         for (String player : playerGameHistory.keySet()) {
             boolean[] gameWinHistory = playerGameHistory.get(player);
-            simulatePlayerRace(tryCount, gameWinHistory);
+            simulatePlayerRace(tryCount, gameWinHistory, randomGenerator);
         }
         return playerGameHistory;
     }
@@ -55,9 +56,9 @@ public class Application {
     }
 
 
-    private static void simulatePlayerRace(int tryCount, boolean[] gameWinHistory) {
+    private static void simulatePlayerRace(int tryCount, boolean[] gameWinHistory, Supplier<Integer> randomGenerator) {
         for (int i = 0; i < tryCount; i++) {
-            int randomValue = pickNumberInRange(0, 9);
+            int randomValue = randomGenerator.get();
             if (randomValue >= 4) {
                 gameWinHistory[i] = true;
             }
