@@ -13,7 +13,6 @@ import java.util.Vector;
  * 우승자 출력
  */
 public class RacingCar {
-    // 각 참가자들의 자동차 이름과 전진 횟수를 저장
     private Vector<User> userList;
 
     RacingCar() {
@@ -32,30 +31,20 @@ public class RacingCar {
      * @see #showWinnerList(Vector)
      */
     public void run() {
-        // 유저가 입력한 경주를 시도할 횟수
         int round;
-        // 우승자 정보를 저장
         Vector<User> winnerList = new Vector<>();
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        // 유저에게 경주할 자동차 이름 목록인 문자열을 입력 받아 저장
         String inputName = Console.readLine();
-        // 입력 받은 문자열에서 공백 제거
         inputName = inputName.replaceAll(" ", "");
-        // ','를 기준으로 각 이름을 구분하여 저장
         String usernameArray[] = inputName.split(",");
-        // 입력된 값이 유효한지 체크
         setUserList(usernameArray);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         try {
-            // 유저에게 경주를 시도할 횟수를 입력 받아 저장
             String inputRound = Console.readLine();
-            // 입력 받은 문자열에서 공백 제거
             inputRound = inputRound.replaceAll(" ", "");
-            // 문자열을 Integer 객체로 변환
             round = Integer.valueOf(inputRound);
-            // 입력된 값이 유효한 값인지 체크
             checkRoundError(round);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
@@ -81,10 +70,7 @@ public class RacingCar {
         }
 
         for (int i = 0; i < usernameArray.length; i++) {
-            // 유저가 입력한 자동차 이름이 유효한 값인지 체크
             checkUsernameError(usernameArray[i]);
-
-            // 각 참가자에게 User 객체를 할당하여 각 참가자들의 정보를 저장하는 벡터에 저장
             userList.add(new User(usernameArray[i]));
         }
     }
@@ -214,7 +200,6 @@ public class RacingCar {
 
         Iterator<User> iterator = winnerList.iterator();
         System.out.print(iterator.next().name);
-        // 우승자가 2명 이상일 경우 ','와 함께 출력
         while (iterator.hasNext()) {
             User user = iterator.next();
             System.out.print(", " + user.name);
