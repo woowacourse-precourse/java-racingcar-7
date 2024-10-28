@@ -12,7 +12,6 @@ public class Printer {
     private static final String WINNER_MESSAGE = "최종 우승자 : ";
     private static final String PRINT_START_MESSAGE = "실행 결과";
 
-
     public void printInputNamesMessage() {
         System.out.println(CARS_MESSAGE);
     }

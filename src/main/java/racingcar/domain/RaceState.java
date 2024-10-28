@@ -4,9 +4,6 @@ import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-/**
- * RaceState 클래스는 경주의 상태를 관리하고 라운드별 전진 여부를 결정한다.
- */
 public class RaceState {
 
     private static final int MIN_ADVANCE_CONDITION = 4; // 자동차 전진을 위한 최소 조건값
