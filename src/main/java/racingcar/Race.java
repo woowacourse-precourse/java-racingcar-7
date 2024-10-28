@@ -14,4 +14,18 @@ public class Race {
             cars.add(new Car(name));
         }
     }
+
+    public void startRace() {
+        System.out.println("실행 결과");
+        for (int i=1 ; i <= input.getRounds(); i++) {
+            for (Car car: cars) {
+                car.run();
+                System.out.println(makeCarResult(car));
+            }
+        }
+    }
+
+    private String makeCarResult(Car car) {
+        return car.getName() + " : " + "-".repeat(car.getCondition());
+    }
 }
