@@ -46,7 +46,7 @@ public class GameController {
     private void printResults(FinalResultDto finalResultDto, int roundNumber) {
         for (int i = 0; i < roundNumber; i++) {
             RoundResultDto roundResultDto = finalResultDto.roundResultList().get(i);
-            outputView.printRoundResult(roundResultDto.roundNumber(), roundResultDto.carList());
+            outputView.printRoundResult(roundResultDto.carList());
         }
         outputView.printFinalResult(finalResultDto.winnerList());
     }
