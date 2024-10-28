@@ -9,8 +9,11 @@ public class Application {
         InputParser inputParser = new InputParser();
 
         String inputCarNames = inputView.readCarNames();
-        ArrayList<Car> carNames = inputParser.parseCarNames(inputCarNames);
+        ArrayList<Car> cars = inputParser.parseCarNames(inputCarNames);
         String inputTryCount = inputView.readTryCount();
         int tryCount = inputParser.parseTryCount(inputTryCount);
+
+        RacingGame racingGame = new RacingGame(cars, tryCount);
+        racingGame.start();
     }
 }
