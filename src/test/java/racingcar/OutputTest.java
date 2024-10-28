@@ -71,7 +71,7 @@ public class OutputTest extends NsTest {
 
     @Test
     @DisplayName("실행 결과 출력")
-    void printRunResult_MethodCall_ShouldPrintRunResult() {
+    void printRunResult_InputtedCarNameList_ShouldPrintRunResult() {
         //given
         String expectedMessage = "Ahn : -\r\nSeong : \r\nMo : -";
         List<Car> carList = new ArrayList<>();
@@ -89,6 +89,27 @@ public class OutputTest extends NsTest {
 
         //when
         Output.printRunResult(carList);
+
+        //then
+        assertThat(outContent.toString().trim())
+                .isEqualTo(expectedMessage);
+        outContent.reset(); // 매 테스트 후 출력 리셋
+    }
+
+    @Test
+    @DisplayName("최종 우승자 출력")
+    void printFinalWinner_InputtedCarNameList_ShouldPrintFinalWinner() {
+        //given
+        String expectedMessage = "최종 우승자 : Ahn, Mo";
+        List<Car> carList = new ArrayList<>();
+        Car car1 = new Car("Ahn");
+        Car car2 = new Car("Mo");
+
+        carList.add(car1);
+        carList.add(car2);
+
+        //when
+        Output.printFinalWinner(carList);
 
         //then
         assertThat(outContent.toString().trim())
