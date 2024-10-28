@@ -8,7 +8,6 @@ import racingcar.view.ResultView;
 public class RacingGameController {
     private final InputView inputView;
     private final ResultView resultView;
-    private final RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.randomNumberGenerator();
 
     public RacingGameController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
@@ -26,7 +25,7 @@ public class RacingGameController {
     }
 
     private void playRound(Cars cars) {
-        cars.tryMove(randomNumberGenerator);
+        cars.tryMove(RandomNumberGenerator.randomNumberGenerator());
         resultView.printAllLocations(cars);
     }
 

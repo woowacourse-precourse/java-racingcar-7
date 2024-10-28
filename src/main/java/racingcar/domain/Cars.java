@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    public static final int MIN_DUPLICATE_NAME = 1;
-    public static final String WINNER_DELIMITER = ", ";
+    private static final int MIN_DUPLICATE_NAME = 1;
+    private static final String WINNER_DELIMITER = ", ";
     private final List<Car> cars;
 
     public Cars(String[] players) {

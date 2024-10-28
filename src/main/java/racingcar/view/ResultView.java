@@ -6,11 +6,7 @@ import racingcar.domain.Cars;
 
 public class ResultView {
 
-    public static final String STRING_LOCATION = "-";
-
-    public ResultView() {
-
-    }
+    private static final String STRING_LOCATION = "-";
 
     public void printResult() {
         System.out.println("\n실행 결과");

@@ -11,7 +11,7 @@ public class InputViewTest {
     void 문자열_분리_테스트() {
        InputView inputView = new InputView();
 
-       Assertions.assertThat(inputView.seperatePlayers("pobi,woni,jun")).containsExactly("pobi", "woni", "jun");
+       Assertions.assertThat(inputView.separatePlayers("pobi,woni,jun")).containsExactly("pobi", "woni", "jun");
     }
 
     @Test
