@@ -13,32 +13,32 @@ public class OutputView {
     private static final String WINNERS_DELIMITER = ", ";
     private static final String LOCATION_SYMBOL = "-";
 
-    public void printResultStart() {
+    public static void printResultStart() {
         System.out.println(RESULT_START_MESSAGE);
     }
 
-    public void printRaceStatus(Race race) {
+    public static void printRaceStatus(Race race) {
         List<Car> cars = race.getCars();
-        cars.forEach(this::printCarStatus);
+        cars.forEach(OutputView::printCarStatus);
         System.out.println();
     }
 
-    private void printCarStatus(Car car) {
+    private static void printCarStatus(Car car) {
         System.out.printf(CAR_STATUS_FORMAT, car.getName(), formatLocation(car));
     }
 
-    private String formatLocation(Car car) {
+    private static String formatLocation(Car car) {
         StringBuilder sb = new StringBuilder();
         int count = car.getLocation();
         IntStream.range(0, count).forEach(i -> sb.append(LOCATION_SYMBOL));
         return sb.toString();
     }
 
-    public void printWinners(Race race) {
+    public static void printWinners(Race race) {
         System.out.printf(WINNERS_FORMAT, formatWinners(race));
     }
 
-    private String formatWinners(Race race) {
+    private static String formatWinners(Race race) {
         List<String> names = race.findWinners()
                 .stream()
                 .map(Car::getName)

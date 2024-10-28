@@ -10,31 +10,23 @@ import racingcar.view.OutputView;
 
 public class Controller {
 
-    private final InputView inputView;
-    private final OutputView outputView;
-
-    public Controller(InputView inputView, OutputView outputView) {
-        this.inputView = inputView;
-        this.outputView = outputView;
-    }
-
     public void run() {
-        List<Car> cars = inputView.readCars()
+        List<Car> cars = InputView.readCars()
                 .stream()
                 .map(Car::new)
                 .toList();
         Race race = new Race(cars);
-        AttemptCount attemptCount = new AttemptCount(inputView.readAttemptCount());
+        AttemptCount attemptCount = new AttemptCount(InputView.readAttemptCount());
         startRace(race, attemptCount);
     }
 
     private void startRace(Race race, AttemptCount attemptCount) {
-        outputView.printResultStart();
+        OutputView.printResultStart();
         int count = attemptCount.getCount();
         IntStream.range(0, count).forEach(i -> {
             race.progress();
-            outputView.printRaceStatus(race);
+            OutputView.printRaceStatus(race);
         });
-        outputView.printWinners(race);
+        OutputView.printWinners(race);
     }
 }
