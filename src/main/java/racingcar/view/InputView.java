@@ -1,12 +1,14 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.exception.RoundException;
 import racingcar.message.ErrorMessage;
 import racingcar.message.InputMessage;
-import racingcar.exception.RoundException;
+import racingcar.message.PatternMessage;
+
+import java.util.Optional;
 
 public class InputView {
-    private static final String ROUND_FORMAT = "\\d+";
 
     public String getCarNames() {
         System.out.println(InputMessage.CAR_INPUT.getMessage());
@@ -17,10 +19,13 @@ public class InputView {
         System.out.println(InputMessage.ROUND_INPUT.getMessage());
         String input = Console.readLine();
 
-        if (!input.matches(ROUND_FORMAT)) {
-            throw new RoundException(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
-        }
+        return validateAndParseRound(input);
+    }
 
-        return Integer.parseInt(input);
+    private int validateAndParseRound(String input) {
+        return Optional.of(input)
+                .filter(PatternMessage.VALID_FORMAT::matches)
+                .map(Integer::parseInt)
+                .orElseThrow(() -> new RoundException(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage()));
     }
 }
