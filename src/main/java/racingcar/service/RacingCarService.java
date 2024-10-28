@@ -51,4 +51,29 @@ public class RacingCarService {
         return car.getValue();
     }
 
+    public String findWinner(Map<String, String> cars) {
+        int maxDistance = findMaxDistance(cars);
+        List<String> winnerNames = getWinnersWithMaxDistance(cars, maxDistance);
+        return String.join(", ", winnerNames);
+    }
+
+    private int findMaxDistance(Map<String, String> cars) {
+        int maxDistance = 0;
+
+        for (String position : cars.values()) {
+            int currentLength = position.length();
+            if (currentLength > maxDistance) maxDistance = currentLength;
+        }
+        return maxDistance;
+    }
+
+    private List<String> getWinnersWithMaxDistance(Map<String, String> cars, int maxDistance) {
+        List<String> winnerNames = new ArrayList<>();
+
+        for (Map.Entry<String, String> car : cars.entrySet()) {
+            if (car.getValue().length() == maxDistance) winnerNames.add(car.getKey());
+        }
+        return winnerNames;
+    }
+
 }
