@@ -24,6 +24,7 @@ public class RaceManager {
     }
 
     public void playAllRounds(OutputView outputView) {
+        System.out.println("실행 결과");
         for (int i = 0; i < round; i++) {
             for (Car car : cars) {
                 car.attemptMoveForward();
