@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+import static racingcar.ConsoleMessage.*;
 import static racingcar.ErrorMessage.*;
 
 public class Application {
@@ -25,8 +26,8 @@ public class Application {
     }
 
     public static void printWinner(List<String> winnerName) {
-        String winner = String.join(", ", winnerName);
-        System.out.println("최종 우승자 : " + winner);
+        String winner = String.join(WINNER_NAME_DELIMITER, winnerName);
+        System.out.println(WINNER_INFORM_MESSAGE + winner);
     }
 
     public static List<String> getWinnersName(Map<String, Integer> cars, int maxPosition) {
@@ -85,10 +86,10 @@ public class Application {
         StringBuilder carStatus = new StringBuilder();
 
         cars.keySet().forEach(carName -> {
-            carStatus.append(carName).append(" : ");
+            carStatus.append(carName).append(CAR_DESCRIBE_COLON);
 
             for(int k = 0; k < cars.get(carName); k++) {
-                carStatus.append("-");
+                carStatus.append(CAR_PROGRESS_BAR);
             }
 
             carStatus.append("\n");
@@ -110,7 +111,7 @@ public class Application {
 
     public static int getTryCount() {
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(TRY_COUNT_INPUT_HINT);
 
         int tryCount = Integer.parseInt(Console.readLine());
         validateTryCount(tryCount);
@@ -127,7 +128,7 @@ public class Application {
 
     public static List<String> getCarNames() {
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(CAR_NAME_INPUT_HINT);
 
         String carNameInput = Console.readLine();
         List<String> carNames = Arrays.stream(carNameInput.split(",")).map(String::trim).toList();
