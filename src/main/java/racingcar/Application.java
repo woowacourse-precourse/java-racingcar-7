@@ -8,7 +8,6 @@ public class Application {
         String carNames = readLine();
         getNamesFromString(carNames);
 
-        String tryCount = readLine();
-        getTryCountFromString(tryCount);
+        int tryCount = getTryCountFromString(readLine());
     }
 }
