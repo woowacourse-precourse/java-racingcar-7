@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.ByteArrayInputStream;
-import java.util.HashSet;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.RacingRequestDto;
@@ -31,7 +31,7 @@ public class RacingCarControllerTest {
     void 자동차_경주_통합_테스트() {
         // given
         RacingRequestDto racingRequestDto = new RacingRequestDto("pobi,woni,jun", 5);
-        HashSet<Car> cars = carService.validateCarNames(racingRequestDto.getCarNames());
+        List<Car> cars = carService.validateCarNames(racingRequestDto.getCarNames());
         Racing racing = new Racing();
 
         String userInput = "pobi,woni,jun\n5\n"; // Simulate the input the program expects

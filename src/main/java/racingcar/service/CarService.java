@@ -1,13 +1,14 @@
 package racingcar.service;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import racingcar.model.Car;
 
 public class CarService {
 
-    public HashSet<Car> validateCarNames(final String carNames) {
-        HashSet<Car> cars = new HashSet<>();
-        HashSet<String> carNamesSet = new HashSet<>();
+    public List<Car> validateCarNames(final String carNames) {
+        List<Car> cars = new ArrayList<>();
+        List<String> carNamesSet = new ArrayList<>();
 
         for (final String carName : carNames.split(",")) {
             if (carName.length() > 5){

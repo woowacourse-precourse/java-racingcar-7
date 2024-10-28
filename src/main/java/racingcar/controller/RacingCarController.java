@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import java.util.HashSet;
+import java.util.List;
 import racingcar.dto.RacingRequestDto;
 import racingcar.model.Car;
 import racingcar.model.Racing;
@@ -23,7 +23,7 @@ public class RacingCarController {
         String carNames = racingRequestDto.getCarNames();
         int tryCountNumber = racingRequestDto.getTryCountNumber();
 
-        HashSet<Car> cars = carService.validateCarNames(carNames);
+        List<Car> cars = carService.validateCarNames(carNames);
 
         Racing racing = new Racing();
         racingService.runTotalRoundRacing(cars, tryCountNumber);

@@ -3,7 +3,8 @@ package racingcar.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
@@ -27,7 +28,7 @@ public class RacingServiceTest {
     @Test
     void 전체_자동차_경주_실행_테스트() {
         // given
-        HashSet<Car> cars = new HashSet<>();
+        List<Car> cars = new ArrayList<>();
 
         cars.add(new Car("pobi", 0));
         cars.add(new Car("woni", 0));
@@ -44,7 +45,7 @@ public class RacingServiceTest {
     @Test
     void 자동차_경주_우승자_찾기_테스트() {
         // given
-        HashSet<Car> cars = new HashSet<>();
+        List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi", 10));
         cars.add(new Car("woni", 15));
         cars.add(new Car("jun", 15));
