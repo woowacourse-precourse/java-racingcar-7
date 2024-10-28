@@ -5,9 +5,9 @@ import java.util.regex.Pattern;
 import racingcar.constants.ErrorMessage;
 
 public class RaceCount {
-    private final int raceCount;
+    private static final Pattern RACE_TIMES_PATTERN = Pattern.compile("^[0-9]+$");
 
-    private static final Pattern RACE_TIMES_PATTERN = Pattern.compile("/^[0-9]*$/");
+    private final int raceCount;
 
     public RaceCount(String raceCount) {
         hasCharacters(raceCount);
@@ -34,10 +34,6 @@ public class RaceCount {
         }
     }
 
-    public int getValue() {
-        return raceCount;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -53,5 +49,9 @@ public class RaceCount {
     @Override
     public int hashCode() {
         return Objects.hash(raceCount);
+    }
+
+    public int getValue() {
+        return raceCount;
     }
 }

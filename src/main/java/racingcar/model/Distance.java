@@ -13,10 +13,6 @@ public class Distance {
         return this.distance + randomDistance;
     }
 
-    public int getDistance() {
-        return distance;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -32,5 +28,9 @@ public class Distance {
     @Override
     public int hashCode() {
         return Objects.hash(distance);
+    }
+
+    public int getDistance() {
+        return distance;
     }
 }

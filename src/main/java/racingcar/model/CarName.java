@@ -4,10 +4,10 @@ import java.util.Objects;
 import racingcar.constants.ErrorMessage;
 
 public class CarName {
-    private final String carName;
-
     private static final int MAX_CAR_NAME = 5;
     private static final String BLANK = " ";
+
+    private final String carName;
 
     public CarName(String carName) {
         validateLength(carName);
@@ -27,10 +27,6 @@ public class CarName {
         }
     }
 
-    public String getCarName() {
-        return carName;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -46,5 +42,9 @@ public class CarName {
     @Override
     public int hashCode() {
         return Objects.hash(carName);
+    }
+
+    public String getCarName() {
+        return carName;
     }
 }
