@@ -9,7 +9,7 @@ public class RacingCarController {
 
     public void startRacing() {
         RacingCarService racingCarService = new RacingCarService();
-        racingCarService.moveRacingCar();
+        racingCarService.moveRacingCarAndPrintResult();
     }
 
 }

@@ -51,7 +51,7 @@ public class RacingCarService {
         return racingCars;
     }
 
-    public void moveRacingCar() {
+    public void moveRacingCarAndPrintResult() {
         List<RacingCar> racingCars;
         racingCars = setRacingCars();
 
@@ -70,6 +70,27 @@ public class RacingCarService {
             }
             System.out.println(OutputView.userResultOutput(racingCars));
         }
+
+        System.out.println(OutputView.userWinnerOutput(pickWinner(racingCars)));
+    }
+
+    public List<RacingCar> pickWinner(List<RacingCar> racingCars) {
+        RacingCar winner = racingCars.getFirst();
+        for(RacingCar racingCar : racingCars) {
+            if(racingCar.getResultToMove() >= winner.getResultToMove()) {
+                winner = racingCar;
+            }
+        }
+
+        // 공동 우승자 확인
+        List<RacingCar> winners = new ArrayList<>();
+        for(RacingCar racingCar : racingCars) {
+            if(racingCar.getResultToMove() == winner.getResultToMove()) {
+                winners.add(racingCar);
+            }
+        }
+
+        return winners;
     }
 
 }

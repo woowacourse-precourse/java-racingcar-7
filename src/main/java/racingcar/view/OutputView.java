@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.model.RacingCar;
 
+import java.util.ArrayList;
 import java.util.List;
 /*
 * 실행 결과와 최종 우승자를 출력하는 기능을 수행하는 클래스
@@ -22,6 +23,17 @@ public class OutputView {
         for (int i = 0; i < resultToMove; i++) {
             output.append("-");
         }
+        return output.toString();
+    }
+
+    public static String userWinnerOutput(List<RacingCar> racingCars) {
+        StringBuilder output = new StringBuilder("최종 우승자 : ");
+
+        for(RacingCar racingCar : racingCars) {
+            output.append(racingCar.getCarName()).append(", ");
+        }
+        output.delete(output.length() - 2, output.length());
+
         return output.toString();
     }
 
