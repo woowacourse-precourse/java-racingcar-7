@@ -12,8 +12,7 @@ public class Output {
     }
 
     public void notifyPrintResult() {
-        System.out.println();
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     // list에 있는 차들의 이름과 현재 위치 출력
