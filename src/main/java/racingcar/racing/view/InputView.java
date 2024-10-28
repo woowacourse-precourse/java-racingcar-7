@@ -1,5 +1,7 @@
 package racingcar.racing.view;
 
+import static racingcar.racing.utils.ExceptionMessages.IO_EXCEPTION_MESSAGE;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -7,7 +9,7 @@ public class InputView {
         try {
             return Console.readLine().replace(" ", "");
         } catch (Exception e) {
-            throw new IllegalArgumentException("알 수 없는 오류가 발생했습니다. 올바른 값을 입력해주세요.");
+            throw new IllegalArgumentException(IO_EXCEPTION_MESSAGE);
         }
     }
 }
