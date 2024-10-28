@@ -7,7 +7,7 @@ public class RacingCarController {
     private final InputView inputView = new InputView();
 
     public void run() {
-        List<String> carNamesList;
+        List<String> carNameList;
         String carNames;
         int tryCount;
 
@@ -15,6 +15,6 @@ public class RacingCarController {
         carNames = inputView.inputCarNames();
         inputView.displayTryCountPrompt();
         tryCount = inputView.inputTryCount();
-        carNamesList = inputView.splitCarNamesToList(carNames);
+        carNameList = inputView.splitCarNamesToList(carNames);
     }
 }

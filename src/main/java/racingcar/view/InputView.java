@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.validation.CarNameListValidator;
 
 public class InputView {
     private static final String CAR_NAMES_DELIMITER = ",";
@@ -23,6 +24,8 @@ public class InputView {
     }
 
     public List<String> splitCarNamesToList(String carNames) {
-        return List.of(carNames.split(CAR_NAMES_DELIMITER));
+        List<String> carNameList = List.of(carNames.split(CAR_NAMES_DELIMITER));
+        CarNameListValidator.validate(carNameList);
+        return carNameList;
     }
 }
