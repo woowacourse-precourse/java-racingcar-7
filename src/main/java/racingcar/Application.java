@@ -6,8 +6,11 @@ public class Application {
         ArrayList<String> raceCarNames = raceUtil.inputRaceCar();
         int cnt = raceUtil.inputRaceCount();
 
-        for(String rcn : raceCarNames) System.out.print(rcn);
-        System.out.println();
-        System.out.println(cnt);
+        ArrayList<RaceCar> raceCars = new ArrayList<>();
+        for(String name : raceCarNames) {
+            raceCars.add(new RaceCar(name));
+        }
+
+        RaceCarGame raceCarGame = new RaceCarGame(raceCars, cnt);
     }
 }
