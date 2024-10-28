@@ -2,7 +2,7 @@ package racingcar.model;
 
 import racingcar.util.GetRandomValue;
 
-public class CarMovement {
+public class MovingCar {
     public void moveCars(Car[] cars) {
         for (Car car : cars) {
             int randomValue = GetRandomValue.generateRandomNumber();
