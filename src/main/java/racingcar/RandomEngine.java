@@ -18,7 +18,7 @@ public class RandomEngine implements Engine {
     @Override
     public int accelerate() {
         int number = Randoms.pickNumberInRange(RANDOM_RANGE_START, randomRangeEnd);
-        if (number > accelerationThreshold) {
+        if (number >= accelerationThreshold) {
             return moveDistance;
         }
         return 0;
