@@ -20,8 +20,13 @@ public class Car {
 	}
 
 	public void move() {
-		if (moveStrategy.isMovable()) {
+		if (checkMovable()) {
 			position++;
 		}
 	}
+
+	private boolean checkMovable() {
+		return moveStrategy.isMovable();
+	}
+
 }
