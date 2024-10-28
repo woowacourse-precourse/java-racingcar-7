@@ -1,10 +1,11 @@
-package racingcar;
+package racingcar.parser;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.RacingCar;
 
-public class DataParser {
-    public static List<RacingCar> createRacingCar(String inputName) {
+public class RacingCarParser {
+    public static List<RacingCar> createRacingCarList(String inputName) {
         List<String> namelist = List.of(inputName.split(","));
         List<RacingCar> racingCarList = new ArrayList<>();
 

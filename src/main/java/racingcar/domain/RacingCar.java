@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.RandomPicker;
+import racingcar.view.OutputView;
 
 public class RacingCar {
     private static final int MOVE_NUMBER = 4;
@@ -13,7 +16,7 @@ public class RacingCar {
         if (RandomPicker.getRandomNumber() >= MOVE_NUMBER) {
             this.count++;
         }
-        IOHandler.resultMessage(this);
+        OutputView.resultMessage(this);
     }
 
     public String getName() {

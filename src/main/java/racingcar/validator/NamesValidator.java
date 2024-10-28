@@ -1,13 +1,13 @@
-package racingcar;
+package racingcar.validator;
 
-import static racingcar.ErrorMessage.*;
+import static racingcar.error.NamesErrorMessage.*;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DataValidator {
+public class NamesValidator {
     public static void validateName(String inputName) {
         List<String> namelist = Arrays.asList(inputName.split(","));
 
@@ -42,7 +42,7 @@ public class DataValidator {
     }
 
     private static void validateEndWith(String input) {
-        if (input.charAt(input.length() - 1) == ',') {
+        if (input.endsWith(",")) {
             throw new IllegalArgumentException(NULL_NAME.getMessage());
         }
     }
@@ -58,21 +58,6 @@ public class DataValidator {
         if (set.size() < list.size()) {
             throw new IllegalArgumentException(DUPLICATE_NAME.getMessage());
         }
-    }
-
-    public static int validateTryCount(String inputTryCount) {
-        int tryCount;
-        try {
-            tryCount = Integer.parseInt(inputTryCount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_TRY_COUNT.getMessage());
-        }
-
-        if (tryCount <= 0) {
-            throw new IllegalArgumentException(REQUIRED_TRY_COUNT.getMessage());
-        }
-
-        return tryCount;
     }
 
     private static void checkLetterOrDigit(String input) {
