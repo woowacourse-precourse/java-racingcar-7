@@ -37,6 +37,10 @@ public class ParticipatingCars {
                 .collect(Collectors.toList());
     }
 
+    public List<Car> getParticipatingCars(){
+        return this.cars;
+    }
+
     private void validateDuplicateCarName(List<Car> carList) {
         Set<Car> cars = new HashSet<>(carList);
         if (cars.size() != carList.size()) {
