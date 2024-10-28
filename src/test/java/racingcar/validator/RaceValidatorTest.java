@@ -13,7 +13,7 @@ class RaceValidatorTest {
 
     @Test
     @DisplayName("차 리스트가 null일 경우 예외를 발생시킨다.")
-    void validate_nullCarList_throwsException() {
+    void validate_nullCarList() {
         // given
         List<Car> nullCarList = null;
 
@@ -25,7 +25,7 @@ class RaceValidatorTest {
 
     @Test
     @DisplayName("차 리스트에 null이 포함될 경우 예외를 발생시킨다.")
-    void validate_nullCarInList_throwsException() {
+    void validate_nullCarInList() {
         // given
         List<Car> carsWithNull = Arrays.asList(new Car("Car1", () -> true), null);
 
@@ -37,7 +37,7 @@ class RaceValidatorTest {
 
     @Test
     @DisplayName("차 이름이 중복될 경우 예외를 발생시킨다.")
-    void validate_duplicateCarNames_throwsException() {
+    void validate_duplicateCarNames() {
         // given
         List<Car> carsWithDuplicateNames = Arrays.asList(
                 new Car("Car1", () -> true),
@@ -52,8 +52,24 @@ class RaceValidatorTest {
     }
 
     @Test
+    @DisplayName("공백 제거 후 이름이 같다면 중복인 것으로 판단 후 예외를 발생시킨다.")
+    void validate_duplicateCarNames_trim() {
+        // given
+        List<Car> carsWithDuplicateNames = Arrays.asList(
+                new Car("Car ", () -> true),
+                new Car(" Car", () -> true),
+                new Car("Car2", () -> true)
+        );
+
+        // when & then
+        assertThatThrownBy(() -> RaceValidator.validate(carsWithDuplicateNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 중복될 수 없습니다: Car");
+    }
+
+    @Test
     @DisplayName("모든 차 이름이 고유할 경우 예외가 발생하지 않는다.")
-    void validate_uniqueCarNames_noException() {
+    void validate_uniqueCarNames() {
         // given
         List<Car> uniqueCars = Arrays.asList(
                 new Car("Car1", () -> true),

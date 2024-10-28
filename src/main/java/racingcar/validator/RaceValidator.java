@@ -28,8 +28,9 @@ public class RaceValidator {
     private static void validateCarsDuplicate(List<Car> cars) {
         Set<String> carNameSet = new HashSet<>();
         for (Car car : cars) {
-            if (!carNameSet.add(car.getName())) {
-                String errorMessage = String.format(DUPLICATE_CAR_NAME, car.getName());
+            String trimmedName = car.getName().trim();
+            if (!carNameSet.add(trimmedName)) {
+                String errorMessage = String.format(DUPLICATE_CAR_NAME, trimmedName);
                 throw new IllegalArgumentException(errorMessage);
             }
         }
