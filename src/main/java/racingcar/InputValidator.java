@@ -41,4 +41,10 @@ public class InputValidator {
             }
         }
     }
+
+    public static void notPositiveNum(int roundNumber){
+        if(InputView.getRoundNumber() <= 0){
+            throw new IllegalArgumentException("양수만 입력해야 합니다.");
+        }
+    }
 }
