@@ -26,6 +26,10 @@ public class InputView {
         return convertToInt(input);
     }
 
+    public void close() {
+        Console.close();
+    }
+
     private void validateDelimiter(String input) {
         if (!input.contains(DELIMITER)) {
             throw new IllegalArgumentException("구분자는 쉼표로 작성해야 합니다.");
