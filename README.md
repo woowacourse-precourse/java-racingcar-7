@@ -79,9 +79,60 @@
     - 우승자 판별 테스트
 
 ## 클래스 다이어그램
+```mermaid
+classDiagram
+direction BT
+class Application {
+  + main(String[]) void
+  + Application() 
+}
+class Car {
+  + move() void
+  + Car(String) 
+   String name
+   int position
+  - String name
+  - int position
+}
+class Cars {
+  + moveAll() void
+  + Cars(List~String~) 
+   List~Car~ cars
+   List~Car~ winners
+  - List~Car~ cars
+}
+class ErrorMessages {
+  - ErrorMessages() 
+}
+class InputView {
+  + InputView() 
+   int rounds
+   List~String~ carNames
+}
+class OutputView {
+  + printRoundResult(Cars) void
+  + printWinners(List~Car~) void
+  + printCarNameInputPrompt() void
+  + printRoundInputPrompt() void
+  + OutputView() 
+}
+class RaceController {
+  + startRace(int) void
+  - playRound() void
+  + RaceController(Cars) 
+}
+class Validator {
+  + validateCarNames(List~String~) void
+  + validateRound(String) void
+  - Validator() 
+}
 
-![img.png](img.png)
+Application  ..>  Cars : «create»
+Application  ..>  RaceController : «create»
+Cars "1" *--> "cars *" Car 
+RaceController "1" *--> "cars 1" Cars 
 
+```
 
 
 
