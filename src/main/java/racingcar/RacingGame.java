@@ -9,16 +9,8 @@ public class RacingGame {
     private int tryCount;
     private String AllRoundsResult;
 
-    public final void registerCars(String input) {
-        StringTokenizer strtok = new StringTokenizer(input, ",");
-
-        while (strtok.hasMoreTokens()) {
-            String carName = strtok.nextToken();
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException();
-            }
-            cars.add(new Car(carName));
-        }
+    public final void registerCars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public final void setTryCount(int tryCount) {
