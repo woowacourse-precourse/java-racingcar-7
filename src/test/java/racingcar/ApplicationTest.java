@@ -32,18 +32,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("횟수가 0번일 때 공동 우승자를 뽑는 race 기능이 작동한다.")
-    void 횟수_0번일_때_공동우승_테스트() {
-        assertRandomNumberInRangeTest(() -> {
-            run("pobi,woni", "0");
-            assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi, woni");
-        }, MOVING_FORWARD, MOVING_FORWARD);
-    }
-
-    @Test
     @DisplayName("이름이 5자 이상일 때 IllegalArgumentException을 throw한다.")
     void 이름_5자이상_예외_테스트() {
         assertSimpleTest(() -> assertThatThrownBy(() -> runException("pobi,javaji", "1")).isInstanceOf(
+                IllegalArgumentException.class));
+    }
+
+    @Test
+    @DisplayName("횟수가 0번일 때 IllegalArgumentException을 throw한다.")
+    void 횟수_0번일_때_공동우승_테스트() {
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("pobi,javaj", "0")).isInstanceOf(
                 IllegalArgumentException.class));
     }
 
