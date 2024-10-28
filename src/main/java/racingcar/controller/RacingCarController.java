@@ -1,10 +1,12 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 
 public class RacingCarController {
     private final InputView inputView = new InputView();
+    private final RacingCarService racingCarService = new RacingCarService();
 
     public void run() {
         List<String> carNameList;
@@ -16,5 +18,6 @@ public class RacingCarController {
         inputView.displayTryCountPrompt();
         tryCount = inputView.inputTryCount();
         carNameList = inputView.splitCarNamesToList(carNames);
+        racingCarService.prepareCars(carNameList);
     }
 }
