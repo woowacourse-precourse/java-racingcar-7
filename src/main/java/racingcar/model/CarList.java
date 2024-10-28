@@ -17,22 +17,22 @@ public class CarList {
        carList.add(car);
     }
 
-    public void play(){
+    public ArrayList<String> play(){
         goCars();
         ArrayList<String> roundResults = new ArrayList<>();
         for (Car car : carList) {
             roundResults.add(car.playResult());
         }
-        //출력
+        return roundResults;
     }
 
-    public void winnerResult(){
+    public ArrayList<String> winnerResult(){
         ArrayList<String> winners=new ArrayList<>();
         for(Car car:carList){
             if(car.isWinner(Util.getMax(getPostionList())) )
                 winners.add(car.getName());
         }
-        //출력
+        return winners;
     }
 
     private void goCars(){

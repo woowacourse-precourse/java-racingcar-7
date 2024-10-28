@@ -18,6 +18,7 @@ public class OutputView {
         }
         System.out.println();
     }
+
     public static void printWinnerResult(ArrayList<String> winners){
         System.out.println(Constants.WINNER + String.join(", ", winners));
     }
