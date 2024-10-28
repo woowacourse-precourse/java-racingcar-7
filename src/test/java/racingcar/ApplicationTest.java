@@ -35,4 +35,22 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 최소2개자동차입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("[ERROR] 적어도 2개의 자동차를 입력해주세요")
+        );
+    }
+
+    @Test
+    void 자동차이름중복_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("[ERROR] 자동차 이름은 중복될 수 없습니다.")
+        );
+    }
 }

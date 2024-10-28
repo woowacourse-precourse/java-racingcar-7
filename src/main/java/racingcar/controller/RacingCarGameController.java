@@ -3,7 +3,6 @@ package racingcar.controller;
 import static racingcar.view.Output.printRace;
 import static racingcar.view.Output.printWinners;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.RacingCarGame;
@@ -17,12 +16,11 @@ public class RacingCarGameController {
     }
 
     public void run() {
-        String[] carNames = input.getCarNames();
-        List<Car> racingCars = convertToCars(carNames);
+        List<Car> carNames = input.getCars();
         int attemptCount = input.getAttemptCount();
 
         RacingCarGame racingCarGame = new RacingCarGame();
-        racingCarGame.initialize(racingCars);
+        racingCarGame.initialize(carNames);
 
         for (int i = 0; i < attemptCount; i++) {
             racingCarGame.raceEachCar();
@@ -31,15 +29,5 @@ public class RacingCarGameController {
         }
         printWinners(racingCarGame.getWinnerList());
 
-    }
-
-    public List<Car> convertToCars(String[] carNames) {
-        List<Car> racingCars = new ArrayList<>();
-        for (String name : carNames) {
-            Car car = new Car(name);
-            car.validateNotExceedMaxLength();
-            racingCars.add(new Car(name));
-        }
-        return racingCars;
     }
 }
