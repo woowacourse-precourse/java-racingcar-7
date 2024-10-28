@@ -18,6 +18,7 @@ public class Application {
             // 이동 횟수 입력
             System.out.println("시도할 횟수는 몇 회인가요?");
             int numberOfAttempts = Integer.parseInt(Console.readLine());
+            validateNumberOfAttempts(numberOfAttempts);
 
             // 자동차 초기화
             Map<String, Integer> carPositions = initializeCarPositions(carNames);
@@ -38,13 +39,25 @@ public class Application {
     }
 
     static String[] validateCarNames(String carNamesInput) {
+        if (carNamesInput == null || carNamesInput.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름을 하나 이상 입력해야 합니다.");
+        }
         String[] carNames = carNamesInput.split(",");
         for (String name : carNames) {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
+            if (!name.matches("^[a-zA-Z]+$")) {
+                throw new IllegalArgumentException("자동차 이름은 영어 알파벳만 가능합니다.");
+            }
         }
         return carNames;
+    }
+
+    static void validateNumberOfAttempts(int numberOfAttempts) {
+        if (numberOfAttempts <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
     }
 
     static Map<String, Integer> initializeCarPositions(String[] carNames) {
