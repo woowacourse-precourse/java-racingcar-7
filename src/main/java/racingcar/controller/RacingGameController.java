@@ -2,12 +2,11 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.dto.RacingRegisterForm;
+import racingcar.dto.RaceRegistrationForm;
 import racingcar.dto.RoundRaceRecord;
 import racingcar.model.race.CarRace;
 import racingcar.model.race.CarRaceRoundManager;
-import racingcar.model.register.RacingRegisterFormFactory;
-import racingcar.model.register.RegistrarClerk;
+import racingcar.model.registration.RaceRegistrationFormFactory;
 import racingcar.model.race.strategy.MoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -25,7 +24,7 @@ public class RacingGameController {
     }
 
     public void start() {
-        RacingRegisterForm registerForm = getRacingRegisterForm();
+        RaceRegistrationForm registerForm = createRegisterFormFromInput();
         CarRace carRace = createCarRace(registerForm);
         CarRaceRoundManager roundManager = createCarRaceRoundManager(registerForm);
 
@@ -38,18 +37,17 @@ public class RacingGameController {
         releaseResources();
     }
 
-    private RacingRegisterForm getRacingRegisterForm() {
+    private RaceRegistrationForm createRegisterFormFromInput() {
         String inputCarNames = inputView.requestCarNames();
         String inputRaceRoundCount = inputView.requestRaceRoundCount();
-        return RacingRegisterFormFactory.create(inputCarNames, inputRaceRoundCount);
+        return RaceRegistrationFormFactory.create(inputCarNames, inputRaceRoundCount);
     }
 
-    private CarRace createCarRace(RacingRegisterForm registerForm) {
-        RegistrarClerk registrarClerk = new RegistrarClerk();
-        return registrarClerk.register(registerForm, moveStrategy);
+    private CarRace createCarRace(RaceRegistrationForm registerForm) {
+        return CarRace.create(registerForm, moveStrategy);
     }
 
-    private CarRaceRoundManager createCarRaceRoundManager(RacingRegisterForm registerForm) {
+    private CarRaceRoundManager createCarRaceRoundManager(RaceRegistrationForm registerForm) {
         return new CarRaceRoundManager(registerForm.raceRoundCount());
     }
 

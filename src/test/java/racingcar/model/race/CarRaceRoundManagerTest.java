@@ -10,15 +10,6 @@ import org.junit.jupiter.api.Test;
 class CarRaceRoundManagerTest {
 
     @Test
-    @DisplayName("1 이하의 수를 진행하려는 경우 예외 발생 테스트")
-    void should_ThrowException_WhenRoundLessThan1() {
-        int roundCount = 0;
-
-        assertThatThrownBy(() -> new CarRaceRoundManager(roundCount))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
     @DisplayName("지정된 라운드 수를 초과하여 진행하는 경우 예외 발생 테스트")
     void should_ThrowException_WhenExceedingMaxRounds() {
         int roundCount = 3;

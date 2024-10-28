@@ -6,10 +6,11 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.car.Car;
-import racingcar.model.car.Cars;
+import racingcar.dto.RaceRegistrationForm;
+import racingcar.dto.RoundRaceRecord;
 import racingcar.model.race.strategy.AlwaysMoveStrategy;
 import racingcar.model.race.strategy.MoveStrategy;
+import racingcar.model.registration.RaceRegistrationFormFactory;
 
 @DisplayName("자동차 경주 객체 테스트")
 class CarRaceTest {
@@ -25,25 +26,26 @@ class CarRaceTest {
     @Test
     @DisplayName("한 라운드를 진행하여 자동차의 위치가 업데이트되는지 확인한다.")
     void should_UpdateCarPositionsWhenStartRound() {
-        List<String> testCarNames = List.of("pobi", "woni");
-        Cars cars = new Cars(testCarNames);
-        CarRace carRace = new CarRace(cars, moveStrategy);
+        String inputCarNames = "pobi,woni";
+        String inputRaceRoundCount = "1";
+        RaceRegistrationForm registrationForm = RaceRegistrationFormFactory.create(inputCarNames, inputRaceRoundCount);
+        CarRace carRace = CarRace.create(registrationForm, moveStrategy);
 
-        carRace.startRound();
+        List<RoundRaceRecord> results = carRace.startRound();
 
-        List<Car> allCars = cars.getCars();
-        assertThat(allCars.get(0).getName()).isEqualTo(testCarNames.get(0));
-        assertThat(allCars.get(1).getName()).isEqualTo(testCarNames.get(1));
-        assertThat(allCars.get(0).getPosition()).isEqualTo(1);
-        assertThat(allCars.get(1).getPosition()).isEqualTo(1);
+        assertThat(results.get(0).name()).isEqualTo("pobi");
+        assertThat(results.get(1).name()).isEqualTo("woni");
+        assertThat(results.get(0).position()).isEqualTo(1);
+        assertThat(results.get(1).position()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("자동차 경주 후 우승 자동차의 이름을 반환한다.")
     void should_ReturnWinnerCarNamesAfterRace() {
-        List<String> testCarNames = List.of("pobi", "woni");
-        Cars cars = new Cars(testCarNames);
-        CarRace carRace = new CarRace(cars, moveStrategy);
+        String inputCarNames = "pobi,woni";
+        String inputRaceRoundCount = "1";
+        RaceRegistrationForm registrationForm = RaceRegistrationFormFactory.create(inputCarNames, inputRaceRoundCount);
+        CarRace carRace = CarRace.create(registrationForm, moveStrategy);
 
         carRace.startRound();
 

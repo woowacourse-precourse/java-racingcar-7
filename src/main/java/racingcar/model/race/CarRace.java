@@ -1,6 +1,7 @@
 package racingcar.model.race;
 
 import java.util.List;
+import racingcar.dto.RaceRegistrationForm;
 import racingcar.dto.RoundRaceRecord;
 import racingcar.model.car.Cars;
 import racingcar.model.car.Car;
@@ -12,10 +13,15 @@ public class CarRace {
     private final MoveStrategy moveStrategy;
     private final CarRaceRecorder raceRecorder;
 
-    public CarRace(Cars cars, MoveStrategy moveStrategy) {
+    private CarRace(Cars cars, MoveStrategy moveStrategy) {
         this.cars = cars;
         this.moveStrategy = moveStrategy;
         this.raceRecorder = new CarRaceRecorder();
+    }
+
+    public static CarRace create(RaceRegistrationForm registerForm, MoveStrategy moveStrategy) {
+        Cars cars = new Cars(registerForm.carNames());
+        return new CarRace(cars, moveStrategy);
     }
 
     public List<RoundRaceRecord> startRound() {
