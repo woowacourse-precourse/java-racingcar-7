@@ -10,4 +10,16 @@ public class Race {
         this.CARS = cars;
         this.COUNT = count;
     }
+
+    public void start() {
+        Output.printBlankLine();
+        Output.printRunResultMessage();
+        for (int i = 0; i < COUNT; i++) {
+            for (Car car : CARS) {
+                Movement movement = MovementGenerator.getRandomMovement();
+                car.move(movement);
+            }
+            Output.printRunResult(CARS);
+        }
+    }
 }
