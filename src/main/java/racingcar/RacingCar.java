@@ -14,6 +14,11 @@ public class RacingCar {
         this.distance = 0;
     }
 
+    protected RacingCar(String name, int distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
     private void validateName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없습니다.");

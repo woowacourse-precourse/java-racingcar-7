@@ -11,6 +11,10 @@ public class RacingCars {
         this.racingCarList = new ArrayList<>();
     }
 
+    protected RacingCars(List<RacingCar> racingCarList) {
+        this.racingCarList = racingCarList;
+    }
+
     public boolean registRacingCar(RacingCar racingCar) {
         validateDuplicateCarName(racingCar);
         return racingCarList.add(racingCar);
