@@ -1,13 +1,13 @@
 package racingcar.domain;
 
-public class TrialCount {
+public class TrialCoin {
 
     private static final int MIN_TRIAL_COUNT = 0;
     private static final int DECREASE_AMOUT = 1;
 
     private int trialCount;
 
-    public TrialCount(int value) {
+    public TrialCoin(int value) {
         validateNotNegative(value);
         this.trialCount = value;
     }
