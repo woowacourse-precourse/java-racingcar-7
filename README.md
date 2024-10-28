@@ -30,13 +30,13 @@
 
 ### Car.class
 
-- [ ] protected Car(String name);
+- [X] protected Car(String name);
     - 자동차라는 객체 정의
-- [ ] private void validateName(String name);
+- [x] private void validateName(String name);
     - 자동차 이름 조건 정의
-- [ ] protected void move();
+- [x] protected void move();
     - 자동차 한칸 움직임
-- [ ] private boolean hasMoveCondition();
+- [x] private boolean hasMoveCondition();
     - 움직일 수 있는 조건인지 확인
 
 ### RacingCar.class
