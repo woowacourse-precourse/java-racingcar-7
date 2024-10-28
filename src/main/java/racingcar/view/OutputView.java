@@ -26,11 +26,8 @@ public class OutputView {
 
     public void displayCarPositions(List<Car> cars) {
         for (Car car : cars) {
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < car.getPosition(); i++) {
-                stringBuilder.append("-");
-            }
-            System.out.println(car.getName() + " : " + stringBuilder);
+            String positionMarkers = "-".repeat(car.getPosition());
+            System.out.println(car.getName() + " : " + positionMarkers);
         }
         System.out.println();
     }
