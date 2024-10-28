@@ -3,6 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Application {
 
     public static void main(String[] args) {
@@ -11,15 +14,25 @@ public class Application {
             String names = Console.readLine();
             String[] namesArray = names.split(",");
 
+            Map<String, Integer> carPositions = new HashMap<>();
+
             int tryCount = inputRaceAttempts(); // 횟수 입력 및 유효성 검사
 
-            for (String name : namesArray) {
-                validateCarNames(name); // 이름 유효성 검사
-
+            for (int i = 0; i < tryCount; i++) {
                 int position = 0;
-                for (int i = 0; i < tryCount; i++) {
+                for (String name : namesArray) {
+                    validateCarNames(name); // 이름 유효성 검사
                     int randomNumber = Randoms.pickNumberInRange(0, 9);
                     position = move(randomNumber, position);
+
+                    carPositions.put(name, position);
+                }
+
+                for (Map.Entry<String, Integer> entry : carPositions.entrySet()) {
+                    String carName = entry.getKey();
+                    Integer pos = entry.getValue();
+                    // 원하는 작업 수행
+                    System.out.println(carName + " : " + "-".repeat(pos));
                 }
             }
 
