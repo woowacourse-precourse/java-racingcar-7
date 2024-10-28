@@ -12,7 +12,7 @@ public class OutputView {
     }
 
     public static void printWinner(List<Car> winners) {
-        String winnerName = winners.stream().map(Car::getName).collect(Collectors.joining(", "));
+        String winnerName = winners.stream().map(Car::getName).collect(Collectors.joining(","));
 
         System.out.println("최종 우승자 : " + winnerName);
     }

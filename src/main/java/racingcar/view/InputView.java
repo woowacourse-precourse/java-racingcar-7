@@ -4,13 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private static final Scanner sc = new Scanner(System.in);
-
     public static List<String> carNameInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = sc.nextLine();
+        String input = Console.readLine();
 
         if(!validateCarName(input)) {
             throw new IllegalArgumentException("이름은 쉼표로 구분되어야 하며, 1~5자 사이여야 합니다.");
@@ -21,7 +20,7 @@ public class InputView {
 
     public static int moveCountInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String input = sc.nextLine();
+        String input = Console.readLine();
 
         try {
             int moveCount = Integer.parseInt(input);
