@@ -1,5 +1,9 @@
 package racingcar.view;
 
+import static racingcar.error.ErrorMessageConstants.EMPTY_INPUT_ERROR;
+import static racingcar.error.ErrorMessageConstants.NON_NUMERIC_INPUT_ERROR;
+import static racingcar.error.ErrorMessageConstants.NON_POSITIVE_INTEGER_ERROR;
+
 public class InputValidator {
 
     public static void validateCarNames(String input) {
@@ -14,7 +18,7 @@ public class InputValidator {
 
     private static void validateBlanckInput(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("입력값이 비어있습니다.");
+            throw new IllegalArgumentException(EMPTY_INPUT_ERROR);
         }
     }
 
@@ -22,14 +26,14 @@ public class InputValidator {
         try {
             int rounds = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값은 숫자여야 합니다.");
+            throw new IllegalArgumentException(NON_NUMERIC_INPUT_ERROR);
         }
     }
 
     private static void validatePositiveInteger(String input) {
         int rounds = Integer.parseInt(input);
         if (rounds <= 0) {
-            throw new IllegalArgumentException("이동 횟수는 1 이상의 자연수여야 합니다.");
+            throw new IllegalArgumentException(NON_POSITIVE_INTEGER_ERROR);
         }
     }
 
