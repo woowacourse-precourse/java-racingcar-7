@@ -16,18 +16,14 @@ import java.util.*;
 public class Application {
 
     public static void main(String[] args)  {
-        try {
-            List<Car> cars = inputCarNames();
-            int attempts = inputAttempts();
+        List<Car> cars = inputCarNames();
+        int attempts = inputAttempts();
 
-            System.out.println("\n실행 결과");
+        System.out.println("\n실행 결과");
 
-            playGame(cars, attempts);
-            List<String> winners = getWinners(cars);
-            printWinners(winners);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        playGame(cars, attempts);
+        List<String> winners = getWinners(cars);
+        printWinners(winners);
     }
 
     private static List<Car> inputCarNames() {
@@ -36,12 +32,12 @@ public class Application {
         String[] carNamesArray = carNamesInput.split(",");
         List<Car> cars = new ArrayList<>();
 
-        for (String name : carNamesArray) {
-            cars.add(new Car(name));
+        if (carNamesArray.length == 0) {
+            throw new IllegalArgumentException();
         }
 
-        if (cars.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
+        for (String name : carNamesArray) {
+            cars.add(new Car(name));
         }
 
         return cars;
@@ -51,14 +47,15 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
         int attempts;
+
         try {
             attempts = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+            throw new IllegalArgumentException();
         }
 
         if (attempts <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다.");
+            throw new IllegalArgumentException();
         }
 
         return attempts;
