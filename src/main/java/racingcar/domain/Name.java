@@ -33,4 +33,8 @@ public class Name {
 			throw new IllegalArgumentException("[ERROR] 입력값은 알파벳으로만 구성되어야 합니다.");
 		}
 	}
+
+	public String getName() {
+		return name;
+	}
 }
