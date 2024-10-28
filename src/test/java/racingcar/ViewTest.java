@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 
@@ -34,22 +35,28 @@ public class ViewTest {
     static Stream<Arguments> expectedAndResult() {
         return Stream.of(
             arguments("woni,pobi", Arrays.asList("woni", "pobi")),
-            arguments("car1", Arrays.asList("car1")),
-            arguments("pobi ,woni ", Arrays.asList("pobi","woni"))
+            arguments("car1", List.of("car1")),
+            arguments("pobi ,woni ", Arrays.asList("pobi", "woni"))
         );
     }
 
-    @DisplayName("Car 객체 리스트 생성 테스트")
+    @DisplayName("숫자 예외처리 테스트")
     @Test
-    void addCars() {
+    void vaildNum() {
         View view = new View();
-        List<String> carNames = Arrays.asList("pobi", "woni", "crong");
-
-        List<Car> result = view.addCars(carNames);
-
-        assertEquals("pobi", result.get(0).getName());
-        assertEquals("woni", result.get(1).getName());
-        assertEquals("crong", result.get(2).getName());
+        assertThrows(IllegalArgumentException.class, () -> {
+            view.isVaildNum("asd");
+        });
     }
+
+    @DisplayName("차이름 예외처리 테스트")
+    @Test
+    void vaildName() {
+        View view = new View();
+        assertThrows(IllegalArgumentException.class, () -> {
+            view.isVaildName("wqerrr");
+        });
+    }
+
 
 }
