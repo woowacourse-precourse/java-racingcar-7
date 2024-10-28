@@ -58,7 +58,11 @@ public class GameController {
     }
 
     private int getTryCount() {
-        return inputView.getTryCount();
+        int tryCount = inputView.getTryCount();
+        if (tryCount < 1) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
+        return tryCount;
     }
 
     private void playRace(List<Car> cars, int tryCount) {
