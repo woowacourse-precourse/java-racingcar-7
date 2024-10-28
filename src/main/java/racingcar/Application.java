@@ -20,29 +20,36 @@ public class Application {
 
         inputName();
         inputNumberOfTry();
-    }
 
-    public static void inputName() {
+        for(int i = 0; i < numberOfTry; i++) {
+            play();
+        }
+    }
+    public static void play(){
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+    public static void inputName(){
         input = Console.readLine();
         Pattern p = Pattern.compile(regExpForName);
         Matcher m = p.matcher(input);
 
-        if (!m.matches()) {
+        if(!m.matches()) {
             throw new IllegalArgumentException();
         }
 
         String[] carNames = input.split(",");
-        for (String carName : carNames) {
-            cars.add(new Car(carName, 0));
+        for(String carName : carNames) {
+            cars.add(new Car(carName,0));
         }
     }
-
-    public static void inputNumberOfTry() {
+    public static void inputNumberOfTry(){
         String number = Console.readLine();
         Pattern p = Pattern.compile(regExpForNumber);
         Matcher m = p.matcher(number);
 
-        if (!m.matches()) {
+        if(!m.matches()) {
             throw new IllegalArgumentException();
         }
         numberOfTry = Integer.parseInt(number);
