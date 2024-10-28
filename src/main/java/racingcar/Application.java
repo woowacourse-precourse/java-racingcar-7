@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -31,7 +32,15 @@ public class Application {
             if (carName.length() > 5 || carName.trim().isEmpty()) {
                 throw new IllegalArgumentException();
             }
+            if (!isValidName(carName)) {
+                throw new IllegalArgumentException();
+            }
         }
+    }
+
+    private static boolean isValidName(String carName) {
+        String regex = "^[a-zA-Z0-9가-힣]+$";
+        return Pattern.matches(regex, carName);
     }
 
     public static int getMoveCount() {
