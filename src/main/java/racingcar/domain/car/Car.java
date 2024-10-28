@@ -3,11 +3,11 @@ package racingcar.domain.car;
 import racingcar.domain.strategy.MovingStrategy;
 
 public class Car {
-    private final String name;
+    private final Name name;
     private int position = 0;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
     }
 
     public void move(MovingStrategy strategy) {
@@ -21,15 +21,14 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.toString();
     }
 
     public int getPosition() {
         return position;
     }
 
-    @Override
-    public String toString() {
-        return name + " : " + "-".repeat(position);
+    public String getCurrentStatus() {
+        return name.toString() + " : " + "-".repeat(position);
     }
 }
