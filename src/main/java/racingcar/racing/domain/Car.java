@@ -11,6 +11,11 @@ public class Car implements Comparable<Car> {
         this.totalDistance = 0;
     }
 
+    Car(String name, int currentDistance) {
+        this.name = name;
+        this.totalDistance = currentDistance;
+    }
+
     public int movedDistance() {
         return Randoms.pickNumberInRange(0, 9);
     }

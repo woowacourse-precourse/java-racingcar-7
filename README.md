@@ -43,10 +43,10 @@
 - 시도 횟수가 양의 정수가 아닐 시
 
 ## 단위 테스트
-- [ ] RacingGame 단위 테스트
+- [x] RacingGame 단위 테스트
     - [x] 정적 팩토리 메서드 생성 확인
     - [x] start 메서드 반환 확인
-    - [ ] selectWinner 확인
+    - [x] selectWinner 확인
 - [ ] Car 단위 테스트
   - [ ] 랜덤한 수가 나오는지 확인
   - [ ] totalDistance가 증가되었는지 확인

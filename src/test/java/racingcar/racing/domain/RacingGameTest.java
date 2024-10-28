@@ -55,8 +55,16 @@ class RacingGameTest {
     void selectWinner_결과_반환_성공() {
         Assertions.assertSimpleTest(() -> {
             //given
+            Car car1 = new Car("car1", 5);
+            Car car2 = new Car("car2", 2);
+            RacingGame racingGame = new RacingGame(1, Arrays.asList(car1, car2));
+
             //when
+            List<Car> winners = racingGame.selectWinners();
+
             //then
+            assertThat(winners.size()).isEqualTo(1);
+            assertThat(winners.get(0).getName()).isEqualTo("car1");
         });
     }
 
