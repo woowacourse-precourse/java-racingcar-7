@@ -14,6 +14,9 @@ public class OutputView {
     }
 
     public void outputOneRoundResult(List<Car> cars) {
+        if (cars == null) {
+            throw new IllegalAccessError("차 리스트는 null일 수 없습니다.");
+        }
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
