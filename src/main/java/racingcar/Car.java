@@ -23,8 +23,8 @@ public class Car {
         }
     }
 
-    public void moveCar(int number){
-        if(number >= FORWARD_THRESHOLD){
+    public void moveCar(int number) {
+        if (number >= FORWARD_THRESHOLD) {
             position++;
         }
     }
@@ -33,7 +33,7 @@ public class Car {
         return name;
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return position;
     }
 }
