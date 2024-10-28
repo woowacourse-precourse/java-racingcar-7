@@ -15,7 +15,7 @@ public class RacingGameService {
     }
 
     public void playRounds() {
-        for (int currentRound = 0; currentRound < game.getLoopCount(); currentRound++) {
+        for (int currentCount = 0; currentCount < game.getLoopCount(); currentCount++) {
             game.playRound();
             printRoundResult();
         }

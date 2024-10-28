@@ -27,7 +27,7 @@ public abstract class OutputView {
 
         winners.forEach(winner -> {
             System.out.print(winner.getName());
-            if (isLast(winners, winner)) {
+            if (isNotLast(winners, winner)) {
                 System.out.print(", ");
             }
         });
@@ -37,7 +37,7 @@ public abstract class OutputView {
         return winners.size() == 1;
     }
 
-    private static boolean isLast(List<RacingCar> winners, RacingCar winner) {
+    private static boolean isNotLast(List<RacingCar> winners, RacingCar winner) {
         return !winner.equals(winners.getLast());
     }
 }
