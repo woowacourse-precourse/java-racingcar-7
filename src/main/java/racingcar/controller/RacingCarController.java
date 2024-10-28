@@ -2,12 +2,10 @@ package racingcar.controller;
 
 import racingcar.dto.CarNamesInputHandler;
 import racingcar.dto.GameRoundInputHandler;
-import racingcar.message.Message;
-import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarController {
@@ -23,13 +21,11 @@ public class RacingCarController {
 
         RacingCars racingCars = new RacingCars(carNames);
 
-        System.out.println(Message.EXECUTION_MESSAGE);
+        OutputView.printExecutionMessage();
         for(int i = 0; i < parsedGameRound; i++) {
             racingCars.moveCars();
-            System.out.println(racingCars.toString());
+            OutputView.printRoundResult(racingCars);
         }
-
-        System.out.print(Message.WINNER_MESSAGE);
-        System.out.println(racingCars.getWinners());
+        OutputView.printWinners(racingCars);
     }
 }
