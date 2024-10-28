@@ -84,7 +84,7 @@ public class RacingGameTest {
         moveCars(game, new int[]{5, 7, 4});
 
         // when
-        int maxMoveCount = game.getMaxMoveCount();
+        int maxMoveCount = game.getMaxPosition();
 
         // then
         assertEquals(1, maxMoveCount);
