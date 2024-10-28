@@ -33,6 +33,8 @@ public class GameController {
 
         // 자동차 경주 우승자 선출
         List<Car> winners = RacingGame.getWinners(cars);
+        if (round.equals(new BigInteger("0")))
+            winners = cars;
 
         // 우승자 출력
         OutputView.printWinners(winners);
