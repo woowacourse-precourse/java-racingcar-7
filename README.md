@@ -26,10 +26,12 @@
 │   │   │   ├── RacingGame.java
 │   │   │   ├── RacingGameCount.java
 │   │   │   └── RacingGameState.java
+│   │   │   ├── movement/
+│   │   │   ├── MovementStrategy.java
+│   │   │   └── RandomMovementStrategy.java
 │   │   ├── controller/
 │   │   └── RacingGameController.java
 │   └── Application.java
-
 ```
 
 ## 🚀 기능 구현 목록

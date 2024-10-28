@@ -14,7 +14,7 @@ public class RacingGameResult {
     @DisplayName("제일 멀리 주행한 자동차가 우승한다.")
     void 자동차_경주_우승_테스트() {
         // given
-        Cars cars = Cars.createCarsFrom("yoon,yoo,biny", () -> true);  // 항상 이동
+        Cars cars = Cars.createCarsFrom("yoon,yoo,biny", () -> true);
         List<Car> carList = cars.getCars();
 
         // when
