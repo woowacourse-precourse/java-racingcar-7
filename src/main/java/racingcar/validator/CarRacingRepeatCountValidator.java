@@ -1,15 +1,17 @@
 package racingcar.validator;
 
+import racingcar.constants.ValidationConstants;
+
 public class CarRacingRepeatCountValidator {
 
     public void validateRepeatCountNumberFormat(String inputCarRacingRepeatCount) {
         try {
             int count = Integer.parseInt(inputCarRacingRepeatCount);
             if (count <= 0) {
-                throw new IllegalArgumentException("시도할 횟수는 양의 정수여야 합니다.");
+                throw new IllegalArgumentException(ValidationConstants.REPEAT_COUNT_NOT_POSITIVE);
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도할 횟수는 정수만 가능합니다.");
+            throw new IllegalArgumentException(ValidationConstants.REPEAT_COUNT_NOT_INTEGER);
         }
     }
 }

@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import racingcar.constants.RacingCarConstants;
 import racingcar.domain.RacingCar;
 import racingcar.validator.CarNameValidator;
 
@@ -10,8 +11,6 @@ import java.util.List;
 public class RacingCarService {
     private final List<RacingCar> racingCars;
     private final CarNameValidator carNameValidator;
-
-    private static final String SPLIT_SEPARATOR =",";
 
     public RacingCarService(CarNameValidator carNameValidator) {
         this.carNameValidator = carNameValidator;
@@ -50,7 +49,7 @@ public class RacingCarService {
     }
 
     public String[] splitCarsName(String inputCarsName) {
-        String[] names = inputCarsName.split(SPLIT_SEPARATOR);
+        String[] names = inputCarsName.split(RacingCarConstants.SPLIT_SEPARATOR);
         for (int i = 0; i < names.length; i++) {
             names[i] = names[i].trim();
         }

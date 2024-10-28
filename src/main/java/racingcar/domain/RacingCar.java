@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.constants.RacingCarConstants;
 
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class RacingCar {
     }
 
     public boolean shouldAdvance() {
-        int randomInteger = Randoms.pickNumberInRange(0, 9);
-        return randomInteger >= 4;
+        int randomInteger = Randoms.pickNumberInRange(RacingCarConstants.RANDOM_MIN, RacingCarConstants.RANDOM_MAX);
+        return randomInteger >= RacingCarConstants.ADVANCE_STANDARD_NUMBER;
     }
 
     public void addAdvanceResult() {
