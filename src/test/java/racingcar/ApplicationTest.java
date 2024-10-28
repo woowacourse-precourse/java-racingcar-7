@@ -80,6 +80,11 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("1 이상의 정수여야 합니다.")
         );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", " "))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("횟수는 정수여야 합니다.")
+        );
     }
 
     @Override
