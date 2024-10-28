@@ -109,6 +109,30 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 시도_횟수가_0인_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("apple,mango", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수를_입력하지_않은_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("apple,mango", "\n"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수가_숫자가_아닌_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("apple,mango", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
