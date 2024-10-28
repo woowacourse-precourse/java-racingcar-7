@@ -9,7 +9,8 @@ public class InputValidator {
 
     public static void validRound(String input) {
         try {
-            int time = Integer.parseInt(input);
+            if (Integer.parseInt(input) > 0) return;
+            throw new IllegalArgumentException("시도할 횟수는 양수여야 합니다.");
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도할 횟수는 정수여야 합니다.");
         }

@@ -40,6 +40,14 @@ class InputTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_input_시도_횟수_음수() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "-4"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
