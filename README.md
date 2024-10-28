@@ -30,7 +30,7 @@
 
 ### Car.class
 
-- [ ] private Car(String name);
+- [ ] protected Car(String name);
     - 자동차라는 객체 정의
 - [ ] private void validateName(String name);
     - 자동차 이름 조건 정의
