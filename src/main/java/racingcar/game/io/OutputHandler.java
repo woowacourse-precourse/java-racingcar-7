@@ -16,6 +16,11 @@ public class OutputHandler {
         System.out.println(OutputMessage.ATTEMPT_COUNT_INPUT_NAVIGATE.getTemplate());
     }
 
+    public void showRaceResultMessage() {
+        System.out.println();
+        System.out.println(OutputMessage.RACE_RESULT_NAVIGATE.getTemplate());
+    }
+
     public void showCurrentRaceSnapshot(List<RaceSnapshot> snapShots) {
         snapShots.stream()
                 .map(this::formatSnapshot)

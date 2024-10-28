@@ -19,6 +19,7 @@ public class RacingCarGame {
         outputHandler.showAttemptCountInputMessage();
         AttemptCount attemptCount = inputHandler.getAttemptCountFromUser();
 
+        outputHandler.showRaceResultMessage();
         raceUntilAttemptIsConsumed(attemptCount, racingCars);
 
         Winners winners = racingCars.retrieveWinners();
