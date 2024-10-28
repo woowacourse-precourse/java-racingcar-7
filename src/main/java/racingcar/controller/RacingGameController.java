@@ -28,6 +28,7 @@ public class RacingGameController {
             roundStart(cars, rounds);
         } catch (IllegalArgumentException exception) {
             System.out.println("입력 오류: " + exception.getMessage());
+            throw exception;
         } catch (Exception exception) {
             System.out.println("문제가 발생하여 프로그램을 종료합니다.");
         }
