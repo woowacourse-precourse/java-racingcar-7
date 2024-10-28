@@ -20,6 +20,7 @@ public class RacingCarService {
 
     public void createRacingCars(String inputCarsName) {
         String[] carsNames = splitCarsName(inputCarsName);
+        carNameValidator.validateCarNameIsEmpty(inputCarsName);
         createRacingCarsBySplitCarsName(carsNames);
     }
 
