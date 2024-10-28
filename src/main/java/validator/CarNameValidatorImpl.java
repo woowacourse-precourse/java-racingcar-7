@@ -1,4 +1,4 @@
-package util.validator;
+package validator;
 
 import java.util.List;
 import java.util.Arrays;

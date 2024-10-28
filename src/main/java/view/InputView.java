@@ -1,8 +1,8 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import util.validator.ParseValidator;
-import util.validator.Validator;
+import validator.ParseValidator;
+import validator.Validator;
 
 public class InputView {
     private final Validator<String> carNameValidator;

@@ -2,7 +2,7 @@ package service;
 
 import model.Car;
 import model.Cars;
-import util.randomnumber.RandomNumberHandler;
+import randomnumber.RandomNumberHandler;
 import view.OutputView;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package util.randomnumber;
+package randomnumber;
 
 public interface RandomNumberHandler {
     boolean canMove();

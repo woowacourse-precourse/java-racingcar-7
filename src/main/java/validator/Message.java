@@ -1,4 +1,4 @@
-package util.validator;
+package validator;
 
 public enum Message {
     INVALID_DELIMITER("자동차 이름은 쉼표로 구분되어야 합니다."),

@@ -2,13 +2,13 @@ package racingcar;
 
 import controller.RacingGameController;
 import service.RacingGameService;
-import util.validator.*;
+import validator.*;
 import view.InputView;
 import view.OutputView;
-import util.randomnumber.RandomNumberHandler;
-import util.randomnumber.RandomNumberHandlerImpl;
-import util.splitter.CarNameSplitter;
-import util.splitter.CarNameSplitterImpl;
+import randomnumber.RandomNumberHandler;
+import randomnumber.RandomNumberHandlerImpl;
+import splitter.CarNameSplitter;
+import splitter.CarNameSplitterImpl;
 
 public class Application {
     private final RacingGameController racingGameController;

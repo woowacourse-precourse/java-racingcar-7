@@ -1,6 +1,6 @@
 package model;
 
-import util.randomnumber.RandomNumberHandler;
+import randomnumber.RandomNumberHandler;
 
 import java.util.Collections;
 import java.util.List;

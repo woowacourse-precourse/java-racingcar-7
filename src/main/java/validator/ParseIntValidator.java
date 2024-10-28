@@ -1,4 +1,4 @@
-package util.validator;
+package validator;
 
 public class ParseIntValidator implements ParseValidator {
     @Override

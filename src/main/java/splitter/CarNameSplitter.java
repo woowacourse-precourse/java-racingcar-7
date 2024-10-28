@@ -1,4 +1,4 @@
-package util.splitter;
+package splitter;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package util.validator;
+package validator;
 
 public interface ParseValidator {
     void validateParseInt(String input);

@@ -1,11 +1,9 @@
 package model;
 
-import model.Car;
-import model.Cars;
-import util.randomnumber.RandomNumberHandler;
+import randomnumber.RandomNumberHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import util.randomnumber.RandomNumberHandlerImpl;
+import randomnumber.RandomNumberHandlerImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

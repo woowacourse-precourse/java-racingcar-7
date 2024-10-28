@@ -2,7 +2,7 @@ package controller;
 
 import model.Cars;
 import service.RacingGameService;
-import util.splitter.CarNameSplitter;
+import splitter.CarNameSplitter;
 import view.InputView;
 import view.OutputView;
 

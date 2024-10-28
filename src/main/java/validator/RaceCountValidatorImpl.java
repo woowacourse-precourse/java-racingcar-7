@@ -1,4 +1,4 @@
-package util.validator;
+package validator;
 
 public class RaceCountValidatorImpl implements Validator<Integer> {
     private static final int MIN_RACE_COUNT = 1;
