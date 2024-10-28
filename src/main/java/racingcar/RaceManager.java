@@ -12,8 +12,7 @@ public class RaceManager {
 
         for (int i = 0; i < raceCars.size(); i++) {
             Car car = raceCars.getCarByIndex(i);
-            RaceRecords raceRecords = car.getRaceRecords();
-            int lastRaceRecord = raceRecords.lengthByRound(raceCount - 1);
+            int lastRaceRecord = car.getRecordLengthByRound(raceCount - 1);
 
             if (lastRaceRecord == maxRecord) {
                 winners.add(car.getName());
@@ -28,8 +27,7 @@ public class RaceManager {
 
         for (int i = 0; i < raceCars.size(); i++) {
             Car car = raceCars.getCarByIndex(i);
-            RaceRecords raceRecords = car.getRaceRecords();
-            int lastRaceRecord = raceRecords.lengthByRound(raceCount - 1);
+            int lastRaceRecord = car.getRecordLengthByRound(raceCount - 1);
 
             maxRecord = Math.max(maxRecord, lastRaceRecord);
         }

@@ -32,8 +32,8 @@ public class Car {
         return name;
     }
 
-    public RaceRecords getRaceRecords() {
-        return raceRecords;
+    public int getRecordLengthByRound(int round) {
+        return raceRecords.lengthByRound(round);
     }
 
     private void validateCarName(String name) {
