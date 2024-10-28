@@ -23,6 +23,9 @@ public class OutputView {
     }
 
     public void outputWinners(List<String> winners) {
+        if (winners == null) {
+            throw new IllegalArgumentException("최종 우승자는 null일 수 없습니다.");
+        }
         System.out.println(WINNERS_MSG + String.join(", ", winners));
     }
 }
