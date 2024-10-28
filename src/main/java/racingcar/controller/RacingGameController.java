@@ -14,7 +14,8 @@ public class RacingGameController {
         int totalRounds = setTotalRounds();
         Console.close();
         RacingGame racingGame = new RacingGame(carNames);
-        startGame(racingGame, totalRounds);
+        playRounds(racingGame, totalRounds);
+        printWinners(racingGame);
     }
 
     List<String> setCarNames() {
@@ -27,13 +28,16 @@ public class RacingGameController {
         return parseTotalRounds(totalRounds);
     }
 
-    void startGame(RacingGame racingGame, int moveCount) {
+    void playRounds(RacingGame racingGame, int moveCount) {
         OutputView.printExecutionText();
         for (int i = 0; i < moveCount; i++) {
             List<Car> cars = racingGame.move();
             OutputView.printCarsMoveStatus(cars);
             System.out.println();
         }
+    }
+
+    void printWinners(RacingGame racingGame) {
         int maxMoveCount = racingGame.getMaxMoveCount();
         List<String> winners = racingGame.getWinners(maxMoveCount);
         OutputView.printFinalWinners(winners);
