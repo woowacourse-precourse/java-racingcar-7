@@ -1,7 +1,9 @@
 package racingcar.model;
 
+import static racingcar.message.ExceptionMessage.ATTEMPTS_OVER_INT_AREA_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.DUPLICATION_NAME_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.EMPTY_NAME_EXCEPTION_MESSAGE;
+import static racingcar.message.ExceptionMessage.INVALID_ATTEMPTS_INPUT_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.INVALID_CHARACTER_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.NAME_LENGTH_OVER_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.NULL_INPUT_EXCEPTION_MESSAGE;
@@ -65,5 +67,22 @@ public class InputValidator {
         if (input == null) {
             throw new IllegalArgumentException(NULL_INPUT_EXCEPTION_MESSAGE.getMessage());
         }
+    }
+
+    public boolean isValidAttempts(String input) {
+        nullCheck(input);
+
+        String regex = "^[0-9]+$";
+        if (!Pattern.matches(regex, input)) {
+            throw new IllegalArgumentException(INVALID_ATTEMPTS_INPUT_EXCEPTION_MESSAGE.getMessage());
+        }
+
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ATTEMPTS_OVER_INT_AREA_EXCEPTION_MESSAGE.getMessage());
+        }
+
+        return true;
     }
 }

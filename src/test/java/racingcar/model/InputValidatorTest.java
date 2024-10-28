@@ -2,8 +2,10 @@ package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.message.ExceptionMessage.ATTEMPTS_OVER_INT_AREA_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.DUPLICATION_NAME_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.EMPTY_NAME_EXCEPTION_MESSAGE;
+import static racingcar.message.ExceptionMessage.INVALID_ATTEMPTS_INPUT_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.INVALID_CHARACTER_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.NAME_LENGTH_OVER_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.NULL_INPUT_EXCEPTION_MESSAGE;
@@ -25,7 +27,7 @@ class InputValidatorTest {
         assertThat(inputValidator).isNotNull();
     }
 
-    @DisplayName("InputValidator_생성_테스트")
+    @DisplayName("입력된_이름들의_유효성_테스트")
     @Test
     public void isValidNamesTest() {
         //given
@@ -123,14 +125,57 @@ class InputValidatorTest {
                 .hasMessage(DUPLICATION_NAME_EXCEPTION_MESSAGE.getMessage());
     }
 
+    @DisplayName("입력된_시도횟수_유효성_테스트")
+    @Test
+    public void isValidAttemptsTest() {
+        //given
+        String attempts = "5";
+        //when
+        //then
+        assertThat(inputValidator.isValidAttempts(attempts)).isTrue();
+    }
+
     @DisplayName("null_입력_예외_테스트")
     @Test
-    public void emptyExceptionTest() {
+    public void attemptsIsNullExceptionTest() {
         //given
-        String names = "aaaa,aaaa,aaaa";
+        String input = null;
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidNames(names))
+        assertThatThrownBy(() -> inputValidator.isValidAttempts(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(DUPLICATION_NAME_EXCEPTION_MESSAGE.getMessage());
+                .hasMessage(NULL_INPUT_EXCEPTION_MESSAGE.getMessage());
+    }
+
+    @DisplayName("양의정수_외_문자입력_예외_테스트")
+    @Test
+    public void invalidAttemptsExceptionTest() {
+        //given
+        String attempts = "-2147483648";
+        //when,then
+        assertThatThrownBy(() -> inputValidator.isValidAttempts(attempts))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_ATTEMPTS_INPUT_EXCEPTION_MESSAGE.getMessage());
+    }
+
+    @DisplayName("양의정수_외_문자입력_예외_테스트(음수)")
+    @Test
+    public void negativeAttemptsExceptionTest() {
+        //given
+        String attempts = "-2147483648";
+        //when,then
+        assertThatThrownBy(() -> inputValidator.isValidAttempts(attempts))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_ATTEMPTS_INPUT_EXCEPTION_MESSAGE.getMessage());
+    }
+
+    @DisplayName("int_범위_예외_테스트")
+    @Test
+    public void overIntAreaExceptionTest() {
+        //given
+        String attempts = "21474836482";
+        //when,then
+        assertThatThrownBy(() -> inputValidator.isValidAttempts(attempts))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ATTEMPTS_OVER_INT_AREA_EXCEPTION_MESSAGE.getMessage());
     }
 }
