@@ -18,6 +18,14 @@ public class Input {
         return makeCarList(carNameInput);
     }
 
+    public int getAttemptNumber() {
+        System.out.println(SYSTEM_ATTEMPT_NUMBER_INPUT_MESSAGE);
+        String attemptNumberInput = Console.readLine();
+        validateAttemptNumberInput(attemptNumberInput);
+
+        return Integer.parseInt(attemptNumberInput);
+    }
+
     private List<Car> makeCarList(String carNames) {
         List<Car> racingCarList = new ArrayList<>();
         for (final String name : carNames.split(",")) {
