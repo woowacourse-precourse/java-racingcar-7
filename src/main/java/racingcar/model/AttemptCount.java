@@ -2,21 +2,21 @@ package racingcar.model;
 
 public class AttemptCount {
 
-    public static final Integer MIN_ATTEMPT_COUNT = 1;
-    public static final Integer MAX_ATTEMPT_COUNT = 10;
+    public static final int MIN_ATTEMPT_COUNT = 1;
+    public static final int MAX_ATTEMPT_COUNT = 10;
 
-    private final Integer racingAttemptCount;
+    private final int racingAttemptCount;
 
-    public AttemptCount(Integer count) {
+    public AttemptCount(int count) {
         this.racingAttemptCount = count;
         validateValidCount();
     }
 
     public static AttemptCount fromString(String count) {
-        return new AttemptCount(convertInteger(count));
+        return new AttemptCount(convertToInt(count));
     }
 
-    private static Integer convertInteger(String count) {
+    private static int convertToInt(String count) {
         try {
             return Integer.parseInt(count.trim());
         } catch (NumberFormatException e) {
