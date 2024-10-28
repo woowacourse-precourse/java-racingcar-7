@@ -9,8 +9,9 @@ public class RacingGame {
 
     public void start() {
         Set<String> carNames = getCarNames();
+        Set<Car> playingCars = PlayingCarFactory.createCars(carNames);
         int round = setRound();
-        play(round, );
+        play(round, playingCars);
     }
 
     private int setRound() {
