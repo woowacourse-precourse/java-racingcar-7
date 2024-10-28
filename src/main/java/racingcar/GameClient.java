@@ -35,7 +35,7 @@ public class GameClient {
     }
 
     private void addRacingCarsToRacingCarList() {
-        String[] carNames = InputView.getCarNames();
+        String[] carNames = InputView.getCarNames().split(",");
         for(String carName : carNames) {
             racingCarList.addRacingCar(carName);
         }

@@ -5,10 +5,9 @@ import racingcar.exception.InvalidCountException;
 
 public class InputView {
 
-    public static String[] getCarNames() {
+    public static String getCarNames() {
         OutputView.printCarNamesInputMessage();
-        String input = Console.readLine();
-        return input.split(",");
+        return Console.readLine();
     }
 
     public static int getCount() {
