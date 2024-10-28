@@ -10,8 +10,8 @@ public class InputView {
         return Console.readLine();
     }
 
-    public int attemptsNumInput() {
+    public Number attemptsNumInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return new Number(Console.readLine()).getValue();
+        return Number.of(Console.readLine());
     }
 }

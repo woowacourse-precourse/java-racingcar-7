@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.Number;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,7 +20,7 @@ public class RaceController {
 
     public void run() {
         String userInput = inputView.CarNamesInput();
-        int attemptsNum = inputView.attemptsNumInput();
+        Number attemptsNum = inputView.attemptsNumInput();
 
         Cars cars = new Cars(makeCarList(userInput));
 
@@ -29,9 +30,9 @@ public class RaceController {
         outputView.showWinners(winnersName);
     }
 
-    private void startRace(int attemptsNum, Cars cars) {
+    private void startRace(Number attemptsNum, Cars cars) {
         outputView.showExecuteMessage();
-        for (int attempt = 0; attempt < attemptsNum; attempt++) {
+        for (int attempt = 0; attempt < attemptsNum.value(); attempt++) {
             cars.forwardWithRandomCondition();
             outputView.showStatus(cars);
         }

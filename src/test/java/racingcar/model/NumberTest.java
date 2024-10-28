@@ -12,7 +12,7 @@ class NumberTest {
     @ParameterizedTest
     @ValueSource(strings = {".", "d", "fdsafa", "test"})
     void 시도횟수_문자_입력(String input) {
-        Assertions.assertThatThrownBy(() -> new Number(input))
+        Assertions.assertThatThrownBy(() -> Number.of(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수만 입력하세요.");
     }
@@ -21,7 +21,7 @@ class NumberTest {
     @ParameterizedTest
     @ValueSource(strings = {"3.4", "5.2", "1.0", "2.0"})
     void 시도횟수_실수_입력(String input) {
-        Assertions.assertThatThrownBy(() -> new Number(input))
+        Assertions.assertThatThrownBy(() -> Number.of(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수만 입력하세요.");
     }
@@ -30,7 +30,7 @@ class NumberTest {
     @ParameterizedTest
     @NullAndEmptySource
     void 시도횟수_null_입력(String input) {
-        Assertions.assertThatThrownBy(() -> new Number(input))
+        Assertions.assertThatThrownBy(() -> Number.of(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도 횟수를 입력하세요.");
     }
@@ -39,7 +39,7 @@ class NumberTest {
     @ParameterizedTest
     @ValueSource(strings = {"0", "-1", "-10", "-340"})
     void 시도횟수_0_이하_입력(String input) {
-        Assertions.assertThatThrownBy(() -> new Number(input))
+        Assertions.assertThatThrownBy(() -> Number.of(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("양수만 입력하세요.");
     }
@@ -48,7 +48,7 @@ class NumberTest {
     @ParameterizedTest
     @ValueSource(strings = {"101", "1545", "3300000", "231203"})
     void 시도횟수_100_초과_입력(String input) {
-        Assertions.assertThatThrownBy(() -> new Number(input))
+        Assertions.assertThatThrownBy(() -> Number.of(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도 횟수는 최대 100번까지 가능합니다.");
     }
