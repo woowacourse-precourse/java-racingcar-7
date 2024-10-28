@@ -3,6 +3,7 @@ package racingcar.view;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -49,5 +50,14 @@ public class InputViewTest {
 		assertThatThrownBy(inputView::getTryCounts)
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining(InputView.INPUT_MUST_BE_POSITIVE_NUMBER);
+	}
+
+	@Test
+	void 시도횟수_입력이_비어있을_때() {
+		String blank = "   ";
+		InputView inputView = new InputView(() -> blank);
+
+		assertThatThrownBy(inputView::getTryCounts)
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 }
