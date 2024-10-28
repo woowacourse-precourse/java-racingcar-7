@@ -4,13 +4,6 @@ import java.util.List;
 
 public class RaceWinner {
 
-    private int findMaxPosition(List<Car> carList) {
-        return carList.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
-    }
-
     public List<String> findCarNames(List<Car> carList) {
         int maxPosition = findMaxPosition(carList);
 
@@ -19,4 +12,13 @@ public class RaceWinner {
                 .map(Car::getName)
                 .toList();
     }
+
+    private int findMaxPosition(List<Car> carList) {
+        return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
+
+
 }
