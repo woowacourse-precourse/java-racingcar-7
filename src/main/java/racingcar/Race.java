@@ -1,12 +1,21 @@
 package racingcar;
 
+import java.util.ArrayList;
+
 public class Race {
-    private String[] carNames;
+    private final ArrayList<Car> cars = new ArrayList<>();
     private final String tryCount;
 
     public Race(String carNames, String tryCount) {
-        this.carNames = splitString(carNames);
+        setCars(carNames);
         this.tryCount = tryCount;
+    }
+
+    private void setCars(String carNamesString) {
+        String[] carNames = splitString(carNamesString);
+        for (String carName : carNames) {
+            cars.add(new Car(carName.trim()));
+        }
     }
 
     private String[] splitString(String string) {
