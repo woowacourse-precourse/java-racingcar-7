@@ -21,12 +21,7 @@ public class OutputUI {
      * @param args     인자 목록
      * @return 포맷팅된 문자열
      */
-    private static String formatMessage(String template, String... args) {
-        try {
-            return String.format(template, (Object[]) args);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("입력된 인자가 템플릿과 일치하지 않습니다: " + e.getMessage());
-        }
+    private static String formatMessage(String template, String... args) throws IllegalArgumentException {
+        return String.format(template, (Object[]) args);
     }
-
 }
