@@ -6,8 +6,6 @@ import racingcar.race.service.RaceService;
 import racingcar.view.Input;
 import racingcar.view.Output;
 
-
-// 경주 전체를 제어하는 컨트롤러
 public class RaceController {
     private final RaceService raceService;
     private final Input input;
@@ -19,6 +17,7 @@ public class RaceController {
         this.output = output;
     }
 
+    // 경주를 시작하는 메서드
     public void startRace() {
         raceService.startRace(input.getCarNames(), input.getAttemptCount());
         List<Car> winners = raceService.getWinners();

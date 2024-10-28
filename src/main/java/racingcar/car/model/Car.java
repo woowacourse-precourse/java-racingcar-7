@@ -1,28 +1,26 @@
 package racingcar.car.model;
 
-// 자동차 객체를 나타내는 클래스
 public class Car {
     private final String name;
-    private final int position; // 초기 위치는 0
+    private final int position;
 
     public Car(String name) {
         this.name = name;
-        this.position = 0;
+        this.position = 0; //초기 위치 0
     }
 
-    private Car(String name, int position) {  // private 생성자
+    // 이동 후 새로운 위치로 자동차 객체 생성 (불변 객체 패턴)
+    private Car(String name, int position) {
         this.name = name;
         this.position = position;
     }
 
-    // 자동차를 전진시키는 메서드
     public Car move(int randomNumber) {
         if (randomNumber >= 4) {
-            return new Car(this.name, this.position + 1);
+            return new Car(this.name, this.position + 1); // 새로운 위치로 객체 생성
         }
         return this;  // 이동이 없을 경우 현재 객체 반환
     }
-
 
     public String getName() {
         return name;

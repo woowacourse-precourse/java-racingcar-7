@@ -1,6 +1,5 @@
 package racingcar.common;
 
-// 예외 메시지를 관리하는 Enum 클래스
 public enum ExceptionEnum {
 
     // 자동차 이름 관련 예외 메시지
