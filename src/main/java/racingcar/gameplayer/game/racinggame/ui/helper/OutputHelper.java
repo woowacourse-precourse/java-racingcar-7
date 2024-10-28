@@ -7,10 +7,11 @@ import racingcar.gameplayer.game.racinggame.app.dto.RoundResult;
 
 public class OutputHelper {
 
-    private final static String JOIN_DELIMITER = ",";
+    private final static String JOIN_DELIMITER = ", ";
     private final static String POSITION_MARK = "-";
 
     public void printResult(GameResult result) {
+        System.out.println("실행 결과");
         printRounds(result.results());
         printWinner(result.winner());
     }
@@ -43,7 +44,7 @@ public class OutputHelper {
 
 
     private void printWinner(List<String> names) {
-        System.out.println("최종 우승 : " + joinNames(names));
+        System.out.println("최종 우승자 : " + joinNames(names));
     }
 
     private String joinNames(List<String> names) {
