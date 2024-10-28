@@ -4,6 +4,7 @@ import java.util.List;
 
 public class RacingOutputView {
     public void printStatus(List<Car> cars) {
+        System.out.println("실행 결과");
         for (Car car : cars) {
             System.out.print(car.getName() + " : ");
             for (int i = 0 ; i <car.getGoStop(); i++) {
