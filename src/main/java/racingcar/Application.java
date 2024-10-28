@@ -12,7 +12,8 @@ public class Application {
             int rounds = getRoundsFromInput();
 
             RacingGame game = new RacingGame(cars, rounds);
-            System.out.println("자동차 경주 준비 완료!");
+            game.startRace();
+            game.printFinalResults();
         } catch (IllegalArgumentException e) {
             System.out.println("오류: " + e.getMessage());
         }
@@ -30,6 +31,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int rounds = Integer.parseInt(Console.readLine());
         validateRounds(rounds);
+        System.out.println();
         return rounds;
     }
 

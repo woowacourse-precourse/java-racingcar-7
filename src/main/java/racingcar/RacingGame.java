@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public record RacingGame(List<Car> cars, int rounds) {
     public void startRace() {
+        System.out.println("실행 결과");
         for (int i = 0; i < rounds; i++) {
             for (Car car : cars) {
                 car.move();
