@@ -2,6 +2,7 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.RacingGame;
 import racingcar.service.ParsingService;
+import racingcar.service.RandomGameService;
 import racingcar.service.SeperatorService;
 import racingcar.service.ValidService;
 import racingcar.view.InputView;
@@ -12,6 +13,7 @@ public class Controller {
     private final ParsingService parsing=new ParsingService();
     private final ValidService valid=new ValidService();
     private final RacingGame racingGame=new RacingGame();
+    private final RandomGameService randomGameService=new RandomGameService();
     public void start(){
         OutputView.requestCarsName();
         String input= InputView.getInput();
@@ -29,8 +31,13 @@ public class Controller {
 
 
         OutputView.requestTryNumber();
-        int tryNum=parsing.parseNum(input);
+        String tryNumber=InputView.getInput();
+        int tryNum=parsing.parseNum(tryNumber);
 
+        for (int i=0;i<tryNum;i++){
+            randomGameService.RandomGame(racingGame.getCars());
+
+        }
 
 
         }
@@ -45,7 +52,5 @@ public class Controller {
 
 
 
-
-}
 
 
