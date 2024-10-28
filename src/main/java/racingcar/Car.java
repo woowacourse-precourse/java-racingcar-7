@@ -20,7 +20,7 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name.trim().isEmpty()) {
+        if (name.trim().isEmpty() || name.length() > 5 ) {
             throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다");
         }
     }
