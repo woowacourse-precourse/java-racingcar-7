@@ -1,4 +1,3 @@
-// AppConfig.java
 package racingcar.config;
 
 import racingcar.controller.RacingCarController;
