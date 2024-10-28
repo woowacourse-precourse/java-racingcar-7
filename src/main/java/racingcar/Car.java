@@ -24,4 +24,14 @@ public class Car {
             count++;
         }
     }
+
+    String getName() {
+        // 자동차 이름
+        return name;
+    }
+
+    int getCount() {
+        // 자동차 이동 횟수
+        return count;
+    }
 }
