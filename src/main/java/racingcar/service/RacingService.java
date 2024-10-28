@@ -50,7 +50,7 @@ public class RacingService {
             cars.add(new Car(carName.trim()));
         }
     }
-    private String getWinnerNames(){
+    public String getWinnerNames(){
         cars.sort((car1,car2) -> car2.getBarLength() - car1.getBarLength());
 
         List<String> winners = new ArrayList<>();
