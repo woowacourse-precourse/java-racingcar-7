@@ -10,14 +10,12 @@ public class InputView {
     public String getCarNames() {
         System.out.println(GET_CAR_NAMES);
         String carNames = Console.readLine();
-        Console.close();
         return carNames;
     }
 
     public int getTryNumbers() {
         System.out.println(GET_TRY_NUMBERS);
         int tryNumber = validateTrialNumber(Integer.parseInt(Console.readLine()));
-        Console.close();
         return tryNumber;
     }
 

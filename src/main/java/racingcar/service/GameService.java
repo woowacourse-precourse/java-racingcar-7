@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ public class GameService {
         List<Car> cars = carService.createCars(carsName);
 
         int attempts = inputView.getTryNumbers();
+        Console.close();
         return new GameData(cars, attempts);
     }
 
