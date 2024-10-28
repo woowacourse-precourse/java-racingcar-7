@@ -20,10 +20,10 @@ public class RacingCarController {
             TryCount tryCount = new TryCount(inputView.readTryCount());
             startRace(cars, tryCount);
             printWinner(cars);
-        }catch(IllegalArgumentException e){
+        } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw e;
-        }catch(Exception e){
+        } catch(Exception e) {
             System.out.println("[ERROR] 예상하지 못한 오류가 났습니다");
             e.getStackTrace();
             throw e;
