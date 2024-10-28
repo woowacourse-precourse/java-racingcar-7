@@ -93,8 +93,19 @@ class Function {
 		return winnerList;
 	}
 
+	public static void printWinner(ArrayList<String> winnerList) {
+		String winner = "";
+		for (int i = 0; i < winnerList.size(); i++) {
+			if (i == winnerList.size() - 1) {
+				winner = winner + winnerList.get(i);
+				break;
+			}
 
+			winner = winner + winnerList.get(i) + ", ";
+		}
 
+		System.out.println("최종 우승자 : " + winner);
+	}
 }
 
 public class Application {
