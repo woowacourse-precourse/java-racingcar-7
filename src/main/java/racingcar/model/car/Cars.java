@@ -10,11 +10,12 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(final List<Car> cars) {
+        validateDuplicateNames(cars);
         this.cars = new ArrayList<>(cars);
     }
 
     public void add(Car car) {
-        validate(car);
+        validateDuplicateName(car);
         cars.add(car);
     }
 
@@ -24,7 +25,18 @@ public class Cars {
                 .toList();
     }
 
-    private void validate(Car car) {
+    private void validateDuplicateNames(final List<Car> cars){
+        long uniqueNameCount = cars.stream()
+                .map(Car::name)
+                .distinct()
+                .count();
+
+        if (uniqueNameCount != cars.size()) {
+            throw new InvalidNameException("이름은 중복될 수 없습니다.");
+        }
+    }
+
+    private void validateDuplicateName(Car car) {
         if (isDuplicated(car.name())) {
             throw new InvalidNameException("이름은 중복될 수 없습니다.");
         }

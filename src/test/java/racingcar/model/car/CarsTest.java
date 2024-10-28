@@ -1,28 +1,76 @@
 package racingcar.model.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.InvalidNameException;
 
 @DisplayName("자동차 집합 테스트")
 class CarsTest {
+    @Nested
+    @DisplayName("생성 테스트")
+    class 생성_테스트 {
+        @Test
+        @DisplayName("자동차 집합을 생성한다")
+        void 성공_생성() {
+            // Given
+            List<Car> cars = List.of(new Car("mint", () -> true), new Car("dobby", () -> true));
 
-    @Test
-    @DisplayName("자동차 집합에 자동차를 추가한다")
-    void 성공_자동차추가() {
-        // Given
-        Cars cars = new Cars(Collections.emptyList());
-        Car car = new Car("mint", () -> true);
+            // When & Then
+            assertThatCode(() -> new Cars(cars))
+                    .doesNotThrowAnyException();
+        }
 
-        // When
-        cars.add(car);
+        @Test
+        @DisplayName("자동차 집합에서 이름이 중복되면 예외가 발생한다")
+        void 실패_생성_이름중복() {
+            // Given
+            List<Car> duplicatedNamesCars = List.of(new Car("mint", () -> true), new Car("mint", () -> true));
 
-        // Then
-        assertThat(cars).extracting("cars")
-                .isEqualTo(List.of(car));
+            // When & Then
+            assertThatThrownBy(() -> new Cars(duplicatedNamesCars))
+                    .isExactlyInstanceOf(InvalidNameException.class)
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("이름은 중복될 수 없습니다.");
+        }
+    }
+
+    @Nested
+    @DisplayName("추가 테스트")
+    class 추가_테스트 {
+        @Test
+        @DisplayName("자동차 집합에 자동차를 추가한다")
+        void 성공_자동차추가() {
+            // Given
+            Cars cars = new Cars(Collections.emptyList());
+            Car car = new Car("mint", () -> true);
+
+            // When
+            cars.add(car);
+
+            // Then
+            assertThat(cars).extracting("cars")
+                    .isEqualTo(List.of(car));
+        }
+
+        @Test
+        @DisplayName("자동차를 추가할 때 이름이 중복되면 예외가 발생한다")
+        void 실패_자동차추가_이름중복() {
+            // Given
+            Cars cars = new Cars(List.of(new Car("mint", () -> true)));
+
+            // When & Then
+            assertThatThrownBy(() -> cars.add(new Car("mint", () -> true)))
+                    .isExactlyInstanceOf(InvalidNameException.class)
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("이름은 중복될 수 없습니다.");
+        }
     }
 
     @Test
