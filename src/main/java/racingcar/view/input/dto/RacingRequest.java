@@ -17,12 +17,12 @@ public record RacingRequest(
     return text.chars().anyMatch(Character::isWhitespace);
   }
 
-  private static int validateRoundCount(String roundCount) {
-    if (hasWhiteSpace(roundCount)){
-      throw new InputException(ExceptionEnum.INVALID_WHITESPACE);
-    }
+  private static int validateRoundCount(String roundCount){
     if (roundCount == null || roundCount.trim().isEmpty()){
       throw new InputException(ExceptionEnum.INVALID_ROUND_COUNT);
+    }
+    if (hasWhiteSpace(roundCount)){
+      throw new InputException(ExceptionEnum.INVALID_WHITESPACE);
     }
     if (roundCount.contains(".")){
       throw new InputException(ExceptionEnum.ROUND_COUNT_DECIMAL_NUMBER_NOT_AVAILABLE);
@@ -38,16 +38,16 @@ public record RacingRequest(
     }
   }
 
-  private static void validateCarNames(String carNames) {
-    if (hasWhiteSpace(carNames)){
-      throw new InputException(ExceptionEnum.INVALID_WHITESPACE);
-    }
+  private static void validateCarNames(String carNames){
     if (carNames == null || carNames.trim().isEmpty()){
       throw new InputException(ExceptionEnum.INVALID_CARNAME);
     }
+    if (hasWhiteSpace(carNames)){
+      throw new InputException(ExceptionEnum.INVALID_WHITESPACE);
+    }
   }
 
-  public static RacingRequest from(String carNames, String roundCount) {
+  public static RacingRequest from(String carNames, String roundCount){
     validateCarNames(carNames);
     int roundCountNumber = validateRoundCount(roundCount);
     return new RacingRequest(carNames, roundCountNumber);
