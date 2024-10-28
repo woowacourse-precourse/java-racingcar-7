@@ -1,6 +1,7 @@
 package racingcar;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import racingcar.model.InputProcessor;
@@ -15,6 +16,11 @@ class InputProcessorTest {
         // then
         assertDoesNotThrow(() -> inputProcessor.validateCarNames("pobi,crong,honux,sean"));
         assertDoesNotThrow(() -> inputProcessor.validateMoveCount("5"));
+    }
+
+    @Test
+    void validateCarNames_이름에_공백_포함() {
+        assertThrows(IllegalArgumentException.class, () -> new InputProcessor("pobi, crong, honux, sean", "5"));
     }
 
     @Test
@@ -44,5 +50,4 @@ class InputProcessorTest {
     void validateMoveCount_이동횟수가_음수인_경우() {
         assertThrows(IllegalArgumentException.class, () -> new InputProcessor("pobi,crong,honux,sean", "-1"));
     }
-
 }
