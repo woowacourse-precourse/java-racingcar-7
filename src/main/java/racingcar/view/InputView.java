@@ -12,7 +12,8 @@ public class InputView {
 
     public String carValidation(String str) {
         for (String s : str.split(",")) {
-            if (s.length() > 5) {
+            String name = s.trim();
+            if (name.length() > 5 || name.trim().isEmpty()) {
                 throw new IllegalArgumentException("올바르지 않은 문자열 입력입니다. (5자 이하 입력)");
             }
         }

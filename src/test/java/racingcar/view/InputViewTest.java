@@ -17,7 +17,7 @@ class InputViewTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"마르쿠스 아우렐리우스,노스트라다무스,비디치,퍼디난드", "진용,유비빔,다섯글자임,다섯글자임 "})
+    @ValueSource(strings = {"jin, h a  n  ,yong", "aaaaaa,h h h,jin"})
     void 경주할_자동차_이름_문자열_입력_예외(String str) {
         InputView inputView = new InputView();
         assertThatIllegalArgumentException()
