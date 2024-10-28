@@ -2,9 +2,11 @@ package racingcar.domain;
 
 public class Car {
 
+    private static final int MAX_CAR_NAME_LENGTH = 5;
+
     private String name;
     private int position;
-    private final static int MAX_CAR_NAME_LENGTH = 5;
+
 
     public Car(String name) {
         validateCarName(name);
