@@ -106,6 +106,8 @@ public class RacingCarModel {
             list.add(cur);
         }
 
+        validateName(s);
+
         for(String v : list) {
             validateNameLength(v);
         }
@@ -119,17 +121,23 @@ public class RacingCarModel {
     private void validateNameLength(String name) {
         /* 이름길이가 5이하 인지 판단 */
         if (name.length() > 5 || name.isEmpty()) {
-            throw new IllegalArgumentException("유저의 이름은 5글자를 넘길 수 없습니다.");
+            throw new IllegalArgumentException("유저의 이름은 5글자를 넘길 수 없으며, 빈 값일 수 없습니다.");
+        }
+    }
+
+    private void validateName(String name) {
+        if(name.isEmpty()) {
+            throw new IllegalArgumentException("이름을 입력해 주세요.");
         }
     }
 
     private void validateRacingObject(RacingRequest request) {
         /* 객체 유무 판단 */
-        if(request != null) throw new IllegalArgumentException("객체가 없습니다.");
+        if(request == null) throw new IllegalArgumentException("객체가 없습니다.");
     }
 
     private void validateRacingTimes(RacingRequest request) {
         /* 횟수 유무 판단 */
-        if(request.times() >= 0) throw new IllegalArgumentException("횟수는 음수를 입력할 수 없습니다.");
+        if(request.times() < 0) throw new IllegalArgumentException("횟수는 음수를 입력할 수 없습니다.");
     }
 }
