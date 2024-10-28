@@ -33,9 +33,29 @@ public class InputProcessor {
         return stringParser.parse(inputString);
     }
 
+    public int readTryCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputString = Console.readLine().trim();
+
+        validateEmpty(inputString);
+        validateNumber(inputString);
+
+        int tryCount = Integer.parseInt(inputString);
+        Console.close();
+        return tryCount;
+    }
+
     private void validateEmpty(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalStateException(ErrorMessage.EMPTY_INPUT.getValue());
+        }
+    }
+
+    private void validateNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException exception) {
+            throw new IllegalStateException(ErrorMessage.INVALID_NUMBER_FORMAT.getValue());
         }
     }
 }
