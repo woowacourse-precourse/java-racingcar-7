@@ -4,11 +4,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.PriorityQueue;
 
 public class RaceGame {
     String[] carNamesList;
     int totalCars;
     int totalRounds;
+    PriorityQueue<RacingCar> priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
+    ArrayList<String> winners = new ArrayList<String>();
 
     //사용자의 입력을 받아들이는 메서드
     String getUserInput() throws IOException{
@@ -85,6 +91,26 @@ public class RaceGame {
         for (RacingCar car : carList){
             System.out.println(car.carName+" : "+car.currentLocation);
         }
+    }
+
+    String[] findWinningCars(RacingCar[] carList){
+        for (RacingCar car : carList){
+            priorityQueue.offer(car);
+        }
+
+        RacingCar max = priorityQueue.poll();
+        int maxDistance = Objects.requireNonNull(max).currentDistance;
+        winners.add(max.carName);
+
+        RacingCar test = priorityQueue.poll();
+        while(Objects.requireNonNull(test).currentDistance == maxDistance){
+            winners.add(test.carName);
+            test = priorityQueue.poll();
+        }
+
+        int listSize = winners.size();
+
+        return winners.toArray(new String[listSize]);
     }
 
 }
