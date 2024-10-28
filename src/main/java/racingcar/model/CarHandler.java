@@ -28,4 +28,21 @@ public class CarHandler {
             System.out.println();
         }
     }
+
+    public List<String> checkWinner() {
+        int maxpos = -1;
+        List<String> winnerlist = new ArrayList<>();
+        for(Car c : carlist) {
+            if(c.pos > maxpos) {
+                maxpos = c.pos;
+                winnerlist = new ArrayList<>();
+                winnerlist.add(c.name);
+            }
+            else if(c.pos == maxpos) {
+                winnerlist.add(c.name);
+            }
+        }
+
+        return winnerlist;
+    }
 }

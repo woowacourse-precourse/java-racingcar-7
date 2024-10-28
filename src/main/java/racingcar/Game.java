@@ -49,6 +49,6 @@ public class Game {
     }
 
     public void winner() {
-        Output.winner();
+        Output.winner(cars.checkWinner());
     }
 }
