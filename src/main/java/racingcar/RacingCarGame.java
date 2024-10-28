@@ -18,4 +18,18 @@ public class RacingCarGame {
 
         return carNames;
     }
+
+    public int getMoveCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        try {
+            int moveCount = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
+            if (moveCount <= 0) {
+                throw new IllegalArgumentException("이동 횟수는 1 이상이어야 합니다.");
+            }
+            return moveCount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해야 합니다.");
+        }
+    }
 }
+
