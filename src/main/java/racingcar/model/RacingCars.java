@@ -55,12 +55,15 @@ public class RacingCars {
     }
 
     private void validateNoDuplicates(List<RacingCar> cars) {
-        Set<String> distinctNames = new HashSet<>();
-        for (RacingCar car : cars) {
-            if (!distinctNames.add(car.getName())) {
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-            }
+        if (hasDuplicateName(cars)) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
+    }
+
+    private boolean hasDuplicateName(List<RacingCar> cars) {
+        Set<String> distinctNames = new HashSet<>();
+        return cars.stream()
+                .anyMatch(name -> !distinctNames.add(name.getName()));
     }
 
     private List<RacingCarSnapShot> getCarSnapShots() {
