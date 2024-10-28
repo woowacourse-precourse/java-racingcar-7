@@ -68,12 +68,12 @@ public class RacingGameTest {
         RacingGame game = new RacingGame(carNames);
 
         // when
-        moveCars(game, new int[] {5, 5, 5});
+        moveCars(game, new int[]{5, 5, 5});
 
         // then
-        for (Car car : game.getCars()) {
-            assertEquals(1, car.getPosition());
-        }
+        assertAll("자동차가 이동했는지 확인",
+                () -> game.getCars().forEach(car -> assertEquals(1, car.getPosition()))
+        );
     }
 
     @Test
@@ -81,7 +81,7 @@ public class RacingGameTest {
     void testMaxMoveCount() {
         // given
         RacingGame game = new RacingGame(carNames);
-        moveCars(game, new int[] {5, 7, 4});
+        moveCars(game, new int[]{5, 7, 4});
 
         // when
         int maxMoveCount = game.getMaxMoveCount();
@@ -95,7 +95,7 @@ public class RacingGameTest {
     void testWinners() {
         // given
         RacingGame game = new RacingGame(carNames);
-        moveCars(game, new int[] {5, 5, 3});
+        moveCars(game, new int[]{5, 5, 3});
 
         // when
         int maxMoveCount = game.getMaxMoveCount();
