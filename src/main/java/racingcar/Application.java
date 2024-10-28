@@ -15,5 +15,6 @@ public class Application {
         int count = inputService.getTryCount();
 
         List<Car> cars = racingService.initializeCars(names);
+        racingService.validateInput(cars, count);
     }
 }
