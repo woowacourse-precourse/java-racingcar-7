@@ -1,0 +1,35 @@
+package racingcar;
+
+public class ExceptionHandler {
+    public static void validateNullInputString (String inputString) {
+        if (inputString == null || inputString.isBlank()) {
+            throw new IllegalArgumentException("입력 값은 필수입니다.");
+        }
+    }
+
+    public static void validateCarNameLength (String name){
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5글자 이하로 입력해주세요. : " + name);
+        }
+    }
+
+    public static void validateDuplicateCarName (int carsNameLength, int uniqueCarsNameLength) {
+        if (carsNameLength != uniqueCarsNameLength) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
+    }
+
+    public static void validateTryCount(int tryCount) {
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 합니다.");
+        }
+    }
+
+    public static int parseIntOrThrow (String inputNumber) {
+        try {
+            return Integer.parseInt(inputNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력된 시도 횟수가 숫자가 아닙니다. : " + inputNumber);
+        }
+    }
+}
