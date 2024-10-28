@@ -28,6 +28,12 @@ public class Application {
         }
     }
 
+    private static void tryMoveForward(String name, Map<String, Integer> racing_progress) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            racing_progress.put(name, racing_progress.get(name) + 1);
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
