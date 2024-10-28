@@ -12,4 +12,8 @@ public class Output {
     public static void printCarNameRequestMessage(){
         System.out.println(CAR_NAME_REQUEST_MESSAGE);
     }
+
+    public static void printNumberRequestMessage(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+    }
 }
