@@ -10,21 +10,21 @@ import java.util.List;
 
 public class RacingCarController {
 
-    // DI 컨테이너 구현하면 더 좋을듯
     private final InputView inputView;
     private final RacingCarService racingCarService;
     private final OutputView outputView;
 
-    public RacingCarController(final InputView inputView, final RacingCarService racingCarService, OutputView outputView) {
+    public RacingCarController(final InputView inputView, final RacingCarService racingCarService,
+            OutputView outputView) {
         this.inputView = inputView;
         this.racingCarService = racingCarService;
         this.outputView = outputView;
     }
 
     public void runGame() {
-
         final RequestInputDto requestInputDto = inputView.readInput();
-        final List<RacingCar> carStateAfterGame = racingCarService.runGame(requestInputDto.getInputCars(), requestInputDto.getInputCnt());
+        final List<RacingCar> carStateAfterGame = racingCarService.runGame(requestInputDto.getInputCars(),
+                requestInputDto.getInputCnt());
         outputView.calculateWinners(carStateAfterGame);
     }
 }

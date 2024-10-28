@@ -1,14 +1,15 @@
 package racingcar.view;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import camp.nextstep.edu.missionutils.Console;
-import org.assertj.core.api.Assertions;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.InputDto;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
 public class ViewTest {
 
@@ -31,8 +32,8 @@ public class ViewTest {
         InputView consoleInputView = new ConsoleInputView();
         InputDto.RequestInputDto requestInputDto = consoleInputView.readInput();
 
-        Assertions.assertThat(requestInputDto.getInputCars()).contains(USER_INPUT_CARS.split(","));
-        Assertions.assertThat(requestInputDto.getInputCnt()).isEqualTo(Integer.parseInt(USER_INPUT_CNT));
+        assertThat(requestInputDto.getInputCars()).contains(USER_INPUT_CARS.split(","));
+        assertThat(requestInputDto.getInputCnt()).isEqualTo(Integer.parseInt(USER_INPUT_CNT));
     }
 
     @DisplayName("자동차 이름에 쉼표(,)가 연속적으로 존재하는 경우 예외 발생")
@@ -47,7 +48,7 @@ public class ViewTest {
 
         InputView consoleInputView = new ConsoleInputView();
 
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, consoleInputView::readInput);
+        assertThrows(IllegalArgumentException.class, consoleInputView::readInput);
     }
 
     @DisplayName("자동차 이름에 빈 문자열을 입력했을 때 IllegalArgumentException 발생")
@@ -62,7 +63,7 @@ public class ViewTest {
 
         InputView consoleInputView = new ConsoleInputView();
 
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, consoleInputView::readInput);
+        assertThrows(IllegalArgumentException.class, consoleInputView::readInput);
     }
 
     @DisplayName("자동차 이름에 공백 문자열을 입력했을 때 IllegalArgumentException 발생")
@@ -77,7 +78,7 @@ public class ViewTest {
 
         InputView consoleInputView = new ConsoleInputView();
 
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, consoleInputView::readInput);
+        assertThrows(IllegalArgumentException.class, consoleInputView::readInput);
     }
 
     @DisplayName("자동차 이름에 입력값을 잘못된 형식으로 입력했을 때 IllegalArgumentException 발생 ")
@@ -93,7 +94,7 @@ public class ViewTest {
 
             System.setIn(createUserInput(USER_INPUT));
 
-            org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, consoleInputView::readInput);
+            assertThrows(IllegalArgumentException.class, consoleInputView::readInput);
             Console.close();
         }
     }
@@ -109,7 +110,7 @@ public class ViewTest {
 
         InputView consoleInputView = new ConsoleInputView();
 
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, consoleInputView::readInput);
+        assertThrows(IllegalArgumentException.class, consoleInputView::readInput);
 
     }
 

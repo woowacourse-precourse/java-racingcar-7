@@ -3,6 +3,7 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingCar {
+
     private String name;
     private int location;
 

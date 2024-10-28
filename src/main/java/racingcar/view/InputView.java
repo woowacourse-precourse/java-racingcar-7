@@ -5,6 +5,7 @@ import racingcar.dto.InputDto;
 public abstract class InputView {
 
     public InputDto.RequestInputDto readInput() {
+
         final InputDto.RequestInputDto inputRequest = customInput();
 
         return inputRequest;

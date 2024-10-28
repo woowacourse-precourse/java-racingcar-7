@@ -14,10 +14,9 @@ public class RacingCarService {
         System.out.println("실행 결과");
         for (int trialIndex = 0; trialIndex < trial; ++trialIndex) {
             for (RacingCar racingCar : racingRacingCars) {
-                // 자동차 이동
+
                 racingCar.conditionalMove();
 
-                //현재 상황 출력
                 printCurrentState(racingCar);
             }
             System.out.println();
@@ -27,7 +26,7 @@ public class RacingCarService {
     }
 
     private void printCurrentState(final RacingCar racingCar) {
-        // 현재 상황 출력
+
         System.out.print(racingCar.getName() + " : ");
         for (int j = 0; j < racingCar.getLocation(); ++j) {
             System.out.print("-");
@@ -36,6 +35,7 @@ public class RacingCarService {
     }
 
     private List<RacingCar> generateCar(final List<String> inputCars) {
+
         List<RacingCar> racingCars = new ArrayList<>();
         for (String inputCar : inputCars) {
             racingCars.add(new RacingCar(inputCar));
