@@ -3,7 +3,6 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RacingGameService {
     List<CarDto> cars;
