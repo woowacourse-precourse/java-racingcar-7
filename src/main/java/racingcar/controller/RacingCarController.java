@@ -24,15 +24,18 @@ public class RacingCarController {
         int tryCount = getTryCount();
 
         List<Car> carList = racingCarService.initializeCars(carNameList);
-
-        outputView.printResult();
         executeRace(carList, tryCount);
 
+        getWinner(carList);
+    }
+
+    private void getWinner(List<Car> carList) {
         List<String> winners = racingCarService.determineWinners(carList);
         outputView.printWinners(winners);
     }
 
     private void executeRace(List<Car> carList, int tryCount) {
+        outputView.printResult();
         for (int i = 0; i < tryCount; i++) {
             racingCarService.moveCars(carList);
 
