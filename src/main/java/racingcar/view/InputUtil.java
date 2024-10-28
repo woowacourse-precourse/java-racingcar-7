@@ -23,7 +23,7 @@ public class InputUtil {
         return parseNames(namesInput);
     }
 
-    public static List<String> parseNames(String namesInput) {
+    public static List<String> parseNames(final String namesInput) {
         String[] tokens = namesInput.split(",");
         List<String> names = new ArrayList<>();
         for (String token: tokens) {

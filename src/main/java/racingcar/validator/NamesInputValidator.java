@@ -8,7 +8,7 @@ import java.util.List;
 
 public class NamesInputValidator {
 
-    public static void validate(String input) {
+    public static void validate(final String input) {
         if (input == null || input.isBlank()) {
             throw new CustomException(ExceptionCode.INPUT_BLANK);
         }

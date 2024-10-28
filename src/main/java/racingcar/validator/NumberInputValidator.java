@@ -5,7 +5,7 @@ import racingcar.exception.ExceptionCode;
 
 public class NumberInputValidator {
 
-    public static void validate(String input) {
+    public static void validate(final String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {

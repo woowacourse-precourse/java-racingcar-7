@@ -27,11 +27,11 @@ public class Car {
         }
     }
 
-    public boolean isSameDistanceAs(Car anotherCar) {
+    public boolean isSameDistanceAs(final Car anotherCar) {
         return Objects.equals(this.distance, anotherCar.distance);
     }
 
-    public int compareDistance(Car anotherCar) {
+    public int compareDistance(final Car anotherCar) {
         return -1 * Long.compare(this.distance, anotherCar.distance);
     }
 

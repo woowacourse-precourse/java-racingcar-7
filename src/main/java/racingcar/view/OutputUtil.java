@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OutputUtil {
 
-    public static void print(String result) {
+    public static void print(final String result) {
         System.out.print(result);
     }
 }
