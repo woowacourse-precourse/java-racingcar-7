@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -56,6 +57,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("완전히 빈 값 입력 시 테스트")
     void 빈_자동차명_테스트_1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("", "1"))
@@ -64,9 +66,28 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("중간에 빈 값이 있을 경우 테스트")
     void 빈_자동차명_테스트_2() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,  ,woni", "1"))
+                assertThatThrownBy(() -> runException("pobi,,woni", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("마지막에 빈 값이 있을 경우 테스트")
+    void 빈_자동차명_테스트_3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("처음에 빈 값이 있을 경우 테스트")
+    void 빈_자동차명_테스트_4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",pobi", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

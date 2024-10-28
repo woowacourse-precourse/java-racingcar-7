@@ -8,8 +8,10 @@ public class InputView {
     public static List<String> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameInput = Console.readLine();
-        List<String> carNames = Arrays.stream(carNameInput.split(",")).map(String::trim).toList();
+        List<String> carNames = Arrays.stream(carNameInput.split(",",-1)).map(String::trim).toList();
         validateCarNames(carNames);
+
+        System.out.println(carNames);
 
         return carNames;
     }
