@@ -10,4 +10,12 @@ public class InputValidator {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void notOverFiveLetter(ArrayList<String> carNameList) {
+        for (String carName : carNameList) {
+            if(carName.length() >5){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
