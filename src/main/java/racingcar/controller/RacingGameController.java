@@ -24,6 +24,8 @@ public class RacingGameController {
         String rounds = Console.readLine();
         inputValidator.validateRounds(rounds);
         racingGameService.setRounds(rounds);
+
+        racingGameService.startRace();
     }
 }
 

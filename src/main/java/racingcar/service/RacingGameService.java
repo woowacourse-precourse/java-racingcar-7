@@ -21,6 +21,22 @@ public class RacingGameService {
         this.rounds = Integer.parseInt(input);
     }
 
+    public void startRace() {
+        for (int i = 0; i < rounds; i++){
+            for (Car car : cars) {
+                car.move();
+            }
+            printCurrentPostions();
+            System.out.println();
+        }
+    }
+
+    private void printCurrentPostions() {
+        for(Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+    }
+
     public List<Car> getCars() {
         return cars;
     }

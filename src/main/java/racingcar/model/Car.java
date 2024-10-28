@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private final String name;
     private int position; // 전진한 횟수
@@ -18,7 +20,13 @@ public class Car {
     }
 
     public void move() {
-        position++;
+        if (shouldMove()) {
+            position++;
+        }
+    }
+
+    private boolean shouldMove() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 }
 
