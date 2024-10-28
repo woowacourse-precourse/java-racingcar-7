@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class DefaultTest extends ApplicationTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;

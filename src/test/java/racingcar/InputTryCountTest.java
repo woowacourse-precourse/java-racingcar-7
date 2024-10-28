@@ -6,6 +6,7 @@ import static racingcar.message.exception.IntConverterExceptionMessage.INPUT_VAL
 
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class InputTryCountTest extends ApplicationTest {
     @Test
     void 시도_횟수_음수() {

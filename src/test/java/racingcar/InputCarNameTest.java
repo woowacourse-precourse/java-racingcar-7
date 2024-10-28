@@ -8,6 +8,7 @@ import static racingcar.message.exception.CarNameSplitExceptionMessage.CAR_NAME_
 
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class InputCarNameTest extends ApplicationTest {
     @Test
     void 공백_자동차_이름_예외() {
