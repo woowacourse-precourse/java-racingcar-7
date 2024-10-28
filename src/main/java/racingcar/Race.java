@@ -4,34 +4,34 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Race {
 
     private int totalRound;
-    private ArrayList<Car> cars;
+    private RacingCars racingCars;
 
     public void init() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
         String carsRawInput = Console.readLine();
-        cars = createCars(carsRawInput);
+        racingCars = new RacingCars(parseCarNames(carsRawInput));
         System.out.println("시도할 횟수는 몇 회인가요?");
         String totalRoundRawInput = Console.readLine();
         totalRound = parseTotalRound(totalRoundRawInput);
     }
 
-    private ArrayList<Car> createCars(String carsRawInput) {
+    private ArrayList<String> parseCarNames(String carsRawInput) {
         if (null == carsRawInput || carsRawInput.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }
-        String[] carNames = carsRawInput.split(",");
-        ArrayList<Car> cars = new ArrayList<Car>();
+        ArrayList<String> carNames = new ArrayList<>(Arrays.asList(carsRawInput.split(",")));
         for (String carName : carNames) {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능하다.");
             }
-            cars.add(new Car(carName));
         }
-        return cars;
+        return carNames;
     }
 
     private int parseTotalRound(String totalRoundRawInput) {
@@ -51,26 +51,12 @@ public class Race {
         for (int currentRound = 0; currentRound < totalRound; ++currentRound) {
             round();
         }
-        System.out.println("최종 우승자 : " + getWinner());
+        System.out.println("최종 우승자 : " + racingCars.getWinner());
     }
 
     private void round() {
-        for (Car car : cars) {
-            car.moveIfPossible(Randoms.pickNumberInRange(0, 9));
-            System.out.println(car.getStatus());
-        }
-        System.out.println();
-    }
-
-    private String getWinner() {
-        int maxPosition = getMaxPosition();
-        StringBuilder winner = new StringBuilder();
-        cars.stream().filter(car -> car.getPosition() == maxPosition).forEach(car -> winner.append(car.getName()).append(","));
-        return winner.substring(0, winner.length() - 1);
-    }
-
-    private int getMaxPosition() {
-        return cars.stream().mapToInt(Car::getPosition).max().orElseThrow(IllegalStateException::new);
+        racingCars.moveEachCarsIfPossible();
+        racingCars.printEachCarsStatus();
     }
 
 }
