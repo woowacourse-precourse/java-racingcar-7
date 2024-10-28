@@ -1,14 +1,13 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.List;
 
 public class Car {
     private final String name;
-    private Integer forward;
+    private int forward = 0;
 
-    public Car(String carName, int forward) {
+    public Car(String carName) {
         this.name = carName;
-        this.forward = forward;
     }
 
     public void moveForward(){
