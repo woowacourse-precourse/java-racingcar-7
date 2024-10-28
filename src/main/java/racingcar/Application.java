@@ -3,17 +3,13 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Application {
 
     private static final int POSITION_UPDATE_THRESHOLD = 4;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
         List<String> carNames = getCarNames();
         int tryCount = getTryCount();
@@ -25,12 +21,12 @@ public class Application {
         printWinner(winnerName);
     }
 
-    private static void printWinner(List<String> winnerName) {
+    public static void printWinner(List<String> winnerName) {
         String winner = String.join(", ", winnerName);
         System.out.println("최종 우승자 : " + winner);
     }
 
-    private static List<String> getWinnersName(Map<String, Integer> cars, int maxPosition) {
+    public static List<String> getWinnersName(Map<String, Integer> cars, int maxPosition) {
 
         List<String> winnerNames = new ArrayList<>();
         cars.forEach((carname, position) -> {
@@ -46,7 +42,7 @@ public class Application {
         }
     }
 
-    private static int executeRacingGame(int tryCount, Map<String, Integer> cars) {
+    public static int executeRacingGame(int tryCount, Map<String, Integer> cars) {
 
         int maxPosition = 0;
         for(int i = 0; i < tryCount; i++) {
@@ -98,7 +94,7 @@ public class Application {
         System.out.println(carStatus);
     }
 
-    private static Map<String, Integer> initCarPosition(List<String> carNames) {
+    public static Map<String, Integer> initCarPosition(List<String> carNames) {
 
         Map<String, Integer> cars = new HashMap<>();
 
@@ -109,7 +105,7 @@ public class Application {
         return cars;
     }
 
-    private static int getTryCount() {
+    public static int getTryCount() {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
 
@@ -126,7 +122,7 @@ public class Application {
         }
     }
 
-    private static List<String> getCarNames() {
+    public static List<String> getCarNames() {
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
