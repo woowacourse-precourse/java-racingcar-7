@@ -1,5 +1,5 @@
 package racingcar.policy;
 
-public interface RandomNumGenerator {
+public interface MovementPolicy {
     boolean moveOrStop();
 }

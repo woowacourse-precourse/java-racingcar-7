@@ -1,14 +1,16 @@
 package racingcar;
 
-import racingcar.policy.RandomNumGenerator;
+import racingcar.policy.MovementPolicy;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RaceManager {
 
     private final List<RacingCar> racerList = new ArrayList<>();
-    private final RandomNumGenerator randomNumGenerator;
-    public RaceManager(List<String> carNames, RandomNumGenerator randomNumGenerator) {
+    private final MovementPolicy randomNumGenerator;
+
+    public RaceManager(List<String> carNames, MovementPolicy randomNumGenerator) {
         this.randomNumGenerator = randomNumGenerator;
         for (String carName : carNames) {
             racerList.add(CarFactory.createRacingCars(carName));
