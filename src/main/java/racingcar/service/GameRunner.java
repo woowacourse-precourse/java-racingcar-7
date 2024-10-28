@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,16 +9,23 @@ import java.util.Set;
 
 public class GameRunner {
 
-    public void runGame(Set<String> carNames, int finalAttemptCount){
+    public Map<String, Integer> runGame(Set<String> carNames, int finalAttemptCount, List<String> roundResults) {
+        Map<String, Integer> carState = initializeCarState(carNames);
+
+        for (int attemptCount = 0; attemptCount < finalAttemptCount; attemptCount++) {
+            updateCarState(carState);
+            roundResults.add(formatRoundResult(carState));
+        }
+
+        return carState;
+    }
+
+    private Map<String, Integer> initializeCarState(Set<String> carNames) {
         Map<String, Integer> carState = new HashMap<>();
         for (String car : carNames) {
             carState.put(car, 0);
         }
-
-        for (int attemptCount = 0; attemptCount < finalAttemptCount; attemptCount++){
-            updateCarState(carState);
-        }
-
+        return carState;
     }
 
     public void updateCarState(Map<String, Integer> carState){
@@ -47,5 +55,16 @@ public class GameRunner {
                 .toList();
 
         return String.join(",", winners);
+    }
+
+    public String formatRoundResult(Map<String, Integer> carPositions) {
+        StringBuilder result = new StringBuilder();
+        carPositions.forEach((carName, position) -> {
+            result.append(carName)
+                    .append(" : ")
+                    .append("-".repeat(Math.max(0, position)))
+                    .append("\n");
+        });
+        return result.toString();
     }
 }
