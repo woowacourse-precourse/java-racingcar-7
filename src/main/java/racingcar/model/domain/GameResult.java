@@ -9,7 +9,7 @@ public class GameResult {
     private List<String> winners;
 
     public void saveRound(Cars cars) {
-        roundResults.add(new RoundResult(cars.mapNamesToPositions()));
+        roundResults.add(RoundResult.from(cars));
     }
 
     public void saveWinner(Cars cars) {
