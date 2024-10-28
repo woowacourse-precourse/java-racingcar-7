@@ -28,6 +28,7 @@ public class Application {
         try {
             checkIfNumeric(inputTry);
         } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
             return;
         }
 
@@ -70,12 +71,15 @@ public class Application {
 
 
     public static void checkIfNumeric(String inputTry){
-        if (!isNmberic(inputTry)){
+        if (inputTry == null || inputTry.isEmpty()) {
+            throw new IllegalArgumentException("시도할 횟수는 비어 있을 수 없습니다.");
+        }
+        if (!isNumberic(inputTry)){
             throw new IllegalArgumentException("정수만 입력할 수 있습니다.");
         }
     }
 
-    public static boolean isNmberic(String inputTry) {
+    public static boolean isNumberic(String inputTry) {
         return  inputTry != null && inputTry.matches("[+-]?\\d*(\\.\\d+)?");
     }
 
@@ -107,7 +111,7 @@ public class Application {
 
     //feat:1-2. 자동차 이름이 숫자일 경우 에러 출력(함수화)
     public static boolean checkNumericValidCars(String checkCar){
-        if (isNmberic(checkCar)){
+        if (isNumberic(checkCar)){
             throw new IllegalArgumentException("자동차 이름은 숫자일 수 없습니다.");
         }
         return true;
