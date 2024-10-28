@@ -13,7 +13,7 @@ public class Winners {
     public String getWinnersList() {
         return winners.stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(", "));
     }
 
 }

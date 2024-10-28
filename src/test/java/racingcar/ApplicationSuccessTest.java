@@ -29,7 +29,7 @@ class ApplicationSuccessTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "0");
-                    assertThat(output()).contains("최종 우승자 : pobi,woni");
+                    assertThat(output()).contains("최종 우승자 : pobi, woni");
                 },
                 MOVING_FORWARD, STOP
         );
