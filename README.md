@@ -28,6 +28,7 @@
 - [x] 우승자가 여러 명일 경우 쉼표를 이용하여 구분한다(공동 우승자 안내).
 - [x] 자동차 이름을 입력하라는 메시지를 출력한다.
 - [x] 시도할 횟수를 입력하라는 메시지를 출력한다.
+- [ ] 자동차와 위치를 저장한다.
 
 ## 추가 객체 도출
 핵심 기능 외 추가적인 기능을 도출한다.
@@ -47,6 +48,8 @@
   - RandomNumberGenerator
 - 전진할지 판단한다.
   - Game
+- 자동차와 위치를 저장한다.
+  - RoundHistory
 
 ## 객체 및 메서드
 - CarGenerator
@@ -74,6 +77,8 @@
   - printRoundCountInputMessage()
 - RandomNumberGenerator
   - generate()
+- RoundHistory
+  - saveCarPosition()
 - InputValidator
   - validateCarNames()
   - validateRoundCount()
