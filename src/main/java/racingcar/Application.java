@@ -51,4 +51,19 @@ public class Application {
         System.out.println();
     }
 
+    public static void winner() {
+        int max_size = 0;
+        for(Map.Entry<String, String> car: cars.entrySet()){
+            if(max_size < car.getValue().length()){
+                max_size = car.getValue().length();
+            }
+        }
+
+        for(Map.Entry<String, String> car: cars.entrySet()){
+            if(max_size == car.getValue().length()){
+                winners.add(car.getKey());
+            }
+        }
+    }
+
 }
