@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     private static final int MIN_COUNT = 1;
     private static final int MAX_NAMES_COUNT = 10;
-    private static final int MAx_NAME_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int MAX_PLAY_COUNT = 25;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try{
@@ -24,6 +26,7 @@ public class Application {
         validateNameLength(names);
         input = getPlayCount();
         int playCount = validateNumber(input);
+        validatePlayCount(playCount);
     }
 
     public static void printStartMessage() {
@@ -56,7 +59,7 @@ public class Application {
 
     public static void validateNameLength(String[] names) {
         for(String name : names){
-            if(name.length() > MAx_NAME_LENGTH || name.isEmpty()) {
+            if(name.length() > MAX_NAME_LENGTH || name.isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름의 길이는 1자이상 5자 이하여야 합니다.");
             }
         }
@@ -71,6 +74,12 @@ public class Application {
             return Integer.parseInt(input);
         }catch(NumberFormatException e){
             throw new IllegalArgumentException("시도 횟수는 숫자가 입력되어야 합니다.");
+        }
+    }
+
+    public static void validatePlayCount(int playCount) {
+        if (playCount > MAX_PLAY_COUNT || playCount < MIN_COUNT) {
+            throw new IllegalArgumentException("시도 횟수는 " + MAX_PLAY_COUNT + "이하인 자연수여야 합니다.");
         }
     }
 }

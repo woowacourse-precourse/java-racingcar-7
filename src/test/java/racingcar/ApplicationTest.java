@@ -158,6 +158,20 @@ class ApplicationTest extends NsTest {
         assertDoesNotThrow(() -> Application.validateNumber("999999"));
     }
 
+    @Test
+    void 숫자가_25이하인_자연수가_아닐경우_예외발생(){
+        assertThrows(IllegalArgumentException.class, () -> Application.validatePlayCount(-1));
+        assertThrows(IllegalArgumentException.class, () -> Application.validatePlayCount(30));
+        assertThrows(IllegalArgumentException.class, () -> Application.validatePlayCount(0));
+    }
+
+    @Test
+    void 숫자가_25이하인_자연수인_경우_정상처리(){
+        assertDoesNotThrow(()-> Application.validatePlayCount(1));
+        assertDoesNotThrow(()-> Application.validatePlayCount(25));
+        assertDoesNotThrow(()-> Application.validatePlayCount(5));
+    }
+
     @AfterEach
     public void tearDown() {
         System.setOut(standardOut);
