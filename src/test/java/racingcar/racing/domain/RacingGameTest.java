@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.test.Assertions;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import racingcar.racing.domain.dto.CarRoundResult;
 
 class RacingGameTest {
     @Test
@@ -17,10 +18,12 @@ class RacingGameTest {
             int attemptNumber = 5;
 
             //when
-            RacingGame racingGame = RacingGame.of(5, carNames);
+            RacingGame racingGame = RacingGame.of(attemptNumber, carNames);
 
             //then
+            assertThat(racingGame).isNotNull();
             assertThat(racingGame.getAllRound()).isEqualTo(attemptNumber);
+            assertThat(racingGame.getParticipants().size()).isEqualTo(carNames.size());
             assertThat(racingGame.getParticipants().get(0).getName()).isEqualTo("car1");
             assertThat(racingGame.getParticipants().get(1).getName()).isEqualTo("car2");
         });
@@ -28,16 +31,33 @@ class RacingGameTest {
 
     @Test
     void start_결과_반환_성공() {
-        //given
-        //when
-        //then
+        Assertions.assertSimpleTest(() -> {
+            //given
+            List<String> carNames = Arrays.asList("car1", "car2");
+            int attemptNumber = 2;
+            RacingGame racingGame = RacingGame.of(attemptNumber, carNames);
+
+            //when
+            List<List<CarRoundResult>> allRoundResult = racingGame.start();
+
+            //then
+            assertThat(allRoundResult.size()).isEqualTo(attemptNumber);
+            assertThat(allRoundResult.get(0).size()).isEqualTo(carNames.size());
+            assertThat(allRoundResult.get(0).get(0).carName()).isEqualTo(carNames.get(0));
+            assertThat(allRoundResult.get(0).get(0).currentDistance()).isInstanceOf(Integer.class);
+            assertThat(allRoundResult.get(0).size()).isEqualTo(carNames.size());
+            assertThat(allRoundResult.get(0).get(1).carName()).isEqualTo(carNames.get(1));
+            assertThat(allRoundResult.get(0).get(1).currentDistance()).isInstanceOf(Integer.class);
+        });
     }
 
     @Test
     void selectWinner_결과_반환_성공() {
-        //given
-        //when
-        //then
+        Assertions.assertSimpleTest(() -> {
+            //given
+            //when
+            //then
+        });
     }
 
 }

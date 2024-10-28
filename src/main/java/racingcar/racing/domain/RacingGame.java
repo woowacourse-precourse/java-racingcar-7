@@ -51,11 +51,11 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public int getAllRound() {
+    int getAllRound() {
         return allRound;
     }
 
-    public List<Car> getParticipants() {
+    List<Car> getParticipants() {
         return participants;
     }
 }
