@@ -17,8 +17,10 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputCount = Console.readLine();
         int count = Integer.parseInt(inputCount);
+        System.out.println();
 
         GameLogic gameLogic = new GameLogic(carNames, count);
+        System.out.println("실행 결과");
         gameLogic.race();
         gameLogic.finalResults();
     }

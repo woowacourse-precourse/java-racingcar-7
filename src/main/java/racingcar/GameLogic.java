@@ -33,7 +33,6 @@ public class GameLogic {
     }
 
     private void displayResults() {
-        System.out.println("실행 결과");
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
