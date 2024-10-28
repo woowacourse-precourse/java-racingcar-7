@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,21 +33,22 @@ class RacingCarsTest {
                 .containsExactlyInAnyOrder("a", "b", "c");
     }
 
-    public static Stream<Arguments> createCarsWithLessThanTwoCars() {
+    public static Stream<Arguments> createCarsWithOutOfRangeCars() {
         return Stream.of(
                 Arguments.of(List.of()),
-                Arguments.of(List.of("a"))
+                Arguments.of(List.of("a")),
+                Arguments.of(getStringsOfRange(0, 41))
         );
     }
 
-    @DisplayName("자동차가 두 대 미만이면 예외가 발생한다.")
+    @DisplayName("자동차 대수가 유효하지 않으면 예외가 발생한다.")
     @MethodSource
     @ParameterizedTest
-    void createCarsWithLessThanTwoCars(List<String> names) {
+    void createCarsWithOutOfRangeCars(List<String> names) {
         // when & then
         assertThatThrownBy(() -> RacingCars.of(names, new RandomMovementFactorGenerator()))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("경주할 자동차는 두 대 이상이어야 합니다.");
+                .hasMessage("경주할 자동차의 대수는 2~40 사이어야 합니다.");
     }
 
     @DisplayName("중복된 이름을 가진 자동차가 있으면 예외가 발생한다.")
@@ -98,6 +100,12 @@ class RacingCarsTest {
 
         // then
         assertThat(winners).containsExactlyInAnyOrder("car1", "car3");
+    }
+
+    private static List<String> getStringsOfRange(int start, int end) {
+        return IntStream.range(start, end)
+                .mapToObj(String::valueOf)
+                .toList();
     }
 
 }

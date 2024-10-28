@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 public class RacingCars {
+
     private static final int MIN_NUMBER_OF_CARS = 2;
+    private static final int MAX_NUMBER_OF_CARS = 40;
 
     private final List<RacingCar> cars;
     private final MovementFactorGenerator movementFactorGenerator;
@@ -49,9 +51,14 @@ public class RacingCars {
     }
 
     private void validateSize(List<RacingCar> cars) {
-        if (cars.size() < MIN_NUMBER_OF_CARS) {
-            throw new IllegalArgumentException("경주할 자동차는 두 대 이상이어야 합니다.");
+        if (isOutOfRange(cars)) {
+            String message = String.format("경주할 자동차의 대수는 %d~%d 사이어야 합니다.", MIN_NUMBER_OF_CARS, MAX_NUMBER_OF_CARS);
+            throw new IllegalArgumentException(message);
         }
+    }
+
+    private boolean isOutOfRange(List<RacingCar> cars) {
+        return cars.size() < MIN_NUMBER_OF_CARS || cars.size() > MAX_NUMBER_OF_CARS;
     }
 
     private void validateNoDuplicates(List<RacingCar> cars) {
