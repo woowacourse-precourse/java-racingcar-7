@@ -27,7 +27,7 @@ public class Cars {
     public List<String> getResults() {
         final String MOVING_SYMBOL = "-";
         return cars.stream()
-                .map(car -> car.getName() + " : " + car.getPosition() + "\n")
+                .map(car -> car.getName() + " : " + MOVING_SYMBOL.repeat(car.getPosition()))
                 .collect(Collectors.toList());
     }
 
