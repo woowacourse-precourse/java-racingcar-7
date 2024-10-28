@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -24,13 +26,23 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    //이름이 5자 넘어가면 예외 발
+    //이름이 5자 넘어가면 예외 발생
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("1자 이상 5자 이하로 입력해야 합니다.")
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, -2, -100})
+    void 시도_횟수가_0이하면_예외_테스트(int rounds) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("kot,java", String.valueOf(rounds)))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도 횟수는 1회 이상이어야 합니다.")
         );
     }
 
