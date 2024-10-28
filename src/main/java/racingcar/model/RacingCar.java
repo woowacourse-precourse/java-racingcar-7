@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingCar {
     private static final int MAX_NAME_LENGTH = 5;
@@ -51,7 +51,6 @@ public class RacingCar {
     }
 
     private static int makeRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(9);
+        return Randoms.pickNumberInRange(0, 9);
     }
 }

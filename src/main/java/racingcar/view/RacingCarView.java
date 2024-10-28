@@ -13,13 +13,13 @@ public class RacingCarView {
 
     public int requestTrial() {
         System.out.println("시도할 회수는 몇회인가요?");
-        return Integer.parseInt(Console.readLine());
+        String cnt = Console.readLine();
+        return Integer.parseInt(cnt);
     }
 
     public void displayRacingCarStatus(List<RacingCar> racingCarList) {
         racingCarList.forEach(racingCar -> System.out.println(
             racingCar.getName() + " : " + "-".repeat(racingCar.getMoves())));
-        System.out.println();
     }
 
     public void startGameRound() {
@@ -30,6 +30,6 @@ public class RacingCarView {
         String winners = racingCars.stream()
             .map(RacingCar::getName)
             .collect(Collectors.joining(", "));
-        System.out.println(winners + "가 최종 우승했습니다.");
+        System.out.println("최종 우승자 : " + winners);
     }
 }

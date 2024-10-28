@@ -14,10 +14,11 @@ public class RacingCarController {
     }
 
     public void playGame() {
-        int trial = racingCarView.requestTrial();
         RacingCars racingCars = initializeRacingCars();
+        int trial = racingCarView.requestTrial();
 
         performRacingRounds(trial, racingCars.getRacingCars());
+        racingCarView.displayWinners(racingCars.findWinners());
     }
 
     private RacingCars initializeRacingCars() {
