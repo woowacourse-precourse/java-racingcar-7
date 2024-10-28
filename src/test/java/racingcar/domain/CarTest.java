@@ -19,4 +19,17 @@ class CarTest {
 		// then
 		assertThat(distance).isZero();
 	}
+
+	@Test
+	@DisplayName("주입받은 난수가 4 이상일 경우, 자동차를 이동시킨다.")
+	void Move_If_Random_Number_Greater_Than_Or_Equal_To_4() {
+		// given
+		Car car = new Car("test");
+
+		// when
+		car.move(5);
+
+		// then
+		assertThat(car.getDistance()).isEqualTo(1);
+	}
 }
