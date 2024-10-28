@@ -45,7 +45,7 @@ public class RacingGame {
         }
     }
     private void roundResult() {
-        for (int i = 0; i < cars.size(); i++) {
+        for (int i = 0; i < CARS_SIZE; i++) {
             Car car = cars.get(i);
             int position = car.currentPosition();
             System.out.println(car.carName() + " : " + "-".repeat(position));
