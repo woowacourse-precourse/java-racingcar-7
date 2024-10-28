@@ -1,7 +1,16 @@
 package racingcar;
 
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Racingcar r = new Racingcar();
+
+        r.start();
+        r.setNames();
+        r.requestRound();
+        r.setRound();
+        r.resultMsg();
+        r.winnerMsg();
+
     }
 }
