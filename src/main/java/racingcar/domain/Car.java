@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Objects;
 import racingcar.domain.dto.CarDto;
 
 public class Car {
@@ -37,5 +38,24 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Car car = (Car) o;
+
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
     }
 }
