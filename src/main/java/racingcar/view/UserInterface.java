@@ -36,13 +36,9 @@ public class UserInterface {
      * 최종 우승자 출력
      */
     public void showFinalWinner(List<Car> finalWinners) {
-        StringBuilder finalWinnerNames = new StringBuilder(finalWinners.getFirst().getName());
-        if (finalWinners.size() > 1) { // 공동 우승인 경우
-            for (int i = 1; i < finalWinners.size(); i++) {
-                finalWinnerNames.append(", ").append(finalWinners.get(i).getName());
-            }
-        }
-        System.out.println("최종 우승자 : " + finalWinnerNames);
+        List<String> finalWinnerNames = finalWinners.stream().map(Car::getName).toList();
+        String joinedFinalWinnerNames = String.join(", ", finalWinnerNames);
+        System.out.println("최종 우승자 : " + joinedFinalWinnerNames);
     }
 
 }
