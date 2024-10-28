@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
 import racingcar.view.ErrorMessage;
@@ -27,18 +28,18 @@ public class RawCarNamesValidatorTest extends NsTest {
 
     @Test
     void 입력된_문자열이_null인_경우_예외_발생() {
-        assertSimpleTest(() -> assertIllegalArgumentException(null, ErrorMessage.NO_INPUT));
+        assertSimpleTest(() -> assertInvalidInputException(() -> new RawCarNamesValidator().validateNotEmpty(null)));
     }
 
     @Test
     void 입력된_문자열이_빈_문자열인_경우_예외_발생() {
-        assertSimpleTest(() -> assertIllegalArgumentException("\n", ErrorMessage.NO_INPUT));
+        assertSimpleTest(() -> assertInvalidInputException(() -> new RawCarNamesValidator().validateNotEmpty("\n")));
     }
 
-    private void assertIllegalArgumentException(String input, ErrorMessage errorMessage) {
-        assertThatThrownBy(() -> runException(input, "3"))
+    private void assertInvalidInputException(Runnable runnable) {
+        assertThatThrownBy((ThrowingCallable) runnable)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(errorMessage.getMessage());
+                .hasMessage(ErrorMessage.NO_INPUT.getMessage());
     }
 
     @Override
