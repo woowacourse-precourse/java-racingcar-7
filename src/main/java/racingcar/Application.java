@@ -10,7 +10,7 @@ public class Application {
     public static void main(String[] args) {
         input input = new input();
         List<String> carNameList = input.getCarNames();
-        String[] carNames = carNameList.toArray(new String[0]); // List를 String[]로 변환
+        String[] carNames = carNameList.toArray(new String[0]); 
         int attemptCount = input.getAttemptCount();
 
         try {
@@ -20,4 +20,4 @@ public class Application {
             System.out.println(e.getMessage());
         }
     }
-}p
+}

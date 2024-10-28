@@ -25,6 +25,7 @@ public class RacingGame {
     }
 
     public void start() {
+        System.out.println("\n실행결과");
         for (int i = 0; i < attemptCount; i++) {
             playRound();
         }
