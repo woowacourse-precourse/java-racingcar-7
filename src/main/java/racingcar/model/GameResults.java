@@ -30,7 +30,7 @@ public class GameResults {
      * @return (각 시도마다의 자동차 상태 문자열) + (최종 우승자 문자열)
      */
     public String getResults() {
-        return getCarStatesPerTrial() + getResultOfGame();
+        return getCarStatesPerTrial() + getResultOfWinner();
     }
 
     /**
@@ -58,7 +58,7 @@ public class GameResults {
      * 최종 우승자를 계산하여 문자열로 반환한다.
      * @return 우승자 이름을 포함한 문자열
      */
-    private String getResultOfGame() {
+    private String getResultOfWinner() {
         StringBuilder result = new StringBuilder();
         result.append("최종 우승자 : ");
 
