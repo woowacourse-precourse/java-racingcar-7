@@ -13,7 +13,6 @@ public class View {
     public static void integrateView() {
         Integer max = 0;
         String playerinput = DataInput.getInput();
-        System.out.println(playerinput);
         String[] players = DataParsing.parseData(playerinput);
         List<RealCar> cars = new ArrayList<>();
 
@@ -22,8 +21,6 @@ public class View {
         }
 
         Integer matchinput = MatchInput.getMatches();
-
-        System.out.println(matchinput);
 
         while (max < matchinput) {
             max = progressOfRace(cars, max);
@@ -40,7 +37,6 @@ public class View {
             if (Objects.equals(car.getRaceTimes(), matchInput)) {
                 winners.add(car.getCarName());
             }
-            //이걸 어떻게 뺄 수 있지
         }
         return winners;
     }

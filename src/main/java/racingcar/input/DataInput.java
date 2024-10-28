@@ -8,7 +8,7 @@ public class DataInput {
     private DataInput() {}
 
     public static String getInput() {
-        System.out.println("플레이어들을 쉼표로 구분해서 입력해주세요 : ");
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         input = Console.readLine();
 
