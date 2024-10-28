@@ -1,4 +1,4 @@
-package racingcar.global.error;
+package racingcar.global.error.handler;
 
 public class ErrorHandler {
 

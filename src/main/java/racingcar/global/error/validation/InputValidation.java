@@ -1,4 +1,4 @@
-package racingcar.global.validationUtils;
+package racingcar.global.error.validation;
 
 import racingcar.global.error.ErrorMessage;
 

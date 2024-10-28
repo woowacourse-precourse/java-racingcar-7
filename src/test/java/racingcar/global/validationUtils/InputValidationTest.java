@@ -1,6 +1,7 @@
 package racingcar.global.validationUtils;
 
 import org.junit.jupiter.api.Test;
+import racingcar.global.error.validation.InputValidation;
 
 import static org.junit.jupiter.api.Assertions.*;
 

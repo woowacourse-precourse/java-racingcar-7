@@ -2,7 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
-import racingcar.global.validationUtils.InputValidation;
+import racingcar.global.error.validation.InputValidation;
 import java.util.List;
 
 

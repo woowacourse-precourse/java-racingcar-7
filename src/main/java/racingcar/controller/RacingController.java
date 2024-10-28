@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.dto.RaceRequest;
-import racingcar.global.error.ErrorHandler;
+import racingcar.global.error.handler.ErrorHandler;
 import racingcar.model.RacingModel;
 import racingcar.view.RacingView;
 
