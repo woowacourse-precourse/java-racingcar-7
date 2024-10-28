@@ -45,8 +45,8 @@ public class Race {
     private void moveCar(RacingCar racingCar) {
         if (canMoving()) {
             racingCar.setPosition(racingCar.getPosition() + "-");
-            outputView.printRaceResult(racingCar.getName(), racingCar.getPosition());
         }
+        outputView.printRaceResult(racingCar.getName(), racingCar.getPosition());
     }
 
     private boolean canMoving() {
