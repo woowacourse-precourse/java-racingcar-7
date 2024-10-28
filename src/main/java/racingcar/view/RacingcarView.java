@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import racingcar.entity.Car;
 public class RacingcarView {
 
     public String carNameInput() {
@@ -19,5 +21,12 @@ public class RacingcarView {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void printResult(List<Car> result) {
+        for (Car car : result) {
+            System.out.println(car);
+        }
+        System.out.println();
     }
 }
