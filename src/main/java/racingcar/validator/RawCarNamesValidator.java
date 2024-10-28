@@ -5,7 +5,7 @@ import racingcar.view.ErrorMessage;
 
 public class RawCarNamesValidator {
 
-    public void isEmpty(String rawCarNames) {
+    public void validateNotEmpty(String rawCarNames) {
         if (rawCarNames == null || rawCarNames.isBlank()) {
             throw RacingException.from(ErrorMessage.NO_INPUT.getMessage());
         }
