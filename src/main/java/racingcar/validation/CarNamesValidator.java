@@ -17,9 +17,9 @@ import racingcar.service.exception.CarNamesException;
 public class CarNamesValidator {
 
     private static final String KOR_ENG_DIGIT_COMMA_REGEX = "^[가-힣a-zA-Z0-9,]+$";
-    private static final String KOR_ENG_DIGIT_REGEX = "^[가-힣a-zA-Z0-9]+$";
     private static final String ONLY_COMMA_REGEX = "^,+$";
-    private static final String CAR_NAMES_SEPARATOR = ",";
+    private static final String COMMA = ",";
+    private static final String DOUBLE_COMMA = ",,";
 
 
     public static String validateCarNames(String carNames) {
@@ -51,16 +51,15 @@ public class CarNamesValidator {
     }
 
     private static void validateCarName(String carNames) {
-        String[] split = carNames.split(CAR_NAMES_SEPARATOR);
-        for (String carName : split) {
-            if (!carName.matches(KOR_ENG_DIGIT_REGEX)) {
-                throw new CarNamesException(INVALID_CAR_NAME);
-            }
+        if (carNames.contains(DOUBLE_COMMA)
+                || carNames.startsWith(COMMA)
+                || carNames.endsWith(COMMA)) {
+            throw new CarNamesException(INVALID_CAR_NAME);
         }
     }
 
     private static void validateCarNameUnderLengthFive(String carNames) {
-        String[] split = carNames.split(CAR_NAMES_SEPARATOR);
+        String[] split = carNames.split(COMMA);
         for (String carName : split) {
             if (carName.length() > 5) {
                 throw new CarNamesException(CAR_NAME_MUST_UNDER_LENGTH_FIVE);
@@ -69,7 +68,7 @@ public class CarNamesValidator {
     }
 
     private static void validateCarNamesDuplicated(String carNames) {
-        Map<String, Long> nameCountMap = Arrays.stream(carNames.split(CAR_NAMES_SEPARATOR))
+        Map<String, Long> nameCountMap = Arrays.stream(carNames.split(COMMA))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         nameCountMap.forEach((name, count) -> {
             if (count > 1) {
