@@ -53,3 +53,24 @@ RacingController
 
 생각
 1. Engine만 갈아끼면 RandomCar로 바꿀 필요가 없다!
+
+고민
+1. CarCollection이 우승자를 알아야 하는가?
+   알아야 한다. CarCollection은 일급 컬렉션이다. 자기가 지닌 데이터에 대한 책임을 진다.
+2. CarCollection이 들고있는 실행 결과를 어떻게 출력할 것인가?
+   OutputView를 CarCollection에 주입하는 것은 좋지 않다. CarCollection은 출력에 대한 책임을 지지 않는다.
+  그럼 어떻게 해야할까? 
+3. OuptutView가 CarCollection을 알아야 하는가?
+4. Engine의 accelrate()가 boolean을 반환하는 것이 좋은가?
+  안 좋은 것 같다. Engine이 boolean을 반환하면 Car는 자신의 상태변화를 조건문으로 제어해야 한다.
+  ```java
+    public class Car {
+        public void move() {
+            if (engine.accelerate()) {
+                position++;
+            }
+        }
+    }
+  ```
+  이렇게 되면 Car.move()를 테스트하기 어렵게된다.(Mock Engine을 주입받으면 되긴한다.)
+  애초에 생각을 다시 해보면, 차가 move()를 호출했는데 

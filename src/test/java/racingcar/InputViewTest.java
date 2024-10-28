@@ -20,6 +20,7 @@ class InputViewTest {
         ConsoleInput consoleInput = inputView.ask();
 
         // then
+
         assertThat(consoleInput).isEqualTo(new ConsoleInput("pobi,crong,honux", "5"));
     }
 
