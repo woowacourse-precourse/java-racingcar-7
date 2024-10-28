@@ -1,12 +1,14 @@
 package racingcar.view;
 
+import java.util.List;
+
 public class OutputView {
     public void printGameStart() {
         System.out.println("\n실행 결과");
     }
 
-    public void printCarStatus(string carName, int position) {
-        System.out.println(name + " : " + "-".repeat(position)); //라운드별 자동차 상태 출력
+    public void printCarStatus(String carName, int position) {
+        System.out.println(carName + " : " + "-".repeat(position)); //라운드별 자동차 상태 출력
     }
 
     public void printRoundEnd() {
