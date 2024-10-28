@@ -9,12 +9,26 @@ public class IOManager {
         String input = scanner.nextLine();
 
         input = input.trim();
-        inputCheck(input);
+        carNameInputCheck(input);
+
+        turnInput(scanner);
 
         scanner.close();
     }
 
-    static private void inputCheck(String input) {
+    static private void turnInput(Scanner scanner) {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = scanner.nextLine();
+
+        try {
+            int turn = Integer.parseInt(input);
+
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    static private void carNameInputCheck(String input) {
         String[] carNames = input.split(",");
 
         CarManager carManager = CarManager.getInstance();
