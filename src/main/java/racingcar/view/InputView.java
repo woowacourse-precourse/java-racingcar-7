@@ -14,7 +14,7 @@ public class InputView {
     }
 
     public String readTrial(){
-        System.out.println(NAME_INPUT);
+        System.out.println(TRIAL_INPUT);
         String trial = Console.readLine();
         return trial;
     }

@@ -10,8 +10,14 @@ public class Validator {
     }
 
     public void trialValidate(String trial) {
+        try {
+            Integer.parseInt(trial);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("숫자를 입력해야합니다.");
+        }
+
         if (Integer.parseInt(trial) <0) {
-            throw new IllegalArgumentException("시도할 횟수는 양의 정수이여야 합니다.")
+            throw new IllegalArgumentException("시도할 횟수는 양의 정수이여야 합니다.");
         }
     }
 
