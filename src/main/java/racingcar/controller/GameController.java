@@ -29,5 +29,8 @@ public class GameController {
 
         // 입력받은 자동차 이름 수 만큼 자동차 생성
         List<Car> cars = CarFactory.createCars(carNames);
+
+        // 자동차 경주 시작
+        RacingGame.play(cars, round);
     }
 }

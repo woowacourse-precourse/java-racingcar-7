@@ -16,4 +16,17 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public void move(Integer value) {
+        if (canMove(value)) {
+            position++;
+        }
+    }
+
+    public boolean canMove(Integer value) {
+        if (value >= MOVE_STANDARD) {
+            return true;
+        }
+        return false;
+    }
 }
