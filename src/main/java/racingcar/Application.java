@@ -8,6 +8,9 @@ public class Application {
     public static void main(String[] args) {
         // 자동차 이름 입력
         List<String> carNames = getCarNames();
+        // 시도 횟수 입력
+        int attempts = getAttempts();
+
     }
 
     // 자동차 이름 입력
@@ -31,5 +34,18 @@ public class Application {
     }
 
 
-
+    // 시도 횟수 입력
+    private static int getAttempts() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+        try {
+            int attempts = Integer.parseInt(input);
+            if (attempts <= 0) {
+                throw new IllegalArgumentException("횟수는 1 이상의 정수여야 합니다.");
+            }
+            return attempts;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력입니다. 숫자를 입력해주세요.");
+        }
+    }
 }
