@@ -6,10 +6,12 @@ import java.util.List;
 
 public class RandomPicker {
 
-    MapBuilder mapBuilder = new MapBuilder();
-    MessagePrinter messagePrinter = new MessagePrinter();
+    static MapBuilder mapBuilder = new MapBuilder();
+    static MessagePrinter messagePrinter = new MessagePrinter();
 
-    public List<String> runRandomRounds(List<String> carNames, int totalRounds) {
+    public static List<String> runRandomRounds(List<String> carNames, int totalRounds) {
+
+        validateNamesAndRounds(carNames, totalRounds);
 
         String singleRoundResultMessage;
         List<String> totalRoundResultList = new ArrayList<>();
@@ -23,7 +25,8 @@ public class RandomPicker {
         return totalRoundResultList;
     }
 
-    public void runSingleRandomRound(List<String> carNames){
+    public static void runSingleRandomRound(List<String> carNames){
+
         for (int i = 0; i < carNames.size(); i++) {
             String carName = carNames.get(i);
             boolean isCarGoForward = validateRandomResult(runRandom());
@@ -31,11 +34,22 @@ public class RandomPicker {
         }
     }
 
-    private static int runRandom() {
-        return Randoms.pickNumberInRange(0,9);
+    static int runRandom() {
+        try {
+            int randomInt = Randoms.pickNumberInRange(0,9);
+            return randomInt;
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
     }
 
-    private static boolean validateRandomResult(int randomRunResult) {
+    private static void validateNamesAndRounds(List<String> carNames, int totalRounds) {
+        if(carNames == null || carNames.size() <= 1 || totalRounds <= 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static boolean validateRandomResult(int randomRunResult) {
         validateRandomRange(randomRunResult);
         return randomRunResult >= 4;
     }
@@ -46,7 +60,7 @@ public class RandomPicker {
         }
     }
 
-    private void mapCarIfForward(String carName, boolean isCarGoForward) {
+    private static void mapCarIfForward(String carName, boolean isCarGoForward) {
         if(isCarGoForward == true) {
             mapBuilder.mapSingleCarForwardResult(carName);
         }
