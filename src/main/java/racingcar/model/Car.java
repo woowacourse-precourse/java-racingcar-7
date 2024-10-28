@@ -12,5 +12,13 @@ public class Car {
     public void moveForward(){
         this.distance++;
     }
+
+    public void printCarDistance() {
+        System.out.print(generateDistanceStatus());
+    }
+
+    public String generateDistanceStatus() {
+        return name + " : " + "-".repeat(distance) + "\n";
+    }
 }
 
