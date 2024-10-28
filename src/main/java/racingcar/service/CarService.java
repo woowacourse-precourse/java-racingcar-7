@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
@@ -53,5 +55,11 @@ public class CarService {
                 .filter(car -> car.getPosition().length() == winnerPosition)
                 .map(Car::getName)
                 .collect(Collectors.joining(","));
+    }
+
+    public List<Car> getCarsByCarNames(String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }
