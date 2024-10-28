@@ -48,6 +48,26 @@ class InputViewTest extends NsTest {
         assertThat(result).isEqualTo(5);
     }
 
+    @Test
+    void 이동_횟수_음수_예외_테스트() {
+        String input = "-1";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        assertThatThrownBy(InputView::getMovementCount)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("아동 횟수는 1 이상이여야 합니다.");
+    }
+
+    @Test
+    void 이동_횟수_문자_예외_테스트() {
+        String input = "c";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        assertThatThrownBy(InputView::getMovementCount)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("이동 횟수는 숫자여야 합니다.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
