@@ -2,6 +2,9 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -55,6 +58,29 @@ class RacingGameTest {
         Car car = cars.get(0);
         car.move(num);
         assertThat(car.getDistance()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("우승자가 1명인 경우")
+    @Order(4)
+    void printWinner() {
+        cars.add(new Car("carA", 3));
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        racingGame.printWinner(cars);
+        assertThat(output.toString()).isEqualTo("\n최종 우승자 : carA");
+    }
+
+    @Test
+    @DisplayName("우승자가 2명인 경우")
+    @Order(5)
+    void printWinners() {
+        cars.add(new Car("carA", 5));
+        cars.add(new Car("carB", 5));
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        racingGame.printWinner(cars);
+        assertThat(output.toString()).isEqualTo("\n최종 우승자 : carA, carB");
     }
 
 
