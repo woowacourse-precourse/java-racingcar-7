@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.exception.constants.ErrorMessage.CANNOT_RACE_ALONE;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -83,5 +84,17 @@ class RacingGameTest {
         assertThat(winners.getFirst().getDistance()).isEqualTo(5);
         assertThat(winners.getLast().getName()).isEqualTo("2");
         assertThat(winners.getLast().getDistance()).isEqualTo(5);
+    }
+
+    @Test
+    void 예외_한대_이하의_차량이_참여할_경우() {
+        // given
+        cars = List.of(new Car("1"));
+        int gameRound = 5;
+
+        // when & then
+        assertThatThrownBy(() -> new RacingGame(cars, gameRound))
+                .isInstanceOf(RacingCarException.class)
+                .hasMessage(CANNOT_RACE_ALONE.getMessage());
     }
 }

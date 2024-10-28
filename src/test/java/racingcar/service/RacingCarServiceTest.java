@@ -2,6 +2,7 @@ package racingcar.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.exception.constants.ErrorMessage.CANNOT_RACE_ALONE;
 import static racingcar.exception.constants.ErrorMessage.CAR_NAME_LENGTH_EXCEEDED;
 import static racingcar.exception.constants.ErrorMessage.DUPLICATE_CAR_NAME;
 import static racingcar.exception.constants.ErrorMessage.EMPTY_CAR_NAME_NOT_ALLOWED;
@@ -79,5 +80,16 @@ class RacingCarServiceTest {
         assertThatThrownBy(() -> racingCarService.start(requestDto))
                 .isInstanceOf(RacingCarException.class)
                 .hasMessage(INVALID_NUMBER.getMessage());
+    }
+
+    @Test
+    void 예외_한대_이하의_차량이_참여할_경우() {
+        // given
+        RacingCarRequestDto requestDto = new RacingCarRequestDto("1", 5);
+
+        // when & then
+        assertThatThrownBy(() -> racingCarService.start(requestDto))
+                .isInstanceOf(RacingCarException.class)
+                .hasMessage(CANNOT_RACE_ALONE.getMessage());
     }
 }
