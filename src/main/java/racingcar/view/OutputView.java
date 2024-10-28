@@ -11,6 +11,7 @@ public class OutputView {
     public static void printGameStatus(List<Car> cars) {
         for (Car car : cars)
             System.out.println(OutputView.printCarStatus(car));
+        System.out.println();
     }
 
     public static void printGameResult(List<String> winners) {
