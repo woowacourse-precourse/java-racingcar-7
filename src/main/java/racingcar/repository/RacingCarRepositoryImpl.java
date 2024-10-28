@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import racingcar.entity.RacingCar;
 
 public class RacingCarRepositoryImpl implements RacingCarRepository {
 
-    private static HashSet<RacingCar> storage = new HashSet<>();
+    private static List<RacingCar> storage = new ArrayList<>();
 
     @Override
     public void save(RacingCar racingCar) {
@@ -29,6 +30,6 @@ public class RacingCarRepositoryImpl implements RacingCarRepository {
 
     @Override
     public void deleteAll() {
-        storage = new HashSet<>();
+        storage = new ArrayList<>();
     }
 }
