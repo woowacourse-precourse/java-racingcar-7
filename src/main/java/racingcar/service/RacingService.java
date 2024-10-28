@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.model.RacingCars;
 
-public class RacingGameService {
+public class RacingService {
     private final RacingCars racingCars;
 
-    public RacingGameService(RacingCars racingCars) {
+    public RacingService(RacingCars racingCars) {
         this.racingCars = racingCars;
     }
 
