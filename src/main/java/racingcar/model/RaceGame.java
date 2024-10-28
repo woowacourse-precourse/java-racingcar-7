@@ -37,6 +37,8 @@ public class RaceGame {
     }
 
     public void startRace(OutputView outputView) {
+        outputView.displayHeader();
+
         for (int i = 0; i < raceCount; i++) {
             moveCars();
         }
