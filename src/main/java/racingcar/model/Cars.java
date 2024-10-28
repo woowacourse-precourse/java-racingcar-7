@@ -1,9 +1,5 @@
 package racingcar.model;
-
-import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.model.Car;
-import racingcar.util.RandomNumber;
-
+정
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +33,18 @@ public class Cars {
             results.add(car.getResult());
         }
         return results;
+    }
+
+    public List<String> getWinners() {
+        int maxForward = cars.stream()
+                .mapToInt(Car::getForward)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("최대값을 찾을 수 없습니다."));
+
+        return cars.stream()
+                .filter(car -> car.getForward() == maxForward)
+                .map(Car::getName)
+                .toList();
     }
 
 }
