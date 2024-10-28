@@ -2,12 +2,13 @@ package racingcar.view;
 
 import racingcar.domain.RacingCars;
 
+import static racingcar.util.PromptMessage.ROUND_RESULTS;
+
 
 public class RoundView {
 
     public void startRaceRound() {
-        System.out.println();
-        System.out.println("실행 결과");
+        System.out.println(ROUND_RESULTS);
     }
 
     public void showRoundResults(RacingCars racingCars) {
