@@ -23,7 +23,7 @@ public class RacingCarGame implements Game {
     }
 
     @Override
-    public void play() {
+    public void execute() {
         registerRacingCars();
 
         playRacingCarGame();
