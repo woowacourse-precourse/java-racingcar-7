@@ -2,7 +2,11 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class IOManager {
+    static CarManager carManager = CarManager.getInstance();
+
     static public void carInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
@@ -33,7 +37,7 @@ public class IOManager {
     static private void carNameInputCheck(String input) {
         String[] carNames = input.split(",");
 
-        CarManager carManager = CarManager.getInstance();
+
 
         for (String name : carNames) {
             if (name.length() > 5) {
@@ -43,8 +47,24 @@ public class IOManager {
         }
     }
 
-    static private void printState() {
+    static public void printState() {
+        List<Car> carList = carManager.getCars();
+        for (Car car : carList) {
+            String carName = car.getCarName();
+            int carPosition = car.getCarPosition();
+            String position = positionBuilder(carPosition);
 
+            System.out.println(carName + " : " + position);
+        }
+        System.out.println();
+    }
+
+    static private String positionBuilder(int position) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            builder.append("-");
+        }
+        return builder.toString();
     }
 
     static private void printResult() {

@@ -21,7 +21,7 @@ public class GameManager {
     public void gameStart() {
         for (int i = 0; i < endTurn; i++) {
             playSingleTurn();
-
+            IOManager.printState();
         }
     }
 

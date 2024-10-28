@@ -12,6 +12,10 @@ public abstract class CarInfo {
           carPosition++;
      }
 
+     public String getCarName() {
+          return carName;
+     }
+
      public int getCarPosition() {
           return carPosition;
      }
