@@ -10,7 +10,7 @@ import racingcar.models.Cars;
 public class CarService {
     private Cars cars;
 
-    public void createCarModel(String carNames) {
+    public CarService(String carNames) {
         List<String> carNameList = Arrays.stream(carNames.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());

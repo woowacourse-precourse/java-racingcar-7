@@ -5,12 +5,11 @@ import racingcar.views.InputView;
 import racingcar.views.OutPutView;
 
 public class CarController {
-    CarService carService = new CarService();
 
     public void start() {
         InputView.displayInputPrompt();
         String carNames = InputView.readInput();
-        carService.createCarModel(carNames);
+        CarService carService = new CarService(carNames);
         InputView.displayTryCountPrompt();
         int tryCount = carService.validateAndParseTryCount(InputView.readInput());
         OutPutView.displayResultMessage();
