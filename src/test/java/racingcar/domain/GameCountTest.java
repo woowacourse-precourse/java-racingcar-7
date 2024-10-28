@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.game.Game;
 import racingcar.domain.game.GameCount;
+import racingcar.strategy.RandomMoveStrategy;
 
 class GameCountTest {
 
@@ -33,40 +35,32 @@ class GameCountTest {
   @Test
   @DisplayName("null 입력 시 예외 발생")
   void null_입력_예외() {
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> new GameCount(null)
-    );
-    assertEquals("Error: 입력값은 비어있을 수 없습니다.", exception.getMessage());
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new Game("bobi, jun, car1", null, new RandomMoveStrategy()));
+    assertEquals("Error: 입력값은 null일 수 없습니다.", exception.getMessage());
   }
 
   @Test
   @DisplayName("문자 입력 시 예외 발생")
   void 문자_입력_예외() {
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> new GameCount("a")
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new GameCount("a"));
     assertEquals("Error: 시도 횟수는 정수여야 합니다.", exception.getMessage());
   }
 
   @Test
   @DisplayName("음수 입력 시 예외 발생")
   void 음수_입력_예외() {
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> new GameCount("-1")
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new GameCount("-1"));
     assertEquals("Error: 시도 횟수는 1 이상의 값이어야 합니다.", exception.getMessage());
   }
 
   @Test
   @DisplayName("int 범위를 초과하는 숫자 입력 시 예외 발생")
   void int_범위_초과_예외() {
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> new GameCount("21474836481")
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new GameCount("21474836481"));
     assertEquals("Error: 시도 횟수는 정수여야 합니다.", exception.getMessage());
   }
 }

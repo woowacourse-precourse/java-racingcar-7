@@ -1,12 +1,10 @@
 package racingcar.domain.game;
 
 import java.util.List;
-import racingcar.domain.car.Car;
+import racingcar.error.ErrorMessages;
 import racingcar.view.CarStatusDTO;
-import racingcar.factory.CarFactory;
 import racingcar.strategy.MoveStrategy;
 import racingcar.domain.Constants;
-import racingcar.error.CarsValidator;
 
 public class Game {
 
@@ -14,13 +12,30 @@ public class Game {
   private final GameCount gameCount;
 
   public Game(String carNamesInput, String gameCountInput, MoveStrategy moveStrategy) {
-    CarsValidator.validateCarNamesInput(carNamesInput);
-    String[] carNames = carNamesInput.split(Constants.CAR_NAME_DELIMITER);
-    CarsValidator.validateCarNames(carNames);
-    List<Car> carList = CarFactory.createCars(carNames, moveStrategy);
-    this.cars = new Cars(carList);
+    validateCarNamesInput(carNamesInput);
+    validateCarNamesInput(gameCountInput);
+    List<String> carNames = List.of(carNamesInput.split(Constants.CAR_NAME_DELIMITER));
+    this.cars = new Cars(carNames, moveStrategy);
     this.gameCount = new GameCount(gameCountInput);
   }
+
+  private void validateCarNamesInput(String input) {
+    validateNotNull(input);
+    validateNotEmpty(input);
+  }
+
+  private void validateNotNull(String input) {
+    if (input == null) {
+      throw new IllegalArgumentException(ErrorMessages.INPUT_NULL.getMessage());
+    }
+  }
+
+  private void validateNotEmpty(String input) {
+    if (input.trim().isEmpty()) {
+      throw new IllegalArgumentException(ErrorMessages.INPUT_EMPTY.getMessage());
+    }
+  }
+
 
   public void playRound() {
     this.cars.moveCars();

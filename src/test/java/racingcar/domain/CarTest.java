@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.CarName;
+import racingcar.domain.game.Game;
+import racingcar.strategy.RandomMoveStrategy;
 
 class CarTest {
 
@@ -76,10 +78,8 @@ class CarTest {
     String name = "longname";
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> new CarName(name)
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new CarName(name));
     assertEquals("Error: 자동차 이름은 5자 이하로 입력해야 합니다.", exception.getMessage());
   }
 
@@ -90,10 +90,8 @@ class CarTest {
     String name = "";
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> new CarName(name)
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new CarName(name));
     assertEquals("Error: 자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
   }
 
@@ -104,10 +102,8 @@ class CarTest {
     String name = "   ";
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> new CarName(name.trim())
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new CarName(name.trim()));
     assertEquals("Error: 자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
   }
 
@@ -118,11 +114,9 @@ class CarTest {
     String name = null;
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> new CarName(name)
-    );
-    assertEquals("Error: 자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new Game(name, "3", new RandomMoveStrategy()));
+    assertEquals("Error: 입력값은 null일 수 없습니다.", exception.getMessage());
   }
 
   @Test
@@ -132,10 +126,8 @@ class CarTest {
     String name = "123456";
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> new CarName(name)
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new CarName(name));
     assertEquals("Error: 자동차 이름은 5자 이하로 입력해야 합니다.", exception.getMessage());
   }
 }

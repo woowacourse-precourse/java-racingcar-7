@@ -47,20 +47,14 @@ class ViewTest {
     // Given
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     System.setOut(new PrintStream(outContent));
-    List<CarStatusDTO> carStatuses = List.of(
-        new CarStatusDTO("pobi", 2),
-        new CarStatusDTO("woni", 3),
-        new CarStatusDTO("jun", 4)
-    );
+    List<CarStatusDTO> carStatuses = List.of(new CarStatusDTO("pobi", 2),
+        new CarStatusDTO("woni", 3), new CarStatusDTO("jun", 4));
 
     // When
     outputView.printCarPositions(carStatuses);
 
     // Then
-    String expectedOutput =
-        "pobi : --\n" +
-            "woni : ---\n" +
-            "jun : ----\n\n";
+    String expectedOutput = "pobi : --\n" + "woni : ---\n" + "jun : ----\n\n";
     assertEquals(expectedOutput, outContent.toString());
   }
 

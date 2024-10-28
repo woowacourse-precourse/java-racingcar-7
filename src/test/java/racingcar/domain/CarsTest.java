@@ -5,12 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
 import racingcar.domain.game.Cars;
+import racingcar.domain.game.Game;
 import racingcar.view.CarStatusDTO;
-import racingcar.factory.CarFactory;
 import racingcar.strategy.RandomMoveStrategy;
-import racingcar.error.CarsValidator;
 
 class CarsTest {
 
@@ -21,11 +19,10 @@ class CarsTest {
   void createCarsWithUniqueNames() {
     // Given
     String input = "pobi, jun, car1";
-    String[] carNames = input.split(",");
+    List<String> carNames = List.of(input.split(","));
 
     // When
-    List<Car> carList = CarFactory.createCars(carNames, new RandomMoveStrategy());
-    Cars cars = new Cars(carList);
+    Cars cars = new Cars(carNames, new RandomMoveStrategy());
 
     // Then
     List<CarStatusDTO> carNameObjects = cars.getCarStatuses();
@@ -39,11 +36,10 @@ class CarsTest {
   void createCarsWithTrimmedNames() {
     // Given
     String input = " pobi ,  jun , car2 ";
-    String[] carNames = input.split(",");
+    List<String> carNames = List.of(input.split(","));
 
     // When
-    List<Car> carList = CarFactory.createCars(carNames, new RandomMoveStrategy());
-    Cars cars = new Cars(carList);
+    Cars cars = new Cars(carNames, new RandomMoveStrategy());
 
     // Then
     List<CarStatusDTO> carNameObjects = cars.getCarStatuses();
@@ -57,11 +53,10 @@ class CarsTest {
   void createCarsWithSpecialCharactersInNames() {
     // Given
     String input = "car1!, pobi@";
-    String[] carNames = input.split(",");
+    List<String> carNames = List.of(input.split(","));
 
     // When
-    List<Car> carList = CarFactory.createCars(carNames, new RandomMoveStrategy());
-    Cars cars = new Cars(carList);
+    Cars cars = new Cars(carNames, new RandomMoveStrategy());
 
     // Then
     List<CarStatusDTO> carNameObjects = cars.getCarStatuses();
@@ -76,13 +71,11 @@ class CarsTest {
   void throwExceptionWhenDuplicateNames() {
     // Given
     String input = "pobi, pobi, jun";
-    String[] carNames = input.split(",");
+    List<String> carNames = List.of(input.split(","));
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> CarsValidator.validateCarNames(carNames)
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new Cars(carNames, new RandomMoveStrategy()));
     assertEquals("Error: 중복된 자동차 이름은 허용되지 않습니다.", exception.getMessage());
   }
 
@@ -91,13 +84,11 @@ class CarsTest {
   void throwExceptionWhenNameExceedsLength() {
     // Given
     String input = "pobi, longname";
-    String[] carNames = input.split(",");
+    List<String> carNames = List.of(input.split(","));
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> CarFactory.createCars(carNames, new RandomMoveStrategy())
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new Cars(carNames, new RandomMoveStrategy()));
     assertEquals("Error: 자동차 이름은 5자 이하로 입력해야 합니다.", exception.getMessage());
   }
 
@@ -106,13 +97,11 @@ class CarsTest {
   void throwExceptionWhenNameIsEmptyString() {
     // Given
     String input = "pobi, ";
-    String[] carNames = input.split(",");
+    List<String> carNames = List.of(input.split(","));
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> CarFactory.createCars(carNames, new RandomMoveStrategy())
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new Cars(carNames, new RandomMoveStrategy()));
     assertEquals("Error: 자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
   }
 
@@ -121,13 +110,11 @@ class CarsTest {
   void throwExceptionWhenNameIsWhitespace() {
     // Given
     String input = "  , pobi";
-    String[] carNames = input.split(",");
+    List<String> carNames = List.of(input.split(","));
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> CarFactory.createCars(carNames, new RandomMoveStrategy())
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new Cars(carNames, new RandomMoveStrategy()));
     assertEquals("Error: 자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
   }
 
@@ -138,11 +125,9 @@ class CarsTest {
     String input = null;
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> CarsValidator.validateCarNamesInput(input)
-    );
-    assertEquals("Error: 입력값은 비어있을 수 없습니다.", exception.getMessage());
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new Game(input, "5", new RandomMoveStrategy()));
+    assertEquals("Error: 입력값은 null일 수 없습니다.", exception.getMessage());
   }
 
   @Test
@@ -150,13 +135,11 @@ class CarsTest {
   void throwExceptionWhenNumericNameExceedsLength() {
     // Given
     String input = "123456, pobi";
-    String[] carNames = input.split(",");
+    List<String> carNames = List.of(input.split(","));
 
     // When & Then
-    IllegalArgumentException exception = assertThrows(
-        IllegalArgumentException.class,
-        () -> CarFactory.createCars(carNames, new RandomMoveStrategy())
-    );
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> new Cars(carNames, new RandomMoveStrategy()));
     assertEquals("Error: 자동차 이름은 5자 이하로 입력해야 합니다.", exception.getMessage());
   }
 }

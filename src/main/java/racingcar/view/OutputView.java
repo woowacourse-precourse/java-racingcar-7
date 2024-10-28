@@ -10,9 +10,7 @@ public class OutputView {
   }
 
   public void printCarPositions(List<CarStatusDTO> carStatuses) {
-    for (CarStatusDTO status : carStatuses) {
-      printCarPosition(status);
-    }
+    carStatuses.forEach(this::printCarPosition);
     System.out.println();
   }
 
