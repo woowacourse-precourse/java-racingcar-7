@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import racingcar.controller.InputHandler;
+import racingcar.view.InputView;
 
 public class InputValidator {
 
@@ -24,6 +25,12 @@ public class InputValidator {
             if (!carName.matches("^[가-힣]+$")) {
                 throw new IllegalArgumentException("이름에 완전한 한글 낱말이 아닌 글자가 포함되어 있습니다.");
             }
+        }
+    }
+
+    public static void notUseComma(String CarName){
+        if(!CarName.contains(",")){
+            throw new IllegalArgumentException("서로 다른 자동차 이름의 구분자로 쉼표(,)를 사용해야 합니다.");
         }
     }
 
