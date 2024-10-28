@@ -12,5 +12,6 @@ public class Application {
         }
 
         RaceCarGame raceCarGame = new RaceCarGame(raceCars, cnt);
+        raceCarGame.race();
     }
 }

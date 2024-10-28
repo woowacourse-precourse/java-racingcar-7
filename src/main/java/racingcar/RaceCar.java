@@ -16,4 +16,8 @@ public class RaceCar {
     public int getForward(){
         return forward;
     }
+
+    public void updateForward(int forward){
+        this.forward += forward;
+    }
 }

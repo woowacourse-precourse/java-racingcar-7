@@ -1,8 +1,8 @@
 package racingcar;
+import camp.nextstep.edu.missionutils.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 public class RaceUtil {
     /***
@@ -11,9 +11,8 @@ public class RaceUtil {
      * @return 입력받은 이름을 담은 ArrayList
      */
     public ArrayList<String> inputRaceCar(){
-        Scanner scanner = new Scanner(System.in);
         ArrayList<String> carNameList = new ArrayList<>();
-        String[] carName = scanner.nextLine().split(",");
+        String[] carName = Console.readLine().split(",");
 
         Collections.addAll(carNameList, carName);
 
@@ -26,8 +25,7 @@ public class RaceUtil {
      * @return 입력받은 이름을 담은 ArrayList
      */
     public Integer inputRaceCount(){
-        Scanner scanner = new Scanner(System.in);
-        String cnt = scanner.nextLine();
+        String cnt = Console.readLine();
         if(checkRaceCountInput(cnt)) return Integer.parseInt(cnt);
         else throw new IllegalArgumentException("잘못된 시도 횟수를 입력했습니다. ->" + cnt);
     }
