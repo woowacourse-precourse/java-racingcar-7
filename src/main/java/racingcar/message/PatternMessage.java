@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public enum PatternMessage {
     VALID_FORMAT("\\d+"),
-    INVALID_CHARACTERS("^[a-zA-Z0-9]+$");
+    INVALID_CHARACTERS("^[a-zA-Z가-힣]+$");
 
     private final Pattern pattern;
 
