@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,4 +18,15 @@ public class Race {
         this.moveCount = moveCount;
         this.maxScore = 0;
     }
+
+    public void displayStatus() {
+        for (Car car : carList) {
+            System.out.print(car.getName() + " : ");
+            for (int j = 0; j < car.getScore(); j++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+    }
+
 }
