@@ -13,8 +13,10 @@ public class Application {
 		System.out.println("실행 결과");
 		while (time > 0) {
 			time--;
+			dash_print(car, time, result);
 			System.out.println();
 		}
+		winner(car, result);
 	}
 
 	public static String[] input_name() {
@@ -45,5 +47,16 @@ public class Application {
 			if (arr[i].length() > 5)
 				throw new IllegalArgumentException("5글자 이하로 입력하세요.");
 		return 1;
+	}
+
+	public static int[] random_value(String[] car, int time, int[] result) {
+		int random = 0;
+		for (int i = 0; i < result.length; i++) {
+			random = Randoms.pickNumberInRange(0, 9);
+			if (random > 3) {
+				result[i] = result[i] + 1;
+			}
+		}
+		return result;
 	}
 }
