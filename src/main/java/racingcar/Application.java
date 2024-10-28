@@ -24,7 +24,7 @@ public class Application {
     }
 
     private static void validation(String carName) {
-        if (carName.length() > 5) throw new IllegalArgumentException();
+        if (carName.trim().isEmpty() || carName.length() > 5) throw new IllegalArgumentException();
     }
 
     private static int getTries() {
