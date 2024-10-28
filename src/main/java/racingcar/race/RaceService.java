@@ -8,11 +8,9 @@ import racingcar.car.Car;
 
 public class RaceService {
     public void race(List<Car> cars) {
-        for (Car car : cars) {
-            if (isMove(createRandomNumber())) {
-                car.setTotalMove();
-            }
-        }
+        cars.stream()
+                .filter(car -> isMove(createRandomNumber()))
+                .forEach(Car::setTotalMove);
     }
 
     public int createRandomNumber() {
