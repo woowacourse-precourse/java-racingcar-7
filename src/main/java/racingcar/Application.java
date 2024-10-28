@@ -1,7 +1,12 @@
 package racingcar;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        List<String> carNames = InputHandler.getCarNames();
+        int maxRound = InputHandler.getMaxRound();
+        RacingGame racingGame = new RacingGame(carNames, maxRound);
+        racingGame.play();
     }
 }
