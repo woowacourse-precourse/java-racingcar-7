@@ -7,8 +7,8 @@ import racingcar.domain.entity.car.Car;
 import racingcar.domain.vo.CarVO;
 
 public class Race {
-	private Attempt attempt;
-	private List<Car> participants;
+	private final List<Car> participants;
+	private final Attempt attempt;
 
 	public Race(Attempt attempt, List<Car> participants) {
 		this.attempt = attempt;
