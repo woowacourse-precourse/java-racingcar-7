@@ -1,7 +1,6 @@
 package racingcar.mvc.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.math.BigInteger;
 import java.util.List;
 import racingcar.mvc.controller.racingGameManager.RacingGameManager;
 import racingcar.mvc.model.observer.Racer;
@@ -44,7 +43,7 @@ public class RacingGameController {
         try {
             List<Racer> racers = getCarNames();
 
-            BigInteger attempts = getAttempt();
+            int attempts = getAttempt();
 
             //주입받은 애인데 또 주입 받는다.
             racingGameManager.initGameRound(new RacingGameRound(), racers);
@@ -77,19 +76,19 @@ public class RacingGameController {
         return nameString;
     }
 
-    private BigInteger getAttempt() {
+    private int getAttempt() {
         inputView.showReceiveNumberMsg();
         String attemptString = inputView.getUserInput();
 
         AttemptNumberValidator.isValid(attemptString);
 
-        return new BigInteger(attemptString);
+        return Integer.parseInt(attemptString);
     }
 
-    private void startRounds(BigInteger attempts) {
+    private void startRounds(int attempts) {
         outputView.showExecutionResultMsg();
 
-        for (BigInteger i = BigInteger.ONE; i.compareTo(attempts) <= 0; i = i.add(BigInteger.ONE)) {
+        for (int i = 1; i <= attempts; i++) {
             List<Racer> racers = racingGameManager.goRound();
 
             outputView.showRacersStatus(racers);
@@ -104,7 +103,6 @@ public class RacingGameController {
         outputView.showFinalWinnerMsg(winnerDisplay);
     }
 
-    //리스트 인덱스 생각해보자
     private String winnersDisplayFormat(List<Racer> winners) {
         StringBuilder winnersDisplay = new StringBuilder();
 
@@ -119,7 +117,6 @@ public class RacingGameController {
         return winnersDisplay.toString();
     }
 
-    //리스트 인덱스 생각해보자
     private void delimiterSetting(int currentIndex, int listSize, StringBuilder winnersDisplay, String delimiter) {
         if (currentIndex < listSize - 1) {
             winnersDisplay.append(delimiter).append(" ");

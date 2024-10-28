@@ -28,8 +28,7 @@ class ApplicationTest extends NsTest {
                     run("pobi,woni", "4");
                     assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
                 },
-                MOVING_FORWARD, STOP, MOVING_FORWARD + 4
-//                MOVING_FORWARD, STOP
+                MOVING_FORWARD, STOP
         );
     }
 

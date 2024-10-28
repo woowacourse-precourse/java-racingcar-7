@@ -29,6 +29,8 @@ public class CarNameValidator {
 
             isDuplicated(names, name);
 
+            isWithinValidRange(names);
+
             names.add(name);
         }
     }
@@ -74,6 +76,12 @@ public class CarNameValidator {
     private static void isDuplicated(List<String> names, String input) {
         if (names.contains(input)) {
             throw new IllegalArgumentException(input + "은 이미 사용된 이름입니다.");
+        }
+    }
+
+    private static void isWithinValidRange(List<String> names) {
+        if (names.size() == Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("더 이상 등록할 수 없습니다.");
         }
     }
 }

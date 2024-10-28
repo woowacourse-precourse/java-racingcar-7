@@ -1,7 +1,5 @@
 package racingcar.mvc.validation.input;
 
-import java.math.BigInteger;
-
 public class AttemptNumberValidator {
     public static void isValid(String input) {
         isEmpty(input);
@@ -21,7 +19,7 @@ public class AttemptNumberValidator {
 
     private static void isPositiveNumber(String input) {
         try {
-            BigInteger number = new BigInteger(input);
+            int number = Integer.parseInt(input);
 
             isPositive(number);
         } catch (NumberFormatException e) {
@@ -29,8 +27,8 @@ public class AttemptNumberValidator {
         }
     }
 
-    private static void isPositive(BigInteger number) {
-        if (number.compareTo(BigInteger.ZERO) <= 0) {
+    private static void isPositive(int number) {
+        if (number <= 0) {
             throw new IllegalArgumentException("입력한 값은 양의 정수가 아닙니다.");
         }
     }

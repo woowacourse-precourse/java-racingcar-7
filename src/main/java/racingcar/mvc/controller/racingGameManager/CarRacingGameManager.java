@@ -1,6 +1,5 @@
 package racingcar.mvc.controller.racingGameManager;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -47,24 +46,23 @@ public class CarRacingGameManager extends RacingGameManager {
 
         Collections.sort(racers, Comparator.comparing(Racer::getDistance));
 
-        BigInteger winnerDistance = findWinnerDistance(racers);
+        int winnerDistance = findWinnerDistance(racers);
 
         return racers.subList(lowerBound(racers, winnerDistance), upperBound(racers, winnerDistance));
     }
 
-    private BigInteger findWinnerDistance(List<Racer> racers) {
+    private int findWinnerDistance(List<Racer> racers) {
         return racers.getLast().getDistance();
     }
 
-    //인덱스 타입 생각해보자
-    private int upperBound(List<Racer> racers, BigInteger winnerDistance) {
+    private int upperBound(List<Racer> racers, int winnerDistance) {
         int begin = 0;
         int end = racers.size();
 
         while (begin < end) {
             int mid = (begin + end) / 2;
 
-            if (racers.get(mid).getDistance().compareTo(winnerDistance) <= 0) {
+            if (racers.get(mid).getDistance() <= winnerDistance) {
                 begin = mid + 1;
             } else {
                 end = mid;
@@ -73,14 +71,14 @@ public class CarRacingGameManager extends RacingGameManager {
         return end;
     }
 
-    private int lowerBound(List<Racer> racers, BigInteger winnerDistance) {
+    private int lowerBound(List<Racer> racers, int winnerDistance) {
         int begin = 0;
         int end = racers.size();
 
         while (begin < end) {
             int mid = (begin + end) / 2;
 
-            if (racers.get(mid).getDistance().compareTo(winnerDistance) >= 0) {
+            if (racers.get(mid).getDistance() >= winnerDistance) {
                 end = mid;
             } else {
                 begin = mid + 1;

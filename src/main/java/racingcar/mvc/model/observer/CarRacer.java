@@ -1,7 +1,6 @@
 package racingcar.mvc.model.observer;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.math.BigInteger;
 
 public class CarRacer extends Racer {
     private static final int MOVING_THRESHOLD = 4;
@@ -15,7 +14,7 @@ public class CarRacer extends Racer {
     @Override
     public void update() {
         if (goOrStop()) {
-            distance = distance.add(BigInteger.ONE);
+            distance++;
         }
     }
 
@@ -35,7 +34,7 @@ public class CarRacer extends Racer {
     private String convertDistanceToSign() {
         StringBuilder sign = new StringBuilder();
 
-        for (BigInteger i = BigInteger.ZERO; i.compareTo(distance) < 0; i = i.add(BigInteger.ONE)) {
+        for (int i = 0; i < distance; i++) {
             sign.append(UNIT_OF_DISTANCE);
         }
 
