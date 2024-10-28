@@ -12,6 +12,7 @@ public class Car implements Comparable<Car> {
     private int distance;
 
     public Car(String name) {
+        validator.validateEmpty(name);
         validator.validateMaximumLength(name);
         this.name = name;
     }

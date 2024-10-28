@@ -17,4 +17,14 @@ public class CarValidatorTest {
             carValidator.validateMaximumLength(names.strip());
         });
     }
+
+    @Test
+    @DisplayName("공백 혹은 빈 문자열을 입력하면 예외다")
+    void throw_when_name_length_is_empty() {
+        String names = "    ";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            carValidator.validateEmpty(names.strip());
+        });
+    }
 }
