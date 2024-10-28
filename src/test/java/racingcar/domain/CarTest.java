@@ -39,7 +39,7 @@ class CarTest {
                 .hasMessage("자동차 이름에 공백을 포함할 수 없습니다.");
     }
 
-    @DisplayName("자동차 전진 성공")
+    @DisplayName("자동차 전진 성공 : 랜덤 숫자가 4 이상인 경우")
     @Test
     void moveTest() {
         Car car = new Car("pobi", moveGenerator);
@@ -49,7 +49,7 @@ class CarTest {
         Assertions.assertThat(car.getDistance()).isEqualTo(1);
     }
 
-    @DisplayName("자동차 전진 실패")
+    @DisplayName("자동차 정지 : 랜덤 숫자가 3 이하인 경우")
     @Test
     void stopTest() {
         Car car = new Car("pobi", stopGenerator);
