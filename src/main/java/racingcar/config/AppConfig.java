@@ -10,6 +10,7 @@ import racingcar.view.OutputView;
 
 public class AppConfig {
     private final boolean isTest;
+
     private AppConfig(boolean isTest) {
         this.isTest = isTest;
     }
@@ -17,6 +18,7 @@ public class AppConfig {
     public static class Holder {
         private static final AppConfig INSTANCE = new AppConfig(false);
     }
+
     public static AppConfig getInstance() {
         return Holder.INSTANCE;
     }
