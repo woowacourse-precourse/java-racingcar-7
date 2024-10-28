@@ -8,4 +8,6 @@ public interface RacingHistoryRepository {
     void saveRacingHistory(RacingHistory racingHistory);
 
     List<RacingHistory> getRacingHistory();
+
+    int getMaxDistance();
 }
