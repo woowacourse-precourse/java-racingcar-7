@@ -26,17 +26,23 @@ public record GameStartRequest(
     }
 
     private void validateRounds(int rounds) {
-
-        if (rounds > GameConstants.MAXIMUM_PLAYERS) {
-            throw new PlayerExceededException();
-        }
-
-        if (rounds < GameConstants.MINIMUM_PLAYERS) {
-            throw new PlayerUnderstaffedException();
-        }
+        validateExceededRounds(rounds);
+        validateUnderstaffed(rounds);
     }
 
     private boolean isBlank(List<String> names) {
         return names == null || names.isEmpty();
+    }
+
+    private void validateExceededRounds(int rounds) {
+        if (rounds > GameConstants.MAXIMUM_ROUNDS) {
+            throw new PlayerExceededException();
+        }
+    }
+
+    private void validateUnderstaffed(int rounds) {
+        if (rounds < GameConstants.MINIMUM_ROUNDS) {
+            throw new PlayerUnderstaffedException();
+        }
     }
 }

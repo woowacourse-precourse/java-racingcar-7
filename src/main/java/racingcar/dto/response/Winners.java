@@ -1,5 +1,7 @@
 package racingcar.dto.response;
 
+import static racingcar.constant.GameConstants.ZERO;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.player.Player;
@@ -21,10 +23,9 @@ public record Winners(
         return players.stream()
                 .mapToInt(Player::getDistanceValue)
                 .max()
-                .orElse(0);
+                .orElse(ZERO);
     }
 
-    // 단순히 이름 목록만 제공
     public List<String> getWinnerNames() {
         return names;
     }
