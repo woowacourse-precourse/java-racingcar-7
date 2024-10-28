@@ -23,7 +23,7 @@
     - 예시  
   공백 포함 입력
     ```java
-        pobi,   woni,   jun
+        pobi, woni,  jun
     ```
   공백 없애기
     ```java

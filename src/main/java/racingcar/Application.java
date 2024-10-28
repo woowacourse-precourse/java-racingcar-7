@@ -22,6 +22,7 @@ public class Application {
             if (s.length() > 5) {
                 throw new IllegalArgumentException();
             }
+//            s = s.trim();
             cars.add(new Car(s, 0));
         }
 
