@@ -1,22 +1,26 @@
 package racingcar.common.validator;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class InputValidator {
 
-  public static String[] validateAndParseCarNames(String input) {
+  public static List<String> validateAndParseCarNames(String input) {
     if (input == null || input.isEmpty()) {
       throw new IllegalArgumentException("자동차 이름은 빈 문자열이 올 수 없습니다.");
     }
 
-    String[] carNames = input.split(",");
-    Arrays.stream(carNames).forEach(InputValidator::validateCarName);
-
-    return carNames;
+    return Arrays.stream(input.split(","))
+        .map(String::trim)
+        .map(name -> {
+          validateCarName(name);
+          return name;
+        })
+        .toList();
   }
 
   private static void validateCarName(String name) {
-    String trimmedName = name.trim(); // 공백 제거
+    String trimmedName = name.trim();
     if (trimmedName.length() > 5) {
       throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다.");
     }

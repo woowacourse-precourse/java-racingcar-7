@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingService {
 
@@ -24,6 +23,6 @@ public class RacingService {
 
     return cars.stream()
         .filter(car -> car.getPosition() == maxPosition)
-        .collect(Collectors.toList());
+        .toList();
   }
 }

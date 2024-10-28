@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import racingcar.common.io.Input;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ class InputTest {
     System.setIn(new ByteArrayInputStream(input.getBytes()));
 
     Input inputHandler = new Input();
-    String[] carNames = inputHandler.getCarNames();
+    List<String> carNames = inputHandler.getCarNames();
 
     assertThat(carNames).containsExactly("jhs", "hsj", "jwj");
   }

@@ -7,7 +7,6 @@ import racingcar.common.io.Output;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.Arrays;
 
 public class RacingController {
 
@@ -34,16 +33,15 @@ public class RacingController {
   }
 
   private List<Car> createCars() {
-    String[] carNames = input.getCarNames();
-    return Arrays.stream(carNames)
+    List<String> carNames = input.getCarNames();
+
+    return carNames.stream()
         .map(Car::new)
-        .collect(Collectors.toList());
+        .toList();
   }
 
   private void printRaceProgress(List<Car> cars) {
-    for (Car car : cars) {
-      output.printRaceProgress(car.getName(), car.getPosition());
-    }
+    cars.forEach(car -> output.printRaceProgress(car.getName(), car.getPosition()));
     output.printMessage("");
   }
 
@@ -51,7 +49,7 @@ public class RacingController {
     List<Car> winners = racingService.findWinners(cars);
     List<String> winnerNames = winners.stream()
         .map(Car::getName)
-        .collect(Collectors.toList());
+        .toList();
     output.printWinners(winnerNames);
   }
 }
