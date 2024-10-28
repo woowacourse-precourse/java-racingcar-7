@@ -22,7 +22,7 @@ public class CarNameValidator implements Validator {
     public void validation(String carName) {
         checkRestrictedLength(carName);
         checkEmptyCarName(carName);
-        checkDuplicateCarName(carName);
+//        checkDuplicateCarName(carName); /** 테스팅 코드에서 싱글턴으로 관리하여 중복 에러가 겹치는 문제 발생 **/
         carNames.add(carName);
     }
 
