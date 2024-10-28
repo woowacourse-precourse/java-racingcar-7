@@ -37,4 +37,18 @@ public class RacingGameServiceTest {
 
         assertThat(newPositionSum).isGreaterThanOrEqualTo(initialPositionSum);
     }
+
+    @Test
+    void 우승자_가장_높은_위치의_자동차가_올바르게_선정되는지_확인() {
+        // 자동차들의 위치를 임의로 설정합니다.
+        cars.get(0).move();
+        cars.get(0).move();
+        cars.get(1).move();
+        cars.get(2).move();
+        cars.get(2).move();
+
+        List<String> winners = racingGameService.getWinners(cars);
+
+        assertThat(winners).containsExactly("pobi", "jun");
+    }
 }
