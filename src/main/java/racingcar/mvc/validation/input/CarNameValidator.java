@@ -12,6 +12,8 @@ public class CarNameValidator {
     public static void isValid(String input) {
         isEmpty(input);
 
+        isValidPopulation(input);
+
         List<String> names = new ArrayList<>();
 
         for (String name : input.split(NAME_DELIMITER, -1)) {
@@ -26,6 +28,8 @@ public class CarNameValidator {
             containOnlyAllowedSpecialCharacters(name);
 
             isDuplicated(names, name);
+
+            names.add(name);
         }
     }
 
@@ -37,6 +41,12 @@ public class CarNameValidator {
 
     private static boolean isBlank(String input) {
         return input == null || input.isEmpty();
+    }
+
+    private static void isValidPopulation(String input) {
+        if (!input.contains(NAME_DELIMITER)) {
+            throw new IllegalArgumentException("한 명만 입력할 수 없습니다.");
+        }
     }
 
     private static void isValidLength(String input) {

@@ -1,5 +1,6 @@
 package racingcar.mvc.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.math.BigInteger;
 import java.util.List;
 import racingcar.mvc.controller.racingGameManager.RacingGameManager;
@@ -40,15 +41,24 @@ public class RacingGameController {
     }
 
     public void run() {
-        List<Racer> racers = getCarNames();
+        try {
+            List<Racer> racers = getCarNames();
 
-        BigInteger attempts = getAttempt();
+            BigInteger attempts = getAttempt();
 
-        racingGameManager.setGameRound(new RacingGameRound(), racers);
+            //주입받은 애인데 또 주입 받는다.
+            racingGameManager.initGameRound(new RacingGameRound(), racers);
 
-        startRounds(attempts);
+            startRounds(attempts);
 
-        showFinalWinner();
+            showFinalWinner();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            endGame();
+
+        }
     }
 
     private List<Racer> getCarNames() {
@@ -114,5 +124,9 @@ public class RacingGameController {
         if (currentIndex < listSize - 1) {
             winnersDisplay.append(delimiter).append(" ");
         }
+    }
+
+    private void endGame() {
+        Console.close();
     }
 }

@@ -9,7 +9,7 @@ public abstract class RacingGameManager {
 
     public abstract List<Racer> createRacers(String nameString);
 
-    public abstract RacingGameRound setGameRound(RacingGameRound gameRound, List<Racer> racers);
+    public abstract RacingGameRound initGameRound(RacingGameRound gameRound, List<Racer> racers);
 
     public abstract List<Racer> goRound();
 

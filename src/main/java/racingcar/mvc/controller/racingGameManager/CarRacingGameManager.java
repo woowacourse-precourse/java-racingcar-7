@@ -25,7 +25,7 @@ public class CarRacingGameManager extends RacingGameManager {
     }
 
     @Override
-    public RacingGameRound setGameRound(RacingGameRound gameRound, List<Racer> racers) {
+    public RacingGameRound initGameRound(RacingGameRound gameRound, List<Racer> racers) {
         this.gameRound = gameRound;
 
         for (Racer racer : racers) {

@@ -30,7 +30,7 @@ public class AttemptNumberValidator {
     }
 
     private static void isPositive(BigInteger number) {
-        if (number.compareTo(BigInteger.ZERO) < 0) {
+        if (number.compareTo(BigInteger.ZERO) <= 0) {
             throw new IllegalArgumentException("입력한 값은 양의 정수가 아닙니다.");
         }
     }
