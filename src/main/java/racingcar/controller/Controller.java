@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarFactory;
 import racingcar.service.RacingGameService;
+import racingcar.util.Config;
 import racingcar.util.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -23,7 +24,7 @@ public class Controller {
 
     public void startGame() {
         String rawInputCarNames = inputView.inputCarNames();
-        List<String> carNames = Arrays.asList(rawInputCarNames.split(","));
+        List<String> carNames = Arrays.asList(rawInputCarNames.split(Config.CAR_NAME_DELIMITER));
         Validator.validateCarNames(carNames);
 
         List<Car> carList = CarFactory.createCarByName(carNames);
