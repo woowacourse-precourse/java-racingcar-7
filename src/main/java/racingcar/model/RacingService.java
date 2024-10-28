@@ -20,4 +20,15 @@ public class RacingService {
             car.move(pickNumberInRange(0, 9));
         }
     }
+
+    public List<Car> checkWinnerList(List<Car> carList) {
+        int maxState = carList.stream()
+                .mapToInt(Car::getState)
+                .max()
+                .orElse(0);
+
+        return carList.stream()
+                .filter(car -> car.getState() == maxState)
+                .collect(Collectors.toList());
+    }
 }
