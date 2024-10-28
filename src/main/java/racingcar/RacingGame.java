@@ -38,5 +38,10 @@ public class UserInterface {
         final String input = Console.readLine();
         return input.split(",");
     }
+    public String getOperationCount() {
+        System.out.println("시도할 횟수는 몇회인가요?");
+        return Console.readLine();
+    }
+
 
 }
