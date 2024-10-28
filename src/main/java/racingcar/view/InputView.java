@@ -36,18 +36,11 @@ public class InputView {
 
     private int convertTryCountToInt(String inputTryCount) {
         int tryCount = 0;
-        if (inputCountValidator.isNotBlankTryCount(inputTryCount)) {
-
-        }
-        if (inputCountValidator.isPossibleConvertNumber(inputTryCount)) {
-
-        }
-        if (inputCountValidator.isValidScope(inputTryCount)) {
-            tryCount = Integer.parseInt(inputTryCount);
-        }
-        if (inputCountValidator.isAboveMinimumTryCount(tryCount)) {
-
-        }
+        inputCountValidator.isNotBlankTryCount(inputTryCount);
+        inputCountValidator.isPossibleConvertNumber(inputTryCount);
+        inputCountValidator.isValidScope(inputTryCount);
+        tryCount = Integer.parseInt(inputTryCount);
+        inputCountValidator.isAboveMinimumTryCount(tryCount);
         return tryCount;
     }
 }
