@@ -13,8 +13,12 @@ public class Race {
 
     public void moveCars(){
         for(Car car : cars){
-           car.move();
+            car.move();
         }
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public List<String> getWinners() {

@@ -18,6 +18,10 @@ public class RaceManager {
         }
     }
 
+    public List<Car> getCurrentCars() {
+        return race.getCars();
+    }
+
     public List<String> getWinners() {
         return race.getWinners();
     }

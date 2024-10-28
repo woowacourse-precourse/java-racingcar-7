@@ -33,6 +33,10 @@ public class RaceService {
         raceManager.startRace();
     }
 
+    public List<Car> getCars() {
+        return raceManager.getCurrentCars();
+    }
+
     public List<String> getWinners() {
         return raceManager.getWinners();
     }
