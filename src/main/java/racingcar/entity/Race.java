@@ -8,13 +8,16 @@ import racingcar.util.RandomNumberGenerator;
 
 public class Race {
     private final List<Car> cars;
+    private final RaceHistory raceHistory;
 
     private Race() {
         this.cars = null;
+        this.raceHistory = null;
     }
 
     public Race(List<Car> cars) {
         this.cars = cars;
+        this.raceHistory = new RaceHistory();
         validate(cars);
     }
 
@@ -23,6 +26,11 @@ public class Race {
             car.move(randomNumberGenerator.pickRandomNumberInRange(Config.RANDOM_NUMBER_BEGIN.getValue(),
                     Config.RANDOM_NUMBER_END.getValue()));
         }
+        this.raceHistory.addRound(this.cars);
+    }
+
+    public RaceHistory getRaceHistory() {
+        return this.raceHistory;
     }
 
     public List<Car> getCars() {
