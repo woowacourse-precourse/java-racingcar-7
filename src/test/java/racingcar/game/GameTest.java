@@ -16,9 +16,7 @@ class GameTest {
 
         game.play(1, (player) -> player.getName().equals("a"));
         game.play(1, (player) -> player.getName().equals("c"));
-        List<Player> sorted = game.play(1, (player) -> player.getName().equals("c"));
-
-        sorted.stream().sorted().forEach((player) -> System.out.println(player.getName() + " : " + player.getScore()));
+        game.play(1, (player) -> player.getName().equals("c"));
 
         List<String> result = game.winner();
         assertThat(result).isEqualTo(List.of("c"));
