@@ -10,6 +10,11 @@ public class Application {
 
         List<String> carNames = inputView.getCarNames();
         int count = inputView.getCount();
+
+        CarController carController = new CarController(carNames);
+        carController.racingGame(count);
+
+
         // outputView.displayResult();
         // outputView.displayWinner();
     }

@@ -4,10 +4,11 @@ import java.util.List;
 
 public class OutputView {
 
-    public void displayResult(List<Car> cars) {
+    public static void displayResult(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getCarName() + " : ");
+            System.out.println(car.getCarName() + " : " + "-".repeat(car.getCarPosition()));
         }
+        System.out.println();
     }
 
     public void displayWinner(List<String> result) {
