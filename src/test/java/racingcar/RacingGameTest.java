@@ -27,13 +27,13 @@ public class RacingGameTest {
         Car car1 = new Car("pobi");
         Car car2 = new Car("woni");
         Car car3 = new Car("jun");
-        Car car4 = new Car("jason");;
+        Car car4 = new Car("jason");
         car1.setDistance(10);
         car2.setDistance(4);
         car3.setDistance(7);
         car4.setDistance(10);
 
-        List<Car> cars = Arrays.asList(car1, car2, car3, car4);;
+        List<Car> cars = Arrays.asList(car1, car2, car3, car4);
         WinnerManager winnerManager = new WinnerManager();
         int moveCount = 10;
         RacingGame racingGame = new RacingGame(cars, moveCount, winnerManager);
