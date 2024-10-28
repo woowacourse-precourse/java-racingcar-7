@@ -9,13 +9,16 @@ public class OutputView {
 
     public void printExeResult(CareTaker careTaker) {
         System.out.println("실행 결과");
+        careTaker.getAllMemento().forEach(this::printRoundResult);
+    }
 
-        for (GameMemento memento : careTaker.getAllMemento()) {
-            memento.getCarStates().forEach(car ->
-                    System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()))
-            );
-            System.out.println();
-        }
+    private void printRoundResult(GameMemento memento) {
+        memento.getCarStates().forEach(this::printCarState);
+        System.out.println();
+    }
+
+    private void printCarState(Car car) {
+        System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
     }
 
     public void printWinner(List<Car> winners) {

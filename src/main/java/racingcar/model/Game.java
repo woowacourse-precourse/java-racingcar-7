@@ -19,27 +19,6 @@ public class Game {
         }
     }
 
-    private GameMemento playRound() {
-        for (Car car : cars) {
-            int randomValue = Randoms.pickNumberInRange(0, 9);
-            if (canCarMove(randomValue)) {
-                car.move();
-            }
-        }
-        return saveGame();
-    }
-
-    private GameMemento saveGame() {
-        List<Car> clonedCars = cars.stream()
-                .map(Car::clone)
-                .collect(Collectors.toList());
-        return new GameMemento(clonedCars);
-    }
-
-    private boolean canCarMove(int randomValue) {
-        return randomValue >= 4;
-    }
-
     public List<Car> getWinner() {
         int maxDistance = cars.stream()
                 .mapToInt(Car::getDistance)
@@ -49,5 +28,30 @@ public class Game {
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .collect(Collectors.toList());
+    }
+
+    private GameMemento playRound() {
+        for (Car car : cars) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            tryToMoveCar(randomValue, car);
+        }
+        return saveGame();
+    }
+
+    private void tryToMoveCar(int randomValue, Car car) {
+        if (canCarMove(randomValue)) {
+            car.move();
+        }
+    }
+
+    private boolean canCarMove(int randomValue) {
+        return randomValue >= 4;
+    }
+
+    private GameMemento saveGame() {
+        List<Car> clonedCars = cars.stream()
+                .map(Car::clone)
+                .toList();
+        return new GameMemento(clonedCars);
     }
 }
