@@ -19,6 +19,7 @@ public class RacingGameController {
     public void start() {
         List<Car> cars = parseCar(inputCarNames());
         int tryCount = inputTryCount();
+        inputView.closeConsole();
         RacingGame racingGame = new RacingGame(
                 new CarMovePolicy(new RandomMoveCondition()),
                 tryCount
