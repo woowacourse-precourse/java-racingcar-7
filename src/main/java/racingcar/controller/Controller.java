@@ -9,31 +9,33 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Controller {
+
     private ArrayList<Car> cars = new ArrayList<>();
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
     Saparator saparator = new Saparator(",");
     GameManager gameManager = new GameManager();
 
-    public void start(){
+    public void start() {
         setCars();
         playGame();
         printResult();
     }
 
-    public void setCars(){
+    public void setCars() {
         String input = inputView.getCarNames();
-        Validator.validateEmpty(input);
+
 
         String[] carNames = saparator.split(input);
 
-        for (String name : carNames){
+        for (String name : carNames) {
             Validator.validateLengthUpTo5(name);
+            Validator.validateEmpty(name);
             cars.add(new Car(name));
         }
     }
 
-    public void playGame(){
+    public void playGame() {
         int time = inputView.getPlayTime();
         outputView.printResult();
         for (int i = 0; i < time; i++) {
@@ -42,7 +44,7 @@ public class Controller {
         }
     }
 
-    public void printResult(){
+    public void printResult() {
         outputView.printFinalWinner(gameManager.getWinner(cars));
     }
 
