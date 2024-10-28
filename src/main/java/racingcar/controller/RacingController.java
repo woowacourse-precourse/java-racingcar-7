@@ -25,7 +25,7 @@ public class RacingController {
         try{
             run();
         } catch (IllegalArgumentException exception) {
-            System.out.println("[예외 로그] : " + exception.getMessage());
+            System.out.println("[개발자용 로그] : " + exception.getMessage());
             throw new IllegalArgumentException();
         } catch (Exception exception) {
             System.out.println("예기치 못한 문제가 발생했습니다.");
