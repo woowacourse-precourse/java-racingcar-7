@@ -22,23 +22,42 @@ public class RacingCarController {
     }
 
     public void run() {
+            createCars();
+            int raceCount = getRaceCount();
+            performRaces(raceCount);
+            printWinners();
+        }
+    
+
+    private void createCars() {
         String inputCarsName = inputView.inputCarsName();
         racingCarService.createRacingCars(inputCarsName);
+    }
 
+    private int getRaceCount() {
         String inputCarRacingRepeatCount = inputView.inputCarRacingRepeatCount();
         racingCarRepeatCountValidator.validateRepeatCountNumberFormat(inputCarRacingRepeatCount);
-        int integerCarRacingRepeatCount = Integer.parseInt(inputCarRacingRepeatCount);
+        return Integer.parseInt(inputCarRacingRepeatCount);
+    }
 
-        for (int i = 0; i < integerCarRacingRepeatCount; i++) {
+    private void performRaces(int raceCount) {
+        for (int i = 0; i < raceCount; i++) {
             racingCarService.advanceRacingCars();
-            List<String[]> extractedCarNameAndAdvanceResults = racingCarService.getCarNamesAndAdvanceResults();
-            for (String[] carNameAndAdvanceResult : extractedCarNameAndAdvanceResults) {
-                outputView.printCarRacingResult(carNameAndAdvanceResult[0], carNameAndAdvanceResult[1]);
-            }
+            List<String[]> results = racingCarService.getCarNamesAndAdvanceResults();
+            printRaceResults(results);
             outputView.printLineSpace();
         }
-
-        String carRacingWInners = racingCarService.selectCarRacingWinners();
-        outputView.printCarRacingWinner(carRacingWInners);
     }
+
+    private void printRaceResults(List<String[]> results) {
+        for (String[] result : results) {
+            outputView.printCarRacingResult(result[0], result[1]);
+        }
+    }
+
+    private void printWinners() {
+        String winners = racingCarService.selectCarRacingWinners();
+        outputView.printCarRacingWinner(winners);
+    }
+
 }
