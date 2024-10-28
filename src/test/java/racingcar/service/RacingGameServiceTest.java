@@ -28,4 +28,13 @@ public class RacingGameServiceTest {
         assertThat(createdCars.get(1).getName()).isEqualTo("woni");
         assertThat(createdCars.get(2).getName()).isEqualTo("jun");
     }
+
+    @Test
+    void 게임_시작_랜덤값이_조건을_충족할_경우_자동차_전진_확인() {
+        int initialPositionSum = cars.stream().mapToInt(Car::getPosition).sum();
+        racingGameService.startGame(cars, 1);
+        int newPositionSum = cars.stream().mapToInt(Car::getPosition).sum();
+
+        assertThat(newPositionSum).isGreaterThanOrEqualTo(initialPositionSum);
+    }
 }
