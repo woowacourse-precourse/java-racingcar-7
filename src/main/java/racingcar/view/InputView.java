@@ -25,7 +25,7 @@ public class InputView {
     }
 
     public List<String> splitCarNamesToList(String carNames) {
-        List<String> carNameList = List.of(carNames.split(CAR_NAMES_DELIMITER));
+        List<String> carNameList = List.of(carNames.split(CAR_NAMES_DELIMITER, -1));
         CarNameListValidator.validate(carNameList);
         return carNameList;
     }
