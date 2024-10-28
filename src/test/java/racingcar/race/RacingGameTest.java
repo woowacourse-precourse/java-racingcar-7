@@ -13,8 +13,8 @@ import racingcar.Application;
 class RacingGameTest extends NsTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"1", "3", "11", "20", "100", "9"})
-    void 시도할_횟수가_숫자형식이면_정상적으로_실행된다(String round) {
+    @ValueSource(strings = {"1", "2", "3", "4", "5"})
+    void 시도할_횟수가_1이상_5이하의_숫자형식이면_정상적으로_실행된다(String round) {
         // given
 
         // when
@@ -40,8 +40,8 @@ class RacingGameTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"0", "-1"})
-    void 시도할_횟수가_0이거나_음수이면_예외가_발생한다(String invalidRound) {
+    @ValueSource(strings = {"0", "-1", "6", "7"})
+    void 시도할_횟수가_0이하_이거나_6이상이면_예외가_발생한다(String invalidRound) {
         // given
         // when
         // then

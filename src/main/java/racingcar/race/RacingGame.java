@@ -26,13 +26,6 @@ public class RacingGame {
         this.delimiterManager = delimiterManager;
     }
 
-    public void start() {
-        Cars cars = Cars.of(enterNames());
-        int round = enterRound();
-        displayExecute(cars, round);
-        displayWinners(cars);
-    }
-
     private static void displayWinners(Cars cars) {
         System.out.print(WINNER_RESULT_TEXT);
         String winners = cars.getWinners();
@@ -43,6 +36,13 @@ public class RacingGame {
         System.out.println(EXECUTION_RESULT_TEXT);
         String executionResult = cars.getExecutedRound(round);
         System.out.println(executionResult);
+    }
+
+    public void start() {
+        Cars cars = Cars.of(enterNames());
+        int round = enterRound();
+        displayExecute(cars, round);
+        displayWinners(cars);
     }
 
     private List<String> enterNames() {

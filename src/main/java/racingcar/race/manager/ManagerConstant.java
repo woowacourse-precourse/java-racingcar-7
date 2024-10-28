@@ -1,10 +1,26 @@
 package racingcar.race.manager;
 
-public class ManagerConstant {
-    static final String NEGATIVE_NUMBER_ERROR_MESSAGE = "1 이상의 숫자를 입력해야합니다.";
-    static final int MINIMUM_ROUND_THRESHOLD = 0;
+public enum ManagerConstant {
+    ROUND_OUT_OF_RANGE(1, 5, "1 이상의 5이하 숫자를 입력해야합니다."),
+    CAR_NAME_OUT_OF_RANGE(2, 5, "2개 이상 5개 이하로 제한하고 있습니다.");
 
-    static final int MAXIMUM_NAMES_SIZE = 5;
-    static final int MINIMUM_NAMES_SIZE = 2;
-    static final String NAME_SIZE_ERROR_MESSAGE = "2개 이상 5개 이하로 제한하고 있습니다.";
+    private final int minimumThreshold;
+    private final int maximumThreshold;
+    private final String errorMessage;
+
+    ManagerConstant(int minimumThreshold, int maximumThreshold, String errorMessage) {
+        this.minimumThreshold = minimumThreshold;
+        this.maximumThreshold = maximumThreshold;
+        this.errorMessage = errorMessage;
+    }
+
+    public void validate(int value) {
+        if (value < minimumThreshold) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+
+        if (value > maximumThreshold) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+    }
 }

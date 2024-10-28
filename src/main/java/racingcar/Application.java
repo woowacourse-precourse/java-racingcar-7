@@ -16,7 +16,7 @@ public class Application {
         ParseManager parseManager = new ParseManager();
         ValidManager validManager = new ValidManager();
         DelimiterManager delimiterManager = new DelimiterManager();
-        RacingGame game = new RacingGame(parseManager, validManager,delimiterManager);
+        RacingGame game = new RacingGame(parseManager, validManager, delimiterManager);
         Application application = new Application(game);
         application.run();
     }
