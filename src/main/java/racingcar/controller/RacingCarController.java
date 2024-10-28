@@ -5,6 +5,7 @@ import racingcar.dto.GameRoundInputHandler;
 import racingcar.message.Message;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
+import racingcar.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +13,9 @@ import java.util.List;
 public class RacingCarController {
     public void run() {
         // Car Names
-        CarNamesInputHandler carNamesInputHandler = new CarNamesInputHandler();
-        carNamesInputHandler.getUserResponse();
-        List<String> carNames = carNamesInputHandler.validateUserResponse();
+        List<String> carNames = InputView.getCarNames();
+        CarNamesInputHandler.handle(carNames);
+
         // Game Round
         GameRoundInputHandler gameRoundInputHandler = new GameRoundInputHandler();
         gameRoundInputHandler.getUserResponse();
