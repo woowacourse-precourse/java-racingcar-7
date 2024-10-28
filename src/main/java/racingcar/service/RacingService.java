@@ -32,6 +32,7 @@ public class RacingService {
             outputService.printRacingResults(nameOfCar, movementNum);
             numberOfRaces--;
         }
+        outputService.findWinner(movementNum, nameOfCar);
     }
 
     public void setRandomNum() {

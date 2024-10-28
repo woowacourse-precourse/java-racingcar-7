@@ -26,4 +26,21 @@ public class OutputService {
             System.out.print("-");
         }
     }
+
+    public void findWinner(List<Integer> movementNum, List<String> nameOfCar) {
+        int max = Collections.max(movementNum);
+
+        for (int i=0; i<movementNum.size(); i++) {
+            int num = movementNum.get(i);
+            if (num == max) {
+                String name = nameOfCar.get(i);
+                winnerList.add(name);
+            }
+        }
+        printWinner();
+    }
+
+    public void printWinner() {
+        System.out.print("최종 우승자 : " + String.join(",", winnerList));
+    }
 }
