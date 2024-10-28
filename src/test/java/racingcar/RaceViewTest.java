@@ -62,6 +62,21 @@ class RaceViewTest {
     }
 
     @Test
+    void displayMultipleWinnerTest() {
+        //give
+        Set<String> input = Set.of("pobi", "ddot");
+        cars = new Cars(input);
+        cars.registerObserver(raceView);
+        cars.putAll(Map.of("pobi", 1, "ddot", 1));
+        raceView.setCars(cars);
+        //when
+        raceView.displayWinner();
+        //thans
+        assertThat(outContent.toString().trim()).contains("pobi, ddot");
+
+    }
+
+    @Test
     void updateGoTrialTest() {
         //given
         Set<String> input = Set.of("pobi", "ddot");

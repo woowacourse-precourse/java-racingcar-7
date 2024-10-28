@@ -59,7 +59,7 @@ class CarsTest {
         //when
         cars.putAll(Map.of("pobi", 7, "ddot", 7, "a", 7));
         //then
-        assertEquals(String.join(",", cars.keySet()),
+        assertEquals(String.join(", ", cars.keySet()),
                 cars.getWinnerNames(cars.findWinScore()));
     }
 
