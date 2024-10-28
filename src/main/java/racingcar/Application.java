@@ -22,6 +22,6 @@ public class Application {
         List<String> carNames = RacingCarInputView.inputCarNames();
         int tryCount = RacingCarInputView.inputTryCount();
 
-        carRacingController.race(carNames, tryCount);
+        carRacingController.startRace(carNames, tryCount);
     }
 }
