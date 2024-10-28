@@ -8,7 +8,7 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingCarApplication {
-    public void run(){
+    public void run() {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
         Accelerator accelerator = new RandomNumberAccelerator(RandomNumberGenerator.createRandomNumberGenerator());
