@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -12,6 +13,10 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import racingcar.constant.ExceptionMessage;
 
 public class CarTest {
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
+    private static final int INITIAL_POSITION = 0;
+
     private RacePolicy racePolicy;
 
     @BeforeEach
@@ -26,7 +31,7 @@ public class CarTest {
         Car car = new Car(racePolicy, name);
         assertAll(
                 () -> assertThat(car.getName()).isEqualTo(name),
-                () -> assertThat(car.getPosition()).isEqualTo(0)
+                () -> assertThat(car.getPosition()).isEqualTo(INITIAL_POSITION)
         );
     }
 
@@ -46,5 +51,31 @@ public class CarTest {
         assertThatThrownBy(() -> new Car(racePolicy, name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.CAR_NAME_LENGTH_LIMITATION.getMessage());
+    }
+
+    @Test
+    @DisplayName("랜덤 정수가 4이상이면, 자동차가 전진한다.")
+    void testMoveForward() {
+        Car car = new Car(racePolicy, "test");
+        assertRandomNumberInRangeTest(
+                () -> {
+                    car.tryMoveForward();
+                    assertThat(car.getPosition()).isEqualTo(INITIAL_POSITION);
+                },
+                MOVING_FORWARD
+        );
+    }
+
+    @Test
+    @DisplayName("랜덤 정수가 4미만이면, 자동차가 전진한다.")
+    void testDoNotMoveForward() {
+        Car car = new Car(racePolicy, "test");
+        assertRandomNumberInRangeTest(
+                () -> {
+                    car.tryMoveForward();
+                    assertThat(car.getPosition()).isEqualTo(INITIAL_POSITION);
+                },
+                STOP
+        );
     }
 }
