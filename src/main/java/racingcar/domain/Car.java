@@ -2,8 +2,9 @@ package racingcar.domain;
 
 public class Car {
     private static final int MOVED_BOUND = 4;
-    private String name;
-    private int position;
+    private static final String POSITION_FORMAT_SYMBOL = "-";
+    private final String name;
+    private int position = 0;
 
     public Car(String name) {
         this.name = name;
@@ -26,6 +27,12 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public String getCurrentStateFormat() {
+        String stateFormat = "%s : %s";
+        String positionFormat = POSITION_FORMAT_SYMBOL.repeat(position);
+        return String.format(stateFormat, name, positionFormat);
     }
 }
 
