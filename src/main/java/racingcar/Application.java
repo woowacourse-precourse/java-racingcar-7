@@ -36,7 +36,7 @@ public class Application {
                 throw new IllegalArgumentException("잘못된 입력 값입니다: 이름은 5자 이하여야 합니다.");
             }
         }
-        // 자동차 스코어 초기화해서 해시맵에 저장
+
         for (String car: cars) {
             carScores.put(car, 0);
         }
@@ -92,8 +92,6 @@ public class Application {
 
         List<Map.Entry<String, Integer>> entryList = descendingSortByValue();
         List<String> winners = saveWinnerList(entryList, maxScore);
-        // 우승자 목록 저장 -> saveWinnerList()
-
         result = String.join(", ", winners);
 
         return result;
@@ -104,7 +102,7 @@ public class Application {
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue() - o1.getValue(); // 내림차순 정렬
+                return o2.getValue() - o1.getValue();
             }
         });
         return entryList;
@@ -114,7 +112,7 @@ public class Application {
         List<String> winners = new ArrayList<>();
         for(Map.Entry<String, Integer> entry : entryList){
             int curScore = entry.getValue();
-            if (maxScore <= curScore) { // 처음엔 0<3이므로 해당, 두번째는 3=3이므로 해당, 2<3이면 종료
+            if (maxScore <= curScore) {
                 maxScore = curScore;
                 winners.add(entry.getKey());
             }
