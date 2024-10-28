@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.service.CarService;
+import racingcar.service.CarFactory;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 
@@ -27,7 +28,7 @@ public class RacingCarController {
         inputValidator.validateAttemptCount(attemptsInput);
         int attemptsCount = Integer.parseInt(attemptsInput);
 
-        List<Car> cars = CarService.createCars(carNames);
+        List<Car> cars = CarFactory.createCars(carNames);
         CarService carService = new CarService(cars, attemptsCount);
         carService.startRace();
     }
