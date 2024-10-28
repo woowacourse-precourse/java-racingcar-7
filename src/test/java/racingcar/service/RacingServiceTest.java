@@ -53,9 +53,9 @@ class RacingServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {-1, 0})
-    void lapNumberShouldBePositive(int lapNum) {
-        assertThat(InputParser.isMatchWithRegex(String.valueOf(lapNum), LAPS_NUMBER_REGEX.getRegex()))
+    @ValueSource(strings = {"-1", "0"})
+    void lapNumberShouldBePositive(String lapNum) {
+        assertThat(InputParser.isMatchWithRegex(lapNum, LAPS_NUMBER_REGEX.getRegex()))
                 .isFalse();
     }
 }

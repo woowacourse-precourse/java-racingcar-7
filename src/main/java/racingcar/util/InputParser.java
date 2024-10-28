@@ -24,7 +24,12 @@ public class InputParser {
         if (!isMatchWithRegex(userInput, LAPS_NUMBER_REGEX.getRegex())) {
             throw new InvalidLapNumberException();
         }
-        return Integer.parseInt(userInput);
+
+        try{
+            return Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new InvalidLapNumberException();
+        }
     }
     public static List<RacingCar> collectRacingCarAsList() {
         final String[] racers = getRacersAsArrayFromUserInput();
