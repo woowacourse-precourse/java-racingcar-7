@@ -3,9 +3,9 @@ package racingcar.config;
 import racingcar.controller.GameController;
 import racingcar.model.CarMaker;
 import racingcar.model.CarMover;
-import racingcar.model.CarNameValidator;
 import racingcar.model.RacingGame;
-import racingcar.model.RoundNumberValidator;
+import racingcar.validation.CarNameValidator;
+import racingcar.validation.RoundNumberValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

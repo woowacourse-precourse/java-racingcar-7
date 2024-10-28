@@ -6,7 +6,7 @@ import racingcar.dto.FinalResultDto;
 import racingcar.dto.RoundResultDto;
 import racingcar.model.CarMaker;
 import racingcar.model.RacingGame;
-import racingcar.model.RoundNumberValidator;
+import racingcar.validation.RoundNumberValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

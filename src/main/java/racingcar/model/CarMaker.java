@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.List;
 import java.util.stream.Stream;
 import racingcar.domain.Car;
+import racingcar.validation.CarNameValidator;
 
 public class CarMaker {
 
