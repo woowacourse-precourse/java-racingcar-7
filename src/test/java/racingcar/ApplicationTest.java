@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
@@ -24,9 +25,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 잘못된_이름_길이_예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 잘못된_컴마_사용_예외_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,woni,", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
