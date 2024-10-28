@@ -19,11 +19,14 @@ public class Car {
         return position;
     }
 
-    public void moveIfPossible() {
-        int randomNumber = generateRandomNumber();
-        if (randomNumber >= 4) {
+    public void attemptMove() {
+        if (isMovable()) {
             position++;
         }
+    }
+
+    private boolean isMovable() {
+        return generateRandomNumber() >= 4;
     }
 
     public void moveIfPossible(int randomNumber) {
