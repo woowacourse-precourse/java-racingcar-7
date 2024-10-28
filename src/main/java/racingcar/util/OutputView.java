@@ -11,5 +11,7 @@ public class OutputView {
         System.out.println(carMove.toString());
     }
 
-
+    public void printWinner(String winner) {
+        System.out.println("최종 우승자 : " + winner);
+    }
 }
