@@ -24,10 +24,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 시도횟수_에러_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+            assertThatThrownBy(() -> runException("pobi,javaj", "-1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "abb"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
