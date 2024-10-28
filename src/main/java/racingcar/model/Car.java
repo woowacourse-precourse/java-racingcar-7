@@ -14,7 +14,7 @@ public class Car {
     }
 
 
-    public void pritntStatus() {
+    public void printStatus() {
         System.out.println(name + " : " + "-".repeat(position));
     }
 

@@ -22,7 +22,7 @@ public class RacingService {
 
     public void printCarStatus(List<Car> cars) {
         for (Car car : cars) {
-            car.pritntStatus();
+            car.printStatus();
         }
         System.out.println();
     }
