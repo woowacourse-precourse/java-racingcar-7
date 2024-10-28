@@ -11,10 +11,8 @@ public class Race {
         this.cars = cars;
     }
 
-    public void moveCars(){
-        for(Car car : cars){
-            car.move();
-        }
+    public void moveCars() {
+        cars.forEach(Car::move);
     }
 
     public List<Car> getCars() {
