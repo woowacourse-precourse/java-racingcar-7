@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.data.GameData;
 import racingcar.dto.Car;
 
 import java.io.ByteArrayOutputStream;
@@ -36,13 +35,10 @@ class OutputHandlerTest {
             Car car3 = new Car("john", 2);
             List<Car> carList = List.of(car1, car2, car3);
 
-            GameData gameData = new GameData();
-            gameData.save(carList);
-
-            String rankString = "실행 결과\npobi : -\nwoni : ---\njohn : --";
+            String rankString = "pobi : -\nwoni : ---\njohn : --";
 
             // when
-            outputHandler.printCarsRacingResult(gameData);
+            outputHandler.printCarsRacingResult(carList);
 
             // then
             Assertions.assertThat(getOutputStream()).isEqualTo(rankString);

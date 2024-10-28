@@ -2,7 +2,6 @@ package racingcar.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.data.GameData;
 import racingcar.dto.Car;
 
 import java.util.List;
@@ -20,11 +19,8 @@ class WinnerDeciderTest {
             // given
             List<Car> carList = createCarList();
 
-            GameData gameData = new GameData();
-            gameData.save(carList);
-
             // when
-            List<Car> winner = winnerDecider.decideWinner(gameData);
+            List<Car> winner = winnerDecider.decideWinner(carList);
 
             // then
             for (Car car : winner) {

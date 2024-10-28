@@ -1,20 +1,14 @@
 package racingcar.game;
 
-import racingcar.data.GameData;
-import racingcar.data.RoundData;
 import racingcar.dto.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinnerDecider {
-    public List<Car> decideWinner(GameData gameData) {
-        List<RoundData> roundDataList = gameData.getRoundData();
-        RoundData roundData = roundDataList.get(roundDataList.size()-1);
-        List<Car> result = roundData.getResult();
-
-        int maxCount = getMaxCount(result);
-        return result.stream()
+    public List<Car> decideWinner(List<Car> cars) {
+        int maxCount = getMaxCount(cars);
+        return cars.stream()
                 .filter(car -> car.getMoveCount() == maxCount)
                 .collect(Collectors.toList());
     }

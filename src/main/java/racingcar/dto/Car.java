@@ -5,6 +5,7 @@ public class Car {
     private int moveCount = 0;
 
     public Car(String carName) {
+        validateName(carName);
         this.carName = carName;
     }
 

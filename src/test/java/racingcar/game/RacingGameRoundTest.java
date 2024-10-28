@@ -2,7 +2,6 @@ package racingcar.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.data.GameData;
 import racingcar.dto.Car;
 import racingcar.util.NumberGenerator;
 
@@ -12,7 +11,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameRoundTest {
-    private final GameData gameData = new GameData();
 
     @DisplayName("각 자동차가 전진하는 조건을 만족할 경우 앞으로 전진한다.")
     @Test
@@ -30,7 +28,7 @@ class RacingGameRoundTest {
                     new RacingGameRound(carList, numberGenerator);
 
             // when
-            racingGameRound.racing(gameData);
+            racingGameRound.racing();
 
             // then
             for (Car car : carList) {
@@ -55,7 +53,7 @@ class RacingGameRoundTest {
                     new RacingGameRound(carList, numberGenerator);
 
             // when
-            racingGameRound.racing(gameData);
+            racingGameRound.racing();
 
             // then
             for (Car car : carList) {

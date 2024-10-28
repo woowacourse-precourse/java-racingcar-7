@@ -1,7 +1,5 @@
 package racingcar.io;
 
-import racingcar.data.GameData;
-import racingcar.data.RoundData;
 import racingcar.dto.Car;
 
 import java.util.List;
@@ -18,18 +16,17 @@ public class OutputHandler {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public void printCarsRacingResult(GameData gameData) {
+    public void printResultMessage() {
         System.out.println();
         System.out.println("실행 결과");
-
-        gameData.getRoundData().forEach(this::printRoundResult);
     }
 
-    private void printRoundResult(RoundData roundData) {
-        roundData.getResult().forEach(result -> {
+    public void printCarsRacingResult(List<Car> cars) {
+        cars.forEach(result -> {
             String moveVisualization = "-".repeat(result.getMoveCount());
             System.out.println(result.getCarName() + " : " + moveVisualization);
         });
+
         System.out.println();
     }
 

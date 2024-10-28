@@ -1,28 +1,31 @@
 package racingcar.game;
 
-import racingcar.data.GameData;
 import racingcar.dto.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameManager {
-    private final List<RacingGameRound> racingGameRounds = new ArrayList<>();
+    private final int tryNum;
+    private final String[] carNames;
+    private final WinnerDecider winnerDecider = new WinnerDecider();
 
-    public void prepareGameRounds(int tryNum, String[] carNames) {
+    public RacingGameManager(int tryNum, String[] carNames) {
+        this.tryNum = tryNum;
+        this.carNames = carNames;
+    }
+
+    public List<Car> startGame() {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
             carList.add(new Car(carName));
         }
 
+        RacingGameRound racingGameRound = new RacingGameRound(carList);
         for (int i = 0; i < tryNum; i++) {
-            racingGameRounds.add(new RacingGameRound(carList));
+            racingGameRound.racing();
         }
-    }
 
-    public void startGame(GameData gameData) {
-        for (RacingGameRound racingGameRound : racingGameRounds) {
-            racingGameRound.racing(gameData);
-        }
+        return winnerDecider.decideWinner(carList);
     }
 }

@@ -1,7 +1,7 @@
 package racingcar.game;
 
-import racingcar.data.GameData;
 import racingcar.dto.Car;
+import racingcar.io.OutputHandler;
 import racingcar.util.NumberGenerator;
 import racingcar.util.Random;
 
@@ -10,6 +10,7 @@ import java.util.List;
 public class RacingGameRound {
     private final List<Car> cars;
     private final NumberGenerator numberGenerator;
+    private final OutputHandler outputHandler = new OutputHandler();
 
     public RacingGameRound(List<Car> carList, NumberGenerator numberGenerator) {
         this.cars = carList;
@@ -21,12 +22,12 @@ public class RacingGameRound {
         this.numberGenerator = new Random();
     }
 
-    public void racing(GameData gameData) {
-        for (int indexOfCar = 0; indexOfCar < cars.size(); indexOfCar++) {
-            Car car = cars.get(indexOfCar);
+    public void racing() {
+        for (Car car : cars) {
             checkConditionAndMove(car);
         }
-        gameData.save(cars);
+
+        outputHandler.printCarsRacingResult(cars);
     }
 
     private void checkConditionAndMove(Car car) {
