@@ -17,7 +17,7 @@ public class ResultView implements ResultViewInterface {
   private static void printCarResult(Car car) {
     System.out.printf(Constants.INTERMEDIATE_RESULT_MESSAGE.getMessage(), car.getName());
     for (int i = 0; i < car.getPosition(); i++) {
-      System.out.print("-");
+      System.out.print(Constants.CAR_POSITION_MARKER.getMessage());
     }
     System.out.println();
   }
