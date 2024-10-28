@@ -14,6 +14,7 @@ public class InputHandler {
     public int getNumberOfAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
-        return Integer.parseInt(input);
+        String validatedAttempts = InputValidator.validateAttempts(input);
+        return Integer.parseInt(validatedAttempts);
     }
 }
