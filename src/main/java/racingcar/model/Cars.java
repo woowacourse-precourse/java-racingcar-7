@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import static racingcar.ExceptionMessage.CAR_NAME_DUPLICATE_EXCEPTION;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,6 +11,7 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
     public void saveCar(final Car car) {
+        validateDuplicateCarName(car);
         cars.add(car);
     }
 
@@ -42,6 +45,12 @@ public class Cars {
             }
         }
         return winnerNameList;
+    }
+
+    private void validateDuplicateCarName(Car car) {
+        if (cars.contains(car)) {
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATE_EXCEPTION.message());
+        }
     }
 
     private long getFarthestPosition() {

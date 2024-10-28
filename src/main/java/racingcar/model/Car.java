@@ -3,6 +3,7 @@ package racingcar.model;
 import static racingcar.ExceptionMessage.CAR_NAME_LENGTH_EXCEPTION;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Objects;
 
 public class Car implements Comparable<Car> {
     private final String name;
@@ -39,6 +40,23 @@ public class Car implements Comparable<Car> {
 
     protected int getRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !(o instanceof Car)) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(this.name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     @Override
