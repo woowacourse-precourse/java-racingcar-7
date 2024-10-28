@@ -9,7 +9,7 @@ public class Validation {
     private static final String WRONG_TRY_INPUT_MESSAGE = "올바르지 못한 시도 횟수";
     private static final String DUPLICATE_CAR_NAME_MESSAGE = "중복된 자동차이름";
 
-    public static void validateCarNames(String[] carNames) {
+    public static void checkCarNames(String[] carNames) {
         for (String carName : carNames) {
             if (carName.isEmpty() || carName.length() > 5) {
                 throw new IllegalArgumentException(WRONG_CAR_NAME_INPUT_MESSAGE);
@@ -29,7 +29,7 @@ public class Validation {
         }
     }
 
-    public static int validateTryCounts(String tryCounts) {
+    public static int checkTryCounts(String tryCounts) {
         int counts;
         try {
             counts = Integer.parseInt(tryCounts);
