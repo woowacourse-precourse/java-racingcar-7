@@ -1,10 +1,9 @@
 package racingcar.Model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.Utils.ApplicationConstants;
 
 public class Car {
-    private static final int MOVE_THRESHOLD = 4;
-    private static final int MAX_NAME_LENGTH = 5;
     private final String carName;
     private final int currentPosition;
 
@@ -20,7 +19,7 @@ public class Car {
     }
 
     public Car move() {
-        int newPosition = currentPosition + (Randoms.pickNumberInRange(0, 9) >= MOVE_THRESHOLD ? 1 : 0);
+        int newPosition = currentPosition + (Randoms.pickNumberInRange(0, 9) >= ApplicationConstants.MOVE_THRESHOLD ? 1 : 0);
         return new Car(carName, newPosition);
     }
 
@@ -36,9 +35,9 @@ public class Car {
         return currentPosition;
     }
 
-    private static void validateCarName(String carName) {
-        if (carName == null || carName.isEmpty() || carName.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 빈 문자열이거나 5자보다 길 수 없습니다.");
+    private void validateCarName(String carName) {
+        if (carName == null || carName.isEmpty() || carName.length() > ApplicationConstants.MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException(ApplicationConstants.CAR_NAME_VALIDATION_MESSAGE);
         }
     }
 }

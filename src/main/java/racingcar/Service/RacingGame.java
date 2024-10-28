@@ -7,13 +7,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    public static final String INVALID_ATTEMPT_COUNT_MESSAGE = "시도할 횟수는 1 이상의 숫자여야 합니다.";
-
     private final List<Car> raceCars;
     private final int numberOfAttempts;
 
     public RacingGame(List<Car> raceCars, int numberOfAttempts) {
-        validateAttempts(numberOfAttempts);
         this.raceCars = new ArrayList<>(raceCars);
         this.numberOfAttempts = numberOfAttempts;
     }
@@ -54,11 +51,5 @@ public class RacingGame {
                 .mapToInt(Car::getCurrentPosition)
                 .max()
                 .orElseThrow(() -> new IllegalStateException("경주에 참여한 자동차가 없습니다."));
-    }
-
-    private void validateAttempts(int attempts) {
-        if (attempts < 1) {
-            throw new IllegalArgumentException(INVALID_ATTEMPT_COUNT_MESSAGE);
-        }
     }
 }
