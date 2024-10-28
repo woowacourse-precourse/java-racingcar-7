@@ -18,8 +18,16 @@ public class RacingCars {
         this.winners = new ArrayList<>();
     }
 
-    private List<RacingCar> getCars() {
+    public List<RacingCar> getCars() {
         return cars;
+    }
+
+    public Integer getTotalAttempts() {
+        return totalAttempts;
+    }
+
+    public Integer getCurrentAttempts() {
+        return currentAttempts;
     }
 
     private List<RacingCar> getWinners() {
