@@ -5,17 +5,17 @@ import racingcar.view.InputView;
 import racingcar.domain.Cars;
 import racingcar.view.console.ConsoleWriter;
 
-public class RaceController {
+public class RaceManager {
 
     private final InputView inputView;
     private static final String PLAY_START_MESSAGE = "실행 결과";
     private static final String RESULT_MESSAGE = "최종 우승자 : %s";
 
-    public RaceController() {
+    public RaceManager() {
         inputView = new InputView();
     }
 
-    public void start() {
+    public void execute() {
         Cars cars = new Cars(inputView.requestCarsName());
         int roundCount = inputView.requestRoundCount();
 
