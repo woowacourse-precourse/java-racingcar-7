@@ -1,9 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class PlayersCars {
     private List<Car> playersCars;
@@ -27,12 +25,12 @@ public class PlayersCars {
 
     public List<String> findMaximumScoreCars() {
         int maxScore = playersCars.stream()
-                .mapToInt(car -> car.getScore().getScore())
+                .mapToInt(car -> car.getScore().getScoreValue())
                 .max()
                 .orElse(-1);
 
         return playersCars.stream()
-                .filter(car -> car.getScore().getScore() == maxScore)
+                .filter(car -> car.getScore().getScoreValue() == maxScore)
                 .map(Car::getUserName)
                 .toList();
     }

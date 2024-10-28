@@ -1,7 +1,5 @@
 package myracingcartest;
 
-import camp.nextstep.edu.missionutils.test.Assertions;
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -11,8 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Score;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -29,7 +25,7 @@ public class CarTest {
 
         // 그러면 어떤 결과를 예상하고, 어떻게 나오는지?
         assertEquals(shortNameForTest, car1.getUserName(), "자동차 이름 입력 에러");
-        assertEquals(0, car1.getScore().getScore(), "스코어 초기값 에러");
+        assertEquals(0, car1.getScore().getScoreValue(), "스코어 초기값 에러");
 
         /**
          * assertThatNoException : 특정 코드 블록에서 예외가 발생하지 않음을 검증하기 위한 AssertJ의 메서드
@@ -53,13 +49,13 @@ public class CarTest {
         Car testCar = new Car("test");
 
         testCar.moveCar(4);
-        assertEquals(1, testCar.getScore().getScore(), "moveCar 메서드 에러");
+        assertEquals(1, testCar.getScore().getScoreValue(), "moveCar 메서드 에러");
 
         testCar.moveCar(5);
-        assertEquals(2, testCar.getScore().getScore(), "moveCar 메서드 에러");
+        assertEquals(2, testCar.getScore().getScoreValue(), "moveCar 메서드 에러");
 
         testCar.moveCar(1);
-        assertEquals(2, testCar.getScore().getScore(), "moveCar 메서드 에러");
+        assertEquals(2, testCar.getScore().getScoreValue(), "moveCar 메서드 에러");
     }
 
     @Nested
@@ -80,7 +76,7 @@ public class CarTest {
             car.moveCar(expectedRandomNumber);
             score.moveForward();
 
-            assertThat(car.getScore().getScore()).isEqualTo(score.getScore());
+            assertThat(car.getScore().getScoreValue()).isEqualTo(score.getScoreValue());
         }
 
     }

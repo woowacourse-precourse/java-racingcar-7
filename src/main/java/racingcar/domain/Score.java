@@ -14,7 +14,7 @@ public class Score {
         this.score += FIXED_MOVE_POINT;
     }
 
-    public int getScore() {
+    public int getScoreValue() {
         return this.score;
     }
 }

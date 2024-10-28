@@ -18,7 +18,7 @@ public class Printer {
                 .collect(Collectors.toList());
 
         List<Integer> roundResultScore = roundResult.stream()
-                .map(car -> car.getScore().getScore())
+                .map(car -> car.getScore().getScoreValue())
                 .collect(Collectors.toList());
 
         IntStream.range(0, roundResult.size())
