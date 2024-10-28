@@ -24,4 +24,11 @@ public class RacingController {
         }
         return true;
     }
+    public int parseCount(String countInput) {
+        try {
+            return Integer.parseInt(countInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 시도 횟수 입니다.");
+        }
+    }
 }
