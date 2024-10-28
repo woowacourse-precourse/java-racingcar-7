@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static racingcar.exception.ErrorCode.*;
+
 public class Racing {
     private String cars;
     private Integer attemptsCnt;
@@ -54,14 +56,14 @@ public class Racing {
 
     private void validateCarsCnt(String[] carNames) {
         if (carNames.length <= 1) {
-            throw new IllegalArgumentException("경기는 최소 2명부터 참여 가능합니다.");
+            throw new IllegalArgumentException(INVALID_CAR_CNT.getMessage());
         }
     }
 
     private void validateCarNameLength(String[] carNames) {
         for (String name : carNames) {
             if (name.length() > 6) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하로만 작성 가능합니다.");
+                throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getMessage());
             }
         }
     }
@@ -73,7 +75,7 @@ public class Racing {
 
     private void validateAttemptsCntSize(Integer cnt) {
         if (cnt <= 0) {
-            throw new IllegalArgumentException("시도할 수 있는 횟수는 1회 이상입니다.");
+            throw new IllegalArgumentException(INVALID_ATTEMPTS_CNT.getMessage());
         }
     }
 
@@ -81,7 +83,7 @@ public class Racing {
         try {
             return Integer.valueOf(cntString);
         } catch (Exception e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(INVALID_TYPE.getMessage());
         }
     }
 
