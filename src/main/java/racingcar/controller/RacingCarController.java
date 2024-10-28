@@ -18,7 +18,7 @@ public class RacingCarController {
     public static void run(){
 
         // DTO 객체 생성 (View - Controller - Util)
-        RacingCarDTO racingCarDTO = new RacingCarDTO(getRacingCarNameFromUserInController(), getNumberOfRaceFromUser());
+        RacingCarDTO racingCarDTO = new RacingCarDTO(getRacingCarNameFromUserInController(), getNumberOfRaceFromUserInController());
 
         // N회차 반복 실행 (Controller - Service)
         RaceNTimeInController(racingCarDTO);
