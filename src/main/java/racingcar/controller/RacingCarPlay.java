@@ -17,7 +17,7 @@ public class RacingCarPlay {
         String input = Console.readLine();
         InputValidator.nullValidate(input);
         String[] carNames = input.split(",");
-        InputValidator.lenValidate(carNames);
+        InputValidator.lenValidate(carNames,input);
         List<Car> cars = carFactory.createCars(carNames);
 
         message.printAttemptsMessage();

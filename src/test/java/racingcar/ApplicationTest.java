@@ -37,8 +37,9 @@ class ApplicationTest extends NsTest {
     @DisplayName("자동차 이름의 길이가 5 미만이어야 한다.")
     void 자동차_이름_길이_검사() {
         String[] carNames = {"Car1","racingCar1"};
+        String input = "Car1,racingCar1";
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> InputValidator.lenValidate(carNames))
+                assertThatThrownBy(() -> InputValidator.lenValidate(carNames,input))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage("자동차의 이름 길이가 5이상입니다.")
         );
@@ -48,8 +49,9 @@ class ApplicationTest extends NsTest {
     @DisplayName("중복이 되는 이름의 자동차가 있으면 안된다.")
     void 자동차_중복_검사() {
         String[] carNames = {"Car1", "Car1"};
+        String input = "Car1,Car1";
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> InputValidator.lenValidate(carNames))
+                assertThatThrownBy(() -> InputValidator.lenValidate(carNames,input))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage("자동차 이름이 중복되었습니다.")
         );
