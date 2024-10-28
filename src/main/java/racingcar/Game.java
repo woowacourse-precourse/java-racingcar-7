@@ -21,6 +21,9 @@ public class Game {
             cars.add(new Car(carName));
         }
 
+        System.out.println();
+        System.out.println("실행 결과");
+
         // 2. 반복문 돌면서 실행 한번씩 하기
         for(int i = 0; i < times; i++) {
 
@@ -35,8 +38,12 @@ public class Game {
                 if (randomNumber >= 4) {
                     car.increaseCount();
                 }
+
+                // 2-3. 현재 객체 결과 출력하기
+                System.out.println(car.toString());
             }
 
+            System.out.println();
         }
 
     }
