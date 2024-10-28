@@ -3,25 +3,25 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 
-public class RacingGame {
-
-    private static final int MIN_RANDOM_DIGIT = 0;
-    private static final int MAX_RANDOM_DIGIT = 9;
+public class RacingGame{
 
     private final CarNameParser carNameParser;
     private final AttemptCountParser attemptCountParser;
+    private final RandomGenerator randomGenerator;
     private int attemptCount;
 
     // 경주에 참가한 자동차 리스트
     private final List<Car> cars = new ArrayList<>();
 
-    public RacingGame(CarNameParser carNameParser, AttemptCountParser attemptCountParser){
+    public RacingGame(CarNameParser carNameParser, AttemptCountParser attemptCountParser, RandomGenerator randomGenerator){
         this.carNameParser = carNameParser;
         this.attemptCountParser = attemptCountParser;
+        this.randomGenerator = randomGenerator;
     }
 
     /**
@@ -79,9 +79,9 @@ public class RacingGame {
      *  - 랜덤 값이 4이상일때만
      *    매 전진 시 실행 결과 출력
      */
-    public void moveCars(int randomNumber){
+    public void moveCars(){
         for(Car car : cars){
-            car.move(randomNumber);
+            car.move(randomGenerator.getRandomNumber());
             outputRaceResult(car);
         }
         System.out.println();
@@ -90,18 +90,11 @@ public class RacingGame {
     /**
      * 사용자가 입력한 시도횟수만큼 전진을 반복하는 메서드
      * */
-    public void raceByAttemptCount(int attemptCount, int randomNumber){
+    public void raceByAttemptCount(int attemptCount){
         System.out.println("실행 결과");
         for(int i = 0; i<attemptCount; i++){
-            moveCars(randomNumber);
+            moveCars();
         }
-    }
-
-    /**
-     * @return 0~9 사이 무작위 값 리턴
-     * */
-    public int getRandomNumber(){
-        return Randoms.pickNumberInRange(MIN_RANDOM_DIGIT, MAX_RANDOM_DIGIT);
     }
 
 
