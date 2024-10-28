@@ -22,7 +22,7 @@ public class RacingProgress {
         }
     }
 
-    public List<Car> getWinner(){
+    public List<Car> getWinnerCarList(){
         List<Car> winnerList = new ArrayList<>();
         for(Car car : carList){
             if(Car.maxDistance == car.getDistance()){
