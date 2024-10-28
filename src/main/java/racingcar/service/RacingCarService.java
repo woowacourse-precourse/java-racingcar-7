@@ -67,11 +67,13 @@ public class RacingCarService {
 
     // 최종 우승자를 선별
     public List<String> determineWinners(List<CarDTO> cars) {
+
         //최고값 추출
         int maxStraight = cars.stream()
                 .max(Comparator.comparingInt(CarDTO::getGoStraight))
                 .orElseThrow()
                 .getGoStraight();
+
         //우승자 리스트 리턴
         return cars.stream()
                 .filter(car -> car.getGoStraight() == maxStraight)
