@@ -25,6 +25,10 @@ public class Car {
 
     @Override
     public String toString() {
-        return name + " : " + "-".repeat(position);
+        return name + " : " + convertPositionToHyphen(position);
+    }
+
+    private String convertPositionToHyphen(int position) {
+        return "-".repeat(position);
     }
 }
