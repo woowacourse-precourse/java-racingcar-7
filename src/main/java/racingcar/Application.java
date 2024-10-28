@@ -8,6 +8,11 @@ public class Application {
         try {
             List<Car> cars = InputView.getCarNames();
             int tryCount = InputView.getTryCount();
+            RacingGame game = new RacingGame(cars, tryCount);
+
+            System.out.println("실행 결과");
+            game.play();
+            OutputView.printWinners(game.getWinners());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
