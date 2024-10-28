@@ -9,6 +9,8 @@ import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RaceController {
+    //Function: run
+    //Role: Run program, set car and round, start race and select winner
     public void run() {
         String carNames = InputView.getCarNames();
         String[] carNamesList=wrongCheckName(carNames);
@@ -18,12 +20,17 @@ public class RaceController {
         startRace(rounds,race);
         selectWinners(race);
     }
-
+    //Function: negativeRoundCheck
+    //Parameter: int round
+    //Role: throw error if round negative
     public void negativeRoundCheck( int round){
         if (round<0){
             throw new IllegalArgumentException("라운드 수가 음수임");
         }
     }
+    //Function: startRace
+    //Parameter: int round, Race race
+    //Role: start race, print race
     public void startRace(int round, Race race){
         for (int i = 0; i < round; i++) {
             race.start();
@@ -31,11 +38,16 @@ public class RaceController {
         }
     }
 
+    //Function: selectWinners
+    //Parameter: Race race
+    //Role: pick winners, print winners
     public void selectWinners(Race race){
         List<String> winners = race.getWinners();
         ResultView.printWinners(winners);
     }
-
+    //Function: wrongCheckName
+    //Parameter: String carname
+    //Role: wrong name format, then throw error accordingly
     public String[] wrongCheckName(String carname){
         String[] CarNameList=carname.split(",");
         Set <String> names=new HashSet<>();
