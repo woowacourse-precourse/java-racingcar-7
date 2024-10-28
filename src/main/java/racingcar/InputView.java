@@ -4,8 +4,15 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class InputView {
+    private static final String INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String INPUT_TRIAL_COUNT = "시도할 회수는 몇회인가요?";
+    private static final String POSITIVE_NUMBER_PATTERN = "시도할 회수는 몇회인가요?";
+    private static final String EMPTY_INPUT_ERROR = "빈 값이 입력되었습니다.";
+    private static final String DUPLICATE_NAME_ERROR = "중복된 이름이 있습니다.";
+    private static final String POSITIVE_NUMBER_ERROR = "양수를 입력해주세요.";
+
     public static List<String> inputCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(INPUT_CAR_NAME);
         String input = Console.readLine();
         validateEmpty(input);
         List<String> carNames = Utils.splitByDelimiter(input);
@@ -14,7 +21,7 @@ public class InputView {
     }
 
     public static int inputTryCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(INPUT_TRIAL_COUNT);
         String trycount = Console.readLine().trim();
         validateEmpty(trycount);
         validateNumber(trycount);
@@ -23,7 +30,7 @@ public class InputView {
 
     private static void validateEmpty(String input) {
         if (input.isEmpty() || input.isBlank()) {
-            throw new IllegalArgumentException("빈 값이 입력되었습니다.");
+            throw new IllegalArgumentException(EMPTY_INPUT_ERROR);
         }
     }
 
@@ -33,13 +40,13 @@ public class InputView {
                 .count();
 
         if (nameCount != names.size()) {
-            throw new IllegalArgumentException("중복된 이름이 있습니다.");
+            throw new IllegalArgumentException(DUPLICATE_NAME_ERROR);
         }
     }
 
     private static void validateNumber(String input) {
-        if (!input.matches("\\d+")) {
-            throw new IllegalArgumentException("양수를 입력해주세요.");
+        if (!input.matches(POSITIVE_NUMBER_PATTERN)) {
+            throw new IllegalArgumentException(POSITIVE_NUMBER_ERROR);
         }
     }
 }

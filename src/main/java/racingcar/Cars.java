@@ -3,6 +3,8 @@ package racingcar;
 import java.util.List;
 
 public class Cars {
+    private static final int DEFAULT_POSITION = 0;
+
     private final List<Car> carList;
 
     public Cars(List<Car> carList) {
@@ -23,7 +25,7 @@ public class Cars {
         return carList.stream()
                 .map(Car::getPosition)
                 .max(Integer::compareTo)
-                .orElse(0);
+                .orElse(DEFAULT_POSITION);
     }
 
     public List<Car> findWinner() {
