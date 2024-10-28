@@ -34,7 +34,6 @@ public class RacingService {
 
     public int getInputTotalRound() {
         String totalRound = requestInputString(InputType.TOTAL_ROUND);
-        System.out.println(totalRound);
         if (isBlank(totalRound)) {
             throw new IllegalArgumentException((EMPTY_INPUT.getMessage()));
         }
