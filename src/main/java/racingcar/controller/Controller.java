@@ -29,16 +29,19 @@ public class Controller {
             racingGame.addCar(name);
         }
 
-
+        // 시도 횟수 입력받고 파싱
         OutputView.requestTryNumber();
         String tryNumber=InputView.getInput();
         int tryNum=parsing.parseNum(tryNumber);
 
+        //게임 진행
         for (int i=0;i<tryNum;i++){
             randomGameService.RandomGame(racingGame.getCars());
             OutputView.printEachResult(racingGame.getCars());
 
         }
+
+        //최종 우승자 가리기
 
 
         }
