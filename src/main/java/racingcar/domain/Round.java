@@ -2,19 +2,31 @@ package racingcar.domain;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 
-class Round implements Comparable<Round> {
+public class Round implements Comparable<Round> {
 
-    private final int round;
+    private final int maxRound;
+    private final int currRound;
     private final LocalDateTime startTime;
 
-    public Round(final int round) {
-        this.round = round;
+    public Round(final String maxRound) {
+        this.maxRound = Integer.parseInt(maxRound);
+        this.currRound = 0;
         this.startTime = LocalDateTime.now();
     }
 
-    public Round nextRound() {
-        return new Round(this.round + 1);
+    private Round(final int maxRound, final int currRound) {
+        this.maxRound = maxRound;
+        this.currRound = currRound;
+        this.startTime = LocalDateTime.now();
+    }
+
+    public Optional<Round> nextRound() {
+        if (this.maxRound == this.currRound) {
+            return Optional.empty();
+        }
+        return Optional.of(new Round(this.maxRound, currRound + 1));
     }
 
     @Override
@@ -26,16 +38,16 @@ class Round implements Comparable<Round> {
             return false;
         }
         Round round1 = (Round) o;
-        return round == round1.round;
+        return maxRound == round1.maxRound;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(round);
+        return Objects.hash(maxRound);
     }
 
     @Override
     public int compareTo(Round o) {
-        return this.round - o.round;
+        return this.maxRound - o.maxRound;
     }
 }

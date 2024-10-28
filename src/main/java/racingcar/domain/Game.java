@@ -20,10 +20,12 @@ public class Game {
         this.moveConditionGenerator = randomGenerator;
     }
 
-    public void run(final int totalRoundCount) {
-        Round round = new Round(0);
-        for (int i = 0; i < totalRoundCount; i++) {
-            round = round.nextRound();
+    public void run(Round round) {
+        while (true) {
+            if (round.nextRound().isEmpty()) {
+                break;
+            }
+            round = round.nextRound().get();
             runOneRound(round);
         }
     }
