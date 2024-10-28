@@ -14,9 +14,7 @@ public class Cars {
     public void playRound(int tryCount){
         while (tryCount > 0) {
             moveCarsWithRandomCondition();
-
             tryCount = tryCount - 1;
-            System.out.println();
         }
     }
 
