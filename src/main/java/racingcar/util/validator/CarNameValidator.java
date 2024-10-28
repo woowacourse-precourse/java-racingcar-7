@@ -2,7 +2,6 @@ package racingcar.util.validator;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.util.ExceptionMessage;
 import racingcar.util.Util;
 
 public class CarNameValidator extends Validator {
@@ -11,20 +10,25 @@ public class CarNameValidator extends Validator {
 
     @Override
     public void validate(String input) throws IllegalArgumentException {
+        InputCommaValidator.validateFormat(input);
         List<String> carNames = Arrays.asList(Util.removeSpace(input).split(","));
         validateNumberOfCars(carNames);
-        carNames.forEach(CarNameValidator::validateCarNameLength);
+        validateEachCarName(carNames);
     }
 
-    private static void validateCarNameLength(String carName) {
+    private void validateEachCarName(List<String> carNames) {
+        carNames.forEach(this::validateCarNameLength);
+    }
+
+    private void validateCarNameLength(String carName) {
         if (carName.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_CAR_NAME_LENGTH.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
-    private static void validateNumberOfCars(List<String> carNames) {
+    private void validateNumberOfCars(List<String> carNames) {
         if (carNames.size() < MIN_CARS_COUNT) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_OF_CARS.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 }

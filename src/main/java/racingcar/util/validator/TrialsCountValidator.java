@@ -1,7 +1,6 @@
 package racingcar.util.validator;
 
 import java.util.regex.Pattern;
-import racingcar.util.ExceptionMessage;
 import racingcar.util.Util;
 
 public class TrialsCountValidator extends Validator {
@@ -19,14 +18,14 @@ public class TrialsCountValidator extends Validator {
 
     void validateNumeric(String input) {
         if (!NUMBER_REGEX.matcher(input).matches()) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_NOT_NATURAL_NUMBER.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
     void validateTrialInputRange(String input) {
         int number = Integer.parseInt(input);
         if (number < MIN_TRIAL_RANGE || number > MAX_TRIAL_RANGE) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_OUT_OF_INPUT_BOUND.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 }
