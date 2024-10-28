@@ -7,9 +7,14 @@ import java.util.regex.Pattern;
 public class InputReader {
     ValidationCheck validationCheck = new ValidationCheck();
     public String readCarNames(){
-        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
-        validationCheck.validateCarName(userInput);
-        return userInput;
+        try {
+            String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+            validationCheck.validateCarName(userInput);
+            return userInput;
+        }
+        catch(NoSuchElementException e){
+            throw new IllegalArgumentException("입력값이 없습니다.");
+        }
     }
     public int readNumberOfTrial(){
         String userInput = camp.nextstep.edu.missionutils.Console.readLine();
