@@ -13,12 +13,17 @@ public class OutputView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printResult(Name name, int distance) {
+    public static void printResult(String name, int distance) {
         System.out.println(name + " : " + DASH.repeat(distance));
     }
 
-    public static void printWinners(List<Name> winners) {
-        System.out.println(WINNER_MESSAGE + winners);
+    public static void printWinners(List<String> winners) {
+        System.out.print(WINNER_MESSAGE);
+        System.out.println(String.join(", ", winners));
+    }
+
+    public static void printEmptyLine() {
+        System.out.println();
     }
 
 }

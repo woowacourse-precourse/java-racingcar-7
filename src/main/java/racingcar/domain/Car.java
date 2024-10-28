@@ -11,6 +11,11 @@ public class Car {
         this.name = Name.from(name);
     }
 
+    public Car(Name name, racingcar.domain.NumberGenerator numberGenerator) {
+        this.name = name;
+        NumberGenerator = numberGenerator;
+    }
+
     public void move() {
         final int number = NumberGenerator.generate();
         if (number > 4) {
@@ -18,8 +23,8 @@ public class Car {
         }
     }
 
-    public Name getName() {
-        return name;
+    public String getName() {
+        return name.value();
     }
 
     public int getDistance() {
