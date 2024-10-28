@@ -2,27 +2,26 @@ package racingcar;
 
 import controller.RacingGameController;
 import service.RacingGameService;
+import view.InputView;
+import view.OutputView;
 import util.randomnumber.RandomNumberHandler;
 import util.randomnumber.RandomNumberHandlerImpl;
 import util.splitter.CarNameSplitter;
 import util.splitter.CarNameSplitterImpl;
-import view.InputView;
-import view.OutputView;
-import util.validator.CarNameValidator;
-import util.validator.RaceCountValidator;
+import util.validator.Validator;
 import util.validator.CarNameValidatorImpl;
 import util.validator.RaceCountValidatorImpl;
 
 public class Application {
-    private RacingGameController racingGameController;
+    private final RacingGameController racingGameController;
     public Application(RacingGameController racingGameController) {
         this.racingGameController = racingGameController;
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        CarNameValidator carNameValidator = new CarNameValidatorImpl();
-        RaceCountValidator raceCountValidator = new RaceCountValidatorImpl();
+        Validator<String> carNameValidator = new CarNameValidatorImpl();
+        Validator<Integer> raceCountValidator = new RaceCountValidatorImpl();
 
         InputView inputView = new InputView(carNameValidator, raceCountValidator);
         OutputView outputView = new OutputView();

@@ -3,7 +3,7 @@ package util.validator;
 import java.util.List;
 import java.util.Arrays;
 
-public class CarNameValidatorImpl implements CarNameValidator {
+public class CarNameValidatorImpl implements Validator<String> {
     private enum ErrorMessage {
         INVALID_DELIMITER("자동차 이름은 쉼표로 구분되어야 합니다."),
         INVALID_SINGLE_CAR_NAME("자동차는 2대 이상이어야 합니다."),

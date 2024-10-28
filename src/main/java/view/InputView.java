@@ -1,14 +1,13 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import util.validator.CarNameValidator;
-import util.validator.RaceCountValidator;
+import util.validator.Validator;
 
 public class InputView {
-    private final CarNameValidator carNameValidator;
-    private final RaceCountValidator raceCountValidator;
+    private final Validator<String> carNameValidator;
+    private final Validator<Integer> raceCountValidator;
 
-    public InputView(CarNameValidator carNameValidator, RaceCountValidator raceCountValidator) {
+    public InputView(Validator<String> carNameValidator, Validator<Integer> raceCountValidator) {
         this.carNameValidator = carNameValidator;
         this.raceCountValidator = raceCountValidator;
     }

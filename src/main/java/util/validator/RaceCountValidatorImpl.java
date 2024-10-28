@@ -1,6 +1,6 @@
 package util.validator;
 
-public class RaceCountValidatorImpl implements RaceCountValidator {
+public class RaceCountValidatorImpl implements Validator<Integer> {
 
     private static final int MIN_RACE_COUNT = 1;  // 최소 반복 횟수
     private static final int MAX_RACE_COUNT = 100; // 최대 반복 횟수 (필요에 따라 조정)
@@ -21,7 +21,7 @@ public class RaceCountValidatorImpl implements RaceCountValidator {
     }
 
     @Override
-    public void validate(int raceCount) {
+    public void validate(Integer raceCount) {
         validateMinRaceCount(raceCount);
         validateMaxRaceCount(raceCount);
     }
