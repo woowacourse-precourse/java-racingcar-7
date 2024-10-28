@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model.car;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

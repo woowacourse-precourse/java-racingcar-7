@@ -33,7 +33,9 @@ public class RaceController {
             int tryCount
     ) {
         raceService.initializeRace(carNames, new RandomMoveStrategy(), tryCount);
-        logInfo("경주 초기화 완료 - 자동차 이름: " + String.join(", ", carNames) + ", 시도 횟수: " + tryCount);
+        logInfo("경주 초기화 완료 - 자동차 이름: "
+                + String.join(", ", carNames)
+                + ", 시도 횟수: " + tryCount);
     }
 
     private void playRace(int tryCount) {
