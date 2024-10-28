@@ -30,7 +30,7 @@ public class Application {
         try {
             String str = Console.readLine();
             int num = Integer.parseInt(str);
-            if (num < 0)
+            if (num <= 0)
                 throw new IllegalArgumentException();
             return num;
         } catch (Exception e) {
