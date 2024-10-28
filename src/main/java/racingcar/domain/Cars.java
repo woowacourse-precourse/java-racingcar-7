@@ -13,7 +13,7 @@ public class Cars {
     }
 
     public void setCarList(String inpuString) {
-        List<String> carName = Arrays.asList(inpuString.split(","));
+        List<String> carName = Arrays.asList(inpuString.split(",",-1));
         for (String name : carName) {
             this.carList.add(new Car(name));
         }
