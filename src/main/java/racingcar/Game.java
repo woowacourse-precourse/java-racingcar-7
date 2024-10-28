@@ -60,7 +60,7 @@ public class Game {
         } catch (Exception e) {
             throw new IllegalArgumentException("입력이 정수가 아닙니다.");
         }
-        if(totalMoves < 0){
+        if(totalMoves <= 0){
             throw new IllegalArgumentException("시도횟수가 음수입니다.");
         }
         return totalMoves;
