@@ -1,10 +1,11 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.controller.CarNamesController;
 import racingcar.controller.NumberController;
+import racingcar.controller.RacingController;
 import racingcar.controller.WordsController;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.*;
 
@@ -50,27 +51,10 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        // 9. 자동차 게임 시작
-        System.out.println("");
-        System.out.println("실행 결과");
-
-        for (int i = 0; i < tryNumber; i++) {
-            for (String carName : carNames) {
-
-                // 9-1. 시도할 횟수만큼 각 자동차마다 무작위 값을 구함
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
-
-                // 9-2. 무작위 값이 4 이상일 경우 한 칸 앞으로 전진
-                if (randomNumber >= 4) {
-                    carPositions.put(carName, carPositions.get(carName)+1);
-                }
-            }
-
-            // 9-3. 한 회가 마무리되면 차수별 실행 결과를 예시에 따라 출력
-            for (String carName : carNames) {
-                System.out.println(carName + " : " + "-".repeat(carPositions.get(carName)));
-            }
-            System.out.println("");
+        // 8. 시도할 횟수만큼 게임을 진행하며 차수별 실행 결과 출력
+        for (int round = 0; round < tryNumber; round++) {
+            RacingController.racing(carNames, carPositions);
+            OutputView.progressResults(round, carNames, carPositions);
         }
 
         // 10. 가장 멀리 간 거리를 측정해 최종 우승자 선발
