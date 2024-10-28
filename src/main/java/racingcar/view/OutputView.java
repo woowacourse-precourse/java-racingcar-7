@@ -31,7 +31,7 @@ public class OutputView {
         System.out.println(result + " : " + printForward(car.getForward()));
     }
 
-    private static StringBuilder printForward(int forward) {
+    private StringBuilder printForward(int forward) {
         StringBuilder print = new StringBuilder();
 
         print.append("-".repeat(Math.max(0, forward)));

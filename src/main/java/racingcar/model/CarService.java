@@ -5,8 +5,7 @@ import java.util.*;
 public class CarService {
     private List<String> carNames;
     private List<CarDto> cars = new ArrayList<>();
-
-    Map<String, Integer> repeatName = new HashMap<>();
+    private Map<String, Integer> repeatName = new HashMap<>();
 
 
     public CarService(List<String> carNames) {
