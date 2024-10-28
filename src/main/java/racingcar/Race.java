@@ -25,8 +25,8 @@ public class Race {
     }
 
     private void moveAllCars() {
-        for (Car car : cars){
-            if (randomNumber()>=4){
+        for (Car car : cars) {
+            if (randomNumber() >= 4) {
                 car.move();
             }
         }
@@ -35,8 +35,8 @@ public class Race {
     private List<Car> checkWinner() {
         List<Car> winners = new ArrayList<>();
         int maxValue = findMaxValue();
-        for(Car car:cars){
-            if(car.getMoveCount() == maxValue){
+        for (Car car : cars) {
+            if (car.getMoveCount() == maxValue) {
                 winners.add(car);
             }
         }
@@ -45,8 +45,8 @@ public class Race {
 
     private int findMaxValue() {
         int maxValue = 0;
-        for (Car car:cars){
-            maxValue = Math.max(maxValue,car.getMoveCount());
+        for (Car car : cars) {
+            maxValue = Math.max(maxValue, car.getMoveCount());
         }
         return maxValue;
     }

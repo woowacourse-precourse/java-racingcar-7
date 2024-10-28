@@ -19,7 +19,7 @@ public class CheckInputTest extends NsTest {
         CheckInput checkInput = new CheckInput();
         String input = "노범석,         김수한무";
         List<String> result = checkInput.splitNames(input);
-        List<String> expected = Arrays.asList("노범석","김수한무");
+        List<String> expected = Arrays.asList("노범석", "김수한무");
 
         assertThat(result).containsExactlyElementsOf(expected);
     }
@@ -68,7 +68,7 @@ public class CheckInputTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", " ", "one","-1","0"})
+    @ValueSource(strings = {"", " ", "one", "-1", "0"})
     @NullAndEmptySource
     @DisplayName("경주 횟수로 공백,또는 문자열,0,음수가 들어오는 경우")
     void testInvalidRaceCount(String input) {

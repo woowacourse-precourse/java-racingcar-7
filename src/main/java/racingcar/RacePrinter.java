@@ -10,7 +10,7 @@ public class RacePrinter {
     public void printWinner(List<Car> winners) {
         StringBuilder message = new StringBuilder("최종 우승자 : ");
         List<String> winnerNames = new ArrayList<>();
-        for(Car winner : winners){
+        for (Car winner : winners) {
             winnerNames.add(winner.getName());
         }
         message.append(String.join(", ", winnerNames));
