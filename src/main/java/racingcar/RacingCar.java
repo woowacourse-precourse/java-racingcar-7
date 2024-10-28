@@ -17,7 +17,7 @@ public class RacingCar {
 
         for (String car_name : cars) {
             if (car_name.length() > 5) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("자동차의 이름은 5자를 넘을 수 없습니다.");
             }
             raceScores.put(car_name.trim(), 0);  //  trim()으로 불필요한 공백 제거
         }

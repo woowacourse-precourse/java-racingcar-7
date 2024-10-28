@@ -16,6 +16,11 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int race_count = Integer.parseInt(scanner.nextLine());
 
+        // 시도 횟수가 음수 일시 에러
+        if (race_count < 0) {
+            throw new IllegalArgumentException("시도 횟수는 반드시 양수를 입력해야 합니다.");
+        }
+
         Map<String, Integer> raceScores = RacingCar.convertStringToMap(car_nameList);
 
         System.out.println("실행 결과");
