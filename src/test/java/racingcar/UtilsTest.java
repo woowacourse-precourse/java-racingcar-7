@@ -45,15 +45,24 @@ public class UtilsTest {
     void 시도_횟수_입력_테스트() {
         String input = " 12 "; // 공백 포함
         int expected = 12;
-        
+
         int result = Utils.inputToInt(input);
-        
+
         assertThat(result).isEqualTo(expected);
     }
-    
+
     @Test
     void 시도_횟수_입력_예외_테스트() {
         String input = "1a3";
+
+        assertThatThrownBy(() -> Utils.inputToInt(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorCode.INVALID_NUMBER.getMessage());
+    }
+
+    @Test
+    void 시도_횟수_음수_예외_처리_테스트() {
+        String input = "-1";
 
         assertThatThrownBy(() -> Utils.inputToInt(input))
                 .isInstanceOf(IllegalArgumentException.class)
