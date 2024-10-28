@@ -87,6 +87,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("차량 이름이 5글자 이상이면 예외")
+    void throwExceptionIfCarNameLengthIsOverFive() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobiman,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
