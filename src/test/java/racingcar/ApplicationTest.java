@@ -3,8 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,7 +17,7 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi");
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
             },
             MOVING_FORWARD, STOP
         );
@@ -34,6 +32,21 @@ class ApplicationTest extends NsTest {
                 },
                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+    @Test
+    void 이름_중복_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi", "pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도횟수_숫자_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "5a"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
