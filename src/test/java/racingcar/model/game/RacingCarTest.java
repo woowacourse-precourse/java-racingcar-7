@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
-import racingcar.model.game.round.Round;
 import racingcar.model.game.position.History;
 import racingcar.model.game.position.Position;
 import racingcar.model.game.position.Positions;
+import racingcar.model.game.round.Round;
 import racingcar.model.game.strategy.MovingStrategy;
 
 @DisplayName("자동차 경주 테스트")
@@ -27,7 +27,7 @@ class RacingCarTest {
             // Given
             MovingStrategy movingStrategy = () -> true;
             Cars cars = new Cars(List.of(new Car("pobi", movingStrategy), new Car("woni", movingStrategy)));
-            Round round = new Round(0);
+            Round round = new Round("0");
             RacingCar racingCar = new RacingCar(cars, round);
 
             // When
@@ -43,7 +43,7 @@ class RacingCarTest {
         void 성공_시작_시도횟수1이상() {
             // Given
             Cars cars = new Cars(List.of(new Car("pobi", () -> true), new Car("woni", () -> false)));
-            Round round = new Round(1);
+            Round round = new Round("1");
             RacingCar racingCar = new RacingCar(cars, round);
 
             // When
@@ -69,7 +69,7 @@ class RacingCarTest {
         void 성공_우승자계산_우승자한명() {
             // Given
             Cars cars = new Cars(List.of(new Car("pobi", () -> true), new Car("woni", () -> false)));
-            Round round = new Round(1);
+            Round round = new Round("1");
             RacingCar racingCar = new RacingCar(cars, round);
             racingCar.start();
 
@@ -85,7 +85,7 @@ class RacingCarTest {
         void 성공_우승자계산_우승자여러명() {
             // Given
             Cars cars = new Cars(List.of(new Car("pobi", () -> true), new Car("woni", () -> true)));
-            Round round = new Round(1);
+            Round round = new Round("1");
             RacingCar racingCar = new RacingCar(cars, round);
             racingCar.start();
 

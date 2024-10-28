@@ -7,12 +7,24 @@ public class Round {
 
     private final long round;
 
-    public Round(final long round) {
-        validate(round);
-        this.round = round;
+    public Round(final String input) {
+        validateInput(input);
+        try {
+            long round = Long.parseLong(input);
+            validateValue(round);
+            this.round = round;
+        } catch (NumberFormatException e) {
+            throw new InvalidRoundException("시도할 횟수는 숫자여야 합니다.");
+        }
     }
 
-    private void validate(final long round) {
+    private void validateInput(final String input) {
+        if (input == null || input.isBlank()) {
+            throw new InvalidRoundException("라운드 횟수는 null이거나 공백일 수 없습니다.");
+        }
+    }
+
+    private void validateValue(final long round) {
         if (round < 0) {
             throw new InvalidRoundException("시도할 횟수는 0 또는 양수여야 합니다.");
         }

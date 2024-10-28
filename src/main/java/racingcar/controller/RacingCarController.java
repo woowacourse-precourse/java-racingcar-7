@@ -1,12 +1,11 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
-import racingcar.exception.InvalidRoundException;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
 import racingcar.model.game.RacingCar;
-import racingcar.model.game.round.Round;
 import racingcar.model.game.position.History;
+import racingcar.model.game.round.Round;
 import racingcar.model.game.strategy.MovingStrategy;
 import racingcar.support.repeater.StringRepeater;
 import racingcar.support.splitter.Splitter;
@@ -58,14 +57,7 @@ public class RacingCarController {
     private Round readRound(OutputView outputView, InputView inputView) {
         outputView.showCommentForRound();
         String inputRound = inputView.read();
-        validateInputRound(inputRound);
-        return new Round(Long.parseLong(inputRound));
-    }
-
-    private void validateInputRound(final String inputRound) {
-        if (inputRound == null || inputRound.isBlank()) {
-            throw new InvalidRoundException("라운드 횟수는 null이거나 공백일 수 없습니다.");
-        }
+        return new Round(inputRound);
     }
 
     private void showRacingResult(OutputView outputView, final Round round, final RacingCar racingCar,

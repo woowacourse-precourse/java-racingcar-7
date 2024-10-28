@@ -22,7 +22,7 @@ class RoundTest {
 
             // When & Then
             assertThatCode(() -> {
-                new Round(0);
+                new Round("0");
             }).doesNotThrowAnyException();
         }
 
@@ -32,10 +32,58 @@ class RoundTest {
             // Given
 
             // When & Then
-            assertThatThrownBy(() -> new Round(-1))
+            assertThatThrownBy(() -> new Round("-1"))
                     .isExactlyInstanceOf(InvalidRoundException.class)
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("시도할 횟수는 0 또는 양수여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("숫자가 아닌 문자이면 예외를 발생한다")
+        void 실패_생성_숫자가아닌문자() {
+            // Given
+
+            // When & Then
+            assertThatThrownBy(() -> new Round("a"))
+                    .isExactlyInstanceOf(InvalidRoundException.class)
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("시도할 횟수는 숫자여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("null이면 예외를 발생한다")
+        void 실패_생성_null() {
+            // Given
+
+            // When & Then
+            assertThatThrownBy(() -> new Round(null))
+                    .isExactlyInstanceOf(InvalidRoundException.class)
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("라운드 횟수는 null이거나 공백일 수 없습니다.");
+        }
+
+        @Test
+        @DisplayName("비어있으면 예외를 발생한다")
+        void 실패_생성_empty() {
+            // Given
+
+            // When & Then
+            assertThatThrownBy(() -> new Round(null))
+                    .isExactlyInstanceOf(InvalidRoundException.class)
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("라운드 횟수는 null이거나 공백일 수 없습니다.");
+        }
+
+        @Test
+        @DisplayName("공백이면 예외를 발생한다")
+        void 실패_생성_공백() {
+            // Given
+
+            // When & Then
+            assertThatThrownBy(() -> new Round(" "))
+                    .isExactlyInstanceOf(InvalidRoundException.class)
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("라운드 횟수는 null이거나 공백일 수 없습니다.");
         }
     }
 }
