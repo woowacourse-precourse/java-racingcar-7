@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class RacingGameTest {
+    private static final int MOVING_FORWARD = 4;
     private RacingGame racingGame;
 
     @BeforeEach
@@ -24,7 +25,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("자동차 이름 문자열이 쉼표로 구분되어 리스트로 올바르게 생성되었는지 확인")
     public void initializeCarsTest() {
-        List<Car> cars= racingGame.getCars();
+        List<Car> cars = racingGame.getCars();
 
         assertThat(cars).hasSize(3);    // pobi, woni, jun
         assertAll(
@@ -54,8 +55,8 @@ public class RacingGameTest {
 
     @Test
     public void getWinnersTest() {
-        racingGame.getCars().get(0).move(4);    // pobi
-        racingGame.getCars().get(1).move(4);    // woni
+        racingGame.getCars().get(0).move(MOVING_FORWARD);    // pobi
+        racingGame.getCars().get(1).move(MOVING_FORWARD);    // woni
 
         List<String> winners = racingGame.getWinners();
 
@@ -66,8 +67,8 @@ public class RacingGameTest {
     @ValueSource(strings = {"t,t", "pobi,pobi", "ab,th,ab"})
     void checkDuplicateTest(String carNames) {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> new RacingGame(carNames, 2))
-                        .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> new RacingGame(carNames, 2))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -75,8 +76,8 @@ public class RacingGameTest {
     @ValueSource(strings = {",", ",,,", "pobi,"})
     void validateFormatTest(String carNames) {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> new RacingGame(carNames, 2))
-                        .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> new RacingGame(carNames, 2))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 }

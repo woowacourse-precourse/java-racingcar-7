@@ -16,7 +16,7 @@ public class InputView {
     private static int parseNumber(String number) {
         try {
             int num = Integer.parseInt(number);
-            if(num <= 0) {
+            if (num <= 0) {
                 throw new IllegalArgumentException("0 또는 음수는 입력할 수 없습니다: " + num);
             }
             return num;

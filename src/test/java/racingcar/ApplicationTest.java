@@ -37,8 +37,8 @@ class ApplicationTest extends NsTest {
     @ValueSource(strings = {"\n", " ", "h", "0", "-5"})
     void 시도_횟수에_대한_예외_테스트(String tryCount) {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji", tryCount))
-                        .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> runException("pobi,javaji", tryCount))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
