@@ -2,7 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -23,9 +25,28 @@ public class Application {
     private static List<Car> getCarsFromInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
-        return Arrays.stream(input.split(","))
+        List<String> carNames = Arrays.stream(input.split(","))
+                .map(String::trim)  // 공백 제거
+                .collect(Collectors.toList());
+
+        validateCarNames(carNames);
+
+        return carNames.stream()
                 .map(Car::new)  // 각 이름으로 Car 객체를 생성
                 .collect(Collectors.toList());
+    }
+
+    private static void validateCarNames(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>();
+
+        for (String name : carNames) {
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
+            }
+            if (!uniqueNames.add(name)) {
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            }
+        }
     }
 
     private static int getRoundsFromInput() {
