@@ -154,4 +154,5 @@
 
 ### ✔️ 클래스 다이어그램
 
-![week2_class_diagram](https://github.com/user-attachments/assets/1150d265-dc0d-40cb-a385-1ca6cc28bfcb)
+![week2_diagram](https://github.com/user-attachments/assets/6d1a00b7-cd21-4a64-92f1-2800814b242e)
+
