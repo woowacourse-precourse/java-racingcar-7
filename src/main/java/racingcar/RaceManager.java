@@ -4,6 +4,7 @@ import racingcar.policy.MovementPolicy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceManager {
 
@@ -35,18 +36,20 @@ public class RaceManager {
     }
 
     private String getWinner(List<RacingCar> racerList) {
-        int maxScore = 0;
-        List<String> winners = new ArrayList<>();
-        for (RacingCar racer : racerList) {
-            int score = racer.getStatus();
-            if (score > maxScore) {
-                maxScore = score;
-                winners.clear();
-                winners.add(racer.getName());
-            } else if (score == maxScore) {
-                winners.add(racer.getName());
-            }
-        }
+        int bestScore = getBestScore(racerList);
+
+        List<String> winners = racerList.stream()
+                .filter(racer -> racer.getStatus() == bestScore)
+                .map(RacingCar::getName)
+                .collect(Collectors.toList());
+
         return String.join(",", winners);
+    }
+
+    private static int getBestScore(List<RacingCar> racerList) {
+        return racerList.stream()
+                .mapToInt(RacingCar::getStatus)
+                .max()
+                .getAsInt();
     }
 }

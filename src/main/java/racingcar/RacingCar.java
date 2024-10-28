@@ -24,6 +24,6 @@ public class RacingCar {
 
     @Override
     public String toString() {
-        return name + " : " + "-".repeat(Math.max(0, status));
+        return name + " : " + "-".repeat(status);
     }
 }
