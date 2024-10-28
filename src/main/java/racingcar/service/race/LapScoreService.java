@@ -8,11 +8,15 @@ import racingcar.service.constant.ExpressionFormat;
 import racingcar.view.constant.Output;
 
 public class LapScoreService {
+
     private final List<LapScore> lapScores;
 
     public LapScoreService(List<Car> entry) {
         lapScores = new ArrayList<>();
+    }
 
+    private LapScore createScore(Car racingCar) {
+        return new LapScore(racingCar.getName(), carPosition(racingCar));
     }
 
     private String carPosition(Car racingCar) {
