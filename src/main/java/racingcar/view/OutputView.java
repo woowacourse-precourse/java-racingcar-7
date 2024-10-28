@@ -6,7 +6,7 @@ import racingcar.model.dto.CarStatusDto;
 public class OutputView {
 
     private static final String NEXT_LINE = System.lineSeparator();
-    private static final String FORWARD_DASH = "-";
+    private static final String MOVE_DISTANCE = "-";
     private static final String WINNER_DELIMITER = ", ";
     private static final String RACING_RESULT_DELIMITER = " : ";
 
@@ -27,8 +27,8 @@ public class OutputView {
             String name = racingResult.name();
             int position = racingResult.position();
 
-            String dashCount = FORWARD_DASH.repeat(position);
-            System.out.println(name + RACING_RESULT_DELIMITER + dashCount);
+            String distance = MOVE_DISTANCE.repeat(position);
+            System.out.println(name + RACING_RESULT_DELIMITER + distance);
         }
         System.out.println();
     }
