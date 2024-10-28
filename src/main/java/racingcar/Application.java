@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -15,6 +17,7 @@ public class Application {
         validateAttempts(attempts);
 
         List<Car> cars = createCars(carNames);
+        race(cars, attempts);
     }
 
     private static List<String> getCarNames() {
@@ -46,7 +49,6 @@ public class Application {
         }
     }
 
-    // 자동차 객체 생성
     private static List<Car> createCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
@@ -54,8 +56,31 @@ public class Application {
         }
         return cars;
     }
-}
 
+    // 레이스 진행
+    private static void race(List<Car> cars, int attempts) {
+        for (int i = 0; i < attempts; i++) {
+            raceRound(cars);
+            printRoundResults(cars);
+        }
+    }
+
+    // 전진 조건에 따른 각 자동차 이동
+    private static void raceRound(List<Car> cars) {
+        for (Car car : cars) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                car.moveForward();
+            }
+        }
+    }
+
+    private static void printRoundResults(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
+}
 class Car {
     private final String name;
     private int position;
