@@ -24,14 +24,7 @@ public class Car {
     }
 
     public String getInfo() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(name + " : ");
-
-        for (int i = 0; i < distance; i++) {
-            builder.append(POSITION_MARKER);
-        }
-
-        return builder.toString();
+        return String.format("%s : %s", name, POSITION_MARKER.repeat(distance));
     }
 
     public String getName() {
