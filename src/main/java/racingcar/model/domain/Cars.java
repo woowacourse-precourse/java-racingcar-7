@@ -17,7 +17,7 @@ public class Cars {
         this.numberGenerator = numberGenerator;
     }
 
-    public static Cars from(List<String> names) {
+    public static Cars from(List<String> names, NumberGenerator numberGenerator) {
         List<Car> cars = names.stream()
                 .map(Car::from)
                 .toList();
