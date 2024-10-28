@@ -45,7 +45,7 @@ class InputViewTest {
     }
 
     @Test
-    @DisplayName("자동차 이름이 5개 이상인 경우 예외 발생")
+    @DisplayName("자동차 이름의 길이가 5 이상인 경우 예외 발생")
     void 문자열_파싱_예외_테스트1() {
         //given
         //Scanner nextLine에 입력할 값
@@ -60,7 +60,7 @@ class InputViewTest {
     void 문자열_파싱_예외_테스트2() {
         //given
         //Scanner nextLine에 입력할 값
-        System.setIn(new ByteArrayInputStream("asda,asda,asdeq\naas".getBytes()));
+        System.setIn(new ByteArrayInputStream("asda,asd,asdeq\naas".getBytes()));
         //when
         //then
         assertThatThrownBy(inputView::readUserInput).isInstanceOf(InvalidPlayCountException.class);
