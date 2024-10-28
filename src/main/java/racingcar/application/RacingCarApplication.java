@@ -19,5 +19,8 @@ public class RacingCarApplication {
         inputView,
         outputView
     );
+
+    racingController.initialize();
+    racingController.startRace();
   }
 }
