@@ -1,9 +1,8 @@
-package racingcar.common;
+package racingcar.common.config;
 
 import racingcar.application.implement.RaceHistoryManager;
 import racingcar.application.implement.CarRaceWinnerIdentifier;
 import racingcar.application.implement.RaceWinnerIdentifier;
-import racingcar.application.implement.WinnerIdentifier;
 import racingcar.common.support.RacingCarConverter;
 import racingcar.persistence.RacingCarHistoryRepository;
 import racingcar.persistence.InMemoryCarRacerRepository;

@@ -1,4 +1,4 @@
-package racingcar.common;
+package racingcar.common.constant;
 
 public final class ExceptionMessage {
 

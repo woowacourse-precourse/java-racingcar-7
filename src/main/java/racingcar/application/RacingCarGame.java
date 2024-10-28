@@ -5,7 +5,7 @@ import racingcar.application.service.RacingManager;
 import racingcar.domain.CarRacer;
 import racingcar.common.support.ObjectConverter;
 import racingcar.view.ApplicationView;
-import racingcar.vo.RaceResult;
+import racingcar.application.vo.RaceResult;
 
 public class RacingCarGame implements Game {
 
@@ -22,14 +22,14 @@ public class RacingCarGame implements Game {
 
     @Override
     public void execute() {
-        registerRacingCars();
+        registerCarRacers();
 
         playRacingCarGame();
 
         printRaceResult();
     }
 
-    private void registerRacingCars() {
+    private void registerCarRacers() {
         String responseCars = applicationView.requestInputCars();
         List<CarRacer> carRacers = objectConverter.toObjects(responseCars);
         racingManager.registerAll(carRacers);

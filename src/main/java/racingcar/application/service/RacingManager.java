@@ -2,7 +2,7 @@ package racingcar.application.service;
 
 import java.util.List;
 import racingcar.domain.Racer;
-import racingcar.vo.RaceResult;
+import racingcar.application.vo.RaceResult;
 
 public interface RacingManager<T extends Racer> {
 

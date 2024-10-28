@@ -7,7 +7,7 @@ import racingcar.application.implement.RaceWinnerIdentifier;
 import racingcar.persistence.CarRacerRepository;
 import racingcar.application.implement.RaceStarter;
 import racingcar.domain.CarRacer;
-import racingcar.vo.RaceResult;
+import racingcar.application.vo.RaceResult;
 
 public class RacingCarManager implements RacingManager<CarRacer> {
 

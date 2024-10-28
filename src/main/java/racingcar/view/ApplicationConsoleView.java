@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import static racingcar.common.ConsoleMessage.*;
-import static racingcar.common.FormatConstants.*;
+import static racingcar.common.constant.ConsoleMessage.*;
+import static racingcar.common.constant.FormatConstants.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;

@@ -1,7 +1,6 @@
-package racingcar.vo;
+package racingcar.application.vo;
 
 import java.util.List;
-import racingcar.domain.CarRacer;
 
 public record RaceResult<T>(
         List<T> winners,

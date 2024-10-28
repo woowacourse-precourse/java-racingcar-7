@@ -1,9 +1,9 @@
 package racingcar.domain;
 
-import static racingcar.common.ExceptionMessage.*;
-import static racingcar.common.RacingCarConstant.*;
-import static racingcar.common.RacingCarConstant.DEFAULT_STATE;
-import static racingcar.common.RacingCarConstant.FORWARD_BAR;
+import static racingcar.common.constant.ExceptionMessage.*;
+import static racingcar.common.constant.RacingCarConstant.*;
+import static racingcar.common.constant.RacingCarConstant.DEFAULT_STATE;
+import static racingcar.common.constant.RacingCarConstant.FORWARD_BAR;
 
 public class CarRacer extends Racer {
 

@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.application.Game;
-import racingcar.common.GameConfig;
+import racingcar.common.config.GameConfig;
 
 public class Application {
     public static void main(String[] args) {
