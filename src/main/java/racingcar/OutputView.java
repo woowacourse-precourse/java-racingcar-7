@@ -16,6 +16,6 @@ public class OutputView {
         String winnerName = winner.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(DELIMITER));
-        System.out.printf(WINNER_RESULT_FORMAT, winner);
+        System.out.printf(WINNER_RESULT_FORMAT, winnerName);
     }
 }
