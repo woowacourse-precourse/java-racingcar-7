@@ -1,6 +1,7 @@
 package racingcar.model.car;
 
 import java.util.List;
+import racingcar.model.race.strategy.MoveStrategy;
 
 public class Cars {
 
@@ -10,6 +11,14 @@ public class Cars {
         cars = carsNames.stream()
                 .map(Car::new)
                 .toList();
+    }
+
+    public void moveCarsIfAble(MoveStrategy strategy) {
+        for (Car car : cars) {
+            if (strategy.canMove()) {
+                car.moveForward();
+            }
+        }
     }
 
     public List<Car> getCars() {

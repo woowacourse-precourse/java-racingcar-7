@@ -12,25 +12,32 @@ import racingcar.model.car.Car;
 class CarRaceRecorderTest {
 
     @Test
-    @DisplayName("현재 자동차의 위치를 기록할 수 있다.")
+    @DisplayName("현재 자동차의 이름과 위치를 반환할 수 있다.")
     void should_RecordRoundRaceRecords_When_CarsAreProvided() {
         Car car1 = new Car("pobi");
-        moveCarForward(car1, 3);
         Car car2 = new Car("woni");
-        moveCarForward(car2, 5);
         List<Car> cars = List.of(car1, car2);
 
         CarRaceRecorder raceRecorder = new CarRaceRecorder();
         List<RoundRaceRecord> results = raceRecorder.recordRound(cars);
 
         assertThat(results).hasSize(2);
-        assertThat(results.get(0)).isEqualTo(new RoundRaceRecord("pobi", 3));
-        assertThat(results.get(1)).isEqualTo(new RoundRaceRecord("woni", 5));
+        assertThat(results.get(0)).isEqualTo(new RoundRaceRecord("pobi", 0));
+        assertThat(results.get(1)).isEqualTo(new RoundRaceRecord("woni", 0));
     }
 
-    private void moveCarForward(Car car, int repeat) {
-        for (int i = 0; i < repeat; i++) {
-            car.moveForward();
-        }
+    @Test
+    @DisplayName("우승한 자동차의 이름 목록을 반환할 수 있다.")
+    void should_RecordRoundRaceRecords_When_CarsAreProvided2() {
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("woni");
+        List<Car> cars = List.of(car1, car2);
+
+        CarRaceRecorder raceRecorder = new CarRaceRecorder();
+        List<String> results = raceRecorder.getWinnerCarNames(cars);
+
+        assertThat(results).hasSize(2);
+        assertThat(results.get(0)).isEqualTo("pobi");
+        assertThat(results.get(1)).isEqualTo("woni");
     }
 }

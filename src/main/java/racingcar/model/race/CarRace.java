@@ -4,7 +4,6 @@ import java.util.List;
 import racingcar.dto.RaceRegistrationForm;
 import racingcar.dto.RoundRaceRecord;
 import racingcar.model.car.Cars;
-import racingcar.model.car.Car;
 import racingcar.model.race.strategy.MoveStrategy;
 
 public class CarRace {
@@ -25,16 +24,8 @@ public class CarRace {
     }
 
     public List<RoundRaceRecord> startRound() {
-        moveCarsIfAble();
+        cars.moveCarsIfAble(moveStrategy);
         return getRoundRaceRecord();
-    }
-
-    private void moveCarsIfAble() {
-        for (Car car : cars.getCars()) {
-            if (moveStrategy.canMove()) {
-                car.moveForward();
-            }
-        }
     }
 
     private List<RoundRaceRecord> getRoundRaceRecord() {

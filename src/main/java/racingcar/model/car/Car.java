@@ -12,7 +12,7 @@ public class Car {
         this.position = INIT_POSITION;
     }
 
-    public void moveForward() {
+    protected void moveForward() {
         position++;
     }
 
