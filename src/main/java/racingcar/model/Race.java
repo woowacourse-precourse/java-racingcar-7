@@ -66,7 +66,7 @@ public class Race {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION_MSG);
         }
-        if (round <= 0) {
+        if (round <= 0 || round > 10_000) {
             throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION_MSG);
         }
     }
