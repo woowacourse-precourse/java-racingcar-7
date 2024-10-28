@@ -10,22 +10,20 @@ import racingcar.view.OutView;
 
 public class RacingController {
 
-    private final InputView inputView;
     private final CarService carService;
     private final RacingService racingService;
 
-    public RacingController(InputView inputView, CarService carService, RacingService racingService) {
-        this.inputView = inputView;
+    public RacingController(CarService carService, RacingService racingService) {
         this.carService = carService;
         this.racingService = racingService;
     }
 
     public void startRacing() {
-        String carNames = inputView.inputCarNames();
+        String carNames = InputView.inputCarNames();
 
         HashMap<String, Integer> cars = carService.splitCarNames(carNames);
 
-        String inputAttemptCount = inputView.inputAttemptCount();
+        String inputAttemptCount = InputView.inputAttemptCount();
 
         int attemptCount = racingService.parseAttemptCount(inputAttemptCount);
 
