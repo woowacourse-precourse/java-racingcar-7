@@ -58,6 +58,14 @@ public class RacingCarService {
         }
     }
 
+
+    public void startRace(List<CarDTO> cars, int roundCount) {
+        for (int i = 0; i < roundCount; i++) {
+            playOneRound(cars);
+            view.showRoundResult(cars);
+        }
+    }
+
     //랜덤 값에 따라 전진
     private boolean isCarMoveForward() {
         int randomValue = pickNumberInRange(0, 9);
