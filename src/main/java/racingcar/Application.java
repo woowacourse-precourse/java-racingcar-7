@@ -9,10 +9,17 @@ public class Application {
         String carNameText;
         int tryNum;
 
+        // 입력받기
         System.out.println("경주할 자동차 이름을 입력하세요.");
         carNameText = Console.readLine();
         System.out.println("횟수를 입력하세요.");
         tryNum = Integer.parseInt(Console.readLine());
+
+        // 배열에 저장
+        String[] carName = carNameText.split(",");
+        int[] move = new int[carName.length];
+
+
     }
 
 
