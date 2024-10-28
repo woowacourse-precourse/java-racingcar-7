@@ -22,8 +22,20 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class RaceViewTest extends NsTest {
 
     @Test
-    void 출력_포맷_확인() {
+    void displayInputMessage() {
         //given
+        //when
+        String carNameMessage = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+        String attemptCountMessage = "시도할 횟수는 몇 회인가요?";
+        //then
+        assertSimpleTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains(carNameMessage, attemptCountMessage);
+                }
+        );
+    }
+
     @ParameterizedTest
     @DisplayName("진행 과정 출력 테스트")
     @MethodSource("provideRaceProgress")
