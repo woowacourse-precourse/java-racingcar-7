@@ -1,18 +1,17 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.RacingGame;
-import racingcar.utils.InputValidator;
+import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RacingGameController {
 
     public void run() {
-        String[] carNames = InputValidator.validateCarNames(Console.readLine());
-        int tryCount = InputValidator.validateTryCount(Console.readLine());
+        String[] carNames = InputView.getCarNames();
+        int tryCount = InputView.getTryCount();
 
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
@@ -29,3 +28,4 @@ public class RacingGameController {
         ResultView.printWinners(winners);
     }
 }
+
