@@ -12,18 +12,16 @@ public class OutputView {
 
     public void printRacingResponse(RacingResponseDto racingResponseDto) {
         clearStringBuilder();
-        appendRoundResultStartMessage();
+
         appendAllRoundResults(racingResponseDto.roundResults());
         appendWinners(racingResponseDto.winners());
+
         System.out.println(stringBuilder.toString());
         clearStringBuilder();
     }
 
-    private void appendRoundResultStartMessage() {
-        stringBuilder.append(ROUND_RESULT_START_MESSAGE).append("\n");
-    }
-
     private void appendAllRoundResults(List<RoundResult> roundResults) {
+        stringBuilder.append(ROUND_RESULT_START_MESSAGE).append("\n");
         for (RoundResult roundResult : roundResults) {
             appendRoundResult(roundResult);
         }
@@ -31,7 +29,11 @@ public class OutputView {
 
     private void appendRoundResult(RoundResult roundResult) {
         for (CarRecord record : roundResult.getRoundResult()) {
-            appendCarResult(record);
+            stringBuilder
+                    .append(record.getCarName())
+                    .append(" : ")
+                    .append(buildDistanceGraph(record.getMovedDistance()))
+                    .append("\n");
         }
         stringBuilder.append("\n");
     }
@@ -39,13 +41,6 @@ public class OutputView {
     private void appendWinners(List<String> winners) {
         stringBuilder.append("최종 우승자 : ")
                 .append(joinWinners(winners))
-                .append("\n");
-    }
-
-    private void appendCarResult(CarRecord record) {
-        stringBuilder.append(record.getCarName())
-                .append(" : ")
-                .append(buildDistanceGraph(record.getMovedDistance()))
                 .append("\n");
     }
 
