@@ -60,14 +60,7 @@ public class Application {
         // 9. 가장 멀리 간 거리를 측정해 최종 우승자 선발
         List<String> winners = RacingController.findWinners(carNames, carPositions);
 
-        // 11. 최종 우승자의 수에 따라 예시에 맞게 출력
-        String result = "최종 우승자 : ";
-        if (winners.size() == 1) {
-            result += winners.get(0);
-        } else {
-            result += String.join(", ", winners);
-        }
-
-        System.out.println(result);
+        // 10. 최종 우승자 출력
+        OutputView.finalResult(winners);
     }
 }

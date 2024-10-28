@@ -16,4 +16,16 @@ public class OutputView {
         }
         System.out.println("");
     }
+
+    public static void finalResult(List<String> winners) {
+        String result = "최종 우승자 : ";
+
+        if (winners.size() == 1) {
+            result += winners.get(0);
+        } else {
+            result += String.join(", ", winners);
+        }
+
+        System.out.println(result);
+    }
 }
