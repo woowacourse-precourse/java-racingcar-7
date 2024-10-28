@@ -1,5 +1,6 @@
 package racingcar;
 
+import javax.swing.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,9 +28,18 @@ public class Exception {
         }
     }
 
-    public void except3(int input) {
-        if (input<1){
-            throw new IllegalArgumentException("Count cannot be less than 1");
+    public void except3(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("Count cannot be empty or whitespace");
+        }
+
+        try {
+            int count = Integer.parseInt(input);
+            if (count < 1) {
+                throw new IllegalArgumentException("Count cannot be less than 1");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Count must be a numeric value", e);
         }
     }
 }
