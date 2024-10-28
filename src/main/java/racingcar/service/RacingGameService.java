@@ -27,6 +27,7 @@ public class RacingGameService {
 
         return maxPosition;
     }
+
     public List<String> getWinners() {
         int maxPosition = getMaxPosition();
         List<String> winners = new ArrayList<>();
@@ -36,6 +37,7 @@ public class RacingGameService {
                 winners.add(car.getName());
             }
         }
+        return winners;
     }
 
     public void initGame(List<String> carNames) {
