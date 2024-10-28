@@ -26,7 +26,7 @@ public class OutputView {
         System.out.println("최종 우승자 : " + winner);
     }
 
-    public void printEmptyLine(){
+    public void printEmptyLine() {
         System.out.println();
     }
 }
