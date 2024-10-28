@@ -46,9 +46,16 @@ public class RacingGameController {
 
     private void checkFinishedGame(RacingGame game) {
         while (!game.isGameFinished()) {
-            game.playOneRound();
-            RacingGameState roundState = game.getGameState();
-            outputView.printRoundResult(roundState.getRoundResults());
+            playAndDisplayRound(game);
         }
+    }
+
+    private void playAndDisplayRound(RacingGame game) {
+        game.playOneRound();
+        displayRoundState(game.getGameState());
+    }
+
+    private void displayRoundState(RacingGameState state) {
+        outputView.printRoundResult(state.getRoundResults());
     }
 }
