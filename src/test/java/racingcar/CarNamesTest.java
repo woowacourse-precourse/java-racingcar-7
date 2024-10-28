@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 
 class CarNamesTest {
@@ -26,5 +25,19 @@ class CarNamesTest {
             Application.getCarNames(null);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("경주할 자동차가 없습니다.");
+    }
+
+    @Test
+    void CarNamesLengthTest() {
+        assertThatThrownBy(() -> {
+            Application.carNamesLength(List.of("pobbii"));
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 최대 5자입니다.");
+
+        List<String> validCarNames = List.of("i", "wonii", "jun");
+
+        assertThatNoException().isThrownBy(() -> {
+            Application.carNamesLength(validCarNames);
+        });
     }
 }
