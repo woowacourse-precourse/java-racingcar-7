@@ -21,13 +21,17 @@ public class RaceController {
 
         Cars cars = new Cars(Cars.makeCarList(userInput));
 
+        startRace(attemptsNum, cars);
+
+        List<String> winnersName = cars.findWinners();
+        outputView.showWinners(winnersName);
+    }
+
+    private void startRace(int attemptsNum, Cars cars) {
         outputView.showExecuteMessage();
         for (int attempt = 0; attempt < attemptsNum; attempt++) {
             cars.forwardWithRandomCondition();
             outputView.showStatus(cars);
         }
-
-        List<String> winnersName = cars.findWinners();
-        outputView.showWinners(winnersName);
     }
 }
