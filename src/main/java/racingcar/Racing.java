@@ -19,6 +19,8 @@ public class Racing {
             presentStatus(cars);
             System.out.println();
         }
+
+        printWinners(cars);
     }
 
     public void forwardCondition(List<Car> cars) {
@@ -42,5 +44,27 @@ public class Racing {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public void printWinners(List<Car> cars) {
+        int maxMoveCount = findMaxMoveCount(cars);
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getMoveCount() == maxMoveCount) {
+                winners.add(car.getName());
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private int findMaxMoveCount(List<Car> cars) {
+        int maxMoveCount = 0;
+        for (Car car : cars) {
+            if (car.getMoveCount() > maxMoveCount) {
+                maxMoveCount = car.getMoveCount();
+            }
+        }
+        return maxMoveCount;
     }
 }
