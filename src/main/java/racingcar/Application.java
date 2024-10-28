@@ -6,10 +6,9 @@ import java.util.NoSuchElementException;
 
 public class Application {
     public static void main(String[] args) {
-        String carNames = promptCarName();
-        CarNameParser carNameParser = new CarNameParser(carNames);
-        int raceRound = promptRaceRound();
-        RaceManager raceManager = new RaceManager(carNameParser.getCarNames(), raceRound);
+        CarNameParser carNameParser = new CarNameParser(promptCarName());
+        RaceManager raceManager = new RaceManager(carNameParser.getCarNames(), promptRaceRound());
+        RaceWinnerDeterminer raceWinnerDeterminer = new RaceWinnerDeterminer(carNameParser.getCarNames(), raceManager.getCurrentScores());
     }
 
     private static String promptCarName() {

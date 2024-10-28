@@ -7,8 +7,8 @@ import java.util.List;
 public class RaceManager {
     private final List<String> carNames;
     private final int raceRound;
-    private String[] currentRaceImage;
-    private int[] currentScores;
+    private final String[] currentRaceImage;
+    private final int[] currentScores;
     private int currentRound;
 
     public RaceManager(List<String> carNames, int raceRound) {
