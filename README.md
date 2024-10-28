@@ -12,7 +12,7 @@
 - [ ] 예외 처리 (IllegalArgumentException)
   - [ ] 자동차 이름 입력
     - [ ] 빈 문자열 또는 null
+    - [ ] 5자 초과
   - [ ] 시도 횟수 입력
     - [ ] 문자 입력
     - [ ] 0 또는 null
-    - [ ] Integer 최댓값 초과

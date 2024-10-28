@@ -21,26 +21,25 @@ public class RacingController {
     }
 
     public void run() {
-        List<String> inputStringList = requestInputStringList();
-        List<Car> carList = getCarList(stringParser.parseCarNameString(inputStringList.getFirst()));
-        int tryCount = stringParser.parseTryCountString(inputStringList.get(1));
+        List<Car> carList = getCarList(requestCarNameInputList());
+        int tryCount = requestTryCountInput();
 
         Race race = new Race(outputView, carList, tryCount);
         race.startRace();
     }
 
-    private List<String> requestInputStringList() {
-        List<String> inputStringList = new ArrayList<>();
-
+    private List<String> requestCarNameInputList() {
         outputView.printCarNameInputRequest();
         final String carNameString = inputView.readCarName();
+
+        return stringParser.parseCarNameString(carNameString);
+    }
+
+    private int requestTryCountInput() {
         outputView.printTryCountInputRequest();
         final String tryCountString = inputView.readTryCount();
 
-        inputStringList.add(carNameString);
-        inputStringList.add(tryCountString);
-
-        return inputStringList;
+        return stringParser.parseTryCountString(tryCountString);
     }
 
     private List<Car> getCarList(List<String> inputStringList) {
