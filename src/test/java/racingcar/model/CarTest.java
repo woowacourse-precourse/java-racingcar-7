@@ -9,8 +9,7 @@ class CarTest {
     @DisplayName("자동차 객체를 생성할 수 있다.")
     void createCar() {
         // given, when
-        Name name = new Name("우테코");
-        Car car = new Car(name);
+        Car car = createSingleCar();
 
         // then
         Assertions.assertThat(car).isNotNull();
@@ -33,8 +32,7 @@ class CarTest {
     @DisplayName("자동차 객체를 이동시킨다.")
     void moveCar() {
         // given
-        Name name = new Name("우테코");
-        Car car = new Car(name);
+        Car car = createSingleCar();
 
         // when
         car.move(true);
@@ -57,5 +55,11 @@ class CarTest {
 
         // then
         Assertions.assertThat(car1.hasBiggerPositionThan(car2)).isTrue();
+    }
+
+    private static Car createSingleCar() {
+        Name name = new Name("우테코");
+        Car car = new Car(name);
+        return car;
     }
 }
