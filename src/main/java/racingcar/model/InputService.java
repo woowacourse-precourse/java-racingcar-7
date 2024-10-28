@@ -9,8 +9,11 @@ import java.util.List;
 public class InputService {
     private List<String> carNameList;
 
+    public List<String> getCarNameList() {
+        return carNameList;
+    }
 
-    public List<String> carNamesValidation(String carNames) {
+    public List<String> carNamesValidation(String carNames) throws IllegalArgumentException {
         if (carNames.isEmpty()) {
             String request = InputView.request(InputView.CAR_NAME);
             carNamesValidation(request);
@@ -32,11 +35,11 @@ public class InputService {
 
 
     private void splitCarNames(String carNames) {
-        carNameList = new LinkedList<>(Arrays.asList(carNames.split(",")));
+        this.carNameList = new LinkedList<>(Arrays.asList(carNames.split(",", -1)));
     }
 
 
-    private List<String> carNameLengthCheck() {
+    private List<String> carNameLengthCheck() throws IllegalArgumentException {
         carNameList.forEach(name -> {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("이름이 5글자가 넘었습니다.");
@@ -56,7 +59,7 @@ public class InputService {
     }
 
 
-    private int gameRoundsRequest() {
+    private int gameRoundsRequest()  {
         String request = InputView.request("1 ~ 5000 정수 입력만 가능합니다." + InputView.ROUNDS);
         return gameRoundsValidation(request);
     }
@@ -68,6 +71,7 @@ public class InputService {
         }
         return gameRounds;
     }
+
 
 }
 
