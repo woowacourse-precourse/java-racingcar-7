@@ -7,6 +7,7 @@ public class Car {
     private final String name;
     private int position = 0;
     private final int MOVE_STANDARD = 4;
+    private final int MAX_CAR_NAME_LENGTH = 5;
 
     public Car(String name) {
         validateName(name);
@@ -20,7 +21,7 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name.trim().isEmpty() || name.length() > 5 ) {
+        if (name.trim().isEmpty() || name.length() > MAX_CAR_NAME_LENGTH ) {
             throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다");
         }
     }
