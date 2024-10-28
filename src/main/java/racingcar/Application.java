@@ -30,11 +30,18 @@ public class Application {
             //게임 실행
             for (int i = 0; i <trial; i++) {
                 playOneRound(cars);
-                //매판 결과값
+                playResult(cars);
             }
             winner(cars);
         }catch (IllegalArgumentException e){
             System.out.println("잘못된 입력입니다: " + e.getMessage());
+        }
+        //매판 결과값
+        private static void playResult(List<Car> cars){
+            for (Car car : cars) {
+                System.out.println(car.getName() + " : " + car.exchangeDistance());
+            }
+            System.out.println();
         }
 
         //전진 멈추는 방법(4이상일때만)

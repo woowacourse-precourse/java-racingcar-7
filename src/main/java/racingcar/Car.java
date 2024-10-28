@@ -19,7 +19,7 @@ public class Car {
         return distance;
     }
     //거리 -치환
-    public String exchangeDistance(int distance) {
+    public String exchangeDistance() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < distance; i++) {
             sb.append("-");
