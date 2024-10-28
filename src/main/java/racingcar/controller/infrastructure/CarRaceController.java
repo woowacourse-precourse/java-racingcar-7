@@ -24,14 +24,13 @@ public class CarRaceController implements RaceController {
 
     @Override
     public void run() {
-        Race race = createRacing();
+        Race race = createRace();
         playRace(race);
         announce(race);
     }
 
     @Override
-    // toNames(String) splitNames
-    public List<String> process(String in) {
+    public List<String> splitToNames(String in) {
         List<String> split = Splitter.split(in);
         for (String s : split) {
             validateNameLength(s);
@@ -58,11 +57,10 @@ public class CarRaceController implements RaceController {
         return inputView.inputCarName();
     }
 
-    // createRace
-    private Race createRacing() {
+    private Race createRace() {
         String carNamesInput = requestCarNames();
         int tryTimes = requestTryTimes();
-        List<String> carNames = process(carNamesInput);
+        List<String> carNames = splitToNames(carNamesInput);
         return CarRace.init(carNames, tryTimes, new RaceRule());
     }
 

@@ -5,5 +5,5 @@ import java.util.List;
 public interface RaceController {
     void run();
 
-    List<String> process(String input);
+    List<String> splitToNames(String input);
 }
