@@ -1,15 +1,15 @@
 package racingcar.model;
 
-import java.util.List;
+import java.util.Collection;
 import racingcar.message.ErrorMessage;
 import racingcar.exception.CarNameException;
 import racingcar.util.MoveStrategy;
 
 public class RacingCars implements Cars {
     private final MoveStrategy moveStrategy;
-    private final List<Car> cars;
+    private final Collection<Car> cars;
 
-    public RacingCars(List<Car> cars, MoveStrategy moveStrategy) {
+    public RacingCars(Collection<Car> cars, MoveStrategy moveStrategy) {
         validateEmpty(cars);
         this.cars = cars;
         this.moveStrategy = moveStrategy;
@@ -25,11 +25,11 @@ public class RacingCars implements Cars {
     }
 
     @Override
-    public List<Car> getCars() {
+    public Collection<Car> getCars() {
         return cars;
     }
 
-    private void validateEmpty(List<Car> cars) {
+    private void validateEmpty(Collection<Car> cars) {
         if (cars == null || cars.isEmpty()) {
             throw new CarNameException(ErrorMessage.EMPTY_INPUT.getMessage());
         }

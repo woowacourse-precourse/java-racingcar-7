@@ -1,9 +1,9 @@
 package racingcar.model;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface Cars {
     void moveCars();
-    List<Car> getCars();
+    Collection<Car> getCars();
 }
 

@@ -2,10 +2,10 @@ package racingcar.model;
 
 import racingcar.message.ErrorMessage;
 import racingcar.exception.CarNameException;
+import racingcar.message.SeparatorPattern;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
-    private static final String COMMA = ",";
     private final String name;
     private int position = 0;
 
@@ -45,7 +45,7 @@ public class Car {
     }
 
     private void validateComma(String name) {
-        if (name.contains(COMMA)) {
+        if (name.contains(SeparatorPattern.COMMA.getPattern())) {
             throw new CarNameException(ErrorMessage.INVALID_COMMA_INPUT.getMessage());
         }
     }

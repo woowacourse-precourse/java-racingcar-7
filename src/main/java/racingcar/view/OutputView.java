@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import java.util.List;
+import java.util.Collection;
 import racingcar.message.OutputMessage;
 import racingcar.message.SeparatorPattern;
 import racingcar.model.RacingCars;
@@ -21,7 +21,7 @@ public class OutputView {
         System.out.println(name + SeparatorPattern.RESULT_SEPARATOR.getPattern() + progress);
     }
 
-    public void printWinners(List<String> names) {
+    public void printWinners(Collection<String> names) {
         if (names == null || names.isEmpty()) {
             System.out.println(OutputMessage.NO_WINNER.getMessage());
             return;
