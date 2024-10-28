@@ -69,6 +69,11 @@ public class Racing {
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
+    /**
+     * 각 객체로부터 최대 이동 수 구하기
+     * @param cars (List<Car>)
+     * @return maxMoveCount (int)
+     */
     private int findMaxMoveCount(List<Car> cars) {
         int maxMoveCount = 0;
 
