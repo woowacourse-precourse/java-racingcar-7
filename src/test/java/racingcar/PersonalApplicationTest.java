@@ -9,22 +9,22 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 public class PersonalApplicationTest {
 
-    private static InitMapClass initMapClass;
+    private static CarInitializer carInitializer;
 
     @ParameterizedTest
     @CsvFileSource(resources = "/splitCarNameStringTestFile.csv")
     void 자동차_이름_테스트(String inputValue, String expected) {
-        List<String> nameList = initMapClass.splitCarNameString(inputValue);
+        List<String> nameList = carInitializer.splitCarNameString(inputValue);
         Assertions.assertEquals(expected, nameList.toString());
     }
 
     @BeforeAll
     static void setup() {
-        initMapClass = new InitMapClass();
+        carInitializer = new CarInitializer();
     }
 
     @AfterAll
     static void afterAll() {
-        initMapClass = null; // 참조 해제를 통한 GC 대상 지정.
+        carInitializer = null; // 참조 해제를 통한 GC 대상 지정.
     }
 }

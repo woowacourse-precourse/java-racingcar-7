@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Application {
     private static final ProgressCarRace progressCarRace = new ProgressCarRace();
-    private static final InitMapClass initMapClass = new InitMapClass();
+    private static final CarInitializer carInitializer = new CarInitializer();
     private static Map<String, Integer> stateMap;
     private static int progressCount = 0;
     public static void main(String[] args) {
@@ -25,8 +25,8 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         String InputCarNames = Console.readLine();
-        List<String> nameList = initMapClass.splitCarNameString(InputCarNames);
-        stateMap = initMapClass.setStateMap(nameList);
+        List<String> nameList = carInitializer.splitCarNameString(InputCarNames);
+        stateMap = carInitializer.setStateMap(nameList);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         progressCount = Integer.parseInt(Console.readLine());

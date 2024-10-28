@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class InitMapClass {
+public class CarInitializer {
     private static final String DELIMITER = ",";
     private static final int NAME_LENGTH_LIMIT = 5;
 
