@@ -1,11 +1,12 @@
 package racingcar;
 
+import static racingcar.RacingProcess.carNumber;
+import static racingcar.RacingProcess.racingProcess;
+import static racingcar.ResultPrint.resultPrint;
+import static racingcar.WinnerPrint.winnerPrint;
+
 import java.util.Arrays;
 import java.util.List;
-
-import static racingcar.RacingProcess.*;
-import static racingcar.ResultPrint.*;
-import static racingcar.WinnerPrint.*;
 
 public class Application {
 
@@ -23,7 +24,7 @@ public class Application {
         racingNumber = RacingNum.numValid(numberInput);
 
         //경기 결과 저장 배열 초기화
-        processResult= new String[carNumber];
+        processResult = new String[carNumber];
         Arrays.fill(processResult, "");
 
         moveCount = new int[carNumber];

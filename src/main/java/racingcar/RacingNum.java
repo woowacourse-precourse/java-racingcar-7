@@ -1,7 +1,7 @@
 package racingcar;
 
 public class RacingNum {
-    public static int numValid (String inputNumber){
+    public static int numValid(String inputNumber) {
         try {
 
             int racingNumber = Integer.parseInt(inputNumber);

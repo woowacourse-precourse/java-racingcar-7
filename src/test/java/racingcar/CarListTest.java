@@ -1,9 +1,10 @@
 package racingcar;
 
-import java.util.List;
-import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class CarListTest {
 
@@ -48,7 +49,7 @@ class CarListTest {
         List<String> result = CarList.carList(input);
 
         // Then
-        assertThat(result).containsExactly("pobii", "wonii", "javai","ja va");
+        assertThat(result).containsExactly("pobii", "wonii", "javai", "ja va");
     }
 
     @Test
