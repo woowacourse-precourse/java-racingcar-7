@@ -24,11 +24,42 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 길이_예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 문자열_공백포함_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" pobi,java", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("po bi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi ,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("d  , javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,    ,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, javaji ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
     }
 
     @Override
