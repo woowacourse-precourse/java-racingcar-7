@@ -9,7 +9,7 @@ public class Application {
         InputParser inputParser = new InputParser();
 
         String inputCarNames = inputView.readCarNames();
-        ArrayList<String> carNames = inputParser.parseCarNames(inputCarNames);
+        ArrayList<Car> carNames = inputParser.parseCarNames(inputCarNames);
         String inputTryCount = inputView.readTryCount();
         int tryCount = inputParser.parseTryCount(inputTryCount);
     }
