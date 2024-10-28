@@ -17,11 +17,15 @@ public class RaceService {
 	private final AttemptNumber attemptNumber;
 
 	public RaceService(Delimiter delimiter, String carNames, int attemptNumber) {
-		Parse parse = new Parse(delimiter);
-		List<Car> cars = parse.parseToCar(carNames);
+		List<Car> cars = getParseCar(delimiter, carNames);
 
 		this.race = new Race(cars);
 		this.attemptNumber = new AttemptNumber(attemptNumber);
+	}
+
+	private static List<Car> getParseCar(Delimiter delimiter, String carNames) {
+		Parse parse = new Parse(delimiter);
+		return parse.parseToCar(carNames);
 	}
 
 	public void runRace() {
