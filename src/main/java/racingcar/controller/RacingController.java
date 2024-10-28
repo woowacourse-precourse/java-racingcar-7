@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.service.RacingService;
+import racingcar.validation.AttemptCountValidator;
 import racingcar.validation.CarNameValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -19,15 +20,15 @@ public class RacingController {
         CarNameValidator.validateCarNamesCount(carNames);
         CarNameValidator.validateCarNameLength(carNames);
 
-        int totalCarCounts = carNames.size();
-
         OutputView.printInputAttemptCountMessage();
         String attemptInput = InputView.inputAttemptCount();
+        AttemptCountValidator.validateInteger(attemptInput);
         int attemptCount = Integer.parseInt(attemptInput);
-
+        AttemptCountValidator.validateNonNegative(attemptCount);
 
         OutputView.printExecutionResultMessage();
 
+        int totalCarCounts = carNames.size();
         List<Integer> moveCounts = new ArrayList<>(Collections.nCopies(totalCarCounts, 0));
         while (attemptCount-- > 0) {
             RacingService.moveOrStop(moveCounts);
