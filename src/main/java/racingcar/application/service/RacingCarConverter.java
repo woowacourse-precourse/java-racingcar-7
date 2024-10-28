@@ -1,7 +1,9 @@
-package racingcar;
+package racingcar.application.service;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.RacingCar;
+import racingcar.application.Converter;
 
 public class RacingCarConverter implements Converter<RacingCar> {
 

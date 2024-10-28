@@ -1,4 +1,15 @@
-package racingcar;
+package racingcar.common;
+
+import racingcar.persistence.InMemoryRacingCarRepository;
+import racingcar.application.Converter;
+import racingcar.application.Game;
+import racingcar.RacingCar;
+import racingcar.application.service.RacingCarConverter;
+import racingcar.application.service.RacingCarGame;
+import racingcar.application.service.RacingCarManager;
+import racingcar.application.RacingManager;
+import racingcar.view.ApplicationConsoleView;
+import racingcar.view.ApplicationView;
 
 public class GameConfig {
 
@@ -21,7 +32,7 @@ public class GameConfig {
     }
 
     private RacingManager<RacingCar> racingManager() {
-        return new RacingCarManager(CarRaceParticipants.getInstance());
+        return new RacingCarManager(InMemoryRacingCarRepository.getInstance());
     }
 
     private Converter<RacingCar> converter() {

@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.racing.Racer;
+
 public class RacingCar extends Racer {
 
     private String name;
