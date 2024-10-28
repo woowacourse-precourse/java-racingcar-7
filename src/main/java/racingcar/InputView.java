@@ -12,4 +12,15 @@ public class InputView {
         List<String> carNames = Arrays.asList(input.split(","));
         return carNames;
     }
+
+	public static int readTrialCount() {
+		System.out.println("시도할 횟수는 몇 회인가요?");
+		String input = Console.readLine();
+		try {
+			int trialCount = Integer.parseInt(input);
+			return trialCount;
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+		}
+	}
 }
