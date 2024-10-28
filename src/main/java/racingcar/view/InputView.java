@@ -33,7 +33,11 @@ public class InputView {
     public int readTryCount() {
         System.out.println(READ_TRY_COUNT_MESSAGE);
         String buffer = readInput();
-        return Integer.parseInt(buffer);
+        try{
+            return Integer.parseInt(buffer);
+        } catch(NumberFormatException e) {
+            throw new NumberFormatException("[ERROR] 유효한 숫자를 입력해주세요");
+        }
     }
     
     private String readInput() {
