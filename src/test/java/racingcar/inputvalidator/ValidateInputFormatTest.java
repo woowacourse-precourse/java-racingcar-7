@@ -2,10 +2,18 @@ package racingcar.inputvalidator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.InputValidator;
 
 class ValidateInputFormatTest {
+
+    private InputValidator inputValidator;
+
+    @BeforeEach
+    void setUp() {
+        inputValidator = new InputValidator();
+    }
 
     @Test
     void 앞뒤에_컴마가_없는_경우_올바른_입력입니다() {
@@ -13,7 +21,6 @@ class ValidateInputFormatTest {
         String validInput = "yuze,woodz,jason";
 
         // when
-        InputValidator inputValidator = new InputValidator();
         Boolean result = inputValidator.isValidInputFormat(validInput);
 
         // then
@@ -24,9 +31,6 @@ class ValidateInputFormatTest {
     void 앞뒤에_컴마가_존재하면_올바르지않은_입력입니다() {
         // given
         String startAndEndWithComma = ",,yuze,woodz,jason,,";
-
-        // when
-        InputValidator inputValidator = new InputValidator();
 
         // then
         assertThrows(IllegalArgumentException.class, () -> {
@@ -39,9 +43,6 @@ class ValidateInputFormatTest {
         // given
         String startWithComma = ",yuze,woodz,jason";
 
-        // when
-        InputValidator inputValidator = new InputValidator();
-
         // then
         assertThrows(IllegalArgumentException.class, () -> {
             inputValidator.isValidInputFormat(startWithComma);
@@ -52,9 +53,6 @@ class ValidateInputFormatTest {
     void 뒤에_컴마가_존재하면_올바르지않은_입력입니다() {
         // given
         String endWithComma = "yuze,woodz,jason,";
-
-        // when
-        InputValidator inputValidator = new InputValidator();
 
         // then
         assertThrows(IllegalArgumentException.class, () -> {
