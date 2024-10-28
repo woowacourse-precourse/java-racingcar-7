@@ -7,19 +7,37 @@ public class RacingGame {
     private final InputView inputView;
     private final OutputView outputView;
     private Cars cars;
+    private int moveCount;
 
     public RacingGame(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
 
-    public void play() {
-        initialize();
-    }
-
     private void initialize() {
         inputView.requestMoveCount();
         cars = new Cars(inputView.readCarNames());
+
+        inputView.requestMoveCount();
+        moveCount = inputView.readMoveCount();
+    }
+
+    private void race() {
+        outputView.printRaceResult();
+        for (int i = 0; i < moveCount; i++) {
+            cars.move();
+            outputView.printRoundResult(cars.getCars());
+        }
+    }
+
+    private void announceWinners() {
+        outputView.printWinners(cars.getWinners());
+    }
+
+    public void play() {
+        initialize();
+        race();
+        announceWinners();
     }
 
 }

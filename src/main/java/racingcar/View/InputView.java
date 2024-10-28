@@ -19,4 +19,8 @@ public class InputView {
         return Arrays.asList(input.split(","));
     }
 
+    public int readMoveCount() {
+        return Integer.parseInt(Console.readLine());
+    }
+
 }
