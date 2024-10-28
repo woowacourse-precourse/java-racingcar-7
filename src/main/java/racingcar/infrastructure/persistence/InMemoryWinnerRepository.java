@@ -7,19 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InMemoryWinnerRepository implements WinnerRepository {
+    private static final InMemoryWinnerRepository instance = new InMemoryWinnerRepository();
     private final List<Winner> winners;
 
-    public InMemoryWinnerRepository() {
+    private InMemoryWinnerRepository() {
         this.winners = new ArrayList<>();
     }
 
-    // TODO : 우승자 결과 저장
-    public void saveWinner(Winner winner) {
-
+    public static InMemoryWinnerRepository getInstance(){
+        return  instance;
     }
 
-    // TODO : 우승자 반환
+    public void saveWinner(Winner winner) {
+        winners.add(winner);
+    }
+
     public List<Winner> getWinners() {
-        return null;
+        return winners;
     }
 }
