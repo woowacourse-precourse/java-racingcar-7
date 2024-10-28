@@ -30,4 +30,17 @@ public class ValidateCarNamesTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Constants.INVALID_CAR_NAME_EMPTY);
     }
+
+    @Test
+    @DisplayName("입력받은 자동차 이름이 중복일 때 예외가 발생해야 한다")
+    void createGame_whenDuplicateCarNames_shouldThrowException() {
+        // Given
+        CarService carService = new CarService();
+        String duplicateCarNames = "pobi,pobi,woni";  // 중복된 자동차 이름 포함
+
+        // When & Then
+        assertThatThrownBy(() -> carService.createGame(duplicateCarNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Constants.DUPLICATE_CAR_NAME);
+    }
 }
