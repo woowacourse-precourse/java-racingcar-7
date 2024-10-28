@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,5 +14,11 @@ public class RacingGame {
         this.cars = Arrays.stream(names)
                 .map(Car::new)
                 .toList();
+    }
+
+    public void trial() {
+        cars.forEach(car -> {
+            car.move(Randoms.pickNumberInRange(0, 9));
+        });
     }
 }
