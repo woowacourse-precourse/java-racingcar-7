@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static racingcar.Car.createCar;
-import static racingcar.WinnerSelector.*;
+import static racingcar.WinnerSelector.calculateWinners;
 
 public class RacingGame {
 
