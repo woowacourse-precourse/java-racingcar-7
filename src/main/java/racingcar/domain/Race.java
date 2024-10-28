@@ -34,6 +34,20 @@ public class Race {
         return Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
     }
 
+    public List<Car> getWinners() {
+        ArrayList<Car> winners = new ArrayList<>();
+
+        int maxPosition = getMaxPosition();
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+
+        return winners;
+    }
+
     private int getMaxPosition() {
         int max = Integer.MIN_VALUE;
 
