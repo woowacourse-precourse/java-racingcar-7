@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class IntegrationTests extends NsTest {
+public class InputExceptionTests extends NsTest {
 
     @ParameterizedTest
     @DisplayName("[에러] 자동차 입력이 공백인 경우")
