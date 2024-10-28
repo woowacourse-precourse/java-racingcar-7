@@ -5,7 +5,7 @@ import racingcar.constants.Constants;
 
 public class Name {
 
-    private static final int MAX_NAME_LENGTH = 5;
+    private static final int NAME_LENGTH_MAX = 5;
 
     private final String text;
 
@@ -25,7 +25,7 @@ public class Name {
     }
 
     private boolean isOverValidLength(String text) {
-        return text.length() > MAX_NAME_LENGTH;
+        return text.length() > NAME_LENGTH_MAX;
     }
 
     @Override
