@@ -77,6 +77,12 @@ public class Application {
                 longestStrings.add(name[i]);
             }
         }
-        System.out.println("최종 우승자 : " + longestStrings);
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < longestStrings.size(); i++) {
+            System.out.print(longestStrings.get(i));
+            if (i < longestStrings.size() - 1) {
+                System.out.print(", ");
+            }
+        }
     }
 }
