@@ -26,4 +26,9 @@ public class CarDTO {
         this.goStraight = goStraight;
     }
 
+    // 한 칸씩 이동될 때마다 증가
+    public void moveForward() {
+        goStraight++;
+    }
+
 }
