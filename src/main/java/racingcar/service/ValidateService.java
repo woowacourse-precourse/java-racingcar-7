@@ -3,7 +3,6 @@ package racingcar.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class ValidateService {
 
@@ -16,7 +15,7 @@ public class ValidateService {
         this.rawNames = new ArrayList<>();
     }
 
-    public void validateName(String names) {
+    public List<String> validateName(String names) {
         rawNames = Arrays.stream(names.split(",")).toList();
 
         rawNames.forEach(rawName -> {
@@ -34,9 +33,10 @@ public class ValidateService {
             // 유효한 이름
             validatedNames.add(trimmedName);
         });
+        return validatedNames;
     }
 
-    public void validateRaceCount(String raceCount) {
+    public long validateRaceCount(String raceCount) {
         String trimmedRaceCount = raceCount.trim();
 
         // 공백 입력
@@ -55,6 +55,7 @@ public class ValidateService {
             // 음수 확인, 숫자로 변경 할 수 없을 경우
             throw new IllegalArgumentException("올바른 숫자를 입력해주세요.");
         }
+        return validateRaceCount;
     }
 
     public long getValidateRaceCount() {

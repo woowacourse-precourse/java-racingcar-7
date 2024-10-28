@@ -6,18 +6,12 @@ import java.util.List;
 
 public class RoundView {
 
-    List<RacingCar> racingCars;
-
-    public RoundView() {
-    }
-
-    public void setRacingCars(List<RacingCar> racingCars) {
+    public void startRaceRound() {
         System.out.println();
         System.out.println("실행 결과");
-        this.racingCars = racingCars;
     }
 
-    public void showRoundResults() {
+    public void showRoundResults(List<RacingCar> racingCars) {
         racingCars.forEach(
                 racingCar -> System.out.println(racingCar.getName() + " : " + "-".repeat((int) racingCar.getMoveCount()))
         );

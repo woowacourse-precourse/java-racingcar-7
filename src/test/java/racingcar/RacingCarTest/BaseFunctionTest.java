@@ -21,9 +21,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BaseFunctionTest {
 
@@ -42,7 +41,7 @@ public class BaseFunctionTest {
         String message = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 
         //then
-        assertEquals(expectedMessage, view.printInstruction(message));
+        assertThat(view.printInstruction(message)).isEqualTo(expectedMessage);
     }
 
     @Test
@@ -56,25 +55,25 @@ public class BaseFunctionTest {
         String names = Console.readLine();
 
         //then
-        assertEquals(expectedNames, names);
+        assertThat(names).isEqualTo(expectedNames);
     }
 
     @Test
     void 입력_유효성_검증_테스트() {
-        //given
+        // given
         String names = "pobi, woni, jun";
         String raceCount = "4";
         ValidateService service = new ValidateService();
-        List<String> validateNames = List.of(new String[]{"pobi", "woni", "jun"});
-        long validateRaceCount = 4;
+        List<String> expectValidateNames = List.of("pobi", "woni", "jun");
+        long expectValidateRaceCount = 4;
 
-        //when
-        service.validateName(names);
-        service.validateRaceCount(raceCount);
+        // when
+        List<String> validateName = service.validateName(names);
+        long validateRaceCount = service.validateRaceCount(raceCount);
 
-        //then
-        assertEquals(service.getValidatedNames(), validateNames);
-        assertEquals(service.getValidateRaceCount(), validateRaceCount);
+        // then
+        assertThat(validateName).isEqualTo(expectValidateNames);
+        assertThat(validateRaceCount).isEqualTo(expectValidateRaceCount);
     }
 
     @Test
@@ -87,7 +86,9 @@ public class BaseFunctionTest {
         //when
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> service.validateName(longerThanFiveName));
+        assertThatThrownBy(() -> service.validateName(longerThanFiveName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("길이가 5이하를 만족하지 않습니다.");
     }
 
     @Test
@@ -99,7 +100,9 @@ public class BaseFunctionTest {
         //when
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> service.validateName(hasBlankName));
+        assertThatThrownBy(() -> service.validateName(hasBlankName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("이름이 공백입니다.");
     }
 
     @Test
@@ -110,11 +113,11 @@ public class BaseFunctionTest {
         RandomGenerator randomGenerator = new RandomsWrapper();
 
         //when
-        racingCarService.setupRaceCars(Arrays.asList("fobi", "woni", "^jun"), randomGenerator);
+        List<RacingCar> racingCars = racingCarService.setupRaceCars(Arrays.asList("fobi", "woni", "^jun"), randomGenerator);
 
         //then
-        IntStream.range(0, racingCarService.getRacingCars().size()).forEach(i -> {
-            assertEquals(racingCarService.getRacingCars().get(i).getName(), expectedNames.get(i));
+        IntStream.range(0, racingCars.size()).forEach(i -> {
+            assertThat(racingCars.get(i).getName()).isEqualTo(expectedNames.get(i));
         });
     }
 
@@ -123,16 +126,18 @@ public class BaseFunctionTest {
         //given
         RacingCarService racingCarService = new RacingCarService();
         RandomGenerator moveCondition = new MockRandomGenerator(MOVE_CONDITION);
-        racingCarService.setupRaceCars(Arrays.asList("fobi", "woni", "^jun"), moveCondition);
-        List<RacingCar> racingCars = racingCarService.getRacingCars();
+        List<String> racingCarNames = Arrays.asList("fobi", "woni", "^jun");
+        List<RacingCar> racingCars = racingCarNames.stream()
+                .map((String name) -> new RacingCar(name, moveCondition))
+                .toList();
         long expectMoveCount = 1;
 
         //when
-        racingCars.forEach(RacingCar::move);
+        racingCarService.runRound(racingCars);
 
         //then
-        IntStream.range(0, racingCarService.getRacingCars().size()).forEach(i -> {
-            assertEquals(racingCarService.getRacingCars().get(i).getMoveCount(), expectMoveCount);
+        IntStream.range(0, racingCars.size()).forEach(i -> {
+            assertThat(racingCars.get(i).getMoveCount()).isEqualTo(expectMoveCount);
         });
     }
 
@@ -141,16 +146,19 @@ public class BaseFunctionTest {
         //given
         RacingCarService racingCarService = new RacingCarService();
         RandomGenerator stopCondition = new MockRandomGenerator(STOP_CONDITION);
-        racingCarService.setupRaceCars(Arrays.asList("fobi", "woni", "^jun"), stopCondition);
-        List<RacingCar> racingCars = racingCarService.getRacingCars();
+        List<String> racingCarNames = Arrays.asList("fobi", "woni", "^jun");
+        List<RacingCar> racingCars = racingCarNames.stream()
+                .map((String name) -> new RacingCar(name, stopCondition))
+                .toList();
+
         long expectMoveCount = 0;
 
         //when
-        racingCars.forEach(RacingCar::move);
+        racingCarService.runRound(racingCars);
 
         //then
-        IntStream.range(0, racingCarService.getRacingCars().size()).forEach(i -> {
-            assertEquals(racingCarService.getRacingCars().get(i).getMoveCount(), expectMoveCount);
+        IntStream.range(0, racingCars.size()).forEach(i -> {
+            assertThat(racingCars.get(i).getMoveCount()).isEqualTo(expectMoveCount);
         });
     }
 
@@ -164,6 +172,7 @@ public class BaseFunctionTest {
         List<RacingCar> racingCars = IntStream.range(0, moveCondition.size())
                 .mapToObj(i -> new RacingCar(racingCarNames.get(i), new MockRandomGenerator(moveCondition.get(i)))) // RacingCar 객체를 생성
                 .collect(Collectors.toList());
+
         RoundView roundView = new RoundView();
 
         String expectedOutput = "\n실행 결과\n" +
@@ -179,19 +188,19 @@ public class BaseFunctionTest {
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
-        roundView.setRacingCars(racingCars);
+        roundView.startRaceRound();
 
         // when
         IntStream.range(0, 3).forEach(i -> {
             IntStream.range(0, racingCars.size()).forEach(j -> {
                 racingCars.get(j).move();
             });
-            roundView.showRoundResults();
+            roundView.showRoundResults(racingCars);
         });
 
         // then
         String actualOutput = outputStream.toString();
-        assertEquals(expectedOutput, actualOutput);
+        assertThat(actualOutput).isEqualTo(expectedOutput);
     }
 
     @Test
@@ -200,7 +209,9 @@ public class BaseFunctionTest {
         List<String> racingCarNames = Arrays.asList("fobi", "woni", "jun");
         ResultView resultView = new ResultView();
         RacingCarService racingCarService = new RacingCarService();
-        racingCarService.setupRaceCars(racingCarNames, new MockRandomGenerator(MOVE_CONDITION));
+        List<RacingCar> racingCars = racingCarNames.stream()
+                        .map((String name) -> new RacingCar(name, new MockRandomGenerator(MOVE_CONDITION)))
+                        .toList();
 
         String expectResult = "최종 우승자 : fobi\n";
 
@@ -209,13 +220,13 @@ public class BaseFunctionTest {
 
         // when
         // fobi만 움직임
-        racingCarService.getRacingCars().getFirst().move();
-        List<RacingCar> bestDriver = racingCarService.findBestDriver();
+        racingCars.getFirst().move();
+        List<RacingCar> bestDriver = racingCarService.findBestDriver(racingCars);
         resultView.printResult(bestDriver);
 
         // then
         String actualOutput = outputStream.toString();
-        assertEquals(expectResult, actualOutput);
+        assertThat(actualOutput).isEqualTo(expectResult);
     }
 
 
