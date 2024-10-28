@@ -1,10 +1,14 @@
 package racingcar.application;
 
-import racingcar.domain.application.RaceService;
-import racingcar.domain.model.Car;
-import racingcar.domain.model.CarRepository;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarRepository;
+import racingcar.domain.car.value.Name;
+import racingcar.domain.refree.Referee;
+import racingcar.domain.refree.value.Result;
+import racingcar.domain.refree.value.SingleResult;
+import racingcar.domain.refree.value.TotalResult;
+import racingcar.domain.refree.value.WinnerNames;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarService {
@@ -15,12 +19,21 @@ public class RacingCarService {
         this.carRepository = carRepository;
     }
 
-    public void addCars(String[] names) {
-        List<Car> cars = Arrays.stream(names)
+    public void addCars(List<Name> names) {
+        List<Car> cars = names.stream()
                 .map(Car::create)
                 .toList();
 
         carRepository.saveAll(cars);
     }
 
+    public TotalResult startRace(int count) {
+
+        List<Car> cars = carRepository.findAll();
+        Referee referee = new Referee();
+
+        List<SingleResult> results = referee.startGame(cars, count);
+        WinnerNames winnerNames = referee.decideWinners(results.getLast());
+        return new TotalResult(results, winnerNames);
+    }
 }
