@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,6 @@ public class CarRace {
         this.cars = createCars(carNames);
     }
 
-    // 입력받은 자동차 이름 문자열을 쉼표로 분리하여 Car 객체 리스트 생성
     private List<Car> createCars(String carNames) {
         String[] names = carNames.split(",");
         List<Car> cars = new ArrayList<>();
@@ -22,5 +22,12 @@ public class CarRace {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public void moveCars() {
+        for (Car car : cars) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            car.move(randomValue);
+        }
     }
 }
