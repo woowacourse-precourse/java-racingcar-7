@@ -1,12 +1,10 @@
 package MyTest;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.assertj.core.api.Assertions.assertThat;
 
-import racingcar.Utils.InputValidator;
 import org.junit.jupiter.api.Test;
+import racingcar.Utils.InputValidator;
 
 public class MyApplicationTest {
 
@@ -32,7 +30,7 @@ public class MyApplicationTest {
     }
 
     @Test
-    public void 자동차_이름_중복_허용_안함(){
+    public void 자동차_이름_중복_허용_안함() {
         String input = "a, b, a";
         String[] result = input.split(",");
 
@@ -54,7 +52,7 @@ public class MyApplicationTest {
     }
 
     @Test
-    void 자동차_이름에_특수문자_금지(){
+    void 자동차_이름에_특수문자_금지() {
         String input = "ab/";
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -63,7 +61,7 @@ public class MyApplicationTest {
     }
 
     @Test
-    void 자동차_이름에_스페이스_금지(){
+    void 자동차_이름에_스페이스_금지() {
         String input = "ab d";
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -72,7 +70,7 @@ public class MyApplicationTest {
     }
 
     @Test
-    void 자동차_이름이_5자를_초과하지_않는_지_테스트(){
+    void 자동차_이름이_5자를_초과하지_않는_지_테스트() {
         String input = "abcdef";
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -81,7 +79,7 @@ public class MyApplicationTest {
     }
 
     @Test
-    void null_값_금지(){
+    void null_값_금지() {
         String input = "";
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -90,7 +88,7 @@ public class MyApplicationTest {
     }
 
     @Test
-    void 빈_칸_금지(){
+    void 빈_칸_금지() {
         String input = " ";
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -99,7 +97,7 @@ public class MyApplicationTest {
     }
 
     @Test
-    void 자동차를_두_대_이상_입력했는_지_테스트(){
+    void 자동차를_두_대_이상_입력했는_지_테스트() {
         String input = "abc";
         String[] inputSplit = input.split(",");
         assertThrows(IllegalArgumentException.class, () -> {
@@ -108,7 +106,11 @@ public class MyApplicationTest {
     }
 
     @Test
-    void racingRace_정상_실행_테스트(){
+    void 경주_횟수는_1부터_20까지_가능합니다() {
+        int input = 0;
 
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputValidator.isValidAttemptCount(input);
+        });
     }
 }
