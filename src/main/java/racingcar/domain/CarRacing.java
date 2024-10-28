@@ -35,7 +35,7 @@ public class CarRacing implements Racing{
 
     @Override
     public void generateRacer(String[] splitNames) {
-        List<Car> cars = new ArrayList<>();
+        List<Vehicle> cars = new ArrayList<>();
         for (String name:splitNames) {
             Car car = new Car(name);
             cars.add(car);
@@ -53,9 +53,9 @@ public class CarRacing implements Racing{
         List<String> raceTurn = new ArrayList<>();
         //TODO : 여기 더 깔끔하게 코드 리팩터링 필요
         for (long i = 0; i < validatedInputDataDTO.count(); i++) {
-            ExecuteRaceResultVO resultDTO = executeRaceTurn(racingCarHistory.getCars(i));
-            raceTurn.add(resultDTO.executeResult());
-            racingCarHistory.addRound(i+1,resultDTO.cars());
+            ExecuteRaceResultVO resultVO = executeRaceTurn(racingCarHistory.getCars(i));
+            raceTurn.add(resultVO.executeResult());
+            racingCarHistory.addRound(i+1,resultVO.cars());
         }
 
         return String.join("\n", raceTurn);
@@ -66,12 +66,12 @@ public class CarRacing implements Racing{
      * @param carList 이전 경기 기록
      * @return 레이스 한턴 진행결과
      */
-    public ExecuteRaceResultVO executeRaceTurn(List<Car> carList) {
+    public ExecuteRaceResultVO executeRaceTurn(List<Vehicle> carList) {
         //TODO: 리팩터링 필요
-        ArrayList<Car> newRoundRacingCars = new ArrayList<>();
+        ArrayList<Vehicle> newRoundRacingCars = new ArrayList<>();
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (Car car : carList) {
+        for (Vehicle car : carList) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             if(racingPolicy.isMoveForward(randomNumber)){
                 car.move();
@@ -93,12 +93,12 @@ public class CarRacing implements Racing{
     @Override
     public String fineRaceWinner(Long round){
         List<String> winnerList = new ArrayList<>();
-        List<Car> carList = racingCarHistory.getCars(round);
+        List<Vehicle> carList = racingCarHistory.getCars(round);
         if(carList.isEmpty()){
             throw new IllegalArgumentException(ExceptionMessage.NO_PARTICIPANTS_IN_ROUND.getMessage());
         }
-        carList.sort(Comparator.comparingLong(Car::getMoveForwardCount).reversed());
-        for (Car car:carList) {
+        carList.sort(Comparator.comparingLong(Vehicle::getMoveForwardCount).reversed());
+        for (Vehicle car:carList) {
             if(winnerList.isEmpty()){
                 winnerList.add(car.getVehicleName());
             }

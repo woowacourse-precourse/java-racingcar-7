@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.Vehicle;
 import racingcar.infrastructure.RacingCarHistory;
 
 class CarRacingHistoryTest {
@@ -16,7 +17,7 @@ class CarRacingHistoryTest {
         Car caca = new Car("caca", 1L);
         Car qqq = new Car("qqq", 2L);
         Car sss = new Car("sss", 2L);
-        List<Car> carList = List.of(caca,qqq,sss);
+        List<Vehicle> carList = List.of(caca,qqq,sss);
         racingCarHistory.addRound(1, carList);
     }
 

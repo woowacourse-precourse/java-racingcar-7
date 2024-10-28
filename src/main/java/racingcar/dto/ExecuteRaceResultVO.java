@@ -1,7 +1,7 @@
 package racingcar.dto;
 
 import java.util.List;
-import racingcar.domain.Car;
+import racingcar.domain.Vehicle;
 
-public record ExecuteRaceResultVO(List<Car> cars, String executeResult) {
+public record ExecuteRaceResultVO(List<Vehicle> cars, String executeResult) {
 }
