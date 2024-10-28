@@ -40,21 +40,29 @@ public class Race {
     }
 
     public List<String> getWinners() {
+        List<String> winners = new ArrayList<>();
+
+        int maxPosition = findMaxPosition();
+
+        for (Car car : racingCars) {
+            String name = car.getName();
+            Progress progress = progressMap.get(name);
+
+            if (progress.getProgress() == maxPosition) {
+                winners.add(name);
+            }
+        }
+
+        return winners;
+    }
+
+    private int findMaxPosition() {
         Collection<Progress> allProgress = progressMap.values();
 
-        int maxPosition = allProgress.stream()
+        return allProgress.stream()
                 .mapToInt(Progress::getProgress)
                 .max()
                 .orElse(0);
-
-        List<String> winners = new ArrayList<>();
-
-        for (Car car : racingCars) {
-            if (progressMap.get(car.getName()).getProgress() == maxPosition) {
-                winners.add(car.getName());
-            }
-        }
-        return winners;
     }
 
 }
