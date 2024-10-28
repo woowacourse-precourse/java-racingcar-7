@@ -46,5 +46,33 @@ public class GameTest {
         assertThrows(IllegalArgumentException.class, () -> game.parseCars(input));
     }
 
+    static Stream<Arguments> parseMoveCountCases() {
+        return Stream.of(
+                Arguments.of("1",1),
+                Arguments.of("2",2)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("parseMoveCountCases")
+    public void parseMoveCountTest(String input, int expected){
+        Game game = new Game();
+        assertThat(game.parseMoveCount(input)).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> parseMoveCountExceptionCases() {
+        return Stream.of(
+                Arguments.of("a"),
+                Arguments.of("-1"),
+                Arguments.of("1 2")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("parseMoveCountExceptionCases")
+    public void parseMoveCountExceptionTest(String input){
+        Game game = new Game();
+        assertThrows(IllegalArgumentException.class, () -> game.parseMoveCount(input));
+    }
 
 }
