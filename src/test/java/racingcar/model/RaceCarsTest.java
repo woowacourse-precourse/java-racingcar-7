@@ -12,11 +12,7 @@ class RaceCarsTest {
     @DisplayName("RaceCars 객체를 생성할 수 있다.")
     void createRaceCars() {
         //given
-        Name name1 = new Name("우테코");
-        Name name2 = new Name("박재연");
-        Car car = new Car(name1);
-        Car car2 = new Car(name2);
-        List<Car> cars = Arrays.asList(car, car2);
+        List<Car> cars = createCars();
         //when
         RaceCars raceCars = new RaceCars(cars);
         //then
@@ -55,11 +51,7 @@ class RaceCarsTest {
     @DisplayName("모든 자동차를 이동시킬 수 있다.")
     void moveAllCars() {
         //given
-        Name name1 = new Name("우테코");
-        Name name2 = new Name("박재연");
-        Car car = new Car(name1);
-        Car car2 = new Car(name2);
-        List<Car> cars = Arrays.asList(car, car2);
+        List<Car> cars = createCars();
         RaceCars raceCars = new RaceCars(cars);
         List<Car> beforeMovement = raceCars.getCars();
         Movement alwaysTrueMovement = () -> true;
@@ -70,5 +62,14 @@ class RaceCarsTest {
         for (int i = 0; i < cars.size(); i++) {
             Assertions.assertThat(afterMovement.get(i).hasBiggerPositionThan(beforeMovement.get(i))).isTrue();
         }
+    }
+
+    private static List<Car> createCars() {
+        Name name1 = new Name("우테코");
+        Name name2 = new Name("박재연");
+        Car car = new Car(name1);
+        Car car2 = new Car(name2);
+        List<Car> cars = Arrays.asList(car, car2);
+        return cars;
     }
 }
