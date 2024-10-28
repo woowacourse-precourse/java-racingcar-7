@@ -13,11 +13,11 @@ class RoundTest {
 
     @Nested
     @DisplayName("생성 테스트")
-    class createTest {
+    class 생성_테스트 {
 
         @Test
         @DisplayName("0 이상의 수이면 성공적으로 생성한다")
-        void 성공_생성_유효한파라미터() {
+        void 성공_생성() {
             // Given
 
             // When & Then

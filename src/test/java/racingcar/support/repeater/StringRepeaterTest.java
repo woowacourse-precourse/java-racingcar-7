@@ -12,12 +12,14 @@ import racingcar.exception.InvalidValueException;
 
 @DisplayName("문자열 리피터 테스트")
 class StringRepeaterTest {
+
     @Nested
-    @DisplayName("리피터 생성 테스트")
-    class 리피터_생성 {
+    @DisplayName("생성 테스트")
+    class 생성_테스트 {
+
         @Test
         @DisplayName("유효한 문자열이면 성공적으로 생성한다")
-        void 성공_리피터생성_유효한문자열() {
+        void 성공_생성() {
             // Given
 
             // When & Then
@@ -28,7 +30,7 @@ class StringRepeaterTest {
 
         @Test
         @DisplayName("문자열이 null이면 예외가 발생한다")
-        void 실패_리피터생성_null() {
+        void 실패_생성_null() {
             // Given
 
             // When & Then
@@ -40,7 +42,7 @@ class StringRepeaterTest {
 
         @Test
         @DisplayName("문자열이 비어있으면 예외가 발생한다")
-        void 실패_리피터생성_empty() {
+        void 실패_생성_empty() {
             // Given
 
             // When & Then
@@ -52,11 +54,12 @@ class StringRepeaterTest {
     }
 
     @Nested
-    @DisplayName("구분자 반복 테스트")
-    class 구분자_반복{
+    @DisplayName("반복 테스트")
+    class 반복_테스트{
+
         @Test
         @DisplayName("주어진 횟수만큼 반복한다")
-        void 성공_문자열반복() {
+        void 성공_반복() {
             // Given
             StringRepeater stringRepeater = new StringRepeater("-");
 
@@ -69,7 +72,7 @@ class StringRepeaterTest {
 
         @Test
         @DisplayName("주어진 횟수가 음수이면 예외가 발생한다")
-        void 실패_문자열반복_음수() {
+        void 실패_반복_음수() {
             // Given
             StringRepeater stringRepeater = new StringRepeater("-");
 

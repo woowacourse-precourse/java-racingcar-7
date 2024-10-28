@@ -19,7 +19,7 @@ class RacingCarTest {
 
     @Nested
     @DisplayName("시작 테스트")
-    class startTest {
+    class 시작_테스트 {
 
         @Test
         @DisplayName("시도횟수가 0이면 모두 출발점에 있다")
@@ -62,7 +62,7 @@ class RacingCarTest {
 
     @Nested
     @DisplayName("우승자 계산 테스트")
-    class calculateWinnersClass {
+    class 우승자_계산_테스트 {
 
         @Test
         @DisplayName("우승자가 한 명이면 한 명만 출력한다")

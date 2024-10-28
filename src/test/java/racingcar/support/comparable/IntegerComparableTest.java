@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("정수 비교 테스트")
 class IntegerComparableTest {
+
     @Test
     @DisplayName("두 정수를 비교한다")
     void 성공_비교() {

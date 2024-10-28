@@ -14,7 +14,8 @@ class PositionsTest {
 
     @Nested
     @DisplayName("생성 테스트")
-    class createTest {
+    class 생성_테스트 {
+
         @Test
         @DisplayName("위치 집합을 생성한다")
         void 성공_생성() {
@@ -29,7 +30,8 @@ class PositionsTest {
 
     @Nested
     @DisplayName("초기화 테스트")
-    class initializeTest {
+    class 초기화_테스트 {
+
         @Test
         @DisplayName("위치 집합을 초기화한다")
         void 성공_초기화() {
@@ -47,7 +49,8 @@ class PositionsTest {
 
     @Nested
     @DisplayName("증가 테스트")
-    class increaseTest {
+    class 증가_테스트 {
+
         @Test
         @DisplayName("해당 인덱스의 위치를 증가시킨다")
         void 성공_위치증가_인덱스() {
@@ -65,10 +68,11 @@ class PositionsTest {
 
     @Nested
     @DisplayName("우승자 계산 테스트")
-    class calculateWinnerTest {
+    class 우승자_계산_테스트 {
+
         @Test
         @DisplayName("우승자를 계산한다")
-        void calculateWinners() {
+        void 성공_우승자계산() {
             // Given
             Positions positions = new Positions(List.of(new Position(1), new Position(2)));
 

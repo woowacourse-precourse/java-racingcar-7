@@ -11,7 +11,8 @@ class PositionTest {
 
     @Nested
     @DisplayName("생성 테스트")
-    class createTest {
+    class 생성_테스트 {
+
         @Test
         @DisplayName("생성자로 위치를 생성한다")
         void 성공_생성() {
@@ -27,7 +28,8 @@ class PositionTest {
 
     @Nested
     @DisplayName("증가 테스트")
-    class increaseTest {
+    class 증가_테스트 {
+
         @Test
         @DisplayName("위치를 1 증가시킨다")
         void 성공_증가() {
@@ -44,7 +46,8 @@ class PositionTest {
 
     @Nested
     @DisplayName("값 비교 테스트")
-    class ValueTest {
+    class 값비교_테스트 {
+
         @Test
         @DisplayName("같은 값을 가지는지 비교한다")
         void 성공_값비교() {

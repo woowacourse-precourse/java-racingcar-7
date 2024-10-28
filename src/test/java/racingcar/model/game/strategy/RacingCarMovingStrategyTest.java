@@ -18,7 +18,7 @@ class RacingCarMovingStrategyTest {
 
     @Nested
     @DisplayName("이동 테스트")
-    class moveTest {
+    class 이동_테스트 {
         @Test
         @DisplayName("랜덤값이 기준값 이상이면 이동한다")
         void 성공_이동_기준값이상() {

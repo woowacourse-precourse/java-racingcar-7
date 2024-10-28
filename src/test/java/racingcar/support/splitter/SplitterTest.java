@@ -12,12 +12,14 @@ import racingcar.exception.InvalidDelimiterException;
 
 @DisplayName("Splitter 테스트")
 class SplitterTest {
+
     @Nested
-    @DisplayName("Splitter 생성 테스트")
-    class Splitter_생성 {
+    @DisplayName("생성 테스트")
+    class 생성_테스트 {
+
         @Test
         @DisplayName("유효한 구분자이면 성공적으로 생성한다")
-        void 성공_Splitter생성_유효한구분자() {
+        void 성공_생성() {
             // Given
 
             // When & Then
@@ -28,7 +30,7 @@ class SplitterTest {
 
         @Test
         @DisplayName("구분자가 null이면 예외가 발생한다")
-        void 실패_Splitter생성_null() {
+        void 실패_생성_null() {
             // Given
 
             // When & Then
@@ -40,7 +42,7 @@ class SplitterTest {
 
         @Test
         @DisplayName("구분자가 비어있으면 예외가 발생한다")
-        void 실패_Splitter생성_empty() {
+        void 실패_생성_empty() {
             // Given
 
             // When & Then
@@ -52,8 +54,9 @@ class SplitterTest {
     }
 
     @Nested
-    @DisplayName("Splitter 생성 테스트")
-    class 문자열_구분 {
+    @DisplayName("구분 테스트")
+    class 구분_테스트 {
+
         @Test
         @DisplayName("문자열을 구분한다")
         void 성공_구분() {

@@ -13,7 +13,8 @@ class NameTest {
 
     @Nested
     @DisplayName("생성 테스트")
-    class createTest {
+    class 생성_테스트 {
+
         @Test
         @DisplayName("5글자 이하이면 성공한다")
         void 성공_이름생성_5글자이하() {

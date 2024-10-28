@@ -13,9 +13,11 @@ import racingcar.exception.InvalidNameException;
 
 @DisplayName("자동차 집합 테스트")
 class CarsTest {
+
     @Nested
     @DisplayName("생성 테스트")
     class 생성_테스트 {
+
         @Test
         @DisplayName("자동차 집합을 생성한다")
         void 성공_생성() {
@@ -44,9 +46,10 @@ class CarsTest {
     @Nested
     @DisplayName("추가 테스트")
     class 추가_테스트 {
+
         @Test
         @DisplayName("자동차 집합에 자동차를 추가한다")
-        void 성공_자동차추가() {
+        void 성공_추가() {
             // Given
             Cars cars = new Cars(Collections.emptyList());
             Car car = new Car("mint", () -> true);
@@ -61,7 +64,7 @@ class CarsTest {
 
         @Test
         @DisplayName("자동차를 추가할 때 이름이 중복되면 예외가 발생한다")
-        void 실패_자동차추가_이름중복() {
+        void 실패_추가_이름중복() {
             // Given
             Cars cars = new Cars(List.of(new Car("mint", () -> true)));
 

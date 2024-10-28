@@ -13,7 +13,8 @@ class HistoryTest {
 
     @Nested
     @DisplayName("추가 테스트")
-    class addTest {
+    class 추가_테스트 {
+
         @Test
         @DisplayName("History에 위치 정보를 추가한다")
         void 성공_원소추가() {
