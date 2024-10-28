@@ -27,6 +27,7 @@ public class RacingCar {
             RacingCarView.printRacingResults(inputCarTokens, carForwardCount);
         }
 
+        RacingCarView.printWinners(carForwardCount);
     }
 
 

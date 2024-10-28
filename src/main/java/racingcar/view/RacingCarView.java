@@ -3,6 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.message.Message;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -36,5 +37,34 @@ public class RacingCarView {
         System.out.println();
     }
 
+    public static void printWinners(Map<String, Integer> carForwardCount){
+
+        StringBuilder result = new StringBuilder("최종 우승자 : ");
+        List<String> maxKeys = new ArrayList<>();
+        int maxValue = Integer.MIN_VALUE;
+
+        for (Map.Entry<String, Integer> entry : carForwardCount.entrySet()) {
+
+            int value = entry.getValue();
+
+            if (value > maxValue) {
+                maxValue = value;
+                maxKeys.clear();
+                maxKeys.add(entry.getKey());
+            }
+            else if (value == maxValue) {
+                maxKeys.add(entry.getKey());
+            }
+        }
+
+        for (int i = 0; i < maxKeys.size(); i++) {
+            result.append(maxKeys.get(i));
+            if (i < maxKeys.size() - 1) {
+                result.append(", ");
+            }
+        }
+
+        System.out.println(result.toString());
+    }
 
 }
