@@ -33,11 +33,12 @@ public class Application {
 
     private static List<String> getRacingCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        try {
-            return Stream.of(Console.readLine().split("[\\s,]+")).toList();
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
+        List<String> names = Stream.of(Console.readLine().split("[\\s,]+")).toList();
+
+        for (String name : names) {
+            if (name.length() > 5) throw new IllegalArgumentException();
         }
+        return names;
     }
 
     private static int getNumberOfTrial() {
