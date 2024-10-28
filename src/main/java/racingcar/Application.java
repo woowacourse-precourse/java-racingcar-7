@@ -18,6 +18,16 @@ public class Application {
     static int totalCount;
     static Car winner_list[];
 
+    public static void printWinner() {
+        System.out.print("최종 우승자 :");
+        int i = 0;
+        for (i = 0; i < winner_list.length - 1; i++) {
+            System.out.print(winner_list[i].name);
+            System.out.print(", ");
+        }
+        System.out.print(winner_list[i].name);
+    }
+
     public static void getWinner(int score) {
         int idx = 0;
         for (int i = 0; i < car_list.length; i++) {
@@ -98,5 +108,6 @@ public class Application {
         inputCar();
         inputCount();
         gameProgress();
+        printWinner();
     }
 }
