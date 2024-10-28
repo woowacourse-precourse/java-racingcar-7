@@ -5,10 +5,13 @@ import java.util.List;
 public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final MoveStrategy moveStrategy;
 
-    public GameController() {
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
+    public GameController(InputView inputView, OutputView outputView,
+                          MoveStrategy moveStrategy) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.moveStrategy = moveStrategy;
     }
 
     public void start() {
@@ -16,8 +19,6 @@ public class GameController {
             List<String> carNames = inputView.getCarNames();
             int moveCount = inputView.getMoveCount();
 
-            MoveStrategy moveStrategy = new RandomMoveStrategy(
-                    new DefaultRandomGenerator());
             RacingGame racingGame = new RacingGame(
                     carNames, moveCount, moveStrategy);
 
