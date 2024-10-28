@@ -29,9 +29,11 @@ Name, Names, Car, Cars
 - [x] 시도할 횟수에 공백 입력
 - [x] 시도할 횟수에 문자 입력
 - [x] 시도할 횟수에 0 이하 숫자 입력
+- [x] 중복된 이름 입력
 
 ### Test
 - [x] Name
 - [x] Names
 - [x] Car
-- [] Cars
+- [x] Cars
+- [x] RacingGameCount
