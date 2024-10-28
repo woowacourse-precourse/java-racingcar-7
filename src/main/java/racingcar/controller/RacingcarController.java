@@ -14,6 +14,6 @@ public class RacingcarController {
     }
 
     public void run() {
-        
+        String rawCarName = racingcarView.carNameInput();
     }
 }
