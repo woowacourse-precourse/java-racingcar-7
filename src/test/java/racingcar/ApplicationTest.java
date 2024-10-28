@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.InputHandler;
 
@@ -37,6 +39,14 @@ class ApplicationTest extends NsTest {
     void 한개_이하_이름(){
         assertThrows(IllegalArgumentException.class, () -> {
             InputValidator.notOneName(InputHandler.getCarNameList());
+        });
+    }
+
+    @Test
+    void 다섯_글자_초과_이름(){
+        ArrayList<String> carNameList = new ArrayList<>(List.of("abcdef"));
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputValidator.notOverFiveLetter(carNameList);
         });
     }
 
