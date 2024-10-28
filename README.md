@@ -1,5 +1,12 @@
 # java-racingcar-precourse
 
+## 과제 진행 요구 사항
+
+- 미션은 [자동차 경주](https://github.com/woowacourse-precourse/java-racingcar-7) 저장소를 포크하고 클론하는 것으로 시작한다.
+- **기능을 구현하기 전 `README.md`에 구현할 기능 목록을 정리**해 추가한다.
+- Git의 커밋 단위는 앞 단계에서 `README.md`에 정리한 기능 목록 단위로 추가한다.
+    - [AngularJS Git Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)을 참고해 커밋 메시지를 작성한다.
+
 ## 기능 요구 사항
 
 초간단 자동차 경주 게임을 구현한다.
@@ -13,7 +20,7 @@
 - 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 - 사용자가 잘못된 값을 입력할 경우`IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
-### 입출력 요구 사항
+## 입출력 요구 사항
 
 #### 입력
 
@@ -83,7 +90,36 @@ jun : -----
 최종 우승자 : pobi, jun
 ```
 
-### 기능 구현 목록
+## 폴더 구조
+```bash
+└── racingCar 
+    ├── Controller
+    │ └── RacingRaceController.java
+    ├── Model
+    │ └── Car.java
+    │ └── Race.java
+    │ └── RaceResult.java
+    ├── Service
+    │ ├── UserInputService.java
+    ├── Utils 
+    │ └── InputValidator.java
+    ├── View
+    │ └── RacingCarView.java
+    └── Application.java
+```
+
+- RacingRaceController.java : Model과 View에 있는 메서드를 호출하여 계산하고 최종
+  결과를 출력합니다.
+- Car.java : 자동차의 이름과 위치 데이터 정보를 가지고 있습니다.
+- Race.java : 자동차 경주를 진행하는 과정의 로직을 구현하였습니다.
+- RaceResult.java : Race에서 데이터를 업뎃하여 보내면 최대 거리를 구하여 우승자를 구하는
+  객체입니다.
+- UserInputService.java : InputValidator 객체에 생성된 메서드를 필요할 때마다 사용하기 위해서 만들었습니다.
+- InputValidator.java : 예외 처리 메서드를 모아뒀습니다.
+- RacingCarView.java : 입력과 출력 기능을 담당합니다.
+- Application.java : 프로그램을 실행합니다.
+
+## 기능 구현 목록
 
 1. 입력 메시지
 - 자동차 경주에 참가할 자동차 입력
@@ -110,12 +146,18 @@ jun : -----
 - 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
 - 사용자가 잘못된 값을 입력할 경우IllegalArgumentException을 발생
 - 차수별 시도 횟수 입력 시 숫자가 아니면 예외를 발생시킨다.
+- 자동차 이름이 문자, 숫자 이외의 것들이 들어갈 시 예외 발생
+- 문자열이 null 또는 빈 문자열인지 확인하는 메서드
+- 자동차를 2대 이상 입력했는 지 테스트
+- 자동차 이름 중복 시 예외 발생
 
 7. 데이터 관리
-- 레이싱 카 데이터
+- 자동차 데이터
+- 레이싱 경주 데이터
 - 우승자 데이터
-- 최대 거리 데이터
 
 8. 단위 테스트
+- 문자열 정상 입력 테스트
+- 각 예외 발생 확인 테스트
 
 
