@@ -3,14 +3,16 @@ package racingcar.domain;
 public class Car {
     private String carName;
     private int currentDistances;
+    private MoveStrategy moveStrategy;
 
-    public Car(String carName) {
+    public Car(String carName, MoveStrategy moveStrategy) {
         this.carName = carName;
+        this.moveStrategy = moveStrategy;
         currentDistances = 0;
     }
 
     public int move(){
-        if(RandomMoveStrategy.randomMoveStrategy())
+        if(moveStrategy.isAllowedToAdvance())
             currentDistances++;
         return currentDistances;
     }
