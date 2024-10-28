@@ -41,12 +41,10 @@ public class RacingCarService {
         racingRepository.saveRacingCar(racingCar);
     }
 
-    // TODO : 시도횟수 입력받기
     public void inputTryNumber(String tryNumber) {
         this.tryNumber = NameValidator.validNumber(tryNumber);
     }
 
-    // TODO : 시도횟수 만큼 랜덤 숫자 뽑기
     public void startGame(){
         for (int i = 0; i < tryNumber ; i++) {
             for (RacingCar racingCar : racingRepository.getRacingCars()) {
@@ -59,7 +57,6 @@ public class RacingCarService {
         saveWinners();
     }
 
-    // TODO : 4 이상인 경우 전진하기
     public void moveRacingCar(RacingCar racingCar, int number){
         if(number > 4){
             racingCar.move();

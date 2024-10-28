@@ -16,7 +16,6 @@ public class RacingCarController {
         this.racingCarService = new RacingCarService();
     }
 
-    // TODO : 경기 흐름 제어
     public void run() {
         inputView.inputCarNameUi();
         racingCarService.inputCarName(Console.readLine());

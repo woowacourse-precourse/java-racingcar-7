@@ -18,7 +18,6 @@ public class InMemoryRacingCarRepository implements RacingCarRepository {
         return instance;
     }
 
-    // TODO : RacingCar 저장
     @Override
     public void saveRacingCar(RacingCar racingCar) {
         int existingCarIndex = findCarIndexByName(racingCar.getName());
@@ -40,7 +39,6 @@ public class InMemoryRacingCarRepository implements RacingCarRepository {
         return -1;
     }
 
-    // TODO : RacingCar 반환
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
