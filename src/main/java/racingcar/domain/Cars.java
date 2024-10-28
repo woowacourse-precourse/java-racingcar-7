@@ -12,10 +12,6 @@ public class Cars {
         }
     }
 
-    public ArrayList<Car> getCars() {
-        return cars;
-    }
-
     public int size(){
         return cars.size();
     }

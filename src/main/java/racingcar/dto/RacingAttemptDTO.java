@@ -20,4 +20,8 @@ public class RacingAttemptDTO {
         if(racingAttempts < 1)
             throw new IllegalArgumentException("시도 횟수는 1 이상이여야 합니다");
     }
+
+    public int getRacingAttempts() {
+        return racingAttempts;
+    }
 }
