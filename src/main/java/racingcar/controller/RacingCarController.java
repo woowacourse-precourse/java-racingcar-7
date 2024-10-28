@@ -1,12 +1,9 @@
 package racingcar.controller;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
 import racingcar.exception.ErrorCode;
-import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.service.RacingCarGameService;
+import racingcar.service.MovingCarService;
+import racingcar.service.MovingCarServiceImpl;
 import racingcar.service.SeperateCarNameService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -14,19 +11,19 @@ import racingcar.view.OutputView;
 public class RacingCarController {
 
     private final SeperateCarNameService seperateCarNameService;
-    private final RacingCarGameService racingCarGameService;
+    private final MovingCarService movingCarService;
 
     private final OutputView outputView;
     private final InputView inputView;
 
 
     public RacingCarController(final SeperateCarNameService seperateCarNameService,
-                               final RacingCarGameService racingCarGameService,
+                               final MovingCarServiceImpl movingCarServiceImpl,
                                final OutputView outputView,
                                final InputView inputView){
 
         this.seperateCarNameService = seperateCarNameService;
-        this.racingCarGameService = racingCarGameService;
+        this.movingCarService = movingCarServiceImpl;
         this.outputView = outputView;
         this.inputView = inputView;
 
@@ -63,7 +60,7 @@ public class RacingCarController {
 
         for(int i=0;i<countOfTry;i++){
 
-            racingCarGameService.moveCars(cars);
+            movingCarService.moveCars(cars);
             cars.getCars().forEach(car -> outputView.printCarsMove(car.getName(),car.getMoveCount()));
             System.out.println();
 

@@ -5,11 +5,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.ErrorCode;
-import racingcar.service.RacingCarGameService;
+import racingcar.service.MovingCarServiceImpl;
 
 class CarsTest {
 
@@ -53,11 +52,11 @@ class CarsTest {
 
         //given
         List<String> carNames = List.of("jinu","pobi","pepe");
-        RacingCarGameService racingCarGameService = new RacingCarGameService();
+        MovingCarServiceImpl movingCarServiceImpl = new MovingCarServiceImpl();
         Cars cars = new Cars(carNames);
         assertRandomNumberInRangeTest(
                 () -> {
-                    racingCarGameService.moveCars(cars);
+                    movingCarServiceImpl.moveCars(cars);
                 },
                 4, 3,9
         );
@@ -77,11 +76,11 @@ class CarsTest {
 
         //given
         List<String> carNames = List.of("jinu","pobi","pepe");
-        RacingCarGameService racingCarGameService = new RacingCarGameService();
+        MovingCarServiceImpl movingCarServiceImpl = new MovingCarServiceImpl();
         Cars cars = new Cars(carNames);
         assertRandomNumberInRangeTest(
                 () -> {
-                    racingCarGameService.moveCars(cars);
+                    movingCarServiceImpl.moveCars(cars);
                 },
                 1, 3,9
         );

@@ -3,8 +3,10 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Cars;
 
-public class RacingCarGameService {
+public class MovingCarServiceImpl implements MovingCarService{
 
+
+    @Override
     public void moveCars(Cars cars){
 
         cars.getCars().forEach(car->{
