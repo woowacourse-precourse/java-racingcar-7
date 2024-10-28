@@ -30,8 +30,8 @@ public class RacingCarController {
         int integerCarRacingRepeatCount = Integer.parseInt(inputCarRacingRepeatCount);
 
         for (int i = 0; i < integerCarRacingRepeatCount; i++) {
-            racingCarService.advanceRacingCar();
-            List<String[]> extractedCarNameAndAdvanceResults = racingCarService.extractCarNameAndAdvanceResult();
+            racingCarService.advanceRacingCars();
+            List<String[]> extractedCarNameAndAdvanceResults = racingCarService.getCarNamesAndAdvanceResults();
             for (String[] carNameAndAdvanceResult : extractedCarNameAndAdvanceResults) {
                 outputView.printCarRacingResult(carNameAndAdvanceResult[0], carNameAndAdvanceResult[1]);
             }

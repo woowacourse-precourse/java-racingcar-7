@@ -4,9 +4,8 @@ import racingcar.domain.RacingCar;
 import racingcar.validator.CarNameValidator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class RacingCarService {
     private final List<RacingCar> racingCars;
@@ -21,29 +20,28 @@ public class RacingCarService {
 
     public void createRacingCars(String inputCarsName) {
         String[] carsNames = splitCarsName(inputCarsName);
-        carNameValidator.validateCarNameIsEmpty(inputCarsName);
         createRacingCarsBySplitCarsName(carsNames);
     }
 
-    public void advanceRacingCar() {
-        for (RacingCar racingCarTemp : racingCars) {
-            if (racingCarTemp.shouldAdvance()) {
-                racingCarTemp.addAdvanceResult();
+    public void advanceRacingCars() {
+        for (RacingCar car : racingCars) {
+            if (car.shouldAdvance()) {
+                car.addAdvanceResult();
             }
         }
     }
 
-    public List<String[]> extractCarNameAndAdvanceResult() {
+    public List<String[]> getCarNamesAndAdvanceResults() {
         List<String[]> carNameAndAdvanceResultList = new ArrayList<>();
-        for (RacingCar racingCarTemp : this.racingCars) {
-            String carNameTemp = racingCarTemp.getCarName();
-            String advanceResultTemp = charListToString(racingCarTemp.getAdvanceResults());
-            carNameAndAdvanceResultList.add(new String[]{carNameTemp, advanceResultTemp});
+        for (RacingCar car : racingCars) {
+            String carName = car.getCarName();
+            String advanceResult = convertAdvanceResultsToString(car.getAdvanceResults());
+            carNameAndAdvanceResultList.add(new String[]{carName, advanceResult});
         }
         return carNameAndAdvanceResultList;
     }
 
-    public String charListToString(List<Character> advanceResults) {
+    public String convertAdvanceResultsToString(List<Character> advanceResults) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Character advanceSymbol : advanceResults) {
             stringBuilder.append(advanceSymbol);
@@ -52,14 +50,17 @@ public class RacingCarService {
     }
 
     public String[] splitCarsName(String inputCarsName) {
-        return Arrays.stream(inputCarsName.split(SPLIT_SEPARATOR))
-                .map(String::trim)
-                .toArray(String[]::new);
+        String[] names = inputCarsName.split(SPLIT_SEPARATOR);
+        for (int i = 0; i < names.length; i++) {
+            names[i] = names[i].trim();
+        }
+        return names;
     }
 
     public void createRacingCarsBySplitCarsName(String[] carsNames) {
         for (String carName : carsNames) {
             carNameValidator.validateCarNameLength(carName);
+            carNameValidator.validateCarNameIsEmpty(carName);
             this.racingCars.add(new RacingCar(carName, new ArrayList<>()));
         }
     }
@@ -71,17 +72,24 @@ public class RacingCarService {
     }
 
     private int findMaxAdvanceCount() {
-        return racingCars.stream()
-                .mapToInt(car -> car.getAdvanceResults().size())
-                .max()
-                .orElse(0);
+        int max = 0;
+        for (RacingCar car : racingCars) {
+            int advanceCount = car.getAdvanceResults().size();
+            if (advanceCount > max) {
+                max = advanceCount;
+            }
+        }
+        return max;
     }
 
-    private List<String> findWinners(int maxAdvanceCount) {
-        return racingCars.stream()
-                .filter(car -> car.getAdvanceResults().size() == maxAdvanceCount)
-                .map(RacingCar::getCarName)
-                .collect(Collectors.toList());
+    private List<String> findWinners(int maxAdvances) {
+        List<String> winners = new ArrayList<>();
+        for (RacingCar car : racingCars) {
+            if (car.getAdvanceResults().size() == maxAdvances) {
+                winners.add(car.getCarName());
+            }
+        }
+        return winners;
     }
 
     private String formatWinners(List<String> winners) {

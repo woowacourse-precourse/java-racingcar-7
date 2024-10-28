@@ -28,7 +28,7 @@ class RacingCarServiceTest {
         String input = "car1,car2,car3";
         racingCarService.createRacingCars(input);
 
-        List<String[]> carInfo = racingCarService.extractCarNameAndAdvanceResult();
+        List<String[]> carInfo = racingCarService.getCarNamesAndAdvanceResults();
 
         assertThat(carInfo.size()).isEqualTo(3);
         List<String> expectedNames = Arrays.asList("car1", "car2", "car3");
@@ -43,7 +43,7 @@ class RacingCarServiceTest {
         String[] carNames = {"car1", "car2", "car3"};
         racingCarService.createRacingCarsBySplitCarsName(carNames);
 
-        List<String[]> carInfo = racingCarService.extractCarNameAndAdvanceResult();
+        List<String[]> carInfo = racingCarService.getCarNamesAndAdvanceResults();
 
         assertThat(carInfo.size()).isEqualTo(3);
         assertThat(carInfo.get(0)[0]).isEqualTo("car1");
@@ -68,7 +68,7 @@ class RacingCarServiceTest {
         advanceResults.add('B');
         advanceResults.add('C');
 
-        String result = racingCarService.charListToString(advanceResults);
+        String result = racingCarService.convertAdvanceResultsToString(advanceResults);
 
         assertThat(result).isEqualTo("ABC");
     }
