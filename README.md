@@ -4,7 +4,7 @@
 
 ![Generic badge](https://img.shields.io/badge/precourse-week2-green.svg)
 ![Generic badge](https://img.shields.io/badge/version-1.0.1-brightgreen.svg)
-![Generic badge](https://img.shields.io/badge/test-18_passed-blue.svg)
+![Generic badge](https://img.shields.io/badge/test-19_passed-blue.svg)
 
 ## 목차
 
@@ -148,6 +148,8 @@
 ## 📌 결과
 
 ### ✔️ 실행 결과
+
+![week2](https://github.com/user-attachments/assets/620752ac-6192-4357-bdcf-bf13e22f502f)
 
 ### ✔️ 클래스 다이어그램
 
