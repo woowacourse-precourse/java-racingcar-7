@@ -12,12 +12,15 @@ public class StringUtil {
     private StringUtil(){};
     public static List<String> splitNames(String carNames, String delimiter){
         return Arrays.stream(carNames.split(delimiter))
+                .map(String::strip)
                 .peek(i -> {
-                    if(i.length()>5){
+                    if (i.length() > 5) {
                         ExceptionHandler.handleIllegalArgumentException(ErrorMessage.INVALID_NAME_LENGTH);
                     }
+                    if (i.isEmpty()) {
+                        ExceptionHandler.handleIllegalArgumentException(ErrorMessage.NAME_BLANK);
+                    }
                 })
-                .map(String::strip)
                 .collect(Collectors.toList());
     }
 

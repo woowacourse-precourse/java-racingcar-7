@@ -42,4 +42,10 @@ public class RacingCarService {
         }
     }
 
+    private void checkDuplicatedName(final Collection<String> carNames){
+        Set<String> nameSet = new HashSet<>(carNames);
+        if(nameSet.size() != carNames.size()){
+            ExceptionHandler.handleIllegalArgumentException(ErrorMessage.DUPLICATED_NAME);
+        }
+    }
 }
