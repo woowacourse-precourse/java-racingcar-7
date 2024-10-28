@@ -10,6 +10,7 @@ public class OutputView {
     private static final String CAR_POSITION_MARKER = "-";
     private static  final String POSITION_DISPLAY_FORMAT = "%s : %s%n";
     private static final String RESULT_MESSAGE_FORMAT = "최종 우승자 : %s%n";
+    private static final String WINNER_NAME_SEPARATOR = ", ";
 
     public void displayCarNameInputMessage() {
         System.out.println(CAR_NAME_INPUT_MESSAGE);
@@ -37,6 +38,6 @@ public class OutputView {
 
     public void displayRaceResult(List<Car> winners) {
         List<String> winnerNames = winners.stream().map(Car::getName).toList();
-        System.out.printf(RESULT_MESSAGE_FORMAT, String.join(", ", winnerNames));
+        System.out.printf(RESULT_MESSAGE_FORMAT, String.join(WINNER_NAME_SEPARATOR, winnerNames));
     }
 }
