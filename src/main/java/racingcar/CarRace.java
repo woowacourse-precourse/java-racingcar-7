@@ -29,7 +29,7 @@ public class CarRace {
         for (Map.Entry<String, Integer> entry : carPositions.entrySet()) {
             String carName = entry.getKey();
             Integer position = entry.getValue();
-            System.out.println(carName + ": " + "-".repeat(position));
+            System.out.println(carName + " : " + "-".repeat(position));
         }
         System.out.println();
     }
