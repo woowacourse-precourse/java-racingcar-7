@@ -30,7 +30,7 @@
     │
     └── view/
     │   ├── InputView
-    │    └── OutputView
+    │   └── OutputView
     │
     └── Application
     
@@ -176,7 +176,7 @@
 
 <br>
 
-> 하나의 이름만 있는 경우 ("woo")
+> 하나의 이름만 있는 경우 `"woo"`
 - 임의로  `car`를 하나 생성해 게임을 돌렸다.
 - 출력 : `woo, car`
 
