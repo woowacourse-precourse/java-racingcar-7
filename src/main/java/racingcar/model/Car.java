@@ -8,8 +8,10 @@ public class Car {
         this.name = name;
     }
 
-    public void move() {
-        position++;
+    public void move(RandomNumber randomNumber) {
+        if (randomNumber.isMovable()) {
+            position++;
+        }
     }
 
     public String getName() {
