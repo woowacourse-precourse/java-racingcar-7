@@ -10,10 +10,6 @@ public class Distance {
         return distance;
     }
 
-    public void setDistance(int goForInt){
-        this.distance = distance+goForInt;
-    }
-
     public void goForInt(int randomValue) {
         if(isAbleToGo(randomValue)) {
             distance += randomValue;
