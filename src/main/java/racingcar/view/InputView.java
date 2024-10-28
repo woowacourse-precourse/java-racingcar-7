@@ -11,4 +11,22 @@ public class InputView {
 		String input = Console.readLine();
 		return Arrays.asList(input.split(","));
 	}
+
+	public int readTries() {
+		System.out.println("시도할 회수는 몇회인가요?");
+		String input = Console.readLine();
+		validateNumber(input);
+		return Integer.parseInt(input);
+	}
+
+	private void validateNumber(String input) {
+		try {
+			int number = Integer.parseInt(input);
+			if (number <= 0) {
+				throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+			}
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
+		}
+	}
 }
