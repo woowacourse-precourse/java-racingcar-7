@@ -30,7 +30,7 @@ class ApplicationTest extends NsTest {
 
 
     @Test
-    void 예외_테스트() {
+    void 이름_입력시_다섯_글자_초과_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
