@@ -11,8 +11,9 @@ public class RaceService {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public boolean isMove(/*int randomNumber*/) {
-        return false; // 생성한 무작위 숫자 전진/멈춤 판단
+
+    public boolean isMove(int randomNumber) {
+        return randomNumber >= 4;
     }
 
     public List<String> getChampion(/*List<Car> participant*/) {
