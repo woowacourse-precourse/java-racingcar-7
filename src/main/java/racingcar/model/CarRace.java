@@ -22,4 +22,16 @@ public class CarRace {
     public Boolean checkTryCnt(){
         return this.currentTryCnt < this.totalTryCnt;
     }
+
+    public List<Car> process() {
+        if (checkTryCnt()) {
+            for (Car car : cars) {
+                car.run();
+            }
+
+            this.currentTryCnt += 1;
+        }
+
+        return cars;
+    }
 }
