@@ -39,6 +39,18 @@ public class ValidatorTest{
 
     @Test
     @DisplayName("자동차 이름 검증 - 공백 문자")
+    void validateCarNameTest_blankName() {
+        // 빈 문자열이 입력될 경우 INVALID_CAR_NAME 예외 메시지가 발생해야 함
+        IllegalArgumentException exception = assertThrowsExactly(
+                IllegalArgumentException.class,
+                () -> validator.validateCarName(""),
+                "예외가 발생해야 합니다."
+        );
+        assertEquals(ErrorCode.INVALID_CAR_NAME.getMessage(), exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("자동차 이름 검증 - 빈 문자열")
     void validateCarNameTest_emptyName() {
         // 빈 문자열이 입력될 경우 INVALID_CAR_NAME 예외 메시지가 발생해야 함
         IllegalArgumentException exception = assertThrowsExactly(

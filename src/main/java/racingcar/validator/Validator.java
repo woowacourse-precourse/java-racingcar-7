@@ -5,7 +5,7 @@ import racingcar.exception.ExceptionHandler;
 
 public class Validator {
     public void validateCarName(String name) {
-        if (name == null || name.isEmpty() || name.length() > 5) {
+        if (name == null || name.trim().isEmpty() || name.length() > 5) {
             ExceptionHandler.throwIllegalArgException(ErrorCode.INVALID_CAR_NAME);
         }
     }
