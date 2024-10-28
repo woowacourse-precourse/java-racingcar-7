@@ -8,7 +8,7 @@ public class OutputView {
     }
 
     public void printCarMove() {
-        System.out.println(carMove.toString());
+        System.out.print(carMove.toString());
     }
 
     public void printWinner(String winner) {
