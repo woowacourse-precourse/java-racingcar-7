@@ -10,6 +10,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class SeparateCarNamesTest {
 
+    private final SeparateCarNames separateCarNames = new SeparateCarNames();
+
     static Stream<Arguments> provideInValidCommaFormat() {
         return Stream.of(
                 Arguments.of(",pobi,woni,jun"),
@@ -25,7 +27,7 @@ public class SeparateCarNamesTest {
     @MethodSource("provideInValidCommaFormat")
     void Comma_Should_Be_In_BetWeen_String(String InputCommandLine) {
         assertThrows(IllegalArgumentException.class, () -> {
-            RacingCarGame racingCarGame = new RacingCarGame(SeparateCarNames.separateCarNames(InputCommandLine));
+            RacingCarGame racingCarGame = new RacingCarGame(separateCarNames.separateCarNames(InputCommandLine));
         });
     }
 }

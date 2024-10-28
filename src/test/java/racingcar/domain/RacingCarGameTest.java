@@ -15,6 +15,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class RacingCarGameTest {
 
+    private final RacingCarsGroup racingCarsGroup = new RacingCarsGroup();
+
     static Stream<Arguments> provideInValidCarNames() {
         return Stream.of(
                 Arguments.of(List.of("pooobi", "junnn", "gooood")),
@@ -45,9 +47,9 @@ public class RacingCarGameTest {
     void Number_Generated_Should_be_In_Between_Zero_To_Nine(int totalCars) {
         RacingCarGame racingCarGame = new RacingCarGame();
         List<Integer> move = racingCarGame.generateMove(totalCars);
-        for (Integer Generatednumber : move) {
+        for (Integer GeneratedNumber : move) {
             assertDoesNotThrow(() -> {
-                if (!(Generatednumber >= 0 && Generatednumber <= 9)) {
+                if (!(GeneratedNumber >= 0 && GeneratedNumber <= 9)) {
                     throw new IllegalArgumentException("잘못된 숫자가 생성됐습니다.");
                 }
             });
@@ -60,7 +62,7 @@ public class RacingCarGameTest {
     void Car_Only_Move_If_Generated_Number_Four_Or_Bigger_Than_Four(List<String> carNames, List<Integer> moves) {
         RacingCarGame racingCarGame = new RacingCarGame(carNames);
         racingCarGame.moveEachCars(moves);
-        List<Car> cars = RacingCarsGroup.getCars();
+        List<Car> cars = racingCarsGroup.getCars();
 
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);

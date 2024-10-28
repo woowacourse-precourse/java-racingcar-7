@@ -13,6 +13,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class CarNameValidationTest {
 
+    private final CarNameValidation carNameValidation = new CarNameValidation();
+
     static Stream<Arguments> provideInvalidCarNames() {
         return Stream.of(
                 Arguments.of(List.of("pobiiii", "woni", "jun")),
@@ -41,14 +43,14 @@ public class CarNameValidationTest {
     @ParameterizedTest
     @MethodSource("provideInvalidCarNames")
     void Input_Car_Names_Invalid_Condition(List<String> carNames) {
-        assertThrows(IllegalArgumentException.class, () -> CarNameValidation.validateName(carNames));
+        assertThrows(IllegalArgumentException.class, () -> carNameValidation.validateName(carNames));
     }
 
     @DisplayName("이름 조건 만족하는 경우_예외 발생하지 않음")
     @ParameterizedTest
     @MethodSource("provideValidCarNames")
     void Input_Car_Names_Valid_Condition(List<String> carNames) {
-        assertDoesNotThrow(() -> CarNameValidation.validateName(carNames));
+        assertDoesNotThrow(() -> carNameValidation.validateName(carNames));
 
     }
 

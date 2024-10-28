@@ -4,8 +4,8 @@ import java.util.List;
 
 public class GameRoundHistory {
 
-    private static final StringBuilder eachRoundResult = new StringBuilder();
-    private static final StringBuilder finalResult = new StringBuilder();
+    private final StringBuilder eachRoundResult = new StringBuilder();
+    private final StringBuilder finalResult = new StringBuilder();
 
     public GameRoundHistory() {
     }
@@ -34,11 +34,11 @@ public class GameRoundHistory {
         }
     }
 
-    public static String getEachRoundResult() {
+    public String getEachRoundResult() {
         return eachRoundResult.toString();
     }
 
-    public static String getFinalResult() {
+    public String getFinalResult() {
         return finalResult.toString();
     }
 }

@@ -11,6 +11,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class InputNumberValidationTest {
 
+    private final InputNumberValidation inputNumberValidation = new InputNumberValidation();
+
     static Stream<Arguments> provideInvalidNumbers() {
         return Stream.of(
                 Arguments.of("10 "),
@@ -37,13 +39,13 @@ public class InputNumberValidationTest {
     @ParameterizedTest
     @MethodSource("provideInvalidNumbers")
     void Input_Number_Contains_Invalid_Element(String inputNumber) {
-        assertThrows(IllegalArgumentException.class, () -> InputNumberValidation.validateInputNumber(inputNumber));
+        assertThrows(IllegalArgumentException.class, () -> inputNumberValidation.validateInputNumber(inputNumber));
     }
 
     @DisplayName("숫자 조건에 맞는 경우")
     @ParameterizedTest
     @MethodSource("provideValidNumbers")
     void Input_Number_Contains_Valid_Element(String inputNumber) {
-        assertDoesNotThrow(() -> InputNumberValidation.validateInputNumber(inputNumber));
+        assertDoesNotThrow(() -> inputNumberValidation.validateInputNumber(inputNumber));
     }
 }

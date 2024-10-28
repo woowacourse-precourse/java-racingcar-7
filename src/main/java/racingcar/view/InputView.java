@@ -5,15 +5,18 @@ import racingcar.validate.InputNumberValidation;
 import racingcar.view.enums.ViewMessages;
 
 public class InputView {
-    public static String enterCarNames() {
+
+    private final InputNumberValidation inputNumberValidation = new InputNumberValidation();
+
+    public String enterCarNames() {
         System.out.println(ViewMessages.ENTER_CAR_NAMES.getViewMessages());
         return Console.readLine();
     }
 
-    public static String enterNumberOfAttempts() {
+    public String enterNumberOfAttempts() {
         System.out.println(ViewMessages.ENTER_NUMBER_OF_ATTEMPTS.getViewMessages());
         String inputNumber = Console.readLine();
-        InputNumberValidation.validateInputNumber(inputNumber);
+        inputNumberValidation.validateInputNumber(inputNumber);
         return inputNumber;
     }
 }

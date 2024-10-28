@@ -1,7 +1,6 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.domain.GameRoundHistory;
 import racingcar.domain.RacingCarGame;
 import racingcar.domain.SeparateCarNames;
 import racingcar.view.InputView;
@@ -9,21 +8,21 @@ import racingcar.view.OutputView;
 
 public class RacingCarController {
 
-    public RacingCarController() {
-    }
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+    private final SeparateCarNames separateCarNames = new SeparateCarNames();
 
     public void run() {
-        String inputCarNames = InputView.enterCarNames();
-        String inputNumber = InputView.enterNumberOfAttempts();
+        String inputCarNames = inputView.enterCarNames();
+        String inputNumber = inputView.enterNumberOfAttempts();
 
-        List<String> carNames = SeparateCarNames.separateCarNames(inputCarNames);
+        List<String> carNames = separateCarNames.separateCarNames(inputCarNames);
 
         RacingCarGame racingCarGame = new RacingCarGame(carNames);
 
-        OutputView.attemptsResult();
-
-        OutputView.eachAttemptsResult(racingCarGame.playCarGame(Integer.parseInt(inputNumber)));
-        OutputView.finalWinners();
-        OutputView.finalWinnersResult(GameRoundHistory.getFinalResult());
+        outputView.attemptsResult();
+        outputView.eachAttemptsResult(racingCarGame.playCarGame(Integer.parseInt(inputNumber)));
+        outputView.finalWinners();
+        outputView.finalWinnersResult(racingCarGame.gameRoundHistory.getFinalResult());
     }
 }

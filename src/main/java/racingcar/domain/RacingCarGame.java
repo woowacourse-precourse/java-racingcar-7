@@ -7,27 +7,29 @@ import racingcar.validate.CarNameValidation;
 
 public class RacingCarGame {
 
-    List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
+    public RacingCarsGroup racingCarsGroup;
+    public GameRoundHistory gameRoundHistory = new GameRoundHistory();
 
     public RacingCarGame() {
     }
 
     public RacingCarGame(List<String> carNames) {
-        CarNameValidation.validateName(carNames);
+        CarNameValidation carNameValidation = new CarNameValidation();
+        carNameValidation.validateName(carNames);
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
-        RacingCarsGroup racingCarsGroup = new RacingCarsGroup(cars);
+        racingCarsGroup = new RacingCarsGroup(cars);
     }
 
     public String playCarGame(int inputNumbersOfAttempts) {
-        GameRoundHistory gameRoundHistory = new GameRoundHistory();
         for (int i = 0; i < inputNumbersOfAttempts; i++) {
             moveEachCars(generateMove(cars.size()));
             gameRoundHistory.storeGameRoundHistory(cars);
         }
 
-        gameRoundHistory.storeFinalWinners(RacingCarsGroup.getFinalWinners(cars));
+        gameRoundHistory.storeFinalWinners(racingCarsGroup.getFinalWinners(cars));
         return gameRoundHistory.getEachRoundResult();
     }
 
@@ -42,7 +44,7 @@ public class RacingCarGame {
     }
 
     public void moveEachCars(List<Integer> moves) {
-        List<Car> cars = RacingCarsGroup.getCars();
+        List<Car> cars = racingCarsGroup.getCars();
         for (int i = 0; i < moves.size(); i++) {
             if (moves.get(i) >= 4) {
                 cars.get(i).increasePosition();
