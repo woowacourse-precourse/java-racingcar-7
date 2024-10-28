@@ -9,7 +9,8 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
-        List<String> splitCarNames = getCarNames();
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        List<String> splitCarNames = getCarNames(Console.readLine());
 
         List<Integer> carMovementCounts = new ArrayList<>();
 
@@ -36,10 +37,14 @@ public class Application {
         winner(splitCarNames, carMovementCounts);
     }
 
-    private static List<String> getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNames = Console.readLine();
+    public static List<String> getCarNames(String carNames) {
+
+        if (carNames == null || carNames.isEmpty()) {
+            throw new IllegalArgumentException("경주할 자동차가 없습니다.");
+        }
+
         List<String> splitCarNames = new ArrayList<>(List.of(carNames.split(",")));
+
         return splitCarNames;
     }
 
@@ -59,7 +64,7 @@ public class Application {
         }
     }
 
-    private static void winner(List<String> carNames, List<Integer> carMovementCounts) {
+    public static void winner(List<String> carNames, List<Integer> carMovementCounts) {
 
         // "-" 출력이 가장 많은 값
         int maxMoves = carMovementCounts.get(0);
