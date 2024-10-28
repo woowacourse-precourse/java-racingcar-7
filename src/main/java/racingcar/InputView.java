@@ -2,7 +2,10 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputHandler {
+public class InputView {
+    private InputView() {
+
+    }
 
     private static void validateInput(final String input) {
         if (input == null || input.isEmpty()) {
