@@ -5,16 +5,16 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
-import racingcar.utils.MoveInputProcessor;
+import racingcar.utils.TotalRoundsInputProcessor;
 
-public class MoveInputProcessorTest {
+public class TotalRoundsInputProcessorTest {
 
     @DisplayName("입력 값이 빈 문자열 또는 공백인 경우 - IllegalArgumentException 반환")
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = {"  ", "\t", "\n"})
     void testEmptyOrBlankInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new MoveInputProcessor(input));
+        assertThrows(IllegalArgumentException.class, () -> new TotalRoundsInputProcessor(input));
     }
 
 
@@ -22,7 +22,7 @@ public class MoveInputProcessorTest {
     @ParameterizedTest
     @ValueSource(strings = {"0", "-2", "-100"})
     void testZeroOrNegativeInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new MoveInputProcessor(input));
+        assertThrows(IllegalArgumentException.class, () -> new TotalRoundsInputProcessor(input));
     }
 
 
@@ -30,7 +30,7 @@ public class MoveInputProcessorTest {
     @ParameterizedTest
     @ValueSource(strings = {"아이", "2년", "1임"})
     void testStringInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new MoveInputProcessor(input));
+        assertThrows(IllegalArgumentException.class, () -> new TotalRoundsInputProcessor(input));
     }
 
 
@@ -38,7 +38,7 @@ public class MoveInputProcessorTest {
     @ParameterizedTest
     @MethodSource("provideValidCount")
     void testValidCount(String input, int expected) {
-        MoveInputProcessor moveInputProcessor = new MoveInputProcessor(input);
+        TotalRoundsInputProcessor moveInputProcessor = new TotalRoundsInputProcessor(input);
         Integer result = moveInputProcessor.getMoveCount();
         assertEquals(expected, result);
 
