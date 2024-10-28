@@ -22,7 +22,7 @@ class CarTest {
     }
 
     @Nested
-    class create {
+    class Create {
 
         @ParameterizedTest
         @ValueSource(strings = {"x", "we", "our", "pobi", "crong", "honux", "ABCDE", "aBCdE"})
@@ -74,7 +74,7 @@ class CarTest {
     }
 
     @Nested
-    class move extends NsTest {
+    class Move extends NsTest {
 
         private static final int MOVING_FORWARD = 4;
         private static final int STOP = 3;

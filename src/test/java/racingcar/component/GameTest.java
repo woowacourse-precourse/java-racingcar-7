@@ -16,7 +16,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class GameTest {
 
     @Nested
-    class create {
+    class Create {
 
         @ParameterizedTest
         @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
@@ -37,7 +37,7 @@ class GameTest {
     }
 
     @Nested
-    class round extends NsTest {
+    class Round extends NsTest {
         private static final int MOVING_FORWARD = 4;
         private static final int STOP = 3;
 
