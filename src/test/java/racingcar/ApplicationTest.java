@@ -31,6 +31,54 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 시도횟수_유효성검사() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 자동차이름_공백_유효성검사() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,,woni", "2"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 자동차이름_길이_예외검사() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,longname", "2"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 자동차이름_중복_예외검사() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,pobi", "3"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 시도횟수_숫자가아닌경우_예외검사() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", "two"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 참가자_1명_예외검사() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi", "2"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
