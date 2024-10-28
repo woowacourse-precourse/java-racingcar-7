@@ -2,13 +2,17 @@ package racingcar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RaceControllerTest {
     private RaceController raceController;
+    private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
     @Test
     void 자동차_이름_유효성_검증_테스트() {
@@ -26,6 +30,8 @@ public class RaceControllerTest {
     void setup() {
         raceController = new RaceController();
         raceController.parseAndValidateCarNames("pobi,crong,honux");
+
+        System.setOut(new PrintStream(outputStream));
     }
 
     @Test
@@ -36,7 +42,24 @@ public class RaceControllerTest {
 
         for (Car car : cars) {
             int position = car.getPosition();
-            System.out.println(car.getName() + " 위치: " + position); // 위치를 콘솔로 출력해 확인
+            System.out.println(car.getName() + " 위치: " + position);
         }
+    }
+
+    @Test
+    void 경주_시도_횟수에_따라_자동차_상태와_출력_형식_확인() {
+        raceController.startRace(5);
+
+        String output = outputStream.toString();
+
+        assertTrue(output.contains("실행 결과"));
+
+        List<Car> cars = raceController.getCars();
+        for (Car car : cars) {
+            assertTrue(output.contains(car.getName() + " : "));
+        }
+
+        int resultCount = output.split("pobi : ").length - 1;
+        assertTrue(resultCount == 5, "시도 횟수만큼의 결과가 출력되어야 합니다.");
     }
 }
