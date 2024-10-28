@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -113,17 +112,6 @@ public class InputViewTest {
 		System.setIn(inputStream);
 
 	    // WHEN - THEN
-		assertThatThrownBy(() -> inputView.readCountInput()).isInstanceOf(IllegalArgumentException.class);
-	}
-
-	@DisplayName("경주 최대 횟수를 초과하면 예외를 발생시킨다.")
-	public void maxCountTest() {
-		// GIVEN
-		String input = "10000";
-		inputStream = new ByteArrayInputStream(input.getBytes());
-		System.setIn(inputStream);
-
-		// WHEN - THEN
 		assertThatThrownBy(() -> inputView.readCountInput()).isInstanceOf(IllegalArgumentException.class);
 	}
 }

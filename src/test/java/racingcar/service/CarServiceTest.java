@@ -69,7 +69,7 @@ public class CarServiceTest {
 
 		// THEN
 		assertThat(winners.size()).isEqualTo(1);
-		assertThat(winners.get(0).getWinner()).isEqualTo("car1");
+		assertThat(winners.getFirst().getWinner()).isEqualTo("car1");
 	}
 
 	@Test
@@ -89,5 +89,25 @@ public class CarServiceTest {
 		assertThat(winners.size()).isEqualTo(2);
 		assertThat(winners.get(0).getWinner()).isEqualTo("car1");
 		assertThat(winners.get(1).getWinner()).isEqualTo("car2");
+	}
+
+	@Test
+	@DisplayName("시도 횟수가 0인 경우, 예외를 발생시킨다.")
+	public void zeroCountTest() {
+		// GIVEN
+		Integer count = 0;
+
+		// WHEN - THEN
+		assertThatThrownBy(() -> carService.isPossibleCount(count)).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	@DisplayName("시도 횟수가 10000 이상인 경우, 예외를 발생시킨다.")
+	public void overCountTest() {
+		// GIVEN
+		Integer count = 10000;
+
+		// WHEN - THEN
+		assertThatThrownBy(() -> carService.isPossibleCount(count)).isInstanceOf(IllegalArgumentException.class);
 	}
 }
