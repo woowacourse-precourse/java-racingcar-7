@@ -1,4 +1,5 @@
 package racingcar;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -83,8 +84,8 @@ public class Application {
 
     private static void carMove(String[] carNames, int[] carPositions) {
         for (int i = 0; i < carNames.length; i++) {
-            int randomValue = Randoms.pickNumberInRange(0,9);
-            if (randomValue >=4) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            if (randomValue >= 4) {
                 carPositions[i]++;
             }
         }
@@ -101,11 +102,11 @@ public class Application {
         int maxPosition = findMaxPosition(carPositions);
         StringBuilder winners = getWinners(carNames, carPositions, maxPosition);
 
-        System.out.println("최종 우승자 : "+ winners);
+        System.out.println("최종 우승자 : " + winners);
 
     }
 
-    private static int findMaxPosition(int[] carPositions) {
+    static int findMaxPosition(int[] carPositions) {
         int maxPosition = 0;
         for (int eachCarPosition : carPositions) {
             if (eachCarPosition > maxPosition) {
@@ -115,7 +116,7 @@ public class Application {
         return maxPosition;
     }
 
-    private static StringBuilder getWinners(String[] carNames, int[] carPositions, int maxPosition) {
+    static StringBuilder getWinners(String[] carNames, int[] carPositions, int maxPosition) {
         StringBuilder winners = new StringBuilder();
         for (int i = 0; i < carNames.length; i++) {
             addWinnerIfMaxPosition(carNames, carPositions, maxPosition, winners, i);
@@ -123,7 +124,8 @@ public class Application {
         return winners;
     }
 
-    private static void addWinnerIfMaxPosition(String[] carNames, int[] carPositions, int maxPosition, StringBuilder winners, int indexNum) {
+    private static void addWinnerIfMaxPosition(String[] carNames, int[] carPositions, int maxPosition,
+                                               StringBuilder winners, int indexNum) {
         if (carPositions[indexNum] == maxPosition) {
             if (winners.length() > 0) {
                 winners.append(", ");
