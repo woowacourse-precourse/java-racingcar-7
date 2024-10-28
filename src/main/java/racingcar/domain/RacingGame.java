@@ -8,15 +8,17 @@ import racingcar.view.Output;
 
 public class RacingGame {
 	private final Random random;
+	private final CarValidator carValidator;
 
-	public RacingGame(Random random) {
+	public RacingGame(Random random, CarValidator carValidator) {
 		this.random = random;
+		this.carValidator = carValidator;
 	}
 
 	public void start() {
 		Output.printRequestCarNames();
 		List<String> carNames = Input.readCarNames();
-		Cars cars = new Cars(carNames.stream().map(Car::new).toList());
+		Cars cars = new Cars(carNames.stream().map(name -> new Car(name, carValidator)).toList());
 
 		Output.printRequestTurnCount();
 		Turn turn = new Turn(Input.readTurn());
