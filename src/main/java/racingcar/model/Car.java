@@ -1,18 +1,15 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.message.ExceptionCode;
 
 public class Car {
 
-    private static final int RANDOM_EXPECTED = 4;
-
     private final String name;
-    private int distance;
+    private final Distance distance;
 
-    public Car(final String name) {
+    public Car(final String name, final Distance distance) {
         this.name = validate(name);
-        this.distance = 0;
+        this.distance = distance;
     }
 
     private String validate(final String name) {
@@ -28,11 +25,7 @@ public class Car {
     }
 
     public void goOrStop() {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-
-        if (randomNumber >= RANDOM_EXPECTED) {
-            this.distance += 1;
-        }
+        distance.moveOrNot();
     }
 
     public String getName() {
@@ -40,8 +33,7 @@ public class Car {
     }
 
     public int getDistance() {
-        return this.distance;
+        return this.distance.getPosition();
     }
-
 
 }

@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.dto.InputDTO;
 import racingcar.message.ExceptionCode;
 import racingcar.model.Car;
+import racingcar.model.Distance;
 import racingcar.view.InputCarNamesView;
 import racingcar.view.InputTurnCountView;
 
@@ -38,7 +39,8 @@ public class InputController {
         List<Car> carList = new ArrayList<>();
 
         for (final String name : inputCarNameList) {
-            Car car = new Car(name);
+            Distance distance = new Distance();
+            Car car = new Car(name, distance);
             carList.add(car);
         }
 
