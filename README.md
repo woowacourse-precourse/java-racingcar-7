@@ -19,7 +19,7 @@
   - printWinners() : 최종 우승자 출력
 
 ### 3. Controller 패키지 
-- GameController.java : 게임 컨트롤러 클래스
+- RacingGameController.java : 게임 컨트롤러 클래스
   - 입력 처리
   - 게임 진행
   - 결과 출력
