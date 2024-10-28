@@ -29,8 +29,8 @@ public class Race {
         for (int i = 0; i < totalRounds; i++) {
             runOneRound();
         }
-        Car leadingCar = findLeadingCar();
-        return decideWinners(leadingCar);
+
+        return decideWinners();
     }
 
     public void runOneRound() {
@@ -40,7 +40,14 @@ public class Race {
         }
     }
 
-    public Car findLeadingCar() {
+    private List<Car> decideWinners() {
+        Car leadingCar = findLeadingCar();
+        return cars.stream()
+                .filter(car -> car.isSamePositionAs(leadingCar))
+                .toList();
+    }
+
+    private Car findLeadingCar() {
         Car leader = cars.get(0);
         for (Car car : cars) {
             if (leader == null || car.isAheadOf(leader)) {
@@ -48,12 +55,6 @@ public class Race {
             }
         }
         return leader;
-    }
-
-    public List<Car> decideWinners(Car leadingCar) {
-        return cars.stream()
-                .filter(car -> car.isSamePositionAs(leadingCar))
-                .toList();
     }
 
 }
