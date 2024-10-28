@@ -16,19 +16,18 @@ public class Application {
         output.requestCarsName();
         ParticipatingCars cars = input.getCars();
 
-        output.requestGameCount();
-        int gameCount = input.getGameCount();
+        output.requestAttemptCount();
+        int tryCount = input.getAttemptCount();
 
-        output.printGameResult(cars, gameCount);
+        output.printAttemptResult(cars, tryCount);
 
         output.printWinner(cars);
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Application racingGame = new Application();
-        racingGame.run();
-
+        Application carRacing = new Application();
+        carRacing.run();
 
     }
 }

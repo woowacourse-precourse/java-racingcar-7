@@ -14,7 +14,7 @@ public class UserInput {
         return new ParticipatingCars(carsName);
     }
 
-    public int getGameCount() {
+    public int getAttemptCount() {
         String input = Console.readLine();
         validateEmptyInput(input);
         validateNumber(input);
