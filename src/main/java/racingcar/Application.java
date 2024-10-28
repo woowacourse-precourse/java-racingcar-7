@@ -1,7 +1,18 @@
 package racingcar;
 
+import racingcar.domain.NumberGenerator;
+import racingcar.external.RandomNumberGenerator;
+import racingcar.view.Input;
+import racingcar.view.Output;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Input input = new Input();
+        Output output = new Output();
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+
+        Racing racing = new Racing(input, output, numberGenerator);
+        racing.ready();
     }
 }
