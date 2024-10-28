@@ -15,7 +15,7 @@ public class Application {
         try {
             CarNameValidator carNameValidator = new CarNameValidator();
             RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-            CarNameService carNameService = new CarNameService(carNameValidator);
+            CarNameService carNameService = new CarNameService();
             AttemptCountValidator attemptCountValidator = new AttemptCountValidator();
 
             Input input = new Input(carNameValidator, attemptCountValidator);
