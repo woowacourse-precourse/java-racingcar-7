@@ -3,6 +3,7 @@ package racingcar.services;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import racingcar.exceptions.ErrorMessages;
 import racingcar.models.Cars;
 
 public class CarService {
@@ -29,7 +30,7 @@ public class CarService {
         try {
             return Integer.parseInt(tryCount);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다: " + tryCount);
+            throw new IllegalArgumentException(ErrorMessages.INVALID_TRY_COUNT);
         }
     }
 }
