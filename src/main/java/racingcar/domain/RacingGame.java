@@ -14,9 +14,7 @@ public class RacingGame {
     }
 
     public void start() {
-        for (int i = 0; i < tryCount; i++) {
-            playRound();
-        }
+        playRound();
     }
 
     private void playRound() {
