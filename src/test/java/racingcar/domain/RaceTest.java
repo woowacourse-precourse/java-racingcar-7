@@ -36,13 +36,7 @@ class RaceTest {
 
         List<Car> actualCarArrayList = race.getCarList();
 
-        assertEquals(expectedCarArrayList.size(), actualCarArrayList.size());
-
-        for (int idx = 0; idx < expectedCarArrayList.size(); idx++) {
-            assertEquals(expectedCarArrayList.get(idx).getName(), actualCarArrayList.get(idx).getName());
-            assertEquals(expectedCarArrayList.get(idx).getLocation(),
-                    actualCarArrayList.get(idx).getLocation());
-        }
+        assertEquals(expectedCarArrayList, actualCarArrayList);
     }
 
     @DisplayName("레이스를 시도할 횟수를 반환한다.")
