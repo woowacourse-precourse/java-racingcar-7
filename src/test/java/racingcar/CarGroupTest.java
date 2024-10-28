@@ -12,6 +12,21 @@ class CarGroupTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
+    @Test
+    public void 자동차_주행정보_출력_테스트() throws Exception {
+        //Given
+        CarGroup carGroup = new CarGroup(List.of(createTestCar("pobi"), createTestCar("woni")));
+        assertRandomNumberInRangeTest(
+                carGroup::accelerateAll,
+                MOVING_FORWARD, STOP
+        );
+        String expected = "pobi : -\nwoni : ";
+
+        //When
+        String actual = carGroup.getDrivingRecords();
+        //Then
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
 
     @Test
     public void 가장_멀리_전진한_자동차_테스트() throws Exception {

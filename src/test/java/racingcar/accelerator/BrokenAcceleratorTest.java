@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.Car;
 
 class BrokenAcceleratorTest {
-
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 

@@ -16,11 +16,7 @@ abstract class PromptTest {
     }
 
     protected void setInput(String input) {
-        if (input == null) {
-            System.setIn(null);
-        } else {
-            System.setIn(new ByteArrayInputStream(input.getBytes()));
-        }
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
     }
 
     protected String getOutput() {

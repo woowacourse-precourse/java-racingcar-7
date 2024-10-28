@@ -8,9 +8,9 @@ public class CarRacingResultPrompt implements Prompt {
     public void print(PromptModel promptModel) {
         Iterator<String> iterator = promptModel.get();
 
-        System.out.println("\n실행 결과");
+        System.out.print("\n실행 결과\n");
         while (iterator.hasNext()) {
-            System.out.println(iterator.next() + "\n");
+            System.out.print(iterator.next() + "\n\n");
         }
     }
 }

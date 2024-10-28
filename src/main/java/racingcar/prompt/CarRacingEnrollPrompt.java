@@ -21,10 +21,10 @@ public class CarRacingEnrollPrompt implements Prompt {
     @Override
     public void print(PromptModel promptModel) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        promptModel.add("carNames", readNonEmptyLine());
+        promptModel.add(CAR_NAMES_KEY, readNonEmptyLine());
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        promptModel.add("attempt", readNonEmptyLine());
+        promptModel.add(ATTEMPT_KEY, readNonEmptyLine());
 
         Console.close();
     }
