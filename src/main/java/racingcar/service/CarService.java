@@ -37,9 +37,13 @@ public class CarService {
         if (input == null || input.isEmpty() || !input.contains(",")) {
             throw new IllegalArgumentException(ExceptionMessage.DELIMITER_NONEXISTENTION_EXCEPTION.getMessage());
         }
-        if (input.matches(".*[^,].*,.*[^,].*")) { // 쉼표 외에 다른 구분자 체크
+        /*if (input.matches(".*[^,].*,.*[^,].*")) { // 쉼표 외에 다른 구분자 체크
+            throw new IllegalArgumentException(ExceptionMessage.DELIMITER_RANGE_EXCEPTION.getMessage());
+        }*/
+        if (!input.matches("^[^,]+(,[^,]+)*$")) {
             throw new IllegalArgumentException(ExceptionMessage.DELIMITER_RANGE_EXCEPTION.getMessage());
         }
+
         if (input.split(",").length < 2) {
             throw new IllegalArgumentException(ExceptionMessage.DELIMITER_DUPLICATION_EXCEPTION.getMessage());
         }
