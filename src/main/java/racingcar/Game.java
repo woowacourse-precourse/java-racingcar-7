@@ -60,4 +60,13 @@ public class Game {
         }
         return totalMoves;
     }
+
+    void printCarsPosition(List<Car> cars){
+        String mark = "-";
+        for(Car car : cars){
+            System.out.println(car.getName()+" : "+mark.repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
+
 }
