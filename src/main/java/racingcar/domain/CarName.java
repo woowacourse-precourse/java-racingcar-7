@@ -29,7 +29,6 @@ public class CarName {
         return length == 0 || length > MAX_CAR_NAME_LEN;
     }
 
-
     @Override
     public String toString() {
         return name;

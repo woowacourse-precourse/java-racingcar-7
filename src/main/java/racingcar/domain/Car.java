@@ -14,18 +14,13 @@ public class Car {
     private final String name;
     private Integer moveCnt;
 
-    private Car(CarName carName) {
-        this.name = carName.toString();
-        this.moveCnt = 0;
-    }
-
     private Car(CarName carName, Integer moveCnt) {
         this.name = carName.toString();
         this.moveCnt = moveCnt;
     }
 
     public static Car create(CarName carName) {
-        return new Car(carName);
+        return new Car(carName, 0);
     }
 
     public static Car create(CarName carName, Integer cnt) {

@@ -44,7 +44,6 @@ public class CarList {
                 .forEach(this::changeMaxMoveCnt);
     }
 
-    // 모든 자동차들의 현황을 출력합니다.
     protected String statusAll() {
         StringJoiner joiner = new StringJoiner(ENTER);
 
