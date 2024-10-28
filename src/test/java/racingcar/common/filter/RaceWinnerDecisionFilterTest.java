@@ -8,12 +8,10 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.common.filter.RaceFilterChain;
-import racingcar.common.filter.RaceWinnerDecisionFilter;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.model.RacingCarList;
 import racingcar.model.RacingCar;
+import racingcar.model.RacingCarList;
 
 class RaceWinnerDecisionFilterTest {
     private RaceWinnerDecisionFilter filter;

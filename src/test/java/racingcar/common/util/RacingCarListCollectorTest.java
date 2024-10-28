@@ -9,9 +9,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcar.model.RacingCarList;
 import racingcar.model.Drivable;
 import racingcar.model.RacingCar;
+import racingcar.model.RacingCarList;
 
 class RacingCarListCollectorTest {
 

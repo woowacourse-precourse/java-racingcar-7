@@ -1,10 +1,10 @@
 package racingcar.service;
 
 import java.util.List;
+import racingcar.common.filter.RaceFilterChain;
 import racingcar.common.util.StringUtil;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.common.filter.RaceFilterChain;
 
 public class RaceServiceImpl implements RaceService {
     private final RaceFilterChain raceFilterChain;

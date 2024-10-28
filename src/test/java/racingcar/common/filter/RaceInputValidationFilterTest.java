@@ -9,8 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.common.exception.InvalidCommandException;
 import racingcar.common.exception.NegativeIterationException;
-import racingcar.common.filter.RaceFilterChain;
-import racingcar.common.filter.RaceInputValidationFilter;
 import racingcar.dto.RaceRequest;
 
 class RaceInputValidationFilterTest {
