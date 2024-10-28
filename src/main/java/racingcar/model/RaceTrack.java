@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import racingcar.constant.ExceptionMessage;
 
@@ -11,14 +11,18 @@ public class RaceTrack {
     private List<Car> cars;
 
     public void registerCars(String carRegistrationRequest) {
-        List<String> carNames = Arrays.asList(carRegistrationRequest.split(CAR_NAME_SEPARATOR));
+        List<String> carNames = parseCarNames(carRegistrationRequest);
         validateUniqueNames(carNames);
         this.cars = carNames.stream().map(Car::new).toList();
     }
 
+    private List<String> parseCarNames(String carRegistrationRequest) {
+        return List.of(carRegistrationRequest.split(CAR_NAME_SEPARATOR));
+    }
+
     private void validateUniqueNames(List<String> carNames) {
-        long uniqueNamesSize = carNames.stream().distinct().count();
-        if (uniqueNamesSize != carNames.size()) {
+        HashSet<String> uniqueCarNames = new HashSet<>(carNames);
+        if (carNames.size() != uniqueCarNames.size()) {
             throw new IllegalArgumentException(ExceptionMessage.CAR_NAMES_DUPLICATE.getMessage());
         }
     }
