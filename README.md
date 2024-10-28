@@ -134,12 +134,14 @@ jun : -----
     │           │   ├── ErrorMessages.java
     │           │   └── OutputMessages.java
     │           ├── controller
-    │           │   ├── RacingConfig.java
     │           │   └── RacingController.java
     │           ├── model
     │           │   ├── Car.java
     │           │   ├── CarName.java
     │           │   ├── Cars.java
+    │           │   └── TryCount.java
+    │           ├── service
+    │           │   ├── RacingConfig.java
     │           │   └── RacingGame.java
     │           ├── utils
     │           │   ├── RandomNumberGenerator.java
@@ -156,7 +158,7 @@ jun : -----
                 │   ├── CarNameTest.java
                 │   ├── CarTest.java
                 │   ├── CarsTest.java
-                │   └── RacingGameTest.java
+                │   └── TryCountTest.java
                 └── utils
                     └── StringSplitterTest.java
 ```
