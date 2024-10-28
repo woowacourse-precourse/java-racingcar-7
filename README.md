@@ -33,6 +33,12 @@
 > * [x] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException 발생시킴. 
 >   * [x] 이동 횟수 입력에 정수가 아닌 값을 넣을 경우 예외를 던져야함.
 > 
+> ## 테스트 코드 작성
+> * [ ] CarTest
+> * [ ] UtilsTest
+> * [ ] RaceTest
+> * [ ] InputViewTest
+> * [ ] OutPutViewTest
 > 
 > ### 1주차 피드백을 통해 고려해봐야하는 사항들 메모
 > 1. git에 올릴 필요 없는 자원들을 찾아보고 gitignore에 추가해보자. // O
@@ -64,5 +70,5 @@
 > 
 > 
 > ## 참고 자료
-> 
+> * Junit 공식문서: https://junit.org/junit5/docs/current/user-guide
 
