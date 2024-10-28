@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 public class RegistrationManager {
 
-    private static final int MAX_CAR_COUNT = 10;
     private static final int MIN_CAR_COUNT = 2;
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
@@ -55,8 +54,8 @@ public class RegistrationManager {
     }
 
     public void checkValidCarCount() {
-        if ((cars.length > MAX_CAR_COUNT) || (cars.length < MIN_CAR_COUNT)) {
-            throw new IllegalArgumentException("자동차 대수는 2대 이상 10대 이하여야 합니다.");
+        if (cars.length < MIN_CAR_COUNT) {
+            throw new IllegalArgumentException("자동차 대수는 2대 이상이여야 합니다.");
         }
     }
 

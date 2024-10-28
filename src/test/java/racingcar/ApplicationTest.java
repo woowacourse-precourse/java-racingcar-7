@@ -5,6 +5,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,32 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 경주_횟수_양수_테스트() {
+        assertDoesNotThrow(() -> {
+            run("pobi,woni", "1000");
+            assertThat(output()).contains("pobi : -", "woni : ");
+        });
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "0"})
+    void 경주_횟수_음수_테스트(String candidate) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", candidate))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("게임 횟수는 1번 이상이여야 합니다.")
+        );
+    }
+
+    @Test
+    void 많은_등록자_테스트() {
+        assertDoesNotThrow(() -> {
+            run("pobi,woni,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa,bb,cc,dd,ee,ff,gg,hh,ii,jj,"
+                    + "kk,ll,mm,nn,oo,pp,qq,rr,ss,tt,uu,vv,ww,xx,yy,zz", "3");
+            assertThat(output()).contains("pobi : -", "woni : ");
+        });
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"abcdefg,pobi", "pobi,abcdefg"})
@@ -60,12 +87,12 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi", "a,b,c,d,e,f,g,h,i,j,k"})
-    void 자동차_대수가_2대_미만_10대_초과_테스트(String candidate) {
+    @ValueSource(strings = {"pobi"})
+    void 자동차_대수가_2대_미만_테스트(String candidate) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> run(candidate))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("자동차 대수는 2대 이상 10대 이하여야 합니다.")
+                        .hasMessage("자동차 대수는 2대 이상이여야 합니다.")
         );
     }
 

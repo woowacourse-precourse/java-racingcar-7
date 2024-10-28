@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Application {
 
-    private static final int MAX_GAME_COUNT = 10;
     private static final String START_TEXT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String GAME_TIME_TEXT = "시도할 횟수는 몇 회인가요?";
     private static final String RESULT_START_TEXT = "실행 결과";
@@ -54,8 +53,8 @@ public class Application {
     }
 
     private static void isValidTimes(final int times) {
-        if (times < 1 || times > MAX_GAME_COUNT) {
-            throw new IllegalArgumentException("최대 게임 횟수는 10번입니다.");
+        if (times < 1) {
+            throw new IllegalArgumentException("게임 횟수는 1번 이상이여야 합니다.");
         }
     }
 
