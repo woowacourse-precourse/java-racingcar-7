@@ -27,14 +27,14 @@ public class RacingGameController {
 
     private static int getTrialCountFromUser() {
         promptTrialCountInput();
-        String trialStr = readConsoleInput();
-        validateTrialCount(trialStr);
-        return Integer.parseInt(trialStr);
+        String trialCountStr = readConsoleInput();
+        validateTrialCount(trialCountStr);
+        return Integer.parseInt(trialCountStr);
     }
 
-    private static void executeRace(int trial, Cars cars) {
+    private static void executeRace(int trialCount, Cars cars) {
         displayResultHeader();
-        for (int i = 0; i < trial; i++) {
+        for (int i = 0; i < trialCount; i++) {
             List<Integer> randomNumbers = RandomUtil.generateRandomNumberForCars(cars.getCarsSize());
             cars.moveCars(randomNumbers);
             displayRoundResult(cars.getCarNames(), cars.getCarPositions());
