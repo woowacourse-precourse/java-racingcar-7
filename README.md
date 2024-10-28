@@ -26,8 +26,8 @@ camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사
 - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
 ## 구현 기능 목록
-- [ ] 자동차 이름 입력
-- [ ] 시도 횟수 입력
+- [x] 자동차 이름 입력
+- [x] 시도 횟수 입력
 - [ ] 매 턴 실행 결과 출력
 - [ ] 우승자 출력
 - [ ] 참가 차량 그룹 생성
