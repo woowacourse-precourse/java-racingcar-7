@@ -17,7 +17,7 @@ public class Car {
     }
 
     public void move() {
-        if (RandomNumberGenerator.generateRandomNumber() > STANDARD_NUMBER) {
+        if (RandomNumberGenerator.generateRandomNumber() >= STANDARD_NUMBER) {
             distance++;
         }
     }
