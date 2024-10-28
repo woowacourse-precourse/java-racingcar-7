@@ -21,12 +21,7 @@ public class RacingCar {
     private void inputCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNames = Console.readLine().split(",");
-        for (String carName : carNames) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
-            }
-            cars.put(carName, 0);
-        }
+        checkValidCarName(carNames);
     }
 
     private int inputTryTimes() {
@@ -35,7 +30,7 @@ public class RacingCar {
             int tryTimes = Integer.parseInt(Console.readLine().trim());
             return tryTimes;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닙니다.");
+            throw new IllegalArgumentException("시도할 횟수가 숫자가 아닙니다.");
         }
     }
 
@@ -57,6 +52,21 @@ public class RacingCar {
             findWinner(highScore, winners, carName);
         }
         System.out.println("최종 우승자 : " + winners.toString());
+    }
+
+    private void checkValidCarName(String[] carNames) {
+        for (String carName : carNames) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+            }
+            if (cars.containsKey(carName)) {
+                throw new IllegalArgumentException("차 이름이 중복되었습니다.");
+            }
+            if (carName.trim().equals("")) {
+                throw new IllegalArgumentException("차 이름이 입력되지 않았습니다.");
+            }
+            cars.put(carName.trim(), 0);
+        }
     }
 
     private void checkMoving(String carName) {
