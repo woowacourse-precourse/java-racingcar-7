@@ -41,4 +41,26 @@ public class CarTest {
                 () ->assertEquals(origin, car.position)
         );
     }
+    @Test
+    void isWinner_success(){
+        //given
+        Car car = new Car("test", new MoveRandomGenerator());
+        int winnerPosition = 5;
+        car.position = winnerPosition;
+        //when
+        boolean result = car.isWinner(winnerPosition);
+        //then
+        Assertions.assertTrue(result);
+    }
+    @Test
+    void isWinner_fail(){
+        //given
+        Car car = new Car("test", new MoveRandomGenerator());
+        int winnerPosition = 5;
+        car.position = 4;
+        //when
+        boolean result = car.isWinner(winnerPosition);
+        //then
+        Assertions.assertFalse(result);
+    }
 }
