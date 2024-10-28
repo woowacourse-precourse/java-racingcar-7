@@ -47,4 +47,9 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, location);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
