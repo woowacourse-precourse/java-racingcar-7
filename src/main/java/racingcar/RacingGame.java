@@ -43,4 +43,29 @@ public class RacingGame {
             System.out.println();
         }
     }
+
+    // 경주 결과 출력
+    private void announceWinners() {
+        List<Car> winners = findWinners();
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .reduce((a, b) -> a + ", " + b)
+                .orElse("");
+        System.out.println("최종 우승자 : " + winnerNames);
+    }
+
+    // 최종 우승자 찾기
+    private List<Car> findWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPositionLength)
+                .max()
+                .orElse(0);
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPositionLength() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
 }
