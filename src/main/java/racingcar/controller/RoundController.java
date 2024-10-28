@@ -19,6 +19,9 @@ public class RoundController {
 
     public void gameStart(){
         InputHandler.handleCarNames(inputView);
+
+        InputValidator.notOneName(InputHandler.getCarNameList());
+
         Judge judge = new Judge();
         int roundNumber = inputView.inputRounds();
 
