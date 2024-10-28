@@ -1,15 +1,20 @@
-package racingcar;
+package racingcar.View;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.Validator.CarNameValidator;
+import racingcar.Validator.CarNamesValidator;
+import racingcar.Validator.InputValidator;
+import racingcar.Validator.NumberValidator;
 
 public class Input {
     private static final InputValidator inputValidator;
 
     static {
+        CarNamesValidator carNamesValidator = new CarNamesValidator();
         CarNameValidator carNameValidator = new CarNameValidator();
         NumberValidator numberValidator = new NumberValidator();
 
-        inputValidator = new InputValidator(carNameValidator, numberValidator);
+        inputValidator = new InputValidator(carNamesValidator, carNameValidator, numberValidator);
     }
 
     public static String getCarNames(){
@@ -20,8 +25,8 @@ public class Input {
     }
 
     public static int getNumber(){
-        int number = Integer.parseInt(Console.readLine());
-        inputValidator.validateNumber(number);
-        return number;
+        String inputNumber = Console.readLine();
+        inputValidator.validateNumber(inputNumber);
+        return Integer.parseInt(inputNumber);
     }
 }
