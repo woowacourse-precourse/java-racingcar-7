@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.Input;
 import racingcar.CarRace;
+import racingcar.PrintResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Application {
         List<Car> cars = CarRace.initializeCars(carNames);//자동차 초기화
 
         CarRace.race(cars, tryCount);
+        PrintResult.printWinners(cars);
 
     }
 
