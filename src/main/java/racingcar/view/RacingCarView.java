@@ -32,6 +32,10 @@ public class RacingCarView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
+    public void showResultInfo(){
+        System.out.println("실행 결과");
+    }
+
     // 각 라운드의 결과를 출력
     public void showRoundResult(List<CarDTO> cars) {
         for (CarDTO car : cars) {
