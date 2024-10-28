@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class InputHandler {
-    String input;
-    List<String> names;
-    Integer runCount;
+    private String input;
+    private List<String> names;
+    private Integer runCount;
 
     public void inputNames(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
