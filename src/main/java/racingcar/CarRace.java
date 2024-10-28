@@ -20,8 +20,12 @@ public class CarRace {
     }
 
     public void run() {
-        performRace();
-        printResult(getWinnerList());
+        try {
+            performRace();
+            printResult(getWinnerList());
+        } catch (OutOfMemoryError ex) {
+            System.out.println("출력 메모리 초과");
+        }
     }
 
     protected void performRace() {
@@ -36,7 +40,7 @@ public class CarRace {
         }
     }
 
-    private List<String> getWinnerList() {
+    protected List<String> getWinnerList() {
         List<String> winnerList = new ArrayList<>();
         Long maxDistance = getMaxDistance();
 
@@ -49,7 +53,7 @@ public class CarRace {
         return winnerList;
     }
 
-    private Long getMaxDistance() {
+    protected Long getMaxDistance() {
         return Collections.max(carMap.values(), Comparator.comparingLong(Car::getDistance)).getDistance();
     }
 
