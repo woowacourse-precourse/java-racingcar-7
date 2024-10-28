@@ -22,6 +22,14 @@ public class ArgumentParseTest {
     }
 
     @Test
+    @DisplayName("중복된 자동차 이름")
+    public void duplicatedCarName() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            GameConfigParser.parseCarNames("abc,abc");
+        });
+    }
+
+    @Test
     @DisplayName("자동차 이름 빈 칸 입력")
     public void testEmptyName() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
