@@ -135,3 +135,53 @@ jun : -----
 - [x]  시도할 횟수를 음수로 입력하였을 시 예외를 발생시킨다.
 - [x]  자동차 이름이 비어있다면 예외를 발생시킨다.
 - [x]  자동차 이름이 중복될 경우 예외를 발생시킨다.
+
+## 패키지 구조
+
+```mathematica
+src
+└── java
+    └── racingcar
+        ├── application
+        │   ├── implement
+        │   │   ├── MovementStrategy.java
+        │   │   ├── CarRaceHistoryManager.java
+        │   │   ├── CarRaceHistoryWriter.java
+        │   │   ├── CarRaceStarter.java
+        │   │   ├── CarRaceWinnerIdentifier.java
+        │   │   ├── RaceHistoryManager.java
+        │   │   ├── RaceStarter.java
+        │   │   └── RaceWinnerIdentifier.java
+        │   ├── service
+        │   │   ├── RacingCarManager.java
+        │   │   └── RacingManager.java
+        │   ├── vo
+        │   │   └── RaceResult.java
+        │   ├── Game.java
+        │   └── RacingCarGame.java
+        ├── common
+        │   ├── config
+        │   │   └── GameConfig.java
+        │   ├── constant
+        │   │   ├── ConsoleMessage.java
+        │   │   ├── ExceptionMessage.java
+        │   │   ├── FormatConstants.java
+        │   │   └── RacingCarConstant.java
+        │   └── support
+        │       ├── ObjectConverter.java
+        │       ├── PositiveNumberParser.java
+        │       ├── RacingCarComparator.java
+        │       └── RacingCarConverter.java
+        ├── domain
+        │   ├── CarRacer.java
+        │   └── Racer.java
+        ├── persistence
+        │   ├── CarRaceHistoryRepository.java
+        │   ├── CarRacerRepository.java
+        │   └── InMemoryCarRacerRepository.java
+        ├── view
+        │   ├── ApplicationConsoleView.java
+        │   └── ApplicationView.java
+        └── Application.java
+
+```
