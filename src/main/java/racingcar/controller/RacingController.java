@@ -14,12 +14,10 @@ import java.util.stream.Collectors;
 public class RacingController {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private final CarNamesValidation carNamesValidation = new CarNamesValidation();
-    private final RaceCountsValidation raceCountsValidation = new RaceCountsValidation();
 
     public void run() {
-        List<String> carNames = carNamesValidation.validateCarNames(inputView.readCarNames());
-        int raceCount = raceCountsValidation.validateRaceCounts(inputView.readRaceCounts());
+        List<String> carNames = CarNamesValidation.validateCarNames(inputView.readCarNames());
+        int raceCount = RaceCountsValidation.validateRaceCounts(inputView.readRaceCounts());
 
         List<Car> carObjects = carNames.stream()
                 .map(Car::new)
