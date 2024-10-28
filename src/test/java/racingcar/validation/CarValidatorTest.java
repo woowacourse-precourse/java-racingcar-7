@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class CarNamesValidatorTest {
+class CarValidatorTest {
     CarNamesValidator validator = new CarNamesValidator();
 
     @ParameterizedTest
