@@ -22,4 +22,11 @@ public class GameResult {
         return maxPoint;
     }
 
+    static void printWinners(List<racingcar.Car> cars) {
+        // 최종 우승자 출력
+        int maxPoint = findMaxPoint(cars);
+        List<racingcar.Car> winners = getWinners(cars, maxPoint);     // 최대 점수만큼 이동한 자동차 확인
+        showWinners(winners);   // 우승자 출력
+    }
+
 }
