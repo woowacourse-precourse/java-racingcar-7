@@ -91,9 +91,8 @@ public class Application {
         return intitalcarMovementCounts;
     }
 
-    public static void winner(List<String> carNames, List<Integer> carMovementCounts) {
+    public static int getMaxMoves(List<Integer> carMovementCounts) {
 
-        // "-" 출력이 가장 많은 값
         int maxMoves = carMovementCounts.get(0);
 
         for (int i = 0; i < carMovementCounts.size(); i++) {
@@ -101,6 +100,13 @@ public class Application {
                 maxMoves = carMovementCounts.get(i);
             }
         }
+
+        return maxMoves;
+    }
+
+    public static void winner(List<String> carNames, List<Integer> carMovementCounts) {
+
+        int maxMoves = getMaxMoves(carMovementCounts);
 
         // 공동 우승자
         List<String> winners = new ArrayList<>();
