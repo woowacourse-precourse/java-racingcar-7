@@ -19,5 +19,14 @@ class RacingGameControllerTest {
         assertThat(cars.get(0).getName()).isEqualTo("lee");
     }
 
-    
+    @Test
+    @DisplayName("winners 메서드는 최고 점수를 가진 자동차들 이름을 반환한다")
+    void winners_ShouldReturnNamesOfCarsWithMaxScore() {
+        List<Car> cars = List.of(new Car("lee"), new Car("sung"), new Car("hoon"));
+        cars.get(0).move(5);
+        cars.get(2).move(5);
+
+        List<String> winners = controller.winners(cars);
+        assertThat(winners).containsExactlyInAnyOrder("lee", "hoon");
+    }
 }
