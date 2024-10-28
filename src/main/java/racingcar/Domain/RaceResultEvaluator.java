@@ -3,6 +3,8 @@ package racingcar.Domain;
 import static racingcar.Util.Constants.Constant.DISTANCE_OF_WINNER;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import racingcar.DTO.RaceResultDTO;
@@ -26,6 +28,8 @@ public class RaceResultEvaluator {
                 winnerList.add(carName);
             }
         }
+
+        Collections.sort(winnerList);
     }
 
     public List<String> getWinners() {
