@@ -7,12 +7,13 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.randomnumber.RandomIntegerGenerator;
+import racingcar.domain.randomnumber.RandomNumberGenerator;
 import racingcar.exceptions.DuplicateNameException;
 
 class CarsTest {
 
-    private final RandomIntegerGenerator forwardGenerator = new RandomIntegerGenerator(4, 9);
-    private final RandomIntegerGenerator stopGenerator = new RandomIntegerGenerator(0, 3);
+    private final RandomNumberGenerator<Integer> forwardGenerator = new RandomIntegerGenerator(4, 9);
+    private final RandomNumberGenerator<Integer> stopGenerator = new RandomIntegerGenerator(0, 3);
     private Cars moveCars;
     private Cars stopCars;
 
