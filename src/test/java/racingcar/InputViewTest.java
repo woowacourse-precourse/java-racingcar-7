@@ -9,18 +9,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class InputViewTest {
+
     @Test
     void 사용자에게_파라미터로_들어온_메시지를_출력합니다() {
         // given
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
 
         // when
         InputView inputView = new InputView();
         inputView.printMessage("hello");
 
         // then
-        assertEquals("hello", out.toString().trim());
+        assertEquals("hello", outputStream.toString().trim());
 
         System.setOut(System.out);
     }
@@ -29,8 +30,8 @@ class InputViewTest {
     void 사용자에게_문자열을_입력을받습니다() {
         // given
         String inputValue = "winter,woodz,karina\n";
-        ByteArrayInputStream in = new ByteArrayInputStream(inputValue.getBytes());
-        System.setIn(in);
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(inputValue.getBytes());
+        System.setIn(inputStream);
 
         // when
         InputView inputView = new InputView();
