@@ -53,7 +53,7 @@ public class InputParser {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ExceptionMessages.INPUT_NOT_NUMBER.getMessage());
         }
-        if (rounds < 0) {
+        if (rounds <= 0) {
             throw new IllegalArgumentException(ExceptionMessages.NEGATIVE_NUMBER.getMessage());
         }
     }
