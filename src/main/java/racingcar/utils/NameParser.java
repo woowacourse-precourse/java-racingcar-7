@@ -7,16 +7,16 @@ public class NameParser {
     private static final String COMMA_DELIMITER = ",";
 
     public static List<String> parse(String input) {
-        String[] split = input.split(COMMA_DELIMITER);
-        List<String> validNames = getNames(split);
+        String[] splitedInput = input.split(COMMA_DELIMITER);
+        List<String> validNames = getNames(splitedInput);
         InputValidator.validateDuplicates(validNames);
         return validNames;
     }
 
-    private static List<String> getNames(String[] split){
+    private static List<String> getNames(String[] splitedInput){
         List<String> validNames = new ArrayList<>();
 
-        for (String name : split) {
+        for (String name : splitedInput) {
             name = name.trim();
             InputValidator.validateName(name);
             validNames.add(name);

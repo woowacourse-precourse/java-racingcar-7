@@ -23,12 +23,8 @@ public class InputValidator {
     }
 
     public static void validateDuplicates(List<String> names) {
-        Set<String> nameSet = new HashSet<>();
-        List<String> duplicateNames = names.stream()
-                .filter(name -> !nameSet.add(name))
-                .toList();
-
-        if (!duplicateNames.isEmpty()) {
+        Set<String> nameSet = new HashSet<>(names);
+        if (nameSet.size() != names.size()) {
             throw new IllegalArgumentException(ERROR_DUPLICATE_NAMES);
         }
     }
