@@ -3,16 +3,17 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
+
 public class Application {
 
     public static void main(String[] args) {
-        try {
-            String[] carNames = getCarNames();
-            int numberOfAttempts = getNumberOfAttempts();
-            int[] carDistances = startRace(carNames, numberOfAttempts);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        String[] carNames = getCarNames();
+        int numberOfAttempts = getNumberOfAttempts();
+        int[] carDistances = startRace(carNames, numberOfAttempts);
+        displayWinners(carNames, carDistances);
     }
 
     // 자동차 이름 입력받기
@@ -90,5 +91,22 @@ public class Application {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    // 우승자 계산 및 출력
+    private static void displayWinners(String[] carNames, int[] distances) {
+        int maxDistance = Arrays.stream(distances).max().orElse(0);
+        List<String> winners = findWinners(carNames, distances, maxDistance);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static List<String> findWinners(String[] carNames, int[] distances, int maxDistance) {
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < carNames.length; i++) {
+            if (distances[i] == maxDistance) {
+                winners.add(carNames[i].trim());
+            }
+        }
+        return winners;
     }
 }
