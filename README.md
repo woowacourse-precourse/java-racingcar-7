@@ -20,7 +20,7 @@
     - [x] CarNameTest
     - [x] MovementTest
     - [x] ProgressResultGeneratorTest
-    - [ ] WinnerDeterminerTest
+    - [x] WinnerDeterminerTest
     - [ ] WinnerResultGeneratorTest
 
 # 기능 동작 순서
