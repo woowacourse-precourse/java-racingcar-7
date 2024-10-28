@@ -1,39 +1,20 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.operator.GameEngine;
-import racingcar.operator.WinnerSelector;
+import racingcar.module.TurnManager;
 import racingcar.user.UserObject;
-import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameController {
-    private UserObject[] user;
-    private int NUMBER_OF_USERS;
-    GameEngine gameEngine = new GameEngine();
 
-    public void runGame() {
+    public void runGame(UserObject[] user) {
         OutputView.printResultSentence();
-        progressGame();
-        displayWinner();
+        TurnManager turnManager = new TurnManager(user);
+        turnManager.progressTurn();
     }
 
-    private void progressGame() {
-        for (int i = 0; i < InputView.trynum; i++) {
-            startTurn();
-        }
-    }
-
-    private void startTurn() {
+    public static void displayProgress(UserObject[] user) {
         for (int i = 0; i < user.length; i++) {
-            gameEngine.extractRandom();
-            gameEngine.scoreUpdate(user[i]);
-        }
-        displayProgress();
-    }
-
-    private void displayProgress() {
-        for (int i = 0; i < NUMBER_OF_USERS; i++) {
             String name = user[i].getUserName();
             String score = user[i].getUserScoreString();
             OutputView.printTurnResult(name, score);
@@ -41,24 +22,18 @@ public class GameController {
         OutputView.printEmpty();
     }
 
-    private void displayWinner() {
+    public static void displayWinner(List<String> topScoreList) {
         OutputView.printWinnerSentence();
-        List<String> topScoreList = new WinnerSelector(user).getTopScores();
         for (int i = 0; i < topScoreList.size(); i++) {
             displayRest(i);
             OutputView.printWinner(topScoreList.get(i));
         }
     }
 
-    private void displayRest(int index) {
+    public static void displayRest(int index) {
         if (index != 0) {
             OutputView.printRest();
         }
-    }
-
-    public GameController(UserObject[] user) {
-        this.user = user;
-        NUMBER_OF_USERS = user.length;
     }
 
 }
