@@ -25,13 +25,13 @@ public class CarStatus {
 
     public List<String> getCarNames() {
         return cars.stream()
-                .map(Car::getName)
+                .map(Car::getCarName)
                 .collect(Collectors.toList());
     }
 
     public List<Integer> getCarPositions() {
         return cars.stream()
-                .map(Car::getPosition)
+                .map(Car::getCarPosition)
                 .collect(Collectors.toList());
     }
 
