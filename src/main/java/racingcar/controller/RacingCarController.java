@@ -22,11 +22,14 @@ public class RacingCarController {
 
     public void run() {
         String carInput = racingCarView.inputCarNames();
-        validator.validateCarNames(carInput);
-        String roundInput = racingCarView.inputRound();
-        validator.validateRound(roundInput);
+        String[] carNames = carInput.split(",");
+        validator.validateCarNames(carNames);
 
-        Race race = setUpGame(carInput, roundInput);
+        String roundInput = racingCarView.inputRound();
+        int round = Integer.parseInt(roundInput);
+        validator.validateRound(round);
+
+        Race race = setUpGame(carNames, roundInput);
 
         String roundResult = racingCarService.raceStart(race);
         racingCarView.printRoundResult(roundResult);
@@ -35,8 +38,7 @@ public class RacingCarController {
         racingCarView.printRaceResult(raceResult);
     }
 
-    private Race setUpGame(String carInput, String roundInput) {
-        List<String> carNames = List.of(carInput.split(","));
+    private Race setUpGame(String[] carNames, String roundInput) {
         int round = Integer.parseInt(roundInput);
 
         List<Car> cars = new ArrayList<>();
