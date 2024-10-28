@@ -26,4 +26,8 @@ public class Car {
     public int getLocation() {
         return location;
     }
+
+    public boolean isAtLocation(int maxLocation) {
+        return location == maxLocation;
+    }
 }
