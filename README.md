@@ -30,7 +30,8 @@
        - 승자는 참가자 모두가 됨
     3. 입력된 값이 숫자가 아닌 경우
        - IllegalArgumentException 발생
-  
+    4. 입력된 값이 없을 경우
+       - IllegalArgumentException 발생
 
 ### 2. 자동차 경주 게임 실행
 - 입력된 횟수만큼 경기 진행
