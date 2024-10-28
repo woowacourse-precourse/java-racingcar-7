@@ -19,9 +19,13 @@ public class CarInput {
         //System.out.println("경주할 자동차 이름을 입력하세요.");
         String players = Console.readLine();
 
-        if(players.isEmpty() || players.equals("") || players.length() >= 5) {
-            throw new IllegalArgumentException();
+        String[] playerNames = players.split(",");
+        for (String name : playerNames) {
+            if (name.isEmpty() || name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
         }
+
 
         //선수 ',' 구분
         List<String> carName = Arrays.asList(players.split(","));
