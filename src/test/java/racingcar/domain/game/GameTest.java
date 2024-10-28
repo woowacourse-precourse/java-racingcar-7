@@ -5,7 +5,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.game.mock.CanMoveNumberGenerator;
 import racingcar.domain.movement.MovementPolicy;
 import racingcar.domain.movement.MovementStrategy;
 import racingcar.domain.movement.RandomMovementStrategy;
@@ -14,6 +13,7 @@ import racingcar.exception.game.GameException.GameEndedException;
 import racingcar.exception.game.GameException.InvalidTotalRoundsException;
 import racingcar.exception.player.PlayerException.PlayerExceededException;
 import racingcar.exception.player.PlayerException.PlayerUnderstaffedException;
+import racingcar.mock.CanMoveNumberGenerator;
 
 
 @DisplayName("게임(Game) 유스케이스")

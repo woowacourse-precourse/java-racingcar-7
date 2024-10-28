@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Distance;
 import racingcar.domain.game.NumberGenerator;
-import racingcar.domain.game.mock.CanMoveNumberGenerator;
-import racingcar.domain.game.mock.UnMoveNumberGenerator;
+import racingcar.mock.CanMoveNumberGenerator;
+import racingcar.mock.UnMoveNumberGenerator;
 
 @DisplayName("이동 정책(MovementPolicy) 유스케이스")
 class MovementPolicyTest {

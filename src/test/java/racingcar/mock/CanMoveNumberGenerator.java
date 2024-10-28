@@ -1,4 +1,4 @@
-package racingcar.domain.game.mock;
+package racingcar.mock;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
