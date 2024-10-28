@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 /**
  * class: RaceTest.
  *
- * @author JBum
+ * @author JBumLee
  * @version 2024/10/28
  */
 @DisplayName("Race 클래스 테스트")
