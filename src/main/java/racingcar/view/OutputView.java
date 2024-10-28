@@ -11,4 +11,12 @@ public class OutputView {
             car.printCarDistance();
         }
     }
+
+    public void displayFinalResults(List<String> winnerNames) {
+        System.out.println(generateResultMessage(winnerNames));
+    }
+
+    public String generateResultMessage(List<String> winnersNames) {
+        return "최종 우승자 : " + String.join(", ", winnersNames);
+    }
 }
