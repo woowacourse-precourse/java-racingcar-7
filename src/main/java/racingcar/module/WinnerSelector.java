@@ -1,4 +1,4 @@
-package racingcar.operator;
+package racingcar.module;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import racingcar.user.UserObject;
 
 public class WinnerSelector {
-    UserObject[] user;
+    private UserObject[] user;
 
     public List<String> getTopScores() {
         int maxScore = Arrays.stream(user)
