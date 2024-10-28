@@ -56,7 +56,7 @@ public class InputValidator {
         }
     }
 
-    public void isNumericValue(String moveCount){
+    private void isNumericValue(String moveCount){
         try{
             Integer value = Integer.parseInt(moveCount);
         } catch(Exception e){
