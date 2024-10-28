@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 class RaceTest {
 
-
     private Car testCar (String carName) {
         Long oil = 1L;
         Engine engine = new Engine(1L, 1L);
