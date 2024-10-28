@@ -3,7 +3,7 @@ package racingcar.utils;
 public class CustomErrorMessage {
     public static final String INVALID_CAR_NAME = "자동차 이름은 1자 이상 5자 이하만 가능합니다";
     public static final String INVALID_ROUND = "시도 횟수는 1 이상만 가능합니다.";
-    public static final String INVALID_ROUNT_NUM = "시도 횟수는 숫자여야 합니다.";
+    public static final String INVALID_ROUND_NUM = "시도 횟수는 숫자여야 합니다.";
     public static final String INVALID_INPUT = "입력값이 올바르지 않습니다.";
     public static final String INVALID_WINNER = "우승자가 없습니다.";
     public static final String INVALID_RESULT = "결과가 올바르지 않습니다.";

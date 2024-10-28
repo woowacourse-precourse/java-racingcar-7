@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.utils.CustomErrorMessage;
-import racingcar.utils.CustomException;
 
 public class Input {
     private static final String DELIMITER = ",";
@@ -17,11 +16,7 @@ public class Input {
         System.out.println(INPUT_MESSAGE);
         String input = Console.readLine();
         List<String> carName = splitCarName(input);
-
-        if (!isValidCarName(carName)) {
-            throw new IllegalArgumentException(CustomErrorMessage.INVALID_CAR_NAME);
-        }
-
+        isValidCarName(carName);
         return carName;
     }
 
@@ -29,17 +24,12 @@ public class Input {
     public int getRound() {
         System.out.println(ROUND_MESSAGE);
         int input;
-
         try {
             input = Integer.parseInt(Console.readLine());
+            isValidRound(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(CustomErrorMessage.INVALID_ROUNT_NUM);
+            throw new IllegalArgumentException(CustomErrorMessage.INVALID_ROUND_NUM);
         }
-
-        if (!isValidRound(input)) {
-            throw new IllegalArgumentException(CustomErrorMessage.INVALID_ROUND);
-        }
-
         return input;
     }
 
@@ -49,22 +39,18 @@ public class Input {
     }
 
     // 자동차 이름의 유효성 검사 (각 이름이 5자 이하인지 확인)
-    private boolean isValidCarName(List<String> carName) {
-        for (String name : carName) {
+    private void isValidCarName(List<String> carNames) {
+        for (String name : carNames) {
             if (name.length() > 5) {
-                return false;
+                throw new IllegalArgumentException(CustomErrorMessage.INVALID_CAR_NAME);
             }
         }
-        return true;
     }
 
-
-
     // 시도 횟수가 1 이상인지 검사
-    private boolean isValidRound(int round) {
+    private void isValidRound(int round) {
         if (round < 1) {
-            return false;
+            throw new IllegalArgumentException(CustomErrorMessage.INVALID_ROUND);
         }
-        return true;
     }
 }
