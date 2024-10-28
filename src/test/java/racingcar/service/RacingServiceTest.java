@@ -14,13 +14,11 @@ import racingcar.view.OutputView;
 class RacingServiceTest {
 
     private RacingService racingService;
-    private InputView inputView;
-    private OutputView outputView;
 
     @BeforeEach
     void setUp() {
-        inputView = new InputView();
-        outputView = new OutputView();
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
         racingService = new RacingService(inputView, outputView);
     }
 
