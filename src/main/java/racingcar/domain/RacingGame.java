@@ -34,6 +34,9 @@ public class RacingGame {
         return winnerList;
     }
 
+    public List<Car> getCarList() {
+        return carList;
+    }
     public void playTurn() {
         carList.forEach(car -> car.move(Randoms.pickNumberInRange(0, 9)));
     }
