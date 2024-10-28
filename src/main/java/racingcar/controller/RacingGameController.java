@@ -3,6 +3,8 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.dto.CarLocation;
 import racingcar.model.RacingGame;
+import racingcar.model.RandomNumberGenerator;
+import racingcar.service.RaceProgressService;
 import racingcar.service.RacingGameService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -12,10 +14,13 @@ public class RacingGameController {
     private final OutputView outputView;
     private final RacingGameService racingGameService;
 
-    public RacingGameController(InputView inputView, OutputView outputView, RacingGameService racingGameService) {
+    public RacingGameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.racingGameService = racingGameService;
+
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        RaceProgressService raceProgressService = new RaceProgressService(randomNumberGenerator);
+        this.racingGameService = new RacingGameService(raceProgressService);
     }
 
     public void run() {
