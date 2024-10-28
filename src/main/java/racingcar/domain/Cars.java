@@ -5,11 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Pit {
+public class Cars {
 
     private final List<Car> cars;
 
-    public Pit(final List<Car> cars) {
+    public Cars(final List<Car> cars) {
         validateDuplicated(cars);
         this.cars = new ArrayList<>(cars);
     }
