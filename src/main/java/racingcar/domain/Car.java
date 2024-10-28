@@ -4,7 +4,7 @@ public class Car {
 
     private final String name;
 
-    private Integer move;
+    private Integer move = 0;
 
     private Car(String name) {
         this.name = name;
@@ -19,5 +19,9 @@ public class Car {
         if (carName.length() > 5) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void move() {
+        move++;
     }
 }
