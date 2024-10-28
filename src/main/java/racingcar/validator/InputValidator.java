@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.validator;
 
 public class InputValidator {
     private static final String EMPTY_VALUE_ERROR_MESSAGE = "모든 입력은 비어있을 수 없습니다.";
