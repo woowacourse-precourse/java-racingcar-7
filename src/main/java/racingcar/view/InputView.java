@@ -6,4 +6,8 @@ public class InputView {
     public String inputCars() {
         return Console.readLine();
     }
+
+    public String inputRoundNumber() {
+        return Console.readLine();
+    }
 }
