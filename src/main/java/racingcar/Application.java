@@ -76,6 +76,30 @@ public class Application {
         System.out.println();
     }
 
+    private static void announceWinners(List<Car> cars) {
+        int maxPosition = findMaxPosition(cars);
+        List<String> winners = findWinners(cars, maxPosition);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static int findMaxPosition(List<Car> cars) {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getDistance());
+        }
+        return maxPosition;
+    }
+
+    private static List<String> findWinners(List<Car> cars, int maxPosition) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getDistance() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
 }
 
 class Car {
