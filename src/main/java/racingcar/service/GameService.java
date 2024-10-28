@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
@@ -20,7 +19,7 @@ public class GameService {
         this.outputView = outputView;
     }
 
-    public GameData getGameData() throws IOException {
+    public GameData getGameData() {
         String carsName = inputView.getCarNames();
         List<Car> cars = carService.createCars(carsName);
         int attempts = inputView.getTryNumbers();

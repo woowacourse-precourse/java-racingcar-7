@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import java.io.IOException;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.GameData;
@@ -13,7 +12,7 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    public void startGame() throws IOException {
+    public void startGame() {
         GameData gameData = gameService.getGameData();
         gameService.playGame(gameData);
 
