@@ -14,4 +14,16 @@ public class GameManage {
     public int getValue() {
         return value;
     }
+    private void validate(final int convertedValue) {
+        if (convertedValue < 0) {
+            throw new IllegalArgumentException("시도 횟수 오류");
+        }
+    }
+    private int parseint(final String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수 입력");
+        }
+    }
 }
