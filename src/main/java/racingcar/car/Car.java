@@ -12,6 +12,10 @@ public class Car {
         return name;
     }
 
+    public int getTotalMove() {
+        return totalMove;
+    }
+
     public void setTotalMove(int totalMove) {
         this.totalMove = totalMove;
     }
