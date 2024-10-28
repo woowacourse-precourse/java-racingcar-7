@@ -41,4 +41,18 @@ public class InputValidatorTest extends NsTest {
         assertThatThrownBy(() -> inputValidator.validateCarName(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, -2, -3, -10, -100})
+    @DisplayName("잘못된 횟수 입력 예외 발생")
+    void validateNumber_InputtedWrongNumber_ExceptionThrown(int number){
+        //given
+        final CarNameValidator carNameValidator = new CarNameValidator();
+        final NumberValidator numberValidator = new NumberValidator();
+        final InputValidator inputValidator = new InputValidator(carNameValidator, numberValidator);
+
+        //when & then
+        assertThatThrownBy(() -> inputValidator.validateNumber(number))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
