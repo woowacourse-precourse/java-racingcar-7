@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.service.RaceStorage;
 import racingcar.service.strategy.RandomMoveStrategy;
 import racingcar.ui.Input;
 import racingcar.domain.CarFactory;
@@ -15,7 +16,7 @@ public class Application {
         // TODO: 프로그램 구현
         InputView inputView = new InputView(new InputParser(","));
         CarFactory carFactory = new CarFactory();
-        RaceManager raceManager = new RaceManager(new RandomMoveStrategy());
+        RaceManager raceManager = new RaceManager(new RaceStorage(), new RandomMoveStrategy());
         ResultView resultView = new ResultView();
 
 

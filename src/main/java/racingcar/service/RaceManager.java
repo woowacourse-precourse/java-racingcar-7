@@ -7,10 +7,11 @@ import racingcar.service.strategy.MoveStrategy;
 
 public class RaceManager {
     private static final String CAR_DOES_NOT_EXISTS = "경주차가 존재하지 않습니다.";
-    private final RaceStorage raceStorage = new RaceStorage();
+    private final RaceStorage raceStorage;
     private final MoveStrategy moveStrategy;
 
-    public RaceManager(MoveStrategy moveStrategy) {
+    public RaceManager(RaceStorage raceStorage, MoveStrategy moveStrategy) {
+        this.raceStorage = raceStorage;
         this.moveStrategy = moveStrategy;
     }
 
