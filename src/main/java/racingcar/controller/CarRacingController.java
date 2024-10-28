@@ -8,10 +8,15 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class CarRacingController {
-    InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
-    Register register = new Register();
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final Register register;
 
+    public CarRacingController(InputView inputView, OutputView outputView, Register register) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.register = register;
+    }
 
     public ArrayList<String> divide(String cars) {
         return new ArrayList<>(List.of(cars.split(",")));
