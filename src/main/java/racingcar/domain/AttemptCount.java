@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.exception.ErrorMessage.*;
+
 public class AttemptCount {
 	private final Integer attemptCount;
 
@@ -10,7 +12,7 @@ public class AttemptCount {
 
 	private void validatePositive(Integer attemptCount) {
 		if (attemptCount <= 0) {
-			throw new IllegalArgumentException("[ERROR] 시도 횟수는 0보다 커야 합니다.");
+			throw new IllegalArgumentException(ATTEMPT_COUNT_NOT_POSITIVE.getMessage());
 		}
 	}
 

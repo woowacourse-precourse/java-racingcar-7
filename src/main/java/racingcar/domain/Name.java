@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.exception.ErrorMessage.*;
+
 import racingcar.config.RaceConfig;
 
 public class Name {
@@ -18,19 +20,19 @@ public class Name {
 
 	private void validateNotBlank(String name) {
 		if (name == null || name.isBlank()) {
-			throw new IllegalArgumentException("[ERROR] 자동차 이름은 비어있을 수 없습니다.");
+			throw new IllegalArgumentException(CAR_NAME_BLANK.getMessage());
 		}
 	}
 
 	private void validateLength(String name) {
 		if (name.length() > RaceConfig.MAX_NAME_LENGTH.getNumber()) {
-			throw new IllegalArgumentException("[ERROR] 자동차 이름이 최대 길이를 초과했습니다.");
+			throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEEDED.getMessage());
 		}
 	}
 
 	private void validateAlphabet(String name) {
 		if (!name.matches("^[a-zA-Z]+")) {
-			throw new IllegalArgumentException("[ERROR] 자동차 이름은 알파벳으로만 구성되어야 합니다.");
+			throw new IllegalArgumentException(CAR_NAME_NOT_ALPHABET.getMessage());
 		}
 	}
 

@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import static racingcar.exception.ErrorMessage.*;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -31,19 +33,17 @@ public class InputView {
 
 	private void validateBlank(String input) {
 		if (input.isBlank()) {
-			throw new IllegalArgumentException("[ERROR] 아무것도 입력되지 않았습니다.");
+			throw new IllegalArgumentException(INPUT_BLANK.getMessage());
 		}
 	}
 
 	private void validateDigit(String input) {
 		if (!isDigit(input)) {
-			throw new IllegalArgumentException("[ERROR] 시도 횟수는 정수여야 합니다.");
+			throw new IllegalArgumentException(ATTEMPT_COUNT_NOT_DIGIT.getMessage());
 		}
 	}
 
 	private boolean isDigit(String input) {
 		return input.chars().allMatch(Character::isDigit);
 	}
-
-
 }
