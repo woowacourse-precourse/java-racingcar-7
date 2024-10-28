@@ -32,4 +32,17 @@ class CarTest {
 		// then
 		assertThat(car.getDistance()).isEqualTo(1);
 	}
+
+	@Test
+	@DisplayName("주입받은 난수가 4 미만일 경우, 자동차를 정지시킨다.")
+	void Stop_If_Random_Number_Less_Than_4() {
+		// given
+		Car car = new Car("test");
+
+		// when
+		car.move(3);
+
+		// then
+		assertThat(car.getDistance()).isZero();
+	}
 }
