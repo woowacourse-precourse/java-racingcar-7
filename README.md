@@ -135,13 +135,13 @@ classDiagram
 	   -int maxScore
 	   +startRace()
 	   +runOnce()
-	   +updateMaxScore(int carScore) boolean
+	   +updateMaxScore(int carScore)
 	   +isForwardMovable() boolean
 	   +displayStatus()
 	   +displayResults()
 	   +findWinner() List~String~
     }
-    style InputProcessor fill:white,stroke:#333
-    style Car fill:white,stroke:#333
-    style Race fill:white,stroke:#333
+    style InputProcessor fill:white,stroke-width:2px,stroke:#CCF
+    style Car fill:white,stroke-width:2px,stroke:#CCF
+    style Race fill:white,stroke-width:2px,stroke:#CCF
 ```
