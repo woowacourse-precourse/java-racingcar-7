@@ -19,6 +19,14 @@ public class Race {
         this.maxScore = 0;
     }
 
+    public void runOnce() {
+        for (Car car : carList) {
+            if (isForwardMovable()) {
+                car.increaseScore();
+            }
+        }
+    }
+
     public boolean isForwardMovable() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
