@@ -2,6 +2,7 @@ package racingcar.services;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import racingcar.models.Cars;
 
 public class CarService {
@@ -14,5 +15,9 @@ public class CarService {
 
     public void incrementCars() {
         cars.incrementDistance();
+    }
+
+    public Map<String, Integer> getCarsInfo() {
+        return cars.getInformation();
     }
 }
