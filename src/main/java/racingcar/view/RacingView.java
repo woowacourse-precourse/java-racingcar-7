@@ -36,7 +36,7 @@ public class RacingView {
     }
 
     private void inputValidate(String carNames, int repeatCount) {
-        if (carNames.endsWith(",") || carNames.isEmpty() || repeatCount <= 0) {
+        if (carNames.endsWith(",") || carNames.isEmpty() || repeatCount <= 0 || repeatCount > 10000) {
             throw new IllegalArgumentException();
         }
 
