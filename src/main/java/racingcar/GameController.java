@@ -16,7 +16,7 @@ public class GameController {
         }
     }
 
-    public int maxWinNumber(List<Car> cars) {
+    private int maxWinNumber(List<Car> cars) {
         int maxNumber = cars.getFirst().getForwardCount();
         for (Car car : cars) {
             if (car.getForwardCount() > maxNumber) {
