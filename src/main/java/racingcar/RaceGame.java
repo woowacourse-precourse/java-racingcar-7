@@ -39,12 +39,9 @@ public class RaceGame {
 
     private void printRaceStatus() {
         for (Car car : cars) {
-            StringBuilder position = new StringBuilder();
-            position.append(car.getCarName() + " : ");
-            for (int i = 0; i < car.getPosition(); i++) {
-                position.append("-");
-            }
-            System.out.println(position.toString());
+            String position = car.getCarName() + " : "
+                    + "-".repeat(Math.max(0, car.getPosition()));
+            System.out.println(position);
         }
     }
 
@@ -73,8 +70,7 @@ public class RaceGame {
 
     private int readTryCount() throws IllegalArgumentException {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryCnt = Integer.parseInt(Console.readLine());
-        return tryCnt;
+        return Integer.parseInt(Console.readLine());
     }
 
     private void printWinner(List<String> winnerNames) {
