@@ -2,6 +2,7 @@ package racingcar.model;
 
 import static racingcar.constant.ErrorMessages.DUPLICATE_CAR_NAME;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -19,6 +20,10 @@ public class Cars {
         for (String name : carNames.split(DELIMITER)) {
             cars.add(new Car(new CarName(name)));
         }
+    }
+
+    public void moveCarsAccordingToGameRule() {
+        cars.forEach(car -> car.moveRandomly(Randoms.pickNumberInRange(0, 9)));
     }
 
     public List<Car> getCars() {

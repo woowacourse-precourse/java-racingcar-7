@@ -12,4 +12,18 @@ public class RacingCarGame {
         this.cars = cars;
         this.totalRounds = totalRounds;
     }
+
+    public void runRound() {
+        if (isEnd()) {
+            return;
+        }
+
+        cars.moveCarsAccordingToGameRule();
+        raceHistory.recordRoundResult(cars);
+        currentRound++;
+    }
+
+    public boolean isEnd() {
+        return currentRound == totalRounds;
+    }
 }
