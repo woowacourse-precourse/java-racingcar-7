@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,15 +18,9 @@ public class Application {
         String[] carList = inputCars.split(",");
 
         List<Car> cars = new ArrayList<>();
+        Set<String> carNames = new HashSet<>();
 
-        for (String s : carList) {
-            checkInputNull(s);
-            if (s.length() > 5) {
-                throw new IllegalArgumentException();
-            }
-            s = s.trim();
-            cars.add(new Car(s, 0));
-        }
+        makeCarsList(carList, cars, carNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputAttemptCount = Console.readLine();
@@ -64,6 +60,22 @@ public class Application {
                 break;
             }
             System.out.print(", " + cars.get(i).name);
+        }
+    }
+
+    public static void makeCarsList(String[] carList, List<Car> cars, Set<String> carNames) {
+        for (String s : carList) {
+            checkInputNull(s);
+            if (s.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+            s = s.trim();
+            if (carNames.contains(s)) {
+                throw new IllegalArgumentException();
+            } else {
+                carNames.add(s);
+            }
+            cars.add(new Car(s, 0));
         }
     }
 
