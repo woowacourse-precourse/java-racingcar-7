@@ -30,8 +30,10 @@ public class Car {
 
     }
 
-    public void move() {
-
+    public void move(boolean shouldMove) {
+        if (shouldMove) {
+            position++;
+        }
     }
 
     public String getPositionSymbols() {
