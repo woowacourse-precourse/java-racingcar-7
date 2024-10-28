@@ -11,4 +11,8 @@ public class CarName {
         }
         this.name = name;
     }
+
+    public void print() {
+        System.out.print(name + " : ");
+    }
 }

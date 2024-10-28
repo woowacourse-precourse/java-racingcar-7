@@ -10,4 +10,10 @@ public class MoveCount {
     public MoveCount add() {
         return new MoveCount(moveCount + 1);
     }
+
+    public void print() {
+        for (int i = 0; i<moveCount; i++){
+            System.out.print("-");
+        }
+    }
 }
