@@ -1,12 +1,13 @@
 package racingcar;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ValidationTest {
+
     @Test
     void isValidKeys() {
         assertTrue(InputValidation.isValidKeys(List.of("woni,jigi".split(",")))); // 정상 입력

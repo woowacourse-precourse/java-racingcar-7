@@ -37,7 +37,7 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String numInput = Console.readLine();
-        if (!InputValidation.isValidNumber(numInput)){
+        if (!InputValidation.isValidNumber(numInput)) {
             throw new IllegalArgumentException();
         }
         int num = Integer.parseInt(numInput);
@@ -63,7 +63,7 @@ public class Application {
         String result = String.join(", ", winners);
         if (maxMove == 0) {
             System.out.println("최종 우승자 : 없음");
-        }else{
+        } else {
             System.out.println("최종 우승자 : " + result);
         }
     }
