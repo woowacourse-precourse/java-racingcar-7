@@ -5,35 +5,28 @@ import java.util.List;
 
 public class Game {
     private final InputHandler inputHandler;
-    private final GameView gameView;
+    private final OutputHandler outputHandler;
 
     private List<Car> cars;
-    private Integer roundCount;
+    private Rounds rounds;
 
-    public Game(InputHandler inputHandler, GameView gameView) {
+    public Game(InputHandler inputHandler, OutputHandler outputHandler) {
         this.inputHandler = inputHandler;
-        this.gameView = gameView;
+        this.outputHandler = outputHandler;
     }
 
     public void start() {
-        gameView.printCarNameInputMessage();
         List<String> carNames = inputHandler.getCarNames();
         cars = createCars(carNames);
 
-        gameView.printRoundCountInputMessage();
-        roundCount = inputHandler.getRoundCount();
+        Integer roundSize = inputHandler.getRoundSize();
+        rounds = new Rounds(roundSize);
 
-        gameView.printResultMessage();
-
-        while (roundCount > 0) {
-            List<String> roundResult = processRound();
-            gameView.printRoundResult(roundResult);
-
-            roundCount--;
-        }
+        outputHandler.printResultMessage();
+        rounds.proceedRounds(cars, outputHandler);
 
         List<String> winners = determineWinners();
-        gameView.printWinner(winners);
+        outputHandler.printWinner(winners);
     }
 
     private List<Car> createCars(List<String> names) {
@@ -41,19 +34,6 @@ public class Game {
 
         for (String name : names) {
             result.add(new Car(name));
-        }
-
-        return result;
-    }
-
-    private List<String> processRound() {
-        List<String> result = new ArrayList<>();
-
-        for (Car car : cars) {
-            int power = RandomUtil.getRandomNumber();
-            car.move(power);
-
-            result.add(car.getInfo());
         }
 
         return result;
@@ -70,5 +50,4 @@ public class Game {
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName).toList();
     }
-
 }
