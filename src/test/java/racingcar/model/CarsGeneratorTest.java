@@ -13,8 +13,9 @@ class CarsGeneratorTest {
     void generateFromTest() {
         //given
         String names = "pobi,woni,jun";
+        Generator generator = new Generator();
         //when
-        List<Car> cars = CarsGenerator.generateFrom(names);
+        List<Car> cars = generator.generateCarsFrom(names);
         //then
         assertThat(cars)
                 .extracting("name")
