@@ -108,6 +108,7 @@ public class Application {
         return true;
     }
 
+    //feat:1-1. 자동차 이름이 5자를 초과한 경우 에러 출력(함수화)
     public static boolean checkLengthValidCars(String checkCar){
         if (checkCar.length()>5) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
