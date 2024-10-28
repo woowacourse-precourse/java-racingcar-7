@@ -1,32 +1,33 @@
 package racingcar;
 
 import racingcar.car.service.CarNameService;
-import racingcar.car.service.CarStatusService;
 import racingcar.car.util.RandomNumberGenerator;
 import racingcar.car.validation.CarNameValidator;
 import racingcar.race.controller.RaceController;
 import racingcar.race.service.RaceService;
+import racingcar.race.validation.AttemptCountValidator;
 import racingcar.view.Input;
 import racingcar.view.Output;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        // View 클래스 (입력/출력 담당)
-        Input input = new Input();
-        Output output = new Output();
 
-        // Car 관련 서비스 및 Validator
-        CarNameValidator carNameValidator = new CarNameValidator();
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        CarNameService carNameService = new CarNameService(carNameValidator);
-        CarStatusService carStatusService = new CarStatusService(randomNumberGenerator, output);
+        try {
+            CarNameValidator carNameValidator = new CarNameValidator();
+            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+            CarNameService carNameService = new CarNameService(carNameValidator);
+            AttemptCountValidator attemptCountValidator = new AttemptCountValidator();
 
-        // RaceService 생성
-        RaceService raceService = new RaceService(carNameService, carStatusService, input, output);
+            Input input = new Input(carNameValidator, attemptCountValidator);
+            Output output = new Output();
 
-        // RaceController 생성 및 경주 시작
-        RaceController raceController = new RaceController(raceService, input, output);
-        raceController.startRace();
+            RaceService raceService = new RaceService(carNameService, randomNumberGenerator, output);
+            RaceController raceController = new RaceController(raceService, input, output);
+
+            // 경주 시작
+            raceController.startRace();
+        } catch (Exception e) {
+            System.out.println("예외 발생: " + e.getMessage());
+        }
     }
 }
