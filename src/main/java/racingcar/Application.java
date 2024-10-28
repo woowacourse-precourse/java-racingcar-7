@@ -23,18 +23,8 @@ public class Application {
         System.out.println("\n실행 결과");
 
         for (int i = 0; i < movementCount; i++) {
-            for (Car car : cars) {
-                Integer randomNumber = getRandomNumber();
-                Boolean isValidNumber = isValidNumber(randomNumber);
-
-                if (isValidNumber) {
-                    car.addDistance();
-                }
-            }
-
-            for (Car car : cars) {
-                System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
-            }
+            moveCars(cars);
+            showCarDistances(cars);
             System.out.println();
         }
 
@@ -111,5 +101,22 @@ public class Application {
         winners = String.join(",", winnerNames);
 
         return winners;
+    }
+
+    public static void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            Integer randomNumber = getRandomNumber();
+            Boolean isValidNumber = isValidNumber(randomNumber);
+
+            if (isValidNumber) {
+                car.addDistance();
+            }
+        }
+    }
+
+    public static void showCarDistances(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
+        }
     }
 }
