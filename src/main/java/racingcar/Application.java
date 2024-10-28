@@ -22,6 +22,7 @@ public class Application {
         String[] names = splitWithComma(input);
         validateNamesCount(names);
         validateNameLength(names);
+        input = getPlayCount();
     }
 
     public static void printStartMessage() {
@@ -58,5 +59,9 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름의 길이는 1자이상 5자 이하여야 합니다.");
             }
         }
+    }
+
+    public static String getPlayCount() {
+        return Console.readLine();
     }
 }
