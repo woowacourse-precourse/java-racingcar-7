@@ -5,12 +5,12 @@ import racingcar.exception.UserErrorMessage;
 /*
 * 자동차 모델을 정의하는 클래스
  */
-public class LacingCar {
+public class RacingCar {
 
     private final String carName;
     private int resultToMove;
 
-    public LacingCar(String carName) {
+    public RacingCar(String carName) {
         this.carName = carName;
         this.resultToMove = 0;
     }

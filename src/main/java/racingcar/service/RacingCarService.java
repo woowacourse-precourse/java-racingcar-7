@@ -3,7 +3,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.exception.UserErrorMessage;
-import racingcar.model.LacingCar;
+import racingcar.model.RacingCar;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class LacingCarService {
+public class RacingCarService {
 
     // 시도 횟수 입력값 알맞은지 확인
     public boolean validateCount(String inputCount) {
@@ -39,20 +39,20 @@ public class LacingCarService {
         return randomNumber >= 4;
     }
 
-    public List<LacingCar> setRacingCars() {
-        List<LacingCar> racingCars = new ArrayList<>();
+    public List<RacingCar> setRacingCars() {
+        List<RacingCar> racingCars = new ArrayList<>();
 
         StringTokenizer st = new StringTokenizer(InputView.userInputCarNames(), ",");
         while(st.hasMoreTokens()) {
             String carName = st.nextToken();
-            LacingCar lacingCar = new LacingCar(LacingCar.validateCarName(carName));
-            racingCars.add(lacingCar);
+            RacingCar racingCar = new RacingCar(RacingCar.validateCarName(carName));
+            racingCars.add(racingCar);
         }
         return racingCars;
     }
 
     public void moveRacingCar() {
-        List<LacingCar> racingCars;
+        List<RacingCar> racingCars;
         racingCars = setRacingCars();
 
         int count = 0; // 시도 횟수 정수형
@@ -63,7 +63,7 @@ public class LacingCarService {
 
         System.out.println("실행결과");
         for(int i=0; i<count; i++) {
-            for (LacingCar racingCar : racingCars) {
+            for (RacingCar racingCar : racingCars) {
                 if (checkCondition(createRandomNumber())) {
                     racingCar.plusResultToMove();
                 }

@@ -44,17 +44,17 @@
 #### UserErrorMessage
 프로그램 실행 동안 발생한 에러를 사용자에게 알려주는 메시지를 정의하는 클래스
 
-#### LacingCar
+#### RacingCar
 자동차 모델(이름, 전진결과)을 정의하는 클래스
 
 자동차 이름에 대한 사용자 입력 예외를 처리하는 함수
 
 자동차 전진을 처리하는 함수
  
-#### LacingCarController
+#### RacingCarController
 자동차 경주를 시작하는 클래스
 
-#### LacingCarService
+#### RacingCarService
 시도 횟수에 대한 사용자 입력 예외를 처리하는 함수
 
 무작위 수를 생성하는 함수

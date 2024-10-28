@@ -1,19 +1,15 @@
 package racingcar.controller;
 
-import racingcar.model.LacingCar;
-import racingcar.service.LacingCarService;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.service.RacingCarService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-
+/*
+* 자동차 경주를 시작하는 클래스
+ */
 public class RacingCarController {
 
     public void startRacing() {
-        LacingCarService lacingCarService = new LacingCarService();
-        lacingCarService.moveRacingCar();
+        RacingCarService racingCarService = new RacingCarService();
+        racingCarService.moveRacingCar();
     }
 
 }

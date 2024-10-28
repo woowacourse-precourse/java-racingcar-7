@@ -1,17 +1,17 @@
 package racingcar.view;
 
-import racingcar.model.LacingCar;
+import racingcar.model.RacingCar;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.List;
+/*
+* 실행 결과와 최종 우승자를 출력하는 기능을 수행하는 클래스
+ */
 
 public class OutputView {
 
-    public static String userResultOutput(List<LacingCar> racingCars) {
+    public static String userResultOutput(List<RacingCar> racingCars) {
         StringBuilder output = new StringBuilder();
-        for(LacingCar racingCar : racingCars) {
+        for(RacingCar racingCar : racingCars) {
             output.append(setResultOutput(racingCar.getCarName(), racingCar.getResultToMove())).append("\n");
         }
         return output.toString();
