@@ -5,18 +5,18 @@ import java.util.List;
 public class RoundResult {
     private Integer round;
     private List<CarRoundResult> carRoundResults;
-    private Integer maxCount;
+    private Integer maxMoveCount;
 
     public RoundResult(Integer round,
                        List<CarRoundResult> carRoundResults,
-                       Integer maxCount){
+                       Integer maxMoveCount){
         this.round = round;
         this.carRoundResults = carRoundResults;
-        this.maxCount = maxCount;
+        this.maxMoveCount = maxMoveCount;
     }
 
-    public Integer getMaxCount(){
-        return this.maxCount;
+    public Integer getMaxMoveCount(){
+        return this.maxMoveCount;
     }
 
     public List<CarRoundResult> getCarRoundResults(){

@@ -2,22 +2,22 @@ package racingcar.model;
 
 public class Car {
     private String name;
-    private Integer currentCount;
+    private Integer currentMoveCount;
 
     public Car(String name){
         this.name = name;
-        this.currentCount = 0;
+        this.currentMoveCount = 0;
     }
 
     public String getName(){
         return name;
     }
 
-    public Integer getCurrentCount(){
-        return currentCount;
+    public Integer getCurrentMoveCount(){
+        return currentMoveCount;
     }
 
-    public void setCurrentCount(Integer currentCount){
-        this.currentCount = currentCount;
+    public void setCurrentMoveCount(Integer currentCount){
+        this.currentMoveCount = currentCount;
     }
 }
