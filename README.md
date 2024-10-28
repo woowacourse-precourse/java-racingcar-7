@@ -104,31 +104,40 @@ classDiagram
     }
 
     class RacingGameController {
-        -racingGame: RacingGame
+        -racingGameService: RacingGameService
         -racingGameView: RacingGameView
         +RacingGameController()
-        +run()
-        -createView()
-        -processGame()
-        -showResult()
-        -validateInput(String)
-        -createGame(String[] carNames, int rounds)
+        +start(): void
+        -validateInput(String carNames, int rounds): void
+    }
+
+    class RacingGameService {
+        -racingGame: RacingGame
+        +startGame(String carNames, int rounds): void
+        +playRound(): void
+        +hasNextRound(): boolean
+        +getCurrentStatus(): List~Car~
+        +getWinners(): List~String~
+        -createCars(String carNames): List~Car~
+        -validateCarNames(String carNames): void
+        -validateRounds(int rounds): void
     }
 
     class RacingGame {
         -cars: List~Car~
         -rounds: int
-        +RacingGame(String[] carNames, int rounds)
-        +race()
-        +getWinners(): List~Car~
-        +getCurrentStatus(): List~Car~
+        -currentRound: int
+        +RacingGame(List~Car~ cars, int rounds)
+        +race(): void
+        +isFinished(): boolean
+        +getCars(): List~Car~
     }
 
     class Car {
         -name: String
         -position: int
         +Car(String name)
-        +move()
+        +move(): void
         +getName(): String
         +getPosition(): int
     }
@@ -136,13 +145,14 @@ classDiagram
     class RacingGameView {
         +inputCarNames(): String
         +inputRounds(): int
-        +showRaceStatus(List~Car~)
-        +showWinners(List~Car~)
-        +showError(String)
+        +displayRoundResults(List~Car~ cars): void
+        +displayWinners(List~String~ winners): void
+        +displayError(String message): void
     }
 
     Application --> RacingGameController : creates
-    RacingGameController --> RacingGameView : creates and manages
-    RacingGameController --> RacingGame : creates and manages
+    RacingGameController --> RacingGameView : uses
+    RacingGameController --> RacingGameService : uses
+    RacingGameService --> RacingGame : manages
     RacingGame --> Car : contains
 ```
