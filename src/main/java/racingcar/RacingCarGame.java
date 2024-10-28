@@ -64,5 +64,11 @@ public class RacingCarGame {
         System.out.println();
     }
 
+    public void startRace(List<Car> cars, int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            moveCars(cars);
+            printRoundResult(cars);
+        }
+    }
 }
 
