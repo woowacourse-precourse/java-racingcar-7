@@ -32,6 +32,7 @@ public class Car {
         validateCondition(name, isOnlyWhitespace(), ErrorMessage.CAR_NAME_IS_SPACE.getMessage());
         validateCondition(name, exceedsMaxLength(), ErrorMessage.INVALID_NAME_LENGTH.getMessage());
         validateCondition(name, containsComma(), ErrorMessage.INVALID_COMMA_INPUT.getMessage());
+        validateCondition(name, containsInvalidCharacters(), ErrorMessage.INVALID_NAME_CHARACTER.getMessage());
         return name;
     }
 
@@ -55,5 +56,9 @@ public class Car {
 
     private Predicate<String> containsComma() {
         return n -> n.contains(SeparatorPattern.COMMA.getPattern());
+    }
+
+    private Predicate<String> containsInvalidCharacters() {
+        return n -> !n.matches("^[a-zA-Z0-9]+$");
     }
 }
