@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarManager;
@@ -30,6 +31,7 @@ public class GameController {
 
         race = new Race(cars, validRaceRounds);
         processRace(race);
+        Console.close();
     }
 
     public Race getRace() {
