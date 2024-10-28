@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import racingcar.message.ErrorMessage;
 import racingcar.exception.CarNameException;
+import racingcar.message.PatternMessage;
 import racingcar.message.SeparatorPattern;
 
 public class Car {
@@ -59,6 +60,7 @@ public class Car {
     }
 
     private Predicate<String> containsInvalidCharacters() {
-        return n -> !n.matches("^[a-zA-Z0-9]+$");
+        return n -> !PatternMessage.INVALID_CHARACTERS.matches(n);
     }
+
 }

@@ -3,7 +3,8 @@ package racingcar.message;
 import java.util.regex.Pattern;
 
 public enum PatternMessage {
-    VALID_FORMAT("\\d+");
+    VALID_FORMAT("\\d+"),
+    INVALID_CHARACTERS("^[a-zA-Z0-9]+$");
 
     private final Pattern pattern;
 
