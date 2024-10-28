@@ -20,6 +20,13 @@ public class RacingGameTest {
         carNames = Arrays.asList("pobi", "woni", "jun");
     }
 
+    private void moveCars(RacingGame game, int[] moves) {
+        List<Car> cars = game.getCars();
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).move(moves[i]);
+        }
+    }
+
     @Test
     @DisplayName("유효한 자동차 이름 입력 - 이름 확인")
     void testValidNames() {
@@ -56,13 +63,14 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("각 자동차가 이동하는지 확인")
-    void carsMoveInRacingGame() {
+    void testMove() {
+        // given
         RacingGame game = new RacingGame(carNames);
 
-        for (Car car : game.getCars()) {
-            car.move(5);
-        }
+        // when
+        moveCars(game, new int[] {5, 5, 5});
 
+        // then
         for (Car car : game.getCars()) {
             assertEquals(1, car.getPosition());
         }
@@ -70,33 +78,30 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("최대 이동 거리")
-    void getMaxMoveCount() {
+    void testMaxMoveCount() {
+        // given
         RacingGame game = new RacingGame(carNames);
+        moveCars(game, new int[] {5, 7, 4});
 
-        List<Car> cars = game.getCars();
-        cars.get(0).move(5);
-        cars.get(1).move(7);
-        cars.get(2).move(4);
-
+        // when
         int maxMoveCount = game.getMaxMoveCount();
 
+        // then
         assertEquals(1, maxMoveCount);
     }
 
     @Test
     @DisplayName("우승자 반환")
-    void getWinners() {
+    void testWinners() {
+        // given
         RacingGame game = new RacingGame(carNames);
-
-        List<Car> cars = game.getCars();
-        cars.get(0).move(5);
-        cars.get(1).move(5);
-        cars.get(2).move(3);
+        moveCars(game, new int[] {5, 5, 3});
 
         // when
         int maxMoveCount = game.getMaxMoveCount();
         List<String> winners = game.getWinners(maxMoveCount);
 
+        // then
         assertEquals(List.of("pobi", "woni"), winners);
     }
 
