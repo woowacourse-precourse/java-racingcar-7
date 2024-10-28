@@ -6,13 +6,8 @@ import racingcar.domain.car.Car;
 import racingcar.domain.car.CarGenerator;
 import racingcar.domain.car.Cars;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
-import java.util.function.IntSupplier;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RaceServiceTest {
 
@@ -25,14 +20,12 @@ public class RaceServiceTest {
 
         RaceService raceService = new RaceService(cars, 5);
 
-        List<Map<Car, Integer>> raceResults = raceService.createRaceResults();
+        List<Map<Car, Integer>> raceResults = raceService.createRaceLogs();
         Map<Car, Integer> round1 = raceResults.get(0);
         Map<Car, Integer> round2 = raceResults.get(1);
 
         Car carA = carList.get(0);
         Assertions.assertThat(round1.get(carA)).isEqualTo(1);
         Assertions.assertThat(round2.get(carA)).isEqualTo(2);
-
-
     }
 }

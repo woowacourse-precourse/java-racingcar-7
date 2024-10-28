@@ -1,14 +1,14 @@
-package racingcar.domain.car;
+package racingcar.domain;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarGenerator;
+import racingcar.domain.car.Cars;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.IntSupplier;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 

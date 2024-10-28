@@ -12,10 +12,11 @@ public class OutputView {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("실행 결과\n");
 
-        String output = raceResults.stream()
+        String eachRaceLog = raceResults.stream()
                 .map(map -> toStringResult(map))
                 .collect(Collectors.joining("\n\n"));
-        stringBuilder.append(output);
+
+        stringBuilder.append(eachRaceLog);
 
         System.out.println(stringBuilder.toString() + "\n");
     }

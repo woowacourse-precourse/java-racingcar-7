@@ -3,7 +3,7 @@ package racingcar;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.CarGenerator;
 import racingcar.domain.car.Cars;
-import racingcar.domain.car.RandomEngine;
+import racingcar.domain.RandomEngine;
 import racingcar.service.RaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
