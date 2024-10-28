@@ -1,6 +1,6 @@
 package racingcar.player;
 
-public class Player {
+public class Player implements Comparable<Player> {
     private final String name;
     private Integer score;
 
@@ -17,5 +17,14 @@ public class Player {
     }
     public Integer getScore() {
         return score;
+    }
+
+    public String current() {
+        return String.join(" ",name, ":", "-".repeat(score));
+    }
+
+    @Override
+    public int compareTo(Player o) {
+        return this.score - o.getScore();
     }
 }
