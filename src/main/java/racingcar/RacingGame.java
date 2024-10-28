@@ -1,7 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private int MINIMUM_ROUND = 1;
@@ -42,5 +44,15 @@ public class RacingGame {
                         car.moveForward(distance);
                     });
         }
+    }
+
+    public List<Car> getWinners() {
+        Car winner = racingCars.stream()
+                .max(Comparator.comparingInt(Car::currentLocation))
+                .orElseThrow(() -> new IllegalArgumentException("우승자가 없어요."));
+
+        return racingCars.stream()
+                .filter(car -> winner.currentLocation() == car.currentLocation())
+                .collect(Collectors.toList());
     }
 }

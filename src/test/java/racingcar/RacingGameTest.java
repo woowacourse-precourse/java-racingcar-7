@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,6 +13,16 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingGameTest {
 
+    @Test
+    void 자동차_경주의_우승자는_최소_한_명_이다() {
+        RacingGame racingGame = new RacingGame(3);
+        List<Car> racingCars = List.of(new Car("pobi"), new Car("woni"));
+        racingGame.apply(racingCars);
+        racingGame.start();
+
+        List<Car> winners = racingGame.getWinners();
+        assertTrue(winners.size() > 0);
+    }
 
     private static Stream<Arguments> generateRacingCars() {
         return Stream.of(
