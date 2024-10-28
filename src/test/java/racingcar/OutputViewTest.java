@@ -29,7 +29,7 @@ public class OutputViewTest {
         OutputView.displayWinners(winners);
 
         String output = outContent.toString();
-        assertThat(output).isEqualToNormalizingNewlines("최종 우승자 : Alpha, Bravo\n");
+        assertThat(output).isEqualToNormalizingNewlines("최종 우승자 : Alpha, Bravo");
     }
 
     @Test
