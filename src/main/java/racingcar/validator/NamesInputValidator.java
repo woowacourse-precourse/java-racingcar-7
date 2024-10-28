@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.validator;
+
+import racingcar.exception.CustomException;
+import racingcar.exception.ExceptionCode;
 
 public class NamesInputValidator {
 

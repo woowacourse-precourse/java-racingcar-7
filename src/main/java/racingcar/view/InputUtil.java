@@ -1,6 +1,8 @@
-package racingcar;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.validator.NamesInputValidator;
+import racingcar.validator.NumberInputValidator;
 
 import java.util.ArrayList;
 import java.util.List;

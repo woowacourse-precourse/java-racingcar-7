@@ -1,11 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 
-import static org.assertj.core.api.Assertions.*;
-import static racingcar.Car.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.domain.Car.FORWARDING_CONDITION;
 
 class CarTest {
 
