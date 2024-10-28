@@ -48,7 +48,7 @@ public class Application {
     private static List<StringBuilder> initializeRaceResults(String[] carNames){
         List<StringBuilder> raceResults = new ArrayList<>();
         for (String carName : carNames) {
-            raceResults.add(new StringBuilder(carName));
+            raceResults.add(new StringBuilder());
         }
         return raceResults;
     }
