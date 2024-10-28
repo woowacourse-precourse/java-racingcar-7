@@ -24,5 +24,15 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String playTimeString = Console.readLine();
+
+        int playTime = -1;
+        try {
+            playTime = Integer.parseInt(playTimeString);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        if (playTime < 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
