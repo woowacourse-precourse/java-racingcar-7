@@ -19,25 +19,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
-import racingcar.entity.RacingCar;
+import racingcar.config.AppDIConfig;
 import racingcar.repository.RacingCarRepositoryImpl;
 import racingcar.service.RacingCarService;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
 
 class RacingCarControllerTest extends NsTest {
 
-    private static final RacingCarRepositoryImpl racingCarRepository = new RacingCarRepositoryImpl();
-    private static final RacingCarService racingCarService = new RacingCarService(racingCarRepository);
-    private static final RacingCarController racingCarController = new RacingCarController(racingCarService);
-    private static final OutputView outputView = new OutputView();
+    private static final AppDIConfig appDIConfig = new AppDIConfig();
+    private static final RacingCarController racingCarController = appDIConfig.getRacingCarController();
+    private static final RacingCarService racingCarService = appDIConfig.getRacingCarService();
+    private static final RacingCarRepositoryImpl racingCarRepository = appDIConfig.getRacingCarRepository();
 
     private final InputStream standardIn = System.in;
-    private InputView inputView;
 
     @BeforeEach
     void setUp() {
-        inputView = new InputView();
         System.setIn(standardIn);
     }
 
@@ -58,7 +54,7 @@ class RacingCarControllerTest extends NsTest {
         String input = "seo";
         setInput(input);
 
-        racingCarController.setRacingCar(inputView);
+        racingCarController.setRacingCar();
 
         assertThat(racingCarService.getByName(input).isPresent()).isTrue();
     }
@@ -70,7 +66,7 @@ class RacingCarControllerTest extends NsTest {
         setInput(input);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> racingCarController.setRacingCar(inputView))
+                assertThatThrownBy(() -> racingCarController.setRacingCar())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -82,7 +78,7 @@ class RacingCarControllerTest extends NsTest {
         setInput(input);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> racingCarController.setRacingCar(inputView))
+                assertThatThrownBy(() -> racingCarController.setRacingCar())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -93,7 +89,7 @@ class RacingCarControllerTest extends NsTest {
         String input = "1";
         setInput(input);
 
-        racingCarController.startRacingGame(inputView, outputView);
+        racingCarController.startRacingGame();
 
         assertThat(output()).contains(TYPE_RACE_COUNT.getMsg());
     }
@@ -105,7 +101,7 @@ class RacingCarControllerTest extends NsTest {
         setInput(input);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> racingCarController.startRacingGame(inputView, outputView))
+                assertThatThrownBy(() -> racingCarController.startRacingGame())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -117,7 +113,7 @@ class RacingCarControllerTest extends NsTest {
         setInput(input);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> racingCarController.startRacingGame(inputView, outputView))
+                assertThatThrownBy(() -> racingCarController.startRacingGame())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -129,7 +125,7 @@ class RacingCarControllerTest extends NsTest {
         setInput(input);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> racingCarController.startRacingGame(inputView, outputView))
+                assertThatThrownBy(() -> racingCarController.startRacingGame())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -140,7 +136,7 @@ class RacingCarControllerTest extends NsTest {
         String input = "10";
         setInput(input);
 
-        racingCarController.startRacingGame(inputView, outputView);
+        racingCarController.startRacingGame();
 
         assertThat(output()).contains(TRACKING_START.getMsg());
     }
@@ -153,7 +149,7 @@ class RacingCarControllerTest extends NsTest {
         List<String> testCarNames = new ArrayList<>(Arrays.asList("seo"));
         racingCarService.createAll(testCarNames);
 
-        racingCarController.startRacingGame(inputView, outputView);
+        racingCarController.startRacingGame();
 
         assertThat(output().split("seo : ", -1).length - 1).isEqualTo(10);
     }
@@ -165,9 +161,9 @@ class RacingCarControllerTest extends NsTest {
         setInput(input);
         List<String> testCarNames = new ArrayList<>(Arrays.asList("seo"));
         racingCarService.createAll(testCarNames);
-        racingCarController.startRacingGame(inputView, outputView);
+        racingCarController.startRacingGame();
 
-        racingCarController.finalAward(outputView);
+        racingCarController.finalAward();
 
         assertThat(output()).contains(PRESENTATION_FINAL_WINNER.getMsg());
     }

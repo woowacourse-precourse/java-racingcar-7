@@ -4,7 +4,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -100,9 +99,9 @@ class RacingCarServiceTest {
 
         Map<String, String>[] resultMap = racingCarService.startRacingAndTracking(new BigInteger(raceCount));
 
-        for(int i=0; i<Integer.parseInt(raceCount); i++) {
+        for (int i = 0; i < Integer.parseInt(raceCount); i++) {
             String track = carName + " : " + resultMap[i].get(carName);
-            if(track.equals(carName + " : " + "-")) {
+            if (track.equals(carName + " : " + "-")) {
                 findFlag = true;
                 break;
             }

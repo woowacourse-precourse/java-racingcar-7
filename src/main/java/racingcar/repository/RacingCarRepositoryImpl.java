@@ -1,10 +1,8 @@
 package racingcar.repository;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import racingcar.entity.RacingCar;
 
 public class RacingCarRepositoryImpl implements RacingCarRepository {
