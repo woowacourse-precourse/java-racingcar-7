@@ -35,7 +35,7 @@ public class InputHandler {
             if (name.indexOf(COMMA) != -1) { // 이름에 ,가 포함된 경우
                 throw new IllegalArgumentException();
             }
-            if (name.length() > 5 || name.isEmpty()) {
+            if (name.length() > 5 || name.trim().isEmpty()) {
                 throw new IllegalArgumentException();
             }
 
