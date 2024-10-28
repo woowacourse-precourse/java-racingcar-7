@@ -2,6 +2,7 @@ package racingcar.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ class RacingCarControllerTest {
 
         for(int num = 0; num < 3; num++) {
             assertThat(result.get(num).getName()).isEqualTo(carList.get(num).getName());
+            Console.close();
         }
     }
 }

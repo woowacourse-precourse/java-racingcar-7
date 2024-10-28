@@ -2,6 +2,7 @@ package racingcar.racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.Assertions;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -39,6 +40,7 @@ class RacingControllerTest {
                     racingController.start(carList);
                     assertThat(out.toString()).contains("name0 : -", "name1 : ", "name2 : -");
                     assertThat(out.toString()).contains("최종 우승자 : name0, name2");
+                    Console.close();
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD
         );
