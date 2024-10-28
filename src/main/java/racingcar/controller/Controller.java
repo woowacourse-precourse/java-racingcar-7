@@ -13,7 +13,6 @@ public class Controller {
         endRace(cars);
     }
 
-
     private Cars initRaceCar() {
         String CarNamesInput = View.displayCarNameInputPrompt();
         return Cars.createCarList(CarNamesInput);

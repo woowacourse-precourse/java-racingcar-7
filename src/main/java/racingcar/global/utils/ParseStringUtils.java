@@ -6,7 +6,7 @@ import racingcar.global.message.ErrorMessage;
 
 public class ParseStringUtils {
     private ParseStringUtils() {
-        // 인스턴스화 방지
+        // 인스턴스화 방지 (정적 메서드만 사용)
     }
 
     public static List<String> splitCarNames(String carNamesInput) {
