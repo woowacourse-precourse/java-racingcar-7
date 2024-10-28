@@ -15,4 +15,10 @@ public class Car {
             throw new IllegalArgumentException("5글자 이상입니다.");
         }
     }
+
+    public void move(int randomNumber) {
+        if (randomNumber >= 4) {
+            position++;
+        }
+    }
 }
