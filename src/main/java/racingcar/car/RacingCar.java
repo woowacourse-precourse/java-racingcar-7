@@ -13,7 +13,7 @@ public class RacingCar {
 
     public void move() {
         int randomNum = Randoms.pickNumberInRange(0, 9);
-        if(randomNum >= 4) {
+        if (randomNum >= 4) {
             // move
             movedHistory += "-";
         }

@@ -21,7 +21,7 @@ class RaceStarterTest {
         RaceStarter.startRace(racingCarList, 100);
 
         // then
-        for(RacingCar racingCar : racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
             // 100번 시도하면 확률상 한 번은 움직였을 것. (제대로 동작하는지 테스트, 실패할 수도 있음)
             Assertions.assertNotEquals("", racingCar.getMovedHistory());
         }

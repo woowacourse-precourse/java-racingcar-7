@@ -14,7 +14,7 @@ public class InputValidator {
         List<String> carNameList = Arrays.stream(carNameListInput.split(","))
                 .collect(Collectors.toList());
 
-        for(String carName : carNameList) {
+        for (String carName : carNameList) {
             if (!Pattern.matches(charRegex, carName) || carName.length() > 5 || carName.isBlank()) {
                 throw new IllegalArgumentException();
             }

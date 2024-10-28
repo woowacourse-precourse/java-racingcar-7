@@ -20,11 +20,11 @@ class RacingCarGeneratorTest {
         List<String> carNameList = List.of(carNameListInput.split(","));
 
         // then
-        for(Object o : racingCarList) {
+        for (Object o : racingCarList) {
             Assertions.assertTrue(o instanceof RacingCar);
         }
 
-        for(int i=0; i<racingCarList.size(); i++) {
+        for (int i = 0; i < racingCarList.size(); i++) {
             Assertions.assertEquals(carNameList.get(i), racingCarList.get(i).getName());
         }
     }

@@ -7,11 +7,7 @@ import racingcar.domain.RaceStarter;
 import racingcar.domain.RacingCarGenerator;
 import racingcar.validator.InputValidator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -28,7 +24,7 @@ public class Application {
 
         List<RacingCar> racingCarList = RacingCarGenerator.generateRacingCarList(carNameListInput);
 
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
         RaceStarter.startRace(racingCarList, Integer.parseInt(tryMoveCountInput));
 
         RaceResult raceResult = new RaceResult(racingCarList);
