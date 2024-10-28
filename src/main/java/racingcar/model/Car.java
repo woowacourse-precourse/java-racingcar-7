@@ -20,7 +20,7 @@ public class Car {
 
     public void advance(int number) {
         if (number > 3) {
-            advanceMarkers.add("-");
+            addAdvanceMarker();
         }
     }
 
