@@ -13,15 +13,18 @@ public class InputView {
     }
 
     public static int inputAttemptCount() {
-        String attemptCount = Console.readLine();
-        AttemptCountValidator.validateAttemptCount(toInt(attemptCount));
-        return Integer.parseInt(attemptCount);
+        String input = Console.readLine();
+        validateInputIsNumber(input);
+
+        int attemptCount = Integer.parseInt(input);
+        AttemptCountValidator.validateAttemptCount(attemptCount);
+
+        return attemptCount;
     }
 
-    private static int toInt(String value) {
-        if (!value.matches("[0-9]+")) {
+    private static void validateInputIsNumber(String input) {
+        if (!input.matches("[0-9]+")) {
             throw new IllegalArgumentException("입력값은 숫자여야 합니다.");
         }
-        return Integer.parseInt(value);
     }
 }

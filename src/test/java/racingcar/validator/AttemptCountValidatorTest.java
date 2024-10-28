@@ -19,6 +19,5 @@ public class AttemptCountValidatorTest {
         assertThatThrownBy(() -> AttemptCountValidator.validateAttemptCount(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(expectedMessage);
-
     }
 }
