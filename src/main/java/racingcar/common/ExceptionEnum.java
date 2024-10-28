@@ -18,7 +18,6 @@ public enum ExceptionEnum {
     NON_INTEGER_ATTEMPT_COUNT("시도 횟수는 정수여야 합니다."),
     NON_NUMERIC_ATTEMPT_COUNT("시도 횟수에는 숫자만 입력 가능합니다."),
     EMPTY_ATTEMPT_COUNT("시도 횟수는 빈 입력일 수 없습니다."),
-    LONG_RANGE_EXCEEDED("시도 횟수가 long 범위를 초과했습니다."),
     NULL_ATTEMPT_COUNT("시도 횟수는 null일 수 없습니다.");
 
     private final String message;
