@@ -17,6 +17,7 @@ public class MoveController {
         outputView.printRunResult(); // 실행 결과 메시지 출력
         for (int i = 0; i < tryCount; i++) {
             race.moveCars(carMovement); // 자동차 이동 실행
+            outputView.printCarPositions(race.getCars()); // 현재 자동차 위치 출력
         }
     }
 }
