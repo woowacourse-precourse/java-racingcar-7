@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class Car implements Comparable<Car> {
     private static final Map<String, Integer> nameCount = new HashMap<>();
-
     private static final int MOVING_FORWARD = 4;
     private static final String NAME_REGEX = "^[a-zA-Z]{1,5}$";
     private static final String DELIMITER = ",";
@@ -69,17 +68,11 @@ public class Car implements Comparable<Car> {
         return count;
     }
 
-    public void moveOrNot() {
-        if (canMove()) {
-            move();
-        }
-    }
-
-    private boolean canMove() {
+    public boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) >= MOVING_FORWARD;
     }
 
-    private void move() {
+    public void move() {
         position++;
     }
 

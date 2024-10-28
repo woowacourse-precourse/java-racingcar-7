@@ -4,16 +4,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Game {
-    private final int round;
     private final List<Car> cars;
+    private final int round;
 
-    public static Game create(int round, List<Car> cars) {
-        return new Game(round, cars);
+    public static Game create(List<Car> cars, int round) {
+        return new Game(cars, round);
     }
 
-    private Game(int round, List<Car> cars) {
-        this.round = round;
+    Game(List<Car> cars, int round) {
+        validateRound(round);
+
         this.cars = cars;
+        this.round = round;
+    }
+
+    private void validateRound(int round) {
+        if (round <= 0 || round > 10) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void start() {
@@ -29,7 +37,11 @@ public class Game {
     }
 
     private void processRound() {
-        cars.forEach(Car::moveOrNot);
+        cars.forEach(car -> {
+            if (car.canMove()) {
+                car.move();
+            }
+        });
     }
 
     private void printRound() {
