@@ -13,21 +13,40 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트() {
+    void functionTest() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni\n1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
-    void 예외_테스트() {
+    void minusTest() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> run("pobi,woni\n-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도 횟수는 1 이상이어야 합니다.")
+        );
+    }
+
+    @Test
+    void overFiveCharTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> run("pobi,bookqeukgom\n3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차의 이름은 5글자 이하여야 합니다.")
+        );
+    }
+
+    @Test
+    void blankNameTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> run("\n2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("이름은 비어있을 수 없습니다.")
         );
     }
 
