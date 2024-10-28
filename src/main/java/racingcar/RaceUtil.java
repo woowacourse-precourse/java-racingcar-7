@@ -16,8 +16,8 @@ public class RaceUtil {
         String[] carName = Console.readLine().split(",");
 
         Collections.addAll(carNameList, carName);
-
-        return carNameList;
+        if(checkRaceCarName(carNameList)) return carNameList;
+        else throw  new IllegalArgumentException("이름의 길이가 다섯자를 넘습니다.");
     }
 
     /***
@@ -43,5 +43,19 @@ public class RaceUtil {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    /**
+     * 경주차의 이름이 유효한지 검사하는 메소드
+     *
+     * @param cars
+     * @return 이름이 유효한지 여부
+     */
+    private boolean checkRaceCarName(ArrayList<String> cars){
+        for(String name : cars) {
+            if(name.length() > 5) return false;
+        }
+
+        return true;
     }
 }

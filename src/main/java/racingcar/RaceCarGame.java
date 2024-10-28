@@ -38,7 +38,10 @@ public class RaceCarGame {
      */
     private void forwardUpdate(){
         for(RaceCar raceCar : this.cars){
-            raceCar.updateForward(Randoms.pickNumberInRange(0, 9));
+            int forward = Randoms.pickNumberInRange(0, 9);
+            if(forward >= 4) {
+                raceCar.updateForward(forward);
+            }
         }
     }
 
@@ -64,6 +67,10 @@ public class RaceCarGame {
                 "-".repeat(Math.max(0, raceCar.getForward()));
     }
 
+    /**
+     * 최종 우승자 선택 메소드
+     *
+     */
     private void selectWinners(){
         int winnerScore = 0;
         for(RaceCar raceCar : this.cars) {
@@ -72,6 +79,12 @@ public class RaceCarGame {
         System.out.println("최종 우승자 : " + makeWinnerStr(winnerScore));
     }
 
+    /**
+     * 최종 우승자를 담은 출력 문자열을 만드는 메소드
+     *
+     * @param winnerScore 가장 멀리 간 우승자의 forward
+     * @return 우승자 출력 문자열
+     */
     private String makeWinnerStr(int winnerScore){
         StringJoiner joiner = new StringJoiner(", ");
         for (RaceCar raceCar : cars) {
