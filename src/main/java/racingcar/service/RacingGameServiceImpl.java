@@ -1,10 +1,7 @@
 package racingcar.service;
 
 import static racingcar.util.Constant.COMMA_DELIMITER;
-import static racingcar.util.Constant.MAX_RANDOM_VALUE;
-import static racingcar.util.Constant.MIN_RANDOM_VALUE;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
@@ -14,9 +11,11 @@ import racingcar.validation.CarNamesValidator;
 public class RacingGameServiceImpl implements RacingGameService {
 
     private final CarNamesValidator carNamesValidator;
+    private final MoveDistanceProvider moveDistanceProvider;
 
-    public RacingGameServiceImpl(CarNamesValidator carNamesValidator) {
+    public RacingGameServiceImpl(CarNamesValidator carNamesValidator, MoveDistanceProvider moveDistanceProvider) {
         this.carNamesValidator = carNamesValidator;
+        this.moveDistanceProvider = moveDistanceProvider;
     }
 
     @Override
@@ -29,8 +28,24 @@ public class RacingGameServiceImpl implements RacingGameService {
     @Override
     public void startCarRaceGame(List<Car> racingCars) {
         for (Car racingCar : racingCars) {
-            racingCar.move(Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE));
+            racingCar.move(moveDistanceProvider.generateMoveDistance());
         }
+    }
+
+    @Override
+    public List<String> getWinners(List<Car> racingCars) {
+        int maxDistance = racingCars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+
+        List<String> winners = new ArrayList<>();
+        for (Car racingCar : racingCars) {
+            if (racingCar.getDistance().equals(maxDistance)) {
+                winners.add(racingCar.getName());
+            }
+        }
+        return winners;
     }
 
     private List<Car> getRacingCars(List<String> racingCarNames) {
