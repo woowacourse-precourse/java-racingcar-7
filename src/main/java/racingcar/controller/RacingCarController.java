@@ -17,9 +17,9 @@ public class RacingCarController {
         CarNamesInputHandler.handle(carNames);
 
         // Game Round
-        GameRoundInputHandler gameRoundInputHandler = new GameRoundInputHandler();
-        gameRoundInputHandler.getUserResponse();
-        int gameRound = gameRoundInputHandler.validateUserResponse();
+        String gameRound = InputView.getGameRound();
+        GameRoundInputHandler.handle(gameRound);
+        int parsedGameRound = Integer.parseInt(gameRound);
 
         List<RacingCar> cars = new ArrayList<>();
         for (String carName : carNames) {
@@ -28,7 +28,7 @@ public class RacingCarController {
         RacingCars racingCars = new RacingCars(cars);
 
         System.out.println(Message.EXECUTION_MESSAGE);
-        for(int i = 0; i < gameRound; i++) {
+        for(int i = 0; i < parsedGameRound; i++) {
             racingCars.moveCars();
             System.out.println(racingCars.toString());
         }

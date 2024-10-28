@@ -11,4 +11,9 @@ public class InputView {
         System.out.print(Message.CAR_NAMES_REQUEST_MESSAGE);
         return Arrays.asList(Console.readLine().split("[,]"));
     }
+
+    public static String getGameRound() {
+        System.out.print(Message.GAME_ROUND_REQUEST_MESSAGE);
+        return Console.readLine();
+    }
 }
