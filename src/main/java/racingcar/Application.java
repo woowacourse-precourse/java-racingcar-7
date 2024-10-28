@@ -11,6 +11,9 @@ public class Application {
     public static void main(String[] args) {
         List<Car> cars = inputCars();
         int attempts = inputAttempts();
+        if (attempts < 1) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
 
         //경주 진행
         for(int i = 0; i < attempts; i++){
@@ -30,10 +33,20 @@ public class Application {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
+            carName = carName.trim();
+
             cars.add(new Car(carName));
         }
 
         return cars;
+    }
+
+    private static void validateCarName(String name){
+        if(name.isEmpty()){
+            throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+        }else if (name.length() > 5){
+            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+        }
     }
 
     // 시도 횟수 입력
