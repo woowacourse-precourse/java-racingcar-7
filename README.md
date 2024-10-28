@@ -78,6 +78,7 @@
 
 * 메서드
     * `List<Car> determineWinners()` : 우승자(또는 공동 우승자) 목록 반환
+      * `int getMaxDistance(List<Car> winners)` : 자동차 중 거리의 최댓값 반환 (우승자 결정을 위해 필요함)
     * `boolean isSingleWinner(List<Car> winners)` : 우승자가 한 명인지 여부를 반환
     * `String getWinnerNames(List<Car> winners)` : 단일 우승자이면 이름만 출력, 공동 우승자이면 쉼표로 구분하여 문자열 반환
 
