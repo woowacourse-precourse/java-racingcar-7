@@ -1,7 +1,10 @@
 package racingcar.util;
 
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -97,5 +100,32 @@ class ValidatorTest {
 		assertThatThrownBy(() -> validator.checkRaceCount(raceCount))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage(ErrorMessage.INVALID_RACE_COUNT.getMessage());
+	}
+
+	@Test
+	void checkCarCountShouldNotThrowException() {
+		// Arrange
+		List<String> carNames = Arrays.asList("CarA", "CarB", "CarC", "CarD", "CarE",
+			"CarF", "CarG", "CarH", "CarI", "CarJ",
+			"CarK", "CarL", "CarM", "CarN", "CarO",
+			"CarP", "CarQ", "CarR", "CarS", "CarT"); // 20개
+
+		// Act & Assert
+		assertThatNoException().isThrownBy(() -> validator.checkCarCount(carNames));
+	}
+
+	@Test
+	void checkCarCountShouldThrowException() {
+		// Arrange
+		List<String> carNames = Arrays.asList("CarA", "CarB", "CarC", "CarD", "CarE",
+			"CarF", "CarG", "CarH", "CarI", "CarJ",
+			"CarK", "CarL", "CarM", "CarN", "CarO",
+			"CarP", "CarQ", "CarR", "CarS", "CarT",
+			"CarU"); // 21개
+
+		// Act & Assert
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> validator.checkCarCount(carNames))
+			.withMessage(ErrorMessage.EXCEED_CAR_COUNT.getMessage());
 	}
 }
