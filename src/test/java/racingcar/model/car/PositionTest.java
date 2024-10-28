@@ -13,9 +13,9 @@ class PositionTest {
     void movePosition() {
         final int initialPosition = position.calculateMovingDistance();
 
-        position.increasePosition();
-        position.increasePosition();
-        position.increasePosition();
+        position.increase();
+        position.increase();
+        position.increase();
 
         final int finalPosition = position.calculateMovingDistance();
 
@@ -36,7 +36,7 @@ class PositionTest {
     @Test
     @DisplayName("자동차 멈춤시 위치 변화 테스트2")
     void stop2() {
-        position.increasePosition();
+        position.increase();
 
         final int initialPosition = position.calculateMovingDistance();
         final int finalPosition = position.calculateMovingDistance();

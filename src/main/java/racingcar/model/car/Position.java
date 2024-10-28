@@ -8,7 +8,7 @@ public class Position {
         this.distance = new StringBuilder();
     }
 
-    void increasePosition() {
+    void increase() {
         distance.append(ONE_STEP);
     }
 

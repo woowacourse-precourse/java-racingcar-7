@@ -15,8 +15,7 @@ public class InputView {
     public static String inputCarName() {
         System.out.println(NAME_INPUT_MESSAGE);
         final String input = Console.readLine();
-        validateCarNames(input);
-        validateCarCount(input);
+        validate(input);
         return input;
     }
 
@@ -25,7 +24,12 @@ public class InputView {
         return Console.readLine();
     }
 
-    private static void validateCarNames(final String carNames) {
+    private static void validate(final String carNames) {
+        validateNonEmptyCarNames(carNames);
+        validateCarCount(carNames);
+    }
+
+    private static void validateNonEmptyCarNames(final String carNames) {
         if (carNames == null || carNames.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
         }

@@ -14,7 +14,7 @@ public class Car {
 
     public void goOrStop(final Number number) {
         if (number.isGreaterThanForwardThreshold()) {
-            position.increasePosition();
+            position.increase();
         }
     }
 

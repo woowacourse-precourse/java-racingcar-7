@@ -10,7 +10,7 @@ public class Number {
     private final int number;
 
     protected Number(final int number) {
-        validateNumber(number);
+        validate(number);
         this.number = number;
     }
 
@@ -18,7 +18,7 @@ public class Number {
         return number >= FORWARD_THRESHOLD;
     }
 
-    private void validateNumber(final int number) {
+    private void validate(final int number) {
         if (number < MIN_RANDOM_NUMBER || number > MAX_RANDOM_NUMBER) {
             throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE.getMessage());
         }

@@ -28,7 +28,7 @@ public class RaceController {
     }
 
     private void runSingleTrial(final Cars cars, final Racing racing) {
-        racing.startRacing();
+        racing.start();
         OutputView.printResult(cars);
     }
 

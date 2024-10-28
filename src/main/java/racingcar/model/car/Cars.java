@@ -11,7 +11,7 @@ public class Cars {
 
     public Cars(final String carNames) {
         final List<Car> cars = createCarList(carNames);
-        validateCars(cars);
+        validate(cars);
         this.cars = cars;
     }
 
@@ -19,7 +19,7 @@ public class Cars {
         return CarsParser.parse(carNames);
     }
 
-    private void validateCars(final List<Car> cars) {
+    private void validate(final List<Car> cars) {
         validateEmptyInput(cars);
         validateDuplicatedName(cars);
     }

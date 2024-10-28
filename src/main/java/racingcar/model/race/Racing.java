@@ -11,7 +11,7 @@ public class Racing {
         this.cars = cars;
     }
 
-    public void startRacing() {
+    public void start() {
         cars.getCars().forEach(car -> {
             final Number number = getRandomNumber();
             car.goOrStop(number);

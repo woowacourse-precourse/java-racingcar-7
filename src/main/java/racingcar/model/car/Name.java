@@ -10,11 +10,11 @@ public class Name {
     private final String name;
 
     Name(final String name) {
-        validateName(name);
+        validate(name);
         this.name = name;
     }
 
-    private void validateName(final String name) {
+    private void validate(final String name) {
         validateBlankName(name);
         validateNameLength(name);
         validateNameCharacters(name);

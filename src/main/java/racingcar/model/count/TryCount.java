@@ -8,11 +8,11 @@ public class TryCount {
 
     public TryCount(final String count) {
         final int tryCount = convertStringToInt(count);
-        validateTryCount(tryCount);
+        validate(tryCount);
         this.tryCount = tryCount;
     }
 
-    private void validateTryCount(final int input) {
+    private void validate(final int input) {
         if (input <= ZERO) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT.getMessage());
         }
