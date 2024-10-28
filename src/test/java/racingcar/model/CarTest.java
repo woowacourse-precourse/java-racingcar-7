@@ -13,7 +13,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car("TestCar",0);
+        car = new Car("TestCar", POSITION_INITIALIZE.getValue());
     }
 
     @DisplayName("무작위 값이 4이상일 경우 전진하기")

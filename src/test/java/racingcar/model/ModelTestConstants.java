@@ -6,7 +6,9 @@ public enum ModelTestConstants {
     STOPPING_TEST(0),
     STOP_RANDOM_NUM(3),
     WINNER_POSITION_NUM(5),
-    FAILURE_POSITION_NUM(3);
+    FAILURE_POSITION_NUM(3),
+    ROUND_COUNT(5),
+    POSITION_INITIALIZE(0);
 
     private final int value;
 
