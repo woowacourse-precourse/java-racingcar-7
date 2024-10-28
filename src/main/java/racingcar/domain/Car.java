@@ -2,19 +2,20 @@ package racingcar.domain;
 
 public class Car {
     private static final int NAME_LENGTH_MAX = 5;
+    public static final String BLANK = " ";
 
     private final String name;
     private int location = 0;
 
     public Car(String name) {
-        validBlank(name);
+        validNameHasBlankOrEmpty(name);
         validNameLength(name);
         this.name = name;
     }
 
-    private void validBlank(String name) {
-        if(name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 공백문자열일 수 없습니다");
+    private void validNameHasBlankOrEmpty(String name) {
+        if(name.contains(BLANK)||name.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 공백문자열을 포함할 수 없습니다");
         }
     }
 
