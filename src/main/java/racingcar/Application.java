@@ -25,7 +25,7 @@ public class Application {
         Console.close();
     }
 
-    private static List<RacingCar> splitToCarList(String carNames) {
+    public static List<RacingCar> splitToCarList(String carNames) {
         List<RacingCar> carList = new ArrayList<>();
         Set<String> carSet = new HashSet<>();
 
@@ -43,7 +43,7 @@ public class Application {
         return carList;
     }
 
-    private static int parseNumber(String attempts) {
+    public static int parseNumber(String attempts) {
         int number;
 
         try {
