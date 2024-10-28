@@ -5,6 +5,8 @@ import java.util.List;
 
 
 public class RacingCar {
+    private static final int MOVE_THRESHOLD = 4;
+    
     private final List<Car> cars;
     private final int attemptCount;
 
