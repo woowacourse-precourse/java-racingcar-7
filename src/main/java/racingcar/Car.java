@@ -34,4 +34,12 @@ public class Car {
         builder.append('\n');
         System.out.println(builder.toString());
     }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

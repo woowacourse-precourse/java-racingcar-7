@@ -15,6 +15,7 @@ public class RacingGame {
     public void play(){
         initializeGame();
         race();
+        findWinner();
     }
 
     private void race() {
@@ -72,4 +73,30 @@ public class RacingGame {
         car.move(randomNum);
     }
 
+    private void findWinner() {
+        int maxPosition = 0;
+        List<Car> winners = new ArrayList<>();
+
+        for(Car car : cars){
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+
+        for(Car car : cars){
+            if(car.getPosition() == maxPosition){
+                winners.add(car);
+            }
+        }
+
+        StringBuilder printWinner = new StringBuilder();
+        printWinner.append("최종 우승자 : ");
+        for(int i=0; i<winners.size(); i++){
+            if(i >= 1){
+                printWinner.append(", ").append(winners.get(i).getName());
+            }
+            else{
+                printWinner.append(winners.get(i).getName());
+            }
+        }
+        System.out.println(printWinner);
+    }
 }
