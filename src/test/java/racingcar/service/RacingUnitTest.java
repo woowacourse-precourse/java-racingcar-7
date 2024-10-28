@@ -22,7 +22,7 @@ public class RacingUnitTest {
 
     @DisplayName("jenny가 2번 움직였을 경우, 최종 우승자는 jenny의 단독 우승이어야 한다")
     @Test
-    void single_winner_test(){
+    void single_winner_test() {
         List<Car> cars = racingService.initCars("jenny,pobi,bibim");
         Car car1 = cars.get(0);
         car1.move(9);
@@ -34,7 +34,7 @@ public class RacingUnitTest {
 
     @DisplayName("jenny가 2번, bibim이 2번움직였을 경우, 최종 우승자는 jenny, bibim의 공동우승이어야 한다")
     @Test
-    void joint_winner_test(){
+    void joint_winner_test() {
         List<Car> cars = racingService.initCars("jenny,pobi,bibim");
         Car car1 = cars.get(0);
         Car car3 = cars.get(2);

@@ -40,7 +40,7 @@ public class RacingController {
     }
 
     private void printRacingStatus(int userIntegerInput) {
-        for (int i=0; i<userIntegerInput; i++){
+        for (int i = 0; i < userIntegerInput; i++) {
             outputView.printRacingResult(racingService.onceRacing());
         }
     }
