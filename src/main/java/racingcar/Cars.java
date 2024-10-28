@@ -21,6 +21,10 @@ public class Cars {
         }
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     private void validateCarNames(List<String> carNames) {
         if (carNames == null || carNames.isEmpty()) {
             throw new IllegalArgumentException();

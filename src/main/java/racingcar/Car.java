@@ -25,6 +25,14 @@ public class Car {
         }
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
     private boolean canFoward() {
         return Randoms.pickNumberInRange(0, 9) > 4;
     }
