@@ -11,12 +11,20 @@ public class CarValidator {
 
 	public void checkCarNames(ArrayList<String> carNames) {
 		for (String name : carNames) {
-			if (name.isEmpty()) {
-				throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
-			}
-			if (name.length() > MAX_CAR_NAME_LENGTH) {
-				throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME.getMessage());
-			}
+			checkEmptyName(name);
+			checkNameLength(name);
+		}
+	}
+
+	private void checkEmptyName(String name) {
+		if (name.isEmpty()) {
+			throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
+		}
+	}
+
+	private void checkNameLength(String name) {
+		if (name.length() > MAX_CAR_NAME_LENGTH) {
+			throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME.getMessage());
 		}
 	}
 
