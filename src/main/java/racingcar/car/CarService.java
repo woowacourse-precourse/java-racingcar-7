@@ -11,9 +11,9 @@ public class CarService {
         List<Car> cars = new ArrayList<>();
         List<String> raceCars = Arrays.asList(raceCar.split(CAR_DELIMITER));
 
-        for (String car : raceCars) {
-            validateName(car);
-            cars.add(new Car(car));
+        for (String carName : raceCars) {
+            validateName(carName);
+            cars.add(new Car(carName));
         }
 
         return cars;
