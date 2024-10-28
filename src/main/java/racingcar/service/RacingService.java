@@ -23,6 +23,9 @@ public class RacingService {
             if (s.isBlank()) {
                 throw new IllegalArgumentException("이름을 입력하지 않은 자동차가 있습니다.");
             }
+            else if (s.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름이 5자를 초과했습니다.");
+            }
             movementNum.add(0);
         }
     }
