@@ -2,6 +2,14 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        ConsoleInput consoleInput = new ConsoleInput();
+        ConsoleOutput consoleOutput = new ConsoleOutput();
+
+        consoleOutput.printInputCarName();
+        String carName = consoleInput.inputString();
+
+        consoleOutput.printInputTryCount();
+        Integer carTryCount = consoleInput.inputNumber();
+
     }
 }
