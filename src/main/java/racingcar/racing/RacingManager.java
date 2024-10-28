@@ -1,17 +1,15 @@
 package racingcar.racing;
 
-import racingcar.io.Input;
 import racingcar.io.Output;
 import java.util.List;
-
 import static racingcar.io.Input.inputCarName;
 import static racingcar.io.Input.inputNumberOfRound;
 
 public class RacingManager {
-    private CarFactory carFactory;
-    private RoundRace roundRace;
-    private Winner winner;
-    private Output output;
+    private final CarFactory carFactory;
+    private final RoundRace roundRace;
+    private final Winner winner;
+    private final Output output;
 
     public RacingManager(CarFactory carFactory, RoundRace roundRace, Winner winner, Output output) {
         this.carFactory = carFactory;
