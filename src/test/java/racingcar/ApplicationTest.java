@@ -7,6 +7,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.exceptions.CarNameException;
+import racingcar.exceptions.InvalidInputException;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -58,7 +60,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_1() {
+    void 차량_입력_구분자1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(",pobi,java", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -66,7 +68,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_2() {
+    void 차량_입력_구분자2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,java,", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -74,7 +76,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_3() {
+    void 차량_입력_구분자3() {
 
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,,java", "1"))
@@ -83,7 +85,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_5() {
+    void 시도횟수_음수() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,java", "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -91,18 +93,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_6() {
+    void 이름_중복() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("a,b,a", "-1"))
-                        .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("a,b,a", "1"))
+                        .isInstanceOf(CarNameException.class)
         );
     }
 
     @Test
-    void 예외_테스트_7() {
+    void 시도횟수_숫자() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,java", "hello"))
-                        .isInstanceOf(IllegalArgumentException.class)
+                        .isInstanceOf(InvalidInputException.class)
         );
     }
 
