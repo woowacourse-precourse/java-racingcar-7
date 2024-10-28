@@ -83,7 +83,7 @@ public class Application {
                 throw new IllegalArgumentException("1 이상의 숫자를 입력해야 합니다.");
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효한 실행 횟수를 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException("유효한 실행 횟수를 숫자로 입력해야 합니다.");
         }
     }
 
