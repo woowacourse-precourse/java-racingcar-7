@@ -23,7 +23,7 @@ public class RaceRound {
         List<Car> cars = thisRoundCarList.getCarList();
         StringBuilder result = new StringBuilder();
         for(Car car : cars){
-            result.append(car.getName()).append(": ")
+            result.append(car.getName()).append(" : ")
                     .append(car.getDistanceStatusBar(car.getDistance().getDistanceValue()))
                     .append("\n");
         }

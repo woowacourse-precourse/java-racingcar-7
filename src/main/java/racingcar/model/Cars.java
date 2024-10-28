@@ -16,14 +16,15 @@ public class Cars {
     }
 
     public Cars sortWinnerCars() {
-        int maxDistance = WinnerCalculator.findMaxDistance(this.carList);
+        int maxDistance = WinnerCalculator.findMaxDistance(this.getCarList());
 
+        Cars winnerCars = new Cars();
         carList.forEach(car -> {
-            if(car.getDistance().getDistanceValue() < maxDistance){
-                carList.remove(car);
+            if(car.getDistance().getDistanceValue() == maxDistance){
+                winnerCars.getCarList().add(car);
             }
         });
-        return this;
+        return winnerCars;
     }
 
     public String toStringWinnerCars(Cars winnerCars) {
