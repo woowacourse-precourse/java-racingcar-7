@@ -3,7 +3,7 @@ package racingcar.service;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.Test;
-import racingcar.util.FixedNumberGenerator;
+import racingcar.generator.FixedNumberGenerator;
 
 public class RaceServiceTest {
     private static final int FORWARD = 1;

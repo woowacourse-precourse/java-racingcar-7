@@ -1,7 +1,7 @@
 package racingcar.service;
 
 import racingcar.domain.Racing;
-import racingcar.util.NumberGenerator;
+import racingcar.generator.NumberGenerator;
 
 public final class ThresholdScoreRaceService implements RaceService {
     private static final int MIN_MOVE_NUMBER = 4;

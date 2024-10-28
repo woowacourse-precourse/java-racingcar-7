@@ -11,10 +11,10 @@ import java.util.Set;
 import racingcar.domain.Car;
 import racingcar.domain.Racing;
 import racingcar.dto.WinnerResponseDto;
+import racingcar.generator.NumberGenerator;
+import racingcar.generator.RandomNumberGenerator;
 import racingcar.service.RaceService;
 import racingcar.service.ThresholdScoreRaceService;
-import racingcar.util.NumberGenerator;
-import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
