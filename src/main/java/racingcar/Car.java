@@ -14,7 +14,7 @@ public class Car {
     }
 
     public void move() {
-        // 이후 구현
+        location++;
     }
 
     public void randomMove() {
