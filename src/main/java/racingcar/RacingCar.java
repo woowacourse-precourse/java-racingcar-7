@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -12,6 +13,7 @@ public class RacingCar {
     public void run() {
         inputCarName();
         int tryTimes = inputTryTimes();
+        tryMoving(tryTimes);
     }
 
     private void inputCarName() {
@@ -26,5 +28,27 @@ public class RacingCar {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int tryTimes = Integer.parseInt(Console.readLine());
         return tryTimes;
+    }
+
+    private void tryMoving(int tryTimes) {
+        System.out.println("\n" + "실행 결과");
+        for (int i = 0; i < tryTimes; i++) {
+            for (String carName : cars.keySet()){
+
+                if (Randoms.pickNumberInRange(0, 9) >= 4)
+                    cars.put(carName, cars.get(carName) + 1);
+
+                System.out.println(carName + " : " + hyphen(cars.get(carName)));
+            }
+            System.out.println();
+        }
+    }
+
+    private String hyphen(int number) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < number; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
     }
 }
