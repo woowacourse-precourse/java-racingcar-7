@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class View {
+public class RacingView {
     public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> carNames = Arrays.asList(Console.readLine().split(","));

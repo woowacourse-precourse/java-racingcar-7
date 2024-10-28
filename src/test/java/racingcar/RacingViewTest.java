@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-class ViewTest {
+class RacingViewTest {
 
     @Test
     void getCarNames_쉼표로구분된_자동차이름_리스트반환() {
@@ -17,7 +17,7 @@ class ViewTest {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         // When
-        List<String> carNames = View.getCarNames();
+        List<String> carNames = RacingView.getCarNames();
 
         // Then
         assertThat(carNames).containsExactly("pobi", "woni", "jun");
@@ -27,7 +27,7 @@ class ViewTest {
     void 중복된_이름이_있으면_예외_발생() {
         List<String> carNames = Arrays.asList("pobi", "pobi");
 
-        assertThatThrownBy(() -> View.validateDuplication(carNames))
+        assertThatThrownBy(() -> RacingView.validateDuplication(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 이름이 존재합니다.");
     }
@@ -39,7 +39,7 @@ class ViewTest {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         // When
-        int tryCount = View.getTryCount();
+        int tryCount = RacingView.getTryCount();
 
         // Then
         assertThat(tryCount).isEqualTo(5);
@@ -50,7 +50,7 @@ class ViewTest {
         String input = "abc\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
-        assertThatThrownBy(() -> View.getTryCount())
+        assertThatThrownBy(() -> RacingView.getTryCount())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도 횟수는 숫자여야 합니다.");
     }
@@ -68,7 +68,7 @@ class ViewTest {
         car2.move();
         car3.move();
 
-        String fullOutput = View.printRoundResult(cars);
+        String fullOutput = RacingView.printRoundResult(cars);
         String firstStatus = fullOutput.substring(fullOutput.indexOf("jun"));
         String expected = car3.getName() + " : " + "-".repeat(car3.getPosition());
 
@@ -80,7 +80,7 @@ class ViewTest {
     void printWinnersTest() {
         List<String> winners = List.of("pobi", "jun");
 
-        assertThat(View.printWinners(winners))
+        assertThat(RacingView.printWinners(winners))
                 .isEqualTo("최종 우승자 : pobi, jun");
     }
 }
