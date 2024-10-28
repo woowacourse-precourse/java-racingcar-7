@@ -45,8 +45,8 @@ public class Car {
         return moveCount;
     }
 
-    public void tryMove(boolean isCanMove) {
-        if(isCanMove) {
+    public void move() {
+        if(MoveConditionEvaluator.isCanMove()) {
             this.moveCount++;
         }
     }
