@@ -18,7 +18,6 @@ public class InputView {
     protected String readLine(String message) {
         System.out.println(message);
         String input = Console.readLine();
-        System.out.println();
         return input;
     }
 }
