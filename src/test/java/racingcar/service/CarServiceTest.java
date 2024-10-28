@@ -14,6 +14,7 @@ class CarServiceTest {
     Car coh = new Car("coh");
     Car pobi = new Car("pobi");
     Car jun = new Car("jun");
+
     @Test
     void 자동차입력_테스트() {
         assertThrows(IllegalArgumentException.class, () -> carService.getCarsByDelimiter(null));
@@ -47,6 +48,7 @@ class CarServiceTest {
         coh.moveIfAboveThreshold(5);
         Assertions.assertThat(carService.getWinner(cars)).isEqualTo("coh");
     }
+
     @Test
     void 공동우승자_테스트() {
         List<Car> cars = List.of(coh, pobi, jun);

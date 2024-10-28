@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
     @Test
-    void moveIfAboveThreshold_전진테스트(){
+    void moveIfAboveThreshold_전진테스트() {
         Car car = new Car("coh");
         car.moveIfAboveThreshold(5);
         Assertions.assertThat(car.getPosition()).isEqualTo("-");

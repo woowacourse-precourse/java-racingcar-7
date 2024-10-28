@@ -11,8 +11,9 @@ public class Car {
     }
 
     public void moveIfAboveThreshold(int randomNumber) {
-        if (randomNumber >= 4)
+        if (randomNumber >= 4) {
             position.append('-');
+        }
     }
 
     public String getPosition() {

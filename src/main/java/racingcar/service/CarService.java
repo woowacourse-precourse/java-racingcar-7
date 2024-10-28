@@ -15,25 +15,29 @@ public class CarService {
             throw new IllegalArgumentException("구분자로만 이루어진 문자열입니다.");
         }
         for (String name : cars) {
-            System.out.println("name = " + name);
-            if (name.isBlank())
+            if (name.isBlank()) {
                 throw new IllegalArgumentException("이름은 빈 문자열이 될 수 없습니다.");
-            if (name.length() > 5)
+            }
+            if (name.length() > 5) {
                 throw new IllegalArgumentException("이름의 길이가 5글자 이상입나다.");
+            }
 
         }
         return cars;
     }
 
     public int getNumber(String number) {
-        if (number == null || number.isBlank())
+        if (number == null || number.isBlank()) {
             throw new IllegalArgumentException("널이거나 공백입니다.");
-        if (number.charAt(0) == '-')
+        }
+        if (number.charAt(0) == '-') {
             throw new IllegalArgumentException("음수입니다.");
+        }
         try {
             int data = Integer.parseInt(number);
-            if (data <= 0)
+            if (data <= 0) {
                 throw new IllegalArgumentException("입력값이 0이거나 오버플로우가 발생했습니다.");
+            }
             return data;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력값이 소수나 문자입니다.");
