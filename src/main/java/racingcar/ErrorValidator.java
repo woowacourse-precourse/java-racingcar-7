@@ -11,9 +11,7 @@ public class ErrorValidator {
     }
 
     public static void gameCount(String game_count) {
-        try {
-            Integer.parseInt(game_count);
-        } catch (NumberFormatException e) {
+        if (game_count == null || game_count.isEmpty() || Integer.parseInt(game_count) <= 0) {
             throw new IllegalArgumentException();
         }
     }
