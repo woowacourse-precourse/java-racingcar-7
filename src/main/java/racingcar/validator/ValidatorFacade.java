@@ -6,12 +6,12 @@ import racingcar.validator.exception.InvalidCarNameException;
 import racingcar.validator.exception.InvalidRoundException;
 
 public class ValidatorFacade {
-    private final CarNameValidator carNameValidator;
-    private final RoundValidator roundValidator;
-    private final CarCountValidator carCountValidator;
+    private final Validator<String> carNameValidator;
+    private final Validator<String> roundValidator;
+    private final Validator<CarNames> carCountValidator;
 
-    public ValidatorFacade(CarNameValidator carNameValidator, RoundValidator roundValidator,
-                           CarCountValidator carCountValidator) {
+    public ValidatorFacade(Validator<String> carNameValidator, Validator<String> roundValidator,
+                           Validator<CarNames> carCountValidator) {
         this.carNameValidator = carNameValidator;
         this.roundValidator = roundValidator;
         this.carCountValidator = carCountValidator;
