@@ -19,7 +19,7 @@ class RaceGameTest {
         Car car2 = new Car("woni", FAILURE_POSITION_NUM.getValue());
         Car car3 = new Car("jun", WINNER_POSITION_NUM.getValue()); // 우승 예상
         List<Car> cars = List.of(car1,car2, car3);
-        raceGame = new RaceGame(cars);
+        raceGame = new RaceGame(cars, ROUND_COUNT.getValue());
     }
 
     @DisplayName("playRound 메소드가 호출된 후 각 Car 객체의 위치가 변하는지 테스트")
