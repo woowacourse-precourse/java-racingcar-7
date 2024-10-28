@@ -9,6 +9,7 @@ import java.util.List;
 public class Application {
 
     private static final String COMMA = ",";
+    private static final int FORWARD_MIN_VALUE = 4;
     private final static String INPUT_PRINT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private final static String ATTEMPT_PRINT = "시도할 횟수는 몇 회인가요?";
     private static final String ATTEMPT_NUMBER_MATCHER = "^[0-9]*$";
@@ -25,6 +26,8 @@ public class Application {
         carList = inputCar();
         validateCarList();
         attempt = inputAttempt();
+
+    }
 
     public static List<String> inputCar(){
         inputCarNamePrint();
@@ -75,6 +78,10 @@ public class Application {
 
     public static void inputAttemptPrint(){
         System.out.println(ATTEMPT_PRINT);
+    }
+
+    public static boolean pickingRandomNumber(){
+        return Randoms.pickNumberInRange(0, 9) >= FORWARD_MIN_VALUE;
     }
 
     }
