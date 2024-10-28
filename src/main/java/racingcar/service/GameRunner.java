@@ -1,23 +1,24 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import racingcar.model.GameResult;
 
 public class GameRunner {
 
-    public Map<String, Integer> runGame(Set<String> carNames, int finalAttemptCount, List<String> roundResults) {
+    public GameResult runGame(Set<String> carNames, int finalAttemptCount) {
         Map<String, Integer> carState = initializeCarState(carNames);
+        StringBuilder allRoundResults = new StringBuilder();
 
         for (int attemptCount = 0; attemptCount < finalAttemptCount; attemptCount++) {
             updateCarState(carState);
-            roundResults.add(formatRoundResult(carState));
+            allRoundResults.append(formatRoundResult(carState));
         }
 
-        return carState;
+        return new GameResult(carState, allRoundResults.toString());
     }
 
     private Map<String, Integer> initializeCarState(Set<String> carNames) {
