@@ -39,8 +39,8 @@ public class InputHandler {
     }
 
     private static void validateTurns(int turns) {
-        if (turns < 0) {
-            throw new IllegalArgumentException("시도 횟수는 0회 이상만 가능합니다.");
+        if (turns <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1회 이상만 가능합니다.");
         }
     }
 }
