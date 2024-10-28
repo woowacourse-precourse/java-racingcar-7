@@ -1,32 +1,36 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
         try {
-            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-            String carInput = Console.readLine();
-            List<String> carNames = Arrays.asList(carInput.split(","));
-            validateCarNames(carNames);
+            List<Car> cars = getCarsFromInput();
+            int rounds = getRoundsFromInput();
 
-            System.out.println("시도할 횟수는 몇 회인가요?");
-            int rounds = Integer.parseInt(Console.readLine());
-            validateRounds(rounds);
+            RacingGame game = new RacingGame(cars, rounds);
+            System.out.println("자동차 경주 준비 완료!");
         } catch (IllegalArgumentException e) {
             System.out.println("오류: " + e.getMessage());
         }
     }
 
-    private static void validateCarNames(List<String> carNames) {
-        for (String name : carNames) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            }
-        }
+    private static List<Car> getCarsFromInput() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = Console.readLine();
+        return Arrays.stream(input.split(","))
+                .map(Car::new)  // 각 이름으로 Car 객체를 생성
+                .collect(Collectors.toList());
+    }
+
+    private static int getRoundsFromInput() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int rounds = Integer.parseInt(Console.readLine());
+        validateRounds(rounds);
+        return rounds;
     }
 
     private static void validateRounds(int rounds) {
