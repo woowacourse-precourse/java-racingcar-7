@@ -28,7 +28,9 @@ public class Validator {
     public ArrayList<String> changeSameName(ArrayList<String> cars) {
         Map<String, Long> checkSameName = new ConcurrentHashMap<>();
 
-        cars.forEach(car -> checkSameName.put(car, checkSameName.getOrDefault(car, 0L) + 1));
+        cars.forEach(car ->
+                plusCarCount(car, checkSameName)
+        );
 
         for (String name : checkSameName.keySet()) {
             eraseOnlyOneCar(name, checkSameName);
@@ -39,6 +41,16 @@ public class Validator {
         }
 
         return cars;
+    }
+
+    private static void plusCarCount(String car, Map<String, Long> checkSameName) {
+        checkSameName.compute(car, (key, value) -> {
+            if (value == null) {
+                return 1L;
+            } else {
+                return value + 1;
+            }
+        });
     }
 
     private static void eraseOnlyOneCar(String name, Map<String, Long> checkSameName) {
