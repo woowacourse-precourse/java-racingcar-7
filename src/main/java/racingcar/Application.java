@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +10,9 @@ import java.util.List;
 public class Application {
 
     private static final String COMMA = ",";
+    private static final String COLON = ":";
     private static final int FORWARD_MIN_VALUE = 4;
+    private static final String FORWARD_SYMBOL = "-";
     private final static String INPUT_PRINT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private final static String ATTEMPT_PRINT = "시도할 횟수는 몇 회인가요?";
     private static final String ATTEMPT_NUMBER_MATCHER = "^[0-9]*$";
@@ -113,5 +116,11 @@ public class Application {
         }
     }
 
+    public static int getMaxScore(){
+        int maxScore = 0;
+        for(int i = 0; i < gameScores.size(); i++){
+            maxScore = Math.max(maxScore, gameScores.get(i).length());
+        }
+        return maxScore;
     }
 }
