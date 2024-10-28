@@ -20,8 +20,11 @@ public class InputHandler {
 
         while (tokenizer.hasMoreTokens()) {
             String name = tokenizer.nextToken().trim();
-            if (name.isEmpty() || isNumeric(name)) {
+            if (name.isEmpty()) {
                 throw new IllegalArgumentException("유효하지 않은 자동차 이름이 포함되어 있습니다.");
+            }
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다: " + name);
             }
             cars.add(new Car(name));
         }
@@ -46,12 +49,12 @@ public class InputHandler {
     }
 
     // 모든 문자가 숫자인지 확인하는 메서드
-    private static boolean isNumeric(String name) {
-        for (char c : name.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                return false; // 하나라도 숫자가 아닐 경우 false 반환
-            }
-        }
-        return true; // 모든 문자가 숫자일 경우 true 반환
-    }
+//    private static boolean isNumeric(String name) {
+//        for (char c : name.toCharArray()) {
+//            if (!Character.isDigit(c)) {
+//                return false; // 하나라도 숫자가 아닐 경우 false 반환
+//            }
+//        }
+//        return true; // 모든 문자가 숫자일 경우 true 반환
+//    }
 }
