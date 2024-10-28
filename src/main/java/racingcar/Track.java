@@ -36,6 +36,24 @@ public class Track {
         return winnerStringJoiner.toString();
     }
 
+    public String getWholeSituation() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Vehicle vehicle : vehiclePositionMap.keySet()) {
+            String userSituation = getUserSituation(vehicle);
+            stringBuilder.append(userSituation);
+        }
+        stringBuilder.append("\n");
+        return stringBuilder.toString();
+    }
+
+    private String getUserSituation(Vehicle vehicle) {
+        String name = vehicle.getName();
+        Integer currentDistance = vehiclePositionMap.get(vehicle);
+        String currentDistanceHyphens = positionToHyphen(currentDistance);
+        return String.format("%s : %s\n", name, currentDistanceHyphens);
+    }
+
     private boolean entryHasMaxPosition(Entry<Vehicle, Integer> entry, Integer maxPosition) {
         return entry.getValue().equals(maxPosition);
     }
@@ -51,5 +69,13 @@ public class Track {
         int moveDistance = vehicle.pushPedal();
         Integer currentPosition = vehiclePositionMap.get(vehicle);
         vehiclePositionMap.put(vehicle, currentPosition + moveDistance);
+    }
+
+    private String positionToHyphen(Integer position) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 1; i <= position; i++) {
+            stringBuilder.append("-");
+        }
+        return stringBuilder.toString();
     }
 }
