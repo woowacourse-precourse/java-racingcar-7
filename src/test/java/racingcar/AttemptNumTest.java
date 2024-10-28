@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.HashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -25,7 +24,7 @@ public class AttemptNumTest {
     @DisplayName("attemptNum 초기화")
     void initAttemptNum(){
         //given
-        setInpout("하나,둘\n3");
+        setInput("하나,둘\n3");
         Integer testNum = 3;
 
         //when
@@ -39,7 +38,7 @@ public class AttemptNumTest {
     @DisplayName("숫자 외 문자 예외")
     void attemptNumContext(){
         //given
-        setInpout("하나,둘\n-3");
+        setInput("하나,둘\n-3");
 
         //when
         final Throwable thrown = catchThrowable(() -> {
@@ -57,7 +56,7 @@ public class AttemptNumTest {
     @DisplayName("숫자 크기 0이거나 10 초과 예외")
     void attemptNumSize(){
         //given
-        setInpout("하나,둘\n11");
+        setInput("하나,둘\n11");
 
         //when
         final Throwable thrown = catchThrowable(() -> {
@@ -66,7 +65,7 @@ public class AttemptNumTest {
 
         //case2
         closeConsole();
-        setInpout("하나,둘\n0");
+        setInput("하나,둘\n0");
         final Throwable thrown2 = catchThrowable(() -> {
             testGame.run();
         });
@@ -84,7 +83,7 @@ public class AttemptNumTest {
                 .hasMessageContaining("시도 횟수는 1 이상, 10 이하로 입력해야 합니다.");
     }
 
-    void setInpout(String input){
+    void setInput(String input){
         final InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
     }
