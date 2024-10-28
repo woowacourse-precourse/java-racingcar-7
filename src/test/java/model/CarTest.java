@@ -1,4 +1,4 @@
-package util.model;
+package model;
 
 import model.Car;
 import org.junit.jupiter.api.BeforeEach;
