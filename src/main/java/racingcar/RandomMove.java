@@ -13,4 +13,11 @@ public class RandomMove {
             int a=Randoms.pickNumberInRange(0, 9);
         }
     }
+
+    public void printPlayers(int index){
+        String countLine="-".repeat(players.getCount().get(index));
+        String playerName = players.getNames().get(index);
+
+        System.out.printf("%s : %s\n", countLine, playerName);
+    }
 }
