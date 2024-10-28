@@ -15,8 +15,11 @@ public class Cars {
     }
 
     public void run() {
+        final int RANDOM_MIN_VALUE = 0;
+        final int RANDOM_MAX_VALUE = 9;
+
         for (Car car : cars) {
-            int randomNum = Randoms.pickNumberInRange(0, 9);
+            int randomNum = Randoms.pickNumberInRange(RANDOM_MIN_VALUE, RANDOM_MAX_VALUE);
             car.move(randomNum);
         }
     }
