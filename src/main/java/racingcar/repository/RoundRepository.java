@@ -27,13 +27,16 @@ public class RoundRepository {
     public void save(Round round) {
         round.setId(id);
         rounds.put(id, round);
-        dataRelationUtil.roundToGame(round);
+        if (round.getGameId() != null) {
+            dataRelationUtil.roundToGame(round);
+        }
         id++;
     }
 
     public void update(Round round) {
         rounds.replace(round.getId(), round);
         dataRelationUtil.roundToGame(round);
+        dataRelationUtil.roundToCar(round);
     }
 
     public Round findByRoundId(int id) {
