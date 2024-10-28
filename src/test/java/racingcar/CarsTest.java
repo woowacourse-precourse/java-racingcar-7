@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Cars.Cars;
+import racingcar.model.car.Cars;
 
 public class CarsTest {
     @DisplayName("자동차 이름이 1개인 경우 예외가 발생한다")

@@ -1,9 +1,7 @@
-package racingcar.model.Cars;
+package racingcar.model.car;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Objects;
-import Location;
-import Name;
 
 public class Car {
 

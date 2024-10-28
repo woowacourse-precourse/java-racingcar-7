@@ -1,4 +1,4 @@
-package racingcar.model.Cars;
+package racingcar.model.car;
 
 public class Location {
 

@@ -2,6 +2,7 @@
 
 ##### Chores
 
+* **CHANGELOG:**  CHANGELOG.md 생성 (f5046cc1)
 * **gitignore:**  gitignore 수정 (cecaba0f)
 
 ##### Documentation Changes
@@ -29,6 +30,9 @@
 
 ##### Refactors
 
+* **Package:**
+  *  도메인 별 패키지 분배 (8720b3a5)
+  *  패키지 구조 변경 (99e441d3)
 * **practice:**  주석 공부법 적용 (82a31451)
 * **OutputView:**  결과 생성 구현 분리 (e1a65b24)
 * **RacingGame:**
@@ -41,6 +45,5 @@
   *  RacingGameController 수정 (18ec209e)
   *  RacingGame 클래스명 변경 (bc4fe544)
 * **view:**  상수 처리 진행 (af051fcc)
-* **Package:**  패키지 구조 변경 (99e441d3)
 * **InputView:**  InputView 객체로 입력 기능 분리 (6b9e381f)
 
