@@ -4,6 +4,9 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
 
@@ -15,11 +18,26 @@ class CarsTest extends NsTest {
     void 자동자는_랜덤값이_4이상이면전진_4이하이면_멈춰있는_상태를_나타낸다() {
         assertRandomNumberInRangeTest(
                 () -> {
+                    //given
+                    //when
                     run("mac, book", "1");
+                    //then
                     assertThat(output()).contains("mac : -", "book :");
                 },
                 MOVING_FORWARD, STOP
         );
+    }
+
+    @Test
+    void 우승자가_2명이상이면_쉼표를_구분자로한다() {
+        //given
+        List<String> participants = List.of("MAC", "APLLE", "BEST");
+        Cars cars = Cars.of(participants);
+        String expectedWinners = participants.stream().collect(Collectors.joining(", "));
+        //when
+        String winners = cars.getWinners();
+        //then
+        Assertions.assertThat(expectedWinners).isEqualTo(winners);
     }
 
     @Override
