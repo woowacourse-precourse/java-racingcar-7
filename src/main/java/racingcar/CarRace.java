@@ -50,21 +50,12 @@ public class CarRace {
     }
 
     private Long getMaxDistance() {
-        return Collections.max(carMap.values(), new Comparator<Car>() {
-            @Override
-            public int compare(Car o1, Car o2) {
-                return Long.compare(o1.getDistance(), o2.getDistance());
-            }
-        }).getDistance();
+        return Collections.max(carMap.values(), Comparator.comparingLong(Car::getDistance)).getDistance();
     }
 
     protected void printResult(List<String> winnerList) {
         sb.append("최종 우승자 : ");
-        for (String name : winnerList) {
-            sb.append(name).append(" ,");
-        }
-
-        sb.setLength(sb.length() - 1);
-        System.out.println(sb.toString().trim());
+        sb.append(String.join(", ", winnerList));
+        System.out.println(sb);
     }
 }
