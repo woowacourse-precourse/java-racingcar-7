@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import racingcar.exceptions.ErrorMessages;
 
 public class Cars {
     private List<Car> cars;
@@ -60,7 +61,7 @@ public class Cars {
         Set<String> uniqueNames = new HashSet<>();
         for (String carName : carNames) {
             if (!uniqueNames.add(carName.trim())) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessages.DUPLICATE_CAR_NAME);
             }
         }
     }
