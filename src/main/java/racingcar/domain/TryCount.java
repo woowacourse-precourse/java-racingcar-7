@@ -6,23 +6,19 @@ import java.util.Objects;
 
 public class TryCount {
 
-    private final Integer maxCount;
-    private Integer count;
+    private final Integer maxCnt;
+    private Integer cnt;
 
-    public TryCount(Integer maxCount) {
-        this.maxCount = maxCount;
-        this.count = 0;
+    public TryCount(Integer maxCnt) {
+        this.maxCnt = maxCnt;
+        this.cnt = 0;
     }
 
     public static TryCount create(String input) {
-        return new TryCount(parseAndValidateInput(input));
-    }
-
-    private static Integer parseAndValidateInput(String input) {
         Integer parsedCount = parseInput(input);
         validateParsedCount(parsedCount);
 
-        return parsedCount;
+        return new TryCount(parsedCount);
     }
 
     private static Integer parseInput(String input) {
@@ -40,8 +36,8 @@ public class TryCount {
     }
 
     public boolean canTry() {
-        if (count < maxCount) {
-            count++;
+        if (cnt < maxCnt) {
+            cnt++;
             return true;
         }
         return false;
@@ -56,11 +52,11 @@ public class TryCount {
             return false;
         }
         TryCount tryCount = (TryCount) o;
-        return Objects.equals(maxCount, tryCount.maxCount) && Objects.equals(count, tryCount.count);
+        return Objects.equals(maxCnt, tryCount.maxCnt) && Objects.equals(cnt, tryCount.cnt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(maxCount, count);
+        return Objects.hash(maxCnt, cnt);
     }
 }

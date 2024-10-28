@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.utils.Constant.COMMA_SEPARATOR;
+import static racingcar.utils.Constant.COMMA;
 
 import java.util.List;
 import java.util.Objects;
@@ -19,9 +19,8 @@ public class Winners {
         return new Winners(winners);
     }
 
-    // 최종 승자를 반환합니다.
     protected String result() {
-        StringJoiner stringJoiner = new StringJoiner(COMMA_SEPARATOR + " ");
+        StringJoiner stringJoiner = new StringJoiner(COMMA + " ");
 
         winnerList.forEach(
                 car -> stringJoiner.add(

@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.utils.Constant.COLON_SEPARATOR;
+import static racingcar.utils.Constant.COLON;
 import static racingcar.utils.Constant.MAX_RANDOM;
 import static racingcar.utils.Constant.MIN_RANDOM;
 import static racingcar.utils.Constant.MOVE_THRESHOLD;
@@ -12,43 +12,42 @@ import java.util.Objects;
 public class Car {
 
     private final String name;
-    private Integer cnt;
+    private Integer moveCnt;
 
     public Car(String name) {
         this.name = name;
-        this.cnt = 0;
+        this.moveCnt = 0;
     }
 
-    public Car(String name, Integer cnt) {
+    public Car(String name, Integer moveCnt) {
         this.name = name;
-        this.cnt = cnt;
+        this.moveCnt = moveCnt;
     }
 
     public static Car create(String name) {
-        return new Car(NameCollect.validName(name));
+        return new Car(CarNameCollect.validName(name));
     }
 
     public static Car create(String name, Integer cnt) {
-        return new Car(NameCollect.validName(name), cnt);
+        return new Car(CarNameCollect.validName(name), cnt);
     }
 
     public Integer move() {
         if (isMoveable()) {
-            this.cnt += 1;
+            this.moveCnt += 1;
         }
 
-        return this.cnt;
+        return this.moveCnt;
     }
 
-    // 현재 현황을 스트링으로 표현하는 기능
     protected String status() {
-        String repeatStr = MOVING.repeat(this.cnt);
+        String repeatStr = MOVING.repeat(this.moveCnt);
 
-        return this.name + COLON_SEPARATOR + repeatStr;
+        return this.name + COLON + repeatStr;
     }
 
     public boolean isMaxMove(Integer maxCnt) {
-        return cnt.equals(maxCnt);
+        return moveCnt.equals(maxCnt);
     }
 
     private boolean isMoveable() {
@@ -71,11 +70,11 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return Objects.equals(name, car.name) && Objects.equals(cnt, car.cnt);
+        return Objects.equals(name, car.name) && Objects.equals(moveCnt, car.moveCnt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, cnt);
+        return Objects.hash(name, moveCnt);
     }
 }

@@ -12,20 +12,20 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
-class NameCollectTest {
+class CarNameCollectTest {
 
     @Test
     @DisplayName("정상 입력 테스트")
     void test1() {
         String s = "pobi,woni,jun";
 
-        NameCollect nameCollect = NameCollect.create(s);
+        CarNameCollect carNameCollect = CarNameCollect.create(s);
         CarList expect = new CarList();
         expect.add("pobi");
         expect.add("woni");
         expect.add("jun");
 
-        CarList result = CarList.from(nameCollect);
+        CarList result = CarList.from(carNameCollect);
 
         assertThat(result).isEqualTo(expect);
     }
@@ -35,7 +35,7 @@ class NameCollectTest {
     @DisplayName("에러 올바른 값과 빈값")
     void test2(String s) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NameCollect.create(s);
+            CarNameCollect.create(s);
         });
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
@@ -48,10 +48,10 @@ class NameCollectTest {
     @DisplayName("에러 : 5자 초과")
     void test3() {
         String s = "pooobi,woni,jun";
-        NameCollect nameCollect = NameCollect.create(s);
+        CarNameCollect carNameCollect = CarNameCollect.create(s);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            CarList.from(nameCollect);
+            CarList.from(carNameCollect);
         });
 
         assertThat(exception.getMessage()).contains(INVALID_CAR_NAME.getMessage());
@@ -63,7 +63,7 @@ class NameCollectTest {
         String s = ",,";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NameCollect.create(s);
+            CarNameCollect.create(s);
         });
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
@@ -75,7 +75,7 @@ class NameCollectTest {
     void test5(String s) {
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> NameCollect.create(s));
+                () -> CarNameCollect.create(s));
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }

@@ -3,18 +3,13 @@ package racingcar.domain;
 import static racingcar.utils.Constant.WINNER_RESULT;
 
 import java.util.Objects;
-import racingcar.viewer.Output;
 
-public class Message extends Output {
+public class Message {
 
     private final String value;
 
-    private Message(String value) {
+    protected Message(String value) {
         this.value = value;
-    }
-
-    public static Message createWinner(String result) {
-        return new Message(WINNER_RESULT + result);
     }
 
     public static Message statusAll(CarList carList) {
@@ -26,7 +21,7 @@ public class Message extends Output {
     public static Message result(Winners winners) {
         String result = winners.result();
 
-        return createWinner(result);
+        return new Message(WINNER_RESULT + result);
     }
 
     @Override

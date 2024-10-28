@@ -21,8 +21,8 @@ class CarListTest {
             carList.add(name);
         }
 
-        NameCollect nameCollect = NameCollect.create(input);
-        assertThat(CarList.from(nameCollect)).isEqualTo(carList);
+        CarNameCollect carNameCollect = CarNameCollect.create(input);
+        assertThat(CarList.from(carNameCollect)).isEqualTo(carList);
     }
 
     @ParameterizedTest
@@ -30,10 +30,10 @@ class CarListTest {
     @DisplayName("차 이름 생성 테스트")
     void test1(String s) {
 
-        NameCollect nameCollect = NameCollect.create(s);
+        CarNameCollect carNameCollect = CarNameCollect.create(s);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> CarList.from(nameCollect));
+                () -> CarList.from(carNameCollect));
 
         assertThat(exception.getMessage()).contains(INVALID_CAR_NAME.getMessage());
     }

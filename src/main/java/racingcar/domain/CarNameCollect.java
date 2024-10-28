@@ -1,22 +1,22 @@
 package racingcar.domain;
 
-import static racingcar.utils.Constant.COMMA_SEPARATOR;
+import static racingcar.utils.Constant.COMMA;
 import static racingcar.utils.Constant.MAX_CAR_NAME_LEN;
 import static racingcar.utils.ErrorMessage.INVALID_CAR_NAME;
 import static racingcar.utils.ErrorMessage.INVALID_INPUT;
 
 import java.util.Objects;
 
-public class NameCollect {
+public class CarNameCollect {
 
     private final String value;
 
-    protected NameCollect(String input) {
+    protected CarNameCollect(String input) {
         this.value = input;
     }
 
-    public static NameCollect create(String carNames) {
-        return new NameCollect(validInput(carNames));
+    public static CarNameCollect create(String carNames) {
+        return new CarNameCollect(validInput(carNames));
     }
 
     protected static String validName(String name) {
@@ -38,8 +38,8 @@ public class NameCollect {
             throw new IllegalArgumentException(INVALID_INPUT.getMessage());
         }
 
-        boolean isStartComma = input.startsWith(COMMA_SEPARATOR);
-        boolean isEndComma = input.endsWith(COMMA_SEPARATOR);
+        boolean isStartComma = input.startsWith(COMMA);
+        boolean isEndComma = input.endsWith(COMMA);
 
         if (isStartComma || isEndComma) {
             throw new IllegalArgumentException(INVALID_INPUT.getMessage());
@@ -50,7 +50,7 @@ public class NameCollect {
 
 
     protected String[] split() {
-        String[] splitInput = value.split(COMMA_SEPARATOR);
+        String[] splitInput = value.split(COMMA);
 
         if (splitInput.length == 0) {
             throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
@@ -67,8 +67,8 @@ public class NameCollect {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        NameCollect compareNameCollect = (NameCollect) o;
-        return Objects.equals(value, compareNameCollect.value);
+        CarNameCollect compareCarNameCollect = (CarNameCollect) o;
+        return Objects.equals(value, compareCarNameCollect.value);
     }
 
     @Override

@@ -1,13 +1,12 @@
 package racingcar.domain;
 
-import static racingcar.utils.Constant.COMMA_SEPARATOR;
+import static racingcar.utils.Constant.COMMA;
 import static racingcar.utils.Constant.ENTER;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
-import java.util.stream.Collectors;
 
 public class CarList {
 
@@ -24,12 +23,12 @@ public class CarList {
         this.maxMoveCnt = 0;
     }
 
-    public static CarList from(NameCollect nameCollect) {
+    public static CarList from(CarNameCollect carNameCollect) {
         CarList carList = new CarList();
-        String[] splitName = nameCollect.split();
+        String[] splitName = carNameCollect.split();
 
         for (String name : splitName) {
-            String validName = NameCollect.validName(name);
+            String validName = CarNameCollect.validName(name);
             carList.add(validName);
         }
 
@@ -48,10 +47,15 @@ public class CarList {
     }
 
     // 모든 자동차들의 현황을 출력합니다.
-    public String statusAll() {
-        return cars.stream()
-                .map(Car::status)
-                .collect(Collectors.joining(ENTER, "", ENTER));
+    protected String statusAll() {
+        StringJoiner joiner = new StringJoiner(ENTER);
+
+        for (Car car : this.cars) {
+            joiner.add(car.status());
+        }
+        joiner.add(ENTER);
+
+        return joiner.toString();
     }
 
     protected List<Car> toWinners() {
@@ -68,7 +72,7 @@ public class CarList {
 
     @Override
     public String toString() {
-        StringJoiner stringJoiner = new StringJoiner(COMMA_SEPARATOR + " ");
+        StringJoiner stringJoiner = new StringJoiner(COMMA + " ");
 
         for (Car car : this.cars) {
             stringJoiner.add(car.toString());

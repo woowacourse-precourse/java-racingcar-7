@@ -2,7 +2,7 @@ package racingcar.service.impl;
 
 import racingcar.domain.CarList;
 import racingcar.domain.Message;
-import racingcar.domain.NameCollect;
+import racingcar.domain.CarNameCollect;
 import racingcar.domain.TryCount;
 import racingcar.domain.Winners;
 import racingcar.service.CarService;
@@ -17,8 +17,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public CarList toCarList(NameCollect nameCollect) {
-        return CarList.from(nameCollect);
+    public CarList toCarList(CarNameCollect carNameCollect) {
+        return CarList.from(carNameCollect);
     }
 
     @Override

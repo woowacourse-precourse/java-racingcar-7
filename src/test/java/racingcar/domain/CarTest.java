@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static racingcar.utils.Constant.COLON_SEPARATOR;
+import static racingcar.utils.Constant.COLON;
 import static racingcar.utils.Constant.MOVING;
 
 import org.junit.jupiter.api.Disabled;
@@ -26,7 +26,7 @@ class CarTest {
         String result = car.status();
 
         // then
-        assertThat(result).isEqualTo(name + COLON_SEPARATOR + "-----");
+        assertThat(result).isEqualTo(name + COLON + "-----");
     }
 
     @Test
@@ -40,7 +40,7 @@ class CarTest {
         String result = car.status();
 
         // then
-        assertThat(result).isEqualTo(name + COLON_SEPARATOR);
+        assertThat(result).isEqualTo(name + COLON);
     }
 
     @Test
@@ -54,7 +54,7 @@ class CarTest {
         String result = car.status();
 
         // then
-        assertThat(result).isEqualTo(name + COLON_SEPARATOR);
+        assertThat(result).isEqualTo(name + COLON);
     }
 
     @Disabled
@@ -72,7 +72,7 @@ class CarTest {
             try {
                 Car car = Car.create(name, tryCount);
                 String result = car.status();
-                assertThat(result).isEqualTo(name + COLON_SEPARATOR + MOVING.repeat(tryCount));
+                assertThat(result).isEqualTo(name + COLON + MOVING.repeat(tryCount));
                 tryCount += increase;
             } catch (OutOfMemoryError e) {
                 memoryExceeded = true;
@@ -96,7 +96,7 @@ class CarTest {
     void test5() {
         String name = "12345";
         Car car = Car.create(name);
-        assertThat(car.status()).isEqualTo(name + COLON_SEPARATOR + MOVING.repeat(0));
+        assertThat(car.status()).isEqualTo(name + COLON + MOVING.repeat(0));
     }
 
 
