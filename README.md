@@ -3,14 +3,14 @@
 ---
 
 ### 기능 구현 목록
-- [ ] domain (RacingCarGame, Car) 구현
-- [ ] InputView, OutputView 구현
-- [ ] Controller 구현
-- [ ] Service 구현
+- [x] domain (RacingCarGame, Car) 구현
+- [x] InputView, OutputView 구현
+- [x] Controller 구현
+- [x] Service 구현
 - [ ] 예외 처리
     - [ ] 쉼표로 구분이 잘 되어 있는지
-    - [ ] 이름이 5자 이하로 되어 있는지
-    - [ ] 사용자의 입력이 null이 아닌지
+    - [x] 이름이 5자 이하로 되어 있는지
+    - [x] 사용자의 입력이 null이 아닌지
     
 --- 
 
