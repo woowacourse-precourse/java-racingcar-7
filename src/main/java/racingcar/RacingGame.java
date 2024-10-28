@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class RacingGame {
     private List<Car> cars = new ArrayList<>();
     private int tryCount;
-
+    private String AllRoundsResult;
 
     public final void registerCars(String input) {
         StringTokenizer strtok = new StringTokenizer(input, ",");
@@ -29,19 +29,25 @@ public class RacingGame {
     }
 
     public final void doGame() {
-        System.out.println("실행 결과");
+        StringBuilder resultSheet = new StringBuilder();
         while (this.tryCount > 0) {
             for (Car car : cars) {
                 car.moveOrStay();
-                car.printMoveCount();
+                resultSheet.append(car.printMoveCount());
             }
-            System.out.println();
+            resultSheet.append('\n');
             --this.tryCount;
         }
+        AllRoundsResult = resultSheet.toString();
+    }
 
-        List<Car> winners = getFinalWinner();
+    public final void printResult() {
+        System.out.println("\n실행 결과");
+        System.out.print(AllRoundsResult);
         System.out.print("최종 우승자 : ");
+        List<Car> winners = getFinalWinner();
         int winnerNum = winners.size();
+
         for (int i = 0; i < winnerNum - 1; ++i) {
             System.out.print(winners.get(i).getCarName() + ", ");
         }
