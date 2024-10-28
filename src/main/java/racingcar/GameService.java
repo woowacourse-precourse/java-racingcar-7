@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.ExceptionMessages.*;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -38,7 +40,7 @@ public class GameService {
         Optional<RacingCar> firstWinner = game.getRacingCars().stream().max(Comparator.comparing(RacingCar::getScore));
 
         if (firstWinner.isEmpty()) {
-            throw new IllegalArgumentException(ExceptionMessages.NO_WINNER);
+            throw new IllegalArgumentException(NO_WINNER);
         }
 
         Integer maxScore = firstWinner.get().getScore();
