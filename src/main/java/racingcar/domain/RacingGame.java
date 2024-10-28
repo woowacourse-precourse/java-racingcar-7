@@ -53,7 +53,7 @@ public class RacingGame {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
-        System.out.println();
+        System.out.println(); // 라운드 구분을 위한 빈 줄
     }
 
     private void printWinners() {
