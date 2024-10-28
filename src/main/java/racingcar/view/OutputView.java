@@ -8,13 +8,8 @@ public class OutputView {
 
     public static void showOutputView(List<String> names) {
         StringBuilder winners = new StringBuilder("최종 우승자 : ");
-        for (int i = 0; i < names.size(); i++) {
-            if (i < names.size() - 1) {
-                winners.append(names.get(i)).append(", ");
-            } else {
-                winners.append(names.get(i));
-            }
-        }
+        String strNames = String.join(", ", names);
+        winners.append(strNames);
         System.out.print(winners);
     }
 
