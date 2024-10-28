@@ -1,17 +1,19 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.model.RaceInfo;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
-    public RaceInfo getRaceInfo(){
+    public List<String> getNames(){
         String input = Console.readLine();
         List<String> names = Arrays.asList(input.split(","));
-        String totalTryCnt = Console.readLine();
+        return names;
+    }
 
-        return new RaceInfo(names, totalTryCnt);
+    public String getTotalTtyCnt(){
+        String totalTryCnt = Console.readLine();
+        return totalTryCnt;
     }
 }
