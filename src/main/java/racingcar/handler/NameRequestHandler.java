@@ -48,7 +48,7 @@ public class NameRequestHandler {
                 });
     }
 
-    private void validateDuplicate(List<String> names) {
+    public void validateDuplicate(List<String> names) {
         HashSet<String> nameSet = new HashSet<>(names);
         if (nameSet.size() != names.size()) {
             throwException(NAME_DUPLICATE_ERROR);

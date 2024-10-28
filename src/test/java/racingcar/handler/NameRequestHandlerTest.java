@@ -67,4 +67,12 @@ public class NameRequestHandlerTest {
                 .hasMessageContaining(NAME_LENGTH_ERROR.getMessage());
     }
 
+    @DisplayName("이름이 중복되는 경우")
+    @Test
+    public void duplicateNameValidateTest() {
+        Assertions.assertThatCode(() -> nameRequestHandler.validateDuplicate(List.of("영선", "영선", "자동차", "테스트")))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NAME_DUPLICATE_ERROR.getMessage());
+    }
+
 }
