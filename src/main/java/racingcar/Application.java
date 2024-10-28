@@ -68,6 +68,13 @@ class Function {
 		}
 	}
 
+	public static void processSteps(ArrayList<Player> playerList, int carryoutCount) {
+		for (int i = 0; i < carryoutCount; i++) {
+			Function.processOneSteps(playerList);
+			System.out.println();
+		}
+	}
+
 
 
 }
