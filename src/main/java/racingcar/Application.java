@@ -29,13 +29,41 @@ public class Application {
         }
     }
 
+    public static void main(String[] args) {
+
+        run();
+    }
+
     private static void run() {
 
         inputCars();
         inputPlayCount();
         play();
         outputWinner();
+    }
 
+    private static void inputCars() {
+        print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String carsInput = Console.readLine();
+
+        List<String> names = getCompactNames(carsInput);
+        cars = new ArrayList<>();
+        if (isValidNames(names))
+            for (String name : names) cars.add(new Car(name));
+    }
+
+    private static void inputPlayCount() {
+        print("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+
+        if (isValidInput(input)) playCount = Integer.parseInt(input);
+        if (playCount > 30) throw new IllegalArgumentException("시도 횟수는 30이하로 입력하세요.");
+        Console.close();
+    }
+
+    private static void play() {
+        print("\n실행 결과");
+        for (int i = 0; i < playCount; i++) playOnce();
     }
 
     private static void outputWinner() {
@@ -46,13 +74,6 @@ public class Application {
 
         String output = String.join(", ", winners);
         print("최종 우승자 : " + output);
-    }
-
-    private static void play() {
-        print("\n실행 결과");
-        for (int i = 0; i < playCount; i++) {
-            playOnce();
-        }
     }
 
     private static void playOnce() {
@@ -68,28 +89,9 @@ public class Application {
         return randomNumbers >= STANDARD;
     }
 
-    private static void inputPlayCount() {
-        print("시도할 횟수는 몇 회인가요?");
-        String input = Console.readLine();
-        if (isValidInput(input)) playCount = Integer.parseInt(input);
-        if (playCount > 30) throw new IllegalArgumentException("시도 횟수는 30이하로 입력하세요.");
-        Console.close();
-    }
-
     private static boolean isValidInput(String input) {
         if (!input.matches("\\d+")) throw new IllegalArgumentException("숫자만 입력하세요.");
         return true;
-    }
-
-    private static void inputCars() {
-        print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carsInput = Console.readLine();
-
-        List<String> names = getCompactNames(carsInput);
-        cars = new ArrayList<>();
-        if (isValidNames(names))
-            for (String name : names) cars.add(new Car(name));
-
     }
 
     private static boolean isValidNames(List<String> names) {
@@ -114,11 +116,5 @@ public class Application {
 
     private static void print(String message) {
         System.out.println(message);
-    }
-
-    public static void main(String[] args) {
-
-        run();
-
     }
 }
