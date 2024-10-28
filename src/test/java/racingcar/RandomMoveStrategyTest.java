@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.strategy.FixedRandomGenerator;
+import racingcar.domain.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.*;
 

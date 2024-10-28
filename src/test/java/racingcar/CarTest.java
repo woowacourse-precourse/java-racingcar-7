@@ -3,6 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.strategy.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -33,7 +35,7 @@ public class CarTest {
         void createCarWithEmptyNameShouldThrowException() {
             assertThatThrownBy(() -> new Car(""))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+                    .hasMessageContaining("자동차 이름은 필수 입력값입니다.");
         }
     }
 
@@ -44,7 +46,7 @@ public class CarTest {
         @Test
         @DisplayName("MoveStrategy가 참일 때 자동차는 전진한다.")
         void moveWhenMoveStrategyReturnsTrue() {
-            Car car = new Car("pobi");
+            TestCar car = new TestCar("pobi");
             car.move(() -> true);
             assertThat(car.getPosition()).isEqualTo(1);
         }
@@ -52,9 +54,20 @@ public class CarTest {
         @Test
         @DisplayName("MoveStrategy가 거짓일 때 자동차는 정지한다.")
         void stopWhenMoveStrategyReturnsFalse() {
-            Car car = new Car("pobi");
+            TestCar car = new TestCar("pobi");
             car.move(() -> false);
             assertThat(car.getPosition()).isEqualTo(0);
+        }
+    }
+
+    static class TestCar extends Car {
+        TestCar(String name) {
+            super(name);
+        }
+
+        @Override
+        protected void move(MoveStrategy moveStrategy) {
+            super.move(moveStrategy);
         }
     }
 }

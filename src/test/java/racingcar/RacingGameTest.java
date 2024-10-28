@@ -5,6 +5,11 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
+import racingcar.domain.strategy.FixedRandomGenerator;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -40,7 +45,7 @@ public class RacingGameTest {
             MoveStrategy moveStrategy = new RandomMoveStrategy(new FixedRandomGenerator(4));
 
             RacingGame racingGame = new RacingGame(names, moveCount, moveStrategy);
-            racingGame.startRace();
+            racingGame.playAllRounds();
 
             List<Car> cars = racingGame.getCars();
             for (Car car : cars) {
@@ -61,7 +66,7 @@ public class RacingGameTest {
             MoveStrategy moveStrategy = new RandomMoveStrategy(new FixedRandomGenerator(4));
 
             RacingGame racingGame = new RacingGame(names, moveCount, moveStrategy);
-            racingGame.startRace();
+            racingGame.playAllRounds();
 
             List<Car> winners = racingGame.getWinners();
             assertThat(winners).hasSize(3);

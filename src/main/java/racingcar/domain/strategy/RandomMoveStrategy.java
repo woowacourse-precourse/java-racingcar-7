@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.strategy;
 
 public class RandomMoveStrategy implements MoveStrategy {
     private static final int MOVE_THRESHOLD = 4;
