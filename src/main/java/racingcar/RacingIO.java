@@ -24,6 +24,7 @@ public class RacingIO {
             return message;
         }
     }
+
     public static void promptCarNameInput() {
         System.out.println(Messages.CAR_NAME_INPUT_PROMPT.getMessage());
     }
