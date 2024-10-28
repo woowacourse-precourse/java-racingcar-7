@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import static racingcar.common.constant.ConsoleMessage.*;
-import static racingcar.common.constant.ExceptionMessage.NO_COUNT_NUMBER_FORMAT;
 import static racingcar.common.constant.FormatConstants.*;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -16,12 +15,9 @@ public class ApplicationConsoleView implements ApplicationView {
     }
 
     @Override
-    public int requestGameCount() {
+    public String requestGameCount() {
         println(REQUEST_INPUT_GAME_COUNT);
-        String inputValue = Console.readLine();
-        int number = parseToInt(inputValue);
-        validatePositive(number);
-        return number;
+        return Console.readLine();
     }
 
     @Override
@@ -45,19 +41,5 @@ public class ApplicationConsoleView implements ApplicationView {
 
     private void print(String message) {
         System.out.print(message);
-    }
-
-    private void validatePositive(int number) {
-        if (number <= 0) {
-            throw new IllegalArgumentException(NO_COUNT_NUMBER_FORMAT);
-        }
-    }
-
-    private int parseToInt(String inputValue) {
-        try {
-            return Integer.parseInt(inputValue);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NO_COUNT_NUMBER_FORMAT);
-        }
     }
 }

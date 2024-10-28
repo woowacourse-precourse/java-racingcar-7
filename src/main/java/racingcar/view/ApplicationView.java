@@ -6,7 +6,7 @@ public interface ApplicationView {
 
     String requestInputCars();
 
-    int requestGameCount();
+    String requestGameCount();
 
     void printRacingProgressResult(List<String> results);
 

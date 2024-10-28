@@ -2,6 +2,7 @@ package racingcar.application;
 
 import java.util.List;
 import racingcar.application.service.RacingManager;
+import racingcar.common.support.PositiveNumberParser;
 import racingcar.domain.CarRacer;
 import racingcar.common.support.ObjectConverter;
 import racingcar.view.ApplicationView;
@@ -36,7 +37,8 @@ public class RacingCarGame implements Game {
     }
 
     private void playRacingCarGame() {
-        int gameCount = applicationView.requestGameCount();
+        String responseCount = applicationView.requestGameCount();
+        int gameCount = PositiveNumberParser.parse(responseCount);
         racingManager.raceStart(gameCount);
     }
 
