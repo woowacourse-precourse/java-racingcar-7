@@ -1,8 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -42,7 +40,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("aaaaaaaaaa,a", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("size of member's name is over 5")
+                        .hasMessageContaining("length of string's is over")
         );
     }
 

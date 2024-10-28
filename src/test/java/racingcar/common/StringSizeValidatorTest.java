@@ -6,24 +6,24 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class NameValidatorTest {
+class StringSizeValidatorTest {
 
     @Test
     @DisplayName("빈 선수 이름은 예외를 던진다")
     void assertBlankNameWillThrowException() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> NameValidator.isNotBlank(""))
+                assertThatThrownBy(() -> StringSizeValidator.checkBlank(""))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("name cannot be blank")
         );
     }
 
     @Test
-    void isValidSize() {
+    void checkLimitedSize() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> NameValidator.isValidSize("aaaaaa"))
+                assertThatThrownBy(() -> StringSizeValidator.checkLimitedSize("aaaaaa", 5))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("size of member's name is over 5")
+                        .hasMessageContaining("length of string's is over")
         );
     }
 }
