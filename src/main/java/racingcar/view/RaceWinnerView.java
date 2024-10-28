@@ -4,10 +4,9 @@ public class RaceWinnerView {
     private static final String WINNER_MESSAGE = "최종 우승자 : ";
     private static final String COMMA = ",";
     private static final String BLANK = " ";
-    private static final String LINE_BLANK = "\n";
 
     public void announceWinner(String[] winners) {
-        System.out.print(LINE_BLANK + WINNER_MESSAGE);
+        System.out.print(WINNER_MESSAGE);
         if (winners.length == 1) {
             System.out.print(winners[0]);
             return;
