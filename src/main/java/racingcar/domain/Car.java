@@ -10,7 +10,8 @@ public class Car {
     }
 
     public int move(){
-        if(MoveStrategy.randomMoveStrategy()) return ++currentDistances;
+        if(RandomMoveStrategy.randomMoveStrategy())
+            currentDistances++;
         return currentDistances;
     }
 
