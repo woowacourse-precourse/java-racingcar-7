@@ -73,8 +73,7 @@ class RacingGameTest {
     @Order(5)
     void printWinner() {
         cars.add(new Car("carA", 3));
-        OutputStream output = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(output));
+        OutputStream output = getOutputStream();
         racingGame.printWinner(cars);
         assertThat(output.toString()).isEqualTo("최종 우승자 : carA");
     }
@@ -85,10 +84,15 @@ class RacingGameTest {
     void printWinners() {
         cars.add(new Car("carA", 5));
         cars.add(new Car("carB", 5));
-        OutputStream output = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(output));
+        OutputStream output = getOutputStream();
         racingGame.printWinner(cars);
         assertThat(output.toString()).isEqualTo("최종 우승자 : carA, carB");
+    }
+
+    private OutputStream getOutputStream() {
+        OutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        return output;
     }
 
 }
