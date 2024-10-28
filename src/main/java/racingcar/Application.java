@@ -14,11 +14,7 @@ public class Application {
 
         List<String> carNames = getCarNames();
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryCount = Integer.parseInt(Console.readLine());
-        if(tryCount < 1) {
-            throw new IllegalArgumentException("시도 횟수는 1이상이어야 합니다.");
-        }
+        int tryCount = getTryCount();
 
 
         Map<String, Integer> cars = new HashMap<>();
@@ -61,6 +57,22 @@ public class Application {
 
         String winner = String.join(", ", winnerName);
         System.out.println("최종 우승자 : " + winner);
+    }
+
+    private static int getTryCount() {
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+
+        int tryCount = Integer.parseInt(Console.readLine());
+        validateTryCount(tryCount);
+
+        return tryCount;
+    }
+
+    private static void validateTryCount(int tryCount) {
+        if(tryCount < 1) {
+            throw new IllegalArgumentException("시도 횟수는 1이상이어야 합니다.");
+        }
     }
 
     private static List<String> getCarNames() {
