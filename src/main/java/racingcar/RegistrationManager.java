@@ -23,6 +23,7 @@ public class RegistrationManager {
     }
 
     private String getLowerCaseName(String carName) {
+        carName = carName.trim();
         if (!Pattern.matches("[a-zA-Z]+", carName)) {
             throw new IllegalArgumentException("자동차 이름은 알파벳으로만 구성되어야 합니다.");
         }
@@ -39,7 +40,7 @@ public class RegistrationManager {
         for (Car car : cars) {
             String curCarName = car.name();
             car.rename(getLowerCaseName(curCarName));
-            isValidlengthName(curCarName);
+            isValidlengthName(car.name());
         }
     }
 
