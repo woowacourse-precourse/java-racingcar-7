@@ -3,6 +3,8 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.service.RacingService;
 
+import java.util.concurrent.TimeoutException;
+
 
 public class RacingcarController {
     public final RacingService racingService;
@@ -22,8 +24,13 @@ public class RacingcarController {
         }
         racingService.separateCarNames(namesOfCars);
 
+        int numberOfRaces;
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int numberOfRaces = Integer.parseInt(Console.readLine());
+        try {
+            numberOfRaces = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수에 숫자를 입력하세요.");
+        }
         racingService.race(numberOfRaces);
     }
 }
