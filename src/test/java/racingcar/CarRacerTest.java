@@ -17,7 +17,6 @@ class CarRacerTest {
         carRacer.startRace(3);
 
         // then
-
         assertTrue(Arrays.stream(carRacer.getCarPositions()).allMatch(position -> position >= 0));
         assertTrue(Arrays.stream(carRacer.getCarPositions()).allMatch(position -> position <= 3));
     }

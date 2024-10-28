@@ -9,6 +9,7 @@ import racingcar.controller.ViewController;
 import racingcar.view.OutputView;
 
 class OutputViewTest {
+
     @Test
     void testPrintOutput() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -19,7 +20,6 @@ class OutputViewTest {
 
         // when
         OutputView.printOutput(ViewController.OUTPUT_FILTER, output);
-
 
         // then
         assertThat(outputStream.toString()).isEqualTo("최종 우승자 : pobi, crong, honux");
@@ -40,5 +40,4 @@ class OutputViewTest {
         // then
         assertThat(outputStream.toString()).isEqualTo("최종 우승자 : pobi");
     }
-
 }
