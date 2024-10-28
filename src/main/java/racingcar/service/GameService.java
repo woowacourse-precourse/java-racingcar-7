@@ -10,16 +10,17 @@ import java.util.Map;
 public class GameService {
 
     public Map<String, Integer> mapPlayerNames(List<String> playerNames) {
-        Map<String, Integer> playerScoreBoard=new LinkedHashMap<>();
-        playerNames.forEach((playerName)->{
-            playerScoreBoard.put(playerName,INITIAL_SCORE);
+        Map<String, Integer> playerScoreBoard = new LinkedHashMap<>();
+        playerNames.forEach((playerName) -> {
+            playerScoreBoard.put(playerName, INITIAL_SCORE);
         });
         return playerScoreBoard;
     }
+
     public void movePlayersRandomly(Map<String, Integer> playerScoreBoard) {
-        playerScoreBoard.forEach((player,score)->{
-            int randomVal= Randoms.pickNumberInRange(0,9);
-            if(randomVal>=4){
+        playerScoreBoard.forEach((player, score) -> {
+            int randomVal = Randoms.pickNumberInRange(0, 9);
+            if (randomVal >= 4) {
                 playerScoreBoard.put(player, score + 1);
             }
         });
