@@ -25,4 +25,8 @@ public class Car {
     private void printForwardProgress() {
         System.out.println(name + " : " + forwardProgress);
     }
+
+    public int getForwardProgressLength() {
+        return forwardProgressLength;
+    }
 }

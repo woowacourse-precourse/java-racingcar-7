@@ -1,10 +1,12 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Race {
     private final ArrayList<Car> cars = new ArrayList<>();
     private final int tryCount;
+    private ArrayList<Integer> result = new ArrayList<>();
 
     public Race(String carNames, String tryCount) {
         setCars(carNames);
@@ -56,5 +58,12 @@ public class Race {
             cars.forEach(Car::move);
             System.out.println();
         }
+    }
+
+    private void finish() {
+        cars.forEach((car -> {
+            result.add(car.getForwardProgressLength());
+        }));
+        int max = Collections.max(result);
     }
 }
