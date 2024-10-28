@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        try {
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             String carNamesInput = Console.readLine();
             String[] carNames = validateCarNames(carNamesInput);
@@ -33,9 +32,7 @@ public class Application {
 
             // 우승자 출력
             printWinners(carPositions);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+    
     }
 
     static String[] validateCarNames(String carNamesInput) {
