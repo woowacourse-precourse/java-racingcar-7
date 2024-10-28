@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputOutputHandler {
+public class InputHandler {
     private static ArrayList<String> CarName = new ArrayList<String>();
     private static int racingCounter;
 

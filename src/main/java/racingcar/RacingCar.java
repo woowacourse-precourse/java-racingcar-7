@@ -6,7 +6,7 @@ public class RacingCar {
     private String name;
     private int position;
     private ArrayList<Boolean> moveCondition;
-    static int racingCounter = InputOutputHandler.getRacingCounter();
+    static int racingCounter = InputHandler.getRacingCounter();
 
     public RacingCar(String name) {
         this.name = name;

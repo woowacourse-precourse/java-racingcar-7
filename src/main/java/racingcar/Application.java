@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) {
-        InputOutputHandler.initInput();
+        InputHandler.initInput();
 
-        ArrayList<String> carNames = InputOutputHandler.getCarName();
-        int racingCounter = InputOutputHandler.getRacingCounter();
+        ArrayList<String> carNames = InputHandler.getCarName();
+        int racingCounter = InputHandler.getRacingCounter();
 
 
         ArrayList<RacingCar> racingCars = new ArrayList<>();
