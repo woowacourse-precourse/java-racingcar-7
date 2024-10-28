@@ -7,9 +7,10 @@ public class Application {
         List<String> carNames = InputView.inputCarNames();
         int rounds = InputView.inputRounds();
 
-        Race race = new Race(carNames, rounds);
+        System.out.println();
         System.out.println("실행 결과");
 
+        Race race = new Race(carNames, rounds);
         race.start();
         List<String> winners = race.getWinners();
         ResultView.printWinners(winners);
