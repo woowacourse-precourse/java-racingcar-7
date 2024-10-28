@@ -51,7 +51,13 @@ public class Application {
         for (String car : carArr){
             //4. 각 자동차의 전진 조건에 대해 정하기 위해 0-9사이의 무작위 값을 구한다.
             Integer pickNum = Randoms.pickNumberInRange(0, 9);
-//            map.put(car, 0);
+            //5. 만약 무작위 값이 4이상일 경우 전진해야하니, 해당 자동차의 키 값에 대한 value에 +1을 해준다.
+            if (pickNum >= 4){
+                int value = map.get(car);
+                value += 1;
+                map.put(car, value);
+            }
+
         }
 
 
