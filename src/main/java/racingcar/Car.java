@@ -9,7 +9,7 @@ public class Car {
     public Car(String name) {
         location = 0;
         name = name.trim();
-        if (name.length() > 5) {
+        if (name.isEmpty() || name.length() > 5) {
             throw new IllegalArgumentException();
         }
         this.name = name;
