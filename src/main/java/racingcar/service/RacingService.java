@@ -9,20 +9,20 @@ public class RacingService {
     private final Map<String, Integer> carPositions = new HashMap<>();
 
 
-    public RacingService(String carsInput, InputService inputService) {
-        List<String> cars = inputService.getCarNames(carsInput);
-        cars.forEach(car -> carPositions.put(car, 0));
+    public RacingService(List<String> carNames) {
+        carNames.forEach(car -> carPositions.put(car, 0));
     }
 
     private int getRandomValue() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public void moveCars() {
+    public Map<String, Integer> moveCars() {
         carPositions.forEach((car, position) -> {
             if (getRandomValue() > 3) {
                 carPositions.put(car, position + 1);
             }
         });
+        return carPositions;
     }
 }
