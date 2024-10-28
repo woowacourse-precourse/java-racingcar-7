@@ -75,8 +75,9 @@ public class RacingService {
             List<String> winners = racingCars.values().stream().filter(racingCar -> racingCar.getScore() == maxScore)
                     .map(RacingCar::getName).collect(Collectors.toList());
             outputView.responseGameResult(String.join(", ", winners));
+        } else {
+            outputView.responseGameResult("우승자가 없습니다.");
         }
-        outputView.responseGameResult("우승자가 없습니다.");
     }
 
 
