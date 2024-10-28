@@ -2,28 +2,29 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RaceManager {
     private final List<String> carNames;
     private final int raceRound;
-    private final String[] currentRaceImage;
-    private final int[] currentScores;
+    private final List<String> currentRaceImages;
+    private final List<Integer> currentScores;
     private int currentRound;
 
     public RaceManager(List<String> carNames, int raceRound) {
         this.carNames = carNames;
         this.raceRound = raceRound;
-        this.currentRaceImage = new String[carNames.size()];
-        this.currentScores = new int[carNames.size()];
+        this.currentRaceImages = new ArrayList<>();
+        this.currentScores = new ArrayList<>();
         this.currentRound = 0;
         conductRace();
     }
 
     private void conductRace() {
-        for (int i = 0; i < carNames.size(); i++) {
-            currentRaceImage[i] = carNames.get(i) + " : ";
-            currentScores[i] = 0;
+        for (String carName : carNames) {
+            currentRaceImages.add(carName + " : ");
+            currentScores.add(0);
         }
         while (currentRound < raceRound) {
             currentRound++;
@@ -32,12 +33,12 @@ public class RaceManager {
     }
 
     private void displayCurrentRace() {
-        for (int i = 0; i < currentRaceImage.length; i++) {
+        for (int i = 0; i < currentRaceImages.size(); i++) {
             if (isMoveForward()) {
-                this.currentRaceImage[i] += "-";
-                this.currentScores[i]++;
+                currentRaceImages.set(i, currentRaceImages.get(i) + "-");
+                currentScores.set(i, currentScores.get(i) + 1);
             }
-            System.out.println(currentRaceImage[i]);
+            System.out.println(currentRaceImages.get(i));
         }
         System.out.println();
     }
@@ -47,7 +48,7 @@ public class RaceManager {
         return pickedNumber >= 4;
     }
 
-    public int[] getCurrentScores() {
+    public List<Integer> getCurrentScores() {
         return currentScores;
     }
 }

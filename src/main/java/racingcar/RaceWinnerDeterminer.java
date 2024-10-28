@@ -6,10 +6,10 @@ import java.util.List;
 
 public class RaceWinnerDeterminer {
     private final List<String> carNames;
-    private final int[] currentScores;
+    private final List<Integer> currentScores;
     private final List<String> winners;
 
-    public RaceWinnerDeterminer(List<String> carNames, int[] currentScores) {
+    public RaceWinnerDeterminer(List<String> carNames, List<Integer> currentScores) {
         this.carNames = carNames;
         this.currentScores = currentScores;
         this.winners = new ArrayList<>();
@@ -18,9 +18,9 @@ public class RaceWinnerDeterminer {
     }
 
     private void selectWinner() {
-        int maxWin = Arrays.stream(currentScores).max().getAsInt();
+        int maxWin = currentScores.stream().max(Integer::compareTo).orElseThrow();
         for (int i = 0; i < carNames.size(); i++) {
-            if (currentScores[i] == maxWin) {
+            if (currentScores.get(i) == maxWin) {
                 this.winners.add(carNames.get(i));
             }
         }
