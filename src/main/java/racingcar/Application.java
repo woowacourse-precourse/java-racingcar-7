@@ -35,6 +35,11 @@ public class Application {
             if (name.isEmpty() || name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
             }
+            // 중복된 이름이 있는지 확인
+            long distinctCount = carNames.stream().distinct().count();
+            if (carNames.size() != distinctCount) {
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            }
         }
     }
 
