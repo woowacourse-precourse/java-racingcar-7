@@ -10,7 +10,7 @@ public class RacingCarFactory {
     public static RacingCarController createController(){
         RacingCarModel racingCarModel = new RacingCarModel();
         ResultGeneratorService resultGeneratorService = new ResultGeneratorService();
-        RacingCarService service = new RacingCarService(racingCarModel, resultGeneratorService);
-        return new RacingCarController(service);
+        RacingCarService racingCarService = new RacingCarService(racingCarModel, resultGeneratorService);
+        return new RacingCarController(racingCarService);
     }
 }
