@@ -39,7 +39,7 @@ public class Application {
                 if (ranNum >= 4) {
                     hyphen[i] += '-';
                 }
-                System.out.println(cars[i] + " : " +  hyphen[i]);
+                System.out.println(cars[i] + " : " + hyphen[i]);
             }
             System.out.println();
         }
@@ -47,13 +47,24 @@ public class Application {
         // 경주할 자동차 중 전진한 최대값 구하기
         int[] hyp_length = new int[cars.length];
         int max = -999;
-        for(int i =0; i < cars.length; i++) {
+        for (int i = 0; i < cars.length; i++) {
             hyp_length[i] = hyphen[i].length();
 
             if (max < hyp_length[i]) {
                 max = hyp_length[i];
             }
+            System.out.println(hyp_length[i]);
         }
         System.out.println(max);
+
+        // 최대값을 가진 자동차를 최종 우승자로 선정하기
+        List<String> winner = new ArrayList<>();
+        for (int i = 0; i < cars.length; i++) {
+            if (hyp_length[i] == max) {
+                winner.add(cars[i]);
+            }
+        }
+        // 최종 우승자 출력하기
+        System.out.println("최종 우승자 : " + String.join(", ",winner));
     }
 }
