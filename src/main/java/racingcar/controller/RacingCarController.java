@@ -1,7 +1,6 @@
 package racingcar.controller;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.model.Game;
@@ -25,7 +24,7 @@ public class RacingCarController {
     }
 
     public void initializeGame() {
-        Set<String> carNames = splitCarNames();
+        List<String> carNames = splitCarNames();
         int attemptCount = parseAttemptCount();
 
         List<Car> cars = carNames.stream()
@@ -37,7 +36,7 @@ public class RacingCarController {
         startGame(game);
     }
 
-    public Set<String> splitCarNames() {
+    public List<String> splitCarNames() {
         String carNameList = inputView.getCarName();
         return racingCarService.splitCarName(carNameList);
     }

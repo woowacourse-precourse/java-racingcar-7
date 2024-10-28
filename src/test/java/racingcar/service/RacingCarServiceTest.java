@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.util.Set;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
 
@@ -34,10 +34,10 @@ class RacingCarServiceTest extends NsTest{
     @Test
     void 문자열_분리_테스트() {
         String carNameList = "jiji, kiki , didi";
-        Set<String> carNames = racingCarService.splitCarName(carNameList);
+        List<String> carNames = racingCarService.splitCarName(carNameList);
 
         assertThat(carNames).hasSize(3);
-        assertThat(carNames).containsExactlyInAnyOrder("jiji", "kiki", "didi");
+        assertThat(carNames).containsExactly("jiji", "kiki", "didi");
     }
 
     @Test
