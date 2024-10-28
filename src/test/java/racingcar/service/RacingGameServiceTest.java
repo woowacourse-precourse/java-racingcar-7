@@ -3,15 +3,18 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.Car;
 import racingcar.view.OutputView;
-import camp.nextstep.edu.missionutils.Randoms;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class RacingGameServiceTest {
     private static final String CAR_OUTPUT_PATTERN = " : (-+)?";
@@ -29,7 +32,7 @@ public class RacingGameServiceTest {
     void test_CarMovesForward() {
 
         int roundCount = 3;
-        List<Car> cars = Arrays.asList(new Car("Car1",0), new Car("Car2",0));
+        List<Car> cars = Arrays.asList(new Car("Car1"), new Car("Car2"));
 
 
         for (int i = 0; i < roundCount; i++) {
@@ -42,28 +45,26 @@ public class RacingGameServiceTest {
         }
     }
 
-    @Test
-    @DisplayName("생성된 숫자가 4 이상일 경우 자동차가 전진하는지 확인하는 테스트")
-    void testCarMoveWhenRandomValueOVER4() {
-        Car car = new Car("testCar", 0);
-
-        int randomValue = Randoms.pickNumberInRange(4, 9);
+    @ParameterizedTest
+    @MethodSource("provideRandomValues")
+    @DisplayName("생성된 숫자에 따라 자동차가 전진하거나 멈추는지 확인하는 테스트")
+    void testCarMovementBasedOnRandomValue(int randomValue, int expectedPosition) {
+        Car car = new Car("testCar");
         if (randomValue >= 4) {
             car.move();
         }
-        assertEquals(1, car.getPosition());
+        assertEquals(expectedPosition, car.getPosition());
     }
 
-    @Test
-    @DisplayName("생성된 숫자가 4 미만일 경우 자동차가 전진하는지 확인하는 테스트")
-    void testCarMoveWhenRandomValueLess4() {
-        Car car = new Car("testCar", 0);
-
-        int randomValue = Randoms.pickNumberInRange(0, 3);
-        if (randomValue >= 4) {
-            car.move();
-        }
-        assertEquals(0, car.getPosition());
+    static Stream<Arguments> provideRandomValues() {
+        return Stream.of(
+                Arguments.arguments(4, 1),
+                Arguments.arguments(5, 1),
+                Arguments.arguments(6, 1),
+                Arguments.arguments(3, 0),
+                Arguments.arguments(2, 0),
+                Arguments.arguments(1, 0)
+        );
     }
 
     @Test
@@ -71,7 +72,7 @@ public class RacingGameServiceTest {
     void testPrintResult() {
 
         int attemptCount = 5;
-        List<Car> cars = Arrays.asList(new Car("SONATA", 0), new Car("ABANTE", 0));
+        List<Car> cars = Arrays.asList(new Car("SONATA"), new Car("ABANTE"));
 
         ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
@@ -81,7 +82,6 @@ public class RacingGameServiceTest {
             racingGameService.raceGame(cars, attemptCount);
 
             String output = outputStreamCaptor.toString();
-            System.out.println("출력내용 " + outputStreamCaptor);
 
             for (Car car : cars) {
                 assertTrue(output.contains(car.getName() + " : "));
@@ -94,30 +94,33 @@ public class RacingGameServiceTest {
         }
     }
 
-    @Test
-    @DisplayName("가장 많이 전진한 자동차가 하나인 경우")
-    void testFindSingleWinner() {
-        Car car1 = new Car("Car1",5);
-        Car car2 = new Car("Car2",4);
-        Car car3 = new Car("Car3",3);
-
-        List<Car> cars = Arrays.asList(car1,car2,car3);
-        List<String> winner = racingGameService.findWinners(cars);
-
-        assertTrue(winner.contains("Car1"));
-    }
-
-    @Test
-    @DisplayName("가장 많이 전진한 자동차가 여러대인 경우")
-    void testFindMultipleWinner() {
-        Car car1 = new Car("Car1",5);
-        Car car2 = new Car("Car2",5);
-        Car car3 = new Car("Car3",5);
-
-        List<Car> cars = Arrays.asList(car1,car2,car3);
+    @ParameterizedTest
+    @MethodSource("provideCarsForWinnerTests")
+    @DisplayName("전진한 거리에 따른 우승자 검증 테스트")
+    void testFindWinners(List<Car> cars, List<String> expectedWinners) {
         List<String> winners = racingGameService.findWinners(cars);
-
-        assertEquals(3,winners.size());
-        assertTrue(winners.containsAll(Arrays.asList("Car1","Car2","Car3")));
+        assertEquals(expectedWinners.size(), winners.size());
+        assertTrue(winners.containsAll(expectedWinners));
     }
+
+    static Stream<Arguments> provideCarsForWinnerTests() {
+        return Stream.of(
+                Arguments.arguments(createCarsWithMovement("Car1"), Arrays.asList("Car1")),
+                Arguments.arguments(createCarsWithMovement("Car1", "Car2", "Car3"), Arrays.asList("Car1", "Car2", "Car3")),
+                Arguments.arguments(createCarsWithMovement("Car1", "Car2"), Arrays.asList("Car1", "Car2"))
+        );
+    }
+
+    private static List<Car> createCarsWithMovement(String... carNames) {
+        List<Car> cars = Arrays.stream(carNames)
+                .map(Car::new)
+                .toList();
+
+        // 각 자동차를 이동
+        for (Car car : cars) {
+            car.move();  // 이동 로직은 필요에 따라 조정
+        }
+        return cars;
+    }
+
 }

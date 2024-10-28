@@ -27,7 +27,7 @@ public class RacingGameController {
 
     public void run() {
         List<Car> cars = setupCars();
-        int count = setupAttempCount();
+        int count = setupAttemptCount();
 
         outputView.displayResult();
         raceGame(cars, count);
@@ -40,9 +40,10 @@ public class RacingGameController {
         return carSetupService.parseCarNames(inputValue);
     }
 
-    private int setupAttempCount() {
+    private int setupAttemptCount() {
         outputView.displayAttemptCount();
-        return carSetupService.parseAttemptCount(inputView.inputAttemptCount());
+        String stringCount = inputView.inputAttemptCount();
+        return carSetupService.parseAttemptCount(stringCount);
     }
 
     private void raceGame(List<Car> cars, int count) {
