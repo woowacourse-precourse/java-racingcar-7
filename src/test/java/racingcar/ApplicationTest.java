@@ -23,6 +23,24 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
+    @Test
+    void 자동차_경주횟수_예외_테스트_zero() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 자동차_경주횟수_예외_테스트_음수() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
