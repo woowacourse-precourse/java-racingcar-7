@@ -65,66 +65,97 @@ jun : -----
 ---
 ## 구현할 기능 목록
 ### 사용자 인터페이스
-- [ ] 사용자로부터 입력(int/String)을 받는다
-- [ ] 문자열을 터미널에 출력한다. 
+- [✅] 사용자로부터 입력(int/String)을 받는다
+- [✅] 문자열을 터미널에 출력한다. 
 
 ### 자동차 (Model)
-- [ ] 확률적으로 이동한다. 
-- [ ] 속성(이름, 이동거리)를 출력한다. 
+- [✅] 확률적으로 이동한다. 
+- [✅] 속성(이름, 이동거리)를 출력한다. 
 
 ### 게임 (Model)
-- [ ] 라운드마다 자동차를 움직이고 출력한다. 
-- [ ] 우승자를 판별한다. 
+- [✅] 라운드마다 자동차를 움직이고 출력한다. 
+- [✅] 우승자를 판별한다. 
 
 ### 유효성 검사
-- [ ] 입력의 부적절성을 검사한다
-- [ ] 문자열을 다듬는다
+- [✅] 입력의 부적절성을 검사한다
+- [✅] 문자열을 다듬는다
 
 ### 예외 처리
-- [ ] 기본적인 입력 예외 (타입 불일치, int overflow)
-- [ ] 부적절한 입력 리스트 예외 (빈 배열)
+- [✅] 기본적인 입력 예외 (타입 불일치, int overflow)
+- [✅] 부적절한 입력 리스트 예외 (빈 배열)
 
 ### 리팩토링
-- [ ] ...
+- [✅] DI
+- [✅] JAVA 메소드 활용
+- [✅] 테스트 코드 작성
+### 버그 픽스
+- [✅] 랜덤 관련 버그 해결
 
 ## 클래스 다이어그램
 
 ```mermaid
 classDiagram
     direction LR
+	
+	class Application {
+		+main() void
+	}
+	
+	class RacingcarController {
+		+play() void
+		-gamePreset() Game
+		-getRound() int
+		-gameProcessing(Game, int) void
+	}
+	
+	class Car {
+		-name String
+		-distance int
+		+getName() String
+		+getDistance() int
+		+addDistance(boolean) void
+	}
+	
+	class Game {
+		-racingCarList List<Car>
+		+Game(List<Car>)
+		+getRacingCarArray() List<Car>
+		+play() void
+		+moveCarIfHit(Car) void
+	}
+
+	class PresetService {
+		+setGame(String) Game
+	}
+	
+	class ProcessService {
+		+getWinnerCar(Game) ArrayList<Car>
+		-getMaxDistance(List<Car>) int
+		-getWinner(List<Car>, int) Array
+	}
+	
+	class InputView {
+		+input() String
+		+inputRound() int
+	}
+	
+	class OutputView {
+		+printMessage() void
+		+printExecuteResult(List<Car>) void
+		+printRacingProgress(List<Car>) void
+		+printCarInfo(Car) void
+	}
+	
+	
+	
+    Application --> RacingcarController
     
-    class Application {
-        +main() void
-    }
-    
-    class Controller {
-        +play() void
-    }
-    
-    class ViewInput {
-        +getline() String
-    }
-    
-    class ViewOutput {
-        +printout() void
-    }
-    
-    class Car {
-        +name String
-        +distance int
-        +getter() String
-        +adder(int) void
-    }
-    
-    class Game {
-        +round int
-        +play() void
-    }
-    
-    Application --> Controller
-    Controller --> ViewInput : Interface
-    Controller --> ViewOutput : Interface
-    Controller --> Service
-    Service --> Car
-    Service --> Game
+    RacingcarController --> InputView
+    RacingcarController --> OutputView
+    RacingcarController --> PresetService
+    RacingcarController --> ProcessService
+
+    ProcessService --> Car
+    ProcessService --> Game
 ```
+
