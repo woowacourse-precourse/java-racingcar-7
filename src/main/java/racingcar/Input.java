@@ -34,6 +34,7 @@ public class Input {
             Validate.validateCarNameLength(carName);
             trimNames.add(carName);
         }
+        Validate.validateCarsCount(trimNames);
         return trimNames;
     }
 

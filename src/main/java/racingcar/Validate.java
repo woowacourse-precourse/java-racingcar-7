@@ -18,6 +18,12 @@ public class Validate {
         }
     }
 
+    public static void validateCarsCount(List<String> names){
+        if(names.size() < 2){
+            throw new IllegalArgumentException("자동차는 최소 2대 이상이어야 합니다.");
+        }
+    }
+
     public static void validateCarNameIsEmpty(String name){
         if (name.isEmpty()){
             throw new IllegalArgumentException("자동차 이름은 빈 값일 수 없습니다.");
