@@ -16,7 +16,7 @@ public class InputView {
         return input;
     }
 
-    public int requestRoundCount() {
+    public int requestTotalRounds() {
         ConsoleWriter.printlnMessage(REQUEST_ROUND_COUNT_MESSAGE);
         String input = ConsoleReader.enterMessage();
         checkStringFormat(input);

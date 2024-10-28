@@ -17,17 +17,17 @@ public class RaceManager {
 
     public void execute() {
         Cars cars = new Cars(inputView.requestCarsName());
-        int roundCount = inputView.requestRoundCount();
+        int totalRounds = inputView.requestTotalRounds();
 
-        play(cars, roundCount);
+        play(cars, totalRounds);
 
         finish(cars);
     }
 
-    private void play(Cars cars, int roundCount) {
+    private void play(Cars cars, int totalRounds) {
         ConsoleWriter.printlnMessage(PLAY_START_MESSAGE);
 
-        for (int round = 1; round <= roundCount; round++) {
+        for (int round = 1; round <= totalRounds; round++) {
             cars.playSingleRound();
 
             //해당 차수 실행 결과를 출력

@@ -56,7 +56,7 @@ public class InputViewTest {
         System.setIn(in);
 
         // when & then
-        assertThatCode(inputView::requestRoundCount)
+        assertThatCode(inputView::requestTotalRounds)
                 .doesNotThrowAnyException();
     }
 
@@ -71,7 +71,7 @@ public class InputViewTest {
 
         // when & then
         assertThatIllegalArgumentException()
-                .isThrownBy(inputView::requestRoundCount)
+                .isThrownBy(inputView::requestTotalRounds)
                 .withMessage(ErrorMessage.INVALID_ROUND_COUNT_ERROR.getMessage());
     }
 
@@ -86,7 +86,7 @@ public class InputViewTest {
 
         // when & then
         assertThatIllegalArgumentException()
-                .isThrownBy(inputView::requestRoundCount)
+                .isThrownBy(inputView::requestTotalRounds)
                 .withMessage(ErrorMessage.INVALID_ROUND_COUNT_ERROR.getMessage());
     }
 }
