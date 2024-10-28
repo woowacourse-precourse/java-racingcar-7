@@ -45,12 +45,12 @@ public class RegistrationManager {
     }
 
     public void checkDuplicatePlayer() {
-        ArrayList<String> nameList = new ArrayList<>();
+        ArrayList<String> carNames = new ArrayList<>();
         for (Car car : cars) {
-            if (nameList.contains(car.name())) {
+            if (carNames.contains(car.name())) {
                 throw new IllegalArgumentException("중복된 자동차 이름은 사용할 수 없습니다.(대문자와 소문자는 동일하게 인식됩니다.)");
             }
-            nameList.add(car.name());
+            carNames.add(car.name());
         }
     }
 

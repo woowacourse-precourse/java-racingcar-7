@@ -31,8 +31,8 @@ public class Application {
 
     private static List<String> splitCarNames() {
         System.out.println(START_TEXT);
-        String inputString = getInput();
-        return Arrays.asList(inputString.split(",", 0));
+        String input = getInput();
+        return Arrays.asList(input.split(",", 0));
     }
 
     private static String getInput() {

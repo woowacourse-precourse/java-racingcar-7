@@ -11,10 +11,10 @@ public class Judgement {
         this.cars = cars;
     }
 
-    private void printRoundResult(Car curCar) {
-        int curCarLocation = curCar.getcurrentLocation();
-        System.out.print(curCar.name() + " : ");
-        for (int count = 0; count < curCarLocation; count++) {
+    private void printRoundResult(Car currentCar) {
+        int currentCarLocation = currentCar.getcurrentLocation();
+        System.out.print(currentCar.name() + " : ");
+        for (int count = 0; count < currentCarLocation; count++) {
             System.out.print("-");
         }
         System.out.println();
@@ -32,29 +32,29 @@ public class Judgement {
     }
 
     private List<String> judgeWinner() {
-        List<String> winnerList = new ArrayList<>();
+        List<String> winners = new ArrayList<>();
         int maxLocationNum = cars[0].getcurrentLocation();
-        winnerList.add(cars[0].name());
+        winners.add(cars[0].name());
 
         for (int i = 1; i < cars.length; i++) {
             Car curCar = cars[i];
             if (curCar.getcurrentLocation() > maxLocationNum) {
                 maxLocationNum = curCar.getcurrentLocation();
-                winnerList.clear();
-                winnerList.add(curCar.name());
+                winners.clear();
+                winners.add(curCar.name());
                 continue;
             }
             if (curCar.getcurrentLocation() == maxLocationNum) {
-                winnerList.add(curCar.name());
+                winners.add(curCar.name());
             }
         }
-        return winnerList;
+        return winners;
     }
 
     public void printWinner() {
         System.out.print("최종 우승자 : ");
-        List<String> winnerList = judgeWinner();
-        System.out.println(String.join(", ", winnerList));
+        List<String> winners = judgeWinner();
+        System.out.println(String.join(", ", winners));
     }
 
 }
