@@ -30,7 +30,9 @@ public class CarService {
     }
 
     public Model getResultModel(){
-        return new Model(carRepository.getMap(), getWinner());
+        Map<String,ArrayList<Integer>> copyMap = carRepository.getMap().entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, entry -> new ArrayList<>(entry.getValue())));
+        return new Model(copyMap , getWinner());
     }
 
     private List<String> getWinner() {
@@ -52,10 +54,6 @@ public class CarService {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
-
-
-
-
 
     private void doGamePerCar(String car){
         int randomNumber = getRandomNnumber();

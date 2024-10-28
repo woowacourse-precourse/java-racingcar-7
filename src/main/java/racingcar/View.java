@@ -18,6 +18,8 @@ public class View {
         String line = Console.readLine();
         String[] carNames = line.split(",");
 
+        checkInputValid(carNames);
+
         System.out.println("시도할 횟수는 몇 회인가요?");
         tryCount = Integer.parseInt(Console.readLine());
 
@@ -55,11 +57,20 @@ public class View {
     }
 
     private void printWinners(List<String> winner) {
-        System.out.println("최종 우승자: " + String.join(", ", winner));
+        System.out.println("최종 우승자 : " + String.join(", ", winner));
     }
 
     public View(){
         this.gameController = DependencyInjectionConfig.gameController();
+    }
+
+
+    private void checkInputValid(String[] carNames){
+        for(String carName : carNames){
+            if(carName.length() > 5 || carName.isEmpty()){
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+        }
     }
 
 }

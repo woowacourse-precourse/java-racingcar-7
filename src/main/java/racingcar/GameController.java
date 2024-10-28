@@ -8,19 +8,20 @@ public class GameController {
         this.carService = DependencyInjectionConfig.carService();
     }
 
-    // post
+
     public void playGame(RequestDto requestDto) {
         carService.doGameTotalSet(requestDto.getCarNames(), requestDto.getTryCount());
     }
 
-    // get
+
     public Model getResult() {
-        return carService.getResultModel();
+        Model model = carService.getResultModel();
+        carService.doneGame();
+        return model;
+
     }
 
-    public void doneModel() {
-        carService.doneGame();
-    }
+
 
 
 
