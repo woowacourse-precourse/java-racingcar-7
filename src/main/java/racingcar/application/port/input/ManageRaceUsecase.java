@@ -5,5 +5,5 @@ import racingcar.application.dto.response.RaceResponse;
 
 public interface ManageRaceUsecase {
 
-    RaceResponse run(RaceRequest raceRequest);
+    RaceResponse startRace(RaceRequest raceRequest);
 }

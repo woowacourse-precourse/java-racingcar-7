@@ -4,7 +4,6 @@ import racingcar.application.dto.request.RaceRequest;
 import racingcar.application.dto.response.RaceResponse;
 import racingcar.application.port.input.ManageRaceUsecase;
 import racingcar.domain.acceleration.Acceleration;
-import racingcar.domain.acceleration.RandomAcceleration;
 import racingcar.domain.race.Race;
 import racingcar.domain.race.service.RaceHelper;
 import racingcar.domain.race.vo.RaceResult;
@@ -22,11 +21,11 @@ public class ManageRaceCommand implements ManageRaceUsecase {
     }
 
     @Override
-    public RaceResponse run(final RaceRequest raceRequest) {
+    public RaceResponse startRace(final RaceRequest raceRequest) {
         Race race = Race.of(raceRequest.carNames(), acceleration);
         Round round = raceRequest.round();
 
-        RaceResult raceResult = race.runRace(round);
+        RaceResult raceResult = race.start(round);
         Winners winners = raceHelper.findWinners(race);
 
         return new RaceResponse(raceResult, winners);

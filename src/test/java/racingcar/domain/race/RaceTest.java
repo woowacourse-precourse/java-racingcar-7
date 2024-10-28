@@ -62,7 +62,7 @@ public class RaceTest {
         Race race = Race.of(input, acceleration);
 
         // when
-        race.runRace(new Round(1));
+        race.start(new Round(1));
 
         // then
         List<Car> cars = race.getCars();
@@ -78,7 +78,7 @@ public class RaceTest {
         Race race = Race.of(input, acceleration);
 
         // when
-        RaceResult raceResult = race.runRace(new Round(1));
+        RaceResult raceResult = race.start(new Round(1));
 
         // then
         assertThat(raceResult.toString()).isEqualTo(

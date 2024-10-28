@@ -26,7 +26,7 @@ class ManageRaceUsecaseTest {
         RaceRequest raceRequest = new RaceRequest("pobi,woni", new Round(3));
 
         // when
-        RaceResponse raceResponse = manageRaceUsecase.run(raceRequest);
+        RaceResponse raceResponse = manageRaceUsecase.startRace(raceRequest);
 
         // then
         assertThat(raceResponse).isNotNull();

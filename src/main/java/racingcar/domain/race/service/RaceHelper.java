@@ -8,8 +8,6 @@ import racingcar.domain.race.vo.Winners;
 
 public class RaceHelper {
 
-    private final String WINNER_DELIMITER = ", ";
-
     public Winners findWinners(Race race) {
         return new Winners(determineWinners(race));
     }

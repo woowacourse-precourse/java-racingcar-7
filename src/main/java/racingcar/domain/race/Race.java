@@ -31,7 +31,7 @@ public class Race {
         return cars;
     }
 
-    public RaceResult runRace(Round round) {
+    public RaceResult start(Round round) {
         RaceResult raceResult = new RaceResult();
 
         while (round.hasMoreRounds()) {

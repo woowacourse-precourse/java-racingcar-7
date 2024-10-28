@@ -2,7 +2,7 @@ package racingcar.domain.car.vo;
 
 public record Position(int value) {
 
-    public static Position of(int value) {
+    public static Position of(final int value) {
         return new Position(value);
     }
 

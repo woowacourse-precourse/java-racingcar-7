@@ -9,6 +9,6 @@ public class Application {
         AppConfig appConfig = new AppConfig();
         RaceCliInputAdapter raceCliInputAdapter = appConfig.getRaceCliInputAdapter();
 
-        raceCliInputAdapter.startRace();
+        raceCliInputAdapter.run();
     }
 }

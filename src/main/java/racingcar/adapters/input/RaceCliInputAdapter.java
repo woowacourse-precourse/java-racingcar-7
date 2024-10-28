@@ -24,9 +24,9 @@ public class RaceCliInputAdapter {
         this.manageRaceUsecase = manageRaceUsecase;
     }
 
-    public void startRace() {
+    public void run() {
         RaceRequest raceRequest = getRaceInput();
-        RaceResponse raceResponse = manageRaceUsecase.run(raceRequest);
+        RaceResponse raceResponse = manageRaceUsecase.startRace(raceRequest);
 
         outputPort.writeNewLine();
         outputPort.writeMessage(RaceFormatter.format(raceResponse));
