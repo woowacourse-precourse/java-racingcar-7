@@ -12,4 +12,8 @@ public class ScoreBoard {
     public static String carStatus (String carName, String mileages) {
         return String.format(Output.CAR_POSITION_FORMAT.toString(), carName, mileages);
     }
+
+    public static String winner (String winners) {
+        return String.format(Output.WINNER_FORMAT.toString(), winners);
+    }
 }
