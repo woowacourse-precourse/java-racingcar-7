@@ -15,7 +15,7 @@ public class Car {
 
     private void validNameHasBlankOrEmpty(String name) {
         if(name.contains(BLANK)||name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 공백문자열을 포함할 수 없습니다");
+            throw new IllegalArgumentException("자동차 이름은 빈문자열이거나 공백문자열을 포함할 수 없습니다");
         }
     }
 

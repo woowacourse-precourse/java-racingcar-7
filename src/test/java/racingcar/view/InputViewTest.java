@@ -31,7 +31,7 @@ public class InputViewTest {
 
         Assertions.assertThatThrownBy(() -> inputView.validEndWithComma("pobi,"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(",를 마지막으로 입력하면 안됩니다");
+                .hasMessage("자동차 이름 입력 시 ,로 끝나면 안됩니다.");
     }
 
 }

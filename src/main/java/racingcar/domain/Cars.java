@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,23 +9,23 @@ public class Cars {
     private static final String WINNER_DELIMITER = ", ";
     private final List<Car> cars;
 
-    public Cars(String[] players) {
+    public Cars(List<String> players) {
         validDuplicate(players);
-        this.cars = Arrays.stream(players)
+        this.cars = players.stream()
                 .map(Car::new)
                 .toList();
     }
 
-    private void validDuplicate(String[] players) {
+    private void validDuplicate(List<String> players) {
         long duplicateCount = calculateDuplicate(players);
         if (duplicateCount >= MIN_DUPLICATE_NAME) {
             throw new IllegalArgumentException("같은 이름을 사용할 수 없습니다");
         }
     }
 
-    private long calculateDuplicate(String[] players) {
-        return Arrays.stream(players)
-                .filter(player -> Arrays.stream(players).filter(player::equals).count() > 1)
+    private long calculateDuplicate(List<String> players) {
+        return players.stream()
+                .filter(player -> players.stream().filter(player::equals).count() > 1)
                 .distinct()
                 .count();
     }

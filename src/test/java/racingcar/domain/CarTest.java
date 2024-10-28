@@ -45,7 +45,7 @@ public class CarTest {
     void 자동차_이름_공백_테스트(String testCase) {
         Assertions.assertThatThrownBy(() -> new Car(testCase))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 공백문자열을 포함할 수 없습니다");
+                .hasMessage("자동차 이름은 빈문자열이거나 공백문자열을 포함할 수 없습니다");
     }
 
 }

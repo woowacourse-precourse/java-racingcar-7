@@ -1,24 +1,28 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
 
     private static final String DELIMITER = ",";
 
-    public String[] inputCarNameGuide() {
+    public List<String> inputCarNameGuide() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return separatePlayers(Console.readLine());
     }
 
-    public String[] separatePlayers(String players) {
+    public List<String> separatePlayers(String players) {
         validEndWithComma(players);
-        return players.split(DELIMITER);
+        return Arrays.stream(players.split(DELIMITER))
+                .collect(Collectors.toList());
     }
 
     public static void validEndWithComma(String players) {
         if(players.endsWith(DELIMITER)) {
-            throw new IllegalArgumentException(",를 마지막으로 입력하면 안됩니다");
+            throw new IllegalArgumentException("자동차 이름 입력 시 ,로 끝나면 안됩니다.");
         }
     }
 
