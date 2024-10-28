@@ -8,8 +8,11 @@ public class RacingGameController {
 
     public void run() {
         String input = InputView.inputString();
+        CarList carList = new CarList(input);
+
         int count = InputView.inputTryCount();
-        RacingGame game = new RacingGame(input);
+
+        RacingGame game = new RacingGame(carList);
         game.play(count);
     }
 }
