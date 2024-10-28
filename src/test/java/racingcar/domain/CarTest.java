@@ -38,4 +38,13 @@ public class CarTest {
         Assertions.assertTrue(testCar.compareTo(testCar2) < 0);
     }
 
+    @Test
+    @DisplayName("검증되지 않은 이름으로 자동차를 생성하면 예외다")
+    void throw_when_name_is_invalid() {
+        String invalidName = "franki";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new Car(invalidName);
+        });
+    }
 }

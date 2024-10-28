@@ -1,15 +1,18 @@
 package racingcar.domain;
 
 import java.util.Objects;
+import racingcar.domain.validation.CarValidator;
 
 public class Car implements Comparable<Car> {
 
+    private static final CarValidator validator = new CarValidator();
     private static final int MOVABLE_MARGIN = 4;
 
     private final String name;
     private int distance;
 
     public Car(String name) {
+        validator.validateMaximumLength(name);
         this.name = name;
     }
 
