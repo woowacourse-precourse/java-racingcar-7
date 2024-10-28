@@ -5,7 +5,7 @@ public abstract class Car {
     protected int distance;
 
     public Car(String name) {
-        this.name = name;
+        this.name = name.trim();
         this.distance = 0;
     }
 
