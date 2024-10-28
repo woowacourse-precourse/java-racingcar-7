@@ -12,10 +12,10 @@ public class RaceService {
     }
 
     public List<Car> createCars(String[] carNames) {
-        List<Car> Cars = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
-            Cars.add(new Car(name));
+            cars.add(new Car(name));
         }
-        return Cars;
+        return cars;
     }
 }
