@@ -28,4 +28,18 @@ public class InputTest extends NsTest {
         //then
         assertThat(result).isEqualTo("Ahn,Seong,Mo");
     }
+
+    @Test
+    @DisplayName("시도할 횟수를 입력 받는지 확인")
+    void getNumber_MethodCall_gotNumber() {
+        //given
+        int number = 5;
+        System.setIn(new ByteArrayInputStream(String.valueOf(number).getBytes()));
+
+        //when
+        int result = Input.getNumber();
+
+        //then
+        assertThat(result).isEqualTo(5);
+    }
 }
