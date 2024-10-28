@@ -18,4 +18,13 @@ public class input {
     public String getCarNamesAsString(List<String> carNames) {
         return String.join(",", carNames);
     }
+    
+    public int getAttemptCount() {
+        System.out.println("시도할 횟수를 입력하세요.");
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("올바른 숫자를 입력하세요.");
+        }
+    }
 }
