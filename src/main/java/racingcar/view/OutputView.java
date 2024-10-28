@@ -4,12 +4,16 @@ import racingcar.model.Car;
 import java.util.List;
 
 public class OutputView {
-    public static void printRoundStatus(List<Car> cars) {
-        cars.forEach(car -> System.out.println(car.getName() + " : " + car.getPositionRepresentation()));
+    public static void displayRoundResults(List<Car> cars) {
+        cars.forEach(OutputView::printCarStatus);
         System.out.println();
     }
 
-    public static void printWinners(String winners) {
+    private static void printCarStatus(Car car) {
+        System.out.println(car.getName() + " : " + car.getPositionAsDashes());
+    }
+
+    public static void displayWinners(String winners) {
         System.out.println("최종 우승자 : " + winners);
     }
 }
