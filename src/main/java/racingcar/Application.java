@@ -16,6 +16,7 @@ public class Application {
             game.printFinalResults();
         } catch (IllegalArgumentException e) {
             System.out.println("오류: " + e.getMessage());
+            throw e;
         }
     }
 
