@@ -2,7 +2,7 @@ package racingcar;
 
 public class ExceptionHandler {
     public static void validateNullInputString (String inputString) {
-        if (inputString.length() == 0) {
+        if (inputString == null || inputString.isBlank()) {
             throw new IllegalArgumentException("입력 값은 필수입니다.");
         }
     }
@@ -27,11 +27,9 @@ public class ExceptionHandler {
 
     public static int parseIntOrThrow (String inputNumber) {
         try {
-            Integer.parseInt(inputNumber);
+            return Integer.parseInt(inputNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalThreadStateException("입력된 시도 횟수가 숫자가 아닙니다. : " + inputNumber);
+            throw new IllegalArgumentException("입력된 시도 횟수가 숫자가 아닙니다. : " + inputNumber);
         }
-
-        return Integer.parseInt(inputNumber);
     }
 }
