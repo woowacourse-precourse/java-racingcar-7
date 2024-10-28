@@ -13,14 +13,7 @@ public class Application {
     }
 
     private static RacingGameTemplate initializeGame() {
-        final InputDto dto = getUserInputToDto();
+        final InputDto dto = InputView.input();
         return RacingGame.initGame(dto);
-    }
-
-    private static InputDto getUserInputToDto() {
-        return new InputDto(
-                InputView.inputCarNames(),
-                InputView.inputRaceAttempts()
-        );
     }
 }
