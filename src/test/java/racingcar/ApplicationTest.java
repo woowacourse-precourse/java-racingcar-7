@@ -24,10 +24,73 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 기능_테스트_2회() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "2");
+                    assertThat(output()).contains("pobi : --", "woni : -", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 이름_길이_예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복_이름_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,pobi", "1");
+                    assertThat(output()).contains("pobi-1 : -", "pobi-2 : ", "최종 우승자 : pobi-1");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 한명_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi.javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 한명_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi", "1");
+                    assertThat(output()).contains("pobi : -", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 공동_우승_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,uugi", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "uugi : ", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 우승자_없음_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,uugi", "1");
+                    assertThat(output()).contains("pobi :", "woni :", "uugi :", "최종 우승자 : ");
+                },
+                STOP, STOP, STOP
         );
     }
 
