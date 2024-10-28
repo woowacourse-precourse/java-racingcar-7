@@ -26,17 +26,20 @@
 - [x] 경주할 자동차 이름을 입력받는다.
     - [x] 빈 문자열이나 null을 발생시킬 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
 - [x] 쉼표(,)로 구분된 이름들을 리스트로 변환한다.
-- [x] 경주할 횟수를 입력받아 정수로 변환한다. 
-    - [x] 숫자가 아닌 문자를 입력할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
-    - [x] 사용자가 1보다 작은 정수를 입력할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
 ---
 ### 2. 자동차 이름 유효성 검증
 - [x] 입력된 이름이 null이거나 공백만 포함하는 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
 - [x] 이름이 1자 미만이거나 5자를 초과하는 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
 - [x] 이름 내부에 공백이 포함될 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
 - [x] 중복된 이름이 존재할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+- [x] 전체 자동차 이름 개수가 최소 2개에서 최대 1,000개인지 검사하고, 범위를 벗어날 경우 IllegalArgumentException을 발생시키고 프로그램을 종료한다.
 ---
-### 3. 자동차 전진 조건 설정
+### 3. 시도 횟수 유효성 검증
+- [x] 경주할 횟수를 입력받아 정수로 변환한다.
+  - [x] 숫자가 아닌 문자를 입력할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+  - [x] 사용자가 1보다 작은 정수를 입력할 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+---
+### 4. 자동차 전진 조건 설정
 - [x] 0에서 9 사이의 무작위 값을 생성한다.
 - [x] 해당 값이 4 이상일 경우 자동차가 전진한다.
     - [x] 무작위 값이 0에서 9 사이가 아닌 값이 들어올 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
