@@ -8,7 +8,7 @@ public class MovingCountValidator {
 
     public Long validateMovingCount(String rawMovingCount) {
         if (rawMovingCount == null || rawMovingCount.isBlank()) {
-            throw RacingException.from(ErrorMessage.NO_INPUT);
+            throw RacingException.from(ErrorMessage.NO_INPUT.getMessage());
         }
 
         rawMovingCount = rawMovingCount.stripLeading().stripTrailing();
@@ -17,13 +17,13 @@ public class MovingCountValidator {
             long movingCount = Long.parseLong(rawMovingCount);
 
             if (movingCount < 0L) {
-                throw RacingException.from(ErrorMessage.NEGATIVE_MOVING_COUNT);
+                throw RacingException.from(ErrorMessage.NEGATIVE_MOVING_COUNT.getMessage());
             }
 
             return movingCount;
         } catch (NumberFormatException e) {
             if (rawMovingCount.contains(".")) {
-                throw RacingException.from(ErrorMessage.DECIMAL_MOVING_COUNT);
+                throw RacingException.from(ErrorMessage.DECIMAL_MOVING_COUNT.getMessage());
             }
 
             return validateBigIntegerConversion(rawMovingCount);
@@ -33,9 +33,9 @@ public class MovingCountValidator {
     private static Long validateBigIntegerConversion(String numberString) {
         try {
             new BigInteger(numberString);
-            throw RacingException.from(ErrorMessage.TOO_MANY_MOVING_COUNT);
+            throw RacingException.from(ErrorMessage.TOO_MANY_MOVING_COUNT.getMessage());
         } catch (NumberFormatException e) {
-            throw RacingException.from(ErrorMessage.INVALID_MOVING_COUNT);
+            throw RacingException.from(ErrorMessage.INVALID_MOVING_COUNT.getMessage());
         }
     }
 }

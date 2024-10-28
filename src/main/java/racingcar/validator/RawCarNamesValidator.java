@@ -7,7 +7,7 @@ public class RawCarNamesValidator {
 
     public void isEmpty(String rawCarNames) {
         if (rawCarNames == null || rawCarNames.isBlank()) {
-            throw RacingException.from(ErrorMessage.NO_INPUT);
+            throw RacingException.from(ErrorMessage.NO_INPUT.getMessage());
         }
     }
 }

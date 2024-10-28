@@ -1,13 +1,11 @@
 package racingcar.exception;
 
-import racingcar.view.ErrorMessage;
-
 public class RacingException extends IllegalArgumentException {
-    public RacingException(ErrorMessage errorMessage) {
-        super(errorMessage.getMessage());
+    public RacingException(String message) {
+        super(message);
     }
 
-    public static RacingException from(ErrorMessage errorMessage) {
-        return new RacingException(errorMessage);
+    public static RacingException from(String message) {
+        return new RacingException(message);
     }
 }
