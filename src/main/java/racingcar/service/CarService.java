@@ -3,6 +3,7 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
 import racingcar.model.CarList;
+import racingcar.util.Splitter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class CarService {
     }
 
     public void splitCarNames(String carNames) {
-        this.carNames = carNames.split(",");
+        this.carNames = Splitter.splitByComma(carNames);
     }
 
     public void playGame() {
