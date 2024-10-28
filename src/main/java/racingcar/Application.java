@@ -9,6 +9,15 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();
+        List<Car> cars = racingGame.inputCarNames();
+        int raceCount = racingGame.inputRaceCount();
+
+        for (int i = 0; i < raceCount; i++) {
+            racingGame.raceOnce(cars);
+            racingGame.printRaceStatus(cars);
+        }
+
+
     }
 }
 
@@ -47,6 +56,15 @@ class RacingGame {
             }
         }
     }
+
+    public void printRaceStatus(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
+
+
 }
 
 class Car {
