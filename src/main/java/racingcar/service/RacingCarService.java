@@ -14,5 +14,8 @@ public class RacingCarService {
     }
 
     public void startRace() {
+        for (Car car : carList) {
+            car.move();
+        }
     }
 }
