@@ -4,17 +4,19 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.controller.GameController;
 import racingcar.controller.UserController;
 import racingcar.user.UserObject;
+import racingcar.validator.Validator;
 
 public class InputView {
-    public static int trynum;
-    public static String result;
-    public UserObject[] user;
+    public static int tryNumber;
+    private String userInput;
+    private UserObject[] user;
 
     public InputView() {
-        result = getUserInput();
-        trynum = getTryCount();
-        user = new UserController(result).settingUser();
-        new GameController(user).runGame();
+        userInput = getUserInput();
+        tryNumber = getTryCount();
+        Validator.isValidateNumber();
+        user = new UserController(userInput).initializeUsers();
+        new GameController().runGame(user);
     }
 
     private String getUserInput() {
