@@ -14,7 +14,7 @@ public class Application {
         // model 생성
         List<Car> cars = new ArrayList<>();
         Set<String> carNamesSet = new HashSet<>();
-        for (String carName : carNameStrings.split(",")) {
+        for (String carName : carNameStrings.split(",", -1)) {
             if (carNamesSet.contains(carName)) {
                 throw new IllegalArgumentException();
             }
