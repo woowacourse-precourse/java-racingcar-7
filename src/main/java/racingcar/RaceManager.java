@@ -29,10 +29,6 @@ public class RaceManager {
         }
     }
 
-    public ArrayList<Car> getCarList() {
-        return cars;
-    }
-
     public ArrayList<String> selectChampion() {
         ArrayList<String> championList = new ArrayList<>();
         int bestScore = 0;
