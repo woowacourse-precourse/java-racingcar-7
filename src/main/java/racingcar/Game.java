@@ -50,6 +50,12 @@ public class Game {
             car.moveCar();
     }
 
+    void printCars() {
+        for (Car car : cars)
+            car.printCar();
+        System.out.println();
+    }
+
     public Game(){
         List<String> carNames = readCarName();
         createCars(carNames);
