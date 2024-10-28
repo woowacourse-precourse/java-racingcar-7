@@ -42,4 +42,11 @@ public class RacingGame {
         cars.sort(Car::compareTo);
         return cars.getFirst().getPosition();
     }
+
+    public List<Car> getWinners() {
+        int maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
+    }
 }
