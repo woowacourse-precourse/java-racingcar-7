@@ -10,16 +10,25 @@ public class RaceController {
 	private RaceService raceService;
 
 	public void start() {
-		String carNames = InputView.getCarNames();
-		Validator.validateCarNames(carNames);
-
-		int attemptNumber = InputView.getAttemptNumber();
-		Validator.validateAttemptNumber(attemptNumber);
+		String carNames = getCarNames();
+		int attemptNumber = getAttemptNumber();
 
 		OutputView.raceResultGuide();
 		this.raceService = new RaceService(Delimiter.COMMA, carNames, attemptNumber);
 		raceService.runRace();
 
 		OutputView.winners(raceService.getWinners());
+	}
+
+	private String getCarNames() {
+		String carNames = InputView.getCarNames();
+		Validator.validateCarNames(carNames);
+		return carNames;
+	}
+
+	private int getAttemptNumber() {
+		int attemptNumber = InputView.getAttemptNumber();
+		Validator.validateAttemptNumber(attemptNumber);
+		return attemptNumber;
 	}
 }
