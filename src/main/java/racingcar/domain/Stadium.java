@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +15,9 @@ public class Stadium {
     public List<String> updateCarPositions() {
         List<String> scores = new ArrayList<>();
         for (Car car : cars) {
-            if (car.isForwardMovable()) {
-                car.addScore();
-            }
+            car.moveIfPossible(Randoms.pickNumberInRange(0, 9));
             scores.add(car.currentScore());
         }
-
         return scores;
     }
 

@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.vo.ExceptionMessage;
 
 public class Car {
@@ -19,12 +18,14 @@ public class Car {
         this.moveCount = DEFAULT_MOVE_COUNT;
     }
 
-    public void addScore() {
-        this.moveCount++;
+    public void moveIfPossible(int number) {
+        if (isForwardMovable(number)) {
+            this.moveCount++;
+        }
     }
 
-    public boolean isForwardMovable(int randomNumber) {
-        return randomNumber >= MINIMUM_MOVE_VALUE;
+    private boolean isForwardMovable(int number) {
+        return number >= MINIMUM_MOVE_VALUE;
     }
 
     public boolean isMoveCountHigher(int maxNum) {
