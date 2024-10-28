@@ -57,6 +57,7 @@ public class Application {
 
         String totalWinner = null;
         for (String targetCar : carArr) {
+            //8-2.큰 값을 가진 사람을 찾아서 따로 저장한다. 
             totalWinner = setWinner(totalLength, map.get(targetCar).length(), targetCar, totalWinner);
         }
         System.out.println("최종 우승자 : "+totalWinner);
@@ -142,5 +143,15 @@ public class Application {
         return totalLength;
     }
 
-
+    //8-2.큰 값을 가진 사람을 찾아서 따로 저장한다.
+    public static String setWinner(Integer totalLength, Integer targetLength, String targetCar, String totalWinner){
+        if (totalLength.equals(targetLength)){
+            if (totalWinner == null){
+                totalWinner = targetCar;
+            } else{
+                totalWinner += (", " + targetCar);
+            }
+        }
+        return totalWinner;
+    }
 }
