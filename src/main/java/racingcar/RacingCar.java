@@ -49,9 +49,8 @@ public class RacingCar {
         Integer max = Collections.max(carMap.values());
         List<String> winnerList = carMap.entrySet()
                 .stream()
-                .filter(o1 -> o1.getValue().equals(max))
-                .map(Map.Entry::getKey)
-                .toList();
+                        .filter(o1 -> o1.getValue().equals(max))
+                                .map(Map.Entry::getKey).toList();
 
         OutputConsole.outputWinnerResult(winnerList);
     }
@@ -80,6 +79,10 @@ public class RacingCar {
 
     private int validateTime(String tryTimesString) {
         int tryTimes;
+
+        if (tryTimesString == null || tryTimesString.isBlank()) {
+            throw new IllegalArgumentException(ErrorSubstance.TRY_TIME_EMPTY_VALUE.getMessage());
+        }
 
         try {
             tryTimes = Integer.parseInt(tryTimesString);
