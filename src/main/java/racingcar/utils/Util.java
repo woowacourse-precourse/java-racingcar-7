@@ -13,6 +13,7 @@ public class Util {
     public static List<String> splitByComma(String input) {
         return Arrays.stream(input.split(","))
                 .map(String::trim)
+                .filter(s -> !s.isEmpty())
                 .collect(Collectors.toList());
     }
 }
