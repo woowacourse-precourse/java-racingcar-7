@@ -23,6 +23,10 @@ public class Car {
         return advanceCount;
     }
 
+    public void setAdvanceCount(int advanceCount) {
+        this.advanceCount = advanceCount;
+    }
+
     public void stop() { }
 
     private void validateName(String name) {

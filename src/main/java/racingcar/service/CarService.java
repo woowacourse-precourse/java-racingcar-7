@@ -27,6 +27,27 @@ public class CarService {
         return carList;
     }
 
+    public String getWinners() {
+        List<String> winners = new ArrayList<>();
+
+        int winnerAdvanceCount = getWinnerAdvanceCount();
+
+        for (Car car : carList) {
+            if (car.getAdvanceCount() == winnerAdvanceCount) {
+                winners.add(car.getName());
+            }
+        }
+
+        return String.join(",", winners);
+    }
+
+    private int getWinnerAdvanceCount() {
+        return carList.stream()
+                .mapToInt(Car::getAdvanceCount)
+                .max()
+                .orElse(0);
+    }
+
     private List<String> splitCarNames(String carNames) {
         if (carNames == null || carNames.trim().isEmpty()) {
             throw new IllegalArgumentException("사용자 입력이 비어 있습니다.");

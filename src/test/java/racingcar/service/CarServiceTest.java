@@ -13,7 +13,6 @@ class CarServiceTest {
     @Test
     void 자동차_리스트_생성_테스트() {
         carService.createCarList("pobi,woni,jun");
-
         List<Car> carList = carService.getCarList();
 
         assertEquals(3, carList.size());
@@ -29,7 +28,6 @@ class CarServiceTest {
     @Test
     void 자동차_리스트_중복이름_미생성_테스트() {
         carService.createCarList("pobi,woni,pobi");
-
         List<Car> carList = carService.getCarList();
 
         assertEquals(2, carList.size());
@@ -52,5 +50,19 @@ class CarServiceTest {
         assertThrows(IllegalArgumentException.class, () -> carService.createCarList("pobi,,jun"));
         assertThrows(IllegalArgumentException.class, () -> carService.createCarList(",woni,jun"));
         assertThrows(IllegalArgumentException.class, () -> carService.createCarList("popobi,woni,jun"));
+    }
+
+    @Test
+    void 우승자_확인_테스트() {
+        carService.createCarList("pobi,woni,jun");
+        List<Car> carList = carService.getCarList();
+
+        carList.get(0).setAdvanceCount(0);
+        carList.get(1).setAdvanceCount(0);
+        carList.get(2).setAdvanceCount(0);
+
+        String winners = carService.getWinners();
+
+        assertEquals("pobi,woni,jun", winners);
     }
 }

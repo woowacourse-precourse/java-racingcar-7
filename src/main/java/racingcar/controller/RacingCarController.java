@@ -22,5 +22,8 @@ public class RacingCarController {
         OutputView.requestAttemptCount();
         int attemptCount = InputView.readAttemptCount();
         racingService.raceStart(attemptCount);
+
+        String winners = carService.getWinners();
+        OutputView.printWinners(winners);
     }
 }

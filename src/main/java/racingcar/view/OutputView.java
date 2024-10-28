@@ -10,7 +10,7 @@ public class OutputView {
     }
 
     public static void printBeginRace() {
-        System.out.print("실행 결과");
+        System.out.print("\n실행 결과");
     }
 
     public static void printRaceStatus(String carName, int advanceCount) {
@@ -19,6 +19,10 @@ public class OutputView {
         for (int i = 0; i < advanceCount; i++) {
             System.out.print("-");
         }
+    }
+
+    public static void printWinners(String winners) {
+        System.out.println("\n최종 우승자 : " + winners);
     }
 
     public static void printNewLine() {
