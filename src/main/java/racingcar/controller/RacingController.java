@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.converter.Converter;
+import racingcar.validator.TryCountValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -24,6 +25,9 @@ public class RacingController {
     private int getTryCount() {
         OutputView.showTryCountInputMessage();
         String input = InputView.inputTryCount();
-        return converter.convert(input);
+
+        int tryCount = converter.convert(input);
+        TryCountValidator.validatePositiveInteger(tryCount);
+        return tryCount;
     }
 }

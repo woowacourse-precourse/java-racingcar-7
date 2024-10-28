@@ -16,4 +16,10 @@ public class TryCountValidator {
             throw new IllegalArgumentException(ErrorMessage.BLANK_INPUT_NOT_ALLOWED.getMessage());
         }
     }
+
+    public static void validatePositiveInteger(int tryCount) {
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT.getMessage());
+        }
+    }
 }
