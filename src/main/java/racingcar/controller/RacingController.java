@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.Iterator;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
@@ -24,20 +25,20 @@ public class RacingController {
 
     public void run() {
         String namesInput = inputView.requestNamesInput();
-
         Cars cars = racingService.createCars(namesInput);
 
         String countInput = inputView.requestCountInput();
         progress(countInput, cars);
 
         Winners winners = racingService.findWinners(cars);
+        finish(winners);
     }
 
     private void progress(String countInput, Cars collection) {
         int count = Parser.parseInt(countInput);
         List<Car> cars = collection.getCars();
 
-        outputView.showGuide();
+        outputView.guideProgress();
         for (int i = 0; i < count; i++) {
             cars.forEach(car -> {
                 car.move(RandomNumberPicker.pick());
@@ -45,5 +46,17 @@ public class RacingController {
             });
             outputView.enter();
         }
+    }
+
+    private void finish(Winners winners) {
+        Iterator<Car> carIterator = winners.cars().iterator();
+
+        outputView.guideFinal();
+        winners.cars().forEach(winner -> {
+            outputView.showWinners(carIterator.next().getName());
+            if (carIterator.hasNext()) {
+                outputView.delimit();
+            }
+        });
     }
 }
