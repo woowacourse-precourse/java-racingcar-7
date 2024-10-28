@@ -27,6 +27,15 @@ public class ValidatorTest {
     }
 
     @Test
+    void 자동차_이름에_중복이_있을_경우_예외_발생() {
+        List<String> carNames = List.of("pobi", "pobi");
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Validator.validateUniqueNames(carNames))
+                .withMessageContaining("자동차 이름에 중복이 포함되면 안됩니다");
+    }
+
+    @Test
     void 시도_횟수가_1보다_작을_경우_예외를_발생() {
         int attemptCount = 0;
 
