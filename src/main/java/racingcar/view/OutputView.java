@@ -9,6 +9,7 @@ import racingcar.model.RacerProgress;
 public class OutputView {
     private static final String PRINT_LOG_PROMPT = "\n실행 결과";
     private static final String PRINT_WINNER_PREFIX = "최종 우승자 : ";
+    private static final String WINNER_SEPARATOR = ", ";
 
     private OutputView() {}
 
@@ -37,6 +38,6 @@ public class OutputView {
         System.out.println(PRINT_WINNER_PREFIX + cars
                 .stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(", ")));
+                .collect(Collectors.joining(WINNER_SEPARATOR)));
     }
 }

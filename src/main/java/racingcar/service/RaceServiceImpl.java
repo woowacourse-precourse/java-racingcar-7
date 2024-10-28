@@ -31,7 +31,7 @@ public class RaceServiceImpl implements RaceService{
 
     @Override
     public void setRaceCars(String carNameInput) {
-        Arrays.stream(carNameInput.split(","))
+        Arrays.stream(carNameInput.split(RaceConstants.NAME_SEPARATOR_REGEX))
                 .map(this::validateNameAndCreatCar)
                 .forEach(carRepository::save);
     }
