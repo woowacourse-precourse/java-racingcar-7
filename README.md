@@ -36,3 +36,4 @@
 7. 우승자 출력
    가장 많이 전진한 자동차(들)를 최종 우승자로 출력한다.
    우승자가 여러 명일 경우, 우승자 이름을 쉼표(,)로 구분하여 출력한다.
+![image](https://github.com/user-attachments/assets/f006cce6-cb10-49a1-90cd-669419c1fcb4)
