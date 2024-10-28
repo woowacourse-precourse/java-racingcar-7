@@ -24,6 +24,27 @@ public class Race {
             }
             System.out.print('\n');
         }
+
+        List<String> winners = findWinners(cars);
+        showFinalWinners(winners);
+
+    }
+
+    private static void showFinalWinners(List<String> winners) {
+        String result = "최종 우승자 : " + String.join(", ", winners);
+        System.out.print(result);
+    }
+
+    private static List<String> findWinners(List<Car> cars) {
+        int maxDistance = cars.stream()
+                .mapToInt(car -> car.getDistance().size())
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getDistance().size() == maxDistance)
+                .map(Car::getName)
+                .toList();
     }
 
     private static void randomlyDecideToMove(Car currentCar) {
