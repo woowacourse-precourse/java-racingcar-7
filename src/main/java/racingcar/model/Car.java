@@ -1,0 +1,27 @@
+package racingcar.model;
+
+public class Car {
+    final private String name;
+    private int advance;
+
+    public Car(String name) {
+        this.name = name;
+        this.advance = 0;
+    }
+
+    public void go(){
+        this.advance += 1;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAdvance() {
+        return advance;
+    }
+
+    public void setAdvance(int advance) {
+        this.advance = advance;
+    }
+}
