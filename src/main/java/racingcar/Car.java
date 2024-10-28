@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private final String name;
     private int location = 0;
@@ -14,10 +16,13 @@ public class Car {
     }
 
     /**
-     * 한 칸 움직입니다.
+     * 0~9 사이의 랜덤한 숫자를 뽑아서, 4 이상이면 한 칸 움직입니다.
      */
-    public void move() {
-        this.location++;
+    public void attemptMove() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) {
+            this.location++;
+        }
     }
 
     /**

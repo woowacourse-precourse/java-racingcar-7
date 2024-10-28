@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -117,10 +116,7 @@ public class RaceControl {
     public void race() {
         for (int i = 0; i < this.trialCount; i++) {
             for(final Car car : this.carList) {
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
-                if (randomNumber >= 4) {
-                    car.move();
-                }
+                car.attemptMove();
             }
 
             this.record(i);
