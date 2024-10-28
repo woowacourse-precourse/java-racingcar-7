@@ -29,6 +29,7 @@ public class InputView {
 		String input = readLine();
 		ArrayList<String> carNames = parser.stringToList(input);
 		validator.checkCarNames(carNames);
+		validator.checkCarCount(carNames);
 		return carNames;
 	}
 
