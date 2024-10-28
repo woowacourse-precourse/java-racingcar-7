@@ -10,7 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.view.InputView;
 
 class InputViewTest {
-
     InputView inputView = new InputView();
 
     @BeforeEach

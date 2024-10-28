@@ -16,7 +16,6 @@ public class Controller {
         this.outputView = outputView;
     }
 
-
     public void run() {
         // 경주 게임에 필요한 정보 사용자 입력 받기
         List<String> carNames = inputView.enterCarNames();
