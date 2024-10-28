@@ -8,7 +8,7 @@ import java.util.Set;
 import racingcar.view.InputView;
 
 public class ValidateInput {
-    private static final int MAX_NAME_LENGTH = 5; // 자동차 이름의 최대 길이
+    private static final int MAX_NAME_LENGTH = 5;
     private static List<String> cars = new ArrayList<>(); // 자동차 이름 목록
 
     public static List<String> name() {
@@ -25,7 +25,7 @@ public class ValidateInput {
         }
 
         String[] splitStr = carNames.split(","); // 입력된 문자열을 쉼표로 분리하여 배열에 저장
-        cars.addAll(Arrays.asList(splitStr)); // 배열 요소를 리스트에 추가
+        cars.addAll(Arrays.asList(splitStr));
 
         for (String car : cars) {
             if (car.length() > MAX_NAME_LENGTH) {
@@ -54,11 +54,11 @@ public class ValidateInput {
             throw new IllegalArgumentException("시도 횟수를 양의 정수로 입력하세요"); // 숫자가 아닌 경우 예외 발생
         }
 
-        int attempts = Integer.parseInt(attemptInput); // 정수로 변환
+        int attempts = Integer.parseInt(attemptInput);
         if (attempts <= 0) {
             throw new IllegalArgumentException("0 초과의 시도 횟수를 입력하세요."); // 0보다 큰 숫자인지 확인
         }
-        return attempts;  // 시도 횟수를 정수로 반환
+        return attempts;
     }
 
     private static boolean isNumeric(String str) {

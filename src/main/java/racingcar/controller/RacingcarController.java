@@ -27,10 +27,10 @@ public class RacingcarController {
     public void race() {
         OutputView.resultOutput();
         for (int i = 0; i < attempts; i++) {
-            moveCars(length, distance);  // length와 distance를 매개변수로 전달
+            moveCars(length, distance);
             OutputView.racingProgressOutput(distance);
         }
-        determineWinners(length, distance);  // length와 distance를 매개변수로 전달
+        determineWinners(length, distance);
     }
 
     public static void moveCars(int length, List<Integer> distance) {
