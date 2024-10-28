@@ -1,8 +1,6 @@
 package racingcar.domain;
 
-import java.util.List;
 import racingcar.service.RandomNumManager;
-import racingcar.validation.NameValidator;
 
 public class RacingGame {
     private final Cars cars;
@@ -18,7 +16,7 @@ public class RacingGame {
     public void executeRound() {
         for (Car car : cars) {
             int randomNum = RandomNumManager.generateRandomNumber();
-            if (RandomNumManager.isGreaterThanThree(randomNum)) {
+            if (RandomNumManager.isSatisfyForwardCondition(randomNum)) {
                 car.moveForward();
             }
         }
