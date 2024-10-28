@@ -4,24 +4,24 @@ public class AttemptCount {
 
     private static final String OUT_OF_RANGE_ERROR_MESSAGE = "1 이상의 숫자를 입력해주세요.";
     private static final int MINIMUM = 0;
-    private final int attemptCount;
+    private final int count;
 
-    public AttemptCount(int attemptCount) {
-        validateAttemptCount(attemptCount);
-        this.attemptCount = attemptCount;
+    public AttemptCount(int count) {
+        validateNumber(count);
+        this.count = count;
     }
 
-    private void validateAttemptCount(int attemptCount) {
-        if (isOutOfRange(attemptCount)) {
+    private void validateNumber(int count) {
+        if (isOutOfRange(count)) {
             throw new IllegalArgumentException(OUT_OF_RANGE_ERROR_MESSAGE);
         }
     }
 
-    private boolean isOutOfRange(int attemptCount) {
-        return attemptCount <= MINIMUM;
+    private boolean isOutOfRange(int count) {
+        return count <= MINIMUM;
     }
 
-    public int getAttemptCount() {
-        return attemptCount;
+    public int getCount() {
+        return count;
     }
 }

@@ -7,8 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
-
-    // 올바르지 않은 이름에 대한 예외 테스트
+    
     @ParameterizedTest
     @ValueSource(strings = {"abcdef", "우아한테크코스", "qwerty", "", " ", "   "})
     void throwExceptionIfNameIsInvalid(String name) {
@@ -16,7 +15,6 @@ public class CarTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 입력한 숫자에 따라서 위치가 제대로 변경되는 지 테스트
     @ParameterizedTest
     @CsvSource({
             "1, 0",

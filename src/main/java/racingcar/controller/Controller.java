@@ -30,7 +30,7 @@ public class Controller {
 
     private void startRace(Race race, AttemptCount attemptCount) {
         outputView.printResultStart();
-        int count = attemptCount.getAttemptCount();
+        int count = attemptCount.getCount();
         IntStream.range(0, count).forEach(i -> {
             race.progress();
             outputView.printRaceStatus(race);

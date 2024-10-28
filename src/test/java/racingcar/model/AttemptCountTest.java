@@ -18,7 +18,7 @@ public class AttemptCountTest {
     void shouldReturnCorrectNumber(int input) {
         AttemptCount attemptCount = new AttemptCount(input);
 
-        Assertions.assertThat(attemptCount.getAttemptCount())
+        Assertions.assertThat(attemptCount.getCount())
                 .isEqualTo(input);
     }
 }
