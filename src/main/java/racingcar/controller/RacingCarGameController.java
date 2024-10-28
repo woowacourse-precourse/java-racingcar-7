@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.dto.CarNameDto;
 import racingcar.model.Car;
 import racingcar.model.Cars;
@@ -30,6 +31,8 @@ public class RacingCarGameController {
         carsMovementProgress(referee, cars);
 
         printWinningCars(cars, referee);
+
+        Console.close();
     }
 
     private void printWinningCars(Cars cars, Referee referee) {
