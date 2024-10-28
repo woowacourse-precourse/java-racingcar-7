@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.iohandler.InputHandler;
 import racingcar.iohandler.OutputHandler;
 
@@ -47,7 +48,8 @@ public class RacingGame {
 
     private void calculateProceedScore(List<Car> cars) {
         for (Car car : cars) {
-            int proceedScore = car.proceed();
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            int proceedScore = car.proceed(randomNumber);
             outputHandler.showCarProceedScore(car, proceedScore);
         }
     }

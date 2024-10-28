@@ -1,7 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class Car {
 
     private final String carName;
@@ -18,8 +16,7 @@ public class Car {
         return new Car(carName);
     }
 
-    public int proceed() {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
+    public int proceed(int randomNumber) {
         if (randomNumber >= 4) {
             score += 1;
         }
