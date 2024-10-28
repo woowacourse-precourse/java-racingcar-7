@@ -6,6 +6,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.racer.movecondition.impl.RandomNumberGenerator;
+import racingcar.domain.round.RoundResult;
+import racingcar.domain.round.RoundSnapshot;
 
 class RacersTest {
 
@@ -16,10 +18,11 @@ class RacersTest {
         Racers racers = Racers.of(List.of("car1"), new RandomNumberGenerator());
 
         // when
-        List<Racer> result = racers.racers();
+        RoundSnapshot result = racers.toRoundSnapshot();
 
         // then
-        assertThat(result.getFirst().getName()).isEqualTo("car1");
+        RoundResult roundResult = racers.toRoundSnapshot().getRoundResult().getFirst();
+        assertThat(roundResult.carName()).isEqualTo("car1");
     }
 
     @Test
@@ -32,8 +35,7 @@ class RacersTest {
         racers.moveCars();
 
         // then
-        List<Racer> result = racers.racers();
-        assertThat(result.getFirst().getPosition()).isOne();
+        assertThat(getRoundResult(racers).carName()).isEqualTo("car1");
     }
 
     @Test
@@ -46,8 +48,13 @@ class RacersTest {
         racers.moveCars();
 
         // then
-        List<Racer> result = racers.racers();
-        assertThat(result.getFirst().getPosition()).isZero();
+        assertThat(getRoundResult(racers).position()).isZero();
+    }
+
+    private RoundResult getRoundResult(Racers racers) {
+        return racers.toRoundSnapshot()
+                .getRoundResult()
+                .getFirst();
     }
 
 }

@@ -5,7 +5,13 @@ import racingcar.domain.racer.movecondition.NumberGenerator;
 import racingcar.domain.round.RoundResult;
 import racingcar.domain.round.RoundSnapshot;
 
-public record Racers(List<Racer> racers) {
+public class Racers {
+
+    private final List<Racer> racers;
+
+    public Racers(List<Racer> racers) {
+        this.racers = racers;
+    }
 
     public static Racers of(List<String> carNames, NumberGenerator numberGenerator) {
         List<Racer> racers = carNames.stream()
