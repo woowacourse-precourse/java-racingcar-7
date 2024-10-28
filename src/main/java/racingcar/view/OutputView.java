@@ -22,11 +22,11 @@ public class OutputView {
 		System.out.println(INPUT_ATTEMPT_NUMBER);
 	}
 
-	public static void raceResultGuide() {
+	public static void runResultGuide() {
 		System.out.println(RACE_RESULT);
 	}
 
-	public static void raceResult(List<Car> cars) {
+	public static void runResult(List<Car> cars) {
 		cars
 			.forEach(car -> System.out.println(car.getName() + SEMI_COLON + HYPHEN.repeat(car.getPosition())));
 		System.out.println();

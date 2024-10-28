@@ -16,7 +16,7 @@ class WinnerTest {
 		RaceService raceService = new RaceService(Delimiter.COMMA, "pobi,woni,jun", 5);
 
 		Assertions.assertRandomNumberInRangeTest(
-			() -> raceService.runRace(),
+			() -> raceService.runResult(),
 			4, 1, 1
 		);
 
@@ -31,7 +31,7 @@ class WinnerTest {
 		RaceService raceService = new RaceService(Delimiter.COMMA, "pobi,woni,jun", 5);
 
 		Assertions.assertRandomNumberInRangeTest(
-			() -> raceService.runRace(),
+			() -> raceService.runResult(),
 			4, 4, 4
 		);
 

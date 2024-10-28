@@ -28,11 +28,11 @@ public class RaceService {
 		return parse.parseToCar(carNames);
 	}
 
-	public void runRace() {
+	public void runResult() {
 		IntStream.range(0, attemptNumber.getAttemptNumber())
 			.forEach(i -> {
 				race.raceOnce();
-				OutputView.raceResult(race.getCars());
+				OutputView.runResult(race.getCars());
 			});
 	}
 
