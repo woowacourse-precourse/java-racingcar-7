@@ -4,9 +4,10 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.view.enums.Constants;
 
-public class ResultView {
+public class ResultView implements ResultViewInterface {
 
-  public static void printRoundResult(List<Car> cars) {
+  @Override
+  public void printRoundResult(List<Car> cars) {
     System.out.println();
     for (Car car : cars) {
       printCarResult(car);
@@ -21,12 +22,14 @@ public class ResultView {
     System.out.println();
   }
 
-  public static void printWinners(List<Car> winners) {
+  @Override
+  public void printWinners(List<Car> winners) {
     System.out.println();
     if (winners.size() == 1) {
       System.out.println(Constants.FINAL_RESULT_MESSAGE.getMessage() + winners.get(0).getName());
     } else {
-      String winnerNames = String.join(", ", winners.stream().map(Car::getName).toArray(String[]::new));
+      String winnerNames = String.join(", ",
+          winners.stream().map(Car::getName).toArray(String[]::new));
       System.out.println(Constants.FINAL_RESULT_MESSAGE.getMessage() + winnerNames);
     }
   }
