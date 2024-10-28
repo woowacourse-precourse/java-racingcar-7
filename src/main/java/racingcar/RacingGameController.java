@@ -21,7 +21,6 @@ public class RacingGameController {
 
         output.printGameStart();
         output.printRacingProgress(game, cars);
-
         List<String> winners = game.determineWinners(game.getPositions());
         output.printWinner(winners);
     }
@@ -29,15 +28,22 @@ public class RacingGameController {
     private Cars createRacingCars() {
         String carNamesString = input.readCarNames();
         Cars cars = new Cars();
-        Set<String> distinctNames = new HashSet<>();
         String[] carNames= carNamesString.split(",");
+        validate(carNames);
+        cars.init(carNames);
+        return cars;
+    }
+
+    private void validate(String[] carNames) {
+        if (carNames.length == 1) {
+            throw new IllegalArgumentException("참가자는 쉼표(,)를 기준으로 2명 이상이어야 합니다.");
+        }
+        Set<String> distinctNames = new HashSet<>();
         for (String carName : carNames) {
             if (isDuplicate(carName, distinctNames)) {
                 throw new IllegalArgumentException(String.format("중복된 참가자(%s)가 존재합니다.", carName));
             }
         }
-        cars.init(carNames);
-        return cars;
     }
 
     private boolean isDuplicate(String name, Set<String> distinctNames) {
