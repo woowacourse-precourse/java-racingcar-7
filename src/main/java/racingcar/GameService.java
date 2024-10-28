@@ -13,7 +13,7 @@ public class GameService {
     public void setCarsNames(String input) {
 
         try {
-            InputValidator(input);
+            inputValidator(input);
             String delimiter = ",";
             List<String> splitNames = List.of(input.split(delimiter));
             nameLengthValidator(splitNames);
@@ -29,7 +29,7 @@ public class GameService {
     public void setNumberOfRounds(String input) {
 
         try {
-            InputValidator(input);
+            inputValidator(input);
             int round = Integer.parseInt(input);
             gameRepository.setRound(round);
         } catch (Exception e) {
@@ -102,7 +102,7 @@ public class GameService {
         return String.join(",", gameRepository.getWinner());
     }
 
-    private void InputValidator(String input) {
+    private void inputValidator(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
         }
