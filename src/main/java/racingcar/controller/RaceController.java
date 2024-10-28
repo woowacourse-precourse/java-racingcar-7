@@ -27,6 +27,8 @@ public class RaceController {
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
             throw e;
+        } finally {
+            inputView.close();
         }
     }
 }
