@@ -1,5 +1,9 @@
 package racingcar.view;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static racingcar.constant.ExceptionMessage.INVALID_COUNT_RANGE;
+import static racingcar.constant.ExceptionMessage.INVALID_COUNT_TYPE;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -13,10 +17,24 @@ public class InputView {
     }
 
     public String getStringInput() {
-        return Console.readLine();
+        return readLine();
     }
 
     public int getIntegerInput() {
-        return Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        validateIntegerInput(input);
+
+        return Integer.parseInt(input);
+    }
+
+    private void validateIntegerInput(String input) {
+        if (input.matches("0+")) {
+            throw new IllegalArgumentException(INVALID_COUNT_RANGE.getValue());
+        }
+        for (char c : input.toCharArray()) {
+            if (c - '0' < 0 || c - '9' > 0) {
+                throw new IllegalArgumentException(INVALID_COUNT_TYPE.getValue());
+            }
+        }
     }
 }
