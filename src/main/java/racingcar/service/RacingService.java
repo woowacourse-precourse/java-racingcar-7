@@ -18,8 +18,14 @@ public class RacingService {
 
         for (int i = 0; i < attempts; i++) {
             race.proceed();
+            printRaceStatus(race.getCars());
         }
 
         return new RaceResult(race.getCars());
+    }
+
+    private void printRaceStatus(List<Car> cars) {
+        cars.forEach(car -> System.out.println(car.toString()));
+        System.out.println();
     }
 }
