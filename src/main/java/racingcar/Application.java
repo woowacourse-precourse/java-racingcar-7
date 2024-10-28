@@ -48,6 +48,9 @@ class Racingcar {
             if (carName.length() > NAME_LENGTH_LIMIT){
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
+            if (carName.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름을 입력해야합니다.");
+            }
             carMove.put(carName, 0);
         }
     }
