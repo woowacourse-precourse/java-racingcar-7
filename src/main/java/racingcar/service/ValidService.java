@@ -1,6 +1,6 @@
-package racingcar.valid;
+package racingcar.service;
 
-public class Valid {
+public class ValidService {
 
     public void valid(String s){
         if (s.length()>5){
