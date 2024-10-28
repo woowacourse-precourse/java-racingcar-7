@@ -6,13 +6,15 @@ import java.util.ArrayList;
 
 public class RacingGame {
     InputView inputView;
-    InputParser inputParser;
     OutputView outputView;
+    InputParser inputParser;
+    Referee referee;
 
-    public RacingGame(InputView inputView, InputParser inputParser, OutputView outputView) {
+    public RacingGame(InputView inputView, OutputView outputView, InputParser inputParser, Referee referee) {
         this.inputView = inputView;
-        this.inputParser = inputParser;
         this.outputView = outputView;
+        this.inputParser = inputParser;
+        this.referee = referee;
     }
 
     public void start() {
@@ -26,6 +28,7 @@ public class RacingGame {
             determineCarsMovement(cars);
             outputView.printMovementResult(cars);
         }
+        ArrayList<Car> winners = referee.selectWinners(cars);
     }
 
     private void determineCarsMovement(ArrayList<Car> cars) {
