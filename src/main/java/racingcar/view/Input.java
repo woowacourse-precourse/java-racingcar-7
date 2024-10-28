@@ -17,4 +17,15 @@ public class Input {
 
         return makeCarList(carNameInput);
     }
+
+    private void validateCarNameInput(String carNameInput) {
+        for (final String carName : carNameInput.split(",")) {
+            if (carName.isBlank()) {
+                throw new IllegalArgumentException("자동차 이름을 채워서 입력해주세요.");
+            }
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+        }
+    }
 }
