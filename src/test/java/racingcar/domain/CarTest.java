@@ -1,7 +1,12 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     private Car car;
@@ -43,14 +48,11 @@ public class CarTest {
     @DisplayName("현재 위치만큼 하이픈을 생성한다")
     @Test
     void createMoveMark() {
-        // given
         car.move(4); // position 1
         car.move(4); // position 2
 
-        // when
         String moveMarks = car.getMoveHyphen();
 
-        // then
         assertThat(moveMarks).isEqualTo("--");
     }
 }
