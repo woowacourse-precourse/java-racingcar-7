@@ -21,7 +21,7 @@ public class RacingService {
     }
 
     public void printCarStatus(List<Car> cars) {
-        for(Car car : cars) {
+        for (Car car : cars) {
             car.pritntStatus();
         }
         System.out.println();

@@ -13,7 +13,7 @@ public class Validator {
         for (String car : carNames) {
             validateCarName(car);
         }
-        }
+    }
 
     private void validateCarName(String carName) {
         if (carName.isBlank()) {
@@ -23,11 +23,12 @@ public class Validator {
             throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR);
         }
     }
+
     public void validateInputGameCount(String gameCount) {
-        if(!isValidNumber(gameCount)) {
+        if (!isValidNumber(gameCount)) {
             throw new IllegalArgumentException(GAME_COUNT_FORMAT_ERROR);
         }
-        if(Integer.parseInt(gameCount) < 0) {
+        if (Integer.parseInt(gameCount) < 0) {
             throw new IllegalArgumentException(GAME_COUNT_POSITIVE_ERROR);
         }
     }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import racingcar.utils.Validator;
 
 public class InputView {
-    private Validator validator;
+    private final Validator validator;
 
     public InputView() {
         this.validator = new Validator();

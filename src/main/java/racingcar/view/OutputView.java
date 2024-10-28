@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 
@@ -10,7 +9,7 @@ public class OutputView {
 
         for (int i = 0; i < winners.size(); i++) {
             winners.get(i).printWinner();
-            if (i < winners.size() -1 ) {
+            if (i < winners.size() - 1) {
                 System.out.print(", ");
             }
         }
