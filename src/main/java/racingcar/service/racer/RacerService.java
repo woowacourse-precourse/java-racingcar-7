@@ -8,6 +8,8 @@ import racingcar.service.constant.RacingRules;
 public class RacerService {
 
     private Integer engineTorque() {
-        return pickNumberInRange(0,9);
+        return pickNumberInRange(
+                RacingRules.TORQUE_RANGE_MIN.intStatus()
+                ,RacingRules.TORQUE_RANGE_MAX.intStatus());
     }
 }

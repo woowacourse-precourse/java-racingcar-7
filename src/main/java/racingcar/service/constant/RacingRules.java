@@ -4,6 +4,10 @@ public enum RacingRules {
 
     CAR_NAME_LENGTH_LIMIT(5L),
 
+    ENOUGH_TORQUE_OUTPUT(4L),
+    TORQUE_RANGE_MIN(0L),
+    TORQUE_RANGE_MAX(9L),
+
     BASIC_ENGINE_PERFORMANCE_REGULATION(1L),
     BASIC_OIL_CONSUMPTION_REGULATION(1L),
 
@@ -17,5 +21,9 @@ public enum RacingRules {
 
     public Long status() {
         return status;
+    }
+
+    public Integer intStatus() {
+        return status.intValue();
     }
 }
