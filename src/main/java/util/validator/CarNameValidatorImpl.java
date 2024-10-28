@@ -3,8 +3,6 @@ package util.validator;
 import java.util.List;
 import java.util.Arrays;
 
-import static java.util.regex.Pattern.matches;
-
 public class CarNameValidatorImpl implements Validator<String> {
     @Override
     public void validate(String input) {
@@ -39,4 +37,3 @@ public class CarNameValidatorImpl implements Validator<String> {
         }
     }
 }
-
