@@ -29,6 +29,7 @@ public class GameController {
             showResults(cars);
         } catch (IllegalArgumentException e) {
             outputView.printError(e.getMessage());
+            throw e;
         }
     }
 
