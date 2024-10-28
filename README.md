@@ -69,8 +69,8 @@
 ### support
 
 - `Splitter`: 문자열 분리 기능
-- `NumberComparable`: 숫자 비교 연산
-- `RandomNumberGenerator`: 난수 생성
+- `NumberComparable`/`IntegerComparable`: 숫자 비교 연산
+- `RandomNumberGenerator`/`RandomIntegerGenerator`: 난수 생성
 - `StringRepeater`: 문자열 반복 출력 기능
 
 ### exception
