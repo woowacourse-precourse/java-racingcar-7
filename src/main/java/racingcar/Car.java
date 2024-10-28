@@ -8,7 +8,7 @@ public class Car implements Vehicle {
 
     public Car(String name, Engine engine) {
         validateName(name);
-        
+
         this.name = name;
         this.engine = engine;
     }
