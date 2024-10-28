@@ -22,12 +22,10 @@ public class Car {
         return CarName;
     }
 
-    public boolean move() {
+    public void move() {
         if (engine.isEngineRunning()) {
             position++;
-            return true;
         }
-        return false;
     }
 
     public int getPosition() {
