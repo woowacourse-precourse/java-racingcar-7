@@ -12,4 +12,7 @@ public class RacingCarService {
             carList.add(new Car(carName));
         }
     }
+
+    public void startRace() {
+    }
 }

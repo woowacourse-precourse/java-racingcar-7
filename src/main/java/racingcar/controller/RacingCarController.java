@@ -19,5 +19,9 @@ public class RacingCarController {
         tryCount = inputView.inputTryCount();
         carNameList = inputView.splitCarNamesToList(carNames);
         racingCarService.prepareCars(carNameList);
+
+        while (tryCount-- > 0) {
+            racingCarService.startRace();
+        }
     }
 }
