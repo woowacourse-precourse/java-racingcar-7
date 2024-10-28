@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.constant.ErrorMessage.VEHICLE_CANNOT_BE_EMPTY;
 import static racingcar.constant.ErrorMessage.VEHICLE_NAME_CANNOT_BE_DUPLICATE;
 
 class VehiclesTest {
@@ -39,6 +40,31 @@ class VehiclesTest {
                 .extracting(Vehicle::getVehicleName)
                 .containsExactly("pobi", "woni", "jun", "kim m", "lee j");
     }
+
+    @Test
+    @DisplayName("자동차 공백 이름 제외 등록")
+    void 자동차_공백_이름_제외_등록() {
+        //given
+        Vehicles vehicles = new Vehicles("pobi,     ,   woni    ,    ,  jun  ");
+
+        //when
+        //then
+        assertThat(vehicles.getVehicles())
+                .extracting(Vehicle::getVehicleName)
+                .containsExactly("pobi", "woni", "jun");
+    }
+
+    @Test
+    @DisplayName("자동차 공백 이름들 예외")
+    void 자동차_공백_이름들_예외() {
+        //given
+        //when
+        //then
+        assertThatThrownBy(() -> new Vehicles(" ,     ,       ,    "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(VEHICLE_CANNOT_BE_EMPTY);
+    }
+
 
     @Test
     @DisplayName("자동차 이름 중복시 예외 발생")
