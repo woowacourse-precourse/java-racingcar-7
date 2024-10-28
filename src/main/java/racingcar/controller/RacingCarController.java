@@ -1,16 +1,22 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.domain.Race;
 import racingcar.domain.RaceResult;
 import racingcar.model.Car;
-import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingCarController {
-    private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
-    private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final Race race;
+
+    public RacingCarController(InputView inputView, OutputView outputView, Race race) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.race = race;
+    }
 
     public void run() {
         outputView.startMessage();
