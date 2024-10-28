@@ -43,11 +43,11 @@ class IoTest extends NsTest {
     @Test
     @DisplayName("자동차 이름과 1회 움직임 출력을 확인한다")
     void printCarNameAndSingleMove() {
-        Car car = new Car("pobi");
-        Car car2 = new Car("jun");
-        car2.setPosition(1);
-        outputView.printSingleResult(car);
-        outputView.printSingleResult(car2);
+        Car pobi = Car.createDefaultCar("pobi");
+        Car jun = Car.createDefaultCar("jun");
+        jun.setPosition(1);
+        outputView.printSingleResult(pobi);
+        outputView.printSingleResult(jun);
         assertThat(output()).contains("pobi :");
         assertThat(output()).contains("jun : -");
     }

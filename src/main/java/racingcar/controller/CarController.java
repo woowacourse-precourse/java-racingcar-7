@@ -27,8 +27,7 @@ public class CarController {
     }
 
     public Car createSingleCar(String carName) {
-        Car car = new Car(carName);
-        return car;
+        return Car.createDefaultCar(carName);
     }
 
     public List<Car> createAllCars(List<String> carNames) {

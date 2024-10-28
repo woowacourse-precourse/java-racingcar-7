@@ -22,23 +22,23 @@ class RaceControllerTest extends NsTest {
     @Test
     @DisplayName("단독 우승자를 선정한다")
     void selectSingleWinner() {
-        Car car = new Car("pobi");
-        Car car2 = new Car("jun");
-        car2.setPosition(1);
+        Car pobi = Car.createDefaultCar("pobi");
+        Car jun = Car.createDefaultCar("jun");
+        jun.setPosition(1);
         List<Car> cars = new ArrayList<>();
-        cars.add(car);
-        cars.add(car2);
+        cars.add(pobi);
+        cars.add(jun);
         assertThat(raceController.selectWinners(cars)).isEqualTo(List.of("jun"));
     }
 
     @Test
     @DisplayName("공동 우승자를 출력한다")
     void selectMultiWinners() {
-        Car car = new Car("pobi");
-        Car car2 = new Car("jun");
+        Car pobi = Car.createDefaultCar("pobi");
+        Car jun = Car.createDefaultCar("jun");
         List<Car> cars = new ArrayList<>();
-        cars.add(car);
-        cars.add(car2);
+        cars.add(pobi);
+        cars.add(jun);
         assertThat(raceController.selectWinners(cars)).isEqualTo(List.of("pobi", "jun"));
     }
 
