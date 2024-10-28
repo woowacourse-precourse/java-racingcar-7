@@ -59,6 +59,7 @@ public class Cars {
 
     private void validateUniqueCarNames(List<String> carNameList) {
         Set<String> carNameSet = new HashSet<>(carNameList);
+
         if (carNameSet.size() != carNameList.size()) {
             throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
         }
