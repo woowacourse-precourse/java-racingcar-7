@@ -30,7 +30,9 @@ class ApplicationTest extends NsTest {
                     run("pobi,woni", "3");
                     assertThat(output()).contains("pobi : --", "woni : --", "최종 우승자 : pobi,woni");
                 },
-                MOVING_FORWARD, STOP, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+                MOVING_FORWARD, STOP,
+                STOP, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD
         );
 
     }
@@ -47,6 +49,30 @@ class ApplicationTest extends NsTest {
     void 시도_횟수가_숫자인지_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_한대_입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수_0_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수_공백_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", " "))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
