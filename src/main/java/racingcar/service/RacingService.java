@@ -48,7 +48,7 @@ public class RacingService {
     }
 
     public void addRacingCar(String inputCarNames) {
-        String noBlankCarNames = getNotBlank(inputCarNames);
+        String noBlankCarNames = getNoneBlank(inputCarNames);
         List<String> carNames = StringSplitter.splitByComma(noBlankCarNames);
         enoughCars(carNames);
         carNames.stream().filter(this::carNameValidate)
@@ -101,7 +101,7 @@ public class RacingService {
         }
     }
 
-    private String getNotBlank(String inputCarNames) {
+    private String getNoneBlank(String inputCarNames) {
         return inputCarNames.replaceAll(" ", "");
     }
 
