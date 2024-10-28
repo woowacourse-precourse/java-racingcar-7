@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Number {
+public class RandomGenerator {
     private static final int MIN_RANDOM_NUMBER_RANGE = 0;
     private static final int MAX_RANDOM_NUMBER_RANGE = 9;
 

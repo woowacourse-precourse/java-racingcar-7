@@ -1,14 +1,14 @@
 package racingcar.service;
 
 import racingcar.domain.*;
-import racingcar.domain.Number;
+import racingcar.domain.RandomGenerator;
 
 public class GameService {
-    private final Number number;
+    private final RandomGenerator randomGenerator;
     private final GameRounds gameRounds;
 
     public GameService() {
-        this.number = new Number();
+        this.randomGenerator = new RandomGenerator();
         this.gameRounds = new GameRounds();
     }
 
@@ -25,7 +25,7 @@ public class GameService {
 
     private void playOneRound(Cars cars) {
         for (Car car : cars.getCarList()) {
-            car.setDistance(number.getRandomNumber());
+            car.setDistance(randomGenerator.getRandomNumber());
         }
         gameRounds.addGameRound(cars);
     }
