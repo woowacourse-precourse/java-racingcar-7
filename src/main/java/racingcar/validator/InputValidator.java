@@ -10,6 +10,10 @@ public class InputValidator {
             throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
         }
 
+        if (carNames.length < 2) {
+            throw new IllegalArgumentException("경주를 위해서는 최소 2대 이상의 자동차가 필요합니다.");
+        }
+
         for (String name : carNames) {
             validateCarName(name);
         }
