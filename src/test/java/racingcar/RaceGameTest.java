@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,7 +12,6 @@ import java.math.BigInteger;
 import java.util.Scanner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 
 public class RaceGameTest {
 
@@ -164,5 +164,27 @@ public class RaceGameTest {
         assertEquals(carList[0].carName, carNamesList[0]);
         assertEquals(carList[1].carName, carNamesList[1]);
         assertEquals(carList[2].carName, carNamesList[2]);
+    }
+
+    @Test
+    @DisplayName("경기 1회 진행하기")
+    void playOneRoundTest(){
+        RaceGame raceGame = new RaceGame();
+        RacingCar car1 = new RacingCar();
+        RacingCar car2 = new RacingCar();
+        RacingCar[] carList = {car1, car2};
+        car1.forwardCondition = true;
+        car2.forwardCondition = false;
+
+        raceGame.playOneRound(carList);
+        raceGame.playOneRound(carList);
+
+        assertAll(
+                () -> assertEquals("__", car1.currentLocation),
+                () -> assertEquals(2, car1.currentDistance),
+                () -> assertEquals("", car2.currentLocation),
+                () -> assertEquals(0, car2.currentDistance)
+        );
+
     }
 }
