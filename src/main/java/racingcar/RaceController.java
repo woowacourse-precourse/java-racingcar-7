@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceController {
     private final List<Car> cars = new ArrayList<>();
@@ -27,12 +28,27 @@ public class RaceController {
             playRound();
             OutputView.printRaceProgress(cars);
         }
+        announceWinners();
     }
 
     public void playRound() {
         for (Car car : cars) {
             car.moveIfPossible();
         }
+    }
+
+    public void announceWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        OutputView.printWinners(winners);
     }
 
     public List<Car> getCars() {
