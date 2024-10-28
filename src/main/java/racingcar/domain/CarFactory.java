@@ -43,11 +43,11 @@ public class CarFactory {
         return !inputCarNames.matches(CAR_NAMES_REGEX);
     }
 
-    private String[] splitText(String inputCarNames) {
-        return inputCarNames.split(COMMA);
+    private List<String> splitText(String inputCarNames) {
+        return Arrays.stream(inputCarNames.split(COMMA)).toList();
     }
 
-    private List<String> removeSpaces(String[] carNames) {
-        return Arrays.stream(carNames).map(String::strip).toList();
+    private List<String> removeSpaces(List<String> carNames) {
+        return carNames.stream().map(String::strip).toList();
     }
 }
