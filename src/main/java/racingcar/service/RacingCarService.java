@@ -9,9 +9,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RacingCarService {
+    public static Map<String, Integer> carMap = new HashMap<>();
+
 
     public static Map<String, Integer> raceAllRound(List<String> carNameList, int roundCount){
-        Map<String, Integer> carMap = initCarList(carNameList, roundCount);
+        Map<String, Integer> carMap = initCarList(carNameList);
 
         for(int i=0; i<roundCount; i++) {
             carMap = raceOneRound(carMap);
@@ -20,9 +22,7 @@ public class RacingCarService {
         return carMap;
     }
 
-    public static Map<String, Integer> initCarList(List<String> carNameList, int roundCount){
-        Map<String, Integer> carMap = new HashMap<>();
-
+    public static Map<String, Integer> initCarList(List<String> carNameList){
         for(final String carName: carNameList){
             carMap.put(carName, 0);
         }
