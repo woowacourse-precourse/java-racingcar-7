@@ -61,32 +61,32 @@ n개의 자동차 이름들* 을 의미합니다.
 *기능 외의 요구 사항* 을 의미합니다.
 
 - **<프로그래밍 요구 사항>** 관련
-  - [ ] JDK 21 사용
-  - [ ] `System.exit()` 호출 금지
-  - [ ] 요구 사항에서 명시하지 않은 파일 및 패키지 변경 금지
-  - [ ] [Java Style Guide](https://github.com/woowacourse/woowacourse-docs/blob/main/styleguide/java) 준수
-  - [ ] indent depth는 2까지 허용
-  - [ ] 3항 연산자 금지
-  - [ ] 함수 또는 메서드는 한 가지 일만 하도록 작게 구현
+  - [x] JDK 21 사용
+  - [x] `System.exit()` 호출 금지
+  - [x] 요구 사항에서 명시하지 않은 파일 및 패키지 변경 금지
+  - [x] [Java Style Guide](https://github.com/woowacourse/woowacourse-docs/blob/main/styleguide/java) 준수
+  - [x] indent depth는 2까지 허용
+  - [x] 3항 연산자 금지
+  - [x] 함수 또는 메서드는 한 가지 일만 하도록 작게 구현
   - [ ] JUnit 5와 AssertJ를 이용한 테스트 구현
   - `camp.nextstep.edu.missionutils`에서 제공하는 API로 입력 및 랜덤 처리
     - [x] 입력은 `Console.readLine()` 사용
     - [x] 랜덤은 `Randoms.pickNumberInRange()` 사용
 - **<1주차 공통 피드백>** 관련
   - Git 관련
-    - [ ] 기본적인 Git 명령어 숙지
-    - [ ] Git으로 관리할 자원 고려
-    - [ ] 의미 있는 커밋 메시지
-    - [ ] 커밋 메시지에 이슈 또는 PR 번호 포함 금지
-    - [ ] PR 생성 후 닫지 않는다(닫을 필요가 없다)
-  - [ ] 디버깅 시 `sout` 말고 디버거 사용
+    - 기본적인 Git 명령어 숙지
+    - Git으로 관리할 자원 고려
+    - 의미 있는 커밋 메시지
+    - 커밋 메시지에 이슈 또는 PR 번호 포함 금지
+    - PR 생성 후 닫지 않는다(닫을 필요가 없다)
+  - 디버깅 시 `sout` 말고 디버거 사용
   - 코드 작성 관련
-    - [ ] 이름을 통해 의도 드러내기
-    - [ ] 축약 금지
-    - [ ] 코딩 컨벤션의 올바른 공백 준수
-    - [ ] 의미 있는 공백 라인
-    - [ ] 스페이스와 탭 중 하나만 사용
-    - [ ] 의미 없는 주석 금지
-    - [ ] 코드 포매팅 사용
-    - [ ] Java 기본 API 적극 활용
-    - [ ] 배열 대신 컬렉션(`List`, `Set`, `Map`) 사용
+    - 이름을 통해 의도 드러내기
+    - 축약 금지
+    - 코딩 컨벤션의 올바른 공백 준수
+    - 의미 있는 공백 라인
+    - 스페이스와 탭 중 하나만 사용
+    - 의미 없는 주석 금지
+    - 코드 포매팅 사용
+    - Java 기본 API 적극 활용
+    - 배열 대신 컬렉션(`List`, `Set`, `Map`) 사용
