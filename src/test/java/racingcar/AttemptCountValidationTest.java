@@ -7,6 +7,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class AttemptCountValidationTest {
+    @Test
+    @DisplayName("올바른 양의 정수 입력 시 정상적으로 시도 횟수를 반환")
+    void testValidPositiveIntegerInput() {
+        String input = "3";
+        int result = Application.validateAttemptCount(input);
+        assertEquals(3, result);
+    }
 
     @Test
     @DisplayName("빈 문자열이 입력된 경우 예외 발생")
@@ -30,9 +37,15 @@ public class AttemptCountValidationTest {
     }
 
     @Test
-    @DisplayName("0 이하의 값이 입력된 경우 예외 발생")
-    void testNonPositiveIntegerInput() {
+    @DisplayName("0이 입력된 경우 예외 발생")
+    void testZeroInput() {
         String input = "0";
+        assertThrows(IllegalArgumentException.class, () -> Application.validateAttemptCount(input));
+    }
+    @Test
+    @DisplayName("음수 입력 시 예외 발생")
+    void testNegativeIntegerInput() {
+        String input = "-5";
         assertThrows(IllegalArgumentException.class, () -> Application.validateAttemptCount(input));
     }
 
