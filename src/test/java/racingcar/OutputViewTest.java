@@ -25,11 +25,14 @@ class OutputViewTest {
                 new Car("jun", 1)
         );
 
-        outputView.printRoundResult(carList);
+        List<RoundHistory> roundHistories = List.of(RoundHistory.saveCarPosition(carList));
 
-        String expectedResult = "pobi : ---\n" +
+        outputView.printRoundResults(roundHistories);
+
+        String expectedResult = "\n실행 결과\n" +
+                                "pobi : ---\n" +
                                 "woni : --\n" +
-                                "jun : -\n";
+                                "jun : -\n\n";
         assertThat(outputStream.toString()).isEqualTo(expectedResult);
     }
 
