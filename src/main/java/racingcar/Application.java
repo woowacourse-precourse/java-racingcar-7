@@ -34,6 +34,10 @@ public class Application {
             carArray.add(new Car(carName));
         }
 
+        if(carArray.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
         return carArray;
     }
 }
