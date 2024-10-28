@@ -21,6 +21,10 @@ public class InputValidator {
         }
     }
 
+    void validateNumber(int number) {
+        numberValidator.inputPositiveNumber(number);
+    }
+
     private void checkCarName(String carName) {
         carNameValidator.inputMoreThanOneCharacter(carName);
         carNameValidator.inputNotMoreThanFiveCharacter(carName);
