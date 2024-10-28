@@ -17,6 +17,16 @@ class NameValidatorTest {
     }
 
     @Test
+    @DisplayName("빈 리스트를 제공한 경우 IllegalArgumentException을 throw한다.")
+    void emptyPlayerNameList() {
+        List<String> players = List.of();
+        Assertions.assertThatThrownBy(
+                        () -> NameValidator.validatePlayerName(players))
+                .isInstanceOf(IllegalArgumentException.class
+                ).hasMessage(ExceptionMessage.INVALID_PLAYER_NAME.getMessage());
+    }
+
+    @Test
     @DisplayName("길이가 0 또는 5 초과인 경우 IllegalArgumentException을 throw한다.")
     void invalidatePlayerName() {
         List<String> players = List.of("a", "aabbcc");
