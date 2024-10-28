@@ -29,7 +29,17 @@ public class Application {
             }
         }
 
+        // 최고거리 체크
+        int max = 0;
+
+        for(int i=0; i<move.length; i++){
+            if(move[j] > max){
+                max = move[j];
+            }
+        }
         
+
+
     }
 
 
