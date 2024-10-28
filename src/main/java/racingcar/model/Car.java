@@ -16,7 +16,7 @@ public class Car {
     }
 
     public void attemptAdvance() {
-        if (Randoms.pickNumberInRange(START_NUMBER, END_NUMBER) >= MIN_NUMBER) {
+        if (pickNumber() >= MIN_NUMBER) {
             advanceCount++;
         }
     }
@@ -27,5 +27,9 @@ public class Car {
 
     public int getAdvanceCount() {
         return advanceCount;
+    }
+
+    private int pickNumber() {
+        return Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
     }
 }
