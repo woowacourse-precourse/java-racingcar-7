@@ -53,10 +53,6 @@ public class Racing {
         return max;
     }
 
-    public Map<Long, List<Record>> getResult() {
-        return result;
-    }
-
     public long getAttemptNumber() {
         return this.attemptNumber;
     }
