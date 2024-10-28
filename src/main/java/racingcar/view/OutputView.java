@@ -7,6 +7,11 @@ import racingcar.car.service.dto.WinnerRespDto;
 import racingcar.constant.View;
 
 public class OutputView {
+	private static final String DISTANCE = "-";
+	private static final String DELIMITER = ", ";
+	private static final String CAR_DISTANCE_DELIMITER = " : ";
+	private static final String NEW_LINE = "\n";
+
 	private OutputView() {
 	}
 
@@ -22,9 +27,9 @@ public class OutputView {
 		StringBuilder sb = new StringBuilder();
 		moveResults.forEach(moveResult -> {
 			sb.append(moveResult.getCarName())
-				.append(" : ")
-				.append("-".repeat(moveResult.getPosition()))
-				.append("\n");
+				.append(CAR_DISTANCE_DELIMITER)
+				.append(DISTANCE.repeat(moveResult.getPosition()))
+				.append(NEW_LINE);
 		});
 		System.out.println(sb);
 	}
@@ -33,6 +38,6 @@ public class OutputView {
 		List<String> winnerNames = winners.stream()
 			.map(winner -> String.valueOf(winner.getWinner()))
 			.toList();
-		System.out.println(View.WINNER_OUTPUT.getConstant() + String.join(", ", winnerNames));
+		System.out.println(View.WINNER_OUTPUT.getMessage() + String.join(DELIMITER, winnerNames));
 	}
 }

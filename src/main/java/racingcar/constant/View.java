@@ -5,13 +5,13 @@ public enum View {
 	COUNT_INPUT("시도할 횟수는 몇 회인가요?"),
 	WINNER_OUTPUT("최종 우승자 : ");
 
-	private final String constant;
+	private final String message;
 
 	View(String constant) {
-		this.constant = constant;
+		this.message = constant;
 	}
 
-	public String getConstant() {
-		return constant;
+	public String getMessage() {
+		return message;
 	}
 }

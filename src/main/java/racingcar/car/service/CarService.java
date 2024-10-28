@@ -1,5 +1,7 @@
 package racingcar.car.service;
 
+import static racingcar.car.constant.RacingLimit.*;
+
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -39,7 +41,7 @@ public class CarService {
 	public List<CarMoveRespDto> moveCars() {
 		List<Car> cars = carRepository.findAll();
 		cars.forEach(car -> {
-			if (4 <= Randoms.pickNumberInRange(0, 9)) {
+			if (MIN_MOVE_NUMBER.getNumber() <= Randoms.pickNumberInRange(RANDOM_MIN.getNumber(), RANDOM_MAX.getNumber())) {
 				car.move();
 			}
 		});
@@ -56,12 +58,12 @@ public class CarService {
 	}
 
 	private void isValidName(String name) {
-		if (name.length() > 5)
-			throw new IllegalArgumentException("자동차의 이름이 5자를 넘습니다.");
+		if (name.length() > MAX_CAR_NAME_LENGTH.getNumber())
+			throw new IllegalArgumentException(ErrorStatus.CAR_NAME_RANGE.getMessage());
 	}
 
 	public void isPossibleCount(Integer count) {
-		if (count >= 10000 || count <= 0)
+		if (count > MAX_COUNT.getNumber() || count < MIN_COUNT.getNumber())
 			throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
 	}
 }

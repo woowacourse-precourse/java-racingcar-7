@@ -1,5 +1,6 @@
 package racingcar.car.domain;
 
+import racingcar.car.constant.RacingLimit;
 import racingcar.car.service.dto.CarCreateReqDto;
 
 public class Car {
@@ -9,7 +10,7 @@ public class Car {
 
 	private Car(String name) {
 		this.name = name;
-		this.position = 0;
+		this.position = RacingLimit.START_POINT.getNumber();
 	}
 
 	public String getName() {
@@ -21,7 +22,7 @@ public class Car {
 	}
 
 	public void move() {
-		this.position += 1;
+		this.position += RacingLimit.MOVING_FORWARD.getNumber();
 	}
 
 	public static Car from(CarCreateReqDto reqDto) {
