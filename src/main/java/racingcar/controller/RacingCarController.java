@@ -20,11 +20,13 @@ public class RacingCarController {
     public void startGame() {
         handleInputCarNames();
         handleInputMoveCount();
+
         OutputView.printRunMessage();
         for (int i = 0; i < service.getMoveCount(); i++) {
             service.playGame();
             OutputView.printGameStatus(service.getCarList().getCars());
         }
+
         service.determineWinner();
         OutputView.printGameResult(service.getWinners());
     }
