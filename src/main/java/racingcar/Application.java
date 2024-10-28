@@ -12,6 +12,7 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int attemptCount = getAttemptCount();
+        runRace(cars_name, attemptCount);
 
     }
 
@@ -76,6 +77,27 @@ public class Application {
             throw new IllegalArgumentException("시도 횟수는 정수여야 합니다.");
         }
     }
+
+    // 자동차 경주 실행 메서드
+    public static void runRace(List<String> carNames, int attemptCount) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
+
+        // 경주 횟수만큼 라운드 반복
+        for (int i = 0; i < attemptCount; i++) {
+            System.out.println("\n라운드 " + (i + 1));
+            for (Car car : cars) {
+                car.move();  // 각 자동차에 대해 무작위 이동 수행
+                System.out.println(car);  // 자동차의 현재 위치 출력
+            }
+        }
+
+
+    }
+
+
 }
 
 
