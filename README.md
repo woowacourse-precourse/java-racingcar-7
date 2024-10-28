@@ -16,6 +16,8 @@
     - 요구 예외 사항: 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생하고 프로그램을 종료시킨다.
     - 추가 예외 사항 
       - 음수의 시도횟수
+      - 실행횟수 제한
+        - 1이상부터 5이하까지
 
 ### 경주 진행
   >"camp.nextstep.edu.missionutils에서 제공하는 Randoms API의 pickNumberInRange 를 반드시 활용하여 랜덤한 값을 가져와야 한다"
