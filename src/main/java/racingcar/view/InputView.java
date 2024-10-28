@@ -13,9 +13,9 @@ public class InputView {
         return inputCarNames();
     }
 
-    public static int getTrialTimes() {
+    public static String getTrialTimes() {
         ViewMessage.printTrialTimesMessage();
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 
     private static ArrayList<String> inputCarNames() {
