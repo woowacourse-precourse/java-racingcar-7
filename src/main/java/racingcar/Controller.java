@@ -24,7 +24,7 @@ public class Controller {
         String racingCarNamesRequest = inputView.read();
 
         List<String> carNames = carArgumentResolver.parse(racingCarNamesRequest);
-        sizeValidator.isValid(carNames);
+        sizeValidator.check(carNames);
         List<Car> cars = carConverter.toCars(carNames);
 
         outputView.println("시도할 횟수는 몇 회인가요?");
