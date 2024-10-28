@@ -24,4 +24,10 @@ public class Output {
     public static void printRunResultMessage(){
         System.out.println(RUN_RESULT_MESSAGE);
     }
+
+    public static void printRunResult(List<Car> carList){
+        for (Car car : carList) {
+            System.out.println(car);
+        }
+    }
 }
