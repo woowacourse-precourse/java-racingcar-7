@@ -26,4 +26,17 @@ public class RaceServiceTest {
         assertEquals(carNames[1], "won");
         assertEquals(carNames[2], "juni");
     }
+
+    @DisplayName("자동차 이름이 유효하지 않을 경우 예외를 발생시키는지 테스트")
+    @Test
+    public void invalidCarNameTest() {
+        String[] invalidCarNames = {"pobi12345", "karina"};
+        for (String name : invalidCarNames) {
+            org.junit.jupiter.api.Assertions.assertThrows(
+                    IllegalArgumentException.class,
+                    () -> new Car(name),
+                    "차 이름은 5자 이하여야 합니다."
+            );
+        }
+    }
 }
