@@ -45,6 +45,8 @@ public class RaceServiceImpl implements RaceService{
     public List<RaceLog> executeRaceRounds(int round) {
         List<Car> cars = carRepository.findAll();
 
+        validateRound(round);
+
         return IntStream.range(0, round)
                 .mapToObj(i -> executeRaceRound(cars))
                 .collect(Collectors.toList());
@@ -83,6 +85,16 @@ public class RaceServiceImpl implements RaceService{
     private void validateNameBlank(String name) {
         if(name.isBlank()) {
             carRepository.reset();
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateRound(int round) {
+        validatePositive(round);
+    }
+
+    private void validatePositive(int round) {
+        if (round <= 0) {
             throw new IllegalArgumentException();
         }
     }

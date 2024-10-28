@@ -28,7 +28,16 @@ public class RaceController {
 
     public void run() {
         raceService.setRaceCars(inputView.inputCarNames());
-        outputView.printRaceLogs(raceService.executeRaceRounds(Integer.parseInt(inputView.inputTryCount())));
+        int tryCount = validateAndParseNumeric(inputView.inputTryCount());
+        outputView.printRaceLogs(raceService.executeRaceRounds(tryCount));
         outputView.printRaceWinners(raceService.generateWinners());
+    }
+
+    private int validateAndParseNumeric(String stringInput) {
+        try {
+            return Integer.parseInt(stringInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }

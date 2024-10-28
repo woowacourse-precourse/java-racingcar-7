@@ -60,4 +60,11 @@ class RaceServiceImplTest {
         RaceService raceService = appConfig.getRaceService();
         assertThrows(IllegalArgumentException.class, () -> raceService.setRaceCars("1번차,,2번차"));
     }
+
+    @DisplayName("양수 예외")
+    @Test
+    void validatePositive() {
+        RaceService raceService = appConfig.getRaceService();
+        assertThrows(IllegalArgumentException.class, () -> raceService.executeRaceRounds(-4));
+    }
 }
