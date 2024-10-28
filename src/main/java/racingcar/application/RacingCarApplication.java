@@ -22,5 +22,6 @@ public class RacingCarApplication {
 
     racingController.initialize();
     racingController.startRace();
+    racingController.displayWinners();
   }
 }
