@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Car {
 
-    String carName;
-    int randomNumber;
-    List<Character> moveCount = new ArrayList<>();
+    private String carName;
+    private int randomNumber;
+    private List<Character> moveCount = new ArrayList<>();
 
     @Override
     public String toString() {

@@ -12,7 +12,7 @@ import racingcar.model.Car;
 class CarControllerTest {
 
     @Test
-    void makeCarNameList_containsExactly() {
+    void makeCarNameList_covertStringToList() {
         String userInput = ("car1, car2 ,   car3, 4");
         List<String> carNameList = makeCarNameList(userInput);
 
@@ -28,7 +28,7 @@ class CarControllerTest {
     }
 
     @Test
-    void makeCarList_containsExactly() {
+    void makeCarList_convertStringListToCarList() {
         List<Car> carList = CarController.makeCarList(
                 CarController.makeCarNameList("car1, car2, car3"));
 
@@ -37,17 +37,7 @@ class CarControllerTest {
     }
 
     @Test
-    void makeCarList_setNameTest() {
-        List<Car> carList = CarController.makeCarList(
-                CarController.makeCarNameList("car1, car2, car3"));
-
-        Assertions.assertThat(carList.get(0).getCarName()).isEqualTo("car1");
-        Assertions.assertThat(carList.get(1).getCarName()).isEqualTo("car2");
-        Assertions.assertThat(carList.get(2).getCarName()).isEqualTo("car3");
-    }
-
-    @Test
-    void makeCarList_putRandomNumberTest() {
+    void putRandomNumberTest() {
         List<Car> carList = CarController.makeCarList(
                 CarController.makeCarNameList("car1, car2, car3"));
 
