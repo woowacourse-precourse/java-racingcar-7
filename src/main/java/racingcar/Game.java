@@ -25,19 +25,7 @@ public class Game {
         outputHandler.printResultMessage();
         rounds.proceedRounds(cars.getCars(), outputHandler);
 
-        List<String> winners = determineWinners();
+        List<String> winners = cars.getWinners();
         outputHandler.printWinner(winners);
-    }
-
-    private List<String> determineWinners() {
-        List<String> winners = new ArrayList<>();
-
-        int maxDistance = cars.getCars().stream()
-                .mapToInt(Car::getDistance)
-                .max().orElse(0);
-
-        return cars.getCars().stream()
-                .filter(car -> car.getDistance() == maxDistance)
-                .map(Car::getName).toList();
     }
 }

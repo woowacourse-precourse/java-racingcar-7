@@ -17,4 +17,20 @@ public class Cars {
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
+
+
+    public List<String> getWinners() {
+        List<String> winners = new ArrayList<>();
+        int maxDistance = getMaxDistance();
+
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName).toList();
+    }
+
+    private int getMaxDistance() {
+        return cars.stream()
+                .mapToInt(Car::getDistance)
+                .max().orElse(0);
+    }
 }
