@@ -14,7 +14,5 @@ public class Application {
 
         CarRaceController carRaceController = new CarRaceController(inputView, outputView, randomMovementStrategy);
         carRaceController.raceStart();
-
-        Console.close();
     }
 }

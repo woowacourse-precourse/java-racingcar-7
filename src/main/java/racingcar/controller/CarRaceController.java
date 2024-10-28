@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.dto.CarRaceSnapshotDTOs;
 import racingcar.model.CarRace;
 import racingcar.model.Cars;
@@ -29,5 +30,7 @@ public class CarRaceController {
         outputView.printResult(carRaceSnapshotDTOs);
 
         outputView.printWinners(carRace.getFinalWinners());
+
+        Console.close();
     }
 }
