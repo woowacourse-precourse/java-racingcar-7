@@ -21,5 +21,8 @@ public class Application {
         RaceValidator.validateRaceCount(inputRaceCount);
 
         List<Car> cars = VehicleFactory.createCars(carNames);
+
+        RaceController controller = new RaceController(cars);
+        controller.start(Integer.parseInt(inputRaceCount));
     }
 }
