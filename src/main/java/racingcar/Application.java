@@ -13,8 +13,41 @@ public class Application {
         // TODO: 프로그램 구현
         String pureInput = getInputCarNames();
         ArrayList<String> carName = new ArrayList<>(List.of(pureInput.split(",")));
+        validateCarNames(carName);
     }
 
+    private static void validateCarNames(ArrayList<String> carName) {
+        for (int i = 0; i < carName.size(); i++) {
+            checkLengthUnder6(carName.get(i));
+            checkIsBlank(carName.get(i));
+            checkNameDuplicate(carName);
+        }
+    }
+
+    private static void checkNameDuplicate(ArrayList<String> carName) {
+        if (isDuplicates(carName)) {
+            throw new IllegalArgumentException("차 이름이 중복됩니다.");
+        }
+    }
+
+
+    public static boolean isDuplicates(List<String> list) {
+        Set<String> set = new HashSet<>(list);
+        return set.size() < list.size();
+    }
+
+
+    private static void checkLengthUnder6(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("차의 이름은 5자 이하여야합니다.");
+        }
+    }
+
+    private static void checkIsBlank(String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException("차의 이름으로 공백은 불가능합니다");
+        }
+    }
 
     private static String getInputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
