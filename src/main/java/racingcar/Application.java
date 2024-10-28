@@ -1,16 +1,13 @@
 package racingcar;
 
-import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Game;
 import racingcar.domain.GameInitializer;
-import racingcar.domain.RoundInformation;
 import racingcar.domain.Winners;
 import racingcar.ui.InputCarNames;
 import racingcar.ui.InputController;
 import racingcar.ui.InputGameRoundCount;
 import racingcar.ui.OutputController;
-import racingcar.ui.ProgressedResult;
 import racingcar.ui.UiInitializer;
 import racingcar.ui.WinnerResults;
 
