@@ -52,3 +52,7 @@
 
 -  Case) Input blank as name
 - Case) Input Large number as Race Stage 
+
+### Unit Test
+
+- Test CarModel public method
