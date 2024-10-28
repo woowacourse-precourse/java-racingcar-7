@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.HashMap;
+import java.util.List;
 import racingcar.message.RunMessage;
 
 public class OutView {
@@ -11,5 +12,9 @@ public class OutView {
             System.out.println(String.valueOf('-').repeat(cars.get(car)));
         }
         System.out.println();
+    }
+
+    public static void printWinner(List<String> winner) {
+        System.out.println(RunMessage.PRINT_WINNER.getMessage() + String.join(", ", winner));
     }
 }

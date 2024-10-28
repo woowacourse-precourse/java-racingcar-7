@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import racingcar.message.RunMessage;
 import racingcar.service.CarService;
 import racingcar.service.RacingService;
@@ -36,5 +37,9 @@ public class RacingController {
             }
             OutView.printRacingResult(cars);
         }
+
+        List<String> winner = racingService.racingWinner(cars);
+
+        OutView.printWinner(winner);
     }
 }
