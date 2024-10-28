@@ -58,7 +58,7 @@ public class UserView {
         }
 
         try {
-            int number = Integer.parseInt(repeatNumber.trim());
+            int number = Integer.parseInt(repeatNumber.strip());
             if (number <= 0) {
                 throw new IllegalArgumentException(RacingCarErrorMessage.POSITIVE_REPEAT_NUMBER_ERROR.getMessage());
             }
@@ -74,7 +74,7 @@ public class UserView {
         String[] carNames = input.split(",");
 
         for (String carName : carNames) {
-            cars.add(new Car(carName.trim()));
+            cars.add(new Car(carName.strip()));
         }
 
         return cars;
