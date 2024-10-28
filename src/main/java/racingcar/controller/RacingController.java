@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.response.Winners;
 import racingcar.service.RacingService;
 import racingcar.util.Parser;
 import racingcar.util.RandomNumberPicker;
@@ -28,6 +29,8 @@ public class RacingController {
 
         String countInput = inputView.requestCountInput();
         progress(countInput, cars);
+
+        Winners winners = racingService.findWinners(cars);
     }
 
     private void progress(String countInput, Cars collection) {

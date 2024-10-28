@@ -19,6 +19,10 @@ public class Car implements Comparable<Car> {
         }
     }
 
+    public boolean matches(int distance) {
+        return this.distance == distance;
+    }
+
     public String getName() {
         return name;
     }

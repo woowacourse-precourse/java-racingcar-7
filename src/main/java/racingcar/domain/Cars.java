@@ -10,6 +10,16 @@ public class Cars {
         this.cars = cars;
     }
 
+    public int findMaximumDistance() {
+        sortByDistance();
+
+        return cars.getFirst().getDistance();
+    }
+
+    private void sortByDistance() {
+        this.cars.sort(Car::compareTo);
+    }
+
     public List<Car> getCars() {
         return cars;
     }
