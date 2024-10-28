@@ -40,12 +40,12 @@ public class RacingGameController {
     }
 
     private void startRace() {
-        systemView.printSystemRaceStartMessage();
+        raceView.printRaceStartMessage();
         cars.repeatGo();
     }
 
     private void displayWinner() {
-        systemView.printSystemWinneMessage();
+        raceView.printWinnerMessage();
         raceView.displayWinner();
     }
 }

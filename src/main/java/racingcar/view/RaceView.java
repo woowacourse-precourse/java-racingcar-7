@@ -39,4 +39,12 @@ public class RaceView implements Observer {
     public void setCars(Cars cars) {
         this.cars = cars;
     }
+
+    public void printRaceStartMessage() {
+        System.out.println("\n실행 결과");
+    }
+
+    public void printWinnerMessage() {
+        System.out.print("최종 우승자 : ");
+    }
 }

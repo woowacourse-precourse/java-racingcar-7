@@ -15,11 +15,5 @@ public class SystemView {
         return Console.readLine();
     }
 
-    public void printSystemRaceStartMessage() {
-        System.out.println("\n실행 결과");
-    }
 
-    public void printSystemWinneMessage() {
-        System.out.print("최종 우승자 : ");
-    }
 }
