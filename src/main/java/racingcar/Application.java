@@ -8,6 +8,8 @@ public class Application {
         String carNamesInput = InputView.getCarNames();
         RaceController raceController = new RaceController();
         List<String> carNames = raceController.parseAndValidateCarNames(carNamesInput);
-        
+
+        int attempts = InputView.getAttempts();
+
     }
 }
