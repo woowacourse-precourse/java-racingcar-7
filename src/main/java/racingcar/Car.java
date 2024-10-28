@@ -18,5 +18,13 @@ public class Car {
         return distance;
     }
 
+    public void move(int randomValue) {
+        if (randomValue >= 4) {
+            distance++;
+        }
+    }
 
+    public String getProgress() {
+        return "-".repeat(distance);
+    }
 }
