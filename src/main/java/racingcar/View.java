@@ -8,7 +8,7 @@ public class View {
     }
 
 
-    public static void outputWinners(List<String> winners){
-        System.out.println("최종 우승자 : " + String.join(",",winners));
+    public static void outputWinners(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(",", winners));
     }
 }
