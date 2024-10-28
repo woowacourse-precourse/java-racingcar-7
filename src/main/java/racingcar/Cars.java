@@ -25,12 +25,14 @@ public class Cars {
         for (Cars car : cars) {
             System.out.println(car.name+" : "+car.move);
         }
+        System.out.print("\n");
     }
 
     public static void tryMoving(int tryCount){
         for(int i=0; i<tryCount; i++){
             moving();
         }
+        printWinner();
     }
 
     public static void moving(){
@@ -38,9 +40,27 @@ public class Cars {
             int num = Randoms.pickNumberInRange(0, 9);
             if (num >= 4) {
                 car.move += "-";
-                car.count += 1;
+                car.count++;
             }
         }
         printMoves(cars);
+    }
+
+    public static void printWinner(){
+        int maxCount = 0;
+
+        for (Cars car : cars) {
+            if (car.count > maxCount) {
+                maxCount = car.count;
+            }
+        }
+
+        System.out.print("최종 우승자 : ");
+
+        for (Cars car : cars) {
+            if (car.count == maxCount) {
+                System.out.print(car.name);
+            }
+        }
     }
 }
