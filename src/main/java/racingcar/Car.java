@@ -18,6 +18,10 @@ public class Car {
         return this.position == value;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public String toString() {
         return this.name;
