@@ -1,19 +1,14 @@
 package racingcar.view;
 
 import java.util.List;
+import racingcar.message.OutputMessage;
+import racingcar.message.SeparatorPattern;
 import racingcar.model.RacingCars;
 
 public class OutputView {
 
-    private static final String RESULT_MESSAGE = "실행 결과";
-    private static final String RESULT_SEPARATOR = " : ";
-    private static final String MOVE_MARKER = "-";
-    private static final String COMMA = ",";
-    private static final String FINAL_WINNER = "최종 우승자 : ";
-    private static final String NO_WINNER = "우승자가 없습니다.";
-
     public void printRaceStart() {
-        System.out.println(RESULT_MESSAGE);
+        System.out.println(OutputMessage.RESULT_MESSAGE.getMessage());
     }
 
     public void printRaceStatus(RacingCars racingCars) {
@@ -22,16 +17,16 @@ public class OutputView {
     }
 
     private void printCarStatus(String name, int position) {
-        String progress = MOVE_MARKER.repeat(position);
-        System.out.println(name + RESULT_SEPARATOR + progress);
+        String progress = SeparatorPattern.MOVE_MARKER.getPattern().repeat(position);
+        System.out.println(name + SeparatorPattern.RESULT_SEPARATOR.getPattern() + progress);
     }
 
     public void printWinners(List<String> names) {
         if (names == null || names.isEmpty()) {
-            System.out.println(NO_WINNER);
+            System.out.println(OutputMessage.NO_WINNER.getMessage());
             return;
         }
-        String winners = String.join(COMMA, names);
-        System.out.println(FINAL_WINNER + winners);
+        String winners = String.join(SeparatorPattern.COMMA.getPattern(), names);
+        System.out.println(OutputMessage.FINAL_WINNER.getMessage() + winners);
     }
 }
