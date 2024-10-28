@@ -58,6 +58,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 자동차_이름_입력_시_공백을_포함하면_5글자를_초과할_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobii ,woni", "1");
+                    assertThat(output()).contains("pobii : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
     void 자동차_이름_입력_시_숫자가_들어갈_경우() {
         assertRandomNumberInRangeTest(
                 () -> {
