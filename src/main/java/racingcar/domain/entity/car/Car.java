@@ -1,4 +1,4 @@
-package racingcar.domain.Car;
+package racingcar.domain.entity.car;
 
 public class Car {
 	private static final int MIN_INT_FOR_MOVING = 4;
@@ -15,5 +15,10 @@ public class Car {
 		if (number >= MIN_INT_FOR_MOVING) {
 			distance.forward();
 		}
+	}
+
+	public String[] createResultSentence() {
+		String[] sentence = name.createResultSentence();
+		return distance.insertResultSentence(sentence);
 	}
 }

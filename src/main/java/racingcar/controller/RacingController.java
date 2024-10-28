@@ -2,10 +2,10 @@ package racingcar.controller;
 
 import java.util.List;
 
-import racingcar.domain.Attempt;
-import racingcar.domain.Car.Car;
-import racingcar.domain.Car.CarNames;
-import racingcar.domain.Race;
+import racingcar.domain.entity.Attempt;
+import racingcar.domain.entity.car.Car;
+import racingcar.domain.entity.car.CarNames;
+import racingcar.domain.entity.Race;
 import racingcar.view.InputView;
 import racingcar.view.OutputMessage;
 import racingcar.view.OutputView;
@@ -24,7 +24,7 @@ public class RacingController {
 		Attempt attempt = inputAttempt();
 		List<Car> cars = registerCars(carNames);
 		Race race = Race.from(attempt, cars);
-		race.canProgress();
+		printRaceResult(race);
 	}
 
 	private CarNames inputCarName() {
@@ -41,5 +41,20 @@ public class RacingController {
 
 	private List<Car> registerCars(CarNames carNames) {
 		return carNames.toCars();
+	}
+
+	private void printRaceResult(Race race) {
+		outputView.print(OutputMessage.RESULT_MESSAGE);
+		while (race.canProgress()) {
+			String[][] resultSentence = race.createResultSentence();
+			printRaceResultSentence(resultSentence);
+			outputView.lineFeed();
+		}
+	}
+
+	private void printRaceResultSentence(String[][] resultSentence) {
+		for (String[] sentence : resultSentence) {
+			outputView.print(OutputMessage.DISTANCE, sentence[0], sentence[1]);
+		}
 	}
 }

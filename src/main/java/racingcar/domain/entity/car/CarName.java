@@ -1,4 +1,4 @@
-package racingcar.domain.Car;
+package racingcar.domain.entity.car;
 
 import java.util.Objects;
 
@@ -17,6 +17,12 @@ public class CarName {
 		if (value.length() > MAX_NAME_LENGTH) {
 			throw new IllegalArgumentException(ErrorMessages.OVER_MAX_LENGTH.getMessage());
 		}
+	}
+
+	public String[] createResultSentence() {
+		String[] sentence = new String[2];
+		sentence[0] = value;
+		return sentence;
 	}
 
 	@Override

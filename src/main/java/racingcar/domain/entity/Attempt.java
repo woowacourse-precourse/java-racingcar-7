@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.entity;
 
 import racingcar.common.exception.ErrorMessages;
 
