@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
@@ -26,7 +27,7 @@ public class Application {
         printResults(cars);  // 경주 후 결과 출력
 
         String winners = determineWinners(cars); // 우승자 결정
-        System.out.println("우승자: " + winners);
+        System.out.println("최종 우승자: " + winners);
     }
 
     private static void validateInput(String[] carNames, int attempts) {
@@ -36,8 +37,14 @@ public class Application {
 
     private static List<Car> createCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
+        HashSet<String> nameSet = new HashSet<>();
+
         for (String name : carNames) {
-            cars.add(new Car(name));
+            String trimmedName = name.trim();
+            if (!nameSet.add(trimmedName)) {
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            }
+            cars.add(new Car(trimmedName));
         }
         return cars;
     }
@@ -87,8 +94,9 @@ public class Application {
 
     private static void validateCarNames(String[] names) {
         for (String name : names) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
+            String trimmedName = name.trim();
+            if (trimmedName.isEmpty() || trimmedName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하이며 비어있지 않아야 합니다.");
             }
         }
     }
