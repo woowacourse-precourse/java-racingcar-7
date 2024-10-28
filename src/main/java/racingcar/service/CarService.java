@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.constant.Constants;
 import racingcar.model.Car;
 import racingcar.model.CarList;
 
@@ -27,7 +28,7 @@ public class CarService {
 
     public void validateCarNames(String carName) {
         if (carName.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException(Constants.INVALID_CAR_NAME_LENGTH);
         }
     }
 
@@ -50,7 +51,7 @@ public class CarService {
 
     public void setMoveCount(int moveCount) {
         if (moveCount < 1) {
-            throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 합니다.");
+            throw new IllegalArgumentException(Constants.INVALID_MOVE_COUNT);
         }
         this.moveCount = moveCount;
     }
