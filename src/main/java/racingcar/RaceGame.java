@@ -74,7 +74,12 @@ public class RaceGame {
 
         for (int i = 0; i < totalCars; i++){
             carList[i] = new RacingCar();
-            carList[i].carName = carNamesList[i];
+            //carList[i].carName = carNamesList[i];
+            try {
+                carList[i].setCarName(carNamesList[i]);
+            } catch (Exception e) {
+                throw new IllegalArgumentException(e);
+            }
         }
         return carList;
     }
