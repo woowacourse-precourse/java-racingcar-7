@@ -17,7 +17,7 @@ public class CarService {
     }
 
     public void progressCar(Car car){
-        int currentCount = car.getCurrentCount();
-        car.setCurrentCount(++currentCount);
+        int currentCount = car.getCurrentMoveCount();
+        car.setCurrentMoveCount(++currentCount);
     }
 }

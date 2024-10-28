@@ -37,8 +37,8 @@ public class RacingGameService {
                 carRoundResults.add(carRoundResult);
             }
 
-            int maxCount = findMaxCount(carRoundResults);
-            RoundResult roundResult = new RoundResult(round, carRoundResults, maxCount);
+            int maxMoveCount = findMaxCount(carRoundResults);
+            RoundResult roundResult = new RoundResult(round, carRoundResults, maxMoveCount);
             roundResults.add(roundResult);
         }
 
@@ -49,14 +49,14 @@ public class RacingGameService {
 
     public RacingGame findWinners(RacingGame game){
         RoundResult lastRoundResult = game.getRoundResults().getLast();
-        int maxCount = lastRoundResult.getMaxCount();
+        int maxMoveCount = lastRoundResult.getMaxMoveCount();
         List<CarRoundResult> carRoundResults = lastRoundResult.getCarRoundResults();
 
         List<String> winners = new ArrayList<>();
 
         for(CarRoundResult result : carRoundResults){
-            int count = result.getCurrentCount();
-            if(maxCount == count){
+            int count = result.getCurrentMoveCount();
+            if(maxMoveCount == count){
                 winners.add(result.getCarName());
             }
         }
@@ -78,21 +78,21 @@ public class RacingGameService {
             carService.progressCar(car);
         }
 
-        CarRoundResult result = new CarRoundResult(car.getName(), carState, randomNumber, car.getCurrentCount());
+        CarRoundResult result = new CarRoundResult(car.getName(), carState, randomNumber, car.getCurrentMoveCount());
 
         return result;
     }
 
     private Integer findMaxCount(List<CarRoundResult> carRoundResults){
-        int maxCount = 0;
+        int maxMoveCount = 0;
 
         for(CarRoundResult result : carRoundResults){
-            int count = result.getCurrentCount();
-            if(maxCount < count){
-                maxCount = count;
+            int count = result.getCurrentMoveCount();
+            if(maxMoveCount < count){
+                maxMoveCount = count;
             }
         }
 
-        return maxCount;
+        return maxMoveCount;
     }
 }
