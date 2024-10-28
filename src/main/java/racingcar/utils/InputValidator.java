@@ -16,4 +16,12 @@ public class InputValidator {
 
         return names;
     }
+
+    public static int validateTryCount(String input) {
+        int count = Integer.parseInt(input);
+        if (count <= 0) {
+            throw new IllegalArgumentException();
+        }
+        return count;
+    }
 }

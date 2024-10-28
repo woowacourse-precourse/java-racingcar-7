@@ -34,4 +34,34 @@ class InputValidatorTest {
         assertThrows(IllegalArgumentException.class, () -> InputValidator.validateCarNames("자동차이름길이초과"));
     }
 
+    @DisplayName("성공 : 시도 횟수가 양수일 경우 정상적으로 검증된다")
+    @Test
+    void 유효한_시도_횟수_테스트() {
+        int tryCount = InputValidator.validateTryCount("5");
+        assertThat(tryCount).isEqualTo(5);
+    }
+
+    @DisplayName("예외 : 시도 횟수가 음수일 경우 예외를 발생시킨다")
+    @Test
+    void 음수_시도_횟수_예외_테스트() {
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateTryCount("-1"));
+    }
+
+    @DisplayName("예외 : 시도 횟수가 숫자가 아닌 형식일 경우 예외를 발생시킨다")
+    @Test
+    void 잘못된_숫자_형식_예외_테스트() {
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateTryCount("abc"));
+    }
+
+    @DisplayName("예외 : 시도 횟수가 0일 경우 예외를 발생시킨다")
+    @Test
+    void 시도_횟수_영_예외_테스트() {
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateTryCount("0"));
+    }
+
+    @DisplayName("예외 : 시도 횟수가 공백일 경우 예외를 발생시킨다")
+    @Test
+    void 시도_횟수_공백_예외_테스트() {
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateTryCount(" "));
+    }
 }
