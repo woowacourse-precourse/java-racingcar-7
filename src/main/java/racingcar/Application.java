@@ -16,6 +16,15 @@ class Car {
 public class Application {
     static Car car_list[];
     static int totalCount;
+    static Car winner_list[];
+
+    public static int getMaxNum() {
+        int maxi = 0;
+        for (int i = 0; i < car_list.length; i++) {
+            maxi = Math.max(maxi, car_list[i].move_cnt);
+        }
+        return maxi;
+    }
 
     public static void getRandomNum() {
         for (int i = 0; i < car_list.length; i++) {
@@ -38,6 +47,7 @@ public class Application {
             getRandomNum();
             printGame();
         }
+        getMaxNum();
     }
 
     public static void checkValid(String name) {
