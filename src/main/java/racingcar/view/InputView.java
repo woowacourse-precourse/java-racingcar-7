@@ -8,7 +8,11 @@ public class InputView {
     private static final String INPUT_TRY_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
     public RacingInfo readRacingInfo() {
-        return new RacingInfo(readCarNames(), readTryCount());
+        try {
+            return new RacingInfo(readCarNames(), readTryCount());
+        } finally {
+            Console.close();
+        }
     }
 
     private String readCarNames() {
