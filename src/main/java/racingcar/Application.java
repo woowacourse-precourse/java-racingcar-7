@@ -15,5 +15,6 @@ public class Application {
 
         Game game = Game.create(cars, round);
         game.start();
+        game.finish();
     }
 }

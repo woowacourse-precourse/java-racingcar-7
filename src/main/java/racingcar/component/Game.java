@@ -31,9 +31,6 @@ public class Game {
             processRound();
             printRound();
         }
-
-        List<Car> winners = findWinners();
-        printWinners(winners);
     }
 
     private void processRound() {
@@ -47,6 +44,11 @@ public class Game {
     private void printRound() {
         cars.forEach(Car::printPosition);
         System.out.println();
+    }
+
+    public void finish() {
+        List<Car> winners = findWinners();
+        printWinners(winners);
     }
 
     private List<Car> findWinners() {
