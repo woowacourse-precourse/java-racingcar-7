@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.CarName;
 import racingcar.io.InputHandler;
 import racingcar.io.OutputHandler;
 
@@ -14,7 +15,7 @@ public class RacingCarMachine {
 	private final InputHandler inputHandler;
 	private final OutputHandler outputHandler;
 	private Map<String, String> carForward = new LinkedHashMap<>();
-	private List<String> carNames = new ArrayList<>();
+	private CarName carName;
 	private List<String> winner = new ArrayList<>();
 	private int tryNumber;
 
@@ -26,15 +27,15 @@ public class RacingCarMachine {
 	public void run() {
 		outputHandler.showStartMessage();
 
-		carNames = inputHandler.getUserCarName();
+		carName = CarName.from(inputHandler.getUserCarName());
 
 		// 1. 이름 입력 시 이름을 입력하지 않은 경우
-		if (doesNotEnterCarName()) {
+		if (carName.doesNotEnterCarName()) {
 			throw new IllegalArgumentException("이름을 입력해 주세요.");
 		}
 
 		// 2. 이름 입력 시 5자 이상인 경우
-		isCarNameLengthValid();
+		carName.isCarNameLengthValid();
 
 		outputHandler.showTryMessage();
 
@@ -56,8 +57,8 @@ public class RacingCarMachine {
 		}
 
 		// 1명이 입력된 경우 바로 최종 우승자 출력
-		if (hasOnlyOneCar()) {
-			outputHandler.showOnlyOneInputWinner(carNames);
+		if (carName.hasOnlyOneCar()) {
+			outputHandler.showOnlyOneInputWinner(carName.getCarNames());
 			return;
 		}
 
@@ -82,14 +83,6 @@ public class RacingCarMachine {
 		outputHandler.showWinner(winner);
 	}
 
-	private void isCarNameLengthValid() {
-		for (String carName : carNames) {
-			if (isCarNameTooLong(carName)) {
-				throw new IllegalArgumentException("5자 미만의 이름을 입력해 주세요.");
-			}
-		}
-	}
-
 	private void saveWinnerInList(int winnerLength) {
 		carForward.entrySet().stream()
 			.filter(carName -> carName.getValue().length() == winnerLength)
@@ -97,8 +90,8 @@ public class RacingCarMachine {
 	}
 
 	private void saveCarNamesInCarForward() {
-		for (String carName : carNames) {
-			carForward.put(carName, carForward.getOrDefault(carName, ""));
+		for (String car : carName.getCarNames()) {
+			carForward.put(car, carForward.getOrDefault(car, ""));
 		}
 	}
 
@@ -121,17 +114,13 @@ public class RacingCarMachine {
 	}
 
 	private void canMoveForward() {
-		for (String carName : carForward.keySet()) {
+		for (String car : carForward.keySet()) {
 			if (Randoms.pickNumberInRange(0, 9) >= 4) {    // 4이상일 경우 전진
-				carForward.replace(carName, carForward.get(carName) + "-");
+				carForward.replace(car, carForward.get(car) + "-");
 			}
 
-			System.out.println(carName + " : " + carForward.get(carName));
+			System.out.println(car + " : " + carForward.get(car));
 		}
-	}
-
-	private boolean hasOnlyOneCar() {
-		return carNames.size() == 1;
 	}
 
 	private boolean doesTryNumberNegative() {
@@ -140,13 +129,5 @@ public class RacingCarMachine {
 
 	private boolean isSameTryNumberZero() {
 		return tryNumber == 0;
-	}
-
-	private boolean isCarNameTooLong(String car) {
-		return car.length() > 4;
-	}
-
-	private boolean doesNotEnterCarName() {
-		return carNames.get(0).equals("");
 	}
 }
