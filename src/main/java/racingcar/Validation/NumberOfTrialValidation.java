@@ -10,11 +10,11 @@ public class NumberOfTrialValidation {
         }
     }
 
-    public static boolean isNegative(int trialCount) {
+    public static boolean isNegative(Integer trialCount) {
         return trialCount < 0;
     }
 
-    public static boolean isZero(int trialCount) {
+    public static boolean isZero(Integer trialCount) {
         return trialCount == 0;
     }
 }

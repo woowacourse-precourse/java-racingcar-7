@@ -14,7 +14,7 @@ public class CarInfo {
 
     public void moveForward(String carName, Integer randomNumber) {
         if (randomNumber >= 4) {
-            int currentPosition = carList.get(carName);
+            Integer currentPosition = carList.get(carName);
             carList.put(carName, currentPosition + 1);
         }
     }

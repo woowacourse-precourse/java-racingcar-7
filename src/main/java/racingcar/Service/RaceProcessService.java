@@ -15,7 +15,7 @@ public class RaceProcessService {
     private RaceInfoDTO raceInfoDTO;
     private RaceViewController raceViewController;
     private RandomNumber randomNumber;
-    private int trialCount;
+    private Integer trialCount;
 
     public RaceProcessService(DomainFactory domainFactory) {
         this.domainFactory = domainFactory;
@@ -44,7 +44,7 @@ public class RaceProcessService {
 
     private void stratSingleRound(RaceResultDTO raceResultDTO) {
         for (String carName : raceInfoDTO.getCarNames()) {
-            int number = randomNumber.pickNumber();
+            Integer number = randomNumber.pickNumber();
             carInfo.moveForward(carName, number);
         }
 

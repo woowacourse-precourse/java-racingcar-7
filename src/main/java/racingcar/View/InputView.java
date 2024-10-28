@@ -16,7 +16,7 @@ public class InputView {
         return splitCarNames(names);
     }
 
-    public int inputTrialCount() {
+    public Integer inputTrialCount() {
         try {
             System.out.println(IOMessage.INPUT_TRIAL_COUNT.getMessage());
             String count = Console.readLine();

@@ -7,9 +7,9 @@ import racingcar.Validation.NumberOfTrialValidation;
 
 public class RaceInfoDTO {
     private List<String> carNames;
-    private int trialCount;
+    private Integer trialCount;
 
-    public RaceInfoDTO(List<String> carNames, int trialCount) {
+    public RaceInfoDTO(List<String> carNames, Integer trialCount) {
         if (NameValidation.isLongName(carNames)) {
             throw new IllegalArgumentException(ErrorMessage.NAME_TOO_LONG.getMessage());
         }
@@ -30,7 +30,7 @@ public class RaceInfoDTO {
         return carNames;
     }
 
-    public int getTrialCount() {
+    public Integer getTrialCount() {
         return trialCount;
     }
 }
