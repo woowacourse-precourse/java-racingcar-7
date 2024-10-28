@@ -2,11 +2,11 @@ package racingcar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static racingcar.CarsNameParser.parse;
 
 import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.CarsNameParser;
 
 class CarsNameParserTest {
 
@@ -16,8 +16,9 @@ class CarsNameParserTest {
     void parseNamesTest() {
         //given
         String input = "pobi,ddot,teddy";
+        CarsNameParser carsNameParser = new CarsNameParser();
         //when
-        Set<String> carsName = parse(input);
+        Set<String> carsName = carsNameParser.parse(input);
         //then
         assertEquals(Set.of("pobi", "ddot", "teddy"), carsName);
     }
@@ -27,8 +28,9 @@ class CarsNameParserTest {
     void parseRepeatedNamesTest() {
         //given
         String input = "pobi,ddot,pobi";
+        CarsNameParser carsNameParser = new CarsNameParser();
         //when
-        Set<String> carsName = parse(input);
+        Set<String> carsName = carsNameParser.parse(input);
         //then
         assertEquals(Set.of("pobi", "ddot"), carsName);
         assertEquals(Set.of("ddot", "pobi"), carsName);
@@ -70,11 +72,13 @@ class CarsNameParserTest {
 
 
     void testNameParsing(Set<String> carsName, String input) {
-        assertEquals(carsName, parse(input));
+        CarsNameParser carsNameParser = new CarsNameParser();
+        assertEquals(carsName, carsNameParser.parse(input));
     }
 
     void testNameParsingThrow(String input) {
-        assertThrows(IllegalArgumentException.class, () -> parse(input));
+        CarsNameParser carsNameParser = new CarsNameParser();
+        assertThrows(IllegalArgumentException.class, () -> carsNameParser.parse(input));
     }
 
 

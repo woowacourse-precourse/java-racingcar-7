@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.raceInterface;
+
+import racingcar.model.Cars;
 
 public interface Observer {
     void displayOneTrial();

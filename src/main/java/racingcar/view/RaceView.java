@@ -1,5 +1,8 @@
-package racingcar;
+package racingcar.view;
 
+
+import racingcar.model.Cars;
+import racingcar.raceInterface.Observer;
 
 public class RaceView implements Observer {
     private Cars cars;

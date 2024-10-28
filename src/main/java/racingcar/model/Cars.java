@@ -1,17 +1,19 @@
-package racingcar;
+package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import racingcar.raceInterface.Observer;
+import racingcar.raceInterface.Subject;
 
 public class Cars extends HashMap<String, Integer> implements Subject {
-    Cars(Set<String> carNames) {
+    private final List<Observer> observers = new ArrayList<>();
+
+    public Cars(Set<String> carNames) {
         addCars(carNames);
     }
-
-    private List<Observer> observers = new ArrayList<>();
 
     public void addCars(Set<String> carsName) {
         for (String carName : carsName) {
