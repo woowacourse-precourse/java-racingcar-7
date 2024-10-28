@@ -41,8 +41,7 @@ public class RaceService {
 
     private void raceRound(List<Car> carList) {
         for (Car car : carList) {
-            if (pickRandomNumber() >= Constants.MOVE_NUM)
-                car.move();
+            moveCarBasedOnRandomNum(car);
         }
     }
 
@@ -70,6 +69,11 @@ public class RaceService {
 
     private int pickRandomNumber() {
         return Randoms.pickNumberInRange(Constants.MIN_RANDOM_NUM, Constants.MAX_RANDOM_NUM);
+    }
+
+    private void moveCarBasedOnRandomNum(Car car) {
+        if (pickRandomNumber() >= Constants.MOVE_NUM)
+            car.move();
     }
 
 }
