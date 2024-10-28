@@ -11,7 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.InputDto;
 
-public class ViewTest {
+public class InputViewTest {
 
 
     @AfterEach
