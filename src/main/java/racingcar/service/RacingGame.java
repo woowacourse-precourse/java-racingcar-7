@@ -24,9 +24,9 @@ public class RacingGame {
 
         Race race = raceController.getRace(cars, trial);
 
-        racing(race); 
+        racing(race);
     }
-    
+
     // 입력된 시도 횟수 만큼 레이싱을 진행하고 결과를 출력
     private void racing(Race race) {
         List<Car> cars = race.getCars();

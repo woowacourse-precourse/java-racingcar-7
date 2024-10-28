@@ -42,7 +42,7 @@ public class RaceTest {
                     .get();
 
             pobi.drive();
-            
+
             List<Car> winners = race.getWinner();
 
             String winnersName = winners.stream()
@@ -78,7 +78,7 @@ public class RaceTest {
                     .map(Car::getName)
                     .collect(Collectors.joining(", "));
 
-            assertThat(winnersName).isEqualTo(pobi.getName()+", "+jun.getName());
+            assertThat(winnersName).isEqualTo(pobi.getName() + ", " + jun.getName());
         }, 4, 9);
     }
 }

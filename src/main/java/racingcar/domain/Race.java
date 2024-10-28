@@ -15,7 +15,7 @@ public class Race {
         this.cars = cars;
         this.trial = trial;
     }
-    
+
     // 시도 횟수가 0 이하의 값일 경우 예외 처리
     private void validateTrial(int trial) {
         if (trial <= 0) {
@@ -28,7 +28,7 @@ public class Race {
         int carCount = cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.toSet()).size();
-                
+
         if (carCount != cars.size()) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_DUPLICATED.getMessage());
         }

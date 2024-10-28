@@ -19,12 +19,13 @@ public class Car {
             this.distance++;
         }
     }
+
     // 입력받은 이름이 5글자 이상인지, 비어있는 값인지 판별
     private void validateName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_OVER_FIVE.getMessage());
         }
-         if (name.isEmpty()) {
+        if (name.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_EMPTY.getMessage());
         }
     }

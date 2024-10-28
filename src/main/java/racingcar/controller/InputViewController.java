@@ -5,7 +5,7 @@ import racingcar.view.InputView;
 
 public class InputViewController {
     private InputView inputView = new InputView();
-    
+
     public String getName() {
         inputView.printInputCarNameMessage();
         return Console.readLine();
