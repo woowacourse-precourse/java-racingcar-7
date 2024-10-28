@@ -73,4 +73,13 @@ public class RaceGame {
         return carList;
     }
 
+    void playOneRound(RacingCar[] carList){
+        for (RacingCar car : carList){
+            if (car.forwardCondition){
+                car.moveForward();
+            }
+        }
+    }
+
+
 }
