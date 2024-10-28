@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.util;
 
 public class Validator {
     public void validateCarName(String name) {
@@ -8,7 +8,7 @@ public class Validator {
     }
 
     public int validateAttemptCount(String moveCountInput) {
-        if (moveCountInput == null || moveCountInput.isEmpty()) {
+        if (moveCountInput == null || moveCountInput.isEmpty() || moveCountInput.isBlank()) {
             throw new IllegalArgumentException("이동 횟수는 빈 값일 수 없습니다.");
         }
 
