@@ -32,16 +32,16 @@ public class RacingGame {
         return cars;
     }
 
-    public int getMaxMoveCount() {
+    public int getMaxPosition() {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
     }
 
-    public List<String> getWinners(int maxMoveCount) {
+    public List<String> getWinners(int maxPosition) {
         return cars.stream()
-                .filter(car -> car.getPosition() == maxMoveCount)
+                .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .toList();
     }

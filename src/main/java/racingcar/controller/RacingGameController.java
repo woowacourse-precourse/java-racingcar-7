@@ -32,13 +32,13 @@ public class RacingGameController {
         OutputView.printExecutionText();
         for (int i = 0; i < moveCount; i++) {
             List<Car> cars = racingGame.move();
-            OutputView.printCarsMoveStatus(cars);
+            OutputView.printCarsPosition(cars);
             System.out.println();
         }
     }
 
     void printWinners(RacingGame racingGame) {
-        int maxMoveCount = racingGame.getMaxMoveCount();
+        int maxMoveCount = racingGame.getMaxPosition();
         List<String> winners = racingGame.getWinners(maxMoveCount);
         OutputView.printFinalWinners(winners);
     }

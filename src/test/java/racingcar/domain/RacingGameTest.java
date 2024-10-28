@@ -98,7 +98,7 @@ public class RacingGameTest {
         moveCars(game, new int[]{5, 5, 3});
 
         // when
-        int maxMoveCount = game.getMaxMoveCount();
+        int maxMoveCount = game.getMaxPosition();
         List<String> winners = game.getWinners(maxMoveCount);
 
         // then
