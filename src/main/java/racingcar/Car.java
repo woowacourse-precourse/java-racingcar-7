@@ -16,7 +16,7 @@ public class Car {
     /**
      * 한 칸 움직입니다.
      */
-    void move() {
+    public void move() {
         this.location++;
     }
 
