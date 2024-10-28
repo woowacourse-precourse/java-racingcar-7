@@ -2,7 +2,11 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.constant.Delimiter;
+import racingcar.domain.Car;
+import racingcar.factory.VehicleFactory;
 import racingcar.valid.RaceValidator;
+
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,5 +19,7 @@ public class Application {
         String[] carNames = inputNames.split(Delimiter.DEFAULT.getRegex());
         RaceValidator.validateCarName(carNames);
         RaceValidator.validateRaceCount(inputRaceCount);
+
+        List<Car> cars = VehicleFactory.createCars(carNames);
     }
 }
