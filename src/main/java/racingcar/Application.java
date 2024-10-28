@@ -30,6 +30,13 @@ public class Application {
     }
     static void racing(Map<String, Integer> carsInfo) {
         // 자동차 별로 전진하는 것 구현
+        for(String key : carsInfo.keySet()) {
+
+            int random = Randoms.pickNumberInRange(0, 9);
+            if(random >= 4){
+                carsInfo.put(key, carsInfo.get(key) + 1);
+            }
+        }
 
     }
     static void printResult() {
