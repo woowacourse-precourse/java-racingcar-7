@@ -21,7 +21,7 @@ public class Application {
         Race race = new Race(carNames);
         for (int i = 0; i < count; i++) {
             for (String car : carNames) {
-                if (policy.run()) {
+                if (policy.canMove()) {
                     race.updateProgress(car);
                 }
             }

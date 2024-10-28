@@ -20,7 +20,7 @@ class MovePolicyTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     for (int i = 0; i < 10; i++) {
-                        actual.add(policy.run());
+                        actual.add(policy.canMove());
                     }
                     assertIterableEquals(expected, actual);
                 },
