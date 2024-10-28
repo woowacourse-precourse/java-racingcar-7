@@ -4,19 +4,19 @@ import racingcar.service.RacingService;
 
 public class RacingController {
 
-    private final RacingService racingcarService;
+    private final RacingService racingService;
 
-    public RacingController(final RacingService racingcarService) {
-        this.racingcarService = racingcarService;
+    public RacingController(final RacingService racingService) {
+        this.racingService = racingService;
     }
 
     public void play() {
-        String inputCarNames = racingcarService.getInputCarName();
-        int inputTotalRound = racingcarService.getInputTotalRound();
+        String inputCarNames = racingService.getInputCarName();
+        int inputTotalRound = racingService.getInputTotalRound();
 
-        racingcarService.addRacingCar(inputCarNames);
-        racingcarService.playGame(inputTotalRound);
+        racingService.addRacingCar(inputCarNames);
+        racingService.playGame(inputTotalRound);
 
-        racingcarService.responseGameResult();
+        racingService.responseGameResult();
     }
 }
