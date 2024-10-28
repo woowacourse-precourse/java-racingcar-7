@@ -40,9 +40,7 @@ public class Race {
     }
 
     public void carPosition() {
-        for (Car car : cars) {
-            car.printPosition();
-        }
+        cars.forEach(Car::printPosition);
         System.out.println();
     }
 
