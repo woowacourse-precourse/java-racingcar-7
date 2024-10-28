@@ -3,6 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.Car;
 import racingcar.validator.CarValidator;
+import racingcar.validator.RaceValidator;
 
 import java.util.List;
 
@@ -22,6 +23,12 @@ public class InputView {
         CarValidator.validateUniqueNames(carNames);
 
         return carNames;
+    }
+
+    public static int getRaceAttempts() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+        return RaceValidator.checkAttemptsInput(input);
     }
 
     public static List<String> getCarNames() {
