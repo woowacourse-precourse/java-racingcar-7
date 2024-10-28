@@ -19,15 +19,15 @@ public class CarNamesValidator implements Validator {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
 
-        if (size == 1) {
+        if (size <= 1) {
             throw new IllegalArgumentException("자동차는 최소 두 대 이상 있어야합니다.");
         }
     }
 
     private void validateEach(List<String> nameList) {
         nameList.forEach(name -> {
-            if (name == null || name.isBlank() || name.isEmpty()) {
-                throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+            if (name == null || name.isEmpty() || name.matches(".*\\s+.*")) {
+                throw new IllegalArgumentException("자동차 이름에는 공백이 있을 수 없습니다.");
             }
 
             if (name.length() > 5) {
