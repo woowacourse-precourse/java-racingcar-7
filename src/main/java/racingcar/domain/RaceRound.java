@@ -6,8 +6,4 @@ public class RaceRound {
     public RaceRound(int roundNumber) {
         this.roundNumber = roundNumber;
     }
-
-    public int getRoundNumber() {
-        return roundNumber;
-    }
 }
