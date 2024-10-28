@@ -8,13 +8,8 @@ public class RaceGame {
     private List<Car> cars;
 
     public void play() throws IllegalArgumentException {
-        String[] carNames = readCarNames();
+        cars = initializerCars();
         int tryCnt = readTryCount();
-        cars = new ArrayList<>();
-
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
 
         System.out.println("\n" + "실행 결과");
         for (int i = 0; i < tryCnt; i++) {
@@ -25,11 +20,24 @@ public class RaceGame {
         printWinner(getWinnerNames(cars));
     }
 
+    private List<Car> initializerCars() {
+        String[] carNames = readCarNames();
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return cars;
+    }
+
     private void simulate(List<Car> cars) {
         System.out.println("\n" + "실행 결과");
         for (Car car : cars) {
             car.move();
         }
+        printRaceStatus();
+    }
+
+    private void printRaceStatus() {
         for (Car car : cars) {
             StringBuilder position = new StringBuilder();
             position.append(car.getCarName() + " : ");
@@ -41,19 +49,15 @@ public class RaceGame {
     }
 
     private List<String> getWinnerNames(List<Car> cars) {
-        int winnerDistance = 0;
-        ArrayList<String> winnerNames = new ArrayList<>();
-
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getPosition).max().orElse(0);
+        ArrayList<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            winnerDistance = Math.max(winnerDistance, car.getPosition());
-        }
-        for (Car car : cars) {
-            if (car.getPosition() == winnerDistance) {
-                winnerNames.add(car.getCarName());
+            if (car.getPosition() == maxDistance) {
+                winners.add(car.getCarName());
             }
         }
-
-        return winnerNames;
+        return winners;
     }
 
     private String[] readCarNames() throws IllegalArgumentException {
@@ -74,11 +78,7 @@ public class RaceGame {
     }
 
     private void printWinner(List<String> winnerNames) {
-        StringBuilder message = new StringBuilder();
-        message.append("최종 우승자 : " + winnerNames.get(0));
-        for (int i = 1; i < winnerNames.size(); i++) {
-            message.append(", " + winnerNames.get(i));
-        }
-        System.out.println(message.toString());
+        System.out.println("최종 우승자 : "
+                + String.join(", ", winnerNames));
     }
 }
