@@ -19,6 +19,11 @@ public class CarServiceTest {
         assertThrows(IllegalArgumentException.class, () -> {
             carService.validateCarNames("pobi,pobi");
         });
+
+        // 자동차 이름에 공백이 있을 때 예외 발생 테스트
+        assertThrows(IllegalArgumentException.class, () -> {
+            carService.validateCarNames(",pobi,pobi");
+        });
     }
 
 }
