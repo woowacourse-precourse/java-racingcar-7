@@ -34,6 +34,6 @@ public class RaceRecords {
     }
 
     public int lengthByRound(int round) {
-        return raceRecords.get(round).length();
+        return getByRound(round).length();
     }
 }

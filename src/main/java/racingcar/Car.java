@@ -15,12 +15,12 @@ public class Car {
         raceRecords.initializeRecords(raceCount);
     }
 
-    public void recordPrevRaceByRound(int round) {
-        raceRecords.recordPrevRaceByRound(round);
-    }
-
     public void moveForward(int round) {
         raceRecords.recordRaceByRound(round);
+    }
+
+    public void recordPrevRaceByRound(int round) {
+        raceRecords.recordPrevRaceByRound(round);
     }
 
     public void showRaceRecordsByRound(int round) {

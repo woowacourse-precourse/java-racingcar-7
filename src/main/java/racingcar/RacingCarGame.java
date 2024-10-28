@@ -55,5 +55,4 @@ public class RacingCarGame {
     private int getMoveForwardThreshold() {
         return Randoms.pickNumberInRange(0, 9);
     }
-
 }

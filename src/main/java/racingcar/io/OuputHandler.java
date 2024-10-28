@@ -24,9 +24,11 @@ public class OuputHandler {
         System.out.print("최종 우승자 : ");
 
         if (finalWinners.size() == 1) {
-            System.out.println(finalWinners.get(0));
+            String singleWinner = finalWinners.get(0);
+            System.out.println(singleWinner);
         } else {
-            System.out.println(String.join(", ", finalWinners));
+            String multipleWinners = String.join(",", finalWinners);
+            System.out.println(multipleWinners);
         }
     }
 
