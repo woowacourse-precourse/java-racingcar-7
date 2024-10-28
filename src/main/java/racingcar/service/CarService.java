@@ -1,7 +1,6 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.constant.Constants;
 import racingcar.model.Car;
 import racingcar.model.CarList;
 
@@ -13,14 +12,9 @@ public class CarService {
     private final CarList carList = new CarList(new ArrayList<>());
     private final List<String> winners = new ArrayList<>();
     private String[] carNames;
-    private int moveCount;
 
     public CarService() {
         this.nameValidationService = new NameValidationService();
-    }
-
-    public CarService(NameValidationService nameValidationService) {
-        this.nameValidationService = nameValidationService;
     }
 
     public void createGame(String carNames) {
@@ -48,24 +42,6 @@ public class CarService {
 
     public CarList getCarList() {
         return carList;
-    }
-
-    public int getMoveCount() {
-        return moveCount;
-    }
-
-    public void setMoveCount(String moveCountStr) {
-        int moveCount;
-        try {
-            moveCount = Integer.parseInt(moveCountStr);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Constants.INVALID_MOVE_COUNT_NUMBER);
-        }
-
-        if (moveCount < 1) {
-            throw new IllegalArgumentException(Constants.INVALID_MOVE_COUNT);
-        }
-        this.moveCount = moveCount;
     }
 
     public void determineWinner() {
