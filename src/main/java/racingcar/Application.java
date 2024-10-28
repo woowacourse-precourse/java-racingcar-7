@@ -20,6 +20,8 @@ class RacingGame {
     public void start() {
         cars = getCars();
         attemptCount = getAttemptCount();
+        runGame();
+        printWinners();
     }
 
     private List<Car> getCars() {
@@ -66,6 +68,21 @@ class RacingGame {
         }
         System.out.println();
     }
+
+    private void printWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }
 
 class Car {
@@ -88,5 +105,10 @@ class Car {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             position++;
         }
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + "-".repeat(position);
     }
 }
