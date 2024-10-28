@@ -10,14 +10,12 @@ import java.util.Arrays;
 public class Application {
 
     public static void main(String[] args) {
-        try {
-            String[] carNames = getCarNames();
-            int numberOfAttempts = getNumberOfAttempts();
-            int[] carDistances = startRace(carNames, numberOfAttempts);
-            displayWinners(carNames, carDistances);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+
+        String[] carNames = getCarNames();
+        int numberOfAttempts = getNumberOfAttempts();
+        int[] carDistances = startRace(carNames, numberOfAttempts);
+        displayWinners(carNames, carDistances);
+      
     }
 
     // 자동차 이름 입력받기
