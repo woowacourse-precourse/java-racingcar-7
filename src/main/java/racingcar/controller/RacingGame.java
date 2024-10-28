@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.Car;
 import racingcar.domain.CarGroup;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -22,6 +23,7 @@ public class RacingGame {
             outputView.printRoundResult(carGroup);
         }
 
+        carGroup.printWinners();
     }
 
 }

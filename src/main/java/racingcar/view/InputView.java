@@ -10,7 +10,7 @@ import java.util.List;
 public class InputView {
 
     public List<String> readCars() {
-        System.out.println(IOMessage.INPUT_CAR_NAMES);
+        System.out.println(IOMessage.INPUT_CAR_NAMES.getText());
         return tokenizeCarsName(Console.readLine());
     }
 
@@ -21,7 +21,7 @@ public class InputView {
     }
 
     public int readRoundCount(){
-        System.out.println(IOMessage.INPUT_ROUND_COUNT);
+        System.out.println(IOMessage.INPUT_ROUND_COUNT.getText());
         int num = Integer.parseInt(Console.readLine());
         return num;
     }
