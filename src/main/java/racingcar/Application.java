@@ -18,16 +18,20 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
+        Map<String, Integer> carsInfo = new HashMap<>();
+        for(String carName : carsNameInput.split(",")) {
+            if(carName.trim().length() > 5) {
+                throw new IllegalArgumentException();
+            }
+            carsInfo.put(carName, 0);
+        }
+
         System.out.println("시도할 횟수는 몇 회인가요?");
         String chanceInput = Console.readLine();
         if(!Character.isDigit(chanceInput.charAt(0))) {
             throw new IllegalArgumentException();
         }
 
-        Map<String, Integer> carsInfo = new HashMap<>();
-        for(String carName : carsNameInput.split(",")) {
-            carsInfo.put(carName, 0);
-        }
         System.out.println("실행 결과");
         for(int i = 0; i < Integer.parseInt(chanceInput); i++) {
             racing(carsInfo);
