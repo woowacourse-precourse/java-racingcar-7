@@ -16,14 +16,6 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public String toStringCarsPosition() {
-        StringBuilder positions = new StringBuilder();
-        for (Car car : cars) {
-            positions.append(String.format("%s : %s%n", car.getName(), "-".repeat(car.getDistance())));
-        }
-        return positions.toString();
-    }
-
 
     public List<Car> findWinners() {
         int maxDistance = findMaxDistance();

@@ -20,7 +20,14 @@ public class OutputView {
     }
 
     public static void printCarsPosition(Cars cars) {
-        System.out.print(cars.toStringCarsPosition() + "\n");
+        for (Car car : cars.getCars()) {
+            System.out.print(getCarPosition(car));
+        }
+        System.out.print("\n");
+    }
+
+    private static String getCarPosition(Car car) {
+        return String.format("%s : %s%n", car.getName(), "-".repeat(car.getDistance()));
     }
 
     public static void printWinner(List<Car> winners) {
