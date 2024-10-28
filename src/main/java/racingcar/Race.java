@@ -1,15 +1,21 @@
 package racingcar;
 
 public class Race {
+    private OutputView outputView;
+
+    public Race(OutputView outputView) {
+        this.outputView = outputView;
+    }
+
     public void play(Cars cars, PlayCount playCount) {
-        OutputView.printRaceStart();
+        outputView.printRaceStart();
 
         int count = playCount.getPlayCount();
         for (int i = 0; i < count; i++) {
             cars.foward();
-            OutputView.printRaceProcess(cars);
+            outputView.printRaceProcess(cars);
         }
 
-        OutputView.printWinners(cars);
+        outputView.printWinners(cars);
     }
 }
