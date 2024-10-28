@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class Game {
     int moveNumber;
-    ArrayList<Car> Cars;
+    ArrayList<Car> cars;
 
     List<String> readCarName(){
         System.out.println("게임을 진행할 자동차들의 이름을 쉼표(,)로 구분하여 입력 해주세요.");
@@ -26,10 +26,16 @@ public class Game {
         return carNames;
     }
 
+    public void createCars(List<String> carNames){
+        cars = new ArrayList<Car>();
+        for(String carName : carNames)
+            cars.add(new Car(carName));
 
+    }
 
     public Game(){
-        readCarName();
+        List<String> carNames = readCarName();
+        createCars(carNames);
     }
 
 
