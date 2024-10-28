@@ -2,6 +2,7 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedList;
 
 public class RacingCar {
@@ -16,6 +17,24 @@ public class RacingCar {
         int tryNum = Integer.parseInt(readLine());
         if (tryNum <= 0) {
             throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < tryNum; i++) {
+            moveForward(carList);
+            OutConsole.outPutProgress(carList);
+            System.out.println();
+        }
+
+        OutConsole.winner(carList);
+    }
+
+    private static void moveForward(LinkedList<Car> carList) {
+        for (Car car : carList) {
+            int tmpMoveDistance = Randoms.pickNumberInRange(0, 9);
+
+            if (tmpMoveDistance >= 4) {
+                car.moveOneStep();
+            }
         }
     }
 }
