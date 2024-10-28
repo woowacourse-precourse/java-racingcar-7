@@ -31,6 +31,51 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_자동차_이름을_입력하지_않음() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름을 입력해야 합니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차가_1대_이하() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차는 최소 2대 이상이어야 합니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_이름이_중복() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름이 중복되었습니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_구분자_없이_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi woni", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름을 쉼표로 구분해야 합니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_시도_횟수가_숫자가_아님() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "one"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도 횟수는 숫자여야 합니다.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
