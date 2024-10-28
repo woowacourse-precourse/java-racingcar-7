@@ -17,6 +17,10 @@ public class RaceService {
         this.round = round;
     }
 
+    public List<String> getWinnersNames() {
+        return cars.getWinnerNames();
+    }
+
     public List<Map<Car, Integer>> createRaceResults() {
         List<Map<Car, Integer>> raceResults = IntStream.range(0, round)
                 .mapToObj(i -> Collections.unmodifiableMap(createRaceResult()))
