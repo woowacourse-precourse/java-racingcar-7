@@ -3,10 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     //쉼표가 아닌 구분자 예외처리
@@ -35,7 +32,7 @@ public class Application {
     public static void validateInput(String inputCarName, String inputNumber) throws IllegalArgumentException {
         //사용자 입력 값 검증
         if (inputNumber == null || inputNumber.isEmpty() || !inputNumber.matches("\\d+")) {
-            throw new IllegalArgumentException("반복 횟수 " + inputNumber + " 는 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException("반복 횟수 " + inputNumber + " 은(는) 숫자만 입력 가능합니다.");
         }
         if (inputCarName == null || inputCarName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름을 입력 해야 합니다.");
@@ -88,15 +85,18 @@ public class Application {
     }
 
 
-    //공백 처리 "woni, jun,pobi "
-    //이름이 같을 경우 "woni,woni"
-    //한 개만 입력 될 때 처리 "woni"
-    //이름에 숫자만 있을 경우 처리 "1234"
     public static List<String> splitCarNames(String userInputNames) throws IllegalAccessError {
-        List<String> carNames = Arrays.asList(userInputNames.split(","));
+        List<String> carNames = Arrays.stream(userInputNames.split(","))
+                .map(String::trim)
+                .toList();
+
+        HashSet<String> uniqueNames = new HashSet<>();
+
         for (String carName : carNames) {
             if (carName.length() > 5) {
-                throw new IllegalArgumentException(carName + "은 5글자가 넘습니다.");
+                throw new IllegalArgumentException(carName + "은(는) 5글자가 넘습니다.");
+            } else if (!uniqueNames.add(carName)) {
+                throw new IllegalArgumentException(carName + "은(는) 중복된 이름입니다.");
             }
         }
         return carNames;

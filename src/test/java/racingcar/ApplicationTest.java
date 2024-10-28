@@ -29,7 +29,22 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 입력값_검증_테스트() {
-        assertAll(() -> assertThatThrownBy(() -> Application.validateInput("woni,pobi", "1a")).isInstanceOf(IllegalArgumentException.class), () -> assertThatThrownBy(() -> Application.validateInput("", "1")).isInstanceOf(IllegalArgumentException.class), () -> assertThatThrownBy(() -> Application.validateInput(null, "1")).isInstanceOf(IllegalArgumentException.class), () -> assertThatThrownBy(() -> Application.validateInput("woni,pobi", "")).isInstanceOf(IllegalArgumentException.class), () -> assertThatThrownBy(() -> Application.validateInput("woni,pobi", null)).isInstanceOf(IllegalArgumentException.class));
+        assertAll(
+                () -> assertThatThrownBy(
+                        () -> Application.validateInput("woni,pobi", "1a"))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(
+                        () -> Application.validateInput("", "1")).
+                        isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(
+                        () -> Application.validateInput(null, "1"))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(
+                        () -> Application.validateInput("woni,pobi", ""))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(
+                        () -> Application.validateInput("woni,pobi", null))
+                        .isInstanceOf(IllegalArgumentException.class));
     }
 
     @Nested
@@ -127,6 +142,17 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void 문자열_구분_테스트() {
+        assertAll(
+                () -> assertThat(Application.splitCarNames("woni, jun,pobi "))
+                        .isEqualTo(List.of("woni", "jun", "pobi")),
+                () -> assertThatThrownBy(() -> Application.splitCarNames("woni,woni"))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> assertThat(Application.splitCarNames("woni"))
+                        .isEqualTo(List.of("woni"))
+        );
+    }
 
     @Override
     public void runMain() {
