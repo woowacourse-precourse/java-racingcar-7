@@ -31,6 +31,14 @@ class NamesInputValidatorTest {
     }
 
     @Test
+    @DisplayName("차 이름이 1개일 경우 예외 발생")
+    void validateOnlyOneName() {
+        assertThatThrownBy(() -> NamesInputValidator.validate("ab/c"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("차는 최소 2대 이상이어야 합니다");
+    }
+
+    @Test
     @DisplayName("5자 이상의 이름이 존재할 경우 예외 발생")
     void validateLongNames() {
         assertThatThrownBy(() -> NamesInputValidator.validate("abcdefg,hijk"))
