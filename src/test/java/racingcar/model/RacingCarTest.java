@@ -5,6 +5,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.CarNameEmptyException;
+import racingcar.exception.CarNameOverMaxLengthException;
 
 class RacingCarTest {
 
@@ -23,27 +25,27 @@ class RacingCarTest {
     }
 
     @Test
-    @DisplayName("생성자는 5자를 초과하는 이름이 들어왔을때 IllegalArgumentException을 던진다.")
-    void constructor_WhenOver5LengthName_ThrowIllegalArgumentException() {
+    @DisplayName("생성자는 5자를 초과하는 이름이 들어왔을때 CarNameOverMaxLengthException을 던진다.")
+    void constructor_WhenOver5LengthName_ThrowCarNameOverMaxLengthException() {
         // given
         String name = "aaaaaa";
 
         // when & then
         Assertions.assertThatThrownBy(() ->
                 new RacingCar(name)
-        ).isInstanceOf(IllegalArgumentException.class);
+        ).isInstanceOf(CarNameOverMaxLengthException.class);
     }
 
     @Test
-    @DisplayName("생성자는 빈 이름이 들어왔을 때 IllegalArgumentException을 던진다.")
-    void constructor_WhenEmptyName_ThrowIllegalArgumentException() {
+    @DisplayName("생성자는 빈 이름이 들어왔을 때 CarNameEmptyException을 던진다.")
+    void constructor_WhenEmptyName_ThrowCarNameEmptyException() {
         // given
         String name = "";
 
         // when & then
         Assertions.assertThatThrownBy(() ->
                 new RacingCar(name)
-        ).isInstanceOf(IllegalArgumentException.class);
+        ).isInstanceOf(CarNameEmptyException.class);
     }
 
     @Test
