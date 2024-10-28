@@ -15,8 +15,8 @@ class Car{
     public String getName(){
         return this.name;
     }
-    public String getNow(){
-        return this.name;
+    public int getNow(){
+        return this.now;
     }
     public void move(int value){
         if(value>=4){
