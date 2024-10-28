@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Race {
     private int roundCount;
-    private Random random;
 
     public Race(int roundCount) {
         this.roundCount = roundCount;
