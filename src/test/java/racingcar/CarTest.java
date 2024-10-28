@@ -9,11 +9,9 @@ import org.junit.jupiter.api.Test;
 public class CarTest {
     @Test
     void carNameLengthTest() {
-        // 5글자는 유효한 이름
         Car car = new Car("ABCDE");
         assertEquals("ABCDE", car.getCarName());
 
-        // 6글자는 예외 발생
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             new Car("ABCDEF");
         });
