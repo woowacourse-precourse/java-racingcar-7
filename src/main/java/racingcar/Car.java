@@ -16,4 +16,10 @@ public class Car {
     public int getPosition() {
         return this.position;
     }
+
+    public void move(Movement movement) {
+        if(movement == Movement.GO){
+            this.position++;
+        }
+    }
 }
