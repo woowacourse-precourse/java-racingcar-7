@@ -10,6 +10,14 @@ public class RacingGame {
   private final List<Car> cars;
   private final int attempts;
 
+  public List<Car> getCars() {
+    return cars;
+  }
+
+  public int getAttempts() {
+    return attempts;
+  }
+
   public RacingGame(List<String> carNames, int attempts) {
     validateAttempts(attempts);
     this.cars = createCars(carNames);
@@ -52,15 +60,19 @@ public class RacingGame {
   }
 
   private void printWinners() {
+    List<String> winners = getWinners();
+    System.out.println("최종 우승자 : " + String.join(", ", winners));
+  }
+
+  // 우승자를 반환하는 메서드 추가
+  public List<String> getWinners() {
     int maxPosition = cars.stream()
             .mapToInt(Car::getPosition)
             .max()
             .orElse(0);
-    List<String> winners = cars.stream()
+    return cars.stream()
             .filter(car -> car.getPosition() == maxPosition)
             .map(Car::getName)
             .collect(Collectors.toList());
-
-    System.out.println("최종 우승자 : " + String.join(", ", winners));
   }
 }
