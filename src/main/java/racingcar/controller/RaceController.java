@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.Optional;
 import racingcar.service.RaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -34,10 +35,8 @@ public class RaceController {
     }
 
     private int validateAndParseNumeric(String stringInput) {
-        try {
-            return Integer.parseInt(stringInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
+        return Optional.ofNullable(stringInput)
+                .map(Integer::parseInt)
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
