@@ -5,7 +5,6 @@ import racingcar.util.Printer;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class CarManager {
     private static final String WINNER_FORMAT = ", ";
@@ -22,13 +21,13 @@ public class CarManager {
         return new CarManager(carNames);
     }
 
-    public List<Car> moveCars(int count) {
-        IntStream.range(0, count).forEach(i -> {
-            list.forEach(Car::move);
-            list.forEach(Printer::print);
-            Printer.newLine();
-        });
-        return list;
+    public void moveCars() {
+        list.forEach(Car::move);
+    }
+
+    public void printCarListCurrentPosition() {
+        list.forEach(Printer::print);
+        Printer.breakLine();
     }
 
     public String getWinners(List<Car> matchResult) {

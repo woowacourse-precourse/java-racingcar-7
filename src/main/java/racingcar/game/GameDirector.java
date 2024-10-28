@@ -4,24 +4,29 @@ package racingcar.game;
 import racingcar.util.Printer;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static racingcar.util.SystemMessage.RESULT;
 
 public class GameDirector {
-    private final int count;
+    private final int circleCount;
     private final CarManager manager;
 
-    public GameDirector(List<String> carNames, int count) {
+    public GameDirector(List<String> carNames, int circleCount) {
         manager = CarManager.createManager(carNames);
-        this.count = count;
+        this.circleCount = circleCount;
     }
 
-    public List<Car> run() {
-        return manager.moveCars(this.count);
+    public void run() {
+        IntStream.range(0, this.circleCount).forEach(i -> {
+            manager.moveCars();
+            manager.printCarListCurrentPosition();
+        });
+        printWinner();
     }
 
-    public void printWinner(List<Car> matchResult) {
-        String winner = manager.getWinners(matchResult);
+    private void printWinner() {
+        String winner = manager.getWinners();
         Printer.print(RESULT,winner);
     }
 }
