@@ -1,7 +1,110 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
+
 public class Application {
+    public static List<String> winnerList = new ArrayList<>();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String carName = Console.readLine();
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputAttempt = Console.readLine();
+        long attempt = validateAttempt(inputAttempt);
+
+        Map<String, Long> map = new HashMap<String, Long>();
+        for (String name : carName.split(",", -1)) {
+            validateName(name);
+            map.put(name, 0L);
+        }
+
+        System.out.println("\n실행 결과");
+
+        repeat(attempt, map);
+        winnerSelect(map);
+
+        System.out.println("최종 우승자 : " + String.join(",", winnerList));
+    }
+
+    public static Long validateAttempt(String inputAttempt) {
+        if (!Pattern.matches("^[0-9]*$", inputAttempt)) {
+            throw new IllegalArgumentException();
+        } else {
+            long attempt = Long.parseLong(inputAttempt);
+            return attempt;
+        }
+    }
+
+    public static void validateName(String name) {
+        if (name.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+
+        if (name.charAt(0) == ' ') {
+            throw new IllegalArgumentException();
+        }
+
+        if (name.charAt(name.length() - 1) == ' ') {
+            throw new IllegalArgumentException();
+        }
+
+        if (name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void repeat(long attempt, Map<String, Long> map) {
+        while (attempt-- > 0) {
+            for (Map.Entry<String, Long> entry : map.entrySet()) {
+                forwardDecision(map, entry);
+            }
+            practiceOutput(map);
+            System.out.println();
+        }
+    }
+
+    public static void forwardDecision(Map<String, Long> map, Map.Entry<String, Long> entry) {
+        if (randomDraw()) {
+            map.put(entry.getKey(), entry.getValue() + 1);
+        }
+    }
+
+    public static boolean randomDraw() {
+        int n = Randoms.pickNumberInRange(0, 9);
+        return n >= 4;
+    }
+
+    public static void practiceOutput(Map<String, Long> map) {
+        for (Map.Entry<String, Long> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " : " + mark(entry.getValue()));
+        }
+    }
+
+    public static String mark(long count) {
+        StringBuilder sb = new StringBuilder();
+        for (long i = 0; i < count; i++) {
+            sb.append("-");
+        }
+
+        return sb.toString();
+    }
+
+    public static void winnerSelect(Map<String, Long> map) {
+        long winnerNum = Collections.max(map.values());
+
+        for (Map.Entry<String, Long> entry : map.entrySet()) {
+            long value = entry.getValue();
+            if (value == winnerNum) {
+                winnerList.add(entry.getKey());
+            }
+        }
     }
 }
