@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.constant;
 
 public class RacingCarConstants {
     public static final int MOVING_FORWARD = 4;

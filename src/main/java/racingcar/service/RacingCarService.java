@@ -1,7 +1,7 @@
 package racingcar.service;
 
-import static racingcar.RacingCarConstants.MOVING_FORWARD;
-import static racingcar.RacingCarConstants.STOP;
+import static racingcar.constant.RacingCarConstants.MOVING_FORWARD;
+import static racingcar.constant.RacingCarConstants.STOP;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
