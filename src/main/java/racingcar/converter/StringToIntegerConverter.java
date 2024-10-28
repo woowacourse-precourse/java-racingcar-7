@@ -1,5 +1,7 @@
 package racingcar.converter;
 
+import racingcar.enums.ErrorMessage;
+
 public class StringToIntegerConverter implements Converter<String, Integer> {
 
     public StringToIntegerConverter() {
@@ -7,6 +9,10 @@ public class StringToIntegerConverter implements Converter<String, Integer> {
 
     @Override
     public Integer convert(String input) {
-        return Integer.parseInt(input);
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT.getMessage());
+        }
     }
 }
