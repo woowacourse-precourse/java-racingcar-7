@@ -22,11 +22,11 @@ public class CarFactory {
      * @throws IllegalArgumentException 입력 값이 비어있거나, 이름이 중복 또는 5자 초과일 경우 발생
      */
     public static List<RacingCar> createCars(String input) {
-        String[] carNames = validateAndParseInput(input);
+        List<String> carNames = validateAndParseInput(input);
 
         validateUniqueNames(carNames);
 
-        return Arrays.stream(carNames)
+        return carNames.stream()
                 .map(String::trim)
                 .map(CarFactory::createCar)
                 .toList();
@@ -39,14 +39,14 @@ public class CarFactory {
      * @return 파싱하여 생성된 carName의 정보가 담긴 String 배열
      * @throws IllegalArgumentException 입력이 비어있을 경우 혹은 파싱 후 리스트가 비어있을 경우 발생
      */
-    private static String[] validateAndParseInput(String input) {
+    private static List<String> validateAndParseInput(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_CAR_NAMES_ERROR);
         }
 
-        String[] carNames = input.split(",");
+        List<String> carNames = Arrays.stream(input.split(",")).toList();
 
-        if (carNames.length == 0) {
+        if (carNames.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_LIST_ERROR);
         }
 
@@ -59,7 +59,7 @@ public class CarFactory {
      * @param carNames 자동차 이름 배열
      * @throws IllegalArgumentException 중복된 이름이 있을 경우 발생
      */
-    private static void validateUniqueNames(String[] carNames) {
+    private static void validateUniqueNames(List<String> carNames) {
         Set<String> uniqueNames = new HashSet<>();
         for (String carName : carNames) {
             carName = carName.trim();
