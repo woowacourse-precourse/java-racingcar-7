@@ -13,7 +13,7 @@ public class RacingGameView {
     }
 
     public void printRacingResultStart() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     public void printRacingResult(RacingCars racingCars) {
