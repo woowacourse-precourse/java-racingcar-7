@@ -3,6 +3,7 @@ package racingcar.model;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> carList;
@@ -27,14 +28,9 @@ public class Cars {
     }
 
     public String toStringWinnerCars(Cars winnerCars) {
-        List<Car> winnerCarList = winnerCars.getCarList();
-        List<String> winnerCarNames = new ArrayList<>();
-
-        winnerCarList.forEach(car -> {
-            winnerCarNames.add(car.getName());
-        });
-
-        return winnerCarNames.toString().replace("[","").replace("]", "");
+        return winnerCars.getCarList().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
     public void addCar(Car target) {
