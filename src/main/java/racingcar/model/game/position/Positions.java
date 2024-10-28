@@ -38,7 +38,7 @@ public class Positions {
         return positions.stream()
                 .mapToLong(Position::position)
                 .max()
-                .orElseThrow(() -> new IllegalStateException("positions을 찾을 수 없습니다"));
+                .orElseThrow(() -> new IllegalStateException("참여자가 없습니다."));
     }
 
     private Position at(final int index) {

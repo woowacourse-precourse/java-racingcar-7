@@ -1,5 +1,7 @@
 package racingcar.support.repeater;
 
+import racingcar.exception.InvalidCountException;
+
 public class StringRepeater {
 
     private final String value;
@@ -23,7 +25,7 @@ public class StringRepeater {
 
     private void validate(final long count) {
         if (count < 0) {
-            throw new IllegalArgumentException("count는 음수일 수 없습니다.");
+            throw new InvalidCountException("count는 음수일 수 없습니다.");
         }
     }
 }
