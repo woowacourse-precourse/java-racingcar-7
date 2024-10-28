@@ -28,6 +28,10 @@ public class Cars {
                 .collect(Collectors.joining());
     }
 
+    public int getCarsSize() {
+        return cars.size();
+    }
+
     public List<String> getWinnerNames() {
         return getWinners().stream().map(Car::getName).toList();
     }
