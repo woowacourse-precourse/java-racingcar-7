@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -11,5 +13,8 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String trialInput = Console.readLine();
+
+        RacingGame game = new RacingGame(trialInput, splitInput);
+        game.play();
     }
 }
