@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.validator.Validator;
 import racingcar.view.InputView;
 
 import java.util.Arrays;
@@ -13,6 +14,12 @@ public class RacingGameController {
         List<String> carNames = Arrays.stream(input.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
+
+        // 자동차 이름 유효성 검사
+        Validator.validateNameLength(carNames);
+        Validator.validateNameFormat(carNames);
+        Validator.validateUniqueNames(carNames);
+
         return carNames;
     }
 }
