@@ -1,8 +1,11 @@
 package racingcar.domain;
 
-public class Car {
+import camp.nextstep.edu.missionutils.Randoms;
 
-    private String name;
+public class Car {
+    private static final int ADVANCE_THRESHOLD = 4;
+
+    private final String name;
     private int distance = 0;
 
     public Car(String name) {
@@ -16,11 +19,18 @@ public class Car {
     public int getDistance() {
         return distance;
     }
-    public void move(){
-        this.distance ++;
+
+    public void attemptMove() {
+        if (Randoms.pickNumberInRange(0, 9) >= ADVANCE_THRESHOLD) {
+            move();
+        }
     }
 
-    public String getPosition(){
+    private void move() {
+        this.distance++;
+    }
+
+    public String getPosition() {
         return "-".repeat(distance);
     }
 }

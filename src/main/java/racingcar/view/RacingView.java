@@ -42,7 +42,7 @@ public class RacingView {
 
     public void printRaceResult(RaceResponse response) {
         printCarStates(response.getCarStates());
-        printCarStates(response.getCarStates());
+        printWinners(response.getWinner());
     }
 
     // 자동차 이름에 공백 제거

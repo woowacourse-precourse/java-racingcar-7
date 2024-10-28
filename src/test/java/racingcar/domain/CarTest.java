@@ -28,7 +28,7 @@ class CarTest {
         assertEquals(0, car.getDistance());
 
         //When : 자동차가 한 칸 전진한다.
-        car.move();
+        car.attemptMove();
 
         //Then: 자동차의 이동거리가 1이 되어야 한다.
         assertEquals(1, car.getDistance());
@@ -37,15 +37,15 @@ class CarTest {
     @Test
     void 자동차_위치출력_테스트(){
         //Given : 자동치가 세 번 전진한다.
-        car.move();
-        car.move();
-        car.move();
+        car.attemptMove();
+        car.attemptMove();
+        car.attemptMove();
 
         //When : 자동차의 위치를 "-" 로 출력한다.
         String position = car.getPosition();
 
         //Then : 위치는 "---" 여야한다
-        assertEquals("----", position);
+        assertEquals("---", position);
 
     }
 
