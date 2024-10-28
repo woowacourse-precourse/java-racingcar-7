@@ -4,9 +4,9 @@ import java.util.List;
 
 public class RaceController {
     public void run() {
-        String carNames = InputView.inputCarNames();
-        Cars cars = new Cars();
-        cars.createCars(carNames);
+        List<String> carNames = InputView.inputCarNames();
+        List<Car> carList = Cars.createCars(carNames);
+        Cars cars = new Cars(carList);
         int tryCount = InputView.inputTryCount();
 
         System.out.println();
