@@ -5,6 +5,7 @@ import static racingcar.message.InputRequestMessage.NUMBER_OF_ATTEMPTS_REQUEST_M
 import camp.nextstep.edu.missionutils.Console;
 
 public class AttemptsInputView implements InputView, View {
+
     @Override
     public String printView() {
         printRequest();

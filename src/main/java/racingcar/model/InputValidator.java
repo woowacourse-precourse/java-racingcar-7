@@ -15,6 +15,12 @@ import java.util.regex.Pattern;
 
 public class InputValidator {
 
+    private void nullCheck(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException(NULL_INPUT_EXCEPTION_MESSAGE.getMessage());
+        }
+    }
+
     public void checkValidNames(String input) {
         nullCheck(input);
 
@@ -58,12 +64,6 @@ public class InputValidator {
         HashSet<String> forDuplicationTest = new HashSet<>(names);
         if (forDuplicationTest.size() != names.size()) {
             throw new IllegalArgumentException(DUPLICATION_NAME_EXCEPTION_MESSAGE.getMessage());
-        }
-    }
-
-    private void nullCheck(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException(NULL_INPUT_EXCEPTION_MESSAGE.getMessage());
         }
     }
 
