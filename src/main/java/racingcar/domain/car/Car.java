@@ -12,4 +12,10 @@ public class Car {
         this.location = 0;
         this.moveStrategy = moveStrategy;
     }
+
+    public void moveIfPossible() {
+        if (moveStrategy.shouldMove()) {
+            location++;
+        }
+    }
 }
