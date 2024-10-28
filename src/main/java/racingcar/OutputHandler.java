@@ -4,15 +4,7 @@ import static racingcar.OutputMessage.*;
 
 import java.util.List;
 
-public class GameView {
-    public void printCarNameInputMessage() {
-        System.out.println(CAR_NAME_INPUT_MESSAGE.getMessage());
-    }
-
-    public void printRoundCountInputMessage() {
-        System.out.println(ROUND_COUNT_INPUT_MESSAGE.getMessage());
-    }
-
+public class OutputHandler {
     public void printResultMessage() {
         System.out.println();
         System.out.println(RESULT_MESSAGE.getMessage());
