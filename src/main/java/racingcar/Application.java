@@ -7,6 +7,10 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
         String input = scanner.nextLine();
+        System.out.println(input);
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int moveCount = scanner.nextInt();
+        System.out.println(moveCount);
 
         try {
             String[] carNames = splitNames(input);
@@ -21,8 +25,9 @@ public class Application {
     static String[] splitNames(String input) {
         String[] carNames = input.split(",");
 
-        for (String carName : carNames) {
-            if (carName.length() > 5) {
+        for (int i = 0; i < carNames.length; i++) {
+            carNames[i] = carNames[i].trim();  // Trim each car name to remove extra spaces
+            if (carNames[i].length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자를 넘을 수 없습니다!");
             }
         }
