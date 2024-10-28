@@ -64,13 +64,13 @@ class InputValidatorTest {
     void 레이싱카_배열이_비었는지_유효성검사_실패() {
         Assertions.assertSimpleTest(() -> {
             //given
-            List<String> carNames1 = new ArrayList<>();
+            List<String> emptyCarNames = new ArrayList<>();
 
             //when
 
             //then
             assertThatThrownBy(() -> {
-                InputValidator.validateCarArrayNotEmpty(carNames1);
+                InputValidator.validateCarArrayNotEmpty(emptyCarNames);
             }).isInstanceOf(IllegalArgumentException.class);
         });
     }
