@@ -38,6 +38,7 @@
     - [X] `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 를 활용해 랜덤 값 추출
 - [X] 0~9까지의 무작위 수를 통해 4이상일 경우 전진
 - [X] 0~9까지의 무작위 수를 통해 4미만일 경우 정지
+- [X] 진행상황 조회 기능 추가
 
 ---
 

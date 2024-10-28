@@ -9,6 +9,7 @@ public class Game {
     private final List<Participant> participants;
     private final ProgressedAmountRepository progressedAmountRepository;
     private final MoveConditionGenerator moveConditionGenerator;
+    private final List<Round> rounds = new ArrayList<>();
 
     public Game(
             final List<Participant> participants,
@@ -26,8 +27,17 @@ public class Game {
                 break;
             }
             round = round.nextRound().get();
+            rounds.add(round);
             runOneRound(round);
         }
+    }
+
+    public List<RoundInformation> getAllRoundInformation() {
+        final List<RoundInformation> roundInformations = new ArrayList<>();
+        for (final Round round : rounds) {
+            roundInformations.add(new RoundInformation(round, progressedAmountRepository.findByRound(round)));
+        }
+        return roundInformations;
     }
 
     private void runOneRound(final Round round) {

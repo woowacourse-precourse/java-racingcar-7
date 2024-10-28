@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
 
-public class Round implements Comparable<Round> {
+public class Round {
 
     private final int maxRound;
     private final int currRound;
@@ -38,16 +38,11 @@ public class Round implements Comparable<Round> {
             return false;
         }
         Round round1 = (Round) o;
-        return maxRound == round1.maxRound;
+        return currRound == round1.currRound;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(maxRound);
-    }
-
-    @Override
-    public int compareTo(Round o) {
-        return this.maxRound - o.maxRound;
+        return Objects.hash(maxRound, currRound);
     }
 }
