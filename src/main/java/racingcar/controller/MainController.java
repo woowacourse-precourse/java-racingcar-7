@@ -4,7 +4,6 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Game;
 import racingcar.repository.CarRepository;
-import racingcar.repository.GameSequenceRepository;
 import racingcar.service.CarService;
 import racingcar.service.GameService;
 import racingcar.service.Validator;
