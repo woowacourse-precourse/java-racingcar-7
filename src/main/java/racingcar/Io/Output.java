@@ -2,11 +2,12 @@ package racingcar.Io;
 
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.service.CarService;
 
 public class Output {
 
     public static void currentProgress(List<Car> cars) {
-        cars.forEach(System.out::println);
+        cars.forEach(CarService::printCarInfo);
         System.out.println();
     }
 

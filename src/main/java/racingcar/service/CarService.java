@@ -8,4 +8,8 @@ public class CarService {
             car.go();
         }
     }
+
+    public static void printCarInfo(Car car) {
+        System.out.println(car.getName() + " : " + "-".repeat((car.getPosition())));
+    }
 }
