@@ -13,6 +13,9 @@ public class InputHandler {
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             name = name.trim();
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+            }
             cars.add(new Car(name));
         }
         return cars;
@@ -20,7 +23,14 @@ public class InputHandler {
 
     public static int getTrialCountFromUser() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int trials = Integer.parseInt(Console.readLine().trim());
-        return trials;
+        try {
+            int trials = Integer.parseInt(Console.readLine().trim());
+            if (trials <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다.");
+            }
+            return trials;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
     }
 }
