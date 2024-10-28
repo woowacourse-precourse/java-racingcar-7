@@ -35,10 +35,29 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 기능_테스트_움직이지_않은_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,java", "1");
+                    assertThat(output()).contains("최종 우승자 : pobi, woni, java");
+                },
+                STOP, STOP, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_입력값_길이_초과() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_입력값_공백_포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
