@@ -1,7 +1,9 @@
-package racingcar.domain;
+package racingcar.domain.racinggame;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 
 public class RacingGame {
     private List<Integer> distances = new ArrayList<>();
@@ -29,7 +31,7 @@ public class RacingGame {
         StringBuilder result = new StringBuilder();
         result.append(car.getCarName()).append(" : ");
 
-        for (int i = 0; i < car.getCurrentDistances(); i++) {
+        for (int i = 0; i < car.getCurrentDistance(); i++) {
             result.append("-");
         }
 

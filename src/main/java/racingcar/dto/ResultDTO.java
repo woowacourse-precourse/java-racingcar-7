@@ -1,8 +1,5 @@
 package racingcar.dto;
 
-import racingcar.domain.Cars;
-import racingcar.domain.RacingGames;
-
 public class ResultDTO {
     private String gameResult;
     private String finalWinner;

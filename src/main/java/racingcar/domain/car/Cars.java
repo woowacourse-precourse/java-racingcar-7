@@ -1,6 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import java.util.ArrayList;
+import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.dto.RacingCarNamesDTO;
 
 public class Cars {
@@ -8,7 +9,7 @@ public class Cars {
 
     public Cars(RacingCarNamesDTO racingCarNamesDTO) {
         for(String name : racingCarNamesDTO.getCarNames()){
-            cars.add(new Car(name));
+            cars.add(new Car(name, new RandomMoveStrategy()));
         }
     }
 

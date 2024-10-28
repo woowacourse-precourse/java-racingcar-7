@@ -1,27 +1,29 @@
-package racingcar.domain;
+package racingcar.domain.car;
+
+import racingcar.domain.strategy.MoveStrategy;
 
 public class Car {
     private String carName;
-    private int currentDistances;
+    private int currentDistance;
     private MoveStrategy moveStrategy;
 
     public Car(String carName, MoveStrategy moveStrategy) {
         this.carName = carName;
         this.moveStrategy = moveStrategy;
-        currentDistances = 0;
+        currentDistance = 0;
     }
 
     public int move(){
         if(moveStrategy.isAllowedToAdvance())
-            currentDistances++;
-        return currentDistances;
+            currentDistance++;
+        return currentDistance;
     }
 
     public String getCarName() {
         return carName;
     }
 
-    public int getCurrentDistances() {
-        return currentDistances;
+    public int getCurrentDistance() {
+        return currentDistance;
     }
 }

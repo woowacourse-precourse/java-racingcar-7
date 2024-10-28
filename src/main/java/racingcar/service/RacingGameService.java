@@ -2,10 +2,10 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.RacingGame;
-import racingcar.domain.RacingGames;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+import racingcar.domain.racinggame.RacingGame;
+import racingcar.domain.racinggame.RacingGames;
 import racingcar.dto.RacingAttemptDTO;
 import racingcar.dto.RacingCarNamesDTO;
 import racingcar.dto.ResultDTO;
@@ -35,16 +35,16 @@ public class RacingGameService {
 
     public static String getMaxProgressCars(Cars cars){
         List<String> maxProgressCarNames = new ArrayList<>();
-        int maxProgress = cars.findCarByNumber(0).getCurrentDistances();
+        int maxProgress = cars.findCarByNumber(0).getCurrentDistance();
 
         for (Car car : cars.getCars()) {
-            if (car.getCurrentDistances() > maxProgress) {
-                maxProgress = car.getCurrentDistances();
+            if (car.getCurrentDistance() > maxProgress) {
+                maxProgress = car.getCurrentDistance();
             }
         }
 
         for (Car car : cars.getCars()) {
-            if (car.getCurrentDistances() == maxProgress) {
+            if (car.getCurrentDistance() == maxProgress) {
                 maxProgressCarNames.add(car.getCarName());
             }
         }
