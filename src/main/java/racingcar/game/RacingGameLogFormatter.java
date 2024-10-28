@@ -1,6 +1,6 @@
 package racingcar.game;
 
-import racingcar.Car;
+import racingcar.game.car.Car;
 import racingcar.game.winner.Winner;
 
 public class RacingGameLogFormatter {

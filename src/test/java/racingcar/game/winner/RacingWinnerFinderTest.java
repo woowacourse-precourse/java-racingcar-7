@@ -2,8 +2,7 @@ package racingcar.game.winner;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
-import racingcar.game.winner.RacingWinnerFinder;
+import racingcar.game.car.Car;
 
 import java.util.List;
 

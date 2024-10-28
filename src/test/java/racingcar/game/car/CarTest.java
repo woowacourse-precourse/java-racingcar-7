@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.game.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.game.car.Car;
 
 import static org.junit.jupiter.api.Assertions.*;
 

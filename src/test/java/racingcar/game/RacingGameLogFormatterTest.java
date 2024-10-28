@@ -1,9 +1,8 @@
 package racingcar.game;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
+import racingcar.game.car.Car;
 import racingcar.game.winner.MockWinner;
 
 import java.util.List;

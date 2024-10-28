@@ -1,6 +1,6 @@
 package racingcar.game.winner;
 
-import racingcar.Car;
+import racingcar.game.car.Car;
 
 import java.util.List;
 
