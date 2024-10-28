@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputHandler {
-    public static List<Car> validateCarName(String input) {
+    public static List<Car> getValidateCarName(String input) {
         Validator.validateUserInput(input);
         String[] names = input.split(",");
         List<Car> cars = new ArrayList<>();
@@ -21,7 +21,7 @@ public class InputHandler {
     public static List<Car> getUserInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.");
         String input = Console.readLine();
-        return validateCarName(input);
+        return getValidateCarName(input);
     }
 
     public static int getMoveCount() {
