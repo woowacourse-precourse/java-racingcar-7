@@ -1,15 +1,19 @@
 package racingcar.view;
 
 import java.util.List;
+import java.util.Map;
 
 public class RacingOutputView {
     public void printResultString() {
         System.out.println("실행 결과");
     }
 
-    public void printRoundResult(String roundResult) {
-        System.out.println(roundResult);
-        System.out.println();
+    public void printRoundResult(Map<String, Integer> carPositions) {
+        StringBuilder roundResult = new StringBuilder();
+        carPositions.forEach((name, position) -> {
+            roundResult.append(name).append(" : ").append("-".repeat(position)).append("\n");
+        });
+        System.out.print(roundResult);
     }
 
     public void printWinners(List<String> winners) {

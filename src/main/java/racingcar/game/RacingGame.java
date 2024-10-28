@@ -24,20 +24,16 @@ public class RacingGame {
         return new Round(moveCount, competeCars);
     }
 
-    private boolean isMoveCountLeft(Round round) {
-        return round.getMoveCount() > 0;
-    }
-
     public void play() {
         CompeteCars competeCars = makeCompeteCars();
         Round round = setRound(competeCars);
 
         outputView.printResultString();
-        while (isMoveCountLeft(round)) {
+        while (round.hasNext()) {
             round.progress();
-            outputView.printRoundResult(round.getResult());
+            outputView.printRoundResult(competeCars.getCarsCurrentPosition());
         }
 
-        outputView.printWinners(round.getWinners());
+        outputView.printWinners(competeCars.getWinnerCars());
     }
 }

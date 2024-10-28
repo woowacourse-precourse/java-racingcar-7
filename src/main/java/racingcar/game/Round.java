@@ -1,8 +1,5 @@
 package racingcar.game;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import racingcar.car.Car;
 import racingcar.car.CompeteCars;
 import racingcar.strategy.MoveRandomlyStrategy;
 import racingcar.strategy.MoveStrategy;
@@ -26,22 +23,12 @@ public class Round {
         moveStrategy = new MoveRandomlyStrategy();
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public boolean hasNext() {
+        return moveCount > 0;
     }
 
     public void progress() {
-        cars.getAll().forEach(moveStrategy::move);
+        cars.moveAll(moveStrategy);
         moveCount--;
-    }
-
-    public String getResult() {
-        return cars.getAll().stream().map(car -> car.getName() + " : " + "-".repeat(car.getPosition()))
-            .collect(Collectors.joining("\n"));
-    }
-
-    public List<String> getWinners() {
-        int maxPosition = cars.getAll().stream().mapToInt(Car::getPosition).max().orElse(0);
-        return cars.getAll().stream().filter(car -> car.getPosition() == maxPosition).map(Car::getName).toList();
     }
 }
