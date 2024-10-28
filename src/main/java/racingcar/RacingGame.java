@@ -2,12 +2,13 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private List<Map<String,Integer>> carInfoList;
+    private List<HashMap<String,Integer>> carInfoList;
     private Integer tryCount;
 
     public RacingGame(List<String> carNames, Integer tryCount) {
@@ -15,13 +16,29 @@ public class RacingGame {
         this.tryCount = tryCount;
     }
 
+    public void startGame(){
+        System.out.println("실행 결과");
+        for (int i = 0; i < tryCount; i++){
+            moveCars();
+            printEachResult();
+        }
+        printFinalResult();
+    }
+
+    private void moveCars(){
+        carInfoList.stream()
+            .flatMap(carInfo -> carInfo.entrySet().stream())
+            .filter(entry -> isMovingAvailable())
+            .forEach(entry -> entry.setValue(entry.getValue() + 1));
+    }
+
     public void printEachResult(){
         for (Map<String,Integer> carInfo : carInfoList){
             for (Map.Entry<String,Integer> entry : carInfo.entrySet()){
                 System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
             }
-            System.out.println();
         }
+        System.out.println();
     }
 
     public void printFinalResult() {
@@ -45,15 +62,17 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    private List<Map<String,Integer>> convertCarListToInfoList(List<String> carNames){
-        return carNames.stream().map(carName -> Map.of(carName, 0)).toList();
+    private List<HashMap<String,Integer>> convertCarListToInfoList(List<String> carNames){
+        return carNames.stream()
+                .map(carName -> new HashMap<String, Integer>(Map.of(carName, 0)))
+                .toList();
     }
 
     private boolean isMovingAvailable(){
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    public List<Map<String,Integer>> getCarInfoList(){
+    public List<HashMap<String,Integer>> getCarInfoList(){
         return carInfoList;
     }
 

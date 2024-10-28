@@ -13,5 +13,8 @@ public class Application {
         InputController inputController = new InputController();
         List<String> carNames = inputController.readCarNames();
         Integer tryCount = inputController.readTryCount();
+
+        RacingGame racingGame = new RacingGame(carNames, tryCount);
+        racingGame.startGame();
     }
 }
