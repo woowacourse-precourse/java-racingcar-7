@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.CarCreator;
 import racingcar.domain.CarManager;
-import racingcar.domain.InputParser;
+import racingcar.utils.InputParser;
 import racingcar.domain.Winner;
 import racingcar.utils.RandomNumber;
 import racingcar.validation.Validator;
