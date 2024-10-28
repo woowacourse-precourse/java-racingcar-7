@@ -12,7 +12,11 @@ public class Application {
         Integer tryCount = inputHandler.getTryCount();
 
         RacingSimulation racingSimulation = new RacingSimulation();
+        RaceAnalyzer raceAnalyzer = new RaceAnalyzer();
         List<CarRecord> carRecords = racingSimulation.simulateRace(carNames, tryCount);
+        List<String> winners = raceAnalyzer.findWinners(carRecords, tryCount);
 
+        OutputHandler outputHandler = new OutputHandler();
+        outputHandler.getResult(carRecords, winners, tryCount);
     }
 }
