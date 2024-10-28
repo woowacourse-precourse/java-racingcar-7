@@ -27,6 +27,7 @@ public class Application {
         for(int i = 0; i < numberOfTry; i++) {
             play();
         }
+        view.printWinner();
     }
 
     public static void play(){

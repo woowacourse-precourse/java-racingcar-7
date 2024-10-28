@@ -32,5 +32,30 @@ public class View {
     public void printNumberScript(){
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
+    public void printWinner(){
+        ArrayList<String> winnersName = new ArrayList<>();
+        int winnerScore = 0;
 
+        System.out.print("최종 우승자 : ");
+
+        for (Car car : cars) {
+            if(winnerScore < car.getPosition()){
+                winnerScore = car.getPosition();
+            }
+        }
+        for (Car car : cars) {
+            if(winnerScore == car.getPosition()){
+                winnersName.add(car.getCarName());
+            }
+        }
+        for (int i = 0; i < winnersName.size(); i++) {
+            if(i == 0){
+                System.out.print(winnersName.get(i));
+            }
+            else {
+                System.out.print(", " +winnersName.get(i));
+            }
+        }
+
+    }
 }
