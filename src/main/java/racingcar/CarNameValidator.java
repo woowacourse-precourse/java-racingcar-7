@@ -48,7 +48,7 @@ public class CarNameValidator {
     }
 
     private boolean isMoreThanTwo(String[] carNameArray) {
-        return carNameArray.length > 2;
+        return carNameArray.length >= 2;
     }
 
     private boolean isSameName(String carName, Set<String> set) {
