@@ -5,6 +5,10 @@ import racingcar.exceptions.RacingCarExceptionHandler;
 import racingcar.exceptions.RacingCarExceptionMessage;
 
 public class Car {
+    private final int ADDED_SCORE = 1;
+    private final int MIN_PICK_NUM = 0;
+    private final int MAX_PICK_NUM = 9;
+    private final int CAN_DRIVE_NUM = 4;
     private final String name;
     private int score;
 
@@ -32,11 +36,11 @@ public class Car {
     }
 
     private void addScore() {
-        this.score += 1;
+        this.score += ADDED_SCORE;
     }
 
     public void drive() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+        if (Randoms.pickNumberInRange(MIN_PICK_NUM, MAX_PICK_NUM) >= CAN_DRIVE_NUM) {
             addScore();
         }
     }
