@@ -6,6 +6,7 @@ public class Car {
     private int position;
 
     public Car(String name) {
+        validate(name);
         this.name = name;
         this.position = 0;
     }
@@ -29,5 +30,15 @@ public class Car {
     @Override
     public String toString() {
         return this.name;
+    }
+
+    private void validate(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+
+        if (name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
     }
 }

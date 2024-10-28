@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,5 +33,18 @@ class CarTest {
 
         // then
         assertThat(string).hasToString("test : -");
+    }
+
+    @DisplayName("자동차 이름이 null이거나 공백이면 오류 반환")
+    @Test
+    void carNameNullOrBlankTest() {
+        assertThatThrownBy(() -> new Car(null)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car(" ")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("자동차 이름이 5자 초과시 오류 반환")
+    @Test
+    void carNameLengthTest() {
+        assertThatThrownBy(() -> new Car("123456")).isInstanceOf(IllegalArgumentException.class);
     }
 }
