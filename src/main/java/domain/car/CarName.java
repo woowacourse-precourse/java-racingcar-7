@@ -23,6 +23,7 @@ public class CarName {
     private void validateCarName(final String name) {
         validateBlank(name);
         validateLength(name);
+        validateSpecialCharacters(name); // 제어 문자 검증 추가
     }
 
     private void validateBlank(final String name) {
@@ -35,6 +36,16 @@ public class CarName {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_LENGTH.getMessage());
         }
+    }
+
+    private void validateSpecialCharacters(final String name) {
+        if (containsSpecialCharacters(name)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_SPECIAL_CHARACTER.getMessage());
+        }
+    }
+
+    private boolean containsSpecialCharacters(final String name) {
+        return name.contains("\\n") || name.contains("\\t") || name.contains("\\r") || name.contains("\\b");
     }
 
     @Override
