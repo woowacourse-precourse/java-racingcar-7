@@ -33,7 +33,7 @@ public class InputValidator {
     }
 
     private void checkSpecialChar(String input) {
-        if (!RegexUtils.isContainSpecialChar(input)) {
+        if (!RegexUtils.isContainOnlyOneComma(input)) {
             throw new IllegalArgumentException(SPECIAL_CHAR_IS_NOT_ALLOWED);
         }
     }
