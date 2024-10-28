@@ -12,7 +12,6 @@ public class MoveInput {
     }
 
     private int howManyMove() {
-        // 원시값 포장 필요
         String isNumberOfMoveString = Console.readLine();
         int numberOfMove = isNumberOfMove(isNumberOfMoveString);
 
