@@ -1,7 +1,10 @@
 package racingcar;
 
+import racingcar.service.RacingCarStarter;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingCarStarter racingCarStarter = new RacingCarStarter();
+        racingCarStarter.start();
     }
 }
