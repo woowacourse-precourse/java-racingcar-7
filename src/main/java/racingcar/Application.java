@@ -5,9 +5,7 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-
-        try {
+        try (Scanner scanner = new Scanner(System.in)){
             String[] names = nameInput(scanner);
             int count = getTryCount(scanner);
             play(names, count);
@@ -32,11 +30,15 @@ public class Application {
 
     private static int getTryCount(Scanner scanner) {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int count = scanner.nextInt();
-        if (count < 1) {
-            throw new IllegalArgumentException("1 이상의 숫자를 입력해 주세요");
+        try {
+            int count = scanner.nextInt();
+            if (count < 1) {
+                throw new IllegalArgumentException("1 이상의 숫자를 입력해 주세요.");
+            }
+            return count;
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("1 이상의 숫자를 입력해 주세요.");
         }
-        return count;
     }
 
     private static void play(String[] names, int count) {
