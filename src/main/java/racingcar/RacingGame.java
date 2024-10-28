@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame implements Game {
     private final Cars cars;
@@ -26,11 +25,7 @@ public class RacingGame implements Game {
 
     private void playOneRound() {
         cars.pickRandomNumberAndMoveCar();
-        List<GameRoundResultOutput> roundResults = cars.getCars().stream()
-                .map(car -> new RacingRoundResultOutput(car.getName(), car.getPosition()))
-                .collect(Collectors.toList());
-
-        resultView.printRoundResult(roundResults);
+        resultView.printRoundResult(cars.createRoundResults());
     }
 
     private void printWinners() {

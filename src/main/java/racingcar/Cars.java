@@ -60,6 +60,12 @@ public class Cars {
         return cars.size();
     }
 
+    public List<GameRoundResultOutput> createRoundResults() {
+        return cars.stream()
+                .map(car -> new RacingRoundResultOutput(car.getName(), car.getPosition()))
+                .collect(Collectors.toList());
+    }
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
