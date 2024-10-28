@@ -15,11 +15,13 @@ public class RaceProgressService {
     }
 
     public void moveCarsInRounds(List<RacingCar> cars) {
-        cars.forEach(car -> {
-            int randomValue = randomNumberGenerator.generate();
-            Movement movement = determineMovement(randomValue);
-            car.move(movement);
-        });
+        cars.forEach(this::moveCar);
+    }
+
+    private void moveCar(RacingCar car) {
+        int randomValue = randomNumberGenerator.generate();
+        Movement movement = determineMovement(randomValue);
+        car.move(movement);
     }
 
     public List<CarLocation> getCurrentLocations(List<RacingCar> cars) {
