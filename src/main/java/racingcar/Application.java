@@ -1,3 +1,5 @@
+package racingcar;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -16,22 +18,22 @@ public class Application {
             displayWinners(cars);
         } catch (IllegalArgumentException e) {
             System.out.println("입력 오류: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("예기치 못한 오류로 인하여 실행에 실패하였습니다.");
-            e.printStackTrace(); // 스택 트레이스 출력
         }
     }
 
     private static List<Car> initializeCars() {
         System.out.println("자동차 이름을 입력하세요 (이름은 쉼표(,)로 구분).");
         String input = Console.readLine();
-        String[] names = input.split(",");
 
+        // 쉼표로 분리하여 이름 배열 생성
+        String[] names = input.split(",");
         validateCarNames(names);
 
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(new Car(name));
+            if (!name.isBlank()) {
+                cars.add(new Car(name.trim())); // 공백 제거 후 추가
+            }
         }
         return cars;
     }
@@ -40,28 +42,35 @@ public class Application {
         Set<String> uniqueNames = new HashSet<>();
 
         for (String name : names) {
-            if (name.isBlank()) {
-                throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
-            }
-            if (name.length() > 5) {
+            String trimmedName = name.trim();
+
+            // 5자 이하 검사
+            if (trimmedName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
-            if (!uniqueNames.add(name)) {
-                throw new IllegalArgumentException("중복된 자동차 이름이 입력되었습니다.");
+            // 빈 이름 검사
+            if (trimmedName.isEmpty()) {
+                throw new IllegalArgumentException("한 대 이상의 자동차 이름을 입력해야 합니다.");
+            }
+            // 중복 검사
+            if (!uniqueNames.add(trimmedName)) {
+                throw new IllegalArgumentException("중복된 자동차 이름을 입력할 수 없습니다.");
             }
         }
     }
 
     private static int getMoveCount() {
         System.out.println("시도할 횟수는 몇회인가요?");
+        String input = Console.readLine();
+
         try {
-            int moves = Integer.parseInt(Console.readLine());
+            int moves = Integer.parseInt(input);
             if (moves <= 0) {
-                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+                throw new IllegalArgumentException("이동 횟수는 1 이상의 숫자를 입력해야 합니다.");
             }
             return moves;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+            throw new IllegalArgumentException("이동 횟수는 숫자를 입력해야 합니다.");
         }
     }
 
