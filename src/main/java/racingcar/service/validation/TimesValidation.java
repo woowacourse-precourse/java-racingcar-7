@@ -2,7 +2,7 @@ package racingcar.service.validation;
 
 import racingcar.exception.ErrorMessage;
 
-public class TimesValidation {
+public class TimesValidation extends BasicValidation {
 
     public static void validateAllInput(final String input){
         validateEmpty(input);
@@ -10,17 +10,6 @@ public class TimesValidation {
         validateCharacter(input);
     }
 
-    public static void validateEmpty(final String input) {
-        if (input.isEmpty()){
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_NO_TIMES.toString());
-        }
-    }
-
-    public static void validateNull(final String input) {
-        if (input == null) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_NO_TIMES.toString());
-        }
-    }
     public static void validateCharacter(final String input) {
         if (!hasOnlyDigits(input)) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_ONLY_DIGIT.toString());

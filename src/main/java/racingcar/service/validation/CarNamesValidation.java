@@ -2,25 +2,13 @@ package racingcar.service.validation;
 
 import racingcar.exception.ErrorMessage;
 
-public class CarNamesValidation {
+public class CarNamesValidation extends BasicValidation{
 
     public static void validateAllInput(String input){
         validateEmpty(input);
         validateNull(input);
         validateDelimiter(input);
         validateBetweenDelimiter(input);
-    }
-
-    public static void validateEmpty(String input) {
-        if (input.isEmpty()){
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_NO_CAR_NAME.toString());
-        }
-    }
-
-    public static void validateNull(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_NO_CAR_NAME.toString());
-        }
     }
 
     public static void validateDelimiter(String input) {
