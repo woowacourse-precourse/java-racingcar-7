@@ -32,17 +32,9 @@ public class RacingGameManager {
         OutputView.printMessage("시도할 횟수는 몇 회인가요?");
         String inputAttemptNumber = InputView.inputConsole();
         InputValidator.validateInputNotEmpty(inputAttemptNumber);
-        int attemptNumber = parseAttemptNumber(inputAttemptNumber);
+        int attemptNumber = InputParser.parseAttemptNumber(inputAttemptNumber);
         InputValidator.validateAttemptNumber(attemptNumber);
         return attemptNumber;
-    }
-
-    private int parseAttemptNumber(String inputAttemptNumber) {
-        try {
-            return Integer.parseInt(inputAttemptNumber);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_ATTEMPT_EXCEPTION_MESSAGE);
-        }
     }
 
     private List<String> inputCarNames() {
