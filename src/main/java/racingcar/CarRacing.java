@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRacing {
     private List<Car> cars = new ArrayList<>();
@@ -66,5 +67,20 @@ public class CarRacing {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다.");
             }
         }
+    }
+
+    // 최종 우승자 결정 및 출력 메서드
+    private void printWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
