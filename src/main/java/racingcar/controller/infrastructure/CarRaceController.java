@@ -11,6 +11,8 @@ import racingcar.view.enumerate.OutputConstant;
 
 import java.util.List;
 
+import static racingcar.view.enumerate.ErrorOutputConstant.NAME_LENGTH_OVER_5_ERROR;
+
 public class CarRaceController implements RaceController {
     private final InputView inputView;
     private final OutputView outputView;
@@ -61,14 +63,13 @@ public class CarRaceController implements RaceController {
         String carNamesInput = requestCarNames();
         int tryTimes = requestTryTimes();
         List<String> carNames = process(carNamesInput);
-        return CarRace.init(carNames, tryTimes,new RaceRule());
+        return CarRace.init(carNames, tryTimes, new RaceRule());
     }
 
 
     private void validateNameLength(String name) {
         if (name.length() > 5) {
-            //enum error
-            throw new IllegalArgumentException("5글자이하의 자동차의 이름을 입력해주세요.");
+            throw new IllegalArgumentException(NAME_LENGTH_OVER_5_ERROR.getSentence());
         }
     }
 }
