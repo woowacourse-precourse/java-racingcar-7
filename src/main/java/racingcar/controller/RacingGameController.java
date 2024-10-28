@@ -20,6 +20,6 @@ public class RacingGameController {
             System.out.println();
         }
 
-        RaceService.findFinalWinner(carScores);
+        RaceService.findLastWinner(carScores);
     }
 }

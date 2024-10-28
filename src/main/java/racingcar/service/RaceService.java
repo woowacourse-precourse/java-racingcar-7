@@ -26,7 +26,7 @@ public class RaceService {
         return new CarScores(nowScores);
     }
 
-    public static void findFinalWinner(CarScores carScores) {
+    public static void findLastWinner(CarScores carScores) {
         int max = INIT_MAX;
 
         for (Map.Entry<CarName, Distance> nowCarScore : carScores.getCarScores().entrySet()) {
@@ -36,7 +36,7 @@ public class RaceService {
 
         LinkedHashMap<CarName, Distance> nowCarScores = carScores.getCarScores();
         Distance maxDistance = new Distance(max);
-        List<String> lastWinners = (List<String>) nowCarScores.entrySet().stream()
+        List<String> lastWinners = nowCarScores.entrySet().stream()
                 .filter(entry -> entry.getValue().equals(maxDistance))
                 .map(Map.Entry::getKey)
                 .map(CarName::getCarName)
@@ -57,9 +57,6 @@ public class RaceService {
     }
 
     private static int getNewMax(int max, int nowScore) {
-        if (nowScore > max) {
-            return nowScore;
-        }
-        return max;
+        return Math.max(nowScore, max);
     }
 }
