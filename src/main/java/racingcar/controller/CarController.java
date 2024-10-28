@@ -36,6 +36,7 @@ public class CarController {
     }
 
     private void game() {
+        carService.checkComplexity(cars.size(), numberOfTries);
         for (int i = 0; i < numberOfTries; i++) {
             for (Car car : cars) {
                 car.moveIfAboveThreshold(Randoms.pickNumberInRange(0, 9));

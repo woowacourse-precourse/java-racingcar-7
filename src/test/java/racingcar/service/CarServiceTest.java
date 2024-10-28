@@ -58,4 +58,11 @@ class CarServiceTest {
 
         Assertions.assertThat(carService.getWinner(cars)).isEqualTo("coh,pobi,jun");
     }
+
+    @Test
+    void 시간복잡도_테스트() {
+        int maxSize = 1000000;
+        assertThrows(IllegalArgumentException.class, () -> carService.checkComplexity(maxSize - 1, maxSize - 1));
+        assertThrows(IllegalArgumentException.class, () -> carService.checkComplexity(10000, 100000));
+    }
 }
