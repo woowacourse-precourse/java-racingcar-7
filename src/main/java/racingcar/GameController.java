@@ -22,6 +22,7 @@ public class GameController {
         List<Car> cars = createCarsFromNames(carNames);
         int round = getRacingRound();
         RaceReferee referee = RaceReferee.from(round);
+        inputView.closeConsole();
 
         while (round > 0) {
             referee.playRound(cars);
