@@ -1,6 +1,9 @@
 package racingcar.domain;
 
+import java.util.regex.Pattern;
+
 public class Car {
+    private static final String VALID_CHARACTER_REGEX = "^[a-zA-Z0-9가-힣]+$";
     private final String name;
     private int position;
     public Car(String name){
@@ -14,6 +17,9 @@ public class Car {
         }
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+        if (!Pattern.matches(VALID_CHARACTER_REGEX, name)) {
+            throw new IllegalArgumentException("자동차 이름은 영어, 숫자, 한글만 사용 가능합니다.");
         }
     }
 
