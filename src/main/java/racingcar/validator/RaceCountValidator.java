@@ -2,6 +2,7 @@ package racingcar.validator;
 
 import static racingcar.validator.ErrorMessages.INVALID_COUNT_RANGE;
 import static racingcar.validator.ErrorMessages.INVALID_COUNT_TYPE;
+import static racingcar.validator.ValidateConstants.MIN_RACE_COUNT;
 
 public class RaceCountValidator {
 
@@ -24,7 +25,7 @@ public class RaceCountValidator {
     }
 
     private static void validateCountRange(int raceCount) {
-        if (raceCount < 1) {
+        if (raceCount < MIN_RACE_COUNT.getValue()) {
             throw new IllegalArgumentException(INVALID_COUNT_RANGE.getMessage());
         }
     }

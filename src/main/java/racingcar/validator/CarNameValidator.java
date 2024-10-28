@@ -3,6 +3,7 @@ package racingcar.validator;
 import static racingcar.validator.ErrorMessages.INVALID_CAR_NAME_MAX_LENGTH;
 import static racingcar.validator.ErrorMessages.INVALID_CAR_NAME_MIN_LENGTH;
 import static racingcar.validator.ErrorMessages.INVALID_DUPLICATE_CAR_NAME;
+import static racingcar.validator.ValidateConstants.MAX_NAME_LENGTH;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -27,7 +28,7 @@ public class CarNameValidator {
     }
 
     private static void validateMaxNameLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH.getValue()) {
             throw new IllegalArgumentException(INVALID_CAR_NAME_MAX_LENGTH.getMessage());
         }
     }
