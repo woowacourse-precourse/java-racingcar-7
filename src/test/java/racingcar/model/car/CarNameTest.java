@@ -1,7 +1,7 @@
 package racingcar.model.car;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static racingcar.model.message.ErrorMessage.INVALID_CAR_NAME_LENGTH;
 
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +18,7 @@ class CarNameTest {
 		Car car = new Car(name);
 
 		// then
-		assertThat(car.getName()).isEqualTo(name);
+		assertEquals(name, car.getName());
 	}
 
 	@ParameterizedTest
