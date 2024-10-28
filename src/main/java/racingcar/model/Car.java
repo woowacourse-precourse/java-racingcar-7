@@ -26,10 +26,6 @@ public class Car {
         return position;
     }
 
-    private void validateName(String name) {
-
-    }
-
     public void move(boolean shouldMove) {
         if (shouldMove) {
             position++;
