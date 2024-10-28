@@ -27,14 +27,18 @@ public class OutputView {
             String name = racingResult.name();
             int position = racingResult.position();
 
-            String distance = MOVE_DISTANCE.repeat(position);
+            String distance = getMoveDistance(position);
             System.out.println(name + RACING_RESULT_DELIMITER + distance);
         }
-        System.out.println();
+        System.out.print(NEXT_LINE);
     }
 
     public void printWinner(List<String> winners) {
         String winner = String.join(WINNER_DELIMITER, winners);
         System.out.println("최종 우승자 : " + winner);
+    }
+
+    private String getMoveDistance(int position) {
+        return MOVE_DISTANCE.repeat(position);
     }
 }
