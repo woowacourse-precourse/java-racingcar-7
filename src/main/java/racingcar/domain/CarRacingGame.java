@@ -10,6 +10,7 @@ public class CarRacingGame {
 
     private static final List<Car> racingCars = new ArrayList<>();
 
+    private final List<String> winnerCars = new ArrayList<>();
     private final RandomNumber randomNumber;
 
     public CarRacingGame(RandomNumber randomNumber) {
@@ -44,5 +45,25 @@ public class CarRacingGame {
             result.put(racingCar.getName(), racingCar.getMove());
         }
         return result;
+    }
+
+    public List<String> findWinnerCars() {
+        int maxMove = -1;
+        for (Car racingCar : racingCars) {
+            maxMove = findMaxMoveCars(racingCar, maxMove);
+        }
+        return winnerCars;
+    }
+
+    private int findMaxMoveCars(Car racingCar, int maxMove) {
+        int move = racingCar.getMove();
+        if (move > maxMove) {
+            maxMove = move;
+            winnerCars.clear();
+            winnerCars.add(racingCar.getName());
+        } else if (move == maxMove) {
+            winnerCars.add(racingCar.getName());
+        }
+        return maxMove;
     }
 }
