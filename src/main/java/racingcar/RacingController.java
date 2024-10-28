@@ -18,16 +18,32 @@ public class RacingController {
 
     public static void printRacing(ArrayList<RacingCar> racingCars, int racingCounter) {
         System.out.println("\n실행 결과");
-        for(int i = 0; i < racingCounter; i++) {
-            printEachTurn(racingCars);
+
+        for (int i = 0; i < racingCounter; i++) {
+            printEachTurn(racingCars, i);
+            System.out.println();
         }
     }
-    public static void printEachTurn(ArrayList<RacingCar> racingCars) {
-        for(RacingCar racingcar : racingCars) {
-            String car = racingcar.getName();
-            System.out.print(car + " : " + "\n");
 
+
+    private static void printEachTurn(ArrayList<RacingCar> racingCars, int turn) {
+        for (RacingCar racingCar : racingCars) {
+            String carName = racingCar.getName();
+            System.out.print(carName + " : ");
+
+            ArrayList<Boolean> moveCondition = racingCar.getMoveCondition();
+            if (moveCondition.get(turn)) {
+                racingCar.move();
+            }
+
+            printCarPosition(racingCar);
+            System.out.println();
         }
-        System.out.print("\n");
+    }
+
+    private static void printCarPosition(RacingCar racingCar) {
+        for (int i = 0; i < racingCar.getPosition(); i++) {
+            System.out.print("-");
+        }
     }
 }

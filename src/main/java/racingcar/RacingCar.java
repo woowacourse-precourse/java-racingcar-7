@@ -22,5 +22,11 @@ public class RacingCar {
         return moveCondition;
     }
 
+    public int getPosition() {
+        return position;
+    }
 
+    public void move() {
+        position += 1;
+    }
 }
