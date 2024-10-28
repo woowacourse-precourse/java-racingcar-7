@@ -4,8 +4,8 @@ import racingcar.error.ErrorMessage;
 
 import java.util.ArrayList;
 
-public class nameLengthValidator {
-    private nameLengthValidator() {}
+public class NameLengthValidator {
+    private NameLengthValidator() {}
 
     public static void validate(ArrayList<String> carNames) {
         for (String carName : carNames) {

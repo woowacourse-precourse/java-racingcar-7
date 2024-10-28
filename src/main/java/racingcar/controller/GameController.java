@@ -1,8 +1,7 @@
 package racingcar.controller;
 
-import racingcar.validation.blankNameValidator;
-import racingcar.validation.nameLengthValidator;
-import racingcar.error.ErrorMessage;
+import racingcar.validation.BlankNameValidator;
+import racingcar.validation.NameLengthValidator;
 import racingcar.view.InputView;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ public class GameController {
     }
 
     private static void validateNameInput(ArrayList<String> carNames) {
-        blankNameValidator.validate(carNames);
-        nameLengthValidator.validate(carNames);
+        BlankNameValidator.validate(carNames);
+        NameLengthValidator.validate(carNames);
     }
 }

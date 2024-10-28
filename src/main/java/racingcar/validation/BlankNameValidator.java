@@ -4,11 +4,10 @@ import racingcar.error.ErrorMessage;
 
 import java.util.ArrayList;
 
-public class blankNameValidator {
-    private blankNameValidator() {}
+public class BlankNameValidator {
+    private BlankNameValidator() {}
 
     public static void validate(ArrayList<String> carNames) {
-        // 걍 입력에 공백이 있으면 gg
         for(String name : carNames) {
             checkNameContainsBlank(name);
         }

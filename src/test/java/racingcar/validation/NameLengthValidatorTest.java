@@ -19,7 +19,7 @@ class NameLengthValidatorTest {
     void validateValidNames() {
         ArrayList<String> validNames = new ArrayList<>(Arrays.asList("car1", "car2", "car3"));
 
-        assertThatCode(() -> nameLengthValidator.validate(validNames))
+        assertThatCode(() -> NameLengthValidator.validate(validNames))
             .doesNotThrowAnyException();
     }
 
@@ -28,7 +28,7 @@ class NameLengthValidatorTest {
     void validateInvalidNameLength() {
         ArrayList<String> invalidNames = new ArrayList<>(List.of("car123456"));
 
-        assertThatThrownBy(() -> nameLengthValidator.validate(invalidNames))
+        assertThatThrownBy(() -> NameLengthValidator.validate(invalidNames))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -40,7 +40,7 @@ class NameLengthValidatorTest {
         ArrayList<String> names = new ArrayList<>(Arrays.asList(invalidName));
 
         // when & then
-        assertThatThrownBy(() -> nameLengthValidator.validate(names))
+        assertThatThrownBy(() -> NameLengthValidator.validate(names))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -49,7 +49,7 @@ class NameLengthValidatorTest {
     void validateMixedNames() {
         ArrayList<String> mixedNames = new ArrayList<>(Arrays.asList("car1", "car123456", "car2"));
 
-        assertThatThrownBy(() -> nameLengthValidator.validate(mixedNames))
+        assertThatThrownBy(() -> NameLengthValidator.validate(mixedNames))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }
