@@ -22,7 +22,7 @@ public class RacingGameService {
             racingGames.addRacingGame(racingGame);
         }
 
-        return new ResultDTO(cars, racingGames, getMaxProgressCars(cars));
+        return new ResultDTO(printPlayingResult(racingGames, cars), getMaxProgressCars(cars));
     }
 
     public static String printPlayingResult(RacingGames racingGames, Cars cars){
