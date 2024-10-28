@@ -12,6 +12,14 @@ public class InputView {
     private static final Pattern NUMBER_PATTERN = Pattern.compile("^\\d+$");
     private static final String COMMA_DELIMITER = ",";
 
+    private static final String CAR_NAME_EMPTY_ERROR = "자동차 이름을 입력해주세요.";
+    private static final String CAR_NAME_DELIMITER_ERROR = "자동차 이름은 쉼표(,)를 기준으로 구분하여야합니다.";
+    private static final String CAR_NAME_LENGTH_ERROR = "각 자동차 이름은 1자 이상 5자 이하로 입력해주어야합니다.";
+    private static final String ATTEMPTS_EMPTY_ERROR = "이동횟수를 입력해주세요.";
+    private static final String ATTEMPTS_ZERO_ERROR = "이동횟수는 1번 이상이어야합니다.";
+    private static final String ATTEMPTS_NEGATIVE_ERROR = "이동횟수는 음수가 될 수 없습니다.";
+    private static final String ATTEMPTS_NUMBER_ERROR = "이동횟수는 숫자로만 입력가능합니다.";
+    
     public InputView() {
     }
 
@@ -31,11 +39,11 @@ public class InputView {
 
     private static void validateCarNames(String carNames) {
         if (carNames == null || carNames.isBlank()) {
-            throw new CarNameException("자동차 이름을 입력해주세요.");
+            throw new CarNameException(CAR_NAME_EMPTY_ERROR);
         }
 
         if (!carNames.contains(COMMA_DELIMITER)) {
-            throw new CarNameException("자동차 이름은 쉼표(,)를 기준으로 구분하여야합니다.");
+            throw new CarNameException(CAR_NAME_DELIMITER_ERROR);
         }
 
         String[] names = carNames.split(COMMA_DELIMITER);
@@ -46,22 +54,22 @@ public class InputView {
 
     private static void checkNameLength(String name) {
         if (name.isBlank() || name.length() > 5) {
-            throw new CarNameException("각 자동차 이름은 1자 이상 5자 이하로 입력해주어야합니다.");
+            throw new CarNameException(CAR_NAME_LENGTH_ERROR);
         }
     }
 
     private static void validateNumberOfAttempts(String inputNum) {
         if (inputNum == null || inputNum.isBlank()) {
-            throw new MoveCountException("이동횟수를 입력해주세요.");
+            throw new MoveCountException(ATTEMPTS_EMPTY_ERROR);
         }
         if (inputNum.equals("0")) {
-            throw new MoveCountException("이동횟수는 1번 이상이어야합니다.");
+            throw new MoveCountException(ATTEMPTS_ZERO_ERROR);
         }
         if (inputNum.contains("-")) {
-            throw new MoveCountException("이동횟수는 음수가 될 수 없습니다.");
+            throw new MoveCountException(ATTEMPTS_NEGATIVE_ERROR);
         }
         if (!NUMBER_PATTERN.matcher(inputNum).matches()) {
-            throw new MoveCountException("이동횟수는 숫자로만 입력가능합니다.");
+            throw new MoveCountException(ATTEMPTS_NUMBER_ERROR);
         }
     }
 }
