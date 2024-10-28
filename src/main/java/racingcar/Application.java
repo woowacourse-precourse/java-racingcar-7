@@ -28,8 +28,12 @@ public class Application {
         List<String> nameList = carInitializer.splitCarNameString(InputCarNames);
         stateMap = carInitializer.setStateMap(nameList);
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        progressCount = Integer.parseInt(Console.readLine());
+        try {
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            progressCount = Integer.parseInt(Console.readLine());
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException("올바르지 않은 값을 입력받았습니다.");
+        }
     }
 
     /**
@@ -38,10 +42,13 @@ public class Application {
      */
     private static void progressRace() {
         System.out.println("실행 결과");
+        StringBuilder progressResultBuilder = new StringBuilder();
         for (int i = 0; i < progressCount; i++) {
             progressCarRace.moveForward(stateMap);
-            progressCarRace.printStates(stateMap);
+            progressResultBuilder.append(progressCarRace.printStates(stateMap));
         }
+
+        System.out.println(progressResultBuilder.toString());
     }
 
     /**

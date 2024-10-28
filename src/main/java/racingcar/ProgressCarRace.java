@@ -23,8 +23,9 @@ public class ProgressCarRace {
 
     /**
      * 현재 각 자동차의 상황(전진 횟수)을 출력합니다.
+     * @return 현재 경주 상황 문자열
      */
-    void printStates(Map<String, Integer> stateMap) {
+    String printStates(Map<String, Integer> stateMap) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Map.Entry<String, Integer> entry : stateMap.entrySet()) {
             stringBuilder.append(entry.getKey()).append(" : ");
@@ -32,7 +33,7 @@ public class ProgressCarRace {
             stringBuilder.append(System.lineSeparator());
         }
 
-        System.out.println(stringBuilder.toString());
+        return stringBuilder.toString();
     }
 
 }
