@@ -1,7 +1,5 @@
 package racingcar.executor.decider.movement;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class RandomMovementDeciderImpl implements RandomMovementDecider {
 
     @Override
