@@ -7,4 +7,9 @@ public class InputView {
         System.out.println("Enter names of cars:");
         return Console.readLine();
     }
+
+    public int inputAttemptCount() {
+        System.out.println("Enter number of attempts:");
+        return Integer.parseInt(Console.readLine());
+    }
 }
