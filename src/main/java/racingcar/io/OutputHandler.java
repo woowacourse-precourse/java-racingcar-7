@@ -20,11 +20,10 @@ public class OutputHandler {
 	public void showWinner(List<String> winner) {
 		System.out.print("최종 우승자 : ");
 
-		if (winner.size() == 1) {    // 우승자가 1명인 경우
+		if (winner.size() == 1) {
 			System.out.println(winner.get(0));
 			return;
 		}
-		// 우승자가 여러 명인 경우
 		System.out.println(String.join(", ", winner));
 	}
 

@@ -7,7 +7,7 @@ public class TryNumber {
 		this.tryNumber = tryNumber;
 	}
 
-	public static TryNumber from(int tryNumber){
+	public static TryNumber from(int tryNumber) {
 		return new TryNumber(tryNumber);
 	}
 

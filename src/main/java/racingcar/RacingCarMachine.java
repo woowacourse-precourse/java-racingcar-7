@@ -30,12 +30,10 @@ public class RacingCarMachine {
 
 		carName = initializeCarName();
 
-		// 1. 이름 입력 시 이름을 입력하지 않은 경우
 		if (carName.doesNotEnterCarName()) {
 			throw new IllegalArgumentException("이름을 입력해 주세요.");
 		}
 
-		// 2. 이름 입력 시 5자 이상인 경우
 		carName.isCarNameLengthValid();
 
 		outputHandler.showTryMessage();
@@ -43,42 +41,34 @@ public class RacingCarMachine {
 		try {
 			tryNumber = initializeTryNumber();
 
-			// 6. 시도 횟수로 0이 입력된 경우
 			if (tryNumber.isSameTryNumberZero()) {
 				throw new IllegalArgumentException("게임을 실행할 수 없습니다.");
 			}
 
-			// 4. 시도 횟수로 음수가 입력된 경우
 			if (tryNumber.doesTryNumberNegative()) {
 				throw new IllegalArgumentException("시도 횟수는 양수를 입력해주세요.");
 			}
-			// 5. 시도 횟수로 숫자가 아닌 값이 입력된 경우
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("시도 횟수는 문자를 입력할 수 없습니다.");
 		}
 
-		// 1명이 입력된 경우 바로 최종 우승자 출력
 		if (carName.hasOnlyOneCar()) {
 			outputHandler.showOnlyOneInputWinner(carName.getCarNames());
 			return;
 		}
 
-		// carForward에 이름 저장
 		saveCarNamesInCarForward();
 
 		outputHandler.showStartResultMessage();
 
 		executeGameByTryNumber();
 
-		// 7. 시도 횟수로 1이 입력 되었을 때 모든 차가 출발하지 않은 경우
 		if (doseOneTryNumberAndAllCarsNotForward()) {
 			throw new IllegalArgumentException("전진한 차가 없어서 우승자가 없습니다.");
 		}
 
-		// 가장 멀리간 자동차의 길이 구함
 		int winnerLength = getWinnerLength();
 
-		// 최종 우승자를 리스트에 담음
 		saveWinnerInList(winnerLength);
 
 		outputHandler.showWinner(winner);
@@ -124,7 +114,7 @@ public class RacingCarMachine {
 
 	private void canMoveForward() {
 		for (String car : carForward.keySet()) {
-			if (Randoms.pickNumberInRange(0, 9) >= 4) {    // 4이상일 경우 전진
+			if (Randoms.pickNumberInRange(0, 9) >= 4) {
 				carForward.replace(car, carForward.get(car) + "-");
 			}
 
