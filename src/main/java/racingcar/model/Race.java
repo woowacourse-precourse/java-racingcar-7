@@ -1,15 +1,19 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.validator.RaceValidator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    private List<Car> cars;
+    private final List<Car> cars;
     private final int attempts;
 
     public Race(List<Car> cars, int attempts) {
+        RaceValidator.validateCars(cars);
+        RaceValidator.validateAttempts(attempts);
+
         this.cars = cars;
         this.attempts = attempts;
     }
