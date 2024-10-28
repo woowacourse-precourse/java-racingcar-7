@@ -10,16 +10,10 @@ public class Application {
 
     public static void main(String[] args) {
         RacingController racingController = setUpController();
-
         racingController.startGame();
     }
 
     private static RacingController setUpController() {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-        CarFactory carFactory = new CarFactory();
-        Judge judge = new Judge();
-
-        return new RacingController(inputView, outputView, carFactory, judge);
+        return new RacingController(new InputView(), new OutputView(), new CarFactory(), new Judge());
     }
 }
