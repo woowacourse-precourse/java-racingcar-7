@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +26,14 @@ public class Application {
                 throw new IllegalArgumentException();
             }
             cars.put(car, 0);
+        }
+
+        for (int count = 0; count < raceRoundCount; count++) {
+            for (String car : cars.keySet()) {
+                if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                    cars.put(car, cars.get(car) + 1);
+                }
+            }
         }
     }
 }
