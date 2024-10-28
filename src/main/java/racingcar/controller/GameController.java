@@ -21,6 +21,7 @@ public class GameController {
 
         ArrayList<Car> carList = registerCars(carNames);
         startGame(carList, DataTransFormer.makeStringToInt(trialTimes));
+        ArrayList<String> winners = chooseTheWinner(carList);
     }
 
     private static void validateNameInput(ArrayList<String> carNames) {
@@ -70,10 +71,10 @@ public class GameController {
         OutputView.printIntermediateResult(carList);
     }
 
-//    private static Car chooseTheWinner() {
-//
-//    }
-//
+    private static ArrayList<String> chooseTheWinner(ArrayList<Car> carList) {
+        return GameService.makeWinnerList(carList);
+    }
+
 //    private void anncounceTheWinner() {
 //
 //    }
