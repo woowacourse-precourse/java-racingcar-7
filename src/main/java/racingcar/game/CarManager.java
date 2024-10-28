@@ -5,10 +5,10 @@ import racingcar.util.Printer;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarManager {
     private static final String WINNER_FORMAT = ", ";
-    private static final int SINGLE_WINNER = 1;
 
     private final List<Car> carList;
 
@@ -31,22 +31,15 @@ public class CarManager {
     }
 
     public String getWinners() {
-        int maxPosition = findMaxPosition(this.carList);
-        return findWinners(this.carList.stream()
+        int maxPosition = findMaxPosition();
+        return this.carList.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
-                .toList());
+                .collect(Collectors.joining(WINNER_FORMAT));
     }
 
-    private String findWinners(List<String> matchResult) {
-        if (matchResult.size() != SINGLE_WINNER) {
-            return String.join(WINNER_FORMAT, matchResult);
-        }
-        return matchResult.getFirst();
-    }
-
-    private int findMaxPosition(List<Car> matchResult) {
-        List<Car> sortedList = new ArrayList<>(matchResult);
+    private int findMaxPosition() {
+        List<Car> sortedList = new ArrayList<>(this.carList);
         sortedList.sort(Comparator.comparing(Car::getPosition).reversed());
         return sortedList.getFirst().getPosition();
     }
