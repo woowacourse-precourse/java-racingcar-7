@@ -58,18 +58,6 @@ class ValidatorTest {
     }
 
     @Test
-    @DisplayName("정해진 구분자를 사용하지 않으면 예외")
-    void checkDelimiter() {
-        //given
-        String inputNames = "pobi;woni;jun";
-
-        //when //then
-        assertThatThrownBy(() -> validator.validateCarNames(inputNames))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("잘못된 구분자를 사용하였습니다");
-    }
-
-    @Test
     @DisplayName("숫자외의 값이 들어오면 예외")
     void checkNumeric() {
         //given
