@@ -9,6 +9,7 @@ public class Run {
     public void start() {
         List<Car> racingCar = new ArrayList<>();
         getCar(racingCar);
+        int tryNum = getTryNum();
     }
 
     private void getCar(List<Car> racingCar) {
@@ -17,7 +18,7 @@ public class Run {
         String[] splitCarName = getCarName(names);
 
         for (String carName : splitCarName) {
-            racingCar.add(new Car(carName,0));
+            racingCar.add(new Car(carName, 0));
         }
     }
 
@@ -26,8 +27,8 @@ public class Run {
         if (carNames.length == 0) {
             throw new IllegalStateException();
         }
-        for(String carName : carNames) {
-            if(carName.length() > 5 || carName.isBlank()) {
+        for (String carName : carNames) {
+            if (carName.length() > 5 || carName.isBlank()) {
                 throw new IllegalStateException();
             }
             isDigit(carName);
@@ -42,5 +43,21 @@ public class Run {
                 throw new IllegalStateException();
             }
         }
+    }
+
+    private int getTryNum() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String tryNum = Console.readLine();
+        for (int i = 0; i < tryNum.length(); i++) {
+            char c = tryNum.charAt(i);
+            if (c >= 48 && c <= 57) {
+                continue;
+            } else {
+                throw new IllegalStateException();
+            }
+        }
+        System.out.println();
+        return Integer.parseInt(tryNum);
+
     }
 }
