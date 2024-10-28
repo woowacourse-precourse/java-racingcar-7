@@ -5,7 +5,7 @@ import java.util.List;
 public class OutputRacing {
     public static void main(String[] args) {
         RandomRaceOrNot RaceResult = new RandomRaceOrNot();
-        RaceResult.performRace(); // 레이스 수행
+        RaceResult.performRace();
 
         String[] carList = RaceResult.getCarList();
         List<StringBuilder> progressList = RaceResult.getProgressList();
@@ -14,6 +14,9 @@ public class OutputRacing {
         for (int i = 0; i < carList.length; i++) {
                 System.out.println(carList[i] + " : " + progressList.get(i).toString());
             }
+
+        String winners = OutputWinner.findWinners(carList, progressList);
+        System.out.println("최종 우승자 : " + winners);
     }
 }
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public class RandomRaceOrNot {
-    private List<StringBuilder> progressList = new ArrayList<>();
+    private final List<StringBuilder> progressList = new ArrayList<>();
     private String[] carList;
 
     public void performRace() {
