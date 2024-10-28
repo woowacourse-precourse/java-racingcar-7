@@ -4,22 +4,38 @@ import camp.nextstep.edu.missionutils.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
-        StringTokenizer tokenizer = new StringTokenizer(Console.readLine(), ",");
-        String car1 = tokenizer.nextToken();
-        String car2 = tokenizer.nextToken();
-        String car3 = tokenizer.nextToken();
-        String[] cars = new String[]{car1, car2, car3};
-        System.out.println("시도할 홧수는 몇 회인가요?");
-        int trial = Integer.parseInt(Console.readLine());
+        try {
+            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
+            String[] carNames = Console.readLine().split(",");
+            List<Car> cars = new ArrayList<>();
+            for (String name : carNames) {
+                name = name.trim();
+                if (name.length() > 5) {
+                    throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다");
+                }
+                cars.add(new Car(name));
+            }
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            int trial = Integer.parseInt(Console.readLine());
+            if(trial < 0) {
+                throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다.")
+            }
+            System.out.println("실행 결과");
 
-        System.out.println("실행 결과");
+            //게임 실행
+            for (int i = 0; i <trial; i++) {
+                playOneRound(cars);
+                //매판 결과값
+            }
+            winner(cars);
+        }catch (IllegalArgumentException e){
+            System.out.println("잘못된 입력입니다: " + e.getMessage());
+        }
 
         //전진 멈추는 방법(4이상일때만)
         private static void playOneRound(List<Car> cars) {
