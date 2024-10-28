@@ -24,4 +24,13 @@ public class CarNameTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"우아한테크코스프리코스", "자동차경주과제", "2주차화이팅", "pobiiii"})
+    void 자동차_이름이_다섯_글자를_초과할_때_예외_발생(String carName) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> CarName.from(carName))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
