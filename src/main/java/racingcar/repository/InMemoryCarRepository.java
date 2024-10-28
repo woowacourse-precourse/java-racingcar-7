@@ -51,10 +51,9 @@ public class InMemoryCarRepository implements CarRepository{
                 .collect(Collectors.toList());
     }
 
-    public List<Car> findByName(String name) {
+    public boolean existsByName(String name) {
         return carStore.stream()
-                .filter(car -> Objects.equals(car.getName(), name))
-                .collect(Collectors.toList());
+                .anyMatch(car -> Objects.equals(car.getName(), name));
     }
 
     public void reset() {

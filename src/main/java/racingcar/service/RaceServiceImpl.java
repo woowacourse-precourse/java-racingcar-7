@@ -76,7 +76,7 @@ public class RaceServiceImpl implements RaceService{
     }
 
     private void validateNameDuplication(String name) {
-        if(!carRepository.findByName(name).isEmpty()) {
+        if(carRepository.existsByName(name)) {
             carRepository.reset();
             throw new IllegalArgumentException();
         }

@@ -7,6 +7,6 @@ public interface CarRepository {
     void save(Car car);
     List<Car> findAll();
     List<Car> findWinners();
-    List<Car> findByName(String name);
+    boolean existsByName(String name);
     void reset();
 }
