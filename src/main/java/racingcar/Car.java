@@ -21,7 +21,7 @@ public class Car {
 
     public void moveForward(int distance) {
         if (MINIMUM_DISTANCE <= distance) {
-            this.location = distance;
+            this.location = location + 1;
         }
     }
 

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
@@ -18,13 +18,13 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"4,4", "5,5", "6,6", "7,7", "8,8", "9,9"})
-    void 자동차는_앞으로_갈_수_있다(int distance, int expected) {
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void 거리가_4이상이면_자동차는_앞으로_갈_수_있다(int distance) {
         Car yh = new Car("yh");
 
         yh.moveForward(distance);
 
-        assertEquals(expected, yh.currentLocation());
+        assertEquals(1, yh.currentLocation());
     }
 
     @Test
