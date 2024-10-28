@@ -8,7 +8,6 @@ public class AdvanceAction {
     public Map<String, String> setCarList = new HashMap<>(); // 받아올 변수 선언
     public String[] carList;
     private int maxDistance = 0;
-    private String winner;
 
     public void setFirst(String[] carList) {
         this.carList = carList;
