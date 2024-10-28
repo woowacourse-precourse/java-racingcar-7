@@ -3,7 +3,7 @@ package racingcar.application.implement;
 import java.util.List;
 import racingcar.domain.CarRacer;
 
-public class RacingWinnerIdentifier implements WinnerIdentifier<CarRacer> {
+public class CarRaceWinnerIdentifier implements RaceWinnerIdentifier<CarRacer> {
 
     @Override
     public List<CarRacer> identify(List<CarRacer> racedCars) {

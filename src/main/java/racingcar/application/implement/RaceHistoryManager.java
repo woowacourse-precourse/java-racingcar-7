@@ -2,7 +2,7 @@ package racingcar.application.implement;
 
 import java.util.List;
 
-public interface RacingHistoryManager<T> {
+public interface RaceHistoryManager<T> {
 
     void record(List<T> racers);
 

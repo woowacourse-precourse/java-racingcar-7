@@ -4,12 +4,12 @@ import java.util.List;
 import racingcar.persistence.RacingCarHistoryRepository;
 import racingcar.domain.CarRacer;
 
-public class RacingCarHistoryManager implements RacingHistoryManager<CarRacer> {
+public class CarRaceHistoryManager implements RaceHistoryManager<CarRacer> {
 
     private final RacingCarHistoryRepository repository;
-    private final RacingCarHistoryWriter writer;
+    private final CarRaceHistoryWriter writer;
 
-    public RacingCarHistoryManager(RacingCarHistoryRepository repository, RacingCarHistoryWriter writer) {
+    public CarRaceHistoryManager(RacingCarHistoryRepository repository, CarRaceHistoryWriter writer) {
         this.repository = repository;
         this.writer = writer;
     }

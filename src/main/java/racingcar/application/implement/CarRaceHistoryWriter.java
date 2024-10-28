@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.CarRacer;
 
-public class RacingCarHistoryWriter {
+public class CarRaceHistoryWriter {
 
     public String writeAll(List<CarRacer> carRacers) {
         return carRacers.stream()

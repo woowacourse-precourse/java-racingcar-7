@@ -1,7 +1,8 @@
 package racingcar.common;
 
 import racingcar.application.implement.RaceHistoryManager;
-import racingcar.application.implement.RacingWinnerIdentifier;
+import racingcar.application.implement.CarRaceWinnerIdentifier;
+import racingcar.application.implement.RaceWinnerIdentifier;
 import racingcar.application.implement.WinnerIdentifier;
 import racingcar.common.support.RacingCarConverter;
 import racingcar.persistence.RacingCarHistoryRepository;
@@ -10,8 +11,8 @@ import racingcar.common.support.ObjectConverter;
 import racingcar.application.Game;
 import racingcar.persistence.CarRacerRepository;
 import racingcar.application.implement.CarRaceStarter;
-import racingcar.application.implement.RaceCarHistoryManager;
-import racingcar.application.implement.RacingCarHistoryWriter;
+import racingcar.application.implement.CarRaceHistoryManager;
+import racingcar.application.implement.CarRaceHistoryWriter;
 import racingcar.application.implement.RaceStarter;
 import racingcar.domain.CarRacer;
 import racingcar.application.RacingCarGame;
@@ -45,7 +46,7 @@ public class GameConfig {
     }
 
     private RacingManager<CarRacer> racingManager() {
-        return new RacingCarManager(race(), racingCarRepository(), carRaceHistoryRecorder(), winnerIdentifier());
+        return new RacingCarManager(race(), carRaceHistoryRecorder(), raceWinnerIdentifier(), racingCarRepository());
     }
 
     private CarRacerRepository racingCarRepository() {
@@ -57,10 +58,10 @@ public class GameConfig {
     }
 
     private RaceHistoryManager<CarRacer> carRaceHistoryRecorder() {
-        return new RaceCarHistoryManager(RacingCarHistoryRepository.getInstance(), new RacingCarHistoryWriter());
+        return new CarRaceHistoryManager(RacingCarHistoryRepository.getInstance(), new CarRaceHistoryWriter());
     }
 
-    private WinnerIdentifier<CarRacer> winnerIdentifier() {
-        return new RacingWinnerIdentifier();
+    private RaceWinnerIdentifier<CarRacer> raceWinnerIdentifier() {
+        return new CarRaceWinnerIdentifier();
     }
 }
