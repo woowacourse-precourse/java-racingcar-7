@@ -30,11 +30,12 @@ public class Validator {
 	}
 
 	private static void validateCarNameLength(List<String> carNames) {
-		for (String carName : carNames) {
-			if (carName.length() > MAX_CAR_NAME_LENGTH) {
+		carNames.stream()
+			.filter(carName -> carName.length() > MAX_CAR_NAME_LENGTH)
+			.findAny()
+			.ifPresent(carName -> {
 				throw new IllegalArgumentException(ErrorMessage.OVER_CAR_NAME_LENGTH.getMessage());
-			}
-		}
+			});
 	}
 
 	private static void validateDuplicateCarNames(List<String> carNames) {
