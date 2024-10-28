@@ -12,6 +12,7 @@ public class InputValidator {
     }
 
     public void validateCarName(final String cars){
+        isNullInputString(cars);
         List<String> carNameList = Arrays.asList(cars.split(","));
         isEmptyList(carNameList);
         for(String carName : carNameList){
@@ -19,6 +20,12 @@ public class InputValidator {
             isValidCarNameLength(carName);
         }
         hasDuplicateCarName(carNameList);
+    }
+
+    private void isNullInputString(String text){
+        if(text == null){
+            throw new IllegalArgumentException();
+        }
     }
 
     private void isEmptyList(List<String> carList){
