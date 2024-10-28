@@ -62,6 +62,11 @@ class ApplicationTest extends NsTest {
         assertExceptionThrown("pobi,woni", "-1", ErrorMessage.INVALID_NUMBER_FORMAT);
     }
 
+    @Test
+    void 이동횟수가_숫자가_아닌_경우_예외_발생() {
+        assertExceptionThrown("pobi,woni", "abc", ErrorMessage.INVALID_NUMBER_FORMAT);
+    }
+
     private void assertExceptionThrown(String input, String rounds, ErrorMessage errorMessage) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input, rounds))
