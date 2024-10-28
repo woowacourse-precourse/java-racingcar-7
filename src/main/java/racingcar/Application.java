@@ -2,15 +2,32 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 class Car {
     private final String name;
+    private int position = 0;
 
     public Car(String name) {
         this.name = name;
     }
-    public String getNma() {
+    public String getName() {
         return name;
+    }
+    public int getPosition() {
+        return position;
+    }
+    public void move() {
+        if (canMove()) {
+            position++; // 무작위 숫자가 4 이상일 경우 전진
+        }
+    }
+    public boolean canMove() {
+        return new Random().nextInt(10) >= 4; // 0부터 9까지의 무작위 숫자 생성
+    }
+    @Override
+    public String toString() {
+        return name + " : " + "-".repeat(position);
     }
 }
 public class Application {
@@ -24,7 +41,23 @@ public class Application {
             cars.add(new Car(name));
         }
         this.rounds = rounds;
+
+
     }
+    public void start() {
+        System.out.println("실행 결과:");
+        for (int i = 0; i < rounds; i++) {
+            playRound();
+
+        }
+
+    }
+    private void playRound() {
+        for (Car car : cars) {
+            car.move(); // 각 자동차 이동
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Scanner sc = new Scanner(System.in);
