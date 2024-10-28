@@ -19,7 +19,7 @@
 - Test
     - [x] CarNameTest
     - [x] MovementTest
-    - [ ] ProgressResultGeneratorTest
+    - [x] ProgressResultGeneratorTest
     - [ ] WinnerDeterminerTest
     - [ ] WinnerResultGeneratorTest
 
