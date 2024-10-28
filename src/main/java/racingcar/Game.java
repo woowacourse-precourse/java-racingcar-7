@@ -19,6 +19,7 @@ public class Game {
             printRoundResult(); // 라운드 결과 출력
         }
 
+        printWinner(); // 우승자 출력
     }
 
     // 시도 횟수 입력
