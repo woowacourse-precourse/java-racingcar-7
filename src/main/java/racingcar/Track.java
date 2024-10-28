@@ -42,7 +42,6 @@ public class Track {
             String userSituation = getUserSituation(vehicle);
             stringBuilder.append(userSituation);
         }
-        stringBuilder.append("\n");
         return stringBuilder.toString();
     }
 
