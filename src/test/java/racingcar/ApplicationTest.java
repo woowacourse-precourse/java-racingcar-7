@@ -25,10 +25,44 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_자동차_이름_길이_제한() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_이름_미입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(null, "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_이동횟수_숫자_아님() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "m"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_이동횟수_미입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", ""))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", null))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
