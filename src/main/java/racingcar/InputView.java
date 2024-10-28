@@ -15,24 +15,4 @@ public class InputView {
 
         return Console.readLine();
     }
-
-    private String removeBlank(String str) {
-        return str.replaceAll(" ", "");
-    }
-
-    private void validateCarNames(String[] cars) {
-        for (String car : cars) {
-            if (car.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
-            }
-        }
-    }
-
-    private int validateTryCount(String tryCount) {
-        try {
-            return Integer.parseInt(tryCount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
-        }
-    }
 }

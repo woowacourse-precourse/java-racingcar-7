@@ -37,11 +37,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 자동차_이름() {
-        run("pobi,woni", "1");
-    }
-
-    @Test
     void 시도_횟수_예외() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,java", "1d"))
