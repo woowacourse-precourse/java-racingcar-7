@@ -27,7 +27,7 @@ public class Application {
     }
 
     //입력문 기능으로 빼기
-    private static List<Car> inputName() {
+    public static List<Car> inputName() {
         String[] carNames = Console.readLine().split(",");
         validateName(carNames);
         List<Car> cars = new ArrayList<>();
@@ -37,7 +37,7 @@ public class Application {
         return cars;
     }
     //검증문도 빼기
-    private static void validateName(String[] carNames) {
+    public static void validateName(String[] carNames) {
         List<String> errors = new ArrayList<>();
         for (String name : carNames) {
             name = name.trim();
@@ -54,12 +54,12 @@ public class Application {
         }
     }
 
-    private static boolean isNumeric(String name) {
+    public static boolean isNumeric(String name) {
         return name.matches("\\d+");
     }
 
     //매판 결과값
-    private static void playResult(List<Car> cars) {
+    public static void playResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + car.exchangeDistance());
         }
@@ -67,7 +67,7 @@ public class Application {
     }
 
     //전진 멈추는 방법(4이상일때만)
-    private static void playOneRound(List<Car> cars) {
+    public static void playOneRound(List<Car> cars) {
 
         for (Car car : cars) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
@@ -77,7 +77,7 @@ public class Application {
     }
 
     //우승자를 뽑는 방식
-    private static void winner(List<Car> cars) {
+    public static void winner(List<Car> cars) {
         int maxDistatnce = 0;
         for (Car car : cars) {
             if (car.getDistance() >= maxDistatnce) {
