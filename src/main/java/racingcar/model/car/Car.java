@@ -34,7 +34,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        return this.getStatus() - o.getStatus();
+        return o.getStatus() - this.getStatus();
     }
 
     @Override
