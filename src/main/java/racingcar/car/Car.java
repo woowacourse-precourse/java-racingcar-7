@@ -29,14 +29,18 @@ public class Car implements Comparable<Car> {
         }
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getPosition() {
+        return this.name + " : " + "-".repeat(this.position);
+    }
+
     private void validateRange(final int randomNumber) {
         if (isRangeOut(randomNumber)) {
             throw new IllegalArgumentException(Constant.RANDOM_RANGE_VALUE_ERROR_STRING);
         }
-    }
-
-    public String getName() {
-        return this.name;
     }
 
     private boolean isRangeOut(final int number) {
@@ -56,8 +60,4 @@ public class Car implements Comparable<Car> {
         return this.position - car.position;
     }
 
-    @Override
-    public String toString() {
-        return this.name + " : " + "-".repeat(this.position);
-    }
 }

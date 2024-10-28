@@ -36,7 +36,7 @@ public class RacingManager {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < tryCount; i++) {
             cars.moveAll();
-            sb.append(cars).append("\n");
+            sb.append(cars.getRacingProgress()).append("\n");
         }
         return sb.toString();
     }

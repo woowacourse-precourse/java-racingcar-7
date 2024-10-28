@@ -15,7 +15,7 @@ class CarTest {
     @Test
     void 자동차_생성_성공() {
         final Car car = new Car("pobi", new TestNumberGenerator(1));
-        assertThat(car.toString()).isEqualTo("pobi : ");
+        assertThat(car.getPosition()).isEqualTo("pobi : ");
     }
 
     @ParameterizedTest
@@ -25,7 +25,7 @@ class CarTest {
                 () -> {
                     final Car car = new Car("pobi", new TestNumberGenerator(number));
                     car.move();
-                    assertThat(car.toString()).isEqualTo("pobi : ");
+                    assertThat(car.getPosition()).isEqualTo("pobi : ");
                 },
                 number
         );
@@ -38,7 +38,7 @@ class CarTest {
                 () -> {
                     final Car car = new Car("pobi", new RandomGenerator());
                     car.move();
-                    assertThat(car.toString()).isEqualTo("pobi : -");
+                    assertThat(car.getPosition()).isEqualTo("pobi : -");
                 },
                 number
         );

@@ -13,7 +13,7 @@ class CarsTest {
         List<String> names = List.of("pobi", "woni");
         Cars cars = Cars.createCars(names);
 
-        assertThat(cars.toString()).isEqualTo("pobi : \nwoni : \n");
+        assertThat(cars.getRacingProgress()).isEqualTo("pobi : \nwoni : \n");
     }
 
     @Test

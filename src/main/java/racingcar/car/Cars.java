@@ -21,6 +21,12 @@ public class Cars {
         return findSamePositionCars(getFirstPositionCar());
     }
 
+    public String getRacingProgress() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .collect(Collectors.joining("\n")) + "\n";
+    }
+
     public void moveAll() {
         cars.forEach(Car::move);
     }
@@ -42,13 +48,6 @@ public class Cars {
         return cars.stream()
                 .max(Car::compareTo)
                 .orElseThrow(() -> new IllegalArgumentException(Constant.CARS_EMPTY_ERROR_STRING));
-    }
-
-    @Override
-    public String toString() {
-        return cars.stream()
-                .map(Car::toString)
-                .collect(Collectors.joining("\n")) + "\n";
     }
 
 }
