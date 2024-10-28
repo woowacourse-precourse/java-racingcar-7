@@ -23,8 +23,6 @@ public class GameService {
         String carsName = inputView.getCarNames();
         List<Car> cars = carService.createCars(carsName);
         int attempts = inputView.getTryNumbers();
-        System.out.println();
-        System.out.println("실행 결과");
         return new GameData(cars, attempts);
     }
 
