@@ -5,17 +5,23 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         InputCarNameHandler inputCarNameHandler = new InputCarNameHandler();
-        List<String> carNames = inputCarNameHandler.getCarNames();
-
         InputAttemptHandler inputAttemptHandler = new InputAttemptHandler();
-        int attemptCount = inputAttemptHandler.getAttemptCount();
-        System.out.println();
-
         CarRace carRace = new CarRace();
-        carRace.initializeCarPositions(carNames);
-        carRace.attemptRace(attemptCount);
-
         WinnerAnnouncer winnerAnnouncer = new WinnerAnnouncer();
-        winnerAnnouncer.announceWinners(carRace.getCarPositions());
+
+        List<String> carNames = new ArrayList<>();
+        int attemptCount = 0;
+
+        try {
+            carNames = inputCarNameHandler.getCarNames();
+            attemptCount = inputAttemptHandler.getAttemptCount();
+
+            carRace.initializeCarPositions(carNames);
+            carRace.attemptRace(attemptCount);
+
+            winnerAnnouncer.announceWinners(carRace.getCarPositions());
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }
