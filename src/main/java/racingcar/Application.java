@@ -48,17 +48,18 @@ public class Application {
     private static int getAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
-        try {
-            int attempts = Integer.parseInt(input);
-            if (attempts <= 0) {
-                throw new IllegalArgumentException("횟수는 1 이상의 정수여야 합니다.");
-            }
-            return attempts;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 입력입니다. 숫자를 입력해주세요.");
-        }
+        return validateAttempts(input);
     }
 
+    private static int validateAttempts(String input) {
+        try {
+            int attempts = Integer.parseInt(input);
+            if(attempts <= 0) throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
+            return attempts;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
 
     // 입력 값 기준으로 게임 초기 세팅
     private static Map<String, Integer> initializeCarPositions(List<String> names) {
