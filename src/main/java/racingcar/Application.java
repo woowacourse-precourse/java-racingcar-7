@@ -13,20 +13,19 @@ public class Application {
         InputController inputController = new InputController(inputValidator);
         OutputView outputView = new OutputView();
         NumberGenerator numberGenerator = new NumberGenerator(MIN_NUMBER_IN_RANGE, MAX_NUMBER_IN_RANGE);
-        List<Car> cars;
+        Move move = new Move(numberGenerator);
+        Racers racers;
         int totalAttempts;
-        Move move;
         Racing racing;
 
         String inputNames = inputView.requestCarNames();
         List<String> carNames = inputController.extractCarNames(inputNames);
-        cars = carNames.stream().map(name -> new Car(name, INITIAL_MOVE_COUNT)).toList();
+        racers = new Racers(carNames.stream().map(name -> new Car(name, INITIAL_MOVE_COUNT)).toList());
 
         String inputAttempts = inputView.requestTotalAttempts();
         totalAttempts = inputController.convertToNumber(inputAttempts);
 
-        move = new Move(cars, numberGenerator);
-        racing = new Racing(cars, totalAttempts, move, outputView);
+        racing = new Racing(racers, move, outputView, totalAttempts);
         racing.race();
         racing.announceWinners();
     }

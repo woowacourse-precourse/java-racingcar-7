@@ -1,37 +1,27 @@
 package racingcar;
 
-import java.util.List;
-
 public class Racing {
-    private final List<Car> cars;
-    private final int totalAttempts;
+    private final Racers racers;
     private final Move move;
     private final OutputView outputView;
+    private final int totalRounds;
 
-    public Racing(List<Car> cars, int totalAttempts, Move move, OutputView outputView) {
-        this.cars = cars;
-        this.totalAttempts = totalAttempts;
+    public Racing(Racers racers, Move move, OutputView outputView, int totalRounds) {
+        this.racers = racers;
         this.move = move;
         this.outputView = outputView;
+        this.totalRounds = totalRounds;
     }
 
     public void race() {
         outputView.printResultPhrase();
-        for (int i = 0; i < totalAttempts; i++) {
-            move.tryOnce();
-            outputView.printRaceResult(createCurrentCars());
+        for (int i = 0; i < totalRounds; i++) {
+            racers.moveForward(move);
+            outputView.printProgress(racers.getCurrentResult());
         }
     }
 
-    private List<CurrentCar> createCurrentCars() {
-        return cars.stream().map(Car::createCurrentCar).toList();
-    }
-
     public void announceWinners() {
-        outputView.printWinners(createJudge().getWinnerNames());
-    }
-
-    private Judge createJudge() {
-        return new Judge(createCurrentCars());
+        outputView.printWinners(racers.getWinnerNames());
     }
 }
