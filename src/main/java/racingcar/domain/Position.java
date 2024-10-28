@@ -15,8 +15,4 @@ public class Position {
   public int getPosition() {
     return position;
   }
-
-  public boolean isAtPosition(int otherPosition) {
-    return this.position == otherPosition;
-  }
 }

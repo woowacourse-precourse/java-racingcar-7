@@ -6,7 +6,6 @@ import racingcar.common.io.Input;
 import racingcar.common.io.Output;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingController {
 
@@ -50,6 +49,7 @@ public class RacingController {
     List<String> winnerNames = winners.stream()
         .map(Car::getName)
         .toList();
+
     output.printWinners(winnerNames);
   }
 }

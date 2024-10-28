@@ -6,7 +6,7 @@ import racingcar.common.validator.InputValidator;
 
 public class Input {
 
-  Output output = new Output();
+  private final Output output = new Output();
 
   public List<String> getCarNames() {
     output.printMessage("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
