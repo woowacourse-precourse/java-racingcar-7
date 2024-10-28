@@ -21,7 +21,7 @@ public class UI {
         int times;
 
         try {
-            times = Integer.parseInt(Console.readLine());ㅎ
+            times = Integer.parseInt(Console.readLine());
         }catch (NumberFormatException e){
             throw new IllegalArgumentException("올바른 형태의 숫자를 입력해주세요.");
         }
