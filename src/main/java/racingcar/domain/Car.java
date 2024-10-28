@@ -12,13 +12,14 @@ public class Car {
         this.name = name;
     }
 
-    public void makeRandomInt() {
+    // 0~9의 랜덤 정수를 생성하고 4 이상이면 전진
+    public void drive() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (randomNumber >= 4) {
             this.distance++;
         }
     }
-
+    // 입력받은 이름이 5글자 이상인지, 비어있는 값인지 판별
     private void validateName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_OVER_FIVE.getMessage());

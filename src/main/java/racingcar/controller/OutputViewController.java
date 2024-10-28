@@ -16,18 +16,16 @@ public class OutputViewController {
         System.out.println();
     }
 
+    // 우승자의 Car리스트를 출력하기 위해 자동차 이름들을 문자열 형태로 join하여 출력
     public void printWinner(List<Car> cars) {
         String winnersName = cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
-        outputView.printWinner(winnersName);
+        outputView.printWinnerNames(winnersName);
     }
 
+    // 자동차의 이동 거리를 bar로 나타내기 위해 거리만큼 bar를 더해서 반환
     private String drewBar(int distance) {
-        String bar = "";
-        for (int i = 0; i < distance; i++) {
-            bar = bar + "-";
-        }
-        return bar;
+        return "-".repeat(distance);
     }
 }
