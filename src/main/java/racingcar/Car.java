@@ -1,9 +1,6 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Car {
     String name;
     int position;
@@ -20,17 +17,21 @@ public class Car {
         return position;
     }
 
+    public int randomNumber(){
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
     public void move(){
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if(randomNumber >= 4){
+        if(this.randomNumber() >= 4){
             this.position++;
         }
     }
-    public String getPositionString(){
+
+    public String printPositionString(){
         String positionString = this.name + " : ";
         for (int i = 0; i < this.position; i++){
             positionString += "-";
         }
-        return positionString;
+        return positionString + "\n";
     }
 }
