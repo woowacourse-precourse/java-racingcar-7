@@ -2,41 +2,98 @@ package racingcar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import racingcar.domain.RacingGame;
+import java.util.*;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.*;
+import racingcar.domain.*;
 
 public class RacingGameTest {
 
-    private RacingGame racingGame;
+    private List<String> carNames;
 
     @BeforeEach
-    void setUp() {
-        racingGame = new RacingGame(List.of("pobi", "woni", "jun"));
+    void setUp(){
+        carNames = Arrays.asList("pobi", "woni", "jun");
     }
 
     @Test
-    @DisplayName("자동차 리스트 생성 테스트")
-    void testInitialIze() {
-        assertEquals(3, racingGame.getCars().size());
+    @DisplayName("유효한 자동차 이름 입력 - 이름 확인")
+    void testValidNames() {
+        // given & when
+        RacingGame racingGame = new RacingGame(carNames);
+
+        // then
+        List<Car> cars = racingGame.getCars();
+        assertEquals(3, cars.size());
+        assertEquals("pobi", cars.get(0).getName());
+        assertEquals("woni", cars.get(1).getName());
+        assertEquals("jun", cars.get(2).getName());
+    }
+
+    @DisplayName("중복된 자동차 이름이 입력되었을 때 - IllegalArgumentException 반환")
+    @ParameterizedTest
+    @MethodSource("provideDuplicateNameInputs")
+    void testDuplicateCarNames(List<String> carNames) {
+        assertThrows(IllegalArgumentException.class, () -> new RacingGame(carNames));
+    }
+
+    static List<List<String>> provideDuplicateNameInputs() {
+        return List.of(
+                List.of("pobi", "pobi", "woni"),
+                List.of("jun", "pobi", "jun", "lee"),
+                List.of("pobi", "jun", "jay", "king", "pobi"),
+                List.of("gh", "gh"),
+                List.of("gh", "pobi", "gh")
+        );
+    }
+
+
+    @Test
+    @DisplayName("각 자동차가 이동하는지 확인")
+    void carsMoveInRacingGame() {
+        RacingGame game = new RacingGame(carNames);
+
+        for (Car car : game.getCars()) {
+            car.move(5);
+        }
+
+        for (Car car : game.getCars()) {
+            assertEquals(1, car.getPosition());
+        }
     }
 
     @Test
-    @DisplayName("자동차 이동 검증 테스트")
-    void testGetMaxMoveCount() {
-        racingGame.move();
-        int maxMoveCount = racingGame.getMaxMoveCount();
-        assertTrue(maxMoveCount >= 0);
+    @DisplayName("최대 이동 거리")
+    void getMaxMoveCount() {
+        RacingGame game = new RacingGame(carNames);
+
+        List<Car> cars = game.getCars();
+        cars.get(0).move(5);
+        cars.get(1).move(7);
+        cars.get(2).move(4);
+
+        int maxMoveCount = game.getMaxMoveCount();
+
+        assertEquals(1, maxMoveCount);
     }
 
     @Test
-    @DisplayName("우승자 추출 테스트")
-    void testGetWinners() {
-        racingGame.move();
-        int maxMoveCount = racingGame.getMaxMoveCount();
-        List<String> winners = racingGame.getWinners(maxMoveCount);
-        assertFalse(winners.isEmpty());
+    @DisplayName("우승자 반환")
+    void getWinners() {
+        RacingGame game = new RacingGame(carNames);
+
+        List<Car> cars = game.getCars();
+        cars.get(0).move(5);
+        cars.get(1).move(5);
+        cars.get(2).move(3);
+
+        // when
+        int maxMoveCount = game.getMaxMoveCount();
+        List<String> winners = game.getWinners(maxMoveCount);
+
+        assertEquals(List.of("pobi", "woni"), winners);
     }
+
+
 }

@@ -26,7 +26,7 @@ public class CarNameInputProcessorTest {
         assertThrows(IllegalArgumentException.class, () -> splitCarNames(input));
     }
 
-    @DisplayName("유효한 자동차 이름 입력 - List 반환")
+    @DisplayName("유효한 자동차 이름 입력 - List 반환(중복 Ok)")
     @ParameterizedTest
     @MethodSource("provideValidCarName")
     void testValidCarName(String input, List<String> expected) {
