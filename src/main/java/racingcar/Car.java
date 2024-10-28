@@ -27,7 +27,6 @@ public class Car {
         return Math.max(this.position, position);
     }
 
-
     @Override
     public String toString() {
         return this.name;
