@@ -30,9 +30,9 @@
 - 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
 - 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 등의 이름을 바꾸거나 이동하지 않는다.
 - 자바 코드 컨벤션을 지키면서 프로그래밍한다.
-    -
-    기본적으로 [Java Style Guide](https://apply.techcourse.co.kr/assignment/14/mission/46#:~:text=%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9C%BC%EB%A1%9C-,Java%20Style%20Guide,-%EB%A5%BC%20%EC%9B%90%EC%B9%99%EC%9C%BC%EB%A1%9C%20%ED%95%9C%EB%8B%A4)
-    를 원칙으로 한다.
+  -
+  기본적으로 [Java Style Guide](https://apply.techcourse.co.kr/assignment/14/mission/46#:~:text=%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9C%BC%EB%A1%9C-,Java%20Style%20Guide,-%EB%A5%BC%20%EC%9B%90%EC%B9%99%EC%9C%BC%EB%A1%9C%20%ED%95%9C%EB%8B%A4)
+  를 원칙으로 한다.
 - indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
     - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
     - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
@@ -77,6 +77,10 @@
     - 시도할 횟수를 정수가 아닐 경우 예외 처리 테스트
     - 4 이상일 때만 전진하는 조건 테스트
     - 우승자 판별 테스트
+
+## 클래스 다이어그램
+
+![img.png](img.png)
 
 
 
