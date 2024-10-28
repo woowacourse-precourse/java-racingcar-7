@@ -34,6 +34,7 @@ public class RacingGameController {
 
         RacingCars racingCars = RacingCars.of(moveStrategy, racingCarNames);
 
+        view.printRacingResultStart();
         while (attemptCount-- > 0) {
             racingCars.moveAll();
             view.printRacingResult(racingCars);
