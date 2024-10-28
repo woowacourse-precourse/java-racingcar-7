@@ -18,7 +18,7 @@ public class Game {
     }
 
     public void playOneRound() {
-        //TODO
+        cars.forEach(Car::moveIfPossible);
         completedRounds++;
     }
 }
