@@ -24,5 +24,10 @@ public class InputParserTest {
         assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames("a,b,c,d,e,f,"));
         assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames(",a,b,c,d,e,f"));
         assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames("a,b,,c,d,,e,f"));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames("a,b,,c,d,,e,f"));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames("a,b,c,d,e ,f"));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames(" a,b,c,d,e,f"));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames("a,b,c,d,e,f "));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parseCarNames(" "));
     }
 }

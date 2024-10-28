@@ -5,9 +5,7 @@ import java.util.List;
 
 public class InputParser {
     public static List<String> parseCarNames(String input) {
-        if (input == null || input.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAMES.getMessage());
-        }
+        validateInput(input);
         List<String> carNames = Arrays.asList(input.split(",", -1));
         validateCarNames(carNames);
         return carNames;
@@ -21,6 +19,15 @@ public class InputParser {
             if (carName.isEmpty()) {
                 throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAMES.getMessage());
             }
+        }
+    }
+
+    private static void validateInput(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAMES.getMessage());
+        }
+        if (input.contains(" ")) {
+            throw new IllegalArgumentException(ErrorMessages.WHITE_SPACE_INPUT.getMessage());
         }
     }
 }
