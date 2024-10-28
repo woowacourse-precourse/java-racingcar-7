@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar;
 
 public class CarValidator {
 	private static final String DELIMITER = ",";
