@@ -1,54 +1,35 @@
 package racingcar;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ValidatorTest {
     private RacingService racingService;
 
-    @Test
-    @DisplayName("자동차 이름이 5글자 초과인 경우 에러 발생")
-    void 자동차_이름_5글자_초과_테스트() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            racingService = new RacingService("aaaaaaa,bbbbbbb,ccccccc,ddddddd", "4");
+    @ParameterizedTest(name = "{1}")
+    @CsvSource({
+            "'aaaaaaa,bbbbbbb,ccccccc,ddddddd', 자동차 이름이 5글자 초과인 경우",
+            "'a,a,b,c,d', 자동차 이름이 중복된 경우",
+            "'a,,,b,,,', 자동차 이름이 공백인 경우"
+    })
+    void 자동차_이름_유효성_테스트(String carNameInput, String description) {
+        assertThatThrownBy(() -> {
+            racingService = new RacingService(carNameInput, "4");
             racingService.startRace();
-        });
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    @DisplayName("자동차 이름이 중복된 경우 에러 발생")
-    void 자동차_이름_중복_테스트() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            racingService = new RacingService("a,a,b,c,d", "4");
+    @ParameterizedTest(name = "{1}")
+    @CsvSource({
+            "'a', 시도할 횟수가 숫자가 아닌 경우",
+            "'-1', 시도할 횟수가 음수인 경우"
+    })
+    void 시도할_횟수_유효성_테스트(String maxTurnInput, String description) {
+        assertThatThrownBy(() -> {
+            racingService = new RacingService("a,b,c", maxTurnInput);
             racingService.startRace();
-        });
-    }
-
-    @Test
-    @DisplayName("자동차 이름이 공백인 경우 에러 발생")
-    void 자동차_이름_공백_테스트() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            racingService = new RacingService("a,,,b,,,", "4");
-            racingService.startRace();
-        });
-    }
-
-    @Test
-    @DisplayName("시도할 횟수가 숫자가 아닌 경우 에러 발생")
-    void 시도할_횟수_숫자_테스트1() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            racingService = new RacingService("a,b,c", "a");
-            racingService.startRace();
-        });
-    }
-
-    @Test
-    @DisplayName("시도할 횟수가 음수인 경우 에러 발생")
-    void 시도할_횟수_숫자_테스트2() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            racingService = new RacingService("a,b,c", "-1");
-            racingService.startRace();
-        });
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }

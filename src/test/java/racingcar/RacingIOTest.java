@@ -33,46 +33,41 @@ public class RacingIOTest {
     }
 
     @Test
-    @DisplayName("시작 부분이 출력 형식을 준수하는지 확인")
-    void 시작_부분_출력_테스트() {
+    @DisplayName("초기 입력 프롬프트가 출력 형식을 준수하는지 확인")
+    void 초기_입력_프롬프트_테스트() {
         RacingIO.promptCarNameInput();
         RacingIO.promptMaxTurnInput();
+
         assertThat(getOutput()).contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         assertThat(getOutput()).contains("시도할 횟수는 몇 회인가요?");
     }
 
     @Test
-    @DisplayName("실행 결과가 출력 형식을 준수하는지 확인")
-    void 실행_결과_출력_테스트() {
-        LinkedList<LinkedHashMap<String, Integer>> turnResults = new LinkedList<>();
+    @DisplayName("각 턴의 실행 결과가 출력 형식을 준수하는지 확인")
+    void 실행_결과_출력_형식_테스트() {
+        LinkedList<LinkedHashMap<String, Integer>> raceResult = new LinkedList<>();
 
-        updateAndRecordMovement("a", 4, turnResults);
-        updateAndRecordMovement("a", 4, turnResults);
-        updateAndRecordMovement("a", 4, turnResults);
-        updateAndRecordMovement("b", 1, turnResults);
-        updateAndRecordMovement("b", 4, turnResults);
-        updateAndRecordMovement("c", 1, turnResults);
+        updateAndRecordMovement("a", 4, raceResult);
+        updateAndRecordMovement("a", 4, raceResult);
+        updateAndRecordMovement("b", 4, raceResult);
+        updateAndRecordMovement("c", 1, raceResult);
 
-        RacingIO.printRaceResult(turnResults);
+        RacingIO.printRaceResult(raceResult);
 
         assertThat(getOutput()).contains("실행 결과");
         assertThat(getOutput()).contains("a : -");
         assertThat(getOutput()).contains("a : --");
-        assertThat(getOutput()).contains("a : ---");
-        assertThat(getOutput()).contains("b : ");
         assertThat(getOutput()).contains("b : -");
         assertThat(getOutput()).contains("c : ");
     }
 
     @Test
     @DisplayName("우승자 결과가 출력 형식을 준수하는지 확인")
-    void 우승자_출력_테스트1() {
-        LinkedList<LinkedHashMap<String, Integer>> turnResults = new LinkedList<>();
+    void 우승자_출력_형식_테스트() {
+        LinkedList<LinkedHashMap<String, Integer>> raceResult = new LinkedList<>();
 
-        updateAndRecordMovement("a", 4, turnResults);
-        updateAndRecordMovement("a", 4, turnResults);
-        updateAndRecordMovement("b", 4, turnResults);
-        updateAndRecordMovement("b", 4, turnResults);
+        updateAndRecordMovement("a", 4, raceResult);
+        updateAndRecordMovement("b", 4, raceResult);
 
         RacingIO.promptWinner(racingService.getWinners());
 
@@ -80,26 +75,23 @@ public class RacingIOTest {
     }
 
     @Test
-    @DisplayName("우승자가 여러 명일 때 우승자 입력 순서대로 출력하는 지 확인")
-    void 우승자_출력_테스트2() {
+    @DisplayName("우승자가 여러 명일 때 우승자 입력 순서대로 출력하는지 확인")
+    void 우승자_출력_순서_테스트() {
         racingService.setCarNameInput("a,aa,aaa");
-        LinkedList<LinkedHashMap<String, Integer>> turnResults = new LinkedList<>();
+        LinkedList<LinkedHashMap<String, Integer>> raceResult = new LinkedList<>();
 
-        updateAndRecordMovement("a", 4, turnResults);
-        updateAndRecordMovement("a", 4, turnResults);
-        updateAndRecordMovement("aa", 4, turnResults);
-        updateAndRecordMovement("aa", 4, turnResults);
-        updateAndRecordMovement("aaa", 4, turnResults);
-        updateAndRecordMovement("aaa", 4, turnResults);
+        updateAndRecordMovement("a", 4, raceResult);
+        updateAndRecordMovement("aa", 4, raceResult);
+        updateAndRecordMovement("aaa", 4, raceResult);
 
         RacingIO.promptWinner(racingService.getWinners());
 
         assertThat(getOutput()).contains("최종 우승자 : a, aa, aaa");
     }
 
-    private void updateAndRecordMovement(String carName, int randomValue, LinkedList<LinkedHashMap<String, Integer>> turnResults) {
+    private void updateAndRecordMovement(String carName, int randomValue, LinkedList<LinkedHashMap<String, Integer>> raceResult) {
         racingService.moveCar(carName, randomValue);
-        turnResults.add(new LinkedHashMap<>(racingService.getCarPositions()));
+        raceResult.add(new LinkedHashMap<>(racingService.getCarPositions()));
     }
 
     protected String getOutput() {
