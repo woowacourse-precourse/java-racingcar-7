@@ -35,7 +35,10 @@ public class GameController {
         while (true) {
             try {
                 String input = inputView.readCarNames();
-                String[] carNames = input.split(",");
+                if (input == null || input.trim().isEmpty()) {
+                    throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
+                }
+                String[] carNames = input.split(",", -1); // 빈 문자열도 포함하여 분할
                 inputValidator.validateCarNames(carNames);
                 return carNames;
             } catch (IllegalArgumentException e) {
