@@ -23,5 +23,16 @@ public class Car {
             return message;
         }
     }
+    private final String name;
+    public Car(final String name) {
+        final String trimmedName = name.trim();
+        validateNameLength(trimmedName);
+        this.name = trimmedName;
+    }
+    private void validateNameLength(final String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException(Error.NAME_OVER.getMessage());
+        }
+    }
 }
 
