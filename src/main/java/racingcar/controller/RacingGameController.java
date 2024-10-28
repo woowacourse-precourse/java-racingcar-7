@@ -34,18 +34,24 @@ public class RacingGameController {
 
         RacingCars racingCars = RacingCars.of(moveStrategy, racingCarNames);
 
+        run(attemptCount, racingCars);
+
+        winners(racingCars);
+    }
+
+    private void run(int attemptCount, RacingCars racingCars) {
         view.printRacingResultStart();
         while (attemptCount-- > 0) {
             racingCars.moveAll();
             view.printRacingResult(racingCars);
         }
+    }
 
+    private void winners(RacingCars racingCars) {
         view.printWinners(
-            String.join(
-                ", ",
-                racingCars.getWinners().stream()
-                    .map(RacingCar::getName)
-                    .toList()
+            String.join(", ", racingCars.getWinners().stream()
+                .map(RacingCar::getName)
+                .toList()
             )
         );
     }
