@@ -7,24 +7,15 @@ import java.util.List;
 
 public class RacingCarService {
 
-    List<RacingCar> racingCars;
-
-    public RacingCarService() {
+    public List<RacingCar> setupRaceCars(List<String> racingCarNames, RandomGenerator randomGenerator) {
+        return racingCarNames.stream().map((String name) -> new RacingCar(name, randomGenerator)).toList();
     }
 
-    public void setupRaceCars(List<String> racingCarNames, RandomGenerator randomGenerator) {
-        racingCars = racingCarNames.stream().map((String name) -> new RacingCar(name, randomGenerator)).toList();
-    }
-
-    public void runRound() {
+    public void runRound(List<RacingCar> racingCars) {
         racingCars.forEach(RacingCar::move);
     }
 
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
-    }
-
-    public List<RacingCar> findBestDriver() {
+    public List<RacingCar> findBestDriver(List<RacingCar> racingCars) {
         long maxMoveCount = racingCars.stream()
                 .mapToLong(RacingCar::getMoveCount)
                 .max()

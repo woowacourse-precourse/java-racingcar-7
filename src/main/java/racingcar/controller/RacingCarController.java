@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.RacingCar;
 import racingcar.service.RacingCarService;
 import racingcar.service.ValidateService;
@@ -9,46 +8,40 @@ import racingcar.view.InstructionView;
 import racingcar.view.ResultView;
 import racingcar.view.RoundView;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 
 public class RacingCarController {
 
-    InstructionView instructionView;
     ValidateService validateService;
     RacingCarService racingCarService;
-    RoundView roundView;
-    ResultView resultView;
     RandomGenerator randomGenerator;
 
-    public RacingCarController(InstructionView instructionView, ValidateService validateService, RacingCarService racingCarService, RoundView roundView, ResultView resultView, RandomGenerator randomGenerator) {
-        this.instructionView = instructionView;
+    public RacingCarController(ValidateService validateService, RacingCarService racingCarService, RandomGenerator randomGenerator) {
         this.validateService = validateService;
         this.racingCarService = racingCarService;
-        this.roundView = roundView;
-        this.resultView = resultView;
         this.randomGenerator = randomGenerator;
     }
 
-    public void run() {
-        instructionView.printInstruction("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String names = Console.readLine();
-        validateService.validateName(names);
-        instructionView.printInstruction("시도할 횟수는 몇 회인가요?");
-        String raceCount = Console.readLine();
-        validateService.validateRaceCount(raceCount);
+    public List<RacingCar> setupRacingCars(List<String> validateNames) {
+        return racingCarService.setupRaceCars(validateNames, randomGenerator);
+    }
 
-        racingCarService.setupRaceCars(validateService.getValidatedNames(), randomGenerator);
+    public List<String> validateName(String names) {
+        return validateService.validateName(names);
+    }
 
-        roundView.setRacingCars(racingCarService.getRacingCars());
+    public long validateRaceCount(String raceCount) {
+        return validateService.validateRaceCount(raceCount);
+    }
 
-        IntStream.range(0, (int) validateService.getValidateRaceCount()).forEach(round -> {
-            racingCarService.getRacingCars().forEach(RacingCar::move);
-            roundView.showRoundResults();
-        });
+    public void runRaceRound(List<RacingCar> raceCars) {
+        racingCarService.runRound(raceCars);
+    }
 
-        resultView.printResult(racingCarService.findBestDriver());
-
+    public List<RacingCar> findBestDriver(List<RacingCar> raceCars) {
+        return racingCarService.findBestDriver(raceCars);
     }
 
 }
