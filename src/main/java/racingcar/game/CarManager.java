@@ -10,10 +10,10 @@ public class CarManager {
     private static final String WINNER_FORMAT = ", ";
     private static final int SINGLE_WINNER = 1;
 
-    private final List<Car> list;
+    private final List<Car> carList;
 
     private CarManager(List<String> carNames) {
-        this.list = carNames.stream()
+        this.carList = carNames.stream()
                 .map(Car::generateCars)
                 .toList();
     }
@@ -22,17 +22,18 @@ public class CarManager {
     }
 
     public void moveCars() {
-        list.forEach(Car::move);
+        carList.forEach(Car::move);
     }
 
     public void printCarListCurrentPosition() {
-        list.forEach(Printer::print);
+        carList.forEach(Printer::print);
         Printer.breakLine();
     }
 
-    public String getWinners(List<Car> matchResult) {
-        return findWinners(matchResult.stream()
-                .filter(car -> car.getPosition() == findMaxPosition(matchResult))
+    public String getWinners() {
+        int maxPosition = findMaxPosition(this.carList);
+        return findWinners(this.carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .toList());
     }
