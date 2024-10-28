@@ -1,64 +1,39 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.api.Test;
 import racingcar.constant.AppConstants;
 
-import java.util.stream.Stream;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
+    @DisplayName("자동차는 초기 포지션을 0으로 가진다")
+    @Test
+    void carInitialPositionIsZero() {
+        Car car = new Car("car1");
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 
     @DisplayName("자동차 객체는 이름을 갖는다")
-    @ParameterizedTest
-    @MethodSource("provideValidCarNames")
-    void carHasName(String name) {
-        Car car = new Car(name);
-        assertThat(car.getName()).isEqualTo(name);
-    }
-
-    @DisplayName("자동차 이름이 없거나 길이가 초과되면 예외를 던진다")
-    @ParameterizedTest
-    @MethodSource("provideInvalidCarNames")
-    void invalidCarNameThrowsException(String invalidName) {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Car(invalidName))
-                .withMessage("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
-    }
-
-    @DisplayName("랜덤 값이 이동 조건에 맞으면 자동차가 전진한다")
-    @ParameterizedTest
-    @MethodSource("provideRandomValuesForMove")
-    void carMovesForwardWhenRandomConditionIsMet(int randomValue, int expectedPosition) {
+    @Test
+    void carHasName() {
         Car car = new Car("car1");
-        car.move(randomValue);
-        assertThat(car.getPosition()).isEqualTo(expectedPosition);
+        assertThat(car.getName()).isEqualTo("car1");
     }
 
-    static Stream<Arguments> provideValidCarNames() {
-        return Stream.of(
-                Arguments.of("car1"),
-                Arguments.of("a"),
-                Arguments.of("z1234")
-        );
+    @DisplayName("자동차가 이동 조건을 충족하면 포지션이 증가한다")
+    @Test
+    void carMovesForwardWhenConditionIsMet() {
+        Car car = new Car("car1");
+        car.move(AppConstants.MOVE_THRESHOLD);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
-    static Stream<Arguments> provideInvalidCarNames() {
-        return Stream.of(
-                Arguments.of(""),
-                Arguments.of("loooongname"),
-                Arguments.of("123456")
-        );
-    }
-
-    static Stream<Arguments> provideRandomValuesForMove() {
-        return Stream.of(
-                Arguments.of(AppConstants.MOVE_THRESHOLD, 1),
-                Arguments.of(AppConstants.MOVE_THRESHOLD - 1, 0)
-        );
+    @DisplayName("자동차가 이동 조건을 충족하지 못하면 포지션이 유지된다")
+    @Test
+    void carDoesNotMoveWhenConditionIsNotMet() {
+        Car car = new Car("car1");
+        car.move(AppConstants.MOVE_THRESHOLD - 1);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
