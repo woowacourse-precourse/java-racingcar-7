@@ -2,13 +2,14 @@ package racingcar.common;
 
 import racingcar.application.service.WinnerIdentifier;
 import racingcar.application.service.RacingCarConverter;
-import racingcar.persistence.CarRaceHistory;
+import racingcar.persistence.RacingCarHistoryRepository;
 import racingcar.persistence.InMemoryRacingCarRepository;
 import racingcar.application.ObjectConverter;
 import racingcar.application.Game;
 import racingcar.persistence.RacingCarRepository;
 import racingcar.racing.CarRace;
-import racingcar.racing.CarRaceHistoryRecorder;
+import racingcar.racing.CarRaceHistoryManager;
+import racingcar.racing.CarRaceHistoryWriter;
 import racingcar.racing.Race;
 import racingcar.racing.RacingCar;
 import racingcar.application.service.RacingCarGame;
@@ -53,8 +54,8 @@ public class GameConfig {
         return new CarRace();
     }
 
-    private CarRaceHistoryRecorder carRaceHistoryRecorder() {
-        return new CarRaceHistoryRecorder(CarRaceHistory.getInstance());
+    private CarRaceHistoryManager carRaceHistoryRecorder() {
+        return new CarRaceHistoryManager(RacingCarHistoryRepository.getInstance(), new CarRaceHistoryWriter());
     }
 
     private WinnerIdentifier winnerIdentifier() {

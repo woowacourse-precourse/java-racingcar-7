@@ -1,7 +1,6 @@
 package racingcar.application.service;
 
 import java.util.List;
-import racingcar.persistence.CarRaceHistory;
 import racingcar.racing.CarRaceResult;
 import racingcar.racing.RacingCar;
 import racingcar.application.ObjectConverter;
@@ -44,16 +43,13 @@ public class RacingCarGame implements Game {
 
     private void printRaceResult() {
         CarRaceResult carRaceResult = racingManager.createRaceResult();
-        printRacingProgressResult(carRaceResult.carRaceHistory());
-        printWinners(carRaceResult.winners());
-    }
 
-    private void printRacingProgressResult(CarRaceHistory carRaceHistory) {
-        applicationView.printRacingProgressResult(carRaceHistory.getHistories());
-    }
+        List<String> racingHistories = carRaceResult.histories();
+        applicationView.printRacingProgressResult(racingHistories);
 
-    private void printWinners(List<RacingCar> winners) {
+        List<RacingCar> winners = carRaceResult.winners();
         String winnersName = objectConverter.toStringNames(winners);
         applicationView.printWinners(winnersName);
+
     }
 }

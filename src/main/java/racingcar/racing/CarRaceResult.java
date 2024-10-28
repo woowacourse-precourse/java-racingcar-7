@@ -1,14 +1,13 @@
 package racingcar.racing;
 
 import java.util.List;
-import racingcar.persistence.CarRaceHistory;
 
 public record CarRaceResult(
         List<RacingCar> winners,
-        CarRaceHistory carRaceHistory
+        List<String> histories
 ) {
 
-    public static CarRaceResult of(List<RacingCar> winners, CarRaceHistory carRaceHistory) {
-        return new CarRaceResult(winners, carRaceHistory);
+    public static CarRaceResult of(List<RacingCar> winners, List<String> histories) {
+        return new CarRaceResult(winners, histories);
     }
 }

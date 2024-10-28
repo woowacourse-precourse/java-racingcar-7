@@ -2,9 +2,8 @@ package racingcar.application.service;
 
 import java.util.List;
 import java.util.stream.IntStream;
-import racingcar.persistence.CarRaceHistory;
 import racingcar.persistence.RacingCarRepository;
-import racingcar.racing.CarRaceHistoryRecorder;
+import racingcar.racing.CarRaceHistoryManager;
 import racingcar.racing.CarRaceResult;
 import racingcar.racing.Race;
 import racingcar.racing.RacingCar;
@@ -14,14 +13,14 @@ public class RacingCarManager implements RacingManager<RacingCar> {
 
     private final Race<RacingCar> race;
     private final RacingCarRepository racingCarRepository;
-    private final CarRaceHistoryRecorder carRaceHistoryRecorder;
+    private final CarRaceHistoryManager carRaceHistoryManager;
     private final WinnerIdentifier winnerIdentifier;
 
     public RacingCarManager(Race<RacingCar> race, RacingCarRepository racingCarRepository,
-            CarRaceHistoryRecorder carRaceHistoryRecorder, WinnerIdentifier winnerIdentifier) {
+            CarRaceHistoryManager carRaceHistoryManager, WinnerIdentifier winnerIdentifier) {
         this.race = race;
         this.racingCarRepository = racingCarRepository;
-        this.carRaceHistoryRecorder = carRaceHistoryRecorder;
+        this.carRaceHistoryManager = carRaceHistoryManager;
         this.winnerIdentifier = winnerIdentifier;
     }
 
@@ -36,7 +35,7 @@ public class RacingCarManager implements RacingManager<RacingCar> {
         IntStream.range(0, gameCount)
                 .forEach(count -> {
                     race.start(registeredCars);
-                    carRaceHistoryRecorder.record(registeredCars);
+                    carRaceHistoryManager.record(registeredCars);
                 });
     }
 
@@ -44,6 +43,7 @@ public class RacingCarManager implements RacingManager<RacingCar> {
     public CarRaceResult createRaceResult() {
         List<RacingCar> racedCars = racingCarRepository.getAll();
         List<RacingCar> winners = winnerIdentifier.identify(racedCars);
-        return CarRaceResult.of(winners, CarRaceHistory.getInstance());
+        List<String> carRaceHistories = carRaceHistoryManager.getAllHistory();
+        return CarRaceResult.of(winners, carRaceHistories);
     }
 }
