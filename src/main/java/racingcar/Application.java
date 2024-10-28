@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,6 +16,10 @@ public class Application {
 
         System.out.println("입력된 이름들: " + input);
         System.out.println("시도할 횟수: " + attempts);
+
+        int randNum = Randoms.pickNumberInRange(0, 9);
+
+
     }
 
     private static void validateNames(String input) {
