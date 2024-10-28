@@ -20,5 +20,9 @@ public class RacingGameController {
         racingGameService.acceptRound(); // 시도할 회수를 입력받음
     }
 
+    public void showGameResult() {
+        System.out.println("\n" + GameGuideMessage.RESULT.getMessage());
+        racingGameService.proceedRace(); // 게임을 진행함
+    }
 
 }
