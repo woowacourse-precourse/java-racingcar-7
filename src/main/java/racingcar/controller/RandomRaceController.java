@@ -18,6 +18,7 @@ public class RandomRaceController {
     }
 
     public List<RacingCar> start(List<RacingCar> racingCars, Long tryNums) {
+        raceProgressView.displayOutputMessage();
         for (int i = 0; i < tryNums; i++) {
             startRaceForEachCar(racingCars);
             raceProgressView.displayRoundProgress(racingCars);
