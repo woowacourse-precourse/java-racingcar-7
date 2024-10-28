@@ -12,7 +12,8 @@
 
   > 예외 처리 사항
   >
-  > - 시도 횟수에 양의 정수가 아닌 문자열이 입력된 경우 `IllegalArgumentException` 발생
+  > - 시도 횟수에 정수가 아닌 문자열이 입력된 경우 `IllegalArgumentException` 발생
+  > - 시도 횟수에 0 이하의 정수가 입력된 경우 `IllegalArgumentException` 발생
 
 ### 자동차 이름 추출
 
@@ -21,8 +22,8 @@
   > 예외 처리 사항
   >
   > - 자동차 이름이 5자 이상으로 입력된 경우 `IllegalArgumentException` 발생
-  > - 자동차 이름을 구별하기 위한 쉼표가 아닌 다른 특수문자가 입력된 경우 `IllegalArgumentException` 발생
   > - 중복된 이름이 입력된 경우 `IllegalArgumentException` 발생
+  > - 자동차 이름에 아무 것도 입력이 되지 않은 경우 `IllegalArgumentException` 발생
 
 ### 자동차 전진 또는 정지 구현
 
