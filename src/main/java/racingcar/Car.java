@@ -1,5 +1,7 @@
 package racingcar;
 
+import static org.assertj.core.util.Strings.join;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,18 +13,22 @@ public class Car {
 
     private final String name;
 
-    private List<Character> distance;
+    private List<String> distance;
 
     public String getName() {
         return name;
     }
 
-    public List<Character> getDistance() {
+    public List<String> getDistance() {
         return distance;
     }
 
-    public void moveForward(){
-        this.distance.add('-');
+    public void moveForward() {
+        this.distance.add("-");
+    }
+
+    public void showDistance() {
+        System.out.println(this.name + " : " + String.join("", this.distance));
     }
 
 }
