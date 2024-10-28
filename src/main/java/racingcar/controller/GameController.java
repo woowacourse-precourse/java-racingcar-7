@@ -1,7 +1,5 @@
 package racingcar.controller;
 
-import java.util.List;
-import racingcar.domain.Car;
 import racingcar.dto.FinalResultDto;
 import racingcar.dto.RoundResultDto;
 import racingcar.model.CarMaker;
@@ -31,8 +29,7 @@ public class GameController {
         String carNames = inputView.requestCarNamesInput();
         int roundNumber = getRoundNumber();
 
-        List<Car> carList = carMaker.makeCars(carNames);
-        FinalResultDto finalResultDto = racingGame.playRacingGame(roundNumber, carList);
+        FinalResultDto finalResultDto = racingGame.playRacingGame(roundNumber, carMaker.makeCars(carNames));
 
         outputView.printResultStatement();
         printResults(finalResultDto, roundNumber);
