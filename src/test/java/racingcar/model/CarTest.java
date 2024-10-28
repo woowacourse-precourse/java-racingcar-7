@@ -13,32 +13,38 @@ class CarTest {
     private static final int STOP = 3;
 
     @Test
-    void 이동거리_증가() {
+    void 자동차_이동() {
         assertRandomNumberInRangeTest(
                 () -> {
                     Car car = Car.of("pobi");
                     car.move();
+                    assertThat(car.getDistance()).isEqualTo(1);
                     car.move();
-                    assertThat(car.toString()).isEqualTo("pobi : --");
+                    assertThat(car.getDistance()).isEqualTo(2);
                 }, MOVING_FORWARD, MOVING_FORWARD
         );
         assertRandomNumberInRangeTest(
                 () -> {
                     Car car = Car.of("woni");
                     car.move();
+                    assertThat(car.getDistance()).isEqualTo(0);
                     car.move();
+                    assertThat(car.getDistance()).isEqualTo(0);
                     car.move();
-                    assertThat(car.toString()).isEqualTo("woni : -");
+                    assertThat(car.getDistance()).isEqualTo(1);
                 }, STOP, STOP, MOVING_FORWARD
         );
         assertRandomNumberInRangeTest(
                 () -> {
                     Car car = Car.of("jun");
                     car.move();
+                    assertThat(car.getDistance()).isEqualTo(1);
                     car.move();
+                    assertThat(car.getDistance()).isEqualTo(1);
                     car.move();
+                    assertThat(car.getDistance()).isEqualTo(2);
                     car.move();
-                    assertThat(car.toString()).isEqualTo("jun : ---");
+                    assertThat(car.getDistance()).isEqualTo(3);
                 }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
         );
 
