@@ -18,7 +18,7 @@ public class RacingCarService {
                 racingCar.conditionalMove();
 
                 //현재 상황 출력
-                printCurState(racingCar);
+                printCurrentState(racingCar);
             }
             System.out.println();
         }
@@ -26,7 +26,7 @@ public class RacingCarService {
         return racingRacingCars;
     }
 
-    private void printCurState(final RacingCar racingCar) {
+    private void printCurrentState(final RacingCar racingCar) {
         // 현재 상황 출력
         System.out.print(racingCar.getName() + " : ");
         for (int j = 0; j < racingCar.getLocation(); ++j) {
