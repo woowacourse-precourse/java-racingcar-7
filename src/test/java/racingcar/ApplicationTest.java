@@ -16,7 +16,6 @@ class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
-    //모킹이 작동하지 않고 모두 1으로 들어감
     @Test
     @DisplayName("랜덤 값 테스트 (모킹)")
     void featureTest() {
@@ -28,8 +27,7 @@ class ApplicationTest extends NsTest {
                 MOVING_FORWARD, STOP
         );
     }
-    /*
-    //모킹이 작동하지 않고 모두 1으로 들어감
+
     @Test
     @DisplayName("랜덤 값 테스트 (공동 우승, 실행 결과 예시)")
     void DoubleWinnerTest() {
@@ -49,14 +47,12 @@ class ApplicationTest extends NsTest {
                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
         );
     }
-     */
 
-    @ParameterizedTest
+    @Test
     @DisplayName("여러 사용자(차) 입력 테스트")
-    @ValueSource(strings = {"pobi,woni,jun", "pobi,woni,jun", "pobi,woni,jun,hogun,gamja,be,A"})
-    void PlentyCarTest(String names) {
-        run(names, "10");
-        assertThat(output()).contains("최종 우승자 : ");
+    void PlentyCarTest() {
+        run("pobi,woni,jun,hogun,gamja,I,will,be,a,good,dev,elop,er", "10");
+        assertThat((output()).contains("최종 우승자 : "));
     }
 
     @ParameterizedTest

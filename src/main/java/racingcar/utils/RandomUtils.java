@@ -9,6 +9,6 @@ public class RandomUtils {
         if (threshold < LOWER_BOUND || threshold > upperBound) {
             throw new IllegalArgumentException(ConstantMessage.INVALID_RANGE_EXCEPTION);
         }
-        return Randoms.pickNumberInRange(LOWER_BOUND, upperBound) <= threshold;
+        return Randoms.pickNumberInRange(LOWER_BOUND, upperBound) >= threshold;
     }
 }
