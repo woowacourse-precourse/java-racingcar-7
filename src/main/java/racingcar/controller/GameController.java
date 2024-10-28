@@ -1,8 +1,6 @@
 package racingcar.controller;
 
-import racingcar.exception.BlankException;
-import racingcar.exception.DuplicateException;
-import racingcar.exception.LengthException;
+import racingcar.exception.*;
 import racingcar.model.Car;
 import racingcar.view.InputView;
 
@@ -33,7 +31,16 @@ public class GameController {
             throw new DuplicateException();
         }
 
-
+        String tryCount = inputView.getTryCount();
+        if (tryCount.isEmpty()) {
+            throw new BlankException();
+        }
+        if (!tryCount.matches("[+-]?\\d*(\\d+)?")) {
+            throw new NotNumberException();
+        }
+        if (Integer.parseInt(tryCount) <= 0) {
+            throw new NegativeNumberException();
+        }
 
     }
 }
