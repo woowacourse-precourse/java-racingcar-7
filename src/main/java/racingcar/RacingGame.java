@@ -1,7 +1,11 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private Map<Car, Integer> scoreNum;
@@ -41,7 +45,14 @@ public class RacingGame {
                 .map(entry -> entry.getKey().getName())
                 .toList();
     }
-
+    private int regulate(final int randomValue) {
+        return randomValue>=4?1:0;
+    }
+    private Map<Car,Integer> initScore(final String[] carNames) {
+        return Arrays.stream(carNames)
+                .collect(Collectors.toMap(Car::new, carName -> 0,
+                        (a,b) -> b));
+    }
 
 }
 
