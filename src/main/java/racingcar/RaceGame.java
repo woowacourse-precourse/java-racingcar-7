@@ -81,5 +81,10 @@ public class RaceGame {
         }
     }
 
+    void printRoundResult(RacingCar[] carList){
+        for (RacingCar car : carList){
+            System.out.println(car.carName+" : "+car.currentLocation);
+        }
+    }
 
 }
