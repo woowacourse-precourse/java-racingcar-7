@@ -13,14 +13,15 @@ public class CarTest {
     void createCarWithName() {
         // 자동차는 초기 위치가 0
         Car car = new Car("car1");
-        assertEquals(0, car.getLocation());
+        assertEquals(car.getLocation(), 0);
+        assertEquals(car.getName(), "car1");
     }
 
     @Test
     void createCarWithWrongName() {
         // 자동차의 이름은 5자 이하
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(new Car("haeseung"));
+                .isThrownBy((ThrowingCallable) new Car("haeseung"));
     }
 
     @Test
@@ -31,13 +32,13 @@ public class CarTest {
                 .isThrownBy((ThrowingCallable) new Car());
         // 공백
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(new Car(""));
+                .isThrownBy((ThrowingCallable) new Car(""));
         // 스페이스바
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(new Car(" "));
+                .isThrownBy((ThrowingCallable) new Car(" "));
         // 탭
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(new Car("   "));
+                .isThrownBy((ThrowingCallable) new Car("   "));
     }
 
     @Test
