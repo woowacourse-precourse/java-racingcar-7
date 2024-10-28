@@ -2,12 +2,12 @@ package racingcar.application.service;
 
 import java.util.List;
 import java.util.stream.IntStream;
+import racingcar.application.implement.WinnerIdentifier;
 import racingcar.persistence.RacingCarRepository;
-import racingcar.racing.RacingCarHistoryManager;
-import racingcar.racing.CarRaceResult;
-import racingcar.racing.Racing;
-import racingcar.racing.CarRacer;
-import racingcar.application.RacingManager;
+import racingcar.application.implement.RacingCarHistoryManager;
+import racingcar.vo.CarRaceResult;
+import racingcar.application.implement.Racing;
+import racingcar.domain.CarRacer;
 
 public class RacingCarManager implements RacingManager<CarRacer> {
 

@@ -1,10 +1,9 @@
-package racingcar.application.service;
+package racingcar.common.support;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.racing.CarRacer;
-import racingcar.application.ObjectConverter;
+import racingcar.domain.CarRacer;
 
 public class RacingCarConverter implements ObjectConverter<CarRacer> {
 

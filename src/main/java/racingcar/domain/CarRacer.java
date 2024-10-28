@@ -1,4 +1,4 @@
-package racingcar.racing;
+package racingcar.domain;
 
 import static racingcar.common.RacingCarConstant.DEFAULT_STATE;
 import static racingcar.common.RacingCarConstant.FORWARD_BAR;

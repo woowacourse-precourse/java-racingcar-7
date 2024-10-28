@@ -1,7 +1,8 @@
-package racingcar.racing;
+package racingcar.application.implement;
 
 import java.util.List;
 import racingcar.persistence.RacingCarHistoryRepository;
+import racingcar.domain.CarRacer;
 
 public class RacingCarHistoryManager {
 

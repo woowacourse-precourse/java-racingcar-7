@@ -1,7 +1,7 @@
-package racingcar.application.service;
+package racingcar.application.implement;
 
 import java.util.List;
-import racingcar.racing.CarRacer;
+import racingcar.domain.CarRacer;
 
 public class WinnerIdentifier {
 

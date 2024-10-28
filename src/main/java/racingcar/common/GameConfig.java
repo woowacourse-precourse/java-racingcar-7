@@ -1,20 +1,20 @@
 package racingcar.common;
 
-import racingcar.application.service.WinnerIdentifier;
-import racingcar.application.service.RacingCarConverter;
+import racingcar.application.implement.WinnerIdentifier;
+import racingcar.common.support.RacingCarConverter;
 import racingcar.persistence.RacingCarHistoryRepository;
 import racingcar.persistence.InMemoryRacingCarRepository;
-import racingcar.application.ObjectConverter;
+import racingcar.common.support.ObjectConverter;
 import racingcar.application.Game;
 import racingcar.persistence.RacingCarRepository;
-import racingcar.racing.CarRacing;
-import racingcar.racing.RacingCarHistoryManager;
-import racingcar.racing.RacingCarHistoryWriter;
-import racingcar.racing.Racing;
-import racingcar.racing.CarRacer;
-import racingcar.application.service.RacingCarGame;
+import racingcar.application.implement.CarRacing;
+import racingcar.application.implement.RacingCarHistoryManager;
+import racingcar.application.implement.RacingCarHistoryWriter;
+import racingcar.application.implement.Racing;
+import racingcar.domain.CarRacer;
+import racingcar.application.RacingCarGame;
 import racingcar.application.service.RacingCarManager;
-import racingcar.application.RacingManager;
+import racingcar.application.service.RacingManager;
 import racingcar.view.ApplicationConsoleView;
 import racingcar.view.ApplicationView;
 

@@ -1,11 +1,10 @@
-package racingcar.application.service;
+package racingcar.application;
 
 import java.util.List;
-import racingcar.racing.CarRaceResult;
-import racingcar.racing.CarRacer;
-import racingcar.application.ObjectConverter;
-import racingcar.application.Game;
-import racingcar.application.RacingManager;
+import racingcar.application.service.RacingManager;
+import racingcar.vo.CarRaceResult;
+import racingcar.domain.CarRacer;
+import racingcar.common.support.ObjectConverter;
 import racingcar.view.ApplicationView;
 
 public class RacingCarGame implements Game {

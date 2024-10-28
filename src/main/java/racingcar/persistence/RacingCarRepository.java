@@ -1,7 +1,7 @@
 package racingcar.persistence;
 
 import java.util.List;
-import racingcar.racing.CarRacer;
+import racingcar.domain.CarRacer;
 
 public interface RacingCarRepository {
 

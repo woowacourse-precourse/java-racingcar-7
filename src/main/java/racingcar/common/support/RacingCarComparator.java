@@ -1,7 +1,7 @@
-package racingcar.application.service;
+package racingcar.common.support;
 
 import java.util.Comparator;
-import racingcar.racing.CarRacer;
+import racingcar.domain.CarRacer;
 
 public class RacingCarComparator implements Comparator<CarRacer> {
 

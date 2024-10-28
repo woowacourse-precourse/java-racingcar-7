@@ -1,4 +1,4 @@
-package racingcar.racing;
+package racingcar.domain;
 
 public abstract class Racer {
 

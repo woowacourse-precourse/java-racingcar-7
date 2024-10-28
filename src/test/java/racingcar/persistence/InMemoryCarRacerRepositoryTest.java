@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.racing.CarRacer;
+import racingcar.domain.CarRacer;
 
 class InMemoryCarRacerRepositoryTest {
 

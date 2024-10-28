@@ -1,8 +1,8 @@
-package racingcar.application;
+package racingcar.application.service;
 
 import java.util.List;
-import racingcar.racing.CarRaceResult;
-import racingcar.racing.Racer;
+import racingcar.vo.CarRaceResult;
+import racingcar.domain.Racer;
 
 public interface RacingManager<T extends Racer> {
 
