@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.io.InputHandler;
 import racingcar.io.OutputHandler;
@@ -16,5 +17,6 @@ public class Application {
         Race race = new Race(cars, trialCount, moveStrategy, outputHandler);
 
         race.startRace();
+        Console.close();
     }
 }
