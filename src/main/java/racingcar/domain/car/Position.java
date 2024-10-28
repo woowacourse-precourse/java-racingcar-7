@@ -11,7 +11,7 @@ public class Position {
         this(INITIAL_POSITION);
     }
 
-    private Position(int value) {
+    Position(int value) {
         this.validator = new PositionValidator();
         this.validator.validate(value);
         this.value = value;
@@ -23,5 +23,9 @@ public class Position {
 
     public boolean isSameAs(Position other) {
         return this.value == other.value;
+    }
+
+    public int getValue() {
+        return value;
     }
 }
