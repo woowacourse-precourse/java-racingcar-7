@@ -31,6 +31,7 @@ public class Application {
         attempt = inputAttempt();
         createGameScores();
         simulate();
+        outputEndGameResult();
 
     }
 
@@ -114,6 +115,10 @@ public class Application {
                     + gameScores.get(i).toString();
             System.out.println(score);
         }
+    }
+
+    public static void outputEndGameResult(){
+        System.out.println("최종 우승자 : " + String.join(COMMA + " ", getWinners()));
     }
 
     public static List<String> getWinners(){
