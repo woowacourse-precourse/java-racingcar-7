@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.validator.CarValidator;
+import racingcar.validator.RaceValidator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -55,9 +56,22 @@ class ApplicationTest extends NsTest {
     void 시도_횟수_음수_예외_테스트() {
         int invalidAttempts = -3; // 음수 값
 
-        assertThatThrownBy(() -> racingcar.validator.RaceValidator.validateAttempts(invalidAttempts))
+        assertThatThrownBy(() -> racingcar.validator.RaceValidator.checkPositiveAttempts(invalidAttempts))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("시도 횟수는 1회 이상이어야 합니다.");
+    }
+
+    @Test
+    void 시도_횟수_문자_예외_테스트() {
+        assertThatThrownBy(() -> RaceValidator.checkAttemptsInput("five"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 숫자로 입력해야 합니다.");
+    }
+
+    @Test
+    void 시도_횟수_양수_테스트() {
+        int validAttempts = RaceValidator.checkAttemptsInput("5");
+        assertThat(validAttempts).isEqualTo(5);
     }
     @Override
     public void runMain() {
