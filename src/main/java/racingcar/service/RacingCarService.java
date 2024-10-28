@@ -22,6 +22,21 @@ public class RacingCarService {
         }
     }
 
+    public List<String> determineWinners(List<Car> carList) {
+        return getWinnerList(carList, getMaxPosition(carList));
+    }
+
+    private List<String> getWinnerList(List<Car> carList, int maxPosition) {
+        return carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
                 .toList();
+    }
+
+    private int getMaxPosition(List<Car> carList) {
+        return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
     }
 }

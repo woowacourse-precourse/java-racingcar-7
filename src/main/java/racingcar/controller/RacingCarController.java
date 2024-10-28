@@ -22,10 +22,16 @@ public class RacingCarController {
     public void run() {
         List<String> carNameList = getCarNames();
         int tryCount = getTryCount();
+
         List<Car> carList = racingCarService.initializeCars(carNameList);
 
         outputView.printResult();
         executeRace(carList, tryCount);
+
+        List<String> winners = racingCarService.determineWinners(carList);
+        outputView.printWinners(winners);
+    }
+
     private void executeRace(List<Car> carList, int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             racingCarService.moveCars(carList);
