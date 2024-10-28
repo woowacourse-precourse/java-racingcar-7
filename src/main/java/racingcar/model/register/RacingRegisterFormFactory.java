@@ -47,14 +47,15 @@ public class RacingRegisterFormFactory {
     }
 
     private static int parseAndValidateRaceRoundCount(String inputRaceRoundCount) {
-        if (isNullOrEmpty(inputRaceRoundCount)) {
+        String trimmedInputRaceRoundCount = inputRaceRoundCount.trim();
+        if (isNullOrEmpty(trimmedInputRaceRoundCount)) {
             throw new IllegalArgumentException("시도할 횟수를 입력해주세요.");
         }
-        if (!isNumeric(inputRaceRoundCount)) {
+        if (!isNumeric(trimmedInputRaceRoundCount)) {
             throw new IllegalArgumentException("시도할 횟수에 숫자가 아닌 값을 입력했어요. 1 이상의 숫자를 입력해주세요.");
         }
 
-        int raceRoundCount = parseInteger(inputRaceRoundCount);
+        int raceRoundCount = parseInteger(trimmedInputRaceRoundCount);
         if (raceRoundCount < MIN_RACE_ROUND_COUNT) {
             throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 해요.");
         }
