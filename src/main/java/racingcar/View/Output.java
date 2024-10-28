@@ -6,11 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Output {
-    public static void validatorCarNames(String carName) {
-        if(carName.length() > 5 || carName.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-    }
 
     public static void printMoveStatus(Car car) {
         StringBuilder status = new StringBuilder(car.getName() + " : ");
