@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.utils.CustomErrorMessage;
 
 public class Cars {
     private final List<Car> cars;
@@ -32,6 +33,6 @@ public class Cars {
         return cars.stream()
             .mapToInt(Car::getPosition)
             .max()
-            .orElseThrow(() -> new IllegalArgumentException("최대 위치를 찾을 수 없습니다."));
+            .orElseThrow(() -> new IllegalArgumentException(CustomErrorMessage.INVALID_MAX_POSITION));
     }
 }
