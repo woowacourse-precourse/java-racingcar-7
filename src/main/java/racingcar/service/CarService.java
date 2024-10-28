@@ -1,5 +1,10 @@
 package racingcar.service;
 
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.stream.Collectors;
+import racingcar.model.Car;
+
 public class CarService {
     public String[] getCarsByDelimiter(String carNames) {
         if (carNames == null || carNames.isBlank()) {
@@ -33,5 +38,16 @@ public class CarService {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력값이 소수나 문자입니다.");
         }
+    }
+
+    public String getWinner(List<Car> cars) {
+        int winnerPosition = cars.stream()
+                .mapToInt(car -> car.getPosition().length())
+                .max()
+                .orElse(0);
+        return cars.stream()
+                .filter(car -> car.getPosition().length() == winnerPosition)
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
     }
 }
