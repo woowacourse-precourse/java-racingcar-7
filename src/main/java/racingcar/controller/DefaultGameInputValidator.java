@@ -1,11 +1,12 @@
 package racingcar.controller;
 
-import static racingcar.controller.ExceptionMessages.Default.CAR_NAME_ENDS_WITH_DELIMITER;
-import static racingcar.controller.ExceptionMessages.Default.CAR_NAME_ONLY_DELIMITER;
-import static racingcar.controller.ExceptionMessages.Default.EMPTY_CAR_NAME;
-import static racingcar.controller.ExceptionMessages.Default.EMPTY_TOTAL_ROUNDS;
-import static racingcar.controller.ExceptionMessages.Default.INVALID_CAR_NAME_CHARACTERS;
-import static racingcar.controller.ExceptionMessages.Default.TOTAL_ROUNDS_NOT_INTEGER;
+import static racingcar.controller.ExceptionMessages.DefaultInputValidator.CAR_NAME_ENDS_WITH_DELIMITER;
+import static racingcar.controller.ExceptionMessages.DefaultInputValidator.CAR_NAME_ONLY_DELIMITER;
+import static racingcar.controller.ExceptionMessages.DefaultInputValidator.EMPTY_CAR_NAME;
+import static racingcar.controller.ExceptionMessages.DefaultInputValidator.EMPTY_TOTAL_ROUNDS;
+import static racingcar.controller.ExceptionMessages.DefaultInputValidator.INVALID_CAR_NAME_CHARACTERS;
+import static racingcar.controller.ExceptionMessages.DefaultInputValidator.TOTAL_ROUNDS_NOT_INTEGER;
+
 
 public class DefaultGameInputValidator implements GameInputValidator {
 
