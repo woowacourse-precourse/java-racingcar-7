@@ -11,8 +11,10 @@ class CarsTest {
         //given
         Cars cars = new Cars();
         cars.addCar("test");
+
         //when
         cars.move(() -> MOVE_CONTROL_NUMBER - 1);
+
         //then
         assertThat(cars.get(0).getPosition()).isEqualTo(0);
     }
@@ -22,8 +24,10 @@ class CarsTest {
         //given
         Cars cars = new Cars();
         cars.addCar("test");
+
         //when
         cars.move(() -> MOVE_CONTROL_NUMBER);
+
         //then
         assertThat(cars.get(0).getPosition()).isEqualTo(1);
     }

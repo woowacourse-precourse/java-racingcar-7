@@ -11,8 +11,10 @@ class CarTest {
     void 자동차_이름_짓기() {
         //given
         String name = "test";
+
         //when
         Car car = new Car(name);
+
         //then
         assertThat(car.getName()).isEqualTo(name);
     }
@@ -21,8 +23,10 @@ class CarTest {
     void 이름이_최대_길이를_초과할_경우_예외_발생() {
         //given
         String name = "A".repeat(MAX_CAR_NAME_SIZE + 1);
+
         //when
-        // then
+
+        //then
         assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CAR_NAME_OVERSIZE_ERROR_MESSAGE);
