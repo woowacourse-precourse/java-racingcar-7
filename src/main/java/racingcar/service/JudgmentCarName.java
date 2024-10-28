@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import static racingcar.common.Constants.LIMIT_NUMBER;
+import static racingcar.common.Constants.LIMIT_CAR_NAME_SIZE;
 
 import racingcar.domain.Car;
 
@@ -17,7 +17,7 @@ public class JudgmentCarName {
 	}
 
 	public boolean judgmentCarNameLength(String carName) {
-		return carName.length() < LIMIT_NUMBER && !carName.isEmpty();
+		return carName.length() < LIMIT_CAR_NAME_SIZE && !carName.isEmpty();
 	}
 
 	public boolean duplicateCheck(List<Car> cars) {
