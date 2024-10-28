@@ -16,7 +16,7 @@ public class CarController {
         OutPutView.displayResultMessage();
         for (int i = 0; i < tryCount; i++) {
             carService.incrementCars();
-            OutPutView.displayCurrentCarsInfo(carService.getCarsInfo());
+            OutPutView.displayCurrentCarsInfo(carService.getCarsInformation());
         }
         OutPutView.displayWinner(carService.getWinners());
     }

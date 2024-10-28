@@ -21,7 +21,7 @@ public class CarService {
         cars.incrementDistance();
     }
 
-    public Map<String, Integer> getCarsInfo() {
+    public Map<String, Integer> getCarsInformation() {
         return cars.getInformation();
     }
 
