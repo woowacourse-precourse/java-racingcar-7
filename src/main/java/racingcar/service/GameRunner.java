@@ -9,6 +9,14 @@ import racingcar.model.GameResult;
 
 public class GameRunner {
 
+    private static final int RANDOM_LOWER_BOUND = 0;
+    private static final int RANDOM_UPPER_BOUND = 9;
+    private static final int MOVEMENT_LIMIT = 4;
+    private static final String CAR_POSITION_INDICATOR = " : ";
+    private static final String POSITION_SYMBOL = "-";
+    private static final String LINE_BREAK = "\n";
+    private static final String WINNER_DELIMITER = ",";
+
     public GameResult runGame(Set<String> carNames, int finalAttemptCount) {
         Map<String, Integer> carState = initializeCarState(carNames);
         StringBuilder allRoundResults = new StringBuilder();
@@ -29,17 +37,17 @@ public class GameRunner {
         return carState;
     }
 
-    public void updateCarState(Map<String, Integer> carState){
+    public void updateCarState(Map<String, Integer> carState) {
         carState.forEach((car, position) -> {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_LOWER_BOUND, RANDOM_UPPER_BOUND);
             if (isMoved(randomNumber)) {
                 carState.put(car, position + 1);
             }
         });
     }
 
-    public boolean isMoved(int randomNumber){
-        if (randomNumber >= 4) {
+    public boolean isMoved(int randomNumber) {
+        if (randomNumber >= MOVEMENT_LIMIT) {
             return true;
         }
         return false;
@@ -55,16 +63,16 @@ public class GameRunner {
                 .map(Map.Entry::getKey)
                 .toList();
 
-        return String.join(",", winners);
+        return String.join(WINNER_DELIMITER, winners);
     }
 
     public String formatRoundResult(Map<String, Integer> carPositions) {
         StringBuilder result = new StringBuilder();
         carPositions.forEach((carName, position) -> {
             result.append(carName)
-                    .append(" : ")
-                    .append("-".repeat(Math.max(0, position)))
-                    .append("\n");
+                    .append(CAR_POSITION_INDICATOR)
+                    .append(POSITION_SYMBOL.repeat(Math.max(0, position)))
+                    .append(LINE_BREAK);
         });
         return result.toString();
     }
