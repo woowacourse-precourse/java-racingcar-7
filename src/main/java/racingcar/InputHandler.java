@@ -22,6 +22,14 @@ public class InputHandler {
 
     public static List<String> commaSeparator(String input){
         List<String> names = List.of(input.split(","));
+        for(String name : names){
+            if(name.trim().isEmpty()){
+                throw new IllegalArgumentException("이름이 비었습니다.");
+            }
+            if(name.length() > 5){
+                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+            }
+        }
         return names;
     }
 
