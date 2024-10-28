@@ -18,6 +18,15 @@ public class Application {
     static int totalCount;
     static Car winner_list[];
 
+    public static void getWinner(int score) {
+        int idx = 0;
+        for (int i = 0; i < car_list.length; i++) {
+            if (car_list[i].move_cnt == score) {
+                winner_list[idx++] = car_list[i];
+            }
+        }
+    }
+
     public static int getMaxNum() {
         int maxi = 0;
         for (int i = 0; i < car_list.length; i++) {
@@ -47,7 +56,7 @@ public class Application {
             getRandomNum();
             printGame();
         }
-        getMaxNum();
+        getWinner(getMaxNum());
     }
 
     public static void checkValid(String name) {
