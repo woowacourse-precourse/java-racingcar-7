@@ -1,9 +1,12 @@
 package racingcar.domain.race;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.dto.RaceProgressDto;
+import racingcar.dto.RaceResultDto;
 import racingcar.view.OutputView;
 
 public class Race {
@@ -28,6 +31,7 @@ public class Race {
             progress();
             displayProgress();
         }
+        displayResult();
     }
 
     private void progress() {
@@ -45,6 +49,23 @@ public class Race {
     private void displayProgress() {
         RaceProgressDto raceProgressDto = RaceProgressDto.from(this.cars);
         OutputView.showRaceProgress(raceProgressDto);
+    }
+
+    private void displayResult() {
+        List<Car> winners = determineWinners();
+        RaceResultDto raceResultDto = RaceResultDto.from(winners);
+        OutputView.showRaceResult(raceResultDto);
+    }
+
+    private List<Car> determineWinners() {
+        int maxPosition = this.cars.getCars().stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return this.cars.getCars().stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 }
 
