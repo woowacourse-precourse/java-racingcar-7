@@ -18,6 +18,15 @@ public class Input {
         return makeCarList(carNameInput);
     }
 
+    private List<Car> makeCarList(String carNames) {
+        List<Car> racingCarList = new ArrayList<>();
+        for (final String name : carNames.split(",")) {
+            Car car = new Car(name);
+            racingCarList.add(car);
+        }
+        return racingCarList;
+    }
+
     private void validateCarNameInput(String carNameInput) {
         for (final String carName : carNameInput.split(",")) {
             if (carName.isBlank()) {
