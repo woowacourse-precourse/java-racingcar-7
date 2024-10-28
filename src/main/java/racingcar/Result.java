@@ -4,8 +4,6 @@ import static racingcar.Application.*;
 
 public class Result {
 
-    // 가장 멀리 간 자동차의 길이를 구할 변수 선언하기
-    public static int winLength = 0;
 
     // 전체 자동차를 순회하며 최대 길이 찾기
     public static void findMax() {

@@ -15,6 +15,9 @@ public class Application {
     public static String [][] carMap;
     public static int len = 0;
 
+    // 가장 멀리 간 자동차의 길이를 구할 변수 선언하기
+    public static int winLength = 0;
+
     // 우승자를 담을 리스트 선언, 초기화하기
     public static ArrayList<String> resultArr = new ArrayList<>();
 
