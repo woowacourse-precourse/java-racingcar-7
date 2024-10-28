@@ -33,7 +33,7 @@ public class RaceController {
     private void raceProcess(int count) {
         for (int i = 0; i < count; i++) {
             service.race();
-            outputView.displayRace(service.getCars());
+            outputView.displayRace(service.getCars().get());
         }
     }
 

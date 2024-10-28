@@ -60,7 +60,7 @@ public class RaceService {
         }
         return maxScore;
     }
-    private void setCars(List<Car> inputCars) {
+    public void setCars(List<Car> inputCars) {
         cars.set(inputCars);
     }
     public Cars getCars(){
