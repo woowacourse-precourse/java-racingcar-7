@@ -9,6 +9,8 @@ import racingcar.utils.ErrorMessage;
 import racingcar.utils.Util;
 
 public class CarNames {
+    private static final String CAR_NAME_REGEX = "[a-zA-Z0-9]+";
+
     private final List<String> names;
 
     public CarNames(String carsName) {
@@ -39,7 +41,7 @@ public class CarNames {
         if (name.length() >= MAXIMUM_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_OVER_RANGE.message());
         }
-        if (!name.matches("[a-zA-Z0-9]+")) {
+        if (!name.matches(CAR_NAME_REGEX)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_FORMAT.message());
         }
     }
