@@ -12,4 +12,10 @@ public class Car {
     public Car(CarName Carname){
         this.name = Carname.getName();
     }
+
+    public void move() {
+        if (Randoms.pickNumberInRange(0, 9) >= MINIMUM_NUMBER_TO_MOVE) {
+            position++;
+        }
+    }
 }
