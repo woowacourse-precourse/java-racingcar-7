@@ -10,6 +10,9 @@ public class InputSplitter {
     }
 
     public static CarNames split(String input) {
-        return new CarNames(Arrays.asList(input.split(DELIMETER)));
+        return new CarNames(
+                Arrays.stream(input.split(DELIMETER))
+                        .map(String::trim)
+                        .toList());
     }
 }
