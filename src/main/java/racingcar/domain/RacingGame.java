@@ -1,6 +1,8 @@
 package racingcar.domain;
 
+import java.util.List;
 import racingcar.service.RandomNumManager;
+import racingcar.validation.NameValidator;
 
 public class RacingGame {
     private final Cars cars;
@@ -11,5 +13,12 @@ public class RacingGame {
         this.cars = cars;
         this.rounds = rounds;
         this.randomNumManager = new RandomNumManager();
+    }
+
+    public void createCars(List<String> nameList) {
+        NameValidator.validateNames(nameList);
+        for (String name : nameList) {
+            cars.add(new Car(name));
+        }
     }
 }
