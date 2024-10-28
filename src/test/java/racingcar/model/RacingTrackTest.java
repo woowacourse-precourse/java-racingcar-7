@@ -112,4 +112,31 @@ class RacingTrackTest {
             assertThat(stepResult.get(index)).contains(expected.get(index));
         }
     }
+
+    @Test
+    @DisplayName("자동차 이름이 2대 미만인 경우 예외 발생")
+    void carCountLessThanTwoTest() {
+        //given
+        RacingTrack racingTrack = new RacingTrack();
+        final List<String> carNames = List.of("pobi");
+
+        //when & then
+        assertThatThrownBy(() -> racingTrack.addCar(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(RacingTrackException.NOT_ENOUGH_CAR.getMessage());
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 10대 초과인 경우 예외 발생")
+    void carCountMoreThanTenTest() {
+        //given
+        RacingTrack racingTrack = new RacingTrack();
+        final List<String> carNames = List.of("pobi0", "pobi1", "pobi2", "pobi3", "pobi4", "pobi5", "pobi6", "pobi7",
+                "pobi8", "pobi9", "crong");
+
+        //when & then
+        assertThatThrownBy(() -> racingTrack.addCar(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(RacingTrackException.TOO_MANY_CAR.getMessage());
+    }
 }
