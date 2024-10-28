@@ -8,9 +8,10 @@ public class RacingCar {
         this.name = name;
     }
 
-    public void run(int randomNum) {
-        if (randomNum >= 4)
+    public void run(boolean move) {
+        if (move) {
             status++;
+        }
     }
 
     public String getName() {

@@ -1,15 +1,15 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
+import racingcar.policy.RandomNumGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RaceManager {
 
     private final List<RacingCar> racerList = new ArrayList<>();
-
-    public RaceManager(List<String> carNames) {
+    private final RandomNumGenerator randomNumGenerator;
+    public RaceManager(List<String> carNames, RandomNumGenerator randomNumGenerator) {
+        this.randomNumGenerator = randomNumGenerator;
         for (String carName : carNames) {
             racerList.add(CarFactory.createRacingCars(carName));
         }
@@ -26,14 +26,10 @@ public class RaceManager {
 
     private void updateRaceState(List<RacingCar> racerList) {
         for (RacingCar racer : racerList) {
-            racer.run(getRandomNum());
+            racer.run(randomNumGenerator.moveOrStop());
             IOHandler.printRacer(racer);
         }
         IOHandler.printNewLine();
-    }
-
-    private int getRandomNum() {
-        return Randoms.pickNumberInRange(0, 9);
     }
 
     private String getWinner(List<RacingCar> racerList) {
