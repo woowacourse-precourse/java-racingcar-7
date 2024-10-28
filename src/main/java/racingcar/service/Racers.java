@@ -1,12 +1,31 @@
 package racingcar.service;
 
+import static racingcar.View.ViewConstants.DUPLICATE_NAME_ERROR_MESSAGE;
+import static racingcar.View.ViewConstants.NOT_ENOUGH_PLAYERS_ERROR_MESSAGE;
+import static racingcar.config.RacingConstants.REQUIRED_MIN_PLAYERS;
+
 import java.util.List;
 
 public class Racers {
     private final List<Car> cars;
 
     public Racers(List<Car> cars) {
+        validateCountOf(cars);
+        validateNonDuplicate(cars);
         this.cars = cars;
+    }
+
+    private void validateCountOf(List<Car> cars) {
+        if (cars.size() < REQUIRED_MIN_PLAYERS) {
+            throw new IllegalArgumentException(NOT_ENOUGH_PLAYERS_ERROR_MESSAGE);
+        }
+    }
+
+    private void validateNonDuplicate(List<Car> cars) {
+        long totalDistinctNames = cars.stream().map(Car::getName).distinct().count();
+        if (cars.size() != totalDistinctNames) {
+            throw new IllegalArgumentException(DUPLICATE_NAME_ERROR_MESSAGE);
+        }
     }
 
     public void tryToMoveWith(RacingRule racingRule) {

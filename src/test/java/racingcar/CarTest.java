@@ -26,7 +26,7 @@ class CarTest {
 
     @DisplayName("최대 길이보다 긴 이름을 전달받으면 예외 발생")
     @ParameterizedTest
-    @ValueSource(strings = {"sarang", "sarangkim", "jaesungpark"})
+    @ValueSource(strings = {"sarang", "sarangkim", "jaesungpark", "가나다라마바"})
     void throwExceptionIfGetNameLongerThanMaxLength(String name) {
         assertThatThrownBy(() -> new Car(name, INITIAL_MOVE_COUNT))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
@@ -35,7 +35,7 @@ class CarTest {
 
     @DisplayName("전달받은 이름의 길이가 유효하면 Car 인스턴스 생성")
     @ParameterizedTest
-    @ValueSource(strings = {"k", "go", "pobi", "saera", "won.i"})
+    @ValueSource(strings = {"k", "go123", "pobi", "saera", "won.i", "차", "아자", "카타파하5"})
     void createCar(String name) {
         assertThat(new Car(name, INITIAL_MOVE_COUNT)).isExactlyInstanceOf(Car.class);
     }

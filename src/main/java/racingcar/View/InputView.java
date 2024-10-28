@@ -11,7 +11,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public String requestTotalAttempts() {
+    public String requestTotalRounds() {
         System.out.println(ENTER_TOTAL_ROUNDS_MESSAGE);
         return Console.readLine();
     }

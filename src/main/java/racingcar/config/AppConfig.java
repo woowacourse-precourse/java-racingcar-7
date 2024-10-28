@@ -1,50 +1,55 @@
 package racingcar.config;
 
-import static racingcar.config.RacingConstants.MAX_NUMBER_IN_RANGE;
-import static racingcar.config.RacingConstants.MIN_NUMBER_IN_RANGE;
-import static racingcar.config.RacingConstants.MIN_NUMBER_TO_MOVE;
-
+import racingcar.View.InputValidator;
 import racingcar.service.CarRacing;
-import racingcar.controller.InputController;
+import racingcar.controller.CarRacingController;
 import racingcar.service.Racers;
 import racingcar.service.RacingRule;
 import racingcar.View.InputView;
 import racingcar.View.OutputView;
+import racingcar.service.CarRacingService;
 
 public class AppConfig {
-    public RacingInitializer racingInitializer() {
-        return new RacingInitializer(inputView(), inputController());
-    }
-
     public InputView inputView() {
         return new InputView();
-    }
-
-    public InputController inputController() {
-        return new InputController(inputValidator());
     }
 
     public InputValidator inputValidator() {
         return new InputValidator();
     }
 
-    public CarRacing carRacing() {
-        return new CarRacing(racingRule(), racers(), totalRounds(), outputView());
+    public OutputView outputView() {
+        return new OutputView();
+    }
+
+    public CarRacingController carRacingController() {
+        return new CarRacingController(inputView(), inputValidator(), outputView());
+    }
+
+    public CarRacingService carRacingService() {
+        return new CarRacingService();
     }
 
     public RacingRule racingRule() {
-        return new RacingRule(MIN_NUMBER_IN_RANGE, MAX_NUMBER_IN_RANGE, MIN_NUMBER_TO_MOVE);
+        return carRacingService().setRacingRule();
     }
 
     public Racers racers() {
-        return racingInitializer().registerRacers();
+        return carRacingService().registerRacers(carRacingController().extractCarNames());
     }
 
     public int totalRounds() {
-        return racingInitializer().registerTotalRounds();
+        return carRacingService().registerTotalRounds(carRacingController().convertToNumber());
     }
 
-    public OutputView outputView() {
-        return new OutputView();
+    public CarRacing carRacing() {
+        return new CarRacing(racingRule(), racers());
+    }
+
+    public void run() {
+        CarRacingController carRacingController = carRacingController();
+        CarRacing carRacing = carRacing();
+        carRacingController.deliverRaceProgress(carRacing, totalRounds());
+        carRacingController.deliverWinners(carRacing);
     }
 }

@@ -12,12 +12,8 @@ public class OutputView {
         System.out.println(System.lineSeparator() + RACE_RESULT);
     }
 
-    public void printProgress(List<String> currentResults) {
-        StringBuilder output = new StringBuilder();
-        for (String result : currentResults) {
-            output.append(result).append(System.lineSeparator());
-        }
-        System.out.println(output);
+    public void printRaceProgress(String roundResult) {
+        System.out.println(roundResult);
     }
 
     public void printWinners(List<String> winnerNames) {
