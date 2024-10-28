@@ -37,7 +37,7 @@ public class CarFactoryTest {
     void 자동차_이름_공백_제거하여_Cars_생성() {
         String names = " pobi  , nana  ,   jun  ";
         List<Car> carList = List.of(CAR_POBI, CAR_NANA, CAR_JUN);
-        
+
         assertThat(carFactory.createCars(names)).isEqualTo(new Cars(carList));
     }
 
