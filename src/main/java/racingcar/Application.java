@@ -114,6 +114,9 @@ public class Application {
     }
 
     private static void validateRacingCars(List<String> racingCars) {
+        if (racingCars.isEmpty()) {
+            throw new IllegalArgumentException("경주에 참여하는 자동차가 없습니다.");
+        }
         if (racingCars.size() != new HashSet<>(racingCars).size()) {
             throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다.");
         }
