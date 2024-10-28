@@ -5,8 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-import static racingcar.ErrorMessage.CAR_NAME_LENGTH_ERROR;
-import static racingcar.ErrorMessage.TRY_COUNT_ERROR;
+import static racingcar.ErrorMessage.*;
 
 public class Application {
 
@@ -131,7 +130,7 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         String carNameInput = Console.readLine();
-        List<String> carNames = List.of(carNameInput.split(","));
+        List<String> carNames = Arrays.stream(carNameInput.split(",")).map(String::trim).toList();
 
         validateCarNames(carNames);
 
