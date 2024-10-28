@@ -9,6 +9,6 @@ public class MainController {
         String inputString = InputView.readString();
         int number = InputView.readNumber();
         String[] carNames = inputString.split(",");
-        RacingGame.startGame(carNames,number);
+        RacingGame.startGame(carNames, number);
     }
 }

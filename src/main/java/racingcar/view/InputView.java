@@ -32,6 +32,7 @@ public class InputView {
         if(!InputValidator.isNumber(inputNum)){
             throw new IllegalArgumentException(MESSAGE);
         }
+        System.out.println();
         return Integer.parseInt(inputNum);
     }
 }
