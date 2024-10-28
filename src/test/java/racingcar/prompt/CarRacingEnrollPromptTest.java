@@ -1,7 +1,7 @@
 package racingcar.prompt;
 
+import static racingcar.prompt.CarRacingEnrollPrompt.ATTEMPT_KEY;
 import static racingcar.prompt.CarRacingEnrollPrompt.CAR_NAMES_KEY;
-import static racingcar.prompt.CarRacingEnrollPrompt.attempt_KEY;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ class CarRacingEnrollPromptTest extends PromptTest {
 
         //Then
         Assertions.assertThat(promptModel.get(CAR_NAMES_KEY)).isEqualTo(carNamesExpected);
-        Assertions.assertThat(promptModel.get(attempt_KEY)).isEqualTo(attemptExpected);
+        Assertions.assertThat(promptModel.get(ATTEMPT_KEY)).isEqualTo(attemptExpected);
     }
 
     @Test
@@ -41,6 +41,6 @@ class CarRacingEnrollPromptTest extends PromptTest {
 
         //Then
         Assertions.assertThat(promptModel.get(CAR_NAMES_KEY)).isEqualTo(carNamesExpected);
-        Assertions.assertThat(promptModel.get(attempt_KEY)).isEqualTo(attemptExpected);
+        Assertions.assertThat(promptModel.get(ATTEMPT_KEY)).isEqualTo(attemptExpected);
     }
 }

@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 public class CarRacingEnrollPrompt implements Prompt {
 
     public static final String CAR_NAMES_KEY = "carNames";
-    public static final String attempt_KEY = "attempt";
+    public static final String ATTEMPT_KEY = "attempt";
 
     private String readNonEmptyLine() {
         String input;

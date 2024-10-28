@@ -78,7 +78,7 @@ class CarRacingEnrollTest {
         //When, Then
         Assertions.assertThatCode(() -> carRacingEnroll.extractAttempt(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CarRacingEnroll.attempt_RANGE_EXCEPTION_MSG);
+                .hasMessage(CarRacingEnroll.ATTEMPT_RANGE_EXCEPTION_MSG);
     }
 
     @Test
@@ -90,6 +90,6 @@ class CarRacingEnrollTest {
         //When, Then
         Assertions.assertThatCode(() -> carRacingEnroll.extractAttempt(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CarRacingEnroll.attempt_RANGE_EXCEPTION_MSG);
+                .hasMessage(CarRacingEnroll.ATTEMPT_RANGE_EXCEPTION_MSG);
     }
 }
