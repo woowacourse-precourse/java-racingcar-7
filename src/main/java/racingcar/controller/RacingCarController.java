@@ -1,7 +1,5 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import racingcar.dto.RacingRequestDto;
 import racingcar.model.Car;
