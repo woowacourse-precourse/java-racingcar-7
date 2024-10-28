@@ -17,7 +17,7 @@ class ValidationTest {
         List<String> carNames = new ArrayList<>();
         carNames.add("bon");
         carNames.add("han");
-        carNames.add("seonghyeon");
+        carNames.add("seong hyeon");
         carNames.add("over");
 
         IllegalArgumentException err = assertThrows(IllegalArgumentException.class, () ->{

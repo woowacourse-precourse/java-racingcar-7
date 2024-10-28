@@ -34,7 +34,7 @@ class SeparatorTest {
     }
 
     @Test
-    @DisplayName("아무 것도 입력하지 않을 때 테스트")
+    @DisplayName("아무 것도 입력 하지 않을 때 테스트")
     void emptyStringInInputStringTest() {
         Separator separator = new Separator();
         String inputString = "";
