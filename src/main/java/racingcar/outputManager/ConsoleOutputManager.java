@@ -8,17 +8,17 @@ public class ConsoleOutputManager implements OutputManager {
     public void printExecutionResult(List<Car> progressResult) {
         System.out.println();
 
-        for(Car car : progressResult){
+        for (Car car : progressResult) {
             int distance = car.getDistance();
             String name = car.getName();
             printResult(distance, name);
         }
     }
 
-    private void printResult(int distance, String name){
-        System.out.print(name+" : ");
+    private void printResult(int distance, String name) {
+        System.out.print(name + " : ");
 
-        for(int i = 0; i < distance; i++){
+        for (int i = 0; i < distance; i++) {
             System.out.print("-");
         }
 
@@ -30,14 +30,14 @@ public class ConsoleOutputManager implements OutputManager {
         System.out.println();
         System.out.print("최종 우승자 : ");
 
-        for(int i = 0; i < winner.size(); i++){
+        for (int i = 0; i < winner.size(); i++) {
             printName(winner, i);
         }
     }
 
-    private void printName(List<Car> winner, int index){
-        if(index != winner.size()-1){
-            System.out.print(winner.get(index).getName()+", ");
+    private void printName(List<Car> winner, int index) {
+        if (index != winner.size() - 1) {
+            System.out.print(winner.get(index).getName() + ", ");
         } else {
             System.out.print(winner.get(index).getName());
         }

@@ -28,24 +28,24 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
-    void 이름_분류_테스트(){
+    void 이름_분류_테스트() {
         //given
         InputManager inputManager = new ConsoleInputManager();
         List<String> comparisonValue = Arrays.asList("pobi", "woni");
@@ -58,7 +58,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 이름이_5자_이상_입력되어_에러_발생_테스트(){
+    void 이름이_5자_이상_입력되어_에러_발생_테스트() {
         //given
         InputManager inputManager = new ConsoleInputManager();
         String input = "Alice,Bob,Charles";
@@ -73,7 +73,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 랜덤값_경계값_입력_판단_테스트(){
+    void 랜덤값_경계값_입력_판단_테스트() {
         //given
         Car car = new RacingCar("siwu");
 
@@ -85,7 +85,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 랜덤값_true_입력_판단_테스트(){
+    void 랜덤값_true_입력_판단_테스트() {
         //given
         Car car = new RacingCar("siwu");
 
@@ -97,7 +97,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 랜덤값_false_입력_판단_테스트(){
+    void 랜덤값_false_입력_판단_테스트() {
         //given
         Car car = new RacingCar("siwu");
 
@@ -128,7 +128,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 주행거리_판단_테스트_전진(){
+    void 주행거리_판단_테스트_전진() {
         //given
         Referee referee = new CarRacingReferee();
         Car testCar = new TestCar("siwu", 5);
@@ -142,7 +142,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 주행거리_판단_테스트_멈춤(){
+    void 주행거리_판단_테스트_멈춤() {
         //given
         Referee referee = new CarRacingReferee();
         Car testCar = new TestCar("siwu", 2);
@@ -156,13 +156,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 우승자_판단_테스트(){
+    void 우승자_판단_테스트() {
         //given
         Referee referee = new CarRacingReferee();
 
-        Car suji = new TestCar(2,"suji");
-        Car minji = new TestCar(4,"minji");
-        Car yunji = new TestCar(8,"yunji");
+        Car suji = new TestCar(2, "suji");
+        Car minji = new TestCar(4, "minji");
+        Car yunji = new TestCar(8, "yunji");
 
         List<Car> carList = Arrays.asList(suji, minji, yunji);
 
@@ -175,13 +175,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 우승자_여러명_판단_테스트(){
+    void 우승자_여러명_판단_테스트() {
         //given
         Referee referee = new CarRacingReferee();
 
-        Car suji = new TestCar(2,"suji");
-        Car minji = new TestCar(4,"minji");
-        Car yunji = new TestCar(4,"yunji");
+        Car suji = new TestCar(2, "suji");
+        Car minji = new TestCar(4, "minji");
+        Car yunji = new TestCar(4, "yunji");
 
         List<Car> carList = Arrays.asList(suji, minji, yunji);
 
@@ -192,6 +192,7 @@ class ApplicationTest extends NsTest {
         List<Car> expected = Arrays.asList(minji, yunji);
         assertThat(winners).usingRecursiveAssertion().isEqualTo(expected);
     }
+
     @Test
     void 최종_우승자_출력_테스트() {
         // given
@@ -209,7 +210,7 @@ class ApplicationTest extends NsTest {
         outputManager.printWinner(winnerCars);
 
         // then
-        String expectedOutput = System.lineSeparator()+"최종 우승자 : pobi, edi, rupi";
+        String expectedOutput = System.lineSeparator() + "최종 우승자 : pobi, edi, rupi";
         String actualOutput = outputStream.toString();
         System.out.println("Actual Output: " + actualOutput);
         assertEquals(expectedOutput, actualOutput, "우승자 출력이 잘못되었습니다.");
@@ -223,21 +224,21 @@ class ApplicationTest extends NsTest {
         System.setOut(new PrintStream(outputStream));
 
         List<Car> progressResult = Arrays.asList(
-                new TestCar(3,"Car1"),
-                new TestCar(2,"Car2"),
-                new TestCar(1,"Car3")
+                new TestCar(3, "Car1"),
+                new TestCar(2, "Car2"),
+                new TestCar(1, "Car3")
         );
 
         //when
         outputManager.printExecutionResult(progressResult);
 
         //then
-        String expectedOutput = System.lineSeparator()+"Car1 : ---"+
-                System.lineSeparator()+"Car2 : --"+
-                System.lineSeparator()+"Car3 : -"+
+        String expectedOutput = System.lineSeparator() + "Car1 : ---" +
+                System.lineSeparator() + "Car2 : --" +
+                System.lineSeparator() + "Car3 : -" +
                 System.lineSeparator();
         String actualOutput = outputStream.toString();
-        System.out.println("Actual Outpt: "+actualOutput);
+        System.out.println("Actual Outpt: " + actualOutput);
         assertEquals(expectedOutput, actualOutput, "실행 결과 출력이 잘못되었습니다.");
     }
 

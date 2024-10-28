@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConsoleInputManager implements InputManager{
+public class ConsoleInputManager implements InputManager {
     @Override
     public void whatIsYourName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -18,9 +18,9 @@ public class ConsoleInputManager implements InputManager{
     @Override
     public List<String> splitName(String readName) {
         List<String> nameList = new ArrayList<>();
-        String [] classifiedName = readName.split(",");
+        String[] classifiedName = readName.split(",");
 
-        for(String name : classifiedName){
+        for (String name : classifiedName) {
             validateName(name);
             nameList.add(name);
         }
@@ -28,8 +28,8 @@ public class ConsoleInputManager implements InputManager{
         return nameList;
     }
 
-    private void validateName(String name){
-        if(name.length() > 5 || name.isEmpty()){
+    private void validateName(String name) {
+        if (name.length() > 5 || name.isEmpty()) {
             throw new IllegalArgumentException("입력 서식에 맞춰 주세요.");
         }
     }

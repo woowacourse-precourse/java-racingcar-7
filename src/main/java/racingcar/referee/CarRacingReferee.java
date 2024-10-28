@@ -9,7 +9,7 @@ public class CarRacingReferee implements Referee {
     public List<Car> checkDrivingDistance(List<Car> carList) {
         List<Car> confirmedCar = new ArrayList<>();
 
-        for(Car car : carList){
+        for (Car car : carList) {
             Car judged = judgeMovement(car);
             confirmedCar.add(judged);
         }
@@ -19,7 +19,7 @@ public class CarRacingReferee implements Referee {
 
     @Override
     public Car judgeMovement(Car car) {
-        if(car.judge(car.random())){
+        if (car.judge(car.random())) {
             car.addDistance();
         }
         return car;
