@@ -57,13 +57,11 @@ public class Application {
 
         String totalWinner = null;
         for (String targetCar : carArr) {
-            //8-2.큰 값을 가진 사람을 찾아서 따로 저장한다. 
-            totalWinner = setWinner(totalLength, map.get(targetCar).length(), targetCar, totalWinner);
+            //8-2.큰 값을 가진 사람을 찾아서 따로 저장한다.
+            totalWinner = findWinner(totalLength, map.get(targetCar).length(), targetCar, totalWinner);
         }
         System.out.println("최종 우승자 : "+totalWinner);
     }
-
-
 
     public static void checkIfNumeric(String inputTry){
         if (!isNmberic(inputTry)){
@@ -144,13 +142,19 @@ public class Application {
     }
 
     //8-2.큰 값을 가진 사람을 찾아서 따로 저장한다.
-    public static String setWinner(Integer totalLength, Integer targetLength, String targetCar, String totalWinner){
+    public static String findWinner(Integer totalLength, Integer targetLength, String targetCar, String totalWinner){
         if (totalLength.equals(targetLength)){
-            if (totalWinner == null){
-                totalWinner = targetCar;
-            } else{
-                totalWinner += (", " + targetCar);
-            }
+            totalWinner = setWinner(targetCar, totalWinner);
+        }
+        return totalWinner;
+    }
+
+    //8-2-1. 가장 큰 값을 가진 사람을 따로 저장한다.
+    public static String setWinner(String targetCar, String totalWinner){
+        if (totalWinner == null){
+            totalWinner = targetCar;
+        } else{
+            totalWinner += (", " + targetCar);
         }
         return totalWinner;
     }
