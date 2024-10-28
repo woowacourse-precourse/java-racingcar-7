@@ -3,6 +3,7 @@ package racingcar.domain;
 import static racingcar.constant.ExecptionMessage.CARS_NAME_DUPLICATED_MESSAGE;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -53,5 +54,12 @@ public class Cars {
                 .map(car -> new CarDto(car.getName(), car.getPosition()))
                 .toList();
         return new CarsDto(carDtoList);
+    }
+
+    public static Cars from(String[] carNames, RandomGenerator randomNumberGenerator) {
+        List<Car> carList = Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new Cars(carList, randomNumberGenerator);
     }
 }
