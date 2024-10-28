@@ -11,6 +11,8 @@ public class CarInformation {
         String[] names = carName.split(",");
 
         for (String name : names) {
+            name = name.trim();
+
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
             }
