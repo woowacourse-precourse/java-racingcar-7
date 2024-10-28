@@ -32,7 +32,7 @@ public class UserInputProcessor {
 
     private Integer parseStringToInteger(String userInput) {
         long tempTotalAttempts = Long.parseLong(userInput);
-        userInputProcessorValidator.validateTotalAttemptsOverflow(tempTotalAttempts);
+        userInputProcessorValidator.validateTotalAttemptsRange(tempTotalAttempts);
         return (int) tempTotalAttempts;
     }
 }

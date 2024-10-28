@@ -33,8 +33,8 @@
 
 ## UserInputProcessorValidator
 
--[X] 총 시도횟수가 정수 범위를 넘어가는지 검증
-- 정수 범위를 넘어갈 경우 `IllegalArgumentException` 발생
+-[X] 총 시도횟수가 정수 범위를 넘어가거나 음수일 경우
+- `IllegalArgumentException` 발생
 
 ## RacingCarController
 
