@@ -12,7 +12,9 @@
 - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
 ### 사용할 객체
-Name, Names, Car, Cars
+- Name, Names
+- Car, Cars
+- RacingGameCount, RacingRecord, RacingSnapshot
 ## 요구 기능 사항
 - [x] 입력 구현하기
   - [x] 자동차들 입력받기
