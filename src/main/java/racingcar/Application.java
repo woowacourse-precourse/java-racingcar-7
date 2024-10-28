@@ -6,13 +6,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
-우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
-자동차 경주 실행 및 실행과정 출력(반복문)
-최종우승자 판단 메서드(Winner) 작성
-최종우승자 결과 출력
- */
 class Car{
     private String name;
     private int move;
@@ -50,6 +43,8 @@ public class Application {
         for(int i=0;i<moveTryCount;i++){
             moving(cars);
         }
+
+        winner(cars);
     }
 
     public static List<Car> createCars(String carNames){
@@ -78,6 +73,24 @@ public class Application {
     }
 
     public static void winner(List<Car> cars){
-
+        int maxMove = 0;
+        for(Car car : cars){
+            if(car.getMove() > maxMove){
+                maxMove = car.getMove();
+            }
+        }
+        List<String> winnerNames = new ArrayList<>();
+        for(Car car : cars){
+            if(car.getMove() == maxMove){
+                winnerNames.add(car.getName());
+            }
+        }
+        System.out.print("최종 우승자 : ");
+        for(int i=0;i<winnerNames.size();i++){
+            System.out.print(winnerNames.get(i));
+            if(i < winnerNames.size()-1){
+                System.out.print(",");
+            }
+        }
     }
 }
