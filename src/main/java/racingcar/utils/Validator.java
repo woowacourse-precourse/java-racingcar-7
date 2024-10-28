@@ -23,7 +23,16 @@ public class Validator {
         if (!attemptCount.matches(POSITIVE_INTEGER_REGEX)) {
             throw new IllegalArgumentException("시도 횟수는 양의 정수여야 합니다.");
         }
-        return Integer.parseInt(attemptCount);
+        try {
+            int attempt = Integer.parseInt(attemptCount);
+            if (meetNumberLimit(attempt)) {
+                return attempt;
+            } else {
+                throw new IllegalArgumentException("허용되는 시도 횟수는 1~2000입니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("올바르지 않은 숫자 형식입니다.");
+        }
     }
 
     private static boolean haveValidLength(final List<String> carNames) {
@@ -34,5 +43,9 @@ public class Validator {
     private static boolean haveDuplicates(final List<String> carNames) {
         Set<String> uniqueNames = new HashSet<>(carNames);
         return uniqueNames.size() < carNames.size();
+    }
+
+    private static boolean meetNumberLimit(int attempt) {
+        return 1 <= attempt && attempt <= 2000;
     }
 }
