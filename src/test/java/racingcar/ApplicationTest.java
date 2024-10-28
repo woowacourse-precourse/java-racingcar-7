@@ -18,6 +18,14 @@ class ApplicationTest extends NsTest {
 
     List<Integer> numbers = Arrays.asList(3, 4);
     List<Integer> numbers2 = Arrays.asList(4, 5);
+    List<Integer> numbers3 = Arrays.asList(5, 6);
+    List<Integer> numbers4 = Arrays.asList(0, 5);
+
+    List<Integer> numbers5 = Arrays.asList(3, 4, 7);
+    List<Integer> numbers6 = Arrays.asList(4, 5, 5);
+    List<Integer> numbers7 = Arrays.asList(5, 6, 8);
+    List<Integer> numbers8 = Arrays.asList(0, 5, 8);
+
 
     @BeforeEach
     void setUp() {
@@ -52,11 +60,21 @@ class ApplicationTest extends NsTest {
     void 기능_테스트3() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    run("pobi,woni", "2");
-                    assertThat(output()).contains("pobi : ", "woni : -");
-                    assertThat(output()).contains("pobi : -", "woni : --", "최종 우승자 : woni");
+                    run("pobi,woni", "4");
+                    assertThat(output()).contains("pobi : --", "woni : ----", "최종 우승자 : woni");
                 },
-                numbers, numbers2
+                numbers, numbers2, numbers3, numbers4
+        );
+    }
+
+    @Test
+    void 기능_테스트4() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("pobi,woni,abcd", "4");
+                    assertThat(output()).contains("pobi : --", "woni : ----", "abcd : ----", "최종 우승자 : woni, abcd");
+                },
+                numbers5, numbers6, numbers7, numbers8
         );
     }
 
