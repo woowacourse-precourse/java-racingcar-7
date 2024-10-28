@@ -9,12 +9,13 @@ public class Car {
     private final Condition condition;
     private int position;
 
-    private Car(String name, Condition condition) {
+    private Car(String name) {
         this.name = name;
-        this.condition = condition;
+        this.condition = Condition.getCurrentCondition();
     }
-    public static Car generateCars(String carName, Condition condition) {
-        return new Car(carName, condition);
+
+    public static Car generateCars(String carName) {
+        return new Car(carName);
     }
 
     public void move() {

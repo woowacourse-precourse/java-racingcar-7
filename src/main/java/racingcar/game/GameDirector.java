@@ -2,7 +2,6 @@ package racingcar.game;
 
 
 import racingcar.exception.Validator;
-import racingcar.strategy.Condition;
 import racingcar.util.Printer;
 
 import java.util.List;
@@ -13,8 +12,8 @@ public class GameDirector {
     private final int count;
     private final CarList manager;
 
-    public GameDirector(String carNames, String count, Condition condition) {
-        manager = new CarList(condition);
+    public GameDirector(String carNames, String count) {
+        manager = new CarList();
         manager.add(carNames);
         this.count = Validator.validateCountIfNegative(count);
     }

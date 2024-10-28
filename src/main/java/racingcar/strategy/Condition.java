@@ -13,7 +13,7 @@ public enum Condition {
         this.predicate = predicate;
     }
 
-    public static Condition getCondition() {
+    public static Condition getCurrentCondition() {
         return RANDOM;
     }
 
