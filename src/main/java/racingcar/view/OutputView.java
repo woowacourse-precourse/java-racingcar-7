@@ -10,11 +10,15 @@ public class OutputView {
     public static void printRacingProcess(List<String> carNames, Map<String, Integer> carProgress){
 
         for (String carName : carNames){
-            System.out.print(carName + " : ");
-            for (int i = 0; i < carProgress.get(carName); i++) {
-                System.out.print("-");
-            }
-            System.out.println();
+            printCarProcess(carName, carProgress.get(carName));
+        }
+        System.out.println();
+    }
+
+    public static void printCarProcess(String carName, Integer carProgress){
+        System.out.print(carName + " : ");
+        for (int i = 0; i < carProgress; i++) {
+            System.out.print("-");
         }
         System.out.println();
     }
