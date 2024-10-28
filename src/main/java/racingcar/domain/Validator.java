@@ -6,6 +6,8 @@ public class Validator {
     public static final String EMPTY_NAME_ERROR = "이름이 비어있을 수 없습니다.";
     public static final String INVALID_TRY_COUNT_ERROR = "시도 횟수는 1 이상의 정수여야 합니다.";
 
+    public static final int MOVE_THRESHOLD = 4;
+
     public static void validateInput(String input) {
         if(input.isEmpty()) {
             throw new IllegalArgumentException(INVALID_INPUT_ERROR);
@@ -41,6 +43,6 @@ public class Validator {
     }
 
     public static boolean allowMove(int randomValue) {
-        return randomValue >= 4;
+        return randomValue >= MOVE_THRESHOLD;
     }
 }
