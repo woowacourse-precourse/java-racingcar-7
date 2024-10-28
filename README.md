@@ -25,8 +25,8 @@
 - [ ] View Layer
   - [x] Input : 자동차 이름 및 진행횟수 입력. 조건에 맞지 않는 입력은 예외 처리.
   - [ ] Output : 각 round 별 경기 결과 출력. 최종 우승자 출력.
-- [ ] Service Layer
-  - [ ] GameService : 한 라운드를 진행하는 로직. 우승자 결정 로직.
+- [x] Service Layer
+  - [x] GameService : 한 라운드를 진행하는 로직. 우승자 결정 로직.
 - [ ] Controller Layer
   - [ ] CarRace : 전체 라운드를 진행. Model 객체 생성. Service와 View 연결.
 - [x] Util
