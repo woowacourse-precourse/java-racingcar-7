@@ -25,8 +25,7 @@ public class Application {
 
         Input input = new Input();
 
-        String inputCarNames = input.getCarNames();
-        List<String> carNames = splitCarNames(inputCarNames);
+        List<String> carNames = input.getCarNames();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputGameCount = Console.readLine();
