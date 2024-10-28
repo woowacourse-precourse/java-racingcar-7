@@ -32,7 +32,7 @@
 - - -
 
 ## 패키지
-
+```
 📦racingcar
 ┣ 📂constant
 ┃ ┣ 📜Constant.java
@@ -55,6 +55,7 @@
 ┃ ┣ 📜InputView.java
 ┃ ┗ 📜OutputView.java
 ┗ 📜Application.java
+```
 
 - - -
 
