@@ -27,12 +27,6 @@ public class Car {
     }
 
     public String getPositionString() {
-        StringBuilder sb = new StringBuilder();
-
-        for (long i = 0L; i < position; i++) {
-            sb.append("-");
-        }
-
-        return sb.toString();
+        return "-".repeat(Math.toIntExact(position));
     }
 }
