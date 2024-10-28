@@ -56,6 +56,7 @@ public class CarRacingController {
     private void executeRaces(CarRacing carRacing, int totalRacingCounter) {
         for (int i = 0; i < totalRacingCounter; i++) {
             carRacing.startRacing();
+            outputView.printMessage(carRacing.recordRaceStatus());
         }
     }
 
