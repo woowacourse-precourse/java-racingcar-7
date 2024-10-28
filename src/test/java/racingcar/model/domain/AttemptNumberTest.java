@@ -11,7 +11,7 @@ import camp.nextstep.edu.missionutils.test.Assertions;
 class AttemptNumberTest {
 
 	@ParameterizedTest
-	@ValueSource(ints = { -50, -10, -1 })
+	@ValueSource(ints = {-50, -10, -1})
 	void 시도_횟수가_음수일_경우_예외(int attemptNumber) {
 		Assertions.assertSimpleTest(() -> {
 			assertThatThrownBy(() -> Validator.validateAttemptNumber(attemptNumber))

@@ -13,7 +13,6 @@ public class Parse {
 		this.delimiter = delimiter;
 	}
 
-
 	public static int parseToInt(String attemptNumber) {
 		return Integer.parseInt(attemptNumber);
 	}

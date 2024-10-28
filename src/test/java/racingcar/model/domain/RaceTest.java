@@ -2,6 +2,7 @@ package racingcar.model.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import camp.nextstep.edu.missionutils.test.Assertions;
 
 import java.util.List;
