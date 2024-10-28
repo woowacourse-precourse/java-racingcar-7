@@ -12,7 +12,9 @@ public enum ErrorCode {
 
     CANT_TRY_COUNT_UNDER_ZERO("시도 횟수는 0 이하가 될 수 없습니다"),
 
-    CANT_INSERT_DUPLICATE_CAR_NAME("중복된 차량의 이름은 입력할 수 없습니다");
+    CANT_INSERT_DUPLICATE_CAR_NAME("중복된 차량의 이름은 입력할 수 없습니다"),
+
+    CANT_FIND_MAX_MOVE_COUNT_IN_EMPTY("빈 컬렉션에서 가장 많은 거리를 간 차는 찾을 수 없습니다");
 
    private final String message;
 

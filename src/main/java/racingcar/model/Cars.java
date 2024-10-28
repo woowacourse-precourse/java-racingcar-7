@@ -41,9 +41,7 @@ public class Cars {
 
     public List<String> getTopRankCarName(){
 
-        sortByMoveCount();
-
-        int topMoveCount = cars.get(0).getMoveCount();
+        int topMoveCount = getTop1MoveCount();
 
         return cars.stream()
                 .filter(car -> car.getMoveCount() == topMoveCount)
@@ -52,8 +50,13 @@ public class Cars {
 
     }
 
-    private void sortByMoveCount() {
-        cars.sort((o1, o2) -> Integer.compare(o2.getMoveCount(), o1.getMoveCount()));
+    private int getTop1MoveCount() {
+
+        return   cars.stream()
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElseThrow(()->new IllegalArgumentException(ErrorCode.CANT_FIND_MAX_MOVE_COUNT_IN_EMPTY.getMessage()));
+
     }
 
 
