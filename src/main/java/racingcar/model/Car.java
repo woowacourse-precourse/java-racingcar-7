@@ -14,14 +14,10 @@ public class Car {
         this.name = name;
     }
 
-
     public void move() {
-        int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
-
-        if (randomNumber >= MOVE_THRESHOLD) {
+        if (isMoveForward()) {
             this.position++;
         }
-
     }
 
     private boolean isMoveForward() {
@@ -29,9 +25,8 @@ public class Car {
     }
 
     private int generateRandomNumber() {
-        return Randoms.pickNumberInRange( RANDOM_NUMBER_MIN,RANDOM_NUMBER_MAX);
+        return Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
     }
-
 
     public int getPosition() {
         return position;
@@ -40,5 +35,4 @@ public class Car {
     public String getName() {
         return name;
     }
-
 }
