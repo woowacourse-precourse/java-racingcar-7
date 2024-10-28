@@ -17,4 +17,10 @@ public class WinnerManager {
                 .filter(car -> car.getDistance() == maxDistance)
                 .toList();
     }
+
+    boolean isSingleWinner(List<Car> winners) {
+        return winners.size() == 1;
+    }
+
+
 }
