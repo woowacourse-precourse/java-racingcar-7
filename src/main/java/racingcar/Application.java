@@ -18,7 +18,6 @@ public class Application {
 
     private static void runRace(int attempts, String[] carNames, List<StringBuilder> raceResults) {
         System.out.println("실행 결과");
-        Integer carNamesLength = carNames.length;
         for (int i = 0; i < attempts; i++) {
             updateAndDisplayRaceResults(carNames, raceResults);
         }
