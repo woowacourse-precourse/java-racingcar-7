@@ -3,14 +3,12 @@ package racingcar.Model;
 public class Car {
     private final String CarName;
     private int Position = 0;
-    private int RandomNumber;
 
     public Car(String carName) {
         CarName = carName;
     }
 
     public void move(int RandomNumber) {
-        this.RandomNumber = RandomNumber;
         if (RandomNumber >= 4) {
             Position++;
         }
