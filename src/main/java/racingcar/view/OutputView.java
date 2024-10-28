@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import java.util.ArrayList;
+import java.util.List;
 import racingcar.model.Car;
 
 public class OutputView {
@@ -17,24 +17,13 @@ public class OutputView {
         System.out.println(InfoMessage.RESULT.getMessage());
     }
 
-    public void printRacingResult(ArrayList<Car> carList) {
-
-        for (Car car : carList) {
-            System.out.printf("%s : %s%n", car.getName(), car.getPositionString());
-        }
-
+    public void printRacingResult(List<Car> carList) {
+        carList.forEach(car -> System.out.printf("%s : %s%n", car.getName(), car.getPositionString()));
         System.out.println();
     }
 
-    public void printWinners(ArrayList<String> winners) {
+    public void printWinners(List<String> winners) {
         System.out.print(InfoMessage.FINAL_WINNER.getMessage());
-
-        for (int i = 0; i < winners.size(); i++) {
-            System.out.print(winners.get(i));
-
-            if (i != winners.size() - 1) {
-                System.out.print(", ");
-            }
-        }
+        System.out.println(String.join(", ", winners));
     }
 }
