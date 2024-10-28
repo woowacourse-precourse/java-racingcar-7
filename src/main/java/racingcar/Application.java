@@ -3,11 +3,16 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         String[] carNames = getCarNames();;
         int tryCount = getTryCount();
 
+        runRace(carNames, tryCount);
     }
     private static String[] getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
@@ -35,6 +40,15 @@ public class Application {
         return tryCount;
     }
 
+    private static void runRace(String[] carNames, int tryCount) {
+        int[] positions = new int[carNames.length];
+        for (int i = 0; i < tryCount; i++) {
+            moveCars(carNames, positions);
+            printPositions(carNames, positions);
+        }
+        printWinners(carNames, positions);
+    }
+
     private static boolean shouldMove() {
         int randomValue = Randoms.pickNumberInRange(0, 9);
         return randomValue >= 4;
@@ -53,5 +67,16 @@ public class Application {
             System.out.println(carNames[i] + " : " + "-".repeat(positions[i]));
         }
         System.out.println();
+    }
+
+    private static void printWinners(String[] carNames, int[] positions) {
+        int maxPosition = Arrays.stream(positions).max().orElse(0);
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < carNames.length; i++) {
+            if (positions[i] == maxPosition) {
+                winners.add(carNames[i]);
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
