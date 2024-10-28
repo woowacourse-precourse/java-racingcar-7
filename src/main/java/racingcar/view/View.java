@@ -26,7 +26,7 @@ public class View {
         return inputView.userInput();
     }
 
-    public void outputRaceResultAndWinners(RaceResultDto raceResult, WinnersDto winners) {
+    public void outputRaceResultAndWinners(final RaceResultDto raceResult, final WinnersDto winners) {
         outputView.printResult(raceResult);
         outputView.printWinner(winners);
     }

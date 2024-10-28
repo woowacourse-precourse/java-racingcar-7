@@ -21,11 +21,11 @@ public class Race {
         this.randomNumberGenerator = randomNumberGenerator;
     }
 
-    public static Race of(String raceCount, NumberGenerator randomNumberGenerator) {
+    public static Race of(final String raceCount, final NumberGenerator randomNumberGenerator) {
         return new Race(raceCount, randomNumberGenerator);
     }
 
-    public RaceResultDto progress(Cars cars) {
+    public RaceResultDto progress(final Cars cars) {
         List<CarsResultDto> carsResultDtos = new ArrayList<>();
         while (raceCount.hasCount()) {
             carsResultDtos.add(cars.race(this));
@@ -34,14 +34,14 @@ public class Race {
         return new RaceResultDto(carsResultDtos);
     }
 
-    public CarResultDto move(Car car) {
+    public CarResultDto move(final Car car) {
         if (CAN_MOVE_NUMBER <= randomNumberGenerator.generate()) {
             car.move();
         }
         return car.getRaceResult();
     }
 
-    public WinnersDto getWinners(Cars cars) {
+    public WinnersDto getWinners(final Cars cars) {
         return new WinnersDto(cars.getWinners());
     }
 }

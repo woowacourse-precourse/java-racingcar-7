@@ -19,7 +19,7 @@ public class OutputView {
         return new OutputView();
     }
 
-    public void printMessage(Output output) {
+    public void printMessage(final Output output) {
         System.out.println(output.message);
     }
 
@@ -34,7 +34,7 @@ public class OutputView {
         });
     }
 
-    public void printWinner(WinnersDto winnersDto) {
+    public void printWinner(final WinnersDto winnersDto) {
         System.out.print(WINNER.message + String.join(WINNER_DELIMITER.message, winnersDto.winners()));
     }
 }

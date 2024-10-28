@@ -7,12 +7,12 @@ public class Car {
     private final CarName name;
     private final Position position;
 
-    private Car(String name) {
+    private Car(final String name) {
         this.name = CarName.from(name);
         this.position = Position.create();
     }
 
-    public static Car of(String name) {
+    public static Car of(final String name) {
         return new Car(name);
     }
 
@@ -28,7 +28,7 @@ public class Car {
         position.add();
     }
 
-    public boolean isMaxPosition(int maxPosition) {
+    public boolean isMaxPosition(final int maxPosition) {
         return maxPosition == position.getPosition();
     }
 
@@ -37,7 +37,7 @@ public class Car {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }

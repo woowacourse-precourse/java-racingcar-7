@@ -5,21 +5,21 @@ public class RaceCount {
 
     private int raceCount;
 
-    private RaceCount(String raceCount) {
+    private RaceCount(final String raceCount) {
         this.raceCount = validateRaceCount(raceCount);
     }
 
-    public static RaceCount from(String raceCount) {
+    public static RaceCount from(final String raceCount) {
         return new RaceCount(raceCount);
     }
 
-    private int validateRaceCount(String raceCount) {
+    private int validateRaceCount(final String raceCount) {
         int count = validateIsInteger(raceCount);
         validateRange(count);
         return count;
     }
 
-    private int validateIsInteger(String raceCount) {
+    private int validateIsInteger(final String raceCount) {
         try {
             return Integer.parseInt(raceCount);
         } catch (NumberFormatException e) {
@@ -27,7 +27,7 @@ public class RaceCount {
         }
     }
 
-    private void validateRange(int raceCount) {
+    private void validateRange(final int raceCount) {
         if (raceCount <= MIN_RACE_COUNT) {
             throw new IllegalArgumentException("[ERROR] 시도할 횟수는 1회 이상으로 입력해 주세요");
         }

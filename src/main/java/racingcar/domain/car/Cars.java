@@ -17,7 +17,7 @@ public class Cars {
         validateHasDuplicates();
     }
 
-    public static Cars from(String carNames) {
+    public static Cars from(final String carNames) {
         return new Cars(carNames);
     }
 
@@ -27,7 +27,7 @@ public class Cars {
         }
     }
 
-    public CarsResultDto race(Race race) {
+    public CarsResultDto race(final Race race) {
         List<CarResultDto> carResultDtos = new ArrayList<>();
         for (Car car : cars) {
             carResultDtos.add(race.move(car));
@@ -35,7 +35,7 @@ public class Cars {
         return new CarsResultDto(carResultDtos);
     }
 
-    private List<Car> createCars(String carNames) {
+    private List<Car> createCars(final String carNames) {
         return Arrays.stream(carNames.split(SPLIT_DELIMITER))
                 .map(Car::of)
                 .toList();

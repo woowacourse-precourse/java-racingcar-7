@@ -11,7 +11,7 @@ public class CarName {
         this.name = name.trim();
     }
 
-    public static CarName from(String name) {
+    public static CarName from(final String name) {
         return new CarName(name);
     }
 
@@ -20,13 +20,13 @@ public class CarName {
         validateLength(name);
     }
 
-    private void validateLength(String name) {
+    private void validateLength(final String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 최대 5자까지 가능합니다");
         }
     }
 
-    private void validateIsBlank(String name) {
+    private void validateIsBlank(final String name) {
         if (name.isBlank()) {
             throw new IllegalArgumentException("[ERROR] 공백을 이름으로 사용할 수 없습니다");
         }
@@ -37,7 +37,7 @@ public class CarName {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
