@@ -11,14 +11,8 @@ public class Car {
     }
 
     public static Car create(String name) {
-        checkCarNameLength(name);
+        CarValidation.checkCarNameLength(name);
         return new Car(name);
-    }
-
-    private static void checkCarNameLength(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException();
-        }
     }
 
     public void move() {

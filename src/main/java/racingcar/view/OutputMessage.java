@@ -2,7 +2,8 @@ package racingcar.view;
 
 public enum OutputMessage {
     RESULT_SEPARATOR(" : "),
-    MOVE_MARK("-");
+    MOVE_MARK("-"),
+    WINNER("최종 우승자");
 
     private String message;
 
