@@ -12,7 +12,7 @@
   - [X] 각 횟수에 대해서 중간 결과 출력
 - [X] 우승자 판단
   - [X] 가장 전진을 많이한 자동차 (복수 가능)
-- [ ] 우승자 출력
+- [X] 우승자 출력
 - [ ] 예외 처리
   - [ ] 자동차 이름 5자 초과시 `IllegalArgumentException` 발생
   - [ ] 입력 값이 공백 또는 `null`이면 `IllegalArgumentException` 발생
