@@ -13,7 +13,7 @@ import racingcar.model.Race;
 public class RaceController {
     public void start() {
         CarFactory carFactory = new CarFactory();
-        List<Car> cars = carFactory.produceCars(getCarNames());
+        List<Car> cars = carFactory.produce(getCarNames());
         int attempt = getNumberOfAttempts();
         Race race = new Race(cars, attempt);
 

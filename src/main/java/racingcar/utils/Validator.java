@@ -13,7 +13,7 @@ public class Validator {
         if (!haveValidLength(carNames)) {
             throw new IllegalArgumentException("자동차 이름은 쉼표로 구분하여 비어 있지 않고 1자에서 5자 사이여야 합니다.");
         }
-        if (hasDuplicates(carNames)) {
+        if (haveDuplicates(carNames)) {
             throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다.");
         }
         return carNames;
@@ -31,7 +31,7 @@ public class Validator {
                 .allMatch(carName -> carName.length() >= 1 && carName.length() <= 5);
     }
 
-    private static boolean hasDuplicates(final List<String> carNames) {
+    private static boolean haveDuplicates(final List<String> carNames) {
         Set<String> uniqueNames = new HashSet<>(carNames);
         return uniqueNames.size() < carNames.size();
     }
