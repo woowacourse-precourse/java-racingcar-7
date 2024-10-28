@@ -15,12 +15,11 @@ public class NameInput {
         .allMatch(name -> name.length() <= 5);
   }
 
-  public void setName(String input){
+  public void setName(String input) {
     this.name = input.split(",");
   }
 
-  public String[] getName()
-  {
+  public String[] getName() {
     return name;
   }
 }

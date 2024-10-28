@@ -16,35 +16,32 @@ public class CarListManager {
     this.nameInput = nameInput;
   }
 
-  public void makeCarList(){
+  public void makeCarList() {
     String[] carNames = nameInput.getName();
-    for(String carName : carNames)
-    {
-      this.carList.add(new Car(carName,0));
+    for (String carName : carNames) {
+      this.carList.add(new Car(carName, 0));
     }
   }
 
   public int makeRandomNumber() {
     return Randoms.pickNumberInRange(0, 9);
   }
+
   public void makeRequest(Car car) {
-    if(makeRandomNumber() >= 4) {
+    if (makeRandomNumber() >= 4) {
       car.updateMove();
     }
   }
 
-  public void sendRequestForAll()
-  {
-    for(Car car : this.carList)
-    {
+  public void sendRequestForAll() {
+    for (Car car : this.carList) {
       makeRequest(car);
       car.printStatus();
     }
     System.out.println();
   }
 
-  public List<Car> getCarList()
-  {
+  public List<Car> getCarList() {
     return this.carList;
   }
 }

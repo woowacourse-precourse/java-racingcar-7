@@ -7,7 +7,8 @@ import racingcar.Vehicle.Car;
 public class ReturnResult {
 
   private List<Car> carList;
-  public ReturnResult(List<Car> carList){
+
+  public ReturnResult(List<Car> carList) {
     this.carList = carList;
   }
 
@@ -16,7 +17,6 @@ public class ReturnResult {
         .mapToInt(Car::getMove)
         .max()
         .orElse(0);
-
 
     return carList.stream()
         .filter(car -> car.getMove() == maxMove)

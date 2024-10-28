@@ -19,16 +19,14 @@ public class Car implements Vehicle {
 
   @Override
   public void printStatus() {
-    System.out.printf("%s : %s\n" , this.name , "-".repeat(this.move));
+    System.out.printf("%s : %s\n", this.name, "-".repeat(this.move));
   }
 
-  public int getMove()
-  {
+  public int getMove() {
     return this.move;
   }
 
-  public String getName()
-  {
+  public String getName() {
     return this.name;
   }
 
