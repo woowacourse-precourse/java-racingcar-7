@@ -19,8 +19,12 @@ public class Car {
     }
 
     public Car move() {
-        int newPosition = currentPosition + (Randoms.pickNumberInRange(0, 9) >= ApplicationConstants.MOVE_THRESHOLD ? 1 : 0);
+        int newPosition = currentPosition + (canMove() ? 1 : 0);
         return new Car(carName, newPosition);
+    }
+
+    private boolean canMove() {
+        return Randoms.pickNumberInRange(0, 9) >= ApplicationConstants.MOVE_THRESHOLD;
     }
 
     public String displayPosition() {
