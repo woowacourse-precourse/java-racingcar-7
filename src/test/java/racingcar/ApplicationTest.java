@@ -31,6 +31,19 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 공동_우승자가_있는_경우() {
+        assertRandomNumberInRangeTest(
+                this::runJointWinnersTest,
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    private void runJointWinnersTest() {
+        run("pobi, sonic", "4");
+        assertThat(output()).contains("pobi : ----", "sonic : ----", "최종 우승자 : pobi, sonic");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
