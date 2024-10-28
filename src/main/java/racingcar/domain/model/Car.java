@@ -7,15 +7,22 @@ public class Car {
 
     private final String name;
     private Integer moveCount;
+    private final MoveConditionEvaluator moveConditionEvaluator;
 
-    private Car(String name, Integer moveCount) {
+    private Car(String name, Integer moveCount, MoveConditionEvaluator moveConditionEvaluator) {
         this.name = name;
         this.moveCount = moveCount;
+        this.moveConditionEvaluator = moveConditionEvaluator;
     }
 
     static Car of(String name) {
         validateName(name);
-        return new Car(name, 0);
+        return new Car(name, 0, new RandomMoveConditionEvaluator());
+    }
+
+    static Car of(String name, MoveConditionEvaluator moveConditionEvaluator) {
+        validateName(name);
+        return new Car(name, 0, moveConditionEvaluator);
     }
 
     private static void validateName(String name) {
@@ -46,7 +53,7 @@ public class Car {
     }
 
     public void move() {
-        if(MoveConditionEvaluator.isCanMove()) {
+        if(moveConditionEvaluator.isCanMove()) {
             this.moveCount++;
         }
     }
