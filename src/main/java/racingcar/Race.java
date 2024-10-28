@@ -24,8 +24,14 @@ public class Race {
         return new Cars(carNameList);
     }
 
-    public void start() {
+    private void printRacingStatus() {
+        System.out.println(competingCars.toString());
+    }
+
+    public void startWithPrint() {
+        System.out.println("\n실행결과");
         for (int i = 0; i < moveAttemptsCount; i++) {
             competingCars.moveAll();
+            printRacingStatus();
         }
     }

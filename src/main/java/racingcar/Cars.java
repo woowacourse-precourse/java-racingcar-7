@@ -22,4 +22,13 @@ public class Cars {
         carList.forEach(Car::forwardOrStop);
     }
 
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        for(Car car : carList){
+            str.append(car.toString()).append("\n");
+        }
+        return str.toString();
+    }
 }
