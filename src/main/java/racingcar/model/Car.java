@@ -2,12 +2,11 @@ package racingcar.model;
 
 public class Car {
 
-    private final String name;
+    private CarName name;
     private int advanceCount = 0;
 
     private Car(String name) {
-        validateCarNameLength(name);
-        this.name = name.strip();
+        this.name = new CarName(name);
     }
 
     public static Car from(String name) {
@@ -21,16 +20,10 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getAdvanceCount() {
         return advanceCount;
-    }
-
-    public void validateCarNameLength(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다. 초과된 자동차 이름: " + name);
-        }
     }
 }
