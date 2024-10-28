@@ -1,7 +1,6 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
-
 public class DefaultMoveStrategy implements MoveStrategy {
     @Override
     public boolean canMove() {

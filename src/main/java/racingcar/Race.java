@@ -13,7 +13,7 @@ public class Race {
         }
         this.printer = printer;
     }
-
+    
     public void play(int rounds) {
         for (int i = 0; i < rounds; i++) {
             for (Car car : cars) {
