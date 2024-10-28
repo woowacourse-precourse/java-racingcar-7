@@ -31,6 +31,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 중복된_이름_입력시_예외_발생_테스트() {
+        assertThatThrownBy(() -> run("pobi,pobi,jun", "5"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
+
+        assertThatThrownBy(() -> run("pobi,woni,woni", "3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
