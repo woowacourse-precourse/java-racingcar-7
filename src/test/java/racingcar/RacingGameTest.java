@@ -41,9 +41,17 @@ class RacingGameTest {
     }
 
     @ParameterizedTest
+    @DisplayName("횟수를 0 이하의 숫자 또는 문자로 입력할 경우 예외 발생")
+    @ValueSource(strings = {"0", "-1", "a"})
+    @Order(2)
+    void countCheck(String input) {
+        assertThatThrownBy(() -> racingGame.countCheck(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
     @DisplayName("랜덤값이 4 이상일 경우 전진")
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    @Order(2)
+    @Order(3)
     void movingCar(int num) {
         Car car = cars.get(0);
         car.move(num);
@@ -53,7 +61,7 @@ class RacingGameTest {
     @ParameterizedTest
     @DisplayName("랜덤값이 4 미만일 경우 전진 X")
     @ValueSource(ints = {0, 1, 2, 3})
-    @Order(3)
+    @Order(4)
     void findMovingCar(int num) {
         Car car = cars.get(0);
         car.move(num);
@@ -62,7 +70,7 @@ class RacingGameTest {
 
     @Test
     @DisplayName("우승자가 1명인 경우")
-    @Order(4)
+    @Order(5)
     void printWinner() {
         cars.add(new Car("carA", 3));
         OutputStream output = new ByteArrayOutputStream();
@@ -73,7 +81,7 @@ class RacingGameTest {
 
     @Test
     @DisplayName("우승자가 2명인 경우")
-    @Order(5)
+    @Order(6)
     void printWinners() {
         cars.add(new Car("carA", 5));
         cars.add(new Car("carB", 5));
@@ -82,6 +90,5 @@ class RacingGameTest {
         racingGame.printWinner(cars);
         assertThat(output.toString()).isEqualTo("\n최종 우승자 : carA, carB");
     }
-
 
 }
