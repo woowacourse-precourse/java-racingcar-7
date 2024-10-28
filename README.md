@@ -43,3 +43,4 @@ validateMoveCount: 이동 횟수가 1 이상인지 검증하는 메소드
  
 ## DefaultConsoleReader
 readLine() : ConsoleReader를 오버라이드하여 Console.readLine()를 호출
+#
