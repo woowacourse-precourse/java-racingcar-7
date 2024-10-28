@@ -32,7 +32,7 @@ public class Car {
         builder.append(name).append(" : ");
         builder.append("-".repeat(Math.max(0, position)));
         builder.append('\n');
-        System.out.println(builder.toString());
+        System.out.print(builder.toString());
     }
 
     public int getPosition() {
