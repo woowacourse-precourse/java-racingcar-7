@@ -3,7 +3,6 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class InputView {
     private static final String INPUT_CAR_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -43,28 +42,41 @@ public class InputView {
 
     private void validateCarName(List<String> carNames) {
         for (String carName : carNames) {
-            if (carName == null || carName.isBlank()) {
-                throw new IllegalArgumentException();
-            }
+            validateNoneInput(carName);
         }
     }
 
     private void validateTurn(String rawTurn) {
-        for (char digit : rawTurn.toCharArray()) {
-            if (!Character.isDigit(digit)) {
-                throw new IllegalArgumentException();
-            }
-        }
-        if (parseTurn(rawTurn) <= 0) {
-            throw new IllegalArgumentException();
-        }
+        validateNoneInput(rawTurn);
+        validateDigit(rawTurn);
+        validatePositiveInteger(rawTurn);
     }
 
     private int parseTurn(String rawTurn) {
         try {
             return Integer.parseInt(rawTurn);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("2,147,483,647 미만 정수로 입력해 주세요");
+        }
+    }
+
+    private void validateNoneInput(String input) {
+        if (input == null || input.isBlank()) {
+            throw new IllegalArgumentException("공백 입력은 불가합니다.");
+        }
+    }
+
+    private void validateDigit(String input) {
+        for (char digit : input.toCharArray()) {
+            if (!Character.isDigit(digit)) {
+                throw new IllegalArgumentException("양의 정수만 입력 해주세요");
+            }
+        }
+    }
+
+    private void validatePositiveInteger(String input) {
+        if (parseTurn(input) <= 0) {
+            throw new IllegalArgumentException("양의 정수만 입력해 주세요");
         }
     }
 }
