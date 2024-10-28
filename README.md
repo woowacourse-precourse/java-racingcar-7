@@ -12,9 +12,9 @@
 
 > ### 2️⃣게임 로직 처리
 > &emsp; **자동차 전진 및 멈춤 로직**
-> - [ ] 각 자동차에 대하여 무작위 값(0-9) 생성 (`camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 활용)
-> - [ ] 생성된 값이 4 이상인 자동차만 전진
-> - [ ] 결과 출력
+> - [x] 각 자동차에 대하여 무작위 값(0-9) 생성 (`camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 활용)
+> - [x] 생성된 값이 4 이상인 자동차만 전진
+> - [x] 결과 출력
 
 > ### 3️⃣결과 및 우승자 판정
 > &emsp; **게임 종료 후 결과 출력**
