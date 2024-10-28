@@ -54,4 +54,16 @@ public class OutputTest extends NsTest {
                 .isEqualTo("시도할 횟수는 몇 회인가요?");
         outContent.reset(); // 매 테스트 후 출력 리셋
     }
+
+    @Test
+    @DisplayName("줄바꿈 및 실행 결과 문자열 출력")
+    void printRunResultMessage_MethodCall_ShouldPrintRunResultMessage() {
+        //when
+        Output.printRunResultMessage();
+
+        //then
+        assertThat(outContent.toString().trim())
+                .isEqualTo("\\n실행 결과");
+        outContent.reset(); // 매 테스트 후 출력 리셋
+    }
 }
