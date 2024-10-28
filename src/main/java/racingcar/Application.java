@@ -31,11 +31,7 @@ public class Application {
 
         game.run(inputRoundCount.getRound());
 
-        final List<RoundInformation> roundInformations = game.getAllRoundInformation();
-        for (final RoundInformation roundInformation : roundInformations) {
-            outputController.printProgressedInfo(roundInformation.getProgressedInformations().stream().map(information -> new ProgressedResult(information)).collect(
-                    Collectors.toList()));
-        }
+        outputController.printProgressedInfo(game.getAllRoundInformation());
 
         final Winners winners = game.getWinners();
         final WinnerResults winnerResults = new WinnerResults(winners

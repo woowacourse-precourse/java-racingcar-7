@@ -1,6 +1,8 @@
 package racingcar.ui;
 
 import java.util.List;
+import racingcar.domain.ProgressedInformation;
+import racingcar.domain.RoundInformation;
 
 public class OutputController {
 
@@ -18,11 +20,15 @@ public class OutputController {
         this.outputConsole.printWithLineBreak("시도할 횟수는 몇 회인가요?");
     }
 
-    public void printProgressedInfo(final List<ProgressedResult> progressedResults) {
-        for (final ProgressedResult progressedResult : progressedResults) {
-            this.outputConsole.printWithLineBreak(progressedResult.getResult());
+    public void printProgressedInfo(final List<RoundInformation> roundInformations) {
+        this.outputConsole.printWithLineBreak("실행 결과");
+        for (final RoundInformation roundInformation : roundInformations) {
+            final List<ProgressedInformation> progressedInformations = roundInformation.getProgressedInformations();
+            for (final ProgressedInformation information : progressedInformations) {
+                this.outputConsole.printWithLineBreak(new ProgressedResult(information).getResult());
+            }
+            this.outputConsole.printWithLineBreak("");
         }
-        this.outputConsole.printWithLineBreak("");
     }
 
     public void printWinners(final WinnerResults winnerResults) {

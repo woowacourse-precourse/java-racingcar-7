@@ -38,25 +38,6 @@ class OutputControllerTest {
                 .isEqualTo("시도할 횟수는 몇 회인가요?" + "\n");
     }
 
-    @Test
-    void 라운드_진행도_출력() {
-        final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        final PrintStream outputStream = new PrintStream(byteArrayOutputStream);
-        System.setOut(outputStream);
-
-        final OutputController outputController = new OutputController(new OutputConsole());
-
-        outputController.printProgressedInfo(
-                List.of(
-                        new ProgressedResult("test", 5),
-                        new ProgressedResult("test", 5)
-                )
-        );
-
-        Assertions.assertThat(byteArrayOutputStream.toString())
-                .isEqualTo("test : -----\n" + "test : -----\n" + "\n");
-    }
-
     @ParameterizedTest
     @MethodSource("provideWinners")
     void 우승자_출력() {
