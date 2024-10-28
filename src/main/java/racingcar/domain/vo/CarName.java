@@ -7,7 +7,7 @@ public record CarName(String name) {
 
     public CarName(String name) {
         validateName(name);
-        this.name = name.trim();
+        this.name = name;
     }
 
     private void validateName(String name) {
@@ -25,6 +25,6 @@ public record CarName(String name) {
     }
 
     private boolean isLengthUnder5(final String name) {
-        return name.length() > 5;
+        return name.trim().length() > 5;
     }
 }
