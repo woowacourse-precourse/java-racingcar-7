@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.application.service.RacingCarConverter;
 import racingcar.racing.RacingCar;
 
-class RacingCarConverterTest {
+class RacingCarObjectConverterTest {
 
     @DisplayName("쉼표(,)를 구분자로 자동차 이름 문자열을 객체 리스트로 변환할 수 있다.")
     @Test

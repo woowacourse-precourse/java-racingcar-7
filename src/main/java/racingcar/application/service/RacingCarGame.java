@@ -2,7 +2,7 @@ package racingcar.application.service;
 
 import java.util.List;
 import racingcar.racing.RacingCar;
-import racingcar.application.Converter;
+import racingcar.application.ObjectConverter;
 import racingcar.application.Game;
 import racingcar.application.RacingManager;
 import racingcar.view.ApplicationView;
@@ -11,13 +11,13 @@ public class RacingCarGame implements Game {
 
     private final ApplicationView applicationView;
     private final RacingManager<RacingCar> racingManager;
-    private final Converter<RacingCar> converter;
+    private final ObjectConverter<RacingCar> objectConverter;
 
     public RacingCarGame(ApplicationView applicationView,
-            RacingManager<RacingCar> racingManager, Converter<RacingCar> converter) {
+            RacingManager<RacingCar> racingManager, ObjectConverter<RacingCar> objectConverter) {
         this.applicationView = applicationView;
         this.racingManager = racingManager;
-        this.converter = converter;
+        this.objectConverter = objectConverter;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RacingCarGame implements Game {
 
     private void registerRacingCars() {
         String responseCars = applicationView.requestInputCars();
-        List<RacingCar> racingCars = converter.toObjects(responseCars);
+        List<RacingCar> racingCars = objectConverter.toObjects(responseCars);
         racingManager.registerAll(racingCars);
     }
 

@@ -1,10 +1,14 @@
 package racingcar.common;
 
-import racingcar.persistence.InMemoryRacingCarRepository;
-import racingcar.application.Converter;
-import racingcar.application.Game;
-import racingcar.racing.RacingCar;
 import racingcar.application.service.RacingCarConverter;
+import racingcar.persistence.InMemoryRacingCarRepository;
+import racingcar.application.ObjectConverter;
+import racingcar.application.Game;
+import racingcar.persistence.RacingCarRepository;
+import racingcar.racing.CarRace;
+import racingcar.racing.Race;
+import racingcar.racing.RacingCar;
+import racingcar.application.service.RacingCarObjectConverter;
 import racingcar.application.service.RacingCarGame;
 import racingcar.application.service.RacingCarManager;
 import racingcar.application.RacingManager;
@@ -31,11 +35,19 @@ public class GameConfig {
         return new ApplicationConsoleView();
     }
 
-    private RacingManager<RacingCar> racingManager() {
-        return new RacingCarManager(InMemoryRacingCarRepository.getInstance());
+    private ObjectConverter<RacingCar> converter() {
+        return new RacingCarConverter();
     }
 
-    private Converter<RacingCar> converter() {
-        return new RacingCarConverter();
+    private RacingManager<RacingCar> racingManager() {
+        return new RacingCarManager(race(), racingCarRepository());
+    }
+
+    private Race<RacingCar> race() {
+        return new CarRace();
+    }
+
+    private RacingCarRepository racingCarRepository() {
+        return InMemoryRacingCarRepository.getInstance();
     }
 }
