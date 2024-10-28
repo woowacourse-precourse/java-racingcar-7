@@ -13,8 +13,8 @@ public class CarNameInputParser {
 	}
 
 	private void validateParticipantCount(String[] carNames) {
-		if (carNames.length < 2) {
-			throw new IllegalArgumentException("[ERROR] 참가자는 2명 이상이어야 합니다.");
+		if (carNames.length < RaceConfig.MIN_PARTICIPANT_COUNT.getNumber()) {
+			throw new IllegalArgumentException("[ERROR] 참가자는 최소 2명 이상이어야 합니다.");
 		}
 	}
 
