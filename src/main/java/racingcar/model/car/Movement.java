@@ -17,8 +17,12 @@ public class Movement {
 	}
 
 	public void move(int number) {
-		if (number >= MIN_REQUIRED_VALUE_FOR_MOVEMENT) {
+		if (isNumberAtLeastMinRequiredValue(number)) {
 			movement += MOVEMENT_VALUE;
 		}
+	}
+
+	private boolean isNumberAtLeastMinRequiredValue(int number) {
+		return number >= MIN_REQUIRED_VALUE_FOR_MOVEMENT;
 	}
 }
