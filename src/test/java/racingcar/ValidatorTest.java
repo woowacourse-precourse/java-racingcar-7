@@ -17,12 +17,12 @@ class ValidatorTest {
         assertThrows(IllegalArgumentException.class, () -> Validator.validateNameLength(name2));
     }
     @Test
-    void validateCountIfNegative() {
+    void validateCircleCountIfNegative() {
         //given
         String count1 = "5";
         String count2 = "-5";
         //when //then
-        assertEquals(5, Validator.validateCountIfNegative(count1));
-        assertThrows(IllegalArgumentException.class, () -> Validator.validateCountIfNegative(count2));
+        assertEquals(5, Validator.validateCircleCountIfNegative(count1));
+        assertThrows(IllegalArgumentException.class, () -> Validator.validateCircleCountIfNegative(count2));
     }
 }
