@@ -18,4 +18,8 @@ public class Output {
     public static void printNumberRequestMessage(){
         System.out.println(NUMBER_REQUEST_MESSAGE);
     }
+
+    public static void printRunResultMessage(){
+        System.out.println("\\n실행 결과");
+    }
 }
