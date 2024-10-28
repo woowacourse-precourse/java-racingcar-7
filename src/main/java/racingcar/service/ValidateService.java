@@ -57,12 +57,4 @@ public class ValidateService {
         }
         return validateRaceCount;
     }
-
-    public long getValidateRaceCount() {
-        return validateRaceCount;
-    }
-
-    public List<String> getValidatedNames() {
-        return validatedNames;
-    }
 }

@@ -4,6 +4,7 @@ package racingcar.RacingCarTest;
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 import racingcar.service.RacingCarService;
 import racingcar.service.ValidateService;
 import racingcar.util.MockRandomGenerator;
@@ -113,52 +114,50 @@ public class BaseFunctionTest {
         RandomGenerator randomGenerator = new RandomsWrapper();
 
         //when
-        List<RacingCar> racingCars = racingCarService.setupRaceCars(Arrays.asList("fobi", "woni", "^jun"), randomGenerator);
+        RacingCars racingCars = racingCarService.setupRaceCars(Arrays.asList("fobi", "woni", "^jun"), randomGenerator);
 
         //then
         IntStream.range(0, racingCars.size()).forEach(i -> {
-            assertThat(racingCars.get(i).getName()).isEqualTo(expectedNames.get(i));
+            assertThat(racingCars.getRacingCars().get(i).getName()).isEqualTo(expectedNames.get(i));
         });
     }
 
     @Test
     void 경주차_움직임_전진_테스트() {
         //given
-        RacingCarService racingCarService = new RacingCarService();
         RandomGenerator moveCondition = new MockRandomGenerator(MOVE_CONDITION);
         List<String> racingCarNames = Arrays.asList("fobi", "woni", "^jun");
-        List<RacingCar> racingCars = racingCarNames.stream()
+        RacingCars racingCars = new RacingCars(racingCarNames.stream()
                 .map((String name) -> new RacingCar(name, moveCondition))
-                .toList();
+                .toList());
         long expectMoveCount = 1;
 
         //when
-        racingCarService.runRound(racingCars);
+        racingCars.runRound();
 
         //then
         IntStream.range(0, racingCars.size()).forEach(i -> {
-            assertThat(racingCars.get(i).getMoveCount()).isEqualTo(expectMoveCount);
+            assertThat(racingCars.getRacingCars().get(i).getMoveCount()).isEqualTo(expectMoveCount);
         });
     }
 
     @Test
     void 경주차_움직임_멈춤_테스트() {
         //given
-        RacingCarService racingCarService = new RacingCarService();
         RandomGenerator stopCondition = new MockRandomGenerator(STOP_CONDITION);
         List<String> racingCarNames = Arrays.asList("fobi", "woni", "^jun");
-        List<RacingCar> racingCars = racingCarNames.stream()
+        RacingCars racingCars = new RacingCars(racingCarNames.stream()
                 .map((String name) -> new RacingCar(name, stopCondition))
-                .toList();
+                .toList());
 
         long expectMoveCount = 0;
 
         //when
-        racingCarService.runRound(racingCars);
+        racingCars.runRound();
 
         //then
         IntStream.range(0, racingCars.size()).forEach(i -> {
-            assertThat(racingCars.get(i).getMoveCount()).isEqualTo(expectMoveCount);
+            assertThat(racingCars.getRacingCars().get(i).getMoveCount()).isEqualTo(expectMoveCount);
         });
     }
 
@@ -169,9 +168,9 @@ public class BaseFunctionTest {
         // fobi만 움직이지 못함
         List<String> racingCarNames = Arrays.asList("fobi", "woni", "jun");
         List<Integer> moveCondition = Arrays.asList(1, 5, 5);
-        List<RacingCar> racingCars = IntStream.range(0, moveCondition.size())
+        RacingCars racingCars = new RacingCars(IntStream.range(0, moveCondition.size())
                 .mapToObj(i -> new RacingCar(racingCarNames.get(i), new MockRandomGenerator(moveCondition.get(i)))) // RacingCar 객체를 생성
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
 
         RoundView roundView = new RoundView();
 
@@ -193,7 +192,7 @@ public class BaseFunctionTest {
         // when
         IntStream.range(0, 3).forEach(i -> {
             IntStream.range(0, racingCars.size()).forEach(j -> {
-                racingCars.get(j).move();
+                racingCars.getRacingCars().get(j).move();
             });
             roundView.showRoundResults(racingCars);
         });
@@ -208,10 +207,9 @@ public class BaseFunctionTest {
         //given
         List<String> racingCarNames = Arrays.asList("fobi", "woni", "jun");
         ResultView resultView = new ResultView();
-        RacingCarService racingCarService = new RacingCarService();
-        List<RacingCar> racingCars = racingCarNames.stream()
+        RacingCars racingCars = new RacingCars(racingCarNames.stream()
                         .map((String name) -> new RacingCar(name, new MockRandomGenerator(MOVE_CONDITION)))
-                        .toList();
+                        .toList());
 
         String expectResult = "최종 우승자 : fobi\n";
 
@@ -220,8 +218,9 @@ public class BaseFunctionTest {
 
         // when
         // fobi만 움직임
-        racingCars.getFirst().move();
-        List<RacingCar> bestDriver = racingCarService.findBestDriver(racingCars);
+        racingCars.getRacingCars().getFirst().move();
+        long maxMoveCount = racingCars.findMaxMoveCount();
+        RacingCars bestDriver = racingCars.findBestDriver(maxMoveCount);
         resultView.printResult(bestDriver);
 
         // then

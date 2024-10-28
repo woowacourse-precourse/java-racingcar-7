@@ -1,15 +1,11 @@
 package racingcar.controller;
 
-import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 import racingcar.service.RacingCarService;
 import racingcar.service.ValidateService;
 import racingcar.util.RandomGenerator;
-import racingcar.view.InstructionView;
-import racingcar.view.ResultView;
-import racingcar.view.RoundView;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 
 public class RacingCarController {
@@ -24,7 +20,7 @@ public class RacingCarController {
         this.randomGenerator = randomGenerator;
     }
 
-    public List<RacingCar> setupRacingCars(List<String> validateNames) {
+    public RacingCars setupRacingCars(List<String> validateNames) {
         return racingCarService.setupRaceCars(validateNames, randomGenerator);
     }
 
@@ -36,11 +32,11 @@ public class RacingCarController {
         return validateService.validateRaceCount(raceCount);
     }
 
-    public void runRaceRound(List<RacingCar> raceCars) {
+    public void runRaceRound(RacingCars raceCars) {
         racingCarService.runRound(raceCars);
     }
 
-    public List<RacingCar> findBestDriver(List<RacingCar> raceCars) {
+    public RacingCars findBestDriver(RacingCars raceCars) {
         return racingCarService.findBestDriver(raceCars);
     }
 
