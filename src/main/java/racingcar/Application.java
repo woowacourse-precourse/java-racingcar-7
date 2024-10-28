@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -8,25 +7,11 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         List<Car> cars = InputHandler.inputCarNames();
-        int tryCount = inputTryCount();
+        int tryCount = InputHandler.inputTryCount();
 
         gameStart(cars, tryCount);
 
         printWinner(cars);
-    }
-
-    public static int inputTryCount() {
-        try {
-            System.out.println("시도할 횟수는 몇 회인가요?");
-            int count = Integer.parseInt(Console.readLine());
-            if (count <= 0) {
-                throw new IllegalArgumentException("시도할 횟수는 1번 이상이어야 합니다.");
-            }
-            System.out.println();
-            return count;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도할 횟수는 숫자로 입력해야 합니다.");
-        }
     }
 
     private static void gameStart(List<Car> cars, int tryCount) {
