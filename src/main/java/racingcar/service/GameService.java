@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +26,6 @@ public class GameService {
         int attempts = inputView.getTryNumbers();
         System.out.println();
         System.out.println("실행 결과");
-        Console.close();
         return new GameData(cars, attempts);
     }
 
