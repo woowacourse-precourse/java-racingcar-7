@@ -30,23 +30,14 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        // 6. 자동차 이름을 key, 전진한 거리를 value로 가지는 맵을 만듦
-        // key는 중복을 허용하지 않으므로 이와 같은 특성을 활용해
-        // 같은 이름이 2개 이상 존재하는지 확인
+        // 5. 자동차 이름을 key, 전진한 거리를 value로 가지는 맵을 만들고
+        // key는 중복을 허용하지 않는다는 특성을 활용해 같은 이름이 2개 이상 존재하는지 확인
         HashMap<String, Integer> carPositions = new HashMap<>();
-
         for (String carName : carNames) {
-
-            // 6-1. 만약 해당 자동차 이름을 key로 가진
-            // value가 존재한다면 이전에 나왔던 이름이라는 것이므로
-            // IllegalArgumentException를 발생시킴
-            if (carPositions.containsKey(carName)) {
+            if (CarNamesController.checkDuplication(carName, carPositions)) {
                 throw new IllegalArgumentException();
-
-            // 6-2. 아니라면 전진한 거리를 파악할 수 있도록
-            // 전진한 거리를 0으로 초기값을 설정해 저장
             } else {
-                carPositions.put(carName, 0);
+                CarNamesController.addCar(carName, carPositions);
             }
         }
 

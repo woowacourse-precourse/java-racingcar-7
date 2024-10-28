@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class CarNamesController {
@@ -19,5 +20,13 @@ public class CarNamesController {
             }
         }
         return true;
+    }
+
+    public static boolean checkDuplication(String carName, HashMap<String, Integer> carPositions) {
+        return carPositions.containsKey(carName);
+    }
+
+    public static void addCar(String carName, HashMap<String, Integer> carPositions) {
+        carPositions.put(carName, 0);
     }
 }
