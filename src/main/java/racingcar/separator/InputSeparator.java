@@ -1,4 +1,4 @@
-package separator;
+package racingcar.separator;
 
 import java.util.HashSet;
 import java.util.List;

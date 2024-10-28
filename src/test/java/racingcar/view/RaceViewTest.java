@@ -1,8 +1,9 @@
-package view;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
+import racingcar.view.RaceView;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -10,7 +11,6 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RaceViewTest extends NsTest {
 
@@ -20,7 +20,7 @@ class RaceViewTest extends NsTest {
         LinkedHashMap<String, Integer> carProgress = new LinkedHashMap<>();
         carProgress.put("pobi", 4);
         assertSimpleTest(() -> {
-            RaceView.view(carProgress);
+            RaceView.displayProgress(carProgress);
             assertThat(output()).contains("pobi : ----");
         });
     }
@@ -33,7 +33,7 @@ class RaceViewTest extends NsTest {
         carProgress.put("woni", 3);
         carProgress.put("jun", 2);
         assertSimpleTest(() -> {
-            RaceView.view(carProgress);
+            RaceView.displayProgress(carProgress);
             List<String> expected = List.of("pobi : -", "woni : ---", "jun : --");
             List<String> output = Arrays.asList(output().split("\\r?\\n"));
             assertThat(output).containsExactlyElementsOf(expected);
