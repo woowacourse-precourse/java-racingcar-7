@@ -16,6 +16,13 @@ public class Application {
         validateCarNames(carName);
 
         Integer playNum = getPlayNumber();
+
+        checkNumberPositive(playNum);
+    }
+
+    private static void checkNumberPositive(Integer playNum) {
+        if(playNum <0)
+            throw new IllegalArgumentException("횟수로 양수만 가능합니다.");
     }
 
     private static Integer getPlayNumber() {
