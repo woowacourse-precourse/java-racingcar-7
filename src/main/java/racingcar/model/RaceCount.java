@@ -10,6 +10,9 @@ public class RaceCount {
     private static final Pattern RACE_TIMES_PATTERN = Pattern.compile("/^[0-9]*$/");
 
     public RaceCount(String raceCount) {
+        hasCharacters(raceCount);
+        isBlank(raceCount);
+        isZero(raceCount);
         this.raceCount = Integer.parseInt(raceCount);
     }
 
