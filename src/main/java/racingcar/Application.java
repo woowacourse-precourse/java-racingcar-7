@@ -45,8 +45,8 @@ public class Application {
         List<Car> cars = new ArrayList<>();
 
         // Car 만들기
-        for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i]));
+        for (String name: names) {
+            cars.add(new Car(name));
         }
 
         // 게임 시작
