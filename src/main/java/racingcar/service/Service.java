@@ -2,15 +2,14 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
-import racingcar.model.CarManager;
+import racingcar.model.CarRace;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Service { // TODO: 이름 더 명확하게 개선
-    CarManager carManager = new CarManager(); // TODO: composition으로??
+    CarRace carRace = new CarRace(); // TODO: composition으로??
 
     public void operate(List<String> names, int attemptNumber) {
         List<Boolean> initialRandoms = getRandom(names.size() * attemptNumber);
@@ -20,7 +19,7 @@ public class Service { // TODO: 이름 더 명확하게 개선
     }
 
     public List<Car> getWinner() {
-        return carManager.findWinners();
+        return carRace.findWinners();
     }
 
     private List<Boolean> getRandom(int randomSize){
@@ -45,14 +44,14 @@ public class Service { // TODO: 이름 더 명확하게 개선
     }
 
     private void initialize(List<String> names) {
-        carManager.initialize(names);
+        carRace.initialize(names);
     }
 
     private void move(List<List<Boolean>> randoms) { // TODO: 내가 다른데 move라는 이름의 메서드 만들었던가?
         for (int i = 0; i < randoms.size(); i++) {
-            carManager.advanceCars(randoms.get(i));
+            carRace.advanceCars(randoms.get(i));
             // TODO: OutputView Service에 있는 게 맞나?
-            OutputView.printResult(carManager.getCars()); // TODO: 파라미터로 전달하는 게 최선인가?
+            OutputView.printResult(carRace.getCars()); // TODO: 파라미터로 전달하는 게 최선인가?
         }
     }
 }

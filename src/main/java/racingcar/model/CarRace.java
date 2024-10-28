@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarManager { // TODO: 모델 이름 다시 생각해보기
+public class CarRace {
     private List<Car> cars;
 
-    public CarManager() {
+    public CarRace() {
         this.cars = new ArrayList<>();
     }
 

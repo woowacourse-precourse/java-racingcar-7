@@ -10,7 +10,7 @@ by. hmlssghm
 3.2. 시도 횟수 관련   
 > 4. 비즈니스 로직   
 4.1. Car (Model)   
-4.2. CarManager (Model)   
+4.2. CarRace (Model)   
 4.3. 이동 로직   
 
 
@@ -47,7 +47,7 @@ by. hmlssghm
 - 이름 getter
 - 전진 칸수 getter, setter
 - 전진 칸수 1 add
-#### 4.2. CarManager (Model)
+#### 4.2. CarRace (Model)
 - cars getter
 - List<Car> 초기화
 - List<Boolean>에 따라 cars 전진 칸수 증가
