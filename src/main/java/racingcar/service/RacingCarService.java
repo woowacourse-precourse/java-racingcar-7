@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.domain.CarDTO;
+import racingcar.domain.InputDTO;
 import racingcar.view.RacingCarView;
 
 import java.util.ArrayList;
@@ -21,9 +22,9 @@ public class RacingCarService {
 
 
     // 자동차 이름을 입력받고 유효성을 검사
-    public List<CarDTO> splitCarName() {
+    public List<CarDTO> splitCarName(InputDTO inputDTO) {
 
-        String input = view.getInputCarName().getInput();
+        String input = inputDTO.getInput();
         List<CarDTO> carDTOList = new ArrayList<>();
 
         // 입력값이 공백이거나 null인 경우 예외 발생
@@ -58,7 +59,6 @@ public class RacingCarService {
         }
     }
 
-
     public void startRace(List<CarDTO> cars, int roundCount) {
         for (int i = 0; i < roundCount; i++) {
             playOneRound(cars);
@@ -73,19 +73,15 @@ public class RacingCarService {
     }
 
 
-    // 최종 우승자를 선별
-    public List<String> determineWinners(List<CarDTO> cars) {
+    public List<CarDTO> determineWinners(List<CarDTO> cars) {
 
-        //최고값 추출
         int maxStraight = cars.stream()
                 .max(Comparator.comparingInt(CarDTO::getGoStraight))
                 .orElseThrow()
                 .getGoStraight();
 
-        //우승자 리스트 리턴
         return cars.stream()
                 .filter(car -> car.getGoStraight() == maxStraight)
-                .map(CarDTO::getCarName)
                 .collect(Collectors.toList());
     }
 }
