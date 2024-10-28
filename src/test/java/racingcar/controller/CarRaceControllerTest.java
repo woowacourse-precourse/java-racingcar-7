@@ -162,7 +162,7 @@ class CarRaceControllerTest {
                 bar : --
 
                 최종 우승자 : foo, bar""";
-        
+
         //when
         carRaceController.run();
 
