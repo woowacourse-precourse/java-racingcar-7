@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.CarGame;
+import racingcar.GameConfigParser;
 import racingcar.GameFactory;
 
 public class CLICarGameApp implements CarGameApp {
@@ -17,28 +18,13 @@ public class CLICarGameApp implements CarGameApp {
         System.out.println("\n실행 결과");
     }
     public List<String> getCarNames() {
-        String names = Console.readLine();
-        String [] splited = names.split(",");
-        List<String> carNames = new ArrayList<>();
-        for (String name : splited) {
-            if (name.isBlank()) {
-                throw new IllegalArgumentException("자동차 이름으로 공백은 허용되지 않습니다.");
-            }
-            carNames.add(name);
-        }
-        if (carNames.isEmpty()) {
-            throw new IllegalArgumentException("반드시 하나 이상의 자동차 이름이 필요합니다.");
-        }
-        return carNames;
+        String input = Console.readLine();
+        return GameConfigParser.parseCarNames(input);
     }
 
     public int getNumberOfTurn() {
-        String number = Console.readLine().trim();
-        int numberOfTurn = Integer.parseInt(number);
-        if (numberOfTurn < 0) {
-            throw new IllegalArgumentException("시도 횟수는 음수여선 안됩니다.");
-        }
-        return numberOfTurn;
+        String input = Console.readLine();
+        return GameConfigParser.parseNumberOfTurn(input);
     }
 
     @Override
