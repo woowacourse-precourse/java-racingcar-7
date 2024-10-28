@@ -16,7 +16,7 @@ public class Application {
             printRoundResult(cars);
         }
 
-        // 이후 기능 구현
+        printWinners(cars);  // 최종 우승자 출력
     }
 
     private static String getCarNames() {
@@ -73,6 +73,22 @@ public class Application {
             System.out.println("-".repeat(car.getPosition()));
         }
         System.out.println();  // 라운드 종료 후 한 줄 띄움
+    }
+
+    private static void printWinners(List<Car> cars) {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);  // 최대 위치 찾기
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));  // 우승자 출력
     }
 
     // Car 중첩 클래스
