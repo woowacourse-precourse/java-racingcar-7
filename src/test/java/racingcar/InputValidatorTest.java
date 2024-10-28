@@ -27,4 +27,18 @@ public class InputValidatorTest extends NsTest {
         assertThatThrownBy(() -> inputValidator.validateCarNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {" ", "BMW X5 M"})
+    @DisplayName("잘못된 자동차 이름 입력 예외 발생")
+    void validateCarName_InputtedWrongCarName_ExceptionThrown(String carNames){
+        //given
+        final CarNameValidator carNameValidator = new CarNameValidator();
+        final NumberValidator numberValidator = new NumberValidator();
+        final InputValidator inputValidator = new InputValidator(carNameValidator, numberValidator);
+
+        //when & then
+        assertThatThrownBy(() -> inputValidator.validateCarName(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
