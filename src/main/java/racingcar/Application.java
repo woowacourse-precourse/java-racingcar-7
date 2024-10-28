@@ -21,6 +21,20 @@ public class Application {
             throw e; // 오류 메시지 출력 후 프로그램 정상 종료
         }
 
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int rounds;
+
+        try {
+            rounds = Integer.parseInt(Console.readLine().trim());
+            if (rounds <= 0) {
+                throw new IllegalArgumentException("횟수는 1 이상이어야 합니다.");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("에러: 잘못된 입력입니다. " + e.getMessage());
+            throw e; // 잘못된 입력 처리 후 프로그램 정상 종료
+        }
+
+
     }
 
     // 자동차 초기화
