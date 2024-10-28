@@ -15,10 +15,10 @@ public class Application {
         //자동차 이름 길이 검사
         carNamesLength(splitCarNames);
 
-        List<Integer> carMovementCounts = new ArrayList<>();
-
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int trial = Integer.parseInt(Console.readLine());
+        int trialCounts = getTrialCount(Integer.parseInt(Console.readLine()));
+
+        List<Integer> carMovementCounts = new ArrayList<>();
 
         for (int i = 0; i < splitCarNames.size(); i++) {
             carMovementCounts.add(0); // 각 이름의 초기 이동 값을 0으로 설정
@@ -26,7 +26,7 @@ public class Application {
 
         System.out.println("실행 결과");
         // 각 라운드별 "-" 출력
-        for (int i = 1; i <= trial; i++) {
+        for (int i = 1; i <= trialCounts; i++) {
             round(splitCarNames, carMovementCounts);
             System.out.println(); // 각 라운드 후 빈 줄 추가
         }
@@ -53,6 +53,10 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름은 최대 5자입니다.");
             }
         }
+    }
+
+    public static int getTrialCount(int trialCounts) {
+        return trialCounts;
     }
 
     // 주어진 라운드에 따라 '-' 출력
