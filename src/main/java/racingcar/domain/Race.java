@@ -1,8 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.RandomNumberGenerator;
 
 public class Race {
 	private final List<Car> cars;

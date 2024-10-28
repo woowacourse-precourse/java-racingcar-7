@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.OutputPrefix.RACE_RESULT_RESPONSE_PREFIX;
+import static racingcar.view.OutputPrefix.RACE_RESULT_RESPONSE_PREFIX;
 
 import java.util.Scanner;
 import org.junit.jupiter.api.BeforeEach;

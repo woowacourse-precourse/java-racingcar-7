@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.Race;
 import racingcar.domain.RandomNumberGenerator;
 
 @SuppressWarnings("NonAsciiCharacters")

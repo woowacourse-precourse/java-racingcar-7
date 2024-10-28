@@ -1,14 +1,17 @@
 package racingcar;
 
-import static racingcar.InputPrefix.INPUT_RACE_COUNT_PREFIX;
-import static racingcar.InputPrefix.INPUT_REQUEST_PREFIX;
-import static racingcar.OutputPrefix.RACE_RESULT_RESPONSE_PREFIX;
-import static racingcar.OutputPrefix.WINNER_LIST_RESULT_RESPONSE_PREFIX;
+import static racingcar.view.InputPrefix.INPUT_RACE_COUNT_PREFIX;
+import static racingcar.view.InputPrefix.INPUT_REQUEST_PREFIX;
+import static racingcar.view.OutputPrefix.RACE_RESULT_RESPONSE_PREFIX;
+import static racingcar.view.OutputPrefix.WINNER_LIST_RESULT_RESPONSE_PREFIX;
 
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 import racingcar.domain.Car;
+import racingcar.domain.CarNameParser;
+import racingcar.domain.Race;
+import racingcar.domain.RaceResultParser;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.exception.InvalidInputException;
 import racingcar.view.InputView;

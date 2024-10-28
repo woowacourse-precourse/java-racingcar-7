@@ -1,7 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
-import racingcar.domain.Car;
 
 public class RaceResultParser {
 

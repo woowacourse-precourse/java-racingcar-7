@@ -6,8 +6,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
-import racingcar.CarNameParser;
-import racingcar.CarValidator;
+import racingcar.domain.CarNameParser;
+import racingcar.domain.CarValidator;
 
 @SuppressWarnings("NonAsciiCharacters")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
