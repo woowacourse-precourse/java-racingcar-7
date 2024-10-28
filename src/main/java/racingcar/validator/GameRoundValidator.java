@@ -1,17 +1,17 @@
 package racingcar.validator;
 
-import java.util.List;
+import racingcar.message.Message;
 
 public class GameRoundValidator {
     public static int isGameRoundValid(String userResponse) {
         try {
             int parsedResponse = Integer.parseInt(userResponse);
             if (parsedResponse < 1) {
-                throw new IllegalArgumentException("Invalid Game Round Input: value must be 1 or greater");
+                throw new IllegalArgumentException(Message.INVALID_GAME_ROUND_INT_ERROR_MESSAGE);
             }
             return parsedResponse;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid Game Round Input: not integer");
+            throw new IllegalArgumentException(Message.INVALID_GAME_ROUND_VALUE_ERROR_MESSAGE);
         }
     }
 }

@@ -1,5 +1,7 @@
 package racingcar.validator;
 
+import racingcar.message.Message;
+
 import java.util.List;
 
 public class CarNamesValidator {
@@ -7,10 +9,10 @@ public class CarNamesValidator {
         // test
         for (String token : tokens) {
             if (token.isEmpty()) {
-                throw new IllegalArgumentException("Invalid car name length: length = 0");
+                throw new IllegalArgumentException(Message.CAR_NAME_EMPTY_ERROR_MESSAGE);
             }
             if (token.length() > 5) {
-                throw new IllegalArgumentException("Invalid car name length: length > 5");
+                throw new IllegalArgumentException(Message.CAR_NAME_EXCEED_ERROR_MESSAGE);
             }
         }
     }
@@ -20,11 +22,6 @@ public class CarNamesValidator {
     }
     public static List<String> isCarNamesValid(String userResponse) {
         List<String> tokens = separate(userResponse);
-        /*
-        Debugging printing
-        System.out.println(tokens);
-        System.out.println(tokens.size());
-         */
         isValidLength(tokens);
         return tokens;
     }
