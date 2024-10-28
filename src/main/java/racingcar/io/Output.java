@@ -31,6 +31,6 @@ public class Output {
     }
 
     public static void printWinner(String winners) {
-        printString("최종 우승자는 : " + winners);
+        printString("최종 우승자 : " + winners);
     }
 }
