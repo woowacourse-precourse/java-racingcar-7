@@ -19,4 +19,7 @@ public enum ErrorCode {
         return new IllegalArgumentException(this.message);
     }
 
+    public String getMessage() {
+        return message;
+    }
 }
