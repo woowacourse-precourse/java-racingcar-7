@@ -26,13 +26,26 @@ Randoms, Console API 사용해서 구현할 것.
 - 전진 (moveForward)
 - 이름 부여 (giveCarName)
 
+[ 자동차 컨트롤러 ]
+
+- 이동 여부 결정을 위한 랜덤함수 실행 (moveCarsByRandomValue)
+
+[ 유저 입력 처리 ]
+
+- 사용자가 입력한 자동차 이름 받아오기 (getUserInput)
+- 사용자가 입력한 시도 횟수 받아오기 (getMoveCount)
+- 사용자가 입력한 자동차 이름 유효성 검사하기 (getValidateCarName)
+
 [ 검증 및 예외처리 ]
 
-- 자동차 이름 글자수 검사(isMoreThanFive)
-- 자동차 이름 특수문자 제한(isSymbolExist)
+- 검증 진행 메소드 (validateCarName)
+- 사용자가 아무런 값도 입력하지 않은 경우 (validateNullOrEmpty)
+- 사용자가 5글자를 초과하는 이름을 지은 경우 (validateLength)
+- 사용자가 알파벳이 아닌 문자를 이름으로 지은 경우 (validateAlphabetic)
+- 사용자가 입력한 문자열에 대한 검증 (validateUserInput)
 
-[ 입출력 ]
 
-- 사용자 입력 받기 (getUserInput)
-- 자동차 이동 거리 출력하기 (printCarMovement)
+[ 출력 ]
+
+- 자동차 이동 거리 출력하기 (carMovement)
 - 우승자 출력하기 (printWinner)
