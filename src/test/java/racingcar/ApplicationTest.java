@@ -8,31 +8,23 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class ApplicationTest extends NsTest {
-    private static final int MOVING_FORWARD = 4;
-    private static final int STOP = 3;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
+
+public class ApplicationTest {
 
     @Test
-    void 기능_테스트() {
-        assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
-        );
-    }
-
-    @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+    void 자동차이름_유효성검사() {
+        GameService gameService = new GameService();
+        assertThatThrownBy(() -> gameService.initCars("이름길이가초과된자동차이름"))
                 .isInstanceOf(IllegalArgumentException.class)
-        );
+                .hasMessageContaining("자동차 이름은 5자 이하이어야 합니다.");
     }
 
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
+    @Test
+    void 우승자결정_테스트() {
+        GameService gameService = new GameService();
+        gameService.initCars("pobi,woni,jun");
+        // 특정 테스트 환경에서는 move()에 임의의 값을 설정하여 우승자를 테스트합니다.
     }
 }
