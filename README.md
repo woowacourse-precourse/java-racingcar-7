@@ -82,7 +82,7 @@
 ### 🕹RegistrationController
 - [x] 싱글톤으로 설계
 - [x] 생성 시 inputService 를 생성한다.
-- [ ] 새로운 Registeration 객체를 만들어 반환한다.
+- [x] 새로운 Registeration 객체를 만들어 반환한다.
 - [x] 날 것 입력을 받는다.
   - [x] view 로 안내 메시지 출력한다.
   - [x] inputService 로 입력을 받아 반환한다.

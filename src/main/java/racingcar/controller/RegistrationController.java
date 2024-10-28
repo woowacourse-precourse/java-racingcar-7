@@ -3,9 +3,12 @@ package racingcar.controller;
 import java.util.List;
 import java.util.function.Function;
 import racingcar.domain.Input;
+import racingcar.domain.Registration;
 import racingcar.service.constant.ExpressionFormat;
 import racingcar.service.input.InputService;
+import racingcar.service.input.Validation;
 import racingcar.view.UserInput;
+import racingcar.view.constant.Request;
 
 public class RegistrationController {
 
@@ -22,6 +25,16 @@ public class RegistrationController {
         }
         return instance;
     }
+
+    public Registration register() {
+        String carsInput = validatedInput(rawInput(Request.CAR_NAMES.toString())
+                , Validation::carNames);
+        String lapInput = validatedInput(rawInput(Request.ATTEMPT_NUMBER.toString())
+                , Validation::lapCount);
+
+        return new Registration(lineupSetting(carsInput), lapCountSetting(lapInput));
+    }
+
 
     private Input rawInput(String message) {
         String input = UserInput.request(message);
