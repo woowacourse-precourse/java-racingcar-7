@@ -6,9 +6,13 @@ public class RacingGame {
     private final Cars cars;
     private int tryCount;
 
-    public RacingGame(List<String> carsName, int tryCount) {
+    public RacingGame(List<String> carsName, String tryCount) {
         this.cars = initCars(carsName);
-        this.tryCount = tryCount;
+        this.tryCount = toInt(tryCount);
+    }
+
+    private static int toInt(String tryCount) {
+        return Integer.parseInt(tryCount);
     }
 
     private Cars initCars(List<String> inputNames) {

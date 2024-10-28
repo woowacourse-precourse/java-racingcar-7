@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
-    private static final String PROGRESS_BAR = "-";
     private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String PROGRESS_BAR = "-";
     private static final String SEPARATOR = " : ";
     private static final String WINNER_PRINT_MESSAGE = "최종 우승자";
     private static final String DELIMITER_COMMA = ", ";
@@ -18,7 +18,6 @@ public class OutputView {
     }
 
     public void printRacingProgress(RacingGame racingGame) {
-
         for (Car car : racingGame.getCars()) {
             Name name = car.getName();
             Position position = car.getPosition();
