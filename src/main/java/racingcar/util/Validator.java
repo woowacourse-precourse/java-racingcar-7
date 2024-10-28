@@ -21,6 +21,9 @@ public class Validator {
     }
 
     private static void validateCarNameFormat(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new CarNameFormatException("null");
+        }
         for (String carName : carNames) {
             if (carName == null || carName.isBlank() || carName.length() > CAR_NAME_MAX_LENGTH) {
                 throw new CarNameFormatException(carName);
