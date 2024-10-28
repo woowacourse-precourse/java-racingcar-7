@@ -16,15 +16,15 @@ public class GameService {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    private void carRacing(RacingGame racingGame) {
+    public void carRacing(RacingGame racingGame) {
         for (Car car : racingGame.getCars()) {
             int randomNumber = getRandomNumber();
-            checkRuleStopOrMove(racingGame,car,randomNumber);
+            checkRuleStopOrMove(racingGame, car, randomNumber);
         }
     }
 
-    private void checkRuleStopOrMove(RacingGame racingGame, Car car, int randomNumber){
-        if(racingGame.getGameRule().moveForward(randomNumber)){
+    public void checkRuleStopOrMove(RacingGame racingGame, Car car, int randomNumber) {
+        if (racingGame.getGameRule().moveForward(randomNumber)) {
             car.moveForward();
         }
     }
@@ -50,7 +50,7 @@ public class GameService {
     }
 
     private void displayRaceStatus(RacingGame racingGame) {
-        for(Car car : racingGame.getCars()){
+        for (Car car : racingGame.getCars()) {
             OutputView.printRacingCar(car.getName(), car.getPosition());
         }
     }
