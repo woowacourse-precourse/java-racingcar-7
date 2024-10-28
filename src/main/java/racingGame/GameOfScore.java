@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GameOfScore {
-    private static String MOVEMENT_INDICATION = "-";
+    private static final String MOVEMENT_INDICATION = "-";
 
     public Map<String, String> initializeScore(List<String> participateCarList) {
         Map<String, String> initialScore = new HashMap<>();

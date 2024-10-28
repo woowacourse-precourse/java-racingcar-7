@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class InputDelimiter {
-    private static String CAR_NAME_DELIMITER = ",";
+    private static final String CAR_NAME_DELIMITER = ",";
     public List<String> activateDelimiterWithComma(String inputCarName) {
         List<String> delimiterWithCommaList = new ArrayList<>();
 

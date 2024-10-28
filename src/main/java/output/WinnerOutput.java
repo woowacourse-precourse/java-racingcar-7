@@ -3,7 +3,7 @@ package output;
 import java.util.List;
 
 public class WinnerOutput {
-    private static String WINNER_DELIMITER = ", ";
+    private static final String WINNER_DELIMITER = ", ";
 
     public void printFinalWinners(List<String> finalWinnerList) {
         String finalWinners = makeFinalWinnersToString(finalWinnerList);
