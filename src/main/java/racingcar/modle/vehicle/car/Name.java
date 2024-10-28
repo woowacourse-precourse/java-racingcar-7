@@ -16,6 +16,7 @@ public class Name {
     private void validateName(String name) {
         validateNameForm(name);
         validateNameLength(name);
+        validateNumberName(name);
     }
 
     private void validateNameForm(String name) {
@@ -27,6 +28,14 @@ public class Name {
     private void validateNameLength(String name) {
         if(name.length() > NAME_LENGTH_LIMIT){
             throw new IllegalArgumentException("이름 길이를 5자 이하로 입력해주세요");
+        }
+    }
+
+    private void validateNumberName(String name) {
+        try{
+            Integer.parseInt(name);
+        } catch (NumberFormatException e){
+            System.out.println("이름은 숫자일 수가 없습니다.");
         }
     }
 }

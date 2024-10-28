@@ -24,7 +24,7 @@ public class Car implements Movable {
 
     @Override
     public Car move(){
-        int movedPosition = getPosition() + movableStrategy.move();
+        int movedPosition = getPosition() + movableStrategy.movePoint();
         return new Car(getName(), movedPosition, movableStrategy);
     }
 

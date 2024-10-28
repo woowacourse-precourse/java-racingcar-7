@@ -8,16 +8,14 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 import racingcar.modle.movableStrategy.BasicMoveStrategy;
 import racingcar.modle.vehicle.car.Car;
-import racingcar.modle.vehicle.car.CarFactory;
 
 public class CarTest {
 
-    CarFactory carFactory = new CarFactory(new BasicMoveStrategy());
-    private Car car = carFactory.create("gamza");
+    private Car car;
 
     @BeforeEach
     public void setUp() {
-        car = carFactory.create("gamza");
+        car = new Car("gamza", new BasicMoveStrategy());
     }
 
     @DisplayName("자동차 이동 기능 테스트")
