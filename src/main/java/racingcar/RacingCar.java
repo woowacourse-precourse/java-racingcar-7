@@ -20,7 +20,7 @@ public class RacingCar {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
+    public void move() {
+        position++;
     }
 }

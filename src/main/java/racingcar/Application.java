@@ -62,8 +62,7 @@ public class Application {
         for (RacingCar racingCar : racingCars) {
             // 랜덤한 값이 4 이상일때만 전진
             if (4 <= Randoms.pickNumberInRange(0, 9)) {
-                int position = racingCar.getPosition();
-                racingCar.setPosition(++position);
+                racingCar.move();
             }
         }
     }
