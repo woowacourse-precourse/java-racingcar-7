@@ -10,7 +10,7 @@ public class InputDTO {
     public String getInput() {
         return input;
     }
-    //setter
+    //setter to test
     public void setInput(String input) {
         this.input = input;
     }
