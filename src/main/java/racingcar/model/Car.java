@@ -4,6 +4,7 @@ public class Car {
     private final String name;
     private int position = 0;
     private static final int MOVE_CRITERIA_VALUE = 4;
+    private static final int MAX_NAME_LENGTH = 5;
 
     public Car(String name) {
         validateName(name.strip());
@@ -11,8 +12,8 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name == null || name.isBlank() || name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름을 1자에서 5자 이하로 입력하지 않았습니다.: " + name);
+        if (name == null || name.isBlank() || name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름을 1자에서 " + MAX_NAME_LENGTH + "자 이하로 입력하지 않았습니다.: " + name);
         }
     }
 

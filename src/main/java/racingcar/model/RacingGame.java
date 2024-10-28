@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class RacingGame {
     private final List<Car> cars;
     private final int tryCount;
+    private static final String DELIMITER = ",";
 
     public RacingGame(String carNames, int tryCount) {
         this.cars = initializeCars(carNames);
@@ -15,7 +16,7 @@ public class RacingGame {
     }
 
     private List<Car> initializeCars(String carNames) {
-        List<String> carNamesList = List.of(carNames.split(","));
+        List<String> carNamesList = List.of(carNames.split(DELIMITER));
         validateFormat(carNames, carNamesList);
         checkDuplicate(carNamesList);
         return carNamesList.stream()
@@ -24,7 +25,7 @@ public class RacingGame {
     }
 
     public void validateFormat(String carNames, List<String> carNameList) {
-        int count = carNames.length() - carNames.replace(",", "").length();
+        int count = carNames.length() - carNames.replace(DELIMITER, "").length();
         if (count + 1 != carNameList.size()) {
             throw new IllegalArgumentException("입력 형식이 올바르지 않습니다.: " + carNames);
         }

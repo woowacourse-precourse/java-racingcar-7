@@ -8,25 +8,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
 
     @Test
     public void carForward() {
         Car car = new Car("pobi");
-        car.move(4);
+        car.move(MOVING_FORWARD);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     public void carStop() {
         Car car = new Car("pobi");
-        car.move(3);
+        car.move(STOP);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
     public void displayStateTest() {
         Car car = new Car("pobi");
-        car.move(4);
+        car.move(MOVING_FORWARD);
 
         String state = car.displayState();
 
@@ -37,6 +39,6 @@ public class CarTest {
     @ValueSource(strings = {"", " ", "javaji"})
     public void validateNameTest(String name) {
         assertThatThrownBy(() -> new Car(name))
-                .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }
