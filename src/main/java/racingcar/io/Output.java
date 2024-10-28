@@ -1,24 +1,30 @@
 package racingcar.io;
 
 import java.util.List;
+import racingcar.car.Car;
 
 public class Output {
     public void printResult() {
+        System.out.println();
         System.out.println("실행 결과");
     }
 
-    public void printCar(String car) {
-        // 자동차 이름 출력
-        System.out.print(car + " : ");
+    public void printCar(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.print(car.getName() + " : ");
+            printMoveByOrder(car);
+        }
+        System.out.println();
     }
 
-    public void printMoveByOrder() {
-        // 차수별 실행 결과 출력
-        System.out.print("-");
+    public void printMoveByOrder(Car car) {
+        for (int i = 0; i < car.getTotalMove(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
     public void printChampion(List<String> champions) {
-        // 우승자 출력
         System.out.println("최종 우승자 : " + String.join(", ", champions));
     }
 }

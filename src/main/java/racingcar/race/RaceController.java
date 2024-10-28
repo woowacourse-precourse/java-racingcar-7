@@ -1,7 +1,17 @@
 package racingcar.race;
 
+import java.util.List;
+import racingcar.Application;
+import racingcar.car.Car;
+
 public class RaceController {
-    public void readNumberOfMove() {
-        // 읽어온 시도 횟수 createRandomNumber로 전달
+    private static final RaceService raceService = new RaceService();
+
+    public void race(List<Car> cars) {
+        raceService.race(cars);
+    }
+
+    public List<String> getChampion (List<Car> participant) {
+        return raceService.getChampion(participant);
     }
 }

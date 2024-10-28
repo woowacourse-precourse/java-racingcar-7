@@ -28,10 +28,4 @@ public class CarService {
     public boolean isUsableName(String carName) {
         return carName.length() <= 5;
     }
-
-
-    public void countTotalMove(Car car) {
-        // 움직인 자동차 개수 세기
-        car.setTotalMove(car.getTotalMove() + 1);
-    }
 }

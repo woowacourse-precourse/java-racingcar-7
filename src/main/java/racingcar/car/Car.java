@@ -16,7 +16,7 @@ public class Car {
         return totalMove;
     }
 
-    public void setTotalMove(int totalMove) {
-        this.totalMove = totalMove;
+    public void setTotalMove() {
+        totalMove = totalMove + 1;
     }
 }
