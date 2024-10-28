@@ -8,6 +8,8 @@ import java.util.Set;
 
 public class Names {
 
+    private final int MAX_SIZE = 1000;
+
     private final List<Name> names;
 
     public Names(List<Name> names) {
@@ -16,13 +18,17 @@ public class Names {
     }
 
     private void validateNameDuplicate(List<Name> names) {
-        Set<String> duplicateNames = new HashSet<>();
-        for (Name name : names) {
-            duplicateNames.add(name.toString());
+        if (names.size() > MAX_SIZE) {
+            throw new IllegalArgumentException("이름의 개수가 " + MAX_SIZE + "개를 넘을 수 없습니다.");
         }
-        if (duplicateNames.size() != names.size()) {
+        Set<String> nonDuplicateNames = new HashSet<>();
+        for (Name name : names) {
+            nonDuplicateNames.add(name.toString());
+        }
+        if (nonDuplicateNames.size() != names.size()) {
             throw new IllegalArgumentException("이름은 중복될 수 없습니다.");
         }
+
     }
 
     public int size() {
