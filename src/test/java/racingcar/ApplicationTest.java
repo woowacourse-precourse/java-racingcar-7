@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import org.assertj.core.api.Assertions;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,7 +21,6 @@ class ApplicationTest extends NsTest {
                         .hasMessage("경주를 위해서는 최소 2대 이상의 자동차가 필요합니다.")
         );
     }
-
 
     @Test
     void 기능_테스트() {
