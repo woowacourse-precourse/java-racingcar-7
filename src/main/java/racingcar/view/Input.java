@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
-	public static List<String> readCarNames(){
+	public static List<String> readCarNames() {
 		String carNames = Console.readLine();
 		String[] split = carNames.split(",");
 
@@ -15,11 +15,17 @@ public class Input {
 			.toList();
 	}
 
-	public static int readTurn(){
+	public static int readTurn() {
 		String turn = Console.readLine();
 
-		// 숫자 아닌 경웅 예외처리 필요.
+		if (isNumeric(turn) == false) {
+			throw new IllegalArgumentException("숫자를 입력해주세요.");
+		}
 
 		return Integer.parseInt(turn);
+	}
+
+	private static boolean isNumeric(String str) {
+		return str.matches("-?\\d+");
 	}
 }
