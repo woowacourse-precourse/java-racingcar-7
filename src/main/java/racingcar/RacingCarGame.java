@@ -40,5 +40,10 @@ public class RacingCarGame {
         }
         return cars;
     }
+
+    public boolean canMove() {
+        int randomNumber = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
+        return randomNumber >= 4;
+    }
 }
 
