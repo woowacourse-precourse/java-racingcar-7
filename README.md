@@ -84,15 +84,8 @@
 
 ### 🕹RegistrationController
 - [x] 싱글톤으로 설계
-- [x] 생성 시 inputService 를 생성한다.
-- [x] 새로운 Registeration 객체를 만들어 반환한다.
-- [x] 날 것 입력을 받는다.
-  - [x] view 로 안내 메시지 출력한다.
-  - [x] inputService 로 입력을 받아 반환한다.
-- [x] 입력을 검증하고 반환한다.
-- [x] 자동차 이름을 입력 받아 정해진 규격으로 나누어 자동차 이름 리스트로 만든다.
-- [x] 시도할 횟수를 입력 받아 Long 으로 변환한다.
-
+- [x] 생성 시, RegistrationService 를 생성
+- [x] RegistrationService 를 통해 정보를 등록
 
 
 ### 🕹TotalController
