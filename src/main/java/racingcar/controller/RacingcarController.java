@@ -17,6 +17,9 @@ public class RacingcarController {
         if (namesOfCars.isBlank()) {
             throw new IllegalArgumentException("경주할 자동차 이름을 입력하세요.");
         }
+        else if (namesOfCars.charAt(namesOfCars.length()-1) == ',') {
+            throw new IllegalArgumentException("이름을 입력하지 않은 자동차가 있습니다.");
+        }
         racingService.separateCarNames(namesOfCars);
 
         System.out.println("시도할 횟수는 몇 회인가요?");

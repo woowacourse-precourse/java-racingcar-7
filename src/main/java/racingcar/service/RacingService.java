@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -16,9 +17,12 @@ public class RacingService {
         this.outputService = outputService;
     }
 
-    public void separateCarNames(String namesOfCars) {
+    public void separateCarNames(String namesOfCars) throws IllegalArgumentException{
         nameOfCar = List.of(namesOfCars.split(","));
         for (String s : nameOfCar) { // movementNum 초기화
+            if (s.isBlank()) {
+                throw new IllegalArgumentException("이름을 입력하지 않은 자동차가 있습니다.");
+            }
             movementNum.add(0);
         }
     }
