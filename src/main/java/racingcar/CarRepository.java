@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CarRepository {
-    private  Map<String, ArrayList<Integer>> carMap = new HashMap();
+    private Map<String, ArrayList<Integer>> carMap = new HashMap();
 
     public Map<String, ArrayList<Integer>> getMap(){
         return carMap;

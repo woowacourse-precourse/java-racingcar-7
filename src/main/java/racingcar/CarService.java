@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class CarService {
     private CarRepository carRepository;
-    public void setCars(String[] carNames){
+    public void setCars(String[] carNames) {
         for(String carName : carNames){
             carRepository.addCar(carName);
         }
@@ -21,10 +21,10 @@ public class CarService {
         carRepository.getMap().clear();
     }
 
-    public void doGameTotalSet(String[] carNames, int tryCount){
+    public void doGameTotalSet(String[] carNames, int tryCount) {
 
         setCars(carNames);
-        for(int i = 0; i < tryCount; i++){
+        for(int i = 0; i < tryCount; i++) {
             doGameOneSet(carNames);
         }
     }
@@ -63,13 +63,13 @@ public class CarService {
             renewalCurrentPosition(car);
     }
 
-    private void doGameOneSet(String[] carNames){
+    private void doGameOneSet(String[] carNames) {
         for(String car : carNames){
             doGamePerCar(car);
         }
     }
 
-    private void moveCar(String car){
+    private void moveCar(String car) {
         ArrayList<Integer> carPosition = carRepository.getCarPosition(car);
         if(carPosition.size() == 0)
             carPosition.add(1);
@@ -77,7 +77,7 @@ public class CarService {
             carPosition.add(carPosition.get(carPosition.size()-1)+1);
     }
 
-    private void renewalCurrentPosition(String car){
+    private void renewalCurrentPosition(String car) {
         ArrayList<Integer> carPosition = carRepository.getCarPosition(car);
         if(carPosition.size() == 0)
             carPosition.add(0);

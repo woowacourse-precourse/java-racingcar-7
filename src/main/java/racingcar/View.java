@@ -63,7 +63,7 @@ public class View {
         this.gameController = DependencyInjectionConfig.gameController();
     }
 
-    private void checkInputValid(String[] carNames){
+    private void checkInputValid(String[] carNames) {
         for(String carName : carNames){
             if(carName.length() > 5 || carName.isEmpty()){
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
