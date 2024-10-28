@@ -1,21 +1,22 @@
-package racingcar.executor.calculator.distance;
+package racingcar.executor.mover;
 
 import racingcar.executor.decider.movement.RandomMovementDecider;
+import racingcar.executor.generator.movement.RandomIntegerGenerator;
 
 import java.util.Map;
 
-public class MoveDistanceCalculatorImpl implements MoveDistanceCalculator {
+public class CarMoverImpl implements CarMover {
 
     private final RandomMovementDecider randomMovementDecider;
 
-    public MoveDistanceCalculatorImpl(RandomMovementDecider randomMovementDecider) {
+    public CarMoverImpl(RandomMovementDecider randomMovementDecider) {
         this.randomMovementDecider = randomMovementDecider;
     }
 
     @Override
-    public Map<String, Integer> calculateDistance(Map<String, Integer> currentHistory) {
+    public Map<String, Integer> run(Map<String, Integer> currentHistory) {
         for (String carName : currentHistory.keySet()) {
-            if (randomMovementDecider.decide())
+            if (randomMovementDecider.decide(RandomIntegerGenerator.run()))
                currentHistory.put(carName, currentHistory.get(carName) + 1);
         }
         return currentHistory;
