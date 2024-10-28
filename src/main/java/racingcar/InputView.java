@@ -7,7 +7,12 @@ public class InputView {
 
     public static String[] inputCar() throws IllegalArgumentException {
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
-        String carName = Console.readLine();
+        String carName = Console.readLine().replaceAll("\\s+","");
+
+        if (carName.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름을 입력하세요.");
+        }
+
         String[] carNames = carName.split(",");
 
         for (String name : carNames) {
@@ -20,8 +25,14 @@ public class InputView {
     }
 
     public static int inputCount (){
-        String inputCountNum = Console.readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(inputCountNum);
+        String inputCountNum = Console.readLine();
+
+        try {
+            return Integer.parseInt(inputCountNum);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력하세요.");
+        }
+
     }
 }
