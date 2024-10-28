@@ -28,15 +28,17 @@ public class CarRacingController {
         }
     }
 
-    public void race() {
-        register.carListUp(divide(inputView.inputCar()));
-        int count = inputView.inputRound();
+    public void playRound(int count) {
         while (count > 0) {
             carMoves();
             outputView.outputCarMoves(register.carsMoveCount());
             count--;
         }
+    }
 
+    public void race() {
+        register.carListUp(divide(inputView.inputCar()));
+        playRound(inputView.inputRound());
         outputView.outputWinner(register.racingWinner());
     }
 }
