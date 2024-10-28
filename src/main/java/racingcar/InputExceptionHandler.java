@@ -4,6 +4,12 @@ import java.util.Arrays;
 
 public class InputExceptionHandler {
     public void validCarName(String inputCarName) throws IllegalArgumentException {
+
+        // 연속된 쉼표나 끝에 쉼표가 있는지 검사
+        if (inputCarName.contains(",,") || inputCarName.endsWith(",") || inputCarName.startsWith(",")) {
+            throw new IllegalArgumentException("차 이름이 공백일 수 없습니다.");
+        }
+
         Arrays.stream(inputCarName.split(","))
                 .map(String::trim)
                 .forEach(carName -> {
