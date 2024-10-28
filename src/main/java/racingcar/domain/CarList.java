@@ -26,4 +26,20 @@ public class CarList {
     public List<Car> getCars() {
         return new ArrayList<>(carList);
     }
+    // 우승자 구하는 함수
+    public List<String> getWinners(){
+        int maxPosition = 0;
+        for (Car car : carList){
+            if(car.getPosition() > maxPosition){
+                maxPosition = car.getPosition();
+            }
+        }
+        List<String> winners = new ArrayList<>();
+        for(Car car:carList){
+            if(car.getPosition() == maxPosition){
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
 }

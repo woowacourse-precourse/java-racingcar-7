@@ -35,5 +35,8 @@ public class RacingGameController {
         }
         return cur_results;
     }
-
+    public String[] getWinners() {
+        List<String> winners = carList.getWinners();
+        return winners.toArray(new String[0]);
+    }
 }
