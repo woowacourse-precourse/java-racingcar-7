@@ -47,4 +47,13 @@ public class RacingServiceTest {
 
         assertEquals(resultWinner, testWinner);
     }
+
+    @Test
+    @DisplayName("시도횟수 형변환 메서드 테스트")
+    void testParseAttemptCount() {
+        String input = "10";
+        int result = racingService.parseAttemptCount(input);
+
+        assertEquals(result, 10);
+    }
 }
