@@ -26,7 +26,6 @@ public class RacingGame {
 
         // 자동차 정보 저장
         for (String carName : carNameArray) {
-
             validation.checkDuplicateCar(cars, carName); // 자동차 이름 중복 예외처리
             cars.add(new Car(carName));
         }
@@ -45,6 +44,7 @@ public class RacingGame {
             moveCar(); // 배열에 저장된 자동차 중 무작위 수가 4이상인 자동차를 움직임
             printGamePlay(); // 배열에 저장된 자동차의 이름과 이동거리 표시
         }
+
     }
 
     private void afterGame() {
@@ -52,6 +52,7 @@ public class RacingGame {
         int winScore = getWinScore();
         selectWinner(winScore);
         printWinners();
+
     }
 
 
@@ -65,6 +66,7 @@ public class RacingGame {
 
         // 입력한 자동차 이름으로 생성한 배열 리턴
         return carNameString.split(",");
+
     }
 
 
@@ -76,26 +78,33 @@ public class RacingGame {
         maxTrunString = maxTrunString.trim();
 
         return maxTrunString;
+
     }
 
 
     /// 자동차 이동
     private void moveCar() {
+
         for (Car car : cars) {
             car.takeTurn();
         }
+
     }
 
     /// 자동차 이동거리 표시
     private void printGamePlay() {
+
         for (Car car : cars) {
             printMoveCar(car);
         }
+
         System.out.println();
+
     }
 
     /// 자동차 이름과 이동거리를 출력
     private void printMoveCar(Car car) {
+
         System.out.print(car.getCarName() + " : ");
 
         for (int i = 0; i < car.getDistance(); i++) {
@@ -103,10 +112,12 @@ public class RacingGame {
         }
 
         System.out.println();
+
     }
 
     /// 우승점수 계산
     private int getWinScore() {
+
         int winScore = 0;
 
         for (Car car : cars) {
@@ -116,6 +127,7 @@ public class RacingGame {
         }
 
         return winScore;
+
     }
 
     ///점수가 가장 많은 자동차를 Winners 배열에 저장
@@ -126,11 +138,14 @@ public class RacingGame {
                 winners.add(car.getCarName());
             }
         }
+
     }
 
     /// 우승자 목록 출력
     private void printWinners() {
+
         String result = String.join(",", winners);
-        System.out.println("최종 우승자 : "+result);
+        System.out.println("최종 우승자 : " + result);
+
     }
 }

@@ -66,7 +66,6 @@ public class RacingGameTest {
     }
 
 
-
     @Test
     @DisplayName("자동차 이름 중복 확인 테스트")
     public void testCarNameDuplication() {
@@ -76,7 +75,7 @@ public class RacingGameTest {
 
         // 중복된 자동차 이름이 있는 경우 오류발생
         assertThrows(IllegalArgumentException.class, () -> {
-            validation.checkDuplicateCar(cars,"testCar");
+            validation.checkDuplicateCar(cars, "testCar");
         }, "자동차 이름은 중복될 수 없습니다.");
     }
 
