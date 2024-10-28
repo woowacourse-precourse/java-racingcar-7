@@ -8,10 +8,11 @@ public class Race {
     private final Validator validator;
     private final View view;
 
-    Race(Validator validator, View view) {
+    public Race(Validator validator, View view) {
         this.validator = validator;
         this.view = view;
     }
+
     public void run() {
         List<Car> cars = validator.validateAndParseCarNames(view.scanCarNames());
 
@@ -24,14 +25,14 @@ public class Race {
         view.printWinners(winners);
     }
 
-    void startRace(List<Car> cars, int attemptCount) {
+    public void startRace(List<Car> cars, int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
             moveCars(cars);
             view.printCarsProgress(cars);
         }
     }
 
-    void moveCars(List<Car> cars) {
+    public void moveCars(List<Car> cars) {
         for (Car car : cars) {
             if (canMove()) {
                 car.forward();
@@ -39,11 +40,11 @@ public class Race {
         }
     }
 
-    boolean canMove() {
+    public boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    int getMaxDistance(List<Car> cars) {
+    public int getMaxDistance(List<Car> cars) {
         int maxDistance = 0;
         for (Car car : cars) {
             maxDistance = Math.max(car.getProgress().length(), maxDistance);
@@ -51,7 +52,7 @@ public class Race {
         return maxDistance;
     }
 
-    List<String> getWinners(List<Car> cars, int maxDistance) {
+    public List<String> getWinners(List<Car> cars, int maxDistance) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             if (maxDistance == car.getProgress().length()) {

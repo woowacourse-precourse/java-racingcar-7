@@ -8,15 +8,15 @@ public class Validator {
         validateNameEmpty(carNamesInput);
 
         String[] names = carNamesInput.split(",");
-        List<String> nameList = new ArrayList<>();
         List<Car> cars = new ArrayList<>();
+
         for (String name : names) {
             String trimName = name.trim(); // 이름 양 끝 공백 제거
             validateNameLength(trimName);
-            validateNameDuplicate(trimName, nameList);
-            nameList.add(trimName);
+            validateNameDuplicate(trimName, cars);
             cars.add(new Car(trimName, ""));
         }
+
         return cars;
     }
 
@@ -32,9 +32,11 @@ public class Validator {
         }
     }
 
-    public void validateNameDuplicate(String name, List<String> nameList) {
-        if (nameList.contains(name)) {
-            throw new IllegalArgumentException("중복된 이름은 허용되지 않습니다.");
+    public void validateNameDuplicate(String name, List<Car> cars) {
+        for (Car car : cars) {
+            if (car.getName().equals(name)) {
+                throw new IllegalArgumentException("중복된 이름은 허용되지 않습니다.");
+            }
         }
     }
 
