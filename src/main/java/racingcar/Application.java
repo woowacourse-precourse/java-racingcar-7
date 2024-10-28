@@ -10,6 +10,8 @@ public class Application {
         int raceCount = InputHandler.getRaceCount();
         Validator.validateRaceCount(raceCount);
 
+        RaceGame game = new RaceGame(carNames, raceCount);
+        game.start();
 
     }
 }

@@ -15,7 +15,7 @@ public class InputHandler {
         String countInput = camp.nextstep.edu.missionutils.Console.readLine();
         if (countInput.chars().allMatch( Character::isDigit ))
             return Integer.parseInt(countInput);
-        else return 0;
+        else throw new IllegalArgumentException();
     }
 
 }
