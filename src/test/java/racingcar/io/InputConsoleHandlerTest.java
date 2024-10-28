@@ -1,13 +1,18 @@
 package racingcar.io;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class InputConsoleHandlerTest {
 
@@ -86,4 +91,30 @@ class InputConsoleHandlerTest {
         Console.close();
     }
 
+    @ParameterizedTest
+    @MethodSource("invalidNumOfTrialCases")
+    @DisplayName("적절하지 않은 형식의 문자를 시도 횟수로써 입력할 수 있다")
+    void invalidNumOfTrialThrowsExceptions(String input, String expectedErrorMessage) {
+
+        // given
+        InputConsoleHandler inputConsoleHandler = new InputConsoleHandler();
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        // when, then
+        assertThatThrownBy(inputConsoleHandler::askNumOfTrial)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(expectedErrorMessage);
+
+        System.setIn(System.in);
+        Console.close();
+    }
+
+    private static Stream<Arguments> invalidNumOfTrialCases() {
+        return Stream.of(
+                Arguments.arguments("1.5", "시도할 횟수는 정수여야 합니다. 입력 : 1.5"),
+                Arguments.arguments("ab", "시도할 횟수에 숫자가 아닌 값이 입력되었습니다. 입력 : ab"),
+                Arguments.arguments("-3", "시도할 횟수는 0보다 커야 합니다."),
+                Arguments.arguments("2147483649", "허용 가능한 시도 횟수를 초과하였습니다.")
+        );
+    }
 }
