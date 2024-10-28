@@ -60,7 +60,7 @@ public class CarTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     car.tryMoveForward();
-                    assertThat(car.getPosition()).isEqualTo(INITIAL_POSITION);
+                    assertThat(car.getPosition()).isEqualTo(1);
                 },
                 MOVING_FORWARD
         );
