@@ -1,9 +1,10 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RaceServiceImpl implements RaceService {
 
