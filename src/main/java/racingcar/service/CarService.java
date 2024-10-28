@@ -30,6 +30,9 @@ public class CarService {
         if (carName.length() > 5) {
             throw new IllegalArgumentException(Constants.INVALID_CAR_NAME_LENGTH);
         }
+        if (carName == null || carName.trim().isEmpty()) {
+            throw new IllegalArgumentException(Constants.INVALID_CAR_NAME_EMPTY);
+        }
     }
 
     public void playGame() {
