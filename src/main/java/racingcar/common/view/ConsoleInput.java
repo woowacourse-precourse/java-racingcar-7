@@ -50,7 +50,7 @@ public class ConsoleInput {
         try {
             return Integer.valueOf(string);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해 주세요.");
+            throw new IllegalArgumentException("정수를 입력해 주세요.");
         }
     }
 

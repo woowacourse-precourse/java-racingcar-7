@@ -10,19 +10,26 @@ public record LapRecord(List<CarRecord> carRecords) {
     }
 
     public Winners determineFirstPlace() {
-        Mileage highestMileage = carRecords.stream()
-                .map(CarRecord::mileage)
-                .max(Mileage::compareTo)
-                .orElseThrow(() -> new IllegalArgumentException("랩에는 1위가 반드시 존재해야 합니다."));
-
-        return new Winners(new CarNames(carRecords().stream()
-                .filter(carRecord -> highestMileage.equals(carRecord.mileage()))
-                .map(CarRecord::carName)
-                .toList()));
+        Mileage highestMileage = getFarthestMileages();
+        return findCarsReachedTo(highestMileage);
     }
 
     public Stream<CarRecord> stream() {
         return carRecords.stream();
+    }
+
+    private Mileage getFarthestMileages() {
+        return this.stream()
+                .map(CarRecord::mileage)
+                .max(Mileage::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("최고 주행거리는 반드시 존재합니다."));
+    }
+
+    private Winners findCarsReachedTo(Mileage highestMileage) {
+        return new Winners(new CarNames(this.stream()
+                .filter(carRecord -> highestMileage.equals(carRecord.mileage()))
+                .map(CarRecord::carName)
+                .toList()));
     }
 
 }

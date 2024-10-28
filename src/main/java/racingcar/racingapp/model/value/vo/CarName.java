@@ -2,6 +2,8 @@ package racingcar.racingapp.model.value.vo;
 
 public record CarName(String name) implements Comparable<CarName> {
 
+    public static final int LIMIT_FOR_LENGTH_OF_CAR_NAME = 5;
+
     public CarName {
         if (name == null) {
             throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
@@ -11,7 +13,7 @@ public record CarName(String name) implements Comparable<CarName> {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
         }
-        if (5 < name.length()) {
+        if (LIMIT_FOR_LENGTH_OF_CAR_NAME < name.length()) {
             throw new IllegalArgumentException("이름은 5자 이하로 입력해야 합니다.");
         }
     }

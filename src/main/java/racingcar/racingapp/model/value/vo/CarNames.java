@@ -13,10 +13,7 @@ public record CarNames(List<CarName> carNames) {
         if (carNames == null || carNames.isEmpty()) {
             throw new IllegalArgumentException("참가자 이름들이 지정되지 않았습니다.");
         }
-        if (carNames.stream()
-                .collect(Collectors.groupingBy(CarName::name, Collectors.counting()))
-                .values().stream()
-                .anyMatch(countOfSameName -> 1 < countOfSameName)) {
+        if (isDuplicatedNames(carNames)) {
             throw new IllegalArgumentException("참가자 이름은 중복될 수 없습니다.");
         }
         if (LIMIT_OF_PARTICIPANTS < carNames.size()) {
@@ -28,6 +25,13 @@ public record CarNames(List<CarName> carNames) {
 
     public Stream<CarName> stream() {
         return carNames.stream();
+    }
+
+    private static boolean isDuplicatedNames(List<CarName> carNames) {
+        return carNames.stream()
+                .collect(Collectors.groupingBy(CarName::name, Collectors.counting()))
+                .values().stream()
+                .anyMatch(countOfSameName -> 1 < countOfSameName);
     }
 
 }
