@@ -23,7 +23,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    //기능 테스트 3명기준 모두 같을때, 2명만 같을때, 1명일때 (예외처리 추가 , 인원이 한명일때
+    @Test
+    void 기능_테스트_3인_공동우승() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "jun : -", "최종 우승자 : pobi, woni, jun");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -39,6 +49,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     //예외 테스트 공백문자열 필요
     @Override
     public void runMain() {

@@ -34,7 +34,7 @@ public class Application {
         Console.close();
 
         //전진 시작
-        System.out.println("실행 결과");
+        System.out.println("\n"+"실행 결과");
         for (int i = 0; i < attempts; i++) {
             for (Car car : cars) {
                 car.tryMove();
