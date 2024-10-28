@@ -3,7 +3,7 @@ package racingcar.filter;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
 import racingcar.filter.executor.RaceExecutor;
-import racingcar.model.CarList;
+import racingcar.model.RacingCarList;
 
 public class RaceExecutionFilter implements Filter<RaceRequest, RaceResponse> {
     private final RaceExecutor executor;
@@ -14,10 +14,10 @@ public class RaceExecutionFilter implements Filter<RaceRequest, RaceResponse> {
 
     @Override
     public RaceResponse doFilter(RaceRequest request, RaceFilterChain chain) {
-        CarList carList = request.carList();
+        RacingCarList racingCarList = request.racingCarList();
         int iterations = request.iterations();
 
-        executor.executeRace(carList, iterations);
+        executor.executeRace(racingCarList, iterations);
 
         return chain.doFilter(request);
     }
