@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class generateDistanceStatus {  // 클래스명도 테스트 대상 클래스명 + Test로 변경
+class GenerateDistanceStatusTest {  // 클래스명도 테스트 대상 클래스명 + Test로 변경
 
     @Test
     @DisplayName("자동차가 전진시 거리가 1 증가")
