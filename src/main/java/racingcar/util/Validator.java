@@ -6,15 +6,15 @@ public class Validator {
     public static void validateCarNames(String[] carNames) {
         for (String name : carNames) {
             if (name.isEmpty()) {
-                throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+                throw new IllegalArgumentException(Constants.CAR_NAME_NOT_EMPTY);
             }
 
             if (name.length() > Constants.MAX_CAR_NAME_LENGTH) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+                throw new IllegalArgumentException(Constants.CAR_NAME_MAX_LENGTH);
             }
 
-            if (name.contains(" ")) {
-                throw new IllegalArgumentException("자동차 이름에는 공백이 포함될 수 없습니다.");
+            if (name.contains(Constants.BLANK)) {
+                throw new IllegalArgumentException(Constants.CAR_NAME_NOT_CONTAINS_BLANK);
             }
         }
     }
@@ -24,9 +24,9 @@ public class Validator {
         try {
             int tryCnt = Integer.parseInt(input);
             if (tryCnt <= 0)
-                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+                throw new IllegalArgumentException(Constants.TRY_COUNT_MIN_VALUE);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+            throw new IllegalArgumentException(Constants.TRY_COUNT_NUMERIC);
         }
     }
 }

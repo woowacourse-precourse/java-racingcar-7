@@ -28,7 +28,7 @@ public class RaceService {
     }
 
     public void startRace(List<Car> carList, int tryCnt) {
-        System.out.println("실행 결과");
+        outputView.printRoundResult();
         for (int i = 0; i < tryCnt; i++) {
             raceRound(carList);
             outputView.printRaceResult(carList);
@@ -50,7 +50,7 @@ public class RaceService {
         int maxDistance = carList.stream()
                 .mapToInt(Car::getDistance)
                 .max()
-                .orElse(0);
+                .orElse(Constants.ZERO);
 
         return carList.stream()
                 .filter(car -> car.getDistance() == maxDistance)
