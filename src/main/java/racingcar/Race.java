@@ -42,4 +42,30 @@ class Race {
         }
     }
 
+    public void displayWinners() {
+        int maxPosition = getMaxPosition();
+        List<String> winners = getWinners(maxPosition);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private int getMaxPosition() {
+        int max = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > max) {
+                max = car.getPosition();
+            }
+        }
+        return max;
+    }
+
+    private List<String> getWinners(int maxPosition) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
 }
