@@ -9,8 +9,8 @@ import java.util.List;
 
 public class RacingCarController {
 
-    private RacingCarService racingCarService;
-    private RacingCarView racingCarView;
+    private final RacingCarService racingCarService;
+    private final RacingCarView racingCarView;
 
     public RacingCarController(RacingCarService racingCarService, RacingCarView racingCarView) {
         this.racingCarService = racingCarService;

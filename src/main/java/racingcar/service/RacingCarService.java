@@ -13,7 +13,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 
 public class RacingCarService {
-    private RacingCarView view;
+    private final RacingCarView view;
 
 
     public RacingCarService(RacingCarView view) {
