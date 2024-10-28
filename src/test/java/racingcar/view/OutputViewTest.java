@@ -9,17 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.RoundSnapshotDto;
-import racingcar.model.car.CarSnapshot;
 import racingcar.dto.WinnersDto;
+import racingcar.model.car.CarSnapshot;
 
 public class OutputViewTest {
-
-    private OutputView outputView;
     private ByteArrayOutputStream outputStream;
 
     @BeforeEach
     void setUp() {
-        outputView = OutputView.getInstance();
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
     }
@@ -43,7 +40,7 @@ public class OutputViewTest {
         );
 
         // when
-        outputView.displayRoundSnapshots(carMovementResults);
+        OutputView.displayRoundSnapshots(carMovementResults);
 
         // then
         assertThat(outputStream.toString()).isEqualTo(
@@ -58,7 +55,7 @@ public class OutputViewTest {
         WinnersDto winnersDtoOfSingleWinner = new WinnersDto(nameOfSingleWinner);
 
         // when
-        outputView.displayWinners(winnersDtoOfSingleWinner);
+        OutputView.displayWinners(winnersDtoOfSingleWinner);
 
         // then
         assertThat(outputStream.toString()).isEqualTo(
@@ -73,7 +70,7 @@ public class OutputViewTest {
         WinnersDto winnersDto = new WinnersDto(nameOfWinners);
 
         // when
-        outputView.displayWinners(winnersDto);
+        OutputView.displayWinners(winnersDto);
 
         // then
         assertThat(outputStream.toString()).isEqualTo(

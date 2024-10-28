@@ -12,13 +12,9 @@ import racingcar.view.OutputView;
 
 public class GameController {
     private static final String DELIMITER = ",";
-    private final InputView inputView;
-    private final OutputView outputView;
     private final GameInputValidator gameInputValidator;
 
-    public GameController(InputView inputView, OutputView outputView, GameInputValidator gameInputValidator) {
-        this.inputView = inputView;
-        this.outputView = outputView;
+    public GameController(GameInputValidator gameInputValidator) {
         this.gameInputValidator = gameInputValidator;
     }
 
@@ -26,10 +22,10 @@ public class GameController {
         Game game = createGame();
 
         List<RoundSnapshotDto> roundSnapshotDtos = playRounds(game);
-        outputView.displayRoundSnapshots(roundSnapshotDtos);
+        OutputView.displayRoundSnapshots(roundSnapshotDtos);
 
         game.judgeWinners();
-        outputView.displayWinners(new WinnersDto(game));
+        OutputView.displayWinners(new WinnersDto(game));
     }
 
     private List<RoundSnapshotDto> playRounds(Game game) {
@@ -44,10 +40,10 @@ public class GameController {
     }
 
     private Game createGame() {
-        String carNamesInput = inputView.getNameOfCars();
+        String carNamesInput = InputView.getNameOfCars();
         gameInputValidator.validateNameOfCars(carNamesInput);
 
-        String totalRoundsInput = inputView.getTotalRounds();
+        String totalRoundsInput = InputView.getTotalRounds();
         gameInputValidator.validateTotalRounds(totalRoundsInput);
 
         String[] carNames = Stream.of(carNamesInput.split(DELIMITER))

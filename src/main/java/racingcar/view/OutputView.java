@@ -6,19 +6,8 @@ import racingcar.dto.RoundSnapshotDto.CarSnapshotDto;
 import racingcar.dto.WinnersDto;
 
 public class OutputView {
-    private static OutputView instance;
 
-    private OutputView() {
-    }
-
-    public static OutputView getInstance() {
-        if (instance == null) {
-            instance = new OutputView();
-        }
-        return instance;
-    }
-
-    public void displayWinners(WinnersDto winnersDto) {
+    public static void displayWinners(WinnersDto winnersDto) {
         System.out.print("최종 우승자 : ");
 
         List<String> nameOfWinners = winnersDto.nameOfWinners();
@@ -32,18 +21,18 @@ public class OutputView {
         System.out.println(winners);
     }
 
-    public void displayRoundSnapshots(List<RoundSnapshotDto> roundSnapshotDtos) {
+    public static void displayRoundSnapshots(List<RoundSnapshotDto> roundSnapshotDtos) {
 
         System.out.println("실행 결과");
 
         for (RoundSnapshotDto roundSnapshotDto : roundSnapshotDtos) {
-            roundSnapshotDto.getCarSnapshotDtos().forEach(this::displayCarSnapshots);
+            roundSnapshotDto.getCarSnapshotDtos().forEach(OutputView::displayCarSnapshots);
             System.out.println();
         }
 
     }
 
-    private void displayCarSnapshots(CarSnapshotDto carSnapshotDto) {
+    private static void displayCarSnapshots(CarSnapshotDto carSnapshotDto) {
         String name = carSnapshotDto.name();
         int position = carSnapshotDto.position();
 
