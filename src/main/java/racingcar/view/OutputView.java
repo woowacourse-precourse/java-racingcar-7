@@ -19,7 +19,9 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printFinalResultMessage() {
-        System.out.print(OutputConstant.FINAL_WINNER + OutputConstant.COLON);
+    public void printFinalResult(List<String> winners) {
+        System.out.println(OutputConstant.FINAL_WINNER
+                + OutputConstant.COLON
+                + String.join(", ", winners));
     }
 }

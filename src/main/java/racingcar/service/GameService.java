@@ -34,15 +34,7 @@ public class GameService {
 
     public void showWinners() {
         List<String> winners = getGameWinner();
-        outputView.printFinalResultMessage();
-        if (winners.size() == 1)
-            System.out.println(winners.get(0));
-        if (winners.size() > 1) {
-            for (int i = 0; i < winners.size() - 1; i++) {
-                System.out.print(winners.get(i) + ", ");
-            }
-            System.out.println(winners.get(winners.size() - 1));
-        }
+        outputView.printFinalResult(winners);
     }
 
     private void moveCarBasedOnRandomNumber() {
