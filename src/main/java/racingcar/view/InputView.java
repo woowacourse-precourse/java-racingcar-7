@@ -10,7 +10,7 @@ public class InputView {
     private static final String INPUT_TRY_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String COMMA = ",";
     private static final int MIN_PLAY_COUNT = 1;
-    private static final int MAX_PLAY_COUNT = 1000000;
+    private static final int MAX_PLAY_COUNT = 1000;
 
     public String inputCarNames() {
         System.out.println(INPUT_CAR_NAMES_MESSAGE);
