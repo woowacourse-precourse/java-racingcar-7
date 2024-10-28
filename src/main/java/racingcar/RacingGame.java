@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 public class RacingGame {
   public void run() {
     List<Car> cars = createCars();
+    int attempts = getAttempts();
+    playGame(cars, attempts);
+    printWinners(cars);
   }
 
   private List<Car> createCars() {
