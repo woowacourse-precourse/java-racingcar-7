@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 
@@ -44,5 +45,10 @@ public class Application {
         if (attempts < 1) {
             throw new IllegalArgumentException("이동 횟수는 1 이상이어야 합니다.");
         }
+    }
+
+    // 0에서 9 사이의 무작위 값 생성
+    private static int generateRandomValue() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
