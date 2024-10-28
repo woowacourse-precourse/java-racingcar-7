@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -22,6 +21,22 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.validateCarName(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("차의 이름은 5글자 이하여야 합니다.");
+    }
+
+    @ParameterizedTest
+    @NullSource
+    void 차의_이름이_널_값인_경우_예외가_발생한다(String name) {
+        assertThatThrownBy(() -> InputValidator.validateCarName(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("차의 이름이 null 이면 안됩니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {" ", " ello"})
+    void 차의_이름이_공백을_포함하는_경우_예외가_발생한다(String name) {
+        assertThatThrownBy(() -> InputValidator.validateCarName(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("차의 이름에 공백을 포함하면 안됩니다.");
     }
 
 }
