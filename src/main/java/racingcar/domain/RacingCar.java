@@ -3,7 +3,7 @@ package racingcar.domain;
 public class RacingCar implements Comparable<RacingCar> {
     private static final int MOVING_CONDITION = 4;
 
-    private RacingCarName racingCarName;
+    private final RacingCarName racingCarName;
     private Location location;
 
     public RacingCar(final String racingCarName, final int location){
