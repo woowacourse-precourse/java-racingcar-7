@@ -11,20 +11,27 @@ public class InputValidatorTest {
     @ValueSource(strings = {"pobi;woni", "pobi.woni", "pobi/woni"})
     void 이름_구분자가_쉼표가_아닌경우_예외발생(String nameInput) {
         assertThatIllegalArgumentException().isThrownBy(() ->
-                InputValidator.validateNames(nameInput));
+                InputValidator.validateName(nameInput));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {",,,", ",woni,jun", "pobi,,jun", "pobi,woni,", "    , woni, jun"})
     void 자동차_이름이_공백인경우_예외발생(String nameInput) {
         assertThatIllegalArgumentException().isThrownBy(() ->
-                InputValidator.validateNames(nameInput));
+                InputValidator.validateName(nameInput));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"123456", "spaceeeeee"})
     void 자동차_이름이_5자_초과인경우_예외발생(String nameInput) {
         assertThatIllegalArgumentException().isThrownBy(() ->
-                InputValidator.validateNames(nameInput));
+                InputValidator.validateName(nameInput));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1", "1.1", "1.0"})
+    void 시도횟수가_양의정수가_아닌경우_예외발생(String stageCount) {
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                InputValidator.validateStageCount(stageCount));
     }
 }

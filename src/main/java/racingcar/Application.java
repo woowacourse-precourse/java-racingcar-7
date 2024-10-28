@@ -12,9 +12,8 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String stageInput = Console.readLine();
 
-        List<String> names = InputValidator.validateNames(carNameInput);
-
-        int stageCount = Integer.parseInt(stageInput);
+        List<String> names = InputValidator.validateName(carNameInput);
+        int stageCount = InputValidator.validateStageCount(stageInput);
 
         RacingManager manager = new RacingManager(names, stageCount);
         manager.startRace();

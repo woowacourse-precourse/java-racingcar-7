@@ -5,9 +5,12 @@ import java.util.List;
 
 public class InputValidator {
 
-    public static List<String> validateNames(String nameInput) {
+    public static List<String> validateName(String nameInput) {
         List<String> names = extract(nameInput);
-        validate(names);
+
+        if (names.stream().anyMatch(InputValidator::isInvalidName)) {
+            throw new IllegalArgumentException();
+        }
         return names;
     }
 
@@ -15,12 +18,6 @@ public class InputValidator {
         return Arrays.stream(nameInput.split(",", -1))
                 .map(String::trim)
                 .toList();
-    }
-
-    private static void validate(List<String> names) {
-        if (names.stream().anyMatch(InputValidator::isInvalidName)) {
-            throw new IllegalArgumentException();
-        }
     }
 
     private static boolean isInvalidName(String name) {
@@ -37,5 +34,18 @@ public class InputValidator {
 
     private static boolean isOverLength(String name) {
         return name.length() > 5;
+    }
+
+    public static int validateStageCount(String countInput) {
+        int stageCount = Integer.parseInt(countInput);
+
+        if (isNotPositive(stageCount)) {
+            throw new IllegalArgumentException();
+        }
+        return stageCount;
+    }
+
+    private static boolean isNotPositive(int stageCount) {
+        return stageCount < 1;
     }
 }
