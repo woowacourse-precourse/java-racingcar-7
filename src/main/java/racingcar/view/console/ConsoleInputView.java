@@ -14,7 +14,7 @@ public class ConsoleInputView implements InputView {
 
     @Override
     public TryCountInput readTryCount() {
-        String TryCount = Console.readLine();
-        return new TryCountInput(TryCount.trim());
+        String tryCount = Console.readLine();
+        return new TryCountInput(tryCount.trim());
     }
 }
