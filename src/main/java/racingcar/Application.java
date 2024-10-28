@@ -26,6 +26,7 @@ public class Application {
         String[] names = splitWithComma(input);
         validateNamesCount(names);
         validateNameLength(names);
+        printTryCountMessage();
         input = getPlayCount();
         int playCount = validateNumber(input);
         validatePlayCount(playCount);
@@ -91,6 +92,7 @@ public class Application {
         printGamePlayStartMessage();
         for(int i = 0; i < playCount; i++){
             moveCars(moves);
+            printCurrentMoves(names,moves);
         }
     }
 
@@ -106,5 +108,16 @@ public class Application {
 
     public static void printGamePlayStartMessage() {
         System.out.println("\n실행결과");
+    }
+
+    public static void printCurrentMoves(String[] names, int[] moves) {
+        for(int i = 0 ; i < names.length; i++){
+            System.out.print(names[i] + " : ");
+            for(int j = 0 ; j < moves[i]; j++){
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }

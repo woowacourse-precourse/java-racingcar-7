@@ -166,6 +166,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 실행_결과_출력형태_일치하는지_확인(){
+        String[] cars = {"abcd", "efgh", "acde"};
+        int[] move = {0,1,2};
+
+        Application.printCurrentMoves(cars, move);
+        String expectedOutput = "abcd : " + System.lineSeparator() +
+                "efgh : -" + System.lineSeparator() +
+                "acde : --";
+        assertThat(output()).isEqualTo(expectedOutput);
+    }
+
 
     @Override
     public void runMain() {
