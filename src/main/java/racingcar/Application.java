@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.controller.GameController;
 import racingcar.model.RacingGame;
 import racingcar.model.RacingJudge;
 

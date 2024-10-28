@@ -1,52 +1,51 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.model.InputValidator;
 import racingcar.model.RacingGame;
 import racingcar.model.RacingJudge;
-import racingcar.view.InputView;
+import racingcar.model.RacingRecord;
+import racingcar.view.AttemptsInputView;
+import racingcar.view.NameInputView;
 import racingcar.view.OutputView;
 import racingcar.view.RoundView;
+import racingcar.view.View;
 
 public class GameController {
 
     private RacingGame racingGame;
     private RacingJudge racingJudge;
-    private InputView inputView;
-    private RoundView roundView;
-    private OutputView outputView;
+    private View view;
     private InputValidator validator;
 
     public GameController(RacingGame racingGame, RacingJudge racingJudge) {
         this.racingGame = racingGame;
         this.racingJudge = racingJudge;
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
-        this.roundView = new RoundView(racingGame);
         this.validator = new InputValidator();
     }
 
     public void run() {
-        inputView.printCarNamesRequest();
-        String names = inputView.getCarNames();
+        view = new NameInputView();
+        String names = view.printView();
 
         validator.checkValidNames(names);
 
-        inputView.printNumberOfAttemptsRequest();
-        String attempts = inputView.getNumberOfAttempts();
+        view = new AttemptsInputView();
+        String attempts = view.printView();
 
         validator.checkValidAttempts(attempts);
 
         racingGame = new RacingGame(names);
-        roundView = new RoundView(racingGame);
-        roundView.printStartMessage();
+        view = new RoundView(racingGame);
         for (int i = 0; i < Integer.parseInt(attempts); i++) {
             List<Integer> randomNumbers = racingGame.generateRandomNumbers();
             racingGame.racing(randomNumbers);
-            roundView.printRound();
+            view.printView();
         }
         List<RacingRecord> records = racingGame.getRecords();
         String winners = racingJudge.decideWinnerBy(records);
 
-        outputView.printWinners(winners);
+        view = new OutputView(winners);
+        view.printView();
     }
 }
