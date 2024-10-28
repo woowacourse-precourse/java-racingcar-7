@@ -10,14 +10,14 @@ public class GameEngine {
 
     private String carNames;
     private int numberOfTrial;
-    private ArrayList<RacingCar>  racingCars;
+    private ArrayList<RacingCar> racingCars;
 
-    public GameEngine(InputReader inputReader){
+    public GameEngine(InputReader inputReader) {
         this.inputReader = inputReader;
         racingCars = new ArrayList<>();
     }
 
-    public void readUserInput(){
+    public void readUserInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         carNames = inputReader.readCarNames();
         System.out.println("시도할 횟수는 몇 회인가요?");
@@ -30,19 +30,20 @@ public class GameEngine {
         }
     }
 
-    public void race(){
-        for(RacingCar car : racingCars){
+    public void race() {
+        for (RacingCar car : racingCars) {
             car.race();
         }
     }
 
-    public void showRaceRecord(){
-        for(RacingCar car : racingCars){
+    public void showRaceRecord() {
+        for (RacingCar car : racingCars) {
             System.out.printf("%s : %s", car.getCarName(), "-".repeat(car.getRecord()));
             System.out.println();
         }
     }
-    public void showRaceWinner(){
+
+    public void showRaceWinner() {
         int maxRecord = racingCars.stream()
                 .mapToInt(RacingCar::getRecord)
                 .max()
@@ -54,10 +55,11 @@ public class GameEngine {
         System.out.printf("최종 우승자 : ");
         System.out.println(winners);
     }
-    public void run(){
+
+    public void run() {
         readUserInput();
         initializeGame();
-        while(numberOfTrial > 0){
+        while (numberOfTrial > 0) {
             race();
             showRaceRecord();
             System.out.println();
