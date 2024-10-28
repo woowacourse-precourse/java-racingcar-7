@@ -10,8 +10,8 @@ import racingcar.Application;
 public class CarNameTest extends NsTest {
 
     @ParameterizedTest
-    @DisplayName("불가능한 레이서 이름을 확인합니다.")
-    @ValueSource(strings = {"", " ", "김수한무와거북이", "반갑습니다람쥐", "하하하하하하"})
+    @DisplayName("불가능한 자동차 이름을 확인합니다.")
+    @ValueSource(strings = {"", "\n", " ", "    ", "김수한무와거북이", "반갑습니다람쥐", "하하하하하하"})
     void carRacer_테스트(String input) {
         Assertions.assertThatThrownBy(() -> new CarName(input))
                 .isInstanceOf(IllegalArgumentException.class);
