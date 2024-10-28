@@ -11,11 +11,12 @@
         - 예시: `pobi,,woni`
     - 자동차 이름이 5자를 초과할 경우, `IllegalArgumentException`을 발생시킨다.
         - 예시: `pobipobi,woni,jun`
+    - 경주에 참여하는 차량이 한대 이하일 경우 `IllegalArgumentException`을 발생시킨다.
+        - 예시: `pobi`
 2. 자동차가 몇 번 이동할 지 입력 값 받기
     - `시도할 횟수는 몇 회인가요?` 라는 메세지를 출력하여 문자열을 입력 받는다.
         - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-    - 시도 할 횟수는 `int` 타입으로 `2,147,483,647`가 넘어가면 `IllegalArgumentException`을 발생시킨다.
-        - 예시: `3000000000`
+    - 시도 할 횟수는 `int` 타입으로 입력 받는다.
     - 시도 할 횟수가 자연수가 아닐 경우, `IllegalArgumentException`을 발생시킨다.
         - 예시: `-1`, `0`, `1.2`, `a`
 3. 자동차가 전진하는 조건 판단하기
