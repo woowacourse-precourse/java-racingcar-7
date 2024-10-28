@@ -22,7 +22,9 @@ public class Application {
 		String name_input = Console.readLine();
 		if (name_input.contains(",")) {
 			String[] arr = name_input.split(",");
-			System.out.println(name_input);
+			check(arr);
+			if (check(arr) == 1)
+				System.out.println(name_input);
 			return arr;
 		} else {
 			String[] arr = { name_input };
@@ -36,5 +38,12 @@ public class Application {
 		String count = Console.readLine();
 		int number = Integer.parseInt(count);
 		return number;
+	}
+
+	public static int check(String arr[]) {
+		for (int i = 0; i < arr.length; i++)
+			if (arr[i].length() > 5)
+				throw new IllegalArgumentException("5글자 이하로 입력하세요.");
+		return 1;
 	}
 }
