@@ -3,9 +3,7 @@ package racingcar.domain.vo;
 import racingcar.exception.BusinessException;
 import racingcar.exception.RacingCarExceptionMessage;
 
-public class CarName {
-
-    private final String name;
+public record CarName(String name) {
 
     public CarName(String name) {
         validateName(name);
@@ -19,10 +17,14 @@ public class CarName {
     }
 
     private boolean isUsableName(String name) {
-        return name.trim().length() > 5 || name.trim().isEmpty();
+        return isLengthUnder5(name) || isBlank(name);
     }
 
-    public String getName() {
-        return name;
+    private boolean isBlank(final String name) {
+        return name.isBlank();
+    }
+
+    private boolean isLengthUnder5(final String name) {
+        return name.length() > 5;
     }
 }

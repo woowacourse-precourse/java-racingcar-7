@@ -5,37 +5,26 @@ import racingcar.exception.RacingCarExceptionMessage;
 
 import java.util.*;
 
-public class Cars {
+public class Cars implements Iterable<Car> {
+
+    public static final String DELIMITER = ",";
+    public static final int DEFAULT_POSITION = 0;
 
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(final String input) {
-        validateInput(input);
-        Arrays.stream(input.split(",")).forEach(user -> {
-            cars.add(new Car(user));
-        });
-        validateDuplicateCarName();
-    }
-
-    private void validateDuplicateCarName() {
         Set<String> carsName = new HashSet<>();
-        cars.forEach(car -> {
-            if (isDuplicate(car, carsName)) {
+        validateInput(input);
+        Arrays.stream(input.split(DELIMITER)).forEach(user -> {
+            if (!carsName.add(user)) {
                 throw new BusinessException(RacingCarExceptionMessage.CAR_NAME_DUPLICATE_EXCEPTION);
             }
+            cars.add(new Car(user));
         });
-    }
-
-    private boolean isDuplicate(Car car, Set<String> carsName) {
-        return !carsName.add(car.getName());
     }
 
     private void validateInput(String input) {
-        if (input.trim().isEmpty()) {
-            throw new BusinessException(RacingCarExceptionMessage.NAME_IS_NOT_NULL);
-        }
-
-        if (input.trim().equals(",")) {
+        if (isEmpty(input) || isDelimiter(input)) {
             throw new BusinessException(RacingCarExceptionMessage.NAME_IS_NOT_NULL);
         }
     }
@@ -44,7 +33,7 @@ public class Cars {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElse(0);
+                .orElse(DEFAULT_POSITION);
 
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
@@ -54,5 +43,18 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    private boolean isDelimiter(final String input) {
+        return input.trim().equals(DELIMITER);
+    }
+
+    private boolean isEmpty(final String input) {
+        return input.trim().isEmpty();
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return this.cars.iterator();
     }
 }
