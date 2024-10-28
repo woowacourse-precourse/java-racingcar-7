@@ -2,85 +2,56 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
-    public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNamesInput = Console.readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int attemptCount = Integer.parseInt(Console.readLine());
 
-        try {
-            RacingGame game = new RacingGame(carNamesInput, attemptCount);
-            game.play();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+    public static void main(String[] args) {
+
+            System.out.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+            String carNamesInput = Console.readLine();
+            List<String> carNames = RacingGameInputValidator.validateCarNames(carNamesInput);
+
+            System.out.print("시도할 횟수는 몇 회인가요?\n");
+            int attemptCount = RacingGameInputValidator.validateAttemptCount(Console.readLine());
+
+            RacingGame racingGame = new RacingGame(carNames, attemptCount);
+            racingGame.play();
+            racingGame.printWinners();
+
     }
 
-    static class RacingGame {
-        private static final int forwardThreshold = 4;
+    public static class RacingGame {
         private final List<Car> cars;
         private final int attemptCount;
 
-        public RacingGame(String carNamesInput, int attemptCount) {
-            validateAttemptCount(attemptCount);
-            this.cars = createCars(carNamesInput);
+        public RacingGame(List<String> carNames, int attemptCount) {
+            this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
             this.attemptCount = attemptCount;
         }
 
-        private void validateAttemptCount(int attemptCount) {
-            if (attemptCount <= 0) {
-                throw new IllegalArgumentException("시도 횟수는 최소 1회 이상입니다.");
-            }
-        }
-
-        private List<Car> createCars(String carNamesInput) {
-            List<String> carNames = RacingGameInputValidator.validateCarNames(carNamesInput);
-            List<Car> cars = new ArrayList<>();
-            for (String name : carNames) {
-                cars.add(new Car(name));
-            }
-            return cars;
-        }
-
         public void play() {
-            System.out.println("\n실행 결과");
             for (int i = 0; i < attemptCount; i++) {
-                playRound();
-                printRoundResult();
-            }
-            printWinners();
-        }
-
-        private void playRound() {
-            for (Car car : cars) {
-                if (isMovable()) {
-                    car.move();
-                }
+                cars.forEach(car -> {
+                    if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                        car.move();
+                    }
+                });
+                printRaceStatus();
             }
         }
 
-        private boolean isMovable() {
-            return Randoms.pickNumberInRange(0, 9) >= forwardThreshold;
-        }
-
-        private void printRoundResult() {
+        private void printRaceStatus() {
             for (Car car : cars) {
-                System.out.println(car);
+                System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
             }
             System.out.println();
         }
 
-        private void printWinners() {
-            int maxPosition = cars.stream()
-                    .mapToInt(Car::getPosition)
-                    .max()
-                    .orElse(0);
-
+        public void printWinners() {
+            int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
             List<String> winners = cars.stream()
                     .filter(car -> car.getPosition() == maxPosition)
                     .map(Car::getName)
@@ -90,55 +61,55 @@ public class Application {
         }
     }
 
-    static class Car {
+    public static class Car {
         private final String name;
         private int position = 0;
 
         public Car(String name) {
-            validateName(name);
             this.name = name;
-        }
-
-        private void validateName(String name) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            }
         }
 
         public void move() {
             position++;
         }
 
-        public int getPosition() {
-            return position;
-        }
-
         public String getName() {
             return name;
         }
 
-        @Override
-        public String toString() {
-            return name + " : " + "-".repeat(position);
+        public int getPosition() {
+            return position;
         }
     }
 
-    static class RacingGameInputValidator {
-        public static List<String> validateCarNames(String carNamesInput) {
-            if (carNamesInput == null || carNamesInput.isBlank()) {
-                throw new IllegalArgumentException("자동차 이름을 입력하세요.");
-            }
+    public static class RacingGameInputValidator {
 
-            List<String> carNames = List.of(carNamesInput.split(","))
-                    .stream()
+        public static List<String> validateCarNames(String input) {
+            List<String> carNames = Arrays.stream(input.split(","))
                     .map(String::trim)
                     .collect(Collectors.toList());
 
-            if (carNames.isEmpty() || carNames.contains("")) {
-                throw new IllegalArgumentException("유효한 자동차 이름이 아닙니다.");
+            for (String name : carNames) {
+                if (name.isEmpty()) {
+                    throw new IllegalArgumentException("자동차 이름은 빈 값일 수 없습니다.");
+                }
+                if (name.length() > 5) {
+                    throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+                }
             }
-
             return carNames;
+        }
+
+        public static int validateAttemptCount(String input) {
+            try {
+                int attemptCount = Integer.parseInt(input);
+                if (attemptCount <= 0) {
+                    throw new IllegalArgumentException("시도 횟수는 1 이상의 숫자여야 합니다.");
+                }
+                return attemptCount;
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+            }
         }
     }
 }
