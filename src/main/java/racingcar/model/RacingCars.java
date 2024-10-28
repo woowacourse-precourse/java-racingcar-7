@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import racingcar.message.ErrorMessage;
@@ -21,11 +22,9 @@ public class RacingCars implements Cars {
 
     @Override
     public void moveCars() {
-        for (Car car : cars) {
-            if (moveStrategy.isMovable()) {
-                car.moveForward();
-            }
-        }
+        cars.stream()
+                .filter(car -> moveStrategy.isMovable())
+                .forEach(Car::moveForward);
     }
 
     @Override
@@ -34,9 +33,9 @@ public class RacingCars implements Cars {
     }
 
     private void validateEmpty(Collection<Car> cars) {
-        if (cars == null || cars.isEmpty()) {
-            throw new CarNameException(ErrorMessage.CAR_NAME_IS_EMPTY.getMessage());
-        }
+        Optional.ofNullable(cars)
+                .filter(c -> !c.isEmpty())
+                .orElseThrow(() -> new CarNameException(ErrorMessage.CAR_NAME_IS_EMPTY.getMessage()));
     }
 
     private void validateDuplicateNames(Collection<Car> cars) {
