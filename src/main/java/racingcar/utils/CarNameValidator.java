@@ -28,9 +28,13 @@ public class CarNameValidator implements InputValidator {
     private void checkUniqueNames(String[] names) {
         Set<String> uniqueNames = new HashSet<>();
         for (String name : names) {
-            if (!uniqueNames.add(name.trim())) {
-                throw new IllegalArgumentException(ErrorMessages.CAR_NAME_DUPLICATE + name);
-            }
+            addNameOrThrow(uniqueNames, name);
+        }
+    }
+
+    private void addNameOrThrow(Set<String> uniqueNames, String name) {
+        if (!uniqueNames.add(name.trim())) {
+            throw new IllegalArgumentException(ErrorMessages.CAR_NAME_DUPLICATE + name);
         }
     }
 
