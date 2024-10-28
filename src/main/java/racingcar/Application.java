@@ -39,7 +39,7 @@ public class Application {
     }
     public void mem_trim() {
         for(String str : member) {
-            if(str.trim().isEmpty()) {
+            if(str.trim().isEmpty() || str.length() > 5) {
                 throw new IllegalArgumentException("invalid error");
             }
         }
