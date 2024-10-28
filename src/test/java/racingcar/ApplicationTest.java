@@ -7,6 +7,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -14,6 +17,7 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     private InputController inputController = new InputController();
+    private RacingGame racingGame = new RacingGame(Arrays.asList("pobi", "woni", "javaji"), 5);
 
     // 입력 테스트 ----------------------------------------------
     // nsTest의 command 메서드만 따로 가져옴
@@ -75,7 +79,11 @@ class ApplicationTest extends NsTest {
     }
 
     // 랜덤 테스트 ----------------------------------------------
-
+    @Test
+    void 무작위_자동차선택_테스트() {
+        int randomCarIndex = racingGame.pickRandomCar();
+        assertThat(randomCarIndex).isBetween(0, racingGame.getCarInfoList().size() - 1);
+    }
     // 출력 결과 테스트 ----------------------------------------------
 
     // 통합 테스트 ----------------------------------------------
