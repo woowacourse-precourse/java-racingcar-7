@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class RandomMovementDeciderImpl implements RandomMovementDecider {
 
     @Override
-    public boolean decide() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+    public boolean decide(int randomNumber) {
+        return randomNumber >= 4;
     }
 }
