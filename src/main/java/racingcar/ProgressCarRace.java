@@ -29,7 +29,7 @@ public class ProgressCarRace {
         for (Map.Entry<String, Integer> entry : stateMap.entrySet()) {
             stringBuilder.append(entry.getKey()).append(" : ");
             stringBuilder.append("-".repeat(Math.max(0, entry.getValue())));
-            stringBuilder.append("\n");
+            stringBuilder.append(System.lineSeparator());
         }
 
         System.out.println(stringBuilder.toString());
