@@ -27,7 +27,7 @@ public class GameController {
         this.roundNumberValidator = roundNumberValidator;
     }
 
-    public void start() {
+    public void playGame() {
         String carNames = inputView.requestCarNamesInput();
         int roundNumber = getRoundNumber();
 
