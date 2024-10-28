@@ -37,4 +37,10 @@ public class RacingCarValidator {
         }
         uniqueCarNames.add(carName);
     }
+
+    public void validateRounds(String roundString) {
+        if (roundString == null || roundString.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
