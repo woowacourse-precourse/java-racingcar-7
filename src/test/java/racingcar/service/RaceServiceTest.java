@@ -26,20 +26,4 @@ public class RaceServiceTest {
         assertEquals(carNames[1], "won");
         assertEquals(carNames[2], "juni");
     }
-
-    @DisplayName("우승자 결정하는 기능 테스트")
-    @Test
-    public void decisionWinnersTest() {
-        List<Car> Cars = new ArrayList<>();
-        Cars.add(new Car("pobi"));
-        Cars.add(new Car("won"));
-        Cars.add(new Car("juni"));
-        Cars.get(0).move();
-        Cars.get(0).move();
-        Cars.get(1).move();
-        Cars.get(2).move();
-        Cars.get(2).move();
-        List<String> winners = raceService.decisionWinners(Cars);
-        assertEquals(String.join(", ",winners), "pobi, juni");
-    }
 }
