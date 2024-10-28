@@ -58,4 +58,11 @@ public class RacingGame {
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();
     }
+
+    public String getWinnerNames() {
+        List<Car> winners = getWinners();
+        return winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+    }
 }
