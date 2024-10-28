@@ -20,8 +20,10 @@ public class InputExceptionHandler {
         if(inputNumber == null) {
             throw new IllegalArgumentException("입력을 확인해주세요.");
         }
-        if(inputNumber.matches("\\d+")) {
-            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        try {
+            Integer.parseInt(inputNumber);
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
         if(Integer.parseInt(inputNumber) < 0) {
             throw new IllegalArgumentException("0 미만의 수는 입력할 수 없습니다.");
