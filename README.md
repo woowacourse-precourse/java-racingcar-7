@@ -90,42 +90,48 @@
     - [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
     - [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
-## 클래스 역할
-
-### - car
-
-#### Car
-
-#### CarFactory
-
-#### Cars
-
-#### Position
-
-### - io
-
-#### InputHandler
-
-#### InputParser
-
-#### InputValidator
-
-#### Output
-
-### - race
-
-#### Race
-
-#### RaceController
-
-#### RandomNumber
-
-#### Rule
-
-#### ExceptionMessages
-
-#### InputMessages
-
 ## 클래스 다이어그램
 
 ![classdiagram_1](https://github.com/user-attachments/assets/27f59a77-91b8-456f-bdb8-87ff5ef247d8)
+
+## 클래스 설명
+
+- ### io
+
+    - #### InputHandler
+      사용자 입력을 받아서 사용할 형태로 변환
+    - #### InputParser
+      입력값을 구분자로 나눠서 배열로 반환
+    - #### InputValidator
+      입력값 유효성 검사
+    - #### Output
+      출력 형식에 맞춰 출력
+
+- ### car
+
+    - #### Car
+      자동차가 가지고 있는 정보
+    - #### CarFactory
+      자동차 객체 생성
+    - #### Cars
+      레이스에 참가하는 자동차 리스트
+    - #### Position
+      자동차의 현재 위치
+
+- ### race
+
+    - #### Race
+      한 경기에서 이루어지는 과정
+    - #### RaceController
+      경기를 위해 필요한 것들 설정
+    - #### RandomNumber
+      무작위 숫자 발생 기능
+    - #### Rule
+      경기 규칙 판별 기능
+
+- ### messages
+
+    - #### ExceptionMessages
+      예외 메시지 enum
+    - #### InputMessages
+      입력 메시지 enum
