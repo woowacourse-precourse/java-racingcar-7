@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -19,6 +19,7 @@ public class InputView {
 
     private List<String> parseCarNames(String carNames) {
         // limit=-1 마지막 콤마 뒤 공백 포함
+        // ex) 사용자 입력이 "a,"으로 들어오는 경우 마지막 콤마 뒤를 파싱해서 빈 문자열로 구분하도록함
         return Arrays.stream(carNames.split(",", -1))
                 .toList();
     }
@@ -32,7 +33,7 @@ public class InputView {
 
     private void validateCarNameLength(String carName) {
         if (carName.length() < 1 || carName.length() > 5) {
-            throw new IllegalArgumentException("이름의 길이는 1글자 이상 5글자 이하만 가능합니다.");
+            throw new IllegalArgumentException("이름의 길이를 1글자 이상 5글자 이하로 입력해주세요.");
         }
     }
 

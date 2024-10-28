@@ -1,9 +1,11 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Player;
 import racingcar.service.RacingGame;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Controller {
     private final InputView inputView;
