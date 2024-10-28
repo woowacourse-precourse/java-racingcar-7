@@ -8,12 +8,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.math.BigInteger;
 import java.util.Scanner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class RaceGameTest {
+
+    private static ByteArrayOutputStream outputMessage;
 
     @Test
     @DisplayName("carNameList: null에 대한 예외처리 성공")
@@ -185,6 +189,29 @@ public class RaceGameTest {
                 () -> assertEquals("", car2.currentLocation),
                 () -> assertEquals(0, car2.currentDistance)
         );
+
+    }
+
+    @Test
+    @DisplayName("매 round마다 출력할 경기 현황이 제대로 출력되는지 테스트")
+    void printRoundResultTest(){
+        RaceGame raceGame = new RaceGame();
+        RacingCar car1 = new RacingCar();
+        RacingCar car2 = new RacingCar();
+        RacingCar[] carList = {car1, car2};
+        car1.carName = "pobi";
+        car2.carName = "woni";
+        car1.currentLocation = "---";
+        car1.currentDistance = 3;
+        car2.currentLocation = "-------";
+        car2.currentDistance = 7;
+
+        outputMessage = new ByteArrayOutputStream(); // OutputStream 생성
+        System.setOut(new PrintStream(outputMessage));
+
+        raceGame.printRoundResult(carList);
+
+        assertEquals("pobi : ---\nwoni : -------\n", outputMessage.toString());
 
     }
 }
