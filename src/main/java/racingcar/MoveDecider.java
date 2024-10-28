@@ -6,7 +6,6 @@ public class MoveDecider {
 
 
     public static int pickRandomNum (){
-        //System.out.println(randomNum);
         return pickNumberInRange(0, 9);
     }
 
@@ -35,7 +34,7 @@ public class MoveDecider {
 
             for (int attempt = 0; attempt < attemptCount; attempt++) {
                 generateMovementResult(movements);
-                System.out.println();
+                //System.out.println();
             }
 
             for (String movement : movements) {
@@ -57,9 +56,13 @@ public class MoveDecider {
             int randomNum = MoveDecider.pickRandomNum();
             String moved = MoveDecider.isMovable(randomNum);
             movements[i] += moved;
-            System.out.println(movements[i]);
-
+            //System.out.println(movements[i]);
         }
+
+        for (String movement : movements) {
+            System.out.println(movement);
+        }
+        System.out.println();
     }
 
 }
