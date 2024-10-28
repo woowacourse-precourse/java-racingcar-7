@@ -34,5 +34,14 @@ public class Car {
             throw new IllegalArgumentException(Error.NAME_OVER.getMessage());
         }
     }
+    public String getName() {
+        return name;
+    }
+    @Override
+    public String toString() {
+        return new StringJoiner(",", Car.class.getSimpleName()+"[","]")
+                .add("name="+name+"'")
+                .toString();
+    }
 }
 
