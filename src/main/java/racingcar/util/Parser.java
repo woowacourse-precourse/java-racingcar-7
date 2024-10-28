@@ -15,13 +15,18 @@ public class Parser {
 	}
 
 	public int stringToInt(String input) {
-		if (input == null || input.isBlank()) {
+		if (input == null || input.isEmpty()) {
 			throw new IllegalArgumentException(ErrorMessage.EMPTY_RACE_COUNT.getMessage());
 		}
 		try {
-			return Integer.parseInt(input);
+			double value = Double.parseDouble(input);
+			if (value % 1 != 0) {
+				throw new IllegalArgumentException(ErrorMessage.INVALID_RACE_COUNT.getMessage());
+			}
+			return (int) value;
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException(ErrorMessage.INVALID_RACE_COUNT.getMessage());
 		}
 	}
+
 }
