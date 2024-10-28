@@ -53,6 +53,7 @@ public class Application {
     static void moveCars(Map<String, Integer> carPositions) {
         for (String car : carPositions.keySet()) {
             int randomValue = Randoms.pickNumberInRange(0, 9);
+            // 무작위 값이 4 이상일 경우 자동차 전진
             if (randomValue >= 4) {
                 carPositions.put(car, carPositions.get(car) + 1);
             }
