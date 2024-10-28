@@ -21,28 +21,11 @@ public class Application {
         String[] nameList = textFirst.split(",");
 
         for (String name : nameList) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("5글자가 넘는 이름 입력");
-            }
-            if (name.equals(" ")) {
-                throw new IllegalArgumentException("공백인 값 입력");
-            }
-            if (name.isEmpty()) {
-                throw new IllegalArgumentException("연속으로 쉼표 2개 이상 입력");
-            }
-        }
-        int racingCnt;
-
-        try {
-            racingCnt = Integer.parseInt(textSecond);
-        }
-        catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수가 아닌 값 입력");
+            validateName(name);
         }
 
-        if (racingCnt <= 0) {
-            throw new IllegalArgumentException("0이거나 음수인 값 입력");
-        }
+        int racingCnt = parseRacingCnt(textSecond);
+        validateRacingCnt(racingCnt);
 
         final int numberOfCar = nameList.length;
 
@@ -91,5 +74,32 @@ public class Application {
             }
         }
         System.out.println("최종 우승자 : " + String.join(",", winner));
+    }
+
+    public static int parseRacingCnt(final String textSecond) {
+        try {
+            return Integer.parseInt(textSecond);
+        }
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수가 아닌 값 입력");
+        }
+    }
+
+    public static void validateName(final String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("5글자가 넘는 이름 입력");
+        }
+        if (name.equals(" ")) {
+            throw new IllegalArgumentException("공백인 값 입력");
+        }
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("연속으로 쉼표 2개 이상 입력");
+        }
+    }
+
+    public static void validateRacingCnt(final int racingCnt) {
+        if (racingCnt <= 0) {
+            throw new IllegalArgumentException("0이거나 음수인 값 입력");
+        }
     }
 }
