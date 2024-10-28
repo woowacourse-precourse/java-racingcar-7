@@ -1,6 +1,8 @@
 package racingcar.controller;
 
+import racingcar.model.CarMoveDeterminator;
 import racingcar.model.Cars;
+import racingcar.model.MoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 import java.util.Arrays;
@@ -10,6 +12,7 @@ public class GameFlow {
     
     private Cars cars;
     private int numberOfMoves;
+    MoveStrategy moveStrategy = () -> CarMoveDeterminator.determine();
 
     public GameFlow() {}
 
@@ -47,7 +50,7 @@ public class GameFlow {
     private void runRace() {
         OutputView.printRaceStartNotice();
         for (int i = 0; i < numberOfMoves; i++) {
-            cars.moveCars();
+            cars.moveCars(moveStrategy);
             OutputView.printProgress(cars.collectProgressVisualizations());
         }
     }

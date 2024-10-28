@@ -38,8 +38,7 @@ public class Cars {
         }
     }
 
-    public void moveCars() {
-        MoveStrategy moveStrategy = () -> CarMoveDeterminator.determine();
+    public void moveCars(MoveStrategy moveStrategy) {
         for (Car car : cars) {
             car.move(moveStrategy);
         }
@@ -63,6 +62,10 @@ public class Cars {
                 .filter(car -> car.getProgress() == maxProgress)
                 .map(Car::getName)
                 .collect(Collectors.toList());
+    }
+    
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
     }
 
 }
