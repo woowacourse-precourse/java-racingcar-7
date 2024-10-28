@@ -29,7 +29,7 @@ public class RacingGame {
     }
 
     // 우승자를 찾는 메소드
-    public List<String> findWinners() {
+    public List<Car> findWinners() {
         // 최대값(위치) 찾기
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
@@ -39,7 +39,6 @@ public class RacingGame {
         // 최대값에 도달한 자동차 필터링
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 }
