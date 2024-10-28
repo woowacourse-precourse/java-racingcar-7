@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Stream;
+import racingcar.domain.Input;
 import racingcar.service.constant.ExpressionFormat;
 import racingcar.service.constant.RacingRules;
 

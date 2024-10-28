@@ -8,21 +8,21 @@ import racingcar.view.constant.Request;
 public class InputRepository {
 
     private static InputRepository instance;
-    private Map<Request, Input> inputMap;
+    private final Map<String, Input> inputMap;
 
     private InputRepository() {
         this.inputMap = new HashMap<>();
     }
 
-    public void save(Request request, Input input) {
+    public void save(String request, Input input) {
         inputMap.put(request, input);
     }
 
-    public Input get(Request request) {
+    public Input get(String request) {
         return inputMap.get(request);
     }
 
-    public static InputRepository getRepo() {
+    public static InputRepository connect() {
         if (instance == null) {
             instance = new InputRepository();
         }
