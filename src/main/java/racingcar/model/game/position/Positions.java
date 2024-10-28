@@ -14,7 +14,7 @@ public class Positions {
         this.positions = new ArrayList<>(positions);
     }
 
-    public static Positions createWithNewRound(long count) {
+    public static Positions initialize(long count) {
         return new Positions(
                 LongStream.range(0, count)
                         .mapToObj(i -> new Position(0))

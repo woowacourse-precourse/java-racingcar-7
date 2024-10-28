@@ -37,7 +37,7 @@ class PositionsTest {
             int size = 1;
 
             // When
-            Positions positions = Positions.createWithNewRound(size);
+            Positions positions = Positions.initialize(size);
 
             // Then
             assertThat(positions).extracting("positions")

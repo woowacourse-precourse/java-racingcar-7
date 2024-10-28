@@ -18,13 +18,13 @@ public class RacingCar {
 
     public RacingCar(final Cars cars, final Round round) {
         this.cars = cars;
-        this.positions = Positions.createWithNewRound(cars.size());
+        this.positions = Positions.initialize(cars.size());
         this.history = new History();
         this.round = round;
     }
 
     public void start() {
-        for (int index = 0; index < round.round(); index++) {
+        for (int currentRound = 0; currentRound < round.round(); currentRound++) {
             List<Boolean> moves = cars.doMove();
             moveWithPositions(moves);
         }

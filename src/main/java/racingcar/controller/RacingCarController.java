@@ -74,8 +74,8 @@ public class RacingCarController {
         racingCar.start();
         Cars cars = racingCar.cars();
         History history = racingCar.history();
-        for (int index = 0; index < round.round(); index++) {
-            outputView.showCarPosition(cars.names(), history.at(index), stringRepeater);
+        for (int currentRound = 0; currentRound < round.round(); currentRound++) {
+            outputView.showCarPosition(cars.names(), history.at(currentRound), stringRepeater);
         }
     }
 
