@@ -9,8 +9,7 @@ import racingcar.model.car.RandomMovingCar;
 import racingcar.model.racing.Racing;
 import racingcar.model.result.RoundResult;
 import racingcar.util.CarNameParser;
-import racingcar.util.CarNameValidator;
-import racingcar.util.RaceRoundValidator;
+import racingcar.util.RaceRoundParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -38,13 +37,13 @@ public class RacingController {
     }
 
     private Racing initRacing(RacingRequestDto racingRequest) {
-        List<String> carNames = getValidatedCarNames(racingRequest.rawCarNames());
+        List<String> carNames = CarNameParser.parseCarName(racingRequest.rawCarNames());
         List<Car> cars = carNames.stream()
                 .map(RandomMovingCar::new)
                 .map(car -> (Car) car)
                 .toList();
-        int raceRound = getValidatedRaceRound(racingRequest.rawRoundsToRace());
-        return Racing.from(cars, raceRound);
+        int roundsToRace = RaceRoundParser.parseRaceRound(racingRequest.rawRoundsToRace());
+        return Racing.from(cars, roundsToRace);
     }
 
     private List<RoundResult> runRacing(Racing racing) {
@@ -54,16 +53,5 @@ public class RacingController {
             roundResults.add(RoundResult.from(racing.getParticipants().getParticipants()));
         }
         return roundResults;
-    }
-
-    private List<String> getValidatedCarNames(String rawCarNames) {
-        List<String> carNames = CarNameParser.parseCarName(rawCarNames);
-        CarNameValidator.validateCarNames(carNames);
-        return carNames;
-    }
-
-    private int getValidatedRaceRound(String rawRaceRound) {
-        RaceRoundValidator.validateRaceRound(rawRaceRound);
-        return Integer.parseInt(rawRaceRound);
     }
 }
