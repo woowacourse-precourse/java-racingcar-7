@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import racingcar.util.RandomNumberGenerator;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
@@ -10,7 +10,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean canMove() {
-        int randomValue = RandomNumberGenerator.generate(MIN, MAX);
+        int randomValue = Randoms.pickNumberInRange(MIN,MAX);
 
         return randomValue >= MOVE_THRESHOLD;
     }
