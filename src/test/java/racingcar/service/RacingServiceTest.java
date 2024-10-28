@@ -2,7 +2,8 @@ package racingcar.service;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 class RacingServiceTest {
     private final CarService carService = new CarService();
     private final RacingService racingService = new RacingService(carService);
