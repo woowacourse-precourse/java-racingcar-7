@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.util.ErrorMessages;
+
 public class Car {
     private final String name;
     private int position = 0;
@@ -11,7 +13,7 @@ public class Car {
 
     private void validateName(String name) {
         if (name.isEmpty() || name.length() > 5) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상 5자 이하여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessages.INVALID_NAME.getMessage());
         }
     }
 
