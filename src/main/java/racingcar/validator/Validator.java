@@ -5,12 +5,14 @@ import racingcar.util.Util;
 
 public class Validator {
 
+    public static final int NAME_LENGTH_LIMIT = 5;
+
     public boolean validateNames(String string) {
         if (string.isEmpty() || isSingleName(string)) {
             throw new IllegalArgumentException();
         }
         List<String> names = Util.splitByComma(string);
-        names.forEach(name -> isLimitExceed(name, 5));
+        names.forEach(name -> isLimitExceed(name, NAME_LENGTH_LIMIT));
         return true;
     }
 
