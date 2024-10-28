@@ -12,6 +12,8 @@ public class RacingGame {
     public void start() {
         inputCarNames();
         inputAttempts();
+        runRace();
+        announceWinners();
     }
 
     // 자동차 이름 입력
@@ -20,6 +22,7 @@ public class RacingGame {
         String input = Console.readLine();
         String[] carNames = input.split(",");
         for (String name : carNames) {
+            validateCarName(name.trim());
             cars.add(new Car(name.trim()));
         }
     }
