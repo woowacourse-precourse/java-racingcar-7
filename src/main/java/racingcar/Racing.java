@@ -7,7 +7,7 @@ import java.util.List;
 public class Racing {
     public void runRace(List<Car> cars) {
         for (Car car : cars) {
-            moveForwardByRandom(car);
+            car.moveForwardByRandom();
         }
     }
 
@@ -21,10 +21,6 @@ public class Racing {
         }
 
         return winners;
-    }
-
-    private void moveForwardByRandom(Car car) {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) car.forward();
     }
 
     private int getMaxForwardCount(List<Car> cars) {
