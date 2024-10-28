@@ -33,23 +33,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("우승자가 없는 경우")
-    void 모두_0점_테스트() {
-        assertRandomNumberInRangeTest(() -> {
-            run("pobi,woni", "1");
-            assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : 우승자가 없습니다.");
-        }, STOP, STOP);
-    }
-
-    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> assertThatThrownBy(() -> runException("pobi,javaji", "1")).isInstanceOf(
                 IllegalArgumentException.class));
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"가나다라마, 바사아자차", "12345, 67890"})
-    @DisplayName("예외 : 자동차 이름 5자 이상 입력")
+    @ValueSource(strings = {"가나다라마바, 사아자차카", "123456, 678900"})
+    @DisplayName("예외 : 자동차 이름 6자 이상 입력")
     void 예외_테스트_자동차이름_5자_이상(String input) {
         assertSimpleTest(
                 () -> assertThatThrownBy(() -> runException(input, "1")).isInstanceOf(IllegalArgumentException.class)

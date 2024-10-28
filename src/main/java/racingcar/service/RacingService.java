@@ -4,7 +4,9 @@ import static racingcar.constant.ErrorType.CAR_NAME_TOO_LONG;
 import static racingcar.constant.ErrorType.EMPTY_INPUT;
 import static racingcar.constant.ErrorType.INVALID_RACE_COUNT;
 import static racingcar.constant.ErrorType.NOT_ENOUGH_CAR;
-import static racingcar.util.StringSplitter.splitByComma;
+import static racingcar.util.StringUtil.isBlank;
+import static racingcar.util.StringUtil.isInteger;
+import static racingcar.util.StringUtil.splitByComma;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
@@ -68,11 +70,7 @@ public class RacingService {
 
     public void responseGameResult() {
         List<String> winners = findWinners();
-        if (winners.isEmpty()) {
-            outputView.responseGameResult("우승자가 없습니다.");
-        } else {
-            outputView.responseGameResult(String.join(", ", winners));
-        }
+        outputView.responseGameResult(String.join(", ", winners));
     }
 
     private List<String> getValidCarNames(String inputCarNames) {
@@ -90,7 +88,7 @@ public class RacingService {
     }
 
     private void validateCarName(String carName) {
-        if (carName.length() >= 5) {
+        if (carName.length() >= 6) {
             throw new IllegalArgumentException(CAR_NAME_TOO_LONG.getMessage());
         } else if (isBlank(carName)) {
             throw new IllegalArgumentException(EMPTY_INPUT.getMessage());
@@ -134,18 +132,5 @@ public class RacingService {
 
     private boolean isLastRound(int round, int inputPlayCount) {
         return round == inputPlayCount - 1;
-    }
-
-    private boolean isBlank(String input) {
-        return input == null || input.trim().isEmpty();
-    }
-
-    private boolean isInteger(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 }
