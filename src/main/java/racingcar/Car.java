@@ -8,7 +8,10 @@ public class Car {
     private int position = 0;
 
     public Car(String name) {
-        this.name = name;
+        if (name.length() > 5 || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+        }
+        this.name = name.trim();
     }
 
     public void move() {

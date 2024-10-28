@@ -16,6 +16,7 @@ public class Application {
         String[] carNames = carNamesInput.split(",");
         int tryCount = Integer.parseInt(tryCountInput);
 
+
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             cars.add(new Car(name));
