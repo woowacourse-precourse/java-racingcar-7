@@ -34,7 +34,7 @@ public class OutputView {
     private String generateRaceStatusFormat(Car car) {
         return String.format(
                 RACE_RESULT_SYMBOL,
-                car.name().getName(),
+                car.getCarName().getName(),
                 RACE_POSITION.repeat(car.getPosition())
         );
     }

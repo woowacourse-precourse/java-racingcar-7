@@ -36,7 +36,7 @@ public class Cars {
 
     public List<Name> findWinners() {
         return findSamePositionCar(getMaxPosition()).stream()
-                .map(Car::name)
+                .map(Car::getCarName)
                 .toList();
     }
 
@@ -65,12 +65,12 @@ public class Cars {
         }
 
         private static void validateParticipant(List<String> cars) {
-            if (isOne(cars)) {
+            if (isOnly(cars)) {
                 throw new RaceException(ErrorMessage.INVALID_RACE_LIST_SIZE);
             }
         }
 
-        private static boolean isOne(List<String> cars) {
+        private static boolean isOnly(List<String> cars) {
             return cars.size() == RACE_THRESHOLD;
         }
 

@@ -14,7 +14,7 @@ public class Car {
         this.position = INITIAL_VALUE;
     }
 
-    public Name name() {
+    public Name getCarName() {
         return name;
     }
 
@@ -23,12 +23,12 @@ public class Car {
     }
 
     public void process(int value) {
-        if (isFourOrMore(value)) {
+        if (isOverStopThreshold(value)) {
             position++;
         }
     }
 
-    private boolean isFourOrMore(int value) {
+    private boolean isOverStopThreshold(int value) {
         return value >= STOP_THRESHOLD;
     }
 
