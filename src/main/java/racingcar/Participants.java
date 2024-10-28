@@ -1,6 +1,7 @@
 package racingcar;
 
 import static racingcar.OutputHandler.changeLine;
+import static racingcar.OutputHandler.printBeforeRaceStart;
 import static racingcar.OutputHandler.printFinalWinner;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -30,11 +31,13 @@ public class Participants {
 
     public void raceManyTimes(int raceTimes) {
         validate(raceTimes);
+        printBeforeRaceStart();
         for (int i = 0; i < raceTimes; i++) {
             raceOneTime();
             printRaceResult();
         }
     }
+
 
     private void validate(int raceTimes) {
         if (raceTimes < 1) {
@@ -49,14 +52,10 @@ public class Participants {
 
     private List<String> findWinner() {
         return getMaxCount().map(
-                        maxMoveValue -> participantList
-                                .stream()
-                                .filter(value -> value
-                                        .getMoveCount() == maxMoveValue)
-                                .map(Participant::getName)
-                                .toList())
-                .orElse(Collections
-                        .emptyList());
+                maxMoveValue -> participantList.stream()
+                        .filter(value -> value.getMoveCount() == maxMoveValue)
+                        .map(Participant::getName).toList())
+                .orElse(Collections.emptyList());
     }
 
 

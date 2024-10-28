@@ -3,6 +3,12 @@ package racingcar;
 import java.util.List;
 
 public class OutputHandler {
+
+    public static void printBeforeRaceStart() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
     public static void printFinalWinner(List<String> winnerList) {
         System.out.println("최종 우승자 : " + String.join(",", winnerList));
     }
