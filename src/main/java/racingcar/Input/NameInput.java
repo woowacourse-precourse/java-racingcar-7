@@ -1,6 +1,9 @@
 package racingcar.Input;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class NameInput {
 
@@ -10,9 +13,27 @@ public class NameInput {
   }
 
   public boolean validateInput(String input) {
-    return Arrays.stream(input.split(","))
+    List<String> names = Arrays.stream(input.split(","))
         .map(String::trim)
-        .allMatch(name -> name.length() <= 5);
+        .toList();
+
+    if (names.size() == 0) {
+      throw new IllegalArgumentException();
+    }
+
+    if (names.stream().anyMatch(name -> name.length() == 0)) {
+      throw new IllegalArgumentException();
+    }
+
+    if (names.stream().anyMatch(name -> name.length() > 5)) {
+      throw new IllegalArgumentException();
+    }
+
+    Set<String> uniqueNames = new HashSet<>(names);
+    if (uniqueNames.size() < names.size()) {
+      throw new IllegalArgumentException();
+    }
+    return true;
   }
 
   public void setName(String input) {
