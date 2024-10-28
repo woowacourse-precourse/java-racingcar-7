@@ -27,9 +27,8 @@ class ApplicationTest extends NsTest {
     @Test
     void Car_move_테스트() {
         Car car = new Car("pobi");
-        int position = car.getPosition();
         car.move();
-        if (position == 0) {
+        if (car.getPosition() == 0) {
             assertThat(car.getPosition()).isEqualTo(0);
         } else {
             assertThat(car.getPosition()).isEqualTo(1);

@@ -58,14 +58,14 @@ public class RacingGame {
     }
 
     private String getWinner(Set<Car> playingCars) {
-        int maxPosition = playingCars.stream()
-            .mapToInt(Car::getPosition)
-            .max()
-            .orElseThrow(IllegalArgumentException::new);
+        int finalPosition = playingCars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(IllegalArgumentException::new);
         return playingCars.stream()
-            .filter(car -> car.getPosition() == maxPosition)
-            .map(Car::getName)
-            .reduce((a, b) -> a + ", " + " " + b)
-            .orElseThrow(IllegalArgumentException::new);
+                .filter(car -> car.getPosition() == finalPosition)
+                .map(Car::getName)
+                .reduce((a, b) -> a + "," + " "+ b)
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
