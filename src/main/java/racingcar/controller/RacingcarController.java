@@ -24,5 +24,7 @@ public class RacingcarController {
         racingcarService.validateNumber(trialCount);
 
         List<Car> cars = racingcarService.createCar(parsedCarName);
+
+        System.out.println("실행결과");
     }
 }
