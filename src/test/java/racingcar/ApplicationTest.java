@@ -57,6 +57,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 동점_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,june", "5");
+                    assertThat(output()).contains("최종 우승자 : pobi, woni, june");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
