@@ -18,7 +18,6 @@ repositories {
 
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.2.0'
-//    testImplementation("org.assertj:assertj-core:3.22.0")/**/
 }
 
 test {
