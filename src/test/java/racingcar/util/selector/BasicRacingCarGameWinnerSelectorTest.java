@@ -31,7 +31,7 @@ public class BasicRacingCarGameWinnerSelectorTest {
     }
 
     @Test
-    public void 우승자_다수_테스트(){
+    public void 우승자_다수_테스트() {
         assertSimpleTest(() -> {
             // given
             List<RacingCar> cars = List.of(new RacingCar("창의"), new RacingCar("상현"));
