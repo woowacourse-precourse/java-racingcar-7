@@ -20,7 +20,7 @@ public class Race {
     }
 
     private void moveCheck(Car car) {
-        if (random.getRandom() >= 4)
+        if (Random.getRandom() >= 4)
             car.move();
     }
 
