@@ -5,9 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racingcar.constants.RaceSystemConstant.*;
 import static racingcar.constants.ErrorMessage.CAR_NAME_LENGTH_ERROR_MESSAGE;
 import static racingcar.constants.ErrorMessage.RACE_TIME_RANGE_ERROR_MESSAGE;
-import static racingcar.constants.RaceSystemConstant.*;
+import static racingcar.constants.SystemMessage.RACE_WINNERS_MESSAGE;
+import static racingcar.constants.SystemMessage.START_RACE_MESSAGE;
 
 public class RaceSystem {
 
@@ -43,7 +45,7 @@ public class RaceSystem {
     }
 
     public String startRace() {
-        StringBuilder result = new StringBuilder("실행 결과\n");
+        StringBuilder result = new StringBuilder(START_RACE_MESSAGE);
 
         for (int i = 0; i < raceTime; i++) {
             StringBuilder roundResult = startRound();
@@ -53,7 +55,7 @@ public class RaceSystem {
 
         List<String> winners = findWinners();
         String raceResult = String.join(", ", winners);
-        result.append("최종 우승자 : ");
+        result.append(RACE_WINNERS_MESSAGE);
         result.append(raceResult);
 
         return result.toString();
@@ -63,7 +65,7 @@ public class RaceSystem {
         StringBuilder result = new StringBuilder();
 
         for (Car car: cars) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_LOWER_BOUND, RANDOM_NUMBER_UPPER_BOUND);
             if (randomNumber >= MIN_MOVE_CONDITION) {
                 car.move();
             }
