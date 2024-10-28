@@ -8,38 +8,39 @@ import java.util.Map;
 import java.util.Objects;
 
 public class CarRace {
+    private final InputView inputView = new InputView();
     private final StringBuilder sb = new StringBuilder();
-    private final Map<String, Car> carRaceList;
+
+    private final Map<String, Car> carMap;
     private final Long roundNumber;
 
     public CarRace() {
-        InputView inputView = new InputView();
-        carRaceList = inputView.getCarList();
+        carMap = inputView.getCarMap();
         roundNumber = inputView.getRoundNumber();
     }
 
     public void run() {
-        carRace();
-        List<String> winnerList = getWinnerList(getMaxDistance());
-        print(winnerList);
+        performRace();
+        printResult(getWinnerList());
     }
 
-    protected void carRace() {
+    protected void performRace() {
         sb.append("\n").append("실행결과").append("\n");
 
         for (long i = 0; i < roundNumber; i++) {
-            carRaceList.forEach((name, car) -> {
-                car.moveOrNot();
+            carMap.forEach((name, car) -> {
+                car.updateDistance();
                 sb.append(car);
             });
             sb.append("\n");
         }
     }
 
-    private List<String> getWinnerList(Long maxDistance) {
+    private List<String> getWinnerList() {
         List<String> winnerList = new ArrayList<>();
+        Long maxDistance = getMaxDistance();
 
-        carRaceList.forEach((name, car) -> {
+        carMap.forEach((name, car) -> {
             if (Objects.equals(car.getDistance(), maxDistance)) {
                 winnerList.add(name);
             }
@@ -49,7 +50,7 @@ public class CarRace {
     }
 
     private Long getMaxDistance() {
-        return Collections.max(carRaceList.values(), new Comparator<Car>() {
+        return Collections.max(carMap.values(), new Comparator<Car>() {
             @Override
             public int compare(Car o1, Car o2) {
                 return Long.compare(o1.getDistance(), o2.getDistance());
@@ -57,11 +58,12 @@ public class CarRace {
         }).getDistance();
     }
 
-    protected void print(List<String> winnerList) {
+    protected void printResult(List<String> winnerList) {
         sb.append("최종 우승자 : ");
         for (String name : winnerList) {
             sb.append(name).append(" ,");
         }
+
         sb.setLength(sb.length() - 1);
         System.out.println(sb.toString().trim());
     }
