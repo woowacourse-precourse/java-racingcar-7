@@ -67,7 +67,17 @@ class ApplicationTest extends NsTest {
                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
         );
     }
-    
+
+    @Test
+    void 예외_테스트_빈_이름_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 빈 문자열일 수 없습니다.")
+        );
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

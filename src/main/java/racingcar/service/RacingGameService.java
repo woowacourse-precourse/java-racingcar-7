@@ -12,7 +12,7 @@ public class RacingGameService {
         validateCarNames(carNames);
         int parsedRounds = parseRounds(rounds);
         validateRounds(parsedRounds);
-        
+
         List<Car> cars = createCars(carNames);
         racingGame = new RacingGame(cars, parsedRounds);
     }
@@ -40,6 +40,8 @@ public class RacingGameService {
             String trimmedName = carName.trim();
             if (trimmedName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            } else if (trimmedName.length() <= 0) {
+                throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
             }
         }
     }
