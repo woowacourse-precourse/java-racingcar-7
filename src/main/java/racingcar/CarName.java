@@ -8,6 +8,11 @@ public class CarName {
         this.carName = carName;
     }
 
+    public CarName(CarName carName) {
+        isNameLongerThanFive(carName.carName);
+        this.carName = carName.carName;
+    }
+
     public Car createCar() {
         return new Car(this.carName);
     }

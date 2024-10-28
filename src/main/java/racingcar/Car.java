@@ -18,7 +18,7 @@ public class Car {
     public Car move() {
         this.carPosition.updateCurrentPosition();
 
-        return new Car(this.carName, this.carPosition);
+        return new Car(new CarName(this.carName), new CarPosition(this.carPosition));
     }
 
     public boolean isAheadOrEqual(Car otherCar) {

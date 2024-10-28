@@ -26,11 +26,13 @@ class CarsTest {
         assertRandomNumberInRangeTest(() -> {
             Cars cars = createGivenCars();
 
-            cars.moveCars();
-            cars.moveCars();
-            List<Car> racingCars = cars.moveCars();
+            List<Car> firstRacingCars = cars.moveCars();
+            List<Car> secondRacingCars = cars.moveCars();
+            List<Car> thirdRacingCars = cars.moveCars();
 
-            assertCarsAtPositions(racingCars, 3, 1);
+            assertCarsAtPositions(firstRacingCars, 1, 0);
+            assertCarsAtPositions(secondRacingCars, 2, 0);
+            assertCarsAtPositions(thirdRacingCars, 3, 1);
         }, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD);
     }
 
