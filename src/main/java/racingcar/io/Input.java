@@ -9,6 +9,7 @@ public class Input {
     }
 
     public int readNumberOfMove() {
-        return 0; // 시도할 횟수 반환
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Integer.parseInt(Console.readLine());
     }
 }
