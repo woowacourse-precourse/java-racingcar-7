@@ -6,9 +6,7 @@ import java.util.List;
 public class InputParser {
 
   public static List<String> parseCarNames(String input) {
-    return Arrays.stream(input.split(","))
-        .map(String::trim)
-        .toList();
+    return Arrays.stream(input.split(",")).map(String::trim).toList();
   }
 
   public static int parseNumber(String input) {
