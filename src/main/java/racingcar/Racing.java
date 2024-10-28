@@ -59,7 +59,7 @@ public class Racing {
 
     private void validateCarNameLength(String[] carNames) {
         for (String name : carNames) {
-            if (name.length() >= 6) {
+            if (name.length() == 0 || name.length() >= 6) {
                 throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getMessage());
             }
         }
