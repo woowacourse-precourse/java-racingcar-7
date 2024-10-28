@@ -2,10 +2,10 @@ package racingcar;
 
 import static racingcar.ExceptionMessages.*;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class GameService {
     private Game game;
@@ -19,11 +19,9 @@ public class GameService {
     }
 
     public List<RacingCar> createRacingCars(List<String> carNames) {
-        List<RacingCar> racingCars = new ArrayList<>();
-        for (String name : carNames) {
-            racingCars.add(RacingCar.of(name));
-        }
-        return racingCars;
+        return carNames.stream()
+                .map(RacingCar::of)
+                .collect(Collectors.toList());
     }
 
     public List<RacingCar> executeLogic() {
@@ -45,13 +43,9 @@ public class GameService {
 
         Integer maxScore = firstWinner.get().getScore();
 
-        List<String> winners = new ArrayList<>();
-
-        for (RacingCar racingCar : game.getRacingCars()) {
-            if (racingCar.getScore().equals(maxScore)) {
-                winners.add(racingCar.getName());
-            }
-        }
-        return winners;
+        return game.getRacingCars().stream()
+                .filter(racingCar -> racingCar.getScore().equals(maxScore))
+                .map(RacingCar::getName)
+                .collect(Collectors.toList());
     }
 }
