@@ -49,4 +49,11 @@ class CarName {
     public int hashCode() {
         return Objects.hash(name);
     }
+
+    @Override
+    public String toString() {
+        return "CarName{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
