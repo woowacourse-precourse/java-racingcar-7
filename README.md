@@ -26,14 +26,14 @@ n개의 자동차 이름들* 을 의미합니다.
 *10진수 양수 정수 문자열* 을 의미합니다.
 
 - [x] <kbd>⏎ Enter</kbd> 누를 때까지 입력 받음
-- [ ] 양수 정수만 허용
+- [x] 양수 정수만 허용
 - [x] 10진수만 허용
 - [x] leading/trailing whitespaces는 `strip()`하여 너그럽게 허용
 
 ### 계산 및 계산 경과 출력 처리
 
-- [ ] 0~9 사이의 랜덤한 정수를 뽑아(roll) 4 이상일 경우 전진
-- [ ] cars의 모든 entry에 대해 roll 후 현재 상태를 visualize
+- [x] 0~9 사이의 랜덤한 정수를 뽑아(roll) 4 이상일 경우 전진
+- [x] cars의 모든 entry에 대해 roll 후 현재 상태를 visualize
 
 ### 메시지 처리
 
@@ -44,11 +44,11 @@ n개의 자동차 이름들* 을 의미합니다.
 - 일반 메시지
   - [x] `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n`
   - [x] `시도할 횟수는 몇 회인가요?\n`
-  - [ ] `실행 결과\n`
-  - [ ] `{carName} : {distanceBar}\n`
+  - [x] `실행 결과\n`
+  - [x] `{carName} : {distanceBar}\n`
   - [ ] `\n최종 우승자 : {String.join(", ", winnerCars)}`
 - 올바른 행동을 유도하는 예외 메시지
-  - [ ] 모든 예외 메시지에 접두사 `[ERROR] ` 표시
+  - [x] 모든 예외 메시지에 접두사 `[ERROR] ` 표시
   - [x] 길이 초과 시 표시
   - [x] 이름 중복 시 표시
   - [x] 참가자 비어있을 시 표시
@@ -71,7 +71,7 @@ n개의 자동차 이름들* 을 의미합니다.
   - [ ] JUnit 5와 AssertJ를 이용한 테스트 구현
   - `camp.nextstep.edu.missionutils`에서 제공하는 API로 입력 및 랜덤 처리
     - [x] 입력은 `Console.readLine()` 사용
-    - [ ] 랜덤은 `Randoms.pickNumberInRange()` 사용
+    - [x] 랜덤은 `Randoms.pickNumberInRange()` 사용
 - **<1주차 공통 피드백>** 관련
   - Git 관련
     - [ ] 기본적인 Git 명령어 숙지

@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.text.MessageFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -57,14 +58,29 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] You must enter positive integer.");
         }
 
+        // roll and output results
+        System.out.println("실행 결과");
+        for (int i = 0; i < iterationNumber; i++) {
+            // dice rolling
+            for (Map.Entry<String, Integer> car : cars.entrySet()) {
+                // condition
+                if (Randoms.pickNumberInRange(0, 9) > 3) {
+                    car.setValue(car.getValue() + 1);
+                }
+            }
+
+            // output
+            for (Map.Entry<String, Integer> car : cars.entrySet()) {
+                String distanceBar = "-".repeat(car.getValue());
+                System.out.println(car.getKey() + " : " + distanceBar);
+            }
+            System.out.println();
+        }
+
+        // TODO: Output final winner
+
         // Temporary output
         System.out.println(cars);
         System.out.println(iterationNumber);
-
-        // TODO: Process iterationNumberRaw
-
-        // TODO: Roll and output middle results
-
-        // TODO: Output final winner
     }
 }
