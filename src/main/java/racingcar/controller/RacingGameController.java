@@ -24,7 +24,7 @@ public class RacingGameController {
         RacingGame racingGame = racingGameService.initializeRace(carNames, attempts);
 
         outputView.printRaceResultPrefix();
-        List<List<CarLocation>> raceHistory = racingGameService.runRace(racingGame);
+        List<List<CarLocation>> raceHistory = racingGameService.runRaceRounds(racingGame);
 
         raceHistory.forEach(outputView::printRaceProcess);
 
