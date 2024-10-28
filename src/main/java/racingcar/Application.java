@@ -16,7 +16,7 @@ public class Application {
         carNamesLength(splitCarNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int trialCounts = getTrialCount(Integer.parseInt(Console.readLine()));
+        String trialCounts = Console.readLine();
 
         List<Integer> carMovementCounts = new ArrayList<>();
 
@@ -26,7 +26,7 @@ public class Application {
 
         System.out.println("실행 결과");
         // 각 라운드별 "-" 출력
-        for (int i = 1; i <= trialCounts; i++) {
+        for (int i = 1; i <= Integer.parseInt(trialCounts); i++) {
             round(splitCarNames, carMovementCounts);
             System.out.println(); // 각 라운드 후 빈 줄 추가
         }
@@ -55,8 +55,17 @@ public class Application {
         }
     }
 
-    public static int getTrialCount(int trialCounts) {
-        return trialCounts;
+    public static int getTrialCount(String trialCounts) {
+
+        if (trialCounts == null || trialCounts.isEmpty()) {
+            throw new IllegalArgumentException("시도 횟수가 입력되지 않았습니다.");
+        }
+
+        try {
+            return Integer.parseInt(trialCounts);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자를 입력해야 합니다.");
+        }
     }
 
     // 주어진 라운드에 따라 '-' 출력
