@@ -1,7 +1,8 @@
 package racingcar;
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -17,8 +18,17 @@ class Car{
     public String getNow(){
         return this.name;
     }
+
+    public void move(int value){
+        if(value>=4){
+            now++;
+        }
+    }
 }
 public class Application {
+    private static List<Car> cars = new ArrayList<>();
+    private static int count = 0;
+
     public static void checkName(List<String> names){
         // 예외처리 : 자동차 이름이 같을 경우
         Set<String> uniqueNames = Set.copyOf(names);
@@ -34,6 +44,18 @@ public class Application {
         }
     }
 
+    public static void addCars(List<String> names){
+        for(String name: names){
+            cars.add(new Car(name));
+        }
+    }
+
+    public static void playTurn(){
+        for(Car car:cars){
+            car.move(Randoms.pickNumberInRange(0,9));
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -42,11 +64,20 @@ public class Application {
         List<String> carNames = List.of(Console.readLine().split(","));
         checkName(carNames);  // 예외처리
 
-
         // 2. 시도할 횟수 입력
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int count = Integer.parseInt(Console.readLine());
+        count = Integer.parseInt(Console.readLine());
 
+        System.out.println("\n실행결과");
+
+        // 3. 경주 시행
+        addCars(carNames);
+        while(count>0){
+            playTurn();
+            count--;
+        }
+
+        // 4. 출력
 
     }
 }
