@@ -12,7 +12,6 @@ public class ConsoleInputView implements InputView {
     @Override
     public String inputAttemptCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String attemptCount = Console.readLine();
-        return attemptCount;
+        return Console.readLine();
     }
 }
