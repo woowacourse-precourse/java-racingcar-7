@@ -3,12 +3,8 @@ package racingcar.controller;
 import java.util.List;
 import java.util.function.Function;
 import racingcar.domain.Input;
-import racingcar.domain.Registration;
-import racingcar.service.constant.ExpressionFormat;
 import racingcar.service.input.InputService;
-import racingcar.service.input.Validation;
 import racingcar.view.UserInput;
-import racingcar.view.constant.Request;
 
 public class RegistrationController {
 
@@ -29,5 +25,9 @@ public class RegistrationController {
     private Input rawInput(String message) {
         String input = UserInput.request(message);
         return inputService.receive(input);
+    }
+
+    private String validatedInput(Input userInput, Function<String, String> validation) {
+        return validation.apply(userInput.getInput());
     }
 }
