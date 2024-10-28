@@ -59,6 +59,9 @@ public class RacingGame {
             if (name.matches(".*\\d.*")) {
                 throw new IllegalArgumentException("자동차 이름에는 숫자를 포함할 수 없습니다.");
             }
+            if (!name.matches("^[a-zA-Z]+$")) {
+                throw new IllegalArgumentException("자동차 이름에는 특수문자를 포함할 수 없습니다.");
+            }
         }
     }
 
