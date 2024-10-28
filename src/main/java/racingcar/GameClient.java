@@ -16,6 +16,10 @@ public class GameClient {
     public void run() {
         addRacingCarsToRacingCarList();
         moveCarsForCount();
+        printWinners();
+    }
+
+    private void printWinners() {
         List<String> winners = racingCarList.findWinners();
         OutputView.printWinners(winners);
     }
