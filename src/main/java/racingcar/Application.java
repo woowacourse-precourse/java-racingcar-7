@@ -32,18 +32,20 @@ public class Application {
     //입력문 기능으로 빼기
     private static List<Car> inputName() {
         String[] carNames = Console.readLine().split(",");
+        validateName(carNames);
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
-            name = name.trim();
-            validateName(name);
-            cars.add(new Car(name));
+            cars.add(new Car(name.trim()));
         }
         return cars;
     }
     //검증문도 빼기
-    private static void validateName(String name) {
-        if(name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다. ");
+    private static void validateName(String[] carNames) {
+        for (String name : carNames) {
+            name = name.trim();
+            if(name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다. ");
+            }
         }
     }
 
