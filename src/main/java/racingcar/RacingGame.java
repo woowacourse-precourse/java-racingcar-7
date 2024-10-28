@@ -60,6 +60,6 @@ public class RacingGame {
         Car winner = cars.stream().max(Comparator.comparingInt(Car::getDistance)).get();
         List<String> winners = cars.stream().filter(c -> c.getDistance() >= winner.getDistance()).map(c -> c.getName())
                 .collect(Collectors.toList());
-        System.out.println(FINAL_WINNER + String.join(", ", winners));
+        System.out.print(FINAL_WINNER + String.join(", ", winners));
     }
 }
