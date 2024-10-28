@@ -17,7 +17,7 @@ public class CarRacing {
 
         RaceOutput.println();
         RaceOutput.println(RACING_START_MESSAGE);
-        while (raceTime.isRemaining()) {
+        while (raceTime.isNotOver()) {
             cars.move();
             RaceOutput.printProgress(cars);
             RaceOutput.println();

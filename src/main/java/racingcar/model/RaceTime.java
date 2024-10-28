@@ -23,7 +23,7 @@ public class RaceTime {
         }
     }
 
-    public boolean isRemaining() {
+    public boolean isNotOver() {
         return this.remainingTime-- > 0;
     }
 }
