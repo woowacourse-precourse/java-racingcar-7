@@ -34,6 +34,20 @@ class OutputHandlerTest {
         output.reset();
     }
 
+    @DisplayName("자동차 입력 안내 메시지를 출력한다.")
+    @ParameterizedTest
+    @EnumSource(names = {"CAR_INPUT_NAVIGATE"})
+    void testShowCarInputMessage(OutputMessage outputMessage) {
+        // given
+        String messageTemplate = outputMessage.getTemplate();
+
+        // when
+        outputHandler.showCarInputMessage();
+
+        // then
+        assertThat(output.toString().replace("\n", "").strip()).isEqualTo(messageTemplate);
+    }
+
     @DisplayName("실행 결과 메시지를 출력한다.")
     @ParameterizedTest
     @EnumSource(names = {"RACE_RESULT_NAVIGATE"})
