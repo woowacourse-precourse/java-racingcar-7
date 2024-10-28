@@ -214,4 +214,54 @@ public class RaceGameTest {
         assertEquals("pobi : ---\nwoni : -------\n", outputMessage.toString());
 
     }
+
+    @Test
+    @DisplayName("최종 우승자를 찾기 - 우승자 1명")
+    void findWinningCarsTest1(){
+        RaceGame raceGame = new RaceGame();
+        RacingCar car1 = new RacingCar();
+        RacingCar car2 = new RacingCar();
+        RacingCar car3 = new RacingCar();
+        RacingCar car4 = new RacingCar();
+        RacingCar[] carList = {car1, car2, car3, car4};
+        car1.carName = "pobi";
+        car2.carName = "woni";
+        car3.carName = "jun";
+        car4.carName = "lisa";
+        car1.currentDistance = 3;
+        car2.currentDistance = 7;
+        car3.currentDistance = 10;
+        car4.currentDistance = 7;
+        String[] winners;
+        String[] a = new String[]{"jun"};
+
+        winners = raceGame.findWinningCars(carList);
+
+        assertEquals(String.join("",a), String.join("",winners));
+    }
+
+    @Test
+    @DisplayName("최종 우승자를 찾기 - 우승자 2명")
+    void findWinningCarsTest2(){
+        RaceGame raceGame = new RaceGame();
+        RacingCar car1 = new RacingCar();
+        RacingCar car2 = new RacingCar();
+        RacingCar car3 = new RacingCar();
+        RacingCar car4 = new RacingCar();
+        RacingCar[] carList = {car1, car2, car3, car4};
+        car1.carName = "pobi";
+        car2.carName = "woni";
+        car3.carName = "jun";
+        car4.carName = "lisa";
+        car1.currentDistance = 3;
+        car2.currentDistance = 7;
+        car3.currentDistance = 10;
+        car4.currentDistance = 10;
+        String[] winners;
+        String[] a = new String[]{"jun", "lisa"};
+
+        winners = raceGame.findWinningCars(carList);
+
+        assertEquals(String.join("",a), String.join("",winners));
+    }
 }
