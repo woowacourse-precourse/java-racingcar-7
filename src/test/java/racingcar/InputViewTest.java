@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.view.InputView;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.validator;
 
 public class InputValidator {
     private static final int MAX_NAME_LENGTH = 5;
