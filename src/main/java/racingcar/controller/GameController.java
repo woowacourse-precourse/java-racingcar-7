@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.HashSet;
+import java.util.Set;
 import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -16,11 +18,26 @@ public class GameController {
 
     private List<Car> initCars() {
         String[] carNames = InputView.getCarNames();
+        validateCarNames(carNames);
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             cars.add(new Car(name));
         }
         return cars;
+    }
+
+    private void validateCarNames(String[] carNames){
+        Set<String> nameSet = new HashSet<>();
+        for (String name : carNames){
+            if(nameSet.contains(name)){
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            }
+            nameSet.add(name);
+        }
+
+        if (nameSet.isEmpty()) {
+            throw new IllegalArgumentException("자동차는 최소 1대 이상이어야 합니다.");
+        }
     }
 
     private void playRace(List<Car> cars) {
