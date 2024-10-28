@@ -37,8 +37,6 @@ public class IOManager {
     static private void carNameInputCheck(String input) {
         String[] carNames = input.split(",");
 
-
-
         for (String name : carNames) {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("이름은 5글자 이하로 입력해주세요.");

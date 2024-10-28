@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -7,7 +8,9 @@ public class CarManager {
     private static CarManager instance;
     private List<Car> carList;
 
-    private CarManager() {}
+    private CarManager() {
+        carList = new ArrayList<>();
+    }
 
     public static CarManager getInstance() {
         if (instance == null) {
