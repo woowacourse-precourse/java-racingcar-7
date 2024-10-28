@@ -6,7 +6,9 @@ import racingcar.model.Car;
 import racingcar.model.CarList;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CarService {
     private final CarList carList = new CarList(new ArrayList<>());
@@ -16,9 +18,20 @@ public class CarService {
 
     public void createGame(String carNames) {
         splitCarNames(carNames);
+        checkForDuplicateCarNames(this.carNames);
+
         for (String carName : this.carNames) {
             validateCarNames(carName);
             carList.addCar(new Car(carName, 0));
+        }
+    }
+
+    public void checkForDuplicateCarNames(String[] carNames) {
+        Set<String> uniqueNames = new HashSet<>();
+        for (String name : carNames) {
+            if (!uniqueNames.add(name)) {
+                throw new IllegalArgumentException(Constants.DUPLICATE_CAR_NAME);
+            }
         }
     }
 

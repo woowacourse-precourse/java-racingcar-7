@@ -5,4 +5,5 @@ public class Constants {
     public static final String INVALID_MOVE_COUNT = "시도할 횟수는 1 이상이어야 합니다.";
     public static final String INVALID_CAR_NAME_EMPTY = "자동차 이름은 공백일 수 없습니다.";
     public static final String INVALID_MOVE_COUNT_NUMBER = "시도할 횟수는 숫자여야 합니다.";
+    public static final String DUPLICATE_CAR_NAME = "자동차 이름이 중복될 수 없습니다.";
 }
