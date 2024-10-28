@@ -7,8 +7,11 @@ public class OutputView {
 
     private static final String MOVE_COUNT = "-";
 
+    public void printResultStatement() {
+        System.out.println("\n실행 결과");
+    }
+
     public void printRoundResult(List<Car> carList) {
-        System.out.println("실행 결과");
         carList.forEach(car ->
                 System.out.println(car.getName()
                         + " : "
