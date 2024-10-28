@@ -17,10 +17,14 @@ public class RacingGame {
         this.tryCount = tryCount;
     }
 
+    protected int getRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
     public void randomMove() {
         for (int i = 0; i < tryCount; i++) {
             for (String car : carNameAndScore.keySet()) {
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                int randomNumber = getRandomNumber();
 
                 if (randomNumber >= 4) {
                     carNameAndScore.put(car, carNameAndScore.get(car) + 1);
@@ -41,7 +45,7 @@ public class RacingGame {
         System.out.println();
     }
 
-    public void printWinner() {
+    public List<String> printWinner() {
         int maxScore = Collections.max(carNameAndScore.values());
 
         List<String> winners = new ArrayList<>();
@@ -51,5 +55,6 @@ public class RacingGame {
             }
         }
         System.out.println("최종 우승자 : " + String.join(", ", winners));
+        return winners;
     }
 }
