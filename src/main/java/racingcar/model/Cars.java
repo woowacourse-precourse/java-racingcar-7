@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.constant.ErrorMessages;
-import racingcar.util.RandomUtil;
+import racingcar.util.DefaultRandomGenerator;
+import racingcar.util.RandomGenerator;
 
 public class Cars {
     private static final String DELIMITER_COMMA = ",";
@@ -12,14 +13,20 @@ public class Cars {
     private static final int MOVE_THRESHOLD = 4;
 
     private final List<Car> carList;
+    private final RandomGenerator randomGenerator;
 
     public Cars(String carNames) {
+        this(carNames, new DefaultRandomGenerator());
+    }
+
+    public Cars(String carNames, RandomGenerator randomGenerator) {
         List<Car> tempCarList = convertCarNamesToList(carNames).stream()
                 .map(Car::new)
                 .toList();
         validateListSize(tempCarList);
         validateNoDuplicateNames(tempCarList);
         this.carList = tempCarList;
+        this.randomGenerator = randomGenerator;
     }
 
     private List<String> convertCarNamesToList(String carNames) {
@@ -43,7 +50,7 @@ public class Cars {
 
     public void tryMoveAll() {
         carList.forEach(car -> {
-            int randomNumber = RandomUtil.generateRandomNumber();
+            int randomNumber = randomGenerator.generate();
             if (isMovable(randomNumber)) {
                 car.move();
             }
