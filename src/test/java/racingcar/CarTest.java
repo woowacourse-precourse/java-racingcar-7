@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarTest {
+    private static int INITIAL_POSITION = 0;
     @Test
     public void 자동차이름검증_빈문자열_예외발생() {
         String carName = "";
@@ -43,33 +44,32 @@ class CarTest {
     }
 
     @Test
-    public void 자동차가_앞으로_움직일때_위치가증가한다() {
-        Car car = new Car("자동차");
+    public void 자동차_전진_성공() {
+        Car car = moveUntilPositionIncreased();
 
-        int initialPosition = car.getPosition();
-
-        while (car.getPosition() == initialPosition) {
-            car.forward(); // 위치가 증가할 때까지 계속 전진
-        }
-
-        if (initialPosition < 9) {
-            assertThat(car.getPosition()).isGreaterThan(initialPosition);
+        if (car.getPosition() < 9) {
+            assertThat(car.getPosition()).isGreaterThan(INITIAL_POSITION);
         }
     }
 
     @Test
-    public void 위치를_표시할때_정상적인_문자열을_반환한다() {
-        Car car = new Car("자동차");
-
-        int initialPosition = car.getPosition();
-
-        while (car.getPosition() == initialPosition) {
-            car.forward(); // 위치가 증가할 때까지 계속 전진
-        }
+    public void 자동차_위치_문자열_변환_성공() {
+       Car car = moveUntilPositionIncreased();
 
         PositionSign positionSign = car.getPositionSign();
 
         assertThat(positionSign.toString()).contains("-");
         assertThat(positionSign.toString().length()).isGreaterThan(0);
+    }
+
+    private Car moveUntilPositionIncreased(){
+        Car car = new Car("pobi");
+
+        int initialPosition = car.getPosition();
+
+        while (car.getPosition() == initialPosition) {
+            car.forward(); // 위치가 증가할 때까지 계속 전진
+        }
+        return car;
     }
 }
