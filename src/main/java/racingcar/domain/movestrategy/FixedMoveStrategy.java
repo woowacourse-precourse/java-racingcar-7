@@ -26,12 +26,12 @@ public class FixedMoveStrategy implements MoveStrategy {
         }
     }
 
-    private boolean canMove(int inputNumber) {
-        return inputNumber >= MINIMUM_MOVE_CONDITION && inputNumber <= END_INCLUSIVE;
+    private boolean canMove(int number) {
+        return number >= MINIMUM_MOVE_CONDITION && number <= END_INCLUSIVE;
     }
 
-    private void validateRandomNumber(int inputNumber) {
-        if (inputNumber < START_INCLUSIVE || inputNumber > END_INCLUSIVE) {
+    private void validateRandomNumber(int number) {
+        if (number < START_INCLUSIVE || number > END_INCLUSIVE) {
             throw new IllegalArgumentException(NUMBER_OUT_OF_RANGE.formatMessage(START_INCLUSIVE, END_INCLUSIVE));
         }
     }
