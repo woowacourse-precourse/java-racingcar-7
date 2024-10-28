@@ -12,6 +12,7 @@ class RacingGameTest {
     private static final int MOVING_FORWARD = 4;
 
     private RacingGame racingGame;
+
     @BeforeEach
     void setUp() {
         racingGame = new RacingGame();

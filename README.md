@@ -64,6 +64,7 @@
     - [x] 각 라운드마다 전진한 자동차의 이름과 위치를 출력하는 기능
     - [x] 최종 라운드가 끝난 후 가장 많이 전진한 자동차(들)를 출력하는 기능
     - [x] 경주 횟수는 숫자로 입력받아야 하며, 잘못된 값이 들어오면 예외를 발생하는 기능
+    - [x] 자동차 이름이 빈 문자열인 경우 예외를 발생하는 기능
 
 <br />
 
@@ -77,6 +78,7 @@
 # 테스트
 - **테스트 코드**
 ```java
+/* ApplicationTest.java */
 @Test
 void 기능_테스트() {
     assertRandomNumberInRangeTest(
@@ -132,10 +134,95 @@ void 공동_우승자_발생_테스트() {
 }
 ```
 
+```java
+/* CarTest.java */
+@Test
+void 자동차_이름_5자_초과_예외_테스트() {
+    assertThatThrownBy(() -> new Car("abcdef"))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("자동차 이름은 5자 이하여야 합니다.");
+}
+
+@Test
+void 자동차_이름_빈문자열_예외_테스트() {
+    assertThatThrownBy(() -> new Car(""))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("자동차 이름은 빈 문자열일 수 없습니다.");
+}
+
+@Test
+void 자동차_전진_테스트() {
+    Car car = new Car("pobi");
+
+    Assertions.assertRandomNumberInRangeTest(
+            () -> {
+                car.move();
+                assertThat(car.getPosition()).isEqualTo(1); // 전진했으므로 position이 1
+            },
+            MOVING_FORWARD // 전진 조건을 만족하는 값 (4 이상)
+    );
+}
+
+@Test
+void 자동차_멈춤_테스트() {
+    Car car = new Car("pobi");
+
+    Assertions.assertRandomNumberInRangeTest(
+            () -> {
+                car.move();
+                assertThat(car.getPosition()).isEqualTo(0); // 멈췄으므로 position이 그대로
+            },
+            STOP // 전진 조건을 만족하지 않는 값 (4 미만)
+    );
+}
+```
+
+```java
+/* RacingGameTest.java */
+@Test
+void 자동차_초기화_테스트() {
+    String[] carNames = {"pobi", "woni", "jun"};
+    racingGame.initCars(carNames);
+
+    List<Car> cars = racingGame.getCars();
+    assertThat(cars).hasSize(3);
+    assertThat(cars.get(0).getName()).isEqualTo("pobi");
+    assertThat(cars.get(1).getName()).isEqualTo("woni");
+    assertThat(cars.get(2).getName()).isEqualTo("jun");
+}
+
+@Test
+void 라운드_진행_테스트() {
+    String[] carNames = {"pobi", "woni"};
+    racingGame.initCars(carNames);
+
+    racingGame.play();
+    assertThat(racingGame.getCars().get(0).getPosition()).isGreaterThanOrEqualTo(0);
+}
+
+@Test
+void 우승자_찾기_테스트() {
+    String[] carNames = {"pobi", "woni", "jun"};
+    racingGame.initCars(carNames);
+
+    // 특정 값으로 전진 조건을 만족하게 설정하여 pobi와 woni가 한 칸씩 전진
+    Assertions.assertRandomNumberInRangeTest(
+            () -> {
+                racingGame.getCars().get(0).move(); // pobi 전진
+                racingGame.getCars().get(1).move(); // woni 전진
+                List<Car> winners = racingGame.findWinners();
+
+                assertThat(winners).extracting(Car::getName).contains("pobi", "woni");
+            },
+            MOVING_FORWARD // 전진 조건을 만족하는 값 (4 이상)
+    );
+}
+```
+
 
 > 아래의 출력 결과처럼 테스트가 잘 됐음을 알 수 있다.
 
-<img src="https://github.com/user-attachments/assets/afa23828-2b1b-4200-992b-271fd70546b0" width="700;" alt="">
+<img src="https://github.com/user-attachments/assets/2f8da3d9-e726-4ac9-b53c-bfcc7ff74686" width="700;" alt="">
 
 <br />
 
