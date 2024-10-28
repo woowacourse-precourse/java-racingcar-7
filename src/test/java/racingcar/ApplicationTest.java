@@ -84,7 +84,6 @@ class ApplicationTest extends NsTest {
         int randomCarIndex = racingGame.pickRandomCar();
         assertThat(randomCarIndex).isBetween(0, racingGame.getCarInfoList().size() - 1);
     }
-    // 출력 결과 테스트 ----------------------------------------------
 
     // 통합 테스트 ----------------------------------------------
     @Test
