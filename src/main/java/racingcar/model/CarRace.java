@@ -8,7 +8,10 @@ public class CarRace {
     private Long currentTryCnt;
     private final Long totalTryCnt;
 
-    public CarRace(List<String> names, Long totalTryCnt){
+    public CarRace(RaceInfo raceInfo){
+        List<String> names = raceInfo.getNames();
+        Long totalTryCnt = raceInfo.getTotalTryCnt();
+
         this.cars = new ArrayList<>();
 
         for (String name : names) {
