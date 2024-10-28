@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    private static final int MAX_NAMES_COUNT = 25;
+    private static final int MIN_COUNT = 1;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try{
@@ -17,6 +19,7 @@ public class Application {
         String input = getCarNamesInput().replaceAll(" ","");
         validateEmptyInput(input);
         String[] names = splitWithComma(input);
+        validateNamesCount(names);
     }
 
     public static void printStartMessage() {
@@ -39,5 +42,11 @@ public class Application {
 
     public static String[] splitWithComma(String input) {
         return input.split(",");
+    }
+
+    public static void validateNamesCount(String[] names) {
+        if(names.length > MAX_NAMES_COUNT || names.length < MIN_COUNT) {
+            throw new IllegalArgumentException("가능한 자동차 수는 최소 1대, 최대 25대입니다.");
+        }
     }
 }
