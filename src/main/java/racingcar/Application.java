@@ -7,13 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        String[] carNames = getCarNames();
-        int attempts = getNumberOfAttempts();
-        List<StringBuilder> raceResults = initializeRaceResults(carNames);
+    private static final int MAX_NAME_LENGTH = 5;
 
-        runRace(attempts, carNames, raceResults);
-        determineWinners(carNames, raceResults);
+    public static void main(String[] args) {
+        try {
+            String[] carNames = getCarNames();
+            int attempts = getNumberOfAttempts();
+            List<StringBuilder> raceResults = initializeRaceResults(carNames);
+
+            runRace(attempts, carNames, raceResults);
+            determineWinners(carNames, raceResults);
+
+        } catch(IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
     private static void runRace(int attempts, String[] carNames, List<StringBuilder> raceResults) {
@@ -63,7 +70,19 @@ public class Application {
     private static String[] getCarNames(){
         System.out.println("경주할 자동차 이름(이름은 쉼표(,) 기준으로 구분)");
         String carNamesInput = Console.readLine();
-        return carNamesInput.split(",");
+
+        if (carNamesInput == null || carNamesInput.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
+        }
+
+        String[] carNames = carNamesInput.split(",");
+        for (String carName : carNames) {
+            if (carName.length() > MAX_NAME_LENGTH) {
+                throw new IllegalArgumentException("자동차 이름은" + MAX_NAME_LENGTH + "자 이하만 가능 합니다.");
+            }
+        }
+
+        return carNames;
     }
 
     private static int getNumberOfAttempts(){
