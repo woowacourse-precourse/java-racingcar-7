@@ -1,11 +1,8 @@
 package racingcar.application.dto.response;
 
-import static racingcar.domain.race.constants.RaceFormat.*;
+import racingcar.domain.race.vo.RaceResult;
+import racingcar.domain.race.vo.Winners;
 
-public record RaceResponse(String raceResult, String winners) implements Response {
+public record RaceResponse(RaceResult raceResult, Winners winners) implements Response {
 
-    @Override
-    public String toString() {
-        return RACE_RESULT.generate(raceResult) + FINAL_WINNER.generate(winners);
-    }
 }

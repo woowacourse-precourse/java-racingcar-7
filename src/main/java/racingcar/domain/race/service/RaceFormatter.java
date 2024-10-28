@@ -6,7 +6,7 @@ import racingcar.domain.race.constants.RaceFormat;
 public class RaceFormatter {
 
     public static String format(RaceResponse response) {
-        return RaceFormat.RACE_RESULT.generate(response.raceResult()) +
-            RaceFormat.FINAL_WINNER.generate(response.winners());
+        return RaceFormat.RACE_RESULT.formatWith(response.raceResult()) +
+            RaceFormat.FINAL_WINNER.formatWith(response.winners());
     }
 }

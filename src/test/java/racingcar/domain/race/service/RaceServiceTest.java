@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.acceleration.FixedAcceleration;
 import racingcar.domain.car.Car;
 import racingcar.domain.race.Race;
+import racingcar.domain.race.vo.Round;
+import racingcar.domain.race.vo.Winners;
 
 public class RaceServiceTest {
 
@@ -22,16 +24,17 @@ public class RaceServiceTest {
     @Test
     void 우승자를_계산한다() {
         // given
-        String input = "eric,jack";
+        String input = "pobi,woni";
         Race race = Race.of(input, new FixedAcceleration(MOVING_FORWARD.getCriterion()));
-        race.lap();
+        race.runRace(new Round(1));
+
 
         // when
-        List<Car> winners = raceService.determineWinners(race);
+        Winners winners = raceService.findWinners(race);
 
         // then
-        assertThat(winners.size()).isEqualTo(2);
-        assertThat(winners.get(0).getName()).isEqualTo("eric");
-        assertThat(winners.get(1).getName()).isEqualTo("jack");
+        assertThat(winners.winnerNames().size()).isEqualTo(2);
+        assertThat(winners.winnerNames().get(0)).isEqualTo("pobi");
+        assertThat(winners.winnerNames().get(1)).isEqualTo("woni");
     }
 }

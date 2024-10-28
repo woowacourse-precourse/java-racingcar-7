@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.acceleration.FixedAcceleration;
 import racingcar.domain.acceleration.Acceleration;
 import racingcar.domain.car.Car;
+import racingcar.domain.race.vo.RaceResult;
+import racingcar.domain.race.vo.Round;
 
 @DisplayName("Race 클래스 테스트")
 public class RaceTest {
@@ -60,7 +62,7 @@ public class RaceTest {
         Race race = Race.of(input, acceleration);
 
         // when
-        race.lap();
+        race.runRace(new Round(1));
 
         // then
         List<Car> cars = race.getCars();
@@ -72,15 +74,15 @@ public class RaceTest {
     @Test
     void 경기_결과를_출력한다() {
         // given
-        String input = "pobi,jack";
+        String input = "pobi,woni";
         Race race = Race.of(input, acceleration);
 
         // when
-        race.lap();
+        RaceResult raceResult = race.runRace(new Round(1));
 
         // then
-        assertThat(race.getRoundResult()).isEqualTo(
-            "pobi : -\njack : -"
+        assertThat(raceResult.toString()).isEqualTo(
+            "pobi : -\nwoni : -"
         );
     }
 }

@@ -5,13 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.acceleration.Acceleration;
 import racingcar.domain.car.Car;
+import racingcar.domain.race.vo.RaceResult;
 import racingcar.domain.race.vo.Round;
+import racingcar.domain.race.vo.RoundResult;
+import racingcar.domain.race.vo.RoundResults;
 
 public class Race {
 
     private final static String COMMA = ",";
-    private final static String NEW_LINE = "\n";
-    private final static String DOUBLE_NEW_LINE = "\n\n";
     private List<Car> cars;
 
     private Race(final List<Car> cars) {
@@ -30,25 +31,27 @@ public class Race {
         return cars;
     }
 
-    public String runRace(Round round) {
-        StringBuilder result = new StringBuilder();
+    public RaceResult runRace(Round round) {
+        RaceResult raceResult = new RaceResult();
 
         while (round.hasMoreRounds()) {
             lap();
             round = round.nextRound();
-            result.append(getRoundResult()).append(DOUBLE_NEW_LINE);
+            raceResult.addRound(getRoundResults());
         }
 
-        return result.toString();
+        return raceResult;
     }
 
-    public String getRoundResult() {
-        return cars.stream()
-            .map(Car::toString)
-            .collect(Collectors.joining(NEW_LINE));
-    }
-
-    public void lap() {
+    private void lap() {
         cars.forEach(Car::move);
+    }
+
+    private RoundResults getRoundResults() {
+        return new RoundResults(
+            cars.stream()
+	.map(car -> new RoundResult(car.getName(), car.getPosition()))
+	.collect(Collectors.toList())
+        );
     }
 }
