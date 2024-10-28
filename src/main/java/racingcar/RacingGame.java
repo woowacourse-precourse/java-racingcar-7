@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final int MIN_CAR_COUNT = 1;
     private static final int MAX_TOTAL_MOVES = 100;
     private static final int MIN_TOTAL_MOVES = 1;
     private static final int RANDOM_START_INCLUSIVE = 0;
@@ -15,6 +16,7 @@ public class RacingGame {
     private Set<Car> cars = new HashSet<>();
 
     public List<Car> run(final List<String> carNames, final int totalMoves) {
+        validateCarCount(carNames.size());
         registerCars(carNames);
         validateTotalMovesRange(totalMoves);
 
@@ -24,6 +26,12 @@ public class RacingGame {
         }
 
         return getWinners();
+    }
+
+    private void validateCarCount(int count) {
+        if (count < MIN_CAR_COUNT) {
+            throw new IllegalArgumentException("자동차는 최소 1대 이상이어야 합니다");
+        }
     }
 
     private void registerCars(final List<String> carNames) {
