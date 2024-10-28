@@ -1,6 +1,8 @@
-package racingcar.validator;
+package racingcar;
 
 import org.junit.jupiter.api.Test;
+import racingcar.validator.InputValidator;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputValidatorTest {
@@ -60,5 +62,6 @@ public class InputValidatorTest {
                 .hasMessage("자동차 이름은 1~5자의 소문자 알파벳으로 이루어져야 합니다.");
     }
 }
+
 
 
