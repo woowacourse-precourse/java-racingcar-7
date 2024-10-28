@@ -11,6 +11,16 @@ import static java.lang.Integer.parseInt;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        String[] name = inputName();
+        int num = inputNum();
+
+        String[] move = new String[name.length];
+
+        for(int i =0; i < num; i++) {
+            display(name, move);
+        }
+
+        displayWinner(name, move);
     }
 
     public static String[] inputName(){
@@ -30,11 +40,7 @@ public class Application {
        return randomNum >= 4;
     }
 
-    public static void display(String[] arr){ // 실행 결과 출력
-
-        System.out.println("실행 결과");
-
-        String[] move = new String[arr.length];
+    public static void display(String[] arr,String[] move){ // 실행 결과 출력
 
         for(int i = 0; i < arr.length; i++){
             if(Movement())
@@ -43,18 +49,21 @@ public class Application {
                 move[i] += "";
             System.out.println(arr[i] + " : " + move[i]);
         }
+        System.out.println("\n");
+    }
 
+    public static void displayWinner(String[] name, String[] arr){
         List<String> longestStrings = new ArrayList<>();
         int maxLength = 0;
 
-        for(String str: arr){
-            if(str.length() > maxLength){
-                maxLength = str.length();
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i].length() > maxLength){
+                maxLength = arr[i].length();
                 longestStrings.clear();
-                longestStrings.add(str);
+                longestStrings.add(name[i]);
             }
-            else if(str.length() == maxLength){
-                longestStrings.add(str);
+            else if(arr[i].length() == maxLength){
+                longestStrings.add(name[i]);
             }
         }
         System.out.println("최종 우승자 : " + longestStrings);
