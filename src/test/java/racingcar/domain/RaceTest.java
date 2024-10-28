@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.dto.CarDto;
 import racingcar.service.Accelerator;
 import racingcar.service.RandomNumberAccelerator;
-import racingcar.util.MockNumberGenerator;
-import racingcar.util.NumberGenerator;
+import racingcar.service.MockNumberGenerator;
 
 class RaceTest {
     @DisplayName("자동차 이름 중복시 생성 불가능")

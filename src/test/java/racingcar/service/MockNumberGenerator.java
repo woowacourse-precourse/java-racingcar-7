@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.service;
 
 import java.util.Arrays;
 import java.util.LinkedList;

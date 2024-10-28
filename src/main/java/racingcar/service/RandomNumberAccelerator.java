@@ -1,7 +1,6 @@
 package racingcar.service;
 
 import racingcar.domain.car.Car;
-import racingcar.util.NumberGenerator;
 
 public class RandomNumberAccelerator implements Accelerator {
     private static final Integer BOUND_NUMBER = 4;
