@@ -29,5 +29,8 @@ public class RacingCarController {
             racingCarService.updateRacingCarStatus(race);
             racingCarOutputView.printCurrentRacingCar(race);
         }
+
+        String winner = racingCarService.getRaceWinner(race);
+        racingCarOutputView.printRacingCarWinnerResult(winner);
     }
 }
