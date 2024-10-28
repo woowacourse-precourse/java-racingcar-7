@@ -28,7 +28,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
     @Test
     void 이름_입력시_다섯_글자_초과_테스트() {
         assertSimpleTest(() ->
@@ -58,9 +57,9 @@ class ApplicationTest extends NsTest {
     public void 알파벳_숫자_이외_입력_테스트() {
         // 주어진 입력이 특수 문자를 포함할 때 예외가 발생하는지 테스트
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            InputValidator.validateAlphaNumeric("invalid@input!"); // 유효하지 않은 문자열 입력
+            InputValidator.validateAlphaNumeric("pobi@tom"); // 유효하지 않은 문자열 입력
         });
-        assertEquals("숫자와 알파벳 외에 다른 값이 입력되었어요 : invalid@input!", exception.getMessage()); // 예외 메시지 확인
+        assertEquals("숫자와 알파벳 외에 다른 값이 입력되었어요 : pobi@tom", exception.getMessage()); // 예외 메시지 확인
     }
 
     @Test
