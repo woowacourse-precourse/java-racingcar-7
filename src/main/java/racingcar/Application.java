@@ -17,6 +17,5 @@ public class Application {
         int[] result = isMovable.getIsMovable();
 
         new WinnerOutput(result, carNames).getWinner();
-
     }
 }

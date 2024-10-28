@@ -1,7 +1,4 @@
 package racingcar.IO;
-//pobi : -
-//woni :
-//jun : -
 
 public class CarNamesOutput {
     int[] isMovable;
