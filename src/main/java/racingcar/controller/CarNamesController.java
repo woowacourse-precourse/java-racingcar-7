@@ -15,7 +15,7 @@ public class CarNamesController {
 
     public static boolean checkConditions (List<String> carNames) {
         for (String carName : carNames) {
-            if (!carName.matches("^[A-Za-z0-9가-힣]{1,5}$]")) {
+            if (!carName.matches("^[A-Za-z0-9가-힣]{1,5}$")) {
                 return false;
             }
         }
