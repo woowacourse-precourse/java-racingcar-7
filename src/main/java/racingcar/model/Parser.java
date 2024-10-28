@@ -11,7 +11,7 @@ public class Parser {
         }
 
         if (!input.matches("^([a-zA-Z가-힣]{1,5})(,[a-zA-Z가-힣]{1,5})*$")) {
-            throw new IllegalArgumentException("입력 형식이 잘못되었습니다.");
+            throw new IllegalArgumentException("");
         }
 
         List<String> names = Arrays.asList(input.split(","));
