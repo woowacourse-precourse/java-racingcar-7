@@ -12,9 +12,9 @@ public class RacingGame {
     private final LinkedHashMap<String, Integer> carNameAndScore;
     private final int tryCount;
 
-    public RacingGame(LinkedHashMap<String, Integer> carScarNameAndScore, int tryCount) {
-        this.carNameAndScore = CarInformation.getCarInformation();
-        this.tryCount = Input.inputTryCount(); // 시도 횟수를 Input 클래스에서 입력받음
+    public RacingGame(LinkedHashMap<String, Integer> carNameAndScore, int tryCount) {
+        this.carNameAndScore = carNameAndScore;
+        this.tryCount = tryCount;
     }
 
     public void randomMove() {
@@ -32,9 +32,9 @@ public class RacingGame {
 
     private void printResult() {
         for (Map.Entry<String, Integer> entry : carNameAndScore.entrySet()) {
-            System.out.println(entry.getKey() + " : ");
+            System.out.print(entry.getKey() + " : ");
             for (int i = 0; i < entry.getValue(); i++) {
-                System.out.println("-");
+                System.out.print("-");
             }
             System.out.println();
         }
