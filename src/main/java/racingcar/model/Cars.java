@@ -70,7 +70,19 @@ public class Cars {
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public int size() {
+        if (cars == null) {
+            return 0;
+        }
+
+        return cars.size();
+    }
+
+    public Car indexOf(int index) {
+        if (index >= size()) {
+            return null;
+        }
+
+        return cars.get(index);
     }
 }
