@@ -120,6 +120,6 @@ class InputValidatorTest {
         );
 
         // then
-        assertEquals("유효한 숫자를 입력해 주세요.", exception.getMessage());
+        assertEquals("유효한 숫자를 입력해주세요.", exception.getMessage());
     }
 }
