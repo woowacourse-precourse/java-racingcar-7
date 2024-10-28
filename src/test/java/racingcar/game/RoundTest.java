@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.game;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.car.CompeteCars;
-import racingcar.game.Round;
 
 
 class RoundTest {

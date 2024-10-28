@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.view.RacingOutputView;
 
 class RacingOutputViewTest {
     private final RacingOutputView outputView = new RacingOutputView();

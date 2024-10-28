@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.game;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,7 +12,6 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.game.RacingGame;
 import racingcar.view.RacingInputView;
 import racingcar.view.RacingOutputView;
 
