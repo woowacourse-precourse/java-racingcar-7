@@ -27,6 +27,7 @@ public class RacingController {
         InputValidator.validateCarNames(racingInput.getCarNames());
         InputValidator.validateTryCounts(racingInput.getTryCount());
         InputValidator.checkDuplicateNames(racingInput.getCarNames());
+        InputValidator.containsInvalidCharacters(racingInput.getCarNames());
 
         RacingResult racingResult = racingService.racing(racingInput);
 

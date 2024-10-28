@@ -30,4 +30,17 @@ public class InputValidator {
         }
     }
 
+    public static void containsInvalidCharacters(List<String> carNames) {
+        if(carNames.stream().anyMatch(InputValidator::containsInvalidCharacters)) {
+            throw new IllegalArgumentException("자동차 이름은 한글, 영어, 숫자 외의 글자를 포함할 수 없습니다.");
+        }
+    }
+
+
+    // 유효하지 않은 문자 포함 여부 체크
+    private static boolean containsInvalidCharacters(String name) {
+        // 한글, 영어, 숫자만 허용
+        return !name.matches("^[a-zA-Z0-9가-힣]+$");
+    }
+
 }
