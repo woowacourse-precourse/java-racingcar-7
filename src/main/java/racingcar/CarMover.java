@@ -2,11 +2,16 @@ package racingcar;
 
 public class CarMover {
 
-    private final RandomNumberGenerator generator = new RandomNumberGenerator();
+    private final MovePolicy movePolicy;
 
-    public boolean run(final Car car) {
-        int randomNumber = generator.run();
-        return car.move(randomNumber);
+    public CarMover(MovePolicy movePolicy) {
+        this.movePolicy = movePolicy;
+    }
+
+    public void run(final Car car) {
+        if (movePolicy.canMove()) {
+            car.move();
+        }
     }
 
 }
