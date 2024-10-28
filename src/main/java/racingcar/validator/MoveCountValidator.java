@@ -7,11 +7,9 @@ public class MoveCountValidator {
 
     private String input;
 
-    public MoveCountValidator(String input){
+    public boolean isValidate(String input){
         this.input = input;
-    }
 
-    public boolean isValidate(){
         isNumber();
         isMinus();
         isInRange();

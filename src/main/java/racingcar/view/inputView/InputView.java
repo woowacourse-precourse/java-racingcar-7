@@ -2,5 +2,5 @@ package racingcar.view.inputView;
 
 public interface InputView {
     public void input();
-    public boolean isValidate();
+    public void isValidate(String input);
 }

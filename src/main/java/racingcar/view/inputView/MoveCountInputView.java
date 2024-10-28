@@ -1,23 +1,28 @@
 package racingcar.view.inputView;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.validator.MoveCountValidator;
 import racingcar.view.inputView.InputView;
 
 public class MoveCountInputView implements InputView {
     private static final String MOVE_COUNT_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
-    private Integer moveCount;
+    private final MoveCountValidator validator;
+
+    public MoveCountInputView(){
+        this.validator = new MoveCountValidator();
+    }
 
     @Override
     public void input(){
         System.out.println(MOVE_COUNT_INPUT_MESSAGE);
-        Integer moveCount = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
 
-        this.moveCount = moveCount;
+        isValidate(input);
     }
 
     @Override
-    public boolean isValidate() {
-        return false;
+    public void isValidate(String input) {
+        validator.isValidate(input);
     }
 }
