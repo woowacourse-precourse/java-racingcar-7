@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import racingcar.View.GameView;
 
 public class GameCars {
     public static final ArrayList<Car> cars = new ArrayList<>();
