@@ -12,14 +12,14 @@ public class CarValidator {
 				.toList();
 	}
 
-	private String validateCarNameLimit(String carName) {
+	public String validateCarNameLimit(String carName) {
 		if (carName.length() > CAR_NAME_LIMIT) {
 			throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
 		}
 		return carName;
 	}
 
-	private String validateNameEmpty(String carName) {
+	public String validateNameEmpty(String carName) {
 		if (carName.isEmpty()) {
 			throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
 		}

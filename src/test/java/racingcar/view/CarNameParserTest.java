@@ -25,7 +25,7 @@ class CarNameParserTest {
 	@Test
 	void 자동차_이름_리스트는_반점을_기준으로_파싱된다() {
 		String carNames = "tom,jerry,alice";
-		List<String> parsedCarNames = carNameParser.parseCarNameList(carNames);
+		List<String> parsedCarNames = carNameParser.parse(carNames);
 		List<String> originalCarNames = List.of("tom", "jerry", "alice");
 		assertEquals(parsedCarNames, originalCarNames);
 	}

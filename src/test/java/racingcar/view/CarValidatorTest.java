@@ -19,7 +19,7 @@ class CarValidatorTest {
 	@Test
 	void 자동차_이름은_1자에서_5자_사이여야_한다() {
 		String carNames = "alicealice";
-		List<String> parsedCarNames = carNameParser.parseCarNameList(carNames);
+		List<String> parsedCarNames = carNameParser.parse(carNames);
 		assertThrows(IllegalArgumentException.class, ()
 				-> carValidator.validateCarNameLimit(parsedCarNames.getFirst()));
 	}
@@ -27,7 +27,7 @@ class CarValidatorTest {
 	@Test
 	void 자동차_이름은_공백일_수_없다() {
 		String carNames = "";
-		List<String> parsedCarNames = carNameParser.parseCarNameList(carNames);
+		List<String> parsedCarNames = carNameParser.parse(carNames);
 		assertThrows(IllegalArgumentException.class, ()
 				-> carValidator.validateNameEmpty(parsedCarNames.getFirst()));
 	}
