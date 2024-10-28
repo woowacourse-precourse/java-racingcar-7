@@ -30,5 +30,5 @@
 - [ ] Controller Layer
   - [ ] CarRace : 전체 라운드를 진행. Model 객체 생성. Service와 View 연결.
 - [ ] Util
-  - [ ] Exception : 처리할 예외 목록
+  - [X] Exception : 처리할 예외 목록
   - [ ] CONSTANT : 필요한 상수값 변수화
