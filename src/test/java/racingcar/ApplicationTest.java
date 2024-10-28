@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -21,6 +22,28 @@ class ApplicationTest extends NsTest {
             },
             MOVING_FORWARD, STOP
         );
+    }
+
+    @Test
+    void Car_move_테스트() {
+        Car car = new Car("pobi");
+        int position = car.getPosition();
+        car.move();
+        if (position == 0) {
+            assertThat(car.getPosition()).isEqualTo(0);
+        } else {
+            assertThat(car.getPosition()).isEqualTo(1);
+        }
+    }
+
+    @Test
+    void PlayingCarFactory_createCars_테스트() {
+        Set<String> cars = new LinkedHashSet<>();
+        cars.add("pobi");
+        cars.add("woni");
+        Set<Car> playingCars = PlayingCarFactory.createCars(cars);
+        assertThat(playingCars).hasSize(2);
+        assertThat(playingCars).extracting("name").containsExactly("pobi", "woni");
     }
 
     @Test
