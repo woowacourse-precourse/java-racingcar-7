@@ -1,5 +1,6 @@
 package racingcar.manager;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
 
 import java.util.ArrayList;
@@ -17,6 +18,24 @@ public class RacingManager {
 
             isDuplicatedName(carName);
             cars.add(Car.of(carName));
+        }
+    }
+
+    public void race(String count) {
+        int parsedCount = Integer.parseInt(count);
+        System.out.println("실행 결과");
+
+        for (int i = 0; i < parsedCount; i++) {
+            cars.forEach(
+                    car -> {
+                        int picked = Randoms.pickNumberInRange(0, 9);
+                        if (picked >= 4) {
+                            car.move(picked);
+                        }
+                        System.out.println(car.getName() + " : " + car.getForward());
+                    }
+            );
+            System.out.println();
         }
     }
 
