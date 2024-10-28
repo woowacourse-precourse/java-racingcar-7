@@ -6,6 +6,7 @@ import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
 import racingcar.domain.CarsInRace;
 import racingcar.domain.NameParser;
+import racingcar.validation.RaceCountValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -21,6 +22,7 @@ public class Controller {
 
         // 시도할 횟수 입력
         int inputRaceCount = InputView.readRaceCount();
+        RaceCountValidator.isPositiveNumber(inputRaceCount);
 
         // 자동차 객체 생성
         CarFactory carFactory = new CarFactory(nameList);
