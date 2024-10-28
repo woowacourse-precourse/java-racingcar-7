@@ -3,6 +3,8 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.inputview.InputHandler;
 import racingcar.outputview.OutputHandler;
+import racingcar.randomtutils.DefaultRandomGenerator;
+import racingcar.randomtutils.RandomGenerator;
 import racingcar.service.CarManager;
 import racingcar.service.GameManager;
 
@@ -12,11 +14,13 @@ public class RacingController {
     OutputHandler outputHandler;
     CarManager carManager;
     GameManager gameManager;
+    RandomGenerator randomGenerator;
 
     public RacingController() {
         this.inputHandler = new InputHandler();
         this.outputHandler = new OutputHandler();
         this.carManager = new CarManager();
+        this.randomGenerator = new DefaultRandomGenerator();
     }
 
     public void run() {
@@ -24,7 +28,7 @@ public class RacingController {
         String[] carNames = getCarNamesFromUserInput();
         int attemptGameCount = getGameCountFromUserInput();
 
-        gameManager = new GameManager(carNames, attemptGameCount);
+        gameManager = new GameManager(carNames, attemptGameCount, randomGenerator);
 
         outputHandler.showGameResult();
 

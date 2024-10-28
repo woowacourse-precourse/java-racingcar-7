@@ -2,6 +2,8 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
+import racingcar.randomtutils.DefaultRandomGenerator;
+import racingcar.randomtutils.RandomGenerator;
 
 import java.util.List;
 
@@ -11,18 +13,21 @@ public class GameManager {
     private int gameCount;
     private int currentCount;
     private CarManager carManager;
+    private RandomGenerator randomGenerator;
 
-    public GameManager(String[] cars, int gameCount) {
+    public GameManager(String[] cars, int gameCount, RandomGenerator randomGenerator) {
         this.carManager = new CarManager();
         this.gameCount = gameCount;
         carManager.createCars(cars);
         this.cars = carManager.getCars();
         clearCurrentCount();
+        this.randomGenerator = randomGenerator;
+
     }
 
     public void playGame() {
         for (Car car : cars) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            if (randomGenerator.generate() >= 4) {
                 car.moveForward();
             }
         }
