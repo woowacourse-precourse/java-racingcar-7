@@ -58,7 +58,7 @@ class RaceViewTest extends NsTest {
                 ),
                 Arguments.of(
                         Map.of("pobi", 4, "jun", 3, "kaye", 0),
-                        List.of("pobi : ----", "jun : ---", "kaye : ")
+                        List.of("pobi : ----", "jun : ---", "kaye :")
                 )
         );
     }
