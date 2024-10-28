@@ -18,6 +18,10 @@ public class Car {
         return this.position == value;
     }
 
+    public String convertCurrentStateToString() {
+        return name + " : " + "-".repeat(position);
+    }
+
     public int getPosition() {
         return position;
     }
