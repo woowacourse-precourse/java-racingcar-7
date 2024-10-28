@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import racingcar.car.Cars;
 import racingcar.validator.InputValidator;
 
@@ -20,6 +21,8 @@ public class Application {
         System.out.println("\n실행 결과");
         for (int round = 0; round < totalRound; round++) {
             cars.run();
+            List<String> results = cars.getResults();
+            results.forEach(System.out::println);
             System.out.println();
         }
 

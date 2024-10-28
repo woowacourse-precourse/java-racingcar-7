@@ -18,14 +18,14 @@ public class Cars {
         for (Car car : cars) {
             int randomNum = RandomNumberGenerator.generate();
             car.move(randomNum);
-
-            displayPosition(car.getName(), car.getPosition());
         }
     }
 
-    private static void displayPosition(String name, int position) {
+    public List<String> getResults() {
         final String MOVING_SYMBOL = "-";
-        System.out.println(name + " : " + MOVING_SYMBOL.repeat(position));
+        return cars.stream()
+                .map(car -> car.getName() + " : " + car.getPosition() + "\n")
+                .collect(Collectors.toList());
     }
 
     public String getWinners() {
