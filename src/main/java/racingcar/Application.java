@@ -32,12 +32,17 @@ public class Application {
             hyphen[i] = "";
         }
 
-        for (int i = 0; i < cars.length; i++) {
-            ranNum = Randoms.pickNumberInRange(0, 9);
-            if (ranNum >= 4) {
-                hyphen[i] += '-';
+        // 횟수만큼 시도할 때마다 전진한 횟수 출력하기
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < cars.length; j++) {
+                ranNum = Randoms.pickNumberInRange(0, 9);
+                if (ranNum >= 4) {
+                    hyphen[j] += '-';
+                }
+                System.out.println(cars[j] + " : " +  hyphen[j]);
             }
-            System.out.println(cars[i] + " : " +  hyphen[i]);
+            System.out.println();
         }
+
     }
 }
