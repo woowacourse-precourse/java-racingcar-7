@@ -10,6 +10,8 @@ public class Race {
 	public void start() {
 		String[] players = readPlayers();
 		Cars cars = new Cars(players);
+
+		int totalRound = readRound();
 	}
 
 	private String[] readPlayers() {
@@ -19,5 +21,12 @@ public class Race {
 		IOValidator.validateContainsSeparator(strPlayers);
 
 		return strPlayers.split(NAMES_SEPARATOR);
+	}
+
+	private int readRound() {
+		System.out.println("시도할 횟수는 몇 회인가요?");
+		String strRound = Console.readLine();
+		IOValidator.validateNaturalNumber(strRound);
+		return Integer.parseInt(strRound);
 	}
 }
