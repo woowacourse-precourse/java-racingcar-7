@@ -39,6 +39,18 @@ public class InputHandler {
 
         return names;
     }
+    
+    public int GetRound(String input) {
+        try {
+            int rounds = Integer.parseInt(input);
+            if (rounds <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+            }
+            return rounds;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자로 입력해야 합니다.");
+        }
+    }
 }
 
 
