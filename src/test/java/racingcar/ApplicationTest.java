@@ -8,6 +8,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
@@ -23,6 +24,19 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
+    @Test
+    void 이름사이에공백넣기() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("p o b i,     w   o n  i", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+//여기서 부터 예외테스트
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -30,6 +44,67 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 숫자대신문자넣기() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "d"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 처음에빈문자열넣기() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 중간에빈문자열넣기() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, ,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 매우_큰_실행횟수 () {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "1000000000"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 중복된이름 () {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 음수실행횟수 () {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "-2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+
+
+
+
+
+
 
     @Override
     public void runMain() {
