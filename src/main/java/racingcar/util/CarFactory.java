@@ -16,6 +16,7 @@ public class CarFactory {
 
     /**
      * 입력된 문자열을 바탕으로 RacingCar 객체 리스트를 생성한다.
+     *
      * @param input 콤마로 구분된 자동차 이름 문자열
      * @return 생성된 RacingCar 객체 리스트
      * @throws IllegalArgumentException 입력 값이 비어있거나, 이름이 중복 또는 5자 초과일 경우 발생
@@ -33,6 +34,7 @@ public class CarFactory {
 
     /**
      * 입력 값이 null 또는 빈 문자열인지 검증한다.
+     *
      * @param input 자동차 이름 입력 문자열
      * @return 파싱하여 생성된 carName의 정보가 담긴 String 배열
      * @throws IllegalArgumentException 입력이 비어있을 경우 혹은 파싱 후 리스트가 비어있을 경우 발생
@@ -44,7 +46,7 @@ public class CarFactory {
 
         String[] carNames = input.split(",");
 
-        if(carNames.length == 0){
+        if (carNames.length == 0) {
             throw new IllegalArgumentException(EMPTY_LIST_ERROR);
         }
 
@@ -53,6 +55,7 @@ public class CarFactory {
 
     /**
      * 자동차 이름 배열에서 중복 이름이 있는지 검증한다.
+     *
      * @param carNames 자동차 이름 배열
      * @throws IllegalArgumentException 중복된 이름이 있을 경우 발생
      */
@@ -68,13 +71,14 @@ public class CarFactory {
 
     /**
      * 자동차 이름의 길이를 검증하고, 유효하면 RacingCar 객체를 생성한다.
+     *
      * @param carName 생성할 자동차 이름
      * @return 생성된 RacingCar 객체
      * @throws IllegalArgumentException 이름이 공백(space)이거나, 이름의 길이가 0이거나, 5자 초과일 경우 발생
      */
     private static RacingCar createCar(String carName) {
 
-        if(carName.isBlank()){
+        if (carName.isBlank()) {
             throw new IllegalArgumentException(BLANK_NAME_ERROR);
         }
 

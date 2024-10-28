@@ -14,8 +14,9 @@ public class RacingGameControllerImpl implements RacingGameController {
 
     /**
      * RacingGameControllerImpl 생성자
+     *
      * @param model 자동차 경주 게임의 로직을 처리하는 모델 객체
-     * @param view 사용자 입력과 결과 출력을 담당하는 뷰 객체
+     * @param view  사용자 입력과 결과 출력을 담당하는 뷰 객체
      */
     public RacingGameControllerImpl(RacingGameModel model, RacingGameView view) {
         this.model = model;

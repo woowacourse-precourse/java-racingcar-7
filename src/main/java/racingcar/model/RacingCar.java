@@ -21,7 +21,8 @@ public class RacingCar {
 
     /**
      * RacingCar 생성자
-     * @param carName 자동차 이름(고유 식별자로 사용)
+     *
+     * @param carName  자동차 이름(고유 식별자로 사용)
      * @param position 초기 위치 값
      * @param repeater 위치 출력을 위한 문자열 반복자
      */
@@ -37,6 +38,7 @@ public class RacingCar {
 
     /**
      * 자동차 이름을 반환한다.
+     *
      * @return 자동차 이름 문자열
      */
     public String getCarName() {
@@ -45,6 +47,7 @@ public class RacingCar {
 
     /**
      * 자동차의 현재 위치를 반환한다.
+     *
      * @return 자동차 위치 값
      */
     public int getPosition() {
@@ -53,6 +56,7 @@ public class RacingCar {
 
     /**
      * 이동 가능 여부에 따라 자동차의 위치를 이동시킨다.
+     *
      * @param isMovable 이동 가능 여부
      */
     public void move(boolean isMovable) {
@@ -63,6 +67,7 @@ public class RacingCar {
 
     /**
      * 현재 위치를 repeater를 기반으로 문자열로 변환하여 반환한다.
+     *
      * @return 위치를 시각적으로 표현하는 문자열
      */
     public String getPositionAsString() {
@@ -71,6 +76,7 @@ public class RacingCar {
 
     /**
      * 위치 출력 방식(repeater)을 변경한다.
+     *
      * @param repeater 새로운 위치 출력 방식 문자열
      */
     public void setRepeater(String repeater) {

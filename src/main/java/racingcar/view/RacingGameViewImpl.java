@@ -14,6 +14,7 @@ public class RacingGameViewImpl implements RacingGameView {
     /**
      * 사용자에게 자동차 이름을 입력받는다.
      * camp.nextstep.edu.missionutils.Console 클래스의 readLine 함수를 사용한다.
+     *
      * @return 입력된 자동차 이름 문자열 (콤마로 구분된 형식)
      * @throws IllegalArgumentException ""을 입력하여 null값이 들어올때
      */
@@ -22,9 +23,9 @@ public class RacingGameViewImpl implements RacingGameView {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = null;
 
-        try{
+        try {
             input = Console.readLine();
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             throw new IllegalArgumentException(Constants.EMPTY_INPUT_VALUE);
         }
 
@@ -34,6 +35,7 @@ public class RacingGameViewImpl implements RacingGameView {
     /**
      * 사용자에게 경주 시도 횟수를 입력받는다.
      * camp.nextstep.edu.missionutils.Console 클래스의 readLine 함수를 사용한다.
+     *
      * @return 입력된 시도 횟수를 나타내는 문자열
      * @throws IllegalArgumentException ""을 입력하여 null값이 들어올때
      */
@@ -42,9 +44,9 @@ public class RacingGameViewImpl implements RacingGameView {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = null;
 
-        try{
+        try {
             input = Console.readLine();
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             throw new IllegalArgumentException(Constants.EMPTY_INPUT_VALUE);
         }
 
@@ -53,6 +55,7 @@ public class RacingGameViewImpl implements RacingGameView {
 
     /**
      * 경주 결과를 콘솔에 출력한다.
+     *
      * @param result 출력할 경주 결과 문자열
      */
     @Override

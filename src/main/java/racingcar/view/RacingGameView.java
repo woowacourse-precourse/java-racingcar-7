@@ -8,18 +8,21 @@ public interface RacingGameView {
 
     /**
      * 경주에 참여할 자동차 이름을 입력받는다.
+     *
      * @return 콤마로 구분된 자동차 이름 문자열
      */
     String getCarNames();
 
     /**
      * 경주 시도 횟수를 입력받는다.
+     *
      * @return 경주 시도 횟수를 나타내는 문자열
      */
     String getTrialNum();
 
     /**
      * 경주 결과를 화면에 출력한다.
+     *
      * @param result 출력할 경주 결과 문자열
      */
     void showResult(String result);
