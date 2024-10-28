@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Game {
 
+    private List<Car> cars;
+
     public Game() {
         OutputHandler.printInstructionForCarNames();
         List<String> carNames = InputHandler.getCarNames();
@@ -14,7 +16,7 @@ public class Game {
         int times = InputHandler.getTimes();
 
         // 핵심 로직
-        List<Car> cars = new ArrayList<>();
+        cars = new ArrayList<>();
 
         // 1. 객체 생성
         for(String carName : carNames) {
