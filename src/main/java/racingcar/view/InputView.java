@@ -5,11 +5,11 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     public static String carsInput() {
-        return readInput("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        return readInput(InputMessage.INPUT_CAR_NAME.toString());
     }
 
     public static String timesInput() {
-        return readInput("시도할 횟수는 몇 회인가요?");
+        return readInput(InputMessage.INPUT_TIMES.toString());
     }
 
     private static String readInput(String message) {
