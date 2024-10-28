@@ -6,7 +6,7 @@ public class Car {
     private int pos;
     private StringBuilder trace;
 
-    public Car(String name, int pos, StringBuilder trace) {
+    private Car(String name, int pos, StringBuilder trace) {
         this.name = name;
         this.pos = pos;
         this.trace = trace;
@@ -30,5 +30,6 @@ public class Car {
 
     public void go() {
         this.trace.append("-");
+        this.pos++;
     }
 }
