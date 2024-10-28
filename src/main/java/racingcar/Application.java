@@ -19,6 +19,15 @@ public class Application {
         }
     }
 
+    private static int getNumberOfTrial() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
