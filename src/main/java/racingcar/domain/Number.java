@@ -3,10 +3,9 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Number {
-    private int MAX_RANDOM_NUMBER_RANGE = 9;
+    private static final int MAX_RANDOM_NUMBER_RANGE = 9;
 
     public int getRandomNumber() {
-        int num = Randoms.pickNumberInRange(0, MAX_RANDOM_NUMBER_RANGE);
-        return num;
+        return Randoms.pickNumberInRange(0, MAX_RANDOM_NUMBER_RANGE);
     }
 }
