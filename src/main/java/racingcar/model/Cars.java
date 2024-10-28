@@ -6,9 +6,9 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<String> carNames) {
+    public Cars(List<String> carNames, IntGeneratorStrategy intGeneratorStrategy) {
         this.cars = new ArrayList<>();
-        initCars(carNames);
+        initCars(carNames, intGeneratorStrategy);
     }
 
     public void requestCarMove() {
@@ -25,8 +25,7 @@ public class Cars {
         return calculateLongestPosition();
     }
 
-    private void initCars(List<String> carNames) {
-        IntGeneratorStrategy intGeneratorStrategy = new RandomIntGeneratorStrategy();
+    private void initCars(List<String> carNames, IntGeneratorStrategy intGeneratorStrategy) {
         for (String carName : carNames) {
             Car car = new Car(carName, intGeneratorStrategy);
             cars.add(car);
@@ -39,5 +38,4 @@ public class Cars {
                 .max()
                 .orElse(0);
     }
-
 }
