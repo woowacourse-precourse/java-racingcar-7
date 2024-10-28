@@ -24,7 +24,9 @@ public class RacingCarController {
 
     private int readTryCount() {
         outputView.printTryCountMessage();
-        return inputView.readTryCount();
+        int tryCount = inputView.readTryCount();
+        outputView.printNewLine();
+        return tryCount;
     }
 
     private void startRacing(Cars cars, int tryCount) {

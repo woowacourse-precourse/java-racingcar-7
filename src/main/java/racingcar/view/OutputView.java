@@ -23,4 +23,8 @@ public class OutputView {
     public void printWinner(String winnerName) {
         System.out.println(OutputMessage.WINNER_MESSAGE.getMessage() + winnerName);
     }
+
+    public void printNewLine() {
+        System.out.println();
+    }
 }
