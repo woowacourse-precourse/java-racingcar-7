@@ -46,6 +46,26 @@ class RacingGame {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Integer.parseInt(Console.readLine());
     }
+
+    private void runGame() {
+        for (int i = 0; i < attemptCount; i++) {
+            playRound();
+            printRoundResults();
+        }
+    }
+
+    private void playRound() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    private void printRoundResults() {
+        for (Car car : cars) {
+            System.out.println(car);
+        }
+        System.out.println();
+    }
 }
 
 class Car {
