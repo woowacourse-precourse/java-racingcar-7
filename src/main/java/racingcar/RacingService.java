@@ -62,9 +62,9 @@ public class RacingService {
         int maxDistance = getMaxPosition();
 
         LinkedList<String> winners = new LinkedList<>();
-        for (Map.Entry<String, Integer> entry : carPositions.entrySet()) {
-            if (entry.getValue() == maxDistance) {
-                winners.add(entry.getKey());
+        for (Map.Entry<String, Integer> carPosition : carPositions.entrySet()) {
+            if (carPosition.getValue() == maxDistance) {
+                winners.add(carPosition.getKey());
             }
         }
         return winners.toArray(new String[0]);
