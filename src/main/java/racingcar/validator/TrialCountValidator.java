@@ -1,6 +1,6 @@
 package racingcar.validator;
 
-import static racingcar.Constatns.TRIAL_COUNT_CONDITION_ERROR_MESSAGE;
+import static racingcar.Constant.TRIAL_COUNT_CONDITION_ERROR_MESSAGE;
 
 public class TrialCountValidator {
     public static void trialCountValidator(int trialCount){

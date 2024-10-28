@@ -1,6 +1,6 @@
 package racingcar.validator;
 
-import static racingcar.Constatns.CAR_NAME_CONDITION_ERROR_MESSAGE;
+import static racingcar.Constant.CAR_NAME_CONDITION_ERROR_MESSAGE;
 
 public class CarNameValidator {
     public static void carNameValidator(String name){

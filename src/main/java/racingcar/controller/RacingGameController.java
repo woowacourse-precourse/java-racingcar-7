@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import static racingcar.Constatns.MOVE_FORAWRD_CONDITION;
+import static racingcar.Constant.MOVE_FORAWRD_CONDITION;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

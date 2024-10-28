@@ -10,7 +10,7 @@ public class Car {
     }
 
     public void go(){
-        this.advance = this.advance + 1;
+        this.advance += 1;
     }
 
     public String getName() {
