@@ -6,6 +6,8 @@ import static racingcar.RegexPatterns.*;
 import java.util.List;
 
 public class InputValidator {
+    private static final Integer MAX_NAME_LENGTH = 5;
+
     public List<String> isValidCarsName(String carNames) {
         isValidInputFormat(carNames);
         isValidName(carNames);
@@ -25,7 +27,7 @@ public class InputValidator {
             if (name.isEmpty()) {
                 throw new IllegalArgumentException(CONTAINS_DELIMITER_IN_NAME);
             }
-            if (name.length() > 5) {
+            if (name.length() > MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException(NAME_TOO_LONG);
             }
         }
