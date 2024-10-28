@@ -40,7 +40,7 @@ public class RacingCar {
 
     private void printWinners() {
         List<String> winners = determineWinners();
-        System.out.println("Winner: " + String.join(", ", winners));
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     private List<String> determineWinners() {
