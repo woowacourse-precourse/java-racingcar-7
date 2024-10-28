@@ -34,6 +34,9 @@ public class Application {
         // 길이가 5글자를 초과하는 자동차가 있을 경우, 예외처리
         checkName(carNames);
 
+        // 2. 시도할 횟수 입력
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int count = Integer.parseInt(Console.readLine());
 
 
     }
