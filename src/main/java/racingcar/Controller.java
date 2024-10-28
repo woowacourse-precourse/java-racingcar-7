@@ -11,6 +11,7 @@ public class Controller {
     private final AttemptCountArgumentResolver attemptCountArgumentResolver = new AttemptCountArgumentResolver();
 
     private final SizeValidator sizeValidator = new SizeValidator();
+    private final RangeValidator rangeValidator = new RangeValidator();
 
     private final CarConverter carConverter = new CarConverter();
     private final AllCarMover allCarMover = new AllCarMover();
@@ -29,6 +30,7 @@ public class Controller {
         outputView.println("시도할 횟수는 몇 회인가요?");
         String attemptCountRequest = inputView.read();
         int attemptCount = attemptCountArgumentResolver.parse(attemptCountRequest);
+        rangeValidator.check(attemptCount);
 
         outputView.endLine();
         outputView.println("실행 결과");
