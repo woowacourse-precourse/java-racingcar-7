@@ -4,18 +4,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     private final String name;
-    private int moveCount;
+    private int position;
 
 
     public Car(String name) {
         this.name = name;
         validateCarName();
-        this.moveCount = 0;
+        this.position = 0;
     }
 
     public void move(int randomNum) {
         if (randomNum >= 4) {
-            moveCount += 1;
+            position += 1;
         }
     }
 
@@ -32,7 +32,7 @@ public class Car {
         return name;
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public int getPosition() {
+        return position;
     }
 }

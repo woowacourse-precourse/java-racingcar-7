@@ -32,14 +32,14 @@ public class RacingGame {
 
     public int getMaxMoveCount() {
         return cars.stream()
-                .mapToInt(Car::getMoveCount)
+                .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
     }
 
     public List<String> getWinners(int maxMoveCount) {
         return cars.stream()
-                .filter(car -> car.getMoveCount() == maxMoveCount)
+                .filter(car -> car.getPosition() == maxMoveCount)
                 .map(Car::getName)
                 .toList();
     }

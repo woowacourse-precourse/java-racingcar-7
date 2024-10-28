@@ -13,7 +13,7 @@ public class OutputView {
 
     public static void printCarsMoveStatus(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getMoveCount()));
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
     }
 
