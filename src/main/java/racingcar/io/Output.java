@@ -5,7 +5,6 @@ import java.util.List;
 public class Output {
     public void printResult() {
         System.out.println("실행 결과");
-        // 실행 결과 출력
     }
 
     public void printCar(/*String car*/) {
@@ -16,7 +15,8 @@ public class Output {
         // 차수별 실행 결과 출력
     }
 
-    public void printChampion(/*List<String> car*/) {
+    public void printChampion(List<String> champions) {
         // 우승자 출력
+        System.out.println("최종 우승자 : " + String.join(", ", champions));
     }
 }
