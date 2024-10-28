@@ -5,7 +5,7 @@ public class RacingCar {
     private int position;
 
     public RacingCar(String name) {
-        if(name.length() > 5 || name.contains(" ")){
+        if (name.length() > 5 || name.contains(" ")) {
             throw new IllegalArgumentException();
         }
         this.name = name;
