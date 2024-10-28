@@ -38,5 +38,12 @@ public class RacingGame {
         return Randoms.pickNumberInRange(0,9);
     }
 
+    public void printCurrentRaceStatus(){
+        for (racingcar.Car car : cars){
+            System.out.println(car.name + " : " + car.getDistanceString());
+        }
+        System.out.println();
+    }
+
 
 }
