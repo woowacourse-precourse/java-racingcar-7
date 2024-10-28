@@ -20,13 +20,7 @@ public class Application {
         int tryNum = Integer.parseInt(Console.readLine());
 
         CarRaceSimulator simulator = new CarRaceSimulator(carNames, tryNum);
-        for(int i = 0; i < tryNum; i++ ) {
-            if(i == 0) {
-                System.out.println("실행 결과");
-            }
-            simulator.runOneTime();
-            simulator.printOneTimeResult();
-        }
+        simulator.run();
         simulator.printWinner();
     }
 

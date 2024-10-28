@@ -19,7 +19,18 @@ public class CarRaceSimulator {
         }
     }
 
-    public void runOneTime() { // 1회 실행
+    public void run() {
+        for(int i = 0; i < tryNum; i++ ) {
+            if(i == 0) {
+                System.out.println("실행 결과");
+            }
+            runOneTime();
+            printOneTimeResult();
+        }
+    }
+
+
+    private void runOneTime() { // 1회 실행
         for(int i = 0; i < carNames.size(); i++) {
             if(Randoms.pickNumberInRange(0, 9) >= 4) {
                 carMoves.set(i, carMoves.get(i) + 1);
@@ -27,7 +38,7 @@ public class CarRaceSimulator {
         }
     }
 
-    public void printOneTimeResult() {
+    private void printOneTimeResult() {
         for(int i = 0; i < carNames.size(); i++) {
             System.out.print(carNames.get(i) + " : ");
             for(int j = 0; j < carMoves.get(i); j++) { //자동차가 움직인 만큼 "-" 출력
