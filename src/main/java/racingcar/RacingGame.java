@@ -12,6 +12,11 @@ public class RacingGame {
         gameCount = 0;
     }
 
+
+    public void gameCountPreparation() {
+        gameCount = Input.readToInteger();
+    }
+
     public void racingCarPreparation() {
         String carNameWithDelimiter = Input.readNames();
         StringSeparator stringSeparator = new StringSeparator(carNameWithDelimiter, ",");
