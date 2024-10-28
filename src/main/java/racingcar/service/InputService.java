@@ -20,7 +20,7 @@ public class InputService {
     }
 
     private List<String> splitCars(String carsInput) {
-        return Stream.of(carsInput.split(","))
+        return Stream.of(carsInput.split(",", -1))
                 .map(String::trim)
                 .toList();
     }
@@ -32,7 +32,7 @@ public class InputService {
     }
 
     private void checkCarsEmpty(List<String> cars) {
-        if (cars.stream().anyMatch(car -> car.length() == 0)) {
+        if (cars.stream().anyMatch(String::isEmpty)) {
             throw new IllegalArgumentException();
         }
     }
