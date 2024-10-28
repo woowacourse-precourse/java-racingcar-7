@@ -1,19 +1,18 @@
 package racingcar.domain;
 
-public class RacingGame {
-    private int[] distances;
+import java.util.ArrayList;
+import java.util.List;
 
-    public RacingGame(int size) {
-        distances = new int[size];
-    }
+public class RacingGame {
+    private List<Integer> distances = new ArrayList<>();
 
     public void startGame(Car[] cars) {
         for(int i = 0; i < cars.length; i++){
-            distances[i] = cars[i].move();
+            distances.add(cars[i].move());
         }
     }
 
-    public int[] getDistances() {
+    public List<Integer> getDistances() {
         return distances;
     }
 }
