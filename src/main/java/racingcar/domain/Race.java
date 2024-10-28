@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 import racingcar.NumberGenerator;
+import racingcar.exception.CustomException;
+import racingcar.exception.ExceptionCode;
 
 import java.util.*;
 
@@ -16,10 +18,19 @@ public class Race {
     }
 
     public void run(final int rounds) {
-        Round round = new Round(cars);
         for (int num = 0; num < rounds; num++) {
-            round.play(createIntegers());
-            System.out.println(round);
+            play(createIntegers());
+            System.out.println(roundResult());
+        }
+    }
+
+    private void play( List<Integer> numbers) {
+        if (cars.size() != numbers.size()) {
+            throw new CustomException(ExceptionCode.SIZE_NOT_MATCHED);
+        }
+        for (int round=0; round<numbers.size(); round++) {
+            Car car = cars.get(round);
+            car.execute(numbers.get(round));
         }
     }
 
@@ -50,5 +61,14 @@ public class Race {
             winners.add(priorityQueue.poll());
         }
         return winners;
+    }
+
+    private String roundResult() {
+        StringBuilder builder = new StringBuilder();
+        for (Car car: cars) {
+            builder.append(car).append("\n");
+        }
+        builder.append("\n");
+        return builder.toString();
     }
 }
