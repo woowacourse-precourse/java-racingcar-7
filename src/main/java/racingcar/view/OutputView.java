@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.dto.CarDto;
@@ -31,6 +32,7 @@ public class OutputView {
 
     public void printWinners(List<CarDto> winners) {
         System.out.println(WINNERS_PREFIX + joinNamesOf(winners));
+        Console.close();
     }
 
     private String joinNamesOf(List<CarDto> cars) {
