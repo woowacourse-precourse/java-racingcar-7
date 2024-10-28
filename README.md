@@ -97,9 +97,13 @@ jun : -----
     - 자동차 이름 입력
         - 자동차 이름 5자 이하 체크
     - 시도할 횟수 입력
+
+
 - Car 클래스 작성
     - 멤버 변수 name, score
     - score 하나 증가시키는 메소드
+
+
 - Race 클래스 작성
     - 멤버 변수 carList, moveCount, maxScore
     - 입력한 시도 횟수에 대한 경주 기능
@@ -109,3 +113,35 @@ jun : -----
     - 차수별 실행 결과 출력
     - 우승자 출력
         - 우승자 판정
+
+### 클래스 다이어그램
+```mermaid
+classDiagram
+    class InputProcessor {
+	    +getCarNames() List~String~
+	    -checkCarNames(String[] cars) List~String~
+	    +getMoveCount() int
+    }
+    class Car {
+	    -String name
+	    -int score
+	    +getName() String
+	    +getScore() int
+	    +increaseScore() int
+    }
+    class Race {
+     -List~Car~ carList
+	   -int moveCount
+	   -int maxScore
+	   +startRace()
+	   +runOnce()
+	   +updateMaxScore(int carScore) boolean
+	   +isForwardMovable() boolean
+	   +displayStatus()
+	   +displayResults()
+	   +findWinner() List~String~
+    }
+    style InputProcessor fill:white,stroke:#333
+    style Car fill:white,stroke:#333
+    style Race fill:white,stroke:#333
+```
