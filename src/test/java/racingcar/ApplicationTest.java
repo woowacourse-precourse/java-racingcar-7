@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -41,16 +42,20 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 시도_횟수_유효하지_않은_입력_예외_테스트() {
-        assertThatThrownBy(() -> runException("pobi,woni", "0"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("시도할 횟수는 1 이상의 숫자여야 합니다.");
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도할 횟수는 1 이상의 숫자여야 합니다.")
+        );
     }
 
     @Test
-    void 예외_테스트() {
-        assertThatThrownBy(() -> runException("pobi,javaji,tooLongName", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 빈 문자열이거나 5자보다 길 수 없습니다.");
+    void 자동차_이름_유효하지_않은_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji,tooLongName", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 빈 문자열이거나 5자보다 길 수 없습니다.")
+        );
     }
 
     @Test
@@ -66,13 +71,13 @@ class ApplicationTest extends NsTest {
                 MOVING_FORWARD, STOP, MOVING_FORWARD
         );
     }
+
     @Test
     void 자동차_최종_위치_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "5");
                     String outputResult = output();
-                    // 각 자동차가 총 3회 시도 후 예상 위치에 도달하는지 확인
                     assertThat(outputResult).containsPattern("pobi : -{1,5}");
                     assertThat(outputResult).containsPattern("woni : -{0,5}");
                 },
