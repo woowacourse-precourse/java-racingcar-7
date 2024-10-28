@@ -42,7 +42,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_중복_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,set", "1"))
+                assertThatThrownBy(() -> runException("pobi, pobi", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -50,7 +50,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_횟수없음_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,set", ""))
+                assertThatThrownBy(() -> runException("pobi,set", " "))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
