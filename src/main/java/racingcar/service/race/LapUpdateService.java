@@ -13,7 +13,7 @@ public class LapUpdateService {
         this.race = race;
     }
 
-    private void runLap() {
+    private void updateEntry() {
         race.getEntry().forEach(racerService::pushOrHold);
     }
 }
