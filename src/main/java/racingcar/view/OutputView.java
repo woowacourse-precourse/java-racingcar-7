@@ -12,7 +12,7 @@ public class OutputView {
     }
 
     public void showStatus(Cars cars) {
-        for (Car car : cars.cars()) {
+        for (Car car : cars.getCars()) {
             showCarLocationToGauge(car);
         }
         System.out.println();

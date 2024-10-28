@@ -4,15 +4,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public record Cars(List<Car> cars) {
+public class Cars {
 
     private static final int CAR_MAX_SCOPE = 100;
     private static final int CAR_FORWARD_CONDITION = 4;
 
-    public Cars {
+    private final List<Car> cars;
+
+    public Cars(List<Car> cars) {
         validateExistCarInList(cars);
         validateCarListLessThenMaxLength(cars);
         validateSameNameIn(cars);
+
+        this.cars = cars;
     }
 
     public List<String> findWinners() {
@@ -66,12 +70,7 @@ public record Cars(List<Car> cars) {
         }
     }
 
-    public static List<Car> makeCarList(String userInput) {
-        List<Car> carlist = new ArrayList<>();
-        for (String carName : userInput.split(",")) {
-            carlist.add(Car.from(carName));
-        }
-
-        return carlist;
+    public List<Car> getCars() {
+        return cars;
     }
 }
