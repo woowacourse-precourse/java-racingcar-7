@@ -8,10 +8,12 @@ import racingcar.model.RacingPlayingCycle;
 import racingcar.model.RacingcarDataVerification;
 import racingcar.splitter.RacingcarSplitter;
 import racingcar.view.InputView;
+import racingcar.view.OuputView;
 
 public class RacingcarController {
     private final FindManyMovingRacingcar findManyMovingRacingcar;
     private final InputView inputView;
+    private final OuputView outputView;
     private final RacingcarDataVerification racingcarDataVerification;
     private final RacingPlayingCycle racingPlayingCycle;
     private final RacingcarSplitter splitter;
@@ -19,6 +21,7 @@ public class RacingcarController {
     public RacingcarController() {
         findManyMovingRacingcar = new FindManyMovingRacingcar();
         inputView = new InputView();
+        outputView = new OuputView();
         racingcarDataVerification = new RacingcarDataVerification();
         racingPlayingCycle = new RacingPlayingCycle();
         splitter = new RacingcarSplitter();
@@ -37,5 +40,7 @@ public class RacingcarController {
         int ManyMoveValue = findManyMovingRacingcar.FindManyMovingLength(racingUserDataList);
         ArrayList<String> RacingWinnerUsers = findManyMovingRacingcar.FindManyMovingCars(racingUserDataList,
                 ManyMoveValue);
+
+        outputView.printResult(String.join(", ", RacingWinnerUsers));
     }
 }
