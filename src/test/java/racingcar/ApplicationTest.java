@@ -49,6 +49,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 멈춤_기능_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    List<Car> cars = List.of(new Car("kim"));
+
+                    RaceService raceService = new RaceService();
+                    raceService.race(cars);
+                    assertThat(cars.get(0).getTotalMove()).isEqualTo(0);
+                },
+                STOP
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
