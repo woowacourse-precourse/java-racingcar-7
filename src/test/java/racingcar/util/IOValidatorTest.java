@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class IOValidatorTest {
 
@@ -33,6 +35,39 @@ class IOValidatorTest {
 
 			assertThatIllegalArgumentException()
 					.isThrownBy(() -> IOValidator.validateContainsSeparator(input));
+		}
+	}
+
+	@Nested
+	class 시도_회수_입력Test {
+		@Test
+		void 성공() {
+			String input = "5";
+
+			assertThatNoException()
+					.isThrownBy(() -> IOValidator.validateNaturalNumber(input));
+		}
+
+		@ParameterizedTest
+		@ValueSource(strings = {"", "kk"})
+		void 실패_숫자_아님(String input) {
+			assertThatIllegalArgumentException()
+					.isThrownBy(() -> IOValidator.validateNaturalNumber(input));
+		}
+
+		@ParameterizedTest
+		@NullSource
+		void 실패_null_입력(String input) {
+			assertThatIllegalArgumentException()
+					.isThrownBy(() -> IOValidator.validateNaturalNumber(input));
+		}
+
+		@Test
+		void 실패_자연수_아님() {
+			String input = "-1";
+
+			assertThatIllegalArgumentException()
+					.isThrownBy(() -> IOValidator.validateNaturalNumber(input));
 		}
 	}
 }
