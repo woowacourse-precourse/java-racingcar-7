@@ -23,7 +23,7 @@
 - [x] 클래스 내 자동차를 이동시키는 메서드 구현
   1. camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용하여 랜덤값 계산
   2. 0 ~ 9 사이의 랜덤값이 4 이상일 경우 1회 전진, 그렇지 않으면 정지
-- [ ] 경주할 자동차 이름을 입력받는 기능
+- [x] 경주할 자동차 이름을 입력받는 기능
   - List\<Car> 반환
   1. 입력값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
   2. 쉼표를 구분자로 하여 경주할 자동차의 이름을 구분
