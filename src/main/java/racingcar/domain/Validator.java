@@ -32,12 +32,20 @@ public class Validator {
     }
 
     public static void validateTryCount(String input) {
+        int tryCount = parseTryCount(input);
+        validatePositiveCount(tryCount);
+    }
+
+    private static int parseTryCount(String input) {
         try {
-            int tryCount = Integer.parseInt(input);
-            if (tryCount < 1) {
-                throw new IllegalArgumentException(INVALID_TRY_COUNT_ERROR);
-            }
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INVALID_TRY_COUNT_ERROR);
+        }
+    }
+
+    private static void validatePositiveCount(int tryCount) {
+        if (tryCount < 1) {
             throw new IllegalArgumentException(INVALID_TRY_COUNT_ERROR);
         }
     }
