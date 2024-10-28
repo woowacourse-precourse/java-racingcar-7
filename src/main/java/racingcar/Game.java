@@ -26,6 +26,7 @@ public class Game {
     }
 
     void readMoveNumber(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
         try{
             String readString = Console.readLine();
             String regex = "^[^0]\\d*$";
