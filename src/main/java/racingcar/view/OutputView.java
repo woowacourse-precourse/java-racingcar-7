@@ -7,18 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
-
-    // 경주할 자동차 입력에 대한 출력
-    public void printOutputCarName(String input) {
-        System.out.println(input);
-    }
-
-    // 시도할 이동 횟수 입력에 대한 출력
-    public void printOutputCarRoundCount(String inputCount) {
-        System.out.println(inputCount);
-    }
-
-    // 자동차들의 이동 상황(차수별 실행 결과)에 대한 출력
     public void displayRoundResults(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " :" + "-".repeat(car.getPosition()));
@@ -26,7 +14,6 @@ public class OutputView {
 
     }
 
-    // 우승자 출력(공동 우승자)
     public void displayWinners(List<Car> winners) {
         if (winners.size() == 1) {
             System.out.println("최종 우승자 : " + winners.getFirst().getName());
