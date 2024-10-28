@@ -1,14 +1,17 @@
 package racingcar.domain;
 
-import static camp.nextstep.edu.missionutils.Randoms.*;
+import racingcar.util.RandomGenerator;
 
 public class Car {
     private final String name;
     private int distance;
+    private final RandomGenerator randomGenerator;
+
     private static final int MOVE_THRESHOLD = 4;
 
-    public Car(String name) {
+    public Car(String name, RandomGenerator randomGenerator) {
         this.name = name;
+        this.randomGenerator = randomGenerator;
         this.distance = 0;
     }
 
@@ -19,7 +22,7 @@ public class Car {
     }
 
     private boolean isMovable() {
-        int randomValue = pickNumberInRange(0, 9);
+        int randomValue = randomGenerator.pickNumberInRange(0, 9);
         return randomValue >= MOVE_THRESHOLD;
     }
 

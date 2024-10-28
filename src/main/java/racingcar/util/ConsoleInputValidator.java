@@ -7,7 +7,6 @@ import java.util.Arrays;
 import static racingcar.error.GameError.*;
 
 public class ConsoleInputValidator {
-
     private static final int MAX_CAR_NAME_LENGTH = 5;
     private static final int MINIMUM_CAR_COUNT = 2;
 
@@ -23,7 +22,7 @@ public class ConsoleInputValidator {
         Arrays.stream(names)
                 .map(String::trim)
                 .forEach(name -> {
-                    validateCarName(name);
+                    validateCarNameLength(name);
                     validateDuplicateCarNames(nameSet, name);
                 });
     }
@@ -34,10 +33,7 @@ public class ConsoleInputValidator {
         }
     }
 
-    private static void validateCarName(String name) {
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException(EMPTY_CAR_NAME_INPUT.getMessage());
-        }
+    private static void validateCarNameLength(String name) {
         if (name.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getMessage());
         }
