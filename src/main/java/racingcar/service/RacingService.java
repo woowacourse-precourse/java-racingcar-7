@@ -41,6 +41,9 @@ public class RacingService {
         if (attemptCount > 20) {
             throw new IllegalArgumentException("이동 횟수가 20을 넘습니다.");
         }
+        if (attemptCount <= 0) {
+            throw new IllegalArgumentException("0 또는 음수는 입력할 수 없습니다.");
+        }
     }
 
     private void advanceByRandom(Car car) {

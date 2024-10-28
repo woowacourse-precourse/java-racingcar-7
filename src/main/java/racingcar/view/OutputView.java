@@ -28,4 +28,8 @@ public class OutputView {
     public static void printNewLine() {
         System.out.println();
     }
+
+    public static void printExcetionMessage(IllegalArgumentException e) {
+        System.out.println("IllegalArgumentException : " + e.getMessage());
+    }
 }
