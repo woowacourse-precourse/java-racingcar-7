@@ -18,6 +18,14 @@ public class Validator {
         }
     }
 
+    public static int checkTimeInputIsValidNumber(int number) {
+        if (number <= 0) {
+            throw new IllegalArgumentException();
+        } else {
+            return number;
+        }
+    }
+
     public static int checkTimeInputFormat(String input) {
         try {
             return Integer.parseInt(input);

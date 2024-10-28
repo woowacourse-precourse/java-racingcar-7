@@ -21,6 +21,7 @@ public class InputHandler {
 
     public static int getTimes() {
         String input = Console.readLine();
-        return Validator.checkTimeInputFormat(input);
+        int number = Validator.checkTimeInputFormat(input);
+        return Validator.checkTimeInputIsValidNumber(number);
     }
 }
