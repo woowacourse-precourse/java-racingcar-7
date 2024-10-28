@@ -10,5 +10,6 @@ public class Application {
         int raceCount = InputHandler.getRaceCount();
         Validator.validateRaceCount(raceCount);
 
+
     }
 }
