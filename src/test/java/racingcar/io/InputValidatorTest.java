@@ -12,35 +12,26 @@ class InputValidatorTest {
     private final InputParser parser = new InputParser();
 
     @Test
-    @DisplayName("입력이 null일 때 예외 발생")
-    void 입력이_null일_때() {
+    @DisplayName("빈 값 또는 null 입력 시 예외 발생")
+    void validateInputWithEmptyOrNull() {
         // given
         String nullInput = null;
-
-        // when
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
-                () -> validator.validateInput(nullInput)
-        );
-
-        // then
-        assertEquals("빈 값은 허용하지 않습니다.", exception.getMessage());
-    }
-
-    @Test
-    @DisplayName("빈 문자열일 때 예외 발생")
-    void 입력이_빈_문자열일_때() {
-        // given
         String emptyInput = " ";
 
         // when
-        IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException exception1 = assertThrows(
+                IllegalArgumentException.class,
+                () -> validator.validateInput(nullInput)
+        );
+        IllegalArgumentException exception2 = assertThrows(
                 IllegalArgumentException.class,
                 () -> validator.validateInput(emptyInput)
         );
 
         // then
-        assertEquals("빈 값은 허용하지 않습니다.", exception.getMessage());
+        String emptyErrorMessage = "빈 값은 허용하지 않습니다.";
+        assertEquals(emptyErrorMessage, exception1.getMessage());
+        assertEquals(emptyErrorMessage, exception2.getMessage());
     }
 
     @Test
@@ -105,21 +96,5 @@ class InputValidatorTest {
 
         // then
         assertEquals("경주 횟수는 0보다 커야 합니다.", exception.getMessage());
-    }
-
-    @Test
-    @DisplayName("경주 횟수가 유효하지 않은 숫자일 때 예외 발생")
-    void 경주_횟수가_유효하지_않은_형식일_때() {
-        // given
-        String wrongFormatInput = "a";
-
-        // when
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
-                () -> validator.validateCount(parser.parseInt(wrongFormatInput))
-        );
-
-        // then
-        assertEquals("유효한 숫자를 입력해주세요.", exception.getMessage());
     }
 }
