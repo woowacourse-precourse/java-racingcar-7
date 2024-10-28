@@ -8,7 +8,7 @@ import racingcar.domain.Car;
 public class CarService {
     private static final String COMMA = ",";
 
-    public ArrayList<String> splitCarNames(final String carNames) {
+    public List<String> splitCarNames(final String carNames) {
         return new ArrayList<>(Arrays.stream(carNames.split(COMMA)).toList());
     }
 

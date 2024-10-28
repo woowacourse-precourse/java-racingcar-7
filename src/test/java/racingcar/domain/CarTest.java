@@ -18,6 +18,7 @@ class CarTest {
     @Test
     void getName() {
         String expectedName = "pobi";
+
         assertEquals(expectedName, pobi.getName());
     }
 
@@ -25,6 +26,7 @@ class CarTest {
     @Test
     void getLocation() {
         int expectedLocation = 0;
+        
         assertEquals(expectedLocation, pobi.getLocation());
     }
 

@@ -18,7 +18,7 @@ class RaceTest {
         Car woni = new Car("woni");
         Car jun = new Car("jun");
 
-        ArrayList<Car> carList = new ArrayList<>();
+        List<Car> carList = new ArrayList<>();
         carList.add(pobi);
         carList.add(woni);
         carList.add(jun);
@@ -29,7 +29,7 @@ class RaceTest {
     @DisplayName("레이스에 참가한 차들을 반환한다.")
     @Test
     void getCarList() {
-        ArrayList<Car> expectedCarArrayList = new ArrayList<>();
+        List<Car> expectedCarArrayList = new ArrayList<>();
         expectedCarArrayList.add(new Car("pobi"));
         expectedCarArrayList.add(new Car("woni"));
         expectedCarArrayList.add(new Car("jun"));

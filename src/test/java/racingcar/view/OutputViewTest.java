@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
@@ -61,7 +62,7 @@ class OutputViewTest {
     void printWinners() {
         Car pobi = new Car("pobi");
         Car jun = new Car("jun");
-        ArrayList<Car> winnersList = Stream.of(pobi, jun)
+        List<Car> winnersList = Stream.of(pobi, jun)
                 .collect(Collectors.toCollection(ArrayList::new));
 
         SystemOut();

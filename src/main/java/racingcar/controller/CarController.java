@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.service.CarService;
@@ -16,7 +15,7 @@ public class CarController {
     }
 
     public List<String> getCarNames(final String carNames) {
-        ArrayList<String> splitCarNames = carService.splitCarNames(carNames);
+        List<String> splitCarNames = carService.splitCarNames(carNames);
 
         splitCarNames.forEach(carValidator::carNameLengthLimit5);
         carValidator.noDuplicateCarNames(splitCarNames);
