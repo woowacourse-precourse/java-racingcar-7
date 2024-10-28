@@ -51,3 +51,26 @@
   - 가장 많이 전진한 자동차(들) 찾기
   - 다수인 경우 쉼표와 공백으로 구분 `", "`
   - 우승자 이름 출력 (`"최종 우승자 : pobi, jun"`)
+
+# 도메인 설계
+- Car
+  - name: CarName
+  - position: int
+  - move(MoveStrategy moveStrategy): void
+
+- Cars
+  - cars: List<Car>
+  - moveStrategy: MoveStrategy
+  - moveAll(): void
+  - getMaxPosition(): List<Car>
+  - createCars(String carNames): List<Car>
+
+- RaceResult
+  - cars: List<Car>
+  - getWinners(): List<String>
+
+- MoveStrategy
+  - isMovable(): boolean
+
+- RandomMoveStrategy
+  - isMovable(): boolean  
