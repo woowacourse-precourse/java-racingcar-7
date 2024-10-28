@@ -1,0 +1,36 @@
+package racingcar.DTO;
+
+import java.util.List;
+import racingcar.Util.Exception.ErrorMessage;
+import racingcar.Validation.NameValidation;
+import racingcar.Validation.TrialCountValidation;
+
+public class RaceInfoDTO {
+    private List<String> carNames;
+    private Integer trialCount;
+
+    public RaceInfoDTO(List<String> carNames, Integer trialCount) {
+        if (NameValidation.isLongName(carNames)) {
+            throw new IllegalArgumentException(ErrorMessage.NAME_TOO_LONG.getMessage());
+        }
+        if (NameValidation.hasDuplicate(carNames)) {
+            throw new IllegalArgumentException(ErrorMessage.NAME_DUPLICATE.getMessage());
+        }
+        if (TrialCountValidation.isNegative(trialCount)) {
+            throw new IllegalArgumentException(ErrorMessage.TRIAL_NEGATIVE.getMessage());
+        }
+        if (TrialCountValidation.isZero(trialCount)) {
+            throw new IllegalArgumentException(ErrorMessage.TRIAL_ZERO.getMessage());
+        }
+        this.carNames = carNames;
+        this.trialCount = trialCount;
+    }
+
+    public List<String> getCarNames() {
+        return carNames;
+    }
+
+    public Integer getTrialCount() {
+        return trialCount;
+    }
+}
