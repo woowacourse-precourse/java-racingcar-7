@@ -44,30 +44,26 @@ class ApplicationTest extends NsTest {
         application = new Application();
         application.list = new Car[]{
                 new Car("car1", false, new StringBuffer("")),
-                new Car("car2", false, new StringBuffer("")),
-                new Car("car3", false, new StringBuffer(""))
+                new Car("car2", false, new StringBuffer(""))
         };
     }
 
     @Test
     void add_전진_테스트() {
-        // 랜덤 숫자를 직접 설정
+        // true 일 경우 전진 하는 것
         application.list[0] = new Car("car1", true, new StringBuffer("-"));
-        application.list[1] = new Car("car2", false, new StringBuffer(""));
-        application.list[2] = new Car("car3", true, new StringBuffer("-"));
+        application.list[1] = new Car("car2", true, new StringBuffer(""));
+        assertThat(application.list[0].getRacer_point().toString()).isEqualTo("--");
+        assertThat(application.list[1].getRacer_point().toString()).isEqualTo("-");
 
-        application.add();
-
-        assertThat(application.list[0].getRacer_point().toString()).isEqualTo("-");
-        assertThat(application.list[1].getRacer_point().toString()).isEqualTo("");
-        assertThat(application.list[2].getRacer_point().toString()).isEqualTo("-");
     }
 
     @Test
     void add_모두_멈춤_테스트() {
-        application.add(); // 모든 자동차가 멈추는 상황
-        assertThat(application.list[0].getRacer_point().toString()).isEqualTo("");
-        assertThat(application.list[1].getRacer_point().toString()).isEqualTo("");
-        assertThat(application.list[2].getRacer_point().toString()).isEqualTo("");
+        // false 일 경우 전진 하는 것
+        application.list[0] = new Car("car1", false, new StringBuffer("--"));
+        application.list[1] = new Car("car2", false, new StringBuffer("-"));
+        assertThat(application.list[0].getRacer_point().toString()).isEqualTo("--");
+        assertThat(application.list[1].getRacer_point().toString()).isEqualTo("-");
     }
 }
