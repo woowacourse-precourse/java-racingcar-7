@@ -40,4 +40,12 @@ public class CarServiceTest {
         assertEquals(0, cars.get("B"));
     }
 
+    @Test
+    @DisplayName("자동차 입력값을 HashMap으로 반환하는 메서드 테스트")
+    void testSplitCarNames() {
+        String input = "A,B,C";
+        HashMap<String, Integer> result = carService.splitCarNames(input);
+
+        assertEquals(cars, result);
+    }
 }
