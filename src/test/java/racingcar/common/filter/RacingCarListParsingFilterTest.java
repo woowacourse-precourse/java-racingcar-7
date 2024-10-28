@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.common.exception.InvalidCarNameException;
 import racingcar.common.exception.DuplicateCarNameException;
+import racingcar.common.filter.mock.MockRaceFilterChain;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
 

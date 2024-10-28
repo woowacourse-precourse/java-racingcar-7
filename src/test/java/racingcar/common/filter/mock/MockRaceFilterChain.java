@@ -1,7 +1,9 @@
-package racingcar.common.filter;
+package racingcar.common.filter.mock;
 
 import java.util.Collections;
 import java.util.List;
+import racingcar.common.filter.Filter;
+import racingcar.common.filter.RaceFilterChain;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
 

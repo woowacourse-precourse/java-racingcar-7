@@ -1,4 +1,4 @@
-package racingcar.common.filter;
+package racingcar.common.filter.mock;
 
 import racingcar.common.filter.executor.RaceExecutor;
 import racingcar.model.RacingCarList;
