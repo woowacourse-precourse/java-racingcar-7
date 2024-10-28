@@ -5,7 +5,7 @@ import racingcar.domain.Winner;
 
 import java.util.List;
 
-import static racingcar.constants.PrintMessages.*;
+import static racingcar.view.PrintMessages.*;
 
 public class OutputView {
 
@@ -17,9 +17,12 @@ public class OutputView {
         System.out.println(SET_TRY_COUNT_MESSAGE);
     }
 
-    public void printCurrentResult(List<Car> cars) {
+    public void printRacingResultMessage() {
         System.out.println(CURRENT_RESULT);
-        for (Car car : cars) { //
+    }
+
+    public void printRacingResult(List<Car> cars) {
+        for (Car car : cars) {
             String carName = car.getName();
             String hyphenPoint = replacePointToHyphen(car.getPoint());
 
@@ -42,8 +45,6 @@ public class OutputView {
 
     private String replacePointToHyphen(int point) {
         String hyphenPoint = "";
-        //불필요한 반복이 수행되는 느낌
-        //위닝포인트 자체를 "-"로 출력할 수 있으면?
         for (int i = 0; i < point; i++) {
             hyphenPoint += "-";
         }

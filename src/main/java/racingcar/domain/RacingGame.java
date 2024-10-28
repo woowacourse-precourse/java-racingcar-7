@@ -8,7 +8,7 @@ public class RacingGame {
 
     private List<Car> cars;
     private int roofCount;
-    OutputView outputView = new OutputView();
+    private OutputView outputView = new OutputView();
 
     public RacingGame(List<Car> cars, int roofCount) {
         this.cars = cars;
@@ -20,7 +20,7 @@ public class RacingGame {
             for (Car car : cars) {
                 car.tryMove();
             }
-            outputView.printCurrentResult(cars);
+            outputView.printRacingResult(cars);
         }
     }
 }

@@ -27,11 +27,11 @@ public class RacingCarController {
         int roofCount = inputView.readRoofCount();
 
         final RacingGame racingGame = new RacingGame(cars, roofCount);
+        outputView.printRacingResultMessage();
         racingGame.startRacing();
 
         Winner winner = new Winner();
         winner.addWinner(cars);
-
         outputView.printFinalWinner(winner);
     }
 }
