@@ -1,7 +1,6 @@
 package racingcar;
 
 import racingcar.controller.RaceController;
-import racingcar.domain.RequestRaceDto;
 
 public class Application {
     public static void main(String[] args) {
