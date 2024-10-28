@@ -17,7 +17,7 @@ public class CarsTest {
         String names = "yoon,yoo,biny";
 
         // when
-        Cars cars = Cars.createCarsFrom(names);
+        Cars cars = Cars.createCarsFrom(names, () -> true);
 
         // then
         assertThat(cars.size()).isEqualTo(3);
@@ -26,7 +26,7 @@ public class CarsTest {
     @Test
     @DisplayName("중복된 이름이 존재하면 에외가 발생한다.")
     void 중복된_자동차_이름_테스트() {
-        assertThatThrownBy(() -> Cars.createCarsFrom("yoon,yoo,biny,yoon"))
+        assertThatThrownBy(() -> Cars.createCarsFrom("yoon,yoo,biny,yoon", () -> true))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 중복될 수 없습니다.");
     }

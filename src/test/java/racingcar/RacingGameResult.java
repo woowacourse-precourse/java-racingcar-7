@@ -12,15 +12,15 @@ import racingcar.domain.car.Cars;
 public class RacingGameResult {
     @Test
     @DisplayName("제일 멀리 주행한 자동차가 우승한다.")
-    void 자동차_경주_우승_테스트(){
+    void 자동차_경주_우승_테스트() {
         // given
-        Cars cars = Cars.createCarsFrom("yoon,yoo,biny");
+        Cars cars = Cars.createCarsFrom("yoon,yoo,biny", () -> true);  // 항상 이동
         List<Car> carList = cars.getCars();
 
         // when
-        carList.get(0).moveCar(4);
-        carList.get(1).moveCar(3);
-        carList.get(2).moveCar(4);
+        carList.get(0).move(() -> true);
+        carList.get(1).move(() -> false);
+        carList.get(2).move(() -> true);
 
         // then
         List<String> winners = cars.findWinners();
