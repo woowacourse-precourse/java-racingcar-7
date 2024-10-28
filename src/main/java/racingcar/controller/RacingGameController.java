@@ -17,6 +17,7 @@ public class RacingGameController {
         OutputView.printExecutionResult();
         for (int nowRaceTurn = 0; nowRaceTurn < raceCount.getValue(); nowRaceTurn++) {
             carScores = RaceService.playGame(carScores);
+            System.out.println();
         }
 
         RaceService.findFinalWinner(carScores);
