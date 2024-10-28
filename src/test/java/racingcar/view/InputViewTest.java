@@ -43,10 +43,10 @@ class InputViewTest {
         provideSetInputStream(input);
 
         // when
-        int inputPlayCount = inputView.inputTryCount();
+        int tryCount = inputView.inputTryCount();
 
         // then
-        Assertions.assertEquals(input, String.valueOf(inputPlayCount));
+        Assertions.assertEquals(input, String.valueOf(tryCount));
     }
 
     @ParameterizedTest(name = "입력값: \"{0}\"")
