@@ -47,63 +47,48 @@
 
 ### 1. 기능
 
-- [ ] "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)" 출력
-- [ ] 경주할 자동차 이름 입력(5자 이하)
-- [ ] "시도할 횟수는 몇 회인가요?"
-- [ ] 시도할 횟수 입력
-- [ ] 잘못된 값 입력시 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료
-- [ ] 주어진 횟수 동안 자동차 이동
-    - [ ] 각 회차마다 이동 거리 무작위 값(0 - 9) 구하기
-        - [ ] 무작위 값이 4 이상일 경우 전진
-        - [ ] 4 미만일 경우 멈춤
-    - [ ] 회차별 실행 결과 출력
-- [ ] 경주 완료 후 우승자 출력
-    - [ ] 여러명일 경우 쉽표(,)로 구분
+- [x] "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)" 출력
+- [x] 경주할 자동차 이름 입력(5자 이하)
+- [x] "시도할 횟수는 몇 회인가요?"
+- [x] 시도할 횟수 입력
+- [x] 잘못된 값 입력시 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료
+- [x] 주어진 횟수 동안 자동차 이동
+    - [x] 각 회차마다 이동 거리 무작위 값(0 - 9) 구하기
+        - [x] 무작위 값이 4 이상일 경우 전진
+        - [x] 4 미만일 경우 멈춤
+    - [x] 회차별 실행 결과 출력
+- [x] 경주 완료 후 우승자 출력
+    - [x] 여러명일 경우 쉽표(,)로 구분
 
 ### 2. 세부 조건
 
+- [x] 시도할 횟수는 정수 범위
+- [x] 자동차 이름 입력값에 공백 있으면 에러 발생
+- [x] 한번에 1만큼 전진
 - [ ] 자동차 대수 범위
-- [ ] 시도할 횟수 범위
-- [ ] 자동차 이름 입력값에 공백 있으면 에러 발생
-- [ ] 한번에 1만큼 전진
 
 ### 3. 프로그래밍
 
-- [ ] JDK 21 버전에서 실행 가능해야 한다.
-- [ ] 프로그램 실행의 시작점은 Application의 main()이다.
-- [ ] build.gradle 파일은 변경할 수 없으며, 제공된 라이브러리 이외의 외부 라이브러리는 사용하지 않는다.
-- [ ] 프로그램 종료 시 System.exit()를 호출하지 않는다.
-- [ ] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 등의 이름을 바꾸거나 이동하지 않는다.
-- [ ] 자바 코드 컨벤션을 지키면서 프로그래밍한다.
-    - [ ] 기본적으로 Java Style Guide를 원칙으로 한다.
+- [x] JDK 21 버전에서 실행 가능해야 한다.
+- [x] 프로그램 실행의 시작점은 Application의 main()이다.
+- [x] build.gradle 파일은 변경할 수 없으며, 제공된 라이브러리 이외의 외부 라이브러리는 사용하지 않는다.
+- [x] 프로그램 종료 시 System.exit()를 호출하지 않는다.
+- [x] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 등의 이름을 바꾸거나 이동하지 않는다.
+- [x] 자바 코드 컨벤션을 지키면서 프로그래밍한다.
+    - [x] 기본적으로 Java Style Guide를 원칙으로 한다.
 
-- [ ] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.  
+- [x] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.  
   예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.  
   힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
-- [ ] 3항 연산자를 쓰지 않는다.
-- [ ] 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- [ ] JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
-    - [ ] 테스트 도구 사용법이 익숙하지 않다면 아래 문서를 참고하여 학습한 후 테스트를 구현한다.
-        - [ ] [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide)
-        - [ ] [AssertJ User Guide](https://assertj.github.io/doc/)
-        - [ ] [AssertJ Exception Assertions](https://www.baeldung.com/assertj-exception-assertion)
-        - [ ] [Guide to JUnit 5 Parameterized Tests](https://www.baeldung.com/parameterized-tests-junit-5)
+- [x] 3항 연산자를 쓰지 않는다.
+- [x] 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
+- [x] JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
 
 #### 라이브러리
 
-- [ ] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
-    - [ ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
-    - [ ] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-
-## 테스트 케이스
-
-### 주어진 예시
-
-- [ ] 
-
-### 추가 예시
-
-- [ ] 
+- [x] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+    - [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+    - [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 ## 클래스 역할
 
@@ -141,137 +126,6 @@
 
 #### InputMessages
 
-## 디렉토리 구조
-
 ## 클래스 다이어그램
 
-```mermaid
-classDiagram
-    direction BT
-    class Application {
-        + main(String[]) void
-    }
-    class Car {
-        - Rule rule
-        - Position position
-        - String name
-        + getPositionAsString() String
-        + move(int) void
-        + getName() String
-        + getPosition() int
-    }
-    class CarFactory {
-        + createCar(String) Car
-    }
-    class Cars {
-        - List~Car~ cars
-        - findMaxDistance() int
-        + addCar(Car) void
-        + findWinners() List~String~
-        + getCars() List~Car~
-    }
-    class ExceptionMessages {
-        <<enumeration>>
-        - String message
-        +  INVALID_CAR_NAME_FORMAT
-        +  INVALID_ROUNDS_INPUT
-        +  NAME_TOO_LONG
-        +  EMPTY_NAME
-        + valueOf(String) ExceptionMessages
-        + values() ExceptionMessages[]
-        + getMessage() String
-    }
-    class InputHandler {
-        - int numberOfRound
-        - String[] carNames
-        - InputParser inputParser
-        - InputValidator inputValidator
-        - String input
-        - readCarNames() void
-        + processCarNamesInput() String[]
-        - readNumberOfRound() void
-        + closeConsole() void
-        + processNumberOfRoundInput() int
-    }
-    class InputMessages {
-        <<enumeration>>
-        +  INPUT_NUMBER_OF_ROUNDS
-        - String messages
-        +  INPUT_CAR_NAMES
-        + valueOf(String) InputMessages
-        + getMessages() String
-        + values() InputMessages[]
-    }
-    class InputParser {
-        - String NAME_DELIMITER
-        + parseCarNames(String) String[]
-    }
-    class InputValidator {
-        + validateNumberOfRound(int) void
-        - isEmptyName(String) boolean
-        - containsWhiteSpace(String) boolean
-        - isPositiveRoundNumber(int) boolean
-        + validateCarNames(String[]) void
-        - isValidNameLength(String) boolean
-    }
-    class Output {
-        - String WINNER_PREFIX
-        - String NEW_LINE
-        - String RACE_RESULT
-        - String NAME_POSITION_DELIMITER
-        - String WINNER_DELIMITER
-        + printRoundResult(List~Car~) void
-        + printMessage(String) void
-        + printRoundResultMessage() void
-        + printWinners(List~String~) void
-    }
-    class Position {
-        - int position
-        - int DISTANCE
-        + moveForward() void
-        + getPosition() int
-        + toString() String
-    }
-    class Race {
-        - playRound(List~Car~) void
-        + startRace(List~Car~, int) void
-    }
-    class RaceController {
-        - CarFactory carFactory
-        - int numOfRounds
-        - Cars cars
-        - InputHandler inputHandler
-        - Race race
-        - setupRace() void
-        - createCars(String[]) void
-        + runRace() void
-    }
-    class RandomNumber {
-        + createRandomNumber() int
-    }
-    class Rule {
-        - int MOVING_THRESHOLD
-        + canMove(int) boolean
-    }
-
-    Application ..> CarFactory: «create»
-    Application ..> InputHandler: «create»
-    Application ..> RaceController: «create»
-    Car "1" *--> "position 1" Position
-    Car ..> Position: «create»
-    Car "1" *--> "rule 1" Rule
-    Car ..> Rule: «create»
-    CarFactory ..> Car: «create»
-    Cars "1" *--> "cars *" Car
-    InputHandler ..> InputParser: «create»
-    InputHandler "1" *--> "inputParser 1" InputParser
-    InputHandler "1" *--> "inputValidator 1" InputValidator
-    InputHandler ..> InputValidator: «create»
-    RaceController "1" *--> "carFactory 1" CarFactory
-    RaceController "1" *--> "cars 1" Cars
-    RaceController ..> Cars: «create»
-    RaceController "1" *--> "inputHandler 1" InputHandler
-    RaceController ..> Race: «create»
-    RaceController "1" *--> "race 1" Race
-
-```
+![classdiagram_1](https://github.com/user-attachments/assets/27f59a77-91b8-456f-bdb8-87ff5ef247d8)
