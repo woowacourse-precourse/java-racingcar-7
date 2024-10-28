@@ -12,9 +12,15 @@ public class RacingGameFactory {
     private static final InputViewValidator inputViewValidator = new InputViewValidator();
     private static final InputView inputView = new InputView(inputViewValidator);
     private static final OutputView outputView = new OutputView();
-    private static final GameSettings settings = new GameSettings(0, 9, 4);
-    private static final RacingGameService service = new RacingGameService(settings);
+    private static final RacingGameService service = new RacingGameService(createGameSettings());
     private static final CarNameValidator carNameValidator = new CarNameValidator();
+
+    private static GameSettings createGameSettings() {
+        int randomMinValue = 0;
+        int randomMaxValue = 9;
+        int moveThreshold = 4;
+        return new GameSettings(randomMinValue, randomMaxValue, moveThreshold);
+    }
 
     public RacingGameController initializeController() {
         return new RacingGameController(inputView, outputView, service, carNameValidator);

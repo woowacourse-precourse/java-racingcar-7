@@ -14,8 +14,7 @@ public class RacingGameService {
     }
 
     public void race(Car car) {
-        int pickedNumber = Randoms.pickNumberInRange(gameSettings.randomMinValue(),
-                gameSettings.randomMaxValue());
+        int pickedNumber = Randoms.pickNumberInRange(gameSettings.randomMinValue(), gameSettings.randomMaxValue());
         if (pickedNumber >= gameSettings.moveThreshold()) {
             car.move();
         }
