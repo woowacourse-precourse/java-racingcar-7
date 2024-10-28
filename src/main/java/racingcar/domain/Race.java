@@ -7,13 +7,10 @@ import java.util.Set;
 public class Race {
 
     private final List<Car> cars;
-    private final NumberGenerator numberGenerator;
 
-    public Race(List<String> carNames, NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
-
-        validateDuplicates(carNames);
-        this.cars = createCars(carNames);
+    public Race(List<Car> cars) {
+        validateDuplicates(cars);
+        this.cars = cars;
     }
 
     public List<Car> moveAll() {
@@ -29,20 +26,15 @@ public class Race {
                 .toList();
     }
 
-    private void validateDuplicates(List<String> carNames) {
+    private void validateDuplicates(List<Car> cars) {
         Set<String> uniqueCarNames = new HashSet<>();
 
-        for (String carName : carNames) {
+        for (Car car : cars) {
+            String carName = car.getName();
             if (!uniqueCarNames.add(carName)) {
-                throw new IllegalArgumentException("중복된 차 이름이 있습니다.");
+                throw new IllegalArgumentException("중복된 이름의 자동차가 존재합니다.");
             }
         }
-    }
-
-    private List<Car> createCars(List<String> carNames) {
-        return carNames.stream()
-                .map(carName -> new Car(carName, numberGenerator))
-                .toList();
     }
 
     private int getMaxDistance() {
@@ -50,9 +42,5 @@ public class Race {
                 .mapToInt(Car::getDistance)
                 .max()
                 .orElse(0);
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 }

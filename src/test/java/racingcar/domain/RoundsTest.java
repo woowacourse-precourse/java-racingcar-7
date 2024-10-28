@@ -9,6 +9,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class RoundsTest {
 
+    NumberGenerator forwardGenerator = () -> 4;
+    NumberGenerator stopGenerator = () -> 3;
+
     @DisplayName("시도할 횟수 입력 실패 : 문자 입력")
     @Test
     void toIntTest() {
@@ -32,12 +35,14 @@ class RoundsTest {
     @DisplayName("라운드 반복 성공")
     @Test
     void repeatTest() {
-        List<String> carNames = List.of("pobi");
-        Race race = new Race(carNames, () -> 4);
+        Car pobi = new Car("pobi", forwardGenerator);
+        List<Car> cars = List.of(pobi);
+
+        Race race = new Race(cars);
         Rounds rounds = new Rounds("3");
 
         rounds.repeat(race::moveAll);
 
-        Assertions.assertThat(race.getCars().get(0).getDistance()).isEqualTo(3);
+        Assertions.assertThat(pobi.getDistance()).isEqualTo(3);
     }
 }

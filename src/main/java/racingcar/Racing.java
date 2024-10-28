@@ -22,9 +22,16 @@ public class Racing {
 
     public void ready() {
         List<String> carNames = input.readCarNames();
-        Race race = new Race(carNames, numberGenerator);
+        List<Car> cars = setUpCars(carNames);
+        Race race = new Race(cars);
 
         start(race);
+    }
+
+    private List<Car> setUpCars(List<String> carNames) {
+        return carNames.stream()
+                .map(carName -> new Car(carName, numberGenerator))
+                .toList();
     }
 
     private void start(Race race) {
