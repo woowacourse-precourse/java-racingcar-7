@@ -9,10 +9,11 @@ public class InputView {
         String carNames = Console.readLine();
         Validator.checkCarNamesNotEmpty(carNames);
 
-        return Console.readLine();
+        return carNames;
     }
 
     public static int InputRoundNumber() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
         String roundCountInput = Console.readLine();
         int roundCount = Validator.parseRoundCount(roundCountInput);
         Validator.checkRoundCountPositive(roundCount);
