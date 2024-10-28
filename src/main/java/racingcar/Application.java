@@ -116,7 +116,14 @@ public class Application {
         }
     }
 
-
+    //feat:1-2. 자동차 이름이 숫자일 경우 에러 출력(함수화)
+    public static boolean checkNumericValidCars(String checkCar){
+        if (isNmberic(checkCar)){
+            throw new IllegalArgumentException("자동차 이름은 숫자일 수 없습니다.");
+        }else{
+            return true;
+        }
+    }
 
 
 }
