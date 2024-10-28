@@ -74,5 +74,7 @@ public class IOManager {
         }
 
         System.out.println(builder);
+        carManager.reset();
+        GameManager.getInstance().reset();
     }
 }

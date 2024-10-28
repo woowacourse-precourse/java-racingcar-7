@@ -59,4 +59,8 @@ public class CarManager {
 
         IOManager.printResult(winners);
     }
+
+    public void reset() {
+        carList.clear();
+    }
 }

@@ -32,4 +32,8 @@ public class GameManager {
     private void playSingleTurn() {
         carManager.getRandomNumber();
     }
+
+    public void reset() {
+        endTurn = 0;
+    }
 }
