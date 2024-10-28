@@ -2,6 +2,7 @@
 
 # 구현할 기능 목록
 - Model
+    - [x] ErrorMessage
     - [x] TextSeparator
     - [x] Car
     - [x] CarName
@@ -17,6 +18,7 @@
 - Controller
     - [x] GameController
 - Test
+    - [ ] TextSeparatorTest
     - [x] CarNameTest
     - [x] MovementTest
     - [x] ProgressResultGeneratorTest
