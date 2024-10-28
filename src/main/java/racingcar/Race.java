@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Race {
     private List<Car> cars;
-    private RacePrinter printer;
+    private Printer printer;
 
-    public Race(List<String> carNames, MoveStrategy moveStrategy) {
+    public Race(List<String> carNames, MoveStrategy moveStrategy, Printer printer) {
         this.cars = new ArrayList<>();
         for (String name : carNames) {
             cars.add(new Car(name, moveStrategy));
         }
-        this.printer = new RacePrinter();
+        this.printer = printer;
     }
 
     public void play(int rounds) {
