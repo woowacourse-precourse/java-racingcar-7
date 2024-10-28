@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
 import racingcar.service.RaceManager;
 import racingcar.service.WinnerDeterminer;
 import racingcar.validator.Validator;
@@ -14,15 +15,12 @@ public class MainController {
     private final Validator validator = new Validator();
 
     public void run() {
-        String inputCarName = view.inputCarName();
+        String inputCarNames = view.inputCarName();
         String inputCarRoundCount = view.inputCarRoundCount();
 
-        validator.validateAllInput(inputCarName, inputCarRoundCount);
+        validator.validateAllInput(inputCarNames, inputCarRoundCount);
 
-        List<Car> cars = Arrays.stream(inputCarName.split(","))
-                .map(Car::new)
-                .toList();
-
+        List<Car> cars = CarFactory.createCarsFromInput(inputCarNames);
         int carRoundCount = Integer.parseInt(inputCarRoundCount);
 
         RaceManager raceManager = new RaceManager(view, cars, carRoundCount);
