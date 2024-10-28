@@ -45,7 +45,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException(",yunju", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("자동차의 이름은 한 글자 이상만 가능합니다.")
+                    .hasMessageContaining("자동차의 이름은 최소")
         );
     }
 
@@ -54,7 +54,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,leeyunju", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("자동차의 이름은 다섯 글자 이하만 가능합니다.")
+                        .hasMessageContaining("자동차의 이름은 최대")
         );
     }
 
@@ -72,7 +72,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,yunju", "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("시도 횟수는 0회 이상 가능합니다.")
+                        .hasMessageContaining("시도 횟수는 최소")
         );
     }
 
