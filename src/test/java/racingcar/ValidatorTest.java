@@ -25,4 +25,22 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름에는 공백이 포함될 수 없습니다.");
     }
+
+    @Test
+    @DisplayName("시도 횟수가 숫자가 아닐 경우 예외를 던진다")
+    void validateTryCountNotNumber() {
+        String input = "abc";
+        assertThatThrownBy(() -> Validator.validateTryCnt(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 숫자여야 합니다.");
+    }
+
+    @Test
+    @DisplayName("시도 횟수가 1 미만일 경우 예외를 던진다")
+    void validateTryCountBelowOne() {
+        String input = "0";
+        assertThatThrownBy(() -> Validator.validateTryCnt(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 1 이상이어야 합니다.");
+    }
 }
