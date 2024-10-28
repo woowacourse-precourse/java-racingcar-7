@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,5 +18,11 @@ public class RunApplilcation {
 
         Race race=new Race();
         race.nRoundGame(tryNumber,carList);
+
+        CalculateWinner calculateWinner=new CalculateWinner();
+        String winnerNames=calculateWinner.calculateWinner(carList);
+
+        OutputView outputView=new OutputView();
+        outputView.printWinner(winnerNames);
     }
 }
