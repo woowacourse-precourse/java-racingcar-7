@@ -99,6 +99,33 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 구분자_예외_테스트_1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni,rita,,", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("쉼표가 2개 이상으로 찍힌 부분이 있습니다.")
+        );
+    }
+
+    @Test
+    void 구분자_예외_테스트_2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",,,", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("쉼표가 2개 이상으로 찍힌 부분이 있습니다.")
+        );
+    }
+
+    @Test
+    void 구분자_예외_테스트_3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,woni,rita", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("자동차 이름에 빈 값이 포함되어 있습니다.")
+        );
+    }
+
 
 
     @Override
