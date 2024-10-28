@@ -35,7 +35,7 @@ public class Race {
     }
 
     private void executeRaceRound(int round) {
-//        outputView.printRound(round);
+        outputView.printRound(round);
         for (RacingCar racingCar : racingCarList) {
             moveCar(racingCar);
         }
