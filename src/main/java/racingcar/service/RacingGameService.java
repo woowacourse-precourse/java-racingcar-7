@@ -7,7 +7,6 @@ import racingcar.util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.random.RandomGenerator;
 
 public class RacingGameService {
 
@@ -42,7 +41,7 @@ public class RacingGameService {
 
     public void moveCars() {
         for (Car car : racingGame.getCars()) {
-            boolean shouldMove = RandomGenerator.shouldMove();
+            boolean shouldMove = RandomNumberGenerator.shouldMove();
             car.move(shouldMove);
         }
     }
