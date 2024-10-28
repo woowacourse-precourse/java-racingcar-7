@@ -18,9 +18,11 @@ class RacingRecordTest {
         //when
         //then
         assertThat(racingRecord).isNotNull();
+
         assertThat(racingRecord)
                 .extracting("moveDistance")
                 .isEqualTo(0);
+
         assertThat(racingRecord)
                 .extracting("car")
                 .extracting("name")

@@ -34,6 +34,7 @@ class RacingGameTest {
                 .extracting("car")
                 .extracting("name")
                 .containsExactly("pobi", "woni", "jun");
+
         assertThat(records)
                 .extracting("moveDistance")
                 .containsExactly(0, 0, 0);

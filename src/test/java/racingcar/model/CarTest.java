@@ -16,6 +16,7 @@ class CarTest {
         //when
         //then
         assertThat(car).isNotNull();
+
         assertThat(car)
                 .extracting("name")
                 .isEqualTo("pobi");
@@ -40,6 +41,7 @@ class CarTest {
         boolean stopResult = car.canMoveUsing(3);
         //then
         assertThat(moveResult).isTrue();
+
         assertThat(stopResult).isFalse();
     }
 
