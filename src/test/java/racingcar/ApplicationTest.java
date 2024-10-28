@@ -21,6 +21,62 @@ class ApplicationTest extends NsTest {
             },
             MOVING_FORWARD, STOP
         );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "2");
+                    assertThat(output()).contains("pobi : --", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "3");
+                    assertThat(output()).contains("pobi : --", "woni : -", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,이름다섯자", "3");
+                    assertThat(output()).contains("pobi : --", "이름다섯자 : -", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,밥 딜런", "3");
+                    assertThat(output()).contains("pobi : --", "밥 딜런 : -", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
+        );
+
+    }
+
+    @Test
+    void 동명이인_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,pobi,woni", "3");
+                    assertThat(output()).contains("pobi : --", "woni : ", "최종 우승자 : pobi");
+                },
+                STOP, STOP, STOP, STOP, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 아무도_출발_못한_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "3");
+                    assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi, woni, jun");
+                },
+                STOP, STOP, STOP, STOP, STOP, STOP, STOP, STOP, STOP
+        );
+
     }
 
     @Test
@@ -29,6 +85,32 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,이름이여섯자", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "A"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", null))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
     }
 
     @Override
