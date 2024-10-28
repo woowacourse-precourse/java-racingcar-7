@@ -10,6 +10,7 @@
 1. **자동차 이름 입력**
     - 사용자로부터 경주할 자동차의 이름을 쉼표(`,`)로 구분하여 입력받습니다.
     - 각 이름은 5자 이하의 문자열이어야 하며, 조건을 벗어나는 이름이 입력될 경우 `IllegalArgumentException` 예외가 발생합니다.
+    - 최소 두 대 이상의 자동차 이름을 입력해야 하며, 하나 이하의 이름이 입력될 경우 `IllegalArgumentException` 예외가 발생합니다.
     - 자동차 이름은 중복될 수 없으며, 중복된 이름이 입력될 경우 `IllegalArgumentException` 예외가 발생합니다.
     - 예시 입력: `pobi,woni,jun`
 
@@ -52,4 +53,5 @@
 
 - **예외 처리**
     - [x] 입력 형식에 맞지 않는 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+    - [] 자동차가 두 대 미만으로 입력된 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
     - [x] 중복된 자동차 이름이 입력된 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
