@@ -18,4 +18,13 @@ public class TryCountValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.BLANK_INPUT_NOT_ALLOWED.getMessage());
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1})
+    void 시도할_횟수가_양의_정수가_아닌_숫자가_올_수_없다(int tryCount) {
+        // when & then
+        assertThatThrownBy(() -> TryCountValidator.validatePositiveInteger(tryCount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_TRY_COUNT.getMessage());
+    }
 }
