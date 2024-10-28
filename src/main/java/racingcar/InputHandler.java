@@ -12,6 +12,7 @@ public class InputHandler {
         String[] carNames = input.split(",");
         List<String> carNamesList = new ArrayList<>(Arrays.asList(carNames));
 
+        checkNameDuplicate(carNamesList);
         for(String carName: carNamesList) {
             checkNameLength(carName);
         }
@@ -25,6 +26,12 @@ public class InputHandler {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void checkNameDuplicate(List<String> carNamesList) {
+        if (carNamesList.size() != carNamesList.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
     }
