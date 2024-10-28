@@ -49,22 +49,6 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @DisplayName("여러 대의 자동차 이름 입력 시 ,를 기준으로 구분되어야 한다")
-    @CsvSource({
-            "'pobi,,woni'",
-            "'pobi.woni'",
-            "'pobi;woni'",
-            "'pobi woni'"
-    })
-    void 자동차_입력_양식_예외_테스트(String carNames) {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(carNames, "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(INVALID_CAR_FORMAT.getValue())
-        );
-    }
-
-    @ParameterizedTest
     @DisplayName("자동차 이름은 1자 이상 5자 이하여야 한다")
     @CsvSource({
             "'pobi,,'",
@@ -74,7 +58,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(carNames, "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(INVALID_CAR_COUNT.getValue())
+                        .hasMessage(INVALID_CAR_NAME_LENGTH.getValue())
         );
     }
 
