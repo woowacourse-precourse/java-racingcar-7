@@ -48,4 +48,18 @@ public class Validator {
         }
     }
 
+    public void checkNumber(String input) {
+        try{
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수에는 숫자만 올 수 있습니다.");
+        }
+    }
+
+    public void checkPositiveNumber(String input) {
+        if(Integer.parseInt(input) < 1) {
+            throw new IllegalArgumentException("시도 횟수는 양수만 입력이 가능합니다.");
+        }
+    }
+
 }
