@@ -14,4 +14,11 @@ public class OutputView {
         return visual.toString();
     }
 
+    public static void displayCarRacingStatus(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + getDistanceVisual(car.getDistance()));
+        }
+        System.out.println();
+    }
+
 }
