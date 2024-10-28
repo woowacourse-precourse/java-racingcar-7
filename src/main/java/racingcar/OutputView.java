@@ -13,11 +13,15 @@ public class OutputView {
         System.out.println();
     }
 
+    public static void printWinners(Cars cars) {
+        String winners = String.join(", ", cars.getWinners());
+        System.out.printf("최종 우승자 : %s\n", String.join(", ", cars.getWinners()));
+    }
+
     private static void printStatus(Car car) {
         String carName = car.getCarName();
         String distance = "-".repeat(car.getDistance());
 
         System.out.printf("%s : %s\n", carName, distance);
     }
-
 }
