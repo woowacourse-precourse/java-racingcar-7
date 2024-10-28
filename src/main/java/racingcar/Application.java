@@ -46,13 +46,11 @@ public class Application {
             }
         }
     }
-
     public static void addCars(List<String> names){
         for(String name: names){
             cars.add(new Car(name));
         }
     }
-
     public static void playTurn(){
         for(Car car:cars){
             car.move(Randoms.pickNumberInRange(0,9));
@@ -60,7 +58,16 @@ public class Application {
         }
         System.out.println();
     }
-
+    public static void printWinner(){
+        int maxNow = cars.stream().mapToInt(car -> car.getNow()).max().orElse(0);
+        List<String> winners = new ArrayList<>();
+        for(Car car:cars){
+            if(car.getNow() == maxNow){
+                winners.add(car.getName());
+            }
+        }
+        System.out.println("최종 우승자 : "+String.join(",",winners));
+    }
     public static void main(String[] args) {
         // 1. 자동차 이름 입력
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -81,7 +88,6 @@ public class Application {
         }
 
         // 4. 우승자 출력
-
-
+        printWinner();
     }
 }
