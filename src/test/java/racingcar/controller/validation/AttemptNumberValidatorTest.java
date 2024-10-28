@@ -6,7 +6,7 @@ import racingcar.view.messages.ErrorMessageEnum;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AttemptNumberValidatorTest extends NsTest {
+class AttemptNumberValidatorTest {
 
     private final AttemptNumberValidator validator = new AttemptNumberValidator();
 
@@ -39,7 +39,4 @@ class AttemptNumberValidatorTest extends NsTest {
         });
         assertEquals(ErrorMessageEnum.NOT_NATURAL_NUMBER_ERROR.getErrorMessage(), exception.getMessage());
     }
-
-    @Override
-    protected void runMain() {}
 }
