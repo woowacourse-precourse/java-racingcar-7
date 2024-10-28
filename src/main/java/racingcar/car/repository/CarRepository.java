@@ -2,9 +2,12 @@ package racingcar.car.repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 import racingcar.car.domain.Car;
+import racingcar.car.exception.NoPositionException;
+import racingcar.constant.ErrorStatus;
 
 public class CarRepository {
 	private final List<Car> cars;
@@ -33,7 +36,7 @@ public class CarRepository {
 		Integer top = cars.stream()
 			.map(Car::getPosition)
 			.max(Integer::compareTo)
-			.orElseThrow(() -> new RuntimeException("위치 값이 존재하지 않습니다."));
+			.orElseThrow(() -> new NoPositionException(ErrorStatus.NO_POSITION.getMessage()));
 
 		return cars.stream()
 			.filter(car -> car.getPosition().equals(top))
