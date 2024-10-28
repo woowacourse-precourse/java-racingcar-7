@@ -19,4 +19,13 @@ class CarTest {
         car.moveIfAboveThreshold(3);
         Assertions.assertThat(car.getPosition()).isEqualTo("");
     }
+
+    @Test
+    void 출력테스트() {
+        Car coh = new Car("coh");
+        Car pobi = new Car("pobi");
+        coh.moveIfAboveThreshold(5);
+        Assertions.assertThat(coh.toString()).isEqualTo("coh : -");
+        Assertions.assertThat(pobi.toString()).isEqualTo("pobi : ");
+    }
 }

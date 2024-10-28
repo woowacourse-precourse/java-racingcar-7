@@ -1,10 +1,9 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
-    private String name;
-    private StringBuilder position;
+    private final String name;
+    private final StringBuilder position;
 
     public Car(String name) {
         this.name = name;
@@ -22,5 +21,10 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + getPosition();
     }
 }
