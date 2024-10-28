@@ -35,7 +35,7 @@ public class CarValidator {
     }
 
     private static boolean hasInvalidCharacters(String carNames) {
-        return carNames.matches(".*[^a-zA-Z0-9,].*");
+        return carNames.matches(".*[^a-zA-Z가-힣0-9,\\s].*");
     }
 
     private static boolean isNull(String input) {
