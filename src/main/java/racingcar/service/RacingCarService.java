@@ -39,11 +39,6 @@ public class RacingCarService {
     }
 
 
-    public void initializeCarHashMap(){
-        racingCarModel.setCarHashMap();
-    }
-
-
     public String inputRacingCarName(){
         return InputView.inputCarNameString();
     }
@@ -60,6 +55,16 @@ public class RacingCarService {
     }
 
 
+    public int getRacingAttemptsCount(){
+        return racingAttemptCount;
+    }
+
+
+    public void initializeCarHashMap(){
+        racingCarModel.setCarHashMap();
+    }
+
+
     public void updateCarNameListInModel(String carNameString){
         racingCarModel.setCarNameList(carNameString);
         setCarNameList();
@@ -68,23 +73,6 @@ public class RacingCarService {
 
     public void setCarNameList(){
         carNameList = racingCarModel.getCarNameList();
-    }
-
-
-    public int getRacingAttemptsCount(){
-        return racingAttemptCount;
-    }
-
-
-    public void printWinnerResult(){
-        setWinnerList();
-        String winnerResultString = resultGeneratorService.generateWinnerResult(winnerList);
-        OutputView.printWinner(winnerResultString);
-    }
-
-
-    private void setWinnerList(){
-        winnerList = racingCarModel.getWinnerList();
     }
 
 
@@ -101,6 +89,18 @@ public class RacingCarService {
     public void printRacingResult(String racingResult){
         OutputView.printRacingResult(racingResult);
         System.out.println();
+    }
+
+
+    private void setWinnerList(){
+        winnerList = racingCarModel.getWinnerList();
+    }
+
+
+    public void printWinnerResult(){
+        setWinnerList();
+        String winnerResultString = resultGeneratorService.generateWinnerResult(winnerList);
+        OutputView.printWinner(winnerResultString);
     }
 
 

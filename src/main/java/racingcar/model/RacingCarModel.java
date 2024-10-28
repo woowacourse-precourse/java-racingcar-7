@@ -5,8 +5,9 @@ import racingcar.validator.RacingCarValidator;
 import java.util.*;
 
 public class RacingCarModel {
-    private final LinkedHashMap<String, Integer> carHashMap = new LinkedHashMap<>();
+    private static final LinkedHashMap<String, Integer> carHashMap = new LinkedHashMap<>();
     private static final int INITIAL_FORWARD_COUNT = 0;
+
     public List<String> carNameList = new ArrayList<>();
     public List<String> winnerList = new ArrayList<>();
 

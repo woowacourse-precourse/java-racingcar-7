@@ -4,7 +4,6 @@ import java.util.List;
 
 public class ResultGeneratorService {
 
-
     public String generateRacingResult(String carName, int forwardCount){
         String forwardExpression = "-".repeat(forwardCount);
         return carName + " : " + forwardExpression;
