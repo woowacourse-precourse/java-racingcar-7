@@ -1,9 +1,7 @@
 package racingcar;
 
 import java.util.List;
-
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 
 public class Racing {
@@ -15,9 +13,11 @@ public class Racing {
         
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryCount = Console.readLine();
-        
+
         Play play = new Play(cars);
+        System.out.println();
         play.play(tryCount);
+        play.printWinner();
     }
 
     private static List<Car> nameCars(final String carNames) {
@@ -33,9 +33,4 @@ public class Racing {
 
         return cars;
     }
-
-    
-
-   
-
 }
