@@ -44,7 +44,7 @@ public class GameTest {
 
         String delimitedCarNames = "mini,woni,mom";
 
-        List<String> carNames = inputValidator.validateDelimitedCarNames(delimitedCarNames);
+        List<String> carNames = inputValidator.validate(delimitedCarNames, attemptCount);
         InputValue inputValue = new InputValue(carNames, Integer.parseInt(racingcar.GameTest.attemptCount));
 
         initRacingGame(inputValue, carNames);

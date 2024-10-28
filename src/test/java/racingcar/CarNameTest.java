@@ -23,7 +23,7 @@ public class CarNameTest {
             "1234567890"
     })
     void 자동차_이름_잘못된_입력_테스트(String input) {
-        assertThatThrownBy(() -> inputValidator.validateDelimitedCarNames(input))
+        assertThatThrownBy(() -> inputValidator.validate(input, "0"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -36,6 +36,6 @@ public class CarNameTest {
             "!@#@,#$@"
     })
     void 자동차_이름_올바른_입력_테스트(String input) {
-        assertThatCode(() -> inputValidator.validateDelimitedCarNames(input)).doesNotThrowAnyException();
+        assertThatCode(() -> inputValidator.validate(input, "0")).doesNotThrowAnyException();
     }
 }

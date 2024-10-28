@@ -13,15 +13,34 @@ public class InputValidator {
 
     private String delimitedCarNames;
     private final List<String> carNames = new ArrayList<>();
+    private String attemptCount;
 
-    public List<String> validateDelimitedCarNames(String delimitedCarNames) {
+    public List<String> validate(String delimitedCarNames, String attemptCount) {
         this.delimitedCarNames = delimitedCarNames;
+        this.attemptCount = attemptCount;
 
         validateCarNamesNull();
         validateCarNamesFormat();
         validateCarNameFormat();
 
+        validateIsNumber();
+        validateIsNegative();
+
         return carNames;
+    }
+
+    private void validateIsNumber() {
+        try {
+            Integer.parseInt(attemptCount);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("시도 횟수로는 음이 아닌 정수를 입력해주세요");
+        }
+    }
+
+    private void validateIsNegative() {
+        if (Integer.parseInt(attemptCount) < 0) {
+            throw new IllegalArgumentException("시도 횟수로는 음이 아닌 정수를 입력해주세요");
+        }
     }
 
     private void validateCarNamesNull() {

@@ -16,16 +16,10 @@ public class InputView {
 
     public InputValue readInput() {
         String delimitedCarNames = readCarName();
-        List<String> carNames = inputValidator.validateDelimitedCarNames(delimitedCarNames);
-        try {
-            int attemptCount = readAttemptCount();
-            if (attemptCount < 0) {
-                throw new IllegalArgumentException("시도 횟수로는 음이 아닌 정수를 입력해주세요");
-            }
-            return new InputValue(carNames, attemptCount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수로는 음이 아닌 정수를 입력해주세요");
-        }
+        String attemptCount = readAttemptCount();
+        List<String> carNames = inputValidator.validate(delimitedCarNames, attemptCount);
+
+        return new InputValue(carNames, Integer.parseInt(attemptCount));
     }
 
     private String readCarName() {
@@ -33,8 +27,8 @@ public class InputView {
         return Console.readLine();
     }
 
-    private int readAttemptCount() {
+    private String readAttemptCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine()); // 숫자가 아닌 경우 자체적으로 IllegalArgumentException 예외 던짐
+        return Console.readLine();
     }
 }
