@@ -10,12 +10,20 @@ public class InputHandler {
 
     public Map<String, Integer> readCarNames() {
         String inputPrimitive = Console.readLine();
+        inputPrimitive = inputPrimitive.trim();
 
         if (inputPrimitive == null || inputPrimitive.isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.INPUT_EMPTY.getMessage());
         }
+        if (inputPrimitive.charAt(0) == ',' || inputPrimitive.charAt(inputPrimitive.length() - 1) == ',') {
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_NOT_COMPLETED.getMessage());
+        }
 
         String[] carNames = inputPrimitive.split(",");
+
+        if (carNames == null || carNames.length == 0) {
+            throw new IllegalArgumentException(ExceptionMessage.NAME_EMPTY.getMessage());
+        }
 
         for (String carName : carNames) {
             if (validateName(carName)) {
@@ -42,6 +50,10 @@ public class InputHandler {
 
             numIter *= 10;
             numIter += c - '0';
+        }
+
+        if (numIter < 1) {
+            throw new IllegalArgumentException(ExceptionMessage.NUM_NOT_POSITIVE.getMessage());
         }
 
         return numIter;
