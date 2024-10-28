@@ -18,7 +18,7 @@ public class RacingGameController {
         Cars cars = new Cars(inputView.inputCarNameGuide());
         int round = inputView.inputRound();
         resultView.printResult();
-        for(int i = 0; i < round; i++) {
+        for (int i = 0; i < round; i++) {
             playRound(cars);
         }
         resultView.printWinners(cars.getWinners());

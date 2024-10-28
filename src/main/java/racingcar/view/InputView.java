@@ -21,7 +21,7 @@ public class InputView {
     }
 
     public static void validEndWithComma(String players) {
-        if(players.endsWith(DELIMITER)) {
+        if (players.endsWith(DELIMITER)) {
             throw new IllegalArgumentException("자동차 이름 입력 시 ,로 끝나면 안됩니다.");
         }
     }
@@ -31,13 +31,12 @@ public class InputView {
         int round;
         try {
             round = Integer.parseInt(Console.readLine());
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수를 입력해야 합니다");
         }
         roundException(round);
         return round;
     }
-
 
 
     public void roundException(int round) {

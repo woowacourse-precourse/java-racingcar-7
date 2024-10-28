@@ -40,7 +40,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", " ","    "," pobi"})
+    @ValueSource(strings = {"", " ", "    ", " pobi"})
     @DisplayName("자동차 이름이 공백문자열을 포함하는 경우")
     void 자동차_이름_공백_테스트(String testCase) {
         Assertions.assertThatThrownBy(() -> new Car(testCase))

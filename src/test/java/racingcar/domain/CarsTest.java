@@ -29,7 +29,7 @@ public class CarsTest {
     @Test
     @DisplayName("우승자 찾기 테스트")
     void 우승자_찾기_테스트() {
-        Cars cars = new Cars(List.of("pobi","woni"));
+        Cars cars = new Cars(List.of("pobi", "woni"));
         NumberGenerator canMove = () -> 5;
         NumberGenerator canNotMove = () -> 1;
 
@@ -42,7 +42,7 @@ public class CarsTest {
     @Test
     @DisplayName("우승자2명 이상 찾기 테스트")
     void 우승자_2명이상_찾기_테스트() {
-        Cars cars = new Cars(List.of("pobi","woni"));
+        Cars cars = new Cars(List.of("pobi", "woni"));
         NumberGenerator canMove = () -> 5;
 
         cars.getCars().get(0).move(canMove.generateNumber());

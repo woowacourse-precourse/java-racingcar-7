@@ -9,9 +9,9 @@ public class InputViewTest {
     @Test
     @DisplayName("문자열을 ,를 기준으로 잘 분리하는지 테스트한다")
     void 문자열_분리_테스트() {
-       InputView inputView = new InputView();
+        InputView inputView = new InputView();
 
-       Assertions.assertThat(inputView.separatePlayers("pobi,woni,jun")).containsExactly("pobi", "woni", "jun");
+        Assertions.assertThat(inputView.separatePlayers("pobi,woni,jun")).containsExactly("pobi", "woni", "jun");
     }
 
     @Test

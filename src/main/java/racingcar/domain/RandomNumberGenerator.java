@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class RandomNumberGenerator implements NumberGenerator{
+public class RandomNumberGenerator implements NumberGenerator {
 
     private static final int RANDOM_MIN = 0;
     private static final int RANDOM_MAX = 9;
