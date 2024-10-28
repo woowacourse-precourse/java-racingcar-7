@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -13,9 +12,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String stageInput = Console.readLine();
 
-        List<String> names = Arrays.stream(carNameInput.split(","))
-                .map(String::trim)
-                .toList();
+        List<String> names = InputValidator.validateNames(carNameInput);
 
         int stageCount = Integer.parseInt(stageInput);
 
