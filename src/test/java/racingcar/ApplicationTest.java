@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.strategy.MovableStrategy;
 import racingcar.domain.strategy.RandomMovableStrategy;
+import racingcar.exception.InvalidCarNameException;
+import racingcar.exception.InvalidInputException;
+import racingcar.validator.InputValidator;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -75,8 +80,24 @@ class ApplicationTest extends NsTest {
         }
 
         double moveProbability = (double) moveCount / trials;
-        // 4 이상일 경우 이동
         assertThat(moveProbability).isGreaterThan(0.4).isLessThan(0.6);
     }
 
+    @Test
+    void 자동차이름의유효성을검증한다() {
+        InputValidator.validateCarNames(List.of("pobi", "woni"));
+
+        assertThatThrownBy(() -> InputValidator.validateCarNames(List.of("pobija", "woni")))
+                .isInstanceOf(InvalidCarNameException.class)
+                .hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.");
+    }
+
+    @Test
+    void 시도할횟수의유효성을검증한다() {
+        InputValidator.validateRounds(1);
+
+        assertThatThrownBy(() -> InputValidator.validateRounds(0))
+                .isInstanceOf(InvalidInputException.class)
+                .hasMessageContaining("시도할 횟수는 1 이상이어야 합니다.");
+    }
 }
