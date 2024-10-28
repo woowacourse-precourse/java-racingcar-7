@@ -3,7 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Race;
 import racingcar.validation.InputValidator;
@@ -13,7 +12,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.validation.InputValidator.*;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -38,11 +36,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @BeforeEach
-    void 중복_예외_테스트를_위한_초기화() {
-        InputValidator.initialize();
-    }
-
     @Test
     void 자동차_이름_중복_예외_테스트() {
         Race race = new Race();
@@ -54,15 +47,17 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 실행_횟수_음수_입력_예외_테스트() {
+        InputValidator inputValidator = new InputValidator();
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            validateRounds("-1");
+            inputValidator.validateRounds("-1");
         });
     }
 
     @Test
     void 실행_횟수_Integer_범위_초과_예외_테스트() {
+        InputValidator inputValidator = new InputValidator();
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            validateRounds("2200000000");
+            inputValidator.validateRounds("2200000000");
         });
     }
 

@@ -10,20 +10,16 @@ public class InputValidator {
     private static final String CAR_NAME_LENGTH_ERROR = "자동차 이름은 5자 이하로 작성해주세요.";
     private static final String CAR_NAME_DUPLICATE_ERROR = "중복된 자동차 이름입니다.";
 
-    private static Set<String> carNameSet = new HashSet<>();
+    private Set<String> carNameSet = new HashSet<>();
 
-    public static void initialize() {
-        carNameSet.clear();     // 테스트를 위한 carNameSet 초기화 코드
-    }
-
-    public static void validateCarNames(String carName) {
+    public void validateCarNames(String carName) {
         validateLength(carName);
         validateDuplicates(carName);
 
         carNameSet.add(carName);
     }
 
-    public static int validateRounds(String input) {
+    public int validateRounds(String input) {
         try {
             int rounds = Integer.parseInt(input);
             if (rounds < 1) {
@@ -36,13 +32,13 @@ public class InputValidator {
         }
     }
 
-    private static void validateLength(String carName) {
+    private void validateLength(String carName) {
         if (carName.trim().length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR);
         }
     }
 
-    private static void validateDuplicates(String carName) {
+    private void validateDuplicates(String carName) {
         if (carNameSet.contains(carName)) {
             throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR);
         }

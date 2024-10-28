@@ -1,19 +1,19 @@
 package racingcar.domain;
 
-import static racingcar.validation.InputValidator.*;
-
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.validation.InputValidator;
 
 public class Race {
     private final List<Car> cars = new ArrayList<>();
     private int rounds;
 
     public void setCars(String input) {
+        InputValidator inputValidator = new InputValidator();
         String[] carName = splitInput(input);
 
         for (String name : carName) {
-            validateCarNames(name);
+            inputValidator.validateCarNames(name);
 
             cars.add(new Car(name.trim()));
         }
