@@ -4,8 +4,12 @@ import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.fake.FakeMovementFactorGenerator;
 
 class RacingCarsTest {
@@ -26,6 +30,23 @@ class RacingCarsTest {
         assertThat(cars).hasSize(3);
         assertThat(cars).extracting("name")
                 .containsExactlyInAnyOrder("a", "b", "c");
+    }
+
+    public static Stream<Arguments> createCarsWithLessThanTwoCars() {
+        return Stream.of(
+                Arguments.of(List.of()),
+                Arguments.of(List.of("a"))
+        );
+    }
+
+    @DisplayName("자동차가 두 대 미만이면 예외가 발생한다.")
+    @MethodSource
+    @ParameterizedTest
+    void createCarsWithLessThanTwoCars(List<String> names) {
+        // when & then
+        assertThatThrownBy(() -> RacingCars.of(names, new RandomMovementFactorGenerator()))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("경주할 자동차는 두 대 이상이어야 합니다.");
     }
 
     @DisplayName("중복된 이름을 가진 자동차가 있으면 예외가 발생한다.")

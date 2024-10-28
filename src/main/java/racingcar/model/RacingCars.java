@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Set;
 
 public class RacingCars {
+    private static final int MIN_NUMBER_OF_CARS = 2;
 
     private final List<RacingCar> cars;
     private final MovementFactorGenerator movementFactorGenerator;
 
     public RacingCars(List<RacingCar> cars, MovementFactorGenerator movementFactorGenerator) {
+        validateSize(cars);
         validateNoDuplicates(cars);
         this.movementFactorGenerator = movementFactorGenerator;
         this.cars = cars;
@@ -46,10 +48,10 @@ public class RacingCars {
         return cars;
     }
 
-    private List<RacingCarSnapShot> getCarSnapShots() {
-        return cars.stream()
-                .map(RacingCar::getSnapshot)
-                .toList();
+    private void validateSize(List<RacingCar> cars) {
+        if (cars.size() < MIN_NUMBER_OF_CARS) {
+            throw new IllegalArgumentException("경주할 자동차는 두 대 이상이어야 합니다.");
+        }
     }
 
     private void validateNoDuplicates(List<RacingCar> cars) {
@@ -59,6 +61,12 @@ public class RacingCars {
                 throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
             }
         }
+    }
+
+    private List<RacingCarSnapShot> getCarSnapShots() {
+        return cars.stream()
+                .map(RacingCar::getSnapshot)
+                .toList();
     }
 
 }
