@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.Car;
 import racingcar.view.OutputView;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
@@ -37,10 +38,10 @@ public class RacingGameServiceTest {
 
         for (int i = 0; i < roundCount; i++) {
             racingGameService.playRound(cars);
-            System.out.println("<ROUND " + i +">");
+            System.out.println("<ROUND " + i + ">");
             for (Car car : cars) {
                 assertTrue(car.getPosition() >= 0 && car.getPosition() <= 9);
-                System.out.println("Car : " + car.getName()  + " Position : " +car.getPosition());
+                System.out.println("Car : " + car.getName() + " Position : " + car.getPosition());
             }
         }
     }
@@ -85,12 +86,12 @@ public class RacingGameServiceTest {
 
             for (Car car : cars) {
                 assertTrue(output.contains(car.getName() + " : "));
-                assertTrue(output.contains("SONATA")|| output.contains("ABANTE"));
+                assertTrue(output.contains("SONATA") || output.contains("ABANTE"));
                 String regex = car.getName() + CAR_OUTPUT_PATTERN;
                 assertTrue(output.matches("(?s).*" + regex + ".*"));
             }
         } finally {
-            System.setOut( System.out);
+            System.setOut(System.out);
         }
     }
 
