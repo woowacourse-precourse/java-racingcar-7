@@ -12,15 +12,17 @@ public class OutputView {
     }
 
     public void printRaceProcess(List<CarLocation> raceResult) {
-        raceResult.forEach(carLocation ->
-                System.out.printf((OutputMessage.MOVEMENT_STATE_FORMAT.getMessage()), carLocation.name(),
-                        "-".repeat(carLocation.location()))
-        );
+        raceResult.forEach(carLocation -> {
+            System.out.printf((OutputMessage.MOVEMENT_STATE_FORMAT.getMessage()), carLocation.name(),
+                    "-".repeat(carLocation.location()));
+            printNewLine();
+        });
         printNewLine();
     }
 
     public void printWinners(List<String> winners) {
-        System.out.println(OutputMessage.WINNERS_ANNOUNCEMENT.getMessage() + String.join(OutputMessage.WINNER_DELIMITER.getMessage(), winners));
+        System.out.println(OutputMessage.WINNERS_ANNOUNCEMENT.getMessage() + String.join(
+                OutputMessage.WINNER_DELIMITER.getMessage(), winners));
     }
 
     private void printNewLine() {

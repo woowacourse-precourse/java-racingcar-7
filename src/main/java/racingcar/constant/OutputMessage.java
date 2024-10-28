@@ -5,7 +5,7 @@ public enum OutputMessage {
     ENTER_ATTEMPTS("시도할 횟수는 몇 회인가요?"),
     RESULT_PREFIX("실행 결과"),
     WINNER_DELIMITER(", "),
-    MOVEMENT_STATE_FORMAT("%s : %s%n"),
+    MOVEMENT_STATE_FORMAT("%s : %s"),
     WINNERS_ANNOUNCEMENT("최종 우승자 : ");
 
     private final String message;
