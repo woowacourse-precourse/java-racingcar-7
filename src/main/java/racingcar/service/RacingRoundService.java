@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static racingcar.constant.Constant.*;
 import java.util.Map;
 
 public class RacingRoundService {
@@ -23,7 +24,7 @@ public class RacingRoundService {
     }
 
     private boolean canGo() {
-        return pickNumberInRange(0,9) > 3;
+        return pickNumberInRange(RANDOM_BOUND_START, RANDOM_BOUND_END) >= MOVE_POSSIBLE_STANDARD;
     }
 
     private void moveOneStepIfPossible(Map<String, Integer> racingCars, String carName) {

@@ -1,7 +1,9 @@
 package racingcar.view;
 
+import static racingcar.constant.Constant.*;
 import java.util.List;
 import java.util.Map;
+import racingcar.constant.OutputMessage;
 
 public class OutputView {
     private static OutputView outputView;
@@ -17,26 +19,24 @@ public class OutputView {
     }
 
     public void printRaceStart() {
-        System.out.println("==== 레이스 시작 ====");
+        System.out.println(OutputMessage.RACE_START.getMessage());
     }
 
-
-    public void printOutputView(Map<String, Integer> racingCars) {
-        printRound(racingCars);
-    }
-
-    private void printRound(Map<String, Integer> racingCars) {
+    public void printRoundState(Map<String, Integer> racingCars) {
         for (String carName : racingCars.keySet()) {
             int carPosition = racingCars.get(carName);
-
-            System.out.println(carName + " : " + "-".repeat(carPosition) );
+            System.out.println(carName + COLON + graphicCarPosition(carPosition));
         }
         System.out.println();
     }
 
+    private String graphicCarPosition (int carPosition) {
+        return BAR.repeat(carPosition);
+    }
+
     public void printWinnerView(List<String> winners) {
-        System.out.print("최종 우승자 : ");
-        System.out.println(String.join(", ", winners));
+        System.out.println(OutputMessage.CELEBRATE_WIN.getMessage());
+        System.out.println(String.join(COMMA, winners));
     }
 
 }

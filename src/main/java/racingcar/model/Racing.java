@@ -24,7 +24,7 @@ public class Racing {
         int count = 0;
         while (count < racingTotalRound) {
             racingRoundService.racingRound(racingCars);
-            outputView.printOutputView(racingCars);
+            outputView.printRoundState(racingCars);
             count++;
         }
 

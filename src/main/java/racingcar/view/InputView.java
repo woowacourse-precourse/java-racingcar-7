@@ -2,6 +2,8 @@ package racingcar.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import racingcar.constant.OutputMessage;
+
 public class InputView {
 
     private static InputView inputView;
@@ -20,10 +22,10 @@ public class InputView {
 
 
     public void printInputView() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(OutputMessage.CAR_NAME.getMessage());
         inputCarNames = readLine();
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(OutputMessage.TOTAL_RACING_ROUND.getMessage());
         totalRacingRound = Integer.parseInt(readLine());
         System.out.println();
     }
