@@ -1,5 +1,13 @@
 # 📚 2주차 미션 - 자동차 경주
 
+## Project Structure
+
+![image](https://github.com/user-attachments/assets/eeb36211-ba7c-42eb-80a2-143746943bc7)
+
+# 🛠️ 구조 및 프로그램 흐름도
+
+![image](https://github.com/user-attachments/assets/7c22c3ff-7f4f-4634-aa18-b5b2709b3407)
+
 ## ⛳️ 학습 목표
 
 - 여러 역할을 하는 큰 함수를 단일 역할을 수행하는 작은 함수로 분리한다.
@@ -85,11 +93,6 @@
 - constants : 레이싱 게임에 사용되는 상수값들
 - message : 예외 메세지와 입출력 안내 메세지
 - utils : 문자열 파싱 및 분리, 랜던 숫자 생성
-
-## Project Structure
-
-![image](https://github.com/user-attachments/assets/eeb36211-ba7c-42eb-80a2-143746943bc7)
-
 
 
 
