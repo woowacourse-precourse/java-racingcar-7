@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import racingcar.dto.ExecuteRaceResultDTO;
+import racingcar.dto.ExecuteRaceResultVO;
 import racingcar.dto.RacingOutputDTO;
 import racingcar.dto.ValidatedInputDataDTO;
 import racingcar.exception.ExceptionMessage;
@@ -53,7 +53,7 @@ public class CarRacing implements Racing{
         List<String> raceTurn = new ArrayList<>();
         //TODO : 여기 더 깔끔하게 코드 리팩터링 필요
         for (long i = 0; i < validatedInputDataDTO.count(); i++) {
-            ExecuteRaceResultDTO resultDTO = executeRaceTurn(racingCarHistory.getCars(i));
+            ExecuteRaceResultVO resultDTO = executeRaceTurn(racingCarHistory.getCars(i));
             raceTurn.add(resultDTO.executeResult());
             racingCarHistory.addRound(i+1,resultDTO.cars());
         }
@@ -66,7 +66,7 @@ public class CarRacing implements Racing{
      * @param carList 이전 경기 기록
      * @return 레이스 한턴 진행결과
      */
-    public ExecuteRaceResultDTO executeRaceTurn(List<Car> carList) {
+    public ExecuteRaceResultVO executeRaceTurn(List<Car> carList) {
         //TODO: 리팩터링 필요
         ArrayList<Car> newRoundRacingCars = new ArrayList<>();
         StringBuilder stringBuilder = new StringBuilder();
@@ -82,7 +82,7 @@ public class CarRacing implements Racing{
                             car.getMoveForwardCount().intValue())).append("\n");
         }
 
-        return new ExecuteRaceResultDTO(newRoundRacingCars, stringBuilder.toString());
+        return new ExecuteRaceResultVO(newRoundRacingCars, stringBuilder.toString());
     }
 
     /**

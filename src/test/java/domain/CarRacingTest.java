@@ -28,7 +28,6 @@ class CarRacingTest {
         Assertions.assertThat(racingCarHistory.getCars(0L).size()).isEqualTo(3);
     }
 
-
     @DisplayName("레이스 진행사항을 출력한다.")
     @Test
     void runRace() {

@@ -45,7 +45,6 @@ class CarRacingPolicyTest {
 
         //then
         Assertions.assertThat(nameSeparator).isEqualTo(",");
-
     }
     @DisplayName("이름의 최대길이 기준을 가져온다.")
     @Test
@@ -58,7 +57,6 @@ class CarRacingPolicyTest {
 
         //then
         Assertions.assertThat(nameLengthPolicy).isEqualTo(5);
-
     }
 
 }

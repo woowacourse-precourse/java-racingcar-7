@@ -1,7 +1,5 @@
 package view;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.CarRacing;
@@ -11,7 +9,7 @@ import racingcar.dto.ValidatedInputDataDTO;
 import racingcar.infrastructure.RacingCarHistory;
 import racingcar.presentation.RacingCarOutputView;
 
-class RacingCarOutputViewTest {
+class CarRacingOutputViewTest {
     @DisplayName("레이스 최종결과를 출력한다.")
     @Test
     void printRacingResult() {

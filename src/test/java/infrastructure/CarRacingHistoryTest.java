@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.infrastructure.RacingCarHistory;
 
-class RacingCarHistoryTest {
+class CarRacingHistoryTest {
     public RacingCarHistory racingCarHistory = new RacingCarHistory();
 
     @BeforeEach
