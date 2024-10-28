@@ -7,15 +7,21 @@ import racingcar.car.Cars;
 import racingcar.io.InputConsoleHandler;
 import racingcar.io.OutputConsoleHandler;
 import racingcar.provider.NumberProvider;
-import racingcar.provider.RandomNumberProvider;
 
 public class RacingGame {
 
     private static final String POSITIONAL_CAR_STATUS_SYMBOL = "-";
 
-    private final NumberProvider numberProvider = new RandomNumberProvider();
-    private final InputConsoleHandler inputConsoleHandler = new InputConsoleHandler();
-    private final OutputConsoleHandler outputConsoleHandler = new OutputConsoleHandler();
+    private final NumberProvider numberProvider;
+    private final InputConsoleHandler inputConsoleHandler;
+    private final OutputConsoleHandler outputConsoleHandler;
+
+    public RacingGame(NumberProvider numberProvider, InputConsoleHandler inputConsoleHandler,
+                      OutputConsoleHandler outputConsoleHandler) {
+        this.numberProvider = numberProvider;
+        this.inputConsoleHandler = inputConsoleHandler;
+        this.outputConsoleHandler = outputConsoleHandler;
+    }
 
     public void runGame() {
         inputConsoleHandler.showCarNameGuideMessage();

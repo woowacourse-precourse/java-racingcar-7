@@ -9,8 +9,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
 import racingcar.car.Cars;
+import racingcar.io.InputConsoleHandler;
+import racingcar.io.OutputConsoleHandler;
 import racingcar.provider.LinearIncrementalNumberProvider;
 import racingcar.provider.NumberProvider;
+import racingcar.provider.RandomNumberProvider;
 
 class RacingGameTest {
 
@@ -18,7 +21,8 @@ class RacingGameTest {
     @DisplayName("각 차수마다 자동차들의 위치 상태를 출력한다")
     void showCarVisualStatusForEachTrialTest() {
         // given
-        RacingGame racingGame = new RacingGame();
+        RacingGame racingGame = new RacingGame(new RandomNumberProvider(),
+                new InputConsoleHandler(), new OutputConsoleHandler());
         Car t1 = Car.from("t1");
         Car t2 = Car.from("t2");
         Car t3 = Car.from("t3");
@@ -48,7 +52,8 @@ class RacingGameTest {
     @DisplayName("최종 우승자를 출력한다")
     void showSingleWinnerName() {
         // given
-        RacingGame racingGame = new RacingGame();
+        RacingGame racingGame = new RacingGame(new LinearIncrementalNumberProvider(1, 2),
+                new InputConsoleHandler(), new OutputConsoleHandler());
 
         Cars cars = Cars.of("test1", "test2", "test3");
         NumberProvider numberProvider = new LinearIncrementalNumberProvider(1, 2);
@@ -69,11 +74,11 @@ class RacingGameTest {
     @DisplayName("두 명 이상의 최종 우승자를 출력한다")
     void showWinneNames() {
         // given
-        RacingGame racingGame = new RacingGame();
+        RacingGame racingGame = new RacingGame(new LinearIncrementalNumberProvider(3, 2),
+                new InputConsoleHandler(), new OutputConsoleHandler());
 
         Cars cars = Cars.of("test1", "test2", "test3");
-        NumberProvider numberProvider = new LinearIncrementalNumberProvider(3, 2);
-        cars.tryMoveForward(numberProvider);
+        cars.tryMoveForward(new LinearIncrementalNumberProvider(3, 2));
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
