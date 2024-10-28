@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
+
 
 public class RacingGame {
     private List<Car> cars;
@@ -15,7 +17,8 @@ public class RacingGame {
 
     public void playRound() {
         for (Car car : cars) {
-            car.move();
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            car.move(randomValue);
         }
     }
 }
