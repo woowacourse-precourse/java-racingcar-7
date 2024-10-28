@@ -10,7 +10,7 @@ public class OutputView {
     }
 
     public static void printExecutionMessage () {
-        System.out.println("실행 결과");
+        System.out.println("실행 결과\n");
     }
 
     public static void printCarState (String carName, String location) {
