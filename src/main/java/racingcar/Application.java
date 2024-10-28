@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,12 +14,12 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNamesInput = Console.readLine();
         String[] carNames = carNamesInput.split(",");
-        validateCarNames(carNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String attemptsInput = Console.readLine();
         int attempts = Integer.parseInt(attemptsInput);
-        validateAttempts(attempts);
+
+        validateInput(carNames, attempts);  // 입력값 유효성 검사
 
         List<Car> cars = createCars(carNames);
         runRace(cars, attempts);
@@ -28,6 +27,11 @@ public class Application {
 
         String winners = determineWinners(cars); // 우승자 결정
         System.out.println("우승자: " + winners);
+    }
+
+    private static void validateInput(String[] carNames, int attempts) {
+        validateCarNames(carNames);
+        validateAttempts(attempts);
     }
 
     private static List<Car> createCars(String[] carNames) {
@@ -106,7 +110,7 @@ class Car {
     }
 
     public void move() {
-        int randomValue = Randoms.pickNumberInRange(0,9); // 0~9 랜덤 값 생성
+        int randomValue = Randoms.pickNumberInRange(0, 9); // 0~9 랜덤 값 생성
         if (randomValue >= 4) {
             position++;
         }
