@@ -2,7 +2,7 @@ package racingcar;
 
 public class Parser {
 
-    private String delimiter;
+    private final String delimiter;
     public static String INVALID_STRING_FORMAT = "해석할 수 없는 문자열 입니다";
 
     public Parser(String delimiter) {

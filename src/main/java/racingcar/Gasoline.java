@@ -2,7 +2,7 @@ package racingcar;
 
 public class Gasoline implements Engine {
 
-    private int moveDistance;
+    private final int moveDistance;
 
     public Gasoline(int moveDistance) {
         this.moveDistance = moveDistance;

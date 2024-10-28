@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class RandomEngine implements Engine {
 
     private static int RANDOM_RANGE_START = 0;
-    private int randomRangeEnd;
-    private int accelerationThreshold;
-    private int moveDistance;
+    private final int randomRangeEnd;
+    private final int accelerationThreshold;
+    private final int moveDistance;
 
     public RandomEngine(int moveDistance, int randomRangeEnd, int accelerationThreshold) {
         this.moveDistance = moveDistance;
