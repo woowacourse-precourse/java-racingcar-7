@@ -1,15 +1,15 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.RacingCar;
-import racingcar.repository.RacingCarRepository;
 
 import java.util.Collection;
 
 public class RacingCarService {
 
-    private final RacingCarRepository racingCarRepository;
-
-
+    public void registerRacingCars(final Collection<RacingCar> racingCars, final Collection<String> carNames){
+        carNames.forEach(carName -> racingCars.add(RacingCar.createRacingCar(carName)));
+    }
 
     public void racingGame(Collection<RacingCar> racingCars){
         racingCars.forEach(this::race);
@@ -21,6 +21,5 @@ public class RacingCarService {
             racingCar.move();
         }
     }
-
 
 }

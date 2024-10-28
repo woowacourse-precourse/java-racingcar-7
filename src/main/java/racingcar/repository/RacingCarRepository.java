@@ -12,4 +12,8 @@ public class RacingCarRepository {
         racingCars.add(racingCar);
     }
 
+    public List<RacingCar> getAllRacingCars(){
+        return racingCars;
+    }
+
 }
