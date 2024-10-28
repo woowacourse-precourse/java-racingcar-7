@@ -12,7 +12,7 @@ public class RacePolicyTest {
 
     @BeforeEach
     void setUp() {
-        racePolicy = new RacePolicy();
+        this.racePolicy = new RacePolicy();
     }
 
     @ParameterizedTest
