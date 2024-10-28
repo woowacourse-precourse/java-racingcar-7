@@ -2,10 +2,10 @@ package racingcar.application;
 
 import java.util.List;
 import racingcar.application.service.RacingManager;
-import racingcar.vo.CarRaceResult;
 import racingcar.domain.CarRacer;
 import racingcar.common.support.ObjectConverter;
 import racingcar.view.ApplicationView;
+import racingcar.vo.RaceResult;
 
 public class RacingCarGame implements Game {
 
@@ -41,7 +41,7 @@ public class RacingCarGame implements Game {
     }
 
     private void printRaceResult() {
-        CarRaceResult carRaceResult = racingManager.createRaceResult();
+        RaceResult<CarRacer> carRaceResult = racingManager.createRaceResult();
 
         List<String> racingHistories = carRaceResult.histories();
         applicationView.printRacingProgressResult(racingHistories);

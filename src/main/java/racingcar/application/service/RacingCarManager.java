@@ -5,9 +5,9 @@ import java.util.stream.IntStream;
 import racingcar.application.implement.WinnerIdentifier;
 import racingcar.persistence.RacingCarRepository;
 import racingcar.application.implement.RacingCarHistoryManager;
-import racingcar.vo.CarRaceResult;
 import racingcar.application.implement.RaceStarter;
 import racingcar.domain.CarRacer;
+import racingcar.vo.RaceResult;
 
 public class RacingCarManager implements RacingManager<CarRacer> {
 
@@ -40,10 +40,10 @@ public class RacingCarManager implements RacingManager<CarRacer> {
     }
 
     @Override
-    public CarRaceResult createRaceResult() {
+    public RaceResult<CarRacer> createRaceResult() {
         List<CarRacer> racedCars = racingCarRepository.getAll();
         List<CarRacer> winners = winnerIdentifier.identify(racedCars);
         List<String> carRaceHistories = racingCarHistoryManager.getAllHistory();
-        return CarRaceResult.of(winners, carRaceHistories);
+        return RaceResult.of(winners, carRaceHistories);
     }
 }
