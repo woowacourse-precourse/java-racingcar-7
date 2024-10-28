@@ -21,7 +21,7 @@ public class Cars {
         return cars.size();
     }
 
-    public Car findCarByNumber(int number){
+    public Car getCarByNumber(int number){
         return cars.get(number);
     }
 }

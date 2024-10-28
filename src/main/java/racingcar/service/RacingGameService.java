@@ -35,7 +35,7 @@ public class RacingGameService {
 
     public static String getMaxProgressCars(Cars cars){
         List<String> maxProgressCarNames = new ArrayList<>();
-        int maxProgress = cars.findCarByNumber(0).getCurrentDistance();
+        int maxProgress = cars.getCarByNumber(0).getCurrentDistance();
 
         for (Car car : cars.getCars()) {
             if (car.getCurrentDistance() > maxProgress) {

@@ -10,7 +10,7 @@ public class RacingGame {
 
     public void startGame(Cars cars) {
         for(int i = 0; i < cars.size(); i++){
-            distances.add(cars.findCarByNumber(i).move());
+            distances.add(cars.getCarByNumber(i).move());
         }
     }
 
