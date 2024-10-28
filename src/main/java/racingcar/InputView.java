@@ -5,12 +5,12 @@ import java.util.LinkedHashMap;
 
 public class InputView {
 
-    public LinkedHashMap<String, Car> getCarList() {
+    public LinkedHashMap<String, Car> getCarMap() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return convertStringToMap(Console.readLine());
+        return convertInputToMap(Console.readLine());
     }
 
-    protected LinkedHashMap<String, Car> convertStringToMap(String input) {
+    protected LinkedHashMap<String, Car> convertInputToMap(String input) {
         LinkedHashMap<String, Car> carMap = new LinkedHashMap<>();
 
         String[] carNames = input.split(",");
@@ -38,7 +38,10 @@ public class InputView {
 
     public Long getRoundNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String input = Console.readLine();
+        return convertInputToLong(Console.readLine());
+    }
+
+    public Long convertInputToLong(String input) {
         if (!isRoundNumberValid(input)) {
             throw new IllegalArgumentException();
         }
