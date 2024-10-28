@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.service.RacingcarService;
 import racingcar.view.RacingcarView;
 
@@ -15,5 +16,6 @@ public class RacingcarController {
 
     public void run() {
         String rawCarName = racingcarView.carNameInput();
+        List<String> parsedCarName = racingcarService.parseCarName(rawCarName);
     }
 }
