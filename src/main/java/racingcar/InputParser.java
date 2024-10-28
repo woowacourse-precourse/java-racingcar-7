@@ -13,6 +13,19 @@ public class InputParser {
         return carNames;
     }
 
+    public static int parseMaxRound(String input) {
+        validateInput(input);
+        try {
+            int maxRound = Integer.parseInt(input);
+            if (maxRound < 1) {
+                throw new IllegalArgumentException(ErrorMessages.INVALID_MAX_ROUND.getMessage());
+            }
+            return maxRound;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessages.INVALID_MAX_ROUND.getMessage());
+        }
+    }
+
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
     private static void validateCarNames(List<String> carNames) {
