@@ -14,13 +14,25 @@ public class SplitString {
     }
 
     public static List<String> SplitCarNames(String carNames) {
-        return Arrays.stream(carNames.split(","))
-                .filter(SplitString::checkCarNameLength)
-                .toList();
+        List<String> carNameList = Arrays.stream(carNames.split(",")).toList();
+        checkCarNameValid(carNameList);
+
+        return carNameList;
     }
 
-    private static boolean checkCarNameLength(String carName) {
-        if (carName.isBlank()) {
+    private static void checkCarNameValid(List<String> carNameList) {
+        checkCarNameList(carNameList);
+        carNameList.forEach(SplitString::checkCarName);
+    }
+
+    private static void checkCarNameList(List<String> carNameList) {
+        if (carNameList.isEmpty()) {
+            throw new IllegalArgumentException(CAR_NAME_INCLUDE_BLANK);
+        }
+    }
+
+    private static void checkCarName(String carName) {
+        if (carName.isEmpty()) {
             throw new IllegalArgumentException(CAR_NAME_INCLUDE_BLANK);
         }
 
@@ -31,7 +43,5 @@ public class SplitString {
         if (!carName.matches(CAR_NAME_REGEX)) {
             throw new IllegalArgumentException(CAR_NAME_INCLUDE_SPECIAL_CHARACTERS);
         }
-
-        return true;
     }
 }
