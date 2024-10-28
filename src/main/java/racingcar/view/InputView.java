@@ -22,7 +22,7 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
-    public int readTrialCount() {
+    public int inputTrialCounts() {
         System.out.println("시도할 회수는 몇 회 인가요?");
         return readPositive();
     }
