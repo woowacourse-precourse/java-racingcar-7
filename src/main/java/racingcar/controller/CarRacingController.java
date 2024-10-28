@@ -6,19 +6,22 @@ import java.util.List;
 import java.util.Set;
 import racingcar.model.Car;
 import racingcar.model.CarRacing;
-import racingcar.view.UserInterface;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class CarRacingController {
 
     private static final String WHITE_SPACE = " ";
     private static final String EMPTY_STRING = "";
 
-    private final UserInterface userInterface;
+    private final InputView inputView;
+    private final OutputView outputView;
     private CarRacing carRacing;
     private int totalRound;
 
     public CarRacingController() {
-        this.userInterface = new UserInterface();
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
     }
 
     public void run() {
@@ -32,24 +35,24 @@ public class CarRacingController {
         System.out.println("\n실행 결과");
         for (int i = 0; i < totalRound; i++) {
             carRacing.moverCarsForwardRandomly();
-            userInterface.showRoundResult(carRacing.getRacingCars());
+            outputView.showRoundResult(carRacing.getRacingCars());
         }
     }
 
     private void setUpCarRacing() {
-        String carNameInput = userInterface.getRacingCarNameInput();
+        String carNameInput = inputView.getRacingCarNameInput();
         List<String> carNames = validateCarNameInput(carNameInput);
         List<Car> racingCars = carNames.stream().map(Car::new).toList();
         this.carRacing = new CarRacing(racingCars);
     }
 
     private void setUpTotalRound() {
-        String totalRoundInput = userInterface.getTotalRoundInput();
+        String totalRoundInput = inputView.getTotalRoundInput();
         validateTotalRoundInput(totalRoundInput);
     }
 
     private void displayFinalWinner() {
-        userInterface.showFinalWinner(carRacing.getWinners());
+        outputView.showFinalWinner(carRacing.getWinners());
     }
 
     public List<String> validateCarNameInput(String carNameInput) {
