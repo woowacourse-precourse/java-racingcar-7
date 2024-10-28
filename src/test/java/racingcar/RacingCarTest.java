@@ -10,6 +10,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingCarTest {
 
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
+
     @ParameterizedTest
     @ValueSource(strings = {"다섯글자이상", "포르쉐카이엔"})
     public void registWithOverLength(String racingCarName) throws Exception {
@@ -31,7 +34,7 @@ class RacingCarTest {
         String racingCarString = racingCar.toString();
 
         //then
-        assertThat(racingCarString).isEqualTo(expected+" ");
+        assertThat(racingCarString).isEqualTo(expected + " ");
     }
 
     @ParameterizedTest
@@ -41,7 +44,26 @@ class RacingCarTest {
         RacingCar racingCar = new RacingCar(racingCarName);
         Assertions.assertRandomNumberInRangeTest(() -> {
             racingCar.moveOrNot();
-        }, 4, 3);
+        }, MOVING_FORWARD, STOP);
+
+        //when
+        String racingCarString = racingCar.toString();
+
+        //then
+        assertThat(racingCarString).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"자동차,자동차 : ---", "레이싱카,레이싱카 : ---"})
+    public void toStringWithMoveForwardThreeTimes(String racingCarName, String expected)
+            throws Exception {
+        //given
+        RacingCar racingCar = new RacingCar(racingCarName);
+        Assertions.assertRandomNumberInRangeTest(() -> {
+            racingCar.moveOrNot();
+            racingCar.moveOrNot();
+            racingCar.moveOrNot();
+        }, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP);
 
         //when
         String racingCarString = racingCar.toString();
