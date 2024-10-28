@@ -27,6 +27,7 @@ public class Application {
         input = getPlayCount();
         int playCount = validateNumber(input);
         validatePlayCount(playCount);
+        playGame(names, playCount);
     }
 
     public static void printStartMessage() {
@@ -81,5 +82,14 @@ public class Application {
         if (playCount > MAX_PLAY_COUNT || playCount < MIN_COUNT) {
             throw new IllegalArgumentException("시도 횟수는 " + MAX_PLAY_COUNT + "이하인 자연수여야 합니다.");
         }
+    }
+
+    private static void playGame(String[] names, int playCount) {
+        int[] moves = new int[names.length];
+        printGamePlayStartMessage();
+    }
+
+    public static void printGamePlayStartMessage() {
+        System.out.println("\n실행결과");
     }
 }
