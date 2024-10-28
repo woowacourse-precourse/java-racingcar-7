@@ -87,4 +87,22 @@ class RaceTest {
 			.toList())
 			.containsExactly(1, 1, 1);
 	}
+
+	@Test
+	@DisplayName("최대 이동거리를 가진 자동차들의 이름을 우승자 응답으로 반환된다.")
+	void selectWinners() {
+		// given
+		int randomNumber = RaceConfig.MOVE_CONDITION_NUMBER.getNumber();
+
+		// when
+		car1.move(randomNumber);
+		car2.move(randomNumber);
+		List<WinnerResponse> winnerResponses = race.selectWinners();
+
+		// then
+		assertThat(winnerResponses.stream()
+			.map(WinnerResponse::name)
+			.toList())
+			.containsExactly("pobi", "woni");
+	}
 }
