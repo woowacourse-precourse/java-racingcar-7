@@ -20,7 +20,8 @@ public class InputView {
     }
 
     public int inputRoundCount() {
-        return Integer.parseInt(readLine());
+        String input = readLine();
+        return inputValidator.validateRoundCount(input);
     }
 
     private List<String> parseCarNames(String carNames) {
