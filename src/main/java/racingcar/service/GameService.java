@@ -30,7 +30,7 @@ public class GameService {
         return Randoms.pickNumberInRange(Constant.MIN_RANDOM_VALUE, Constant.MAX_RANDOM_VALUE);
     }
 
-    private void move(Car car, int randomNumber) {
+    void move(Car car, int randomNumber) {
         if (randomNumber >= Constant.THRESHOLD_VALUE) {
             car.increaseCurrentLocation();
         }
