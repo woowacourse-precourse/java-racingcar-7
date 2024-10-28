@@ -12,6 +12,7 @@ public class CarRaceResult {
     private Race race = new Race();
 
     public void carRaceResult(List<Car> carList){
+        init();
         carPositionMax(carList);
         for(Car car : carList){
             if(car.getPosition() == MaxPosition){
@@ -21,9 +22,15 @@ public class CarRaceResult {
         carRaceResultPrint(race.getWinner());
     }
 
+    private void init() {
+        race.getWinner().clear();
+        race.getMaxheap().clear();
+    }
+
     private void carRaceResultPrint(List<Car> winner) {
         String result = winner.stream().map(Car::getCarName).collect(Collectors.joining(","));
         System.out.print("최종 우승자 : "+result);
+        System.out.println();
     }
 
     private void carPositionMax(List<Car> carList) {
