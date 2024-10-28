@@ -14,19 +14,21 @@ public class Racing {
         this.rounds = rounds;
     }
 
-    public boolean interpretCommand(){
-        if(randomNumber() >= 4){
-            return true;
-        }
-        return false;
+    private boolean interpretCommand() {
+        return randomNumber() >= 4;
     }
 
     public void startRace() {
         for (int i = 0; i < rounds; i++) {
-            for (Car car : cars) {
-                car.moveForward(interpretCommand());
-            }
+            raceRound();
             printRoundResults(cars); // 라운드 결과 기록
+        }
+    }
+
+    private void raceRound() {
+        for (Car car : cars) {
+            boolean stopOrMove = interpretCommand();
+            car.moveForward(stopOrMove);
         }
     }
 
