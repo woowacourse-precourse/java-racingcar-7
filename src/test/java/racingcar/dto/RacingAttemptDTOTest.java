@@ -1,0 +1,7 @@
+package racingcar.dto;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class RacingAttemptDTOTest {
+
+}

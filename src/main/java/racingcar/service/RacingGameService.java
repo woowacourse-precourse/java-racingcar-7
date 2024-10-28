@@ -39,7 +39,7 @@ public class RacingGameService {
 
         for (Car car : cars.getCars()) {
             if (car.getCurrentProgress() > maxProgress) {
-                maxProgress = car.getCurrentProgress(); // 새로운 최대값 갱신
+                maxProgress = car.getCurrentProgress();
             }
         }
 
