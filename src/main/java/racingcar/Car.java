@@ -1,11 +1,12 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.Random;
 
 public class Car {
     private String name;
     private int position;
-    private static final Random random = new Random();
 
     public Car(String name) {
         this.name = name;
@@ -21,13 +22,13 @@ public class Car {
     }
 
     public void move() {
-        if (random.nextInt(10) >= 4) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
             position++;
         }
     }
 
     @Override
     public String toString() {
-        return name + ": " + "-".repeat(position);
+        return name + " : " + "-".repeat(position);
     }
 }
