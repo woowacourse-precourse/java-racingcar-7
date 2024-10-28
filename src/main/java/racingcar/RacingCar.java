@@ -41,7 +41,7 @@ public class RacingCar {
 
 //    void moveForward() throws Exception{
 void moveForward(){
-        this.currentLocation += "_";
+        this.currentLocation += "-";
         this.currentDistance += 1;
     }
 }
