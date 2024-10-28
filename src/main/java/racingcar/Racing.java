@@ -13,12 +13,21 @@ public class Racing {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
 
-        // # 2. 시도할 횟수 입력받기
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int repeat = Integer.parseInt(Console.readLine());
-
         String[] racer = spliter(input);
         int[] racerMoved = new int[racer.length];
+
+        // # 2. 시도할 횟수 입력받기
+        System.out.println("시도할 횟수는 몇 회인가요?");
+
+        int repeat;
+        try {
+            repeat = Integer.parseInt(Console.readLine());
+            if (repeat <= 0) {
+                throw new IllegalArgumentException("시도횟수가 0 이하");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자로 입력해야 함");
+        }
 
         // # 4. 생성된 랜덤수를 통한 전진여부 판단하기
         System.out.println("실행 결과");
@@ -35,7 +44,7 @@ public class Racing {
         }
     }
 
-    // 랜덤수 생성 후 전진여부 판단
+    // 전진여부 판단
     public void defineMove(String[] racer, int[] racerMoved) {
         for (int j = 0; j < racer.length; j++) {
             if (isMove(randomGenerator())) racerMoved[j]++;
@@ -78,7 +87,19 @@ public class Racing {
 
     // , 기준으로 분리하기
     public String[] spliter(String input) {
-        return input.split(",");
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("빈 입력 오류");
+        }
+        String[] names = input.split(",");
+        for (String name : names) {
+            if (name.trim().isEmpty()) {
+                throw new IllegalArgumentException("빈 이름 오류");
+            }
+            if (name.trim().length() > 5) {
+                throw new IllegalArgumentException("이름 길이 오류");
+            }
+        }
+        return names;
     }
 
     // # 3. 무작위 값 생성하기
