@@ -22,7 +22,7 @@ public class ProgressCarRace {
     }
 
     /**
-     * 현재 각 자동차의 상황(전진 횟수)을 출력합니다.
+     * 현재 각 자동차의 상황(전진 횟수)을 문자열로 반환합니다.
      * @return 현재 경주 상황 문자열
      */
     String printStates(Map<String, Integer> stateMap) {
