@@ -23,8 +23,22 @@ public class Cars {
 
     public List<String> getWinners() {
         int maxPosition = getMaxPosition();
+        return getWinnersByPosition(maxPosition);
+    }
+
+    private List<String> getWinnersByPosition(int maxPosition) {
+        List<Car> winningCars = getWinningCars(maxPosition);
+        return extractWinnerNames(winningCars);
+    }
+
+    private List<Car> getWinningCars(int maxPosition) {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    private List<String> extractWinnerNames(List<Car> winningCars) {
+        return winningCars.stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }

@@ -14,30 +14,45 @@ public class RacingGame {
         this.outputView = outputView;
     }
 
+    public void play() {
+        initialize();
+        executeRace();
+        announceResult();
+    }
+
     private void initialize() {
+        initializeCars();
+        initializeMoveCount();
+    }
+
+    private void initializeCars() {
         inputView.carNameInput();
         cars = new Cars(inputView.readCarNames());
+    }
 
+    private void initializeMoveCount() {
         inputView.requestMoveCount();
         moveCount = new MoveCount(inputView.readMoveCount());
     }
 
-    private void race() {
+    private void executeRace() {
         outputView.printRaceResult();
-        for (int i = 0; i < moveCount.getValue(); i++) {
-            cars.move();
-            outputView.printRoundResult(cars.getCars());
+        executeAllRounds();
+    }
+
+    private void executeAllRounds() {
+        int totalRounds = moveCount.getValue();
+        for (int i = 0; i < totalRounds; i++) {
+            executeOneRound();
         }
     }
 
-    private void announceWinners() {
+    private void executeOneRound() {
+        cars.move();
+        outputView.printRoundResult(cars.getCars());
+    }
+
+    private void announceResult() {
         outputView.printWinners(cars.getWinners());
     }
-
-    public void play() {
-        initialize();
-        race();
-        announceWinners();
-    }
-
 }
