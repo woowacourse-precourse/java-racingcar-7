@@ -60,6 +60,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // 4단계: 우승자 결정 기능 테스트
+    @Test
+    void 우승자_결정_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
