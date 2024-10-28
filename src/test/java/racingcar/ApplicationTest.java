@@ -62,6 +62,20 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> new Car(name)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"1a", "2;", "3aa", "bbc"})
+    void racing_game_생성자는_숫자가_아닌_입력을_받는_경우에_IllegalArgumentExepciton을_던진다(String numberOfTrials) {
+        String[] names = {"hello", "bag", "to"};
+        assertThatThrownBy(() -> new RacingGame(numberOfTrials, names)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2", "3", "0"})
+    void racing_game_생성자는_숫자를_입력_받는_경우에_정상적으로_생성된다(String numberOfTrials) {
+        String[] names = {"hello", "bag", "to"};
+        assertThatCode(() -> new RacingGame(numberOfTrials, names)).doesNotThrowAnyException();
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
