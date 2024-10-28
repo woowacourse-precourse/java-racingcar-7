@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.Objects;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
     String carName;
     String currentLocation;
     int currentDistance;
@@ -15,6 +15,11 @@ public class RacingCar {
         this.carName = "";
         this.currentLocation = "";
         this.currentDistance = 0;
+    }
+
+    @Override
+    public int compareTo(RacingCar o) {
+        return this.currentDistance-o.currentDistance;
     }
 
     // 한글 영어 포함 정규 표현식 /^[가-힣a-zA-Z]+$/
