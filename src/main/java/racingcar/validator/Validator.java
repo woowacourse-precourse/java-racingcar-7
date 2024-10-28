@@ -9,6 +9,7 @@ public class Validator {
         if (string.isEmpty() || isOverOne(string)) {
             isOverOne(string);
         if (string.isEmpty() || isSingleName(string)) {
+            throw new IllegalArgumentException();
         }
         List<String> names = Util.splitByComma(string);
         names.forEach(name -> isLimitExceed(name, 5));
