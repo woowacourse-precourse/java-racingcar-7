@@ -42,6 +42,6 @@ public class MoveTest {
         car.move();
 
         // then
-        assertThat(car.getMove()==1).isFalse();
+        assertThat(car.getMove() == 1).isFalse();
     }
 }

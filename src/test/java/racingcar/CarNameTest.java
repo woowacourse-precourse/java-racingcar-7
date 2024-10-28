@@ -10,16 +10,16 @@ import racingcar.validator.CarNameValidator;
 public class CarNameTest {
 
     @Test
-    @DisplayName("자동차 이름 검증 실패 테스트")
+    @DisplayName("자동차 이름 검증 실패 테스트 - 공백")
     void carNameFailTest_emptyString() {
         // given
         String CarName = "";
 
-        // when
+        // when - then
         Assertions.assertThatThrownBy(() ->
-                        CarNameValidator.validateCarNameFormat(CarName))
+                        CarNameValidator.validateCarNameLength(CarName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.NON_ALPHA_MESSAGE);
+                .hasMessage(ErrorMessage.INVALID_CAR_NAME_MESSAGE);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class CarNameTest {
         // given
         String CarName = "123";
 
-        // when
+        // when - then
         Assertions.assertThatThrownBy(() ->
                         CarNameValidator.validateCarNameFormat(CarName))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -41,7 +41,7 @@ public class CarNameTest {
         // given
         String CarName = "!!@@";
 
-        // when
+        // when - then
         Assertions.assertThatThrownBy(() ->
                         CarNameValidator.validateCarNameFormat(CarName))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -67,7 +67,7 @@ public class CarNameTest {
         // given
         String CarName = "toolongname";
 
-        // when
+        // when - then
         Assertions.assertThatThrownBy(() ->
                         CarNameValidator.validateCarNameLength(CarName))
                 .isInstanceOf(IllegalArgumentException.class)

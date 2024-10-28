@@ -35,6 +35,7 @@ public class WinnerTest {
         // then
         Assertions.assertThat(winners).containsExactly("woni");
     }
+
     @Test
     @DisplayName("우승자 동점 테스트 - 두명인 경우")
     void testGetWinners_Tied() {
