@@ -16,7 +16,7 @@ public class RacePolicyTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4,5,6,7,8,9})
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @DisplayName("4이상의 정수를 입력하면 true를 반환한다.")
     void testSatisfiedPolicyCondition(int randomNumber) {
         final boolean result = racePolicy.canMoveForward(randomNumber);
@@ -24,7 +24,7 @@ public class RacePolicyTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0,1,2,3})
+    @ValueSource(ints = {0, 1, 2, 3})
     @DisplayName("4미만의 정수를 입력하면 false를 반환한다.")
     void testNotSatisfiedPolicyCondition(int randomNumber) {
         final boolean result = racePolicy.canMoveForward(randomNumber);
