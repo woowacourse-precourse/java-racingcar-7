@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.Constants.ErrorMessage;
 import racingcar.Model.Car;
 import racingcar.Model.InputParser;
 import racingcar.Model.Validator;
@@ -80,10 +81,84 @@ class GameTest extends NsTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi,pobi"})
     void 자동차이름_중복되면_예외발생(String input) {
-        assertThatThrownBy(() -> InputParser.stringToCars(input))
+        assertThatThrownBy(() -> Validator.cars(InputParser.stringToCars(input)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("dd");
+                .hasMessage(ErrorMessage.ERROR_UNIQUE_NAME);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"10"})
+    void 정상적인_시도횟수를_입력받는다(String input) {
+        setConsoleInput(input);
+        InputView inputView = new InputView();
+
+        String rounds = inputView.requestRound();
+
+        assertThat(rounds)
+                .isEqualTo(input);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {""})
+    void 시도횟수_빈문자열_입력시_예외발생(String input) {
+        assertThatThrownBy(() -> Validator.inputRound(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.ERROR_ROUND_FORMAT);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"abc", "1a2", "!@#", " "})
+    void 시도횟수_숫자가_아닌_입력시_예외발생(String input) {
+        assertThatThrownBy(() -> Validator.inputRound(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.ERROR_ROUND_FORMAT);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1", "10001", "999999"})
+    void 시도횟수_범위초과시_예외발생(String input) {
+        assertThatThrownBy(() -> {
+            Validator.inputRound(input);
+            int round = InputParser.stringToRound(input);
+            Validator.round(round);
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.ERROR_ROUND_RANGE);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1.5", "0.0", "-3.14"})
+    void 시도횟수_실수입력시_예외발생(String input) {
+        assertThatThrownBy(() -> Validator.inputRound(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.ERROR_ROUND_FORMAT);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"9999999999999999999999999999"})
+    void 시도횟수_정수범위초과시_예외발생(String input) {
+        assertThatThrownBy(() -> Validator.inputRound(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.ERROR_ROUND_RANGE);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"poby,woni,jun"})
+    void 자동차목록에서_자동차리스트를_생성한다(String input) {
+        List<Car> actual = InputParser.stringToCars(input);
+
+        List<Car> expected = List.of(
+                Car.from("poby"),
+                Car.from("woni"),
+                Car.from("jun")
+        );
+
+        assertThat(actual.stream()
+                .map(Car::getName)
+                .toList())
+                .containsExactlyElementsOf(expected.stream()
+                        .map(Car::getName)
+                        .toList());
+    }
 
 }
