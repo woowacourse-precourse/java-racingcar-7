@@ -101,3 +101,19 @@
 - InputRoundFormatValidator : 시도 횟수 숫자인지 검증
 - InputRoundRangeValidator : 시도 횟수 1이상 Integer.MAX_VALUE 이하 인지 검증
 - InputRoundValidatorsFactory : List<InputRoundValidator>로 검증 리스트 객체 생성
+
+## `Controller`
+
+### 1. RacingController
+
+- 레이싱 요청 DTO를 받아 Validate 후 RacingService에 레이싱 요청
+
+## `DTO`
+
+### 1. RacingRequestDTO
+
+- 입력된 이름과 시도 횟수를 담는 DTO
+
+### 2. RacingResponseDTO
+
+- 레이싱 결과를 총합한 문자열을 담는 DTO
