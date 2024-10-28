@@ -57,6 +57,4 @@ public class CarTest {
             assertThat(cars.get(1)).isEqualTo(car2);
         }, 4, 0);
     }
-
-
 }

@@ -52,7 +52,7 @@ class RacingGameTest {
     }
 
     @Test
-    void selectWinner_결과_반환_성공() {
+    void 우승자_한명일때_결과_반환_성공() {
         Assertions.assertSimpleTest(() -> {
             //given
             Car car1 = new Car("car1", 5);
@@ -67,5 +67,4 @@ class RacingGameTest {
             assertThat(winners.get(0).getName()).isEqualTo("car1");
         });
     }
-
 }
