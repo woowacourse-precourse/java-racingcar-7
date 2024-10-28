@@ -10,12 +10,12 @@ public class ViewController {
 
     public static final String OUTPUT_FILTER = "최종 우승자 : %s";
 
-    public static String inputCarNames() {
+    public static String readCarNames() {
         System.out.println(INPUT_CAR_NAME);
         return InputView.readInput();
     }
 
-    public static String inputTryCount() {
+    public static String readTryCount() {
         System.out.println(INPUT_TRY_COUNT);
         return InputView.readInput();
     }
@@ -23,5 +23,4 @@ public class ViewController {
     public static void printWinners(String[] winners) {
         OutputView.printOutput(OUTPUT_FILTER, winners);
     }
-
 }

@@ -13,7 +13,7 @@ public class CarRacer {
         this.carPositions = new int[carNames.length];
     }
 
-    public void moveCars(int moveCount) {
+    public void startRace(int moveCount) {
         System.out.println();
         System.out.println("실행 결과");
         for (int i = 0; i < moveCount; i++) {
@@ -64,10 +64,6 @@ public class CarRacer {
             maxPosition = Math.max(maxPosition, position);
         }
         return maxPosition;
-    }
-
-    public String[] getCarNames() {
-        return carNames;
     }
 
     public int[] getCarPositions() {

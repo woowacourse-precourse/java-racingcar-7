@@ -14,7 +14,7 @@ class CarRacerTest {
         CarRacer carRacer = new CarRacer(new String[]{"pobi", "crong", "honux"});
 
         // when
-        carRacer.moveCars(3);
+        carRacer.startRace(3);
 
         // then
 

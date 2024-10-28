@@ -1,21 +1,21 @@
 package racingcar.validator;
 
-public class InputValidator {
+public class Validator {
 
     private static final int MAX_NAME_LENGTH = 5;
     private static final String INVALID_NAME_LENGTH_MESSAGE = "자동차 이름은 1자 이상 5자 이하만 가능합니다.";
     private static final String INVALID_MOVE_COUNT_MESSAGE = "이동 횟수는 숫자만 가능합니다.";
     private static final String INVALID_MOVE_COUNT_POSITIVE_MESSAGE = "이동 횟수는 1 이상만 가능합니다.";
 
-    public static void validateStringArray(String[] strings) {
-        for (String str : strings) {
-            if (isInvalidLength(str)) {
+    public static void checkNameLength(String[] names) {
+        for (String name : names) {
+            if (isInvalidLength(name)) {
                 throw new IllegalArgumentException(INVALID_NAME_LENGTH_MESSAGE);
             }
         }
     }
 
-    public static int validateInteger(String input) {
+    public static int parseMoveCount(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -27,7 +27,7 @@ public class InputValidator {
         return str.length() > MAX_NAME_LENGTH || str.isEmpty();
     }
 
-    public static void validPositive(int count) {
+    public static void checkPositiveMoveCount(int count) {
         if (count < 1) {
             throw new IllegalArgumentException(INVALID_MOVE_COUNT_POSITIVE_MESSAGE);
         }

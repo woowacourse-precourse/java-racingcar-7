@@ -1,29 +1,29 @@
 package racingcar.model;
 
-import racingcar.validator.InputValidator;
+import racingcar.validator.Validator;
 
-public class InputFilter {
+public class InputProcessor {
 
-    private final int moveCount;
+    private final int tryCount;
     private final String[] carNames;
 
-    public InputFilter(String rawCarNames, String rawMoveCount) {
+    public InputProcessor(String rawCarNames, String rawMoveCount) {
         String[] carNames = validateCarNames(rawCarNames);
         int moveCount = validateMoveCount(rawMoveCount);
 
         this.carNames = carNames;
-        this.moveCount = moveCount;
+        this.tryCount = moveCount;
     }
 
     public String[] validateCarNames(String carNames) {
         String[] splitCarNames = carNames.split(",");
-        InputValidator.validateStringArray(splitCarNames);
+        Validator.checkNameLength(splitCarNames);
         return splitCarNames;
     }
 
     public int validateMoveCount(String moveCount) {
-        int moveCountInt = InputValidator.validateInteger(moveCount);
-        InputValidator.validPositive(moveCountInt);
+        int moveCountInt = Validator.parseMoveCount(moveCount);
+        Validator.checkPositiveMoveCount(moveCountInt);
         return moveCountInt;
     }
 
@@ -31,7 +31,7 @@ public class InputFilter {
         return carNames;
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public int getTryCount() {
+        return tryCount;
     }
 }

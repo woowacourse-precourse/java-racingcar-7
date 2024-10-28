@@ -6,7 +6,7 @@ import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.ViewController;
 
-class InputViewTest {
+class ViewControllerTest {
 
     @Test
     void inputTryCount() {
@@ -15,7 +15,7 @@ class InputViewTest {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         // when
-        String result = ViewController.inputTryCount();
+        String result = ViewController.readTryCount();
 
         // then
         assertEquals("5", result);
