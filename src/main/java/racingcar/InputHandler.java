@@ -4,16 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InputHandler {
-    private final String input;
-    private String[] names;
 
-    public InputHandler(String input) {
-        this.input = input;
-    }
+    public String[] InputCarNames(String input) {
+        String[] names;
 
-    public String[] InputCarName() {
-        if (isCorrectDelimiter()) {
-            isAcceptableName();
+        if (isCorrectDelimiter(input)) {
+            names = processCarNames(input);
         } else {
             throw new IllegalArgumentException("쉼표(,)로 자동차 이름을 구분해주세요.");
         }
@@ -21,16 +17,12 @@ public class InputHandler {
         return names;
     }
 
-    private Boolean isCorrectDelimiter() {
-        String delimiter = ",";
-        if (input.contains(delimiter)) {
-            names = input.split(delimiter);
-            return true;
-        }
-        return false;
+    private Boolean isCorrectDelimiter(String input) {
+        return input.contains(",");
     }
 
-    private void isAcceptableName() {
+    private String[] processCarNames(String input) {
+        String[] names = input.split(",");
         Set<String> nameSet = new HashSet<>();
 
         for (int idx = 0; idx < names.length; ++idx) {
@@ -44,5 +36,9 @@ public class InputHandler {
                 throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
             }
         }
+
+        return names;
     }
 }
+
+
