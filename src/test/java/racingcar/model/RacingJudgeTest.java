@@ -3,19 +3,13 @@ package racingcar.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RacingJudgeTest {
 
-    private RacingJudge judge;
+    private final RacingJudge judge = new RacingJudge();
     private final RacingGame racingGame = new RacingGame("pobi,woni,jun");
-
-    @BeforeEach
-    void setUpRacingJudge() {
-        judge = new RacingJudge();
-    }
 
     @DisplayName("RacingJudge_생성_테스트")
     @Test
@@ -35,7 +29,7 @@ class RacingJudgeTest {
         racingGame.racing(List.of(0, 4, 4));
         racingGame.racing(List.of(0, 2, 4));
         racingGame.racing(List.of(0, 4, 4));
-        String winner = RacingJudge.decideWinnerBy(records);
+        String winner = judge.decideWinnerBy(records);
         //then
         assertThat(winner).isEqualTo("jun");
     }
@@ -49,7 +43,7 @@ class RacingJudgeTest {
         racingGame.racing(List.of(0, 4, 4));
         racingGame.racing(List.of(0, 4, 4));
         racingGame.racing(List.of(0, 4, 4));
-        String winners = RacingJudge.decideWinnerBy(records);
+        String winners = judge.decideWinnerBy(records);
         //then
         assertThat(winners).isEqualTo("woni,jun");
     }
