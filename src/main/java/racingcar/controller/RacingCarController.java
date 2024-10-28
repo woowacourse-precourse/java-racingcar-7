@@ -10,6 +10,7 @@ import racingcar.service.CarsService;
 import racingcar.service.RaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+import racingcar.wrapper.RaceCount;
 
 public class RacingCarController {
 
@@ -26,17 +27,18 @@ public class RacingCarController {
     public void run() {
         String carNames = InputView.inputCarNames();
         Cars cars = createCars(carNames);
-        int tryCount = InputView.inputTryCount();
+        String Count = InputView.inputRaceCount();
+        RaceCount raceCount = RaceCount.of(Count);
 
-        List<RoundResultDto> raceStatus = playRace(cars, tryCount);
+        List<RoundResultDto> raceStatus = playRace(cars, raceCount);
         OutputView.printRoundResults(raceStatus);
         WinnerDto winners = getWinnerNames(cars);
         OutputView.printWinners(winners);
         InputView.closeStream();
     }
 
-    private List<RoundResultDto> playRace(Cars cars, int tryCount) {
-        return raceService.playRace(cars, tryCount);
+    private List<RoundResultDto> playRace(Cars cars, RaceCount raceCount) {
+        return raceService.playRace(cars, raceCount);
     }
 
     private WinnerDto getWinnerNames(Cars cars) {

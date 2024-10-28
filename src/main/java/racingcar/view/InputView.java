@@ -10,10 +10,10 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static int inputTryCount() {
-        System.out.println(ViewMessages.TRY_COUNT_INPUT_MESSAGE.getMessage());
+    public static String inputRaceCount() {
+        System.out.println(ViewMessages.RACE_COUNT_INPUT_MESSAGE.getMessage());
 
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 
     public static void closeStream() {
