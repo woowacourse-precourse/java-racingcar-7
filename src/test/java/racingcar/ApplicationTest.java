@@ -15,19 +15,54 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 빈_자동차_이름_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,jun", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 경주_횟수_숫자_아님_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "five"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 경주_횟수_0일_때_테스트() {
+        assertSimpleTest(() -> {
+            run("pobi,woni", "0");
+            assertThat(output()).contains("최종 우승자 : pobi, woni");
+        });
+    }
+
+    @Test
+    void 공동_우승자_발생_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "3");
+                    assertThat(output()).contains("최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, STOP
         );
     }
 

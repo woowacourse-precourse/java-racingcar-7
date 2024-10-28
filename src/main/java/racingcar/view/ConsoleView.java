@@ -31,15 +31,15 @@ public class ConsoleView {
     }
 
     // 각 라운드 결과 출력 메소드
-    public void outputRoundResult(List<Car> cars){
-        for(Car car : cars){
+    public void outputRoundResult(List<Car> cars) {
+        for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println();
     }
 
     // 우승자 출력 메소드
-    public void outputWinners(List<Car> winners){
+    public void outputWinners(List<Car> winners) {
         List<String> winnerNames = winners.stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
