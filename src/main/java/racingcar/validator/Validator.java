@@ -1,8 +1,8 @@
 package racingcar.validator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Validator {
 
@@ -18,7 +18,7 @@ public class Validator {
     }
 
     private static void nameLengthCheck(String name) {
-        if (name.length() > 6) {
+        if (name.length() >= 6) {
             throw new IllegalArgumentException("이름 길이가 6 이상입니다.");
         }
         if (name.isEmpty()) {
@@ -27,7 +27,7 @@ public class Validator {
     }
 
     public ArrayList<String> changeSameName(ArrayList<String> cars) {
-        Map<String, Long> checkSameName = new HashMap<>();
+        Map<String, Long> checkSameName = new ConcurrentHashMap<>();
 
         for (String name : cars) {
             checkSameName.put(name, checkSameName.getOrDefault(name, 0L) + 1);
@@ -43,8 +43,12 @@ public class Validator {
             String car = cars.get(i);
             Long counter = checkSameName.get(car);
 
-            car += "-" + counter.toString();
+            if (counter == null) {
+                continue;
+            }
+
             checkSameName.put(car, counter - 1);
+            car += "-" + counter;
 
             cars.set(i, car);
         }
