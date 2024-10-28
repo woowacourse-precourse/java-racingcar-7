@@ -9,10 +9,6 @@ import java.util.List;
 public class InputService {
     private List<String> carNameList;
 
-    public List<String> getCarNameList() {
-        return carNameList;
-    }
-
     public List<String> carNamesValidation(String carNames) throws IllegalArgumentException {
         if (carNames.isEmpty()) {
             String request = InputView.request(InputView.CAR_NAME);
