@@ -5,15 +5,19 @@ import java.util.List;
 
 public class IOController {
 
+    private static final String CAR_NAME_ENTER_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String REPEAT_COUNT_ENTER_MESSAGE = "시도할 횟수는 몇 회인가요?";
+    private static final String WINNER_PRINT_MESSAGE = "최종 우승자 : ";
+
     public String enterCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(CAR_NAME_ENTER_MESSAGE);
         String carNames = Console.readLine();
 
         return carNames;
     }
 
     public String enterRepeatCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(REPEAT_COUNT_ENTER_MESSAGE);
         String repeatCount = Console.readLine();
 
         return repeatCount;
@@ -34,7 +38,7 @@ public class IOController {
     }
 
     public void printWinners(List<Car> winners) {
-        System.out.print("최종 우승자 : ");
+        System.out.print(WINNER_PRINT_MESSAGE);
 
         for (int i = 0; i < winners.size(); i++) {
             Car winner = winners.get(i);
