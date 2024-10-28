@@ -5,18 +5,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class RandomEngine implements Engine {
 
     private static int RANDOM_RANGE_START = 0;
-    private static int RANDOM_RANGE_END = 9;
-    private static int ACCELERATION_THRESHOLD = 4;
+    private int randomRangeEnd;
+    private int accelerationThreshold;
     private int moveDistance;
 
-    public RandomEngine(int moveDistance) {
+    public RandomEngine(int moveDistance, int randomRangeEnd, int accelerationThreshold) {
         this.moveDistance = moveDistance;
+        this.randomRangeEnd = randomRangeEnd;
+        this.accelerationThreshold = accelerationThreshold;
     }
 
     @Override
     public int accelerate() {
-        int number = Randoms.pickNumberInRange(RANDOM_RANGE_START, RANDOM_RANGE_END);
-        if (number > ACCELERATION_THRESHOLD) {
+        int number = Randoms.pickNumberInRange(RANDOM_RANGE_START, randomRangeEnd);
+        if (number > accelerationThreshold) {
             return moveDistance;
         }
         return 0;

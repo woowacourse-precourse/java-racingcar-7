@@ -9,7 +9,9 @@ public class RandomEngineTest {
     void 랜덤_엔진은_임계치를_넘으면_전진한다() {
         //given
         int moveDistance = 1;
-        Engine engine = new RandomEngine(moveDistance);
+        int randomRangeEnd = 10;
+        int accelerationThreshold = 5;
+        Engine engine = new RandomEngine(moveDistance, randomRangeEnd, accelerationThreshold);
 
         //when
         int accelerate = engine.accelerate();
