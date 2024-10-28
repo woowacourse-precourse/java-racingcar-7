@@ -12,10 +12,6 @@ public class TrialNumber {
         this.trialNumber = parseTrialNumber(inputTrialNumber);
     }
 
-    public int getTrialNumber() {
-        return trialNumber;
-    }
-
     public Boolean isTrialLowerThanTrialNumber() {
         return trial < trialNumber;
     }
