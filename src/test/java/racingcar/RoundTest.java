@@ -12,15 +12,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class RoundTest {
 
     Car car1, car2;
-    List<Car> cars;
+    List<String> cars;
     Round round;
 
     @BeforeEach
     void beforeEach() {
-        cars = Car.createInstances("AAA, BBB");
-        car1 = cars.get(0);
-        car2 = cars.get(1);
-        round = new Round(cars);
+        car1 = new Car("AAA");
+        car2 = new Car("BBB");
+        round = new Round(List.of(car1, car2));
     }
 
     @Test

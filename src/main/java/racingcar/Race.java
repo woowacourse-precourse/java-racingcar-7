@@ -4,11 +4,13 @@ import java.util.*;
 
 public class Race {
     private final NumberGenerator numberGenerator;
-    private final List<Car> cars;
+    private final List<Car> cars = new ArrayList<>();
 
-    public Race(final NumberGenerator numberGenerator, final List<Car> cars) {
+    public Race(final NumberGenerator numberGenerator, final List<String> names) {
         this.numberGenerator = numberGenerator;
-        this.cars = cars;
+        for (String name: names) {
+            cars.add(new Car(name));
+        }
     }
 
     public void run(final int rounds) {

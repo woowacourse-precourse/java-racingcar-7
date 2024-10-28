@@ -10,18 +10,9 @@ public class Car implements Comparable<Car> {
     private Long distance;
     public static final int FORWARDING_CONDITION = 4;
 
-    private Car(String name) {
+    public Car(String name) {
         this.name = name;
         this.distance = 0L;
-    }
-
-    public static List<Car> createInstances(String names) {
-        List<Car> cars = new ArrayList<>();
-        String[] tokens = names.split(",");
-        for (String token: tokens) {
-            cars.add(new Car(token.strip()));
-        }
-        return cars;
     }
 
     public Long getDistance() {

@@ -15,9 +15,8 @@ class CarTest {
 
     @BeforeEach
     void beforeEach() {
-        List<Car> cars = createInstances("Jihyun, Jihye");
-        car = cars.get(0);
-        anotherCar = cars.get(1);
+        car = new Car("Jihyun");
+        anotherCar = new Car("Jihye");
     }
 
     @Test
