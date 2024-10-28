@@ -1,16 +1,17 @@
 package racingcar.controller;
 
-import racingcar.model.Cars;
+import racingcar.model.RaceCars;
+import racingcar.model.WinningCars;
 import racingcar.validate.Validation;
 import racingcar.view.InputMessage;
 import racingcar.view.OutputMessage;
 
 public class GameController {
 
-    private final Cars cars;
+    private final RaceCars raceCars;
 
-    public GameController(final Cars cars) {
-        this.cars = cars;
+    public GameController(final RaceCars raceCars) {
+        this.raceCars = raceCars;
     }
 
     public void start() {
@@ -22,17 +23,18 @@ public class GameController {
     private void extractCarNames() {
         final String input = InputMessage.inputCarNames();
         Validation.validateInput(input);
-        cars.createCars(input);
+        raceCars.createCars(input);
     }
 
     private void attemptGame() {
         final int num = InputMessage.inputGameAttempts();
         Validation.validateGameTryCount(num);
-        cars.executeRounds(num);
+        raceCars.executeRounds(num);
     }
 
     private void resultWinnerList() {
-        final String carNames = cars.getWinnerNames();
+        WinningCars winningCars = new WinningCars(raceCars.getCars());
+        final String carNames = winningCars.getWinnerNames();
         OutputMessage.executeResultMessage(carNames);
     }
 

@@ -1,13 +1,13 @@
 package racingcar;
 
 import racingcar.controller.GameController;
-import racingcar.model.Cars;
+import racingcar.model.RaceCars;
 
 public class Application {
     public static void main(String[] args) {
-        final Cars cars = new Cars();
+        final RaceCars raceCars = new RaceCars();
 
-        final GameController gameController = new GameController(cars);
+        final GameController gameController = new GameController(raceCars);
         gameController.start();
     }
 }

@@ -7,13 +7,16 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class Cars {
+public class RaceCars {
 
     private static final String COMMA = ",";
 
     private final List<Car> cars = new ArrayList<>();
+
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
+    }
 
     public void createCars(String input) {
         Set<String> distinctCarsName = new HashSet<>();
@@ -41,23 +44,5 @@ public class Cars {
         System.out.println();
     }
 
-    public String getWinnerNames() { // 이동된 메서드
-        return getWinnerList().stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(COMMA));
-    }
-
-    private List<Car> getWinnerList() {
-        return cars.stream()
-                .filter(car -> car.hasSameMoveCount(getWinnerMoveCount()))
-                .collect(Collectors.toList());
-    }
-
-    private int getWinnerMoveCount() {
-        return cars.stream()
-                .mapToInt(Car::getMoveCount)
-                .max()
-                .orElse(0);
-    }
 
 }

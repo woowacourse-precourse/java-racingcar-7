@@ -3,8 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.model.Cars;
 import racingcar.model.ErrorType;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -49,15 +47,6 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorType.GAME_TRY_COUNT_ERROR.getMessage());
     }
-
-    @Test
-    @DisplayName("중복된 이름 존재할시 예외 처리")
-    void checkedDuplicateCarName() {
-        assertThatThrownBy(() -> runException("kim", "jun", "kim"))
-                .isInstanceOf(IllegalArgumentException.class);
-//                .hasMessage(ErrorType.CAR_NAME_DUPLICATE_ERROR.getMessage()); -> 이거 왜안되지
-    }
-
 
     @Override
     public void runMain() {

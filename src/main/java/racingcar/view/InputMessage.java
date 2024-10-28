@@ -6,7 +6,7 @@ public class InputMessage {
 
     public static String inputCarNames() {
         System.out.println(MessageType.REQUEST_INPUT_STRING.getMessage());
-        return Console.readLine();
+        return Console.readLine().trim();
     }
 
     public static int inputGameAttempts() {
