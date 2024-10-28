@@ -14,10 +14,11 @@ public class UserInput {
         return new ParticipatingCars(carsName);
     }
 
-    public void getGameCount() {
+    public int getGameCount() {
         String input = Console.readLine();
         validateEmptyInput(input);
         validateNumber(input);
+        return Integer.parseInt(input);
     }
 
     private void validateNumber(String input) {

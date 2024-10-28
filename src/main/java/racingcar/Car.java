@@ -22,6 +22,14 @@ public class Car {
         return this;
     }
 
+    public PositionSign getPositionSign() {
+        return new PositionSign(position);
+    }
+
+    public String getName() {
+        return name;
+    }
+
     private void validateLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름의 길이는 5자리 이하 입니다");

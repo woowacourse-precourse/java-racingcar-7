@@ -17,7 +17,9 @@ public class Application {
         ParticipatingCars cars = input.getCars();
 
         output.requestGameCount();
-        input.getGameCount();
+        int gameCount = input.getGameCount();
+
+        output.printGameResult(cars, gameCount);
     }
 
     public static void main(String[] args) {

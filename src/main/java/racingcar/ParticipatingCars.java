@@ -1,8 +1,6 @@
 package racingcar;
 
 
-import racingcar.io.Car;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -18,6 +16,13 @@ public class ParticipatingCars {
                 .collect(Collectors.toList());
         validateDuplicateCarName(carList);
         this.cars = carList;
+    }
+
+    public List<Car>racing() {
+        return cars.stream()
+                .map(Car::forward)
+                .collect(Collectors.toList());
+
     }
 
     private void validateDuplicateCarName(List<Car> carList) {
