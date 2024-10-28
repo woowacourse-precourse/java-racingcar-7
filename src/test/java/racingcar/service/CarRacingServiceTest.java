@@ -18,10 +18,10 @@ class CarRacingServiceTest {
                 new Car("car2"),
                 new Car("car3")
         ));
-        CarRacingService racingService = new CarRacingService(racingCars, new AlwaysDriveForwardStrategy());
+        CarRacingService racingService = new CarRacingService(new AlwaysDriveForwardStrategy());
 
         // when
-        racingService.race();
+        racingService.race(racingCars);
 
         // then
         assertThat(racingCars.cars())
@@ -36,13 +36,13 @@ class CarRacingServiceTest {
                 new Car("car2"),
                 new Car("car3")
         ));
-        CarRacingService racingService = new CarRacingService(racingCars, new AlwaysDriveForwardStrategy());
+        CarRacingService racingService = new CarRacingService(new AlwaysDriveForwardStrategy());
 
         // when
-        racingService.race();
+        racingService.race(racingCars);
 
         // then
-        assertThat(racingService.getWinner()).hasSize(3);
+        assertThat(racingService.getWinner(racingCars)).hasSize(3);
 
     }
 

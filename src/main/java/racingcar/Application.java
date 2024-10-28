@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.controller.CarRacingController;
 import racingcar.model.RandomDriveStrategy;
 import racingcar.model.RandomNumberGenerator;
+import racingcar.service.CarRacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -12,7 +13,7 @@ public class Application {
         CarRacingController carRacingGame = new CarRacingController(
                 new InputView(),
                 new OutputView(),
-                new RandomDriveStrategy(new RandomNumberGenerator())
+                new CarRacingService(new RandomDriveStrategy(new RandomNumberGenerator()))
         );
 
         carRacingGame.run();

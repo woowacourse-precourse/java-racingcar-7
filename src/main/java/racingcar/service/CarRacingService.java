@@ -7,19 +7,18 @@ import racingcar.model.DriveStrategy;
 
 public class CarRacingService {
 
-    private final Cars racingCars;
     private final DriveStrategy driveStrategy;
 
-    public CarRacingService(Cars racingCars, DriveStrategy driveStrategy) {
-        this.racingCars = racingCars;
+    public CarRacingService(DriveStrategy driveStrategy) {
         this.driveStrategy = driveStrategy;
     }
 
-    public void race() {
+    public Cars race(Cars racingCars) {
         racingCars.cars().forEach(car -> car.drive(driveStrategy));
+        return racingCars;
     }
 
-    public List<Car> getWinner() {
+    public List<Car> getWinner(Cars racingCars) {
         int maxPositionValue = racingCars.cars().stream()
                 .mapToInt(Car::getPosition).max().orElse(0);
 
