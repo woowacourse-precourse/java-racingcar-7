@@ -21,8 +21,8 @@ public class RacingCarTest {
 
     @Test
     public void testMoveCarPosition() {
-        // 자동차 위치 이동 테스트
-        assertEquals(2, racingCar.getCarPosition());  // 한 번 이동했으므로 위치는 2여야 함
+        racingCar.moveCarPosition();
+        assertEquals(2, racingCar.getCarPosition());
     }
 
     @Test

@@ -20,5 +20,6 @@ public class MoveCar {
     public void moveCars(RacingCars racingCars){
         List<RacingCar> racingCarList = racingCars.getRacingCars();
         racingCarList.stream()
-                .forEach(this::moveCar);}
+                .forEach(this::moveCar);
+    }
 }

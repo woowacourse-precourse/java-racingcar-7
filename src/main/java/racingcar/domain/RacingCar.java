@@ -4,7 +4,7 @@ public class RacingCar {
     private String nameOfCar;
     private int positionOfCar;
 
-    RacingCar(String nameOfCar){
+    public RacingCar(String nameOfCar){
         this.nameOfCar = nameOfCar;
         this.positionOfCar = 1;
     }
