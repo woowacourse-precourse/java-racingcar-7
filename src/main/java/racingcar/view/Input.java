@@ -9,9 +9,9 @@ public class Input {
     public static List<String> inputCarName() {
         String input = Console.readLine();
         checkInput(input);
-        List<String> carList = Arrays.asList(input.split(","));
-        checkCarName(carList);
-        return carList;
+        List<String> carNames = Arrays.asList(input.split(","));
+        checkCarName(carNames);
+        return carNames;
     }
 
     public static int inputRoundCount() {
@@ -25,8 +25,8 @@ public class Input {
             throw new IllegalArgumentException("빈 문자열입니다.");
     }
 
-    private static void checkCarName(List<String> carList) {
-        for(String carName : carList) {
+    private static void checkCarName(List<String> carNames) {
+        for(String carName : carNames) {
             checkInput(carName);
             checkCarNameLength(carName);
         }
