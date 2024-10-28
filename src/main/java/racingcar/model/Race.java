@@ -16,6 +16,14 @@ public class Race {
         this.cars = cars;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public Cars getCars() {
+        return cars;
+    }
+
     public RacingUnitResultList proceedRace() {
         RacingUnitResultList racingUnitResultList = new RacingUnitResultList();
 
