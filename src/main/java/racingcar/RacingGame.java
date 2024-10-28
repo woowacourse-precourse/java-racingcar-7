@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
@@ -15,6 +16,7 @@ public class RacingGame {
 
     public void startRace() {
         calculatePosition();
+        findWinners();
     }
 
     private void calculatePosition() {
@@ -40,5 +42,23 @@ public class RacingGame {
 
     private String getDashesBasedOnPosition(int position) {
         return "-".repeat(position);
+    }
+
+    private void findWinners() {
+        int maxPosition = 0;
+
+        for (RacingCar car : this.cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+
+        List<String> winners = new ArrayList<>();
+        for (RacingCar car : this.cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
