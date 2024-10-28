@@ -1,5 +1,8 @@
 package racingcar.controller;
 
+import static racingcar.exception.InputErrorCode.INPUT_NAME_ERROR;
+import static racingcar.exception.InputErrorCode.INPUT_TIMES_ERROR;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,15 +13,15 @@ public class InputParser {
             String[] split = nameInput.split(",");
             return Arrays.stream(split).toList();
         } catch (Exception e) {
-            throw new IllegalArgumentException("이름 입력이 잘못되었습니다.");
+            throw new IllegalArgumentException(INPUT_NAME_ERROR.message());
         }
     }
 
     public long parseTimesToLong(String timeInput) {
         try {
             return Long.parseLong(timeInput);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("횟수 입력이 잘못되었습니다.");
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INPUT_TIMES_ERROR.message());
         }
     }
 }

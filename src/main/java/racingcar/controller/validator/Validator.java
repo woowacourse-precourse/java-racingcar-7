@@ -1,5 +1,9 @@
 package racingcar.controller.validator;
 
+import static racingcar.exception.InputErrorCode.INPUT_NAME_ERROR;
+import static racingcar.exception.InputErrorCode.INPUT_NAME_LENGTH_ERROR;
+import static racingcar.exception.InputErrorCode.INPUT_TIMES_ERROR;
+
 import java.util.List;
 
 public class Validator {
@@ -10,14 +14,17 @@ public class Validator {
     public static void validateNameList(List<String> nameList) {
         for (String name : nameList) {
             if (name.length() > 5) {
-                throw new IllegalArgumentException("이름은 5자 이하이여야 합니다.");
+                throw new IllegalArgumentException(INPUT_NAME_LENGTH_ERROR.message());
+            }
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException(INPUT_NAME_ERROR.message());
             }
         }
     }
 
     public static void validateTimeInput(long times) {
         if (times < 0) {
-            throw new IllegalArgumentException("횟수는 0 이상이여야 합니다.");
+            throw new IllegalArgumentException(INPUT_TIMES_ERROR.message());
         }
     }
 }
