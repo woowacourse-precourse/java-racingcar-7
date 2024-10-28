@@ -19,7 +19,8 @@ public class Controller {
         Validator.carNames(cars);
 
         List<Integer> carPositions = Car.getCarPositions(cars);
-        int trialCount = InputView.getTrialCount();
+        String userInput = InputView.getTrialCount(); // 사용자로부터 문자열 형태로 입력받기
+        int trialCount = Validator.trialCount(userInput); // 입력값 검증 및 반환
         System.out.println(); // 줄바꿈(미션 출력 요구 사항)
         System.out.println("실행 결과");
 
@@ -34,3 +35,4 @@ public class Controller {
         OutputView.displayWinners(winners);
     }
 }
+
