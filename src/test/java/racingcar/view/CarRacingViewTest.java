@@ -1,7 +1,8 @@
 package racingcar.view;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.RacingCar;
@@ -27,7 +28,8 @@ class CarRacingViewTest extends ViewTest {
         CarRacingView.displayCurrentStatus(racingCars);
 
         // then
-        Assertions.assertThat(output()).isEqualTo(expectedOutput);
+        assertThat(output())
+                .isEqualTo(expectedOutput);
     }
 
     @Test
@@ -44,7 +46,8 @@ class CarRacingViewTest extends ViewTest {
         CarRacingView.displayRaceResult(winningRacingCars);
 
         // then
-        Assertions.assertThat(output()).isEqualTo(expectedOutput);
+        assertThat(output())
+                .isEqualTo(expectedOutput);
     }
 
     @Test
@@ -62,6 +65,7 @@ class CarRacingViewTest extends ViewTest {
         CarRacingView.displayRaceResult(winningRacingCars);
 
         // then
-        Assertions.assertThat(output()).isEqualTo(expectedOutput);
+        assertThat(output())
+                .isEqualTo(expectedOutput);
     }
 }

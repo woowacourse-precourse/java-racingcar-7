@@ -1,7 +1,8 @@
 package racingcar.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +25,7 @@ class CarRacingTest {
         List<RacingCar> raceWinners = carRacing.getRaceWinners();
 
         // then
-        Assertions.assertThat(raceWinners)
+        assertThat(raceWinners)
                 .hasSize(1)
                 .contains(expectedWinner);
     }
@@ -44,7 +45,7 @@ class CarRacingTest {
         List<RacingCar> raceWinners = carRacing.getRaceWinners();
 
         // then
-        Assertions.assertThat(raceWinners)
+        assertThat(raceWinners)
                 .hasSize(3)
                 .contains(raceWinners.get(0))
                 .contains(raceWinners.get(1))

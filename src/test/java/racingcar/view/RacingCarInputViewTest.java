@@ -1,7 +1,9 @@
 package racingcar.view;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.DuplicatedCarNameException;
@@ -20,7 +22,7 @@ class RacingCarInputViewTest extends InputTest {
         List<String> carNames = RacingCarInputView.inputCarNames();
 
         // then
-        Assertions.assertThat(carNames)
+        assertThat(carNames)
                 .hasSize(3)
                 .contains(
                         "a",
@@ -39,7 +41,8 @@ class RacingCarInputViewTest extends InputTest {
         int tryCount = RacingCarInputView.inputTryCount();
 
         // then
-        Assertions.assertThat(tryCount).isEqualTo(5);
+        assertThat(tryCount)
+                .isEqualTo(5);
     }
 
     @Test
@@ -49,8 +52,9 @@ class RacingCarInputViewTest extends InputTest {
         presetInput("a,bbb,ccccc,bbb");
 
         // when & then
-        Assertions.assertThatThrownBy(RacingCarInputView::inputCarNames)
-                .isInstanceOf(DuplicatedCarNameException.class);
+        assertThatThrownBy(
+                RacingCarInputView::inputCarNames
+        ).isInstanceOf(DuplicatedCarNameException.class);
     }
 
     @Test
@@ -60,8 +64,9 @@ class RacingCarInputViewTest extends InputTest {
         presetInput("a");
 
         // when & then
-        Assertions.assertThatThrownBy(RacingCarInputView::inputTryCount)
-                .isInstanceOf(NonParsableIntegerException.class);
+        assertThatThrownBy(
+                RacingCarInputView::inputTryCount
+        ).isInstanceOf(NonParsableIntegerException.class);
     }
 
     @Test
@@ -71,8 +76,9 @@ class RacingCarInputViewTest extends InputTest {
         presetInput("2147483648");
 
         // when & then
-        Assertions.assertThatThrownBy(RacingCarInputView::inputTryCount)
-                .isInstanceOf(NonParsableIntegerException.class);
+        assertThatThrownBy(
+                RacingCarInputView::inputTryCount
+        ).isInstanceOf(NonParsableIntegerException.class);
     }
 
     @Test
@@ -82,7 +88,8 @@ class RacingCarInputViewTest extends InputTest {
         presetInput("0");
 
         // when & then
-        Assertions.assertThatThrownBy(RacingCarInputView::inputTryCount)
-                .isInstanceOf(NonPositiveTryCountException.class);
+        assertThatThrownBy(
+                RacingCarInputView::inputTryCount
+        ).isInstanceOf(NonPositiveTryCountException.class);
     }
 }

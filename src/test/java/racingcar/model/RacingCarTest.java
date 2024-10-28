@@ -1,8 +1,9 @@
 package racingcar.model;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.CarNameEmptyException;
@@ -20,7 +21,7 @@ class RacingCarTest {
         RacingCar racingCar = new RacingCar(name);
 
         // then
-        Assertions.assertThat(racingCar.getName())
+        assertThat(racingCar.getName())
                 .isEqualTo(name);
     }
 
@@ -31,8 +32,8 @@ class RacingCarTest {
         String name = "aaaaaa";
 
         // when & then
-        Assertions.assertThatThrownBy(() ->
-                new RacingCar(name)
+        assertThatThrownBy(
+                () -> new RacingCar(name)
         ).isInstanceOf(CarNameOverMaxLengthException.class);
     }
 
@@ -43,8 +44,8 @@ class RacingCarTest {
         String name = "";
 
         // when & then
-        Assertions.assertThatThrownBy(() ->
-                new RacingCar(name)
+        assertThatThrownBy(
+                () -> new RacingCar(name)
         ).isInstanceOf(CarNameEmptyException.class);
     }
 
@@ -58,7 +59,7 @@ class RacingCarTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     racingCar.tryMoveForward();
-                    Assertions.assertThat(racingCar.getDistanceCovered()).isEqualTo(1);
+                    assertThat(racingCar.getDistanceCovered()).isEqualTo(1);
                 },
                 RacingCar.MOVE_FORWARD_THRESHOLD
         );
@@ -74,7 +75,7 @@ class RacingCarTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     racingCar.tryMoveForward();
-                    Assertions.assertThat(racingCar.getDistanceCovered()).isEqualTo(0);
+                    assertThat(racingCar.getDistanceCovered()).isEqualTo(0);
                 },
                 RacingCar.MOVE_FORWARD_THRESHOLD - 1
         );
