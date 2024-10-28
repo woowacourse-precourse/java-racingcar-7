@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.utils.TypeConvertUtils;
+import racingcar.utils.RacingUtils;
 import racingcar.dto.InputDto;
 import racingcar.model.Car;
 import racingcar.view.RacingView;
@@ -14,7 +14,7 @@ public class Controller {
     }
 
     public void doRacing(InputDto inputDto) {
-        List<Car> carList = TypeConvertUtils.stringToCarList(inputDto.getCarNames());
+        List<Car> carList = RacingUtils.carNamesToCarList(inputDto.getCarNames());
 
         String winners = runRace(carList, inputDto.getRepeatCount());
 
@@ -32,23 +32,7 @@ public class Controller {
             repeatCount--;
         }
 
-        List<Car> winnerCarList = getWinnerList(carList);
-        return TypeConvertUtils.carListToString(winnerCarList);
+        List<Car> winnerCarList = RacingUtils.getWinnerCarList(carList);
+        return RacingUtils.carListToString(winnerCarList);
     }
-
-    private int getWinnerLocation(List<Car> carList) {
-        return carList.stream()
-                .mapToInt(Car::getLocation)
-                .max()
-                .getAsInt();
-    }
-
-    private List<Car> getWinnerList(List<Car> carList) {
-        int winnerLocation = getWinnerLocation(carList);
-
-        return carList.stream()
-                .filter(car -> car.getLocation() == winnerLocation)
-                .toList();
-    }
-
 }
