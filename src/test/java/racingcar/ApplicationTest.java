@@ -49,7 +49,7 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"-1", "0"})
-    void 경주_횟수_음수_테스트(String candidate) {
+    void 경주_횟수_음수_혹은_0_테스트(String candidate) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", candidate))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -93,6 +93,16 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> run(candidate))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage("자동차 대수는 2대 이상이여야 합니다.")
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"ㅁ", "a", ";"})
+    void 숫자가_아닌_게임_횟수_테스트(String candidate) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> run("pobi,woni", candidate))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("게임 횟수로는 숫자만 입력할 수 있습니다.")
         );
     }
 
