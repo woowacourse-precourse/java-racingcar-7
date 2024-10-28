@@ -2,10 +2,7 @@ package racingcar.model;
 
 import racingcar.exception.ExceptionMessage;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Cars {
     private static final String CAR_NAME_DELIMITER = ",";
@@ -18,24 +15,24 @@ public class Cars {
         winners = new ArrayList<>();
         uniqueCarNames = new HashSet<>();
 
-        for (String carName : carNames.split(CAR_NAME_DELIMITER)) {
-            validateNoDuplicateCarName(carName);
-            racingCars.add(new Car(carName));
-        }
+        Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
+                .forEach(carName -> {
+                    validateNoDuplicateCarName(carName);
+                    racingCars.add(new Car(carName));
+                });
     }
 
     public String recordRoundProgress() {
         StringBuilder roundRecord = new StringBuilder();
-        for (Car racingCar : racingCars) {
-            roundRecord.append(racingCar.moveAndFormatProgress()).append("\n");
-        }
+        racingCars.forEach(
+                car -> roundRecord.append(car.moveAndFormatProgress()).append("\n")
+        );
 
         return roundRecord.toString();
     }
 
     public String getRacingWinners() {
-        final int winnerForwardCount = calculateWinnerForwardCount();
-        addWinnersWithSameForwardCount(winnerForwardCount);
+        addWinnersWithSameForwardCount(calculateWinnerForwardCount());
 
         return formatWinnerNames();
     }
@@ -50,11 +47,10 @@ public class Cars {
     }
 
     private void addWinnersWithSameForwardCount(int winnerForwardCount) {
-        for (Car racingCar : racingCars) {
-            if (racingCar.getForwardCount() == winnerForwardCount) {
-                winners.add(racingCar.getCarName());
-            }
-        }
+        racingCars.stream()
+                .filter(racingCar -> racingCar.getForwardCount() == winnerForwardCount)
+                .map(Car::getCarName)
+                .forEach(winners::add);
     }
 
     private int calculateWinnerForwardCount() {
