@@ -1,7 +1,6 @@
 package racingcar.util.selector;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.domain.RacingCar;
 
 public class BasicRacingCarGameWinnerSelector implements RacingCarGameWinnerSelector {
@@ -10,7 +9,7 @@ public class BasicRacingCarGameWinnerSelector implements RacingCarGameWinnerSele
         int maxLocation = getMaxLocation(racingCars);
         return racingCars.stream()
                 .filter(racingCar -> racingCar.getCurrentLocation() == maxLocation)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private int getMaxLocation(List<RacingCar> racingCars) {
