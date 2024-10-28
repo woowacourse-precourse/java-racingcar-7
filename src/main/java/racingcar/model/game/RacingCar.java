@@ -1,12 +1,11 @@
 package racingcar.model.game;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.model.car.Name;
-import racingcar.model.game.attempt.Attempt;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
+import racingcar.model.car.Name;
+import racingcar.model.game.attempt.Attempt;
 import racingcar.model.game.position.History;
 import racingcar.model.game.position.Positions;
 
@@ -20,7 +19,7 @@ public class RacingCar {
     public RacingCar(final Cars cars, final Attempt attempt) {
         this.cars = cars;
         this.positions = Positions.createWithNewRound(cars.size());
-        this.history = new History(new ArrayList<>());
+        this.history = new History();
         this.attempt = attempt;
     }
 

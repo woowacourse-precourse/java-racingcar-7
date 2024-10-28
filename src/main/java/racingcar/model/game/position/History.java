@@ -7,18 +7,18 @@ import java.util.Objects;
 
 public class History {
 
-    private final List<Positions> history;
+    private final List<List<Long>> history;
 
-    public History(final List<Positions> history) {
-        this.history = new ArrayList<>(history);
+    public History() {
+        this.history = new ArrayList<>();
     }
 
     public void add(Positions positions) {
-        history.add(positions.copy());
+        history.add(positions.values());
     }
 
-    public List<Positions> history() {
-        return Collections.unmodifiableList(history);
+    public List<Long> at(int round) {
+        return Collections.unmodifiableList(history.get(round));
     }
 
     @Override

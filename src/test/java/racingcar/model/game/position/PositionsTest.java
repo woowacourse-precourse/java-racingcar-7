@@ -25,21 +25,6 @@ class PositionsTest {
                 new Positions(Collections.emptyList());
             }).doesNotThrowAnyException();
         }
-
-        @Test
-        @DisplayName("깊은 복사로 생성한다")
-        void 성공_생성_깊은복사() {
-            // Given
-            Positions positions = new Positions(List.of(new Position(0)));
-
-            // When
-            Positions copied = positions.copy();
-
-            // Then
-            assertThat(copied).isNotSameAs(positions)
-                    .isEqualTo(positions);
-        }
-
     }
 
     @Nested

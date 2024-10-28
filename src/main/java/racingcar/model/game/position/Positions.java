@@ -34,12 +34,6 @@ public class Positions {
                 .toList();
     }
 
-    Positions copy() {
-        return new Positions(positions.stream()
-                .map(position -> new Position(position.position()))
-                .toList());
-    }
-
     private long findMaxPosition() {
         return positions.stream()
                 .mapToLong(Position::position)
@@ -51,8 +45,11 @@ public class Positions {
         return positions.get(index);
     }
 
-    public long positionAt(final int index) {
-        return at(index).position();
+    public List<Long> values() {
+        return positions.stream()
+                .mapToLong(Position::position)
+                .boxed()
+                .toList();
     }
 
     @Override

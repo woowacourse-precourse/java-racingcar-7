@@ -50,11 +50,13 @@ class RacingCarTest {
             racingCar.start();
 
             // Then
-            Positions expected = new Positions(List.of(new Position(1), new Position(0)));
+            Positions expectedPositions = new Positions(List.of(new Position(1), new Position(0)));
+            History expectedHistory = new History();
+            expectedHistory.add(expectedPositions);
             assertThat(racingCar).extracting("positions")
-                    .isEqualTo(expected);
+                    .isEqualTo(expectedPositions);
             assertThat(racingCar).extracting("history")
-                    .isEqualTo(new History(List.of(expected)));
+                    .isEqualTo(expectedHistory);
         }
     }
 

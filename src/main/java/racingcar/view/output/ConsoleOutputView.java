@@ -26,16 +26,16 @@ public class ConsoleOutputView implements OutputView {
     }
 
     @Override
-    public void showCarPosition(final List<Name> names, final Positions positions,
+    public void showCarPosition(final List<Name> names, final List<Long> positions,
                                 final StringRepeater stringRepeater) {
         formatPositions(names, positions, stringRepeater).forEach(System.out::println);
         System.out.println();
     }
 
-    private List<String> formatPositions(final List<Name> names, final Positions positions,
+    private List<String> formatPositions(final List<Name> names, final List<Long> positions,
                                          final StringRepeater stringRepeater) {
         return IntStream.range(0, names.size())
-                .mapToObj(index -> formatPosition(names.get(index), stringRepeater, positions.positionAt(index)))
+                .mapToObj(index -> formatPosition(names.get(index), stringRepeater, positions.get(index)))
                 .toList();
     }
 

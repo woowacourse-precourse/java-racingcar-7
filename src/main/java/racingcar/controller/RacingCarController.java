@@ -1,13 +1,12 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
-import racingcar.model.game.RacingCar;
 import racingcar.exception.InvalidAttemptException;
-import racingcar.model.game.attempt.Attempt;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
+import racingcar.model.game.RacingCar;
+import racingcar.model.game.attempt.Attempt;
 import racingcar.model.game.position.History;
-import racingcar.model.game.position.Positions;
 import racingcar.model.game.strategy.MovingStrategy;
 import racingcar.support.repeater.StringRepeater;
 import racingcar.support.splitter.Splitter;
@@ -38,7 +37,7 @@ public class RacingCarController {
         Attempt attempt = readAttempt(outputView, inputView);
 
         RacingCar racingCar = new RacingCar(cars, attempt);
-        showRacingResult(outputView, racingCar, stringRepeater);
+        showRacingResult(outputView, attempt, racingCar, stringRepeater);
         showWinners(racingCar);
     }
 
@@ -69,14 +68,14 @@ public class RacingCarController {
         }
     }
 
-    private void showRacingResult(OutputView outputView, final RacingCar racingCar,
+    private void showRacingResult(OutputView outputView, final Attempt attempt, final RacingCar racingCar,
                                   final StringRepeater stringRepeater) {
         outputView.showCommentForResult();
         racingCar.start();
         Cars cars = racingCar.cars();
         History history = racingCar.history();
-        for (Positions positions : history.history()) {
-            outputView.showCarPosition(cars.names(), positions, stringRepeater);
+        for (int round = 0; round < attempt.attempt(); round++) {
+            outputView.showCarPosition(cars.names(), history.at(round), stringRepeater);
         }
     }
 

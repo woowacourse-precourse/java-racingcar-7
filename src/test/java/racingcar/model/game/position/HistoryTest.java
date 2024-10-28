@@ -18,14 +18,14 @@ class HistoryTest {
         @DisplayName("History에 위치 정보를 추가한다")
         void 성공_원소추가() {
             // Given
-            History history = new History(Collections.emptyList());
-            Positions positions = new Positions(List.of(new Position(0)));
+            History history = new History();
+            Positions positions = new Positions(List.of(new Position(1)));
 
             // When
             history.add(positions);
 
             // Then
-            assertThat(history.history()).contains(positions);
+            assertThat(history.at(0)).contains(1L);
         }
     }
 }
