@@ -21,16 +21,11 @@ public class GameController {
     }
 
     public void run() {
-        try {
-            String[] carNames = getValidCarNames();
-            int rounds = getValidRounds();
-            RacingGame racingGame = racingGameFactory.createGame(carNames);
-            playGame(racingGame, rounds);
-        } catch (IllegalArgumentException e) {
-            outputView.printError(e.getMessage());
-            // 여기서 메서드를 끝내도록 수정 - 더 이상의 재시도 없음
-            return;  // 예외 발생 시 즉시 종료
-        }
+        // try-catch 제거하고 예외를 그대로 throw하도록 수정
+        String[] carNames = getValidCarNames();
+        int rounds = getValidRounds();
+        RacingGame racingGame = racingGameFactory.createGame(carNames);
+        playGame(racingGame, rounds);
     }
 
     private String[] getValidCarNames() {
