@@ -59,7 +59,7 @@ public class RacingController {
 		outputView.printRaceResultPrompt();
 		for (int i = 0; i < attemptCount; i++) {
 			cars.moveEachCars();
-			outputView.printRaceStatus(cars.findRaceStatus());
+			outputView.printRaceResult(cars.findRaceStatus());
 			outputView.printNewLine();
 		}
 	}

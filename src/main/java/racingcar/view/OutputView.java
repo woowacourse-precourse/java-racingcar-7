@@ -23,7 +23,7 @@ public class OutputView {
 		System.out.println();
 	}
 
-	public void printRaceStatus(List<CarMovementResponse> carMovementResponses) {
+	public void printRaceResult(List<CarMovementResponse> carMovementResponses) {
 		carMovementResponses.forEach(carMovementResponse ->
 			System.out.println(buildMovementString(carMovementResponse)));
 	}
