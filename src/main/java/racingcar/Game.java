@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -44,5 +45,19 @@ public class Game {
             stringBuilder.append("-".repeat(car.getLocation())).append("\n");
         }
         return stringBuilder.toString();
+    }
+
+    public void finalWinner() {
+        Collections.sort(carList);
+        StringBuilder stringBuilder = new StringBuilder(carList.getFirst().getName());
+        int winnerLocation = carList.getFirst().getLocation();
+        for (int index = 1; index < carList.size(); index++) {
+            Car car = carList.get(index);
+            if (winnerLocation != car.getLocation()) {
+                break;
+            }
+            stringBuilder.append(", ").append(car.getName());
+        }
+        output.finalWinner(stringBuilder.toString());
     }
 }

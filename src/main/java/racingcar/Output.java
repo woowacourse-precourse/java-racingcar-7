@@ -20,6 +20,12 @@ public class Output {
         print(result);
     }
 
+    public void finalWinner(String finalWinner) {
+        final String FINAL_WINNER_COMMENT = "최종 우승자 : ";
+        print(FINAL_WINNER_COMMENT + finalWinner);
+    }
+
+
     private void print(String comment) {
         System.out.println(comment);
     }

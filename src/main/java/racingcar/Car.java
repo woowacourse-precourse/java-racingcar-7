@@ -2,7 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private final String name;
     private int location;
 
@@ -27,5 +27,15 @@ public class Car {
 
     private int randomNumber() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        if (location > car.location) {
+            return -1;
+        } else if (location < car.location) {
+            return 1;
+        }
+        return 0;
     }
 }
