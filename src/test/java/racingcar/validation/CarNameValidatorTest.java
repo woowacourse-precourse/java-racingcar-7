@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class CarNameValidatorTest {
+class CarNameValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi, woni,jun ", "po bi,woni,jun"})
     void 자동차_이름_공백_포함_예외_테스트(String input) {
