@@ -19,6 +19,16 @@ class CarTest {
         assertThat(car.getScore()).isZero();
     }
 
+    @DisplayName("차 이름이 5 이하이면, 특수문자가 포함되어도 차가 정상적으로 생성된다.")
+    @Test
+    void createCarWithSpecialStrings() {
+
+        Car car = createCar("a#p*e");
+
+        assertThat(car.getCarName()).isEqualTo("a#p*e");
+        assertThat(car.getScore()).isZero();
+    }
+
     @DisplayName("차 이름이 5가 넘으면 예외를 발생한다.")
     @Test
     void createCarWithInvalidNameLength() {
