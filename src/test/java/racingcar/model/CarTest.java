@@ -5,31 +5,22 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class CarTest {
 
-    @Test
-    void 숫자가_4_이상이면_전진한다() {
+    @ParameterizedTest
+    @CsvSource(value = {"3,0", "4,1"})
+    void 숫자가_3_이하이면_정지하고_4_이상이면_전진한다(int number, int expected) {
         // given
         Car car = Car.from("pobi");
 
         // when
-        car.advance(4);
+        car.advance(number);
 
         // then
-        assertThat(car.getAdvanceMarkerCount()).isEqualTo(1);
-    }
-
-    @Test
-    void 숫자가_3_이하이면_움직이지_않는다() {
-        // given
-        Car car = Car.from("pobi");
-
-        // when
-        car.advance(3);
-
-        // then
-        assertThat(car.getAdvanceMarkerCount()).isEqualTo(0);
+        assertThat(car.getAdvanceMarkerCount()).isEqualTo(expected);
     }
 
     @Test
@@ -43,5 +34,4 @@ public class CarTest {
         assertThatCode(() -> Car.from("일이삼사오"))
                 .doesNotThrowAnyException();
     }
-
 }
