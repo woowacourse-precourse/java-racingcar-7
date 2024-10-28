@@ -88,11 +88,17 @@ public class RacingCar {
 
     private void findWinner(int highScore, StringBuilder winners, String carName) {
         if (cars.get(carName) == highScore) {
-            if (winners.length() > 0)
+            if (isJoint(winners))
                 winners.append(", " + carName);
             else
                 winners.append(carName);
         }
+    }
+
+    private boolean isJoint(StringBuilder winners) {
+        if (winners.length() > 0)
+            return true;
+        return false;
     }
 
 }
