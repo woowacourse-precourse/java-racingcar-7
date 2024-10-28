@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.entity.Car;
 import racingcar.service.RacingcarService;
 import racingcar.view.RacingcarView;
 
@@ -21,5 +22,7 @@ public class RacingcarController {
 
         String trialCount = racingcarView.trialCountInput();
         racingcarService.validateNumber(trialCount);
+
+        List<Car> cars = racingcarService.createCar(parsedCarName);
     }
 }

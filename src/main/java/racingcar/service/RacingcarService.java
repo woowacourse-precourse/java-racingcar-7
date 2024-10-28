@@ -1,6 +1,8 @@
 package racingcar.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import racingcar.entity.Car;
 public class RacingcarService {
 
     public List<String> parseCarName(String rawCarName) {
@@ -27,5 +29,13 @@ public class RacingcarService {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 입력값입니다.");
         }
+    }
+
+    public List<Car> createCar(List<String> input) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : input) {
+            cars.add(new Car(name));
+        }
+        return cars;
     }
 }
