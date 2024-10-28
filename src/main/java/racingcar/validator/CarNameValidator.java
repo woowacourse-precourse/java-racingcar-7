@@ -17,7 +17,7 @@ public class CarNameValidator {
             throw RacingException.from(ErrorMessage.CAR_NAME_IS_SPACE);
         }
 
-        if(carNameSet.contains(carName)) {
+        if (carNameSet.contains(carName)) {
             throw RacingException.from(ErrorMessage.CAR_NAME_IS_DUPLICATED);
         }
 

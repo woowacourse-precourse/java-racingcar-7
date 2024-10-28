@@ -17,7 +17,7 @@ public class CarFactory {
         ArrayList<Car> carList = new ArrayList<>();
         HashSet<String> carNameSet = new HashSet<>();
 
-        for(String carName : carNameList) {
+        for (String carName : carNameList) {
             carName = carNameValidator.isValid(carName, carNameSet);
 
             carList.add(Car.createCar(carName));
