@@ -1,5 +1,6 @@
 package racingcar.io;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.car.Car;
 
@@ -20,18 +21,12 @@ public class OutputManager {
 
     public static void printWinner(List<Car> winners) {
         System.out.print(WINNER_RESULT);
-        StringBuilder sb = new StringBuilder();
+        List<String> winnerList = new ArrayList<>();
 
-        int i = 0;
-
-        for (int idx = i; idx < winners.size() - 1; idx++){
-            sb.append(winners.get(idx));
-            sb.append(COMMA_WITH_BLANK);
-            i++;
+        for (Car winner : winners) {
+            winnerList.add(winner.getName());
         }
 
-        sb.append(winners.get(i));
-        System.out.println(sb);
-        System.out.println();
+        System.out.println(String.join(COMMA_WITH_BLANK, winnerList));
     }
 }
