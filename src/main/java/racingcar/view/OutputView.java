@@ -20,7 +20,7 @@ public class OutputView {
     }
 
     public static void printRacingProcessCommand(){
-        System.out.println();
+        printGapBetweenLine();
         System.out.println(RACING_PROCESS);
     }
 
@@ -34,5 +34,10 @@ public class OutputView {
         for (Car car:carList){
             System.out.println(String.join(" : ",car.getName(),car.getState()));
         }
+        printGapBetweenLine();
+    }
+
+    private static void printGapBetweenLine(){
+        System.out.println();
     }
 }
