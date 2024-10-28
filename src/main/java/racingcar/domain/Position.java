@@ -6,7 +6,7 @@ public class Position {
     private static final int FORWARD_COUNT = 1;
     private static final int INIT_POSITION_VALUE = 0;
     private static final int COMPARE_RESULT_EQUAL_VALUE = 0;
-    private int position;
+    private final int position;
 
     private Position(int position) {
         this.position = position;

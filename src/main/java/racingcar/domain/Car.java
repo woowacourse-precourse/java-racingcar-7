@@ -11,7 +11,7 @@ public class Car {
 
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMoving()) {
-            position = position.move();
+            this.position = position.move();
         }
     }
 
@@ -24,5 +24,9 @@ public class Car {
 
     public Position getPosition() {
         return this.position;
+    }
+
+    public Name getName() {
+        return this.name;
     }
 }
