@@ -1,14 +1,15 @@
 package racingcar.domain;
 
 import racingcar.domain.strategy.MoveStrategy;
+import racingcar.wrapper.CarName;
 
 public class Car {
 
-    private final String name;
+    private final CarName name;
     private int position;
 
     public Car(String name) {
-        this.name = name;
+        this.name = CarName.of(name);
         this.position = 0;
     }
 
@@ -18,7 +19,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getPosition() {
