@@ -24,7 +24,7 @@ public class RaceTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"'':3", ",sisu:3", "sisu,:3", "sisu,,java:3", "sisu,,:3"}, delimiter = ':')
+    @CsvSource(value = {"'':3", ",sisu:3", "sisu,:3", "sisu,,java:3", "sisu,,:3", ",,sisu:3"}, delimiter = ':')
     void 이름이_없는_입력값이_주어질_때(String carName, String roundInput) {
         assertThrows(IllegalArgumentException.class, () -> {
             Race race = new Race(carName, roundInput);

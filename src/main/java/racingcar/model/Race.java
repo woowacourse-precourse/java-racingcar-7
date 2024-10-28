@@ -35,11 +35,7 @@ public class Race {
     }
 
     private void validateNoEmptyName(String racingCarNames) {
-        if (racingCarNames.startsWith(STRING_DELIMITER) || racingCarNames.endsWith(STRING_DELIMITER)
-                || racingCarNames.contains(STRING_DELIMITER.repeat(2))) {
-            throw new IllegalArgumentException(CAR_NAME_EMPTY_EXCEPTION_MSG);
-        }
-        String[] racingCarNameTokens = racingCarNames.split(STRING_DELIMITER);
+        String[] racingCarNameTokens = racingCarNames.split(STRING_DELIMITER, -1);
 
         Arrays.stream(racingCarNameTokens).forEach(carName -> {
             if (carName.isEmpty()) {
