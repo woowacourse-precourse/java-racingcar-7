@@ -8,9 +8,17 @@ import java.util.stream.Collectors;
 
 public class InputView {
     public static List<String> readCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-        return parseCarNames(input);
+        try {
+
+            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+            String input = Console.readLine();
+            if (input.length()>5){
+                throw new IllegalArgumentException("차 이름은 5글자 이하이여야 합니다.");
+            }
+            return parseCarNames(input);
+        }catch (IllegalStateException e){
+            throw new IllegalArgumentException("차 이름은 5글자 이하이여야 합니다.");
+        }
     }
 
     private static List<String> parseCarNames(String input) {
