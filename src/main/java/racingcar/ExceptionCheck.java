@@ -10,4 +10,16 @@ public class ExceptionCheck {
             }
         }
     }
+
+    public static void intRangeAndNotNegative(String tryCountString) {
+        int tryCount = 0;
+        try {
+            tryCount = Integer.parseInt(tryCountString);
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException();
+        }
+        if (tryCount < 0) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
