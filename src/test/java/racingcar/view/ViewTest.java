@@ -41,4 +41,11 @@ class ViewTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 자동차 이름이 있습니다.");
     }
+
+    @Test
+    void 잘못된_횟수_예외_테스트() {
+        assertThatThrownBy(() -> Validator.validateTryMoveNumber("0"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("횟수는 1보다 큰 숫자여야 합니다.");
+    }
 }
