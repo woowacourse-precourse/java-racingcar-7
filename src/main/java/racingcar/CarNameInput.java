@@ -45,6 +45,3 @@ public class CarNameInput {
         return validCarNames;
     }
 }
-
-
-
