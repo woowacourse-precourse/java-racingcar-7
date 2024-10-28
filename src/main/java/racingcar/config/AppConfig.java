@@ -42,7 +42,7 @@ public class AppConfig {
     }
 
     public RaceController createRaceController() {
-        return new RaceController(raceService, outputView);
+        return new RaceController(raceService);
     }
 
     public Controller createController() {

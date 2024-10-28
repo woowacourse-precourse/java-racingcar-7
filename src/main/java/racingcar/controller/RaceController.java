@@ -4,16 +4,12 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Race;
 import racingcar.service.RaceService;
-import racingcar.view.OutputView;
 
 public class RaceController {
     private final RaceService raceService;
-    private final OutputView outputView;
 
-    public RaceController(final RaceService raceService, final OutputView outputView) {
+    public RaceController(final RaceService raceService) {
         this.raceService = raceService;
-        this.outputView = outputView;
-
     }
 
     public Race registerRace(final List<Car> carList, final int attemptCount) {
