@@ -20,8 +20,10 @@ public class Car implements Comparable<Car> {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public void updateTotalDistance() {
-        this.totalDistance++;
+    public void updateTotalDistance(int distance) {
+        if (distance >= 4) {
+            this.totalDistance++;
+        }
     }
 
     public String getName() {

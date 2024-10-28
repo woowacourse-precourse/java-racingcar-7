@@ -23,11 +23,9 @@ public class RacingGame {
         this.participants = cars;
     }
 
-    private void roundStart(List<Car> cars) {
+    public void roundStart(List<Car> cars) {
         for (Car car : cars) {
-            if (car.movedDistance() >= 4) {
-                car.updateTotalDistance();
-            }
+            car.updateTotalDistance(car.movedDistance());
         }
     }
 
