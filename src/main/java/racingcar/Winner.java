@@ -9,9 +9,7 @@ public class Winner {
         int maxDistance = 0;
 
         for (Car car : cars) {
-            if (maxDistance < car.distance) {
-                maxDistance = car.distance;
-            }
+            maxDistance = Math.max(maxDistance, car.distance);
         }
         return maxDistance;
     }
@@ -28,15 +26,14 @@ public class Winner {
         return winners;
     }
 
-    public static String makeList(List<Car> winners) {
+    public static String createList(List<Car> winners) {
         String winnerList = "";
-
         int i = 0;
 
         for (Car car : winners) {
-            winnerList += car.name;
+            winnerList = winnerList.concat(car.name);
             if (i < winners.size() - 1) {
-                winnerList += ", ";
+                winnerList = winnerList.concat(", ");
             }
             i++;
         }
