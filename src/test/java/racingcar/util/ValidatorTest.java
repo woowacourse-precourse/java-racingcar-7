@@ -45,7 +45,7 @@ class ValidatorTest {
     }
 
     @Test
-    void checkPositiveCountExceptionTest() {
+    void checkNegativeCountExceptionTest() {
         // given
         String count = "-100";
         // when & then

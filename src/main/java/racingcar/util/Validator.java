@@ -27,10 +27,10 @@ public class Validator {
     }
 
     public void checkLoopCount(String loopCount) {
-        checkPositiveCount(loopCount);
+        checkNegativeCount(loopCount);
     }
 
-    private void checkPositiveCount(String loopCount) {
+    private void checkNegativeCount(String loopCount) {
         int count = Parser.parseNumber(loopCount);
         if (count <= 0) {
             throw new IllegalArgumentException(ERROR + ", 시도할 횟수는 1 이상 이어야 합니다.");

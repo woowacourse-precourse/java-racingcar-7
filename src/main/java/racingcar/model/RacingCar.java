@@ -4,6 +4,7 @@ import racingcar.policy.MovingPolicy;
 
 public class RacingCar {
 
+    private static final String DASH = "-";
     private final String name;
     private int position = 0;
     private final MovingPolicy policy;
@@ -29,6 +30,6 @@ public class RacingCar {
 
     @Override
     public String toString() {
-        return name + " : " + "-".repeat(position);
+        return name + " : " + DASH.repeat(position);
     }
 }
