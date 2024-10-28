@@ -53,12 +53,25 @@ MVC 패턴으로 입출력, 컨트롤러, 경주 기능 분리
 * Distance : 자동차 전진 거리
 * RaceRound : 자동차 이동 횟수
 * RacingGame : 경주 관리
+* WinnerCalculator : 최종 우승자 계산
 
 ### View
 사용자 데이터 입출력을 분리하여 클래스 단위 최소화
 * InputView : 사용자 입력 처리
 * OutputView : 결과 출력
 
+### Validator
+입력값을 검증하는 패키지
+* CarValidator : 자동차 이름 입력값을 검증
+* RoundValidator : 라운드 횟수 입력값을 검증
+
 ### Controller
 Viwe와 Model을 연결
 RacingGameController : 게임 어플리케이션의 전체 흐름을 제어
+
+## Test
+과제 통과를 위한 기본적인 테스트 내용을 포함하는 ApplicationTest 클래스 외에 별도로 JUnit, AssertJ를 활용한 별도의 테스트 클래스를 작성하였다.
+
+### OuputTest : 출력 값 처리 및 출력에 대한 테스트 클래스
+### InputTest : 입력 값 처리 및 출력에 대한 테스트 클래스
+### RacingGameTest : 전체 게임 비즈니스 로직을 확인하기 위한 테스트 클래스
