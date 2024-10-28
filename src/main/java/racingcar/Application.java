@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -25,6 +27,11 @@ public class Application {
         List<String> carNames = Arrays.asList(input.split(","));
         if (carNames.size() <= 1) {
             throw new IllegalArgumentException("자동차는 2개 이상이여야 합니다.");
+        }
+
+        Set<String> uniqueCarNames = new HashSet<>(carNames);
+        if (uniqueCarNames.size() != carNames.size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복되지 않아야 합니다.");
         }
 
         for (String carName : carNames) {
