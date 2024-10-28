@@ -62,11 +62,29 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 특수기호_사용() {
+    void 이름에_특수기호_사용() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi,jam*", "2"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("특수기호는 사용이 불가합니다.");
+        });
+    }
+
+    @Test
+    void 시도횟수_0() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("시도 횟수는 1 이상의 정수로 입력해야 합니다.");
+        });
+    }
+
+    @Test
+    void 시도횟수_정수가_아닐때() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", "abc"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("정수로만 입력해 주세요.");
         });
     }
 
