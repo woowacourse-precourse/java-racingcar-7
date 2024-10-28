@@ -22,7 +22,7 @@ public class RaceResultTest {
         Cars cars = new Cars("pobi", alwaysMoveStrategy);
         RaceResult raceResult = new RaceResult(cars);
 
-        cars.moveAllCars();
+        cars.moveAll();
         List<String> winners = raceResult.getWinners();
 
         assertThat(winners).isEqualTo(List.of("pobi"));
@@ -34,7 +34,7 @@ public class RaceResultTest {
         Cars cars = new Cars("pobi,woni,jun", alwaysMoveStrategy);
         RaceResult raceResult = new RaceResult(cars);
 
-        cars.moveAllCars();
+        cars.moveAll();
         List<String> winners = raceResult.getWinners();
 
         assertThat(winners).isEqualTo(List.of("pobi", "woni", "jun"));

@@ -13,7 +13,7 @@ public class RaceService {
         int round = 0;
 
          while (!isEndRace(round++, raceCount)) {
-            cars.moveAllCars();
+            cars.moveAll();
             RoundResultDto roundResult = new RoundResultDto(cars);
 
             roundResults.add(roundResult);

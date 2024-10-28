@@ -18,7 +18,7 @@ public class Cars {
         CarNameValidator.validateDuplicateCarNames(carName);
     }
 
-    public void moveAllCars() {
+    public void moveAll() {
         cars.forEach(car -> car.move(moveStrategy));
     }
 
