@@ -32,8 +32,8 @@ public class Cars {
         return cars.size();
     }
 
-    public List<String> getWinnerNames() {
-        return getWinners().stream().map(Car::getName).toList();
+    public List<String> getFrontCarNames() {
+        return getFrontCars().stream().map(Car::getName).toList();
     }
 
     private List<Car> parseString(String input) {
@@ -51,7 +51,7 @@ public class Cars {
         return carUniqueNames.size() != cars.size();
     }
 
-    private List<Car> getWinners() {
+    private List<Car> getFrontCars() {
         int maxMoveCount = getMaxMoveCount();
         return cars.stream().filter(it -> it.getMoveCount() == maxMoveCount).toList();
     }

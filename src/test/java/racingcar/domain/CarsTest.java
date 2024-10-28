@@ -78,7 +78,7 @@ public class CarsTest {
                     }
 
                     // then
-                    List<String> winnerNames = cars.getWinnerNames();
+                    List<String> winnerNames = cars.getFrontCarNames();
                     assertThat(winnerNames.size()).isEqualTo(1);
                     assertThat(winnerNames.getFirst()).isEqualTo("pobi");
                 },

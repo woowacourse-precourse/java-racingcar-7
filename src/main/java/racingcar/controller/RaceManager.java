@@ -26,6 +26,7 @@ public class RaceManager {
 
     private void play(Cars cars, int roundCount) {
         ConsoleWriter.printlnMessage(PLAY_START_MESSAGE);
+
         for (int round = 1; round <= roundCount; round++) {
             cars.playSingleRound();
 
@@ -35,7 +36,8 @@ public class RaceManager {
     }
 
     private void finish(Cars cars) {
-        List<String> winnerNames = cars.getWinnerNames();
+        List<String> winnerNames = cars.getFrontCarNames();
+
         ConsoleWriter.printlnMessage(String.format(RESULT_MESSAGE, String.join(", ", winnerNames)));
     }
 
