@@ -3,7 +3,11 @@ package racingcar;
 import static racingcar.Constants.*;
 
 public class InputParser {
-    private final InputValidator validator = new InputValidator();
+    private final InputValidator validator;
+
+    public InputParser(InputValidator validator) {
+        this.validator = validator;
+    }
 
     public String[] executeCarNames(String input) {
         validator.checkNull(input);

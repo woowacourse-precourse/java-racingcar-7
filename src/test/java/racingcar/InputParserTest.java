@@ -10,7 +10,7 @@ class InputParserTest {
 
     @BeforeEach
     void setUp() {
-        inputParser = new InputParser();
+        inputParser = new InputParser(new InputValidator());
     }
 
     @Test

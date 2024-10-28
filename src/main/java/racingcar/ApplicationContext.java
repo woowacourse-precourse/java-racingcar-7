@@ -8,7 +8,7 @@ public class ApplicationContext {
 
     public ApplicationContext() {
         this.userInteractionManager = new UserInteractionManager();
-        this.inputParser = new InputParser();
+        this.inputParser = new InputParser(new InputValidator());
         this.race = new Race();
         this.winner = new Winner();
     }
