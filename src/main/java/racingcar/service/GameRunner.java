@@ -1,10 +1,10 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import racingcar.model.Car;
 import racingcar.model.GameResult;
 
 public class GameRunner {
@@ -18,60 +18,58 @@ public class GameRunner {
     private static final String WINNER_DELIMITER = ",";
 
     public GameResult runGame(Set<String> carNames, int finalAttemptCount) {
-        Map<String, Integer> carState = initializeCarState(carNames);
+        List<Car> cars = initializeCarState(carNames);
         StringBuilder allRoundResults = new StringBuilder();
 
         for (int attemptCount = 0; attemptCount < finalAttemptCount; attemptCount++) {
-            updateCarState(carState);
-            allRoundResults.append(formatRoundResult(carState));
+            updateCarState(cars);
+            allRoundResults.append(formatRoundResult(cars));
         }
 
-        return new GameResult(carState, allRoundResults.toString());
+        return new GameResult(cars, allRoundResults.toString());
     }
 
-    private Map<String, Integer> initializeCarState(Set<String> carNames) {
-        Map<String, Integer> carState = new HashMap<>();
-        for (String car : carNames) {
-            carState.put(car, 0);
+    private List<Car> initializeCarState(Set<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
-        return carState;
+        return cars;
     }
 
-    public void updateCarState(Map<String, Integer> carState) {
-        carState.forEach((car, position) -> {
+    public void updateCarState(List<Car> cars) {
+        cars.forEach(car -> {
             int randomNumber = Randoms.pickNumberInRange(RANDOM_LOWER_BOUND, RANDOM_UPPER_BOUND);
             if (isMoved(randomNumber)) {
-                carState.put(car, position + 1);
+                car.move();
             }
         });
     }
 
     public boolean isMoved(int randomNumber) {
-        if (randomNumber >= MOVEMENT_LIMIT) {
-            return true;
-        }
-        return false;
+        return randomNumber >= MOVEMENT_LIMIT;
     }
 
-    public String getWinner(Map<String, Integer> carState) {
-        int maxPosition = carState.values().stream()
-                .max(Integer::compareTo)
+    public String getWinner(List<Car> cars) {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
                 .orElse(0);
 
-        List<String> winners = carState.entrySet().stream()
-                .filter(entry -> entry.getValue() == maxPosition)
-                .map(Map.Entry::getKey)
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
                 .toList();
 
         return String.join(WINNER_DELIMITER, winners);
     }
 
-    public String formatRoundResult(Map<String, Integer> carPositions) {
+    public String formatRoundResult(List<Car> cars) {
         StringBuilder result = new StringBuilder();
-        carPositions.forEach((carName, position) -> {
-            result.append(carName)
+        cars.forEach(car -> {
+            result.append(car.getName())
                     .append(CAR_POSITION_INDICATOR)
-                    .append(POSITION_SYMBOL.repeat(Math.max(0, position)))
+                    .append(POSITION_SYMBOL.repeat(Math.max(0, car.getPosition())))
                     .append(LINE_BREAK);
         });
         return result.toString();

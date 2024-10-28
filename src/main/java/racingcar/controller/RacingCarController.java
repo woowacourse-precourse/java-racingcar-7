@@ -1,7 +1,8 @@
 package racingcar.controller;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
+import racingcar.model.Car;
 import racingcar.model.Game;
 import racingcar.model.GameResult;
 import racingcar.service.GameRunner;
@@ -47,8 +48,8 @@ public class RacingCarController {
         showResult(gameResult.getFinalCarState());
     }
 
-    public void showResult(Map<String, Integer> carState) {
-        String winners = gameRunner.getWinner(carState);
+    public void showResult(List<Car> cars) {
+        String winners = gameRunner.getWinner(cars);
         outputView.showWinners(winners);
     }
 }

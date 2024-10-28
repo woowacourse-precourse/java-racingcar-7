@@ -1,17 +1,17 @@
 package racingcar.model;
 
-import java.util.Map;
+import java.util.List;
 
 public class GameResult {
-    private final Map<String, Integer> finalCarState;
+    private final List<Car> finalCarState;
     private final String allRoundResults;
 
-    public GameResult(Map<String, Integer> finalCarState, String allRoundResults) {
+    public GameResult(List<Car> finalCarState, String allRoundResults) {
         this.finalCarState = finalCarState;
         this.allRoundResults = allRoundResults;
     }
 
-    public Map<String, Integer> getFinalCarState() {
+    public List<Car> getFinalCarState() {
         return finalCarState;
     }
 
