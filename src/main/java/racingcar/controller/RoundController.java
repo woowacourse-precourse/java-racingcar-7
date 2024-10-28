@@ -24,6 +24,7 @@ public class RoundController {
         InputValidator.notOverFiveLetter(InputHandler.getCarNameList());
         InputValidator.notCompleteKoreanName(InputHandler.getCarNameList());
         InputValidator.notUseComma(InputView.getCarNames());
+        InputValidator.notWriteLetter(InputHandler.getCarNameList());
 
         Judge judge = new Judge();
         int roundNumber = inputView.inputRounds();
