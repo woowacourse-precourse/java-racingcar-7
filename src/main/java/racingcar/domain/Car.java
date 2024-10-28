@@ -33,8 +33,8 @@ public class Car implements Comparable<Car> {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(this.name + " : ");
-        for (int i=0; i<this.distance; i++) {
+        StringBuilder builder = new StringBuilder(this.name).append(" : ");
+        for (int i = 0; i < this.distance; i++) {
             builder.append("-");
         }
         return builder.toString();
@@ -42,7 +42,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car car) {
-        int comparison = Long.compare(this.distance, car.distance);
+        int comparison = -1 * Long.compare(this.distance, car.distance);
         if (comparison == 0) {
             return this.name.compareTo(car.name);
         }
