@@ -90,6 +90,17 @@ public class RaceGameTest {
     }
 
     @Test
+    @DisplayName("carNameList: 같은 문자열이 있을 경우의 예외처리 성공")
+    void setCarNamesListTest8(){
+        RaceGame raceGame = new RaceGame();
+        String input = "pobi, pobi,jun";
+
+        assertThrows(IllegalArgumentException.class, () -> raceGame.getNamesList(input));
+    }
+
+
+
+    @Test
     @DisplayName("totalRounds: null 예외처리")
     void getTotalRoundsTest1(){
         RaceGame raceGame = new RaceGame();
