@@ -15,6 +15,16 @@ public class Application {
         return Console.readLine();
     }
 
+    private static void validateCarNames(String carNames) {
+        String[] names = carNames.split(",");
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+        }
+    }
+
+
     private static int getMoveCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Integer.parseInt(Console.readLine());
