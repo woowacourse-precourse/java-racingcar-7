@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public class OutputView {
             System.out.println(PRINT_RESULT);
         }
         for (Car car : participants) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getMovedCnt()));
+            System.out.printf("%s : %s", car.getName(), "-".repeat(car.getMovedCnt()));
         }
         System.out.println();
     }
