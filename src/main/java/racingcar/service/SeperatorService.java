@@ -7,7 +7,7 @@ public class SeperatorService {
         return names;
     }
 
-    public void seperate(String s) {
+    public void seperateName(String s) {
         names=s.split(",");
     }
 

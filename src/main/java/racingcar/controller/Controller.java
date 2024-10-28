@@ -6,13 +6,15 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Controller {
-
+    private final SeperatorService seperator= new SeperatorService();
+    private final ParsingService parsing=new ParsingService();
+    private final Valid valid=new Valid();
     public void start(){
         OutputView.requestCarsName();
         String input= InputView.getInput();
-        SeperatorService seperator=new SeperatorService();
-        ParsingService parsing=new ParsingService();
-        Valid valid=new Valid();
+        //이름 분리
+        seperator.seperateName(input);
+
         //이름 유효성 검사
         for (String name : seperator.getNames()) {
             valid.valid(name);
