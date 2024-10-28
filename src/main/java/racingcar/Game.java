@@ -33,12 +33,12 @@ public class Game {
     }
 
     List<Car> parseCars(String input){
-        if(input.isEmpty()){
-            throw new IllegalArgumentException("비어있는 문자열입니다.");
-        }
 
         List<Car> cars = new ArrayList<>();
         List<String> carsNames = Arrays.asList(input.split(","));
+        if(carsNames.isEmpty() || carsNames.getFirst().isEmpty()){
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
         for(String carName : carsNames){
             if(carName.length()>5){
                 throw new IllegalArgumentException("이름이 5글자 이상입니다.");
