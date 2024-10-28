@@ -18,7 +18,6 @@ public class GameData {
                 .max()
                 .orElse(0);
 
-        // 우승자를 필터링하여 반환
         return cars.stream()
                 .filter(car -> car.isWinner(maxPosition))
                 .collect(Collectors.toList());
