@@ -17,8 +17,8 @@ public class NumberRequestHandlerTest {
         String inputString = "12312";
 
         // when
-        int result = numberRequestHandler.convertToInteger(inputString);
-        int expectedResult = 12312;
+        long result = numberRequestHandler.convertToLong(inputString);
+        long expectedResult = 12312;
 
         // then
         Assertions.assertThat(result).isEqualTo(expectedResult);
@@ -31,7 +31,7 @@ public class NumberRequestHandlerTest {
         String inputString = "123d12";
 
         // when, then
-        Assertions.assertThatThrownBy(() -> numberRequestHandler.convertToInteger(inputString))
+        Assertions.assertThatThrownBy(() -> numberRequestHandler.convertToLong(inputString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_NUMBER_ERROR.getMessage());
     }
@@ -43,7 +43,7 @@ public class NumberRequestHandlerTest {
         String inputString = "";
 
         // when, then
-        Assertions.assertThatThrownBy(() -> numberRequestHandler.convertToInteger(inputString))
+        Assertions.assertThatThrownBy(() -> numberRequestHandler.convertToLong(inputString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_NUMBER_ERROR.getMessage());
     }
