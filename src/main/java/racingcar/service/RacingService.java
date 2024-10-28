@@ -9,6 +9,7 @@ import static racingcar.util.StringUtil.isInteger;
 import static racingcar.util.StringUtil.splitByComma;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +72,11 @@ public class RacingService {
     public void responseGameResult() {
         List<String> winners = findWinners();
         outputView.responseGameResult(String.join(", ", winners));
+    }
+
+    // 테스트용
+    public Map<String, RacingCar> getRacingCars() {
+        return Collections.unmodifiableMap(racingCars);
     }
 
     private List<String> getValidCarNames(String inputCarNames) {
