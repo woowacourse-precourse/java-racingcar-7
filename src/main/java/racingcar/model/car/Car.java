@@ -4,8 +4,6 @@ public class Car {
     private static final String KOREAN_ENGLISH_REGEX = "^[a-zA-Z가-힣]+$";
     private static final Integer MAX_CAR_NAME_LENGTH = 5;
     private final MoveStrategy moveStrategy;
-
-
     private final String carName;
     private int position = 0;
 
