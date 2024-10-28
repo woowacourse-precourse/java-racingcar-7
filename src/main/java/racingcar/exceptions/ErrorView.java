@@ -1,4 +1,6 @@
-package racingcar.view;
+package racingcar.exceptions;
+
+import racingcar.view.Message;
 
 public class ErrorView {
     public static void error_Empty() {

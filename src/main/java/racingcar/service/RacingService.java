@@ -6,6 +6,12 @@ import racingcar.view.RacingView;
 public class RacingService {
     private static Car[] carList;
 
+    public static void racingStart(String racingCars, String moveCount) {
+        setupRacing(racingCars, moveCount);
+        startRacing();
+        racingResult();
+    }
+
     public static void setupRacing(String cars, String moveCount) {
         String[] racingCars = cars.split(",");
         carList = new Car[racingCars.length];
@@ -54,4 +60,5 @@ public class RacingService {
         }
         RacingView.racingResult(winners, winnerCount);
     }
+
 }

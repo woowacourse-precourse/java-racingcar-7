@@ -1,24 +1,30 @@
 package racingcar.controller;
 
+import racingcar.exceptions.ErrorView;
 import racingcar.service.RacingService;
-import racingcar.view.ErrorView;
 import racingcar.view.InputView;
 
 public class RacingController {
+    private static String racingCars;
+    private static String moveCount;
+
     public static void start() {
-        String racingCars = InputView.inputCar();
-        String moveCount = InputView.inputCount();
-        inputValid(racingCars, moveCount);
-        RacingService.setupRacing(racingCars, moveCount);
-        RacingService.startRacing();
-        RacingService.racingResult();
+        set();
+        inputValid();
+        RacingService.racingStart(racingCars, moveCount);
     }
 
-    private static void inputValid(String carNames, String moveCount) {
-        if (carNames == null || carNames.trim().isEmpty()) {
+    private static void set() {
+        racingCars = InputView.inputCar();
+        moveCount = InputView.inputCount();
+    }
+
+    private static void inputValid() {
+
+        if (racingCars == null || racingCars.trim().isEmpty()) {
             ErrorView.error_Empty();
         }
-        String[] names = carNames.split(",");
+        String[] names = racingCars.split(",");
         if (names.length < 2) {
             ErrorView.error_OneCar();
         }
