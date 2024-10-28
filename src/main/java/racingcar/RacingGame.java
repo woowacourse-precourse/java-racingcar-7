@@ -15,6 +15,7 @@ public class RacingGame {
         inputCars();
         inputAttempts();
         play();
+        announceWinners();
     }
 
     private void inputCars() {
@@ -68,5 +69,16 @@ public class RacingGame {
         System.out.println();
     }
 
+    private void announceWinners() {
+        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+        List<String> winners = new ArrayList<>();
 
+        for (Car car : cars) {
+            if (car.getDistance() == maxDistance) {
+                winners.add(car.getName());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }
