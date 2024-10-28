@@ -34,19 +34,25 @@ public class GameController {
     }
 
     private String[] getValidCarNames() {
-        // while문 제거
         String input = inputView.readCarNames();
-        String[] carNames = input.split(",");
-        inputValidator.validateCarNames(carNames);
-        return carNames;
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
+        }
+        inputValidator.validateInputFormat(input);
+        String[] names = input.split(",");
+        inputValidator.validateCarNames(names);
+        return names;
     }
 
     private int getValidRounds() {
-        // while문 제거
         String input = inputView.readRounds();
-        int rounds = Integer.parseInt(input);
-        inputValidator.validateRounds(rounds);
-        return rounds;
+        try {
+            int rounds = Integer.parseInt(input.trim());
+            inputValidator.validateRounds(rounds);
+            return rounds;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
     }
 
     private void playGame(RacingGame racingGame, int rounds) {
