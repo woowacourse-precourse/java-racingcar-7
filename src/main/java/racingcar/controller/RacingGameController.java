@@ -9,8 +9,8 @@ import racingcar.view.OutputView;
 import racingcar.view.InputView;
 
 public class RacingGameController {
-    private OutputView outputView = new OutputView();
-    private InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+    private final InputView inputView = new InputView();
     private final RandomGenerator randomGenerator = new RandomGeneratorImpl();
 
     public void playGame() {
