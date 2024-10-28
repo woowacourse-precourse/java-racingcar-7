@@ -12,7 +12,7 @@ import racingcar.service.RacingGame;
 public class RacingGameTest extends NsTest {
     @ParameterizedTest
     @DisplayName("시행횟수를 테스트합니다.")
-    @ValueSource(strings = {"0", "-1", "0.7", "8.8", "거북이"})
+    @ValueSource(strings = {"0", "-1", "0.7", "8.8", "거북이", "", " ", "\n"})
     void tryCount_테스트(String target) {
         CarName turtle = new CarName("거북이");
         CarName rabbit = new CarName("토끼");
