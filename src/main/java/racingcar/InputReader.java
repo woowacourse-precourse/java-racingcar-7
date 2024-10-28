@@ -13,12 +13,17 @@ public class InputReader {
             return userInput;
         }
         catch(NoSuchElementException e){
-            throw new IllegalArgumentException("입력값이 없습니다.");
+            throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
         }
     }
     public int readNumberOfTrial(){
-        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
-        validationCheck.validateNumberOfTrial(userInput);
-        return Integer.parseInt(userInput);
+        try {
+            String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+            validationCheck.validateNumberOfTrial(userInput);
+            return Integer.parseInt(userInput);
+        }
+        catch(NoSuchElementException e){
+            throw new IllegalArgumentException("시도 횟수가 입력되지 않았습니다.");
+        }
     }
 }
