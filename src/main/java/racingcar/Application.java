@@ -2,9 +2,12 @@ package racingcar;
 
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
@@ -12,11 +15,16 @@ public class Application {
         String[] carNames = inputCarNames();
         int runCount = inputRunCount();
 
-        // input check
-        for (int i = 0; i < carNames.length; i++) {
-            System.out.println("#" + i + " " + carNames[i]);
+        int[] carDistance = new int[carNames.length];
+
+        for (int i = 0; i < runCount; i++) {
+            move(carDistance);
         }
-        System.out.println("runCount : " + runCount);
+
+        System.out.println(String.join(" ",
+                Arrays.stream(carDistance)
+                .mapToObj(String::valueOf) // 각 요소를 String으로 변환
+                .collect(Collectors.joining(" "))));
     }
 
     public static String[] inputCarNames() throws IllegalArgumentException {
@@ -46,5 +54,17 @@ public class Application {
             throw new IllegalArgumentException();
         }
         return runCount;
+    }
+
+    public static boolean canMove() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
+    public static void move(int[] carDistance) {
+        for (int i = 0; i < carDistance.length; i++) {
+            if (canMove()) {
+                carDistance[i] += 1;
+            }
+        }
     }
 }
