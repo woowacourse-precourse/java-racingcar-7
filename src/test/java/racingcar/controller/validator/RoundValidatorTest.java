@@ -1,17 +1,15 @@
 package racingcar.controller.validator;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.in;
-import static racingcar.exception.ErrorBase.INPUT_IS_EMPTY;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.ErrorBase;
 
-class ValidateRoundTest extends ValidatorTest<Integer>{
+class RoundValidatorTest extends ValidatorTest<Integer>{
     @Override
     protected Validator<Integer> getValidator() {
-        return new ValidateRound();
+        return new RoundValidator();
     }
 
     @Test
@@ -41,7 +39,7 @@ class ValidateRoundTest extends ValidatorTest<Integer>{
 
     @Test
     void 최대_라운드_수를_초과하면_예외를_발생시킨다() {
-        String input = String.valueOf(ValidateRound.MAX_ROUNDS + 1);
+        String input = String.valueOf(RoundValidator.MAX_ROUNDS + 1);
 
         assertThatThrownBy(() -> getValidator().validate(input))
                 .isInstanceOf(IllegalArgumentException.class)

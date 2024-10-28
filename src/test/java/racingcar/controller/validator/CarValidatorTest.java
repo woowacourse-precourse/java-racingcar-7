@@ -2,18 +2,16 @@ package racingcar.controller.validator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.in;
 import static racingcar.exception.ErrorBase.CAR_COUNT_EXCEEDS_LIMIT;
 import static racingcar.exception.ErrorBase.CAR_NAME_IS_BETWEEN_ONE_AND_FIVE;
-import static racingcar.exception.ErrorBase.INPUT_IS_EMPTY;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class ValidateCarTest extends ValidatorTest<List<String>>{
+class CarValidatorTest extends ValidatorTest<List<String>>{
     @Override
     protected Validator<List<String>> getValidator() {
-        return new ValidateCar();
+        return new CarValidator();
     }
 
     @Test
@@ -48,7 +46,7 @@ class ValidateCarTest extends ValidatorTest<List<String>>{
 
     @Test
     void 자동차_이름이_최대글자를_초과하면_예외를_발생시킨다() {
-        String input = "a".repeat(ValidateCar.NAME_LENGTH + 1);
+        String input = "a".repeat(CarValidator.NAME_LENGTH + 1);
 
         assertThatThrownBy(() -> getValidator().validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -58,7 +56,7 @@ class ValidateCarTest extends ValidatorTest<List<String>>{
     @Test
     void 입력받은_자동차의_개수가_최대개수를_초과하면_예외를_발생시킨다() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < ValidateCar.MAX_CARS + 1; i++) {
+        for (int i = 0; i < CarValidator.MAX_CARS + 1; i++) {
             sb.append(i).append(",");
         }
 

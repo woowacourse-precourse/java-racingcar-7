@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Stream;
 import org.junit.platform.commons.util.StringUtils;
 
-public class ValidateCar extends Validator<List<String>>{
+public class CarValidator extends Validator<List<String>>{
     public static final int MAX_CARS = 1000;
     public static final int NAME_LENGTH = 5;
 
@@ -15,7 +15,7 @@ public class ValidateCar extends Validator<List<String>>{
     protected List<String> parseInput(String input) {
         return Stream.of(input.split(","))
                 .map(String::trim)
-                .peek(ValidateCar::validateCarNameLength)
+                .peek(CarValidator::validateCarNameLength)
                 .toList();
     }
 

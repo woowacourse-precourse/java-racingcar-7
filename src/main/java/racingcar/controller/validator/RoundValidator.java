@@ -4,7 +4,7 @@ import static racingcar.exception.ErrorBase.ROUNDS_COUNT_INVALID;
 import static racingcar.exception.ErrorBase.ROUNDS_MUST_BE_NUMBER;
 
 
-public class ValidateRound extends Validator<Integer>{
+public class RoundValidator extends Validator<Integer>{
     public static final int MAX_ROUNDS = 1000;
 
     @Override

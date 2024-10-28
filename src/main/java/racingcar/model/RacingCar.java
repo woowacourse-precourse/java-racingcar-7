@@ -8,23 +8,23 @@ import org.junit.platform.commons.util.StringUtils;
 
 public class RacingCar {
     private String name; // 자동차의 이름
-    private int pos; // 자동차의 현재 위치
+    private int position; // 자동차의 현재 위치
     private final int FORWARD_STANDARD = 4;
 
 
     public RacingCar(String name) {
         withName(name);
-        this.pos = 0;
+        this.position = 0;
     }
 
     public void moveForward(Supplier<Integer> randomSupplier) {
         if(isForward(randomSupplier.get())) {
-            pos++;
+            position++;
         }
     }
 
-    public int getPos() {
-        return pos;
+    public int getPosition() {
+        return position;
     }
 
     public String getName(){

@@ -4,7 +4,6 @@ import static java.util.stream.Collectors.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Racing {
     private final List<RacingCar> cars = new ArrayList<>();
@@ -16,13 +15,14 @@ public class Racing {
     public List<RacingCar> findFarthestCars() {
         int maxPosition = getMaxPos();
         return cars.stream()
-                .filter(racingCar -> racingCar.getPos() == maxPosition)
+                .filter(racingCar -> racingCar.getPosition() == maxPosition)
                 .collect(toList());
     }
 
     public List<RacingCar> getCars() {
         return cars;
     }
+
 
     private void initializeCars(List<String> carNames) {
         carNames.stream()
@@ -32,7 +32,7 @@ public class Racing {
 
     private int getMaxPos() {
         return cars.stream()
-                .mapToInt(RacingCar::getPos)
+                .mapToInt(RacingCar::getPosition)
                 .max()
                 .orElse(0);
     }
