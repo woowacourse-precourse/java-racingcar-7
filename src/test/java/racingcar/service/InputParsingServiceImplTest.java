@@ -66,6 +66,29 @@ class InputParsingServiceImplTest {
     }
 
     @Test
+    void 시도_횟수_음수_예외_테스트() {
+        //given
+        String input = "-1";
+
+        //when,then
+        assertThatThrownBy(
+                () -> inputParsingService.parseAttemptCountString(input)
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 큰_시도_횟수_예외_테스트() {
+        //given
+        String input = "2147483648";
+
+        //when,then
+        assertThatThrownBy(
+                () -> inputParsingService.parseAttemptCountString(input)
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+    @Test
     void 시도_횟수_파싱_예외_테스트() {
         //given
         String input = "aa";
