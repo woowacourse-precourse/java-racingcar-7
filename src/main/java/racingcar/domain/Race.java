@@ -18,22 +18,13 @@ public class Race {
 
     public void run(final int rounds) {
         for (int trial = 0; trial < rounds; trial++) {
-            playOneRound(numbers());
+            playOneRound();
         }
     }
 
-    private List<Integer> numbers() {
-        List<Integer> numbers = new ArrayList<>();
-        for (Car ignored : cars) {
-            numbers.add(numberGenerator.generate());
-        }
-        return numbers;
-    }
-
-    private void playOneRound( List<Integer> numbers) {
-        for (int idx = 0; idx < numbers.size(); idx++) {
-            Car car = cars.get(idx);
-            car.execute(numbers.get(idx));
+    private void playOneRound() {
+        for (Car car: cars) {
+            car.execute(numberGenerator.generate());
         }
         appendRoundResult();
     }
