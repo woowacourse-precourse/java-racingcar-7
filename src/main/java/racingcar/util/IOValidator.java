@@ -15,14 +15,16 @@ public class IOValidator {
 	}
 
 	public static void validateNaturalNumber(String input) {
-		try {
-			int round = Integer.parseInt(input);
+		int number;
 
-			if (round < NATURAL_NUMBER) {
-				throw new IllegalArgumentException("시도할 횟수는 자연수로 입력해주세요.");
-			}
+		try {
+			number = Integer.parseInt(input);
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("시도할 횟수는 숫자로 입력해주세요.");
+		}
+
+		if (number < NATURAL_NUMBER) {
+			throw new IllegalArgumentException("시도할 횟수는 자연수로 입력해주세요.");
 		}
 	}
 }
