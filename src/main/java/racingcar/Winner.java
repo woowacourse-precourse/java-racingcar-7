@@ -1,31 +1,25 @@
 package racingcar;
 
 public class Winner {
-    public void checkWinner(int[] racingResult, int[] winnerCount) {
-        int maxValue = findMaxValue(racingResult);
-        for (int i = 0; i < racingResult.length; i++) {
-            if (maxValue == racingResult[i]) {
-                winnerCount[i]++;
+    public static void printFinalWinner(Car[] cars) {
+        StringBuilder finalWinner = new StringBuilder();
+        int maxMove = findMaxMove(cars);
+        for (Car car : cars) {
+            if (maxMove == car.getMoveCount()) {
+                finalWinner.append(car.getName()).append(", ");
             }
         }
+        System.out.print(finalWinner.substring(0, finalWinner.length() - 2));
     }
 
-    public void printFinalWinner(String[] carList, int[] winnerCount) {
-        int maxValue = findMaxValue(winnerCount);
-        for (int i = 0; i < winnerCount.length; i++) {
-            if (maxValue == winnerCount[i]) {
-                System.out.println(carList[i]);
+    private static int findMaxMove(Car[] cars) {
+        int maxMove = -1;
+        for (Car car : cars) {
+            if (maxMove < car.getMoveCount()) {
+                maxMove = car.getMoveCount();
             }
         }
-    }
 
-    private int findMaxValue(int[] racingResult) {
-        int maxValue = -1;
-        for (int i = 0; i < racingResult.length; i++) {
-            if (maxValue < racingResult[i]){
-                maxValue = racingResult[i];
-            }
-        }
-        return maxValue;
+        return maxMove;
     }
 }
