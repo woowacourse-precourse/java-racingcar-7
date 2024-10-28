@@ -29,7 +29,7 @@ public class DataInfo implements UserIO{
 
     @Override
     public void move(){
-        if(Randoms.pickNumberInRange(0,9) > 4) this.moveCount++;
+        if(Randoms.pickNumberInRange(0,9) >= 4) this.moveCount++;
     }
 
 
