@@ -57,13 +57,7 @@ public class RaceManager {
     }
 
     private String displayWinners(List<Car> winners) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < winners.size(); i++) {
-            stringBuilder.append(winners.get(i).getCarName());
-            if (i < winners.size() - 1) {
-                stringBuilder.append(", ");
-            }
-        }
-        return stringBuilder.toString();
+        List<String> winnersName = winners.stream().map(Car::getCarName).toList();
+        return String.join(",",winnersName);
     }
 }
