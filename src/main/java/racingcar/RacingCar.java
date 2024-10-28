@@ -16,6 +16,9 @@ public class RacingCar {
         Map<String, Integer> raceScores = new HashMap<>();
 
         for (String car_name : cars) {
+            if (car_name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
             raceScores.put(car_name.trim(), 0);  //  trim()으로 불필요한 공백 제거
         }
         return raceScores;
@@ -27,7 +30,7 @@ public class RacingCar {
             if (Randoms.pickNumberInRange(0, 9) > 3) {
                 raceScores.put(car_name, raceScores.get(car_name) + 1);
             }
-            System.out.println(car_name + ": " + "-".repeat(raceScores.get(car_name)));
+            System.out.println(car_name + " : " + "-".repeat(raceScores.get(car_name)));
         }
         //각 출력마다 공백 넣기
         System.out.println();
