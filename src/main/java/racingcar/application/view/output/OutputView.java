@@ -14,4 +14,6 @@ public interface OutputView {
   void printRaceState(List<Car> cars);
 
   void printEmptyLine();
+
+  void printWinners(List<String> winners);
 }
