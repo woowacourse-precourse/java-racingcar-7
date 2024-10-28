@@ -35,7 +35,7 @@ public class Race implements Subject {
     }
 
 
-    public void playRound(List<Car> carList, int attemptCount) {
+    private void playRound(List<Car> carList, int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
             advanceCar(carList);
             notifyObservers();
@@ -66,7 +66,7 @@ public class Race implements Subject {
     }
 
 
-    public String determineWinnerList(List<Car> carList) {
+    private String determineWinnerList(List<Car> carList) {
         int maxAdvances = getMaxAdvances(carList);
         List<Car> winnerList = getWinnerList(carList, maxAdvances);
         return formatWinnerList(winnerList);
