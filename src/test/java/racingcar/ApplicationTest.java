@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.util.InputParser.tryNumberParse;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
@@ -23,11 +24,11 @@ class ApplicationTest extends NsTest {
     @DisplayName("경주 우승자 단수 테스트")
     void oneWinnerTest() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run(CARS, "2");
-                assertThat(output()).contains("KIA : --", "HONDA : ", "BMW : -", "최종 우승자 : KIA");
-            },
-            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, STOP
+                () -> {
+                    run(CARS, "2");
+                    assertThat(output()).contains("KIA : --", "HONDA : ", "BMW : -", "최종 우승자 : KIA");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, STOP
         );
     }
 
@@ -43,21 +44,19 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
     @DisplayName("자동차 이름 5자 이하 예외 테스트")
-    @ParameterizedTest
-    @ValueSource(strings = {"FERRARI"})
-    void carNameLessThanFiveTest(String input) {
+    void carNameLessThanFiveTest() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> new Car(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.CAR_NAME_LESS_THAN_FIVE.getMessage())
+                assertThatThrownBy(() -> new Car("FERRARI"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.CAR_NAME_LESS_THAN_FIVE.getMessage())
         );
     }
 
-    @DisplayName("자동차 이름 공백 및 빈칸 예외 테스트")
     @ParameterizedTest
+    @DisplayName("자동차 이름 공백 및 빈칸 예외 테스트")
     @ValueSource(strings = {"", " "})
-    //@NullSource, @EmptySource, @NullOrEmptySource 이거 써야할지도?
     void carNameNotBlankOrEmptyTest(String input) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> new Car(input))
@@ -67,18 +66,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("경주_단수_우승자_테스트")
-    void 자동차_이름_공백_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(CARS + ",,FERRARI", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(ErrorMessage.CAR_NAME_NOT_BLANK_OR_EMPTY.getMessage())
-        );
-    }
-
-    @Test
-    @DisplayName("경주_단수_우승자_테스트")
-    void 자동차_이름_중복_예외_테스트() {
+    @DisplayName("자동차 이름 중복 예외 테스트")
+    void carNameDuplicateTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(CARS + ",KIA", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -87,8 +76,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("경주_단수_우승자_테스트")
-    void 시도_횟수_음수_예외_테스트() {
+    @DisplayName("시도 횟수 음수예외 테스트")
+    void tryNumberMinusTst() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(CARS, "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -96,13 +85,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    @DisplayName("경주_단수_우승자_테스트")
-    void 시도_횟수_문자_예외_테스트() {
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "a"})
+    @DisplayName("시도 횟수 숫자 아닌 입력 예외 테스트")
+    void tyrNumberNonNumberTest(String input) {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(CARS, "a"))
+                assertThatThrownBy(() -> tryNumberParse(input))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(ErrorMessage.TRY_NUMBER_NOT_NUMBER.getMessage() + "a")
+                        .hasMessageContaining(ErrorMessage.TRY_NUMBER_NOT_NUMBER.getMessage())
         );
     }
 
