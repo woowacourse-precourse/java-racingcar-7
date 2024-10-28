@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Race {
     private final ArrayList<Car> cars = new ArrayList<>();
-    private final String tryCount;
+    private final int tryCount;
 
     public Race(String carNames, String tryCount) {
         setCars(carNames);
-        this.tryCount = tryCount;
+        this.tryCount = changeNum(tryCount);
     }
 
     private void setCars(String carNamesString) {
@@ -30,5 +30,15 @@ public class Race {
             }
         }
         return carNames;
+    }
+
+    private int changeNum(String numString) {
+        int num = 0;
+        try {
+            num = Integer.parseInt(numString);
+        } catch (Exception exception) {
+            throw new IllegalArgumentException();
+        }
+        return num;
     }
 }
