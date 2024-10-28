@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.model.Racing;
+import racingcar.model.dto.CarStatusDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -44,7 +45,9 @@ public class RacingController {
         while (racing.can()) {
             racing.run();
             racing.deductTryCount();
-            outputView.printRacingResult(racing.getResult());
+
+            List<CarStatusDto> racingResult = racing.getResult();
+            outputView.printRacingResult(racingResult);
         }
     }
 
