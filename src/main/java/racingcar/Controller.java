@@ -19,7 +19,6 @@ public class Controller {
     private final Validator<List<String>> sizeValidator = new SizeValidator();
     private final Validator<Integer> rangeValidator = new RangeValidator();
 
-    private final CarConverter carConverter = new CarConverter();
     private final AllCarMover allCarMover = new AllCarMover();
 
     private final WinnersDecider winnersDecider = new WinnersDecider();
@@ -31,7 +30,7 @@ public class Controller {
 
         List<String> carNames = carArgumentResolver.parse(racingCarNamesRequest);
         sizeValidator.check(carNames);
-        List<Car> cars = carConverter.toCars(carNames);
+        List<Car> cars = CarConverter.toCars(carNames);
 
         outputView.println("시도할 횟수는 몇 회인가요?");
         String attemptCountRequest = inputView.read();
@@ -48,7 +47,7 @@ public class Controller {
 
         outputView.print("최종 우승자 : ");
         List<Car> winners = winnersDecider.run(cars);
-        List<String> winnerNames = carConverter.toNames(winners);
+        List<String> winnerNames = CarConverter.toNames(winners);
         outputView.printNames(winnerNames);
     }
 

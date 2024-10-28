@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 
 class CarConverterTest {
 
-    CarConverter carConverter = new CarConverter();
-
     @Test
     @DisplayName("List<String>을 List<Car>로 변환 성공 테스트")
     public void stringList_carList_convert_테스트() {
@@ -17,7 +15,7 @@ class CarConverterTest {
         List<String> carNames = List.of("a", "b", "c");
 
         // when
-        List<Car> cars = carConverter.toCars(carNames);
+        List<Car> cars = CarConverter.toCars(carNames);
 
         // then
         assertThat(cars.size()).isEqualTo(3);
