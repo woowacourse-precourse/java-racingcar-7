@@ -20,9 +20,9 @@ public class Players {
 
     public int theMaxInt(){
         int max=count.get(0);
-        for(int i=0;i<names.size();i++){
-            if(count.get(i) <count.get(i+1)){
-                max=count.get(i+1);
+        for (int i = 0; i < count.size() - 1; i++) {
+            if (count.get(i) > max) {
+                max = count.get(i);
             }
         }
         return max;
