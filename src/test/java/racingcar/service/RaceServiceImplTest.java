@@ -3,13 +3,19 @@ package racingcar.service;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.config.AppConfig;
 import racingcar.model.RaceLog;
 
 class RaceServiceImplTest {
-    AppConfig appConfig = AppConfig.getInstance();
+    AppConfig appConfig;
+
+    @BeforeEach
+    void setUp() {
+        appConfig = AppConfig.createNewInstance();
+    }
 
     @DisplayName("전진")
     @Test
@@ -32,5 +38,12 @@ class RaceServiceImplTest {
                 }
                 ,8, 3, 7, 1, 2, 9
         );
+    }
+
+    @DisplayName("중복이름")
+    @Test
+    void validateDuplicateName() {
+        RaceService raceService = appConfig.getRaceService();
+        assertThrows(IllegalArgumentException.class, () -> raceService.setRaceCars("1번차,1번차,2번차"));
     }
 }

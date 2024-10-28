@@ -8,7 +8,7 @@ import racingcar.model.Car;
 import org.junit.jupiter.api.Test;
 
 class InMemoryCarRepositoryTest {
-    AppConfig appConfig = AppConfig.getInstance();
+    AppConfig appConfig = AppConfig.createNewInstance();
 
     @DisplayName("자동차 저장")
     @Test

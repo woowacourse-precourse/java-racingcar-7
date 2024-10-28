@@ -9,20 +9,33 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class AppConfig {
-    private AppConfig() {}
+    private final boolean isTest;
+    private AppConfig(boolean isTest) {
+        this.isTest = isTest;
+    }
 
     public static class Holder {
-        private static final AppConfig INSTANCE = new AppConfig();
+        private static final AppConfig INSTANCE = new AppConfig(false);
     }
     public static AppConfig getInstance() {
         return Holder.INSTANCE;
     }
 
+    public static AppConfig createNewInstance() {
+        return new AppConfig(true);
+    }
+
     public CarRepository getCarRepository() {
+        if (isTest) {
+            return InMemoryCarRepository.createNewInstance();
+        }
         return InMemoryCarRepository.getInstance();
     }
 
     public RaceService getRaceService() {
+        if (isTest) {
+            return RaceServiceImpl.createNewInstance();
+        }
         return RaceServiceImpl.getInstance();
     }
 

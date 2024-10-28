@@ -25,6 +25,10 @@ public class RaceServiceImpl implements RaceService{
         return Holder.INSTANCE;
     }
 
+    public static RaceService createNewInstance() {
+        return new RaceServiceImpl(InMemoryCarRepository.createNewInstance());
+    }
+
     @Override
     public void setRaceCars(String carNameInput) {
         Arrays.stream(carNameInput.split(","))
@@ -58,10 +62,19 @@ public class RaceServiceImpl implements RaceService{
 
     private void validateCarName(String name) {
         validateNameLength(name);
+        validateNameDuplication(name);
     }
 
     private void validateNameLength(String name) {
         if(name.length() > RaceConstants.CAR_NAME_THRESHOLD) {
+            carRepository.reset();
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateNameDuplication(String name) {
+        if(!carRepository.findByName(name).isEmpty()) {
+            carRepository.reset();
             throw new IllegalArgumentException();
         }
     }
