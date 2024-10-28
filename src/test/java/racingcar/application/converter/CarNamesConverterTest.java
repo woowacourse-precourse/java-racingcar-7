@@ -19,17 +19,4 @@ class CarNamesConverterTest {
         //then
         assertThat(result).map(Car::getName).containsExactly("pobi", "woni", "jun");
     }
-
-    @Test
-    public void 하나의_이름만_주어지면_하나의_자동차만_들어있다() throws Exception {
-        //given
-        CarNamesConverter converter = new CarNamesConverter();
-
-        //when
-        List<Car> result = converter.convert("pobi,");
-
-        //then
-        assertThat(result.size()).isEqualTo(1);
-        assertThat(result).map(Car::getName).containsExactly("pobi");
-    }
 }

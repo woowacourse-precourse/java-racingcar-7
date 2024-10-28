@@ -3,7 +3,7 @@ package racingcar;
 import racingcar.application.RandomForwardPolicy;
 import racingcar.application.converter.CarNamesConverter;
 import racingcar.application.converter.CountConverter;
-import racingcar.application.validation.CarNameValidator;
+import racingcar.application.validation.CarNamesValidator;
 import racingcar.application.validation.CountValidator;
 import racingcar.application.validation.Validator;
 import racingcar.domain.car.ForwardPolicy;
@@ -22,8 +22,8 @@ public class AppConfig {
         return INSTANCE;
     }
 
-    public Validator carNameValidator() {
-        return new CarNameValidator();
+    public Validator carNamesValidator() {
+        return new CarNamesValidator();
     }
 
     public Validator countValidator() {

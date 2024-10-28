@@ -2,16 +2,16 @@ package racingcar.application.converter;
 
 import java.util.List;
 import racingcar.AppConfig;
-import racingcar.domain.car.Car;
 import racingcar.application.validation.Validator;
+import racingcar.domain.car.Car;
 
 public class CarNamesConverter extends InputStringConverter<List<Car>> {
 
-    private static final Validator validator = AppConfig.getInstance().carNameValidator();
+    private static final Validator validator = AppConfig.getInstance().carNamesValidator();
 
     @Override
-    protected List<Car> doConvert(String rawCarNames) {
-        List<String> carNames = split(rawCarNames);
+    protected List<Car> doConvert(String rawString) {
+        List<String> carNames = splitToList(rawString);
 
         return carNames.stream()
             .map(Car::new)
@@ -19,12 +19,11 @@ public class CarNamesConverter extends InputStringConverter<List<Car>> {
     }
 
     @Override
-    protected void validate(String rawCarNames) {
-        List<String> carNames = split(rawCarNames);
-        carNames.forEach(validator::validate);
+    protected void validate(String rawString) {
+        validator.validate(rawString);
     }
 
-    private List<String> split(String carNames) {
-        return List.of(carNames.split(","));
+    private List<String> splitToList(String rawString) {
+        return List.of(rawString.split(","));
     }
 }
