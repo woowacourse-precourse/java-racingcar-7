@@ -27,6 +27,7 @@ public class RaceController {
         service.init(name);
         outputView.start();
         raceProcess(count);
+        outputView.displayWinners(service.getWinners());
 
     }
 
