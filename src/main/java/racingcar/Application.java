@@ -24,23 +24,23 @@ public class Application {
     }
 
     // 사용자로부터 입력을 받아 경주할 자동차 이름 배열 반환
-    public static List<RacingCar> userInput(){
+    public static List<RacingCar> userInput() {
         String names = Console.readLine();
         return concatNames(names);
     }
 
-    public static List<RacingCar> concatNames(String names){
+    public static List<RacingCar> concatNames(String names) {
         List<RacingCar> nameList = new ArrayList<>();
-        StringTokenizer st = new StringTokenizer(names,",");
-        while (st.hasMoreTokens()){
+        StringTokenizer st = new StringTokenizer(names, ",");
+        while (st.hasMoreTokens()) {
             nameList.add(new RacingCar(st.nextToken()));
         }
         return nameList;
     }
 
-    public static List<RacingCar> carRun(List<RacingCar> racingCars){
+    public static List<RacingCar> carRun(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
-            // 4 이상일때만 전진
+            // 랜덤한 값이 4 이상일때만 전진
             if (4 <= Randoms.pickNumberInRange(0, 9)) {
                 int position = racingCar.getPosition();
                 racingCar.setPosition(++position);
@@ -49,7 +49,7 @@ public class Application {
         return racingCars;
     }
 
-    public static void print(List<RacingCar> racingCars){
+    public static void print(List<RacingCar> racingCars) {
         StringBuilder sb = new StringBuilder();
         for (RacingCar racingCar : racingCars) {
             sb.append(racingCar.getName())
@@ -59,7 +59,8 @@ public class Application {
         }
         System.out.println(sb);
     }
-    public static String positionBuilder(int position){
+
+    public static String positionBuilder(int position) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < position; i++) {
             sb.append("-");
