@@ -3,6 +3,8 @@ package racingcar.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class RoundsTest {
 
@@ -14,6 +16,16 @@ class RoundsTest {
         Assertions.assertThatThrownBy(() -> new Rounds(rawCount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도할 횟수로 숫자를 입력해주세요.");
+    }
+
+    @DisplayName("시도할 횟수 입력 실패 : 음수 혹은 0 입력")
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "0"})
+    void validatePositiveTest(String rawCount) {
+
+        Assertions.assertThatThrownBy(() -> new Rounds(rawCount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도할 횟수로 양수를 입력해주세요.");
     }
 
     @DisplayName("라운드 반복 성공")
