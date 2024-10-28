@@ -11,14 +11,14 @@ import repository.CarRepository;
 
 public class Extractor {
 
-    private static ArrayList<String> extractCarList(String input) {
+    public static ArrayList<String> extractCarList(String input) {
         String[] splitInput = input.split(",");
         ArrayList<String> inputCars = new ArrayList<>(Arrays.asList(splitInput));
         validateInputCars(inputCars);
         return inputCars;
     }
 
-    private static ArrayList<Car> converToCarArrayList(ArrayList<String> inputCars) {
+    public static ArrayList<Car> converToCarArrayList(ArrayList<String> inputCars) {
         ArrayList<Car> cars = new ArrayList<>();
         for (String inputCar : inputCars) {
             cars.add(new Car(inputCar));
@@ -26,7 +26,7 @@ public class Extractor {
         return cars;
     }
 
-    private static int extractMaxDistance() {
+    public static int extractMaxDistance() {
         int maxDistance = 0;
         for (Car car : CarRepository.cars) {
             if (car.getForwardCount(CarRepository.repeatCount) > maxDistance) {
@@ -55,7 +55,7 @@ public class Extractor {
         return forwardStatus;
     }
 
-    private static int extractRepeatCount(String inputRepeatCount) {
+    public static int extractRepeatCount(String inputRepeatCount) {
         validateInputRepeatCount(inputRepeatCount);
         return Integer.parseInt(inputRepeatCount);
     }
