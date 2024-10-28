@@ -27,6 +27,10 @@ public class Application {
         }
 
         int[] maxIndices = findMaxIndices(currentRecord);
+
+        ArrayList<String> winners = findWinners(cars, currentRecord);
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     public static void testValidInput(String[] cars) {
@@ -81,6 +85,17 @@ public class Application {
         }
 
         return maxIndices;
+    }
+
+    private static ArrayList<String> findWinners(String[] cars, int[] currentRecord) {
+        int[] maxIndices = findMaxIndices(currentRecord);
+        ArrayList<String> winners = new ArrayList<>();
+
+        for (int i = 0; i < maxIndices.length; i++) {
+            winners.add(cars[maxIndices[i]]);
+        }
+
+        return winners;
     }
 
 }
