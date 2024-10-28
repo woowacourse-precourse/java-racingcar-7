@@ -58,6 +58,22 @@ public class IntegrationTests extends NsTest {
                 .hasMessageContaining(ErrorMessage.ROUND_INPUT_EMPTY.getMessage());
     }
 
+    @ParameterizedTest
+    @DisplayName("[에러] 라운드 입력이 숫자가 아닌 경우")
+    @ValueSource(strings = {"g", "dd", "]", ";", "/"})
+    public void error_roundInputNotNumber(String roundInput) {
+        String carInput = "gana,dara,maru";
+
+        Throwable throwable = catchThrowable(
+                () -> {
+                    run(carInput, roundInput);
+                }
+        );
+
+        assertThat(throwable)
+                .hasMessageContaining(ErrorMessage.ROUND_INPUT_TYPE_NOT_MATCH.getMessage());
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
