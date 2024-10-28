@@ -46,6 +46,15 @@ class ApplicationTest extends NsTest {
     @Test
     void 이름_빈칸() {
         assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("", "3"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("빈 칸 혹은 공백은 사용이 불가합니다.");
+        });
+    }
+
+    @Test
+    void 이름_공백() {
+        assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("pobi, ", "3"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("빈 칸 혹은 공백은 사용이 불가합니다.");
@@ -85,6 +94,15 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,woni", "abc"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("정수로만 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 시도횟수_빈칸() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", " "))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("시도 횟수를 입력해 주세요.");
         });
     }
 
