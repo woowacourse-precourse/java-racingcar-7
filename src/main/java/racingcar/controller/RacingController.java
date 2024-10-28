@@ -1,10 +1,13 @@
 package racingcar.controller;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
+import racingcar.dto.InputRequest;
+import racingcar.dto.OutputResponse;
+import racingcar.message.OutputMessage;
 import racingcar.model.Car;
 import racingcar.model.RacingCars;
 import racingcar.service.RacingService;
@@ -17,6 +20,7 @@ public class RacingController {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
     private RacingService racingService;
+    private int rounds;
 
     public RacingController() {
         initializeGame();
@@ -28,22 +32,20 @@ public class RacingController {
     }
 
     private void initializeGame() {
-        Collection<Car> cars = createCars();
+        InputRequest inputRequest = inputView.getInput();
+        Collection<Car> cars = createCars(inputRequest.carNames());
+        rounds = inputRequest.roundCount();
         RandomMoveStrategy moveStrategy = new RandomMoveStrategy(new RandomNumberGenerator());
-        RacingCars racingCars = new RacingCars(cars, moveStrategy);
-        this.racingService = new RacingService(racingCars);
+        racingService = new RacingService(new RacingCars(cars, moveStrategy));
     }
 
-    private Collection<Car> createCars() {
-        String carNamesInput = inputView.getCarNames();
-        Collection<String> carNames = List.of(carNamesInput.split(","));
-        return carNames.stream()
+    private Collection<Car> createCars(String carNamesInput) {
+        return Stream.of(carNamesInput.split(","))
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
 
     private void progressGame() {
-        int rounds = inputView.getRound();
         outputView.printRaceStart();
         runRounds(rounds);
     }
@@ -60,6 +62,7 @@ public class RacingController {
 
     private void finalizeGame() {
         Collection<String> winners = racingService.getWinners();
-        outputView.printWinners(winners);
+        OutputResponse outputResponse = OutputResponse.of(OutputMessage.FINAL_WINNER.getMessage(), winners);
+        outputView.printWinners(outputResponse);
     }
 }

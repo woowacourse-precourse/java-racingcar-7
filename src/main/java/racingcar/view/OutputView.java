@@ -1,9 +1,9 @@
 package racingcar.view;
 
-import java.util.Collection;
 import racingcar.message.OutputMessage;
 import racingcar.message.SeparatorPattern;
 import racingcar.model.RacingCars;
+import racingcar.dto.OutputResponse;
 
 public class OutputView {
 
@@ -21,12 +21,11 @@ public class OutputView {
         System.out.println(name + SeparatorPattern.RESULT_SEPARATOR.getPattern() + progress);
     }
 
-    public void printWinners(Collection<String> names) {
-        if (names == null || names.isEmpty()) {
-            System.out.println(OutputMessage.NO_WINNER.getMessage());
-            return;
-        }
-        String winners = String.join(SeparatorPattern.COMMA.getPattern(), names);
-        System.out.println(OutputMessage.FINAL_WINNER.getMessage() + winners);
+    public void printWinners(OutputResponse outputResponse) {
+        String winners = outputResponse.winners().isEmpty()
+                ? OutputMessage.NO_WINNER.getMessage()
+                : OutputMessage.FINAL_WINNER.getMessage() + String.join(SeparatorPattern.COMMA.getPattern(), outputResponse.winners());
+
+        System.out.println(winners);
     }
 }

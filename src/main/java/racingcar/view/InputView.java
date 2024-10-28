@@ -5,27 +5,27 @@ import racingcar.exception.RoundException;
 import racingcar.message.ErrorMessage;
 import racingcar.message.InputMessage;
 import racingcar.message.PatternMessage;
-
-import java.util.Optional;
+import racingcar.dto.InputRequest;
 
 public class InputView {
 
-    public String getCarNames() {
+    public InputRequest getInput() {
         System.out.println(InputMessage.CAR_INPUT.getMessage());
-        return Console.readLine();
-    }
+        String carNames = Console.readLine();
 
-    public int getRound() {
         System.out.println(InputMessage.ROUND_INPUT.getMessage());
-        String input = Console.readLine();
+        int roundCount = validateAndParseRound(Console.readLine());
 
-        return validateAndParseRound(input);
+        return InputRequest.of(carNames, roundCount);
     }
 
     private int validateAndParseRound(String input) {
-        return Optional.of(input)
-                .filter(PatternMessage.VALID_FORMAT::matches)
-                .map(Integer::parseInt)
-                .orElseThrow(() -> new RoundException(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage()));
+        return PatternMessage.VALID_FORMAT.matches(input)
+                ? Integer.parseInt(input)
+                : throwRoundException();
+    }
+
+    private int throwRoundException() {
+        throw new RoundException(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
     }
 }
