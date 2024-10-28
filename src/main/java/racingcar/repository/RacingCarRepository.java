@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class RacingCarRepository {
     private static RacingCarRepository instance;
-    private Map<String, String> carMoveMap;
+    private final Map<String, String> carMoveMap;
 
     public RacingCarRepository() {
         carMoveMap = new HashMap<>();

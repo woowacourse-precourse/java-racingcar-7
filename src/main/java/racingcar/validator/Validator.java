@@ -2,12 +2,10 @@ package racingcar.validator;
 
 public class Validator {
 
-    public Boolean carNameLengthValidate(String car) {
+    public void carNameLengthValidate(String car) {
 
         if(car.length() > 5) {
-            return false;
-        } else {
-            return true;
+            throw new IllegalArgumentException("레이싱카 이름의 길이는 5글자가 넘을 수 없습니다.");
         }
     }
 
@@ -18,16 +16,17 @@ public class Validator {
     }
 
     // ','가 아닌 다른 것으로 구분되어 있을 경우
-    public Boolean delimiterValidate(String car) {
+    public void delimiterValidate(String car) {
         for (char c : car.toCharArray()) {
             if (!Character.isLetterOrDigit(c)) {
-                return false;
+                throw new IllegalArgumentException("',' 이외의 구분자를 사용할 수 없습니다.");
             }
         }
-        return true;
     }
 
-    public Boolean attemptValidate(int attempt) {
-        return attempt >= 1;
+    public void attemptValidate(int attempt) {
+        if (attempt <= 0) {
+            throw new IllegalArgumentException("시도할 횟수는 0 이하가 될 수 없습니다.");
+        }
     }
 }

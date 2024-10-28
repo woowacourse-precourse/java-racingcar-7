@@ -15,21 +15,22 @@ public class RacingCarService {
 
     RacingCarRepository racingCarRepository = new RacingCarRepository();
     OutputController outputController = new OutputController();
+    Validator validator = new Validator();
 
-    public void makeCarMap(String[] cars, Validator validator, Map<String, String> carMoveMap) {
+    public void makeCarMap(String[] cars, Map<String, String> carMoveMap) {
         for(String car : cars) {
             car = car.trim(); //앞 뒤 공백 제거
-            Boolean carNameLengthValidate = validator.carNameLengthValidate(car);
-            Boolean delimiterValidate = validator.delimiterValidate(car);
-            if (delimiterValidate && carNameLengthValidate) {
-                carMoveMap.put(car, "");
-            } else {
-                throw new IllegalArgumentException();
-            }
+
+            validator.carNameEmptyValidate(car);
+            validator.carNameLengthValidate(car);
+            validator.delimiterValidate(car);
+
+            carMoveMap.put(car, "");
         }
     }
 
     public void moveController(String[] cars, Map<String, String> carMoveMap) {
+
         int randomNum;
         for (String car: cars) {
             randomNum = Randoms.pickNumberInRange(0, 9);
@@ -42,6 +43,7 @@ public class RacingCarService {
     }
 
     public void executeRaceRounds(String[] cars, Map<String, String> carMoveMap, int attempts) {
+
         int trial = 0;
         while (trial < attempts) { //리팩토링
             trial++;
@@ -51,6 +53,7 @@ public class RacingCarService {
     }
 
     public ArrayList<String> findWinners(Map<String, String> carMoveMap) {
+
         ArrayList<String> winners = new ArrayList<>();
         int winnerPosition = 0;
 
