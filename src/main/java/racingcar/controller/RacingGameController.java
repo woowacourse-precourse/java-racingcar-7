@@ -24,9 +24,9 @@ public class RacingGameController {
         int attempts = getValidatedAttempts();
 
         outputView.printResultStart();
-        Cars cars = racingGameService.play(carNames, attempts);
-        outputView.printRoundResult(cars.getCars());
-        outputView.printWinners(cars.findWinners());
+        Cars gameResult = racingGameService.play(carNames, attempts);
+        outputView.printRoundResult(gameResult.getCars());
+        outputView.printWinners(gameResult.findWinners());
     }
 
     private String getValidatedCarNames() {
