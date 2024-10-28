@@ -12,8 +12,8 @@ public class OutputService {
     }
 
     public void printRacingResults(List<String> nameOfCar, List<Integer> movementNum) {
-        for (int i=0; i<nameOfCar.size(); i++) {
-            System.out.print(nameOfCar.get(i)+" : ");
+        for (int i = 0; i < nameOfCar.size(); i++) {
+            System.out.print(nameOfCar.get(i) + " : ");
             int movement = movementNum.get(i);
             printMovement(movement);
             System.out.println();
@@ -22,7 +22,7 @@ public class OutputService {
     }
 
     public void printMovement(int movement) {
-        for (int j=0; j<movement; j++) {
+        for (int j = 0; j < movement; j++) {
             System.out.print("-");
         }
     }
@@ -30,7 +30,7 @@ public class OutputService {
     public void findWinner(List<Integer> movementNum, List<String> nameOfCar) {
         int max = Collections.max(movementNum);
 
-        for (int i=0; i<movementNum.size(); i++) {
+        for (int i = 0; i < movementNum.size(); i++) {
             int num = movementNum.get(i);
             if (num == max) {
                 String name = nameOfCar.get(i);
