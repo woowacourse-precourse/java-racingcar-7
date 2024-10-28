@@ -28,4 +28,15 @@ public class InputProcessor {
         return carList;
     }
 
+    public static int getMoveCount() {
+        int cnt = 0;
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        try {
+            cnt = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid number format");
+        }
+        return cnt;
+    }
+
 }
