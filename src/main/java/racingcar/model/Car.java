@@ -4,6 +4,7 @@ package racingcar.model;
 public class Car {
     private final String name;
     private final StringBuilder position;
+    private final int THRESHOLD = 4;
 
     public Car(String name) {
         this.name = name;
@@ -11,7 +12,7 @@ public class Car {
     }
 
     public void moveIfAboveThreshold(int randomNumber) {
-        if (randomNumber >= 4) {
+        if (randomNumber >= THRESHOLD) {
             position.append('-');
         }
     }
