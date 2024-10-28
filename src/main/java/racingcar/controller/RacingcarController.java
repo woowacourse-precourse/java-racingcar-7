@@ -40,7 +40,6 @@ public class RacingcarController {
     // end: singleton holer
 
     public void playGame() {
-//        printMenu();
         setCarNameList(validateCarNames(inputView.requestInputCarName()));
         setInputCarRaceTimes(validateCarRaceTimes(inputView.requestInputCarRaceTimes()));
         initSaveRacingCar();
@@ -48,10 +47,6 @@ public class RacingcarController {
         outputView.printCarRacing(racingCarService.playCarRacing());
         outputView.printCarRacing(racingCarService.carRacingResult());
     }
-
-//    private void printMenu() {
-//
-//    }
 
     private List<String> validateCarNames(String inputCarName) throws IllegalArgumentException {
         ValidationMsg validationMsg = validatorService.validationCarName(inputCarName);
