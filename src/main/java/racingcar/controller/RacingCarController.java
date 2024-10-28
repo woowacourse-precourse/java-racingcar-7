@@ -8,7 +8,6 @@ import racingcar.view.RacingCarView;
 public class RacingCarController {
 
     public void startGame() {
-
         RacingCars racingCars = new RacingCars();
         RacingGame racingGame = readyRacingGame(racingCars);
         racingGame.raceStart();

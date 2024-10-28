@@ -23,10 +23,16 @@ public class RacingGame {
 
     public void raceFinish() {
         List<String> raceWinner = racingCars.getRaceWinner();
+
+        if (raceWinner.isEmpty()) {
+            RacingCarView.displayNoWinner();
+            return;
+        }
+
+        RacingCarView.displayWinner(raceWinner);
     }
 
     private void moveCar() {
-
         List<Car> cars = racingCars.getRacingCars();
         for (Car car : cars) {
             if (canMove()) {
