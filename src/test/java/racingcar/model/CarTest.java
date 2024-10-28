@@ -36,8 +36,7 @@ public class CarTest {
     void testEmptyName(String name) {
         assertThatThrownBy(() -> new Car(racePolicy, name))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.CAR_NAME_EMPTY_STRING.getMessage()
-                );
+                .hasMessage(ExceptionMessage.CAR_NAME_EMPTY_STRING.getMessage());
     }
 
     @Test
@@ -46,7 +45,6 @@ public class CarTest {
         String name = "length6test";
         assertThatThrownBy(() -> new Car(racePolicy, name))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.CAR_NAME_LENGTH_LIMITATION.getMessage()
-                );
+                .hasMessage(ExceptionMessage.CAR_NAME_LENGTH_LIMITATION.getMessage());
     }
 }
