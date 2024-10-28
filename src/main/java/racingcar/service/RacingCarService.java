@@ -1,12 +1,12 @@
 package racingcar.service;
 
+import static racingcar.utils.StringSeparator.separate;
+
 import racingcar.domain.Cars;
 import racingcar.domain.RoundCount;
 import racingcar.domain.Winners;
 import racingcar.domain.dto.CarsDto;
 import racingcar.utils.RandomGenerator;
-
-import static racingcar.utils.StringSeparator.separate;
 
 public class RacingCarService {
     private final RandomGenerator randomNumberGenerator;
