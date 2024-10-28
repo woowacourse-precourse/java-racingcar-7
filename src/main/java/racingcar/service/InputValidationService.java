@@ -20,6 +20,10 @@ public class InputValidationService implements ValidationService {
     }
 
     public void verify(String input) {
+        if (input.isEmpty()) {
+            throw new InvalidInputException();
+        }
+
         List<String> names = List.of(input.split(","));
         Map<String, Boolean> bitMap = new HashMap<>();
 
