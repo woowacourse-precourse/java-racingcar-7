@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<Car> cars;
@@ -20,5 +21,12 @@ public class RacingGame {
         cars.forEach(car -> {
             car.move(Randoms.pickNumberInRange(0, 9));
         });
+    }
+
+    @Override
+    public String toString() {
+        return cars.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining("\n"));
     }
 }
