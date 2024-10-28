@@ -7,11 +7,7 @@ public class Game {
     private final List<Car> cars;
     private final int round;
 
-    public static Game create(List<Car> cars, int round) {
-        return new Game(cars, round);
-    }
-
-    Game(List<Car> cars, int round) {
+    public Game(List<Car> cars, int round) {
         validateRound(round);
 
         this.cars = cars;

@@ -5,11 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.List;
 import java.util.stream.IntStream;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -82,19 +79,6 @@ class CarTest {
         private static final int MOVING_FORWARD = 4;
         private static final int STOP = 3;
 
-        private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        private final PrintStream defaultOutputStream = System.out;
-
-        @BeforeEach
-        void setOut() {
-            System.setOut(new PrintStream(outputStream));
-        }
-
-        @AfterEach
-        void resetOut() {
-            System.setOut(defaultOutputStream);
-        }
-
         @ParameterizedTest
         @ValueSource(ints = {1, 2, 3, 4})
         void 이동할_경우_positino이_증가한다(int moveCount) {
@@ -105,10 +89,9 @@ class CarTest {
                 car.move();
                 position.append("-");
             }
-            position.append("\n");
 
             car.printPosition();
-            assertThat(outputStream.toString()).isEqualTo(position.toString());
+            assertThat(output()).isEqualTo(position.toString());
         }
 
         @Test
@@ -120,7 +103,7 @@ class CarTest {
                 }
 
                 car.printPosition();
-                assertThat(outputStream.toString()).contains("a : -\n");
+                assertThat(output()).contains("a : -");
             }, MOVING_FORWARD);
         }
 
@@ -133,7 +116,7 @@ class CarTest {
                 }
 
                 car.printPosition();
-                assertThat(outputStream.toString()).contains("a : \n");
+                assertThat(output()).contains("a :");
             }, STOP);
         }
 
