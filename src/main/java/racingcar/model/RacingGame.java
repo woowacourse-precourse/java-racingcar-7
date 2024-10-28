@@ -1,5 +1,9 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+import racingcar.view.RacingCarView;
+
 public class RacingGame {
 
     private RacingCars racingCars;
@@ -10,11 +14,25 @@ public class RacingGame {
         this.tryNumber = tryNumber;
     }
 
-    public int getTryNumber() {
-        return tryNumber;
+    public void raceStart() {
+        RacingCarView.printDisplayResultMessage();
+        for (int i = 0; i < tryNumber; i++) {
+            moveCar();
+        }
     }
 
-    public RacingCars getRacingCars() {
-        return racingCars;
+    private void moveCar() {
+
+        List<Car> cars = racingCars.getRacingCars();
+        for (Car car : cars) {
+            if (canMove()) {
+                car.move();
+            }
+        }
+        RacingCarView.displayMovement(cars);
+    }
+
+    private boolean canMove() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 }
