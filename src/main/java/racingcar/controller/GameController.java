@@ -1,6 +1,11 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.List;
+import racingcar.domain.Car;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+import racingcar.domain.RacingGame;
+import racingcar.domain.strategy.MoveStrategy;
 
 public class GameController {
     private final InputView inputView;

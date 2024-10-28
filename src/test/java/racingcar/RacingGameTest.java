@@ -5,6 +5,11 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
+import racingcar.domain.strategy.FixedRandomGenerator;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.*;
 

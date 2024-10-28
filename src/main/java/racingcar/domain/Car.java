@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.validator.CarValidator;
 
 public class Car {
 
@@ -14,7 +17,7 @@ public class Car {
         return name;
     }
 
-    void move(MoveStrategy moveStrategy) {
+    void move (MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
             position++;
         }

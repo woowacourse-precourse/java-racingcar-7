@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.Car;
 
 public class OutputView {
     public void printRoundResult(List<Car> cars) {

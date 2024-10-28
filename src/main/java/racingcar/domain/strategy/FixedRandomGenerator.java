@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.strategy;
 
 public class FixedRandomGenerator implements RandomGenerator {
     private final int fixedValue;
