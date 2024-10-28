@@ -29,4 +29,12 @@ public class InputExceptionHandler {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_CAR_COUNT.getMessage());
         }
     }
+
+    public static void validateCarNameEmpty(String[] names) {
+        for (String carName : names) {
+            if (carName.isEmpty()) {
+                throw new IllegalArgumentException(ExceptionMessage.INVALID_CAR_NAME_EMPTY.getMessage());
+            }
+        }
+    }
 }
