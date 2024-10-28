@@ -1,16 +1,16 @@
-package racingcar;
+package racingcar.controller;
 
 import racingcar.domain.Cars;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-public class RacingGame {
+public class RacingGameController {
     private final InputView inputView;
     private final ResultView resultView;
     private final RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.randomNumberGenerator();
 
-    public RacingGame(InputView inputView, ResultView resultView) {
+    public RacingGameController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
     }

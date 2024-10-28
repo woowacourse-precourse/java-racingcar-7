@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
+    public static final String DELIMITER = ",";
+
     public InputView() {
 
     }
@@ -15,11 +17,11 @@ public class InputView {
 
     public String[] seperatePlayers(String players) {
         validEndWithComma(players);
-        return players.split(",");
+        return players.split(DELIMITER);
     }
 
     public static void validEndWithComma(String players) {
-        if(players.endsWith(",")) {
+        if(players.endsWith(DELIMITER)) {
             throw new IllegalArgumentException(",를 마지막으로 입력하면 안됩니다");
         }
     }

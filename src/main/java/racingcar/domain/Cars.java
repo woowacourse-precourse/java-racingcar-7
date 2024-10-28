@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+    public static final int MIN_DUPLICATE_NAME = 1;
+    public static final String WINNER_DELIMITER = ", ";
     private final List<Car> cars;
 
     public Cars(String[] players) {
@@ -17,7 +19,7 @@ public class Cars {
 
     private void validDuplicate(String[] players) {
         long duplicateCount = calculateDuplicate(players);
-        if (duplicateCount >= 1) {
+        if (duplicateCount >= MIN_DUPLICATE_NAME) {
             throw new IllegalArgumentException("같은 이름을 사용할 수 없습니다");
         }
     }
@@ -43,7 +45,7 @@ public class Cars {
         return cars.stream()
                 .filter(car -> car.getLocation() == maxLocation)
                 .map(Car::getName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(WINNER_DELIMITER));
     }
 
 }

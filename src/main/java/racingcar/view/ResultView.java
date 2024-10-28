@@ -5,6 +5,9 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
 public class ResultView {
+
+    public static final String STRING_LOCATION = "-";
+
     public ResultView() {
 
     }
@@ -27,7 +30,7 @@ public class ResultView {
     private String stringLocation(int location) {
         StringBuilder sbLocation = new StringBuilder();
         IntStream.rangeClosed(1, location)
-                .forEach(i -> sbLocation.append("-"));
+                .forEach(i -> sbLocation.append(STRING_LOCATION));
         return sbLocation.toString();
     }
 
