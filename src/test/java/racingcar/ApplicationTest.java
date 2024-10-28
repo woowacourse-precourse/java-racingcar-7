@@ -59,6 +59,19 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("숫자를 입력해야 합니다.");
     }
 
+    @Test
+    void 공동_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "2");
+                    assertThat(output()).contains(
+                            "pobi : -", "woni : -", "jun : -",
+                            "pobi : --", "woni : --", "jun : --",
+                            "최종 우승자 : pobi, woni, jun"
+                    );
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
         );
     }
 
