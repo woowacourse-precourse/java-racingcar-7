@@ -47,7 +47,7 @@ class CarTest {
     };
     @ParameterizedTest
     @MethodSource("rightNameProvider")
-    @DisplayName("자동차 입력시 Car생성 테스트")
+    @DisplayName("문자열로 이름 입력시 Car생성 테스트")
     void createCarsByNamesSuccessTest(String rightNames, List<Car> expected) {
         //given
         //when
