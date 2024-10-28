@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.constant.ExceptionMessage;
 
 public class Car {
@@ -31,7 +30,7 @@ public class Car {
     }
 
     public void tryMoveForward() {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        int randomNumber = racePolicy.generateRandomNumber();
         if (racePolicy.canMoveForward(randomNumber)) {
             moveForward();
         }
