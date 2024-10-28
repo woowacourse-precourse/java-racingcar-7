@@ -6,13 +6,13 @@ import racingcar.view.ErrorMessage;
 
 public class MovingCountValidator {
 
-    public Long validateMovingCount(String rawMovingCount) {
+    public void validateNotEmpty(String rawMovingCount) {
         if (rawMovingCount == null || rawMovingCount.isBlank()) {
             throw RacingException.from(ErrorMessage.NO_INPUT.getMessage());
         }
+    }
 
-        rawMovingCount = rawMovingCount.stripLeading().stripTrailing();
-
+    public Long validateAndParseMovingCount(String rawMovingCount) {
         try {
             long movingCount = Long.parseLong(rawMovingCount);
 
