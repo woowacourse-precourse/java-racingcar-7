@@ -15,7 +15,7 @@ public class Application {
         String inputCarNames;
         int NumberOfRounds;
         List<String> carNames;
-        List<String> winner;
+        List<String> winners;
 
         //사용자 입력
         inputCarNames = Console.readLine();
@@ -27,7 +27,9 @@ public class Application {
         carNames = splitCarNames(inputCarNames);
         NumberOfRounds = Integer.parseInt(inputNumber);
 
-        winner = playGame(carNames, NumberOfRounds);
+        winners = playGame(carNames, NumberOfRounds);
+
+        printWinner(winners);
     }
 
     public static void validateInput(String inputCarName, String inputNumber) throws IllegalArgumentException {
@@ -42,7 +44,7 @@ public class Application {
 
     public static List<String> playGame(List<String> carNames, int numberOfMoves) {
         LinkedHashMap<String, Integer> carDistanceResults = new LinkedHashMap<>();
-        List<String> winner = new ArrayList<>();
+        List<String> winners = new ArrayList<>();
 
         //LinkedHashMap 초기화
         for (String carName : carNames) {
@@ -66,11 +68,11 @@ public class Application {
         //우승자 결정
         for (String carName : carDistanceResults.keySet()) {
             if (carDistanceResults.get(carName) == maxDistance) {
-                winner.add(carName);
+                winners.add(carName);
             }
         }
 
-        return winner;
+        return winners;
     }
 
     public static void updateDistance(LinkedHashMap<String, Integer> carDistanceResults, String carName, int randomNumber) {
@@ -83,7 +85,6 @@ public class Application {
         for (String carName : carDistanceResults.keySet()) {
             System.out.printf("%s : %s\n", carName, "-".repeat(carDistanceResults.get(carName)));
         }
-        System.out.println();
     }
 
 
@@ -99,5 +100,10 @@ public class Application {
             }
         }
         return carNames;
+    }
+
+    public static void printWinner(List<String> winners) {
+        String result = String.join(", ", winners);
+        System.out.println("최종 우승자 : " + result);
     }
 }

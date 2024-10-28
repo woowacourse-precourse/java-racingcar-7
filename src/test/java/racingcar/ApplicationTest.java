@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,29 +21,15 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 기능_테스트() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("pobi,woni", "1");
-                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-                },
-                MOVING_FORWARD, STOP
-        );
+        assertRandomNumberInRangeTest(() -> {
+            run("pobi,woni", "1");
+            assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+        }, MOVING_FORWARD, STOP);
     }
 
     @Test
     void 입력값_검증_테스트() {
-        assertAll(
-                () -> assertThatThrownBy(() -> Application.validateInput("woni,pobi", "1a"))
-                        .isInstanceOf(IllegalArgumentException.class),
-                () -> assertThatThrownBy(() -> Application.validateInput("", "1"))
-                        .isInstanceOf(IllegalArgumentException.class),
-                () -> assertThatThrownBy(() -> Application.validateInput(null, "1"))
-                        .isInstanceOf(IllegalArgumentException.class),
-                () -> assertThatThrownBy(() -> Application.validateInput("woni,pobi", ""))
-                        .isInstanceOf(IllegalArgumentException.class),
-                () -> assertThatThrownBy(() -> Application.validateInput("woni,pobi", null))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertAll(() -> assertThatThrownBy(() -> Application.validateInput("woni,pobi", "1a")).isInstanceOf(IllegalArgumentException.class), () -> assertThatThrownBy(() -> Application.validateInput("", "1")).isInstanceOf(IllegalArgumentException.class), () -> assertThatThrownBy(() -> Application.validateInput(null, "1")).isInstanceOf(IllegalArgumentException.class), () -> assertThatThrownBy(() -> Application.validateInput("woni,pobi", "")).isInstanceOf(IllegalArgumentException.class), () -> assertThatThrownBy(() -> Application.validateInput("woni,pobi", null)).isInstanceOf(IllegalArgumentException.class));
     }
 
     @Nested
@@ -103,11 +90,43 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+        assertSimpleTest(
+                () -> assertThatThrownBy(
+                        () -> runException("pobi,javaji", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Nested
+    class 우승자_출력 {
+        @Test
+        void 여러_우승자_출력_테스트() {
+            //Given
+            List<String> winners = new ArrayList<>();
+            winners.add("pobi");
+            winners.add("woni");
+
+            //When
+            Application.printWinner(winners);
+
+            //then
+            assertThat(output()).contains("pobi, woni");
+        }
+
+        @Test
+        void 혼자_우승자_출력_테스트() {
+            //Given
+            List<String> winners = new ArrayList<>();
+            winners.add("pobi");
+
+            //When
+            Application.printWinner(winners);
+
+            //then
+            assertThat(output()).contains("pobi");
+        }
+    }
+
 
     @Override
     public void runMain() {
