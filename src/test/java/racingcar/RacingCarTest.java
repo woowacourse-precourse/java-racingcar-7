@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.Assertions;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -61,12 +62,17 @@ public class RacingCarTest{
 
     //moveForward 기능 체크
     @Test
-    @DisplayName("moveForward 예외 처리(거리와 현재 위치 표현에 차이가 있는 경우)")
+    @DisplayName("currentLocation, currentDistance 값을 올바르게 변화시킴")
     void moveForwardTest() {
         RacingCar car = new RacingCar();
-        car.currentDistance = 3;
-        car.currentLocation = "__";
 
-        assertThrows(ArithmeticException.class, () -> car.moveForward());
+        car.currentDistance = 2;
+        car.currentLocation = "__";
+        car.moveForward();
+
+        assertAll(
+                () -> assertEquals("___", car.currentLocation),
+                () -> assertEquals(3, car.currentDistance)
+        );
     }
 }
