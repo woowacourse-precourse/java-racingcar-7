@@ -6,7 +6,7 @@ import racingcar.model.domain.RoundResult;
 import java.util.List;
 
 public class OutputView {
-    public static void printRecord(List<RoundResult> roundResults) {
+    public static void printResult(List<RoundResult> roundResults) {
         for (RoundResult roundResult : roundResults) {
             System.out.print(roundResult + "\n");
         }
