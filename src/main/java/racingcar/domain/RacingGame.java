@@ -13,7 +13,7 @@ public class RacingGame {
         this.tryNumber = tryNumber;
     }
 
-    public void race() {
+    public List<String> race() {
         int nowTry = 0;
         while (tryNumber != nowTry) {
             for (Car car : cars) {
@@ -23,21 +23,11 @@ public class RacingGame {
             System.out.println();
             nowTry++;
         }
-        // 최대 카운트 값을 찾음
         int maxCount = getMaxCount();
-        // 최대 카운트를 가진 우승자들을 찾음
-        List<String> winners = getWinner(maxCount);
-        printWinners(winners);
+        return getWinner(maxCount);
+
     }
 
-    private void printWinners(List<String> winners) {
-
-        if (winners.size() == 1) {
-            System.out.println("최종 우승자 : " + winners.getFirst());
-        } else {
-            System.out.println("최종 우승자 : " + String.join(", ", winners));
-        }
-    }
 
     private List<String> getWinner(int maxCount) {
         List<String> winners = cars.stream()
