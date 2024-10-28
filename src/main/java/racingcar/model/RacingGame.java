@@ -6,8 +6,8 @@ import racingcar.view.RacingCarView;
 
 public class RacingGame {
 
-    private RacingCars racingCars;
-    private int tryNumber;
+    private final RacingCars racingCars;
+    private final int tryNumber;
 
     public RacingGame(RacingCars racingCars, int tryNumber) {
         this.racingCars = racingCars;

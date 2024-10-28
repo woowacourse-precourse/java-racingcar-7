@@ -3,7 +3,6 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.model.Car;
-import racingcar.model.RacingCars;
 
 public class RacingCarView {
 
@@ -33,7 +32,6 @@ public class RacingCarView {
     }
 
     public static void displayMovement(List<Car> cars) {
-
         StringBuilder sb = new StringBuilder();
         cars.forEach(car -> sb.append(car.getName())
                 .append(" : ")

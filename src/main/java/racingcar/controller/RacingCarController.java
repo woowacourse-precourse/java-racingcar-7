@@ -15,7 +15,6 @@ public class RacingCarController {
     }
 
     private RacingGame readyRacingGame(RacingCars racingCars) {
-
         String inputCarNames = RacingCarView.inputCarNames();
         for (final String carName : inputCarNames.split(",")) {
             racingCars.add(new Car(carName));
