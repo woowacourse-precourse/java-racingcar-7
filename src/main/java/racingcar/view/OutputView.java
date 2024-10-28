@@ -27,7 +27,7 @@ public class OutputView {
         }
     }
 
-    public void printRaceResult(RaceResult raceResult) {
+    private void printRaceResult(RaceResult raceResult) {
         List<Car> cars = raceResult.getCars();
 
         for (Car car : cars) {
