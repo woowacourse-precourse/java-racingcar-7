@@ -57,15 +57,8 @@ public class Application {
             OutputView.progressResults(round, carNames, carPositions);
         }
 
-        // 10. 가장 멀리 간 거리를 측정해 최종 우승자 선발
-        List<String> winners = new ArrayList<>();
-        int winnerPosition = Collections.max(carPositions.values());
-
-        for (String carName : carNames) {
-            if (carPositions.get(carName) == winnerPosition) {
-                winners.add(carName);
-            }
-        }
+        // 9. 가장 멀리 간 거리를 측정해 최종 우승자 선발
+        List<String> winners = RacingController.findWinners(carNames, carPositions);
 
         // 11. 최종 우승자의 수에 따라 예시에 맞게 출력
         String result = "최종 우승자 : ";
