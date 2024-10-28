@@ -25,11 +25,6 @@ public class RacingService {
 
         Race race = new Race(carFactory.getCarList(carNames));
 
-        if (raceRequestDTO.getTimes() == 0) {
-            RaceResult raceResult = new RaceResult(new ArrayList<>(List.of(race)));
-            return new RaceResultDTO(raceResult);
-        }
-
         for (long l = 0; l < raceTimes; l++) {
             race = raceEngine.performRace(race);
             races.add(race);

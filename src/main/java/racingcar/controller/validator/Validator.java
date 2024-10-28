@@ -30,7 +30,7 @@ public class Validator {
     }
 
     public static void validateTimeInput(long times) {
-        if (times < 0) {
+        if (times <= 0) {
             throw new IllegalArgumentException(INPUT_TIMES_ERROR.message());
         }
     }
