@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 class InputViewTest {
 
     private ByteArrayOutputStream outputMessage;
-    private final InputView inputView = new InputView();
+    private InputView inputView;
 
     @BeforeEach
     void setUpStreams() {
@@ -36,11 +36,32 @@ class InputViewTest {
         System.setIn(in);
     }
 
-    @DisplayName("InputView_생성_테스트")
+    void setUpInputView(boolean isNameInputViewTest) {
+        if (isNameInputViewTest) {
+            inputView = new NameInputView();
+        }
+
+        if (!isNameInputViewTest) {
+            inputView = new AttemptsInputView();
+        }
+    }
+
+    @DisplayName("AttemptsInputView_생성_테스트")
     @Test
-    public void newInputViewTest() {
+    public void newAttemptsInputViewTest() {
         //given
         //when
+        inputView = new AttemptsInputView();
+        //then
+        assertThat(inputView).isNotNull();
+    }
+
+    @DisplayName("NameInputView_생성_테스트")
+    @Test
+    public void newNameInputViewTest() {
+        //given
+        //when
+        inputView = new NameInputView();
         //then
         assertThat(inputView).isNotNull();
     }
@@ -49,8 +70,9 @@ class InputViewTest {
     @Test
     public void printCarNamesRequestTest() {
         //given
+        setUpInputView(true);
         //when
-        inputView.printCarNamesRequest();
+        inputView.printRequest();
         String printResult = outputMessage.toString().trim();
         //then
         assertThat(printResult).isEqualTo(NAMES_REQUEST_MESSAGE.getMessage());
@@ -60,11 +82,12 @@ class InputViewTest {
     @Test
     public void getCarNamesTest() {
         //given
+        setUpInputView(true);
         String input = "pobi,woni,jun";
         //when
         Console.close();
         setInputStreamsByMyInput(input);
-        String names = inputView.getCarNames();
+        String names = inputView.getInput();
         //then
         assertThat(names).isEqualTo(input);
     }
@@ -73,8 +96,9 @@ class InputViewTest {
     @Test
     public void printNumberOfAttemptsRequestTest() {
         //given
+        setUpInputView(false);
         //when
-        inputView.printNumberOfAttemptsRequest();
+        inputView.printRequest();
         String printResult = outputMessage.toString().trim();
         //then
         assertThat(printResult).isEqualTo(NUMBER_OF_ATTEMPTS_REQUEST_MESSAGE.getMessage());
@@ -85,10 +109,11 @@ class InputViewTest {
     public void getNumberOfAttemptsTest() {
         //given
         String input = "5";
+        setUpInputView(false);
         //when
         Console.close();
         setInputStreamsByMyInput(input);
-        String attempts = inputView.getNumberOfAttempts();
+        String attempts = inputView.getInput();
         //then
         assertThat(attempts).isEqualTo(input);
     }
