@@ -35,12 +35,12 @@ class PlayersTest {
         @Test
         void 최소_인원_미달로_생성_시도() {
             // given
-            final List<Player> emptyPlayers = List.of(Player.of(1L, "p1"));
+            final List<Player> emptyPlayers = List.of();
 
             // expect
             Assertions.assertThatThrownBy(() -> Players.from(emptyPlayers))
                     .isInstanceOf(PlayerUnderstaffedException.class)
-                    .hasMessage("플레이어는 최소 2명 부터 참여할 수 있습니다");
+                    .hasMessage("플레이어는 최소 1명 부터 참여할 수 있습니다");
 
         }
 

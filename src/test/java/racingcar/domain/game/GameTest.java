@@ -45,9 +45,7 @@ class GameTest {
         @Test
         void 최소_플레이어_수_미달로_게임_생성_시도() {
             // given
-            final List<Player> players = List.of(
-                    Player.of(1L, "p1")
-            );
+            final List<Player> players = List.of();
             final int totalRounds = 5;
             MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
             final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
@@ -55,7 +53,7 @@ class GameTest {
             // expect
             Assertions.assertThatThrownBy(() -> Game.start(players, totalRounds, movementPolicy))
                     .isInstanceOf(PlayerUnderstaffedException.class)
-                    .hasMessage("플레이어는 최소 2명 부터 참여할 수 있습니다");
+                    .hasMessage("플레이어는 최소 1명 부터 참여할 수 있습니다");
         }
 
         @DisplayName("최대 라운드 수 초과로 게임 생성 시도")

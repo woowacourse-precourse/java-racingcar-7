@@ -7,6 +7,8 @@ import racingcar.domain.player.Player;
 public record Winners(
         List<String> names
 ) {
+    private static final String WINNERS_DELIMITER = ", ";
+
     public static Winners from(List<Player> players) {
         int maxPosition = findMaxPosition(players);
         return new Winners(
@@ -22,5 +24,10 @@ public record Winners(
                 .mapToInt(Player::getDistanceValue)
                 .max()
                 .orElse(0);
+    }
+
+    // 수정된 부분
+    public String getNames() {
+        return String.join(WINNERS_DELIMITER, names);
     }
 }
