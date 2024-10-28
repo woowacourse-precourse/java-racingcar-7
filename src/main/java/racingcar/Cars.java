@@ -25,7 +25,7 @@ public class Cars extends HashMap<String, Integer> implements Subject {
         for (String name : this.keySet()) {
             isWinner(winnerScore, name, winnerNames);
         }
-        return String.join(",", winnerNames);
+        return String.join(", ", winnerNames);
     }
 
     private void isWinner(int winnerScore, String name, List<String> winnerNames) {
@@ -68,21 +68,10 @@ public class Cars extends HashMap<String, Integer> implements Subject {
     }
 
     @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
-    @Override
     public void notifyObservers() {
         for (Observer observer : observers) {
             observer.updateGoTrial(this);
         }
     }
 
-    @Override
-    public void notifyObserversWinner() {
-        for (Observer observer : observers) {
-            observer.updateWinner(this);
-        }
-    }
 }
