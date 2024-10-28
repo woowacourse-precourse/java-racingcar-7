@@ -64,7 +64,12 @@
   - decideWinner()
 - Game
   - run()
-  - runRound()
+  - runRounds()
+  - initializeCars()
+  - getRoundCount()
+  - moveCars()
+  - displayRoundResults()
+  - displayWinners()
   - isMovable()
 - InputView
   - inputCarNames()

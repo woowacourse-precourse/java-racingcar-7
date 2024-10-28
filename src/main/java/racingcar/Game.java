@@ -23,24 +23,48 @@ public class Game {
     }
 
     public void run() {
+        List<Car> carList = initializeCars();
+        int tryCount = getRoundCount();
+
+        List<RoundHistory> roundHistoryList = runRounds(carList, tryCount);
+
+        displayRoundResults(roundHistoryList);
+        displayWinners(carList);
+    }
+
+    private List<Car> initializeCars() {
         outputView.printCarNameInputMessage();
-        List<Car> carList = carGenerator.generateCars(inputView.inputCarNames());
+        List<String> carNames = inputView.inputCarNames();
+        return carGenerator.generateCars(carNames);
+    }
+
+    private int getRoundCount() {
         outputView.printRoundCountInputMessage();
-        int tryCount = inputView.inputRoundCount();
+        return inputView.inputRoundCount();
+    }
 
+    private List<RoundHistory> runRounds(List<Car> carList, int tryCount) {
         List<RoundHistory> roundHistoryList = new ArrayList<>();
-
-        for(int i = 0; i < tryCount; i++){
-            for (Car car : carList) {
-                if(isMovable(randomNumberGenerator.generate())){
-                    car.move();
-                }
-            }
+        for (int i = 0; i < tryCount; i++) {
+            moveCars(carList);
             roundHistoryList.add(RoundHistory.saveCarPosition(carList));
         }
+        return roundHistoryList;
+    }
 
+    private void moveCars(List<Car> carList) {
+        for (Car car : carList) {
+            if (isMovable(randomNumberGenerator.generate())) {
+                car.move();
+            }
+        }
+    }
+
+    private void displayRoundResults(List<RoundHistory> roundHistoryList) {
         outputView.printRoundResults(roundHistoryList);
+    }
 
+    private void displayWinners(List<Car> carList) {
         List<String> winners = winnerDecider.decideWinner(carList);
         outputView.printWinner(winners);
     }
