@@ -12,11 +12,8 @@ public class CarRace {
         this.attempts = attempts;
     }
 
-    public void startRace() {
-        while (!attempts.isEndGame()) {
-            cars.getCars().forEach(Car::move);
-            attempts.comsumeAttempt();
-        }
+    public void runRace() {
+        cars.getCars().forEach(Car::move);
     }
 
     public List<String> getWinners() {
