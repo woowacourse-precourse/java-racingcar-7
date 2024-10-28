@@ -12,7 +12,7 @@ public class PrintWinner {
             String key = entry.getKey();
             Integer value = entry.getValue();
             if (winnerScore.equals(value))
-                winners.put(entry.getKey(), entry.getValue());
+                winners.put(key, value);
         }
         var result = String.join(", ", winners.keySet());
         System.out.println("최종 우승자 : " + result);
