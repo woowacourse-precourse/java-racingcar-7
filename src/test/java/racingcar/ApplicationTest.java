@@ -33,9 +33,9 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @DisplayName("시도 횟수가 빈값이면 예외 발생")
+    @DisplayName("자동차 이름이 빈값이면 예외 발생")
     @Test
-    void 예외_테스트_자동차_빈값() {
+    void 예외_테스트_자동차이름_빈값() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(null,null))
                         .isInstanceOf(IllegalArgumentException.class)
