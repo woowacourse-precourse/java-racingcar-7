@@ -6,9 +6,7 @@ import racingcar.model.Cars;
 public class RaceOutput {
     private static final String NEW_LINE = "%n"; // 플랫폼에 상관없이 개행 출력가능!
     private static final String PROGRESS = "-";
-    private static final String PROGRESS_FORMAT = "%s : %s";
     private static final String WINNER_SEPARATOR = ", ";
-    private static final String WINNER_FORMAT = "최종 우승자 : %s";
 
     private RaceOutput() {
     }
@@ -25,7 +23,7 @@ public class RaceOutput {
     public static void printProgress(Cars cars) {
         for (Car car : cars.toList()) {
             String progressMessage = String.format(
-                    PROGRESS_FORMAT,
+                    "%s : %s",
                     car.getName(),
                     PROGRESS.repeat(car.countMove())
             );
@@ -36,7 +34,7 @@ public class RaceOutput {
 
     public static void printWinner(Cars cars) {
         String winnersMessage = String.format(
-                WINNER_FORMAT,
+                "최종 우승자 : %s",
                 String.join(WINNER_SEPARATOR, cars.getWinnerNames())
         );
 
