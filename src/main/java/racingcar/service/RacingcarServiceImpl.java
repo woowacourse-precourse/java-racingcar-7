@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.repository.RacingcarRepository;
 import racingcar.validator.CarNameValidator;
@@ -44,5 +45,20 @@ public class RacingcarServiceImpl implements RacingcarService {
         }
 
         return sb.toString();
+    }
+
+    @Override
+    public List<String> findWinners() {
+        var cars = racingcarRepository.getAllCar();
+
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }

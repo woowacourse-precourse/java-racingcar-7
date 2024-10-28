@@ -27,6 +27,9 @@ public class RacingcarController {
             roundResult.add(roundStatus);
         }
         view.displayRoundStatus(roundResult);
+
+        List<String> result = racingcarService.findWinners();
+        view.outputResult(result);
     }
 
 

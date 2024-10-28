@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import java.util.List;
+
 public interface RacingcarService {
 
     void initializeCars(String name);
@@ -8,4 +10,5 @@ public interface RacingcarService {
 
     String getRoundStatus();
 
+    List<String> findWinners();
 }
