@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.common.Limit;
 
 import java.util.random.RandomGenerator;
@@ -19,7 +20,7 @@ public class Car {
     }
 
     private boolean isMove() {
-        int number = RandomGenerator.getDefault().nextInt(Limit.MIN_RANDOM_VALUE, Limit.MAX_RANDOM_VALUE);
+        int number = Randoms.pickNumberInRange(Limit.MIN_RANDOM_VALUE, Limit.MAX_RANDOM_VALUE);
         return number >= Limit.MOVE_CRITERIA_VALUE;
     }
 
