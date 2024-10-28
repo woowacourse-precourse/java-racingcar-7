@@ -1,12 +1,10 @@
 package racingcar.domain;
 
 import java.util.List;
-import racingcar.domain.racer.Racer;
 import racingcar.domain.racer.Racers;
 import racingcar.domain.round.Round;
 import racingcar.domain.round.RoundHistory;
 import racingcar.domain.round.RoundResult;
-import racingcar.domain.round.RoundSnapshot;
 
 public class RacingGame {
 
@@ -29,7 +27,7 @@ public class RacingGame {
     private void recordCurrentRound() {
         this.roundHistory.addRoundSnapshot(
                 round.nowRound(),
-                RoundSnapshot.from(getRacers())
+                this.racers.toRoundSnapshot()
         );
     }
 
@@ -50,10 +48,6 @@ public class RacingGame {
         if (isNotGameOver()) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private List<Racer> getRacers() {
-        return this.racers.racers();
     }
 
 }

@@ -25,7 +25,7 @@ class RoundSnapshotTest {
     @DisplayName("3개의 라운드 정보가 주어질 경우, 승자는 1명이다.")
     void givenRoundSnapshot_whenGetWinners_thenOneWinner() {
         // given
-        RoundSnapshot roundSnapshot = new RoundSnapshot(roundResult);
+        RoundSnapshot roundSnapshot = RoundSnapshot.from(roundResult);
 
         // when
         List<String> result = roundSnapshot.getWinners();
@@ -39,7 +39,7 @@ class RoundSnapshotTest {
     void givenRoundSnapshot_whenGetWinners_thenTwoWinner() {
         // given
         roundResult.add(new RoundResult("car4", 3));
-        RoundSnapshot roundSnapshot = new RoundSnapshot(roundResult);
+        RoundSnapshot roundSnapshot = RoundSnapshot.from(roundResult);
 
         // when
         List<String> result = roundSnapshot.getWinners();

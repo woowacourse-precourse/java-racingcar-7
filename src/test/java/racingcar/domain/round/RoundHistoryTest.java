@@ -22,14 +22,14 @@ class RoundHistoryTest {
         roundResult.add(new RoundResult("car1", 1));
         roundResult.add(new RoundResult("car2", 2));
         roundResult.add(new RoundResult("car3", 3));
-        roundSnapshot = new RoundSnapshot(roundResult);
+        roundSnapshot = RoundSnapshot.from(roundResult);
     }
 
     @Test
     @DisplayName("라운드 정보를 추가 한 경우, 라운드 정보의 상세 내역을 알 수 있다.")
     void givenRoundResultSnapshot_whenAddRoundResult_ThenRoundSnapshotHasSizeThree() {
         // given
-        RoundSnapshot roundSnapshot = new RoundSnapshot(List.of(roundResult.getFirst()));
+        RoundSnapshot roundSnapshot = RoundSnapshot.from(List.of(roundResult.getFirst()));
 
         // when
         roundHistory.addRoundSnapshot(1, roundSnapshot);

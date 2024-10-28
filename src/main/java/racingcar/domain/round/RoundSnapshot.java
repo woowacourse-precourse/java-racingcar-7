@@ -1,20 +1,25 @@
 package racingcar.domain.round;
 
 import java.util.List;
-import racingcar.domain.racer.Racer;
 
-public record RoundSnapshot(List<RoundResult> roundResult) {
+public class RoundSnapshot {
 
-    public static RoundSnapshot from(List<Racer> racers) {
-        List<RoundResult> roundResult = racers.stream()
-                .map(Racer::toRoundResult)
-                .toList();
+    private final List<RoundResult> roundResult;
 
+    private RoundSnapshot(List<RoundResult> roundResult) {
+        this.roundResult = roundResult;
+    }
+
+    public static RoundSnapshot from(List<RoundResult> roundResult) {
         return new RoundSnapshot(roundResult);
     }
 
+    public List<RoundResult> getRoundResult() {
+        return this.roundResult;
+    }
+
     private int extractMaxPosition() {
-        return this.roundResult.stream()
+        return getRoundResult().stream()
                 .mapToInt(RoundResult::position)
                 .max()
                 .orElse(0);
@@ -23,7 +28,7 @@ public record RoundSnapshot(List<RoundResult> roundResult) {
     public List<String> getWinners() {
         int maxPosition = extractMaxPosition();
 
-        return this.roundResult.stream()
+        return getRoundResult().stream()
                 .filter(roundInfo -> roundInfo.position() == maxPosition)
                 .map(RoundResult::carName)
                 .toList();

@@ -17,7 +17,7 @@ public class RoundHistory {
     }
 
     public List<RoundResult> getRoundResult(int round) {
-        return getRoundSnapShot(round).roundResult();
+        return getRoundSnapShot(round).getRoundResult();
     }
 
     public List<String> getWinnersByRound(int round) {
