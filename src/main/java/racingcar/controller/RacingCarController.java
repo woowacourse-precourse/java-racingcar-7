@@ -1,9 +1,7 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import racingcar.dto.UserInputDTO;
 import racingcar.entity.Car;
 import racingcar.entity.Race;
@@ -36,12 +34,7 @@ public class RacingCarController {
         racingView.printRaceBegin();
         for (int i = 0; i < roundCount; i++) {
             race.runSingleRound(this.randomNumberGenerator);
-
-            Map<String, Integer> roundState = new HashMap<>();
-            for (Car car : race.getCars()) {
-                roundState.put(car.getName(), car.getPosition());
-            }
-            racingView.printRoundResult(roundState);
+            racingView.printRoundResult(race.getRaceHistory().getLastRound());
         }
     }
 
