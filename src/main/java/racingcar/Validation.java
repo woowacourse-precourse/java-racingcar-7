@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validation {
@@ -10,12 +13,23 @@ public class Validation {
             throw new IllegalArgumentException("최소 2개 이상의 자동차 이름을 입력해야 합니다.");
         }
         String[] carNames = input.split(",");
+        if (!checkCarNamesUniqueness(carNames)) {
+            throw new IllegalArgumentException("모든 자동차는 서로 다른 이름을 가져야 합니다.");
+        }
         for (String carName : carNames) {
             if (!Pattern.matches(CAR_NAME_INPUT_PATTERN, carName)) {
                 throw new IllegalArgumentException("자동차 이름은 알파벳 대소문자와 숫자로만 이루어져 있어야 하며, 1자 이상 5자 이하여야 합니다.");
             }
         }
         return carNames;
+    }
+
+    private boolean checkCarNamesUniqueness(String[] carNames) {
+        Set<String> uniqueCarNames = new HashSet<>(Arrays.stream(carNames).toList());
+        if (uniqueCarNames.size() == carNames.length) {
+            return true;
+        }
+        return false;
     }
 
     public int validateRoundLimit(String input) {
