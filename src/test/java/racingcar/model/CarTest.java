@@ -1,4 +1,4 @@
-package java.racingcar.model;
+package racingcar.model;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,15 +6,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
-    @Test
-    void getName() {
-    }
 
     @Test
-    void getMove() {
-    }
+    void addMove_Test() {
+        Car car = new Car("TestCar");
 
-    @Test
-    void addMove() {
+        car.addMove();
+        car.addMove();
+        car.addMove();
+
+        assertEquals(3, car.getMove());
     }
 }
