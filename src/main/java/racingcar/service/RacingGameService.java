@@ -25,7 +25,10 @@ public class RacingGameService {
     }
 
     public void moveCars() {
-
+        for (Car car : racingGame.getCars()) {
+            boolean shouldMove = RandomGenerator.shouldMove();
+            car.move(shouldMove);
+        }
     }
 
     public List<Car> getCars() {
