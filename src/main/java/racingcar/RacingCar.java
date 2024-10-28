@@ -22,14 +22,21 @@ public class RacingCar {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNames = Console.readLine().split(",");
         for (String carName : carNames) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+            }
             cars.put(carName, 0);
         }
     }
 
     private int inputTryTimes() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryTimes = Integer.parseInt(Console.readLine());
-        return tryTimes;
+        try {
+            int tryTimes = Integer.parseInt(Console.readLine().trim());
+            return tryTimes;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 아닙니다.");
+        }
     }
 
     private void tryMoving(int tryTimes) {
@@ -53,8 +60,7 @@ public class RacingCar {
             if (cars.get(carName) == highScore) {
                 if (winner.length() > 0) {
                     winner.append(", " + carName);
-                }
-                else
+                } else
                     winner.append(carName);
             }
         }
