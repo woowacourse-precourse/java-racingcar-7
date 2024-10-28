@@ -9,7 +9,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         String[] carNames = getCarNames();
-        Integer attempts = getNumberOfAttempts();
+        int attempts = getNumberOfAttempts();
         List<StringBuilder> raceResults = initializeRaceResults(carNames);
 
         runRace(attempts, carNames, raceResults);
