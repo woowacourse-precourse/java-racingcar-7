@@ -67,6 +67,17 @@ class LapTest {
         }
 
         @Test
+        @DisplayName("시도 횟수가 int 범위를 초과할 경우 IllegalArgumentException을 발생시킨다")
+        void testAttemptsExceedingIntegerRange() {
+            // given
+            String bigIntAttempts = "2147483648";
+
+            // when & then
+            assertThatThrownBy(() -> new Lap(bigIntAttempts))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
         @DisplayName("시도 횟수가 숫자가 아닌 경우 IllegalArgumentException을 발생시킨다")
         void testNonNumericAttempts() {
             // given
