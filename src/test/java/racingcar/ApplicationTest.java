@@ -59,7 +59,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("test1,test2", "99999999999"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(ExceptionMessage.INPUT_INVALID_INTEGER_RANGE.getMessage())
+                        .hasMessage(ExceptionMessage.INPUT_INVALID_POSITIVE_INTEGER_RANGE.getMessage())
         );
     }
 

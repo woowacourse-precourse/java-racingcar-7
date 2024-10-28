@@ -22,8 +22,9 @@ public class InputView {
     public int getPositiveInteger() {
         String input = getString();
         validateDigitFormat(input);
+        validatePositiveIntegerRange(input);
 
-        return toInteger(input);
+        return Integer.parseInt(input);
     }
 
     private void validateDigitFormat(String input) {
@@ -32,11 +33,14 @@ public class InputView {
         }
     }
 
-    private int toInteger(String input) {
+    private void validatePositiveIntegerRange(String input) {
         try {
-            return Integer.parseInt(input);
+            int value = Integer.parseInt(input);
+            if (value == 0) {
+                throw new IllegalArgumentException(ExceptionMessage.INPUT_INVALID_POSITIVE_INTEGER_RANGE.getMessage());
+            }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ExceptionMessage.INPUT_INVALID_INTEGER_RANGE.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_INVALID_POSITIVE_INTEGER_RANGE.getMessage());
         }
     }
 }
