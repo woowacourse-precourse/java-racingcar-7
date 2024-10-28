@@ -12,18 +12,21 @@ public class CarService {
         List<String> raceCars = Arrays.asList(raceCar.split(CAR_DELIMITER));
 
         for (String car : raceCars) {
+            validateName(car);
             cars.add(new Car(car));
         }
 
         return cars;
     }
 
-    public void validateName(String car) {
+    public void validateName(String carName) {
+        if (!isUsableName(carName)) {
+            throw new IllegalArgumentException("자동차 이름이 5자를 초과했습니다.");
+        }
     }
 
-    public boolean isUsableName(/*자동차 이름*/) {
-        // 이름 5자 이하면 true 반환
-        return false;
+    public boolean isUsableName(String carName) {
+        return carName.length() <= 5;
     }
 
 
