@@ -24,4 +24,8 @@ public class OutputController {
         }
         this.outputConsole.printWithLineBreak("");
     }
+
+    public void printWinners(final Winners winners) {
+        this.outputConsole.print(winners.getResult());
+    }
 }
