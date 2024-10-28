@@ -40,24 +40,20 @@ public class MainController {
         printRaceResults();
     }
 
-    // 이름 입력 및 유효성 검증
     private List<String> getValidatedNames() {
         String names = racingCarInputController.getRacingCarNames();
         return racingCarController.validateName(names);
     }
 
-    // 경주 횟수 입력 및 유효성 검증
     private long getValidatedRaceCount() {
         String raceCount = racingCarInputController.getRacingCarRaceCount();
         return racingCarController.validateRaceCount(raceCount);
     }
 
-    // 경주 차 초기화
     private void setupRacingCars(List<String> validatedNames) {
         this.racingCars = racingCarController.setupRacingCars(validatedNames);
     }
 
-    // 경주 진행
     private void runRaceRounds(long validatedRaceCount) {
         racingCarOutputController.startRaceRound();
         IntStream.range(0, (int) validatedRaceCount)
@@ -67,7 +63,6 @@ public class MainController {
                 });
     }
 
-    // 경주 결과 출력
     private void printRaceResults() {
         RacingCars bestDrivers = racingCarController.findBestDriver(racingCars);
         racingCarOutputController.printResult(bestDrivers);

@@ -101,7 +101,7 @@ public class BaseFunctionTest {
         //then
         assertThatThrownBy(() -> service.validateName(hasBlankName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR_BLANK_CAR_NAME);
+                .hasMessageContaining(ERROR_BLANK_INPUT);
     }
 
     @Test

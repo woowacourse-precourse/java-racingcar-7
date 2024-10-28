@@ -25,7 +25,8 @@ public class RacingCarController {
     }
 
     public List<String> validateName(String names) {
-        return validateService.validateName(names);
+        List<String> processingNames = validateService.validateName(names);
+        return validateService.validateDuplicateNames(processingNames);
     }
 
     public long validateRaceCount(String raceCount) {

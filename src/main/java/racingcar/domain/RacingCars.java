@@ -14,7 +14,7 @@ public class RacingCars {
         return racingCars.stream()
                 .mapToLong(RacingCar::getMoveCount)
                 .max()
-                .orElseThrow();
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public RacingCars findBestDriver(long maxMoveCount) {
