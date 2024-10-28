@@ -27,7 +27,7 @@ public class RacingGame {
 
     private void printCurrentPositions() {
         List<Car> cars = carList.getCarList();
-        for (Car car : carList.getCarList()) {
+        for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println();
