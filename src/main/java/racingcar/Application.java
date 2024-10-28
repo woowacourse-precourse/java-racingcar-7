@@ -3,12 +3,16 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         String carNames = getCarNames();
+        validateCarNames(carNames);
         int moveCount = getMoveCount();
-        System.out.println("입력받은 자동차 이름: " + carNames);
-        System.out.println("입력받은 이동 횟수: " + moveCount);
+        RacingGame racingGame = new RacingGame(carNames, moveCount);
+        racingGame.play();
     }
 
     private static String getCarNames() {
@@ -60,5 +64,47 @@ public class Application {
         }
     }
 
+    public static class RacingGame {
+        private final List<Car> cars;
+        private final int moveCount;
 
+        public RacingGame(String carNames, int moveCount) {
+            this.cars = createCars(carNames);
+            this.moveCount = moveCount;
+        }
+
+        private List<Car> createCars(String carNames) {
+            List<Car> cars = new ArrayList<>();
+            for (String name : carNames.split(",")) {
+                cars.add(new Car(name.trim()));
+            }
+            return cars;
+        }
+
+        public void play() {
+            for (int i = 0; i < moveCount; i++) {
+                playRound();
+                System.out.println();
+            }
+            printWinners();
+        }
+
+        private void playRound() {
+            for (Car car : cars) {
+                car.move();
+                System.out.println(car.getPositionDisplay());
+            }
+        }
+
+        private void printWinners() {
+            int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+            List<String> winners = new ArrayList<>();
+            for (Car car : cars) {
+                if (car.getPosition() == maxPosition) {
+                    winners.add(car.getName());
+                }
+            }
+            System.out.println("최종 우승자 : " + String.join(", ", winners));
+        }
+    }
 }
