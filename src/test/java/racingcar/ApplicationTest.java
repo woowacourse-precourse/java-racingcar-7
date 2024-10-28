@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -72,10 +71,10 @@ class ApplicationTest extends NsTest {
 
     @Test
     void validateUniqueCarName_예외_테스트() {
-        String[] carNames = {"Car-1", "Car-1", "Car-2"};
-        application.initializeCarPositions(carNames);
+        String[] duplicateCarNames = {"Car-1", "Car-1", "Car-2"};
+        application.initializeCarPositions(duplicateCarNames);
 
-        assertThatThrownBy(() -> application.validateUniqueCarName(carNames))
+        assertThatThrownBy(() -> application.validateUniqueCarName(duplicateCarNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -100,6 +99,13 @@ class ApplicationTest extends NsTest {
     void validateNameLength_정상_입력_테스트(String name) {
         assertThatCode(() -> application.validateNameLength(name))
                 .doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "!", "a", "아 ", "4$", "  %"})
+    void validateIntInput_예외_테스트(String userInput) {
+        assertThatThrownBy(() -> application.validateIntInput(userInput))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
