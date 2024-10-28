@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RacingCarStarter {
-    private static final RacingCarController racingCarController = new RacingCarController();
+    private final RacingCarController racingCarController = new RacingCarController();
 
     public void start() {
         Map<String, String> carRacingInfo = InputHandler.consoleInput();
