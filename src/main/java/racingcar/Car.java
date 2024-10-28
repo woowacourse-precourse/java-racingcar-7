@@ -18,7 +18,12 @@ public class Car implements Vehicle {
     }
 
     public void printLocation() {
-
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.getName());
+        sb.append(" : ");
+        for (int i = 0; i < location; i++) {
+            sb.append('-');
+        }
     }
 
     public Car(String name, int location) {
