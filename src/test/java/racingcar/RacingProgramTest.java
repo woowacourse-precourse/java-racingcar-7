@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,11 +14,14 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 class RacingProgramTest {
 
     private RacingProgram racingProgram;
+    private ByteArrayOutputStream outputStream;
 
     @BeforeEach
     void setUp(){
         // 테스트마다 새로운 인스턴스 생성
         racingProgram = new RacingProgram();
+        outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream)); //콘솔 출력 캡처를 위해
     }
 
     @Test
@@ -96,6 +101,33 @@ class RacingProgramTest {
         assertThatThrownBy(() -> racingProgram.parseStringToNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 단일_우승자_출력_테스트(){
+        racingProgram.setCars(List.of(
+                new Car("car1", 3),
+                new Car("car2", 4),
+                new Car("car3", 5)
+        ));
+
+        racingProgram.gameResult();
+        String result = outputStream.toString();
+        assertThat(result).isEqualTo("최종 우승자 : car3");
+    }
+
+    @Test
+    void 다중_우승자_출력_테스트(){
+        racingProgram.setCars(List.of(
+                new Car("car1", 3),
+                new Car("car2", 5),
+                new Car("car3", 5)
+        ));
+
+        racingProgram.gameResult();
+        String result = outputStream.toString();
+        assertThat(result).isEqualTo("최종 우승자 : car2, car3");
+    }
+
 
 
 }

@@ -133,4 +133,9 @@ public class RacingProgram {
         return maxDistance;
     }
 
+    //테스트를 위한 setter 메서드
+    void setCars(List<Car> cars){
+        this.cars = cars;
+    }
+
 }

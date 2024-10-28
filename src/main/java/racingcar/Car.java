@@ -15,6 +15,12 @@ public class Car {
         view = "";
     }
 
+    //테스트를 위한 생성자
+    public Car(String carName, int distance){
+        this.carName = carName;
+        this.distance = distance;
+    }
+
     public void playCar(){
         if(Randoms.pickNumberInRange(0,9) >= 4){
             distance++;
