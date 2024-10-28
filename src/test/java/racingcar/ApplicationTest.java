@@ -13,7 +13,7 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트() {
+    void 시도횟수_1일경우_한명의_우승자() {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
@@ -24,10 +24,24 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+    void 시도횟수_2이며_두명의_우승자() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "2");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 시도횟수_2이며_한명의_우승자() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "2");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, STOP, STOP
         );
     }
 
