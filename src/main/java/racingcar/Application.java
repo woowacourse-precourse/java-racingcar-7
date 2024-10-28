@@ -6,21 +6,20 @@ public class Application {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+
         try {
             String[] names = nameInput(scanner);
-            System.out.println("시도할 횟수는 몇 회인가요?");
-            int count = scanner.nextInt();
+            int count = getTryCount(scanner);
             play(names, count);
 
         } catch (IllegalArgumentException e) {
             throw e;
         }
 
-
     }
 
     private static String[] nameInput(Scanner scanner) {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = scanner.nextLine();
         String names[] = input.split(",");
         for (String name : names) {
@@ -29,6 +28,15 @@ public class Application {
             }
         }
         return names;
+    }
+
+    private static int getTryCount(Scanner scanner) {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int count = scanner.nextInt();
+        if (count < 1) {
+            throw new IllegalArgumentException("1 이상의 숫자를 입력해 주세요");
+        }
+        return count;
     }
 
     private static void play(String[] names, int count) {
