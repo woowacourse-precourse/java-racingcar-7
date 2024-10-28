@@ -9,5 +9,6 @@ public class Application {
         CarRacing carRacing = new CarRacing();
         List<String> carNames = carRacing.getCarNames();
         int attempts = carRacing.getRaceAttempts();
+        carRacing.validateCarNames(carNames);
     }
 }

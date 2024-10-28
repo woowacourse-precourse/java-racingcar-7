@@ -38,4 +38,12 @@ public class CarRacing {
             throw new IllegalArgumentException("숫자를 입력해 주세요.");
         }
     }
+    // 자동차 이름의 길이를 검사하는 메서드
+    public void validateCarNames(List<String> carNames) {
+        for (String name : carNames) {
+            if (name.length() > 5 || name.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다.");
+            }
+        }
+    }
 }
