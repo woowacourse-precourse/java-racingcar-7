@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.ErrorMessage.NO_STARTED;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +43,7 @@ public class GameStart {
         }
 
         if (maxMove == 0) {
-            throw new IllegalArgumentException(ErrorMassage.NO_STARTED.getMessage());
+            throw new IllegalArgumentException(NO_STARTED.getMessage());
         }
         return maxMove;
     }

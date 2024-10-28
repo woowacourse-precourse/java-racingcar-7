@@ -1,6 +1,6 @@
 package racingcar;
 
-public enum ErrorMassage {
+public enum ErrorMessage {
     NULL_NAME("공백의 이름이 존재합니다. 올바르게 입력해 주세요"),
     LENGTH_EXCEEDED("5자 이하로 작성해야 합니다."),
     REQUIRED_PLAYER("플레이어가 2명 이상이여야 합니다."),
@@ -12,7 +12,7 @@ public enum ErrorMassage {
 
     private final String message;
 
-    ErrorMassage(String message) {
+    ErrorMessage(String message) {
         this.message = message;
     }
 

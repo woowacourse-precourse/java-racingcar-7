@@ -1,16 +1,15 @@
 package racingcar;
 
-
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        String input = IOHandler.inputMessage();
+        String inputName = IOHandler.inputName();
+        DataValidator.validateName(inputName);
+        String inputTryCount = IOHandler.inputTryCount();
+        int tryCount = DataValidator.validateTryCount(inputTryCount);
 
-        DataValidator.validateName(input);
-        int tryCount = DataValidator.validateTryCount(IOHandler.inputTryCount());
-
-        List<RacingCar> racingCarList = DataParser.createRacingCar(input);
+        List<RacingCar> racingCarList = DataParser.createRacingCar(inputName);
         GameStart.run(racingCarList, tryCount);
     }
 }
