@@ -14,7 +14,7 @@ public class InputHandler {
         System.out.println(CAR_NAME_INPUT_MESSAGE.getMessage());
 
         String input = Console.readLine();
-        return Arrays.stream(input.split(",")).toList();
+        return Arrays.stream(input.split(DELIMITER)).toList();
     }
 
     public String getRoundSize() {
