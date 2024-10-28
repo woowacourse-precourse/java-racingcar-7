@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import racingcar.model.Car;
 import racingcar.model.RacingCars;
 import racingcar.service.RacingService;
@@ -43,10 +44,17 @@ public class RacingController {
     private void progressGame() {
         int rounds = inputView.getRound();
         outputView.printRaceStart();
-        for (int i = 0; i < rounds; i++) {
-            RacingCars racingCars = racingService.playRound();
-            outputView.printRaceStatus(racingCars);
-        }
+        runRounds(rounds);
+    }
+
+    private void runRounds(int rounds) {
+        IntStream.range(0, rounds)
+                .forEach(i -> runSingleRound());
+    }
+
+    private void runSingleRound() {
+        RacingCars racingCars = racingService.playRound();
+        outputView.printRaceStatus(racingCars);
     }
 
     private void finalizeGame() {
