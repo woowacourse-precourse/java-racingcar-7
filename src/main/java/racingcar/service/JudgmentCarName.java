@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import static racingcar.common.Constants.LIMIT_NUMBER;
+
 import racingcar.domain.Car;
 
 import java.util.List;
@@ -16,7 +18,7 @@ public class JudgmentCarName {
 	}
 
 	public boolean judgmentCarNameLength(String carName) {
-		return carName.length() < 6 && !carName.isEmpty();
+		return carName.length() < LIMIT_NUMBER && !carName.isEmpty();
 	}
 
 	public boolean duplicateCheck(List<Car> cars) {

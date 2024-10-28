@@ -1,5 +1,8 @@
 package racingcar.controller;
 
+import static racingcar.common.Constants.INIT_NUMBER;
+
+import racingcar.common.Constants;
 import racingcar.domain.Car;
 import racingcar.service.JudgmentCarName;
 import racingcar.service.MovementCondition;
@@ -31,7 +34,7 @@ public class CarController {
 	}
 
 	public void carMovementProcess(List<Car> cars, int cnt) {
-		for (int i = 0; i < cnt; i++) {
+		for (int i = INIT_NUMBER; i < cnt; i++) {
 			cars.forEach(this::carMovement);
 			System.out.println();
 		}

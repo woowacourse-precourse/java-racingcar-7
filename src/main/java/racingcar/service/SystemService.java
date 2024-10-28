@@ -1,5 +1,12 @@
 package racingcar.service;
 
+import static racingcar.common.Constants.INIT_NUMBER;
+import static racingcar.common.Message.CAR_MOVEMENT;
+import static racingcar.common.Message.SEPARATE_COL;
+import static racingcar.common.Message.SEPARATE_COM;
+import static racingcar.common.Message.SEPARATE_COM_SPACE;
+import static racingcar.common.Message.WINNER_MESSAGE;
+
 import racingcar.domain.Car;
 
 import java.util.Arrays;
@@ -14,7 +21,7 @@ public class SystemService {
 	private SystemService() {}
 
 	public List<Car> splitCarsString(String carsName) {
-		return Arrays.stream(carsName.split(","))
+		return Arrays.stream(carsName.split(SEPARATE_COM))
 				.map(String::trim)
 				.map(this::generateCar)
 				.collect(Collectors.toList());
@@ -29,10 +36,10 @@ public class SystemService {
 	}
 
 	public void printCarMovement(Car car) {
-		System.out.print(car.getCarName() + " : ");
+		System.out.print(car.getCarName() + SEPARATE_COL);
 
-		for (int i = 0; i < car.getMovement(); i++) {
-			System.out.print("-");
+		for (int i = INIT_NUMBER; i < car.getMovement(); i++) {
+			System.out.print(CAR_MOVEMENT);
 		}
 
 		System.out.println();
@@ -48,15 +55,15 @@ public class SystemService {
 		return cars.stream()
 				.mapToInt(Car::getMovement)
 				.max()
-				.orElse(0);
+				.orElse(INIT_NUMBER);
 	}
 
 	public void printWinner(List<Car> cars) {
 		String winner = getWinner(cars).stream()
 				.map(Car::getCarName)
-				.collect(Collectors.joining(", "));
+				.collect(Collectors.joining(SEPARATE_COM_SPACE));
 
-		System.out.print("최종 우승자 : " + winner);
+		System.out.print(WINNER_MESSAGE + winner);
 	}
 
 	public static SystemService getInstance() {

@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.common.Constants.INIT_NUMBER;
+
 public class Car {
 
 	private final String carName;
@@ -7,7 +9,7 @@ public class Car {
 
 	public Car(String carName) {
 		this.carName = carName;
-		this.movementDistance = 0;
+		this.movementDistance = INIT_NUMBER;
 	}
 
 	public void movement() {
