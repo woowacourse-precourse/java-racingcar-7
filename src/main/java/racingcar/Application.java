@@ -49,6 +49,13 @@ public class Application {
         }
     }
 
+    private static void displayRoundResults(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + car.getPositionDisplay());
+        }
+        System.out.println();
+    }
+
     private static class Car {
         private final String name;
         private int position;
