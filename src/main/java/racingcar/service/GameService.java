@@ -58,10 +58,6 @@ public class GameService {
         }
     }
 
-    private int generateRandomInRange() {
-        return Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
-    }
-
     public void runGame() {
         carMap.replaceAll((key, value) -> 0); // 게임 시작시 모든 자동차 출발선(0)으로 초기화
         record = new ArrayList<>();
@@ -69,7 +65,7 @@ public class GameService {
         int randomNumber;
         for (int cnt = 0; cnt < gameCount; cnt++) {
             for (String car: carMap.keySet()) {
-                randomNumber = generateRandomInRange();
+                randomNumber = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
                 move(car, randomNumber);
             }
             record.add(getCars()); // 게임 판마다 진행상황 저장
