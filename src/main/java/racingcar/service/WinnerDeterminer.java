@@ -7,22 +7,22 @@ import java.util.List;
 
 public class WinnerDeterminer {
 
-    private WinnerDeterminer() {
+    public WinnerDeterminer() {
     }
 
-    public static List<Car> determineWinner(List<Car> carsAtFinish) {
+    public List<Car> determineWinner(List<Car> carsAtFinish) {
         int maxPosition = getMaxPositionInCars(carsAtFinish);
         return getCarsAtMaxPosition(carsAtFinish, maxPosition);
     }
 
-    private static int getMaxPositionInCars(List<Car> cars) {
+    private int getMaxPositionInCars(List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    private static List<Car> getCarsAtMaxPosition(List<Car> cars, int maxPosition) {
+    private List<Car> getCarsAtMaxPosition(List<Car> cars, int maxPosition) {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();
