@@ -82,8 +82,4 @@
     * `boolean isSingleWinner(List<Car> winners)` : 우승자가 한 명인지 여부를 반환
     * `String getWinnerNames(List<Car> winners)` : 단일 우승자이면 이름만 출력, 공동 우승자이면 쉼표로 구분하여 문자열 반환
 
-### 5. GameResultPrinter 클래스
-* 메서드
-    * `void printRoundResult(List<Car> cars)` : 각 라운드 별 결과 출력
-    * `void printWinners(List<Car> cars)` : 우승자들 출력
 
