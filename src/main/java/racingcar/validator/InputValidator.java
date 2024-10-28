@@ -4,6 +4,8 @@ import racingcar.exception.ErrorMessage;
 
 public class InputValidator {
 
+    private static final String CAR_OUTPUT_PATTERN = "-?\\d+";
+
     public void validateIsEmpty(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_NAME.getMessage());
@@ -23,7 +25,7 @@ public class InputValidator {
     }
 
     private void validateNumeric(String input) {
-        if (!input.matches("-?\\d+")) {
+        if (!input.matches(CAR_OUTPUT_PATTERN)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_ATTEMPT_COUNT_FORMAT.getMessage());
         }
     }
