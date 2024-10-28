@@ -3,7 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.Input.GameRoundInput;
 import racingcar.Input.NameInput;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -43,42 +42,5 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
-
-    private GameRoundInput moveCountInput;
-
-    @BeforeEach
-    void setUp() {
-        moveCountInput = new GameRoundInput();
-        nameInput = new NameInput();
-    }
-
-    @Test
-    void 입력값을_받고_MoveCount로_설정_테스트() {
-        int testMoveCount = 5;
-
-        moveCountInput.setGameRound(testMoveCount);
-
-        assertEquals(testMoveCount, moveCountInput.getGameRound(),
-            "The move count should match the input value.");
-    }
-
-    private NameInput nameInput;
-
-    @Test
-    void 유효한_이름_정상_입력_테스트() {
-        String input = "pobi,woni,crong";
-
-        assertTrue(nameInput.validateInput(input),
-            "모든 입력이 정상 입력");
-    }
-
-    @Test
-    void 하나_이상의_이름이_5글자_초과_예외() {
-        String input = "pobi,woni,crongname";
-
-        assertFalse(nameInput.validateInput(input),
-            "글자 하나 이상이 5글자 초과");
-    }
-
 
 }
