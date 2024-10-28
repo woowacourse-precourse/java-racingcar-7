@@ -8,7 +8,7 @@ import racingcar.constant.ErrorMessage;
 
 public class Validation {
     public void isNameLengthValid(String playerName) {
-        if (playerName.length() >= Constant.MAX_CAR_NAME_LENGTH) {
+        if (playerName.length() > Constant.MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_CAR_NAME_LENGTH);
         }
     }

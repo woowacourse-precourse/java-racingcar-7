@@ -1,7 +1,7 @@
 package racingcar.constant;
 
 public class ErrorMessage {
-    public static final String ERROR_CAR_NAME_LENGTH = "플레이어의 이름은 5자 이상이 될 수 없습니다.";
+    public static final String ERROR_CAR_NAME_LENGTH = "플레이어의 이름은 5자를 넘을 수 없습니다.";
     public static final String ERROR_MIN_CAR_COUNT = "플레이어의 수는 최소 2대 이상 이여야 합니다.";
     public static final String ERROR_CAR_NAME_DUPLICATED = "플레이어의 이름은 중복될 수 없습니다.";
     public static final String ERROR_PLAYER_BLANK = "플레이어 입력 값은 공백이 될 수 없습니다.";
