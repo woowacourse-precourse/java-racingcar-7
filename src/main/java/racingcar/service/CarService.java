@@ -40,5 +40,21 @@ public class CarService {
         }
     }
 
+    public CarList getCarlist() {
+        return carList;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
+
+    public void setMoveCount(int moveCount) {
+        if (moveCount < 1) {
+            throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 합니다.");
+        }
+        this.moveCount = moveCount;
+    }
+
+
 
 }
