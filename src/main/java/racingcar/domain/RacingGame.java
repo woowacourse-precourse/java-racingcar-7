@@ -5,8 +5,10 @@ import java.util.List;
 public class RacingGame {
 
     private final InputHandler inputHandler;
+    private final OutputHandler outputHandler;
 
     public RacingGame() {
+        this.outputHandler = new OutputHandler();
         this.inputHandler = new InputHandler();
     }
 
@@ -15,6 +17,8 @@ public class RacingGame {
         List<String> carNames = inputHandler.getCarNames();
         int attempts = inputHandler.getNumberOfAttempts();
 
-        //
+        // 게임 실행
+        GameExecutor gameExecutor = new GameExecutor(carNames, attempts, outputHandler);
+        gameExecutor.execute();
     }
 }
