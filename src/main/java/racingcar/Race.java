@@ -39,6 +39,14 @@ public class Race {
         } catch (Exception exception) {
             throw new IllegalArgumentException();
         }
+        return naturalNumberVaild(num);
+    }
+
+    private int naturalNumberVaild(int num) {
+        if (num < 1) {
+            throw new IllegalArgumentException();
+        }
+
         return num;
     }
 }

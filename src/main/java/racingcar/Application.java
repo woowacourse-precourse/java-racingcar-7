@@ -9,6 +9,8 @@ public class Application {
         System.out.println("시도 횟수는 몇 회인가요?");
         String tryCount = Console.readLine();
 
+        Race race = new Race(carNames, tryCount);
+
         Console.close();
     }
 }
