@@ -5,7 +5,7 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        validateName(name);
+        InputValidator.validateCarName(name);
         this.name = name;
         this.position = 0;
     }
@@ -22,9 +22,4 @@ public class Car {
         this.position++;
     }
 
-    private void validateName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException();
-        }
-    }
 }

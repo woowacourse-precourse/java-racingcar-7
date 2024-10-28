@@ -10,13 +10,13 @@ public class OutputView {
         this.raceWinner = raceWinner;
     }
 
-    public void startGame(List<Car> carList, int tryCount) {
+    public void startGame(List<Car> carList, int tryCount, MoveConstraints moveConstraints) {
         System.out.println();
         System.out.println("실행 결과");
 
         for (int i = 0; i < tryCount; i++) {
             for (Car car: carList) {
-                Validator.forwardOrStop(car);
+                moveConstraints.forwardOrStop(car);
             }
             printMovingCar(carList);
         }

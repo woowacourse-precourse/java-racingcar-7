@@ -4,11 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumber {
 
-    private static int getNumberInRange() {
-        return Randoms.pickNumberInRange(0, 9);
-    }
+    private static final int MIN_NUMBER = 0;
+    private static final int MAX_NUMBER = 9;
 
-    public static boolean isMoreThanFour() {
-        return getNumberInRange() >= 4;
+    public int generate() {
+        return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 }
