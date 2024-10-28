@@ -18,7 +18,6 @@ public class RaceService {
     }
 
     public int createRandomNumber() {
-        // 생성한 무작위 숫자 반환
         return Randoms.pickNumberInRange(0, 9);
     }
 
