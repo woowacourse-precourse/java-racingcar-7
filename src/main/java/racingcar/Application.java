@@ -101,7 +101,7 @@ public class Application {
 
     public static Map<String, Integer> initCarPosition(List<String> carNames) {
 
-        Map<String, Integer> cars = new HashMap<>();
+        Map<String, Integer> cars = new LinkedHashMap<>();
 
         carNames.forEach(carName -> {
             cars.putIfAbsent(carName, 0);
