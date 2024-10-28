@@ -39,6 +39,19 @@ public class RacingManager {
         }
     }
 
+    public void presentWinner() {
+        int max = cars.stream().mapToInt(car -> car.getForward()).max().orElse(0);
+
+        List<String> winners = new ArrayList<>();
+
+        for(Car car : cars){
+            if (car.getForward() == max) {
+                winners.add(car.getName());
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
     private void isDuplicatedName(String carName) {
         if (cars.stream().anyMatch(car -> car.getName().equals(carName))) {
             throw new IllegalArgumentException("자동차 이름은 중복이 안됩니다.");
