@@ -34,17 +34,12 @@ public class RacingModel {
     // 우승자 결정
     public String getWinners() {
         int maxDistance = calculateMaxDistance();
-        StringBuilder winners = new StringBuilder();
-        for (Car car : cars) {
-            if (car.getDistance() == maxDistance) {
-                if (winners.length() > 0) {
-                    winners.append(", ");
-                }
-                winners.append(car.getName());
-            }
-        }
+        List<String> winner = cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
 
-        return winners.toString();
+        return String.join(",", winner);
     }
 
 
