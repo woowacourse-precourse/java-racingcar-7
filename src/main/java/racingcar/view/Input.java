@@ -21,12 +21,12 @@ public class Input {
     }
 
     private static void checkInput(String input) {
-        if(input == null || input.trim().isEmpty())
+        if (input == null || input.trim().isEmpty())
             throw new IllegalArgumentException("빈 문자열입니다.");
     }
 
     private static void checkCarName(List<String> carNames) {
-        for(String carName : carNames) {
+        for (String carName : carNames) {
             checkInput(carName);
             checkCarNameLength(carName);
         }
@@ -43,12 +43,12 @@ public class Input {
     }
 
     private static void checkCarNameLength(String carName) {
-        if(carName.length() > 5)
+        if (carName.length() > 5)
             throw new IllegalArgumentException("각 이름은 5자 이하여야 합니다.: " + carName);
     }
 
     private static void checkRoundCountPositive(int roundCount) {
-        if(roundCount <= 0)
+        if (roundCount <= 0)
             throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.: " + roundCount);
     }
 }

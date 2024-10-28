@@ -24,7 +24,7 @@ public class Controller {
         cars = new Cars(carNames);
         race = new Race(roundCount);
         System.out.println("실행 결과");
-        while(race.getRoundCount() > 0) {
+        while (race.getRoundCount() > 0) {
             race.roundMove(cars);
             Output.printRoundResult(cars);
         }

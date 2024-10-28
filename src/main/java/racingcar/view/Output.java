@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Output {
     public static void printRoundResult(Cars cars) {
-        for(Car car : cars.getCarList()) {
+        for (Car car : cars.getCarList()) {
             System.out.print(car.getName() + " : ");
             printDash(car.getPosition());
             System.out.println();
@@ -20,16 +20,16 @@ public class Output {
         RaceResult raceResult = new RaceResult();
         List<Car> winner = raceResult.getWinner(cars);
         int winnerCount = 0;
-        for(Car car : winner) {
+        for (Car car : winner) {
             System.out.print(car.getName());
             winnerCount++;
-            if(winnerCount < winner.size())
+            if (winnerCount < winner.size())
                 System.out.print(", ");
         }
     }
 
     private static void printDash(int count) {
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
             System.out.print("-");
     }
 }

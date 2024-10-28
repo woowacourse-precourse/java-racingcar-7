@@ -7,8 +7,8 @@ public class RaceResult {
     public List<Car> getWinner(Cars cars) {
         int maxDistance = getMaxDistance(cars);
         List<Car> winner = new ArrayList<>();
-        for(Car car : cars.getCarList()) {
-            if(car.getPosition() == maxDistance)
+        for (Car car : cars.getCarList()) {
+            if (car.getPosition() == maxDistance)
                 winner.add(car);
         }
         return winner;
@@ -16,8 +16,8 @@ public class RaceResult {
 
     private int getMaxDistance(Cars cars) {
         int maxDistance = 0;
-        for(Car car : cars.getCarList()) {
-            if(car.getPosition() > maxDistance)
+        for (Car car : cars.getCarList()) {
+            if (car.getPosition() > maxDistance)
                 maxDistance = car.getPosition();
         }
         return maxDistance;

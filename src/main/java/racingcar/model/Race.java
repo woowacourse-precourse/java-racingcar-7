@@ -15,13 +15,13 @@ public class Race {
     }
 
     public void roundMove(Cars cars) {
-        for(Car car : cars.getCarList())
+        for (Car car : cars.getCarList())
             moveCheck(car);
         minusRoundCount();
     }
 
     private void moveCheck(Car car) {
-        if(random.getRandom() >= 4)
+        if (random.getRandom() >= 4)
             car.move();
     }
 
