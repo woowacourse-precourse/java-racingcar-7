@@ -39,7 +39,7 @@ public class RacingGame {
         return currentRound < tryCount;
     }
 
-    public RaceRound playRound() {
+    public void playRound() {
         for (Car car : cars) {
             int randomValue = randomNumberGenerator.generateNumber(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
             car.move(randomValue);
@@ -49,7 +49,6 @@ public class RacingGame {
                 .collect(Collectors.toList());
         racingResults.add(new RacingResult(currentResults));
         currentRound++;
-        return new RaceRound(currentRound);
     }
     public List<List<String>> getAllRoundResults() {
         return racingResults.stream()
