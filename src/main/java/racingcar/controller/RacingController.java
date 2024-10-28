@@ -3,14 +3,13 @@ package racingcar.controller;
 import racingcar.model.Racing;
 import racingcar.view.OutputView;
 
-import static racingcar.view.InputView.inputAttempts;
-import static racingcar.view.InputView.inputCars;
+import static racingcar.view.InputView.*;
 
 
 public class RacingController {
     public static void run() {
-        String[] cars = inputCars();
-        int attempts = inputAttempts();
+        String[] cars = parseCars(inputCars());
+        int attempts = parseAttempts(inputAttempts());
 
         Racing racing = new Racing(cars, attempts);
 
