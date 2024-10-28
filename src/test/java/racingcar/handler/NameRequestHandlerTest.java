@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static racingcar.message.ErrorMessage.*;
 
 public class NameRequestHandlerTest {
@@ -45,14 +47,14 @@ public class NameRequestHandlerTest {
     @DisplayName("이름이 1글자 이상, 5글자 이하인 경우")
     @Test
     public void namesLengthValidateTest() {
-        Assertions.assertThatCode(() -> nameRequestHandler.validateNames(new String[]{"영선", "이영선차", "자동차"}))
+        Assertions.assertThatCode(() -> nameRequestHandler.validateNames(List.of("영선", "이영선차", "자동차")))
                 .doesNotThrowAnyException();
     }
 
     @DisplayName("이름이 빈 문자열인 경우")
     @Test
     public void nameBlankValidateTest() {
-        Assertions.assertThatCode(() -> nameRequestHandler.validateNames(new String[]{"영선", "", "자동차"}))
+        Assertions.assertThatCode(() -> nameRequestHandler.validateNames(List.of("영선", "", "자동차")))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(NAME_LENGTH_ERROR.getMessage());
     }
@@ -60,7 +62,7 @@ public class NameRequestHandlerTest {
     @DisplayName("이름이 6글자 이상인 경우")
     @Test
     public void validateNamesWithExcessiveLength() {
-        Assertions.assertThatCode(() -> nameRequestHandler.validateNames(new String[]{"영선", "이영선차123", "자동차"}))
+        Assertions.assertThatCode(() -> nameRequestHandler.validateNames(List.of("영선", "이영선차123", "자동차")))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(NAME_LENGTH_ERROR.getMessage());
     }

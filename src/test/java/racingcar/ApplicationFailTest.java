@@ -50,7 +50,7 @@ public class ApplicationFailTest extends NsTest {
     @Test
     void namesDuplicateException() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,pobi,java, 52"))
+                assertThatThrownBy(() -> runException("pobi,pobi,java", "52"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(NAME_DUPLICATE_ERROR.getMessage())
         );
