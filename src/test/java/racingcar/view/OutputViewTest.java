@@ -31,13 +31,15 @@ class OutputViewTest {
     @Test
     void 우승자_두명_이상_출력_확인() {
         outputView.printWinner(List.of("pobi", "james"));
-        assertThat(outputStream.toString()).isEqualTo("최종 우승자 : pobi, james\n");
+        assertThat(outputStream.toString())
+                .isEqualTo("최종 우승자 : pobi, james\n");
     }
 
     @Test
     void 우승자_한명_일때_출력_확인(){
         outputView.printWinner(List.of("pobi"));
-        assertThat(outputStream.toString()).isEqualTo("최종 우승자 : pobi\n");
+        assertThat(outputStream.toString())
+                .isEqualTo("최종 우승자 : pobi\n");
     }
 
     @Test
