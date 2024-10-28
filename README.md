@@ -1,6 +1,40 @@
 # java-racingcar-precourse
 
+About 2nd pre-course project
+
 ## 📁 디렉토리 구조
+
+```
+racingcar
+├── controller
+│   └── RacingController.java
+├── dto
+│   ├── InputRequest.java
+│   └── OutputResponse.java
+├── error
+│   ├── CarNameException.java
+│   └── RoundException.java
+├── message
+│   ├── ErrorMessage.java
+│   ├── InputMessage.java
+│   ├── OutputMessage.java
+│   ├── PatternMessage.java
+│   └── SeparatorPattern.java
+├── model
+│   ├── Car.java
+│   ├── Cars.java
+│   └── RacingCars.java
+├── service
+│   └── RacingService.java
+├── util
+│   ├── MoveStrategy.java
+│   ├── RandomMoveStrategy.java
+│   └── RandomNumberGenerator.java
+└── view
+│   ├── InputView.java
+│   └── OutputView.java
+└── Application
+```
 
 ---
 
