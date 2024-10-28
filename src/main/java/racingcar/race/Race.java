@@ -32,8 +32,10 @@ public class Race {
 
 	private int readRound() {
 		System.out.println("시도할 횟수는 몇 회인가요?");
+
 		String strRound = Console.readLine();
 		IOValidator.validateNaturalNumber(strRound);
+
 		return Integer.parseInt(strRound);
 	}
 }
