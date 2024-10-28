@@ -8,10 +8,10 @@ import racingcar.util.RandomNumber;
 
 public class Race {
 
-    private final List<Car> cars;
-    private final int tryCount;
     private final static int VALIDATE_NEGATIVE_NUMBER = 0;
 
+    private final List<Car> cars;
+    private final int tryCount;
 
     public Race(List<Car> cars, int tryCount) {
         validateTryCount(tryCount);
