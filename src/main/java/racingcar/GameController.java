@@ -24,8 +24,7 @@ public class GameController {
         referee = RaceReferee.from(round);
 
         while(round > 0) {
-            int randomNum = Randoms.pickNumberInRange(0, 9);
-            playRound(cars, randomNum);
+            playRound(cars);
             --round;
         }
 
@@ -33,8 +32,11 @@ public class GameController {
         outputView.printRacingWinners(winners);
     }
 
-    private void playRound(List<Car> cars, int randomNum) {
-        cars.forEach(car -> car.move(randomNum));
+    private void playRound(List<Car> cars) {
+        cars.forEach(car -> {
+            int randomNum = Randoms.pickNumberInRange(0, 9);
+            car.move(randomNum);
+        });
         outputView.printMovingCarsWithPositions(cars);
     }
 
