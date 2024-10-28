@@ -1,0 +1,32 @@
+package racingcar.model.domain;
+
+import org.junit.jupiter.api.Test;
+import racingcar.model.infrastructure.Car;
+import racingcar.model.infrastructure.CarMoveDecider;
+import racingcar.model.infrastructure.CarRace;
+import racingcar.model.infrastructure.RaceRule;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+class RaceFindTest {
+    @Test
+    void 우승자조회테스트() {
+        // given
+        Decider carMoveDecider = CarMoveDecider.getInstance();
+        List<Car> cars = List.of(new Car("name1", 1, carMoveDecider),
+                new Car("name2", 2, carMoveDecider),
+                new Car("name3", 3, carMoveDecider));
+        Race race = new CarRace(1, cars,new RaceRule());
+
+        // when
+        System.out.println("=====Logic Start=====");
+
+        List<String> winners = race.findWinners();
+
+        System.out.println("=====Logic End=====");
+        // then
+        assertThat(winners.size()).isOne();
+    }
+}
