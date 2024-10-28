@@ -26,5 +26,7 @@ public class RacingCarController {
             racingCarService.startRace();
             outputView.displayRaceStatus(racingCarService.getCarList());
         }
+
+        racingCarService.findWinners();
     }
 }
