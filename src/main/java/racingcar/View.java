@@ -3,11 +3,14 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class View {
     private final GameController gameController;
     private Model model;
+
+    private int tryCount;
 
     public void input() {
 
@@ -16,18 +19,43 @@ public class View {
         String[] carNames = line.split(",");
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryCount = Integer.parseInt(Console.readLine());
+        tryCount = Integer.parseInt(Console.readLine());
 
         RequestDto requestDto = new RequestDto(carNames, tryCount);
         gameController.playGame(requestDto);
     }
 
-    public void output(){
-
+    public void output() {
         model = gameController.getResult();
-        Map<String, ArrayList<Integer>> carMap;
+        Map<String, ArrayList<Integer>> carMap = model.getCarMap();
+        List<String> winner = model.getWinner();
 
+        printRaceRounds(tryCount, carMap);
+        printWinners(winner);
+    }
 
+    private void printRaceRounds(int maxRounds, Map<String, ArrayList<Integer>> carMap) {
+        for (int round = 0; round < maxRounds; round++) {
+            printRoundResult(round, carMap);
+            System.out.println();  // 각 라운드마다 줄 바꿈
+        }
+    }
+
+    private void printRoundResult(int round, Map<String, ArrayList<Integer>> carMap) {
+
+        for (Map.Entry<String, ArrayList<Integer>> entry : carMap.entrySet()) {
+            String name = entry.getKey();
+            ArrayList<Integer> moves = entry.getValue();
+
+            System.out.print(name + " : ");
+            int moveCount = (round < moves.size()) ? moves.get(round) : 0;
+            System.out.println("-".repeat(moveCount));
+        }
+
+    }
+
+    private void printWinners(List<String> winner) {
+        System.out.println("최종 우승자: " + String.join(", ", winner));
     }
 
     public View(){

@@ -22,6 +22,8 @@ public class CarService {
     }
 
     public void doGameTotalSet(String[] carNames, int tryCount){
+
+        setCars(carNames);
         for(int i = 0; i < tryCount; i++){
             doGameOneSet(carNames);
         }
