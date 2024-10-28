@@ -13,6 +13,12 @@ public class Car {
         this.name = name;
     }
 
+    public Car(String name, int position) {
+        validateName(name);
+        this.name = name;
+        this.position = position;
+    }
+
     private void validateName(String name) {
         if (name.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다");
