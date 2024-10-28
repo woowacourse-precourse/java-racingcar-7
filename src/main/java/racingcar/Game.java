@@ -1,20 +1,79 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
 
-    private final String[] cars;
+    private final String[] carNames;
     private final int count;
+    private final List<Car> cars = new ArrayList<>();
+    private final List<String> winners = new ArrayList<>();
 
-    public Game(String[] cars, int count) {
-        this.cars = cars;
+    public Game(String[] carNames, int count) {
+        this.carNames = carNames;
         this.count = count;
     }
 
-    public void start() {
-
+    public List<String> run() {
+        makeCars();
+        start();
+        return winners;
     }
 
     private void makeCars() {
-        for ()
+        for (String carName : carNames) {
+            Car car = new Car(carName);
+            cars.add(car);
+        }
+    }
+
+    private void start() {
+        int currentCnt = 0;
+        while (currentCnt < count) {
+            playTurn();
+            printCars();
+            currentCnt++;
+        }
+        findWinners();
+    }
+
+    private void playTurn() {
+        for (Car car : cars) {
+            int num = Randoms.pickNumberInRange(0, 9);
+            if (num >= 4) {
+                car.move();
+            } else {
+                car.stop();
+            }
+        }
+    }
+
+    private void printCars() {
+        for (Car car : cars) {
+            System.out.println(car.getCarName() + " : " + "-".repeat(car.getDistance()));
+        }
+        System.out.println();
+    }
+
+    private void findWinners() {
+        int maxDistance = findMaxDistance();
+        for (Car car : cars) {
+            if (car.getDistance() == maxDistance) {
+                winners.add(car.getCarName());
+            }
+        }
+    }
+
+    private int findMaxDistance() {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            if (car.getDistance() > maxDistance) {
+                maxDistance = car.getDistance();
+            }
+        }
+        return maxDistance;
     }
 }

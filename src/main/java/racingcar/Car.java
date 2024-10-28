@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
 
-    private String carName;
+    private final String carName;
     private int distance = 0;
 
     public Car(String carName) {
@@ -17,11 +17,11 @@ public class Car {
 
     }
 
-    private String getCarName() {
+    public String getCarName() {
         return carName;
     }
 
-    private int getDistance() {
+    public int getDistance() {
         return distance;
     }
 }

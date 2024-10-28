@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class View {
 
     private String[] names;
@@ -26,10 +28,14 @@ public class View {
         }
     }
 
-    public void showOutputView(String[] names) {
+    public void showOutputView(List<String> names) {
         StringBuilder winners = new StringBuilder("최종 우승자 : ");
-        for (String name : names) {
-            winners.append(name).append(", ");
+        for (int i = 0; i < names.size(); i++) {
+            if (i < names.size() - 1) {
+                winners.append(names.get(i)).append(", ");
+            } else {
+                winners.append(names.get(i));
+            }
         }
         System.out.print(winners);
     }
