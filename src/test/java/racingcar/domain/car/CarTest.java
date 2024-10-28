@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.car;
 
 import static org.assertj.core.api.Assertions.*;
 import static racingcar.infrastructure.exception.ErrorCode.CAR_NAME_EMPTY;
@@ -8,7 +8,7 @@ import static racingcar.domain.race.constants.RaceCriterion.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
+import racingcar.domain.acceleration.FixedAcceleration;
 
 @DisplayName("Car 클래스 테스트")
 public class CarTest {

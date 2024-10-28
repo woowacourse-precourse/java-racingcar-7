@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.race.service;
 
 import static org.assertj.core.api.Assertions.*;
 import static racingcar.domain.race.constants.RaceCriterion.MOVING_FORWARD;
@@ -6,9 +6,9 @@ import static racingcar.domain.race.constants.RaceCriterion.MOVING_FORWARD;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.acceleration.FixedAcceleration;
 import racingcar.domain.car.Car;
 import racingcar.domain.race.Race;
-import racingcar.domain.race.service.RaceHelper;
 
 public class RaceServiceTest {
 

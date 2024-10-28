@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.race;
 
 import static org.assertj.core.api.Assertions.*;
 import static racingcar.infrastructure.exception.ErrorCode.*;
@@ -7,9 +7,9 @@ import static racingcar.domain.race.constants.RaceCriterion.MOVING_FORWARD;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.acceleration.FixedAcceleration;
 import racingcar.domain.acceleration.Acceleration;
 import racingcar.domain.car.Car;
-import racingcar.domain.race.Race;
 
 @DisplayName("Race 클래스 테스트")
 public class RaceTest {

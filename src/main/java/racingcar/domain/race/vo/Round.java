@@ -7,20 +7,20 @@ import static racingcar.infrastructure.exception.ErrorCode.*;
 public record Round(int round) {
 
     public Round {
-        if (round < NOT_NEGATIVE.getCriterion()) {
+        if (round < NOT_NEGATIVE_LIMIT.getCriterion()) {
             throw new IllegalArgumentException(ROUND_LESS_THAN_ONE.getMessage());
         }
     }
 
     public Round nextRound() {
-        if (round == END_RACE.getCriterion()) {
+        if (round == RACE_END.getCriterion()) {
             return this;
         }
 
-        return new Round(round - ROUND_DECREASE.getCriterion());
+        return new Round(round - ROUND_DECREMENT.getCriterion());
     }
 
     public boolean hasMoreRounds() {
-        return round > END_RACE.getCriterion();
+        return round > RACE_END.getCriterion();
     }
 }
