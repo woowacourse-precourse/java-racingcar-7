@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -27,5 +28,16 @@ public class Game {
         for (Car c : cars) {
             c.move(Randoms.pickNumberInRange(0, 9));
         }
+    }
+
+    public List<String> getFinalWinners() {
+        int maxLength = cars.stream().mapToInt(Car::getLength).max().getAsInt();
+        List<String> list = new ArrayList<>();
+        for (Car c : cars) {
+            if (c.getLength() == maxLength) {
+                list.add(c.getName());
+            }
+        }
+        return list;
     }
 }

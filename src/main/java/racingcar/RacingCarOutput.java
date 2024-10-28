@@ -18,4 +18,8 @@ public class RacingCarOutput {
         }
         return sb.toString();
     }
+
+    public void printFinalWinners(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }
