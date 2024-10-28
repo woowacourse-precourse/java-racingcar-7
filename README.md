@@ -31,3 +31,18 @@
 
 6. 예외 처리
    * 잘못된 값이 입력된 경우 IllegalArgumentException 발생 시키고 종료
+
+## MVC 패턴
+1. main 함수
+   * controller 의 run 함수를 실행시켜 구동을 시킴
+2. controller
+   * run 함수 : 입력을 받고, 경주를 실행시키고, 결과를 출력하는 함수 호출
+3. domain
+   * Cars : 자동차 이름과 진전 횟수를 Map 을 사용해서 관리하는 도메인 / 저장 전에 차 이름의 유효성을 검사하게 함/ distance 를 업데이트 하는 함수
+   * TryCount : 경주 시도 횟수를 관리하는 도메인 / 저장 전에 시도 횟수의 유효성을 검사하게 함
+4. service
+   * void race(Cars cars) : 0과 9 사이의 난수를 발생시켜 경주를 진행하고 진전 횟수를 업데이트 하게 함
+   * List<String> getWinners(Cars cars) : 우승자를 구해서 리스트에 저장하게 함
+5. view
+   * InputView : 자동차 입력을 받게 하는 함수 / 시도 횟수를 입력 받게 하는 함수
+   * OutputView : 현재 결과를 출력하게 하는 함수 / 최종 우승자를 출력하게 하는 함수
