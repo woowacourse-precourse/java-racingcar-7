@@ -28,6 +28,6 @@ public class Cars {
 			car.moveIfSatisfyStandard(numberSupplier, movingStandard);
 			sb.append(car.showStatus(delim));
 		}
-		return sb.append("\n").toString();
+		return sb.toString();
 	}
 }
