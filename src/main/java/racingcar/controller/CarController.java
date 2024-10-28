@@ -6,27 +6,23 @@ import racingcar.service.MovementCondition;
 import racingcar.service.SystemService;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarController {
-	private final JudgmentCarName judgment = new JudgmentCarName();
-	private final MovementCondition movementCondition = new MovementCondition();
-	private final SystemService systemService = new SystemService();
+	private static final CarController INSTANCE = new CarController();
+	private final JudgmentCarName judgment = JudgmentCarName.getInstance();
+	private final MovementCondition movementCondition = MovementCondition.getInstance();
+	private final SystemService systemService = SystemService.getInstance();
+
+	private CarController() {}
 
 	public List<Car> separate(String carsName) {
 		List<Car> cars = systemService.splitCarsString(carsName);
 
-		if (duplicateCheck(cars)) {
+		if (judgment.duplicateCheck(cars)) {
 			throw new IllegalArgumentException();
 		}
 
 		return cars;
-	}
-
-	private boolean duplicateCheck(List<Car> cars) {
-		return judgment.judgmentCarNameDuplicate(cars.stream()
-				.map(Car::getCarName)
-				.collect(Collectors.toList()));
 	}
 
 	private void carMovement(Car car) {
@@ -45,4 +41,7 @@ public class CarController {
 		systemService.printWinner(cars);
 	}
 
+	public static CarController getInstance() {
+		return INSTANCE;
+	}
 }

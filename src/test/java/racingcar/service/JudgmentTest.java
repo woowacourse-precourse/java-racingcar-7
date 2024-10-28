@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class JudgmentTest {
 
-	private final JudgmentCarName judgment = new JudgmentCarName();
+	private final JudgmentCarName judgment = JudgmentCarName.getInstance();
 
 	@Test
 	@DisplayName("이름 중복 판정 테스트")

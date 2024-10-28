@@ -3,11 +3,6 @@ package racingcar.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.stream.Collectors;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
 class SystemServiceTest {
 
 	@Test
@@ -16,7 +11,7 @@ class SystemServiceTest {
 
 		String cars = "pobi  ,woni ,jun ";
 
-		SystemService systemService = new SystemService();
+		SystemService systemService = SystemService.getInstance();
 	}
 
 }

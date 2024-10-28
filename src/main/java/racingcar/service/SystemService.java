@@ -8,7 +8,10 @@ import java.util.stream.Collectors;
 
 public class SystemService {
 
-	private final JudgmentCarName judgment = new JudgmentCarName();
+	private static final SystemService INSTANCE = new SystemService();
+	private final JudgmentCarName judgment = JudgmentCarName.getInstance();
+
+	private SystemService() {}
 
 	public List<Car> splitCarsString(String carsName) {
 		return Arrays.stream(carsName.split(","))
@@ -54,6 +57,10 @@ public class SystemService {
 				.collect(Collectors.joining(", "));
 
 		System.out.print("최종 우승자 : " + winner);
+	}
+
+	public static SystemService getInstance() {
+		return INSTANCE;
 	}
 
 }
