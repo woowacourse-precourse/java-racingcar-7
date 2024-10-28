@@ -10,6 +10,8 @@ public class Car {
 
     private String name;
 
+    private Integer forwardCount = 0;
+
     public int getId() {
         return this.id;
     }
@@ -18,7 +20,15 @@ public class Car {
         return this.name;
     }
 
+    public Integer getForwardCount() {
+        return this.forwardCount;
+    }
+
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void goForward(){
+        this.forwardCount++;
     }
 }

@@ -1,13 +1,17 @@
 package racingcar.util;
 
+import racingcar.domain.Car;
 import racingcar.domain.Game;
 import racingcar.domain.Round;
+import racingcar.repository.CarRepository;
 import racingcar.repository.GameRepository;
 import racingcar.repository.RoundRepository;
 
 public class DataRelationUtil {
 
     private static DataRelationUtil instance;
+
+    private CarRepository carRepository;
 
     private GameRepository gameRepository;
 
@@ -23,9 +27,10 @@ public class DataRelationUtil {
     private DataRelationUtil() {
     }
 
-    public void setRepository(RoundRepository roundRepository, GameRepository gameRepository) {
+    public void setRepository(RoundRepository roundRepository, GameRepository gameRepository, CarRepository carRepository) {
         this.roundRepository = roundRepository;
         this.gameRepository = gameRepository;
+        this.carRepository = carRepository;
     }
 
     public void roundToGame(Round round) {
@@ -40,6 +45,12 @@ public class DataRelationUtil {
         for (Round round : game.getRoundList()) {
             round.addGameId(game.getId());
             roundRepository.update(round);
+        }
+    }
+
+    public void roundToCar(Round round) {
+        for(Car car: round.getCarList()) {
+            carRepository.update(car);
         }
     }
 }
