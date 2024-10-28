@@ -9,11 +9,11 @@ public class RacingCarService {
 
     public List<RacingCar> runGame(final List<String> inputCars, final int trial) {
 
-        List<RacingCar> racingRacingCars = generateCar(inputCars);
+        List<RacingCar> racingCars = generateCar(inputCars);
 
         System.out.println("실행 결과");
         for (int trialIndex = 0; trialIndex < trial; ++trialIndex) {
-            for (RacingCar racingCar : racingRacingCars) {
+            for (RacingCar racingCar : racingCars) {
 
                 racingCar.conditionalMove();
 
@@ -22,7 +22,7 @@ public class RacingCarService {
             System.out.println();
         }
 
-        return racingRacingCars;
+        return racingCars;
     }
 
     private void printCurrentState(final RacingCar racingCar) {
