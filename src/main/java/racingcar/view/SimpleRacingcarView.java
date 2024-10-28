@@ -1,13 +1,31 @@
 package racingcar.view;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.dto.RacingcarResults;
+import racingcar.dto.UserInput;
+import racingcar.global.validator.InputValidator;
+
+import java.util.List;
 
 public class SimpleRacingcarView implements RacingcarView {
 
     @Override
-    public String printInput() {
-        // TODO. 메서드 구현
-        return "";
+    public UserInput getInput() {
+        this.printInputCarNameMessage();
+        List<String> carNames = InputValidator.validCarNames(Console.readLine());
+
+        this.printInputRepeatNumber();
+        int repeatNum = InputValidator.validRepeatNum(Console.readLine());
+
+        return new UserInput(carNames, repeatNum);
+    }
+
+    private void printInputCarNameMessage() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    }
+
+    private void printInputRepeatNumber() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
     @Override
