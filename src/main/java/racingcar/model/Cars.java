@@ -25,10 +25,18 @@ public class Cars {
         }
     }
 
-    private void moveCarsWithRandomCondition(){
+    private void moveCarsWithRandomCondition() {
         for (Car car : cars) {
             car.moveForward();
         }
+    }
+
+    public List<String> getResults(){
+        List<String> results = new ArrayList<>();
+        for (Car car: cars) {
+            results.add(car.getResult());
+        }
+        return results;
     }
 
 }
