@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.entity;
 
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.wrapper.CarName;

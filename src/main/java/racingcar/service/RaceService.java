@@ -2,7 +2,7 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.Cars;
+import racingcar.domain.entity.Cars;
 import racingcar.dto.RoundResultDto;
 import racingcar.wrapper.RaceCount;
 

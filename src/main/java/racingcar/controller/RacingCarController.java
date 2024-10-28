@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.domain.Cars;
+import racingcar.domain.entity.Cars;
 import racingcar.dto.RoundResultDto;
 import racingcar.dto.WinnerDto;
 import racingcar.service.CarsService;

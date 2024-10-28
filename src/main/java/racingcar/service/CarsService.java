@@ -1,7 +1,7 @@
 package racingcar.service;
 
-import racingcar.domain.Cars;
-import racingcar.domain.RaceResult;
+import racingcar.domain.entity.Cars;
+import racingcar.domain.entity.RaceResult;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.dto.WinnerDto;

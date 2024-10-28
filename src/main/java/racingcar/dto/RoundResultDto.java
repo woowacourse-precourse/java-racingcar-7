@@ -1,8 +1,8 @@
 package racingcar.dto;
 
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.entity.Car;
+import racingcar.domain.entity.Cars;
 import racingcar.domain.dto.CarSnapShot;
 
 public class RoundResultDto {

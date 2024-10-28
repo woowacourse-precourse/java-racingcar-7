@@ -1,6 +1,6 @@
 package racingcar.domain.dto;
 
-import racingcar.domain.Car;
+import racingcar.domain.entity.Car;
 
 public class CarSnapShot {
 

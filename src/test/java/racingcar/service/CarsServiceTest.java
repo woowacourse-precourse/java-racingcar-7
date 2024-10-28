@@ -5,8 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.entity.Car;
+import racingcar.domain.entity.Cars;
 import racingcar.dto.WinnerDto;
 
 public class CarsServiceTest {
