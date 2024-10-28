@@ -20,19 +20,13 @@ public class RacingGameService {
         }
     }
 
-    public int getCurrentDistance(Car car) {
-        return car.getDistance();
-    }
-
     public List<String> getWinners(List<Car> cars) {
         List<String> winners = new ArrayList<>();
-        int maxDistance = cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .orElse(0);
+        int maxDistance = Car.findMaxDistance(cars);
         for (Car car : cars) {
-            if (car.isWinner(maxDistance)) {
-                winners.add(car.getName());
+            String winnerName = car.getNameWinner(maxDistance);
+            if (!winnerName.isEmpty()) {
+                winners.add(winnerName);
             }
         }
         return winners;

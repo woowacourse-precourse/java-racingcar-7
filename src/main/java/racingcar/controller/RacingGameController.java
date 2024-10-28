@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.dto.CarDTO;
 import racingcar.service.RacingGameService;
 import racingcar.model.Car;
 import racingcar.validation.CarNameValidator;
@@ -60,8 +61,8 @@ public class RacingGameController {
     private void raceCars(List<Car> cars) {
         for (Car car : cars) {
             racingGameService.race(car);
-            int currentDistance = racingGameService.getCurrentDistance(car);
-            outputView.printCurrentDistance(car.getName(), currentDistance);
+            CarDTO carDTO = car.toDTO();
+            outputView.printCurrentDistance(carDTO);
         }
     }
 

@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
+import racingcar.dto.CarDTO;
 
 public class OutputView {
     static final String RACE_RESULT_MESSAGE = "실행 결과";
@@ -15,8 +16,8 @@ public class OutputView {
         System.out.println(RACE_RESULT_MESSAGE);
     }
 
-    public void printCurrentDistance(String name, int distance) {
-        String distanceOutput = name + " : " + makeMovePatternFromDistance(distance);
+    public void printCurrentDistance(CarDTO carDTO) {
+        String distanceOutput = carDTO.name() + " : " + makeMovePatternFromDistance(carDTO.distance());
         System.out.println(distanceOutput);
     }
 
