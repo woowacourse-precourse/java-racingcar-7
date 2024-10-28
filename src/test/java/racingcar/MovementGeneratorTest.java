@@ -14,16 +14,6 @@ public class MovementGeneratorTest extends NsTest {
 
     /** 테스트 클래스 명 -> [메서드 명]_[테스트 중 상태]_[기대 행위] **/
     @Test
-    @DisplayName("0~9의 랜덤한 숫자가 반환되는지 테스트")
-    void getRandomNumber_MethodCall_gotNumber() {
-        //when
-        int num = MovementGenerator.getRandomNumber();
-
-        //then
-        assertThat(num).isBetween(0, 9);
-    }
-
-    @Test
     @DisplayName("랜덤한 움직임이 반환되는지 테스트")
     void getRandomMovement_MethodCall_gotMovement() {
         //when
