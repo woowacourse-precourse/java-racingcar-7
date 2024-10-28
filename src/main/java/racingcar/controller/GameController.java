@@ -1,6 +1,8 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
+import racingcar.model.RandomNumberGeneratorImpl;
+import racingcar.view.InputInterface;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 import java.util.ArrayList;
@@ -9,19 +11,26 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GameController {
+    private final InputInterface inputView;
+
+    public GameController(InputInterface inputView) {
+        this.inputView = inputView;
+    }
+
     public void run() {
         List<Car> cars = initCars();
-        playRace(cars);
+        int tryCount = inputView.getTryCount();
+        playRace(cars, tryCount);
         List<String> winners = getWinners(cars);
         ResultView.printWinners(winners);
     }
 
     private List<Car> initCars() {
-        String[] carNames = InputView.getCarNames();
+        String[] carNames = inputView.getCarNames();
         validateCarNames(carNames);
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
-            cars.add(new Car(name));
+            cars.add(new Car(name, new RandomNumberGeneratorImpl()));
         }
         return cars;
     }
@@ -40,8 +49,7 @@ public class GameController {
         }
     }
 
-    private void playRace(List<Car> cars) {
-        int tryCount = InputView.getTryCount();
+    private void playRace(List<Car> cars, int tryCount) {
         System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
             for (Car car : cars) {
