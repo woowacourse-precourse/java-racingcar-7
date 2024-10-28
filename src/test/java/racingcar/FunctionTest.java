@@ -25,9 +25,8 @@ import static racingcar.model.RandomUtils.createRandomNumber;
 public class FunctionTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
-    RaceCars raceCars = new RaceCars();
     CarNameDelimiter carNameDelimiter = new CarNameDelimiter();
-    RandomUtils randomUtils = new RandomUtils();
+
 
 
     @Test
@@ -127,6 +126,18 @@ public class FunctionTest extends NsTest {
         }
 
     }
+
+    @Test
+    void 기본_작동_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
 
 
     @Test
