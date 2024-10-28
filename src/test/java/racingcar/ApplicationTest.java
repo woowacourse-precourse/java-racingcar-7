@@ -35,9 +35,8 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 한개_이하_이름(){
-        InputHandler inputHandler = new InputHandler();
         assertThrows(IllegalArgumentException.class, () -> {
-            InputValidator.notOneName(InputHandler);
+            InputValidator.notOneName(InputHandler.getCarNameList());
         });
     }
 
