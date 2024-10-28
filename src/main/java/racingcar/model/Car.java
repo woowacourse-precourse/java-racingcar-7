@@ -37,7 +37,7 @@ public class Car {
     }
 
     public int currentPosition() {
-        return position.getPosition();
+        return position.getValue();
     }
 
     public String getCurrentSituation() {

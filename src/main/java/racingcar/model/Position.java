@@ -23,7 +23,7 @@ public class Position {
         return NOTATION.repeat(value);
     }
 
-    public int getPosition() {
+    public int getValue() {
         return value;
     }
 
