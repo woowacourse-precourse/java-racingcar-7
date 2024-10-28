@@ -11,6 +11,7 @@ public class GamePrinter {
         System.out.println();
     }
 
+
     public static void printWinners(List<Car> winners) {
         String winnerNames = winners.stream()
                 .map(Car::getName)
