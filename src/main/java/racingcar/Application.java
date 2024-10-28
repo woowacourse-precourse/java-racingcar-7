@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -17,5 +18,6 @@ public class Application {
         racingGame.setParticipants(carNames);
 
         racingGame.playGame();
+        Console.close();
     }
 }
