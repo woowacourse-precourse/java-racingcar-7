@@ -60,6 +60,22 @@ class ApplicationTest extends NsTest {
                 .trim());
     }
 
+    @Test
+    void 시도_횟수_안내_문구_테스트(){
+         Application.printTryCountMessage();
+
+         assertEquals("시도할 횟수는 몇 회인가요?", outputStream.toString()
+                 .trim());
+    }
+
+    @Test
+    void 시도_횟수_안내_문구_틀린_경우_테스트(){
+        Application.printTryCountMessage();
+
+        assertNotEquals("시도할 회수는 몇 회인가요?", outputStream.toString()
+                .trim());
+    }
+
     @AfterEach
     public void tearDown() {
         System.setOut(standardOut);
