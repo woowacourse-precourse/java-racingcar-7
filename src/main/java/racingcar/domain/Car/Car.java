@@ -1,6 +1,6 @@
 package racingcar.domain.Car;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.randomnumber.RandomNumberGenerator;
 
 public class Car {
 
@@ -17,8 +17,8 @@ public class Car {
         position = INITIAL_POSITION;
     }
 
-    public void moveForward() {
-        int randomValue = Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+    public void moveForward(RandomNumberGenerator<Integer> randomNumberGenerator) {
+        int randomValue = randomNumberGenerator.pickNumber();
 
         if (randomValue >= MOVE_THRESHOLD) {
             incrementPosition();

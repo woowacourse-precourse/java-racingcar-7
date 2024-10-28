@@ -2,6 +2,7 @@ package racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.randomnumber.RandomNumberGenerator;
 import racingcar.exceptions.DuplicateNameException;
 import racingcar.io.Output.OutputHandler;
 
@@ -10,8 +11,10 @@ public class Cars {
 
     List<Car> winners = new ArrayList<>();
 
+    private final RandomNumberGenerator<Integer> randomNumberGenerator;
 
-    public Cars() {
+    public Cars(RandomNumberGenerator<Integer> randomNumberGenerator) {
+        this.randomNumberGenerator = randomNumberGenerator;
         this.cars = new ArrayList<>();
     }
 
@@ -37,7 +40,7 @@ public class Cars {
 
     public void moveForward() {
         for (Car car : cars) {
-            car.moveForward();
+            car.moveForward(randomNumberGenerator);
         }
     }
 
@@ -70,5 +73,9 @@ public class Cars {
         if (car.getPosition() == maxPosition) {
             winners.add(car);
         }
+    }
+
+    public int getSize() {
+        return cars.size();
     }
 }
