@@ -8,10 +8,15 @@ public class Car {
         this.name = name;
     }
 
-    public String getName() {return name;}
-    public int getForwardCount() {return forwardCount;}
-
     void incrementFowardCount(int randomNumber) {
         if (randomNumber >= 4) {forwardCount++;}
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getForwardCount() {
+        return forwardCount;
     }
 }

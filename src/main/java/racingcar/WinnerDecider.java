@@ -10,6 +10,15 @@ public class WinnerDecider {
         this.cars = cars;
     }
 
+    public void decideWinner() {
+        List<String> winners = selectWinner(findMaxForwardCount());
+        if (winners.size() == 1) {
+            System.out.println("최종 우승자 : " + winners.getFirst());
+        } else {
+            System.out.println("최종 우승자 : " + String.join(", ", winners));
+        }
+    }
+
     private int findMaxForwardCount() {
         int maxForwardCount = 0;
         for (Car car : cars) {
@@ -28,14 +37,5 @@ public class WinnerDecider {
             }
         }
         return winners;
-    }
-
-    public String decideWinner() {
-        List<String> winners = selectWinner(findMaxForwardCount());
-        if (winners.size() == 1) {
-            return winners.getFirst();
-        } else {
-            return String.join(", ", winners);
-        }
     }
 }

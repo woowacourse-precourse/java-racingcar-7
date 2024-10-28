@@ -9,9 +9,10 @@ public class Application {
         try {
             String[] carNames = inputCarNames();
             int raceCount = inputRaceCount();
-            Car[] cars = createCars(carNames);
-            progressRace(raceCount, cars);
-            printWinner(cars);
+            RacingController racingController = new RacingController(carNames);
+            racingController.progressRace(raceCount);
+            WinnerDecider winnerDecider = new WinnerDecider(racingController.getCars());
+            winnerDecider.decideWinner();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -34,35 +35,5 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int raceCount = Integer.parseInt(readLine());
         return raceCount;
-    }
-
-    public static Car[] createCars(String[] carNames) {
-        Car[] cars = new Car[carNames.length];
-        for (int i = 0; i < carNames.length; i++) {
-            cars[i] = new Car(carNames[i]);
-        }
-        return cars;
-    }
-
-    public static void progressRace(int raceCount, Car[] cars) {
-        RacingController racingController = new RacingController(cars);
-        System.out.println("\n실행 결과");
-        for (int i = 0; i < raceCount; i++) {
-            racingController.startRace();
-            printRaceResult(cars);
-            System.out.println();
-        }
-    }
-
-    public static void printRaceResult(Car[] cars) {
-        for (Car car : cars) {
-            String raceResult = car.getName() + ":" + "-".repeat(car.getForwardCount());
-            System.out.println(raceResult);
-        }
-    }
-
-    public static void printWinner(Car[] cars) {
-        WinnerDecider winnerDecider = new WinnerDecider(cars);
-        System.out.println("최종 우승자 : " + winnerDecider.decideWinner());
     }
 }
