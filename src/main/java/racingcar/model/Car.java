@@ -2,8 +2,6 @@ package racingcar.model;
 
 import racingcar.util.RandomNumber;
 
-import java.util.List;
-
 public class Car {
     private final String name;
     private int forward = 0;
@@ -12,8 +10,8 @@ public class Car {
         this.name = carName;
     }
 
-    public void moveForward(){
-        if(RandomNumber.getRandomNumber() >= 4){
+    public void moveForward() {
+        if (RandomNumber.getRandomNumber() >= 4) {
             forward = forward + 1;
         }
     }
@@ -24,10 +22,11 @@ public class Car {
         return String.valueOf(result);
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public int getForward(){
+
+    public int getForward() {
         return forward;
     }
 

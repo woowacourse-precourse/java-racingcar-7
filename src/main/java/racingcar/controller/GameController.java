@@ -14,19 +14,19 @@ public class GameController {
     private Cars cars;
     private int tryCount;
 
-    public GameController(InputView inputView, OutputView outputView, CarNameValidator carNameValidator){
+    public GameController(InputView inputView, OutputView outputView, CarNameValidator carNameValidator) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.carNameValidator = carNameValidator;
     }
 
-    public void run(){
+    public void run() {
         init();
         play();
         showWinners();
     }
 
-    public void init(){
+    public void init() {
         String input = inputView.inputCarNames();
         String[] carNames = input.split(",");
         carNameValidator.validate(carNames);
@@ -34,13 +34,13 @@ public class GameController {
         tryCount = inputView.inputTryCount();
     }
 
-    public void play(){
+    public void play() {
         outputView.printPlayMessage();
         cars.playRound(tryCount);
         outputView.printPlayResults(cars.getResults());
     }
 
-    public void showWinners(){
+    public void showWinners() {
         List<String> winners = cars.getWinners();
         outputView.printWinners(winners);
     }

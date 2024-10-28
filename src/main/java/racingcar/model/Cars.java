@@ -1,17 +1,18 @@
 package racingcar.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(String[] carNames){
+    public Cars(String[] carNames) {
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
     }
 
-    public void playRound(int tryCount){
+    public void playRound(int tryCount) {
         while (tryCount > 0) {
             moveCarsWithRandomCondition();
             tryCount = tryCount - 1;
@@ -24,9 +25,9 @@ public class Cars {
         }
     }
 
-    public List<String> getResults(){
+    public List<String> getResults() {
         List<String> results = new ArrayList<>();
-        for (Car car: cars) {
+        for (Car car : cars) {
             results.add(car.getResult());
         }
         return results;
