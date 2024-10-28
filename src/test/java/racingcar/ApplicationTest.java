@@ -26,7 +26,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+            assertThatThrownBy(() -> runException("pobi,javaji", "a"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
