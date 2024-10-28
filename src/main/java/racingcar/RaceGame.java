@@ -11,9 +11,15 @@ public class RaceGame {
         String[] carNames = readCarNames();
         int tryCnt = readTryCount();
         cars = new ArrayList<>();
-        
+
         for (String carName : carNames) {
             cars.add(new Car(carName));
+        }
+
+        for (int i = 0; i < tryCnt; i++) {
+            for (Car car : cars) {
+                car.move();
+            }
         }
     }
 
