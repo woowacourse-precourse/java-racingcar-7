@@ -23,6 +23,14 @@ class CarTest extends NsTest {
         assertThat(names).isEqualTo(new String[]{"pobi", "woni", "jun"});
     }
 
+    @Test
+    void 입력받은_문자열을_출력() {
+        String inputString = "pobi,woni,   jun";
+        String[] names = CarGenerator.splitInputString(inputString);
+        String allNames = String.join(",", names);
+        assertThat(allNames).isEqualTo("pobi,woni,jun");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
