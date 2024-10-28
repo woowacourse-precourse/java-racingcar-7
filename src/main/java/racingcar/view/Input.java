@@ -10,8 +10,14 @@ public class Input {
         String input = Console.readLine();
         checkInput(input);
         List<String> carList = Arrays.asList(input.split(","));
-        checkName(carList);
+        checkCarName(carList);
         return carList;
+    }
+
+    public static int inputRoundCount() {
+        String input = Console.readLine();
+        checkInput(input);
+        return checkRoundCount(input);
     }
 
     private static void checkInput(String input) {
@@ -19,12 +25,30 @@ public class Input {
             throw new IllegalArgumentException("빈 문자열입니다.");
     }
 
-    private static void checkName(List<String> carList) {
+    private static void checkCarName(List<String> carList) {
         for(String carName : carList) {
-            if(carName == null || carName.trim().isEmpty())
-                throw new IllegalArgumentException("이름이 빈 값입니다.");
-            if(carName.length() > 5)
-                throw new IllegalArgumentException("각 이름은 5자 이하여야 합니다.: " + carName);
+            checkInput(carName);
+            checkCarNameLength(carName);
         }
+    }
+
+    private static int checkRoundCount(String input) {
+        try {
+            int roundCount = Integer.parseInt(input);
+            checkRoundCountPositive(roundCount);
+            return roundCount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수를 입력해야 합니다.");
+        }
+    }
+
+    private static void checkCarNameLength(String carName) {
+        if(carName.length() > 5)
+            throw new IllegalArgumentException("각 이름은 5자 이하여야 합니다.: " + carName);
+    }
+
+    private static void checkRoundCountPositive(int roundCount) {
+        if(roundCount <= 0)
+            throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.: " + roundCount);
     }
 }
