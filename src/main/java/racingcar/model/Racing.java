@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +20,14 @@ public class Racing {
                 .collect(toList());
     }
 
-    public List<RacingCar> getCars() {
-        return cars;
-    }
-
     public void run(Supplier<Integer> randomSupplier) {
         for (RacingCar car : cars) {
             car.moveForward(randomSupplier);
         }
+    }
+
+    public List<RacingCar> getCars() {
+        return cars;
     }
 
     private void initializeCars(List<String> carNames) {
