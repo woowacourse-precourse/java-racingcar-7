@@ -26,7 +26,7 @@ public class Car {
 
     private void validateCarName(String name) {
         int nameLength = name.length();
-        if (name == null) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("차 이름은 공백일 수 없습니다.");
         }
         if (nameLength > MAX_CAR_NAME_LENGTH) {
