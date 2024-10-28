@@ -18,11 +18,23 @@ public class ParticipatingCars {
         this.cars = carList;
     }
 
-    public List<Car>racing() {
+    public List<Car> racing() {
         return cars.stream()
                 .map(Car::forward)
                 .collect(Collectors.toList());
 
+    }
+
+    public List<String> getWinner() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 최대 포지션을 찾을 수 없습니다."));
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     private void validateDuplicateCarName(List<Car> carList) {

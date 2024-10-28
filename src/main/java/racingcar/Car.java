@@ -30,6 +30,10 @@ public class Car {
         return name;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     private void validateLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름의 길이는 5자리 이하 입니다");

@@ -20,6 +20,8 @@ public class Application {
         int gameCount = input.getGameCount();
 
         output.printGameResult(cars, gameCount);
+
+        output.printWinner(cars);
     }
 
     public static void main(String[] args) {
