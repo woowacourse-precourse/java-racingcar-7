@@ -47,6 +47,15 @@ class InputValidatorTest {
                 .isThrownBy(() -> inputValidator.carNames(carNames));
     }
 
+    @DisplayName("음수 시도 횟수에 대해 예외를 던진다")
+    @ParameterizedTest
+    @MethodSource("negativeAttemptCounts")
+    void validateNegativeAttemptCount(int attempts) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> inputValidator.attemptCount(attempts))
+                .withMessage(ErrorMessage.INVALID_ATTEMPT_COUNT.getMessage());
+    }
+
     @DisplayName("최대 시도 횟수를 초과할 경우 예외를 던진다")
     @ParameterizedTest
     @MethodSource("invalidAttemptCounts")
@@ -83,6 +92,14 @@ class InputValidatorTest {
         return Stream.of(
                 Arguments.of(11),
                 Arguments.of(20)
+        );
+    }
+
+    static Stream<Arguments> negativeAttemptCounts() {
+        return Stream.of(
+                Arguments.of(-1),
+                Arguments.of(-10),
+                Arguments.of(-100)
         );
     }
 }
