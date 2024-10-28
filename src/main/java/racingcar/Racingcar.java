@@ -34,33 +34,33 @@ public class Racingcar {
         System.out.println();
     }
 
-    public int findMaxDistance(){
+    public int findMaxDistance() {
         int maxDistance = 0;
-        for (Car car : carList){
-            if(car.getDistance() > maxDistance){
+        for (Car car : carList) {
+            if (car.getDistance() > maxDistance) {
                 maxDistance = car.getDistance();
             }
         }
         return maxDistance;
     }
 
-    public List<Car> findWinner(){
+    public List<Car> findWinner() {
         List<Car> winnerList = new ArrayList<>();
         int maxDistance = findMaxDistance();
-        for (Car car : carList){
-            if(car.getDistance() == maxDistance){
+        for (Car car : carList) {
+            if (car.getDistance() == maxDistance) {
                 winnerList.add(car);
             }
         }
         return winnerList;
     }
 
-    public void printWinner(List<Car> winnerList){
+    public void printWinner(List<Car> winnerList) {
         List<String> str_winnerList = new ArrayList<>();
-        for(Car cars: winnerList){
+        for (Car cars : winnerList) {
             str_winnerList.add(cars.getName());
         }
-        String winners_name = String.join(", ",str_winnerList);
+        String winners_name = String.join(", ", str_winnerList);
         System.out.println(winners_name);
     }
 
@@ -78,7 +78,7 @@ public class Racingcar {
 
         List<Car> winnerList = findWinner();
         System.out.print(Contants.OUTPUT_NOTICE_WINNER_RESULT
-                +Contants.OUTPUT_COLON_CAHR);
+                + Contants.OUTPUT_COLON_CAHR);
         printWinner(winnerList);
     }
 

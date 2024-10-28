@@ -20,7 +20,7 @@ public class Game {
 
     public void play() {
         for (Car car : carList) {
-           updateCarMove(car);
+            updateCarMove(car);
         }
         //end for loop
     }
