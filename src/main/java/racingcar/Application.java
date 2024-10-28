@@ -8,6 +8,7 @@ public class Application {
     public static void main(String[] args) {
         String carNames = promptCarName();
         CarNameParser carNameParser = new CarNameParser(carNames);
+        int raceRound = promptRaceRound();
     }
 
     private static String promptCarName() {
@@ -20,5 +21,21 @@ public class Application {
             throw new IllegalArgumentException();
         }
         return carNames;
+    }
+
+    private static int promptRaceRound() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int raceRound;
+        try {
+            raceRound = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            System.out.println("숫자를 입력해주세요");
+            throw new IllegalArgumentException();
+        }
+        if (raceRound <= 0) {
+            System.out.println("1회 이상 입력해주세요");
+            throw new IllegalArgumentException();
+        }
+        return raceRound;
     }
 }
