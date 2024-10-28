@@ -32,10 +32,7 @@ public class Application {
         }
 
         //3. 전체 자동차를 포함하는 해시맵을 만들고, 키는 자동차의 이름으로 하고 값은 0으로 초기화 한다.
-        HashMap<String, String> map = new HashMap<>();
-        for (String targetCar : carArr){
-            map.put(targetCar, "");
-        }
+        HashMap<String, String> map = initializeMap(carArr);
 
         System.out.println("실행 결과");
         //7. 시도할 횟수동안 다음의 4-6과정을 반복한다.
@@ -62,6 +59,15 @@ public class Application {
         }
         System.out.println("최종 우승자 : "+totalWinner);
     }
+
+    public static HashMap<String, String> initializeMap(String[] carArr) {
+        HashMap<String, String> map = new HashMap<>();
+        for (String targetCar : carArr){
+            map.put(targetCar, "");
+        }
+        return map;
+    }
+
 
     public static void checkIfNumeric(String inputTry){
         if (!isNmberic(inputTry)){
