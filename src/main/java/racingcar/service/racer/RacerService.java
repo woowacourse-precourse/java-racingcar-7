@@ -7,6 +7,10 @@ import racingcar.service.constant.RacingRules;
 
 public class RacerService {
 
+    private Boolean pedaling() {
+        return engineTorque() >= RacingRules.ENOUGH_TORQUE_OUTPUT.status();
+    }
+
     private Integer engineTorque() {
         return pickNumberInRange(
                 RacingRules.TORQUE_RANGE_MIN.intStatus()
