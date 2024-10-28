@@ -3,6 +3,7 @@ package racingcar.util;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.message.Error;
 
 public class InputValidatorTest {
 
@@ -22,5 +23,15 @@ public class InputValidatorTest {
         String input = "8";
 
         Assertions.assertDoesNotThrow(() -> InputValidator.validateNumeric(input));
+    }
+
+    @Test
+    @DisplayName("공백 혹은 빈 문자열을 입력할 경우 해당 예외 문구를 출력한다")
+    void throw_when_input_is_blank() {
+        String input = "   ";
+
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> InputValidator.validateEmpty(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Error.EMPTY_VALUE.getMessage());
     }
 }
