@@ -3,8 +3,6 @@ package racingcar.racing;
 import static racingcar.config.RandomNumberConfig.MOVE_STAND_NUMBER;
 import static racingcar.io.OutputUtil.println;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import racingcar.car.Car;
 import racingcar.message.prompt.ResultPrompt;
