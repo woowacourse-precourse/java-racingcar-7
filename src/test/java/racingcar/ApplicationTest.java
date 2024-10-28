@@ -22,12 +22,74 @@ class ApplicationTest extends NsTest {
             MOVING_FORWARD, STOP
         );
     }
-
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름에_대한_예외_처리() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 이름에_대한_예외_처리_다섯자_이상(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("한동근두동근,세동근네동근", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름에_대한_예외_처리_쉼표_없음() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("동근 동근 동근", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름에_대한_예외_처리_쉼표_여러개() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("동근,,,동근", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수에_대한_예외_처리_빈_값() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("동근,동글", " "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수에_대한_예외_처리_문자열_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("동근,동글", "한번"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수에_대한_예외_처리_문자열과_숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("동근,동글", "1a2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수에_대한_예외_처리_음수() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("동근,동글", "-10"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
