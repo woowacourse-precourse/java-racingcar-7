@@ -1,6 +1,5 @@
 package racingcar;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -68,11 +67,11 @@ class RacingCarsTest {
         RacingCars racingCars = new RacingCars(racingCarList);
 
         //when
-        List<RacingCar> furthestCars = racingCars.findFurthestCars();
+        List<String> furthestCars = racingCars.findFurthestCarsName();
 
         //then
         assertThat(furthestCars.size()).isEqualTo(1);
-        assertThat(furthestCars.getFirst()).isEqualTo(레이싱카);
+        assertThat(furthestCars.getFirst()).isEqualTo(레이싱카.getName());
     }
 
     @Test
@@ -84,12 +83,12 @@ class RacingCarsTest {
         RacingCars racingCars = new RacingCars(racingCarList);
 
         //when
-        List<RacingCar> furthestCars = racingCars.findFurthestCars();
+        List<String> furthestCars = racingCars.findFurthestCarsName();
 
         //then
         assertThat(furthestCars.size()).isEqualTo(2);
-        assertThat(furthestCars).contains(자동차);
-        assertThat(furthestCars).contains(레이싱카);
+        assertThat(furthestCars).contains(자동차.getName());
+        assertThat(furthestCars).contains(레이싱카.getName());
     }
 
     @Test
@@ -101,12 +100,12 @@ class RacingCarsTest {
         RacingCars racingCars = new RacingCars(racingCarList);
 
         //when
-        List<RacingCar> furthestCars = racingCars.findFurthestCars();
+        List<String> furthestCars = racingCars.findFurthestCarsName();
 
         //then
         assertThat(furthestCars.size()).isEqualTo(2);
-        assertThat(furthestCars).contains(자동차);
-        assertThat(furthestCars).contains(레이싱카);
+        assertThat(furthestCars).contains(자동차.getName());
+        assertThat(furthestCars).contains(레이싱카.getName());
     }
 
 }

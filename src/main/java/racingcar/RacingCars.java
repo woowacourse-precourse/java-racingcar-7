@@ -40,8 +40,8 @@ public class RacingCars {
         return sb.toString();
     }
 
-    public List<RacingCar> findFurthestCars() {
-        List<RacingCar> furthestCars = new ArrayList<>();
+    public List<String> findFurthestCarsName() {
+        List<String> furthestCars = new ArrayList<>();
         int maxDistance = 0;
         for (RacingCar racingCar : racingCarList) {
             int distance = racingCar.getDistance();
@@ -52,7 +52,7 @@ public class RacingCars {
                 furthestCars = new ArrayList<>();
                 maxDistance = distance;
             }
-            furthestCars.add(racingCar);
+            furthestCars.add(racingCar.getName());
         }
         return furthestCars;
     }
