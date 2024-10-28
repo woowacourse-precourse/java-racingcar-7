@@ -1,5 +1,10 @@
 package racingcar.race;
 
+import static racingcar.race.constant.RacingPromptMessage.CAR_NAME_TO_ENTER_TEXT;
+import static racingcar.race.constant.RacingPromptMessage.EXECUTION_RESULT_TEXT;
+import static racingcar.race.constant.RacingPromptMessage.NUMBER_OF_ATTEMPTS_TO_ENTER_TEXT;
+import static racingcar.race.constant.RacingPromptMessage.WINNER_RESULT_TEXT;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.race.manager.DelimiterManager;
@@ -8,11 +13,6 @@ import racingcar.race.manager.ValidManager;
 import racingcar.race.model.Cars;
 
 public class RacingGame {
-
-    private static final String CAR_NAME_TO_ENTER_TEXT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    private static final String NUMBER_OF_ATTEMPTS_TO_ENTER_TEXT = "시도할 횟수는 몇 회인가요?";
-    private static final String EXECUTION_RESULT_TEXT = System.lineSeparator() + "실행결과";
-    private static final String WINNER_TEXT = System.lineSeparator() + "최종 우승자 : ";
 
     private final ParseManager parseManager;
     private final ValidManager validManager;
@@ -29,17 +29,17 @@ public class RacingGame {
     public void start() {
         Cars cars = Cars.of(enterNames());
         int round = enterRound();
-        executeRound(cars, round);
+        displayExecute(cars, round);
         displayWinners(cars);
     }
 
     private static void displayWinners(Cars cars) {
-        System.out.print(WINNER_TEXT);
+        System.out.print(WINNER_RESULT_TEXT);
         String winners = cars.getWinners();
         System.out.println(winners);
     }
 
-    private static void executeRound(Cars cars, int round) {
+    private static void displayExecute(Cars cars, int round) {
         System.out.println(EXECUTION_RESULT_TEXT);
         String executionResult = cars.getExecutedRound(round);
         System.out.println(executionResult);

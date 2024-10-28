@@ -1,8 +1,8 @@
 package racingcar;
 
+import racingcar.race.RacingGame;
 import racingcar.race.manager.DelimiterManager;
 import racingcar.race.manager.ParseManager;
-import racingcar.race.RacingGame;
 import racingcar.race.manager.ValidManager;
 
 public class Application {

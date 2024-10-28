@@ -1,14 +1,14 @@
 package racingcar.race.model;
 
+import static racingcar.race.model.Constraint.FORWARD_CONDITION_THRESHOLD;
+import static racingcar.race.model.Constraint.NAME_RULE_ERROR_MESSAGE;
+import static racingcar.race.model.Constraint.NAME_RULE_LENGTH;
+import static racingcar.race.model.Constraint.PROGRESS_EXPRESSION;
+import static racingcar.race.model.Constraint.PROGRESS_FORMAT;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
-    private final static String NAME_RULE_ERROR_MESSAGE = "6자 이상 이름은 허용하지 않습니다.";
-    private final static int NAME_RULE_LENGTH = 6;
-    private static final String PROGRESS_EXPRESSION = "-";
-    private static final String PROGRESS_FORMAT = "%s : %s \n";
-    private static final int THRESHOLD = 4;
-
     private final String name;
     private int location;
 
@@ -19,14 +19,16 @@ public class Car {
     }
 
     void move() {
-        boolean canForward = Randoms.pickNumberInRange(0, 9) >= THRESHOLD;
+        boolean canForward = Randoms.pickNumberInRange(0, 9) >= FORWARD_CONDITION_THRESHOLD;
         if (canForward) {
             this.location++;
         }
     }
 
     String getProgress() {
-        return String.format(PROGRESS_FORMAT, this.name, PROGRESS_EXPRESSION.repeat(this.location));
+        return String.format(PROGRESS_FORMAT,
+                this.name,
+                PROGRESS_EXPRESSION.repeat(this.location));
     }
 
     String getName() {
