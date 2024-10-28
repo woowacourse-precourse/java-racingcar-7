@@ -6,12 +6,12 @@ import camp.nextstep.edu.missionutils.test.Assertions;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.application.implement.WinnerIdentifier;
+import racingcar.application.implement.RacingWinnerIdentifier;
 import racingcar.domain.CarRacer;
 
-class WinnerIdentifierTest {
+class RacingWinnerIdentifierTest {
 
-    private final WinnerIdentifier winnerIdentifier = new WinnerIdentifier();
+    private final RacingWinnerIdentifier racingWinnerIdentifier = new RacingWinnerIdentifier();
 
     @DisplayName("가장 많이 이동한 자동차를 우승자로 선별한다.")
     @Test
@@ -25,7 +25,7 @@ class WinnerIdentifierTest {
             car2.forward();
 
             List<CarRacer> carRacers = List.of(car1, car2);
-            List<CarRacer> winners = winnerIdentifier.identify(carRacers);
+            List<CarRacer> winners = racingWinnerIdentifier.identify(carRacers);
 
             assertThat(winners).contains(car2);
         });
@@ -46,7 +46,7 @@ class WinnerIdentifierTest {
             car3.forward();
 
             List<CarRacer> carRacers = List.of(car1, car2, car3);
-            List<CarRacer> winners = winnerIdentifier.identify(carRacers);
+            List<CarRacer> winners = racingWinnerIdentifier.identify(carRacers);
 
             assertThat(winners).contains(car1, car2);
         });

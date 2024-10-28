@@ -14,10 +14,10 @@ public class RacingCarManager implements RacingManager<CarRacer> {
     private final RaceStarter<CarRacer> raceStarter;
     private final RacingCarRepository racingCarRepository;
     private final RacingHistoryManager<CarRacer> racingHistoryManager;
-    private final WinnerIdentifier winnerIdentifier;
+    private final WinnerIdentifier<CarRacer> winnerIdentifier;
 
     public RacingCarManager(RaceStarter<CarRacer> raceStarter, RacingCarRepository racingCarRepository,
-            RacingHistoryManager<CarRacer> racingHistoryManager, WinnerIdentifier winnerIdentifier) {
+            RacingHistoryManager<CarRacer> racingHistoryManager, WinnerIdentifier<CarRacer> winnerIdentifier) {
         this.raceStarter = raceStarter;
         this.racingCarRepository = racingCarRepository;
         this.racingHistoryManager = racingHistoryManager;

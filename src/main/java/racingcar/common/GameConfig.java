@@ -1,6 +1,7 @@
 package racingcar.common;
 
 import racingcar.application.implement.RacingHistoryManager;
+import racingcar.application.implement.RacingWinnerIdentifier;
 import racingcar.application.implement.WinnerIdentifier;
 import racingcar.common.support.RacingCarConverter;
 import racingcar.persistence.RacingCarHistoryRepository;
@@ -59,7 +60,7 @@ public class GameConfig {
         return new RacingCarHistoryManager(RacingCarHistoryRepository.getInstance(), new RacingCarHistoryWriter());
     }
 
-    private WinnerIdentifier winnerIdentifier() {
-        return new WinnerIdentifier();
+    private WinnerIdentifier<CarRacer> winnerIdentifier() {
+        return new RacingWinnerIdentifier();
     }
 }
