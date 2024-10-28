@@ -35,10 +35,7 @@ public class Application {
         Cars cars = new Cars(carNames);
 
         for (int i = 0; i < gameCount; i++) {
-            for (Car car : cars.getCars()) {
-                int randomNumber = RandomIntCreate();
-                car.move(randomNumber);
-            }
+            cars.moveCars();
             for (Car car : cars.getCars()) {
                 System.out.println(car.getName() + " : " + "-".repeat(car.getMoveDisctance()));
             }
