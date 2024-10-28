@@ -54,14 +54,18 @@ public class Application {
     // 클래스 분리에 대해 찾아보고, print를 개선할 수 있는 방법을 찾아보자.
     public static void viewRace(final int numberOfCar, final String[] name) {
         System.out.println("실행 결과");
-        for (int i = 0; i < numberOfCar; i++) {
-            System.out.print(name[i] + " : ");
-            for (int j = 0; j < racingDistance.get(i); j++) {
-                System.out.print("-");
-            }
+        for (int carNumber = 0; carNumber < numberOfCar; carNumber++) {
+            System.out.print(name[carNumber] + " : ");
+            printRacingDistance(carNumber);
             System.out.print("\n");
         }
         System.out.print("\n");
+    }
+
+    public static void printRacingDistance(final int carNumber) {
+        for (int j = 0; j < racingDistance.get(carNumber); j++) {
+            System.out.print("-");
+        }
     }
 
     public static void viewWinner(final int numberOfCar, final String[] name) {
