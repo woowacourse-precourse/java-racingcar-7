@@ -4,11 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
-    public static String getCarNames() {
-        return Console.readLine();
-    }
-
-    public static String getRound() {
+    public static String getRawString() {
         return Console.readLine();
     }
 }

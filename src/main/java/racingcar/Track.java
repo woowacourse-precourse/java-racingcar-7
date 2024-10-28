@@ -9,13 +9,13 @@ public class Track {
 
     public void start() {
         Output.printStartMessage();
-        String rawCarNamesString = Input.getCarNames();
+        String rawCarNamesString = Input.getRawString();
         Extractor<List<String>> carNameExtractor = new CarNameExtractor();
         List<String> carNames = carNameExtractor.extract(rawCarNamesString);
         Garage garage = new Garage(carNames);
 
         Output.printRoundMessage();
-        String rawRound = Input.getRound();
+        String rawRound = Input.getRawString();
         Extractor<Integer> roundExtractor = new RoundExtractor();
         int round = roundExtractor.extract(rawRound);
 
