@@ -16,8 +16,10 @@ public class InputController {
     public Input getInput() {
         String carNames = inputView.getCar();
         CarNamesParser carNameParser = new CarNamesParser(carNames);
+        CarVaildator.carVaildator(carNameParser.getCarNames()); // 자동차 이름 검증
 
         String tryCount = inputView.getTryCount();
+        TryVaildator.tryVaildator(tryCount);    // 시도 횟수 검증
 
         return new Input(carNameParser.getCarNames(), Integer.parseInt(tryCount));
     }
