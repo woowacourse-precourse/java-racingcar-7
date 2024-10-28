@@ -23,66 +23,6 @@
 - 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
-# 입출력 요구 사항
-## 입력
-- 경주할 자동차 이름(이름은 쉼표(,) 기준으로 구분)
-
-
-    pobi,woni,jun
-
-- 시도할 횟수
-
-
-    5
-
-## 출력
-- 차수별 실행 결과
-
-
-    pobi : --
-
-    woni : ----
-
-    jun : ---
-
-
-- 단독 우승자 안내 문구
-
-
-    최종 우승자 : pobi
-- 공동 우승자 안내 문구
-
-
-    최종 우승자 : pobi, jun
-
-## 실행 결과 예시
-    경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
-    pobi,woni,jun
-    시도할 횟수는 몇 회인가요?
-    5
-
-    실행 결과
-    pobi : -
-    woni :
-    jun : -
-
-    pobi : --
-    woni : -
-    jun : --
-
-    pobi : ---
-    woni : --
-    jun : ---
-
-    pobi : ----
-    woni : ---
-    jun : ----
-
-    pobi : -----
-    woni : ----
-    jun : -----
-
-    최종 우승자 : pobi, jun
 
 # 프로그래밍 요구 사항 1
 - JDK 21 버전에서 실행 가능해야 한다.
@@ -115,3 +55,49 @@
 -0에서 9까지의 정수 중 한 개의 정수 반환
 
     Randoms.pickNumberInRange(0, 9);
+
+# 기능 설명 및 클래스 설명.
+
+## 이 애플리케이션은 요구사항 기준으로 MVC (모델-뷰-컨트롤러) 아키텍처를 기반으로 설계되었습니다.
+
+
+1. Application
+- 기능: 애플리케이션의 진입점으로, 전체 프로그램의 흐름을 제어.
+
+2. Car
+- 기능: 자동차를 나타내는 클래스입니다. 자동차의 이름과 현재 위치를 관리한다.
+- 주요 메서드:
+   - move(): 자동차의 이동을 결정하고, 새로운 자동차 객체를 반환한다.
+
+   - displayPosition(): 현재 자동차의 위치를 문자열 형식으로 반환한다.
+
+   - validateCarName(String carName): 자동차 이름의 유효성을 검사한다.
+
+3. CarFactory
+- 기능: 자동차 객체를 생성하는 팩토리 클래스.
+- 주요 메서드:
+   - createCars(String[] names): 자동차 이름 배열을 받아 자동차 객체의 리스트를 생성한다.
+   - validateCarName(String carName): 자동차 이름의 유효성을 검사한다.
+
+4. InputHandler
+- 기능: 사용자로부터 입력을 처리하는 클래스.
+- 주요 메서드:
+   - getCarNames(): 사용자에게 자동차 이름을 입력받고, 쉼표로 구분하여 리스트로 반환한다.
+   - getAttemptCount(): 사용자에게 시도 횟수를 입력받고, 유효성을 검사하여 반환한다.
+   - validateAttempts(int attempts): 시도 횟수의 유효성을 검사한다.
+
+5. RacingGame
+- 기능: 자동차 경주를 관리하는 클래스이며, 경주에 참여하는 자동차와 시도 횟수를 관리한다.
+- 주요 메서드:
+   - startRace(): 경주를 시작하고 각 라운드를 플레이한다.
+   - playSingleRound(): 각 자동차를 이동시키고 라운드 결과를 출력.
+   - announceWinners(): 최종 우승자를 발표한다.
+   - validateCars(List<Car> raceCars): 경주에 참여하는 자동차의 유효성을 검사한다.
+
+6. ApplicationConstants
+- 기능: 애플리케이션에서 사용되는 상수들을 정의하는 클래스.
+- 주요 상수:
+   - INVALID_ATTEMPT_COUNT_MESSAGE: 유효하지 않은 시도 횟수에 대한 에러 메시지.
+   - CAR_NAME_VALIDATION_MESSAGE: 유효하지 않은 자동차 이름에 대한 에러 메시지.
+   - MOVE_THRESHOLD: 자동차 이동 여부를 결정하는 임계값.
+   - MAX_NAME_LENGTH: 자동차 이름의 최대 길이를 정의.
