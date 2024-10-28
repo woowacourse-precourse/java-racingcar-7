@@ -7,7 +7,7 @@ import java.util.List;
 
 public class OutputView {
     private static final String moveText = "-";
-
+    private static final String delimiter = ", ";
     public void printRoundResults(List<RoundResult> roundResults){
         System.out.println("출력");
         roundResults.forEach(this::printEachRoundResult);
@@ -20,5 +20,9 @@ public class OutputView {
             System.out.printf("%s : %s\n",carName,movement);
         }
         System.out.println();
+    }
+    public void printWinners(List<String> winners){
+        String winnerNames= String.join(delimiter, winners);
+        System.out.printf("%s가 최종 우승했습니다.",winnerNames);
     }
 }
