@@ -19,14 +19,11 @@ public class RacingCarController {
     }
 
     public void start() {
-        CarName carName = createCars();
-        int tryCount = getTryCount();
-        startRace(carName, tryCount);
+        startRace(createCars(), getTryCount());
     }
 
     private CarName createCars() {
-        List<String> carNames = getNameList(getCarNameInput());
-        return new CarName(carNames);
+        return new CarName(getNameList(getCarNameInput()));
     }
 
     private int getTryCount() {
