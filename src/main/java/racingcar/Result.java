@@ -17,8 +17,8 @@ public class Result {
             }
         }
         List<String> winnerNames = getWinnerNames();
-        String result = String.join(", ", winnerNames);
-        System.out.println("최종 우승자: " + result);
+        String result = String.join(",", winnerNames);
+        System.out.println("최종 우승자 : " + result);
     }
 
     private List<String> getWinnerNames() {
@@ -33,5 +33,9 @@ public class Result {
         for (Car car : cars) {
             maxAdvance = Math.max(maxAdvance, car.currentPosition());
         }
+    }
+
+    public List<Car> winners() {
+        return winnerList;
     }
 }
