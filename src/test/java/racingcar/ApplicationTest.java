@@ -32,7 +32,7 @@ class ApplicationTest extends NsTest {
     void 공동_우승자_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("pobi,woni,jun", "1");
+                    run("pobi,woni,jun", "3");
                     assertThat(output()).contains("pobi : -", "woni : -", "jun : -", "최종 우승자 : pobi, woni, jun");
                 },
                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
@@ -64,6 +64,19 @@ class ApplicationTest extends NsTest {
                     assertThat(outputResult).containsPattern("woni : (-+)*");
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+    @Test
+    void 자동차_최종_위치_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "5");
+                    String outputResult = output();
+                    // 각 자동차가 총 3회 시도 후 예상 위치에 도달하는지 확인
+                    assertThat(outputResult).containsPattern("pobi : -{1,5}");
+                    assertThat(outputResult).containsPattern("woni : -{0,5}");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, STOP
         );
     }
 
