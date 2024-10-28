@@ -51,7 +51,7 @@ class ApplicationTest extends NsTest {
     @ParameterizedTest
     @DisplayName("자동차 이름은 1자 이상 5자 이하여야 한다")
     @CsvSource({
-            "'pobi,,'",
+            "'pobi,woniii,,'",
             "'pobi,woniii'",
     })
     void 자동차_이름_글자수_예외_테스트(String carNames) {
@@ -76,13 +76,13 @@ class ApplicationTest extends NsTest {
      * 이동 횟수 입력에 대한 예외 테스트
      */
     @ParameterizedTest
-    @DisplayName("이동 횟수는 정수여야 한다")
+    @DisplayName("이동 횟수는 0 이상의 정수가 아닌 문자가 포함될 수 없다.")
     @CsvSource({
             "1.0",
             "abcd",
             ",:."
     })
-    void 이동_횟수_정수가_아닌_경우_테스트(String moveCnt) {
+    void 이동_횟수_정수가_아닌_문자_테스트(String moveCnt) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", moveCnt))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -91,10 +91,10 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @DisplayName("이동 횟수는 1 이상이어야 한다")
+    @DisplayName("이동 횟수는 1 이상의 정수여야 한다.")
     @CsvSource({
             "0",
-            "-1"
+            "00"
     })
     void 이동_횟수_범위_예외_테스트(String moveCnt) {
         assertSimpleTest(() ->
