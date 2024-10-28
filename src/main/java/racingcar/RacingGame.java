@@ -38,7 +38,6 @@ public class RacingGame {
         int max = getMaxPosition();
 
         for (Car car : cars) {
-
             if (car.getPosition() == max) {
                 winners.add(car.getName());
             }
