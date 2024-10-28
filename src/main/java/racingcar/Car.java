@@ -16,4 +16,9 @@ public class Car {
     public int getScore() {
         return score;
     }
+
+    public int increaseScore() {
+        score++;
+        return score;
+    }
 }
