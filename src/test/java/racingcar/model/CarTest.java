@@ -3,7 +3,6 @@ package racingcar.model;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
@@ -15,7 +14,7 @@ class CarTest {
         Car car = new Car("pobi");
 
         //then
-        assertThat(car.getWinningPoint()).isZero();
+        assertThat(car.getPoint()).isZero();
     }
 
     @Test
@@ -30,6 +29,6 @@ class CarTest {
         car.moveForward();
 
         //then
-        assertThat(car.getWinningPoint()).isSameAs(3);
+        assertThat(car.getPoint()).isSameAs(3);
     }
 }

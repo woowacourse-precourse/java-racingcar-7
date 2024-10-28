@@ -24,7 +24,7 @@ public class OutputView {
         System.out.println(CURRENT_RESULT);
         for (Car car : cars) { //
             String carName = car.getName();
-            String hyphenPoint = replacePointToHyphen(car.getWinningPoint());
+            String hyphenPoint = replacePointToHyphen(car.getPoint());
 
             System.out.println(carName + " : " + hyphenPoint);
         }

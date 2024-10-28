@@ -2,22 +2,22 @@ package racingcar.model;
 
 public class Car {
     private String name;
-    private int winningPoint;
+    private int point;
 
     public Car(String name) {
         this.name = name;
-        this.winningPoint = 0;
+        this.point = 0;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getWinningPoint() {
-        return winningPoint;
+    public int getPoint() {
+        return point;
     }
 
     public void moveForward() {
-        this.winningPoint++;
+        this.point++;
     }
 }

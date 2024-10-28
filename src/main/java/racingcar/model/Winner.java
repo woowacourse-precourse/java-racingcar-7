@@ -23,13 +23,13 @@ public class Winner {
         int highestPoint = 0;
 
         for (Car car : cars) {
-            if (car.getWinningPoint() > highestPoint) {
-                highestPoint = car.getWinningPoint();
+            if (car.getPoint() > highestPoint) {
+                highestPoint = car.getPoint();
             }
         }
 
         for (Car car : cars) {
-            if (car.getWinningPoint() == highestPoint) {
+            if (car.getPoint() == highestPoint) {
                 winners.add(car);
             }
         }
