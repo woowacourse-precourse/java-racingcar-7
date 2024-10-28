@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static racingcar.ExceptionMessage.CAR_NAME_DUPLICATE_EXCEPTION;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,6 +29,18 @@ public class CarsTest {
 
         assertThat(cars.getCarDtoList())
                 .isEqualTo(carDtoList);
+    }
+
+    @Test
+    void 저장하는_자동차_이름이_중복이면_예외() {
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("pobi");
+        cars.saveCar(car1);
+
+        assertThatThrownBy(() ->
+                cars.saveCar(car2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(CAR_NAME_DUPLICATE_EXCEPTION.message());
     }
 
     @Test
