@@ -20,7 +20,7 @@ class MovementTest {
 		car.move(randomNumber);
 
 		// then
-		assertEquals(car.getMovement(), expectedMovement);
+		assertEquals(expectedMovement, car.getMovement());
 	}
 
 	@Test
@@ -37,6 +37,6 @@ class MovementTest {
 		car.move(randomNumber);
 
 		// then
-		assertEquals(car.getMovement(), expectedMovement);
+		assertEquals(expectedMovement, car.getMovement());
 	}
 }
