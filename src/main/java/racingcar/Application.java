@@ -2,8 +2,11 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import static org.assertj.core.api.Assertions.*;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -15,9 +18,6 @@ public class Application {
         Map<String,Integer> racingResult= racingByInputNum(playerNameList(inputName),inputNum);
         List<String> winnerList = winner(racingResult,firstUserValue(racingResult));
         System.out.println("최종 우승자 : "+String.join(",",winnerList));
-
-
-
     }
 
     public static Map<String,Integer> playerNameList(String inputName) {//input 바탕으로 Map 생성
