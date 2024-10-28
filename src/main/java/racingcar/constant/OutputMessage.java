@@ -1,10 +1,20 @@
 package racingcar.constant;
 
-public class OutputMessage {
-    public static final String ENTER_CAR_NAMES = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    public static final String ENTER_ATTEMPTS = "시도할 횟수는 몇 회인가요?";
-    public static final String RESULT_PREFIX = "실행 결과";
-    public static final String WINNER_DELIMITER = ", ";
-    public static final String MOVEMENT_STATE_FORMAT = "%s : %s%n";
-    public static final String WINNERS_ANNOUNCEMENT = "최종 우승자 : ";
+public enum OutputMessage {
+    ENTER_CAR_NAMES("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"),
+    ENTER_ATTEMPTS("시도할 횟수는 몇 회인가요?"),
+    RESULT_PREFIX("실행 결과"),
+    WINNER_DELIMITER(", "),
+    MOVEMENT_STATE_FORMAT("%s : %s%n"),
+    WINNERS_ANNOUNCEMENT("최종 우승자 : ");
+
+    private final String message;
+
+    OutputMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }

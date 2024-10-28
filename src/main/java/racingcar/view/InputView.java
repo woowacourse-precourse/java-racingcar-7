@@ -8,7 +8,7 @@ import racingcar.service.ValidationService;
 
 public class InputView {
     public List<String> getCarNames() {
-        System.out.println(OutputMessage.ENTER_CAR_NAMES);
+        System.out.println(OutputMessage.ENTER_CAR_NAMES.getMessage());
         String input = Console.readLine();
 
         ValidationService.validateCarNamesInputFormat(input);
@@ -22,7 +22,7 @@ public class InputView {
     }
 
     public int getAttempts() {
-        System.out.println(OutputMessage.ENTER_ATTEMPTS);
+        System.out.println(OutputMessage.ENTER_ATTEMPTS.getMessage());
         String input = Console.readLine().trim();
         return ValidationService.validateAttempts(input);
     }
