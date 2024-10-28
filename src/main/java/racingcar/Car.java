@@ -7,11 +7,15 @@ public class Car {
     private int position;
 
     public Car(String name) {
+        validateCarName(name);
+        this.name = name;
+        this.position = 0;
+    }
+
+    private void validateCarName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
         }
-        this.name = name;
-        this.position = 0;
     }
 
     public String getName() {
@@ -23,13 +27,13 @@ public class Car {
     }
 
     public void move() {
-        int randomValue = Randoms.pickNumberInRange(0, 9); // 0에서 9 사이의 랜덤 값 생성
+        int randomValue = Randoms.pickNumberInRange(0, 9);
         if (randomValue >= 4) {
-            ++position; // 랜덤 값이 4 이상일 경우 전진
+            ++position;
         }
     }
 
     public String getPositionRepresentation() {
-        return "-".repeat(position); // 현재 위치만큼 '-'를 반복하여 문자열 생성
+        return "-".repeat(position);
     }
 }
