@@ -42,7 +42,7 @@ public class CarRacer extends Racer {
 
     private void validateNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(NAME_OVER_LENGTH_EXCEPTION);
+            throw new IllegalArgumentException(NAME_OVER_LENGTH);
         }
     }
 }

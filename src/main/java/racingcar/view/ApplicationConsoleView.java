@@ -17,7 +17,9 @@ public class ApplicationConsoleView implements ApplicationView {
     @Override
     public int requestGameCount() {
         println(REQUEST_INPUT_GAME_COUNT);
-        return Integer.parseInt(Console.readLine());
+        String inputValue = Console.readLine();
+        int number = parseToInt(inputValue);
+        return number;
     }
 
     @Override
