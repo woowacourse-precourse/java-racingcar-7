@@ -9,4 +9,6 @@ public class Convertor {
         }
         return Integer.parseInt(target);
     }
+
+    private Convertor() {}
 }
