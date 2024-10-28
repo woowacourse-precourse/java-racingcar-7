@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import racingcar.model.Car;
 import racingcar.util.GameManager;
 import racingcar.util.Saparator;
+import racingcar.validation.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -22,9 +23,12 @@ public class Controller {
 
     public void setCars(){
         String input = inputView.getCarNames();
+        Validator.validateEmpty(input);
+
         String[] carNames = saparator.split(input);
 
         for (String name : carNames){
+            Validator.validateLengthUpTo5(name);
             cars.add(new Car(name));
         }
     }
