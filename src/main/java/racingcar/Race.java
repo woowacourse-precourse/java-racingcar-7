@@ -19,6 +19,10 @@ public class Race {
         this.maxScore = 0;
     }
 
+    public boolean isForwardMovable() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
     public void displayStatus() {
         for (Car car : carList) {
             System.out.print(car.getName() + " : ");
