@@ -18,8 +18,14 @@ public class Cars {
         for (Car car : cars) {
             int randomNum = RandomNumberGenerator.generate();
             car.move(randomNum);
-            car.displayPosition();
+
+            displayPosition(car.getName(), car.getPosition());
         }
+    }
+
+    private static void displayPosition(String name, int position) {
+        final String MOVING_SYMBOL = "-";
+        System.out.println(name + " : " + MOVING_SYMBOL.repeat(position));
     }
 
     public String getWinners() {
