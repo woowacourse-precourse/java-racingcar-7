@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -22,6 +23,40 @@ public class RacingGame {
         this.carNameParser = carNameParser;
         this.attemptCountParser = attemptCountParser;
     }
+
+    /**
+     * 우승자 출력 기능
+     */
+    public void outputWinners(List<String> winnerNames){
+        System.out.println("최종 우승자 : " + String.join(", ", winnerNames));
+    }
+
+    /**
+     * 우승자 확인 기능
+     * */
+    public List<String> getWinners(){
+        String winnerName;
+        int maxMoveCount = getMaxMoveCount();
+
+        return cars.stream()
+                .filter(car ->car.getMoveCount() == maxMoveCount)
+                .map(Car::getName)
+                .toList();
+    }
+
+    /**
+     * cars 중 moveCount 최대값 찾는 메서드
+     * */
+    public int getMaxMoveCount(){
+        int maxMoveCount = 0;
+        for(Car car : cars){
+            if(car.getMoveCount() > maxMoveCount){
+                maxMoveCount = car.getMoveCount();
+            }
+        }
+        return maxMoveCount;
+    }
+
 
     /**
      * 실행결과 출력 기능
