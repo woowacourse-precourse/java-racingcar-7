@@ -1,24 +1,19 @@
-package model;
+package racingcar.model;
 
-import view.CarView;
+import racingcar.view.CarView;
 
 public class Car {
-
     private final CarView carView = new CarView();
-
-    public String name;
-
-    public int score = 0;
-
-    public int randomValue;
+    private final String name;
+    private int score; // 기본값 0으로 초기화됨
+    private int randomValue;
 
     public Car(String name) {
-        this.name = name;
+        this(name, 0);
     }
 
     public Car(String name, int randomValue) {
-        this.name = name;
-        this.randomValue = randomValue;
+        this(name, randomValue, 0);
     }
 
     public Car(String name, int randomValue, int score) {
@@ -30,46 +25,28 @@ public class Car {
     public void evaluateScoreBasedOnRandomValue(int randomValue) {
         this.randomValue = randomValue;
         if (this.randomValue >= 4) {
-            score += 1;
+            score++;
         }
         carView.updateScoreIfNeeded(name, score);
     }
 
-    public boolean determineWinners (int maxScore) {
-        if(maxScore == score) {
-            return true;
-        };
-        return false;
+    public boolean determineWinners(int maxScore) {
+        return maxScore == score;
     }
 
     public int compareScore(int currentMaxScore) {
-        if (score > currentMaxScore) {
-            return score;
-        } else {
-            return currentMaxScore;
-        }
+        return Math.max(score, currentMaxScore);
     }
-
-
 
     public int getScore() {
         return score;
-    }
-
-    public void setScore(int Score) {
-        this.score = Score;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setRandomValue(int randomValue) {
-        this.randomValue = randomValue;
-    }
-
     public int getRandomValue() {
         return randomValue;
     }
 }
-

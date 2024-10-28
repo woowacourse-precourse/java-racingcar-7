@@ -1,15 +1,11 @@
-package view;
-
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
-import model.Car;
+import racingcar.model.Car;
 
 public class CarView {
-
     public void showInputCarNamesMessage() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     }
@@ -18,17 +14,18 @@ public class CarView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
+    public void updateScoreIfNeeded(String name, int score) {
+        System.out.println(name + " : " + generateScoreDisplay(score));
+    }
+
     public String generateScoreDisplay(int score) {
         if (score <= 0) {
             return "";
         } else {
-            return "-".repeat(score); // 점수만큼 "-" 반복
+            return "-".repeat(score);
         }
     }
 
-    public void updateScoreIfNeeded(String name, int score) {
-        System.out.println(name + " : " + generateScoreDisplay(score));
-    }
 
     public void showWinners(List<Car> winners) {
         String winnerNames = winners.stream()
