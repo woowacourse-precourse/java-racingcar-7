@@ -13,8 +13,15 @@ public class Register {
     }
 
     public void carListUp(ArrayList<String> participateCars) {
+        duplicationValidation(participateCars);
         for (String name : participateCars) {
             carList.add(new Car(name));
+        }
+    }
+
+    public void duplicationValidation(ArrayList<String> duplicateCheck) {
+        if (duplicateCheck.size() != duplicateCheck.stream().distinct().count()) {
+            throw new IllegalArgumentException("이름이 중복되는 자동차들이 있습니다!");
         }
     }
 

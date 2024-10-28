@@ -3,10 +3,19 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class RegisterTest {
+
+    @Test
+    void 자동차_중복_확인_예외() {
+        Register register = new Register();
+        Assertions.assertThatIllegalArgumentException()
+                .isThrownBy(() ->
+                        register.duplicationValidation(new ArrayList<>(List.of("진용", "진용1", "진용"))));
+    }
 
     @Test
     void 자동차_리스트_등록_리스트_길이_확인() {
