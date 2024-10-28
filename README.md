@@ -1,7 +1,23 @@
-1. 자동차 이름, 시도할 횟수 입력 받기 → 경주할 자동차 이름(이름은 쉼표(,) 기준으로 구분), 시도할 횟수 출력하고 입력 받기 // main에서 입력받기
-2. 자동차 이름 ‘,’ 기준으로 이름 분리하기 // SplitName → input 처리
-3. 잘못된 이름 있는지 확인 → 이름이 5자 초과 시 잘못된 값 입력으로 판단 // CheckName → inpu 처리
-4. 각 자동차 별로 실행 횟수만큼 0~9 랜덤 값을 반환해서 몇 번 전진하는지 확인 // Racing → 전진 과정
-5. 모든 자동차들 중에서 우승자가 누군지 알아내고 우승 횟수 기록하기 // Winner → 전진 후 판단
-6. 최종적으로 우승 횟수가 가장 많은 사람 or 사람들을 찾아내기 // Winner → 우승 횟수 기록을 보고 판단
-7. “최종 우승자 : “ 를 포함해 우승한 자동차 이름 혹은 공동 우승한 자동차 이름들 출력하기 // main에서 출력
+1. 자동차 이름들 입력 받기 → [Initialize.java](http://Initialize.java) → initializeCars
+
+1-1 문자열 입력 받아 split해서 Car객체로 저장해주기
+
+1-2 객체로 저장하는 과정에서 공백에 대한 처리해주기
+
+1. 실행 횟수 입력 받기 → [Initialize.java](http://Initialize.java) → initializeAttemptCount
+
+2-1 모든 값 입력 받고 잘못된 이름이 있는지 확인하기 → ValidateValue.java → validateName
+
+2-2 음수이거나 정수가 아닌 경우에 대해 처리하기 → ValidateValue.java → validateAttemptCount
+
+1. 경주를 시작해 랜덤 값에 따라 이동할지 가만히 있을지 판단하고 결과 출력하기 → Racing.java
+
+3-1 각각의 car에 대해 랜덤 값 확인 후 갈지 말지 결정 moveCount에 저장해두기 → carMove
+
+3-2 저장한 값을 토대로 결과 출력해주기 → printRacingResult
+
+1. 최종 우승자 알아내고 출력하기 → [Winner.java](http://Winner.java) → printFinalWinner
+
+4-1 실행 횟수만큼 경주 후 moveCount가 가장 큰 값을 가지는 car가 최종 우승자가 됨
+
+4-2 출력 양식에 맞게 출력해주기
