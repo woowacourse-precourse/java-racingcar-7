@@ -6,6 +6,8 @@ import racingcar.domain.Car;
 
 public class CarMaker {
 
+    private static final String SPLITTER = ",";
+
     private final CarNameValidator carNameValidator;
 
     public CarMaker(CarNameValidator carNameValidator) {
@@ -19,7 +21,7 @@ public class CarMaker {
     }
 
     private List<String> parseCarNames(String carNames) {
-        return Stream.of(carNames.split(","))
+        return Stream.of(carNames.split(SPLITTER))
                 .map(String::trim)
                 .toList();
     }
