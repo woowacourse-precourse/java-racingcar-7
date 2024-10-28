@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.util.CarNameParser;
+import racingcar.util.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         String carNames = InputView.readCarNames();
+        Validator.validateCarNames(carNames);
         int attempt = InputView.readAttempt();
 
         CarNameParser parser = new CarNameParser();
