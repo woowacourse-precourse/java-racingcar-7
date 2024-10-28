@@ -6,6 +6,9 @@ import java.util.Set;
 
 public class Validation {
 
+    private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final int MIN_GAME_TRY_COUNT = 1;
+
     public static String validateCreateCar(String input, Set<String> distinctCarsName) {
         String carName = input.trim();
         validateInput(carName);
@@ -21,13 +24,13 @@ public class Validation {
     }
 
     private static void validateNameLength(String input) {
-        if(input.trim().length() > 5) {
+        if(input.trim().length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorType.CAR_NAME_LENGTH_ERROR.getMessage());
         }
     }
 
     public static void validateGameTryCount(int count) {
-        if(count < 1) {
+        if(count < MIN_GAME_TRY_COUNT) {
             throw new IllegalArgumentException(ErrorType.GAME_TRY_COUNT_ERROR.getMessage());
         }
     }

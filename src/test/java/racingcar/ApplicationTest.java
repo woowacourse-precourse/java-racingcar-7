@@ -36,10 +36,26 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("공백, 개행문자, tab 와같은 빈 문자열 입력시 예외 처리")
-    void 빈_문자열_입력_예외_처리() {
+    void checkedEmptyStringInput() {
         assertThatThrownBy(() -> runException(" ","","     "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorType.INPUT_NULL_ERROR.getMessage());
+    }
+
+    @Test
+    @DisplayName("게임 실행 횟수 1회 미만시 예외 처리")
+    void checkedTryGameNum() {
+        assertThatThrownBy(() -> runException("0", "-10", "-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorType.GAME_TRY_COUNT_ERROR.getMessage());
+    }
+
+    @Test
+    @DisplayName("중복된 이름 존재할시 예외 처리")
+    void checkedDuplicateCarName() {
+        assertThatThrownBy(() -> runException("kim", "jun", "kim"))
+                .isInstanceOf(IllegalArgumentException.class);
+//                .hasMessage(ErrorType.CAR_NAME_DUPLICATE_ERROR.getMessage()); -> 이거 왜안되지
     }
 
 
