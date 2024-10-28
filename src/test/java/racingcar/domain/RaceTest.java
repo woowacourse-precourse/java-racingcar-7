@@ -34,18 +34,39 @@ class RaceTest {
                 .hasMessage("중복된 이름의 자동차가 존재합니다.");
     }
 
-    @DisplayName("우승자 판별 성공")
+    @DisplayName("우승자 판별 성공 : 한 명의 우승자")
     @Test
-    void findWinnersTest() {
+    void findWinnerTest() {
+        //given
         Car pobi = new Car("pobi", forwardGenerator);
         Car woni = new Car("woni", stopGenerator);
         List<Car> cars = List.of(pobi, woni);
         Race race = new Race(cars);
-
         pobi.move();
 
+        //when
         List<Car> winners = race.findWinners();
 
+        //then
         Assertions.assertThat(winners.getFirst()).isEqualTo(pobi);
+    }
+
+    @DisplayName("우승자 판별 성공 : 둘 이상의 우승자")
+    @Test
+    void findWinnersTest() {
+        //given
+        Car pobi = new Car("pobi", forwardGenerator);
+        Car woni = new Car("woni", forwardGenerator);
+        List<Car> cars = List.of(pobi, woni);
+        Race race = new Race(cars);
+        pobi.move();
+        woni.move();
+
+        //when
+        List<Car> winners = race.findWinners();
+
+        //then
+        Assertions.assertThat(winners.getFirst()).isEqualTo(pobi);
+        Assertions.assertThat(winners.getLast()).isEqualTo(woni);
     }
 }

@@ -35,14 +35,17 @@ class RoundsTest {
     @DisplayName("라운드 반복 성공")
     @Test
     void repeatTest() {
+        //given
         Car pobi = new Car("pobi", forwardGenerator);
-        List<Car> cars = List.of(pobi);
-
+        Car woni = new Car("woni", stopGenerator);
+        List<Car> cars = List.of(pobi, woni);
         Race race = new Race(cars);
         Rounds rounds = new Rounds("3");
 
+        //when
         rounds.repeat(race::moveAll);
 
+        //then
         Assertions.assertThat(pobi.getDistance()).isEqualTo(3);
     }
 }
