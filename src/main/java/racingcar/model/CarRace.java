@@ -6,7 +6,7 @@ import java.util.List;
 public class CarRace {
     private List<Car> cars;
     private Long currentTryCnt;
-    private Long totalTryCnt;
+    private final Long totalTryCnt;
 
     public CarRace(List<String> names, Long totalTryCnt){
         this.cars = new ArrayList<>();
