@@ -16,7 +16,24 @@ public class InputView {
 
     public int inputTryCount() {
         System.out.println(INPUT_TRY_COUNT_MSG);
-        int tryCount = Integer.parseInt(Console.readLine());
-        return tryCount;
+        return readValidTryCount();
+    }
+
+    private int readValidTryCount() {
+        String input = Console.readLine();
+        while (!isValidNumber(input)) {
+            System.out.println("유효한 숫자를 입력해주세요.");
+            input = Console.readLine();
+        }
+        return Integer.parseInt(input);
+    }
+
+    private boolean isValidNumber(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
