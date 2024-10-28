@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
@@ -23,8 +24,9 @@ class JudgmentTest {
         Judgment judgment = new Judgment();
 
         //when
+        List<String> winnerList = judgment.makeWinnerNameList(cars);
 
         //then
-        Assertions.assertThat(judgment.makeWinnerNameList(cars).getFirst()).isEqualTo(car2Name);
+        Assertions.assertThat(winnerList.getFirst()).isEqualTo(car2Name);
     }
 }
