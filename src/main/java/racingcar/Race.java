@@ -36,15 +36,20 @@ public class Race {
     }
 
     private static List<String> findWinners(List<Car> cars) {
-        int maxDistance = cars.stream()
-                .mapToInt(car -> car.getDistance().size())
-                .max()
-                .orElse(0);
+        int maxDistance = getMaxDistance(cars);
 
         return cars.stream()
                 .filter(car -> car.getDistance().size() == maxDistance)
                 .map(Car::getName)
                 .toList();
+    }
+
+    private static int getMaxDistance(List<Car> cars) {
+        int maxDistance = cars.stream()
+                .mapToInt(car -> car.getDistance().size())
+                .max()
+                .orElse(0);
+        return maxDistance;
     }
 
     private static void randomlyDecideToMove(Car currentCar) {
