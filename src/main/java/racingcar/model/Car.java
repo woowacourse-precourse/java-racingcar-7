@@ -18,6 +18,12 @@ public class Car {
         }
     }
 
+    public String getResult() {
+        StringBuilder result = new StringBuilder(getName() + " : ");
+        result.append("-".repeat(Math.max(0, forward)));
+        return String.valueOf(result);
+    }
+
     public void printForward(){
         System.out.print(getName() + " : ");
         for(int i=0; i<forward; i++){
