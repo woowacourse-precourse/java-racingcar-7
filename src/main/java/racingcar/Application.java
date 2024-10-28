@@ -1,9 +1,7 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+
+import mvc.controller.RaceController;
 
 /*기능 요구 사항
 초간단 자동차 경주 게임을 구현한다.
@@ -18,66 +16,16 @@ import java.util.List;
 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
 */
+
+/*TODO
+ * - 실행의 책임을 다하기 (예외 대응, 리소스 정리 등)진행하기
+ * */
 public class Application {
     public static void main(String[] args) {
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String rawNameList = Console.readLine(); // need to validate
-        String[] nameList= rawNameList.split(",");
+        RaceController raceController = new RaceController();
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String rawTryCnt = Console.readLine();
-        int tryCnt = 0;
-
-        try {
-            tryCnt = Integer.parseInt(rawTryCnt);
-        }
-        catch(Exception e){
-
-            throw new IllegalArgumentException("It is not number.");
-        }
-
-        List<Car> carList = new ArrayList<Car>();
-        ArrayList<Car> winnerCars = new ArrayList<Car> ();
-
-        for(String name : nameList){
-            carList.add(new Car(name));
-        }
-
-        System.out.println("실행 결과");
-        for(int i = 0; i < tryCnt; ++i){
-
-            for(Car car : carList){
-                car.moveForward();
-            }
-            System.out.print("\n");
-        }
-
-        int maxMove = carList.getFirst().moveCnt;
-
-        for(Car car : carList){
-
-            if(maxMove < car.moveCnt){
-                maxMove = car.moveCnt;;
-            }
-        }
-
-        for(Car car : carList){
-
-            if(maxMove == car.moveCnt){
-                winnerCars.add(car);
-            }
-        }
-
-        String winner = "";
-
-        for(Car car : winnerCars){
-            winner = winner.concat(car.name+", ");
-        }
-
-        winner = winner.substring(0,winner.lastIndexOf(", "));
-
-        System.out.println("최종 우승자 : " + winner);
+        raceController.runRace();
 
     }
 }

@@ -14,3 +14,31 @@
   - user interface
   - race car 
   - give results
+
+# Restructure as MVC pattern
+
+## Model
+
+### CarModel
+
+- have responsibility to process main logic and update Car data
+- provide interface for service logic and accessing Car data list
+
+## Controller
+
+### RaceController
+
+- have responsibility to handle user request and send request to View and Model
+- provide interface to user for request
+
+
+## View
+
+### RaceView
+
+- have responsibility to interact with User and validate input or output
+- provide interface for UI
+
+## Main Application
+
+- run and manage controller
