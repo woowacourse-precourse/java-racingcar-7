@@ -55,15 +55,9 @@
 ---
 
 ### 🕹️RacingController
-- [ ] 싱글톤으로 설계
-- [ ] 등록정보를 입력받는다.
-- [ ] 경기를 준비한다.
-    - [ ] 경기 세팅을 맡을 RacePrepService를 생성한다.
-    - [ ] 경기를 생성을 맡을 RaceArenaService를 생성한다.
-        - [ ] RaceArenaService 에 RacePrepService를 주입한다.
-    - [ ] RaceArenaService 에서 준비된 경기를 만든다.
-- [ ] Lap이 진행되는 방식을 설정한다.
-    - [ ] LapUpdateService를 주입한다.
+- [x] 싱글톤으로 설계
+- [x] Lap이 진행되는 방식을 설정한다.
+    - [x] LapUpdateService를 주입한다.
 - [ ] Race를 업데이트 한다.
 
 ### 🕹ScreenController
