@@ -7,11 +7,12 @@ import java.util.*;
 
 public class Application {
     public static Map<String, String> cars = new LinkedHashMap<>();
+    public static List<String> winners = new ArrayList<>();
     public static int N;
     public static void main(String[] args) {
         try {
             input();
-            race();
+            output();
         } catch(Exception e) {
             throw new IllegalArgumentException();
         }
@@ -50,10 +51,4 @@ public class Application {
         System.out.println();
     }
 
-    public static void output() {
-        System.out.println("실행 결과");
-        for(int i = 0; i < N; i++) {
-            race();
-        }
-    }
 }
