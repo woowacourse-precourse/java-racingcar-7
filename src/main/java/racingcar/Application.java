@@ -44,11 +44,12 @@ class Racingcar {
     }
 
     void setCarMove(final String text) {
+
         for(final String carName : text.split(",")) {
             if (carName.length() > NAME_LENGTH_LIMIT){
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
-            if (!carName.isEmpty()) { //null까지 처리하는지 의문
+            if (!carName.isEmpty()) {
                 carMove.put(carName, 0);
             }
         }
