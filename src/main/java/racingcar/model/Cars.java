@@ -8,6 +8,7 @@ import java.util.Set;
 
 public class Cars {
 
+    private static final int MIN_CAR_COUNT = 2;
     private final List<Car> cars;
 
     private Cars(List<Car> cars) {
@@ -58,7 +59,7 @@ public class Cars {
     }
 
     public void validateCarCountAboveTwo(List<Car> cars) {
-        if (cars.size() < 2) {
+        if (cars.size() < MIN_CAR_COUNT) {
             throw new IllegalArgumentException("자동차 이름을 2개 이상 입력해야 합니다. (쉼표로 구분)");
         }
     }

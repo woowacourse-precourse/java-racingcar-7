@@ -2,7 +2,8 @@ package racingcar.model;
 
 public class Car {
 
-    private CarName name;
+    private static final int MAX_NON_ADVANCE_NUMBER = 3;
+    private final CarName name;
     private int advanceCount = 0;
 
     private Car(String name) {
@@ -14,7 +15,7 @@ public class Car {
     }
 
     public void advance(int number) {
-        if (number > 3) {
+        if (number > MAX_NON_ADVANCE_NUMBER) {
             advanceCount++;
         }
     }

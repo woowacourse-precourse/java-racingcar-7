@@ -4,6 +4,7 @@ import java.util.List;
 import racingcar.view.OutputView;
 
 public class RacingGame {
+
     private final Cars cars;
 
     public RacingGame(Cars cars) {
