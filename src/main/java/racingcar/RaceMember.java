@@ -20,14 +20,13 @@ public class RaceMember {
     }
 
     public List<Car> getWinner() {
-        int maxPosition = raceMember.stream()
+        int fastestCarPosition = raceMember.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
 
         return raceMember.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.getPosition() == fastestCarPosition)
                 .toList();
-
     }
 }

@@ -1,6 +1,6 @@
 package racingcar;
 
-public class RoundInputParser {
+public class RoundNumParser {
     public static int parse(String input) {
         validateInput(input);
         return processInput(input);

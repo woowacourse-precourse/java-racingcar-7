@@ -13,8 +13,8 @@ public class RaceManager {
     private void race(int round) {
         for (int i = 0; i < round; i++) {
             raceMember.moveAll();
-            OutputView.reportProgress(raceMember.getRaceMember());
+            OutputView.announceRaceProgress(raceMember.getRaceMember());
         }
-        OutputView.reportRaceResult(raceMember.getWinner());
+        OutputView.announceRaceResult(raceMember.getWinner());
     }
 }

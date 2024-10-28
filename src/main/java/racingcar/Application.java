@@ -6,6 +6,6 @@ public class Application {
         String roundInput = InputView.readRoundCount();
 
         RaceManager raceManager = new RaceManager();
-        raceManager.raceStart(CarNameParser.parse(carName), RoundInputParser.parse(roundInput));
+        raceManager.raceStart(CarNameParser.parse(carName), RoundNumParser.parse(roundInput));
     }
 }

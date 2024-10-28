@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarNameParser {
     private static int emptyCarNameCount = 1;
@@ -45,5 +44,4 @@ public class CarNameParser {
         }
         return carName;
     }
-
 }
