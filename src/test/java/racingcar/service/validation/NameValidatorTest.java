@@ -15,7 +15,7 @@ class NameValidatorTest {
     private final NameValidator validator = new NameValidator();
 
     @Test
-    void 유효값_통과_테스트() { // TODO: 리팩토링 이후 수
+    void 유효값_통과_테스트() {
         List<String> names = List.of("pobi", "woni");
         assertDoesNotThrow(() -> validator.validate(names));
     }
