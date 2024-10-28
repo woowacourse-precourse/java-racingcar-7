@@ -16,4 +16,12 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름은 5자 이하입니다.");
         }
     }
+
+    void point() {
+        // 랜덤 값으로 자동차 전진 결정
+        int randomScore = Randoms.pickNumberInRange(0, 9);
+        if (randomScore >= 4) {
+            count++;
+        }
+    }
 }
