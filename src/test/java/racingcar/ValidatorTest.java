@@ -54,4 +54,35 @@ public class ValidatorTest {
             validator.validateTryCounts(input);
         }
     }
+
+    @Nested
+    @DisplayName("자동차 이름 검증")
+    class CarNameValidation {
+
+        @Test
+        @DisplayName("6글자 이상 입력 시 예외 발생")
+        void throwsExceptionWhenCarNameExceedsMaxLength() {
+            String input = "Car1,Car2,Car123456";
+            assertThatThrownBy(() -> validator.validateCarNames(input))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("자동차 이름은 5자 이하이어야 합니다");
+        }
+
+        @Test
+        @DisplayName("중복된 자동차 이름 입력 시 예외 발생")
+        void throwsExceptionWhenDuplicateCarNames() {
+            String input = "Car1,Car1,Car2";
+            assertThatThrownBy(() -> validator.validateCarNames(input))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("중복된 자동차가 있습니다");
+        }
+
+        @Test
+        @DisplayName("정상적인 자동차 이름 입력 시 예외가 반환되지 않는 케이스 검증")
+        void doesNotThrowExceptionWhenCarNamesAreValid() {
+            String input = "Car1,Car2,Car3";
+            // 예외가 발생하지 않음을 확인
+            validator.validateCarNames(input);
+        }
+    }
 }
