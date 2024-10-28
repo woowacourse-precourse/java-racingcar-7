@@ -15,6 +15,12 @@ public class RacingCarView {
         return new InputDTO(input);
     }
 
+    public int getRoundTime(){
+        String input = readLine();
+
+        return Integer.parseInt(input);
+    }
+
 }
 
 
