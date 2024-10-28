@@ -19,14 +19,24 @@ class CarTest {
         Assertions.assertThat(car.getName()).isEqualTo(carName);
     }
 
-    @DisplayName("자동차 생성 실패 : 6자 이상 이름")
+    @DisplayName("자동차 생성 실패 : 길이가 6자 이상인 이름")
     @Test
-    void validateNameTest() {
+    void validateNameLengthTest() {
         String carName = "javaji";
 
         Assertions.assertThatThrownBy(() -> new Car(carName, stopGenerator))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자 이하여야 합니다.");
+    }
+
+    @DisplayName("자동차 생성 실패 : 공백이 포함된 이름")
+    @Test
+    void validateNoSpaceTest() {
+        String carName = " pobi";
+
+        Assertions.assertThatThrownBy(() -> new Car(carName, stopGenerator))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름에 공백을 포함할 수 없습니다.");
     }
 
     @DisplayName("자동차 전진 성공")

@@ -16,7 +16,6 @@ public class Race {
 
     private List<String> parseCarNames(String rawCarNames) {
         return Stream.of(rawCarNames.split(","))
-                .map(String::trim)
                 .toList();
     }
 
