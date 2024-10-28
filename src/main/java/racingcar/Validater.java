@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Set;
+
 public class Validater {
     public static void validateCarNames(String[] carNames){
         validateCarsCount(carNames);
@@ -25,10 +27,11 @@ public class Validater {
     }
 
     private static void validateDuplicateCarName(String[] carNames) {
-        for (String carName : carNames){
-            if (carName.length() > 5){
-                throw new IllegalArgumentException("[ERROR] 중복된 이름은 입력 불가능합니다.");
-            }
+        try {
+            Set<String> carNamesSet = Set.of(carNames);
+        }
+        catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("[ERROR] 중복된 이름은 입력 불가능합니다.");
         }
     }
 
