@@ -12,6 +12,7 @@ public class Validator {
 		validateInputEmpty(inputCarNames);
 
 		List<String> carNames = Delimiter.COMMA.splitCarNames(inputCarNames);
+		validateSingleCarName(carNames);
 		validateCarNameLength(carNames);
 		validateDuplicateCarNames(carNames);
 	}
@@ -19,6 +20,12 @@ public class Validator {
 	private static void validateInputEmpty(String inputCarNames) {
 		if (inputCarNames == null || inputCarNames.trim().isEmpty()) {
 			throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
+		}
+	}
+
+	private static void validateSingleCarName(List<String> carNames) {
+		if (carNames.size() == 1) {
+			throw new IllegalArgumentException(ErrorMessage.SINGLE_CAR_NAME.getMessage());
 		}
 	}
 
