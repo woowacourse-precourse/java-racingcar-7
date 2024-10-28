@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.Car;
 import racingcar.service.GameService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -11,7 +12,7 @@ public class GameController {
     private static final InputView inputView = new InputView();
     private static final OutputView outputView = new OutputView();
 
-    public static void executeGame() {
+    public void executeGame() {
         // 사용자 입력 받기
         List<String> carNames = inputView.getCarNamesInput();
         int gameCount = inputView.getGameCountInput();
