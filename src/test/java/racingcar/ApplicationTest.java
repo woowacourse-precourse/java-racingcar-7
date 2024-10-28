@@ -2,7 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import racingcar.controller.CarController;
+import racingcar.service.CarService;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.view.OutputView;
@@ -24,6 +24,17 @@ class ApplicationTest extends NsTest {
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
             },
             MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "4");
+                    assertThat(output()).contains("pobi : ----", "woni : ---", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD,MOVING_FORWARD,MOVING_FORWARD,MOVING_FORWARD,MOVING_FORWARD,MOVING_FORWARD,MOVING_FORWARD,STOP
         );
     }
 
@@ -108,9 +119,9 @@ class ApplicationTest extends NsTest {
         cars.addCar(Car.newCar("pobi"));
         cars.addCar(Car.newCar("jini"));
 
-        CarController carController = new CarController();
+        CarService carService = new CarService();
         OutputView outputView = new OutputView();
-        carController.moveOrStopCarsByRandomNumber(cars);
+        carService.moveOrStopCarsByRandomNumber(cars);
         outputView.printEachRound(cars);
     }
 
@@ -126,8 +137,8 @@ class ApplicationTest extends NsTest {
         cars.addCar(pobi);
         cars.addCar(jini);
 
-        CarController carController = new CarController();
-        Cars winners = carController.getWinners(cars.getCarList());
+        CarService carService = new CarService();
+        Cars winners = carService.getWinners(cars.getCarList());
 
         assertThat(winners.getCarList().getFirst().getName()).isEqualTo("jini");
     }

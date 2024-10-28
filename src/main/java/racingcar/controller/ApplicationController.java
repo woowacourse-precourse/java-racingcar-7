@@ -1,22 +1,23 @@
 package racingcar.controller;
 
 import racingcar.model.Cars;
-import racingcar.model.Extractor;
-import racingcar.model.Validator;
+import racingcar.service.CarService;
+import racingcar.service.Extractor;
+import racingcar.service.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class ApplicationController {
 
-    private final CarController carController;
+    private final CarService carService;
     private final Extractor extractor;
     private final Validator validator;
     private final InputView inputView;
     private final OutputView outputView;
 
-    public ApplicationController(CarController carController, Extractor extractor, Validator validator,
+    public ApplicationController(CarService carService, Extractor extractor, Validator validator,
                                  InputView inputView, OutputView outputView) {
-        this.carController = carController;
+        this.carService = carService;
         this.extractor = extractor;
         this.validator = validator;
         this.inputView = inputView;
@@ -30,11 +31,11 @@ public class ApplicationController {
 
         long number = validator.validateRoundNumber(inputView.inputNumber());
         for (long i = 0; i < number; i++) {
-            carController.moveOrStopCarsByRandomNumber(cars);
+            carService.moveOrStopCarsByRandomNumber(cars);
             outputView.printEachRound(cars);
         }
 
-        Cars winners = carController.getWinners(cars.getCarList());
+        Cars winners = carService.getWinners(cars.getCarList());
         outputView.printWinnersName(winners);
     }
 

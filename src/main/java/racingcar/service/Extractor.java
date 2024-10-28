@@ -1,4 +1,7 @@
-package racingcar.model;
+package racingcar.service;
+
+import racingcar.model.Car;
+import racingcar.model.Cars;
 
 public class Extractor {
 

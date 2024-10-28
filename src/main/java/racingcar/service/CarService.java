@@ -1,4 +1,4 @@
-package racingcar.controller;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Comparator;
@@ -6,7 +6,7 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 
-public class CarController {
+public class CarService {
 
     public Cars getWinners(List<Car> cars) {
         sortCarsByDistance(cars);
