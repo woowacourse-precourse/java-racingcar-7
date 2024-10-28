@@ -12,7 +12,7 @@ public class RaceService {
 
     public void runRound(List<Car> cars){
         for (Car car : cars) {
-            if (shouldMoveForward(generateRaandomDigit())){
+            if (shouldMoveForward(generateRandomDigit())){
                 car.moveForward();
             }
         }
@@ -22,7 +22,7 @@ public class RaceService {
         return randomDigit >= 4;
     }
 
-    public int generateRaandomDigit() {
+    public int generateRandomDigit() {
         return Randoms.pickNumberInRange(0, 9);
     }
 }
