@@ -25,7 +25,7 @@ public class Application {
             printRoundProgress(carNames, positions);
         }
 
-        String winner = getWinner();
+        String winner = getWinner(carNames, positions);
         System.out.println("최종 우승자 : " + winner);
     }
 
@@ -39,8 +39,27 @@ public class Application {
     }
 
 
-    private static String getWinner() {
-        return "";
+    private static String getWinner(String[] carNames, String[] positions) {
+        int maxPosition = 0;
+        StringBuilder winners = new StringBuilder();
+
+        for (String position : positions) {
+            int currentPosition = position.length();
+            if (currentPosition > maxPosition) {
+                maxPosition = currentPosition;
+            }
+        }
+
+        // 우승자 찾기
+        for (int i = 0; i < carNames.length; i++) {
+            if (positions[i].length() == maxPosition) {
+                if (winners.length() > 0) {
+                    winners.append(", ");
+                }
+                winners.append(carNames[i]);
+            }
+        }
+        return winners.toString();
     }
 
     private static void validateInput(String[] cars) {
