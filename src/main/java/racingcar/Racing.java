@@ -163,4 +163,11 @@ public class Racing {
         List<String> winnersList = getWinners();
         return String.join(",", winnersList);
     }
+
+    public void run() {
+        input();
+        splitCarsName(cars);
+        attemptsMoving();
+        printWinner();
+    }
 }
