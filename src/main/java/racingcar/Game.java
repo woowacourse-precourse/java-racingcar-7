@@ -46,7 +46,7 @@ public class Game {
             Car currentCar = cars.get(i);
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             checkIfRandomNumberIsOver4(randomNumber, currentCar);
-            System.out.println(currentCar.toString());
+            OutputHandler.printExecuteResult(currentCar.toString());
         }
     }
 

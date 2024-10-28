@@ -22,4 +22,8 @@ public class OutputHandler {
     public static void printWinner(String result) {
         System.out.println("최종 우승자 : " + result);
     }
+
+    public static void printExecuteResult(String executeResult) {
+        System.out.println(executeResult);
+    }
 }
