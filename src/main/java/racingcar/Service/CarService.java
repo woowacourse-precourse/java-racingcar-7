@@ -1,8 +1,6 @@
 package racingcar.Service;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.Model.Car;
-import racingcar.View.OutputView;
 
 import java.util.ArrayList;
 
