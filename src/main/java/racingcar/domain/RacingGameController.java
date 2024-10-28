@@ -3,16 +3,14 @@ package racingcar.domain;
 import racingcar.exception.ExceptionMessage;
 import racingcar.util.RandomDigitGenerator;
 import racingcar.view.OutputView;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGameController {
 
-    private List<Car> cars;
-    private int tryCount;
-    private RandomDigitGenerator rdg;
-    private OutputView outputView;
+    private final List<Car> cars;
+    private final int tryCount;
+    private final RandomDigitGenerator rdg;
+    private final OutputView outputView;
 
     public RacingGameController(Cars cars, int tryCount, RandomDigitGenerator rdg, OutputView outputView) {
         validTryCount(tryCount);
@@ -43,12 +41,9 @@ public class RacingGameController {
                 .max(Integer::compareTo)
                 .orElse(0);
 
-        List<Car> winner = cars.stream().filter(car -> car.getPosition() == max)
-                .toList();
-
-        return winner.stream()
+        return cars.stream().filter(car -> car.getPosition() == max)
                 .map(Car::getName)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private void validTryCount(int tryCount) {

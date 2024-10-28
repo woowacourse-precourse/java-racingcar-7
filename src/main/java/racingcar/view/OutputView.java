@@ -4,18 +4,15 @@ import racingcar.domain.Car;
 
 import java.util.List;
 
+
 import static racingcar.domain.StringConstant.*;
 
 public class OutputView {
 
     public void printWinners(List<String> winners) {
         StringBuilder sb = new StringBuilder();
-        sb.append(winners.get(0));
 
-        if (winners.size() == 1) {
-            System.out.printf(WINNER_MESSAGE.getValue(), sb);
-            return;
-        }
+        sb.append(winners.getFirst());
 
         for (int i = 1; i < winners.size(); i++) {
             sb.append(COMMON_WINNER_DELIMITER.getValue()).append(winners.get(i));
