@@ -7,6 +7,7 @@ import java.util.Map;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.CarName;
+import racingcar.domain.TryNumber;
 import racingcar.io.InputHandler;
 import racingcar.io.OutputHandler;
 
@@ -14,10 +15,10 @@ public class RacingCarMachine {
 
 	private final InputHandler inputHandler;
 	private final OutputHandler outputHandler;
-	private Map<String, String> carForward = new LinkedHashMap<>();
+	private final Map<String, String> carForward = new LinkedHashMap<>();
 	private CarName carName;
-	private List<String> winner = new ArrayList<>();
-	private int tryNumber;
+	private final List<String> winner = new ArrayList<>();
+	private TryNumber tryNumber;
 
 	public RacingCarMachine(OutputHandler outputHandler, InputHandler inputHandler) {
 		this.outputHandler = outputHandler;
@@ -40,15 +41,15 @@ public class RacingCarMachine {
 		outputHandler.showTryMessage();
 
 		try {
-			tryNumber = inputHandler.getUserTryNumber();
+			tryNumber = TryNumber.from(inputHandler.getUserTryNumber());
 
 			// 6. 시도 횟수로 0이 입력된 경우
-			if (isSameTryNumberZero()) {
+			if (tryNumber.isSameTryNumberZero()) {
 				throw new IllegalArgumentException("게임을 실행할 수 없습니다.");
 			}
 
 			// 4. 시도 횟수로 음수가 입력된 경우
-			if (doesTryNumberNegative()) {
+			if (tryNumber.doesTryNumberNegative()) {
 				throw new IllegalArgumentException("시도 횟수는 양수를 입력해주세요.");
 			}
 			// 5. 시도 횟수로 숫자가 아닌 값이 입력된 경우
@@ -103,11 +104,11 @@ public class RacingCarMachine {
 	}
 
 	private boolean doseOneTryNumberAndAllCarsNotForward() {
-		return tryNumber == 1 && carForward.values().stream().allMatch(length -> length.equals(""));
+		return tryNumber.getTryNumber() == 1 && carForward.values().stream().allMatch(length -> length.equals(""));
 	}
 
 	private void excuteGameByTryNumber() {
-		for (int i = 0; i < tryNumber; i++) {
+		for (int i = 0; i < tryNumber.getTryNumber(); i++) {
 			canMoveForward();
 			outputHandler.showBlankSpace();
 		}
@@ -121,13 +122,5 @@ public class RacingCarMachine {
 
 			outputHandler.showMovementStatus(car, carForward);
 		}
-	}
-
-	private boolean doesTryNumberNegative() {
-		return tryNumber < 0;
-	}
-
-	private boolean isSameTryNumberZero() {
-		return tryNumber == 0;
 	}
 }
