@@ -5,9 +5,7 @@ import static racingcar.Utils.*;
 
 public class Application {
     public static void main(String[] args) {
-        String carNames = readLine();
-        getNamesFromString(carNames);
-
+        String[] carNames = getNamesFromString(readLine());
         int tryCount = getTryCountFromString(readLine());
     }
 }

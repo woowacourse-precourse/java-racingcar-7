@@ -2,6 +2,9 @@ package racingcar;
 
 public class Utils {
     static String[] getNamesFromString(String names) {
+        if (names == null || names.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 필수 입력값입니다. ");
+        }
         names = names.replaceAll(" ", "");
         String[] nameArray = names.split(",");
 
