@@ -4,7 +4,6 @@ import racingcar.constant.ExceptionMessage;
 
 public class Car {
 
-    private static final int RUN_NUMBER = 4;
     private static final String POSITION_MARK = "-";
     private static final String NAME_MARK = " : ";
     private static final int MAX_NAME_LENGTH = 5;
@@ -25,9 +24,8 @@ public class Car {
         }
     }
 
-    public void move(NumberGenerator numberGenerator) {
-        int random = numberGenerator.generateNumber();
-        if (random >= RUN_NUMBER) {
+    public void move(MovementJudge movementJudge) {
+        if (movementJudge.isMovable()) {
             position++;
         }
     }

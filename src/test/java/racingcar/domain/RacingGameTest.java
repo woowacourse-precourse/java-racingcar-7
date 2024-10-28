@@ -16,7 +16,7 @@ class RacingGameTest {
         Car car1 = new Car("Car1");
         Car car2 = new Car("Car2");
         Cars cars = new Cars(List.of(car1, car2));
-        RacingGame racingGame = new RacingGame(cars, 1, new TestNumberGenerator());
+        RacingGame racingGame = new RacingGame(cars, 1, new TestMovementJudge());
 
         // when
         racingGame.moveCars();
@@ -35,7 +35,7 @@ class RacingGameTest {
         int tryCount = 1;
         Car car = new Car("Car1");
         Cars cars = new Cars(List.of(car));
-        RacingGame racingGame = new RacingGame(cars, tryCount, new TestNumberGenerator());
+        RacingGame racingGame = new RacingGame(cars, tryCount, new TestMovementJudge());
 
         // when
         boolean progress = racingGame.isProgress();
@@ -51,7 +51,7 @@ class RacingGameTest {
         int tryCount = 0;
         Car car = new Car("Car1");
         Cars cars = new Cars(List.of(car));
-        RacingGame racingGame = new RacingGame(cars, tryCount, new TestNumberGenerator());
+        RacingGame racingGame = new RacingGame(cars, tryCount, new TestMovementJudge());
 
         // when
         boolean progress = racingGame.isProgress();
@@ -60,10 +60,10 @@ class RacingGameTest {
         assertThat(progress).isFalse();
     }
 
-    class TestNumberGenerator implements NumberGenerator {
+    static class TestMovementJudge implements MovementJudge {
         @Override
-        public int generateNumber() {
-            return 4;
+        public boolean isMovable() {
+            return true;
         }
     }
 }

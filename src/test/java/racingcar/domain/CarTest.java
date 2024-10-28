@@ -39,10 +39,10 @@ class CarTest {
         Car car = new Car(name);
 
         // when
-        car.move(new NumberGenerator() {
+        car.move(new MovementJudge() {
             @Override
-            public int generateNumber() {
-                return 4;
+            public boolean isMovable() {
+                return true;
             }
         });
 
@@ -58,10 +58,10 @@ class CarTest {
         Car car = new Car(name);
 
         // when
-        car.move(new NumberGenerator() {
+        car.move(new MovementJudge() {
             @Override
-            public int generateNumber() {
-                return 3;
+            public boolean isMovable() {
+                return false;
             }
         });
 

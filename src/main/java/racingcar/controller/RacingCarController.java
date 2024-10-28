@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
-import racingcar.domain.RandomNumberGenerator;
+import racingcar.domain.RandomMovementJudge;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -28,7 +28,7 @@ public class RacingCarController {
     }
 
     private void startRacing(Cars cars, int tryCount) {
-        RacingGame game = new RacingGame(cars, tryCount, new RandomNumberGenerator());
+        RacingGame game = new RacingGame(cars, tryCount, new RandomMovementJudge());
         outputView.printProgressGuide();
         while (game.isProgress()) {
             game.moveCars();

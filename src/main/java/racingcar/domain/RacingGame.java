@@ -4,16 +4,16 @@ public class RacingGame {
 
     private final Cars cars;
     private final ProgressManagement progressManagement;
-    private final NumberGenerator numberGenerator;
+    private final MovementJudge movementJudge;
 
-    public RacingGame(Cars cars, int tryCount, NumberGenerator numberGenerator) {
+    public RacingGame(Cars cars, int tryCount, MovementJudge movementJudge) {
         this.cars = cars;
         this.progressManagement = new ProgressManagement(tryCount);
-        this.numberGenerator = numberGenerator;
+        this.movementJudge = movementJudge;
     }
 
     public void moveCars() {
-        cars.moveCars(numberGenerator);
+        cars.moveCars(movementJudge);
         progressManagement.incrementTryCount();
     }
 

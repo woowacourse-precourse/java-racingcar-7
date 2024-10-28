@@ -33,10 +33,10 @@ class CarsTest {
         Cars cars = new Cars(List.of(car1, car2));
 
         // when
-        cars.moveCars(new NumberGenerator() {
+        cars.moveCars(new MovementJudge() {
             @Override
-            public int generateNumber() {
-                return 4;
+            public boolean isMovable() {
+                return true;
             }
         });
 
