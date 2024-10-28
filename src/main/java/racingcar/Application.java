@@ -11,17 +11,13 @@ public class Application {
 	private static final int MOVE_THRESHOLD = 4;
 	private static final int MAX_NAME_LENGTH = 5;
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-    
     	String[] carName = inputCarNames();
     	int moveSet =  inputMoveSet();
     	List<Car> cars = createCar(carName);
     	game(cars, moveSet);
     	printWinners(cars);
-    	
     }
-    	
-    // 자동차 이름 받기 
+ 
     private static String[] inputCarNames() {
     	System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분): ");
     	String inputNames = Console.readLine();
@@ -67,7 +63,6 @@ public class Application {
     		throw new IllegalArgumentException();
     	}
     }
-    
  
     private static List<Car> createCar(String[] carNames) {
     	List<Car> cars = new ArrayList<>();
@@ -81,7 +76,6 @@ public class Application {
     	for(int i=0; i<moveCount;i++)
     		moveCars(cars);
     		carStatus(cars);
-    	
     }
     private static void moveCars(List<Car> cars) {
     	for (Car car : cars) {
