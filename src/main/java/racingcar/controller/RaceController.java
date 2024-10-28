@@ -29,6 +29,8 @@ public class RaceController {
         ConsoleWriter.printlnMessage(PLAY_START_MESSAGE);
         for (int round = 1; round <= roundCount; round++) {
             cars.playSingleRound();
+
+            //해당 차수 실행 결과를 출력
             ConsoleWriter.printlnMessage(cars.toString());
         }
     }
