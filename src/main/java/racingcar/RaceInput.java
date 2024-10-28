@@ -28,7 +28,7 @@ public class RaceInput {
 
     private void validateCarNamesInput(String carNames) {
         if (carNames == null || carNames.trim().isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
+            throw new IllegalArgumentException("경주할 자동차 이름은 비어있을 수 없습니다.");
         }
     }
 

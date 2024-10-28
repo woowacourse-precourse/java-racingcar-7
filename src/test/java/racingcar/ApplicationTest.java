@@ -35,16 +35,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void 빈_자동차이름_입력_테스트() {
+    public void 경주할_자동차_이름_입력이_비어있는_경우_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("", "5"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("자동차 이름은 비어있을 수 없습니다.")
+                        .hasMessageContaining("경주할 자동차 이름은 비어있을 수 없습니다.")
         );
     }
 
     @Test
-    public void 빈_시도횟수_입력_테스트() {
+    public void 시도_횟수_입력이_비어있는_경우_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni,jun", ""))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -53,7 +53,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void 음수_시도횟수_입력_테스트() {
+    public void 시도_횟수가_음수인_경우_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni,jun", "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
