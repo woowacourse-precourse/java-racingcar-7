@@ -16,7 +16,6 @@ class ProgressResultGeneratorTest {
 
 	private final String carMovementSymbol = "-";
 	private final String separator = " : ";
-	private final String lineSeparator = "\n";
 	private final int minRequiredValueForMovement = 4;
 
 	@Test
@@ -44,6 +43,7 @@ class ProgressResultGeneratorTest {
 		List<Car> cars = List.of(new Car(carName1), new Car(carName2));
 		cars.getFirst().move(minRequiredValueForMovement);
 		cars.getLast().move(minRequiredValueForMovement);
+		String lineSeparator = "\n";
 		String expectedResult = carName1 + separator + carMovementSymbol + lineSeparator
 				+ carName2 + separator + carMovementSymbol;
 
