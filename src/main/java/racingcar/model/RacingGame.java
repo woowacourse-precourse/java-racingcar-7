@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import java.util.List;
 import racingcar.exception.RacingGameException;
 
 public class RacingGame {
@@ -11,6 +12,10 @@ public class RacingGame {
         this.racingTrack = new RacingTrack();
         validateRound(round);
         this.round = round;
+    }
+
+    public void addCar(List<String> names) {
+        racingTrack.addCar(names);
     }
 
     private void validateRound(Integer round) {
