@@ -21,12 +21,16 @@ public class Validator {
     }
 
     public static List<String> InputStringValidator(String input, List<String> carsList) {
-        String pattern = "[^a-zA-Z가-힣]";
+        String pattern = "^[a-zA-Z0-9]{1,5}$";
 
         if (input.matches(".*" + pattern + ".*")) {
             if (!input.matches(",")) {
                 throw new IllegalArgumentException("입력이 잘못되었습니다.");
             }
+        }
+
+        if (input.isBlank()) {
+            throw new IllegalArgumentException("입력이 잘못되었습니다.");
         }
 
         for (String car : carsList) {
