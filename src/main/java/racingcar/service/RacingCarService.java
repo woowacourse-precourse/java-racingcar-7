@@ -27,7 +27,7 @@ public class RacingCarService {
     }
 
     private void moveCarPosition(Car car) {
-        int randomNumber = (int)(Math.random() * 10);
+        int randomNumber = (int) (Math.random() * 10);
         if (randomNumber >= 4) {
             car.move();
         }

@@ -7,6 +7,7 @@ import racingcar.domain.Race;
 
 public class RacingCarServiceTest {
     RacingCarService racingCarService;
+
     @Test
     void 우승자_출력_테스트() {
         racingCarService = new RacingCarService();
