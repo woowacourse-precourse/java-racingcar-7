@@ -10,23 +10,35 @@ public class Car {
     private static final int THRESHOLD = 4;
 
     private final String name;
-    private int position;
+    private int location;
 
     Car(String name) {
         validateName(name);
         this.name = name;
-        this.position = 0;
+        this.location = 0;
     }
 
     void move() {
         boolean canForward = Randoms.pickNumberInRange(0, 9) >= THRESHOLD;
         if (canForward) {
-            this.position++;
+            this.location++;
         }
     }
 
     String getProgress() {
-        return String.format(PROGRESS_FORMAT, this.name, PROGRESS_EXPRESSION.repeat(this.position));
+        return String.format(PROGRESS_FORMAT, this.name, PROGRESS_EXPRESSION.repeat(this.location));
+    }
+
+    String getName() {
+        return name;
+    }
+
+    int getLocation() {
+        return location;
+    }
+
+    boolean isSameLocation(int location) {
+        return this.location == location;
     }
 
     private void validateName(String name) {

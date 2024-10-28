@@ -15,7 +15,18 @@ public class Cars {
         return new Cars(names.stream().map(Car::new).toList());
     }
 
-    public String getExecuteResult(int round) {
+    public String getWinners() {
+        int winnerLocation = cars.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("winner is null"));
+
+        return cars.stream().filter(car -> car.isSameLocation(winnerLocation))
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+    }
+
+    public String getExecutedRound(int round) {
         return Stream.generate(() -> {
                     moveAll();
                     return visualize();

@@ -11,12 +11,26 @@ public class RacingGame {
     private static final String NUMBER_OF_ATTEMPTS_TO_ENTER_TEXT = "시도할 횟수는 몇 회인가요?";
     private static final String ERROR_MESSAGE_IF_IT_IS_NOT_A_NUMBER = "숫자를 입력해야합니다.";
     private static final String EXECUTION_RESULT_TEXT = System.lineSeparator() + "실행결과";
+    private static final String WINNER_TEXT = System.lineSeparator() + "최종 우승자 : ";
     private static final String NAME_RULE_DELIMITER = ",";
 
     public void start() {
         Cars cars = Cars.of(inputNames());
-        int tryCount = inputTry();
-        display(cars, tryCount);
+        int round = inputRound();
+        executeRound(cars, round);
+        displayWinners(cars);
+    }
+
+    private static void displayWinners(Cars cars) {
+        System.out.print(WINNER_TEXT);
+        String winners = cars.getWinners();
+        System.out.println(winners);
+    }
+
+    private static void executeRound(Cars cars, int round) {
+        System.out.println(EXECUTION_RESULT_TEXT);
+        String executionResult = cars.getExecutedRound(round);
+        System.out.println(executionResult);
     }
 
     private List<String> inputNames() {
@@ -27,7 +41,7 @@ public class RacingGame {
                 .toList();
     }
 
-    private int inputTry() {
+    private int inputRound() {
         System.out.println(NUMBER_OF_ATTEMPTS_TO_ENTER_TEXT);
 
         try {
@@ -35,11 +49,5 @@ public class RacingGame {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_MESSAGE_IF_IT_IS_NOT_A_NUMBER);
         }
-    }
-
-    private static void display(Cars cars, int tryCount) {
-        System.out.println(EXECUTION_RESULT_TEXT);
-        String executionResult = cars.getExecuteResult(tryCount);
-        System.out.println(executionResult);
     }
 }
