@@ -2,7 +2,7 @@
 
 </br>
 
-# 💫 요구 사항
+## 요구 사항
 
 1. 자바 컨벤션을 준수할 것
 2. JDK 21 버전에서 실행 가능할 것
@@ -22,12 +22,73 @@
 </br>
 </br>
 </br>
+
+## 프로젝트 구조
+```
+📦 
+├─ .gitignore
+├─ README.md
+├─ build.gradle
+├─ gradle
+│  └─ wrapper
+│     ├─ gradle-wrapper.jar
+│     └─ gradle-wrapper.properties
+├─ gradlew
+├─ gradlew.bat
+├─ settings.gradle
+└─ src
+   ├─ main
+   │  └─ java
+   │     └─ racingcar
+   │        ├─ Application.java
+   │        ├─ common
+   │        │  ├─ config
+   │        │  │  └─ GameFactory.java
+   │        │  ├─ constant
+   │        │  │  ├─ ExceptionMessages.java
+   │        │  │  ├─ GameMessages.java
+   │        │  │  └─ RegexPatterns.java
+   │        │  └─ util
+   │        │     ├─ GameUtil.java
+   │        │     └─ Parser.java
+   │        ├─ controller
+   │        │  └─ GameController.java
+   │        ├─ domain
+   │        │  ├─ Game.java
+   │        │  └─ RacingCar.java
+   │        ├─ service
+   │        │  ├─ GameService.java
+   │        │  └─ InputValidator.java
+   │        └─ view
+   │           ├─ InputView.java
+   │           └─ OutputView.java
+   └─ test
+      └─ java
+         └─ racingcar
+            ├─ ApplicationTest.java
+            ├─ GameServiceTest.java
+            ├─ GameUtilTest.java
+            ├─ InputViewTest.java
+            ├─ OutputViewTest.java
+            ├─ ParserTest.java
+            ├─ RacingCarTest.java
+            └─ inputvalidator
+               ├─ ValidateInputFormatTest.java
+               ├─ ValidateNameTest.java
+               └─ ValidateRoundTest.java
+```
+
+
+
+</br>
+</br>
+</br>
 </br>
 
 # 📕 구현 기능 리스트
 </br>
 
-## 1. 입출력
+## 입출력
 
 ### (1) 입력
 
@@ -100,7 +161,7 @@
 </br>
 </br>
 
-## 2. 게임
+## 게임
 
 ### (1) 차
 
