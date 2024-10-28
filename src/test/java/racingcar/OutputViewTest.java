@@ -37,4 +37,25 @@ public class OutputViewTest {
         String expectedOutput = "CarA : ---\nCarB : -\n";
         assertEquals(expectedOutput, outputStreamCaptor.toString());
     }
+
+    @Test
+    void printWinner_shouldPrintWinnerName() {
+        // given
+        Car car1 = new Car("CarA");
+        Car car2 = new Car("CarB");
+        Car car3 = new Car("CarC");
+        for (int i = 0; i < 3; i++) {
+            car1.incCurrentPos();
+            car3.incCurrentPos();
+        }
+        car2.incCurrentPos();
+        List<Car> cars = Arrays.asList(car1, car2, car3);
+
+        // when
+        outputView.printWinner(cars);
+
+        // then
+        String expectedOutput = "최종 우승자 : CarA, CarC";
+        assertEquals(expectedOutput, outputStreamCaptor.toString());
+    }
 }
