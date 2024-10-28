@@ -76,14 +76,10 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 중복_이름_자동차_테스트() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("pobi,pobi,pobi", "3");
-                    assertThat(output()).contains("최종 우승자 : pobi");
-                },
-                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
-        );
+    void 자동차_이름_중복_예외_테스트() {
+        assertThatThrownBy(() -> RacingGame.validateCarNames(List.of("pobi", "pobi")))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
     }
 
 
