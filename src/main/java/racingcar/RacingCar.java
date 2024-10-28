@@ -6,12 +6,12 @@ public class RacingCar {
     private String name;
     private int position;
     private ArrayList<Boolean> moveCondition;
-
+    static int racingCounter = InputOutputHandler.getRacingCounter();
 
     public RacingCar(String name) {
         this.name = name;
         this.position = 0;
-        this.moveCondition = RacingController.setMoveCondition();
+        this.moveCondition = RacingController.setMoveCondition(racingCounter);
     }
 
     public String getName() {
