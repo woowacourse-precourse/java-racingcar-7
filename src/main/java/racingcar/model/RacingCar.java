@@ -4,10 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.message.Message;
 import racingcar.view.RacingCarView;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RacingCar {
 
@@ -35,9 +32,11 @@ public class RacingCar {
 
         String delimiter = ",";
         String [] inputCarTokens = carsInput.split(delimiter);
+        Set<String> uniqueNames = new HashSet<>();
 
         for (String token : inputCarTokens) {
             if (token.length() > 5) throw new IllegalArgumentException("차 이름은 5글자 이하여야 합니다.");
+            else if (!uniqueNames.add(token)) throw new IllegalArgumentException("이미 입력된 차 이름 입니다.");
         }
 
         return Arrays.asList(inputCarTokens);
