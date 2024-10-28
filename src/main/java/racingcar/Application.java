@@ -6,18 +6,12 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        try {
-            String[] carNames = inputCarNames();
-            int raceCount = inputRaceCount();
-            RacingController racingController = new RacingController(carNames);
-            racingController.progressRace(raceCount);
-            WinnerDecider winnerDecider = new WinnerDecider(racingController.getCars());
-            winnerDecider.decideWinner();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            Console.close();
-        }
+        String[] carNames = inputCarNames();
+        int raceCount = inputRaceCount();
+        RacingController racingController = new RacingController(carNames);
+        racingController.progressRace(raceCount);
+        WinnerDecider winnerDecider = new WinnerDecider(racingController.getCars());
+        winnerDecider.decideWinner();
     }
 
     public static String[] inputCarNames() {

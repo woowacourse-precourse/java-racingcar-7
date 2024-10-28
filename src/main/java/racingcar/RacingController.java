@@ -34,7 +34,7 @@ public class RacingController {
 
     private void printRaceResult() {
         for (Car car : cars) {
-            String raceResult = car.getName() + ":" + "-".repeat(car.getForwardCount());
+            String raceResult = car.getName() + " : " + "-".repeat(car.getForwardCount());
             System.out.println(raceResult);
         }
     }
