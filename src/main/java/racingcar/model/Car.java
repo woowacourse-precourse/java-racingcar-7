@@ -30,20 +30,20 @@ public class Car {
     }
 
     public static ArrayList<String> parseWinnerNames(ArrayList<Car> cars) {
-        Car farthestCar = cars.getFirst();
+        Car farthestCar = cars.getFirst(); // 가장 distance 값이 큰 Car를 저장할 변수
 
         for (Car car : cars) {
-            if (car.isFarther(farthestCar)) {
-                farthestCar = car;
+            if (car.isFarther(farthestCar)) { // 순회중인 Car의 distance가 현재까지 가장 distance가 큰 Car보다 크다면
+                farthestCar = car; // 가장 distance가 큰 Car로 지정
             }
         }
 
-        Integer farthestDistance = farthestCar.distance;
+        Integer farthestDistance = farthestCar.distance; // 가장 큰 distance 값을 저장
         ArrayList<String> names = new ArrayList<>();
 
         for (Car car : cars) {
-            if (car.distance == farthestDistance) {
-                names.add(car.name);
+            if (car.distance == farthestDistance) { // 순회중인 Car의 distance가 가장 큰 값과 같다면
+                names.add(car.name); // 이름 배열에 현재 Car의 이름을 추가함
             }
         }
 
