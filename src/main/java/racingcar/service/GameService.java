@@ -2,8 +2,11 @@ package racingcar.service;
 
 import racingcar.model.Car;
 import racingcar.validator.CarNameValidator;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameService {
 
@@ -20,6 +23,7 @@ public class GameService {
                 cars.add(car);
             }
         }
+
         return cars;
     }
 
