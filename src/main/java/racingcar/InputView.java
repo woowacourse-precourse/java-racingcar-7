@@ -5,11 +5,18 @@ import static camp.nextstep.edu.missionutils.Console.*;
 import java.util.List;
 
 public class InputView {
+    private final InputValidator inputValidator;
     private final String CAR_NAME_DELIMITER = ",";
+
+    public InputView(InputValidator inputValidator) {
+        this.inputValidator = inputValidator;
+    }
 
     public List<String> inputCarNames() {
         String carNames = readLine();
-        return parseCarNames(carNames);
+        List<String> carNameList = parseCarNames(carNames);
+        inputValidator.validateCarNames(carNameList);
+        return carNameList;
     }
 
     public int inputRoundCount() {
