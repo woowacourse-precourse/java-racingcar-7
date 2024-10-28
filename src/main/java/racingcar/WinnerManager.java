@@ -3,6 +3,8 @@ package racingcar;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors;
+
 public class WinnerManager {
     public int getMaxDistance(List<Car> cars) {
         return cars.stream()
@@ -22,5 +24,12 @@ public class WinnerManager {
         return winners.size() == 1;
     }
 
-
+    String getWinnerNames(List<Car> winners) {
+        if (isSingleWinner(winners)) {
+            return winners.getFirst().getCarName();
+        }
+        return winners.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(", "));
+    }
 }
