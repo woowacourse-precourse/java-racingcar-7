@@ -5,9 +5,22 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
 
     public static void main(String[] args) {
-        System.out.println("이름을 입력해주세요: ");
-        String names = Console.readLine();
-        int tryCount = inputRaceAttempts();
+        try {
+            System.out.println("이름을 입력해주세요: ");
+            String names = Console.readLine();
+            String[] namesArray = names.split(",");
+
+            for (String name : namesArray) {
+                validateCarNames(name); // 이름 유효성 검사
+            }
+
+            int tryCount = inputRaceAttempts(); // 횟수 입력 및 유효성 검사
+
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+
+
 
     }
 
@@ -30,5 +43,14 @@ public class Application {
             throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
         }
     }
+
+    private static void validateCarNames(String carName) {
+        carName = carName.trim();
+        if (carName.isEmpty() || carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+        }
+    }
+}
+
 
 }
