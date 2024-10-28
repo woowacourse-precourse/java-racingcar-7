@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.constant.OutputMessage;
 
+import java.util.Collection;
 import java.util.List;
 
 public class Cars {
@@ -9,9 +10,9 @@ public class Cars {
     private static final int MIN_POSITION = 0;
     private static final String COMMA = ", ";
 
-    private final List<Car> elements;
+    private final Collection<Car> elements;
 
-    public Cars(List<Car> elements) {
+    public Cars(Collection<Car> elements) {
         this.elements = elements;
     }
 
