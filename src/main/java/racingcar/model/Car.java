@@ -21,8 +21,10 @@ public class Car {
         return position;
     }
 
-    public void move() {
-        this.position += speed;
+    public void move(boolean isMovable) {
+        if (isMovable) {
+            this.position += speed;
+        }
     }
 
     @Override

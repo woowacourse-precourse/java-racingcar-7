@@ -24,9 +24,7 @@ public class Cars {
     public void tryMoveAll() {
         carList.forEach(car -> {
             int randomNumber = randomGenerator.generate();
-            if (isMovable(randomNumber)) {
-                car.move();
-            }
+            car.move(isMovable(randomNumber));
         });
     }
 
