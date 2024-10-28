@@ -21,6 +21,18 @@ public class GameBoardTest extends NsTest {
         );
     }
 
+    @Test
+    void 한_대의_자동차가_우승했을_때_결과가_제대로_만들어지는지_확인하는_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    gameBoard.makeCarPositions();
+                    String output = gameBoard.makeEndResult();
+                    assertThat(output).isEqualTo("우테코");
+                },
+                4, 0, 0
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
