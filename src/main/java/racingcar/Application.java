@@ -14,8 +14,9 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String count_s = Console.readLine();
+        exception.except3(count_s);
         int count = Integer.parseInt(count_s);
-        exception.except3(count);
+
 
         Racing racing=new Racing();
         racing.race(names,count);
