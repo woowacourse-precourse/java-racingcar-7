@@ -75,6 +75,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 중복_이름_자동차_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,pobi,pobi", "3");
+                    assertThat(output()).contains("최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
