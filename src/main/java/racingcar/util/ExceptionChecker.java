@@ -38,7 +38,7 @@ public class ExceptionChecker {
     }
 
     public static void validateIsEmptyInput(String input) {
-        if (input.isBlank() | input == null) {
+        if (input == null || input.isBlank()) {
             throw new IllegalArgumentException("내용을 입력해주세요.");
         }
     }

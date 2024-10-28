@@ -6,7 +6,7 @@ import java.util.List;
 import racingcar.util.ExceptionChecker;
 
 public class CarsManager {
-    private String input;
+    private final String input;
     private final List<Car> cars = new ArrayList<>();
 
     public CarsManager(String input) {
@@ -20,8 +20,8 @@ public class CarsManager {
         carNamesArray = Arrays.asList(input.replace(" ", "").split(","));
         for (String carName : carNamesArray) {
             cars.add(new Car(carName));
-            ExceptionChecker.validateIsLengthOver(carNamesArray);
         }
+        ExceptionChecker.validateIsLengthOver(carNamesArray);
     }
 
     public void moveAll() {
