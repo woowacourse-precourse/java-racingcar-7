@@ -7,8 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -49,6 +48,18 @@ class ApplicationTest extends NsTest {
         car.move(randomNumber);
 
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"hello", "bag", "to", "hoby", "a"})
+    void car_생성자는_이름이_5글자_미만인_경우에_정상적으로_생성된다(String name) {
+        assertThatCode(() -> new Car(name)).doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"helloworld", "bagbag", "todavid"})
+    void car_생성자는_이름이_5글자_미만인_경우에_IllegalArgumentExepciton을_던진다(String name) {
+        assertThatThrownBy(() -> new Car(name)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
