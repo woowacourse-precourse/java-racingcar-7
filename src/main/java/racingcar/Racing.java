@@ -14,15 +14,21 @@ public class Racing {
     private Map<String, String> racingCars;
     private List<String> winnersList;
     private final String DELIMITERS = ",";
+    private final String MOVED_ROAD = "-";
+    private final String COLON = " : ";
+    private final String CAR_NAME_REQUEST_TEXT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private final String ATTEMPTS_CNT_REQUEST_TEXT = "시도할 횟수는 몇 회인가요?";
+    private final String RESULT_TITLE_TEXT = "\n실행 결과";
+    private final String WINNER_TITLE_TEXT = "최종 우승자 : ";
 
     Racing() {}
 
     public void input() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(CAR_NAME_REQUEST_TEXT);
         cars = Console.readLine();
         splitCarsName(cars);
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(ATTEMPTS_CNT_REQUEST_TEXT);
         String cntString = Console.readLine();
         validateAttemptsCnt(cntString);
     }
@@ -80,7 +86,7 @@ public class Racing {
     }
 
     private void attemptsMoving() {
-        System.out.println("\n실행 결과");
+        System.out.println(RESULT_TITLE_TEXT);
         for (int i = 0; i < attemptsCnt; i++) {
             movingCarsInTurn();
             printCurrent();
@@ -97,7 +103,7 @@ public class Racing {
 
     private void moveForward(String name) {
         String current = racingCars.get(name);
-        racingCars.put(name, current + "-");
+        racingCars.put(name, current + MOVED_ROAD);
     }
 
     private void movingCarsInTurn() {
@@ -111,7 +117,7 @@ public class Racing {
 
     private void printCurrent() {
         for (String name : racingCars.keySet()) {
-            System.out.println(name + " : " + racingCars.get(name));
+            System.out.println(name + COLON + racingCars.get(name));
         }
         System.out.println();
     }
@@ -155,13 +161,13 @@ public class Racing {
     }
 
     private void printWinner() {
-        System.out.print("최종 우승자 : ");
+        System.out.print(WINNER_TITLE_TEXT);
         System.out.println(joinWinnerNames());
     }
 
     private String joinWinnerNames() {
         List<String> winnersList = getWinners();
-        return String.join(",", winnersList);
+        return String.join(DELIMITERS, winnersList);
     }
 
     public void run() {
