@@ -12,7 +12,9 @@ public class RacingCarService {
 
     public void registerRacingCars(final Collection<RacingCar> racingCars, final Collection<String> carNames) {
         checkDuplicatedName(carNames);
-        carNames.forEach(carName -> racingCars.add(RacingCar.createRacingCar(carName)));
+        carNames.stream()
+                .map(RacingCar::createRacingCar)
+                .forEach(racingCars::add);
     }
 
     public void racingGame(final Collection<RacingCar> racingCars) {
@@ -43,9 +45,9 @@ public class RacingCarService {
         }
     }
 
-    private void checkDuplicatedName(final Collection<String> carNames){
+    private void checkDuplicatedName(final Collection<String> carNames) {
         Set<String> nameSet = new HashSet<>(carNames);
-        if(nameSet.size() != carNames.size()){
+        if (nameSet.size() != carNames.size()) {
             ExceptionHandler.handleIllegalArgumentException(ErrorMessage.DUPLICATED_NAME);
         }
     }
