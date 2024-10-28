@@ -17,13 +17,13 @@ public class OutputTest {
     private final PrintStream standardOut = System.out;
 
     @BeforeEach
-    void setUp() {
+    void init() {
         outputMessage = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputMessage));
     }
 
     @AfterEach
-    void setOut() {
+    void tearDown() {
         System.setOut(standardOut);
     }
 

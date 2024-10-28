@@ -23,7 +23,7 @@ public class InputTest {
     private final InputHandler inputHandler = new InputHandler();
 
     @AfterAll
-    static void close() {
+    static void tearDown() {
         Console.close();
     }
 
