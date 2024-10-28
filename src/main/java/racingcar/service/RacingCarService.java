@@ -2,6 +2,7 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.model.Race;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -10,65 +11,55 @@ public class RacingCarService {
 
     private static final int MIN_RANDOM_NUMBER = 0;
     private static final int MAX_RANDOM_NUMBER = 9;
+    private static final int MOVE_CONDITION = 4;
 
     public String raceStart(Race race) {
 
-        StringBuilder roundResult = new StringBuilder();
+        List<String> roundResults = new ArrayList<>();
 
         Integer round = race.getRound();
         List<Car> cars = race.getCars();
 
         for (int i = 0; i < round; i++) {
-            roundResult.append(moveCars(cars));
-            if (i != round - 1) {
-                roundResult.append("\n");
-            }
+            roundResults.add(raceOneRound(cars));
         }
 
-        return roundResult.toString();
+        return String.join("\n\n", roundResults);
     }
 
-    public String moveCars(List<Car> cars) {
+    public String raceOneRound(List<Car> cars) {
 
-        StringBuilder roundResult = new StringBuilder();
+        List<String> roundResult = new ArrayList<>();
 
-        for (Car car : cars) {
+        cars.forEach(car -> {
             if (isMove()) {
                 car.move();
             }
-            roundResult.append(car.printPosition()).append("\n");
-        }
+            roundResult.add(car.printPosition());
+        });
 
-        return roundResult.toString();
+        return String.join("\n", roundResult);
     }
 
     public String findWinner(Race race) {
 
-        List<Car> cars = race.getCars();
-        int maxPosition = getMaxPosition(cars);
-        List<String> winners = new ArrayList<>();
+        int maxPosition = getMaxPosition(race.getCars());
 
-        for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
-                winners.add(car.getName());
-            }
-        }
-
-        return String.join(", ", winners);
+        return race.getCars().stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
     public Integer getMaxPosition(List<Car> cars) {
 
-        int maxPosition = 0;
-
-        for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-
-        return maxPosition;
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
     }
 
     public Boolean isMove() {
-        return Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER) >= 4;
+        return Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER) >= MOVE_CONDITION;
     }
 }
