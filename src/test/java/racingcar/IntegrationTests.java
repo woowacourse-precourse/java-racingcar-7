@@ -42,6 +42,22 @@ public class IntegrationTests extends NsTest {
                 .hasMessageContaining(ErrorMessage.CAR_NAME_LENGTH_OVER.getMessage());
     }
 
+    @ParameterizedTest
+    @DisplayName("[에러] 라운드 입력이 공백인 경우")
+    @ValueSource(strings = {" ", "  ", "\n", "\t"})
+    public void error_roundInputEmpty(String roundInput) {
+        String carInput = "gana,dara,maru";
+
+        Throwable throwable = catchThrowable(
+                () -> {
+                    run(carInput, roundInput);
+                }
+        );
+
+        assertThat(throwable)
+                .hasMessageContaining(ErrorMessage.ROUND_INPUT_EMPTY.getMessage());
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
