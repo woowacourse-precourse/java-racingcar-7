@@ -1,12 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
-
-import camp.nextstep.edu.missionutils.Randoms;
-
 
 public class RacingGame{
 
@@ -22,7 +17,6 @@ public class RacingGame{
         this.attemptCountParser = attemptCountParser;
         this.randomGenerator = randomGenerator;
     }
-
 
     /**
      * 우승자 출력 기능
@@ -56,7 +50,6 @@ public class RacingGame{
         }
         return maxMoveCount;
     }
-
 
     /**
      * 실행결과 출력 기능
@@ -96,7 +89,6 @@ public class RacingGame{
             moveCars();
         }
     }
-
 
     /**
      * 사용자가 시도할 횟수를 입력받는 메서드

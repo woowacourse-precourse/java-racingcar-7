@@ -12,7 +12,6 @@ public class AttemptCountParser {
         return Console.readLine();
     }
 
-
     /**
      * 입력받은 시도 횟수가 양수인지 검증하는 메서드
      * @param input 사용자가 입력한 시도횟수

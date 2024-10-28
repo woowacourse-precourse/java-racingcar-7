@@ -1,7 +1,6 @@
 package racingcar;
 
 public class TestNumberGenerator implements RandomGenerator{
-
     private int number;
 
     public TestNumberGenerator(int number){

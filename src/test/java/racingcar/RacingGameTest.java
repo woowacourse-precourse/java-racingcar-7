@@ -14,21 +14,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class RacingGameTest {
     private CarNameParser carNameParser;
     private AttemptCountParser attemptCountParser;
-
-    private TestNumberGenerator testNumberGenerator;
-
     private static final int VALID_RANDOM_NUMBER = 4;
     private static final int INVALID_RANDOM_NUMBER = 1;
 
     private RacingGame createRacingGameWithValidRandomNumber(){
         return new RacingGame(carNameParser, attemptCountParser, new TestNumberGenerator(VALID_RANDOM_NUMBER));
     }
-
     private RacingGame createRacingGameWithInValidRandomNumber(){
         return new RacingGame(carNameParser, attemptCountParser, new TestNumberGenerator(INVALID_RANDOM_NUMBER));
     }
-
-
 
     @BeforeEach
     public void RacingGameTest(){
@@ -42,6 +36,7 @@ class RacingGameTest {
         //given
         List<String> carNames = Arrays.asList("car1", "car2");
         RacingGame racingGame = createRacingGameWithValidRandomNumber();
+
         //when
         racingGame.addCars(carNames);
         List<Car> cars = racingGame.getCars();
@@ -67,7 +62,6 @@ class RacingGameTest {
 
         //then
         Assertions.assertThat(car.getMoveCount()).isEqualTo(expectedMoveCount);
-
     }
 
     @Test
@@ -106,9 +100,7 @@ class RacingGameTest {
         for(int i=0; i<cars.size();i++){
             Assertions.assertThat(cars.get(i).getMoveCount()).isEqualTo(attemptCount);
         }
-
     }
-
 
     @Test
     @DisplayName("moveCount 가 가장 높은 자동차가 우승, car1이 가장 높기때문에 우승")
@@ -124,6 +116,7 @@ class RacingGameTest {
 
         //when
         List<String> actualWinners = racingGame.getWinners();
+
         //then
         Assertions.assertThat(actualWinners).isEqualTo(expectedWinners);
     }
@@ -141,6 +134,7 @@ class RacingGameTest {
 
         //when
         List<String> actualWinners = racingGame.getWinners();
+
         //then
         Assertions.assertThat(actualWinners).isEqualTo(expectedWinners);
     }

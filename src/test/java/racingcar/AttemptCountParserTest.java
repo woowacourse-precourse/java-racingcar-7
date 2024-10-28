@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class AttemptCountParserTest {
     private AttemptCountParser attemptCountParser;
@@ -46,7 +45,4 @@ class AttemptCountParserTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도횟수가 숫자가 아닙니다.");
     }
-
-
-
 }
