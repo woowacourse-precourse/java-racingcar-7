@@ -21,6 +21,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
