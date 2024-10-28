@@ -18,6 +18,7 @@ public class Application {
             racingControllerBean.run();
         } catch (RacingCarException e) {
             errorViewBean.errorPage(e.getMessage());
+            throw e;
         }
     }
 }
