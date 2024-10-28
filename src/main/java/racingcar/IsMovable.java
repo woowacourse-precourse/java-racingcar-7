@@ -15,7 +15,7 @@ public class IsMovable {
         this.result = new int[numberOfCars];
     }
 
-    void getIsMovable(){
+    int[] getIsMovable(){
         for(int i=0; i<iteration; i++){
             for(int j=0; j<numberOfCars; j++){
                 int randomNumber = RandomNumber.getRandomNumber();
@@ -24,5 +24,6 @@ public class IsMovable {
             //전진 유무값이 담긴 result를 자동차 출력 함수로 전달
             new CarNamesOutput(result, carNames).carOutput();
         }
+        return result;
     }
 }

@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.IO.CarNamesInput;
 import racingcar.IO.NumberOfIterationInput;
+import racingcar.IO.WinnerOutput;
 
 public class Application {
     public static void main(String[] args) {
@@ -12,6 +13,10 @@ public class Application {
         int iteration = NumberOfIterationInput.getIteration();
 
         System.out.println("\n실행 결과");
-        new IsMovable(carNames, iteration).getIsMovable();
+        IsMovable isMovable = new IsMovable(carNames, iteration);
+        int[] result = isMovable.getIsMovable();
+
+        new WinnerOutput(result, carNames).getWinner();
+
     }
 }
