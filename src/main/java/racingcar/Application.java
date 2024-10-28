@@ -12,5 +12,7 @@ public class Application {
         ArrayList<Car> carList = new ArrayList<>();
         InputException.getCarName(carList);
         int tryCount = InputException.getTryCount();
+
+        Game.start(carList, tryCount);
     }
 }
