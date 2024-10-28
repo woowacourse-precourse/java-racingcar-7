@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import static racingcar.message.ErrorMessage.*;
 
-import racingcar.message.ErrorMessage;
 
 public class Round {
     private Integer number;
@@ -26,7 +25,7 @@ public class Round {
     }
 
     private void validatePositive(int number) {
-        if (number < 0) {
+        if (number <= 0) {
             throw new IllegalArgumentException(INVALID_ROUND_COUNT.getMessage());
         }
     }
