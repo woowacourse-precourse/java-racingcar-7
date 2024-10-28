@@ -1,5 +1,7 @@
 package racingcar.application.dto.request;
 
-public record RaceRequest(String carNames, int round) {
+import racingcar.domain.race.vo.Round;
+
+public record RaceRequest(String carNames, Round round) {
 
 }

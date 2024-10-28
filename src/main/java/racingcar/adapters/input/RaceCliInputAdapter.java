@@ -9,6 +9,9 @@ import racingcar.application.dto.response.RaceResponse;
 import racingcar.application.port.input.ManageRaceUsecase;
 import racingcar.application.validation.InputValidator;
 import racingcar.application.port.output.OutputPort;
+import racingcar.domain.race.constants.RaceFormat;
+import racingcar.domain.race.service.RaceFormatter;
+import racingcar.domain.race.vo.Round;
 
 public class RaceCliInputAdapter {
 
@@ -26,12 +29,14 @@ public class RaceCliInputAdapter {
     public void startRace() {
         RaceRequest raceRequest = getRaceInput();
         RaceResponse raceResponse = manageRaceUsecase.run(raceRequest);
-        outputPort.writeResponse(raceResponse);
+
+        outputPort.writeNewLine();
+        outputPort.writeMessage(RaceFormatter.format(raceResponse));
     }
 
     private RaceRequest getRaceInput() {
         String carNames = promptCarNames();
-        int round = promptRound();
+        Round round = promptRound();
         return new RaceRequest(carNames, round);
     }
 
@@ -42,14 +47,10 @@ public class RaceCliInputAdapter {
         return carNames;
     }
 
-    private int promptRound() {
+    private Round promptRound() {
         outputPort.writeMessage(INPUT_TRY_COUNT.getMessage());
         String round = Console.readLine();
         inputValidator.validateRound(round);
-        try {
-            return Integer.parseInt(round);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ROUND_NOT_NUMBER.getMessage());
-        }
+        return new Round(Integer.parseInt(round));
     }
 }

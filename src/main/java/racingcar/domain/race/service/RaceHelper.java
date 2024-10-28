@@ -7,16 +7,27 @@ import racingcar.domain.race.Race;
 
 public class RaceHelper {
 
-    public List<Car> findWinners(Race race) {
-        List<Car> cars = race.getCars();
+    private final String WINNER_DELIMITER = ", ";
 
-        int maxPosition = cars.stream()
-            .mapToInt(car -> car.getPosition())
-            .max()
-            .orElseThrow(IllegalArgumentException::new);
+    public List<Car> determineWinners(Race race) {
+        List<Car> cars = race.getCars();
+        int maxPosition = getMaxPosition(cars);
 
         return cars.stream()
-            .filter(car -> car.getPosition() == maxPosition)
+            .filter(car -> car.isAtPosition(maxPosition))
             .collect(Collectors.toList());
+    }
+
+    private static int getMaxPosition(List<Car> cars) {
+        return cars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElseThrow(IllegalArgumentException::new);
+    }
+
+    public String findWinners(Race race) {
+        return determineWinners(race).stream()
+            .map(Car::getName)
+            .collect(Collectors.joining(WINNER_DELIMITER));
     }
 }

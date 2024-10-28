@@ -79,8 +79,8 @@ public class RaceTest {
         race.lap();
 
         // then
-        assertThat(race.getResult()).isEqualTo(
-            "pobi : -\n jack : -"
+        assertThat(race.getRoundResult()).isEqualTo(
+            "pobi : -\njack : -"
         );
     }
 }

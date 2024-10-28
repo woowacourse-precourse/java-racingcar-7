@@ -27,7 +27,7 @@ public class RaceServiceTest {
         race.lap();
 
         // when
-        List<Car> winners = raceService.findWinners(race);
+        List<Car> winners = raceService.determineWinners(race);
 
         // then
         assertThat(winners.size()).isEqualTo(2);

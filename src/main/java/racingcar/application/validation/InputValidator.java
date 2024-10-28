@@ -1,11 +1,11 @@
 package racingcar.application.validation;
 
+import static racingcar.domain.race.constants.RaceCriterion.*;
 import static racingcar.infrastructure.exception.ErrorCode.*;
 
 public class InputValidator {
 
     private final static String COMMAS = ",,";
-    private final static int MINIMUM_ROUND_CRITERION = 1;
 
     public void validateCarNames(final String carNames) {
         validateNoConsecutiveCommas(carNames);
@@ -13,8 +13,14 @@ public class InputValidator {
 
     public void validateRound(final String rounds) {
         validateRoundNotEmpty(rounds);
-        validateRoundIsNumber(rounds);
-        validateRoundNotLessThanOne(rounds);
+        validateRoundNumber(rounds);
+        validateRoundGreaterThanZero(rounds);
+    }
+
+    private void validateRoundGreaterThanZero(String rounds) {
+        if (Integer.parseInt(rounds) < MINIMUM_ROUND.getCriterion()) {
+            throw new IllegalArgumentException(ROUND_LESS_THAN_ONE.getMessage());
+        }
     }
 
     private void validateRoundNotEmpty(String rounds) {
@@ -23,13 +29,7 @@ public class InputValidator {
         }
     }
 
-    private void validateRoundNotLessThanOne(String rounds) {
-        if (Integer.parseInt(rounds) < MINIMUM_ROUND_CRITERION) {
-            throw new IllegalArgumentException(ROUNDS_LESS_THAN_ONE.getMessage());
-        }
-    }
-
-    private void validateRoundIsNumber(String rounds) {
+    private void validateRoundNumber(String rounds) {
         try {
             Integer.parseInt(rounds);
         } catch (NumberFormatException exception) {

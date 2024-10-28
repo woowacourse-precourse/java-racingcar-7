@@ -6,6 +6,7 @@ import racingcar.application.port.input.ManageRaceUsecase;
 import racingcar.domain.acceleration.RandomAcceleration;
 import racingcar.domain.race.Race;
 import racingcar.domain.race.service.RaceHelper;
+import racingcar.domain.race.vo.Round;
 
 public class ManageRaceCommand implements ManageRaceUsecase {
 
@@ -18,20 +19,11 @@ public class ManageRaceCommand implements ManageRaceUsecase {
     @Override
     public RaceResponse run(final RaceRequest raceRequest) {
         Race race = Race.of(raceRequest.carNames(), new RandomAcceleration());
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < raceRequest.round(); i++) {
-            race.lap();
-            result.append(race.getResult()).append("\n\n");
-        }
+        Round round = raceRequest.round();
 
-        return new RaceResponse(result.toString(), determineWinners(race));
-    }
+        String raceResult = race.runRace(round);
+        String winners = raceHelper.findWinners(race);
 
-    @Override
-    public String determineWinners(Race race) {
-        return raceHelper.findWinners(race).stream()
-            .map(car -> car.getName())
-            .reduce((a, b) -> a + ", " + b)
-            .orElse("");
+        return new RaceResponse(raceResult, winners);
     }
 }

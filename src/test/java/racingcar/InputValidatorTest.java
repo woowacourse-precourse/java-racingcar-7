@@ -50,7 +50,7 @@ public class InputValidatorTest {
         // when % then
         Assertions.assertThatThrownBy(() -> inputValidator.validateRound(rounds))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage(ROUNDS_LESS_THAN_ONE.getMessage());
+            .hasMessage(ROUND_LESS_THAN_ONE.getMessage());
     }
 
     @Test
