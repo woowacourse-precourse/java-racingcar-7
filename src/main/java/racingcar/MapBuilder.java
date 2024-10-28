@@ -11,19 +11,28 @@ public class MapBuilder {
     public static TreeMap<String, Integer> forwardCounter = new TreeMap<>();
     public static Map<String, String> lineCounter = new HashMap<>();
 
-    public void mapCarNamesToForwardCounts(List<String> carNames) {
+    public static void mapCarNamesToForwardCounts(List<String> carNames) {
+
+        validateCarNames(carNames);
+
         for (int i = 0; i < carNames.size(); i++) {
             forwardCounter.put(carNames.get(i), 0);
         }
     }
 
-    public void mapCarNamesToStringForwardLines(List<String> carNames) {
+    public static void mapCarNamesToStringForwardLines(List<String> carNames) {
+
+        validateCarNames(carNames);
+
         for (int i = 0; i < carNames.size(); i++) {
             lineCounter.put(carNames.get(i), "");
         }
     }
 
-    public void mapSingleCarForwardResult(String carName) {
+    public static void mapSingleCarForwardResult(String carName) {
+
+        validateForwards(carName);
+
         // forwardCounter에 전진횟수 추가
         int forwardCount = forwardCounter.get(carName);
         forwardCount += 1;
@@ -35,15 +44,43 @@ public class MapBuilder {
         lineCounter.put(carName, forwardLine);
     }
 
-    public List<Map.Entry<String, String>> getSingleRoundResult(List<String> carNames, int roundNum) {
+    public static List<Map.Entry<String, String>> getSingleRoundResult(List<String> carNames, int roundNum) {
+
+        validateSingleRoundResult(lineCounter);
 
         List<Map.Entry<String, String>> entry = new ArrayList<>(lineCounter.entrySet());
 
         return entry;
     }
 
-    public TreeMap<String, Integer> getCarNameAndForwardCount(){
+    public static TreeMap<String, Integer> getCarNameAndForwardCount(){
+
+        validateForwardCounter(forwardCounter);
 
         return forwardCounter;
+    }
+
+    public static void validateCarNames(List<String> carNames) {
+        if(carNames == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateForwards(String carName) {
+        if(forwardCounter.get(carName) == null || lineCounter.get(carName) == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateSingleRoundResult(Map<String, String> lineCounter) {
+        if(lineCounter == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateForwardCounter(TreeMap<String, Integer> forwardCounter) {
+        if (forwardCounter == null) {
+            throw new IllegalArgumentException();
+        }
     }
 }
