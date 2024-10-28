@@ -30,6 +30,17 @@ public class Application {
             
         }
 
+        System.out.println("시도할 횟수는 몇 회인가요?");
+
+        String num = Console.readLine();
+
+        try{
+            int number = Integer.parseInt(num);
+            System.out.println(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력가능합니다.");
+        }
+
 
     }
 }
