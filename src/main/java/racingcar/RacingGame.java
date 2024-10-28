@@ -31,7 +31,7 @@ public class RacingGame {
 
     public void racingCarPreparation() {
         Output.printNameGuide();
-        String carNameWithDelimiter = Input.readNotNullAndNotEmptyString();
+        String carNameWithDelimiter = Input.readString();
         StringSeparator stringSeparator = new StringSeparator(carNameWithDelimiter, ",");
         while (stringSeparator.hasNext()) {
             racingCars.registRacingCar(new RacingCar(stringSeparator.next()));

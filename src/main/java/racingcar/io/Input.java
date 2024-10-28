@@ -8,19 +8,25 @@ public class Input {
         return Console.readLine();
     }
 
-    public static String readNotNullAndNotEmptyString() {
+    public static String readString() {
         String name = readLine();
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("빈 문자열을 입력할 수 없습니다.");
-        }
+        validateNullAndEmpty(name);
         return name;
     }
 
     public static int readToInteger() {
+        String read = readLine();
+        validateNullAndEmpty(read);
         try {
-            return Integer.parseInt(readLine());
+            return Integer.parseInt(read);
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException("정수만을 입력 할 수 있습니다.");
+        }
+    }
+
+    private static void validateNullAndEmpty(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("빈 문자열을 입력할 수 없습니다.");
         }
     }
 
