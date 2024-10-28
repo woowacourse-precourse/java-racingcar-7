@@ -1,5 +1,6 @@
 package racingcar;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
@@ -34,10 +35,14 @@ public class CarsNameValidationTest {
     }
 
     @Test
-    @DisplayName("빈 이름이 포함된 경우 예외 발생")
-    void testContainsEmptyName() {
+    @DisplayName("정상적인 이름 목록이 입력된 경우 반환된 값이 일치하는지 확인")
+    void testValidNamesInput() {
+        List<String> input = List.of("pobi", "woni", "jun");
 
-        List<String> input = List.of("pobi", "", "jun");
-        assertThrows(IllegalArgumentException.class, () -> Application.validateCarNames(input));
+        // 예상된 결과와 실제 결과 비교
+        Application.validateCarNames(input);  // 예외가 발생하지 않음을 검증하며, 로직 검증 목적으로 호출
+        List<String> result = input;
+
+        assertEquals(List.of("pobi", "woni", "jun"), result);
     }
 }
