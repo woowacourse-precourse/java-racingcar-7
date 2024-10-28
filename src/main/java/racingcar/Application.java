@@ -1,9 +1,7 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+
 class Car {
     private final String name;
     private int position = 0;
@@ -79,14 +77,26 @@ public class Application {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String[] carNamesInput = sc.nextLine().split(",");
+        String input = sc.nextLine();
+        if (input.trim().isEmpty()) {
+            System.out.println("자동차 이름을 입력해주세요.");
+            return; // 프로그램 종료 또는 입력 반복
+        }
+        String[] carNamesInput = input.split(",");
         List<String> carNames = new ArrayList<>();
         for (String name : carNamesInput) {
             carNames.add(name.trim());
         }
 
+
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int rounds = sc.nextInt();
+        int rounds = 0;
+        try {
+            rounds = sc.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("숫자만 입력 가능합니다.");
+            return; // 프로그램 종료 또는 입력 반복
+        }
 
         Application cargame = new Application(carNames, rounds);
         cargame.start();
