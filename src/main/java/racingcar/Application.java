@@ -62,6 +62,8 @@ public class Application {
         // 시도 횟수만큼 이동하기
         for (int i=0;i<movenumber;i++) {
             Race.move();
+            Print.output();
+            System.out.println();
         }
     }
 }
