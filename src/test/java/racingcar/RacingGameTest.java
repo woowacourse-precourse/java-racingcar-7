@@ -41,6 +41,51 @@ public class RacingGameTest {
     }
 
     @Test
+    @DisplayName("자동차 이름 검증: 수가 9개 이상이면 예외 발생")
+    public void testCarNameValidation_TooManyCars() {
+        RacingGame game = new RacingGame();
+        assertThrows(IllegalArgumentException.class, () -> {
+            game.validateCarName(new String[]{"car1", "car2", "car3", "car4", "car5", "car6", "car7", "car8", "car9"});
+        });
+    }
+
+    @Test
+    @DisplayName("자동차 이름 검증: 1개 이하이면 예외 발생")
+    public void testCarNameValidation_TooFewCars() {
+        RacingGame game = new RacingGame();
+        assertThrows(IllegalArgumentException.class, () -> {
+            game.validateCarName(new String[]{"car1"});
+        });
+    }
+
+    @Test
+    @DisplayName("자동차 이름 검증: 이름이 2자 이하이면 예외 발생")
+    public void testCarNameValidation_TooShortName() {
+        RacingGame game = new RacingGame();
+        assertThrows(IllegalArgumentException.class, () -> {
+            game.validateCarName(new String[]{"c", "def"});
+        });
+    }
+
+    @Test
+    @DisplayName("자동차 이름 검증: 이름이 6자 이상이면 예외 발생")
+    public void testCarNameValidation_TooLongName() {
+        RacingGame game = new RacingGame();
+        assertThrows(IllegalArgumentException.class, () -> {
+            game.validateCarName(new String[]{"carnameiswaytoolong", "abe"});
+        });
+    }
+
+    @Test
+    @DisplayName("자동차 이름 검증: 이름이 알파벳이 아니면 예외 발생")
+    public void testCarNameValidation_NonAlphabetic() {
+        RacingGame game = new RacingGame();
+        assertThrows(IllegalArgumentException.class, () -> {
+            game.validateCarName(new String[]{"1234"});
+        });
+    }
+
+    @Test
     @DisplayName("자동차 이름 중복 확인 테스트")
     public void testCarNameDuplication() {
 

@@ -67,7 +67,7 @@ public class RacingGame {
     }
 
     /// 자동차 입력부분 예외처리
-    private void validateCarName(String[] carNameArray) {
+    void validateCarName(String[] carNameArray) {
 
         if (carNameArray.length > 8) {
             throw new IllegalArgumentException("자동차 이름은 최대 8개까지 입력 가능합니다.");
@@ -97,7 +97,7 @@ public class RacingGame {
     }
 
     ///자동차 이름 중복 예외처리
-    private void checkDuplicateCar(String carName) {
+    void checkDuplicateCar(String carName) {
 
         for (Car car : cars) {
             if (carName.equals(car.getCarName())) {
@@ -116,7 +116,7 @@ public class RacingGame {
         return maxTrunString;
     }
 
-    private void validateMaxTurn(String maxTurnString) {
+    void validateMaxTurn(String maxTurnString) {
 
         int turn = 0;
 
