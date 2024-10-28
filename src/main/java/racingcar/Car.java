@@ -4,7 +4,7 @@ public class Car {
     private final String carName;
     private int distance;
 
-    public String getCarName(){
+    public String getCarName() {
         return carName;
     }
 

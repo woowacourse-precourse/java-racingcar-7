@@ -45,7 +45,7 @@ public class Race {
     }
 
     private void moveForward(List<Car> cars) {
-        for (Car car: cars) {
+        for (Car car : cars) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 car.setDistance(car.getDistance() + 1);
             }
