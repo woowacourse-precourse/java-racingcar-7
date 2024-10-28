@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.model.Car;
+
 import java.math.BigInteger;
 import java.util.List;
 
@@ -17,12 +19,12 @@ public class RacingCarIO {
         return readLine();
     }
 
-    public void printResult(List<String> names, List<BigInteger> values) {
+    public void printResult(List<Car> cars) {
         System.out.println("실행 결과");
 
-        for (int i = 0; i < names.size(); i++) {
-            StringBuilder slash = getSlash(values.get(i));
-            System.out.println(names.get(i) + " : " + slash);
+        for (int i = 0; i < cars.size(); i++) {
+            StringBuilder slash = getSlash(cars.get(i).getMove());
+            System.out.println(cars.get(i).getName() + " : " + slash);
         }
     }
 
