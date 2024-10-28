@@ -39,6 +39,9 @@ public class Application {
     private static int inputTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = Integer.parseInt(Console.readLine());
+        if (count <= 0) {
+            throw new IllegalArgumentException("시도할 횟수는 1번 이상이어야 합니다.");
+        }
         System.out.println();
         return count;
     }
