@@ -18,6 +18,12 @@ public class Car {
         this.position = position;
     }
 
+    public void move(boolean shouldMove) {
+        if (shouldMove) {
+            position++;
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -26,13 +32,13 @@ public class Car {
         return position;
     }
 
-    public void move(boolean shouldMove) {
-        if (shouldMove) {
-            position++;
-        }
-    }
-
     public String getPositionSymbols() {
+        StringBuilder str = new StringBuilder();
 
+        for (int i = 0; i < position; i++) {
+            str.append("-");
+        }
+
+        return str.toString();
     }
 }
