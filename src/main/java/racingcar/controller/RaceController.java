@@ -6,6 +6,7 @@ import racingcar.domain.AttemptCount;
 import racingcar.domain.Car;
 import racingcar.domain.Race;
 import racingcar.parser.CarNameInputParser;
+import racingcar.util.RandomNumberPicker;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -60,7 +61,7 @@ public class RaceController {
 		outputView.printNewLine();
 		outputView.printRaceResultPrompt();
 		for (int i = 0; i < attemptCount; i++) {
-			race.moveEachCars();
+			race.moveEachCars(RandomNumberPicker.pickNumber());
 			outputView.printRaceResult(race.findRaceStatus());
 			outputView.printNewLine();
 		}
