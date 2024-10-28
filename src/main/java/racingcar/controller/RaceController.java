@@ -20,10 +20,10 @@ public class RaceController {
 
     public void run() {
         String inputCarNames = inputView.inputCarNames();
-        int tryCount = inputView.inputTryCount();
-
         String[] carNames = raceService.splitCarNames(inputCarNames);
         List<Car> cars = raceService.createCars(carNames);
+
+        int tryCount = inputView.inputTryCount();
 
         Race race = new Race(cars, tryCount);
 

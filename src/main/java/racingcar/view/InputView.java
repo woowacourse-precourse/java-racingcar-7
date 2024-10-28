@@ -20,9 +20,8 @@ public class InputView {
 
     private int readValidTryCount() {
         String input = Console.readLine();
-        while (!isValidNumber(input)) {
-            System.out.println("유효한 숫자를 입력해주세요.");
-            input = Console.readLine();
+        if (!isValidNumber(input)) {
+            throw new IllegalArgumentException("시도할 횟수는 유효한 숫자여야 합니다.");
         }
         return Integer.parseInt(input);
     }
