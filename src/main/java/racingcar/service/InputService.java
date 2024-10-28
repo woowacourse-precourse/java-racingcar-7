@@ -16,22 +16,22 @@ public class InputService {
         this.inputView = inputView;
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         String carNamesInput = inputView.getCarNames();
         List<Car> cars = createCars(carNamesInput);
         CarValidator.validate(cars);
         return cars;
     }
 
-    public int getTrialCount(){
+    public int getTrialCount() {
         String trialCountInput = inputView.getTrialCount();
         TrialCountValidator.validate(trialCountInput);
         return Integer.parseInt(trialCountInput);
     }
 
-    private List<Car> createCars(String carNamesInput){
+    private List<Car> createCars(String carNamesInput) {
         List<Car> cars = new ArrayList<>();
-        for(String carName : carNamesInput.split(CAR_NAMES_INPUT_SEPARATOR)){
+        for (String carName : carNamesInput.split(CAR_NAMES_INPUT_SEPARATOR)) {
             cars.add(new Car(carName.trim()));
         }
         return cars;

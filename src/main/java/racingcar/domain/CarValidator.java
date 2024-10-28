@@ -35,7 +35,7 @@ public class CarValidator {
         }
     }
 
-    private static void validateIndividualCarNames(List<Car> cars){
+    private static void validateIndividualCarNames(List<Car> cars) {
         Set<String> uniqueNames = new HashSet<>();
 
         for (Car car : cars) {
@@ -48,26 +48,26 @@ public class CarValidator {
         }
     }
 
-    private static void validateEmptyName(String name){
-        if(name.isEmpty()){
+    private static void validateEmptyName(String name) {
+        if (name.isEmpty()) {
             throw new IllegalArgumentException(INVALID_EMPTY_CAR_NAME.getMessage());
         }
     }
 
-    private static void validateNameLength(String name){
-        if(name.length() > MAX_CAR_NAME_LENGTH){
+    private static void validateNameLength(String name) {
+        if (name.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(CAR_NAME_TOO_LONG.getMessage() + name);
         }
     }
 
-    private static void validateNameCharacters(String name){
-        if(!name.matches(AVAILABLE_CAR_NAME_CHARACTER)){
+    private static void validateNameCharacters(String name) {
+        if (!name.matches(AVAILABLE_CAR_NAME_CHARACTER)) {
             throw new IllegalArgumentException(INVALID_CAR_NAME_FORMAT.getMessage() + name);
         }
     }
 
     private static void validateDuplicateCarName(String name, Set<String> uniqueNames) {
-        if(!uniqueNames.add(name)) {
+        if (!uniqueNames.add(name)) {
             throw new IllegalArgumentException(CAR_NAME_ALREADY_EXIST.getMessage() + name);
         }
     }

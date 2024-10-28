@@ -13,7 +13,8 @@ public class CarRaceController {
     private final CarRaceService carRaceService;
     private final RaceResultService raceResultService;
 
-    public CarRaceController(InputService inputService, OutputView outputView, CarRaceService carRaceService, RaceResultService raceResultService) {
+    public CarRaceController(InputService inputService, OutputView outputView,
+                             CarRaceService carRaceService, RaceResultService raceResultService) {
         this.inputService = inputService;
         this.outputView = outputView;
         this.carRaceService = carRaceService;
@@ -24,7 +25,7 @@ public class CarRaceController {
         List<Car> cars = inputService.getCars();
         int trialCount = inputService.getTrialCount();
 
-        for(int i=0; i<trialCount; i++) {
+        for (int i = 0; i < trialCount; i++) {
             carRaceService.performRaceRound(cars);
             outputView.printRaceStatus(cars);
         }

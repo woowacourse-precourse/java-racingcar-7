@@ -15,7 +15,8 @@ public class Application {
         InputService inputService = new InputService(inputView);
         CarRaceService carRaceService = new CarRaceService();
         RaceResultService raceResultService = new RaceResultService();
-        CarRaceController carRaceController = new CarRaceController(inputService, outputView, carRaceService, raceResultService);
+        CarRaceController carRaceController = new CarRaceController(inputService, outputView,
+                carRaceService, raceResultService);
 
         carRaceController.startRace();
     }
