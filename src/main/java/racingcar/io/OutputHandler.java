@@ -1,10 +1,11 @@
 package racingcar.io;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputHandler {
 
-	 public void showStartMessage() {
+	public void showStartMessage() {
 		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 	}
 
@@ -16,10 +17,10 @@ public class OutputHandler {
 		System.out.println("최종 우승자 : " + carNames.get(0));
 	}
 
-	 public void showWinner(List<String> winner) {
+	public void showWinner(List<String> winner) {
 		System.out.print("최종 우승자 : ");
 
-		if(winner.size() == 1){	// 우승자가 1명인 경우
+		if (winner.size() == 1) {    // 우승자가 1명인 경우
 			System.out.println(winner.get(0));
 			return;
 		}
@@ -34,5 +35,9 @@ public class OutputHandler {
 
 	public void showBlankSpace() {
 		System.out.println();
+	}
+
+	public void showMovementStatus(String car, Map<String, String> carForward) {
+		System.out.println(car + " : " + carForward.get(car));
 	}
 }

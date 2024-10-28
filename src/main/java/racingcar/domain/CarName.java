@@ -3,14 +3,14 @@ package racingcar.domain;
 import java.util.List;
 
 public class CarName {
-	private final List<String> carNames ;
+	private final List<String> carNames;
 
-	 private CarName(List<String> carNames) {
+	private CarName(List<String> carNames) {
 		this.carNames = carNames;
 	}
 
-	public static CarName from(List<String> carNames){
-		 return new CarName(carNames);
+	public static CarName from(List<String> carNames) {
+		return new CarName(carNames);
 	}
 
 	public void isCarNameLengthValid() {

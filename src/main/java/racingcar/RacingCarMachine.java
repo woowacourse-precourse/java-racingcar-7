@@ -119,7 +119,7 @@ public class RacingCarMachine {
 				carForward.replace(car, carForward.get(car) + "-");
 			}
 
-			System.out.println(car + " : " + carForward.get(car));
+			outputHandler.showMovementStatus(car, carForward);
 		}
 	}
 
