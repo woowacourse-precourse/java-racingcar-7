@@ -26,7 +26,7 @@ public class Cars {
 
 		return cars.stream()
 			.filter(car -> car.getPosition() == maxPosition)
-			.collect(Collectors.toList());
+			.toList();
 	}
 
 	public List<Car> getCurrentStatus() {
