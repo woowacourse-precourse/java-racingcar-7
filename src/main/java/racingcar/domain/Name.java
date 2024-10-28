@@ -9,7 +9,7 @@ public class Name {
 
     private final String text;
 
-    public Name(String text) {
+    public Name(final String text) {
         validateNameLength(text);
         this.text = text;
     }

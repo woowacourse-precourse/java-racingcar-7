@@ -16,11 +16,11 @@ public class ResultView {
         System.out.println(cars);
     }
 
-    public static void showWinners(List<String> winners) {
+    public static void showWinners(final List<String> winners) {
         System.out.println(Constants.FINAL_WINNERS_PROMPT + joinWinnerNames(winners));
     }
 
-    private static String joinWinnerNames(List<String> winners) {
+    private static String joinWinnerNames(final List<String> winners) {
         return String.join(WINNERS_SEPARATOR, winners);
     }
 }

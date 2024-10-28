@@ -31,7 +31,7 @@ public class RacingGame {
         return CarFactory.getInstance().createCars(carNames);
     }
 
-    private Long toLong(String textTryCount) {
+    private Long toLong(final String textTryCount) {
         try {
             return Long.parseLong(textTryCount);
         } catch (NumberFormatException numberFormatException) {

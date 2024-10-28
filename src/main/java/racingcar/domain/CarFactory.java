@@ -21,7 +21,7 @@ public class CarFactory {
         return carFactory;
     }
 
-    public Cars createCars(String inputCarNames) {
+    public Cars createCars(final String inputCarNames) {
         checkDividedComma(inputCarNames);
 
         List<String> carNames = removeSpaces(splitText(inputCarNames));
