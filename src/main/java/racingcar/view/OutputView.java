@@ -23,7 +23,14 @@ public class OutputView {
         System.out.println(ROUND_RESULT_MESSAGE);
     }
 
-    public void displayCarPosition(Car car) {
+    public void displayRoundResult(List<Car> cars) {
+        for (Car car:cars) {
+            displayCarPosition(car);
+        }
+        System.out.println();
+    }
+
+    private void displayCarPosition(Car car) {
         String position = CAR_POSITION_MARKER.repeat(car.getPosition());
         System.out.printf(POSITION_DISPLAY_FORMAT, car.getName(), position);
     }

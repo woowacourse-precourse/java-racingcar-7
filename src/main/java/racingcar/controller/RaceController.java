@@ -44,6 +44,7 @@ public class RaceController {
         outputView.displayRoundResultMessage();
         for (int round = 0; round < trialCount; round++) {
             raceTrack.moveCars();
+            outputView.displayRoundResult(raceTrack.getCars());
         }
     }
 

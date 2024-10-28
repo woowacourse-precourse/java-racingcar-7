@@ -28,6 +28,10 @@ public class RaceTrack {
         }
     }
 
+    public List<Car> getCars() {
+        return this.cars;
+    }
+
     public List<Car> determineWinners() {
         int farthestPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(INITIAL_POSITION);
         return cars.stream().filter(car -> car.getPosition() == farthestPosition).toList();
