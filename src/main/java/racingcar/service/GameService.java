@@ -24,9 +24,14 @@ public class GameService {
 
     public void playGame(GameData gameData) {
         for (int i = 0; i < gameData.getAttempts(); i++) {
-            for (Car car : gameData.getCars()) {
-                car.move(Util.generateRandomNumber());
-            }
+            playTurn(gameData.getCars());
+            outputView.printStatus(gameData.getCars());
+        }
+    }
+
+    private void playTurn(List<Car> cars) {
+        for (Car car : cars) {
+            car.move(Util.generateRandomNumber());
         }
     }
 
@@ -37,5 +42,4 @@ public class GameService {
 
         outputView.printWinners(winners);
     }
-
 }
