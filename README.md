@@ -9,7 +9,7 @@
     - [x] 경주할 자동차 이름 (String, RacingCarInput)
     - [x] 시도할 횟수 (int, RacingCount)
 #### 1-2. 예외 처리 사항
-- [ ] 빈 값을 입력받는 경우 경주를 진행할 수 없으므로 IllegalArgumentException 예외 처리를 진행
+- [x] 빈 값을 입력받는 경우 경주를 진행할 수 없으므로 IllegalArgumentException 예외 처리를 진행
 
 ### 2. 문자열 분리 및 검증
 #### 2-1. 문자열 분리
