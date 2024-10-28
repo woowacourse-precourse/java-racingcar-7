@@ -5,29 +5,39 @@ import java.util.List;
 public class Racing {
 
     private final List<Car> cars;
-    private final int moveCount;
+    private final int roundNumber;
 
-    public Racing(List<Car> cars, int moveCount) {
+    public Racing(final List<Car> cars, final int roundNumber) {
         this.cars = cars;
-        this.moveCount = moveCount;
+        this.roundNumber = roundNumber;
     }
 
-    public Racing(String names, int moveCount) {
+    public Racing(final String names, final int moveCount) {
         this.cars = CarFactory.createCars(names);
-        this.moveCount = moveCount;
+        this.roundNumber = moveCount;
     }
 
     public void start() {
         System.out.println("\n실행 결과");
-        for (int i = 0; i < moveCount; i++) {
-            for (Car car : cars) {
-                car.move();
-                car.display();
-            }
-            System.out.println();
+        for (int i = 0; i < roundNumber; i++) {
+            playRound();
+            displayRoundResult();
         }
 
         displayWinner();
+    }
+
+    private void playRound() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    private void displayRoundResult() {
+        for (Car car : cars) {
+            car.display();
+        }
+        System.out.println();
     }
 
     private void displayWinner() {

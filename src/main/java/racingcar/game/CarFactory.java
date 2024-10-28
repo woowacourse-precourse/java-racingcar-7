@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public abstract class CarFactory {
 
-    public static List<Car> createCars(String names) {
+    public static List<Car> createCars(final String names) {
         return Arrays.stream(names.split(","))
                 .map(String::trim)
                 .map(Car::new)
