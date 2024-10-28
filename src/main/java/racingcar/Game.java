@@ -36,12 +36,16 @@ public class Game {
 
         List<Car> cars = new ArrayList<>();
         List<String> carsNames = Arrays.asList(input.split(","));
-        if(carsNames.isEmpty() || carsNames.getFirst().isEmpty()){
+
+        if(carsNames.isEmpty()){
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
         for(String carName : carsNames){
             if(carName.length()>5){
                 throw new IllegalArgumentException("이름이 5글자 이상입니다.");
+            }
+            else if(carName.isEmpty()){
+                throw new IllegalArgumentException("잘못된 입력입니다.");
             }
             cars.add(new Car(carName));
         }

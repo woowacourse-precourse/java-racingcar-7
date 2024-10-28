@@ -35,7 +35,9 @@ public class GameTest {
     static Stream<Arguments> parseCarsExceptionCases() {
         return Stream.of(
                 Arguments.of(""),
-                Arguments.of("javaji,pobi")
+                Arguments.of("javaji,pobi"),
+                Arguments.of(","),
+                Arguments.of("pobi,,woni")
         );
     }
 
