@@ -1,10 +1,10 @@
 package racingcar;
 
 public class RaceCar {
-    private String name;
+    private final String name;
     private int forward;
 
-    public RaceCar(String name){
+    public RaceCar(String name) {
         this.name = name.trim();
         this.forward = 0;
     }
@@ -13,11 +13,11 @@ public class RaceCar {
         return name;
     }
 
-    public int getForward(){
+    public int getForward() {
         return forward;
     }
 
-    public void updateForward(int forward){
+    public void updateForward(int forward) {
         this.forward += forward;
     }
 }
