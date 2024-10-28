@@ -1,4 +1,4 @@
-package racingcar.util.generator;
+package racingcar.generator;
 
 public interface Generator<T> {
     T generate();

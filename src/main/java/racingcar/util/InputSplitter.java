@@ -1,13 +1,15 @@
-package racingcar.util.parser;
+package racingcar.util;
 
 import java.util.Arrays;
 import racingcar.model.CarNames;
 
-public class InputSplitter implements InputParser {
+public class InputSplitter {
     private static final String DELIMETER = ",";
 
-    @Override
-    public CarNames parse(String input) {
+    private InputSplitter() {
+    }
+
+    public static CarNames split(String input) {
         return new CarNames(Arrays.asList(input.split(DELIMETER)));
     }
 }

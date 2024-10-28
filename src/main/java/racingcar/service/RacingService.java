@@ -1,10 +1,10 @@
 package racingcar.service;
 
+import racingcar.generator.Generator;
 import racingcar.model.Car;
 import racingcar.model.CarNames;
 import racingcar.model.Cars;
 import racingcar.strategy.MoveStrategy;
-import racingcar.util.generator.Generator;
 
 public class RacingService {
     private final MoveStrategy moveStrategy;

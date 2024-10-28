@@ -5,21 +5,18 @@ import racingcar.model.Car;
 import racingcar.model.CarNames;
 import racingcar.model.Cars;
 import racingcar.service.RacingService;
-import racingcar.util.parser.InputParser;
+import racingcar.util.InputSplitter;
 import racingcar.validator.ValidatorFacade;
 import racingcar.view.ViewFacade;
 
 public class CarController {
     private final RacingService racingService;
     private final ValidatorFacade validatorFacade;
-    private final InputParser inputParser;
     private final ViewFacade viewFacade;
 
-    public CarController(RacingService racingService, ValidatorFacade validatorFacade,
-                         InputParser inputParser, ViewFacade viewFacade) {
+    public CarController(RacingService racingService, ValidatorFacade validatorFacade, ViewFacade viewFacade) {
         this.racingService = racingService;
         this.validatorFacade = validatorFacade;
-        this.inputParser = inputParser;
         this.viewFacade = viewFacade;
     }
 
@@ -27,7 +24,7 @@ public class CarController {
         String carNamesInput = viewFacade.getCarNames();
 
         // 입력 파싱 및 개별 이름 유효성 검사
-        CarNames names = inputParser.parse(carNamesInput);
+        CarNames names = InputSplitter.split(carNamesInput);
         for (String carName : names.getNames()) {
             validatorFacade.validateCarNames(carName); // 개별 이름에 대한 유효성 검사
         }
