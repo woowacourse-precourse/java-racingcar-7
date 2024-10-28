@@ -41,13 +41,10 @@ public class OutputView {
     }
 
     private BigInteger getResultPosition(List<BigInteger> resultPositions) {
-        BigInteger resultPosition;
         if (resultPositions.isEmpty()) {
-            resultPosition = BigInteger.ZERO;
-        } else {
-            resultPosition = resultPositions.getLast();
+            return BigInteger.ZERO;
         }
-        return resultPosition;
+        return resultPositions.getLast();
     }
 
     public String getPrintResult() {
