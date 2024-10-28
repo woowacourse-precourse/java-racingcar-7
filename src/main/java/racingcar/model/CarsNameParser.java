@@ -9,11 +9,13 @@ public class CarsNameParser {
     public static Set<String> parse(String carNamesInput) {
         Set<String> carNames = new HashSet<>();
         for (String carName : carNamesInput.split(",", -1)) {
-            InputValidator.validateNameInput(carName);
-            carNames.add(carName);
+            addAfterValidated(carName, carNames);
         }
         return carNames;
     }
 
-
+    private static void addAfterValidated(String carName, Set<String> carNames) {
+        InputValidator.validateNameInput(carName);
+        carNames.add(carName);
+    }
 }

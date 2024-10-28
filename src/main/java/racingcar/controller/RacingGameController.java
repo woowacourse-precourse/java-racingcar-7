@@ -1,12 +1,12 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
+import java.util.Set;
 import racingcar.model.Cars;
 import racingcar.model.CarsNameParser;
 import racingcar.model.InputValidator;
 import racingcar.view.InputHandler;
 import racingcar.view.OutputHandler;
-
-import java.util.Set;
 
 public class RacingGameController {
     private final InputHandler inputHandler;
@@ -36,6 +36,7 @@ public class RacingGameController {
         String trialInput = inputHandler.printSystemInputTrialMessage();
         InputValidator.validateTrialInput(trialInput);
         cars.setTrialCount(Integer.parseInt(trialInput));
+        Console.close();
     }
 
     private void startRace() {

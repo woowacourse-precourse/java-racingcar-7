@@ -11,10 +11,17 @@ public class Application {
     public static void main(String[] args) {
         SystemView systemView = new SystemView();
         RaceView raceView = new RaceView();
+
+        Cars cars = createCarsWithStrategy(raceView);
+        RacingGameController controller = new RacingGameController(systemView, raceView, cars);
+
+        controller.run();
+    }
+
+    private static Cars createCarsWithStrategy(RaceView raceView) {
         MovementStrategy strategy = new RandomMovementStrategy();
         Cars cars = new Cars(strategy);
         cars.registerObserver(raceView);
-        RacingGameController controller = new RacingGameController(systemView, raceView, cars);
-        controller.run();
+        return cars;
     }
 }
