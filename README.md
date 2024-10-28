@@ -27,9 +27,11 @@
 
 ### 주의사항
 
-- 자동차 이름을 입력받을 때 이름이 6자 이상인 경우 `IllegalArgument` 발생
+- 자동차 이름을 입력받을 때 이름이 6자 이상인 경우 `IllegalArgumentException` 발생
+- 자동차 이름을 입력받을 때 이름이 중복된 경우 `IllegalArgumentException` 발생
 - 우승자 출력할 때 우승자가 2명 이상일 수 있음을 고려
 - 우승자 출력할 때 쉼표로 구분
+
 
 <br>
 
