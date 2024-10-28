@@ -1,7 +1,6 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
-import racingcar.domain.Cars;
 import racingcar.service.RegisterService;
 import racingcar.service.RoundService;
 import racingcar.service.WinnerService;
@@ -21,10 +20,5 @@ public class AppConfig {
 
     public WinnerService winnerService() {
         return new WinnerService();
-    }
-
-
-    public Cars cars() {
-        return new Cars();
     }
 }
