@@ -13,7 +13,7 @@ public class InputView {
         System.out.println(IOMessage.INPUT_CAR_NAMES.getMessage());
         String names = Console.readLine();
 
-        return splitNames(names);
+        return splitCarNames(names);
     }
 
     public int inputTrialCount() {
@@ -31,7 +31,7 @@ public class InputView {
         }
     }
 
-    public List<String> splitNames(String names) {
+    public List<String> splitCarNames(String names) {
         String[] splitNames = names.split(",");
         List<String> carNames = new ArrayList<>();
 
