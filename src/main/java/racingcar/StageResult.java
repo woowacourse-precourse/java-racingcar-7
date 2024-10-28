@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class StageResult {
 
+    private static final String POSITION_MARKER = "-";
     private final Map<Car, Integer> results;
 
     public StageResult(List<Car> cars) {
@@ -16,7 +17,7 @@ public class StageResult {
 
     public void print() {
         results.forEach((car, position) ->
-                System.out.println(car.getName() + " : " + "-".repeat(position)));
+                System.out.println(car.getName() + " : " + POSITION_MARKER.repeat(position)));
         System.out.println();
     }
 }

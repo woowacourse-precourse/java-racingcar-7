@@ -10,6 +10,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class RacingManagerTest {
 
+    private static final int MOVEMENT_THRESHOLD = 4;
+
     @ParameterizedTest
     @ValueSource(strings = {"pobi,woni,jun", "pobi, woni, jun"})
     void 자동차_이름이_복수인_경우_쉼표_구분(String rawName) {
@@ -43,7 +45,7 @@ public class RacingManagerTest {
     @Test
     void 가장_많이_전진한_자동차가_우승() {
         RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), 1);
-        manager.getCars().getFirst().attemptMove(4);
+        manager.getCars().getFirst().tryMove(MOVEMENT_THRESHOLD);
 
         assertThat(manager.winners()).containsExactly("pobi");
     }
@@ -51,8 +53,8 @@ public class RacingManagerTest {
     @Test
     void 우승자가_여러명인_경우_쉼표_구분() {
         RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), 1);
-        manager.getCars().getFirst().attemptMove(4);
-        manager.getCars().getLast().attemptMove(4);
+        manager.getCars().getFirst().tryMove(MOVEMENT_THRESHOLD);
+        manager.getCars().getLast().tryMove(MOVEMENT_THRESHOLD);
 
         assertThat(manager.winners()).containsExactly("pobi", "jun");
     }

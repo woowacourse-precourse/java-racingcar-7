@@ -5,6 +5,11 @@ import java.util.List;
 
 public class InputValidator {
 
+    private static final int KEEP_EMPTY_STRING = -1;
+    private static final String SPECIAL_CHARACTER_REGEX = ".*[`~!@#$%^&*()\\-_+=\\[\\]{}\\\\|;:\"',.<>/?].*";
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int POSITIVE = 1;
+
     public static List<String> validateName(String nameInput) {
         List<String> names = extract(nameInput);
 
@@ -15,7 +20,7 @@ public class InputValidator {
     }
 
     private static List<String> extract(String nameInput) {
-        return Arrays.stream(nameInput.split(",", -1))
+        return Arrays.stream(nameInput.split(",", KEEP_EMPTY_STRING))
                 .map(String::trim)
                 .toList();
     }
@@ -25,7 +30,7 @@ public class InputValidator {
     }
 
     private static boolean hasSpecialCharacter(String name) {
-        return name.matches(".*[`~!@#$%^&*()\\-_+=\\[\\]{}\\\\|;:\"',.<>/?].*");
+        return name.matches(SPECIAL_CHARACTER_REGEX);
     }
 
     private static boolean isBlank(String name) {
@@ -33,7 +38,7 @@ public class InputValidator {
     }
 
     private static boolean isOverLength(String name) {
-        return name.length() > 5;
+        return name.length() > MAX_NAME_LENGTH;
     }
 
     public static int validateStageCount(String countInput) {
@@ -46,6 +51,6 @@ public class InputValidator {
     }
 
     private static boolean isNotPositive(int stageCount) {
-        return stageCount < 1;
+        return stageCount < POSITIVE;
     }
 }

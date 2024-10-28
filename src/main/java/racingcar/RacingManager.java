@@ -28,13 +28,17 @@ public class RacingManager {
 
     public List<StageResult> startRace() {
         for (int i = 0; i < stageCount; i++) {
-            cars.forEach(car -> {
-                int number = Randoms.pickNumberInRange(0, 9);
-                car.attemptMove(number);
-            });
+            moveCars();
             stageResults.add(new StageResult(cars));
         }
         return stageResults;
+    }
+
+    private void moveCars() {
+        cars.forEach(car -> {
+            int number = Randoms.pickNumberInRange(0, 9);
+            car.tryMove(number);
+        });
     }
 
     public void printResult() {
