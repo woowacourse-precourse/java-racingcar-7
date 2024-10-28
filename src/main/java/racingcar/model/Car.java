@@ -30,4 +30,11 @@ public class Car {
     private void move(){
         this.position += 1;
     }
+
+    public String getName(){
+        return this.name;
+    }
+    public Long getPosition(){
+        return this.position;
+    }
 }
