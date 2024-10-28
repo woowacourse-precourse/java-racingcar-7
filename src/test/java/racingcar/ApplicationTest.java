@@ -14,7 +14,6 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 기능_테스트() {
-        // 무작위 값 통제: 첫 번째 무작위 값은 4 이상 (pobi 이동), 두 번째는 3 이하 (woni 정지)
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "5");
@@ -23,7 +22,6 @@ class ApplicationTest extends NsTest {
                 MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD  // 원하는 시나리오로 무작위 값 고정
         );
     }
-
 
 
     @Test
