@@ -10,7 +10,6 @@ public class Application {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        OutputView outputview;
         GameController gameController = new GameController(inputView,outputView);
         gameController.run();
 
