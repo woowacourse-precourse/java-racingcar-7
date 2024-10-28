@@ -15,6 +15,7 @@ public class Application {
         raceControl.race();
 
         raceControl.selectWinner();
+        raceControl.announceWinner();
     }
 
 }

@@ -11,7 +11,8 @@ import java.util.stream.Collectors;
 public class RaceControl {
     private List<String> nameList;
     private int trialCount;
-    private List<Car> carList = new ArrayList<>();
+    private final List<Car> carList = new ArrayList<>();
+    private final List<Car> winners = new ArrayList<>();
 
     /**
      * 경주할 자동차 이름을 등록합니다.
@@ -31,12 +32,11 @@ public class RaceControl {
      * @param input 경주할 자동차 이름 목록 문자열
      */
     public void verifyName(String input) {
-        // 입력의 끝에 쉼표가 있는지 확인하여 예외 처리
+
         if (input.trim().endsWith(",")) {
             throw new IllegalArgumentException("잘못된 입력 형식입니다: 이름이 비어있습니다.");
         }
 
-        // 각 이름의 길이를 확인하여 5자를 초과하는 경우 예외 처리
         String[] names = input.split(",");
         for (final String name : names) {
             if (name.trim().length() > 5) {
@@ -44,7 +44,6 @@ public class RaceControl {
             }
         }
 
-        // 중복 이름을 처리하여 nameList에 저장
         this.nameList = processDuplicateNames(names);
     }
     
@@ -58,8 +57,8 @@ public class RaceControl {
         Map<String, Integer> nameCountMap = new HashMap<>();
 
         return Arrays.stream(names)
-                .map(String::trim) // 각 문자열 요소의 양 끝 공백 제거
-                .map(name -> addIdentifierForDuplicate(name, nameCountMap)) // 중복 처리
+                .map(String::trim)
+                .map(name -> addIdentifierForDuplicate(name, nameCountMap))
                 .collect(Collectors.toList());
     }
     
@@ -87,7 +86,7 @@ public class RaceControl {
         for (final String name : this.nameList) {
             Car car = new Car(name);
 
-            this.carList.add(car);  // 생성된 Car 객체를 리스트에 추가
+            this.carList.add(car);
         }
     }
 
@@ -159,11 +158,10 @@ public class RaceControl {
     }
 
     /**
-     * 우승자를 출력합니다.
+     * 우승자를 선정합니다.
      */
     public void selectWinner() {
         int maxValue = Integer.MIN_VALUE;
-        ArrayList<Car> winners = new ArrayList<>();
 
         for(final Car car : this.carList) {
             if (car.getLocation() >= maxValue) {
@@ -173,17 +171,22 @@ public class RaceControl {
 
         for(final Car car : this.carList) {
             if (car.getLocation() == maxValue) {
-                winners.add(car);
+                this.winners.add(car);
             }
         }
+    }
 
+    /**
+     * 우승자를 출력합니다.
+     */
+    public void announceWinner() {
         System.out.println();
         System.out.print("최종 우승자 : ");
 
         List<String> winnerNames = new ArrayList<>();
 
-        for (final Car car : winners) {
-            winnerNames.add(car.getName()); // 각 우승자의 이름을 리스트에 추가
+        for (final Car car : this.winners) {
+            winnerNames.add(car.getName());
         }
 
         System.out.print(String.join(", ", winnerNames));
