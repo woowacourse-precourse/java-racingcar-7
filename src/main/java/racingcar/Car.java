@@ -3,8 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car implements Comparable<Car> {
-    private static int startNum = 0;
-    private static int endNum = 9;
+    private final static int startNum = 0;
+    private final static int endNum = 9;
 
     private String name;
     private int randomNumber;
