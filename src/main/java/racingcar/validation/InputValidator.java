@@ -10,10 +10,13 @@ public class InputValidator {
     private static final String CAR_NAME_LENGTH_ERROR = "자동차 이름은 5자 이하로 작성해주세요.";
     private static final String CAR_NAME_DUPLICATE_ERROR = "중복된 자동차 이름입니다.";
 
-    private static Set<String> carNameSet;
+    private static Set<String> carNameSet = new HashSet<>();
+
+    public static void initialize() {
+        carNameSet.clear();     // 테스트를 위한 carNameSet 초기화 코드
+    }
 
     public static void validateCarNames(String carName) {
-        carNameSet = new HashSet<>();
         validateLength(carName);
         validateDuplicates(carName);
 
