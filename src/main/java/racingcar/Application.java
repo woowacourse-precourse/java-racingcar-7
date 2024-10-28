@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.controller.RacingController;
 import racingcar.model.CarFactory;
 import racingcar.model.Judge;
+import racingcar.model.NumberStringConverter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,6 +15,7 @@ public class Application {
     }
 
     private static RacingController setUpController() {
-        return new RacingController(new InputView(), new OutputView(), new CarFactory(), new Judge());
+        return new RacingController(new InputView(), new OutputView(), new CarFactory(), new Judge(),
+                new NumberStringConverter());
     }
 }
