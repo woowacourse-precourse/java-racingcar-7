@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int count;
 
     public Car(String name) {
@@ -24,17 +24,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return name + " : " + printCountResult(this.count);
-    }
-
-    private String printCountResult(int count) {
-
-        StringBuilder sb = new StringBuilder();
-
-        for(int i = 0; i < count; i++) {
-            sb.append("-");
-        }
-
-        return sb.toString();
+        return name + " : " + "-".repeat(count);
     }
 }
