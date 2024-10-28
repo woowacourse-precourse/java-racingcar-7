@@ -14,7 +14,13 @@ public class Application {
         List<RacingCar> racingCars = userInput();
         System.out.println("시도할 횟수는 몇 회인가요?");
         // 사용자로부터 횟수를 입력받음
-        int times = Integer.parseInt(Console.readLine());
+        // 숫자가 아닌 값 입력시 IllegalArgumentException 발생
+        int times;
+        try {
+            times = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
 
         System.out.println("실행 결과");
         for (int i = 0; i < times; i++) {
@@ -38,12 +44,14 @@ public class Application {
         List<RacingCar> nameList = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(names, ",");
         while (st.hasMoreTokens()) {
-            nameList.add(new RacingCar(st.nextToken()));
+            String name = st.nextToken();
+//            checkNameLimit(name);
+            nameList.add(new RacingCar(name));
         }
         return nameList;
     }
 
-    public static List<RacingCar> carRun(List<RacingCar> racingCars) {
+    public static void carRun(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             // 랜덤한 값이 4 이상일때만 전진
             if (4 <= Randoms.pickNumberInRange(0, 9)) {
@@ -51,7 +59,6 @@ public class Application {
                 racingCar.setPosition(++position);
             }
         }
-        return racingCars;
     }
 
     public static void printResult(List<RacingCar> racingCars) {
