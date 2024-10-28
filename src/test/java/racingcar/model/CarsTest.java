@@ -63,8 +63,7 @@ public class CarsTest extends NsTest {
         Assertions.assertThatThrownBy(() -> new Cars(new ArrayList<>(List.of(car5, car6, car7, car8))))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
