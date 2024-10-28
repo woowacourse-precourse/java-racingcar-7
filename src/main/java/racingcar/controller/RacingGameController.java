@@ -21,7 +21,7 @@ public class RacingGameController {
         List<Car> cars = createCars(carNames);
         RacingGame game = new RacingGame(cars);
 
-        playRounds(game, attemptCount);
+        runRounds(game, attemptCount);
         List<String> winners = determineWinners(game.getCars());
         OutputView.printFinalWinners(winners);
     }
@@ -38,7 +38,7 @@ public class RacingGameController {
         return cars;
     }
 
-    private void playRounds(RacingGame game, int attemptCount) {
+    private void runRounds(RacingGame game, int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
             game.playRound();
             OutputView.printRoundResult(game);
