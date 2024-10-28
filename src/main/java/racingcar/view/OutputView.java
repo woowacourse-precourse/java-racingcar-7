@@ -2,7 +2,7 @@ package racingcar.view;
 
 import racingcar.model.Car;
 
-import java.util.list;
+import java.util.List;
 
 public class OutputView {
 
@@ -15,7 +15,10 @@ public class OutputView {
     }
 
     public static void printCars(List<Car> cars) {
-
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " +  car.getPositionSymbols());
+        }
+        System.out.println();
     }
 
     public static void printWinners(List<String> Winners) {
