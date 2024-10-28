@@ -26,6 +26,7 @@ public class Input {
 
     public static List<String> trimCarNames(List<String> carNames){
         List<String> trimNames = new ArrayList<>();
+        Validate.validateDuplicateName(carNames);
         for (String carName : carNames) {
             carName = carName.trim();
             Validate.validateCarNameLength(carName);
