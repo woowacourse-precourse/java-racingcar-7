@@ -15,7 +15,7 @@ public class Application {
         return input.split(",");
     }
 
-    public Set<String> setCarName(String[] carNames) {
+    public Set<String> checkCarName(String[] carNames) {
         Set<String> carNamesSet = new HashSet<>();
 
         for (String name : carNames) {
@@ -68,7 +68,7 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameInput = Console.readLine();
         String[] carNames = racingGame.splitCarName(carNameInput);
-        racingGame.setCar(racingGame.setCarName(carNames));
+        racingGame.setCar(racingGame.checkCarName(carNames));
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String numberOfGames = Console.readLine();
