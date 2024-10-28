@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,6 +31,14 @@ public class RacingCarGame {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력해야 합니다.");
         }
+    }
+
+    public List<Car> createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
+        return cars;
     }
 }
 
