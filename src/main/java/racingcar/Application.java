@@ -11,6 +11,9 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameStrings = Console.readLine();
 
+        // view 생성
+        Output view = new Output();
+
         // model 생성
         List<Car> cars = new ArrayList<>();
         Set<String> carNamesSet = new HashSet<>();
@@ -21,6 +24,9 @@ public class Application {
             cars.add(new Car(carName));
             carNamesSet.add(carName);
         }
+
+        // controller 생성
+        RacingCarController controller = new RacingCarController(view, cars);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String playTimeString = Console.readLine();
@@ -34,5 +40,7 @@ public class Application {
         if (playTime < 0) {
             throw new IllegalArgumentException();
         }
+
+        controller.play(playTime);
     }
 }
