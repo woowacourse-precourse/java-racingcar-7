@@ -7,7 +7,7 @@ import static racingcar.Constants.*;
 
 public class Car {
     private final String carName;
-    private int positionNum=0;
+    private int positionNumber=0;
 
     public Car(String name) {
         this.carName = name;
@@ -18,15 +18,15 @@ public class Car {
     }
 
     public void go(){
-        if(Util.randomNum() >= GO_NUMBER) {
-            positionNum++;
+        if(Util.randomNumber() >= GO_NUMBER) {
+            positionNumber++;
         }
     }
     public int getPositionNum() {
-        return positionNum;
+        return positionNumber;
     }
 
     public String playResult(){
-        return carName+" : "+"-".repeat(positionNum);
+        return carName+" : "+"-".repeat(positionNumber);
     }
 }
