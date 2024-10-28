@@ -9,11 +9,8 @@ public class Application {
     public static void main(String[] args) {
         Racingcar r = new Racingcar();
 
-        r.start();
+        r.run();
 
-        System.out.println("실행 결과");
-        r.totalRace();
-        r.winnersPrint();
 //        try {
 //            Racingcar r = new Racingcar();
 //
@@ -43,7 +40,7 @@ class Racingcar {
     static final int NAME_LENGTH_LIMIT = 5;
 
 
-    void start() {
+    void run() {
         try {
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             String cars = readLine();
@@ -54,6 +51,10 @@ class Racingcar {
             setMoveCnt(attempts);
 
             System.out.println();
+
+            System.out.println("실행 결과");
+            totalRace();
+            winnersPrint();
         } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("입력된 값이 없습니다.");
         }
