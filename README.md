@@ -51,6 +51,15 @@
 **`RacingCarFactory.java`**
 - RacingCarController와 그에 필요한 의존성 객체들을 생성하고 조립합니다.
 
+### 7. `controller` 패키지
 
+**`RacingCarController.java`**
+- InputView로부터 받은 입력을 적절한 서비스로 전달하고, 결과를 받아서 OutputView에 전달하는 컨트롤러 클래스입니다.
+- **`run()`**: 전체 경주 프로세스를 실행하는 메서드입니다.
+- **`createCars()`**: 사용자로부터 입력받은 자동차 이름을 기반으로 자동차 객체를 생성합니다.
+- **`getRaceCount()`**: 사용자로부터 입력받은 경주 횟수를 검증하고 반환합니다.
+- **`performRaces(int raceCount)`**: 지정된 횟수만큼 경주를 진행하고, 각 경주 결과를 출력합니다.
+- **`printRaceResults(List<String[]> results)`**: 각 자동차의 전진 결과를 출력합니다.
+- **`printWinners()`**: 최종 우승자를 출력합니다.
 
  

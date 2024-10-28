@@ -27,7 +27,6 @@ public class RacingCarController {
             performRaces(raceCount);
             printWinners();
         }
-    
 
     private void createCars() {
         String inputCarsName = inputView.inputCarsName();
