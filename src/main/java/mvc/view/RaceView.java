@@ -57,18 +57,11 @@ public class RaceView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public List<String> transformRawCarNamesToCarNameList(String rawCars){
+    List<String> transformRawCarNamesToCarNameList(String rawCars){
 
         if(rawCars.isEmpty()){
             System.out.printf("input cars is empty. : %s",rawCars);
             throw new IllegalArgumentException("input cars is empty");
-        }
-
-        //validate encoded
-        try {
-            byte[] utf8Bytes = rawCars.getBytes(StandardCharsets.UTF_8);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("input cars can't be encoded to utf-8. please check it");
         }
 
         String[] carNameList = rawCars.split(",");
@@ -84,6 +77,13 @@ public class RaceView {
     void validateCarNameLength(String carName){
         int maxSize = 5;
 
+        //validate encoded
+        try {
+            byte[] utf8Bytes = carName.getBytes(StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("input cars can't be encoded to utf-8. please check it");
+        }
+
         if(carName.length() > maxSize){
             System.out.printf("car name is over max length. : %s",carName);
             throw new IllegalArgumentException("car name is over max length");
@@ -91,6 +91,13 @@ public class RaceView {
     }
 
     int transformStageToInt(String strStage){
+
+        validateStage(strStage);
+
+        return Integer.parseInt(strStage);
+    }
+
+    void validateStage(String strStage){
         int stage = 0;
 
         //validate numeric string
@@ -106,24 +113,20 @@ public class RaceView {
         BigInteger maxInt = BigInteger.valueOf(Integer.MAX_VALUE);
         BigInteger minInt = BigInteger.valueOf(Integer.MIN_VALUE);
         if(bigIntStage.compareTo(maxInt)>0
-        || bigIntStage.compareTo(minInt) < 0){
+                || bigIntStage.compareTo(minInt) < 0){
             System.out.printf("stage is out of int type rage. stage : %d",bigIntStage);
             throw new IllegalArgumentException("stage is out of int type rage");
         }
 
-
         /*TODO
-        * -stage가 0일때는 어떻게 처리해야하는가?
-        * */
+         * -stage가 0일때는 어떻게 처리해야하는가?
+         * */
 
         //validate positive
         if(stage < 0){
             System.out.printf("stage is out of range. stage : %d",stage);
             throw new IllegalArgumentException("stage is out of rage");
         }
-
-
-        return stage;
     }
 
     String transformToChart(int move){
