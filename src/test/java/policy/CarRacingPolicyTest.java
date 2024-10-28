@@ -3,19 +3,22 @@ package policy;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.policy.RacingCarPolicy;
-import racingcar.domain.policy.RacingPolicy;
+import racingcar.domain.RacingCarPolicy;
+import racingcar.domain.RacingPolicy;
 
-class RacingCarPolicyTest {
+class CarRacingPolicyTest {
 
     @DisplayName("랜덤값으로 전진여부를 판별한다.")
     @Test
     void isMoveForward(){
-    //given
+        //given
+        RacingPolicy racingCarPolicy = new RacingCarPolicy();
 
-    //when
+        //when
+        Boolean moveForward = racingCarPolicy.isMoveForward(4);
 
-    //then
+        //then
+        Assertions.assertThat(moveForward).isTrue();
 
     }
     @DisplayName("전진 기호를 가져온다.")

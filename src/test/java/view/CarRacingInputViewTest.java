@@ -7,11 +7,11 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.policy.RacingCarPolicy;
+import racingcar.domain.RacingCarPolicy;
 import racingcar.exception.ExceptionMessage;
-import racingcar.view.RacingCarInputView;
+import racingcar.presentation.RacingCarInputView;
 
-class RacingCarInputViewTest {
+class CarRacingInputViewTest {
 
     @AfterEach
     void closeConsole() {

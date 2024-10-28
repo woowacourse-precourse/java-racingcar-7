@@ -1,4 +1,4 @@
-package racingcar.domain.policy;
+package racingcar.domain;
 
 public class RacingCarPolicy implements RacingPolicy {
     private static final  String NAME_SEPARATOR = ",";

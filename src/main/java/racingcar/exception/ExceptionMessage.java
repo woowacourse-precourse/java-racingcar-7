@@ -7,7 +7,8 @@ public enum ExceptionMessage {
     INVALID_BLANK_INPUT("공백만 입력할 수 없습니다."),
     INVALID_COUNT_FORMAT("시도횟수는 숫자로 입력해 주세요."),
     MAX_COUNT_LENGTH_EXCEEDED("시도횟수는 9,223,372,036,854,775,807를 넘을 수 없습니다."),
-    INVALID_NON_POSITIVE_COUNT("시도횟수는 양수로 입력해주세요")
+    INVALID_NON_POSITIVE_COUNT("시도횟수는 양수로 입력해주세요"),
+    NO_PARTICIPANTS_IN_ROUND("해당 라운드에 참가자가 없습니다.")
     ;
 
     private final String message;

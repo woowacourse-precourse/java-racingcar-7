@@ -1,4 +1,4 @@
-package racingcar.domain.policy;
+package racingcar.domain;
 
 public interface RacingPolicy {
     Boolean isMoveForward(int randomNumber);

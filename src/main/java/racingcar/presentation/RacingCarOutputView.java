@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.presentation;
 
 import racingcar.dto.RacingOutputDTO;
 

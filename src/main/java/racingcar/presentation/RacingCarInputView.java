@@ -1,10 +1,10 @@
-package racingcar.view;
+package racingcar.presentation;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.dto.ValidatedInputDataDTO;
 import java.util.Arrays;
 import java.util.List;
-import racingcar.domain.policy.RacingPolicy;
+import racingcar.domain.RacingPolicy;
 import racingcar.exception.ExceptionMessage;
 
 public class RacingCarInputView{
