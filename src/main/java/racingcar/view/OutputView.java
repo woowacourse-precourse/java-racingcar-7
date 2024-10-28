@@ -2,7 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.Map;
-import racingcar.Car;
+import racingcar.model.Car;
 
 public class OutputView {
     private static final String WINNER_FORMAT = "최종 우승자 : ";

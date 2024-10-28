@@ -1,6 +1,4 @@
-package racingcar;
-
-import racingcar.Engine;
+package racingcar.model;
 
 public class Car {
     private static final int NAME_LENGTH_LIMIT = 5;

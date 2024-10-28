@@ -1,9 +1,13 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import racingcar.model.Car;
+import racingcar.model.Cars;
+import racingcar.model.RacingField;
+import racingcar.model.RandomEngine;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
