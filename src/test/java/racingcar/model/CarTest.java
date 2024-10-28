@@ -43,6 +43,17 @@ class CarTest {
     }
 
     @Test
-    void move() {
+    void 자동차_초기_위치는_0이어야_함() {
+        Car car = new Car("pobi");
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void 자동차_여러번_이동_테스트() {
+        Car car = new Car("pobi");
+        car.move();
+        car.move();
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(3);
     }
 }
