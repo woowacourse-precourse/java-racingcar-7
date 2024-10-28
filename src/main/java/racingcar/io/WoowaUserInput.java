@@ -8,7 +8,6 @@ public class WoowaUserInput implements UserInputHandler {
     public List<String> makeUserInputNames() {
         ParserUserInput parserUserInput = new ParserUserInput();
         String makeString = Console.readLine();
-        parserUserInput.hasOnlyCharacters(makeString);
         return parserUserInput.split(makeString);
     }
 

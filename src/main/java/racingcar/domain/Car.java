@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
     private final int MOVE_CONDITION_LIMIT = 4;
 
     private Score score;
@@ -16,7 +16,7 @@ public class Car implements Comparable<Car>{
     }
 
     public void moveCar(int randomNumber) {
-        if(randomNumber >= MOVE_CONDITION_LIMIT) {
+        if (randomNumber >= MOVE_CONDITION_LIMIT) {
             this.score.moveForward();
         }
     }
