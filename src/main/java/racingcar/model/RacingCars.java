@@ -40,10 +40,14 @@ public class RacingCars implements Cars {
 
     private void validateDuplicateNames(Collection<Car> cars) {
         Set<String> carNames = new HashSet<>();
-        for (Car car : cars) {
-            if (!carNames.add(car.getName())) {
-                throw new CarNameException(ErrorMessage.CAR_NAME_IS_DUPLICATED.getMessage());
-            }
-        }
+        cars.stream()
+                .map(Car::getName)
+                .forEach(name -> validateUniqueName(name, carNames));
+    }
+
+    private void validateUniqueName(String name, Set<String> carNames) {
+        Optional.of(name)
+                .filter(carNames::add)
+                .orElseThrow(() -> new CarNameException(ErrorMessage.CAR_NAME_IS_DUPLICATED.getMessage()));
     }
 }
