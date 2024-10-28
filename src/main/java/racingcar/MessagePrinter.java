@@ -13,7 +13,6 @@ public class MessagePrinter {
     final String resultGuideMessage = "실행 결과";
 
     public String getWinnerMessage(List<String> winnerList) {
-
         validateWinnerList(winnerList);
 
         String winnerMessage = "최종 우승자 : ";
@@ -22,40 +21,39 @@ public class MessagePrinter {
         return winnerMessage;
     }
 
-    public String getSingleRoundResultMessage(List<String> carNames, int roundNum) {
-        List<Map.Entry<String, String>> entry = mapBuilder.getSingleRoundResult(carNames, roundNum);
-        List<String> singleRoundResultMessages = new ArrayList<>();
+    public String getSingleResultMessage(List<String> carNames, int roundNum) {
+        List<Map.Entry<String, String>> entry = mapBuilder.getSingleResult(carNames, roundNum);
+        List<String> singleResultMessages = new ArrayList<>();
 
         for (int i = 0; i < entry.size(); i++) {
             String carName = entry.get(i).getKey();
             String line = entry.get(i).getValue();
-            singleRoundResultMessages.add(carName + " : " + line);
+            singleResultMessages.add(carName + " : " + line);
         }
 
-        String singleRoundResultMessage = String.join("\n", singleRoundResultMessages);
-        return singleRoundResultMessage;
+        String singleResultMessage = String.join("\n", singleResultMessages);
+
+        return singleResultMessage;
     }
 
-    public String getTotalRoundResultMessage(List<String> totalRoundResultList) {
+    public String getTotalResultMessage(List<String> totalResults) {
+        validateTotalResults(totalResults);
 
-        validateTotalRoundResultList(totalRoundResultList);
+        String totalResultMessage = String.join("\n", totalResults);
+        totalResultMessage += "\n";
 
-        String totalRoundResultMessage = String.join("\n", totalRoundResultList);
-        totalRoundResultMessage += "\n";
-
-        return totalRoundResultMessage;
+        return totalResultMessage;
     }
 
     private void validateWinnerList(List<String> winnerList) {
-        if(winnerList == null) {
+        if (winnerList == null) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateTotalRoundResultList(List<String> totalRoundResultList) {
-        if(totalRoundResultList == null) {
+    private void validateTotalResults(List<String> totalRoundResultList) {
+        if (totalRoundResultList == null) {
             throw new IllegalArgumentException();
         }
     }
-
 }

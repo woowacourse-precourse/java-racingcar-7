@@ -4,8 +4,7 @@ import java.util.List;
 
 public class InputExtractor {
 
-    public static List<String> extractCarNames(String userInputCar) {
-
+    public List<String> extractCarNames(String userInputCar) {
         validateUserInputCar(userInputCar);
 
         String delimiter = ",";
@@ -15,10 +14,10 @@ public class InputExtractor {
         return carNames;
     }
 
-    public static int extractRound(String userInputRound) {
-        try{
+    public int extractRound(String userInputRound) {
+        try {
             int totalRounds = Integer.parseInt(userInputRound);
-            validateRoundsPositive(totalRounds);
+            validateRounds(totalRounds);
             return totalRounds;
         } catch (IllegalArgumentException e) {
             throw e;
@@ -32,40 +31,39 @@ public class InputExtractor {
         return carCount;
     }
 
-    public static void validateUserInputCar(String userInputCar) {
+    public void validateUserInputCar(String userInputCar) {
         if (userInputCar == null) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void validateCarNames(List<String> carNames) {
-
+    public void validateCarNames(List<String> carNames) {
         for (int i = 0; i < carNames.size(); i++) {
             String carName = carNames.get(i);
             validateCarName(carName);
         }
     }
 
-    public static void validateCarName(String carName) {
+    public void validateCarName(String carName) {
         int carNameLength = carName.length();
-        if(carNameLength <= 0 || carNameLength > 5) {
+        if (carNameLength <= 0 || carNameLength > 5) {
             throw new IllegalArgumentException();
         }
 
         int trimedCarNameLength = carName.trim().length();
-        if(trimedCarNameLength == 0) {
+        if (trimedCarNameLength == 0) {
             throw new IllegalArgumentException();
         }
     }
 
     public void validateCarCount(int carCount) {
-        if(carCount <= 1) {
+        if (carCount <= 1) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validateRoundsPositive(int totalRounds) {
-        if(totalRounds <= 0) {
+    private void validateRounds(int totalRounds) {
+        if (totalRounds <= 0) {
             throw new IllegalArgumentException();
         }
     }

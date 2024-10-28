@@ -8,28 +8,26 @@ import java.util.TreeMap;
 
 public class WinnerSorter {
 
-    public static List<String> getJointWinners(TreeMap<String, Integer> forwardCounter) {
-
+    public List<String> getJointWinners(TreeMap<String, Integer> forwardCounter) {
         List<String> winnerList = new ArrayList<>();
         String winner = Collections.max(forwardCounter.entrySet(), Map.Entry.comparingByValue()).getKey();
-        Integer winnerValue = forwardCounter.get(winner);
+        Integer winnerCount = forwardCounter.get(winner);
 
         for (Map.Entry<String, Integer> entry : forwardCounter.entrySet()) {
             String carName = entry.getKey();
             Integer forwardCount = entry.getValue();
-            addJointWinner(carName, forwardCount, winnerValue, winnerList);
+            addJointWinner(carName, forwardCount, winnerCount, winnerList);
         }
 
         return winnerList;
     }
 
-    static void addJointWinner(String carName, Integer forwardCount, Integer winnerValue, List<String> winnerList) {
-
-        if(forwardCount > winnerValue) {
+    void addJointWinner(String carName, Integer forwardCount, Integer winnerCount, List<String> winnerList) {
+        if (forwardCount > winnerCount) {
             throw new IllegalArgumentException();
         }
 
-        if(forwardCount.equals(winnerValue)) {
+        if (forwardCount.equals(winnerCount)) {
             winnerList.add(carName);
         }
     }
