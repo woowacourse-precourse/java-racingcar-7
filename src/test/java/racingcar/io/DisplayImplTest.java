@@ -39,8 +39,9 @@ class DisplayImplTest {
         display.progress(cars);
 
         //then
+        String resultLabel = "\n실행 결과\n";
         String expect = "A : -\nB : \nC : -\n\n";
-        assertThat(CUSTOM_OUTPUT_STREAM.toString()).isEqualTo(expect);
+        assertThat(CUSTOM_OUTPUT_STREAM.toString()).isEqualTo(resultLabel + expect);
     }
 
     @Test
