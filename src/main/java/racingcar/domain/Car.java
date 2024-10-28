@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.config.RaceConfig;
+
 public class Car {
 	private final String name;
 	private int distance;
@@ -13,7 +15,7 @@ public class Car {
 
 	public void move(int randomNumber) {
 		if (isMovable(randomNumber)) {
-			distance += 1;
+			distance += RaceConfig.MOVE_DISTANCE.getNumber();
 		}
 	}
 
