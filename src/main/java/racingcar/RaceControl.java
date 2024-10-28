@@ -116,7 +116,7 @@ public class RaceControl {
         try {
             roundCount = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("경주할 횟수는 숫자여야 합니다.");
+            throw new IllegalArgumentException("경주할 횟수는 int 범위 내의 정수여야 합니다.");
         }
 
         if (roundCount <= 0) {
