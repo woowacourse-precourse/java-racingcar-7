@@ -1,9 +1,13 @@
 package racingcar.controller;
 
+import static racingcar.global.Exception.CarNameException.*;
+import static racingcar.global.Exception.TotalRoundException.*;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import racingcar.global.Exception.TotalRoundException.InvalidTotalRoundFormatException;
 import racingcar.model.Car;
 import racingcar.model.CarRacing;
 import racingcar.view.InputView;
@@ -34,14 +38,6 @@ public class CarRacingController {
         displayFinalWinner();
     }
 
-    private void startCarRacing() {
-        System.out.println("\n실행 결과");
-        for (int i = 0; i < totalRound; i++) {
-            carRacing.moverCarsForwardRandomly();
-            outputView.showRoundResult(carRacing.getRacingCars());
-        }
-    }
-
     private void setUpCarRacing() {
         String carNameInput = inputView.getRacingCarNameInput();
         List<String> carNames = validateCarNameInput(carNameInput);
@@ -52,6 +48,14 @@ public class CarRacingController {
     private void setUpTotalRound() {
         String totalRoundInput = inputView.getTotalRoundInput();
         validateTotalRoundInput(totalRoundInput);
+    }
+
+    private void startCarRacing() {
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < totalRound; i++) {
+            carRacing.moverCarsForwardRandomly();
+            outputView.showRoundResult(carRacing.getRacingCars());
+        }
     }
 
     private void displayFinalWinner() {
@@ -65,23 +69,23 @@ public class CarRacingController {
         String trimmedCarNameInput = carNameInput.replaceAll(WHITE_SPACE, EMPTY_STRING);
 
         if (trimmedCarNameInput.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름으로 공백은 불가능합니다.");
+            throw new EmptyCarNameException();
         }
         if (!trimmedCarNameInput.contains(",")) {
-            throw new IllegalArgumentException("자동차 이름은 쉼표로 구분합니다. 쉼표를 입력해주세요.");
+            throw new InsufficientCarNamesException();
         }
 
         List<String> carNames = Arrays.stream(trimmedCarNameInput.split(",")).toList();
         Set<String> nameSet = new HashSet<>();
         if (carNames.size() == 1 || carNames.contains(EMPTY_STRING)) {
-            throw new IllegalArgumentException("자동차 이름은 2개 이상 입력해야합니다.");
+            throw new InsufficientCarNamesException();
         }
         for (String name : carNames) {
             if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다: " + name);
+                throw new LongCarNameException(name);
             }
             if (!nameSet.add(name)) {
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+                throw new DuplicatedCarNameException();
             }
         }
         return carNames;
@@ -91,16 +95,16 @@ public class CarRacingController {
      * 시도 횟수 문자열의 유효성 검증
      */
     public void validateTotalRoundInput(String totalRoundInput) {
-        if (totalRoundInput.isBlank()) {
-            throw new IllegalArgumentException("시도 횟수를 공백 없이 자연수로 입력해주세요.");
+        if (totalRoundInput == null || totalRoundInput.trim().equals(EMPTY_STRING)) {
+            throw new EmptyTotalRoundException();
         }
         try {
             totalRound = Integer.parseInt(totalRoundInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 공백 없는 하나의 자연수만 가능합니다.");
+            throw new InvalidTotalRoundFormatException();
         }
         if (totalRound <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 0보다 큰 자연수만 가능합니다.");
+            throw new NonPositiveRoundException();
         }
     }
 }
