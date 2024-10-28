@@ -21,13 +21,4 @@ public class InputView {
     public String readMoveCount() {
         return Console.readLine();
     }
-
-    private int validateMoveCount(String input) {
-        int count = Integer.parseInt(input);
-        if (count < 1) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
-        }
-        return count;
-    }
-
 }
