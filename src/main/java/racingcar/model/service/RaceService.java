@@ -1,11 +1,13 @@
 package racingcar.model.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racingcar.model.domain.AttemptNumber;
 import racingcar.model.domain.Car;
 import racingcar.model.domain.Delimiter;
 import racingcar.model.domain.Race;
+import racingcar.model.domain.Winner;
 import racingcar.model.util.Parse;
 import racingcar.view.OutputView;
 
@@ -26,5 +28,11 @@ public class RaceService {
 			race.raceOnce();
 			OutputView.raceStatus(race.getCars());
 		}
+	}
+
+	public List<String> getWinners() {
+		return Winner.determineWinners(race.getCars()).stream()
+			.map(Car::getName)
+			.collect(Collectors.toList());
 	}
 }
