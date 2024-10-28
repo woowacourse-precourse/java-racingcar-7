@@ -34,7 +34,7 @@ public class OutputView {
                 .map(CarDto::getName)
                 .collect(Collectors.toList());
         String winners = String.join(WORD_DELIMITER, carNames);
-        System.out.printf(WINNER_MESSAGE, winners);
+        System.out.print(WINNER_MESSAGE + winners);
     }
 
 }
