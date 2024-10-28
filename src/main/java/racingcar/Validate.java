@@ -46,4 +46,10 @@ public class Validate {
             throw new IllegalArgumentException("게임 횟수는 1 이상이어야 합니다.");
         }
     }
+
+    public static void validateGameCountIsNumber(String inputGameCount){
+        if (!inputGameCount.matches("\\d+")) {
+            throw new IllegalArgumentException("시도할 횟수는 숫자여야 합니다.");
+        }
+    }
 }
