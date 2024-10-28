@@ -69,6 +69,20 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    @DisplayName("입력한 시도할 횟수가 정수가 0이거나 그보다 작다면 예외가 발생합니다.")
+    void 입력한_시도할_횟수가_0이거나_그보다_작다면_예외가_발생합니다() {
+        //given
+        InputView inputView = new InputView();
+
+        //when
+        //then
+        assertThatThrownBy(() -> inputView.validateNumber("-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도할 횟수는 0보다 커야 합니다.");
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
