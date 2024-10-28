@@ -144,10 +144,36 @@ class ApplicationTest extends NsTest {
         outputManager.printWinner(winnerCars);
 
         // then
-        String expectedOutput = "최종 우승자 : pobi, edi, rupi" + System.lineSeparator();
+        String expectedOutput = System.lineSeparator()+"최종 우승자 : pobi, edi, rupi";
         String actualOutput = outputStream.toString();
         System.out.println("Actual Output: " + actualOutput);
         assertEquals(expectedOutput, actualOutput, "우승자 출력이 잘못되었습니다.");
+    }
+
+    @Test
+    void 실행_결과_테스트() {
+        //given
+        OutputManager outputManager = new ConsoleOutputManager();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        List<Car> progressResult = Arrays.asList(
+                new TestCar(3,"Car1"),
+                new TestCar(2,"Car2"),
+                new TestCar(1,"Car3")
+        );
+
+        //when
+        outputManager.printExecutionResult(progressResult);
+
+        //then
+        String expectedOutput = System.lineSeparator()+"Car1 : ---"+
+                System.lineSeparator()+"Car2 : --"+
+                System.lineSeparator()+"Car3 : -"+
+                System.lineSeparator();
+        String actualOutput = outputStream.toString();
+        System.out.println("Actual Outpt: "+actualOutput);
+        assertEquals(expectedOutput, actualOutput, "실행 결과 출력이 잘못되었습니다.");
     }
 
     @Test
