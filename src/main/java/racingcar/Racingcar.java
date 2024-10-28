@@ -45,7 +45,6 @@ public class Racingcar {
             int number = sm.getRandomNumber();
             int score = sm.getScore(number);
             gm.addScore(name, score);
-            //System.out.println("name:" + name + ",score:" + score);
         }
         display.outputScores(map);
     }

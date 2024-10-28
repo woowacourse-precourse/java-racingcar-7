@@ -2,11 +2,8 @@ package gameManager;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
-
-import static java.util.Arrays.stream;
 
 
 public class Display {
@@ -29,10 +26,6 @@ public class Display {
 
     //input 스트링을 ','로 나눠 배열에 담아 반환
     public void setGamerNameArr(String names) {
-        /*isNullOrEmpty(names);
-        validateGamerNumber(names);
-        gamer = names.split("," ,-1);
-        validateNameLength(gamer);*/
         gamer = Validation.nameCheck(names);
     }
 
@@ -47,10 +40,6 @@ public class Display {
     }
 
     public void setRound(String input) {
-        //isNullOrEmpty(round);
-        /*int intRound = parseToInt(round);
-        checkNegative(intRound);
-        this.round = intRound;*/
         this.round = Validation.roundCheck(input);
     }
 

@@ -11,7 +11,6 @@ public class JudgeManager {
     private static Set<String> winners;
     private static int highestScore;
 
-    //static Map<String, Integer> gamerScores = GameManager.getGamerScores();
 
     //가장 높은 점수를 찾는 메서드
     private static int findHighestScore(Map<String, Integer> map) {
@@ -21,14 +20,6 @@ public class JudgeManager {
         }
         return highestScore;
     }
-
-    /*public int findHighestScore(Map<String, Integer> map){
-        highestScore = 0;
-        for(int score : map.values()){
-            if(score>highestScore) highestScore = score;
-        }
-        return highestScore;
-    }*/
 
     //winner가 있는지 확인하는 메서드
     private static boolean hasGamersWithHighestScore(Map<String, Integer> map) {
@@ -41,7 +32,6 @@ public class JudgeManager {
         return hasGamersWithHighestScore(map) ? highestScore : 0;
     }
 
-    //map을 넣고 최고 값을 찾아?..
     private static Set<String> findWinners(Map<String, Integer> map, int highestScore) {
         winners = new HashSet<>();
         for (Entry<String, Integer> e : map.entrySet()) {

@@ -6,15 +6,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class ScoreManager {
 
     //랜덤 값 반환
-    public int getRandomNumber(){
+    public int getRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
     //랜덤 값 판단과 반환
-    public int getScore(int number){
-        if(number>=4){
+    public int getScore(int number) {
+        if (number >= 4) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }

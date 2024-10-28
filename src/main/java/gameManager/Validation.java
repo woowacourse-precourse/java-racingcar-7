@@ -4,32 +4,33 @@ import java.util.Arrays;
 
 public class Validation {
 
-    public static String[] nameCheck(String input){
+    public static String[] nameCheck(String input) {
         isNullOrEmpty(input);
         gamerNumberCheck(input);
         String[] names = splitNames(input);
         nameLengthCheck(names);
         return names;
     }
-    public static int roundCheck(String input){
+
+    public static int roundCheck(String input) {
         isNullOrEmpty(input);
         int round = parseToInt(input);
         negativeNumberCheck(round);
         return round;
     }
 
-    private static void isNullOrEmpty(String input){
-        if(input == null || input.trim().isEmpty()){
+    private static void isNullOrEmpty(String input) {
+        if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void gamerNumberCheck(String input){
-        if(!input.contains(","))
+    private static void gamerNumberCheck(String input) {
+        if (!input.contains(","))
             throw new IllegalArgumentException();
     }
 
-    private static String[] splitNames(String input){
+    private static String[] splitNames(String input) {
         return input.split(",", -1);
     }
 
@@ -42,16 +43,16 @@ public class Validation {
                 });
     }
 
-    private static int parseToInt(String round){
-        try{
+    private static int parseToInt(String round) {
+        try {
             return Integer.parseInt(round);
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void negativeNumberCheck(int round){
-        if(round < 0){
+    private static void negativeNumberCheck(int round) {
+        if (round < 0) {
             throw new IllegalArgumentException();
         }
     }
