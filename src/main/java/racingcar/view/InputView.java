@@ -20,6 +20,7 @@ public class InputView {
     public String getAttemptCount() {
         System.out.println(ATTEMPT_COUNT_INPUT_MESSAGE);
         String input = Console.readLine().trim();
+        System.out.println();
 
         InputValidation.validateNotEmpty(input, ATTEMPT_COUNT_EMPTY_ERROR);
         return input;
