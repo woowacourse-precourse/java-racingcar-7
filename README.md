@@ -27,8 +27,8 @@
   - [x] Output : 각 round 별 경기 결과 출력. 최종 우승자 출력.
 - [x] Service Layer
   - [x] GameService : 한 라운드를 진행하는 로직. 우승자 결정 로직.
-- [ ] Controller Layer
-  - [ ] CarRace : 전체 라운드를 진행. Model 객체 생성. Service와 View 연결.
+- [x] Controller Layer
+  - [x] CarRace : 전체 라운드를 진행. Model 객체 생성. Service와 View 연결.
 - [x] Util
   - [X] Exception : 처리할 예외 목록
   - [X] CONSTANT : 필요한 상수값 변수화
