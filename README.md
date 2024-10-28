@@ -25,7 +25,7 @@
 
 ## 클래스 다이어그램
 
-- 메시지를 선택한 후 메시지를 처리할 책임이 있는 객체를 할당하는 방법으로 클래스 다이어그램을 제작했습니다
+- 메시지를 선택한 후 메시지를 처리할 책임이 있는 객체를 할당하는 방법으로 클래스 다이어그램을 제작했습니다 <br>
 
 ![자동차 경주 1차 클래스 다이어그램 (3)](https://github.com/user-attachments/assets/69c51d52-ed68-4dd9-81bb-7fb7ba1dbdd5)
 
@@ -67,3 +67,8 @@
 - CarNamesCreator에서 하는 일 CarFactory로 옮기기 **(Done)**
 - 이름 잘 짓기 리팩토링 진행 **(Done)**
 - 입/출력에 대한 테스트 진행 **(Done)**
+
+## 변경된 클래스 다이어그램 
+<br>
+![자동차 경주 1차 클래스 다이어그램 (4)](https://github.com/user-attachments/assets/5795b1a4-5167-4210-ba1d-4eb326bbf96d)
+
