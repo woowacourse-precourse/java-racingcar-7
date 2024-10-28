@@ -9,6 +9,7 @@ public class AttemptCount {
 
     public AttemptCount(String count) {
         this.count = convertToBigInteger(count);
+        validateNonNegative(this.count);
     }
 
     public boolean isCountZero() {
@@ -25,5 +26,15 @@ public class AttemptCount {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효하지 않은 숫자 형식입니다.");
         }
+    }
+
+    private void validateNonNegative(BigInteger number) {
+        if (isNegative(number)) {
+            throw new IllegalArgumentException("시도 횟수는 음수일 수 없습니다.");
+        }
+    }
+
+    private boolean isNegative(BigInteger number) {
+        return number.compareTo(BigInteger.ZERO) < 0;
     }
 }
