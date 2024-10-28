@@ -12,6 +12,14 @@ public class ProgressedInformation {
         this.score = score;
     }
 
+    public String getCarName() {
+        return this.car.getCarName().getName();
+    }
+
+    public int getScore() {
+        return this.score;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

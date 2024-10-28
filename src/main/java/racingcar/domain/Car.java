@@ -12,6 +12,10 @@ class Car {
         this.criticalPoint = criticalPoint;
     }
 
+    CarName getCarName() {
+        return this.carName;
+    }
+
     boolean canMove(final MoveCondition moveCondition) {
         return moveCondition.getConditionPoint() >= criticalPoint;
     }

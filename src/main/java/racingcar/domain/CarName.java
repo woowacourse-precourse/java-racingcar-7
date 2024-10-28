@@ -11,6 +11,10 @@ class CarName {
         this.name = name;
     }
 
+    String getName() {
+        return this.name;
+    }
+
     static CarName of(final String carName) {
         validate(carName);
         return new CarName(carName.trim());
