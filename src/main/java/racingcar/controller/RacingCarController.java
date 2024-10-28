@@ -17,7 +17,7 @@ public class RacingCarController {
         this.racingCarService = racingCarService;
     }
 
-    public void RunRacingGame() {
+    public void runRacingGame() {
         InputHandler.promptForCarNames();
         String carNames = Console.readLine();
         InputHandler.promptForAttemptCount();
@@ -34,6 +34,5 @@ public class RacingCarController {
         List<String> winners = racingCarService.getWinners(race.getCars());
 
         OutputHandler.printWinners(winners);
-
     }
 }

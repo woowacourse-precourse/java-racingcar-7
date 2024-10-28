@@ -9,6 +9,6 @@ public class Application {
         RacingCarService racingCarService = new RacingCarService();
         RacingCarController racingCarController = new RacingCarController(racingCarService);
 
-        racingCarController.RunRacingGame();
+        racingCarController.runRacingGame();
     }
 }
