@@ -39,6 +39,9 @@ public class InputView {
         if (inputCountValidator.isNotBlankTryCount(inputTryCount)) {
 
         }
+        if (inputCountValidator.isPossibleConvertNumber(inputTryCount)) {
+
+        }
         if (inputCountValidator.isValidScope(inputTryCount)) {
             tryCount = Integer.parseInt(inputTryCount);
         }

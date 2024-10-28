@@ -10,6 +10,13 @@ public class InputCountValidator {
         return true;
     }
 
+    public boolean isPossibleConvertNumber(String tryCount) {
+        if (!tryCount.matches("^%d")) {
+            throw new IllegalArgumentException("숫자가 아닌 값이 입력되었습니다.");
+        }
+        return true;
+    }
+
     public boolean isValidScope(String tryCount) {
         try {
             Integer.parseInt(tryCount);
@@ -23,6 +30,6 @@ public class InputCountValidator {
         if (tryCount.isEmpty()) {
             throw new IllegalArgumentException("공백이 입력되었습니다.");
         }
-        return false;
+        return true;
     }
 }
