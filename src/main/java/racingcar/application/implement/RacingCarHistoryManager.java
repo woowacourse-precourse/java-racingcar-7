@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.persistence.RacingCarHistoryRepository;
 import racingcar.domain.CarRacer;
 
-public class RacingCarHistoryManager {
+public class RacingCarHistoryManager implements RacingHistoryManager<CarRacer> {
 
     private final RacingCarHistoryRepository repository;
     private final RacingCarHistoryWriter writer;
@@ -14,11 +14,13 @@ public class RacingCarHistoryManager {
         this.writer = writer;
     }
 
+    @Override
     public void record(List<CarRacer> carRacers) {
         String result = writer.writeAll(carRacers);
         repository.add(result);
     }
 
+    @Override
     public List<String> getAllHistory() {
         return repository.getHistories();
     }

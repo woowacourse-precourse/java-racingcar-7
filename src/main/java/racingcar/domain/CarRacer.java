@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import static racingcar.common.RacingCarConstant.*;
 import static racingcar.common.RacingCarConstant.DEFAULT_STATE;
 import static racingcar.common.RacingCarConstant.FORWARD_BAR;
 
@@ -34,6 +35,6 @@ public class CarRacer extends Racer {
 
     @Override
     public String toString() {
-        return name + " : " + progressState;
+        return name + PROGRESS_SEPARATOR + progressState;
     }
 }
