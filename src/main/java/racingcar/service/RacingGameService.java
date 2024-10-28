@@ -24,10 +24,10 @@ public class RacingGameService {
             racingGames.addRacingGame(racingGame);
         }
 
-        return new ResultDTO(printPlayingResult(racingGames, cars), getMaxProgressCars(cars));
+        return new ResultDTO(printPlayingResult(racingGames), getMaxDistanceCars(cars));
     }
 
-    public static String printPlayingResult(RacingGames racingGames, Cars cars){
+    public static String printPlayingResult(RacingGames racingGames){
         StringBuilder result = new StringBuilder();
         for(RacingGame racingGame : racingGames.getRacingGames()){
             result.append(racingGame.getFormattedGameResult());
@@ -35,22 +35,25 @@ public class RacingGameService {
         return result.toString();
     }
 
-    public static String getMaxProgressCars(Cars cars){
+    public static String getMaxDistanceCars(Cars cars){
+        int maxDistances = findMaxDistance(cars);
+        return findWinnerCars(cars, maxDistances);
+    }
+
+    private static int findMaxDistance(Cars cars){
+        return cars.getCars().stream()
+                .mapToInt(Car::getCurrentDistance)
+                .max()
+                .orElse(0);
+    }
+
+    private static String findWinnerCars(Cars cars, int maxDistances){
         List<String> maxProgressCarNames = new ArrayList<>();
-        int maxProgress = cars.getCarByNumber(0).getCurrentDistance();
-
         for (Car car : cars.getCars()) {
-            if (car.getCurrentDistance() > maxProgress) {
-                maxProgress = car.getCurrentDistance();
-            }
-        }
-
-        for (Car car : cars.getCars()) {
-            if (car.getCurrentDistance() == maxProgress) {
+            if (car.getCurrentDistance() == maxDistances) {
                 maxProgressCarNames.add(car.getCarName());
             }
         }
-
         return String.join(", ", maxProgressCarNames);
     }
 }
