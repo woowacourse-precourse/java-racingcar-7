@@ -3,6 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.validation.CarNameListValidator;
+import racingcar.validation.TryCountValidator;
 
 public class InputView {
     private static final String CAR_NAMES_DELIMITER = ",";
@@ -20,7 +21,7 @@ public class InputView {
     }
 
     public int inputTryCount() {
-        return Integer.parseInt(Console.readLine());
+        return TryCountValidator.validate(Console.readLine());
     }
 
     public List<String> splitCarNamesToList(String carNames) {
