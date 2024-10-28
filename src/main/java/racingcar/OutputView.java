@@ -17,7 +17,7 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    // list에 있는 차들의 현재 위치 출력
+    // list에 있는 차들의 이름과 현재 위치 출력
     public void printResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.print(car.getName() + " : ");
