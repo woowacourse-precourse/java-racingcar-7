@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.model.CarName;
 import racingcar.model.Distance;
 
@@ -10,7 +9,7 @@ public class OutputView {
     private static final String INPUT_RACE_COUNT_GUIDE = "시도할 횟수는 몇 회인가요?";
     private static final String EXECUTION_RESULT = "실행 결과";
     private static final String ROAD_EXPRESSION = "-";
-    private static final String NAME_SCORE_DELIMITER = ":";
+    private static final String NAME_SCORE_DELIMITER = " : ";
     private static final String LAST_WINNER = "최종 우승자 : ";
 
     public static void printCarNameGuide() {
