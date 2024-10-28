@@ -14,7 +14,12 @@ public class Car extends Vehicle {
     @Override
     public void attemptMoveForward() {
         if (tryCount > 0) {
-            if (randomGenerator.getRandomNumber() >= 4) {
+            int randomNumber = randomGenerator.getRandomNumber();
+
+            if(randomNumber < 0 || randomNumber > 9)
+                throw new IllegalArgumentException("허용되지 않는 랜덤 숫자 범위입니다.");
+
+            if (randomNumber >= 4) {
                 this.forwardCount++;
                 this.tryCount--;
             }
