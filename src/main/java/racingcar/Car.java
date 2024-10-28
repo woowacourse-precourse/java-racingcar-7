@@ -1,6 +1,7 @@
 package racingcar;
 
 public class Car {
+    private static final int MOVE_THRESHOLD = 4;
     private final String name;
     private int location = 0;
 
@@ -9,7 +10,7 @@ public class Car {
     }
 
     public void move(int randomValue) {
-        if (randomValue >= 4) {
+        if (randomValue >= MOVE_THRESHOLD) {
             location++;
         }
     }

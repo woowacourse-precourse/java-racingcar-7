@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
+    private static final int MIN_RANDOM_VALUE = 0;
+    private static final int MAX_RANDOM_VALUE = 9;
+
     private final List<Car> participatingCars = new ArrayList<>();
     private final int attempts;
 
@@ -17,7 +20,7 @@ public class RacingGame {
 
     public void implement() {
         for (Car car : participatingCars) {
-            int randomValue = Randoms.pickNumberInRange(0, 9);
+            int randomValue = Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
             car.move(randomValue);
         }
     }
