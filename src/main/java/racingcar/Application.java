@@ -11,16 +11,16 @@ import racingcar.io.InputStringReader;
 
 public class Application {
 
-    private static InputStringReader reader;
-    private static CarNamesConverter carNamesConverter;
-    private static CountConverter countConverter;
+    private static final AppConfig appConfig = AppConfig.getInstance();
 
-    private static Display display;
-    private static ForwardPolicy forwardPolicy;
+    private static final InputStringReader reader = appConfig.inputStringReader();
+    private static final CarNamesConverter carNamesConverter = appConfig.carNamesConverter();
+    private static final CountConverter countConverter = appConfig.countConverter();
+
+    private static final Display display = appConfig.display();
+    private static final ForwardPolicy forwardPolicy = appConfig.forwardPolicy();
 
     public static void main(String[] args) {
-        configure();
-
         String rawCarNames = reader.readCarNames();
         List<Car> cars = carNamesConverter.convert(rawCarNames);
 
@@ -29,15 +29,5 @@ public class Application {
 
         Game game = Game.of(cars, display);
         game.start(repetitions, forwardPolicy);
-    }
-
-    private static void configure() {
-        AppConfig appConfig = AppConfig.getInstance();
-
-        reader = appConfig.inputStringReader();
-        carNamesConverter = appConfig.carNamesConverter();
-        countConverter = appConfig.countConverter();
-        display = appConfig.display();
-        forwardPolicy = appConfig.forwardPolicy();
     }
 }
