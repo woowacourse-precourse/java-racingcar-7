@@ -18,7 +18,7 @@ class RacingControllerTests extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    @DisplayName("이동 가능 횟수가 여러 번일 때, 마지막 실행 결과가 입력한 순서를 유지하면서 올바르게 출력되는지 확인")
+    @DisplayName("이동 가능 횟수가 여러 번일 때, 마지막 이동 결과가 입력한 순서를 유지하면서 올바르게 출력되는지 확인")
     void testRaceResultOrderSameToInputOrder() {
         assertRandomNumberInRangeTest(
                 () -> {
