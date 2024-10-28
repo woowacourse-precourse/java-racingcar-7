@@ -44,6 +44,8 @@ public class RacingCarGameController {
     }
 
     private void startRace(Race race, NumberGenerator numberGenerator) {
+        outputView.printStartMessage();
+
         while (!race.isRaceComplete()) {
             List<Car> raceCars = race.moveAllCarsAndGetStatus(numberGenerator);
             outputView.printRoundResult(raceCars);

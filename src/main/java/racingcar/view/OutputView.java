@@ -8,6 +8,8 @@ public interface OutputView {
 
     void printTryCountRequest();
 
+    void printStartMessage();
+
     void printRoundResult(List<Car> cars);
 
     void printWinners(List<Car> winners);
