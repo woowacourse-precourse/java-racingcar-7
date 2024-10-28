@@ -22,6 +22,18 @@ public class Cars {
         carList.forEach(Car::forwardOrStop);
     }
 
+    // 가장 큰 forwardCnt를 찾은 후, 해당 값과 같은 모든 차의 이름을 리스트로 반환한다.
+    public List<String> findWinnersName() {
+        int maxForwardCnt = carList.stream()
+                .mapToInt(car -> car.forwardCnt)
+                .max()
+                .orElse(-1);
+
+        return carList.stream()
+                .filter(car -> car.forwardCnt == maxForwardCnt)
+                .map(car -> car.name)
+                .toList();
+    }
 
     @Override
     public String toString() {

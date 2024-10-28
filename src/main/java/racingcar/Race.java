@@ -35,3 +35,9 @@ public class Race {
             printRacingStatus();
         }
     }
+
+    public void printWinners() {
+        List<String> winners = competingCars.findWinnersName();
+        System.out.print("최종 우승자 : " + String.join(", ", winners));
+    }
+}
