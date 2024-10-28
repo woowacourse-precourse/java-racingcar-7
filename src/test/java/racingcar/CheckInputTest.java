@@ -68,9 +68,9 @@ public class CheckInputTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", " ", "one"})
+    @ValueSource(strings = {"", " ", "one","-1","0"})
     @NullAndEmptySource
-    @DisplayName("경주 횟수로 숫자 외 입력이 들어오는 경우")
+    @DisplayName("경주 횟수로 공백,또는 문자열,0,음수가 들어오는 경우")
     void testInvalidRaceCount(String input) {
         CheckInput checkInput = new CheckInput();
         assertThatThrownBy(() -> {

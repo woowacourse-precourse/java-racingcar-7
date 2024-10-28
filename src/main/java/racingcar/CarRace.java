@@ -6,12 +6,13 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RaceCar {
+public class CarRace {
     private final RaceCarPrinter printer = new RaceCarPrinter();
     private HashMap<String, Integer> carMap;
 
     public void start(List<String> carNames, int raceTimes) {
         carMap = initCars(carNames);
+        printer.printStartMessage();
         runRace(raceTimes);
         printer.printWinner(checkWinner());
     }

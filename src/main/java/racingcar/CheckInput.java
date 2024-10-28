@@ -49,8 +49,8 @@ public class CheckInput {
         }
     }
 
-    private List<String> splitByDelimiter(String carNameString) {
-        return Arrays.asList(carNameString.split(DELIMITER));
+    private List<String> splitByDelimiter(String carNames) {
+        return Arrays.asList(carNames.split(DELIMITER));
     }
 
 
@@ -66,6 +66,10 @@ public class CheckInput {
     }
 
     private int toInt(String raceCountString) {
+        int raceCount = Integer.parseInt(raceCountString);
+        if(raceCount<=0){
+            throw new IllegalArgumentException(ERROR_INVALID_COUNT);
+        }
         return Integer.parseInt(raceCountString);
     }
 

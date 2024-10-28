@@ -16,7 +16,7 @@ public class Application {
         String userInputNumber = Console.readLine();
         int raceCount = checkInput.isValidCount(userInputNumber);
 
-        RaceCar car = new RaceCar();
+        CarRace car = new CarRace();
         car.start(carNames, raceCount);
 
         Console.close();
