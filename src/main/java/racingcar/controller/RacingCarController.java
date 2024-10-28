@@ -21,6 +21,7 @@ public class RacingCarController {
     }
 
     public void run() {
+
         String carInput = racingCarView.inputCarNames();
         String[] carNames = carInput.split(",");
         validator.validateCarNames(carNames);
@@ -39,6 +40,7 @@ public class RacingCarController {
     }
 
     private Race setUpGame(String[] carNames, String roundInput) {
+
         int round = Integer.parseInt(roundInput);
 
         List<Car> cars = new ArrayList<>();
