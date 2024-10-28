@@ -24,5 +24,5 @@ public class OutputHandler {
     }
 
     private static final String POSITION_SYMBOL = "-";
-    private static final String WINNER_MESSAGE = "최종 우승자: ";
+    private static final String WINNER_MESSAGE = "최종 우승자 : ";
 }
