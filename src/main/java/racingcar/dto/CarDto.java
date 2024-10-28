@@ -7,6 +7,7 @@ import static racingcar.message.SystemMessage.GAME_WINNER;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
 
 public record CarDto(Map<String, Integer> carDto) {
@@ -18,13 +19,14 @@ public record CarDto(Map<String, Integer> carDto) {
     }
 
     public String toCurrantDistance() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String name : carDto.keySet()) {
-            stringBuilder.append(
-                    CURRENT_RESULT.getMessage().formatted(name, DISTANCE.getMessage().repeat(carDto.get(name))));
-            stringBuilder.append(System.lineSeparator());
-        }
-        return stringBuilder.toString();
+        return carDto.entrySet().stream()
+                .map(entry -> formatDistance(entry.getKey(), entry.getValue()))
+                .collect(Collectors.joining(System.lineSeparator()));
+    }
+
+    private String formatDistance(String name, int distance) {
+        String repeatedDistance = DISTANCE.getMessage().repeat(distance);
+        return CURRENT_RESULT.getMessage().formatted(name, repeatedDistance);
     }
 
     public String toWinners() {
