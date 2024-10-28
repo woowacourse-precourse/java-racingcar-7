@@ -36,12 +36,12 @@ public class Name {
         }
 
         private static void validateLength(String name) {
-            if (isOverFive(name)) {
+            if (isOverNameThreshold(name)) {
                 throw new RaceException(ErrorMessage.INVALID_NAME_OVER_FIVE);
             }
         }
 
-        private static boolean isOverFive(String name) {
+        private static boolean isOverNameThreshold(String name) {
             return name.length() > NAME_THRESHOLD;
         }
     }
