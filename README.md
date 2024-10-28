@@ -38,11 +38,12 @@
   
 
 ## 기능 구현 
+### Service
+- RacingCarService
 ### Controller
 - RacingCarController
 ### Model
 - RacingCarModel
-- RacingCarValidator
 ### View
 - InputView
 - OutputView
