@@ -58,7 +58,7 @@ public class RacingCarService {
     }
 
     public void moveRacingCar(RacingCar racingCar, int number){
-        if(number > 4){
+        if(number >= 4){
             racingCar.move();
             racingRepository.saveRacingCar(racingCar);
         }
