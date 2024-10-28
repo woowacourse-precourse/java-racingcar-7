@@ -23,6 +23,9 @@ public class IOManager {
         try {
             int turn = Integer.parseInt(input);
 
+            GameManager gameManager = GameManager.getInstance();
+            gameManager.setEndTurn(turn);
+
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
         }
