@@ -9,4 +9,6 @@ public interface ApplicationView {
     int requestGameCount();
 
     void printRacingProgressResult(List<String> results);
+
+    void printWinners(String winnersName);
 }

@@ -5,7 +5,6 @@ import static racingcar.common.FormatConstants.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.common.FormatConstants;
 
 public class ApplicationConsoleView implements ApplicationView {
 
@@ -28,6 +27,11 @@ public class ApplicationConsoleView implements ApplicationView {
             resultBuilder.append(result).append(DOUBLE_LINE_BREAKER);
         }
         println(resultBuilder.toString());
+    }
+
+    @Override
+    public void printWinners(String winnersName) {
+        println(WINNER_RESULT_PREFIX + winnersName);
     }
 
     private void println(String message) {
