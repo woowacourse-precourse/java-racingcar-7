@@ -7,21 +7,45 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarService {
     private final RacingCarModel racingCarModel;
-    private String carNameString;
+    private final ResultGeneratorService resultGeneratorService;
+
     private int racingAttemptCount;
-    private String winnerResultString;
+    private List<String> carNameList;
+    private List<String> winnerList;
 
 
-    public RacingCarService(RacingCarModel racingCarModel){
+    public RacingCarService(RacingCarModel racingCarModel, ResultGeneratorService resultGeneratorService){
         this.racingCarModel = racingCarModel;
+        this.resultGeneratorService = resultGeneratorService;
     }
 
 
-    public void inputRacingCarName(){
-        carNameString = InputView.inputCarNameString();
+    public void startRacing(){
+        carNameList.stream()
+                .filter(carName -> RacingCarValidator.canForward(getRandomNumber()))
+                .forEach(racingCarModel::updateCarMap);
+
+        String racingResult = getRacingResult();
+        printRacingResult(racingResult);
+    }
+
+
+    private int getRandomNumber(){
+        return RandomNumber.createRandomNumber();
+    }
+
+
+    public void initializeCarHashMap(){
+        racingCarModel.setCarHashMap();
+    }
+
+
+    public String inputRacingCarName(){
+        return InputView.inputCarNameString();
     }
 
 
@@ -36,8 +60,14 @@ public class RacingCarService {
     }
 
 
-    public void passCarNameStringToModel(){
+    public void updateCarNameListInModel(String carNameString){
         racingCarModel.setCarNameList(carNameString);
+        setCarNameList();
+    }
+
+
+    public void setCarNameList(){
+        carNameList = racingCarModel.getCarNameList();
     }
 
 
@@ -46,39 +76,30 @@ public class RacingCarService {
     }
 
 
-    public void startRacing(){
-        List<String> carNameList = racingCarModel.getCarNameList();
-        racingCarModel.setCarHashMap();
-        carNameList.stream()
-                .filter(carName -> RacingCarValidator.canForward(RandomNumber.createRandomNumber()))
-                .forEach(racingCarModel::updateCarMap);
-
-        printRacingResult();
-    }
-
-
     public void printWinnerResult(){
-        setWinnerResultString();
+        setWinnerList();
+        String winnerResultString = resultGeneratorService.generateWinnerResult(winnerList);
         OutputView.printWinner(winnerResultString);
     }
 
 
-    public void setWinnerResultString(){
-        List<String> winnerList = racingCarModel.getWinnerList();
-        winnerResultString = String.join(", ", winnerList);
+    private void setWinnerList(){
+        winnerList = racingCarModel.getWinnerList();
     }
 
 
-    public void printRacingResult(){
-        List<String> carNameList = racingCarModel.getCarNameList();
-        carNameList.stream()
-                .map(carName ->{
+    public String getRacingResult() {
+        return carNameList.stream()
+                .map(carName -> {
                     int forwardCount = racingCarModel.getForwardCount(carName);
-                    String forwardExpression = "-".repeat(forwardCount);
-                    return carName + " : " + forwardExpression + "\n";
+                    return resultGeneratorService.generateRacingResult(carName, forwardCount);
                 })
-                .forEach(OutputView::printRacingResult);
+                .collect(Collectors.joining("\n"));
+    }
 
+
+    public void printRacingResult(String racingResult){
+        OutputView.printRacingResult(racingResult);
         System.out.println();
     }
 
