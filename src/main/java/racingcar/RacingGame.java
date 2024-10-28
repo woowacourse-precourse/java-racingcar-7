@@ -27,4 +27,16 @@ public class UserInterface {
             return message;
         }
     }
+    public void closeConsole() {
+        Console.close();
+    }
+    public void printNewLine() {
+        System.out.println();
+    }
+    public String[] getCarNames() {
+        System.out.println(ConsoleMessage.Car_NAME.getMessage());
+        final String input = Console.readLine();
+        return input.split(",");
+    }
+
 }
