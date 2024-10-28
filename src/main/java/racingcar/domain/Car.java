@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.function.Supplier;
+
 public class Car {
 	String name;
 	int steps;
@@ -25,6 +27,16 @@ public class Car {
 		if (name.isEmpty()) {
 			throw new IllegalArgumentException("차량 이름은 비어있을 수 없습니다.");
 		}
+	}
+
+	public void moveIfSatisfyStandard(Supplier<Integer> numberSupplier, int standard) {
+		if(numberSupplier.get() >= standard){
+			steps++;
+		}
+	}
+
+	public String showStatus(String stat) {
+		return name + " : " + stat.repeat(steps) + "\n";
 	}
 
 }
