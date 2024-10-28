@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,5 +13,11 @@ public class RacingService {
                 .map(String::trim)
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
+
+    public void executeRound(List<Car> carList) {
+        for (Car car : carList) {
+            car.move(pickNumberInRange(0, 9));
+        }
     }
 }
