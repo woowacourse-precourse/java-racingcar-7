@@ -11,8 +11,8 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 public class Application {
     public static void main(String[] args) {
         List<Car> cars = getInputCarNames();
-        int movecount = getInputMoveCount();
-        printMoveResult(movecount, cars);
+        int moveCount = getInputMoveCount();
+        printMoveResult(moveCount, cars);
         String winner = findWinner(cars);
         System.out.println("최종 우승자 : " + winner);
 
@@ -95,6 +95,9 @@ public class Application {
             }
         }
         return winner;
+    }
+    public static List<Car> testGetInputCarNames() {
+        return getInputCarNames();
     }
 
 
