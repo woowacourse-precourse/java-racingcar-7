@@ -21,30 +21,38 @@ public class CarSetupService implements CarSetup {
     public List<Car> parseCarNames(String input) {
         inputValidator.validateIsEmpty(input);
         HashSet<String> carNamesSet = new HashSet<>();
-
-        return Arrays.stream(input.split(","))
+        List<Car> cars = new ArrayList<>();
+        cars =  Arrays.stream(input.split(","))
                 .map(String::trim)
-                .filter(name -> {
-                    if (name.isEmpty()) {
-                        throw new IllegalArgumentException(ErrorMessage.EMPTY_NAME.getMessage());
-                    }
-                    return true;
-                })
-                .peek(inputValidator::validateCarNameLength)
-                .filter(name -> {
-                    if (!carNamesSet.add(name)) {
-                        throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NAME.getMessage());
-                    }
-                    return true;
-                })
-                .map(name -> new Car(name, 0))
+                .peek(this::validateCarName)
+                .peek(name -> validateDuplicateName(name, carNamesSet))
+                .map(this::createCar)
                 .collect(Collectors.toCollection(ArrayList::new));
+        return  cars;
     }
 
     @Override
     public int parseAttemptCount(String input) {
         inputValidator.validateAttemptCount(input);
+        int count = Integer.parseInt(input);
+        return count;
+    }
 
-        return Integer.parseInt(input);
+
+    private void validateCarName(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_NAME.getMessage());
+        }
+        inputValidator.validateCarNameLength(name);
+    }
+
+    private void validateDuplicateName(String name, HashSet<String> carNamesSet) {
+        if (!carNamesSet.add(name)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NAME.getMessage());
+        }
+    }
+
+    private Car createCar(String name) {
+        return new Car(name);
     }
 }
