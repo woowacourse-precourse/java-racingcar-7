@@ -7,7 +7,7 @@ import java.util.List;
 
 public class InputHandler {
 
-    public static String[] getCarNames() {
+    public static List<String> getCarNames() {
         String input = Console.readLine();
         String[] carNames = input.split(",");
         List<String> carNamesList = new ArrayList<>(Arrays.asList(carNames));
@@ -17,7 +17,7 @@ public class InputHandler {
             checkNameLength(carName);
         }
 
-        return carNames;
+        return carNamesList;
     }
 
     public static int getTimes() {
