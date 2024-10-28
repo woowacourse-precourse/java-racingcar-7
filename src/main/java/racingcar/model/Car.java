@@ -21,8 +21,8 @@ public class Car {
         }
     }
 
-    public void move() {
-        if (CarMoveDeterminator.determine()) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.canMove()) {
             progress++;
         }
     }

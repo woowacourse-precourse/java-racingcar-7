@@ -39,11 +39,12 @@ public class Cars {
     }
 
     public void moveCars() {
+        MoveStrategy moveStrategy = () -> CarMoveDeterminator.determine();
         for (Car car : cars) {
-            car.move();
+            car.move(moveStrategy);
         }
     }
-
+    
     public List<String> collectProgressVisualizations() {
         List<String> CarProgressVisualizations = new ArrayList<>();
         for (Car car : cars) {
