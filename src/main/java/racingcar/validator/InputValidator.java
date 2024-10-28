@@ -40,4 +40,10 @@ public class InputValidator {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
     }
+
+    public static void validateCarNamesString(String carNames){
+        if(carNames.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름을 입력해 주세요");
+        }
+    }
 }
