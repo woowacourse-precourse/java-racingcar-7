@@ -1,13 +1,13 @@
 package racingcar;
 
-import java.io.BufferedReader;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.PriorityQueue;
+
 
 public class RaceGame {
     String[] carNamesList;
@@ -19,13 +19,8 @@ public class RaceGame {
     //사용자의 입력을 받아들이는 메서드
     String getUserInput() throws IOException{
         String userInput;
-        //System.out.println("경주에 참여할 자동차의 이름을 입력해주세요. 여러 개일 경우, 각 이름은 comma(,)로 구분해야 합니다. ");
 
-        InputStream in = System.in;
-        InputStreamReader reader = new InputStreamReader(in);
-        BufferedReader br = new BufferedReader(reader);
-
-        userInput = br.readLine();
+        userInput = readLine();
 
         return userInput;
     }
@@ -65,7 +60,7 @@ public class RaceGame {
         try{
             this.totalRounds = Integer.parseInt(userInput);
         } catch (NumberFormatException e){
-            throw new IllegalArgumentException("입력값이 올바른 형태가 아닙니다.");
+            throw new IllegalArgumentException("입력값이 정수 형태가 아닙니다.");
         }
 
         if (totalRounds < 1){
