@@ -17,6 +17,6 @@ public class Car {
         position++;
     }
 
-    private String name;
+    private final String name;
     private int position = 0;
 }
