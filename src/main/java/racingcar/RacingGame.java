@@ -1,8 +1,8 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private final List<Car> cars;
@@ -11,24 +11,16 @@ public class RacingGame {
     private int currentRound = 0;
 
     public RacingGame(List<String> carNames, int moveCount, MoveStrategy moveStrategy) {
-        validateMoveCount(moveCount);
+        RacingGameValidator.validateMoveCount(moveCount);
         this.cars = createCars(carNames);
         this.moveCount = moveCount;
         this.moveStrategy = moveStrategy;
     }
 
     private List<Car> createCars(List<String> carNames) {
-        List<Car> carList = new ArrayList<>();
-        for (String name : carNames) {
-            carList.add(new Car(name));
-        }
-        return carList;
-    }
-
-    private void validateMoveCount(int moveCount) {
-        if (moveCount < 1) {
-            throw new IllegalArgumentException("이동 횟수는 1 이상이어야 합니다.");
-        }
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public boolean hasNextRound() {
@@ -36,12 +28,11 @@ public class RacingGame {
     }
 
     public void playNextRound() {
-        if (hasNextRound()) {
-            moveCars();
-            currentRound++;
-        } else {
+        if (!hasNextRound()) {
             throw new IllegalStateException("더 이상 진행할 라운드가 없습니다.");
         }
+        moveCars();
+        currentRound++;
     }
 
     public void playAllRounds() {
@@ -49,6 +40,7 @@ public class RacingGame {
             playNextRound();
         }
     }
+
     private void moveCars() {
         for (Car car : cars) {
             car.move(moveStrategy);
@@ -61,22 +53,15 @@ public class RacingGame {
 
     public List<Car> getWinners() {
         int maxPosition = getMaxPosition();
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
-                winners.add(car);
-            }
-        }
-        return winners;
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
-        int max = 0;
-        for (Car car : cars) {
-            if (car.getPosition() > max) {
-                max = car.getPosition();
-            }
-        }
-        return max;
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
     }
 }

@@ -33,7 +33,7 @@ public class CarTest {
         void createCarWithEmptyNameShouldThrowException() {
             assertThatThrownBy(() -> new Car(""))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+                    .hasMessageContaining("자동차 이름은 필수 입력값입니다.");
         }
     }
 
