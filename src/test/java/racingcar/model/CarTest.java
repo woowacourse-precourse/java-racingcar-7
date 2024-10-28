@@ -32,8 +32,8 @@ public class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"lengthoverfive", "nameisfine", "nameisdestiny"})
-    void Car_예외_테스트_자동차_이름이_5자를_넘는_경우(String carNames) {
-        assertThatThrownBy(() -> Car.create(carNames))
+    void Car_예외_테스트_자동차_이름이_5자를_넘는_경우(String carName) {
+        assertThatThrownBy(() -> Car.create(carName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
