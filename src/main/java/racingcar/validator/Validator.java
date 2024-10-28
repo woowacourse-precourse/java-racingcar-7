@@ -1,13 +1,22 @@
 package racingcar.validator;
 
+import racingcar.view.InputView;
+
 public class Validator {
     private static String inputString;
     private static int inputSize;
-    public String userName;
+    private String userName;
 
     public void userNameValidate(String userName) {
         this.userName = userName;
-        isExceedMaxLen();
+        isEmptyName();
+        isExceedMaxNameSize();
+    }
+
+    public void userInputValidate() {
+        isEmptyInput();
+        isExceedMaxInputSize();
+        isCommaInFrontorBack();
     }
 
     public void isCommaInFrontorBack() {
@@ -16,7 +25,7 @@ public class Validator {
         }
     }
 
-    public void isExceedMaxLen() {
+    public void isExceedMaxNameSize() {
         if (userName.length() > 5) {
             throw new IllegalArgumentException();
         }
@@ -25,6 +34,24 @@ public class Validator {
 
     public void isEmptyInput() {
         if (inputString.equals("")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void isEmptyName() {
+        if (userName.equals("")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void isValidateNumber() {
+        if (InputView.tryNumber <= 0 || InputView.tryNumber > 1000) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void isExceedMaxInputSize() {
+        if (inputString.length() > 5099) {
             throw new IllegalArgumentException();
         }
     }
