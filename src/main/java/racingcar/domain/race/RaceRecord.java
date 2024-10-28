@@ -9,7 +9,7 @@ public class RaceRecord {
 
     public RaceRecord(RaceRoundRecord raceRoundRecords) {
         if (raceRoundRecords == null) {
-            throw new IllegalArgumentException("reaceRoundRecords가 null입니다");
+            throw new IllegalArgumentException("raceRoundRecords가 null입니다");
         }
         this.raceRoundRecords = new ArrayList<>(List.of(raceRoundRecords));
     }

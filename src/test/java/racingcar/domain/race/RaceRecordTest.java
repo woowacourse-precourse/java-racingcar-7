@@ -12,6 +12,6 @@ class RaceRecordTest {
     void testNullException() {
         assertThatThrownBy(() -> new RaceRecord(null))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("reaceRoundRecords가 null입니다");
+                .hasMessage("raceRoundRecords가 null입니다");
     }
 }
