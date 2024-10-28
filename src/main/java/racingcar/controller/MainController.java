@@ -19,17 +19,10 @@ public class MainController {
     private final RacingCarOutputController racingCarOutputController;
     private RacingCars racingCars;
 
-    public MainController() {
-        InstructionView instructionView = new InstructionView();
-        ValidateService validateService = new ValidateService();
-        RacingCarService racingCarService = new RacingCarService();
-        RoundView roundView = new RoundView();
-        ResultView resultView = new ResultView();
-        RandomGenerator randomGenerator = new RandomsWrapper();
-
-        this.racingCarInputController = new RacingCarInputController(instructionView);
-        this.racingCarController = new RacingCarController(validateService, racingCarService, randomGenerator);
-        this.racingCarOutputController = new RacingCarOutputController(roundView, resultView);
+    public MainController(RacingCarInputController racingCarInputController, RacingCarController racingCarController, RacingCarOutputController racingCarOutputController) {
+        this.racingCarInputController = racingCarInputController;
+        this.racingCarController = racingCarController;
+        this.racingCarOutputController = racingCarOutputController;
     }
 
     public void run() {
