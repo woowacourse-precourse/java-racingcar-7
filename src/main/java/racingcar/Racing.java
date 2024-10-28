@@ -9,6 +9,7 @@ import java.util.Map;
 public class Racing {
     private List<String> carNames = new ArrayList<>();
     private Map<String, String> carPositions = new HashMap<>();
+    private int round;
 
     public void setCarName() {
         String inputCarName = Console.readLine();
@@ -34,7 +35,20 @@ public class Racing {
     }
 
     public void setRound() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputRound = Console.readLine();
+
+        try {
+            this.round = Integer.parseInt(inputRound);
+
+            if (this.round < 1) {
+                throw new IllegalArgumentException("라운드는 1 이상의 정수여야 합니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("라운드는 정수여야 합니다.");
+        }
     }
+
 
     public void inGame() {
     }
