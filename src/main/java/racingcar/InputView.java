@@ -19,6 +19,6 @@ public class InputView {
         String input = Console.readLine();
         validateInput(input);
 
-        return Console.readLine();
+        return input;
     }
 }
