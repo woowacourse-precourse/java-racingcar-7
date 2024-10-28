@@ -2,9 +2,12 @@ package racingcar.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.util.RaceCountValidator;
 import racingcar.view.OutputView;
 
 public class RaceGame {
+
+
     private final Move move;
 
     public RaceGame(Move move) {
@@ -12,14 +15,18 @@ public class RaceGame {
 
     }
 
-    public String playGame(List<Car> racingCars, int raceCount) {
-
+    public String playGame(List<Car> racingCars, String  raceCountInput) {
+        int raceCount = parseRaceCount(raceCountInput);
         List<Car> gameResult = printRaceResult(racingCars, raceCount);
 
         return compareWinner(gameResult);
 
     }
 
+    private static int parseRaceCount(String raceCount) {
+        RaceCountValidator.validate(raceCount);
+        return Integer.parseInt(raceCount);
+    }
 
     private List<Car> printRaceResult(List<Car> cars, int raceCount) {
 
