@@ -6,7 +6,8 @@ public class Application {
 
         RaceService raceService = new RaceService();
         RaceView raceView = new RaceView();
-        RaceController controller = new RaceController(raceService, raceView);
+        InputValidator inputValidator = new InputValidator();
+        RaceController controller = new RaceController(raceService, raceView, inputValidator);
 
         controller.startGame();
 
