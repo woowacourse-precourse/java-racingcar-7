@@ -1,0 +1,80 @@
+package racingcar.view;
+
+import camp.nextstep.edu.missionutils.Console;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import racingcar.dto.RacingInfo;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
+import static org.assertj.core.api.Assertions.*;
+
+class InputViewTest {
+    private InputView inputView;
+
+    @BeforeEach
+    void setUp() {
+        this.inputView = new InputView();
+    }
+
+    @AfterEach
+    void closeConsole() {
+        Console.close();
+    }
+
+    @Test
+    @DisplayName("정상입력")
+    void 정상입력인_경우() {
+        // given
+        RacingInfo expectedRacingInfo = new RacingInfo("pobi,alice,jason", 3);
+        System.setIn(readUserInput("pobi,alice,jason\n3\n"));
+
+        // when
+        RacingInfo actualRacingInfo = inputView.readRacingInfo();
+
+        // then
+        assertThat(actualRacingInfo.carNames()).isEqualTo(expectedRacingInfo.carNames());
+        assertThat(actualRacingInfo.tryCount()).isEqualTo(expectedRacingInfo.tryCount());
+    }
+
+    @Test
+    @DisplayName("이름이 공백인 경우 예외발생")
+    void 자동차_이름이_공백인_경우_예외발생() {
+        // given
+        System.setIn(readUserInput("\n3\n"));
+
+        // when
+        assertThatThrownBy(() -> inputView.readRacingInfo())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("시도횟수가_공백인_경우_예외발생")
+    void 시도횟수가_공백인_경우_예외발생() {
+        // given
+        System.setIn(readUserInput("pobi,alice\n\n"));
+
+        // when
+        assertThatThrownBy(() -> inputView.readRacingInfo())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("시도횟수가_공백인_경우_예외발생")
+    void 시도횟수가_숫자가_아닌_경우_예외발생() {
+        // given
+        System.setIn(readUserInput("pobi,alice\na\n"));
+
+        // when
+        assertThatThrownBy(() -> inputView.readRacingInfo())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    public InputStream readUserInput(String userInput) {
+        return new ByteArrayInputStream(userInput.getBytes());
+    }
+
+}
