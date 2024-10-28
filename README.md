@@ -98,10 +98,10 @@ jun : -----
 |            | 공백 이름     | IllegalArgumentException("자동차 이름은 공백일 수 없습니다.")        | ✅  |  ✅  |
 |            | 이름 5자 초과  | IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.")       | ✅  |  ✅  |
 |            | 중복된 이름    | IllegalArgumentException("자동차 이름은 서로 중복될 수 없습니다.")     | ✅  |  ✅  |
-| **시도 횟수**  | 숫자가 아닌 입력 | IllegalArgumentException("시도할 횟수에 숫자가 아닌 값이 입력되었습니다.") | ⬜  |  ⬜  |
-|            | 정수가 아닌 숫자 | IllegalArgumentException("시도할 횟수는 정수여야 합니다.")          | ⬜  |  ⬜  |
-|            | 0 이하의 숫자  | IllegalArgumentException("시도할 횟수는 0보다 커야 합니다.")        | ⬜  |  ⬜  |
-|            | 너무 큰 숫자   | IllegalArgumentException("허용 가능한 시도 횟수를 초과하였습니다.")     | ⬜  |  ⬜  |
+| **시도 횟수**  | 숫자가 아닌 입력 | IllegalArgumentException("시도할 횟수에 숫자가 아닌 값이 입력되었습니다.") | ✅  |  ✅  |
+|            | 정수가 아닌 숫자 | IllegalArgumentException("시도할 횟수는 정수여야 합니다.")          | ✅  |  ✅  |
+|            | 0 이하의 숫자  | IllegalArgumentException("시도할 횟수는 0보다 커야 합니다.")        | ✅  |  ✅  |
+|            | 너무 큰 숫자   | IllegalArgumentException("허용 가능한 시도 횟수를 초과하였습니다.")     | ✅  |  ✅  |
 
 
 
