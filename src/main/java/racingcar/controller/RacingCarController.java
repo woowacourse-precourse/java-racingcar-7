@@ -25,7 +25,7 @@ public class RacingCarController {
 
         List<CarDTO> carDTOList = racingCarService.splitCarName(inputDTO);
 
-
+        racingCarView.showResultInfo();
         racingCarService.startRace(carDTOList, roundTime);
 
 
