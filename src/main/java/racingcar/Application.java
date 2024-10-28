@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -27,6 +29,9 @@ public class Application {
                 printCarPositions(carPositions);
                 System.out.println();
             }
+
+            // 우승자 출력
+            printWinners(carPositions);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -64,5 +69,14 @@ public class Application {
         for (Map.Entry<String, Integer> entry : carPositions.entrySet()) {
             System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
         }
+    }
+
+    static void printWinners(Map<String, Integer> carPositions) {
+        int maxPosition = carPositions.values().stream().max(Integer::compare).orElse(0);
+        List<String> winners = carPositions.entrySet().stream()
+                .filter(entry -> entry.getValue() == maxPosition)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
