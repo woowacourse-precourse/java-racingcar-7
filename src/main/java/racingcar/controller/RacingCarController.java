@@ -12,6 +12,7 @@ public class RacingCarController {
         RacingCars racingCars = new RacingCars();
         RacingGame racingGame = readyRacingGame(racingCars);
         racingGame.raceStart();
+        racingGame.raceFinish();
     }
 
     private RacingGame readyRacingGame(RacingCars racingCars) {

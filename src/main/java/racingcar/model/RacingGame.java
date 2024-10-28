@@ -21,6 +21,10 @@ public class RacingGame {
         }
     }
 
+    public void raceFinish() {
+        List<String> raceWinner = racingCars.getRaceWinner();
+    }
+
     private void moveCar() {
 
         List<Car> cars = racingCars.getRacingCars();
