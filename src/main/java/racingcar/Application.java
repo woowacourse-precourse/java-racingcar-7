@@ -35,5 +35,8 @@ public class Application {
         for (String name : carNamesInput) {
             carNames.add(name.trim());
         }
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int rounds = sc.nextInt();
     }
 }
