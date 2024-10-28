@@ -16,7 +16,10 @@ public class Application {
 
         if(Character.isDigit(carsNameInput.charAt(0))) {
             throw new IllegalArgumentException();
+        }else if(!carsNameInput.contains(",")){
+            throw new IllegalArgumentException();
         }
+
 
         Map<String, Integer> carsInfo = new HashMap<>();
         for(String carName : carsNameInput.split(",")) {
