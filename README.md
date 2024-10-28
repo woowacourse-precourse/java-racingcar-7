@@ -214,10 +214,10 @@
 - [ ] Race 객체를 입력 받는다.
 - [ ] Lap 을 진행한다.
     - [ ] Race 객체의 경기 참여 자동차 객체의 상태를 변화시킨다.
-#### 🤵 RaceArenaService
-- [ ] 생성 시, RacePrepService를 입력받는다.
-- [ ] 생성 시, 경기 등록 정보 객체를 입력 받는다.
-- [ ] 경기 등록 정보를 기반으로 RacePrepService 를 동작시켜 새로운 경기 객체를 생성한다.
+#### 🤵 RaceStarterService
+- [x] 생성 시, RacePrepService 를 입력받는다.
+- [x] 생성 시, 경기 등록 정보를 입력 받는다.
+- [x] 경기 등록 정보를 기반으로 RacePrepService 를 동작시켜 새로운 경기 객체를 생성한다.
 #### 🤵 WinnerService
 - [ ] 입력 받은 경기를 마친 자동차 객체 리스트로 승리 조건을 결정한다.
     - [ ] 가장 멀리 간 값
