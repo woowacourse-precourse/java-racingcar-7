@@ -67,6 +67,7 @@ public class RacingCarController {
             }
         }
 
+        racingCarIO.printResult(cars, values);
         racingCarIO.printWinners(winners);
     }
 }
