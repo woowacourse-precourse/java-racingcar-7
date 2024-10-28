@@ -10,7 +10,8 @@ public class OutputView {
     private static final String WINNER_ANNOUNCEMENT_MESSAGE = "최종 우승자 : ";
 
     public static void printExecutionResult() {
-
+        System.out.println();
+        System.out.println(RESULT_MESSAE);
     }
 
     public static void printCars(List<Car> cars) {
