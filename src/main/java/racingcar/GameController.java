@@ -39,16 +39,19 @@ public class GameController {
     public void playGame(List<Car> cars, int tryCount) {
         System.out.println(System.lineSeparator() + "실행 결과");
         for (int round = 1; round <= tryCount; round++) {
-            for (Car car : cars) {
-                int num = Randoms.pickNumberInRange(0, 9);
-                if (num >= 4) {
-                    car.moveForward();
-                }
-                String dash = "-".repeat(car.getPosition());
-                System.out.println(car.getName() + " : " + dash);
-                // outputView.printRoundResult(cars);
-            }
+            moveCars(cars);
             System.out.println();
+        }
+    }
+
+    private void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            int num = Randoms.pickNumberInRange(0, 9);
+            if (num >= 4) {
+                car.moveForward();
+            }
+            String dash = "-".repeat(car.getPosition());
+            System.out.println(car.getName() + " : " + dash);
         }
     }
 
