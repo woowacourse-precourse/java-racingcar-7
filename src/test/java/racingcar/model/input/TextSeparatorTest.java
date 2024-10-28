@@ -1,6 +1,8 @@
 package racingcar.model.input;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.model.message.ErrorMessage.INVALID_CAR_NAMES_INPUT;
 
 import java.util.List;
 
@@ -21,5 +23,17 @@ class TextSeparatorTest {
 
 		// then
 		assertEquals(expectedResult, carNames);
+	}
+
+	@Test
+	@DisplayName("자동차 이름에 중복이 있는 경우 에러를 발생시킨다.")
+	void 자동차_이름에_중복이_있을_때_예외가_발생한다() {
+		// given
+		String input = "pobi,chan,chan";
+
+		// when, then
+		assertThatThrownBy(() -> TextSeparator.separateCarNames(input))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage(INVALID_CAR_NAMES_INPUT.getMessage());
 	}
 }
