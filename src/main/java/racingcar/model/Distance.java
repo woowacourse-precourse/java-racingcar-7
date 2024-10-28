@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.Objects;
+
 public class Distance {
     private int distance;
 
@@ -13,5 +15,22 @@ public class Distance {
 
     public int getDistance() {
         return distance;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Distance comparingDistance = (Distance) obj;
+        return distance == comparingDistance.distance;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(distance);
     }
 }

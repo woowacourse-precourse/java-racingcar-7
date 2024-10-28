@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class RaceCount {
@@ -13,18 +14,6 @@ public class RaceCount {
 
     public int getValue() {
         return raceCount;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        RaceCount comparingRaceCount = (RaceCount) obj;
-        return raceCount == comparingRaceCount.raceCount;
     }
 
     public static void hasCharacters(String raceCount) {
@@ -43,5 +32,22 @@ public class RaceCount {
         if (raceCount.equals("0")) {
             throw new IllegalArgumentException("시도 횟수는 0이 될 수 없습니다.");
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        RaceCount comparingRaceCount = (RaceCount) obj;
+        return raceCount == comparingRaceCount.raceCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(raceCount);
     }
 }

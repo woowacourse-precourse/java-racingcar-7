@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.Objects;
+
 public class CarName {
     private String carName;
 
@@ -27,5 +29,22 @@ public class CarName {
 
     public String getCarName() {
         return carName;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        CarName comparingCarName = (CarName) obj;
+        return carName == comparingCarName.carName;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName);
     }
 }
