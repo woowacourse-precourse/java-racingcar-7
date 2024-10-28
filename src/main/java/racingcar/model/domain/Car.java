@@ -5,7 +5,6 @@ public class Car {
 	private int position;
 
 	public Car(String name) {
-		Validator.validateCarNames(name);
 		this.name = name;
 		this.position = 0;
 	}
