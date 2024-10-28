@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.exception.BusinessException;
 import racingcar.exception.RacingCarExceptionMessage;
 
-public class DefaultRandomNumberGenerator implements RandomNumberGenerator {
+public class BoundedRandomNumberGenerator implements RandomNumberGenerator {
 
     private final static Integer MIN_VALUE = 0;
     private final static Integer MAX_VALUE = 9;

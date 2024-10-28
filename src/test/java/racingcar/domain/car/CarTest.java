@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.vo.Position;
 import racingcar.exception.BusinessException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,7 +22,7 @@ public class CarTest {
         // when, then
         assertAll(
             () -> assertThat(car).isNotNull(),
-            () -> assertThat(car.getPosition()).isEqualTo(0),
+            () -> assertThat(car.getPosition()).isEqualTo(new Position(0)),
             () -> assertThat(car.getName()).isEqualTo("pobi")
         );
     }
@@ -35,7 +36,7 @@ public class CarTest {
         car.move(MOVABLE_VALUE);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @Test
@@ -47,7 +48,7 @@ public class CarTest {
         car.move(IMMOVABLE_VALUE);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 
     @Test
@@ -73,7 +74,7 @@ public class CarTest {
         car.move(IMMOVABLE_VALUE);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(new Position(2));
     }
 
     @Test

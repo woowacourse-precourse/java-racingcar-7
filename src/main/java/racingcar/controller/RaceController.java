@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.car.Cars;
 import racingcar.domain.race.Race;
-import racingcar.domain.random.DefaultRandomNumberGenerator;
+import racingcar.domain.random.BoundedRandomNumberGenerator;
 import racingcar.ui.ConsoleInputView;
 import racingcar.ui.ConsoleOutputView;
 import racingcar.ui.InputView;
@@ -17,7 +17,7 @@ public class RaceController {
     private final OutputView outputView;
 
     public RaceController() {
-        this.race = new Race(new DefaultRandomNumberGenerator());
+        this.race = new Race(new BoundedRandomNumberGenerator());
         this.inputView = new ConsoleInputView();
         this.outputView = new ConsoleOutputView();
     }

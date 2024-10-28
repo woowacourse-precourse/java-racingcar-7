@@ -31,12 +31,12 @@ public class Cars implements Iterable<Car> {
 
     public List<String> winners() {
         int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
+                .map(car -> car.getPosition().getValue())
+                .max(Integer::compareTo)
                 .orElse(DEFAULT_POSITION);
 
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.getPosition().getValue() == maxPosition)
                 .map(Car::getName)
                 .toList();
     }

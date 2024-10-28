@@ -31,14 +31,14 @@ public class RandomNumberGeneratorTest {
     void 랜덤_숫자_생성_테스트_경계값이_10이상이면_Exception() {
         // given & when & then
         assertThatThrownBy(() -> {
-            new DefaultRandomNumberGenerator().getRandomNumber(TEST_FAIL_MIN_VALUE, TEST_FAIL_MAX_VALUE);
+            new BoundedRandomNumberGenerator().getRandomNumber(TEST_FAIL_MIN_VALUE, TEST_FAIL_MAX_VALUE);
         }).isInstanceOf(BusinessException.class);
     }
 
     @Test
     void 랜덤한_숫자가_1과_9사이의_정수인지_테스트() {
         // given
-        RandomNumberGenerator randomNumberGenerator = new DefaultRandomNumberGenerator();
+        RandomNumberGenerator randomNumberGenerator = new BoundedRandomNumberGenerator();
         boolean isInRange = true;
 
         // when

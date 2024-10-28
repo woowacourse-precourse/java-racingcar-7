@@ -8,10 +8,15 @@ public class ConsoleOutputView implements OutputView {
 
     @Override
     public void printRaceStatus(Cars cars) {
-        cars.getCars().forEach(car -> {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        StringBuilder statusBuilder = new StringBuilder();
+        cars.forEach(car -> {
+            statusBuilder
+                    .append(car.getName())
+                    .append(" : ")
+                    .append(car.getPosition().toSymbol())
+                    .append(System.lineSeparator());
         });
-        System.out.println();
+        System.out.print(statusBuilder);
     }
 
     @Override
