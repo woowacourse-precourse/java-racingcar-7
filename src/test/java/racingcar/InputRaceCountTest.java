@@ -30,7 +30,7 @@ public class InputRaceCountTest {
 
         assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorMessage.RACE_COUNT_DOES_NOT_HAVE_CHARACTER.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.RACE_COUNT_MUST_NOT_HAVE_CHARACTER.getErrorMessage());
     }
 
     @DisplayName("시도 횟수가 빈 값이면 예외 발생")
