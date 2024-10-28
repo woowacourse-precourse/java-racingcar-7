@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.model.Cars;
 import racingcar.model.RacingCarGame;
 import racingcar.util.NumberParser;
@@ -19,5 +20,7 @@ public class RacingGameController {
             RacingCarGameOutputView.printCarPositions(cars);
         } while (!racingCarGame.isEnd());
 
+        List<String> winners = racingCarGame.determineWinners();
+        RacingCarGameOutputView.printWinners(winners);
     }
 }
