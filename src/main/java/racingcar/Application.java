@@ -9,17 +9,23 @@ import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
-        // 자동차 이름 입력
-        List<String> carNames = getCarNames();
-        // 시도 횟수 입력
-        int attempts = getAttempts();
-        // 입력 값 기준으로 게임 초기 세팅
-        Map<String, Integer> carPositions = initializeCarPositions(carNames);
+        try {
+            // 자동차 이름 입력
+            List<String> carNames = getCarNames();
+            // 시도 횟수 입력
+            int attempts = getAttempts();
+            // 입력 값 기준으로 게임 초기 세팅
+            Map<String, Integer> carPositions = initializeCarPositions(carNames);
 
-        // 경주 게임 시작
-        runRace(carNames, carPositions, attempts);
-        // 우승자 안내 문구 출력
-        announceWinners(carNames, carPositions);
+            // 경주 게임 시작
+            runRace(carNames, carPositions, attempts);
+            // 우승자 안내 문구 출력
+            announceWinners(carNames, carPositions);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
 
     }
 
@@ -54,7 +60,9 @@ public class Application {
     private static int validateAttempts(String input) {
         try {
             int attempts = Integer.parseInt(input);
-            if(attempts <= 0) throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
+            if (attempts <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
+            }
             return attempts;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
