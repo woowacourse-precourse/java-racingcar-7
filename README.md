@@ -48,20 +48,29 @@
 
 ### Race.class
 
-- [ ] private Race(List<String> CarNames, int tryCount)
+- [X] private Race(List<String> CarNames, int tryCount)
     - 레이스 객체 정의
-- [ ] private void playRound();
+- [X] private void playRound();
     - Round 진행
-- [ ] public void start();
+- [X] public void start();
     - 정적 팩토리 메소드
-- [ ] private void validateTryCount()
+- [X] private void validateTryCount()
     - 1회 이상
-- [ ] private void printRoundResult();
+- [X] private void printRoundResult();
     - 라운드 결과 출력
-- [ ] private List<String> findWinners();
+- [X] private List<String> findWinners();
     - 우승자 찾아서 List 반환
-- [ ] private void printWinners()
+- [X] private void printWinners()
     - 최종우승자 출력
+
+### Application.class
+
+- [ ] public static void main(String[] args);
+    - 자동차 경주 게임 실행
+- [ ] private static List<String> setCarNames();
+    - 자동차 이름들 입력
+- [ ] private static int setTryCount();
+    - 시도 횟수 입력
 
 ## 입출력 요구 사항
 
