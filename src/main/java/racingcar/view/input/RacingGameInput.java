@@ -2,7 +2,7 @@ package racingcar.view.input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class RacingGameInputConsole implements InputView, TryCountInput {
+public class RacingGameInput implements InputView, TryCountInput {
     @Override
     public String readTryCountInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");

@@ -4,14 +4,14 @@ import racingcar.domain.car.Cars;
 import racingcar.domain.game.RacingGameState;
 import racingcar.domain.game.RacingGame;
 import racingcar.domain.game.RacingGameCount;
-import racingcar.view.input.RacingGameInputConsole;
+import racingcar.view.input.RacingGameInput;
 import racingcar.view.output.OutputView;
 
 public class RacingGameController {
-    private final RacingGameInputConsole inputView;
+    private final RacingGameInput inputView;
     private final OutputView outputView;
 
-    public RacingGameController(RacingGameInputConsole inputView, OutputView outputView) {
+    public RacingGameController(RacingGameInput inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
