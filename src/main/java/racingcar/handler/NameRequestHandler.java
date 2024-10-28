@@ -3,7 +3,9 @@ package racingcar.handler;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.view.RequestView;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static racingcar.message.ErrorMessage.*;
 import static racingcar.utils.ExceptionUtils.throwException;
@@ -20,6 +22,7 @@ public class NameRequestHandler {
         validateBlank(rawInput);
         validateSpace(rawInput);
         List<String> names = List.of(rawInput.split(","));
+        validateDuplicate(names);
         validateNames(names);
         return names;
     }
@@ -43,6 +46,13 @@ public class NameRequestHandler {
                 .ifPresent(invalidName -> {
                     throwException(NAME_LENGTH_ERROR);
                 });
+    }
+
+    private void validateDuplicate(List<String> names) {
+        HashSet<String> nameSet = new HashSet<>(names);
+        if (nameSet.size() != names.size()) {
+            throwException(NAME_DUPLICATE_ERROR);
+        }
     }
 
 }
