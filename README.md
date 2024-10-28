@@ -1,3 +1,8 @@
+# 📈 Sequence Diagram
+
+![SequenceDiagram](https://github.com/user-attachments/assets/06eca101-1e57-43eb-9ed0-c776531ceaf2)
+
+
 # ✅ 기능 구현 목록 - 자동차 경주
 
 ## 🗂 Model
