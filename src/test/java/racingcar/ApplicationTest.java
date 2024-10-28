@@ -76,6 +76,20 @@ class ApplicationTest extends NsTest {
         assertThatCode(() -> new RacingGame(numberOfTrials, names)).doesNotThrowAnyException();
     }
 
+    @Test
+    void getMaxPosition은_cars_중_가장_큰_position을_갖는_car의_position값을_리턴한다() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    RacingGame game = new RacingGame("1", "pobi", "woni");
+                    game.trial();
+                    int position = game.getMaxPosition();
+
+                    assertThat(position).isEqualTo(1);
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
