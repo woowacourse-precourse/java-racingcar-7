@@ -24,10 +24,53 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 다인_기능_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,test,value,jd", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름_중복_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름_6글자이상_예외_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj1","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름_공백_예외_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,test","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름_영어_예외_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,1234","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
