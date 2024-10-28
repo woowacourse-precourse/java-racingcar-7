@@ -23,19 +23,35 @@ public class RacingController {
     }
 
     public void run() {
-        // TODO: 메서드 추출
+        List<String> names = getNames();
+        String attempt = getAttempt();
+        race(names, attempt);
+        pickWinners();
+    }
+
+    private List<String> getNames() {
         OutputView.printCarNames();
         String initialNames = InputView.enter();
         List<String> names = inputParser.parseName(initialNames);
         nameValidator.validate(names);
 
+        return names;
+    }
+
+    private String getAttempt() {
         OutputView.printAttemptCount();
         String initialAttempt = InputView.enter();
         attemptNumberValidator.validate(initialAttempt);
 
-        OutputView.printResultMessage();
-        racingService.operate(names, initialAttempt);
+        return initialAttempt;
+    }
 
+    private void race(List<String> names, String attempt) {
+        OutputView.printResultMessage();
+        racingService.operate(names, attempt);
+    }
+
+    private void pickWinners() {
         List<Car> winners = racingService.getWinner();
         OutputView.printWinner(winners);
     }
