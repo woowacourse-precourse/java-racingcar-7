@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +25,7 @@ public class Cars {
     }
 
     public Map<String, Integer> getPositions() {
-        Map<String, Integer> positions = new HashMap<>();
+        Map<String, Integer> positions = new LinkedHashMap<>();
 
         for (Car car : cars) {
             positions.put(car.getName(), car.getPosition());
