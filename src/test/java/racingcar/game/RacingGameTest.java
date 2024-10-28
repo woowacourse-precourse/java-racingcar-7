@@ -16,6 +16,7 @@ public class RacingGameTest extends NsTest {
 
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+    private static final int INIT_MOVE_COUNT = 0;
 
     private RaceCars raceCars;
 
@@ -42,8 +43,8 @@ public class RacingGameTest extends NsTest {
     void moveCarIncrementsMoveCountOnFourOrMore() {
         Car car = new Car("kim");
 
-        assertEquals(0, car.getMoveCount());
-        car.moveCar(5);
+        assertEquals(INIT_MOVE_COUNT, car.getMoveCount());
+        car.moveCar(MOVING_FORWARD);
 
         assertEquals(1, car.getMoveCount());
     }
@@ -53,8 +54,8 @@ public class RacingGameTest extends NsTest {
     void moveCarDoesNotIncrementCountOnNumberLessThanFour() {
         Car car = new Car("kim");
 
-        assertEquals(0, car.getMoveCount());
-        car.moveCar(3);
+        assertEquals(INIT_MOVE_COUNT, car.getMoveCount());
+        car.moveCar(STOP);
 
         assertEquals(0, car.getMoveCount());
     }
