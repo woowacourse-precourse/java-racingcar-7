@@ -67,12 +67,12 @@ public class Game {
         String Winner = "";
         int maxMove = -1;
         for (Car car : cars){
+            if(car.move == maxMove)
+                Winner = String.join(", ",Winner,car.name);
             if(car.move > maxMove) {
                 maxMove = car.move;
                 Winner = car.name;
             }
-            if(car.move == maxMove)
-                Winner = String.join(", ",Winner,car.name);
         }
         return Winner;
     }
