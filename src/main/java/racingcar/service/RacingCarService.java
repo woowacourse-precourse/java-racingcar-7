@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.model.Car;
+import racingcar.model.Winner;
 import racingcar.utils.RandomNumberGanerator;
 
 import java.util.ArrayList;
@@ -24,12 +25,14 @@ public class RacingCarService {
         return carList;
     }
 
-    public List<Car> getWinningCars() {
+    public Winner getWinningCarList() {
         int maxDistance = findMaxDistance();
 
-        return carList.stream()
+        return new Winner(
+                carList.stream()
                 .filter(car -> car.getPosition() == maxDistance)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList())
+                );
     }
 
     private int findMaxDistance() {
