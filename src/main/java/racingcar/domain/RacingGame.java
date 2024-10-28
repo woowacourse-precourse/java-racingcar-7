@@ -49,7 +49,7 @@ public class RacingGame {
         }
     }
 
-    public void printCarPosition() {
+    private void printCarPosition() {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
