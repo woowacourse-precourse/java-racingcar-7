@@ -13,4 +13,8 @@ public class InputParser {
                 .map(name -> new Car(name.trim()))
                 .toList();
     }
+
+    public static int parseRoundCount(String roundCountStr) {
+        return Integer.parseInt(roundCountStr.trim());
+    }
 }
