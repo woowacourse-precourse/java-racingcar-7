@@ -8,7 +8,7 @@ import java.util.List;
 
 public class InputUtils {
 
-    public List<String> parseCarNames(String carName) {
+    public static List<String> parseCarNames(String carName) {
 
         if (carName.isEmpty()) {
             throw new IllegalArgumentException(String.valueOf(InputException.EMPTY_RACING_CAR_NAME));
@@ -33,7 +33,7 @@ public class InputUtils {
         return finalListOfCarNames;
     }
 
-    public int parseAttemptValue(String attemptValue) {
+    public static int parseAttemptValue(String attemptValue) {
 
         if (attemptValue.isEmpty()) {
             throw new IllegalArgumentException(String.valueOf(InputException.ATTEMPT_VALUE_IS_EMPTY));
