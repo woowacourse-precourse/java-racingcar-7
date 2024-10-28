@@ -8,8 +8,17 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> carList;
 
+    public Cars(String inpuString) {
+        this.carList = new ArrayList<>();
+        setCarList(inpuString);
+    }
+
     public Cars() {
         this.carList = new ArrayList<>();
+    }
+
+    public void addToCarList(Car car) {
+        carList.add(car);
     }
 
     public void setCarList(String inpuString) {
@@ -32,7 +41,7 @@ public class Cars {
     private int getMaxDistance(List<Car> carArray) {
         return carArray.stream()
                 .map(Car::getDistance)
-                .max(Integer::compare) // getDistance는 int를 반환하지만 map Integer로 변환시킴
+                .max(Integer::compare)
                 .orElse(0);
     }
 

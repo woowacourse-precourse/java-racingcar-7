@@ -11,7 +11,11 @@ public class GameRounds {
     }
 
     public void addGameRound(Cars gameRound) {
-        gameRounds.add(gameRound);
+        Cars copiedCars = new Cars();
+        for (Car car : gameRound.getCarList()) {
+            copiedCars.addToCarList(new Car(car));
+        }
+        gameRounds.add(copiedCars);
     }
 
     public List<Cars> getGameRoundList() {
