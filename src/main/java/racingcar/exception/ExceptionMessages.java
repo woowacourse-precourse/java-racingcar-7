@@ -1,6 +1,6 @@
-package racingcar.error;
+package racingcar.exception;
 
-public enum ErrorMessages {
+public enum ExceptionMessages {
     TOO_LONG_NAME("자동차 이름은 5자 이하만 가능합니다."),
     INPUT_NOT_NUMBER("입력값은 숫자만 가능합니다"),
     NEGATIVE_NUMBER("양수만 입력 가능합니다."),
@@ -11,7 +11,7 @@ public enum ErrorMessages {
 
     private final String message;
 
-    ErrorMessages(String message) {
+    ExceptionMessages(String message) {
         this.message = message;
     }
 

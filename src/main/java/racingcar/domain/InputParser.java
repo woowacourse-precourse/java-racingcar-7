@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.error.ErrorMessages;
+import racingcar.exception.ExceptionMessages;
 
 public class InputParser {
     private InputParser() {
@@ -24,23 +24,23 @@ public class InputParser {
 
     private static void validateInput(String input) {
         if (input == null) {
-            throw new IllegalArgumentException(ErrorMessages.NULL_INPUT.getMessage());
+            throw new IllegalArgumentException(ExceptionMessages.NULL_INPUT.getMessage());
         }
         if (input.isBlank()) {
-            throw new IllegalArgumentException(ErrorMessages.EMPTY_INPUT.getMessage());
+            throw new IllegalArgumentException(ExceptionMessages.EMPTY_INPUT.getMessage());
         }
     }
 
     private static void validateCarNames(List<String> carNames) {
         if (carNames.stream().distinct().count() != carNames.size()) {
-            throw new IllegalArgumentException(ErrorMessages.DUPLICATE_NAME.getMessage());
+            throw new IllegalArgumentException(ExceptionMessages.DUPLICATE_NAME.getMessage());
         }
         for (String carName : carNames) {
             if (carName.length() > 5) {
-                throw new IllegalArgumentException(ErrorMessages.TOO_LONG_NAME.getMessage());
+                throw new IllegalArgumentException(ExceptionMessages.TOO_LONG_NAME.getMessage());
             }
             if (carName.isBlank()) {
-                throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAME.getMessage());
+                throw new IllegalArgumentException(ExceptionMessages.EMPTY_CAR_NAME.getMessage());
             }
         }
     }
@@ -51,10 +51,10 @@ public class InputParser {
         try {
             rounds = Integer.parseInt(roundsInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessages.INPUT_NOT_NUMBER.getMessage());
+            throw new IllegalArgumentException(ExceptionMessages.INPUT_NOT_NUMBER.getMessage());
         }
         if (rounds < 0) {
-            throw new IllegalArgumentException(ErrorMessages.NEGATIVE_NUMBER.getMessage());
+            throw new IllegalArgumentException(ExceptionMessages.NEGATIVE_NUMBER.getMessage());
         }
     }
 }
