@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.model.RaceManager;
+import racingcar.model.Race.RaceManager;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

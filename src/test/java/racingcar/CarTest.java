@@ -7,7 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.model.Car;
+import Car;
 
 public class CarTest {
     @DisplayName("자동차 이름이 영어가 아니면 예외가 발생한다")

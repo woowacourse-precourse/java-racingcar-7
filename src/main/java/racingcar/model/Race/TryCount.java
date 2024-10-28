@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.Race;
 
 public class TryCount {
 

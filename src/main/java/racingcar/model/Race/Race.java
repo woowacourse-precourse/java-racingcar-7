@@ -1,6 +1,8 @@
-package racingcar.model;
+package racingcar.model.Race;
 
 import java.util.List;
+import racingcar.model.Cars.Cars;
+import racingcar.model.Winners.Winners;
 
 public class Race {
 
