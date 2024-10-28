@@ -29,17 +29,19 @@ class InputTest {
     //then
     assertEquals(expect,actual);
   }
-//  @DisplayName("유저가 게임 시도 횟수를 입력한다")
-//  @ParameterizedTest
-//  public void inputPlayCountsTest() throws Exception{
-//    //given
-//    int playCount = 3;
-//
-//    //when
-//    input.inputPlayCounts(playCount);
-//
-//    //then
-//  }
+  @DisplayName("유저가 게임 시도 횟수를 입력한다")
+  @ParameterizedTest
+  @ValueSource(strings = "3")
+  public void inputPlayCountsTest() throws Exception{
+    //given
+    int expect = 3;
+
+    //when
+    int actual = input.getCountsValue();
+
+    //then
+    assertEquals(expect,actual);
+  }
 
 
 }
