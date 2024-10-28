@@ -6,8 +6,11 @@ import racingcar.model.CarRacingGame;
 import java.util.List;
 
 public class RacingController {
-
     private final CarRacingGame carRacingGame = new CarRacingGame();
+
+    private static final String ERROR_INVALID_NAME = "[ERROR] 자동차 이름은 1자 이상 5자 이하여야 합니다.";
+    private static final String ERROR_INVALID_COUNT = "[ERROR] 이동 횟수는 1 이상의 정수여야 합니다.";
+    private static final String ERROR_NUMBER_FORMAT = "[ERROR] 숫자를 입력해야 합니다.";
 
     public void run() {
         try {
@@ -46,9 +49,8 @@ public class RacingController {
     // 자동차 이름 유효성 검증 메서드
     private void validateCarNames(List<String> carNames) {
         if (carNames.isEmpty() || carNames.stream().anyMatch(String::isEmpty)) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상 5자 이하여야 합니다.");
+            throw new IllegalArgumentException(ERROR_INVALID_NAME);
         }
-
         carNames.forEach(this::validateCarNameLength);
     }
 
@@ -65,11 +67,11 @@ public class RacingController {
         try {
             int attemptCount = Integer.parseInt(Console.readLine());
             if (attemptCount <= 0) {
-                throw new IllegalArgumentException("[ERROR] 이동 횟수는 1 이상의 정수여야 합니다.");
+                throw new IllegalArgumentException(ERROR_INVALID_COUNT);
             }
             return attemptCount;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException(ERROR_NUMBER_FORMAT);
         }
     }
 
