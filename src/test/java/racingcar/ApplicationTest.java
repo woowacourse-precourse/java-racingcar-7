@@ -58,6 +58,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 콤마_사용_안함(){
+        String carName = "not use comma";
+        assertThrows(IllegalArgumentException.class, () ->{
+           InputValidator.notUseComma(carName);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
