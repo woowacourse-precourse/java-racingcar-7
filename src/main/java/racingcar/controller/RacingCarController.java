@@ -42,5 +42,6 @@ public class RacingCarController {
         RacingGame racingGame = racingCarService.getRacingGame();
         racingGame.getAllRoundResults().forEach(outputView::printRoundResults);
 
+        outputView.printWinners(racingGame.getWinners());
     }
 }
