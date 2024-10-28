@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 import racingcar.service.RacingCarService;
 import racingcar.service.ValidateService;
 import racingcar.util.RandomGenerator;
@@ -17,7 +17,7 @@ public class MainController {
     private final RacingCarInputController racingCarInputController;
     private final RacingCarController racingCarController;
     private final RacingCarOutputController racingCarOutputController;
-    private List<RacingCar> racingCars;
+    private RacingCars racingCars;
 
     public MainController() {
         InstructionView instructionView = new InstructionView();
@@ -69,7 +69,7 @@ public class MainController {
 
     // 경주 결과 출력
     private void printRaceResults() {
-        List<RacingCar> bestDrivers = racingCarController.findBestDriver(racingCars);
+        RacingCars bestDrivers = racingCarController.findBestDriver(racingCars);
         racingCarOutputController.printResult(bestDrivers);
     }
 

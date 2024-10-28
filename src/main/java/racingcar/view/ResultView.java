@@ -1,14 +1,14 @@
 package racingcar.view;
 
 import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 
-import java.util.List;
 
 public class ResultView {
 
-    List<RacingCar> racingCars;
+    RacingCars racingCars;
 
-    public void printResult(List<RacingCar> racingCars) {
+    public void printResult(RacingCars racingCars) {
         this.racingCars = racingCars;
         if (racingCars.size() == 1) {
             printWinner();
@@ -18,13 +18,14 @@ public class ResultView {
     }
 
     public void printWinner() {
-        racingCars.forEach(racingCar -> {
+        racingCars.getRacingCars().forEach(racingCar -> {
             System.out.println("최종 우승자 : " + racingCar.getName());
         });
     }
 
     public void printWinners() {
-        System.out.print("최종 우승자 : " + String.join(", ", racingCars.stream()
+        System.out.print("최종 우승자 : " + String.join(", ", racingCars.getRacingCars()
+                .stream()
                 .map(RacingCar::getName)
                 .toList()));
     }

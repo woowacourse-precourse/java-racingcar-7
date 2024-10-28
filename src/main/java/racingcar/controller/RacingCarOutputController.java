@@ -1,11 +1,9 @@
 package racingcar.controller;
 
-import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 import racingcar.view.ResultView;
 import racingcar.view.RoundView;
 
-import java.util.List;
-import java.util.stream.IntStream;
 
 public class RacingCarOutputController {
 
@@ -21,11 +19,11 @@ public class RacingCarOutputController {
         roundView.startRaceRound();
     }
 
-    public void showRaceRound(List<RacingCar> racingCars) {
+    public void showRaceRound(RacingCars racingCars) {
         roundView.showRoundResults(racingCars);
     }
 
-    public void printResult(List<RacingCar> bestDriver) {
+    public void printResult(RacingCars bestDriver) {
         resultView.printResult(bestDriver);
     }
 }

@@ -1,8 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 
-import java.util.List;
 
 public class RoundView {
 
@@ -11,8 +10,8 @@ public class RoundView {
         System.out.println("실행 결과");
     }
 
-    public void showRoundResults(List<RacingCar> racingCars) {
-        racingCars.forEach(
+    public void showRoundResults(RacingCars racingCars) {
+        racingCars.getRacingCars().forEach(
                 racingCar -> System.out.println(racingCar.getName() + " : " + "-".repeat((int) racingCar.getMoveCount()))
         );
         System.out.println();
