@@ -1,5 +1,6 @@
 package racingcar.application.service.history;
 
+import java.util.List;
 import racingcar.domain.car.RacingCar;
 import racingcar.domain.history.RacingHistory;
 import racingcar.infrastructure.persistence.InMemoryRacingHistoryRepository;
@@ -17,4 +18,14 @@ public class RacingHistoryService {
     }
 
     // TODO : 실행결과 출력하기
+    public void printRacingResult(){
+        List<RacingHistory> racingHistories =  historyRepository.getRacingHistory();
+
+        for(RacingHistory racingHistory : racingHistories) {
+            System.out.print(racingHistory.getRacingCarName() + " : ");
+            System.out.println(racingHistory.getPrintDistance());
+        }
+    }
+
+
 }
