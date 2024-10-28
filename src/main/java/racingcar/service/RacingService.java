@@ -4,7 +4,7 @@ import racingcar.model.Car;
 import racingcar.view.RacingView;
 
 public class RacingService {
-    private static Car[] carList; // 자동차 목록을 저장할 배열
+    private static Car[] carList;
 
     public static void setupRacing(String cars, String moveCount) {
         String[] racingCars = cars.split(",");
@@ -12,7 +12,8 @@ public class RacingService {
         int count = 0;
         for (String carName : racingCars) {
             if (!carName.isEmpty()) {
-                carList[count] = new Car(carName, moveCount); // 배열에 자동차 추가
+                carName = carName.trim();
+                carList[count] = new Car(carName, moveCount);
                 count++;
             }
         }
@@ -29,13 +30,12 @@ public class RacingService {
     }
 
     private static Car[] getCars() {
-        // 현재 자동차 배열을 반환
-        return carList; // 자동차 배열 반환
+        return carList;
     }
 
     private static void trymove() {
         for (Car car : carList) {
-            car.tryMoving(); // 각 자동차에 대해 전진 시도
+            car.tryMoving();
         }
     }
 

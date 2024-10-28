@@ -25,19 +25,16 @@ public class RacingController {
         String[] nameList = new String[names.length];
         int count = 0;
         for (String name : names) {
-            name = name.trim(); // 앞뒤 공백 제거
+            name = name.trim();
 
-            // 이름 길이 체크
             if (name.length() > 5) {
                 ErrorView.error_OverName();
             }
 
-            // 특수문자 체크
-            if (!name.matches("[a-zA-Z0-9\\s!@#$%^&*()-_=+]+")) { // 공백과 특정 특수문자 허용
+            if (!name.matches("[a-zA-Z0-9\\s!@#$%^&*()-_=+]+")) {
                 ErrorView.error_InvalidName();
             }
 
-            // 중복 체크
             for (int j = 0; j < count; j++) {
                 if (nameList[j].equals(name)) {
                     ErrorView.error_SameName();
@@ -50,7 +47,7 @@ public class RacingController {
         if (moveCount == null || moveCount.trim().isEmpty()) {
             ErrorView.error_EmptyCount();
         } else if (moveCount.startsWith("-")) {
-            ErrorView.error_InvalidCount2(); // 시작이 '-'인 경우 처리
+            ErrorView.error_InvalidCount2();
         } else if (!moveCount.matches("\\d+")) {
             ErrorView.error_InvalidCount1();
         }
