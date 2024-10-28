@@ -1,12 +1,12 @@
 package racingcar.validator;
 
-import java.util.HashSet;
+import java.util.Set;
 import racingcar.exception.RacingException;
 import racingcar.view.ErrorMessage;
 
 public class CarNameValidator {
 
-    public String isValid(String carName, HashSet<String> carNameSet) {
+    public String checkCarName(String carName, Set<String> carNameSet) {
         if (carName.isEmpty()) {
             throw RacingException.from(ErrorMessage.CAR_NAME_IS_EMPTY);
         }
@@ -24,6 +24,8 @@ public class CarNameValidator {
         if (carName.length() > 5) {
             throw RacingException.from(ErrorMessage.CAR_NAME_IS_TOO_LONG);
         }
+
+        carNameSet.add(carName);
 
         return carName;
     }
