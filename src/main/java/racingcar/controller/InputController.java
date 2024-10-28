@@ -30,6 +30,7 @@ public class InputController {
 
     private List<Car> convertToCarList(final String inputCarNames) {
         String[] inputCarNameList = inputCarNames.split(",");
+
         return carNameListToCarList(inputCarNameList);
     }
 
@@ -46,11 +47,13 @@ public class InputController {
 
     private int turnCountToInt(final String inputTurnCount) {
         int turnCount = 0;
+
         try {
             turnCount = Integer.parseInt(inputTurnCount);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(ExceptionCode.INVALID_TURN.getDescription());
         }
+
         return validateTurnCount(turnCount);
     }
 
@@ -58,6 +61,7 @@ public class InputController {
         if (turnCount <= 0) {
             throw new IllegalArgumentException(ExceptionCode.TURN_MORE_THAN_0.getDescription());
         }
+
         return turnCount;
     }
 

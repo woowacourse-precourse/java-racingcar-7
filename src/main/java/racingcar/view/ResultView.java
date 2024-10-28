@@ -6,16 +6,20 @@ import java.util.List;
 
 public class ResultView {
 
-    public void printResultView(final List<Car> carList, final int inputTurns) {
-        for (int i = 1; i <= inputTurns; i++) {
-            printTurnView(carList, i);
-            System.out.println();
-        }
+    private final StringBuilder stringBuilder = new StringBuilder();
+
+    public void printResultMessage() {
+        System.out.println("실행 결과");
     }
 
-    private void printTurnView(final List<Car> carList, final int i) {
+    public void addTurnView(final List<Car> carList) {
         for (final Car car : carList) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getDistance(i)));
+            stringBuilder.append(car.getName()).append(" : ").append("-".repeat(car.getDistance())).append("\n");
         }
+        stringBuilder.append("\n");
+    }
+
+    public void printResultView() {
+        System.out.print(stringBuilder);
     }
 }

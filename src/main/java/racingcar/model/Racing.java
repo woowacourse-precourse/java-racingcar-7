@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Racing {
 
-    List<Car> carList;
+    private final List<Car> carList;
 
     public Racing(final List<Car> carList) {
         this.carList = new ArrayList<>(validate(carList));
@@ -38,11 +38,14 @@ public class Racing {
         int fastest = 0;
 
         for (final Car car : this.carList) {
-            if (fastest < car.getFinalDistance()) {
-                fastest = car.getFinalDistance();
-                winners.clear();
+            if (fastest == car.getDistance()) {
                 winners.add(car.getName());
-            } else if (fastest == car.getFinalDistance()) {
+                continue;
+            }
+
+            if (fastest < car.getDistance()) {
+                fastest = car.getDistance();
+                winners.clear();
                 winners.add(car.getName());
             }
         }

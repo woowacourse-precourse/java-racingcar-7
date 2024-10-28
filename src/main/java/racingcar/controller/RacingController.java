@@ -3,17 +3,21 @@ package racingcar.controller;
 import racingcar.dto.InputDTO;
 import racingcar.model.Car;
 import racingcar.model.Racing;
+import racingcar.view.ResultView;
+import racingcar.view.WinnerView;
 
 import java.util.List;
 
 public class RacingController {
 
     private final InputController inputController;
-    private final OutputController outputController;
+    private final ResultView resultView;
+    private final WinnerView winnerView;
 
-    public RacingController(InputController inputController, OutputController outputController) {
+    public RacingController(InputController inputController, ResultView resultView, WinnerView winnerView) {
         this.inputController = inputController;
-        this.outputController = outputController;
+        this.resultView = resultView;
+        this.winnerView = winnerView;
     }
 
     public void run() {
@@ -24,13 +28,15 @@ public class RacingController {
 
         Racing racing = new Racing(carList);
 
+        resultView.printResultMessage();
         for (int i = 0; i < inputTurns; i++) {
             racing.runRacingTurn();
+            resultView.addTurnView(carList);
         }
+        resultView.printResultView();
 
         List<String> winners = racing.computeWinner();
-
-        outputController.getOutputView(carList, inputTurns, winners);
+        winnerView.printWinnerView(winners);
 
     }
 
