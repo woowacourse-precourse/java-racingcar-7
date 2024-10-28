@@ -10,25 +10,34 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("Enter the name of the car you want to race.");
-        String[] nameArr = Console.readLine().split(",");
-
+        String input = Console.readLine().replaceAll(" ", "");
+        String[] nameArr = input.split(",");
         ArrayList<Car> carArr = new ArrayList<>();
-        for (int i = 0; i < nameArr.length; i++) {
-            Car car = new Car(nameArr[i]);
-            carArr.add(car);
-        }
 
-        System.out.println("Enter how many raced to race");
-        int raceCount = Integer.parseInt(Console.readLine());
+        try {
 
-        for (int i = 0; i < raceCount; i++) {
-            for (Car car : carArr) {
-                car.randomRacing();
-                Game.printCars(car);
+            for (int i = 0; i < nameArr.length; i++) {
+                Car car = new Car(nameArr[i]);
+                carArr.add(car);
             }
-            System.out.println();
+
+            System.out.println("Enter how many raced to race");
+            int raceCount = Integer.parseInt(Console.readLine());
+            for (int i = 0; i < raceCount; i++) {
+                for (Car car : carArr) {
+                    car.randomRacing();
+                    Game.printCars(car);
+                }
+                System.out.println();
+            }
+
+            Game.printWinner(Game.findWinner(carArr));
+
+        } catch (IllegalArgumentException e) {
+            System.err.println("IllegalArgumentException occur!");
+            System.err.println("Your input is wrong!");
+            return;
         }
-        Game.printWinner(Game.findWinner(carArr));
 
 
     }
