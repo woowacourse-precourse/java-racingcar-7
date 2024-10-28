@@ -8,6 +8,9 @@ import racingcar.validator.InputValidator;
 
 public class InputView {
 
+    private final static char MIN_NUMBER = '0';
+    private final static char MAX_NUMBER = '9';
+
     InputValidator inputValidator = new InputValidator();
 
     public void printCarInput() {
@@ -35,11 +38,11 @@ public class InputView {
     private void validateIntegerInput(String input) {
         inputValidator.validateEmptyString(input);
 
-        if (input.matches("0+")) {
+        if (input.matches(MIN_NUMBER + "+")) {
             throw new IllegalArgumentException(INVALID_COUNT_RANGE.getValue());
         }
         for (char c : input.toCharArray()) {
-            if (c - '0' < 0 || c - '9' > 0) {
+            if (c - MIN_NUMBER < 0 || c - MAX_NUMBER > 0) {
                 throw new IllegalArgumentException(INVALID_COUNT_TYPE.getValue());
             }
         }
