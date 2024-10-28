@@ -11,12 +11,14 @@ public class InputView {
     public String[] getCarNames() {
         System.out.println(GET_CAR_NAME);
         String input = Console.readLine();
+        Console.close();
         return validation.validateCarName(input);
     }
 
     public int getRoundLimit() {
         System.out.println(GET_ROUND_LIMIT);
         String input = Console.readLine();
+        Console.close();
         return validation.validateRoundLimit(input);
     }
 }
