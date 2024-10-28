@@ -9,10 +9,7 @@ public class Validator {
     private static final String POSITIVE_INTEGER_REGEX = "^[1-9]\\d*$";
 
     public static List<String> validateCarNames(final String input) {
-        if (input.startsWith(",") || input.endsWith(",")) {
-            throw new IllegalArgumentException("자동차 목록은 \",\"로 시작하거나 끝날 수 없습니다.");
-        }
-        List<String> carNames = List.of(input.split(DELIMITER));
+        List<String> carNames = List.of(input.split(DELIMITER, -1));
         if (!haveValidLength(carNames)) {
             throw new IllegalArgumentException("자동차 이름은 쉼표로 구분하여 비어 있지 않고 1자에서 5자 사이여야 합니다.");
         }
