@@ -1,11 +1,8 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import java.util.function.Supplier;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +13,15 @@ class RacingTest {
     void init() {
         List<String> racingCarNames = List.of("pobi", "woni", "jun");
         racing = new Racing(racingCarNames);
+    }
+
+    @Test
+    void 모든_자동차가_이동하는지_확인한다() {
+        racing.run(() -> 5);
+
+        for (RacingCar racingCar : racing.getCars()) {
+            assertThat(racingCar.getPosition()).isEqualTo(1);
+        }
     }
 
     @Test

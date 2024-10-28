@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class Racing {
     private final List<RacingCar> cars = new ArrayList<>();
@@ -23,6 +24,11 @@ public class Racing {
         return cars;
     }
 
+    public void run(Supplier<Integer> randomSupplier) {
+        for (RacingCar car : cars) {
+            car.moveForward(randomSupplier);
+        }
+    }
 
     private void initializeCars(List<String> carNames) {
         carNames.stream()
