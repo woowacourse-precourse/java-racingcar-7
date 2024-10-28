@@ -69,6 +69,13 @@ public class Application {
         return Randoms.pickNumberInRange(0, 9) >= MOVE_CONDITION;
     }
 
+    private static void printCarPositions(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + car.getPosition());
+        }
+        System.out.println();
+    }
+
 }
 
 class Car {
