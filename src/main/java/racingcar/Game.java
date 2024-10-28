@@ -14,5 +14,6 @@ public class Game {
             cars.moveCars();
             cars.printCurrentPositions();
         }
+        cars.printWinners();
     }
 }

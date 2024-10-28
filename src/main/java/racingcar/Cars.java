@@ -40,6 +40,13 @@ public class Cars {
         System.out.println();
     }
 
+    public void printWinners(){
+        int maxMoveDistance = maxMoveDistance();
+        List<String> winners = findWinners(maxMoveDistance);
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
     public int maxMoveDistance(){
         int maxMoveDistance = 0;
 
