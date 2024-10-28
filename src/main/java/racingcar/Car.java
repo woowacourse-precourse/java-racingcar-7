@@ -7,8 +7,14 @@ public class Car {
     private int position;
 
     public Car(String name) {
+        validateName(name);
         this.name = name;
         this.position = 0;
+    }
+
+    private void validateName(String name) {
+        if (name.isEmpty() || name.length() > 5)
+            throw new IllegalArgumentException("이름은 빈 문자열이거나 5자를 초과할 수 없습니다.");
     }
 
     public void randomMove() {
