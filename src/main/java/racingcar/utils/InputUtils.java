@@ -19,6 +19,13 @@ public class InputUtils {
                 .map(String::trim)
                 .filter(name -> !name.isEmpty())
                 .toList();
+
+        List<String> finalListOfCarNames = getCarNames(listOfCarNames);
+
+        return finalListOfCarNames;
+    }
+
+    private static List<String> getCarNames(List<String> listOfCarNames) {
         List<String> finalListOfCarNames = new ArrayList<>();
 
         for (String individualCarName : listOfCarNames) {
@@ -32,7 +39,7 @@ public class InputUtils {
 
             finalListOfCarNames.add(individualCarName);
         }
-
+        
         return finalListOfCarNames;
     }
 
