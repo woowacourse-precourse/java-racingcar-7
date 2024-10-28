@@ -15,7 +15,7 @@ public class Car {
         this.distance = 0;
     }
 
-    public void validateNameLength(String name) {
+    private void validateNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
