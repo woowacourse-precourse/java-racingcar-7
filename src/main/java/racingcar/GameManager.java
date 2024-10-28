@@ -4,7 +4,6 @@ package racingcar;
 public class GameManager {
     private static GameManager instance;
     private int endTurn;
-    private int thisTurn;
 
     private GameManager() {}
 
@@ -17,5 +16,17 @@ public class GameManager {
 
     public void setEndTurn(int endTurn) {
         this.endTurn = endTurn;
+    }
+
+    public void gameStart() {
+        for (int i = 0; i < endTurn; i++) {
+            playSingleTurn();
+
+        }
+    }
+
+    private void playSingleTurn() {
+        CarManager carManager = CarManager.getInstance();
+        carManager.getRandomNumber();
     }
 }
