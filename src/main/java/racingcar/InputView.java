@@ -1,7 +1,6 @@
 package racingcar;
 
-import static racingcar.GameMessages.INPUT_GUIDE_NAME_MESSAGE;
-import static racingcar.GameMessages.INPUT_GUIDE_ROUND_MESSAGE;
+import static racingcar.GameMessages.*;
 
 import camp.nextstep.edu.missionutils.Console;
 

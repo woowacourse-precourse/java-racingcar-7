@@ -1,9 +1,7 @@
 package racingcar;
 
-import static racingcar.GameMessages.OUTPUT_RESULT_GUIDE_MESSAGE;
-import static racingcar.GameMessages.OUTPUT_SCORE_CHARACTER;
-import static racingcar.GameMessages.OUTPUT_WINNER_GUIDE_MESSAGE;
-import static racingcar.RegexPatterns.DELIMITER;
+import static racingcar.GameMessages.*;
+import static racingcar.RegexPatterns.*;
 
 import java.util.List;
 import java.util.stream.IntStream;
