@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Judgement {
 
+    private static final int MOVE_STANDARD = 3;
     private Car[] cars;
 
     public Judgement(Car[] cars) {
@@ -23,7 +24,7 @@ public class Judgement {
     public void updateRoundResult(List<Integer> randomNumbers) {
         for (int carIndex = 0; carIndex < cars.length; carIndex++) {
             Car curCar = cars[carIndex];
-            if (randomNumbers.get(carIndex) > 3) {
+            if (randomNumbers.get(carIndex) > MOVE_STANDARD) {
                 curCar.move();
             }
             printRoundResult(curCar);

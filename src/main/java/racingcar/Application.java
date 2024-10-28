@@ -16,7 +16,6 @@ public class Application {
         final Car[] cars = getCars();
         int gameTimes = getGameTimes();
         playGame(cars, gameTimes);
-
     }
 
     private static Car[] getCars() {
