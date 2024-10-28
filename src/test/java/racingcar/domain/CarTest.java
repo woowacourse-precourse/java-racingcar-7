@@ -51,7 +51,7 @@ public class CarTest {
 		Car car = Car.fromCarName("벤츠");
 
 		// when
-		String res = "벤츠 : -";
+		String res = "벤츠 : -\n";
 		car.moveIfSatisfyStandard(() -> 4, 4);
 
 		// then
@@ -66,7 +66,7 @@ public class CarTest {
 		Car car = Car.fromCarName("벤츠");
 
 		// when
-		String res = "벤츠 : ";
+		String res = "벤츠 : \n";
 		car.moveIfSatisfyStandard(() -> 3, 4);
 
 		// then
