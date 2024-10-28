@@ -16,6 +16,8 @@ public class RacingController {
     public String[] splitCarNames(String RacingCarNames) {
         return RacingCarNames.split(",");
     }
+
+    // 양쪽 공백 제거 함수
     private String[] trimCarNames(String[] carNames) {
         String[] trimNames = new String[carNames.length];
         for(int i = 0 ; i < carNames.length ;i++) {
