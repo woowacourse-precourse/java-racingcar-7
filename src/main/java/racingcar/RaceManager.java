@@ -11,11 +11,11 @@ public class RaceManager {
     public void setCarName(String input) {
         List<String> carName;
         try {
-            carName = Arrays.asList(input.replace(" ", "").split(","));
+            carName = Arrays.asList(input.split(","));
             NameValidator.carNameLengthChecker(carName);
             for (String name : carName) {
                 Car car = new Car();
-                car.nameCar(name);
+                car.nameCar(name.trim());
                 cars.add(car);
             }
         } catch (Exception e) {
