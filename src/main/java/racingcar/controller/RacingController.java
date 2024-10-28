@@ -1,11 +1,10 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
-import racingcar.view.RacingView;
 import racingcar.service.RacingService;
+import racingcar.view.RacingView;
 
 public class RacingController {
     private final RacingView view = new RacingView();
@@ -43,6 +42,7 @@ public class RacingController {
         }
         return true;
     }
+
     public int parseCount(String countInput) {
         try {
             return Integer.parseInt(countInput);
