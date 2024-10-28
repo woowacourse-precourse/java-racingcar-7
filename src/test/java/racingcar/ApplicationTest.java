@@ -1,10 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
+import racingcar.car.CarService;
 import racingcar.race.RaceService;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -61,6 +61,14 @@ class ApplicationTest extends NsTest {
                 },
                 STOP
         );
+    }
+
+    @Test
+    void 경주할_자동차_저장_기능_테스트() {
+        assertSimpleTest(() -> {
+            CarService carService = new CarService();
+            assertThat(carService.createCar("kim,lee").size()).isEqualTo(2);
+        });
     }
 
     @Override
