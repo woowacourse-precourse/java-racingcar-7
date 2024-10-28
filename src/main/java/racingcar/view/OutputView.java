@@ -19,7 +19,7 @@ public class OutputView {
         System.out.println();
         System.out.println(PRINT_EXECUTION_RESULT);
         System.out.print(resultDTO.getGameResult());
-        System.out.println(PRINT_FINAL_WINNER);
+        System.out.print(PRINT_FINAL_WINNER);
         System.out.println(resultDTO.getFinalWinner());
     }
 }

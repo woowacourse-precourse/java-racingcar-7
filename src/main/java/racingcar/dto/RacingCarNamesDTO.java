@@ -10,6 +10,7 @@ public class RacingCarNamesDTO {
         validateCarNamesInputString(carNamesInput);
         this.carNames = Arrays.asList(carNamesInput.split(","));
         validateNonEmptyCarNames();
+        validateLengthOfCarName();
         validateMinimumCarCount();
     }
 
