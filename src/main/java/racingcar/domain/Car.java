@@ -5,8 +5,15 @@ public class Car {
     private int location = 0;
 
     public Car(String name) {
+        validBlank(name);
         validNameLength(name);
         this.name = name;
+    }
+
+    private void validBlank(String name) {
+        if(name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 공백문자열일 수 없습니다");
+        }
     }
 
     private void validNameLength(String name) {
@@ -22,14 +29,11 @@ public class Car {
     }
 
     private boolean isMovable(int randomNum) {
-        if (randomNum >= 4) {
-            return true;
-        }
-        return false;
+        return randomNum >= 4;
     }
 
     public int getLocation() {
-        return this.location;
+        return location;
     }
 
     public String getName() {

@@ -39,4 +39,13 @@ public class CarTest {
                 .hasMessage("이름의 길이가 5자를 넘을 수 없습니다");
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ","    "})
+    @DisplayName("자동차 이름이 공백문자열인 경우")
+    void 자동차_이름_공백_테스트() {
+        Assertions.assertThatThrownBy(() -> new Car(" "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 공백문자열일 수 없습니다");
+    }
+
 }

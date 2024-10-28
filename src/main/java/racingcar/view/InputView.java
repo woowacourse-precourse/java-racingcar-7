@@ -26,10 +26,17 @@ public class InputView {
 
     public int inputRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int round = Integer.parseInt(Console.readLine());
+        int round;
+        try {
+            round = Integer.parseInt(Console.readLine());
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException("정수를 입력해야 합니다");
+        }
         roundException(round);
         return round;
     }
+
+
 
     public void roundException(int round) {
         if (round < 1) {
