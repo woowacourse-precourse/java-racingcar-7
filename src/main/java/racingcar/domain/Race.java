@@ -58,4 +58,16 @@ public class Race {
         }
         return max;
     }
+
+    public void setTryCount(int tryCount) {
+        this.tryCount = tryCount;
+    }
+
+    public int getTryCount() {
+        return tryCount;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
