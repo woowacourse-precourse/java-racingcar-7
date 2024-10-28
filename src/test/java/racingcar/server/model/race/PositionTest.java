@@ -19,7 +19,7 @@ public class PositionTest {
         Position expected = Position.from("-------");
 
         // when
-        Position actual = Position.fromDistance(distance);
+        Position actual = Position.convertFromDistance(distance);
 
         // then
         assertThat(actual.equals(expected)).isTrue();
@@ -34,7 +34,7 @@ public class PositionTest {
         // when & then
         Assertions.assertThrows(
                 ShouldNotBeMinusException.class,
-                () -> Position.fromDistance(distance),
+                () -> Position.convertFromDistance(distance),
                 DISTANCE_SHOULD_NOT_BE_MINUS
         );
     }
@@ -47,7 +47,7 @@ public class PositionTest {
         Position expected = Position.from("");
 
         // when
-        Position actual = Position.fromDistance(distance);
+        Position actual = Position.convertFromDistance(distance);
 
         // then
         assertThat(actual.equals(expected)).isTrue();

@@ -33,7 +33,7 @@ public class Distance {
     }
 
     public Position toPosition() {
-        return Position.fromDistance(this.value);
+        return Position.convertFromDistance(this.value);
     }
 
     public boolean isLowerThanZero() {

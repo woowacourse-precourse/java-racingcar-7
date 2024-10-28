@@ -23,7 +23,7 @@ public class Position {
         return new Position(source.strip());
     }
 
-    public static Position fromDistance(long distance) {
+    public static Position convertFromDistance(long distance) {
         validateIsMinus(distance);
 
         StringBuilder positionBuilder = new StringBuilder();

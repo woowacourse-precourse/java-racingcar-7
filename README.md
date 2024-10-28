@@ -119,10 +119,9 @@
 
 ### 6. Position
 
-| Method          | Parameter | Return Type | Implementation |
-|-----------------|-----------|-------------|----------------|
-| add             | Distance  | Position    | Done ✅         |
-| currentDistance | -         | Distance    | Done ✅         |
+| Method              | Parameter | Return Type | Implementation |
+|---------------------|-----------|-------------|----------------|
+| convertFromDistance | long      | Position    | Done ✅         |
 
 <br>
 
@@ -154,13 +153,14 @@
 
 <br>
 
-### 10. PositionBuilder
+### 10. Distance
 
 > 개발 과정에서 추가
 
-| Method | Parameter | Return Type | Implementation |
-|--------|-----------|-------------|----------------|
-| from   | Distance  | Position    | Done ✅         |
+| Method     | Parameter | Return Type | Implementation |
+|------------|-----------|-------------|----------------|
+| add        | Distance  | Distance    | Done ✅         |
+| toPosition | -         | Position    | Done ✅         |
 
 <br>
 <br>
