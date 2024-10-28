@@ -14,13 +14,13 @@ public class Application {
         String playCounts = Console.readLine();
         int countsValue = Integer.parseInt(playCounts);
         // 입력값에 근거한 자동차 경주 실행 결과와 최종 우승자를 출력한다
-        Controller controller = new Controller(carNames, countsValue);
-        String result = controller.reverseOrderResult();
+//        Controller controller = new Controller(carNames, countsValue);
+//        String result = controller.reverseOrderResult();
 
         // 실행 결과
         // ...
         // 최종 우승자 : 봉진 님
-        System.out.println(result);
+//        System.out.println(result);
 
 
     }

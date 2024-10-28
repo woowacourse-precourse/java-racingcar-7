@@ -5,14 +5,11 @@ public class Controller {
   int countsValue;
 
   // [x] 자동차 이름, 시도 횟수 주입
-  public Controller(String carNames, String playCounts) {
+  public Controller(String carNames, int countsValue) {
     this.carNames = carNames;
-    this.countsValue = setPlayCounts(playCounts);
+    this.countsValue = countsValue;
   }
 
-  private int setPlayCounts(String playCounts) {
-    return playCounts = String.valueOf(Integer.parseInt(playCounts));
-  }
 
 
   // [] 시도 횟수만큼 각 자동차 전진

@@ -11,15 +11,18 @@ public class Input {
   private int inputPlayCounts;
 
   public Input() {
-    this.inputCarNames = ;
-    this.inputPlayCounts = inputPlayCounts;
+    this.inputCarNames = getInputCarNames();
+    this.inputPlayCounts = getCountsValue();
   }
 
-  public int getInputPlayCounts() {
-    return inputPlayCounts;
+  public int getCountsValue() {
+    String playCounts = Console.readLine();
+    int countsValue = Integer.parseInt(playCounts);
+    return countsValue;
   }
 
+  // nullpointer
   public String getInputCarNames() {
-    return inputCarNames;
+    return Console.readLine();
   }
 }
