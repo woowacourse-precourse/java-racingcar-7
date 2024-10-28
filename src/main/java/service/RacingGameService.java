@@ -1,12 +1,11 @@
 package service;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import model.Car;
 import model.Cars;
 import randomnumber.RandomNumberHandler;
 import view.OutputView;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGameService {
     private final RandomNumberHandler randomNumberHandler;
@@ -33,6 +32,7 @@ public class RacingGameService {
     }
 
     private int getMaxPosition(Cars cars) {
+
         return cars.getCars().stream()
                 .mapToInt(Car::getPosition)
                 .max()
@@ -40,7 +40,7 @@ public class RacingGameService {
     }
 
     public List<String> getWinners(Cars cars) {
-        int maxPosition = getMaxPosition( cars );
+        int maxPosition = getMaxPosition(cars);
 
         return cars.getCars().stream()
                 .filter(car -> car.getPosition() == maxPosition)

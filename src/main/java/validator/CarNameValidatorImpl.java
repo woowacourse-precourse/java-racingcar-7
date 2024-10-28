@@ -1,7 +1,7 @@
 package validator;
 
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
 public class CarNameValidatorImpl implements Validator<String> {
     @Override
@@ -12,6 +12,7 @@ public class CarNameValidatorImpl implements Validator<String> {
         List<String> carNames = Arrays.asList(input.split(","));
         validateNameLength(carNames);
     }
+
     private void validateNullBlankName(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException(Message.EMPTY_OR_NULL_NAME.getMessage());

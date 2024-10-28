@@ -1,12 +1,11 @@
 package controller;
 
+import java.util.List;
 import model.Cars;
 import service.RacingGameService;
 import splitter.CarNameSplitter;
 import view.InputView;
 import view.OutputView;
-
-import java.util.List;
 
 public class RacingGameController {
     private final InputView inputView;
@@ -14,7 +13,8 @@ public class RacingGameController {
     private final CarNameSplitter carNameSplitter;
     private final RacingGameService racingGameService;
 
-    public RacingGameController(InputView inputView, OutputView outputView, CarNameSplitter carNameSplitter, RacingGameService racingGameService) {
+    public RacingGameController(InputView inputView, OutputView outputView, CarNameSplitter carNameSplitter,
+                                RacingGameService racingGameService) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.carNameSplitter = carNameSplitter;

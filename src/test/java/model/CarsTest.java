@@ -1,13 +1,12 @@
 package model;
 
-import randomnumber.RandomNumberHandler;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import randomnumber.RandomNumberHandlerImpl;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import randomnumber.RandomNumberHandler;
+import randomnumber.RandomNumberHandlerImpl;
 
 class CarsTest {
 
@@ -36,9 +35,15 @@ class CarsTest {
 
     @Test
     void testGetWinners() {
-        for(int i = 0; i < 2; i++) cars.getCars().get(0).moveForward();
-        for(int i = 0; i < 2; i++) cars.getCars().get(1).moveForward();
-        for(int i = 0; i < 1; i++) cars.getCars().get(2).moveForward();
+        for (int i = 0; i < 2; i++) {
+            cars.getCars().get(0).moveForward();
+        }
+        for (int i = 0; i < 2; i++) {
+            cars.getCars().get(1).moveForward();
+        }
+        for (int i = 0; i < 1; i++) {
+            cars.getCars().get(2).moveForward();
+        }
 
         List<String> winners = cars.getWinners();
 
