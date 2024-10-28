@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RaceWinnerDeterminer {
@@ -35,7 +34,7 @@ public class RaceWinnerDeterminer {
     }
 
     private void announceSingleWinner() {
-        System.out.println("최종 우승자 : " + winners.getFirst());
+        System.out.println("최종 우승자 : " + winners.get(0));
     }
 
     private void announceMultipleWinners() {

@@ -31,6 +31,46 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름_검사() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("joopy,verylongname", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_대수_검사_중복() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("joopy,joopy,joopy,joopy", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_대수_검사_한대이하() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("joopy", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_대수_검사_빈값() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 횟수_검사() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("joopy, pyjoo", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
