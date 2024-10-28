@@ -7,6 +7,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -29,6 +31,17 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+    @Test
+    void validateCarName_withEmptyName_throwsException() {
+        assertThatThrownBy(() -> Application.validateCarName(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateCarName_withLongName_throwsException() {
+        assertThatThrownBy(() -> Application.validateCarName("toolongname"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override

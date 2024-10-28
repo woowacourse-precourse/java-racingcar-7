@@ -10,10 +10,7 @@ import java.util.Random;
 public class Application {
     public static void main(String[] args) {
         List<Car> cars = inputCars();
-        int attempts = inputAttempts();
-        if (attempts < 1) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
-        }
+        int attempts = validateAttempts(Integer.parseInt(Console.readLine()));
 
         //경주 진행
         for(int i = 0; i < attempts; i++){
@@ -34,25 +31,29 @@ public class Application {
 
         for (String carName : carNames) {
             carName = carName.trim();
-
+            validateCarName(carName);
             cars.add(new Car(carName));
         }
 
         return cars;
     }
 
-    private static void validateCarName(String name){
+    public static void validateCarName(String name){
         if(name.isEmpty()){
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
-        }else if (name.length() > 5){
+        }
+        if (name.length() > 5){
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
     }
 
     // 시도 횟수 입력
-    private static int inputAttempts(){
-        System.out.println("시도할 회수는 몇회인가요?");
-        return Integer.parseInt(Console.readLine());
+    public static int validateAttempts(int attempts){
+        if(attempts < 1){
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
+        return attempts;
+
     }
 
     // 자동차 이동
