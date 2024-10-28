@@ -24,7 +24,7 @@ public class GameController {
             OutputView.printWinners(winners);
 
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 }
