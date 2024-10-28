@@ -31,7 +31,6 @@ class InputParserTest {
     void parseNameEmptyTest() {
         // given
         final String input = "";
-        List<String> expected = List.of("");
 
         // when && then
         assertThatThrownBy(() -> InputParser.parseName(input))
@@ -44,11 +43,22 @@ class InputParserTest {
     void parseNameNullTest() {
         // given
         final String input = null;
-        List<String> expected = List.of("");
 
         // when && then
         assertThatThrownBy(() -> InputParser.parseName(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(InputException.INPUT_IS_NULL_OR_EMPTY.getMessage());
+    }
+
+    @Test
+    @DisplayName("입력값이 빈값으로 이루어진 경우 오류 발생 테스트")
+    void parseNameEmptyNameTest() {
+        // given
+        final String input = "pobi,";
+
+        // when && then
+        assertThatThrownBy(() -> InputParser.parseName(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(InputException.NAME_IS_EMPTY.getMessage());
     }
 }
