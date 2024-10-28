@@ -68,9 +68,7 @@ public class RacingProgram {
     public int parseStringToNumber(String input) {
         try {
             int number = Integer.parseInt(input);
-            if (number <= 0) {
-                throw new IllegalArgumentException("게임 횟수는 0보다 커야 합니다.");
-            }
+            validatePositive(number);
             return number;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효한 숫자를 입력하세요.", e);
