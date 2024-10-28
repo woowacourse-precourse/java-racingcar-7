@@ -3,17 +3,22 @@ package racingcar.race;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RaceTest {
 
-    Race race = new Race();
+    Race race;
 
     @BeforeEach
     void setUp() {
-        race = new Race(new String[]{"Test", "Case", "List"});
+        race = new Race(new ArrayList<String>(){{
+                add("Test");
+                add("Case");
+                add("List");
+        }});
     }
 
     @Test
@@ -32,14 +37,23 @@ public class RaceTest {
 
     @Test
     void 생성자_공백_레이서_테스트(){
-        assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{""}));
-        assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{"","Test"}));
-        assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{"World","","Hello"}));
+        List<String> names = new ArrayList<>();
+
+        names.add("");
+        assertThrows(IllegalArgumentException.class, () -> new Race(names));
+
+        names.add("Test");
+        assertThrows(IllegalArgumentException.class, () -> new Race(names));
+
+        names.addFirst("");
+        assertThrows(IllegalArgumentException.class, () -> new Race(names));
     }
 
     @Test
     void 생성자_공백_배열_테스트(){
-        assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{}));
+        List<String> names = new ArrayList<>();
+
+        assertThrows(IllegalArgumentException.class, () -> new Race(names));
     }
 
     @Test

@@ -1,12 +1,24 @@
 package racingcar.separator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Extractor {
-    private static final String COMMA = ",";
-    private static final String SPACE = " ";
+    private static final char COMMA = ',';
 
-    public static String[] extract(String input) {
-        input = input.replaceAll(SPACE, "");
+    public static List<String> extract(String input) {
+        List<String> names = new ArrayList<>();
+        int startidx = 0;
 
-        return input.split(COMMA);
+        for(int i = 0; i<input.length(); i++) {
+            if(input.charAt(i) == COMMA){
+                names.add(input.substring(startidx, i));
+                startidx = i + 1;
+            }
+        }
+
+        names.add(input.substring(startidx));
+
+        return names;
     }
 }

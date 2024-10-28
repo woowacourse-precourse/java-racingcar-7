@@ -15,10 +15,10 @@ public class Race {
         reset();
     }
 
-    public Race(String[] racerNames) {
+    public Race(List<String> racerNames) {
         this();
 
-        if(racerNames.length == 0) {
+        if(racerNames.isEmpty()) {
             throw new IllegalArgumentException("비어있는 레이서 목록입니다.");
         }
 

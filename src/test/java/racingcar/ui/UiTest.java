@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,9 +24,9 @@ public class UiTest {
         InputStream readLine = new ByteArrayInputStream("pobi,woni,jun".getBytes());
         System.setIn(readLine);
 
-        String[] string = UI.inputRacerName();
+        List<String> names = UI.inputRacerName();
 
-        assertThat(new String[]{"pobi", "woni", "jun"}).isEqualTo(string);
+        Assertions.assertThat(names).containsExactly("pobi", "woni", "jun");
     }
 
     @Test
