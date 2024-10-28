@@ -15,12 +15,11 @@ public class Application {
 
         List<String> carsList = new ArrayList<>(Arrays.asList(input.split(",")));
 
+
         System.out.println("시도할 횟수는 몇 회인가요?");
         String intInput = Console.readLine();
 
-        int tryCount = InputValidator(intInput);
-
-        System.out.println("\n실행 결과");
+        int tryCount = InputNumValidator(intInput);
 
         makeCarslist(carsList);
         tryMoving(tryCount);
