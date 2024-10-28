@@ -1,7 +1,6 @@
 package racingcar.service;
 
-import racingcar.config.Config;
-import racingcar.model.Car;
+import racingcar.model.car_object.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,15 +19,14 @@ public class WinnerService {
     }
 
     //최대 Score을 갖는 car들 찾기
-    public void SearchWinners(List<Car> cars) {
+    public void searchWinners(List<Car> cars) {
         searchMaxScore(cars);
         for (Car car : cars) {
-            if (car.getScore()==maxScore){
+            if (car.getScore() == maxScore) {
                 winners.add(car.getName());
             }
         }
     }
-
 
     //승리자들 반환하는 게터
     public List<String> getWinners() {

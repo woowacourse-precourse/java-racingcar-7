@@ -1,15 +1,13 @@
-package racingcar.model;
+package racingcar.model.car_object;
 
-public class RacingCar implements Car{
+public class RacingCar implements Car {
     private int score;
     private String name;
-
 
     @Override
     public void addScore() {
         score++;
     }
-
 
     @Override
     public int getScore() {
