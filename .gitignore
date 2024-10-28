@@ -1,11 +1,13 @@
+# General
 HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
 !**/src/main/**
 !**/src/test/**
 
-### STS ###
+# STS
 .apt_generated
 .classpath
 .factorypath
@@ -14,22 +16,80 @@ build/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
+# IntelliJ IDEA
+.idea/
 *.iws
 *.iml
 *.ipr
 out/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**/aws.xml
+.idea/**/contentModel.xml
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea_modules/
+cmake-build-*
+*.iws
 
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+# VS Code
 .vscode/
 
-### Mac OS ###
+# Mac OS
 .DS_Store
+
+# CMake
+cmake-build-*
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Android Studio specific
+.idea/caches/build_file_checksums.ser
+
+# Additional IntelliJ specific ignores
+# CodeStream plugin
+.idea/codestream.xml
+# Azure Toolkit for IntelliJ plugin
+.idea/**/azureSettings.xml
+
+# Gradle
+**/build/
+.gradle
+gradle-app.setting
+.gradletasknamecache
+
+# Eclipse Gradle plugin generated files
+.project
+.classpath
+
+# Java heap dump
+*.hprof
+
+# Ignore generated files
+.idea/**/sonarlint/
+.idea/**/sonarIssues.xml
+.idea/**/markdown-navigator.xml
+.idea/**/markdown-navigator-enh.xml
+.idea/**/markdown-navigator/
+.idea/$CACHE_FILE$
