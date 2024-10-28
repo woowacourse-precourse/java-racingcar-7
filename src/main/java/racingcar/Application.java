@@ -3,6 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     private static final int MIN_COUNT = 1;
     private static final int MAX_NAMES_COUNT = 10;
@@ -11,7 +14,6 @@ public class Application {
     private static final int MIN_MOVE_NUMBER = 4;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         try{
             startGame();
         } catch(Exception e){
@@ -94,6 +96,9 @@ public class Application {
             moveCars(moves);
             printCurrentMoves(names,moves);
         }
+        List<String> result = new ArrayList<>();
+        summarizingResult(result,moves,names);
+        printGameResult(result);
     }
 
     public static void moveCars(int[] moves) {
@@ -119,5 +124,22 @@ public class Application {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public static void summarizingResult(List<String> result,int[] moves,String[] names) {
+        int winnerMove = 0;
+        for(int move:moves){
+            winnerMove = Math.max(winnerMove,move);
+        }
+        for(int i = 0 ;i < moves.length; i++){
+            if(moves[i] == winnerMove){
+                result.add(names[i]);
+            }
+        }
+    }
+
+    public static void printGameResult(List<String> result) {
+        String winners = String.join(", ", result);
+        System.out.println("최종 우승자 : "+winners);
     }
 }
