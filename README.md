@@ -38,7 +38,7 @@
 - **method**
     - `initializeCars()` : 사용자 입력을 받아 중복되지 않은 자동차 이름을 검증하고 `Car` 객체를 생성합니다.
 
-    - `readyRace(List<Car> cars)`: 이동을 수행합니다.
+    - `moveCar(List<Car> cars)`: 이동을 수행합니다.
 
     - `maxDistance(List<Car> cars)`: 입력된 자동차 리스트 중 가장 멀리 이동한 자동차의 거리를 반환합니다.
 
