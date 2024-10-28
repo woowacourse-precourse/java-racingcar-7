@@ -35,6 +35,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(carNames, attempt))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("입력 값이 공백 혹은 빈 문자열입니다.")
         );
     }
 
@@ -47,6 +48,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException(",", "3"))
                             .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("자동차 이름이 공백 혹은 빈 문자열입니다.")
             );
         }
 
@@ -56,6 +58,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("pobi,pobi", "3"))
                             .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("자동차 이름이 중복되면 안됩니다.")
             );
         }
 
@@ -65,6 +68,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("wo n,pobi", "3"))
                             .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("자동차 이름에 공백이 포함되면 안됩니다.")
             );
         }
 
@@ -74,6 +78,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("woni, po ", "3"))
                             .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("자동차 이름에 공백이 포함되면 안됩니다.")
             );
         }
     }
@@ -87,6 +92,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("pobi,javaji", "3"))
                             .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("자동차 이름은 5자 이하만 가능합니다.")
             );
         }
 
@@ -124,6 +130,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("pobi,woni", "-2"))
                             .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("시도 횟수가 음수이면 안됩니다.")
             );
         }
 
@@ -133,6 +140,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("pobi,woni", "w"))
                             .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("시도 횟수는 숫자여야 합니다.")
             );
         }
 
@@ -142,6 +150,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("pobi,woni", " 5"))
                             .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("시도 횟수는 숫자여야 합니다.")
             );
         }
 
