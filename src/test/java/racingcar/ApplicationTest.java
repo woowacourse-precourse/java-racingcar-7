@@ -40,6 +40,18 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class));
     }
 
+    @Test
+    void 끝이_구분자_테스트() {
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("pobi,java,", "1"))
+                .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void 글자입력_테스트() {
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("pobi,java,", "a"))
+                .isInstanceOf(IllegalArgumentException.class));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[] {});
