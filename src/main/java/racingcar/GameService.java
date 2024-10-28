@@ -26,7 +26,7 @@ public class GameService {
 
     public List<RacingCar> executeLogic() {
         for (RacingCar racingCar : game.getRacingCars()) {
-            Integer randomNumber = GameUtil.randomNumber();
+            Integer randomNumber = GameUtil.getRandomNumber();
             if (GameUtil.isForward(randomNumber)) {
                 racingCar.addScore();
             }
