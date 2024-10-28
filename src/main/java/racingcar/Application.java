@@ -37,13 +37,13 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carName = Console.readLine();
 
-        isEmptyCarName(carName);
+        isEmptyInputValue(carName);
 
         return carName;
     }
 
-    private static void isEmptyCarName(String carName) {
-        if (carName == null || carName.isEmpty()){
+    private static void isEmptyInputValue(String inputValue) {
+        if (inputValue == null || inputValue.isEmpty()){
             throw new IllegalArgumentException(EMPTY_CAR_NAME_MESSAGE);
         }
     }
@@ -63,6 +63,8 @@ public class Application {
     private static int getTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryCountInput = Console.readLine();
+
+        isEmptyInputValue(tryCountInput);
 
         return parseTryCount(tryCountInput);
     }
