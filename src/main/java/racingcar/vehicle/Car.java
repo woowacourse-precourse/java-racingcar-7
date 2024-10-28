@@ -12,7 +12,7 @@ public class Car extends Vehicle {
     }
 
     @Override
-    public void moveForward() {
+    public void attemptMoveForward() {
         if (tryCount > 0) {
             if (randomGenerator.getRandomNumber() >= 4) {
                 this.forwardCount++;
