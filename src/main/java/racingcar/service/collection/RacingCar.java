@@ -1,13 +1,13 @@
 package racingcar.service.collection;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import racingcar.exception.ErrorMessage;
 
 public class RacingCar {
 
-    private final Map<String, Integer> racingCar = new HashMap<>();
+    private final Map<String, Integer> racingCar = new LinkedHashMap<>();
 
     public RacingCar(String CarNames) {
         String[] splitCarName = splitCarName(CarNames);
