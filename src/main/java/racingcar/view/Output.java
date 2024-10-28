@@ -20,6 +20,11 @@ public class Output {
         printCarMove(racingCarList);
     }
 
+    public void printWinners(List<String> winners) {
+        System.out.print(SYSTEM_WINNER_MESSAGE);
+        System.out.println(String.join(STRING_DELIMITER, winners));
+    }
+
     private void printCarMove(List<Car> racingCarList) {
         for (Car car : racingCarList) {
             System.out.println(car.getName() + " : " + getCarScoreDisplay((car)));
