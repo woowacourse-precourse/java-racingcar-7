@@ -1,12 +1,15 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import racingcar.view.*;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -32,10 +35,11 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 자동차이름_구분() {
-        String input = "carA,carB,carC";
+        input inputInstance = new input();
+        String carNames = "carA,carB,carC";
         String[] expected = {"carA", "carB", "carC"};
     
-        assertArrayEquals(expected, input.splitCarNames(carNames));
+        assertArrayEquals(expected, inputInstance.splitCarNames(carNames).toArray());
     }
 
     @Override
