@@ -4,6 +4,7 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarFactory;
 import racingcar.model.Judge;
+import racingcar.model.NumberStringConverter;
 import racingcar.model.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -14,17 +15,22 @@ public class RacingController {
     private final OutputView outputView;
     private final CarFactory carFactory;
     private final Judge judge;
+    private final NumberStringConverter numberStringConverter;
 
-    public RacingController(InputView inputView, OutputView outputView, CarFactory carFactory, Judge judge) {
+    public RacingController(InputView inputView, OutputView outputView, CarFactory carFactory, Judge judge,
+                            NumberStringConverter numberStringConverter) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.carFactory = carFactory;
         this.judge = judge;
+        this.numberStringConverter = numberStringConverter;
     }
 
     public void startGame() {
         List<Car> carList = carFactory.createCar(inputView.inputCarNames());
-        Long movingCount = inputView.inputMovingCount();
+
+        String RawMovingCount = inputView.inputMovingCount();
+        Long movingCount = numberStringConverter.convert(RawMovingCount);
 
         outputView.printRacingResultTitle();
 
