@@ -20,4 +20,8 @@ public class Car {
     public int getAdvance() {
         return advance;
     }
+
+    public void setAdvance(int advance) {
+        this.advance = advance;
+    }
 }
