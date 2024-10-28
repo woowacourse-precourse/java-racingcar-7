@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Arrays;
 
-public class InputExeptionHandler {
+public class InputExceptionHandler {
     public void validCarName(String inputCarName) throws IllegalArgumentException {
         Arrays.stream(inputCarName.split(","))
                 .map(String::trim)
