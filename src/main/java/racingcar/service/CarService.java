@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import java.util.HashMap;
+import racingcar.exception.InputExceptionHandler;
 
 public class CarService {
 
@@ -8,6 +9,7 @@ public class CarService {
         HashMap<String, Integer> cars = new HashMap<>();
 
         String[] names = carNames.split(",");
+        InputExceptionHandler.validateCarName(names);
 
         for (String name : names) {
             cars.put(name.trim(), 0);
