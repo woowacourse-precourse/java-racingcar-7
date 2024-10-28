@@ -1,15 +1,13 @@
-package racingcar.seperator;
+package racingcar.service;
 
-import java.util.ArrayList;
-
-public class Seperator {
+public class SeperatorService {
     private final String[] names;
 
     public String[] getNames() {
         return names;
     }
 
-    public Seperator(String s) {
+    public SeperatorService(String s) {
         names=s.split(",");
     }
 
