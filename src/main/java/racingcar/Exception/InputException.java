@@ -2,9 +2,9 @@ package racingcar.Exception;
 
 public class InputException {
 
-    public static void (int round) {
+    public static void checkRound(int round) {
         if (round < 0) {
-            throw new IllegalArgumentException("실행 횟수는 양수만 가능합니다..");
+            throw new IllegalArgumentException("실행 횟수는 양수만 가능합니다.");
         }
     }
 
