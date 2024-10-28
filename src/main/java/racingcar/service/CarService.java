@@ -11,6 +11,7 @@ public class CarService {
         InputExceptionHandler.validateEmpty(carNames);
         String[] names = carNames.split(",");
         InputExceptionHandler.validateCarName(names);
+        InputExceptionHandler.validateCarCount(names);
 
         for (String name : names) {
             cars.put(name.trim(), 0);

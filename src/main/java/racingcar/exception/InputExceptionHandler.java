@@ -23,4 +23,10 @@ public class InputExceptionHandler {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_EMPTY.getMessage());
         }
     }
+
+    public static void validateCarCount(String[] names) {
+        if (names.length < 2) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_CAR_COUNT.getMessage());
+        }
+    }
 }
