@@ -65,7 +65,14 @@ public class IOManager {
         return builder.toString();
     }
 
-    static private void printResult() {
+    static public void printResult(List<String> results) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("최종 우승자 : ");
 
+        for (String result : results) {
+            builder.append(result);
+        }
+
+        System.out.println(builder);
     }
 }
