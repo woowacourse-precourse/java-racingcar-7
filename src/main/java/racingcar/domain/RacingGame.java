@@ -14,7 +14,6 @@ public class RacingGame {
 
     public void start() {
         for(int i = 0; i < number; i++) {
-            // 현재 턴 진행
             playTurn();
             // 현재 턴의 상황 출력
 

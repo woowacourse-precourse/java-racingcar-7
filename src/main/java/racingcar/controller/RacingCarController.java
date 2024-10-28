@@ -15,5 +15,6 @@ public class RacingCarController {
         List<Car> carList = nameList.stream().map(Car::new).toList();
         int num = input.userNumInput(Console.readLine());
         RacingGame racingGame = new RacingGame(carList, num);
+        racingGame.start();
     }
 }
