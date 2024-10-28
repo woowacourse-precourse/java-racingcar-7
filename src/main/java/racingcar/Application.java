@@ -9,11 +9,7 @@ public class Application {
     public static void main(String[] args) {
         Racingcar r = new Racingcar();
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        r.setCarMove(readLine());
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        r.setMoveCnt(readLine());
-        System.out.println();
+        r.start();
 
         System.out.println("실행 결과");
         r.totalRace();
@@ -31,8 +27,27 @@ class Racingcar {
     HashMap<String, Integer> carMove = new HashMap<String, Integer>(); // (자동차 이름: 현재 위치)
     int moveCnt;
 
+    static final int MOVE_THRESHOLD = 4;
+    static final int NAME_LENGTH_LIMIT = 5;
+
+
+    void start() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String cars = readLine();
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String attempts = readLine();
+        System.out.println();
+
+        setCarMove(cars);
+        setMoveCnt(attempts);
+
+    }
+
     void setCarMove(final String text) {
         for(final String carName : text.split(",")) {
+            if (carName.length() > NAME_LENGTH_LIMIT){
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
             carMove.put(carName, 0);
         }
     }
@@ -44,12 +59,13 @@ class Racingcar {
     void race() {
         for(Map.Entry<String, Integer> curCar : carMove.entrySet()) {
             int move = pickNumberInRange(0, 9);
-            if (move >= 4) {
-                curCar.setValue(curCar.getValue() + move);
+            if (move >= MOVE_THRESHOLD) {
+                curCar.setValue(curCar.getValue() + 1);
             }
         }
         raceResultPrint();
     }
+
 
     void totalRace() {
         for (int i = 0; i < moveCnt; i++) {
@@ -61,7 +77,7 @@ class Racingcar {
         for(Map.Entry<String, Integer> curCar : carMove.entrySet()) {
             String carName = curCar.getKey();
             int move = curCar.getValue();
-            System.out.println(carName + ":" + "-".repeat(move));
+            System.out.println(carName + " : " + "-".repeat(move));
         }
         System.out.println();
     }
