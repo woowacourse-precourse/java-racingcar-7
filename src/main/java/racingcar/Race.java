@@ -34,7 +34,7 @@ public class Race {
 		return round;
 	}
 
-	public boolean isRaceFinished(Long roundLimit) {
+	public boolean isRaceFinished(Integer roundLimit) {
 		return round >= roundLimit;
 	}
 

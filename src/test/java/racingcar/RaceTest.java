@@ -35,7 +35,7 @@ class RaceTest {
 	void 경주_횟수에_도달하면_경주를_종료한다() {
 		List<Car> cars = List.of(new Car("suby"), new Car("busy"), new Car("ssuubbyy"));
 		Race race = new Race(cars, 5, randomNumberGenerator);
-		Long roundLimit = 6L;
+		Integer roundLimit = 6;
 		assertTrue(race.isRaceFinished(roundLimit));
 	}
 
