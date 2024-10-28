@@ -24,4 +24,12 @@ public class Car {
 
         return display.toString();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }

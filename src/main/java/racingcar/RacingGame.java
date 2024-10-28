@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<Car> cars;
@@ -19,6 +20,30 @@ public class RacingGame {
             cars.forEach(Car::displayPosition);
             System.out.println();
         }
+
+        System.out.println(displayWinners());
     }
 
+    private String displayWinners() {
+        List<Car> winners = calculateWinners();
+
+        String result = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+
+        return "최종 우승자 : " + result;
+    }
+
+    private List<Car> calculateWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+
+        return winners;
+    }
 }
