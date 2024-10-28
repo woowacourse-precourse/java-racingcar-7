@@ -1,10 +1,10 @@
 package racingcar.controller;
 
-import domain.car.Car;
-import domain.car.CarFactory;
-import domain.car.Cars;
 import java.util.List;
 import racingcar.converter.Converter;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarFactory;
+import racingcar.domain.car.Cars;
 import racingcar.validator.TryCountValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
