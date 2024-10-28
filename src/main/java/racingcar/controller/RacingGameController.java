@@ -46,6 +46,9 @@ public class RacingGameController {
 
     private int initializeAttempts() {
         outputView.inputAttemptCount();
-        return inputView.inputAttemptCount();
+        int attemptCount = inputView.inputAttemptCount();
+        outputView.printNewLine();
+
+        return attemptCount;
     }
 }
