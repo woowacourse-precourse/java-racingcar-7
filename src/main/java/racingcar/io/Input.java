@@ -1,11 +1,17 @@
 package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.NoSuchElementException;
 
 public class Input {
 
     public static String readLine() {
-        return Console.readLine();
+        String readLine = "";
+        try {
+            readLine = Console.readLine();
+        } catch (NoSuchElementException ignored) {
+        }
+        return readLine;
     }
 
     public static String readString() {
@@ -24,8 +30,8 @@ public class Input {
         }
     }
 
-    private static void validateNullAndEmpty(String name) {
-        if (name == null || name.trim().isEmpty()) {
+    private static void validateNullAndEmpty(String string) {
+        if (string == null || string.trim().isEmpty()) {
             throw new IllegalArgumentException("빈 문자열을 입력할 수 없습니다.");
         }
     }
