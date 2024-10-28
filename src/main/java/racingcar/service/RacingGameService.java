@@ -13,6 +13,18 @@ public class RacingGameService {
 
     private RacingGame racingGame;
 
+    public List<Car> getCars() {
+        return racingGame.getCars();
+    }
+
+    public List<String> getWinners() {
+
+    }
+
+    private int getMaxPosition() {
+
+    }
+
     public void initGame(List<String> carNames) {
         racingGame = new RacingGame(carNames);
     }
@@ -34,17 +46,4 @@ public class RacingGameService {
             car.move(shouldMove);
         }
     }
-
-    public List<Car> getCars() {
-
-    }
-
-    public List<String> getWinners() {
-
-    }
-
-    private int getMaxPosition() {
-
-    }
-
 }
