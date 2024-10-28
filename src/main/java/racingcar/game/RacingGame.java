@@ -1,6 +1,7 @@
 package racingcar.game;
 
 import java.util.List;
+import java.util.Map;
 import racingcar.car.CompeteCars;
 import racingcar.view.RacingInputView;
 import racingcar.view.RacingOutputView;
@@ -20,7 +21,7 @@ public class RacingGame {
     }
 
     private Round setRound(CompeteCars competeCars) {
-        Integer moveCount = inputView.getMoveCount();
+        int moveCount = inputView.getMoveCount();
         return new Round(moveCount, competeCars);
     }
 
@@ -31,7 +32,8 @@ public class RacingGame {
         outputView.printResultString();
         while (round.hasNext()) {
             round.progress();
-            outputView.printRoundResult(competeCars.getCarsCurrentPosition());
+            Map<String, Integer> roundResult = competeCars.getCarsCurrentPosition();
+            outputView.printRoundResult(roundResult);
         }
 
         outputView.printWinners(competeCars.getWinnerCars());

@@ -11,7 +11,10 @@ public class RacingOutputView {
     public void printRoundResult(Map<String, Integer> carPositions) {
         StringBuilder roundResult = new StringBuilder();
         carPositions.forEach((name, position) -> {
-            roundResult.append(name).append(" : ").append("-".repeat(position)).append("\n");
+            roundResult.append(name)
+                .append(" : ")
+                .append("-".repeat(position))
+                .append("\n");
         });
         System.out.print(roundResult);
     }

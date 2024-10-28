@@ -17,8 +17,10 @@ public class RacingInputView {
 
     public List<String> getCarNames() {
         System.out.println(MESSAGE_CAR_NAMES_INPUT);
+
         String Input = Console.readLine().strip();
         validateBlankInput(Input);
+
         return List.of(Input.split(","));
     }
 
@@ -34,8 +36,10 @@ public class RacingInputView {
 
     public Integer getMoveCount() {
         System.out.println(MESSAGE_MOVE_COUNT_INPUT);
+
         String input = Console.readLine().strip();
         validateIntegerInput(input);
+
         return Integer.parseInt(input);
     }
 }

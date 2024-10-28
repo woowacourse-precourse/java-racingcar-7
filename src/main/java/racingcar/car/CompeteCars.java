@@ -21,7 +21,9 @@ public class CompeteCars {
 
     public CompeteCars(List<String> carNames) {
         validateDuplicatedCar();
-        carNames.stream().map(Car::new).forEach(cars::add);
+        carNames.stream()
+            .map(Car::new)
+            .forEach(cars::add);
     }
 
     public void moveAll(MoveStrategy moveStrategy) {
@@ -29,15 +31,22 @@ public class CompeteCars {
     }
 
     public Map<String, Integer> getCarsCurrentPosition() {
-        return cars.stream().collect(Collectors.toMap(Car::getName, Car::getPosition));
+        return cars.stream()
+            .collect(Collectors.toMap(Car::getName, Car::getPosition));
     }
 
     public int getCarsMaxPosition() {
-        return cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        return cars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElse(0);
     }
 
     public List<String> getWinnerCars() {
         int maxPosition = getCarsMaxPosition();
-        return cars.stream().filter(car -> car.getPosition() == maxPosition).map(Car::getName).toList();
+        return cars.stream()
+            .filter(car -> car.getPosition() == maxPosition)
+            .map(Car::getName)
+            .toList();
     }
 }
