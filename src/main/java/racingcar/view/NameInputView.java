@@ -6,9 +6,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class NameInputView implements View, InputView {
     @Override
-    public void printView() {
+    public String printView() {
         printRequest();
-        getInput();
+        return getInput();
     }
 
     @Override

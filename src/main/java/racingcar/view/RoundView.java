@@ -33,11 +33,12 @@ public class RoundView implements View {
     }
 
     @Override
-    public void printView() {
+    public String printView() {
         if (isStart) {
             printStartMessage();
             isStart = false;
         }
         printRound();
+        return null;
     }
 }

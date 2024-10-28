@@ -14,7 +14,8 @@ public class OutputView implements View {
     }
 
     @Override
-    public void printView() {
+    public String printView() {
         printWinners();
+        return null;
     }
 }

@@ -6,9 +6,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class AttemptsInputView implements InputView, View {
     @Override
-    public void printView() {
+    public String printView() {
         printRequest();
-        getInput();
+        return getInput();
     }
 
     @Override
