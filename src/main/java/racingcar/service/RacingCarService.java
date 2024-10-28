@@ -2,15 +2,16 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.RacingCar;
+import racingcar.exception.ErrorMessage;
+import racingcar.exception.ExceptionHandler;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class RacingCarService {
 
     public void registerRacingCars(final Collection<RacingCar> racingCars, final Collection<String> carNames) {
+        checkDuplicatedName(carNames);
         carNames.forEach(carName -> racingCars.add(RacingCar.createRacingCar(carName)));
     }
 
@@ -21,14 +22,14 @@ public class RacingCarService {
     public List<RacingCar> findWinner(final Collection<RacingCar> racingCars) {
         List<RacingCar> winners = new LinkedList<>();
         int biggestScore = 0;
-        for(RacingCar racingCar : racingCars){
-            if(racingCar.getRaceScore()>biggestScore){
+        for (RacingCar racingCar : racingCars) {
+            if (racingCar.getRaceScore() > biggestScore) {
                 biggestScore = racingCar.getRaceScore();
                 winners.clear();
                 winners.add(racingCar);
                 continue;
             }
-            if(racingCar.getRaceScore() == biggestScore){
+            if (racingCar.getRaceScore() == biggestScore) {
                 winners.add(racingCar);
             }
         }

@@ -44,7 +44,7 @@ public class RacingCarController {
         racingCarService.registerRacingCars(racingCarList, carNames);
     }
 
-    private void racing(int tryCount){
+    private void racing(int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             racingCarService.racingGame(racingCarList);
             outputView.printRacingStatus(racingCarList);
