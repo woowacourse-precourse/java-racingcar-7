@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class CarScores {
     private static final String CARS_SEPARATOR = ",";
 
-    private LinkedHashMap<CarName, Distance> carScores;
+    private final LinkedHashMap<CarName, Distance> carScores;
 
     public CarScores(String cars) {
         isBlank(cars);
