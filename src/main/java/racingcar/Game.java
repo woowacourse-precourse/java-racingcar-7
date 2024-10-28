@@ -16,49 +16,47 @@ public class Game {
         OutputHandler.printInstructionForTimes();
         int times = InputHandler.getTimes();
 
-        // 핵심 로직
         cars = new ArrayList<>();
 
-        // 1. 객체 생성
         for(String carName : carNames) {
             cars.add(new Car(carName));
         }
 
-        System.out.println();
-        System.out.println("실행 결과");
+        OutputHandler.printInformResult();
 
-        // 2. 반복문 돌면서 실행 한번씩 하기
         for(int i = 0; i < times; i++) {
-
-            for(int j = 0; j < cars.toArray().length; j++) {
-
-                Car car = cars.get(j);
-
-                // 2-1. 각 객체에 대해 랜덤값 구하기
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
-
-                // 2-2. 값이 4 이상이면 count 필드 1 증가
-                if (randomNumber >= 4) {
-                    car.increaseCount();
-                }
-
-                // 2-3. 현재 객체 결과 출력하기
-                System.out.println(car.toString());
-            }
-
-            System.out.println();
+            executeGame();
+            OutputHandler.printOneBlankLine();
         }
 
-        // 3. 우승자 찾기
         List<Car> winnerCars = findWinnerCars();
-        List<String> winnerNames = winnerCars.stream()
-                .map(Car::getName)
-                .collect(Collectors.toList());
-        System.out.print("최종 우승자 : " + String.join(", ", winnerNames));
+        List<String> winnerCarNames = getWinnerCarNames(winnerCars);
+        OutputHandler.printWinner(String.join(", ", winnerCarNames));
 
     }
 
-    public List<Car> findWinnerCars() {
+    private static List<String> getWinnerCarNames(List<Car> winnerCars) {
+        return winnerCars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private void executeGame() {
+        for(int i = 0; i < cars.toArray().length; i++) {
+            Car currentCar = cars.get(i);
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            checkIfRandomNumberIsOver4(randomNumber, currentCar);
+            System.out.println(currentCar.toString());
+        }
+    }
+
+    private static void checkIfRandomNumberIsOver4(int randomNumber, Car car) {
+        if (randomNumber >= 4) {
+            car.increaseCount();
+        }
+    }
+
+    private List<Car> findWinnerCars() {
         List<Car> winnerCars = new ArrayList<>();
         int maxCount = Integer.MIN_VALUE;
 
