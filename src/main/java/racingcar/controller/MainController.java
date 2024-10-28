@@ -20,22 +20,20 @@ public class MainController {
         this.outputView = outputView;
         this.validator = validator;
     }
-    public void run() {
-        String CarNames = inputView.inputCarName();
-        String CarRoundCount = inputView.inputCarRoundCount();
+    public void startRace() {
+        String carNames = inputView.inputCarName();
+        String carRoundCount = inputView.inputCarRoundCount();
 
-        validator.validateAllInput(CarNames, CarRoundCount);
+        validator.validateAllInput(carNames, carRoundCount);
 
-        List<Car> cars = CarFactory.createCarsFromInput(CarNames);
-        int carRoundCount = Integer.parseInt(CarRoundCount);
+        List<Car> cars = CarFactory.createCarsFromInput(carNames);
+        int carRound = Integer.parseInt(carRoundCount);
 
-        RaceManager raceManager = new RaceManager(cars, carRoundCount);
+        RaceManager raceManager = new RaceManager(cars, carRound);
         raceManager.playAllRounds(outputView);
 
         List<Car> carsAtFinish = raceManager.getCars();
-        WinnerDeterminer winnerDeterminer = new WinnerDeterminer(carsAtFinish);
-
-        List<Car> winners = winnerDeterminer.determineWinner();
+        List<Car> winners = WinnerDeterminer.determineWinner(carsAtFinish);
         outputView.displayWinners(winners);
     }
 }

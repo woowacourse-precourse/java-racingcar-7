@@ -6,25 +6,23 @@ import racingcar.domain.Car;
 import java.util.List;
 
 public class WinnerDeterminer {
-    private final List<Car> cars;
 
-    public WinnerDeterminer(List<Car> cars) {
-        this.cars = cars;
+    private WinnerDeterminer() {
     }
 
-    public List<Car> determineWinner() {
-        int maxPosition = getMaxPositionInCars();
-        return getCarsAtMaxPosition(maxPosition);
+    public static List<Car> determineWinner(List<Car> carsAtFinish) {
+        int maxPosition = getMaxPositionInCars(carsAtFinish);
+        return getCarsAtMaxPosition(carsAtFinish, maxPosition);
     }
 
-    private int getMaxPositionInCars() {
+    private static int getMaxPositionInCars(List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    private List<Car> getCarsAtMaxPosition(int maxPosition) {
+    private static List<Car> getCarsAtMaxPosition(List<Car> cars, int maxPosition) {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();
