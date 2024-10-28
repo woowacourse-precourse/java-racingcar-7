@@ -4,6 +4,7 @@ import racingcar.exception.CarException;
 
 public class Car {
     private static final int MINIMUM_MOVE_NUMBER = 4;
+    private static final int MAXIMUM_NAME_LENGTH = 5;
     private final String name;
     private int position;
 
@@ -37,7 +38,7 @@ public class Car {
             throw new IllegalArgumentException(CarException.CAR_NAME_IS_NULL_OR_EMPTY.getMessage());
         }
 
-        if (name.length() > 5) {
+        if (name.length() > MAXIMUM_NAME_LENGTH) {
             throw new IllegalArgumentException(CarException.CAR_NAME_IS_OVER_FIVE.getMessage());
         }
     }
