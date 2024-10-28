@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -8,12 +9,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-    @Test
-    void 자동차가_전진하는지_테스트() {
-        Car car1 = new Car("pobi");
-        Car car2 = new Car("woni");
-        RacingGame racingGame = new RacingGame(Arrays.asList(car1, car2));
+    private Car car1;
+    private Car car2;
+    private RacingGame racingGame;
 
+    @BeforeEach
+    void setUp() {
+        car1 = new Car("pobi");
+        car2 = new Car("woni");
+        racingGame = new RacingGame(Arrays.asList(car1, car2));
+    }
+
+    @Test
+    void 자동차가_전진하거나_멈추는지_확인() {
         racingGame.playRound();
 
         assertThat(car1.getPosition()).isBetween(0, 1);
