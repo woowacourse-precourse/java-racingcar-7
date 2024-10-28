@@ -42,12 +42,10 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car car) {
-        if (Objects.equals(this.distance, car.distance)) {
+        int comparison = Long.compare(this.distance, car.distance);
+        if (comparison == 0) {
             return this.name.compareTo(car.name);
         }
-        if (car.distance > this.distance) {
-            return 1;
-        }
-        return -1;
+        return comparison;
     }
 }
