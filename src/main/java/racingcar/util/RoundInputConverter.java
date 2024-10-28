@@ -3,7 +3,7 @@ package racingcar.util;
 
 import racingcar.validator.RoundValidator;
 
-public class RaceInputConverter {
+public class RoundInputConverter {
 
     public static int setIntRound(String round) {
 
