@@ -4,7 +4,6 @@ import static racingcar.constant.GameConstants.MAXIMUM_PLAYERS;
 import static racingcar.constant.GameConstants.MINIMUM_PLAYERS;
 
 public class PlayerCountExceptionMessage {
-
     private PlayerCountExceptionMessage() {
     }
 
