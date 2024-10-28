@@ -32,12 +32,17 @@ public class RacingServiceImpl implements RacingService {
     }
 
     private void setWinners(List<Car> cars) {
-        int maxPosition = cars
-                .stream().mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(IllegalStateException::new);
+        int maxPosition = getMaxPosition(cars);
+
         cars
                 .stream().filter(car -> car.getPosition() == maxPosition)
                 .forEach(Car::setWinner);
+    }
+
+    private Integer getMaxPosition(List<Car> cars) {
+        return cars
+                .stream().mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(IllegalStateException::new);
     }
 }
