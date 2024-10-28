@@ -11,36 +11,57 @@ public class InputHandler {
 
     public static void initInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-
-        if (input == null || input.isEmpty()) {
-            throw new IllegalArgumentException("입력이 필요함");
-        }
-
-        CarName.addAll(Arrays.asList(input.split(",")));
-        for (String carName : CarName) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("이름 길이가 5 넘어감");
-            }
-            if (carName == null || carName.isEmpty()) {
-                throw new IllegalArgumentException("자동차 이름이 없음");
-            }
-        }
-
+        validateAndSetCarNames(Console.readLine());
 
         System.out.println("시도할 횟수는 몇 회인가요?");
+        setRacingCounter(Console.readLine());
+    }
+
+    public static void validateAndSetCarNames(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
+        String[] names = input.split(",");
+
+        for (String name : names) {
+            validateCarName(name);
+        }
+
+        CarName.clear();
+        CarName.addAll(Arrays.asList(names));
+    }
+
+    private static void validateCarName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        if (name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
+        if (name.contains(".")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void setRacingCounter(String input) {
         try {
-            racingCounter = Integer.parseInt(Console.readLine());
-            if (racingCounter < 0) {
-                throw new IllegalArgumentException("정수를 입력해야 함");
+            if (input == null || input.trim().isEmpty()) {
+                throw new IllegalArgumentException();
             }
+
+            int count = Integer.parseInt(input);
+            if (count <= 0) {
+                throw new IllegalArgumentException();
+            }
+            racingCounter = count;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수를 입력해야 함");
+            throw new IllegalArgumentException();
         }
     }
 
     public static ArrayList<String> getCarName() {
-        return CarName;
+        return new ArrayList<>(CarName);
     }
 
     public static int getRacingCounter() {

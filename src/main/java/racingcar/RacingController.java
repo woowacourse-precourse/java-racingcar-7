@@ -5,39 +5,31 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class RacingController {
-
-
-    public static ArrayList<Boolean> setMoveCondition(int racingCounter) {
-        ArrayList<Boolean> moveCondition = new ArrayList<Boolean>();
-        for (int i = 0; i < racingCounter; i++) {
-            moveCondition.add(Randoms.pickNumberInRange(0, 9) >= 4);
-        }
-        return moveCondition;
-    }
-
     public static void printRacing(ArrayList<RacingCar> racingCars, int racingCounter) {
         System.out.println("\n실행 결과");
 
         for (int i = 0; i < racingCounter; i++) {
-            printEachTurn(racingCars, i);
+            printEachTurn(racingCars);
             System.out.println();
         }
     }
 
-
-    private static void printEachTurn(ArrayList<RacingCar> racingCars, int turn) {
+    private static void printEachTurn(ArrayList<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             String carName = racingCar.getName();
             System.out.print(carName + " : ");
 
-            ArrayList<Boolean> moveCondition = racingCar.getMoveCondition();
-            if (moveCondition.get(turn)) {
+            if (shouldMove()) {
                 racingCar.move();
             }
 
             printCarPosition(racingCar);
             System.out.println();
         }
+    }
+
+    private static boolean shouldMove() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
     private static void printCarPosition(RacingCar racingCar) {
@@ -61,6 +53,4 @@ public class RacingController {
         }
         return winners;
     }
-
-
 }
