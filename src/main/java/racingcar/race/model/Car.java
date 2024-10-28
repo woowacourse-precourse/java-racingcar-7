@@ -25,13 +25,13 @@ public class Car {
         }
     }
 
+    String getProgress() {
+        return String.format(PROGRESS_FORMAT, this.name, PROGRESS_EXPRESSION.repeat(this.position));
+    }
+
     private void validateName(String name) {
         if (name.length() >= NAME_RULE_LENGTH) {
             throw new IllegalArgumentException(NAME_RULE_ERROR_MESSAGE);
         }
-    }
-
-    public String getProgress() {
-        return String.format(PROGRESS_FORMAT, this.name, PROGRESS_EXPRESSION.repeat(this.position));
     }
 }
