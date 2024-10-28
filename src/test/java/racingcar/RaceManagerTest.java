@@ -1,21 +1,40 @@
 package racingcar;
 
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.in;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.commons.util.ReflectionUtils;
 
 public class RaceManagerTest extends NsTest {
+
+    public void putTempListElementsInCarList(ArrayList<?> tempList, ArrayList<Car> cars) {
+        for (Object item : tempList) {
+            if (item instanceof Car) {
+                cars.add((Car) item);
+            }
+        }
+    }
+
+    public ArrayList<Car> getRaceManagerField(RaceManager rm) {
+        ArrayList<Car> cars = new ArrayList<>();
+        try {
+            Field field = rm.getClass().getDeclaredField("cars");
+            field.setAccessible(true);
+            Object objectCars = field.get(rm);
+            if (objectCars instanceof ArrayList<?> tempList) {
+                putTempListElementsInCarList(tempList, cars);
+            }
+
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        return cars;
+    }
+
 
     @Test
     void 이름_입력테스트_올바른입력일때() {
@@ -23,16 +42,16 @@ public class RaceManagerTest extends NsTest {
         String input = "abc, cdf, efg,hij";
         RaceManager rm = new RaceManager();
         ArrayList<Car> cars;
-
         //when
         rm.setCarName(input);
-        cars = rm.getCarList();
+        cars = getRaceManagerField(rm);
         //then
         assertThat(cars.get(0).getCarName()).isEqualTo("abc");
         assertThat(cars.get(1).getCarName()).isEqualTo("cdf");
         assertThat(cars.get(2).getCarName()).isEqualTo("efg");
         assertThat(cars.get(3).getCarName()).isEqualTo("hij");
     }
+
 
     @Test
     void 이름_콤마없이_하나만_입력할때() {
@@ -43,7 +62,7 @@ public class RaceManagerTest extends NsTest {
 
         //when
         rm.setCarName(input);
-        cars = rm.getCarList();
+        cars = getRaceManagerField(rm);
 
         //then
         assertThat(cars.size()).isEqualTo(1);
