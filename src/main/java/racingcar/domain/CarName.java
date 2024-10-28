@@ -3,7 +3,7 @@ package racingcar.domain;
 public class CarName {
     private final int MAX_LENGTH = 5;
     private final String NAME_LENGTH_OVER_ERROR_MESSAGE = "자동차 이름의 길이는 5 이하여야만 합니다";
-    private final String EMPTY_NAME_ERROR_MESSAGE = "자동차의 이름은 비어있을 수 없습니다."
+    private final String EMPTY_NAME_ERROR_MESSAGE = "자동차의 이름은 비어있을 수 없습니다.";
 
     private String name;
 
