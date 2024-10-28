@@ -3,7 +3,7 @@ package racingcar;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Car implements Vehicle {
-    private String name;
+    private final String name;
     private int location;
 
     @Override
@@ -18,12 +18,11 @@ public class Car implements Vehicle {
     }
 
     public void printLocation() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.getName());
-        sb.append(" : ");
-        for (int i = 0; i < location; i++) {
-            sb.append('-');
-        }
+        String sb = this.getName()
+                        + " : "
+                        + "-"
+                        .repeat(Math.max(0, location));
+        System.out.println(sb);
     }
 
     public Car(String name, int location) {
