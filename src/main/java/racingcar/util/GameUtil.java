@@ -15,6 +15,7 @@ public class GameUtil {
      */
     public static List<String> prepareCarNames(String inputCarName) {
         List<String> carNames = Arrays.asList(inputCarName.split(",", -1));
+        Validator.checkSingleName(carNames);
         Validator.checkDuplicateNames(carNames);
         return carNames;
     }

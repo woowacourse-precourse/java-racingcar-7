@@ -20,6 +20,16 @@ public class Validator {
     }
 
     /**
+     * 자동차 이름이 한 개만 입력 됐는지 검증하는 메서드
+     * @param carNames 자동차 이름
+     */
+    public static void checkSingleName(List<String> carNames){
+        if (carNames.size() == 1) {
+            throw new IllegalArgumentException(ErrorMessage.SINGLE_NAME_INPUT.getMessage());
+        }
+    }
+
+    /**
      * 자동차 이름이 비어 있는지 검증하는 메서드
      * @param car 자동차 이름
      */

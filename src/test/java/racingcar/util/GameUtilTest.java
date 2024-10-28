@@ -9,6 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.message.ErrorMessage.DUPLICATE_NAME;
+import static racingcar.message.ErrorMessage.SINGLE_NAME_INPUT;
 
 class GameUtilTest {
 
@@ -31,8 +32,17 @@ class GameUtilTest {
     }
 
     @Test
-    @DisplayName("우승자가 한명인 경우")
+    @DisplayName("자동차 이름 하나인 경우")
     public void test3(){
+        String inputCarName = "a";
+
+        assertThatThrownBy(() -> GameUtil.prepareCarNames(inputCarName))
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(SINGLE_NAME_INPUT.getMessage());
+    }
+
+    @Test
+    @DisplayName("우승자가 한명인 경우")
+    public void test4(){
         List<Car> cars = List.of(
                 new Car("car1"),
                 new Car("car2"),
@@ -48,7 +58,7 @@ class GameUtilTest {
 
     @Test
     @DisplayName("우승자가 여러명인 경우")
-    public void test4(){
+    public void test5(){
         List<Car> cars = List.of(
                 new Car("car1"),
                 new Car("car2"),
