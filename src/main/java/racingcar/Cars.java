@@ -15,10 +15,15 @@ public class Cars {
         }
     }
 
+    public void foward() {
+        for (Car car : cars) {
+            car.foward();
+        }
+    }
+
     private void validateCarNames(List<String> carNames) {
         if (carNames == null || carNames.isEmpty()) {
             throw new IllegalArgumentException();
         }
-
     }
 }

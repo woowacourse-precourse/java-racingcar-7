@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private String carName;
     private int distance;
@@ -15,5 +17,15 @@ public class Car {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5글자 이하여야 합니다.");
         }
+    }
+
+    public void foward() {
+        if (canFoward()) {
+            distance += 1;
+        }
+    }
+
+    private boolean canFoward() {
+        return Randoms.pickNumberInRange(0, 9) > 4;
     }
 }

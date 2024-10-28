@@ -7,5 +7,8 @@ public class Application {
 
         String playCountInput = InputView.readLine("시도할 횟수는 몇 회인가요?");
         PlayCount playCount = Parser.parsePlayCount(playCountInput);
+
+        Race race = new Race();
+        race.play(cars, playCount);
     }
 }
