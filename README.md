@@ -17,5 +17,7 @@
   - 3인 곳이 있어서 객체 지향 구조로 변경 
 - [x] 메서드 단일 책임을 지는지
 - 메서드별 unit test
-  - [x] go
-  - [ ] prickAWinner
+  - [x] race
+  - [x] pickAWinner
+
+### [노션기록](https://www.notion.so/2-12c9fdec090f80fa940df7676d4f2f60?pvs=4)
