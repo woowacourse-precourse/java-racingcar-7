@@ -47,6 +47,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void input_error_이름중복() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("phobi, phobi"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+
+    @Test
     void input_error_시도횟수_1이하() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni,jun", "-1"))
