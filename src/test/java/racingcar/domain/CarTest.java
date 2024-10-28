@@ -19,6 +19,17 @@ public class CarTest {
         Assertions.assertThat(car.getLocation()).isEqualTo(1);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {0, 3})
+    @DisplayName("자동차가 움직일 수 있는 조건을 만족하지 않을 때 움직이는지 확인한다")
+    void 움직일_수_없는_경우_테스트(int i) {
+        Car car = new Car("pobi");
+        NumberGenerator numberGenerator = () -> i;
+
+        car.move(numberGenerator.generateNumber());
+
+        Assertions.assertThat(car.getLocation()).isEqualTo(0);
+    }
 
     @Test
     @DisplayName("이름 길이 테스트")
