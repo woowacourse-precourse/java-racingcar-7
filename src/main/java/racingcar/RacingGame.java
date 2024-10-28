@@ -35,7 +35,7 @@ public class RacingGame {
 
     public void nameCheck(List<Car> cars) {
         for (Car car : cars) {
-            if (car.getName().isBlank() || car.getName().length() > NAME_MAX_LENGTH) {
+            if (car.getName() == null || car.getName().isBlank() || car.getName().length() > NAME_MAX_LENGTH) {
                 throw new IllegalArgumentException(ERROR_MESSAGE_NAME);
             }
         }
