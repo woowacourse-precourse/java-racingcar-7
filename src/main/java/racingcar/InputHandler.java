@@ -8,8 +8,7 @@ import java.util.Map;
 public class InputHandler {
     Map<String, Integer> mapNameDist = new HashMap<String, Integer>();
 
-    public Map<String, Integer> readCarNames() {
-        String inputPrimitive = Console.readLine();
+    public Map<String, Integer> readCarNames(String inputPrimitive) {
         inputPrimitive = inputPrimitive.trim();
 
         if (inputPrimitive == null || inputPrimitive.isEmpty()) {
@@ -34,10 +33,8 @@ public class InputHandler {
         return mapNameDist;
     }
 
-    public int readIterNum() {
+    public int readIterNum(String inputPrimitive) {
         int numIter = 0;
-
-        String inputPrimitive = Console.readLine();
 
         if (inputPrimitive == null || inputPrimitive.isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.INPUT_EMPTY.getMessage());

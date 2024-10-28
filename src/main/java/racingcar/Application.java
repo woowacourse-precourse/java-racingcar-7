@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,9 +18,9 @@ public class Application {
         OutputHandler outputHandler = new OutputHandler();
 
         System.out.println(GuideMessage.INPUT_NAME.getMessage());
-        cars = inputHandler.readCarNames();
+        cars = inputHandler.readCarNames(Console.readLine());
         System.out.println(GuideMessage.INPUT_ITER.getMessage());
-        numIterations = inputHandler.readIterNum();
+        numIterations = inputHandler.readIterNum(Console.readLine());
 
         System.out.println(GuideMessage.RACE_START.getMessage());
         while (numIterations-- > 0) {
