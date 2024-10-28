@@ -17,6 +17,14 @@ public class RacingGame {
                 .toList();
     }
 
+    private void validateNumberOfTrials(String numberOfTrials) {
+        try {
+            Integer.parseInt(numberOfTrials);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력된 값이 숫자가 아닙니다.");
+        }
+    }
+
     public void trial() {
         cars.forEach(car -> {
             car.move(Randoms.pickNumberInRange(0, 9));
