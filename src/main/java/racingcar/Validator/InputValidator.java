@@ -34,7 +34,7 @@ public class InputValidator {
 
     // 숫자 여부를 확인하는 메서드
     public static boolean isNumber(String inputNum) {
-        return inputNum.chars().allMatch(Character::isDigit);
+        return !inputNum.isEmpty() && inputNum.chars().allMatch(Character::isDigit);
     }
 
     // 이름이 비어있지 않고, 알파벳과 숫자로만 구성되었는지 확인

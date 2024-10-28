@@ -2,7 +2,6 @@ package racingcar;
 
 import racingcar.view.InputView;
 
-import java.util.Map;
 
 public class MainController {
     public static  void run(){

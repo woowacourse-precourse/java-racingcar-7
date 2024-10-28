@@ -10,8 +10,15 @@ public class RacingGame {
 
     private final List<Car> cars = new ArrayList<>();
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     // 자동차 초기화
     public void initializeCars(String[] carNames) {
+        if (carNames == null || carNames.length == 0) {
+            throw new IllegalArgumentException("자동차 이름 목록이 비어 있습니다.");
+        }
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
@@ -33,7 +40,7 @@ public class RacingGame {
     }
 
     // 모든 자동차의 전진 시도
-    private void attemptAllCarsMove() {
+    public void attemptAllCarsMove() {
         cars.forEach(this::moveCarIfConditionMet);
     }
 
@@ -62,7 +69,7 @@ public class RacingGame {
     }
 
     // 우승자 찾기
-    private List<String> findWinners() {
+    public  List<String> findWinners() {
         int maxPosition = findMaxPosition();
         return getCarsAtPosition(maxPosition);
     }
