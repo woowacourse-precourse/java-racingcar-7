@@ -42,11 +42,4 @@ public class RacingGameService {
 
         return winners;
     }
-
-    public static Boolean isWinnersSameName(List<CarDto> cars) {
-        Map<String, Long> nameCollect = cars.stream()
-                                               .collect(Collectors.groupingBy(CarDto::getName, Collectors.counting()));
-
-        return nameCollect.values().stream().anyMatch(count -> count > 1);
-    }
 }
