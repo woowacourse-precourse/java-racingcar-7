@@ -23,7 +23,7 @@ public class RacingCar {
         System.out.println("실행 결과");
         for (int i = 0; i < tryNumber; i++) {
             this.cars.getCars().forEach(car -> {
-                int randomNumber = pickRandomNumber();
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
                 if (randomNumber >= 4) {
                     car.movePosition();
                 }
@@ -44,9 +44,5 @@ public class RacingCar {
 
     private static int calculateMaxPosition(Stream<Car> carList) {
         return carList.map(Car::getPosition).max(Integer::compareTo).orElse(0);
-    }
-
-    private int pickRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
     }
 }
