@@ -27,4 +27,14 @@ class RaceTest {
         race.raceRound(strategy);
         assertTrue(race.getCars().stream().anyMatch(car -> car.getPosition() > 0));
     }
+    @Test
+    void getWinners_returns_correct_winners() {
+        race.getCars().get(0).move();
+        race.getCars().get(1).move();
+        List<String> winners = race.getWinners();
+        assertTrue(winners.contains("pobi"));
+        assertTrue(winners.contains("woni"));
+        assertEquals(2, winners.size());
+    }
+
 }
