@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class Methods {
 
     // 자동차의 현재 위치를 담는 map 생성
@@ -27,5 +29,16 @@ public class Methods {
 
      return nameList;
     }
+
+    // 전진 메소드
+    private void isMoving(String carName){
+
+        int randomNum = pickNumberInRange(0,9);
+        if(randomNum>=4){
+            carConditions.get(carName).append("-");
+        }
+
+    }
+
 
 }
