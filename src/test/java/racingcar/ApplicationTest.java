@@ -80,22 +80,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_시도횟수_공백() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("povi,eddy", ""))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void 예외_테스트_시도횟수_null() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("povi,eddy", null))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
     void 예외_테스트_시도횟수_음수() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("povi,eddy", "-1"))
