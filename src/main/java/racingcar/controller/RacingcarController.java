@@ -37,7 +37,7 @@ public class RacingcarController {
     }
 
     public void printResultRun(int trialCount, List<Car> cars) {
-        System.out.println("실행결과");
+        System.out.println("\n실행결과");
         for (int i = 1; i <= trialCount; i++) {
             List<Car> result = racingcarService.race(cars);
             racingcarView.printResult(result);
