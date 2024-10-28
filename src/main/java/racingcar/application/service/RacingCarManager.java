@@ -6,19 +6,19 @@ import racingcar.application.implement.WinnerIdentifier;
 import racingcar.persistence.RacingCarRepository;
 import racingcar.application.implement.RacingCarHistoryManager;
 import racingcar.vo.CarRaceResult;
-import racingcar.application.implement.Racing;
+import racingcar.application.implement.RaceStarter;
 import racingcar.domain.CarRacer;
 
 public class RacingCarManager implements RacingManager<CarRacer> {
 
-    private final Racing<CarRacer> racing;
+    private final RaceStarter<CarRacer> raceStarter;
     private final RacingCarRepository racingCarRepository;
     private final RacingCarHistoryManager racingCarHistoryManager;
     private final WinnerIdentifier winnerIdentifier;
 
-    public RacingCarManager(Racing<CarRacer> racing, RacingCarRepository racingCarRepository,
+    public RacingCarManager(RaceStarter<CarRacer> raceStarter, RacingCarRepository racingCarRepository,
             RacingCarHistoryManager racingCarHistoryManager, WinnerIdentifier winnerIdentifier) {
-        this.racing = racing;
+        this.raceStarter = raceStarter;
         this.racingCarRepository = racingCarRepository;
         this.racingCarHistoryManager = racingCarHistoryManager;
         this.winnerIdentifier = winnerIdentifier;
@@ -34,7 +34,7 @@ public class RacingCarManager implements RacingManager<CarRacer> {
         List<CarRacer> registeredCars = racingCarRepository.getAll();
         IntStream.range(0, gameCount)
                 .forEach(count -> {
-                    racing.start(registeredCars);
+                    raceStarter.start(registeredCars);
                     racingCarHistoryManager.record(registeredCars);
                 });
     }

@@ -7,10 +7,10 @@ import racingcar.persistence.InMemoryRacingCarRepository;
 import racingcar.common.support.ObjectConverter;
 import racingcar.application.Game;
 import racingcar.persistence.RacingCarRepository;
-import racingcar.application.implement.CarRacing;
+import racingcar.application.implement.CarRaceStarter;
 import racingcar.application.implement.RacingCarHistoryManager;
 import racingcar.application.implement.RacingCarHistoryWriter;
-import racingcar.application.implement.Racing;
+import racingcar.application.implement.RaceStarter;
 import racingcar.domain.CarRacer;
 import racingcar.application.RacingCarGame;
 import racingcar.application.service.RacingCarManager;
@@ -50,8 +50,8 @@ public class GameConfig {
         return InMemoryRacingCarRepository.getInstance();
     }
 
-    private Racing<CarRacer> race() {
-        return new CarRacing();
+    private RaceStarter<CarRacer> race() {
+        return new CarRaceStarter();
     }
 
     private RacingCarHistoryManager carRaceHistoryRecorder() {

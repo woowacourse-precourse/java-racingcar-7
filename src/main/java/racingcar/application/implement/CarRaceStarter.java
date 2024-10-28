@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.domain.CarRacer;
 
-public class CarRacing implements Racing<CarRacer> {
+public class CarRaceStarter implements RaceStarter<CarRacer> {
 
     @Override
     public void start(List<CarRacer> carRacers) {
