@@ -16,6 +16,7 @@ public class RaceController {
     public void start(int count){
         for (int i = 0; i < count; i++) {
             raceGame.start();
+            System.out.println();
         }
     }
 

@@ -28,6 +28,7 @@ public class Car implements Vehicle{
         currentCar.append(name);
         currentCar.append(" : ");
         currentCar.append("-".repeat(forward));
+        System.out.println(currentCar);
         return currentCar.toString();
     }
 
