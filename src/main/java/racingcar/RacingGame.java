@@ -14,13 +14,14 @@ public class RacingGame {
     private static final String GAME_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String GAME_RESULT = "\n실행 결과";
     private static final String FINAL_WINNER = "최종 우승자 : ";
-    private static final String ERROR_MESSAGE_NAME = "이름은 5자 이하로 입력해야 합니다.";
+    private static final String ERROR_MESSAGE_NAME = "이름은 1자 이상, 5자 이하로 입력해야 합니다.";
     private static final String ERROR_MESSAGE_COUNT = "1 이상의 숫자만 입력할 수 있습니다.";
+    private static final int NAME_MAX_LENGTH = 5;
 
     public void start() {
         System.out.println(START_MESSAGE);
         String names = readLine();
-        List<Car> cars = Stream.of(names.split(",")).map(name -> new Car(name.trim(), 0)).collect(Collectors.toList());
+        List<Car> cars = Stream.of(names.split(",")).map(name -> new Car(name, 0)).collect(Collectors.toList());
         nameCheck(cars);
         System.out.println(GAME_COUNT_MESSAGE);
         int count = countCheck(readLine());
@@ -34,7 +35,7 @@ public class RacingGame {
 
     public void nameCheck(List<Car> cars) {
         for (Car car : cars) {
-            if (car.getName().length() > 5) {
+            if (car.getName().isBlank() || car.getName().length() > NAME_MAX_LENGTH) {
                 throw new IllegalArgumentException(ERROR_MESSAGE_NAME);
             }
         }
