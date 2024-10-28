@@ -77,7 +77,7 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi,포비", "포비,Pobi", "포pobi,pobi", "pobi포,pobi"})
+    @ValueSource(strings = {"pobi,포비", "포비,Pobi", "포pobi,pobi", "pobi포,pobi", " ", "!pobi, woni", "pobi.woni"})
     void 영어가_아닌_이름_테스트(String candidate) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(candidate))
