@@ -23,8 +23,8 @@ public class Car {
         this.moveCount++;
     }
 
-    public boolean isForwardMovable() {
-        return Randoms.pickNumberInRange(0, 9) >= MINIMUM_MOVE_VALUE;
+    public boolean isForwardMovable(int randomNumber) {
+        return randomNumber >= MINIMUM_MOVE_VALUE;
     }
 
     public boolean isMoveCountHigher(int maxNum) {
