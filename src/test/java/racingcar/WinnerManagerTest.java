@@ -1,8 +1,7 @@
 package racingcar;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +14,7 @@ public class WinnerManagerTest {
     private List<Car> cars;
     private WinnerManager winnerManager;
 
-    @AfterEach
+    @BeforeEach
     void setup() {
         car1 = new Car("pobi");
         car2 = new Car("woni");
