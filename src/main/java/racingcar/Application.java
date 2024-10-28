@@ -10,8 +10,13 @@ public class Application {
     static int repeat = 0;
 
     public static void main(String[] args) {
-        getCarNames();
-        getRepeatNum();
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String names = Console.readLine();
+        getCarNames(names);
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String repeatStr = Console.readLine();
+        getRepeatNum(repeatStr);
 
         System.out.println("\n실행 결과");
         while (repeat-- > 0) {
@@ -22,10 +27,7 @@ public class Application {
         System.out.println("최종 우승자 : "+getWinner());
     }
 
-    public static void getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String names = Console.readLine();
-
+    public static void getCarNames(String names) {
         if (!names.matches("^[a-zA-Z가-힣]+(,[a-zA-Z가-힣]+)*$")) {
             throw new IllegalArgumentException("잘못된 입력 값입니다: , 외의 구분자를 사용했습니다. 이름은 한글, 영문만으로 이루어져야 합니다.");
         }
@@ -42,9 +44,7 @@ public class Application {
         }
     }
 
-    public static void getRepeatNum() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String repeatStr = Console.readLine();
+    public static void getRepeatNum(String repeatStr) {
         try {
             repeat = Integer.parseInt(repeatStr);
         }
