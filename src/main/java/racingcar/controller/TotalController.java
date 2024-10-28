@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.controller.constant.RaceRule;
 import racingcar.domain.Race;
 import racingcar.domain.Registration;
 import racingcar.service.race.RaceStarterService;
@@ -48,7 +49,7 @@ public class TotalController {
     }
 
     private void allLapUpdate(Race race) {
-        while (!race.getLapLefts().equals(0L)) {
+        while (!race.getLapLefts().equals(RaceRule.LAST_LAP.get())) {
             oneLapUpdate();
         }
     }
