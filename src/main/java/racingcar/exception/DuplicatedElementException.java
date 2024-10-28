@@ -1,4 +1,4 @@
 package racingcar.exception;
 
-public class DuplicatedElementException extends RuntimeException{
+public class DuplicatedElementException extends RuntimeException {
 }

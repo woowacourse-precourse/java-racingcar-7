@@ -12,6 +12,7 @@ public class CarRacingController {
 
     public void startRace(final List<String> names, final int moveForwardTryCount) {
         List<RacingCar> racingCars = names.stream()
+                .map(String::trim)
                 .map(RacingCar::new)
                 .toList();
 

@@ -5,19 +5,24 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import racingcar.exception.DuplicatedCarNameException;
 import racingcar.exception.DuplicatedElementException;
+import racingcar.exception.NonParsableIntegerException;
 import racingcar.exception.NonPositiveNumberException;
+import racingcar.exception.NonPositiveTryCountException;
 
 public class RacingCarInputView {
+
+    private static final String CAR_NAMES_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String TRY_COUNT_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
     public static List<String> inputCarNames() {
         List<String> carNames;
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(CAR_NAMES_INPUT_MESSAGE);
         String input = Console.readLine();
 
-        carNames = Arrays.stream(input.split(",")).toList();
-        Validator.validateCarNames(carNames);
+        carNames = parseCarNames(input);
 
         return carNames;
     }
@@ -25,25 +30,38 @@ public class RacingCarInputView {
     public static int inputTryCount() {
         int tryCount;
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(TRY_COUNT_INPUT_MESSAGE);
         String input = Console.readLine();
 
-        tryCount = parseInt(input);
-        Validator.validateTryCount(tryCount);
+        tryCount = parseTryCount(input);
 
         return tryCount;
     }
 
-    private static int parseInt(String numberStr) {
-        int result;
+    private static List<String> parseCarNames(String input) {
+        List<String> carNames;
+
+        carNames = Arrays.stream(input.split(","))
+                .map(String::trim)
+                .toList();
+
+        Validator.validateCarNames(carNames);
+
+        return carNames;
+    }
+
+    private static int parseTryCount(String tryCountInput) {
+        int tryCount;
 
         try {
-            result = Integer.parseInt(numberStr);
+            tryCount = Integer.parseInt(tryCountInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("int형으로 변환할 수 없습니다.");
+            throw new NonParsableIntegerException();
         }
 
-        return result;
+        Validator.validateTryCount(tryCount);
+
+        return tryCount;
     }
 
     private static class Validator {
@@ -52,15 +70,15 @@ public class RacingCarInputView {
             try {
                 validateDuplicated(list);
             } catch (DuplicatedElementException e) {
-                throw new IllegalArgumentException("중복되지 않은 이름으로 입력해주세요.");
+                throw new DuplicatedCarNameException();
             }
         }
 
-        private static void validateTryCount(int tryCount) {
+        public static void validateTryCount(int tryCount) {
             try {
                 validatePositiveNumber(tryCount);
             } catch (NonPositiveNumberException e) {
-                throw new IllegalArgumentException("시도 횟수는 양수만을 허용합니다.");
+                throw new NonPositiveTryCountException();
             }
         }
 
