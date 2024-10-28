@@ -14,9 +14,7 @@ public class Attempts {
     private void validateNumber(String inputAttemptsNumber){
         try{
             int inputAttempts = Integer.parseInt(inputAttemptsNumber);
-            if(inputAttempts < MIN_ROUND){
-                throw new IllegalArgumentException(INVALID_ATTEMPTS_ERROR_MESSAGE);
-            }
+            checkInputRange(inputAttempts);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INVALID_ATTEMPTS_ERROR_MESSAGE);
         }
@@ -30,5 +28,11 @@ public class Attempts {
 
     public boolean isEndGame() {
         return remainAttempts > 0;
+    }
+
+    private void checkInputRange(int inputAttempts){
+        if(inputAttempts < MIN_ROUND){
+            throw new IllegalArgumentException(INVALID_ATTEMPTS_ERROR_MESSAGE);
+        }
     }
 }
