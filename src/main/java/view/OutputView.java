@@ -8,11 +8,10 @@ public class OutputView {
 
     private final static char RACE_STEP = '-';
 
-    public void showRaceStart() {
+    public void showRaceStarter() {
         System.out.println("실행 결과");
     }
 
-    // TODO: view에서 car에 접근하는건 별로 인듯?
     public void showRaceStatus(List<Car> cars) {
         for (Car car : cars) {
             showCarName(car);

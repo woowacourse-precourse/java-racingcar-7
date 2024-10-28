@@ -29,16 +29,10 @@ public class CarsHandler {
     }
 
     public List<Car> getWinners() {
-        // TODO: max 비교할때 Java api 활용 하고싶지만 일단 구현
-        int maxStep = 0;
-        for (Car car : cars) {
-            maxStep = Math.max(maxStep, car.getStep());
-        }
-
-        final int finalMaxStep = maxStep;
+        int maxStep = cars.stream().mapToInt(Car::getStep).max().orElse(0);
 
         return cars.stream()
-                .filter(car -> car.getStep() == finalMaxStep)
+                .filter(car -> car.getStep() == maxStep)
                 .collect(Collectors.toList());
     }
 

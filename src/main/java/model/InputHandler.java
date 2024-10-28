@@ -1,13 +1,15 @@
 package model;
 
+import java.util.Arrays;
+
 public class InputHandler {
 
-    // TODO: 같은 자동차 이름 처리에 대한 생각
     public String[] splitCarNames(String input) {
-        String regex = "^([a-zA-Z0-9]{1,5})(,[a-zA-Z0-9]{1,5})*$";
+        String regex = "^([a-zA-Z0-9가-힣]{1,5})(,[a-zA-Z0-9가-힣]{1,5})*$";
         checkInput(input, regex);
 
-        return input.split(",");
+        String[] splitted = input.split(",");
+        return Arrays.stream(splitted).distinct().toArray(String[]::new);
     }
 
     public int toInt(String input) {

@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
 
     private final static int MOVE_STEP = 1;
-    private final static int RANDOM = 4;
+    private final static int MIN_MOVEABLE_VALUE = 4;
 
     private final String name;
     private int step;
@@ -18,7 +18,7 @@ public class Car {
     public void randomMove() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
 
-        if (isMoreThanFour(randomNumber)) {
+        if (isMoveable(randomNumber)) {
             step += MOVE_STEP;
         }
     }
@@ -31,8 +31,8 @@ public class Car {
         return step;
     }
 
-    private boolean isMoreThanFour(int num) {
-        return num >= RANDOM;
+    private boolean isMoveable(int num) {
+        return num >= MIN_MOVEABLE_VALUE;
     }
 
 }
