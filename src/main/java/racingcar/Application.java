@@ -3,14 +3,14 @@ package racingcar;
 
 import racingcar.controller.RacingController;
 import racingcar.dto.RaceRequest;
-import racingcar.model.RacingcarModel;
+import racingcar.model.RacingModel;
 import racingcar.view.RacingView;
 
 
 public class Application {
 
     public static void main(String[] args) {
-        RacingcarModel model = new RacingcarModel();
+        RacingModel model = new RacingModel();
         RacingView view = new RacingView();
         RacingController controller = new RacingController(model, view);
 

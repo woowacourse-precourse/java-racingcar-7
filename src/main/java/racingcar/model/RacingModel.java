@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class RacingcarModel {
+public class RacingModel {
 
     private final List<Car> cars = new ArrayList<>();
 

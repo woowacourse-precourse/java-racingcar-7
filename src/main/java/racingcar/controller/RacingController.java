@@ -2,16 +2,16 @@ package racingcar.controller;
 
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.model.RacingcarModel;
+import racingcar.model.RacingModel;
 import racingcar.view.RacingView;
 
 public class RacingController {
 
-    private RacingcarModel model;
+    private RacingModel model;
     private RacingView view;
 
     // Controller 생성자 (Model과 View를 주입받음)
-    public RacingController(RacingcarModel model, RacingView view) {
+    public RacingController(RacingModel model, RacingView view) {
         this.model = model;
         this.view = view;
     }
