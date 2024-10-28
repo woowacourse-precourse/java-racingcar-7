@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.enums.Delimiter;
 import racingcar.enums.ErrorText;
 
 import java.util.LinkedHashMap;
@@ -13,7 +14,7 @@ public class InputParser {
 
     public LinkedHashMap<Car, Integer> splitByComma() {
         LinkedHashMap<Car, Integer> result = new LinkedHashMap<>();
-        for (String carName : carNames.split(",")) {
+        for (String carName : carNames.split(Delimiter.COMMA.getDelimiter())) {
             if (isDuplicateCarName(result, carName)) {
                 throw new IllegalArgumentException(ErrorText.DUPLICATE_CAR_NAME.getErrorText());
             }
