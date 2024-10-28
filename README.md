@@ -186,6 +186,7 @@
     - RaceProcessController // 로직 수행 관련 컨트롤러
     - RaceViewController // 입출력 관련 컨트롤러
 - DTO
+    - RaceFinalWinnerDTO // 최종 우승자 관련 DTO
     - RaceInfoDTO // 로직 수행 관련 DTO
     - RaceResultDTO // 레이스 결과 입출력 관련 DTO
 - Domain
