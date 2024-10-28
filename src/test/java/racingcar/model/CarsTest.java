@@ -33,11 +33,11 @@ class CarsTest {
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void 값이_4이상이면_전진한다(int value) {
+    void 값이_4이상이면_전진한다(int movableValue) {
         List<String> input = List.of("pobi");
         Cars cars = Cars.valueOf(input);
 
-        ValueGenerator moveGenerator = () -> value;
+        ValueGenerator moveGenerator = () -> movableValue;
         cars.moveEachRandomly(moveGenerator);
 
         assertThat(cars.getExecutionResult()).isEqualTo(List.of("pobi : -"));
@@ -45,11 +45,11 @@ class CarsTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
-    void 값이_4미만이면_이동하지_않는다(int value) {
+    void 값이_4미만이면_이동하지_않는다(int unmovableValue) {
         List<String> input = List.of("pobi");
         Cars cars = Cars.valueOf(input);
 
-        ValueGenerator stayGenerator = () -> value;
+        ValueGenerator stayGenerator = () -> unmovableValue;
         cars.moveEachRandomly(stayGenerator);
 
         assertThat(cars.getExecutionResult()).isEqualTo(List.of("pobi : "));
