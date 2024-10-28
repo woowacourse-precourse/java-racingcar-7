@@ -35,6 +35,7 @@ public class Racing {
             carStatus += car.formatDistance();
             carStatus += "\n";
         }
+
         return carStatus;
     }
 

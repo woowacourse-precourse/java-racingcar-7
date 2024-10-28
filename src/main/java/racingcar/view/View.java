@@ -24,21 +24,25 @@ public class View {
 
     public String[] parseNames(String input) {
         String[] nameList = input.split(CARNAME_SEPARATOR);
+
         for (String name : nameList) {
             if (name.length() > 5) {
                 throw new IllegalArgumentException();
             }
         }
+
         return nameList;
     }
 
     public Integer parseRepeatCount(String input) {
         Integer repeatCount;
+
         try {
             repeatCount = Integer.parseInt(input);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+
         return repeatCount;
     }
 }

@@ -31,6 +31,7 @@ public class Car {
 
     public static ArrayList<String> parseWinnerNames(ArrayList<Car> cars) {
         Car farthestCar = cars.getFirst();
+
         for (Car car : cars) {
             if (car.isFarther(farthestCar)) {
                 farthestCar = car;
@@ -45,6 +46,7 @@ public class Car {
                 names.add(car.name);
             }
         }
+
         return names;
     }
 }
