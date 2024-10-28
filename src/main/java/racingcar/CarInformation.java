@@ -19,8 +19,10 @@ public class CarInformation {
             if (!name.matches("^[a-zA-Z]+$")) {
                 throw new IllegalArgumentException("자동차 이름은 영문으로 입력해주세요.");
             }
+            if(carNameAndScore.containsKey(name)) {
+                throw new IllegalArgumentException("자동차 이름은 중복되지 않아야 합니다.");
+            }
             carNameAndScore.put(name, 0);
-
         }
         return carNameAndScore;
     }
