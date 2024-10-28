@@ -12,11 +12,11 @@ public class GameRepositoryTest {
     @Test
     void 자동차_이름_설정_테스트() {
         // given
-        List<String> names = List.of("tokki", "pobi", "nori");
+        String names = "tokki,pobi,nori";
 
         // when
-        gameRepository.setCarName(names);
-        List<String> allNames = gameRepository.getCarNames();
+        gameRepository.setCarsNames(names);
+        List<String> allNames = gameRepository.getAllNames();
 
         // then
         assertThat(allNames).containsExactly("tokki", "pobi", "nori");

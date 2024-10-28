@@ -1,36 +1,68 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
+import racingcar.dto.GameDto;
 
 public class GameRepository {
 
-    private List<String> names = new ArrayList<>();
-    private final List<String> winner = new ArrayList<>();
-    private int round;
+    private final GameDto gameDto = new GameDto();
 
-    public void setCarName(List<String> splitNames) {
-        this.names = splitNames;
+    public void setCarsNames(String input) {
+
+        try {
+            inputValidator(input);
+            String delimiter = ",";
+            List<String> splitNames = List.of(input.split(delimiter));
+            nameLengthValidator(splitNames);
+            gameDto.setCarName(splitNames);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+
+
     }
 
-    public List<String> getCarNames() {
-        return this.names;
+    public void setNumberOfRounds(String input) {
+
+        try {
+            inputValidator(input);
+            int round = Integer.parseInt(input);
+            gameDto.setRound(round);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+
     }
 
-    public void setRound(int input) {
-        this.round = input;
+    public int roundOfGame() {
+        return gameDto.getRound();
     }
 
-    public int getRound() {
-        return this.round;
+    public List<String> getAllNames() {
+        return gameDto.getCarNames();
     }
 
-    public void setWinner(String input) {
-        this.winner.add(input);
+    public void selectWinner(String input) {
+        gameDto.setWinner(input);
     }
 
-    public List<String> getWinner() {
-        return this.winner;
+    public List<String> findWinner() {
+        return gameDto.getWinner();
     }
+
+    private void inputValidator(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("입력값이 비어있습니다.");
+        }
+    }
+
+    private void nameLengthValidator(List<String> names) {
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("ERROR : 5자 이하의 이름만 입력 가능합니다.");
+            }
+        }
+    }
+
 
 }

@@ -51,7 +51,7 @@ public class GameServiceTest {
 
         //when & then
         assertThrows(IllegalArgumentException.class, () -> {
-            gameService.setCarsNames(invalidInput);
+            gameService.gameNameSet(invalidInput);
         });
     }
 
@@ -62,7 +62,7 @@ public class GameServiceTest {
 
         //when&then
         assertThrows(IllegalArgumentException.class, () -> {
-            gameService.setNumberOfRounds(invalidInput);
+            gameService.gameRoundSet(invalidInput);
         });
     }
 
@@ -74,7 +74,7 @@ public class GameServiceTest {
 
         //when & then
         assertThrows(IllegalArgumentException.class, () -> {
-            gameService.setCarsNames(invalidInput);
+            gameService.gameNameSet(invalidInput);
         });
     }
 
@@ -85,7 +85,7 @@ public class GameServiceTest {
 
         //when&then
         assertThrows(IllegalArgumentException.class, () -> {
-            gameService.setNumberOfRounds(invalidInput);
+            gameService.gameRoundSet(invalidInput);
         });
     }
 
@@ -96,7 +96,7 @@ public class GameServiceTest {
 
         //when & then
         assertThrows(IllegalArgumentException.class, () -> {
-            gameService.setCarsNames(invalidInput);
+            gameService.gameNameSet(invalidInput);
         });
     }
 
