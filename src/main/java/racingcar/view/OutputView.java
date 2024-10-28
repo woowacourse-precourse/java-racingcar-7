@@ -29,11 +29,11 @@ public class OutputView {
 	}
 
 	public void printWinners(List<WinnerResponse> winnerResponses) {
-		String winners = winnerResponses.stream()
+		String winnersNames = winnerResponses.stream()
 			.map(WinnerResponse::name)
 			.collect(Collectors.joining(", "));
 
-		System.out.print("최종 우승자 : " + winners);
+		System.out.print("최종 우승자 : " + winnersNames);
 	}
 
 	private String buildMovementString(CarMovementResponse carMovementResponse) {
