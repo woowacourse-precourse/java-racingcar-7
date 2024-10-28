@@ -1,0 +1,18 @@
+package racingcar.repository;
+
+import java.util.ArrayList;
+import java.util.List;
+import racingcar.domain.Car;
+
+public class RacingcarRepositoryImpl implements RacingcarRepository {
+    private final List<Car> cars;
+
+    public RacingcarRepositoryImpl() {
+        cars = new ArrayList<>();
+    }
+
+    @Override
+    public void save(Car car) {
+        cars.add(car);
+    }
+}
