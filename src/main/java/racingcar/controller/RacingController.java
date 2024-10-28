@@ -37,7 +37,5 @@ public class RacingController {
         if (winnerNames.size() != 1) {
             OutputView.printJointWinnerMessage(winnerNames);
         }
-
-
     }
 }

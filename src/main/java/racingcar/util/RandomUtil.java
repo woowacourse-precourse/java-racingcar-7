@@ -18,7 +18,6 @@ public class RandomUtil {
         return maxValue;
     }
 
-
     public static List<String> getWinnersByMoveCount(List<Integer> moveCounts, int MoveCount, List<String> carNames) {
         List<String> winnerNames = new ArrayList<>();
         for (int i = 0; i < carNames.size(); i++) {
