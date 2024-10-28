@@ -23,7 +23,7 @@ public class RacingGame {
 		Cars cars = new Cars(carNames.stream().map(name -> new Car(name, carValidator)).toList());
 
 		Output.printRequestTurnCount();
-		Turn turn = new Turn(Input.readTurn());
+		Turn turn = new Turn(Input.readTurn(), turnValidator);
 
 		move(cars, turn);
 
