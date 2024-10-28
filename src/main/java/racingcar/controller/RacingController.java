@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarFactory;
 import racingcar.model.Judge;
@@ -23,24 +23,24 @@ public class RacingController {
     }
 
     public void startGame() {
-        String carNames = inputView.inputCarNames();
-
-        ArrayList<Car> carList = carFactory.createCar(carNames);
-
+        List<Car> carList = carFactory.createCar(inputView.inputCarNames());
         Long movingCount = inputView.inputMovingCount();
 
         outputView.printRacingResultTitle();
 
         for (int i = 0; i < movingCount; i++) {
-            for (Car car : carList) {
-                if (judge.judgeGoOrStop(RandomNumberGenerator.generateRandomNumber())) {
-                    car.move();
-                }
-            }
-
+            moveCars(carList);
             outputView.printRacingResult(carList);
         }
 
         outputView.printWinners(judge.getWinners(carList));
+    }
+
+    private void moveCars(List<Car> carList) {
+        carList.forEach(car -> {
+            if (judge.judgeGoOrStop(RandomNumberGenerator.generateRandomNumber())) {
+                car.move();
+            }
+        });
     }
 }
