@@ -7,8 +7,16 @@ import racingcar.View.StartView;
 
 public class InputController {
 
+
     public static GameCars setCars() {
         String carInput = StartView.inputCarInfo();
+        validateInput(carInput);
+        String[] carNames = carInput.split(",");
+        return new GameCars(carNames);
+    }
+
+    // 테스트용 코드
+    public static GameCars setCars(String carInput) {
         validateInput(carInput);
         String[] carNames = carInput.split(",");
         return new GameCars(carNames);
