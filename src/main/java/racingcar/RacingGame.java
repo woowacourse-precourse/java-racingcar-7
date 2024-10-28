@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,6 +12,7 @@ public class RacingGame {
 
     private final int round;
     private List<Car> racingCars;
+    private List<RacingGameRecord> records = new ArrayList<>();
 
     public RacingGame(int round) {
         validateRound(round);
@@ -38,10 +40,12 @@ public class RacingGame {
     public void start() {
         int count = 0;
         while (count++ < round) {
+            int currentCount = count;
             racingCars
                     .forEach(car -> {
                         int distance = Randoms.pickNumberInRange(0, 9);
                         car.moveForward(distance);
+                        this.records.add(new RacingGameRecord(currentCount, distance, car));
                     });
         }
     }
@@ -54,5 +58,9 @@ public class RacingGame {
         return racingCars.stream()
                 .filter(car -> winner.currentLocation() == car.currentLocation())
                 .collect(Collectors.toList());
+    }
+
+    public List<RacingGameRecord> getRecords() {
+        return this.records;
     }
 }
