@@ -8,7 +8,7 @@ public class IntConverter {
     private IntConverter() {
     }
 
-    public static long StringToInt(String string) {
+    public static int StringToInt(String string) {
         int parsedLong;
 
         try {

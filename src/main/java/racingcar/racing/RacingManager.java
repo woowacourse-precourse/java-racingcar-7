@@ -22,15 +22,25 @@ public class RacingManager {
     }
 
     public void startRacing() {
+        List<Car> cars = inputCarName();
+        int tryCount = inputTryCount();
+        startRaeSimulate(cars, tryCount);
+    }
+
+    private List<Car> inputCarName() {
         println(CAR_NAME_PROMPT);
         List<String> carNames = SplitCarNames(InputString());
-        List<Car> cars = carNames.stream()
+        return carNames.stream()
                 .map(carFactory::createOperation)
                 .toList();
+    }
 
+    private int inputTryCount() {
         println(TRY_COUNT_PROMPT);
-        long tryCount = IntConverter.StringToInt(InputString());
+        return IntConverter.StringToInt(InputString());
+    }
 
+    private void startRaeSimulate(List<Car> cars, int tryCount) {
         raceSimulator.startRace(cars, tryCount);
         print(WINNER_PROMPT + raceSimulator.getRacingWinner(cars));
     }
