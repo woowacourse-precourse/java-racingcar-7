@@ -10,6 +10,27 @@ import java.util.Map;
 import java.util.Collections;
 
 public class Application {
+    public static void racingGame() {
+        List<String> names = getRacingCarNames();
+        int trial = getNumberOfTrial();
+
+        Map<String, Integer> racing_progress = new HashMap<String, Integer>();
+
+        // Initialize
+        for (String name : names) {
+            racing_progress.put(name, 0);
+        }
+
+        for (int i = 0; i < trial; i++) {
+            for (String name : names) {
+                tryMoveForward(name, racing_progress);
+            }
+            printRacingProgress(racing_progress);
+            System.out.println();
+        }
+        printRaceWinner(racing_progress);
+    }
+
     private static List<String> getRacingCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         try {
@@ -53,6 +74,6 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
+        racingGame();
     }
 }
