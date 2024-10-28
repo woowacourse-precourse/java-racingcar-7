@@ -10,15 +10,18 @@ import java.util.List;
 
 public class RaceGameController {
     private static final int POSITION_INITIALIZE = 0;
-    private final RaceGame raceGame;
-    private final GameView gameView;
+    private RaceGame raceGame;
+    private GameView gameView;
 
     public RaceGameController() {
         this.gameView = new GameView();
+        this.raceGame = null;
+    }
+
+    private void createRaceGame() {
         String[] carNames = getCarNames();
         List<Car> cars = getCars(carNames);
         int roundCount = getRoundCount();
-
         this.raceGame = new RaceGame(cars, roundCount);
     }
 
@@ -59,7 +62,7 @@ public class RaceGameController {
         }
     }
 
-    public void startRace() {
+    private void startRace() {
         gameView.displayRoundStart();
         for (int i = 0; i < raceGame.getRoundCount(); i++) {
             raceGame.playRound();
@@ -67,11 +70,12 @@ public class RaceGameController {
         }
     }
 
-    public void announceWinners() {
+    private void announceWinners() {
         gameView.displayWinners(raceGame.getWinners());
     }
 
     public void run() {
+        createRaceGame();
         startRace();
         announceWinners();
     }
