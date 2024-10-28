@@ -13,7 +13,7 @@ public class Round {
     public Round(final String maxRound) {
         this.maxRound = getMaxRound(maxRound);
         this.currRound = 0;
-        this.startTime = LocalDateTime.now();4
+        this.startTime = LocalDateTime.now();
     }
 
     private static int getMaxRound(final String inputRound) {
