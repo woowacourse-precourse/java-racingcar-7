@@ -26,7 +26,7 @@ class ValidatorTest {
     @DisplayName("자동차 이름에 특수 문자가 포함된 경우 예외 발생")
     public void testCarNameWithSpecialCharacters() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Validator.validateCarNames("Tom, Jerry@, Spike");
+            Validator.validateCarNames("Tom, mike@, Spike");
         });
     }
 
@@ -42,7 +42,7 @@ class ValidatorTest {
     @DisplayName("자동차 이름에 중간 공백이 포함된 경우 예외 발생")
     public void testCarNameWithSpace() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Validator.validateCarNames("Tom, Jerry Kim, Spike");
+            Validator.validateCarNames("Tom, min j, Spike");
         });
     }
 
