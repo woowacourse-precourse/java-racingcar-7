@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.game.GameResult;
+import racingcar.dto.response.GameResult;
 import racingcar.dto.response.Winners;
 
 public interface OutputView {

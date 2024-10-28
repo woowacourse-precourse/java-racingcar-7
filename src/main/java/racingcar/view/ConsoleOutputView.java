@@ -1,7 +1,8 @@
 package racingcar.view;
 
 import racingcar.constant.ViewConstants;
-import racingcar.domain.game.GameResult;
+import racingcar.dto.response.GameResult;
+import racingcar.dto.response.PlayerResult;
 import racingcar.dto.response.Winners;
 
 public class ConsoleOutputView implements OutputView {
@@ -14,7 +15,7 @@ public class ConsoleOutputView implements OutputView {
         System.out.println();
     }
 
-    private void displayStatus(GameResult.PlayerResult result) {
+    private void displayStatus(PlayerResult result) {
         String position = ViewConstants.FORWARD_SYMBOL.repeat(result.position());
         System.out.printf(ViewConstants.POSITION_FORMAT,
                 result.name(), position);

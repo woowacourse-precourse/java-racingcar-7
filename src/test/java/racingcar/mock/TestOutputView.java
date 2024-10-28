@@ -2,7 +2,7 @@ package racingcar.mock;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.game.GameResult;
+import racingcar.dto.response.GameResult;
 import racingcar.dto.response.Winners;
 import racingcar.view.OutputView;
 

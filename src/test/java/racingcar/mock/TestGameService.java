@@ -1,8 +1,9 @@
 package racingcar.mock;
 
 import java.util.List;
-import racingcar.domain.game.GameResult;
 import racingcar.dto.request.GameStartRequest;
+import racingcar.dto.response.GameResult;
+import racingcar.dto.response.PlayerResult;
 import racingcar.dto.response.Winners;
 import racingcar.service.GameService;
 
@@ -24,8 +25,8 @@ public class TestGameService extends GameService {
     public GameResult playRound() {
         currentRound++;
         return new GameResult(List.of(
-                new GameResult.PlayerResult("pobi", currentRound),
-                new GameResult.PlayerResult("jun", currentRound)
+                new PlayerResult("pobi", currentRound),
+                new PlayerResult("jun", currentRound)
         ));
     }
 

@@ -1,8 +1,8 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.domain.game.GameResult;
 import racingcar.dto.request.GameStartRequest;
+import racingcar.dto.response.GameResult;
 import racingcar.dto.response.Winners;
 import racingcar.exception.game.GameException;
 import racingcar.service.GameService;
