@@ -11,7 +11,7 @@ public class InputViewTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"", "  "})
-    void 입력값_비어있거나_빈_공백인_경우_예외가_발생한다(String input) {
+    void 빈값이나_공백을_입력하면_예외가_발생한다(String input) {
         assertThatThrownBy(() -> inputView.validateNotBlank(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }

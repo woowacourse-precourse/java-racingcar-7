@@ -54,7 +54,7 @@ public class CarsTest {
     }
 
     @Test
-    void 자동차_이름_양_옆의_공백을_제거하여_Car_객체에_저장한다() {
+    void 자동차_이름_양옆_공백이_제거된_상태로_저장된다() {
         assertThat(pobi.getName()).isEqualTo("pobi");
         assertThat(woni.getName()).isEqualTo("woni");
         assertThat(jun.getName()).isEqualTo("jun");
