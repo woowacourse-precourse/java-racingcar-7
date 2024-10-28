@@ -12,11 +12,12 @@ public class RacingCarOutput {
     }
 
     public String convertToDash(int length) {
-        StringBuilder sb = new StringBuilder();
-        for (int i=0; i<length; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
+//        StringBuilder sb = new StringBuilder();
+//        for (int i=0; i<length; i++) {
+//            sb.append("-");
+//        }
+//        return sb.toString();
+        return "-".repeat(length);
     }
 
     public void printFinalWinners(List<String> winners) {

@@ -14,6 +14,10 @@ public class RacingCarInput {
 
     public int getCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        int count = Integer.parseInt(Console.readLine());
+        if (count < 1) {
+            throw new IllegalArgumentException("시도할 횟수는 1번 이상이어야 합니다.");
+        }
+        return count;
     }
 }
