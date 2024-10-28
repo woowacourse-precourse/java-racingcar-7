@@ -61,6 +61,39 @@ public class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 1~5자의 소문자 알파벳으로 이루어져야 합니다.");
     }
+
+    @Test
+    void validateRounds_throwsExceptionWhenInputIsEmpty() {
+        assertThatThrownBy(() -> inputValidator.validateRounds(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이동횟수는 공백일 수 없습니다.");
+    }
+
+    @Test
+    void validateRounds_throwsExceptionWhenInputIsNotANumber() {
+        assertThatThrownBy(() -> inputValidator.validateRounds("abc"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이동 횟수는 숫자여야 합니다.");
+    }
+
+    @Test
+    void validateRounds_throwsExceptionWhenInputIsLessThanOne() {
+        assertThatThrownBy(() -> inputValidator.validateRounds("0"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이동 횟수는 1 이상 100 이하의 숫자여야 합니다.");
+    }
+
+    @Test
+    void validateRounds_throwsExceptionWhenInputIsMoreThanHundred() {
+        assertThatThrownBy(() -> inputValidator.validateRounds("101"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이동 횟수는 1 이상 100 이하의 숫자여야 합니다.");
+    }
+
+    @Test
+    void validateRounds_passesWhenInputIsValid() {
+        inputValidator.validateRounds("5"); // 예외가 발생하지 않으면 성공
+    }
 }
 
 
