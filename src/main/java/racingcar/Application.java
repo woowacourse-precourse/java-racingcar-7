@@ -15,7 +15,7 @@ public class Application {
                 .collect(Collectors.toList());
         RacingGame game = new RacingGame(cars);
         game.executeRace(attempts);
-        // TODO: 추가 구현
+        game.announceWinner();
     }
 
     private static List<String> inputCarNames() {

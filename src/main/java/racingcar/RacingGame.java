@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int FORWARD_THRESHOLD = 4;
@@ -39,5 +40,22 @@ public class RacingGame {
                     "-".repeat(car.getPosition()));
         }
         System.out.println();
+    }
+
+    public void announceWinner() {
+        String winners = findWinners().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : " + winners);
+    }
+
+    private List<Car> findWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 }
