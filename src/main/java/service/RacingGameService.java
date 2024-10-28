@@ -18,7 +18,7 @@ public class RacingGameService {
     private final static int MAX_RANDOM_NUMBER = 9;
     private final static int STANDARD_NUMBER = 4;
 
-    public List<Car> splitCarsName(String carsName){
+    public List<Car> parseCarNames(String carsName){
         String[] names = carsName.split(",",-1);
         validationName(names);
         return Arrays.stream(names)
