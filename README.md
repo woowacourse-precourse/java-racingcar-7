@@ -4,7 +4,7 @@
 ### ✔️ getTryCount() : 경주할 라운드의 횟수를 입력받아 정수로 반환
 ### ✔️ printRoundResult() : 각 라운드의 결과를 출력
 ### ✔️ printWinner() : 우승자를 찾은 값을 입력받아 출력
-### ✔️ valicateDuplication() : 중복된 자동차 이름 중복 검증
+### ✔️ validateDuplication() : 중복된 자동차 이름 중복 검증
 
 ## ✅ Model 클래스 - Car
 ### ✔️ validateName() : 자동차의 이름이 1글자 이상인지 확인
