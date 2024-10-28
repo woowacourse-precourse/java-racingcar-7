@@ -25,6 +25,7 @@ public class OutputHandler {
         snapShots.stream()
                 .map(this::formatSnapshot)
                 .forEach(System.out::println);
+        System.out.println();
     }
 
     public void showWinners(Winners winners) {
