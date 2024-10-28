@@ -3,6 +3,8 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.service.RaceGame;
 
+import java.util.List;
+
 public class RaceController {
 
     private final RaceGame raceGame;
@@ -15,5 +17,14 @@ public class RaceController {
         for (int i = 0; i < count; i++) {
             raceGame.start();
         }
+    }
+
+    public void printWinningCar(){
+        List<Car> winningCar = raceGame.getWinningCar();
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < winningCar.size() - 1; i++) {
+            System.out.printf("%s, ", winningCar.get(i).getName());
+        }
+        System.out.println(winningCar.getLast().getName());
     }
 }
