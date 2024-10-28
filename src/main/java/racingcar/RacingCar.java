@@ -11,6 +11,7 @@ public class RacingCar {
 
     public void run() {
         inputCarName();
+        int tryTimes = inputTryTimes();
     }
 
     private void inputCarName() {
@@ -19,5 +20,11 @@ public class RacingCar {
         for (String carName : carNames) {
             cars.put(carName, 0);
         }
+    }
+
+    private int inputTryTimes() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryTimes = Integer.parseInt(Console.readLine());
+        return tryTimes;
     }
 }
