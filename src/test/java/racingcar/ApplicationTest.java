@@ -24,9 +24,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
     void 기능_테스트_다중_라운드() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -41,7 +38,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름_예외_테스트() {
+        assertThatThrownBy(() -> RacingGame.validateCarNames(List.of("pobi", "javaji")))
                 .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+    }
+
         );
     }
 
