@@ -26,7 +26,7 @@ public class RaceService {
 	public void runRace() {
 		for (int i = 0; i < attemptNumber.getAttemptNumber(); i++) {
 			race.raceOnce();
-			OutputView.raceStatus(race.getCars());
+			OutputView.raceResult(race.getCars());
 		}
 	}
 

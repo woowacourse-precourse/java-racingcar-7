@@ -12,6 +12,7 @@ public class RaceController {
 		String carNames = InputView.getCarNames();
 		int attemptNumber = InputView.getAttemptNumber();
 
+		OutputView.raceResultGuide();
 		this.raceService = new RaceService(Delimiter.COMMA, carNames, attemptNumber);
 		raceService.runRace();
 

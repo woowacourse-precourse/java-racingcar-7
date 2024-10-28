@@ -13,7 +13,11 @@ public class OutputView {
 		System.out.println("시도할 횟수는 몇 회인가요?");
 	}
 
-	public static void raceStatus(List<Car> cars) {
+	public static void raceResultGuide() {
+		System.out.println("\n실행 결과");
+	}
+
+	public static void raceResult(List<Car> cars) {
 		cars
 			.forEach(car -> System.out.println(car.getName() + " : " + "-".repeat(car.getPosition())));
 		System.out.println();
