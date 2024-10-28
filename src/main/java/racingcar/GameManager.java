@@ -5,6 +5,8 @@ public class GameManager {
     private static GameManager instance;
     private int endTurn;
 
+    CarManager carManager = CarManager.getInstance();
+
     private GameManager() {}
 
     public static GameManager getInstance() {
@@ -16,6 +18,7 @@ public class GameManager {
 
     public void setEndTurn(int endTurn) {
         this.endTurn = endTurn;
+        gameStart();
     }
 
     public void gameStart() {
@@ -23,10 +26,10 @@ public class GameManager {
             playSingleTurn();
             IOManager.printState();
         }
+        carManager.checkResult();
     }
 
     private void playSingleTurn() {
-        CarManager carManager = CarManager.getInstance();
         carManager.getRandomNumber();
     }
 }
