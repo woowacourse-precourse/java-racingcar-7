@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.message.ErrorMessage.BLANK_INPUT_ERROR;
-import static racingcar.message.ErrorMessage.CONTAINS_SPACE_ERROR;
+import static racingcar.message.ErrorMessage.*;
 
 public class ApplicationFailTest extends NsTest {
 
@@ -44,6 +43,16 @@ public class ApplicationFailTest extends NsTest {
                 assertThatThrownBy(() -> runException("pobi,java, 1"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(CONTAINS_SPACE_ERROR.getMessage())
+        );
+    }
+
+    @DisplayName("자동차 이름은 중복될 수 없다")
+    @Test
+    void namesDuplicateException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi,java, 52"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(NAME_DUPLICATE_ERROR.getMessage())
         );
     }
 
