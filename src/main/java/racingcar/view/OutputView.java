@@ -47,7 +47,7 @@ public class OutputView {
     }
 
     private String movementGraph(int movement) {
-        return "-".repeat(Math.max(0, movement));
+        return "-".repeat(movement);
     }
 
     public void displayWinner(int max, Cars cars, StringBuilder output) {
