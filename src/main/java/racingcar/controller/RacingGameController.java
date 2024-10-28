@@ -55,18 +55,22 @@ public class RacingGameController {
         }
     }
 
-    private Car getWinner() {
-        Car winner = cars.get(0);
-        for (Car car : cars) {
-            if (car.getPosition() > winner.getPosition()) {
-                winner = car;
-            }
-        }
-        return winner;
+    private List<Car> getWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 
     private void printWinner() {
-        Car winner = getWinner();
-        System.out.println("최종 우승자 : " + winner.getName());
+        List<Car> winners = getWinners();
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : " + winnerNames);
     }
 }

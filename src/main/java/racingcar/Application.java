@@ -13,5 +13,8 @@ public class Application {
 
         // 시도 횟수 입력 + 검증
         int attemptCount = controller.getAttemptCount();
+
+        //레이스 시작
+        controller.startRace(attemptCount);
     }
 }
