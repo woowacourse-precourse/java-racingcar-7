@@ -8,17 +8,22 @@ import racingcar.view.OutputView;
 import java.util.List;
 
 public class RaceService {
-    private OutputView outputView = new OutputView();
+    private static final int MAX_CALL_LIMIT = 1000;
 
-    public RacingCarController controller = new RacingCarController();
-
-    public void runRound(List<Car> cars){
+    public void runRound(List<Car> cars) {
+        // 최대 호출 수 체크
+        int callCount = 0;
         for (Car car : cars) {
-            if (shouldMoveForward(generateRandomDigit())){
+            if (shouldMoveForward(generateRandomDigit())) {
                 car.moveForward();
+            }
+            callCount++;
+            if (callCount > MAX_CALL_LIMIT) {
+                throw new RuntimeException("Exceeded maximum call limit!");
             }
         }
     }
+
 
     public boolean shouldMoveForward(int randomDigit) {
         return randomDigit >= 4;

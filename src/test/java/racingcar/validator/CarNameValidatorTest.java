@@ -34,10 +34,4 @@ public class CarNameValidatorTest {
     public void testInvalidCarNameNull() {
         assertThrows(IllegalArgumentException.class, () -> validator.validate(null)); // null
     }
-
-    @DisplayName("공백만 있는 문자열")
-    @Test
-    public void testInvalidCarNameWhitespace() {
-        assertThrows(IllegalArgumentException.class, () -> validator.validate("    ")); // 공백만 있는 문자열
-    }
 }

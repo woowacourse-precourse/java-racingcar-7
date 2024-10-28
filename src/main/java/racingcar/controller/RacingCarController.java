@@ -25,13 +25,14 @@ public class RacingCarController {
         attemptCountValidator.validate(attemptCountString);
         final int attemptCount = Integer.parseInt(attemptCountString);
 
-        raceService.controller.startGame(attemptCount, cars, raceService);
+        startGame(attemptCount, cars);
         List<String> winnerNames = gameService.getWinners(cars);
         outputView.displayFinalResults(winnerNames);
     }
 
 
-    public void startGame(int attemptCount, List<Car> cars, RaceService raceService){
+    public void startGame(int attemptCount, List<Car> cars){
+        System.out.println("\n"+"실행 결과");
         for(int i = 0; i < attemptCount; i++){
             raceService.runRound(cars);
             outputView.displayRoundresults(cars);
