@@ -1,6 +1,12 @@
 package racingcar;
 
 public class ExceptionHandler {
+    public static void validateNullInputString (String inputString) {
+        if (inputString.length() == 0) {
+            throw new IllegalArgumentException("입력 값은 필수입니다.");
+        }
+    }
+    
     public static void validateCarNameLength (String name){
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5글자 이하로 입력해주세요. : " + name);
