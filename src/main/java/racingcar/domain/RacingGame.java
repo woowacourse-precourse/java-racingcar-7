@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private static final int MOVE_THRESHOLD = 4;
+    private static final int MOVE_FORWARD_CRITERION = 4;  // 전진 기준값 수정
     private final List<Car> cars;
     private final int totalRounds;
     private int currentRound;
@@ -21,18 +21,17 @@ public class RacingGame {
         if (carNames == null || carNames.length == 0) {
             throw new IllegalArgumentException("자동차가 없습니다.");
         }
+        validateCarNames(carNames);
         if (rounds <= 0) {
-            throw new IllegalArgumentException("라운드 수는 1 이상이어야 합니다.");
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
-        validateDuplicateNames(carNames);
     }
 
-    private void validateDuplicateNames(String[] carNames) {
+    private void validateCarNames(String[] carNames) {
         List<String> trimmedNames = Arrays.stream(carNames)
                 .map(String::trim)
                 .collect(Collectors.toList());
 
-        // 빈 이름 검증
         if (trimmedNames.stream().anyMatch(String::isEmpty)) {
             throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
         }
@@ -50,22 +49,18 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-
     public void playOneRound() {
         if (isGameFinished()) {
             return;
         }
 
         cars.forEach(car -> {
-            if (shouldMove()) {
+            int number = Randoms.pickNumberInRange(0, 9);
+            if (number >= MOVE_FORWARD_CRITERION) {
                 car.move();
             }
         });
         currentRound++;
-    }
-
-    private boolean shouldMove() {
-        return Randoms.pickNumberInRange(0, 9) >= MOVE_THRESHOLD;
     }
 
     public boolean isGameFinished() {
