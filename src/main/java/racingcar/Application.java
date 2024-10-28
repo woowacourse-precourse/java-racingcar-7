@@ -73,7 +73,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String numberOfGames = Console.readLine();
         int gameCount = Integer.parseInt(numberOfGames);
-        if(gameCount <= 0) throw new IllegalArgumentException();
+        if(gameCount <= 0) throw new IllegalArgumentException(); //음수 예외 처리
 
         System.out.println("\n실행 결과");
         for(int i = 0; i<gameCount; ++i){
