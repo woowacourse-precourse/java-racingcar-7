@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import racingcar.message.ExceptionMessages;
+import racingcar.message.ErrorMessage;
 import racingcar.exception.CarNameException;
 
 public class Car {
@@ -34,19 +34,19 @@ public class Car {
 
     private void validateEmptyName(String name) {
         if (name.isEmpty() || name.isBlank()) {
-            throw new CarNameException(ExceptionMessages.EMPTY_INPUT.getMessage());
+            throw new CarNameException(ErrorMessage.EMPTY_INPUT.getMessage());
         }
     }
 
     private void validateNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new CarNameException(ExceptionMessages.INVALID_NAME_LENGTH.getMessage());
+            throw new CarNameException(ErrorMessage.INVALID_NAME_LENGTH.getMessage());
         }
     }
 
     private void validateComma(String name) {
         if (name.contains(COMMA)) {
-            throw new CarNameException(ExceptionMessages.INVALID_COMMA_INPUT.getMessage());
+            throw new CarNameException(ErrorMessage.INVALID_COMMA_INPUT.getMessage());
         }
     }
 }

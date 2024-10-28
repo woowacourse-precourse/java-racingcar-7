@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
-import racingcar.message.ExceptionMessages;
+import racingcar.message.ErrorMessage;
 import racingcar.exception.CarNameException;
 import racingcar.util.MoveStrategy;
 
@@ -31,7 +31,7 @@ public class RacingCars implements Cars {
 
     private void validateEmpty(List<Car> cars) {
         if (cars == null || cars.isEmpty()) {
-            throw new CarNameException(ExceptionMessages.EMPTY_INPUT.getMessage());
+            throw new CarNameException(ErrorMessage.EMPTY_INPUT.getMessage());
         }
     }
 }
