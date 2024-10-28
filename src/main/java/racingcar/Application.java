@@ -1,7 +1,16 @@
 package racingcar;
 
+import static racingcar.view.inputCar;
+import static racingcar.view.inputCount;
+import static racingcar.view.printWinner;
+import static racingcar.controller.gameProgress;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        inputCar();
+        inputCount();
+        gameProgress();
+        printWinner();
     }
 }
