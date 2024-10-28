@@ -26,7 +26,7 @@ public class Attempts {
         }
     }
 
-    public boolean isEndGame() {
+    public boolean isNotEndGame() {
         return remainAttempts > 0;
     }
 

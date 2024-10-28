@@ -15,7 +15,7 @@ public class RaceController {
         CarRace carRace = new CarRace(cars, attempts);
         OutputView.printStartGame();
 
-        while (attempts.isEndGame()) {
+        while (attempts.isNotEndGame()) {
             carRace.runRace();
             OutputView.printCarPositions(cars.getCars());
             attempts.comsumeAttempt();
