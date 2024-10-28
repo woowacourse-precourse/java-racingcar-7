@@ -1,0 +1,43 @@
+package racingcar;
+
+import java.util.List;
+
+public class Cars {
+    private static final int DEFAULT_POSITION = 0;
+
+    private final List<Car> carList;
+
+    public Cars(List<Car> carList) {
+        this.carList = carList;
+    }
+
+    public static List<Car> createCars(List<String> carNames) {
+        return carNames.stream()
+                .map(Car::new)
+                .toList();
+    }
+
+    public void moveAllCars() {
+        carList.forEach(car -> car.move(Utils.generateRandomValue()));
+    }
+
+    private int findMaxPosition() {
+        return carList.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElse(DEFAULT_POSITION);
+    }
+
+    public List<Car> findWinner() {
+        int maxPosition = findMaxPosition();
+        return carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
+    }
+
+    public List<String> collectAllStatuses() {
+        return carList.stream()
+                .map(Car::getStatus)
+                .toList();
+    }
+}
