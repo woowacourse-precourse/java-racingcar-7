@@ -15,6 +15,7 @@ class Car {
 
 public class Application {
     static Car car_list[];
+    static int totalCount;
 
     public static void checkValid(String name) {
         if (name.length() > 5 || name.length() == 0) {
@@ -46,7 +47,13 @@ public class Application {
         saveCar(user_input);
     }
 
+    public static void inputCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        totalCount = Integer.parseInt(readLine());
+    }
+
     public static void main(String[] args) {
         inputCar();
+        inputCount();
     }
 }
