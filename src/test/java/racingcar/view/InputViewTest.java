@@ -11,4 +11,10 @@ public class InputViewTest {
         assertThatThrownBy(() -> InputView.validate(""))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 입력이_null일때_예외_발생() {
+        assertThatThrownBy(() -> InputView.validate(null))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
