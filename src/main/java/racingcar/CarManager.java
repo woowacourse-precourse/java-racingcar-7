@@ -1,7 +1,7 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class CarManager {
     private static CarManager instance;
@@ -22,5 +22,12 @@ public class CarManager {
 
     public void makeCarList(String carName) {
         carList.add(new Car(carName));
+    }
+
+    public void getRandomNumber() {
+        for (Car car : carList) {
+            int num = Randoms.pickNumberInRange(0, 9);
+
+        }
     }
 }
