@@ -13,6 +13,7 @@ public class RacingGameController {
     private final InputService inputService;
     private final OutputView outputView;
     private final CarList carList;
+    private CarService carService;
 
     public RacingGameController() {
         this.inputView = new InputView();
@@ -21,16 +22,20 @@ public class RacingGameController {
         this.carList = new CarList();
     }
 
-    public void run() {
+    public void initializeCarList() {
         String cars = inputView.inputCars();
         List<String> carNames = inputService.extractValidCarNames(cars);
         carList.setCarList(carNames);
 
-        CarService carService = new CarService(carList);
+        this.carService = new CarService(carList);
+    }
 
+    public int initializeCount() {
         int count = inputView.inputCount();
-        count = inputService.validateCount(count);
+        return inputService.validateCount(count);
+    }
 
+    public void runRace(int count) {
         System.out.println();
         System.out.println("실행 결과");
 
@@ -38,9 +43,21 @@ public class RacingGameController {
             carService.runRoundGame();
             outputView.displayCarsStatus(carList);
         }
+    }
 
+    public void displayResults() {
         List<String> winnerList = carService.getWinners();
         outputView.displayWinnerList(winnerList);
+    }
+
+    public void run() {
+        initializeCarList();
+        int count = initializeCount();
+
+        runRace(count);
+
+        displayResults();
+
         Console.close();
     }
 }
