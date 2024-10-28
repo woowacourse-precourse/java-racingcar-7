@@ -25,6 +25,23 @@ public class RacingGameWinnerTest extends NsTest {
         winningCars = new WinningCars(cars);
     }
 
+    @Test
+    @DisplayName("공동 우승자 출력 테스트")
+    void printJointWinnerOutputTest() {
+        Car car1 = new Car("kim");
+        Car car2 = new Car("jun");
+
+        car1.moveCar(GameConstants.MOVING_FORWARD);
+        car2.moveCar(GameConstants.MOVING_FORWARD);
+
+        cars.add(car1);
+        cars.add(car2);
+
+        winningCars = new WinningCars(cars);
+
+        assertEquals(MessageType.RESPONSE_FINAL_WINNER.getMessage() + winningCars.getWinnerNames(), MessageType.RESPONSE_FINAL_WINNER.getMessage() + " kim, jun");
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
