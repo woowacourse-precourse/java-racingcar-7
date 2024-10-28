@@ -5,7 +5,7 @@ public enum OutputMessage {
     TOTAL_RACING_ROUND("시도할 횟수는 몇 회인가요?"),
     RACE_START("====Start Race!===="),
     CELEBRATE_WIN("===우승을 축하합니다!==="),
-    PRESENT_WINNER("최종 우승자: ");
+    PRESENT_WINNER("최종 우승자 : ");
 
     private final String outputMessage;
 

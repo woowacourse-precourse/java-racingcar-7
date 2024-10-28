@@ -49,14 +49,25 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("0번 입력 시")
     void 시도횟수_0번일때() {
-        assertRandomNumberInRangeTest(
+        assertSimpleTest(
                 () -> {
-                    run("pobi,woni", "0");
-                    assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi");
-                },
-                MOVING_FORWARD, STOP
+                    run(" pobi,woni ", "0");
+                    assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi, woni");
+                }
         );
     }
+
+    @Test
+    @DisplayName("시도횟수 \\n 입력시")
+    void 시도횟수_엔터일때() {
+        assertSimpleTest(
+                () -> {
+                    run(" pobi,woni ", "\n");
+                    assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi, woni");
+                }
+        );
+    }
+
 
 
 }

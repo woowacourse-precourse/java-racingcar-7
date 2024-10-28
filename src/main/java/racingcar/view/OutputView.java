@@ -37,7 +37,7 @@ public class OutputView {
     public void printWinnerView(List<String> winners) {
         System.out.println(OutputMessage.CELEBRATE_WIN);
         System.out.print(OutputMessage.PRESENT_WINNER);
-        System.out.println(String.join(COMMA, winners));
+        System.out.println(String.join(COMMA + BLANK, winners));
     }
 
 }

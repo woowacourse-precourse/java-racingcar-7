@@ -23,6 +23,11 @@ public class Racing {
         outputView.printRaceStart();
 
         int count = 0;
+
+        if(totalRacingRound == 0) {
+            outputView.printRoundState(racingCars);
+        }
+
         while (count < totalRacingRound) {
             racingRoundService.racingRound(racingCars);
             outputView.printRoundState(racingCars);

@@ -23,6 +23,7 @@ public class CarNameService {
         Validator validator = Validator.getValidator();
 
         for (String carName : carNames.split(COMMA)) {
+            carName = carName.trim();
             validator.isValidName(carName); //유효성 검사
             racingCars.putIfAbsent(carName, 0);
         }
