@@ -1,7 +1,7 @@
 # java-racingcar-precourse
 # 구현 목록
 
-- [ ] 기능간 연결
+- [X] 기능간 연결
 
 ---
 
