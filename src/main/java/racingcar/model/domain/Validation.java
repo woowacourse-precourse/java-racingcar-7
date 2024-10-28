@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Validator {
+public class Validation {
 	private static final String GAP = " ";
 	private static final int MIN_CAR_COUNT = 1;
 	private static final int MAX_CAR_NAME_LENGTH = 5;

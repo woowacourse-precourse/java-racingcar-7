@@ -14,7 +14,7 @@ class AttemptNumberTest {
 	@ValueSource(ints = {-50, -10, -1})
 	void 시도_횟수가_음수일_경우_예외(int attemptNumber) {
 		Assertions.assertSimpleTest(() -> {
-			assertThatThrownBy(() -> Validator.validateAttemptNumber(attemptNumber))
+			assertThatThrownBy(() -> Validation.validateAttemptNumber(attemptNumber))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage(ErrorMessage.NEGATIVE_ATTEMPT_NUMBER.getMessage());
 		});
@@ -23,7 +23,7 @@ class AttemptNumberTest {
 	@Test
 	void 시도_횟수가_0일_경우_예외() {
 		Assertions.assertSimpleTest(() -> {
-			assertThatThrownBy(() -> Validator.validateAttemptNumber(0))
+			assertThatThrownBy(() -> Validation.validateAttemptNumber(0))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage(ErrorMessage.NEGATIVE_ATTEMPT_NUMBER.getMessage());
 		});

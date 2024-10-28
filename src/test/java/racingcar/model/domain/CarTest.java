@@ -13,7 +13,7 @@ class CarTest {
 	@ValueSource(strings = {"", " "})
 	void 자동차_이름이_비어있을_경우_예외(String carNames) {
 		Assertions.assertSimpleTest(() -> {
-			assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+			assertThatThrownBy(() -> Validation.validateCarNames(carNames))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage(ErrorMessage.EMPTY_CAR_NAME.getMessage());
 		});
@@ -23,7 +23,7 @@ class CarTest {
 	@ValueSource(strings = {"pobi|woni|jun", "pobi-woni-jun"})
 	void 쉼표가_아닌_다른_구분자가_입력된_경우_예외(String carNames) {
 		Assertions.assertSimpleTest(() -> {
-			assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+			assertThatThrownBy(() -> Validation.validateCarNames(carNames))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage(ErrorMessage.INVALID_DELIMITER.getMessage());
 		});
@@ -33,7 +33,7 @@ class CarTest {
 	@ValueSource(strings = {"pobi ,woni, jun", "pobi, woni"})
 	void 이름과_구분자_사이에_공백이_있을_경우_예외(String carNames) {
 		Assertions.assertSimpleTest(() -> {
-			assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+			assertThatThrownBy(() -> Validation.validateCarNames(carNames))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage(ErrorMessage.SPACE_BETWEEN_NAME.getMessage());
 		});
@@ -43,7 +43,7 @@ class CarTest {
 	@ValueSource(strings = {"pobi,", "woni,", "jun,"})
 	void 자동차가_한대일_경우_예외(String carNames) {
 		Assertions.assertSimpleTest(() -> {
-			assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+			assertThatThrownBy(() -> Validation.validateCarNames(carNames))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage(ErrorMessage.SINGLE_CAR_NAME.getMessage());
 		});
@@ -53,7 +53,7 @@ class CarTest {
 	@ValueSource(strings = {"pobiii,woni,jun", "javajigi,jun", "woowacourse,woni"})
 	void 자동차_이름이_5자_초과일_경우_예외(String carNames) {
 		Assertions.assertSimpleTest(() -> {
-			assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+			assertThatThrownBy(() -> Validation.validateCarNames(carNames))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage(ErrorMessage.OVER_CAR_NAME_LENGTH.getMessage());
 		});
@@ -63,7 +63,7 @@ class CarTest {
 	@ValueSource(strings = {"pobi,pobi,jun", "woni,woni,pobi", "jun,jun,pobi"})
 	void 자동차_이름이_중복되었을_경우_예외(String carNames) {
 		Assertions.assertSimpleTest(() -> {
-			assertThatThrownBy(() -> Validator.validateCarNames(carNames))
+			assertThatThrownBy(() -> Validation.validateCarNames(carNames))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
 		});

@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.domain.Delimiter;
-import racingcar.model.domain.Validator;
+import racingcar.model.domain.Validation;
 import racingcar.model.service.RaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -25,7 +25,7 @@ public class RaceController {
 		OutputView.carName();
 		String carNames = InputView.getCarNames();
 
-		Validator.validateCarNames(carNames);
+		Validation.validateCarNames(carNames);
 		return carNames;
 	}
 
@@ -33,7 +33,7 @@ public class RaceController {
 		OutputView.attemptNumber();
 		int attemptNumber = InputView.getAttemptNumber();
 
-		Validator.validateAttemptNumber(attemptNumber);
+		Validation.validateAttemptNumber(attemptNumber);
 		return attemptNumber;
 	}
 
