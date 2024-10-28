@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class RacingCar {
 
         String[] cars = car_nameList.split(INPUT_DELIMITER);
 
-        Map<String, Integer> raceScores = new HashMap<>();
+        Map<String, Integer> raceScores = new LinkedHashMap<>();
 
         for (String car_name : cars) {
             if (car_name.length() > 5) {
@@ -27,9 +28,12 @@ public class RacingCar {
     public static void race(final Map<String, Integer> raceScores)
     {
         for (String car_name : raceScores.keySet()) {
+            Integer currentScore = raceScores.get(car_name);
+
             if (Randoms.pickNumberInRange(0, 9) > 3) {
-                raceScores.put(car_name, raceScores.get(car_name) + 1);
+                currentScore += 1;
             }
+            raceScores.put(car_name, currentScore);
             System.out.println(car_name + " : " + "-".repeat(raceScores.get(car_name)));
         }
         //각 출력마다 공백 넣기
