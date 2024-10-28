@@ -15,6 +15,8 @@ import racingcar.view.OutputView;
 
 public class RaceController {
 
+    private static final String DELIMITER = ",";
+
     private final InputView inputView;
     private final OutputView outputView;
     private final Race race;
@@ -30,12 +32,11 @@ public class RaceController {
     public void run() {
         registerCars();
         startRace();
-        presentResult();
+        presentRacingResult();
     }
 
     private void registerCars() {
-        String[] inputCarNames = inputView.inputRacingCarNames().split(",");
-        List<String> carList = Arrays.asList(inputCarNames);
+        List<String> carList = inputCarNameList();
         CarNameValidator.validateCarNameIsCorrect(carList);
         cars.addCars(carList);
     }
@@ -46,7 +47,7 @@ public class RaceController {
         printRoundStatus(rounds);
     }
 
-    private void presentResult() {
+    private void presentRacingResult() {
         race.determineFinalWinner();
         outputView.printFinalWinner(race.getFinalWinners());
     }
@@ -64,6 +65,12 @@ public class RaceController {
         TryNumberValidator.validateTryNumberIsCorrect(inputRound);
 
         return Integer.parseInt(inputRound);
+    }
+
+    private List<String> inputCarNameList() {
+        String[] inputCarNames = inputView.inputRacingCarNames().split(DELIMITER);
+
+        return Arrays.asList(inputCarNames);
     }
 
     private CarDto toDto(Car car) {
