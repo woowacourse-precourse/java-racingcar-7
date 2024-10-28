@@ -86,7 +86,7 @@ class PlayerTest {
             final Long validId = 1L;
             final String validName = "name";
 
-            Player player = Player.of(1L, validName);
+            Player player = Player.of(validId, validName);
 
             // when
             Long playerId = player.getId();
@@ -102,7 +102,7 @@ class PlayerTest {
             final Long validId = 1L;
             final String validName = "name";
 
-            Player player = Player.of(1L, validName);
+            Player player = Player.of(validId, validName);
 
             // when
             String playerName = player.getName();
@@ -120,7 +120,7 @@ class PlayerTest {
             final String validName = "name";
             final Distance fiveDistance = Distance.of(5);
 
-            Player player = Player.of(1L, validName);
+            Player player = Player.of(validId, validName);
             Player movedPlayer = player.move(fiveDistance);
 
             // when

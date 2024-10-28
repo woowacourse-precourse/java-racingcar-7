@@ -18,5 +18,21 @@ public class Round {
         );
     }
 
+    public boolean hasNext() {
+        return currentRound < totalRounds.getValue();
+    }
+
+    public Round increase() {
+        return new Round(totalRounds, currentRound + 1);
+    }
+
+    public int getCurrent() {
+        return currentRound;
+    }
+
+    public int getTotal() {
+        return totalRounds.getValue();
+    }
+
 
 }

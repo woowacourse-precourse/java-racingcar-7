@@ -10,7 +10,8 @@ import racingcar.domain.movement.MovementPolicy;
 import racingcar.domain.movement.MovementStrategy;
 import racingcar.domain.movement.RandomMovementStrategy;
 import racingcar.domain.player.Player;
-import racingcar.exception.game.InvalidRoundsException.InvalidTotalRoundsException;
+import racingcar.exception.game.GameException.GameEndedException;
+import racingcar.exception.game.GameException.InvalidTotalRoundsException;
 import racingcar.exception.player.InvalidPlayerCountException.PlayerCountExceededException;
 import racingcar.exception.player.InvalidPlayerCountException.PlayerCountShortException;
 
@@ -105,6 +106,54 @@ class GameTest {
             Assertions.assertThatThrownBy(() -> Game.start(players, totalRounds, movementPolicy))
                     .isInstanceOf(InvalidTotalRoundsException.class)
                     .hasMessage("라운드는 1-10 사이여야 합니다.");
+        }
+
+        @DisplayName("게임 진행하기")
+        @Nested
+        class 게임_진행하기 {
+
+            @DisplayName("정상적인 라운드 진행")
+            @Test
+            void 정상적인_라운드_진행() {
+                // given
+                final List<Player> validPlayers = List.of(
+                        Player.of(1L, "p1"),
+                        Player.of(2L, "p2")
+
+                );
+                final int validRounds = 2;
+                MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
+                final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
+                Game startGame = Game.start(validPlayers, validRounds, movementPolicy);
+
+                // expect
+                Assertions.assertThatCode(() -> startGame.play())
+                        .doesNotThrowAnyException();
+            }
+
+            @DisplayName("종료된 게임 진행 시도")
+            @Test
+            void 종료된_게임_진행_시도() {
+                // given
+                final List<Player> validPlayers = List.of(
+                        Player.of(1L, "p1"),
+                        Player.of(2L, "p2")
+
+                );
+                final int validRounds = 2;
+                MovementStrategy movementStrategy = new RandomMovementStrategy(new CanMoveNumberGenerator());
+                final MovementPolicy movementPolicy = new MovementPolicy(movementStrategy);
+
+                // when
+                Game startGame = Game.start(validPlayers, validRounds, movementPolicy);
+                Game playedGame = startGame.play();
+                Game endGame = playedGame.play();
+
+                // then
+                Assertions.assertThatCode(() -> endGame.play())
+                        .isInstanceOf(GameEndedException.class)
+                        .hasMessage("게임이 이미 종료되었습니다.");
+            }
         }
 
 

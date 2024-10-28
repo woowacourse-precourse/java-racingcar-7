@@ -1,28 +1,36 @@
 package racingcar.domain.player;
 
+import static racingcar.constant.GameConstants.MAXIMUM_PLAYERS;
+import static racingcar.constant.GameConstants.MINIMUM_PLAYERS;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import racingcar.exception.player.InvalidPlayerCountException.PlayerCountExceededException;
 import racingcar.exception.player.InvalidPlayerCountException.PlayerCountShortException;
 
 public class Players {
-    public static final int MINIMUM_GAME_PLAYERS = 2;
-    public static final int MAXIMUM_GAME_PLAYERS = 5;
     private final Map<Long, Player> players;
 
     private Players(List<Player> players) {
         validateCount(players);
-        this.players = mapFrom(players);
+        this.players = toPlayerMap(players);
     }
 
     public static Players from(List<Player> players) {
         return new Players(players);
     }
 
-    public void update(Player player) {
-        players.put(player.getId(), player);
+
+    public Players move(Function<Player, Player> moveOperation) {
+        List<Player> movedPlayers = players.values()
+                .stream()
+                .map(moveOperation)
+                .toList();
+
+        return new Players(movedPlayers);
     }
 
     public List<Player> getAll() {
@@ -30,20 +38,20 @@ public class Players {
     }
 
     private void validateCount(List<Player> players) {
-        if (players.size() < MINIMUM_GAME_PLAYERS) {
+        if (players.size() < MINIMUM_PLAYERS) {
             throw new PlayerCountShortException();
         }
-        if (players.size() > MAXIMUM_GAME_PLAYERS) {
+        if (players.size() > MAXIMUM_PLAYERS) {
             throw new PlayerCountExceededException();
         }
     }
 
-    private Map<Long, Player> mapFrom(List<Player> players) {
+    private Map<Long, Player> toPlayerMap(List<Player> players) {
         return players.stream()
                 .collect(Collectors.toMap(
                         Player::getId,
-                        player -> player)
-                );
+                        Function.identity()
+                ));
     }
 
 

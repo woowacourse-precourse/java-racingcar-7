@@ -1,5 +1,7 @@
 package racingcar.domain.player;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -80,54 +82,50 @@ class PlayersTest {
     @Nested
     class 플레이어_그룹_업데이트하기 {
 
-        @DisplayName("플레이어 정보 업데이트")
-        @Test
-        void 플레이어_정보_업데이트() {
-            // given
-            Player p1 = Player.of(1L, "name1");
-            p1 = p1.move(Distance.of(10));
+        @DisplayName("플레이어 그룹 테스트")
+        @Nested
+        class PlayersGroupTest {
+            @DisplayName("플레이어 이동 후 새로운 Players 객체 반환")
+            @Test
+            void movePlayersAndReturnNewObject() {
+                // given
+                final Player player1 = Player.of(1L, "p1");
+                final Player player2 = Player.of(2L, "p2");
+                final Players originalPlayers = Players.from(List.of(player1, player2));
+                final Distance distance = Distance.of(1);
 
-            Player p2 = Player.of(2L, "name2");
-            p2 = p2.move(Distance.of(20));
+                // when
+                Players newPlayers = originalPlayers.move(player -> player.move(distance));
 
-            Player p3 = Player.of(2L, "name3");
-            p3 = p3.move(Distance.of(30));
-
-            Players players = Players.from(List.of(p1, p2));
-
-            // when
-            players.update(p3);
-
-            // then
-            Assertions.assertThat(players.getAll().get(1).getDistanceValue())
-                    .isEqualTo(30);
+                // then
+                Assertions.assertThat(newPlayers).isNotSameAs(originalPlayers);
+            }
         }
-    }
 
-    @DisplayName("전체 플레이어 조회하기")
-    @Nested
-    class GetAllPlayersTest {
+        @DisplayName("전체 플레이어 조회하기")
+        @Nested
+        class GetAllPlayersTest {
 
-        @DisplayName("모든 플레이어 목록 조회")
-        @Test
-        void getAllPlayers() {
-            // given
-            Player p1 = Player.of(1L, "name1");
-            p1 = p1.move(Distance.of(10));
+            @DisplayName("모든 플레이어 목록 조회")
+            @Test
+            void getAllPlayers() {
+                // given
+                Player p1 = Player.of(1L, "name1");
+                p1 = p1.move(Distance.of(10));
 
-            Player p2 = Player.of(2L, "name2");
-            p2 = p2.move(Distance.of(20));
+                Player p2 = Player.of(2L, "name2");
+                p2 = p2.move(Distance.of(20));
 
-            Players players = Players.from(List.of(p1, p2));
+                Players players = Players.from(List.of(p1, p2));
 
-            // when
-            List<Player> result = players.getAll();
+                // when
+                List<Player> result = players.getAll();
 
-            // then
-            Assertions.assertThat(result)
-                    .containsExactlyInAnyOrder(p1, p2);
+                // then
+                assertThat(result)
+                        .containsExactlyInAnyOrder(p1, p2);
+            }
         }
+
     }
-
-
 }

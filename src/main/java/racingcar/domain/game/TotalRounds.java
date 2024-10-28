@@ -3,7 +3,7 @@ package racingcar.domain.game;
 import static racingcar.constant.GameConstants.MAXIMUM_ROUNDS;
 import static racingcar.constant.GameConstants.MINIMUM_ROUNDS;
 
-import racingcar.exception.game.InvalidRoundsException.InvalidTotalRoundsException;
+import racingcar.exception.game.GameException.InvalidTotalRoundsException;
 
 public class TotalRounds {
     private final int value;
@@ -21,5 +21,9 @@ public class TotalRounds {
         if (rounds < MINIMUM_ROUNDS || rounds > MAXIMUM_ROUNDS) {
             throw new InvalidTotalRoundsException();
         }
+    }
+
+    public int getValue() {
+        return value;
     }
 }
