@@ -17,8 +17,12 @@ public class RacingGame {
     }
 
     public void addCar(String s){
+        //중복 체크
         if (userNames.contains(s)){
             throw new IllegalArgumentException("이미 존재하는 이름 입니다.");
+        }
+        if (s.isEmpty()){
+            throw new IllegalArgumentException("이름이 빈 문자열일 수는 없습니다.");
         }
         Car car=config.car(s);
         cars.add(car);
