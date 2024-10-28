@@ -18,4 +18,22 @@ public class Application {
         System.out.println("시도할 횟수: " + attempts);
     }
 
+    private static void validateNames(String input) {
+        String[] names = input.split(",");
+        if (names.length < 2) {
+            throw new IllegalArgumentException("이름이 두 개 이상이어야 합니다.");
+        }
+    }
+
+    private static int validateAttempts(String attemptsInput) {
+        if (!isNumeric(attemptsInput)) {
+            throw new IllegalArgumentException("시도할 횟수는 숫자여야 합니다.");
+        }
+        return Integer.parseInt(attemptsInput);
+    }
+
+    private static boolean isNumeric(String str) {
+        return str.matches("\\d+");
+    }
+
 }
