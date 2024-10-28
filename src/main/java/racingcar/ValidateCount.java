@@ -5,7 +5,7 @@ import static racingcar.ErrorMessage.BE_NATURAL_NUMBER;
 import static racingcar.ErrorMessage.INPUT_IS_EMPTY;
 
 public class ValidateCount {
-    public static void validateInputCount(String userInputCount) {
+    public static void inputCount(String userInputCount) {
         if (userInputCount == null || userInputCount.isEmpty()) {
             throw new IllegalArgumentException(INPUT_IS_EMPTY);
         }

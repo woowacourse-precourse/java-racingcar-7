@@ -12,7 +12,7 @@ class ValidateCountTest {
     @ParameterizedTest
     @ValueSource(strings = {"", "-1", "0", "pobi"})
     void 시도횟수_예외_테스트(String userCount) {
-        assertThatThrownBy(() -> ValidateCount.validateInputCount(userCount))
+        assertThatThrownBy(() -> ValidateCount.inputCount(userCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

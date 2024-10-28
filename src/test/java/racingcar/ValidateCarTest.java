@@ -12,7 +12,7 @@ class ValidateCarTest {
     @ParameterizedTest
     @ValueSource(strings = {"abcdef", "가나다라마바사아자", "pobi,javaji"})
     void 이름길이_초과_예외_테스트(String name) {
-        assertThatThrownBy(() -> ValidateCar.validateInputCar(name))
+        assertThatThrownBy(() -> ValidateCar.inputCar(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -20,7 +20,7 @@ class ValidateCarTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi,,java", ",,", "pobi,", ",pobi"})
     void 쉼표_형식_예외_테스트(String name) {
-        assertThatThrownBy(() -> ValidateCar.validateInputCar(name))
+        assertThatThrownBy(() -> ValidateCar.inputCar(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -28,7 +28,7 @@ class ValidateCarTest {
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
     void 입력이_빈문자열인_경우_예외_테스트(String name) {
-        assertThatThrownBy(() -> ValidateCar.validateInputCar(name))
+        assertThatThrownBy(() -> ValidateCar.inputCar(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -36,7 +36,7 @@ class ValidateCarTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi,pobi", "pobi, java,pobi "})
     void 중복된_이름이_들어올경우_예외_테스트(String name) {
-        assertThatThrownBy(() -> ValidateCar.validateInputCar(name))
+        assertThatThrownBy(() -> ValidateCar.inputCar(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
