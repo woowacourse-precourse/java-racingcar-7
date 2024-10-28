@@ -1,6 +1,8 @@
 package racingcar;
 
+import static racingcar.Validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,21 +18,5 @@ public class Application {
         String intInput = Console.readLine();
 
         int tryCount = InputValidator(intInput);
-    }
-
-    public static int InputValidator(String intInput){
-        if (intInput.trim().isEmpty()) {
-            throw new IllegalArgumentException("입력이 잘못되었습니다.");
-        }
-
-        int number;
-        
-        try {
-            number = Integer.parseInt(intInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력이 잘못되었습니다.");
-        }
-
-        return number;
     }
 }
