@@ -6,15 +6,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
 
     public static void main(String[] args) {
-        String[] carNames = getCarNames();
-        int numberOfAttempts = getNumberOfAttempts();  // 시도 횟수 입력받기
+        try {
+            String[] carNames = getCarNames();
+            int numberOfAttempts = getNumberOfAttempts();
+            int[] carDistances = startRace(carNames, numberOfAttempts);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     // 자동차 이름 입력받기
     private static String[] getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNames = Console.readLine().split(",");
-        validateCarNames(carNames);  // 이름 유효성 검사 호출
+        validateCarNames(carNames);
         return carNames;
     }
 
@@ -36,19 +41,37 @@ public class Application {
     private static int getNumberOfAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int attempts = Integer.parseInt(Console.readLine());
-        validateAttempts(attempts);  // 시도 횟수 유효성 검사
+        validateAttempts(attempts);
         return attempts;
     }
 
-    // 시도 횟수 유효성 검사
     private static void validateAttempts(int attempts) {
         if (attempts < 1) {
             throw new IllegalArgumentException("이동 횟수는 1 이상이어야 합니다.");
         }
     }
 
-    // 0에서 9 사이의 무작위 값 생성
-    private static int generateRandomValue() {
-        return Randoms.pickNumberInRange(0, 9);
+    // 경주 시작 로직
+    private static int[] startRace(String[] carNames, int attempts) {
+        int[] distances = new int[carNames.length];
+        System.out.println("실행 결과");
+        for (int i = 0; i < attempts; i++) {
+            runSingleRace(carNames, distances);
+        }
+        return distances;
+    }
+
+    // 한 번의 경주 시도
+    private static void runSingleRace(String[] carNames, int[] distances) {
+        for (int j = 0; j < carNames.length; j++) {
+            if (canAdvance()) {
+                distances[j]++;
+            }
+        }
+    }
+
+    // 전진 조건 체크
+    private static boolean canAdvance() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 }
