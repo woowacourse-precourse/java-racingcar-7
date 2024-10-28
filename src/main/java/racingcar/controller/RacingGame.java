@@ -13,6 +13,8 @@ public class RacingGame {
 
     public void run(){
         CarGroup carGroup = new CarGroup(inputView.readCars());
+        int roundCount = inputView.readRoundCount();
+        
     }
 
 }
