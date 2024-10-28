@@ -43,7 +43,7 @@ public class RaceController {
     private void playRace(int trialCount) {
         outputView.displayRoundResultMessage();
         for (int round = 0; round < trialCount; round++) {
-            raceTrack.moveCars();
+            raceTrack.tryMoveCars();
             outputView.displayRoundResult(raceTrack.getCars());
         }
     }
