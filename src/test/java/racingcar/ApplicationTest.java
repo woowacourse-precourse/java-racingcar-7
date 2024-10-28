@@ -66,4 +66,19 @@ class ApplicationTest extends NsTest {
         assertThat(application.list[0].getRacer_point().toString()).isEqualTo("--");
         assertThat(application.list[1].getRacer_point().toString()).isEqualTo("-");
     }
+
+    @BeforeEach
+    public void setUp2() {
+        application = new Application();
+        application.list = new Car[]{
+                new Car("car1", false, new StringBuffer("---")), // 3점
+                new Car("car2", false, new StringBuffer("--")),  // 2점
+                new Car("car3", false, new StringBuffer("----")) // 4점
+        };
+    }
+    @Test
+    void 우승자_점수_테스트() {
+        int maxScore = application.winner_score();
+        assertThat(maxScore).isEqualTo(4); // car3가 가장 많이 전진했으므로 4를 반환해야 함
+    }
 }
