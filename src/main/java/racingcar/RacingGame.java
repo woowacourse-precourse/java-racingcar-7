@@ -29,4 +29,11 @@ public class RacingGame {
     if (attempts <= 0) throw new IllegalArgumentException("횟수는 1 이상이어야 합니다.");
     return attempts;
   }
+
+  private void printGameStatus(List<Car> cars) {
+    for (Car car : cars) {
+      System.out.println(car.getName() + " : " + car.getPosition());
+    }
+    System.out.println();
+  }
 }
