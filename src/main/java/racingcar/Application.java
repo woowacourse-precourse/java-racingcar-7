@@ -15,7 +15,10 @@ public class Application {
             playGame(cars, moves);
             displayWinners(cars);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            System.out.println("입력 오류: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("예기치 못한 오류로 인하여 실행에 실패하였습니다.");
+            e.printStackTrace(); // 스택 트레이스 출력
         }
     }
 
@@ -51,11 +54,15 @@ public class Application {
 
     private static int getMoveCount() {
         System.out.println("시도할 횟수는 몇회인가요?");
-        int moves = Integer.parseInt(Console.readLine());
-        if (moves <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        try {
+            int moves = Integer.parseInt(Console.readLine());
+            if (moves <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+            }
+            return moves;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
         }
-        return moves;
     }
 
     private static void playGame(List<Car> cars, int moves) {
