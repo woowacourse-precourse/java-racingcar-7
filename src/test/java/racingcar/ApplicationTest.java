@@ -19,7 +19,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 전진_테스트() {
         final List<String> carNames = List.of("pobi", "woni", "jun");
-        final int numRounds = 2;
+        final int numRounds = 10;
 
         assertSimpleTest(
             () -> {
@@ -30,7 +30,8 @@ class ApplicationTest extends NsTest {
                         .collect(Collectors.toCollection(ArrayList::new));
 
                 final String[] lines = output().split("\n");
-                for (int i = 0, j = 0; i != lines.length; i++, j = i % (carNames.size() + 1)) {
+                for (int i = 0, j = 0; i < lines.length - 1; i++, j = i % (carNames.size() + 1)) {
+                    assertThat(i <= 5);
                     final String line = lines[i];
 
                     if (j == carNames.size()) {
@@ -39,15 +40,50 @@ class ApplicationTest extends NsTest {
                     }
 
                     final String[] words = line.split(" : ");
-                    assertEquals(2, words.length);
-
                     assertEquals(carNames.get(j), words[0]);
 
+                    if (words.length == 1) {
+                        assertEquals(mileages.get(j), 0);
+                        continue;
+                    }
+                    assertThat(words.length == 2);
                     assertEquals("-".repeat(words[1].length()), words[1]);
-                    assertThat(mileages.get(j) <= words[1].length());
+                    assertThat(words[1].length() - mileages.get(j) >= 0);
                     mileages.set(j, words[1].length());
                 }
-                assertEquals(numRounds * (carNames.size() + 1) - 1, lines.length);
+                assertEquals(numRounds * (carNames.size() + 1) + 1, lines.length);
+
+                final String lastLine = lines[lines.length - 1];
+                assertThat(lastLine.startsWith(Application.lastPrefix));
+                
+                final String[] winnerNames = lastLine.substring(Application.lastPrefix.length())
+                        .split(", ");
+
+                int maxMileage = -1;
+                for (int i = 0, j = 0; i != carNames.size(); i++) {
+                    final String carName = carNames.get(i);
+
+                    if (j == winnerNames.length || ! carName.equals(winnerNames[j])) {
+                        continue;
+                    }
+                    j++;
+
+                    if (maxMileage == -1) {
+                        maxMileage = mileages.get(i);
+                    }
+                    assertThat(maxMileage == mileages.get(i));
+                }
+                
+                for (int i = 0, j = 0; i != carNames.size(); i++) {
+                    final String carName = carNames.get(i);
+
+                    if (j != winnerNames.length && carName.equals(winnerNames[j])) {
+                        j++;
+                        continue;
+                    }
+                    assertThat(maxMileage > mileages.get(i));
+                }
+                
             }
         );
     }
