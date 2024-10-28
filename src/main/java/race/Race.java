@@ -57,7 +57,7 @@ public class Race {
         List<String> winners = new ArrayList<>();
         StringBuilder result = new StringBuilder();
         for(Car car : cars)
-            fixFinalWinner(winners, car, maxBound);
+            maxBound = fixFinalWinner(winners, car, maxBound);
 
         for(String winner : winners){
             result.append(winner);
@@ -71,7 +71,7 @@ public class Race {
 
     }
 
-    private void fixFinalWinner(List<String> winners, Car car, int maxBound){
+    private int fixFinalWinner(List<String> winners, Car car, int maxBound){
         if(car.getMoveCount() > maxBound){
             maxBound = fixMaxBound(car, maxBound);
             winners.clear();
@@ -79,6 +79,8 @@ public class Race {
         }else if(car.getMoveCount() == maxBound){
             winners.add(car.getCarName());
         }
+
+        return maxBound;
 
     }
 
