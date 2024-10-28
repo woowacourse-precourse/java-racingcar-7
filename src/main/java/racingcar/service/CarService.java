@@ -8,6 +8,7 @@ public class CarService {
     public HashMap<String, Integer> splitCarNames(String carNames) {
         HashMap<String, Integer> cars = new HashMap<>();
 
+        InputExceptionHandler.validateEmpty(carNames);
         String[] names = carNames.split(",");
         InputExceptionHandler.validateCarName(names);
 

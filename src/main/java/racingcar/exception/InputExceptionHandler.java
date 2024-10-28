@@ -17,4 +17,10 @@ public class InputExceptionHandler {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ATTEMPT_COUNT.getMessage());
         }
     }
+
+    public static void validateEmpty(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_EMPTY.getMessage());
+        }
+    }
 }
