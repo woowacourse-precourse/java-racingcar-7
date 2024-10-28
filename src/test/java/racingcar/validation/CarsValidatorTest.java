@@ -13,17 +13,19 @@ import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
 
 public class CarsValidatorTest {
+    private static Validator<List<Car>> validator = new CarsValidator();
+
     @Test
     void 차_개수가_1개_이하면_예외() {
         String testName = "pobi";
-        Validator<List<Car>> validator = new CarsValidator();
+
         List<Car> cars = new ArrayList<>(
                 Arrays.asList(CarFactory.createCar(testName))
         );
 
         assertThatThrownBy(() -> validator.validate(cars))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Exceptions.INSUFFICIENT_CARS.getMsg());
+                .hasMessage("2개 이상의 차 이름을 입력해주세요.");
     }
 
     @ParameterizedTest
@@ -33,7 +35,6 @@ public class CarsValidatorTest {
         String[] testNames = testName.split(",", -1);
         String testName1 = testNames[0];
         String testName2 = testNames[1];
-        Validator<List<Car>> validator = new CarsValidator();
         List<Car> cars = new ArrayList<>(
                 Arrays.asList(CarFactory.createCar(testName1)
                         , CarFactory.createCar(testName2))
@@ -51,7 +52,6 @@ public class CarsValidatorTest {
         String[] testNames = testName.split(",", -1);
         String testName1 = testNames[0];
         String testName2 = testNames[1];
-        Validator<List<Car>> validator = new CarsValidator();
         List<Car> cars = new ArrayList<>(
                 Arrays.asList(CarFactory.createCar(testName1)
                         , CarFactory.createCar(testName2))

@@ -9,28 +9,32 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class CarsTest {
+    private static int RANDOM_NUMBER_FORWARD = 4;
+    private static int RANDOM_NUMBER_STOP = 0;
+
     @Test
     void 객체_생성() {
+        String testName0 = "car0";
         String testName1 = "car1";
         String testName2 = "car2";
-        String testName3 = "car3";
 
         Cars cars = CarsFactory.createCars(
-                String.format("%s,%s,%s", testName1, testName2, testName3)
+                String.format("%s,%s,%s", testName0, testName1, testName2)
         );
 
         assertThat(cars.getCars().size()).isEqualTo(3);
-        assertThat(cars.getCars().get(0).getName()).isEqualTo(testName1);
-        assertThat(cars.getCars().get(1).getName()).isEqualTo(testName2);
-        assertThat(cars.getCars().get(2).getName()).isEqualTo(testName3);
+        assertThat(cars.getCars().get(0).getName()).isEqualTo(testName0);
+        assertThat(cars.getCars().get(1).getName()).isEqualTo(testName1);
+        assertThat(cars.getCars().get(2).getName()).isEqualTo(testName2);
     }
 
     @Test
-    void 차_전진_또는_정지() {
-        String testName = "pobi,holy";
-        int testRandomNumberForPobi = 4;
-        int testRandomNumberForHoly = 0;
-        Cars cars = CarsFactory.createCars(testName);
+    void 차_1번_이동() {
+        String testName0 = "pobi";
+        String testName1 = "holy";
+        Cars cars = CarsFactory.createCars(
+                String.format("%s,%s", testName0, testName1)
+        );
 
         assertRandomNumberInRangeTest(
                 () -> {
@@ -40,7 +44,27 @@ public class CarsTest {
                     assertThat(cars.getCars().get(0).getMoveDistance()).isEqualTo(1);
                     assertThat(cars.getCars().get(1).getMoveDistance()).isEqualTo(0);
                 },
-                testRandomNumberForPobi, testRandomNumberForHoly
+                RANDOM_NUMBER_FORWARD, RANDOM_NUMBER_STOP
+        );
+    }
+
+    @Test
+    void 차_여러번_이동() {
+        String testName0 = "pobi";
+        String testName1 = "holy";
+        Cars cars = CarsFactory.createCars(
+                String.format("%s,%s", testName0, testName1)
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    cars.moveCars(3);
+                    assertThat(cars.getCars().get(0).getMoveDistance()).isEqualTo(2);
+                    assertThat(cars.getCars().get(1).getMoveDistance()).isEqualTo(1);
+                },
+                RANDOM_NUMBER_FORWARD, RANDOM_NUMBER_STOP
+                , RANDOM_NUMBER_FORWARD, RANDOM_NUMBER_STOP
+                , RANDOM_NUMBER_STOP, RANDOM_NUMBER_FORWARD
         );
     }
 
@@ -48,9 +72,9 @@ public class CarsTest {
     void 우승자_1대_반환() {
         String testWinnerName = "pobi";
         String testLoserName = "holy";
-        int testRandomNumberForWinner = 4;
-        int testRandomNumberForLoser = 0;
-        Cars cars = CarsFactory.createCars(testWinnerName + "," + testLoserName);
+        Cars cars = CarsFactory.createCars(
+                String.format("%s,%s", testWinnerName, testLoserName)
+        );
 
         assertRandomNumberInRangeTest(
                 () -> {
@@ -59,7 +83,7 @@ public class CarsTest {
                     assertThat(winnerNames.size()).isEqualTo(1);
                     assertThat(winnerNames.get(0)).isEqualTo(testWinnerName);
                 },
-                testRandomNumberForWinner, testRandomNumberForLoser
+                RANDOM_NUMBER_FORWARD, RANDOM_NUMBER_STOP
         );
     }
 
@@ -69,8 +93,6 @@ public class CarsTest {
         String testWinnerName2 = "moly";
         String testWinnerName3 = "lulu";
         String testLoserName = "holy";
-        int testRandomNumberForWinner = 4;
-        int testRandomNumberForLoser = 0;
         Cars cars = CarsFactory.createCars(
                 String.format("%s,%s,%s,%s", testWinnerName1, testWinnerName2, testWinnerName3, testLoserName));
 
@@ -83,8 +105,8 @@ public class CarsTest {
                             new ArrayList<>(Arrays.asList(testWinnerName1, testWinnerName2, testWinnerName3))
                     );
                 },
-                testRandomNumberForWinner, testRandomNumberForWinner, testRandomNumberForWinner,
-                testRandomNumberForLoser
+                RANDOM_NUMBER_FORWARD, RANDOM_NUMBER_FORWARD, RANDOM_NUMBER_FORWARD,
+                RANDOM_NUMBER_STOP
         );
     }
 }

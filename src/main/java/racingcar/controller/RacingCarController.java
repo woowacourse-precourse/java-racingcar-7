@@ -34,6 +34,7 @@ public class RacingCarController {
         cars.registerObserver(carsIntermediateView);
         cars.moveCars(moveNumber.moveNumber());
         OutputView.outputRaceFinalResult(cars.findWinnerNames());
+        InputView.close();
     }
 
 }
