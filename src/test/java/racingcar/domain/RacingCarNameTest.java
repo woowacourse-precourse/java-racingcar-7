@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class RacingCarNameTest {
     @ParameterizedTest
     @ValueSource(strings = {"yoni", "ini", "nini", "zzang"})
-    @DisplayName("racing car name test")
+    @DisplayName("자동차 이름 테스트")
     void test_name_constructor_success(String input) {
         // when
         RacingCarName racingCarName = new RacingCarName(input);
@@ -18,10 +18,10 @@ class RacingCarNameTest {
     }
     @ParameterizedTest
     @ValueSource(strings = {"","doggang", "hyuntoo"})
-    @DisplayName("racing car name 예외 상황 확인 (한자리 ~ 5자리가 아닌 것) ")
+    @DisplayName("자동차 이름은 1자리 이상 5자 이하만 가능합니다.")
     void test_name_constructor_fail_over_length_name(String racingCarName) {
         // given
-        String expectedMessage = "자동차이름은 1자리이상 5자 이하만 가능합니다.";
+        String expectedMessage = "자동차 이름은 1자리 이상 5자 이하만 가능합니다.";
         // when & then
         assertThatThrownBy(() -> new RacingCarName(racingCarName))
                 .isInstanceOf(IllegalArgumentException.class)
