@@ -1,28 +1,18 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import generator.TestCSVFileGenerator;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.Duration;
 import java.util.List;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.MethodSource;
 
-@TestInstance(Lifecycle.PER_CLASS)
 public class PersonalApplicationTest extends NsTest {
 
     private static CarInitializer carInitializer;
+    private static final Duration TIMEOUT_LIMIT = Duration.ofSeconds(1L);
 
     @ParameterizedTest
     @CsvFileSource(resources = "/splitCarNameStringTestFile.csv")
@@ -34,7 +24,7 @@ public class PersonalApplicationTest extends NsTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/TimeOutTestFile.csv")
     void 수행_시간_테스트(String inputValue, String progressCount) {
-        Assertions.assertTimeoutPreemptively(Duration.ofSeconds(1L), () -> {
+        Assertions.assertTimeoutPreemptively(TIMEOUT_LIMIT, () -> {
             run(inputValue, progressCount);
         });
     }
