@@ -2,15 +2,25 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CarRacer {
 
-    private final String[] carNames;
-    private final int[] carPositions;
+    private final List<String> carNames;
+    private final Map<String, Integer> carPositions;
 
-    public CarRacer(String[] carNames) {
+    public CarRacer(List<String> carNames) {
         this.carNames = carNames;
-        this.carPositions = new int[carNames.length];
+        this.carPositions = new HashMap<>();
+        initializeCarPositions();
+    }
+
+    private void initializeCarPositions() {
+        for (String carName : carNames) {
+            carPositions.put(carName, 0);
+        }
     }
 
     public void startRace(int moveCount) {
@@ -23,16 +33,17 @@ public class CarRacer {
     }
 
     private void racingResultPrint() {
-        for (int j = 0; j < carPositions.length; j++) {
-            System.out.println(carNames[j] + " : " + "-".repeat(carPositions[j]));
+        for (String carName : carNames) {
+            int position = carPositions.get(carName);
+            System.out.println(carName + " : " + "-".repeat(position));
         }
         System.out.println();
     }
 
     private void racing() {
-        for (int j = 0; j < carPositions.length; j++) {
+        for (String carName : carNames) {
             if (moveOrStop()) {
-                carPositions[j]++;
+                carPositions.put(carName, carPositions.get(carName) + 1);
             }
         }
     }
@@ -41,32 +52,30 @@ public class CarRacer {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    public String[] getWinners() {
-        int maxPosition = findWinnerIdx();
-
+    public List<String> getWinners() {
+        int maxPosition = findMaxPosition();
         return findWinnerCarNames(maxPosition);
     }
 
-    private String[] findWinnerCarNames(int maxPosition) {
-        ArrayList<String> winnersList = new ArrayList<>();
-        for (int i = 0; i < carPositions.length; i++) {
-            if (carPositions[i] == maxPosition) {
-                winnersList.add(carNames[i]);
+    private List<String> findWinnerCarNames(int maxPosition) {
+        List<String> winnersList = new ArrayList<>();
+        for (String carName : carNames) {
+            if (carPositions.get(carName) == maxPosition) {
+                winnersList.add(carName);
             }
         }
-
-        return winnersList.toArray(new String[0]);
+        return winnersList;
     }
 
-    private int findWinnerIdx() {
+    private int findMaxPosition() {
         int maxPosition = 0;
-        for (int position : carPositions) {
+        for (int position : carPositions.values()) {
             maxPosition = Math.max(maxPosition, position);
         }
         return maxPosition;
     }
 
-    public int[] getCarPositions() {
+    public Map<String, Integer> getCarPositions() {
         return carPositions;
     }
 }

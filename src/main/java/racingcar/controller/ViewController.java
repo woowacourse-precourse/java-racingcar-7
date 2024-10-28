@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -20,7 +21,7 @@ public class ViewController {
         return InputView.readInput();
     }
 
-    public static void printWinners(String[] winners) {
+    public static void printWinners(List<String> winners) {
         OutputView.printOutput(OUTPUT_FILTER, winners);
     }
 }

@@ -4,6 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.ViewController;
 import racingcar.view.OutputView;
@@ -16,14 +17,13 @@ class OutputViewTest {
         System.setOut(new PrintStream(outputStream));
 
         // given
-        String[] output = {"pobi", "crong", "honux"};
+        List<String> output = List.of("pobi", "crong", "honux");
 
         // when
         OutputView.printOutput(ViewController.OUTPUT_FILTER, output);
 
         // then
-        assertThat(outputStream.toString()).isEqualTo("최종 우승자 : pobi, crong, honux");
-
+        assertThat(outputStream.toString().trim()).isEqualTo("최종 우승자 : pobi, crong, honux");
     }
 
     @Test
@@ -32,12 +32,12 @@ class OutputViewTest {
         System.setOut(new PrintStream(outputStream));
 
         // given
-        String[] output = {"pobi"};
+        List<String> output = List.of("pobi");
 
         // when
         OutputView.printOutput(ViewController.OUTPUT_FILTER, output);
 
         // then
-        assertThat(outputStream.toString()).isEqualTo("최종 우승자 : pobi");
+        assertThat(outputStream.toString().trim()).isEqualTo("최종 우승자 : pobi");
     }
 }

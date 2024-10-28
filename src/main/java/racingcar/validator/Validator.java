@@ -1,5 +1,7 @@
 package racingcar.validator;
 
+import java.util.List;
+
 public class Validator {
 
     private static final int MAX_NAME_LENGTH = 5;
@@ -7,7 +9,7 @@ public class Validator {
     private static final String INVALID_MOVE_COUNT_MESSAGE = "이동 횟수는 숫자만 가능합니다.";
     private static final String INVALID_MOVE_COUNT_POSITIVE_MESSAGE = "이동 횟수는 1 이상만 가능합니다.";
 
-    public static void checkNameLength(String[] names) {
+    public static void checkNameLength(List<String> names) {
         for (String name : names) {
             if (isInvalidLength(name)) {
                 throw new IllegalArgumentException(INVALID_NAME_LENGTH_MESSAGE);
