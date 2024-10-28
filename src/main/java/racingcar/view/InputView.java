@@ -39,12 +39,9 @@ public class InputView {
             throw new IllegalArgumentException(ErrorStatus.NOT_NUMBER.getMessage());
         }
         try {
-            int count = Integer.parseInt(input);
-            if (10000 <= count || count <= 0) {
-                throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
-            }
-            return count;
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
+            // Overflow
             throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
         }
     }
