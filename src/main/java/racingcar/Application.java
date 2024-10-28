@@ -14,6 +14,18 @@ public class Application {
         System.out.println("실행 결과");
         r.totalRace();
         r.winnersPrint();
+//        try {
+//            Racingcar r = new Racingcar();
+//
+//            r.start();
+//
+//            System.out.println("실행 결과");
+//            r.totalRace();
+//            r.winnersPrint();
+//        } catch (Exception e) {
+//            e.printStackTrace(); // 예외 스택 트레이스를 출력
+//        }
+
     }
 }
 
@@ -32,35 +44,48 @@ class Racingcar {
 
 
     void start() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String cars = readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String attempts = readLine();
-        System.out.println();
+        try {
+            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+            String cars = readLine();
+            setCarMove(cars);
 
-        setCarMove(cars);
-        setMoveCnt(attempts);
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            String attempts = readLine();
+            setMoveCnt(attempts);
 
+            System.out.println();
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("입력된 값이 없습니다.");
+        }
     }
 
-    void setCarMove(final String text) {
 
+    void setCarMove(final String text) {
         for(final String carName : text.split(",")) {
             if (carName.length() > NAME_LENGTH_LIMIT){
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
-            if (!carName.isEmpty()) {
-                carMove.put(carName, 0);
+            if (carName == null || carName.isEmpty()) {
+                continue;
             }
+            carMove.put(carName, 0);
         }
 
         if (carMove.isEmpty()) {
-            throw new IllegalArgumentException("자동차가 없습니다.");
+            throw new IllegalArgumentException("입력된 자동차가 없습니다.");
         }
     }
 
-    void setMoveCnt(final String text) {
-        moveCnt = Integer.parseInt(text);
+    void setMoveCnt(String text) {
+        text = text.trim();
+        if (text == null || text.isEmpty()) {
+            throw new IllegalArgumentException("이동 횟수는 비어 있거나 공백일 수 없습니다.");
+        }
+        try {
+            moveCnt = Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("이동 횟수에 정수를 입력해야합니다.");
+        }
     }
 
     void race() {

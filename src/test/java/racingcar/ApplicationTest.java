@@ -25,10 +25,21 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능_테스트_중간에_공백_처리() {
+    void 기능_테스트_자동차_이름_중간에_공백_처리() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트_이동횟수_중간에_공백_처리() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,,woni", " 1");
                     assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
                 },
                 MOVING_FORWARD, STOP
