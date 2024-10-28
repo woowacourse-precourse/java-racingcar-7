@@ -19,15 +19,6 @@ public class CarRace {
         this.finalWinners = new ArrayList<>();
     }
 
-    private void validateAttemptCountRange(final int attemptCount) {
-        if (attemptCount < MIN_ATTEMPT_COUNT) {
-            throw new IllegalArgumentException("시도 횟수는" + MIN_ATTEMPT_COUNT+ "이상이어야 합니다.");
-        }
-        if (attemptCount > MAX_ATTEMPT_COUNT) {
-            throw new IllegalArgumentException("시도 횟수는 " + MAX_ATTEMPT_COUNT + " 이하이어야 합니다.");
-        }
-    }
-
     public void startRace(final Cars cars) {
         for (int i = 0; i < attemptCount; i++) {
             runRaceRound(cars);
@@ -41,12 +32,12 @@ public class CarRace {
         carRaceSnapshots.add(carRaceSnapshot);
     }
 
-    private CarRaceSnapshot getLastRoundSnapshot() {
-        return carRaceSnapshots.get(carRaceSnapshots.size() - 1);
-    }
-
     private void determineWinners(CarRaceSnapshot carRaceSnapshot) {
         finalWinners.addAll(carRaceSnapshot.getMaxDistanceCarsName());
+    }
+
+    private CarRaceSnapshot getLastRoundSnapshot() {
+        return carRaceSnapshots.get(carRaceSnapshots.size() - 1);
     }
 
     public List<CarRaceSnapshot> getCarRaceSnapshots() {
@@ -55,5 +46,22 @@ public class CarRace {
 
     public List<String> getFinalWinners() {
         return finalWinners;
+    }
+
+    private void validateAttemptCountRange(final int attemptCount) {
+        validateAttemptCountIsAtLeastMin(attemptCount);
+        validateAttemptCountIsAtMostMax(attemptCount);
+    }
+
+    private void validateAttemptCountIsAtLeastMin(final int attemptCount) {
+        if (attemptCount < MIN_ATTEMPT_COUNT) {
+            throw new IllegalArgumentException("시도 횟수는 " + MIN_ATTEMPT_COUNT + " 이상이어야 합니다.");
+        }
+    }
+
+    private void validateAttemptCountIsAtMostMax(final int attemptCount) {
+        if (attemptCount > MAX_ATTEMPT_COUNT) {
+            throw new IllegalArgumentException("시도 횟수는 " + MAX_ATTEMPT_COUNT + " 이하이어야 합니다.");
+        }
     }
 }
