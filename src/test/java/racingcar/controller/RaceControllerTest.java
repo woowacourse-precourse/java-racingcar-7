@@ -19,26 +19,26 @@ class RaceControllerTest extends NsTest {
         this.raceController = new RaceController();
     }
 
+    private List<Car> createCars(String... names) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(Car.createDefaultCar(name));
+        }
+        return cars;
+    }
+
     @Test
     @DisplayName("단독 우승자를 선정한다")
     void selectSingleWinner() {
-        Car pobi = Car.createDefaultCar("pobi");
-        Car jun = Car.createDefaultCar("jun");
-        jun.setPosition(1);
-        List<Car> cars = new ArrayList<>();
-        cars.add(pobi);
-        cars.add(jun);
+        List<Car> cars = createCars("pobi", "jun");
+        cars.get(1).setPosition(1);
         assertThat(raceController.selectWinners(cars)).isEqualTo(List.of("jun"));
     }
 
     @Test
     @DisplayName("공동 우승자를 출력한다")
     void selectMultiWinners() {
-        Car pobi = Car.createDefaultCar("pobi");
-        Car jun = Car.createDefaultCar("jun");
-        List<Car> cars = new ArrayList<>();
-        cars.add(pobi);
-        cars.add(jun);
+        List<Car> cars = createCars("pobi", "jun");
         assertThat(raceController.selectWinners(cars)).isEqualTo(List.of("pobi", "jun"));
     }
 
