@@ -46,24 +46,29 @@ public class GameTest {
 
         List<String> carNames = inputValidator.validate(delimitedCarNames, attemptCount);
         InputValue inputValue = new InputValue(carNames, Integer.parseInt(racingcar.GameTest.attemptCount));
-
         initRacingGame(inputValue, carNames);
 
         List<Integer> randomNumberList = createRandomNumberList();
+        List<String> expectWinners = setExpectWinners(carNames, randomNumberList);
+
+        playGame(carNames, expectWinners, randomNumberList);
+    }
+
+    private void playGame(List<String> carNames, List<String> expectWinners, List<Integer> randomNumberList) {
+        racingCarGame.play();
+        GameResult gameResult = racingCarGame.getGameResult();
+        outputView.printResult(gameResult);
+        String printResult = outputView.getPrintResult();
+        String expectResult = createExpectResult(carNames, expectWinners, randomNumberList);
+        Assertions.assertThat(printResult).isEqualTo(expectResult);
+    }
+
+    private List<String> setExpectWinners(List<String> carNames, List<Integer> randomNumberList) {
         List<String> winners = expectWinners(carNames, randomNumberList);
         if (winners.isEmpty()) {
             winners = carNames;
         }
-
-        racingCarGame.play();
-        GameResult gameResult = racingCarGame.getGameResult();
-
-        outputView.printResult(gameResult);
-        String printResult = outputView.getPrintResult();
-
-        String expectResult = createExpectResult(carNames, winners, randomNumberList);
-
-        Assertions.assertThat(printResult).isEqualTo(expectResult);
+        return winners;
     }
 
     private List<Integer> createRandomNumberList() {
