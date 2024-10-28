@@ -7,6 +7,7 @@ public class InputValidator {
     public static void lenValidate(String[] carNames,String input) {
         nameNullValidate(carNames, input);
         for (String carName : carNames) {
+            extracted(carName);
             if(carName.length() > 5) {
                 throw new IllegalArgumentException("자동차의 이름 길이가 5이상입니다.");
             }
@@ -14,10 +15,16 @@ public class InputValidator {
         validateDuplicationName(carNames);
     }
 
+    private static void extracted(String carName) {
+        if(carName.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름에 빈 값이 포함되어 있습니다.");
+        }
+    }
+
     private static void nameNullValidate(String[] carNames, String input) {
         int commaCount = input.length() - input.replace(",","").length();
         if(commaCount != carNames.length - 1) {
-            throw new IllegalArgumentException("쉽표가 이중 이상으로 찍힌 부분이 있습니다.");
+            throw new IllegalArgumentException("쉼표가 2개 이상으로 찍힌 부분이 있습니다.");
         }
         if(carNames.length == 0) {
             throw new IllegalArgumentException("자동차 이름 입력값이 비어 있습니다.");
