@@ -15,6 +15,7 @@ public class GameEngine {
 
     public GameEngine(InputReader inputReader){
         this.inputReader = inputReader;
+        racingCars = new ArrayList<>();
     }
 
     public void readUserInput(){

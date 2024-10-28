@@ -16,9 +16,13 @@ public class RacingCar{
     }
     public void race() {
         int randomNumber = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
-        if(randomNumber < 4)
-            return;
-        ++record;
+        if(canGoForward(randomNumber)){
+            ++record;
+        }
+    }
+
+    private boolean canGoForward(int randomNumber){
+        return randomNumber >= 4;
     }
 
     public String getCarName() {

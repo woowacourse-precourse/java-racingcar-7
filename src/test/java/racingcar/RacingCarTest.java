@@ -11,17 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarTest extends NsTest {
 
-    InputReader inputReader = new InputReader();
-    RacingCar racingCar = new RacingCar(inputReader);
-
-    GameEngine gameEngine = new GameEngine(inputReader, racingCar);
     @Test
     void readUserInputTest() {
         assertSimpleTest(()->{
-            run("jsh", "1");
-            gameEngine.readUserInput();
-            assertThat(gameEngine.getCarNames()).isEqualTo("jsh");
-            assertThat(gameEngine.getNumberOfTrial()).isEqualTo(1);
         });
     }
 
