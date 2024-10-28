@@ -17,6 +17,10 @@ public class InputHandler {
                 .map(String::trim)
                 .collect(Collectors.toList());
 
+        if(carNames.size() < 2){
+            throw new IllegalArgumentException("최소 두 대 이상의 자동차 이름을 입력해야 합니다.");
+        }
+
         validateDuplicateNames(carNames);
 
         for (String name : carNames) {
