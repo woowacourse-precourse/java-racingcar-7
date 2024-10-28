@@ -7,8 +7,6 @@ public class RacingcarController {
 
     private RacingcarView racingcarView;
     private RacingcarService racingcarService;
-    private final RacingcarView racingcarView;
-    private final RacingcarService racingcarService;
 
     public RacingcarController(RacingcarView racingcarView, RacingcarService racingcarService) {
         this.racingcarView = racingcarView;
