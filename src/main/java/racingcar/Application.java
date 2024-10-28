@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Application {
 
@@ -17,6 +18,8 @@ public class Application {
 
     public static List<String> carList;
     public static int attempt;
+    public static List<StringBuilder> gameScores;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         carList = inputCar();
@@ -30,6 +33,13 @@ public class Application {
         return Arrays.stream(input.split(COMMA))
                 .map(String::trim)
                 .toList();
+    }
+
+    public static void createGameScores(){
+        gameScores = new ArrayList<>();
+        for(int i = 0; i < carList.size(); i++){
+            gameScores.add(new StringBuilder());
+        }
     }
 
     public static int inputAttempt(){
