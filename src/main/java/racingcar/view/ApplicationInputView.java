@@ -7,11 +7,11 @@ public class ApplicationInputView {
         return Console.readLine();
     }
 
-    public static int getInt(){
-        try{
+    public static int getInt() {
+        try {
             return Integer.parseInt(input());
-        } catch (NumberFormatException e){
-            throw new IllegalArgumentException("해당 입력에서는 정수를 입력해야 합니다.");
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("범위 외의 입력이 들어왔거나, 정수가 아닌 값이 입력 되었습니다.");
         }
     }
 }

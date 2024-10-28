@@ -1,6 +1,6 @@
 package racingcar.model.car;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
     private String name;
     private int status;
 
@@ -13,29 +13,32 @@ public class Car implements Comparable<Car>{
         increase();
     }
 
-    public int getStatus(){
+    public int getStatus() {
         return this.status;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    private void setStatus(int givenStatus){
+    private void setStatus(int givenStatus) {
         this.status = givenStatus;
     }
 
-    private void increase(){
-        setStatus(getStatus()+1);
+    private void increase() {
+        if (getStatus() == Integer.MAX_VALUE) {
+            return;
+        }
+        setStatus(getStatus() + 1);
     }
 
     @Override
     public int compareTo(Car o) {
-        return this.getStatus()-o.getStatus();
+        return this.getStatus() - o.getStatus();
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getName();
     }
 }
