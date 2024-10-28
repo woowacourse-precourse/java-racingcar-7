@@ -11,5 +11,6 @@ public class CarFactory {
             racingCars.add(newRacingCar);
         }
         return racingCars;
+public abstract class CarFactory {
     }
 }
