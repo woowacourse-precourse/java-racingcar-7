@@ -11,6 +11,10 @@ public class CarManager { // TODO: 모델 이름 다시 생각해보기
         this.cars = new ArrayList<>();
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void initialize(List<String> names) {
         for (String name : names) {
             Car car = new Car(name);
@@ -25,10 +29,6 @@ public class CarManager { // TODO: 모델 이름 다시 생각해보기
                 cars.get(i).addMove();
             }
         }
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
     public List<Car> findWinners() {
