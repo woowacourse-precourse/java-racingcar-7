@@ -4,6 +4,7 @@ import racingcar.Input.Read;
 import racingcar.Input.Split;
 import racingcar.Input.Validation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +14,9 @@ public class Application {
     // 다른 클래스에서 접근해야 하기 때문에 public static으로 선언
     public static String [][] carMap;
     public static int len = 0;
+
+    // 우승자를 담을 리스트 선언, 초기화하기
+    public static ArrayList<String> resultArr = new ArrayList<>();
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -65,5 +69,20 @@ public class Application {
             Print.output();
             System.out.println();
         }
+
+        // 결과 출력 전 문자열
+        System.out.print("최종 우승자 : ");
+
+        // 문자열의 최대 길이 찾기
+        Result.findMax();
+
+        // 최종 우승자 찾기
+        Result.judge();
+
+        // 우승자 출력하기
+        Print.printWinner();
+
+        // 공동 우승자 출력하기
+        Print.together();
     }
 }

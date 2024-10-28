@@ -1,10 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import static racingcar.Application.carMap;
 import static racingcar.Application.len;
 
