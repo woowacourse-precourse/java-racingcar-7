@@ -5,6 +5,8 @@ import racingcar.message.SeparatorPattern;
 import racingcar.model.RacingCars;
 import racingcar.dto.OutputResponse;
 
+import java.util.Optional;
+
 public class OutputView {
 
     public void printRaceStart() {
@@ -22,9 +24,10 @@ public class OutputView {
     }
 
     public void printWinners(OutputResponse outputResponse) {
-        String winners = outputResponse.winners().isEmpty()
-                ? OutputMessage.NO_WINNER.getMessage()
-                : OutputMessage.FINAL_WINNER.getMessage() + String.join(SeparatorPattern.COMMA.getPattern(), outputResponse.winners());
+        String winners = Optional.of(outputResponse.winners())
+                .filter(winnerList -> !winnerList.isEmpty())
+                .map(winnerList -> OutputMessage.FINAL_WINNER.getMessage() + String.join(SeparatorPattern.COMMA.getPattern(), winnerList))
+                .orElse(OutputMessage.NO_WINNER.getMessage());
 
         System.out.println(winners);
     }
