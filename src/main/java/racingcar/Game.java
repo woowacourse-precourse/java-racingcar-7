@@ -69,4 +69,19 @@ public class Game {
         System.out.println();
     }
 
+    String printWinners(List<Car> cars){
+        int maxPosition = 0;
+        List<String> winners = new ArrayList<>();
+        for(Car car : cars){
+            if(car.getPosition() > maxPosition){
+                maxPosition = car.getPosition();
+            }
+        }
+        for(Car car : cars){
+            if(car.getPosition() == maxPosition){
+                winners.add(car.getName());
+            }
+        }
+        return "최종 우승자 : "+String.join(", ", winners);
+    }
 }
