@@ -6,10 +6,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.fake.FakeMovementFactorGenerator;
 
 class RacingCarsTest {
-
-    // TODO: race 테스트 작성하기. Random 값에 대한 구조 변경이 필요함.
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
 
     @DisplayName("자동차 이름으로 자동차들을 생성할 수 있다.")
     @Test
@@ -18,7 +19,7 @@ class RacingCarsTest {
         List<String> names = List.of("a", "b", "c");
 
         // when
-        RacingCars racingCars = RacingCars.of(names);
+        RacingCars racingCars = RacingCars.of(names, new RandomMovementFactorGenerator());
 
         // then
         List<RacingCar> cars = racingCars.getCars();
@@ -34,9 +35,31 @@ class RacingCarsTest {
         List<String> names = List.of("a", "b", "a");
 
         // when
-        assertThatThrownBy(() -> RacingCars.of(names))
+        assertThatThrownBy(() -> RacingCars.of(names, new RandomMovementFactorGenerator()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 중복될 수 없습니다.");
+    }
+
+    @DisplayName("레이스를 진행하면 각 자동차의 위치를 확인할 수 있다.")
+    @Test
+    void race() {
+        // given
+        List<String> names = List.of("a", "b");
+        FakeMovementFactorGenerator movementFactorGenerator = new FakeMovementFactorGenerator(
+                List.of(MOVING_FORWARD, STOP)
+        );
+        RacingCars racingCars = RacingCars.of(names, movementFactorGenerator);
+
+        // when
+        List<RacingCarSnapShot> racingCarSnapShots = racingCars.race();
+
+        // then
+        assertThat(racingCarSnapShots).hasSize(2)
+                .extracting("name", "position")
+                .containsExactlyInAnyOrder(
+                        tuple("a", 1),
+                        tuple("b", 0)
+                );
     }
 
     @DisplayName("가장 먼 위치에 있는 자동차가 우승한다.")
@@ -47,7 +70,7 @@ class RacingCarsTest {
                 new RacingCar("car1", 1),
                 new RacingCar("car2", 0),
                 new RacingCar("car3", 1)
-        ));
+        ), new RandomMovementFactorGenerator());
 
         // when
         List<String> winners = racingCars.getWinners();

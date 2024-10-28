@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,24 +7,27 @@ import java.util.Set;
 public class RacingCars {
 
     private final List<RacingCar> cars;
+    private final MovementFactorGenerator movementFactorGenerator;
 
-    public RacingCars(List<RacingCar> cars) {
+    public RacingCars(List<RacingCar> cars, MovementFactorGenerator movementFactorGenerator) {
         validateNoDuplicates(cars);
+        this.movementFactorGenerator = movementFactorGenerator;
         this.cars = cars;
     }
 
-    public static RacingCars of(List<String> names) {
+    public static RacingCars of(List<String> names, MovementFactorGenerator movementFactorGenerator) {
         List<RacingCar> cars = names.stream()
                 .map(RacingCar::new)
                 .toList();
-        return new RacingCars(cars);
+        return new RacingCars(cars, movementFactorGenerator);
     }
 
-    public void race() {
+    public List<RacingCarSnapShot> race() {
         for (RacingCar car : cars) {
-            int movementFactor = generateRandomMovementFactor();
+            int movementFactor = movementFactorGenerator.generate();
             car.attemptMove(movementFactor);
         }
+        return getCarSnapShots();
     }
 
     public List<String> getWinners() {
@@ -40,14 +42,14 @@ public class RacingCars {
                 .toList();
     }
 
-    public List<RacingCarSnapShot> getCarSnapShots() {
+    public List<RacingCar> getCars() {
+        return cars;
+    }
+
+    private List<RacingCarSnapShot> getCarSnapShots() {
         return cars.stream()
                 .map(RacingCar::getSnapshot)
                 .toList();
-    }
-
-    public List<RacingCar> getCars() {
-        return cars;
     }
 
     private void validateNoDuplicates(List<RacingCar> cars) {
@@ -59,7 +61,4 @@ public class RacingCars {
         }
     }
 
-    private int generateRandomMovementFactor() {
-        return Randoms.pickNumberInRange(0, 9);
-    }
 }
