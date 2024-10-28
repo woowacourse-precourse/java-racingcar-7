@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 
 class CarsTest {
 
-    private static final int ADVANCE_NUMBER = 9;
-    private static final int STOP_NUMBER = 0;
+    private static final int MOVING_FORWARD = 9;
+    private static final int STOP = 0;
 
     private Car car1;
     private Car car2;
@@ -32,8 +32,8 @@ class CarsTest {
 
     @Test
     public void 자동차_현황_목록_테스트() {
-        car1.race(ADVANCE_NUMBER);
-        car2.race(STOP_NUMBER);
+        car1.race(MOVING_FORWARD);
+        car2.race(STOP);
 
         assertThat(cars.getCarsInformation())
                 .isEqualTo(List.of("car1 : -", "car2 : "));
@@ -41,8 +41,8 @@ class CarsTest {
 
     @Test
     public void 단독_우승자_선정_테스트() {
-        car1.race(ADVANCE_NUMBER);
-        car2.race(STOP_NUMBER);
+        car1.race(MOVING_FORWARD);
+        car2.race(STOP);
 
         assertThat(cars.determineWinners())
                 .isEqualTo(List.of("car1"));
@@ -50,8 +50,8 @@ class CarsTest {
 
     @Test
     public void 복수_우승자_선정_테스트() {
-        car1.race(ADVANCE_NUMBER);
-        car2.race(ADVANCE_NUMBER);
+        car1.race(MOVING_FORWARD);
+        car2.race(MOVING_FORWARD);
 
         assertThat(cars.determineWinners())
                 .isEqualTo(List.of("car1", "car2"));

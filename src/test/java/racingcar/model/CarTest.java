@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
-    private static final int ADVANCE_NUMBER = 9;
+    private static final int MOVING_FORWARD = 9;
     private Car car;
 
     @BeforeEach
@@ -38,7 +38,7 @@ class CarTest {
 
     @Test
     public void 자동차_정보_테스트_2() {
-        car.race(ADVANCE_NUMBER);
+        car.race(MOVING_FORWARD);
         assertThat(car.getInformation()).isEqualTo("sean : -");
     }
 }
