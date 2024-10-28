@@ -40,7 +40,13 @@ class RacingGame {
         }
     }
 
-
+    public void raceOnce(List<Car> cars) {
+        for (Car car : cars) {
+            if (Randoms.pickNumberInRange(0, 9) >= MIN_FORWARD_VALUE) {
+                car.moveForward();
+            }
+        }
+    }
 }
 
 class Car {
@@ -53,7 +59,7 @@ class Car {
     }
 
     public void moveForward() {
-        this.position++;
+        this.position++;//자동차 전진
     }
 
     public String getName() {
