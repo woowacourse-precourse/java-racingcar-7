@@ -1,6 +1,7 @@
 package racingcar;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -13,7 +14,7 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트_단일_라운드() {
+    void 기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "1");
@@ -39,10 +40,11 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 자동차_이름_예외_테스트() {
-        assertThatThrownBy(() -> RacingGame.validateCarNames(List.of("pobi", "javaji")))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+    void 예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Test
@@ -81,7 +83,6 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
     }
-
 
     @Override
     public void runMain() {
