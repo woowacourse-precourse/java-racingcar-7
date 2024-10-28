@@ -3,7 +3,9 @@ package racingcar.service;
 import static racingcar.constants.CarRaceConstants.CAR_NAMES_INPUT_SEPARATOR;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.CarValidator;
 import racingcar.domain.TrialCountValidator;
@@ -30,10 +32,9 @@ public class InputService {
     }
 
     private List<Car> createCars(String carNamesInput) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNamesInput.split(CAR_NAMES_INPUT_SEPARATOR)) {
-            cars.add(new Car(carName.trim()));
-        }
-        return cars;
+        return Arrays.stream(carNamesInput.split(CAR_NAMES_INPUT_SEPARATOR))
+                .map(String::trim)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }
