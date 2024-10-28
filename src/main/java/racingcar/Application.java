@@ -6,12 +6,14 @@ public class Application {
 
     public static void main(String[] args) {
         String[] carNames = getCarNames();
+        int numberOfAttempts = getNumberOfAttempts();  // 시도 횟수 입력받기
     }
 
+    // 자동차 이름 입력받기
     private static String[] getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNames = Console.readLine().split(",");
-        validateCarNames(carNames);
+        validateCarNames(carNames);  // 이름 유효성 검사 호출
         return carNames;
     }
 
@@ -24,7 +26,14 @@ public class Application {
         }
     }
 
+    // 이름이 유효하지 않은지 확인하는 메소드
     private static boolean isInvalidCarName(String name) {
         return name.trim().length() > 5 || name.trim().isEmpty();
+    }
+
+    // 시도 횟수 입력받기
+    private static int getNumberOfAttempts() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Integer.parseInt(Console.readLine());
     }
 }
