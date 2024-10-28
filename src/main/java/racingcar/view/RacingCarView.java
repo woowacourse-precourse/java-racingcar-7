@@ -10,7 +10,7 @@ public class RacingCarView {
     private static final String INPUT_TRY_NUMBER_GUIDE = "시도할 횟수는 몇 회인가요?";
     private static final String DISPLAY_RESULT_MESSAGE = "\n실행 결과";
     private static final String NEW_LINE = "\n";
-    private static final String DISPLAY_WINNER_MESSAGE = "최종우승자 : ";
+    private static final String DISPLAY_WINNER_MESSAGE = "최종 우승자 : ";
     private static final String NO_WINNER_MESSAGE = "없음";
 
     private RacingCarView() {

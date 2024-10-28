@@ -21,6 +21,7 @@ public class RacingCarController {
 
         for (final String inputCarName : inputCarNames.split(",")) {
             String carName = inputCarName.trim();
+            InputValidator.checkCarNameLength(carName);
             racingCars.add(new Car(carName));
         }
 
