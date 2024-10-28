@@ -134,3 +134,4 @@ jun : -----
 - **Car.java** : 단일 자동차를 추상화
 - **Cars.java** : 경주에 참여하는 자동차 컬렉션을 추상화
 - **CarMoveDeterminator** : 자동차의 이동 여부를 결정
+- **MoveStrategy** : 테스트시 무작위성을 통제할 수 있도록 함
