@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.vo.CarVO;
 
 public class Application {
@@ -58,5 +59,23 @@ public class Application {
             }
             System.out.println();
         }
+
+        /**
+         * 5. 우승자 결정 및 출력
+         *    - 이동 횟수만큼 반복 후, 이동거리가 가장 큰 자동차들을 결정
+         *    - 여러명일 경우 쉼표로 구분하여 출력
+         */
+        int maxPosition = carVOList.stream()
+                .mapToInt(CarVO::getPosition)
+                .max()
+                .orElse(0);
+
+        List<String> collect = carVOList.stream()
+                .filter(carVO -> carVO.getPosition() == maxPosition)
+                .map(CarVO::getCarName)
+                .collect(Collectors.toList());
+
+        // 우승자 출력 메서드
+        System.out.println(String.join(", ", collect));
     }
 }
