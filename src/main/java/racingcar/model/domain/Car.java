@@ -34,7 +34,7 @@ public class Car {
 
     public Car moveForward(int number) {
         if (canMove(number)) {
-            return new Car(this.name, this.position + 1);
+            return new Car(this.name, this.position + number);
         }
         return this;
     }
