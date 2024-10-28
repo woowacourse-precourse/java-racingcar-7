@@ -1,20 +1,14 @@
-package racingcar;
+package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import racingcar.io.InputView;
-import racingcar.io.OutputView;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 
-public class Game {
+public class GameContoller {
 
     private static final int INITIAL_SCORE=0;
     private final Map<String, Integer> playerScoreBoard;
@@ -22,7 +16,7 @@ public class Game {
     private final InputView inputView=new InputView();
     private final OutputView outputView=new OutputView();
 
-    public Game() {
+    public GameContoller() {
         playerScoreBoard = new LinkedHashMap<>();
         mapPlayerNamesFromInput();
         totalTurn=inputView.readTurnFromInput();

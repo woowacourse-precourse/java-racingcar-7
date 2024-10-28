@@ -1,4 +1,4 @@
-package racingcar.io;
+package racingcar.view;
 
 import java.util.HashSet;
 import java.util.Map;
