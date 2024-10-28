@@ -6,7 +6,7 @@ import java.util.List;
 public class InputValidator {
     public static void validateMaxLength5(String input) {
         if (input.length() > 5) {
-            throw new IllegalArgumentException("이름은 다섯 글자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException("이름은 다섯 글자를 초과할 수 없습니다 : " + input);
         }
     }
 
