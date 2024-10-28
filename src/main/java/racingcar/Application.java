@@ -48,14 +48,19 @@ public class Application {
         System.out.println("실행 결과:");
         for (int i = 0; i < rounds; i++) {
             playRound();
-
+            printStatus();
         }
 
-    }
     private void playRound() {
         for (Car car : cars) {
             car.move(); // 각 자동차 이동
         }
+    }
+    private void printStatus() {
+        for (Car car : cars) {
+            System.out.println(car);
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -71,5 +76,8 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int rounds = sc.nextInt();
+
+        Application cargame = new Application(carNames, rounds);
+        cargame.start();
     }
 }
