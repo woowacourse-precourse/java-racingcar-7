@@ -62,7 +62,7 @@ public class RaceController {
 		outputView.printRaceResultPrompt();
 		for (int i = 0; i < attemptCount; i++) {
 			race.moveEachCars(RandomNumberPicker.pickNumber());
-			outputView.printRaceResult(race.findRaceStatus());
+			outputView.printRaceResult(race.findRaceResult());
 			outputView.printNewLine();
 		}
 	}

@@ -17,7 +17,7 @@ public class Race {
 		cars.forEach(car -> car.move(randomNumber));
 	}
 
-	public List<CarMovementResponse> findRaceStatus() {
+	public List<CarMovementResponse> findRaceResult() {
 		return cars.stream()
 			.map(CarMovementResponse::new)
 			.toList();
