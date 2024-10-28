@@ -42,7 +42,7 @@ class NamesInputValidatorTest {
     @Test
     @DisplayName("중복된 차 이름이 있을 경우 예외 발생")
     void validateDistinctName() {
-        assertThatThrownBy(() -> NamesInputValidator.validate("ab,ab , c"))
+        assertThatThrownBy(() -> NamesInputValidator.validate("ab,ab "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ExceptionCode.NAME_DUPLICATED.message());
     }
