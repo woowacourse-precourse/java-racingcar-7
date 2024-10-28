@@ -3,7 +3,6 @@ package racingcar.Domain;
 import static racingcar.Util.Constants.Constant.DISTANCE_OF_WINNER;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
