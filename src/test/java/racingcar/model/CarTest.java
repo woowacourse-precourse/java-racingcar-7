@@ -28,6 +28,14 @@ class CarTest {
     }
 
     @Test
+    void 자동차_이름이_중복될_경우_예외발생() {
+        new Car("pobi");
+        assertThatThrownBy(() -> new Car("pobi"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
+    }
+
+    @Test
     void 자동차_전진_기능_테스트() {
         Car car = new Car("pobi");
         car.move();
