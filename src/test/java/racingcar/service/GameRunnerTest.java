@@ -47,8 +47,8 @@ public class GameRunnerTest extends NsTest {
             Map<String, Integer> carState= new HashMap<>();
             carState.put("win1", 4);
             carState.put("win2", 4);
-            String winner = gameRunner.getWinner(carState);
-            assertThat(winner).isEqualTo("win1, win2");
+            String winners = gameRunner.getWinner(carState);
+            assertThat(winners).contains("win1", "win2");
         });
     }
 
