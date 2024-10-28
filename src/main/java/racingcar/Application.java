@@ -56,6 +56,19 @@ public class Application {
         return maxPosition;
     }
 
+    public static void checkWinner(List<Car> carList, int maxPosition) {
+        List<String> winnerList = new ArrayList<>();
+
+        for (Car car : carList) {
+            if (car.getPosition() == maxPosition) {
+                winnerList.add(car.getName());
+            }
+        }
+
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(", ", winnerList));
+    }
+
     public static void game(List<Car> carList, int moveCount) {
         int maxPosition = 0;
         System.out.println("\n실행 결과");
@@ -67,10 +80,14 @@ public class Application {
         }
 
         //우승자 결정
-        //checkWinner(List<car> carList, int maxPosition);
+        checkWinner(carList, maxPosition);
     }
 
-    public static void main(String[] args) {
-        game(getCarList(), getMoveCount());
+    public static void main(String[] args) throws IllegalArgumentException {
+        try {
+            game(getCarList(), getMoveCount());
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
