@@ -13,6 +13,7 @@ public class Application {
             printWinner(game);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            throw e;
         }
     }
 
@@ -27,8 +28,8 @@ public class Application {
     }
 
     private static void printWinner(GameService game) {
-        String winner = game.getWinnersNames();
-        System.out.println("최종 우승자 : " + winner);
+        String winners = game.getWinnersNames();
+        System.out.println("최종 우승자 : " + winners);
     }
 }
 

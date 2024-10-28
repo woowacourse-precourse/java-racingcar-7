@@ -13,7 +13,7 @@ public class Car {
 
     private void validateName(String name) {
         if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없다");
+            throw new IllegalArgumentException("자동차 이름은 빈 문자일 수 없다");
         }
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하이여야 함");

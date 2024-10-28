@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 // 레이싱게임의 서비스 로직
-// 차 목록, 시도 횟수, (전진, 게임진행)
+// 차 목록, 시도 횟수, (전진, 게임진행), 우승자 기능
 public class GameService {
     private final List<Car> cars;
     private final int tryNumber;
@@ -47,7 +47,7 @@ public class GameService {
     public void play() {
         for (int i = 0; i < tryNumber; i++) {
             playRound();
-            printCurrentState();
+            printCurrentState(); // 각 시도 후 state 출력
         }
     }
 
@@ -85,5 +85,13 @@ public class GameService {
         return getWinners().stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public int getCount() {
+        return tryNumber;
     }
 }
