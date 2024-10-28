@@ -41,14 +41,14 @@ public class RacingGame {
     private void printWinner(List<Car> carList) {
         int max=0;
         for(Car car : carList) {
-            if(car.count > max) {
-                max = car.count;
+            if(car.position > max) {
+                max = car.position;
             }
         }
 
         String winnerString = "";
         for(Car car : carList) {
-            if(car.count == max) {
+            if(car.position == max) {
                 winnerString += car.name + ", ";
             }
         }
