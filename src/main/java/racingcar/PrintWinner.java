@@ -3,7 +3,7 @@ package racingcar;
 import java.util.*;
 
 public class PrintWinner {
-    public void printWinner(Map<String, Integer> carValues) {
+    public void winnerPrint(Map<String, Integer> carValues) {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(carValues.entrySet());
         list.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));  // 정렬했고
         Integer winnerScore = list.getFirst().getValue();
