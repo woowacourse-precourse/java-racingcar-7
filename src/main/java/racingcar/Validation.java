@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validation {
-    private static final String CAR_NAME_INPUT_PATTERN = "[a-zA-Z0-9]{1,5}";
+    private static final String CAR_NAME_INPUT_PATTERN = "[.]{1,5}";
     private static final String CAR_NAME_DELIMITER = ",";
     private static final int MIN_LIMIT = 1;
     private static final int MAX_LIMIT = 100;
@@ -22,7 +22,7 @@ public class Validation {
         }
 
         if (!validateEachCarName(splited)) {
-            throw new IllegalArgumentException("자동차 이름은 알파벳 대소문자와 숫자로만 이루어져 있어야 하며, 1자 이상 5자 이하여야 합니다.");
+            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다.");
         }
 
         return splited;
