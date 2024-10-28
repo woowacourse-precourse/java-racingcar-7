@@ -7,12 +7,6 @@ public class Car {
     private final CarName carName;
     private final Distance distance;
 
-    //For test only
-    public Car(String carName, int distance) {
-        this.carName = new CarName(carName);
-        this.distance = new Distance(distance);
-    }
-
     public Car(String carName) {
         this.carName = new CarName(carName);
         this.distance = new Distance();

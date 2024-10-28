@@ -10,8 +10,7 @@ public class Cars {
 
     private final List<Car> cars;
 
-    //For test only
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -41,7 +40,7 @@ public class Cars {
 
     }
 
-    private int getMaxDistance(){
+    private int getMaxDistance() {
         return cars.stream()
                 .mapToInt(Car::getDistance)
                 .max()

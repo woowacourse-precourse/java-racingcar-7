@@ -12,7 +12,9 @@ class CarRecordTest {
     @DisplayName("CarRecord 생성 테스트")
     void carRecordCreationTest() {
         //given
-        Car car = new Car("Car1", 2);
+        Car car = new Car("Car1");
+        car.go(() -> true);
+        car.go(() -> true);
 
         //when
         CarRecord carRecord = CarRecord.of(car);
