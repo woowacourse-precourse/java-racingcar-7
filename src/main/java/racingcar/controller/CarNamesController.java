@@ -13,7 +13,7 @@ public class CarNamesController {
         return true;
     }
 
-    public static boolean checkConditions (List<String> carNames) {
+    public static boolean checkConditions(List<String> carNames) {
         for (String carName : carNames) {
             if (!carName.matches("^[A-Za-z0-9ㄱ-힣]{1,5}$")) {
                 return false;
