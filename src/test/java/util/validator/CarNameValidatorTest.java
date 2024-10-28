@@ -56,10 +56,10 @@ class CarNameValidatorTest {
                     .withMessage(Message.INVALID_SINGLE_CAR_NAME.getMessage());
         }
 
-        @Test
+        @ParameterizedTest
         @DisplayName("자동차 이름이 쉼표로 구분되지 않으면 예외 처리한다.")
-        void invalidDelimiterTest() {
-            String input = "pobi&woni";
+        @ValueSource(strings = {"pobi&woni"})
+        void invalidDelimiterTest(String input) {
             assertThatIllegalArgumentException()
                     .isThrownBy(() -> carNameValidator.validate(input))
                     .withMessage(Message.INVALID_DELIMITER.getMessage());

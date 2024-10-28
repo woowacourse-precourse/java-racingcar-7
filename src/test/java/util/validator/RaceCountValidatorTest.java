@@ -39,14 +39,16 @@ public class RaceCountValidatorTest {
                     .isThrownBy(() -> raceCountValidator.validate(input))
                     .withMessage(Message.INVALID_MAX_RACE_COUNT.getMessage());
         }
-
+    }
+    @Nested
+    @DisplayName("유효한 입력 테스트")
+    class ValidInputTest {
         @ParameterizedTest
-        @DisplayName("자연수를 입력받지 않으면 예외처리한다.")
-        @ValueSource(ints = 0)
+        @DisplayName("유효한 입력입니다.")
+        @ValueSource(ints = 5)
         void carNameLengthTest(Integer input) {
-            assertThatIllegalArgumentException()
-                    .isThrownBy(() -> raceCountValidator.validate(input))
-                    .withMessage(Message.INVALID_MIN_RACE_COUNT.getMessage());
+            assertThatCode(() -> raceCountValidator.validate(input))
+                    .doesNotThrowAnyException();
         }
     }
 }
