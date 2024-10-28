@@ -25,9 +25,7 @@ public class CarController {
 
         // 입력 파싱 및 개별 이름 유효성 검사
         CarNames names = InputSplitter.split(carNamesInput);
-        for (String carName : names.getNames()) {
-            validatorFacade.validateCarNames(carName); // 개별 이름에 대한 유효성 검사
-        }
+        validatorFacade.validateCarNames(names); // 개별 이름에 대한 유효성 검사
 
         validatorFacade.validateCarCount(names);
 

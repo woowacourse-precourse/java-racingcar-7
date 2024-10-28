@@ -22,7 +22,7 @@ public class Application {
         Generator<Integer> generator = new IntegerGenerator();
         RacingService racingService = new RacingService(moveStrategy, generator);
 
-        Validator<String> carNameValidator = new CarNameValidator();
+        Validator<CarNames> carNameValidator = new CarNameValidator();
         Validator<String> roundValidator = new RoundValidator();
         Validator<CarNames> carCountValidator = new CarCountValidator();
         ValidatorFacade validatorFacade = new ValidatorFacade(carNameValidator, roundValidator, carCountValidator);
