@@ -12,8 +12,7 @@ class AttemptNumberValidatorTest {
 
     @Test
     void 유효값_통과_테스트() {
-        int result = validator.validate("3");
-        assertEquals(3, result);
+        assertDoesNotThrow(() -> validator.validate("3"));
     }
 
     @Test

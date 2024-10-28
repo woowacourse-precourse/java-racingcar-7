@@ -8,11 +8,10 @@ import java.util.Set;
 
 public class NameValidator implements InputValidator<List<String>> {
     @Override
-    public int validate(List<String> names) {
+    public void validate(List<String> names) {
         checkEmpty(names.get(0));
         checkLength(names);
         checkDuplicate(names);
-        return 1; // TODO: 크아아아악 ㅜㅜㅜ
     }
 
     private void checkLength(List<String> names) throws IllegalArgumentException {

@@ -11,8 +11,8 @@ import java.util.List;
 public class Service { // TODO: 이름 더 명확하게 개선
     CarRace carRace = new CarRace(); // TODO: composition으로??
 
-    public void operate(List<String> names, int attemptNumber) {
-        List<Boolean> initialRandoms = getRandom(names.size() * attemptNumber);
+    public void operate(List<String> names, String attemptNumber) {
+        List<Boolean> initialRandoms = getRandom(names.size() * convertType(attemptNumber));
         List<List<Boolean>> randoms = cutRandom(initialRandoms, names.size());
         initialize(names);
         move(randoms);
@@ -20,6 +20,10 @@ public class Service { // TODO: 이름 더 명확하게 개선
 
     public List<Car> getWinner() {
         return carRace.findWinners();
+    }
+
+    private int convertType(String attemptNumber) {
+        return Integer.parseInt(attemptNumber);
     }
 
     private List<Boolean> getRandom(int randomSize){

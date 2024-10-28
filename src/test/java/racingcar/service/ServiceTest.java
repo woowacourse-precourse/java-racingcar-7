@@ -29,6 +29,6 @@ class ServiceTest extends NsTest {
 
     @Override
     protected void runMain() {
-        service.operate(List.of("pobi", "woni"), 2);
+        service.operate(List.of("pobi", "woni"), "2");
     }
 }
