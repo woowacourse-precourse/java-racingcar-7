@@ -2,6 +2,8 @@ package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static racingcar.error.GameError.*;
+
 public class ConsoleInputHandler implements InputHandler {
 
     @Override
@@ -14,7 +16,7 @@ public class ConsoleInputHandler implements InputHandler {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효하지 않은 입력 형식입니다.");
+            throw new IllegalArgumentException(INVALID_INPUT_FORMAT.getMessage());
         }
     }
 }
