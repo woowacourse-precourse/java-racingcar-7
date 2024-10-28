@@ -11,8 +11,7 @@ public class CarStatusController {
 
 
     public static void printCarStatus() {
-        ArrayList<CarInfo> participantCars = getParticipantCars();
-        for (CarInfo car : participantCars) {
+        for (CarInfo car : getParticipantCars()) {
             System.out.print(car.getCarName() + " : ");
             printDash(car);
             System.out.println();
