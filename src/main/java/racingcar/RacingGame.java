@@ -23,12 +23,24 @@ public class RacingGame {
             cars.add(new Car(name.trim()));
         }
     }
+
     // 시도 횟수 입력
     private void inputAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         attempts = Integer.parseInt(Console.readLine());
         if (attempts <= 0) {
             throw new IllegalArgumentException("횟수는 1 이상의 정수여야 합니다.");
+        }
+    }
+
+    // 자동차 이동
+    private void runRace() {
+        for (int i = 0; i < attempts; i++) {
+            for (Car car : cars) {
+                car.move();
+                System.out.println(car.getName() + " : " + car.getPosition());
+            }
+            System.out.println();
         }
     }
 }
