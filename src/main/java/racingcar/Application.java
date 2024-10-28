@@ -121,11 +121,12 @@ public class Application {
     }
 
     //feat:1-2. 자동차 이름이 숫자일 경우 에러 출력(함수화)
-    public static HashMap<String, String> checkPickNum(Integer pickNum, String targetCar, HashMap<String, String> map){
+    public static HashMap<String, String> checkPickNum(Integer pickNum, String targetCar, HashMap<String, String> map) {
         if (pickNum >= 4) {
             String value = map.get(targetCar);
             value += "-";
             map.put(targetCar, value);
         }
-    return map;
+        return map;
+    }
 }
