@@ -9,8 +9,7 @@ public class Name {
 
     public Name(final String value) {
         String trimmedValue = value.trim();
-        validateNameLength(trimmedValue);
-        validateBlank(trimmedValue);
+        validate(trimmedValue);
         this.value = trimmedValue;
     }
 
@@ -40,14 +39,19 @@ public class Name {
         return value;
     }
 
+    private void validate(final String name) {
+        validateNameLength(name);
+        validateBlank(name);
+    }
+
     private void validateNameLength(final String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH_OUT_OF_RANGE.getMessage());
         }
     }
 
-    private void validateBlank(String value) {
-        if (value.isBlank()) {
+    private void validateBlank(final String name) {
+        if (name.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.NAME_INAPPROPRIATE.getMessage());
         }
     }
