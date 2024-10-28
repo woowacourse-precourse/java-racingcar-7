@@ -9,12 +9,15 @@ public class RacingGameService {
     private RacingGame racingGame;
 
     public void startGame(String carNames, String rounds) {
+        int parsedRounds = initializeGame(carNames, rounds);
+        racingGame = new RacingGame(createCars(carNames), parsedRounds);
+    }
+
+    private int initializeGame(String carNames, String rounds) {
         validateCarNames(carNames);
         int parsedRounds = parseRounds(rounds);
         validateRounds(parsedRounds);
-
-        List<Car> cars = createCars(carNames);
-        racingGame = new RacingGame(cars, parsedRounds);
+        return parsedRounds;
     }
 
     public void playRound() {
@@ -33,7 +36,6 @@ public class RacingGameService {
         return racingGame.getWinners();
     }
 
-    // Private helper methods for validation and creation
     private void validateCarNames(String carNames) {
         String[] carNameArray = carNames.split(",");
         for (String carName : carNameArray) {
