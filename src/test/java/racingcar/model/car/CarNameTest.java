@@ -1,6 +1,8 @@
 package racingcar.model.car;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static racingcar.model.message.ErrorMessage.INVALID_CAR_NAME_LENGTH;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,5 +19,15 @@ class CarNameTest {
 
 		// then
 		assertThat(car.getName()).isEqualTo(name);
+	}
+
+	@ParameterizedTest
+	@DisplayName("이름의 길이가 0이거나 5 초과라면 에러를 발생시킨다.")
+	@ValueSource(strings = {"", "abcdef"})
+	void 이름의_길이가_0이거나_5_초과일_때_예외가_발생한다(String name) {
+		// when, then
+		assertThatThrownBy(() -> new Car(name))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessage(INVALID_CAR_NAME_LENGTH.getMessage());
 	}
 }
