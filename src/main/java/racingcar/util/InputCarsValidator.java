@@ -7,12 +7,15 @@ import racingcar.model.Car;
 
 public class InputCarsValidator {
 
+    public static final String WHITE_SPACE_REGEX = "\\s";
+
+
     public static void isEmpty(String input) {
 
         if (input.isEmpty()) {
             throw new IllegalArgumentException("입력이 비어 있습니다.");
         }
-        if (input.replaceAll("\\s", "").isEmpty()) {
+        if (input.replaceAll(WHITE_SPACE_REGEX, "").isEmpty()) {
             throw new IllegalArgumentException("입력이 비어 있습니다.");
         }
     }
