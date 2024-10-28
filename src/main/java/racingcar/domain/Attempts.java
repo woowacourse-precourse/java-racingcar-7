@@ -20,7 +20,7 @@ public class Attempts {
         }
     }
 
-    public void comsumeAttempt() {
+    public void consumeAttempt() {
         if (remainAttempts > 0) {
             remainAttempts--;
         }
