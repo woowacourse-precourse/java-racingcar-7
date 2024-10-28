@@ -1,7 +1,7 @@
-package racingcar.controller.validation;
+package racingcar.service.validation;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.service.validation.AttemptNumberValidator;
 import racingcar.view.messages.ErrorMessageEnum;
 
 import static org.junit.jupiter.api.Assertions.*;

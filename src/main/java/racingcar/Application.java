@@ -1,9 +1,9 @@
 package racingcar;
 
 import racingcar.controller.Controller;
-import racingcar.controller.validation.AttemptNumberValidator;
-import racingcar.controller.validation.InputValidator;
-import racingcar.controller.validation.NameValidator;
+import racingcar.service.validation.AttemptNumberValidator;
+import racingcar.service.validation.InputValidator;
+import racingcar.service.validation.NameValidator;
 import racingcar.model.InputParser;
 import racingcar.service.Service;
 

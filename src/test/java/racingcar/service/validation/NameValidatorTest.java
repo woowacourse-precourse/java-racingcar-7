@@ -1,13 +1,11 @@
-package racingcar.controller.validation;
+package racingcar.service.validation;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.service.validation.NameValidator;
 import racingcar.view.messages.ErrorMessageEnum;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;

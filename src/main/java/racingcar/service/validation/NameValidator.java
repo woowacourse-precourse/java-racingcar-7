@@ -1,4 +1,4 @@
-package racingcar.controller.validation;
+package racingcar.service.validation;
 
 import racingcar.view.messages.ErrorMessageEnum;
 
