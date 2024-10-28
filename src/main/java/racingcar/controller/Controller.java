@@ -1,19 +1,20 @@
 package racingcar.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.RacingGame;
-import racingcar.service.ParsingService;
-import racingcar.service.RandomGameService;
-import racingcar.service.SeperatorService;
-import racingcar.service.ValidService;
+import racingcar.service.*;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Controller {
+    //멤버
     private final SeperatorService seperator= new SeperatorService();
     private final ParsingService parsing=new ParsingService();
     private final ValidService valid=new ValidService();
     private final RacingGame racingGame=new RacingGame();
     private final RandomGameService randomGameService=new RandomGameService();
+    private final WinnerService winnerService= new WinnerService();
+
+    //Controller 구동함수
     public void start(){
         OutputView.requestCarsName();
         String input= InputView.getInput();
@@ -42,6 +43,8 @@ public class Controller {
         }
 
         //최종 우승자 가리기
+        winnerService.SearchWinners(racingGame.getCars());
+
 
 
         }

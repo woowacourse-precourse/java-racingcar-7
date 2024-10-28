@@ -20,7 +20,7 @@ public class WinnerService {
     }
 
     //최대 Score을 갖는 car들 찾기
-    public void SearchWinners(List<Car> cars, Config config) {
+    public void SearchWinners(List<Car> cars) {
         searchMaxScore(cars);
         for (Car car : cars) {
             if (car.getScore()==maxScore){
