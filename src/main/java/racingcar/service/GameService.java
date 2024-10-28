@@ -9,6 +9,7 @@ import racingcar.model.Car;
 import racingcar.util.Util;
 import racingcar.validator.Validator;
 import racingcar.view.InputView;
+import racingcar.view.Message;
 import racingcar.view.OutputView;
 
 public class GameService {
@@ -17,7 +18,7 @@ public class GameService {
     private Validator validator = new Validator();
 
     public List<Car> readyCar() {
-        outputView.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        outputView.print(Message.INPUT_CAR_NAMES);
         String string = inputView.input();
         validator.validateNames(string);
         List<Car> cars = new ArrayList<>();
@@ -28,7 +29,7 @@ public class GameService {
     }
 
     public Long readyTimes() {
-        outputView.print("시도할 횟수는 몇 회인가요?");
+        outputView.print(Message.INPUT_TIMES);
         final Long times = inputView.longInput();
         validator.validateTimes(times);
         outputView.print("");
