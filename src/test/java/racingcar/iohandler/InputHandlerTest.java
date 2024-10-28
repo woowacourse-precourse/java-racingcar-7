@@ -17,7 +17,7 @@ class InputHandlerTest {
         Console.close();
     }
 
-    @DisplayName("")
+    @DisplayName("차 이름 입력 시 해당 이름들로 배열을 만들어 반환한다.")
     @Test
     void getCarNamesFromUser() {
 
@@ -31,7 +31,7 @@ class InputHandlerTest {
                 .contains("apple", "banana");
     }
 
-    @DisplayName("수행 횟수 양수 입력시 정상적으로 추출한다..")
+    @DisplayName("수행 횟수 양수 입력시 정상적으로 추출한다.")
     @Test
     void getMoveCountFromUserWithValidInput() {
 
