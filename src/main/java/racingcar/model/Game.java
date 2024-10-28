@@ -39,4 +39,15 @@ public class Game {
     private boolean canCarMove(int randomValue) {
         return randomValue >= 4;
     }
+
+    public List<Car> getWinner() {
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .collect(Collectors.toList());
+    }
 }

@@ -8,13 +8,16 @@ import racingcar.parser.InputParser;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.RepeatCountValidator;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
     private final InputView inputView;
+    private final OutputView outputView;
     private final CareTaker careTaker;
 
     public RacingCarController() {
         this.inputView = new InputView();
+        this.outputView = new OutputView();
         this.careTaker = new CareTaker();
     }
 
@@ -23,6 +26,8 @@ public class RacingCarController {
         int repeatCount = initializeRepeatCount();
 
         Game game = startGame(repeatCount, cars);
+
+        displayResults(game);
     }
 
     private List<Car> initializeCars() {
@@ -41,5 +46,10 @@ public class RacingCarController {
         Game game = new Game(repeatCount, cars);
         game.playAllRounds(careTaker);
         return game;
+    }
+
+    private void displayResults(Game game) {
+        outputView.printExeResult(careTaker);
+        outputView.printWinner(game.getWinner());
     }
 }
