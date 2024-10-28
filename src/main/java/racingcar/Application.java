@@ -8,6 +8,11 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         Application application = new Application();
+        List<String> racers = application.getRacers();
+        int totalRounds = application.getTotalOfRounds();
+
+        Race race = new Race(racers);
+        application.runRaceAndDisplayRacingResults(race, totalRounds);
     }
 
     protected List<String> getRacers() {
@@ -24,13 +29,20 @@ public class Application {
         return Integer.parseInt(totalOfRoundsInput);
     }
 
-    protected void runRace(Race race, int totalRounds) {
-        System.out.println("실행 결과");
+    protected void runRaceAndDisplayRacingResults(Race race, int totalRounds) {
+        System.out.println("\n실행 결과");
 
         for (int i = 0; i < totalRounds; i++) {
             race.moveAllCars();
             race.displayCarProgress();
             System.out.println();
         }
+
+        displayWinners(race);
+    }
+
+    protected void displayWinners(Race race) {
+        List<String> winners = race.getWinners();
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }

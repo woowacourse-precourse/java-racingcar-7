@@ -2,9 +2,11 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Race {
     private final Map<String, Integer> carProgressMap;
@@ -33,5 +35,13 @@ public class Race {
         carProgressMap.forEach((name, distance) ->
                 System.out.println(name + " : " + "-".repeat(distance))
         );
+    }
+
+    public List<String> getWinners() {
+        int maxDistance = Collections.max(carProgressMap.values());
+        return carProgressMap.entrySet().stream()
+                .filter(entry -> entry.getValue() == maxDistance)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 }
