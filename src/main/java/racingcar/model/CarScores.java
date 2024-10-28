@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import racingcar.constants.ErrorMessage;
 
 public class CarScores {
     private static final String CARS_SEPARATOR = ",";
@@ -28,7 +29,7 @@ public class CarScores {
 
     public static void isBlank(String carNames) {
         if (carNames == null || carNames.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 빈 값이 될 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_CAN_NOT_BE_EMPTY.getErrorMessage());
         }
     }
 

@@ -7,9 +7,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import racingcar.model.CarScores;
+import racingcar.constants.ErrorMessage;
 
 public class InputCarNamesTest {
-    @DisplayName("시도 횟수가 빈 값이면 예외 발생")
+    @DisplayName("자동차 이름이 빈 값이면 예외 발생")
     @ParameterizedTest
     @NullAndEmptySource
     public void ThrowExceptionIfRaceTimesEmpty(String carNames) {
@@ -19,6 +20,6 @@ public class InputCarNamesTest {
 
         assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 빈 값이 될 수 없습니다.");
+                .hasMessageContaining(ErrorMessage.CAR_NAME_CAN_NOT_BE_EMPTY.getErrorMessage());
     }
 }
