@@ -22,5 +22,15 @@ public class RacingCarController {
     }
 
     public void run() {
+        OutputView.printEnterCarNamesMessage();
+        String carNames = inputView.getCarNames();
+        carNameValidator.validate(carNames);
+
+        OutputView.printEnterTrialsCountMessage();
+        String numberOfTrialsInput = inputView.getNumberOfTrials();
+        numberOfTrialsValidator.validate(numberOfTrialsInput);
+
+        int tryCount = Integer.parseInt(numberOfTrialsInput);
+        racingCarService.startRace(carNames, tryCount);
     }
 }
