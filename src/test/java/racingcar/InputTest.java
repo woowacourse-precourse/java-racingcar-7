@@ -35,7 +35,7 @@ public class InputTest {
     }
 
     @Test
-    void 라운드횟수_유효성_테스트(){
+    void 라운드횟수_유효성_테스트() {
         assertThrows(IllegalArgumentException.class, () -> {
             RoundValidator.isValid("");
             RoundValidator.isValid("ff");

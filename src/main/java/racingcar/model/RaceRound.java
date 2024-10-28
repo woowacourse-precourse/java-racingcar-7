@@ -17,13 +17,13 @@ public class RaceRound {
         return thisRoundCars;
     }
 
-    public void roundStart(Cars cars){
-        for(Car car : cars.getCarList()) {
+    public void roundStart(Cars cars) {
+        for (Car car : cars.getCarList()) {
             car.moveIfTrue(car.getRandomValue());
         }
     }
 
-    public void saveRoundResult(Cars cars){
+    public void saveRoundResult(Cars cars) {
         this.thisRoundCars = cars;
     }
 }

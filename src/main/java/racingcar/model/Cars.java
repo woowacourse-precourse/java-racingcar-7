@@ -27,7 +27,7 @@ public class Cars {
 
         Cars winnerCars = new Cars();
         carList.forEach(car -> {
-            if(car.getDistance().getDistanceValue() == maxDistance){
+            if (car.getDistance().getDistanceValue() == maxDistance) {
                 winnerCars.getCarList().add(car);
             }
         });
@@ -47,7 +47,7 @@ public class Cars {
     public void addCarFromString(String input) {
         String[] names = input.split(",");
 
-        for(int i=0; i< names.length; i++){
+        for (int i = 0; i < names.length; i++) {
             Car car = new Car(names[i].trim(), i);
             addCar(car);
         }
@@ -55,7 +55,7 @@ public class Cars {
 
     public String toStringRoundResult() {
         StringBuilder result = new StringBuilder();
-        for(Car car : this.carList){
+        for (Car car : this.carList) {
             result.append(car.getName()).append(" : ")
                     .append(car.getDistanceStatusBar(car.getDistance().getDistanceValue()))
                     .append("\n");

@@ -13,7 +13,7 @@ public class RacingGameController {
     private final Cars cars = new Cars();
 
 
-    public void startGame(){
+    public void startGame() {
         try {
             String carNamesForString = InputView.getCarNames();
             CarValidator.isValid(carNamesForString);
@@ -34,7 +34,7 @@ public class RacingGameController {
         }
     }
 
-    private void roundStart(Cars cars, RaceRound rounds){
+    private void roundStart(Cars cars, RaceRound rounds) {
         RacingGame racingGame = new RacingGame(cars, rounds);
         OutputView.gameStart();
 
@@ -46,7 +46,7 @@ public class RacingGameController {
         endGame(finalRoundCars);
     }
 
-    public void endGame(Cars finalRoundCars){
+    public void endGame(Cars finalRoundCars) {
         Cars winnerCars = finalRoundCars.sortWinnerCars();
         OutputView.gameResult(winnerCars.toStringWinnerCars(winnerCars));
     }

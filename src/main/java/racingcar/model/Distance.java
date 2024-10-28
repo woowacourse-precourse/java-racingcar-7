@@ -10,12 +10,13 @@ public class Distance {
     public Distance(int distance) {
         this.distance = distance;
     }
+
     public int getDistanceValue() {
         return distance;
     }
 
     public void goForInt(int randomValue) {
-        if(isAbleToGo(randomValue)) {
+        if (isAbleToGo(randomValue)) {
             distance += randomValue;
         }
 

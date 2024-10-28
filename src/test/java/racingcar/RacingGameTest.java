@@ -12,21 +12,21 @@ public class RacingGameTest {
     private RacingGameController controller;
 
     @Test
-    void 자동차_이동_테스트(){
+    void 자동차_이동_테스트() {
         controller = new RacingGameController();
         Car car = new Car("gina", 1);
 
-        car.moveIfTrue( 5);
+        car.moveIfTrue(5);
 
         assertEquals(5, car.getDistance().getDistanceValue());
     }
 
     @Test
-    void 자동차_이동안함_테스트(){
+    void 자동차_이동안함_테스트() {
         controller = new RacingGameController();
         Car car = new Car("gina", 1);
 
-        car.moveIfTrue( 3);
+        car.moveIfTrue(3);
 
         assertEquals(0, car.getDistance().getDistanceValue());
     }
