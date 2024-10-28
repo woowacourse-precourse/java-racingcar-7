@@ -49,7 +49,7 @@ class ValidatorTest {
         // given
         String count = "-100";
         // when & then
-        assertThatThrownBy(() ->  validator.checkLoopCount(count))
+        assertThatThrownBy(() ->  validator.checkNegativeCount(count))
         .isInstanceOf(IllegalArgumentException.class);
     }
 
