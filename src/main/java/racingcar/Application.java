@@ -23,7 +23,11 @@ public class Application {
         System.out.println("\n실행 결과");
 
         for (int i = 0; i < movementCount; i++) {
-            moveCars(cars);
+            List<Integer> randomNumbers = new ArrayList<>();
+            for (int j = 0; j < cars.size(); j++) {
+                randomNumbers.add(getRandomNumber());
+            }
+            moveCars(cars, randomNumbers);
             showCarDistances(cars);
             System.out.println();
         }
@@ -103,12 +107,12 @@ public class Application {
         return winners;
     }
 
-    public static void moveCars(List<Car> cars) {
-        for (Car car : cars) {
-            Integer randomNumber = getRandomNumber();
-            Boolean isValidNumber = isValidNumber(randomNumber);
+    public static void moveCars(List<Car> cars, List<Integer> randomNumbers) {
+        for (int i = 0; i < cars.size(); i++) {
+            Car car = cars.get(i);
+            Integer randomNumber = randomNumbers.get(i);
 
-            if (isValidNumber) {
+            if (isValidNumber(randomNumber)) {
                 car.addDistance();
             }
         }
