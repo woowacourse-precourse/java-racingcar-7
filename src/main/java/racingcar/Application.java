@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
+
+
+
         //1. 경주할 자동차의 이름을 쉼표 기준으로 구분하여 한줄에 받기
         String inputCar;
 
@@ -29,8 +32,25 @@ public class Application {
         String inputTry;
         System.out.println("시도할 횟수는 몇 회인가요?");
         inputTry = Console.readLine();
-
-
+        //2-1. 시도할 횟수값이 정수값이 아니면 에러 출력
+        try {
+            checkIfNumeric(inputTry);
+        } catch (IllegalArgumentException e){
+            return;
+        }
 
     }
+
+    public static void checkIfNumeric(String inputTry){
+        if (!isNmberic(inputTry)){
+            throw new IllegalArgumentException("정수만 입력할 수 있습니다.");
+        }
+    }
+
+    public static boolean isNmberic(String inputTry) {
+        return  inputTry != null && inputTry.matches("[+-]?\\d*(\\.\\d+)?");
+    }
+
+
+
 }
