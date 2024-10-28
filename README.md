@@ -46,7 +46,7 @@
 ┣ 📂model
 ┃ ┗ 📜Racing.java
 ┣ 📂service
-┃ ┣ 📜InputService.java
+┃ ┣ 📜CarnameService.java
 ┃ ┣ 📜RacingRoundService.java
 ┃ ┗ 📜WinnerService.java
 ┣ 📂validator
