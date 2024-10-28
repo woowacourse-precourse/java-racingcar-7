@@ -11,7 +11,7 @@ import racingcar.view.RacingGameView;
 
 public class RacingGameController {
     RacingGameView view = new RacingGameView();
-    List<Car> cars = new ArrayList<>();
+    public List<Car> cars = new ArrayList<>();
     int trialCount = 0;
 
     public void run(){
@@ -31,7 +31,7 @@ public class RacingGameController {
         }
     }
 
-    private void startRace(List<Car> cars, int trialCount){
+    public void startRace(List<Car> cars, int trialCount){
         view.showTrialResultsMessage();
         for(int i=0;i<trialCount;i++) {
             executeOneRound(cars);
