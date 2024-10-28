@@ -18,6 +18,8 @@ public class Application {
 
         // 경주 게임 시작
         runRace(carNames, carPositions, attempts);
+        // 우승자 안내 문구 출력
+        announceWinners(carNames, carPositions);
 
     }
 
@@ -96,4 +98,16 @@ public class Application {
     }
 
 
+    // 우승자 안내 문구 출력
+    private static void announceWinners(List<String> names, Map<String, Integer> carPositions) {
+        int maxPosition = carPositions.values().stream().max(Integer::compare).orElse(0);
+        StringBuilder winners = new StringBuilder();
+        for (String name : names) {
+            if (carPositions.get(name) == maxPosition) {
+                winners.append(name).append(", ");
+            }
+        }
+
+        System.out.println("최종 우승자 : " + winners.substring(0, winners.length() - 2));
+    }
 }
