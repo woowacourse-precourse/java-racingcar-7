@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.Validator;
 
 public class NumberValidator {
     public void inputPositiveNumber(int number) {
