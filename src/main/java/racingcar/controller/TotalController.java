@@ -4,8 +4,10 @@ import racingcar.service.race.RaceStarterService;
 
 public class TotalController {
     private static TotalController instance = new TotalController();
+    private RaceStarterService raceStarterService;
 
     private TotalController() {
+        raceStarterService = new RaceStarterService();
     }
 
     private void getInput() {
