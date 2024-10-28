@@ -11,8 +11,8 @@ public class InputView {
     private int trial;
     private final Validation validation;
 
-    public InputView() {
-        this.validation = new Validation();
+    public InputView(Validation validation) {
+        this.validation = validation;
     }
 
     public void inputGameInfo() {
