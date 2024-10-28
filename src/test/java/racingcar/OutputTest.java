@@ -42,4 +42,16 @@ public class OutputTest extends NsTest {
                 .isEqualTo("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         outContent.reset(); // 매 테스트 후 출력 리셋
     }
+
+    @Test
+    @DisplayName("시도할 횟수 입력 요청 메세지 출력")
+    void printNumberRequestMessage_MethodCall_ShouldPrintNumberRequestMessage() {
+        //when
+        Output.printNumberRequestMessage();
+
+        //then
+        assertThat(outContent.toString().trim())
+                .isEqualTo("시도할 횟수는 몇 회인가요?");
+        outContent.reset(); // 매 테스트 후 출력 리셋
+    }
 }
