@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.Objects;
+import racingcar.constants.ErrorMessage;
 
 public class CarName {
     private final String carName;
@@ -16,13 +17,13 @@ public class CarName {
 
     public static void validateLength(String carName) {
         if (carName.isBlank() || carName.length() > MAX_CAR_NAME) {
-            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LENGTH_MIN_ONE_MAX_FIVE.getErrorMessage());
         }
     }
 
     public static void validateHasBlank(String carName) {
         if (carName.contains(BLANK)) {
-            throw new IllegalArgumentException("자동차 이름에는 공백이 포함될 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_MUST_NOT_HAVE_CHARACTER.getErrorMessage());
         }
     }
 
