@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 
 class RaceTest {
 
-    NumberGenerator forwardGenerator = () -> 4;
+    NumberGenerator moveGenerator = () -> 4;
     NumberGenerator stopGenerator = () -> 3;
 
     @DisplayName("레이스 생성 성공")
     @Test
     void raceTest() {
-        Car pobi = new Car("pobi", forwardGenerator);
+        Car pobi = new Car("pobi", moveGenerator);
         Car woni = new Car("woni", stopGenerator);
         List<Car> cars = List.of(pobi, woni);
 
@@ -25,7 +25,7 @@ class RaceTest {
     @DisplayName("레이스 생성 실패 : 중복된 자동차 이름")
     @Test
     void validateDuplicatesTest() {
-        Car pobi = new Car("pobi", forwardGenerator);
+        Car pobi = new Car("pobi", moveGenerator);
         Car woni = new Car("pobi", stopGenerator);
         List<Car> cars = List.of(pobi, woni);
 
@@ -37,7 +37,7 @@ class RaceTest {
     @DisplayName("레이스 생성 실패 : 둘 미만의 자동차가 참가")
     @Test
     void validateAtLeastTwoCarsTest() {
-        Car pobi = new Car("pobi", forwardGenerator);
+        Car pobi = new Car("pobi", moveGenerator);
         List<Car> cars = List.of(pobi);
 
         Assertions.assertThatThrownBy(() -> new Race(cars))
@@ -49,7 +49,7 @@ class RaceTest {
     @Test
     void findWinnerTest() {
         //given
-        Car pobi = new Car("pobi", forwardGenerator);
+        Car pobi = new Car("pobi", moveGenerator);
         Car woni = new Car("woni", stopGenerator);
         List<Car> cars = List.of(pobi, woni);
         Race race = new Race(cars);
@@ -66,8 +66,8 @@ class RaceTest {
     @Test
     void findWinnersTest() {
         //given
-        Car pobi = new Car("pobi", forwardGenerator);
-        Car woni = new Car("woni", forwardGenerator);
+        Car pobi = new Car("pobi", moveGenerator);
+        Car woni = new Car("woni", moveGenerator);
         List<Car> cars = List.of(pobi, woni);
         Race race = new Race(cars);
         pobi.move();

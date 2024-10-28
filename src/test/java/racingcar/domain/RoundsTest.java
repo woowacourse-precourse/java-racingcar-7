@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class RoundsTest {
 
-    NumberGenerator forwardGenerator = () -> 4;
+    NumberGenerator moveGenerator = () -> 4;
     NumberGenerator stopGenerator = () -> 3;
 
     @DisplayName("시도할 횟수 입력 실패 : 문자 입력")
@@ -36,7 +36,7 @@ class RoundsTest {
     @Test
     void repeatTest() {
         //given
-        Car pobi = new Car("pobi", forwardGenerator);
+        Car pobi = new Car("pobi", moveGenerator);
         Car woni = new Car("woni", stopGenerator);
         List<Car> cars = List.of(pobi, woni);
         Race race = new Race(cars);
