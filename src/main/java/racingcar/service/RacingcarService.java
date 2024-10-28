@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.entity.Car;
+
 public class RacingcarService {
 
     public List<String> parseCarName(String rawCarName) {

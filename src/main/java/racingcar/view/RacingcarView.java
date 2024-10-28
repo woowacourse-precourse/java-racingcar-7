@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.entity.Car;
+
 public class RacingcarView {
 
     public String carNameInput() {
