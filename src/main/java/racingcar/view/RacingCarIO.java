@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -17,7 +17,7 @@ public class RacingCarIO {
         return readLine();
     }
 
-    public void printResult(ArrayList<String> names, ArrayList<BigInteger> values) {
+    public void printResult(List<String> names, List<BigInteger> values) {
         System.out.println("실행 결과");
 
         for (int i = 0; i < names.size(); i++) {
@@ -35,7 +35,7 @@ public class RacingCarIO {
         return slash;
     }
 
-    public void printWinners(ArrayList<String> winners) {
+    public void printWinners(List<String> winners) {
         System.out.print("최종 우승자 : ");
 
         if (winners.isEmpty()) {
