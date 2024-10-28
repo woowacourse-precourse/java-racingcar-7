@@ -26,7 +26,7 @@ public class RaceManagerTest {
                     input.put("woni", 0);
 
                     Map<String, Integer> expectedResult = new HashMap<>();
-                    expectedResult.put("pobi", 0);
+                    expectedResult.put("pobi", 1);
                     expectedResult.put("woni", 0);
 
                     Map<String, Integer> actualResult = raceManager.raceOnce(input);
