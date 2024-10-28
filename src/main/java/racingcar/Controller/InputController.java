@@ -1,11 +1,11 @@
 package racingcar.Controller;
 
+
 import racingcar.Model.GameCars;
 import racingcar.Validation.InputValidator;
 import racingcar.View.StartView;
 
 public class InputController {
-
 
     public static GameCars setCars() {
         String carInput = StartView.inputCarInfo();
@@ -18,8 +18,11 @@ public class InputController {
         InputValidator.validate(carInput);
     }
 
-
     public static int setGameCount() {
-        return Integer.parseInt(StartView.inputNumOfMatch());
+        try {
+            return Integer.parseInt(StartView.inputNumOfMatch());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자를 입력해 주세요.", e);
+        }
     }
 }

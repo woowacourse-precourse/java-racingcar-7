@@ -6,33 +6,34 @@ import racingcar.Model.GameCars;
 import racingcar.View.GameView;
 
 public class PlayController {
-    public final int gameNumber;
-    public final GameCars gameCars;
-    public GameView gameView;
+    private final int gameNumber;
+    private final GameCars gameCars;
+    private final GameView gameView;
 
-    public PlayController() {
-        gameCars = InputController.setCars();
-        gameNumber = InputController.setGameCount();
-        gameView = new GameView();
-        play();
-        findWinner();
-        showWinner();
+    public PlayController(GameCars gameCars, int gameNumber, GameView gameView) {
+        this.gameCars = gameCars;
+        this.gameNumber = gameNumber;
+        this.gameView = gameView;
     }
 
+    public void startGame() {
+        runGameRounds();
+        List<Car> winners = determineWinners();
+        displayWinners(winners);
+    }
 
-
-    public void play() {
-        for(int i = 0; i < gameNumber; i++) {
+    private void runGameRounds() {
+        for (int i = 0; i < gameNumber; i++) {
             gameCars.playGames();
             gameView.showGameProgress(gameCars.getCars());
         }
     }
 
-    public List<Car> findWinner() {
+    private List<Car> determineWinners() {
         return gameCars.findWinnerCars();
     }
 
-    public void showWinner(){
-        gameView.showWinnerCars(findWinner());
+    private void displayWinners(List<Car> winners) {
+        gameView.showWinnerCars(winners);
     }
 }
