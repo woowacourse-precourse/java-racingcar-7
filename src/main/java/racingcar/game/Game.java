@@ -9,7 +9,7 @@ public class Game {
         System.out.println("\n실행 결과");
         for (int i = 0; i < n; i++) {
             progress(carList);
-            printProgress();
+            printProgress(carList);
         }
 
         getResult();
@@ -21,8 +21,11 @@ public class Game {
         }
     }
 
-    private static void printProgress() {
-
+    private static void printProgress(ArrayList<Car> carList) {
+        for (Car c : carList) {
+            System.out.println(c.getName() + " : " + "-".repeat(c.getMoveCount()));
+        }
+        System.out.println();
     }
 
     private static void getResult() {
