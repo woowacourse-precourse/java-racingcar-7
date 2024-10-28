@@ -1,6 +1,13 @@
 package racingcar;
 
 public class Controller {
+  String carNames;
+  int playCount;
+
+  public Controller(String carNames, int playCount) {
+    this.carNames = carNames;
+    this.playCount = playCount;
+  }
   // [] 자동차 이름, 시도 횟수 주입
   // [] 자동차 경주 실행
   // [] 시도 횟수만큼 각 자동차 전진
