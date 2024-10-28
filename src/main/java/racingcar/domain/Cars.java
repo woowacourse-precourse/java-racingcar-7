@@ -1,11 +1,12 @@
 package racingcar.domain;
 
-import static racingcar.view.OutputView.printCurrentResult;
+import racingcar.util.RandomGeneratorUtil;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.util.RandomGeneratorUtil;
+
+import static racingcar.view.OutputView.printCurrentResult;
 
 public class Cars {
     private final List<Car> cars;
@@ -17,12 +18,16 @@ public class Cars {
 
     public void move() {
         for (Car car : cars) {
-            int randomNumber = RandomGeneratorUtil.getRandomNumber();
-            if (randomNumber >= MINIMUM_MOVEMENT_THRESHOLD) {
+            if (getNumberOfMoves()) {
                 car.movementOfNumber++;
             }
         }
         printCurrentResult(cars);
+    }
+
+    private boolean getNumberOfMoves() {
+        int randomNumber = RandomGeneratorUtil.getRandomNumber();
+        return randomNumber >= MINIMUM_MOVEMENT_THRESHOLD;
     }
 
     private int findMaxMovement() {
