@@ -14,7 +14,7 @@ public class FormatUtil {
 
     public static String joinWinners(WinnerDto winners) {
         List<String> winnerNames = winners.names();
-        return String.join(", ", winnerNames);
+        return String.join(",", winnerNames);
     }
 
 }
