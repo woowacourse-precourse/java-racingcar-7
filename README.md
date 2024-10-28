@@ -74,12 +74,12 @@
 - [x] 공동 우승자 안내 문구를 출력한다.
 
 ## 프로그래밍 요구 사항
-- [ ] JDK 21 버전에서 실행 가능하도록 한다.
-- [ ] 프로그램 실행의 시작점은 `Application`의 `main()`으로 한다.
-- [ ] `build.gradle` 파일을 변경하지 않고 제공된 라이브러리 외의 외부 라이브러리를 사용하지 않는다.
-- [ ] 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
-- [ ] 파일, 패키지의 이름을 바꾸거나 이동하지 않는다.
-- [ ] Java Style Guide를 준수하며 프로그래밍한다.
+- [x] JDK 21 버전에서 실행 가능하도록 한다.
+- [x] 프로그램 실행의 시작점은 `Application`의 `main()`으로 한다.
+- [x] `build.gradle` 파일을 변경하지 않고 제공된 라이브러리 외의 외부 라이브러리를 사용하지 않는다.
+- [x] 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
+- [x] 파일, 패키지의 이름을 바꾸거나 이동하지 않는다.
+- [x] Java Style Guide를 준수하며 프로그래밍한다.
 
 ## 프로그래밍 요구 사항 2
 - [ ] indent depth를 2까지만 허용한다.
@@ -88,9 +88,9 @@
 - [ ] `JUnit 5`와 `AssertJ`를 이용하여 테스트 코드를 작성하고 모든 기능을 검증한다.
 
 ## 라이브러리 사용 요구 사항
-- [ ] `camp.nextstep.edu.missionutils`의 `Randoms` 및 `Console` API를 사용하여 구현한다.
-  - [ ] `Randoms.pickNumberInRange(0, 9)`를 사용하여 0에서 9 사이의 무작위 값을 추출한다.
-  - [ ] `Console.readLine()`을 사용하여 사용자 입력을 받는다.
+- [x] `camp.nextstep.edu.missionutils`의 `Randoms` 및 `Console` API를 사용하여 구현한다.
+  - [x] `Randoms.pickNumberInRange(0, 9)`를 사용하여 0에서 9 사이의 무작위 값을 추출한다.
+  - [x] `Console.readLine()`을 사용하여 사용자 입력을 받는다.
 
 ## 디자인 패턴 적용 요구 사항
 - [ ] 각 역할을 분리하여 MVC 패턴으로 설계한다. -> 아래의 클래스 다이어그램을 참고한다.
@@ -104,31 +104,40 @@ classDiagram
     }
 
     class RacingGameController {
-        -racingGame: RacingGame
+        -racingGameService: RacingGameService
         -racingGameView: RacingGameView
         +RacingGameController()
-        +run()
-        -createView()
-        -processGame()
-        -showResult()
-        -validateInput(String)
-        -createGame(String[] carNames, int rounds)
+        +start(): void
+        -validateInput(String carNames, int rounds): void
+    }
+
+    class RacingGameService {
+        -racingGame: RacingGame
+        +startGame(String carNames, int rounds): void
+        +playRound(): void
+        +hasNextRound(): boolean
+        +getCurrentStatus(): List~Car~
+        +getWinners(): List~String~
+        -createCars(String carNames): List~Car~
+        -validateCarNames(String carNames): void
+        -validateRounds(int rounds): void
     }
 
     class RacingGame {
         -cars: List~Car~
         -rounds: int
-        +RacingGame(String[] carNames, int rounds)
-        +race()
-        +getWinners(): List~Car~
-        +getCurrentStatus(): List~Car~
+        -currentRound: int
+        +RacingGame(List~Car~ cars, int rounds)
+        +race(): void
+        +isFinished(): boolean
+        +getCars(): List~Car~
     }
 
     class Car {
         -name: String
         -position: int
         +Car(String name)
-        +move()
+        +move(): void
         +getName(): String
         +getPosition(): int
     }
@@ -136,13 +145,14 @@ classDiagram
     class RacingGameView {
         +inputCarNames(): String
         +inputRounds(): int
-        +showRaceStatus(List~Car~)
-        +showWinners(List~Car~)
-        +showError(String)
+        +displayRoundResults(List~Car~ cars): void
+        +displayWinners(List~String~ winners): void
+        +displayError(String message): void
     }
 
     Application --> RacingGameController : creates
-    RacingGameController --> RacingGameView : creates and manages
-    RacingGameController --> RacingGame : creates and manages
+    RacingGameController --> RacingGameView : uses
+    RacingGameController --> RacingGameService : uses
+    RacingGameService --> RacingGame : manages
     RacingGame --> Car : contains
 ```
