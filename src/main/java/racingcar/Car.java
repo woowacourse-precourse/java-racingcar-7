@@ -6,7 +6,17 @@ public class Car {
     private int position = 0;
 
     public Car(String name) {
+        validateName(name);
         this.name = name;
+    }
+
+    private void validateName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        if (name.trim().length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public String getName() {
