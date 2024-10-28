@@ -54,6 +54,21 @@ public class Cars {
         return randomNumber >= MOVE_THRESHOLD;
     }
 
+    public List<String> getRaceWinner() {
+        int max = getMaxPosition();
+        return carList.stream()
+                .filter(car -> car.getPosition() == max)
+                .map(Car::getName)
+                .toList();
+    }
+
+    public int getMaxPosition() {
+        return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessages.BLANK_INPUT));
+    }
+
     @Override
     public String toString() {
         return carList.stream()

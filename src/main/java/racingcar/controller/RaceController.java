@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.model.Cars;
 import racingcar.model.TryCount;
 import racingcar.view.InputView;
@@ -10,6 +11,7 @@ public class RaceController {
         Cars cars = InputView.readCars();
         TryCount tryCount = InputView.readTryCount();
         playRace(cars, tryCount);
+        finishRace(cars);
     }
 
     public void playRace(Cars cars, TryCount tryCount) {
@@ -18,5 +20,10 @@ public class RaceController {
             cars.tryMoveAll();
             OutputView.printRaceProgress(cars);
         });
+    }
+
+    public void finishRace(Cars cars) {
+        List<String> raceWinner = cars.getRaceWinner();
+        OutputView.printRaceWinner(raceWinner);
     }
 }
