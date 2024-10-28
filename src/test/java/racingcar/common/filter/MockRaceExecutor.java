@@ -1,6 +1,6 @@
-package racingcar.filter.mock;
+package racingcar.common.filter;
 
-import racingcar.filter.executor.RaceExecutor;
+import racingcar.common.filter.executor.RaceExecutor;
 import racingcar.model.RacingCarList;
 
 public class MockRaceExecutor extends RaceExecutor {

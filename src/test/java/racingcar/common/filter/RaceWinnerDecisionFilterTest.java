@@ -1,4 +1,4 @@
-package racingcar.filter;
+package racingcar.common.filter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,6 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.common.filter.RaceFilterChain;
+import racingcar.common.filter.RaceWinnerDecisionFilter;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
 import racingcar.model.RacingCarList;

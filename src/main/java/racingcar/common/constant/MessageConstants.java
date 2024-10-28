@@ -10,4 +10,5 @@ public class MessageConstants {
     public static final String INVALID_COMMAND_ERROR = "잘못 된 커맨드를 입력입니다.";
     public static final String INVALID_FILTER_ERROR = "유효하지않은 필터입니다.";
     public static final String NEGATIVE_ITERATION_ERROR = "반복 횟수는 음수가 될 수 없습니다.";
+    public static final String DUPLICATE_CAR_NAME_ERROR = "중복된 자동차 이름이 존재합니다.";
 }

@@ -1,4 +1,4 @@
-package racingcar.filter;
+package racingcar.common.filter;
 
 /**
  * Filter 인터페이스는 요청을 처리하는 필터의 기본 구조를 정의합니다.

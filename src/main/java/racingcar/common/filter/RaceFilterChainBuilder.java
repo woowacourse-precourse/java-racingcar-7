@@ -1,4 +1,4 @@
-package racingcar.filter;
+package racingcar.common.filter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,12 +1,12 @@
 package racingcar.common.config;
 
 import racingcar.controller.RaceController;
-import racingcar.filter.RaceExecutionFilter;
-import racingcar.filter.RaceFilterChain;
-import racingcar.filter.RaceInputValidationFilter;
-import racingcar.filter.RaceWinnerDecisionFilter;
-import racingcar.filter.RacingCarListParsingFilter;
-import racingcar.filter.executor.RaceExecutor;
+import racingcar.common.filter.RaceExecutionFilter;
+import racingcar.common.filter.RaceFilterChain;
+import racingcar.common.filter.RaceInputValidationFilter;
+import racingcar.common.filter.RaceWinnerDecisionFilter;
+import racingcar.common.filter.RacingCarListParsingFilter;
+import racingcar.common.filter.executor.RaceExecutor;
 import racingcar.service.RaceService;
 import racingcar.service.RaceServiceImpl;
 

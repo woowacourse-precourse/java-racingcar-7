@@ -1,4 +1,4 @@
-package racingcar.filter;
+package racingcar.common.filter;
 
 /**
  * 필터 체인 인터페이스입니다.

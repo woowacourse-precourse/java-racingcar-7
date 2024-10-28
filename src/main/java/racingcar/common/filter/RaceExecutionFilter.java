@@ -1,8 +1,8 @@
-package racingcar.filter;
+package racingcar.common.filter;
 
+import racingcar.common.filter.executor.RaceExecutor;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.filter.executor.RaceExecutor;
 import racingcar.model.RacingCarList;
 
 public class RaceExecutionFilter implements Filter<RaceRequest, RaceResponse> {

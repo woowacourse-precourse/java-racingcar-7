@@ -1,18 +1,17 @@
-package racingcar.filter;
+package racingcar.common.filter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Collections;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.common.exception.InvalidCarNameException;
+import racingcar.common.exception.DuplicateCarNameException;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.filter.mock.MockRaceFilterChain;
 
 class RacingCarListParsingFilterTest {
     private RacingCarListParsingFilter filter;
@@ -40,6 +39,17 @@ class RacingCarListParsingFilterTest {
     void testInvalidCarNameThrowsException() {
         RaceRequest request = new RaceRequest("CarWithVeryLongName", 3);
         Exception exception = assertThrows(InvalidCarNameException.class, () -> {
+            filter.doFilter(request, chain);
+        });
+
+        assertNotNull(exception);
+    }
+
+    @Test
+    @DisplayName("중복된 자동차 이름은 예외를 발생시켜야 한다")
+    void testDuplicateCarNameThrowsException() {
+        RaceRequest request = new RaceRequest("Car1,Car2,Car1", 3);
+        Exception exception = assertThrows(DuplicateCarNameException.class, () -> {
             filter.doFilter(request, chain);
         });
 

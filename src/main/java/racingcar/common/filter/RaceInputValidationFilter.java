@@ -1,4 +1,4 @@
-package racingcar.filter;
+package racingcar.common.filter;
 
 import racingcar.common.exception.InvalidCommandException;
 import racingcar.common.exception.NegativeIterationException;

@@ -1,11 +1,9 @@
-package racingcar.filter.mock;
+package racingcar.common.filter;
 
 import java.util.Collections;
 import java.util.List;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.filter.Filter;
-import racingcar.filter.RaceFilterChain;
 
 public class MockRaceFilterChain extends RaceFilterChain {
     RaceRequest updatedRequest;
@@ -23,7 +21,7 @@ public class MockRaceFilterChain extends RaceFilterChain {
     public RaceResponse doFilter(RaceRequest request) {
         // 변환된 요청을 저장
         this.updatedRequest = request;
-        return new RaceResponse(Collections.singletonList("Car1")); // 간단한 테스트 응답
+        return new RaceResponse(Collections.emptyList());
     }
 
     public RaceRequest getUpdatedRequest() {

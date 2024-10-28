@@ -1,4 +1,4 @@
-package racingcar.filter;
+package racingcar.common.filter;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.RaceRequest;
-import racingcar.filter.mock.MockRaceExecutor;
 import racingcar.model.RacingCarList;
 
 class RaceExecutionFilterTest {
