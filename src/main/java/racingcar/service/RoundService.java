@@ -25,7 +25,6 @@ public class RoundService {
         }
     }
 
-
     private boolean shouldMove(int randomValue) {
         if (randomValue >= MOVING_FORWARD) {
             return true;
