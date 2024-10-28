@@ -11,7 +11,6 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OutputViewTest {
-
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     private final OutputView outputView = new OutputView();
 
