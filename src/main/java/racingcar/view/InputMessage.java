@@ -10,9 +10,9 @@ public class InputMessage {
         return Console.readLine().trim();
     }
 
-    public static int inputGameAttempts() {
+    public static String inputGameAttempts() {
         System.out.println(MessageType.REQUEST_INPUT_TRY_GAME_NUM.getMessage());
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine().trim();
     }
 
 }

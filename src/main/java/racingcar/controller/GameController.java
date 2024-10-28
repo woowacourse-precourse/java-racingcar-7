@@ -27,9 +27,9 @@ public class GameController {
     }
 
     private void attemptGame() {
-        final int num = InputMessage.inputGameAttempts();
-        Validation.validateGameTryCount(num);
-        raceCars.executeRounds(num);
+        final String num = InputMessage.inputGameAttempts();
+        final int count = Validation.validateTryGame(num);
+        raceCars.executeRounds(count);
     }
 
     private void resultWinnerList() {
