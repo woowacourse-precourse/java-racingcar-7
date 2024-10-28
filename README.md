@@ -28,13 +28,12 @@
   1. 입력값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
   2. 쉼표를 구분자로 하여 경주할 자동차의 이름을 구분
   3. 자동차 이름의 길이는 5 이하일 것
-  4. 자동차는 최대 100개까지만 허용
-  5. 입력값이 위 조건을 만족하지 않을 경우 다시 입력받을 것
-- [ ] 시도할 횟수인 n을 입력받는 기능
+  4. 잘못된 값을 입력할 경우 IllegalArgumentException을 발생
+- [ ] 시도할 횟수를 입력받는 기능
   - int 반환
   1. 입력값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
-  2. n은 1 ~ 100 범위의 자연수
-  3. 입력값이 위 조건을 만족하지 않을 경우 다시 입력받을 것
+  2. 횟수는 Integer 범위의 자연수
+  3. 잘못된 값을 입력할 경우 IllegalArgumentException을 발생
 - [ ] 자동차를 n회 이동시키고, 우승자를 결정하는 기능
   - List\<Car>, int 입력
   1. 매 회차마다 이동 결과를 출력하고, 최대 이동 거리를 기억 (별도의 함수 호출)
