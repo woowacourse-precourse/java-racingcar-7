@@ -1,15 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Executor {
     private static final int NAME_LENGTH_LIMIT = 5;
-    private static final int MOVE_STANDARD = 4;
-    private static final int startInclusive = 0;
-    private static final int endInclusive = 9;
 
     private long repeatCount;
     private List<Car> cars;

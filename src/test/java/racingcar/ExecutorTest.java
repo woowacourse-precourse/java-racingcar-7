@@ -21,23 +21,8 @@ class ExecutorTest extends NsTest {
     Judge judge = new Judge();
     Executor executor = new Executor(ioController, parser, validator, racing, judge);
 
-    Car testCar1, testCar2, testCar3;
-    List<Car> testCars;
-
-    @BeforeEach
-    void setUp() {
-        testCar1 = new Car("test1");
-        testCar2 = new Car("test2");
-        testCar3 = new Car("test3");
-        testCars = List.of(testCar1, testCar2, testCar3);
-    }
-
     @Test
     void 실행() {
-        long repeatCount;
-        List<Car> cars = new ArrayList<>();
-        List<Car> winners = new ArrayList<>();
-
         assertRandomNumberInRangeTest(
             () -> {
                 run("car1,car2,car3", "1");
