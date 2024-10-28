@@ -24,8 +24,8 @@ public class Application {
 
         System.out.println("실행 결과");
         for (int i = 0; i < count; i++) {
-            moveCar(cars);
-            printResult(cars);
+            moveCars(cars);
+            printRaceStatus(cars);
         }
 
         System.out.println("최종 우승자" + " : " + winners(cars));
@@ -42,7 +42,7 @@ public class Application {
         return String.join(", ", win);
     }
 
-    private static void printResult(Map<String, Integer> cars) {
+    private static void printRaceStatus(Map<String, Integer> cars) {
         for (String name : cars.keySet()) {
             System.out.println(name + " : " + "-".repeat(cars.get(name)));
         }
@@ -50,7 +50,7 @@ public class Application {
     }
 
 
-    private static void moveCar(Map<String, Integer> cars) {
+    private static void moveCars(Map<String, Integer> cars) {
         for (String name : cars.keySet()) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 Integer newValue = cars.getOrDefault(name, 0);
