@@ -21,4 +21,13 @@ public class Car {
 
         return Boolean.TRUE;
     }
+
+    public void run() {
+        if (moveCondition.isSatisfied())
+            move();
+    }
+
+    private void move(){
+        this.position += 1;
+    }
 }
