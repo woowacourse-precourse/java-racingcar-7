@@ -3,10 +3,10 @@ package racingcar.ui;
 public class OutputUI {
 
     /**
-     * 우승자 목록을 출력합니다.
+     * 템플릿에 따라 인자를 출력합니다.
      *
      * @param template 출력 템플릿
-     * @param args     우승자 목록
+     * @param args     인자 목록
      */
     public static void printResult(String template, String... args) {
         String formattedMessage = formatMessage(template, args);
