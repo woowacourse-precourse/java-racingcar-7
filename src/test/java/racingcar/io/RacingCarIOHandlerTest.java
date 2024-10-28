@@ -6,16 +6,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
-import racingcar.RaceCars;
-import racingcar.RaceRecords;
+import racingcar.model.Car;
+import racingcar.model.RaceCars;
 
 import java.io.*;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarIOHandlerTest {
 

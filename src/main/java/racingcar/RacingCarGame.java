@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.io.RacingCarIOHandler;
+import racingcar.model.Car;
+import racingcar.model.RaceCars;
 
 import java.util.List;
 

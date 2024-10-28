@@ -1,6 +1,6 @@
 package racingcar.io;
 
-import racingcar.RaceCars;
+import racingcar.model.RaceCars;
 
 import java.util.List;
 
