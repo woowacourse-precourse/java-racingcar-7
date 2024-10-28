@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class GameOfScore {
+    private static String MOVEMENT_INDICATION = "-";
+
     public Map<String, String> initializeScore(List<String> participateCarList) {
         Map<String, String> initialScore = new HashMap<>();
 
@@ -21,8 +23,7 @@ public class GameOfScore {
             String moveCarName = oneGameMoveCarList.get(moveCarIndex);
             String thisCarScore = currentScore.get(moveCarName);
 
-            // "-" 상수화 작업 필요
-            thisCarScore += "-";
+            thisCarScore += MOVEMENT_INDICATION;
 
             currentScore.put(moveCarName, thisCarScore);
         }

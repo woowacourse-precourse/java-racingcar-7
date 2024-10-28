@@ -16,7 +16,7 @@ public class CarNameInput {
 
     private String makeInputCarName() {
         informationInput.printInformationInputOfCarName();
-        // 원시값 포장 필요
+
         String carName = Console.readLine();
 
         isInputCarName(carName);
