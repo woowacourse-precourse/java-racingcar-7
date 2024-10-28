@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Race;
 import racingcar.domain.Registration;
 import racingcar.service.race.RaceStarterService;
+import racingcar.service.race.WinnerService;
 
 public class TotalController {
     private static TotalController instance = new TotalController();
@@ -39,6 +40,11 @@ public class TotalController {
         while (!race.getLapLefts().equals(0L)) {
             oneLapUpdate();
         }
+    }
+
+    private void printWinner(Race race) {
+        WinnerService winnerService = new WinnerService(race.getEntry());
+        ScreenController.getInstance().printWinner(winnerService.raceWinners());
     }
 
     public static TotalController getInstance() {
