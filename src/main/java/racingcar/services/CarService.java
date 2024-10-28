@@ -3,6 +3,7 @@ package racingcar.services;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import racingcar.exceptions.ErrorMessages;
 import racingcar.models.Cars;
 
@@ -10,7 +11,9 @@ public class CarService {
     private Cars cars;
 
     public void createCarModel(String carNames) {
-        List<String> carNameList = Arrays.asList(carNames.split(","));
+        List<String> carNameList = Arrays.stream(carNames.split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
         this.cars = new Cars(carNameList);
     }
 
