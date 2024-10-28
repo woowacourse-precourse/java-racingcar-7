@@ -22,7 +22,7 @@ public class CarNamesValidation {
     }
 
     private static void isCarNamesDelimiterValid(String carNames) {
-        if (!carNames.matches("[^,]+(,[^,]+)*"))
+        if (!carNames.matches("^[^,;]+(,[^,;]+)*$"))
             throw new CarNamesException(CarNamesException.MESSAGE_INVALID_DELIMITER);
     }
 
