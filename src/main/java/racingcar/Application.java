@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,6 +19,7 @@ public class Application {
 
         List<Car> cars = createCars(carNames);
         race(cars, attempts);
+        printWinners(findWinners(cars));
     }
 
     private static List<String> getCarNames() {
@@ -57,7 +59,6 @@ public class Application {
         return cars;
     }
 
-    // 레이스 진행
     private static void race(List<Car> cars, int attempts) {
         for (int i = 0; i < attempts; i++) {
             raceRound(cars);
@@ -65,7 +66,6 @@ public class Application {
         }
     }
 
-    // 전진 조건에 따른 각 자동차 이동
     private static void raceRound(List<Car> cars) {
         for (Car car : cars) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
@@ -80,7 +80,24 @@ public class Application {
         }
         System.out.println();
     }
+
+    // 우승자 결정
+    private static List<Car> findWinners(List<Car> cars) {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    // 우승자 출력
+    private static void printWinners(List<Car> winners) {
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : " + winnerNames);
+    }
 }
+
 class Car {
     private final String name;
     private int position;
