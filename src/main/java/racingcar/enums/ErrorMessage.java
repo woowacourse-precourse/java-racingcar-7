@@ -8,6 +8,9 @@ public enum ErrorMessage {
     CAR_NAME_EMPTY("자동차 이름은 비어있어서는 안됩니다."),
     CAR_COUNT_MINIMUM("자동차의 수는 {0}개 보다 많아야 합니다."),
     CAR_NAME_UNIQUE("중복된 자동차 이름이 존재합니다."),
+
+    ROUND_FORMAT("시도할 횟수는 문자열이나 음수일 수 없습니다."),
+    ROUND_LIMIT("시도할 횟수는 `{0}`이상 `{1}`이하이어야 합니다."),
     ;
 
     private final String message;

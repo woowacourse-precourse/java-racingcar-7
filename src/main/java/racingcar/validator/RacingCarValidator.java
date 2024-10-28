@@ -40,16 +40,16 @@ public class RacingCarValidator {
 
     public void validateRounds(String roundString) {
         if (roundString == null || roundString.isBlank()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INPUT_NOTHING.getMessage());
         }
         for (int i = 0; i < roundString.length(); i++) {
             if (!Character.isDigit(roundString.charAt(i))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.ROUND_FORMAT.getMessage());
             }
         }
         int rounds = Integer.parseInt(roundString);
         if (rounds < Constants.ROUND_MINIMUM.getValue() || rounds > Constants.ROUND_MAXIMUM.getValue()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.ROUND_LIMIT.getMessage(Constants.ROUND_MINIMUM.getValue(), Constants.ROUND_MAXIMUM.getValue()));
         }
     }
 }
