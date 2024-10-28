@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.StringJoiner;
 
 public class Cars {
 
@@ -59,15 +60,14 @@ public class Cars {
 
         System.out.print("최종 우승자 : ");
         int num = 0;
+        StringJoiner result = new StringJoiner(", ");
 
         for (Cars car : cars) {
             if (car.count == maxCount) {
-                if (num > 0) {
-                    System.out.print(", ");
-                }
-                System.out.print(car.name);
-                num++;
+                result.add(car.name);
             }
         }
+
+        System.out.println(result);
     }
 }
