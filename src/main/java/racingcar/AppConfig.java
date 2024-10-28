@@ -1,8 +1,10 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
+import racingcar.service.MoveDistanceProvider;
 import racingcar.service.RacingGameService;
 import racingcar.service.RacingGameServiceImpl;
+import racingcar.service.RandomMoveDistanceProvider;
 import racingcar.validation.CarNamesValidator;
 import racingcar.validation.CarNamesValidatorImpl;
 import racingcar.validation.RaceCountValidator;
@@ -19,7 +21,11 @@ public class AppConfig {
     }
 
     public RacingGameService racingCarService() {
-        return new RacingGameServiceImpl(carNameValidator());
+        return new RacingGameServiceImpl(carNameValidator(), moveDistanceProvider());
+    }
+
+    public MoveDistanceProvider moveDistanceProvider() {
+        return new RandomMoveDistanceProvider();
     }
 
     public CarNamesValidator carNameValidator() {
