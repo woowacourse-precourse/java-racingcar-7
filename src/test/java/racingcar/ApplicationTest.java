@@ -13,22 +13,61 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트() {
+    void 우승자_한명() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+    void 우승자_여러명() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
         );
+    }
+
+    @Test
+    void 이름_5자_초과() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,jabajs", "3"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("자동차 이름은 5자 이하만 가능합니다.");
+        });
+    }
+
+    @Test
+    void 이름_빈칸() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi, ", "3"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("빈 칸 혹은 공백은 사용이 불가합니다.");
+        });
+    }
+
+    @Test
+    void 이름_중복() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,pobi", "3"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("중복된 자동차 이름입니다.");
+        });
+    }
+
+    @Test
+    void 특수기호_사용() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,jam*", "2"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("특수기호는 사용이 불가합니다.");
+        });
     }
 
     @Override
