@@ -23,7 +23,7 @@ public class RacingService {
 
         List<String> cars = splitCars(carsInput);
         validateCarsInput(cars);
-        carPositions = initializeCarsStatus(cars);
+        initializeCarsStatus(cars);
     }
 
     private List<String> splitCars(String carsInput) {
@@ -50,8 +50,8 @@ public class RacingService {
         }
     }
 
-    private Map<String, Integer> initializeCarsStatus(List<String> cars) {
-        return new HashMap<>();
+    private void initializeCarsStatus(List<String> cars) {
+        cars.forEach(car -> carPositions.put(car, 0));
     }
 
     private void setRoundNumber(String roundNumberInput) {
@@ -68,4 +68,6 @@ public class RacingService {
             throw new IllegalArgumentException();
         }
     }
+
+
 }
