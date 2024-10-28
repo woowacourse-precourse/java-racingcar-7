@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -27,10 +26,11 @@ public class Game {
     }
 
     public void createCars(List<String> carNames){
+        if(carNames.isEmpty())
+            throw new IllegalArgumentException();
         cars = new ArrayList<Car>();
         for(String carName : carNames)
             cars.add(new Car(carName));
-
     }
 
     public Game(){
