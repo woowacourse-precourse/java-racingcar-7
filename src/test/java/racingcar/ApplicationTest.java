@@ -15,19 +15,19 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))  // 자동차 이름 길이 5이상 입력 예외 테스트
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))  // 자동차 이름 길이 5이상 입력 예외 테스트
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -48,7 +48,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 시도_횟수_음수_입력_예외_테스트() {
+    void 시도_횟수_음의정수_입력_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "-3"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -56,7 +56,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 시도_횟수_정수형_아닌_입력_예외_테스트() {
+    void 시도_횟수_정수형이_아닌_입력_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "5.78"))    // 실수 입력
                         .isInstanceOf(IllegalArgumentException.class)
