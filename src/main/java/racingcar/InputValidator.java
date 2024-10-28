@@ -34,5 +34,11 @@ public class InputValidator {
         }
     }
 
-
+    public static void notWriteLetter(ArrayList<String> carNameList){
+        for (String carName : carNameList) {
+            if(carName.isEmpty()){
+                throw new IllegalArgumentException("구분자(,) 옆에 자동차 이름을 작성해야 합니다.");
+            }
+        }
+    }
 }
