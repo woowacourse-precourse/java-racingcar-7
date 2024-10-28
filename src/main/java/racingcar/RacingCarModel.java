@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 import racingcar.raceDto.RacingRequest;
 import racingcar.raceDto.RacingResponse;
@@ -11,27 +13,39 @@ public class RacingCarModel {
     static StringBuilder sb;
 
     public RacingResponse startRace(RacingRequest request) {
-        /* 객체 판단 */
-        if(!validateRacingObject(request)) {
-            throw new IllegalArgumentException("객체값이 없습니다.");
-        }
-        /* 이름 판단 */
-        if(!validateRacingNames(request)) {
-            throw new IllegalArgumentException("이름을 입력해주세요.");
-        }
-        /* 시도횟수 판단 */
-        if(!validateRacingTimes(request)) {
-            throw new IllegalArgumentException("시도횟수를 입력해주세요.");
-        }
+        /* validate logic */
+        validation(request);
+        /* init */
+        ArrayList<String> nameList = new ArrayList<>();
+        Map<String, Object> initResult = init(request, nameList);
+        String name = (String) initResult.get("name");
+        int loop = (Integer) initResult.get("loop");
+
+        /* 경주 시작 */
+        int[] res = race(nameList, loop);
+        /* 우승자 찾기 */
+        findChampion(res, nameList);
+        return new RacingResponse(sb.toString());
+    }
+
+    private Map<String, Object> init(RacingRequest request, ArrayList<String> nameList) {
+
         sb = new StringBuilder();
         /* 이름, 게임횟수 초기화 */
         String name = request.name();
         int loop = request.times();
+        /* hash 초기화 및 반환 */
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        map.put("loop", loop);
+
         /* 이름 저장 */
-        ArrayList<String> nameList = new ArrayList<>();
         getName(nameList, name);
-        /* 경주 시작 */
-        int[] res = race(nameList, loop);
+
+        return map;
+    }
+
+    private void findChampion(int[] res, ArrayList<String> nameList) {
         /* 우승자 찾기 */
         int max = 0;
         for (int re : res) {
@@ -41,15 +55,13 @@ public class RacingCarModel {
 
         /* 우승자 출력 */
         boolean isFirst = true;
-        for(int i = 0; i < res.length; i++) {
-            if(max == res[i]) {
+        for (int i = 0; i < res.length; i++) {
+            if (max == res[i]) {
                 addComma(isFirst);
                 sb.append(nameList.get(i));
                 isFirst = false;
             }
         }
-        /* 결괏값 반환 */
-        return new RacingResponse(sb.toString());
     }
 
     private int[] race(ArrayList<String> list, int loop) {
@@ -95,29 +107,29 @@ public class RacingCarModel {
         }
 
         for(String v : list) {
-            if(!validateNameLength(v)) {
-                throw new IllegalArgumentException("이름길이 5이하로 작성해주세요.");
-            }
+            validateNameLength(v);
         }
     }
 
-    private boolean validateNameLength(String name) {
+    private void validation(RacingRequest request) {
+        validateRacingObject(request);
+        validateRacingTimes(request);
+    }
+
+    private void validateNameLength(String name) {
         /* 이름길이가 5이하 인지 판단 */
-        return name.length() <= 5;
+        if (name.length() > 5 || name.isEmpty()) {
+            throw new IllegalArgumentException("유저의 이름은 5글자를 넘길 수 없습니다.");
+        }
     }
 
-    private boolean validateRacingObject(RacingRequest request) {
+    private void validateRacingObject(RacingRequest request) {
         /* 객체 유무 판단 */
-        return request != null;
+        if(request != null) throw new IllegalArgumentException("객체가 없습니다.");
     }
 
-    private boolean validateRacingNames(RacingRequest request) {
-        /* 이름 유무 판단 */
-        return !request.name().isBlank();
-    }
-
-    private boolean validateRacingTimes(RacingRequest request) {
+    private void validateRacingTimes(RacingRequest request) {
         /* 횟수 유무 판단 */
-        return request.times() >= 0;
+        if(request.times() >= 0) throw new IllegalArgumentException("횟수는 음수를 입력할 수 없습니다.");
     }
 }

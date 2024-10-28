@@ -17,6 +17,6 @@ public class RacingCarController {
     public void run() {
         RacingRequest racingRequest = racingCarView.readInput();
         RacingResponse racingResponse = racingCarModel.startRace(racingRequest);
-        racingCarView.printResult();
+        racingCarView.printResult(racingResponse);
     }
 }
