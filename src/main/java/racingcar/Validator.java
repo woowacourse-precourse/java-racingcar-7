@@ -23,6 +23,14 @@ public class Validator {
 
     public static int getTrialCount() {
         String trialCountString = Console.readLine();
+        validateTrialCount(trialCountString);
         return Integer.parseInt(trialCountString);
+    }
+
+    public static void validateTrialCount(String string) {
+        int trialCount = Integer.parseInt(string);
+        if (trialCount < 0) {
+            throw new IllegalArgumentException("시도 횟수는 음수가 될 수 없습니다.");
+        }
     }
 }
