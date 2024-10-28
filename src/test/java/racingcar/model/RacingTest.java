@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -18,8 +19,8 @@ public class RacingTest {
     private static int totalTryCount;
     private static Racing racing;
 
-    @BeforeAll
-    static void setup() {
+    @BeforeEach
+    void setup() {
         cars = List.of(new Car("pobi"), new Car("won"), new Car("jun"));
         totalTryCount = 2;
     }
@@ -51,7 +52,7 @@ public class RacingTest {
 
     @Test
     @DisplayName("최종 우승자가 다수인 경우")
-    void testFindMultipleWinner() {
+    void testGetMultipleWinner() {
         List<String> expectedWinner = List.of("won", "jun");
         int expectedMaxPosition = 2;
 
