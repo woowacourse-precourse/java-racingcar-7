@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static racingcar.View.constant.ErrorMessage.BLANK_VALUE;
 import static racingcar.View.constant.ErrorMessage.DUPLICATED;
 import static racingcar.View.constant.ErrorMessage.INVALID_INTEGER;
+import static racingcar.View.constant.ErrorMessage.MINUS_VALUE;
 import static racingcar.View.constant.ErrorMessage.OVER_VALUE;
 import static racingcar.View.constant.ErrorMessage.TOO_LONG_VALUE;
 
@@ -79,6 +80,16 @@ class ParserTest {
                 () -> parser.parse(input)
         );
         assertEquals(DUPLICATED.getMessage(), exception.getMessage());
+    }
+
+    @Test
+    void 입력이_음수일_경우_예외처리() {
+        String input = "-1";
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> parser.parseInt(input)
+        );
+        assertEquals(MINUS_VALUE.getMessage(), exception.getMessage());
     }
 
 }
