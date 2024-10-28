@@ -14,8 +14,8 @@ public abstract class Validator {
         return names;
     }
 
-    public static int validateCountIfNegative(String count) {
-        int countAsInt = Integer.parseInt(count);
+    public static int validateCircleCountIfNegative(String circleCount) {
+        int countAsInt = Integer.parseInt(circleCount);
         if (countAsInt < 0) {
             Console.close();
             throw new IllegalArgumentException();
