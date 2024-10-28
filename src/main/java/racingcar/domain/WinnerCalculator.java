@@ -10,6 +10,16 @@ public class WinnerCalculator {
         this.racingCarList = racingCarList;
     }
 
+    public List<String> getWinner() {
+        List<String> winners = new ArrayList<>();
+        int maxScore = getMaxScore();
+        for (Car car : racingCarList) {
+            if (car.getMoveCount() == maxScore) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
     private int getMaxScore() {
         return racingCarList.stream()
                 .mapToInt(Car::getMoveCount)
