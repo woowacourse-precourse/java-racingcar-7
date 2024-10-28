@@ -8,6 +8,8 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static java.util.Collections.max;
+
 public class GameService {
 
     private final CarNameValidator carNameValidator = new CarNameValidator();
@@ -27,6 +29,19 @@ public class GameService {
         return cars;
     }
 
+
+    // 비어있는 cars가 인자로 들어올 경우... 예외처리 필요 -> 앞에서 처리했어야함.
+    public int findMaxDistance(List<Car> cars) {
+        return cars.stream()
+                .flatMap(car -> car.getDistanceList().stream())
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(0); // 리스트가 비어있을 경우 0 반환
+    }
+
+
+
+
     private String[] splitCarNames(String carNamesString) {
         return carNamesString.split(","); // 자동차 이름을 콤마로 분리
     }
@@ -34,4 +49,6 @@ public class GameService {
     private Car createCar(String carName) {
         return new Car(carName); // 자동차 객체 생성
     }
+
+
 }
