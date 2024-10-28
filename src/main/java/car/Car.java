@@ -13,27 +13,28 @@ public class Car {
         this.distance = 0;
     }
 
-    private boolean canMove(){
+    private boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
-    public void move(){
-        if(!canMove()){
+
+    public void move() {
+        if (!canMove()) {
             return;
         }
         distance++;
         maxDistance = Math.max(distance, maxDistance);
     }
 
-    public Integer getDistance(){
+    public Integer getDistance() {
         return distance;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return name + " : " + "-".repeat(distance);
     }
 }
