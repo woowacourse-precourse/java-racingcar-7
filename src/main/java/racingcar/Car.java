@@ -28,4 +28,8 @@ public class Car {
             ++position; // 랜덤 값이 4 이상일 경우 전진
         }
     }
+
+    public String getPositionRepresentation() {
+        return "-".repeat(position); // 현재 위치만큼 '-'를 반복하여 문자열 생성
+    }
 }
