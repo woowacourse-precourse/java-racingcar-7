@@ -18,6 +18,7 @@ public class Game {
 
     // 경주 시작
     public void startRace() {
+        System.out.println();
         System.out.println("실행 결과");
         for (int i=0; i<raceCount; i++) {
             randomMove();
