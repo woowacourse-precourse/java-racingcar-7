@@ -26,6 +26,7 @@ public class RacingController {
     }
 
     private List<Car> initializeCars() {
+        Car.resetNames();
         List<String> carNames = InputView.getCarNames();
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
