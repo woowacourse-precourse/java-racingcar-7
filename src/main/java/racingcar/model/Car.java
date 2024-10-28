@@ -14,6 +14,9 @@ public class Car {
         this(name, 0);
     }
 
+    /**
+     * 전진 시 총 주행 거리 증가
+     */
     public void goForward() {
         totalDistance++;
     }
@@ -24,11 +27,6 @@ public class Car {
 
     public int getTotalDistance() {
         return totalDistance;
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 
 }

@@ -24,6 +24,9 @@ public class CarRacingController {
         this.outputView = new OutputView();
     }
 
+    /**
+     * 자동차 경주 게임 진행
+     */
     public void run() {
         setUpCarRacing();
         setUpTotalRound();
@@ -55,6 +58,9 @@ public class CarRacingController {
         outputView.showFinalWinner(carRacing.getWinners());
     }
 
+    /**
+     * 자동차 이름 문자열의 유효성 검증
+     */
     public List<String> validateCarNameInput(String carNameInput) {
         String trimmedCarNameInput = carNameInput.replaceAll(WHITE_SPACE, EMPTY_STRING);
 
@@ -81,6 +87,9 @@ public class CarRacingController {
         return carNames;
     }
 
+    /**
+     * 시도 횟수 문자열의 유효성 검증
+     */
     public void validateTotalRoundInput(String totalRoundInput) {
         if (totalRoundInput.isBlank()) {
             throw new IllegalArgumentException("시도 횟수를 공백 없이 자연수로 입력해주세요.");

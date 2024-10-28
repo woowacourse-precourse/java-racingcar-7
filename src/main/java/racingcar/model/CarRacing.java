@@ -12,7 +12,9 @@ public class CarRacing {
         this.racingCars = racingCars;
     }
 
-    // 전진 여부 결정
+    /**
+     * 경주 진행 - 전진 여부를 결정하는 규칙을 포함한다.
+     */
     public void moverCarsForwardRandomly() {
         for (Car car : racingCars) {
             int randomValue = Randoms.pickNumberInRange(0, 9);
@@ -22,7 +24,9 @@ public class CarRacing {
         }
     }
 
-    // 경주 우승자 결정
+    /**
+     * 우승자 결정 - 우승자를 결정하는 규칙을 포함한다.
+     */
     public List<Car> getWinners() {
         List<Car> winners = new ArrayList<>();
         winners.add(racingCars.getFirst());
