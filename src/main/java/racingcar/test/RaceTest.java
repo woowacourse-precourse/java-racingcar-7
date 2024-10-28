@@ -16,7 +16,7 @@ class RaceTest {
     @BeforeEach
     void 셋업() {
         cars = Arrays.asList(new Car("car1"), new Car("car2"), new Car("car3"));
-        race = new Race(cars, 3); // 3라운드로 설정
+        race = new Race(cars, 3);
     }
 
     @Test
