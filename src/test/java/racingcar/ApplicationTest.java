@@ -32,6 +32,47 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
+    @Test
+    void 기능_테스트_무작위값이_4이하일_경우_전진하지_않음() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi, woni"); // 아무도 전진하지 않으면 모두 공동 우승
+                },
+                STOP, STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트_공동_우승자() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "3");
+                    assertThat(output()).contains("pobi : ---", "woni : ---", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 기능_테스트_시도별_경주_상태_확인() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "2");
+                    assertThat(output()).contains(
+                            "pobi : -", "woni : ",
+                            "pobi : --", "woni : -",
+                            "최종 우승자 : pobi"
+                    );
+                },
+                MOVING_FORWARD, STOP,
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
     @Test
     void 예외_테스트_자동차_이름을_입력하지_않음() {
         assertSimpleTest(() ->
