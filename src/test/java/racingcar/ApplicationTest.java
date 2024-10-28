@@ -102,6 +102,15 @@ class ApplicationTest extends NsTest {
         assertEquals(Arrays.asList("car1", "car2", "car3"), result);
     }
 
+    @Test
+    void move_이동거리_리스트() {
+        Car car = new Car("TestCar");
+        int rounds = 5;
+
+        ArrayList<String> result = car.move(rounds);
+        assertTrue(result.size() >= 0 && result.size() <= rounds);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
