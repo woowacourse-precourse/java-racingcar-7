@@ -9,18 +9,19 @@ import racingcar.view.OutputView;
 
 public class RaceController {
     private final RaceService raceService = new RaceService();
+    private RequestRaceDto requestRaceDto;
 
-    public RequestRaceDto parseInput() {
+    public void parseInput() {
         OutputView.requestCarName();
         String carNames = InputView.inputCarName();
         OutputView.requestTryNumber();
         String tryNumber = InputView.inputTryNumber();
-        return new RequestRaceDto(
+        requestRaceDto = new RequestRaceDto(
                 raceService.makeCarList(Validate.validateCarNames(carNames)),
                 Validate.validateTryNumber(tryNumber));
     }
 
-    public void play (RequestRaceDto requestRaceDto) {
+    public void play () {
         OutputView.printExecutionMessage();
         for (int index = 0; index < requestRaceDto.getTryNumber(); index++) {
             raceService.race(requestRaceDto.getCarList());
@@ -31,7 +32,7 @@ public class RaceController {
         }
     }
 
-    public void declareWinners (RequestRaceDto requestRaceDto) {
+    public void declareWinners () {
         OutputView.printWinner(
                 raceService.checkWinner(
                         requestRaceDto.getCarList(),

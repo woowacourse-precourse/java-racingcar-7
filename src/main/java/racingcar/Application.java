@@ -8,8 +8,8 @@ public class Application {
         // TODO: 프로그램 구현
         RaceController raceController = new RaceController();
 
-        RequestRaceDto requestRaceDto = raceController.parseInput();
-        raceController.play(requestRaceDto);
-        raceController.declareWinners(requestRaceDto);
+        raceController.parseInput();
+        raceController.play();
+        raceController.declareWinners();
     }
 }
