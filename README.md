@@ -36,65 +36,61 @@
 ### 1. UserInputValidator
 - **목적**: 사용자 입력의 유효성을 검증합니다.
 - **기능**:
-  - `validateRoundCount`: 이동 횟수가 0 이상인지 확인합니다.
-  - `validateCarNames`: 자동차 이름 목록의 유효성을 확인합니다.
-  - `validateNumberUnderZero`: 숫자가 0 미만인지 확인합니다.
-  - `validateCarNamesFormat`: 자동차 이름의 형식을 확인합니다.
-  - `validateCarNamesLength`: 자동차 이름의 길이가 5자 이하인지 확인합니다.
+  - `validateRoundCount`: 이동 횟수가 0 이상인지 확인.
+  - `validateCarNames`: 자동차 이름 목록의 유효성을 확인.
+  - `validateNumberUnderZero`: 숫자가 0 미만인지 확인합.
+  - `validateCarNamesFormat`: 자동차 이름의 형식을 확인합.
+  - `validateCarNamesLength`: 자동차 이름의 길이가 5자 이하인지 확인.
 
 ### 2. RaceController
 - **목적**: 게임의 흐름을 제어합니다.
 - **기능**:
-  - `playGame`: 게임을 실행합니다.
-  - `initializeGame`: 게임 초기 설정을 합니다.
-  - `getRoundCount`: 이동 횟수를 입력받아 검증합니다.
-  - `getCarNames`: 자동차 이름을 입력받아 검증합니다.
+  - `playGame`: 게임을 실행.
+  - `initializeGame`: 게임 초기 설정.
+  - `getRoundCount`: 이동 횟수를 입력받아 검증.
+  - `getCarNames`: 자동차 이름을 입력받아 검증.
 
 ### 3. RoundResult
 - **목적**: 각 라운드의 결과를 저장합니다.
 - **기능**:
-  - `carInfos()`: 경주에 참가한 자동차 정보를 반환합니다.
+  - `carInfos()`: 경주에 참가한 자동차 정보를 반환.
 
 ### 4. Winners
-- **목적**: 최종 우승자 정보를 저장합니다.
+- **목적**: 최종 우승자 정보를 저장.
 - **기능**:
-  - `winnerList()`: 우승자 목록을 반환합니다.
+  - `winnerList()`: 우승자 목록을 반환.
 
 ### 5. CarInfo
-- **목적**: 각 자동차의 정보를 관리합니다.
+- **목적**: 각 자동차의 정보를 관리.
 - **기능**:
-  - `getCarName()`: 자동차 이름을 반환합니다.
-  - `getCurrentPosition()`: 현재 위치를 반환합니다.
-  - `proceed()`: 자동차의 위치를 한 칸 앞으로 이동시킵니다.
+  - `getCarName()`: 자동차 이름을 반환.
+  - `getCurrentPosition()`: 현재 위치를 반환.
+  - `proceed()`: 자동차의 위치를 한 칸 앞으로 이동.
 
 ### 6. RoundInfo
-- **목적**: 라운드 정보를 관리합니다.
+- **목적**: 라운드 정보를 관리.
 - **기능**:
-  - `finishRound()`: 현재 라운드를 종료하고 다음 라운드로 이동합니다.
-  - `getCurrentRound()`: 현재 라운드 번호를 반환합니다.
-  - `getMaxRound()`: 최대 라운드 수를 반환합니다.
+  - `finishRound()`: 현재 라운드를 종료하고 다음 라운드로 이동.
+  - `getCurrentRound()`: 현재 라운드 번호를 반환.
+  - `getMaxRound()`: 최대 라운드 수를 반환.
 
 ### 7. GameService
-- **목적**: 게임 로직을 처리합니다.
+- **목적**: 게임 로직을 처리.
 - **기능**:
-  - `executeRound()`: 각 자동차의 이동을 처리하고 라운드를 종료합니다.
-  - `findWinners()`: 우승자를 찾습니다.
-  - `isGameOver()`: 게임 종료 여부를 확인합니다.
+  - `executeRound()`: 각 자동차의 이동을 처리하고 라운드를 종료.
+  - `findWinners()`: 우승자를 찾음.
+  - `isGameOver()`: 게임 종료 여부를 확인.
 
 ### 8. InputView
-- **목적**: 사용자 입력을 받습니다.
+- **목적**: 사용자 입력을 받음.
 - **기능**:
-  - `getCarNames()`: 자동차 이름을 입력받습니다.
-  - `getRoundCount()`: 이동 횟수를 입력받습니다.
+  - `getCarNames()`: 자동차 이름을 입력.
+  - `getRoundCount()`: 이동 횟수를 입력.
 
 ### 9. OutputView
-- **목적**: 게임 결과를 출력합니다.
+- **목적**: 게임 결과를 출력.
 - **기능**:
-  - `printSeparator()`: 결과 출력 구분선을 출력합니다.
-  - `printRoundResult()`: 각 라운드의 결과를 출력합니다.
-  - `printWinner()`: 최종 우승자를 출력합니다.
+  - `printSeparator()`: 결과 출력 구분선을 출력.
+  - `printRoundResult()`: 각 라운드의 결과를 출력.
+  - `printWinner()`: 최종 우승자를 출력.
 
-### 10. Application
-- **목적**: 애플리케이션의 진입점입니다.
-- **기능**:
-  - `main()`: 프로그램을 실행하고, 필요한 객체를 초기화합니다.
