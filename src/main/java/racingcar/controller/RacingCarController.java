@@ -5,6 +5,7 @@ import racingcar.service.CarService;
 import racingcar.service.CarFactory;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -29,7 +30,13 @@ public class RacingCarController {
         int attemptsCount = Integer.parseInt(attemptsInput);
 
         List<Car> cars = CarFactory.createCars(carNames);
-        CarService carService = new CarService(cars, attemptsCount);
-        carService.startRace();
+        CarService carService = new CarService(cars);
+        OutputView.printExecutionResult();
+        for (int i = 0; i < attemptsCount; i++) {
+            carService.startRace();
+            OutputView.printStatus(cars);
+        }
+        List<String> winners = carService.findWinners();
+        OutputView.printWinners(winners);
     }
 }

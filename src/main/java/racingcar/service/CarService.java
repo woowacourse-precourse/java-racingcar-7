@@ -8,21 +8,13 @@ import java.util.List;
 
 public class CarService {
     private final List<Car> cars;
-    private final int attemptsCount;
 
-    public CarService(List<Car> cars, int attemptsCount) {
+    public CarService(List<Car> cars) {
         this.cars = cars;
-        this.attemptsCount = attemptsCount;
     }
 
     private boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
-    }
-
-    private void printStatus() {
-        for (Car car : cars) {
-            System.out.println(car.getStatus());
-        }
     }
 
     private int findMaxPosition() {
@@ -36,7 +28,7 @@ public class CarService {
         return maxPosition;
     }
 
-    private List<String> findWinners() {
+    public List<String> findWinners() {
         int maxPosition = findMaxPosition();
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
@@ -55,22 +47,11 @@ public class CarService {
         }
     }
 
-    private void printWinners(List<String> winners) {
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
-    }
-
     private void startRound() {
         moveCars();
-        printStatus();
-        System.out.println();
     }
 
     public void startRace() {
-        System.out.println("실행 결과");
-        for (int i = 0; i < attemptsCount; i++) {
-            startRound();
-        }
-        List<String> winners = findWinners();
-        printWinners(winners);
+        startRound();
     }
 }
