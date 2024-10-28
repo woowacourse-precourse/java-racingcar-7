@@ -5,38 +5,37 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Supplier;
 
 public class GameContext {
-    private final List<Player> players;
+    private final List<Car> cars;
     private final int round;
 
-    private GameContext(List<Player> players, int round) {
-        if (players.size() > 100) {
+    private GameContext(List<Car> cars, int round) {
+        if (cars.size() > 100) {
             throw new IllegalArgumentException();
         }
 
         if (round > 10_000 || round <= 0) {
             throw new IllegalArgumentException();
         }
-        this.players = players;
+        this.cars = cars;
         this.round = round;
     }
 
-    public static GameContext getGameContext(String playerNameInput, int round) {
-        List<Player> players = new ArrayList<>();
-        Arrays.stream(playerNameInput.split(","))
-                .map(s -> new Player(s, () -> Randoms.pickNumberInRange(0, 9)))
-                .forEach(players::add);
-        return new GameContext(players, round);
+    public static GameContext getGameContext(String carNameInput, int round) {
+        List<Car> cars = new ArrayList<>();
+        Arrays.stream(carNameInput.split(","))
+                .map(s -> new Car(s, () -> Randoms.pickNumberInRange(0, 9)))
+                .forEach(cars::add);
+        return new GameContext(cars, round);
     }
 
-    public static GameContext getGameContext(List<Player> players, int round) {
-        return new GameContext(players, round);
+    public static GameContext getGameContext(List<Car> cars, int round) {
+        return new GameContext(cars, round);
     }
 
-    public List<Player> getPlayers() {
-        return players;
+    public List<Car> getCars() {
+        return cars;
     }
 
     public int getRound() {
@@ -50,29 +49,29 @@ public class GameContext {
     }
 
     public List<String> findWinners() {
-        int topPlayerPlace = 0;
-        List<Player> winner = new ArrayList<>();
-        for (Player player : players) {
-            if (player.getPlace() > topPlayerPlace) {
+        int topCarPlace = 0;
+        List<Car> winner = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPlace() > topCarPlace) {
                 winner.clear();
-                winner.add(player);
-                topPlayerPlace = player.getPlace();
-            } else if (player.getPlace() == topPlayerPlace) {
-                winner.add(player);
+                winner.add(car);
+                topCarPlace = car.getPlace();
+            } else if (car.getPlace() == topCarPlace) {
+                winner.add(car);
             }
         }
         return getWinnersNameList(winner);
     }
 
     private void playRound() {
-        for (Player player : players) {
-            player.move();
-            player.printPlace();
+        for (Car car : cars) {
+            car.move();
+            car.printPlace();
         }
         System.out.println();
     }
 
-    private List<String> getWinnersNameList(List<Player> winner) {
-        return winner.stream().map(Player::getPlayerName).toList();
+    private List<String> getWinnersNameList(List<Car> winner) {
+        return winner.stream().map(Car::getCarName).toList();
     }
 }

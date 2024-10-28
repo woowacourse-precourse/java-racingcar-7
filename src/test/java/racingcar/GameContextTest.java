@@ -4,10 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.platform.commons.util.ReflectionUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -57,14 +55,14 @@ class GameContextTest {
     void 성공_단독우승() {
         //given
         int round = 10;
-        Player poby = new Player("poby", () -> Randoms.pickNumberInRange(5, 9));
-        Player GG = new Player("GG", () -> Randoms.pickNumberInRange(0, 3));
+        Car poby = new Car("poby", () -> Randoms.pickNumberInRange(5, 9));
+        Car GG = new Car("GG", () -> Randoms.pickNumberInRange(0, 3));
 
-        List<Player> players = new ArrayList<>();
-        players.add(poby);
-        players.add(GG);
+        List<Car> cars = new ArrayList<>();
+        cars.add(poby);
+        cars.add(GG);
 
-        GameContext gameContext = GameContext.getGameContext(players, round);
+        GameContext gameContext = GameContext.getGameContext(cars, round);
 
         //when
         gameContext.run();
@@ -78,14 +76,14 @@ class GameContextTest {
     void 성공_공동우승() {
         //given
         int round = 10;
-        Player poby = new Player("poby", () -> 5);
-        Player GG = new Player("GG", () -> 5);
+        Car poby = new Car("poby", () -> 5);
+        Car GG = new Car("GG", () -> 5);
 
-        List<Player> players = new ArrayList<>();
-        players.add(poby);
-        players.add(GG);
+        List<Car> cars = new ArrayList<>();
+        cars.add(poby);
+        cars.add(GG);
 
-        GameContext gameContext = GameContext.getGameContext(players, round);
+        GameContext gameContext = GameContext.getGameContext(cars, round);
 
         //when
         gameContext.run();

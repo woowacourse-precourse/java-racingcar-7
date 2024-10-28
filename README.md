@@ -41,8 +41,8 @@
 ```mermaid
 graph
     main-->GameContext
-    main-->Player
-    GameContext-->Player
+    main-->Car
+    GameContext-->Car
 ```
 
 

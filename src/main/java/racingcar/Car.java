@@ -1,17 +1,15 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.function.Supplier;
 
-public class Player {
-    private final String playerName;
+public class Car {
+    private final String carName;
     private int place;
     private final Supplier<Integer> pickUpLogic;
 
-    public Player(String playerName, Supplier<Integer> pickUpLogic) {
-        if (playerName.isEmpty() || playerName.length() > 5) throw new IllegalArgumentException();
-        this.playerName = playerName;
+    public Car(String carName, Supplier<Integer> pickUpLogic) {
+        if (carName.isEmpty() || carName.length() > 5) throw new IllegalArgumentException();
+        this.carName = carName;
         this.place = 0;
         this.pickUpLogic = pickUpLogic;
     }
@@ -25,11 +23,11 @@ public class Player {
 
     public void printPlace() {
         String positionMark = "-".repeat(place);
-        System.out.println(playerName + " : " + positionMark);
+        System.out.println(carName + " : " + positionMark);
     }
 
-    public String getPlayerName() {
-        return playerName;
+    public String getCarName() {
+        return carName;
     }
 
     public int getPlace() {
