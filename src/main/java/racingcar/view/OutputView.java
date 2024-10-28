@@ -20,6 +20,6 @@ public class OutputView {
     }
 
     public void printFinalResultMessage() {
-        System.out.print(OutputConstant.FINAL_WINNER + OutputConstant.COLON + " ");
+        System.out.print(OutputConstant.FINAL_WINNER + OutputConstant.COLON);
     }
 }
