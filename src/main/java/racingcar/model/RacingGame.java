@@ -48,17 +48,15 @@ public class RacingGame {
     public List<Car> getWinners() {
         int maxPosition = getMaxPosition();
 
-        return cars.stream().filter(car -> car.getPosition().equals(maxPosition)).toList();
+        return cars.stream()
+                .filter(car -> car.getPosition().equals(maxPosition)).toList();
     }
 
     private int getMaxPosition() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            if (maxPosition < car.getPosition()) {
-                maxPosition = car.getPosition();
-            }
-        }
-        return maxPosition;
+        return cars.stream()
+                .max(Car::compareTo)
+                .map(Car::getPosition)
+                .orElse(0);
     }
 
     public void moveAll() {

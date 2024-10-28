@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private static final String ERROR_EMPTY_NAME_MESSAGE = "자동차 이름이 공백으로 입력되었습니다.";
     private static final String ERROR_NAME_LENGTH_MESSAGE = "자동차 이름 입력 길이를 초과하였습니다. (최대 5자)";
@@ -57,5 +57,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return Integer.compare(this.position, other.position);
     }
 }
