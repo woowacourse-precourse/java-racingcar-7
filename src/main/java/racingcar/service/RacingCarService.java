@@ -6,6 +6,7 @@ import racingcar.validator.CarNameValidator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarService {
     private final List<RacingCar> racingCars;
@@ -60,5 +61,29 @@ public class RacingCarService {
             carNameValidator.validateCarNameLength(carName);
             this.racingCars.add(new RacingCar(carName, new ArrayList<>()));
         }
+    }
+
+    public String selectCarRacingWinners() {
+        int maxAdvanceCount = findMaxAdvanceCount();
+        List<String> winners = findWinners(maxAdvanceCount);
+        return formatWinners(winners);
+    }
+
+    private int findMaxAdvanceCount() {
+        return racingCars.stream()
+                .mapToInt(car -> car.getAdvanceResults().size())
+                .max()
+                .orElse(0);
+    }
+
+    private List<String> findWinners(int maxAdvanceCount) {
+        return racingCars.stream()
+                .filter(car -> car.getAdvanceResults().size() == maxAdvanceCount)
+                .map(RacingCar::getCarName)
+                .collect(Collectors.toList());
+    }
+
+    private String formatWinners(List<String> winners) {
+        return String.join(", ", winners);
     }
 }

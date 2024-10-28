@@ -32,5 +32,7 @@ public class RacingCarController {
             outputView.printLineSpace();
         }
 
+        String carRacingWInners = racingCarService.selectCarRacingWinners();
+        outputView.printCarRacingWinner(carRacingWInners);
     }
 }

@@ -2,8 +2,10 @@ package racingcar.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.RacingCar;
 import racingcar.validator.CarNameValidator;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -69,5 +71,21 @@ class RacingCarServiceTest {
         String result = racingCarService.charListToString(advanceResults);
 
         assertThat(result).isEqualTo("ABC");
+    }
+
+    @Test
+    void 우승자_선출() throws Exception {
+        racingCarService.createRacingCars("pobi,jun");
+
+        Field racingCarsField = RacingCarService.class.getDeclaredField("racingCars");
+        racingCarsField.setAccessible(true);
+        List<RacingCar> racingCars = (List<RacingCar>) racingCarsField.get(racingCarService);
+
+        racingCars.get(0).addRandomAdvanceResult(5);
+        racingCars.get(1).addRandomAdvanceResult(5); 
+
+        String winners = racingCarService.selectCarRacingWinners();
+
+        assertThat(winners).isEqualTo("pobi, jun");
     }
 }
