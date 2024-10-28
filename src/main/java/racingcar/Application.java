@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -22,6 +24,22 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = scanner.nextInt();
+
+        for (int i = 0; i < count; i++) {
+            moveCar(cars);
+
+        }
+    }
+
+
+
+    private static void moveCar(Map<String, Integer> cars) {
+        for (String name : cars.keySet()) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                Integer newValue = cars.getOrDefault(name, 0);
+                cars.put(name, newValue + 1);
+            }
+        }
     }
 
 
