@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Cars;
 import racingcar.domain.strategy.MoveStrategy;
@@ -54,6 +53,4 @@ class RacingGameTest {
         assertThat(racingGame.getFormattedGameResult())
                 .isEqualTo("Car1 : -\nCar2 : -\nCar3 : -\n\n");
     }
-
-    
 }

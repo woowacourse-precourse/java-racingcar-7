@@ -29,7 +29,7 @@ public class RacingGame {
         return result.toString();
     }
 
-    public String formatCarResult(int advance) {
+    private String formatCarResult(int advance) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < advance; i++) {
             result.append("-");
