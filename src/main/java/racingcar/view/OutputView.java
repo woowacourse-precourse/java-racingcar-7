@@ -25,4 +25,13 @@ public class OutputView {
         String progress = MOVE_MARKER.repeat(position);
         System.out.println(name + RESULT_SEPARATOR + progress);
     }
+
+    public void printWinners(List<String> names) {
+        if (names == null || names.isEmpty()) {
+            System.out.println(NO_WINNER);
+            return;
+        }
+        String winners = String.join(COMMA, names);
+        System.out.println(FINAL_WINNER + winners);
+    }
 }
