@@ -13,5 +13,14 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
+    @Test
+    void 현재_위치를_보여준다() {
+        Car car = new Car("자동차1");
+        car.moveForward();
+        assertThat(car.showPosition()).isEqualTo("-");
+        car.moveForward();
+        assertThat(car.showPosition()).isEqualTo("--");
+    }
+
 
 }
