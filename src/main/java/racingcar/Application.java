@@ -26,9 +26,17 @@ public class Application {
         }
     }
 
+    public static void printGame() {
+        String moveStr = "-";
+        for (int i = 0; i < car_list.length; i++) {
+            System.out.println(moveStr.repeat(car_list[i].move_cnt));
+        }
+    }
+
     public static void gameProgress() {
         for (int i = 0; i < totalCount; i++) {
             getRandomNum();
+            printGame();
         }
     }
 
