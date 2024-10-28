@@ -18,8 +18,9 @@ public class CarService {
             throw new IllegalArgumentException(ErrorMessage.NULL_OR_EMPTY_INPUT.getMessage());
         }
         String[] cars = carNames.split(DELIMITER);
-        if (cars.length == 0)
+        if (cars.length == 0) {
             throw new IllegalArgumentException(ErrorMessage.ONLY_DELIMITER_STRING.getMessage());
+        }
         for (String name : cars) {
             if (name.isBlank()) {
                 throw new IllegalArgumentException(ErrorMessage.BLANK_NAME.getMessage());
@@ -50,10 +51,12 @@ public class CarService {
     }
 
     public void checkComplexity(int carSize, int tries) {
-        if (carSize >= MAX_INPUT_SIZE || tries >= MAX_INPUT_SIZE)
-            throw new IllegalArgumentException("O(nm)이 100만 이상입니다");
-        if ((long) carSize * tries >= MAX_INPUT_SIZE)
-            throw new IllegalArgumentException("O(nm)이 100만 이상입니다");
+        if (carSize >= MAX_INPUT_SIZE || tries >= MAX_INPUT_SIZE) {
+            throw new IllegalArgumentException(ErrorMessage.TIME_COMPLEXCITY.getMessage());
+        }
+        if ((long) carSize * tries >= MAX_INPUT_SIZE) {
+            throw new IllegalArgumentException(ErrorMessage.TIME_COMPLEXCITY.getMessage());
+        }
     }
 
     public String getWinner(List<Car> cars) {

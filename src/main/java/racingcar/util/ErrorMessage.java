@@ -8,7 +8,8 @@ public enum ErrorMessage {
     NAME_TOO_LONG("이름의 길이가 5글자 이상입니다."),
     NEGATIVE_NUMBER("음수입니다."),
     ZERO_OR_OVERFLOW("입력값이 0이거나 오버플로우가 발생했습니다."),
-    INVALID_FORMAT("입력값이 소수나 문자입니다.");
+    INVALID_FORMAT("입력값이 소수나 문자입니다."),
+    TIME_COMPLEXCITY("연산 횟수가 100만 이상입니다.");
 
     private final String message;
 
