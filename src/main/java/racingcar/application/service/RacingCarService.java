@@ -14,16 +14,12 @@ public class RacingCarService implements RacingCarUseCase {
 
     @Override
     public Racing startRacing(List<Car> cars, int tryCount) {
-        Racing racing = createRacing(cars);
-        
+        Racing racing = Racing.of(cars);
+
         for (int index = 0; index < tryCount; index++) {
             racing.start();
         }
 
         return racing;
-    }
-
-    private Racing createRacing(List<Car> cars) {
-        return Racing.of(cars);
     }
 }

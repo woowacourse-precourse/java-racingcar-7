@@ -1,27 +1,25 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingHistory {
 
-    private final List<String> history;
+    private final List<String> history = new ArrayList<>();
 
-    private RacingHistory(List<Car> cars) {
-        this.history = toHistoryFormat(cars);
+    private RacingHistory() {
     }
 
-    public static RacingHistory of(List<Car> cars) {
-        return new RacingHistory(cars);
+    public static RacingHistory of() {
+        return new RacingHistory();
     }
 
-    public String joinHistory(String delimiter) {
-        return String.join(delimiter, history);
+    public void append(List<String> status) {
+        history.add(String.join("\n", new ArrayList<>(status)));
     }
 
-    private List<String> toHistoryFormat(List<Car> cars) {
-        return cars.stream()
-                .map(Car::toString)
-                .collect(Collectors.toList());
+    @Override
+    public String toString() {
+        return String.join("\n\n", history);
     }
 }

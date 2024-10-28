@@ -1,55 +1,31 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Racing {
 
-    private final List<Car> cars;
-    private final List<RacingHistory> roundHistory = new ArrayList<>();
+    private final CarGroup group;
+    private final RacingHistory history;
 
-    private Racing(List<Car> cars) {
-        this.cars = cars;
+    public Racing(CarGroup group, RacingHistory history) {
+        this.group = group;
+        this.history = history;
     }
 
     public static Racing of(List<Car> cars) {
-        return new Racing(cars);
+        return new Racing(CarGroup.of(cars), RacingHistory.of());
     }
 
     public void start() {
-        runRound();
-        record();
+        group.race();
+        history.append(group.getStatus());
     }
 
-    public void printHistory() {
-        String history = roundHistory.stream()
-                .map(it -> it.joinHistory("\n"))
-                .collect(Collectors.joining("\n\n"));
-
-        System.out.println(history);
+    public RacingHistory getHistory() {
+        return history;
     }
 
     public List<Car> getWinners() {
-        int longDistance = findLongDistance();
-
-        return cars.stream()
-                .filter(it -> it.getDistance() == longDistance)
-                .collect(Collectors.toList());
-    }
-
-    private void runRound() {
-        cars.forEach(Car::moveForward);
-    }
-
-    private void record() {
-        roundHistory.add(RacingHistory.of(cars));
-    }
-
-    private int findLongDistance() {
-        return cars.stream()
-                .map(Car::getDistance)
-                .max(Integer::compare)
-                .orElse(0);
+        return group.getFarthestCars();
     }
 }

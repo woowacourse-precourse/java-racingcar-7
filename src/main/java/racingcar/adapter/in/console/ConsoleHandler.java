@@ -64,7 +64,7 @@ public class ConsoleHandler {
         System.out.println();
 
         System.out.println("실행 결과");
-        racingResult.printHistory();
+        System.out.println(racingResult.getHistory());
 
         System.out.println();
 
