@@ -13,13 +13,12 @@ import java.util.List;
 
 public class RacingController {
     private final RacingService racingService = new RacingService();
-    private final List<Car> cars = new ArrayList<>();
 
     public void run() {
         String carNames = inputCarNames();
         int tryNumber = inputTryNumber();
 
-        cars.addAll(initializeCars(carNames));
+        List<Car> cars = racingService.initializeCars(carNames);
         racingService.startRace(cars, tryNumber);
 
         List<String> winners = racingService.getWinners(cars);
@@ -36,13 +35,5 @@ public class RacingController {
         String tryNumber = InputView.inputTryNumber();
         InputValidator.validateInteger(tryNumber);
         return Integer.parseInt(tryNumber);
-    }
-
-    private List<Car> initializeCars(String carNames) {
-        List<String> carList = Utils.splitByDelimiter(carNames);
-        return carList.stream()
-                .peek(CarNameValidator::validateCarName)
-                .map(Car::new)
-                .toList();
     }
 }

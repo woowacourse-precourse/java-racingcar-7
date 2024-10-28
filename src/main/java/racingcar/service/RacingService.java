@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.model.Car;
 import racingcar.utils.Utils;
+import racingcar.validator.CarNameValidator;
 import racingcar.view.OutputView;
 
 import java.util.List;
@@ -19,6 +20,14 @@ public class RacingService {
     public List<String> getWinners(List<Car> cars) {
         int max = cars.stream().mapToInt(Car::getMove).max().orElse(0);
         return findWinners(cars, max);
+    }
+
+    public List<Car> initializeCars(String carNames) {
+        List<String> carList = Utils.splitByDelimiter(carNames);
+        return carList.stream()
+                .peek(CarNameValidator::validateCarName)
+                .map(Car::new)
+                .toList();
     }
 
     private List<String> findWinners(List<Car> cars, int max) {
