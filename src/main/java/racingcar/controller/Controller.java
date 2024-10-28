@@ -14,6 +14,7 @@ public class Controller {
 
     private final Validator validator = new Validator();
     private final RacingGameService service = new RacingGameService();
+    // 너무 많이 추상화 되어있다. (절차적으로 실행되어야 할 코드가 너무 추상회됨.)
 
     public void run() {
         List<RacingCar> carList = getCarNamesByInput();
@@ -22,7 +23,7 @@ public class Controller {
         findAndPrintWinners();
     }
 
-    public List<RacingCar> getCarNamesByInput() {
+    private List<RacingCar> getCarNamesByInput() {
         InputView.printRequestCarNamesMessage();
         String carNames = Console.readLine();
         validator.checkCarNamesInput(carNames);

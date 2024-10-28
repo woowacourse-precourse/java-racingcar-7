@@ -15,23 +15,21 @@ public class RacingGame {
     }
 
     public void playRound() {
-        cars.forEach(car -> {
-            int random = Randoms.pickNumberInRange(0, 9);
-            if (random > 3) {
-                car.move();
-            }
-        });
+        cars.forEach(RacingCar::move);
     }
 
     public List<RacingCar> findWinners() {
-        int maxPosition = cars.stream()
-                .mapToInt(RacingCar::getPosition)
-                .max()
-                .getAsInt();
-
+        int maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .getAsInt();
     }
 
     public List<RacingCar> getCars() {
