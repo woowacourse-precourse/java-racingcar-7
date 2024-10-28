@@ -31,6 +31,27 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 전진숫자가_유효하지않는_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    // 입력값: 자동차 이름과 시도 횟수
+                    run("pobi,woni,jun", "3");
+
+                    // 예상 결과 검증
+                    assertThat(output()).contains(
+                            "pobi : -", "woni : ", "jun : -",
+                            "pobi : --", "woni : -", "jun : --",
+                            "pobi : ---", "woni : --", "jun : ---",
+
+                            "최종 우승자 : pobi, jun"
+                    );
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, ERROR_NUM, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

@@ -1,30 +1,38 @@
 package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.NoSuchElementException;
 
 public class ConsoleInputHandler {
 
-    public String getCarListInput() {
-        String carListInput = Console.readLine();
-        if (carListInput == null | carListInput.isBlank()) {
+    public String getVehicleListInput() {
+        String vehicleListInput = Console.readLine();
+        if (vehicleListInput == null || vehicleListInput.isBlank()) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
 
-        return carListInput;
+        return vehicleListInput;
     }
 
     public int getMoveTryCount() {
         try {
-            String moveTryCount = Console.readLine();
+            String moveTryCountString = Console.readLine();
 
-            if (moveTryCount == null | moveTryCount.isBlank()) {
-                throw new IllegalArgumentException("잘못된 입력입니다");
+            if (moveTryCountString == null || moveTryCountString.isBlank()) {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
             }
 
-            return Integer.valueOf(moveTryCount);
+            int moveTryCount = Integer.valueOf(moveTryCountString);
+
+            if(moveTryCount < 0)
+                throw new IllegalArgumentException("시도 횟수는 음수가 될 수 없습니다.");
+
+            return moveTryCount;
+
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력해야 합니다.");
-        }
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("입력이 잘못되었습니다.");}
 
     }
 
