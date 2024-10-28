@@ -41,4 +41,31 @@ public class Methods {
     }
 
 
+    //각 자동차의 현재 스코어 메소드
+    private void currentScore(){
+        for(String carName : carConditions.keySet()){
+            System.out.println(carName+" : "+carConditions.get(carName).toString());
+        }
+        System.out.println();
+    }
+
+
+    // 입력받은 tryCount 이용해 카레이싱 메소드
+    public void carRacing(String inputTryCount,List<String> nameList) {
+
+        int tryCount = Integer.parseInt(inputTryCount);
+        for(int cnt = 0 ; cnt < tryCount ; cnt++){
+            for(String carName : nameList){
+                isMoving(carName);
+            }
+            currentScore();
+        }
+        
+        
+
+
+    }
+
+
+
 }
