@@ -1,5 +1,10 @@
 package racingcar.validator;
 
+
+import static racingcar.validator.ErrorMessages.INVALID_ROUND_MINIMUM;
+import static racingcar.validator.ErrorMessages.INVALID_ROUND_NOT_NUMBER;
+import static racingcar.validator.ErrorMessages.INVALID_ROUND_OUT_OF_RANGE;
+
 import racingcar.validator.exception.InvalidRoundException;
 
 public class RoundValidator implements Validator<String> {
@@ -13,7 +18,7 @@ public class RoundValidator implements Validator<String> {
 
     private void validateIsNumber(String roundInput) {
         if (!roundInput.matches("-?\\d+")) {
-            throw new InvalidRoundException("진행할 라운드를 정수로 입력해야합니다.");
+            throw new InvalidRoundException(INVALID_ROUND_NOT_NUMBER.getMessage());
         }
     }
 
@@ -21,13 +26,13 @@ public class RoundValidator implements Validator<String> {
         try {
             return Integer.parseInt(roundInput);
         } catch (NumberFormatException e) {
-            throw new InvalidRoundException("라운드 횟수가 int의 범위를 초과하였습니다.");
+            throw new InvalidRoundException(INVALID_ROUND_OUT_OF_RANGE.getMessage());
         }
     }
 
     private void validateGreaterThanZero(int roundCount) {
         if (roundCount < 1) {
-            throw new InvalidRoundException("라운드는 최소 1번 이상 진행되어야합니다.");
+            throw new InvalidRoundException(INVALID_ROUND_MINIMUM.getMessage());
         }
     }
 }

@@ -1,5 +1,9 @@
 package racingcar.validator;
 
+
+import static racingcar.validator.ErrorMessages.INVALID_CAR_NAME_BLANK;
+import static racingcar.validator.ErrorMessages.INVALID_CAR_NAME_LENGTH;
+
 import racingcar.model.CarNames;
 import racingcar.validator.exception.InvalidCarNameException;
 
@@ -16,7 +20,7 @@ public class CarNameValidator implements Validator<CarNames> {
     private void validateNotBlank(CarNames names) {
         for (String name : names.getNames()) {
             if (name == null || name.isBlank()) {
-                throw new InvalidCarNameException("차 이름은 공백일 수 없습니다.");
+                throw new InvalidCarNameException(INVALID_CAR_NAME_BLANK.getMessage());
             }
         }
     }
@@ -24,7 +28,7 @@ public class CarNameValidator implements Validator<CarNames> {
     private void validateNameLength(CarNames names) {
         for (String name : names.getNames()) {
             if (name.length() > MAX_NAME_LENGTH) {
-                throw new InvalidCarNameException("차 이름은 " + MAX_NAME_LENGTH + "자를 초과할 수 없습니다.");
+                throw new InvalidCarNameException(INVALID_CAR_NAME_LENGTH.getMessage(MAX_NAME_LENGTH));
             }
         }
     }
