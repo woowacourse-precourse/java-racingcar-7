@@ -2,7 +2,6 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,10 +23,11 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 이름_길이_초과_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.")
         );
     }
 
@@ -36,6 +36,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,pobi", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("중복된 자동차 이름이 존재합니다.")
         );
     }
 
@@ -44,6 +45,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도 횟수는 1 이상의 숫자여야 합니다.")
         );
     }
 
@@ -52,6 +54,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "a"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("유효한 숫자를 입력해주세요.")
         );
     }
 
@@ -60,6 +63,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 비어있을 수 없습니다.")
         );
     }
 
