@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class OutputViewTest {
 
-    private final OutputView outputView = new OutputView();
+    private OutputView outputView;
     private ByteArrayOutputStream outputMessage;
 
     @BeforeEach
@@ -25,6 +25,7 @@ class OutputViewTest {
     public void newOutputView() {
         //given
         //when
+        outputView = new OutputView("");
         //then
         assertThat(outputView).isNotNull();
     }
@@ -36,7 +37,8 @@ class OutputViewTest {
         String winners = "pobi, woni, jun";
         String expectedView = "최종 우승자 : pobi, woni, jun";
         //when
-        outputView.printWinners(winners);
+        outputView = new OutputView(winners);
+        outputView.printView();
         String printResult = outputMessage.toString().trim();
         //then
         assertThat(printResult).isEqualTo(expectedView);

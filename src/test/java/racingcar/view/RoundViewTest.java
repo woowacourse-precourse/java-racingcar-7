@@ -81,8 +81,31 @@ class RoundViewTest {
         //given
         //when
         roundView.printStartMessage();
-        String printResult = outputMessage.toString().trim();
+        String printResult = outputMessage.toString();
         //then
-        assertThat(printResult).isEqualTo(ROUND_START_MESSAGE.getMessage());
+        assertThat(printResult).isEqualTo(ROUND_START_MESSAGE.getMessage() + "\n");
+    }
+
+    @DisplayName("2시도_전체_View_출력_테스트")
+    @Test
+    public void printWholeTwoRoundTest() {
+        //given
+        String expectedView = "실행 결과\n"
+                + "pobi : -\n"
+                + "woni : \n"
+                + "jun : -\n"
+                + "\n"
+                + "pobi : --\n"
+                + "woni : -\n"
+                + "jun : --\n"
+                + "\n";
+        //when
+        racingGame.racing(List.of(4, 0, 4));
+        roundView.printView();
+        racingGame.racing(List.of(4, 4, 4));
+        roundView.printView();
+        String printResult = outputMessage.toString();
+        //then
+        assertThat(printResult).isEqualTo(expectedView);
     }
 }

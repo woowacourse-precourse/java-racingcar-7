@@ -6,8 +6,10 @@ import java.util.List;
 import racingcar.model.RacingGame;
 import racingcar.model.RacingRecord;
 
-public class RoundView {
+public class RoundView implements View {
+
     private final RacingGame racingGame;
+    private boolean isStart = true;
 
     public RoundView(RacingGame racingGame) {
         this.racingGame = racingGame;
@@ -27,6 +29,15 @@ public class RoundView {
     }
 
     public void printStartMessage() {
-        System.out.println(ROUND_START_MESSAGE.getMessage());
+        System.out.print(ROUND_START_MESSAGE.getMessage() + "\n");
+    }
+
+    @Override
+    public void printView() {
+        if (isStart) {
+            printStartMessage();
+            isStart = false;
+        }
+        printRound();
     }
 }

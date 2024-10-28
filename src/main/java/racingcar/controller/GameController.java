@@ -1,10 +1,8 @@
 package racingcar.controller;
 
-import java.util.List;
 import racingcar.model.InputValidator;
 import racingcar.model.RacingGame;
 import racingcar.model.RacingJudge;
-import racingcar.model.RacingRecord;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 import racingcar.view.RoundView;
