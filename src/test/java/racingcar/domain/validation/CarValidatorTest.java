@@ -27,4 +27,14 @@ public class CarValidatorTest {
             carValidator.validateEmpty(names.strip());
         });
     }
+
+    @Test
+    @DisplayName("문자와 문자 사이에 공백을 입력하면 예외다")
+    void throw_when_name_contains_white_space() {
+        String names = "l uffy";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            carValidator.validateWhiteSpace(names.strip());
+        });
+    }
 }

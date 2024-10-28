@@ -14,6 +14,7 @@ public class Car implements Comparable<Car> {
     public Car(String name) {
         validator.validateEmpty(name);
         validator.validateMaximumLength(name);
+        validator.validateWhiteSpace(name);
         this.name = name;
     }
 
