@@ -21,15 +21,17 @@ public class RacingGame {
             roundResultList.add(new RoundResultDto(carList));
         }
 
-        return new FinalResultDto(roundResultList, determineWinner(carList));
+        return new FinalResultDto(roundResultList, determineWinner(carList, getMaxPosition(carList)));
     }
 
-    private List<String> determineWinner(List<Car> carList) {
-        int maxPosition = carList.stream()
+    private int getMaxPosition(List<Car> carList) {
+        return carList.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
+    }
 
+    private List<String> determineWinner(List<Car> carList, int maxPosition) {
         return carList.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
