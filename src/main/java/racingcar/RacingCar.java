@@ -55,4 +55,7 @@ public class RacingCar {
         return name + " : " + DISTANCE_BAR.repeat(distance);
     }
 
+    public int getDistance() {
+        return distance;
+    }
 }
