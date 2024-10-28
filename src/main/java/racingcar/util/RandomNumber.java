@@ -12,9 +12,6 @@ public class RandomNumber {
     }
 
     public static boolean isMoreFour(int randomNumber) {
-        if (randomNumber >= 4) {
-            return true;
-        }
-        return false;
+        return randomNumber >= 4;
     }
 }
