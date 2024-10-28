@@ -155,6 +155,18 @@ class ApplicationTest extends NsTest {
         assertThat(application.getWinnerList()).contains("Car-1", "Car-2");
     }
 
+    @Test
+    void printWinner_우승자_출력_테스트() {
+        List<String> winner = List.of("Car-1", "Car-2");
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        application.printWinner(winner);
+        System.setOut(System.out);
+
+        assertThat(outputStream.toString()).contains("최종 우승자 : Car-1, Car-2");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
