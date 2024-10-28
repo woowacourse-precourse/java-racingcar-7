@@ -1,10 +1,9 @@
 package racingcar.car;
 
 public class Car {
-    private static final String distanceFormat = "-";
+    private static final String DISTANCE_FORMAT = "-";
     private final String name;
     private int distance = 0;
-    private String distanceOutput = "";
 
     public Car(String name) {
         this.name = name;
@@ -14,6 +13,10 @@ public class Car {
         return name;
     }
 
+    public int getDistance() {
+        return distance;
+    }
+
     public void forward(boolean isForwardMovable) {
         if (isForwardMovable) {
             distance++;
@@ -21,8 +24,9 @@ public class Car {
     }
 
     public String getDistanceOutput() {
+        String distanceOutput = "";
         for (int i = 0; i < distance; i++) {
-            distanceOutput = distanceOutput.concat(distanceFormat);
+            distanceOutput = distanceOutput.concat(DISTANCE_FORMAT);
         }
         return distanceOutput;
     }
