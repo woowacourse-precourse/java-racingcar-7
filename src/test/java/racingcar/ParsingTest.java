@@ -20,6 +20,6 @@ public class ParsingTest {
 
         //then
         Assertions.assertThat(exception).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("해석할 수 없는 문자열 입니다");
+                .hasMessage(Parser.INVALID_STRING_FORMAT);
     }
 }

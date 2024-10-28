@@ -19,7 +19,6 @@ public class Track {
     public void runOneCycle() {
         for (Entry<Vehicle, Integer> vehicleIntegerEntry : vehiclePositionMap.entrySet()) {
             Vehicle vehicle = vehicleIntegerEntry.getKey();
-            Integer position = vehicleIntegerEntry.getValue();
             runVehicle(vehicle);
         }
     }

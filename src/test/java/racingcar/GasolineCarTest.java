@@ -27,7 +27,7 @@ public class GasolineCarTest {
 
         //then
         Assertions.assertThat(exception).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 5자 이하만 가능합니다");
+                .hasMessage(Car.INVALID_CAR_NAME);
     }
 
     @Test

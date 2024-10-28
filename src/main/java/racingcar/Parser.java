@@ -3,6 +3,7 @@ package racingcar;
 public class Parser {
 
     private String delimiter;
+    public static String INVALID_STRING_FORMAT = "해석할 수 없는 문자열 입니다";
 
     public Parser(String delimiter) {
         this.delimiter = delimiter;
@@ -13,7 +14,7 @@ public class Parser {
         String[] parsedStrings = str.split(delimiter);
         for (String parsedString : parsedStrings) {
             if (parsedString.isEmpty()) {
-                throw new IllegalArgumentException("해석할 수 없는 문자열 입니다");
+                throw new IllegalArgumentException(INVALID_STRING_FORMAT);
             }
         }
         return parsedStrings;
