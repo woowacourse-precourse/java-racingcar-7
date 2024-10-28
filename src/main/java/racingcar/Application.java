@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,11 @@ public class Application {
         String carNamesInput = getCarNames();
         int moveCount = getMoveCount();
         List<Car> cars = createCars(carNamesInput);
+
+        for (int i = 0; i < moveCount; i++) {
+            playRound(cars);
+            printRoundResult(cars);
+        }
 
         // 이후 기능 구현
     }
@@ -52,13 +58,30 @@ public class Application {
         return cars;
     }
 
+    private static void playRound(List<Car> cars) {
+        for (Car car : cars) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            if (randomValue >= 4) {
+                car.move();
+            }
+        }
+    }
+
+    private static void printRoundResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.print(car.getName() + " : ");
+            System.out.println("-".repeat(car.getPosition()));
+        }
+        System.out.println();  // 라운드 종료 후 한 줄 띄움
+    }
+
     // Car 중첩 클래스
     private static class Car {
         private final String name;
         private int position = 0;
 
         public Car(String name) {
-            if (name.length() > 5 || name.length() == 0) {
+            if (name.length() > 5 || name.isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
             }
             this.name = name;
