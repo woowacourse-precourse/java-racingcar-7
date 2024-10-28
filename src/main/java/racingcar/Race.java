@@ -55,4 +55,14 @@ public class Race {
         }
     }
 
+    public List<String> findWinner() {
+        List<String> winners = new ArrayList<>();
+        for (Car car : carList) {
+            if (car.getScore() == maxScore) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
 }
