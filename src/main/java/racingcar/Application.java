@@ -32,10 +32,10 @@ public class Application {
                 System.out.println();
                 System.out.println("실행 결과");
             }
-            for (int car_ind = 0; car_ind < carNames.length; car_ind++) {
+            for (int carInd = 0; carInd < carNames.length; carInd++) {
                 int carProgress = canProgressWithRandomNum();
-                carProgressArr[car_ind] += carProgress;
-                printCarNameProgress(carNames[car_ind], carProgressArr[car_ind]);
+                carProgressArr[carInd] += carProgress;
+                printCarNameProgress(carNames[carInd], carProgressArr[carInd]);
             }
             System.out.println();
         }
