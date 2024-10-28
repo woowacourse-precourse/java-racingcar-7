@@ -10,11 +10,13 @@ public class CarRacingGame {
     private final IOutputDisplay outputDisplay;
     private final List<ICar> carList;
     private final int round;
+    private int currentRound;
 
     public CarRacingGame(IOutputDisplay outputDisplay, List<ICar> carList, int round) {
         this.outputDisplay = outputDisplay;
         this.carList = carList;
         this.round = round;
+        this.currentRound = 0;
     }
 
     public List<ICar> start() {
@@ -43,6 +45,8 @@ public class CarRacingGame {
     }
 
     private void round() {
+        currentRound++;
+
         for (ICar car : carList) {
             car.drive();
         }
