@@ -57,6 +57,6 @@ public class RaceTest {
 
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Race(cars, -1));
 
-        assertEquals("시도할 횟수는 0 이상이어야 합니다.", thrown.getMessage());
+        assertEquals("시도할 횟수는 1 이상이어야 합니다.", thrown.getMessage());
     }
 }
