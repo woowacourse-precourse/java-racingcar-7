@@ -1,5 +1,12 @@
 # java-racingcar-precourse
 
+## 구조
+
+<img width="735" alt="image" src="https://github.com/user-attachments/assets/a1391e6d-47f6-4965-a035-fd066a41f0c2">
+
+
+
+
 ## ✏️ 구현할 기능 목록
 ### 안내 메시지 출력 
 1. "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)" 안내 메시지 출력
