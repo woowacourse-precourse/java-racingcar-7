@@ -30,6 +30,18 @@ public class RacingGame {
     return attempts;
   }
 
+  private static final int RANDOM_MIN = 0;
+  private static final int RANDOM_MAX = 9;
+  private void playGame(List<Car> cars, int attempts) {
+    System.out.println("실행 결과");
+    for (int i = 0; i < attempts; i++) {
+      for (Car car : cars) {
+        car.move(Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX));
+      }
+      printGameStatus(cars);
+    }
+  }
+
   private void printGameStatus(List<Car> cars) {
     for (Car car : cars) {
       System.out.println(car.getName() + " : " + car.getPosition());
