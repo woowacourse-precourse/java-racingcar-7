@@ -15,33 +15,33 @@ public class Output {
     private static final String FINAL_WINNER_MESSAGE =
             "최종 우승자 : ";
 
-    public static void printCarNameRequestMessage(){
+    public static void printCarNameRequestMessage() {
         System.out.println(CAR_NAME_REQUEST_MESSAGE);
     }
 
-    public static void printNumberRequestMessage(){
+    public static void printNumberRequestMessage() {
         System.out.println(NUMBER_REQUEST_MESSAGE);
     }
 
-    public static void printRunResultMessage(){
+    public static void printRunResultMessage() {
         System.out.println(RUN_RESULT_MESSAGE);
     }
 
-    public static void printRunResult(List<Car> carList){
+    public static void printRunResult(List<Car> carList) {
         for (Car car : carList) {
             System.out.println(car);
         }
     }
 
-    public static void printFinalWinner(List<Car> winnerCarList){
+    public static void printFinalWinner(List<Car> winnerCarList) {
         System.out.println(FINAL_WINNER_MESSAGE + joinCarName(winnerCarList));
     }
 
-    public static void printBlankLine(){
+    public static void printBlankLine() {
         System.out.println();
     }
 
-    private static StringJoiner joinCarName(List<Car> carList){
+    private static StringJoiner joinCarName(List<Car> carList) {
         StringJoiner finalWinner = new StringJoiner(", ");
         for (Car car : carList) {
             finalWinner.add(car.getName());

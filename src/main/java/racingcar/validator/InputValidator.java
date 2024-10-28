@@ -22,7 +22,7 @@ public class InputValidator {
         carNamesValidator.inputSameName(carNames);
     }
 
-    public void validateCarName(String carNames){
+    public void validateCarName(String carNames) {
         for(String carName : Separator.split(carNames)){
             checkCarName(carName);
         }

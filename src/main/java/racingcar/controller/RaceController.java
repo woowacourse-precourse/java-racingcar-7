@@ -2,12 +2,12 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.domain.Race;
+import racingcar.util.Separator;
 import racingcar.view.Input;
 import racingcar.view.Output;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RaceController {
     public void run() {
@@ -20,27 +20,24 @@ public class RaceController {
         startRace(cars, count);
     }
 
-    private List<Car> getReadyForCarList(){
+    private List<Car> getReadyForCarList() {
         Output.printCarNameRequestMessage();
-        return getCarList(split(Input.getCarNames()));
+        return getCarList(Separator.split(Input.getCarNames()));
     }
 
-    private List<Car> getCarList(String[] carNamesArray){
+    private List<Car> getCarList(String[] carNamesArray) {
         return Arrays.stream(carNamesArray)
+                .map(String::trim)
                 .map(Car::new)
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    private String[] split(String carNames){
-        return carNames.split(",");
-    }
-
-    private int getReadyForCount(){
+    private int getReadyForCount() {
         Output.printNumberRequestMessage();
         return Input.getNumber();
     }
 
-    private void startRace(List<Car> cars, int count){
+    private void startRace(List<Car> cars, int count) {
         Race race = new Race(cars, count);
         race.start();
         Output.printFinalWinner(race.end());

@@ -11,7 +11,7 @@ public class NumberValidatorTest {
     @ParameterizedTest
     @ValueSource(ints = {0, -1, -2, -3, -10, -100})
     @DisplayName("주어진 횟수를 양수로 입력하지 않으면 예외 발생")
-    void inputPositiveNumber_NotInputtedPositiveNumber_ExceptionThrown(int number){
+    void inputPositiveNumber_NotInputtedPositiveNumber_ExceptionThrown(int number) {
         //given
         final String expectedMessage = "시도할 횟수를 양수로 입력해주세요";
         final NumberValidator numberValidator = new NumberValidator();

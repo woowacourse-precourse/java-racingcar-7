@@ -32,7 +32,7 @@ public class Race {
                 .toList();
     }
 
-    private void run(){
+    private void run() {
         CARS.forEach(car -> car.move(MovementGenerator.getRandomMovement()));
         Output.printRunResult(CARS);
         Output.printBlankLine();

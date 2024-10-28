@@ -12,7 +12,7 @@ public class CarNamesValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"Ahn;Seong;Mo", "Ahn,Seong;Mo", "Ahn/Seong,Mo"})
     @DisplayName("자동차 이름들을 쉼표(,)로 구분하지 않았으면 예외 발생")
-    void separateByComma_NotSeparatedByComma_ExceptionThrown(String carNames){
+    void separateByComma_NotSeparatedByComma_ExceptionThrown(String carNames) {
         //given
         final String expectedMessage = "쉼표(,)로 구분하여 자동차 이름들을 입력해주세요";
         final CarNamesValidator carNamesValidator = new CarNamesValidator();
@@ -26,7 +26,7 @@ public class CarNamesValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"Ahn", "Ahn,"})
     @DisplayName("자동차 이름을 두 개 이상으로 입력하지 않았으면 예외 발생")
-    void inputMoreThanTwo_NotInputtedMoreThanTwo_ExceptionThrown(String carNames){
+    void inputMoreThanTwo_NotInputtedMoreThanTwo_ExceptionThrown(String carNames) {
         //given
         final String expectedMessage = "자동차 이름을 두 개 이상으로 입력해주세요";
         final CarNamesValidator carNamesValidator = new CarNamesValidator();
@@ -39,7 +39,7 @@ public class CarNamesValidatorTest {
 
     @Test
     @DisplayName("같은 이름을 입력하였으면 예외 발생")
-    void inputSameName_InputtedSameName_ExceptionThrown(){
+    void inputSameName_InputtedSameName_ExceptionThrown() {
         //given
         final String carNames = "Ahn,Seong,Ahn";
         final String expectedMessage = "중복되지 않는 이름을 입력해주세요";
