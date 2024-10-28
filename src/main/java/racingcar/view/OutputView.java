@@ -18,8 +18,8 @@ public class OutputView {
     public void printRacing(List<Car> racingCars) {
         StringBuilder currentPosition = new StringBuilder();
         for (Car car : racingCars) {
-            currentPosition.append(car.getName()).append(" : ")
-                    .append("-".repeat(car.getPosition()))
+            currentPosition.append(car.getName()).append(StringPattern.NAME_VIEWPOINT.getValue())
+                    .append(createMovePattern(car))
                     .append("\n");
         }
         System.out.println(currentPosition.toString());
@@ -35,5 +35,9 @@ public class OutputView {
         result.append("최종 우승자 : ")
                 .append(joinWinner(winners));
         System.out.println(result);
+    }
+
+    private String joinWinner(List<String> winners) {
+        return String.join(StringPattern.JOIN_SYMBOL.getValue(), winners);
     }
 }
