@@ -22,7 +22,7 @@ public class GameManager {
         String[] carName = readCarName();
         Cars cars = putCars(carName);
         int movementNumber = readMovementNumber();
-        moveCar(cars, movementNumber);
+        simulateMoveCar(cars, movementNumber);
         List<String> winner = makeWinnerList(cars);
         printWinner(winner);
     }
@@ -53,7 +53,7 @@ public class GameManager {
         return inputView.readCarName();
     }
 
-    private void moveCar(Cars cars, int movementNumber) {
+    private void simulateMoveCar(Cars cars, int movementNumber) {
         outputView.printMovementResultMessage();
         NumberGenerator numberGenerator = new RandomNumberGenerator();
         for (int i = 0; i < movementNumber; i++) {
