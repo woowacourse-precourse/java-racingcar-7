@@ -3,6 +3,9 @@ package racingcar;
 import java.util.Objects;
 
 public class Car {
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int DEFAULT_DISTANCE = 0;
+    private static final String DISTANCE_EXPRESSION = "-";
     private final String name;
     private int distanceMovedForward;
 
@@ -10,7 +13,7 @@ public class Car {
         validateNameLength(name);
         validateNameOnlyEnglishAndNumber(name);
         this.name = name;
-        this.distanceMovedForward = 0;
+        this.distanceMovedForward = DEFAULT_DISTANCE;
     }
 
     public String getName() {
@@ -26,7 +29,7 @@ public class Car {
     }
 
     private void validateNameLength(final String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
@@ -46,12 +49,17 @@ public class Car {
     }
 
     @Override
+    public String toString() {
+        return name + " : " + DISTANCE_EXPRESSION.repeat(distanceMovedForward);
+    }
+
+    @Override
     public int hashCode() {
         return name.hashCode();
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -60,10 +68,5 @@ public class Car {
         }
         Car car = (Car) obj;
         return Objects.equals(name, car.name);
-    }
-
-    @Override
-    public String toString() {
-        return name + " : " + "-".repeat(distanceMovedForward);
     }
 }

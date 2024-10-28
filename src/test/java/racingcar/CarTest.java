@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
-
     @Test
     @DisplayName("이름이_5글자를_넘기면_예외를_발생한다")
     public void should_ThrowException_When_NameLengthMoreThan5() {

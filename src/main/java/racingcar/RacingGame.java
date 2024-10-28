@@ -7,6 +7,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final int MAX_TOTAL_MOVES = 100;
+    private static final int MIN_TOTAL_MOVES = 1;
+    private static final int RANDOM_START_INCLUSIVE = 0;
+    private static final int RANDOM_END_INCLUSIVE = 9;
+    private static final int MOVE_THRESHOLD = 4;
     private Set<Car> cars = new HashSet<>();
 
     public List<Car> run(final List<String> carNames, final int totalMoves) {
@@ -21,14 +26,14 @@ public class RacingGame {
         return getWinners();
     }
 
-    private void registerCars(List<String> carNames) {
+    private void registerCars(final List<String> carNames) {
         carNames.stream()
                 .map(Car::new)
                 .forEach(this::registerCar);
     }
 
-    private void validateTotalMovesRange(int totalMoves) {
-        if (totalMoves > 100 || totalMoves < 1) {
+    private void validateTotalMovesRange(final int totalMoves) {
+        if (totalMoves > MAX_TOTAL_MOVES || totalMoves < MIN_TOTAL_MOVES) {
             throw new IllegalArgumentException("이동 횟수는 최소 1회, 최대 100회여야합니다.");
         }
     }
@@ -49,7 +54,7 @@ public class RacingGame {
     }
 
     private void moveCarRandomly(final Car car) {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+        if (Randoms.pickNumberInRange(RANDOM_START_INCLUSIVE, RANDOM_END_INCLUSIVE) >= MOVE_THRESHOLD) {
             car.moveForward();
         }
     }
@@ -67,7 +72,7 @@ public class RacingGame {
 
     private int getWinningDistance() {
         return cars.stream()
-                .mapToInt(car -> car.getDistanceMovedForward())
+                .mapToInt(Car::getDistanceMovedForward)
                 .max()
                 .getAsInt();
     }

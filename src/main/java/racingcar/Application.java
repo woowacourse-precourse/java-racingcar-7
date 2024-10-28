@@ -5,17 +5,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
-    public static void main(String[] args) {
-        List<String> carNames = inputCarNames();
-        int totalMoves = inputTotalMoves();
+    private static final String INPUT_DELIMITER = ",";
+    private static final String OUTPUT_DELIMITER = ", ";
 
-        List<Car> winners = new RacingGame().run(carNames, totalMoves);
+    public static void main(String[] args) {
+        RacingGame racingGame = new RacingGame();
+        List<Car> winners = racingGame.run(inputCarNames(), inputTotalMoves());
         printWinners(winners);
     }
 
     private static List<String> inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String[] carNames = input().split(",");
+        String[] carNames = input().split(INPUT_DELIMITER);
         return List.of(carNames);
     }
 
@@ -38,7 +39,7 @@ public class Application {
 
     private static void printWinners(final List<Car> winners) {
         List<String> winnerNames = abstractWinnerNames(winners);
-        output("최종 우승자 : "  + String.join(", ", winnerNames));
+        output("최종 우승자 : " + String.join(OUTPUT_DELIMITER, winnerNames));
     }
 
     private static List<String> abstractWinnerNames(final List<Car> winners) {
