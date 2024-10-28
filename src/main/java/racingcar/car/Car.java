@@ -33,4 +33,12 @@ class Car {
 	int getPosition() {
 		return position;
 	}
+
+	String getName() {
+		return name;
+	}
+
+	boolean isWinner(Car winner) {
+		return this.position == winner.position;
+	}
 }

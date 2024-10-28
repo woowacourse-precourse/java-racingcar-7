@@ -2,7 +2,9 @@ package racingcar.car;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 	private final List<Car> cars;
@@ -13,6 +15,10 @@ public class Cars {
 		cars = Arrays.stream(players)
 				.map(Car::new)
 				.toList();
+	}
+
+	Cars(List<Car> cars) {
+		this.cars = cars;
 	}
 
 	private void validateDuplicateName(String[] names) {
@@ -34,5 +40,17 @@ public class Cars {
 		);
 
 		System.out.println(); // 회차 별 실행 결과 출력의 개행을 위한 라인
+	}
+
+	@SuppressWarnings("OptionalGetWithoutIsPresent")
+	public String getWinners() {
+		Car winner = cars.stream()
+				.max(Comparator.comparing(Car::getPosition))
+				.get();// never return null
+
+		return cars.stream()
+				.filter(car -> car.isWinner(winner))
+				.map(Car::getName)
+				.collect(Collectors.joining(", "));
 	}
 }

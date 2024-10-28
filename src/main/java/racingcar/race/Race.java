@@ -12,9 +12,13 @@ public class Race {
 		Cars cars = new Cars(players);
 
 		int totalRound = readRound();
+
+		System.out.println("\n실행 결과");
 		for (int round = 0; round < totalRound; round++) {
 			cars.run();
 		}
+
+		System.out.println("최종 우승자 : " + cars.getWinners());
 	}
 
 	private String[] readPlayers() {
