@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.Car;
+import racingcar.game.winner.MockWinner;
 
 import java.util.List;
 
@@ -26,12 +27,10 @@ class RacingGameLogFormatterTest {
     @Test
     @DisplayName("우승자 포맷팅")
     void test1() {
-        List<Car> winners = List.of(
-                new Car("pobi", 0),
-                new Car("kkk", 0)
-        );
+        MockWinner mockWinner = new MockWinner();
+        mockWinner.setTestValue(List.of("pobi", "kkk"));
 
-        String result = logFormatter.formatWinner(winners);
+        String result = logFormatter.formatWinner(mockWinner);
 
         assertEquals("최종 우승자 : pobi, kkk", result);
     }

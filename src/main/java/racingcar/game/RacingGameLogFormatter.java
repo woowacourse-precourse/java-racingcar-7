@@ -1,9 +1,7 @@
 package racingcar.game;
 
 import racingcar.Car;
-
-import java.util.Iterator;
-import java.util.List;
+import racingcar.game.winner.Winner;
 
 public class RacingGameLogFormatter {
     private final String COMMON_FORMAT = "%s : %s";
@@ -16,13 +14,8 @@ public class RacingGameLogFormatter {
                 .formatted(car.getName(), DASH.repeat(car.getLocation()));
     }
 
-    public String formatWinner(List<Car> winners) {
+    public String formatWinner(Winner winner) {
         return COMMON_FORMAT
-                .formatted(WINNER_PREFIX, String.join(WINNER_DELIMITER, toNames(winners)));
+                .formatted(WINNER_PREFIX, String.join(WINNER_DELIMITER, winner.getNames()));
     }
-
-    private List<String> toNames(List<Car> winners) {
-        return winners.stream().map(Car::getName).toList();
-    }
-
 }

@@ -1,14 +1,19 @@
-package racingcar.game;
+package racingcar.game.winner;
 
 import racingcar.Car;
 
 import java.util.List;
 
 public class RacingWinnerFinder {
-    public List<Car> find(List<Car> players) {
+    public Winner find(List<Car> players) {
         int winnerLocation = findWinnerLocation(players);
+        return new Winner(findWinnersNames(players, winnerLocation));
+    }
+
+    private List<String> findWinnersNames(List<Car> players, int winnerLocation) {
         return players.stream()
                 .filter(player -> player.getLocation() == winnerLocation)
+                .map(Car::getName)
                 .toList();
     }
 
