@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.inputManager;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -21,10 +21,10 @@ public class ConsoleInputManager implements InputManager{
         String [] classifiedName = readName.split(",");
 
         for(String name : classifiedName){
-            if(name.length() <= 5){
+            if(name.length() <= 5 && !name.isEmpty()){
                 nameList.add(name);
             } else {
-                throw new IllegalArgumentException("이름은 5자 이하로 입력하세요.");
+                throw new IllegalArgumentException("입력 서식에 맞춰 주세요.");
             }
         }
 

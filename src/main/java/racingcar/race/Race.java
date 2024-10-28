@@ -1,7 +1,12 @@
-package racingcar;
+package racingcar.race;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.car.Car;
+import racingcar.car.RacingCar;
+import racingcar.inputManager.InputManager;
+import racingcar.outputManager.OutputManager;
+import racingcar.referee.Referee;
 
 public class Race {
     private InputManager inputManager;

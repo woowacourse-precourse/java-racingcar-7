@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.referee;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.car.Car;
 
 public class CarRacingReferee implements Referee {
     @Override

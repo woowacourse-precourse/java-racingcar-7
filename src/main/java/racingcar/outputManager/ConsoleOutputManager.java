@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.outputManager;
 
 import java.util.List;
+import racingcar.car.Car;
 
 public class ConsoleOutputManager implements OutputManager {
     @Override
