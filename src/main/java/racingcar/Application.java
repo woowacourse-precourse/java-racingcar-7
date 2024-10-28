@@ -13,8 +13,9 @@ public class Application {
         // 1. 문자열 입력받기
         String words = InputView.inputWords();
 
-        // 2. 문자열이 공백 또는 쉼표로 시작하는 경우, 또는 하나의 자동차만 있어
-        // 자동차 경주 게임을 하는 의미가 없는 경우 IllegalArgumentException를 발생시킴
+        // 2. 문자열이 공백 또는 쉼표로 시작하거나 끝나는 경우,
+        // 또는 하나의 자동차만 있어 자동차 경주 게임을 하는 의미가 없는 경우
+        // IllegalArgumentException를 발생시킴
         if (!WordsController.isValid(words) | !WordsController.moreThanOne(words)) {
             throw new IllegalArgumentException();
         }
@@ -24,7 +25,7 @@ public class Application {
 
         // 4. 자동차 이름이 공백으로 시작하거나 끝나는 경우,
         // 또는 한글 또는 영어대소문자 또는 숫자로 이루어진 1 이상 5 이하의 글자가 아닐 경우
-        // 잘못된 값이므로 IllegalArgumentException를 발생시킴
+        // IllegalArgumentException를 발생시킴
         if (!CarNamesController.isValid(carNames) | !CarNamesController.checkConditions(carNames)) {
             throw new IllegalArgumentException();
         }
