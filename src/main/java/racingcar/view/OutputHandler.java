@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.view;
 
 import static racingcar.util.Constant.*;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
 
-public class OutputUtils {
+public class OutputHandler {
     public static void printPosition(List<Car> carList){
         for(Car car: carList){
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));

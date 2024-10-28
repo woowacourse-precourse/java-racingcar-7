@@ -4,8 +4,8 @@ import static racingcar.util.Constant.PRINT_RESULT_MESSAGE;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.service.InputHandler;
-import racingcar.util.OutputUtils;
+import racingcar.view.InputHandler;
+import racingcar.view.OutputHandler;
 
 public class Game {
     private List<Car> carList;
@@ -25,8 +25,8 @@ public class Game {
         System.out.println(PRINT_RESULT_MESSAGE);
         for (int i = 0; i < attempt; i++) {
             carList.forEach(Car::moveForward);
-            OutputUtils.printPosition(carList);
+            OutputHandler.printPosition(carList);
         }
-        OutputUtils.printEnding(carList);
+        OutputHandler.printEnding(carList);
     }
 }

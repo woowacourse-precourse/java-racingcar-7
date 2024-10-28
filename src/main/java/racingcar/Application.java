@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.service.Game;
-import racingcar.service.InputHandler;
+import racingcar.view.InputHandler;
 
 public class Application {
     public static void main(String[] args) {
