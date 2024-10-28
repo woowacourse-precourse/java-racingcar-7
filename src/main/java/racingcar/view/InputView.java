@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.constant.ExceptionMessage;
 
 public class InputView {
     private static final String DIGIT_PATTERN = "\\d+";
@@ -14,7 +15,7 @@ public class InputView {
 
     private void validateEmptyString(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_EMPTY_STRING.getMessage());
         }
     }
 
@@ -27,7 +28,7 @@ public class InputView {
 
     private void validateDigitFormat(String input) {
         if (!input.matches(DIGIT_PATTERN)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_NON_DIGIT_CHARACTER.getMessage());
         }
     }
 
@@ -35,7 +36,7 @@ public class InputView {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_INVALID_INTEGER_RANGE.getMessage());
         }
     }
 }

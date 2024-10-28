@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.constant.ExceptionMessage;
 
 public class RaceTrack {
     private static final String CAR_NAME_SEPARATOR = ",";
@@ -18,7 +19,7 @@ public class RaceTrack {
     private void validateUniqueNames(List<String> carNames) {
         long uniqueNamesSize = carNames.stream().distinct().count();
         if (uniqueNamesSize != carNames.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAMES_DUPLICATE.getMessage());
         }
     }
 

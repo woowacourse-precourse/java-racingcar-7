@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.constant.ExceptionMessage;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
@@ -16,13 +17,13 @@ public class Car {
 
     private void validateEmptyName(String name) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_EMPTY_STRING.getMessage());
         }
     }
 
     private void validateNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_LENGTH_LIMITATION.getMessage());
         }
     }
 
