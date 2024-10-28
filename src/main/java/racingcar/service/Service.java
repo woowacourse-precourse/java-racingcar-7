@@ -27,18 +27,17 @@ public class Service { // TODO: 이름 더 명확하게 개선
     }
 
     private List<Boolean> getRandom(int randomSize){
-        List<Boolean> moveOrNot = new ArrayList<>(); // TODO: 이름 개선
+        List<Boolean> isAdvance = new ArrayList<>();
         for (int i = 0; i < randomSize; i++) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) { // TODO: 랜덤 추출 로직 함수로 추출
-                moveOrNot.add(true);
+            if (pickRandom() >= 4) {
+                isAdvance.add(true);
                 continue;
             }
-            moveOrNot.add(false);
+            isAdvance.add(false);
         }
-        return moveOrNot;
+        return isAdvance;
     }
 
-    // TODO: 생성과 cut을 분리하는 게 나은지 합치는 게 나은지?
     private List<List<Boolean>> cutRandom(List<Boolean> randoms, int pivot) {
         List<List<Boolean>> dividedRandoms = new ArrayList<>();
         for (int i = 0; i < randoms.size(); i += pivot) {
@@ -51,11 +50,14 @@ public class Service { // TODO: 이름 더 명확하게 개선
         carRace.initialize(names);
     }
 
-    private void move(List<List<Boolean>> randoms) { // TODO: 내가 다른데 move라는 이름의 메서드 만들었던가?
+    private void move(List<List<Boolean>> randoms) {
         for (int i = 0; i < randoms.size(); i++) {
             carRace.advanceCars(randoms.get(i));
-            // TODO: OutputView Service에 있는 게 맞나?
-            OutputView.printResult(carRace.getCars()); // TODO: 파라미터로 전달하는 게 최선인가?
+            OutputView.printResult(carRace.getCars()); // TODO: 외부에서 출력하도록 리팩토링
         }
+    }
+
+    private int pickRandom() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
