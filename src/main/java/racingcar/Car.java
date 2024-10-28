@@ -2,8 +2,6 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.stream.IntStream;
-
 public class Car {
     private int position = 0;
     private final String name;

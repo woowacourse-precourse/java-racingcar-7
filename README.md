@@ -17,4 +17,4 @@
 -[x] 해당 값이랑 같은 값인 자동차 이름들을 출력한다.
 
 ## 예외처리
--[ ] 사용자가 잘못된 값을 출력한 경우 IllegalArgumentException을 발생시킨다.
+-[x] 사용자가 잘못된 값을 출력한 경우 IllegalArgumentException을 발생시킨다.
