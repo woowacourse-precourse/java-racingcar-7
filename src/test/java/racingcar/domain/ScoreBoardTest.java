@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.FinalResultDto;
+import racingcar.dto.RoundResultDto;
 
 class ScoreBoardTest {
     private ScoreBoard scoreBoard;
@@ -38,5 +39,16 @@ class ScoreBoardTest {
         String resultString = finalResult.getResult();
 
         assertEquals("최종 우승자 : Car1, Car2", resultString);
+    }
+
+    @Test
+    void 각_시도마다_전진_횟수를_표시하는지_확인() {
+
+        for (int i = 1; i <= 5; i++) {
+            car1.run();
+            List<RoundResultDto> roundResults = scoreBoard.returnRoundResult();
+
+            assertEquals("Car1 : " + "-".repeat(i), roundResults.get(0).getResult());
+        }
     }
 }
