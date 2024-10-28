@@ -46,4 +46,30 @@ public class OutputDisplayImplTests {
         assertThat(outputStream.toString())
                 .contains("최종 우승자 : gana, dara");
     }
+
+    @Test
+    public void printRoundResult() {
+        // given
+        List<ICar> carList = new ArrayList<>();
+        carList.add(new CarImpl("gana"));
+        carList.add(new CarImpl("dara"));
+        carList.add(new CarImpl("maru"));
+
+        for (int i = 0; i < carList.size(); i++) {
+            ICar car = carList.get(i);
+
+            while (car.getPosition() < i) {
+                car.drive();
+            }
+        }
+
+        // when
+        outputDisplay.printRoundResult(carList);
+
+        // then
+        assertThat(outputStream.toString())
+                .contains("gana : ")
+                .contains("dara : -")
+                .contains("maru : --");
+    }
 }
