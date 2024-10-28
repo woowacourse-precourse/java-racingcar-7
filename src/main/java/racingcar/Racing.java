@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Racing {
     public void race(String[] strings,int input) {
-        String str="_";
+        String str="-";
         int[] sum = new int[10];
         int car= strings.length;
         for (int i=0;i<input;i++) {
@@ -13,7 +13,7 @@ public class Racing {
                 if (number>3){
                     sum[j] +=number;
                 }
-                System.out.println(strings[j]+":"+str.repeat(sum[j]));
+                System.out.println(strings[j]+" : "+str.repeat(sum[j]));
             }
         }
         Winner winner=new Winner();
