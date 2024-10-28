@@ -45,5 +45,35 @@ public class RacingGame {
         System.out.println();
     }
 
+    public List<String> getWinners(){
+        int maxDistance = getMaxDistance();
+        return findWinners(maxDistance);
+    }
+
+    public int getMaxDistance(){
+        int maxDistance = 0;
+        for (racingcar.Car car : cars){
+            int distance = car.distance;
+            if(distance > maxDistance){
+                maxDistance = distance;
+            }
+        }
+        return maxDistance;
+    }
+
+    public List<String> findWinners(int maxDistance) {
+        List<String> winners = new ArrayList<>();
+        for (racingcar.Car car : cars) {
+            addWinnerIfMaxDistance(winners, car, maxDistance);
+        }
+        return winners;
+    }
+
+    public void addWinnerIfMaxDistance(List<String> winners, racingcar.Car car, int maxDistance) {
+        if (car.distance == maxDistance) {
+            winners.add(car.name);
+        }
+    }
+
 
 }
