@@ -25,6 +25,13 @@ public class RacingCarNamesDTO {
         }
     }
 
+    private void validateLengthOfCarName(){
+        for(String carName : carNames){
+            if(carName.length() > 5)
+                throw new IllegalArgumentException("자동차 이름은 5 이하만 가능합니다.");
+        }
+    }
+
     private void validateMinimumCarCount(){
         if(carNames.size() < 2)
             throw new IllegalArgumentException("경주할 자동차는 두 대 이상 입력해야 합니다.");

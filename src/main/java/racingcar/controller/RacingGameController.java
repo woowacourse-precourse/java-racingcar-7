@@ -13,6 +13,7 @@ public class RacingGameController {
         RacingAttemptDTO racingAttemptDTO = getAttempts();
 
         ResultDTO resultDTO = RacingGameService.runGame(racingCarNames, racingAttemptDTO);
+        OutputView.printResult(resultDTO);
     }
     private static RacingCarNamesDTO getCarsName(){
         OutputView.requireCarsName();

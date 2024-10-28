@@ -21,7 +21,7 @@ public class RacingGame {
         for(Car car : cars.getCars()){
             result.append(formatCarResult(car)).append("\n");
         }
-
+        result.append("\n");
         return result.toString();
     }
 
