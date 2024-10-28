@@ -11,6 +11,9 @@ public class GameConstants {
     public static final int MAX_NAME_LENGTH = 10;
     public static final int MIN_NAME_LENGTH = 1;
 
+    public static final int RANDOM_NUMBER_MIN = 0;
+    public static final int RANDOM_NUMBER_MAX = 9;
+
 
     public static final int THRESHOLD = 4;
     public static final int ZERO = 0;
