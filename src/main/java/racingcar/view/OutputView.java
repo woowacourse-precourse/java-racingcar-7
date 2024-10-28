@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.dto.Result;
+import racingcar.model.Result;
 
 public interface OutputView {
     void printExecutionMessage();

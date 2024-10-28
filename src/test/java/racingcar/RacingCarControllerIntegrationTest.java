@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.RacingCarController;
+import racingcar.model.Result;
 import racingcar.service.AcceleratorService;
 import racingcar.service.impl.RandomNumberGeneratorService;
 import racingcar.view.InputView;
@@ -74,7 +75,7 @@ class RacingCarControllerIntegrationTest {
         }
 
         @Override
-        public void printResult(racingcar.dto.Result result) {
+        public void printResult(Result result) {
             roundResults.add(result.middleResult());
         }
 

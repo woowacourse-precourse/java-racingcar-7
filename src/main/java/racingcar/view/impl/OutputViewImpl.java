@@ -1,7 +1,7 @@
 package racingcar.view.impl;
 
 import racingcar.constant.Message;
-import racingcar.dto.Result;
+import racingcar.model.Result;
 import racingcar.view.OutputView;
 
 public class OutputViewImpl implements OutputView {

@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.constant.Message;
-import racingcar.dto.Result;
 import racingcar.service.AcceleratorService;
 import racingcar.validation.Validator;
 import racingcar.validation.ValidatorFactory;

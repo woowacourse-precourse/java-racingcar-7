@@ -1,11 +1,10 @@
-package racingcar.dto;
+package racingcar.model;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import racingcar.constant.Message;
-import racingcar.model.Car;
 
 public class Result {
     private final Map<String, Integer> result;
