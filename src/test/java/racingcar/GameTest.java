@@ -15,7 +15,8 @@ public class GameTest {
 
     static Stream<Arguments> parseCarsCases() {
         return Stream.of(
-                Arguments.of("pobi,woni",new ArrayList<String>(Arrays.asList("pobi","woni")))
+                Arguments.of("pobi,woni",new ArrayList<String>(Arrays.asList("pobi","woni"))),
+                Arguments.of("  pobi,   woni",new ArrayList<String>(Arrays.asList("pobi","woni")))
         );
     }
 
