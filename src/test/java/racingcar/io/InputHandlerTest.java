@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,9 +19,27 @@ class InputHandlerTest extends NsTest {
     }
 
     @Test
-    void 자동차_이름이_빈값일_때_예외가_발생한다() {
+    void 자동차_이름에_빈값만_입력하면_예외가_발생한다() {
         assertSimpleTest(() -> {
-            run(",자동차2,자동차3");
+            run("");
+            assertThatThrownBy(inputHandler::getCarNames)
+                    .isInstanceOf(NoSuchElementException.class);
+        });
+    }
+
+    @Test
+    void 자동차_이름이_빈값이면_예외가_발생한다() {
+        assertSimpleTest(() -> {
+            run("자동차1, ,자동차3");
+            assertThatThrownBy(inputHandler::getCarNames)
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 자동차_이름이_중복되면_예외가_발생한다() {
+        assertSimpleTest(() -> {
+            run("자동차1,자동차1,자동차2");
             assertThatThrownBy(inputHandler::getCarNames)
                     .isInstanceOf(IllegalArgumentException.class);
         });
@@ -39,6 +58,24 @@ class InputHandlerTest extends NsTest {
     void 시도_횟수가_자연수가_아니면_예외가_발생한다() {
         assertSimpleTest(() -> {
             run("0");
+            assertThatThrownBy(inputHandler::getTrialCount)
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 시도_횟수가_빈값이면_예외가_발생한다() {
+        assertSimpleTest(() -> {
+            run("");
+            assertThatThrownBy(inputHandler::getTrialCount)
+                    .isInstanceOf(NoSuchElementException.class);
+        });
+    }
+
+    @Test
+    void 시도_횟수가_숫자가_아니면_예외가_발생한다() {
+        assertSimpleTest(() -> {
+            run("a");
             assertThatThrownBy(inputHandler::getTrialCount)
                     .isInstanceOf(IllegalArgumentException.class);
         });

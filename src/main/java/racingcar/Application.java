@@ -6,24 +6,15 @@ import racingcar.io.OutputHandler;
 
 public class Application {
     public static void main(String[] args) {
-        InputHandler input = new InputHandler();
-        List<Car> cars = input.getCarNames();
-        int trialCount = input.getTrialCount();
+        InputHandler inputHandler = new InputHandler();
+        OutputHandler outputHandler = new OutputHandler();
 
-        startRace(cars, trialCount);
+        List<Car> cars = inputHandler.getCarNames();
+        int trialCount = inputHandler.getTrialCount();
 
-        OutputHandler output = new OutputHandler(cars);
-        output.printTrialResult();
-        output.printFinalWinner();
-    }
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+        Race race = new Race(cars, trialCount, moveStrategy, outputHandler);
 
-    private static void startRace(List<Car> cars, int trialCount) {
-        while (trialCount > 0) {
-            for (Car car : cars) {
-                car.move();
-            }
-            trialCount--;
-        }
-
+        race.startRace();
     }
 }

@@ -4,12 +4,10 @@ public class Car {
 
     private final String name;
     private int position;
-    private final MoveStrategy moveStrategy;
 
-    public Car(String name, MoveStrategy moveStrategy) {
+    public Car(String name) {
         this.name = name;
         this.position = 0;
-        this.moveStrategy = moveStrategy;
     }
 
     public String getName() {
@@ -20,7 +18,7 @@ public class Car {
         return position;
     }
 
-    public void move() {
+    public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.shouldMove()) {
             position++;
         }
