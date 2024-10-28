@@ -16,6 +16,10 @@ public class Output {
         print(EXECUTION_RESULT_COMMENT);
     }
 
+    public void resultByOrder(String result) {
+        print(result);
+    }
+
     private void print(String comment) {
         System.out.println(comment);
     }
