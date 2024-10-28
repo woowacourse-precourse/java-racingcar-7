@@ -29,7 +29,7 @@ public class Game {
         return cars;
     }
 
-    private int inputRoundCount() {
+    int inputRoundCount() {
         // 시도 횟수 받기, 숫자만 받기
         System.out.println("시도할 횟수는 몇 회인가요");
         try {
