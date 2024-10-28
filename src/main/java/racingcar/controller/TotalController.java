@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Race;
+import racingcar.domain.Registration;
 import racingcar.service.race.RaceStarterService;
 
 public class TotalController {
@@ -17,6 +18,12 @@ public class TotalController {
 
     private void connectRelayServer(Race race) {
         ScreenController.getInstance().connect(race);
+    }
+
+    private Race openRace() {
+        Registration registration = RegistrationController.getInstance().register();
+        raceStarterService.openRace(registration);
+        return raceStarterService.getRace();
     }
 
     public static TotalController getInstance() {
