@@ -9,18 +9,21 @@ public class GameStart {
     public static int race(Car[] player) {
 
         for (Car car : player) {
-            int forward = Randoms.pickNumberInRange(0, 9);
-            if (forward >= 4) {
-                car.setForwardCount(car.getForwardCount() + 1);
-            }
+            int progress = Randoms.pickNumberInRange(0, 9);
+            decideToMove(progress, car);
             maxForward(car);
         }
         return max;
     }
 
-    public static void maxForward(Car player) {
+    public static void decideToMove(int progress, Car car) {
+        if (progress >= 4) {
+            car.setForwardCount(car.getForwardCount() + 1);
+        }
+    }
 
-        if(player.getForwardCount() > max) {
+    public static void maxForward(Car player) {
+        if (player.getForwardCount() > max) {
             max = player.getForwardCount();
         }
     }
