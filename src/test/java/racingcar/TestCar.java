@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.car.Car;
+
 public class TestCar extends Car {
     private int fixedRandomValue;
     private int testDistance;

@@ -5,6 +5,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.*;
 import org.junit.jupiter.api.Test;
+import racingcar.inputManager.ConsoleInputManager;
+import racingcar.inputManager.InputManager;
+import racingcar.car.Car;
+import racingcar.car.RacingCar;
+import racingcar.outputManager.ConsoleOutputManager;
+import racingcar.outputManager.OutputManager;
+import racingcar.race.Race;
+import racingcar.referee.CarRacingReferee;
+import racingcar.referee.Referee;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -190,6 +199,18 @@ class ApplicationTest extends NsTest {
         assertEquals("Car1", cars.get(0).getName(), "첫 번째 자동차 이름이 일치해야 합니다.");
         assertEquals("Car2", cars.get(1).getName(), "두 번째 자동차 이름이 일치해야 합니다.");
         assertEquals("Car3", cars.get(2).getName(), "세 번재 자동차 이름이 일치해야 합니다.");
+    }
+
+    @Test
+    void 참가자_생성_빈리스트_예외_테스트() {
+        // given
+        Race race = new Race(new ConsoleInputManager(), new ConsoleOutputManager(), new CarRacingReferee());
+        List<String> emptyCarNameList = new ArrayList<>();
+
+        // when & then
+        assertThrows(NullPointerException.class, () -> {
+            race.createParticipant(emptyCarNameList);
+        }, "리스트가 비었을 때 NullPointerException이 발생해야 합니다.");
     }
 
     @Override
