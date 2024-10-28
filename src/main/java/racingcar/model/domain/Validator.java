@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class Validator {
 	private static final int MAX_CAR_NAME_LENGTH = 5;
+	private static final int MIN_ATTEMPT_NUMBER = 1;
 
 	public static void validateCarNames(String inputCarNames) {
 		validateInputEmpty(inputCarNames);
@@ -33,6 +34,12 @@ public class Validator {
 		Set<String> uniqueCarNames = new HashSet<>(carNames);
 		if (uniqueCarNames.size() != carNames.size()) {
 			throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
+		}
+	}
+
+	public static void validateAttemptNumber(int attemptNumber) {
+		if (attemptNumber < MIN_ATTEMPT_NUMBER) {
+			throw new IllegalArgumentException(ErrorMessage.NEGATIVE_ATTEMPT_NUMBER.getMessage());
 		}
 	}
 }
