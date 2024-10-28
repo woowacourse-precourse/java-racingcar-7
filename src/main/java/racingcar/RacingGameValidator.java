@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.List;
 
-public class GameValidator {
+public class RacingGameValidator {
 
     private static final int MAX_CAR_NAMES_SIZE = 50;
     private static final int MAX_GAME_REPEATS_SIZE = 100;

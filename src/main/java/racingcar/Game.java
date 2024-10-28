@@ -11,7 +11,7 @@ public class Game {
     public void play() {
         getUserInput();
         racingGame = new RacingGame(carNamesList);
-        GameValidator.validate(carNamesList, gameRepeats);
+        RacingGameValidator.validate(carNamesList, gameRepeats);
         startGame();
         racingGame.printWinners();
     }
