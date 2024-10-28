@@ -37,7 +37,7 @@ public class RaceController {
 
     private int getTrialCount() {
         outputView.displayTrialCountInputMessage();
-        return inputView.getInteger();
+        return inputView.getPositiveInteger();
     }
 
     private void playRace(int trialCount) {
