@@ -3,22 +3,10 @@ package racingcar;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import racingcar.util.TestMoveStrategies.AlwaysMoveStrategy;
+import racingcar.util.TestMoveStrategies.NeverMoveStrategy;
 
 class CarTest {
-
-    private static class AlwaysMoveStrategy implements MoveStrategy {
-        @Override
-        public boolean shouldMove() {
-            return true;
-        }
-    }
-
-    private static class NeverMoveStrategy implements MoveStrategy {
-        @Override
-        public boolean shouldMove() {
-            return false;
-        }
-    }
 
     @Test
     void 자동차의_초기위치는_0이다() {
@@ -52,5 +40,4 @@ class CarTest {
         car.move();
         assertEquals(3, car.getPosition(), "자동차는 3번 이동 후 위치가 3이어야 합니다.");
     }
-
 }
