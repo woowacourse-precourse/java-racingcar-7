@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
+import racingcar.model.Race;
 import racingcar.service.RaceService;
 import racingcar.view.OutputView;
 
@@ -22,32 +23,34 @@ public class RaceController {
     }
 
     public void startRace(List<Car> raceCars, int attemptNum) {
+        Race race = new Race(raceCars, attemptNum);
 
         outputView.startOutput();
-        for (int i = 0; i < attemptNum; i++) {
-            for (Car car : raceCars) {
+
+        for (int i = 0; i < race.getAttemptNum(); i++) {
+            for (Car car : race.getRaceCars()) {
                 car.occurRandomNum();
                 raceService.checkAdvance(car);
                 outputView.racingProgress(car);
             }
             outputView.blankLine();
         }
-        racingResult(raceCars);
+        racingResult(race.getRaceCars());
     }
 
 
 
-    public void racingResult(List<Car> cars) {
+    public void racingResult(List<Car> raceCars) {
         int maxAdvanceNum = 0;
         List<String> winners = new ArrayList<>();
 
-        for (Car car : cars) {
+        for (Car car : raceCars) {
             if (car.getCountAdvance() > maxAdvanceNum) {
                 maxAdvanceNum = car.getCountAdvance();
             }
         }
 
-        for (Car car : cars) {
+        for (Car car : raceCars) {
             if (car.getCountAdvance() == maxAdvanceNum) {
                 winners.add(car.getName());
             }
