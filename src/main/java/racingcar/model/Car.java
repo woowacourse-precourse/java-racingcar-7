@@ -27,7 +27,8 @@ public class Car {
         this.advanceCount = advanceCount;
     }
 
-    public void stop() { }
+    public void stop() {
+    }
 
     private void validateName(String name) {
         if (name == null || name.trim().isEmpty()) {

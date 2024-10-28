@@ -9,7 +9,7 @@ public class RacingCarController {
     private final CarService carService;
     private final RacingService racingService;
 
-    public RacingCarController(){
+    public RacingCarController() {
         this.carService = new CarService();
         this.racingService = new RacingService(carService);
     }

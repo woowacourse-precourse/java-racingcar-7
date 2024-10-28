@@ -9,7 +9,7 @@ import java.util.List;
 public class RacingService {
     private final CarService carService;
 
-    public RacingService(CarService carService){
+    public RacingService(CarService carService) {
         this.carService = carService;
     }
 
