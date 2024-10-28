@@ -1,4 +1,3 @@
-
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -10,9 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
-
-    public class Error{
-        public static final String EMPTY_INPUT_VALUE_MESSAGE = "값을 필수로 입력해야 합니다.";
+    public class Error {
+        public static final String EMPTY_CAR_NAME_MESSAGE = "경주할 자동차 이름 입력 필요함.";
         public static final String CAR_NAME_LENGTH_MESSAGE = "자동차의 이름은 5글자를 넘길 수 없습니다.";
         public static final String INVALID_NUMBER_MESSAGE = "유효한 숫자를 입력해야 합니다.";
     }
@@ -22,9 +20,10 @@ public class Application {
         public static final int MIN_RANDOM_VALUE = 0;
         public static final int MAX_RANDOM_VALUE = 9;
         public static final int ADVANCE_THRESHOLD = 4;
+
     }
 
-    public class TextFormat {
+    public class FormatConstants {
         public static final String CAR_STATUS_FORMAT = "%s : %s";
         public static final String DELIMITER = ",";
     }
@@ -51,7 +50,7 @@ public class Application {
     }
 
     private static List<String> splitCarNamesByComma(String carName) {
-        return Arrays.asList(carName.split(TextFormat.DELIMITER));
+        return Arrays.asList(carName.split(FormatConstants.DELIMITER));
     }
 
     private static void validateCarNames(List<String> carNameList) {
@@ -71,20 +70,6 @@ public class Application {
         return parseTryCount(tryCountInput);
     }
 
-    private static void isEmptyInputValue(String inputValue) {
-        if (inputValue == null || inputValue.isEmpty()){
-            throw new IllegalArgumentException(Error.EMPTY_INPUT_VALUE_MESSAGE);
-        }
-    }
-
-    private static int parseTryCount(String tryCountInput) {
-        try {
-            return Integer.parseInt(tryCountInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Error.INVALID_NUMBER_MESSAGE);
-        }
-    }
-
     private static List<Car> initializeCars(List<String> carNameList) {
         List<Car> cars = new ArrayList<>();
         for (String name : carNameList) {
@@ -100,24 +85,38 @@ public class Application {
         }
     }
 
+    private static void printWinners(List<Car> cars) {
+        int maxPosition = getMaxPosition(cars);
+        List<String> winners = getWinners(cars, maxPosition);
+        System.out.println("최종 우승자 : " + String.join(FormatConstants.DELIMITER + " ", winners));
+    }
+
+    private static void isEmptyInputValue(String inputValue) {
+        if (inputValue == null || inputValue.isEmpty()){
+            throw new IllegalArgumentException(Error.EMPTY_CAR_NAME_MESSAGE);
+        }
+    }
+
+    private static int parseTryCount(String tryCountInput) {
+        try {
+            return Integer.parseInt(tryCountInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Error.INVALID_NUMBER_MESSAGE);
+        }
+    }
+
     private static void raceRound(List<Car> cars) {
         for (Car car : cars) {
             if (shouldAdvance()) {
                 car.advance();
             }
-            System.out.println(String.format(TextFormat.CAR_STATUS_FORMAT, car.getCarName(), "-".repeat(car.getPosition())));
+            System.out.println(String.format(FormatConstants.CAR_STATUS_FORMAT, car.getCarName(), "-".repeat(car.getPosition())));
         }
     }
 
     private static boolean shouldAdvance() {
         int randomValue = Randoms.pickNumberInRange(GameConstants.MIN_RANDOM_VALUE, GameConstants.MAX_RANDOM_VALUE);
         return randomValue >= GameConstants.ADVANCE_THRESHOLD;
-    }
-
-    private static void printWinners(List<Car> cars) {
-        int maxPosition = getMaxPosition(cars);
-        List<String> winners = getWinners(cars, maxPosition);
-        System.out.println("최종 우승자 : " + String.join(TextFormat.DELIMITER + " ", winners));
     }
 
     private static int getMaxPosition(List<Car> cars) {
