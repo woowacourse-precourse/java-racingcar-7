@@ -19,7 +19,7 @@ public class RacingController {
 
     public void startGame() {
         registerRacingCars();
-        int round = getRound();
+        int round = getRoundNumber();
 
         OutputView.printExecutionResultMessage();
         for (int i = 0; i < round; i++) {
@@ -35,7 +35,7 @@ public class RacingController {
         racingCars.registerCars(carNames);
     }
 
-    private int getRound() {
+    private int getRoundNumber() {
         OutputView.printInputRoundMessage();
         String inputRoundNumber = InputView.inputRoundNumber();
 
