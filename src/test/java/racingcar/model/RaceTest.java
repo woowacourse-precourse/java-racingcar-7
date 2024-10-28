@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -23,10 +23,9 @@ class RaceTest {
                     race.operate();
 
                     // Then: 무작위 값이 4 이상이면 전진하고, 3 이하이면 전진하지 않는다.
-                    assertEquals(cars.stream().map(Car::getDistance).toList(), List.of(1, 2, 3));
-                }, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
-                STOP, MOVING_FORWARD, MOVING_FORWARD,
-                STOP, STOP, MOVING_FORWARD);
+                    assertThat(cars.stream().map(Car::getDistance).toList()).containsExactly(1, 2, 3);
+                }, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, STOP,
+                MOVING_FORWARD);
     }
 
 
