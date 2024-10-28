@@ -18,6 +18,6 @@ public class OutputView {
         String winnerNames = String.join(", ", winners.stream()
                 .map(Car::getName)
                 .toArray(String[]::new));
-        System.out.println("최종 우승자 : " + winnerNames);
+        System.out.println("\n최종 우승자 : " + winnerNames);
     }
 }
