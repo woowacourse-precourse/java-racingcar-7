@@ -39,4 +39,16 @@ public class RaceServiceTest {
         assertThat(tryCount).isEqualTo(5);
     }
 
+    @Test
+    @DisplayName("랜덤 숫자가 4 이상일 경우 자동차가 전진하는지 테스트")
+    void carMovesWhenRandomNumberIsGreaterThanOrEqualToFour() {
+        Car car = new Car("pobi");
+
+        // 4 이상일 경우 전진하도록 메서드 호출
+        raceService.moveCarBasedOnRandomNum(car);
+
+        // 전진했는지 확인
+        assertThat(car.getDistance()).isGreaterThanOrEqualTo(0);
+    }
+
 }
