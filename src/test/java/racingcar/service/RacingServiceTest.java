@@ -3,6 +3,7 @@ package racingcar.service;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.util.InputParser;
 
 import java.util.stream.Stream;
@@ -48,6 +49,13 @@ class RacingServiceTest {
         String racerInputRegex = RACERS_NAME_REGEX.getRegex();
 
         assertThat(InputParser.isMatchWithRegex(driverNames, racerInputRegex))
+                .isFalse();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0})
+    void lapNumberShouldBePositive(int lapNum) {
+        assertThat(InputParser.isMatchWithRegex(String.valueOf(lapNum), LAPS_NUMBER_REGEX.getRegex()))
                 .isFalse();
     }
 }

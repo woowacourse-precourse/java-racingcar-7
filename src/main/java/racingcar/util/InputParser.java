@@ -36,7 +36,6 @@ public class InputParser {
     private static String[] getRacersAsArrayFromUserInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         final String userInput = readLine();
-//        validateUserInput(userInput, RACERS_NAME_REGEX.getRegex(), "드라이버의 이름은 5글자 이하로 해주십시오.");
         if (!isMatchWithRegex(userInput, RACERS_NAME_REGEX.getRegex())) {
             throw new InvalidDriverNamesException();
         }
@@ -48,16 +47,6 @@ public class InputParser {
         final Matcher matcher = Pattern.compile(regex)
                 .matcher(userInput);
         return matcher.matches();
-    }
-    public static void validateUserInput(
-            final String userInput,
-            final String regex,
-            final String errorMessage) {
-        final Matcher matcher = Pattern.compile(regex)
-                .matcher(userInput);
-        if (!matcher.matches()) {
-            throw new IllegalArgumentException(errorMessage);
-        }
     }
 
     private static void validateUniqueRacers(String[] racers) {
