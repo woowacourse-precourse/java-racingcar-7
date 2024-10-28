@@ -7,15 +7,11 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        try {
-            List<String> names = inputCarNames();
-            int attempts = inputTryCount();
-            RacingGame game = new RacingGame(names);
-            game.executeRace(attempts);
-            game.announceWinner();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        List<String> names = inputCarNames();
+        int attempts = inputTryCount();
+        RacingGame game = new RacingGame(names);
+        game.executeRace(attempts);
+        game.announceWinner();
     }
 
     private static List<String> inputCarNames() {
