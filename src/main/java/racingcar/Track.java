@@ -65,7 +65,7 @@ public class Track {
                 .orElseThrow(() -> new RuntimeException("경주중인 대상이 없습니다"));
     }
 
-    public void runVehicle(Vehicle vehicle) {
+    private void runVehicle(Vehicle vehicle) {
         int moveDistance = vehicle.pushPedal();
         Integer currentPosition = vehiclePositionMap.get(vehicle);
         vehiclePositionMap.put(vehicle, currentPosition + moveDistance);
