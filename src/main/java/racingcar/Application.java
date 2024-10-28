@@ -9,6 +9,16 @@ public class Application {
         ArrayList<String> carNames = InputOutputHandler.getCarName();
         int racingCounter = InputOutputHandler.getRacingCounter();
 
+        ArrayList<RacingCar> racingCars = new ArrayList<>();
+        for (String name : carNames) {
+            racingCars.add(new RacingCar(name));
+        }
+
+
+
+
+
+
 
     }
 }

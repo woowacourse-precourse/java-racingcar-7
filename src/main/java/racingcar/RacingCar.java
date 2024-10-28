@@ -14,4 +14,13 @@ public class RacingCar {
         this.moveCondition = RacingController.setMoveCondition();
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public ArrayList<Boolean> getMoveCondition() {
+        return moveCondition;
+    }
+
+
 }
