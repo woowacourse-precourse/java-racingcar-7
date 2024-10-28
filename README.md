@@ -119,4 +119,25 @@
 
 
  
- 
+ # 디렉토리 구조
+```angular2html
+./src
+├── main
+│   └── java
+│       └── racingcar
+│           ├── Application.java
+│           ├── controller
+│           │   └── RacingCarController.java
+│           ├── domain
+│           │   ├── CarDTO.java
+│           │   ├── InputDTO.java
+│           │   └── RoundTimeDTO.java
+│           ├── service
+│           │   └── RacingCarService.java
+│           └── view
+│               └── RacingCarView.java
+└── test
+    └── java
+        └── racingcar
+            └── ApplicationTest.java
+```
