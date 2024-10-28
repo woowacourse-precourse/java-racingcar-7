@@ -9,10 +9,12 @@ import racingcar.view.Output;
 public class RacingGame {
 	private final Random random;
 	private final CarValidator carValidator;
+	private final TurnValidator turnValidator;
 
-	public RacingGame(Random random, CarValidator carValidator) {
+	public RacingGame(Random random, CarValidator carValidator, TurnValidator turnValidator) {
 		this.random = random;
 		this.carValidator = carValidator;
+		this.turnValidator = turnValidator;
 	}
 
 	public void start() {
