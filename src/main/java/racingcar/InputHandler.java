@@ -12,6 +12,7 @@ public class InputHandler {
         String[] carNames = input.split(",");
         List<String> carNamesList = new ArrayList<>(Arrays.asList(carNames));
 
+        Validator.checkIsEmpty(carNamesList);
         Validator.checkCarNameDuplicate(carNamesList);
         carNamesList.forEach(Validator::checkNameLength);
 

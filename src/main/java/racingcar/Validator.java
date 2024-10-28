@@ -25,4 +25,10 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void checkIsEmpty(List<String> carNamesList) {
+        if (carNamesList.isEmpty() || carNamesList.size() == 1 && carNamesList.getFirst().isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
