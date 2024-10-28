@@ -30,5 +30,8 @@ public class Application {
 
         RandomMove rm = new RandomMove();
         rm.randomMove(movements);
+
+        winner=players.whoIsWinner();
+        System.out.println("최종 우승자 : " + winner);
     }
 }
