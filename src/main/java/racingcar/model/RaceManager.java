@@ -35,7 +35,7 @@ public class RaceManager {
     }
 
     private void showWinner() {
-        Winners winners = race.checkWinner();
+        Winners winners = race.createWinner();
         outputView.printWinner(winners.getWinner());
     }
 }

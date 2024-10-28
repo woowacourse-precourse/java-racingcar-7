@@ -26,7 +26,7 @@ public class Race {
         return cars.getCars();
     }
 
-    public Winners checkWinner() {
+    public Winners createWinner() {
         return Winners.from(cars);
     }
 }
