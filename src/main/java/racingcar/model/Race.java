@@ -14,8 +14,8 @@ public class Race {
         return roundCount;
     }
 
-    public void roundMove(List<Car> carList) {
-        for(Car car : carList)
+    public void roundMove(Cars cars) {
+        for(Car car : cars.getCarList())
             moveCheck(car);
         minusRoundCount();
     }
