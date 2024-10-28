@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import static racingcar.constants.CarRaceConstants.MIN_TRIAL_COUNT;
 import static racingcar.exception.Exception.TRIAL_COUNT_NOT_A_NUMBER;
 import static racingcar.exception.Exception.TRIAL_COUNT_TOO_LARGE;
 import static racingcar.exception.Exception.TRIAL_COUNT_TOO_SMALL;
@@ -30,7 +31,7 @@ public class TrialCountValidator {
 
     private static void validatePositiveInteger(String trialCountInput){
         int trialCountInt = Integer.parseInt(trialCountInput);
-        if (trialCountInt <= 0) {
+        if (trialCountInt < MIN_TRIAL_COUNT) {
             throw new IllegalArgumentException(TRIAL_COUNT_TOO_SMALL.getMessage());
         }
     }
