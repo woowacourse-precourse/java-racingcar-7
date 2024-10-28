@@ -1,7 +1,7 @@
 package racingcar.gameplayer.game.racinggame.ui.helper;
 
 import racingcar.gameplayer.game.common.exception.CustomException;
-import racingcar.gameplayer.game.common.domain.Names;
+import racingcar.gameplayer.game.racinggame.domain.car.Names;
 import racingcar.gameplayer.game.common.domain.PositiveNumber;
 import racingcar.gameplayer.game.common.exception.ErrorMessage;
 import racingcar.gameplayer.game.racinggame.ui.component.ConsoleInputComponent;
