@@ -6,6 +6,6 @@ public class EmptyNameException extends IllegalArgumentException{
 
     @Override
     public String getMessage() {
-        return ErrorMessage.EMPTY_NAME.getMessage();
+        return ErrorMessage.EMPTY_NAME.toString();
     }
 }

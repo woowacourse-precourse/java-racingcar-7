@@ -29,7 +29,7 @@ public class RacingRoundService {
 
     private void moveOneStepIfPossible(Map<String, Integer> racingCars, String carName) {
         if (canGo()) {
-            racingCars.compute(carName, (k, carState) -> carState + 1);
+            racingCars.compute(carName, (k, carPosition) -> carPosition + 1);
         }
     }
 

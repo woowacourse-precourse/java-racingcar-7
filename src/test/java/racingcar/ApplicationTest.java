@@ -46,5 +46,17 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    @DisplayName("0번 입력 시")
+    void 시도횟수_0번일때() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "0");
+                    assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
 
 }

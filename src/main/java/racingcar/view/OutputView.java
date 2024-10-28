@@ -19,7 +19,7 @@ public class OutputView {
     }
 
     public void printRaceStart() {
-        System.out.println(OutputMessage.RACE_START.getMessage());
+        System.out.println(OutputMessage.RACE_START);
     }
 
     public void printRoundState(Map<String, Integer> racingCars) {
@@ -35,7 +35,8 @@ public class OutputView {
     }
 
     public void printWinnerView(List<String> winners) {
-        System.out.println(OutputMessage.CELEBRATE_WIN.getMessage());
+        System.out.println(OutputMessage.CELEBRATE_WIN);
+        System.out.print(OutputMessage.PRESENT_WINNER);
         System.out.println(String.join(COMMA, winners));
     }
 

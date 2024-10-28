@@ -8,7 +8,7 @@ public class InputView {
 
     private static InputView inputView;
     private String inputCarNames;
-    private Integer totalRacingRound;
+    private String totalRacingRound;
 
     private InputView(){}
 
@@ -22,12 +22,11 @@ public class InputView {
 
 
     public void printInputView() {
-        System.out.println(OutputMessage.CAR_NAME.getMessage());
+        System.out.println(OutputMessage.CAR_NAME);
         inputCarNames = readLine();
 
-        System.out.println(OutputMessage.TOTAL_RACING_ROUND.getMessage());
-        totalRacingRound = Integer.parseInt(readLine());
-        System.out.println();
+        System.out.println(OutputMessage.TOTAL_RACING_ROUND + "\n");
+        totalRacingRound = readLine();
     }
 
 
@@ -35,7 +34,7 @@ public class InputView {
         return inputCarNames;
     }
 
-    public Integer getTotalRacingRound() {
+    public String getTotalRacingRound() {
         return totalRacingRound;
     }
 
