@@ -28,7 +28,19 @@ public class Application {
         System.out.print(winner_list[i].name);
     }
 
+    public static void setwinnerlistSize(int score) {
+        int cnt = 0;
+        for (int i = 0; i < car_list.length; i++) {
+            if (car_list[i].move_cnt == score) {
+                cnt++;
+            }
+        }
+        winner_list = new Car[cnt];
+    }
+
     public static void getWinner(int score) {
+        setwinnerlistSize(score);
+
         int idx = 0;
         for (int i = 0; i < car_list.length; i++) {
             if (car_list[i].move_cnt == score) {
