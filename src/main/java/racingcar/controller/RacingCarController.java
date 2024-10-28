@@ -35,8 +35,8 @@ public class RacingCarController {
             racingCarService.racingGame(racingCarList);
             outputView.printRacingStatus(racingCarList);
         }
-
-
+        List<RacingCar> winners = racingCarService.findWinner(racingCarList);
+        outputView.printWinner(winners);
     }
 
 }
