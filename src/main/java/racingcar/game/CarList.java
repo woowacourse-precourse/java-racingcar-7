@@ -1,7 +1,6 @@
 package racingcar.game;
 
 import racingcar.exception.Validator;
-import racingcar.strategy.Condition;
 import racingcar.util.Printer;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class CarList {
         Validator.validateDelimiterFormatAndSingleRacer(carNames);
         Arrays.stream(carNames.split(DELIMITER))
                 .map(Validator::validateNameLength)
-                .map(name -> Car.generateCars(name)) // new Car(carNames)
+                .map(Car::generateCars) // new Car(carNames)
                 .forEach(list::add);
     }
 
