@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Race;
 
@@ -29,5 +31,18 @@ public class RacingCarService {
         if (randomNumber >= 4) {
             car.move();
         }
+    }
+
+    public String getRaceWinner(Race race) {
+        List<Car> cars = race.getCars();
+        int maxDistance = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxDistance) {
+                winners.add(car.getName());
+            }
+        }
+        return String.join(", ", winners);
     }
 }
