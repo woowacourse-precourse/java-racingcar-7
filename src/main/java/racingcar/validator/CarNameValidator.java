@@ -17,7 +17,7 @@ public class CarNameValidator implements Validator {
         String[] carNames = input.split(INPUT_DELIMITER);
         checkEmpty(carNames);
         checkDuplicate(carNames);
-        validateIndividualNames(carNames);
+        checkIndividualNames(carNames);
     }
 
     private void checkEmpty(String[] carNames) {
@@ -35,7 +35,7 @@ public class CarNameValidator implements Validator {
         }
     }
 
-    private void validateIndividualNames(String[] carNames) {
+    private void checkIndividualNames(String[] carNames) {
         for (String carName : carNames) {
             checkBlank(carName);
             checkLength(carName);
