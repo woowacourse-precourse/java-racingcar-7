@@ -12,35 +12,48 @@ class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
-//    @Test
-//    void 기능_테스트() {
-//        assertRandomNumberInRangeTest(
-//            () -> {
-//                run("pobi,woni", "1");
-//                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-//            },
-//            MOVING_FORWARD, STOP
-//        );
-//    }
-
     @Test
-    void move_임시_테스트1() {
+    void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
-                run("pobi,woni", "5");
-                assertThat(output()).contains("5 0");
+                run("pobi,woni", "1");
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
             },
-            MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP,
-                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+            MOVING_FORWARD, STOP
         );
     }
 
     @Test
-    void move_임시_테스트2() {
+    void 기능_테스트1() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni", "5");
+                assertThat(output()).contains(
+                        "pobi : -\nwoni : ",
+                        "pobi : --\nwoni : ",
+                        "pobi : ---\nwoni : ",
+                        "pobi : ----\nwoni : ",
+                        "pobi : -----\nwoni : ",
+                        "최종 우승자 : pobi");
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD, STOP,
+            MOVING_FORWARD, STOP, MOVING_FORWARD, STOP,
+            MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트2() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("a,b,c", "5");
-                    assertThat(output()).contains("5 5 5");
+                    assertThat(output()).contains(
+                            "a : -\nb : -\nc : -",
+                            "a : --\nb : --\nc : --",
+                            "a : ---\nb : ---\nc : ---",
+                            "a : ----\nb : ----\nc : ----",
+                            "a : -----\nb : -----\nc : -----",
+                            "최종 우승자 : a, b, c");
                 },
                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
