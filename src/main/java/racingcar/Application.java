@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.ArrayList;
+import racingcar.car.Car;
 import racingcar.car.CarGenerator;
 
 public class Application {
@@ -12,5 +14,10 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int inputAttemptCount = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
         Display.printAttemptCount(inputAttemptCount);
+
+        ArrayList<Car> cars = CarGenerator.generateCar(carNames);
+        RacingService racingService = new RacingService(cars, inputAttemptCount);
+        racingService.raceAll();
+        racingService.showWinner();
     }
 }
