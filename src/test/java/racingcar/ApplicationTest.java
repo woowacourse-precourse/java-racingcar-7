@@ -39,6 +39,13 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("자동차 이름이 공백일 경우 예외 발생")
+    void blankCarNameThrowsException() {
+        assertThatThrownBy(() -> runException("pobi,jun, ", "1"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
