@@ -1,5 +1,8 @@
 package racingcar.utils;
 
+
+import static racingcar.exception.ErrorMessages.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +16,18 @@ public class InputValidator {
 
     public static void nameValidator(String input) {
         if (!input.matches(NAME_PATTERN)) {
-            throw new IllegalArgumentException("구분자를 확인해주세요.");
+            throw new IllegalArgumentException(INVALID_SEPARATOR_ERROR);
         }
 
         List<String> names = new ArrayList<>(Arrays.asList(input.split(",")));
 
+        if (names.size() == 1) {
+            throw new IllegalArgumentException(SINGLE_CAR_PARTICIPATION_ERROR);
+        }
+
         for (String name : names) {
             if (name.length() > 5) {
-                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+                throw new IllegalArgumentException(NAME_LENGTH_ERROR);
             }
         }
     }
@@ -31,11 +38,11 @@ public class InputValidator {
         try {
             number = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("횟수 입력이 잘못되었습니다.");
+            throw new IllegalArgumentException(INVALID_NUMBER_FORMAT_ERROR);
         }
 
         if (number <= 0) {
-            throw new IllegalArgumentException("횟수는 0보다 큰 양수여야 합니다.");
+            throw new IllegalArgumentException(NON_POSITIVE_NUMBER_ERROR);
         }
     }
 }
