@@ -88,11 +88,9 @@ public class Application {
 
     // 자동차 생성
     public static List<Car> createCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
-        return cars;
+        return carNames.stream()
+                .map(Car::new)
+                .toList();
     }
 
     public static void playRaceInTotalCounts(List<Car> cars, int totalRaceCount) {
