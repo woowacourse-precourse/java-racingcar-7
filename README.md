@@ -1,8 +1,14 @@
 # java-racingcar-precourse
 
+## 구현 방향
+- 객체지향의 원칙을 최대한 지키며 작성
+- MVC 모델을 사용하여 구현
+- 단위 테스트 및 통합 테스트 작성
+- 코드 인벤션에 위배되지 않도록 작성
+
 ## 객체 구성도
 
-![제목 없는 다이어그램 drawio (2)](https://github.com/user-attachments/assets/06bae2e1-fdc5-47c7-8e6b-347965d6a98d)
+![제목 없는 다이어그램 drawio](https://github.com/user-attachments/assets/783afb44-49b5-41ee-826b-e299d3b5a6e7)
 
 ## 기능 요구 사항
 
@@ -30,10 +36,10 @@
 ### Controller
 
 - GameController
-    - [ ] 전체 흐름 관리
-    - [ ] 선수 이름과 게임 진행 횟수 설정
-    - [ ] 게임 진행
-    - [ ] 게임 마무리
+    - [X] 전체 흐름 관리
+    - [X] 선수 이름과 게임 진행 횟수 설정
+    - [X] 게임 진행
+    - [X] 게임 마무리
 
 ### Validate
 
@@ -43,3 +49,9 @@
     - [X] 출전 선수 이름 중복될 시 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
     - [X] 출전 선수 이름이 영어가 아닌 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
     - [X] 게임을 진행할 횟수를 입력 받을때 숫자가 아닌 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
+
+### Factory
+
+- CarRacingFactory
+    - [X] 출전 선수 생성
+    - [X] 게임 생성
