@@ -1,7 +1,8 @@
 package racingcar.domain.car;
 
+import static racingcar.constant.GameConstants.ZERO;
+
 public class Distance {
-    private final static int ZERO = 0;
     private final int value;
 
     private Distance(int value) {

@@ -1,11 +1,12 @@
 package racingcar.domain.car;
 
+import static racingcar.constant.GameConstants.MAX_NAME_LENGTH;
+import static racingcar.constant.GameConstants.MIN_NAME_LENGTH;
+
 import racingcar.exception.car.InvalidCarNameException.NameLengthExceededExceptionInvalid;
 import racingcar.exception.car.InvalidCarNameException.NameLengthShortExceptionInvalid;
 
 public class Name {
-    public static final int MAX_LENGTH = 10;
-    public static final int MIN_LENGTH = 1;
     private final String value;
 
     private Name(String value) {
@@ -46,11 +47,11 @@ public class Name {
     }
 
     private boolean isSmallerThenNAME_MIN_LENTH(String name) {
-        return name.length() < MIN_LENGTH;
+        return name.length() < MIN_NAME_LENGTH;
     }
 
     private boolean isBiggerThenNAME_MAX_LENTH(String name) {
-        return name.length() > MAX_LENGTH;
+        return name.length() > MAX_NAME_LENGTH;
     }
 
     private boolean isNull(String name) {

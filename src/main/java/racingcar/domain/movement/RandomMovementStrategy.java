@@ -1,9 +1,10 @@
 package racingcar.domain.movement;
 
+import static racingcar.constant.GameConstants.THRESHOLD;
+
 import racingcar.domain.game.NumberGenerator;
 
 public class RandomMovementStrategy implements MovementStrategy {
-    private static final int THRESHOLD = 4;
     private final NumberGenerator numberGenerator;
 
     public RandomMovementStrategy(NumberGenerator numberGenerator) {

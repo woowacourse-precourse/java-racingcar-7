@@ -1,9 +1,10 @@
 package racingcar.domain.movement;
 
+import racingcar.constant.GameConstants;
 import racingcar.domain.car.Distance;
 
 public class MovementPolicy {
-    private static final Distance FORWARD_STEP = Distance.of(1);
+    private static final Distance FORWARD_STEP = Distance.of(GameConstants.FORWARD_STEP);
     private final MovementStrategy strategy;
 
     public MovementPolicy(MovementStrategy strategy) {

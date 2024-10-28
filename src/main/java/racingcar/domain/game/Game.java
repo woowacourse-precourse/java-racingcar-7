@@ -7,6 +7,9 @@ import racingcar.domain.player.Player;
 import racingcar.domain.player.Players;
 import racingcar.exception.game.GameException;
 
+/**
+ * - [x] 승자 확인하기 - [x] 단독 승자 확인 - [x] 공동 승자 확인
+ */
 public class Game {
     private final Players players;
     private final Round round;
@@ -34,6 +37,10 @@ public class Game {
         return new Game(movedPlayers, nextRound, movementPolicy);
     }
 
+    public boolean isFinished() {
+        return !round.hasNext();
+    }
+
     private void validateCanPlay() {
         if (isFinished()) {
             throw new GameException.GameEndedException();
@@ -48,9 +55,4 @@ public class Game {
         Distance newDistance = movementPolicy.move(player.getDistance());
         return player.move(newDistance);
     }
-
-    public boolean isFinished() {
-        return !round.hasNext();
-    }
-
 }
