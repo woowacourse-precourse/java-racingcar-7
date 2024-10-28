@@ -1,16 +1,30 @@
 package racingcar.model;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Racing {
     private final List<Car> carList;
 
-    public Racing(String cars) {
-        carList = Arrays.stream(cars.split(","))
+    public Racing(List<Car> carList) {
+        validateDuplicate(carList);
+        this.carList = carList;
+    }
+
+    public static Racing of(String cars) {
+        return new Racing(Arrays.stream(cars.split(","))
                 .map(Car::new)
-                .toList();
+                .toList());
+    }
+
+    private void validateDuplicate(List<Car> carList) {
+        Set<String> nonDuplicateNames = new HashSet<>(carList.stream().map(Car::getName).toList());
+        if (carList.size() != nonDuplicateNames.size()) {
+            throw new IllegalArgumentException("중복된 이름이 존재합니다.");
+        }
     }
 
     public List<Car> getCarList() {
