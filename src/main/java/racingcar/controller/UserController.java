@@ -1,39 +1,35 @@
 package racingcar.controller;
 
+import java.util.Arrays;
 import racingcar.user.UserObject;
 import racingcar.validator.Validator;
 
 public class UserController {
     private String inputString;
-    private UserObject[] user;
+    private UserObject[] users;
     private Validator validator;
 
     public UserController(String inputString) {
         this.inputString = inputString;
-        this.validator = new Validator(inputString);
+        this.validator = new Validator(this.inputString);
     }
 
-    public UserObject[] settingUser() {
-        validator.isEmptyInput();
-        validator.isCommaInFrontorBack();
-        parsingInputString();
-        return user;
+    public UserObject[] initializeUsers() {
+        validateInput();
+        String[] parsedUserNames = inputString.split(",");
+        createUserObjects(parsedUserNames);
+        return users;
+    }
+    
+    private void validateInput() {
+        validator.userInputValidate();
     }
 
-    private void parsingInputString() {
-        String[] parsingUser = inputString.split(",");
-        createUser(parsingUser);
-    }
-
-    private void createUser(String[] parsingUser) {
-        user = new UserObject[parsingUser.length];
-        createUserObject(parsingUser);
-    }
-
-    private void createUserObject(String[] parsingUser) {
-        for (int i = 0; i < parsingUser.length; i++) {
-            validator.userNameValidate(parsingUser[i].trim());
-            user[i] = new UserObject(parsingUser[i]);
-        }
+    private void createUserObjects(String[] parsedUserNames) {
+        users = Arrays.stream(parsedUserNames)
+                .map(String::trim)
+                .peek(validator::userNameValidate)
+                .map(UserObject::new)
+                .toArray(UserObject[]::new);
     }
 }
