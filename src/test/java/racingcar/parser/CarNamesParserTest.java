@@ -2,12 +2,12 @@ package racingcar.parser;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.RacingException;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static racingcar.exception.ErrorMessage.DUPLICATE_CAR_NAME;
 
 public class CarNamesParserTest {
 
@@ -22,19 +22,6 @@ public class CarNamesParserTest {
 
         // then
         assertEquals(List.of("pobi", "woni", "jun"), result);
-    }
-
-    @Test
-    @DisplayName("하나의 이름만 입력되었을 때 이름 리스트로 변환한다.")
-    public void parseCarNamesWithSingleName() {
-        // given
-        String input = "pobi";
-
-        // when
-        List<String> result = CarNamesParser.parseCarNames(input);
-
-        // then
-        assertEquals(List.of("pobi"), result);
     }
 
     @Test
@@ -69,9 +56,9 @@ public class CarNamesParserTest {
         // given
         String input = "pobi,woni,pobi";
 
-        // when & then
-        assertThrows(RacingException.class, () ->
-                CarNamesParser.parseCarNames(input)
-        );
+        // When & Then
+        assertThatThrownBy(() -> CarNamesParser.parseCarNames(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(DUPLICATE_CAR_NAME.getMessage());
     }
 }

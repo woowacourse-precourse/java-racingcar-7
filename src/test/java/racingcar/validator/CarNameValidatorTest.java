@@ -4,7 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.RacingException;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static racingcar.exception.ErrorMessage.INVALID_CAR_NAME_FORMAT;
+import static racingcar.exception.ErrorMessage.INVALID_CAR_NAME_LENGTH;
 
 class CarNameValidatorTest {
 
@@ -18,6 +21,10 @@ class CarNameValidatorTest {
         assertThrows(RacingException.class, () ->
                 CarNameValidator.validateCarName(name)
         );
+
+        assertThatThrownBy(() -> CarNameValidator.validateCarName(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_CAR_NAME_LENGTH.getMessage());
     }
 
     @Test
@@ -27,8 +34,8 @@ class CarNameValidatorTest {
         String name = "pob@1";
 
         // When & Then
-        assertThrows(RacingException.class, () ->
-                CarNameValidator.validateCarName(name)
-        );
+        assertThatThrownBy(() -> CarNameValidator.validateCarName(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_CAR_NAME_FORMAT.getMessage());
     }
 }

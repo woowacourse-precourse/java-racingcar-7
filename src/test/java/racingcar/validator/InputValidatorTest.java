@@ -2,12 +2,12 @@ package racingcar.validator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.RacingException;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.exception.ErrorMessage.*;
 
 class InputValidatorTest {
 
@@ -18,9 +18,9 @@ class InputValidatorTest {
         String input = "";
 
         // When & Then
-        assertThrows(RacingException.class, () ->
-                InputValidator.validateEmpty(input)
-        );
+        assertThatThrownBy(() -> InputValidator.validateEmpty(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(EMPTY_INPUT.getMessage());
     }
 
     @Test
@@ -30,9 +30,9 @@ class InputValidatorTest {
         List<String> names = Arrays.asList("pobi", "woni", "pobi");
 
         // When & Then
-        assertThrows(RacingException.class, () ->
-                InputValidator.validateDuplicate(names)
-        );
+        assertThatThrownBy(() -> InputValidator.validateDuplicate(names))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(DUPLICATE_CAR_NAME.getMessage());
     }
 
     @Test
@@ -42,9 +42,9 @@ class InputValidatorTest {
         List<String> names = List.of("pobi");
 
         // When & Then
-        assertThrows(RacingException.class, () ->
-                InputValidator.validateDuplicate(names)
-        );
+        assertThatThrownBy(() -> InputValidator.validateDuplicate(names))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(MINIMUM_NUMBER_OF_CARS.getMessage());
     }
 
     @Test
@@ -54,9 +54,9 @@ class InputValidatorTest {
         String input = "abc";
 
         // When & Then
-        assertThrows(RacingException.class, () ->
-                InputValidator.validateNumeric(input)
-        );
+        assertThatThrownBy(() -> InputValidator.validateNumeric(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_ATTEMPT_COUNT_FORMAT.getMessage());
     }
 
     @Test
@@ -66,8 +66,8 @@ class InputValidatorTest {
         String input = "-1";
 
         // When & Then
-        assertThrows(RacingException.class, () ->
-                InputValidator.validateNumeric(input)
-        );
+        assertThatThrownBy(() -> InputValidator.validateNumeric(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NEGATIVE_NUMBER.getMessage());
     }
 }
