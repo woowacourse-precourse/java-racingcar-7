@@ -1,0 +1,8 @@
+package racingcar;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+public class RandomNumberGenerator {
+    public int randomNumber(){
+        return pickNumberInRange(0,9);
+    }
+}
