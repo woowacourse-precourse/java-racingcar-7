@@ -60,8 +60,10 @@ public class Race {
             maxBound = fixFinalWinner(winners, car, maxBound);
 
         for(String winner : winners){
-            result.append(winner);
+            result.append(winner).append(",");
         }
+
+        result.deleteCharAt(result.length()-1);
 
         return result.toString();
     }
