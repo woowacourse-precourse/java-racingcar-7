@@ -23,7 +23,7 @@ public class Car {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(INVALID_CAR_NAME);
         }
-        if (name.trim().length() > 5) {
+        if (name.length() > 5) {
             throw new IllegalArgumentException(CAR_NAME_TOO_LONG);
         }
     }
