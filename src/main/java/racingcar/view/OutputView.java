@@ -8,8 +8,8 @@ import java.util.List;
 import racingcar.model.Round;
 
 public class OutputView {
-    public static final String DISTANCE_SIGN = "-";
-    public static final String WINNER_JOIN_DELIMITER = ", ";
+    private static final String DISTANCE_SIGN = "-";
+    private static final String WINNER_JOIN_DELIMITER = ", ";
 
     public void printRoundState(List<Round> roundList) {
         System.out.println(ROUND_RESULT_COMMENT);

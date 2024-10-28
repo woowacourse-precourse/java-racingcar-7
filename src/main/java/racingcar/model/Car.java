@@ -3,8 +3,8 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
-    public static final int INIT_DISTANCE = 0;
-    public static final int MOVE_THRESHOLD = 4;
+    private static final int INIT_DISTANCE = 0;
+    private static final int MOVE_THRESHOLD = 4;
 
     private final String name;
     private int position;
