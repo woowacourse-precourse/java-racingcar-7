@@ -1,14 +1,24 @@
 package racingcar.input;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.Application;
+import racingcar.model.Car;
+import racingcar.model.Cars;
 
-public class CarsNameTest extends NsTest {
+public class CarsNameTest {
+
+    private Cars cars;
+
+    @BeforeEach
+    void setUp(){
+        cars = new Cars();
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"\n", " "})
@@ -39,14 +49,25 @@ public class CarsNameTest extends NsTest {
         예외_실행(input, "비어있는 자동차 이름이 있습니다.");
     }
 
+
+
+    @Test
+    void 쉼표_앞뒤로_공백이_있는_경우_자동차_이름_추출_테스트(){
+        String inputCars = "pobi , nana, hoo";
+
+        List<Car> carNames = cars.extractValidCars(inputCars);
+
+        assertEquals(3, carNames.size());
+        assertEquals("pobi", carNames.get(0).getCarName());
+        assertEquals("nana", carNames.get(1).getCarName());
+        assertEquals("hoo", carNames.get(2).getCarName());
+    }
+
     void 예외_실행(String input, String errorMessage) {
-        assertThatThrownBy(() -> runException(input))
+        assertThatThrownBy(() -> cars.extractValidCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(errorMessage);
     }
 
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
+
 }
