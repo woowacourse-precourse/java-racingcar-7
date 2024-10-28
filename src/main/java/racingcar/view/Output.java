@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.view;
 
-import java.util.HashMap;
+import racingcar.model.Car;
+
 import java.util.List;
-import java.util.Map;
 import java.util.StringJoiner;
 
 public class Output {

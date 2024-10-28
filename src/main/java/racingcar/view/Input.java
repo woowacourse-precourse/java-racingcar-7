@@ -1,10 +1,10 @@
-package racingcar.View;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.Validator.CarNameValidator;
-import racingcar.Validator.CarNamesValidator;
-import racingcar.Validator.InputValidator;
-import racingcar.Validator.NumberValidator;
+import racingcar.validator.CarNameValidator;
+import racingcar.validator.CarNamesValidator;
+import racingcar.validator.InputValidator;
+import racingcar.validator.NumberValidator;
 
 public class Input {
     private static final InputValidator inputValidator;

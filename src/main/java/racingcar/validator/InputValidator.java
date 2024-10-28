@@ -1,6 +1,6 @@
-package racingcar.Validator;
+package racingcar.validator;
 
-import racingcar.Separator;
+import racingcar.util.Separator;
 
 public class InputValidator {
     private final CarNamesValidator carNamesValidator;

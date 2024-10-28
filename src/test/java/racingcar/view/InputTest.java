@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.AfterEach;

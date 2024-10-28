@@ -1,6 +1,6 @@
-package racingcar.Validator;
+package racingcar.validator;
 
-import racingcar.Separator;
+import racingcar.util.Separator;
 
 import java.util.HashSet;
 import java.util.Set;

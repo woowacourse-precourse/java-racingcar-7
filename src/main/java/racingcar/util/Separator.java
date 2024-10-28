@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.util;
 
 public class Separator {
     public static String[] split(String input) {

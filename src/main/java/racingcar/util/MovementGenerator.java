@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.model.Movement;
 
 public class MovementGenerator {
     private static final int MIN_NUMBER = 0;

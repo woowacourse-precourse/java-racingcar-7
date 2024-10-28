@@ -1,7 +1,4 @@
-package racingcar.Validator;
-
-import java.util.HashSet;
-import java.util.Set;
+package racingcar.validator;
 
 public class CarNameValidator {
     private final int MAX_NAME_LENGTH = 5;

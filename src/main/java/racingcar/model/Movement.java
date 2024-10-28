@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 public enum Movement {
     GO, STOP

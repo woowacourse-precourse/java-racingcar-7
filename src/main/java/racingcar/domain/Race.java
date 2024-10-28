@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.util.MovementGenerator;
+import racingcar.view.Output;
+import racingcar.model.Car;
 
 import java.util.List;
 
@@ -6,7 +10,7 @@ public class Race {
     private final List<Car> CARS;
     private final int COUNT;
 
-    Race(List<Car> cars, int count) {
+    public Race(List<Car> cars, int count) {
         this.CARS = cars;
         this.COUNT = count;
     }
