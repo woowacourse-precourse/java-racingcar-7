@@ -1,5 +1,12 @@
 package racingcar.domain;
 
+import static racingcar.exception.Exception.CAR_NAME_ALREADY_EXIST;
+import static racingcar.exception.Exception.CAR_NAME_TOO_LONG;
+import static racingcar.exception.Exception.INVALID_CAR_NAME_FORMAT;
+import static racingcar.exception.Exception.INVALID_EMPTY_CAR_NAME;
+import static racingcar.exception.Exception.NOT_ENOUGH_CARS;
+import static racingcar.exception.Exception.TOO_MANY_CARS;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,13 +21,13 @@ public class CarValidator {
 
     private static void validateCarsCount(List<Car> cars) {
         if (cars.size() > 5) {
-            throw new IllegalArgumentException("자동차가 너무 많습니다. 최대 5개까지 가능합니다.");
+            throw new IllegalArgumentException(TOO_MANY_CARS.getMessage());
         }
     }
 
     private static void validateSingleCar(List<Car> cars) {
         if (cars.size() == 1) {
-            throw new IllegalArgumentException("이름이 하나만 입력되었습니다. 최소 2개 이상의 이름을 입력해야 합니다.");
+            throw new IllegalArgumentException(NOT_ENOUGH_CARS.getMessage());
         }
     }
 
@@ -39,25 +46,25 @@ public class CarValidator {
 
     private static void validateEmptyName(String name){
         if(name.isEmpty()){
-            throw new IllegalArgumentException("이름은 빈 문자열일 수 없습니다.");
+            throw new IllegalArgumentException(INVALID_EMPTY_CAR_NAME.getMessage());
         }
     }
 
     private static void validateNameLength(String name){
         if(name.length() > 5){
-            throw new IllegalArgumentException("이름이 5자를 초과합니다: " + name);
+            throw new IllegalArgumentException(CAR_NAME_TOO_LONG.getMessage() + name);
         }
     }
 
     private static void validateNameCharacters(String name){
         if(!name.matches("[a-zA-Z가-힣]+")){
-            throw new IllegalArgumentException("이름은 숫자나 기호, 공백을 포함할 수 없습니다: " + name);
+            throw new IllegalArgumentException(INVALID_CAR_NAME_FORMAT.getMessage() + name);
         }
     }
 
     private static void validateDuplicateCarName(String name, Set<String> uniqueNames) {
         if(!uniqueNames.add(name)) {
-            throw new IllegalArgumentException("이름이 중복됩니다: " + name);
+            throw new IllegalArgumentException(CAR_NAME_ALREADY_EXIST.getMessage() + name);
         }
     }
 }
