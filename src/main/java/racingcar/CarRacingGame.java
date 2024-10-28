@@ -12,19 +12,14 @@ public class CarRacingGame {
     private final int round;
 
     public CarRacingGame(IOutputDisplay outputDisplay, List<ICar> carList, int round) {
-        if (carList == null || carList.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessage.INSUFFICIENT_MIN_CAR_COUNT.getMessage());
-        }
-        if (round <= 0) {
-            throw new IllegalArgumentException(ErrorMessage.INSUFFICIENT_MIN_ROUND.getMessage());
-        }
-
         this.outputDisplay = outputDisplay;
         this.carList = carList;
         this.round = round;
     }
 
     public List<ICar> start() {
+        checkGameStartEnable();
+
         outputDisplay.print("실행 결과\n");
 
         for (int i = 0; i < round; i++) {
@@ -38,6 +33,15 @@ public class CarRacingGame {
         return winnerList;
     }
 
+    private void checkGameStartEnable() {
+        if (carList == null || carList.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.INSUFFICIENT_MIN_CAR_COUNT.getMessage());
+        }
+        if (round <= 0) {
+            throw new IllegalArgumentException(ErrorMessage.INSUFFICIENT_MIN_ROUND.getMessage());
+        }
+    }
+
     private void round() {
         for (ICar car : carList) {
             car.drive();
@@ -45,7 +49,6 @@ public class CarRacingGame {
     }
 
     private List<ICar> findWinner() {
-
         // 우승자 찾기
         ICar winnerCar = carList.stream()
                 .max(Comparator.comparingInt(ICar::getPosition))
