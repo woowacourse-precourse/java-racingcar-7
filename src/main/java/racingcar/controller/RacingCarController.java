@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Map;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -15,14 +16,18 @@ public class RacingCarController {
     }
 
     public void setRacingCar(InputView inputView) {
-        List<String> carNames = racingCarService.processingInputToList(inputView.inputCarNames());
-        racingCarService.checkCarNamesValid(carNames);
-        racingCarService.saveAll(carNames);
+        String inputCarNames = inputView.inputCarNames();
+        List<String> carNames = racingCarService.processingCarNames(inputCarNames);
+        racingCarService.validateCarNames(carNames);
+        racingCarService.createAll(carNames);
     }
 
-    public void openingRacingGame(InputView inputView, OutputView outputView) {
-        BigInteger raceCount = racingCarService.checkRaceCount(inputView.inputRaceCount());
-        racingCarService.startRacing(raceCount, outputView);
+    public void startRacingGame(InputView inputView, OutputView outputView) {
+        String inputRaceCount = inputView.inputRaceCount();
+        racingCarService.validateRaceCount(inputRaceCount);
+        outputView.printTrackingStartMsg();
+        Map<String, String>[] raceResults = racingCarService.startRacingAndTracking(new BigInteger(inputRaceCount));
+        outputView.printRaceProcess(new BigInteger(inputRaceCount), raceResults);
     }
 
     public void finalAward(OutputView outputView) {

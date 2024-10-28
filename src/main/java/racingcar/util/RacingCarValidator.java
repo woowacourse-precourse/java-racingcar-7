@@ -1,6 +1,7 @@
 package racingcar.util;
 
 import static racingcar.constant.RacingCarStatic.MAX_CAR_NAME_LENGTH;
+import static racingcar.exception.RacingCarErrorCode.CAR_NAME_CANNOT_BE_BLANK;
 import static racingcar.exception.RacingCarErrorCode.CAR_NAME_CANNOT_OVER_LIMIT;
 import static racingcar.exception.RacingCarErrorCode.RACE_COUNT_CANNOT_BE_DECIMAL;
 import static racingcar.exception.RacingCarErrorCode.RACE_COUNT_CANNOT_BE_NEGATIVE_NUMBER;
@@ -11,11 +12,8 @@ import java.math.BigInteger;
 public class RacingCarValidator {
 
     public void validateCarName(String carName) {
-
-        //TODO : 아래것 다른 이름으로 분리하여 호출 (EX. 길이 검사)
-        if (carName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException(CAR_NAME_CANNOT_OVER_LIMIT.getErrorMsg());
-        }
+        carNameBlankValidate(carName);
+        carNameLengthValidate(carName);
     }
 
     public void validateRaceCount(String raceCount) {
@@ -24,23 +22,35 @@ public class RacingCarValidator {
         raceCountNegativeNumberValidate(raceCount);
     }
 
-    public void raceCountDecimalValidate(String raceCount) {
+    private void carNameBlankValidate(String carName) {
+        if (carName.isBlank()) {
+            throw new IllegalArgumentException(CAR_NAME_CANNOT_BE_BLANK.getErrorMsg());
+        }
+    }
+
+    private void carNameLengthValidate(String carName) {
+        if (carName.length() > MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException(CAR_NAME_CANNOT_OVER_LIMIT.getErrorMsg() + " : " + carName);
+        }
+    }
+
+    private void raceCountDecimalValidate(String raceCount) {
         if (raceCount.contains(".")) {
-            throw new IllegalArgumentException(RACE_COUNT_CANNOT_BE_DECIMAL.getErrorMsg());
+            throw new IllegalArgumentException(RACE_COUNT_CANNOT_BE_DECIMAL.getErrorMsg() + " : " + raceCount);
         }
     }
 
-    public void raceCountNegativeNumberValidate(String raceCount) {
-        if(raceCount.contains("-")) {
-            throw new IllegalArgumentException(RACE_COUNT_CANNOT_BE_NEGATIVE_NUMBER.getErrorMsg());
+    private void raceCountNegativeNumberValidate(String raceCount) {
+        if (raceCount.contains("-")) {
+            throw new IllegalArgumentException(RACE_COUNT_CANNOT_BE_NEGATIVE_NUMBER.getErrorMsg() + " : " + raceCount);
         }
     }
 
-    public void raceCountParsingValidate(String raceCount) {
+    private void raceCountParsingValidate(String raceCount) {
         try {
             BigInteger number = new BigInteger(raceCount);
-        } catch(NumberFormatException e) {
-            throw new IllegalArgumentException(RACE_COUNT_MUST_BE_NUMBER.getErrorMsg());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(RACE_COUNT_MUST_BE_NUMBER.getErrorMsg() + " : " + raceCount);
         }
     }
 }

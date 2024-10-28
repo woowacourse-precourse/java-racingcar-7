@@ -3,8 +3,6 @@ package racingcar.controller;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.constant.RacingCarInfoMsg.PRESENT_FINAL_WINNER_MSG;
-import static racingcar.constant.RacingCarInfoMsg.TRACKING_START_MSG;
 import static racingcar.constant.RacingCarInfoMsg.TYPE_RACE_COUNT;
 import static racingcar.constant.RacingCarStatic.FINAL_WINNER_SEPARATOR;
 

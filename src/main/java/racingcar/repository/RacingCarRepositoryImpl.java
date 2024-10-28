@@ -17,25 +17,13 @@ public class RacingCarRepositoryImpl implements RacingCarRepository {
 
     @Override
     public List<RacingCar> findAll() {
-
-        List<RacingCar> racingCars = new ArrayList<>();
-        racingCars.addAll(storage);
-
-        return racingCars;
+        return new ArrayList<>(storage);
     }
 
     @Override
     public Optional<RacingCar> findByName(String name) {
-
-        Optional<RacingCar> oRacingCar = Optional.empty();
-
-        for (RacingCar racingCar : storage) {
-            if (racingCar.getName().equals(name)) {
-                oRacingCar = Optional.of(racingCar);
-                break;
-            }
-        }
-
-        return oRacingCar;
+        return storage.stream()
+                .filter(racingCar -> racingCar.getName().equals(name))
+                .findFirst();
     }
 }
