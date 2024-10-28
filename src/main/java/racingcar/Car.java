@@ -24,9 +24,9 @@ public class Car implements Comparable<Car> {
         return cars;
     }
 
-    public Long getDistance() {
-        return distance;
-    }
+//    public Long getDistance() {
+//        return distance;
+//    }
 
     public String getName() {
         return name;
@@ -36,6 +36,10 @@ public class Car implements Comparable<Car> {
         if (command >= WINNING_BOUNDARY) {
             this.distance++;
         }
+    }
+
+    public boolean hasSameDistanceWith(Car anotherCar) {
+        return Objects.equals(this.distance, anotherCar.distance);
     }
 
     @Override

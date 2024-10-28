@@ -28,9 +28,9 @@ public class Race {
         PriorityQueue<Car> priorityQueue = new PriorityQueue<>();
         priorityQueue.addAll(cars);
         Car first = priorityQueue.poll();
+        assert first != null;
         winners.add(first);
-        while (!priorityQueue.isEmpty()
-                && Objects.equals(first.getDistance(), priorityQueue.peek().getDistance())) {
+        while (!priorityQueue.isEmpty() && first.hasSameDistanceWith(priorityQueue.peek())) {
             winners.add(priorityQueue.poll());
         }
         return winners;
