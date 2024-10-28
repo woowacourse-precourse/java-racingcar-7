@@ -23,6 +23,12 @@ public class Race {
             cars.add(new Car(carName));
         }
     }
+    
+    public void moveCars() {
+        for (Car car : cars) {
+            car.move(generateRandomNum());
+        }
+    }
 
     private int generateRandomNum() {
         return Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
