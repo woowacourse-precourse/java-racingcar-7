@@ -9,9 +9,9 @@ import racingcar.outputManager.OutputManager;
 import racingcar.referee.Referee;
 
 public class Race {
-    private InputManager inputManager;
-    private OutputManager outputManager;
-    private Referee referee;
+    private final InputManager inputManager;
+    private final OutputManager outputManager;
+    private final Referee referee;
     public Race(InputManager inputManager, OutputManager outputManager, Referee referee){
         this.inputManager = inputManager;
         this.outputManager = outputManager;
@@ -37,17 +37,16 @@ public class Race {
         List<Car> carList = createParticipant(carName);
 
         inputManager.HowManyAttempt();
-        int count = inputManager.getNumberOfAttempt();
+        int attemptCount = inputManager.getNumberOfAttempt();
 
-        List<Car> result = null;
         System.out.println();
         System.out.print("실행 결과");
-        for(int i = 0; i < count; i++){
-            result = referee.checkDrivingDistance(carList);
+        for(int i = 0; i < attemptCount; i++){
+            List<Car> result = referee.checkDrivingDistance(carList);
             outputManager.printExecutionResult(result);
         }
 
-        List<Car> winners = referee.judgeWinner(result);
+        List<Car> winners = referee.judgeWinner(carList);
         outputManager.printWinner(winners);
     }
 }
