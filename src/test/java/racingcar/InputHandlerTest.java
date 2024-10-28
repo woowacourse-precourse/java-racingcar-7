@@ -45,7 +45,7 @@ public class InputHandlerTest {
             inputHandler.inputCarName();
         });
 
-        assertEquals("자동차 이름은 1자 이상 5자 이하로 입력해야 합니다.", exception.getMessage());
+        assertEquals("자동차 이름은 1자 이상 5자 이하로 입력해야합니다.", exception.getMessage());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class InputHandlerTest {
             inputHandler.inputAttemptNumber();
         });
 
-        assertEquals("시도 횟수는 1 이상의 숫자여야 합니다.", exception.getMessage());
+        assertEquals("시도 횟수는 1 이상의 정수여야합니다.", exception.getMessage());
     }
 
     @Test
@@ -82,6 +82,82 @@ public class InputHandlerTest {
             inputHandler.inputAttemptNumber();
         });
 
-        assertEquals("시도 횟수는 1 이상의 숫자여야 합니다.", exception.getMessage());
+        assertEquals("시도 횟수는 1 이상의 정수여야합니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 쉼표로 시작할 경우 예외 발생")
+    void inputCarName_StartsWithComma_ThrowsException() {
+        String input = ",Alpha,Bravo";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputHandler.inputCarName();
+        });
+
+        assertEquals("쉼표(,)로 시작하거나 끝날 수 없습니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 쉼표로 끝날 경우 예외 발생")
+    void inputCarName_EndsWithComma_ThrowsException() {
+        String input = "Alpha,Bravo,";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputHandler.inputCarName();
+        });
+
+        assertEquals("쉼표(,)로 시작하거나 끝날 수 없습니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("자동차 이름에 연속된 쉼표가 있을 경우 예외 발생")
+    void inputCarName_ConsecutiveCommas_ThrowsException() {
+        String input = "Alpha,,Bravo";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputHandler.inputCarName();
+        });
+
+        assertEquals("쉼표(,)가 연속으로 올 수 없습니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("중복된 자동차 이름이 있을 경우 예외 발생")
+    void inputCarName_DuplicateNames_ThrowsException() {
+        String input = "Alpha,Bravo,Alpha";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputHandler.inputCarName();
+        });
+
+        assertEquals("자동차 이름은 중복될 수 없습니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("시도 횟수가 int 범위를 초과할 경우 예외 발생")
+    void inputAttemptNumber_ExceedsIntRange_ThrowsException() {
+        String input = "999999999999999999999";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputHandler.inputAttemptNumber();
+        });
+
+        assertEquals("시도 횟수가 int 범위를 초과했습니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("시도 횟수 입력에 공백이 있어도 정상 처리")
+    void inputAttemptNumber_WithSpaces_ReturnsInteger() {
+        String input = " 5 ";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        int attemptNumber = inputHandler.inputAttemptNumber();
+
+        assertEquals(5, attemptNumber);
     }
 }
