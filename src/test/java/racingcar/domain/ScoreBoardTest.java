@@ -29,4 +29,14 @@ class ScoreBoardTest {
 
         assertEquals("최종 우승자 : Car1", finalResult.getResult());
     }
+
+    @Test
+    void 우승자가_여러명일_경우_쉼표를_이용해_구분하여_출력하는지_확인() {
+        car1.run();
+        car2.run();
+        FinalResultDto finalResult = scoreBoard.returnFinalResult();
+        String resultString = finalResult.getResult();
+
+        assertEquals("최종 우승자 : Car1, Car2", resultString);
+    }
 }
