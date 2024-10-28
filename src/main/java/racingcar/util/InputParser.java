@@ -5,7 +5,9 @@ import java.util.List;
 import racingcar.exception.InputException;
 
 public final class InputParser {
+    private static final Integer MINIMUM_ROUND = 1;
     private static final String DELIMITER = ",";
+    private static final String NUMBER_REGEX = "^[0-9]*$";
 
     private InputParser() {
     }
@@ -18,6 +20,16 @@ public final class InputParser {
         validateNameCount(names, input);
 
         return names;
+    }
+
+    public static int parseRound(String input) {
+        validateInput(input);
+        var trimInput = input.trim();
+        validateInputIsNumber(trimInput);
+
+        var round = Integer.parseInt(trimInput);
+
+        return round;
     }
 
     private static void validateInput(String input) {
@@ -35,5 +47,11 @@ public final class InputParser {
 
     private static boolean isNameSameWithDelimiterCount(List<String> names, int delimiterCount) {
         return delimiterCount + 1 != names.size();
+    }
+
+    private static void validateInputIsNumber(String input) {
+        if (!input.matches(NUMBER_REGEX)) {
+            throw new IllegalArgumentException(InputException.INPUT_IS_NOT_NUMBER.getMessage());
+        }
     }
 }
