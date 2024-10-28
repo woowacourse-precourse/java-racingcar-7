@@ -18,5 +18,16 @@ class ValidationTest {
                 .hasMessage("자동차 이름은 5자 이하만 가능하다.");
     }
 
+    @Test
+    @DisplayName("입력 값이 null 또는 빈 문자열일 경우 예외 발생")
+    void isNullOrEmpty_ShouldThrowException_WhenInputIsNullOrEmpty() {
+        assertThatThrownBy(() -> validation.isNullOrEmpty(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력값을 넣지 않았습니다.");
+
+        assertThatThrownBy(() -> validation.isNullOrEmpty(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력값을 넣지 않았습니다.");
+    }
 
 }
