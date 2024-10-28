@@ -4,7 +4,11 @@ import java.util.List;
 
 public class CarNameParser {
 	private static final String DELIMITER = ",";
-	private CarValidator carValidator;
+	private final CarValidator carValidator;
+
+	public CarNameParser() {
+		this.carValidator = new CarValidator();
+	}
 
 	public List<String> parse(String input) {
 		List<String> carNames = splitCarNames(input);
