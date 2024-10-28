@@ -2,27 +2,42 @@ package racingcar;
 
 import java.util.List;
 import racingcar.argumentresolver.ArgumentResolver;
-import racingcar.argumentresolver.AttemptCountArgumentResolver;
-import racingcar.argumentresolver.CarArgumentResolver;
-import racingcar.validator.RangeValidator;
-import racingcar.validator.SizeValidator;
 import racingcar.validator.Validator;
 
 public class Controller {
 
-    private final OutputView outputView = new OutputView();
-    private final InputView inputView = new InputView();
+    private final OutputView outputView;
+    private final InputView inputView;
 
-    private final ArgumentResolver<List<String>> carArgumentResolver = new CarArgumentResolver();
-    private final ArgumentResolver<Integer> attemptCountArgumentResolver = new AttemptCountArgumentResolver();
+    private final ArgumentResolver<List<String>> carArgumentResolver;
+    private final ArgumentResolver<Integer> attemptCountArgumentResolver;
 
-    private final Validator<List<String>> sizeValidator = new SizeValidator();
-    private final Validator<Integer> rangeValidator = new RangeValidator();
+    private final Validator<List<String>> sizeValidator;
+    private final Validator<Integer> rangeValidator;
 
-    private final AllCarMover allCarMover = new AllCarMover();
+    private final AllCarMover allCarMover;
 
-    private final WinnersDecider winnersDecider = new WinnersDecider();
+    private final WinnersDecider winnersDecider;
 
+    public Controller(
+            OutputView outputView,
+            InputView inputView,
+            ArgumentResolver<List<String>> carArgumentResolver,
+            ArgumentResolver<Integer> attemptCountArgumentResolver,
+            Validator<List<String>> sizeValidator,
+            Validator<Integer> rangeValidator,
+            AllCarMover allCarMover,
+            WinnersDecider winnersDecider
+    ) {
+        this.outputView = outputView;
+        this.inputView = inputView;
+        this.carArgumentResolver = carArgumentResolver;
+        this.attemptCountArgumentResolver = attemptCountArgumentResolver;
+        this.sizeValidator = sizeValidator;
+        this.rangeValidator = rangeValidator;
+        this.allCarMover = allCarMover;
+        this.winnersDecider = winnersDecider;
+    }
 
     public void run() {
         outputView.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
