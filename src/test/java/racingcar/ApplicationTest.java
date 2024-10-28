@@ -1,10 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -52,7 +49,19 @@ class ApplicationTest extends NsTest {
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
+    @Test
+    public void winnerSelection() {
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("woni");
+        car1.move();
+        car1.move();
+        car2.move();
+        List<Car> cars = List.of(car1, car2);
 
+        RacingGame game = new RacingGame("pobi,woni", 3);
+        game.start();
+        assertThat(game.getWinners()).containsExactly("pobi");
+    }
 
     @Override
     public void runMain() {
