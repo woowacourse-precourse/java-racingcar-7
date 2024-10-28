@@ -56,4 +56,8 @@ public class Game {
 				printer.accept(racers.startRound(numberSupplier));
 			});
 	}
+
+	public void printWinner(Consumer<String> printer) {
+		printer.accept(racers.getWinner());
+	}
 }

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Cars {
 	private List<Car> carList;
@@ -29,5 +30,20 @@ public class Cars {
 			sb.append(car.showStatus(delim));
 		}
 		return sb.toString();
+	}
+
+	public String getWinner() {
+		int max = getHighestScore();
+		return carList.stream()
+			.filter(car -> car.getScore() == max)
+			.map(Car::getName)
+			.collect(Collectors.joining(","));
+	}
+
+	private Integer getHighestScore() {
+		return carList.stream()
+			.map(Car::getScore)
+			.max(Integer::compare)
+			.orElseGet(() -> 0);
 	}
 }
