@@ -1,6 +1,6 @@
 package racingcar.application;
 
-public interface NumberGenerator {
+public interface ForwardStrategy {
 
     boolean isFollowNumberRule();
 }

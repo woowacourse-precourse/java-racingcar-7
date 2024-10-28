@@ -1,8 +1,8 @@
 package racingcar.config;
 
-import racingcar.application.numbergenerator.RandomNumberGenerator;
+import racingcar.application.numbergenerator.RandomNumberForwardStrategy;
 import racingcar.application.NameSeparator;
-import racingcar.application.NumberGenerator;
+import racingcar.application.ForwardStrategy;
 import racingcar.application.Printer;
 import racingcar.application.Reader;
 import racingcar.application.nameseparator.OriginSeparator;
@@ -23,7 +23,7 @@ public class AppConfig {
         return new PrintRacingResult();
     }
 
-    public NumberGenerator randomGenerator() {
-        return new RandomNumberGenerator();
+    public ForwardStrategy randomGenerator() {
+        return new RandomNumberForwardStrategy();
     }
 }

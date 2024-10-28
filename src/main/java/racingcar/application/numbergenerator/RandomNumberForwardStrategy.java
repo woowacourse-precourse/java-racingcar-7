@@ -1,9 +1,9 @@
 package racingcar.application.numbergenerator;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.application.NumberGenerator;
+import racingcar.application.ForwardStrategy;
 
-public class RandomNumberGenerator implements NumberGenerator {
+public class RandomNumberForwardStrategy implements ForwardStrategy {
 
     @Override
     public boolean isFollowNumberRule() {

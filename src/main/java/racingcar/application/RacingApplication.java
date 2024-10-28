@@ -8,10 +8,10 @@ import racingcar.domain.Result;
 
 public class RacingApplication {
 
-    private final NumberGenerator numberGenerator;
+    private final ForwardStrategy forwardStrategy;
 
-    public RacingApplication(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
+    public RacingApplication(ForwardStrategy forwardStrategy) {
+        this.forwardStrategy = forwardStrategy;
     }
 
     public Result race(Cars cars, int gameNumber) {
@@ -34,7 +34,7 @@ public class RacingApplication {
     private Cars eachRace(List<Car> allCar) {
         List<Car> afterEachRaceCars = new ArrayList<>();
         for (Car car : allCar) {
-            Car updateCar = car.updateDistance(car, numberGenerator.isFollowNumberRule());
+            Car updateCar = car.updateDistance(car, forwardStrategy.isFollowNumberRule());
             afterEachRaceCars.add(updateCar);
         }
         return new Cars(afterEachRaceCars);
