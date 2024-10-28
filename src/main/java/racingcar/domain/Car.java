@@ -3,6 +3,7 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
+    private static final int MOVING_FORWARD = 4;
     private final String name;
     private int position;
 
@@ -12,7 +13,7 @@ public class Car {
     }
 
     public void move() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+        if (Randoms.pickNumberInRange(0, 9) >= MOVING_FORWARD) {
             position++;
         }
     }
