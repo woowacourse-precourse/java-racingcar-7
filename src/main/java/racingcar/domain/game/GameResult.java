@@ -5,6 +5,6 @@ import racingcar.domain.player.Player;
 
 public class GameResult {
     public static GameResult from(List<Player> all) {
-        return null;
+        return new GameResult();
     }
 }

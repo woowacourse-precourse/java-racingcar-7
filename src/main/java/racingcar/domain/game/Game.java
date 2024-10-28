@@ -55,4 +55,8 @@ public class Game {
         Distance newDistance = movementPolicy.move(player.getDistance());
         return player.move(newDistance);
     }
+
+    public List<Player> getPlayers() {
+        return players.getAll();
+    }
 }

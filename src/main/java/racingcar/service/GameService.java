@@ -2,9 +2,11 @@ package racingcar.service;
 
 import java.util.List;
 import racingcar.domain.game.Game;
+import racingcar.domain.game.GameResult;
 import racingcar.domain.movement.MovementPolicy;
 import racingcar.domain.player.Player;
 import racingcar.dto.request.GameStartRequest;
+import racingcar.exception.game.GameException;
 
 public class GameService {
     private final PlayerService playerService;
@@ -26,5 +28,19 @@ public class GameService {
                 movementPolicy
         );
     }
+
+    public GameResult playRound() {
+        validateGameInitialized();
+        Game playedGame = game.play();
+        game = playedGame;
+        return GameResult.from(playedGame.getPlayers());
+    }
+
+    private void validateGameInitialized() {
+        if (game == null) {
+            throw new GameException.GameNotInitializedException();
+        }
+    }
+
 
 }
