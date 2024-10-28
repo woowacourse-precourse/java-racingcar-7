@@ -10,7 +10,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
         StringTokenizer tokenizer = new StringTokenizer(Console.readLine(), ",");
         String car1 = tokenizer.nextToken();
@@ -22,12 +21,13 @@ public class Application {
 
         System.out.println("실행 결과");
 
-        //전진 멈추는 방법(4이상일때만 전진)
-        for (int i = 0; i < trial; i++) {
-            for (String car : cars) {
-                int value = Randoms.pickNumberInRange(0, 9);
-                if (value >= 4) {
-                    car.go();
+        //전진 멈추는 방법(4이상일때만)
+        private static void playOneRound(List<Car> cars) {
+            for (int i = 0; i < trial; i++) {
+                for (Car car : cars) {
+                    if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                          car.go();
+                    }
                 }
             }
         }
