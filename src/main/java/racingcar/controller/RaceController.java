@@ -17,14 +17,10 @@ public class RaceController {
     }
 
     public void run() {
-        try {
-            Race race = initializeRace();
-            int rounds = getRounds();
-            playGame(race, rounds);
-            announceWinners(race);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        Race race = initializeRace();
+        int rounds = getRounds();
+        playGame(race, rounds);
+        announceWinners(race);
     }
 
     private Race initializeRace() {
