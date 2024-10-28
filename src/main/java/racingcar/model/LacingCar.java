@@ -8,23 +8,33 @@ import racingcar.exception.UserErrorMessage;
 public class LacingCar {
 
     private final String carName;
+    private int resultToMove;
 
     public LacingCar(String carName) {
         this.carName = carName;
+        this.resultToMove = 0;
     }
 
     public String getCarName() {
         return carName;
     }
 
-    public boolean validateCarName(String carName) {
+    public static String validateCarName(String carName) {
         if (carName == null || carName.isEmpty()) {
             throw new IllegalArgumentException(UserErrorMessage.NOT_ALLOWED_BLANK);
         } else if (carName.length() > 5) {
             throw new IllegalArgumentException(UserErrorMessage.NOT_ALLOWED_LENGTH);
         } else {
-            return true;
+            return carName;
         }
+    }
+
+    public int getResultToMove() {
+        return resultToMove;
+    }
+
+    public void plusResultToMove() {
+        resultToMove += 1;
     }
 
 }
