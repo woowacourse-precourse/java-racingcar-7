@@ -6,7 +6,7 @@ import racingcar.exception.ExceptionCode;
 
 import static racingcar.model.Number.LIMIT_NUMBER;
 import static racingcar.controller.CarStatusController.printCarStatus;
-import static racingcar.model.Random.createRandomNumber;
+import static racingcar.model.RandomUtils.createRandomNumber;
 
 
 public class RaceCars {
@@ -21,6 +21,7 @@ public class RaceCars {
         return participantCars;
     }
 
+
     public void createRaceCar(String[] carNames) {
         for (String name : carNames) {
             CarInfo car = new CarInfo(name);
@@ -33,10 +34,11 @@ public class RaceCars {
         validAllLimit(limitNumber);
         for (int i = 0; i < LIMIT_NUMBER; i++) {
             calculateRandomMovement();
-            printCarStatus();
+            printCarStatus(participantCars);
             System.out.println("\n");
         }
     }
+
     public ArrayList<CarInfo> findWinner() {
         ArrayList<CarInfo> winners = new ArrayList<>();
         long maxMovement = findMaxMovement();
@@ -59,7 +61,7 @@ public class RaceCars {
         for (CarInfo car : participantCars) {
             int randNumber = 0;
             randNumber = createRandomNumber();
-            Random.validRandomNumber(randNumber, car);
+            RandomUtils.validRandomNumber(randNumber, car);
         }
     }
 

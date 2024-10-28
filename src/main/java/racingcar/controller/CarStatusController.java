@@ -10,8 +10,8 @@ public class CarStatusController {
     public final static String DASH = "-";
 
 
-    public static void printCarStatus() {
-        for (CarInfo car : getParticipantCars()) {
+    public static void printCarStatus(ArrayList<CarInfo> participantCars) {
+        for (CarInfo car : participantCars) {
             System.out.print(car.getCarName() + " : ");
             printDash(car);
             System.out.println();
