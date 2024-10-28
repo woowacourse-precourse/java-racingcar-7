@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class Application {
+
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         // 유저가 형식에 따라 자동차 이름과 시도 횟수를 입력하면

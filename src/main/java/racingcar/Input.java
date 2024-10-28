@@ -11,18 +11,16 @@ public class Input {
   private int inputPlayCounts;
 
   public Input() {
-    this.inputCarNames = getInputCarNames();
-    this.inputPlayCounts = getCountsValue();
+    this.inputCarNames = Console.readLine();
+    this.inputPlayCounts = Integer.parseInt(Console.readLine());
   }
 
   public int getCountsValue() {
-    String playCounts = Console.readLine();
-    int countsValue = Integer.parseInt(playCounts);
-    return countsValue;
+    return inputPlayCounts;
   }
 
-  // nullpointer
+  // nosuchelementExeption
   public String getInputCarNames() {
-    return Console.readLine();
+    return inputCarNames;
   }
 }
