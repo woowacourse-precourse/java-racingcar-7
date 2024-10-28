@@ -16,6 +16,8 @@ public class Racing {
 
         for (int i = 0; i < count; i++) {
             forwardCondition(cars);
+            presentStatus(cars);
+            System.out.println();
         }
     }
 
@@ -26,5 +28,19 @@ public class Racing {
                 car.incrementMoveCount();
             }
         }
+    }
+
+    public void presentStatus(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.print(car.getName() + " : ");
+            generateDashLine(car);
+        }
+    }
+
+    public void generateDashLine(Car car) {
+        for (int i = 0; i < car.getMoveCount(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
