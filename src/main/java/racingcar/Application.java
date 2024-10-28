@@ -43,7 +43,19 @@ public class Application {
         }
     }
 
-    public static void main(String[] args) {
+    public static void game(List<Car> carList, int moveCount) {
+        int maxPosition = 0;
 
+        //이동 및 최장 거리 계산
+        while (moveCount-- > 0) {
+            //maxPosition = Integer.max(maxPosition, moveCar());
+        }
+
+        //우승자 결정
+        //checkWinner(List<car> carList, int maxPosition);
+    }
+
+    public static void main(String[] args) {
+        game(getCarList(), getMoveCount());
     }
 }
