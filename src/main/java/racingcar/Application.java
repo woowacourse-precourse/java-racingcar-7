@@ -37,7 +37,16 @@ public class Application {
                 max = move[j];
             }
         }
-        
+
+        // 1등 체크하기
+        String[] victoryCarName = new String[carName.length];
+
+        for(int i=0, j=0; i<victoryCarName.length; i++){
+            if(move[i] == max){
+                victoryCarName[j] = carName[i];
+                j++;
+            }
+        }
 
 
     }
