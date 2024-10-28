@@ -1,6 +1,6 @@
 package racingcar;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private String name;
     private int randomNumber;
     private int currentPos;
@@ -15,11 +15,16 @@ public class Car {
         return name;
     }
 
-    public int getCurrentPos(){
+    public int getCurrentPos() {
         return currentPos;
     }
 
-    public void incCurrentPos(){
+    public void incCurrentPos() {
         this.currentPos++;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.currentPos - o.getCurrentPos();
     }
 }
