@@ -15,7 +15,7 @@ public class InputCountValidator {
     }
 
     public void isPossibleConvertNumber(String tryCount) {
-        if (!tryCount.matches("^%d")) {
+        if (!tryCount.matches("\\d+")) {
             throw new IllegalArgumentException(IMPOSSIBLE_CONVERT_NUMBER.toString());
         }
     }
