@@ -34,6 +34,15 @@ public class Application {
     // 시도 횟수 입력받기
     private static int getNumberOfAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        int attempts = Integer.parseInt(Console.readLine());
+        validateAttempts(attempts);  // 시도 횟수 유효성 검사
+        return attempts;
+    }
+
+    // 시도 횟수 유효성 검사
+    private static void validateAttempts(int attempts) {
+        if (attempts < 1) {
+            throw new IllegalArgumentException("이동 횟수는 1 이상이어야 합니다.");
+        }
     }
 }
