@@ -35,6 +35,13 @@ public class RacingController {
     private int getRoundRacing() {
         return inputView.RacingRoundCount();
     }
+
+    private static void RoundInputZero(int input) {
+        if (input <= 0) {
+            throw new IllegalArgumentException("1 이상 입력해주세요.");
+        }
+    }
+
     private void validateCarNames(String[] carNames) {
         for (String name : carNames) {
             if (name.length() > 5) {
@@ -47,14 +54,14 @@ public class RacingController {
         try {
             String[] carNames = finalGetCarsNames();
             int RacingRounds = getRoundRacing();
+            RoundInputZero(RacingRounds);
             validateCarNames(carNames);
 
             List<Car> cars = MakeCars(carNames);
             runRace(cars, RacingRounds);
-
             MaxRace(cars);
         } catch (IllegalArgumentException e) {
-            System.out.println("오류" + e.getMessage());
+            System.out.println("오류 " + e.getMessage());
             throw e;
         }
     }
