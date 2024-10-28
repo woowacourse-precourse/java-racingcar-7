@@ -47,6 +47,17 @@ class InputViewTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("시도횟수가_공백인_경우_예외발생")
+    void 시도횟수가_숫자가_아닌_경우_예외발생() {
+        // given
+        System.setIn(readUserInput("pobi,alice\na\n"));
+
+        // when
+        assertThatThrownBy(() -> inputView.readRacingInfo())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     public InputStream readUserInput(String userInput) {
         return new ByteArrayInputStream(userInput.getBytes());
     }
