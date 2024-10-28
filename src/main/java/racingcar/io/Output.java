@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Output {
     public void printResult() {
+        System.out.println("실행 결과");
         // 실행 결과 출력
     }
 
