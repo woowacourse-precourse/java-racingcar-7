@@ -1,4 +1,4 @@
-package racingcar.validator.car.trial;
+package racingcar.validator.trial;
 
 public class MoveTrialValidatorImpl implements MoveTrialValidator {
 

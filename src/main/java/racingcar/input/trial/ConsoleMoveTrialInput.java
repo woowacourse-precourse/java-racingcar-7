@@ -1,7 +1,7 @@
-package racingcar.input.car.trial;
+package racingcar.input.trial;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.validator.car.trial.MoveTrialValidator;
+import racingcar.validator.trial.MoveTrialValidator;
 
 public class ConsoleMoveTrialInput implements MoveTrialInputHandler{
 

@@ -1,4 +1,4 @@
-package racingcar.input.car.trial;
+package racingcar.input.trial;
 
 public interface MoveTrialInputHandler {
     int readMoveTrialCount();
