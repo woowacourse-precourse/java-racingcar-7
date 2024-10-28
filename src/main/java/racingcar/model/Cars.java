@@ -6,17 +6,24 @@ import racingcar.util.InputCarsValidator;
 
 public class Cars {
 
-    public List<Car> extractCars(String carNames) {
+    public static final String REGEX_THAT_IGNORES_SPACES_BEFORE_AND_AFTER_COMMAS = "\\s*,\\s*";
+
+    public List<Car> extractValidCars(String carNames) {
 
         InputCarsValidator.isEmpty(carNames);
 
-        List<Car> cars = Arrays.stream(carNames.split(",", -1))
-                .map(Car::new)
-                .toList();
+        List<Car> cars = createCarNameList(carNames);
 
         InputCarsValidator.hasDuplicate(cars);
 
         return cars;
+    }
+
+    private List<Car> createCarNameList(String carNames) {
+
+        return Arrays.stream(carNames.split(REGEX_THAT_IGNORES_SPACES_BEFORE_AND_AFTER_COMMAS, -1))
+                .map(Car::new)
+                .toList();
     }
 
 
