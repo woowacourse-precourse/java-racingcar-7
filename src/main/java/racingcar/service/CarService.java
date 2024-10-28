@@ -10,7 +10,7 @@ public class CarService {
         HashSet<String> carNamesSet = new HashSet<>();
 
         for (final String carName : carNames.split(",")) {
-            if (carName.length() >= 5){
+            if (carName.length() > 5){
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             }
 
