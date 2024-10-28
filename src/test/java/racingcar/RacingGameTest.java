@@ -40,7 +40,7 @@ public class RacingGameTest {
             MoveStrategy moveStrategy = new RandomMoveStrategy(new FixedRandomGenerator(4));
 
             RacingGame racingGame = new RacingGame(names, moveCount, moveStrategy);
-            racingGame.startRace();
+            racingGame.playAllRounds();
 
             List<Car> cars = racingGame.getCars();
             for (Car car : cars) {
@@ -61,7 +61,7 @@ public class RacingGameTest {
             MoveStrategy moveStrategy = new RandomMoveStrategy(new FixedRandomGenerator(4));
 
             RacingGame racingGame = new RacingGame(names, moveCount, moveStrategy);
-            racingGame.startRace();
+            racingGame.playAllRounds();
 
             List<Car> winners = racingGame.getWinners();
             assertThat(winners).hasSize(3);

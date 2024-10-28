@@ -7,6 +7,7 @@ public class RacingGame {
     private final List<Car> cars;
     private final int moveCount;
     private final MoveStrategy moveStrategy;
+    private int currentRound = 0;
 
     public RacingGame(List<String> carNames, int moveCount, MoveStrategy moveStrategy) {
         validateMoveCount(moveCount);
@@ -29,13 +30,24 @@ public class RacingGame {
         }
     }
 
-    public void startRace() {
-        for (int i = 0; i < moveCount; i++) {
+    public boolean hasNextRound() {
+        return currentRound < moveCount;
+    }
+
+    public void playNextRound() {
+        if (hasNextRound()) {
             moveCars();
-            OutputView.printRoundResult(cars);
+            currentRound++;
+        } else {
+            throw new IllegalStateException("더 이상 진행할 라운드가 없습니다.");
         }
     }
 
+    public void playAllRounds() {
+        while (hasNextRound()) {
+            playNextRound();
+        }
+    }
     private void moveCars() {
         for (Car car : cars) {
             car.move(moveStrategy);

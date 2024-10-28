@@ -12,8 +12,10 @@ public class GameController {
             RacingGame racingGame = new RacingGame(carNames, moveCount, moveStrategy);
 
             System.out.println("\n실행 결과");
-            racingGame.startRace();
-
+            while (racingGame.hasNextRound()) {
+                racingGame.playNextRound();
+                OutputView.printRoundResult(racingGame.getCars());
+            }
             List<Car> winners = racingGame.getWinners();
             OutputView.printWinners(winners);
         } catch (IllegalArgumentException e) {
