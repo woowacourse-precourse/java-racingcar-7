@@ -14,9 +14,9 @@ class Car {
 }
 
 public class Application {
-    static Car car_list[];
+    static Car[] car_list;
     static int totalCount;
-    static Car winner_list[];
+    static Car[] winner_list;
 
     public static void printWinner() {
         System.out.print("최종 우승자 :");
@@ -75,8 +75,20 @@ public class Application {
         }
     }
 
+    public static void setcarlistSize(String user_input) {
+        int cnt = 0;
+        for (int i = 0; i < user_input.length(); i++) {
+            if (user_input.charAt(i) == ',') {
+                cnt++;
+            }
+        }
+        car_list = new Car[cnt];
+    }
+
     public static void saveCar(String user_input) {
         user_input += ",";
+        setcarlistSize(user_input);
+
         String name = "";
         int idx = 0;
         for (int i = 0; i < user_input.length(); i++) {
@@ -85,12 +97,10 @@ public class Application {
             } else {
                 checkValid(name);
 
-                Car new_car = new Car(name, 0);
-                car_list[idx++] = new_car;
+                car_list[idx++] = new Car(name, 0);
                 name = "";
             }
         }
-
     }
 
     public static void inputCar() {
