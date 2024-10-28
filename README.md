@@ -3,7 +3,7 @@
 ## 기능 목록
 -- --
 ### 1. Model 패키지
-- car.java : 자동차를 나타내는 모델 클래스
+- Car.java : 자동차를 나타내는 모델 클래스
   - move() : 자동차 위치 이동
   - getPositionSymbols() : 현재 위치를 '-'기호로 변환 후 반환
 - RacingGame.java : 게임 상태 관리
