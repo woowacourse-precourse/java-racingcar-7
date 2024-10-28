@@ -12,6 +12,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputHandlerTest {
 
+    private final InputHandler inputHandler = new InputHandler();
+
     @AfterEach
     void tearDown() {
         Console.close();
@@ -23,12 +25,11 @@ class InputHandlerTest {
 
         String input = "apple,banana\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        InputHandler inputHandler = new InputHandler();
         String[] carNamesFromUser = inputHandler.getCarNamesFromUser();
 
         assertThat(carNamesFromUser).isNotEmpty();
         assertThat(carNamesFromUser).hasSize(2)
-                .contains("apple", "banana");
+            .contains("apple", "banana");
     }
 
     @DisplayName("수행 횟수 양수 입력시 정상적으로 추출한다.")
@@ -37,7 +38,6 @@ class InputHandlerTest {
 
         String input = "5\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        InputHandler inputHandler = new InputHandler();
 
         int moveCount = inputHandler.getMoveCountFromUser();
 
@@ -50,7 +50,6 @@ class InputHandlerTest {
 
         String input = "0\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        InputHandler inputHandler = new InputHandler();
 
         assertThatThrownBy(() -> inputHandler.getMoveCountFromUser())
             .isInstanceOf(IllegalArgumentException.class)
@@ -63,7 +62,6 @@ class InputHandlerTest {
 
         String input = "-1\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        InputHandler inputHandler = new InputHandler();
 
         assertThatThrownBy(() -> inputHandler.getMoveCountFromUser())
             .isInstanceOf(IllegalArgumentException.class)
@@ -76,7 +74,6 @@ class InputHandlerTest {
 
         String input = "-1de\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        InputHandler inputHandler = new InputHandler();
 
         assertThatThrownBy(() -> inputHandler.getMoveCountFromUser())
             .isInstanceOf(IllegalArgumentException.class)
