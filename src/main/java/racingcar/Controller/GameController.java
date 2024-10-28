@@ -13,7 +13,7 @@ public class GameController {
     private final OutputView outputView;
     private Race race;
 
-    GameController() {
+    public GameController() {
         inputView = new InputView();
         outputView = new OutputView();
     }
@@ -32,7 +32,7 @@ public class GameController {
 
     private List<Car> readCars() {
         String input = inputView.requestCarNames();
-        Validator.inputSting(input);
+        Validator.inputCarNames(input);
 
         List<Car> carList = InputParser.stringToCarList(input);
         Validator.carList(carList);
@@ -42,8 +42,10 @@ public class GameController {
 
     private int readRounds() {
         String input = inputView.requestRound();
-        Validator.round(input);
-        return InputParser.stringToRound(input);
+        Validator.inputRound(input);
+        int round = InputParser.stringToRound(input);
+        Validator.round(round);
+        return round;
     }
 
     private void play() {

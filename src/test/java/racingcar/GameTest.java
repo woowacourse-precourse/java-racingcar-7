@@ -38,7 +38,7 @@ class GameTest extends NsTest {
     @ParameterizedTest
     @ValueSource(strings = {""})
     void 빈_문자열을_입력받으면_예외발생(String input) {
-        assertThatThrownBy(() -> Validator.inputSting(input))
+        assertThatThrownBy(() -> Validator.inputCarNames(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름을 입력해주세요.");
     }
