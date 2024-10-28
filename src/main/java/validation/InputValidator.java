@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 
 public class InputValidator {
 
@@ -47,4 +48,19 @@ public class InputValidator {
         }
     }
 
+    public void validateMoveCount(String moveCount){
+        isNumericValue(moveCount);
+        int numericMoveCount = Integer.parseInt(moveCount);
+        if(numericMoveCount <= 0){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void isNumericValue(String moveCount){
+        try{
+            Integer value = Integer.parseInt(moveCount);
+        } catch(Exception e){
+            throw new IllegalArgumentException();
+        }
+    }
 }
