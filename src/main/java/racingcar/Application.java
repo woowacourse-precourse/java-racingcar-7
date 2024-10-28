@@ -2,13 +2,10 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] input = scanner.nextLine().split(",");
@@ -30,6 +27,19 @@ public class Application {
             moveCar(cars);
             printResult(cars);
         }
+
+        System.out.println("최종 우승자" + " : " + winners(cars));
+    }
+
+    private static String winners(Map<String, Integer> cars) {
+        List<String> win = new ArrayList<>();
+        Integer maxValue = Collections.max(cars.values());
+        for (String name : cars.keySet()) {
+            if (cars.get(name) == maxValue) {
+                win.add(name);
+            }
+        }
+        return String.join(", ", win);
     }
 
     private static void printResult(Map<String, Integer> cars) {
