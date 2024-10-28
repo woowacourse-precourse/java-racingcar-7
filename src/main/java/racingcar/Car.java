@@ -27,4 +27,9 @@ public class Car {
     public String getProgress() {
         return "-".repeat(distance);
     }
+
+    // 테스트를 위한 setter 메서드 추가
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
 }
