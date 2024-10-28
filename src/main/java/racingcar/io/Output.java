@@ -26,8 +26,7 @@ public class Output {
 
     public void printWinner(List<String> winners) {
 
-        String outputMessage = String.format(Message.OUTPUT_WINNER.getMessage());
-        System.out.print(outputMessage);
+        System.out.print(Message.OUTPUT_WINNER.getMessage());
 
         for (String winner : winners) {
             System.out.print(winner);

@@ -32,7 +32,7 @@ public class RacingCarController {
 
         result = racingCarService.saveCars(carList);
 
-        System.out.println(String.format(Message.OUTPUT_ATTEMPT_RESULT.getMessage()));
+        System.out.println(Message.OUTPUT_ATTEMPT_RESULT.getMessage());
         for (int i = 0; i < attemptCount; i++) {
             result = racingCarService.saveResult(result);
             output.printResult(result);
