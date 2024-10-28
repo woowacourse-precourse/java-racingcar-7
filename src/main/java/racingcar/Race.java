@@ -55,6 +55,10 @@ public class Race {
         }
     }
 
+    public void displayResults() {
+        System.out.println("최종 우승자 : " + String.join(", ", findWinner()));
+    }
+
     public List<String> findWinner() {
         List<String> winners = new ArrayList<>();
         for (Car car : carList) {
