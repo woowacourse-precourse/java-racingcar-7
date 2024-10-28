@@ -40,7 +40,7 @@ class CarTest extends NsTest {
     }
 
     @Test
-    void 위치_출력_포맷_테스트() {
+    void 위치_출력_테스트() {
         Car car = new Car("pobi");
         assertRandomNumberInRangeTest(
             () -> {

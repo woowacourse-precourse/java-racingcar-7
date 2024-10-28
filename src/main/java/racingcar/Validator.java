@@ -52,9 +52,9 @@ public class Validator {
 	}
 
 	private static void validateNoDuplicates(String name, List<String> carNames) {
-	    long count = Collections.frequency(carNames, name);
-	    if (count > 1) {
-	        throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-	    }
+		long count = Collections.frequency(carNames, name);
+		if (count > 1) {
+			throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+		}
 	}
 }
