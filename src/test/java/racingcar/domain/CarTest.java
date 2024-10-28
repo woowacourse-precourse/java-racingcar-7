@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +10,12 @@ import racingcar.common.MockLoseRandom;
 import racingcar.common.MockWinRandom;
 
 class CarTest {
+	private CarValidator carValidator;
+
+	@BeforeEach
+	void init(){
+		carValidator = new CarValidator();
+	}
 
 	@Test
 	@DisplayName("차 이름은 5글자를 초과할 수 없다.")
@@ -16,7 +24,7 @@ class CarTest {
 		String carName = "5글자 초과입니다.";
 
 		// when, then
-		Assertions.assertThatThrownBy(() -> new Car(carName))
+		Assertions.assertThatThrownBy(() -> new Car(carName, carValidator))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("차 이름은 5글자를 초과할 수 없습니다.");
 	}
@@ -28,7 +36,7 @@ class CarTest {
 		String carName = "자동차1";
 
 		// when, then
-		Car car = new Car(carName);
+		Car car = new Car(carName, carValidator);
 		Assertions.assertThat(car.getPosition()).isEqualTo(0);
 	}
 
@@ -39,7 +47,7 @@ class CarTest {
 		String carName = "자동차1";
 
 		// when, then
-		Car car = new Car(carName);
+		Car car = new Car(carName, carValidator);
 		car.tryMove(new MockWinRandom());
 		Assertions.assertThat(car.getPosition()).isEqualTo(1);
 	}
@@ -51,7 +59,7 @@ class CarTest {
 		String carName = "자동차1";
 
 		// when, then
-		Car car = new Car(carName);
+		Car car = new Car(carName, carValidator);
 		car.tryMove(new MockLoseRandom());
 		Assertions.assertThat(car.getPosition()).isEqualTo(0);
 	}
