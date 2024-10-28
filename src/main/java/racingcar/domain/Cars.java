@@ -15,4 +15,12 @@ public class Cars {
     public ArrayList<Car> getCars() {
         return cars;
     }
+
+    public int size(){
+        return cars.size();
+    }
+
+    public Car findCarByNumber(int number){
+        return cars.get(number);
+    }
 }
