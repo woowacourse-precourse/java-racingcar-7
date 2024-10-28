@@ -3,26 +3,25 @@ package racingcar.modle.vehicle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.modle.movableStrategy.MovableStrategy;
+import racingcar.movableStrategy.MoveStrategy;
 import racingcar.modle.vehicle.car.Car;
 
 public class Vehicles {
     private final List<Movable> movables;
-    private final MovableStrategy movableStrategy;
+    private final MoveStrategy moveStrategy;
 
-    public Vehicles (MovableStrategy movableStrategy) {
+    public Vehicles(MoveStrategy moveStrategy) {
         this.movables = new ArrayList<>();
-        this.movableStrategy = movableStrategy;
+        this.moveStrategy = moveStrategy;
     }
 
-    private Vehicles (List<Movable> movables, MovableStrategy movableStrategy) {
+    private Vehicles(List<Movable> movables, MoveStrategy moveStrategy) {
         this.movables = movables;
-        this.movableStrategy = movableStrategy;
+        this.moveStrategy = moveStrategy;
     }
 
     public void nameSettings(List<String> names) {
-        names.forEach(name -> movables
-                .add(new Car(name, movableStrategy)));
+        names.forEach(name -> movables.add(new Car(name)));
     }
 
     public List<String> names() {
@@ -37,24 +36,22 @@ public class Vehicles {
                 .collect(Collectors.toList());
     }
 
-    public Vehicles move() {
+    public Vehicles moveAll() {
         List<Movable> newMovables = movedMovables();
-        return new Vehicles(newMovables, movableStrategy);
+        return new Vehicles(newMovables, moveStrategy);
 
     }
+
     private List<Movable> movedMovables() {
         return movables.stream()
                 .map(this::moveEach)
                 .collect(Collectors.toList());
     }
-    private Movable moveEach (Movable movable) {
-        if(movableStrategy.isMove()){
-            return movable.move();
+
+    private Movable moveEach(Movable movable) {
+        if (moveStrategy.isMove()) {
+            return movable.move(moveStrategy);
         }
         return movable;
-    }
-
-    public List<Movable> movables() {
-        return movables;
     }
 }

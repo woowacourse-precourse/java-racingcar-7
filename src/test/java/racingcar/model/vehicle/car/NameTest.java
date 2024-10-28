@@ -30,7 +30,7 @@ public class NameTest {
     @ValueSource(strings = {"", " "})
     void NullAndEmptyAndBlankNameTest(String name) {
         //when, then
-        assertThatThrownBy(()-> new Name(name)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Name(name)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -39,6 +39,14 @@ public class NameTest {
         //given
         String name = "여섯글자다다";
         //when, then
-        assertThatThrownBy(()-> new Name(name)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Name(name)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest(name = "이름 = {0} 경우")
+    @DisplayName("숫자로 이름 입력 테스트")
+    @ValueSource(strings = {"0", "1", "10", "100", "-1", "0.1", "-0.1", "0.01", "-0.01"})
+    void numberNameTest(String name) {
+        //when, then
+        assertThatThrownBy(() -> new Name(name)).isInstanceOf(IllegalArgumentException.class);
     }
 }

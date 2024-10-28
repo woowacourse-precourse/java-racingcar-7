@@ -1,6 +1,6 @@
 package racingcar.modle.vehicle.car;
 
-import racingcar.modle.movableStrategy.MovableStrategy;
+import racingcar.movableStrategy.MoveStrategy;
 import racingcar.modle.vehicle.Movable;
 
 public class Car implements Movable {
@@ -8,24 +8,21 @@ public class Car implements Movable {
 
     private final Name name;
     private final Position position;
-    private final MovableStrategy movableStrategy;
 
-    public Car(String name, MovableStrategy movableStrategy) {
+    public Car(String name) {
         this.name = new Name(name);
         this.position = new Position(START_POSITION);
-        this.movableStrategy = movableStrategy;
     }
 
-    private Car(String name, int position, MovableStrategy movableStrategy) {
+    private Car(String name, int position) {
         this.name = new Name(name);
         this.position = new Position(position);
-        this.movableStrategy = movableStrategy;
     }
 
     @Override
-    public Car move(){
-        int movedPosition = getPosition() + movableStrategy.movePoint();
-        return new Car(getName(), movedPosition, movableStrategy);
+    public Car move(MoveStrategy moveStrategy) {
+        int movedPosition = getPosition() + moveStrategy.movePoint();
+        return new Car(getName(), movedPosition);
     }
 
     @Override

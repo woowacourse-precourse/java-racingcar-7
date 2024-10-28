@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import racingcar.modle.vehicle.car.Car;
 
 public class OutputView {
     private static final String GAME_RESULT = "실행 결과";
@@ -14,17 +13,20 @@ public class OutputView {
     private static final String WINNER = "최종 우승자 : ";
 
     public static void printWinner(List<String> winner) {
-        if(winner.size() > 1){
+        if (winner.size() > 1) {
             String winnerName = String.join(", ", winner);
             System.out.println(WINNER + winnerName);
         } else {
-            System.out.println(WINNER + winner.get(0));
+            System.out.println(WINNER + winner.getFirst());
         }
     }
 
     public static void printResultMessage() {
         System.out.println(GAME_RESULT);
+        System.out.println();
+
     }
+
     public static void requestPlayCount() {
         System.out.println(REQUEST_PLAY_COUNT_MESSAGE);
     }
@@ -48,8 +50,8 @@ public class OutputView {
     }
 
     private static void validateLength(List<String> names, List<Integer> positions) {
-        if(names.size() != positions.size()) {
-            throw  new IllegalArgumentException(NU_SAME_LENGTH_MESSAGE);
+        if (names.size() != positions.size()) {
+            throw new IllegalArgumentException(NU_SAME_LENGTH_MESSAGE);
         }
     }
 }

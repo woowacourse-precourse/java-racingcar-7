@@ -18,7 +18,7 @@ public class InputView {
     private static void validatePlayCount(String playCount) {
         try {
             Integer.parseInt(playCount);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NOT_NUMBER_MESSAGE);
         }
     }
@@ -28,13 +28,13 @@ public class InputView {
         return stringToList(Console.readLine());
     }
 
-    private static List<String> stringToList(String names){
+    private static List<String> stringToList(String names) {
         return Arrays.stream(names.split(","))
                 .map(String::trim)
                 .toList();
     }
 
-    private static void printInputNameMessage(){
+    private static void printInputNameMessage() {
         System.out.println(INPUT_NAME_MESSAGE);
     }
 }
