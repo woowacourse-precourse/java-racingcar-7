@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import camp.nextstep.edu.missionutils.test.Assertions;
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
@@ -39,11 +40,23 @@ public class CarTest {
     }
 
     @Test
-    void compareTo_정렬_확인() {
-        Assertions.assertSimpleTest(() -> {
+    void compareTo_내림차순_정렬_확인() {
+        Assertions.assertRandomNumberInRangeTest(() -> {
             //given
+            Car car1 = new Car("car1");
+            Car car2 = new Car("car2");
+            car1.updateTotalDistance(car1.movedDistance());
+            car2.updateTotalDistance(car2.movedDistance());
+            List<Car> cars = Arrays.asList(car2, car1);
+
             //when
+            cars.sort(Car::compareTo);
+
             //then
-        });
+            assertThat(cars.get(0)).isEqualTo(car1);
+            assertThat(cars.get(1)).isEqualTo(car2);
+        }, 4, 0);
     }
+
+
 }
