@@ -28,6 +28,9 @@ public class RacingController {
             var roundInfo = racingGame.playRound();
             outputView.printRoundResult(roundInfo);
         }
+
+        var winnerNames = racingGame.getWinnerNames();
+        outputView.printWinner(winnerNames);
     }
 
     private List<String> getCarNames() {
