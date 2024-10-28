@@ -16,7 +16,7 @@ public class ParsingUtil {
     }
 
     // 대소문자가 달라도 동일한 입력으로 판단
-    public static List<String> DuplicateNames(List<String> carNames) {
+    public static List<String> convertToLowercase(List<String> carNames) {
         List<String> lowerCaseNames = carNames.stream()
                 .map(String::toLowerCase)  // 이름을 소문자로 변환
                 .collect(Collectors.toList());
