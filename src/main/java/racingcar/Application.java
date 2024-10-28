@@ -1,12 +1,14 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 
 public class Application {
     private static List<String> carNames;
     private static int tryCount;
+    private static int[] carPositions;
 
     public static void inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -39,8 +41,32 @@ public class Application {
         }
     }
 
+    public static void startRace() {
+        carPositions = new int[carNames.size()];
+        for (int i = 0; i < tryCount; i++) {
+            raceTurn();
+            printRaceStatus();
+        }
+    }
+
+    private static void raceTurn() {
+        for (int j = 0; j < carNames.size(); j++) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                carPositions[j]++;
+            }
+        }
+    }
+
+    private static void printRaceStatus() {
+        for (int i = 0; i < carNames.size(); i++) {
+            System.out.println(carNames.get(i) + " : " + "-".repeat(carPositions[i]));
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         inputCarNames();
         inputTryCount();
+        startRace();
     }
 }
