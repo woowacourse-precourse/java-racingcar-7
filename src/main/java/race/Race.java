@@ -31,7 +31,7 @@ public class Race {
 
     }
 
-    public void setRounds(List<Round> rounds) {
+    private void setRounds(List<Round> rounds) {
         this.rounds = rounds;
 
     }
