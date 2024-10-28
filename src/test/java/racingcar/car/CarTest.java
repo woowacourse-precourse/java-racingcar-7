@@ -1,5 +1,6 @@
 package racingcar.car;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.util.NumberGenerator;
+import racingcar.util.RandomGenerator;
 
 class CarTest {
 
@@ -19,17 +21,27 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void 자동차가_멈춘_경우(int number) {
-        final Car car = new Car("pobi", new TestNumberGenerator(number));
-        car.move();
-        assertThat(car.toString()).isEqualTo("pobi : ");
+        assertRandomNumberInRangeTest(
+                () -> {
+                    final Car car = new Car("pobi", new TestNumberGenerator(number));
+                    car.move();
+                    assertThat(car.toString()).isEqualTo("pobi : ");
+                },
+                number
+        );
     }
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void 자동차가_전진한_경우(int number) {
-        final Car car = new Car("pobi", new TestNumberGenerator(number));
-        car.move();
-        assertThat(car.toString()).isEqualTo("pobi : -");
+        assertRandomNumberInRangeTest(
+                () -> {
+                    final Car car = new Car("pobi", new RandomGenerator());
+                    car.move();
+                    assertThat(car.toString()).isEqualTo("pobi : -");
+                },
+                number
+        );
     }
 
     @ParameterizedTest
