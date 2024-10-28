@@ -49,7 +49,7 @@ public class Application {
         showWinners(winners);
     }
 
-    private static void playRacingCarRound(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
+    public static void playRacingCarRound(List<String> racingCars, HashMap<String, Integer> racingCarsDistance) {
         for (String racingCar : racingCars) {
             int randomValue = Randoms.pickNumberInRange(RANDOM_LOWER_BOUND, RANDOM_UPPER_BOUND);
 

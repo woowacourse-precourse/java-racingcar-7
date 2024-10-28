@@ -4,6 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -142,6 +146,23 @@ class ApplicationTest extends NsTest {
     @Test
     void 자동차가_전진하는_경우() {
         assertThat(Application.canMoveForward(Randoms.pickNumberInRange(4, 9))).isEqualTo(true);
+    }
+
+    @Test
+    void 자동차_경주_게임의_한_라운드의_결과를_정상적으로_출력하는지_테스트() {
+        assertSimpleTest(() -> {
+            // given
+            List<String> racingCars = Arrays.asList("apple", "cool");
+            HashMap<String, Integer> racingCarsDistance = new HashMap<>();
+            racingCars.forEach(racingCar -> racingCarsDistance.put(racingCar, 0));
+
+            // when
+            Application.playRacingCarRound(racingCars, racingCarsDistance);
+
+            // then
+            assertThat(output()).contains("apple :");
+            assertThat(output()).contains("cool :");
+        });
     }
 
     @Override
