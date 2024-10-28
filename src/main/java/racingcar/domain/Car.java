@@ -12,10 +12,6 @@ public class Car {
         this.moveCount = 0;
     }
 
-    public void printMoveCount() {
-        System.out.println(name + " : " + "-".repeat(moveCount));
-    }
-
     public void move(int randomNum) {
         if (randomNum >= 4) {
             moveCount += 1;
