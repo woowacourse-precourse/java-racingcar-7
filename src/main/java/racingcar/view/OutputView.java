@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.enums.StringPattern;
 import racingcar.model.Car;
 
 import java.util.List;
@@ -24,10 +25,15 @@ public class OutputView {
         System.out.println(currentPosition.toString());
     }
 
+    private String createMovePattern(Car car) {
+        return StringPattern.MOVE_FORWARD.getValue()
+                .repeat(car.getPosition());
+    }
+
     public void printWinner(List<String> winners) {
         StringBuilder result = new StringBuilder();
         result.append("최종 우승자 : ")
-                .append(String.join(", ", winners));
+                .append(joinWinner(winners));
         System.out.println(result);
     }
 }

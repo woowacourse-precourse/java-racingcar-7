@@ -2,6 +2,7 @@ package racingcar.validator;
 
 import racingcar.enums.Constraints;
 import racingcar.enums.Exceptions;
+import racingcar.enums.StringPattern;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,7 +33,7 @@ public class CarNameValidator {
     }
 
     void validateEnd(String input) {
-        if (input.endsWith(",")) {
+        if (input.endsWith(StringPattern.CAR_NAME_SEPARATOR.getValue())) {
             throw new IllegalArgumentException(Exceptions.INVALID_END_WITH_COMMA.getMessage());
         }
     }
