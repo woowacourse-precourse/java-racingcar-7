@@ -5,7 +5,7 @@ import racingcar.config.RaceConfig;
 public class Name {
 	private final String name;
 
-	public Name(String name) {
+	protected Name(String name) {
 		validateName(name);
 		this.name = name;
 	}
