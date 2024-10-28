@@ -42,8 +42,7 @@ public class ConsoleOutputHandler {
             winnerMembers = String.join(", ", winners.stream()
                     .map(Vehicle::getVehicleName)
                     .collect(Collectors.toList()));
-        }
-        else  {
+        } else {
             winnerMembers = winners.getFirst().getVehicleName();
         }
         return winnerMembers;
