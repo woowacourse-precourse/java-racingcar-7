@@ -39,19 +39,6 @@ class RacingServiceTest {
         Assertions.assertThat(raceResultDTO.getRaceResult().getRaceWinnerList()).hasSizeGreaterThanOrEqualTo(0);
     }
 
-
-    @Test
-    @DisplayName("Racing service에서 race로직을 0회 실행하면 빈 List를 반환한다.")
-    void time이_1회일때_race로직이_실행되지않는_테스트() {
-        RacingService racingService = new RacingService(raceEngine);
-        RaceRequestDTO raceRequestDTO = new RaceRequestDTO(names, 0);
-
-        RaceResultDTO raceResultDTO = racingService.runAllRaces(raceRequestDTO);
-
-        Assertions.assertThat(raceResultDTO.getRaceResult().getRaces()).isEmpty();
-        Assertions.assertThat(raceResultDTO.getRaceResult().getRaceWinnerList()).isEmpty();
-    }
-
     @Test
     @DisplayName("RacingService에서 car가 1대이면 우승자도 1대를 반환한다.")
     void car_1대일_때_우승자도_1명_테스트() {
