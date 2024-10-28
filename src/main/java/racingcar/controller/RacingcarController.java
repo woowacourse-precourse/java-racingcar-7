@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.exception.NotNumberAttemptException;
 import racingcar.service.RacingcarService;
 import racingcar.validator.RoundValidator;
 import racingcar.view.View;
@@ -39,7 +40,7 @@ public class RacingcarController {
         try {
             round = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닌 값이 들어왔습니다.");
+            throw new NotNumberAttemptException();
         }
         RoundValidator.validate(round);
 
