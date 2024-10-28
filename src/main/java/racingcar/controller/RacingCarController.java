@@ -26,11 +26,13 @@ public class RacingCarController {
     }
 
     public void startGame() {
+        outputView.outputInputCarNames();
         List<String> carNames = inputView.inputCarNames();
+        outputView.outputInputNumberOfMoves();
         int numberOfMoves = inputView.inputNumberOfMoves();
 
         racingCarService.prepare(carNames, randomNumber);
-        racingCarService.race();
+        racingCarService.race(numberOfMoves);
 
         outputView.outputMoveResult(racingCarService.getMoveResult());
         outputView.outputWinnerCars(racingCarService.findWinnerCars());

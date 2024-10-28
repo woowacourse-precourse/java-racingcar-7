@@ -7,6 +7,14 @@ import java.util.Map;
 
 public class OutputView {
 
+    public void outputInputCarNames() {
+        System.out.println(INPUT_CAR_NAME.getMessage());
+    }
+
+    public void outputInputNumberOfMoves() {
+        System.out.println(INPUT_NUMBER_OF_MOVES.getMessage());
+    }
+
     public void outputMoveResult(Map<String, Integer> result) {
         for (String carName : result.keySet()) {
             System.out.println(carName + RESULT_SEPARATOR.getMessage() + makeMoveMark(result.get(carName)));

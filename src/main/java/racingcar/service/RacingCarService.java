@@ -13,8 +13,10 @@ public class RacingCarService {
         racingCarGame = RacingCarGame.create(carNames, randomNumber);
     }
 
-    public void race() {
-        racingCarGame.moveCars();
+    public void race(int numberOfMoves) {
+        for (int i = 0; i < numberOfMoves; i++) {
+            racingCarGame.moveCars();
+        }
     }
 
     public Map<String, Integer> getMoveResult() {
