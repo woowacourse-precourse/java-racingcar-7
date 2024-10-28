@@ -6,11 +6,9 @@ import java.util.List;
 
 public class Race {
     public void run() {
-        String carNamesInput = View.scanCarNames();
-        List<Car> cars = Validator.validateAndParseCarNames(carNamesInput);
+        List<Car> cars = Validator.validateAndParseCarNames(View.scanCarNames());
 
-        String attemptCountInput = View.scanAttemptCount(cars);
-        int attemptCount = Validator.validateAndParseInteger(attemptCountInput);
+        int attemptCount = Validator.validateAndParseInteger(View.scanAttemptCount(cars));
         Validator.validatePositive(attemptCount);
 
         startRace(cars, attemptCount);
