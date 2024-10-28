@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class CarTest {
     @Test
-    void movedDistance의_난수_생성_확인() {
+    void 난수_생성_확인() {
         Assertions.assertRandomNumberInRangeTest(() -> {
             //given
             Car car = new Car("car");
@@ -40,7 +40,7 @@ public class CarTest {
     }
 
     @Test
-    void compareTo_내림차순_정렬_확인() {
+    void 내림차순_정렬_확인() {
         Assertions.assertRandomNumberInRangeTest(() -> {
             //given
             Car car1 = new Car("car1");
