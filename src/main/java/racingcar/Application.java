@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
-    private static List<String> carNames;
-    private static int tryCount;
-    private static int[] carPositions;
+    public static List<String> carNames;
+    public static int tryCount;
+    public static int[] carPositions;
 
     public static void inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -66,7 +66,7 @@ public class Application {
         System.out.println();
     }
 
-    private static void printWinners() {
+    public static void printWinners() {
         int maxPosition = Arrays.stream(carPositions).max().orElse(0);
         List<String> winners = new ArrayList<>();
         for (int i = 0; i < carNames.size(); i++) {
