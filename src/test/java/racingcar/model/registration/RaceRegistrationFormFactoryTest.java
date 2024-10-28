@@ -13,6 +13,16 @@ import racingcar.dto.RaceRegistrationForm;
 class RaceRegistrationFormFactoryTest {
 
     @Test
+    @DisplayName("중복되는 자동차 이름이 있는 경우 예외가 발생한다.")
+    void should_ThrowException_When_CarNamesDuplicate() {
+        String inputCarNames = "pobi,pobi";
+        String inputRaceRoundCount = "1";
+
+        assertThatThrownBy(() -> RaceRegistrationFormFactory.create(inputCarNames, inputRaceRoundCount))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("자동차의 이름이 5자를 초과하는 경우 예외가 발생한다.")
     void should_ThrowException_When_CarNameLongerThan5() {
         String inputCarNames = "abcdef";

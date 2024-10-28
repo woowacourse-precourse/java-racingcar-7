@@ -16,6 +16,7 @@ public class RegistrationValidator {
 
     public static void validateRawInputCarNames(String rawInputCarNames) {
         List<String> carNames = splitRawInput(rawInputCarNames);
+        validateDuplicateCarNames(carNames);
         for (String carName : carNames) {
             validateCarName(carName);
         }
@@ -24,6 +25,19 @@ public class RegistrationValidator {
     protected static List<String> splitRawInput(String rawInputCarNames) {
         return Arrays.stream(rawInputCarNames.split(SEPARATOR))
                 .map(String::trim)
+                .toList();
+    }
+
+    private static void validateDuplicateCarNames(List<String> carNames) {
+        List<String> uniqueCarNames = removeDuplicateCarNames(carNames);
+        if (carNames.size() != uniqueCarNames.size()) {
+            throw new IllegalArgumentException("경주할 자동차 이름은 서로 중복될 수 없어요.");
+        }
+    }
+
+    private static List<String> removeDuplicateCarNames(List<String> carNames) {
+        return carNames.stream()
+                .distinct()
                 .toList();
     }
 
