@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -29,6 +30,37 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    public void carNameValidation() {
+        String invalidCarNames = "pobi,woni,jun,lraaa";
+        try {
+            new RacingGame(invalidCarNames, 5);
+        } catch (IllegalArgumentException e) {
+            assertThat(e).hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.");
+        }
+    }
+
+    @Test
+    public void carMoves() {
+        Car car = new Car("pobi");
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    public void winnerSelection() {
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("woni");
+        car1.move();
+        car1.move();
+        car2.move();
+        List<Car> cars = List.of(car1, car2);
+
+        RacingGame game = new RacingGame("pobi,woni", 3);
+        game.start();
+        assertThat(game.getWinners()).containsExactly("pobi");
     }
 
     @Override
