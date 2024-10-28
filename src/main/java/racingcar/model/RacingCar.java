@@ -63,4 +63,5 @@ public class RacingCar {
     private boolean isOverMaxLength(String name) {
         return name.length() > MAX_NAME_LENGTH;
     }
+
 }

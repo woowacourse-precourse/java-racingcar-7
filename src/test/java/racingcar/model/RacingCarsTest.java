@@ -14,6 +14,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.fake.FakeMovementFactorGenerator;
 
 class RacingCarsTest {
+
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 

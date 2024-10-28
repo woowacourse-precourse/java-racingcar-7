@@ -6,6 +6,7 @@ import java.util.Queue;
 import racingcar.model.MovementFactorGenerator;
 
 public class FakeMovementFactorGenerator implements MovementFactorGenerator {
+
     private final Queue<Integer> factors;
 
     public FakeMovementFactorGenerator(List<Integer> factors) {

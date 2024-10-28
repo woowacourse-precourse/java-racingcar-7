@@ -6,6 +6,7 @@ import racingcar.view.io.InputHandler;
 import racingcar.view.io.OutputHandler;
 
 public class RacingCarView {
+
     public InputHandler inputHandler = new InputHandler();
     public OutputHandler outputHandler = new OutputHandler();
 
