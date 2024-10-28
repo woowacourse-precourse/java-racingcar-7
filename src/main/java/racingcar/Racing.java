@@ -153,4 +153,14 @@ public class Racing {
     private Boolean isBiggerThanMaxLength(Integer racingLength, Integer maxLength) {
         return racingLength > maxLength;
     }
+
+    private void printWinner() {
+        System.out.print("최종 우승자 : ");
+        System.out.println(joinWinnerNames());
+    }
+
+    private String joinWinnerNames() {
+        List<String> winnersList = getWinners();
+        return String.join(",", winnersList);
+    }
 }
