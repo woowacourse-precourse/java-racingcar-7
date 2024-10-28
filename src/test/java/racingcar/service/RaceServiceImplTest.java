@@ -40,10 +40,24 @@ class RaceServiceImplTest {
         );
     }
 
-    @DisplayName("중복이름")
+    @DisplayName("중복이름 예외")
     @Test
     void validateDuplicateName() {
         RaceService raceService = appConfig.getRaceService();
         assertThrows(IllegalArgumentException.class, () -> raceService.setRaceCars("1번차,1번차,2번차"));
+    }
+
+    @DisplayName("긴이름 예외")
+    @Test
+    void validateLongName() {
+        RaceService raceService = appConfig.getRaceService();
+        assertThrows(IllegalArgumentException.class, () -> raceService.setRaceCars("1번차1번차,2번차"));
+    }
+
+    @DisplayName("빈 이름 예외")
+    @Test
+    void validateBlankName() {
+        RaceService raceService = appConfig.getRaceService();
+        assertThrows(IllegalArgumentException.class, () -> raceService.setRaceCars("1번차,,2번차"));
     }
 }

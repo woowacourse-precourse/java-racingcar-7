@@ -63,6 +63,7 @@ public class RaceServiceImpl implements RaceService{
     private void validateCarName(String name) {
         validateNameLength(name);
         validateNameDuplication(name);
+        validateNameBlank(name);
     }
 
     private void validateNameLength(String name) {
@@ -74,6 +75,13 @@ public class RaceServiceImpl implements RaceService{
 
     private void validateNameDuplication(String name) {
         if(!carRepository.findByName(name).isEmpty()) {
+            carRepository.reset();
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateNameBlank(String name) {
+        if(name.isBlank()) {
             carRepository.reset();
             throw new IllegalArgumentException();
         }
