@@ -11,7 +11,7 @@ public class Game {
 
     List<String> readCarName(){
         System.out.println("게임을 진행할 자동차들의 이름을 쉼표(,)로 구분하여 입력 해주세요.");
-        List<String> carNames = new ArrayList<>();
+        List<String> carNames;
         try{
             String readString= Console.readLine();
             String regex = "^([A-Za-z0-9][A-Za-z0-9 ]{0,4})(,[A-Za-z0-9][A-Za-z0-9 ]{0,4})*$";
@@ -41,7 +41,7 @@ public class Game {
     void createCars(List<String> carNames){
         if(carNames.isEmpty())
             throw new IllegalArgumentException();
-        cars = new ArrayList<Car>();
+        cars = new ArrayList<>();
         for(String carName : carNames)
             cars.add(new Car(carName));
     }
