@@ -38,15 +38,19 @@ public class RaceTest {
     @Test
     void 생성자_공백_레이서_테스트(){
         List<String> names = new ArrayList<>();
-
         names.add("");
-        assertThrows(IllegalArgumentException.class, () -> new Race(names));
-
         names.add("Test");
-        assertThrows(IllegalArgumentException.class, () -> new Race(names));
-
         names.addFirst("");
-        assertThrows(IllegalArgumentException.class, () -> new Race(names));
+        Race race = new Race(names);
+
+        List<Racer> racers = race.getRacers();
+
+        String[] expectedName = {"C1", "C2", "Test"};
+        int idx = 0;
+
+        for(Racer racer : racers) {
+            assertThat(racer.getName()).isEqualTo(expectedName[idx++]);
+        }
     }
 
     @Test

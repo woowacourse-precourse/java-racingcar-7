@@ -12,7 +12,8 @@ public class Extractor {
 
         for(int i = 0; i<input.length(); i++) {
             if(input.charAt(i) == COMMA){
-                names.add(input.substring(startidx, i));
+                String name = input.substring(startidx, i);
+                names.add(name.trim());
                 startidx = i + 1;
             }
         }

@@ -15,7 +15,7 @@ public class ExtractorTest {
 
     @Test
     void 공백_테스트(){
-        List<String> names = Extractor.extract(",,");
+        List<String> names = Extractor.extract(",   ,");
 
         assertThat(names).containsExactly("", "", "");
     }

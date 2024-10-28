@@ -23,8 +23,11 @@ public class Race {
         }
 
         for(String racerName : racerNames) {
+            //사용자가 자동차 이름을 부여하지 않으면 임의로 이름을 부여함.
             if(racerName == null || racerName.isEmpty()) {
-                throw new IllegalArgumentException("레이서 이름이 필요합니다.");
+                this.racers.add(new Racer("C" + (racers.size()+1) ));
+                continue;
+                //throw new IllegalArgumentException("레이서 이름이 필요합니다.");
             }
             this.racers.add(new Racer(racerName));
         }
