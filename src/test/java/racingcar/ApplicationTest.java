@@ -81,6 +81,33 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
+    @Test
+    void 자동차_이름_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("[],안녕", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,?123", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("javaji,&", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("안녕,$%", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("ㄱ,ㄴ,ㄷ,ㄹ,ㅁ,^^", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("안녕,안녕", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
