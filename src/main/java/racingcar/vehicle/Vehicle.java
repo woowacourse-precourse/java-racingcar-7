@@ -10,6 +10,11 @@ public abstract class Vehicle implements Movable {
         if (vehicleName.length() >= 6) {
             throw new IllegalArgumentException("자동차 이름이 6글자 이상입니다.");
         }
+
+        if (tryCount < 0) {
+            throw new IllegalArgumentException("시도 횟수는 음수가 될 수 없습니다.");
+        }
+
         this.vehicleName = vehicleName;
         this.tryCount = tryCount;
     }

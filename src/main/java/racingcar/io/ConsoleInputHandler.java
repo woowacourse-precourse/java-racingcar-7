@@ -24,10 +24,6 @@ public class ConsoleInputHandler {
 
             int moveTryCount = Integer.valueOf(moveTryCountString);
 
-            if (moveTryCount < 0) {
-                throw new IllegalArgumentException("시도 횟수는 음수가 될 수 없습니다.");
-            }
-
             return moveTryCount;
 
         } catch (NumberFormatException e) {
