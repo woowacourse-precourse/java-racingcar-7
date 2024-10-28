@@ -8,6 +8,7 @@ import java.util.List;
 
 import racingcar.car.Car;
 import racingcar.validation.CarNameValidator;
+import racingcar.findwinner.FindWinner;
 
 public class Application {
     public static void main(String[] args) {
@@ -39,13 +40,14 @@ public class Application {
                 car.tryMove();
             }
             //자동차의 현재 전진 거리 출력
-            printCarsDistance(cars);
+            printCarDistance(cars);
             System.out.println();
         }
 
+        System.out.println("최종 우승자 : " + FindWinner.findWinner(cars));
     }
 
-    private static void printCarsDistance(List<Car> cars) {
+    private static void printCarDistance(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + car.getDistance());
         }

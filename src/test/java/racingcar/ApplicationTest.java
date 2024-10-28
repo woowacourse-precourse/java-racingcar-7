@@ -22,7 +22,7 @@ class ApplicationTest extends NsTest {
             MOVING_FORWARD, STOP
         );
     }
-
+    //기능 테스트 3명기준 모두 같을때, 2명만 같을때, 1명일때 (예외처리 추가 , 인원이 한명일때
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -30,7 +30,7 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
+//예외 테스트 공백문자열 필요
     @Override
     public void runMain() {
         Application.main(new String[]{});
