@@ -1,0 +1,23 @@
+[33mcommit 117d16287c3d9b0f90568a8f16e7be30d3d397ce[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: hanmh319 <hanmh319@naver.com>
+Date:   Fri Oct 25 19:10:15 2024 +0900
+
+    feat: 이동 시도 횟수 입력 기능 구현
+
+[33mcommit 50d4f77528d819f1145dd7b3d7084021a659e7db[m
+Author: hanmh319 <hanmh319@naver.com>
+Date:   Fri Oct 25 19:07:59 2024 +0900
+
+    feat: 이름 입력 기능 구현
+
+[33mcommit db1c3be4127e947d20d9452d03e9e7338d8fa3a9[m
+Author: hanmh319 <hanmh319@naver.com>
+Date:   Fri Oct 25 18:57:53 2024 +0900
+
+    docs: readme.md 사ê기능 구현 목록 정리
+
+[33mcommit 5ec134471d4ad7798af498020b4179d887b21a52[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: woowabrie <buyong.jo@woowahan.com>
+Date:   Tue Oct 22 14:26:38 2024 +0900
+
+    feat: setup project
