@@ -1,10 +1,9 @@
 package racingcar.domain;
 
+import racingcar.util.RandomNumberGenerator;
 import racingcar.validation.Validator;
 
 public class Car {
-
-    private final int RANDOM_MOVE_NUMBER = 4;
 
     private final String name;
     private int position;
@@ -17,7 +16,7 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= RANDOM_MOVE_NUMBER) {
+        if (number >= RandomNumberGenerator.RANDOM_MOVE_NUMBER) {
             position++;
         }
     }

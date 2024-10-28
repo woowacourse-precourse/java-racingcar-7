@@ -6,6 +6,7 @@ public class RandomNumberGenerator {
 
     private static final int RANDOM_NUMBER_START = 0;
     private static final int RANDOM_NUMBER_END = 9;
+    public static final int RANDOM_MOVE_NUMBER = 4;
 
     /**
      * 랜덤숫자 추출
