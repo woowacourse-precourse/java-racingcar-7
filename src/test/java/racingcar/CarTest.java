@@ -21,7 +21,7 @@ public class CarTest {
     void createCarWithWrongName() {
         // 자동차의 이름은 5자 이하
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy((ThrowingCallable) new Car("haeseung"));
+                .isThrownBy(() -> new Car("haeseung"));
     }
 
     @Test
@@ -29,18 +29,18 @@ public class CarTest {
         // 자동차 이름이 없는 경우 오류 출력
         // 없는 경우
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy((ThrowingCallable) new Car());
+                .isThrownBy(() -> new Car());
         // 공백
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy((ThrowingCallable) new Car(""));
+                .isThrownBy(() -> new Car(""));
         // 스페이스바
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy((ThrowingCallable) new Car(" "));
+                .isThrownBy(() -> new Car(" "));
         // 탭
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy((ThrowingCallable) new Car("   "));
+                .isThrownBy(() -> new Car("   "));
     }
-    
+
     @Test
     void randomMoveCar() {
         // 자동차 확률적으로 전진/정지
