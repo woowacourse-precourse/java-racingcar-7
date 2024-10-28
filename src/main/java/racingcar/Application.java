@@ -29,7 +29,5 @@ public class Application {
         }
 
         System.out.println("최종 우승자 : " + track.selectWinner());
-        ;
-
     }
 }
