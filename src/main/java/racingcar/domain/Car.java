@@ -6,7 +6,7 @@ import racingcar.config.validation.annotation.Length;
 
 public class Car extends FieldValidation {
 
-    private final int MOVING_FORWARD = 4;
+    private final static int MOVING_FORWARD = 4;
 
     @Length(min = 1, max = 5)
     private final String name;
