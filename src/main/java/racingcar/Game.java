@@ -39,4 +39,13 @@ public class Game {
             throw new IllegalArgumentException("잘못된 값입니다.");
         }
     }
+
+    void startGame() {
+        // 게임 진행 결과 출력 + 게임시작
+        for (int i = 0; i < rounds; i++) {
+            getPoint();
+            racingcar.GameResult.printRoundResult(cars);  // 라운드 결과 출력
+        }
+        racingcar.GameResult.printWinners(cars);   // 최종 우승자 출력
+    }
 }
