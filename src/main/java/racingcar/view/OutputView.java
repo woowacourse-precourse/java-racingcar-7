@@ -12,7 +12,7 @@ public class OutputView {
     private static final String REQUEST_PLAY_COUNT_MESSAGE = "시도할 횟수는 몇 회 인가요?.";
     private static final String WINNER = "최종 우승자 : ";
 
-    public static void printWinner(List<String> winner) {
+    public static void printWinner(final List<String> winner) {
         if (winner.size() > 1) {
             String winnerName = String.join(", ", winner);
             System.out.println(WINNER + winnerName);
@@ -31,17 +31,17 @@ public class OutputView {
         System.out.println(REQUEST_PLAY_COUNT_MESSAGE);
     }
 
-    public static void printRoundMovementGraph(List<String> names, List<Integer> positions) {
+    public static void printRoundMovementGraph(final List<String> names, final List<Integer> positions) {
         lsitToMap(names, positions)
                 .forEach(OutputView::printPlayerMovementGraph);
         System.out.println();
     }
 
-    private static void printPlayerMovementGraph(String name, int position) {
+    private static void printPlayerMovementGraph(final String name, final int position) {
         System.out.println(name + " : " + MOVEMENT_GRAPH.repeat(position));
     }
 
-    private static Map<String, Integer> lsitToMap(List<String> names, List<Integer> positions) {
+    private static Map<String, Integer> lsitToMap(final List<String> names, final List<Integer> positions) {
         validateLength(names, positions);
 
         return IntStream.range(0, names.size())
@@ -49,7 +49,7 @@ public class OutputView {
                 .collect(Collectors.toMap(names::get, positions::get));
     }
 
-    private static void validateLength(List<String> names, List<Integer> positions) {
+    private static void validateLength(final List<String> names, final List<Integer> positions) {
         if (names.size() != positions.size()) {
             throw new IllegalArgumentException(NU_SAME_LENGTH_MESSAGE);
         }

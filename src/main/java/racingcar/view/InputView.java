@@ -15,7 +15,7 @@ public class InputView {
         return Integer.parseInt(playCount);
     }
 
-    private static void validatePlayCount(String playCount) {
+    private static void validatePlayCount(final String playCount) {
         try {
             Integer.parseInt(playCount);
         } catch (NumberFormatException e) {
@@ -28,7 +28,7 @@ public class InputView {
         return stringToList(Console.readLine());
     }
 
-    private static List<String> stringToList(String names) {
+    private static List<String> stringToList(final String names) {
         return Arrays.stream(names.split(","))
                 .map(String::trim)
                 .toList();

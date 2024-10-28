@@ -10,17 +10,17 @@ public class Vehicles {
     private final List<Movable> movables;
     private final MoveStrategy moveStrategy;
 
-    public Vehicles(MoveStrategy moveStrategy) {
+    public Vehicles(final MoveStrategy moveStrategy) {
         this.movables = new ArrayList<>();
         this.moveStrategy = moveStrategy;
     }
 
-    private Vehicles(List<Movable> movables, MoveStrategy moveStrategy) {
+    private Vehicles(final List<Movable> movables, final MoveStrategy moveStrategy) {
         this.movables = movables;
         this.moveStrategy = moveStrategy;
     }
 
-    public void nameSettings(List<String> names) {
+    public void nameSettings(final List<String> names) {
         names.forEach(name -> movables.add(new Car(name)));
     }
 
@@ -48,7 +48,7 @@ public class Vehicles {
                 .collect(Collectors.toList());
     }
 
-    private Movable moveEach(Movable movable) {
+    private Movable moveEach(final Movable movable) {
         if (moveStrategy.isMove()) {
             return movable.move(moveStrategy);
         }

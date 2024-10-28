@@ -31,7 +31,7 @@ public class GameController {
 
     private void playEachRound(int playCount) { //흠...이거너무 찝찝한데
         eachRoundResults.add(vehicles);
-        for (int i = 1; i < playCount + 1; i++) {
+        for (int i = 1; i < playCount + 1; i++) { //흠...이부분을 어떻게 더 깔끔하게 리팩터링할 수 있을까?...
             Vehicles thisRoundVehicles = eachRoundResults.get(i - 1).moveAll();
             eachRoundResults.add(thisRoundVehicles);
             printRoundResult(thisRoundVehicles);
