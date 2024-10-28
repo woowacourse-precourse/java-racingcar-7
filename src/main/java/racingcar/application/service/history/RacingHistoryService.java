@@ -16,7 +16,5 @@ public class RacingHistoryService {
         historyRepository.saveRacingHistory(new RacingHistory(racingCar.getName(), racingCar.getDistance()));
     }
 
-    // TODO : 최대 거리 갱신하기
-
     // TODO : 실행결과 출력하기
 }
