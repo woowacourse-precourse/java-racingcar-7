@@ -85,9 +85,25 @@ public class Application {
         return carNames;
     }
 
-    private static int getNumberOfAttempts(){
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+    public static int getNumberOfAttempts() {
+        System.out.println("시도할 횟수를 입력하세요.");
+        String input = Console.readLine();
+
+        if (input.trim().isEmpty()) {
+            throw new IllegalArgumentException("횟수는 비어있을 수 없습니다.");
+        }
+
+        int numberOfAttempts;
+        try {
+            numberOfAttempts = Integer.parseInt(input);
+            if (numberOfAttempts <= 0) {
+                throw new IllegalArgumentException("횟수는 1 이상이어야 합니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("올바른 숫자를 입력해야 합니다.");
+        }
+
+        return numberOfAttempts;
     }
 
     private static List<StringBuilder> initializeRaceResults(String[] carNames){
