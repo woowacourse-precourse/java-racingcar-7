@@ -85,6 +85,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름_중복된_경우 () {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 //    @Test
 //    void 자동차_이름_공백인_경우3 () {
 //        assertSimpleTest(() ->
