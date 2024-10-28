@@ -63,4 +63,8 @@ public class RacingGame {
     public List<RacingGameRecord> getRecords() {
         return this.records;
     }
+
+    public int countCars() {
+        return this.racingCars.size();
+    }
 }

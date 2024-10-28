@@ -7,5 +7,7 @@ public class Application {
         RacingGame racingGame = new RacingGame(Integer.parseInt(InputView.round()));
         racingGame.apply(CarFactory.generate(InputView.carNames()));
         racingGame.start();
+
+        OutputView.result(racingGame);
     }
 }

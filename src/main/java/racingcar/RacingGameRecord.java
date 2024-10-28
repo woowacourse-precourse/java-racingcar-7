@@ -12,6 +12,11 @@ public class RacingGameRecord {
         this.car = new Car(car.getName(), car.currentLocation());
     }
 
+    public Car getCarLocation() {
+        return this.car;
+
+    }
+
     @Override
     public String toString() {
         return "RacingGameRecord{" +
