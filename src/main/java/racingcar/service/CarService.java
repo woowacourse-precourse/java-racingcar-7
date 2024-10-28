@@ -16,6 +16,7 @@ public class CarService {
     public void createGame(String carNames) {
         splitCarNames(carNames);
         for (String carName : this.carNames) {
+            validateCarNames(carName);
             carList.addCar(new Car(carName, 0));
         }
     }
@@ -24,5 +25,10 @@ public class CarService {
         this.carNames = carNames.split(",");
     }
 
+    public void validateCarNames(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+        }
+    }
 
 }
