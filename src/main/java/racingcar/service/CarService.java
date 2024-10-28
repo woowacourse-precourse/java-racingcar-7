@@ -24,7 +24,6 @@ public class CarService {
   private boolean canMove() {
     return Randoms.pickNumberInRange(0, 9) >= 4;
   }
-
   private void printStatus() {
     for (Car car : cars) {
       System.out.println(car.getStatus());
@@ -57,13 +56,18 @@ public class CarService {
       }
     }
   }
-  public List<String> startRace() {
+  private void printWinners(List<String> winners) {
+    System.out.println("최종 우승자 : " + String.join(", ", winners));
+  }
+
+  public void startRace() {
     System.out.println("실행 결과");
     for (int i = 0; i < attemptsCount; i++) {
       moveCars();
       printStatus();
       System.out.println();
     }
-    return findWinners();
+    List<String> winners = findWinners();
+    printWinners(winners);
   }
 }
