@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import racingcar.factory.CarsFactory;
 import racingcar.generator.Generator;
 import racingcar.model.Car;
 import racingcar.model.CarNames;
@@ -16,13 +17,9 @@ public class RacingService {
     }
 
     public Cars initializeCars(CarNames carNames) {
-        Cars cars = new Cars();
-        carNames.getNames().stream()
-                .map(name -> new Car(name.trim()))
-                .forEach(cars::addCar);
-        return cars;
+        return CarsFactory.createCars(carNames);
     }
-
+    
     // 매 라운드마다 호출되어 자동차 이동을 처리하는 메서드
     public void playRound(Cars cars) {
         for (Car car : cars.getCars()) {
