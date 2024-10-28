@@ -20,6 +20,6 @@ public class InputCarNamesTest {
 
         assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorMessage.CAR_NAME_CAN_NOT_BE_EMPTY.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.CAR_NAMES_CAN_NOT_BE_EMPTY.getErrorMessage());
     }
 }
