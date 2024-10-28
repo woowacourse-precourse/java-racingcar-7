@@ -15,7 +15,6 @@
 - InputTry 클래스 : 시도 횟수를 입력받는 클래스
 - RacingCarService 클래스 : 게임의 주요로직을 캡슐화할 클래스
 - Car 클래스 : 생성할 차의 클래스
-- CreateCar 클래스 : 차 객체를 생성할 클래스
 - PlayGame 클래스 : 시도 횟수만큼 게임을 진행할 클래스
 - PrintCurrent 클래스 : 현재 상황 출력하는 클래스
 - PrintWinner 클래스 : 우승자를 선별하고 출력할 클래스
