@@ -66,5 +66,11 @@ public class Run {
 
     private static void racingResult(List<Car> racingCar, int tryNum) {
         Racing racing = new Racing(racingCar, tryNum);
+        System.out.println("실행 결과");
+        for (int i = 0; i < tryNum; i++) {
+            racing.game();
+            racing.show();
+        }
+        racing.winner();
     }
 }
