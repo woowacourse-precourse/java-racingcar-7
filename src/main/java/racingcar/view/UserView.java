@@ -6,6 +6,7 @@ import racingcar.exception.RacingCarErrorMessage;
 import racingcar.model.Car;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class UserView {
@@ -70,10 +71,16 @@ public class UserView {
 
     private List<Car> getCarsList(String input) {
         List<Car> cars = new ArrayList<>();
+        HashSet<String> duplicateCarName = new HashSet<>();
 
         String[] carNames = input.split(",");
 
         for (String carName : carNames) {
+            if(duplicateCarName.contains(carName)) {
+                throw new IllegalArgumentException(RacingCarErrorMessage.CAR_NAME_DUPLICATE_ERROR.getMessage());
+            }
+
+            duplicateCarName.add(carName);
             cars.add(new Car(carName.strip()));
         }
 
