@@ -24,17 +24,8 @@ public class RaceController {
 		int raceCount = inputView.getRaceCount();
 		List<Car> cars = createCars(carNames);
 
-		Race race = new Race(cars, raceCount);
-		outputView.printResult();
-		for (int i = 0; i < raceCount; i++) {
-			race.moveCars();
-			outputView.printCurrentPositions(cars);
-		}
-
-		RaceResult raceResult = new RaceResult(cars);
-
-		List<Car> winners = raceResult.getWinners();
-		outputView.printWinners(winners);
+		executeRaces(cars, raceCount);
+		announceWinners(cars);
 	}
 
 	private List<Car> createCars(List<String> carNames) {
@@ -45,5 +36,20 @@ public class RaceController {
 			cars.add(car);
 		}
 		return cars;
+	}
+
+	private void executeRaces(List<Car> cars, int raceCount) {
+		Race race = new Race(cars, raceCount);
+		outputView.printResult();
+		for (int i = 0; i < raceCount; i++) {
+			race.moveCars();
+			outputView.printCurrentPositions(cars);
+		}
+	}
+
+	private void announceWinners(List<Car> cars) {
+		RaceResult raceResult = new RaceResult(cars);
+		List<Car> winners = raceResult.getWinners();
+		outputView.printWinners(winners);
 	}
 }
