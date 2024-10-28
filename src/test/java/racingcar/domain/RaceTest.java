@@ -11,7 +11,7 @@ class RaceTest {
     NumberGenerator forwardGenerator = () -> 4;
     NumberGenerator stopGenerator = () -> 3;
 
-    @DisplayName("자동차 이름 분리 성공")
+    @DisplayName("레이스 생성 성공")
     @Test
     void parseCarNamesTest() {
         String rawCarNames = "pobi,woni";
@@ -20,6 +20,16 @@ class RaceTest {
 
         Assertions.assertThat(race.getCars().get(0).getName()).isEqualTo("pobi");
         Assertions.assertThat(race.getCars().get(1).getName()).isEqualTo("woni");
+    }
+
+    @DisplayName("레이스 생성 실패")
+    @Test
+    void validateDuplicatesTest() {
+        String rawCarNames = "pobi,pobi,woni";
+
+        Assertions.assertThatThrownBy(() -> new Race(rawCarNames, stopGenerator))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("중복된 차 이름이 있습니다.");
     }
 
     @DisplayName("우승자 판별 성공")
