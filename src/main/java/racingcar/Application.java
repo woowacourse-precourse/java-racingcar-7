@@ -20,13 +20,9 @@ public class Application {
 
         int tryCount = InputValidator(intInput);
 
-        List<Cars> cars = new ArrayList<>();
-        for (String s : carsList) {
-            cars.add(new Cars(s, tryCount));
-        }
-
         System.out.println("\n실행 결과");
 
-        moving(cars);
+        makeCarslist(carsList);
+        moving();
     }
 }
