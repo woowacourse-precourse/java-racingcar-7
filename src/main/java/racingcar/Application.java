@@ -16,5 +16,7 @@ public class Application {
 
         List<Car> cars = racingService.initializeCars(names);
         racingService.validateInput(cars, count);
+
+        racingService.playGame(cars, count);
     }
 }

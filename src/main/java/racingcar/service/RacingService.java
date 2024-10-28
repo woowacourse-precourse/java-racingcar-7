@@ -35,4 +35,40 @@ public class RacingService {
             throw new IllegalArgumentException("횟수는 최소 1번 이상 입력되어야 합니다.");
         }
     }
+
+    public void playGame(List<Car> cars, int count) {
+        StringBuilder sb = new StringBuilder("실행 결과\n");
+        for (int i = 0; i < count; i++) {
+            playRound(cars, sb);
+        }
+        sb.append("최종 우승자 : ").append(findWinner(cars));
+        System.out.println(sb);
+    }
+
+    private void playRound(List<Car> cars, StringBuilder sb) {
+        for (Car car : cars) {
+            if (camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9) >= 4) {
+                car.addMove();
+            }
+            sb.append(car.getName())
+                    .append(" : ")
+                    .append("-".repeat(car.getMove()))
+                    .append("\n");
+        }
+        sb.append("\n");
+    }
+
+    private String findWinner(List<Car> cars) {
+        PriorityQueue<Car> pq = new PriorityQueue<>((o1, o2) -> o2.getMove() - o1.getMove());
+        pq.addAll(cars);
+
+        List<String> winners = new ArrayList<>();
+        Car car = pq.poll();
+        winners.add(Objects.requireNonNull(car).getName());
+        while (!pq.isEmpty() && pq.peek().getMove() == car.getMove()) {
+            winners.add(Objects.requireNonNull(pq.poll()).getName());
+        }
+
+        return String.join(", ", winners);
+    }
 }
