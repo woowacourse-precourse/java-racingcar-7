@@ -25,10 +25,14 @@ public class RacingGame {
     }
 
     public List<String> getWinners() {
+        if (cars.isEmpty()) {
+            throw new IllegalStateException("참가한 자동차가 없습니다.");
+        }
         int maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
+                .sorted()  // 우승자 이름 정렬 (일관성을 위해)
                 .collect(Collectors.toList());
     }
 
