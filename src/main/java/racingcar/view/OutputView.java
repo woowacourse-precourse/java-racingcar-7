@@ -15,21 +15,20 @@ public class OutputView {
     }
 
     public void printRoundResult(List<Car> cars) {
-        cars.forEach(this::printCarPosition);
+        cars.forEach(car -> {
+            System.out.printf("%s : %s%n", car.getName(), POSITION_MARK.repeat(car.getPosition()));
+        });
         System.out.println();
     }
 
-    private void printCarPosition(Car car) {
-        System.out.printf("%s : %s%n",
-                car.getName(),
-                POSITION_MARK.repeat(car.getPosition())
-        );
-    }
 
     public void printWinners(List<Car> winners) {
-        String winnerNames = winners.stream()
+        System.out.println(WINNER_MESSAGE + joinWinnerNames(winners));
+    }
+
+    private String joinWinnerNames(List<Car> winners) {
+        return winners.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
-        System.out.println(WINNER_MESSAGE + winnerNames);
     }
 }
