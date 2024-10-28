@@ -15,4 +15,13 @@ public class CarValidator {
         return carList;
     }
 
+    public void validateSameName(List<String> carList){
+        List<String> nameCheck = carList;
+        for (String car : carList){
+            if (nameCheck.contains(car)){
+                throw new IllegalArgumentException("자동차 이름 중 겹치는 이름이 있습니다.");
+            }
+            nameCheck.add(car);
+        }
+    }
 }
