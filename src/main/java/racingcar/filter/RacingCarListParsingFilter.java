@@ -6,21 +6,21 @@ import racingcar.common.exception.InvalidCarNameException;
 import racingcar.common.util.CarListCollector;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.model.CarList;
+import racingcar.model.RacingCarList;
 import racingcar.model.RacingCarProxy;
 
-public class CarListParsingFilter implements Filter<RaceRequest, RaceResponse> {
+public class RacingCarListParsingFilter implements Filter<RaceRequest, RaceResponse> {
     private static final String NAME_DELIMITER = ",";
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
     @Override
     public RaceResponse doFilter(RaceRequest request, RaceFilterChain chain) {
-        CarList carList = createCarListFromRequest(request.command());
-        RaceRequest updatedRequest = request.withCarList(carList);
+        RacingCarList racingCarList = createCarListFromRequest(request.command());
+        RaceRequest updatedRequest = request.withCarList(racingCarList);
         return chain.doFilter(updatedRequest);
     }
 
-    private CarList createCarListFromRequest(String carNamesExpression) {
+    private RacingCarList createCarListFromRequest(String carNamesExpression) {
         List<String> carNames = parseCarNames(carNamesExpression);
         return carNames.stream()
                 .map(RacingCarProxy::create)

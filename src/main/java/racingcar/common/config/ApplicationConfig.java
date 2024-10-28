@@ -1,7 +1,7 @@
 package racingcar.common.config;
 
 import racingcar.controller.RaceController;
-import racingcar.filter.CarListParsingFilter;
+import racingcar.filter.RacingCarListParsingFilter;
 import racingcar.filter.RaceExecutionFilter;
 import racingcar.filter.RaceFilterChain;
 import racingcar.filter.RaceInputValidationFilter;
@@ -20,7 +20,7 @@ public class ApplicationConfig {
     private RaceFilterChain createRaceFilterChain() {
         return RaceFilterChain.builder()
                 .addFilter(new RaceInputValidationFilter())
-                .addFilter(new CarListParsingFilter())
+                .addFilter(new RacingCarListParsingFilter())
                 .addFilter(new RaceExecutionFilter(new RaceExecutor()))
                 .addFilter(new RaceWinnerDecisionFilter())
                 .build();
