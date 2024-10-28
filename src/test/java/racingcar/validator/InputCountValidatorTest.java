@@ -1,11 +1,10 @@
-package racingcar.Validator;
+package racingcar.validator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.validator.InputCountValidator;
 
 class InputCountValidatorTest {
     private InputCountValidator inputCountValidator;
