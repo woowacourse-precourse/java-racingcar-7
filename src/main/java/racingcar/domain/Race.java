@@ -10,13 +10,19 @@ public class Race {
 
     public Race(String rawCarNames, NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
-        this.cars = parseCarNames(rawCarNames);
+        List<String> parsedCarNames = parseCarNames(rawCarNames);
+        this.cars = createCars(parsedCarNames);
     }
 
-    private List<Car> parseCarNames(String rawCarNames) {
+    private List<String> parseCarNames(String rawCarNames) {
         return Stream.of(rawCarNames.split(","))
                 .map(String::trim)
-                .map(carName -> new Car(carName, numberGenerator))
+                .toList();
+    }
+
+    private List<Car> createCars(List<String> parsedCarNames) {
+        return parsedCarNames.stream()
+                .map(parsedCarName -> new Car(parsedCarName, numberGenerator))
                 .toList();
     }
 
