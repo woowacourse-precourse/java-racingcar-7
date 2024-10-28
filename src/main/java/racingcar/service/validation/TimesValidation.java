@@ -1,5 +1,7 @@
 package racingcar.service.validation;
 
+import racingcar.exception.ErrorMessage;
+
 public class TimesValidation {
 
     public static void validateAllInput(final String input){
@@ -10,24 +12,24 @@ public class TimesValidation {
 
     public static void validateEmpty(final String input) {
         if (input.isEmpty()){
-            throw new IllegalArgumentException("[ERROR] 시도 횟수가 입력되지 않았습니다");
+            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_NO_TIMES.toString());
         }
     }
 
     public static void validateNull(final String input) {
         if (input == null) {
-            throw new IllegalArgumentException("[ERROR] 시도 횟수가 입력되지 않았습니다");
+            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_NO_TIMES.toString());
         }
     }
     public static void validateCharacter(final String input) {
         if (!hasOnlyDigits(input)) {
-            throw new IllegalArgumentException("[ERROR] 구분자를 제외한 입력은 숫자만 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_ONLY_DIGIT.toString());
         }
     }
 
     public static void validateZeroOrNegative(final int times) {
         if (times <= 0){
-            throw new IllegalArgumentException("[ERROR] 시도 횟수가 0이거나 음수일 수 없습니다");
+            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_ONLY_POSITIVE.toString());
         }
     }
 
