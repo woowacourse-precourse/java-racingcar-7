@@ -11,4 +11,8 @@ public abstract class CarInfo {
      public void carMove() {
           carPosition++;
      }
+
+     public int getCarPosition() {
+          return carPosition;
+     }
 }
