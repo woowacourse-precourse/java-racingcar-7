@@ -21,7 +21,7 @@ public class InputHandler {
         String input = Console.readLine();
         try {
             int number = Integer.parseInt(input);
-            if (number < 0) {
+            if (number <= 0) {
                 throw new IllegalArgumentException();
             }
             return number;
