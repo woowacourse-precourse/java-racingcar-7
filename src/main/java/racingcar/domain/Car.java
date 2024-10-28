@@ -1,12 +1,34 @@
 package racingcar.domain;
 
+import racingcar.common.Limit;
+
+import java.util.random.RandomGenerator;
+
 public class Car {
-    private static final int NAME_MAX_LENGTH = 5;
     private final String name;
     private int position = 0;
 
     public Car(String name) {
         this.name = name;
+    }
+
+    public void move() {
+        if (isMove()) {
+            position += Limit.MOVE_VALUE;
+        }
+    }
+
+    private boolean isMove() {
+        int number = RandomGenerator.getDefault().nextInt(Limit.MIN_RANDOM_VALUE, Limit.MAX_RANDOM_VALUE);
+        return number >= Limit.MOVE_CRITERIA_VALUE;
+    }
+
+    public int getPosition(){
+        return position;
+    }
+
+    public String getName(){
+        return name;
     }
 
 }
