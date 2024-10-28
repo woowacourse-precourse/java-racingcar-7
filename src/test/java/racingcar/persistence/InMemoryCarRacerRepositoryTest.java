@@ -11,7 +11,7 @@ import racingcar.domain.CarRacer;
 
 class InMemoryCarRacerRepositoryTest {
 
-    InMemoryRacingCarRepository repository = InMemoryRacingCarRepository.getInstance();
+    InMemoryCarRacerRepository repository = InMemoryCarRacerRepository.getInstance();
 
     @AfterEach
     void tearDown() {

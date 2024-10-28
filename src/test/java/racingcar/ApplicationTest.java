@@ -3,7 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import racingcar.persistence.InMemoryRacingCarRepository;
+import racingcar.persistence.InMemoryCarRacerRepository;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -16,7 +16,7 @@ class ApplicationTest extends NsTest {
 
     @AfterEach
     void tearDown() {
-        InMemoryRacingCarRepository repository = InMemoryRacingCarRepository.getInstance();
+        InMemoryCarRacerRepository repository = InMemoryCarRacerRepository.getInstance();
         repository.clear();
     }
 

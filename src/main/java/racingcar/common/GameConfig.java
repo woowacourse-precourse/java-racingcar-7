@@ -1,16 +1,16 @@
 package racingcar.common;
 
-import racingcar.application.implement.RacingHistoryManager;
+import racingcar.application.implement.RaceHistoryManager;
 import racingcar.application.implement.RacingWinnerIdentifier;
 import racingcar.application.implement.WinnerIdentifier;
 import racingcar.common.support.RacingCarConverter;
 import racingcar.persistence.RacingCarHistoryRepository;
-import racingcar.persistence.InMemoryRacingCarRepository;
+import racingcar.persistence.InMemoryCarRacerRepository;
 import racingcar.common.support.ObjectConverter;
 import racingcar.application.Game;
-import racingcar.persistence.RacingCarRepository;
+import racingcar.persistence.CarRacerRepository;
 import racingcar.application.implement.CarRaceStarter;
-import racingcar.application.implement.RacingCarHistoryManager;
+import racingcar.application.implement.RaceCarHistoryManager;
 import racingcar.application.implement.RacingCarHistoryWriter;
 import racingcar.application.implement.RaceStarter;
 import racingcar.domain.CarRacer;
@@ -48,16 +48,16 @@ public class GameConfig {
         return new RacingCarManager(race(), racingCarRepository(), carRaceHistoryRecorder(), winnerIdentifier());
     }
 
-    private RacingCarRepository racingCarRepository() {
-        return InMemoryRacingCarRepository.getInstance();
+    private CarRacerRepository racingCarRepository() {
+        return InMemoryCarRacerRepository.getInstance();
     }
 
     private RaceStarter<CarRacer> race() {
         return new CarRaceStarter();
     }
 
-    private RacingHistoryManager<CarRacer> carRaceHistoryRecorder() {
-        return new RacingCarHistoryManager(RacingCarHistoryRepository.getInstance(), new RacingCarHistoryWriter());
+    private RaceHistoryManager<CarRacer> carRaceHistoryRecorder() {
+        return new RaceCarHistoryManager(RacingCarHistoryRepository.getInstance(), new RacingCarHistoryWriter());
     }
 
     private WinnerIdentifier<CarRacer> winnerIdentifier() {

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.CarRacer;
 
-public class InMemoryRacingCarRepository implements RacingCarRepository{
+public class InMemoryCarRacerRepository implements CarRacerRepository {
 
-    private static final InMemoryRacingCarRepository INSTANCE = new InMemoryRacingCarRepository();
+    private static final InMemoryCarRacerRepository INSTANCE = new InMemoryCarRacerRepository();
     private final List<CarRacer> RACING_CARS = new ArrayList<>();
 
-    private InMemoryRacingCarRepository() {
+    private InMemoryCarRacerRepository() {
 
     }
 
-    public static InMemoryRacingCarRepository getInstance() {
+    public static InMemoryCarRacerRepository getInstance() {
         return INSTANCE;
     }
 
