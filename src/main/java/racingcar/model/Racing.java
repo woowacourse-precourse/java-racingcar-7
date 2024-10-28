@@ -30,13 +30,17 @@ public class Racing {
         }
     }
 
-    public List<Car> getWinners() {
-        int maxDistance = cars.stream()
+    public int getMaxPosition() {
+        return cars.stream()
                 .mapToInt(Car::getCurrentPosition)
                 .max()
                 .orElse(0);
+    }
+
+    public List<Car> getWinners() {
+        int maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(car -> car.getCurrentPosition() == maxDistance)
+                .filter(car -> car.getCurrentPosition() == maxPosition)
                 .toList();
     }
 }
