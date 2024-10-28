@@ -31,6 +31,39 @@ public class Application {
         return names;
     }
 
+    private static int getTryCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Integer.parseInt(readLine());
+    }
+
+    public static Map<String, boolean[]> simulateFullRace(String[] names, int tryCount) {
+        Map<String, boolean[]> playerGameHistory = initGameHistory(names, tryCount);
+
+        for (String player : playerGameHistory.keySet()) {
+            boolean[] gameWinHistory = playerGameHistory.get(player);
+            simulatePlayerRace(tryCount, gameWinHistory);
+        }
+        return playerGameHistory;
+    }
+
+    private static Map<String, boolean[]> initGameHistory(String[] names, int tryCount) {
+        Map<String, boolean[]> playerGameHistory = new HashMap<>();
+        for (String name : names) {
+            playerGameHistory.put(name, new boolean[tryCount]);
+        }
+        return playerGameHistory;
+    }
+
+
+    private static void simulatePlayerRace(int tryCount, boolean[] gameWinHistory) {
+        for (int i = 0; i < tryCount; i++) {
+            int randomValue = pickNumberInRange(0, 9);
+            if (randomValue >= 4) {
+                gameWinHistory[i] = true;
+            }
+        }
+    }
+
     private static void printResult(int tryCount, Map<String, boolean[]> playerGameHistory) {
         printRaceResults(tryCount, playerGameHistory);
         printWinner(playerGameHistory);
@@ -56,20 +89,13 @@ public class Application {
         }
     }
 
+
     private static void printWinner(Map<String, boolean[]> playerGameHistory) {
         int max = getMax(playerGameHistory);
         List<String> winners = getWinners(playerGameHistory, max);
         System.out.printf("최종 우승자 : %s", String.join(", ", winners));
     }
 
-    private static int getMax(Map<String, boolean[]> playerGameHistory) {
-        int max = Integer.MIN_VALUE;
-        for (boolean[] result : playerGameHistory.values()) {
-            int trueCount = getCount(result);
-            max = Math.max(max, trueCount);
-        }
-        return max;
-    }
 
     private static List<String> getWinners(Map<String, boolean[]> playerGameHistory, int max) {
         List<String> winners = new ArrayList<>();
@@ -82,6 +108,15 @@ public class Application {
         return winners;
     }
 
+    private static int getMax(Map<String, boolean[]> playerGameHistory) {
+        int max = Integer.MIN_VALUE;
+        for (boolean[] result : playerGameHistory.values()) {
+            int trueCount = getCount(result);
+            max = Math.max(max, trueCount);
+        }
+        return max;
+    }
+
     private static int getCount(boolean[] result) {
         return (int) IntStream.range(0, result.length)
                 .filter(i -> result[i])
@@ -89,37 +124,10 @@ public class Application {
     }
 
 
-    private static Map<String, boolean[]> simulateFullRace(String[] names, int tryCount) {
-        Map<String, boolean[]> playerGameHistory = initGameHistory(names, tryCount);
 
-        for (String player : playerGameHistory.keySet()) {
-            boolean[] gameWinHistory = playerGameHistory.get(player);
-            simulatePlayerRace(tryCount, gameWinHistory);
-        }
-        return playerGameHistory;
-    }
 
-    private static void simulatePlayerRace(int tryCount, boolean[] gameWinHistory) {
-        for (int i = 0; i < tryCount; i++) {
-            int randomValue = pickNumberInRange(0, 9);
-            if (randomValue >= 4) {
-                gameWinHistory[i] = true;
-            }
-        }
-    }
 
-    private static Map<String, boolean[]> initGameHistory(String[] names, int tryCount) {
-        Map<String, boolean[]> playerGameHistory = new HashMap<>();
-        for (String name : names) {
-            playerGameHistory.put(name, new boolean[tryCount]);
-        }
-        return playerGameHistory;
-    }
 
-    private static int getTryCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(readLine());
-    }
 
 
 }
