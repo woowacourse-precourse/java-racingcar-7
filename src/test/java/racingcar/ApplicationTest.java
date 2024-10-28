@@ -72,6 +72,16 @@ class ApplicationTest extends NsTest {
         assertEquals("중복된 이름입니다 : pobi", exception.getMessage()); // 예외 메시지 확인
     }
 
+    @Test
+    public void 이름_입력시_맨_끝이_알파벳이나_숫자인지_확인() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java,", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("입력값의 마지막 문자는 알파벳 또는 숫자여야 합니다 : pobi,java,")
+        );
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
