@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import java.util.List;
-import java.util.Set;
 
 public class Game {
     private final List<Car> cars;
