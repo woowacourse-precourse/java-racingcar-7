@@ -48,7 +48,7 @@ public class RacingGame {
     }
 
     public String[] createNames(String inputNames) {
-        String[] names = inputNames.split(",");
+        String[] names = inputNames.split(",", -1);
         for (String name : names) {
             if (name.length() > NAME_MAX) {
                 throw new IllegalArgumentException("차의 이름은 5글자 이하여야 합니다");

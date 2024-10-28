@@ -59,6 +59,24 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 차량이름_연속된컴마입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("car1,,car2", ""))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("이름에 공백 문자열이 입력되었습니다")
+        );
+    }
+
+    @Test
+    void 차량이름_빈문자열입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("car1,car2,", ""))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("이름에 공백 문자열이 입력되었습니다")
+        );
+    }
+
+    @Test
     void 시도횟수입력없음_예외테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaj","",""))
