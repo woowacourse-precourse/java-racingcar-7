@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -69,5 +70,15 @@ public class RacingService {
         }
     }
 
+    private int getRandomValue() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
 
+    private void moveCars() {
+        carPositions.forEach((car, position) -> {
+            if (getRandomValue() > 3) {
+                carPositions.put(car, position + 1);
+            }
+        });
+    }
 }
