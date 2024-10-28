@@ -28,6 +28,10 @@ public class Car {
         return distance;
     }
 
+    public String getName(){
+        return name;
+    }
+
     @Override
     public String toString(){
         return name + " : " + "-".repeat(distance);
