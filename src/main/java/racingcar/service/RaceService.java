@@ -6,4 +6,3 @@ public interface RaceService {
     void performRace(Racing racing);
 
 }
-
