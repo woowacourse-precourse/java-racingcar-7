@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class CarGenerator {
     private final static String DELIMITER = ",";
+    private final static String NUMBER_REGEX = "^[0-9]+$";
 
     public static ArrayList<Car> generateCar(String[] carNames) {
         ArrayList<Car> carList = new ArrayList<>();
@@ -25,10 +26,24 @@ public class CarGenerator {
         }
     }
 
+    public static void checkIsNumeric(String carName) {
+        if (carName.matches(NUMBER_REGEX)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void checkIsEmpty(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static String[] trimStringArrayElements(String[] carNames) {
         for (int i = 0; i < carNames.length; i++) {
             carNames[i] = carNames[i].trim();
             checkNameLength(carNames[i]);
+            checkIsEmpty(carNames[i]);
+            checkIsNumeric(carNames[i]);
         }
         return carNames;
     }
