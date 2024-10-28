@@ -26,6 +26,7 @@ public class Application {
         carList = inputCar();
         validateCarList();
         attempt = inputAttempt();
+        createGameScores();
 
     }
 
@@ -82,6 +83,15 @@ public class Application {
 
     public static boolean pickingRandomNumber(){
         return Randoms.pickNumberInRange(0, 9) >= FORWARD_MIN_VALUE;
+    }
+
+    public static void outputRoundScores(){
+        for(int i = 0; i < gameScores.size(); i++){
+            String score = carList.get(i)
+                    + " " + COLON + " "
+                    + gameScores.get(i).toString();
+            System.out.println(score);
+        }
     }
 
     }
