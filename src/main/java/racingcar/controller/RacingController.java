@@ -1,11 +1,13 @@
 package racingcar.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racingcar.domain.entity.Attempt;
 import racingcar.domain.entity.car.Car;
 import racingcar.domain.entity.car.CarNames;
 import racingcar.domain.entity.Race;
+import racingcar.domain.vo.CarNameVO;
 import racingcar.domain.vo.CarVO;
 import racingcar.view.InputView;
 import racingcar.view.OutputMessage;
@@ -26,7 +28,8 @@ public class RacingController {
 		List<Car> cars = registerCars(carNames);
 		Race race = Race.from(attempt, cars);
 		printRaceResult(race);
-		List<String> winnerList = getWinnerList(race);
+		List<CarNameVO> winnerList = getWinnerList(race);
+		printWinner(winnerList);
 	}
 
 	private CarNames inputCarName() {
@@ -60,8 +63,15 @@ public class RacingController {
 		}
 	}
 
-	private List<String> getWinnerList(Race race) {
+	private List<CarNameVO> getWinnerList(Race race) {
 		List<CarVO> carVOList = race.toCarVOList();
 		return CarVO.getWinnerList(carVOList);
+	}
+
+	private void printWinner(List<CarNameVO> winnerList) {
+		String result = winnerList.stream()
+			.map(CarNameVO::value)
+			.collect(Collectors.joining(", "));
+		outputView.print(OutputMessage.WINNER, result);
 	}
 }

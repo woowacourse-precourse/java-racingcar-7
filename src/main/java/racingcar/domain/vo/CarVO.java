@@ -15,20 +15,16 @@ public class CarVO {
 		this.name = name.toCarNameVO();
 		this.distance = distance.toDistanceVO();
 	}
-
-	public static CarVO from(Car car) {
-		return car.toCarStatus();
-	}
-
-	public String getName() {
-		return name.value();
+	
+	public CarNameVO getCarNameVO() {
+		return name;
 	}
 
 	public int getDistance() {
 		return distance.value();
 	}
 
-	public static List<String> getWinnerList(List<CarVO> carVOList) {
+	public static List<CarNameVO> getWinnerList(List<CarVO> carVOList) {
 		int maxDistance = carVOList.stream()
 			.mapToInt(CarVO::getDistance)
 			.max()
@@ -36,7 +32,7 @@ public class CarVO {
 
 		return carVOList.stream()
 			.filter(winner -> winner.getDistance() == maxDistance)
-			.map(CarVO::getName)
+			.map(CarVO::getCarNameVO)
 			.collect(Collectors.toList());
 	}
 }
