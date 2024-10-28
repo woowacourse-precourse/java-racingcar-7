@@ -1,6 +1,7 @@
 package racingcar.service;
 
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.exception.UserErrorMessage;
 
 public class LacingCarService {
@@ -23,6 +24,10 @@ public class LacingCarService {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(UserErrorMessage.NOT_ALLOWED_CHARACTER);
         }
+    }
+
+    public int createRandomNumber() {
+        return Randoms.pickNumberInRange(0,9);
     }
 
 }
