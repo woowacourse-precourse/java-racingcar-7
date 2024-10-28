@@ -61,4 +61,5 @@ public class RacingGameTest extends NsTest {
     protected void runMain() {
         Application.main(new String[]{});
     }
+
 }

@@ -14,9 +14,9 @@ class ErrorMessageTest extends NsTest {
     @Test
     @DisplayName("공백, 개행문자, tab 와같은 빈 문자열 입력시 예외 처리")
     void checkedEmptyStringInput() {
-            assertThatThrownBy(() -> runException(" ", "", "     "))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorType.INPUT_NULL_ERROR.getMessage());
+        assertThatThrownBy(() -> runException(" ", "", "     "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorType.INPUT_NULL_ERROR.getMessage());
     }
 
     @Test
@@ -38,7 +38,7 @@ class ErrorMessageTest extends NsTest {
     @Test
     @DisplayName("게임 실행 횟수가 문자열일 경우 예외 처리")
     void checkedInvalidTryGameCount() {
-        assertThatThrownBy(() -> runException("kim,jun","한 번"))
+        assertThatThrownBy(() -> runException("kim,jun", "한 번"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorType.INVALID_NUMBER_FORMAT.getMessage());
     }
@@ -47,4 +47,5 @@ class ErrorMessageTest extends NsTest {
     protected void runMain() {
         Application.main(new String[]{});
     }
+
 }

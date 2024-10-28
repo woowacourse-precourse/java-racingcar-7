@@ -1,7 +1,5 @@
 package racingcar.model;
 
-
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.constants.GameConstants;
 
 public class Car {

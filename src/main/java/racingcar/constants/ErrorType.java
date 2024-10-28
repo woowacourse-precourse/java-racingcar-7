@@ -17,4 +17,5 @@ public enum ErrorType {
     public String getMessage() {
         return message;
     }
+
 }

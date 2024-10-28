@@ -31,19 +31,19 @@ public class Validation {
     }
 
     private static void validateNameLength(String input) {
-        if(input.trim().length() > GameConstants.MAX_CAR_NAME_LENGTH) {
+        if (input.trim().length() > GameConstants.MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorType.CAR_NAME_LENGTH_ERROR.getMessage());
         }
     }
 
     private static void validateDuplicateCarName(String input, Set<String> distinctCarsName) {
-        if(!distinctCarsName.add(input)) {
+        if (!distinctCarsName.add(input)) {
             throw new IllegalArgumentException(ErrorType.CAR_NAME_DUPLICATE_ERROR.getMessage());
         }
     }
 
     private static void validateGameTryCount(int count) {
-        if(count < GameConstants.MIN_GAME_TRY_COUNT) {
+        if (count < GameConstants.MIN_GAME_TRY_COUNT) {
             throw new IllegalArgumentException(ErrorType.GAME_TRY_COUNT_ERROR.getMessage());
         }
     }
