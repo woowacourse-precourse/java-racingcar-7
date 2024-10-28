@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.entity.Car;
@@ -35,6 +36,14 @@ public class RacingcarService {
         List<Car> cars = new ArrayList<>();
         for (String name : input) {
             cars.add(new Car(name));
+        }
+        return cars;
+    }
+
+    public List<Car> race(List<Car> cars) {
+        for (Car car : cars) {
+            int number = Randoms.pickNumberInRange(0, 9);
+            car.move(number);
         }
         return cars;
     }
