@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -18,6 +19,7 @@ public class GameServiceTest {
     }
 
     @Test
+    @DisplayName("자동차 전진 여부 테스트")
     public void moveTest() {
         game.move("pobi", 3);
         game.move("woni", 4);
@@ -28,6 +30,7 @@ public class GameServiceTest {
     }
 
     @Test
+    @DisplayName("우승자 가져오기 테스트")
     public void getWinnerTest() {
         game.move("pobi", 4);
         game.move("woni", 4);
@@ -38,6 +41,7 @@ public class GameServiceTest {
     }
 
     @Test
+    @DisplayName("게임 실행 결과 테스트")
     public void runGameTest() {
         game.runGame();
 

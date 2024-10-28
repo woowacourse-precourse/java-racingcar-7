@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -20,6 +21,7 @@ public class OutputViewTest {
     }
 
     @Test
+    @DisplayName("게임 회차마다 진행상황 출력 테스트")
     public void printRecordTest() {
         List<Map<String, Integer>> record = Arrays.asList(
                 new LinkedHashMap<>() {{
@@ -61,6 +63,7 @@ public class OutputViewTest {
     }
 
     @Test
+    @DisplayName("최종 우승자 출력 테스트")
     public void printWinnersTest() {
         List<String> winners = Arrays.asList("pobi", "jun");
         String expectedOutput = "최종 우승자 : pobi, jun\n";
