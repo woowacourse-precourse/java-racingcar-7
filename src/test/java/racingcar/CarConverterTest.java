@@ -17,7 +17,7 @@ class CarConverterTest {
         List<String> carNames = List.of("a", "b", "c");
 
         // when
-        List<Car> cars = carConverter.to(carNames);
+        List<Car> cars = carConverter.toCars(carNames);
 
         // then
         assertThat(cars.size()).isEqualTo(3);

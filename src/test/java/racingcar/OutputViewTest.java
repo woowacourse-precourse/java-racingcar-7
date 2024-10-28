@@ -45,23 +45,23 @@ class OutputViewTest {
     }
 
     @Test
-    @DisplayName("printCar 테스트")
-    public void printCar_테스트() {
+    @DisplayName("printCarStatus 테스트")
+    public void printCarStatus_테스트() {
         // when
-        outputView.printCar(pobiCar);
+        outputView.printCarStatus(pobiCar);
 
         // then
         assertThat(outputStream.toString()).isEqualTo(pobiMessage + newLine);
     }
 
     @Test
-    @DisplayName("printCars 테스트")
-    public void printCars_테스트() {
+    @DisplayName("printCarsStatus 테스트")
+    public void printCarsStatus_테스트() {
         // given
         List<Car> cars = List.of(pobiCar, woniCar);
 
         // when
-        outputView.printCars(cars);
+        outputView.printCarsStatus(cars);
 
         // then
         assertThat(outputStream.toString())
