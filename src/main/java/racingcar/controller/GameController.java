@@ -23,11 +23,9 @@ public final class GameController {
     }
 
     public void gameSetup() {
-        String carNamesInput = gameView.getCarNamesInput();
-        // 파싱과정에서 조건에 맞게 validate하기! -> 유효한 이름, 5글자 이하
-        List<String> carNameList = parseCarNames(carNamesInput);
-        
+        List<String> carNameList = readCarNames();
         game = new Game(readTotalRound());
+
         for (String carName : carNameList) {
             game.addCar(new Car(carName));
         }
@@ -49,6 +47,12 @@ public final class GameController {
                 .collect(Collectors.joining(", "));
 
         gameView.displayWinners(winnerString);
+    }
+
+    public List<String> readCarNames() {
+        String carNamesInput = gameView.getCarNamesInput();
+
+        return parseCarNames(carNamesInput);
     }
 
     public int readTotalRound() {
