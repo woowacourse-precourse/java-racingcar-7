@@ -63,6 +63,54 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_반복_횟수가_음수로_입력되었을_때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "1.2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_반복_횟수가_정수와_공백이_입력되었을_때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "5 "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_반복_횟수가_소수로_입력되었을_때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "1.2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_반복_횟수가_문자로_입력되었을_때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_반복_횟수가_특수문자로_입력되었을_때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "\n"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_반복_횟수는_일만번을_넘지않는다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "10001"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
