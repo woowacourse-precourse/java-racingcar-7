@@ -36,6 +36,13 @@ public class CarController {
     }
 
     private void game() {
+        for (int i = 0; i < numberOfTries; i++) {
+            for (Car car : cars) {
+                car.moveIfAboveThreshold(Randoms.pickNumberInRange(0, 9));
+                outputView.storeCarMove(car.toString());
+            }
+            outputView.storeCarMove("");
+        }
     }
 
     private void gameOver() {
