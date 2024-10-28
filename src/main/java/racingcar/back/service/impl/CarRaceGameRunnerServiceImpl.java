@@ -11,18 +11,24 @@ import racingcar.global.dto.CarRaceResult;
 public class CarRaceGameRunnerServiceImpl implements CarRaceGameRunnerService {
     @Override
     public CarRaceResponseDTO runGame(List<String> gameNames, Integer gamePlayCount) {
-        // 자동차 객체 생성
-        List<Car> cars = gameNames.stream().map(Car::new).toList();
-        // 게임 플레이
+        // 게임 실행 및 우승자 결정
+        List<Car> cars = generateCars(gameNames);
         cars.forEach(car -> IntStream.range(0, gamePlayCount).forEach(i -> {
             car.moveIf(MoveConditionChecker.isMovable());
         }));
-        // 승자 결정
-        Integer mavMoveCount = cars.stream().mapToInt(Car::getMoveCount).max().orElseThrow(RuntimeException::new);
-        cars.stream().filter(car -> Objects.equals(car.getMoveCount(), mavMoveCount)).forEach(Car::setWinner);
-        // 결과 및 실행 횟수 반환
+        setWinners(cars);
+
         List<CarRaceResult> carRaceResults = cars.stream().map(CarRaceResult::fromCar).toList();
         return new CarRaceResponseDTO(carRaceResults, gamePlayCount);
+    }
+
+    private static List<Car> generateCars(List<String> gameNames) {
+        return gameNames.stream().map(Car::new).toList();
+    }
+
+    private void setWinners(List<Car> cars) {
+        Integer maxMoveCount = cars.stream().mapToInt(Car::getMoveCount).max().orElseThrow(RuntimeException::new);
+        cars.stream().filter(car -> Objects.equals(car.getMoveCount(), maxMoveCount)).forEach(Car::setWinner);
     }
 
 }
