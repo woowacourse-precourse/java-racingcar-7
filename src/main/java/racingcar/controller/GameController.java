@@ -27,7 +27,8 @@ public class GameController {
     }
 
     public void play(){
+        outputView.printPlayMessage();
         cars.playRound(tryCount);
-
+        outputView.printPlayResults(cars.getResults());
     }
 }
