@@ -45,4 +45,9 @@ public class Input {
             }
         }
     }
+
+    private void validateAttemptNumberInput(String attemptNumberInput) {
+        if (Integer.parseInt(attemptNumberInput) <= 0)
+            throw new IllegalArgumentException("1회 이상 시도해주세요.");
+    }
 }
