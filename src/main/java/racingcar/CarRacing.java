@@ -2,10 +2,31 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class CarRacing {
+    private List<Car> cars = new ArrayList<>();
+
+    // 자동차 이름 목록을 받아 Car 객체 리스트를 초기화하는 메서드
+    public void initializeCars(List<String> carNames) {
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
+    }
+
+    // 지정된 횟수만큼 각 회차별로 경주 결과를 출력하는 메서드
+    public void startRace(int attempts) {
+        for (int i = 0; i < attempts; i++) {
+            System.out.println("회차 " + (i + 1) + " 결과:");
+            for (Car car : cars) {
+                car.move();
+                System.out.println(car.getName() + " : " + car.getPositionDisplay());
+            }
+            System.out.println();
+        }
+    }
 
     // 사용자로부터 자동차 이름을 쉼표로 구분하여 입력받는 메서드
     public List<String> getCarNames() {
