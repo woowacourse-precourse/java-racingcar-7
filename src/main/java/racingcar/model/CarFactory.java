@@ -19,7 +19,7 @@ public class CarFactory {
                         throw new IllegalArgumentException();
                     }
 
-                    return new RacingCar(carName, "");
+                    return new RacingCar(carName, 0, "-");
                 })
                 .toList();
     }

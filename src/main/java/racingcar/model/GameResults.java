@@ -42,7 +42,7 @@ public class GameResults {
             for(RacingCar car : cars){
                 result.append(car.getCarName())
                         .append(" : ")
-                        .append(car.getPosition())
+                        .append(car.getPositionAsString())
                         .append("\n");
             }
             result.append("\n");
@@ -54,29 +54,31 @@ public class GameResults {
 
     private String getResultOfGame() {
         StringBuilder result = new StringBuilder();
-
         result.append("최종 우승자 : ");
 
-        List<RacingCar> winners = new ArrayList<>();
-        RacingCar winner = cars.get(0);
-
-        for(RacingCar car : cars){
-            if(car.getPosition().length() > winner.getPosition().length()){
-                winner = car;
-                winners.clear();
-                winners.add(car);
-            } else if (car.getPosition().length() == winner.getPosition().length()) {
-                winners.add(car);
-            }
-        }
+        List<RacingCar> winners = findWinners();
 
         StringJoiner joiner = new StringJoiner(", ");
-        for(RacingCar car : winners){
+        for (RacingCar car : winners) {
             joiner.add(car.getCarName());
         }
 
         result.append(joiner.toString());
-
         return result.toString();
+    }
+
+    private List<RacingCar> findWinners() {
+        List<RacingCar> winners = new ArrayList<>();
+        int maxPosition = cars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .orElse(0);
+
+        for (RacingCar car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
     }
 }
