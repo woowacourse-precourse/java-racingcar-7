@@ -34,6 +34,4 @@ public class Racing {
 
     }
 
-    //예외 메시지 출력하도록 기능 더하기
-
 }

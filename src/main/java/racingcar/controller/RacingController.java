@@ -9,11 +9,11 @@ import racingcar.view.InputView;
 public class RacingController {
 
     public void run() {
-        InputView inputView = new InputView();
+        InputView inputView = InputView.getInputViewInstance();
         inputView.printInputView();
         String carNames = inputView.getCarNames();
 
-        InputService inputService = new InputService();
+        InputService inputService = InputService.getInputServiceInstance();
         Map<String, Integer> racingCars = inputService.splitAndSaveCarName(carNames);
         Integer racingTotalRound = inputView.getTotalRacingRound();
 
