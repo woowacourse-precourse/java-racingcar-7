@@ -18,10 +18,10 @@ public class GameController {
         String trialTimes = InputView.getTrialTimes();
         validateNameInput(carNames);
         validateTrialTimesInput(trialTimes);
-
         ArrayList<Car> carList = registerCars(carNames);
         startGame(carList, DataTransFormer.makeStringToInt(trialTimes));
         ArrayList<String> winners = chooseTheWinner(carList);
+        anncounceTheWinner(winners);
     }
 
     private static void validateNameInput(ArrayList<String> carNames) {
@@ -75,7 +75,8 @@ public class GameController {
         return GameService.makeWinnerList(carList);
     }
 
-//    private void anncounceTheWinner() {
-//
-//    }
+    private static void anncounceTheWinner(ArrayList<String> winners) {
+        String winnerNames = DataTransFormer.makeJoinedString(winners);
+        OutputView.printWinnerName(winnerNames);
+    }
 }
