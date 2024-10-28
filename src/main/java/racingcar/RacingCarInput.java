@@ -9,7 +9,9 @@ public class RacingCarInput {
     public List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
-        return Arrays.asList(input.split(","));
+        List<String> list = Arrays.asList(input.split(","));
+        if (list.size() < 2) throw new IllegalArgumentException("자동차의 개수는 2개 이상이어야 합니다.");
+        return list;
     }
 
     public int getCount() {

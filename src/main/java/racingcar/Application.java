@@ -5,12 +5,10 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-
-        RacingCarInput car = new RacingCarInput();
-        RacingCarOutput output = new RacingCarOutput();
-        List<String> carNames = car.getCarNames();
-
         try {
+            RacingCarInput car = new RacingCarInput();
+            RacingCarOutput output = new RacingCarOutput();
+            List<String> carNames = car.getCarNames();
             List<Car> cars = carNames.stream().map(Car::new).toList();
             int count = car.getCount();
 
