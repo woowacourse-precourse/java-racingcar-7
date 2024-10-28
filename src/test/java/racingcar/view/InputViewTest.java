@@ -1,11 +1,11 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.dto.RacingInfo;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -23,6 +23,21 @@ class InputViewTest {
     @AfterEach
     void closeConsole() {
         Console.close();
+    }
+
+    @Test
+    @DisplayName("정상입력")
+    void 정상입력인_경우() {
+        // given
+        RacingInfo expectedRacingInfo = new RacingInfo("pobi,alice,jason", 3);
+        System.setIn(readUserInput("pobi,alice,jason\n3\n"));
+
+        // when
+        RacingInfo actualRacingInfo = inputView.readRacingInfo();
+
+        // then
+        assertThat(actualRacingInfo.carNames()).isEqualTo(expectedRacingInfo.carNames());
+        assertThat(actualRacingInfo.tryCount()).isEqualTo(expectedRacingInfo.tryCount());
     }
 
     @Test
