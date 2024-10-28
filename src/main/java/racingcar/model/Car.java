@@ -8,9 +8,16 @@ public class Car {
     private int position;
 
     public Car(String name) {
+        validateEmptyName(name);
         validateNameLength(name);
         this.name = name;
         this.position = 0;
+    }
+
+    private void validateEmptyName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateNameLength(String name) {
