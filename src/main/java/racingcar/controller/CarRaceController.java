@@ -27,9 +27,6 @@ public class CarRaceController {
 
         printLimitMessage();
         raceCars.raceStart(Console.readLine());
-
-        printLimitMessage();
-        raceCars.raceStart(Console.readLine());
         endGame(raceCars.findWinner());
 
         Console.close();
