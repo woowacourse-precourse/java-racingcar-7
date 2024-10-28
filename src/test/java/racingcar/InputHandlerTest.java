@@ -33,6 +33,15 @@ public class InputHandlerTest {
     }
 
     @Test
+    @DisplayName("차 이름 중간에 공백이 있는 경우 예외처리 한다")
+    void areAllCarNameLengthsValidTest() {
+        String blankInput = "pobi,,jun";
+        List<String> cars = inputHandler.parseCarNames(blankInput);
+        assertThatThrownBy(() -> inputHandler.areAllCarNameLengthsValid(cars))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("이동 횟수가 1 이상 1000 이하가 아니면 예외 처리한다")
     void getMoveCountTest() {
         String outOfRangeInput = "1004";
