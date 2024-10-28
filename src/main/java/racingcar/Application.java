@@ -69,11 +69,14 @@ public class Application {
     public static void printGame() {
         String moveStr = "-";
         for (int i = 0; i < car_list.length; i++) {
+            System.out.print(car_list[i].name + " : ");
             System.out.println(moveStr.repeat(car_list[i].move_cnt));
         }
+        System.out.println();
     }
 
     public static void gameProgress() {
+        System.out.println("실행 결과");
         for (int i = 0; i < totalCount; i++) {
             getRandomNum();
             printGame();
