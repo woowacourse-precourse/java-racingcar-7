@@ -34,9 +34,7 @@ public class OutputView {
     }
 
     // 우승자 출력
-    public void printWinner(List<Car> cars) {
-        List<String> winnerCarsNames = findWinner(cars);
-
+    public void printWinner(List<String> winnerCarsNames) {
         System.out.print("최종 우승자 : ");
 
         for (int i = 0; i < winnerCarsNames.size(); i++) {
@@ -45,22 +43,5 @@ public class OutputView {
                 System.out.print(", ");
             }
         }
-    }
-
-    // 우승자 찾아내기
-    public List<String> findWinner(List<Car> cars) {
-        List<String> winnerCarsNames = new ArrayList<>();
-
-        Collections.sort(cars);
-        winnerCarsNames.add(cars.getFirst().getName());
-        int winnerPos = cars.getFirst().getCurrentPos();
-
-        for (int i = 1; i < cars.size(); i++) {
-            if (cars.get(i).getCurrentPos() != winnerPos) {
-                break;
-            }
-            winnerCarsNames.add(cars.get(i).getName());
-        }
-        return winnerCarsNames;
     }
 }

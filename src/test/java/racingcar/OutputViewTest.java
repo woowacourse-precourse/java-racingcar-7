@@ -11,11 +11,13 @@ import org.junit.jupiter.api.Test;
 
 public class OutputViewTest {
     private OutputView outputView;
+    private RaceManager raceManager;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @BeforeEach
     void setUp() {
         outputView = new OutputView();
+        raceManager = new RaceManager();
         System.setOut(new PrintStream(outputStreamCaptor));  // System.out을 캡처하도록
     }
 
@@ -38,7 +40,7 @@ public class OutputViewTest {
         assertEquals(expectedOutput, outputStreamCaptor.toString());
     }
 
-    @Test
+    /*@Test
     void printWinner_shouldPrintWinnerName() {
         // given
         Car car1 = new Car("CarA");
@@ -52,10 +54,13 @@ public class OutputViewTest {
         List<Car> cars = Arrays.asList(car1, car2, car3);
 
         // when
-        outputView.printWinner(cars);
+        raceManager.
+        outputView.printWinner(raceManager.findWinner());
 
         // then
         String expectedOutput = "최종 우승자 : CarA, CarC";
         assertEquals(expectedOutput, outputStreamCaptor.toString());
     }
+    RaceManagerTest로 옮기기
+    */
 }
