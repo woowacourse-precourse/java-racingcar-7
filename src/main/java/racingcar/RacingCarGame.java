@@ -22,7 +22,8 @@ public class RacingCarGame {
         TryCount tryCount = inputHandler.inputTryCount();
 
         outputHandler.printResultMessage();
-        for (int i = 0; i < tryCount.getValue(); i++) {
+        int tryCountValue = tryCount.getValue();
+        for (int i = 0; i < tryCountValue; i++) {
             racingCars.move(numberGenerator);
             outputHandler.printResult(racingCars.getRacingCars());
         }
