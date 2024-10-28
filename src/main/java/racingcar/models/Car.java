@@ -1,6 +1,7 @@
 package racingcar.models;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.exceptions.ErrorMessages;
 
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
@@ -17,10 +18,10 @@ public class Car {
 
     private void validateNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.NAME_TOO_LONG);
         }
         if (name.length() < MIN_NAME_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.NAME_TOO_SHORT);
         }
     }
 
