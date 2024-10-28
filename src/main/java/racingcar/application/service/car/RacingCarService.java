@@ -6,6 +6,7 @@ import racingcar.application.service.winner.WinnerService;
 import racingcar.domain.car.RacingCar;
 import racingcar.infrastructure.persistence.InMemoryRacingCarRepository;
 import racingcar.infrastructure.util.NameParser;
+import racingcar.infrastructure.util.NameValidator;
 
 import java.util.List;
 
@@ -41,8 +42,8 @@ public class RacingCarService {
     }
 
     // TODO : 시도횟수 입력받기
-    public void inputTryNumber(int tryNumber){
-        this.tryNumber = tryNumber;
+    public void inputTryNumber(String tryNumber) {
+        this.tryNumber = NameValidator.validNumber(tryNumber);
     }
 
     // TODO : 시도횟수 만큼 랜덤 숫자 뽑기
