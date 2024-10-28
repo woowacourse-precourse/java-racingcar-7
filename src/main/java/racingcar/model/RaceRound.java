@@ -4,10 +4,10 @@ import java.util.List;
 
 public class RaceRound {
     private final int rounds;
-    private Cars thisRoundCarList;
+    private Cars thisRoundCars;
 
-    public RaceRound(int roundInput, Cars thisRoundCarList) {
-        this.thisRoundCarList = thisRoundCarList;
+    public RaceRound(int roundInput, Cars thisRoundCars) {
+        this.thisRoundCars = thisRoundCars;
         this.rounds = roundInput;
     }
 
@@ -16,18 +16,7 @@ public class RaceRound {
     }
 
     public Cars getThisRoundCars() {
-        return thisRoundCarList;
-    }
-
-    public String toStringRoundResult() {
-        List<Car> cars = thisRoundCarList.getCarList();
-        StringBuilder result = new StringBuilder();
-        for(Car car : cars){
-            result.append(car.getName()).append(" : ")
-                    .append(car.getDistanceStatusBar(car.getDistance().getDistanceValue()))
-                    .append("\n");
-        }
-        return result.toString();
+        return thisRoundCars;
     }
 
     public void roundStart(Cars cars){
@@ -37,6 +26,6 @@ public class RaceRound {
     }
 
     public void saveRoundResult(Cars cars){
-        this.thisRoundCarList = cars;
+        this.thisRoundCars = cars;
     }
 }

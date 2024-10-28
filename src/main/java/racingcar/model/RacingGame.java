@@ -6,7 +6,7 @@ import java.util.List;
 public class RacingGame {
     private final Cars cars;
     private final RaceRound raceRound;
-    private final List<RaceRound> eachRoundResult;
+    private final List<Cars> eachRoundResult;
 
     public RacingGame(Cars cars, RaceRound raceRound){
         this.cars = cars;
@@ -14,25 +14,19 @@ public class RacingGame {
         eachRoundResult = new ArrayList<>();
     }
 
-    public List<RaceRound> getEachRoundResult(RaceRound allRounds) {
-        return eachRoundResult;
-    }
-
-    public List<RaceRound> gameRoundStart(){
+    public List<Cars> gameRoundStart() {
         for(int i = 0; i< raceRound.getRounds(); i++){
             RaceRound thisRound = new RaceRound(i, cars);
-            thisRound.roundStart(cars);
-            thisRound.saveRoundResult(cars);
-            eachRoundResult.add(thisRound);
+            thisRound.roundStart(thisRound.getThisRoundCars());
+
+            thisRound.saveRoundResult(new Cars(thisRound.getThisRoundCars()));
+
+            eachRoundResult.add(new Cars(thisRound.getThisRoundCars()));
         }
         return eachRoundResult;
     }
 
-    private RaceRound getFinalRound() {
-        return eachRoundResult.getLast();
-    }
-
     public Cars getFinalRoundCarsStatus(){
-        return getFinalRound().getThisRoundCars();
+        return eachRoundResult.getLast();
     }
 }

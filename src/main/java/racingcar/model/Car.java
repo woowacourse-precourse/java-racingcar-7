@@ -13,6 +13,12 @@ public class Car {
         this.distance = new Distance();
     }
 
+    public Car(String name, int order, Distance distance){
+        this.name = name;
+        this.order = order;
+        this.distance = new Distance(distance.getDistanceValue());
+    }
+
     public String getName() {
         return name;
     }
@@ -36,4 +42,7 @@ public class Car {
 
     }
 
+    public int getOrder() {
+        return this.order;
+    }
 }

@@ -11,6 +11,13 @@ public class Cars {
         this.carList = new ArrayList<>();
     }
 
+    public Cars(Cars cars) {
+        this.carList = new ArrayList<>();
+        for (Car car : cars.getCarList()) {
+            this.carList.add(new Car(car.getName(), car.getOrder(), car.getDistance()));
+        }
+    }
+
     public List<Car> getCarList() {
         return this.carList;
     }
@@ -44,6 +51,16 @@ public class Cars {
             Car car = new Car(names[i].trim(), i);
             addCar(car);
         }
+    }
+
+    public String toStringRoundResult() {
+        StringBuilder result = new StringBuilder();
+        for(Car car : this.carList){
+            result.append(car.getName()).append(" : ")
+                    .append(car.getDistanceStatusBar(car.getDistance().getDistanceValue()))
+                    .append("\n");
+        }
+        return result.toString();
     }
 
 }
