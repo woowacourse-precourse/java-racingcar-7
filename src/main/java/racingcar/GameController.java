@@ -3,23 +3,33 @@ package racingcar;
 import java.util.List;
 
 public class GameController {
+    private final InputView inputView;
+    private final OutputView outputView;
+
+    public GameController() {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+    }
+
     public void start() {
         try {
-            List<String> carNames = InputView.getCarNames();
-            int moveCount = InputView.getMoveCount();
+            List<String> carNames = inputView.getCarNames();
+            int moveCount = inputView.getMoveCount();
 
-            MoveStrategy moveStrategy = new RandomMoveStrategy(new DefaultRandomGenerator());
-            RacingGame racingGame = new RacingGame(carNames, moveCount, moveStrategy);
+            MoveStrategy moveStrategy = new RandomMoveStrategy(
+                    new DefaultRandomGenerator());
+            RacingGame racingGame = new RacingGame(
+                    carNames, moveCount, moveStrategy);
 
-            System.out.println("\n실행 결과");
+            outputView.printMessage("\n실행 결과");
             while (racingGame.hasNextRound()) {
                 racingGame.playNextRound();
-                OutputView.printRoundResult(racingGame.getCars());
+                outputView.printRoundResult(racingGame.getCars());
             }
             List<Car> winners = racingGame.getWinners();
-            OutputView.printWinners(winners);
+            outputView.printWinners(winners);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            outputView.printMessage(e.getMessage());
             throw e;
         }
     }
