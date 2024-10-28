@@ -38,7 +38,7 @@
 ### Random
 - [x] 0-9 사이의 무작위 값을 출력하는 기능
 - [x] RealRandom : 실제 비즈니스 로직에 사용하는 Random 구현체
-- [ ] MockRandom : 테스트 코드 로직에 사용하는 Random 구현체
+- [x] MockRandom : 테스트 코드 로직에 사용하는 Random 구현체
 
 ### Winners
 - [x] 우승자 Car 목록을 저장하는 일급컬렉션
