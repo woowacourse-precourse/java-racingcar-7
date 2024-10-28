@@ -35,7 +35,8 @@ public class InputValidator {
             throw new IllegalArgumentException(ErrorMessage.MAX_CARS_EXCEEDED.getMessage());
         }
 
-        if (carNames.contains("")) {
+        // 빈 문자열이나 공백 문자열이 있는지 확인
+        if (carNames.stream().anyMatch(name -> name.trim().isEmpty())) {
             throw new IllegalArgumentException(ErrorMessage.NAME_CANNOT_BE_EMPTY.getMessage());
         }
 
