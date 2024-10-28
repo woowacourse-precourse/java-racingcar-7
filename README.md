@@ -34,7 +34,9 @@
 
 - [ ] save - 자동차 저장 메서드
 - [ ] findAll - 자동차를 전체 조회하는 메서드
-- [ ] findByWinner - 우승한 자동차를 조회하는 메서드
+- [ ] existByName - 해당 이름을 가진 데이터 있는지 조회하는 메서드
+- [ ] existWinner - 우승자가 존재하는지 조회하는 메서드
+- [ ] findByWinnersByTryCount - 우승한 자동차를 조회하는 메서드
 
 ### 4. RacingService
 
