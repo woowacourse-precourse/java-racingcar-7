@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.List;
 import racingcar.io.InputHandler;
+import racingcar.io.OutputHandler;
 
 public class Application {
     public static void main(String[] args) {
@@ -10,6 +11,10 @@ public class Application {
         int trialCount = input.getTrialCount();
 
         startRace(cars, trialCount);
+
+        OutputHandler output = new OutputHandler(cars);
+        output.printTrialResult();
+        output.printFinalWinner();
     }
 
     private static void startRace(List<Car> cars, int trialCount) {
