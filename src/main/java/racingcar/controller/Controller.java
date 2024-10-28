@@ -4,16 +4,15 @@ import java.util.List;
 import racingcar.model.Cars;
 import racingcar.model.Racing;
 import racingcar.model.RacingResult;
+import racingcar.model.RandomIntGeneratorStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
 
 public class Controller {
     private final InputView inputView;
     private final OutputView outputView;
     private Cars cars;
     private Racing racing;
-    private RacingResult racingResult;
 
     public Controller(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -21,8 +20,10 @@ public class Controller {
     }
 
     public void run() {
-        initializeCars(getCarNames());
-        initializeRacing(getTryCount());
+        List<String> carNames = getCarNames();
+        int tryCount = getTryCount();
+        initializeCars(carNames);
+        initializeRacing(tryCount);
         startCarRacing();
         runRacingStages();
         concludeRacing();
@@ -37,7 +38,7 @@ public class Controller {
     }
 
     private void initializeCars(List<String> carNames) {
-        cars = new Cars(carNames);
+        cars = new Cars(carNames, new RandomIntGeneratorStrategy());
     }
 
     private void initializeRacing(int tryCount) {
@@ -50,7 +51,7 @@ public class Controller {
     }
 
     private void runRacingStages() {
-        while (isEndRacingStage()) {
+        while (isRacingInProgress()) {
             executeRacingStage();
         }
     }
@@ -61,12 +62,12 @@ public class Controller {
         outputView.printStageResult(cars);
     }
 
-    private boolean isEndRacingStage() {
+    private boolean isRacingInProgress() {
         return racing.isProgress();
     }
 
     private void concludeRacing() {
-        racingResult = new RacingResult();
+        RacingResult racingResult = new RacingResult();
         List<String> winnersName = racingResult.getWinnerNames(cars);
         outputView.printWinners(winnersName);
     }
