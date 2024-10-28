@@ -21,7 +21,7 @@ public class BasicRacingCarGameWinnerSelectorTest {
             List<RacingCar> cars = List.of(new RacingCar("창의"));
 
             // when
-            List<RacingCar> winners = basicRacingCarGameWinnerSelector.generateWinner(cars);
+            List<RacingCar> winners = basicRacingCarGameWinnerSelector.selectWinner(cars);
 
             // then
             assertThat(winners)
@@ -37,7 +37,7 @@ public class BasicRacingCarGameWinnerSelectorTest {
             List<RacingCar> cars = List.of(new RacingCar("창의"), new RacingCar("상현"));
 
             // when
-            List<RacingCar> winners = basicRacingCarGameWinnerSelector.generateWinner(cars);
+            List<RacingCar> winners = basicRacingCarGameWinnerSelector.selectWinner(cars);
 
             // then
             assertThat(winners)
