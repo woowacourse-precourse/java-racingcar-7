@@ -18,7 +18,7 @@ class InMemoryCarRacerRepositoryTest {
         repository.clear();
     }
 
-    @DisplayName("RacingCar로 구성된 리스트를 한번에 저장할 수 있다.")
+    @DisplayName("CarRacer로 구성된 리스트를 한번에 저장할 수 있다.")
     @Test
     void addAll() {
         Assertions.assertSimpleTest(() -> {
