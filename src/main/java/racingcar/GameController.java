@@ -28,7 +28,7 @@ public class GameController {
         OutputHandler.printWinners(getWinners());
     }
 
-    private List<String> getWinners() {
+    protected List<String> getWinners() {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
