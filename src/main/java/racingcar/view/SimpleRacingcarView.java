@@ -30,11 +30,22 @@ public class SimpleRacingcarView implements RacingcarView {
 
     @Override
     public void printOutput(RacingcarResults result) {
-        // TODO. 메서드 구현
+        result.getResults().forEach(this::printOneCarOutput);
+        System.out.println();
+    }
+
+    private void printOneCarOutput(RacingcarResults.RacingcarResult result) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(result.name());
+        stringBuilder.append(" : ");
+        stringBuilder.append("-".repeat(Math.max(0, result.position())));
+
+        System.out.println(stringBuilder);
     }
 
     @Override
     public void printResult(List<String> winner) {
-        // TODO. 메서드 구현
+        System.out.println("최종 우승자 : " + String.join(",", winner));
     }
 }

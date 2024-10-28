@@ -19,6 +19,6 @@ public class Racingcar {
     }
 
     public void moveForward() {
-        // TODO: 메서드 구현
+        this.position++;
     }
 }

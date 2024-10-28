@@ -15,8 +15,13 @@ public class RacingcarResults {
         results.add(new RacingcarResult(name, position));
     }
 
+    public List<RacingcarResult> getResults() {
+        return results;
+    }
+
     public record RacingcarResult(
             String name,
             int position
-    ) {}
+    ) {
+    }
 }
