@@ -22,9 +22,9 @@
 - [x] Model Layer
   - [X] Car : 자동차 객체. 이름 및 현재 위치 저장.
   - [x] Race : Car 리스트, 진행해야 할 총 round 저장 
-- [ ] View Layer
+- [x] View Layer
   - [x] Input : 자동차 이름 및 진행횟수 입력. 조건에 맞지 않는 입력은 예외 처리.
-  - [ ] Output : 각 round 별 경기 결과 출력. 최종 우승자 출력.
+  - [x] Output : 각 round 별 경기 결과 출력. 최종 우승자 출력.
 - [x] Service Layer
   - [x] GameService : 한 라운드를 진행하는 로직. 우승자 결정 로직.
 - [ ] Controller Layer
