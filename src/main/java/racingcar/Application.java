@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import com.sun.source.tree.UsesTree;
 
 import java.util.HashMap;
 import static java.lang.Integer.parseInt;
@@ -56,13 +57,7 @@ public class Application {
 
         String totalWinner = null;
         for (String targetCar : carArr) {
-            if (totalLength == map.get(targetCar).length()){
-                if (totalWinner == null){
-                    totalWinner = targetCar;
-                } else{
-                    totalWinner += (", " + targetCar);
-                }
-            }
+            totalWinner = setWinner(totalLength, map.get(targetCar).length(), targetCar, totalWinner);
         }
         System.out.println("최종 우승자 : "+totalWinner);
     }
@@ -146,4 +141,6 @@ public class Application {
         }
         return totalLength;
     }
+
+
 }
