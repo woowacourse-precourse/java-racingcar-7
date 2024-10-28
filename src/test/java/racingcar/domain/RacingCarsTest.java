@@ -6,12 +6,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class RacingCarsTest {
+    private static final String RACING_CAR_NAME = "yoni";
+    private static final int START_POSITION = 1;
+
     @DisplayName("자동차 이름을 중복으로 사용할 수 없습니다.")
     @Test
     void validateDuplicateRacingCarNames() throws Exception{
         //given
-        String racingCarName = "yoni";
-        RacingCar car = new RacingCar(racingCarName, 1);
+        RacingCar car = new RacingCar(RACING_CAR_NAME, START_POSITION);
         List<RacingCar> cars = List.of(car, car);
         //when //then
         Assertions.assertThatThrownBy(() -> new RacingCars(cars))
@@ -23,8 +25,7 @@ public class RacingCarsTest {
     @Test
     void validateMinimumCarCount() throws Exception{
         //given
-        String racingCarName = "pobi";
-        RacingCar car = new RacingCar(racingCarName, 1);
+        RacingCar car = new RacingCar(RACING_CAR_NAME, START_POSITION);
         List<RacingCar> cars = List.of(car);
         //when //then
         Assertions.assertThatThrownBy(() -> new RacingCars(cars))

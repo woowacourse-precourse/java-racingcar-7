@@ -12,6 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarTest {
+    private static final String RACING_CAR_NAME_1 = "ini";
+    private static final String RACING_CAR_NAME_2 = "yoni";
+    private static final String RACING_CAR_NAME_3 = "yuni";
 
     @DisplayName("자동차는 랜덤 값에 따라 전진 또는 멈출 수 있습니다.")
     @ParameterizedTest
@@ -20,7 +23,7 @@ class RacingCarTest {
     void carMoveOrStopByRandomNumber(int givenPower, int curLocation) {
         // given
         int startLocation = 0;
-        RacingCar car = createCar("ini", startLocation);
+        RacingCar car = createCar(RACING_CAR_NAME_1, startLocation);
 
         // when
         car.move(givenPower);
@@ -36,8 +39,8 @@ class RacingCarTest {
                              int competeCarLocation,
                              boolean sameDistanceCheck) throws Exception{
         //given
-        RacingCar myCar = createCar("ini", myCarLocation);
-        RacingCar competeCar = createCar("yoni", competeCarLocation);
+        RacingCar myCar = createCar(RACING_CAR_NAME_1, myCarLocation);
+        RacingCar competeCar = createCar(RACING_CAR_NAME_2, competeCarLocation);
         //when
         boolean sameDistance = myCar.isSameLocation(competeCar);
         //then
@@ -48,10 +51,8 @@ class RacingCarTest {
     @Test
     void compareLocationToCar() throws Exception{
         //given
-        String myCarName = "ini";
-        String competeCarName= "yoni";
-        RacingCar myCar = createCar(myCarName, 4);
-        RacingCar competeCar = createCar(competeCarName, 2);
+        RacingCar myCar = createCar(RACING_CAR_NAME_1, 4);
+        RacingCar competeCar = createCar(RACING_CAR_NAME_2, 2);
         //when
         int compare = myCar.compareTo(competeCar);
         //then
@@ -62,15 +63,15 @@ class RacingCarTest {
     @Test
     void findWinners() throws Exception {
         //given
-        RacingCar myCar = createCar("ini", 3);
-        RacingCar competeCar1 = createCar("yoni", 2);
-        RacingCar competeCar2 = createCar("yuni", 3);
+        RacingCar myCar = createCar(RACING_CAR_NAME_1, 3);
+        RacingCar competeCar1 = createCar(RACING_CAR_NAME_2, 2);
+        RacingCar competeCar2 = createCar(RACING_CAR_NAME_3, 3);
         RacingCars cars = new RacingCars(List.of(myCar, competeCar1, competeCar2));
         //when
         List<String> winners = cars.findRacingWinners();
         //then
         Assertions.assertThat(winners).hasSize(2)
-                .containsExactly("ini", "yuni");
+                .containsExactly(RACING_CAR_NAME_1, RACING_CAR_NAME_3);
     }
 
     private static RacingCar createCar(String carName, int location) {
