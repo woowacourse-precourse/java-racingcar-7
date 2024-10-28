@@ -29,6 +29,7 @@ public class RacingGameService {
             printCurrentPostions();
             System.out.println();
         }
+        announceWinners();
     }
 
     private void printCurrentPostions() {
