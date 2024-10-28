@@ -41,4 +41,15 @@ public class GameResult {
         return winners;
     }
 
+    static void showWinners(List<racingcar.Car> winners) {
+        // 우승자 출력 과정
+        List<String> names = new ArrayList<>();
+        for (racingcar.Car car : winners) {
+            names.add(car.getName());   // 우승자 이름 추가
+        }
+
+        String result = String.join(", ", names);
+        System.out.println("최종 우승자 : " + result);
+    }
+
 }
