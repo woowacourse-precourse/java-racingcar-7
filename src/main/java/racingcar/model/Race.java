@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Race {
@@ -7,6 +8,10 @@ public class Race {
 
     public Race(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public void proceed() {
+        cars.forEach(car -> car.move(Randoms.pickNumberInRange(0, 9)));
     }
 
     public List<Car> getCars() {
