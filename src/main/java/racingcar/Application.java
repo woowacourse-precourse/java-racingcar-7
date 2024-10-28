@@ -21,5 +21,26 @@ public class Application {
             System.out.println(e.getMessage());
             return;
         }
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String attemptInput = Console.readLine();
+
+        try {
+            validateAttemptInput(attemptInput);
+            int attempts = Integer.parseInt(attemptInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+    }
+
+    private static void validateAttemptInput(String input) {
+        if (!input.matches("\\d+")) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
+        int attempts = Integer.parseInt(input);
+        if (attempts <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
     }
 }
