@@ -87,10 +87,42 @@ class RacingGameTest {
         List<Car> cars = racingGame.getCars();
 
         //then
-        Assertions.assertThat(cars.get(0).getMoveCount()).isEqualTo(attemptCount);
-        Assertions.assertThat(cars.get(1).getMoveCount()).isEqualTo(attemptCount);
-        Assertions.assertThat(cars.get(2).getMoveCount()).isEqualTo(attemptCount);
+        for(int i = 0; i < 3; i++){
+            Assertions.assertThat(cars.get(i).getMoveCount()).isEqualTo(attemptCount);
+        }
     }
 
 
+    @Test
+    @DisplayName("moveCount 가 가장 높은 자동차 들이 우승")
+    public void 단독_우승_확인_테스트(){
+        //given
+        List<String> carNames = Arrays.asList("car1", "car2", "car3");
+        racingGame.addCars(carNames);
+        List<Car> cars = racingGame.getCars();
+        List<String> expectedWinners = Arrays.asList("car1");
+
+        cars.get(0).move(4);
+        //when
+        List<String> actualWinners = racingGame.getWinners();
+        //then
+        Assertions.assertThat(actualWinners).isEqualTo(expectedWinners);
+    }
+
+    @Test
+    @DisplayName("moveCount 가 가장 높은 자동차 들이 우승")
+    public void 공동_우승_확인_테스트(){
+        //given
+        List<String> carNames = Arrays.asList("car1", "car2", "car3");
+        racingGame.addCars(carNames);
+        List<Car> cars = racingGame.getCars();
+        List<String> expectedWinners = Arrays.asList("car1", "car2");
+
+        cars.get(0).move(4);
+        cars.get(1).move(4);
+        //when
+        List<String> actualWinners = racingGame.getWinners();
+        //then
+        Assertions.assertThat(actualWinners).isEqualTo(expectedWinners);
+    }
 }
