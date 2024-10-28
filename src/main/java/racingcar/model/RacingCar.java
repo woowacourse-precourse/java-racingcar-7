@@ -7,7 +7,7 @@ public class RacingCar {
     private static final int CAR_MAX_LENGTH = 5;
     private static final int STANDARD = 4;
     private final List<String> carNameList;
-    private final int[] results;
+    public final int[] results;
 
     public RacingCar(String inputCars) {
         this.carNameList = new ArrayList<>();
