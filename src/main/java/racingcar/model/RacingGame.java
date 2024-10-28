@@ -10,29 +10,30 @@ public class RacingGame {
         String winner="";
         Arrays.fill(score, 0);
 
-        while(true) {
+        for(int number=0; number<num; number++) {
             for (int i = 0; i < participants.size(); i++) {
                 int randomNum = Randoms.pickNumberInRange(0,9);
                 if(randomNum >=4 && randomNum <=9){
                     score[i] += 1;
                 }
             }
-            boolean flag = false;
 
             for (int i = 0; i < participants.size(); i++) {
                 System.out.print(participants.get(i) + " : ");
                 for (int j = 0; j < score[i]; j++) {
                     System.out.print("-");
                 }
-                if (score[i] == num) {
-                    flag = true;
-                    winner = winner + (participants.get(i) + ", ");
-                }
                 System.out.println();
             }
             System.out.println();
-            if(flag) break;
         }
+        int max = Arrays.stream(score).max().getAsInt();
+        for (int i = 0; i < participants.size(); i++) {
+            if(score[i] == max) {
+                winner = winner+", "+participants.get(i);
+            }
+        }
+        winner = winner.substring(2);
         return winner;
     }
 }
