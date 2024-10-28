@@ -31,6 +31,29 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_중복_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_공백_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pob,", "2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_경기횟수_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pob,asd", "c"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

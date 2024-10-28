@@ -11,11 +11,21 @@ public class Output {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
+    public void finalWinPrint(String[] winCarList){
+        System.out.print("최종 우승자 : ");
+        System.out.print(winCarList[0]);
+
+        for(int i=1;i<winCarList.length;i++){
+            System.out.print(", " + winCarList[i]);
+        }
+    }
+
     public void printRace(Car[] cars){
         for(Car car : cars){
             System.out.print(car.getCarName()+" : ");
             printCarLo(car);
         }
+        System.out.println();
     }
 
     public void printCarLo(Car car){

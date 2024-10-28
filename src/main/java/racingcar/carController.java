@@ -25,5 +25,7 @@ public class carController {
             carService.startRace(cars);
             outputMethod.printRace(cars);
         }
+        String[] winners = carService.calWinner(cars);
+        outputMethod.finalWinPrint(winners);
     }
 }
