@@ -21,12 +21,12 @@ public class GameService {
         for (int i = 0; i < attemptCount; i++) {
             playRound();
         }
-        gameResult.recordWinner(cars);
+        gameResult.saveWinner(cars);
         return gameResult;
     }
 
     private void playRound() {
         cars.moveForward();
-        gameResult.recordRound(cars);
+        gameResult.saveRound(cars);
     }
 }
