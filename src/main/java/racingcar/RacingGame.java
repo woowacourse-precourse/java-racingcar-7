@@ -68,4 +68,11 @@ public class RacingGame {
         }
         return winners;
     }
+
+    // 입력 검증
+    private void validateCarName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
+        }
+    }
 }
