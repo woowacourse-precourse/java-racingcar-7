@@ -11,4 +11,10 @@ class AttemptCountTest {
         assertThatThrownBy(() -> new AttemptCount("-1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 시도_횟수에_문자가_들어오면_예외를_반환한다() {
+        assertThatThrownBy(() -> new AttemptCount("a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
