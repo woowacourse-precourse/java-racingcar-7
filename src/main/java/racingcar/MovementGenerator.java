@@ -9,4 +9,12 @@ public class MovementGenerator {
     public static int getRandomNumber() {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
+
+    public static Movement getRandomMovement() {
+        int number = getRandomNumber();
+        if (number >= 4) {
+            return Movement.GO;
+        }
+        return Movement.STOP;
+    }
 }
