@@ -1,4 +1,4 @@
-package racingcar.configuration;
+package racingcar.config;
 
 import racingcar.controller.RacingController;
 import racingcar.repository.MemoryRepository;
