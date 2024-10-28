@@ -31,6 +31,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    public void carNameValidation() {
+        String invalidCarNames = "pobi,woni,jun,lraaa";
+        try {
+            new RacingGame(invalidCarNames, 5);
+        } catch (IllegalArgumentException e) {
+            assertThat(e).hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.");
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
