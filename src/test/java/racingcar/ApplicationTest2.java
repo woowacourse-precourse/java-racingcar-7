@@ -22,10 +22,11 @@ public class ApplicationTest2 {
     void findWinnersTest() {
 
         String[] carNames = {"min","seo","jeo","ng"};
-        int[] carPositions = {3,5,2,5,1};
+        int[] carPositions = {3,5,2,5};
 
         StringBuilder winners = Application.getWinners(carNames, carPositions,5);
 
-        assertThat(winners.toString()).isEqualTo("seo","jeo");
+        assertThat(winners.toString()).isEqualTo("seo, ng");
+
     }
 }
