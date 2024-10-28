@@ -9,5 +9,13 @@ public class Result {
             this.name = name;
             this.step = step;
         }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public int getStep() {
+            return this.step;
+        }
     }
 }
