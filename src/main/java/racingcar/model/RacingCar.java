@@ -20,4 +20,14 @@ public class RacingCar {
     public int getRaceResultLength() {
         return raceResult.length();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public RacingCar copy() {
+        RacingCar copiedCar = new RacingCar(name);
+        copiedCar.raceResult.append(raceResult);
+        return copiedCar;
+    }
 }
