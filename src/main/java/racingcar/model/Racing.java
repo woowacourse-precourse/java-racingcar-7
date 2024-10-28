@@ -36,7 +36,7 @@ public class Racing {
                 .forEach(cars::add);
     }
 
-    private int getMaxPosition() {
+    private Integer getMaxPosition() {
         return cars.stream()
                 .mapToInt(RacingCar::getPosition)
                 .max()

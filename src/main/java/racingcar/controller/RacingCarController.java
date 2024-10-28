@@ -11,11 +11,12 @@ public class RacingCarController {
     private final Validator<List<String>> carValidator;
     private final Validator<Integer> roundValidator;
     private final RacingCarView racingCarView;
+    private final Supplier<Integer> randomSupplier;
     private Racing racing;
     private Integer round;
-    private final Supplier<Integer> randomSupplier;
 
-    public RacingCarController(RacingCarView racingCarView, ValidatorFactory validatorFactory, Supplier<Integer> randomSupplier) {
+    public RacingCarController(RacingCarView racingCarView, ValidatorFactory validatorFactory,
+                               Supplier<Integer> randomSupplier) {
         this.carValidator = validatorFactory.getCarValidator();
         this.roundValidator = validatorFactory.getRoundValidator();
         this.racingCarView = racingCarView;

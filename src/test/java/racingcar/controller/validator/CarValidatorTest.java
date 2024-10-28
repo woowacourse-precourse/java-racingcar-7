@@ -8,7 +8,7 @@ import static racingcar.exception.ErrorBase.CAR_NAME_IS_BETWEEN_ONE_AND_FIVE;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class CarValidatorTest extends ValidatorTest<List<String>>{
+class CarValidatorTest extends ValidatorTest<List<String>> {
     @Override
     protected Validator<List<String>> getValidator() {
         return new CarValidator();
@@ -37,8 +37,16 @@ class CarValidatorTest extends ValidatorTest<List<String>>{
     }
 
     @Test
-    void 쉼표로_구분한_자동차의_이름이_빈_문자열이면_예외를_발생시킨다(){
+    void 쉼표로_구분한_자동차의_이름이_빈_문자열이면_예외를_발생시킨다() {
         String input = "car1, , car2";
+        assertThatThrownBy(() -> getValidator().validate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CAR_NAME_IS_BETWEEN_ONE_AND_FIVE.getMessage());
+    }
+
+    @Test
+    void 쉼표로_구분한_자동차의_이름이_빈_문자열이면_예외를_발생시킨다2() {
+        String input = "car1,,,";
         assertThatThrownBy(() -> getValidator().validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CAR_NAME_IS_BETWEEN_ONE_AND_FIVE.getMessage());
@@ -57,13 +65,14 @@ class CarValidatorTest extends ValidatorTest<List<String>>{
     void 입력받은_자동차의_개수가_최대개수를_초과하면_예외를_발생시킨다() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < CarValidator.MAX_CARS + 1; i++) {
-            sb.append(i).append(",");
+            sb.append((i + 1) % 1000);
+            if (i < CarValidator.MAX_CARS) {
+                sb.append(",");
+            }
         }
 
         assertThatThrownBy(() -> getValidator().validate(sb.toString()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CAR_COUNT_EXCEEDS_LIMIT.getMessage());
     }
-
-
 }

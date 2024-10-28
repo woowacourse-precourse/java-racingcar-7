@@ -12,7 +12,7 @@ public abstract class Validator<T> {
         return parsedInput;
     }
 
-    protected void validateBlankInput(String input) {
+    public void validateBlankInput(String input) {
         if (StringUtils.isBlank(input)) {
             throw new IllegalArgumentException(INPUT_IS_EMPTY.getMessage());
         }

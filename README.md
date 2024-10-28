@@ -4,7 +4,7 @@
 
 ![Generic badge](https://img.shields.io/badge/precourse-week2-green.svg)
 ![Generic badge](https://img.shields.io/badge/version-1.0.1-brightgreen.svg)
-![Generic badge](https://img.shields.io/badge/test-0_passed-blue.svg)
+![Generic badge](https://img.shields.io/badge/test-18_passed-blue.svg)
 
 ## 목차
 
@@ -16,8 +16,10 @@
     - [경주](#-경주)
     - [자동차 동작](#-자동차의-동작)
     - [출력](#-출력)
+- [결과](#-결과)
+    - [클래스 다이어그램]
 
-<br>
+      <br>
 
 ## 🚀 요구사항
 
@@ -128,7 +130,8 @@
     - [x] 자동차의 이름에서 공백이 포함될 경우, 공백 제외 5자 이하만 가능하다.
     - [x] `예외처리` : 빈 문자열일 경우 `IllegalArgumentException`
     - [x] `예외처리` : 5자 이상일 경우 `IllegalArgumentException`
-      <br>
+
+<br>
 
 ### ✔️ 출력
 
@@ -140,3 +143,12 @@
     - [x] 우승자는 1명 이상일 수 있다.
     - [x] 우승자가 여러 명일 경우, 쉼표(,)을 통해 우승자의 이름을 구분하여 출력한다.
 
+<br>
+
+## 📌 결과
+
+### ✔️ 실행 결과
+
+### ✔️ 클래스 다이어그램
+
+![week2_class_diagram](https://github.com/user-attachments/assets/1150d265-dc0d-40cb-a385-1ca6cc28bfcb)
