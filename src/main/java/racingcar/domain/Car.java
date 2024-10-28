@@ -3,7 +3,6 @@ package racingcar.domain;
 public class Car implements Comparable<Car> {
 
     private final String name;
-    private final String STEP = "-";
     private int moveCount = 0;
 
     public Car(String name) {
@@ -24,7 +23,8 @@ public class Car implements Comparable<Car> {
 
     @Override
     public String toString() {
-        return String.format("%s : %s", name, STEP.repeat(moveCount));
+        String step = "-";
+        return String.format("%s : %s", name, step.repeat(moveCount));
     }
 
     @Override
