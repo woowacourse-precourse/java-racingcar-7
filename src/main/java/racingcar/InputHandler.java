@@ -7,7 +7,7 @@ import java.util.List;
 public class InputHandler {
     private String input;
     private List<String> names;
-    private Integer runCount;
+    private int runCount;
 
     public void inputNames(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -22,6 +22,14 @@ public class InputHandler {
 
     public static List<String> commaSeparator(String input){
         List<String> names = List.of(input.split(","));
+        return names;
+    }
+
+    public Integer getRunCount() {
+        return runCount;
+    }
+
+    public List<String> getNames() {
         return names;
     }
 }

@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     private String name;
-    private Integer location;
+    private int location;
 
     public Car(String name) {
         this.name = name;
@@ -17,6 +17,14 @@ public class Car {
         if (num > 4) {
             location++;
         }
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getNameAndLocation() {
