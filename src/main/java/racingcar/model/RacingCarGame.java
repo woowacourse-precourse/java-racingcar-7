@@ -12,6 +12,10 @@ public class RacingCarGame {
         this.moveStrategy = new RandomMoveStrategy();
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void forceRandomMoveStrategy(RandomMoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
     }
@@ -47,9 +51,5 @@ public class RacingCarGame {
             }
         }
         return maxPosition;
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 }

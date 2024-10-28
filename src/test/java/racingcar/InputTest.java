@@ -18,15 +18,13 @@ public class InputTest {
 
     @Test
     void convertToCarTest() {
-        //when
+        //given
         List<String> carNames = List.of("pobi", "woni", "jun");
 
-        //given
+        //when
         List<Car> carList = input.convertToCar(carNames);
 
         //then
         assertThat(carList).isEqualTo(List.of(new Car("pobi"), new Car("woni"), new Car("jun")));
     }
-
-
 }

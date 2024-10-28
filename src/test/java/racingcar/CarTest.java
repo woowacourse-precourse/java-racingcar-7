@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.Car;
 
 public class CarTest {
-
     @Test
     public void 자동차_생성_테스트() {
         Car car = new Car("pobi");
@@ -60,5 +59,4 @@ public class CarTest {
         //then
         assertThat(car.getStatus()).isEqualTo(car.getName() + " : " + "-".repeat(moveTimes));
     }
-
 }
