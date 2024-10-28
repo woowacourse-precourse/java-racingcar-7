@@ -24,6 +24,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 공백_strip_입력테스트(){
+        assertSimpleTest(() ->
+                assertThat("   ".strip()).isEqualTo("")
+                );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
