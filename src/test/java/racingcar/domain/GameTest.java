@@ -15,7 +15,7 @@ class GameTest {
 
         final ProgressedAmountRepository repository = new ProgressedAmountRepository();
         final Game game = new Game(List.of(firstWinner, secondWinner, loser), repository, new MoveConditionGenerator());
-        game.run(0);
+        game.run(new Round("0"));
 
         Assertions.assertThat(game.getWinners())
                 .isEqualTo(new Winners(List.of(firstWinner.getInfo(), secondWinner.getInfo())));
