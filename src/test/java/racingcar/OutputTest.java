@@ -33,7 +33,7 @@ public class OutputTest {
         round.saveRoundResult(cars);
 
         OutputView.roundResult(round.toStringRoundResult());
-        assertEquals("emily: -----\ntomas: -----\ngina: -----\n", round.toStringRoundResult());
+        assertEquals("emily : -----\ntomas : -----\ngina : -----\n", round.toStringRoundResult());
     }
 
     @Test
