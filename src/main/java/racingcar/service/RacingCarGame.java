@@ -43,7 +43,7 @@ public class RacingCarGame {
         List<RacingCar> racingCars = racingCarGenerator.generateCar(racingCarNames);
         String gameResult = startRacingGame(racingCars, moveCount);
 
-        List<RacingCar> gameWinners = racingCarGameWinnerSelector.generateWinner(racingCars);
+        List<RacingCar> gameWinners = racingCarGameWinnerSelector.selectWinner(racingCars);
         String gameWinnerNames = getGameWinnersToWinnerNames(gameWinners);
 
         return new RacingCarGameResult(gameResult, gameWinnerNames);
