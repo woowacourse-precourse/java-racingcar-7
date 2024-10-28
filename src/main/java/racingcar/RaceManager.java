@@ -7,22 +7,24 @@ import java.util.List;
 public class RaceManager {
     private final List<String> carNames;
     private final int raceRound;
-    private String[] currentScores;
+    private String[] currentRaceImage;
+    private int[] currentScores;
     private int currentRound;
 
     public RaceManager(List<String> carNames, int raceRound) {
         this.carNames = carNames;
         this.raceRound = raceRound;
-        this.currentScores = new String[carNames.size()];
+        this.currentRaceImage = new String[carNames.size()];
+        this.currentScores = new int[carNames.size()];
         this.currentRound = 0;
         conductRace();
     }
 
     private void conductRace() {
         for (int i = 0; i < carNames.size(); i++) {
-            currentScores[i] = carNames.get(i) + " : ";
+            currentRaceImage[i] = carNames.get(i) + " : ";
+            currentScores[i] = 0;
         }
-
         while (currentRound < raceRound) {
             currentRound++;
             displayCurrentRace();
@@ -30,11 +32,12 @@ public class RaceManager {
     }
 
     private void displayCurrentRace() {
-        for (int i = 0; i < currentScores.length; i++) {
+        for (int i = 0; i < currentRaceImage.length; i++) {
             if (isMoveForward()) {
-                this.currentScores[i] += "-";
+                this.currentRaceImage[i] += "-";
+                this.currentScores[i]++;
             }
-            System.out.println(currentScores[i]);
+            System.out.println(currentRaceImage[i]);
         }
         System.out.println();
     }
@@ -42,5 +45,9 @@ public class RaceManager {
     private boolean isMoveForward() {
         int pickedNumber = Randoms.pickNumberInRange(0, 9);
         return pickedNumber >= 4;
+    }
+
+    public int[] getCurrentScores() {
+        return currentScores;
     }
 }
