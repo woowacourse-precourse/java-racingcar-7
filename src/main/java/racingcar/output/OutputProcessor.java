@@ -33,7 +33,7 @@ public class OutputProcessor {
         System.out.print("최종 우승자 : ");
         System.out.println(winners.stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(","))
+                .collect(Collectors.joining(", "))
         );
     }
 }
