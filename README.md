@@ -114,26 +114,45 @@
 # package 구조
 
 ```
-racingcar
-  ├── Application.java
-  ├── config
-  │   └── AppConfig.java
-  ├── controller
-  │   ├── CarController.java
-  │   ├── Controller.java
-  │   ├── InputController.java
-  │   ├── OutputController.java
-  │   └── RaceController.java
-  ├── domain
-  │   ├── Car.java
-  │   └── Race.java
-  ├── service
-  │   ├── CarService.java
-  │   └── RaceService.java
-  ├── validate
-  │   ├── CarValidator.java
-  │   └── InputValidator.java
-  └── view
-      ├── InputView.java
-      └── OutputView.java
+└── src
+    ├── main
+    │   └── java
+    │       └── racingcar
+    │         ├── Application.java
+    │         ├── config
+    │         │   └── AppConfig.java
+    │         ├── controller
+    │         │   ├── CarController.java
+    │         │   ├── Controller.java
+    │         │   ├── InputController.java
+    │         │   ├── OutputController.java
+    │         │   └── RaceController.java
+    │         ├── domain
+    │         │   ├── Car.java
+    │         │   └── Race.java
+    │         ├── service
+    │         │   ├── CarService.java
+    │         │   └── RaceService.java
+    │         ├── validate
+    │         │   ├── CarValidator.java
+    │         │   └── InputValidator.java
+    │         └── view
+    │             ├── InputView.java
+    │             └── OutputView.java
+    └── test
+        └── java
+            └── racingcar
+                ├── ApplicationTest.java
+                ├── domain
+                │   ├── CarTest.java
+                │   └── RaceTest.java
+                ├── service
+                │   ├── CarServiceTest.java
+                │   └── RaceServiceTest.java
+                ├── validate
+                │   ├── CarValidatorTest.java
+                │   └── InputValidatorTest.java
+                └── view
+                    ├── InputViewTest.java
+                    └── OutputViewTest.java
 ```
