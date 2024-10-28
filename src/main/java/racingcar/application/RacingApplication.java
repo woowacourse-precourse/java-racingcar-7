@@ -34,7 +34,7 @@ public class RacingApplication {
     private Cars eachRace(List<Car> allCar) {
         List<Car> afterEachRaceCars = new ArrayList<>();
         for (Car car : allCar) {
-            Car updateCar = car.updateDistance(car, forwardStrategy.isFollowNumberRule());
+            Car updateCar = car.updateDistance(car, forwardStrategy.isMovingForward());
             afterEachRaceCars.add(updateCar);
         }
         return new Cars(afterEachRaceCars);
