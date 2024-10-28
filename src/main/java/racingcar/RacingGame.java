@@ -40,11 +40,15 @@ public class RacingGame {
     private void showCarProceedScores(int moveCount, List<Car> cars) {
         outputHandler.showCarProceedComments();
         for (int i = 0; i < moveCount; i++) {
-            for (Car car : cars) {
-                int proceedScore = car.proceed();
-                outputHandler.showCarProceedScore(car, proceedScore);
-            }
+            calculateProceedScore(cars);
             outputHandler.showNewLine();
+        }
+    }
+
+    private void calculateProceedScore(List<Car> cars) {
+        for (Car car : cars) {
+            int proceedScore = car.proceed();
+            outputHandler.showCarProceedScore(car, proceedScore);
         }
     }
 
