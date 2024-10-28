@@ -44,23 +44,35 @@ public class RacingController {
 
     private String[] getInputNames() {
         String strNames = racingGameView.printInputNames();
-        if (strNames.trim().isEmpty()) {
-            throw new IllegalArgumentException("이름 입력이 비어있습니다. 하나 이상의 차 이름을 입력하세요.");
-        }
+        validateEmptyNames(strNames);
         String[] names = racingGame.createNames(strNames);
         return names;
     }
 
+    private void validateEmptyNames(String inputString) {
+        if (inputString.trim().isEmpty()) {
+            throw new IllegalArgumentException("이름 입력이 비어있습니다. 하나 이상의 차 이름을 입력하세요.");
+        }
+    }
+
     private int getInputTryCount() {
         String strTryCount = racingGameView.printInputTryCount();
+        validateEmptyTryCount(strTryCount);
+        int tryCount = Integer.parseInt(strTryCount);
+        validateNegativeTryCount(tryCount);
+        return tryCount;
+    }
+
+    private void validateEmptyTryCount(String strTryCount) {
         if (strTryCount.trim().isEmpty()) {
             throw new IllegalArgumentException("시도횟수를 입력하세요");
         }
-        int tryCount = Integer.parseInt(strTryCount);
+    }
+
+    private void validateNegativeTryCount(int tryCount) {
         if (tryCount < 0) {
             throw new IllegalArgumentException("시도 횟수는 0이상 이어야 합니다");
         }
-        return tryCount;
     }
 
 }
