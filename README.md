@@ -43,13 +43,10 @@
 
 ## Race
 - **cars** : `List<Cars>`
-- **RaceRandomGenerator**
-- _Race `performRace`_  
-  경주를 실행하고 결과 객체를 반환합니다.
 - _`getSortedRaceResults`_ : `List<Car>`  
   이동 거리가 많은 순서대로 결과를 반환합니다.
 
-## Race Result
+## RaceResult
 - **raceResult** : `List<Race>`
 - _`performAllRaces`_ : `List<Race>`  
   경주를 횟수만큼 실행하고 각 결과를 리스트로 반환합니다.
@@ -57,24 +54,50 @@
   경주 결과에서 1등을 리스트 형태로 반환합니다.
 
 ---
-## Controller
+## RaceController
 사용자의 입력/출력 기반으로 **Service**를 호출합니다.
-- _`executeRaceAndGetWinner()`_  
+- _`executeRace()`_  
   경주 로직을 실행하고 결과를 반환합니다.
 
 ## Parser
-사용자의 **Input**을 DTO로 변환하여 사용 가능한 구조로 변경합니다.
+사용자의 **Input**을 사용 가능한 구조로 변경합니다.
 
-## ConsoleHandler
-사용자의 **콘솔 입력 및 출력**을 담당합니다.
+## ConsoleInputHandler
+- _`getRaceRequest()`_
+
+  사용자의 입력을 받아서 `reqeustDTO`를 제작합니다.
+
+## ConsoleOutputHandler
+- _`displayResults()`_
+
+  `race`결과를 **console**로 출력합니다.
+
+## RaceResultFormatter
+- `convertRaceProgressToString()`
+- `convertWinnersToString()`
+
+  각 시행 횟수 마다 경기 결과를 출력하고, 우승자를 출력하기 위한 `String`을 생성합니다.
 
 ## Validator
-- _`validate()`_  
+- _`validateNameList()`_
+- _`validateNameList()`_
+
   사용자 입력 값의 유효성을 검사하며, 유효하지 않은 경우 `IllegalArgumentException`을 발생시킵니다.
+
 ---
 ## Service
-- _`performRace()`_  
+- _`runAllRaces()`_  
   도메인 로직을 실행하고 우승자를 DTO 형태로 반환합니다.
+
+## RaceEngine
+- _`performRace()`_
+
+  레이스를 수행 횟수에 맞게 실행시켜 결과를 `RaceResult`로 반환합니다.
+
+## CarFactory
+- `getCarList()`
+
+  `List<String>`을 바탕으로 List<Car>를 제작해 반환합니다.
 
 ---
 ## Util
@@ -85,12 +108,23 @@
 - **RaceRandomGeneratorImpl (singleton)**
     - _`getInstance()`_  
       Singleton 인스턴스를 반환합니다.
-    - _`getMoveForwardTimes(long raceTimes)`_  
-      난수를 통해 4 이상이 나온 횟수를 카운트하여 반환합니다.
+    - _`canMoveForward()`_  
+      난수를 통해 4 이상이 나오면 전진할 수 있다고 판단합니다.
 ---
 ## DTO
 컨트롤러와 서비스 간의 데이터를 전달하고 변환합니다.
 - _`RaceRequestDTO`_  
   이름과 횟수를 컨트롤러에서 서비스로 전달합니다.
+
 - _`RaceResponseDTO`_  
-  `List<Car>` 형식의 데이터를 문자열로 변환하여 컨트롤러에 전달합니다.
+  `RaceResult`의 데이터를 컨트롤러에 전달합니다.
+
+
+# 예외 처리 항목
+
+---
+1. 이름, 횟수 입력이 공백인 경우
+2. 각 이름의 길이가 6이상인 경우
+3. 이름이 중복된 경우
+4. 횟수 입력이 양의 정수가 아닌 경우
+5. 횟수 입력이 long의 범위를 벗어나는 경우
