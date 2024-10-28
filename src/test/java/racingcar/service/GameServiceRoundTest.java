@@ -9,16 +9,13 @@ import racingcar.domain.movement.MovementPolicy;
 import racingcar.domain.movement.RandomMovementStrategy;
 import racingcar.dto.request.GameStartRequest;
 import racingcar.dto.response.GameResult;
-import racingcar.dto.response.Winners;
 import racingcar.exception.game.GameException.GameNotInitializedException;
-import racingcar.mock.AlternateNumberGenerator;
 import racingcar.mock.CanMoveNumberGenerator;
 import racingcar.repository.MemoryPlayerRepository;
 import racingcar.util.IdGenerator;
 
-
-@DisplayName("게임 서비스(GaeService) 유스케이스")
-class GameServiceTest {
+@DisplayName("게임 서비스(GaeService) 라운드 유스케이스")
+public class GameServiceRoundTest {
 
     private GameService createGameService() {
         PlayerService playerService = new PlayerService(
@@ -31,38 +28,10 @@ class GameServiceTest {
         return new GameService(playerService, movementPolicy);
     }
 
-    private GameService createGameServiceWithAlternateNumberGenerator() {
-        PlayerService playerService = new PlayerService(
-                new MemoryPlayerRepository(),
-                new IdGenerator()
-        );
-        MovementPolicy movementPolicy = new MovementPolicy(
-                new RandomMovementStrategy(new AlternateNumberGenerator())
-        );
-        return new GameService(playerService, movementPolicy);
-    }
-
     private GameStartRequest createGameStartRequest() {
         return new GameStartRequest(List.of("p1", "p2", "p3"), 4);
     }
 
-
-    @DisplayName("게임 초기화하기")
-    @Nested
-    class 게임_초기화하기 {
-
-        @DisplayName("정상적인 게임 초기화")
-        @Test
-        void 정상적인_게임_초기화() {
-            // given
-            GameStartRequest gameStartRequest = createGameStartRequest();
-            GameService gameService = createGameService();
-
-            // expect
-            Assertions.assertThatCode(() -> gameService.initialize(gameStartRequest))
-                    .doesNotThrowAnyException();
-        }
-    }
 
     @DisplayName("라운드 진행하기")
     @Nested
@@ -154,49 +123,5 @@ class GameServiceTest {
         }
     }
 
-    @DisplayName("승자들 조회하기")
-    @Nested
-    class 승자들_조회하기 {
-
-        @DisplayName("단독 승자 확인")
-        @Test
-        void 단독_승자_확인() {
-            // given
-            GameService gameService = createGameServiceWithAlternateNumberGenerator();
-            GameStartRequest gameStartRequest = new GameStartRequest(List.of("p1", "p2"), 3);
-            gameService.initialize(gameStartRequest);
-            gameService.playRound();
-            gameService.playRound();
-            gameService.playRound();
-
-            // when
-            Winners winners = gameService.getWinners();
-            int totalWinners = winners.names().size();
-
-            // then
-            Assertions.assertThat(totalWinners).isEqualTo(1);
-
-        }
-
-        @DisplayName("공동 승자 확인")
-        @Test
-        void 공동_승자_확인() {
-            // given
-            GameService gameService = createGameService();
-            GameStartRequest gameStartRequest = new GameStartRequest(List.of("p1", "p2", "p3"), 4);
-            gameService.initialize(gameStartRequest);
-            gameService.playRound();
-            gameService.playRound();
-            gameService.playRound();
-            gameService.playRound();
-
-            // when
-            Winners winners = gameService.getWinners();
-            int totalWinners = winners.names().size();
-
-            // then
-            Assertions.assertThat(totalWinners).isEqualTo(3);
-        }
-    }
 
 }
