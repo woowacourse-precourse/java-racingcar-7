@@ -9,9 +9,8 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carName = Console.readLine();
-        List<String> splitCarNames = new ArrayList<>(List.of(carName.split(",")));
+        List<String> splitCarNames = getCarNames();
+
         List<Integer> carMovementCounts = new ArrayList<>();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
@@ -37,8 +36,15 @@ public class Application {
         winner(splitCarNames, carMovementCounts);
     }
 
+    private static List<String> getCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String carNames = Console.readLine();
+        List<String> splitCarNames = new ArrayList<>(List.of(carNames.split(",")));
+        return splitCarNames;
+    }
+
     // 주어진 라운드에 따라 '-' 출력
-    private static void round(List<String> carNames, List<Integer> carMovementCounts) {
+    public static void round(List<String> carNames, List<Integer> carMovementCounts) {
 
         for (int i = 0; i < carNames.size(); i++) {
             System.out.print(carNames.get(i) + " : ");
