@@ -40,7 +40,7 @@ public class RacingCarServiceImpl implements RacingCarService {
         if (maxDistance == 0) {
             throw new IllegalArgumentException(NO_WINNER_ERROR_MESSAGE);
         }
-        
+
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName)
