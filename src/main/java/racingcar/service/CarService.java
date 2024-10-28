@@ -5,6 +5,7 @@ import racingcar.util.factory.CarFactory;
 import racingcar.util.parser.PlayerNameParser;
 import racingcar.util.race.RaceExecutor;
 import racingcar.util.race.WinnerSelector;
+import racingcar.util.validator.MoveCountValidator;
 import racingcar.util.validator.PlayerNameValidator;
 
 import java.util.List;
@@ -12,16 +13,19 @@ import java.util.List;
 public class CarService {
     private final PlayerNameParser playerNameParser;
     private final PlayerNameValidator playerNameValidator;
+    private final MoveCountValidator moveCountValidator;
     private final WinnerSelector winnerSelector;
     private final RaceExecutor raceExecutor;
     private final CarFactory carFactory;
 
     public CarService(PlayerNameValidator playerNameValidator,
+                      MoveCountValidator moveCountValidator,
                       WinnerSelector winnerSelector,
                       PlayerNameParser playerNameParser,
                       RaceExecutor raceExecutor,
                       CarFactory carFactory) {
         this.playerNameValidator = playerNameValidator;
+        this.moveCountValidator = moveCountValidator;
         this.winnerSelector = winnerSelector;
         this.playerNameParser = playerNameParser;
         this.raceExecutor = raceExecutor;
@@ -30,17 +34,20 @@ public class CarService {
 
     public static CarService create() {
         PlayerNameValidator playerNameValidator = new PlayerNameValidator();
+        MoveCountValidator moveCountValidator = new MoveCountValidator();
         WinnerSelector winnerSelector = new WinnerSelector();
         PlayerNameParser playerNameParser = new PlayerNameParser();
         RaceExecutor raceExecutor = new RaceExecutor();
         CarFactory carFactory = new CarFactory();
 
-        return new CarService(playerNameValidator, winnerSelector, playerNameParser, raceExecutor, carFactory);
+        return new CarService(playerNameValidator,moveCountValidator, winnerSelector,
+                playerNameParser, raceExecutor, carFactory);
     }
 
     public List<Car> playRounds(String playersName, int moveCount) {
         List<String> names = playerNameParser.splitByComma(playersName);
         playerNameValidator.validateName(names);
+        moveCountValidator.validateMoveCount(moveCount);
 
         List<Car> cars = carFactory.carGenerator(names);
         raceExecutor.raceStart(cars,moveCount);
