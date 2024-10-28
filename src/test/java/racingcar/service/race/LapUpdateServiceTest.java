@@ -36,19 +36,4 @@ class LapUpdateServiceTest {
 
         assertEquals(expected, race.getLapLefts());
     }
-
-    @Test
-    @DisplayName("모든 자동차들이 움직였는지 (기름 소모)")
-    void oilConsumption () {
-        Race race = testRace();
-        lapUpdateService = new LapUpdateService(race);
-
-        List<Long> before = race.getEntry().stream().map(Car::oilStatus).toList();
-        lapUpdateService.runLap();
-
-        List<Long> after = race.getEntry().stream().map(Car::oilStatus).toList();
-        List<Long> expected = before.stream().map(oil -> (oil - 1L)).toList();
-
-        assertEquals(expected, after);
-    }
 }

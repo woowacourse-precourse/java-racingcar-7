@@ -2,7 +2,7 @@ package racingcar.view.constant;
 
 public enum Output {
 
-    RESULT("실행 결과"),
+    RESULT_HEADLINE("실행 결과"),
     CAR_POSITION_FORMAT("%s : %s"),
     SEPARATOR_BLANK_LINES("\n"),
     WINNER_FORMAT("최종 우승자 : %s");
