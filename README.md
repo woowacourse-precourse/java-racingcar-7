@@ -66,7 +66,7 @@
 ## **플로우 차트**
 <img src="https://raw.githubusercontent.com/eraser502/java-racingcar-7/b4e7141eb78089ca7fcd36c9e6e1ea8c9a757a4c/Images/flowChart.svg" width="400px">
 
-## **클래스 설계**
+## **클래스 구조**
 
 ### **View**
 
@@ -74,55 +74,57 @@
     - readline() →`camp.nextstep.edu.missionutils.Console.readLine()`을 사용하여 사용자의 입력을 받음
     - close() →`camp.nextstep.edu.missionutils.Console.close()`사용하여 자원을 해제함
 - OutputView
-    - printCarNameInputMessage() → 자동차 이름을 입력받기 전 안내 메시지 출력
-    - printTrialCountInputMessage() → 시도할 횟수를 입력받기 전 안내 메시지 출력
-    - printRaceProcedure(String output) → 각 시행횟수마다 자동차의 이름, 위치(진행상황) 출력
-    - printRaceStatus() → 각 시행횟수마다 CarDTO 리스트에서 자동차 이름, 위치 출력
-    - printWinner(String output) → 최종 승자 출력
+    - `printCarNameInputMessage()` → 자동차 이름을 입력받기 전 안내 메시지 출력
+    - `printTrialCountInputMessage()` → 시도할 횟수를 입력받기 전 안내 메시지 출력
+    - `printRaceProcedure()` → 각 시행횟수마다 자동차의 이름, 위치(진행상황) 출력
+    - `printRaceStatus()` → 각 시행횟수마다 CarDTO 리스트에서 자동차 이름, 위치 출력
+    - `printWinner(String output)` → 최종 승자 출력
 
 ### **Domain**
 
 - Car
-    - 변수
-        - name → 자동차의 이름
-        - location → 차량의 현재 위치, 기본값 0
-        - moveCount → 총 시행횟수
-    - 메서드
-        - forward() → location + 1, moveCount - 1
-        - stop() → moveCount - 1
-        - validateTrialCount() →
+    - `name` → 자동차의 이름
+    - `location` → 차량의 현재 위치, 기본값 0
+    - `trialCount` → 총 시행횟수
+    - `forward()` → `location + 1`, `moveCount - 1`
+    - `stop()` → `moveCount - 1`
+    - `validateTrialCount()` → 이동 전에 `trialCount`가 남았는지 검증
 
 ### **DTO**
 
 - CarDTO(record) → 자동차의 이름과 위치정보를 갖는 DTO
-- RaceResultDTO(record) → 레이스의 승자 리스트와 각 시행횟수마다의 자동차의 이름, 위치 상태를 포함한`Map`을 갖는 DTO
+- RaceResultDTO(record) → 레이스의 승자 리스트와 각 시행횟수마다의 자동차의 이름, 위치 상태를 포함한`Map`을 갖는 `DTO`
 
 ### **Controller**
 
 - RacingController
-    - run() → 입력값 검증, 자동차 경기에 관련된 비즈니스 로직 호출
-    - getCarsName(String input) → 입력값을 ‘,’ 기준으로 분리한 문자열 리스트 반환
+    - `run()` → 입력값 검증, 자동차 경기에 관련된 비즈니스 로직 호출
+    - `splitCarNames()` → 입력값을 ‘,’ 기준으로 분리한 문자열 리스트 반환
+    - `getCarsName()`→ 자동차 이름 입력
+    - `getTrialCount()` → 총 시행 횟수 입력
+    - `validateInput()` → 입력값 검증
+    - `startRace()` → 자동차 경기 시작 로직
+    - `printRaceResults()` → 최종 결과 출력
 
 ### **Service**
 
 - RacingService
-    - startRace() → 자동차 경주 핵심 로직
-    - createCars() → Car 객체 리스트 생성
-    - getRaceProcedure() -> 각 시행 횟수 별 경기 정보 반환
-    - getRaceWinners() → 우승자 리스트 반환
-    - createCarDTOs() → Car 객체 리스트를 받아 CarDTO 리스트로 변환하여 반환
-    - isMovingForward() →`camp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()`을 이용하여 0 ~ 9 사이의 랜덤값을 뽑아, 그 랜덤값이
-      4 이상이면`true`, 이외의 경우에는`false`를 반환
-    - runRace(int trialCount) → 시행 횟수만큼 자동차 경기 진행 및 출력
+    - `startRace()` → 자동차 경주 핵심 로직
+    - `createCars()` → `Car` 객체 리스트 생성
+    - `getRaceProcedure()` -> 각 시행 횟수 별 경기 정보 반환
+    - `getRaceWinners()` → 우승자 리스트 반환
+    - `createCarDTOs()` → `Car` 객체 리스트를 받아 `CarDTO` 리스트로 변환하여 반환
+    - `isMovingForward()` →`camp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()`을 이용하여 0 ~ 9 사이의 랜덤값을 뽑아, 그 랜덤값이 4 이상이면`true`, 이외의 경우에는`false`를 반환
+    - `runRace()` → 시행 횟수만큼 자동차 경기 진행 및 출력
 
 ### **Validator**
 
 - InputValidator
-    - validateCarName() → 자동차 이름 입력값에 대한 검증
-    - validateCarNameLength() → 자동차 이름 길이에 대한 검증
-    - validateCarNameContainsNotAllowedCharacter() → 자동차 이름에 허용되지 않는 문자가 포함되었는지 검증
-    - validateCarNameCount() → 입력된 자동차 이름의 개수가 2개 이상인지 검증
-    - validateCarNameDuplication() → 자동차 이름 리스트에 중복이 있는지 검증
-    - validateTrialCount() → 시행 횟수 입력값에 대한 검증
-    - validateTrialCountInputType() → 시행 횟수 입력값이 숫자로 입력되었는지 검증
-    - validateTrialCountRange() → 시행 횟수가 1 이상의 값으로 입력되었는지 검증
+    - `validateCarName()` → 자동차 이름 입력값에 대한 검증
+    - `validateCarNameLength()` → 자동차 이름 길이에 대한 검증
+    - `validateCarNameContainsNotAllowedCharacter()` → 자동차 이름에 허용되지 않는 문자가 포함되었는지 검증
+    - `validateCarNameCount()` → 입력된 자동차 이름의 개수가 2개 이상인지 검증
+    - `validateCarNameDuplication()` → 자동차 이름 리스트에 중복이 있는지 검증
+    - `validateTrialCount()` → 시행 횟수 입력값에 대한 검증
+    - `validateTrialCountInputType()` → 시행 횟수 입력값이 숫자로 입력되었는지 검증
+    - `validateTrialCountRange()` → 시행 횟수가 1 이상의 값으로 입력되었는지 검증
