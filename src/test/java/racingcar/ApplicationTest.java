@@ -15,20 +15,91 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
+        //이름길이 예외 테스트
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 시도_횟수가_2이상인_경우_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "3");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 빈_입력값_예외_테스트() {
+        // 빈 이름 입력에 대해 예외가 발생하는지 검증
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("빈 입력 오류");
+        });
+    }
+
+    @Test
+    void 시도_횟수_예외_테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("시도횟수가 0 이하 오류");
+        });
+    }
+
+    @Test
+    void 공동_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,crong", "3");
+                    assertThat(output()).contains("pobi : --", "woni : --", "crong : --", "최종 우승자 : pobi, woni, crong");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+
+    @Test
+    void 중복_이름_예외_테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,pobi,woni", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("이름 중복 오류");
+        });
+    }
+
+    @Test
+    void 숫자_입력_예외_테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("pobi,woni", "a"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("시도횟수에 문자 입력 오류");
+        });
+    }
+
+    @Test
+    void 빈_이름_예외_테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("", "3"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("빈 입력 오류");
+        });
     }
 
     @Override
