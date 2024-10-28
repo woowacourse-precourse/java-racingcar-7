@@ -20,7 +20,7 @@ public class CarRacingGame {
         return carNames;
     }
 
-    private static void validateCarNames(List<String> carNames) {
+    public static void validateCarNames(List<String> carNames) {
         for (String name : carNames) {
             if (name.length() > MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
@@ -35,7 +35,7 @@ public class CarRacingGame {
         return attempts;
     }
 
-    private static int validateAttempts(String input) {
+    public static int validateAttempts(String input) {
         try {
             int attempts = Integer.parseInt(input);
             if (attempts <= 0) {
