@@ -7,4 +7,6 @@ public interface RacingcarRepository {
     void save(Car car);
 
     List<Car> getAllCar();
+
+    boolean existByName(String name);
 }

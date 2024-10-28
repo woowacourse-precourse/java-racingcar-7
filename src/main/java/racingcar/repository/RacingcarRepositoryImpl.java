@@ -20,4 +20,14 @@ public class RacingcarRepositoryImpl implements RacingcarRepository {
     public List<Car> getAllCar() {
         return this.cars;
     }
+
+    @Override
+    public boolean existByName(String name) {
+        for (Car car : cars) {
+            if (car.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

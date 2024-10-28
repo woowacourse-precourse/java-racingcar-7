@@ -47,6 +47,12 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("숫자가 아닌 값이 들어왔습니다.")
         );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("이미 존재하는 차 이름입니다.")
+        );
     }
 
     @Override

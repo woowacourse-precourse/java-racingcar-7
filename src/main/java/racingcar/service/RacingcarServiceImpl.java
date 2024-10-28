@@ -20,6 +20,9 @@ public class RacingcarServiceImpl implements RacingcarService {
 
         for (var carName : players) {
             CarNameValidator.validate(carName);
+            if (racingcarRepository.existByName(carName)) {
+                throw new IllegalArgumentException("이미 존재하는 차 이름입니다.");
+            }
             Car car = new Car(carName);
             racingcarRepository.save(car);
         }
