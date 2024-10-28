@@ -46,9 +46,9 @@ class GameTest extends NsTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi,woni,jun"})
     void 자동차목록을_구분자로_나눈다(String input) {
-        List<Car> carList = InputParser.stringToCarList(input);
+        List<Car> cars = InputParser.stringToCars(input);
 
-        assertThat(carList)
+        assertThat(cars)
                 .extracting(Car::getName)
                 .containsExactly("pobi", "woni", "jun");
     }
@@ -56,7 +56,7 @@ class GameTest extends NsTest {
     @ParameterizedTest
     @ValueSource(strings = {"일이삼사오육", "일이삼 사오"})
     void 자동차이름_제한_초과하면_예외발생(String input) {
-        assertThatThrownBy(() -> InputParser.stringToCarList(input))
+        assertThatThrownBy(() -> InputParser.stringToCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자 이하로 해주세요.");
     }
@@ -64,7 +64,7 @@ class GameTest extends NsTest {
     @ParameterizedTest
     @ValueSource(strings = {" ", "\t", "\n"})
     void 자동차이름_공백이면_예외발생(String input) {
-        assertThatThrownBy(() -> InputParser.stringToCarList(input))
+        assertThatThrownBy(() -> InputParser.stringToCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 공백을 허용하지 않습니다.");
     }
@@ -72,7 +72,7 @@ class GameTest extends NsTest {
     @ParameterizedTest
     @ValueSource(strings = {"po-bi", "wo/ni", "jun!!"})
     void 자동차이름_숫자문자이외_포함하면_예외발생(String input) {
-        assertThatThrownBy(() -> InputParser.stringToCarList(input))
+        assertThatThrownBy(() -> InputParser.stringToCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 숫자와 문자만 가능해요.");
     }
@@ -80,7 +80,7 @@ class GameTest extends NsTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi,pobi"})
     void 자동차이름_중복되면_예외발생(String input) {
-        assertThatThrownBy(() -> InputParser.stringToCarList(input))
+        assertThatThrownBy(() -> InputParser.stringToCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("dd");
     }

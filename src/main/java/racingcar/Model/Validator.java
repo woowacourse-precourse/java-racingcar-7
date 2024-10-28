@@ -42,7 +42,7 @@ public class Validator {
         }
     }
 
-    public static void carList(List<Car> carList) {
+    public static void cars(List<Car> carList) {
         namesUnique(carList);
         namesLength(carList);
         namesNotBlank(carList);

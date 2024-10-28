@@ -9,19 +9,19 @@ public class Race {
     private static final int DICE_END_NUMBER = 9;
     private static final int FORWARD_CONDITION = 4;
 
-    private List<Car> carList;
+    private List<Car> cars;
     private int round;
 
-    public List<Car> getCarList() {
-        return carList;
+    public List<Car> getCars() {
+        return cars;
     }
 
     public int getRound() {
         return round;
     }
 
-    public Race(List<Car> carList, int round) {
-        this.carList = carList;
+    public Race(List<Car> cars, int round) {
+        this.cars = cars;
         this.round = round;
     }
 
@@ -30,7 +30,7 @@ public class Race {
     }
 
     private void executeRound() {
-        for (Car car : carList) {
+        for (Car car : cars) {
             int dice = Randoms.pickNumberInRange(DICE_START_NUMBER, DICE_END_NUMBER);
             if (dice >= FORWARD_CONDITION) {
                 car.forward();
@@ -39,14 +39,14 @@ public class Race {
     }
 
     public List<Car> getWinners() {
-        int first = findFirstLocation(carList);
+        int first = findFirstLocation(cars);
         return getCarsAt(first);
     }
 
-    private int findFirstLocation(List<Car> carList) {
+    private int findFirstLocation(List<Car> cars) {
         int first = 0;
 
-        for (Car car : carList) {
+        for (Car car : cars) {
             first = Math.max(first, car.getLocation());
         }
 
@@ -54,14 +54,14 @@ public class Race {
     }
 
     private List<Car> getCarsAt(int location) {
-        List<Car> findCarList = new ArrayList<>();
+        List<Car> findCars = new ArrayList<>();
 
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (car.isAtLocation(location)) {
-                findCarList.add(car);
+                findCars.add(car);
             }
         }
 
-        return findCarList;
+        return findCars;
     }
 }

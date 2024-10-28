@@ -36,10 +36,10 @@ public class GameController {
         String input = inputView.requestCarNames();
         Validator.inputCarNames(input);
 
-        List<Car> carList = InputParser.stringToCarList(input);
-        Validator.carList(carList);
+        List<Car> cars = InputParser.stringToCars(input);
+        Validator.cars(cars);
 
-        return carList;
+        return cars;
     }
 
     private int readRounds() {
@@ -55,7 +55,7 @@ public class GameController {
         for (int i = 0; i < race.getRound(); i++) {
             race.play();
 
-            List<String> roundResultFormat = MessageFormatter.carStates(race.getCarList());
+            List<String> roundResultFormat = MessageFormatter.carStates(race.getCars());
             outputView.printMessages(roundResultFormat);
         }
     }

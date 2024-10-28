@@ -6,7 +6,7 @@ import java.util.List;
 public class InputParser {
     private static final String CARNAME_DELIMITER = ",";
 
-    public static List<Car> stringToCarList(String input) {
+    public static List<Car> stringToCars(String input) {
         List<Car> carList = new ArrayList<>();
 
         for (String carName : input.split(CARNAME_DELIMITER, -1)) {
