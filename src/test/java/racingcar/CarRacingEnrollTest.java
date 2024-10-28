@@ -70,6 +70,18 @@ class CarRacingEnrollTest {
     }
 
     @Test
+    public void 시도횟수_빈입력_예외테스트() throws Exception {
+        //Given
+        CarRacingEnroll carRacingEnroll = new CarRacingEnroll();
+        String input = "";
+
+        //When, Then
+        Assertions.assertThatCode(() -> carRacingEnroll.extractAttempt(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CarRacingEnroll.ATTEMPT_RANGE_EXCEPTION_MSG);
+    }
+
+    @Test
     public void 시도횟수_int범위초과_예외테스트() throws Exception {
         //Given
         CarRacingEnroll carRacingEnroll = new CarRacingEnroll();
