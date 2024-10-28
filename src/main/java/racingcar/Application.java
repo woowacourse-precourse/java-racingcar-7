@@ -36,6 +36,8 @@ public class Application {
             printRoundResult(Cars, hm);
             System.out.println();
         }
+
+        printWinners(Cars, hm);
     }
 
     //게임진행 구현
@@ -66,5 +68,27 @@ public class Application {
         }
         return sb.toString();
     }
+
+    // 우승자 출력
+    public static void printWinners(String[] Cars, Map<String, Integer> hm){
+        int maxScore = 0;
+
+        for (String k : Cars) {
+            maxScore = Integer.max(maxScore, hm.getOrDefault(k, 0));
+        }
+
+        ArrayList<String> winners = new ArrayList<>();
+
+        for (String car : Cars) {
+            if (maxScore == hm.getOrDefault(car, 0)) {
+                winners.add(car);
+            }
+        }
+
+
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(",", winners));
+    }
+
 
 }
