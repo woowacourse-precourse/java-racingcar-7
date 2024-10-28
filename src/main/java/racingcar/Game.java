@@ -48,4 +48,11 @@ public class Game {
         }
         racingcar.GameResult.printWinners(cars);   // 최종 우승자 출력
     }
+
+    void getPoint() {
+        // 자동차 이동 여부확인
+        for (racingcar.Car car : cars) {
+            car.point();    // 랜던 값으로 이동
+        }
+    }
 }
