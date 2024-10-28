@@ -16,8 +16,10 @@ public class Car {
     }
 
     private Boolean validateName(String name){
-        if(name == "")
+        if(name.isEmpty())
             throw new IllegalArgumentException(ErrorCode.NAME_EMPTY_ERROR.getMessage());
+        if (name.length() > 5)
+            throw new IllegalArgumentException(ErrorCode.NAME_LENGTH_ERROR.getMessage());
 
         return Boolean.TRUE;
     }
