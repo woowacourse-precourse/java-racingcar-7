@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.service.RacingService;
 import racingcar.service.IOService;
 import racingcar.model.RandomMoveStrategy;
@@ -23,6 +24,12 @@ public class RacingGameController {
 
         ioService.printProcess(racingService.getRounds());
         ioService.printWinners(racingService.getWinners());
+
+        releaseResources();
+    }
+
+    private void releaseResources() {
+        Console.close();
     }
 
 }
