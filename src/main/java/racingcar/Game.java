@@ -3,6 +3,7 @@ package racingcar;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Game {
@@ -18,6 +19,7 @@ public class Game {
         cars = parseCars(input);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
+        input = readLine();
         totalMoves = parseMoveCount(input);
 
         System.out.println("\n실행 결과");
@@ -30,19 +32,21 @@ public class Game {
         printWinners(cars);
     }
 
-    private List<Car> parseCars(String input){
+    List<Car> parseCars(String input){
+        if(input.isEmpty()){
+            throw new IllegalArgumentException("비어있는 문자열입니다.");
+        }
 
+        List<Car> cars = new ArrayList<>();
+        List<String> carsNames = Arrays.asList(input.split(","));
+        for(String carName : carsNames){
+            if(carName.length()>5){
+                throw new IllegalArgumentException("이름이 5글자 이상입니다.");
+            }
+            cars.add(new Car(carName));
+        }
+        return cars;
     }
 
-    private int parseMoveCount(String input){
 
-    }
-
-    private void printCarsPosition(List<Car> cars){
-
-    }
-
-    private void printWinners(List<Car> cars){
-
-    }
 }
