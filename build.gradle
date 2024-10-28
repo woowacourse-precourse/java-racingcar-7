@@ -18,6 +18,13 @@ repositories {
 
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.2.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.4.0' // Mockito JUnit 5 지원
+    testImplementation 'org.mockito:mockito-inline:5.4.0' // static 메서드 mocking 지원
+    testImplementation 'org.assertj:assertj-core:3.24.2' // AssertJ
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3' // JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3' // API 추가
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.9.3' // 엔진 추가
+    testImplementation 'org.junit.platform:junit-platform-suite-api:1.9.3' // Suite API 추가
 }
 
 test {
