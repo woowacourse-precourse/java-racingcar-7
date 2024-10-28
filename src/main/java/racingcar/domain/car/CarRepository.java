@@ -10,7 +10,7 @@ import static racingcar.global.Const.DUPLICATE_NAME;
 
 public class CarRepository {
 
-    private final Map<Name, Car> storedCars = new HashMap<>();
+    private final Map<Name, Car> storedCars = new LinkedHashMap<>();
 
     public Car save(Car car) {
         try {
@@ -42,6 +42,11 @@ public class CarRepository {
 
 
     public List<Car> findAll() {
+
+        List<Car> list = storedCars.values().stream().toList();
+        System.out.println("list.get(0) = " + list.get(0).getName().toString());
+        System.out.println("list.get(0) = " + list.get(1).getName().toString());
+
         return storedCars.values()
                 .stream()
                 .toList();

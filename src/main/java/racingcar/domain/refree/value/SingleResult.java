@@ -33,7 +33,7 @@ public class SingleResult {
     @Override
     public String toString() {
         return value.entrySet().stream()
-                .map(e -> String.format("%s : %s\n", e.getKey(), e.getValue().getTextValue()))
+                .map(e -> String.format("%s : %s%n", e.getKey(), e.getValue().getTextValue()))
                 .collect(Collectors.joining());
     }
 }

@@ -8,7 +8,7 @@ import static racingcar.global.Const.*;
 
 public class Car {
 
-    private Name name;
+    private final Name name;
     private Distance distance;
 
     private Car(Name name, Distance distance) {
@@ -36,5 +36,11 @@ public class Car {
         return distance;
     }
 
-
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name=" + name.toString() +
+                ", distance=" + distance.getValue() +
+                '}';
+    }
 }

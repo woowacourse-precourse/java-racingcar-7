@@ -2,15 +2,13 @@ package racingcar.domain.car.value;
 
 import java.util.Objects;
 
-public final class Name {
+public record Name(String value) {
 
-    private final String value;
     private static final String INVALID_NAME_FORM = "자동차 이름은 알파뱃으로만 작성해야 합니다.";
     private static final String INVALID_NAME_LENGTH = "자동차의 이름은 5자 이하로 작성하여야 합니다.";
 
-    public Name(String value) {
+    public Name {
         validate(value);
-        this.value = value;
     }
 
     private void validate(String value) {
@@ -30,8 +28,8 @@ public final class Name {
         }
     }
 
-
-    public String getValue() {
+    @Override
+    public String toString() {
         return value;
     }
 
