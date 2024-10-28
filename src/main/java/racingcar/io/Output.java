@@ -29,4 +29,8 @@ public class Output {
     public static void printProgressGuide() {
         printString("게임 진행 상황");
     }
+
+    public static void printWinner(String winners) {
+        printString("최종 우승자는 : " + winners);
+    }
 }

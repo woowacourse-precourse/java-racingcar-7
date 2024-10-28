@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.io.Input;
 import racingcar.io.Output;
 
@@ -11,6 +12,11 @@ public class RacingGame {
     public RacingGame() {
         this.racingCars = new RacingCars();
         gameCount = 0;
+    }
+
+    protected RacingGame(RacingCars racingCars, int gameCount) {
+        this.racingCars = racingCars;
+        this.gameCount = gameCount;
     }
 
     public void preparation() {
@@ -42,5 +48,10 @@ public class RacingGame {
         while (gameCount-- > 0) {
             progress();
         }
+    }
+
+    public void printWinner() {
+        List<String> winnerCars = racingCars.findFurthestCarsName();
+        Output.printWinner(String.join(", ", winnerCars));
     }
 }
