@@ -23,7 +23,6 @@ public class RacingcarController {
         racingcarView.printWinners(cars);
     }
     
-
     public List<String> carNameRun() {
         String rawCarName = racingcarView.carNameInput();
         List<String> parsedCarName = racingcarService.parseCarName(rawCarName);
