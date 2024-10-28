@@ -2,6 +2,7 @@ package racingcar.validator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.ExceptionCode;
 import racingcar.validator.NamesInputValidator;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -37,6 +38,14 @@ class NamesInputValidatorTest {
         assertThatThrownBy(() -> NamesInputValidator.validate("ab/c"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("차는 최소 2대 이상이어야 합니다");
+    }
+
+    @Test
+    @DisplayName("중복된 차 이름이 있을 경우 예외 발생")
+    void validateDistinctName() {
+        assertThatThrownBy(() -> NamesInputValidator.validate("ab,ab , c"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ExceptionCode.NAME_DUPLICATED.message());
     }
 
     @Test
