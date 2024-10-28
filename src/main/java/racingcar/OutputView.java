@@ -11,7 +11,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void displayWinner(List<String> result) {
+    public static void displayWinner(List<String> result) {
         System.out.print("최종 우승자 : ");
         for (int i = 0; i < result.size(); i++) {
             System.out.print(result.get(i));
