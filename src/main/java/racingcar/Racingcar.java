@@ -39,7 +39,7 @@ public class Racingcar {
         display.resultMsg();
     }
 
-    //한번 점수 넣기...
+    //한번 점수 넣기
     public void roundOne(Map<String, Integer> map) {
         for (String name : gm.getAllGamer()) {
             int number = sm.getRandomNumber();
