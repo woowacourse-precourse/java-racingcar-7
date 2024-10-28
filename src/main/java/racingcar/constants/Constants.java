@@ -20,4 +20,5 @@ public class Constants {
     public static final int MAX_RANDOM_NUMBER = 9;
     public static final int START_INDEX = 0;
     public static final int TRIM_LENGTH = 2;
+    public static final int INITIAL_DISTANCE = 0;
 }
