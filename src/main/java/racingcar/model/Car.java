@@ -22,10 +22,6 @@ public class Car {
         return moveCount;
     }
 
-    public void setMoveCount(List<Character> moveCount) {
-        this.moveCount = moveCount;
-    }
-
     public String getCarName() {
         return carName;
     }
