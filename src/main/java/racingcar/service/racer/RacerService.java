@@ -7,6 +7,14 @@ import racingcar.service.constant.RacingRules;
 
 public class RacerService {
 
+    public void pushOrHold(Car racingCar) {
+        if(pedaling()) boost(racingCar);
+    }
+
+    private void boost(Car racingCar) {
+        racingCar.accelerate();
+    }
+
     private Boolean pedaling() {
         return engineTorque() >= RacingRules.ENOUGH_TORQUE_OUTPUT.status();
     }
