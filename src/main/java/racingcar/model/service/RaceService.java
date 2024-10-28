@@ -2,6 +2,7 @@ package racingcar.model.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import racingcar.model.domain.AttemptNumber;
 import racingcar.model.domain.Car;
@@ -24,10 +25,11 @@ public class RaceService {
 	}
 
 	public void runRace() {
-		for (int i = 0; i < attemptNumber.getAttemptNumber(); i++) {
-			race.raceOnce();
-			OutputView.raceResult(race.getCars());
-		}
+		IntStream.range(0, attemptNumber.getAttemptNumber())
+			.forEach(i -> {
+				race.raceOnce();
+				OutputView.raceResult(race.getCars());
+			});
 	}
 
 	public List<String> getWinners() {
