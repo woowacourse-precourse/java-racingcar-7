@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import static racingcar.exception.ExceptionMessage.*;
 
 public class Car {
     private final String name;
@@ -21,10 +21,10 @@ public class Car {
 
     void validateCarName() {
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름을 올바르게 입력해주세요. 공백이나 빈 문자열은 허용하지 않습니다.");
+            throw new IllegalArgumentException(INVALID_CAR_NAME);
         }
         if (name.trim().length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException(CAR_NAME_TOO_LONG);
         }
     }
 

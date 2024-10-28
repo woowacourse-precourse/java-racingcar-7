@@ -1,5 +1,7 @@
 package racingcar.utils;
 
+import static racingcar.exception.ExceptionMessage.*;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -17,10 +19,10 @@ public class CarNameInputProcessor {
 
     private static void validateInput(String carNames) {
         if (carNames == null || carNames.trim().isEmpty()) {
-            throw new IllegalArgumentException("공백이나 빈 문자열은 허용하지 않습니다.");
+            throw new IllegalArgumentException(EMPTY_INPUT_ERROR);
         }
         if (carNames.trim().startsWith(",") || carNames.trim().endsWith(",")) {
-            throw new IllegalArgumentException("입력 값의 맨 앞이나 맨 뒤에 쉼표가 올 수 없습니다.");
+            throw new IllegalArgumentException(INVALID_COMMA_POSITION);
         }
     }
 }
