@@ -1,7 +1,7 @@
 package racingcar.controller;
 
-import racingcar.Domain.RacingCarGenetator;
-import racingcar.Domain.RacingCars;
+import racingcar.domain.RacingCarGenetator;
+import racingcar.domain.RacingCars;
 import racingcar.service.MoveCar;
 import racingcar.view.Input;
 import racingcar.view.Output;

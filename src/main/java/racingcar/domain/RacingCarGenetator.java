@@ -1,4 +1,4 @@
-package racingcar.Domain;
+package racingcar.domain;
 
 import racingcar.view.Input;
 
