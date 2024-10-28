@@ -35,22 +35,33 @@ class CarTests {
                 .doesNotThrowAnyException();
     }
 
-
-    static Stream<Arguments> isCanMove() {
+    private static Stream<Arguments> provideMoveConditions() {
         return Stream.of(
-                Arguments.of(true, 1),
-                Arguments.of(false, 0)
+                Arguments.of(new MustMoveConditionEvaluator(), 1),
+                Arguments.of(new MustNotMoveConditionEvaluator(), 0)
         );
     }
 
-    @ParameterizedTest(name = "isCanMove : {0}, 움직인 거리 : {1}")
-    @DisplayName("isCanMove가 true이면 전진, false이면 전진하지 않는다.")
-    @MethodSource("isCanMove")
-    void move(boolean isCanMove, int expected) {
-        Car car = Car.of("우테코");
+    @ParameterizedTest(name = "기대 이동 거리: {1}")
+    @DisplayName("MoveConditionEvaluator에서 isCanMove가 true이면 전진, false이면 전진하지 않는다.")
+    @MethodSource("provideMoveConditions")
+    void testsMoveBasedOnCondition(MoveConditionEvaluator moveConditionEvaluator, int expectedMoveCount) {
+        Car car = Car.of("우테코", moveConditionEvaluator);
+        car.tryMove();
+        assertThat(car.getMoveCount()).isEqualTo(expectedMoveCount);
+    }
 
-        car.tryMove(isCanMove);
+    private static class MustMoveConditionEvaluator implements MoveConditionEvaluator {
+        @Override
+        public boolean isCanMove() {
+            return true;
+        }
+    }
 
-        assertThat(car.getMoveCount()).isEqualTo(expected);
+    private static class MustNotMoveConditionEvaluator implements MoveConditionEvaluator {
+        @Override
+        public boolean isCanMove() {
+            return false;
+        }
     }
 }
