@@ -19,10 +19,15 @@ public class InputView {
     }
 
     public void validateNumber(String input) {
+        int number;
         try {
-            Integer.parseInt(input);
+            number = Integer.parseInt(input);
         } catch (NumberFormatException ex) {
             throw new IllegalArgumentException("시도할 횟수는 정수여야 합니다.");
+        }
+
+        if (number <= 0) {
+            throw new IllegalArgumentException("시도할 횟수는 0보다 커야 합니다.");
         }
     }
 }
