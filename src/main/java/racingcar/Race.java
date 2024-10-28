@@ -1,11 +1,19 @@
 package racingcar;
 
-import static racingcar.InputHandler.readRacingInfo;
+
+import static racingcar.CarCreator.createCar;
+import static racingcar.InputHandler.getNames;
+import static racingcar.InputHandler.getTryCount;
+
+import java.util.List;
 
 public class Race {
 
     public void start() {
-        readRacingInfo();
+
+        List<Car> cars = createCar(getNames());
+        int tryCount = getTryCount();
+
     }
 
 }
