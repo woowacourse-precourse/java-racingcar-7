@@ -51,7 +51,7 @@ public class RacingService {
 
     public void showWinner() {
         ArrayList<String> winners = getWinner();
-        System.out.println("최종 우승자 : " + String.join(",", winners));
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     private int getMaximumDistance() {
