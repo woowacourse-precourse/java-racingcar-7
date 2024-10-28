@@ -15,15 +15,15 @@ public class CarsInRace {
 
     public void startRaceOnce() {
         for (Car car : carsList) {
-            car.move();
+            car.move(MovementProvider.canMove());
         }
     }
 
-    public static List<Car> getCarsInRace() {
+    public List<Car> getCarsInRace() {
         return carsList;
     }
 
-    public static List<String> getWinnersName() {
+    public List<String> getWinnersName() {
         List<String> winnersName = new ArrayList<>();
 
         for (Car car : getWinners()) {
@@ -33,7 +33,7 @@ public class CarsInRace {
         return winnersName;
     }
 
-    private static List<Car> getWinners() {
+    private List<Car> getWinners() {
         int maxWinCount = carsList.stream()
                 .max(Comparator.comparingInt(Car::getWinCount))
                 .get()
