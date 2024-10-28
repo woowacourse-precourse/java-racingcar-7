@@ -13,10 +13,10 @@ public class GameService {
     }
 
     public void init(Integer round, List<String> carNames) {
-        this.game = Game.createGame(round, initCars(carNames));
+        this.game = Game.createGame(round, createRacingCars(carNames));
     }
 
-    public List<RacingCar> initCars(List<String> carNames) {
+    public List<RacingCar> createRacingCars(List<String> carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String name : carNames) {
             racingCars.add(RacingCar.createRacingCar(name));

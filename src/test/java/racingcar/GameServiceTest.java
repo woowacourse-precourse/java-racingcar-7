@@ -63,7 +63,7 @@ class GameServiceTest {
             racingCarsName.add("yuze");
 
             // when
-            List<RacingCar> racingCars = gameService.initCars(racingCarsName);
+            List<RacingCar> racingCars = gameService.createRacingCars(racingCarsName);
 
             // then
             for (int i = 0; i < racingCars.size(); i++) {
