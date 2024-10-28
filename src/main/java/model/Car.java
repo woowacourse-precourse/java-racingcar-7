@@ -1,4 +1,4 @@
-package racingcar;
+package model;
 
 public class Car {
 
@@ -44,3 +44,4 @@ public class Car {
         return randomValue;
     }
 }
+

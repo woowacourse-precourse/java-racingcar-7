@@ -1,12 +1,12 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import controller.CarController;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
-import org.junit.jupiter.api.DisplayName;
+import model.Car;
 import org.junit.jupiter.api.Test;
+import service.CarService;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -41,15 +41,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void testInputCarNames() {
-        String carNamesInput = "포르쉐,페라리,람보르기니";
-        List<Car> cars = new ArrayList<>();
-        StringTokenizer tokenizer = new StringTokenizer(carNamesInput, ",");
+    public void inputCarNamesTest() {
+        CarController carController = new CarController();
 
-        while (tokenizer.hasMoreTokens()) {
-            String carName = tokenizer.nextToken();
-            cars.add(new Car(carName));
-        }
+        String carNamesInput = "포르쉐,페라리,람보르기니";
+
+        List<Car> cars = carController.createCars(carNamesInput);
 
         assertEquals(3, cars.size());
         assertEquals("포르쉐", cars.get(0).getName());
@@ -58,49 +55,37 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void inputRaceCountTest() {
-        String NumberOfRace = "3";
-        int raceCount = Integer.parseInt(NumberOfRace);
-        assertEquals(3, raceCount);
-    }
-
-    @Test
     public void CarValueAssignerTest() {
+
+        CarService carService = new CarService();
 
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("포르쉐"));
         cars.add(new Car("페라리"));
         cars.add(new Car("람보르기니"));
 
-        int raceCount = 3;
-        CarValueAssigner carValueAssigner = new CarValueAssigner();
+        carService.assignRandomValueToAllCars(cars);
 
-        for (int i = 0; i < raceCount; i++) {
-            carValueAssigner.assignRandomValue(cars); // 랜덤 값 할당
-
-            for (Car car : cars) {
-                int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
-                assertTrue(randomValue >= 1 && randomValue <= 10); // 범위 확인
-            }
+        for (Car car : cars) {
+            int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
+            assertTrue(randomValue >= 1 && randomValue <= 10); // 범위 확인
         }
-
     }
 
     @Test
     public void updateScoreBasedOnComparisonTest() {
+
+        CarService carService = new CarService();
 
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("포르쉐", 4));
         cars.add(new Car("페라리", 5));
         cars.add(new Car("람보르기니", 3));
 
-        int raceCount = 3;
-        CarValueAssigner carValueAssigner = new CarValueAssigner();
-
-            for (Car car : cars) {
-                int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
-                carValueAssigner.updateScoreBasedOnComparison(car, randomValue);
-            }
+        for (Car car : cars) {
+            int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
+            carService.updateScoreIfNeeded(car, car.getRandomValue());
+        }
 
         assertEquals(1, cars.get(0).getScore());
         assertEquals(1, cars.get(1).getScore());
@@ -111,24 +96,19 @@ class ApplicationTest extends NsTest {
     @Test
     public void displayRoundScoresTest() {
 
+        CarService carService = new CarService();
+
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("포르쉐", 4));
         cars.add(new Car("페라리", 5));
         cars.add(new Car("람보르기니", 3));
 
-        int raceCount = 2;
-        CarValueAssigner carValueAssigner = new CarValueAssigner();
-
-        for (int i = 0; i < raceCount; i++) {
-            carValueAssigner.assignRandomValue(cars); // 랜덤 값 할당
-
-            for (Car car : cars) {
-                int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
-                carValueAssigner.updateScoreBasedOnComparison(car, randomValue);
-            }
-
-            assertThat(output()).contains("포르쉐 : -", "페라리 : -", "람보르기니 : ");
+        for (Car car : cars) {
+            int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
+            carService.updateScoreIfNeeded(car, randomValue);
         }
+
+        assertThat(output()).contains("포르쉐 : -", "페라리 : -", "람보르기니 :");
 
     }
 
@@ -137,22 +117,21 @@ class ApplicationTest extends NsTest {
 
         List<Car> cars = new ArrayList<>();
 
-        CarValueAssigner carValueAssigner = new CarValueAssigner();
+        CarController carController = new CarController();
         cars.add(new Car("포르쉐", 4, 3));
         cars.add(new Car("페라리", 5, 3));
         cars.add(new Car("람보르기니", 3, 1));
 
-        carValueAssigner.displayWinner(cars);
+        carController.displayWinners(cars);
 
         assertThat(output()).contains("최종 우승자 : 포르쉐, 페라리");
 
     }
 
 
-
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
     }
+
 }
