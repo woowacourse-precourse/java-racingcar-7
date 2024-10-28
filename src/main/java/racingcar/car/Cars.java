@@ -6,7 +6,11 @@ import java.util.stream.Collectors;
 
 public class Cars {
 	private List<Car> cars = new ArrayList<>();
+
 	public Cars(String carNames) {
+		if (carNames == null || carNames.isEmpty()){
+			throw new IllegalArgumentException("빈 값은 입력할 수 없습니다"); 
+		}
 		String[] carNameArray = carNames.split(",");
 		for (String carName : carNameArray) {
 			cars.add(new Car(carName));
