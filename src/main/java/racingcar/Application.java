@@ -8,9 +8,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-
-        String carNamesInput = Console.readLine();
+        String carNamesInput = View.scanCarNames();
         Validator.validateNameEmpty(carNamesInput);
 
         String[] names = carNamesInput.split(",");
@@ -24,24 +22,23 @@ public class Application {
             cars.add(new Car(trimName, ""));
         }
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-
-        String attemptCountInput = Console.readLine();
+        String attemptCountInput = View.scanAttemptCount(cars);
         int attemptCount = Validator.validateAndParseInteger(attemptCountInput);
         Validator.validatePositive(attemptCount);
 
-        System.out.println("\n실행 결과");
+        startRace(cars, attemptCount);
 
+        List<String> winners = getWinners(cars, getMaxDistance(cars));
+        View.printWinners(winners);
+    }
+
+    static void startRace(List<Car> cars, int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
             moveCars(cars);
-            printCarsProgress(cars);
+            View.printCarsProgress(cars);
         }
-
-        int maxDistance = getMaxDistance(cars);
-        List<String> winners = getWinners(cars, maxDistance);
-
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
+
     static void moveCars(List<Car> cars) {
         for (Car car : cars) {
             if (canMove()) {
@@ -52,13 +49,6 @@ public class Application {
 
     static boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
-    }
-
-    static void printCarsProgress(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + car.getProgress());
-        }
-        System.out.println();
     }
 
     static int getMaxDistance(List<Car> cars) {
