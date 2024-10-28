@@ -11,6 +11,9 @@ public class GameConfigParser {
             if (name.isBlank()) {
                 throw new IllegalArgumentException("자동차 이름으로 공백은 허용되지 않습니다.");
             }
+            if (name.trim().length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
             carNames.add(name);
         }
         if (carNames.isEmpty()) {
