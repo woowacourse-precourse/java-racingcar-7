@@ -30,7 +30,7 @@ class RacingGameTest {
     }
 
     @Test
-    void start_결과_반환_성공() {
+    void 모든_라운드_결과_반환_성공() {
         Assertions.assertSimpleTest(() -> {
             //given
             List<String> carNames = Arrays.asList("car1", "car2");
@@ -67,4 +67,23 @@ class RacingGameTest {
             assertThat(winners.get(0).getName()).isEqualTo("car1");
         });
     }
+
+    @Test
+    void 우승자_여러명일때_결과_반환_성공() {
+        Assertions.assertSimpleTest(() -> {
+            //given
+            Car car1 = new Car("car1", 1);
+            Car car2 = new Car("car2", 1);
+            RacingGame racingGame = new RacingGame(1, Arrays.asList(car1, car2));
+
+            //when
+            List<Car> winners = racingGame.selectWinners();
+
+            //then
+            assertThat(winners.size()).isEqualTo(2);
+            assertThat(winners.get(0).getName()).isEqualTo("car1");
+            assertThat(winners.get(1).getName()).isEqualTo("car2");
+        });
+    }
+
 }
