@@ -28,7 +28,18 @@ public class Application {
 
     private static int initInputTry() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        int tryNum = getTryNum();
+        return tryNum;
+    }
+
+    private static int getTryNum() {
+        int tryNum;
+        try{
+            tryNum = notZero(Integer.parseInt(Console.readLine()));
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("정상적인 숫자가 입력되지 않았습니다.");
+        }
+        return tryNum;
     }
 
     private static String[] initGame() {
@@ -38,6 +49,15 @@ public class Application {
         String[] carListName = inputCarName.split(",");
         return carListName;
     }
+
+    private static int notZero(int tryNum){
+        if(tryNum == 0){
+            throw new IllegalArgumentException("0 입력은 옳지 않습니다.");
+        }
+        return tryNum;
+    }
+
+
 
     private static void carsMove(int inputTry, ArrayList<Car> cars) {
         for (int i = 0; i < inputTry; i++) {
@@ -50,7 +70,7 @@ public class Application {
         }
     }
 
-    private static ArrayList<Car> initCarList(String[] carListName) {
+    public static ArrayList<Car> initCarList(String[] carListName) {
         ArrayList<Car> carList = new ArrayList<>();
 
         for (String carName : carListName) {
@@ -59,7 +79,7 @@ public class Application {
         return carList;
     }
 
-    private static String findWinners(ArrayList<Car> cars) {
+    public static String findWinners(ArrayList<Car> cars) {
         StringBuilder sb = new StringBuilder();
         int maxDistance = 0;
 
