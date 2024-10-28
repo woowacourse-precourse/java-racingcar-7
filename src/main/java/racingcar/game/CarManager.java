@@ -1,31 +1,25 @@
 package racingcar.game;
 
-import racingcar.exception.Validator;
 import racingcar.util.Printer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class CarList {
-    private static final String DELIMITER = ",";
+public class CarManager {
     private static final String WINNER_FORMAT = ", ";
     private static final int SINGLE_WINNER = 1;
 
     private final List<Car> list;
 
-    public CarList() {
-        this.list = new ArrayList<>();
+    private CarManager(List<String> carNames) {
+        this.list = carNames.stream()
+                .map(Car::generateCars)
+                .toList();
     }
-
-    public void add(String carNames) {
-        Validator.validateDelimiterFormatAndSingleRacer(carNames);
-        Arrays.stream(carNames.split(DELIMITER))
-                .map(Validator::validateNameLength)
-                .map(Car::generateCars) // new Car(carNames)
-                .forEach(list::add);
+    public static CarManager createManager(List<String> carNames) {
+        return new CarManager(carNames);
     }
 
     public List<Car> moveCars(int count) {
