@@ -8,7 +8,7 @@ public class Application {
         List<String> carNames = inputCarNameHandler.getCarNames();
 
         InputAttemptHandler inputAttemptHandler = new InputAttemptHandler();
-        int attemptCount = inputAttemptHandler.getAttempCount();
+        int attemptCount = inputAttemptHandler.getAttemptCount();
         System.out.println();
 
         CarRace carRace = new CarRace();
