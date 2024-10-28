@@ -17,7 +17,9 @@ public class RacingGame {
 
         while (turn-- > 0) {
             cars.forEach(Car::randomMove);
-            cars.forEach(Car::displayPosition);
+            cars.stream()
+                    .map(Car::displayPosition)
+                    .forEach(System.out::println);
             System.out.println();
         }
 
