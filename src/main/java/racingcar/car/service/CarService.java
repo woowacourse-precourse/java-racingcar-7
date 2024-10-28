@@ -5,6 +5,7 @@ import static racingcar.car.constant.RacingLimit.*;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.car.constant.RacingLimit;
 import racingcar.car.domain.Car;
 import racingcar.car.repository.CarRepository;
 import racingcar.car.service.dto.CarCreateReqDto;
@@ -35,6 +36,9 @@ public class CarService {
 				return Car.from(carCreateReqDto);
 			})
 			.toList();
+		if (cars.size() > MAX_CAR.getNumber()) {
+			throw new IllegalArgumentException(ErrorStatus.OVER_HUNDRED_CAR.getMessage());
+		}
 		carRepository.saveAll(cars);
 	}
 

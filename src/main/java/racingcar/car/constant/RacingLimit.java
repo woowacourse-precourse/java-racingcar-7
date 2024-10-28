@@ -5,7 +5,7 @@ public enum RacingLimit {
 	MAX_COUNT(9999),
 
 	MAX_CAR_NAME_LENGTH(5),
-	MAX_CAR(100),
+	MAX_CAR(99),
 
 	RANDOM_MIN(1),
 	RANDOM_MAX(9),
