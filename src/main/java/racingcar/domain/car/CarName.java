@@ -15,6 +15,10 @@ public class CarName {
         return new CarName(name);
     }
 
+    public String getName() {
+        return name;
+    }
+
     private void validateCarName(final String name) {
         validateIsBlank(name);
         validateLength(name);
@@ -30,10 +34,6 @@ public class CarName {
         if (name.isBlank()) {
             throw new IllegalArgumentException("[ERROR] 공백을 이름으로 사용할 수 없습니다");
         }
-    }
-
-    public String getName() {
-        return name;
     }
 
     @Override

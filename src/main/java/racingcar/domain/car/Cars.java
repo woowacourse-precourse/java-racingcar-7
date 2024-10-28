@@ -21,12 +21,6 @@ public class Cars {
         return new Cars(carNames);
     }
 
-    private void validateHasDuplicates() {
-        if (cars.size() != cars.stream().distinct().count()) {
-            throw new IllegalArgumentException("자동차의 이름은 중복될 수 없습니다");
-        }
-    }
-
     public CarsResultDto race(final Race race) {
         List<CarResultDto> carResultDtos = new ArrayList<>();
         for (Car car : cars) {
@@ -35,17 +29,23 @@ public class Cars {
         return new CarsResultDto(carResultDtos);
     }
 
-    private List<Car> createCars(final String carNames) {
-        return Arrays.stream(carNames.split(SPLIT_DELIMITER))
-                .map(Car::of)
-                .toList();
-    }
-
     public List<String> getWinners() {
         int maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.isMaxPosition(maxPosition))
                 .map(Car::getName)
+                .toList();
+    }
+
+    private void validateHasDuplicates() {
+        if (cars.size() != cars.stream().distinct().count()) {
+            throw new IllegalArgumentException("자동차의 이름은 중복될 수 없습니다");
+        }
+    }
+
+    private List<Car> createCars(final String carNames) {
+        return Arrays.stream(carNames.split(SPLIT_DELIMITER))
+                .map(Car::of)
                 .toList();
     }
 

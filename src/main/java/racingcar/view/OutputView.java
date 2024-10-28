@@ -23,7 +23,7 @@ public class OutputView {
         System.out.println(output.message);
     }
 
-    public void printResult(RaceResultDto raceResultDto) {
+    public void printResult(final RaceResultDto raceResultDto) {
         System.out.println(NEW_LINE.message + RESULT_HEADER.message);
         raceResultDto.carsResultDtos().forEach(carsResultDto -> {
             carsResultDto.carResultDtos().forEach(carResultDto -> {
