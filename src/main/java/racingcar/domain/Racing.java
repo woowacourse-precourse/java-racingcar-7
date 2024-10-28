@@ -35,6 +35,8 @@ public class Racing {
         outputHandler.printRoundRequest();
 
         round.updateRound(inputHandler.inputRoundNumber());
+        outputHandler.printNewLine();
+        outputHandler.printExecutionResult();
 
         for (int i = 0; i < round.getRound(); i++) {
             cars.moveForward();

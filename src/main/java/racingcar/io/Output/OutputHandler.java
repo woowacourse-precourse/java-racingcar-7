@@ -8,6 +8,8 @@ public interface OutputHandler {
 
     void printRoundRequest();
 
+    void printExecutionResult();
+
     void printCarProgress(String carName, int position);
 
     void printWinners(List<Car> winners);

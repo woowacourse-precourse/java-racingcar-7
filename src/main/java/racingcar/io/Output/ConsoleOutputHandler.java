@@ -31,6 +31,11 @@ public class ConsoleOutputHandler implements OutputHandler {
     }
 
     @Override
+    public void printExecutionResult() {
+        System.out.println("실행 결과");
+    }
+
+    @Override
     public void printWinners(List<Car> winners) {
         System.out.print(WINNERS_MESSAGE);
 
