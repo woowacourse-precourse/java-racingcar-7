@@ -11,6 +11,12 @@ import java.util.Map;
 public class RacingCarService {
     private static final String FORWARD_MARK = "-";
 
+    public List<Map<String, String>> racing(String carName, int attemptCount) {
+        Map<String, String> cars = validateCarNames(carName);
+
+        return move(cars, attemptCount);
+    }
+
     public Map<String, String> validateCarNames(String carName) {
         Map<String, String> cars = new HashMap<>();
 
