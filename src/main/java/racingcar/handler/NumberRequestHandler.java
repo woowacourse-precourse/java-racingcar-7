@@ -20,10 +20,9 @@ public class NumberRequestHandler {
     public long convertToLong(String rawNumber) {
         if (rawNumber.matches("\\d+")) {
             return Long.parseLong(rawNumber);
-        } else {
-            throwException(INVALID_NUMBER_ERROR);
-            return -1L;
         }
+        throwException(INVALID_NUMBER_ERROR);
+        return -1L;
     }
 
     public void validateNegative(long rawNumber) {
