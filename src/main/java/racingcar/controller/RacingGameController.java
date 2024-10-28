@@ -11,10 +11,10 @@ import racingcar.view.*;
 public class RacingGameController {
     public void run() {
         List<String> carNames = setCarNames();
-        int moveCount = setTotalRounds();
+        int totalRounds = setTotalRounds();
         Console.close();
         RacingGame racingGame = new RacingGame(carNames);
-        startGame(racingGame, moveCount);
+        startGame(racingGame, totalRounds);
     }
 
     List<String> setCarNames() {
