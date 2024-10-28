@@ -1,4 +1,4 @@
-package racingcar.operator;
+package racingcar.module;
 
 import racingcar.user.UserObject;
 
@@ -10,15 +10,9 @@ public class GameEngine {
     }
 
     public void scoreUpdate(UserObject user) {
-        if (checkScoreEligibility()) {
+        if (randomNum >= 4) {
             user.updateUserScore();
         }
     }
 
-    private boolean checkScoreEligibility() {
-        if (randomNum >= 4) {
-            return true;
-        }
-        return false;
-    }
 }
