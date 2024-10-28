@@ -1,7 +1,9 @@
 package racingcar.model;
 
+import racingcar.constant.AppConstants;
+import racingcar.constant.ErrorMessage;
+
 public class Car {
-    private static final int MOVE_THRESHOLD = 4;
     private final String name;
     private int position;
 
@@ -20,14 +22,14 @@ public class Car {
     }
 
     public void move(int randomValue) {
-        if (randomValue >= MOVE_THRESHOLD) {
+        if (randomValue >= AppConstants.MOVE_THRESHOLD) {
             position++;
         }
     }
 
     private void validateName(String name) {
-        if (name == null || name.isEmpty() || name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+        if (name == null || name.isEmpty() || name.length() > AppConstants.CAR_NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME.getMessage());
         }
     }
 }

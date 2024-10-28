@@ -1,6 +1,7 @@
 package racingcar.constant;
 
 public enum ErrorMessage {
+    INVALID_CAR_NAME("자동차 이름은 1자 이상 5자 이하만 가능합니다."),
     DELIMITER_CANNOT_BE_CONSECUTIVE("구분자는 연속으로 사용될 수 없습니다."),
     DELIMITER_CANNOT_BE_AT_START_OR_END("구분자는 입력의 시작이나 끝에 위치할 수 없습니다."),
     MUST_BE_NUMERIC("유효한 숫자를 입력해야 합니다."),
