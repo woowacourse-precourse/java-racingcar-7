@@ -47,7 +47,7 @@ public class InputParserTest {
         assertEquals(8, InputParser.parseMaxRound("8"));
         assertEquals(9, InputParser.parseMaxRound("9"));
         assertEquals(10, InputParser.parseMaxRound("10"));
-        assertEquals(10, InputParser.parseMaxRound("100"));
+        assertEquals(100, InputParser.parseMaxRound("100"));
     }
 
     @Test
