@@ -1,10 +1,11 @@
 package racingcar.controller;
 
+import static racingcar.utils.TotalRoundsInputProcessor.parseTotalRounds;
+
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.utils.CarNameInputProcessor;
-import racingcar.utils.TotalRoundsInputProcessor;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -24,8 +25,7 @@ public class RacingGameController {
 
     int setTotalRounds() {
         String totalRounds = InputView.getTotalRounds();
-        TotalRoundsInputProcessor moveInputProcessor = new TotalRoundsInputProcessor(totalRounds);
-        return moveInputProcessor.getTotalRounds();
+        return parseTotalRounds(totalRounds);
     }
 
     void startGame(RacingGame racingGame, int moveCount) {
