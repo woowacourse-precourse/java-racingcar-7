@@ -18,7 +18,7 @@
     - [x] GameController
 - Test
     - [x] CarNameTest
-    - [ ] MovementTest
+    - [x] MovementTest
     - [ ] ProgressResultGeneratorTest
     - [ ] WinnerDeterminerTest
     - [ ] WinnerResultGeneratorTest
