@@ -34,8 +34,23 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] Nobody is in game");
         }
 
+        // input iterations
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String iterationNumberRaw = Console.readLine();
+        iterationNumberRaw = iterationNumberRaw.strip();
+        int iterationNumber;
+        try {
+            iterationNumber = Integer.parseInt(iterationNumberRaw);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] Failed to parse \"" + iterationNumberRaw + "\" into integer.");
+        }
+        if (iterationNumber <= 0) {
+            throw new IllegalArgumentException("[ERROR] You must enter positive integer.");
+        }
+
         // Temporary output
         System.out.println(cars);
+        System.out.println(iterationNumber);
 
         // TODO: Process iterationNumberRaw
 
