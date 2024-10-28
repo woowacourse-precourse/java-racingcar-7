@@ -1,5 +1,9 @@
 # java-racingcar-precourse
 
+## 아키텍처
+![image](https://github.com/user-attachments/assets/62c37655-c06d-4daa-8934-142c6ebaefdc)
+
+## 기능
 - [ ] 경주할 자동차 이름(쉼표 기준으로 구분) 입력받기
 - [ ] 쉼표로 구분할 수 없거나 이름이 5자가 넘는다면 IllegalArgumentException 예외 발생
 - [ ] 시도할 횟수 입력받기
