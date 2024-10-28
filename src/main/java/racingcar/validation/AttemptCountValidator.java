@@ -6,7 +6,7 @@ public class AttemptCountValidator implements Validator {
     public void validate(String attemptCount) {
         validateNotBlank(attemptCount);
         validateDigitOnly(attemptCount);
-        validateLongRange(attemptCount);
+        validateRange(attemptCount);
         validatePositive(attemptCount);
     }
 
@@ -22,9 +22,9 @@ public class AttemptCountValidator implements Validator {
         }
     }
 
-    private void validateLongRange(String attemptCount) {
+    private void validateRange(String attemptCount) {
         try {
-            Long.parseLong(attemptCount);
+            Integer.parseInt(attemptCount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수가 너무 큽니다.");
         }
