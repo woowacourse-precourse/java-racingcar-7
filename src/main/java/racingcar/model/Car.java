@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.model.strategy.IntGeneratorStrategy;
+
 public class Car {
     private static final int MINIMUM_CAN_MOVE_CONDITION = 4;
     private static final int ONE_FORWARD_MOVE_DISTANCE = 1;
