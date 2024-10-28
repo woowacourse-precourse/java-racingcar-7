@@ -12,13 +12,14 @@ import racingcar.util.Format;
 public class OutputView {
 
     public static void printRoundResults(List<RoundResultDto> roundResults) {
-        System.out.println(OUTPUT_MESSAGE);
+        System.out.println(OUTPUT_MESSAGE.getMessage());
         roundResults.forEach(OutputView::printRoundResult);
     }
 
     private static void printRoundResult(RoundResultDto roundResult) {
         List<CarSnapShot> carSnapShots = roundResult.getCarSnapShots();
         carSnapShots.forEach(OutputView::printCarSnapShot);
+        System.out.println();
     }
 
     private static void printCarSnapShot(CarSnapShot carSnapShot) {

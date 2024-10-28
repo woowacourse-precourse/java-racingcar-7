@@ -9,8 +9,7 @@ public class Format {
     public static String joinCarStatus(CarSnapShot carSnapShot) {
         return carSnapShot.getName()
                 + " : "
-                + "-".repeat(carSnapShot.getPosition())
-                + "\n";
+                + "-".repeat(carSnapShot.getPosition());
     }
 
     public static String joinWinners(WinnerDto winners) {
