@@ -40,7 +40,7 @@ public class OutputViewTest {
                     put("jun", 3);
                 }}
         );
-        String expectedOutput = """
+        String expected = """
                 실행 결과
                 pobi : -
                 woni :\s
@@ -57,20 +57,20 @@ public class OutputViewTest {
                 """;
 
         outputView.printRecord(record);
-        String actualOutput = outputStreamCaptor.toString().replaceAll("\\r\\n", "\n").replaceAll("\\r", "\n");
+        String result = outputStreamCaptor.toString().replaceAll("\\r\\n", "\n").replaceAll("\\r", "\n");
 
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expected, result);
     }
 
     @Test
     @DisplayName("최종 우승자 출력 테스트")
     public void printWinnersTest() {
         List<String> winners = Arrays.asList("pobi", "jun");
-        String expectedOutput = "최종 우승자 : pobi, jun\n";
+        String expected = "최종 우승자 : pobi, jun\n";
 
         outputView.printWinners(winners);
-        String actualOutput = outputStreamCaptor.toString().replaceAll("\\r\\n", "\n").replaceAll("\\r", "\n");
+        String result = outputStreamCaptor.toString().replaceAll("\\r\\n", "\n").replaceAll("\\r", "\n");
 
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expected, result);
     }
 }
