@@ -20,4 +20,8 @@ public class CarService {
     public Map<String, Integer> getCarsInfo() {
         return cars.getInformation();
     }
+
+    public List<String> getWinners() {
+        return cars.getWinners();
+    }
 }
