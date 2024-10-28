@@ -11,8 +11,8 @@ public class RaceController {
 
         String attemptsInput = inputNumberOfAttempts();
         Attempts attempts = new Attempts(attemptsInput);
-
         CarRace carRace = new CarRace(cars, attempts);
+
         OutputView.printStartGame();
 
         while (attempts.isNotEndGame()) {
