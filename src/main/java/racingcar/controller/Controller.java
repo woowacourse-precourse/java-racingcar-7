@@ -14,15 +14,11 @@ public class Controller {
 
     private final OutputView outputView;
     private final InputView inputView;
-
     private final ArgumentResolver<List<String>> carArgumentResolver;
     private final ArgumentResolver<Integer> attemptCountArgumentResolver;
-
     private final Validator<List<String>> sizeValidator;
     private final Validator<Integer> rangeValidator;
-
     private final AllCarMover allCarMover;
-
     private final WinnersDecider winnersDecider;
 
     public Controller(
@@ -46,30 +42,48 @@ public class Controller {
     }
 
     public void run() {
+        List<Car> cars = getCarsFromInput();
+        int attemptCount = getAttemptCountFromInput();
+        runRace(cars, attemptCount);
+        printWinners(cars);
+    }
+
+    private List<Car> getCarsFromInput() {
         outputView.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String racingCarNamesRequest = inputView.read();
 
         List<String> carNames = carArgumentResolver.parse(racingCarNamesRequest);
         sizeValidator.check(carNames);
-        List<Car> cars = CarConverter.toCars(carNames);
 
+        return CarConverter.toCars(carNames);
+    }
+
+    private int getAttemptCountFromInput() {
         outputView.println("시도할 횟수는 몇 회인가요?");
         String attemptCountRequest = inputView.read();
+
         int attemptCount = attemptCountArgumentResolver.parse(attemptCountRequest);
         rangeValidator.check(attemptCount);
 
+        return attemptCount;
+    }
+
+    private void runRace(List<Car> cars, int attemptCount) {
         outputView.endLine();
         outputView.println("실행 결과");
+
         for (int count = 0; count < attemptCount; count++) {
             allCarMover.run(cars);
             outputView.printCarsStatus(cars);
             outputView.endLine();
         }
-
-        outputView.print("최종 우승자 : ");
-        List<Car> winners = winnersDecider.run(cars);
-        List<String> winnerNames = CarConverter.toNames(winners);
-        outputView.printNames(winnerNames);
     }
 
+    private void printWinners(List<Car> cars) {
+        List<Car> winners = winnersDecider.run(cars);
+        List<String> winnerNames = CarConverter.toNames(winners);
+
+        outputView.print("최종 우승자 : ");
+        outputView.printNames(winnerNames);
+    }
 }
