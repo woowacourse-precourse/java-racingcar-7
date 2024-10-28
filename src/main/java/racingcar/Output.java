@@ -10,6 +10,8 @@ public class Output {
             "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String NUMBER_REQUEST_MESSAGE =
             "시도할 횟수는 몇 회인가요?";
+    private static final String RUN_RESULT_MESSAGE =
+            "\\n실행 결과";
 
     public static void printCarNameRequestMessage(){
         System.out.println(CAR_NAME_REQUEST_MESSAGE);
@@ -20,6 +22,6 @@ public class Output {
     }
 
     public static void printRunResultMessage(){
-        System.out.println("\\n실행 결과");
+        System.out.println(RUN_RESULT_MESSAGE);
     }
 }
