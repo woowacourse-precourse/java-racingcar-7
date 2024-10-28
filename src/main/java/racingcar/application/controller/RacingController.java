@@ -38,4 +38,10 @@ public class RacingController {
       outputView.printRaceState(currentRaceState);
     }
   }
+
+  public void displayWinners() {
+
+    List<String> winners = racingService.getWinners();
+    outputView.printWinners(winners);
+  }
 }
