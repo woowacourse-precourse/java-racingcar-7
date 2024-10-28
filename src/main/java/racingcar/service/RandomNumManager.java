@@ -8,7 +8,7 @@ public class RandomNumManager {
     private static final int MOVE_FORWARD_CONDITION = 4;
 
     public static boolean isSatisfyForwardCondition(int number) {
-        return number > MOVE_FORWARD_CONDITION;
+        return number >= MOVE_FORWARD_CONDITION;
     }
 
     public static int generateRandomNumber() {
