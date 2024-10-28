@@ -24,7 +24,7 @@ public class RacingManager {
     public void startRacing() {
         List<Car> cars = inputCarName();
         int tryCount = inputTryCount();
-        startRaeSimulate(cars, tryCount);
+        startRaceSimulate(cars, tryCount);
     }
 
     private List<Car> inputCarName() {
@@ -40,7 +40,7 @@ public class RacingManager {
         return IntConverter.StringToInt(InputString());
     }
 
-    private void startRaeSimulate(List<Car> cars, int tryCount) {
+    private void startRaceSimulate(List<Car> cars, int tryCount) {
         raceSimulator.startRace(cars, tryCount);
         print(WINNER_PROMPT + raceSimulator.getRacingWinner(cars));
     }
