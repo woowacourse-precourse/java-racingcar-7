@@ -63,16 +63,20 @@ public class RacingController {
         List<RacingUnitResult> unitResultList = racingUnitResultList.getRacingUnitResultList();
         RacingUnitResult lastUnitResult = unitResultList.getLast();
 
+        List<Car> maxCars = getMaxCars(lastUnitResult);
+
+        outputView.printFinalResultView(maxCars);
+    }
+
+    private static List<Car> getMaxCars(RacingUnitResult lastUnitResult) {
         int maxCounts = lastUnitResult.getResult().values().stream()
                 .max(Integer::compareTo)
                 .orElseThrow(() -> new IllegalArgumentException(MAX_COUNT_NOT_FOUND.getValue()));
 
-        List<Car> maxCars = lastUnitResult.getResult().entrySet().stream()
+        return lastUnitResult.getResult().entrySet().stream()
                 .filter(entry -> entry.getValue().equals(maxCounts))
                 .map(Map.Entry::getKey)
                 .toList();
-
-        outputView.printFinalResultView(maxCars);
     }
 
 }

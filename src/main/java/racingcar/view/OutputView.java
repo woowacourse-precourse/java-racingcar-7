@@ -2,6 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import racingcar.model.car.Car;
 
@@ -13,11 +14,15 @@ public class OutputView {
 
     public void printUnitResult(Map<Car, Integer> resultInfo) {
         for (Map.Entry<Car, Integer> entry : resultInfo.entrySet()) {
-            Car car = entry.getKey();
-            Integer moves = entry.getValue();
-            System.out.println(car.getName() + " : " + "-".repeat(moves));
+            formatUnitResult(entry);
         }
         System.out.println();
+    }
+
+    private static void formatUnitResult(Entry<Car, Integer> entry) {
+        Car car = entry.getKey();
+        Integer moves = entry.getValue();
+        System.out.println(car.getName() + " : " + "-".repeat(moves));
     }
 
     public void printFinalResultView(List<Car> maxCars) {
