@@ -12,8 +12,9 @@ public class Application {
         // 예: 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
         // 시도할 횟수는 몇 회인가요?
         String playCounts = Console.readLine();
+        int countsValue = Integer.parseInt(playCounts);
         // 입력값에 근거한 자동차 경주 실행 결과와 최종 우승자를 출력한다
-        Controller controller = new Controller(carNames, playCounts);
+        Controller controller = new Controller(carNames, countsValue);
         String result = controller.reverseOrderResult();
 
         // 실행 결과

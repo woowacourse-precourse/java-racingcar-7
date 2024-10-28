@@ -6,8 +6,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ControllerTest {
+  private Input input;
 
   Input input = new Input();
+  input
+
   Controller controller = new Controller();
 
   @DisplayName("자동차 이름과 시도횟수를 전달받으면 각 자동차를 전진시킨다")
