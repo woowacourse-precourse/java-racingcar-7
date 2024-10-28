@@ -45,17 +45,22 @@ public class GameService implements GameUseCase {
         outputPort.writeMessage(stringBuilder.toString());
     }
 
-    private void validateRepeatNumber(String input) {
+    private void validateRepeatNumber(final String input) {
+        final int repeat = validateNumberFormat(input);
+        validateNumberRange(repeat);
+    }
+
+    private int validateNumberFormat(final String input) {
         try {
-            final int repeat = Integer.parseInt(input);
-            if (repeat < 1) {
-                throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_RANGE);
-            }
-            if (repeat > Boundary.REPEAT_MAX) {
-                throw new IllegalArgumentException(ExceptionMessage.EXCEED_NUMBER);
-            }
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_FORMAT);
+        }
+    }
+
+    private void validateNumberRange(final int input) {
+        if (input < 1 || input > Boundary.REPEAT_MAX) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_RANGE);
         }
     }
 }
