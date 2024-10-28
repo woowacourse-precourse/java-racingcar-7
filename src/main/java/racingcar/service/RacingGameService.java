@@ -9,8 +9,8 @@ import racingcar.model.RacingCar;
 import racingcar.model.RacingGame;
 
 public class RacingGameService {
-    public static final int MIN_RANDOM_VALUE = 0;
-    public static final int MAX_RANDOM_VALUE = 9;
+    private static final int MIN_RANDOM_VALUE = 0;
+    private static final int MAX_RANDOM_VALUE = 9;
     private static final int FORWARD_THRESHOLD = 4;
 
     public RacingGame initializeRace(List<String> carNames, int attempts) {
