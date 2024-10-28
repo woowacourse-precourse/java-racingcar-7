@@ -12,7 +12,7 @@ public class RacingGameManager {
     public void prepareGameRounds(int tryNum, String[] carNames) {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
-            carList.add(new Car(carName.trim()));
+            carList.add(new Car(carName));
         }
 
         for (int i = 0; i < tryNum; i++) {

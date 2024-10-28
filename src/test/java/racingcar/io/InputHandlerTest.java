@@ -16,7 +16,6 @@ class InputHandlerTest {
     @Test
     public void testCarNamesInput() {
         // given
-        // 입력 스트림을 설정하여 Console.readLine() 대체함
         String carNamesInput = "poby,woni,jun\n";
         InputStream in = new ByteArrayInputStream(carNamesInput.getBytes(UTF_8));
         System.setIn(in);
@@ -32,7 +31,6 @@ class InputHandlerTest {
     @Test
     public void testTryNumInput() {
         // given
-        // 입력 스트림을 설정하여 Console.readLine() 대체함
         String tryNumInput = "5\n";
         InputStream in = new ByteArrayInputStream(tryNumInput.getBytes(UTF_8));
         System.setIn(in);

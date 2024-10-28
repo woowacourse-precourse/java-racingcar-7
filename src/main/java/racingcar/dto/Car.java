@@ -9,6 +9,7 @@ public class Car {
     }
 
     public Car(String carName, int moveCount) {
+        validateName(carName);
         this.carName = carName;
         this.moveCount = moveCount;
     }
@@ -23,5 +24,15 @@ public class Car {
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    private void validateName(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+        }
+
+        if (carName.contains(" ")) {
+            throw new IllegalArgumentException("자동차 이름에 공백이 포함되면 안됩니다.");
+        }
     }
 }
