@@ -17,4 +17,5 @@ public class RaceRequest {
     public int getRoundCount() {
         return roundCount;
     }
+
 }
