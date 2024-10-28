@@ -4,12 +4,17 @@ import java.util.List;
 import racingcar.domain.Car;
 
 public class ResultView {
+    private static final String RESULT_MESSAGE = "실행 결과";
     private static final String CAR_POSITION_FORMAT = " : ";
     private static final String POSITION_MARK = "-";
     private static final String WINNER_MESSAGE_PREFIX = "최종 우승자 : ";
     private static final String DELIMITER = ", ";
 
     private ResultView() {
+    }
+
+    public static void printResultMessage() {
+        System.out.println(RESULT_MESSAGE);
     }
 
     public static void printRoundResult(List<Car> cars) {

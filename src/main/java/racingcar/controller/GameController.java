@@ -12,6 +12,7 @@ public class GameController {
         int rounds = InputParser.parseRounds(InputView.getRounds());
         GameService racingGame = new GameService(carNames);
 
+        ResultView.printResultMessage();
         for (int i = 0; i < rounds; i++) {
             racingGame.playRound();
             ResultView.printRoundResult(racingGame.getCars());
