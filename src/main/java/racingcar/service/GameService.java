@@ -7,6 +7,8 @@ import racingcar.service.util.RandomNumberGenerator;
 import racingcar.view.OutputView;
 import racingcar.view.constant.RunConstant;
 
+import java.util.*;
+
 public class GameService {
     private final Car car;
     private final NumberOfAttempt numberOfAttempt;
@@ -30,6 +32,19 @@ public class GameService {
         }
     }
 
+    public void showWinners() {
+        List<String> winners = getGameWinner();
+        outputView.printFinalResultMessage();
+        if (winners.size() == 1)
+            System.out.println(winners.get(0));
+        if (winners.size() > 1) {
+            for (int i = 0; i < winners.size() - 1; i++) {
+                System.out.print(winners.get(i) + ", ");
+            }
+            System.out.println(winners.get(winners.size() - 1));
+        }
+    }
+
     private void moveCarBasedOnRandomNumber() {
         RandomNumberGenerator generator = new RandomNumberGenerator();
         for (String name : car.getCars()) {
@@ -38,5 +53,19 @@ public class GameService {
                 manageCarMovement.update(name);
             }
         }
+    }
+
+    public List<String> getGameWinner() {
+        Map<String, String> movementCount = manageCarMovement.getCarMovementCount();
+        String maxMovement = Collections.max(movementCount.values());
+
+        List<String> carNames = car.getCars();
+        List<String> winners = new ArrayList<>();
+
+        for (String carName : carNames) {
+            if (movementCount.get(carName).equals(maxMovement))
+                winners.add(carName);
+        }
+        return winners;
     }
 }
