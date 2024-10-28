@@ -6,16 +6,19 @@
 
 > **GameController 클래스**
 >
-> - 사용자가 입력한 턴 수 만큼 반복하여 게임을 실행
+> - TurnManager와 View 사이의 매개 역할을 하는 게임 컨트롤러
 > - 중간 결과, 최종 결과를 OutputView와 연결
 
+> **UserController 클래스**
+>
+> - 사용자 이름을 쉼표 기준으로 구분해 내고 userObject를 생성하는 컨트롤러
 ----
 
-### Operator
+### module
 
 > **GameEngine 클래스**
 >
-> - 각 턴에 진행되야 할 프로세스 수행
+> - 각 턴에 진행되야 할 실질적인 프로세스 수행
 
 > **RandomNumberGenerator 클래스**
 >
@@ -25,27 +28,25 @@
 >
 > - 최종 우승자 선별
 
-### User
-
-> **SettingGameUser 클래스**
+> **TurnManager 클래스**
 >
-> - 입력된 User의 객체를 생성
+> - 턴 실행 및 각각의 유저마다 GameEngine(게임 로직) 실행
+
+### User
 
 > **UserObject 클래스**
 >
 > - 사용자의 이름, 점수가 담긴 유저 정보 객체
-> - 유저의 스코어 업데이트
+> - 유저의 스코어 업데이트 기능
 
 ### View
 
-> 실제 입,출력 담당
+> 입, 출력 기능
 
-**예외 기능**
+### validator
 
-입력 형식 예외 처리 -> IllegalArgumentException
-
-1. 쉼표 기준으로 문자열 분리 후 각각의 문자열의 길이가 5자 이하인지 확인
-2. 빈 문자열일때
-3. 쉼표가 제일 앞에 나올 때 ex) ,pobi,james
-4. 공백을 허용하되 맨 앞에 공백은 허용 안됨
-4. 시도 횟수가 정수 범위 벗어날때
+> **Validator 클래스**
+>
+> - 입력 형식에 대한 예외 처리
+> - paring된 username형식에 대한 예외 처리
+> - 숫자 예외 처리
