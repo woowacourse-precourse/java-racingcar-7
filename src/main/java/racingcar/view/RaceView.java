@@ -14,6 +14,9 @@ public class RaceView {
     }
 
     public static void displayProgress(Map<String, Integer> allProgress) {
+        if (allProgress == null || allProgress.isEmpty()) {
+            throw new IllegalArgumentException("progress is null or empty");
+        }
         for (Map.Entry<String, Integer> entry : allProgress.entrySet()) {
             String name = entry.getKey();
             int value = entry.getValue();
