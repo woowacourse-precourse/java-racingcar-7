@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.test.Assertions;
 import org.junit.jupiter.api.BeforeEach;
