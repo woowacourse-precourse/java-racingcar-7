@@ -28,4 +28,11 @@ public class RacingGameController {
         Validator.validateAttemptCount(attemptCount);
         return attemptCount;
     }
+
+    // 입력된 시도 횟수만큼 레이스를 반복
+    public void startRace(int attemptCount) {
+        for (int i = 0; i < attemptCount; i++) {
+            
+        }
+    }
 }
