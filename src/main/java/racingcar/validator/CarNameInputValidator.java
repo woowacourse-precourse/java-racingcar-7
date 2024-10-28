@@ -2,9 +2,9 @@ package racingcar.validator;
 
 import racingcar.enums.ErrorMessage;
 
-public class CarNameValidator {
+public class CarNameInputValidator {
 
-    private CarNameValidator() {
+    private CarNameInputValidator() {
     }
 
     public static void validateCarNames(String carNames) {
