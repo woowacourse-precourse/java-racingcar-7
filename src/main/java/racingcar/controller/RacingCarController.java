@@ -1,3 +1,4 @@
+// RacingCarController.java
 package racingcar.controller;
 
 import racingcar.model.Racer;
@@ -18,21 +19,35 @@ public class RacingCarController {
     }
 
     public void run() {
-        Racer racer = Racer.of(inputView.readCarNames());
-        Round round = Round.of(inputView.readRound());
+        Racer racer = initializeRacer();
+        Round round = initializeRound();
 
         outputView.printExecutionMessage();
-        while (round.hasMoreRounds()) {
-            playRound(racer);
-            round.keep();
-        }
-
-        // 중복된 최종 우승자 출력 제거
-        outputView.printFinalWinner(racer.getWinner().finalResult());
+        executeRounds(racer, round);
+        printFinalWinner(racer);
     }
 
-    private void playRound(Racer racer) {
+    private Racer initializeRacer() {
+        return Racer.of(inputView.readCarNames());
+    }
+
+    private Round initializeRound() {
+        return Round.of(inputView.readRound());
+    }
+
+    private void executeRounds(Racer racer, Round round) {
+        while (round.hasMoreRounds()) {
+            performRound(racer);
+            round.keep();
+        }
+    }
+
+    private void performRound(Racer racer) {
         racer.play(accelerator);
         outputView.printResult(racer.getResult());
+    }
+
+    private void printFinalWinner(Racer racer) {
+        outputView.printFinalWinner(racer.getWinner().finalResult());
     }
 }
