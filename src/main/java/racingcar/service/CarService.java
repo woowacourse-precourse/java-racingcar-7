@@ -52,7 +52,14 @@ public class CarService {
         return moveCount;
     }
 
-    public void setMoveCount(int moveCount) {
+    public void setMoveCount(String moveCountStr) {
+        int moveCount;
+        try {
+            moveCount = Integer.parseInt(moveCountStr);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Constants.INVALID_MOVE_COUNT_NUMBER);
+        }
+
         if (moveCount < 1) {
             throw new IllegalArgumentException(Constants.INVALID_MOVE_COUNT);
         }
