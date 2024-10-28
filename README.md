@@ -53,5 +53,5 @@
 
 - **예외 처리**
     - [x] 입력 형식에 맞지 않는 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
-    - [] 자동차가 두 대 미만으로 입력된 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+    - [x] 자동차가 두 대 미만으로 입력된 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
     - [x] 중복된 자동차 이름이 입력된 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
