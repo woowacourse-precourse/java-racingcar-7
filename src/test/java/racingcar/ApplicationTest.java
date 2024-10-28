@@ -57,6 +57,11 @@ class ApplicationTest extends NsTest {
         assertExceptionThrown("kim,Mr.k", "3", ErrorMessage.INVALID_NAME_CHARACTER);
     }
 
+    @Test
+    void 이동횟수가_음수인_경우_예외_발생() {
+        assertExceptionThrown("pobi,woni", "-1", ErrorMessage.INVALID_NUMBER_FORMAT);
+    }
+
     private void assertExceptionThrown(String input, String rounds, ErrorMessage errorMessage) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input, rounds))
@@ -66,13 +71,11 @@ class ApplicationTest extends NsTest {
     }
 
     private void runException(String carNames, String rounds) {
-        run(carNames, rounds);  // Application 실행
+        run(carNames, rounds);
     }
 
     @Override
     public void runMain() {
         Application.main(new String[]{});
     }
-
-
 }
