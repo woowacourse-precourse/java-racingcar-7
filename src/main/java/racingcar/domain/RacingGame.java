@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.service.RandomNumManager;
+import racingcar.view.OutputView;
 
 public class RacingGame {
     private final Cars cars;
@@ -19,6 +20,13 @@ public class RacingGame {
             if (RandomNumManager.isSatisfyForwardCondition(randomNum)) {
                 car.moveForward();
             }
+        }
+    }
+
+    public void executeAllRounds(int attempt) {
+        for (int i = 0; i < attempt; i++) {
+            executeRound();
+            OutputView.printRoundResult(cars);
         }
     }
 }
