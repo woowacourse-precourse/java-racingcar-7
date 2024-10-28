@@ -12,6 +12,13 @@ public class RacingProgram {
     private List<Car> cars;
     private int attempts;
 
+    public void play(){
+        getCarNamesFromUser();
+        getAttemptFromUser();
+        gameStart();
+        gameResult();
+    }
+
     void getCarNamesFromUser(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carList = Console.readLine();
