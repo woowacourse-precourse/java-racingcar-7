@@ -2,12 +2,14 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+
 public class RacingGame {
-    private final String carName;
+    private final List<RacingCar> cars;
     private final int numberOfAttempts;
 
-    public RacingGame(String carName, int numberOfAttempts) {
-        this.carName = carName;
+    public RacingGame(List<RacingCar> cars, int numberOfAttempts) {
+        this.cars = cars;
         this.numberOfAttempts = numberOfAttempts;
     }
 
@@ -16,14 +18,19 @@ public class RacingGame {
     }
 
     private void calculatePosition() {
-        int position = 0;
-        for(int i=0; i<this.numberOfAttempts; i++) {
-            if(canMoveForward()) {
-                position++;
+        for (int i = 0; i < this.numberOfAttempts; i++) {
+            for (RacingCar car : this.cars) {
+                moveCarForwardIfPossible(car);
+                System.out.println(car.getName() + " : " + getDashesBasedOnPosition(car.getPosition()));
             }
-            System.out.println(this.carName + " : " + getDashesBasedOnPosition(position));
+            System.out.println();
         }
-        System.out.println();
+    }
+
+    private void moveCarForwardIfPossible(RacingCar car) {
+        if (canMoveForward()) {
+            car.setPosition(car.getPosition() + 1);
+        }
     }
 
     private boolean canMoveForward() {
