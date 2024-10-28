@@ -11,15 +11,18 @@ public class Car {
     private List<CarMovementState> movementLog = new ArrayList<>();
     private int moveCount = 0;
 
-
     public Car(String name) {
+        validateName(name);
+        this.name = name;
+    }
+
+    private void validateName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
         }
         if (name.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
         }
-        this.name = name;
     }
 
     public void move() {
