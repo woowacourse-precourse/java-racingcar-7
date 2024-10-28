@@ -1,4 +1,6 @@
-package racingcar.model;
+package racingcar.util;
+
+import static racingcar.util.Constants.*;
 
 /**
  * TrialValidator 클래스는 경주 게임에서 사용자가 입력한 시도 횟수의 유효성을 검증하고, 정수 값으로 변환하는 역할을 한다.
@@ -17,17 +19,17 @@ public class TrialValidator {
         int trial;
 
         if (input == null || input.isEmpty()) {
-            throw new IllegalArgumentException("시도 횟수가 입력되지 않았습니다.");
+            throw new IllegalArgumentException(EMPTY_TRIAL_ERROR);
         }
 
         try {
             trial = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
+            throw new IllegalArgumentException(NON_NUMERIC_TRIAL_ERROR);
         }
 
         if (trial <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다.");
+            throw new IllegalArgumentException(INVALID_TRIAL_ERROR);
         }
 
         return trial;

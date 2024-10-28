@@ -1,5 +1,9 @@
 package racingcar.model;
 
+import racingcar.util.Constants;
+
+import static racingcar.util.Constants.*;
+
 /**
  * RacingCar 클래스는 경주 자동차의 상태와 동작을 관리한다.
  * 자동차의 이름, 위치, 위치를 출력하는 방식(repeater)을 포함한다.
@@ -10,10 +14,10 @@ public class RacingCar {
     private final String carName;
 
     // 차의 위치를 출력하기 위한 리피터, 생성자를 통해 설정하며 이후 변경 가능
-    private String repeater;
+    private String repeater = DEFAULT_REPEATER;
 
     // 차의 위치를 저장하는 필드
-    private int position;
+    private int position = DEFAULT_CAR_START_POSITION;
 
     /**
      * RacingCar 생성자
@@ -25,6 +29,10 @@ public class RacingCar {
         this.carName = carName;
         this.repeater = repeater;
         this.position = position;
+    }
+
+    public RacingCar(String carName) {
+        this.carName = carName;
     }
 
     /**

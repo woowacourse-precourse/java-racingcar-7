@@ -2,8 +2,8 @@ package racingcar.model;
 
 import java.util.List;
 
-import static racingcar.model.CarFactory.createCars;
-import static racingcar.model.TrialValidator.validateTrial;
+import static racingcar.util.CarFactory.createCars;
+import static racingcar.util.TrialValidator.validateTrial;
 
 /**
  * RacingGameModel 인터페이스를 구현한 RacingGameModelImpl 클래스.

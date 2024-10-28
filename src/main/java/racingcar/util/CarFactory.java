@@ -1,10 +1,17 @@
-package racingcar.model;
+package racingcar.util;
+
+import racingcar.model.RacingCar;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static racingcar.util.Constants.*;
+
+/**
+ * CarFactory 클래스는 경주 게임에서 사용자가 입력한 carNames 입력 값에 대한 검증 및 생성을 담당한다.
+ */
 public class CarFactory {
 
     /**
@@ -32,7 +39,7 @@ public class CarFactory {
      */
     private static void validateInput(String input) {
         if (input == null || input.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름 입력이 비어있습니다.");
+            throw new IllegalArgumentException(EMPTY_CAR_NAMES_ERROR);
         }
     }
 
@@ -46,7 +53,7 @@ public class CarFactory {
         for (String carName : carNames) {
             carName = carName.trim();
             if (!uniqueNames.add(carName)) {
-                throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다: " + carName);
+                throw new IllegalArgumentException(DUPLICATE_CAR_NAME_ERROR + carName);
             }
         }
     }
@@ -59,9 +66,14 @@ public class CarFactory {
      */
     private static RacingCar createCar(String carName) {
         carName = carName.trim();
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력해주세요: " + carName);
+
+        if(carName.isEmpty()){
+            throw new IllegalArgumentException(EMPTY_NAME_ERROR);
         }
-        return new RacingCar(carName, 0, "-");
+
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR + carName);
+        }
+        return new RacingCar(carName);
     }
 }
