@@ -2,6 +2,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.utils.InputUtils;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +30,7 @@ public class RacingService {
             recordHistory.add(recentRecord);
             RaceRecord.put(individualCarName, recordHistory);
 
-            printUpdatedRecord(recentRecord);
+            OutputView.printUpdatedRecord(recentRecord);
         }
 
     }
@@ -49,17 +50,17 @@ public class RacingService {
             raceRecord.put(individualCarName, recordHistory);
         }
 
-        System.out.println();
+        OutputView.printNewLine();
         System.out.println("실행 결과");
 
         for (int i = 1; i <= valueOfAttempt; i++) {
             updateRaceRecord(carNames, raceRecord);
-            System.out.println();
+            OutputView.printNewLine();
         }
 
         List<String> winners = checkWinner(carNames, raceRecord);
 
-        printWinner(winners);
+        OutputView.printWinner(winners);
     }
 
     public Map<String, Integer> getFinalRecord(List<String> CarNames, Map<String, List<String>> RaceRecord) {
@@ -99,16 +100,6 @@ public class RacingService {
         }
 
         return winners;
-    }
-
-    public void printUpdatedRecord(String updatedRecord) {
-        System.out.println(updatedRecord);
-    }
-
-    public void printWinner(List<String> winner) {
-        String result = String.join(",", winner);
-
-        System.out.println("최종 우승자 : " + result);
     }
     
 }
