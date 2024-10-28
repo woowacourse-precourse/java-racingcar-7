@@ -12,11 +12,13 @@ public class Race {
     private final InputManager inputManager;
     private final OutputManager outputManager;
     private final Referee referee;
+
     public Race(InputManager inputManager, OutputManager outputManager, Referee referee){
         this.inputManager = inputManager;
         this.outputManager = outputManager;
         this.referee = referee;
     }
+
     public List<Car> createParticipant(List<String> carName) {
         List<Car> carList = new ArrayList<>();
 

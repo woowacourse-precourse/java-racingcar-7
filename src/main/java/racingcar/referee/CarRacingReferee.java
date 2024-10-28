@@ -30,17 +30,21 @@ public class CarRacingReferee implements Referee {
         List<Car> winners = new ArrayList<>();
         int max = 0;
 
-        for(Car car : carList){
+        for (Car car : carList) {
             int distance = car.getDistance();
-            if(distance > max) {
-                max = distance;
-                winners = new ArrayList<>();
-                winners.add(car);
-            } else if(distance == max) {
-                winners.add(car);
-            }
+            updateWinners(winners, car, distance, max);
+            max = Math.max(max, distance);
         }
 
         return winners;
+    }
+
+    private void updateWinners(List<Car> winners, Car car, int distance, int max) {
+        if (distance > max) {
+            winners.clear();
+            winners.add(car);
+        } else if (distance == max) {
+            winners.add(car);
+        }
     }
 }

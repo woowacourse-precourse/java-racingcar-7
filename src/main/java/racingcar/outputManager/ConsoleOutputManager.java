@@ -11,26 +11,35 @@ public class ConsoleOutputManager implements OutputManager {
         for(Car car : progressResult){
             int distance = car.getDistance();
             String name = car.getName();
-
-            System.out.print(name+" : ");
-            for(int i = 0; i < distance; i++){
-                System.out.print("-");
-            }
-
-            System.out.println();
+            printResult(distance, name);
         }
+    }
+
+    private void printResult(int distance, String name){
+        System.out.print(name+" : ");
+
+        for(int i = 0; i < distance; i++){
+            System.out.print("-");
+        }
+
+        System.out.println();
     }
 
     @Override
     public void printWinner(List<Car> winner) {
         System.out.println();
         System.out.print("최종 우승자 : ");
+
         for(int i = 0; i < winner.size(); i++){
-            if(i != winner.size()-1){
-                System.out.print(winner.get(i).getName()+", ");
-            } else {
-                System.out.print(winner.get(i).getName());
-            }
+            printName(winner, i);
+        }
+    }
+
+    private void printName(List<Car> winner, int index){
+        if(index != winner.size()-1){
+            System.out.print(winner.get(index).getName()+", ");
+        } else {
+            System.out.print(winner.get(index).getName());
         }
     }
 }

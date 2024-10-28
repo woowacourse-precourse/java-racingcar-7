@@ -21,14 +21,17 @@ public class ConsoleInputManager implements InputManager{
         String [] classifiedName = readName.split(",");
 
         for(String name : classifiedName){
-            if(name.length() <= 5 && !name.isEmpty()){
-                nameList.add(name);
-            } else {
-                throw new IllegalArgumentException("입력 서식에 맞춰 주세요.");
-            }
+            validateName(name);
+            nameList.add(name);
         }
 
         return nameList;
+    }
+
+    private void validateName(String name){
+        if(name.length() > 5 || name.isEmpty()){
+            throw new IllegalArgumentException("입력 서식에 맞춰 주세요.");
+        }
     }
 
     @Override
