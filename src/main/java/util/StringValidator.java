@@ -1,8 +1,12 @@
 package util;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class StringValidator {
     public static void checkCarNames(String nameString){
-        String[] carNames = nameString.split(",");
+        String[] carNames = StringParser.parseString(nameString, ",");
         for(String carName : carNames)
             checkRightCarNameSize(carName);
 
@@ -23,5 +27,14 @@ public class StringValidator {
         if(!numString.matches("[1-9]\\d*"))
             throw new IllegalArgumentException("양의 정수 값만 입력할 수 있습니다.");
 
+    }
+
+    public static void checkDuplicatedName(String nameString){
+        String[] carNames = StringParser.parseString(nameString, ",");
+
+        Set<String> nameDuplicator = new HashSet<>(Arrays.asList(carNames));
+
+        if(carNames.length != nameDuplicator.size())
+            throw new IllegalArgumentException("중복된 이름이 존재합니다.");
     }
 }
