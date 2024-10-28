@@ -25,7 +25,7 @@ public class CarTest {
 
         for (int i = 0; i < 10000000; i++) {
             for (int j = 0; j < 10; j++) {
-                car.goStraight();
+                car.goStraight(0, 9, 4);
             }
             assertTrue(car.getDistance() >= initialDistance);
         }

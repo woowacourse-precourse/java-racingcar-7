@@ -62,7 +62,7 @@ public class Application {
     private static void carsMove(int inputTry, ArrayList<Car> cars) {
         for (int i = 0; i < inputTry; i++) {
             for (Car car : cars) {
-                car.goStraight();
+                car.goStraight(0, 9, 4);
                 car.print();
             }
 

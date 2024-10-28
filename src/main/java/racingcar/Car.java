@@ -31,8 +31,8 @@ public class Car {
         return dash.toString();
     }
 
-    public void goStraight() {
-        if (Randoms.pickNumberInRange(0, 9) > 3) {
+    public void goStraight(int low, int high, int target) {
+        if (Randoms.pickNumberInRange(low, high) >= target) {
             distance++;
         }
     }
