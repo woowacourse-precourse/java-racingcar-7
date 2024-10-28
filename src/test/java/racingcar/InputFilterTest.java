@@ -3,6 +3,7 @@ package racingcar;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import racingcar.model.InputFilter;
 
 class InputFilterTest {
 

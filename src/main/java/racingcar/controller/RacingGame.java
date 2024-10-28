@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.model.CarRacer;
+import racingcar.model.InputFilter;
 
 public class RacingGame {
 
@@ -6,14 +9,14 @@ public class RacingGame {
     }
 
     public void start() {
-        String carNames = InputView.inputCarNames();
-        String moveCount = InputView.inputTryCount();
+        String carNames = ViewController.inputCarNames();
+        String moveCount = ViewController.inputTryCount();
 
         InputFilter inputFilter = new InputFilter(carNames, moveCount);
 
         CarRacer carRacer = new CarRacer(inputFilter.getCarNames());
         carRacer.moveCars(inputFilter.getMoveCount());
 
-        OutputView.printOutput(OutputView.OUTPUT_FILTER, carRacer.getWinners());
+        ViewController.printWinners(carRacer.getWinners());
     }
 }

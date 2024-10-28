@@ -5,6 +5,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.ViewController;
+import racingcar.view.OutputView;
 
 class OutputViewTest {
     @Test
@@ -16,7 +18,7 @@ class OutputViewTest {
         String[] output = {"pobi", "crong", "honux"};
 
         // when
-        OutputView.printOutput(OutputView.OUTPUT_FILTER, output);
+        OutputView.printOutput(ViewController.OUTPUT_FILTER, output);
 
 
         // then
@@ -33,7 +35,7 @@ class OutputViewTest {
         String[] output = {"pobi"};
 
         // when
-        OutputView.printOutput(OutputView.OUTPUT_FILTER, output);
+        OutputView.printOutput(ViewController.OUTPUT_FILTER, output);
 
         // then
         assertThat(outputStream.toString()).isEqualTo("최종 우승자 : pobi");

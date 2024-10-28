@@ -1,24 +1,12 @@
 package racingcar;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.ViewController;
 
 class InputViewTest {
-
-    @Test
-    void inputCarNames() {
-        // given
-        String simulatedInput = "car1,car2,car3\n";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-
-        // when
-        String[] result = InputView.inputCarNames().split(",");
-
-        // then
-        assertArrayEquals(new String[]{"car1", "car2", "car3"}, result);
-    }
 
     @Test
     void inputTryCount() {
@@ -27,7 +15,7 @@ class InputViewTest {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         // when
-        String result = InputView.inputTryCount();
+        String result = ViewController.inputTryCount();
 
         // then
         assertEquals("5", result);
