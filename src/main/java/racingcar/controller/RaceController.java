@@ -1,49 +1,54 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.RaceTrack;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RaceController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final RaceTrack raceTrack;
 
-    public RaceController(final InputView inputView, final OutputView outputView) {
+    public RaceController(
+            final InputView inputView,
+            final OutputView outputView,
+            final RaceTrack raceTrack
+    ) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.raceTrack = raceTrack;
     }
 
     public void run() {
-        String carRegistrationRequest = inputView.readCarRegistrationRequest();
-        List<String> carNames = Arrays.asList(carRegistrationRequest.split(","));
-        List<Car> cars = carNames.stream().map(Car::new).toList();
-        int roundCount = inputView.readRoundCount();
+        String carRegistrationRequest = getCarNames();
+        int trialCount = getTrialCount();
 
-        System.out.println("\n실행 결과");
-        for(int round = 0; round < roundCount; round++) {
-            playRound(cars);
-            System.out.println();
-        }
-
-        List<Car> winners = determineWinners(cars);
-        outputView.printRacingResult(winners);
+        raceTrack.registerCars(carRegistrationRequest);
+        playRace(trialCount);
+        announceWinners();
     }
 
-    private void playRound(List<Car> cars) {
-        for(Car car:cars) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
-            if (randomNumber >= 4) {
-                car.goForward();
-            }
-            outputView.printCarPosition(car);
+    private String getCarNames() {
+        outputView.displayCarNameInputMessage();
+        return inputView.getString();
+    }
+
+    private int getTrialCount() {
+        outputView.displayTrialCountInputMessage();
+        return inputView.getInteger();
+    }
+
+    private void playRace(int trialCount) {
+        outputView.displayRoundResultMessage();
+        for (int round = 0; round < trialCount; round++) {
+            raceTrack.moveCars();
         }
     }
 
-    private List<Car> determineWinners(List<Car> cars) {
-        int farthestPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
-        return cars.stream().filter(car -> car.getPosition() == farthestPosition).toList();
+    private void announceWinners() {
+        List<Car> winners = raceTrack.determineWinners();
+        outputView.displayRaceResult(winners);
     }
 }
