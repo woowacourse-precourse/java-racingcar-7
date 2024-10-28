@@ -62,4 +62,19 @@ class RacingTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("자동차이름이_중복된_경우_예외발생")
+    void 자동차이름이_중복된_경우_예외발생() {
+        // given
+        RacingInfo carNameDuple = new RacingInfo(
+                "pobi,pobi,pobi",
+                3
+        );
+
+        // then
+        assertThatThrownBy(() -> {
+            // when
+            racing = new Racing(carNameDuple);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
