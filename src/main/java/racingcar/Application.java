@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.race.manager.DelimiterManager;
 import racingcar.race.manager.ParseManager;
 import racingcar.race.RacingGame;
 import racingcar.race.manager.ValidManager;
@@ -14,7 +15,8 @@ public class Application {
     public static void main(String[] args) {
         ParseManager parseManager = new ParseManager();
         ValidManager validManager = new ValidManager();
-        RacingGame game = new RacingGame(parseManager, validManager);
+        DelimiterManager delimiterManager = new DelimiterManager();
+        RacingGame game = new RacingGame(parseManager, validManager,delimiterManager);
         Application application = new Application(game);
         application.run();
     }
