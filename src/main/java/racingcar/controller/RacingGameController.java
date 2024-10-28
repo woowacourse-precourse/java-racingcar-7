@@ -8,6 +8,7 @@ import racingcar.service.RegisterService;
 import racingcar.service.RoundService;
 import racingcar.service.WinnerService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingGameController {
     private final RegisterService registerService;
@@ -27,6 +28,7 @@ public class RacingGameController {
         Cars cars = registerService.registerCars(carNames);
 
         Round round = setupRound();
+        OutputView.executionResult();
         playRounds(round, cars);
 
         List<Car> winners = winnerService.getWinners(cars);
@@ -40,7 +42,12 @@ public class RacingGameController {
     private void playRounds(Round round, Cars cars) {
         for (int i = 0; i < round.getAttemptCount(); i++) {
             roundService.playRound(cars);
+            printRoundResult(cars);
         }
+    }
+
+    private void printRoundResult(Cars cars) {
+        OutputView.RoundResult(cars);
     }
 
 }
