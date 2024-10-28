@@ -13,6 +13,7 @@ import racingcar.config.RaceConfig;
 import racingcar.dto.CarMovementResponse;
 import racingcar.dto.WinnerResponse;
 
+@DisplayName("자동차 경주 테스트")
 class RaceTest {
 	private Car car1;
 	private Car car2;
@@ -36,7 +37,7 @@ class RaceTest {
 
 	@Test
 	@DisplayName("모든 자동차의 랜덤 숫자가 기준값 이상일 때, 모든 자동차가 이동한다.")
-	void moveEachCar() {
+	void Move_Each_Car_When_Random_Number_Greater_Than_Or_Equal_To_Condition_Number() {
 		// given
 		int randomNumber = RaceConfig.MOVE_CONDITION_NUMBER.getNumber();
 
@@ -52,7 +53,7 @@ class RaceTest {
 
 	@Test
 	@DisplayName("모든 자동차의 랜덤 숫자가 기준값 미만일 때, 모든 자동차가 정지한다.")
-	void stopEachCar() {
+	void Stop_Each_Car_When_Random_Number_Less_Than_Condition_Number() {
 		// given
 		int randomNumber = RaceConfig.MOVE_CONDITION_NUMBER.getNumber() - 1;
 
@@ -68,13 +69,13 @@ class RaceTest {
 
 	@Test
 	@DisplayName("모든 자동차들의 전진 상태를 이름과 이동 거리를 통해 반환한다.")
-	void findRaceStatus() {
+	void Find_Race_Result() {
 		// given
 		int randomNumber = RaceConfig.MOVE_CONDITION_NUMBER.getNumber();
 
 		// when
 		race.moveEachCars(randomNumber);
-		List<CarMovementResponse> carMovementResponses = race.findRaceStatus();
+		List<CarMovementResponse> carMovementResponses = race.findRaceResult();
 
 		// then
 		assertThat(carMovementResponses.stream()
@@ -90,7 +91,7 @@ class RaceTest {
 
 	@Test
 	@DisplayName("최대 이동거리를 가진 자동차들의 이름을 우승자 응답으로 반환된다.")
-	void selectWinners() {
+	void Select_Winners_With_Max_Distance_Cars() {
 		// given
 		int randomNumber = RaceConfig.MOVE_CONDITION_NUMBER.getNumber();
 

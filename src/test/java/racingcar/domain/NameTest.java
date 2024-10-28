@@ -6,7 +6,7 @@ import static racingcar.exception.ErrorMessage.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Name 클래스 테스트")
+@DisplayName("자동차 이름 테스트")
 class NameTest {
 	@Test
 	@DisplayName("빈 자동차 이름을 입력할 경우, 예외를 반환한다.")

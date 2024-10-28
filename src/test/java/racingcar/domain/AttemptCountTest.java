@@ -6,7 +6,7 @@ import static racingcar.exception.ErrorMessage.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("AttemptCount 클래스 테스트")
+@DisplayName("경주 시도 횟수 테스트")
 class AttemptCountTest {
 
 	@Test
