@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.model.RaceLog;
 import racingcar.model.RacerProgress;
@@ -35,9 +34,9 @@ public class OutputView {
     }
 
     public void printRaceWinners(List<Car> cars) {
-        System.out.println(PRINT_WINNER_PREFIX + cars
+        System.out.println(PRINT_WINNER_PREFIX + String.join(WINNER_SEPARATOR, cars
                 .stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(WINNER_SEPARATOR)));
+                .toList()));
     }
 }

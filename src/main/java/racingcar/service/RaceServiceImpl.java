@@ -69,22 +69,19 @@ public class RaceServiceImpl implements RaceService{
 
     private void validateNameLength(String name) {
         if(name.length() > RaceConstants.CAR_NAME_THRESHOLD) {
-            carRepository.reset();
-            throw new IllegalArgumentException();
+            resetRepositoryAndThrowIllegalArgumentException();
         }
     }
 
     private void validateNameDuplication(String name) {
         if(carRepository.existsByName(name)) {
-            carRepository.reset();
-            throw new IllegalArgumentException();
+            resetRepositoryAndThrowIllegalArgumentException();
         }
     }
 
     private void validateNameBlank(String name) {
         if(name.isBlank()) {
-            carRepository.reset();
-            throw new IllegalArgumentException();
+            resetRepositoryAndThrowIllegalArgumentException();
         }
     }
 
@@ -95,13 +92,18 @@ public class RaceServiceImpl implements RaceService{
 
     private void validatePositive(int round) {
         if (round <= 0) {
-            throw new IllegalArgumentException();
+            resetRepositoryAndThrowIllegalArgumentException();
         }
     }
 
     private void validateTooBig(int round) {
         if (round >= RaceConstants.TOO_BIG_NUMBER) {
-            throw new IllegalArgumentException();
+            resetRepositoryAndThrowIllegalArgumentException();
         }
+    }
+
+    private void resetRepositoryAndThrowIllegalArgumentException() {
+        carRepository.reset();
+        throw new IllegalArgumentException();
     }
 }
