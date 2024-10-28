@@ -56,7 +56,35 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.( 이름은 쉼표(,) 기준으로 구분)");
         String carName = Console.readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String moveTryCount = Console.readLine();
+        //System.out.println("시도할 횟수는 몇 회인가요?");
+        //String moveTryCount = Console.readLine();
+
+        List<Car> cars = createCars(carName);
+
+        for(Car car : cars){
+            System.out.println("car name : " + car.getName());
+        }
+    }
+
+    public static List<Car> createCars(String carNames){
+        List<Car> cars = new ArrayList<>();
+        String[] names = carNames.split(",",-1);
+
+        for(String name : names){
+            if(name == null || name.isBlank() || name.length() > 5){
+                throw new IllegalArgumentException();
+            }
+            cars.add(new Car(name));
+        }
+
+        return cars;
+    }
+
+    public static void Moving(List<Car> cars){
+
+    }
+
+    public static void Winner(List<Car> cars){
+
     }
 }
