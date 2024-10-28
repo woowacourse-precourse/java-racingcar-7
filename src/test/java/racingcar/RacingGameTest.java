@@ -7,7 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RacingGameTest {
-
     @Test
     @DisplayName("자동차의_이름이_중복되면_예외를_발생한다")
     public void should_ThrowException_When_CarNameDuplicated() {

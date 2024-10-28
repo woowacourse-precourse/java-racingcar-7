@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int MIN_NAME_LENGTH = 1;
     private static final int DEFAULT_DISTANCE = 0;
     private static final String DISTANCE_EXPRESSION = "-";
     private final String name;
@@ -29,8 +30,8 @@ public class Car {
     }
 
     private void validateNameLength(final String name) {
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException();
+        if (name.length() > MAX_NAME_LENGTH || name.length() < MIN_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 최소 1글자, 최대 5글자입니다");
         }
     }
 
