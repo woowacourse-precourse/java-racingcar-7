@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import camp.nextstep.edu.missionutils.test.Assertions;
 import java.util.List;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.racing.RacingCar;
@@ -11,6 +12,11 @@ import racingcar.racing.RacingCar;
 class InMemoryRacingCarRepositoryTest {
 
     InMemoryRacingCarRepository repository = InMemoryRacingCarRepository.getInstance();
+
+    @AfterEach
+    void tearDown() {
+        repository.clear();
+    }
 
     @DisplayName("RacingCar로 구성된 리스트를 한번에 저장할 수 있다.")
     @Test

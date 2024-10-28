@@ -1,7 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import racingcar.persistence.InMemoryRacingCarRepository;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -11,6 +13,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+
+    @AfterEach
+    void tearDown() {
+        InMemoryRacingCarRepository repository = InMemoryRacingCarRepository.getInstance();
+        repository.clear();
+    }
 
     @Test
     void 기능_테스트() {

@@ -8,4 +8,6 @@ public interface RacingCarRepository {
     List<RacingCar> getAll();
 
     void addAll(List<RacingCar> racingCars);
+
+    void clear();
 }

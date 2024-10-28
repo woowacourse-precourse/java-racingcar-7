@@ -24,4 +24,9 @@ public class InMemoryRacingCarRepository implements RacingCarRepository{
     public void addAll(List<RacingCar> racingCars) {
         RACING_CARS.addAll(racingCars);
     }
+
+    @Override
+    public void clear() {
+        RACING_CARS.clear();
+    }
 }
