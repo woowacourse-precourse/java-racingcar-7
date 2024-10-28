@@ -3,23 +3,23 @@ package racingcar.filter;
 import java.util.List;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.model.CarList;
-import racingcar.model.Drivable;
+import racingcar.model.RacingCar;
+import racingcar.model.RacingCarList;
 
 public class RaceWinnerDecisionFilter implements Filter<RaceRequest, RaceResponse> {
 
     @Override
     public RaceResponse doFilter(RaceRequest request, RaceFilterChain filterChain) {
-        CarList carList = request.carList();
-        List<String> winners = getWinners(carList);
+        RacingCarList racingCarList = request.racingCarList();
+        List<String> winners = getWinners(racingCarList);
         return new RaceResponse(winners);
     }
 
-    private List<String> getWinners(CarList cars) {
+    private List<String> getWinners(RacingCarList cars) {
         int maxDistance = cars.getMaxDistance();
         return cars.getCars().stream()
                 .filter(car -> car.getDistance() == maxDistance)
-                .map(Drivable::getName)
+                .map(RacingCar::getName)
                 .toList();
     }
 }

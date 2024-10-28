@@ -1,13 +1,13 @@
 package racingcar.dto;
 
-import racingcar.model.CarList;
+import racingcar.model.RacingCarList;
 
-public record RaceRequest(String command, int iterations, CarList carList) {
+public record RaceRequest(String command, int iterations, RacingCarList racingCarList) {
     public RaceRequest(String command, Integer iterations) {
-        this(command, iterations, new CarList());
+        this(command, iterations, new RacingCarList());
     }
 
-    public RaceRequest withCarList(CarList carList) {
-        return new RaceRequest(this.command, this.iterations, carList);
+    public RaceRequest withCarList(RacingCarList racingCarList) {
+        return new RaceRequest(this.command, this.iterations, racingCarList);
     }
 }
