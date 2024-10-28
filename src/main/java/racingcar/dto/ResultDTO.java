@@ -14,5 +14,15 @@ public class ResultDTO {
         this.finalWinner = finalWinner;
     }
 
+    public Cars getCars() {
+        return cars;
+    }
 
+    public RacingGames getRacingGames() {
+        return racingGames;
+    }
+
+    public String getFinalWinner() {
+        return finalWinner;
+    }
 }
