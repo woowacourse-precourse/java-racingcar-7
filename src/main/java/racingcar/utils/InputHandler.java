@@ -2,7 +2,9 @@ package racingcar.utils;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,6 +16,8 @@ public class InputHandler {
         List<String> carNames = Stream.of(input.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
+
+        validateDuplicateNames(carNames);
 
         for (String name : carNames) {
             if (name.length() > 5) {
@@ -38,5 +42,12 @@ public class InputHandler {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
         return attemptCount;
+    }
+
+    private void validateDuplicateNames(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>(carNames);
+        if (uniqueNames.size() < carNames.size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
     }
 }
