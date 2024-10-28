@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -181,15 +182,18 @@ class ApplicationTest extends NsTest {
         car2.addDistance(); // 이동 거리 1
         List<Car> cars = List.of(car1, car2);
 
+        // 캡처된 출력 저장
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
+        System.setOut(new PrintStream(outputStream, true, StandardCharsets.UTF_8));
 
         // When
         Application.showCarDistances(cars);
 
         // Then
-        String output = outputStream.toString().trim();
-        assertThat(output).isEqualTo("car1 : --\ncar2 : -");
+        String[] outputLines = outputStream.toString().trim().split(System.lineSeparator());
+
+        // 줄 단위 비교
+        assertThat(outputLines).containsExactly("car1 : --", "car2 : -");
 
         // Reset System.out
         System.setOut(System.out);
