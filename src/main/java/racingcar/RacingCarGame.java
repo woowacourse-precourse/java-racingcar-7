@@ -56,5 +56,13 @@ public class RacingCarGame {
         }
     }
 
+    public void printRoundResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.print(car.getName() + " : ");
+            System.out.println("-".repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
+
 }
 
