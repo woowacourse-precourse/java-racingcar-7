@@ -1,10 +1,10 @@
-package racingcar.domain.model;
+package racingcar.domain.car;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.domain.model.value.Distance;
-import racingcar.domain.model.value.Name;
+import racingcar.domain.car.value.Distance;
+import racingcar.domain.car.value.Name;
 
-import static racingcar.Const.*;
+import static racingcar.global.Const.*;
 
 public class Car {
 
@@ -16,8 +16,8 @@ public class Car {
         this.distance = distance;
     }
 
-    public static Car create(String carName) {
-        return new Car(new Name(carName), new Distance());
+    public static Car create(Name carName) {
+        return new Car(carName, new Distance());
     }
 
     public void go() {
@@ -35,5 +35,6 @@ public class Car {
     public Distance getDistance() {
         return distance;
     }
+
 
 }

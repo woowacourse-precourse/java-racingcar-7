@@ -1,4 +1,4 @@
-package racingcar.domain.model.value;
+package racingcar.domain.car.value;
 
 import java.util.Objects;
 
@@ -21,6 +21,11 @@ public final class Distance {
     public int getValue() {
         return value;
     }
+
+    public String getTextValue() {
+        return "-".repeat(Math.max(0, value));
+    }
+
 
     @Override
     public boolean equals(Object o) {

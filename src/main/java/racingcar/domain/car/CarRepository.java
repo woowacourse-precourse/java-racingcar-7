@@ -1,12 +1,11 @@
-package racingcar.domain.model;
+package racingcar.domain.car;
 
-import racingcar.domain.model.value.Name;
+import racingcar.domain.car.value.Name;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static racingcar.Const.DUPLICATE_NAME;
+import static racingcar.global.Const.DUPLICATE_NAME;
 
 
 public class CarRepository {
