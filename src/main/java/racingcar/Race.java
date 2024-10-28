@@ -6,8 +6,8 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class CarRace {
-    private final RaceCarPrinter printer = new RaceCarPrinter();
+public class Race {
+    private final RacePrinter printer = new RacePrinter();
     private HashMap<String, Integer> carMap;
 
     public void start(List<String> carNames, int raceTimes) {

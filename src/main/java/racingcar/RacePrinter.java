@@ -3,7 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class RaceCarPrinter {
+public class RacePrinter {
     private static final String START_MESSAGE = System.lineSeparator() + "실행 결과";
 
     public void printWinner(ArrayList<String> winner) {
