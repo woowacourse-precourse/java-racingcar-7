@@ -47,7 +47,7 @@ public class Controller {
 
   // [] 최종 우승자 전달
   public String getWinner() {
-    return
+    return winner;
   }
 
 
