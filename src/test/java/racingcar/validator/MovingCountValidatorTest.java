@@ -12,7 +12,10 @@ public class MovingCountValidatorTest extends NsTest {
 
     @Test
     void 입력된_문자열이_null인_경우_예외_발생() {
-        assertSimpleTest(() -> assertIllegalArgumentException(null, ErrorMessage.NO_INPUT.getMessage()));
+        assertSimpleTest(() -> assertThatThrownBy(() -> new MovingCountValidator().validateNotEmpty(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.NO_INPUT.getMessage())
+        );
     }
 
     @Test
