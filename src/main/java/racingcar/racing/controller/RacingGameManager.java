@@ -11,21 +11,21 @@ import racingcar.racing.view.InputView;
 import racingcar.racing.view.OutputView;
 
 public class RacingGameManager {
-    private RacingGame game;
+    private RacingGame racingGame;
 
     public void run() {
         List<String> carNames = getCarNames();
         int attemptNumber = getAttemptNumber();
         createRacingGame(attemptNumber, carNames);
-        List<List<RoundResult>> allRoundResult = game.start();
+        List<List<RoundResult>> allRoundResult = racingGame.start();
         OutputView.printAllRoundResult(allRoundResult);
-        List<Car> winners = game.selectWinners();
+        List<Car> winners = racingGame.selectWinners();
         OutputView.printWinner(winners);
         Console.close();
     }
 
     private void createRacingGame(int attemptNumber, List<String> carNames) {
-        this.game = RacingGame.of(attemptNumber, carNames);
+        this.racingGame = RacingGame.of(attemptNumber, carNames);
     }
 
     private int getAttemptNumber() {
