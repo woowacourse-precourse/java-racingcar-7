@@ -25,7 +25,11 @@ public class Utils {
 
     public static int inputToInt(String input) {
         try {
-            return Integer.parseInt(Utils.removeWhitespace(input));
+            int number = Integer.parseInt(Utils.removeWhitespace(input));
+            if (number < 0) {
+                throw new IllegalArgumentException(ErrorCode.INVALID_NUMBER.getMessage());
+            }
+            return number;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorCode.INVALID_NUMBER.getMessage());
         }
