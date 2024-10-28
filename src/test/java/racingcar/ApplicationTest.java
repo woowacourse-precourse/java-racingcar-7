@@ -64,6 +64,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @ParameterizedTest
+    @DisplayName("시도 횟수가 숫자가 아니거나, 양수가 아니면 예외")
+    @CsvSource({
+            "'pobi,wani', '-1'",
+            "'pobi,wani', 'text'",
+            "'pobi,wani', '0'"
+    })
+    void throwExceptionIfTotalRoundIsNotPositiveInteger(String carNamesInput, String totalRoundInput) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(carNamesInput, totalRoundInput))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
