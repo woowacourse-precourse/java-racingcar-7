@@ -21,4 +21,12 @@ public class RacingGame {
         .map(Car::new)
         .collect(Collectors.toList());
   }
+
+  private int getAttempts() {
+    System.out.println("시도할 횟수는 몇 회인가요?");
+    String input = Console.readLine();
+    int attempts = Integer.parseInt(input);
+    if (attempts <= 0) throw new IllegalArgumentException("횟수는 1 이상이어야 합니다.");
+    return attempts;
+  }
 }
