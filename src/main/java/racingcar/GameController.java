@@ -10,6 +10,7 @@ public class GameController {
 
     private final OutputView outputView;
     private final InputView inputView;
+    private RaceReferee referee;
 
     public GameController(OutputView outputView, InputView inputView) {
         this.outputView = outputView;
@@ -20,12 +21,16 @@ public class GameController {
         String carNames = getCarNames();
         List<Car> cars = createCarsFromNames(carNames);
         int round = getRacingRound();
+        referee = RaceReferee.from(round);
 
         while(round > 0) {
             int randomNum = Randoms.pickNumberInRange(0, 9);
             playRound(cars, randomNum);
             --round;
         }
+
+        List<String> winners = referee.declareWinnerNames(cars);
+        outputView.printRacingWinners(winners);
     }
 
     private void playRound(List<Car> cars, int randomNum) {

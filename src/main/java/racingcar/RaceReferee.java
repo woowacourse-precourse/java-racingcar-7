@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.Collections;
+import java.util.List;
+
 public class RaceReferee {
 
     private static final int MOVE_RULE = 4;
@@ -7,6 +10,16 @@ public class RaceReferee {
 
     private RaceReferee(int round) {
         this.round = round;
+    }
+
+    public List<String> declareWinnerNames(List<Car> cars) {
+        List<Integer> positions = cars.stream().map(Car::getPosition).toList();
+        int maxPosition = Collections.max(positions);
+
+        return cars.stream()
+           .filter(car -> car.getPosition() == maxPosition)
+            .map(Car::getName)
+            .toList();
     }
 
     public static RaceReferee from(int round) {
