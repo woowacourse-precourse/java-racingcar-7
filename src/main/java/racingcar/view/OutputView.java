@@ -14,4 +14,22 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public void printWinners(List<String> winners){
+        String message = "최중 우승 : ";
+        if(winners.size() == 1){
+            printSingleWinner(message, winners);
+            return;
+        }
+        printMultipleWinners(message, winners);
+
+    }
+
+    private void printSingleWinner(String message, List<String> winners){
+        System.out.println(message + winners.get(0));
+    }
+
+    private void printMultipleWinners(String message, List<String> winners){
+        System.out.println(message + String.join(", ", winners));
+    }
 }
