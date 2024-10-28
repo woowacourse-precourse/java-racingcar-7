@@ -13,13 +13,13 @@ import racingcar.error.ErrorMessage;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class ValidatorTest {
+class CarValidatorTest {
 
-	private Validator validator;
+	private CarValidator carValidator;
 
 	@BeforeEach
 	void setUp() {
-		validator = new Validator();
+		carValidator = new CarValidator();
 	}
 
 	@Test
@@ -29,7 +29,7 @@ class ValidatorTest {
 		ArrayList<String> carNames = new ArrayList<>(Arrays.asList("CarA", "CarB", "CarC"));
 
 		// Act & Assert
-		validator.checkCarNames(carNames);
+		carValidator.checkCarNames(carNames);
 	}
 
 	@Test
@@ -39,7 +39,7 @@ class ValidatorTest {
 		ArrayList<String> carNames = new ArrayList<>(Arrays.asList("CarA", "", "CarC"));
 
 		// Act & Assert
-		assertThatThrownBy(() -> validator.checkCarNames(carNames))
+		assertThatThrownBy(() -> carValidator.checkCarNames(carNames))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage(ErrorMessage.EMPTY_CAR_NAME.getMessage());
 	}
@@ -51,55 +51,9 @@ class ValidatorTest {
 		ArrayList<String> carNames = new ArrayList<>(Arrays.asList("CarA", "LongCarName", "CarC"));
 
 		// Act & Assert
-		assertThatThrownBy(() -> validator.checkCarNames(carNames))
+		assertThatThrownBy(() -> carValidator.checkCarNames(carNames))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage(ErrorMessage.INVALID_CAR_NAME.getMessage());
-	}
-
-	@Test
-	@DisplayName("유효한 이동 시도 횟수 검사")
-	void testCheckRaceCountWithValidCount() {
-		// Arrange
-		int raceCount = 5;
-
-		// Act & Assert
-		validator.checkRaceCount(raceCount);
-	}
-
-	@Test
-	@DisplayName("유효하지 않은 이동 시도 횟수(음수)일 시 예외 발생")
-	void testCheckRaceCountWithNegativeCount() {
-		// Arrange
-		int raceCount = -1;
-
-		// Act & Assert
-		assertThatThrownBy(() -> validator.checkRaceCount(raceCount))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(ErrorMessage.INVALID_RACE_COUNT.getMessage());
-	}
-
-	@Test
-	@DisplayName("유효하지 않은 이동 시도 횟수(0)일 시 예외 발생")
-	void testCheckRaceCountWithZeroCount() {
-		// Arrange
-		int raceCount = 0;
-
-		// Act & Assert
-		assertThatThrownBy(() -> validator.checkRaceCount(raceCount))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(ErrorMessage.INVALID_RACE_COUNT.getMessage());
-	}
-
-	@Test
-	@DisplayName("유효하지 않은 이동 시도 횟수(범위 초과)일 시 예외 발생")
-	void testCheckRaceCountWithExceedingCount() {
-		// Arrange
-		int raceCount = 101;
-
-		// Act & Assert
-		assertThatThrownBy(() -> validator.checkRaceCount(raceCount))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage(ErrorMessage.INVALID_RACE_COUNT.getMessage());
 	}
 
 	@Test
@@ -111,7 +65,7 @@ class ValidatorTest {
 			"CarP", "CarQ", "CarR", "CarS", "CarT"); // 20개
 
 		// Act & Assert
-		assertThatNoException().isThrownBy(() -> validator.checkCarCount(carNames));
+		assertThatNoException().isThrownBy(() -> carValidator.checkCarCount(carNames));
 	}
 
 	@Test
@@ -125,7 +79,7 @@ class ValidatorTest {
 
 		// Act & Assert
 		assertThatExceptionOfType(IllegalArgumentException.class)
-			.isThrownBy(() -> validator.checkCarCount(carNames))
+			.isThrownBy(() -> carValidator.checkCarCount(carNames))
 			.withMessage(ErrorMessage.EXCEED_CAR_COUNT.getMessage());
 	}
 }

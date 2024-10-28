@@ -5,7 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
 import racingcar.util.Parser;
-import racingcar.util.Validator;
+import racingcar.util.CarValidator;
+import racingcar.util.RaceValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -24,10 +25,11 @@ class RaceControllerTest {
 
     @BeforeEach
     void setUp() {
-        Validator validator = new Validator();
+        CarValidator carValidator = new CarValidator();
+        RaceValidator raceValidator = new RaceValidator();
         Parser parser = new Parser();
 
-        InputView inputView = new InputView(validator, parser) {
+        InputView inputView = new InputView(carValidator, raceValidator, parser) {
             @Override
             public List<String> getCarNames() {
                 return Arrays.asList("CarA", "CarB", "CarC");

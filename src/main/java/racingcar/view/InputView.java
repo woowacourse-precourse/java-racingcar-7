@@ -5,18 +5,21 @@ import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.util.Parser;
-import racingcar.util.Validator;
+import racingcar.util.CarValidator;
+import racingcar.util.RaceValidator;
 
 public class InputView {
 
-	private final Validator validator;
+	private final CarValidator carValidator;
+	private final RaceValidator raceValidator;
 	private final Parser parser;
 
 	private static final String CAR_NAMES_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
 	private static final String RACE_COUNT_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
-	public InputView(Validator validator, Parser parser) {
-		this.validator = validator;
+	public InputView(CarValidator carValidator, RaceValidator raceValidator, Parser parser) {
+		this.carValidator = carValidator;
+		this.raceValidator = raceValidator;
 		this.parser = parser;
 	}
 
@@ -28,8 +31,8 @@ public class InputView {
 		System.out.println(CAR_NAMES_INPUT_MESSAGE);
 		String input = readLine();
 		ArrayList<String> carNames = parser.stringToList(input);
-		validator.checkCarNames(carNames);
-		validator.checkCarCount(carNames);
+		carValidator.checkCarNames(carNames);
+		carValidator.checkCarCount(carNames);
 		return carNames;
 	}
 
@@ -37,7 +40,7 @@ public class InputView {
 		System.out.println(RACE_COUNT_INPUT_MESSAGE);
 		String input = readLine();
 		int raceCount = parser.stringToInt(input);
-		validator.checkRaceCount(raceCount);
+		raceValidator.checkRaceCount(raceCount);
 		return raceCount;
 	}
 }
