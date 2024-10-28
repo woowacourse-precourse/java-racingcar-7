@@ -67,4 +67,11 @@ class RaceServiceImplTest {
         RaceService raceService = appConfig.getRaceService();
         assertThrows(IllegalArgumentException.class, () -> raceService.executeRaceRounds(-4));
     }
+
+    @DisplayName("큰수 예외")
+    @Test
+    void validateBig() {
+        RaceService raceService = appConfig.getRaceService();
+        assertThrows(IllegalArgumentException.class, () -> raceService.executeRaceRounds(2_000_000));
+    }
 }

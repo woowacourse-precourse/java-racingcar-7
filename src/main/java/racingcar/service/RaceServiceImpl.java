@@ -91,10 +91,17 @@ public class RaceServiceImpl implements RaceService{
 
     private void validateRound(int round) {
         validatePositive(round);
+        validateTooBig(round);
     }
 
     private void validatePositive(int round) {
         if (round <= 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateTooBig(int round) {
+        if (round >= RaceConstants.TOO_BIG_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
