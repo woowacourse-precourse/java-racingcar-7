@@ -55,8 +55,6 @@ class CarNameTest extends NsTest {
         );
     }
 
-
-
     @Override
     protected void runMain() {
         Application.main(new String[]{});
