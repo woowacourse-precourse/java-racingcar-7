@@ -13,6 +13,7 @@ public class Application {
         String name="";
         int movements=0;
         List<String> names = new ArrayList<>();
+        List<String> winner = new ArrayList<>();
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         name=Console.readLine();

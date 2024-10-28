@@ -17,6 +17,16 @@ public class Players {
         count.set(indexNum, count.get(indexNum) + 1);
     }
 
+    public int whoIsWinner(){
+        int max=count.get(0);
+        for(int i=0;i<names.size();i++){
+            if(count.get(i) <count.get(i+1)){
+                max=count.get(i+1);
+            }
+        }
+        return max;
+    }
+
     public List<String> getNames() {
         return names;
     }
