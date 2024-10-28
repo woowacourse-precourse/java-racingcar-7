@@ -9,13 +9,15 @@ public class OutputView {
     }
 
     public static void printGameStatus(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car);
-        }
-        System.out.println();
+        for (Car car : cars)
+            System.out.println(OutputView.printCarStatus(car));
     }
 
     public static void printGameResult(List<String> winners) {
         System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    public static String printCarStatus(Car car) {
+        return car.getCarName() + " : " + "-".repeat(car.getDistance());
     }
 }

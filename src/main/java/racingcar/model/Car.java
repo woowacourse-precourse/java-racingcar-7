@@ -13,16 +13,15 @@ public class Car {
         distance++;
     }
 
-    @Override
-    public String toString() {
-        return carName + " : " + "-".repeat(distance);
-    }
-
     public String getCarName() {
         return carName;
     }
 
     public int getCarMoved() {
+        return distance;
+    }
+
+    public int getDistance() {
         return distance;
     }
 }
