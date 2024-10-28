@@ -31,6 +31,51 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_자동차_이름_입력없음() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("입력이 없습니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_이름수_미달() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException(",yunju", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("자동차의 이름은 최소")
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_이름수_초과() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,leeyunju", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차의 이름은 최대")
+        );
+    }
+
+    @Test
+    void 예외_테스트_시도횟수_정수가_아닌_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,yunju", "1.1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도 횟수는 띄어쓰기 없는 정수로 입력해주세요.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_시도횟수_미달() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,yunju", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도 횟수는 최소")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
