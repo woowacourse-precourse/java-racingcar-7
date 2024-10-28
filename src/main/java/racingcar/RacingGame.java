@@ -38,7 +38,9 @@ public class RacingGame {
     public void play() {
         for (int i = 0; i < maxRound; i++) {
             processRound();
+            OutputHandler.printRoundResult(getState());
         }
+        OutputHandler.printFinalWinners(getWinners());
     }
 
     private void processRound() {
