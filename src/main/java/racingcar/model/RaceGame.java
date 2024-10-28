@@ -27,7 +27,6 @@ public class RaceGame {
         int maxPosition = raceCars.getMaximumPosition();
         List<String> winners = raceCars.getWinners(maxPosition);
         return new FinalResultDto(winners);
-
     }
 
     public RaceCars getRaceCars() {
