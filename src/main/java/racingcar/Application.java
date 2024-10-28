@@ -27,7 +27,7 @@ public class Application {
 
         Map<String, Integer> cars = new LinkedHashMap<>();
         for (String carName : carNames) {
-            validateCarName(carName);
+            validateCarName(cars, carName);
             cars.put(carName.trim(), 0);
         }
         validateCarsCount(cars);
@@ -85,9 +85,12 @@ public class Application {
         return winners;
     }
 
-    public static void validateCarName(String carName) {
+    public static void validateCarName(Map<String, Integer> cars, String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+        }
+        if (cars.containsKey(carName.trim())) {
+            throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
         }
     }
 
