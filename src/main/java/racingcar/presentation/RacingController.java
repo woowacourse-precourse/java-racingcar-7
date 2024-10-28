@@ -6,6 +6,7 @@ import racingcar.common.io.Input;
 import racingcar.common.io.Output;
 
 import java.util.List;
+import racingcar.domain.dto.CarDTO;
 
 public class RacingController {
 
@@ -25,31 +26,27 @@ public class RacingController {
 
     for (int i = 0; i < attempts; i++) {
       racingService.moveCars(cars);
-      printRaceProgress(cars);
+      List<CarDTO> carDTOs = racingService.getCarDTOs(cars);
+      printRaceProgress(carDTOs);
     }
 
-    printWinners(cars);
+    List<CarDTO> winners = racingService.findWinners(racingService.getCarDTOs(cars));
+    printWinners(winners);
   }
 
   private List<Car> createCars() {
     List<String> carNames = input.getCarNames();
 
-    return carNames.stream()
-        .map(Car::new)
-        .toList();
+    return carNames.stream().map(Car::new).toList();
   }
 
-  private void printRaceProgress(List<Car> cars) {
-    cars.forEach(car -> output.printRaceProgress(car.getName(), car.getPosition()));
+  private void printRaceProgress(List<CarDTO> carDTOs) {
+    carDTOs.forEach(output::printRaceProgress);
     output.printMessage("");
   }
 
-  private void printWinners(List<Car> cars) {
-    List<Car> winners = racingService.findWinners(cars);
-    List<String> winnerNames = winners.stream()
-        .map(Car::getName)
-        .toList();
-
+  private void printWinners(List<CarDTO> winners) {
+    List<String> winnerNames = winners.stream().map(CarDTO::name).toList();
     output.printWinners(winnerNames);
   }
 }

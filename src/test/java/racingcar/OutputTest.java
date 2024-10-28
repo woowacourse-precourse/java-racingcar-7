@@ -10,10 +10,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.domain.dto.CarDTO;
+import racingcar.domain.dto.PositionDTO;
 
 class OutputTest {
 
   private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+  private final Output output = new Output();
 
   @BeforeEach
   void setUp() {
@@ -22,8 +25,8 @@ class OutputTest {
 
   @Test
   void 진행상황_출력_테스트() {
-    Output outputHandler = new Output();
-    outputHandler.printRaceProgress("hsj", 3);
+    CarDTO carDTO = new CarDTO("hsj", new PositionDTO(3));
+    output.printRaceProgress(carDTO);
 
     assertThat(outputStream.toString().trim()).isEqualTo("hsj : ---");
   }

@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 
 import java.util.List;
+import racingcar.domain.dto.CarDTO;
 
 public class RacingService {
 
@@ -15,14 +16,14 @@ public class RacingService {
     return Randoms.pickNumberInRange(0, 9);
   }
 
-  public List<Car> findWinners(List<Car> cars) {
-    int maxPosition = cars.stream()
-        .mapToInt(Car::getPosition)
-        .max()
+  public List<CarDTO> getCarDTOs(List<Car> cars) {
+    return cars.stream().map(Car::toDTO).toList();
+  }
+
+  public List<CarDTO> findWinners(List<CarDTO> carDTOs) {
+    int maxPosition = carDTOs.stream().mapToInt(car -> car.positionDTO().position()).max()
         .orElse(0);
 
-    return cars.stream()
-        .filter(car -> car.getPosition() == maxPosition)
-        .toList();
+    return carDTOs.stream().filter(car -> car.positionDTO().position() == maxPosition).toList();
   }
 }

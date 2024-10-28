@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.dto.PositionDTO;
+
 public class Position {
 
   private int position;
@@ -9,10 +11,10 @@ public class Position {
   }
 
   public void move() {
-    position++;
+    this.position++;
   }
 
-  public int getPosition() {
-    return position;
+  public PositionDTO toDTO() {
+    return new PositionDTO(this.position);
   }
 }

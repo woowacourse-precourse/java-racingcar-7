@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.dto.CarDTO;
+
 public class Car {
 
   private final String name;
@@ -16,11 +18,7 @@ public class Car {
     }
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public int getPosition() {
-    return position.getPosition();
+  public CarDTO toDTO() {
+    return new CarDTO(name, position.toDTO());
   }
 }

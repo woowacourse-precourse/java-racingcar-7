@@ -8,6 +8,7 @@ import racingcar.application.RacingService;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Arrays;
+import racingcar.domain.dto.CarDTO;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,7 +27,8 @@ class RacingGameTest {
 
     racingService.moveCars(cars);
 
-    cars.forEach(car -> assertThat(car.getPosition()).isGreaterThanOrEqualTo(0));
+    List<CarDTO> carDTOs = racingService.getCarDTOs(cars);
+    carDTOs.forEach(carDTO -> assertThat(carDTO.positionDTO().position()).isNotNegative());
   }
 
   @Test
@@ -36,10 +38,9 @@ class RacingGameTest {
     cars.get(0).tryToMove(4);
     cars.get(2).tryToMove(4);
 
-    List<Car> winners = racingService.findWinners(cars);
-    String winnerNames = winners.stream()
-        .map(Car::getName)
-        .collect(Collectors.joining(", "));
+    List<CarDTO> winners = racingService.findWinners(racingService.getCarDTOs(cars));
+
+    String winnerNames = winners.stream().map(CarDTO::name).collect(Collectors.joining(", "));
 
     assertThat(winnerNames).isEqualTo("jhs, jwj");
   }
@@ -50,10 +51,9 @@ class RacingGameTest {
 
     cars.get(1).tryToMove(6);
 
-    List<Car> winners = racingService.findWinners(cars);
-    String winnerNames = winners.stream()
-        .map(Car::getName)
-        .collect(Collectors.joining(", "));
+    List<CarDTO> winners = racingService.findWinners(racingService.getCarDTOs(cars));
+
+    String winnerNames = winners.stream().map(CarDTO::name).collect(Collectors.joining(", "));
 
     assertThat(winnerNames).isEqualTo("hsj");
   }

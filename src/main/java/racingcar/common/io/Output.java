@@ -1,6 +1,7 @@
 package racingcar.common.io;
 
 import java.util.List;
+import racingcar.domain.dto.CarDTO;
 
 public class Output {
 
@@ -8,8 +9,8 @@ public class Output {
     System.out.println(msg);
   }
 
-  public void printRaceProgress(String carName, int distance) {
-    printMessage(carName + " : " + "-".repeat(distance));
+  public void printRaceProgress(CarDTO carDTO) {
+    printMessage(carDTO.name() + " : " + "-".repeat(carDTO.positionDTO().position()));
   }
 
   public void printWinners(List<String> winners) {
