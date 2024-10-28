@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.Model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class Race {
         return round;
     }
 
-    Race(List<Car> carList, int round) {
+    public Race(List<Car> carList, int round) {
         this.carList = carList;
         this.round = round;
     }

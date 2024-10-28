@@ -1,6 +1,12 @@
-package racingcar;
+package racingcar.Controller;
 
 import java.util.List;
+import racingcar.Model.Car;
+import racingcar.Model.InputParser;
+import racingcar.Model.Race;
+import racingcar.Model.Validator;
+import racingcar.View.InputView;
+import racingcar.View.OutputView;
 
 public class GameController {
     private final InputView inputView;

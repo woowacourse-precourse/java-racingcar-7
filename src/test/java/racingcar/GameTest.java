@@ -8,6 +8,10 @@ import java.io.ByteArrayInputStream;
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.Model.Car;
+import racingcar.Model.InputParser;
+import racingcar.Model.Validator;
+import racingcar.View.InputView;
 
 class GameTest extends NsTest {
     @Override

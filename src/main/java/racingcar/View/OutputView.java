@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.View;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.Model.Car;
 
 public class OutputView {
     private final static String RESULT_MESSAGE = "실행 결과";

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.Model;
 
 public class Car {
     private static final String ERROR_MESSAGE_CARNAME_LENGTH = "자동차 이름은 5자 이하로 해주세요.";
