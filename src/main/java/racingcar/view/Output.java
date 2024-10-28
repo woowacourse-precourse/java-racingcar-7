@@ -6,10 +6,9 @@ import racingcar.domain.RacingCars;
 import java.util.List;
 
 public class Output {
-    private static final String RESULT = "\n실행결과\n";
+    public static final String RESULT = "\n실행결과\n";
     private static final String FINAL_RESULT = "최종 우승자 : ";
     public static void printResults(RacingCars racingCars){
-        System.out.print(RESULT);
         List<RacingCar> racingCarList = racingCars.getRacingCars();
         racingCarList.stream()
                 .forEach(cars -> System.out.print(cars.getCarName() + " : " + "-".repeat( cars.getCarPosition())+"\n"));
