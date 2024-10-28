@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import racingcar.validator.CarValidator;
+import racingcar.validator.CarNameValidator;
 
 public class RacingCarService {
 
-    CarValidator carValidator = new CarValidator();
+    CarNameValidator carNameValidator = new CarNameValidator();
 
     public HashMap<String, Integer> saveCars(String carList) {
 
@@ -18,8 +18,8 @@ public class RacingCarService {
         HashMap<String, Integer> result = new HashMap<>();
 
         for (String car : cars) {
-            carValidator.validateCarName(car);
-            carValidator.checkDuplicateCarName(result, car);
+            carNameValidator.validateCarName(car);
+            carNameValidator.checkDuplicateCarName(result, car);
             result.put(car, 0);
         }
 
