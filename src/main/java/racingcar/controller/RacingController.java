@@ -16,10 +16,12 @@ public class RacingController {
         this.outputView = outputView;
     }
 
-    public void startRace() {
+    public void run() {
+        outputView.printInputCar();
         List<String> carNames = inputView.getInputCars();
         List<Car> cars = initializeCars(carNames);
 
+        outputView.printInputTryCount();
         int rounds = inputView.getInputCount();
         Racing racing = new Racing(cars, rounds);
         racing.startRace();
