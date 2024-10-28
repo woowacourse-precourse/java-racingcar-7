@@ -20,6 +20,11 @@ public class RacingRaceController {
         RaceResult raceResult = new RaceResult();
 
         String[] carNames = racingCarView.inputCarNames();
+
+        for (int i = 0; i < carNames.length; i++) {
+            carNames[i] = carNames[i].trim();
+        }
+
         UserInputService.racingCarUserInput(carNames);
 
         int numberOfRounds = Integer.parseInt(racingCarView.inputNumberOfTries());
