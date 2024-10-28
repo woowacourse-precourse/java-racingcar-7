@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import racingcar.domain.car.Car;
-import racingcar.domain.result.RoundResult;
 
 public class Race {
     private final List<Car> cars;

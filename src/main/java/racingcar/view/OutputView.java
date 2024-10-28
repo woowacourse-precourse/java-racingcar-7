@@ -20,4 +20,8 @@ public class OutputView {
         System.out.println("최종 우승자 : " + winnerNames);
     }
 
+    public static void printErrorMessage(String message) {
+        System.out.println("에러: " + message);
+    }
+
 }

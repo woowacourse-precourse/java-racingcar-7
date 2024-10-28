@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import racingcar.domain.car.strategy.MovingStrategy;
+
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
 

@@ -3,9 +3,9 @@ package racingcar.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
-import racingcar.domain.car.MovingStrategy;
+import racingcar.domain.car.strategy.MovingStrategy;
 import racingcar.domain.race.Race;
-import racingcar.domain.result.RoundResult;
+import racingcar.domain.race.RoundResult;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
