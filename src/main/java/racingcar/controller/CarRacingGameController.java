@@ -42,7 +42,7 @@ public class CarRacingGameController {
 
     private Cars getCarNames() {
         List<String> names = StringSplitter.splitByComma(inputView.readCarNames());
-        CarCreator carFactory = gameConfig.carFactory();
+        CarCreator carFactory = gameConfig.carCreator();
         return carFactory.createCars(names, gameConfig.carMovementPolicy());
     }
 

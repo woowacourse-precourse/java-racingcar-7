@@ -6,7 +6,7 @@ public class CarRacingGameConfig {
         return DefaultCarMovementPolicy.getInstance();
     }
 
-    public CarCreator carFactory() {
+    public CarCreator carCreator() {
         return CarCreator.getInstance();
     }
 }
