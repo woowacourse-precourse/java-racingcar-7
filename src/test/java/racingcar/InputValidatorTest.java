@@ -39,4 +39,12 @@ class InputValidatorTest {
                 .hasMessageContaining("차의 이름에 공백을 포함하면 안됩니다.");
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {-11, -1, -1234, 0})
+    void validateNumeric(int num) {
+        assertThatThrownBy(() -> InputValidator.validateNumeric(num))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 최소 한 번 입니다.");
+    }
+
 }
