@@ -11,17 +11,31 @@ import racingcar.view.OutputView;
 
 public class AppConfig {
 
+    private static final AppConfig appConfig = new AppConfig();
+
+    private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
+    private CarMaker carMaker = new CarMaker(new CarNameValidator());
+    private RacingGame racingGame = new RacingGame(new CarMover());
+    private RoundNumberValidator roundNumberValidator = new RoundNumberValidator();
+    private GameController gameController = new GameController(inputView, outputView, carMaker, racingGame,
+            roundNumberValidator);
+
+
+    public static AppConfig getAppConfig() {
+        return appConfig;
+    }
+
     public GameController gameController() {
-        return new GameController(
-                new InputView(), new OutputView(), carMaker()
-                , racingGame(), new RoundNumberValidator());
+        return gameController;
     }
 
-    public RacingGame racingGame() {
-        return new RacingGame(new CarMover());
-    }
-
-    public CarMaker carMaker() {
-        return new CarMaker(new CarNameValidator());
+    public void reset() {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+        this.carMaker = new CarMaker(new CarNameValidator());
+        this.racingGame = new RacingGame(new CarMover());
+        this.roundNumberValidator = new RoundNumberValidator();
+        this.gameController = new GameController(inputView, outputView, carMaker, racingGame, roundNumberValidator);
     }
 }
