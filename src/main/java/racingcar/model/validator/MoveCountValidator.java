@@ -1,4 +1,4 @@
-package racingcar.validator;
+package racingcar.model.validator;
 
 public class MoveCountValidator {
     private static final String INPUT_NOT_NUMBER_ERROR_MESSAGE = "이동 횟수는 숫자만 입력 할 수 있습니다.";

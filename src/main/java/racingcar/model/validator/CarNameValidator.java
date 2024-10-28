@@ -1,4 +1,4 @@
-package racingcar.validator;
+package racingcar.model.validator;
 
 public class CarNameValidator {
     private static final String EMPTY_NAME_ERROR_MESSAGE = "빈 이름은 입력 할 수 없습니다.";
