@@ -10,7 +10,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class CarServiceTest {
+class RacingGameTest {
 
     private final Validator validator = new Validator();
     private final CarRepository carRepository = new CarRepository();
@@ -31,6 +31,14 @@ class CarServiceTest {
 
         assertThat(carList).hasSize(3); // 저장된 자동차의 개수를 검증
         assertThat(carList).extracting(Car::getName).contains("pobi", "woni", "jun"); // 이름 검증
+    }
+
+    @Test
+    @DisplayName("아무입력 없을때 오류 발생")
+    void 아무입력없을때_IllegalArgumentException_발생() {
+        assertThatThrownBy(() -> validator.checkEmpty(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("값을 입력해주세요.");
     }
 
     @Test
