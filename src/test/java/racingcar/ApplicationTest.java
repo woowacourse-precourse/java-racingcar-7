@@ -56,9 +56,10 @@ class ApplicationTest extends NsTest {
     @CsvSource({
             "'', '1'",
             "'pobi,wonijun', '1'",
-            "',javaji', '1'",
+            "',pobi', '1'",
             "'pobi,woni', '-3'",
-            "'pobi,woni', 'n'"
+            "'pobi,woni', 'n'",
+            "'pobi,woni', '\n'"
     })
     void 나의_예외_테스트(String players, String attempts) {
         assertSimpleTest(() ->
