@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -9,6 +10,7 @@ public class CarList {
     private final Set<String> carNames; // 이름 중복을 검사하기 위한 Set
     public CarList(){
         this.carList = new ArrayList<>();
+        this.carNames = new HashSet<>();
     }
     public void add(Car car){
         validateDuplicateName(car.getName());
