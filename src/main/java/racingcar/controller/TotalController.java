@@ -13,6 +13,17 @@ public class TotalController {
         raceStarterService = new RaceStarterService();
     }
 
+    public void init() {
+        getInput();
+        Race race = openRace();
+
+        connectRelayServer(race);
+        prepareRace();
+
+        allLapUpdate(race);
+        printWinner(race);
+    }
+
     private void getInput() {
         InputController.getInputs();
     }
@@ -47,7 +58,7 @@ public class TotalController {
         ScreenController.getInstance().printWinner(winnerService.raceWinners());
     }
 
-    public static TotalController getInstance() {
+    public static TotalController getControl() {
         if (instance == null) {
             instance = new TotalController();
         }
