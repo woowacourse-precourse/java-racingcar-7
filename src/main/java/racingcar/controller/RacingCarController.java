@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.RacingCar;
 import racingcar.util.StringUtils;
+import racingcar.validation.InputValidator;
 import racingcar.view.InputView;
 
 import java.util.ArrayList;
@@ -18,11 +19,13 @@ public class RacingCarController {
 
     public void run() {
         String carNamesInput = inputView.inputCarNames();
-        int attemptCount = inputView.inputAttemptCount();
-
         List<String> carNames = StringUtils.splitByComma(carNamesInput);
-        List<Car> cars = createCarsFromNames(carNames);
+        carNames.forEach(InputValidator::validateCarName);
 
+        String attemptCountInput = inputView.inputAttemptCount();
+        int attemptCount = InputValidator.validateAttemptCount(attemptCountInput);
+
+        List<Car> cars = createCarsFromNames(carNames);
         RacingCar racingCar = new RacingCar(cars, attemptCount);
 
         racingCar.startRace();
