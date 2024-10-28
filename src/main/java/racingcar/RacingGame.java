@@ -13,7 +13,6 @@ public class RacingGame{
     private final CarNameParser carNameParser;
     private final AttemptCountParser attemptCountParser;
     private final RandomGenerator randomGenerator;
-    private int attemptCount;
 
     // 경주에 참가한 자동차 리스트
     private final List<Car> cars = new ArrayList<>();
@@ -23,6 +22,7 @@ public class RacingGame{
         this.attemptCountParser = attemptCountParser;
         this.randomGenerator = randomGenerator;
     }
+
 
     /**
      * 우승자 출력 기능
@@ -101,8 +101,8 @@ public class RacingGame{
     /**
      * 사용자가 시도할 횟수를 입력받는 메서드
      **/
-    public void getAttemptCount(){
-        this.attemptCount = attemptCountParser.getAttemptCount();
+    public int getAttemptCount(){
+        return attemptCountParser.getAttemptCount();
     }
 
     /**
