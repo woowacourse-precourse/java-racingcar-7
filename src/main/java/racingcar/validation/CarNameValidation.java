@@ -1,17 +1,10 @@
 package racingcar.validation;
 
-import static racingcar.constant.ErrorMessage.CAR_NAME_CANNOT_BE_NULL_OR_EMPTY;
-import static racingcar.constant.ErrorMessage.CAR_NAME_CANNOT_END_WITH_COMMA;
-import static racingcar.constant.ErrorMessage.CAR_NAME_LENGTH_INVALID;
-import static racingcar.constant.ErrorMessage.CAR_NAME_MUST_BE_SEPARATED_BY_COMMAS;
-import static racingcar.constant.ErrorMessage.DUPLICATE_CAR_NAME_FOUND;
-import static racingcar.constant.ErrorMessage.MINIMUM_CAR_NUMBER_IS_ONE;
-import static racingcar.constant.SeparatorConstant.COMMA;
-import static racingcar.constant.SeparatorConstant.EMPTY;
-import static racingcar.constant.SeparatorConstant.SPACE;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import static racingcar.constant.ErrorMessage.*;
+import static racingcar.constant.SeparatorConstant.*;
 
 public class CarNameValidation {
     private final static int MINIMUM_CAR_NUMBER = 2;
@@ -52,7 +45,6 @@ public class CarNameValidation {
             carNamesSet.add(carName);
         }
         validateDuplicateName(carNames.length, carNamesSet.size());
-        validateCarCount(carNamesSet);
     }
 
     private static void validateCarNameLength(String input) {
@@ -67,12 +59,5 @@ public class CarNameValidation {
         }
     }
 
-
-    private static void validateCarCount(Set<String> inputs) {
-        if (inputs.size() < MINIMUM_CAR_NUMBER) {
-            throw new IllegalArgumentException(MINIMUM_CAR_NUMBER_IS_ONE.getMessage());
-        }
-
-    }
 
 }
