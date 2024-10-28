@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ValidateCarNameTest {
+class ValidateCarNamesTest {
     @DisplayName("자동차 이름이 5자 이하일 경우")
     @Test
     void testNormalNames(){

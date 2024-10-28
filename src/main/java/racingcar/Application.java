@@ -11,7 +11,10 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String cars_name = Console.readLine();
         // 자동차 이름 길이 검사
-        ValidateCarNames.validateCarNames(cars_name);
+        String[] cars_list = ValidateCarNames.validateCarNames(cars_name);
+        // 각 자동차의 전진 횟수 저장
+        ArrayList<Integer> advanceCountList = CreateAdvanceCount.createAdvanceCount(cars_list);
+
     }
 
 
