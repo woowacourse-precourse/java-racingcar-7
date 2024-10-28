@@ -14,6 +14,16 @@ public class RacingGame {
 
     public void play(){
         initializeGame();
+        race();
+    }
+
+    private void race() {
+        while(turn-- > 0){
+            for(Car car : cars){
+                moveCar(car);
+            }
+            System.out.println();
+        }
     }
 
     private void initializeGame(){
@@ -58,9 +68,8 @@ public class RacingGame {
     }
 
     private void moveCar(Car car){
-
         int randomNum = Randoms.pickNumberInRange(0,9);
-
+        car.move(randomNum);
     }
 
 }

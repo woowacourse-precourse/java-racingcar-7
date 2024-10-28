@@ -18,4 +18,20 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
     }
+
+    public void move(int num){
+        if(num >= 4){
+            position++;
+        }
+
+        print();
+    }
+
+    private void print() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(name).append(" : ");
+        builder.append("-".repeat(Math.max(0, position)));
+        builder.append('\n');
+        System.out.println(builder.toString());
+    }
 }
