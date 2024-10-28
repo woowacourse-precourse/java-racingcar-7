@@ -14,7 +14,6 @@ public class UserView {
     }
 
     public static void printResult(List<String> result) {
-        System.out.println("result = " + result);
         System.out.println("실행 결과");
         result.forEach(System.out::println);
     }
