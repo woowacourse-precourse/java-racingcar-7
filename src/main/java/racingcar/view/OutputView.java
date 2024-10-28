@@ -7,10 +7,10 @@ public class OutputView {
     private static final String MOVING_UNIT = "-";
     private boolean isFirstRace = true;
 
-    public void displayRaceStatus(List<Car> cardList) {
+    public void displayRaceStatus(List<Car> carList) {
         displayHeaderIfFirstRace();
 
-        for (Car car : cardList) {
+        for (Car car : carList) {
             displayCarStatus(car);
         }
 
