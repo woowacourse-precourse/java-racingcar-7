@@ -2,15 +2,14 @@ package racingcar.domain.refree.value;
 
 import racingcar.domain.car.value.Name;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WinnerNames {
 
-    private final List<Name> winnerNames;
+    private final List<Name> names;
 
-    public WinnerNames(List<Name> winnerNames) {
-        this.winnerNames = winnerNames;
+    public WinnerNames(List<Name> names) {
+        this.names = names;
     }
 
     public static WinnerNames from(List<Name> winnerNames) {
@@ -20,7 +19,7 @@ public class WinnerNames {
     @Override
     public String toString() {
         StringBuilder formBuilder = new StringBuilder();
-        for (Name name : winnerNames) {
+        for (Name name : names) {
             formBuilder.append(name)
                     .append(",");
         }
