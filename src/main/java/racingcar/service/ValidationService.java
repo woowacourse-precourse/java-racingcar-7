@@ -20,17 +20,27 @@ public class ValidationService {
     }
 
     public static void validateCarNames(List<String> carNames) {
+        validateCarCount(carNames);
+        carNames.forEach(ValidationService::validateCarName);
+        checkDuplicateNames(carNames);
+    }
+
+    private static void validateCarCount(List<String> carNames) {
         if (carNames.size() < MINIMUM_CAR_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.INSUFFICIENT_CAR_NAMES.getMessage());
         }
-        for (String name : carNames) {
-            if (name.isEmpty()) {
-                throw new IllegalArgumentException(ErrorMessage.MISSING_CAR_NAME.getMessage());
-            }
-            if (name.length() > MAX_NAME_LENGTH) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_LENGTH.getMessage());
-            }
+    }
+
+    private static void validateCarName(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.MISSING_CAR_NAME.getMessage());
         }
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_LENGTH.getMessage());
+        }
+    }
+
+    private static void checkDuplicateNames(List<String> carNames) {
         if (carNames.stream().map(String::toLowerCase).distinct().count() != carNames.size()) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
         }
