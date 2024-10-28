@@ -18,8 +18,12 @@ public class Cars {
         CarNameValidator.validateDuplicateCarNames(carName);
     }
 
-    public void moveAll() {
-        cars.forEach(car -> car.move(moveStrategy));
+    private List<Car> createCars(String carNames) {
+        String[] splitCarNames = SplitterUtil.splitCarNames(carNames);
+
+        return Arrays.stream(splitCarNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public int getMaxPosition() {
@@ -29,12 +33,8 @@ public class Cars {
                 .orElse(0);
     }
 
-    private List<Car> createCars(String carNames) {
-        String[] splitCarNames = SplitterUtil.splitCarNames(carNames);
-
-        return Arrays.stream(splitCarNames)
-                .map(Car::new)
-                .collect(Collectors.toList());
+    public void moveAll() {
+        cars.forEach(car -> car.move(moveStrategy));
     }
 
     public List<Car> getCars() {
