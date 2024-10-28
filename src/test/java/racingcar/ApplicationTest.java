@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -32,45 +34,25 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @DisplayName("쉼표가 없는 경우 예외가 발생하는지 검사")
-    @Test
-    void validateSeperatorPresent() {
+    @ParameterizedTest
+    @CsvSource(value = {"jenn:1", "jenn,:1", "jenn,kelly,jenn:1"}, delimiter = ':')
+    @DisplayName("자동차 이름을 올바르게 입력하지 않은 경우 예외가 발생하는지 검사")
+    void validateSeperatorPresent(String name, String count) {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("jenn", "1"))
+                assertThatThrownBy(() -> runException(name, count))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
-    @DisplayName("입력 마지막에 쉼표가 있는 경우 예외가 발생하는지 검사")
-    @Test
-    void validateLastCharacterIsComma() {
+    @ParameterizedTest
+    @CsvSource(value = {"jenn, jun:k", "jenn, jun:0"}, delimiter = ':')
+    @DisplayName("실행 횟수가 양수가 아닌 경우 예외가 발생하는지 검사")
+    void validateGameCountIsNumber(String name, String count) {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("jenn,", "1"))
-                        .isInstanceOf(IllegalArgumentException.class));
-    }
-
-    @DisplayName("중복된 이름이 있는 경우 예외가 발생하는지 검사")
-    @Test
-    void validateCarNameDuplicate() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("jenn,kelly,jenn", "1"))
-                        .isInstanceOf(IllegalArgumentException.class));
-    }
-
-    @DisplayName("실행 횟수가 숫자가 아닌 경우 예외가 발생하는지 검사")
-    @Test
-    void validateGameCountIsNumber() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("jenn, jun", "o"))
-                        .isInstanceOf(IllegalArgumentException.class));
-    }
-
-    @DisplayName("실행 횟수가 0보다 작거나 같은 경우 예외가 발생하는지 검사")
-    @Test
-    void validateGameCountIsOneOrMore() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("jenn, jun", "-1"))
-                        .isInstanceOf(IllegalArgumentException.class));
+                assertThatThrownBy(() -> runException(name, count))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1 이상의 숫자를 입력해 주세요.")
+        );
     }
 
     @DisplayName("우승자가 여러 명일 때 쉼표로 구분하여 출력하는지 검사")
