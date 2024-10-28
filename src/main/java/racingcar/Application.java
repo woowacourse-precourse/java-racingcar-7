@@ -6,21 +6,33 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Integer.parseInt;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        String[] name = inputName();
-        int num = inputNum();
+        try {
+            String[] name = inputName();
+            for(String str: name){
+                if(str.length()>5){
+                    throw new IllegalArgumentException();
+                }
+            }
+            int num = inputNum();
 
-        String[] move = new String[name.length];
+            String[] move = new String[name.length];
 
-        for(int i =0; i < num; i++) {
-            display(name, move);
+            for (int i = 0; i < name.length; i++) {
+                move[i] = "";
+            }
+
+            for (int i = 0; i < num; i++) {
+                display(name, move);
+            }
+
+            displayWinner(name, move);
+        } catch(IllegalArgumentException e) {
+            throw new IllegalArgumentException();
         }
-
-        displayWinner(name, move);
     }
 
     public static String[] inputName(){
@@ -45,8 +57,6 @@ public class Application {
         for(int i = 0; i < arr.length; i++){
             if(Movement())
                 move[i] += "-";
-            else
-                move[i] += "";
             System.out.println(arr[i] + " : " + move[i]);
         }
         System.out.println("\n");
