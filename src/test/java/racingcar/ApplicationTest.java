@@ -52,6 +52,13 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("이동 횟수는 0보다 커야 합니다.");
     }
 
+    @Test
+    void 이동_횟수_숫자_입력_예외_테스트() {
+        assertThatThrownBy(() -> RacingGame.parseRounds("abc"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자를 입력해야 합니다.");
+    }
+
         );
     }
 
