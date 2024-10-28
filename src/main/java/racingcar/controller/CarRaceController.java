@@ -20,11 +20,30 @@ public class CarRaceController {
         this.outputView = new OutputView();
     }
 
-    public RaceInfo getRaceInfo(){
+    private RaceInfo getRaceInfo(){
         outputView.printNoticeStatementName();
         List<String> names = inputView.getNames();
         outputView.printNoticeStatementCnt();
         String totalTtyCnt = inputView.getTotalTtyCnt();
         return new RaceInfo(names, totalTtyCnt);
     }
+
+    private List<String> getWinner(List<Car> cars) {
+        List<String> winners = new ArrayList<>();
+
+        long maxPosition = cars.stream()
+                .mapToLong(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
+
+
 }
