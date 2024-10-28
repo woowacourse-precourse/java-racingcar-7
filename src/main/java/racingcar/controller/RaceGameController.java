@@ -9,25 +9,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceGameController {
+    private static final int POSITION_INITIALIZE = 0;
     private final RaceGame raceGame;
     private final GameView gameView;
     private final int roundCount;
 
     public RaceGameController() {
         this.gameView = new GameView();
+        String[] carNames = getCarNames();
+        roundCount = getRoundCount();
+
+        List<Car> cars = getCars(carNames);
+        this.raceGame = new RaceGame(cars);
+    }
+
+    private List<Car> getCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carNames.length; i++) {
+            cars.add(new Car(carNames[i], POSITION_INITIALIZE));
+        }
+        return cars;
+    }
+
+    private int getRoundCount() {
+        gameView.displayInputRoundNum();
+        int roundCount = Integer.parseInt(Console.readLine());
+        validateRoundCount(roundCount);
+        return roundCount;
+    }
+
+    private String[] getCarNames() {
         gameView.displayInputCarNames();
         String input = Console.readLine();
         String[] carNames = input.split(",");
         validateCarNames(carNames);
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i], 0));
-        }
-        gameView.displayInputRoundNum();
-        roundCount = Integer.parseInt(Console.readLine());
-        validateRoundCount(roundCount);
-
-        this.raceGame = new RaceGame(cars);
+        return carNames;
     }
 
     private void validateRoundCount(int roundCount) {
