@@ -21,15 +21,15 @@ class Car {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(final Object object) {
+        if (this == object) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        Car car = (Car) o;
-        return criticalPoint == car.criticalPoint && Objects.equals(carName, car.carName);
+        final Car targetObject = (Car) object;
+        return criticalPoint == targetObject.criticalPoint && Objects.equals(carName, targetObject.carName);
     }
 
     @Override

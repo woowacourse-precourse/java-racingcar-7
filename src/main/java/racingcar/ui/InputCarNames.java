@@ -62,8 +62,8 @@ public class InputCarNames {
         if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        InputCarNames that = (InputCarNames) object;
-        return Objects.equals(this.carNames, that.carNames);
+        final InputCarNames targetInputCarNames = (InputCarNames) object;
+        return Objects.equals(this.carNames, targetInputCarNames.carNames);
     }
 
     @Override

@@ -38,15 +38,15 @@ public class Round {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(final Object object) {
+        if (this == object) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        Round round1 = (Round) o;
-        return currRound == round1.currRound;
+        final Round targeRound = (Round) object;
+        return currRound == targeRound.currRound;
     }
 
     @Override

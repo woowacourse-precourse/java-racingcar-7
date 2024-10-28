@@ -17,15 +17,15 @@ public class Winners {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(final Object object) {
+        if (this == object) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        Winners winners1 = (Winners) o;
-        return Objects.equals(winners, winners1.winners);
+        final Winners targetWinners = (Winners) object;
+        return Objects.equals(winners, targetWinners.winners);
     }
 
     @Override

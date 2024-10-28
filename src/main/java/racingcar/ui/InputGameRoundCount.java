@@ -30,8 +30,8 @@ public class InputGameRoundCount {
         if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        InputGameRoundCount that = (InputGameRoundCount) object;
-        return Objects.equals(roundCount, that.roundCount);
+        final InputGameRoundCount targetInputGameRoundCount = (InputGameRoundCount) object;
+        return Objects.equals(roundCount, targetInputGameRoundCount.roundCount);
     }
 
     @Override
