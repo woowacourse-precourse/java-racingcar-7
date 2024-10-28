@@ -1,5 +1,7 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,13 @@ class Car {
     Car(String name, int move_cnt) {
         this.name = name;
         this.move_cnt = move_cnt;
+    }
+
+    public void increaseCnt() {
+        int random_num = pickNumberInRange(0, 9);
+        if (random_num >= 4) {
+            this.move_cnt++;
+        }
     }
 }
 
