@@ -19,7 +19,19 @@ public class RacingGame {
             playTurn();
             output.printTurn(carList);
         }
+        output.printWinner(findWinner());
+    }
 
+    public List<String> findWinner() {
+        int maxPosition = carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow();
+        List<String> winnerList = carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
+        return winnerList;
     }
 
     public void playTurn() {
