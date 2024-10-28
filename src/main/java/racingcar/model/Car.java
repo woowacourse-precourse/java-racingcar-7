@@ -2,7 +2,7 @@ package racingcar.model;
 
 public class Car {
 
-    public static final int MOVING_FORWARD = 4;
+    public static final int MOVE_THRESHOLD = 4;
 
     private final CarName name;
     private int position;
@@ -11,8 +11,8 @@ public class Car {
         this.name = name;
     }
 
-    public void moveRandomly(int randomNumber) {
-        if (randomNumber >= MOVING_FORWARD) {
+    public void moveIfRandomExceedsThreshold(int randomNumber) {
+        if (randomNumber >= MOVE_THRESHOLD) {
             position++;
         }
     }

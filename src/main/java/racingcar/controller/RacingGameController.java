@@ -18,7 +18,7 @@ public class RacingGameController {
         do {
             racingCarGame.runRound();
             RacingCarGameOutputView.printCarPositions(cars);
-        } while (!racingCarGame.isEnd());
+        } while (!racingCarGame.isEndAllRounds());
 
         List<String> winners = racingCarGame.determineWinners();
         RacingCarGameOutputView.printWinners(winners);

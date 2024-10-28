@@ -17,7 +17,7 @@ public class RacingCarGame {
     }
 
     public void runRound() {
-        if (isEnd()) {
+        if (isEndAllRounds()) {
             return;
         }
 
@@ -26,7 +26,7 @@ public class RacingCarGame {
         currentRound++;
     }
 
-    public boolean isEnd() {
+    public boolean isEndAllRounds() {
         return currentRound == totalRounds;
     }
 

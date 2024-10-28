@@ -23,7 +23,7 @@ public class Cars {
     }
 
     public void moveCarsAccordingToGameRule() {
-        cars.forEach(car -> car.moveRandomly(Randoms.pickNumberInRange(0, 9)));
+        cars.forEach(car -> car.moveIfRandomExceedsThreshold(Randoms.pickNumberInRange(0, 9)));
     }
 
     public List<Car> getCars() {

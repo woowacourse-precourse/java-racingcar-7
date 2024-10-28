@@ -21,7 +21,7 @@ class CarTest {
         Car car = new Car(validCarName);
         int initialPosition = car.getPosition();
 
-        car.moveRandomly(Car.MOVING_FORWARD);
+        car.moveIfRandomExceedsThreshold(Car.MOVE_THRESHOLD);
         assertEquals(initialPosition + 1, car.getPosition());
     }
 
@@ -31,7 +31,7 @@ class CarTest {
         Car car = new Car(validCarName);
         int initialPosition = car.getPosition();
 
-        car.moveRandomly(Car.MOVING_FORWARD - 1);
+        car.moveIfRandomExceedsThreshold(Car.MOVE_THRESHOLD - 1);
         assertEquals(initialPosition, car.getPosition());
     }
 
