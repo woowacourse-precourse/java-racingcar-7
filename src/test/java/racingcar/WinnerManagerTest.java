@@ -52,4 +52,13 @@ public class WinnerManagerTest {
         String winnerNames = winnerManager.getWinnerNames(winners);
         assertEquals("pobi, jason", winnerNames);
     }
+
+    @Test
+    @DisplayName("단독 우승자의 이름을 출력한다.")
+    void getWinnerNamesTest2() {
+        car4.setDistance(12);
+        List<Car> winners = winnerManager.determineWinners(cars);
+        String winnerNames = winnerManager.getWinnerNames(winners);
+        assertEquals("jason", winnerNames);
+    }
 }
