@@ -7,6 +7,11 @@ import java.util.stream.Collectors;
 
 public class OutputHandler {
 
+    public void printStartMessage(){
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
     public void printRoundResults(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));

@@ -18,6 +18,8 @@ public class RaceGame {
     public void startRace() {
         OutputHandler outputHandler = new OutputHandler();
 
+        outputHandler.printStartMessage();
+
         for (int i = 0; i < attemptCount; i++) {
             playRound();
             outputHandler.printRoundResults(cars);
