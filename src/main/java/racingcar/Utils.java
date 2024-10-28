@@ -9,9 +9,13 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Utils {
+    private static final int RANDOM_MIN = 0;
+    private static final int RANDOM_MAX = 9;
+    private static final int CAN_MOVE_STANDARD = 4;
+
     public boolean canMove() {
-        int n = Randoms.pickNumberInRange(0, 9);
-        if (n >= 4) {
+        int n = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
+        if (n >= CAN_MOVE_STANDARD) {
             return true;
         }
         return false;
