@@ -10,7 +10,7 @@ public abstract class Printer {
     public static void print(Car car) {
         printMessage(car.toString());
     }
-    public static void newLine() {
+    public static void breakLine() {
         printMessage("");
     }
 
