@@ -3,6 +3,7 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.dto.RacingResult;
 import racingcar.view.OutputView;
 
 public class UserInputData {
@@ -18,16 +19,18 @@ public class UserInputData {
         this.tryCount = tryCount;
     }
 
-    public void startRacing() {
+    public RacingResult startRacing() {
         for (int i = 0; i < tryCount; i++) {
             cars.stream()
                     .forEach(car -> {car.moveRandomly(if60PercentChance());});
         }
+        RacingResult racingResults = getRacingResults();
+
+        return racingResults;
     }
 
-    public  void printResult() {
-        OutputView.printTryResult(cars);
-        OutputView.printWinnerResult(getWinners());
+    public RacingResult getRacingResults() {
+        return new RacingResult(getCars(), getWinners());
     }
 
     public List<String> getWinners() {
