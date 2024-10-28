@@ -27,6 +27,7 @@ public class Application {
     private static String doRacing(String input, int count) {
         String[] cars = input.split(",");
         validateInput(cars);
+        validateCount(count);
         return "";
     }
 
@@ -40,6 +41,12 @@ public class Application {
         }
         validateCarName(cars);
         checkDuplicateNames(cars);
+    }
+
+    private static void validateCount(int count) {
+        if (count <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
     }
 
     private static void checkDuplicateNames(String[] cars) {
