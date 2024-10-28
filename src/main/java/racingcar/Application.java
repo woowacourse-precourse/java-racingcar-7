@@ -24,8 +24,14 @@ public class Application {
         for (int i = 0; i < tryCount; i++) {
             for (Car car : cars) {
                 car.move();
+                // 결과 출력부
+                System.out.print(car.getName() + " : ");
+                for (int j = 0; j < car.getPosition(); j++) {
+                    System.out.print("-");
+                }
+                System.out.println();
             }
+            System.out.println();
         }
-
     }
 }
