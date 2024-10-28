@@ -9,7 +9,9 @@ import racingcar.domain.game.GameResult;
 import racingcar.domain.movement.MovementPolicy;
 import racingcar.domain.movement.RandomMovementStrategy;
 import racingcar.dto.request.GameStartRequest;
+import racingcar.dto.response.Winners;
 import racingcar.exception.game.GameException.GameNotInitializedException;
+import racingcar.mock.AlternateNumberGenerator;
 import racingcar.mock.CanMoveNumberGenerator;
 import racingcar.repository.MemoryPlayerRepository;
 import racingcar.util.IdGenerator;
@@ -29,8 +31,19 @@ class GameServiceTest {
         return new GameService(playerService, movementPolicy);
     }
 
+    private GameService createGameServiceWithAlternateNumberGenerator() {
+        PlayerService playerService = new PlayerService(
+                new MemoryPlayerRepository(),
+                new IdGenerator()
+        );
+        MovementPolicy movementPolicy = new MovementPolicy(
+                new RandomMovementStrategy(new AlternateNumberGenerator())
+        );
+        return new GameService(playerService, movementPolicy);
+    }
+
     private GameStartRequest createGameStartRequest() {
-        return new GameStartRequest(List.of("p1", "p2", "p3"), 5);
+        return new GameStartRequest(List.of("p1", "p2", "p3"), 4);
     }
 
 
@@ -82,6 +95,7 @@ class GameServiceTest {
             // when
             GameResult gameResult = gameService.playRound();
 
+            // then
             Assertions.assertThat(gameResult).isNotNull();
 
         }
@@ -138,7 +152,51 @@ class GameServiceTest {
             Assertions.assertThat(result).isFalse();
 
         }
+    }
 
+    @DisplayName("승자들 조회하기")
+    @Nested
+    class 승자들_조회하기 {
+
+        @DisplayName("단독 승자 확인")
+        @Test
+        void 단독_승자_확인() {
+            // given
+            GameService gameService = createGameServiceWithAlternateNumberGenerator();
+            GameStartRequest gameStartRequest = new GameStartRequest(List.of("p1", "p2"), 3);
+            gameService.initialize(gameStartRequest);
+            gameService.playRound();
+            gameService.playRound();
+            gameService.playRound();
+
+            // when
+            Winners winners = gameService.getWinners();
+            int totalWinners = winners.names().size();
+
+            // then
+            Assertions.assertThat(totalWinners).isEqualTo(1);
+
+        }
+
+        @DisplayName("공동 승자 확인")
+        @Test
+        void 공동_승자_확인() {
+            // given
+            GameService gameService = createGameService();
+            GameStartRequest gameStartRequest = new GameStartRequest(List.of("p1", "p2", "p3"), 4);
+            gameService.initialize(gameStartRequest);
+            gameService.playRound();
+            gameService.playRound();
+            gameService.playRound();
+            gameService.playRound();
+
+            // when
+            Winners winners = gameService.getWinners();
+            int totalWinners = winners.names().size();
+
+            // then
+            Assertions.assertThat(totalWinners).isEqualTo(3);
+        }
     }
 
 }

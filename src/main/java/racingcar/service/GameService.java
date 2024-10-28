@@ -6,6 +6,7 @@ import racingcar.domain.game.GameResult;
 import racingcar.domain.movement.MovementPolicy;
 import racingcar.domain.player.Player;
 import racingcar.dto.request.GameStartRequest;
+import racingcar.dto.response.Winners;
 import racingcar.exception.game.GameException;
 
 public class GameService {
@@ -46,5 +47,8 @@ public class GameService {
         }
     }
 
-
+    public Winners getWinners() {
+        return Winners.from(game.getPlayers());
+    }
+    
 }
