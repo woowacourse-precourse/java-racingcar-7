@@ -9,11 +9,11 @@ public class TotalRoundsInputProcessor {
     }
 
     public static int parseTotalRounds(String roundInput) {
-        validInput(roundInput);
+        validate(roundInput);
         return parseCount(roundInput);
     }
 
-    static void validInput(String roundInput) {
+    static void validate(String roundInput) {
         if (roundInput == null || roundInput.trim().isEmpty()) {
             throw new IllegalArgumentException(EMPTY_ROUNDS_ERROR);
         }
