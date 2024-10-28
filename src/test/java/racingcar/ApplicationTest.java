@@ -30,6 +30,13 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 자동차이름_구분() {
+        String input = "carA,carB,carC";
+        String[] expected = {"carA", "carB", "carC"};
+    
+        assertArrayEquals(expected, 자동차이름_분리(input));
+    }
 
     @Override
     public void runMain() {
