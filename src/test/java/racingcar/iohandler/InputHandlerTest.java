@@ -17,6 +17,20 @@ class InputHandlerTest {
         Console.close();
     }
 
+    @DisplayName("")
+    @Test
+    void getCarNamesFromUser() {
+
+        String input = "apple,banana\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        InputHandler inputHandler = new InputHandler();
+        String[] carNamesFromUser = inputHandler.getCarNamesFromUser();
+
+        assertThat(carNamesFromUser).isNotEmpty();
+        assertThat(carNamesFromUser).hasSize(2)
+                .contains("apple", "banana");
+    }
+
     @DisplayName("수행 횟수 양수 입력시 정상적으로 추출한다..")
     @Test
     void getMoveCountFromUserWithValidInput() {
