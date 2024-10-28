@@ -61,7 +61,7 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("자동차 이름이 비어있다면 예외를 발생시킨다.")
     @Test
-    void noBlankName() {
+    void blankNameException() {
         assertSimpleTest(() -> {
                     assertThatThrownBy(() -> runException(" ,java", "-1"))
                             .isInstanceOf(IllegalArgumentException.class);
@@ -70,6 +70,15 @@ class ApplicationTest extends NsTest {
                     assertThatThrownBy(() -> runException(",java", "-1"))
                             .isInstanceOf(IllegalArgumentException.class);
                 }
+        );
+    }
+
+    @DisplayName("자동차 이름이 중복될 경우 예외를 발생시킨다.")
+    @Test
+    void duplicateNameException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
