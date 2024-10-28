@@ -28,7 +28,7 @@ public class RacingCarMachine {
 	public void run() {
 		outputHandler.showStartMessage();
 
-		carName = CarName.from(inputHandler.getUserCarName());
+		carName = initializeCarName();
 
 		// 1. 이름 입력 시 이름을 입력하지 않은 경우
 		if (carName.doesNotEnterCarName()) {
@@ -41,7 +41,7 @@ public class RacingCarMachine {
 		outputHandler.showTryMessage();
 
 		try {
-			tryNumber = TryNumber.from(inputHandler.getUserTryNumber());
+			tryNumber = initializeTryNumber();
 
 			// 6. 시도 횟수로 0이 입력된 경우
 			if (tryNumber.isSameTryNumberZero()) {
@@ -82,6 +82,14 @@ public class RacingCarMachine {
 		saveWinnerInList(winnerLength);
 
 		outputHandler.showWinner(winner);
+	}
+
+	private TryNumber initializeTryNumber() {
+		return TryNumber.from(inputHandler.getUserTryNumber());
+	}
+
+	private CarName initializeCarName() {
+		return CarName.from(inputHandler.getUserCarName());
 	}
 
 	private void saveWinnerInList(int winnerLength) {
