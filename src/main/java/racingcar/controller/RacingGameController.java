@@ -42,13 +42,13 @@ public class RacingGameController {
 
         gameResult.forEach(round -> OutputView.roundResult(round.toStringRoundResult()));
 
-        endGame(racingGame);
+        Cars finalRoundCars = racingGame.getFinalRoundCarsStatus();
+        endGame(finalRoundCars);
     }
 
-    private void endGame(RacingGame racingGame){
-        //TODO: 최종 결과 출력
-        Cars finalCars = racingGame.getFinalRoundCarsStatus();
-        OutputView.gameResult(finalCars.getWinner());
+    public void endGame(Cars finalRoundCars){
+        Cars winnerCars = finalRoundCars.sortWinnerCars();
+        OutputView.gameResult(winnerCars.toStringWinnerCars(winnerCars));
     }
 
 }
