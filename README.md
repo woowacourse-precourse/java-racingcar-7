@@ -6,7 +6,7 @@
 
 사용자가 입력한 n대의 자동차를 시도 횟수만큼 정지 혹은 전진 시켜서 경주의 우승자를 출력하는 프로그램입니다.
 
-preview{gif}
+![java-racingcar – Application java  java-racingcar main  2024-10-28 14-56-07 (1)](https://github.com/user-attachments/assets/7c63b97e-df56-44a9-a7ae-917c5a286bd1)
 
 ---
 
@@ -58,5 +58,5 @@ preview{gif}
 - 공백을 입력하지 않았는지 확인한다.
 
 #### 시도 횟수
-- 시도할 횟수가 양의 정수인지 검사한다.
+- 시도할 횟수가 양의 정수인지 검사한다. 
 
