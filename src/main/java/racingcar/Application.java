@@ -29,24 +29,12 @@ public class Application {
         int count = Integer.parseInt(countStr);
         System.out.println();
 
+
         int[] moveList = new int[carListLength];
 
         System.out.println("실행 결과");
         for (int i = 0; i < count; i++) {
-            for (int j = 0; j < carListLength; j++) {
-                int goNum = Randoms.pickNumberInRange(0, 9);
-                if (goNum >= 4) {
-                    moveList[j] += 1;
-                }
-            }
-            for (int k = 0; k < carListLength; k++) {
-                System.out.print(carList[k] + " : ");
-                for (int l = 0; l < moveList[k]; l++) {
-                    System.out.print("-");
-                }
-                System.out.println();
-            }
-            System.out.println();
+            executionResult (carList, carListLength, moveList);
         }
 
 
@@ -70,5 +58,21 @@ public class Application {
             System.out.print(", ");
         }
         System.out.print(list.get(list.size() - 1));
+    }
+
+    public static void executionResult (String[] carList, int carListLength, int[] moveList) {
+        for (int j = 0; j < carListLength; j++) {
+            int goNum = Randoms.pickNumberInRange(0, 9);
+            if (goNum >= 4) {
+                moveList[j] += 1;
+            }
+
+            System.out.print(carList[j] + " : ");
+            for (int l = 0; l < moveList[j]; l++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
