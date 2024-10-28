@@ -21,7 +21,11 @@ public class InputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = readLine();
 
-        return Integer.parseInt(input);
+        int count = Integer.parseInt(input);
+
+        InputValidator.validateNumeric(count);
+
+        return count;
     }
 
     private String readLine() {

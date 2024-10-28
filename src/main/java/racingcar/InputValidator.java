@@ -11,6 +11,12 @@ public class InputValidator {
         }
     }
 
+    public static void validateNumeric(int num) {
+        if (num <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 최소 한 번 입니다.");
+        }
+    }
+
     private static void validateNameIsNull(String name) {
         if (name == null) {
             throw new IllegalArgumentException("차의 이름이 null 이면 안됩니다.");
