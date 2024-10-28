@@ -77,6 +77,17 @@ public class RaceView {
     void validateCarNameLength(String carName){
         int maxSize = 5;
 
+        if(carName.isEmpty()){
+            System.out.println("car name is empty.");
+            throw new IllegalArgumentException("car name is empty.");
+        }
+
+        //validate blank
+        if(carName.isBlank()){
+            System.out.println("car name is blank.");
+            throw new IllegalArgumentException("car name is blank.");
+        }
+
         //validate encoded
         try {
             byte[] utf8Bytes = carName.getBytes(StandardCharsets.UTF_8);
