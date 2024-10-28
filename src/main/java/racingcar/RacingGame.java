@@ -45,6 +45,7 @@ public class RacingGame {
             trial();
             System.out.println(this.toString());
         }
+        printResult();
     }
 
     public int getMaxPosition() {
