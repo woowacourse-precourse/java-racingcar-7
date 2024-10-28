@@ -13,7 +13,7 @@ public class ApplicationContext {
         this.winner = new Winner();
     }
 
-    public UserInteractionManager getView() {
+    public UserInteractionManager getUserInteractionManager() {
         return userInteractionManager;
     }
 

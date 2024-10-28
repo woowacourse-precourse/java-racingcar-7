@@ -10,7 +10,7 @@ public class Game {
     private int attempts = 0;
 
     public Game(ApplicationContext applicationContext) {
-        this.userInteractionManager = applicationContext.getView();
+        this.userInteractionManager = applicationContext.getUserInteractionManager();
         this.inputParser = applicationContext.getInputParser();
         this.race = applicationContext.getRace();
         this.winner = applicationContext.getWinner();
