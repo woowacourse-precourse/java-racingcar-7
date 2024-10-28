@@ -3,7 +3,6 @@ package racingcar.validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.ExceptionCode;
-import racingcar.validator.NamesInputValidator;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -13,14 +12,14 @@ class NamesInputValidatorTest {
     @Test
     @DisplayName("',' 기준으로 이름 입력값 유효성 검사")
     void validateSuccess() {
-        assertThatCode(() -> NamesInputValidator.validate("abc,hijk"))
+        assertThatCode(() -> NamesInputValidator.validate("123,12345"))
                 .doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("',' 사이 공백 무관")
     void validateBlankSuccess() {
-        assertThatCode(() -> NamesInputValidator.validate(" abc, hijk "))
+        assertThatCode(() -> NamesInputValidator.validate(" 123, 1234 "))
                 .doesNotThrowAnyException();
     }
 
@@ -29,7 +28,7 @@ class NamesInputValidatorTest {
     void validateBlank() {
         assertThatThrownBy(() -> NamesInputValidator.validate(" "))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력값이 존재하지 않습니다");
+                .hasMessageContaining(ExceptionCode.INPUT_BLANK.message());
     }
 
     @Test
@@ -37,7 +36,7 @@ class NamesInputValidatorTest {
     void validateOnlyOneName() {
         assertThatThrownBy(() -> NamesInputValidator.validate("ab/c"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("차는 최소 2대 이상이어야 합니다");
+                .hasMessageContaining(ExceptionCode.CAR_SHORTAGE.message());
     }
 
     @Test
@@ -53,6 +52,6 @@ class NamesInputValidatorTest {
     void validateLongNames() {
         assertThatThrownBy(() -> NamesInputValidator.validate("abcdefg,hijk"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("차 이름은 5자를 초과할 수 없습니다");
+                .hasMessageContaining(ExceptionCode.NAME_TOO_LONG.message());
     }
 }
