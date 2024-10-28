@@ -3,6 +3,7 @@ package racingcar;
 import static racingcar.RacingConstants.INITIAL_MOVE_COUNT;
 import static racingcar.RacingConstants.MAX_NUMBER_IN_RANGE;
 import static racingcar.RacingConstants.MIN_NUMBER_IN_RANGE;
+import static racingcar.RacingConstants.MIN_NUMBER_TO_MOVE;
 
 import java.util.List;
 
@@ -12,8 +13,7 @@ public class Application {
         InputValidator inputValidator = new InputValidator();
         InputController inputController = new InputController(inputValidator);
         OutputView outputView = new OutputView();
-        NumberGenerator numberGenerator = new NumberGenerator(MIN_NUMBER_IN_RANGE, MAX_NUMBER_IN_RANGE);
-        Move move = new Move(numberGenerator);
+        RacingRule racingRule = new RacingRule(MIN_NUMBER_IN_RANGE, MAX_NUMBER_IN_RANGE, MIN_NUMBER_TO_MOVE);
         Racers racers;
         int totalAttempts;
         Racing racing;
@@ -25,7 +25,7 @@ public class Application {
         String inputAttempts = inputView.requestTotalAttempts();
         totalAttempts = inputController.convertToNumber(inputAttempts);
 
-        racing = new Racing(racers, move, outputView, totalAttempts);
+        racing = new Racing(racers, racingRule, outputView, totalAttempts);
         racing.race();
         racing.announceWinners();
     }

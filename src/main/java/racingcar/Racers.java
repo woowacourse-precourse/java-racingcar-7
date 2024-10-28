@@ -9,9 +9,9 @@ public class Racers {
         this.cars = cars;
     }
 
-    public void moveForward(Move move) {
+    public void tryToMoveWith(RacingRule racingRule) {
         for (Car car : cars) {
-            car.moveForwardIf(move.can());
+            car.moveForwardIf(racingRule.permitToMove());
         }
     }
 
