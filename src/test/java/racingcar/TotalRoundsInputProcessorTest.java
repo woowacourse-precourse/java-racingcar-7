@@ -1,11 +1,12 @@
 package racingcar;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.utils.TotalRoundsInputProcessor.*;
+
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
-import racingcar.utils.TotalRoundsInputProcessor;
 
 public class TotalRoundsInputProcessorTest {
 
@@ -14,7 +15,7 @@ public class TotalRoundsInputProcessorTest {
     @NullAndEmptySource
     @ValueSource(strings = {"  ", "\t", "\n"})
     void testEmptyOrBlankInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new TotalRoundsInputProcessor(input));
+        assertThrows(IllegalArgumentException.class, () -> parseTotalRounds(input));
     }
 
 
@@ -22,7 +23,7 @@ public class TotalRoundsInputProcessorTest {
     @ParameterizedTest
     @ValueSource(strings = {"0", "-2", "-100"})
     void testZeroOrNegativeInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new TotalRoundsInputProcessor(input));
+        assertThrows(IllegalArgumentException.class, () -> parseTotalRounds(input));
     }
 
 
@@ -30,7 +31,7 @@ public class TotalRoundsInputProcessorTest {
     @ParameterizedTest
     @ValueSource(strings = {"아이", "2년", "1임"})
     void testStringInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new TotalRoundsInputProcessor(input));
+        assertThrows(IllegalArgumentException.class, () -> parseTotalRounds(input));
     }
 
 
@@ -38,8 +39,7 @@ public class TotalRoundsInputProcessorTest {
     @ParameterizedTest
     @MethodSource("provideValidCount")
     void testValidCount(String input, int expected) {
-        TotalRoundsInputProcessor moveInputProcessor = new TotalRoundsInputProcessor(input);
-        Integer result = moveInputProcessor.getMoveCount();
+        Integer result = parseTotalRounds(input);
         assertEquals(expected, result);
 
     }
