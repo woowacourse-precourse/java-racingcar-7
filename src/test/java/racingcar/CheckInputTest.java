@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class CheckInputTest extends NsTest {
@@ -15,10 +18,10 @@ public class CheckInputTest extends NsTest {
     void testTrimAndSplitNames() {
         CheckInput checkInput = new CheckInput();
         String input = "노범석,         김수한무";
-        String[] result = checkInput.splitNames(input);
-        String[] expected = {"노범석", "김수한무"};
+        List<String> result = checkInput.splitNames(input);
+        List<String> expected = Arrays.asList("노범석","김수한무");
 
-        assertThat(result).containsExactly(expected);
+        assertThat(result).containsExactlyElementsOf(expected);
     }
 
     @ParameterizedTest

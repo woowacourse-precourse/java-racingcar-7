@@ -1,7 +1,6 @@
 package racingcar;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class CheckInput {
     private static final int MAX_NAME_LENGTH = 5;
@@ -12,18 +11,18 @@ public class CheckInput {
     private static final String ERROR_NAME_ALREADY_EXIST = "중복된 이름이 존재합니다.";
     private static final String ERROR_INVALID_COUNT = "올바른 숫자를 입력해 주세요.";
 
-    public String[] splitNames(String carNameString) {
+    public List<String> splitNames(String carNameString) {
         validateNameString(carNameString);
-        String[] carNames = splitByDelimiter(carNameString);
-        String[] trimmedCarNames = trimCarNames(carNames);
+        List<String> carNames = splitByDelimiter(carNameString);
+        List<String> trimmedCarNames = trimCarNames(carNames);
         validateCarNames(trimmedCarNames);
         return checkAlreadyExist(trimmedCarNames);
     }
 
-    private String[] trimCarNames(String[] carNames) {
-        String[] trimmedCarNames = new String[carNames.length];
-        for (int i = 0; i < carNames.length; i++) {
-            trimmedCarNames[i] = carNames[i].trim();
+    private List<String> trimCarNames(List<String> carNames) {
+        List<String> trimmedCarNames = new ArrayList<>();
+        for (String carName : carNames ) {
+            trimmedCarNames.add(carName.trim());
         }
         return trimmedCarNames;
     }
@@ -34,7 +33,7 @@ public class CheckInput {
         }
     }
 
-    private String[] checkAlreadyExist(String[] trimmedCarNames) {
+    private List<String> checkAlreadyExist(List<String> trimmedCarNames) {
         Set<String> nameSet = new HashSet<>();
         for (String carName : trimmedCarNames) {
             if (!nameSet.add(carName)) {
@@ -44,14 +43,14 @@ public class CheckInput {
         return trimmedCarNames;
     }
 
-    private void validateCarNames(String[] trimmedCarNames) {
+    private void validateCarNames(List<String> trimmedCarNames) {
         for (String trimmedCarName : trimmedCarNames) {
             checkLength(trimmedCarName);
         }
     }
 
-    private String[] splitByDelimiter(String carNameString) {
-        return carNameString.split(DELIMITER);
+    private List<String> splitByDelimiter(String carNameString) {
+        return Arrays.asList(carNameString.split(DELIMITER));
     }
 
 

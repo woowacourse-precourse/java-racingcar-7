@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -9,7 +10,7 @@ public class RaceCar {
     private final RaceCarPrinter printer = new RaceCarPrinter();
     private HashMap<String, Integer> carMap;
 
-    public void start(String[] carNames, int raceTimes) {
+    public void start(List<String> carNames, int raceTimes) {
         carMap = initCars(carNames);
         runRace(raceTimes);
         printer.printWinner(checkWinner());
@@ -49,7 +50,7 @@ public class RaceCar {
         return maxValue;
     }
 
-    private HashMap<String, Integer> initCars(String[] carNames) {
+    private HashMap<String, Integer> initCars(List<String> carNames) {
         HashMap<String, Integer> map = new HashMap<>();
         for (String car : carNames) {
             map.put(car, 0);
