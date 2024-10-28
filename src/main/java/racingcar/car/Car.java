@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public class Car {
 
+    private static final int DRIVING_CONDITION_THRESHOLD = 4;
+    private static final int DRIVING = 1;
     private static final String MILEAGE_SYMBOL = "-";
 
     private final String name;
@@ -32,8 +34,8 @@ public class Car {
 
     public void drive() {
         int drive = Randoms.pickNumberInRange(0, 9);
-        if (drive >= 4) {
-            mileage += 1;
+        if (drive >= DRIVING_CONDITION_THRESHOLD) {
+            mileage += DRIVING;
         }
     }
 
