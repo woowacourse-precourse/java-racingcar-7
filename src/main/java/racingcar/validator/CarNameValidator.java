@@ -9,7 +9,6 @@ public class CarNameValidator {
 
     public boolean isValidate(String input){
         this.input = input;
-        System.out.println(input);
 
         startOrEndWithComma();
         containsEmptyName();
