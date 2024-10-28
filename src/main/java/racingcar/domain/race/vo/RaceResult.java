@@ -11,7 +11,7 @@ public record RaceResult(List<RoundResults> rounds) {
         this(new ArrayList<>());
     }
 
-    public void addRound(RoundResults roundResults) {
+    public void addRoundResult(RoundResults roundResults) {
         rounds.add(roundResults);
     }
 

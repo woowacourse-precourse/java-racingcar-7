@@ -14,9 +14,4 @@ public class CliOutputAdapter implements OutputPort {
     public void writeNewLine() {
         System.out.println();
     }
-
-    @Override
-    public void writeResponse(Response response) {
-        System.out.println(response);
-    }
 }

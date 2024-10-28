@@ -37,7 +37,7 @@ public class Race {
         while (round.hasMoreRounds()) {
             lap();
             round = round.nextRound();
-            raceResult.addRound(getRoundResults());
+            raceResult.addRoundResult(getRoundResults());
         }
 
         return raceResult;

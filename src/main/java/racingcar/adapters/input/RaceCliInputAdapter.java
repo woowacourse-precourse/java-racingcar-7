@@ -1,7 +1,6 @@
 package racingcar.adapters.input;
 
-import static racingcar.infrastructure.constants.AnnounceMessages.*;
-import static racingcar.infrastructure.exception.ErrorCode.ROUND_NOT_NUMBER;
+import static racingcar.infrastructure.constants.PromptMessages.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.application.dto.request.RaceRequest;
@@ -9,7 +8,6 @@ import racingcar.application.dto.response.RaceResponse;
 import racingcar.application.port.input.ManageRaceUsecase;
 import racingcar.application.validation.InputValidator;
 import racingcar.application.port.output.OutputPort;
-import racingcar.domain.race.constants.RaceFormat;
 import racingcar.domain.race.service.RaceFormatter;
 import racingcar.domain.race.vo.Round;
 
