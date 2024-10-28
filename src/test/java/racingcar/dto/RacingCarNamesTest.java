@@ -39,6 +39,18 @@ class RacingCarNamesTest {
                     .isInstanceOf(RacingCarException.class)
                     .hasMessage(ONLY_ENGLISH_OR_KOREAN_ALLOWED.getMessage());
         }
+
+        @ParameterizedTest
+        @ValueSource(strings = {
+                "lamborghini,맥라렌",
+                "레드불,McLaren"
+        })
+        @DisplayName("자동차 이름이 5글자를 초과하면 예외가 발생한다.")
+        void 자동차_이름이_5글자를_초과하면_예외가_발생한다(String input) {
+            assertThatThrownBy(() -> RacingCarNames.from(input))
+                    .isInstanceOf(RacingCarException.class)
+                    .hasMessage(NAME_MAX_LENGTH_LIMIT.getMessage());
+        }
     }
 
     @Nested
