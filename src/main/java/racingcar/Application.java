@@ -23,6 +23,20 @@ public class Application {
         getScoreArray(carName, scoreList);
 
         doRace(carName, playNum, scoreList);
+
+        Integer maxMove = getMaxMove(carName, scoreList);
+        System.out.print("최종 우승자 : ");
+        Boolean hasFirstElement = false;
+        for (int i = 0; i < carName.size(); i++) {
+            if (scoreList.get(i) == maxMove) {
+                if (hasFirstElement) {
+                    System.out.print(", ");
+                }
+                System.out.print(carName.get(i));
+                hasFirstElement = true;
+
+            }
+        }
     }
 
     private static void doRace(ArrayList<String> carName, Integer playNum, ArrayList<Integer> scoreList) {
@@ -34,10 +48,20 @@ public class Application {
     }
 
     private static void checkNumberPositive(Integer playNum) {
-        if(playNum <0)
+        if (playNum < 0) {
             throw new IllegalArgumentException("횟수로 양수만 가능합니다.");
+        }
     }
 
+    private static Integer getMaxMove(List<String> carName, ArrayList<Integer> scoreList) {
+        Integer maxMove = scoreList.get(0);
+        for (int i = 0; i < carName.size(); i++) {
+            if (maxMove < scoreList.get(i)) {
+                maxMove = scoreList.get(i);
+            }
+        }
+        return maxMove;
+    }
 
     private static void printCarsMoveStates(List<String> carName, ArrayList<Integer> scoreList) {
         for (int j = 0; j < carName.size(); j++) {
