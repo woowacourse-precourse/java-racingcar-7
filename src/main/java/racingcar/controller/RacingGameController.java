@@ -3,7 +3,9 @@ package racingcar.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
+import racingcar.strategy.MoveStrategy;
 import racingcar.validation.Validator;
 import racingcar.view.RacingGameView;
 
@@ -12,21 +14,39 @@ public class RacingGameController {
     private final RacingGameView view;
     private final Validator carNamesValidator;
     private final Validator attemptCountValidator;
+    private final MoveStrategy moveStrategy;
 
     public RacingGameController(
         RacingGameView view,
         Validator carNamesValidator,
-        Validator attemptCountValidator
+        Validator attemptCountValidator,
+        MoveStrategy moveStrategy
     ) {
         this.view = view;
         this.carNamesValidator = carNamesValidator;
         this.attemptCountValidator = attemptCountValidator;
+        this.moveStrategy = moveStrategy;
     }
 
     public void play() {
         List<String> racingCarNames = getRacingCarNames();
+        int attemptCount = getAttemptCount();
 
-        Long attemptCount = getAttemptCount();
+        RacingCars racingCars = RacingCars.of(moveStrategy, racingCarNames);
+
+        while (attemptCount-- > 0) {
+            racingCars.moveAll();
+            view.printRacingResult(racingCars);
+        }
+
+        view.printWinners(
+            String.join(
+                ", ",
+                racingCars.getWinners().stream()
+                    .map(RacingCar::getName)
+                    .toList()
+            )
+        );
     }
 
     private List<String> getRacingCarNames() {
@@ -38,12 +58,12 @@ public class RacingGameController {
         return Arrays.asList(carNames.split(","));
     }
 
-    private Long getAttemptCount() {
+    private int getAttemptCount() {
         view.printAttemptCountInputMessage();
         String attemptCount = view.getInput();
 
         attemptCountValidator.validate(attemptCount);
 
-        return Long.valueOf(attemptCount);
+        return Integer.parseInt(attemptCount);
     }
 }

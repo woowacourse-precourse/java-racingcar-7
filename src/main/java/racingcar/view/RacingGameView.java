@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.RacingCars;
 
 public class RacingGameView {
     public void printCarNamesInputMessage() {
@@ -9,6 +10,19 @@ public class RacingGameView {
 
     public void printAttemptCountInputMessage() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
+    public void printRacingResult(RacingCars racingCars) {
+        racingCars.forEach(racingCar ->
+            System.out.println(
+                racingCar.getName() + " : " + "-".repeat(racingCar.getMoveCount())
+            )
+        );
+        System.out.println();
+    }
+
+    public void printWinners(String winners) {
+        System.out.println("최종 우승자 : " + winners);
     }
 
     public String getInput() {
