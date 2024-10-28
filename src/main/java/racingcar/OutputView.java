@@ -15,10 +15,13 @@ public class OutputView {
         StringBuilder sb = new StringBuilder(WINNER_RESULT_PHRASE);
         for (Car winner : racingGame.getWinners()) {
             sb.append(winner.getName());
-            sb.append(",");
+            sb.append(", ");
         }
 
-        sb.deleteCharAt(sb.length() - 1);
+        final int LAST_COMMA_INDEX = sb.length() - 2;
+        final int WHITE_SPACE_INDEX = sb.length() - 1;
+
+        sb.delete(LAST_COMMA_INDEX, WHITE_SPACE_INDEX);
         System.out.println(sb);
     }
 
