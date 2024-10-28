@@ -12,13 +12,15 @@ public class Application {
 
         List<String> carNames = getcarNames();
 
-        int count = getCount();
+        if (!autoWin(carNames)) {
+            int count = getCount();
 
-        List<Integer> carMoves = new ArrayList<>(Collections.nCopies(carNames.size(),0));
+            List<Integer> carMoves = new ArrayList<>(Collections.nCopies(carNames.size(),0));
 
-        runRace(count, carNames, carMoves);
+            runRace(count, carNames, carMoves);
 
-        printWinner(carNames, carMoves);
+            printWinner(carNames, carMoves);
+        }
     }
 
     private static List<String> getcarNames() {
@@ -39,6 +41,14 @@ public class Application {
         return Arrays.stream(input.split(",", -1))
                 .map(String::trim)
                 .collect(Collectors.toList());
+    }
+
+    private static boolean autoWin(List<String> carNames) {
+        if (carNames.size() == 1) {
+            System.out.println("최종 우승자 : " + carNames.get(0));
+            return true;
+        }
+        return false;
     }
 
     private static int getCount() {
