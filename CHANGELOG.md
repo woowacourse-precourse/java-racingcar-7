@@ -1,0 +1,31 @@
+- refactor: 중복되는 코드를 제가하기 위해 상속 이용
+- refactor: 에러 메시지 전분 ENUM으로 변경
+- refactor: 컨트롤러에 서비스 생성자주입으로 변경
+- refactor: 컨트롤러 책임 분산
+- refactor: RacingService 파일명을 수정
+- fix : RacingService에서 입출력 요구사항에 맞게 결과 출력 위치 변경
+- feat(application): 레이싱 실행 구현
+- feat: TimeParser에 검증 적용
+- feat: CarNameParser에 검증 적용
+- feat: RestController 구현
+- feat: WinnerService 구현
+- test: WinnerService 테스트 생성
+- feat: TimeParser 구현
+- test: TimesParser 테스트 생성
+- feat: CarNameParser 구현
+- test: CarNameParser 테스트 케이스 추가
+- test: CarNameParser 테스트 생성
+- feat: CarNamesValidation 구현
+- test: CarNamesValidation 테스트 구현
+- refactor: mvc 패턴 위반요소 제거
+- feat: RacingService 구현
+- feat: OutputView 구현
+- test: RacingService 테스트 구현
+- feat: Cars 객체 생성
+- feat: car 객체 생성
+- feat: TimesValidation 구현
+- test: TimesValidation 테스트 구현
+- feat: InputView 구현
+- test: InputView 테스트 구현
+- docs: 기능 목록 및 예외 상황 정리
+- feat: setup project
