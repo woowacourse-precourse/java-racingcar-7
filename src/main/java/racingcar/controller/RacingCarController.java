@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -25,6 +26,7 @@ public class RacingCarController {
     public void start() {
         Cars cars = getCars();
         int tryCount = getTryCount();
+        Console.close();
 
         race(cars, tryCount);
     }
