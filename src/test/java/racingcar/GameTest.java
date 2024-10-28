@@ -18,5 +18,15 @@ public class GameTest {
     void validCarName(){
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
                 ()-> new RacingCar("Kimsss,Shinsss", 5));
+        Assertions.assertEquals("자동차 이름은 5자 이하만 가능합니다.", exception.getMessage());
+    }
+
+    @Test
+    void testCarNamesWithSpaces() {
+        RacingCar racingCar = new RacingCar(" Kim, Shin", 3);
+
+        Assertions.assertEquals(2, racingCar.getCarNameList().size());
+        Assertions.assertEquals("Kim", racingCar.getCarNameList().get(0));
+        Assertions.assertEquals("Shin", racingCar.getCarNameList().get(1));
     }
 }
