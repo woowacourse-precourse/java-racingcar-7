@@ -30,6 +30,9 @@ public class RacingService {
             else if (Collections.frequency(nameOfCar, s) != 1) {
                 throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
             }
+            else if (nameOfCar.size() >= 100) {
+                throw new IllegalArgumentException("자동차 개수가 100대 이상입니다.");
+            }
             movementNum.add(0);
         }
     }
