@@ -21,7 +21,7 @@ public class RacingController {
 
     public void run() {
         List<String> names = nameRequestHandler.getNames();
-        int moveNum = numberRequestHandler.getNumber();
+        long moveNum = numberRequestHandler.getNumber();
         Cars cars = Cars.from(names);
 
         cars.racing(moveNum);

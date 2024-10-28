@@ -9,24 +9,24 @@ import static racingcar.utils.ExceptionUtils.throwException;
 
 public class NumberRequestHandler {
 
-    public int getNumber() {
+    public long getNumber() {
         RequestView.requestMoveNumber();
         String inputString = Console.readLine();
-        int number = convertToInteger(inputString);
+        long number = convertToLong(inputString);
         validateNegative(number);
         return number;
     }
 
-    public int convertToInteger(String rawNumber) {
+    public long convertToLong(String rawNumber) {
         if (rawNumber.matches("\\d+")) {
-            return Integer.parseInt(rawNumber);
+            return Long.parseLong(rawNumber);
         } else {
             throwException(INVALID_NUMBER_ERROR);
-            return 0;
+            return -1L;
         }
     }
 
-    public void validateNegative(int rawNumber) {
+    public void validateNegative(long rawNumber) {
         if (rawNumber < 0) {
             throwException(NEGATIVE_NUMBER_ERROR);
         }

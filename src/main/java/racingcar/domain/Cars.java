@@ -4,6 +4,7 @@ import racingcar.view.StatusView;
 
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 public class Cars {
 
@@ -19,9 +20,9 @@ public class Cars {
         return new Cars(names);
     }
 
-    public void racing(int moveNum) {
+    public void racing(long moveNum) {
         StatusView.printExecutionResult();
-        IntStream.range(0, moveNum)
+        LongStream.range(0, moveNum)
                 .forEach(i -> {
                     cars.forEach(Car::moveOrStop);
                     StatusView.printStatus(cars);

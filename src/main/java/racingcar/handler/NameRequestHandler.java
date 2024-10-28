@@ -5,7 +5,6 @@ import racingcar.view.RequestView;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static racingcar.message.ErrorMessage.*;
 import static racingcar.utils.ExceptionUtils.throwException;
