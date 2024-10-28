@@ -16,8 +16,22 @@ public class Application {
         for (String carName : carNamesRaw.split("\\s*,\\s*")) {
             // scenario 1: process leading/trailing non-standard space
             carName = carName.strip();
-            // TODO: validate more
+            // scenario 2: long name provided
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("[ERROR] Length limit(5) exceeded: \"" + carName + "\"");
+            }
+            // scenario 3: blank name provided
+            if (carName.isEmpty()) {
+                continue;
+            }
+            // scenario 4: duplicated name provided
+            if (cars.containsKey(carName)) {
+                throw new IllegalArgumentException("[ERROR] Duplicated name: \"" + carName + "\"");
+            }
             cars.put(carName, 0);
+        }
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] Nobody is in game");
         }
 
         // Temporary output
