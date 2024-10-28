@@ -34,6 +34,6 @@ public class Car {
     }
 
     private boolean canFoward() {
-        return Randoms.pickNumberInRange(0, 9) > 4;
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 }
