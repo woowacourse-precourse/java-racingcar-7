@@ -18,10 +18,8 @@ public class RacingCarController {
     }
 
     public void runRacingGame() {
-        InputHandler.promptForCarNames();
-        String carNames = Console.readLine();
-        InputHandler.promptForAttemptCount();
-        String countString = Console.readLine();
+        String carNames = InputHandler.promptForCarNames();
+        String countString = InputHandler.promptForAttemptCount();
 
         InputHandler.validateCarNames(carNames);
         InputHandler.validateAttemptCount(countString);

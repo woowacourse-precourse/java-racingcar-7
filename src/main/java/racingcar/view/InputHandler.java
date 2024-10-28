@@ -1,18 +1,17 @@
 package racingcar.view;
 
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class InputHandler {
 
-    public static void promptForCarNames() {
+    public static String promptForCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-    }
-
-    public static void promptForAttemptCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Console.readLine();
     }
 
     public static void validateCarNames(String carNames) {
@@ -31,6 +30,11 @@ public class InputHandler {
                 throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
             }
         }
+    }
+
+    public static String promptForAttemptCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Console.readLine();
     }
 
     public static void validateAttemptCount(String attemptCount) {
