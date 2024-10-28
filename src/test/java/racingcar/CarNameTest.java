@@ -12,7 +12,7 @@ class CarNameTest {
         String input = "pobi,jun";
 
         // When
-        List<String> result = CarName.carNameFilter(input);
+        List<String> result = CarValidator.validateNames(input);
 
         // Then
         Assertions.assertThat(result).contains("pobi", "jun");
@@ -27,6 +27,6 @@ class CarNameTest {
 
 
         // Then
-        Assertions.assertThatThrownBy(() -> CarName.carNameFilter(input)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> CarValidator.validateNames(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }
