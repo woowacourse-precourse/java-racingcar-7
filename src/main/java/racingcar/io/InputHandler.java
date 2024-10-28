@@ -19,12 +19,10 @@ public class InputHandler {
             int count = Integer.parseInt(input);
             validator.validatePositive(count);
             return count;
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
-
-
 
     public List<String> inputCarName() {
         String input = getInput(CAR_NAME_INPUT_MESSAGE);

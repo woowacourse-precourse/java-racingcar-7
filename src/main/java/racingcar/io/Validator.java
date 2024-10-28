@@ -9,23 +9,23 @@ public class Validator {
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
     public void validatePositive(int count) {
-        if(count < 0) {
+        if (count < 0) {
             throw new IllegalArgumentException("입력값은 양수여야 합니다.");
         }
     }
 
-    public void validateCarNames(List<String> carNames){
+    public void validateCarNames(List<String> carNames) {
 
         validateDuplicates(carNames);
 
-        for(String name : carNames) {
+        for (String name : carNames) {
             validateCarNameLength(name);
             validateNotEmptyName(name);
         }
     }
 
     public void validateDuplicates(List<String> carNames) {
-        if(isDuplicated(carNames)) {
+        if (isDuplicated(carNames)) {
             throwError(ERROR_DUPLICATED_CAR_NAME);
         }
     }
@@ -35,13 +35,13 @@ public class Validator {
     }
 
     public void validateCarNameLength(String name) {
-        if (name.length() > MAX_CAR_NAME_LENGTH){
+        if (name.length() > MAX_CAR_NAME_LENGTH) {
             throwError(ERROR_CAR_NAME_LENGTH);
         }
     }
 
     public void validateNotEmptyName(String name) {
-        if(name == null || name.isBlank()){
+        if (name == null || name.isBlank()) {
             throwError(ERROR_EMPTY_CAR_NAME);
         }
     }
