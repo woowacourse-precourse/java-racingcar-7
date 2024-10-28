@@ -1,4 +1,4 @@
-package racingcar.utils;
+package racingcar.validator;
 
 public class RaceRoundsValidator {
 
@@ -7,8 +7,8 @@ public class RaceRoundsValidator {
             throw new IllegalArgumentException();
         }
         try {
-            int raceRounds = Integer.parseInt(roundsInput);
-            if (raceRounds < 1) {
+            int raceRounds = Integer.parseInt(roundsInput.trim());
+            if (raceRounds < 0) {
                 throw new IllegalArgumentException();
             }
             return raceRounds;
