@@ -48,11 +48,9 @@ class RacingGameTest {
   @Test
   void 단독_우승자_계산_테스트() {
     List<Car> cars = Arrays.asList(new Car("jhs"), new Car("hsj"), new Car("jwj"));
-
     cars.get(1).tryToMove(6);
 
     List<CarDTO> winners = racingService.findWinners(racingService.getCarDTOs(cars));
-
     String winnerNames = winners.stream().map(CarDTO::name).collect(Collectors.joining(", "));
 
     assertThat(winnerNames).isEqualTo("hsj");

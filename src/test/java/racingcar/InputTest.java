@@ -35,8 +35,7 @@ class InputTest {
 
     Input inputHandler = new Input();
 
-    assertThatThrownBy(inputHandler::getCarNames)
-        .isInstanceOf(IllegalArgumentException.class)
+    assertThatThrownBy(inputHandler::getCarNames).isInstanceOf(IllegalArgumentException.class)
         .hasMessage("자동차 이름은 1자 이상 5자 이하여야 합니다.");
   }
 
@@ -47,8 +46,7 @@ class InputTest {
 
     Input inputHandler = new Input();
 
-    assertThatThrownBy(inputHandler::getCarNames)
-        .isInstanceOf(IllegalArgumentException.class)
+    assertThatThrownBy(inputHandler::getCarNames).isInstanceOf(IllegalArgumentException.class)
         .hasMessage("자동차 이름은 빈 문자열이 올 수 없습니다.");
   }
 
@@ -70,8 +68,7 @@ class InputTest {
 
     Input inputHandler = new Input();
 
-    assertThatThrownBy(inputHandler::getAttempts)
-        .isInstanceOf(IllegalArgumentException.class)
+    assertThatThrownBy(inputHandler::getAttempts).isInstanceOf(IllegalArgumentException.class)
         .hasMessage("시도 횟수는 1 이상이어야 합니다.");
   }
 
@@ -82,8 +79,7 @@ class InputTest {
 
     Input inputHandler = new Input();
 
-    assertThatThrownBy(inputHandler::getAttempts)
-        .isInstanceOf(IllegalArgumentException.class)
+    assertThatThrownBy(inputHandler::getAttempts).isInstanceOf(IllegalArgumentException.class)
         .hasMessage("올바른 숫자를 입력해야 합니다.");
   }
 }
