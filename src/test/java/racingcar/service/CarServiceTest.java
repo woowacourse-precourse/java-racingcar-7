@@ -14,6 +14,8 @@ class CarServiceTest {
         assertThrows(IllegalArgumentException.class, () -> carService.getCarsByDelimiter(",,,"));
         assertThrows(IllegalArgumentException.class, () -> carService.getCarsByDelimiter("pobi,,coh"));
         assertThrows(IllegalArgumentException.class, () -> carService.getCarsByDelimiter(""));
+
+        Assertions.assertThat(carService.getCarsByDelimiter("pobi,coh,line")).isEqualTo("pobi,coh,line".split(","));
     }
 
     @Test
