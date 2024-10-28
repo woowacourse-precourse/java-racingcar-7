@@ -36,11 +36,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
-
-
-
-
+//여기서 부터 예외테스트
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -83,6 +79,26 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+
+    @Test
+    void 중복된이름 () {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 음수실행횟수 () {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "-2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
 
 
 
