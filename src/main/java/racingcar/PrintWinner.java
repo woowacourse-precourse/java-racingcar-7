@@ -5,6 +5,7 @@ import java.util.*;
 public class PrintWinner {
     public void winnerPrint(Map<String, Integer> carValues) {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(carValues.entrySet());
+
         list.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
         Integer winnerScore = list.getFirst().getValue();
         Map<String, Integer> winners = new LinkedHashMap<>();
@@ -15,6 +16,7 @@ public class PrintWinner {
                 winners.put(key, value);
         }
         var result = String.join(", ", winners.keySet());
+
         System.out.println("최종 우승자 : " + result);
     }
 }

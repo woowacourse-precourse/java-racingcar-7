@@ -11,9 +11,11 @@ public class InputNumber {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+
         if (input < 1) {
             throw new IllegalArgumentException();
         }
+
         return input;
     }
 }
