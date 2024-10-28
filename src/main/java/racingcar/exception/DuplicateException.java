@@ -1,6 +1,6 @@
 package racingcar.exception;
 
-public class DuplicateException extends Exception {
+public class DuplicateException extends IllegalArgumentException {
 
     private static final String MESSAGE = "중복된 값이 존재합니다.";
 
