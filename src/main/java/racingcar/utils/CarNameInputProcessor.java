@@ -1,7 +1,7 @@
 package racingcar.utils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CarNameInputProcessor {
     private final String carNames;
@@ -12,16 +12,9 @@ public class CarNameInputProcessor {
     }
 
     public List<String> splitCarNames() {
-        List<String> result = new ArrayList<>();
-        for (String carName : carNames.split(",")) {
-            carName = carName.trim();
-            if (result.contains(carName)) {
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-            }
-            result.add(carName);
-        }
-
-        return result;
+        return Arrays.stream(carNames.split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
     }
 
     private void validateInput() {
