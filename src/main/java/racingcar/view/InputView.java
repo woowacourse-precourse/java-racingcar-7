@@ -7,6 +7,8 @@ import racingcar.message.InputMessage;
 import racingcar.message.PatternMessage;
 import racingcar.dto.InputRequest;
 
+import java.util.Optional;
+
 public class InputView {
 
     public InputRequest getInput() {
@@ -20,9 +22,10 @@ public class InputView {
     }
 
     private int validateAndParseRound(String input) {
-        return PatternMessage.VALID_FORMAT.matches(input)
-                ? Integer.parseInt(input)
-                : throwRoundException();
+        return Optional.of(input)
+                .filter(PatternMessage.VALID_FORMAT::matches)
+                .map(Integer::parseInt)
+                .orElseThrow(() -> new RoundException(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage()));
     }
 
     private int throwRoundException() {
