@@ -11,10 +11,7 @@ import java.util.Set;
 import racingcar.domain.Car;
 import racingcar.domain.Racing;
 import racingcar.dto.WinnerResponseDto;
-import racingcar.generator.NumberGenerator;
-import racingcar.generator.RandomNumberGenerator;
 import racingcar.service.RaceService;
-import racingcar.service.ThresholdScoreRaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -24,20 +21,8 @@ public class RacingController {
     private final static int CAR_POSITION_MIN = 0;
     private final RaceService raceService;
 
-    private RacingController(final RaceService raceService) {
+    public RacingController(final RaceService raceService) {
         this.raceService = raceService;
-    }
-
-    public static RacingController create() {
-        return new RacingController(createThresholdScoreMoveRule());
-    }
-
-    public static ThresholdScoreRaceService createThresholdScoreMoveRule() {
-        return new ThresholdScoreRaceService(createNumberGenerator());
-    }
-
-    public static NumberGenerator createNumberGenerator() {
-        return RandomNumberGenerator.getInstance();
     }
 
     public void run() {
