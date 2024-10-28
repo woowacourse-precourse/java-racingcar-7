@@ -4,56 +4,66 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
-    private static final int FORWARD_THRESHOLD = 4;
-
     public static void main(String[] args) {
         RacingGame game = new RacingGame();
-        try {
-            game.play();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        game.play();
     }
 }
 
 class RacingGame {
+    private static final int FORWARD_THRESHOLD = 4;
+
     private List<Car> cars;
     private int tryCount;
 
     public void play() {
-        initializeGame();
-        race();
-        announceWinners();
+        try {
+            initializeGame();
+            race();
+            announceWinners();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void initializeGame() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
+        validateInput(input);
         cars = createCars(input);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         tryCount = parsePositiveNumber(Console.readLine());
     }
 
-    private List<Car> createCars(String input) {
+    private void validateInput(String input) {
         String[] names = input.split(",");
-        List<Car> carList = new ArrayList<>();
+        if (names.length < 2) {
+            throw new IllegalArgumentException("경주를 위해서는 최소 2대 이상의 자동차가 필요합니다.");
+        }
 
         for (String name : names) {
             validateName(name.trim());
-            carList.add(new Car(name.trim()));
         }
-
-        return carList;
     }
 
     private void validateName(String name) {
         if (name.isEmpty() || name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다.");
         }
+    }
+
+    private List<Car> createCars(String input) {
+        String[] names = input.split(",");
+        return Arrays.stream(names)
+                .map(String::trim)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private int parsePositiveNumber(String input) {
@@ -79,7 +89,7 @@ class RacingGame {
 
     private void moveAllCars() {
         for (Car car : cars) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            if (Randoms.pickNumberInRange(0, 9) >= FORWARD_THRESHOLD) {
                 car.move();
             }
         }
@@ -92,14 +102,10 @@ class RacingGame {
     }
 
     private void announceWinners() {
-        int maxPosition = getMaxPosition();
-        List<String> winners = new ArrayList<>();
-
-        for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
-                winners.add(car.getName());
-            }
-        }
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == getMaxPosition())
+                .map(Car::getName)
+                .collect(Collectors.toList());
 
         System.out.printf("최종 우승자 : %s%n", String.join(", ", winners));
     }
