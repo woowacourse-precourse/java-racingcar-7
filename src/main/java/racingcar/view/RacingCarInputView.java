@@ -7,7 +7,7 @@ public class RacingCarInputView {
     public RacingCarInfo readInfo() {
         return RacingCarInfo.map(
             readCarName(),
-            readTrialName()
+            readTrialNum()
         );
     }
 
@@ -16,7 +16,7 @@ public class RacingCarInputView {
         return Console.readLine();
     }
 
-    private String readTrialName() {
+    private String readTrialNum() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Console.readLine();
     }
