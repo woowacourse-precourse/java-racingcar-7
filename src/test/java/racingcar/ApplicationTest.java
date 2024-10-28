@@ -40,6 +40,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 공백_이름_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
