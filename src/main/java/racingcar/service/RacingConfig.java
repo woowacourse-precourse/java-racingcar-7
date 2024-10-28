@@ -1,10 +1,9 @@
-package racingcar.controller;
+package racingcar.service;
 
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarName;
 import racingcar.model.Cars;
-import racingcar.model.RacingGame;
 import racingcar.utils.StringSplitter;
 
 public class RacingConfig {

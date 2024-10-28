@@ -1,9 +1,11 @@
-package racingcar.model;
+package racingcar.service;
 
 import static racingcar.constants.Constants.MIN_TRY_COUNT;
 
 import java.util.List;
 import racingcar.constants.ErrorMessages;
+import racingcar.model.CarName;
+import racingcar.model.Cars;
 
 public class RacingGame {
     private final Cars cars;
