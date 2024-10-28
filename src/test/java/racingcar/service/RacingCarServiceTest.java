@@ -2,6 +2,7 @@ package racingcar.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.validator.CarNameValidator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,10 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingCarServiceTest {
 
     private RacingCarService racingCarService;
+    private CarNameValidator carNameValidator;
 
     @BeforeEach
     void setUp() {
-        racingCarService = new RacingCarService();
+        carNameValidator = new CarNameValidator();
+        racingCarService = new RacingCarService(carNameValidator);
     }
 
     @Test

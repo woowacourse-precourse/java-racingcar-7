@@ -1,16 +1,20 @@
 package racingcar.service;
 
 import racingcar.domain.RacingCar;
+import racingcar.validator.CarNameValidator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarService {
-    private List<RacingCar> racingCars;
+    private final List<RacingCar> racingCars;
+    private final CarNameValidator carNameValidator;
+
     private static final String SPLIT_SEPARATOR =",";
 
-    public RacingCarService() {
+    public RacingCarService(CarNameValidator carNameValidator) {
+        this.carNameValidator = carNameValidator;
         this.racingCars = new ArrayList<>();
     }
 
@@ -52,6 +56,7 @@ public class RacingCarService {
 
     public void createRacingCarsBySplitCarsName(String[] carsNames) {
         for (String carName : carsNames) {
+            carNameValidator.validateCarNameLength(carName);
             this.racingCars.add(new RacingCar(carName, new ArrayList<>()));
         }
     }

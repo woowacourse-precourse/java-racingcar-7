@@ -6,6 +6,10 @@ public class OutputView {
             System.out.println(carName + " : " + advanceResult);
     }
 
+    public void printCarRacingWinner(String carRacingWinners) {
+        System.out.println("최종우승자 : " + carRacingWinners);
+    }
+
     public void printLineSpace() {
         System.out.println("\n");
     }

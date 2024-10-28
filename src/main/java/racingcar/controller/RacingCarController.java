@@ -19,9 +19,9 @@ public class RacingCarController {
 
     public void run() {
         String inputCarsName = inputView.inputCarsName();
-        int inputCarRacingRepeatCount = inputView.inputCarRacingRepeatCount();
-
         racingCarService.createRacingCars(inputCarsName);
+
+        int inputCarRacingRepeatCount = inputView.inputCarRacingRepeatCount();
 
         for (int i = 0; i < inputCarRacingRepeatCount; i++) {
             racingCarService.advanceRacingCarByRandomOrZero();
@@ -31,5 +31,6 @@ public class RacingCarController {
             }
             outputView.printLineSpace();
         }
+
     }
 }
