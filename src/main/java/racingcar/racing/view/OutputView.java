@@ -3,18 +3,18 @@ package racingcar.racing.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.racing.model.Car;
-import racingcar.racing.model.dto.RoundResult;
+import racingcar.racing.model.dto.CarRoundResult;
 
 public class OutputView {
-    public static void printAllRoundResult(List<List<RoundResult>> allRoundResult) {
+    public static void printAllRoundResult(List<List<CarRoundResult>> allRoundResult) {
         System.out.println("\n실행결과");
-        for (List<RoundResult> roundResults : allRoundResult) {
+        for (List<CarRoundResult> roundResults : allRoundResult) {
             printRoundResult(roundResults);
         }
     }
 
-    private static void printRoundResult(List<RoundResult> roundResults) {
-        for (RoundResult roundResult : roundResults) {
+    private static void printRoundResult(List<CarRoundResult> roundResults) {
+        for (CarRoundResult roundResult : roundResults) {
             printRoundCarStatus(roundResult.carName(), roundResult.currentDistance());
         }
         System.out.println();

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.racing.model.dto.RoundResult;
+import racingcar.racing.model.dto.CarRoundResult;
 
 public class RacingGame {
     private final int allRound;
@@ -31,12 +31,12 @@ public class RacingGame {
         }
     }
 
-    public List<List<RoundResult>> start() {
-        List<List<RoundResult>> allRoundResult = new ArrayList<>();
+    public List<List<CarRoundResult>> start() {
+        List<List<CarRoundResult>> allRoundResult = new ArrayList<>();
         for (int i = 0; i < allRound; i++) {
             roundStart(participants);
-            List<RoundResult> roundResults = participants.stream()
-                    .map(car -> RoundResult.from(car))
+            List<CarRoundResult> roundResults = participants.stream()
+                    .map(car -> CarRoundResult.from(car))
                     .collect(Collectors.toList());
             allRoundResult.add(roundResults);
         }

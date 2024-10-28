@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.racing.model.Car;
 import racingcar.racing.model.RacingGame;
-import racingcar.racing.model.dto.RoundResult;
+import racingcar.racing.model.dto.CarRoundResult;
 import racingcar.racing.utils.InputParser;
 import racingcar.racing.utils.InputValidator;
 import racingcar.racing.view.InputView;
@@ -17,7 +17,7 @@ public class RacingGameManager {
         List<String> carNames = getCarNames();
         int attemptNumber = getAttemptNumber();
         createRacingGame(attemptNumber, carNames);
-        List<List<RoundResult>> allRoundResult = racingGame.start();
+        List<List<CarRoundResult>> allRoundResult = racingGame.start();
         OutputView.printAllRoundResult(allRoundResult);
         List<Car> winners = racingGame.selectWinners();
         OutputView.printWinner(winners);
