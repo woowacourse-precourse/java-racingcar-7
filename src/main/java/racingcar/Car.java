@@ -1,4 +1,6 @@
-package racingcar.io;
+package racingcar;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     public static final int MAX_NAME_LENGTH = 5;
@@ -10,6 +12,14 @@ public class Car {
         validateLength(name);
         this.name = name;
         this.position = 0;
+    }
+
+    public Car forward() {
+        int num = Randoms.pickNumberInRange(0, 9);
+        if (num >= 4) {
+            position++;
+        }
+        return this;
     }
 
     private void validateLength(String name) {
