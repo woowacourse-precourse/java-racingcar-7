@@ -12,6 +12,7 @@ public class RacingGame {
     public void play(int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             tryToMoveCars();
+            printCurrentPositions();
         }
     }
 
@@ -21,4 +22,9 @@ public class RacingGame {
         }
     }
 
+    private void printCurrentPositions() {
+        for (Car car : carList.getCarList()) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+    }
 }
