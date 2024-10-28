@@ -6,12 +6,12 @@ import java.util.HashMap;
 public class Input {
 
     HashMap<String, Integer> map = new HashMap<>();
-   Validator validator = new Validator();
+    Validator validator = new Validator();
 
     protected HashMap<String, Integer> getCar() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
         String input = Console.readLine();
-        String temp[] = input.split(",");
+        String[] temp = input.split(",");
 
         for (String name : temp) // car 목록 초기화
         {
