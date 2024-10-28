@@ -9,12 +9,15 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Generator;
 import racingcar.model.RacingGame;
+import racingcar.model.RacingRecord;
 
 class RoundViewTest {
 
-    private final RacingGame racingGame = new RacingGame("pobi,woni,jun");
-    private final RoundView roundView = new RoundView(racingGame);
+    private static List<RacingRecord> records;
+    private static final RacingGame racingGame = new RacingGame();
+    private static RoundView roundView;
     private ByteArrayOutputStream outputMessage;
 
     @BeforeEach
@@ -22,6 +25,10 @@ class RoundViewTest {
         // 출력 스트림을 가로채기 위해 출력 스트림을 원하는 타입의 객체로 설정
         outputMessage = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputMessage));
+
+        Generator generator = new Generator();
+        records = generator.generateRecordsFrom("pobi,woni,jun");
+        roundView = new RoundView(records);
     }
 
     @DisplayName("RoundView_생성_테스트")
@@ -44,7 +51,7 @@ class RoundViewTest {
                 
                 """;
         //when
-        racingGame.racing(List.of(4, 0, 4));
+        racingGame.racing(List.of(4, 0, 4), records);
         roundView.printRound();
         String printResult = outputMessage.toString();
         //then
@@ -66,9 +73,9 @@ class RoundViewTest {
                 
                 """;
         //when
-        racingGame.racing(List.of(4, 0, 4));
+        racingGame.racing(List.of(4, 0, 4), records);
         roundView.printRound();
-        racingGame.racing(List.of(4, 4, 4));
+        racingGame.racing(List.of(4, 4, 4), records);
         roundView.printRound();
         String printResult = outputMessage.toString();
         //then
@@ -100,9 +107,9 @@ class RoundViewTest {
                 + "jun : --\n"
                 + "\n";
         //when
-        racingGame.racing(List.of(4, 0, 4));
+        racingGame.racing(List.of(4, 0, 4), records);
         roundView.printView();
-        racingGame.racing(List.of(4, 4, 4));
+        racingGame.racing(List.of(4, 4, 4), records);
         roundView.printView();
         String printResult = outputMessage.toString();
         //then

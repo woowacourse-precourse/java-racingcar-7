@@ -9,7 +9,9 @@ import org.junit.jupiter.api.Test;
 class RacingJudgeTest {
 
     private final RacingJudge judge = new RacingJudge();
-    private final RacingGame racingGame = new RacingGame("pobi,woni,jun");
+    private static final RacingGame racingGame = new RacingGame();
+    private static final String names = "pobi,woni,jun";
+    private static final Generator generator = new Generator();
 
     @DisplayName("RacingJudge_생성_테스트")
     @Test
@@ -24,11 +26,11 @@ class RacingJudgeTest {
     @Test
     public void decideWinnerTest() {
         //given
-        List<RacingRecord> records = racingGame.getRecords();
+        List<RacingRecord> records = generator.generateRecordsFrom(names);
         //when
-        racingGame.racing(List.of(0, 4, 4));
-        racingGame.racing(List.of(0, 2, 4));
-        racingGame.racing(List.of(0, 4, 4));
+        racingGame.racing(List.of(0, 4, 4), records);
+        racingGame.racing(List.of(0, 2, 4), records);
+        racingGame.racing(List.of(0, 4, 4), records);
         String winner = judge.decideWinnerBy(records);
         //then
         assertThat(winner).isEqualTo("jun");
@@ -38,11 +40,11 @@ class RacingJudgeTest {
     @Test
     public void decideWinnersTest() {
         //given
-        List<RacingRecord> records = racingGame.getRecords();
+        List<RacingRecord> records = generator.generateRecordsFrom(names);
         //when
-        racingGame.racing(List.of(4, 4, 4));
-        racingGame.racing(List.of(4, 4, 4));
-        racingGame.racing(List.of(4, 4, 4));
+        racingGame.racing(List.of(4, 4, 4), records);
+        racingGame.racing(List.of(4, 4, 4), records);
+        racingGame.racing(List.of(4, 4, 4), records);
         String winners = judge.decideWinnerBy(records);
         //then
         assertThat(winners).isEqualTo("pobi, woni, jun");

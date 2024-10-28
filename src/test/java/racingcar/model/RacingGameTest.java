@@ -10,7 +10,9 @@ import org.junit.jupiter.api.Test;
 
 class RacingGameTest {
 
-    private final RacingGame racingGame = new RacingGame("pobi,woni,jun");
+    private final RacingGame racingGame = new RacingGame();
+    private static final String names = "pobi,woni,jun";
+    private static final Generator generator = new Generator();
 
     @DisplayName("RacingGame_생성_테스트")
     @Test
@@ -26,7 +28,7 @@ class RacingGameTest {
     public void getRecordsTest() {
         //given
         //when
-        List<RacingRecord> records = racingGame.getRecords();
+        List<RacingRecord> records = generator.generateRecordsFrom(names);
         //then
         assertThat(records)
                 .extracting("car")
@@ -41,10 +43,10 @@ class RacingGameTest {
     @Test
     public void racingTest() {
         //given
-        List<RacingRecord> records = racingGame.getRecords();
+        List<RacingRecord> records = generator.generateRecordsFrom(names);
         List<Integer> randomNumbersOfRound = List.of(3, 6, 2);
         //when
-        racingGame.racing(randomNumbersOfRound);
+        racingGame.racing(randomNumbersOfRound, records);
         //then
         assertThat(records)
                 .extracting("moveDistance")
@@ -56,8 +58,9 @@ class RacingGameTest {
     public void racingOverMaxExceptionTest() {
         //given
         List<Integer> randomNumbersOfRound = List.of(3, 10, 2);
+        List<RacingRecord> records = generator.generateRecordsFrom(names);
         //when,then
-        assertThatThrownBy(() -> racingGame.racing(randomNumbersOfRound))
+        assertThatThrownBy(() -> racingGame.racing(randomNumbersOfRound, records))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_RANDOM_NUMBER_EXCEPTION_MESSAGE.getMessage());
     }
@@ -67,8 +70,9 @@ class RacingGameTest {
     public void racingUnderMinExceptionTest() {
         //given
         List<Integer> randomNumbersOfRound = List.of(3, -1, 2);
+        List<RacingRecord> records = generator.generateRecordsFrom(names);
         //when,then
-        assertThatThrownBy(() -> racingGame.racing(randomNumbersOfRound))
+        assertThatThrownBy(() -> racingGame.racing(randomNumbersOfRound, records))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_RANDOM_NUMBER_EXCEPTION_MESSAGE.getMessage());
     }
@@ -77,10 +81,10 @@ class RacingGameTest {
     @Test
     public void generateRandomNumbers() {
         //given
-        List<RacingRecord> records = racingGame.getRecords();
+        List<RacingRecord> records = generator.generateRecordsFrom(names);
         int numberOfCars = records.size();
         //when
-        List<Integer> randomNumbers = racingGame.generateRandomNumbers();
+        List<Integer> randomNumbers = generator.generateRandomNumbers(records.size());
         //then
         assertThat(randomNumbers.size()).isEqualTo(numberOfCars);
     }
