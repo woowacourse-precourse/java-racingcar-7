@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.model.Cars;
 import racingcar.model.TryCount;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RaceController {
     public void start() {
@@ -12,6 +13,10 @@ public class RaceController {
     }
 
     public void playRace(Cars cars, TryCount tryCount) {
-        tryCount.repeat(cars::tryMoveAll);
+        OutputView.printRaceResult();
+        tryCount.repeat(() -> {
+            cars.tryMoveAll();
+            OutputView.printRaceProgress(cars);
+        });
     }
 }

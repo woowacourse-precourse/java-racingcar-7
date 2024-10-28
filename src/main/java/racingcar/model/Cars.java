@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.constant.ErrorMessages;
 import racingcar.util.RandomUtil;
 
@@ -51,5 +52,13 @@ public class Cars {
 
     private boolean isMovable(int randomNumber) {
         return randomNumber >= MOVE_THRESHOLD;
+    }
+
+    @Override
+    public String toString() {
+        return carList.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining("\n"))
+                + "\n";
     }
 }
