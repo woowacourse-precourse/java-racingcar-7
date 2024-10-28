@@ -2,15 +2,20 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.InputHandler;
+import racingcar.model.Car;
+import racingcar.view.InputView;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -80,6 +85,21 @@ class ApplicationTest extends NsTest {
         assertThrows(IllegalArgumentException.class, () -> {
             InputValidator.notPositiveNum(roundNumber);
         });
+    }
+
+    class FakeInputView extends InputView {
+        @Override
+        public String inputCarName() {
+            return "car1,car2,car3";
+        }
+    }
+
+    @Test
+    void handleCarNames_쉼표구분자_이름리스트변환() {
+        FakeInputView fakeInputView = new FakeInputView();
+        ArrayList<String> result = InputHandler.handleCarNames(fakeInputView);
+
+        assertEquals(Arrays.asList("car1", "car2", "car3"), result);
     }
 
     @Override
