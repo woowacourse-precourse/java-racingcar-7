@@ -1,8 +1,9 @@
 package racingcar;
 
-import java.util.ArrayList;
 import racingcar.domain.RacingCarList;
 import racingcar.domain.RandomMoveStrategy;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class AppConfig {
     public RacingCarList racingCarList() {
@@ -14,7 +15,11 @@ public class AppConfig {
     }
 
     public GameClient gameClient() {
-        return new GameClient(racingCarList());
+        return new GameClient(racingCarList(), inputView(), outputView());
     }
+
+    public InputView inputView() { return new InputView(); }
+
+    public OutputView outputView() { return new OutputView(); }
 
 }

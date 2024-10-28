@@ -8,9 +8,13 @@ import racingcar.view.OutputView;
 
 public class GameClient {
     private final RacingCarList racingCarList;
+    private final InputView inputView;
+    private final OutputView outputView;
 
-    public GameClient(RacingCarList racingCarList) {
+    public GameClient(RacingCarList racingCarList, InputView inputView, OutputView outputView) {
         this.racingCarList = racingCarList;
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
@@ -21,12 +25,12 @@ public class GameClient {
 
     private void printWinners() {
         List<String> winners = racingCarList.findWinners();
-        OutputView.printWinners(winners);
+        outputView.printWinners(winners);
     }
 
     private void moveCarsForCount() {
-        int count = InputView.getCount();
-        OutputView.printResultMessage();
+        int count = inputView.getCount();
+        outputView.printResultMessage();
         for (int i = 0; i < count; i++) {
             racingCarList.moveAllCars();
             printRacingCarsStatus();
@@ -35,11 +39,11 @@ public class GameClient {
 
     private void printRacingCarsStatus() {
         List<RacingCarStatus> racingCarsStatus = racingCarList.getRacingCarsStatus();
-        OutputView.printRacingCarsStatus(racingCarsStatus);
+        outputView.printRacingCarsStatus(racingCarsStatus);
     }
 
     private void addRacingCarsToRacingCarList() {
-        String[] carNames = InputView.getCarNames().split(",");
+        String[] carNames = inputView.getCarNames().split(",");
         for(String carName : carNames) {
             racingCarList.addRacingCar(carName);
         }

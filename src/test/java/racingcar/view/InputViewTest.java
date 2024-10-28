@@ -8,12 +8,14 @@ import org.junit.jupiter.api.Test;
 
 class InputViewTest extends NsTest{
 
+    private final InputView inputView = new InputView();
+
     @Test
     void 올바른_시도_횟수_입력시_정수_반환() {
         //given
         run("5");
         //when
-        int count = InputView.getCount();
+        int count = inputView.getCount();
         //then
         assertThat(count).isEqualTo(5);
     }
@@ -23,7 +25,7 @@ class InputViewTest extends NsTest{
         //given
         run("-5");
         //when, then
-        assertThatThrownBy(InputView::getCount).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(inputView::getCount).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -31,7 +33,7 @@ class InputViewTest extends NsTest{
         //given
         run("n");
         //when, then
-        assertThatThrownBy(InputView::getCount).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(inputView::getCount).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -39,7 +41,7 @@ class InputViewTest extends NsTest{
         //given
         run("5.5");
         //when, then
-        assertThatThrownBy(InputView::getCount).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(inputView::getCount).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
