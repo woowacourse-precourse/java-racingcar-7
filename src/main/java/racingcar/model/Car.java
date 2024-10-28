@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.utils.randomnumbergenerator.RandomNumberGenerator;
+
 public class Car {
     String name;
     int distance;

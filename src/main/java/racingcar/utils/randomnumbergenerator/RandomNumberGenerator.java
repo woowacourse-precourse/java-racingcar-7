@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.utils.randomnumbergenerator;
 
 
 public interface RandomNumberGenerator {

@@ -3,8 +3,8 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
-import racingcar.model.DefaultRandomNumberGenerator;
-import racingcar.model.RandomNumberGenerator;
+import racingcar.utils.randomnumbergenerator.DefaultRandomNumberGenerator;
+import racingcar.utils.randomnumbergenerator.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

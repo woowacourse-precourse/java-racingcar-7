@@ -2,6 +2,8 @@ package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.utils.randomnumbergenerator.RandomNumberGenerator;
+
 import static org.assertj.core.api.Assertions.*;
 
 class CarTest {

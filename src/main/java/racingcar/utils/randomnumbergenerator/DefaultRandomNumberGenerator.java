@@ -1,5 +1,5 @@
 // RandomNumberPicker.java 또는 DefaultRandomNumberGenerator.java
-package racingcar.model;
+package racingcar.utils.randomnumbergenerator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
