@@ -35,6 +35,7 @@ public class Validator {
 
     static int validatePositiveNumber(String number) {
         try {
+            validateRightNumber(number);
             int num = Integer.parseInt(number);
             if (num <= 0) {
                 throw new IllegalArgumentException("양수인 숫자만 입력가능합니다.");
@@ -42,6 +43,12 @@ public class Validator {
             return num;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자가 아닌 문자는 입력할수없습니다.");
+        }
+    }
+
+    static void validateRightNumber(String number) {
+        if (number.charAt(0) == '0') {
+            throw new IllegalArgumentException("옳바른 형식의 숫자를 입력해주세요.");
         }
     }
 
