@@ -18,7 +18,7 @@ public class ValidationCheck {
     }
 
     private void isNullOrEmptyName(String carName) {
-        if(carName.isBlank() || carName.isEmpty())
+        if(carName == null || carName.isBlank() || carName.isEmpty())
             throw new IllegalArgumentException("입력값이 없습니다.");
     }
 
