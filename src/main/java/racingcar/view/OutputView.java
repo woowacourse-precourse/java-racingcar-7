@@ -18,7 +18,7 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void printCarNameAndMovingStatus() {
+    public void printCarNameAndMovingStatus(Car car) {
         System.out.println(car.getName() + " : " + car.getMoveStatus());
     }
 
