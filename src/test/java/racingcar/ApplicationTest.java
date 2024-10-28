@@ -17,8 +17,15 @@ class ApplicationTest extends NsTest {
     void 전진_테스트() {
         assertSimpleTest(
             () -> {
-                run("2");
-                assertEquals("-\n-\n--\n--", output());
+                run("pobi,woni,jun", "2");
+                assertEquals("""
+                    pobi: -
+                    woni: -
+                    jun: -
+
+                    pobi: --
+                    woni: --
+                    jun: --""", output());
             }
         );
     }
