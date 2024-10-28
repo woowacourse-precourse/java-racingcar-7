@@ -3,22 +3,15 @@ package racingcar;
 public class Car {
     private final CarName carName;
 
-    private final CarPosition carPosition;
+    private CarPosition carPosition;
 
-    public Car(String name) {
-        this.carName = new CarName(name);
-        this.carPosition = new CarPosition();
-    }
-
-    private Car(CarName carName, CarPosition carPosition) {
+    public Car(CarName carName) {
         this.carName = carName;
-        this.carPosition = carPosition;
+        this.carPosition = new CarPosition(0);
     }
 
-    public Car move() {
-        this.carPosition.updateCurrentPosition();
-
-        return new Car(new CarName(this.carName), new CarPosition(this.carPosition));
+    public void move() {
+        this.carPosition = this.carPosition.updateCurrentPosition();
     }
 
     public boolean isAheadOrEqual(Car otherCar) {

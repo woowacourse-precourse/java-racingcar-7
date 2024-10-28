@@ -2,17 +2,17 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Input {
+public class InputView {
 
-    private Input() {
+    private InputView() {
     }
 
-    public static String getCarName() {
+    public static String readCarNamesInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return Console.readLine();
     }
 
-    public static int getRaceTime() {
+    public static int readRaceTimeInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return validateNumberFormat();
     }

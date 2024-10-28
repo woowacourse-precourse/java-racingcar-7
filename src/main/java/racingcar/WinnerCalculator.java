@@ -8,11 +8,11 @@ public class WinnerCalculator {
     private WinnerCalculator() {
     }
 
-    public static List<String> calculateWinners(List<Car> lastRacingRecord) {
+    public static List<String> calculateWinners(Cars cars) {
         List<String> winnerNames = new ArrayList<>();
-        for (Car currentCar : lastRacingRecord) {
-            compareOtherCars(lastRacingRecord, currentCar);
-            addIfWinner(lastRacingRecord, winnerNames, currentCar);
+        for (Car currentCar : cars.getCars()) {
+            compareOtherCars(cars.getCars(), currentCar);
+            addIfWinner(cars.getCars(), winnerNames, currentCar);
         }
 
         return winnerNames;

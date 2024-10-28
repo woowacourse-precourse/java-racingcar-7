@@ -1,22 +1,29 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(String carName) {
+        this.cars = createCars(carName);
     }
 
-    public List<Car> moveCars() {
-        List<Car> movingCars = new ArrayList<>();
-
+    public void moveCars() {
         for (Car car : this.cars) {
-            movingCars.add(car.move());
+            car.move();
         }
+    }
 
-        return movingCars;
+    private List<Car> createCars(String carName) {
+        List<CarName> carNames = new CarNames(carName).getCarNames();
+
+        return carNames.stream()
+                .map(Car::new)
+                .toList();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

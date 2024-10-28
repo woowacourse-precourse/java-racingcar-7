@@ -1,48 +1,17 @@
 package racingcar;
 
-import java.util.List;
-
-import static racingcar.WinnerCalculator.calculateWinners;
+import static racingcar.OutputView.printCars;
+import static racingcar.OutputView.printWinners;
 
 public class Application {
-    private static final String POSITION_STRING_FORMAT = "-";
-    private static final String CUSTOM_DELIMITER = ", ";
-    private static final String CAR_STRING_FORMAT = " : ";
-
     public static void main(String[] args) {
-        String carName = Input.getCarName();
-        int raceTime = Input.getRaceTime();
+        String carName = InputView.readCarNamesInput();
+        int raceTime = InputView.readRaceTimeInput();
 
-        CarNames carNames = new CarNames(carName);
-        Cars cars = new Cars(carNames.createCars());
+        Cars cars = new Cars(carName);
 
-        System.out.println("실행 결과");
-        List<Car> racingCars = race(raceTime, cars);
-
-        System.out.println("최종 우승자 : " + String.join(CUSTOM_DELIMITER, calculateWinners(racingCars)));
-    }
-
-    public static List<Car> race(int raceTime, Cars cars) {
-        List<Car> movingCars = null;
-        for (int i = 0; i < raceTime; i++) {
-            movingCars = moveCars(cars);
-        }
-
-        return movingCars;
-    }
-
-    private static List<Car> moveCars(Cars cars) {
-        List<Car> racingCars = cars.moveCars();
-        for (Car racingCar : racingCars) {
-            String carName = racingCar.getCarName()
-                    .getCarName();
-            int currentPosition = racingCar.getCarPosition()
-                    .getCurrentPosition();
-
-            System.out.println(carName + CAR_STRING_FORMAT + POSITION_STRING_FORMAT.repeat(currentPosition));
-        }
-        System.out.println();
-
-        return racingCars;
+        printCars(raceTime, cars);
+        printWinners(cars);
     }
 }
+

@@ -11,15 +11,13 @@ public class CarNames {
         this.carNames = createCarNames(carName);
     }
 
-    public List<Car> createCars() {
-        return this.carNames.stream()
-                .map(CarName::createCar)
-                .toList();
-    }
-
     private List<CarName> createCarNames(String carName) {
         return Arrays.stream(carName.split(CUSTOM_DELIMITER))
                 .map(CarName::new)
                 .toList();
+    }
+
+    public List<CarName> getCarNames() {
+        return carNames;
     }
 }

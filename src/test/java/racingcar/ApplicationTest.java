@@ -13,9 +13,9 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.Application.race;
 import static racingcar.MovingUnit.MOVING_FORWARD;
 import static racingcar.MovingUnit.STOP;
+import static racingcar.OutputView.printCars;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -75,11 +75,10 @@ class ApplicationTest extends NsTest {
     void 자동차_경주게임_기능_테스트() {
         assertRandomNumberInRangeTest(() -> {
             String carName = "pobi,woni";
-            CarNames carNames = new CarNames(carName);
-            Cars cars = new Cars(carNames.createCars());
+            Cars cars = new Cars(carName);
             int raceTime = 3;
 
-            race(raceTime, cars);
+            printCars(raceTime, cars);
 
             assertThat(output()).contains("pobi : -", "woni : ", "pobi : --", "woni : -", "pobi : ---", "woni : -");
         }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP);
