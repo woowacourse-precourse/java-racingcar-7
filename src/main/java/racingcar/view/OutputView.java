@@ -29,7 +29,6 @@ public class OutputView {
 
     public static void printWinners(WinnerDto winners) {
         String winnerNames = Format.joinWinners(winners);
-
         System.out.println(WINNER_OUTPUT_MESSAGE.getMessage() + winnerNames);
     }
 
