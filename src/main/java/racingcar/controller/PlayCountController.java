@@ -9,9 +9,13 @@ public class PlayCountController {
     private final InputView inputView;
     private final CommonIo io;
 
-    public PlayCountController() {
+    private PlayCountController() {
         this.inputView = new InputView();
         this.io = new CommonIo();
+    }
+
+    public static PlayCountController getInstance() {
+        return new PlayCountController();
     }
 
     public int validatePlayCount() {

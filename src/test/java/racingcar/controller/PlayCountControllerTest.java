@@ -16,7 +16,7 @@ class PlayCountControllerTest extends NsTest {
 
     @BeforeEach
     void setUp() {
-        this.playCountController = new PlayCountController();
+        this.playCountController = PlayCountController.getInstance();
     }
 
     @ParameterizedTest

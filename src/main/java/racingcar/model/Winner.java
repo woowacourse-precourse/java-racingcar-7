@@ -7,8 +7,12 @@ public class Winner {
     private final List<String> winner;
     private int maxPosition;
 
-    public Winner() {
+    private Winner() {
         this.winner = new ArrayList<>();
+    }
+
+    public static Winner createWinner() {
+        return new Winner();
     }
 
     public void comparePosition(Car car) {

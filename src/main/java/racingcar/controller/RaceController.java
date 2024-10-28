@@ -16,13 +16,17 @@ public class RaceController {
     private final PlayCountController playCountController;
     private final CommonIo io;
 
-    public RaceController() {
+    private RaceController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.carController = new CarController();
         this.moveController = new MoveController();
-        this.playCountController = new PlayCountController();
+        this.playCountController = PlayCountController.getInstance();
         this.io = new CommonIo();
+    }
+
+    public static RaceController getInstance() {
+        return new RaceController();
     }
 
     public void run() {
@@ -69,7 +73,7 @@ public class RaceController {
     }
 
     public List<String> selectWinners(List<Car> cars) {
-        Winner winner = new Winner();
+        Winner winner = Winner.createWinner();
 
         for (Car car : cars) {
             winner.comparePosition(car);

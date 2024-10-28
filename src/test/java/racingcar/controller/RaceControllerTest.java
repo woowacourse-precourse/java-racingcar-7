@@ -16,7 +16,7 @@ class RaceControllerTest extends NsTest {
 
     @BeforeEach
     void setUp() {
-        this.raceController = new RaceController();
+        this.raceController = RaceController.getInstance();
     }
 
     private List<Car> createCars(String... names) {
