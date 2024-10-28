@@ -12,8 +12,8 @@ public class Output {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public void printScore(StringBuilder score) {
-        System.out.println(score);
+    public void printScore(List<String> scores) {
+        scores.forEach(System.out::println);
     }
 
     public void announceWinners(List<String> winners) {
