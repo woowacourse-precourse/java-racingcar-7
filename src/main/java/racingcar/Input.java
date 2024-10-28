@@ -11,12 +11,17 @@ public class Input {
         return splitCarNames(inputCarNames);
     }
 
-    public String getGameCount(){
+    public int getGameCount(){
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Console.readLine();
+        String inputGameCount = Console.readLine();
+        return Integer.parseInt(inputGameCount);
     }
 
     public static List<String> splitCarNames(String inputCarNames){
         return List.of(inputCarNames.split(","));
+    }
+
+    public static int convertStrToInt(String inputGameCount){
+        return Integer.parseInt(inputGameCount);
     }
 }

@@ -26,9 +26,7 @@ public class Application {
         Input input = new Input();
 
         List<String> carNames = input.getCarNames();
-
-        String inputGameCount = input.getGameCount();
-        int gameCount = convertStrToInt(inputGameCount);
+        int gameCount = input.getGameCount();
 
         Cars cars = new Cars(carNames);
 
