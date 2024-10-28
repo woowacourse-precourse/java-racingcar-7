@@ -1,19 +1,22 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.constant.Movement;
 import racingcar.dto.CarLocation;
 import racingcar.model.RacingCar;
+import racingcar.model.RandomNumberGenerator;
 
 public class RaceProgressService {
-    private static final int MIN_RANDOM_VALUE = 0;
-    private static final int MAX_RANDOM_VALUE = 9;
     private static final int FORWARD_THRESHOLD = 4;
+    private final RandomNumberGenerator randomNumberGenerator;
+
+    public RaceProgressService(RandomNumberGenerator randomNumberGenerator) {
+        this.randomNumberGenerator = randomNumberGenerator;
+    }
 
     public void moveCarsInRounds(List<RacingCar> cars) {
         cars.forEach(car -> {
-            int randomValue = Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+            int randomValue = randomNumberGenerator.generate();
             Movement movement = determineMovement(randomValue);
             car.move(movement);
         });

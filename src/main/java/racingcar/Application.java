@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
+import racingcar.model.RandomNumberGenerator;
 import racingcar.service.RaceProgressService;
 import racingcar.service.RacingGameService;
 import racingcar.view.InputView;
@@ -10,7 +11,8 @@ public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
-        RaceProgressService raceProgressService = new RaceProgressService();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        RaceProgressService raceProgressService = new RaceProgressService(randomNumberGenerator);
         RacingGameService racingGameService = new RacingGameService(raceProgressService);
         RacingGameController controller = new RacingGameController(inputView, outputView, racingGameService);
 
