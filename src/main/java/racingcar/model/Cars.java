@@ -12,19 +12,7 @@ public record Cars(List<Car> cars) {
     public Cars {
         validateExistCarInList(cars);
         validateCarListLessThenMaxLength(cars);
-    }
-
-    public static List<Car> makeCarList(String userInput) {
-        List<Car> carlist = new ArrayList<>();
-        for (String carName : userInput.split(",")) {
-            if (!carlist.isEmpty()) {
-                validateSameNameIn(carlist, carName);
-            }
-
-            carlist.add(Car.from(carName));
-        }
-
-        return carlist;
+        validateSameNameIn(cars);
     }
 
     public List<String> findWinners() {
@@ -55,11 +43,14 @@ public record Cars(List<Car> cars) {
         return maxLocation;
     }
 
-    private static void validateSameNameIn(List<Car> cars, String carName) {
-        for (Car car : cars) {
-            if (car.name().equals(carName)) {
-                throw new IllegalArgumentException("중복되는 이름이 존재합니다.");
-            }
+    private void validateSameNameIn(List<Car> cars) {
+        long distinctSize = cars.stream()
+                .map(Car::name)
+                .distinct()
+                .count();
+
+        if (distinctSize != cars.size()) {
+            throw new IllegalArgumentException("중복되는 이름이 존재합니다.");
         }
     }
 
@@ -73,5 +64,14 @@ public record Cars(List<Car> cars) {
         if (cars == null || cars.isEmpty()) {
             throw new IllegalArgumentException("자동차가 없습니다.");
         }
+    }
+
+    public static List<Car> makeCarList(String userInput) {
+        List<Car> carlist = new ArrayList<>();
+        for (String carName : userInput.split(",")) {
+            carlist.add(Car.from(carName));
+        }
+
+        return carlist;
     }
 }
