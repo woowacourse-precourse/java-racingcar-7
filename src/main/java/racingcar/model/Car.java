@@ -5,6 +5,10 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final int MOVE_CONDITION = 4;
+    private static final int MIN_CONDITION = 0;
+    private static final int MAX_CONDITION = 9;
+
     private final Name name;
     private final Location location;
 
@@ -18,13 +22,13 @@ public class Car {
     }
 
     public void move() {
-        if(canMove()){
+        if (canMove()) {
             location.moveForward();
         }
     }
 
     private boolean canMove() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+        return Randoms.pickNumberInRange(MIN_CONDITION, MAX_CONDITION) >= MOVE_CONDITION;
     }
 
     public int getCurrentLocation() {
