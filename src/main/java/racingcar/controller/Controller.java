@@ -45,6 +45,9 @@ public class Controller {
         //최종 우승자 가리기
         winnerService.SearchWinners(racingGame.getCars());
 
+        //최종 우승자 출력
+        OutputView.printWinners(winnerService.getWinners());
+
 
 
         }

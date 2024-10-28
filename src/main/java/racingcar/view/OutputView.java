@@ -14,6 +14,7 @@ public class OutputView {
     }
 
     public static void printEachResult(List<Car> cars){
+
         for (Car car : cars) {
             String carName=car.getName();
             int carScore=car.getScore();
@@ -26,6 +27,6 @@ public class OutputView {
 
 
     public static void printWinners(List<String> winners){
-        System.out.println(String.join(",",winners));
+        System.out.println("최종 우승자 : "+String.join(",",winners));
     }
 }
