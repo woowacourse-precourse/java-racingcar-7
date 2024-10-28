@@ -1,12 +1,11 @@
 package util;
 
 public class StringValidator {
-    public static String checkCarNames(String nameString){
+    public static void checkCarNames(String nameString){
         String[] carNames = nameString.split(",");
         for(String carName : carNames)
             checkRightCarNameSize(carName);
 
-        return nameString;
     }
 
     private static void checkRightCarNameSize(String carName){
@@ -15,16 +14,14 @@ public class StringValidator {
 
     }
 
-    public static String checkNotNull(String text){
+    public static void checkNotNull(String text){
         if(text == null)
             throw new IllegalArgumentException("입력한 문자열이 null 입니다.");
 
-        return text;
     }
-    public static String checkPositiveIntValue(String numString){
+    public static void checkPositiveIntValue(String numString){
         if(!numString.matches("[1-9]\\d*"))
             throw new IllegalArgumentException("양의 정수 값만 입력할 수 있습니다.");
 
-        return numString;
     }
 }
