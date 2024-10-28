@@ -24,8 +24,8 @@ public class MainController {
         List<Car> cars = CarFactory.createCarsFromInput(inputCarNames);
         int carRoundCount = Integer.parseInt(inputCarRoundCount);
 
-        RaceManager raceManager = new RaceManager(outputView, cars, carRoundCount);
-        raceManager.playRoundUntilRoundCount();
+        RaceManager raceManager = new RaceManager(cars, carRoundCount);
+        raceManager.playRoundUntilRoundCount(outputView);
 
         WinnerDeterminer winnerDeterminer = new WinnerDeterminer(raceManager);
         List<Car> winners = winnerDeterminer.determineWinner();

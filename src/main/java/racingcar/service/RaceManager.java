@@ -7,12 +7,10 @@ import racingcar.view.OutputView;
 import java.util.List;
 
 public class RaceManager {
-    private final OutputView outputView;
     private final List<Car> cars;
     private final int round;
 
-    public RaceManager(OutputView outputView, List<Car> cars, int round) {
-        this.outputView = outputView;
+    public RaceManager(List<Car> cars, int round) {
         this.cars = cars;
         this.round = round;
     }
@@ -25,7 +23,7 @@ public class RaceManager {
         return round;
     }
 
-    public void playRoundUntilRoundCount() {
+    public void playRoundUntilRoundCount(OutputView outputView) {
         for (int i = 0; i < round; i++) {
             for (Car car : cars) {
                 car.attemptMoveForward();
