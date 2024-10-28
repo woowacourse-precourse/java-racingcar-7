@@ -4,8 +4,8 @@ import factory.CarFactory;
 import java.util.List;
 import model.Car;
 import util.ParsingUtil;
-import validator.attemptNumberValidator;
-import validator.carNameValidator;
+import validator.AttemptNumberValidator;
+import validator.CarNameValidator;
 import view.InputView;
 
 public class CarSetupController {
@@ -20,7 +20,7 @@ public class CarSetupController {
     public List<Car> getCarsFromUserInput() {
         String userInput = inputView.getCarNames();
         List<String> carNames = ParsingUtil.carNamesToList(userInput);
-        carNameValidator.isValid(carNames); // 검증
+        CarNameValidator.isValid(carNames); // 검증
 
         return createCars(carNames);
     }
@@ -31,7 +31,7 @@ public class CarSetupController {
 
     public int getAttemptCount() {
         String input = inputView.getAttemptCount();
-        attemptNumberValidator.checkAttempt(input); //검증
+        AttemptNumberValidator.checkAttempt(input); //검증
         return Integer.parseInt(input);
     }
 }
