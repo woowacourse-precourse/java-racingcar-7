@@ -42,10 +42,6 @@ public class RacingCarController {
         outputView.printResult();
         playRacingGame(cars,countOfTry);
 
-        outputView.rankResult(cars.getTopRankCarName());
-
-
-
     }
 
     private void checkValidateTryCount(int countOfTry) {
@@ -56,6 +52,7 @@ public class RacingCarController {
 
     }
 
+    // 차를 움직이고 , 결괏값을 추출
     private void playRacingGame(final Cars cars, int countOfTry){
 
         for(int i=0;i<countOfTry;i++){
@@ -66,7 +63,7 @@ public class RacingCarController {
 
         }
 
-
+        outputView.rankResult(cars.getTopRankCarName());
 
     }
 
