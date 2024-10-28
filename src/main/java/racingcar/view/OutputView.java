@@ -1,13 +1,15 @@
 package racingcar.view;
 
-import static racingcar.view.Message.*;
+import static racingcar.view.Message.CAR_NAME_MESSAGE;
+import static racingcar.view.Message.COUNT_MESSAGE;
+import static racingcar.view.Message.FINAL_WINNER_MESSAGE;
+import static racingcar.view.Message.ROUND_RESULT_MESSAGE;
 
 import java.util.List;
 import racingcar.Entity.Car;
 
 /**
- * 사용자에게 정보를 출력하는 역할을 담당하는 클래스입니다.
- * 자동차 경주 게임의 각 단계별 결과와 최종 우승자, 에러 메시지를 출력합니다.
+ * 사용자에게 정보를 출력하는 역할을 담당하는 클래스입니다. 자동차 경주 게임의 각 단계별 결과와 최종 우승자, 에러 메시지를 출력합니다.
  */
 public class OutputView {
 
@@ -26,8 +28,7 @@ public class OutputView {
     }
 
     /**
-     * 경주 결과를 출력합니다.
-     * 각 라운드별로 모든 자동차의 현재 위치를 "-"로 시각화하여 출력합니다.
+     * 경주 결과를 출력합니다. 각 라운드별로 모든 자동차의 현재 위치를 "-"로 시각화하여 출력합니다.
      *
      * @param history 각 라운드별 자동차들의 상태를 저장한 리스트
      */
@@ -47,8 +48,7 @@ public class OutputView {
     }
 
     /**
-     * 최종 우승자를 출력합니다.
-     * 우승자가 여러 명일 경우 쉼표(,)로 구분하여 출력합니다.
+     * 최종 우승자를 출력합니다. 우승자가 여러 명일 경우 쉼표(,)로 구분하여 출력합니다.
      *
      * @param winners 최종 우승자 자동차들의 리스트
      */

@@ -3,8 +3,7 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Randoms;
 
 /**
- * NumberGenerator 인터페이스를 구현한 무작위 수 생성기 클래스입니다.
- * 자동차의 전진 여부를 결정하기 위해 0부터 9까지의 무작위 정수를 생성합니다.
+ * NumberGenerator 인터페이스를 구현한 무작위 수 생성기 클래스입니다. 자동차의 전진 여부를 결정하기 위해 0부터 9까지의 무작위 정수를 생성합니다.
  */
 public class RandomNumberGenerator {
 
