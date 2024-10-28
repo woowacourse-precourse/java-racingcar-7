@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class RacingServiceTest {
 
@@ -20,8 +20,8 @@ public class RacingServiceTest {
         String input = "해적왕, 소방차, 요리사";
         List<String> carInputs = new ArrayList<>(List.of("해적왕", "소방차", "요리사"));
 
-        Set<Car> cars = racingService.createCars(input);
-        Iterator<Car> iterator = cars.iterator();
+        Cars cars = racingService.createCars(input);
+        Iterator<Car> iterator = cars.getCars().iterator();
 
         carInputs.forEach(car ->
                 Assertions.assertEquals(car, iterator.next().getName()));
@@ -33,8 +33,8 @@ public class RacingServiceTest {
         String input = "해적왕, 소방차, 해적왕, 소방차";
         List<String> carInputs = Arrays.asList("해적왕", "소방차");
 
-        Set<Car> cars = racingService.createCars(input);
+        Cars cars = racingService.createCars(input);
 
-        Assertions.assertEquals(cars.size(), carInputs.size());
+        Assertions.assertEquals(cars.getCars().size(), carInputs.size());
     }
 }

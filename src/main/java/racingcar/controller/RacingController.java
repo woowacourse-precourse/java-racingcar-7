@@ -1,7 +1,8 @@
 package racingcar.controller;
 
-import java.util.Set;
+import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.service.RacingService;
 import racingcar.util.Parser;
 import racingcar.util.RandomNumberPicker;
@@ -23,14 +24,15 @@ public class RacingController {
     public void run() {
         String namesInput = inputView.requestNamesInput();
 
-        Set<Car> cars = racingService.createCars(namesInput);
+        Cars cars = racingService.createCars(namesInput);
 
         String countInput = inputView.requestCountInput();
         progress(countInput, cars);
     }
 
-    private void progress(String countInput, Set<Car> cars) {
+    private void progress(String countInput, Cars collection) {
         int count = Parser.parseInt(countInput);
+        List<Car> cars = collection.getCars();
 
         outputView.showGuide();
         for (int i = 0; i < count; i++) {

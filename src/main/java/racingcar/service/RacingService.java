@@ -1,18 +1,16 @@
 package racingcar.service;
 
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.util.Parser;
 
 public class RacingService {
 
-    public Set<Car> createCars(String input) {
-        List<Car> extractedCars = extractCarsFromInput(input);
-
-        return new LinkedHashSet<>(extractedCars);
+    public Cars createCars(String input) {
+        return new Cars(extractCarsFromInput(input));
     }
 
     private List<Car> extractCarsFromInput(String input) {
@@ -20,6 +18,7 @@ public class RacingService {
 
         return Arrays.stream(nameElements)
                 .map(element -> new Car(element.strip()))
-                .toList();
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
