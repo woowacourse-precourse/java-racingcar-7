@@ -4,17 +4,17 @@ import java.util.regex.Pattern;
 import racingcar.util.ExceptionMessage;
 
 public abstract class Validator {
-    private static final Pattern NUMBER_REGEX = Pattern.compile("^[0-9]*$");
+    /*private static final Pattern NUMBER_REGEX = Pattern.compile("^[0-9]*$");
     private static final int MIN_TRIAL_RANGE = 1;
-    private static final int MAX_TRIAL_RANGE = 1000;
+    private static final int MAX_TRIAL_RANGE = 1000;*/
 
     abstract void validate(String input) throws IllegalArgumentException;
 
-    void validateNumeric(String input) {
+    /*void validateNumeric(String input) {
         if (!NUMBER_REGEX.matcher(input).matches()) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_NOT_NATURAL_NUMBER.getMessage());
         }
-    }
+    }*/
 
    /* void validateRange(String input) {
         try {
@@ -26,11 +26,11 @@ public abstract class Validator {
             );
         }
     }*/
-
-    void validateTrialInputRange(String input) {
+/*
+    void validateTrialInputRange(String input){
         int number = Integer.parseInt(input);
         if (number < MIN_TRIAL_RANGE || number > MAX_TRIAL_RANGE) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_OUT_OF_INPUT_BOUND.getMessage());
         }
-    }
+    }*/
 }

@@ -13,5 +13,7 @@ public class Application {
         OutputView outputview;
         GameController gameController = new GameController(inputView,outputView);
         gameController.run();
+
+
     }
 }

@@ -20,34 +20,25 @@ public class CarsManager {
     }
 
     public void move(){
-        for (Car car : cars) {
-            car.move();
-        }
+        cars.stream().forEach(Car::move);
     }
 
     public String getWinners() {
-        StringJoiner result = new StringJoiner(", ");
-        int maxValue = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .getAsInt();
-
-        List<Car> winners = cars.stream()
-                .filter(car -> car.getPosition() == maxValue)
-                .collect(Collectors.toList());
-
-        winners.stream()
-                .map(Car::getName)
-                .forEach(result::add);
-
-        return result.toString();
+        return findWinners().stream().map(Car::getName).collect(Collectors.joining(", "));
     }
 
-    @Override
-    public String toString() {
+    private List<Car> findWinners() {
         return cars.stream()
-                .map(Car::getResult)
-                .collect(Collectors.joining());
+                .filter(car -> car.getPosition() == getMaxPosition())
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        return cars.stream().mapToInt(Car::getPosition).max().getAsInt();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
 }

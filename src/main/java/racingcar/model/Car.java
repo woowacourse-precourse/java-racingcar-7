@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private static final int RANDOM_NUMBER_MIN = 0;
     private static final int RANDOM_NUMBER_MAX = 9;
-    private static final int MOVE_CONDITION_THRESHOLD = 4;
+    private static final int MOVE_THRESHOLD = 4;
 
     private final String name;
     private int position = 0;
@@ -16,13 +16,16 @@ public class Car {
 
     public void move() {
         int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
-        if (randomNumber >= MOVE_CONDITION_THRESHOLD) {
+        if (randomNumber >= MOVE_THRESHOLD) {
             this.position++;
         }
     }
+    private boolean isMoveForward() {
+        return generateRandomNumber() >= MOVE_THRESHOLD;
+    }
 
-    public String getResult() {
-        return String.format("%s : %s%n", name, getLocationDisplay());
+    private int generateRandomNumber() {
+        return Randoms.pickNumberInRange( RANDOM_NUMBER_MIN,RANDOM_NUMBER_MAX);
     }
 
     private String getLocationDisplay() {
@@ -36,4 +39,5 @@ public class Car {
     public String getName() {
         return name;
     }
+
 }
