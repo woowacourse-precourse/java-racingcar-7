@@ -14,13 +14,9 @@ class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
-    @BeforeEach
-    void setUp() {
-        Car.resetNames(); // 각 테스트 실행 전에 existingNames 초기화
-    }
-
     @Test
     void 기능_테스트() {
+        Car.resetNames();
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "1");
