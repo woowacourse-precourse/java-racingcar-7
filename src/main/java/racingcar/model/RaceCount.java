@@ -18,7 +18,7 @@ public class RaceCount {
 
     public static void hasCharacters(String raceCount) {
         if (!RACE_TIMES_PATTERN.matcher(raceCount).matches()) {
-            throw new IllegalArgumentException(ErrorMessage.RACE_COUNT_DOES_NOT_HAVE_CHARACTER.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.RACE_COUNT_MUST_NOT_HAVE_CHARACTER.getErrorMessage());
         }
     }
 
