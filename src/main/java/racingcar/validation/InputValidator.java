@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
-
     private final static String regex = "^[a-zA-Z0-9가-힣]+$";
 
     private static List<String> getUniqueName(String userInput){
