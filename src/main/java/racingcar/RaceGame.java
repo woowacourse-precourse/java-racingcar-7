@@ -22,7 +22,7 @@ public class RaceGame {
             }
         }
 
-        List<String> winnerNames = getWinnerNames(cars);
+        printWinner(getWinnerNames(cars));
     }
 
     private List<String> getWinnerNames(List<Car> cars) {
@@ -56,5 +56,14 @@ public class RaceGame {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int tryCnt = Integer.parseInt(Console.readLine());
         return tryCnt;
+    }
+
+    private void printWinner(List<String> winnerNames) {
+        StringBuilder message = new StringBuilder();
+        message.append("최종 우승자 : " + winnerNames.get(0));
+        for (int i = 1; i < winnerNames.size(); i++) {
+            message.append(", " + winnerNames.get(i));
+        }
+        System.out.println(message.toString());
     }
 }
