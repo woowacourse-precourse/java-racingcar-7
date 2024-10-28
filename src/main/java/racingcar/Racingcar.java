@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.*;
 
@@ -8,7 +9,7 @@ public class Racingcar {
     // 주어진 횟수 동안 n대 자동차는 전진 or 멈춤
     public static HashMap<String, Integer> racing(int nums, HashMap<String, Integer> cars) {
 
-        if (nums < 1){
+        if (nums < 1) {
             throw new IllegalArgumentException("시도 횟수가 너무 적습니다.");
         }
 
@@ -49,5 +50,30 @@ public class Racingcar {
         }
 
         return cars;
+    }
+
+    //자동차 경주 게임을 완료한 후 누가 우승했는지
+    public static void winner(HashMap<String, Integer> cars) {
+        int maxDistance = Integer.MIN_VALUE;
+        ArrayList<String> topCars = new ArrayList<>();
+
+        for (String car : cars.keySet()) {
+            int distance = cars.get(car);
+            if (distance > maxDistance) {
+                maxDistance = distance;
+                topCars.clear();
+                topCars.add(car);
+            } else if (distance == maxDistance) {
+                topCars.add(car);
+            }
+        }
+
+        if (topCars.size() == 1) {
+            // 단독 우승자 안내 문구
+            System.out.println("최종 우승자 : " + topCars.get(0));
+        } else {
+            // 공동 우승자 안내 문구
+            System.out.println("최종 우승자 : " + String.join(", ", topCars));
+        }
     }
 }
