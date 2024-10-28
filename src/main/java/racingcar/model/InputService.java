@@ -5,6 +5,7 @@ import racingcar.view.InputView;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputService {
     private List<String> carNameList;
@@ -31,7 +32,9 @@ public class InputService {
 
 
     private void splitCarNames(String carNames) {
-        this.carNameList = new LinkedList<>(Arrays.asList(carNames.split(",", -1)));
+        this.carNameList = Arrays.stream(carNames.split(",", -1))
+                                 .map(String::trim)
+                                 .collect(Collectors.toCollection(LinkedList::new));
     }
 
 
@@ -55,7 +58,7 @@ public class InputService {
     }
 
 
-    private int gameRoundsRequest()  {
+    private int gameRoundsRequest() {
         String request = InputView.request("1 ~ 5000 정수 입력만 가능합니다." + InputView.ROUNDS);
         return gameRoundsValidation(request);
     }

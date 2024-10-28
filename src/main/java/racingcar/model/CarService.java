@@ -19,7 +19,7 @@ public class CarService {
 
     public Boolean isSameName() {
         for (String name : carNames) {
-            if (Collections.frequency(carNames, name.trim()) > 1) return true;
+            if (Collections.frequency(carNames, name) > 1) return true;
         }
 
         return false;
@@ -33,7 +33,7 @@ public class CarService {
             return cars;
         }
 
-        carNames.forEach(name -> cars.add(new CarDto(name.trim())));
+        carNames.forEach(name -> cars.add(new CarDto(name)));
 
         return cars;
     }
@@ -42,7 +42,7 @@ public class CarService {
         int count = repeatName.getOrDefault(name, 0) + 1;
         repeatName.put(name, count);
 
-        cars.add(new CarDto(name.trim(), count));
+        cars.add(new CarDto(name, count));
     }
 
     public static CarDto forwardMovement(CarDto car, int forward) {
