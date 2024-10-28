@@ -26,19 +26,23 @@ public class Race {
     }
 
     private void displayRaceStatus() {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        }
-        System.out.println();
+        ResultPrinter.printRaceStatus(cars);
     }
 
-    public void printWinners() {
-        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
-        List<String> winners = cars.stream()
+    public List<String> determineWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .collect(Collectors.toList());
+    }
 
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    public void printWinners() {
+        List<String> winners = determineWinners();
+        ResultPrinter.printWinners(winners);
     }
 }
