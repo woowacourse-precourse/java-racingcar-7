@@ -11,6 +11,12 @@ public class CarGroup {
                 .toList();
     }
 
+    public void moveCars() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
     public void printCarPositions() {
         for (Car car : cars) {
             System.out.println(car.getName() + "의 위치: " + car.getPosition());
