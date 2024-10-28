@@ -37,6 +37,30 @@ public class RacingGameService {
         }
     }
 
+    private void announceWinners() {
+        List<Car> winners = findWinners();
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .reduce((a, b) -> a + ", " + b)
+                .orElse("");
+        System.out.println("최종 우승자 : " + winnerNames);
+    }
+
+    private List<Car> findWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+        List<Car> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
     public List<Car> getCars() {
         return cars;
     }
