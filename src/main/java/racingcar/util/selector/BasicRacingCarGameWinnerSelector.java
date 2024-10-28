@@ -13,10 +13,8 @@ public class BasicRacingCarGameWinnerSelector implements RacingCarGameWinnerSele
     }
 
     private int getMaxLocation(List<RacingCar> racingCars) {
-        int max = 0;
-        for (RacingCar racingCar : racingCars) {
-            max = Math.max(max, racingCar.getCurrentLocation());
-        }
-        return max;
+        return racingCars.stream()
+                .mapToInt(racingCar -> racingCar.getCurrentLocation())
+                .max().getAsInt();
     }
 }
