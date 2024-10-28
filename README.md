@@ -41,9 +41,9 @@
 
 ### RacingCar.class
 
-- [ ] private RacingCar(String name);
+- [X] private RacingCar(String name);
     - 레이싱카 객체 정의
-- [ ] public void create();
+- [X] public void create();
     - 정적 팩토리 메소드
 
 ### Race.class
