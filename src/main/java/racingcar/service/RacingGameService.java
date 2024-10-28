@@ -19,4 +19,8 @@ public class RacingGameService {
             racingGames.addRacingGame(racingGame);
         }
     }
+
+    public static void printPlayingResult(RacingGames racingGames, Cars car){
+
+    }
 }
