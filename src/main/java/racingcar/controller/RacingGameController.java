@@ -40,9 +40,9 @@ public class RacingGameController {
         }
     }
 
-    private void generateRandomValuesForCars() {
+    private void raceCars() {
         for (Car car : cars) {
-            int randomValue = RandomNumberGenerator.generateRandomNumber();
+            car.move();
         }
     }
 }
