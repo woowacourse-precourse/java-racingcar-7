@@ -12,7 +12,6 @@ public class RacingCar {
     public void move() {
         if (RandomPicker.getRandomNumber() >= MOVE_NUMBER) {
             this.count++;
-            this.setCount(this.count);
         }
         IOHandler.resultMessage(this);
     }
@@ -23,9 +22,5 @@ public class RacingCar {
 
     public int getCount() {
         return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 }
