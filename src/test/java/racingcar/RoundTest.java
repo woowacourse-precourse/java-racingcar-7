@@ -6,6 +6,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import racingcar.car.Car;
+import racingcar.car.CompeteCars;
+import racingcar.game.Round;
 
 
 class RoundTest {

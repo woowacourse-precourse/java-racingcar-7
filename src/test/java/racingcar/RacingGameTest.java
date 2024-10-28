@@ -12,6 +12,9 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.game.RacingGame;
+import racingcar.view.RacingInputView;
+import racingcar.view.RacingOutputView;
 
 class RacingGameTest {
     private static final int MOVING_FORWARD = 4;

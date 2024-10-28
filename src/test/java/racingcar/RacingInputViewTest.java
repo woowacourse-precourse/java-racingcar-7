@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import org.junit.jupiter.api.Test;
+import racingcar.view.RacingInputView;
 
 class RacingInputViewTest {
     private final RacingInputView inputView = new RacingInputView();

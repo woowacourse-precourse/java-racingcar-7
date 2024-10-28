@@ -1,7 +1,9 @@
-package racingcar;
+package racingcar.game;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.car.Car;
+import racingcar.car.CompeteCars;
 
 public class Round {
     private static final String ERROR_MOVE_COUNT_NOT_IN_RANGE = "횟수는 1 이상 80 이하의 숫자만 가능합니다.";
