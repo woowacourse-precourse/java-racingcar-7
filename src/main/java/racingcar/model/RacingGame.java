@@ -18,7 +18,7 @@ public class RacingGame {
     public FinalResultDto playRacingGame(int roundNumber, List<Car> carList) {
         for (int i = 0; i < roundNumber; i++) {
             carMover.moveCars(carList);
-            roundResultList.add(new RoundResultDto(i + 1, carList));
+            roundResultList.add(new RoundResultDto(carList));
         }
 
         return new FinalResultDto(roundResultList, determineWinner(carList));
