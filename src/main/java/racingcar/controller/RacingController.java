@@ -15,7 +15,7 @@ public class RacingController {
 
         racing.start();
 
-        String winners = racing.getWinners();
+        String winners = racing.getWinnerNames(racing.findMaxPosition());
         OutputView.printWinners(winners);
     }
 }
