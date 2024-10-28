@@ -9,19 +9,22 @@ public class Racing {
     private final List<Car> cars;
     private final int roundNumber;
 
-    public static Racing makeRacing() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNames = Console.readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int roundNumber = Integer.parseInt(Console.readLine());
-
-        List<Car> cars = CarFactory.createCars(carNames);
-        return new Racing(cars, roundNumber);
+    public Racing(String names, String roundNumber) {
+        this.cars = CarFactory.createCars(names);
+        this.roundNumber = parseRoundNumber(roundNumber);
     }
 
-    protected Racing(final List<Car> cars, final int roundNumber) {
-        this.cars = cars;
-        this.roundNumber = roundNumber;
+    private static int parseRoundNumber(String input) {
+        int roundNumber;
+        try {
+            roundNumber = Integer.parseInt(input);
+            if (roundNumber <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 자연수로 입력해주세요");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 자연수로 입력해주세요", e);
+        }
+        return roundNumber;
     }
 
     public void start() {
@@ -64,5 +67,9 @@ public class Racing {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

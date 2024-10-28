@@ -1,5 +1,6 @@
 package racingcar.game;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingTest {
 
@@ -17,8 +19,9 @@ class RacingTest {
     @Test
     void validateSingleWinner() {
         //given
-        List<Car> cars = CarFactory.createCars("pobi,woni");
-        Racing racing = new Racing(cars, 1);
+        String names = "pobi,woni";
+        String roundNumber = "1";
+        Racing racing = new Racing(names, roundNumber);
 
         assertRandomNumberInRangeTest(
                 () -> {
@@ -38,8 +41,9 @@ class RacingTest {
     @Test
     void validateMultipleWinner() {
         // given
-        List<Car> cars = CarFactory.createCars("pobi,woni,jun");
-        Racing racing = new Racing(cars, 1);
+        String names = "pobi,woni,jun";
+        String roundNumber = "1";
+        Racing racing = new Racing(names, roundNumber);
 
         assertRandomNumberInRangeTest(
                 () -> {
@@ -60,8 +64,9 @@ class RacingTest {
     @Test
     void validateMove() {
         // given
-        List<Car> cars = CarFactory.createCars("pobi");
-        Racing racing = new Racing(cars, 2);
+        String names = "pobi";
+        String roundNumber = "1";
+        Racing racing = new Racing(names, roundNumber);
 
         assertRandomNumberInRangeTest(
                 () -> {
@@ -69,9 +74,36 @@ class RacingTest {
                     racing.start();
 
                     // then
-                    assertThat(cars.get(0).getPosition()).isEqualTo(1);
+                    assertThat(racing.getCars().get(0).getPosition()).isEqualTo(1);
                 },
                 MOVING_FORWARD, STOP
         );
     }
+
+    @DisplayName("라운드 수 음수 예외")
+    @Test
+    void validateRoundNumberNegative() {
+        // given
+        String names = "pobi";
+        String roundNumber = "-1";
+
+        // when & then
+        assertThatThrownBy(() -> new Racing(names, roundNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @DisplayName("라운드 수 0 예외")
+    @Test
+    void validateRoundNumberZero() {
+        // given
+        String names = "pobi";
+        String roundNumber = "0";
+
+        // when & then
+        assertThatThrownBy(() -> new Racing(names, roundNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
+
 }
