@@ -18,4 +18,16 @@ public class Validator {
 
         return number;
     }
+
+    public static List<String> InputStringValidator(List<String> carsList) {
+        for (String car : carsList) {
+            if (car.trim().isEmpty()) {
+                throw new IllegalArgumentException("입력이 잘못되었습니다.");
+            }
+            if (car.length() > 5) {
+                throw new IllegalArgumentException("입력이 잘못되었습니다.");
+            }
+        }
+
+    }
 }
