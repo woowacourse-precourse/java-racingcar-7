@@ -1,6 +1,8 @@
 package racingcar.validator;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Validator {
 
@@ -20,4 +22,10 @@ public class Validator {
         }
     }
 
+    public static void validateUniqueNames(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>(carNames);
+        if (uniqueNames.size() != carNames.size()) {
+            throw new IllegalArgumentException("자동차 이름에 중복이 포함되면 안됩니다.");
+        }
+    }
 }
