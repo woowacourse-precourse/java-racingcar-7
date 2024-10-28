@@ -11,20 +11,33 @@ public class Application {
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputCars = Console.readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String inputAttemptCount = Console.readLine();
-
-        System.out.println();
-        System.out.println("실행 결과");
-
-        long attemptCount = Long.parseLong(inputAttemptCount);
+        checkInputNull(inputCars);
 
         String[] carList = inputCars.split(",");
 
         List<Car> cars = new ArrayList<>();
 
         for (String s : carList) {
+            checkInputNull(s);
+            if (s.length() > 5) {
+                throw new IllegalArgumentException();
+            }
             cars.add(new Car(s, 0));
+        }
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputAttemptCount = Console.readLine();
+        checkInputNull(inputAttemptCount);
+
+        System.out.println();
+        System.out.println("실행 결과");
+
+        int attemptCount;
+
+        try {
+            attemptCount = Integer.parseInt(inputAttemptCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
         }
 
         for (int i = 0; i < attemptCount; i++) {
@@ -58,6 +71,12 @@ public class Application {
                 break;
             }
             System.out.print(", " + cars.get(i).name);
+        }
+    }
+
+    public static void checkInputNull (String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException();
         }
     }
 
