@@ -22,7 +22,8 @@ public class RacingGameController {
     }
 
     private String[] parseCarNames(String input) {
-        String[] cars = input.replaceAll(" ", "").split(",");
+        input = removeBlank(input);
+        String[] cars = input.split(",");
         validateCarNames(cars);
         return cars;
     }
@@ -37,10 +38,15 @@ public class RacingGameController {
 
     private int parseTryCount(String input) {
         try {
-            return Integer.parseInt(input.replaceAll(" ", ""));
+            input = removeBlank(input);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
         }
+    }
+
+    private String removeBlank(String input) {
+        return input.replaceAll(" ", "");
     }
 
     private List<Car> createCars(String[] carNames) {
