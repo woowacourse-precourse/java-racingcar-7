@@ -18,7 +18,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String trialCounts = Console.readLine();
         
-        List<Integer> carMovementCounts = IntitalcarMovementCounts(splitCarNames.size());
+        List<Integer> carMovementCounts = intitalCarMovementCounts(splitCarNames.size());
     
         System.out.println("실행 결과");
         // 각 라운드별 "-" 출력
@@ -27,7 +27,7 @@ public class Application {
             System.out.println(); // 각 라운드 후 빈 줄 추가
         }
 
-        // 가장 "-"의 개수가 많은 자동차
+
         winner(splitCarNames, carMovementCounts);
     }
 
@@ -64,7 +64,17 @@ public class Application {
         }
     }
 
-    // 주어진 라운드에 따라 '-' 출력
+    public static List<Integer> intitalCarMovementCounts(int numberOfCars) {
+
+        List<Integer> intitalcarMovementCounts = new ArrayList<>();
+
+        for (int i = 0; i < numberOfCars; i++) {
+            intitalcarMovementCounts.add(0);
+        }
+
+        return intitalcarMovementCounts;
+    }
+
     public static void round(List<String> carNames, List<Integer> carMovementCounts) {
 
         for (int i = 0; i < carNames.size(); i++) {
@@ -78,17 +88,6 @@ public class Application {
             // 누적된 "-" 값 출력
             System.out.println("-".repeat(carMovementCounts.get(i)));
         }
-    }
-
-    public static List<Integer> IntitalcarMovementCounts(int numberOfCars) {
-
-        List<Integer> intitalcarMovementCounts = new ArrayList<>();
-
-        for (int i = 0; i < numberOfCars; i++) {
-            intitalcarMovementCounts.add(0);
-        }
-
-        return intitalcarMovementCounts;
     }
 
     public static int getMaxMoves(List<Integer> carMovementCounts) {
