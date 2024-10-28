@@ -4,9 +4,10 @@ public class CarDTO {
     private String carName;
     private int goStraight;
 
-    public CarDTO(String carName, int goStraight) {
+    public CarDTO(String carName) {
         this.carName = carName;
-        this.goStraight = goStraight;
+        //초기값은 0으로 설정
+        this.goStraight = 0;
     }
 
     public String getCarName() {
