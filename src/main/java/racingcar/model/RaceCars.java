@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import racingcar.exception.ExceptionCode;
 
 import static racingcar.model.Number.LIMIT_NUMBER;
@@ -35,6 +36,23 @@ public class RaceCars {
             printCarStatus();
             System.out.println("\n");
         }
+    }
+    public ArrayList<CarInfo> findWinner() {
+        ArrayList<CarInfo> winners = new ArrayList<>();
+        long maxMovement = findMaxMovement();
+
+        for (CarInfo car : participantCars) {
+            if (car.moveCount == maxMovement) {
+                winners.add(car);
+            }
+        }
+
+        return winners;
+    }
+
+    public long findMaxMovement() {
+        return participantCars.stream().max(Comparator.comparingLong(car -> car.moveCount))
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionCode.NO_RACE_CAR.getMessage())).moveCount;
     }
 
     public void calculateRandomMovement() {
