@@ -19,13 +19,13 @@ public class RacingGameService {
     }
 
     public List<List<CarLocation>> runRaceRounds(RacingGame racingGame) {
-        List<List<CarLocation>> raceHistory = new ArrayList<>();
+        List<List<CarLocation>> raceRecord = new ArrayList<>();
 
         for (int i = 0; i < racingGame.attempts(); i++) {
             raceProgressService.moveCarsInRounds(racingGame.cars());
-            raceHistory.add(raceProgressService.getCurrentLocations(racingGame.cars()));
+            raceRecord.add(raceProgressService.getCurrentLocations(racingGame.cars()));
         }
-        return raceHistory;
+        return raceRecord;
     }
 
     public List<String> getWinners(List<RacingCar> cars) {

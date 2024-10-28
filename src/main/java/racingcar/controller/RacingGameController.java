@@ -21,7 +21,7 @@ public class RacingGameController {
     public void run() {
         RacingGame racingGame = initializeRaceGame();
         outputView.printRaceResultPrefix();
-        processRaceHistory(racingGame);
+        processRaceRecord(racingGame);
         displayWinners(racingGame);
     }
 
@@ -31,9 +31,9 @@ public class RacingGameController {
         return racingGameService.initializeRace(carNames, attempts);
     }
 
-    private void processRaceHistory(RacingGame racingGame) {
-        List<List<CarLocation>> raceHistory = racingGameService.runRaceRounds(racingGame);
-        raceHistory.forEach(outputView::printRaceProcess);
+    private void processRaceRecord(RacingGame racingGame) {
+        List<List<CarLocation>> raceRecord = racingGameService.runRaceRounds(racingGame);
+        raceRecord.forEach(outputView::printRaceProcess);
     }
 
     private void displayWinners(RacingGame racingGame) {
