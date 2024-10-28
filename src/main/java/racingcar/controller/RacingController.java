@@ -73,6 +73,6 @@ public class RacingController {
     // 최종 우승자 출력
     private void printWinners(List<String> winners) {
         String result = String.join(", ", winners);
-        System.out.println("최종 우승자: " + result);
+        System.out.println("최종 우승자 : " + result);
     }
 }
