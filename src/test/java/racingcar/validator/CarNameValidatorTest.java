@@ -18,10 +18,6 @@ class CarNameValidatorTest {
         String name = "pobiii";
 
         // When & Then
-        assertThrows(RacingException.class, () ->
-                CarNameValidator.validateCarName(name)
-        );
-
         assertThatThrownBy(() -> CarNameValidator.validateCarName(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_CAR_NAME_LENGTH.getMessage());
