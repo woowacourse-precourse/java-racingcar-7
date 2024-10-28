@@ -18,7 +18,7 @@ public class Car {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_NULL.message());
         }
-        if (name.length() > 5) {
+        if (name.length() >= 5) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_OVER_RANGE.message());
         }
         if (!name.matches("[a-zA-Z0-9]+")) {
