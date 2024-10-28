@@ -8,5 +8,9 @@ public class Application {
         String cars = Console.readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryTimes = Console.readLine();
+        System.out.println("\n실행 결과");
+
+        RacingCar racingCar = new RacingCar();
+        racingCar.start(cars, Integer.parseInt(tryTimes));
     }
 }
