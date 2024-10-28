@@ -25,5 +25,46 @@ public class Application {
             }
         }
 
+        Map<String, Integer> hm = new HashMap<>();
+
+        ArrayList<String> answer = new ArrayList<>();
+
+        System.out.println("실행 결과");
+
+        while (tr-- > 0) {
+            updateWholeCarposition(Cars, hm);
+            printRoundResult(Cars, hm);
+            System.out.println();
+        }
     }
+
+    //게임진행 구현
+    public static void updateWholeCarposition(String[] Cars, Map<String, Integer> hm){
+        for (String tmp : Cars) {
+            updateCarposition(tmp, hm);
+        }
+    }
+
+    public static void updateCarposition(String tmp, Map<String, Integer> hm){
+        Integer randomNum = Randoms.pickNumberInRange(0, 9);
+        if (randomNum >= 4) {
+            hm.put(tmp, hm.getOrDefault(tmp, 0) + 1);
+        }
+    }
+
+    //4. 각 라운드마다 진행상황 출력
+    private static void printRoundResult(String[] Cars, Map<String, Integer> hm) {
+        for (String k : Cars) {
+            System.out.print(k + " : " + printMove(hm.getOrDefault(k, 0)) + '\n');
+        }
+    }
+
+    public static String printMove(int k) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < k; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
+    }
+
 }
