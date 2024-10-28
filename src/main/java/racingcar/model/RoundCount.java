@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 import racingcar.view.ErrorMessage;
 
 public class RoundCount {
+    private static final int ZERO = 0;
     private static final Pattern NUMBER_REGEX = Pattern.compile("^-?[0-9]+$");
     private int roundCount;
 
@@ -13,14 +14,14 @@ public class RoundCount {
     }
 
     public void decrease() {
-        if (roundCount <= 0) {
+        if (roundCount <= ZERO) {
             throw new IllegalStateException(ErrorMessage.NO_MORE_ROUND.getMessage());
         }
         roundCount--;
     }
 
     public boolean hasRemainingRound() {
-        return roundCount > 0;
+        return roundCount > ZERO;
     }
 
     private void validate(String input) {
@@ -35,7 +36,7 @@ public class RoundCount {
     }
 
     private void validatePositiveRoundCount(String input) {
-        if (Integer.parseInt(input) <= 0) {
+        if (Integer.parseInt(input) <= ZERO) {
             throw new IllegalArgumentException(ErrorMessage.ROUND_COUNT_OUT_OF_RANGE.getMessage());
         }
     }
