@@ -11,7 +11,7 @@ import racingcar.model.Distance;
 import racingcar.view.OutputView;
 
 public class RaceService {
-    private static final int INIT_MAX = 0;
+    private static final int INIT_MAX_TO_ZERO = 0;
 
     public static CarScores playGame(CarScores previousCarScores) {
         LinkedHashMap<CarName, Distance> nowScores = new LinkedHashMap<>();
@@ -27,7 +27,7 @@ public class RaceService {
     }
 
     public static void findLastWinner(CarScores carScores) {
-        int max = INIT_MAX;
+        int max = INIT_MAX_TO_ZERO;
 
         for (Map.Entry<CarName, Distance> nowCarScore : carScores.getCarScores().entrySet()) {
             Distance nowDistance = nowCarScore.getValue();
