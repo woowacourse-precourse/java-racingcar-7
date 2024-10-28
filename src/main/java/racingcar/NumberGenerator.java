@@ -1,9 +1,10 @@
 package racingcar;
 
-public interface NumberGenerator {
-    default int generateNumber(int num) {
-        return generate(num);
-    }
+import camp.nextstep.edu.missionutils.Randoms;
 
-    int generate(int num);
+public class NumberGenerator {
+
+    public int generate() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
 }

@@ -11,16 +11,20 @@ public class Race {
         this.cars = cars;
     }
 
-    // TODO: 함수 분리하기
     public void run(final int rounds) {
-        for (int round = 0; round < rounds; round++) {
-            List<Integer> numbers = new ArrayList<>();
-            for (int i = 0; i < cars.size(); i++) {
-                numbers.add(numberGenerator.generateNumber(4));
-            }
-            Round.play(cars, numbers);
-            Round.print(cars);
+        Round round = new Round(cars);
+        for (int num = 0; num < rounds; num++) {
+            round.play(createIntegers());
+            System.out.println(round.roundResult());
         }
+    }
+
+    private List<Integer> createIntegers() {
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < cars.size(); i++) {
+            numbers.add(numberGenerator.generate());
+        }
+        return numbers;
     }
 
     public List<Car> getWinners() {
