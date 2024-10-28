@@ -30,5 +30,7 @@ public class RacingcarController {
             List<Car> result = racingcarService.race(cars);
             racingcarView.printResult(result);
         }
+
+        racingcarView.printWinners(cars);
     }
 }

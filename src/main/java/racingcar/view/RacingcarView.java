@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.entity.Car;
 public class RacingcarView {
 
@@ -28,5 +29,19 @@ public class RacingcarView {
             System.out.println(car);
         }
         System.out.println();
+    }
+
+    public void printWinners(List<Car> cars) {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        System.out.println("최종 우승자: " + String.join(", ", winners));
     }
 }
