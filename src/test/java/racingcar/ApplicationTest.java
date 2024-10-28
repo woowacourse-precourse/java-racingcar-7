@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -34,5 +35,27 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 자동차이름과위치를정상적으로가져온다() {
+        Car car = new Car("pobi");
+        assertThat(car.getName()).isEqualTo("pobi");
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void 자동차가전진한다() {
+        Car car = new Car("pobi");
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 위치를문자열로반환한다() {
+        Car car = new Car("pobi");
+        car.move();
+        car.move();
+        assertThat(car.getPositionAsString()).isEqualTo("--");
     }
 }
