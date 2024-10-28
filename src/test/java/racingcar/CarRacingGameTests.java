@@ -91,4 +91,27 @@ public class CarRacingGameTests {
         assertThat(throwable)
                 .hasMessageContaining(ErrorMessage.INSUFFICIENT_MIN_CAR_COUNT.getMessage());
     }
+
+    @Test
+    @DisplayName("라운드가 1회 미만으로 설정된 경우")
+    public void error_insufficientRound() {
+        // given
+        IOutputDisplay outputDisplay = new OutputDisplayImpl();
+        List<ICar> carList = new ArrayList<>();
+        int round = 0;
+        for (int i = 0; i < 4; i++) {
+            carList.add(
+                    new CarImpl("car" + i)
+            );
+        }
+
+        CarRacingGame carRacingGame = new CarRacingGame(outputDisplay, carList, round);
+
+        // when
+        Throwable throwable = catchThrowable(carRacingGame::start);
+
+        // then
+        assertThat(throwable)
+                .hasMessageContaining(ErrorMessage.INSUFFICIENT_MIN_ROUND.getMessage());
+    }
 }
