@@ -96,8 +96,6 @@ class InputViewTest {
         Assertions.assertThatCode(() -> {
             inputView.enterRoundCount();
         }).doesNotThrowAnyException();
-
-        System.setIn(System.in);
     }
 
     @ParameterizedTest
