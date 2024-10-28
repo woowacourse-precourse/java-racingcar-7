@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.InvalidNameException;
+import racingcar.exception.car.InvalidNameException;
 
 @DisplayName("이름 테스트")
 class NameTest {

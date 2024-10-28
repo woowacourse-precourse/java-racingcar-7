@@ -3,7 +3,7 @@ package racingcar.model.car;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import racingcar.exception.InvalidNameException;
+import racingcar.exception.car.InvalidNameException;
 
 public class Cars {
 

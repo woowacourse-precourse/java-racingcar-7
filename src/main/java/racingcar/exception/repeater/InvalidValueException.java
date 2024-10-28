@@ -1,4 +1,4 @@
-package racingcar.exception;
+package racingcar.exception.repeater;
 
 public class InvalidValueException extends IllegalArgumentException {
     public InvalidValueException(final String s) {

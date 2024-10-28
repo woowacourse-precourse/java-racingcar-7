@@ -1,7 +1,7 @@
 package racingcar.model.car;
 
 import java.util.Objects;
-import racingcar.exception.InvalidNameException;
+import racingcar.exception.car.InvalidNameException;
 
 public class Name {
 

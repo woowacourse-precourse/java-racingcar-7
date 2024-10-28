@@ -7,8 +7,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.InvalidCountException;
-import racingcar.exception.InvalidValueException;
+import racingcar.exception.repeater.InvalidCountException;
+import racingcar.exception.repeater.InvalidValueException;
 
 @DisplayName("문자열 리피터 테스트")
 class StringRepeaterTest {

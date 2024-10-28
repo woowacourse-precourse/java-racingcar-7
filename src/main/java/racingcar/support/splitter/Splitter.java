@@ -1,6 +1,6 @@
 package racingcar.support.splitter;
 
-import racingcar.exception.InvalidDelimiterException;
+import racingcar.exception.splitter.InvalidDelimiterException;
 
 public class Splitter {
 

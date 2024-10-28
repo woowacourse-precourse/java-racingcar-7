@@ -1,7 +1,7 @@
 package racingcar.model.game.round;
 
 import java.util.Objects;
-import racingcar.exception.InvalidRoundException;
+import racingcar.exception.round.InvalidRoundException;
 
 public class Round {
 

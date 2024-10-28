@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.InvalidDelimiterException;
+import racingcar.exception.splitter.InvalidDelimiterException;
 
 @DisplayName("Splitter 테스트")
 class SplitterTest {

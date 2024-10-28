@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.InvalidNameException;
+import racingcar.exception.car.InvalidNameException;
 
 @DisplayName("자동차 집합 테스트")
 class CarsTest {

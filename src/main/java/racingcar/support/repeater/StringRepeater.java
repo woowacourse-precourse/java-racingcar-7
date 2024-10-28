@@ -1,7 +1,7 @@
 package racingcar.support.repeater;
 
-import racingcar.exception.InvalidCountException;
-import racingcar.exception.InvalidValueException;
+import racingcar.exception.repeater.InvalidCountException;
+import racingcar.exception.repeater.InvalidValueException;
 
 public class StringRepeater {
 
