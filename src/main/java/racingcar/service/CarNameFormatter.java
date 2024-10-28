@@ -7,14 +7,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static racingcar.exception.ErrorMessage.*;
 import static racingcar.validation.CarValidation.carValid;
 
 public class CarNameFormatter {
 
     public static Cars formatCarNames(String carNamesInput) {
+
+        if (!carNamesInput.contains(",")) {
+            throw new IllegalArgumentException(NO_COMMA.getMessage());
+        }
+
         String[] carNames = Arrays.stream(carNamesInput.split(","))
                 .map(String::trim)
                 .toArray(String[]::new);
+        return createCars(carNames);
+    }
+
+    private static Cars createCars(String[] carNames) {
         List<Car> carList = new ArrayList<>();
 
         for (String carName : carNames) {
