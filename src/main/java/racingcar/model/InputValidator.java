@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 public class InputValidator {
 
-    public boolean isValidNames(String input) {
+    public void checkValidNames(String input) {
         nullCheck(input);
 
         List<String> names = List.of(input.split(","));
@@ -27,8 +27,6 @@ public class InputValidator {
             checkInvalidCharacterOf(name);
         }
         checkDuplicationOf(names);
-
-        return true;
     }
 
     private void checkEmptyOf(String name) {
@@ -69,12 +67,10 @@ public class InputValidator {
         }
     }
 
-    public boolean isValidAttempts(String attempts) {
+    public void checkValidAttempts(String attempts) {
         nullCheck(attempts);
         checkInvalidAttemptsInputOf(attempts);
         checkOverIntAreaOf(attempts);
-
-        return true;
     }
 
     private void checkInvalidAttemptsInputOf(String input) {

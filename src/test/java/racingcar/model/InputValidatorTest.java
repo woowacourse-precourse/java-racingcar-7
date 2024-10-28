@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.message.ExceptionMessage.ATTEMPTS_OVER_INT_AREA_EXCEPTION_MESSAGE;
 import static racingcar.message.ExceptionMessage.DUPLICATION_NAME_EXCEPTION_MESSAGE;
@@ -32,9 +33,9 @@ class InputValidatorTest {
     public void isValidNamesTest() {
         //given
         String names = "pobi,woni,jun";
-        //when
-        //then
-        assertThat(inputValidator.isValidNames(names)).isTrue();
+        //when,then
+        assertThatCode(() -> inputValidator.checkValidNames(names))
+                .doesNotThrowAnyException();
     }
 
     @DisplayName("null_입력_예외_테스트")
@@ -43,7 +44,7 @@ class InputValidatorTest {
         //given
         String input = null;
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidNames(input))
+        assertThatThrownBy(() -> inputValidator.checkValidNames(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NULL_INPUT_EXCEPTION_MESSAGE.getMessage());
     }
@@ -54,7 +55,7 @@ class InputValidatorTest {
         //given
         String names = "aaaa,,aaaaa";
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidNames(names))
+        assertThatThrownBy(() -> inputValidator.checkValidNames(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(EMPTY_NAME_EXCEPTION_MESSAGE.getMessage());
     }
@@ -65,7 +66,7 @@ class InputValidatorTest {
         //given
         String names = "aaaa,aaaaa,aaaaaa";
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidNames(names))
+        assertThatThrownBy(() -> inputValidator.checkValidNames(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NAME_LENGTH_OVER_EXCEPTION_MESSAGE.getMessage());
     }
@@ -76,7 +77,7 @@ class InputValidatorTest {
         //given
         String names = "aaaa,aaaaa, aaaa";
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidNames(names))
+        assertThatThrownBy(() -> inputValidator.checkValidNames(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(START_OR_END_WITH_WHITESPACE_EXCEPTION_MESSAGE.getMessage());
     }
@@ -87,7 +88,7 @@ class InputValidatorTest {
         //given
         String names = "aaaa,aaaaa,aaaa ";
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidNames(names))
+        assertThatThrownBy(() -> inputValidator.checkValidNames(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(START_OR_END_WITH_WHITESPACE_EXCEPTION_MESSAGE.getMessage());
     }
@@ -98,7 +99,7 @@ class InputValidatorTest {
         //given
         String names = "aaaa,aaaaa,a$aaa";
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidNames(names))
+        assertThatThrownBy(() -> inputValidator.checkValidNames(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_CHARACTER_EXCEPTION_MESSAGE.getMessage());
     }
@@ -109,7 +110,7 @@ class InputValidatorTest {
         //given
         String names = "aaaa,aaaaa,a_aaa";
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidNames(names))
+        assertThatThrownBy(() -> inputValidator.checkValidNames(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_CHARACTER_EXCEPTION_MESSAGE.getMessage());
     }
@@ -120,7 +121,7 @@ class InputValidatorTest {
         //given
         String names = "aaaa,aaaa,aaaa";
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidNames(names))
+        assertThatThrownBy(() -> inputValidator.checkValidNames(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(DUPLICATION_NAME_EXCEPTION_MESSAGE.getMessage());
     }
@@ -130,9 +131,9 @@ class InputValidatorTest {
     public void isValidAttemptsTest() {
         //given
         String attempts = "5";
-        //when
-        //then
-        assertThat(inputValidator.isValidAttempts(attempts)).isTrue();
+        //when,then
+        assertThatCode(() -> inputValidator.checkValidAttempts(attempts))
+                .doesNotThrowAnyException();
     }
 
     @DisplayName("null_입력_예외_테스트")
@@ -141,7 +142,7 @@ class InputValidatorTest {
         //given
         String input = null;
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidAttempts(input))
+        assertThatThrownBy(() -> inputValidator.checkValidAttempts(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NULL_INPUT_EXCEPTION_MESSAGE.getMessage());
     }
@@ -152,7 +153,7 @@ class InputValidatorTest {
         //given
         String attempts = "-2147483648";
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidAttempts(attempts))
+        assertThatThrownBy(() -> inputValidator.checkValidAttempts(attempts))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_ATTEMPTS_INPUT_EXCEPTION_MESSAGE.getMessage());
     }
@@ -163,7 +164,7 @@ class InputValidatorTest {
         //given
         String attempts = "-2147483648";
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidAttempts(attempts))
+        assertThatThrownBy(() -> inputValidator.checkValidAttempts(attempts))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_ATTEMPTS_INPUT_EXCEPTION_MESSAGE.getMessage());
     }
@@ -174,7 +175,7 @@ class InputValidatorTest {
         //given
         String attempts = "21474836482";
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidAttempts(attempts))
+        assertThatThrownBy(() -> inputValidator.checkValidAttempts(attempts))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ATTEMPTS_OVER_INT_AREA_EXCEPTION_MESSAGE.getMessage());
     }
