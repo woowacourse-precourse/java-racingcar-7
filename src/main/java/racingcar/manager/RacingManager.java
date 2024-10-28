@@ -30,9 +30,9 @@ public class RacingManager {
                     car -> {
                         int picked = Randoms.pickNumberInRange(0, 9);
                         if (picked >= 4) {
-                            car.move(picked);
+                            car.move();
                         }
-                        System.out.println(car.getName() + " : " + car.getForward());
+                        System.out.println(car.getName() + " : " + car.getForwardMark());
                     }
             );
             System.out.println();
@@ -40,6 +40,7 @@ public class RacingManager {
     }
 
     public void presentWinner() {
+
         int max = cars.stream().mapToInt(car -> car.getForward()).max().orElse(0);
 
         List<String> winners = new ArrayList<>();
