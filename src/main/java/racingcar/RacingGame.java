@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.Map;
 
 public class RacingGame {
 
@@ -17,9 +18,11 @@ public class RacingGame {
         long attemptNumber = inputReceiver.readAttemptNumber();
 
         Racing racing = new Racing(createCars(carNames), attemptNumber);
-        List<String> winners = racing.race();
 
-        resultLogger.print(racing.getResult(), racing.getAttemptNumber(), winners);
+        Map<Long, List<Record>> result = racing.race();
+        List<String> winners = racing.selectWinnerNames();
+
+        resultLogger.print(result, racing.getAttemptNumber(), winners);
     }
 
     private List<Car> createCars(List<String> carNames) {

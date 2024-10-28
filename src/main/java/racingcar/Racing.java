@@ -16,13 +16,20 @@ public class Racing {
         this.attemptNumber = attemptNumber;
     }
 
-    public List<String> race() {
+    public Map<Long, List<Record>> race() {
         for (long round = 1; round <= attemptNumber; round++) {
             attemptMove();
             recordResults(round);
         }
 
-        return selectWinnerNames();
+        return result;
+    }
+
+    public List<String> selectWinnerNames() {
+        long maxDistance = selectMaxDistance();
+        List<Car> winners = carList.stream().filter(car -> car.getMoveCount() == maxDistance).toList();
+
+        return winners.stream().map(Car::getName).toList();
     }
 
     private void attemptMove() {
@@ -34,13 +41,6 @@ public class Racing {
         carList.forEach(car -> recordList.add(new Record(car)));
 
         result.put(round, recordList);
-    }
-
-    private List<String> selectWinnerNames() {
-        long maxDistance = selectMaxDistance();
-        List<Car> winners = carList.stream().filter(car -> car.getMoveCount() == maxDistance).toList();
-
-        return winners.stream().map(Car::getName).toList();
     }
 
     private long selectMaxDistance() {
