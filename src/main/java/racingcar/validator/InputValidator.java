@@ -65,7 +65,7 @@ public class InputValidator {
     }
 
     private void validatePositiveNumber(String attemptsInput) {
-        if (!attemptsInput.matches("([1-9]\\d*|\\+\\d+)")) {
+        if (!attemptsInput.matches("([1-9]\\d*|\\+[1-9]\\d*)")) {
             throw new IllegalArgumentException(ErrorMessage.POSITIVE_NUMBER);
         }
     }
