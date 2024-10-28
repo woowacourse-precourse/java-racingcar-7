@@ -22,9 +22,9 @@ public class CarRace {
         }
     }
 
-    public void advanceCars(List<Boolean> moveOrNot) {
+    public void advanceCars(List<Boolean> isAdvance) {
         for (int i = 0; i < cars.size(); i++) {
-            if (moveOrNot.get(i)) {
+            if (isAdvance.get(i)) {
                 cars.get(i).addMove();
             }
         }
