@@ -36,7 +36,7 @@ class RacingGame {
         for (String carName : carNames) {
             carName = carName.trim();
             if (carName.length() > 5 || carName.isEmpty()) {
-                throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
             carList.add(new Car(carName));
         }
@@ -68,6 +68,13 @@ class RacingGame {
             }
         }
     }
+
+    public void printRoundResults() {
+        for (Car car : participatingCars) {
+            System.out.println(car.getName() + " : " + car.getPositionRepresentation());
+        }
+        System.out.println();
+    }
 }
 
 class Car {
@@ -85,5 +92,9 @@ class Car {
 
     public void moveForward() {
         currentPosition++;
+    }
+
+    public String getPositionRepresentation() {
+        return "-".repeat(currentPosition);
     }
 }
