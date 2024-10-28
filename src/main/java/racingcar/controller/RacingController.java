@@ -1,11 +1,11 @@
 package racingcar.controller;
 
-import racingcar.model.entity.Cars;
+import racingcar.model.entity.CarsByNames;
 import racingcar.model.dto.RacingRecording;
 import racingcar.model.dto.CarNames;
 import racingcar.model.entity.RacingChance;
 import racingcar.model.entity.RacingTurns;
-import racingcar.model.entity.StrategiesAtCarNames;
+import racingcar.model.entity.StrategiesByCarNames;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -37,14 +37,14 @@ public class RacingController {
         CarNames names = CarNames.getAfterValidateFormat(inputView.getCarNames());
         RacingChance chance =
                 RacingChance.getAfterValidateFormat(inputView.getChanceToMove());
-        Cars cars = Cars.getInstance(names);
-        StrategiesAtCarNames strategies =
-                StrategiesAtCarNames.getAllRandomMove(names, chance);
+        CarsByNames carsByNames = CarsByNames.getInstance(names);
+        StrategiesByCarNames strategies =
+                StrategiesByCarNames.getAllRandomMove(names, chance);
         RacingTurns turns =
                 RacingTurns.getInstance(names, strategies, chance);
 
         // 레이싱 서비스 호출
-        racingService.raceOfCarsAndTurns(cars, turns);
+        racingService.raceOfCarsAndTurns(carsByNames, turns);
 
         // 레이싱 기록 불러와서 출력
         RacingRecording recording = racingService.getRecord();

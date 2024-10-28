@@ -18,7 +18,7 @@ public final class RacingTurns implements Iterable<RacingTurn> {
     }
 
     public static RacingTurns getInstance(CarNames names,
-                              StrategiesAtCarNames strategiesWithCarNames,
+                              StrategiesByCarNames strategiesWithCarNames,
                               RacingChance chance) {
 
         List<RacingTurn> turns = new ArrayList<>();
@@ -33,7 +33,7 @@ public final class RacingTurns implements Iterable<RacingTurn> {
     }
 
     private static RacingTurn getTurn(CarNames names,
-                                     StrategiesAtCarNames strategiesAtNames,
+                                     StrategiesByCarNames strategiesAtNames,
                                      int index) {
 
         LinkedHashMap<String, Supplier<Integer>> strategyAtCarName =

@@ -1,6 +1,6 @@
 package racingcar.model.dto;
 
-import racingcar.model.entity.Cars;
+import racingcar.model.entity.CarsByNames;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import java.util.List;
  */
 public record RacingWinners(List<String> winner) {
 
-    public static RacingWinners getFromCars(Cars cars) {
-        return new RacingWinners(cars.getMaxProgressCarsName());
+    public static RacingWinners getFromCars(CarsByNames carsByNames) {
+        return new RacingWinners(carsByNames.getMaxProgressCarsName());
     }
 
     @Override

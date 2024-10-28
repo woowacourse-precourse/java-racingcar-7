@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public record StrategiesAtCarNames(Map<String, List<Supplier<Integer>>> strategies) {
+public record StrategiesByCarNames(Map<String, List<Supplier<Integer>>> strategies) {
 
-    public static StrategiesAtCarNames getAllRandomMove(CarNames names,
+    public static StrategiesByCarNames getAllRandomMove(CarNames names,
                                                         RacingChance chance) {
 
         Map<String, List<Supplier<Integer>>> strategiesAtCarName =
@@ -27,7 +27,7 @@ public record StrategiesAtCarNames(Map<String, List<Supplier<Integer>>> strategi
             }
         }
 
-        return new StrategiesAtCarNames(strategiesAtCarName);
+        return new StrategiesByCarNames(strategiesAtCarName);
     }
 
     public List<Supplier<Integer>> get(String name) {

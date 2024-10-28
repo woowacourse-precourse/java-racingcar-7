@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import racingcar.model.entity.Cars;
+import racingcar.model.entity.CarsByNames;
 import racingcar.model.dto.RacingRecording;
 import racingcar.model.entity.RacingTurns;
 
@@ -11,7 +11,7 @@ import racingcar.model.entity.RacingTurns;
  */
 public interface RacingService {
     
-    void raceOfCarsAndTurns(Cars cars, RacingTurns turns);
+    void raceOfCarsAndTurns(CarsByNames carsByNames, RacingTurns turns);
 
     RacingRecording getRecord();
 

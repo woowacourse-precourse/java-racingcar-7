@@ -4,7 +4,7 @@ import racingcar.model.dto.RacingProgress;
 import racingcar.model.dto.RacingRecording;
 import racingcar.model.dto.RacingWinners;
 import racingcar.model.entity.Car;
-import racingcar.model.entity.Cars;
+import racingcar.model.entity.CarsByNames;
 import racingcar.model.entity.RacingTurn;
 import racingcar.model.entity.RacingTurns;
 import racingcar.repository.Repository;
@@ -26,21 +26,21 @@ public class RacingServiceImpl implements RacingService {
     }
 
     @Override
-    public void raceOfCarsAndTurns(Cars cars, RacingTurns turns) {
+    public void raceOfCarsAndTurns(CarsByNames carsByNames, RacingTurns turns) {
         repository.saveStartMessage();
 
-        raceAndRecordOfCarsAndTurns(cars, turns);
+        raceAndRecordOfCarsAndTurns(carsByNames, turns);
 
-        RacingWinners racingWinners = RacingWinners.getFromCars(cars);
+        RacingWinners racingWinners = RacingWinners.getFromCars(carsByNames);
         repository.saveResult(racingWinners);
     }
 
-    private void raceAndRecordOfCarsAndTurns(Cars cars, RacingTurns turns) {
+    private void raceAndRecordOfCarsAndTurns(CarsByNames carsByNames, RacingTurns turns) {
         for (RacingTurn turn : turns) {
             for (Map.Entry<String, Supplier<Integer>> entry : turn.getEntrySet()) {
                 String name = entry.getKey();
                 Supplier<Integer> strategy = entry.getValue();
-                Car car = cars.get(name);
+                Car car = carsByNames.get(name);
                 car.moveBy(strategy);
                 repository.saveProgress(new RacingProgress(car));
             }
