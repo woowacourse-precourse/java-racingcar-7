@@ -37,4 +37,9 @@ inputMoveCount(): 이동할 횟수를 사용자로부터 입력받는 메소드
 ## InputValidator class
 validateCarNames(): 자동차이름 길이 검증 메소드  
 validateMoveCount: 이동 횟수가 1 이상인지 검증하는 메소드
-#
+
+## ConsoleReader
+ readLine() : 콘솔읽기를 위한 인터페이스
+ 
+## DefaultConsoleReader
+readLine() : ConsoleReader를 오버라이드하여 Console.readLine()를 호출
