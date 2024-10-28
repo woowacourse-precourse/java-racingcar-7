@@ -5,9 +5,8 @@ import static racingcar.util.InputValidator.validateNotBlank;
 public class Car {
 
     private static final int MAX_NAME_LENGTH = 5;
-    private static final String HYPHEN = "-";
-    private static final String COLON = ":";
-    private static final String BLANK = " ";
+    private static final String DISTANCE_SIGN = "-";
+    private static final String NAME_DISTANCE_DELIMITER = " : ";
     private static final int MOVE_THRESHOLD = 4;
     private static final int INIT_DISTANCE_VALUE = 0;
 
@@ -37,11 +36,11 @@ public class Car {
 
     @Override
     public String toString() {
-        return this.name + BLANK + COLON + BLANK + createHyphenDistance();
+        return this.name + NAME_DISTANCE_DELIMITER + createHyphenDistance();
     }
 
     private String createHyphenDistance() {
-        return HYPHEN.repeat(distance);
+        return DISTANCE_SIGN.repeat(distance);
     }
 
     private void validateNameLength(String name) {
