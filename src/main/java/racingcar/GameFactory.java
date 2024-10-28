@@ -13,7 +13,11 @@ public class GameFactory {
         CarGame game = new CarGame(numberOfTurn, cars);
         Observer gameObserver = OutputObserverFactory.getInstance()
                 .stdOutGameResultObserver(cars);
-        game.appendObserver(gameObserver);
+        Observer exeObserver = OutputObserverFactory.getInstance()
+                .stdOutExecutionObserver(cars);
+
+        game.subscribeExecuteObserver(exeObserver);
+        game.subscribeResultObserver(gameObserver);
         return game;
     }
 }
