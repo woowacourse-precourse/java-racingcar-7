@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
     String carName;
-    int currentDistance = 0;
+    int distance;
 
     Car(String name) {
         this.carName = name;
@@ -16,7 +16,7 @@ public class Car {
     }
 
     int getDistance() {
-        return currentDistance;
+        return distance;
     }
 
     boolean canMove() {
@@ -26,7 +26,7 @@ public class Car {
 
     void move() {
         if (canMove()) {
-            currentDistance++;
+            distance++;
         }
     }
 
