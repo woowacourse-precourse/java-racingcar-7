@@ -5,6 +5,8 @@ public enum InputErrorCode implements ErrorCode {
 
     INPUT_NAME_ERROR("이름 입력이 잘못되었습니다."),
 
+    DUPLICATE_NAME_ERROR("중복된 이름이 존재합니다."),
+
     INPUT_NAME_LENGTH_ERROR("이름은 5자 이하여야 합니다."),
 
     INPUT_TIMES_ERROR("입력 횟수가 잘못되었습니다.");

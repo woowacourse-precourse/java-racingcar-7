@@ -9,17 +9,18 @@ import java.util.List;
 public class InputParser {
 
     public List<String> parseNamesToList(String nameInput) {
-        try {
-            String[] split = nameInput.split(",");
-            return Arrays.stream(split).toList();
-        } catch (Exception e) {
+        if (nameInput == null) {
             throw new IllegalArgumentException(INPUT_NAME_ERROR.message());
         }
+        return Arrays.stream(nameInput.split(","))
+                .map(String::trim)
+                .toList();
     }
 
     public long parseTimesToLong(String timeInput) {
         try {
-            return Long.parseLong(timeInput);
+            String trimmedNameInput = timeInput.trim();
+            return Long.parseLong(trimmedNameInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INPUT_TIMES_ERROR.message());
         }
