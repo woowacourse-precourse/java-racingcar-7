@@ -8,14 +8,12 @@ public class AttemptCountValidator {
         validateIsPositive(attemptCountString); // 양수 확인
     }
 
-    // 입력 값이 null이거나 빈 문자열인지 확인
     private void checkNullOrEmpty(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("입력값은 null이거나 빈 문자열일 수 없습니다.");
         }
     }
 
-    // 문자열이 정수인지 확인
     private void validateIsInteger(String attemptCountString) {
         try {
             Integer.parseInt(attemptCountString);
@@ -24,7 +22,6 @@ public class AttemptCountValidator {
         }
     }
 
-    // 문자열이 양수인지 확인
     private void validateIsPositive(String attemptCountString) {
         int attemptCount = Integer.parseInt(attemptCountString); // 문자열을 정수로 변환
         if (attemptCount <= 0) {

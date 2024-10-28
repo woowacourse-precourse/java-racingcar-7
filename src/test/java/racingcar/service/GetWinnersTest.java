@@ -66,9 +66,7 @@ class GetWinnersTest {
 
         List<String> winners = gameService.getWinners(cars);
 
-        // 우승자의 수가 2여야 함
         assertEquals(2, winners.size(), "우승자의 수가 2가 아닙니다.");
-        // 우승자가 Car1과 Car2여야 함
         assertTrue(winners.contains("Car1"), "우승자 목록에 Car1이 없습니다.");
         assertTrue(winners.contains("Car2"), "우승자 목록에 Car2가 없습니다.");
     }

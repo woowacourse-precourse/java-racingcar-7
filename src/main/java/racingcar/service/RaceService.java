@@ -1,9 +1,7 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.controller.RacingCarController;
 import racingcar.model.Car;
-import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -11,7 +9,6 @@ public class RaceService {
     private static final int MAX_CALL_LIMIT = 1000;
 
     public void runRound(List<Car> cars) {
-        // 최대 호출 수 체크
         int callCount = 0;
         for (Car car : cars) {
             if (shouldMoveForward(generateRandomDigit())) {

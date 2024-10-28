@@ -2,7 +2,6 @@ package racingcar.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.service.RaceService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GenerateResultsMessageTest {
-    private OutputView outputView = new OutputView();
+    private final OutputView outputView = new OutputView();
 
     @Test
     @DisplayName("최종 우승자 메시지를 생성하는 메서드")

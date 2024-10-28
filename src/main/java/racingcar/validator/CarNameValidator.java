@@ -7,7 +7,7 @@ public class CarNameValidator {
             throw new IllegalArgumentException("자동차 이름은 null일 수 없습니다.");
         }
 
-        if (carName.isEmpty()){
+        if (carName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
         }
 

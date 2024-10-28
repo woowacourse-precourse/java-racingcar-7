@@ -4,7 +4,6 @@ import racingcar.model.Car;
 import racingcar.service.GameService;
 import racingcar.service.RaceService;
 import racingcar.validator.AttemptCountValidator;
-import racingcar.validator.CarNameValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -17,7 +16,7 @@ public class RacingCarController {
     AttemptCountValidator attemptCountValidator = new AttemptCountValidator();
     OutputView outputView = new OutputView();
 
-    public void run(){
+    public void run() {
         final String carNamesString = inputView.promptCarNames();
         List<Car> cars = gameService.createCarsList(carNamesString);
 
@@ -31,9 +30,9 @@ public class RacingCarController {
     }
 
 
-    public void startGame(int attemptCount, List<Car> cars){
-        System.out.println("\n"+"실행 결과");
-        for(int i = 0; i < attemptCount; i++){
+    public void startGame(int attemptCount, List<Car> cars) {
+        System.out.println("\n" + "실행 결과");
+        for (int i = 0; i < attemptCount; i++) {
             raceService.runRound(cars);
             outputView.displayRoundresults(cars);
         }

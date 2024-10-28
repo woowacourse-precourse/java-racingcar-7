@@ -7,10 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import static java.util.Collections.max;
-
 public class GameService {
 
     private final CarNameValidator carNameValidator = new CarNameValidator();
