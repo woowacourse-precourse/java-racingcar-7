@@ -1,5 +1,6 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -25,4 +26,39 @@ class CarsTest {
         assertThatThrownBy(() -> new Cars(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 우승자_판별() {
+        Cars cars = new Cars(List.of("a", "b", "c"));
+        PlayCount playCount = new PlayCount("1");
+
+        Race race = new Race(new OutputView());
+        assertRandomNumberInRangeTest(() -> {
+                    race.play(cars, playCount);
+                },
+                4, 3, 0
+        );
+
+        var winners = cars.getWinners();
+        assertThat(winners.getFirst()).isEqualTo("a");
+    }
+
+    @Test
+    void 우승자가_여러명일_경우_판별() {
+        Cars cars = new Cars(List.of("a", "b", "c"));
+        PlayCount playCount = new PlayCount("1");
+
+        Race race = new Race(new OutputView());
+        assertRandomNumberInRangeTest(() -> {
+                    race.play(cars, playCount);
+                },
+                9, 4, 4
+        );
+
+        List<String> winners = cars.getWinners();
+        assertThat(winners.get(0)).isEqualTo("a");
+        assertThat(winners.get(1)).isEqualTo("b");
+        assertThat(winners.get(2)).isEqualTo("c");
+    }
+
 }
