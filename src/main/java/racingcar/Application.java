@@ -3,8 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Application {
 
@@ -36,9 +35,33 @@ public class Application {
                 }
             }
 
+            // 최대값을 가진 키들을 가져옴
+            List<String> maxPositionCars = getMaxPositionKeys(carPositions);
+
+            // 결과 출력
+            System.out.println("최종 우승자 : " + String.join(", ", maxPositionCars));
+
+
         } catch (IllegalArgumentException e) {
             throw e;
         }
+    }
+
+    public static List<String> getMaxPositionKeys(Map<String, Integer> map) {
+        List<String> maxKeys = new ArrayList<>();
+        if (map == null || map.isEmpty()) {
+            return maxKeys; // 빈 리스트 반환
+        }
+
+        int maxValue = Collections.max(map.values());
+
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == maxValue) {
+                maxKeys.add(entry.getKey());
+            }
+        }
+
+        return maxKeys;
     }
 
     public static int move(int randomNumber, int position) {
