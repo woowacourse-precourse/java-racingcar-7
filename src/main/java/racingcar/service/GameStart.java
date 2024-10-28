@@ -7,7 +7,6 @@ public class GameStart {
     private static int max;
 
     public static int race(Car[] player) {
-
         for (Car car : player) {
             int progress = Randoms.pickNumberInRange(0, 9);
             decideToMove(progress, car);

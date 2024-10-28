@@ -1,7 +1,7 @@
 package racingcar.service;
 
-import static racingcar.validation.Validation.validateName;
-import static racingcar.validation.Validation.validateSameName;
+import static racingcar.validation.ValidationName.validateName;
+import static racingcar.validation.ValidationName.validateSameName;
 
 import java.util.ArrayList;
 import racingcar.domain.Car;

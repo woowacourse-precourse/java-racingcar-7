@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
-import racingcar.validation.Validation;
+import racingcar.validation.ValidationName;
 
 public class GameCountValidateTest {
     @Test
@@ -26,7 +26,7 @@ public class GameCountValidateTest {
     @Test
     void 시도횟수_음수_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> Validation.validateGameCount("-1"))
+                assertThatThrownBy(() -> ValidationName.validateGameCount("-1"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("음수로는 시도 횟수를 측정하지 못합니다.")
         );
@@ -35,7 +35,7 @@ public class GameCountValidateTest {
 
     private void validAttemptException(String number) {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> Validation.validateGameCount(number))
+                assertThatThrownBy(() -> ValidationName.validateGameCount(number))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("0~2^31-1의 정수로만 횟수를 입력하세요(문자, 소수 불가).")
         );

@@ -3,7 +3,7 @@ package racingcar.controller;
 import static racingcar.service.GameService.registerCarParticipants;
 import static racingcar.service.GameService.splitCarName;
 import static racingcar.service.GameStart.race;
-import static racingcar.validation.Validation.validateGameCount;
+import static racingcar.validation.ValidationGameCount.validateGameCount;
 
 import java.util.ArrayList;
 import racingcar.domain.Car;
