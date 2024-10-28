@@ -17,7 +17,8 @@ public class RacingGameService {
     }
 
     public List<String> processCarNames(String carNamesInput) {
-
+        List<String> carNames = InputValidator.splitCarNames(carNamesInput);
+        return carNames;
     }
 
     public void validateNumberOfAttempts() {
