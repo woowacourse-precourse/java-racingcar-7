@@ -21,7 +21,7 @@ public class CarRacing {
         return carGroup;
     }
 
-    private List<String> getCarRacingRecords() {
+    private List<String> getCarRacingProcess() {
         List<String> carRacingRecords = new ArrayList<>();
 
         for (int i = 0; i < attempt; i++) {
@@ -37,9 +37,9 @@ public class CarRacing {
     }
 
     public List<String> race() {
-        List<String> raceResult = new ArrayList<>();
-        raceResult.addAll(getCarRacingRecords());
-        raceResult.add(getCarRacingResult());
-        return raceResult;
+        List<String> raceRecord = new ArrayList<>();
+        raceRecord.addAll(getCarRacingProcess());
+        raceRecord.add(getCarRacingResult());
+        return raceRecord;
     }
 }

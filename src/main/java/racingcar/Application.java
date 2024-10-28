@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.prompt.CarRacingEnrollPrompt;
 import racingcar.prompt.CarRacingResultPrompt;
 import racingcar.prompt.Prompt;
@@ -15,7 +16,9 @@ public class Application {
         CarRacingEnroll carRacingEnroll = new CarRacingEnroll();
 
         enrollPrompt.print(promptModel);
-        promptModel.add(carRacingEnroll.lineUp(promptModel).race());
+        CarRacing carRacing = carRacingEnroll.lineUp(promptModel);
+        List<String> carRacingRecord = carRacing.race();
+        promptModel.add(carRacingRecord);
         resultPrompt.print(promptModel);
     }
 }
