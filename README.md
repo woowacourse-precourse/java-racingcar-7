@@ -46,7 +46,7 @@ n개의 자동차 이름들* 을 의미합니다.
   - [x] `시도할 횟수는 몇 회인가요?\n`
   - [x] `실행 결과\n`
   - [x] `{carName} : {distanceBar}\n`
-  - [ ] `\n최종 우승자 : {String.join(", ", winnerCars)}`
+  - [x] `\n최종 우승자 : {String.join(", ", winnerCars)}`
 - 올바른 행동을 유도하는 예외 메시지
   - [x] 모든 예외 메시지에 접두사 `[ERROR] ` 표시
   - [x] 길이 초과 시 표시

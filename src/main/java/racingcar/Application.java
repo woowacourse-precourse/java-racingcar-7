@@ -3,7 +3,10 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Application {
@@ -77,10 +80,15 @@ public class Application {
             System.out.println();
         }
 
-        // TODO: Output final winner
+        // final winner
+        int maxDistance = Collections.max(cars.values());
+        List<String> winnerCars = new ArrayList<>();
 
-        // Temporary output
-        System.out.println(cars);
-        System.out.println(iterationNumber);
+        for (Map.Entry<String, Integer> car : cars.entrySet()) {
+            if (car.getValue() == maxDistance) {
+                winnerCars.add(car.getKey());
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winnerCars));
     }
 }
