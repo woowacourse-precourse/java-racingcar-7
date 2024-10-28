@@ -10,9 +10,15 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameService {
-    private final CarService carService = new CarService();
-    private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
+    private final CarService carService;
+    private final InputView inputView;
+    private final OutputView outputView;
+
+    public GameService(CarService carService, InputView inputView, OutputView outputView) {
+        this.carService = carService;
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
 
     public GameData getGameData() throws IOException {
         String carsName = inputView.getCarNames();
