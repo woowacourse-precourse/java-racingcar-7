@@ -27,6 +27,8 @@ public class RacingController {
     int inputAttemptCount = inputView.readInputAttemptCount();
 
     racingService.setup(inputCarNames, inputAttemptCount);
+
+    outputView.printEmptyLine();
   }
 
   public void startRace() {
