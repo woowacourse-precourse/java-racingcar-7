@@ -2,18 +2,15 @@ package racingcar;
 
 public class Car {
     private final String name;
-    private int position;
+    private int position = 0;
 
     public Car(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
+        Validation.validateCarName(name);
         this.name = name;
-        this.position = 0;
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber >= 4) {
+    public void move(int randomValue) {
+        if (randomValue >= 4) {
             position++;
         }
     }
@@ -26,4 +23,3 @@ public class Car {
         return position;
     }
 }
-
