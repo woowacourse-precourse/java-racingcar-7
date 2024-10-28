@@ -92,4 +92,14 @@ class ParserTest {
         assertEquals(MINUS_VALUE.getMessage(), exception.getMessage());
     }
 
+    @Test
+    void 이름이_비어있을경우_예외() {
+        String input = null;
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> parser.parse(input)
+        );
+        assertEquals(BLANK_VALUE.getMessage(), exception.getMessage());
+    }
+
 }
