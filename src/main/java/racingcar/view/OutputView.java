@@ -38,7 +38,7 @@ public class OutputView {
     }
 
     private static String formatCarStatus(CarSnapshot car) {
-        return car.carName() + " : " + "-".repeat(car.position());
+        return String.format("%s : %s", car.carName(), "-".repeat(car.position()));
     }
 
     private static void printWinners(List<String> winners) {
