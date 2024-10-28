@@ -87,9 +87,9 @@ public class Racing {
 
         List<String> winners = new ArrayList<>();
         for (String carName : carNames) {
-            String currCarDash = carPositions.get(carName);
+            String currentCarPosition = carPositions.get(carName);
 
-            if (currCarDash.length() == maxStars) {
+            if (currentCarPosition.length() == maxStars) {
                 winners.add(carName);
             }
         }
