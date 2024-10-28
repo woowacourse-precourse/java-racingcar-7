@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import static racingcar.util.Message.ErrorMessage.NAME_MAX_LENGTH_ERROR;
+import static racingcar.util.Message.ErrorMessage.NAME_MIN_LENGTH_ERROR;
+
 public class Car implements Raceable {
     private final static int STEP_SIZE = 1;
     private final static char DISTANCE_SYMBOL = '-';
@@ -38,9 +41,9 @@ public class Car implements Raceable {
 
     private void validateNameLength(String name){
         if(name.length() > NAME_MAX_LEGNTH) {
-            throw new IllegalArgumentException("이름은 5글자 이하만 가능합니다.");
+            throw new IllegalArgumentException(NAME_MAX_LENGTH_ERROR);
         }else if(name.length() < NAME_MIN_LEGNTH){
-            throw new IllegalArgumentException("이름은 1글자 이상만 가능합니다.");
+            throw new IllegalArgumentException(NAME_MIN_LENGTH_ERROR);
         }
     }
 }

@@ -1,10 +1,14 @@
 package racingcar.util.parser;
 
+import static racingcar.util.Message.ErrorMessage.DUPLICATE_NAME_ERROR;
+import static racingcar.util.Message.ErrorMessage.INVALID_DELIMITER_ERROR;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class InputStringParser implements StringParser {
     final static String DELIMITER = ",";
+    final static String VALIDATE_DELIMITER_REGEXP = "[^a-zA-Z0-9가-힣,]";
 
     @Override
     public Set<String> extractTokens(final String str) {
@@ -15,16 +19,15 @@ public class InputStringParser implements StringParser {
         for (String item : items) {
             item = item.trim();
             if (!tokens.add(item)) {
-                throw new IllegalArgumentException("중복된 이름이 존재할 수 없습니다.");
+                throw new IllegalArgumentException(DUPLICATE_NAME_ERROR);
             }
         }
         return tokens;
     }
 
     private void validateDelimiter(final String str) {
-        String regex = "[^a-zA-Z0-9가-힣,]";
-        if (str.matches(".*" + regex + ".*") == true) {
-            throw new IllegalArgumentException("쉼표(',')외의 구분자는 허용하지 않습니다.");
+        if (str.matches(".*" + VALIDATE_DELIMITER_REGEXP + ".*") == true) {
+            throw new IllegalArgumentException(INVALID_DELIMITER_ERROR);
         }
     }
 }

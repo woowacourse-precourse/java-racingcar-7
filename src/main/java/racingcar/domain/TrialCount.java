@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import static racingcar.util.Message.ErrorMessage.NOT_A_NUMBER_ERROR;
+import static racingcar.util.Message.ErrorMessage.TRIAL_MIN_COUNT_ERROR;
+
 public class TrialCount {
     private static final int MIN_TRIAL_COUNT = 1;
     private final int amount;
@@ -19,14 +22,14 @@ public class TrialCount {
         try {
             Integer.parseInt(str);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(NOT_A_NUMBER_ERROR);
         }
 
     }
 
     private void validateAmountRange(final int num) {
         if (num < MIN_TRIAL_COUNT) {
-            throw new IllegalArgumentException("시도 횟수는 1이상만 입력 가능합니다.");
+            throw new IllegalArgumentException(TRIAL_MIN_COUNT_ERROR);
         }
     }
 }

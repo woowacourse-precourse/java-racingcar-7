@@ -1,5 +1,7 @@
 package racingcar.util.generator;
 
+import static racingcar.util.Message.ErrorMessage.INVALID_RANDOM_NUMBER_RANGE_ERROR;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberGenerator {
@@ -13,7 +15,7 @@ public class RandomNumberGenerator {
 
     private void validateRandomNumber(int number){
         if(number < MIN_RANDOM_NUMBER || number > MAX_RANDOM_NUMBER){
-            throw new IllegalArgumentException("허용되지 않은 랜덤한 숫자 범위입니다.");
+            throw new IllegalArgumentException(INVALID_RANDOM_NUMBER_RANGE_ERROR);
         }
     }
 }

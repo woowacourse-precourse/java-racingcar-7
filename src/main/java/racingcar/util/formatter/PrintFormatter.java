@@ -11,7 +11,7 @@ public class PrintFormatter {
 
     public String formatWinner(final String prefix, List<Car> cars) {
         return prefix + cars.stream()
-                .map(Car::getName) // 각 Car의 이름을 가져옴
+                .map(Car::getName)
                 .collect(Collectors.joining(", "));
     }
 }
