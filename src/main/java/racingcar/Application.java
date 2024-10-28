@@ -25,6 +25,7 @@ public class Application {
         }
 
         //feat:2. 시도할 횟수 변수에 횟수 값 입력 받기
+
         String inputTry;
         System.out.println("시도할 횟수는 몇 회인가요?");
         inputTry = Console.readLine();
