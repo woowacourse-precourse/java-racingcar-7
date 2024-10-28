@@ -27,7 +27,8 @@ public class MainController {
         RaceManager raceManager = new RaceManager(cars, carRoundCount);
         raceManager.playRoundUntilRoundCount(outputView);
 
-        WinnerDeterminer winnerDeterminer = new WinnerDeterminer(raceManager);
+        List<Car> carsAtFinish = raceManager.getCars();
+        WinnerDeterminer winnerDeterminer = new WinnerDeterminer(carsAtFinish);
         List<Car> winners = winnerDeterminer.determineWinner();
 
         outputView.displayWinners(winners);
