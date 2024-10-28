@@ -44,14 +44,19 @@
 - 자동차 객체 CarPlayer
 - 에러 메시지를 저장하는 객체 ErrorMessage
 - 기타 상수를 저장하는 객체 Constant
-- 자동차 경주 게임로직을 담당하는 객체 RacingGameController
+- 자동차 경주 게임 세팅 및 입출력 관리(흐름 제어)를 담당하는 객체 RacingGameController (수정)
 - 검증 기능을 수행하는 검증 객체 Validation
 - 각 라운드의 결과를 기록할 객체 RoundRecord (추가)
+- 자동차 경주 게임로직을 담당하는 객체 RacingGameService(추가)
 
 각 객체에게 책임을 할당하면 다음과 같다.
-- 사용자 -> (입력을 받아라) -> 입력 객체
-- 입력 객체 -> (값을 기반으로 게임을 진행하라) -> 게임 로직 담당 객체
-- 게임 로직 담당 객체 -> (우승자를 출력하라) -> 출력 객체
+- 사용자 -> (입력을 받아라) -> 입력 객체 -> (값을 검증하라) -> 검증 객체
+- 입력 객체 -> (값을 기반으로 게임을 진행하라) -> 게임 흐름 제어 객체
+- 게임 흐름 제어 객체 
+  - -> (게임 로직을 실행하라) -> 게임 로직 개체 
+    - -> (자동차를 움직여라) -> 자동차 객체
+    - -> (라운드 결과를 기록하라) -> 라운드 기록 객체
+  - -> (우승자를 출력하라) -> 출력 객체
 
 ## 프로젝트 구조
 
@@ -73,6 +78,9 @@ C:\USERS\SIYUN\JAVA-RACINGCAR-7\SRC
 │           │       CarPlayer.java
 │           │       RoundRecord.java
 │           │
+│           ├───service
+│           │       RacingGameService.java
+│           │
 │           ├───util
 │           │       Validation.java
 │           │
@@ -86,8 +94,9 @@ C:\USERS\SIYUN\JAVA-RACINGCAR-7\SRC
                 ApplicationTest.java
 ```
 
-## 객체의 협력, 역할, 책임
+## 객체의 역할, 책임, 협력
 
+<img alt="다이어그램" src="./docs/images/diagram.png" style="width:800px" />
 
 ## 기타 요구사항 목록 
 
@@ -120,7 +129,20 @@ C:\USERS\SIYUN\JAVA-RACINGCAR-7\SRC
 
 ## 추가 학습내용 및 과제수행 시 중점 사항
 
-
+- [자바 개념 및 문법 정리하기(~ing)](https://github.com/cyunlee/java-essentials-notes)
+- [자바 디자인 패턴 및 객체지향 공부하기(~ing)](https://github.com/cyunlee/java-architecture-patterns)
+- [1주차 피드백 정리 및 리팩토링(~ing)](https://github.com/cyunlee/refactor-by-week)
+- 과제수행 시 중점 사항 (신경 쓴 부분)
+  - 책임 주도 개발
+  - 개발 시작 전에 필요한 객체 및 구조 계획하기
+  - 매직넘버, 경계 값, 출력 문자열 미리 상수화하기
+  - MVC 구조를 도입해 클래스 분류하기
+  - SRP 원칙을 지키기 위해 노력하기
+  - 메서드를 작게 분리하기
+  - 클래스, 변수, 메서드 이름 알아보기 쉽게 짓기
+  - 객체 지향적으로 프로그래밍하기
+    - 데이터는 숨기고 필요한 기능만 노출하기
+  - if 문에서 else 대신 return 쓰기
 
 ## 테스트
 
