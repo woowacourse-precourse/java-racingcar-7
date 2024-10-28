@@ -141,6 +141,7 @@ public class Application {
 
         carNames.forEach(car -> {
             validateNameLength(car);
+            validateNameNotBlank(car);
         });
     }
 
@@ -148,6 +149,13 @@ public class Application {
 
         if(car.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR);
+        }
+    }
+
+    private static void validateNameNotBlank(String car) {
+
+        if(car.isBlank()) {
+            throw new IllegalArgumentException(CAR_NAME_SHOULD_NOT_BLANK);
         }
     }
 }
