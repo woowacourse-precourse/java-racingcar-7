@@ -19,7 +19,7 @@
 
 ## 기능 목록
 
-## RacingGame 클래스
+### RacingGame 클래스
 
 int limit: 시도되어야 할 전체 횟수<br>
 List\<Car> participants: 경주에 참가한 자동차의 목록
@@ -46,7 +46,7 @@ private void playSingleRound()
 - [x]  Utils.canMove() 호출해 전진 가능 여부 확인
 - [x]  Car.moveOrStop()를 호출하고, 매개변수로 전진 가능 여부를 넘겨 줌으로써 전진 혹은 멈춤 수행
 
-## Car 클래스
+### Car 클래스
 
 String name: 자동차의 이름<br>
 int movedCnt: 현재까지 전진한 횟수
@@ -57,7 +57,7 @@ public void moveOrStop(boolean canMove)
 - [x] canMove true인지 확인
    - [x] true라면 자신의 movedCnt를 1 증가
 
-## Utils 클래스
+### Utils 클래스
 
 public boolean canMove()
 : \: 랜덤 값을 추출해 반환하는 메소드.
@@ -71,13 +71,14 @@ public List\<String> countWinners(List\<Car> participants)
 - [x]  participants를 movedCnt 값을 기준으로 내림차순 정렬
 - [x]  가장 movedCnt 값이 높은 자동차(들)를 리스트에 저장해 리턴
 
-## Validation 클래스
+### Validation 클래스
 
 public String[] validateCarName(String input)
 : \: 입력받은 자동차 이름이 요구 사항에 맞는지 확인하는 메소드.
 
 - [x]  input에 쉼표가 포함되어 있지 않으면 자동차가 한 대뿐이므로 예외 발생
 - [x]  split()을 사용하여 input을 쉼표 기준으로 분할
+- [x]  중복된 자동차 이름이 존재하는 경우 예외 발생
 - [x]  분할된 배열 요소들에 하나씩 접근
     - [x]  이름이 6자 이상이거나, 알파벳이나 숫자 외에 다른 문자를 포함하는 경우 예외 발생
 - [x]  예외가 발생하지 않은 경우 분할된 String 배열을 리턴
@@ -89,7 +90,7 @@ public int validateRoundLimit(String input)
 - [x]  input이 숫자 형태가 아니거나, 양의 정수가 아니거나, 100 초과인 경우 예외 발생
 - [x]  예외가 발생하지 않았다면 정수로 변환된 input을 리턴
 
-## InputView 클래스
+### InputView 클래스
 
 public String[] getCarNames()
 : \: 경주할 자동차 이름을 입력받는 메소드.
@@ -107,7 +108,7 @@ public int getRoundLimit()
 - [x]  Validate.validateRoundLimit() 호출해 입력받은 값 검증
 - [x]  입력받은 값에 문제가 없다면 해당 입력 값을 정수로 변환한 값을 리턴
 
-## OutputView 클래스
+### OutputView 클래스
 
 public void printRoundResult(boolean isFirstRound, List\<Car> participants)
 : \: 각 라운드의 결과를 출력하는 메소드.
