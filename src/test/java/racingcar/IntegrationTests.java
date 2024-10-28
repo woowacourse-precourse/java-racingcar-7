@@ -26,6 +26,22 @@ public class IntegrationTests extends NsTest {
                 .hasMessageContaining(ErrorMessage.CAR_INPUT_EMPTY.getMessage());
     }
 
+    @ParameterizedTest
+    @DisplayName("[에러] 자동차 이름이 5자 초과인 경우")
+    @ValueSource(strings = {"abcdef", "abcdefg", "gana,abcdef", "abcdefg,gana"})
+    public void error_carNameOverLimit(String carInput) {
+        String roundInput = "5";
+
+        Throwable throwable = catchThrowable(
+                () -> {
+                    run(carInput, roundInput);
+                }
+        );
+
+        assertThat(throwable)
+                .hasMessageContaining(ErrorMessage.CAR_NAME_LENGTH_OVER.getMessage());
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
