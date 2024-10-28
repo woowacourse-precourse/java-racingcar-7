@@ -28,11 +28,21 @@ public class InputValidator {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
         }
+        // 영어와 숫자만 허용하는 validation이 누락됨
+        if (!name.matches("[a-zA-Z0-9]+")) {
+            throw new IllegalArgumentException("자동차 이름은 영문자와 숫자만 가능합니다.");
+        }
     }
 
     public void validateRounds(int rounds) {
         if (rounds <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
+    }
+
+    public void validateInputFormat(String input) {
+        if (input.contains(",,") || input.startsWith(",") || input.endsWith(",")) {
+            throw new IllegalArgumentException("올바르지 않은 입력 형식입니다.");
         }
     }
 }
