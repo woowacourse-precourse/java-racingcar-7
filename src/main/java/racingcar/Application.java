@@ -27,18 +27,10 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputAttemptCount = Console.readLine();
-        checkInputNull(inputAttemptCount);
+        int attemptCount = checkAttemptCount(inputAttemptCount);
 
         System.out.println();
         System.out.println("실행 결과");
-
-        int attemptCount;
-
-        try {
-            attemptCount = Integer.parseInt(inputAttemptCount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
 
         for (int i = 0; i < attemptCount; i++) {
             moveOrStop(cars);
@@ -78,6 +70,26 @@ public class Application {
         if (input.isBlank()) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static int checkAttemptCount(String inputAttemptCount) {
+
+        checkInputNull(inputAttemptCount);
+
+        int attemptCount;
+
+        try {
+            attemptCount = Integer.parseInt(inputAttemptCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (attemptCount < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        return attemptCount;
+
     }
 
 }
