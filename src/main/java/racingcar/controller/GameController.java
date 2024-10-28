@@ -3,7 +3,6 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.model.GameModel;
 import racingcar.model.Generator;
-import racingcar.model.InputValidator;
 import racingcar.model.RacingGame;
 import racingcar.model.RacingJudge;
 import racingcar.model.RacingRecord;
@@ -16,12 +15,10 @@ public class GameController {
 
     private final GameModel gameModel;
     private View view;
-    private final InputValidator validator;
 
     public GameController(GameModel gameModel, View view) {
         this.gameModel = gameModel;
         this.view = view;
-        this.validator = new InputValidator();
     }
 
     public void run() {
@@ -37,12 +34,12 @@ public class GameController {
     private List<String> inputPart() {
         String names = view.printView();
 
-        validator.checkValidNames(names);
+        gameModel.checkValidNames(names);
 
         view = new AttemptsInputView();
         String attempts = view.printView();
 
-        validator.checkValidAttempts(attempts);
+        gameModel.checkValidAttempts(attempts);
 
         return List.of(names, attempts);
     }
