@@ -40,7 +40,6 @@ public class Application {
         HashSet<String> nameSet = new HashSet<>();
 
         for (String name : carNames) {
-            cars.add(new Car(name));
             String trimmedName = name.trim();
             if (!nameSet.add(trimmedName)) {
                 throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
@@ -56,7 +55,7 @@ public class Application {
                 car.move();
                 printCarPosition(car);
             }
-            System.out.println();
+            System.out.println(); // 각 라운드 끝에 줄 바꿈
         }
     }
 
@@ -95,9 +94,6 @@ public class Application {
 
     private static void validateCarNames(String[] names) {
         for (String name : names) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
-            }
             String trimmedName = name.trim();
             if (trimmedName.isEmpty() || trimmedName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하이며 비어있지 않아야 합니다.");
