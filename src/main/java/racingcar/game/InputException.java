@@ -5,6 +5,7 @@ import racingcar.ErrorMessage;
 import racingcar.car.Car;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class InputException {
     public static void getCarName(ArrayList<Car> carList) {
@@ -12,12 +13,21 @@ public class InputException {
 
         try {
             String[] carInput = Console.readLine().split(",");
+            validateCarList(carInput);
             for (String s : carInput) {
                 validateCarName(s);
                 carList.add(new Car(s));
             }
         } catch (Exception e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.toString());
+        }
+    }
+    public static void validateCarList(String[] carInput) {
+        HashSet<String> carNameSet = new HashSet<>();
+        for (String s : carInput) {
+            if (!carNameSet.add(s)) {
+                throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NAME.toString());
+            }
         }
     }
     public static void validateCarName(String s) {
