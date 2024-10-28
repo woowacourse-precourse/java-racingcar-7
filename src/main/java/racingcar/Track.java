@@ -1,20 +1,24 @@
 package racingcar;
 
 import java.util.List;
+import racingcar.extractor.CarNameExtractor;
+import racingcar.extractor.Extractor;
+import racingcar.extractor.RoundExtractor;
 
 public class Track {
 
     public void start() {
         Output.printStartMessage();
         String rawCarNamesString = Input.getCarNames();
-
-        List<String> carNames = new CarNameExtractor(rawCarNamesString).extractCarNames(rawCarNamesString);
+        Extractor<List<String>> carNameExtractor = new CarNameExtractor();
+        List<String> carNames = carNameExtractor.extract(rawCarNamesString);
         Garage garage = new Garage(carNames);
 
         Output.printRoundMessage();
         String rawRound = Input.getRound();
+        Extractor<Integer> roundExtractor = new RoundExtractor();
+        int round = roundExtractor.extract(rawRound);
 
-        int round = new RoundExtractor(rawRound).extractRound(rawRound);
         Referee referee = new Referee();
 
         raceAndAnnounceWinner(round, garage, referee);
