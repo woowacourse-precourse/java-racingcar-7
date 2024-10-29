@@ -13,10 +13,10 @@ public class Race {
         this.attempts = attempts;
     }
 
-    public void startRace(Consumer<String> roundResultConsumer) {
+    public void startRace() {
         for (int i = 0; i < attempts; i++) {
             String roundResult = getRoundResult();
-            roundResultConsumer.accept(roundResult);
+            System.out.println(roundResult);
         }
     }
 

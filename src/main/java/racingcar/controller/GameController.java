@@ -30,7 +30,7 @@ public class GameController {
 
         Race race = new Race(cars, attempts);
         outputHandler.showRoundResultHeader();
-        race.startRace(outputHandler::showRoundResult);
+        race.startRace();
 
         displayWinners(race.getWinners());
     }

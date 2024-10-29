@@ -19,7 +19,7 @@ class RaceTest {
         Race race = new Race(List.of(car1, car2), 3);
 
         // when
-        race.startRace(result -> {});
+        race.startRace();
 
         // then
         assertThat(car1.getDistance()).isGreaterThan(0);
