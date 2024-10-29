@@ -1,12 +1,15 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -15,20 +18,77 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    public void 경주할_자동차_이름_입력이_비어있는_경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("경주할 자동차 이름은 비어있을 수 없습니다.")
+        );
+    }
+
+    @Test
+    public void 시도_횟수_입력이_비어있는_경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni,jun", ""))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도 횟수는 비어있을 수 없습니다.")
+        );
+    }
+
+    @Test
+    public void 시도_횟수가_음수인_경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni,jun", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도 횟수는 0보다 작을 수 없습니다.")
+        );
+    }
+
+    @Test
+    public void 자동차_이름에_공백이_있는_경우_테스트() {
+        String carNames = "  pobi ,  woni ,  jun  ";
+        List<String> result = Application.splitCarNames(carNames);
+        assertThat(result).containsExactly("pobi", "woni", "jun");
+    }
+
+    @Test
+    public void 자동차_이름에_쉼표가_있는_경우_테스트() {
+        String carNames = ",pobi,woni,,, ";
+        List<String> result = Application.splitCarNames(carNames);
+        assertThat(result).containsExactly("", "pobi", "woni", "", "", "");
+    }
+
+    @Test
+    public void 자동차_이름이_5자_초과인_경우_테스트() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            List<Car> cars = List.of(new Car("pobiii"), new Car(""), new Car("jun"));
+        });
+        assertEquals("자동차 이름은 5자 이하이어야 합니다.", exception.getMessage());
+    }
+
+    @Test
+    public void 자동차_이름이_공백인_경우_테스트() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            List<Car> cars = List.of(new Car("pobi"), new Car(""), new Car("jun"));
+        });
+        assertEquals("자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
     }
 
     @Override
