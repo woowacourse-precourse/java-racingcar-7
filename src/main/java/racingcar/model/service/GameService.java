@@ -22,11 +22,12 @@ public class GameService {
             playRound();
         }
         gameResult.saveWinner(cars);
+
         return gameResult;
     }
 
     private void playRound() {
-        cars.moveForward();
-        gameResult.saveRound(cars);
+        Cars movedCars = cars.moveForward();
+        gameResult.saveRound(movedCars);
     }
 }
