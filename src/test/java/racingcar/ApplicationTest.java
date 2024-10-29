@@ -1,12 +1,13 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Test;
+import racingcar.constant.ErrorMessage;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -24,10 +25,104 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 동점자_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 모두_움직이지_않았을_경우_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "1");
+                    assertThat(output()).contains("pobi : ", "woni : ", "jun : ", "최종 우승자 : pobi, woni, jun");
+                },
+                STOP, STOP, STOP
+        );
+    }
+
+    @Test
+    void 자동차_이름_입력_시_공백_들어갈_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi ,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 자동차_이름_입력_시_공백을_포함하면_5글자를_초과할_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobii ,woni", "1");
+                    assertThat(output()).contains("pobii : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 자동차_이름_입력_시_숫자가_들어갈_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi1 ,pobi2", "1");
+                    assertThat(output()).contains("pobi1 : -", "pobi2 : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 시행_횟수_입력_시_공백이_들어갈_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi ,woni", "1 ");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.INVALID_CAR_NAME_LENGTH.getMessage())
+        );
+    }
+
+    @Test
+    void 자동차_이름_입력값이_존재하지_않을_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.EMPTY_INPUT.getMessage())
+        );
+    }
+
+    @Test
+    void 자동차_이름을_입력하지_않고_쉼표를_적었는지() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,,b"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.MISSING_CAR_NAME.getMessage())
+        );
+    }
+
+    @Test
+    void 자동차_이름을_입력하고_쉼표로_끝냈는지() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,b,"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.UNEXPECTED_COMMA.getMessage())
         );
     }
 
