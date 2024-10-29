@@ -13,7 +13,7 @@ public class Controller {
   }
 
   // [] 시도 횟수만큼 각 자동차 전진
-  private void moveForwardCars(int playCounts) {
+  public void moveForwardCars(int playCounts) {
 
   }
   // [] 0~9 랜덤값을 생성하여 결과가 4이상인 경우 전진을 결정한다

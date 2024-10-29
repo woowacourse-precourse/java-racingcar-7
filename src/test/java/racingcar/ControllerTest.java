@@ -30,12 +30,13 @@ class ControllerTest {
 
       // 자동자 이름과 시도횟수를 전달받으면
     controller = new Controller(carNames, expect);
-      //when
-      // 각 자동차를 시도횟수만큼 전진시킨다
-//      moveForwardCars(expect);
-//      controller.ge
+    //when
+    // 각 자동차를 시도횟수만큼 전진시킨다
+    controller.moveForwardCars(expect);
+    int actual = controller.getMoves();
 
-      //then
+    //then
+    assertEquals(expect, actual);
 
   }
 
