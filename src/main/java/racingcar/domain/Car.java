@@ -1,0 +1,50 @@
+package racingcar.domain;
+
+import java.util.function.Supplier;
+
+public class Car {
+	private String name;
+	private int steps;
+
+	private Car(String name) {
+		this.name = name;
+	}
+
+	public static Car fromCarName(String name){
+		name = name.strip();
+		validateIsEmpty(name);
+		validateExceedsMax(name);
+		return new Car(name);
+	}
+
+	private static void validateExceedsMax(String name) {
+		if(name.length() > 5){
+			throw new IllegalArgumentException("차량 이름은 5자를 초과할 수 없습니다.");
+		}
+	}
+
+	private static void validateIsEmpty(String name) {
+		if (name.isEmpty()) {
+			throw new IllegalArgumentException("차량 이름은 비어있을 수 없습니다.");
+		}
+	}
+
+	public void moveIfSatisfyStandard(Supplier<Integer> numberSupplier, int standard) {
+		if(numberSupplier.get() >= standard){
+			steps++;
+		}
+	}
+
+	public String showStatus(String stat) {
+		return name + " : " + stat.repeat(steps) + "\n";
+	}
+
+	public int getScore() {
+		return this.steps;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+}
