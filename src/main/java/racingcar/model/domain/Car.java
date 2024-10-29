@@ -34,16 +34,13 @@ public class Car {
 
     public Car moveForward(int number) {
         if (canMove(number)) {
-            return new Car(this.name, this.position + number);
+            return new Car(this.name, this.position + 1);
         }
         return this;
     }
 
     private boolean canMove(int number) {
-        if (number < MINIMUM_MOVE) {
-            return false;
-        }
-        return true;
+        return number >= MINIMUM_MOVE;
     }
 
     public String getName() {
