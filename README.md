@@ -6,14 +6,15 @@ main/java/racingcar
 ├── controller
 │   └── GameController
 ├── model
+│   ├── domain
+│   │   ├── Car
+│   │   ├── Cars
+│   │   ├── GameResult
+│   │   └── RoundResult
+│   ├── service
+│   │   └── GameService
+│   ├── NumberGenertor
 │   └── RandomNumberGenerator
-├── domain
-│   ├── Car
-│   ├── Cars
-│   ├── GameResult
-│   └── RoundResult
-├── service
-│   └── GameService
 ├── validator
 │   └── Validator
 └── view
@@ -22,7 +23,7 @@ main/java/racingcar
 ```
 ## 클래스 및 기능 목록
 ### Application
-  프로그램 시작점. 게임 시작
+프로그램 시작점. 게임 시작
 ### InputView
 사용자로부터 입력받는 클래스
  * 사용자로부터 자동차 이름 입력 받기
@@ -31,13 +32,16 @@ main/java/racingcar
 게임의 결과를 출력하는 클래스
 * 차 위치 출력
 * 게임 우승자 출력
+### NumberGenerator
+숫자 생성 인터페이스
 ### RandomNumberGenerator
 범위 내 랜덤 숫자 생성 클래스
 ### Validator
 사용자 입력값 유효성 검증 클래스
 * 자동차 이름 5자 이하인지 검증
 * 자동차 이름 입력값이 비어있는지 검증
-* 시도할 횟수가 양수인 숫자인지 검증
+* 시도할 횟수가 양수인지 검증
+* 시도 횟수는 1이상인지 검증
 ### GameController
 사용자의 입력을 받아 게임의 결과를 출력하는 전체 흐름 
 * 입력값 Game에게 전달
