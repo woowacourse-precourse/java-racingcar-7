@@ -8,6 +8,9 @@ public class Validator {
     }
 
     public static void validateCarNames(List<String> carNames) {
+        if (carNames == null) {
+            throw new IllegalArgumentException("자동차 이름 리스트는 null일 수 없습니다.");
+        }
         carNames.forEach(name -> {
             if (name == null || name.trim().isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
@@ -17,6 +20,7 @@ public class Validator {
             }
         });
     }
+
     public static void validateAttemptCount(String attemptCountInput) {
         try {
             int attemptCount = Integer.parseInt(attemptCountInput);
