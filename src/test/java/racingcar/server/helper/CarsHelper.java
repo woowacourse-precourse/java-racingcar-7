@@ -6,7 +6,7 @@ import racingcar.app.server.model.car.Cars;
 
 public class CarsHelper {
 
-    public static Cars mocNoWinner() {
+    public static Cars mockNoWinner() {
 
         List<Car> cars = List.of(
                 CarHelper.mock("Java", 5, 0),

@@ -1,8 +1,8 @@
 package racingcar.server.model.dashboard;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.server.helper.CarsHelper.mocNoWinner;
 import static racingcar.server.helper.CarsHelper.mockMultiWinners;
+import static racingcar.server.helper.CarsHelper.mockNoWinner;
 import static racingcar.server.helper.CarsHelper.mockSingleWinner;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class DashBoardTest {
     @DisplayName("우승자 없음")
     void noWinner() {
         // given
-        Cars mockCars = mocNoWinner();
+        Cars mockCars = mockNoWinner();
         DashBoard sut = DashBoard.from(mockCars);
 
         // when
