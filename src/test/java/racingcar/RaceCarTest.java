@@ -1,7 +1,9 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
-import racingcar.race.*;
+import racingcar.race.RaceCar;
+import racingcar.race.RacePreparation;
+import racingcar.race.RaceResult;
 import racingcar.util.RandomGenerator;
 
 import java.util.Arrays;
@@ -16,10 +18,8 @@ public class RaceCarTest {
     public void 최종_승리자_동점자_반환_고정값_사용() {
         RacePreparation preparation = new RacePreparation("test1,test2", "2");
         RandomGenerator fixedRandomGenerator = new FixedRandomGenerator(Arrays.asList(5, 5, 5, 5));
-        RacePrinter racePrinter = new RacePrinter();
-        Movement movement = new Movement(fixedRandomGenerator);
 
-        RaceCar race = new RaceCar(preparation, racePrinter, movement);
+        RaceCar race = new RaceCar(preparation, fixedRandomGenerator);
         RaceResult result = race.startRacingGame();
         List<String> winners = result.getWinner();
 

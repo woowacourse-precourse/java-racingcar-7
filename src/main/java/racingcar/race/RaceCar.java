@@ -1,5 +1,8 @@
 package racingcar.race;
 
+import racingcar.util.RandomGenerator;
+import racingcar.util.RandomNumberGenerator;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,13 +11,19 @@ import java.util.Map;
 public class RaceCar implements Race {
     private Map<String, List<Boolean>> record;
     private final RacePreparation racePreparation;
-    private final RacePrinter racePrinter;
     private final Movement movement;
 
-    public RaceCar(RacePreparation racePreparation, RacePrinter racePrinter, Movement movement) {
+    public RaceCar(RacePreparation racePreparation) {
         this.racePreparation = racePreparation;
-        this.racePrinter = racePrinter;
-        this.movement = movement;
+        this.movement = new Movement(new RandomNumberGenerator());
+
+        initialize(racePreparation.getCarNames());
+    }
+
+    public RaceCar(RacePreparation racePreparation, RandomGenerator randomGenerator) {
+        this.racePreparation = racePreparation;
+        this.movement = new Movement(randomGenerator);
+
         initialize(racePreparation.getCarNames());
     }
 
@@ -30,7 +39,7 @@ public class RaceCar implements Race {
         for (int i = 0; i < racePreparation.getMatchCount(); i++) {
             record.forEach((carName, moveForwardList) -> {
                 record.get(carName).add(movement.moveForward());
-                racePrinter.print(carName, moveForwardList);
+                RacePrinter.print(carName, moveForwardList);
             });
         }
         return new RaceCarResult(record);

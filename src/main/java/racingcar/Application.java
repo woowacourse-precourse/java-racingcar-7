@@ -1,9 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.race.*;
-import racingcar.util.RandomGenerator;
-import racingcar.util.RandomNumberGenerator;
+import racingcar.race.Race;
+import racingcar.race.RaceCar;
+import racingcar.race.RacePreparation;
+import racingcar.race.RaceResult;
 
 import java.util.List;
 
@@ -14,13 +15,8 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String matchCount = Console.readLine();
 
-        RacePreparation racePreparation = new RacePreparation(input, matchCount);
-        RandomGenerator randomGenerator = new RandomNumberGenerator();
-        RacePrinter racePrinter = new RacePrinter();
-        Movement movement = new Movement(randomGenerator);
-
         System.out.println("실행 결과");
-        Race race = new RaceCar(racePreparation, racePrinter, movement);
+        Race race = new RaceCar(new RacePreparation(input, matchCount));
         RaceResult result = race.startRacingGame();
 
         List<String> winners = result.getWinner();
