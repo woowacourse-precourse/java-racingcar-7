@@ -54,12 +54,12 @@
         - [x] 자동차 경주 서비스 호출
         - [x] 결과 출력 메서드 구현
 - 입출력
-    - [x] CalculatorConsole 클래스 구현
+    - [x] RacingConsole 클래스 구현
         - [x] 사용자 입력 받기 메서드 구현
         - [x] 결과 출력 메서드 구현
 - 애플리케이션 실행
     - [x] Application 클래스에 main 메서드 구현
-    - [x] CalculatorConsole 생성 및 실행
+    - [x] RacingConsole 생성 및 실행
 
         
 
