@@ -1,0 +1,44 @@
+package racingcar;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
+public class Car {
+
+    private final String name;
+    private int position = 0;
+    private final int MOVE_STANDARD = 4;
+    private final int MAX_CAR_NAME_LENGTH = 5;
+
+    public Car(String name) {
+        validateName(name);
+        this.name = name;
+    }
+
+    public Car(String name, int position) {
+        validateName(name);
+        this.name = name;
+        this.position = position;
+    }
+
+    private void validateName(String name) {
+        if (name.trim().isEmpty() || name.length() > MAX_CAR_NAME_LENGTH ) {
+            throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다");
+        }
+    }
+
+    public int move() {
+        int randomNum = Randoms.pickNumberInRange(0, 9);
+        if (randomNum >= MOVE_STANDARD) {
+            position++;
+        }
+        return randomNum;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+}
