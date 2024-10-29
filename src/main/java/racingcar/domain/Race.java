@@ -10,7 +10,7 @@ public class Race {
 	private final List<Car> cars;
 
 	public Race(List<Car> cars) {
-		this.cars = cars;
+		this.cars = List.copyOf(cars);
 	}
 
 	public void moveEachCars(int randomNumber) {
