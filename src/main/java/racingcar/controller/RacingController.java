@@ -14,6 +14,7 @@ import racingcar.model.RaceProcess;
 import racingcar.service.RacingService;
 import racingcar.util.RandomMoveStrategy;
 import racingcar.util.RandomNumberGenerator;
+import racingcar.validation.CarsValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -39,7 +40,9 @@ public class RacingController {
         List<Car> cars = createCars(inputRequest.carNames());
         rounds = inputRequest.roundCount();
         RandomMoveStrategy moveStrategy = new RandomMoveStrategy(new RandomNumberGenerator());
-        racingService = new RacingService(new RaceProcess(cars, moveStrategy));
+        CarsValidator carsValidator = new CarsValidator();
+        RaceProcess raceProcess = new RaceProcess(cars, moveStrategy, carsValidator);
+        racingService = new RacingService(raceProcess);
     }
 
     private List<Car> createCars(String carNamesInput) {
