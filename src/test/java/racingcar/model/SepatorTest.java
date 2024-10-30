@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.constant.Message;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,6 +45,18 @@ class SepatorTest {
         assertThrows(IllegalArgumentException.class, () -> sepator.separateCars(input3), Message.CAR_NAME_EMPTY_VALIDATION_MESSAGE.getMessage());
         assertThrows(IllegalArgumentException.class, () -> sepator.separateCars(input4), Message.CAR_NAME_EMPTY_VALIDATION_MESSAGE.getMessage());
 
+    }
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,",",woni","pobi,,jun",""})
+    public void 자동차_이름이_없는_경우_테스트(String carNames) throws Exception {
+        //given
+        // 입력 -> "pobi,",",woni","pobi,,jun",""
+
+        //when
+        Separator sepator = new Separator();
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> sepator.separateCars(carNames), Message.CAR_NAME_EMPTY_VALIDATION_MESSAGE.getMessage());
     }
 
     @Test
