@@ -9,11 +9,11 @@ import racingcar.message.ErrorMessage;
 import racingcar.exception.CarNameException;
 import racingcar.util.MoveStrategy;
 
-public class RacingCars implements Cars {
+public class RaceProcess implements Cars {
     private final MoveStrategy moveStrategy;
     private final Collection<Car> cars;
 
-    public RacingCars(Collection<Car> cars, MoveStrategy moveStrategy) {
+    public RaceProcess(Collection<Car> cars, MoveStrategy moveStrategy) {
         validateEmpty(cars);
         validateDuplicateNames(cars);
         this.cars = cars;

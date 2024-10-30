@@ -10,7 +10,7 @@ import racingcar.dto.InputRequest;
 import racingcar.dto.OutputResponse;
 import racingcar.message.OutputMessage;
 import racingcar.model.Car;
-import racingcar.model.RacingCars;
+import racingcar.model.RaceProcess;
 import racingcar.service.RacingService;
 import racingcar.util.RandomMoveStrategy;
 import racingcar.util.RandomNumberGenerator;
@@ -39,7 +39,7 @@ public class RacingController {
         List<Car> cars = createCars(inputRequest.carNames());
         rounds = inputRequest.roundCount();
         RandomMoveStrategy moveStrategy = new RandomMoveStrategy(new RandomNumberGenerator());
-        racingService = new RacingService(new RacingCars(cars, moveStrategy));
+        racingService = new RacingService(new RaceProcess(cars, moveStrategy));
     }
 
     private List<Car> createCars(String carNamesInput) {
@@ -59,8 +59,8 @@ public class RacingController {
     }
 
     private void runSingleRound() {
-        RacingCars racingCars = racingService.playRound();
-        outputView.printRaceStatus(racingCars);
+        RaceProcess raceProcess = racingService.playRound();
+        outputView.printRaceStatus(raceProcess);
     }
 
     private void finalizeGame() {

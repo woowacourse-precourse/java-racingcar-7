@@ -3,30 +3,30 @@ package racingcar.service;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
-import racingcar.model.RacingCars;
+import racingcar.model.RaceProcess;
 
 public class RacingService {
-    private final RacingCars racingCars;
+    private final RaceProcess raceProcess;
 
-    public RacingService(RacingCars racingCars) {
-        this.racingCars = racingCars;
+    public RacingService(RaceProcess raceProcess) {
+        this.raceProcess = raceProcess;
     }
 
-    public RacingCars playRound() {
-        racingCars.moveCars();
-        return racingCars;
+    public RaceProcess playRound() {
+        raceProcess.moveCars();
+        return raceProcess;
     }
 
     public List<String> getWinners() {
         int maxPosition = getMaxPosition();
-        return racingCars.getCars().stream()
+        return raceProcess.getCars().stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
-        return racingCars.getCars().stream()
+        return raceProcess.getCars().stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);

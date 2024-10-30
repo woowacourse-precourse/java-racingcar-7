@@ -2,7 +2,7 @@ package racingcar.view;
 
 import racingcar.message.OutputMessage;
 import racingcar.message.SeparatorPattern;
-import racingcar.model.RacingCars;
+import racingcar.model.RaceProcess;
 import racingcar.dto.OutputResponse;
 
 import java.util.Optional;
@@ -13,8 +13,8 @@ public class OutputView {
         System.out.println(OutputMessage.RESULT_MESSAGE.getMessage());
     }
 
-    public void printRaceStatus(RacingCars racingCars) {
-        racingCars.getCars().forEach(car -> printCarStatus(car.getName(), car.getPosition()));
+    public void printRaceStatus(RaceProcess raceProcess) {
+        raceProcess.getCars().forEach(car -> printCarStatus(car.getName(), car.getPosition()));
         System.out.println();
     }
 
