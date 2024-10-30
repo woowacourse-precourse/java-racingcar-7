@@ -27,10 +27,11 @@ public class GameController {
     public void startGame() {
         List<Car> cars = createCars();
         int attempts = getAttemptCount();
-
         Race race = new Race(cars, attempts);
+
         outputHandler.showRoundResultHeader();
-        race.startRace();
+        String raceResult = race.startRace();
+        outputHandler.showRoundResult(raceResult);
 
         displayWinners(race.getWinners());
     }

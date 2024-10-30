@@ -13,12 +13,15 @@ public class Race {
         this.attempts = attempts;
     }
 
-    public void startRace() {
+    public String startRace() {
+        StringBuilder raceResult = new StringBuilder();
         for (int i = 0; i < attempts; i++) {
             String roundResult = getRoundResult();
-            System.out.println(roundResult);
+            raceResult.append(roundResult).append("\n"); // 각 라운드 결과를 누적
         }
+        return raceResult.toString();
     }
+
 
     private String getRoundResult() {
         StringBuilder roundResult = new StringBuilder();
