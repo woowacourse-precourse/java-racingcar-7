@@ -1,9 +1,9 @@
 package racingcar;
 
-import racingcar.controller.RacingController;
+import racingcar.config.RunnerConfig;
 
 public class Application {
     public static void main(String[] args) {
-        new RacingController().playGame();
+        RunnerConfig.getInstance().run();
     }
 }
