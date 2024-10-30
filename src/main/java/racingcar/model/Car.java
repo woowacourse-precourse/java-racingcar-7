@@ -2,15 +2,17 @@ package racingcar.model;
 
 import java.util.Optional;
 import java.util.function.Predicate;
+
+import racingcar.message.CarConstant;
 import racingcar.message.ErrorMessage;
 import racingcar.exception.CarNameException;
 import racingcar.message.PatternMessage;
 import racingcar.message.SeparatorPattern;
 
 public class Car {
-    private static final int MAX_NAME_LENGTH = 5;
     private final String name;
-    private int position = 0;
+    int position = CarConstant.INITIAL_POSITION.getValue();
+
 
     public Car(String name) {
         this.name = validateCarName(name);
@@ -31,7 +33,7 @@ public class Car {
     private String validateCarName(String name) {
         validateCondition(name, isEmpty(), ErrorMessage.CAR_NAME_IS_EMPTY.getMessage());
         validateCondition(name, isOnlyWhitespace(), ErrorMessage.CAR_NAME_IS_SPACE.getMessage());
-        validateCondition(name, exceedsMaxLength(), ErrorMessage.INVALID_NAME_LENGTH.getMessage());
+        validateCondition(name, exceedsMaxLength(), ErrorMessage.CAR_NAME_IS_TOO_LONG.getMessage());
         validateCondition(name, containsComma(), ErrorMessage.INVALID_COMMA_INPUT.getMessage());
         validateCondition(name, containsInvalidCharacters(), ErrorMessage.INVALID_NAME_CHARACTER.getMessage());
         return name;
@@ -52,7 +54,7 @@ public class Car {
     }
 
     private Predicate<String> exceedsMaxLength() {
-        return n -> n.length() > MAX_NAME_LENGTH;
+        return n -> n.length() > CarConstant.MAX_NAME_LENGTH.getValue();
     }
 
     private Predicate<String> containsComma() {
