@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -35,13 +36,13 @@ public class RacingController {
 
     private void initializeGame() {
         InputRequest inputRequest = inputView.getInput();
-        Collection<Car> cars = createCars(inputRequest.carNames());
+        List<Car> cars = createCars(inputRequest.carNames());
         rounds = inputRequest.roundCount();
         RandomMoveStrategy moveStrategy = new RandomMoveStrategy(new RandomNumberGenerator());
         racingService = new RacingService(new RacingCars(cars, moveStrategy));
     }
 
-    private Collection<Car> createCars(String carNamesInput) {
+    private List<Car> createCars(String carNamesInput) {
         return Stream.of(carNamesInput.split(","))
                 .map(Car::new)
                 .collect(Collectors.toList());
