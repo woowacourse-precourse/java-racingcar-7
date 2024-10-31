@@ -1,6 +1,6 @@
 # java-racingcar-precourse
 
-About 2nd pre-course project
+About 2nd Pre-Course Project : RacingCar
 
 ---
 
