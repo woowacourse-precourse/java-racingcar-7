@@ -5,18 +5,18 @@ import racingcar.view.InputForm;
 import java.util.List;
 
 public class InputFormValidator {
-    public static void validate(InputForm inputForm) {
+    public void validate(InputForm inputForm) {
         validateInputName(inputForm.getInputNames());
         validateNames(inputForm.getNames());
     }
 
-    private static void validateInputName(String inputNames) {
+    private void validateInputName(String inputNames) {
         if (inputNames.isEmpty()) {
             throw new IllegalArgumentException("이름은 공백이 불가합니다.");
         }
     }
 
-    private static void validateNames(List<String> names) {
+    private void validateNames(List<String> names) {
         for (String name : names) {
             validateInputName(name);
 

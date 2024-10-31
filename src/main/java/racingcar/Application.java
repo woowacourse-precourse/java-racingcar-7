@@ -13,7 +13,8 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         InputForm inputForm = InputView.input();
-        InputFormValidator.validate(inputForm);
+        InputFormValidator inputFormValidator = new InputFormValidator();
+        inputFormValidator.validate(inputForm);
         Race race = Race.create(inputForm);
         List<RacingHistory> histories = Game.play(race);
         OutputView.print(histories, race);
