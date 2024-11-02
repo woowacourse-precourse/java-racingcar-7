@@ -27,14 +27,14 @@ public class CarRaceController {
 
         printLimitMessage();
         raceCars.raceStart(Console.readLine());
-        endGame(raceCars.findWinner());
+        endRace(raceCars.findWinner());
 
         Console.close();
 
 
     }
 
-    public static void endGame(ArrayList<CarInfo> winnerRacers) {
+    public static void endRace(ArrayList<CarInfo> winnerRacers) {
         printFinalWinner();
         int winnerRacersCount = winnerRacers.size();
         for (int i = 0; i < winnerRacersCount; i++) {
