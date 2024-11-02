@@ -16,7 +16,7 @@ import racingcar.model.RandomUtils;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.controller.CarRaceController.endGame;
+import static racingcar.controller.CarRaceController.endRace;
 import static racingcar.controller.CarStatusController.printCarStatus;
 
 
@@ -81,14 +81,14 @@ public class FunctionTest extends NsTest {
         CarInfo test2 = new CarInfo("test2");
         winnerRacers.add(test1);
         winnerRacers.add(test2);
-        endGame(winnerRacers);
+        endRace(winnerRacers);
 
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         PrintStream resultOutput = System.out;
         System.setOut(new PrintStream(output));
 
         try {
-            endGame(winnerRacers);
+            endRace(winnerRacers);
 
             String expectedResult = "최종 우승자 : " + "test1, test2";
             String actualResult = output.toString().trim();
@@ -105,14 +105,14 @@ public class FunctionTest extends NsTest {
         ArrayList<CarInfo> winnerRacer = new ArrayList<>();
         CarInfo test1 = new CarInfo("test1");
         winnerRacer.add(test1);
-        endGame(winnerRacer);
+        endRace(winnerRacer);
 
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         PrintStream resultOutput = System.out;
         System.setOut(new PrintStream(output));
 
         try {
-            endGame(winnerRacer);
+            endRace(winnerRacer);
 
             String expectedResult = "최종 우승자 : " + "test1";
             String actualResult = output.toString().trim();
