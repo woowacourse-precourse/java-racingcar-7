@@ -1,7 +1,13 @@
 package racingcar;
 
+
+import racingcar.app.CLICarGameApp;
+import racingcar.app.CarGameApp;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        CarGameApp app = new CLICarGameApp();
+        CarGame game = app.initCarGame();
+        game.play();
     }
 }
