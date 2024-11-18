@@ -79,8 +79,5 @@
 ### 출력클래스에서 일급컬렉션의 데이터를 조작하는게 맞나?
 
 - 캡슐화를 시키자.
-[2.자동차경주.pdf](https://github.com/user-attachments/files/17793165/2.pdf)
-[[7기] 프리코스 1주 차 웹 백엔드 피드백.pdf](https://github.com/user-attachments/files/17793170/7.1.pdf)
-
 
 
