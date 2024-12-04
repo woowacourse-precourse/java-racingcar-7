@@ -17,6 +17,8 @@ public class Application {
         Application app = new Application();
         // 입력 받기
         app.init(input);
+        System.out.print("시도할 횟수는 몇 회인가요?");
+        repeat = Console.readLine();
         int repeatTime = Integer.parseInt(repeat);
         for (int i = 0; i < repeatTime; ++i) {
             for (String name : names) {
@@ -40,8 +42,6 @@ public class Application {
             if (name.length() > 5) { throw new IllegalArgumentException("자동차 이름은 5글자 이하여야 합니다: " + name); }
             car.put(name, 0);
         }
-        System.out.print("시도할 횟수는 몇 회인가요?");
-        repeat = Console.readLine();
     }
 
     public void moveCar(String name, int randomValue) {

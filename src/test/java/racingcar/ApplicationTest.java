@@ -12,14 +12,14 @@ public class ApplicationTest {
 
     private Application app;
 
-    @BeforeEach
+    @BeforeEach // 테스트 시작 전 매번 초기화(in-memory db 사용하기 때문)
     public void setUp() {
         app = new Application();
     }
 
     @Test
     public void initTest() {
-        String input = "car1,car2,car3";
+        String input = ("car1,car2,car3");
         app.init(input);
 
         HashMap<String, Integer> expectedCarPositions = new HashMap<>();
