@@ -1,5 +1,7 @@
 # java-racingcar-precourse
 
+>- 자동차 경주 게임을 콘솔에서 실행하는 애플리케이션입니다. 자동차 이름을 입력받아, 지정된 횟수만큼 전진 시키며, 가장 멀리 간 자동차(혹은 자동차들)를 우승자로 뽑는 게임입니다. MVC(Model-View-Controller) 패턴을 적용하여 코드의 역할 분리, 유지보수성, 테스트 용이성을 높였습니다.
+
 ![alt text](image.png)
 
 ## **Application.java**  
