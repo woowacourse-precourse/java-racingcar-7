@@ -22,7 +22,7 @@ public class InputView {
         System.out.println("시도할 회수는 몇회인가요? (최대 10억까지 가능)");
         try {
             int attemptCount = Integer.parseInt(Console.readLine().trim());
-            if (attemptCount < 1 || attemptCount > 1000000000) {
+            if (attemptCount < 1 || attemptCount > 1_000_000_000) {
                 throw new IllegalArgumentException();
             }
             return attemptCount;
