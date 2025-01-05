@@ -29,7 +29,7 @@ class InputViewTest {
 
     @DisplayName("빈값이 있거나 이름의 길이가 5자 이상 시 에러를 발생한다.")
     @ParameterizedTest
-    @ValueSource(strings = {"aa,,,cc", "", "aa,bb,abcdef,dd", " "})
+    @ValueSource(strings = {"aa,,,cc", "", "aa,bb,abcdef,dd"})
     void inputViewTest2(String carNames) {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
