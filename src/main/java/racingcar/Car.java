@@ -29,4 +29,12 @@ public class Car {
         }
     }
 
+    public void printCarInfo() {
+        StringBuilder forwardUnits = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            forwardUnits.append(FORWARD_UNIT);
+        }
+        System.out.printf("%s : %s%n", this.name, forwardUnits);
+    }
+
 }
