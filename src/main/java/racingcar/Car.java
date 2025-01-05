@@ -5,6 +5,9 @@ import exception.CustomException;
 public class Car {
     private final String name;
     private int position = 0;
+    public static final int MINIMUM_MOVE_VALUE = 4;
+
+    public static final String FORWARD_UNIT = "-";
 
     public Car(String name) {
         verifyCarName(name);
@@ -19,4 +22,11 @@ public class Car {
             CustomException.throwException("자동차 이름은 최대 5자입니다.");
         }
     }
+
+    public void move(int random) {
+        if (random >= MINIMUM_MOVE_VALUE) {
+            this.position++;
+        }
+    }
+
 }
