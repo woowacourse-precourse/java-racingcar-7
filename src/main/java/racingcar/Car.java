@@ -6,12 +6,19 @@ public class Car {
     private final String name;
     private int position = 0;
     public static final int MINIMUM_MOVE_VALUE = 4;
-
     public static final String FORWARD_UNIT = "-";
 
     public Car(String name) {
         verifyCarName(name);
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     public void verifyCarName(String name) {
