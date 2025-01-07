@@ -1,17 +1,15 @@
 package racingcar;
 
-import exception.CustomException;
-
 public class Car {
     public static final int MINIMUM_MOVE_VALUE = 4;
-    private static final int MAXIMUM_CAR_NAME_LENGTH = 5;
     private static final String FORWARD_UNIT = "-";
-    private final String name;
-    private int position = 0;
+    private static final int DEFAULT_POSITION = 0;
+    private final Name name;
+    private int position;
 
-    public Car(String name) {
-        verifyCarName(name);
-        this.name = name;
+    public Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = position;
     }
 
     public void verifyCarName(String name) {
@@ -38,7 +36,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getPosition() {
