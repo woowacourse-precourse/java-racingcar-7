@@ -12,13 +12,8 @@ public class Car {
         this.position = position;
     }
 
-    public void verifyCarName(String name) {
-        if (name.isEmpty()) {
-            throw new CustomException("자동차 이름을 입력해주세요");
-        }
-        if (name.length() > MAXIMUM_CAR_NAME_LENGTH) {
-            throw new CustomException("자동차 이름은 최대 5자입니다.");
-        }
+    public static Car createDefaultCar(String name) {
+        return new Car(name, DEFAULT_POSITION);
     }
 
     public void move(int random) {

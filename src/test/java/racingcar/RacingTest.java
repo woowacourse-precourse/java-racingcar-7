@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.Car.createDefaultCar;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -20,9 +22,9 @@ class RacingTest {
     @Test
     void racingTest1() {
         List<Car> cars = new ArrayList<>();
-        Car car1 = new Car("Car1");
-        Car car2 = new Car("Car2");
-        Car car3 = new Car("Car3");
+        Car car1 = createDefaultCar("Car1");
+        Car car2 = createDefaultCar("Car2");
+        Car car3 = createDefaultCar("Car3");
         car1.move(Car.MINIMUM_MOVE_VALUE);
         car2.move(Car.MINIMUM_MOVE_VALUE);
         car3.move(Car.MINIMUM_MOVE_VALUE - 1);

@@ -1,7 +1,9 @@
 package view;
 
+import static racingcar.Car.createDefaultCar;
+
 import camp.nextstep.edu.missionutils.Console;
-import exception.CustomException;
+import exception.CustomIllegalArgException;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.Car;
@@ -17,7 +19,7 @@ public class InputView {
         List<Car> cars = new ArrayList<>();
         String[] carNames = inputCarNames.split(",");
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(createDefaultCar(carName));
         }
         return cars;
     }
@@ -35,9 +37,9 @@ public class InputView {
             }
             return attemptCount;
         } catch (NumberFormatException e) {
-            throw new CustomException("숫자만 입력해야 합니다.");
+            throw new CustomIllegalArgException("숫자만 입력해야 합니다.");
         } catch (IllegalArgumentException e) {
-            throw new CustomException(e.getMessage());
+            throw new CustomIllegalArgException(e.getMessage());
         }
     }
 
