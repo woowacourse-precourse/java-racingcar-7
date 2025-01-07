@@ -16,10 +16,10 @@ public class Car {
 
     public void verifyCarName(String name) {
         if (name.isEmpty()) {
-            CustomException.throwException("자동차 이름을 입력해주세요");
+            throw new CustomException("자동차 이름을 입력해주세요");
         }
         if (name.length() > MAXIMUM_CAR_NAME_LENGTH) {
-            CustomException.throwException("자동차 이름은 최대 5자입니다.");
+            throw new CustomException("자동차 이름은 최대 5자입니다.");
         }
     }
 

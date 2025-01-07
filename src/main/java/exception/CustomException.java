@@ -1,11 +1,10 @@
 package exception;
 
-public class CustomException {
+public class CustomException extends IllegalArgumentException {
 
-    public static final String ERROR_PREFIX = "[ERROR] ";
+    private static final String ERROR_PREFIX = "[ERROR] ";
 
-    public static void throwException(String message) {
-        throw new IllegalArgumentException(ERROR_PREFIX + message);
+    public CustomException(String message) {
+        super(ERROR_PREFIX + message);
     }
-
 }

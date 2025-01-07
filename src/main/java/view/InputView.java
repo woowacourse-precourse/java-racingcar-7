@@ -35,11 +35,10 @@ public class InputView {
             }
             return attemptCount;
         } catch (NumberFormatException e) {
-            CustomException.throwException("숫자만 입력해야 합니다.");
+            throw new CustomException("숫자만 입력해야 합니다.");
         } catch (IllegalArgumentException e) {
-            CustomException.throwException(e.getMessage());
+            throw new CustomException(e.getMessage());
         }
-        return 0; // 필요없는 줄
     }
 
 
