@@ -15,7 +15,6 @@ public class Racing {
         this.attemptCount = attemptCount;
     }
 
-
     public void printAllRacingResult() {
         System.out.printf("%n실행 결과%n");
         for (int i = 0; i < attemptCount; i++) {
@@ -32,6 +31,5 @@ public class Racing {
     public List<String> findWinners() {
         return cars.findWinners();
     }
-
 
 }

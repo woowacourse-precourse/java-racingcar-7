@@ -5,18 +5,12 @@ import static racingcar.Car.createDefaultCar;
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RacingTest {
 
     private Racing racing;
-
-    @BeforeEach
-    void setUp() {
-
-    }
 
     @DisplayName("우승자를 정확히 구하는지 확인한다")
     @Test
