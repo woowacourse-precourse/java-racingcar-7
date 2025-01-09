@@ -8,16 +8,32 @@ import view.OutputView;
 
 public class RacingController {
 
-    public void run() {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+    private Racing racing;
 
+    public void run() {
+        setting();
+        racing();
+        printWinner();
+    }
+
+    public void setting() {
         List<Car> cars = inputView.inputCarNames();
         int attemptCount = inputView.inputAttemptCount();
-        Racing racing = new Racing(cars, attemptCount);
+        racing = new Racing(cars, attemptCount);
+    }
 
-        outputView.printRacingResult(racing);
-        outputView.printFinalWinners(racing);
+    public void racing() {
+        outputView.printf("%n실행 결과%n");
+        for (int i = 0; i < racing.getAttemptCount(); i++) {
+            racing.playRacing();
+            outputView.printRacing(racing.racingInfo());
+        }
+    }
+
+    public void printWinner() {
+        outputView.finalWinners(racing.findWinners());
     }
 
 }

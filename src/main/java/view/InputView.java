@@ -7,11 +7,12 @@ import exception.CustomIllegalArgException;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.Car;
+import util.RandomGenerator;
 
 public class InputView {
 
     public List<Car> inputCarNames() {
-        OutputView.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return makeCars(Console.readLine().trim());
     }
 
@@ -19,13 +20,13 @@ public class InputView {
         List<Car> cars = new ArrayList<>();
         String[] carNames = inputCarNames.split(",");
         for (String carName : carNames) {
-            cars.add(createDefaultCar(carName));
+            cars.add(createDefaultCar(carName, new RandomGenerator()));
         }
         return cars;
     }
 
     public int inputAttemptCount() {
-        OutputView.println("시도할 회수는 몇회인가요? (최대 10억까지 가능)");
+        System.out.println("시도할 회수는 몇회인가요? (최대 10억까지 가능)");
         return validCount(Console.readLine().trim());
     }
 
@@ -42,6 +43,5 @@ public class InputView {
             throw new CustomIllegalArgException(e.getMessage());
         }
     }
-
-
+    
 }

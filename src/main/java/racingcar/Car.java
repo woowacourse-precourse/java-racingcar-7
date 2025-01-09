@@ -1,33 +1,37 @@
 package racingcar;
 
+import util.NumberGenerator;
+
 public class Car {
-    public static final int MINIMUM_MOVE_VALUE = 4;
+    private static final int MINIMUM_MOVE_VALUE = 4;
     private static final String FORWARD_UNIT = "-";
     private static final int DEFAULT_POSITION = 0;
     private final Name name;
     private int position;
+    private NumberGenerator numberGenerator;
 
-    public Car(String name, int position) {
-        this.name = new Name(name);
+    public Car(Name name, int position, NumberGenerator numberGenerator) {
+        this.name = name;
         this.position = position;
+        this.numberGenerator = numberGenerator;
     }
 
-    public static Car createDefaultCar(String name) {
-        return new Car(name, DEFAULT_POSITION);
+    public static Car createDefaultCar(String name, NumberGenerator numberGenerator) {
+        return new Car(new Name(name), DEFAULT_POSITION, numberGenerator);
     }
 
-    public void move(int random) {
-        if (random >= MINIMUM_MOVE_VALUE) {
+    public void move() {
+        if (numberGenerator.makeNumber() >= MINIMUM_MOVE_VALUE) {
             this.position++;
         }
     }
 
-    public void printCarInfo() {
+    public String carForwardInfo() {
         StringBuilder forwardUnits = new StringBuilder();
         for (int i = 0; i < position; i++) {
             forwardUnits.append(FORWARD_UNIT);
         }
-        System.out.printf("%s : %s%n", this.name, forwardUnits);
+        return String.format("%s : %s%n", this.name, forwardUnits);
     }
 
     public String getName() {
