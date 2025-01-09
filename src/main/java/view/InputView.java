@@ -43,6 +43,5 @@ public class InputView {
             throw new CustomIllegalArgException(e.getMessage());
         }
     }
-
-
+    
 }

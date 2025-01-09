@@ -19,12 +19,6 @@ public class Cars {
         }
     }
 
-    public void printRacingResult() {
-        for (Car car : cars) {
-            car.printCarInfo();
-        }
-    }
-
     public List<String> getForwardInfos() {
         List<String> forwardInfos = new ArrayList<>();
         for (Car car : cars) {

@@ -24,7 +24,7 @@ public class OutputView {
         for (String carForwardInfo : racingInfo) {
             System.out.print(carForwardInfo);
         }
-        System.out.println();
+        println(null);
     }
 
 }
