@@ -3,9 +3,11 @@ package racingcar;
 import util.NumberGenerator;
 
 public class Car {
+
     private static final int MINIMUM_MOVE_VALUE = 4;
     private static final String FORWARD_UNIT = "-";
     private static final int DEFAULT_POSITION = 0;
+    
     private final Name name;
     private int position;
     private NumberGenerator numberGenerator;
