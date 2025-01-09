@@ -34,6 +34,14 @@ public class Car {
         System.out.printf("%s : %s%n", this.name, forwardUnits);
     }
 
+    public String carForwardInfo() {
+        StringBuilder forwardUnits = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            forwardUnits.append(FORWARD_UNIT);
+        }
+        return String.format("%s : %s%n", this.name, forwardUnits);
+    }
+
     public String getName() {
         return name.getName();
     }

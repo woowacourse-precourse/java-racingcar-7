@@ -1,6 +1,7 @@
 package racingcar;
 
 import exception.CustomIllegalArgException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +23,14 @@ public class Cars {
         for (Car car : cars) {
             car.printCarInfo();
         }
+    }
+
+    public List<String> getForwardInfos() {
+        List<String> forwardInfos = new ArrayList<>();
+        for (Car car : cars) {
+            forwardInfos.add(car.carForwardInfo());
+        }
+        return forwardInfos;
     }
 
     public List<String> findWinners() {
