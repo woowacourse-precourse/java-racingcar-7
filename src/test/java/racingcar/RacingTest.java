@@ -26,7 +26,7 @@ class RacingTest {
         cars.add(car1);
         cars.add(car2);
         cars.add(car3);
-        racing = new Racing(cars, 5);
+        racing = new Racing(cars);
 
         List<String> winners = racing.findWinners();
         Assertions.assertThat(winners.size()).isEqualTo(1);

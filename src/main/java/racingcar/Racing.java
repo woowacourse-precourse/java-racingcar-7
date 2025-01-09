@@ -5,11 +5,9 @@ import java.util.List;
 public class Racing {
 
     private final Cars cars;
-    private final int attemptCount;
 
-    public Racing(List<Car> cars, int attemptCount) {
+    public Racing(List<Car> cars) {
         this.cars = new Cars(cars);
-        this.attemptCount = attemptCount;
     }
 
     public List<String> findWinners() {
@@ -22,9 +20,5 @@ public class Racing {
 
     public List<String> racingInfo() {
         return cars.getForwardInfos();
-    }
-
-    public int getAttemptCount() {
-        return attemptCount;
     }
 }

@@ -10,30 +10,27 @@ public class RacingController {
 
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private Racing racing;
 
     public void run() {
-        setting();
-        racing();
-        printWinner();
+        Racing racing = createRacing();
+        playAllRacing(racing, inputView.inputAttemptCount());
+        printWinner(racing);
     }
 
-    public void setting() {
+    public Racing createRacing() {
         List<Car> cars = inputView.inputCarNames();
-        int attemptCount = inputView.inputAttemptCount();
-        racing = new Racing(cars, attemptCount);
+        return new Racing(cars);
     }
 
-    public void racing() {
+    public void playAllRacing(Racing racing, int attemptCount) {
         outputView.printf("%n실행 결과%n");
-        for (int i = 0; i < racing.getAttemptCount(); i++) {
+        for (int i = 0; i < attemptCount; i++) {
             racing.playRacing();
             outputView.printRacing(racing.racingInfo());
         }
     }
 
-    public void printWinner() {
+    public void printWinner(Racing racing) {
         outputView.finalWinners(racing.findWinners());
     }
-
 }
