@@ -7,6 +7,7 @@ import exception.CustomIllegalArgException;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.Car;
+import util.RandomGenerator;
 
 public class InputView {
 
@@ -19,7 +20,7 @@ public class InputView {
         List<Car> cars = new ArrayList<>();
         String[] carNames = inputCarNames.split(",");
         for (String carName : carNames) {
-            cars.add(createDefaultCar(carName));
+            cars.add(createDefaultCar(carName, new RandomGenerator()));
         }
         return cars;
     }

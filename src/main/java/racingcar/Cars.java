@@ -12,9 +12,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void playRacing(int randomValue) {
+    public void playRacing() {
         for (Car car : cars) {
-            car.move(randomValue);
+            car.move();
         }
     }
 

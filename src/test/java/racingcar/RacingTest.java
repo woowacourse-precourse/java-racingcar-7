@@ -8,6 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import util.FakeGenerator;
 
 class RacingTest {
 
@@ -22,21 +23,20 @@ class RacingTest {
     @Test
     void racingTest1() {
         List<Car> cars = new ArrayList<>();
-        Car car1 = createDefaultCar("Car1");
-        Car car2 = createDefaultCar("Car2");
-        Car car3 = createDefaultCar("Car3");
-        car1.move(Car.MINIMUM_MOVE_VALUE);
-        car2.move(Car.MINIMUM_MOVE_VALUE);
-        car3.move(Car.MINIMUM_MOVE_VALUE - 1);
+        Car car1 = createDefaultCar("Car1", new FakeGenerator(100));
+        Car car2 = createDefaultCar("Car2", new FakeGenerator(2));
+        Car car3 = createDefaultCar("Car3", new FakeGenerator(3));
+        car1.move();
+        car2.move();
+        car3.move();
         cars.add(car1);
         cars.add(car2);
         cars.add(car3);
         racing = new Racing(cars, 5);
 
         List<String> winners = racing.findWinners();
-        Assertions.assertThat(winners.size()).isEqualTo(2);
+        Assertions.assertThat(winners.size()).isEqualTo(1);
         Assertions.assertThat(winners.get(0)).isEqualTo("Car1");
-        Assertions.assertThat(winners.get(1)).isEqualTo("Car2");
     }
 
 }
