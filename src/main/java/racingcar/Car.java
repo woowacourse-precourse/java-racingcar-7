@@ -7,19 +7,19 @@ public class Car {
     private static final int MINIMUM_MOVE_VALUE = 4;
     private static final String FORWARD_UNIT = "-";
     private static final int DEFAULT_POSITION = 0;
-    
-    private final Name name;
+
+    private final CarName name;
     private int position;
     private NumberGenerator numberGenerator;
 
-    public Car(Name name, int position, NumberGenerator numberGenerator) {
+    public Car(CarName name, int position, NumberGenerator numberGenerator) {
         this.name = name;
         this.position = position;
         this.numberGenerator = numberGenerator;
     }
 
     public static Car createDefaultCar(String name, NumberGenerator numberGenerator) {
-        return new Car(new Name(name), DEFAULT_POSITION, numberGenerator);
+        return new Car(new CarName(name), DEFAULT_POSITION, numberGenerator);
     }
 
     public void move() {
