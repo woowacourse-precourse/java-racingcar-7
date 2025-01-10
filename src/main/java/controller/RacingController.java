@@ -1,8 +1,12 @@
 package controller;
 
+import static racingcar.Car.createDefaultCar;
+
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.Car;
 import racingcar.Racing;
+import util.RandomGenerator;
 import view.InputView;
 import view.OutputView;
 
@@ -17,12 +21,13 @@ public class RacingController {
         printWinner(racing);
     }
 
-    public Racing createRacing() {
-        List<Car> cars = inputView.inputCarNames();
+    private Racing createRacing() {
+        String carNames = inputView.inputCarNames();
+        List<Car> cars = makeCars(carNames);
         return new Racing(cars);
     }
 
-    public void playAllRacing(Racing racing, int attemptCount) {
+    private void playAllRacing(Racing racing, int attemptCount) {
         outputView.printf("%n실행 결과%n");
         for (int i = 0; i < attemptCount; i++) {
             racing.playRacing();
@@ -30,7 +35,16 @@ public class RacingController {
         }
     }
 
-    public void printWinner(Racing racing) {
+    private void printWinner(Racing racing) {
         outputView.finalWinners(racing.findWinners());
+    }
+
+    private List<Car> makeCars(String inputCarNames) {
+        List<Car> cars = new ArrayList<>();
+        String[] carNames = inputCarNames.split(",");
+        for (String carName : carNames) {
+            cars.add(createDefaultCar(carName, new RandomGenerator()));
+        }
+        return cars;
     }
 }

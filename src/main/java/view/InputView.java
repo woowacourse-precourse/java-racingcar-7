@@ -1,28 +1,13 @@
 package view;
 
-import static racingcar.Car.createDefaultCar;
-
 import camp.nextstep.edu.missionutils.Console;
 import exception.CustomIllegalArgException;
-import java.util.ArrayList;
-import java.util.List;
-import racingcar.Car;
-import util.RandomGenerator;
 
 public class InputView {
 
-    public List<Car> inputCarNames() {
+    public String inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return makeCars(Console.readLine().trim());
-    }
-
-    public List<Car> makeCars(String inputCarNames) {
-        List<Car> cars = new ArrayList<>();
-        String[] carNames = inputCarNames.split(",");
-        for (String carName : carNames) {
-            cars.add(createDefaultCar(carName, new RandomGenerator()));
-        }
-        return cars;
+        return Console.readLine().trim();
     }
 
     public int inputAttemptCount() {
@@ -43,5 +28,5 @@ public class InputView {
             throw new CustomIllegalArgException(e.getMessage());
         }
     }
-    
+
 }
