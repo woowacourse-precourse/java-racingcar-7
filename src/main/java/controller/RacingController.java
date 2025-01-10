@@ -2,6 +2,7 @@ package controller;
 
 import static racingcar.Car.createDefaultCar;
 
+import exception.CustomIllegalArgException;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.Car;
@@ -17,7 +18,7 @@ public class RacingController {
 
     public void run() {
         Racing racing = createRacing();
-        playAllRacing(racing, inputView.inputAttemptCount());
+        playAllRacing(racing, validCount(inputView.inputAttemptCount()));
         printWinner(racing);
     }
 
@@ -46,5 +47,19 @@ public class RacingController {
             cars.add(createDefaultCar(carName, new RandomGenerator()));
         }
         return cars;
+    }
+
+    private int validCount(String inputCount) {
+        try {
+            int attemptCount = Integer.parseInt(inputCount);
+            if (attemptCount < 1 || attemptCount > 1_000_000_000) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상 1,000,000,000 이하의 숫자여야 합니다.");
+            }
+            return attemptCount;
+        } catch (NumberFormatException e) {
+            throw new CustomIllegalArgException("숫자만 입력해야 합니다.");
+        } catch (IllegalArgumentException e) {
+            throw new CustomIllegalArgException(e.getMessage());
+        }
     }
 }
