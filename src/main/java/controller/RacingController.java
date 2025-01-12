@@ -17,12 +17,16 @@ public class RacingController {
     private final OutputView outputView = new OutputView();
 
     public void run() {
-        Racing racing = createRacing();
-        playAllRacing(racing, validCount(inputView.inputAttemptCount()));
-        printWinner(racing);
+        try {
+            Racing racing = createRacing();
+            playAllRacing(racing, validCount(inputView.inputAttemptCount()));
+            printWinner(racing);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
-    private Racing createRacing() {
+    private Racing createRacing() throws CustomIllegalArgException {
         String carNames = inputView.inputCarNames();
         List<Car> cars = makeCars(carNames);
         return new Racing(cars);
@@ -40,7 +44,7 @@ public class RacingController {
         outputView.finalWinners(racing.findWinners());
     }
 
-    private List<Car> makeCars(String inputCarNames) {
+    private List<Car> makeCars(String inputCarNames) throws CustomIllegalArgException {
         List<Car> cars = new ArrayList<>();
         String[] carNames = inputCarNames.split(",");
         for (String carName : carNames) {
