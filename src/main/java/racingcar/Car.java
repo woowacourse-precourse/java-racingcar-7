@@ -8,18 +8,18 @@ public class Car {
     private static final String FORWARD_UNIT = "-";
     private static final int DEFAULT_POSITION = 0;
 
-    private final CarName name;
+    private final Name name;
     private int position;
     private NumberGenerator numberGenerator;
 
-    public Car(CarName name, int position, NumberGenerator numberGenerator) {
+    public Car(Name name, int position, NumberGenerator numberGenerator) {
         this.name = name;
         this.position = position;
         this.numberGenerator = numberGenerator;
     }
 
     public static Car createDefaultCar(String name, NumberGenerator numberGenerator) {
-        return new Car(new CarName(name), DEFAULT_POSITION, numberGenerator);
+        return new Car(Name.of(name), DEFAULT_POSITION, numberGenerator);
     }
 
     public void move() {
