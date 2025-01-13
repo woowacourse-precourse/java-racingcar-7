@@ -1,15 +1,18 @@
 package racingcar;
 
+import static racingcar.Car.createDefaultCar;
+
 import exception.CustomIllegalArgException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import util.RandomGenerator;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -17,6 +20,15 @@ public class Cars {
         for (Car car : cars) {
             car.move();
         }
+    }
+
+    public static Cars from(String inputCarNames) {
+        List<Car> cars = new ArrayList<>();
+        String[] carNames = inputCarNames.split(",");
+        for (String carName : carNames) {
+            cars.add(createDefaultCar(carName, new RandomGenerator()));
+        }
+        return new Cars(cars);
     }
 
     public List<String> getForwardInfos() {

@@ -6,8 +6,8 @@ public class Racing {
 
     private final Cars cars;
 
-    public Racing(List<Car> cars) {
-        this.cars = new Cars(cars);
+    public Racing(Cars cars) {
+        this.cars = cars;
     }
 
     public List<String> findWinners() {

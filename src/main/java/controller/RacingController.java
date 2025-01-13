@@ -1,13 +1,8 @@
 package controller;
 
-import static racingcar.Car.createDefaultCar;
-
 import exception.CustomIllegalArgException;
-import java.util.ArrayList;
-import java.util.List;
-import racingcar.Car;
+import racingcar.Cars;
 import racingcar.Racing;
-import util.RandomGenerator;
 import view.InputView;
 import view.OutputView;
 
@@ -28,7 +23,7 @@ public class RacingController {
 
     private Racing createRacing() {
         String carNames = inputView.inputCarNames();
-        List<Car> cars = makeCars(carNames);
+        Cars cars = Cars.from(carNames);
         return new Racing(cars);
     }
 
@@ -42,15 +37,6 @@ public class RacingController {
 
     private void printWinner(Racing racing) {
         outputView.finalWinners(racing.findWinners());
-    }
-
-    private List<Car> makeCars(String inputCarNames) throws CustomIllegalArgException {
-        List<Car> cars = new ArrayList<>();
-        String[] carNames = inputCarNames.split(",");
-        for (String carName : carNames) {
-            cars.add(createDefaultCar(carName, new RandomGenerator()));
-        }
-        return cars;
     }
 
     private int validCount(String inputCount) {
