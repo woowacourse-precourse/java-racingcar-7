@@ -30,6 +30,12 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 예외_테스트2() {
+        String negativeNumber = "-5";
+        assertThatThrownBy(() -> Application.intPositiveNumCheck(negativeNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Override
     public void runMain() {
