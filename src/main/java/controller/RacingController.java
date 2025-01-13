@@ -1,6 +1,6 @@
 package controller;
 
-import exception.CustomIllegalArgException;
+import racingcar.AttemptCount;
 import racingcar.Cars;
 import racingcar.Racing;
 import view.InputView;
@@ -14,7 +14,7 @@ public class RacingController {
     public void run() {
         try {
             Racing racing = createRacing();
-            playAllRacing(racing, validCount(inputView.inputAttemptCount()));
+            playAllRacing(racing, AttemptCount.from(inputView.inputAttemptCount()));
             printWinner(racing);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
@@ -37,19 +37,5 @@ public class RacingController {
 
     private void printWinner(Racing racing) {
         outputView.finalWinners(racing.findWinners());
-    }
-
-    private int validCount(String inputCount) {
-        try {
-            int attemptCount = Integer.parseInt(inputCount);
-            if (attemptCount < 1 || attemptCount > 1_000_000_000) {
-                throw new IllegalArgumentException("시도 횟수는 1 이상 1,000,000,000 이하의 숫자여야 합니다.");
-            }
-            return attemptCount;
-        } catch (NumberFormatException e) {
-            throw new CustomIllegalArgException("숫자만 입력해야 합니다.");
-        } catch (IllegalArgumentException e) {
-            throw new CustomIllegalArgException(e.getMessage());
-        }
     }
 }
