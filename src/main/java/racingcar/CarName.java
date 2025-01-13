@@ -8,7 +8,7 @@ public class CarName implements Name {
 
     private final String name;
 
-    public CarName(String name) throws CustomIllegalArgException {
+    public CarName(String name) {
         checkNameValid(name);
         this.name = name;
     }
@@ -23,7 +23,7 @@ public class CarName implements Name {
     }
 
     @Override
-    public void checkNameValid(String name) throws CustomIllegalArgException {
+    public void checkNameValid(String name) {
         if (name.isEmpty()) {
             throw new CustomIllegalArgException("자동차 이름을 입력해주세요");
         }

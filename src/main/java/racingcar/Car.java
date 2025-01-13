@@ -1,6 +1,5 @@
 package racingcar;
 
-import exception.CustomIllegalArgException;
 import util.NumberGenerator;
 
 public class Car {
@@ -19,7 +18,7 @@ public class Car {
         this.numberGenerator = numberGenerator;
     }
 
-    public static Car createDefaultCar(String name, NumberGenerator numberGenerator) throws CustomIllegalArgException {
+    public static Car createDefaultCar(String name, NumberGenerator numberGenerator) {
         return new Car(new CarName(name), DEFAULT_POSITION, numberGenerator);
     }
 
@@ -44,5 +43,4 @@ public class Car {
     public int getPosition() {
         return position;
     }
-
 }

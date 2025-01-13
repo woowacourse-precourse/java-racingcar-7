@@ -26,7 +26,7 @@ public class RacingController {
         }
     }
 
-    private Racing createRacing() throws CustomIllegalArgException {
+    private Racing createRacing() {
         String carNames = inputView.inputCarNames();
         List<Car> cars = makeCars(carNames);
         return new Racing(cars);
