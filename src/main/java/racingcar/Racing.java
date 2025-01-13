@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import util.NumberGenerator;
 
 public class Racing {
 
@@ -14,8 +15,8 @@ public class Racing {
         return cars.findWinners();
     }
 
-    public void playRacing() {
-        cars.playRacing();
+    public void playRacing(NumberGenerator numberGenerator) {
+        cars.playRacing(numberGenerator);
     }
 
     public List<String> racingInfo() {

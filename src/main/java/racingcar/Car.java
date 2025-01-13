@@ -10,19 +10,17 @@ public class Car {
 
     private final Name name;
     private int position;
-    private NumberGenerator numberGenerator;
 
-    public Car(Name name, int position, NumberGenerator numberGenerator) {
+    private Car(Name name, int position) {
         this.name = name;
         this.position = position;
-        this.numberGenerator = numberGenerator;
     }
 
-    public static Car createDefaultCar(String name, NumberGenerator numberGenerator) {
-        return new Car(Name.of(name), DEFAULT_POSITION, numberGenerator);
+    public static Car createDefaultCar(String name) {
+        return new Car(Name.of(name), DEFAULT_POSITION);
     }
 
-    public void move() {
+    public void move(NumberGenerator numberGenerator) {
         if (numberGenerator.makeNumber() >= MINIMUM_MOVE_VALUE) {
             this.position++;
         }

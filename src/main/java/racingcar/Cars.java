@@ -6,7 +6,7 @@ import exception.CustomIllegalArgException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import util.RandomGenerator;
+import util.NumberGenerator;
 
 public class Cars {
 
@@ -16,9 +16,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void playRacing() {
+    public void playRacing(NumberGenerator numberGenerator) {
         for (Car car : cars) {
-            car.move();
+            car.move(numberGenerator);
         }
     }
 
@@ -26,7 +26,7 @@ public class Cars {
         List<Car> cars = new ArrayList<>();
         String[] carNames = inputCarNames.split(",");
         for (String carName : carNames) {
-            cars.add(createDefaultCar(carName, new RandomGenerator()));
+            cars.add(createDefaultCar(carName));
         }
         return new Cars(cars);
     }
