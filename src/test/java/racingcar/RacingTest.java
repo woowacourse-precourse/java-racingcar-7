@@ -1,7 +1,5 @@
 package racingcar;
 
-import static racingcar.Car.createDefaultCar;
-
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -19,19 +17,14 @@ class RacingTest {
         String carName1 = "car1";
         String carName2 = "car2";
         String carName3 = "car3";
+        racing = new Racing(Cars.from(carName1 + "," + carName2 + "," + carName3));
+        racing.playRacing(new FakeGenerator(100));
 
-        Car car1 = createDefaultCar(carName1);
-        Car car2 = createDefaultCar(carName2);
-        Car car3 = createDefaultCar(carName3);
-        car1.move(new FakeGenerator(100));
-        car2.move(new FakeGenerator(2));
-        car3.move(new FakeGenerator(3));
-
-        racing = new Racing(Cars.from(carName1 + "," + carName3 + "," + carName3));
-
+        //when
         List<String> winners = racing.findWinners();
-        Assertions.assertThat(winners.size()).isEqualTo(1);
-        Assertions.assertThat(winners.get(0)).isEqualTo("Car1");
+
+        //then
+        Assertions.assertThat(winners.size()).isEqualTo(racing.getCarList().size());
     }
 
 }

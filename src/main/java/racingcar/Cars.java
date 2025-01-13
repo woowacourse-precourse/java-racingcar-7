@@ -31,14 +31,6 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public List<String> getForwardInfos() {
-        List<String> forwardInfos = new ArrayList<>();
-        for (Car car : cars) {
-            forwardInfos.add(car.carForwardInfo());
-        }
-        return forwardInfos;
-    }
-
     public List<String> findWinners() {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
@@ -49,5 +41,9 @@ public class Cars {
                 .filter(car -> car.isSamePosition(maxPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
     }
 }

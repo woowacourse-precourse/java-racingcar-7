@@ -19,7 +19,7 @@ public class Racing {
         cars.playRacing(numberGenerator);
     }
 
-    public List<String> racingInfo() {
-        return cars.getForwardInfos();
+    public List<Car> getCarList() {
+        return cars.getCars();
     }
 }

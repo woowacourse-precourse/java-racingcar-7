@@ -28,7 +28,9 @@ public class RacingController {
         outputView.printf("%n실행 결과%n");
         for (int i = 0; i < attemptCount; i++) {
             racing.playRacing(numberGenerator);
-            outputView.printRacing(racing.racingInfo());
+            racing.getCarList().forEach(car ->
+                    outputView.printRacing(car.getName(), car.getPosition()));
+            outputView.printf("%n");
         }
     }
 
