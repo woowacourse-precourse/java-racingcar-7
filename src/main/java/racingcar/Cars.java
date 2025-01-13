@@ -46,7 +46,7 @@ public class Cars {
                 .orElseThrow(() -> new CustomIllegalArgException("No cars found"));
 
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.isSamePosition(maxPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }

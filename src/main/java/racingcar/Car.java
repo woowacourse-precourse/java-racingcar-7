@@ -34,6 +34,10 @@ public class Car {
         return String.format("%s : %s%n", this.name, forwardUnits);
     }
 
+    public boolean isSamePosition(int position) {
+        return position == this.position;
+    }
+
     public String getName() {
         return name.getName();
     }
