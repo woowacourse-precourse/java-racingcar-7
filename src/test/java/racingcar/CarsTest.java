@@ -43,8 +43,8 @@ class CarsTest {
         //given
         String carNames = "aa,bb,cc";
         Cars cars = Cars.from(carNames);
-        //when
         cars.playRacing(new FakeGenerator(100));
+        //when
         List<String> winners = cars.findWinners();
         //that
         assertAll(
