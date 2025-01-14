@@ -16,12 +16,6 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void playRacing(NumberGenerator numberGenerator) {
-        for (Car car : cars) {
-            car.move(numberGenerator);
-        }
-    }
-
     public static Cars from(String inputCarNames) {
         List<Car> cars = new ArrayList<>();
         String[] carNames = inputCarNames.split(",");
@@ -29,6 +23,12 @@ public class Cars {
             cars.add(createDefaultCar(carName));
         }
         return new Cars(cars);
+    }
+
+    public void playRacing(NumberGenerator numberGenerator) {
+        for (Car car : cars) {
+            car.move(numberGenerator);
+        }
     }
 
     public List<String> findWinners() {
