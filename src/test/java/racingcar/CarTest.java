@@ -36,6 +36,7 @@ class CarTest {
         car2.move(new FakeGenerator(1));
         car3.move(new FakeGenerator(10));
         car4.move(new FakeGenerator(1));
+        
         // then
         Assertions.assertAll(
                 () -> assertThat(car1.getPosition()).isEqualTo(1),

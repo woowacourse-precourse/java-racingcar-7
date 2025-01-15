@@ -19,6 +19,7 @@ class CarsTest {
     void carTest1(String carNames) {
         //when
         Cars cars = Cars.from(carNames);
+        
         //that
         Assertions.assertThat(cars.getCars().size()).isEqualTo(carNames.split(",").length);
     }
@@ -29,8 +30,10 @@ class CarsTest {
         // given
         String carNames = "aa,bb,cc";
         Cars cars = Cars.from(carNames);
+
         // when
         cars.playRacing(new FakeGenerator(100));
+
         // that
         for (Car car : cars.getCars()) {
             Assertions.assertThat(car.getPosition()).isEqualTo(1);
@@ -44,9 +47,11 @@ class CarsTest {
         String carNames = "aa,bb,cc";
         Cars cars = Cars.from(carNames);
         cars.playRacing(new FakeGenerator(100));
+
         // when
         List<String> winners = cars.findWinners();
-        // that
+
+        // than
         assertAll(
                 () -> assertThat(winners.size()).isEqualTo(carNames.split(",").length),
                 () -> assertThat(winners.contains("aa")).isEqualTo(true),

@@ -15,7 +15,8 @@ class AttemptCountTest {
     void attemptCountTest1(String inputCount) {
         // given & when
         int attemptCount = AttemptCount.from(inputCount);
-        // that
+
+        // then
         Assertions.assertThat(attemptCount).isEqualTo(Integer.parseInt(inputCount));
     }
 
@@ -23,7 +24,7 @@ class AttemptCountTest {
     @ParameterizedTest
     @ValueSource(strings = {"-1", "0", "abc", " ", "", "3333333333333333"})
     void attemptCountTest2(String inputCount) {
-        // when & that
+        // when & then
         assertThrows(IllegalArgumentException.class, () -> {
             AttemptCount.from(inputCount);
         });
