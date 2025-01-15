@@ -25,17 +25,18 @@ class CarTest {
     @DisplayName("자동차가 MINIMUM_MOVE_VALUE 이상일 때만 전진하는지 테스트")
     @Test
     void carTest2() {
-        //given
+        // given
         Car car1 = createDefaultCar("aa");
         Car car2 = createDefaultCar("bb");
         Car car3 = createDefaultCar("cc");
         Car car4 = createDefaultCar("dd");
-        //when
+
+        // when
         car1.move(new FakeGenerator(100));
         car2.move(new FakeGenerator(1));
         car3.move(new FakeGenerator(10));
         car4.move(new FakeGenerator(1));
-        //then
+        // then
         Assertions.assertAll(
                 () -> assertThat(car1.getPosition()).isEqualTo(1),
                 () -> assertThat(car2.getPosition()).isEqualTo(0),

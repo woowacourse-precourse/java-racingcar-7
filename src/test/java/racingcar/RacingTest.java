@@ -13,17 +13,17 @@ class RacingTest {
     @DisplayName("우승자를 정확히 구하는지 확인한다")
     @Test
     void racingTest1() {
-        //given
+        // given
         String carName1 = "car1";
         String carName2 = "car2";
         String carName3 = "car3";
         racing = new Racing(Cars.from(carName1 + "," + carName2 + "," + carName3));
         racing.playRacing(new FakeGenerator(100));
 
-        //when
+        // when
         List<String> winners = racing.findWinners();
 
-        //then
+        // then
         Assertions.assertThat(winners.size()).isEqualTo(racing.getCarList().size());
     }
 

@@ -26,12 +26,12 @@ class CarsTest {
     @Test
     @DisplayName("자동차 경주가 정상적으로 진행되는지 확인한다")
     void carTest2() {
-        //given
+        // given
         String carNames = "aa,bb,cc";
         Cars cars = Cars.from(carNames);
-        //when
+        // when
         cars.playRacing(new FakeGenerator(100));
-        //that
+        // that
         for (Car car : cars.getCars()) {
             Assertions.assertThat(car.getPosition()).isEqualTo(1);
         }
@@ -40,13 +40,13 @@ class CarsTest {
     @Test
     @DisplayName("자동차 우승자를 정상적으로 찾는지 확인")
     void carTest3() {
-        //given
+        // given
         String carNames = "aa,bb,cc";
         Cars cars = Cars.from(carNames);
         cars.playRacing(new FakeGenerator(100));
-        //when
+        // when
         List<String> winners = cars.findWinners();
-        //that
+        // that
         assertAll(
                 () -> assertThat(winners.size()).isEqualTo(carNames.split(",").length),
                 () -> assertThat(winners.contains("aa")).isEqualTo(true),
