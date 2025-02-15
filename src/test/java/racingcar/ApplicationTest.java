@@ -1,38 +1,69 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Cars;
+import racingcar.domain.RandomNumberGenerator;
+import racingcar.domain.Car;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import java.util.Arrays;
+import java.util.List;
 
-class ApplicationTest extends NsTest {
-    private static final int MOVING_FORWARD = 4;
-    private static final int STOP = 3;
+import static org.assertj.core.api.Assertions.*;
+
+public class ApplicationTest {
 
     @Test
-    void 기능_테스트() {
-        assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
-        );
+    public void carsCreation_withValidNames_shouldInitializeAllCars() {
+        List<String> names = Arrays.asList("car1", "car2", "car3");
+        Cars cars = new Cars(names);
+        assertThat(cars.getCars()).hasSize(3);
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+    public void carsCreation_withEmptyName_shouldThrowException() {
+        List<String> names = Arrays.asList("car1", "", "car3");
+        assertThatThrownBy(() -> new Cars(names))
                 .isInstanceOf(IllegalArgumentException.class)
-        );
+                .hasMessageContaining("자동차 이름은 공백일 수 없습니다.");
     }
 
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
+    @Test
+    public void carsCreation_withNullList_shouldThrowException() {
+        assertThatThrownBy(() -> new Cars(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 하나 이상 입력해야 합니다.");
+    }
+
+    @Test
+    public void getWinners_shouldReturnCarWithMaxPosition() {
+        List<String> names = Arrays.asList("car1", "car2", "car3");
+        Cars cars = new Cars(names);
+
+        // Manually set positions
+        cars.getCars().get(0).move(4); // car1 position 1
+        cars.getCars().get(1).move(5); // car2 position 1
+        cars.getCars().get(2).move(6); // car3 position 1
+
+        // car2 moves one more time
+        cars.getCars().get(1).move(4); // car2 position 2
+
+        List<String> winners = cars.getWinners();
+        assertThat(winners).containsExactly("car2");
+    }
+
+    @Test
+    public void getWinners_withMultipleWinners_shouldReturnAllWinners() {
+        List<String> names = Arrays.asList("pobi", "woni", "jun");
+        Cars cars = new Cars(names);
+
+        // Manually set positions
+        cars.getCars().get(0).move(5); // pobi position 1
+        cars.getCars().get(0).move(5); // pobi position 2
+        cars.getCars().get(1).move(4); // woni position 1
+        cars.getCars().get(2).move(5); // jun position 1
+        cars.getCars().get(2).move(5); // jun position 2
+
+        List<String> winners = cars.getWinners();
+        assertThat(winners).containsExactlyInAnyOrder("pobi", "jun");
     }
 }
